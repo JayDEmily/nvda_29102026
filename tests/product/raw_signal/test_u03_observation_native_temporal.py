@@ -1,9 +1,14 @@
 from __future__ import annotations
 
+import os
+import subprocess
+import sys
 from array import array
+from collections import UserDict
 from datetime import UTC, datetime
 from decimal import Decimal
-from typing import Any
+from pathlib import Path
+from typing import Any, get_args, get_type_hints
 
 import pytest
 from tests.product.raw_signal._support import (
@@ -13,6 +18,8 @@ from tests.product.raw_signal._support import (
     observation,
     typed_identity,
 )
+
+from nvda_desk.raw_signal_occurrence_truth import api
 
 OPTIONAL_METADATA_CASES: tuple[tuple[str, Any], ...] = (
     ("source_product_api", "product-api::distinctive"),
@@ -278,6 +285,7 @@ def test_same_observation_identity_is_idempotent_only_for_identical_content() ->
     [
         ({"Native": 1}, {"Native": 1.0}),
         ({"Native": Decimal("1.0")}, {"Native": Decimal("1.00")}),
+        ({"Native": -0.0}, {"Native": 0.0}),
     ],
 )
 def test_same_observation_identity_rejects_native_numeric_representation_change(
@@ -325,98 +333,162 @@ def test_same_observation_identity_accepts_reconstructed_identical_nan(
     assert owner.reads.get_raw_observation_occurrence(first.observation_occurrence_id) is first
 
 
-def test_same_observation_identity_rejects_complex_signed_zero_change() -> None:
+class _ExplosiveEquality:
+    equality_called = False
+
+    def __eq__(self, other: object) -> bool:
+        type(self).equality_called = True
+        raise AssertionError("unsupported native value equality must never be invoked")
+
+
+def test_public_native_record_annotation_exposes_finite_native_value_v1() -> None:
+    hints = get_type_hints(api.RawObservationOccurrenceV1)
+    native_record_annotation = hints["native_record"]
+    key_type, value_type = get_args(native_record_annotation)
+    assert key_type is str
+    assert value_type is api.NativeValueV1
+    assert "NativeValueV1" in api.__all__
+
+
+def test_public_static_native_value_v1_rejects_outside_carrier_specimens() -> None:
+    specimen = Path(__file__).resolve().parent / "typecheck" / "native_value_negative.py"
+    source_lines = specimen.read_text(encoding="utf-8").splitlines()
+    expected_lines = {
+        number for number, line in enumerate(source_lines, start=1) if "NATIVE_NEGATIVE" in line
+    }
+    assert len(expected_lines) == 4
+    root = Path(__file__).resolve().parents[3]
+    env = os.environ.copy()
+    env["MYPYPATH"] = str(root / "src")
+    result = subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "mypy",
+            "--strict",
+            "--disallow-any-expr",
+            "--show-error-codes",
+            "--no-error-summary",
+            str(specimen),
+        ],
+        cwd=root,
+        env=env,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    assert result.returncode != 0, "outside-carrier static specimen unexpectedly type-checked"
+    reported_lines: set[int] = set()
+    for line in (result.stdout + result.stderr).splitlines():
+        parts = line.split(":", 2)
+        if len(parts) < 3:
+            continue
+        try:
+            reported_lines.add(int(parts[1]))
+        except ValueError:
+            continue
+    assert not expected_lines - reported_lines, result.stdout + result.stderr
+
+
+def test_allowed_recursive_native_values_are_canonicalised_alias_safe_and_idempotent() -> None:
+    owner = build_owner()
+    mutable_list: list[Any] = [None, True, 1, -0.0, Decimal("1.00"), "x", b"bytes"]
+    first_native = UserDict(
+        {
+            "Outer": UserDict({"Tuple": ("a", 2), "List": mutable_list}),
+            "Other": "value",
+        }
+    )
+    first = admit_observation(owner, observation(native_record=first_native))
+
+    mutable_list[2] = 999
+    first_native["Other"] = "mutated"
+    stored_outer = first.native_record["Outer"]
+    assert isinstance(stored_outer, dict)
+    stored_list = stored_outer["List"]
+    assert isinstance(stored_list, list)
+    assert stored_list[2] == 1
+    assert first.native_record["Other"] == "value"
+
+    stored_list[2] = 777
+    reread_outer = first.native_record["Outer"]
+    assert isinstance(reread_outer, dict)
+    reread_list = reread_outer["List"]
+    assert isinstance(reread_list, list)
+    assert reread_list[2] == 1
+
+    reconstructed = observation(
+        native_record={
+            "Other": "value",
+            "Outer": {
+                "List": [None, True, 1, -0.0, Decimal("1.00"), "x", b"bytes"],
+                "Tuple": ("a", 2),
+            },
+        }
+    )
+    assert admit_observation(owner, reconstructed) is first
+
+
+@pytest.mark.parametrize(
+    ("label", "unsupported"),
+    [
+        ("reviewer026-complex", complex(-0.0, 0.0)),
+        ("reviewer027-bytearray", bytearray(b"abc")),
+        ("reviewer027-non-string-key", {1: "x"}),
+        ("reviewer028-array", array("b", [1])),
+        ("reviewer028-range", range(0, 3, 2)),
+        ("reviewer029-datetime", datetime(2026, 9, 20, 12, 0, tzinfo=UTC)),
+        ("set", {"x"}),
+        ("frozenset", frozenset({"x"})),
+    ],
+    ids=lambda item: item if isinstance(item, str) else None,
+)
+def test_superseded_witnesses_are_unsupported_and_do_not_replace_first_occurrence(
+    label: str, unsupported: object
+) -> None:
+    del label
+    owner = build_owner()
+    first = admit_observation(owner, observation(native_record={"Native": b"first"}))
+
+    with pytest.raises(TypeError, match=r"NativeValueV1|exact built-in strings"):
+        retry = observation(native_record={"Native": unsupported})
+        admit_observation(owner, retry)
+
+    reread = owner.reads.get_raw_observation_occurrence(first.observation_occurrence_id)
+    assert reread is first
+    assert reread.native_record["Native"] == b"first"
+
+
+def test_arbitrary_custom_equality_object_fails_closed_without_invoking_equality() -> None:
+    owner = build_owner()
+    first = admit_observation(owner, observation(native_record={"Native": "first"}))
+    unsupported = _ExplosiveEquality()
+    _ExplosiveEquality.equality_called = False
+
+    with pytest.raises(TypeError, match="NativeValueV1"):
+        retry = observation(native_record={"Native": unsupported})
+        admit_observation(owner, retry)
+
+    assert not _ExplosiveEquality.equality_called
+    reread = owner.reads.get_raw_observation_occurrence(first.observation_occurrence_id)
+    assert reread is first
+    assert reread.native_record["Native"] == "first"
+
+
+def test_same_observation_identity_rejects_recursive_container_kind_change() -> None:
     owner = build_owner()
     first = admit_observation(
-        owner, observation(native_record={"Native": complex(-0.0, 0.0)})
+        owner, observation(native_record={"Native": {"Nested": [Decimal("1.00"), -0.0]}})
     )
 
     with pytest.raises((TypeError, ValueError)):
         admit_observation(
             owner,
-            observation(native_record={"Native": complex(0.0, 0.0)}),
+            observation(native_record={"Native": {"Nested": (Decimal("1.00"), -0.0)}}),
         )
 
     reread = owner.reads.get_raw_observation_occurrence(first.observation_occurrence_id)
     assert reread is first
-    stored_value = reread.native_record["Native"]
-    assert isinstance(stored_value, complex)
-    assert stored_value.real.hex() == "-0x0.0p+0"
-    assert stored_value.imag.hex() == "0x0.0p+0"
-
-
-def test_same_observation_identity_rejects_bytes_to_bytearray_change() -> None:
-    owner = build_owner()
-    first = admit_observation(owner, observation(native_record={"Native": b"abc"}))
-
-    with pytest.raises((TypeError, ValueError)):
-        admit_observation(
-            owner,
-            observation(native_record={"Native": bytearray(b"abc")}),
-        )
-
-    reread = owner.reads.get_raw_observation_occurrence(first.observation_occurrence_id)
-    assert reread is first
-    assert type(reread.native_record["Native"]) is bytes
-    assert reread.native_record["Native"] == b"abc"
-
-
-def test_same_observation_identity_rejects_nested_mapping_key_type_change() -> None:
-    owner = build_owner()
-    first = admit_observation(owner, observation(native_record={"Native": {1: "x"}}))
-
-    with pytest.raises((TypeError, ValueError)):
-        admit_observation(
-            owner,
-            observation(native_record={"Native": {1.0: "x"}}),
-        )
-
-    reread = owner.reads.get_raw_observation_occurrence(first.observation_occurrence_id)
-    assert reread is first
-    nested = reread.native_record["Native"]
-    assert isinstance(nested, dict)
-    key = next(iter(nested))
-    assert type(key) is int
-    assert key == 1
-
-
-def test_same_observation_identity_rejects_array_typecode_change() -> None:
-    owner = build_owner()
-    first = admit_observation(
-        owner, observation(native_record={"Native": array("b", [1])})
-    )
-
-    with pytest.raises((TypeError, ValueError)):
-        admit_observation(
-            owner,
-            observation(native_record={"Native": array("B", [1])}),
-        )
-
-    reread = owner.reads.get_raw_observation_occurrence(first.observation_occurrence_id)
-    assert reread is first
-    stored_value = reread.native_record["Native"]
-    assert isinstance(stored_value, array)
-    assert stored_value.typecode == "b"
-    assert stored_value.tolist() == [1]
-
-
-def test_same_observation_identity_rejects_range_bound_change() -> None:
-    owner = build_owner()
-    first = admit_observation(
-        owner, observation(native_record={"Native": range(0, 3, 2)})
-    )
-
-    with pytest.raises((TypeError, ValueError)):
-        admit_observation(
-            owner,
-            observation(native_record={"Native": range(0, 4, 2)}),
-        )
-
-    reread = owner.reads.get_raw_observation_occurrence(first.observation_occurrence_id)
-    assert reread is first
-    stored_value = reread.native_record["Native"]
-    assert isinstance(stored_value, range)
-    assert (stored_value.start, stored_value.stop, stored_value.step) == (0, 3, 2)
 
 
 def test_newly_received_retransmission_keeps_new_observation_identity() -> None:

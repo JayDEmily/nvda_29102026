@@ -8,7 +8,7 @@ from __future__ import annotations
 
 import inspect
 import types
-from collections.abc import Callable
+from collections.abc import Callable, Mapping
 from dataclasses import fields, is_dataclass, replace
 from datetime import UTC, datetime
 from typing import Annotated, Any, Union, get_args, get_origin
@@ -196,7 +196,7 @@ def observation(
     source_provider: Any = "provider.fixture",
     raw_signal_catalogue_ids: tuple[Any, ...] | None = None,
     native_identifier: str | None = "provider-native-001",
-    native_record: dict[str, Any] | None = None,
+    native_record: Mapping[str, Any] | None = None,
     source_product_api: str | None = None,
     source_endpoint_callback: str | None = None,
     native_tick_series_identifier: str | None = None,

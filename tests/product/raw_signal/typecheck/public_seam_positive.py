@@ -1,10 +1,14 @@
 from collections.abc import Sequence
 from datetime import UTC, datetime
+from decimal import Decimal
 
 from nvda_desk.raw_signal_occurrence_truth import api
 
 
 def exercise_public_seam(when: datetime) -> None:
+    native_value: api.NativeValueV1 = {
+        "Nested": [None, True, 1, -0.0, Decimal("1.00"), "native", b"bytes", ("tuple",)]
+    }
     policy = api.CaptureScopePolicyV1(
         concept_id=api.concept_id("raw_signal.capture_scope_policy"),
         contract_id=api.contract_id("nvda.raw_signal.CaptureScopePolicy.v1"),
@@ -29,7 +33,7 @@ def exercise_public_seam(when: datetime) -> None:
         observation_occurrence_id=api.observation_occurrence_id("observation-001"),
         delivery_artifact_ref=api.delivery_artifact_ref("delivery-001"),
         source_provider=api.provider_id("provider.fixture"),
-        native_record={"Bid Price": "123.45", "Provider Null": None},
+        native_record={"Bid Price": "123.45", "Provider Null": None, "Payload": native_value},
         received_ts_utc=datetime(2026, 9, 20, 12, 0, 5, tzinfo=UTC),
         ingestion_sequence=1,
         ingestion_sequence_scope=api.ingestion_sequence_scope("collector.fixture"),

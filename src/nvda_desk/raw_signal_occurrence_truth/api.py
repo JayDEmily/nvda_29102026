@@ -1,8 +1,6 @@
 """Typed public seam for the admitted Raw Signal Occurrence Truth owner."""
 
-from array import array
 from collections.abc import Callable, Iterator, Mapping, Sequence
-from copy import deepcopy
 from dataclasses import dataclass, field
 from datetime import datetime, timedelta
 from decimal import Decimal
@@ -91,6 +89,20 @@ AssessmentOutcome = Literal[
 ]
 
 
+type NativeValueV1 = (
+    None
+    | bool
+    | int
+    | float
+    | Decimal
+    | str
+    | bytes
+    | list[NativeValueV1]
+    | tuple[NativeValueV1, ...]
+    | Mapping[str, NativeValueV1]
+)
+
+
 _POLICY_CONCEPT = "raw_signal.capture_scope_policy"
 _POLICY_CONTRACT = "nvda.raw_signal.CaptureScopePolicy.v1"
 _CAPTURE_CONCEPT = "raw_signal.scheduled_capture_occurrence"
@@ -154,18 +166,78 @@ def _not_implemented(unit: str) -> NoReturn:
     )
 
 
-class _NativeRecordSnapshot(Mapping[str, object]):
+def _snapshot_native_mapping(
+    source: Mapping[object, object], active_container_ids: set[int]
+) -> dict[str, NativeValueV1]:
+    container_id = id(source)
+    if container_id in active_container_ids:
+        raise TypeError("native_record must be an acyclic NativeValueV1 value")
+    active_container_ids.add(container_id)
+    try:
+        snapshot: dict[str, NativeValueV1] = {}
+        for key, value in source.items():
+            if type(key) is not str:
+                raise TypeError("native_record mapping field names must be exact built-in strings")
+            snapshot[key] = _snapshot_native_value(value, active_container_ids)
+        return snapshot
+    finally:
+        active_container_ids.remove(container_id)
+
+
+def _snapshot_native_value(value: object, active_container_ids: set[int]) -> NativeValueV1:
+    if value is None:
+        return None
+    if type(value) is bool:
+        return value
+    if type(value) is int:
+        return value
+    if type(value) is float:
+        return value
+    if type(value) is Decimal:
+        return value
+    if type(value) is str:
+        return value
+    if type(value) is bytes:
+        return value
+    if type(value) is list:
+        container_id = id(value)
+        if container_id in active_container_ids:
+            raise TypeError("native_record must be an acyclic NativeValueV1 value")
+        active_container_ids.add(container_id)
+        try:
+            return [
+                _snapshot_native_value(item, active_container_ids)
+                for item in cast(list[object], value)
+            ]
+        finally:
+            active_container_ids.remove(container_id)
+    if type(value) is tuple:
+        container_id = id(value)
+        if container_id in active_container_ids:
+            raise TypeError("native_record must be an acyclic NativeValueV1 value")
+        active_container_ids.add(container_id)
+        try:
+            return tuple(
+                _snapshot_native_value(item, active_container_ids)
+                for item in cast(tuple[object, ...], value)
+            )
+        finally:
+            active_container_ids.remove(container_id)
+    if isinstance(value, Mapping):
+        return _snapshot_native_mapping(cast(Mapping[object, object], value), active_container_ids)
+    raise TypeError("native_record contains a value outside the NativeValueV1 carrier")
+
+
+class _NativeRecordSnapshot(Mapping[str, NativeValueV1]):
     """Alias-safe read-only snapshot of one provider-logical native record."""
 
     __slots__ = ("__data",)
 
-    def __init__(self, source: Mapping[str, object]) -> None:
-        if any(type(key) is not str for key in source):
-            raise TypeError("native_record field names must be strings")
-        self.__data = deepcopy(dict(source))
+    def __init__(self, source: Mapping[str, NativeValueV1]) -> None:
+        self.__data = _snapshot_native_mapping(cast(Mapping[object, object], source), set())
 
-    def __getitem__(self, key: str) -> object:
-        return deepcopy(self.__data[key])
+    def __getitem__(self, key: str) -> NativeValueV1:
+        return _snapshot_native_value(self.__data[key], set())
 
     def __iter__(self) -> Iterator[str]:
         return iter(self.__data)
@@ -181,70 +253,55 @@ def _native_float_exactly_equal(left: float, right: float) -> bool:
 
 
 def _native_values_exactly_equal(left: object, right: object) -> bool:
-    """Compare admitted native values without collapsing runtime representation."""
+    """Compare only admitted NativeValueV1 values by authorised exact content."""
+
+    left_is_mapping = isinstance(left, Mapping)
+    right_is_mapping = isinstance(right, Mapping)
+    if left_is_mapping or right_is_mapping:
+        if not (left_is_mapping and right_is_mapping):
+            return False
+        left_mapping = cast(Mapping[str, object], left)
+        right_mapping = cast(Mapping[str, object], right)
+        if len(left_mapping) != len(right_mapping):
+            return False
+        if set(left_mapping) != set(right_mapping):
+            return False
+        return all(
+            _native_values_exactly_equal(left_mapping[key], right_mapping[key])
+            for key in left_mapping
+        )
 
     if type(left) is not type(right):
         return False
-    if isinstance(left, Decimal):
-        assert isinstance(right, Decimal)
-        return left.as_tuple() == right.as_tuple()
-    if isinstance(left, float):
-        assert isinstance(right, float)
-        return _native_float_exactly_equal(left, right)
-    if isinstance(left, complex):
-        assert isinstance(right, complex)
-        return _native_float_exactly_equal(
-            left.real, right.real
-        ) and _native_float_exactly_equal(left.imag, right.imag)
-    if isinstance(left, array):
-        assert isinstance(right, array)
-        return left.typecode == right.typecode and left.tobytes() == right.tobytes()
-    if isinstance(left, range):
-        assert isinstance(right, range)
-        return (
-            left.start == right.start
-            and left.stop == right.stop
-            and left.step == right.step
-        )
-    if isinstance(left, Mapping):
-        assert isinstance(right, Mapping)
-        left_mapping = cast(Mapping[object, object], left)
-        right_mapping = cast(Mapping[object, object], right)
-        if len(left_mapping) != len(right_mapping):
-            return False
-        unmatched_right_items = list(right_mapping.items())
-        for left_key, left_value in left_mapping.items():
-            for index, (right_key, right_value) in enumerate(unmatched_right_items):
-                if _native_values_exactly_equal(
-                    left_key, right_key
-                ) and _native_values_exactly_equal(left_value, right_value):
-                    del unmatched_right_items[index]
-                    break
-            else:
-                return False
+    if left is None:
         return True
-    if isinstance(left, (list, tuple)):
-        assert isinstance(right, (list, tuple))
-        left_sequence = cast(Sequence[object], left)
-        right_sequence = cast(Sequence[object], right)
-        return len(left_sequence) == len(right_sequence) and all(
+    if type(left) is bool:
+        return left is right
+    if type(left) is int:
+        return left == right
+    if type(left) is float:
+        return _native_float_exactly_equal(left, cast(float, right))
+    if type(left) is Decimal:
+        return left.as_tuple() == cast(Decimal, right).as_tuple()
+    if type(left) is str:
+        return left == right
+    if type(left) is bytes:
+        return left == right
+    if type(left) is list:
+        left_list = cast(list[object], left)
+        right_list = cast(list[object], right)
+        return len(left_list) == len(right_list) and all(
             _native_values_exactly_equal(left_item, right_item)
-            for left_item, right_item in zip(left_sequence, right_sequence, strict=True)
+            for left_item, right_item in zip(left_list, right_list, strict=True)
         )
-    if isinstance(left, (set, frozenset)):
-        assert isinstance(right, (set, frozenset))
-        if len(left) != len(right):
-            return False
-        unmatched_right_items = list(right)
-        for left_item in left:
-            for index, right_item in enumerate(unmatched_right_items):
-                if _native_values_exactly_equal(left_item, right_item):
-                    del unmatched_right_items[index]
-                    break
-            else:
-                return False
-        return True
-    return left == right
+    if type(left) is tuple:
+        left_tuple = cast(tuple[object, ...], left)
+        right_tuple = cast(tuple[object, ...], right)
+        return len(left_tuple) == len(right_tuple) and all(
+            _native_values_exactly_equal(left_item, right_item)
+            for left_item, right_item in zip(left_tuple, right_tuple, strict=True)
+        )
+    raise TypeError("native comparator received a value outside the NativeValueV1 carrier")
 
 
 def _observations_exactly_equal(
@@ -401,7 +458,7 @@ class RawObservationOccurrenceV1:
     observation_occurrence_id: _ObservationOccurrenceId
     delivery_artifact_ref: _DeliveryArtifactRef
     source_provider: _ProviderId
-    native_record: Mapping[str, object]
+    native_record: Mapping[str, NativeValueV1]
     received_ts_utc: datetime
     ingestion_sequence: int
     ingestion_sequence_scope: _IngestionSequenceScope
@@ -864,6 +921,7 @@ __all__ = [
     "CaptureReceiptEvidenceRelationV1",
     "CaptureReceiptPresenceAssessmentV1",
     "CaptureScopePolicyV1",
+    "NativeValueV1",
     "RawObservationOccurrenceV1",
     "RawSignalCatalogueId",
     "ScheduledCaptureOccurrenceV1",
