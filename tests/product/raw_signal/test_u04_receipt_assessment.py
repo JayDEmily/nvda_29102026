@@ -349,6 +349,69 @@ def test_one_or_more_is_derived_when_eligible_committed_receipt_is_visible() -> 
     assert stored.outcome == "one_or_more_received"
 
 
+def test_assessment_uses_visible_observation_without_materialising_optional_relation() -> None:
+    owner, capture, stored_policy, resolver = _capture_fixture()
+    obs = admit_observation(owner, observation(observation_occurrence_id="observation-direct"))
+    resolver.expected_observation = obs
+
+    stored = append_assessment(
+        owner,
+        assessment_occurrence_id="assessment-direct",
+        capture_occurrence_ref=capture.capture_occurrence_id,
+        evidence_as_of_ts_utc=datetime(2026, 9, 20, 12, 0, 10, tzinfo=UTC),
+    )
+
+    assert stored.outcome == "one_or_more_received"
+    assert resolver.calls == [(obs, stored_policy)]
+
+    relation = owner.commands.derive_capture_receipt_evidence_relation(
+        observation_occurrence_ref=obs.observation_occurrence_id,
+        capture_occurrence_ref=capture.capture_occurrence_id,
+        scope_policy_ref=capture.scope_policy_ref,
+    )
+    assert relation is not None
+    assert resolver.calls == [(obs, stored_policy), (obs, stored_policy)]
+
+
+def test_assessment_fails_closed_when_in_slot_evidence_lacks_eligibility_authority() -> None:
+    owner = build_owner()
+    register_policy(owner)
+    capture = realise_capture(owner)
+    admit_observation(
+        owner,
+        observation(observation_occurrence_id="observation-missing-eligibility"),
+    )
+
+    with pytest.raises(ValueError, match="eligibility resolver"):
+        append_assessment(
+            owner,
+            assessment_occurrence_id="assessment-missing-eligibility",
+            capture_occurrence_ref=capture.capture_occurrence_id,
+            evidence_as_of_ts_utc=datetime(2026, 9, 20, 12, 0, 10, tzinfo=UTC),
+        )
+
+
+def test_same_assessment_retry_keeps_original_outcome_after_late_visible_evidence() -> None:
+    owner, capture, _, resolver = _capture_fixture()
+    kwargs = {
+        "assessment_occurrence_id": "assessment-stable-retry",
+        "capture_occurrence_ref": capture.capture_occurrence_id,
+        "evidence_as_of_ts_utc": datetime(2026, 9, 20, 12, 0, 10, tzinfo=UTC),
+    }
+    first = append_assessment(owner, **kwargs)
+    assert first.outcome == "zero_received"
+
+    obs = admit_observation(
+        owner,
+        observation(observation_occurrence_id="observation-after-assessment"),
+    )
+    resolver.expected_observation = obs
+
+    retried = append_assessment(owner, **kwargs)
+    assert retried == first
+    assert resolver.calls == []
+
+
 def test_persistence_port_receives_already_decided_semantics_and_has_no_decision_capability(
 ) -> None:
     port = _TechnicalPersistencePort()

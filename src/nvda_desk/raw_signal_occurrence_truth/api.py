@@ -648,9 +648,6 @@ class _OwnerState:
         tuple[_ObservationOccurrenceId, _CaptureOccurrenceId, _ScopePolicyRef],
         CaptureReceiptEvidenceRelationV1,
     ] = field(default_factory=dict)
-    relations_by_capture: dict[
-        _CaptureOccurrenceId, list[CaptureReceiptEvidenceRelationV1]
-    ] = field(default_factory=dict)
     assessments_by_identity: dict[
         _AssessmentOccurrenceId, CaptureReceiptPresenceAssessmentV1
     ] = field(default_factory=dict)
@@ -1010,7 +1007,6 @@ def _build_owner_facets(
             relation_role="evidences_receipt_presence_only",
         )
         state.relations_by_key[relation_key] = relation
-        state.relations_by_capture.setdefault(capture_occurrence_ref, []).append(relation)
         return relation
 
     def append_assessment(
@@ -1038,13 +1034,46 @@ def _build_owner_facets(
         capture = state.captures_by_identity.get(capture_occurrence_ref)
         if capture is None:
             raise KeyError("capture_occurrence_ref is not realised")
+        effective_policy = state.policies_by_ref.get(capture.scope_policy_ref)
+        if effective_policy is None:
+            raise KeyError("capture effective scope policy is not registered")
 
-        visible_relation = any(
-            relation.received_ts_utc <= evidence_as_of_ts_utc
-            for relation in state.relations_by_capture.get(capture_occurrence_ref, ())
-        )
+        existing = state.assessments_by_identity.get(assessment_occurrence_id)
+        if existing is not None:
+            if (
+                existing.capture_occurrence_ref != capture.capture_occurrence_id
+                or existing.evidence_as_of_ts_utc != evidence_as_of_ts_utc
+                or existing.supersedes_assessment_ref != supersedes_assessment_ref
+            ):
+                raise ValueError(
+                    "assessment occurrence identity is already appended with different content"
+                )
+            return existing
+
+        eligible_visible_observation = False
+        for observed in state.observations_by_identity.values():
+            if not (
+                capture.slot_start_utc
+                <= observed.received_ts_utc
+                < capture.slot_end_utc
+            ):
+                continue
+            if eligibility_resolver is None:
+                raise ValueError(
+                    "assessment derivation requires an admitted eligibility resolver "
+                    "for in-slot observation evidence"
+                )
+            eligible = eligibility_resolver(observed, effective_policy)
+            if type(eligible) is not bool:
+                raise TypeError("eligibility resolver must return an exact bool")
+            if eligible:
+                eligible_visible_observation = True
+                break
+
         outcome: AssessmentOutcome = (
-            "one_or_more_received" if visible_relation else "zero_received"
+            "one_or_more_received"
+            if eligible_visible_observation
+            else "zero_received"
         )
         candidate = CaptureReceiptPresenceAssessmentV1(
             concept_id=_ConceptId(_ASSESSMENT_CONCEPT),
@@ -1056,14 +1085,6 @@ def _build_owner_facets(
             evidence_as_of_ts_utc=evidence_as_of_ts_utc,
             supersedes_assessment_ref=supersedes_assessment_ref,
         )
-
-        existing = state.assessments_by_identity.get(assessment_occurrence_id)
-        if existing is not None:
-            if existing != candidate:
-                raise ValueError(
-                    "assessment occurrence identity is already appended with different content"
-                )
-            return existing
 
         chain = state.assessment_order_by_capture.get(capture_occurrence_ref, [])
         if not chain:
