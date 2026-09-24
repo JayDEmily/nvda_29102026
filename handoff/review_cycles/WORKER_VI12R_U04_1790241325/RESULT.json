@@ -1,0 +1,11 @@
+{
+  "review_cycle": "WORKER_VI12R_U04_1790241325",
+  "actor": "WORKER",
+  "status": "PENDING",
+  "predecessor_review_commit": "dc40971d24ee773ee133d07622f92d709a7cec11",
+  "accepted_u03_candidate": "45ca4b8dcca6fdb5001e1754fd81bdba37ce05bf",
+  "u03_promotion": "PENDING",
+  "u04_candidate": null,
+  "disposition": null,
+  "next_cycle": null
+}
