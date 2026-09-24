@@ -1,5 +1,6 @@
 """Typed public seam for the admitted Raw Signal Occurrence Truth owner."""
 
+from array import array
 from collections.abc import Callable, Iterator, Mapping, Sequence
 from copy import deepcopy
 from dataclasses import dataclass, field
@@ -195,6 +196,16 @@ def _native_values_exactly_equal(left: object, right: object) -> bool:
         return _native_float_exactly_equal(
             left.real, right.real
         ) and _native_float_exactly_equal(left.imag, right.imag)
+    if isinstance(left, array):
+        assert isinstance(right, array)
+        return left.typecode == right.typecode and left.tobytes() == right.tobytes()
+    if isinstance(left, range):
+        assert isinstance(right, range)
+        return (
+            left.start == right.start
+            and left.stop == right.stop
+            and left.step == right.step
+        )
     if isinstance(left, Mapping):
         assert isinstance(right, Mapping)
         left_mapping = cast(Mapping[object, object], left)
