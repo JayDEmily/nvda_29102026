@@ -1,11 +1,15 @@
 {
   "review_cycle": "WORKER_VI12R_U04_1790241325",
   "actor": "WORKER",
-  "status": "PENDING",
+  "status": "COMPLETE",
   "predecessor_review_commit": "dc40971d24ee773ee133d07622f92d709a7cec11",
   "accepted_u03_candidate": "45ca4b8dcca6fdb5001e1754fd81bdba37ce05bf",
-  "u03_promotion": "PENDING",
-  "u04_candidate": null,
-  "disposition": null,
-  "next_cycle": null
+  "u03_promotion": "63bbeee9cec14f38ed6da6260095ccf0d8e8e6ec",
+  "u03_promotion_tree": "ecf42b1a7fc0d9d1e55444844142149612caeba2",
+  "u04_candidate": "e7eb44119bdf7fb22abacae8291788619792c96a",
+  "u04_candidate_tree": "ea104900fcaf8e2db4177df3909956f464d6a918",
+  "disposition": "READY_FOR_FRESH_REVIEWER_031",
+  "next_cycle": "TESTER_VI13R_U04_R031_1790245281",
+  "u04_acceptance": "NOT_CLAIMED_PENDING_INDEPENDENT_REVIEW",
+  "u05_authority": "PROHIBITED_PENDING_U04_REVIEW_AND_PROMOTION"
 }

@@ -1,1 +1,72 @@
-PENDING
+Worker U04 receipt-evidence / append-only-assessment command record
+
+GOVERNANCE / ROUTING
+- read README.md, GUARDRAILS.md, AGENTS.md, tests/AGENTS.override.md and complete current EXEC_PLAN.md
+- read CURRENT_STATE.md and active Worker REQUEST.md
+- read accepted U03 NativeValueV1 authority/static clarification and Reviewer-030 PASS evidence
+- read accepted IRB BC-007/008/009/010, IWO-U04 and existing U04 product proof
+- verified route to promote accepted U03 first, then IWO-U04 only; U05 prohibited
+
+SOURCE RECEIPT
+- sha256sum NVDA_G03_TESTER_VI13R_U03_R030_PASS_U04_HANDOFF_FULL_GIT_20260924.tar(1).gz
+  -> 3ee46b932bb45528eb1732abd97914534399e0fedc5f1ed211cee62b735d6d50
+
+U03 PROMOTION PREREQUISITE
+- git checkout main
+- git merge --ff-only tester/vi13r-u03-r030
+- resulting main: 63bbeee9cec14f38ed6da6260095ccf0d8e8e6ec
+- resulting main tree: ecf42b1a7fc0d9d1e55444844142149612caeba2
+- git merge-base --is-ancestor 45ca4b8dcca6fdb5001e1754fd81bdba37ce05bf main -> success
+- git merge-base --is-ancestor c4caa78a2d13c5dc115c83fedcdf44648efe6d78 main -> success
+- git merge-base --is-ancestor dc40971d24ee773ee133d07622f92d709a7cec11 main -> success
+- git diff --quiet / git diff --cached --quiet -> clean
+- git fsck --full --strict -> exit 0, five dangling-blob diagnostics
+- git switch -c work/vi12r-u04-receipt-assessment
+
+IMPLEMENTATION
+- changed only src/nvda_desk/raw_signal_occurrence_truth/api.py
+- implemented capture-local receipt-evidence relation derivation using exact stored observation,
+  exact capture effective policy, [start,end) receipt timing and injected eligibility authority
+- implemented append-only capture receipt-presence assessments with M00-owned outcome derivation,
+  same-ID idempotency/conflict detection and immediate-predecessor supersession
+- implemented assessment read/list state
+- optional technical persistence port receives already-decided assessments only
+- U05 reconcile remains unimplemented; no PostgreSQL/restart/provider-mapping semantics added
+
+FROZEN CANDIDATE
+- commit e7eb44119bdf7fb22abacae8291788619792c96a
+- tree ea104900fcaf8e2db4177df3909956f464d6a918
+- parent 63bbeee9cec14f38ed6da6260095ccf0d8e8e6ec
+- changed path: src/nvda_desk/raw_signal_occurrence_truth/api.py
+- candidate diff SHA-256: 6f0bb829cc752636958293068e2e0a4bbf4309ea7295b896edb98db255497e33
+
+EXACT TOOLCHAIN
+- Python 3.13.5
+- pytest 9.0.3
+- mypy 1.20.1 (compiled)
+- Ruff 0.15.11
+- restored offline from preserved vendor wheels in
+  NVDA_IMPLEMENTATION_ADMISSION_PM_HANDOVER_FULL_GIT_20260913.tar(1).gz
+
+COMMITTED-CANDIDATE VALIDATION
+- python -m pytest -q tests/product/raw_signal/test_u04_receipt_assessment.py -> 29 passed
+- python -m pytest -q U01 U02 U03 U04 files -> 413 passed
+- python -m mypy src -> success, 15 source files
+- python -m mypy --strict --disallow-any-expr src/nvda_desk/raw_signal_occurrence_truth/api.py -> success
+- ruff check src tests tools -> pass
+- python tools/validate_product_proof.py -> PASS, six families, 13/13 obligations
+- python tools/validate_architecture.py -> PASS, zero dependency/public-seam violations
+- python tools/check_dependencies.py -> PASS
+- python tools/check_public_seams.py -> PASS
+- python -m pytest -q tests/architecture tests/bootstrap -> 74 passed
+- python tools/run_promotion_gate.py --set architecture_kernel -> 74 passed
+- git diff HEAD^ HEAD --check -> pass
+- git fsck --full --strict -> exit 0; five dangling blobs reported
+- git status --porcelain=v1 -> clean
+
+DEVELOPMENT-ONLY OBSERVATIONS
+- available extracted environment initially had pytest 9.0.2 and no Ruff/mypy
+- network pip retrieval failed due unavailable name resolution
+- exact pinned tools were then restored successfully from preserved project wheel evidence
+- a pre-commit architecture promotion-gate attempt rejected the dirty worktree as designed;
+  the committed clean candidate passes 74/74
