@@ -1,0 +1,2 @@
+PENDING_RECEIVER_READBACK
+The receiving Worker must record the SHA-256 and exact filename of the TAR actually received.
