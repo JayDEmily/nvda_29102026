@@ -271,6 +271,8 @@ The reviewer must not route another witness-specific patch when the preserved li
 
 If current authority cannot define the class-level proposition or lawful closure boundary, return `BLOCKED` on the exact authority gap instead of sending an open-ended repair task to the Worker. This control is a feedback mechanism only: it does not impose a maximum iteration count, a test/code ratio, a mandatory redesign threshold or speculative root-cause work for isolated defects.
 
+Reviewer independence also applies to semantic fixture composition. Where the proposition under review depends materially on sequencing, optional operations, absence/omission or state transition, the reviewer must perform at least one authority-derived direct public-seam challenge that does not rely exclusively on a Worker convenience helper or fixture which bundles multiple semantic operations. The purpose is to prevent a fixture from silently supplying an optional prerequisite or collapsing distinct commands/states. This requirement is bounded: it does not require wholesale fixture duplication, a parallel test suite, or speculative case generation; use it only where helper composition could mask the governed distinction, and record the direct sequence when it affects disposition.
+
 ## 7. Historical Stage-6 evidence
 
 Historical Stage-6 is challenge evidence only, not current authority. Its useful proof-before-code, proof-adequacy-review, risk-adaptive-unit, cross-unit-closure and final-review patterns are adopted only because they are consistent with current BICP/N15/N19/kernel law.

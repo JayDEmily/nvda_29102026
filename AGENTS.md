@@ -43,6 +43,12 @@ Classify the finding before handoff:
 
 After a second successive materially related failure in one semantic unit, this recurrence classification is mandatory. If the relevant authority cannot define class-level closure, the reviewer returns `BLOCKED` on the authority gap rather than delegating an impossible or open-ended patch sequence to another Worker. The reviewer may state the required proposition and evidence, but should not prescribe a specific code patch unless authority itself requires that implementation.
 
+### Reviewer fixture-independence rule
+
+Fresh review must also be independent of Worker convenience composition where that composition can hide the semantic distinction under review. When a proposition materially depends on command ordering, optional operations, absence, omission, or a state transition, the reviewer must exercise at least one authority-derived sequence through the declared public seam without relying exclusively on a Worker helper/fixture that bundles multiple semantic operations.
+
+This is a bounded adversarial-review heuristic, not a requirement to duplicate the Worker test suite or proliferate speculative tests. Reuse Worker fixtures where they faithfully isolate the proposition; bypass or decompose them only where their composition could pre-satisfy, mask, or collapse the condition being reviewed. Record the direct sequence and observed result when it bears on disposition.
+
 ## Planning
 
 There is no separate normative `PLANS.md` role in the target governance model.

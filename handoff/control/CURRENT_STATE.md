@@ -72,7 +72,7 @@
 - **Completed VI-09 Worker handoff:** `implementation/handoff/WORKER_002_VI09_PRODUCT_PROOF_CONTROL.md`
 - **Completed VI-10 Worker handoff:** `implementation/handoff/WORKER_003_VI10_ADVERSARIAL_PRODUCT_PROOF.md`
 - **PM inline VI-08/09/10 attempts:** `DO_NOT_CARRY_FORWARD`
-- **Current authority note:** Tester recurrence synthesis remains mandatory under ExecPlan section 6.11. U03 is lawfully promoted on forward `main` `63bbeee9cec14f38ed6da6260095ccf0d8e8e6ec`. Reviewer 031 rejected U04 candidate `e7eb44119bdf7fb22abacae8291788619792c96a` on isolated finding `R031-U04-F001`; Worker repair candidate `dc3b448191a2b2d3528ffb576b1ebc2c56839991` is frozen but not accepted. U04 semantics remain governed by accepted IRB BC-007/BC-008/BC-009/BC-010 and IWO-U04. U05 and later remain prohibited.
+- **Current authority note:** Tester recurrence synthesis and bounded fixture-independence review remain mandatory under ExecPlan section 6.11. U03 is lawfully promoted on forward `main` `63bbeee9cec14f38ed6da6260095ccf0d8e8e6ec`. Reviewer 031 rejected U04 candidate `e7eb44119bdf7fb22abacae8291788619792c96a` on isolated finding `R031-U04-F001`; Worker repair candidate `dc3b448191a2b2d3528ffb576b1ebc2c56839991` is frozen but not accepted. U04 semantics remain governed by accepted IRB BC-007/BC-008/BC-009/BC-010 and IWO-U04. U05 and later remain prohibited.
 - **Next lawful action:** Tester executes `handoff/review_cycles/TESTER_VI13R_U04_R032_1790251908/REQUEST.md` against exact repaired candidate `dc3b448191a2b2d3528ffb576b1ebc2c56839991`; do not begin U05.
 
 - **VI-11R2 Tester Iteration 005:** `FAIL / RETURN_TO_WORKER` — 11 proof findings (`T005-F001..F011`), 4 Critical / 7 Important; reviewed wrapper `c164fac...`, physical proof `56ea445d...`.
