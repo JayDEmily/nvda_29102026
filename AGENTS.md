@@ -32,6 +32,17 @@ Current or historical programme claims must be established from evidence before 
 - Do not reject or correct a broader user recollection using only evidence about a narrower subset; establish the scope relationship first.
 - Historical/forensic material may be inspected when authorised, but it remains evidence rather than active authority unless explicitly admitted.
 
+### Reviewer lineage and recurrence rule
+
+A fresh reviewer is independent in judgement, not historically blind. Before routing any `FAIL / RETURN_TO_WORKER`, inspect the relevant Git lineage for the current semantic unit far enough to identify prior reviewer findings and the Worker repairs that answered them. Do not use a fixed commit count; follow the semantic lineage needed to decide whether the new failure is isolated or another manifestation of the same mechanism.
+
+Classify the finding before handoff:
+
+- `ISOLATED` — materially new mechanism; route the bounded defect normally.
+- `RECURRENT_CLASS` — materially related to prior failures/repairs in the same semantic unit; identify the common mechanism/invariant and route the class-level proposition that must become true, not merely the newest witness.
+
+After a second successive materially related failure in one semantic unit, this recurrence classification is mandatory. If the relevant authority cannot define class-level closure, the reviewer returns `BLOCKED` on the authority gap rather than delegating an impossible or open-ended patch sequence to another Worker. The reviewer may state the required proposition and evidence, but should not prescribe a specific code patch unless authority itself requires that implementation.
+
 ## Planning
 
 There is no separate normative `PLANS.md` role in the target governance model.

@@ -250,6 +250,27 @@ Immediately before durable allocation/registry mutation, re-resolve candidate id
 
 A still-valid accepted test/proof family cannot be weakened, skipped, redirected or semantically narrowed merely to obtain green.
 
+### 6.11 Lineage-aware reviewer recurrence control
+
+Fresh VI-11/VI-13R reviewers remain independent in judgement, but independence does not mean ignoring the preserved repair history. Before any `FAIL / RETURN_TO_WORKER`, the reviewer must inspect the relevant semantic-unit lineage far enough to understand prior reviewer findings and the corresponding Worker repairs. The history window is semantic, not a fixed number of commits.
+
+The reviewer classifies the new finding as exactly one of:
+
+1. `ISOLATED` — the defect arises from a materially new mechanism and normal bounded repair remains appropriate; or
+2. `RECURRENT_CLASS` — the defect is another manifestation of a mechanism, abstraction, contract boundary or authority gap already implicated by prior failures/repairs in the same semantic unit.
+
+After the second successive materially related failure within one semantic unit, the reviewer must perform this recurrence classification explicitly before routing another repair. For `RECURRENT_CLASS`, the handoff must identify:
+
+- the observed current defect;
+- the relevant prior finding/repair lineage;
+- the common mechanism or invariant implicated by that lineage;
+- the class-level proposition that the next candidate must establish; and
+- the evidence by which a fresh reviewer can challenge that proposition.
+
+The reviewer must not route another witness-specific patch when the preserved lineage already demonstrates a recurrent class. The Worker retains technical implementation freedom and is responsible for constructing the smallest complete repair that satisfies the routed proposition; the reviewer should not dictate code shape unless higher authority requires it.
+
+If current authority cannot define the class-level proposition or lawful closure boundary, return `BLOCKED` on the exact authority gap instead of sending an open-ended repair task to the Worker. This control is a feedback mechanism only: it does not impose a maximum iteration count, a test/code ratio, a mandatory redesign threshold or speculative root-cause work for isolated defects.
+
 ## 7. Historical Stage-6 evidence
 
 Historical Stage-6 is challenge evidence only, not current authority. Its useful proof-before-code, proof-adequacy-review, risk-adaptive-unit, cross-unit-closure and final-review patterns are adopted only because they are consistent with current BICP/N15/N19/kernel law.
@@ -467,8 +488,17 @@ A terminal PASS requires evidence that:
 - [!] 2026-09-24 — VI-13R Reviewer 029 returned `FAIL / RETURN_TO_WORKER` on exact candidate `d25aedeed5de65d0a241bdce6eae22671ef2ddf8` / tree `21eb6bd2ba53b29ea6d80f90c01af40668f56955`. `R028-U03-F001` is CLOSED: focused array/range regressions 2/2 and complete U03 proof 47/47 pass. New `R029-U03-F001` proves same-ID native `datetime` content still collapses under ordinary instant equality: `2026-09-20T12:00:00+00:00` -> `2026-09-20T13:00:00+01:00` is accepted despite changed provider-native representation. U03 remains unaccepted and U04 prohibited pending bounded U03 repair and fresh re-review. See `implementation/proof/VI13R_U03_REVIEWER_029_DISPOSITION.md`.
 - [!] 2026-09-24 — `R029-U03-F001` is routed to bounded Worker cycle `WORKER_VI12R_U03_R029_REPAIR_1790219280`. Authorised work is only representation-sensitive native `datetime` retry comparison plus minimal U03 regression proof, preserving every previously closed comparator behaviour and existing non-native equality semantics. U04 remains prohibited.
 - [!] 2026-09-24 — Programme Owner root-cause correction supersedes the witness-only portion of that pending Worker request before execution. Reviewer-025..029 are now treated as repeated manifestations of one U03 native-retry exact-content comparison class. The Worker must first establish whether current authority plus the realised `Mapping[str, object]` admission surface yields a closed native-value domain. Only a class-level repair may route to Reviewer 030; otherwise the Worker must stop `BLOCKED — U03 NATIVE VALUE DOMAIN / EXACT-CONTENT AUTHORITY GAP` and identify the minimum authority decision required. U04 remains prohibited. See `implementation/authority/VI13R_U03_NATIVE_RETRY_ROOT_CAUSE_DIRECTION.md`.
+- [!] 2026-09-24 — Programme Owner review-process correction now assigns recurrence detection to the Tester before another `FAIL / RETURN_TO_WORKER` handoff. The externally reported Worker blocker at `85738686...` is not incorporated or Git-verified in this ancestry, but the underlying `Mapping[str, object]` exact-content gap was independently reproduced through the public U03 seam with custom same-type values whose equality semantics respectively collapse changed state and reject reconstructed equivalent state. U03 is therefore authority-blocked; no replacement Worker/Reviewer cycle is authorised until the native-value model/exact-content decision is closed. See `implementation/authority/VI13R_REVIEW_LINEAGE_AND_U03_BLOCKER_CORRECTION.md`.
 
 ## 13. Discoveries / decisions
+
+### DEC-VI13R-REVIEW-001 — Fresh review is lineage-aware before routing another repair
+
+Programme Owner direction on 2026-09-24 adds the section-6.11 reviewer feedback control. The U03 Reviewer-025..029 sequence demonstrated that independent reviewers can each be locally correct while still routing a globally inefficient witness-by-witness repair sequence when the preserved Git lineage is not synthesised before handoff.
+
+A fresh reviewer therefore remains independent on the candidate under review but must inspect the relevant semantic-unit finding/repair lineage before any `FAIL / RETURN_TO_WORKER`. Once materially related failures recur, the reviewer must classify the recurrence and route the common proposition rather than merely the newest witness. If authority cannot define lawful class-level closure, the reviewer stops `BLOCKED` instead of delegating the authority problem to another Worker.
+
+This is intentionally not an iteration-count or redesign rule. The history window follows the semantic unit rather than a fixed number of commits, and isolated defects continue to use the existing bounded repair/re-review loop.
 
 ### DEC-VI13R-U03-001 — Replace witness-by-witness native equality repair with class-level closure
 

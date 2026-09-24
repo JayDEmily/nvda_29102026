@@ -1,5 +1,7 @@
 # Review-cycle request
 
+**Status:** `SUPERSEDED / DO NOT EXECUTE` — Programme Owner correction moved the project to an explicit authority-blocked state. Preserve this request as the historical routed Worker brief; it is no longer an active execution instruction.
+
 ## Cycle identity
 
 - **Cycle:** `WORKER_VI12R_U03_R029_REPAIR_1790219280`
