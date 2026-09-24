@@ -1,2 +1,3 @@
-PENDING_RECEIVER_READBACK
-The receiving Worker must record the SHA-256 and exact filename of the TAR actually received.
+5b730936a1a6588d0f023398c55ad2b27e6728bc752a96e28eb0e007f0b2a457  NVDA_G03_U03_NATIVE_DOMAIN_WORKER_HANDOFF_FULL_GIT_20260924.tar(1).gz
+
+Receiver readback performed before mutation.

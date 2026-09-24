@@ -1,1 +1,65 @@
-PENDING
+Worker U03 native-domain closure command record
+
+GOVERNANCE / ROUTING
+- read README.md, GUARDRAILS.md, AGENTS.md, tests/AGENTS.override.md and complete current EXEC_PLAN.md
+- read CURRENT_STATE.md and active Worker REQUEST.md
+- read current Programme Owner U03 NativeValueV1 authority in full
+- read accepted IRB BC-005/006/009/010/012, IWO-U03, current source/proof, and Reviewer 025-029 lineage/dispositions
+- verified route to WORKER VI-12R U03 class-level NativeValueV1 closure only; U04 prohibited
+
+SOURCE RECEIPT
+- sha256sum /mnt/data/NVDA_G03_U03_NATIVE_DOMAIN_WORKER_HANDOFF_FULL_GIT_20260924.tar(1).gz
+  -> 5b730936a1a6588d0f023398c55ad2b27e6728bc752a96e28eb0e007f0b2a457
+
+IMPLEMENTATION
+- created work/vi12r-u03-native-domain-closure
+- public recursive NativeValueV1 alias added and exported
+- RawObservationOccurrenceV1.native_record narrowed to Mapping[str, NativeValueV1]
+- recursive runtime validation/snapshot added with exact scalar/container admission and cycle rejection
+- Mapping implementations canonicalised to logical string-key/value dictionaries
+- alias-safe recursive readback retained
+- native exactness made total over NativeValueV1: mapping recursion, exact type branch,
+  IEEE-754 float bytes, Decimal.as_tuple(), recursive list/tuple, no arbitrary equality fallback
+- prior outside-carrier Reviewer witnesses reclassified to unsupported fail-closed proof
+- custom explosive __eq__ and static type-seam negative proof added
+- no U04 or later semantic work performed
+
+FROZEN CANDIDATE
+- commit 45ca4b8dcca6fdb5001e1754fd81bdba37ce05bf
+- tree 81ef8edc93c9b322b29cdec6b9ab76b731d8e9a5
+- changed paths:
+  src/nvda_desk/raw_signal_occurrence_truth/api.py
+  tests/product/raw_signal/_support.py
+  tests/product/raw_signal/test_u03_observation_native_temporal.py
+  tests/product/raw_signal/typecheck/native_value_negative.py
+  tests/product/raw_signal/typecheck/public_seam_positive.py
+- five-path candidate diff SHA-256:
+  33bebefa1d8e8028f03f32c29c63fef62290cc17c052b7f87764126d0d06f798
+
+EXACT TOOLCHAIN
+- Python 3.13.5
+- pytest 9.0.3
+- mypy 1.20.1 (compiled)
+- Ruff 0.15.11
+
+COMMITTED-CANDIDATE VALIDATION
+- pytest -q tests/product/raw_signal/test_u03_observation_native_temporal.py -> 56 passed
+- pytest -q U01 U02 U03 files -> 384 passed
+- python -m mypy src -> success, 15 source files
+- python -m mypy --strict --disallow-any-expr modified api.py -> success
+- ruff check src tests tools -> pass
+- validate_product_proof.py -> PASS, six families, 13/13 obligations
+- validate_architecture.py -> PASS, zero dependency/public-seam violations
+- check_dependencies.py -> PASS
+- check_public_seams.py -> PASS
+- pytest -q tests/architecture tests/bootstrap -> 74 passed
+- run_promotion_gate.py --set architecture_kernel -> 74 passed
+- git diff HEAD^ HEAD --check -> pass
+- git fsck --full --strict -> exit 0; dangling blob 895775b2d27b6006f3f245b6742d5d021fed089b reported
+- git status --porcelain=v1 -> clean
+
+DEVELOPMENT-ONLY OBSERVATIONS (NOT CANDIDATE EVIDENCE)
+- first exact-tool run stopped at two new proof-file Ruff issues; both fixed before freeze
+- over-broad strict/disallow-any-expr run against all src reported pre-existing architecture Any use;
+  repository-required source mypy and strict modified-API checks pass on the candidate
+- pre-commit promotion gate rejected the dirty worktree as designed; committed clean candidate passes

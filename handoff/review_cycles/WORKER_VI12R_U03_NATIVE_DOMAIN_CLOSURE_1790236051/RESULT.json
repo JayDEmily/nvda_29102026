@@ -1,8 +1,15 @@
 {
-  "cycle": "WORKER_VI12R_U03_NATIVE_DOMAIN_CLOSURE_1790236051",
-  "status": "PENDING",
-  "candidate_commit": null,
-  "candidate_tree": null,
-  "disposition": null,
-  "next_cycle": null
+  "review_cycle": "WORKER_VI12R_U03_NATIVE_DOMAIN_CLOSURE_1790236051",
+  "actor": "WORKER",
+  "authority_resolution_parent": "65716819fd24cc7d5941cace83e5883d8e0e76f9",
+  "rejected_candidate_commit": "d25aedeed5de65d0a241bdce6eae22671ef2ddf8",
+  "rejected_candidate_tree": "21eb6bd2ba53b29ea6d80f90c01af40668f56955",
+  "reviewer_029_disposition_commit": "9b2ff603517c7fa5e063a4ad08790bb9fddd28c3",
+  "status": "COMPLETE",
+  "candidate_commit": "45ca4b8dcca6fdb5001e1754fd81bdba37ce05bf",
+  "candidate_tree": "81ef8edc93c9b322b29cdec6b9ab76b731d8e9a5",
+  "disposition": "READY_FOR_FRESH_REVIEWER_030",
+  "next_cycle": "TESTER_VI13R_U03_R030_1790239551",
+  "u03_acceptance": "NOT_CLAIMED_PENDING_INDEPENDENT_REVIEW",
+  "u04_authority": "PROHIBITED_PENDING_U03_REVIEW_AND_PROMOTION"
 }

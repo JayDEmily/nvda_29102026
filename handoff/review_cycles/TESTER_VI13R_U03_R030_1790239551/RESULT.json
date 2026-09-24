@@ -1,0 +1,9 @@
+{
+  "review_cycle": "TESTER_VI13R_U03_R030_1790239551",
+  "actor": "TESTER",
+  "status": "PENDING",
+  "candidate_commit": "45ca4b8dcca6fdb5001e1754fd81bdba37ce05bf",
+  "candidate_tree": "81ef8edc93c9b322b29cdec6b9ab76b731d8e9a5",
+  "disposition": null,
+  "next_cycle": null
+}
