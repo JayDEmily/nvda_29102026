@@ -817,3 +817,15 @@ optional relation command was not first invoked; missing eligibility authority i
 zero. The finding is `ISOLATED` under section 6.11 because this is U04's first VI-13R rejection/repair
 cycle. U04 is not promotable and U05 remains prohibited pending bounded repair and fresh re-review.
 See `implementation/proof/VI13R_U04_REVIEWER_031_DISPOSITION.md`.
+
+### 2026-09-24 — Reviewer 031 bounded U04 repair routed
+
+Reviewer 031 disposition commit `6c33e51ab436b8f19dd1799ddf60cc0b3d87ebaa` routes one bounded
+Worker repair cycle `WORKER_VI12R_U04_R031_REPAIR_1790248980` for `R031-U04-F001`. The repair
+objective is mechanism-level: assessment presence must derive from capture-local eligible committed
+observation evidence visible to the assessment transaction independently of optional receipt-relation
+materialisation; unresolved eligibility must fail closed; and receipt time must not substitute for
+system-knowledge / transaction visibility. The finding remains `ISOLATED` because this is the first
+U04 failure/repair lineage. U05 remains prohibited. If current authority cannot supply the required
+system-knowledge/commit distinction without new law, the Worker must return `BLOCKED` rather than
+inventing a clock or another semantic proxy.

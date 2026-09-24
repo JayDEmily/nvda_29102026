@@ -1,0 +1,14 @@
+{
+  "review_cycle": "WORKER_VI12R_U04_R031_REPAIR_1790248980",
+  "actor": "WORKER",
+  "predecessor_review_cycle": "TESTER_VI13R_U04_R031_1790245281",
+  "reviewer_disposition_commit": "6c33e51ab436b8f19dd1799ddf60cc0b3d87ebaa",
+  "rejected_candidate_commit": "e7eb44119bdf7fb22abacae8291788619792c96a",
+  "rejected_candidate_tree": "ea104900fcaf8e2db4177df3909956f464d6a918",
+  "status": "PENDING",
+  "repair_targets": ["R031-U04-F001"],
+  "recurrence_classification": "ISOLATED",
+  "u04_promotion": "PROHIBITED_PENDING_REPAIR_AND_FRESH_REVIEW",
+  "u05_authority": "PROHIBITED",
+  "next_authorised_step": "WORKER executes the bounded U04 mechanism-level repair in REQUEST.md; do not begin U05."
+}

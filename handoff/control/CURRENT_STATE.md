@@ -5,7 +5,7 @@
 - **Previous Gate:** `G02 — Existing Implementation Admission Handoff Adoption` — `ACCEPTED`
 - **G02 acceptance record:** `control/GATE_02_ACCEPTANCE.md`
 - **Current Gate:** `G03 — Verified Bounded Implementation`
-- **Gate state:** `ACTIVE — U03 REVIEWER 030 PASS / WORKER U03 PROMOTION THEN U04 ROUTED`
+- **Gate state:** `ACTIVE — U04 REVIEWER 031 FAIL / BOUNDED WORKER REPAIR ROUTED`
 - **Gate contract:** `control/GATE_03_VERIFIED_BOUNDED_IMPLEMENTATION.md`, revision `G03-R1`
 - **Execution binding:** `control/GATE_03_BINDING.md` (`G03-BIND-001`)
 - **Leaf map:** `control/GATE_03_LEAF_MAP.md`
@@ -62,15 +62,16 @@
 - **VI-13R Reviewer 030 U03 result:** `PASS` at review commit `dc40971d24ee773ee133d07622f92d709a7cec11`; authority-representation clarification is `c4caa78a2d13c5dc115c83fedcdf44648efe6d78`. The Reviewer-025..029 recurrent equality class is closed for the authorised finite NativeValueV1 carrier. Independent executable axes are 381/381 after deselecting only three mypy-invoking tests because this Tester sandbox lacks mypy; static alias structure, class-level runtime challenge and product/architecture/dependency/public-seam controls pass. Worker-pinned 384/384 and mypy/Ruff evidence remains separately attributable. U03 is accepted for lawful promotion; U04 is authorised only after promotion. See `implementation/proof/VI13R_U03_REVIEWER_030_DISPOSITION.md`.
 - **U03 lawful forward promotion:** completed by preserved-ancestry fast-forward; forward `main` is `63bbeee9cec14f38ed6da6260095ccf0d8e8e6ec` / tree `ecf42b1a7fc0d9d1e55444844142149612caeba2`, with accepted candidate `45ca4b8d...`, clarification `c4caa78...` and Reviewer-030 PASS `dc40971...` all verified ancestors before U04 began.
 - **VI-12R U04 candidate:** `e7eb44119bdf7fb22abacae8291788619792c96a` / tree `ea104900fcaf8e2db4177df3909956f464d6a918` on `work/vi12r-u04-receipt-assessment`; candidate changes only `src/nvda_desk/raw_signal_occurrence_truth/api.py` and implements receipt-evidence relation plus append-only assessment state. Exact pinned Worker validation is U04 29/29, U01-U04 413/413, source/strict-API mypy and Ruff green, product/architecture/dependency/public-seam controls green, architecture promotion 74/74 and clean candidate state. Fresh Reviewer 031 is required; U04 is not yet accepted. See `implementation/proof/VI12R_U04_RECEIPT_ASSESSMENT_EVIDENCE.md`.
-- **Current Leaf:** `G03 / VI-13R — fresh independent review of IWO-U04 receipt evidence and append-only assessment state`
-- **Current actor:** `TESTER` — independently review exact U04 candidate only; U05 remains prohibited pending U04 PASS and lawful promotion
-- **Active review cycle:** `TESTER_VI13R_U04_R031_1790245281`
-- **Last completed cycle:** `handoff/review_cycles/WORKER_VI12R_U04_1790241325/` — Worker U04 candidate frozen and routed for fresh review
+- **VI-13R Reviewer 031 U04 result:** `FAIL / RETURN_TO_WORKER` at review commit `6c33e51ab436b8f19dd1799ddf60cc0b3d87ebaa` — `R031-U04-F001` proves assessment evidence visibility incorrectly depends on optional receipt-relation materialisation and uses observation receipt time as a system-knowledge/commit-visibility proxy. The finding is `ISOLATED`, U04 is not promotable, and U05 remains prohibited pending one bounded mechanism-level U04 repair and fresh independent review. See `implementation/proof/VI13R_U04_REVIEWER_031_DISPOSITION.md`.
+- **Current Leaf:** `G03 / VI-12R — bounded U04 Reviewer-031 repair`
+- **Current actor:** `WORKER` — repair only `R031-U04-F001`; U05 remains prohibited
+- **Active review cycle:** `WORKER_VI12R_U04_R031_REPAIR_1790248980`
+- **Last completed cycle:** `handoff/review_cycles/TESTER_VI13R_U04_R031_1790245281/` — Reviewer 031 returned `FAIL / RETURN_TO_WORKER` on exact U04 candidate
 - **Role-consistency rule:** when `Current actor` is `PROGRAMME_OWNER` / state is explicitly blocked, no Worker/Tester cycle is active; otherwise actor, active-cycle prefix and request must agree or execution stops `BLOCKED`
 - **Completed VI-09 Worker handoff:** `implementation/handoff/WORKER_002_VI09_PRODUCT_PROOF_CONTROL.md`
 - **Completed VI-10 Worker handoff:** `implementation/handoff/WORKER_003_VI10_ADVERSARIAL_PRODUCT_PROOF.md`
 - **PM inline VI-08/09/10 attempts:** `DO_NOT_CARRY_FORWARD`
-- **Current authority note:** Tester recurrence synthesis remains mandatory under ExecPlan section 6.11. U03 is lawfully promoted on forward `main` `63bbeee9cec14f38ed6da6260095ccf0d8e8e6ec`. Exact U04 candidate `e7eb44119bdf7fb22abacae8291788619792c96a` remains Worker evidence only pending fresh VI-13R review. U04 semantics remain governed by accepted IRB BC-007/BC-008/BC-009/BC-010 and IWO-U04; U05 and later remain prohibited.
-- **Next lawful action:** Tester executes `handoff/review_cycles/TESTER_VI13R_U04_R031_1790245281/REQUEST.md` against exact U04 candidate `e7eb44119bdf7fb22abacae8291788619792c96a` / tree `ea104900fcaf8e2db4177df3909956f464d6a918` and returns `PASS`, `FAIL / RETURN_TO_WORKER`, or `BLOCKED`. Do not begin U05.
+- **Current authority note:** Tester recurrence synthesis remains mandatory under ExecPlan section 6.11. U03 is lawfully promoted on forward `main` `63bbeee9cec14f38ed6da6260095ccf0d8e8e6ec`. Reviewer 031 rejected exact U04 candidate `e7eb44119bdf7fb22abacae8291788619792c96a` on `R031-U04-F001`; the first U04 finding is classified `ISOLATED`. U04 semantics remain governed by accepted IRB BC-007/BC-008/BC-009/BC-010 and IWO-U04. U05 and later remain prohibited.
+- **Next lawful action:** Worker executes `handoff/review_cycles/WORKER_VI12R_U04_R031_REPAIR_1790248980/REQUEST.md`, producing either one bounded mechanism-level U04 repair candidate for fresh review or an exact `BLOCKED` authority gap. Do not begin U05.
 
 - **VI-11R2 Tester Iteration 005:** `FAIL / RETURN_TO_WORKER` — 11 proof findings (`T005-F001..F011`), 4 Critical / 7 Important; reviewed wrapper `c164fac...`, physical proof `56ea445d...`.
