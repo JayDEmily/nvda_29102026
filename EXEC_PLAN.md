@@ -466,8 +466,31 @@ A terminal PASS requires evidence that:
 - [!] 2026-09-24 — bounded Reviewer-028 U03 repair is frozen at `d25aedeed5de65d0a241bdce6eae22671ef2ddf8` / tree `21eb6bd2ba53b29ea6d80f90c01af40668f56955` on `work/vi12r-u03-r028-repair`. Native retry comparison now preserves `array.array` typecode plus raw element bytes and exact `range` start/stop/step representation, closing the two concrete Reviewer-028 ordinary-equality collapses without changing admission or non-native retry semantics. Exact pinned Worker validation records Reviewer-028 regressions 2/2, U01+U02+U03 375/375, source mypy/Ruff/product/architecture/dependency/public-seam green and architecture promotion 74/74. Fresh Reviewer 029 is required; U04 remains prohibited pending PASS and lawful U03 promotion. See `implementation/proof/VI12R_U03_REVIEWER028_REPAIR_EVIDENCE.md`.
 - [!] 2026-09-24 — VI-13R Reviewer 029 returned `FAIL / RETURN_TO_WORKER` on exact candidate `d25aedeed5de65d0a241bdce6eae22671ef2ddf8` / tree `21eb6bd2ba53b29ea6d80f90c01af40668f56955`. `R028-U03-F001` is CLOSED: focused array/range regressions 2/2 and complete U03 proof 47/47 pass. New `R029-U03-F001` proves same-ID native `datetime` content still collapses under ordinary instant equality: `2026-09-20T12:00:00+00:00` -> `2026-09-20T13:00:00+01:00` is accepted despite changed provider-native representation. U03 remains unaccepted and U04 prohibited pending bounded U03 repair and fresh re-review. See `implementation/proof/VI13R_U03_REVIEWER_029_DISPOSITION.md`.
 - [!] 2026-09-24 — `R029-U03-F001` is routed to bounded Worker cycle `WORKER_VI12R_U03_R029_REPAIR_1790219280`. Authorised work is only representation-sensitive native `datetime` retry comparison plus minimal U03 regression proof, preserving every previously closed comparator behaviour and existing non-native equality semantics. U04 remains prohibited.
+- [!] 2026-09-24 — Programme Owner root-cause correction supersedes the witness-only portion of that pending Worker request before execution. Reviewer-025..029 are now treated as repeated manifestations of one U03 native-retry exact-content comparison class. The Worker must first establish whether current authority plus the realised `Mapping[str, object]` admission surface yields a closed native-value domain. Only a class-level repair may route to Reviewer 030; otherwise the Worker must stop `BLOCKED — U03 NATIVE VALUE DOMAIN / EXACT-CONTENT AUTHORITY GAP` and identify the minimum authority decision required. U04 remains prohibited. See `implementation/authority/VI13R_U03_NATIVE_RETRY_ROOT_CAUSE_DIRECTION.md`.
 
 ## 13. Discoveries / decisions
+
+### DEC-VI13R-U03-001 — Replace witness-by-witness native equality repair with class-level closure
+
+Observed from the realised U03 review sequence: Reviewer 025 through Reviewer 029 each closed the
+preceding concrete native-retry equality witness and then exposed another representation collapse
+through the same broader comparison problem. Continuing to author one type-specific patch and one
+type-specific regression per review no longer constitutes useful bounded convergence.
+
+Programme Owner direction on 2026-09-24 therefore changes only the execution strategy for the
+pending U03 repair. Before further code mutation, the Worker must establish whether current accepted
+authority plus the realised public `native_record` admission surface defines a closed value domain
+with a principled exact-content relation. If it does, the Worker may implement one class-level U03
+repair and route that closure claim to Reviewer 030. If it does not, the Worker must stop on an
+explicit native-value-domain/exact-content authority gap instead of inventing provider validity or
+continuing witness-by-witness patches. A `datetime`-only repair is expressly insufficient for
+routing.
+
+Reviewer 030, if reached, reviews the class-level closure claim: a new failure must show either a
+violation inside the established admitted domain or that the claimed domain closure is false. This
+decision does not change IRB/BICP/IWO meaning, does not narrow or broaden provider validity, does not
+weaken existing proof, and does not authorise U04. See
+`implementation/authority/VI13R_U03_NATIVE_RETRY_ROOT_CAUSE_DIRECTION.md`.
 
 ### DEC-VI11-002 — Bound proof-only hardening after Tester Iteration 014
 

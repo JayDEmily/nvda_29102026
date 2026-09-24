@@ -5,7 +5,18 @@
   "rejected_candidate_commit": "d25aedeed5de65d0a241bdce6eae22671ef2ddf8",
   "rejected_candidate_tree": "21eb6bd2ba53b29ea6d80f90c01af40668f56955",
   "status": "PENDING",
-  "repair_targets": ["R029-U03-F001"],
-  "closed_predecessor_findings": ["R028-U03-F001"],
-  "u04_authority": "PROHIBITED_PENDING_U03_REVIEW_AND_PROMOTION"
+  "repair_targets": [
+    "R029-U03-F001",
+    "REVIEWER_025_TO_029_NATIVE_RETRY_EQUALITY_CLASS"
+  ],
+  "closed_predecessor_findings": [
+    "R028-U03-F001"
+  ],
+  "u04_authority": "PROHIBITED_PENDING_U03_REVIEW_AND_PROMOTION",
+  "programme_owner_direction": "VI13R_U03_NATIVE_RETRY_ROOT_CAUSE_DIRECTION",
+  "repair_mode": "CLASS_LEVEL_ROOT_CAUSE_OR_AUTHORITY_BLOCKER",
+  "allowed_outcomes": [
+    "CLASS_LEVEL_REPAIR_READY_FOR_REVIEW",
+    "BLOCKED_U03_NATIVE_VALUE_DOMAIN_EXACT_CONTENT_AUTHORITY_GAP"
+  ]
 }
