@@ -1,0 +1,13 @@
+{
+  "review_cycle": "TESTER_VI13R_U04_R032_1790251908",
+  "actor": "TESTER",
+  "status": "PENDING",
+  "predecessor_worker_cycle": "WORKER_VI12R_U04_R031_REPAIR_1790248980",
+  "finding_under_repair": "R031-U04-F001",
+  "candidate_commit": "dc3b448191a2b2d3528ffb576b1ebc2c56839991",
+  "candidate_tree": "3c7a42eb215d708a0f8d8db37727133ecc234275",
+  "disposition": null,
+  "u04_promotion": "PROHIBITED_PENDING_REVIEW",
+  "u05_authority": "PROHIBITED",
+  "next_authorised_step": "TESTER independently re-reviews exact repaired U04 candidate and applies ExecPlan 6.11 before any further return-to-worker routing."
+}

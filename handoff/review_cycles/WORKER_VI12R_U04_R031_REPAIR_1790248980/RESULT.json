@@ -5,10 +5,21 @@
   "reviewer_disposition_commit": "6c33e51ab436b8f19dd1799ddf60cc0b3d87ebaa",
   "rejected_candidate_commit": "e7eb44119bdf7fb22abacae8291788619792c96a",
   "rejected_candidate_tree": "ea104900fcaf8e2db4177df3909956f464d6a918",
-  "status": "PENDING",
+  "status": "COMPLETE",
   "repair_targets": ["R031-U04-F001"],
+  "candidate_commit": "dc3b448191a2b2d3528ffb576b1ebc2c56839991",
+  "candidate_tree": "3c7a42eb215d708a0f8d8db37727133ecc234275",
   "recurrence_classification": "ISOLATED",
-  "u04_promotion": "PROHIBITED_PENDING_REPAIR_AND_FRESH_REVIEW",
+  "worker_validation": {
+    "u04": "32 passed",
+    "u01_u04": "416 passed",
+    "architecture_bootstrap": "74 passed",
+    "architecture_promotion": "74 passed",
+    "mypy": "PASS",
+    "ruff": "PASS",
+    "product_architecture_dependency_public_seam": "PASS"
+  },
+  "u04_promotion": "PROHIBITED_PENDING_FRESH_REVIEW",
   "u05_authority": "PROHIBITED",
-  "next_authorised_step": "WORKER executes the bounded U04 mechanism-level repair in REQUEST.md; do not begin U05."
+  "next_authorised_step": "Fresh TESTER_VI13R_U04_R032 independently re-reviews the repaired U04 candidate and applies ExecPlan 6.11 before any further return-to-worker routing."
 }

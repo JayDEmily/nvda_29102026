@@ -829,3 +829,18 @@ system-knowledge / transaction visibility. The finding remains `ISOLATED` becaus
 U04 failure/repair lineage. U05 remains prohibited. If current authority cannot supply the required
 system-knowledge/commit distinction without new law, the Worker must return `BLOCKED` rather than
 inventing a clock or another semantic proxy.
+
+### 2026-09-24 — Reviewer 031 bounded U04 repair candidate frozen
+
+Worker cycle `WORKER_VI12R_U04_R031_REPAIR_1790248980` produced repaired U04 candidate
+`dc3b448191a2b2d3528ffb576b1ebc2c56839991` / tree
+`3c7a42eb215d708a0f8d8db37727133ecc234275`, changing only the U04 owner implementation and bounded
+U04 implementation-coupled proof. Assessment derivation no longer depends on optional materialised
+receipt-relation state and no longer uses observation `received_ts_utc` as a system-knowledge or
+commit-visibility proxy. It derives against capture-local admitted observation state plus the
+accepted effective-policy eligibility authority; missing eligibility authority for in-slot evidence
+fails closed. Same-ID retry preserves the already-appended outcome after later evidence, while a new
+assessment remains subject to immediate-predecessor supersession. Exact pinned Worker validation is
+U04 32/32, U01-U04 416/416, mypy/Ruff and product/architecture/dependency/public-seam controls green,
+and architecture/bootstrap plus clean-state promotion 74/74. These are Worker claims pending fresh
+Reviewer 032; U04 is not accepted or promotable yet and U05 remains prohibited.

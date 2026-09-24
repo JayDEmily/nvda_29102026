@@ -1,1 +1,37 @@
-PENDING — Worker command record not yet supplied.
+Worker Reviewer-031 bounded U04 repair command record
+
+Repository bootstrap / authority:
+- extracted submitted full-Git TAR and inspected README.md, GUARDRAILS.md, AGENTS.md,
+  tests/AGENTS.override.md, complete EXEC_PLAN.md, CURRENT_STATE.md and active repair cycle
+- inspected Reviewer-031 response/evidence/result, IRB BC-007..BC-010, IWO-U04, admitted U04 proof
+  family, physical U04 proof and rejected candidate implementation/diff
+- git switch -c work/vi12r-u04-r031-repair
+
+Repair/proof:
+- modified src/nvda_desk/raw_signal_occurrence_truth/api.py
+- modified tests/product/raw_signal/test_u04_receipt_assessment.py
+- exact pinned U04: 32 passed
+- exact pinned U01+U02+U03+U04: 416 passed
+- mypy src -> success, 15 files
+- mypy --strict --disallow-any-expr src/nvda_desk/raw_signal_occurrence_truth/api.py -> success
+- ruff check src tests tools -> pass
+
+Structural controls:
+- first direct `python tools/validate_product_proof.py` without PYTHONPATH -> stopped with
+  ModuleNotFoundError: nvda_desk; no validator PASS claimed
+- PYTHONPATH=src:. python tools/validate_product_proof.py -> PASS, six families / 13 obligations
+- PYTHONPATH=src:. python tools/validate_architecture.py -> PASS
+- PYTHONPATH=src:. python tools/check_dependencies.py -> PASS
+- PYTHONPATH=src:. python tools/check_public_seams.py -> PASS
+- PYTHONPATH=src:. python -m pytest -q tests/architecture tests/bootstrap -> 74 passed
+
+Freeze / committed-state validation:
+- git diff --check -> pass
+- git commit -m 'fix: derive U04 assessment from admitted evidence'
+- candidate dc3b448191a2b2d3528ffb576b1ebc2c56839991
+- tree 3c7a42eb215d708a0f8d8db37727133ecc234275
+- parent a3564f4908283f9bacf72f3720d020503f124e55
+- PYTHONPATH=src:. python tools/run_promotion_gate.py --set architecture_kernel -> 74 passed
+- git diff HEAD^ HEAD --check -> pass
+- git fsck --full --strict -> exit 0; five non-fatal dangling blobs recorded in EVIDENCE.md
+- candidate worktree -> clean before handoff metadata
