@@ -5,7 +5,7 @@ from dataclasses import dataclass, field
 from datetime import datetime, timedelta
 from decimal import Decimal
 from struct import pack
-from typing import Literal, NoReturn, cast
+from typing import Literal, NoReturn, Protocol, cast
 
 
 @dataclass(frozen=True, slots=True)
@@ -644,6 +644,19 @@ class _OwnerState:
     ingestion_high_water_by_scope: dict[_IngestionSequenceScope, int] = field(
         default_factory=dict
     )
+    relations_by_key: dict[
+        tuple[_ObservationOccurrenceId, _CaptureOccurrenceId, _ScopePolicyRef],
+        CaptureReceiptEvidenceRelationV1,
+    ] = field(default_factory=dict)
+    relations_by_capture: dict[
+        _CaptureOccurrenceId, list[CaptureReceiptEvidenceRelationV1]
+    ] = field(default_factory=dict)
+    assessments_by_identity: dict[
+        _AssessmentOccurrenceId, CaptureReceiptPresenceAssessmentV1
+    ] = field(default_factory=dict)
+    assessment_order_by_capture: dict[
+        _CaptureOccurrenceId, list[_AssessmentOccurrenceId]
+    ] = field(default_factory=dict)
 
 
 def _scope_ref_for_policy(value: CaptureScopePolicyV1) -> _ScopePolicyRef:
@@ -658,20 +671,47 @@ _ReadPolicy = Callable[[_ScopePolicyId, int], CaptureScopePolicyV1 | None]
 _ReadCapture = Callable[[_CaptureOccurrenceId], ScheduledCaptureOccurrenceV1 | None]
 _AdmitObservation = Callable[[RawObservationOccurrenceV1], RawObservationOccurrenceV1]
 _ReadObservation = Callable[[_ObservationOccurrenceId], RawObservationOccurrenceV1 | None]
+_EligibilityResolver = Callable[[RawObservationOccurrenceV1, CaptureScopePolicyV1], bool]
+_DeriveRelation = Callable[
+    [_ObservationOccurrenceId, _CaptureOccurrenceId, _ScopePolicyRef],
+    CaptureReceiptEvidenceRelationV1 | None,
+]
+_AppendAssessment = Callable[
+    [_AssessmentOccurrenceId, _CaptureOccurrenceId, datetime, _AssessmentOccurrenceId | None],
+    CaptureReceiptPresenceAssessmentV1,
+]
+_ReadAssessment = Callable[[_AssessmentOccurrenceId], CaptureReceiptPresenceAssessmentV1 | None]
+_ListAssessments = Callable[[_CaptureOccurrenceId], Sequence[CaptureReceiptPresenceAssessmentV1]]
+
+
+class _AssessmentPersistencePort(Protocol):
+    def append_assessment(
+        self, value: CaptureReceiptPresenceAssessmentV1
+    ) -> CaptureReceiptPresenceAssessmentV1: ...
 
 
 class _CommandsV1:
-    __slots__ = ("__admit_observation", "__realise_capture", "__register_policy")
+    __slots__ = (
+        "__admit_observation",
+        "__append_assessment",
+        "__derive_relation",
+        "__realise_capture",
+        "__register_policy",
+    )
 
     def __init__(
         self,
         register_policy: _RegisterPolicy,
         realise_capture: _RealiseCapture,
         admit_observation: _AdmitObservation,
+        derive_relation: _DeriveRelation,
+        append_assessment: _AppendAssessment,
     ) -> None:
         self.__register_policy = register_policy
         self.__realise_capture = realise_capture
         self.__admit_observation = admit_observation
+        self.__derive_relation = derive_relation
+        self.__append_assessment = append_assessment
 
     def register_capture_scope_policy(self, value: CaptureScopePolicyV1) -> CaptureScopePolicyV1:
         return self.__register_policy(value)
@@ -697,7 +737,9 @@ class _CommandsV1:
         capture_occurrence_ref: _CaptureOccurrenceId,
         scope_policy_ref: _ScopePolicyRef,
     ) -> CaptureReceiptEvidenceRelationV1 | None:
-        _not_implemented("IWO-U04")
+        return self.__derive_relation(
+            observation_occurrence_ref, capture_occurrence_ref, scope_policy_ref
+        )
 
     def append_capture_receipt_presence_assessment(
         self,
@@ -706,7 +748,12 @@ class _CommandsV1:
         evidence_as_of_ts_utc: datetime,
         supersedes_assessment_ref: _AssessmentOccurrenceId | None,
     ) -> CaptureReceiptPresenceAssessmentV1:
-        _not_implemented("IWO-U04")
+        return self.__append_assessment(
+            assessment_occurrence_id,
+            capture_occurrence_ref,
+            evidence_as_of_ts_utc,
+            supersedes_assessment_ref,
+        )
 
     def reconcile_owed_slots(
         self,
@@ -719,17 +766,27 @@ class _CommandsV1:
 
 
 class _ReadsV1:
-    __slots__ = ("__read_capture", "__read_observation", "__read_policy")
+    __slots__ = (
+        "__list_assessments",
+        "__read_assessment",
+        "__read_capture",
+        "__read_observation",
+        "__read_policy",
+    )
 
     def __init__(
         self,
         read_policy: _ReadPolicy,
         read_capture: _ReadCapture,
         read_observation: _ReadObservation,
+        read_assessment: _ReadAssessment,
+        list_assessments: _ListAssessments,
     ) -> None:
         self.__read_policy = read_policy
         self.__read_capture = read_capture
         self.__read_observation = read_observation
+        self.__read_assessment = read_assessment
+        self.__list_assessments = list_assessments
 
     def get_capture_scope_policy(
         self, scope_policy_id: _ScopePolicyId, scope_policy_version: int
@@ -749,15 +806,19 @@ class _ReadsV1:
     def get_receipt_presence_assessment(
         self, assessment_occurrence_id: _AssessmentOccurrenceId
     ) -> CaptureReceiptPresenceAssessmentV1 | None:
-        _not_implemented("IWO-U04")
+        return self.__read_assessment(assessment_occurrence_id)
 
     def list_receipt_presence_assessments(
         self, capture_occurrence_id: _CaptureOccurrenceId
     ) -> Sequence[CaptureReceiptPresenceAssessmentV1]:
-        _not_implemented("IWO-U04")
+        return self.__list_assessments(capture_occurrence_id)
 
 
-def _build_owner_facets() -> tuple[_CommandsV1, _ReadsV1]:
+def _build_owner_facets(
+    *,
+    eligibility_resolver: _EligibilityResolver | None,
+    persistence_port: _AssessmentPersistencePort | None,
+) -> tuple[_CommandsV1, _ReadsV1]:
     state = _OwnerState()
 
     def register_policy(value: CaptureScopePolicyV1) -> CaptureScopePolicyV1:
@@ -890,16 +951,178 @@ def _build_owner_facets() -> tuple[_CommandsV1, _ReadsV1]:
         )
         return state.observations_by_identity.get(observation_occurrence_id)
 
+    def derive_relation(
+        observation_occurrence_ref: _ObservationOccurrenceId,
+        capture_occurrence_ref: _CaptureOccurrenceId,
+        scope_policy_ref: _ScopePolicyRef,
+    ) -> CaptureReceiptEvidenceRelationV1 | None:
+        _require_exact_type(
+            observation_occurrence_ref,
+            _ObservationOccurrenceId,
+            "observation_occurrence_ref",
+        )
+        _require_exact_type(
+            capture_occurrence_ref, _CaptureOccurrenceId, "capture_occurrence_ref"
+        )
+        _require_exact_type(scope_policy_ref, _ScopePolicyRef, "scope_policy_ref")
+
+        observed = state.observations_by_identity.get(observation_occurrence_ref)
+        if observed is None:
+            raise KeyError("observation_occurrence_ref is not admitted")
+        capture = state.captures_by_identity.get(capture_occurrence_ref)
+        if capture is None:
+            raise KeyError("capture_occurrence_ref is not realised")
+        if scope_policy_ref != capture.scope_policy_ref:
+            raise ValueError("scope_policy_ref does not match the capture effective policy")
+        effective_policy = state.policies_by_ref.get(capture.scope_policy_ref)
+        if effective_policy is None:
+            raise KeyError("capture effective scope policy is not registered")
+
+        relation_key = (
+            observation_occurrence_ref,
+            capture_occurrence_ref,
+            scope_policy_ref,
+        )
+        existing = state.relations_by_key.get(relation_key)
+        if existing is not None:
+            return existing
+
+        if not (capture.slot_start_utc <= observed.received_ts_utc < capture.slot_end_utc):
+            return None
+        if eligibility_resolver is None:
+            raise ValueError(
+                "receipt-evidence derivation requires an admitted eligibility resolver"
+            )
+        eligible = eligibility_resolver(observed, effective_policy)
+        if type(eligible) is not bool:
+            raise TypeError("eligibility resolver must return an exact bool")
+        if not eligible:
+            return None
+
+        relation = CaptureReceiptEvidenceRelationV1(
+            concept_id=_ConceptId(_RELATION_CONCEPT),
+            contract_id=_ContractId(_RELATION_CONTRACT),
+            units="not_applicable",
+            observation_occurrence_ref=observed.observation_occurrence_id,
+            capture_occurrence_ref=capture.capture_occurrence_id,
+            scope_policy_ref=capture.scope_policy_ref,
+            received_ts_utc=observed.received_ts_utc,
+            relation_role="evidences_receipt_presence_only",
+        )
+        state.relations_by_key[relation_key] = relation
+        state.relations_by_capture.setdefault(capture_occurrence_ref, []).append(relation)
+        return relation
+
+    def append_assessment(
+        assessment_occurrence_id: _AssessmentOccurrenceId,
+        capture_occurrence_ref: _CaptureOccurrenceId,
+        evidence_as_of_ts_utc: datetime,
+        supersedes_assessment_ref: _AssessmentOccurrenceId | None,
+    ) -> CaptureReceiptPresenceAssessmentV1:
+        _require_exact_type(
+            assessment_occurrence_id,
+            _AssessmentOccurrenceId,
+            "assessment_occurrence_id",
+        )
+        _require_exact_type(
+            capture_occurrence_ref, _CaptureOccurrenceId, "capture_occurrence_ref"
+        )
+        _require_utc(evidence_as_of_ts_utc, "evidence_as_of_ts_utc")
+        if supersedes_assessment_ref is not None:
+            _require_exact_type(
+                supersedes_assessment_ref,
+                _AssessmentOccurrenceId,
+                "supersedes_assessment_ref",
+            )
+
+        capture = state.captures_by_identity.get(capture_occurrence_ref)
+        if capture is None:
+            raise KeyError("capture_occurrence_ref is not realised")
+
+        visible_relation = any(
+            relation.received_ts_utc <= evidence_as_of_ts_utc
+            for relation in state.relations_by_capture.get(capture_occurrence_ref, ())
+        )
+        outcome: AssessmentOutcome = (
+            "one_or_more_received" if visible_relation else "zero_received"
+        )
+        candidate = CaptureReceiptPresenceAssessmentV1(
+            concept_id=_ConceptId(_ASSESSMENT_CONCEPT),
+            contract_id=_ContractId(_ASSESSMENT_CONTRACT),
+            units="not_applicable",
+            assessment_occurrence_id=assessment_occurrence_id,
+            capture_occurrence_ref=capture.capture_occurrence_id,
+            outcome=outcome,
+            evidence_as_of_ts_utc=evidence_as_of_ts_utc,
+            supersedes_assessment_ref=supersedes_assessment_ref,
+        )
+
+        existing = state.assessments_by_identity.get(assessment_occurrence_id)
+        if existing is not None:
+            if existing != candidate:
+                raise ValueError(
+                    "assessment occurrence identity is already appended with different content"
+                )
+            return existing
+
+        chain = state.assessment_order_by_capture.get(capture_occurrence_ref, [])
+        if not chain:
+            if supersedes_assessment_ref is not None:
+                raise ValueError("first assessment cannot supersede a prior assessment")
+        else:
+            immediate_predecessor = chain[-1]
+            if supersedes_assessment_ref != immediate_predecessor:
+                raise ValueError(
+                    "assessment must supersede the immediately prior current assessment"
+                )
+
+        if persistence_port is not None:
+            persistence_port.append_assessment(candidate)
+        state.assessments_by_identity[assessment_occurrence_id] = candidate
+        state.assessment_order_by_capture.setdefault(capture_occurrence_ref, []).append(
+            assessment_occurrence_id
+        )
+        return candidate
+
+    def read_assessment(
+        assessment_occurrence_id: _AssessmentOccurrenceId,
+    ) -> CaptureReceiptPresenceAssessmentV1 | None:
+        _require_exact_type(
+            assessment_occurrence_id,
+            _AssessmentOccurrenceId,
+            "assessment_occurrence_id",
+        )
+        return state.assessments_by_identity.get(assessment_occurrence_id)
+
+    def list_assessments(
+        capture_occurrence_id: _CaptureOccurrenceId,
+    ) -> Sequence[CaptureReceiptPresenceAssessmentV1]:
+        _require_exact_type(
+            capture_occurrence_id, _CaptureOccurrenceId, "capture_occurrence_id"
+        )
+        if capture_occurrence_id not in state.captures_by_identity:
+            raise KeyError("capture_occurrence_id is not realised")
+        return tuple(
+            state.assessments_by_identity[assessment_id]
+            for assessment_id in state.assessment_order_by_capture.get(
+                capture_occurrence_id, ()
+            )
+        )
+
     return (
         _CommandsV1(
             register_policy=register_policy,
             realise_capture=realise_capture,
             admit_observation=admit_observation,
+            derive_relation=derive_relation,
+            append_assessment=append_assessment,
         ),
         _ReadsV1(
             read_policy=read_policy,
             read_capture=read_capture,
             read_observation=read_observation,
+            read_assessment=read_assessment,
+            list_assessments=list_assessments,
         ),
     )
 
@@ -910,10 +1133,17 @@ class _OwnerV1:
     reads: _ReadsV1
 
 
-def create_owner() -> _OwnerV1:
-    """Construct the admitted owner boundary with U01-U03 in-memory semantics."""
+def create_owner(
+    *,
+    eligibility_resolver: _EligibilityResolver | None = None,
+    persistence_port: _AssessmentPersistencePort | None = None,
+) -> _OwnerV1:
+    """Construct the admitted owner boundary through IWO-U04 semantics."""
 
-    commands, reads = _build_owner_facets()
+    commands, reads = _build_owner_facets(
+        eligibility_resolver=eligibility_resolver,
+        persistence_port=persistence_port,
+    )
     return _OwnerV1(commands=commands, reads=reads)
 
 
