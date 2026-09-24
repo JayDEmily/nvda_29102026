@@ -846,3 +846,20 @@ assessment remains subject to immediate-predecessor supersession. Exact pinned W
 U04 32/32, U01-U04 416/416, mypy/Ruff and product/architecture/dependency/public-seam controls green,
 and architecture/bootstrap plus clean-state promotion 74/74. These are Worker claims pending fresh
 Reviewer 032; U04 is not accepted or promotable yet and U05 remains prohibited.
+
+### 2026-09-24 — VI-13R Reviewer 032 U04 disposition
+
+Fresh independent review of exact repaired U04 candidate
+`dc3b448191a2b2d3528ffb576b1ebc2c56839991` / tree
+`3c7a42eb215d708a0f8d8db37727133ecc234275` returned `PASS`. Reviewer-031 finding
+`R031-U04-F001` is closed as a mechanism: assessment derivation is independent of optional
+receipt-relation materialisation, missing eligibility authority for admitted in-slot evidence fails
+closed, and receipt time is no longer used as system-knowledge / commit-visibility proxy. The
+carried-forward fixture-independence rule was exercised through a direct authority-derived public-seam
+sequence and expanded state/sequence matrix; no new U04 defect was established. Independent evidence
+is U04 32/32, U01-U04 413 passed / 3 mypy-invoking tests deselected because mypy is unavailable in the
+Tester sandbox, architecture/bootstrap 72 passed / 2 mypy-invoking tests deselected, and all available
+product/architecture/dependency/public-seam controls green. Worker-pinned 416/416, mypy/Ruff and
+74/74 evidence remains separately attributable. U04 may be promoted; U05 is authorised only after
+preserved-ancestry promotion and fresh Worker routing. See
+`implementation/proof/VI13R_U04_REVIEWER_032_DISPOSITION.md`.

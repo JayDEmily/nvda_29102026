@@ -2,10 +2,11 @@
 
 - **Project ID:** `NVDA-LIFECYCLE-CONTROL-001`
 - **Project state:** `ACTIVE`
+- **VI-13R Reviewer 032 U04 result:** `PASS` — exact repaired candidate `dc3b448191a2b2d3528ffb576b1ebc2c56839991` / tree `3c7a42eb215d708a0f8d8db37727133ecc234275`; `R031-U04-F001` closed; direct fixture-independent public-seam challenge passed; U04 accepted for lawful promotion; U05 authorised only after that promotion. See `implementation/proof/VI13R_U04_REVIEWER_032_DISPOSITION.md`.
 - **Previous Gate:** `G02 — Existing Implementation Admission Handoff Adoption` — `ACCEPTED`
 - **G02 acceptance record:** `control/GATE_02_ACCEPTANCE.md`
 - **Current Gate:** `G03 — Verified Bounded Implementation`
-- **Gate state:** `ACTIVE — U04 REVIEWER 031 REPAIR FROZEN / REVIEWER 032 ROUTED`
+- **Gate state:** `ACTIVE — U04 REVIEWER 032 PASS / PROMOTION PENDING`
 - **Gate contract:** `control/GATE_03_VERIFIED_BOUNDED_IMPLEMENTATION.md`, revision `G03-R1`
 - **Execution binding:** `control/GATE_03_BINDING.md` (`G03-BIND-001`)
 - **Leaf map:** `control/GATE_03_LEAF_MAP.md`
