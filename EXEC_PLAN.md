@@ -863,3 +863,20 @@ product/architecture/dependency/public-seam controls green. Worker-pinned 416/41
 74/74 evidence remains separately attributable. U04 may be promoted; U05 is authorised only after
 preserved-ancestry promotion and fresh Worker routing. See
 `implementation/proof/VI13R_U04_REVIEWER_032_DISPOSITION.md`.
+
+### [EP-U04-RECOVERY-BASELINE] 2026-09-26 — Programme Owner recovery baseline
+
+Current Programme Owner direction establishes accepted U04 as the clean restart boundary. The active
+line is rooted in Reviewer-032 PASS `dd42d645b59a62f88cfbc7fba47a75e415b7296f`, whose accepted production candidate is
+`dc3b448191a2b2d3528ffb576b1ebc2c56839991` / tree `3c7a42eb215d708a0f8d8db37727133ecc234275`.
+
+U05 is **not started** on this recovery line. U05 implementation, U05 cycle evidence/results,
+`_postgres.py`, CP0-CP8 execution state and U05 checkpoint/workboard machinery from the abandoned
+post-U04 line are `DO_NOT_CARRY_FORWARD`; they are absent from the active tree and remain historical
+evidence only. The abandoned committed line is preserved at
+`archive/u05-pre-recovery-main-20260926` (`1e497ee16e9b0626ed1fde0656dc86e9e4cdb3a5`), and the exact previously dirty as-stands
+snapshot is preserved at `archive/u05-as-stands-20260926-1801` (`ec7d09cbb9c3d12f591c86a0245ba73df7afe365`).
+
+No Worker or Tester U05 cycle is active. Any future U05 attempt must be freshly routed from this
+accepted U04 baseline under the then-current governing authority and proof, without importing the
+abandoned CP/checkpoint execution state. U01-U04 accepted semantics are not reopened by this recovery.
