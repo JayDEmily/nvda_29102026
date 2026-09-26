@@ -1,8 +1,9 @@
 """Typed public seam for the admitted Raw Signal Occurrence Truth owner."""
 
 from collections.abc import Callable, Iterator, Mapping, Sequence
+from contextlib import AbstractContextManager
 from dataclasses import dataclass, field
-from datetime import datetime, timedelta
+from datetime import UTC, datetime, timedelta
 from decimal import Decimal
 from struct import pack
 from typing import Literal, NoReturn, Protocol, cast
@@ -679,12 +680,117 @@ _AppendAssessment = Callable[
 ]
 _ReadAssessment = Callable[[_AssessmentOccurrenceId], CaptureReceiptPresenceAssessmentV1 | None]
 _ListAssessments = Callable[[_CaptureOccurrenceId], Sequence[CaptureReceiptPresenceAssessmentV1]]
+_ReconcileOwedSlots = Callable[
+    [
+        _ScopePolicyRef,
+        Sequence[datetime],
+        Sequence[_CaptureOccurrenceId],
+        Sequence[_AssessmentOccurrenceId],
+    ],
+    Sequence[CaptureReceiptPresenceAssessmentV1],
+]
+_UtcNow = Callable[[], datetime]
 
 
 class _AssessmentPersistencePort(Protocol):
+    """Accepted U04 append-only technical sink for owner-decided assessments."""
+
     def append_assessment(
         self, value: CaptureReceiptPresenceAssessmentV1
     ) -> CaptureReceiptPresenceAssessmentV1: ...
+
+
+class _PersistenceTransaction(Protocol):
+    def get_policy(
+        self, scope_policy_id: _ScopePolicyId, scope_policy_version: int
+    ) -> CaptureScopePolicyV1 | None: ...
+
+    def get_policy_by_ref(
+        self, scope_policy_ref: _ScopePolicyRef
+    ) -> CaptureScopePolicyV1 | None: ...
+
+    def list_policies(self) -> Sequence[CaptureScopePolicyV1]: ...
+
+    def append_policy(
+        self, value: CaptureScopePolicyV1, scope_policy_ref: _ScopePolicyRef
+    ) -> None: ...
+
+    def get_capture(
+        self, capture_occurrence_id: _CaptureOccurrenceId
+    ) -> ScheduledCaptureOccurrenceV1 | None: ...
+
+    def get_capture_by_slot(
+        self, scope_policy_ref: _ScopePolicyRef, slot_start_utc: datetime
+    ) -> ScheduledCaptureOccurrenceV1 | None: ...
+
+    def append_capture(self, value: ScheduledCaptureOccurrenceV1) -> None: ...
+
+    def get_assessment(
+        self, assessment_occurrence_id: _AssessmentOccurrenceId
+    ) -> CaptureReceiptPresenceAssessmentV1 | None: ...
+
+    def list_assessments(
+        self, capture_occurrence_id: _CaptureOccurrenceId
+    ) -> Sequence[CaptureReceiptPresenceAssessmentV1]: ...
+
+    def append_assessment(self, value: CaptureReceiptPresenceAssessmentV1) -> None: ...
+
+
+class _PersistencePort(Protocol):
+    def transaction(
+        self, *, write: bool
+    ) -> AbstractContextManager[_PersistenceTransaction]: ...
+
+
+def _order_assessment_chain(
+    records: Sequence[CaptureReceiptPresenceAssessmentV1],
+) -> tuple[CaptureReceiptPresenceAssessmentV1, ...]:
+    if not records:
+        return ()
+
+    by_identity: dict[_AssessmentOccurrenceId, CaptureReceiptPresenceAssessmentV1] = {}
+    successor_by_predecessor: dict[_AssessmentOccurrenceId, _AssessmentOccurrenceId] = {}
+    roots: list[_AssessmentOccurrenceId] = []
+    capture_ref: _CaptureOccurrenceId | None = None
+
+    for record in records:
+        if capture_ref is None:
+            capture_ref = record.capture_occurrence_ref
+        elif record.capture_occurrence_ref != capture_ref:
+            raise ValueError("assessment history contains more than one capture identity")
+        if record.assessment_occurrence_id in by_identity:
+            raise ValueError("assessment history contains duplicate assessment identities")
+        by_identity[record.assessment_occurrence_id] = record
+        if record.supersedes_assessment_ref is None:
+            roots.append(record.assessment_occurrence_id)
+            continue
+        if record.supersedes_assessment_ref in successor_by_predecessor:
+            raise ValueError("assessment history branches from one predecessor")
+        successor_by_predecessor[record.supersedes_assessment_ref] = (
+            record.assessment_occurrence_id
+        )
+
+    if len(roots) != 1:
+        raise ValueError("assessment history must contain exactly one root")
+    if any(predecessor not in by_identity for predecessor in successor_by_predecessor):
+        raise ValueError("assessment history contains a missing predecessor")
+
+    ordered: list[CaptureReceiptPresenceAssessmentV1] = []
+    seen: set[_AssessmentOccurrenceId] = set()
+    current = roots[0]
+    while True:
+        if current in seen:
+            raise ValueError("assessment history contains a cycle")
+        seen.add(current)
+        ordered.append(by_identity[current])
+        successor = successor_by_predecessor.get(current)
+        if successor is None:
+            break
+        current = successor
+
+    if len(ordered) != len(records):
+        raise ValueError("assessment history is not one append-only predecessor chain")
+    return tuple(ordered)
 
 
 class _CommandsV1:
@@ -693,6 +799,7 @@ class _CommandsV1:
         "__append_assessment",
         "__derive_relation",
         "__realise_capture",
+        "__reconcile_owed_slots",
         "__register_policy",
     )
 
@@ -703,12 +810,14 @@ class _CommandsV1:
         admit_observation: _AdmitObservation,
         derive_relation: _DeriveRelation,
         append_assessment: _AppendAssessment,
+        reconcile_owed_slots: _ReconcileOwedSlots,
     ) -> None:
         self.__register_policy = register_policy
         self.__realise_capture = realise_capture
         self.__admit_observation = admit_observation
         self.__derive_relation = derive_relation
         self.__append_assessment = append_assessment
+        self.__reconcile_owed_slots = reconcile_owed_slots
 
     def register_capture_scope_policy(self, value: CaptureScopePolicyV1) -> CaptureScopePolicyV1:
         return self.__register_policy(value)
@@ -759,7 +868,12 @@ class _CommandsV1:
         capture_occurrence_ids: Sequence[_CaptureOccurrenceId],
         assessment_occurrence_ids: Sequence[_AssessmentOccurrenceId],
     ) -> Sequence[CaptureReceiptPresenceAssessmentV1]:
-        _not_implemented("IWO-U05")
+        return self.__reconcile_owed_slots(
+            scope_policy_ref,
+            slot_starts_utc,
+            capture_occurrence_ids,
+            assessment_occurrence_ids,
+        )
 
 
 class _ReadsV1:
@@ -815,12 +929,54 @@ def _build_owner_facets(
     *,
     eligibility_resolver: _EligibilityResolver | None,
     persistence_port: _AssessmentPersistencePort | None,
+    durability_port: _PersistencePort | None,
+    utc_now: _UtcNow,
 ) -> tuple[_CommandsV1, _ReadsV1]:
     state = _OwnerState()
 
     def register_policy(value: CaptureScopePolicyV1) -> CaptureScopePolicyV1:
         if type(value) is not CaptureScopePolicyV1:
             raise TypeError("value must be CaptureScopePolicyV1")
+
+        if durability_port is not None:
+            scope_ref = _scope_ref_for_policy(value)
+            with durability_port.transaction(write=True) as transaction:
+                existing = transaction.get_policy(
+                    value.scope_policy_id, value.scope_policy_version
+                )
+                if existing is not None:
+                    if existing != value:
+                        raise ValueError(
+                            "policy identity/version is already registered with different content"
+                        )
+                    return existing
+
+                admitted_policies = transaction.list_policies()
+                existing = transaction.get_policy(
+                    value.scope_policy_id, value.scope_policy_version
+                )
+                if existing is not None:
+                    if existing != value:
+                        raise ValueError(
+                            "policy identity/version is already registered with different content"
+                        )
+                    return existing
+
+                for admitted in admitted_policies:
+                    if _intervals_overlap(
+                        value.activation_ts_utc,
+                        value.deactivation_ts_utc,
+                        admitted.activation_ts_utc,
+                        admitted.deactivation_ts_utc,
+                    ):
+                        raise ValueError("capture-scope policy active intervals must not overlap")
+
+                existing_ref = transaction.get_policy_by_ref(scope_ref)
+                if existing_ref is not None:
+                    raise ValueError("scope policy reference is already registered")
+
+                transaction.append_policy(value, scope_ref)
+            return value
 
         identity_key = (value.scope_policy_id, value.scope_policy_version)
         existing = state.policies_by_identity.get(identity_key)
@@ -858,6 +1014,47 @@ def _build_owner_facets(
             capture_occurrence_id, _CaptureOccurrenceId, "capture_occurrence_id"
         )
         _require_half_minute_boundary(slot_start_utc, "slot_start_utc")
+
+        if durability_port is not None:
+            with durability_port.transaction(write=True) as transaction:
+                policy = transaction.get_policy_by_ref(scope_policy_ref)
+                if policy is None:
+                    raise KeyError("scope_policy_ref is not registered")
+                if slot_start_utc < policy.activation_ts_utc:
+                    raise ValueError("slot_start_utc is before policy activation")
+                if (
+                    policy.deactivation_ts_utc is not None
+                    and slot_start_utc >= policy.deactivation_ts_utc
+                ):
+                    raise ValueError("slot_start_utc is at or after policy deactivation")
+
+                existing_for_slot = transaction.get_capture_by_slot(
+                    scope_policy_ref, slot_start_utc
+                )
+                if existing_for_slot is not None:
+                    if existing_for_slot.capture_occurrence_id != capture_occurrence_id:
+                        raise ValueError(
+                            "owed slot is already realised under a different capture identity"
+                        )
+                    return existing_for_slot
+
+                existing_for_identity = transaction.get_capture(capture_occurrence_id)
+                if existing_for_identity is not None:
+                    raise ValueError(
+                        "capture occurrence identity is already bound to a different owed slot"
+                    )
+
+                value = ScheduledCaptureOccurrenceV1(
+                    concept_id=_ConceptId(_CAPTURE_CONCEPT),
+                    contract_id=_ContractId(_CAPTURE_CONTRACT),
+                    units="not_applicable",
+                    capture_occurrence_id=capture_occurrence_id,
+                    scope_policy_ref=scope_policy_ref,
+                    slot_start_utc=slot_start_utc,
+                    slot_end_utc=slot_start_utc + timedelta(seconds=30),
+                )
+                transaction.append_capture(value)
+            return value
 
         policy = state.policies_by_ref.get(scope_policy_ref)
         if policy is None:
@@ -901,6 +1098,9 @@ def _build_owner_facets(
         _require_exact_type(scope_policy_id, _ScopePolicyId, "scope_policy_id")
         if type(scope_policy_version) is not int or scope_policy_version <= 0:
             raise ValueError("scope_policy_version must be a positive integer")
+        if durability_port is not None:
+            with durability_port.transaction(write=False) as transaction:
+                return transaction.get_policy(scope_policy_id, scope_policy_version)
         return state.policies_by_identity.get((scope_policy_id, scope_policy_version))
 
     def read_capture(
@@ -909,6 +1109,9 @@ def _build_owner_facets(
         _require_exact_type(
             capture_occurrence_id, _CaptureOccurrenceId, "capture_occurrence_id"
         )
+        if durability_port is not None:
+            with durability_port.transaction(write=False) as transaction:
+                return transaction.get_capture(capture_occurrence_id)
         return state.captures_by_identity.get(capture_occurrence_id)
 
     def admit_observation(value: RawObservationOccurrenceV1) -> RawObservationOccurrenceV1:
@@ -1015,6 +1218,8 @@ def _build_owner_facets(
         evidence_as_of_ts_utc: datetime,
         supersedes_assessment_ref: _AssessmentOccurrenceId | None,
     ) -> CaptureReceiptPresenceAssessmentV1:
+        if durability_port is not None:
+            _not_implemented("IWO-U05-STAGE4")
         _require_exact_type(
             assessment_occurrence_id,
             _AssessmentOccurrenceId,
@@ -1113,6 +1318,9 @@ def _build_owner_facets(
             _AssessmentOccurrenceId,
             "assessment_occurrence_id",
         )
+        if durability_port is not None:
+            with durability_port.transaction(write=False) as transaction:
+                return transaction.get_assessment(assessment_occurrence_id)
         return state.assessments_by_identity.get(assessment_occurrence_id)
 
     def list_assessments(
@@ -1121,6 +1329,10 @@ def _build_owner_facets(
         _require_exact_type(
             capture_occurrence_id, _CaptureOccurrenceId, "capture_occurrence_id"
         )
+        if durability_port is not None:
+            with durability_port.transaction(write=False) as transaction:
+                records = transaction.list_assessments(capture_occurrence_id)
+            return _order_assessment_chain(records)
         if capture_occurrence_id not in state.captures_by_identity:
             raise KeyError("capture_occurrence_id is not realised")
         return tuple(
@@ -1130,6 +1342,76 @@ def _build_owner_facets(
             )
         )
 
+    def reconcile_owed_slots(
+        scope_policy_ref: _ScopePolicyRef,
+        slot_starts_utc: Sequence[datetime],
+        capture_occurrence_ids: Sequence[_CaptureOccurrenceId],
+        assessment_occurrence_ids: Sequence[_AssessmentOccurrenceId],
+    ) -> Sequence[CaptureReceiptPresenceAssessmentV1]:
+        if durability_port is None:
+            _not_implemented("IWO-U05")
+        _require_exact_type(scope_policy_ref, _ScopePolicyRef, "scope_policy_ref")
+        if not (
+            len(slot_starts_utc)
+            == len(capture_occurrence_ids)
+            == len(assessment_occurrence_ids)
+        ):
+            raise ValueError(
+                "slot_starts_utc, capture_occurrence_ids and assessment_occurrence_ids "
+                "must have equal lengths"
+            )
+
+        results: list[CaptureReceiptPresenceAssessmentV1] = []
+        for slot_start_utc, capture_id, assessment_id in zip(
+            slot_starts_utc,
+            capture_occurrence_ids,
+            assessment_occurrence_ids,
+            strict=True,
+        ):
+            _require_exact_type(capture_id, _CaptureOccurrenceId, "capture_occurrence_id")
+            _require_exact_type(
+                assessment_id, _AssessmentOccurrenceId, "assessment_occurrence_id"
+            )
+
+            capture = realise_capture(scope_policy_ref, capture_id, slot_start_utc)
+
+            with durability_port.transaction(write=True) as transaction:
+                existing_by_id = transaction.get_assessment(assessment_id)
+                if existing_by_id is not None:
+                    if (
+                        existing_by_id.capture_occurrence_ref != capture.capture_occurrence_id
+                        or existing_by_id.outcome != "unknown_not_established"
+                        or existing_by_id.supersedes_assessment_ref is not None
+                    ):
+                        raise ValueError(
+                            "reconciliation assessment identity is already bound to "
+                            "different content"
+                        )
+                    result = existing_by_id
+                else:
+                    ordered = _order_assessment_chain(
+                        transaction.list_assessments(capture.capture_occurrence_id)
+                    )
+                    if ordered:
+                        result = ordered[-1]
+                    else:
+                        evidence_as_of_ts_utc = utc_now()
+                        _require_utc(evidence_as_of_ts_utc, "evidence_as_of_ts_utc")
+                        result = CaptureReceiptPresenceAssessmentV1(
+                            concept_id=_ConceptId(_ASSESSMENT_CONCEPT),
+                            contract_id=_ContractId(_ASSESSMENT_CONTRACT),
+                            units="not_applicable",
+                            assessment_occurrence_id=assessment_id,
+                            capture_occurrence_ref=capture.capture_occurrence_id,
+                            outcome="unknown_not_established",
+                            evidence_as_of_ts_utc=evidence_as_of_ts_utc,
+                            supersedes_assessment_ref=None,
+                        )
+                        transaction.append_assessment(result)
+            results.append(result)
+
+        return tuple(results)
+
     return (
         _CommandsV1(
             register_policy=register_policy,
@@ -1137,6 +1419,7 @@ def _build_owner_facets(
             admit_observation=admit_observation,
             derive_relation=derive_relation,
             append_assessment=append_assessment,
+            reconcile_owed_slots=reconcile_owed_slots,
         ),
         _ReadsV1(
             read_policy=read_policy,
@@ -1158,12 +1441,26 @@ def create_owner(
     *,
     eligibility_resolver: _EligibilityResolver | None = None,
     persistence_port: _AssessmentPersistencePort | None = None,
+    durability_port: _PersistencePort | None = None,
+    utc_now: _UtcNow | None = None,
 ) -> _OwnerV1:
-    """Construct the admitted owner boundary through IWO-U04 semantics."""
+    """Construct the admitted owner boundary with optional technical persistence."""
+
+    if persistence_port is not None and durability_port is not None:
+        raise ValueError(
+            "persistence_port and durability_port are mutually exclusive construction paths"
+        )
+    if utc_now is None:
+        def system_utc_now() -> datetime:
+            return datetime.now(UTC)
+
+        utc_now = system_utc_now
 
     commands, reads = _build_owner_facets(
         eligibility_resolver=eligibility_resolver,
         persistence_port=persistence_port,
+        durability_port=durability_port,
+        utc_now=utc_now,
     )
     return _OwnerV1(commands=commands, reads=reads)
 

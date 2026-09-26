@@ -34,10 +34,10 @@ def test_minimal_project_dependencies_and_entry_points_exclude_old_runtime() -> 
         "fastapi",
         "sqlalchemy",
         "asyncpg",
-        "psycopg",
         "ibapi",
         "polars",
         "openpyxl",
     ):
         assert dependency not in pyproject
+    assert '"psycopg[binary]==3.3.4"' in pyproject
     assert "nvda-architecture-kernel" in pyproject
