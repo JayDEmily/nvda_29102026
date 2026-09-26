@@ -6,7 +6,7 @@
 - **Previous Gate:** `G02 — Existing Implementation Admission Handoff Adoption` — `ACCEPTED`
 - **G02 acceptance record:** `control/GATE_02_ACCEPTANCE.md`
 - **Current Gate:** `G03 — Verified Bounded Implementation`
-- **Gate state:** `ACTIVE — U04 REVIEWER 032 PASS / PROMOTION PENDING`
+- **Gate state:** `ACTIVE — U05 STAGE 1 RESTART ARCHITECTURE COMMITTED / STAGE 2 NOT STARTED`
 - **Gate contract:** `control/GATE_03_VERIFIED_BOUNDED_IMPLEMENTATION.md`, revision `G03-R1`
 - **Execution binding:** `control/GATE_03_BINDING.md` (`G03-BIND-001`)
 - **Leaf map:** `control/GATE_03_LEAF_MAP.md`
@@ -67,15 +67,16 @@
 - **VI-12R U04 Reviewer-031 repair candidate:** `dc3b448191a2b2d3528ffb576b1ebc2c56839991` / tree `3c7a42eb215d708a0f8d8db37727133ecc234275` on `work/vi12r-u04-r031-repair`; changes only `src/nvda_desk/raw_signal_occurrence_truth/api.py` and `tests/product/raw_signal/test_u04_receipt_assessment.py`. Worker-pinned proof is U04 32/32 and U01-U04 416/416 with mypy/Ruff, product/architecture/dependency/public-seam controls and architecture promotion green. Fresh Reviewer 032 is required; U04 remains unaccepted and U05 prohibited. See `implementation/proof/VI12R_U04_REVIEWER031_REPAIR_EVIDENCE.md`.
 - **VI-13R Reviewer 032 U04 result:** `PASS` at review commit `dd42d645b59a62f88cfbc7fba47a75e415b7296f` — repaired candidate `dc3b448191a2b2d3528ffb576b1ebc2c56839991` / tree `3c7a42eb215d708a0f8d8db37727133ecc234275` is accepted as the U04 baseline. See `implementation/proof/VI13R_U04_REVIEWER_032_DISPOSITION.md`.
 - **2026-09-26 Programme Owner recovery baseline:** active development is reset to the accepted U04 lineage. U05 has **not started** on the new active line. All U05/CP work from the abandoned line is `DO_NOT_CARRY_FORWARD`, including CP0-CP8/checkpoint machinery, dirty U05 implementation, `_postgres.py`, and U05 cycle evidence/results. Historical committed U05/CP work remains recoverable at `archive/u05-pre-recovery-main-20260926` (`1e497ee16e9b0626ed1fde0656dc86e9e4cdb3a5`); the exact previously dirty as-stands snapshot is preserved separately at `archive/u05-as-stands-20260926-1801` (`ec7d09cbb9c3d12f591c86a0245ba73df7afe365`).
-- **Current Leaf:** `G03 / U04 accepted baseline — U05 not started`
-- **Current actor:** `PROGRAMME_OWNER` — clean recovery baseline established; no Worker/Tester execution cycle is active
+- **2026-09-26 U05 Stage 1 Worker boundary:** root `EXEC_PLAN.md` was accepted and committed on `main` at `4bf4b4feb08412f65216fc95d8615d2cc46eadaf`; Stage 1 restart architecture is committed on `work/u05-restart-architecture` at `bd5d904e4b94ea29ba0d8b147420d4a086fcdf1b` / tree `19c1d3270a274c687b52d28dd316f0421929d2f7`. Stage 1 changes design/evidence only; no PostgreSQL production implementation has begun. See `implementation/architecture/VI12R_U05_STAGE1_RESTART_ARCHITECTURE.md` and `implementation/proof/VI12R_U05_STAGE1_RESTART_ARCHITECTURE_EVIDENCE.md`.
+- **Current Leaf:** `G03 / U05 Stage 1 restart architecture complete — Stage 2 not started`
+- **Current actor:** `PROGRAMME_OWNER` — Stage 1 Worker design complete; Stage 2 has not been authorised or started
 - **Active review cycle:** `NONE`
 - **Last completed cycle:** `handoff/review_cycles/TESTER_VI13R_U04_R032_1790251908/` — Reviewer 032 independently passed repaired U04
 - **Role-consistency rule:** when `Current actor` is `PROGRAMME_OWNER` / no execution cycle is active, no Worker/Tester action is implied; a fresh Worker/Tester cycle must be explicitly routed before execution
 - **Completed VI-09 Worker handoff:** `implementation/handoff/WORKER_002_VI09_PRODUCT_PROOF_CONTROL.md`
 - **Completed VI-10 Worker handoff:** `implementation/handoff/WORKER_003_VI10_ADVERSARIAL_PRODUCT_PROOF.md`
 - **PM inline VI-08/09/10 attempts:** `DO_NOT_CARRY_FORWARD`
-- **Current authority note:** U01-U04 are the accepted active semantic lineage. U04 production is `dc3b448191a2b2d3528ffb576b1ebc2c56839991` and independent U04 PASS is `dd42d645b59a62f88cfbc7fba47a75e415b7296f`. The abandoned U05/CP line is historical evidence only and is not active authority or implementation state. No CP checkpoint machinery is active on this line.
-- **Next lawful action:** when the Programme Owner authorises U05 again, route a fresh U05 Worker from this accepted U04 baseline and derive execution from the governing U05 authority/proof from first principles. Do not import abandoned U05 code, evidence/results, `_postgres.py`, or CP0-CP8/checkpoint state.
+- **Current authority note:** U01-U04 remain the accepted semantic baseline. U04 production is `dc3b448191a2b2d3528ffb576b1ebc2c56839991` and independent U04 PASS is `dd42d645b59a62f88cfbc7fba47a75e415b7296f`. U05 Stage 1 restart architecture is committed at `bd5d904e4b94ea29ba0d8b147420d4a086fcdf1b` / tree `19c1d3270a274c687b52d28dd316f0421929d2f7`; this is Worker design/evidence only, not U05 production implementation or acceptance. The abandoned U05/CP line remains historical evidence only and no CP checkpoint machinery is active.
+- **Next lawful action:** only if the Programme Owner explicitly authorises Stage 2, continue the U05 work lineage from the committed Stage-1 architecture and execute `Stage 2 — PostgreSQL foundation and first complete restart path` under root `EXEC_PLAN.md`. Do not import abandoned U05 code, evidence/results, `_postgres.py`, or CP0-CP8/checkpoint state.
 
 - **VI-11R2 Tester Iteration 005:** `FAIL / RETURN_TO_WORKER` — 11 proof findings (`T005-F001..F011`), 4 Critical / 7 Important; reviewed wrapper `c164fac...`, physical proof `56ea445d...`.
