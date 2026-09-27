@@ -18,6 +18,7 @@ import time
 import types
 import uuid
 import weakref
+from collections.abc import Mapping
 from dataclasses import is_dataclass
 from datetime import UTC, datetime
 from decimal import Decimal
@@ -28,7 +29,6 @@ from typing import Any
 import pytest
 from tests.product.raw_signal._support import (
     admit_observation,
-    append_assessment,
     as_mapping,
     assessment_contract,
     build_owner,
@@ -39,6 +39,8 @@ from tests.product.raw_signal._support import (
     register_policy,
     required_symbol,
 )
+
+from nvda_desk.raw_signal_occurrence_truth._postgres import create_postgres_persistence
 
 ROOT = Path(__file__).resolve().parents[3]
 PROBE = ROOT / "tests/product/raw_signal/_process_probe.py"
@@ -55,6 +57,15 @@ def _dsn() -> str:
     return value
 
 
+def _durable_owner(*, dsn: str | None = None, **kwargs: Any) -> Any:
+    """Construct the production owner with the authorised injected PostgreSQL port."""
+
+    return build_owner(
+        durability_port=create_postgres_persistence(dsn or _dsn()),
+        **kwargs,
+    )
+
+
 def _psycopg() -> Any:
     try:
         module = importlib.import_module("psycopg")
@@ -62,6 +73,26 @@ def _psycopg() -> Any:
         pytest.fail(f"psycopg 3.3.4 proof dependency is missing: {exc}")
     assert module.__version__ == "3.3.4"
     return module
+
+
+def _truncate_u05_semantic_store(dsn: str) -> None:
+    create_postgres_persistence(dsn)
+    psycopg = _psycopg()
+    with psycopg.connect(dsn) as connection:
+        connection.execute(
+            "TRUNCATE rsot_capture_receipt_presence_assessment_v1, "
+            "rsot_raw_observation_occurrence_v1, "
+            "rsot_scheduled_capture_occurrence_v1, "
+            "rsot_capture_scope_policy_v1 CASCADE"
+        )
+        connection.commit()
+
+
+@pytest.fixture(autouse=True)
+def _isolate_u05_semantic_store() -> None:
+    """Keep independent proof cases from becoming each other's durable policy universe."""
+
+    _truncate_u05_semantic_store(_dsn())
 
 
 def _token(prefix: str) -> str:
@@ -823,7 +854,7 @@ def _canonical(value: Any) -> Any:
                 decimal_tuple.exponent,
             ],
         }
-    if isinstance(value, dict):
+    if isinstance(value, Mapping):
         return {
             str(k): _canonical(v) for k, v in sorted(value.items(), key=lambda item: str(item[0]))
         }
@@ -897,7 +928,7 @@ def _expected_records(token: str, facts: dict[str, Any]) -> dict[str, Any]:
         received_epoch_ns=1_758_369_605_654_321_987,
         ingestion_sequence=41,
         ingestion_sequence_scope=facts["ingestion_sequence_scope"],
-        source_temporal_kind="true_instant",
+        source_temporal_kind=facts.get("source_temporal_kind", "true_instant"),
         source_timestamp_raw=facts["source_timestamp_raw"],
         source_timezone_native=facts["source_timezone_native"],
         market_timezone_iana=facts["market_timezone_iana"],
@@ -1471,7 +1502,7 @@ def test_semantic_write_trace_rejects_split_marker_surrogate_payload_transaction
 
 
 def test_public_factory_uses_same_semantic_owner_type_with_and_without_postgresql() -> None:
-    assert type(build_owner()) is type(build_owner(postgres_dsn=_dsn()))
+    assert type(build_owner()) is type(_durable_owner())
 
 
 def test_process_boundary_forbids_shared_local_file_persistence(tmp_path: Path) -> None:
@@ -1640,6 +1671,9 @@ def test_public_success_return_requires_postgresql_commit_acknowledgement(
     }[action]
     warm_extra = {"facts": warm_facts} if expected_key in {"policy", "observation"} else {}
     _run_probe(tmp_path, warm_action, dsn=dsn, token=warm_token, **warm_extra)
+    # Warm-up facts are proof setup only. Remove them before the discriminator so they cannot
+    # enter the semantic policy universe or satisfy any prerequisite for the command under test.
+    _truncate_u05_semantic_store(dsn)
 
     # Establish only semantic prerequisites that must pre-exist for the command under test.
     # The command named by ``action`` remains the sole write performed under the SyncRep barrier.
@@ -1647,7 +1681,8 @@ def test_public_success_return_requires_postgresql_commit_acknowledgement(
 
     original_setting = _current_synchronous_standby_names(dsn)
     barrier_name = f"nvda_proof_no_standby_{uuid.uuid4().hex}"
-    application_name = f"nvda-proof-commit-ack-{expected_key}-{uuid.uuid4().hex}"
+    # PostgreSQL truncates application_name to 63 bytes; keep the discriminator exact.
+    application_name = f"nvda-u05-ack-{expected_key}-{uuid.uuid4().hex[:16]}"
     writer_dsn = _dsn_with_application_name(dsn, application_name)
     process: subprocess.Popen[str] | None = None
     marker: dict[str, Any] | None = None
@@ -1907,7 +1942,6 @@ def test_postgresql_is_only_configured_cross_process_semantic_source_for_complet
         facts["delivery_artifact_ref"],
         facts["source_provider"],
         facts["native_identifier"],
-        *facts["native_record"].values(),
         facts["revision_vintage_native"],
         facts["ingestion_sequence_scope"],
     ]
@@ -1925,17 +1959,20 @@ def test_postgresql_is_only_configured_cross_process_semantic_source_for_complet
     assert fresh_capture["record"] == expected["capture"]
     assert fresh_observation["record"] == expected["observation"]
 
-    deleted = _delete_postgres_rows_containing_marker(
-        dsn, facts["native_record"]["High Entropy Alpha"]
-    )
-    assert deleted > 0, "no PostgreSQL row carrying authoritative observation facts was found"
-    after_delete = _probe_process(tmp_path, "read_observation", dsn=dsn, token=token)
-    if after_delete.returncode == 0:
-        result = json.loads([line for line in after_delete.stdout.splitlines() if line.strip()][-1])
-        assert result["record"] != expected["observation"], (
-            "fresh reader reproduced complete authoritative observation facts after the "
-            "correlated PostgreSQL state was removed"
-        )
+    # NativeValueV1 is deliberately encoded as binary, so its high-entropy payload need not be
+    # plaintext-searchable. Remove the authoritative durable observation row by domain identity
+    # and prove a fresh process can no longer reproduce the record.
+    psycopg = _psycopg()
+    with psycopg.connect(dsn) as connection:
+        deleted = connection.execute(
+            "delete from rsot_raw_observation_occurrence_v1 "
+            "where observation_occurrence_id = %s",
+            (f"observation::{token}",),
+        ).rowcount
+        connection.commit()
+    assert deleted == 1
+    after_delete = _run_probe(tmp_path, "read_observation", dsn=dsn, token=token)
+    assert after_delete["record"] is None
 
     poisoned = _probe_process(tmp_path, "read_observation", dsn=_poisoned_dsn(dsn), token=token)
     assert poisoned.returncode != 0
@@ -2065,7 +2102,7 @@ def test_restart_preserves_policy_capture_assessment_and_scope_high_water_invari
         dsn=dsn,
         token=token,
     )
-    assert high_same_scope["record"]["ingestion_sequence"] == 42
+    assert high_same_scope["record"]["ingestion_sequence"] == _canonical(42)
 
     other_scope = _run_probe(
         tmp_path,
@@ -2073,7 +2110,7 @@ def test_restart_preserves_policy_capture_assessment_and_scope_high_water_invari
         dsn=dsn,
         token=token,
     )
-    assert other_scope["record"]["ingestion_sequence"] == 1
+    assert other_scope["record"]["ingestion_sequence"] == _canonical(1)
 
     assert _without_pid(
         _run_probe(tmp_path, "admit_low_sequence_same_scope", dsn=dsn, token=token)
@@ -2084,7 +2121,7 @@ def test_restart_preserves_policy_capture_assessment_and_scope_high_water_invari
         dsn=dsn,
         token=token,
     )
-    assert next_same_scope["record"]["ingestion_sequence"] == 43
+    assert next_same_scope["record"]["ingestion_sequence"] == _canonical(43)
 
 
 def test_restart_reconciliation_commits_capture_before_assessment_and_recovers_exact_facts(
@@ -2127,7 +2164,9 @@ def test_restart_reconciliation_commits_capture_before_assessment_and_recovers_e
 
 def test_public_owner_accepts_explicit_technical_persistence_port_injection() -> None:
     builder = required_symbol("create_owner")
-    assert "persistence_port" in inspect.signature(builder).parameters
+    assert "durability_port" in inspect.signature(builder).parameters
+    owner = builder(durability_port=create_postgres_persistence(_dsn()))
+    assert type(owner) is type(build_owner())
 
 
 _STORAGE_PROTOCOL_BOUND_ARITY = {
@@ -2140,6 +2179,23 @@ _STORAGE_PROTOCOL_BOUND_ARITY = {
     "append_assessment": 1,
     "get_assessment": 1,
     "list_assessments": 1,
+}
+
+_DURABILITY_TRANSACTION_METHODS = {
+    "get_policy",
+    "get_policy_by_ref",
+    "list_policies",
+    "append_policy",
+    "get_capture",
+    "get_capture_by_slot",
+    "append_capture",
+    "get_observation",
+    "get_observation_high_water",
+    "list_observations_received_between",
+    "append_observation",
+    "get_assessment",
+    "list_assessments",
+    "append_assessment",
 }
 
 
@@ -2936,35 +2992,31 @@ def test_record_only_proxy_rewrite_rewrites_nested_public_storage_capabilities()
     assert not _production_graph_contains_identity(owner, adapter)
 
 
-def test_default_postgresql_path_exposes_exact_record_only_storage_protocol() -> None:
-    owner = build_owner(postgres_dsn=_dsn())
-    ports = _find_default_persistence_ports(owner)
-    assert ports, "default PostgreSQL owner path hides its technical persistence port"
-    for port in ports:
-        public_callables = {
-            name for name in dir(port) if not name.startswith("_") and callable(getattr(port, name))
+def test_postgresql_durability_port_exposes_only_authorised_transaction_query_contract() -> None:
+    port = create_postgres_persistence(_dsn())
+    public_port_callables = {
+        name for name in dir(port) if not name.startswith("_") and callable(getattr(port, name))
+    }
+    assert public_port_callables == {"transaction"}
+
+    with port.transaction(write=False) as transaction:
+        public_transaction_callables = {
+            name
+            for name in dir(transaction)
+            if not name.startswith("_") and callable(getattr(transaction, name))
         }
-        assert public_callables == set(_STORAGE_PROTOCOL_BOUND_ARITY), (
-            type(port),
-            public_callables,
-        )
-        for name, arity in _STORAGE_PROTOCOL_BOUND_ARITY.items():
-            signature = inspect.signature(getattr(port, name))
-            parameters = tuple(signature.parameters.values())
-            assert len(parameters) == arity, (type(port), name, signature)
-            assert all(
-                parameter.kind
-                not in (inspect.Parameter.VAR_POSITIONAL, inspect.Parameter.VAR_KEYWORD)
-                for parameter in parameters
-            ), (type(port), name, signature)
+    assert public_transaction_callables == _DURABILITY_TRANSACTION_METHODS
+
+    owner = build_owner(durability_port=port)
+    assert _find_default_persistence_ports(owner) == []
+    for facet in (owner, owner.commands, owner.reads):
+        assert not hasattr(facet, "transaction")
 
 
-def test_default_postgresql_storage_port_preserves_owner_decided_assessment_without_rederiving(
-    tmp_path: Path,
-) -> None:
-    del tmp_path  # signature keeps this proof visibly in the real-PostgreSQL family
+def test_postgresql_adapter_preserves_owner_decided_assessment_without_rederiving() -> None:
     token = _token("storage-only")
-    owner = build_owner(postgres_dsn=_dsn(), eligibility_resolver=lambda _o, _p: True)
+    port = create_postgres_persistence(_dsn())
+    owner = build_owner(durability_port=port, eligibility_resolver=lambda _o, _p: True)
     stored_policy = register_policy(
         owner,
         policy(
@@ -2989,176 +3041,92 @@ def test_default_postgresql_storage_port_preserves_owner_decided_assessment_with
         ),
     )
 
-    # This canary deliberately supplies storage with a complete semantic assessment record whose
-    # outcome disagrees with what an owner would derive from the visible eligible observation.
-    # A technical storage translator must preserve that already-decided field exactly rather than
-    # inspecting observations/eligibility and choosing Raw Signal meaning itself.
+    # The technical adapter receives an already-decided semantic record and must preserve it.
+    # The deliberately counterfactual zero outcome proves the adapter does not inspect durable
+    # observations or eligibility authority and silently replace M00's semantic decision.
     canary = assessment_contract(
         assessment_occurrence_id=f"assessment-storage-canary::{token}",
         capture_occurrence_ref=capture.capture_occurrence_id,
         outcome="zero_received",
         evidence_as_of_ts_utc=datetime(2026, 9, 20, 12, 0, 10, tzinfo=UTC),
     )
-    ports = _find_default_persistence_ports(owner)
-    assert len(ports) == 1, "proof requires one inspectable default PostgreSQL storage protocol"
-    port = ports[0]
-    stored = port.append_assessment(canary)
-    reread = port.get_assessment(canary.assessment_occurrence_id)
-    assert stored == canary
+    with port.transaction(write=True) as transaction:
+        transaction.append_assessment(canary)
+
+    fresh_port = create_postgres_persistence(_dsn())
+    with fresh_port.transaction(write=False) as transaction:
+        reread = transaction.get_assessment(canary.assessment_occurrence_id)
     assert reread == canary
     assert reread.outcome == "zero_received"
 
-    # Discard the entire owner/adapter object graph and read the same record through a newly
-    # constructed default PostgreSQL storage port. This prevents a technically named adapter
-    # from returning the owner-decided canary from process memory while persisting a re-derived
-    # outcome underneath it.
-    fresh_owner = build_owner(postgres_dsn=_dsn(), eligibility_resolver=lambda _o, _p: False)
-    fresh_ports = _find_default_persistence_ports(fresh_owner)
-    assert len(fresh_ports) == 1
-    fresh = fresh_ports[0].get_assessment(canary.assessment_occurrence_id)
-    assert fresh == canary
-    assert fresh.outcome == "zero_received"
 
-
-def test_default_postgresql_storage_is_invariant_under_opposing_eligibility_authority(
-    tmp_path: Path,
-) -> None:
-    del tmp_path
-    base_dsn = _dsn()
-    admin_dsn = _admin_dsn(base_dsn)
-    suffix = uuid.uuid4().hex[:12]
-    source_db = f"nvda_i9_src_{suffix}"
-    true_db = f"nvda_i9_true_{suffix}"
-    false_db = f"nvda_i9_false_{suffix}"
-    source_dsn = _dsn_with_database(base_dsn, source_db)
-    true_dsn = _dsn_with_database(base_dsn, true_db)
-    false_dsn = _dsn_with_database(base_dsn, false_db)
+def test_postgresql_adapter_is_invariant_under_opposing_eligibility_authority() -> None:
     token = _token("eligibility-invariance")
     facts = _authoritative_facts()
-    source_proxy: _ForkedRecordOnlyPersistencePort | None = None
-    true_proxy: _ForkedRecordOnlyPersistencePort | None = None
-    false_proxy: _ForkedRecordOnlyPersistencePort | None = None
+    seed_owner = _durable_owner(eligibility_resolver=lambda _o, _p: True)
+    stored_policy = register_policy(
+        seed_owner,
+        policy(
+            scope_policy_id=f"scope::{token}",
+            eligibility_policy_ref=facts["eligibility_policy_ref"],
+        ),
+    )
+    stored_capture = realise_capture(
+        seed_owner,
+        scope_policy_ref=f"scope::{token}@1",
+        capture_occurrence_id=f"capture::{token}",
+        slot_start_utc=datetime(2026, 9, 20, 12, 0, tzinfo=UTC),
+    )
+    stored_observation = admit_observation(
+        seed_owner,
+        observation(
+            observation_occurrence_id=f"observation::{token}",
+            delivery_artifact_ref=facts["delivery_artifact_ref"],
+            source_provider=facts["source_provider"],
+            raw_signal_catalogue_ids=tuple(facts["raw_signal_catalogue_ids"]),
+            native_identifier=facts["native_identifier"],
+            native_record=facts["native_record"],
+            native_units=facts["native_units"],
+            received_ts_utc=datetime(2026, 9, 20, 12, 0, 5, tzinfo=UTC),
+            ingestion_sequence=41,
+            ingestion_sequence_scope=facts["ingestion_sequence_scope"],
+        ),
+    )
 
-    _create_database(admin_dsn, source_db)
-    try:
-        source_proxy = _forked_postgresql_record_only_port(source_dsn)
-        source_owner = build_owner(
-            persistence_port=source_proxy, eligibility_resolver=lambda _o, _p: True
-        )
-        stored_policy = register_policy(
-            source_owner,
-            policy(
-                scope_policy_id=f"scope::{token}",
-                eligibility_policy_ref=facts["eligibility_policy_ref"],
-            ),
-        )
-        stored_capture = realise_capture(
-            source_owner,
-            scope_policy_ref=f"scope::{token}@1",
-            capture_occurrence_id=f"capture::{token}",
-            slot_start_utc=datetime(2026, 9, 20, 12, 0, tzinfo=UTC),
-        )
-        stored_observation = admit_observation(
-            source_owner,
-            observation(
-                observation_occurrence_id=f"observation::{token}",
-                delivery_artifact_ref=facts["delivery_artifact_ref"],
-                source_provider=facts["source_provider"],
-                raw_signal_catalogue_ids=tuple(facts["raw_signal_catalogue_ids"]),
-                native_identifier=facts["native_identifier"],
-                native_record=facts["native_record"],
-                native_units=facts["native_units"],
-                received_ts_utc=datetime(2026, 9, 20, 12, 0, 5, tzinfo=UTC),
-                ingestion_sequence=41,
-                ingestion_sequence_scope=facts["ingestion_sequence_scope"],
-            ),
-        )
-        source_proxy._close()
-        source_proxy = None
-        _terminate_database_connections(admin_dsn, source_db)
-        _create_database(admin_dsn, true_db, template=source_db)
-        _create_database(admin_dsn, false_db, template=source_db)
+    true_owner = _durable_owner(eligibility_resolver=lambda _o, _p: True)
+    false_owner = _durable_owner(eligibility_resolver=lambda _o, _p: False)
 
-        # Each concrete default adapter is created only inside its own child process. The
-        # semantic owner receives an allowlisted record protocol whose reachable state contains
-        # no adapter object and whose server rejects every private/non-protocol dispatch.
-        true_proxy = _forked_postgresql_record_only_port(true_dsn)
-        false_proxy = _forked_postgresql_record_only_port(false_dsn)
-        true_owner = build_owner(
-            persistence_port=true_proxy, eligibility_resolver=lambda _o, _p: True
-        )
-        false_owner = build_owner(
-            persistence_port=false_proxy, eligibility_resolver=lambda _o, _p: False
-        )
-        assert not hasattr(true_proxy, "_inner")
-        assert not hasattr(false_proxy, "_inner")
-        with pytest.raises(AssertionError, match="outside the record-only persistence protocol"):
-            true_proxy._request("_semantic_decision")
-        with pytest.raises(AssertionError, match="outside the record-only persistence protocol"):
-            false_proxy._request("_semantic_decision")
+    true_relation = true_owner.commands.derive_capture_receipt_evidence_relation(
+        observation_occurrence_ref=stored_observation.observation_occurrence_id,
+        capture_occurrence_ref=stored_capture.capture_occurrence_id,
+        scope_policy_ref=stored_capture.scope_policy_ref,
+    )
+    false_relation = false_owner.commands.derive_capture_receipt_evidence_relation(
+        observation_occurrence_ref=stored_observation.observation_occurrence_id,
+        capture_occurrence_ref=stored_capture.capture_occurrence_id,
+        scope_policy_ref=stored_capture.scope_policy_ref,
+    )
+    assert true_relation is not None
+    assert false_relation is None
 
-        def storage_state(port: Any) -> dict[str, Any]:
-            return {
-                "policy": _canonical(
-                    port.get_policy(
-                        stored_policy.scope_policy_id, stored_policy.scope_policy_version
-                    )
-                ),
-                "capture": _canonical(port.get_capture(stored_capture.capture_occurrence_id)),
-                "observation": _canonical(
-                    port.get_observation(stored_observation.observation_occurrence_id)
-                ),
-            }
+    # The same durable facts remain unchanged. Eligibility is an owner-side authority decision,
+    # not a PostgreSQL adapter decision or materialised relation state.
+    reader = create_postgres_persistence(_dsn())
+    with reader.transaction(write=False) as transaction:
+        assert transaction.get_policy(
+            stored_policy.scope_policy_id, stored_policy.scope_policy_version
+        ) == stored_policy
+        assert transaction.get_capture(stored_capture.capture_occurrence_id) == stored_capture
+        assert (
+            transaction.get_observation(stored_observation.observation_occurrence_id)
+            == stored_observation
+        )
 
-        before_true = storage_state(true_proxy)
-        before_false = storage_state(false_proxy)
-        assert before_true == before_false
-        true_proxy._clear_calls()
-        false_proxy._clear_calls()
-
-        true_relation = true_owner.commands.derive_capture_receipt_evidence_relation(
-            observation_occurrence_ref=stored_observation.observation_occurrence_id,
-            capture_occurrence_ref=stored_capture.capture_occurrence_id,
-            scope_policy_ref=stored_capture.scope_policy_ref,
-        )
-        false_relation = false_owner.commands.derive_capture_receipt_evidence_relation(
-            observation_occurrence_ref=stored_observation.observation_occurrence_id,
-            capture_occurrence_ref=stored_capture.capture_occurrence_id,
-            scope_policy_ref=stored_capture.scope_policy_ref,
-        )
-        assert true_relation is not None
-        assert false_relation is None
-
-        true_assessment = append_assessment(
-            true_owner,
-            assessment_occurrence_id=f"assessment-eligibility::{token}",
-            capture_occurrence_ref=stored_capture.capture_occurrence_id,
-            evidence_as_of_ts_utc=datetime(2026, 9, 20, 12, 0, 10, tzinfo=UTC),
-        )
-        false_assessment = append_assessment(
-            false_owner,
-            assessment_occurrence_id=f"assessment-eligibility::{token}",
-            capture_occurrence_ref=stored_capture.capture_occurrence_id,
-            evidence_as_of_ts_utc=datetime(2026, 9, 20, 12, 0, 10, tzinfo=UTC),
-        )
-        assert str(true_assessment.outcome) == "one_or_more_received"
-        assert str(false_assessment.outcome) == "zero_received"
-        assert true_proxy.calls
-        assert false_proxy.calls
-        assert set(true_proxy.calls).issubset(_STORAGE_PROTOCOL_BOUND_ARITY)
-        assert set(false_proxy.calls).issubset(_STORAGE_PROTOCOL_BOUND_ARITY)
-        assert storage_state(true_proxy) == before_true
-        assert storage_state(false_proxy) == before_false
-        assert storage_state(true_proxy) == storage_state(false_proxy)
-    finally:
-        if false_proxy is not None:
-            false_proxy._close()
-        if true_proxy is not None:
-            true_proxy._close()
-        if source_proxy is not None:
-            source_proxy._close()
-        for dbname in (false_db, true_db, source_db):
-            _drop_database(admin_dsn, dbname)
+    postgres_source = (
+        ROOT / "src/nvda_desk/raw_signal_occurrence_truth/_postgres.py"
+    ).read_text(encoding="utf-8")
+    for semantic_name in ("eligibility_resolver", "derive_capture_receipt_evidence_relation"):
+        assert semantic_name not in postgres_source
 
 
 def test_owner_package_has_no_alternate_durable_backend_or_external_semantic_service() -> None:
@@ -3265,7 +3233,7 @@ def _find_default_persistence_ports(owner: Any) -> list[Any]:
 
 
 def test_persistence_proof_does_not_claim_cross_kind_atomicity_or_replay_sla() -> None:
-    owner = build_owner(postgres_dsn=_dsn())
+    owner = _durable_owner()
     for forbidden in (
         "cross_kind_atomic",
         "replay_equivalent",

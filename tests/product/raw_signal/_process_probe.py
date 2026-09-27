@@ -13,6 +13,7 @@ import os
 import signal
 import sys
 import time
+from collections.abc import Mapping
 from dataclasses import is_dataclass
 from datetime import UTC, datetime
 from decimal import Decimal
@@ -35,6 +36,10 @@ from tests.product.raw_signal._support import (  # noqa: E402
     realise_capture,
     register_policy,
     typed_identity,
+)
+
+from nvda_desk.raw_signal_occurrence_truth._postgres import (  # noqa: E402
+    create_postgres_persistence,
 )
 
 
@@ -66,10 +71,71 @@ def _eligibility(_: Any, __: Any) -> bool:
     return True
 
 
+_FIXED_NOW = datetime(2026, 9, 20, 12, 0, tzinfo=UTC)
+
+
+def _capture_identity(value: str) -> Any:
+    return typed_identity("ScheduledCaptureOccurrenceV1", "capture_occurrence_id", value)
+
+
+def _observation_identity(value: str) -> Any:
+    return typed_identity("RawObservationOccurrenceV1", "observation_occurrence_id", value)
+
+
+def _assessment_identity(value: str) -> Any:
+    return typed_identity(
+        "CaptureReceiptPresenceAssessmentV1", "assessment_occurrence_id", value
+    )
+
+
+class _FaultingTransaction:
+    """Proof-only transaction wrapper that faults before the wrapped commit boundary."""
+
+    def __init__(self, inner: Any, fault_mode: str) -> None:
+        self._inner = inner
+        self._fault_mode = fault_mode
+
+    def __getattr__(self, name: str) -> Any:
+        return getattr(self._inner, name)
+
+    def append_capture(self, value: Any) -> None:
+        self._inner.append_capture(value)
+        if self._fault_mode == "fail_before_commit":
+            raise RuntimeError("proof fault before capture commit")
+
+    def append_observation(self, value: Any) -> None:
+        self._inner.append_observation(value)
+        if self._fault_mode == "fail_before_commit":
+            raise RuntimeError("proof fault before observation commit")
+
+    def append_assessment(self, value: Any) -> None:
+        self._inner.append_assessment(value)
+        if self._fault_mode in {"fail_before_commit", "fail_after_occurrence_commit"}:
+            raise RuntimeError("proof fault before assessment commit")
+
+
+class _FaultingPort:
+    """Proof-only port wrapper; product persistence remains the real PostgreSQL adapter."""
+
+    def __init__(self, inner: Any, fault_mode: str) -> None:
+        self._inner = inner
+        self._fault_mode = fault_mode
+
+    @contextlib.contextmanager
+    def transaction(self, *, write: bool) -> Any:
+        with self._inner.transaction(write=write) as transaction:
+            yield _FaultingTransaction(transaction, self._fault_mode)
+
+
 def _owner(payload: dict[str, Any], **extra: Any) -> Any:
+    fault_mode = extra.pop("fault_mode", None)
+    durability_port: Any = create_postgres_persistence(payload["dsn"])
+    if fault_mode is not None:
+        durability_port = _FaultingPort(durability_port, str(fault_mode))
     return build_owner(
-        postgres_dsn=payload["dsn"],
+        durability_port=durability_port,
         eligibility_resolver=_eligibility,
+        utc_now=lambda: _FIXED_NOW,
         **extra,
     )
 
@@ -184,7 +250,7 @@ def _normalise(value: Any) -> Any:
                 decimal_tuple.exponent,
             ],
         }
-    if isinstance(value, dict):
+    if isinstance(value, Mapping):
         return {
             str(key): _normalise(item)
             for key, item in sorted(value.items(), key=lambda x: str(x[0]))
@@ -221,7 +287,8 @@ def _observe_public_method_return(method: Any, *args: Any, **kwargs: Any) -> Any
             # group/session changes; PID 1 is excluded and stops itself immediately after
             # emitting the marker. This prevents a forked/setsid lazy writer from advancing
             # after the public command has returned.
-            os.kill(-1, signal.SIGSTOP)
+            with contextlib.suppress(ProcessLookupError):
+                os.kill(-1, signal.SIGSTOP)
             print(
                 json.dumps({"event": "public_method_return", "_pid": os.getpid()}),
                 flush=True,
@@ -394,7 +461,9 @@ def write_capture_only(payload: dict[str, Any]) -> dict[str, Any]:
 
 def read_capture(payload: dict[str, Any]) -> dict[str, Any]:
     ids = _ids(payload["token"])
-    stored = _owner(payload).reads.get_scheduled_capture_occurrence(ids["capture_id"])
+    stored = _owner(payload).reads.get_scheduled_capture_occurrence(
+        _capture_identity(ids["capture_id"])
+    )
     return {"record": _normalise(stored)}
 
 
@@ -405,7 +474,9 @@ def write_observation_only(payload: dict[str, Any]) -> dict[str, Any]:
 
 def read_observation(payload: dict[str, Any]) -> dict[str, Any]:
     ids = _ids(payload["token"])
-    stored = _owner(payload).reads.get_raw_observation_occurrence(ids["observation_id"])
+    stored = _owner(payload).reads.get_raw_observation_occurrence(
+        _observation_identity(ids["observation_id"])
+    )
     return {"record": _normalise(stored)}
 
 
@@ -440,9 +511,11 @@ def write_relation_and_one_assessment(payload: dict[str, Any]) -> dict[str, Any]
     token = payload["token"]
     ids = _ids(token)
     owner = _owner(payload)
-    capture = owner.reads.get_scheduled_capture_occurrence(ids["capture_id"])
-    obs = owner.reads.get_raw_observation_occurrence(ids["observation_id"])
-    zero = owner.reads.get_receipt_presence_assessment(ids["assessment_zero_id"])
+    capture = owner.reads.get_scheduled_capture_occurrence(_capture_identity(ids["capture_id"]))
+    obs = owner.reads.get_raw_observation_occurrence(_observation_identity(ids["observation_id"]))
+    zero = owner.reads.get_receipt_presence_assessment(
+        _assessment_identity(ids["assessment_zero_id"])
+    )
     relation = owner.commands.derive_capture_receipt_evidence_relation(
         observation_occurrence_ref=obs.observation_occurrence_id,
         capture_occurrence_ref=capture.capture_occurrence_id,
@@ -463,8 +536,8 @@ def derive_relation_only(payload: dict[str, Any]) -> dict[str, Any]:
     token = payload["token"]
     ids = _ids(token)
     owner = _owner(payload)
-    capture = owner.reads.get_scheduled_capture_occurrence(ids["capture_id"])
-    obs = owner.reads.get_raw_observation_occurrence(ids["observation_id"])
+    capture = owner.reads.get_scheduled_capture_occurrence(_capture_identity(ids["capture_id"]))
+    obs = owner.reads.get_raw_observation_occurrence(_observation_identity(ids["observation_id"]))
     relation = owner.commands.derive_capture_receipt_evidence_relation(
         observation_occurrence_ref=obs.observation_occurrence_id,
         capture_occurrence_ref=capture.capture_occurrence_id,
@@ -477,7 +550,9 @@ def derive_relation_only(payload: dict[str, Any]) -> dict[str, Any]:
 def write_one_assessment_only(payload: dict[str, Any]) -> dict[str, Any]:
     ids = _ids(payload["token"])
     owner = _owner(payload)
-    zero = owner.reads.get_receipt_presence_assessment(ids["assessment_zero_id"])
+    zero = owner.reads.get_receipt_presence_assessment(
+        _assessment_identity(ids["assessment_zero_id"])
+    )
     stored = append_assessment(
         owner,
         assessment_occurrence_id=ids["assessment_one_id"],
@@ -492,13 +567,17 @@ def read_assessment(payload: dict[str, Any]) -> dict[str, Any]:
     ids = _ids(payload["token"])
     which = payload.get("which", "zero")
     assessment_id = ids["assessment_zero_id"] if which == "zero" else ids["assessment_one_id"]
-    stored = _owner(payload).reads.get_receipt_presence_assessment(assessment_id)
+    stored = _owner(payload).reads.get_receipt_presence_assessment(
+        _assessment_identity(assessment_id)
+    )
     return {"record": _normalise(stored)}
 
 
 def read_assessment_chain(payload: dict[str, Any]) -> dict[str, Any]:
     ids = _ids(payload["token"])
-    chain = _owner(payload).reads.list_receipt_presence_assessments(ids["capture_id"])
+    chain = _owner(payload).reads.list_receipt_presence_assessments(
+        _capture_identity(ids["capture_id"])
+    )
     return {"records": [_normalise(item) for item in chain]}
 
 
@@ -544,7 +623,9 @@ def fault_capture(payload: dict[str, Any]) -> dict[str, Any]:
 
 def read_fault_capture_absent(payload: dict[str, Any]) -> dict[str, Any]:
     ids = _ids(payload["token"])
-    stored = _owner(payload).reads.get_scheduled_capture_occurrence(ids["fault_capture_id"])
+    stored = _owner(payload).reads.get_scheduled_capture_occurrence(
+        _capture_identity(ids["fault_capture_id"])
+    )
     return {"absent": stored is None}
 
 
@@ -560,7 +641,9 @@ def fault_observation(payload: dict[str, Any]) -> dict[str, Any]:
 
 def read_fault_observation_absent(payload: dict[str, Any]) -> dict[str, Any]:
     ids = _ids(payload["token"])
-    stored = _owner(payload).reads.get_raw_observation_occurrence(ids["fault_observation_id"])
+    stored = _owner(payload).reads.get_raw_observation_occurrence(
+        _observation_identity(ids["fault_observation_id"])
+    )
     return {"absent": stored is None}
 
 
@@ -582,7 +665,9 @@ def fault_assessment(payload: dict[str, Any]) -> dict[str, Any]:
 
 def read_fault_assessment_absent(payload: dict[str, Any]) -> dict[str, Any]:
     ids = _ids(payload["token"])
-    stored = _owner(payload).reads.get_receipt_presence_assessment(ids["assessment_fault_id"])
+    stored = _owner(payload).reads.get_receipt_presence_assessment(
+        _assessment_identity(ids["assessment_fault_id"])
+    )
     return {"absent": stored is None}
 
 
@@ -596,10 +681,12 @@ def reconcile(payload: dict[str, Any]) -> dict[str, Any]:
     result = owner.commands.reconcile_owed_slots(
         scope_policy_ref=_policy_ref(payload["token"]),
         slot_starts_utc=[datetime(2026, 9, 20, 12, 0, tzinfo=UTC)],
-        capture_occurrence_ids=[ids["recovered_capture_id"]],
-        assessment_occurrence_ids=[ids["recovered_assessment_id"]],
+        capture_occurrence_ids=[_capture_identity(ids["recovered_capture_id"])],
+        assessment_occurrence_ids=[_assessment_identity(ids["recovered_assessment_id"])],
     )
-    assessment = owner.reads.get_receipt_presence_assessment(ids["recovered_assessment_id"])
+    assessment = owner.reads.get_receipt_presence_assessment(
+        _assessment_identity(ids["recovered_assessment_id"])
+    )
     return {"count": len(result), "assessment": _normalise(assessment)}
 
 
@@ -610,8 +697,8 @@ def reconcile_fault_after_capture(payload: dict[str, Any]) -> dict[str, Any]:
         owner.commands.reconcile_owed_slots(
             scope_policy_ref=_policy_ref(payload["token"]),
             slot_starts_utc=[datetime(2026, 9, 20, 12, 0, tzinfo=UTC)],
-            capture_occurrence_ids=[ids["recovered_capture_id"]],
-            assessment_occurrence_ids=[ids["recovered_assessment_id"]],
+            capture_occurrence_ids=[_capture_identity(ids["recovered_capture_id"])],
+            assessment_occurrence_ids=[_assessment_identity(ids["recovered_assessment_id"])],
         )
     except Exception:
         return {"failed": True}
@@ -621,8 +708,12 @@ def reconcile_fault_after_capture(payload: dict[str, Any]) -> dict[str, Any]:
 def read_reconcile(payload: dict[str, Any]) -> dict[str, Any]:
     ids = _ids(payload["token"])
     owner = _owner(payload)
-    capture = owner.reads.get_scheduled_capture_occurrence(ids["recovered_capture_id"])
-    assessment = owner.reads.get_receipt_presence_assessment(ids["recovered_assessment_id"])
+    capture = owner.reads.get_scheduled_capture_occurrence(
+        _capture_identity(ids["recovered_capture_id"])
+    )
+    assessment = owner.reads.get_receipt_presence_assessment(
+        _assessment_identity(ids["recovered_assessment_id"])
+    )
     return {"capture": _normalise(capture), "assessment": _normalise(assessment)}
 
 

@@ -302,7 +302,7 @@ families:
           - append-only zero then one-or-more assessment chain survives fresh process boundaries
           - durable same-ID identical-content observation and assessment retry is idempotent across fresh processes while conflicting content is rejected
           - per-scope ingestion high-water survives an A:high -> B:low -> A:lower/A:higher fresh-process sequence
-          - the default PostgreSQL adapter exposes a record-only storage protocol and preserves an owner-supplied counterfactual assessment outcome without re-deriving semantic meaning
+          - the injected PostgreSQL durability port exposes only the authorised transaction/query contract, remains unreachable from the ordinary public owner object graph, and preserves an already owner-decided counterfactual assessment outcome without re-deriving semantic meaning
           - restart reconciliation commits the exact recovered capture before assessment, then persists unknown_not_established bound to that exact capture
       prohibited_false_positive:
         cases:
@@ -310,7 +310,7 @@ families:
           - PostgreSQL merely gates/audits while another local/network persistence mechanism remains the semantic durable store or facts are reconstructed from IDs
           - semantic read succeeds through a deliberately invalid PostgreSQL DSN
           - failed scheduled-capture, raw-observation or assessment write leaves a durable fact or semantic fallback visible from a fresh process
-          - the default PostgreSQL storage protocol receives raw decision inputs or re-derives/changes an already owner-decided semantic record
+          - the technical PostgreSQL transaction layer receives semantic decision authority, becomes caller-reachable through the ordinary public owner graph, or re-derives/changes an already owner-decided semantic record
           - restart absence is interpreted as zero_received
           - cross-kind atomicity/replay/SLA/RTO/RPO/retention claim appears
       missing_mandatory_authority:
