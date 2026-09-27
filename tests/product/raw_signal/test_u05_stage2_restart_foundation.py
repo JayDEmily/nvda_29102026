@@ -57,6 +57,49 @@ def _assessment_id(value: str) -> Any:
     return required_symbol("assessment_occurrence_id")(value)
 
 
+def test_stage2_fresh_owner_normalizes_timestamptz_readback_under_non_utc_database_timezone(
+) -> None:
+    psycopg = pytest.importorskip("psycopg")
+    sql = pytest.importorskip("psycopg.sql")
+    dsn = _dsn()
+
+    with psycopg.connect(dsn) as connection:
+        original_timezone = connection.execute("SHOW TimeZone").fetchone()[0]
+        database_name = connection.execute("SELECT current_database()").fetchone()[0]
+
+    def set_database_timezone(value: str) -> None:
+        with psycopg.connect(dsn, autocommit=True) as connection:
+            connection.execute(
+                sql.SQL("ALTER DATABASE {} SET timezone TO {}").format(
+                    sql.Identifier(database_name),
+                    sql.Literal(value),
+                )
+            )
+
+    try:
+        set_database_timezone("Australia/Melbourne")
+        with psycopg.connect(dsn) as connection:
+            assert connection.execute("SHOW TimeZone").fetchone()[0] == "Australia/Melbourne"
+
+        original = policy(
+            scope_policy_id="stage2-non-utc-session-policy",
+            activation_ts_utc=datetime(2026, 9, 27, 6, 0, tzinfo=UTC),
+            deactivation_ts_utc=None,
+        )
+        assert register_policy(_fresh_owner(), original) == original
+
+        restarted = _fresh_owner()
+        recovered = restarted.reads.get_capture_scope_policy(
+            required_symbol("scope_policy_id")("stage2-non-utc-session-policy"), 1
+        )
+        assert recovered == original
+        assert recovered is not None
+        assert recovered.activation_ts_utc == datetime(2026, 9, 27, 6, 0, tzinfo=UTC)
+        assert recovered.activation_ts_utc.tzinfo is UTC
+    finally:
+        set_database_timezone(str(original_timezone))
+
+
 def test_stage2_fresh_owner_uses_durable_policy_set_for_overlap_and_readback() -> None:
     first = _fresh_owner()
     original = policy(

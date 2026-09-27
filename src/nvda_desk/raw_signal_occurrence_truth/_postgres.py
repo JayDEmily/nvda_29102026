@@ -9,7 +9,7 @@ from __future__ import annotations
 
 from collections.abc import Iterator, Mapping, Sequence
 from contextlib import contextmanager
-from datetime import datetime
+from datetime import UTC, datetime
 from decimal import Decimal
 from struct import pack, unpack
 from typing import Any, cast
@@ -287,6 +287,18 @@ def _integer_from_numeric(value: object, field_name: str) -> int:
     raise TypeError(f"{field_name} did not round-trip as an integral PostgreSQL numeric")
 
 
+def _utc_datetime_from_row(value: object, field_name: str) -> datetime:
+    if not isinstance(value, datetime) or value.tzinfo is None or value.utcoffset() is None:
+        raise TypeError(f"{field_name} did not round-trip as an aware PostgreSQL timestamptz")
+    return value.astimezone(UTC)
+
+
+def _optional_utc_datetime_from_row(value: object, field_name: str) -> datetime | None:
+    if value is None:
+        return None
+    return _utc_datetime_from_row(value, field_name)
+
+
 def _policy_from_row(row: Sequence[object]) -> CaptureScopePolicyV1:
     return CaptureScopePolicyV1(
         concept_id=concept_id("raw_signal.capture_scope_policy"),
@@ -294,11 +306,9 @@ def _policy_from_row(row: Sequence[object]) -> CaptureScopePolicyV1:
         units="not_applicable",
         scope_policy_id=scope_policy_id(str(row[0])),
         scope_policy_version=_integer_from_numeric(row[1], "scope_policy_version"),
-        activation_ts_utc=row[3] if isinstance(row[3], datetime) else _bad_datetime("activation"),
-        deactivation_ts_utc=(
-            row[4]
-            if row[4] is None or isinstance(row[4], datetime)
-            else _bad_datetime("deactivation")
+        activation_ts_utc=_utc_datetime_from_row(row[3], "activation_ts_utc"),
+        deactivation_ts_utc=_optional_utc_datetime_from_row(
+            row[4], "deactivation_ts_utc"
         ),
         eligibility_policy_ref=eligibility_policy_ref(str(row[5])),
     )
@@ -311,8 +321,8 @@ def _capture_from_row(row: Sequence[object]) -> ScheduledCaptureOccurrenceV1:
         units="not_applicable",
         capture_occurrence_id=capture_occurrence_id(str(row[0])),
         scope_policy_ref=scope_policy_ref(str(row[1])),
-        slot_start_utc=row[2] if isinstance(row[2], datetime) else _bad_datetime("slot_start"),
-        slot_end_utc=row[3] if isinstance(row[3], datetime) else _bad_datetime("slot_end"),
+        slot_start_utc=_utc_datetime_from_row(row[2], "slot_start_utc"),
+        slot_end_utc=_utc_datetime_from_row(row[3], "slot_end_utc"),
     )
 
 
@@ -344,9 +354,7 @@ def _observation_from_row(row: Sequence[object]) -> RawObservationOccurrenceV1:
         delivery_artifact_ref=delivery_artifact_ref(str(row[1])),
         source_provider=provider_id(str(row[2])),
         native_record=_decode_native_record(row[3]),
-        received_ts_utc=(
-            row[4] if isinstance(row[4], datetime) else _bad_datetime("received_ts_utc")
-        ),
+        received_ts_utc=_utc_datetime_from_row(row[4], "received_ts_utc"),
         received_epoch_ns=(
             None
             if received_epoch_ns is None
@@ -393,17 +401,11 @@ def _assessment_from_row(row: Sequence[object]) -> CaptureReceiptPresenceAssessm
         assessment_occurrence_id=assessment_occurrence_id(str(row[0])),
         capture_occurrence_ref=capture_occurrence_id(str(row[1])),
         outcome=cast(AssessmentOutcome, outcome),
-        evidence_as_of_ts_utc=(
-            row[3] if isinstance(row[3], datetime) else _bad_datetime("evidence_as_of")
-        ),
+        evidence_as_of_ts_utc=_utc_datetime_from_row(row[3], "evidence_as_of_ts_utc"),
         supersedes_assessment_ref=(
             None if supersedes is None else assessment_occurrence_id(str(supersedes))
         ),
     )
-
-
-def _bad_datetime(field_name: str) -> Any:
-    raise TypeError(f"{field_name} did not round-trip as a PostgreSQL timestamptz")
 
 
 class _PostgresTransaction:
