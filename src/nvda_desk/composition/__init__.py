@@ -79,8 +79,8 @@ class Application:
 
         registered_policy = commands.register_capture_scope_policy(capture_scope_policy)
         authoritative_policy_ref = make_scope_policy_ref(
-            f"{capture_scope_policy.scope_policy_id.value}@"
-            f"{capture_scope_policy.scope_policy_version}"
+            f"{registered_policy.scope_policy_id.value}@"
+            f"{registered_policy.scope_policy_version}"
         )
         if scope_policy_ref != authoritative_policy_ref:
             raise ValueError(
@@ -130,7 +130,6 @@ def create_application(
     exists for proof of A00 delegation without fabricating a production database dependency.
     """
 
-    owner_factory = create_owner if raw_signal_owner_factory is None else raw_signal_owner_factory
     owner_kwargs: dict[str, Any] = {}
     if raw_signal_eligibility_resolver is not None:
         owner_kwargs["eligibility_resolver"] = raw_signal_eligibility_resolver
@@ -138,11 +137,15 @@ def create_application(
     if postgres_dsn is None:
         if raw_signal_owner_factory is None:
             raise ValueError("postgres_dsn is required for production application construction")
-        return Application(owner_factory(**owner_kwargs))
+        return Application(raw_signal_owner_factory(**owner_kwargs))
 
+    if raw_signal_owner_factory is not None:
+        raise ValueError(
+            "raw_signal_owner_factory is proof-only and cannot be combined with postgres_dsn"
+        )
     if type(postgres_dsn) is not str or not postgres_dsn.strip():
         raise ValueError("postgres_dsn must be a non-empty string")
 
     durability_port = create_postgres_persistence(postgres_dsn)
-    owner = owner_factory(durability_port=durability_port, **owner_kwargs)
+    owner = create_owner(durability_port=durability_port, **owner_kwargs)
     return Application(owner)

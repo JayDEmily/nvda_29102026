@@ -9,7 +9,7 @@ import pytest
 from nvda_desk import composition
 
 
-def test_injected_construction_passes_only_the_technical_dependency_to_m00(
+def test_production_construction_passes_only_the_technical_dependency_to_m00(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     persistence = object()
@@ -25,10 +25,8 @@ def test_injected_construction_passes_only_the_technical_dependency_to_m00(
         return owner
 
     monkeypatch.setattr(composition, "create_postgres_persistence", persistence_factory)
-    app = composition.create_application(
-        postgres_dsn="postgresql://stage1-construction",
-        raw_signal_owner_factory=owner_factory,
-    )
+    monkeypatch.setattr(composition, "create_owner", owner_factory)
+    app = composition.create_application(postgres_dsn="postgresql://stage1-construction")
 
     assert calls == [
         ("persistence", "postgresql://stage1-construction"),
@@ -38,6 +36,14 @@ def test_injected_construction_passes_only_the_technical_dependency_to_m00(
     assert composition.Application.__slots__ == ("_Application__raw_signal_owner",)
     assert getattr(app, composition.Application.__slots__[0]) is owner
     assert getattr(app, composition.Application.__slots__[0]) is not persistence
+
+
+def test_production_construction_rejects_caller_owner_factory_override() -> None:
+    with pytest.raises(ValueError, match="proof-only"):
+        composition.create_application(
+            postgres_dsn="postgresql://stage4-bypass-challenge",
+            raw_signal_owner_factory=lambda **_: object(),
+        )
 
 
 def test_owner_factory_only_path_is_bounded_proof_injection() -> None:

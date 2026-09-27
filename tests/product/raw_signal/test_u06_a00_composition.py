@@ -120,11 +120,12 @@ def test_a00_delegates_full_semantic_argument_trace_to_exact_m00_results() -> No
         pytest.fail("A00 production composition symbol create_application is not implemented")
 
     calls: list[tuple[str, Any]] = []
+    raw_policy = policy()
     returned_capture_id = object()
     returned_observation_id = object()
     effective_policy_ref = object()
     sentinels = {
-        "policy": object(),
+        "policy": raw_policy,
         "capture": SimpleNamespace(
             capture_occurrence_id=returned_capture_id,
             scope_policy_ref=effective_policy_ref,
@@ -140,7 +141,6 @@ def test_a00_delegates_full_semantic_argument_trace_to_exact_m00_results() -> No
         return _SpyOwner(calls, sentinels)
 
     app = builder(raw_signal_owner_factory=owner_factory)
-    raw_policy = policy()
     raw_observation = observation(observation_occurrence_id="a00-observation-input")
     authoritative_policy_ref = policy_ref()
     authoritative_slot = datetime(2026, 9, 20, 12, 0, tzinfo=UTC)
@@ -237,6 +237,45 @@ def test_a00_rejects_caller_policy_ref_that_disagrees_with_registered_policy() -
         )
     assert any(name == "register_policy" for name, _ in calls)
     assert not any(name == "realise_capture" for name, _ in calls)
+
+
+def test_a00_policy_ref_check_uses_exact_policy_returned_by_registration() -> None:
+    calls: list[tuple[str, Any]] = []
+    submitted_policy = policy(scope_policy_id="submitted-policy")
+    registered_policy = policy(scope_policy_id="registered-policy")
+    sentinels = {
+        "policy": registered_policy,
+        "capture": SimpleNamespace(
+            capture_occurrence_id=object(),
+            scope_policy_ref=policy_ref("registered-policy", 1),
+        ),
+        "observation": SimpleNamespace(observation_occurrence_id=object()),
+        "relation": object(),
+        "assessment": SimpleNamespace(outcome="m00-owned-outcome"),
+        "readback": object(),
+    }
+
+    def owner_factory(**kwargs: Any) -> _SpyOwner:
+        calls.append(("construct_owner", kwargs))
+        return _SpyOwner(calls, sentinels)
+
+    app = composition.create_application(raw_signal_owner_factory=owner_factory)
+    with pytest.raises(ValueError, match="policy accepted"):
+        app.run_raw_signal_proof_sequence(
+            capture_scope_policy=submitted_policy,
+            scope_policy_ref=policy_ref("submitted-policy", 1),
+            slot_start_utc=datetime(2026, 9, 20, 12, 0, tzinfo=UTC),
+            capture_occurrence_id="registered-policy-challenge-capture",
+            raw_observation=observation(
+                observation_occurrence_id="registered-policy-challenge-observation"
+            ),
+            assessment_occurrence_id="registered-policy-challenge-assessment",
+            assessment_evidence_as_of_ts_utc=datetime(
+                2026, 9, 20, 12, 0, 10, tzinfo=UTC
+            ),
+            supersedes_assessment_ref=None,
+        )
+    assert [name for name, _ in calls] == ["construct_owner", "register_policy"]
 
 def test_a00_wrong_downstream_identity_or_policy_wiring_cannot_hide_behind_correct_call_order(
 ) -> None:
