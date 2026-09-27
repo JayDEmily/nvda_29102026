@@ -1,9 +1,9 @@
 # VI-13R U05 Stage 6 — Independent Tester disposition
 
-**Date:** 2026-09-27  
-**Role:** fresh independent `TESTER`  
-**Reviewed replacement candidate:** `2bdbedff62307ecfaf6186f9c12814fb662c11a7`  
-**Candidate tree:** `e15e743e006217a8a3a6313011caf82265a679cf`  
+**Date:** 2026-09-27
+**Role:** fresh independent `TESTER`
+**Reviewed replacement candidate:** `2bdbedff62307ecfaf6186f9c12814fb662c11a7`
+**Candidate tree:** `e15e743e006217a8a3a6313011caf82265a679cf`
 **Disposition:** `PASS`
 
 ## 1. Scope and lineage
