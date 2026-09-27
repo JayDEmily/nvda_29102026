@@ -366,21 +366,21 @@ families:
         proposition_ids: [N19-P01, N19-P02, N19-P03, N19-P04, N19-P05]
     authoritative_inputs:
       - current architecture registry and declared A00 -> M00 edge
-      - exact M00 public seam
+      - exact M00 public semantic seam plus the separately authorised non-semantic PostgreSQL constructor exception
       - one bounded proof specimen using accepted v1 facts only
     dependency_substitutions:
       - spy owner factory observes A00 delegation only; opaque sentinels make no Raw Signal decisions
     case_coverage:
       lawful_positive:
         cases:
-          - production create_application constructs M00 through an injected owner factory and command/read facets
+          - production create_application constructs the non-owning PostgreSQL mechanism and M00; proof-only injection remains bounded to construction/delegation observation
           - A00 call order covers policy, capture, observation, relation, assessment and referential readback
           - every material downstream identity, policy reference, timestamp and supersession argument is wired from the exact authorised input or preceding M00 result, and caller policy reference must agree with registered policy identity/version
           - A00 returns the exact opaque objects returned by M00 rather than recreating semantic results
           - declared runtime edge remains exactly A00 -> M00
       prohibited_false_positive:
         cases:
-          - private test application or M00 private-state/table/repository bypass appears
+          - private semantic M00 seam, table/repository bypass, or technical import beyond the exact create_postgres_persistence exception appears
           - A00 calculates assessment outcome or substitutes its own semantic result objects
           - A00 preserves method order while wiring a wrong observation ID, capture ID, effective policy ref, assessment ID, evidence timestamp or supersession ref, or accepts a caller policy ref inconsistent with the registered policy
           - M00 -> A00, P01/K01, packet or downstream-consumer path appears

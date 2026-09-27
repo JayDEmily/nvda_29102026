@@ -24,5 +24,8 @@ category_rules:
 declared_owner_edges:
   - source: A00
     target: M00
-public_seam_exceptions: []
+public_seam_exceptions:
+  - source_owner: A00
+    target_owner: M00
+    import_path: nvda_desk.raw_signal_occurrence_truth._postgres.create_postgres_persistence
 forbid_dynamic_imports_in_runtime_owners: true

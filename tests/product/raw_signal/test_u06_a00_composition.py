@@ -20,19 +20,38 @@ def test_architecture_runtime_edge_is_exactly_a00_to_m00() -> None:
     assert rules["declared_owner_edges"] == [{"source": "A00", "target": "M00"}]
 
 
-def test_a00_composition_source_may_import_only_the_m00_public_seam() -> None:
+def test_a00_composition_uses_public_m00_seam_plus_exact_technical_exception() -> None:
     imported: set[str] = set()
+    postgres_symbols: set[str] = set()
     for path in (ROOT / "src/nvda_desk/composition").glob("*.py"):
         tree = ast.parse(path.read_text(encoding="utf-8"))
         for node in ast.walk(tree):
             if isinstance(node, ast.ImportFrom) and node.module:
                 imported.add(node.module)
+                if node.module == "nvda_desk.raw_signal_occurrence_truth._postgres":
+                    postgres_symbols.update(alias.name for alias in node.names)
             elif isinstance(node, ast.Import):
                 imported.update(alias.name for alias in node.names)
     m00_imports = {
         name for name in imported if name.startswith("nvda_desk.raw_signal_occurrence_truth")
     }
-    assert m00_imports <= {"nvda_desk.raw_signal_occurrence_truth.api"}
+    assert m00_imports <= {
+        "nvda_desk.raw_signal_occurrence_truth.api",
+        "nvda_desk.raw_signal_occurrence_truth._postgres",
+    }
+    assert postgres_symbols == {"create_postgres_persistence"}
+
+    rules = yaml.safe_load((ROOT / "config/architecture/dependency_rules.yaml").read_text())
+    assert rules["public_seam_exceptions"] == [
+        {
+            "source_owner": "A00",
+            "target_owner": "M00",
+            "import_path": (
+                "nvda_desk.raw_signal_occurrence_truth._postgres."
+                "create_postgres_persistence"
+            ),
+        }
+    ]
 
 
 def test_a00_uses_public_application_factory_and_contains_no_raw_signal_outcome_logic() -> None:
