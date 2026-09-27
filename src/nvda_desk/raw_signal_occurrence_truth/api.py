@@ -725,6 +725,16 @@ class _PersistenceTransaction(Protocol):
 
     def append_capture(self, value: ScheduledCaptureOccurrenceV1) -> None: ...
 
+    def get_observation(
+        self, observation_occurrence_id: _ObservationOccurrenceId
+    ) -> RawObservationOccurrenceV1 | None: ...
+
+    def get_observation_high_water(
+        self, ingestion_sequence_scope: _IngestionSequenceScope
+    ) -> int | None: ...
+
+    def append_observation(self, value: RawObservationOccurrenceV1) -> None: ...
+
     def get_assessment(
         self, assessment_occurrence_id: _AssessmentOccurrenceId
     ) -> CaptureReceiptPresenceAssessmentV1 | None: ...
@@ -1118,6 +1128,46 @@ def _build_owner_facets(
         if type(value) is not RawObservationOccurrenceV1:
             raise TypeError("value must be RawObservationOccurrenceV1")
 
+        if durability_port is not None:
+            with durability_port.transaction(write=True) as transaction:
+                existing = transaction.get_observation(value.observation_occurrence_id)
+                if existing is not None:
+                    if not _observations_exactly_equal(existing, value):
+                        raise ValueError(
+                            "observation occurrence identity is already admitted "
+                            "with different content"
+                        )
+                    return existing
+
+                previous_high_water = transaction.get_observation_high_water(
+                    value.ingestion_sequence_scope
+                )
+
+                # The high-water query acquires the correctness lock for observation
+                # admission. Re-read the identity under that lock so a concurrent
+                # same-identity writer is rebound to semantic idempotency/conflict
+                # rather than leaking a database uniqueness error.
+                existing = transaction.get_observation(value.observation_occurrence_id)
+                if existing is not None:
+                    if not _observations_exactly_equal(existing, value):
+                        raise ValueError(
+                            "observation occurrence identity is already admitted "
+                            "with different content"
+                        )
+                    return existing
+
+                if (
+                    previous_high_water is not None
+                    and value.ingestion_sequence < previous_high_water
+                ):
+                    raise ValueError(
+                        "ingestion_sequence must not decrease within one "
+                        "ingestion_sequence_scope"
+                    )
+
+                transaction.append_observation(value)
+            return value
+
         existing = state.observations_by_identity.get(value.observation_occurrence_id)
         if existing is not None:
             if not _observations_exactly_equal(existing, value):
@@ -1149,6 +1199,9 @@ def _build_owner_facets(
             _ObservationOccurrenceId,
             "observation_occurrence_id",
         )
+        if durability_port is not None:
+            with durability_port.transaction(write=False) as transaction:
+                return transaction.get_observation(observation_occurrence_id)
         return state.observations_by_identity.get(observation_occurrence_id)
 
     def derive_relation(

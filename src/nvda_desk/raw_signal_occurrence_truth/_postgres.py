@@ -7,10 +7,11 @@ supersession meaning.
 
 from __future__ import annotations
 
-from collections.abc import Iterator, Sequence
+from collections.abc import Iterator, Mapping, Sequence
 from contextlib import contextmanager
 from datetime import datetime
 from decimal import Decimal
+from struct import pack, unpack
 from typing import Any, cast
 
 import psycopg
@@ -19,9 +20,15 @@ from .api import (
     AssessmentOutcome,
     CaptureReceiptPresenceAssessmentV1,
     CaptureScopePolicyV1,
+    NativeValueV1,
+    RawObservationOccurrenceV1,
+    RawSignalCatalogueId,
     ScheduledCaptureOccurrenceV1,
+    SourceTemporalKind,
     _AssessmentOccurrenceId,
     _CaptureOccurrenceId,
+    _IngestionSequenceScope,
+    _ObservationOccurrenceId,
     _PersistencePort,
     _PersistenceTransaction,
     _ScopePolicyId,
@@ -30,14 +37,21 @@ from .api import (
     capture_occurrence_id,
     concept_id,
     contract_id,
+    delivery_artifact_ref,
     eligibility_policy_ref,
+    ingestion_sequence_scope,
+    observation_occurrence_id,
+    provider_id,
     scope_policy_id,
     scope_policy_ref,
 )
 
 _POLICY_TABLE = "rsot_capture_scope_policy_v1"
 _CAPTURE_TABLE = "rsot_scheduled_capture_occurrence_v1"
+_OBSERVATION_TABLE = "rsot_raw_observation_occurrence_v1"
 _ASSESSMENT_TABLE = "rsot_capture_receipt_presence_assessment_v1"
+
+_NATIVE_CODEC_PREFIX = b"NVDA-NATIVE-V1\x00"
 
 _SCHEMA_STATEMENTS = (
     f"""
@@ -63,6 +77,36 @@ _SCHEMA_STATEMENTS = (
     )
     """,
     f"""
+    CREATE TABLE IF NOT EXISTS {_OBSERVATION_TABLE} (
+        observation_occurrence_id TEXT PRIMARY KEY,
+        delivery_artifact_ref TEXT NOT NULL,
+        source_provider TEXT NOT NULL,
+        native_record BYTEA NOT NULL,
+        received_ts_utc TIMESTAMPTZ(6) NOT NULL,
+        received_epoch_ns NUMERIC,
+        ingestion_sequence NUMERIC NOT NULL,
+        ingestion_sequence_scope TEXT NOT NULL,
+        source_temporal_kind TEXT NOT NULL CHECK (
+            source_temporal_kind IN ('true_instant', 'date_only', 'receipt_only')
+        ),
+        raw_signal_catalogue_ids TEXT[],
+        source_product_api TEXT,
+        source_endpoint_callback TEXT,
+        native_identifier TEXT,
+        native_tick_series_identifier TEXT,
+        source_variant TEXT,
+        subject_instrument TEXT,
+        native_units TEXT,
+        availability_session TEXT,
+        source_status_native TEXT,
+        revision_vintage_native TEXT,
+        source_timestamp_raw TEXT,
+        source_timezone_native TEXT,
+        market_timezone_iana TEXT,
+        market_session_native TEXT
+    )
+    """,
+    f"""
     CREATE TABLE IF NOT EXISTS {_ASSESSMENT_TABLE} (
         assessment_occurrence_id TEXT PRIMARY KEY,
         capture_occurrence_ref TEXT NOT NULL REFERENCES {_CAPTURE_TABLE}(capture_occurrence_id),
@@ -80,6 +124,159 @@ _SCHEMA_STATEMENTS = (
     WHERE supersedes_assessment_ref IS NULL
     """,
 )
+
+
+def _encode_length(value: int) -> bytes:
+    if value < 0:
+        raise ValueError("native codec length cannot be negative")
+    return value.to_bytes(8, "big", signed=False)
+
+
+def _encode_native_value(value: NativeValueV1) -> bytes:
+    if value is None:
+        return b"n"
+    if type(value) is bool:
+        return b"b\x01" if value else b"b\x00"
+    if type(value) is int:
+        payload = str(value).encode("ascii")
+        return b"i" + _encode_length(len(payload)) + payload
+    if type(value) is float:
+        return b"f" + pack("!d", value)
+    if type(value) is Decimal:
+        value_tuple = value.as_tuple()
+        digits = bytes(value_tuple.digits)
+        exponent = str(value_tuple.exponent).encode("ascii")
+        return (
+            b"d"
+            + bytes((value_tuple.sign,))
+            + _encode_length(len(digits))
+            + digits
+            + _encode_length(len(exponent))
+            + exponent
+        )
+    if type(value) is str:
+        payload = value.encode("utf-8")
+        return b"s" + _encode_length(len(payload)) + payload
+    if type(value) is bytes:
+        return b"y" + _encode_length(len(value)) + value
+    if type(value) is list:
+        parts = [b"l", _encode_length(len(value))]
+        parts.extend(_encode_native_value(item) for item in value)
+        return b"".join(parts)
+    if type(value) is tuple:
+        parts = [b"t", _encode_length(len(value))]
+        parts.extend(_encode_native_value(item) for item in value)
+        return b"".join(parts)
+    if isinstance(value, Mapping):
+        items = sorted(value.items(), key=lambda item: item[0].encode("utf-8"))
+        parts = [b"m", _encode_length(len(items))]
+        for key, item in items:
+            key_payload = key.encode("utf-8")
+            parts.extend(
+                (
+                    _encode_length(len(key_payload)),
+                    key_payload,
+                    _encode_native_value(item),
+                )
+            )
+        return b"".join(parts)
+    raise TypeError("native codec received a value outside NativeValueV1")
+
+
+class _NativeCodecReader:
+    __slots__ = ("_payload", "_position")
+
+    def __init__(self, payload: bytes) -> None:
+        self._payload = payload
+        self._position = 0
+
+    @property
+    def at_end(self) -> bool:
+        return self._position == len(self._payload)
+
+    def take(self, size: int) -> bytes:
+        end = self._position + size
+        if size < 0 or end > len(self._payload):
+            raise ValueError("native codec payload is truncated")
+        result = self._payload[self._position : end]
+        self._position = end
+        return result
+
+    def length(self) -> int:
+        return int.from_bytes(self.take(8), "big", signed=False)
+
+    def value(self) -> NativeValueV1:
+        tag = self.take(1)
+        if tag == b"n":
+            return None
+        if tag == b"b":
+            raw = self.take(1)
+            if raw not in (b"\x00", b"\x01"):
+                raise ValueError("native bool codec payload is invalid")
+            return raw == b"\x01"
+        if tag == b"i":
+            return int(self.take(self.length()).decode("ascii"))
+        if tag == b"f":
+            return unpack("!d", self.take(8))[0]
+        if tag == b"d":
+            sign_raw = self.take(1)[0]
+            if sign_raw not in (0, 1):
+                raise ValueError("native Decimal sign is invalid")
+            digits = tuple(self.take(self.length()))
+            if any(digit > 9 for digit in digits):
+                raise ValueError("native Decimal digit is invalid")
+            exponent_text = self.take(self.length()).decode("ascii")
+            sign_prefix = "-" if sign_raw else ""
+            diagnostic = "".join(str(digit) for digit in digits)
+            if exponent_text == "F":
+                if digits != (0,):
+                    raise ValueError("native Infinity Decimal payload is invalid")
+                return Decimal(f"{sign_prefix}Infinity")
+            if exponent_text == "n":
+                return Decimal(f"{sign_prefix}NaN{diagnostic}")
+            if exponent_text == "N":
+                return Decimal(f"{sign_prefix}sNaN{diagnostic}")
+            exponent = int(exponent_text)
+            return Decimal((sign_raw, digits, exponent))
+        if tag == b"s":
+            return self.take(self.length()).decode("utf-8")
+        if tag == b"y":
+            return self.take(self.length())
+        if tag == b"l":
+            return [self.value() for _ in range(self.length())]
+        if tag == b"t":
+            return tuple(self.value() for _ in range(self.length()))
+        if tag == b"m":
+            result: dict[str, NativeValueV1] = {}
+            for _ in range(self.length()):
+                key = self.take(self.length()).decode("utf-8")
+                if key in result:
+                    raise ValueError("native mapping codec contains a duplicate key")
+                result[key] = self.value()
+            return result
+        raise ValueError("native codec contains an unknown type tag")
+
+
+def _encode_native_record(value: Mapping[str, NativeValueV1]) -> bytes:
+    return _NATIVE_CODEC_PREFIX + _encode_native_value(cast(NativeValueV1, value))
+
+
+def _decode_native_record(value: object) -> Mapping[str, NativeValueV1]:
+    if isinstance(value, memoryview):
+        payload = value.tobytes()
+    elif type(value) is bytes:
+        payload = value
+    else:
+        raise TypeError("native_record did not round-trip as PostgreSQL bytea")
+    if not payload.startswith(_NATIVE_CODEC_PREFIX):
+        raise ValueError("native_record codec version is not supported")
+    reader = _NativeCodecReader(payload[len(_NATIVE_CODEC_PREFIX) :])
+    decoded = reader.value()
+    if not reader.at_end:
+        raise ValueError("native_record codec contains trailing bytes")
+    if not isinstance(decoded, Mapping):
+        raise ValueError("native_record codec root must be a mapping")
+    return cast(Mapping[str, NativeValueV1], decoded)
 
 
 def _integer_from_numeric(value: object, field_name: str) -> int:
@@ -116,6 +313,67 @@ def _capture_from_row(row: Sequence[object]) -> ScheduledCaptureOccurrenceV1:
         scope_policy_ref=scope_policy_ref(str(row[1])),
         slot_start_utc=row[2] if isinstance(row[2], datetime) else _bad_datetime("slot_start"),
         slot_end_utc=row[3] if isinstance(row[3], datetime) else _bad_datetime("slot_end"),
+    )
+
+
+def _optional_text_from_row(value: object, field_name: str) -> str | None:
+    if value is None or type(value) is str:
+        return cast(str | None, value)
+    raise TypeError(f"{field_name} did not round-trip as PostgreSQL text/NULL")
+
+
+def _catalogue_ids_from_row(value: object) -> tuple[RawSignalCatalogueId, ...] | None:
+    if value is None:
+        return None
+    if type(value) is not list or not value:
+        raise TypeError("raw_signal_catalogue_ids did not round-trip as a non-empty text[]")
+    if any(type(item) is not str for item in value):
+        raise TypeError("raw_signal_catalogue_ids contained a non-text PostgreSQL value")
+    return tuple(RawSignalCatalogueId(cast(str, item)) for item in cast(list[object], value))
+
+
+def _observation_from_row(row: Sequence[object]) -> RawObservationOccurrenceV1:
+    temporal_kind = str(row[8])
+    if temporal_kind not in ("true_instant", "date_only", "receipt_only"):
+        raise ValueError("source_temporal_kind did not round-trip as an accepted v1 value")
+    received_epoch_ns = row[5]
+    return RawObservationOccurrenceV1(
+        concept_id=concept_id("raw_signal.raw_observation_occurrence"),
+        contract_id=contract_id("nvda.raw_signal.RawObservationOccurrence.v1"),
+        observation_occurrence_id=observation_occurrence_id(str(row[0])),
+        delivery_artifact_ref=delivery_artifact_ref(str(row[1])),
+        source_provider=provider_id(str(row[2])),
+        native_record=_decode_native_record(row[3]),
+        received_ts_utc=(
+            row[4] if isinstance(row[4], datetime) else _bad_datetime("received_ts_utc")
+        ),
+        received_epoch_ns=(
+            None
+            if received_epoch_ns is None
+            else _integer_from_numeric(received_epoch_ns, "received_epoch_ns")
+        ),
+        ingestion_sequence=_integer_from_numeric(row[6], "ingestion_sequence"),
+        ingestion_sequence_scope=ingestion_sequence_scope(str(row[7])),
+        source_temporal_kind=cast(SourceTemporalKind, temporal_kind),
+        raw_signal_catalogue_ids=_catalogue_ids_from_row(row[9]),
+        source_product_api=_optional_text_from_row(row[10], "source_product_api"),
+        source_endpoint_callback=_optional_text_from_row(
+            row[11], "source_endpoint_callback"
+        ),
+        native_identifier=_optional_text_from_row(row[12], "native_identifier"),
+        native_tick_series_identifier=_optional_text_from_row(
+            row[13], "native_tick_series_identifier"
+        ),
+        source_variant=_optional_text_from_row(row[14], "source_variant"),
+        subject_instrument=_optional_text_from_row(row[15], "subject_instrument"),
+        native_units=_optional_text_from_row(row[16], "native_units"),
+        availability_session=_optional_text_from_row(row[17], "availability_session"),
+        source_status_native=_optional_text_from_row(row[18], "source_status_native"),
+        revision_vintage_native=_optional_text_from_row(row[19], "revision_vintage_native"),
+        source_timestamp_raw=_optional_text_from_row(row[20], "source_timestamp_raw"),
+        source_timezone_native=_optional_text_from_row(row[21], "source_timezone_native"),
+        market_timezone_iana=_optional_text_from_row(row[22], "market_timezone_iana"),
+        market_session_native=_optional_text_from_row(row[23], "market_session_native"),
     )
 
 
@@ -264,6 +522,91 @@ class _PostgresTransaction:
                 value.scope_policy_ref.value,
                 value.slot_start_utc,
                 value.slot_end_utc,
+            ),
+        )
+
+    def get_observation(
+        self, observation_occurrence_id_value: _ObservationOccurrenceId
+    ) -> RawObservationOccurrenceV1 | None:
+        row = self.__connection.execute(
+            f"""
+            SELECT observation_occurrence_id, delivery_artifact_ref, source_provider,
+                   native_record, received_ts_utc, received_epoch_ns,
+                   ingestion_sequence, ingestion_sequence_scope, source_temporal_kind,
+                   raw_signal_catalogue_ids, source_product_api, source_endpoint_callback,
+                   native_identifier, native_tick_series_identifier, source_variant,
+                   subject_instrument, native_units, availability_session,
+                   source_status_native, revision_vintage_native, source_timestamp_raw,
+                   source_timezone_native, market_timezone_iana, market_session_native
+            FROM {_OBSERVATION_TABLE}
+            WHERE observation_occurrence_id = %s
+            """,
+            (observation_occurrence_id_value.value,),
+        ).fetchone()
+        return None if row is None else _observation_from_row(row)
+
+    def get_observation_high_water(
+        self, ingestion_sequence_scope_value: _IngestionSequenceScope
+    ) -> int | None:
+        self.__lock_table_for_write(_OBSERVATION_TABLE)
+        row = self.__connection.execute(
+            f"""
+            SELECT MAX(ingestion_sequence)
+            FROM {_OBSERVATION_TABLE}
+            WHERE ingestion_sequence_scope = %s
+            """,
+            (ingestion_sequence_scope_value.value,),
+        ).fetchone()
+        if row is None or row[0] is None:
+            return None
+        return _integer_from_numeric(row[0], "ingestion_sequence high-water")
+
+    def append_observation(self, value: RawObservationOccurrenceV1) -> None:
+        if not self.__write:
+            raise RuntimeError("read-only persistence transaction cannot append an observation")
+        self.__connection.execute(
+            f"""
+            INSERT INTO {_OBSERVATION_TABLE} (
+                observation_occurrence_id, delivery_artifact_ref, source_provider,
+                native_record, received_ts_utc, received_epoch_ns,
+                ingestion_sequence, ingestion_sequence_scope, source_temporal_kind,
+                raw_signal_catalogue_ids, source_product_api, source_endpoint_callback,
+                native_identifier, native_tick_series_identifier, source_variant,
+                subject_instrument, native_units, availability_session,
+                source_status_native, revision_vintage_native, source_timestamp_raw,
+                source_timezone_native, market_timezone_iana, market_session_native
+            ) VALUES (
+                %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,
+                %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s
+            )
+            """,
+            (
+                value.observation_occurrence_id.value,
+                value.delivery_artifact_ref.value,
+                value.source_provider.value,
+                _encode_native_record(value.native_record),
+                value.received_ts_utc,
+                value.received_epoch_ns,
+                value.ingestion_sequence,
+                value.ingestion_sequence_scope.value,
+                value.source_temporal_kind,
+                None
+                if value.raw_signal_catalogue_ids is None
+                else [item.value for item in value.raw_signal_catalogue_ids],
+                value.source_product_api,
+                value.source_endpoint_callback,
+                value.native_identifier,
+                value.native_tick_series_identifier,
+                value.source_variant,
+                value.subject_instrument,
+                value.native_units,
+                value.availability_session,
+                value.source_status_native,
+                value.revision_vintage_native,
+                value.source_timestamp_raw,
+                value.source_timezone_native,
+                value.market_timezone_iana,
+                value.market_session_native,
             ),
         )
 
