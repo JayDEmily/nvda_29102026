@@ -6,7 +6,7 @@
 - **Previous Gate:** `G02 — Existing Implementation Admission Handoff Adoption` — `ACCEPTED`
 - **G02 acceptance record:** `control/GATE_02_ACCEPTANCE.md`
 - **Current Gate:** `G03 — Verified Bounded Implementation`
-- **Gate state:** `ACTIVE — U05 ACCEPTED AND PROMOTED / U06 EXECPLAN ACTIVE / STAGE 3 COMPLETE / STAGE 4 NOT STARTED`
+- **Gate state:** `ACTIVE — U05 ACCEPTED AND PROMOTED / U06 EXECPLAN ACTIVE / STAGE 4 WORKER CANDIDATE FROZEN / STAGE 5 NOT STARTED`
 - **Gate contract:** `control/GATE_03_VERIFIED_BOUNDED_IMPLEMENTATION.md`, revision `G03-R1`
 - **Execution binding:** `control/GATE_03_BINDING.md` (`G03-BIND-001`)
 - **Leaf map:** `control/GATE_03_LEAF_MAP.md`
@@ -79,8 +79,9 @@
 - **2026-09-27 U06 Stage 1 Worker completion:** A00 production construction/lifecycle boundary committed at `674621f7c4c548f382b709c6ba0a7aa13a4dfc0c` / tree `531dee18cccc76b18279f518280500c63ce32b32`; focused Stage-1 construction proof 5/5, architecture/bootstrap 74/74, accepted U01-U04 regression 416/416, mypy/Ruff green. Full U06 family remains intentionally incomplete at 5 passed / 2 Stage-2 sequence failures. Stage 2 has not started. See `implementation/proof/VI12R_U06_STAGE1_A00_CONSTRUCTION_EVIDENCE.md`.
 - **2026-09-27 U06 Stage 2 Worker completion:** governed typed A00→M00 sequence committed at `af3bc77349ccaff943f3eabbcce2e25612a42e3b` / tree `d1adad06919c6b31f054dab8ba4d81b144f2cf99`; accepted U06 delegation/dataflow family 7/7, accepted U01-U04 regressions 416/416, U05 restart predecessor slice 27/27, architecture/bootstrap 74/74, mypy/Ruff green. Stage 3 real production PostgreSQL composition has not started. See `implementation/proof/VI12R_U06_STAGE2_TYPED_DELEGATION_EVIDENCE.md`.
 - **2026-09-27 U06 Stage 3 Worker completion:** real production A00→PostgreSQL-backed M00 sequential composition committed at `36e694ee111db5ab45acc298fc7486f1fdc6ac4b` / tree `8de8247657d4c88370b491d964eeea0b90834087`; U06 Stage-1..3 proof 13/13, accepted U01-U04 regressions 416/416, U05 restart slice 27/27, configured U05 PostgreSQL durability 55/55, architecture/bootstrap 74/74, mypy/Ruff green. Stage 4 whole-U06 adversarial closure/candidate freeze has not started. See `implementation/proof/VI12R_U06_STAGE3_POSTGRESQL_COMPOSITION_EVIDENCE.md`.
-- **Current Leaf:** `G03 / U06 Stage 3 complete — Stage 4 not started`
-- **Current actor:** `PROGRAMME_OWNER` — U06 Stage 3 Worker boundary is complete; no Stage 4 execution has begun
+- **2026-09-28 U06 Stage 4 Worker candidate:** whole-U06 adversarial closure frozen at `8462630277b04d431ad393e2b73039cacb5d6247` / tree `0a01dacbf54f61bd7f60cf5e68cc350c3cf8d0c6`. Stage 4 closed a production dependency-injection persistence bypass, bound the policy-reference check to the exact M00-registered policy result, and restored the six-family product-proof admission boundary by relocating supplemental implementation-coupled stage tests outside `tests/product/**`. Post-freeze proof: admitted product aggregate 479/479, supplemental U05 restart 27/27, U06 closure 15/15, architecture/bootstrap 74/74, mypy/Ruff green. This is a Worker candidate only; Stage 5 fresh independent Tester review has not started. See `implementation/proof/VI12R_U06_STAGE4_WHOLE_CANDIDATE_EVIDENCE.md`.
+- **Current Leaf:** `G03 / U06 Stage 4 Worker candidate frozen — Stage 5 not started`
+- **Current actor:** `PROGRAMME_OWNER` — U06 Stage 4 Worker candidate is frozen; no Stage 5 Tester review has begun
 - **Active review cycle:** `NONE`
 - **Last completed review:** U05 Stage-6 independent Tester `PASS` preserved at `9f35df4c1915de78847dfc4a23ce886dfa3b5fd8` / `implementation/proof/VI13R_U05_STAGE6_INDEPENDENT_TESTER_DISPOSITION.md`
 - **Role-consistency rule:** when `Current actor` is `PROGRAMME_OWNER` / no execution cycle is active, no Worker/Tester action is implied; a fresh cycle requires explicit routing under the then-current governing authority
@@ -88,7 +89,7 @@
 - **Completed VI-10 Worker handoff:** `implementation/handoff/WORKER_003_VI10_ADVERSARIAL_PRODUCT_PROOF.md`
 - **PM inline VI-08/09/10 attempts:** `DO_NOT_CARRY_FORWARD`
 - **Current authority note:** U01-U05 are now the accepted active semantic lineage for the scope closed by this ExecPlan. U05 accepted production candidate is `2bdbedff62307ecfaf6186f9c12814fb662c11a7` / tree `e15e743e006217a8a3a6313011caf82265a679cf`; independent U05 Tester `PASS` is preserved at review commit `9f35df4c1915de78847dfc4a23ce886dfa3b5fd8`; Stage-7 preserved-ancestry promotion integrated that reviewed lineage into `main` at the same promotion identity. Failed candidate `249fb5f2f174b63bd49fe3e749f0e5cacea39d87` remains historical evidence. The abandoned pre-recovery U05/CP line remains historical evidence only and no CP checkpoint machinery is active.
-- **Next lawful action:** U06 Stage 4 is the next plan stage, but it has not begun. Await explicit Programme Owner routing before whole-U06 adversarial closure and candidate freeze.
+- **Next lawful action:** U06 Stage 5 fresh independent Tester review of exact candidate `8462630277b04d431ad393e2b73039cacb5d6247`. Await explicit Programme Owner routing; do not begin Stage 6 promotion without Tester `PASS`.
 
 
 - **VI-11R2 Tester Iteration 005:** `FAIL / RETURN_TO_WORKER` — 11 proof findings (`T005-F001..F011`), 4 Critical / 7 Important; reviewed wrapper `c164fac...`, physical proof `56ea445d...`.
