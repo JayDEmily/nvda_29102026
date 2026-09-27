@@ -39,6 +39,7 @@ class CompositionPlan:
 
 
 _RawSignalOwnerFactory = Callable[..., Any]
+_RawSignalEligibilityResolver = Callable[[RawObservationOccurrenceV1, CaptureScopePolicyV1], bool]
 
 
 @dataclass(frozen=True, slots=True)
@@ -120,6 +121,7 @@ def create_application(
     *,
     postgres_dsn: str | None = None,
     raw_signal_owner_factory: _RawSignalOwnerFactory | None = None,
+    raw_signal_eligibility_resolver: _RawSignalEligibilityResolver | None = None,
 ) -> Application:
     """Construct the admitted A00 -> M00 production composition.
 
@@ -129,15 +131,18 @@ def create_application(
     """
 
     owner_factory = create_owner if raw_signal_owner_factory is None else raw_signal_owner_factory
+    owner_kwargs: dict[str, Any] = {}
+    if raw_signal_eligibility_resolver is not None:
+        owner_kwargs["eligibility_resolver"] = raw_signal_eligibility_resolver
 
     if postgres_dsn is None:
         if raw_signal_owner_factory is None:
             raise ValueError("postgres_dsn is required for production application construction")
-        return Application(owner_factory())
+        return Application(owner_factory(**owner_kwargs))
 
     if type(postgres_dsn) is not str or not postgres_dsn.strip():
         raise ValueError("postgres_dsn must be a non-empty string")
 
     durability_port = create_postgres_persistence(postgres_dsn)
-    owner = owner_factory(durability_port=durability_port)
+    owner = owner_factory(durability_port=durability_port, **owner_kwargs)
     return Application(owner)
