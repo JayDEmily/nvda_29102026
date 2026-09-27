@@ -561,6 +561,26 @@ class _PostgresTransaction:
             return None
         return _integer_from_numeric(row[0], "ingestion_sequence high-water")
 
+    def list_observations_received_between(
+        self, slot_start_utc: datetime, slot_end_utc: datetime
+    ) -> Sequence[RawObservationOccurrenceV1]:
+        rows = self.__connection.execute(
+            f"""
+            SELECT observation_occurrence_id, delivery_artifact_ref, source_provider,
+                   native_record, received_ts_utc, received_epoch_ns,
+                   ingestion_sequence, ingestion_sequence_scope, source_temporal_kind,
+                   raw_signal_catalogue_ids, source_product_api, source_endpoint_callback,
+                   native_identifier, native_tick_series_identifier, source_variant,
+                   subject_instrument, native_units, availability_session,
+                   source_status_native, revision_vintage_native, source_timestamp_raw,
+                   source_timezone_native, market_timezone_iana, market_session_native
+            FROM {_OBSERVATION_TABLE}
+            WHERE received_ts_utc >= %s AND received_ts_utc < %s
+            """,
+            (slot_start_utc, slot_end_utc),
+        ).fetchall()
+        return tuple(_observation_from_row(row) for row in rows)
+
     def append_observation(self, value: RawObservationOccurrenceV1) -> None:
         if not self.__write:
             raise RuntimeError("read-only persistence transaction cannot append an observation")

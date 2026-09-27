@@ -733,6 +733,10 @@ class _PersistenceTransaction(Protocol):
         self, ingestion_sequence_scope: _IngestionSequenceScope
     ) -> int | None: ...
 
+    def list_observations_received_between(
+        self, slot_start_utc: datetime, slot_end_utc: datetime
+    ) -> Sequence[RawObservationOccurrenceV1]: ...
+
     def append_observation(self, value: RawObservationOccurrenceV1) -> None: ...
 
     def get_assessment(
@@ -1219,6 +1223,47 @@ def _build_owner_facets(
         )
         _require_exact_type(scope_policy_ref, _ScopePolicyRef, "scope_policy_ref")
 
+        if durability_port is not None:
+            with durability_port.transaction(write=False) as transaction:
+                observed = transaction.get_observation(observation_occurrence_ref)
+                if observed is None:
+                    raise KeyError("observation_occurrence_ref is not admitted")
+                capture = transaction.get_capture(capture_occurrence_ref)
+                if capture is None:
+                    raise KeyError("capture_occurrence_ref is not realised")
+                if scope_policy_ref != capture.scope_policy_ref:
+                    raise ValueError(
+                        "scope_policy_ref does not match the capture effective policy"
+                    )
+                effective_policy = transaction.get_policy_by_ref(capture.scope_policy_ref)
+                if effective_policy is None:
+                    raise KeyError("capture effective scope policy is not registered")
+
+                if not (
+                    capture.slot_start_utc <= observed.received_ts_utc < capture.slot_end_utc
+                ):
+                    return None
+                if eligibility_resolver is None:
+                    raise ValueError(
+                        "receipt-evidence derivation requires an admitted eligibility resolver"
+                    )
+                eligible = eligibility_resolver(observed, effective_policy)
+                if type(eligible) is not bool:
+                    raise TypeError("eligibility resolver must return an exact bool")
+                if not eligible:
+                    return None
+
+                return CaptureReceiptEvidenceRelationV1(
+                    concept_id=_ConceptId(_RELATION_CONCEPT),
+                    contract_id=_ContractId(_RELATION_CONTRACT),
+                    units="not_applicable",
+                    observation_occurrence_ref=observed.observation_occurrence_id,
+                    capture_occurrence_ref=capture.capture_occurrence_id,
+                    scope_policy_ref=capture.scope_policy_ref,
+                    received_ts_utc=observed.received_ts_utc,
+                    relation_role="evidences_receipt_presence_only",
+                )
+
         observed = state.observations_by_identity.get(observation_occurrence_ref)
         if observed is None:
             raise KeyError("observation_occurrence_ref is not admitted")
@@ -1271,8 +1316,6 @@ def _build_owner_facets(
         evidence_as_of_ts_utc: datetime,
         supersedes_assessment_ref: _AssessmentOccurrenceId | None,
     ) -> CaptureReceiptPresenceAssessmentV1:
-        if durability_port is not None:
-            _not_implemented("IWO-U05-STAGE4")
         _require_exact_type(
             assessment_occurrence_id,
             _AssessmentOccurrenceId,
@@ -1288,6 +1331,97 @@ def _build_owner_facets(
                 _AssessmentOccurrenceId,
                 "supersedes_assessment_ref",
             )
+
+        if durability_port is not None:
+            with durability_port.transaction(write=True) as transaction:
+                existing = transaction.get_assessment(assessment_occurrence_id)
+                if existing is not None:
+                    if (
+                        existing.capture_occurrence_ref != capture_occurrence_ref
+                        or existing.evidence_as_of_ts_utc != evidence_as_of_ts_utc
+                        or existing.supersedes_assessment_ref != supersedes_assessment_ref
+                    ):
+                        raise ValueError(
+                            "assessment occurrence identity is already appended "
+                            "with different content"
+                        )
+                    return existing
+
+                capture = transaction.get_capture(capture_occurrence_ref)
+                if capture is None:
+                    raise KeyError("capture_occurrence_ref is not realised")
+                effective_policy = transaction.get_policy_by_ref(capture.scope_policy_ref)
+                if effective_policy is None:
+                    raise KeyError("capture effective scope policy is not registered")
+
+                durable_chain = _order_assessment_chain(
+                    transaction.list_assessments(capture.capture_occurrence_id)
+                )
+
+                # list_assessments acquires the capture-history write serialization lock.
+                # Re-read the identity under that lock so a concurrent same-ID writer
+                # resolves to owner-level retry/conflict semantics rather than a database
+                # uniqueness error or a false supersession failure.
+                existing = transaction.get_assessment(assessment_occurrence_id)
+                if existing is not None:
+                    if (
+                        existing.capture_occurrence_ref != capture_occurrence_ref
+                        or existing.evidence_as_of_ts_utc != evidence_as_of_ts_utc
+                        or existing.supersedes_assessment_ref != supersedes_assessment_ref
+                    ):
+                        raise ValueError(
+                            "assessment occurrence identity is already appended "
+                            "with different content"
+                        )
+                    return existing
+
+                if not durable_chain:
+                    if supersedes_assessment_ref is not None:
+                        raise ValueError(
+                            "first assessment cannot supersede a prior assessment"
+                        )
+                else:
+                    immediate_predecessor = durable_chain[-1].assessment_occurrence_id
+                    if supersedes_assessment_ref != immediate_predecessor:
+                        raise ValueError(
+                            "assessment must supersede the immediately prior "
+                            "current assessment"
+                        )
+
+                eligible_visible_observation = False
+                observations = transaction.list_observations_received_between(
+                    capture.slot_start_utc, capture.slot_end_utc
+                )
+                for observed in observations:
+                    if eligibility_resolver is None:
+                        raise ValueError(
+                            "assessment derivation requires an admitted eligibility "
+                            "resolver for in-slot observation evidence"
+                        )
+                    eligible = eligibility_resolver(observed, effective_policy)
+                    if type(eligible) is not bool:
+                        raise TypeError("eligibility resolver must return an exact bool")
+                    if eligible:
+                        eligible_visible_observation = True
+                        break
+
+                durable_outcome: AssessmentOutcome = (
+                    "one_or_more_received"
+                    if eligible_visible_observation
+                    else "zero_received"
+                )
+                candidate = CaptureReceiptPresenceAssessmentV1(
+                    concept_id=_ConceptId(_ASSESSMENT_CONCEPT),
+                    contract_id=_ContractId(_ASSESSMENT_CONTRACT),
+                    units="not_applicable",
+                    assessment_occurrence_id=assessment_occurrence_id,
+                    capture_occurrence_ref=capture.capture_occurrence_id,
+                    outcome=durable_outcome,
+                    evidence_as_of_ts_utc=evidence_as_of_ts_utc,
+                    supersedes_assessment_ref=supersedes_assessment_ref,
+                )
+                transaction.append_assessment(candidate)
+            return candidate
 
         capture = state.captures_by_identity.get(capture_occurrence_ref)
         if capture is None:
@@ -1384,6 +1518,8 @@ def _build_owner_facets(
         )
         if durability_port is not None:
             with durability_port.transaction(write=False) as transaction:
+                if transaction.get_capture(capture_occurrence_id) is None:
+                    raise KeyError("capture_occurrence_id is not realised")
                 records = transaction.list_assessments(capture_occurrence_id)
             return _order_assessment_chain(records)
         if capture_occurrence_id not in state.captures_by_identity:
