@@ -1,32 +1,36 @@
-# ExecPlan — U04 Accepted Baseline to U05 PostgreSQL Durability and Restart
+# ExecPlan — U06 A00 Construction and Governed Sequential Composition
 
 ## Status
 
-**ACTIVE GOVERNING EXECPLAN — ACCEPTED BY PROGRAMME OWNER 2026-09-26.**
+**ACTIVE — PROGRAMME OWNER APPROVED FOR U06 EXECUTION ON 2026-09-27.**
 
-This document is a proposed narrow successor execution plan for one task only:
+This document is the narrow successor to the completed U04→U05 ExecPlan.
 
-> advance the accepted Raw Signal Occurrence Truth implementation from the accepted U04 semantic baseline to an independently accepted U05 PostgreSQL durability/restart implementation.
+The Programme Owner explicitly accepted this plan on 2026-09-27 and authorised its installation as the root `EXEC_PLAN.md`. It does the following:
 
-The Programme Owner explicitly accepted this plan and authorised Stage 1 execution on 2026-09-26. This file is the active root `EXEC_PLAN.md`.
+1. supersedes the completed U05 ExecPlan as the single active planning authority;
+2. preserves the completed U05 ExecPlan in ordinary Git history as historical execution evidence;
+3. authorises **IWO-U06 only**;
+4. stops after accepted U06 promotion.
 
-This plan intentionally does **not** continue the abandoned post-U04 CP0–CP8 execution/checkpoint state.
+It does not authorise a hypothetical U07, VI-14 closure work, final packaging, provider/network integration, downstream behaviour, or any other later tranche.
 
 ---
 
 ## 1. Fixed starting boundary
 
-The fixed semantic starting point is the accepted U04 recovery baseline established by current repository governance:
+The fixed starting repository state for this plan is the promoted U05 `main` lineage:
 
-- accepted U04 production candidate: `dc3b448191a2b2d3528ffb576b1ebc2c56839991`;
-- accepted U04 production tree: `3c7a42eb215d708a0f8d8db37727133ecc234275`;
-- independent Reviewer-032 PASS lineage: `dd42d645b59a62f88cfbc7fba47a75e415b7296f`;
-- accepted semantic lineage: U01 through U04;
-- U05: **not started** on the active recovery line.
+- `main` / current repository HEAD at plan drafting: `90156998e3f70fc6c0afa54c73b577ccec4e47b6`;
+- tree: `e186da49135c67f19ae78e201c9af6e14a064de2`;
+- accepted U05 production candidate: `2bdbedff62307ecfaf6186f9c12814fb662c11a7`;
+- accepted U05 candidate tree: `e15e743e006217a8a3a6313011caf82265a679cf`;
+- fresh independent U05 Tester `PASS` preserved at `9f35df4c1915de78847dfc4a23ce886dfa3b5fd8`;
+- U01 through U05 are the accepted active Raw Signal Occurrence Truth implementation lineage.
 
-The abandoned U05 implementation, `_postgres.py`, CP0–CP8 checkpoint/workboard state and abandoned U05 cycle evidence/results are `DO_NOT_CARRY_FORWARD` into the new active implementation line. They may be inspected only as historical/forensic evidence when useful to avoid a known failure class. They are not implementation authority and are not resumable execution state.
+U01–U05 meaning is not reopened by this plan.
 
-U01–U04 accepted meaning is not reopened by this plan.
+The completed U05 ExecPlan, its Stage 1–7 execution records, failed candidate `249fb5f…`, accepted replacement candidate `2bdbedf…`, Tester evidence and promotion evidence remain historical/current evidence according to their existing status. They are not execution stages of U06.
 
 ---
 
@@ -34,398 +38,438 @@ U01–U04 accepted meaning is not reopened by this plan.
 
 This plan operationalises already-authorised work only. It does not create new Raw Signal semantics.
 
-The governing authority remains, in order:
+Authority remains, in order:
 
 1. current explicit Programme Owner instruction;
 2. `GUARDRAILS.md`;
 3. applicable `AGENTS.md` / `AGENTS.override.md`;
-4. this ExecPlan if explicitly accepted;
+4. this ExecPlan;
 5. accepted task/normative/architecture authority;
 6. accepted proof obligations and proof artefacts;
 7. implementation/source/configuration;
 8. historical evidence.
 
-The existing accepted U05 engineering obligation is `IWO-U05 — PostgreSQL durability, idempotency, failure, restart and referential readback`.
+The already-authorised engineering obligation is:
 
-Its primary proof obligations remain:
+> **IWO-U06 — A00 construction and governed sequential composition**
 
-- `IA22R01-PROD-009`;
-- `IA17-PROD-010`;
-- persistence-bearing portions of `IA17-PROD-007` and `IA17-PROD-008`;
-- supporting `IA17-ARCH-003`.
+from `implementation/work_order/VI05_IMPLEMENTATION_WORK_ORDER_CANDIDATE_001.md`.
 
-The accepted U05 purpose remains:
+Its accepted purpose is:
 
-> bind U01–U04 owner facts to real PostgreSQL while preserving semantic ownership and exact transaction claims.
+> prove and implement the only authorised cross-owner runtime composition.
 
-No new semantic meaning may be invented to make durability convenient.
+Its primary proof obligations are:
+
+- `IA17-PROD-013` — governed sequential end-to-end A00 → typed M00 composition;
+- `IA17-ARCH-004` — declared runtime edge is A00 → M00 through the public boundary and the active M graph remains acyclic;
+- `IA17-ARCH-005` — typed command/read facets remain restricted to the declared A00/M00 public boundary;
+- `IA17-ARCH-006` — composition selects only lawfully admitted active objects/forms/boundaries and does not escalate product status.
+
+The accepted U06 product-proof family already exists at:
+
+`tests/product/raw_signal/test_u06_a00_composition.py`
+
+with product-proof registration in:
+
+`config/product_proof/families.yaml`
+
+Those tests are evidence derived from authority. They do not supersede the IWO/BICP or create new meaning.
 
 ---
 
-## 3. U05 terminal proposition
+## 3. Current implementation observation
 
-U05 is acceptable only when evidence establishes the following complete proposition:
+At the fixed starting boundary:
 
-> A completely fresh Raw Signal semantic owner, starting with empty process-local semantic state and using the authorised durable PostgreSQL mechanism, preserves the accepted U01–U04 observable semantics through the declared owner public seam. The owner can recover or query the durable information required to make its own semantic decisions after restart; successful durability is claimed only after the relevant transaction commits; failed writes fabricate no semantic fallback; identical retries remain idempotent; conflicting identity reuse fails closed; original owner facts remain referentially readable with required lineage/schedule context; restart reconciliation of explicitly requested owed slots operates from durable state; and a missing owed slot is represented by a durable capture plus `unknown_not_established`, never inferred `zero_received`.
+- architecture already declares the runtime owner edge exactly `A00 -> M00`;
+- A00 is already permitted to depend on `M00`;
+- M00 is an active admitted Raw Signal Occurrence Truth owner;
+- the U05 PostgreSQL mechanism and durable M00 public seam are accepted;
+- `src/nvda_desk/composition/__init__.py` contains the existing composition-plan scaffold but does **not** yet provide the U06 production `create_application` path required by the accepted U06 proof;
+- the existing U06 physical proof therefore describes the implementation target rather than an already-completed U06 implementation.
 
-This proposition is not established by proving only that PostgreSQL can write and read records.
+U06 is consequently a bounded composition/integration unit. It is not authority to redesign M00 or add another semantic owner.
 
 ---
 
-## 4. Explicit non-goals
+## 4. U06 terminal proposition
 
-U05 does not authorise or claim:
+U06 is acceptable only when one exact committed candidate establishes the following complete proposition:
 
+> A00 lawfully constructs the admitted Raw Signal Occurrence Truth runtime composition, including the non-owning PostgreSQL technical mechanism and the admitted M00 owner; A00 owns only construction, source/scheduler translation and top-level lifecycle; all Raw Signal semantic commands and reads pass through the typed M00 public seam; the declared runtime owner edge remains exactly A00 → M00; and a governed sequential path can carry authorised inputs and exact M00-returned identities through policy registration, capture realisation, observation admission, receipt-evidence derivation, assessment append and referential readback without A00 calculating Raw Signal outcomes, bypassing M00 private state/persistence, reversing the dependency, or activating P01, K01 or downstream consumers.
+
+The terminal proposition must be established through both boundary-focused proof and a real production composition path. A spy-only delegation test does not by itself establish that the default A00 production construction path composes the accepted PostgreSQL/M00 implementation correctly.
+
+---
+
+## 5. Explicit non-goals
+
+U06 does **not** authorise or claim:
+
+- new Raw Signal semantic meaning beyond accepted U01–U05;
+- changes to M00 persistence semantics for convenience;
+- a second semantic owner;
+- M00 → A00 dependency;
+- direct A00 access to M00 private state, SQL tables, repository/store internals or the PostgreSQL adapter as a semantic mutation surface;
 - P01/DMPV3 activation;
-- K01 selection;
+- K01 selection or activation;
 - provider/API/network integration;
 - authoritative replay or re-execution;
-- downstream business consumers;
 - live external effects/accounts;
+- downstream business consumers;
+- packet-carrier semantics;
+- finality, exact counts, membership, outage semantics or provider-event absence claims;
 - retention/deletion policy;
-- RTO/RPO, bounded-recovery, SLA or throughput claims;
+- RTO/RPO, throughput, latency or SLA claims;
 - PostgreSQL partitioning or pooling;
-- independently designed performance indexes;
-- cross-kind atomicity;
-- final distribution/version work belonging to later scope;
-- reopening accepted U01–U04 semantics.
+- new performance index policy;
+- final distribution naming/version metadata;
+- U07 or any later implementation unit;
+- VI-14/VI-15/VI-16/VI-17/VI-18 closure work.
 
-At any point where U05 requires a still-unresolved authority value rather than an implementation choice, stop and return the exact authority gap.
-
----
-
-## 5. Failure-prevention laws for this restart
-
-These controls are mandatory because they address the identified post-U04 failure classes.
-
-### 5.1 Reconstruction before storage
-
-Before production PostgreSQL implementation begins, enumerate every accepted U01–U04 invariant whose enforcement depends on process-local semantic state.
-
-For each invariant, record:
-
-- the accepted semantic proposition;
-- the process-local state currently used to enforce it;
-- the durable fact or relationship required after an empty-process restart;
-- whether the owner must reconstruct, enumerate or query that information;
-- the owner-level decision that depends on it;
-- the public command/read path that proves the restarted behaviour;
-- the failure mode if that durable information is absent or ambiguous.
-
-At minimum the inventory must challenge the known state classes implicated by accepted U01–U04 behaviour, including policy overlap/effective-policy state, owed-slot/capture identity, observation identity/retry and sequence state, receipt-evidence eligibility inputs, assessment history/predecessor state and restart reconciliation.
-
-**No production persistence implementation starts until this inventory is complete enough to explain how a completely fresh owner enforces every affected accepted invariant.**
-
-### 5.2 Persistence is mechanism, not semantic owner
-
-PostgreSQL, Psycopg, SQL schema, repository/store and adapter code remain technical mechanisms behind the M-owned persistence boundary.
-
-They may store and retrieve the durable facts/query results required by the owner. They must not decide Raw Signal eligibility, relation truth, assessment outcome, supersession meaning or other M-owned semantic propositions.
-
-The owner/persistence interface must be designed from the reconstruction inventory, not from convenient CRUD methods.
-
-### 5.3 Fresh-owner rule
-
-Every restart discriminator begins from:
-
-- a completely fresh owner instance;
-- empty process-local semantic state;
-- only the inputs that the authorised production construction/public contract permits;
-- the same committed PostgreSQL durable state.
-
-A test or caller may not perform preparatory reads, cache hydration or private state injection merely to make the subsequent semantic command correct unless that operation is itself part of the authorised production contract being proved.
-
-A restart proof that succeeds only after manual semantic hydration is a failure.
-
-### 5.4 Public capability-boundary rule
-
-When the persistence mechanism is first connected to the owner, immediately trace the reachable public object graph.
-
-An ordinary caller must not be able to reach a concrete adapter, repository, connection or mutation capability that can bypass the M-owned semantic command boundary and directly write already-constructed semantic records.
-
-Python underscore naming is not an architectural boundary.
-
-### 5.5 Natural semantic stages, not mechanism checkpoints or micro-tasks
-
-U05 work is decomposed into the smallest **natural semantic stages** that remain substantial enough to execute coherently. The plan must not recreate the abandoned mechanism-local CP model, but it must also not fragment one coherent engineering problem into artificial micro-tasks.
-
-A stage boundary exists where there is a meaningful change in the proposition being established: architecture fixed before production mutation; first end-to-end restart path; observation semantics; assessment semantics; whole-U05 closure; independent acceptance.
-
-A stage is not complete because a table exists, serialization works, commit acknowledgement works, or readback works in isolation. Each implementation stage must establish a coherent public semantic path through a fresh owner against committed durable state.
-
-### 5.6 Git-native resumability
-
-Every materially meaningful Worker state is committed on the U05 work branch.
-
-These commits are resumability/history points, **not acceptance claims**.
-
-Do not accumulate several semantic slices, proof changes or substantial implementation changes as one long dirty overlay.
-
-Each work commit must make it possible to answer:
-
-- what changed since the previous state;
-- which semantic proposition the change was intended to establish;
-- what proof was actually run;
-- what remains unresolved.
-
-### 5.7 Evidence-state identity
-
-Every evidence/handoff record must identify the exact commit/tree or explicitly identified dirty state it describes.
-
-A record must not state that a later slice is “not started” if that slice's implementation already exists in the referenced state.
-
-Before handoff, compare the recorded status against the actual candidate tree.
-
-### 5.8 Governance stability
-
-Once U05 execution begins under this plan, do not redesign the execution methodology underneath the active implementation unless a genuine blocking governance defect is established.
-
-A blocking governance correction must be isolated, explicitly authorised and committed separately before implementation resumes.
-
-Ordinary implementation difficulty is not authority to redesign governance.
-
-### 5.9 Tests discriminate; they do not define the architecture
-
-Existing accepted proof is evidence of the required observable contract. Implementation must not be shaped merely to satisfy test mechanics.
-
-When an implementation-specific false-positive path appears, strengthen the proof at the correct layer without weakening accepted semantics.
-
-Local PostgreSQL propositions do not substitute for fresh-process semantic equivalence.
-
-### 5.10 Logic trace before candidate freeze
-
-Before U05 is frozen for independent review, perform a code-level logic trace through the realised owner → persistence → transaction → fresh-restart/reconciliation paths.
-
-The trace must challenge the actual mechanism independently of the existing tests and specifically ask where any accepted U01–U04 decision still relies on process memory.
-
-A green suite without this trace is insufficient for U05 candidate freeze.
+Remaining Unknowns carried by the accepted IWO remain unknown unless separately authorised. Implementation convenience may not resolve them.
 
 ---
 
-## 6. Staged execution sequence
+## 6. Execution model
 
-The sequence below is deliberately **coarse enough to preserve coherent engineering work and fine enough to prevent another long, uncommitted U05 overlay**. These are natural semantic stages, not a micro-task checklist and not a resurrection of CP0–CP8.
+U06 will be executed as **six natural stages**.
 
-Every stage has a hard handoff boundary. At that boundary the Worker records what proposition was actually established, commits the meaningful work state on the U05 work branch, and stops before beginning the next stage. The next stage may proceed only from that exact committed state. These are resumability/history commits, not acceptance claims.
+The stages are intentionally larger than individual methods/tests but smaller than the complete U06 unit. Each implementation stage has one coherent architectural proposition and ends at a clean Git resumability boundary.
 
-### Stage 1 — Restart architecture and durable contract
+A stage commit is not acceptance. U06 receives semantic acceptance only after the exact frozen candidate passes fresh independent Tester review and is promoted with preserved ancestry.
 
-**Purpose:** resolve the architectural question that the abandoned U05 attempted to discover incrementally during implementation. No substantive PostgreSQL production implementation begins until this stage is coherent.
+During Stages 1–4:
 
-This stage includes, as one connected design exercise:
+- ordinary work occurs on one U06 work lineage;
+- `main` remains the accepted U05 baseline;
+- meaningful intermediate states are committed;
+- evidence must name the exact state it describes;
+- do not allow multiple substantial stages to accumulate as one dirty overlay;
+- stop after each stage boundary before beginning the next stage unless the Programme Owner has explicitly authorised continued autonomous execution.
 
-- establish and record the exact accepted U04 starting commit/tree and clean work branch;
-- confirm abandoned U05 code/checkpoint machinery is absent from the active tree;
-- inventory every U01–U04 invariant affected by loss of process memory;
-- for each invariant identify the durable fact, relationship, enumeration or query a completely fresh owner requires;
-- distinguish reconstruction from direct durable query where that distinction matters;
-- derive the minimum owner/persistence port from those semantic needs rather than from CRUD convenience;
-- define the minimum correctness-only PostgreSQL relation/type/constraint design;
-- define transaction boundaries, commit acknowledgement, failure behaviour and referential readback;
-- trace the proposed public object graph and ensure no ordinary caller can reach a persistence mutation capability that bypasses owner semantics;
-- identify any Remaining Unknown that would require new semantic authority rather than an implementation choice.
+### Stage 1 — A00 production construction and lifecycle boundary
 
-The durable-reconstruction record should cover, at minimum, policy overlap/effective-policy state, owed-slot/capture identity, observation identity/retry/conflict and sequence/high-water state, eligible evidence needed for assessment, assessment history/immediate predecessor, explicit owed-slot reconciliation and referential retrieval of original owner facts.
+**Purpose:** implement the minimum truthful A00 production construction boundary before adding the sequential use case.
 
-**Stage exit:** the architecture can explain, invariant by invariant, how a fresh owner makes every restart-sensitive U01–U04 decision without caller-managed hydration. Any unresolved semantic authority gap is returned as `BLOCKED`. The design/evidence state is committed on the U05 work branch before production implementation begins.
+This stage begins by tracing the accepted U06 construction obligations against the realised U05 production surfaces. The Worker must establish, rather than assume:
 
-### Stage 2 — PostgreSQL foundation and first complete restart path
+- the current public M00 construction seam;
+- the accepted technical PostgreSQL construction seam;
+- which configuration/technical values A00 must receive to construct the production composition;
+- which resources, if any, actually require A00-owned startup/shutdown handling;
+- the smallest public A00 application object required for later governed composition.
 
-**Purpose:** prove the architecture works end-to-end before broadening it across all semantic state. This is the first production implementation stage.
+Then implement the bounded production construction path, expected to include the accepted `create_application` symbol required by the physical proof.
 
-Implement only enough of the common PostgreSQL mechanism plus the policy/capture/reconciliation path to demonstrate a real fresh-owner vertical slice. Through the public owner seam and real PostgreSQL, establish that a fresh owner can:
+The construction must satisfy all of the following:
 
-- obtain the durable policy state needed for accepted overlap/effective-policy decisions;
-- find an already-existing owed capture by lawful stable slot identity;
-- reconcile an explicitly requested missing owed slot from durable state;
-- durably create the required capture and initial `unknown_not_established` assessment where authorised;
-- never infer `zero_received` from absence of durable evidence;
-- claim success only after the transaction creating the semantic fact commits;
-- leave no fabricated semantic fact after failed write/rollback;
-- perform the path after discarding the original owner and constructing a completely fresh owner, without preparatory semantic hydration.
+- A00 constructs/injects the non-owning PostgreSQL technical dependency required by accepted U05;
+- A00 constructs the admitted M00 owner through M00's public construction seam;
+- A00 may expose bounded dependency injection needed for proof, but the production default path must construct the real admitted dependencies;
+- dependency injection must not create a caller-accessible semantic bypass around M00;
+- A00 does not import M00 private implementation modules as a semantic API;
+- A00 does not decide policy, capture, observation, relation or assessment meaning;
+- A00 owns only construction and whatever top-level lifecycle the admitted mechanisms actually require;
+- no artificial pooling, recovery, scheduler, network or shutdown semantics are invented merely to make the application object look complete.
 
-This stage also re-checks the realised object graph now that a concrete adapter exists. A private name is not sufficient; the concrete adapter/repository/connection must not be caller-reachable as a semantic bypass.
+Architecture proof must continue to establish:
 
-**Stage exit:** one genuine public semantic restart path works against committed PostgreSQL and demonstrates that the architecture is reconstruction-capable rather than merely record-persistent. If the architecture proves inadequate, stop and repair Stage 1 rather than accumulating later state classes. Commit the exact implementation/proof state.
+- declared owner edge exactly `A00 -> M00`;
+- no `M00 -> A00` edge;
+- A00 composition imports M00 only through the declared public seam, except for any separately admitted non-semantic technical constructor whose use is already authorised and cannot lawfully be reached through that seam;
+- no P01/K01/downstream runtime edge appears.
 
-### Stage 3 — Observation durability and restart semantics
+**Required proof at this stage:** focused A00 construction/architecture proof plus applicable existing architecture/static checks. Do not require the full sequential business path to be green yet if that behaviour has not been implemented.
 
-**Purpose:** carry the established restart mechanism across the substantial U03 observation state as one coherent semantic unit.
+**Stage exit:** one clean committed tree contains a truthful production A00 construction/lifecycle boundary, with no Raw Signal semantic decisions in A00 and no unadmitted dependency edge. Commit the exact implementation/proof state before Stage 2.
 
-Implement and prove through a completely fresh owner:
+### Stage 2 — Governed typed delegation and semantic dataflow
 
-- durable reconstruction/readback of the accepted observation fact with NativeValueV1/value/time/provenance fidelity;
-- same-identity identical-content retry idempotency against durable state;
-- conflicting same-identity reuse fail-closed behaviour;
-- recovery/query of the durable sequence/high-water information required by accepted observation semantics;
-- correct behaviour where relevant durable predecessor/state already exists before the new process starts;
-- failed observation writes leave neither a durable fact nor a fabricated semantic fallback;
-- success is attributable to the transaction that committed the observation fact.
+**Purpose:** implement the actual A00 → M00 sequential orchestration while preserving M00 semantic ownership.
 
-The proof must exercise the public production path from empty process-local semantic state; it must not populate the owner with helper reads merely to make the command succeed.
+Implement the governed sequence through M00's typed public command/read facets only:
 
-**Stage exit:** the restart-sensitive U03 invariants are enforced from durable state, and no correctness-critical observation identity/high-water state remains process-memory-only. Commit the exact implementation/proof state before proceeding.
+1. register the capture-scope policy;
+2. realise the scheduled capture occurrence;
+3. admit the raw observation occurrence;
+4. derive the receipt-evidence relation;
+5. append the receipt-presence assessment;
+6. perform the required referential readback.
 
-### Stage 4 — Receipt evidence, assessment history and restarted U04 semantics
+This is orchestration, not semantic reimplementation.
 
-**Purpose:** carry durability across the accepted U04 assessment model while explicitly preventing recurrence of the U04 and abandoned-U05 failure classes.
+The stage must prove exact dataflow, not merely method order:
 
-Implement and prove through a completely fresh owner:
+- authoritative A00 input values are passed to the correct M00 command positions;
+- capture realisation is consistent with the exact policy identity/version accepted by policy registration;
+- a caller-supplied policy reference inconsistent with the registered policy fails before capture realisation;
+- the exact capture identity returned by M00 flows into later relation/assessment commands where required;
+- the exact observation identity returned by M00 flows into relation derivation and referential readback where required;
+- the effective policy reference used by later operations comes from the authoritative M00 result/path required by the accepted proof;
+- the exact evidence-as-of timestamp and supersession input flow into assessment append;
+- A00 returns/propagates the exact semantic objects returned by M00 rather than recreating them;
+- A00 never chooses `zero_received`, `one_or_more_received`, `unknown_not_established`, eligibility, supersession meaning or any other M00-owned outcome.
 
-- durable access to admitted observations/evidence required for assessment;
-- assessment outcome remains an M-owned semantic decision, not a database decision;
-- optional receipt-relation materialisation is not a prerequisite for assessment correctness;
-- missing eligibility authority fails closed wherever accepted U04 semantics require it;
-- receipt time is never substituted for transaction/system-knowledge visibility;
-- assessments remain append-only;
-- the immediate predecessor is obtained correctly from durable assessment history;
-- same-ID retry remains stable even when later evidence exists;
-- a new assessment applies the accepted supersession rule after restart;
-- failed assessment writes fabricate no assessment outcome;
-- all of the above are exercised without caller/test-managed reconstruction of eligible evidence or predecessor state.
+Proof may use an opaque spy owner/factory to discriminate delegation and object/argument identity, because that is the accepted U06 proof technique. The spy may observe calls only; it must not become an alternate Raw Signal semantic implementation.
 
-**Stage exit:** the complete accepted U04 assessment/receipt behaviour survives an empty-process restart using the durable contract established in Stage 1. Commit the exact implementation/proof state.
+**Required proof at this stage:** the accepted U06 delegation/dataflow family must pass for the implemented path, together with applicable architecture/static checks and predecessor regression needed to show the change did not disturb accepted U01–U05 behaviour.
 
-### Stage 5 — Whole-U05 integration, adversarial closure and candidate freeze
+**Stage exit:** one clean committed tree proves exact typed A00→M00 sequential delegation and dataflow without semantic duplication or private bypass. Commit before Stage 3.
 
-**Purpose:** determine whether the separately built semantic areas actually form one coherent U05 implementation. This stage is integration and adversarial closure, not another feature tranche.
+### Stage 3 — Real production PostgreSQL/M00 sequential composition
 
-From representative committed U01–U04 state:
+**Purpose:** prove that the production A00 construction path and the accepted M00/PostgreSQL implementation actually compose end-to-end, rather than relying solely on spy substitution.
 
-- discard all owner/process-local semantic state and construct a fresh owner;
-- exercise the full required public command and referential-read paths;
-- discharge every row of the Stage 1 restart/reconstruction inventory;
-- verify original durable facts retain required lineage/schedule context;
-- verify policy, capture/reconciliation, observation and assessment decisions compose correctly after restart;
-- challenge identical retries and identity conflicts against already-durable state;
-- challenge transaction failures so that no semantic empty/unknown/zero fallback is fabricated;
-- confirm no cross-kind atomicity or stronger transaction claim is being implied than authority permits;
-- re-challenge the complete reachable object graph for persistence bypass;
-- run the applicable product and architecture proof axes independently at their required level.
+Using the authorised real PostgreSQL proof environment and the production A00 factory:
 
-Then perform the mandatory **logic trace** through the realised owner → persistence → transaction → restart/reconciliation paths. Read the actual code path independently of the test suite and ask, for every accepted restart-sensitive decision, where its governing state comes from after process loss.
+- construct the application through the default production path;
+- establish only the technical configuration required by the accepted implementation;
+- execute one representative governed sequential Raw Signal path using accepted v1 facts;
+- verify policy registration, capture, observation, relation, assessment and referential readback all pass through the realised M00 owner;
+- verify durable facts can be read back through the public owner/application path as required by the sequential composition proposition;
+- verify the result preserves the accepted U05 transaction/durability behaviour without A00 acquiring transaction semantics;
+- verify application teardown/lifecycle does not fabricate semantic success or mutate M00 facts;
+- verify no external provider/network/downstream capability is needed or silently activated.
 
-**Stage exit:** the complete terminal proposition in section 3 is established at Worker-evidence level for one clean committed tree; no known restart-sensitive invariant still depends on lost process memory; evidence and source state agree exactly. Freeze that one exact commit/tree as the U05 candidate.
+The stage must specifically discriminate these false positives:
 
-### Stage 6 — Fresh independent Tester review
+- the injected spy path works but the production default factory does not;
+- A00 builds an in-memory/non-durable substitute instead of the accepted PostgreSQL-backed M00 path;
+- A00 reaches PostgreSQL or repository mutation directly instead of using M00 commands;
+- correct call order hides incorrect identity/reference propagation;
+- composition success depends on an unadmitted P01/K01/downstream object;
+- production construction widens the public capability graph to expose direct persistence mutation.
 
-**Purpose:** independently challenge the exact frozen U05 candidate rather than continue Worker self-validation.
+Do not reopen U05 durability design. If real composition exposes an actual U05 regression, stop at that first unmet invariant and route the defect according to repository failure law; do not patch around it inside A00.
 
-The Tester receives the governing authority, accepted U01–U04 lineage needed for context, Stage 1 reconstruction/contract record, exact candidate commit/tree/diff, Worker evidence, and relevant historical failure material only as risk evidence.
+**Required proof at this stage:** real PostgreSQL production-composition discriminator(s), the accepted U06 proof family, applicable U01–U05 regressions, and architecture/static proof relevant to the modified surface.
 
-The Tester must inspect the realised code paths as well as execute the required proof. In particular, independently challenge:
+**Stage exit:** one clean committed tree establishes that the actual production A00 factory composes the accepted PostgreSQL-backed M00 owner and executes the authorised sequential path through public boundaries only. Commit before Stage 4.
 
-- a completely fresh owner with no helper/fixture hydration;
-- durable enforcement of the restart-sensitive U01–U04 invariants;
-- transaction/failure claims at the level actually asserted;
-- public-object-graph persistence bypass;
-- recurrence of previously identified mechanism classes.
+### Stage 4 — Whole-U06 adversarial closure and candidate freeze
 
-The Tester returns exactly `PASS`, `FAIL / RETURN_TO_WORKER`, or `BLOCKED` for the U05 unit. A failure routes a bounded repair on the U05 work lineage followed by a new exact candidate and fresh independent re-review; it does not authorise wholesale redesign or integration of a failed candidate.
+**Purpose:** determine whether Stages 1–3 form one coherent U06 implementation and freeze one exact Worker candidate for independent review.
 
-### Stage 7 — Promotion and close-out
+This stage adds no new product capability. It closes the complete U06 proposition.
+
+Challenge the realised implementation against the accepted authority:
+
+- `IA17-PROD-013` sequential end-to-end proposition;
+- `IA17-ARCH-004` exact runtime dependency direction and acyclicity;
+- `IA17-ARCH-005` typed public seam / no private bypass;
+- `IA17-ARCH-006` lawful composition of admitted active objects only;
+- the U06 portions of BC-014/BC-015 adversarial proof already embodied in the accepted physical proof;
+- predecessor U01–U05 conservation.
+
+Perform a mandatory source-level logic trace through:
+
+`A00 construction -> technical persistence construction -> M00 owner construction -> commands/reads -> sequential orchestration -> returned application result -> lifecycle/teardown`
+
+For every step, identify who owns the decision and where each material input/result came from.
+
+The trace must independently challenge at least:
+
+- whether A00 contains any Raw Signal outcome/eligibility/supersession logic;
+- whether A00 can bypass M00 into private state/table/repository/adapter mutation;
+- whether M00 acquires a reverse dependency on A00;
+- whether application construction can select an unadmitted owner/mechanism;
+- whether exact registered-policy/capture/observation/effective-policy identities propagate correctly;
+- whether the production default path differs materially from the path proved with dependency substitution;
+- whether lifecycle handling adds semantic side effects beyond authority;
+- whether the public object graph exposes a new persistence mutation capability under the already-accepted bounded public-seam proof law;
+- whether P01/K01/packet/downstream capability has entered the runtime path.
+
+Run the complete proof axes required for the U06 claim independently. Green product proof must not substitute for architecture proof or vice versa.
+
+If all required propositions are established, freeze one exact clean commit/tree as the **U06 Worker candidate**. No evidence/handoff edit after candidate freeze may modify candidate production/test/config/dependency bytes.
+
+**Stage exit:** complete Worker evidence establishes the U06 terminal proposition for one exact immutable candidate; predecessor regressions and required architecture/static/product axes are green; code trace finds no unresolved authority or ownership defect; worktree and evidence agree exactly.
+
+### Stage 5 — Fresh independent Tester review
+
+**Purpose:** independently challenge the exact frozen U06 candidate.
+
+The fresh Tester receives:
+
+- current governing authority;
+- exact U06 IWO/BICP obligations;
+- exact accepted U01–U05 predecessor lineage needed for context;
+- exact U06 candidate commit/tree/diff;
+- Worker evidence;
+- accepted U06 physical proof;
+- relevant historical U06 proof-review findings as risk evidence, not as current authority.
+
+The Tester must inspect realised source paths as well as execute proof.
+
+At minimum independently challenge:
+
+- production A00 construction uses the admitted M00/PostgreSQL path;
+- exact owner edge is A00 → M00 only;
+- A00 calls only the typed M00 command/read seam for Raw Signal meaning;
+- no A00 semantic calculation or private persistence bypass exists;
+- material policy/capture/observation/assessment identities and timestamps propagate correctly;
+- the real production path, not only a spy fixture, satisfies the sequential proposition;
+- no P01/K01/downstream/unadmitted runtime capability appears;
+- applicable predecessor, architecture, static and real-PostgreSQL proof remains green.
+
+Tester disposition is exactly one of:
+
+- `PASS`;
+- `FAIL / RETURN_TO_WORKER`;
+- `BLOCKED`.
+
+A failure returns only the bounded U06 defect/class to the Worker. Repair creates a new exact candidate followed by fresh independent re-review. A failed candidate is never silently amended in place or promoted.
+
+**Stage exit:** fresh independent Tester `PASS` on one exact candidate, or stop on the first material failure/blocker.
+
+### Stage 6 — Promotion and U06 close-out
 
 Only after fresh Tester `PASS`:
 
-- integrate the accepted U05 work lineage into `main` with preserved ancestry;
-- record exact accepted candidate, review and promotion identities;
-- update current-state/handoff authority so it describes the promoted repository truth;
-- verify evidence names the exact promoted state;
-- retain all ordinary work/review commits in Git history;
-- stop. U06 does not begin under this plan.
+- preserve the Tester disposition in ordinary Git history;
+- integrate the accepted U06 work lineage into `main` with preserved ancestry;
+- record exact candidate, review and promotion identities;
+- update current-state/handoff authority to describe the promoted repository truth;
+- verify no production/test/config/dependency bytes changed after the independently accepted candidate except where separately reviewed and explicitly re-tested;
+- verify the final worktree is clean and Git integrity/readback checks pass;
+- stop.
+
+This plan ends at accepted/promoted U06.
+
+No U07 begins under this plan. VI-14 aggregate/interaction closure, VI-15 packaging, VI-16 whole-BICP review, VI-17 provenance audit and VI-18 final bounded-implementation freeze remain outside this plan and require the then-current governing authority.
 
 ---
 
-## 7. Git and state-management discipline
+## 7. Git and resumability discipline
 
-During U05:
+During U06:
 
-- `main` remains the accepted baseline until U05 receives independent acceptance;
-- ordinary implementation occurs on one U05 work lineage;
-- meaningful intermediate work is committed, even when not accepted;
-- WIP/work commits never carry `PASS`, accepted or promoted meaning merely because they exist;
-- do not squash/rebase/history-rewrite for tidiness;
-- do not keep hundreds of lines of multi-slice production work uncommitted across sessions;
-- do not let governance-only commits advance the implementation base invisibly underneath a large dirty overlay;
-- every handoff names its exact commit/tree and states whether the worktree was clean;
-- failed candidates remain recoverable in Git history.
+- `main` remains the accepted U05 baseline until U06 receives independent Tester acceptance;
+- ordinary implementation occurs on one U06 work lineage;
+- each substantial Stage 1–4 boundary receives a normal Git commit;
+- stage commits are resumability/history points, not semantic acceptance;
+- do not squash/rebase/history-rewrite the U06 lineage for tidiness;
+- do not accumulate multiple stages as one large dirty worktree;
+- handoffs name exact commit/tree and whether the worktree is clean;
+- candidate freeze is one exact immutable commit/tree;
+- Tester evidence and promotion records are separate from the candidate where possible;
+- failed candidates and repair lineages remain recoverable in Git history.
+
+If a governance correction is genuinely required mid-unit, make it explicit and separate. Do not continuously redesign the workflow underneath active dirty implementation.
 
 ---
 
-## 8. Evidence discipline
+## 8. Mutation discipline
 
-For every semantic slice, evidence must distinguish:
+Expected lawful U06 implementation jurisdiction is bounded by the accepted IWO and realised need, principally:
 
-- **VERIFIED:** commands/tests/traces actually run and their observed result;
-- **UNPROVED:** required axis not established in the current environment;
-- **BLOCKED:** required axis cannot presently be established for an identified reason;
-- **NOT IN SCOPE:** proposition not required by the current slice.
+- `src/nvda_desk/composition/**` for A00-owned construction, translation, sequential orchestration and lifecycle;
+- U06-specific product proof under `tests/product/raw_signal/**` where the accepted proof requires implementation-coupled repair/extension;
+- product-proof descriptions/config only where needed to remain truthful to the realised proof;
+- architecture proof/config only if required to preserve the already-authorised A00→M00 claim truthfully;
+- U06 evidence/handoff records.
 
-Do not convert `UNPROVED` into `PASS` because another axis is green.
+M00 production source under `src/nvda_desk/raw_signal_occurrence_truth/**` is **not presumed mutable merely because U06 consumes it**. A change there requires a demonstrated U06 dependency defect that cannot lawfully be resolved at the A00 composition boundary and must not reopen accepted U01–U05 meaning.
 
-Each evidence record must include:
+Do not mutate:
+
+- `GUARDRAILS.md`;
+- accepted BICP/IWO/normative meaning;
+- accepted proof obligations merely to make implementation green;
+- P01/K01/downstream surfaces;
+- unrelated architecture/kernel state.
+
+Make the smallest change that establishes the authorised U06 proposition.
+
+---
+
+## 9. Evidence discipline
+
+For each Stage 1–4 work boundary, evidence must distinguish:
+
+- **VERIFIED** — actually established by identified source/command/test/trace;
+- **UNPROVED** — required axis not yet established;
+- **BLOCKED** — required axis cannot currently be established for a stated reason;
+- **NOT IN SCOPE** — proposition not required by the current stage.
+
+Each material evidence record must include:
 
 - exact commit/tree;
-- exact changed paths;
-- semantic proposition under test;
+- changed paths;
+- proposition under test;
 - proof environment where material;
 - commands/checks actually run;
-- result counts where applicable;
-- known limitations;
+- observed result counts where applicable;
+- known limitations/non-claims;
 - next lawful action.
 
-Evidence and source state must agree before handoff.
+Do not call U06 complete because the pre-existing U06 spy proof is green. The production construction path, real composition path, architecture boundary and independent review are separate propositions.
 
 ---
 
-## 9. Mandatory stop conditions
+## 10. Mandatory stop conditions
 
-Stop dependent U05 work at the first occurrence of any of the following:
+Stop dependent U06 execution at the first occurrence of any of the following:
 
-- active baseline/authority cannot be established exactly;
-- a U01–U04 invariant has no lawful durable reconstruction/query path;
-- a needed value is a Remaining Unknown without authority;
-- persistence requires making an M-owned semantic decision;
-- fresh-owner correctness requires caller/test-managed semantic hydration;
-- an ordinary caller can reach a persistence mutation capability that bypasses the semantic owner;
-- real PostgreSQL proof required for the asserted proposition is unavailable and the proposition cannot lawfully be narrowed;
-- implementation evidence and recorded checkpoint/handoff state disagree;
-- a required transaction/durability claim cannot be attributed to the transaction that created the semantic fact;
-- logic trace reveals a material accepted invariant still depends on process-local state after restart;
-- fresh Tester identifies an unresolved material defect.
+- the exact accepted U05 baseline or U06 authority cannot be established;
+- the realised M identity/public seam differs materially from the accepted U06 projection;
+- A00 composition requires a new Raw Signal semantic decision;
+- A00 requires direct private-state/table/repository mutation to make the sequence work;
+- M00 would need to depend on A00;
+- a P01/K01/downstream/provider/network capability becomes required;
+- a Remaining Unknown must be resolved to proceed;
+- the production A00 path cannot lawfully construct the accepted PostgreSQL-backed M00 owner;
+- real PostgreSQL proof required for the asserted composition proposition cannot run and the proposition cannot lawfully be narrowed;
+- predecessor U01–U05 accepted semantics regress;
+- product proof or architecture proof is materially red/incomplete for a required U06 proposition;
+- source logic trace finds A00-owned Raw Signal semantic behaviour or capability bypass;
+- evidence/handoff state disagrees with the actual source/Git state;
+- fresh independent Tester reports an unresolved material finding.
 
-Preserve the last exact proved work commit and the first unmet invariant. Do not continue downstream merely to accumulate progress.
-
----
-
-## 10. Definition of U05 done
-
-U05 is done only when all of the following are true for one exact committed candidate:
-
-1. accepted U01–U04 semantics remain conserved;
-2. every restart-relevant U01–U04 invariant has an explicit durable reconstruction/query mechanism;
-3. PostgreSQL remains a non-semantic mechanism behind the M-owned persistence boundary;
-4. success is claimed only after the relevant commit;
-5. failed writes produce no fabricated semantic fallback;
-6. identical retry/conflict semantics operate against durable state;
-7. a fresh owner can read original durable facts by domain identity with required lineage/schedule context;
-8. restart reconciliation operates from committed durable state;
-9. a missing owed slot produces durable capture + `unknown_not_established`, never inferred zero;
-10. U04 assessment semantics remain correct after restart without optional relation hydration or receipt-time proxying;
-11. the public object graph exposes no persistence mutation bypass;
-12. real PostgreSQL evidence establishes the claims for which real PostgreSQL is required;
-13. applicable product and architecture proof axes pass independently at their required level;
-14. a code-level logic trace finds no unresolved process-memory dependency for the governed restart semantics;
-15. exact source/evidence/handoff state is Git-resumable and internally consistent;
-16. a fresh independent Tester returns `PASS` on that exact candidate;
-17. accepted promotion preserves ancestry and records exact final identities.
-
-Anything less is an intermediate work state, not U05 acceptance.
+Preserve the last exact proved commit and first unmet invariant. Do not continue into later stages merely to accumulate progress.
 
 ---
 
-## 11. Deferred work
+## 11. Definition of U06 done
 
-This plan stops at accepted U05.
+U06 is done only when all of the following are true for one exact independently reviewed candidate:
 
-U06 A00 governed sequential composition, aggregate/final packaging and later whole-tranche work remain outside this plan and require the then-current governing authority after U05 close-out.
+1. U01–U05 accepted semantics remain conserved;
+2. production `create_application` or equivalent accepted A00 construction path exists and truthfully constructs the admitted runtime composition;
+3. A00 constructs/injects the accepted non-owning PostgreSQL technical mechanism and admitted M00 owner without becoming a semantic owner;
+4. runtime owner edge remains exactly `A00 -> M00` and active owner dependencies remain lawful/acyclic;
+5. M00 has no reverse A00 dependency;
+6. Raw Signal commands/reads cross only the declared typed M00 public boundary;
+7. A00 does not bypass M00 through private state/table/repository/persistence mutation;
+8. sequential policy → capture → observation → relation → assessment → referential-read composition is exercised through the production path;
+9. material identities, policy references, timestamps and supersession inputs propagate from exact authorised inputs or preceding M00 results as required;
+10. caller policy-reference disagreement with registered policy fails closed before capture progression;
+11. A00 returns/propagates M00-owned semantic results rather than recreating outcomes;
+12. A00 contains no Raw Signal eligibility/outcome/supersession decision logic;
+13. the production default composition path is proved in addition to any spy/dependency-substitution path;
+14. required real PostgreSQL composition evidence passes;
+15. no P01, K01, packet carrier, provider/network capability or downstream consumer is activated;
+16. applicable U06 product proof and architecture/static proof pass independently;
+17. a source-level logic trace finds no unresolved ownership, dependency or bypass defect;
+18. candidate/evidence/handoff state is exact, clean and Git-resumable;
+19. a fresh independent Tester returns `PASS` on that exact candidate;
+20. accepted promotion preserves ancestry and records exact final identities.
+
+Anything less is an intermediate U06 work state, not U06 acceptance.
+
+---
+
+## 12. Plan retirement and next boundary
+
+Upon explicit acceptance of this draft as the new root `EXEC_PLAN.md`:
+
+- the current completed U04→U05 ExecPlan becomes superseded historical planning evidence;
+- it is retained in Git history and is not destructively removed;
+- the new plan becomes the single active planning authority for U06 execution;
+- current-state/handoff records should be updated to identify U06 Stage 1 as the next authorised Worker action only when execution is actually routed.
+
+After Stage 6 promotion, this U06 ExecPlan is complete and must stop.
+
+There is no authorised U07 in the accepted IWO. Any later tranche requires a new explicitly accepted governing plan derived from the then-current authority.

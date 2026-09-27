@@ -6,7 +6,7 @@
 - **Previous Gate:** `G02 — Existing Implementation Admission Handoff Adoption` — `ACCEPTED`
 - **G02 acceptance record:** `control/GATE_02_ACCEPTANCE.md`
 - **Current Gate:** `G03 — Verified Bounded Implementation`
-- **Gate state:** `ACTIVE — U05 ACCEPTED AND PROMOTED / U04→U05 EXECPLAN COMPLETE`
+- **Gate state:** `ACTIVE — U05 ACCEPTED AND PROMOTED / U06 EXECPLAN ACTIVE / STAGE 1 AUTHORISED`
 - **Gate contract:** `control/GATE_03_VERIFIED_BOUNDED_IMPLEMENTATION.md`, revision `G03-R1`
 - **Execution binding:** `control/GATE_03_BINDING.md` (`G03-BIND-001`)
 - **Leaf map:** `control/GATE_03_LEAF_MAP.md`
@@ -76,16 +76,16 @@
 - **2026-09-27 U05 bounded timezone repair candidate:** replacement candidate `2bdbedff62307ecfaf6186f9c12814fb662c11a7` / tree `e15e743e006217a8a3a6313011caf82265a679cf` normalises all PostgreSQL `timestamptz` readback to UTC before semantic construction and adds a non-UTC database-timezone fresh-owner regression. Post-freeze Worker proof is Stage-2..5 restart 27/27, configured U05 PostgreSQL durability 55/55, accepted U01-U04 regressions 416/416, architecture/bootstrap 74/74, mypy and Ruff green. This is a replacement Worker candidate, not U05 acceptance or promotion. See `implementation/proof/VI12R_U05_STAGE6_TIMEZONE_RETURN_REPAIR_EVIDENCE.md`.
 - **2026-09-27 U05 Stage 6 fresh independent Tester result:** `PASS` against exact replacement candidate `2bdbedff62307ecfaf6186f9c12814fb662c11a7` / tree `e15e743e006217a8a3a6313011caf82265a679cf`; previous PostgreSQL session-timezone defect independently verified closed; fresh-owner UTC identity passed under `Australia/Melbourne` and `Asia/Kathmandu`; independent restart, durability, predecessor regression, architecture/static and public-object-graph challenges passed. Tester disposition is committed at `9f35df4c1915de78847dfc4a23ce886dfa3b5fd8`. See `implementation/proof/VI13R_U05_STAGE6_INDEPENDENT_TESTER_DISPOSITION.md`.
 - **2026-09-27 U05 Stage 7 promotion:** accepted candidate `2bdbedff62307ecfaf6186f9c12814fb662c11a7` and Stage-6 Tester `PASS` lineage were integrated into `main` by preserved-ancestry fast-forward from `4bf4b4feb08412f65216fc95d8615d2cc46eadaf` to promotion identity `9f35df4c1915de78847dfc4a23ce886dfa3b5fd8`. No production/test/config/dependency bytes changed after the independently accepted candidate. See `implementation/proof/VI12R_U05_STAGE7_PROMOTION_EVIDENCE.md`.
-- **Current Leaf:** `G03 / U05 accepted and promoted — U04→U05 ExecPlan complete`
-- **Current actor:** `PROGRAMME_OWNER` — U05 Stage 7 close-out is complete; no Worker/Tester execution cycle is active
-- **Active review cycle:** `NONE`
+- **Current Leaf:** `G03 / U06 Stage 1 — A00 production construction and lifecycle boundary`
+- **Current actor:** `WORKER` — Programme Owner authorised U06 Stage 1 execution under the accepted U06 ExecPlan
+- **Active review cycle:** `U06 WORKER STAGE 1`
 - **Last completed review:** U05 Stage-6 independent Tester `PASS` preserved at `9f35df4c1915de78847dfc4a23ce886dfa3b5fd8` / `implementation/proof/VI13R_U05_STAGE6_INDEPENDENT_TESTER_DISPOSITION.md`
 - **Role-consistency rule:** when `Current actor` is `PROGRAMME_OWNER` / no execution cycle is active, no Worker/Tester action is implied; a fresh cycle requires explicit routing under the then-current governing authority
 - **Completed VI-09 Worker handoff:** `implementation/handoff/WORKER_002_VI09_PRODUCT_PROOF_CONTROL.md`
 - **Completed VI-10 Worker handoff:** `implementation/handoff/WORKER_003_VI10_ADVERSARIAL_PRODUCT_PROOF.md`
 - **PM inline VI-08/09/10 attempts:** `DO_NOT_CARRY_FORWARD`
 - **Current authority note:** U01-U05 are now the accepted active semantic lineage for the scope closed by this ExecPlan. U05 accepted production candidate is `2bdbedff62307ecfaf6186f9c12814fb662c11a7` / tree `e15e743e006217a8a3a6313011caf82265a679cf`; independent U05 Tester `PASS` is preserved at review commit `9f35df4c1915de78847dfc4a23ce886dfa3b5fd8`; Stage-7 preserved-ancestry promotion integrated that reviewed lineage into `main` at the same promotion identity. Failed candidate `249fb5f2f174b63bd49fe3e749f0e5cacea39d87` remains historical evidence. The abandoned pre-recovery U05/CP line remains historical evidence only and no CP checkpoint machinery is active.
-- **Next lawful action:** stop under this ExecPlan. U06 has not begun and is not authorised here. Any U06 work requires explicit Programme Owner instruction and the then-current governing plan/authority.
+- **Next lawful action:** execute U06 Stage 1 only: establish and implement the truthful A00 production construction/lifecycle boundary, obtain the required focused proof, commit the exact Stage-1 state, then stop before Stage 2.
 
 
 - **VI-11R2 Tester Iteration 005:** `FAIL / RETURN_TO_WORKER` — 11 proof findings (`T005-F001..F011`), 4 Critical / 7 Important; reviewed wrapper `c164fac...`, physical proof `56ea445d...`.
