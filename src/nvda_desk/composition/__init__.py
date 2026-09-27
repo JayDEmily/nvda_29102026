@@ -4,11 +4,22 @@ from __future__ import annotations
 
 from collections.abc import Callable
 from dataclasses import dataclass
+from datetime import datetime
 from typing import Any
 
 from nvda_desk.architecture.registry import ArchitectureRegistry
 from nvda_desk.raw_signal_occurrence_truth._postgres import create_postgres_persistence
-from nvda_desk.raw_signal_occurrence_truth.api import create_owner
+from nvda_desk.raw_signal_occurrence_truth.api import (
+    CaptureReceiptEvidenceRelationV1,
+    CaptureReceiptPresenceAssessmentV1,
+    CaptureScopePolicyV1,
+    RawObservationOccurrenceV1,
+    ScheduledCaptureOccurrenceV1,
+    create_owner,
+)
+from nvda_desk.raw_signal_occurrence_truth.api import (
+    scope_policy_ref as make_scope_policy_ref,
+)
 
 
 @dataclass(frozen=True, slots=True)
@@ -31,10 +42,78 @@ _RawSignalOwnerFactory = Callable[..., Any]
 
 
 @dataclass(frozen=True, slots=True)
+class RawSignalSequenceResult:
+    """Exact M00 results returned from one governed A00 orchestration sequence."""
+
+    policy: CaptureScopePolicyV1
+    capture: ScheduledCaptureOccurrenceV1
+    observation: RawObservationOccurrenceV1
+    relation: CaptureReceiptEvidenceRelationV1 | None
+    assessment: CaptureReceiptPresenceAssessmentV1
+    readback: RawObservationOccurrenceV1 | None
+
+
+@dataclass(frozen=True, slots=True)
 class Application:
     """Top-level A00 application composition without Raw Signal semantic ownership."""
 
     __raw_signal_owner: Any
+
+    def run_raw_signal_proof_sequence(
+        self,
+        *,
+        capture_scope_policy: CaptureScopePolicyV1,
+        scope_policy_ref: Any,
+        slot_start_utc: datetime,
+        capture_occurrence_id: Any,
+        raw_observation: RawObservationOccurrenceV1,
+        assessment_occurrence_id: Any,
+        assessment_evidence_as_of_ts_utc: datetime,
+        supersedes_assessment_ref: Any | None,
+    ) -> RawSignalSequenceResult:
+        """Orchestrate the authorised Raw Signal sequence through M00 only."""
+
+        commands = self.__raw_signal_owner.commands
+        reads = self.__raw_signal_owner.reads
+
+        registered_policy = commands.register_capture_scope_policy(capture_scope_policy)
+        authoritative_policy_ref = make_scope_policy_ref(
+            f"{capture_scope_policy.scope_policy_id.value}@"
+            f"{capture_scope_policy.scope_policy_version}"
+        )
+        if scope_policy_ref != authoritative_policy_ref:
+            raise ValueError(
+                "scope_policy_ref must identify the policy accepted for this sequence"
+            )
+
+        capture = commands.realise_scheduled_capture_occurrence(
+            scope_policy_ref=scope_policy_ref,
+            slot_start_utc=slot_start_utc,
+            capture_occurrence_id=capture_occurrence_id,
+        )
+        observation = commands.admit_raw_observation_occurrence(raw_observation)
+        relation = commands.derive_capture_receipt_evidence_relation(
+            observation_occurrence_ref=observation.observation_occurrence_id,
+            capture_occurrence_ref=capture.capture_occurrence_id,
+            scope_policy_ref=capture.scope_policy_ref,
+        )
+        assessment = commands.append_capture_receipt_presence_assessment(
+            assessment_occurrence_id=assessment_occurrence_id,
+            capture_occurrence_ref=capture.capture_occurrence_id,
+            evidence_as_of_ts_utc=assessment_evidence_as_of_ts_utc,
+            supersedes_assessment_ref=supersedes_assessment_ref,
+        )
+        readback = reads.get_raw_observation_occurrence(
+            observation.observation_occurrence_id
+        )
+        return RawSignalSequenceResult(
+            policy=registered_policy,
+            capture=capture,
+            observation=observation,
+            relation=relation,
+            assessment=assessment,
+            readback=readback,
+        )
 
 
 def create_application(
