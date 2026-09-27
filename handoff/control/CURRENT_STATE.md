@@ -6,7 +6,7 @@
 - **Previous Gate:** `G02 — Existing Implementation Admission Handoff Adoption` — `ACCEPTED`
 - **G02 acceptance record:** `control/GATE_02_ACCEPTANCE.md`
 - **Current Gate:** `G03 — Verified Bounded Implementation`
-- **Gate state:** `ACTIVE — U05 STAGE 3 OBSERVATION RESTART COMMITTED / STAGE 4 NOT STARTED`
+- **Gate state:** `ACTIVE — U05 STAGE 4 RECEIPT/ASSESSMENT RESTART COMMITTED / STAGE 5 AUTHORISED`
 - **Gate contract:** `control/GATE_03_VERIFIED_BOUNDED_IMPLEMENTATION.md`, revision `G03-R1`
 - **Execution binding:** `control/GATE_03_BINDING.md` (`G03-BIND-001`)
 - **Leaf map:** `control/GATE_03_LEAF_MAP.md`
@@ -72,7 +72,7 @@
 - **2026-09-27 U05 Stage 3 Worker boundary:** Stage 3 observation durability and fresh-owner restart semantics are implemented/proved on `work/u05-restart-architecture` at `55927d065c9fff4283aa29197518e5927c0092bc` / tree `32a83b3a1f6e81b4b6498c2ea1d12430e23cff56`. Worker proof is Stage-3 real PostgreSQL 5/5, Stage-2+3 12/12, accepted U01-U04 regressions 416/416, architecture/bootstrap 74/74, mypy and Ruff green. This is not complete U05 or Tester acceptance; Stage 4 receipt/assessment restart semantics are not started. See `implementation/proof/VI12R_U05_STAGE3_OBSERVATION_RESTART_EVIDENCE.md`.
 - **2026-09-27 U05 Stage 4 Worker boundary:** Stage 4 receipt-evidence re-derivation, durable assessment evidence/history and fresh-owner restarted U04 semantics are implemented/proved on `work/u05-restart-architecture` at `a580a4bc336239a73a5bb2a2c8f6a4ccc19d8625` / tree `60a6da53b194db3c02a20351319a476369b22f53`. Worker proof is Stage-4 real PostgreSQL 12/12, Stage-2+3+4 24/24, accepted U01-U04 regressions 416/416, architecture/bootstrap 74/74, mypy and Ruff green. This is not complete U05 or Tester acceptance; Stage 5 whole-U05 integration/adversarial closure has not started. See `implementation/proof/VI12R_U05_STAGE4_ASSESSMENT_RESTART_EVIDENCE.md`.
 - **Current Leaf:** `G03 / U05 Stage 4 receipt/assessment restart semantics complete — Stage 5 not started`
-- **Current actor:** `PROGRAMME_OWNER` — Stage 4 Worker implementation/proof complete; Stage 5 has not been authorised or started
+- **Current actor:** `WORKER` — Stage 5 explicitly authorised by Programme Owner; Stage 4 Worker implementation/proof is the committed starting boundary
 - **Active review cycle:** `NONE`
 - **Last completed cycle:** `handoff/review_cycles/TESTER_VI13R_U04_R032_1790251908/` — Reviewer 032 independently passed repaired U04
 - **Role-consistency rule:** when `Current actor` is `PROGRAMME_OWNER` / no execution cycle is active, no Worker/Tester action is implied; a fresh Worker/Tester cycle must be explicitly routed before execution
@@ -80,6 +80,6 @@
 - **Completed VI-10 Worker handoff:** `implementation/handoff/WORKER_003_VI10_ADVERSARIAL_PRODUCT_PROOF.md`
 - **PM inline VI-08/09/10 attempts:** `DO_NOT_CARRY_FORWARD`
 - **Current authority note:** U01-U04 remain the accepted semantic baseline. U04 production is `dc3b448191a2b2d3528ffb576b1ebc2c56839991` and independent U04 PASS is `dd42d645b59a62f88cfbc7fba47a75e415b7296f`. U05 Stage 1 restart architecture is committed at `bd5d904e4b94ea29ba0d8b147420d4a086fcdf1b`. U05 Stage 2 policy/capture/reconciliation restart foundation is implemented/proved at `0f707b487951d5c42ae57ad91b682e65901f5ff4` / tree `9c65ac00bd31151e188bef4f5e4541e378ada67c`. U05 Stage 3 observation restart semantics are implemented/proved at `55927d065c9fff4283aa29197518e5927c0092bc` / tree `32a83b3a1f6e81b4b6498c2ea1d12430e23cff56`. U05 Stage 4 receipt/assessment restart semantics are implemented/proved at `a580a4bc336239a73a5bb2a2c8f6a4ccc19d8625` / tree `60a6da53b194db3c02a20351319a476369b22f53`. These are Worker intermediate states, not complete U05 implementation or acceptance. Stage 5 whole-U05 integration/adversarial closure has not started. The abandoned U05/CP line remains historical evidence only and no CP checkpoint machinery is active.
-- **Next lawful action:** only if the Programme Owner explicitly authorises Stage 5, continue the U05 work lineage from the committed Stage-4 boundary and execute `Stage 5 — Whole-U05 integration, adversarial closure and candidate freeze` under root `EXEC_PLAN.md`. Do not begin Tester review before Stage 5 freezes one exact candidate. Do not import abandoned U05 code, evidence/results, or CP0-CP8/checkpoint state.
+- **Next lawful action:** execute `Stage 5 — Whole-U05 integration, adversarial closure and candidate freeze` from the committed Stage-4 boundary under root `EXEC_PLAN.md`. Do not begin Tester review before Stage 5 freezes one exact candidate. Do not import abandoned U05 code, evidence/results, or CP0-CP8/checkpoint state.
 
 - **VI-11R2 Tester Iteration 005:** `FAIL / RETURN_TO_WORKER` — 11 proof findings (`T005-F001..F011`), 4 Critical / 7 Important; reviewed wrapper `c164fac...`, physical proof `56ea445d...`.
