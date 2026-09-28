@@ -1,0 +1,61 @@
+VI-14-L1 Tester material command/evidence record
+
+SOURCE / GOVERNANCE / LINEAGE
+- SHA-256 received handoff -> 36897f76f9549e6dcc72aebfd3f5e6fef2ef43bb106974673f909dfc0ec23bc3
+- read root README.md, full GUARDRAILS.md, AGENTS.md, tests/AGENTS.override.md, complete EXEC_PLAN.md,
+  CURRENT_STATE.md and active TESTER_VI14_L1_1790568188 REQUEST.md
+- read accepted BICP/IRB/IWO, Worker VI-14 evidence, accepted U05/U06 Tester evidence and relevant source/proof
+- candidate -> 076f1e979474babbb8985dc87d3b2d4d62ec0b4c
+- candidate tree -> 45aec5c01ae8a35fa8879fab978c6fb0f0082140
+- verified accepted U06 candidate/PASS/close-out and routed parent ancestry
+- candidate diff vs routed parent -> one evidence file only
+- substantive src/tests/config/pyproject drift accepted-U06-candidate -> routed parent -> none
+- substantive post-candidate drift through received branch tip -> none
+
+PROOF ENVIRONMENT
+- verified preserved offline bootstrap integrity
+- reconstructed fresh Python 3.13.5 virtualenv and PostgreSQL 17.9 cluster
+- verify_env -> PASS: pytest 9.0.3, mypy 1.20.1, Ruff 0.15.11, Psycopg 3.3.4,
+  PostgreSQL 17.9 UTF8 fsync=on synchronous_commit=on full_page_writes=on Unix-socket-only
+- exposed already-present PyYAML 6.0.3 only as the bootstrap's missing runtime dependency
+
+INDEPENDENT VI-14 EXECUTION
+- initial monolithic 66-case invocation exceeded command window without assertion failure; not counted as PASS
+- collect U05 product family -> 55 exact nodes
+- run U05 nodes 1-10 -> 10 passed
+- run U05 nodes 11-20 -> 10 passed
+- run U05 nodes 21-30 -> 10 passed
+- run U05 nodes 31-40 -> 10 passed
+- run U05 nodes 41-50 -> 10 passed, one multiprocessing/fork deprecation warning
+- run U05 nodes 51-55 -> 5 passed
+- run U06 A00 composition + U05 whole restart + U06 PostgreSQL composition -> 11 passed
+- total proposition-bearing VI-14 set -> 66/66 passed
+
+STATIC / STRUCTURAL
+- tools/validate_product_proof.py --repository . -> PASS, 6 admitted families / 13 of 13 obligations
+- tools/validate_architecture.py -> PASS
+- tools/check_dependencies.py -> PASS
+- tools/check_public_seams.py -> PASS
+- pytest tests/architecture tests/bootstrap -> 74 passed
+- python -m mypy src -> Success: no issues found in 16 source files
+- ruff check src tests tools -> All checks passed
+- git diff --check candidate -> PASS
+- git fsck --full -> rc 0; seven dangling blobs, no integrity failure
+
+FIXTURE-INDEPENDENT PRODUCTION PUBLIC-SEAM CHALLENGE
+- manually constructed public CaptureScopePolicyV1 and RawObservationOccurrenceV1 values
+- create_application(postgres_dsn=..., eligibility_resolver=...) through production A00 seam
+- policy -> capture -> observation -> relation -> assessment -> observation readback
+  -> one_or_more_received / exact readback / durable counts (1,1,1,1)
+- fresh production application exact retry
+  -> same semantic result / counts remain (1,1,1,1)
+- same observation occurrence ID with conflicting native content
+  -> ValueError; counts remain (1,1,1,1)
+- mismatched caller policy ref
+  -> ValueError before capture progression; counts remain (1,1,1,1)
+
+DISPOSITION
+- final -> PASS
+- findings -> none
+- exact VI-14-L1 candidate accepted for preserved-ancestry promotion/close-out only
+- VI-15 remains prohibited pending that promotion/close-out
