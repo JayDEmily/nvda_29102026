@@ -1,0 +1,23 @@
+{
+  "review_cycle": "TESTER_VI16_L1_1790592833",
+  "actor": "TESTER",
+  "status": "COMPLETE",
+  "leaf": "VI-16-L1",
+  "candidate_commit": "9248f3b1788f8e99e59a0482c4cc393c27942715",
+  "candidate_tree": "5560c97ad83a05190603c323eb4fbfa0c21d983d",
+  "disposition": "PASS",
+  "findings": [],
+  "recurrence_classification": "NO_FINDING",
+  "named_propositions": "12/12 CHALLENGED_PASS",
+  "proof_obligations": "19/19 CHALLENGED_PASS",
+  "product_axis": "479/479 PASS",
+  "architecture_bootstrap": "74/74 PASS",
+  "current_product_obligations": "13/13 COVERED",
+  "persistence_successor": "IA22R01-PROD-009",
+  "forbidden_predecessor": "IA17-PROD-009",
+  "whole_bicp_semantic_review": "PASS",
+  "inactive_capability_closure": "PASS",
+  "installed_direct_sequence": "PASS",
+  "vi16_promotion": "ACCEPTED_FOR_LAWFUL_PROMOTION",
+  "vi17": "PROHIBITED_UNTIL_VI16_PROMOTION_CLOSEOUT"
+}
