@@ -2,20 +2,16 @@
 
 ## Status
 
-**DRAFT — successor root ExecPlan for Programme Owner review.**
+**ACCEPTED — explicitly approved by the Programme Owner on 2026-09-28.**
 
-This plan is authored from accepted/promoted U06 state on branch
-`work/vi14-vi18-final-closure-plan`.
+This plan was authored from the accepted/promoted U06 state on branch
+`work/vi14-vi18-final-closure-plan` and accepted for integration into `main` under ordinary Git history.
 
-It does not become the active planning authority until explicitly accepted by the Programme Owner
-and integrated into `main` under ordinary Git history. Until then, the completed U06 ExecPlan remains
-historical current-main planning state and continues to require `STOP`.
-
-Upon explicit acceptance and promotion of this successor plan:
+Upon integration into `main`:
 
 - the completed U06 ExecPlan is superseded as active planning authority;
 - it remains recoverable in ordinary Git history and is not destructively removed;
-- this file becomes the single active root planning authority for VI-14 through VI-18;
+- this file is the single active root planning authority for VI-14 through VI-18;
 - no change to `GUARDRAILS.md` or `AGENTS.md` is required or authorised by this plan.
 
 ---
@@ -751,15 +747,12 @@ current ExecPlan and current-state routing explicitly authorise it.
 
 ## 17. Plan retirement and activation
 
-This document is presently a draft on the planning branch.
+The Programme Owner explicitly approved this plan on 2026-09-28. Activation therefore requires:
 
-If the Programme Owner approves it:
-
-1. commit the accepted plan on the planning branch if not already committed;
-2. integrate the accepted plan into `main` with preserved ancestry;
-3. update current-state routing to name **VI-14-L1 Worker** as the next authorised action;
-4. create the first VI-14-L1 work branch from that accepted `main` state;
-5. execute under the existing Worker/Tester cycle.
+1. integrate the accepted plan into `main` with preserved ancestry;
+2. update current-state routing to name **VI-14-L1 Worker** as the next authorised action;
+3. create the first VI-14-L1 work branch from that accepted `main` state;
+4. execute under the existing Worker/Tester cycle.
 
 The previous U06 ExecPlan remains ordinary Git history and must not be destructively deleted or
 rewritten.
