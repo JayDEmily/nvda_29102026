@@ -732,8 +732,8 @@ The active sequence after plan acceptance is:
 - [x] **VI-14-L1** — integrated material interaction/direct-boundary closure — Worker -> Tester — accepted/promoted 2026-09-28;
 - [x] **VI-15-L1** — final distribution/version authority closure and exact metadata application —
   Worker -> Programme Owner authority checkpoint -> Worker freeze -> Tester — accepted/promoted 2026-09-28;
-- [ ] **VI-15-L2** — complete aggregate promotion and truthful package/install proof — Worker ->
-  Tester;
+- [x] **VI-15-L2** — complete aggregate promotion and truthful package/install proof — Worker ->
+  Tester — accepted/promoted 2026-09-28;
 - [ ] **VI-16-L1** — whole-BICP semantic review — Worker packet/freeze -> Tester review;
 - [ ] **VI-17-L1** — authority and lineage reconstruction — Worker -> Tester;
 - [ ] **VI-17-L2** — provenance/environment/repository-integrity audit — Worker -> Tester;
