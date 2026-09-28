@@ -6,7 +6,7 @@
 - **Previous Gate:** `G02 — Existing Implementation Admission Handoff Adoption` — `ACCEPTED`
 - **G02 acceptance record:** `control/GATE_02_ACCEPTANCE.md`
 - **Current Gate:** `G03 — Verified Bounded Implementation`
-- **Gate state:** `ACTIVE — VI-15-L2 TESTER ACTIVE`
+- **Gate state:** `ACTIVE — VI-16-L1 TESTER ACTIVE`
 - **Gate contract:** `control/GATE_03_VERIFIED_BOUNDED_IMPLEMENTATION.md`, revision `G03-R1`
 - **Execution binding:** `control/GATE_03_BINDING.md` (`G03-BIND-001`)
 - **Leaf map:** `control/GATE_03_LEAF_MAP.md`
@@ -93,15 +93,16 @@
 - **2026-09-28 VI-15-L2 fresh independent Tester result:** `PASS` against exact candidate `332c1f95da032f841e8779ef21fe3c1fceb698a2` / tree `3abec93134d128978ad6bcedbd0dfa6cf4334ec6`; independent product population 479/479, architecture/bootstrap 74/74, product-proof control 13/13 obligations, byte-identical wheel/sdist rebuild, isolated installed-distribution PostgreSQL challenge and inactive-capability package exclusion passed. Tester disposition is committed at `eed5c5f6fa9eeda02886ed8fda0d6205177823e5`. See `implementation/proof/VI15_L2_INDEPENDENT_TESTER_DISPOSITION.md`.
 - **2026-09-28 VI-15-L2 promotion:** exact accepted candidate `332c1f95da032f841e8779ef21fe3c1fceb698a2` and Tester `PASS` lineage were integrated into `main` by preserved-ancestry fast-forward from `3b1671dc0c15e5ab9023bd20362c432b1fd7a05a` to `eed5c5f6fa9eeda02886ed8fda0d6205177823e5`; accepted wheel/sdist hashes were preserved exactly and no `src/**`, `tests/**`, `config/**` or `pyproject.toml` bytes changed after the accepted candidate. VI-15-L2 is accepted/promoted; VI-16-L1 is next. See `implementation/proof/VI15_L2_PROMOTION_EVIDENCE.md`.
 - **Current Leaf:** `G03 / VI-16-L1 — whole-BICP semantic review`
-- **Current actor:** `WORKER` — prepare the exact VI-16-L1 whole-BICP semantic review candidate and packet only
-- **Active review cycle:** `WORKER_VI16_L1_1790591561`
+- **Current actor:** `TESTER` — independently review the exact frozen VI-16-L1 whole-BICP candidate only
+- **Active review cycle:** `TESTER_VI16_L1_1790592833`
 - **Last completed review:** VI-15-L2 Tester cycle `TESTER_VI15_L2_1790584579`; exact candidate `332c1f95da032f841e8779ef21fe3c1fceb698a2` / tree `3abec93134d128978ad6bcedbd0dfa6cf4334ec6`; disposition `PASS`; promotion integration identity `eed5c5f6fa9eeda02886ed8fda0d6205177823e5`
 - **Role-consistency rule:** when `Current actor` is `PROGRAMME_OWNER` / no execution cycle is active, no Worker/Tester action is implied; a fresh cycle requires explicit routing under the then-current governing authority
 - **Completed VI-09 Worker handoff:** `implementation/handoff/WORKER_002_VI09_PRODUCT_PROOF_CONTROL.md`
 - **Completed VI-10 Worker handoff:** `implementation/handoff/WORKER_003_VI10_ADVERSARIAL_PRODUCT_PROOF.md`
 - **PM inline VI-08/09/10 attempts:** `DO_NOT_CARRY_FORWARD`
 - **Current authority note:** U01-U06 remain the accepted predecessor semantic lineage. U06 accepted production candidate is `8462630277b04d431ad393e2b73039cacb5d6247` / tree `0a01dacbf54f61bd7f60cf5e68cc350c3cf8d0c6`; independent U06 Tester `PASS` is preserved at `562767529235cedff77d3e740a259fab9d88716e`; Stage-6 close-out is `ed94f745effd65050f03d921ad0ae30769877206`. VI-14-L1 is accepted/promoted under the active VI-14 through VI-18 ExecPlan. No U07 is created; VI-15-L1 and VI-15-L2 are accepted/promoted and VI-16-L1 is the next authorised semantic unit.
-- **Next lawful action:** `VI-16-L1 WORKER` under `handoff/review_cycles/WORKER_VI16_L1_1790591561/REQUEST.md`; prepare/freeze one exact whole-BICP review candidate and route it to a fresh independent Tester. Do not begin VI-17.
+- **VI-16-L1 Worker candidate:** exact frozen candidate `9248f3b1788f8e99e59a0482c4cc393c27942715` / tree `5560c97ad83a05190603c323eb4fbfa0c21d983d`; review-packet preparation commit `2494a844191f359923515a7e78145914e55d6d8d`; Worker trace conclusion `NO_OBVIOUS_GAP_IDENTIFIED_BY_WORKER_TRACE`; independent Tester acceptance remains required. See `implementation/proof/VI16_L1_WHOLE_BICP_REVIEW_CANDIDATE_EVIDENCE.md`.
+- **Next lawful action:** `VI-16-L1 TESTER` under `handoff/review_cycles/TESTER_VI16_L1_1790592833/REQUEST.md`; independently challenge the exact frozen candidate and issue only `PASS`, `FAIL / RETURN_TO_WORKER`, or `BLOCKED`. Do not begin VI-17.
 
 
 - **VI-11R2 Tester Iteration 005:** `FAIL / RETURN_TO_WORKER` — 11 proof findings (`T005-F001..F011`), 4 Critical / 7 Important; reviewed wrapper `c164fac...`, physical proof `56ea445d...`.
