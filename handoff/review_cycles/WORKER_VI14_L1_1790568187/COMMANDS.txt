@@ -1,0 +1,33 @@
+VI-14-L1 Worker command/evidence summary
+
+Authority / source:
+- read GUARDRAILS.md, AGENTS.md, complete accepted EXEC_PLAN.md, CURRENT_STATE.md,
+  tests/AGENTS.override.md, accepted BICP/IRB/IWO and historical VI-14 definition
+- verified accepted BICP/IWO SHA-256 identities
+- verified U06 candidate/review/plan ancestry
+- traced A00 composition, M00 public seam, PostgreSQL technical adapter and architecture declarations
+
+Proof environment:
+- verified preserved U05 bootstrap bundle
+- bootstrapped fresh Python 3.13.5 / PostgreSQL 17.9 environment
+- verify_env.sh PASS
+- exposed already-present PyYAML 6.0.3 because the preserved bootstrap excludes PyYAML
+
+Integrated proof on candidate 076f1e979474babbb8985dc87d3b2d4d62ec0b4c:
+- pytest U05 durability + U06 product composition + U05 whole restart + U06 real PG composition
+  -> 66 passed, 1 multiprocessing fork deprecation warning
+- pytest tests/architecture tests/bootstrap -> 74 passed
+- mypy src -> success, 16 files
+- ruff check src tests tools -> PASS
+- validate_product_proof.py -> PASS, six families, 13/13 obligations
+- validate_architecture.py -> PASS
+- check_dependencies.py -> PASS
+- check_public_seams.py -> PASS
+- git diff HEAD^..HEAD --check -> PASS
+- git fsck --full --no-reflogs -> exit 0, historical dangling objects only
+
+Environment-only retries:
+- first combined U05/U06 collection stopped because PyYAML was absent from the preserved proof venv;
+  no repository assertion ran; rerun with PyYAML 6.0.3 overlay passed 66/66
+- first architecture/bootstrap run had one failure because Git rejected extracted-path ownership in a
+  subprocess; after adding the exact extracted path as safe.directory, unchanged tree passed 74/74
