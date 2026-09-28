@@ -6,7 +6,7 @@
 - **Previous Gate:** `G02 — Existing Implementation Admission Handoff Adoption` — `ACCEPTED`
 - **G02 acceptance record:** `control/GATE_02_ACCEPTANCE.md`
 - **Current Gate:** `G03 — Verified Bounded Implementation`
-- **Gate state:** `ACTIVE — VI-15-L1 ACCEPTED/PROMOTED; VI-15-L2 NEXT`
+- **Gate state:** `ACTIVE — VI-15-L2 WORKER ACTIVE`
 - **Gate contract:** `control/GATE_03_VERIFIED_BOUNDED_IMPLEMENTATION.md`, revision `G03-R1`
 - **Execution binding:** `control/GATE_03_BINDING.md` (`G03-BIND-001`)
 - **Leaf map:** `control/GATE_03_LEAF_MAP.md`
@@ -90,15 +90,15 @@
 - **2026-09-28 VI-15-L1 fresh independent Tester result:** `PASS` against exact candidate `466055a1cd5fe678a40049a00f0dc88158951d74` / tree `350568be5d5f790d71121fbac383349b9284d649`; authority and bounded candidate diff independently verified, VI-14 integrated regression 66/66, architecture/bootstrap 74/74, product-proof 13/13 across six admitted families, structural/dependency/public-seam/static checks green. Tester disposition is committed at `226c5cdebdfa33d5b3d8f43d3eb67b0ae6b8b355`. See `implementation/proof/VI15_L1_INDEPENDENT_TESTER_DISPOSITION.md`.
 - **2026-09-28 VI-15-L1 promotion:** exact accepted candidate `466055a1cd5fe678a40049a00f0dc88158951d74` and Tester `PASS` lineage were integrated into `main` by preserved-ancestry fast-forward from `1e4e649115f4eac87d58bfa6ad6c1bbc9912b767` to `226c5cdebdfa33d5b3d8f43d3eb67b0ae6b8b355`; no `src/**`, `tests/**`, `config/**` or `pyproject.toml` bytes changed after the accepted candidate. VI-15-L1 is accepted/promoted; VI-15-L2 is next. See `implementation/proof/VI15_L1_PROMOTION_EVIDENCE.md`.
 - **Current Leaf:** `G03 / VI-15-L2 — aggregate promotion and truthful package/install proof`
-- **Current actor:** `PROGRAMME_OWNER` — VI-15-L1 promotion complete; fresh VI-15-L2 Worker routing is the next administrative action
-- **Active review cycle:** `NONE`
+- **Current actor:** `WORKER` — execute only VI-15-L2 aggregate proof and truthful package/install proof
+- **Active review cycle:** `WORKER_VI15_L2_1790582161`
 - **Last completed review:** VI-15-L1 Tester cycle `TESTER_VI15_L1_1790577380`; exact candidate `466055a1cd5fe678a40049a00f0dc88158951d74` / tree `350568be5d5f790d71121fbac383349b9284d649`; disposition `PASS`
 - **Role-consistency rule:** when `Current actor` is `PROGRAMME_OWNER` / no execution cycle is active, no Worker/Tester action is implied; a fresh cycle requires explicit routing under the then-current governing authority
 - **Completed VI-09 Worker handoff:** `implementation/handoff/WORKER_002_VI09_PRODUCT_PROOF_CONTROL.md`
 - **Completed VI-10 Worker handoff:** `implementation/handoff/WORKER_003_VI10_ADVERSARIAL_PRODUCT_PROOF.md`
 - **PM inline VI-08/09/10 attempts:** `DO_NOT_CARRY_FORWARD`
 - **Current authority note:** U01-U06 remain the accepted predecessor semantic lineage. U06 accepted production candidate is `8462630277b04d431ad393e2b73039cacb5d6247` / tree `0a01dacbf54f61bd7f60cf5e68cc350c3cf8d0c6`; independent U06 Tester `PASS` is preserved at `562767529235cedff77d3e740a259fab9d88716e`; Stage-6 close-out is `ed94f745effd65050f03d921ad0ae30769877206`. VI-14-L1 is accepted/promoted under the active VI-14 through VI-18 ExecPlan. No U07 is created; VI-15-L1 is accepted/promoted and VI-15-L2 is the next authorised semantic unit.
-- **Next lawful action:** create a fresh VI-15-L2 Worker cycle from the accepted/promoted `main`; do not perform VI-15-L2 work until that routing exists.
+- **Next lawful action:** `VI-15-L2 WORKER` under `handoff/review_cycles/WORKER_VI15_L2_1790582161/REQUEST.md`; freeze one exact candidate and route it to a fresh Tester. Do not begin VI-16.
 
 
 - **VI-11R2 Tester Iteration 005:** `FAIL / RETURN_TO_WORKER` — 11 proof findings (`T005-F001..F011`), 4 Critical / 7 Important; reviewed wrapper `c164fac...`, physical proof `56ea445d...`.
