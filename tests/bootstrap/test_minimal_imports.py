@@ -17,7 +17,7 @@ def _admitted_top_level_packages() -> set[str]:
 
 
 def test_package_imports_match_kernel_plus_admitted_owner_packages() -> None:
-    assert nvda_desk.__version__ == "0.1.0"
+    assert nvda_desk.__version__ == "1.0.0"
     discovered = {item.name for item in pkgutil.iter_modules(nvda_desk.__path__)}
     expected = {"architecture", "composition"} | _admitted_top_level_packages()
     assert discovered == expected
