@@ -1,0 +1,12 @@
+VI-16-L1 promotion / close-out command summary
+
+- read mandatory governance, complete accepted ExecPlan, current-state routing, VI-16 Worker evidence,
+  independent Tester disposition, package identities and active promotion request
+- verified pre-promotion main -> candidate -> Tester PASS ancestry
+- verified exact candidate tree and no post-candidate src/tests/config/pyproject drift
+- verified supplied wheel/sdist SHA-256 identities
+- git fsck --full
+- checkout main
+- git merge --ff-only 9f5f7e90b463365fb39c361f2e346d9e67c6d915
+- record VI-16-L1 promotion evidence and current-state advance
+- mark VI-16-L1 accepted/promoted in active ExecPlan
