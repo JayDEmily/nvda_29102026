@@ -29,3 +29,8 @@
 - exact prior PyYAML 6.0.3 overlay artefact digest: UNKNOWN from current inputs; version identity established
 - Worker conclusion: `NO_MATERIAL_PROVENANCE_ENVIRONMENT_OR_REPOSITORY_INTEGRITY_GAP_IDENTIFIED_BY_WORKER_AUDIT`
 - independent Tester acceptance: `UNPROVED / REQUIRED`
+
+- audit-packet preparation commit: `98c345809694883fe9493f588e87ed815b75996b` / tree `1b017b6c01176fc61963a63bcf12d843aac8d0db`
+- exact frozen VI-17-L2 Worker candidate: `57712201296c6da811e4e6838d0f3fb302239df4` / tree `1b017b6c01176fc61963a63bcf12d843aac8d0db`
+- candidate freeze is an empty boundary commit; candidate tree exactly equals the audited preparation tree
+- fresh independent Tester route: `TESTER_VI17_L2_1790634143`

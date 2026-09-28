@@ -1,6 +1,6 @@
 # Worker response
 
-**Status:** `VI17_L2_AUDIT_COMPLETE / CANDIDATE_FREEZE_PENDING / TESTER_REQUIRED`
+**Status:** `VI17_L2_CANDIDATE_FROZEN / ROUTED_TO_TESTER`
 
 The Worker audited the final package/distribution identity, accepted build/proof/PostgreSQL provenance,
 aggregate and installed-package proof identities, inactive-capability closure, Git integrity/ancestry,
@@ -13,5 +13,4 @@ reproducible-build identity is not claimed. The current sandbox was not substitu
 proof environment, and the exact prior PyYAML 6.0.3 overlay artefact digest remains unknown from the
 current inputs.
 
-This is not VI-17-L2 acceptance. Freeze one exact candidate and route it to a fresh independent
-Tester. VI-18 remains prohibited until Tester PASS and lawful promotion.
+This is not VI-17-L2 acceptance. The exact Worker candidate is `57712201296c6da811e4e6838d0f3fb302239df4` / tree `1b017b6c01176fc61963a63bcf12d843aac8d0db` and is routed to fresh independent Tester cycle `TESTER_VI17_L2_1790634143`. VI-18 remains prohibited until Tester PASS and lawful promotion.

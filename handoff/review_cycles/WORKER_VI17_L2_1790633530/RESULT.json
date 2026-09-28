@@ -2,7 +2,7 @@
   "review_cycle": "WORKER_VI17_L2_1790633530",
   "actor": "WORKER",
   "leaf": "VI-17-L2",
-  "status": "AUDIT_COMPLETE_FREEZE_PENDING_TESTER_REQUIRED",
+  "status": "CANDIDATE_FROZEN_ROUTED_TO_TESTER",
   "routed_baseline": "4daaa4050da594e8feb893bb60f171c6828687af",
   "routed_baseline_tree": "ee24b621e37d7d3689d77473b682b8535919c7a7",
   "accepted_vi17_l1_candidate": "c07d5277512f600669b05a88cc2c174af3e3b046",
@@ -36,5 +36,10 @@
   "prior_pyyaml_overlay_artifact_digest": "UNKNOWN",
   "worker_conclusion": "NO_MATERIAL_PROVENANCE_ENVIRONMENT_OR_REPOSITORY_INTEGRITY_GAP_IDENTIFIED_BY_WORKER_AUDIT",
   "independent_tester_acceptance": "UNPROVED_REQUIRED",
-  "vi18_started": false
+  "vi18_started": false,
+  "audit_packet_commit": "98c345809694883fe9493f588e87ed815b75996b",
+  "candidate_commit": "57712201296c6da811e4e6838d0f3fb302239df4",
+  "candidate_tree": "1b017b6c01176fc61963a63bcf12d843aac8d0db",
+  "candidate_is_empty_boundary_commit": true,
+  "tester_cycle": "TESTER_VI17_L2_1790634143"
 }
