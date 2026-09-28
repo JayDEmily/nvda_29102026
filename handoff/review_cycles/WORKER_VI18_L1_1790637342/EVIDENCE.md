@@ -23,3 +23,7 @@
 - terminal VI-18 Tester acceptance remains UNPROVED.
 
 Full semantic/boundedness evidence: `implementation/proof/VI18_L1_FINAL_FREEZE_RECOVERY_CANDIDATE_EVIDENCE.md`.
+- evidence-packet commit: `da179be52ec16976f2f94347fc7766c17e006b2e`;
+- exact frozen VI-18-L1 candidate: `3113d10d1c3acb3d077c5c27547ea4caa5b01e7f` / tree `f43ed9ae73f1d44b763fbcb94250e5d31e18ce4a`;
+- candidate is an empty freeze-boundary commit over the evidence packet;
+- fresh Tester route: `TESTER_VI18_L1_1790637840`.

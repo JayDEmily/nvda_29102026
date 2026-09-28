@@ -2,7 +2,7 @@
   "cycle": "WORKER_VI18_L1_1790637342",
   "leaf": "VI-18-L1",
   "role": "WORKER",
-  "status": "TERMINAL_EVIDENCE_COMPLETE_FREEZE_PENDING_TESTER_REQUIRED",
+  "status": "FROZEN_ROUTED_TO_INDEPENDENT_TESTER",
   "routed_baseline_commit": "4df802c3ebe67409125c58655534814f24b9ae2b",
   "routed_baseline_tree": "4a15cb1ba7877ee765a395c1d6cd1a986a72cb48",
   "accepted_package_candidate": "332c1f95da032f841e8779ef21fe3c1fceb698a2",
@@ -16,7 +16,10 @@
   "superseded_bad_recovery_sha256": "8252286763da8c98b8df0cca589f9785902a3e6021eb1b28ef2dc5c2ac22bacd",
   "substantive_drift": false,
   "vi18_tester_acceptance": "UNPROVED",
-  "candidate_commit": null,
-  "candidate_tree": null,
-  "next_authorised_step": "Commit Worker evidence, freeze exact VI-18-L1 candidate, then route to a fresh independent Tester."
+  "candidate_commit": "3113d10d1c3acb3d077c5c27547ea4caa5b01e7f",
+  "candidate_tree": "f43ed9ae73f1d44b763fbcb94250e5d31e18ce4a",
+  "next_authorised_step": "Fresh TESTER_VI18_L1_1790637840 independently reviews exact candidate 3113d10d1c3acb3d077c5c27547ea4caa5b01e7f and corrected recovery artefact.",
+  "evidence_packet_commit": "da179be52ec16976f2f94347fc7766c17e006b2e",
+  "tester_cycle": "TESTER_VI18_L1_1790637840",
+  "proposed_terminal_main_state": "candidate 3113d10d1c3acb3d077c5c27547ea4caa5b01e7f / tree f43ed9ae73f1d44b763fbcb94250e5d31e18ce4a, conditional on independent VI-18 PASS and preserved-ancestry terminal close-out"
 }
