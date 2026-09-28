@@ -6,7 +6,7 @@
 - **Previous Gate:** `G02 — Existing Implementation Admission Handoff Adoption` — `ACCEPTED`
 - **G02 acceptance record:** `control/GATE_02_ACCEPTANCE.md`
 - **Current Gate:** `G03 — Verified Bounded Implementation`
-- **Gate state:** `ACTIVE — VI-17-L1 WORKER ACTIVE`
+- **Gate state:** `ACTIVE — VI-17-L1 TESTER ACTIVE`
 - **Gate contract:** `control/GATE_03_VERIFIED_BOUNDED_IMPLEMENTATION.md`, revision `G03-R1`
 - **Execution binding:** `control/GATE_03_BINDING.md` (`G03-BIND-001`)
 - **Leaf map:** `control/GATE_03_LEAF_MAP.md`
@@ -93,9 +93,9 @@
 - **2026-09-28 VI-15-L2 fresh independent Tester result:** `PASS` against exact candidate `332c1f95da032f841e8779ef21fe3c1fceb698a2` / tree `3abec93134d128978ad6bcedbd0dfa6cf4334ec6`; independent product population 479/479, architecture/bootstrap 74/74, product-proof control 13/13 obligations, byte-identical wheel/sdist rebuild, isolated installed-distribution PostgreSQL challenge and inactive-capability package exclusion passed. Tester disposition is committed at `eed5c5f6fa9eeda02886ed8fda0d6205177823e5`. See `implementation/proof/VI15_L2_INDEPENDENT_TESTER_DISPOSITION.md`.
 - **2026-09-28 VI-15-L2 promotion:** exact accepted candidate `332c1f95da032f841e8779ef21fe3c1fceb698a2` and Tester `PASS` lineage were integrated into `main` by preserved-ancestry fast-forward from `3b1671dc0c15e5ab9023bd20362c432b1fd7a05a` to `eed5c5f6fa9eeda02886ed8fda0d6205177823e5`; accepted wheel/sdist hashes were preserved exactly and no `src/**`, `tests/**`, `config/**` or `pyproject.toml` bytes changed after the accepted candidate. VI-15-L2 is accepted/promoted; VI-16-L1 is next. See `implementation/proof/VI15_L2_PROMOTION_EVIDENCE.md`.
 - **Current Leaf:** `G03 / VI-17-L1 — authority and lineage reconstruction`
-- **Current actor:** `WORKER` — execute VI-17-L1 authority and lineage reconstruction only
-- **Active review cycle:** `WORKER_VI17_L1_1790599569`
-- **Last completed review:** VI-15-L2 Tester cycle `TESTER_VI15_L2_1790584579`; exact candidate `332c1f95da032f841e8779ef21fe3c1fceb698a2` / tree `3abec93134d128978ad6bcedbd0dfa6cf4334ec6`; disposition `PASS`; promotion integration identity `eed5c5f6fa9eeda02886ed8fda0d6205177823e5`
+- **Current actor:** `TESTER` — independently review exact VI-17-L1 authority/lineage candidate only
+- **Active review cycle:** `TESTER_VI17_L1_1790601177`
+- **Last completed review:** VI-16-L1 Tester cycle `TESTER_VI16_L1_1790592833`; exact candidate `9248f3b1788f8e99e59a0482c4cc393c27942715` / tree `5560c97ad83a05190603c323eb4fbfa0c21d983d`; disposition `PASS`; promotion close-out identity `27d83923dc982b914d898c24a03e10e221c9c2c8`
 - **Role-consistency rule:** when `Current actor` is `PROGRAMME_OWNER` / no execution cycle is active, no Worker/Tester action is implied; a fresh cycle requires explicit routing under the then-current governing authority
 - **Completed VI-09 Worker handoff:** `implementation/handoff/WORKER_002_VI09_PRODUCT_PROOF_CONTROL.md`
 - **Completed VI-10 Worker handoff:** `implementation/handoff/WORKER_003_VI10_ADVERSARIAL_PRODUCT_PROOF.md`
@@ -104,7 +104,8 @@
 - **VI-16-L1 Worker candidate:** exact frozen candidate `9248f3b1788f8e99e59a0482c4cc393c27942715` / tree `5560c97ad83a05190603c323eb4fbfa0c21d983d`; review-packet preparation commit `2494a844191f359923515a7e78145914e55d6d8d`; Worker trace conclusion `NO_OBVIOUS_GAP_IDENTIFIED_BY_WORKER_TRACE`; independent Tester acceptance is established by `9f5f7e90b463365fb39c361f2e346d9e67c6d915`. See `implementation/proof/VI16_L1_WHOLE_BICP_REVIEW_CANDIDATE_EVIDENCE.md` and `implementation/proof/VI16_L1_INDEPENDENT_TESTER_DISPOSITION.md`.
 - **2026-09-28 VI-16-L1 fresh independent Tester result:** `PASS` against exact candidate `9248f3b1788f8e99e59a0482c4cc393c27942715` / tree `5560c97ad83a05190603c323eb4fbfa0c21d983d`; all 12 named Raw Signal propositions, BC-001 and all 19 current proof obligations were independently challenged against the realised implementation/package. Tester disposition is committed at `9f5f7e90b463365fb39c361f2e346d9e67c6d915`. See `implementation/proof/VI16_L1_INDEPENDENT_TESTER_DISPOSITION.md`.
 - **2026-09-28 VI-16-L1 promotion:** exact accepted candidate `9248f3b1788f8e99e59a0482c4cc393c27942715` and Tester `PASS` lineage were integrated into `main` by preserved-ancestry fast-forward from `5a7a027886cb6f854c19dc323b23b8a0b193edd7` to `9f5f7e90b463365fb39c361f2e346d9e67c6d915`; accepted package identities were preserved and no `src/**`, `tests/**`, `config/**` or `pyproject.toml` bytes changed after the accepted candidate. VI-16-L1 is accepted/promoted; VI-17-L1 is next. See `implementation/proof/VI16_L1_PROMOTION_EVIDENCE.md`.
-- **Next lawful action:** `VI-17-L1 WORKER` under `handoff/review_cycles/WORKER_VI17_L1_1790599569/REQUEST.md`; reconstruct authority/lineage, freeze one exact candidate, and route it to a fresh independent Tester.
+- **VI-17-L1 Worker candidate:** audit packet preparation commit `2f4fa4f199a18e55865babf9667da14ad23987fc`; exact frozen candidate `c07d5277512f600669b05a88cc2c174af3e3b046` / tree `5a156a0170bb31ab2253822a9cf3172bd610f5fe`; Worker conclusion `NO_MATERIAL_AUTHORITY_OR_LINEAGE_GAP_IDENTIFIED_BY_WORKER_AUDIT`; independent Tester acceptance remains unproved. See `implementation/proof/VI17_L1_AUTHORITY_LINEAGE_CANDIDATE_EVIDENCE.md`.
+- **Next lawful action:** fresh independent VI-17-L1 Tester cycle `TESTER_VI17_L1_1790601177` under `handoff/review_cycles/TESTER_VI17_L1_1790601177/REQUEST.md`; review exact candidate `c07d5277512f600669b05a88cc2c174af3e3b046`. VI-17-L2 remains prohibited before Tester PASS and preserved-ancestry promotion.
 
 
 - **VI-11R2 Tester Iteration 005:** `FAIL / RETURN_TO_WORKER` — 11 proof findings (`T005-F001..F011`), 4 Critical / 7 Important; reviewed wrapper `c164fac...`, physical proof `56ea445d...`.

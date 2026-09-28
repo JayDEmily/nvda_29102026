@@ -2,7 +2,7 @@
   "review_cycle": "WORKER_VI17_L1_1790599569",
   "actor": "WORKER",
   "leaf": "VI-17-L1",
-  "status": "AUDIT_COMPLETE_FREEZE_PENDING_TESTER_REQUIRED",
+  "status": "CANDIDATE_FROZEN_ROUTED_TO_TESTER",
   "active_git_root": "8133432ba8a07e4d04d83b14af5c3c4bd12e6b0e",
   "external_preimplementation_predecessor": "d095954c16a9818eadb60d6364148229f2dc4558",
   "external_predecessor_object_present": false,
@@ -20,5 +20,10 @@
   "wheel_python_mismatches": 0,
   "worker_conclusion": "NO_MATERIAL_AUTHORITY_OR_LINEAGE_GAP_IDENTIFIED_BY_WORKER_AUDIT",
   "independent_tester_acceptance": "UNPROVED_REQUIRED",
-  "vi17_l2_started": false
+  "vi17_l2_started": false,
+  "audit_packet_commit": "2f4fa4f199a18e55865babf9667da14ad23987fc",
+  "candidate_commit": "c07d5277512f600669b05a88cc2c174af3e3b046",
+  "candidate_tree": "5a156a0170bb31ab2253822a9cf3172bd610f5fe",
+  "candidate_is_empty_boundary_commit": true,
+  "tester_cycle": "TESTER_VI17_L1_1790601177"
 }

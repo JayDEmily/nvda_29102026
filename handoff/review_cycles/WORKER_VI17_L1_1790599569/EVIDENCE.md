@@ -19,3 +19,8 @@
 - package-candidate -> VI17 routed baseline substantive diff (`src tests config pyproject.toml`): empty
 - Worker conclusion: `NO_MATERIAL_AUTHORITY_OR_LINEAGE_GAP_IDENTIFIED_BY_WORKER_AUDIT`
 - independent Tester acceptance: `UNPROVED / REQUIRED`
+
+- audit-packet preparation commit: `2f4fa4f199a18e55865babf9667da14ad23987fc` / tree `5a156a0170bb31ab2253822a9cf3172bd610f5fe`
+- exact frozen VI-17-L1 Worker candidate: `c07d5277512f600669b05a88cc2c174af3e3b046` / tree `5a156a0170bb31ab2253822a9cf3172bd610f5fe`
+- candidate freeze is an empty boundary commit; candidate tree exactly equals the audited preparation tree
+- fresh independent Tester route: `TESTER_VI17_L1_1790601177`
