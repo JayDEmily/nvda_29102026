@@ -6,11 +6,11 @@
 - **Previous Gate:** `G02 — Existing Implementation Admission Handoff Adoption` — `ACCEPTED`
 - **G02 acceptance record:** `control/GATE_02_ACCEPTANCE.md`
 - **Current Gate:** `G03 — Verified Bounded Implementation`
-- **Gate state:** `ACTIVE — U06 ACCEPTED AND PROMOTED / U06 EXECPLAN COMPLETE / STOP`
+- **Gate state:** `ACTIVE — VI-14-L1 AUTHORISED / WORKER ROUTED`
 - **Gate contract:** `control/GATE_03_VERIFIED_BOUNDED_IMPLEMENTATION.md`, revision `G03-R1`
 - **Execution binding:** `control/GATE_03_BINDING.md` (`G03-BIND-001`)
 - **Leaf map:** `control/GATE_03_LEAF_MAP.md`
-- **Current plan:** root `EXEC_PLAN.md`
+- **Current plan:** root `EXEC_PLAN.md` — VI-14 through VI-18 Final Bounded-Implementation Closure, Programme Owner accepted 2026-09-28 at `6d1420b6e0245fc3f61bda8aaa5510ff3c7afae2` / tree `52b408ed2b2e90d58680b2001a5e8f601cc39d12`
 - **Macro methodology:** PLM commit `443e4870df9fe8b63f6ad6471e02508d78be6974`
 - **Accepted BICP:** `BICP-CANDIDATE-005` at fixed G02 hashes
 - **Pre-implementation source state:** `d095954c16a9818eadb60d6364148229f2dc4558` / tree `7fdb0e5308f3af187134bc3ebf633835748e9475`
@@ -82,16 +82,16 @@
 - **2026-09-28 U06 Stage 4 Worker candidate:** whole-U06 adversarial closure frozen at `8462630277b04d431ad393e2b73039cacb5d6247` / tree `0a01dacbf54f61bd7f60cf5e68cc350c3cf8d0c6`. Stage 4 closed a production dependency-injection persistence bypass, bound the policy-reference check to the exact M00-registered policy result, and restored the six-family product-proof admission boundary by relocating supplemental implementation-coupled stage tests outside `tests/product/**`. Post-freeze proof: admitted product aggregate 479/479, supplemental U05 restart 27/27, U06 closure 15/15, architecture/bootstrap 74/74, mypy/Ruff green. This is a Worker candidate only; Stage 5 fresh independent Tester review has not started. See `implementation/proof/VI12R_U06_STAGE4_WHOLE_CANDIDATE_EVIDENCE.md`.
 - **2026-09-28 U06 Stage 5 fresh independent Tester result:** `PASS` against exact frozen candidate `8462630277b04d431ad393e2b73039cacb5d6247` / tree `0a01dacbf54f61bd7f60cf5e68cc350c3cf8d0c6`; independent source trace, fixture-independent production-path challenge, admitted product proof 479/479, supplemental U05 restart 27/27, U06 closure 15/15, architecture/bootstrap 74/74, mypy/Ruff, diff and Git-integrity checks passed. Tester disposition is preserved at review commit `562767529235cedff77d3e740a259fab9d88716e`. See `implementation/proof/VI13R_U06_STAGE5_INDEPENDENT_TESTER_DISPOSITION.md`.
 - **2026-09-28 U06 Stage 6 promotion:** the independently accepted U06 lineage was integrated into `main` by preserved-ancestry fast-forward from `c3ae566ff8367d83dc783289d9b553faa9a51325` to promotion identity `562767529235cedff77d3e740a259fab9d88716e`. No production/test/config/dependency bytes changed after the accepted candidate. See `implementation/proof/VI12R_U06_STAGE6_PROMOTION_EVIDENCE.md`.
-- **Current Leaf:** `G03 / U06 accepted and promoted — U06 ExecPlan complete`
-- **Current actor:** `PROGRAMME_OWNER` — U06 is accepted and promoted; this ExecPlan is complete and no successor implementation unit is active
+- **Current Leaf:** `G03 / VI-14-L1 — integrated material interaction/direct-boundary closure`
+- **Current actor:** `WORKER` — execute VI-14-L1 only under the accepted root `EXEC_PLAN.md`; freeze one exact candidate for independent Tester review
 - **Active review cycle:** `NONE`
 - **Last completed review:** U06 Stage-5 independent Tester `PASS` preserved at `562767529235cedff77d3e740a259fab9d88716e` / `implementation/proof/VI13R_U06_STAGE5_INDEPENDENT_TESTER_DISPOSITION.md`
 - **Role-consistency rule:** when `Current actor` is `PROGRAMME_OWNER` / no execution cycle is active, no Worker/Tester action is implied; a fresh cycle requires explicit routing under the then-current governing authority
 - **Completed VI-09 Worker handoff:** `implementation/handoff/WORKER_002_VI09_PRODUCT_PROOF_CONTROL.md`
 - **Completed VI-10 Worker handoff:** `implementation/handoff/WORKER_003_VI10_ADVERSARIAL_PRODUCT_PROOF.md`
 - **PM inline VI-08/09/10 attempts:** `DO_NOT_CARRY_FORWARD`
-- **Current authority note:** U01-U06 are now the accepted active semantic lineage for the scope closed by this ExecPlan. U06 accepted production candidate is `8462630277b04d431ad393e2b73039cacb5d6247` / tree `0a01dacbf54f61bd7f60cf5e68cc350c3cf8d0c6`; independent U06 Tester `PASS` is preserved at review/promotion commit `562767529235cedff77d3e740a259fab9d88716e`; Stage-6 preserved-ancestry promotion integrated that reviewed lineage into `main` at the same promotion identity. U05 remains the accepted predecessor lineage. No U07 or post-U06 implementation unit is authorised by this ExecPlan.
-- **Next lawful action:** `STOP` under this ExecPlan. No U07 begins here. VI-14 aggregate/interaction closure, VI-15 packaging, VI-16 whole-BICP review, VI-17 provenance audit and VI-18 final bounded-implementation freeze require the then-current governing authority and explicit Programme Owner routing.
+- **Current authority note:** U01-U06 remain the accepted predecessor semantic lineage. U06 accepted production candidate is `8462630277b04d431ad393e2b73039cacb5d6247` / tree `0a01dacbf54f61bd7f60cf5e68cc350c3cf8d0c6`; independent U06 Tester `PASS` is preserved at `562767529235cedff77d3e740a259fab9d88716e`; Stage-6 close-out is `ed94f745effd65050f03d921ad0ae30769877206`. The Programme Owner accepted the successor VI-14 through VI-18 root ExecPlan on 2026-09-28. No U07 is created; the next authorised semantic unit is VI-14-L1.
+- **Next lawful action:** `VI-14-L1 WORKER` — create/use the VI-14-L1 work branch from the accepted current `main`, perform the integrated material interaction/direct-boundary closure defined in `EXEC_PLAN.md`, stop at the first unmet invariant, and freeze one exact candidate for independent Tester review. Do not begin VI-15.
 
 
 - **VI-11R2 Tester Iteration 005:** `FAIL / RETURN_TO_WORKER` — 11 proof findings (`T005-F001..F011`), 4 Critical / 7 Important; reviewed wrapper `c164fac...`, physical proof `56ea445d...`.
