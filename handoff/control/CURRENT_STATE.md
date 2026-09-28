@@ -6,7 +6,7 @@
 - **Previous Gate:** `G02 — Existing Implementation Admission Handoff Adoption` — `ACCEPTED`
 - **G02 acceptance record:** `control/GATE_02_ACCEPTANCE.md`
 - **Current Gate:** `G03 — Verified Bounded Implementation`
-- **Gate state:** `ACTIVE — VI-14-L1 ACCEPTED/PROMOTED; VI-15-L1 AUTHORITY CLOSURE NEXT`
+- **Gate state:** `ACTIVE — VI-15-L1 POST-AUTHORITY WORKER CONTINUATION`
 - **Gate contract:** `control/GATE_03_VERIFIED_BOUNDED_IMPLEMENTATION.md`, revision `G03-R1`
 - **Execution binding:** `control/GATE_03_BINDING.md` (`G03-BIND-001`)
 - **Leaf map:** `control/GATE_03_LEAF_MAP.md`
@@ -87,15 +87,15 @@
 - **2026-09-28 VI-14-L1 promotion:** exact accepted candidate `076f1e979474babbb8985dc87d3b2d4d62ec0b4c` and Tester `PASS` lineage were integrated into `main` by preserved-ancestry fast-forward from `00ca26815bc217b7fd4bb98a73eb2089caf94919` to `79b1d9d1d9da1b921c8d8197d154937dd1a699e5`; no `src/**`, `tests/**`, `config/**`, dependency or package bytes changed after the accepted candidate. VI-14-L1 is accepted/promoted; VI-15-L1 is next and remains subject to its explicit Programme Owner metadata-authority checkpoint.
 - **2026-09-28 VI-15-L1 pre-authority inspection:** current distribution is `nvda-architecture-kernel==0.1.0`, built by `hatchling==1.29.0` from package root `src/nvda_desk`; accepted owner package/public seam remain `nvda_desk.raw_signal_occurrence_truth` / `.api`. No final distribution metadata was selected or applied. Explicit Programme Owner authority for final distribution name and version is now required. See `implementation/proof/VI15_L1_PREAUTHORITY_METADATA_INSPECTION.md`.
 - **Current Leaf:** `G03 / VI-15-L1 — final distribution/version authority closure`
-- **Current actor:** `PROGRAMME_OWNER` — VI-15-L1 pre-authority inspection complete; explicit final distribution name/version authority required
-- **Active review cycle:** `NONE`
+- **Current actor:** `WORKER` — VI-15-L1 final metadata authority supplied; post-authority application/candidate freeze active
+- **Active review cycle:** `WORKER_VI15_L1_METADATA_1790576661`
 - **Last completed review:** VI-14-L1 Tester cycle `TESTER_VI14_L1_1790568188`; exact candidate `076f1e979474babbb8985dc87d3b2d4d62ec0b4c` / tree `45aec5c01ae8a35fa8879fab978c6fb0f0082140`; disposition `PASS`
 - **Role-consistency rule:** when `Current actor` is `PROGRAMME_OWNER` / no execution cycle is active, no Worker/Tester action is implied; a fresh cycle requires explicit routing under the then-current governing authority
 - **Completed VI-09 Worker handoff:** `implementation/handoff/WORKER_002_VI09_PRODUCT_PROOF_CONTROL.md`
 - **Completed VI-10 Worker handoff:** `implementation/handoff/WORKER_003_VI10_ADVERSARIAL_PRODUCT_PROOF.md`
 - **PM inline VI-08/09/10 attempts:** `DO_NOT_CARRY_FORWARD`
 - **Current authority note:** U01-U06 remain the accepted predecessor semantic lineage. U06 accepted production candidate is `8462630277b04d431ad393e2b73039cacb5d6247` / tree `0a01dacbf54f61bd7f60cf5e68cc350c3cf8d0c6`; independent U06 Tester `PASS` is preserved at `562767529235cedff77d3e740a259fab9d88716e`; Stage-6 close-out is `ed94f745effd65050f03d921ad0ae30769877206`. The Programme Owner accepted the successor VI-14 through VI-18 root ExecPlan on 2026-09-28. No U07 is created; the next authorised semantic unit is VI-14-L1.
-- **Next lawful action:** Programme Owner explicitly authorises the final distribution name and version for VI-15-L1. After that authority is supplied, route a fresh Worker continuation to apply only the authorised metadata consequences, freeze one exact VI-15-L1 candidate and hand it to a fresh Tester.
+- **Next lawful action:** active VI-15-L1 Worker continuation applies only `nvda-architecture-kernel==1.0.0`, freezes one exact candidate, and routes that candidate to a fresh independent Tester. VI-15-L2 remains blocked pending VI-15-L1 Tester PASS and promotion.
 
 
 - **VI-11R2 Tester Iteration 005:** `FAIL / RETURN_TO_WORKER` — 11 proof findings (`T005-F001..F011`), 4 Critical / 7 Important; reviewed wrapper `c164fac...`, physical proof `56ea445d...`.
