@@ -6,7 +6,7 @@
 - **Previous Gate:** `G02 — Existing Implementation Admission Handoff Adoption` — `ACCEPTED`
 - **G02 acceptance record:** `control/GATE_02_ACCEPTANCE.md`
 - **Current Gate:** `G03 — Verified Bounded Implementation`
-- **Gate state:** `ACTIVE — VI-15-L1 POST-AUTHORITY WORKER CONTINUATION`
+- **Gate state:** `ACTIVE — VI-15-L1 CANDIDATE FROZEN / TESTER REVIEW REQUIRED`
 - **Gate contract:** `control/GATE_03_VERIFIED_BOUNDED_IMPLEMENTATION.md`, revision `G03-R1`
 - **Execution binding:** `control/GATE_03_BINDING.md` (`G03-BIND-001`)
 - **Leaf map:** `control/GATE_03_LEAF_MAP.md`
@@ -86,16 +86,17 @@
 - **2026-09-28 VI-14-L1 fresh independent Tester result:** `PASS` against exact candidate `076f1e979474babbb8985dc87d3b2d4d62ec0b4c` / tree `45aec5c01ae8a35fa8879fab978c6fb0f0082140`; independent 66/66 proposition-bearing VI-14 execution, 74/74 architecture/bootstrap, product/architecture/dependency/public-seam/static checks and a fixture-independent production A00 -> PostgreSQL-backed M00 challenge passed. Tester disposition is committed at `79b1d9d`. See `implementation/proof/VI14_L1_INDEPENDENT_TESTER_DISPOSITION.md`.
 - **2026-09-28 VI-14-L1 promotion:** exact accepted candidate `076f1e979474babbb8985dc87d3b2d4d62ec0b4c` and Tester `PASS` lineage were integrated into `main` by preserved-ancestry fast-forward from `00ca26815bc217b7fd4bb98a73eb2089caf94919` to `79b1d9d1d9da1b921c8d8197d154937dd1a699e5`; no `src/**`, `tests/**`, `config/**`, dependency or package bytes changed after the accepted candidate. VI-14-L1 is accepted/promoted; VI-15-L1 is next and remains subject to its explicit Programme Owner metadata-authority checkpoint.
 - **2026-09-28 VI-15-L1 pre-authority inspection:** current distribution is `nvda-architecture-kernel==0.1.0`, built by `hatchling==1.29.0` from package root `src/nvda_desk`; accepted owner package/public seam remain `nvda_desk.raw_signal_occurrence_truth` / `.api`. No final distribution metadata was selected or applied. Explicit Programme Owner authority for final distribution name and version is now required. See `implementation/proof/VI15_L1_PREAUTHORITY_METADATA_INSPECTION.md`.
+- **2026-09-28 VI-15-L1 Worker candidate:** Programme Owner authorised final distribution `nvda-architecture-kernel==1.0.0`; exact metadata candidate `466055a1cd5fe678a40049a00f0dc88158951d74` / tree `350568be5d5f790d71121fbac383349b9284d649` applies only the authorised version and necessary version-binding consequences. Worker regression: VI-14 integrated set 66/66, architecture/bootstrap 74/74, structural validators/mypy/Ruff PASS. Fresh Tester review pending. See `implementation/proof/VI15_L1_FINAL_METADATA_CANDIDATE_EVIDENCE.md`.
 - **Current Leaf:** `G03 / VI-15-L1 — final distribution/version authority closure`
-- **Current actor:** `WORKER` — VI-15-L1 final metadata authority supplied; post-authority application/candidate freeze active
-- **Active review cycle:** `WORKER_VI15_L1_METADATA_1790576661`
+- **Current actor:** `TESTER` — fresh independent VI-15-L1 review required against exact frozen metadata candidate
+- **Active review cycle:** `TESTER_VI15_L1_1790577380`
 - **Last completed review:** VI-14-L1 Tester cycle `TESTER_VI14_L1_1790568188`; exact candidate `076f1e979474babbb8985dc87d3b2d4d62ec0b4c` / tree `45aec5c01ae8a35fa8879fab978c6fb0f0082140`; disposition `PASS`
 - **Role-consistency rule:** when `Current actor` is `PROGRAMME_OWNER` / no execution cycle is active, no Worker/Tester action is implied; a fresh cycle requires explicit routing under the then-current governing authority
 - **Completed VI-09 Worker handoff:** `implementation/handoff/WORKER_002_VI09_PRODUCT_PROOF_CONTROL.md`
 - **Completed VI-10 Worker handoff:** `implementation/handoff/WORKER_003_VI10_ADVERSARIAL_PRODUCT_PROOF.md`
 - **PM inline VI-08/09/10 attempts:** `DO_NOT_CARRY_FORWARD`
-- **Current authority note:** U01-U06 remain the accepted predecessor semantic lineage. U06 accepted production candidate is `8462630277b04d431ad393e2b73039cacb5d6247` / tree `0a01dacbf54f61bd7f60cf5e68cc350c3cf8d0c6`; independent U06 Tester `PASS` is preserved at `562767529235cedff77d3e740a259fab9d88716e`; Stage-6 close-out is `ed94f745effd65050f03d921ad0ae30769877206`. The Programme Owner accepted the successor VI-14 through VI-18 root ExecPlan on 2026-09-28. No U07 is created; the next authorised semantic unit is VI-14-L1.
-- **Next lawful action:** active VI-15-L1 Worker continuation applies only `nvda-architecture-kernel==1.0.0`, freezes one exact candidate, and routes that candidate to a fresh independent Tester. VI-15-L2 remains blocked pending VI-15-L1 Tester PASS and promotion.
+- **Current authority note:** U01-U06 remain the accepted predecessor semantic lineage. U06 accepted production candidate is `8462630277b04d431ad393e2b73039cacb5d6247` / tree `0a01dacbf54f61bd7f60cf5e68cc350c3cf8d0c6`; independent U06 Tester `PASS` is preserved at `562767529235cedff77d3e740a259fab9d88716e`; Stage-6 close-out is `ed94f745effd65050f03d921ad0ae30769877206`. VI-14-L1 is accepted/promoted under the active VI-14 through VI-18 ExecPlan. No U07 is created; VI-15-L1 is the current authorised semantic unit.
+- **Next lawful action:** fresh independent Tester reviews exactly `466055a1cd5fe678a40049a00f0dc88158951d74` / tree `350568be5d5f790d71121fbac383349b9284d649`. On PASS, promote the accepted VI-15-L1 lineage to `main`; only then may VI-15-L2 begin.
 
 
 - **VI-11R2 Tester Iteration 005:** `FAIL / RETURN_TO_WORKER` — 11 proof findings (`T005-F001..F011`), 4 Critical / 7 Important; reviewed wrapper `c164fac...`, physical proof `56ea445d...`.

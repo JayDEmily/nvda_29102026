@@ -1,0 +1,32 @@
+VI-15-L1 post-authority Worker command/evidence summary
+
+Authority/routing:
+- Programme Owner explicitly authorised final distribution nvda-architecture-kernel version 1.0.0
+- created fresh Worker continuation cycle after the mandatory authority stop
+- read GUARDRAILS.md, AGENTS.md, tests/AGENTS.override.md, complete EXEC_PLAN.md, CURRENT_STATE.md,
+  VI15 pre-authority inspection and relevant accepted authority
+
+Candidate mutation:
+- pyproject.toml project version -> 1.0.0
+- src/nvda_desk/__init__.py __version__ -> 1.0.0
+- tests/bootstrap/test_minimal_imports.py expected __version__ -> 1.0.0
+- added implementation/authority/VI15_L1_FINAL_DISTRIBUTION_AUTHORITY.md
+
+Pinned proof environment:
+- Python 3.13.5 / pytest 9.0.3 / mypy 1.20.1 / Ruff 0.15.11 / Psycopg 3.3.4
+- PostgreSQL 17.9, UTF8, fsync=on, synchronous_commit=on, full_page_writes=on, Unix socket only
+- PyYAML 6.0.3 overlay because preserved U05 bootstrap omits PyYAML
+
+Post-freeze proof on candidate 466055a1cd5fe678a40049a00f0dc88158951d74:
+- bootstrap minimal imports -> 2 passed
+- U05 durability -> 55/55 passed (split into bounded batches after grouped wrapper timeouts)
+- remaining U06/whole-restart/real-PG integrated set -> 11/11 passed
+- total VI14 integrated set -> 66/66 passed
+- architecture/bootstrap -> 74/74 passed
+- validate_product_proof.py -> PASS, 6 families / 13 of 13 obligations
+- validate_architecture.py -> PASS
+- check_dependencies.py -> PASS
+- check_public_seams.py -> PASS
+- mypy src -> success, 16 files
+- Ruff src tests tools -> PASS
+- git diff HEAD^..HEAD --check -> PASS

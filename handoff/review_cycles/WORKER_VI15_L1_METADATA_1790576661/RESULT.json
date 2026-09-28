@@ -1,0 +1,13 @@
+{
+  "review_cycle": "WORKER_VI15_L1_METADATA_1790576661",
+  "actor": "WORKER",
+  "leaf": "VI-15-L1",
+  "status": "CANDIDATE_FROZEN_TESTER_REQUIRED",
+  "candidate_commit": "466055a1cd5fe678a40049a00f0dc88158951d74",
+  "candidate_tree": "350568be5d5f790d71121fbac383349b9284d649",
+  "final_distribution_name": "nvda-architecture-kernel",
+  "final_distribution_version": "1.0.0",
+  "vi14_integrated_regression": "66/66 PASS",
+  "architecture_bootstrap": "74/74 PASS",
+  "vi15_l2_started": false
+}
