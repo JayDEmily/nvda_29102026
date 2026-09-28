@@ -1,0 +1,33 @@
+VI-17-L1 material command/evidence record
+
+Governance/authority readback:
+- cat GUARDRAILS.md
+- cat AGENTS.md
+- cat EXEC_PLAN.md
+- cat tests/AGENTS.override.md
+- read current state, VI17 request, BICP/IRB/IWO/VI04/VI06/VI15 authority and accepted review evidence
+
+Identity/hash audit:
+- sha256sum current BICP JSON/MD, IRB, VI04, IWO JSON/MD and later authority records
+- git log -1 -- <authority/control/source path>
+- git log 8133432..HEAD -- fixed authority paths
+- git rev-list --max-parents=0 --all
+- git cat-file -t d095954... / 7fdb0e5... (objects absent, as recorded by thin-transport evidence)
+- git merge-base --is-ancestor for VI08, VI09, VI10R11/VI11, U01-U06, VI14, VI15 and VI16 identities
+
+Current control validation:
+- PYTHONPATH=src python tools/validate_architecture.py -> PASS; 5 objects, 1 active module, 1 allocation, 11 admitted test families, 1 promotion set, 0 dependency/public-seam violations
+- PYTHONPATH=src python tools/validate_product_proof.py -> PASS; 6 families, 13/13 obligations, READY_FOR_PROOF
+- PYTHONPATH=src python tools/check_dependencies.py -> PASS
+- PYTHONPATH=src python tools/check_public_seams.py -> PASS
+
+Changed-path audit:
+- git diff --name-status accepted-predecessor..accepted-candidate -- src tests config pyproject.toml for U01-U06, VI14 and VI15
+- inspect historical governing EXEC_PLAN.md at U01-U04 / U05 / U06 execution identities
+- inspect U05/U06 stage evidence for PostgreSQL/A00 mechanism and proof-control mutation rationale
+
+Package audit:
+- first sha256sum -c invocation was executed one directory above PACKAGE_ARTIFACTS and failed to open relative manifest paths; this was an invocation-location error, not an artefact failure
+- cd PACKAGE_ARTIFACTS && sha256sum -c SHA256SUMS -> both artefacts OK
+- compare all tracked src/nvda_desk/**/*.py bytes at package candidate 332c1f95... to wheel members -> 16 compared, 0 mismatches
+- git diff --name-status 332c1f95...HEAD -- src tests config pyproject.toml -> empty
