@@ -729,7 +729,7 @@ Anything less is an intermediate state, not VI-18 terminal PASS.
 
 The active sequence after plan acceptance is:
 
-- [ ] **VI-14-L1** — integrated material interaction/direct-boundary closure — Worker -> Tester;
+- [x] **VI-14-L1** — integrated material interaction/direct-boundary closure — Worker -> Tester — accepted/promoted 2026-09-28;
 - [ ] **VI-15-L1** — final distribution/version authority closure and exact metadata application —
   Worker -> Programme Owner authority checkpoint -> Worker freeze -> Tester;
 - [ ] **VI-15-L2** — complete aggregate promotion and truthful package/install proof — Worker ->
