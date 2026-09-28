@@ -736,7 +736,7 @@ The active sequence after plan acceptance is:
   Tester — accepted/promoted 2026-09-28;
 - [x] **VI-16-L1** — whole-BICP semantic review — Worker packet/freeze -> Tester review — accepted/promoted 2026-09-28;
 - [x] **VI-17-L1** — authority and lineage reconstruction — Worker -> Tester — accepted/promoted 2026-09-29;
-- [ ] **VI-17-L2** — provenance/environment/repository-integrity audit — Worker -> Tester;
+- [x] **VI-17-L2** — provenance/environment/repository-integrity audit — Worker -> Tester — accepted/promoted 2026-09-29;
 - [ ] **VI-18-L1** — final freeze, recovery artefact and STOP — Worker -> Tester -> terminal close-out.
 
 No downstream leaf begins before the preceding leaf is accepted and promoted, except that bounded

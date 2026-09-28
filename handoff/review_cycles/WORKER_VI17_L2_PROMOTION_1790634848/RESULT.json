@@ -1,0 +1,16 @@
+{
+  "review_cycle": "WORKER_VI17_L2_PROMOTION_1790634848",
+  "actor": "WORKER",
+  "leaf": "VI-17-L2-PROMOTION",
+  "status": "COMPLETE_PROMOTED",
+  "accepted_candidate": "57712201296c6da811e4e6838d0f3fb302239df4",
+  "candidate_tree": "1b017b6c01176fc61963a63bcf12d843aac8d0db",
+  "tester_pass_commit": "90fdc6fc5f2fe13e81202dd50f1f9d4c9dfa4634",
+  "pre_promotion_main": "4daaa4050da594e8feb893bb60f171c6828687af",
+  "promotion_integration_identity": "90fdc6fc5f2fe13e81202dd50f1f9d4c9dfa4634",
+  "wheel_sha256": "d311960234c932c2507f7b1671c8d53bff3ec234692e65ca27b440293e37e127",
+  "sdist_sha256": "135e47f6ab531e8e650a2ee1adc9582965e1c81d97d08dfdc854757a790629fa",
+  "pyyaml_overlay_digest": "UNKNOWN",
+  "substantive_post_candidate_drift": false,
+  "next_leaf": "VI-18-L1"
+}

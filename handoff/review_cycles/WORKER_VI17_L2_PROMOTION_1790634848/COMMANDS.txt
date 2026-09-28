@@ -1,0 +1,12 @@
+VI-17-L2 promotion / close-out command summary
+
+- read mandatory governance, complete accepted ExecPlan, current-state routing, VI-17-L2 Worker provenance evidence, independent Tester disposition, package identities and active promotion request
+- verified pre-promotion main -> candidate -> Tester PASS ancestry
+- verified exact candidate tree and no post-candidate src/tests/config/pyproject drift
+- verified supplied wheel/sdist SHA-256 identities and package SHA256SUMS
+- git diff --check across candidate -> Tester PASS
+- git fsck --full --no-dangling
+- checkout main
+- git merge --ff-only 90fdc6fc5f2fe13e81202dd50f1f9d4c9dfa4634
+- record VI-17-L2 promotion evidence and current-state advance
+- mark VI-17-L2 accepted/promoted in active ExecPlan
