@@ -1,0 +1,9 @@
+VI-15-L1 pre-authority inspection command summary
+
+- read governing VI-15-L1 ExecPlan section and accepted BICP/IWO/VI-04 authority material
+- inspect current pyproject.toml distribution/build metadata
+- inspect realised src/nvda_desk package topology
+- search active source/tests/config/package authority for current distribution name/version coupling
+- inspect bootstrap assertions that currently bind nvda_desk.__version__ and distribution name
+- determine exact mutation consequences of retaining/changing final name and/or version
+- STOP before selecting or applying final distribution metadata
