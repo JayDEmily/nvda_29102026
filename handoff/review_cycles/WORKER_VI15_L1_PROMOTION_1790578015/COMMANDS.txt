@@ -1,0 +1,14 @@
+VI-15-L1 promotion / close-out command summary
+
+- read mandatory governance, accepted ExecPlan, current-state routing, Programme Owner authority,
+  Worker candidate evidence, independent Tester disposition and active promotion request
+- verified pre-promotion main -> accepted candidate -> Tester PASS ancestry
+- verified accepted candidate tree identity
+- verified no post-candidate drift in src/**, tests/**, config/** or pyproject.toml
+- verified git fsck --full exits 0; only dangling blobs were reported
+- observed git diff --check flags four intentional Markdown hard-line-break spaces in the immutable
+  Tester disposition; that review evidence was preserved unchanged
+- checkout main
+- git merge --ff-only 226c5cdebdfa33d5b3d8f43d3eb67b0ae6b8b355
+- record VI-15-L1 promotion evidence and current-state advance
+- mark VI-15-L1 progress accepted/promoted in active ExecPlan
