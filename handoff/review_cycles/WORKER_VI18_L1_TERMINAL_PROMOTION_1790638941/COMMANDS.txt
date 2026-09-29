@@ -1,0 +1,14 @@
+VI-18-L1 terminal promotion / close-out command summary
+
+- read root README.md, full GUARDRAILS.md, root AGENTS.md, complete accepted EXEC_PLAN.md, current-state routing, active terminal-promotion request, exact VI-18 Worker evidence and independent Tester disposition
+- verified accepted baseline 4df802c... -> candidate 3113d10... -> Tester PASS 9054946... ancestry
+- verified exact candidate tree f43ed9ae...
+- verified Tester RESULT.json disposition PASS for the exact candidate/tree
+- verified candidate -> Tester PASS has no src/tests/config/pyproject drift and git diff --check passes
+- verified accepted wheel/sdist SHA-256 identities and SHA256SUMS
+- verified accepted VI-18 recovery artefact SHA-256
+- git fsck --full --no-dangling
+- checkout main
+- git merge --ff-only 905494677d697341b424d57c855fdd999571c7c3
+- add terminal close-out evidence, complete the terminal promotion cycle, mark VI-18 accepted/promoted in EXEC_PLAN.md, and set CURRENT_STATE.md to STOP
+- final integrity/ancestry checks and final full-Git handoff readback are performed after the close-out commit
