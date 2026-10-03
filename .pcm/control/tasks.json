@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "tasks": [
+    {
+      "acceptance": [
+        "{{PROJECT_INSTANTIATION_ACCEPTANCE}}"
+      ],
+      "depends_on": [],
+      "id": "PCM-I01",
+      "requirements": [
+        "REQ-001"
+      ],
+      "status": "pending",
+      "title": "Project authority instantiation draft",
+      "verification": {
+        "leaf_close": [],
+        "promotion": []
+      },
+      "work_type": "non_code",
+      "write_paths": [
+        ".pcm/project/PROJECT_OBJECTIVE.md",
+        ".pcm/project/REQUIREMENTS.md",
+        ".pcm/project/EXEC_PLAN.md",
+        ".pcm/control/tasks.json",
+        ".pcm/control/delegation.json"
+      ]
+    }
+  ]
+}

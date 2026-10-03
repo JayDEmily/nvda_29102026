@@ -1,0 +1,42 @@
+{
+  "acceptance_branch": "main",
+  "authority_files": [
+    "GUARDRAILS.md",
+    "AGENTS.md",
+    "EXEC_PLAN.md",
+    ".pcm/project/PROJECT_OBJECTIVE.md",
+    ".pcm/project/REQUIREMENTS.md",
+    ".pcm/project/EXEC_PLAN.md",
+    ".pcm/GUARDRAILS.md",
+    ".pcm/AGENTS.md",
+    ".pcm/CODING_PROGRAMME.md",
+    ".pcm/CHATGPT_PROJECT_INSTRUCTIONS.md",
+    ".pcm/control/delegation.json",
+    ".pcm/control/instantiation.json"
+  ],
+  "context_max_bytes": 131072,
+  "context_universal_files": [
+    ".pcm/GUARDRAILS.md",
+    ".pcm/AGENTS.md",
+    "GUARDRAILS.md",
+    "AGENTS.md"
+  ],
+  "durability_flush_margin_minutes": 5,
+  "execution_plan_path": ".pcm/project/EXEC_PLAN.md",
+  "generated_state_paths": [
+    ".pcm/control/lcr.json"
+  ],
+  "instantiation_required": true,
+  "project_authority_files": [
+    ".pcm/project/PROJECT_OBJECTIVE.md",
+    ".pcm/project/REQUIREMENTS.md",
+    ".pcm/project/EXEC_PLAN.md"
+  ],
+  "project_name": "{{PROJECT_NAME}}",
+  "project_objective_path": ".pcm/project/PROJECT_OBJECTIVE.md",
+  "requirements_path": ".pcm/project/REQUIREMENTS.md",
+  "runtime_budget_minutes": 300,
+  "schema_version": 1,
+  "template_mode": true,
+  "test_first_policy": "required"
+}

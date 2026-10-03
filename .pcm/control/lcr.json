@@ -1,0 +1,51 @@
+{
+  "acceptance_tags": {},
+  "accepted_base": {
+    "branch": "main",
+    "head": "2e01a1377984eb338fd97634894074cf34dcf37e",
+    "tree": "7f6885843869620ab10f3edda9badcd277abd936"
+  },
+  "active_leaf": {
+    "id": "PCM-I01",
+    "label": "Project authority instantiation draft",
+    "status": "pending"
+  },
+  "applicable_context": {
+    "ancestors": [],
+    "authority_files": [
+      ".pcm/GUARDRAILS.md",
+      ".pcm/AGENTS.md",
+      "GUARDRAILS.md",
+      "AGENTS.md"
+    ],
+    "dependencies": [],
+    "plan_leaf": "PCM-I01",
+    "requirements": [
+      "REQ-001"
+    ]
+  },
+  "authority_hashes": {},
+  "blockers": [],
+  "checkpoint": {
+    "branch": "main",
+    "source_head": "2e01a1377984eb338fd97634894074cf34dcf37e",
+    "source_tree": "7f6885843869620ab10f3edda9badcd277abd936",
+    "working_state_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "claims_hash": "4d972026e949813141677eec36ad4d646c440afd81507fe52402d94c8970c58d",
+  "generated_at": "2026-09-29T00:49:47Z",
+  "last_receipt": null,
+  "migration_provenance": null,
+  "next_transition": {
+    "actor_class": "AUTONOMOUS",
+    "next_leaf": "PCM-I01"
+  },
+  "ready_tasks": [
+    "PCM-I01"
+  ],
+  "receipt_hashes": {},
+  "repo_fingerprint": "",
+  "schema_version": 1,
+  "task_contract_hash": "a00ef978cc3760b3470fb9e45d554825236ad9be4b3f88eb80387f230368b0c7",
+  "unresolved_claims": []
+}

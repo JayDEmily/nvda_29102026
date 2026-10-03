@@ -1,0 +1,40 @@
+{
+  "accepted_brief": {
+    "kind": "git_tree_archive",
+    "sha256": "8ea9bf69f6a651f19e84bd1401cb9f4e8c10f8e62603a3ff407f4418936e1731",
+    "source_commit": "23968fdfcc489cdc2ea14aa9dd1e1aea3b3d72ce",
+    "source_name": "NVDA_DERIVED_SIGNAL_BRIEF_FINAL_REPAIRED_FULL_GIT_20260930",
+    "source_tree": "81ff4871ddb14f8c5feec2bf1a543ce290fba0be",
+    "stored_path": ".pcm/brief/accepted_brief.tar"
+  },
+  "approval": null,
+  "methodology": {
+    "commit": "be664a582fbc83a4afe356980eccc8789eb1a002",
+    "controller_sha256": "99630080357f321c8fc32b3433e9e14deaf1062ae0753885648256d1a3e6bfa4",
+    "tree": "9d7cb6e0e69ad8743380ec0a508cf0132ce00dbf"
+  },
+  "native_authority": [
+    {
+      "blob": "54a4407609941f63f6b902076688ff102a3d5ba2",
+      "path": "GUARDRAILS.md",
+      "sha256": "585dc9b1a95719a7b60929b0d3ea64696fd6d52cd19b2b4a463c5bb9d34947b6"
+    },
+    {
+      "blob": "cb589b9889cfcde5093944b0d2a33b26f4a0e7ff",
+      "path": "AGENTS.md",
+      "sha256": "d431f1a0c139912606211474880d5ecf595549507eface0f4e5ae4b3f52b468d"
+    },
+    {
+      "blob": "74eb7309ea2301b1c28475f9e7e05f11cc7a2c62",
+      "path": "EXEC_PLAN.md",
+      "sha256": "4146ee926f0ea176925c81e31324ab9161c18127f33490284dec0888e19eeb40"
+    }
+  ],
+  "schema_version": 1,
+  "status": "draft",
+  "target_source": {
+    "branch": "main",
+    "commit": "2e01a1377984eb338fd97634894074cf34dcf37e",
+    "tree": "7f6885843869620ab10f3edda9badcd277abd936"
+  }
+}
