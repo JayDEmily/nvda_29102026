@@ -204,7 +204,8 @@
         "schemas/",
         "implementation/",
         "pyproject.toml",
-        "tests/architecture/test_object_lifecycle.py"
+        "tests/architecture/test_object_lifecycle.py",
+        "tests/bootstrap/test_minimal_imports.py"
       ]
     },
     {
