@@ -2,8 +2,8 @@
   "acceptance_tags": {},
   "accepted_base": {
     "branch": "main",
-    "head": "09c1ac507f6ac0d9931c286e5b66680f1045af31",
-    "tree": "395bbe3696b581f368b76a00a1653563b728a07c"
+    "head": "5a3a8d0383198514e70b4b143a370d053da39472",
+    "tree": "a154f95848d7e868230c7e0b35ef72ad7116b42e"
   },
   "active_leaf": {
     "id": "DS-A01",
@@ -42,13 +42,13 @@
   },
   "blockers": [],
   "checkpoint": {
-    "branch": "main",
-    "source_head": "09c1ac507f6ac0d9931c286e5b66680f1045af31",
-    "source_tree": "395bbe3696b581f368b76a00a1653563b728a07c",
+    "branch": "work/ds-a01-authority-ingress",
+    "source_head": "5a3a8d0383198514e70b4b143a370d053da39472",
+    "source_tree": "a154f95848d7e868230c7e0b35ef72ad7116b42e",
     "working_state_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
   "claims_hash": "4d972026e949813141677eec36ad4d646c440afd81507fe52402d94c8970c58d",
-  "generated_at": "2026-10-04T00:13:16Z",
+  "generated_at": "2026-10-04T00:22:29Z",
   "last_receipt": null,
   "migration_provenance": null,
   "next_transition": {
