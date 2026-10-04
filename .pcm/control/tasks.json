@@ -319,7 +319,7 @@
           "unresolved_stops": []
         }
       ],
-      "status": "pending",
+      "status": "accepted",
       "title": "Refine foundation proof for recurrent contract drift",
       "verification": {
         "leaf_close": [],

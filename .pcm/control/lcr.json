@@ -9,12 +9,12 @@
   },
   "accepted_base": {
     "branch": "main",
-    "head": "de6e4891d4c9f5f276dc564c3235c8dab6b9f243",
-    "tree": "ec5100b92084ed7a589c4050c2b764a74743b802"
+    "head": "88c2a513c81dd5ff394aa14d9899d6c62339cdb0",
+    "tree": "ae1b235c9bfb5b9d5b53c7e588a761ca3a2e107f"
   },
   "active_leaf": {
-    "id": "DS-T01-R01",
-    "label": "Refine foundation proof for recurrent contract drift",
+    "id": "DS-I01-R01",
+    "label": "Repair recurrent foundation contract drift",
     "status": "pending"
   },
   "applicable_context": {
@@ -26,7 +26,7 @@
       "AGENTS.md"
     ],
     "dependencies": [],
-    "plan_leaf": "DS-T01-R01",
+    "plan_leaf": "DS-I01-R01",
     "requirements": [
       "REQ-003",
       "REQ-004",
@@ -51,25 +51,25 @@
   },
   "blockers": [],
   "checkpoint": {
-    "branch": "work/ds-i01-context-contract-repair",
-    "source_head": "88c2a513c81dd5ff394aa14d9899d6c62339cdb0",
-    "source_tree": "ae1b235c9bfb5b9d5b53c7e588a761ca3a2e107f",
+    "branch": "main",
+    "source_head": "bb1dec6d211d4821c28510600a93eb8ddd3bea34",
+    "source_tree": "f127aaa9e721e77ea5932527343f2d1d931c9324",
     "working_state_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
   "claims_hash": "4d972026e949813141677eec36ad4d646c440afd81507fe52402d94c8970c58d",
-  "generated_at": "2026-10-04T10:18:37Z",
+  "generated_at": "2026-10-04T10:19:15Z",
   "last_receipt": null,
   "migration_provenance": null,
   "next_transition": {
     "actor_class": "AUTONOMOUS",
-    "next_leaf": "DS-T01-R01"
+    "next_leaf": "DS-I01-R01"
   },
   "ready_tasks": [
-    "DS-T01-R01"
+    "DS-I01-R01"
   ],
   "receipt_hashes": {},
-  "repo_fingerprint": "82c631fab2cfd4e6c2e1b122e079583944bbf8b97ebb844571e21bbfa4b5dff2",
+  "repo_fingerprint": "55c09a60fa3822bb892238462f4c67e7d5c58e663d9456c65675f4fd5ef2a246",
   "schema_version": 1,
-  "task_contract_hash": "bf72799a8eb5e9a1e8155e15225ae049e8a0e3eb68587267706d9d81cc4b47d5",
+  "task_contract_hash": "79ee5c0a9bfc799c001d5bfa9e8f5fe1a613ad1a2197f472b69129a68236202d",
   "unresolved_claims": []
 }
