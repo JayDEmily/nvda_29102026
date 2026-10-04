@@ -743,3 +743,45 @@ UNKNOWN_ABSENCE True
 ```
 
 No substantive source/candidate/test/architecture/persistence bytes were changed after `d9aa11c...` during committed-state verification. This successor evidence update changes evidence/control bytes only so DS-I01-R01 can be closed and a fresh DS-R01 packet can bind the exact repaired candidate plus committed-state proof.
+
+---
+
+# DS-T01-R02 — PostgreSQL persistence-boundary proof refinement
+
+## Authority and recurrence boundary
+
+The third independent DS-R01 review of packet `aae2f5e40ee61ba1ecdc098aa385ff592ba9f220b3900755a33753c727c3071d` returned `REPAIR -> DS-I01-R01` with internal result SHA-256 `6e2846855688345776ccee06d49049c0a6fe38fba039b4e5e1812161cdafb169` and retained the `RECURRENT_CLASS foundation-contract/proof-boundary drift` classification.
+
+The reviewer established that DS-T01-R01/DS-I01-R01 closed the prior public-contract witnesses but that the same proof weakness remained at the PostgreSQL persistence boundary: a lawful separated role/schema configuration was proved, while an adverse shared M00 writer/schema configuration was not required to fail closed. The accepted brief clause 10 and REQ-005 require both the calculation-owner schema and write role to remain separate from M00.
+
+Under the existing same-actor bounded-refinement contract for `FOUNDATION-CONTRACT-PROOF-DRIFT`, DS-T01-R02 strengthens proof before any further persistence behaviour change. No concrete production role/schema name is selected by this proof.
+
+## Authority-derived adverse persistence proof
+
+`tests/implementation/derived_signal/test_ds_t01_r02_persistence_boundary_refinement.py` directly exercises four database-boundary propositions against real PostgreSQL:
+
+1. a lawfully separate M01 writer and schema may construct the private persistence mechanism;
+2. the exact M00 writer/schema boundary is refused before the M01 derived-occurrence table is created;
+3. the M00 writer remains refused even when pointed at a different schema; and
+4. a different writer remains refused when pointed at M00's schema, even when proof-only privileges make that adverse configuration technically possible.
+
+The proof obtains current role/schema identities from PostgreSQL at runtime. It therefore discriminates the semantic boundary without fixing production role/schema names. The temporary grant used for the fourth adverse probe is proof-environment-only and is revoked in the test cleanup path.
+
+## Expected-red execution before DS-I01-R02
+
+Using the preserved Python 3.13.5 / psycopg 3.3.4 / PostgreSQL 17.9 proof environment with existing temporary proof identities `nvda_m00_r01` / `m00_r01` and `nvda_m01_r01` / `m01_r01`, observed before any production repair:
+
+```text
+pytest -q tests/implementation/derived_signal/test_ds_t01_r02_persistence_boundary_refinement.py
+4 failed
+```
+
+All four failures stop at the same first unmet contract:
+
+```text
+DS-T01-R02 requires an explicit private M00 persistence-boundary identity contract
+```
+
+This is the intended proof-first red state. The test module itself passes Ruff. No source, architecture, schema, package metadata or accepted DS-T01/DS-T01-R01 proof bytes were changed to obtain this result.
+
+DS-I01-R02 remains blocked until this proof refinement is durably accepted.
