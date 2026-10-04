@@ -115,6 +115,30 @@
 **Stop:** any required repair needs new semantic meaning, direct M00 table access, provider-specific parsing in M01, widened write scope, changed actor/review law or another unproved production behaviour.
 <!-- CONTROL:TASK:DS-I01-R01:END -->
 
+<!-- CONTROL:TASK:DS-T01-R02:START -->
+## DS-T01-R02 — Refine persistence-boundary proof for recurrent contract drift
+
+**Requirements:** REQ-003, REQ-004, REQ-005, REQ-008, REQ-010
+
+**Proposition:** Under the bounded refinement envelope of DS-T01 and the existing `FOUNDATION-CONTRACT-PROOF-DRIFT` mechanism, strengthen executable proof so the M01 persistence mechanism fails closed when configured on M00's writer or schema boundary, while retaining the already-accepted lawful separated-role/schema proof and without selecting production role/schema names.
+
+**Write scope:** identical to DS-T01. No production source mutation.
+
+**Stop:** any required proof proposition cannot be derived from accepted authority, or closure would change requirement meaning, ownership, actor class, write scope, review law or resolve concrete production database identities.
+<!-- CONTROL:TASK:DS-T01-R02:END -->
+
+<!-- CONTROL:TASK:DS-I01-R02:START -->
+## DS-I01-R02 — Repair persistence-boundary recurrent contract drift
+
+**Requirements:** REQ-003, REQ-004, REQ-005, REQ-008, REQ-010
+
+**Proposition:** Under the bounded refinement envelope of DS-I01 and only after DS-T01-R02 is accepted, make the smallest production repair required for the accepted persistence mechanism to refuse operation on M00's writer or schema boundary, without resolving concrete production role/schema names or changing calculation semantics.
+
+**Write scope:** identical to DS-I01. No kernel semantics, provider fallback, architecture expansion, package authority or external effects.
+
+**Stop:** any repair requires concrete production database identity, direct M00 table access, changed semantic meaning, widened write scope, changed actor/review law or another unproved production behaviour.
+<!-- CONTROL:TASK:DS-I01-R02:END -->
+
 <!-- CONTROL:TASK:DS-R01:START -->
 ## DS-R01 — Independently review foundation candidate
 
