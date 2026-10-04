@@ -2,7 +2,7 @@
 
 ## Status
 
-**DRAFT FOR PROGRAMME OWNER FINALISATION.** Ordinary project execution is prohibited while `.pcm/control/project.json` remains `template_mode=true`.
+**FINALISED BY PROGRAMME OWNER ON 2026-10-04.** `.pcm/control/project.json` is `template_mode=false`; ordinary project execution is governed by the finalised task and delegation state.
 
 <!-- CONTROL:GLOBAL:START -->
 ## Global constraints
@@ -249,4 +249,4 @@
 
 ## Progress
 
-All tasks are `pending`. Project authority has not yet been finalised by the Programme Owner. After finalisation the first routed execution responsibility is `DS-A01`; no PM execution of that autonomous leaf is authorised.
+All tasks are `pending`. Project authority was finalised by the Programme Owner on 2026-10-04. The first routed execution responsibility is `DS-A01`; no PM execution of that autonomous leaf is authorised.
