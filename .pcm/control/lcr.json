@@ -43,12 +43,12 @@
   "blockers": [],
   "checkpoint": {
     "branch": "work/ds-a01-authority-ingress",
-    "source_head": "5a3a8d0383198514e70b4b143a370d053da39472",
-    "source_tree": "a154f95848d7e868230c7e0b35ef72ad7116b42e",
+    "source_head": "91358aed8d2422071cddfae39bdacf1217eb0f6c",
+    "source_tree": "d76bb82ce76d8a8555d3a1b59a85c57c5f5f364a",
     "working_state_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
   "claims_hash": "4d972026e949813141677eec36ad4d646c440afd81507fe52402d94c8970c58d",
-  "generated_at": "2026-10-04T00:22:29Z",
+  "generated_at": "2026-10-04T01:07:36Z",
   "last_receipt": null,
   "migration_provenance": null,
   "next_transition": {
@@ -59,7 +59,7 @@
     "DS-A01"
   ],
   "receipt_hashes": {},
-  "repo_fingerprint": "2619cc317b2a320895f9268b936b32d0e416df1865bb75e64a39ca49901a6247",
+  "repo_fingerprint": "960a75d0181e0666f8925c18977e4cb7b5a3306477aced35875591f4592ee78d",
   "schema_version": 1,
   "task_contract_hash": "27f9b72ab38d21f65d9685f2c5b2f3d220f3feae7b719571cf637fdd05ffd273",
   "unresolved_claims": []

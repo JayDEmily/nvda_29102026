@@ -1,0 +1,11 @@
+schema_version: "1.0"
+brief_sha256: 603b850802a418780109095e7ae69bcece449da79fb24140a6d50297605e927c
+acceptance:
+  status: ACCEPTED_FOR_IMPLEMENTATION
+  authority_ref: PCM-INSTANTIATION-APPROVAL@09c1ac507f6ac0d9931c286e5b66680f1045af31
+targets:
+  - action: create
+    category: M
+    name: derived_signal_calculation_truth
+  - action: modify
+    object_id: M00
