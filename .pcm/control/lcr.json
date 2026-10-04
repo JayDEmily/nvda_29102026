@@ -1,11 +1,12 @@
 {
   "acceptance_tags": {
-    "DS-A01": "b373caf8b8463e502e5bdedd8c2e5791af26d24e"
+    "DS-A01": "b373caf8b8463e502e5bdedd8c2e5791af26d24e",
+    "DS-A02": "4740566dd9176d8700d09fbc4b3fe64b36070c9c"
   },
   "accepted_base": {
     "branch": "main",
-    "head": "b373caf8b8463e502e5bdedd8c2e5791af26d24e",
-    "tree": "98e4901321f0b7f9337e05a035c3e9fe33bb7f2e"
+    "head": "4740566dd9176d8700d09fbc4b3fe64b36070c9c",
+    "tree": "8f3b31de9d91071d2c120c1972cfadf750aac8ad"
   },
   "active_leaf": {
     "id": "DS-A03",
@@ -49,13 +50,13 @@
   },
   "blockers": [],
   "checkpoint": {
-    "branch": "main",
-    "source_head": "b373caf8b8463e502e5bdedd8c2e5791af26d24e",
-    "source_tree": "98e4901321f0b7f9337e05a035c3e9fe33bb7f2e",
+    "branch": "work/ds-a03-architecture-admission",
+    "source_head": "4740566dd9176d8700d09fbc4b3fe64b36070c9c",
+    "source_tree": "8f3b31de9d91071d2c120c1972cfadf750aac8ad",
     "working_state_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
   "claims_hash": "4d972026e949813141677eec36ad4d646c440afd81507fe52402d94c8970c58d",
-  "generated_at": "2026-10-04T01:33:09Z",
+  "generated_at": "2026-10-04T02:36:34Z",
   "last_receipt": null,
   "migration_provenance": null,
   "next_transition": {
