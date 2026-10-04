@@ -12,13 +12,13 @@
   },
   "accepted_base": {
     "branch": "main",
-    "head": "59c796e072ecc7a0344c0ee45d78c1d6a62b6f46",
-    "tree": "22d4cc34054c9ffb730f6af14476ee4f35d4b220"
+    "head": "d03f6566b6081f544e5477ed2f108e61f2e2eccd",
+    "tree": "bc0ced2f0aa7140c01d3a59437a6201f963b6788"
   },
   "active_leaf": {
-    "id": "DS-I01-R02",
-    "label": "Repair persistence-boundary recurrent contract drift",
-    "status": "in_progress"
+    "id": "DS-R01",
+    "label": "Independently review foundation candidate",
+    "status": "pending"
   },
   "applicable_context": {
     "ancestors": [],
@@ -28,12 +28,24 @@
       "GUARDRAILS.md",
       "AGENTS.md"
     ],
-    "dependencies": [],
-    "plan_leaf": "DS-I01-R02",
+    "dependencies": [
+      "DS-A01",
+      "DS-A02",
+      "DS-A03",
+      "DS-A04",
+      "DS-T01",
+      "DS-I01",
+      "DS-T01-R01",
+      "DS-I01-R01"
+    ],
+    "plan_leaf": "DS-R01",
     "requirements": [
+      "REQ-001",
+      "REQ-002",
+      "REQ-012",
       "REQ-003",
-      "REQ-004",
       "REQ-005",
+      "REQ-004",
       "REQ-008",
       "REQ-010"
     ]
@@ -54,25 +66,25 @@
   },
   "blockers": [],
   "checkpoint": {
-    "branch": "work/ds-i01-r02-persistence-boundary-repair",
-    "source_head": "b4d2bf3cd4d3a9683768bfc1b59a62753ccd5e62",
-    "source_tree": "a8132286de20d3210d0f206c91fc5b99b3375fd7",
+    "branch": "main",
+    "source_head": "d03f6566b6081f544e5477ed2f108e61f2e2eccd",
+    "source_tree": "bc0ced2f0aa7140c01d3a59437a6201f963b6788",
     "working_state_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
   "claims_hash": "4d972026e949813141677eec36ad4d646c440afd81507fe52402d94c8970c58d",
-  "generated_at": "2026-10-04T11:29:03Z",
+  "generated_at": "2026-10-04T11:30:54Z",
   "last_receipt": null,
   "migration_provenance": null,
   "next_transition": {
-    "actor_class": "AUTONOMOUS",
-    "next_leaf": "DS-I01-R02"
+    "actor_class": "INDEPENDENT_REVIEW",
+    "next_leaf": "DS-R01"
   },
   "ready_tasks": [
     "DS-R01"
   ],
   "receipt_hashes": {},
-  "repo_fingerprint": "5e8f8410af64d5a0bc58489b3a7a9c6256fa62fb5a8befa7976136086a99d473",
+  "repo_fingerprint": "3fe8ef3724bb68a8ed7799cbb1e5cc57b8fa3dd1ce23a0067558a9077f96296e",
   "schema_version": 1,
-  "task_contract_hash": "aa4b127a1c618bc420f766be2dcdd435e919e06795a98d597ef18f50eab2bf13",
+  "task_contract_hash": "6bfddcc409a9c9d7fc08019d84075e11e66c334c9d0d8a00c912ed1f6c0b08ae",
   "unresolved_claims": []
 }
