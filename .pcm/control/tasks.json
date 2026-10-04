@@ -14,7 +14,7 @@
         "REQ-002",
         "REQ-012"
       ],
-      "status": "pending",
+      "status": "accepted",
       "title": "Bind accepted brief and prepare implementation-admission candidate",
       "verification": {
         "leaf_close": [],

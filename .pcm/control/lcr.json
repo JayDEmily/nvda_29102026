@@ -2,12 +2,12 @@
   "acceptance_tags": {},
   "accepted_base": {
     "branch": "main",
-    "head": "5a3a8d0383198514e70b4b143a370d053da39472",
-    "tree": "a154f95848d7e868230c7e0b35ef72ad7116b42e"
+    "head": "b9a1846ae9a7a5c6ab3b969824821f8106f94445",
+    "tree": "6f799c13c10e0acfaee09cc2b7f34548bfb37104"
   },
   "active_leaf": {
-    "id": "DS-A01",
-    "label": "Bind accepted brief and prepare implementation-admission candidate",
+    "id": "DS-A02",
+    "label": "Independently review authority ingress candidate",
     "status": "pending"
   },
   "applicable_context": {
@@ -18,8 +18,10 @@
       "GUARDRAILS.md",
       "AGENTS.md"
     ],
-    "dependencies": [],
-    "plan_leaf": "DS-A01",
+    "dependencies": [
+      "DS-A01"
+    ],
+    "plan_leaf": "DS-A02",
     "requirements": [
       "REQ-001",
       "REQ-002",
@@ -42,25 +44,25 @@
   },
   "blockers": [],
   "checkpoint": {
-    "branch": "work/ds-a01-authority-ingress",
-    "source_head": "91358aed8d2422071cddfae39bdacf1217eb0f6c",
-    "source_tree": "d76bb82ce76d8a8555d3a1b59a85c57c5f5f364a",
+    "branch": "main",
+    "source_head": "b9a1846ae9a7a5c6ab3b969824821f8106f94445",
+    "source_tree": "6f799c13c10e0acfaee09cc2b7f34548bfb37104",
     "working_state_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
   "claims_hash": "4d972026e949813141677eec36ad4d646c440afd81507fe52402d94c8970c58d",
-  "generated_at": "2026-10-04T01:07:36Z",
+  "generated_at": "2026-10-04T01:19:25Z",
   "last_receipt": null,
   "migration_provenance": null,
   "next_transition": {
-    "actor_class": "AUTONOMOUS",
-    "next_leaf": "DS-A01"
+    "actor_class": "INDEPENDENT_REVIEW",
+    "next_leaf": "DS-A02"
   },
   "ready_tasks": [
-    "DS-A01"
+    "DS-A02"
   ],
   "receipt_hashes": {},
-  "repo_fingerprint": "960a75d0181e0666f8925c18977e4cb7b5a3306477aced35875591f4592ee78d",
+  "repo_fingerprint": "ca990954f15ed46f0a05ec90822fe6c155ad0702645d728dcf66b39da0865fe9",
   "schema_version": 1,
-  "task_contract_hash": "27f9b72ab38d21f65d9685f2c5b2f3d220f3feae7b719571cf637fdd05ffd273",
+  "task_contract_hash": "21b2fa5dd46ddba846d90eed6e13a86470ea04cc4815700908a2de6c957b3dce",
   "unresolved_claims": []
 }
