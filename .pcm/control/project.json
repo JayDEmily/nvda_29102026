@@ -37,6 +37,6 @@
   "requirements_path": ".pcm/project/REQUIREMENTS.md",
   "runtime_budget_minutes": 300,
   "schema_version": 1,
-  "template_mode": true,
+  "template_mode": false,
   "test_first_policy": "required"
 }

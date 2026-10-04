@@ -7,7 +7,11 @@
     "source_tree": "81ff4871ddb14f8c5feec2bf1a543ce290fba0be",
     "stored_path": ".pcm/brief/accepted_brief.tar"
   },
-  "approval": null,
+  "approval": {
+    "actor_class": "PROGRAMME_OWNER",
+    "approved_at": "2026-10-04T00:13:16.410823+00:00",
+    "note": "Programme Owner approved finalisation in the current project-manager thread on 2026-10-04."
+  },
   "methodology": {
     "commit": "be664a582fbc83a4afe356980eccc8789eb1a002",
     "controller_sha256": "99630080357f321c8fc32b3433e9e14deaf1062ae0753885648256d1a3e6bfa4",
@@ -31,7 +35,7 @@
     }
   ],
   "schema_version": 1,
-  "status": "draft",
+  "status": "approved",
   "target_source": {
     "branch": "main",
     "commit": "2e01a1377984eb338fd97634894074cf34dcf37e",

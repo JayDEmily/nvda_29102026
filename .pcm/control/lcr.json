@@ -2,12 +2,12 @@
   "acceptance_tags": {},
   "accepted_base": {
     "branch": "main",
-    "head": "2e01a1377984eb338fd97634894074cf34dcf37e",
-    "tree": "7f6885843869620ab10f3edda9badcd277abd936"
+    "head": "51165d0c67b82076b38689c9eb90b71025048b6e",
+    "tree": "d7413c9d619fc463c2f5c2c6f96937f7f2073ada"
   },
   "active_leaf": {
-    "id": "PCM-I01",
-    "label": "Project authority instantiation draft",
+    "id": "DS-A01",
+    "label": "Bind accepted brief and prepare implementation-admission candidate",
     "status": "pending"
   },
   "applicable_context": {
@@ -19,33 +19,48 @@
       "AGENTS.md"
     ],
     "dependencies": [],
-    "plan_leaf": "PCM-I01",
+    "plan_leaf": "DS-A01",
     "requirements": [
-      "REQ-001"
+      "REQ-001",
+      "REQ-002",
+      "REQ-012"
     ]
   },
-  "authority_hashes": {},
+  "authority_hashes": {
+    ".pcm/AGENTS.md": "b787f72c13d1d650d3ead15a33b33d846478278c1144dc3b3dff8218b2a5df7e",
+    ".pcm/CHATGPT_PROJECT_INSTRUCTIONS.md": "a590003a3098f83e3f6bc38ca5c765c420a027663e995d0c0d52bdc85dcbeba9",
+    ".pcm/CODING_PROGRAMME.md": "926c6860665fc7aa6f8a933e2d72a51ef9d0cd6591a3770708ccdba0e13f52fc",
+    ".pcm/GUARDRAILS.md": "714a3915543572991252ff62b3c50bf165cce1c783bb229d8f043b15bba4c0b8",
+    ".pcm/control/delegation.json": "2b54e8cbbc3620fcb63e4f709d497ea437606729d4f284a504266508257c1f95",
+    ".pcm/control/instantiation.json": "4f8707eb2a8c562e03c8dc15429a6458ce891e7345cd10f4c4844e9378c7fd19",
+    ".pcm/project/EXEC_PLAN.md": "fe2203d0da6b81fe84a1eb08a905bb98df48508c24fc54935d3c1d2738280611",
+    ".pcm/project/PROJECT_OBJECTIVE.md": "05be9dcd74a20a1a2855f3ba5c63184cb42de13ebddc7b6b378da36ae762d51b",
+    ".pcm/project/REQUIREMENTS.md": "1dba44b0dd7ed57dead8a40835fea7bfea46642da7599686010652d39efa4126",
+    "AGENTS.md": "d431f1a0c139912606211474880d5ecf595549507eface0f4e5ae4b3f52b468d",
+    "EXEC_PLAN.md": "4146ee926f0ea176925c81e31324ab9161c18127f33490284dec0888e19eeb40",
+    "GUARDRAILS.md": "585dc9b1a95719a7b60929b0d3ea64696fd6d52cd19b2b4a463c5bb9d34947b6"
+  },
   "blockers": [],
   "checkpoint": {
     "branch": "main",
-    "source_head": "2e01a1377984eb338fd97634894074cf34dcf37e",
-    "source_tree": "7f6885843869620ab10f3edda9badcd277abd936",
+    "source_head": "51165d0c67b82076b38689c9eb90b71025048b6e",
+    "source_tree": "d7413c9d619fc463c2f5c2c6f96937f7f2073ada",
     "working_state_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
   "claims_hash": "4d972026e949813141677eec36ad4d646c440afd81507fe52402d94c8970c58d",
-  "generated_at": "2026-09-29T00:49:47Z",
+  "generated_at": "2026-10-04T00:08:21Z",
   "last_receipt": null,
   "migration_provenance": null,
   "next_transition": {
     "actor_class": "AUTONOMOUS",
-    "next_leaf": "PCM-I01"
+    "next_leaf": "DS-A01"
   },
   "ready_tasks": [
-    "PCM-I01"
+    "DS-A01"
   ],
   "receipt_hashes": {},
-  "repo_fingerprint": "",
+  "repo_fingerprint": "8be707ccc678c91cfcfca5d1fbc2d092248863a925c872138ddc223a2b524d54",
   "schema_version": 1,
-  "task_contract_hash": "a00ef978cc3760b3470fb9e45d554825236ad9be4b3f88eb80387f230368b0c7",
+  "task_contract_hash": "27f9b72ab38d21f65d9685f2c5b2f3d220f3feae7b719571cf637fdd05ffd273",
   "unresolved_claims": []
 }
