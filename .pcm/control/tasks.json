@@ -128,7 +128,7 @@
         "REQ-005",
         "REQ-012"
       ],
-      "status": "pending",
+      "status": "accepted",
       "title": "Independently review architecture admission",
       "verification": {
         "leaf_close": [],
