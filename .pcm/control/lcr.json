@@ -11,14 +11,10 @@
   },
   "accepted_base": {
     "branch": "main",
-    "head": "9f3d7b25a9cf5d4b15d81d8132ba6a355fc29969",
-    "tree": "d4c68038aaa38e4bee099c9d59043a14dcd9417a"
+    "head": "ef60ea6065f8989c07faf453b532f4a0691240d5",
+    "tree": "07ef7f9b929ac0b0d25027aeca04b3dc012bd4ce"
   },
-  "active_leaf": {
-    "id": "DS-T01-R02",
-    "label": "Refine persistence-boundary proof for recurrent contract drift",
-    "status": "in_progress"
-  },
+  "active_leaf": null,
   "applicable_context": {
     "ancestors": [],
     "authority_files": [
@@ -28,14 +24,8 @@
       "AGENTS.md"
     ],
     "dependencies": [],
-    "plan_leaf": "DS-T01-R02",
-    "requirements": [
-      "REQ-003",
-      "REQ-004",
-      "REQ-005",
-      "REQ-008",
-      "REQ-010"
-    ]
+    "plan_leaf": null,
+    "requirements": []
   },
   "authority_hashes": {
     ".pcm/AGENTS.md": "b787f72c13d1d650d3ead15a33b33d846478278c1144dc3b3dff8218b2a5df7e",
@@ -53,25 +43,26 @@
   },
   "blockers": [],
   "checkpoint": {
-    "branch": "work/ds-t01-r02-persistence-boundary-proof",
-    "source_head": "ef60ea6065f8989c07faf453b532f4a0691240d5",
-    "source_tree": "07ef7f9b929ac0b0d25027aeca04b3dc012bd4ce",
+    "branch": "main",
+    "source_head": "31266a49d8353b2277e87a156dcdb80d8b18b92b",
+    "source_tree": "8f870e39557af70ff7bc5cd7f4bf5064f1ac451c",
     "working_state_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
   "claims_hash": "4d972026e949813141677eec36ad4d646c440afd81507fe52402d94c8970c58d",
-  "generated_at": "2026-10-04T11:22:49Z",
+  "generated_at": "2026-10-04T11:23:19Z",
   "last_receipt": null,
   "migration_provenance": null,
   "next_transition": {
     "actor_class": "AUTONOMOUS",
-    "next_leaf": "DS-T01-R02"
+    "next_leaf": null
   },
   "ready_tasks": [
+    "DS-I01-R02",
     "DS-R01"
   ],
   "receipt_hashes": {},
-  "repo_fingerprint": "8b98270344f837ee47a49487718d8353f0153c781d0f4e5d384206c9a1649d68",
+  "repo_fingerprint": "ef35747cde4a5245622fa864e8d891b0c9e437f3ccd578a6bde8b7d605e280e3",
   "schema_version": 1,
-  "task_contract_hash": "6332ee6bb3f4b51019f2c2a9f0d45c742c2811e2e01b63f94a0269c09e5e60a7",
+  "task_contract_hash": "bf259ad9abddae19350abd64fb3d442ea2a08a85792b916a88b848a6e39d07eb",
   "unresolved_claims": []
 }
