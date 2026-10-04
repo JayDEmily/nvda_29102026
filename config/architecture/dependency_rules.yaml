@@ -24,6 +24,8 @@ category_rules:
 declared_owner_edges:
   - source: A00
     target: M00
+  - source: M01
+    target: M00
 public_seam_exceptions:
   - source_owner: A00
     target_owner: M00

@@ -63,7 +63,7 @@ def test_exact_brief_bytes_bind_without_copying_brief(tmp_path: Path) -> None:
     assert binding.brief_sha256 == hashlib.sha256(brief_path.read_bytes()).hexdigest()
     assert binding.acceptance_ref == "human-acceptance:test"
     assert [(item.object_id, item.action) for item in binding.targets] == [
-        ("M01", "create"),
+        ("M02", "create"),
         ("P01", "modify"),
     ]
     assert "Implementation-ready instructions" not in binding_path.read_text(encoding="utf-8")
@@ -105,7 +105,7 @@ def test_create_contract_resolves_identifier_without_caller_number(tmp_path: Pat
     binding = validate_implementation_authority(REPO_ROOT, binding_path, brief_path)
 
     assert [(item.action, item.name, item.object_id) for item in binding.targets] == [
-        ("create", "new_owner", "M01")
+        ("create", "new_owner", "M02")
     ]
 
 
@@ -175,8 +175,8 @@ def test_multiple_same_category_creates_resolve_in_request_order(tmp_path: Path)
     binding = validate_implementation_authority(REPO_ROOT, binding_path, brief_path)
 
     assert [(item.name, item.object_id) for item in binding.targets] == [
-        ("first_owner", "M01"),
-        ("second_owner", "M02"),
+        ("first_owner", "M02"),
+        ("second_owner", "M03"),
     ]
 
 
@@ -185,7 +185,7 @@ def test_create_resolution_honours_current_retired_and_durable_state(tmp_path: P
 
     modules_path = repository / "config/architecture/modules.yaml"
     modules = yaml.safe_load(modules_path.read_text(encoding="utf-8"))
-    modules["retired_ids"] = ["M01"]
+    modules["retired_ids"] = ["M02"]
     modules_path.write_text(yaml.safe_dump(modules, sort_keys=False), encoding="utf-8")
 
     allocations_path = repository / "config/architecture/implementation_allocations.yaml"
@@ -195,7 +195,7 @@ def test_create_resolution_honours_current_retired_and_durable_state(tmp_path: P
                 "schema_version": "1.0",
                 "implementation_allocations": [
                     {
-                        "object_id": "M02",
+                        "object_id": "M03",
                         "name": "already_implemented",
                         "implemented_on": "2026-09-10",
                     }
@@ -219,7 +219,7 @@ def test_create_resolution_honours_current_retired_and_durable_state(tmp_path: P
 
     m_result = validate_implementation_authority(repository, m_binding, m_brief)
     a_result = validate_implementation_authority(repository, a_binding, a_brief)
-    assert m_result.targets[0].object_id == "M03"
+    assert m_result.targets[0].object_id == "M04"
     assert a_result.targets[0].object_id == "A01"
 
 
@@ -277,8 +277,8 @@ def test_rehearsal_is_non_mutating_and_candidate_resolution_is_non_durable(tmp_p
     first = validate_implementation_authority(REPO_ROOT, binding_path, brief_path)
     second = validate_implementation_authority(REPO_ROOT, binding_path, brief_path)
 
-    assert [item.object_id for item in first.targets] == ["M01", "A00"]
-    assert [item.object_id for item in second.targets] == ["M01", "A00"]
+    assert [item.object_id for item in first.targets] == ["M02", "A00"]
+    assert [item.object_id for item in second.targets] == ["M02", "A00"]
     assert {path: path.read_bytes() for path in watched} == before
 
 
@@ -301,7 +301,7 @@ def test_repository_binding_template_matches_executable_contract(tmp_path: Path)
     binding = validate_implementation_authority(REPO_ROOT, binding_path, brief_path)
 
     assert [(item.action, item.name, item.object_id) for item in binding.targets] == [
-        ("create", "template_owner", "M01"),
+        ("create", "template_owner", "M02"),
         ("modify", None, "A00"),
     ]
 
@@ -332,4 +332,4 @@ def test_repository_ingress_command_reports_non_durable_named_candidate(tmp_path
     )
 
     assert result.returncode == 0, result.stdout + result.stderr
-    assert "candidate_targets: create:new_owner->M01, modify:A00" in result.stdout
+    assert "candidate_targets: create:new_owner->M02, modify:A00" in result.stdout

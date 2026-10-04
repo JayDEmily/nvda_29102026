@@ -34,6 +34,7 @@ modules:
     state_writer_boundary: M00-owned command/service boundary through the M00 persistence port.
     state_reader_boundaries:
       - M00 referential-read facet exposed to A00.
+      - Read-only typed raw-value/history projection exposed to M01 through the M00 public seam; it preserves exact Rxxx-to-native-field mapping/version, native value/units, source occurrence identity, temporal/receipt ordering and relevant subject/revision metadata and performs no Dxxx calculation, aggregation, interpolation or semantic rescaling.
     persistence_mechanisms:
       - Direct Psycopg 3.3.4 PostgreSQL adapter as a non-owning technical mechanism.
     prohibited_state_writers:
@@ -44,6 +45,56 @@ modules:
       - downstream consumers
     replay_obligations:
       - Original durable facts remain referentially retrievable by domain identity; no authoritative replay/re-identification capability is activated.
+    predecessors: []
+    successors: []
+  - id: M01
+    name: derived_signal_calculation_truth
+    status: bootstrap
+    description: Bounded Derived Signal Calculation Truth semantic owner admitted for implementation; non-composable until later executable implementation and proof activate it.
+    semantic_responsibility: Deterministically calculate and durably preserve canonical D001-D209 Derived Signal occurrences from lawfully projected M00 Raw Signal facts, compatible predecessor Derived Signal facts and exact immutable calculation/configuration/context versions, with complete lineage.
+    inputs:
+      - Read-only typed M00 raw-value/history projection through nvda_desk.raw_signal_occurrence_truth.api.
+      - Compatible predecessor Derived Signal occurrences owned by M01.
+      - Exact immutable calculation-definition, parameter, context, input-selection and unit-convention versions.
+    outputs:
+      - Canonical D001-D209 Derived Signal occurrences with exact lineage, typed result shape and absence semantics.
+    permitted_dependencies:
+      - M00
+    package: nvda_desk.derived_signal_calculation_truth
+    public_seam: nvda_desk.derived_signal_calculation_truth.api
+    exclusions:
+      - provider ingestion or Raw Signal truth ownership
+      - direct read/write access to M00-owned PostgreSQL relations
+      - provider-specific extraction fallback inside M01
+      - order/account mutation, provider/network effects or other external actions
+      - downstream authority to act on calculated values
+      - predictive-quality, profitability, SLA, RTO or RPO claims
+      - final distribution name/version authority
+    state_ownership: Durable Derived Signal occurrences, calculation-run lineage and calculation-owner parameter/context/version records required to reproduce those occurrences; no M00 raw-state ownership.
+    time_ownership: Calculation time, effective/as-of time, exact window and knowledge cutoff for derived occurrences while preserving M00 true-instant/date-only/receipt-only distinctions and never inventing absent event time.
+    side_effects:
+      - Owner-authorised durable persistence of Derived Signal occurrences and lineage through the M01 persistence boundary only; calculated action-like values remain facts and cause no external effect.
+    component_forms:
+      - contract
+      - schema
+      - service
+      - repository
+      - adapter
+      - configuration
+    state_writer_boundary: M01-owned calculation service/repository boundary to a calculation-owner PostgreSQL schema/write role separate from M00; no M01 database-role privilege over M00-owned relations.
+    state_reader_boundaries:
+      - M01 typed calculation/read public seam for materialise, occurrence lookup, bounded history and exact lineage/version retrieval; downstream readers receive no M01 write authority.
+      - M00 public seam typed raw-value/history projection is the sole raw-state ingress to M01.
+    persistence_mechanisms:
+      - PostgreSQL under a calculation-owner schema and write role separate from M00; a shared PostgreSQL deployment is permitted but direct M00-table privilege is prohibited.
+    prohibited_state_writers:
+      - M00
+      - A00
+      - downstream readers
+      - PostgreSQL/SQL schema/driver/adapter as semantic owners
+      - provider/network adapters
+    replay_obligations:
+      - Deterministic retries are idempotent for identical logical identity/inputs/versions/time; material input or version changes create append-only successor occurrences and historical Derived Signal truth is not overwritten.
     predecessors: []
     successors: []
 retired_ids: []
