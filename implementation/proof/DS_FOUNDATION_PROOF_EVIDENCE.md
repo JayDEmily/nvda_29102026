@@ -139,6 +139,49 @@ DS-T01 changes only its authorised proof surfaces:
 
 No `src/**`, architecture registry/allocation, package metadata, schema, accepted brief, requirement, task/delegation or governance meaning is changed by the proof authoring itself.
 
+## Clean committed proof candidate
+
+The first coalesced DS-T01 proof commit is:
+
+- commit: `ee9068dac291b55b085b0d23c72404d0d782bcab`;
+- tree: `be927ff9203a218712a25eb32fbd4c43ce01a80d`;
+- controller `check`: PASS;
+- routed leaf after commit: `DS-T01`;
+- worktree before committed-state execution: clean.
+
+From that exact committed proof candidate, observed:
+
+```text
+ruff check tests/product/derived_signal tests/implementation/derived_signal
+All checks passed!
+
+python -m pytest --collect-only -q tests/product/derived_signal tests/implementation/derived_signal
+27 tests collected in 0.04s
+
+python -m pytest -q tests/product/derived_signal tests/implementation/derived_signal
+27 failed in 0.09s
+```
+
+The 27 failures retain the same expected-red classification recorded above: missing DS-I01 M01 seam/types/source/persistence, missing M00 projection behaviour, and absent mandatory PostgreSQL proof DSNs. No test became unexpectedly green and no new failure class appeared.
+
+The inherited architecture state remained green from the same committed candidate:
+
+```text
+python -m pytest tests/architecture tests/bootstrap -q
+74 passed in 2.07s
+
+python tools/validate_architecture.py
+PASS: structural architecture validation
+
+python tools/check_dependencies.py
+PASS: dependency direction and cycle validation
+
+python tools/check_public_seams.py
+PASS: public-seam validation
+```
+
+This successor evidence update changes this evidence record and generated controller state only; the physical DS-T01 test bytes are unchanged from `ee9068d...`.
+
 ## Claim boundary
 
 This evidence establishes only that the DS-T01 foundation proof boundary has been physically authored, collected and exercised expected-red before production implementation, while the inherited architecture proof remains green.

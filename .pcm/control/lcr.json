@@ -58,12 +58,12 @@
   "blockers": [],
   "checkpoint": {
     "branch": "work/ds-t01-foundation-proof-v2",
-    "source_head": "cfec16ba3cb79e526558a76466fe03803e2f83a7",
-    "source_tree": "364901195b96171e176ae7389a760c2d447332e7",
+    "source_head": "ee9068dac291b55b085b0d23c72404d0d782bcab",
+    "source_tree": "be927ff9203a218712a25eb32fbd4c43ce01a80d",
     "working_state_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
   "claims_hash": "4d972026e949813141677eec36ad4d646c440afd81507fe52402d94c8970c58d",
-  "generated_at": "2026-10-04T04:40:36Z",
+  "generated_at": "2026-10-04T05:03:46Z",
   "last_receipt": null,
   "migration_provenance": null,
   "next_transition": {
@@ -74,7 +74,7 @@
     "DS-T01"
   ],
   "receipt_hashes": {},
-  "repo_fingerprint": "13eb06bc4ad7998374c77e7c31d500b8e338bbf91caddceae694593b84b1583b",
+  "repo_fingerprint": "1ccc301658a50b936067b07e81bbe3ee3c259b13db8c244a6a39d4f51d20fe1d",
   "schema_version": 1,
   "task_contract_hash": "1a23082ecdb408535e83c036e1ae979596dea7ba7b19d046c40e13e34db95ceb",
   "unresolved_claims": []
