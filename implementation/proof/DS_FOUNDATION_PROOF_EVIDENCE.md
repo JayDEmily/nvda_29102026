@@ -842,3 +842,68 @@ POST_RESET_IDENTITY ('nvda_m01_r01', 'm01_r01')
 ```
 
 The proof role configuration and schema privilege were reset after the probe. The substantive repaired source/candidate/evidence bytes must now be committed and the same proof rerun from that exact clean commit before DS-I01-R02 can be accepted and a fresh DS-R01 packet exported.
+
+### Clean committed DS-I01-R02 proof
+
+The substantive PostgreSQL boundary repair was frozen at:
+
+- branch: `work/ds-i01-r02-persistence-boundary-repair`;
+- commit: `b4d2bf3cd4d3a9683768bfc1b59a62753ccd5e62`;
+- tree: `a8132286de20d3210d0f206c91fc5b99b3375fd7`;
+- private M01 PostgreSQL mechanism SHA-256: `96b84b2e4406041546db2e15f3f81f217426878af59a5153c317ea0961d532a6`;
+- DS-R01 candidate SHA-256: `9ed74a4cf5dedf1e04cd61daafd4141105cec5eb4c2f00b9c3398d5579aea606`;
+- worktree before committed-state verification: clean.
+
+From that exact commit, the accepted adverse persistence proof produced:
+
+```text
+pytest -q tests/implementation/derived_signal/test_ds_t01_r02_persistence_boundary_refinement.py
+4 passed
+```
+
+The complete Gate-2 and architecture surfaces from the same clean commit produced:
+
+```text
+pytest -q tests/product/derived_signal tests/implementation/derived_signal \
+  tests/architecture/test_object_lifecycle.py tests/bootstrap/test_minimal_imports.py
+58 passed
+
+pytest -q tests/architecture tests/bootstrap
+74 passed
+
+python tools/validate_architecture.py
+PASS: structural architecture validation
+
+python tools/check_dependencies.py
+PASS: dependency direction and cycle validation
+
+python tools/check_public_seams.py
+PASS: public-seam validation
+
+mypy src/nvda_desk/derived_signal_calculation_truth/_postgres.py --show-error-codes
+Success: no issues found in 1 source file
+
+ruff check src/nvda_desk/derived_signal_calculation_truth/_postgres.py \
+  tests/implementation/derived_signal/test_ds_t01_r02_persistence_boundary_refinement.py
+All checks passed!
+
+git diff --check
+PASS (no output)
+
+git status --short
+<empty>
+```
+
+A direct structured-occurrence probe through the repaired private factory also established:
+
+```text
+ROUNDTRIP_IDENTICAL True
+IDEMPOTENT_IDENTICAL True
+UNKNOWN_ABSENCE True
+OPERATION_DRIFT_REFUSED M01 persistence schema must be separate from M00 schema
+POST_RESET_IDENTITY ('nvda_m01_r01', 'm01_r01')
+```
+
+The operation-drift probe granted only temporary proof-environment schema visibility, reset the M01 role's search path to its own schema and revoked that visibility afterwards. No production database identity or privilege was selected or changed.
+
+No substantive source/candidate/test/architecture bytes changed after `b4d2bf3...` during committed-state verification. This successor evidence update changes evidence/control bytes only so DS-I01-R02 can be accepted and a fresh DS-R01 packet can bind the exact repaired candidate and committed-state proof.

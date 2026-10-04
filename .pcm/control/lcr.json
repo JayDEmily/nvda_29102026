@@ -55,12 +55,12 @@
   "blockers": [],
   "checkpoint": {
     "branch": "work/ds-i01-r02-persistence-boundary-repair",
-    "source_head": "8b93f256572d202af9861bb46306de3ab5f89e0b",
-    "source_tree": "fa9b83be6bf41a3d1dfd93d7a1ee930d8c426441",
+    "source_head": "b4d2bf3cd4d3a9683768bfc1b59a62753ccd5e62",
+    "source_tree": "a8132286de20d3210d0f206c91fc5b99b3375fd7",
     "working_state_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
   "claims_hash": "4d972026e949813141677eec36ad4d646c440afd81507fe52402d94c8970c58d",
-  "generated_at": "2026-10-04T11:24:28Z",
+  "generated_at": "2026-10-04T11:29:03Z",
   "last_receipt": null,
   "migration_provenance": null,
   "next_transition": {
@@ -71,7 +71,7 @@
     "DS-R01"
   ],
   "receipt_hashes": {},
-  "repo_fingerprint": "509136b432fdef0d638ec2455a381342eb20d99a2bffae3771a456a42c61c29a",
+  "repo_fingerprint": "5e8f8410af64d5a0bc58489b3a7a9c6256fa62fb5a8befa7976136086a99d473",
   "schema_version": 1,
   "task_contract_hash": "aa4b127a1c618bc420f766be2dcdd435e919e06795a98d597ef18f50eab2bf13",
   "unresolved_claims": []
