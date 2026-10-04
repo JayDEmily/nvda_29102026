@@ -406,3 +406,92 @@ git status --short
 The configured aggregate `pytest -q` remains the architecture/bootstrap aggregate; the 32-test foundation set is therefore recorded separately rather than being silently conflated with that aggregate.
 
 This successor evidence update changes evidence/control bytes only. The substantive source/config/test/candidate bytes under review are unchanged from the repaired commit above.
+
+## DS-R01 isolated context-contract repair
+
+The first DS-R01 independent review of packet `bea78686264bab3e53f24223474b752613d4a90feaa8f52441d41f013bec71d8` returned `REPAIR -> DS-I01` with internal result SHA-256 `7e7145c3c8a84907473e620fcfad520348f8b03b5257b7abc9abac6fc69fd86b` and reviewer actor instance `c17e46d069bc2a7ec3b0070569228e79`. The externally supplied result file SHA-256 is `bce5622b5d57d4ab8b3c20f4db0666b5c5f401c2c1a89fa8bc733ea04e2a54f4`.
+
+The reviewer classified one isolated foundation-contract defect: fourteen of the fifteen admitted clause-6 context types were frozen/versioned identity shells only, so the public seam could not represent the context-specific immutable inputs required by REQ-004. The reviewer explicitly authorised return to DS-I01 to implement context-specific fields/validation without adding kernel semantics, concrete production instances, architecture ownership changes or review-law changes.
+
+The bounded repair changes:
+
+- `src/nvda_desk/derived_signal_calculation_truth/api.py` — replaces the fourteen identity/version-only context subclasses with context-specific immutable fields and fail-closed validation derived from accepted brief clause 6;
+- `implementation/review/DS_FOUNDATION_CANDIDATE.md` — records the repaired context contract and its non-claims;
+- this evidence record.
+
+No DS-T01 test, M00 projection implementation, PostgreSQL mechanism, architecture registry, dependency/public-seam declaration, package metadata, accepted brief, requirement or calculation-kernel source is changed.
+
+The repaired context carriers represent the accepted clause-6 content as follows:
+
+- `CalculationParameterSetV1`: named profile plus immutable named configured parameter values;
+- `RequiredFieldPolicyV1`: non-empty distinct D007 requirements;
+- `CandidateStructureContextV1`: candidate identity, aligned leg contract/side/quantity tuples, positive candidate quantity, explicit premium/entry assumptions and positive risk capital;
+- `CandidateSetContextV1`: immutable ordered distinct candidate identities, exact eligibility-class mapping and explicit directed neighbour relations;
+- `LivePositionContextV1`: position identity, aligned leg contracts/signed quantities/multipliers and exact M00/current-state occurrence references;
+- `OrderIntentContextV1`: side, positive intended size and urgency;
+- `EntryStateContextV1`: exact stored D155 occurrence reference;
+- `EvaluationSetV1`: forecast occurrence identities, realised-outcome definition, UTC evaluation window, comparator/baseline and locked model/version;
+- `RecalculationScheduleV1`: explicit scheduled trigger rules;
+- `PnLConventionVersionV1`: provider P&L inclusion/exclusion components, explicit gross-of-execution-cost treatment and attribution units;
+- `OptionRevaluationConventionVersionV1`: model family, exercise treatment, discount/carry references, time convention, IV/skew interpretation, numerical method/tolerance and Greek scaling;
+- `ExecutionCostScheduleVersionV1`: explicit non-negative commission, fee and multi-leg incremental-cost rules plus cost units;
+- `AttributionPathContextV1`: exact aligned underlying/IV/position/quantity path occurrence references;
+- `InputSelectionPolicyVersionV1`: exact join keys, non-negative maximum staleness/skew, admitted temporal-basis permissions and immutable basket membership.
+
+`UnitConventionVersionV1` already carried its accepted conversion-law content and remains unchanged.
+
+### Direct public-seam repair probes before freeze
+
+A direct construction probe instantiated all fifteen admitted context types with context-specific content. The two reviewer-described construction failures now succeed:
+
+```text
+CONTEXT_COUNT 15
+REVIEWER_PROBES PASS
+```
+
+The same direct probe exercised fail-closed validation of representative load-bearing constraints:
+
+```text
+empty_required_policy REFUSED ValueError requirements must not be empty
+zero_risk_capital REFUSED ValueError risk_capital_currency must be positive
+negative_staleness REFUSED ValueError maximum_staleness must be non-negative
+misaligned_attribution REFUSED ValueError attribution path occurrence reference tuples must be exactly aligned
+```
+
+These probes exercise the declared public constructors directly; they do not rely on the pre-existing DS-T01 helper that checked only frozen/version identity.
+
+### Pre-freeze regression proof
+
+Using a freshly reconstructed Python 3.13.5 proof environment with pytest 9.0.3, Ruff 0.15.11, mypy 1.20.1 and psycopg 3.3.4, plus a fresh PostgreSQL 17.9 proof cluster and temporary distinct proof identities `nvda_m00_r01_repair` / `m00_r01_repair` and `nvda_m01_r01_repair` / `m01_r01_repair`, observed:
+
+```text
+pytest tests/product/derived_signal tests/implementation/derived_signal \
+  tests/architecture/test_object_lifecycle.py tests/bootstrap/test_minimal_imports.py -q
+32 passed in 0.26s
+
+pytest tests/architecture tests/bootstrap -q
+74 passed in 2.34s
+
+python tools/validate_architecture.py
+PASS: structural architecture validation
+
+python tools/check_dependencies.py
+PASS: dependency direction and cycle validation
+
+python tools/check_public_seams.py
+PASS: public-seam validation
+
+ruff check src tests tools
+All checks passed!
+
+mypy src/nvda_desk/derived_signal_calculation_truth/api.py --show-error-codes
+Success: no issues found in 1 source file
+
+git diff --check
+PASS (no output)
+```
+
+The PostgreSQL DS-T01 isolation test therefore remained green across the context-only repair. The temporary proof role/schema names remain test-environment mechanics and do not resolve production database identity. Full-source mypy was not substituted for the recorded historical full-source proof in this pre-freeze run because the freshly reconstructed offline wheelhouse does not include PyYAML type stubs; the changed M01 public-seam file itself type-checks cleanly.
+
+The repaired source/candidate/evidence bytes must now be committed and the direct context probes plus the same applicable regression proof re-run from that exact clean commit before a fresh DS-R01 packet is exported.
+

@@ -62,12 +62,12 @@
   "blockers": [],
   "checkpoint": {
     "branch": "work/ds-i01-context-contract-repair",
-    "source_head": "de6e4891d4c9f5f276dc564c3235c8dab6b9f243",
-    "source_tree": "ec5100b92084ed7a589c4050c2b764a74743b802",
+    "source_head": "095509e40c45b7fe8466796c07a74666a66f10fe",
+    "source_tree": "cd9573eea8c7f03f0c5d2529ae623bd900a778de",
     "working_state_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
   "claims_hash": "4d972026e949813141677eec36ad4d646c440afd81507fe52402d94c8970c58d",
-  "generated_at": "2026-10-04T05:49:01Z",
+  "generated_at": "2026-10-04T07:01:59Z",
   "last_receipt": null,
   "migration_provenance": null,
   "next_transition": {
@@ -78,7 +78,7 @@
     "DS-R01"
   ],
   "receipt_hashes": {},
-  "repo_fingerprint": "2568fce4712125356de0de80cfca40d24364e263d957447cfa50e26693b85e9d",
+  "repo_fingerprint": "6ebe7724e54e8089904d30c788e63a3054b2dec9e36f58b47d2ea178f4ad3424",
   "schema_version": 1,
   "task_contract_hash": "9c82f75602d07e56a384c0390b212153e23cc4b046ba0d6716ef0472df4f1c24",
   "unresolved_claims": []

@@ -37,7 +37,7 @@ The existing `RawObservationOccurrenceV1` stored payload and identity are unchan
 
 `nvda_desk.derived_signal_calculation_truth.api` establishes the non-kernel calculation/read foundation required by the accepted brief:
 
-- immutable/version-identified typed context carriers for admitted non-signal inputs;
+- immutable/version-identified typed context carriers for every admitted clause-6 non-signal input, with context-specific fields rather than identity/version-only shells: `CalculationParameterSetV1` carries its profile and immutable named configured parameters; `RequiredFieldPolicyV1` carries a non-empty distinct requirement set; `CandidateStructureContextV1` carries candidate identity, aligned leg contract/side/quantity data, candidate quantity, premium/entry assumptions and positive risk capital; `CandidateSetContextV1` carries ordered candidate identities, explicit eligibility classes and exact directed neighbour relations; `LivePositionContextV1` carries exact leg contracts, signed quantities, multipliers and M00/current-state occurrence references; `OrderIntentContextV1` carries side/size/urgency; `EntryStateContextV1` carries the exact D155 occurrence reference; `EvaluationSetV1` carries forecast identities, realised-outcome definition, evaluation window, comparator and locked model/version; `RecalculationScheduleV1` carries explicit trigger rules; `PnLConventionVersionV1`, `OptionRevaluationConventionVersionV1`, `ExecutionCostScheduleVersionV1`, `AttributionPathContextV1` and `InputSelectionPolicyVersionV1` carry the corresponding accepted convention/path/selection content;
 - explicit `UnitConventionVersionV1` affine conversion requiring exact native-unit match and no magnitude heuristic;
 - `CalculationRequestV1` carrying exact D identity, subject, as-of, knowledge cutoff, calculation-definition, parameter-set, input-selection-policy and context-version references;
 - `DerivedSignalOccurrenceV1` carrying D identity, opaque occurrence identity, definition/context versions, subject/universe, effective/window/cutoff/calculation times, typed result/units/shape, raw projection lineage, predecessor-D lineage, convention references and optional supersession;
@@ -45,6 +45,19 @@ The existing `RawObservationOccurrenceV1` stored payload and identity are unchan
 - an owner factory that requires an M00 raw-projection reader and exposes no external-effect command surface.
 
 `materialise(...)` intentionally returns absence in DS-I01 because no D kernel has yet been admitted by later kernel implementation tasks. This is fail-closed foundation behaviour, not a competing calculation implementation.
+
+## DS-R01 isolated context-contract repair
+
+The first DS-R01 review returned `REPAIR -> DS-I01` for one isolated defect: fourteen admitted context classes carried only `context_id` and `version`, so the public seam could not represent the context-specific clause-6 meanings required by REQ-004 and the admitted work order. The repair is bounded to the existing DS-I01 foundation authority.
+
+The repaired public seam now makes those context meanings constructible and validates load-bearing invariants without choosing calculation kernels or concrete production instances. In particular:
+
+- `CandidateStructureContextV1` accepts and validates candidate identity, aligned leg identities/sides/quantities, explicit candidate quantity, premium/entry assumptions and positive `risk_capital_currency`;
+- `InputSelectionPolicyVersionV1` accepts and validates explicit join keys, maximum staleness/skew tolerances, admitted temporal-basis permissions and versioned basket membership;
+- candidate-set ordering/eligibility/neighbour identity, live-position leg state, D155 entry anchor, evaluation window/model lock, P&L inclusion/exclusion, option revaluation convention, pre-trade cost schedule and aligned attribution-path references are represented explicitly rather than hidden in implementation defaults;
+- all context carriers remain frozen/version-identified, and the repair adds no D-kernel mathematics, no provider-specific fallback, no concrete production mappings/parameters/context instances and no external-effect authority.
+
+The accepted DS-T01 test bytes are unchanged by this repair. Fresh review must therefore challenge the higher-authority context-content proposition directly in addition to the inherited proof suite.
 
 ## M01 persistence mechanism and ownership separation
 

@@ -42,49 +42,306 @@ class _VersionedContextV1:
         _require_positive_version(self.version)
 
 
+type ImmutableContextScalarV1 = bool | int | Decimal | str | datetime | timedelta
+type ImmutableContextValueV1 = ImmutableContextScalarV1 | tuple[ImmutableContextScalarV1, ...]
+
+
+def _require_tuple(value: object, field_name: str) -> tuple[object, ...]:
+    if type(value) is not tuple:
+        raise TypeError(f"{field_name} must be a tuple")
+    return value
+
+
+def _require_string_tuple(
+    value: tuple[str, ...], field_name: str, *, non_empty: bool = False, distinct: bool = False
+) -> None:
+    _require_tuple(value, field_name)
+    if non_empty and not value:
+        raise ValueError(f"{field_name} must not be empty")
+    for item in value:
+        _require_non_empty_string(item, field_name)
+    if distinct and len(set(value)) != len(value):
+        raise ValueError(f"{field_name} must contain distinct values")
+
+
+def _require_decimal(value: Decimal, field_name: str, *, positive: bool = False) -> None:
+    if type(value) is not Decimal:
+        raise TypeError(f"{field_name} must be a Decimal")
+    if positive and value <= 0:
+        raise ValueError(f"{field_name} must be positive")
+
+
+def _require_decimal_tuple(
+    value: tuple[Decimal, ...],
+    field_name: str,
+    *,
+    non_empty: bool = False,
+    non_zero: bool = False,
+    positive: bool = False,
+) -> None:
+    _require_tuple(value, field_name)
+    if non_empty and not value:
+        raise ValueError(f"{field_name} must not be empty")
+    for item in value:
+        _require_decimal(item, field_name)
+        if non_zero and item == 0:
+            raise ValueError(f"{field_name} values must be non-zero")
+        if positive and item <= 0:
+            raise ValueError(f"{field_name} values must be positive")
+
+
+def _require_immutable_context_value(value: ImmutableContextValueV1, field_name: str) -> None:
+    if type(value) in {bool, int, Decimal, str, timedelta}:
+        if type(value) is str and not value:
+            raise ValueError(f"{field_name} string values must be non-empty")
+        return
+    if type(value) is datetime:
+        _require_utc(value, field_name)
+        return
+    if type(value) is tuple:
+        for item in value:
+            if type(item) not in {bool, int, Decimal, str, datetime, timedelta}:
+                raise TypeError(f"{field_name} tuple values must contain immutable scalar values")
+            _require_immutable_context_value(item, field_name)
+        return
+    raise TypeError(f"{field_name} must contain only admitted immutable context values")
+
+
+def _require_named_context_values(
+    value: tuple[tuple[str, ImmutableContextValueV1], ...],
+    field_name: str,
+    *,
+    non_empty: bool = False,
+) -> None:
+    _require_tuple(value, field_name)
+    if non_empty and not value:
+        raise ValueError(f"{field_name} must not be empty")
+    names: list[str] = []
+    for item in value:
+        if type(item) is not tuple or len(item) != 2:
+            raise TypeError(f"{field_name} entries must be (name, value) tuples")
+        name, configured = item
+        _require_non_empty_string(name, field_name)
+        _require_immutable_context_value(configured, field_name)
+        names.append(name)
+    if len(set(names)) != len(names):
+        raise ValueError(f"{field_name} names must be distinct")
+
+
+def _require_named_decimal_values(
+    value: tuple[tuple[str, Decimal], ...], field_name: str, *, non_negative: bool = False
+) -> None:
+    _require_tuple(value, field_name)
+    names: list[str] = []
+    for item in value:
+        if type(item) is not tuple or len(item) != 2:
+            raise TypeError(f"{field_name} entries must be (name, Decimal) tuples")
+        name, amount = item
+        _require_non_empty_string(name, field_name)
+        _require_decimal(amount, field_name)
+        if non_negative and amount < 0:
+            raise ValueError(f"{field_name} amounts must be non-negative")
+        names.append(name)
+    if len(set(names)) != len(names):
+        raise ValueError(f"{field_name} names must be distinct")
+
+
+def _require_non_negative_timedelta(value: timedelta, field_name: str) -> None:
+    if type(value) is not timedelta:
+        raise TypeError(f"{field_name} must be a timedelta")
+    if value < timedelta(0):
+        raise ValueError(f"{field_name} must be non-negative")
+
+
 @dataclass(frozen=True, slots=True)
 class CalculationParameterSetV1(_VersionedContextV1):
-    pass
+    profile: str
+    parameters: tuple[tuple[str, ImmutableContextValueV1], ...]
+
+    def __post_init__(self) -> None:
+        _VersionedContextV1.__post_init__(self)
+        _require_non_empty_string(self.profile, "profile")
+        _require_named_context_values(self.parameters, "parameters", non_empty=True)
 
 
 @dataclass(frozen=True, slots=True)
 class RequiredFieldPolicyV1(_VersionedContextV1):
-    pass
+    requirements: tuple[str, ...]
+
+    def __post_init__(self) -> None:
+        _VersionedContextV1.__post_init__(self)
+        _require_string_tuple(self.requirements, "requirements", non_empty=True, distinct=True)
 
 
 @dataclass(frozen=True, slots=True)
 class CandidateStructureContextV1(_VersionedContextV1):
-    pass
+    candidate_identity: str
+    leg_contract_identities: tuple[str, ...]
+    leg_sides: tuple[str, ...]
+    leg_quantities: tuple[Decimal, ...]
+    quantity: Decimal
+    premium_assumptions: tuple[tuple[str, Decimal], ...]
+    entry_assumptions: tuple[tuple[str, ImmutableContextValueV1], ...]
+    risk_capital_currency: Decimal
+
+    def __post_init__(self) -> None:
+        _VersionedContextV1.__post_init__(self)
+        _require_non_empty_string(self.candidate_identity, "candidate_identity")
+        _require_string_tuple(
+            self.leg_contract_identities, "leg_contract_identities", non_empty=True, distinct=True
+        )
+        _require_string_tuple(self.leg_sides, "leg_sides", non_empty=True)
+        _require_decimal_tuple(self.leg_quantities, "leg_quantities", non_empty=True, non_zero=True)
+        if not (
+            len(self.leg_contract_identities) == len(self.leg_sides) == len(self.leg_quantities)
+        ):
+            raise ValueError("candidate leg contract, side and quantity tuples must align")
+        _require_decimal(self.quantity, "quantity", positive=True)
+        _require_named_decimal_values(self.premium_assumptions, "premium_assumptions")
+        _require_named_context_values(self.entry_assumptions, "entry_assumptions")
+        _require_decimal(self.risk_capital_currency, "risk_capital_currency", positive=True)
 
 
 @dataclass(frozen=True, slots=True)
 class CandidateSetContextV1(_VersionedContextV1):
-    pass
+    candidate_identities: tuple[str, ...]
+    eligibility_classes: tuple[tuple[str, str], ...]
+    neighbour_relations: tuple[tuple[str, str], ...]
+
+    def __post_init__(self) -> None:
+        _VersionedContextV1.__post_init__(self)
+        _require_string_tuple(
+            self.candidate_identities, "candidate_identities", non_empty=True, distinct=True
+        )
+        _require_tuple(self.eligibility_classes, "eligibility_classes")
+        eligibility: dict[str, str] = {}
+        for item in self.eligibility_classes:
+            if type(item) is not tuple or len(item) != 2:
+                raise TypeError(
+                    "eligibility_classes entries must be (candidate_identity, class) tuples"
+                )
+            candidate_identity, eligibility_class = item
+            _require_non_empty_string(candidate_identity, "eligibility candidate_identity")
+            _require_non_empty_string(eligibility_class, "eligibility_class")
+            if candidate_identity in eligibility:
+                raise ValueError("eligibility_classes must map each candidate at most once")
+            eligibility[candidate_identity] = eligibility_class
+        if tuple(eligibility) != self.candidate_identities:
+            raise ValueError(
+                "eligibility_classes must cover candidate_identities in exact candidate order"
+            )
+        _require_tuple(self.neighbour_relations, "neighbour_relations")
+        seen_relations: set[tuple[str, str]] = set()
+        admitted = set(self.candidate_identities)
+        for item in self.neighbour_relations:
+            if type(item) is not tuple or len(item) != 2:
+                raise TypeError("neighbour_relations entries must be directed identity pairs")
+            left, right = item
+            _require_non_empty_string(left, "neighbour relation identity")
+            _require_non_empty_string(right, "neighbour relation identity")
+            if left == right:
+                raise ValueError("neighbour relation may not be self-referential")
+            if left not in admitted or right not in admitted:
+                raise ValueError(
+                    "neighbour relation identities must belong to candidate_identities"
+                )
+            if item in seen_relations:
+                raise ValueError("neighbour_relations must be distinct")
+            seen_relations.add(item)
 
 
 @dataclass(frozen=True, slots=True)
 class LivePositionContextV1(_VersionedContextV1):
-    pass
+    position_identity: str
+    leg_contract_identities: tuple[str, ...]
+    signed_quantities: tuple[Decimal, ...]
+    multipliers: tuple[Decimal, ...]
+    m00_occurrence_refs: tuple[str, ...]
+    current_state_occurrence_refs: tuple[str, ...]
+
+    def __post_init__(self) -> None:
+        _VersionedContextV1.__post_init__(self)
+        _require_non_empty_string(self.position_identity, "position_identity")
+        _require_string_tuple(
+            self.leg_contract_identities, "leg_contract_identities", non_empty=True
+        )
+        _require_decimal_tuple(
+            self.signed_quantities, "signed_quantities", non_empty=True, non_zero=True
+        )
+        _require_decimal_tuple(self.multipliers, "multipliers", non_empty=True, positive=True)
+        if not (
+            len(self.leg_contract_identities)
+            == len(self.signed_quantities)
+            == len(self.multipliers)
+        ):
+            raise ValueError(
+                "live-position leg contract, quantity and multiplier tuples must align"
+            )
+        _require_string_tuple(
+            self.m00_occurrence_refs, "m00_occurrence_refs", non_empty=True, distinct=True
+        )
+        _require_string_tuple(
+            self.current_state_occurrence_refs,
+            "current_state_occurrence_refs",
+            non_empty=True,
+            distinct=True,
+        )
 
 
 @dataclass(frozen=True, slots=True)
 class OrderIntentContextV1(_VersionedContextV1):
-    pass
+    side: str
+    intended_size: Decimal
+    urgency: str
+
+    def __post_init__(self) -> None:
+        _VersionedContextV1.__post_init__(self)
+        _require_non_empty_string(self.side, "side")
+        _require_decimal(self.intended_size, "intended_size", positive=True)
+        _require_non_empty_string(self.urgency, "urgency")
 
 
 @dataclass(frozen=True, slots=True)
 class EntryStateContextV1(_VersionedContextV1):
-    pass
+    d155_occurrence_id: str
+
+    def __post_init__(self) -> None:
+        _VersionedContextV1.__post_init__(self)
+        _require_non_empty_string(self.d155_occurrence_id, "d155_occurrence_id")
 
 
 @dataclass(frozen=True, slots=True)
 class EvaluationSetV1(_VersionedContextV1):
-    pass
+    forecast_occurrence_ids: tuple[str, ...]
+    realised_outcome_definition: str
+    evaluation_window_start_utc: datetime
+    evaluation_window_end_utc: datetime
+    comparator_baseline: str
+    locked_model_id: str
+    locked_model_version: str
+
+    def __post_init__(self) -> None:
+        _VersionedContextV1.__post_init__(self)
+        _require_string_tuple(
+            self.forecast_occurrence_ids, "forecast_occurrence_ids", non_empty=True, distinct=True
+        )
+        _require_non_empty_string(self.realised_outcome_definition, "realised_outcome_definition")
+        _require_utc(self.evaluation_window_start_utc, "evaluation_window_start_utc")
+        _require_utc(self.evaluation_window_end_utc, "evaluation_window_end_utc")
+        if self.evaluation_window_end_utc <= self.evaluation_window_start_utc:
+            raise ValueError("evaluation window end must be after its start")
+        _require_non_empty_string(self.comparator_baseline, "comparator_baseline")
+        _require_non_empty_string(self.locked_model_id, "locked_model_id")
+        _require_non_empty_string(self.locked_model_version, "locked_model_version")
 
 
 @dataclass(frozen=True, slots=True)
 class RecalculationScheduleV1(_VersionedContextV1):
-    pass
+    trigger_rules: tuple[str, ...]
+
+    def __post_init__(self) -> None:
+        _VersionedContextV1.__post_init__(self)
+        _require_string_tuple(self.trigger_rules, "trigger_rules", non_empty=True, distinct=True)
 
 
 @dataclass(frozen=True, slots=True)
@@ -111,27 +368,138 @@ class UnitConventionVersionV1(_VersionedContextV1):
 
 @dataclass(frozen=True, slots=True)
 class PnLConventionVersionV1(_VersionedContextV1):
-    pass
+    provider_pnl_components_included: tuple[str, ...]
+    provider_pnl_components_excluded: tuple[str, ...]
+    observed_total_pnl_is_gross_of_execution_costs: bool
+    attribution_units: str
+
+    def __post_init__(self) -> None:
+        _VersionedContextV1.__post_init__(self)
+        _require_string_tuple(
+            self.provider_pnl_components_included,
+            "provider_pnl_components_included",
+            distinct=True,
+        )
+        _require_string_tuple(
+            self.provider_pnl_components_excluded,
+            "provider_pnl_components_excluded",
+            distinct=True,
+        )
+        if not self.provider_pnl_components_included and not self.provider_pnl_components_excluded:
+            raise ValueError(
+                "PnL convention must state at least one inclusion or exclusion component"
+            )
+        overlap = set(self.provider_pnl_components_included) & set(
+            self.provider_pnl_components_excluded
+        )
+        if overlap:
+            raise ValueError("PnL inclusion and exclusion components must be disjoint")
+        if type(self.observed_total_pnl_is_gross_of_execution_costs) is not bool:
+            raise TypeError("observed_total_pnl_is_gross_of_execution_costs must be bool")
+        _require_non_empty_string(self.attribution_units, "attribution_units")
 
 
 @dataclass(frozen=True, slots=True)
 class OptionRevaluationConventionVersionV1(_VersionedContextV1):
-    pass
+    model_family: str
+    exercise_style_treatment: str
+    discount_rate_input_refs: tuple[str, ...]
+    dividend_borrow_carry_input_refs: tuple[str, ...]
+    time_day_count_convention: str
+    iv_skew_interpretation: str
+    numerical_method: str
+    numerical_tolerance: Decimal
+    greek_scaling: str
+
+    def __post_init__(self) -> None:
+        _VersionedContextV1.__post_init__(self)
+        _require_non_empty_string(self.model_family, "model_family")
+        _require_non_empty_string(self.exercise_style_treatment, "exercise_style_treatment")
+        _require_string_tuple(
+            self.discount_rate_input_refs, "discount_rate_input_refs", distinct=True
+        )
+        _require_string_tuple(
+            self.dividend_borrow_carry_input_refs,
+            "dividend_borrow_carry_input_refs",
+            distinct=True,
+        )
+        if not self.discount_rate_input_refs and not self.dividend_borrow_carry_input_refs:
+            raise ValueError(
+                "option revaluation convention requires carry/rate inputs or references"
+            )
+        _require_non_empty_string(self.time_day_count_convention, "time_day_count_convention")
+        _require_non_empty_string(self.iv_skew_interpretation, "iv_skew_interpretation")
+        _require_non_empty_string(self.numerical_method, "numerical_method")
+        _require_decimal(self.numerical_tolerance, "numerical_tolerance", positive=True)
+        _require_non_empty_string(self.greek_scaling, "greek_scaling")
 
 
 @dataclass(frozen=True, slots=True)
 class ExecutionCostScheduleVersionV1(_VersionedContextV1):
-    pass
+    commission_rules: tuple[tuple[str, Decimal], ...]
+    fee_rules: tuple[tuple[str, Decimal], ...]
+    multi_leg_incremental_cost_rules: tuple[tuple[str, Decimal], ...]
+    cost_units: str
+
+    def __post_init__(self) -> None:
+        _VersionedContextV1.__post_init__(self)
+        _require_named_decimal_values(self.commission_rules, "commission_rules", non_negative=True)
+        _require_named_decimal_values(self.fee_rules, "fee_rules", non_negative=True)
+        _require_named_decimal_values(
+            self.multi_leg_incremental_cost_rules,
+            "multi_leg_incremental_cost_rules",
+            non_negative=True,
+        )
+        if not (self.commission_rules or self.fee_rules or self.multi_leg_incremental_cost_rules):
+            raise ValueError("execution cost schedule must contain at least one explicit cost rule")
+        _require_non_empty_string(self.cost_units, "cost_units")
 
 
 @dataclass(frozen=True, slots=True)
 class AttributionPathContextV1(_VersionedContextV1):
-    pass
+    underlying_path_occurrence_refs: tuple[str, ...]
+    iv_path_occurrence_refs: tuple[str, ...]
+    position_path_occurrence_refs: tuple[str, ...]
+    quantity_path_occurrence_refs: tuple[str, ...]
+
+    def __post_init__(self) -> None:
+        _VersionedContextV1.__post_init__(self)
+        paths = (
+            (self.underlying_path_occurrence_refs, "underlying_path_occurrence_refs"),
+            (self.iv_path_occurrence_refs, "iv_path_occurrence_refs"),
+            (self.position_path_occurrence_refs, "position_path_occurrence_refs"),
+            (self.quantity_path_occurrence_refs, "quantity_path_occurrence_refs"),
+        )
+        for refs, name in paths:
+            _require_string_tuple(refs, name, non_empty=True)
+        lengths = {len(refs) for refs, _ in paths}
+        if len(lengths) != 1:
+            raise ValueError("attribution path occurrence reference tuples must be exactly aligned")
 
 
 @dataclass(frozen=True, slots=True)
 class InputSelectionPolicyVersionV1(_VersionedContextV1):
-    pass
+    join_keys: tuple[str, ...]
+    maximum_staleness: timedelta
+    maximum_skew: timedelta
+    temporal_basis_permissions: tuple[str, ...]
+    basket_membership: tuple[str, ...]
+
+    def __post_init__(self) -> None:
+        _VersionedContextV1.__post_init__(self)
+        _require_string_tuple(self.join_keys, "join_keys", non_empty=True, distinct=True)
+        _require_non_negative_timedelta(self.maximum_staleness, "maximum_staleness")
+        _require_non_negative_timedelta(self.maximum_skew, "maximum_skew")
+        _require_string_tuple(
+            self.temporal_basis_permissions,
+            "temporal_basis_permissions",
+            non_empty=True,
+            distinct=True,
+        )
+        allowed_temporal_bases = {"true_instant", "receipt_only", "date_only"}
+        if not set(self.temporal_basis_permissions) <= allowed_temporal_bases:
+            raise ValueError("temporal_basis_permissions contain an unadmitted temporal basis")
+        _require_string_tuple(self.basket_membership, "basket_membership", distinct=True)
 
 
 @dataclass(frozen=True, slots=True)
@@ -167,15 +535,7 @@ class RawInputLineageV1:
         _require_non_empty_string(self.canonical_units, "canonical_units")
 
 
-type DerivedResultV1 = (
-    None
-    | bool
-    | int
-    | Decimal
-    | str
-    | datetime
-    | tuple["DerivedResultV1", ...]
-)
+type DerivedResultV1 = None | bool | int | Decimal | str | datetime | tuple["DerivedResultV1", ...]
 
 
 @dataclass(frozen=True, slots=True)
