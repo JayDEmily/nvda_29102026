@@ -679,3 +679,67 @@ UNKNOWN_ABSENCE True
 That probe persisted non-empty parameter/context refs, canonical raw lineage, predecessor lineage, convention refs, a non-empty universe and a nested immutable result containing `Decimal`, category/boolean and UTC `datetime`, then read the exact occurrence back. This confirms the stricter public carrier contract remains compatible with durable structured-result persistence.
 
 The substantive repaired source/candidate/evidence bytes must now be frozen in Git and the same proof rerun from that exact clean commit before a fresh DS-R01 packet is exported.
+
+### Clean committed DS-I01-R01 proof
+
+The substantive recurrent-class production repair was frozen at:
+
+- branch: `work/ds-i01-r01-foundation-contract-repair`;
+- commit: `d9aa11c18cd949eced71aff4179a76aa7525b276`;
+- tree: `ef4332c75cdb8db4e00462ff86199e53dabf756d`;
+- candidate SHA-256: `0496e296610af76b52b0960db390c150755f637f5cef2ac69023695e2c43bb64`;
+- M00 public API SHA-256: `74f13b23fc813f64805dec7c1467471de934fc00b16a72b792bee91bd61a5216`;
+- M01 public API SHA-256: `1c76c6620d3f1e494a78a1a40022e1fa9a07677f21b3483b2151c307a7e243f4`;
+- worktree before committed-state verification: clean.
+
+From that exact commit, the accepted recurrent-class proof and inherited Gate-2/architecture proof surfaces produced:
+
+```text
+pytest -q tests/product/derived_signal/test_ds_t01_r01_foundation_contract_refinement.py
+22 passed
+
+pytest -q tests/product/derived_signal tests/implementation/derived_signal \
+  tests/architecture/test_object_lifecycle.py tests/bootstrap/test_minimal_imports.py
+54 passed
+
+pytest -q tests/architecture tests/bootstrap
+74 passed
+
+python tools/validate_architecture.py
+PASS: structural architecture validation
+
+python tools/check_dependencies.py
+PASS: dependency direction and cycle validation
+
+python tools/check_public_seams.py
+PASS: public-seam validation
+
+mypy src/nvda_desk/derived_signal_calculation_truth/api.py \
+  src/nvda_desk/raw_signal_occurrence_truth/api.py --show-error-codes
+Success: no issues found in 2 source files
+
+ruff check src/nvda_desk/derived_signal_calculation_truth/api.py \
+  src/nvda_desk/raw_signal_occurrence_truth/api.py \
+  tests/product/derived_signal/test_ds_t01_r01_foundation_contract_refinement.py
+All checks passed!
+
+projectctl check
+CHECK: PASS
+ready=DS-I01-R01
+
+git diff --check
+PASS (no output)
+
+git status --short
+<empty>
+```
+
+The same committed state passed a real PostgreSQL 17.9 structured occurrence round-trip using the temporary M01 proof schema/role:
+
+```text
+ROUNDTRIP_IDENTICAL True
+IDEMPOTENT_IDENTICAL True
+UNKNOWN_ABSENCE True
+```
+
+No substantive source/candidate/test/architecture/persistence bytes were changed after `d9aa11c...` during committed-state verification. This successor evidence update changes evidence/control bytes only so DS-I01-R01 can be closed and a fresh DS-R01 packet can bind the exact repaired candidate plus committed-state proof.

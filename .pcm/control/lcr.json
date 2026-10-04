@@ -53,12 +53,12 @@
   "blockers": [],
   "checkpoint": {
     "branch": "work/ds-i01-r01-foundation-contract-repair",
-    "source_head": "34164d20c1a699afeae3ccc7ef201b89f83be8e8",
-    "source_tree": "c89da7247748e9f7260257a44ea5d46573065de8",
+    "source_head": "d9aa11c18cd949eced71aff4179a76aa7525b276",
+    "source_tree": "ef4332c75cdb8db4e00462ff86199e53dabf756d",
     "working_state_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
   "claims_hash": "4d972026e949813141677eec36ad4d646c440afd81507fe52402d94c8970c58d",
-  "generated_at": "2026-10-04T10:20:38Z",
+  "generated_at": "2026-10-04T10:28:06Z",
   "last_receipt": null,
   "migration_provenance": null,
   "next_transition": {
@@ -69,7 +69,7 @@
     "DS-I01-R01"
   ],
   "receipt_hashes": {},
-  "repo_fingerprint": "c01fe840d546ad1bf64d12f92e05b2e46a9bddaca0a89a67942f91b3c4101605",
+  "repo_fingerprint": "91b0a916f6e7843ad1b7923c541d6973366e16e3dde6a99c47386dde56d81c6b",
   "schema_version": 1,
   "task_contract_hash": "79ee5c0a9bfc799c001d5bfa9e8f5fe1a613ad1a2197f472b69129a68236202d",
   "unresolved_claims": []
