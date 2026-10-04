@@ -2,16 +2,17 @@
   "acceptance_tags": {
     "DS-A01": "b373caf8b8463e502e5bdedd8c2e5791af26d24e",
     "DS-A02": "4740566dd9176d8700d09fbc4b3fe64b36070c9c",
-    "DS-A03": "1ff62ca416bd209329261eac62b8e3b15609131b"
+    "DS-A03": "1ff62ca416bd209329261eac62b8e3b15609131b",
+    "DS-A04": "ad5508f65760dc1b1949f067223f35cdc3e46cfb"
   },
   "accepted_base": {
     "branch": "main",
-    "head": "1ff62ca416bd209329261eac62b8e3b15609131b",
-    "tree": "9d0335d7650c9696b126dce2b5f1a1772a4d031f"
+    "head": "ad5508f65760dc1b1949f067223f35cdc3e46cfb",
+    "tree": "df82b37cba84d878d833c5200a7b2c930c84a6c6"
   },
   "active_leaf": {
-    "id": "DS-A04",
-    "label": "Independently review architecture admission",
+    "id": "DS-T01",
+    "label": "Establish foundation proof boundary before production code",
     "status": "pending"
   },
   "applicable_context": {
@@ -25,15 +26,19 @@
     "dependencies": [
       "DS-A01",
       "DS-A02",
-      "DS-A03"
+      "DS-A03",
+      "DS-A04"
     ],
-    "plan_leaf": "DS-A04",
+    "plan_leaf": "DS-T01",
     "requirements": [
       "REQ-001",
       "REQ-002",
       "REQ-012",
       "REQ-003",
-      "REQ-005"
+      "REQ-005",
+      "REQ-004",
+      "REQ-008",
+      "REQ-010"
     ]
   },
   "authority_hashes": {
@@ -52,25 +57,25 @@
   },
   "blockers": [],
   "checkpoint": {
-    "branch": "work/ds-a03-lifecycle-repair",
-    "source_head": "013ddec1c7abb6e2c6cb05e6b61073decf1019c2",
-    "source_tree": "17d67bad879f2f3435b9963e990b66c9a6f1be92",
+    "branch": "main",
+    "source_head": "ad5508f65760dc1b1949f067223f35cdc3e46cfb",
+    "source_tree": "df82b37cba84d878d833c5200a7b2c930c84a6c6",
     "working_state_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
   "claims_hash": "4d972026e949813141677eec36ad4d646c440afd81507fe52402d94c8970c58d",
-  "generated_at": "2026-10-04T04:12:34Z",
+  "generated_at": "2026-10-04T04:40:35Z",
   "last_receipt": null,
   "migration_provenance": null,
   "next_transition": {
-    "actor_class": "INDEPENDENT_REVIEW",
-    "next_leaf": "DS-A04"
+    "actor_class": "AUTONOMOUS",
+    "next_leaf": "DS-T01"
   },
   "ready_tasks": [
-    "DS-A04"
+    "DS-T01"
   ],
   "receipt_hashes": {},
-  "repo_fingerprint": "f2a203a14e5436605b85a887a208bf07c96341b3f8270c76f224d428df392152",
+  "repo_fingerprint": "f669fde84b02dfcd51b65e56e3ec5d7a3a38e631c6ff20052c1f8b1870af7080",
   "schema_version": 1,
-  "task_contract_hash": "85da7e41584d42a577b3958188a7d2c35f2567705e5bbfdb2b674d2019665892",
+  "task_contract_hash": "1a23082ecdb408535e83c036e1ae979596dea7ba7b19d046c40e13e34db95ceb",
   "unresolved_claims": []
 }
