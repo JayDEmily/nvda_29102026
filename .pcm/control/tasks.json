@@ -203,7 +203,8 @@
         "config/architecture/",
         "schemas/",
         "implementation/",
-        "pyproject.toml"
+        "pyproject.toml",
+        "tests/architecture/test_object_lifecycle.py"
       ]
     },
     {
