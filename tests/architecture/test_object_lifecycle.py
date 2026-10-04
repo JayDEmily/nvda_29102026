@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[2]
 
 def test_non_active_foundation_identities_are_not_composable() -> None:
     registry = ArchitectureRegistry.from_repository(ROOT)
+    assert registry.get("M01").status == "placeholder"
     for object_id in ("M01", "P01", "G01", "A00", "K01"):
         with pytest.raises(ValueError, match="not composable"):
             registry.require_composable(object_id)

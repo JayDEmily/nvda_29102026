@@ -16,7 +16,7 @@ The work order is bound to:
 ## Admitted architecture target
 
 - Runtime semantic owner: `M01`, `derived_signal_calculation_truth`.
-- Current lifecycle state: `bootstrap`; registration/allocation does not make M01 composable or implemented.
+- Current lifecycle state: `placeholder`; registration/allocation records the owner identity and future boundary only and does not claim an admitted implementation shell, composability or executable behaviour.
 - Intended Python owner root: `nvda_desk.derived_signal_calculation_truth`.
 - Declared public seam: `nvda_desk.derived_signal_calculation_truth.api`.
 - Permitted runtime owner dependency: `M01 -> M00` only, through M00's declared public seam.

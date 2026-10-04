@@ -6,11 +6,11 @@ This record supports DS-A03 only: durable architecture allocation/boundary admis
 
 Candidate SHA-256 before this evidence record is committed:
 
-`0df0170be2c4b1545dcbfe0ab391114ac52e494c5e4e92687d8907152e0a01db  implementation/architecture/DS_ARCHITECTURE_ADMISSION_CANDIDATE.md`
+`c73128c9144cbb2b107a31e5a524fd7769d7e3b2932019f864d9e38de8b3fe9e  implementation/architecture/DS_ARCHITECTURE_ADMISSION_CANDIDATE.md`
 
 Work-order SHA-256:
 
-`0842c3bd375fef95a37cde160ece072515d66b641db28c06e68c2c1f35bc4cfe  implementation/work_order/DS_IMPLEMENTATION_WORK_ORDER.md`
+`77ec86a9cf9b3357d913a401985ed203a480ee74cfecafc5a8fa2ee4e70fae50  implementation/work_order/DS_IMPLEMENTATION_WORK_ORDER.md`
 
 ## 1. Accepted predecessor state
 
@@ -72,7 +72,7 @@ All checks passed!
 DS-A03 changes only the authorised architecture/work-order/proof-fixture surfaces:
 
 - `config/architecture/implementation_allocations.yaml`: durably consumes `M01` as `derived_signal_calculation_truth`;
-- `config/architecture/modules.yaml`: adds non-composable bootstrap M01 with bounded ownership, inputs/outputs, M00-only dependency, declared package/public seam, separate persistence boundary, external-effect exclusions and replay obligations; extends M00 only with the accepted additive read-only M01 raw-value/history reader boundary;
+- `config/architecture/modules.yaml`: adds non-composable placeholder M01 identity with bounded ownership, inputs/outputs, M00-only dependency, declared future package/public seam, separate persistence boundary, external-effect exclusions and replay obligations; extends M00 only with the accepted additive read-only M01 raw-value/history reader boundary;
 - `config/architecture/dependency_rules.yaml`: adds exactly one owner edge `M01 -> M00`;
 - `implementation/architecture/DS_ARCHITECTURE_ADMISSION_CANDIDATE.md`: exact DS-A04 candidate narrative;
 - `implementation/work_order/DS_IMPLEMENTATION_WORK_ORDER.md`: bounded downstream work order following the existing proof-first task graph.
@@ -135,7 +135,7 @@ A pre-commit invocation of `tools/run_promotion_gate.py` returned `FAIL: worktre
 
 ## 7. Admission semantics and non-claims
 
-- M01 is durably allocated but remains `bootstrap`; active runtime modules remain exactly one (M00).
+- M01 is durably allocated but remains `placeholder`; no M01 implementation shell is admitted and active runtime modules remain exactly one (M00).
 - M01's only declared owner dependency is M00; no reverse edge is introduced.
 - M00 remains Raw Signal semantic owner and writer; the only DS-A03 change to M00 is its accepted additive typed read projection boundary.
 - M01's PostgreSQL role/schema names and physical layout remain unresolved; only the required ownership/separation invariant is admitted.
@@ -196,3 +196,51 @@ git status --porcelain
 ```
 
 This successor evidence update changes evidence text only. The review packet source identity will bind the final Git commit/tree containing this exact evidence; DS-A04 remains a separate independent-review responsibility.
+
+## 9. DS-A04 lifecycle-truth repair
+
+The independent DS-A04 reviewer returned one substantive in-envelope repair finding: repository taxonomy defines `placeholder` as an identity with no admitted implementation and `bootstrap` as a minimal shell that exists but is not active, while DS-A03 created no M01 source package. The reviewer explicitly treated the stale repository-fingerprint bookkeeping issue as non-substantive and required no further cycle for it. The supplied reviewer response identified result SHA-256 `7f3352afdcd59796f74e28236237450804674070cd11bcaf44e14e727b45b721`.
+
+The bounded repair changes only lifecycle truth and corresponding evidence/work-order wording:
+
+- `config/architecture/modules.yaml`: M01 lifecycle `bootstrap` -> `placeholder`;
+- `implementation/architecture/DS_ARCHITECTURE_ADMISSION_CANDIDATE.md`: explains that no implementation shell exists and `placeholder` is therefore the truthful lifecycle;
+- `implementation/work_order/DS_IMPLEMENTATION_WORK_ORDER.md`: carries `placeholder` as the current lifecycle without changing downstream authority;
+- `tests/architecture/test_object_lifecycle.py`: asserts the admitted M01 registry state is exactly `placeholder` while retaining the existing non-composability proof.
+
+No source package, executable M01 behaviour, architecture identity, allocation, dependency edge, public-seam declaration, persistence boundary, requirement, work-order scope or accepted calculation meaning is added or changed by this repair.
+
+Observed repair validation:
+
+```text
+python -m pytest tests/architecture/test_object_lifecycle.py -q
+3 passed
+
+python -m pytest tests/architecture tests/bootstrap -q
+74 passed
+
+python tools/validate_architecture.py
+architecture objects: 6
+active runtime modules: 1
+implementation allocations: 2
+dependency/public-seam violations: 0
+PASS: structural architecture validation
+
+python tools/check_dependencies.py
+PASS: dependency direction and cycle validation
+
+python tools/check_public_seams.py
+PASS: public-seam validation
+
+mypy src --show-error-codes
+Success: no issues found in 16 source files
+
+ruff check src tests tools
+All checks passed!
+
+git diff --check
+PASS (no output)
+
+test ! -e src/nvda_desk/derived_signal_calculation_truth
+PASS: M01 source package absent
+```

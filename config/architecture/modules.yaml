@@ -49,8 +49,8 @@ modules:
     successors: []
   - id: M01
     name: derived_signal_calculation_truth
-    status: bootstrap
-    description: Bounded Derived Signal Calculation Truth semantic owner admitted for implementation; non-composable until later executable implementation and proof activate it.
+    status: placeholder
+    description: Bounded Derived Signal Calculation Truth semantic owner identity admitted for later implementation; no admitted implementation shell exists yet and it is non-composable.
     semantic_responsibility: Deterministically calculate and durably preserve canonical D001-D209 Derived Signal occurrences from lawfully projected M00 Raw Signal facts, compatible predecessor Derived Signal facts and exact immutable calculation/configuration/context versions, with complete lineage.
     inputs:
       - Read-only typed M00 raw-value/history projection through nvda_desk.raw_signal_occurrence_truth.api.

@@ -53,12 +53,12 @@
   "blockers": [],
   "checkpoint": {
     "branch": "work/ds-a03-lifecycle-repair",
-    "source_head": "1ff62ca416bd209329261eac62b8e3b15609131b",
-    "source_tree": "9d0335d7650c9696b126dce2b5f1a1772a4d031f",
+    "source_head": "013ddec1c7abb6e2c6cb05e6b61073decf1019c2",
+    "source_tree": "17d67bad879f2f3435b9963e990b66c9a6f1be92",
     "working_state_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
   "claims_hash": "4d972026e949813141677eec36ad4d646c440afd81507fe52402d94c8970c58d",
-  "generated_at": "2026-10-04T02:59:18Z",
+  "generated_at": "2026-10-04T04:12:34Z",
   "last_receipt": null,
   "migration_provenance": null,
   "next_transition": {
@@ -69,7 +69,7 @@
     "DS-A04"
   ],
   "receipt_hashes": {},
-  "repo_fingerprint": "7503d49a7db4a4b40b0ac30b4b3108b0bc6b86ccdaca2787b5de3354046ba4b4",
+  "repo_fingerprint": "f2a203a14e5436605b85a887a208bf07c96341b3f8270c76f224d428df392152",
   "schema_version": 1,
   "task_contract_hash": "85da7e41584d42a577b3958188a7d2c35f2567705e5bbfdb2b674d2019665892",
   "unresolved_claims": []

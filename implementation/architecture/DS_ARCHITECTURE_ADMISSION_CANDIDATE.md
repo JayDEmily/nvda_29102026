@@ -35,11 +35,11 @@ After this durable allocation, a fresh generic create rehearsal correctly advanc
 
 ### M01 semantic owner and lifecycle
 
-`M01` is registered as `derived_signal_calculation_truth` with status `bootstrap`.
+`M01` is registered as `derived_signal_calculation_truth` with status `placeholder`.
 
 The registry records the accepted bounded responsibility: deterministically calculate and durably preserve canonical `D001`–`D209` Derived Signal occurrences from lawfully projected M00 Raw Signal facts, compatible predecessor Derived Signal facts and exact immutable calculation/configuration/context versions, with complete lineage.
 
-`bootstrap` is deliberate. DS-A03 is authorised to admit architecture state and a work order, not to create production source. M01 therefore remains non-composable until later governed implementation/proof establishes an executable owner and lawfully changes lifecycle state.
+`placeholder` is deliberate. Repository taxonomy defines `placeholder` as an identity with no admitted implementation, which exactly matches DS-A03: it admits architecture identity/state and a work order but creates no production source or implementation shell. M01 therefore remains non-composable until later governed implementation/proof establishes an implementation and lawfully advances its lifecycle state.
 
 ### Dependency direction and public boundaries
 
