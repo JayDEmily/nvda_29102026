@@ -82,7 +82,7 @@
         "REQ-005",
         "REQ-012"
       ],
-      "status": "pending",
+      "status": "accepted",
       "title": "Admit architecture allocation and bounded implementation work order",
       "verification": {
         "leaf_close": [],
