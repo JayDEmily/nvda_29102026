@@ -13,8 +13,8 @@
     "tree": "ec5100b92084ed7a589c4050c2b764a74743b802"
   },
   "active_leaf": {
-    "id": "DS-R01",
-    "label": "Independently review foundation candidate",
+    "id": "DS-T01-R01",
+    "label": "Refine foundation proof for recurrent contract drift",
     "status": "pending"
   },
   "applicable_context": {
@@ -25,22 +25,12 @@
       "GUARDRAILS.md",
       "AGENTS.md"
     ],
-    "dependencies": [
-      "DS-A01",
-      "DS-A02",
-      "DS-A03",
-      "DS-A04",
-      "DS-T01",
-      "DS-I01"
-    ],
-    "plan_leaf": "DS-R01",
+    "dependencies": [],
+    "plan_leaf": "DS-T01-R01",
     "requirements": [
-      "REQ-001",
-      "REQ-002",
-      "REQ-012",
       "REQ-003",
-      "REQ-005",
       "REQ-004",
+      "REQ-005",
       "REQ-008",
       "REQ-010"
     ]
@@ -50,9 +40,9 @@
     ".pcm/CHATGPT_PROJECT_INSTRUCTIONS.md": "a590003a3098f83e3f6bc38ca5c765c420a027663e995d0c0d52bdc85dcbeba9",
     ".pcm/CODING_PROGRAMME.md": "926c6860665fc7aa6f8a933e2d72a51ef9d0cd6591a3770708ccdba0e13f52fc",
     ".pcm/GUARDRAILS.md": "714a3915543572991252ff62b3c50bf165cce1c783bb229d8f043b15bba4c0b8",
-    ".pcm/control/delegation.json": "2b54e8cbbc3620fcb63e4f709d497ea437606729d4f284a504266508257c1f95",
+    ".pcm/control/delegation.json": "027503bc6ac51c066cb973a3c6d0f9cc40fdc914ce7fcb48cb182ff9ccee033e",
     ".pcm/control/instantiation.json": "4f8707eb2a8c562e03c8dc15429a6458ce891e7345cd10f4c4844e9378c7fd19",
-    ".pcm/project/EXEC_PLAN.md": "eb46633790c2b8a3082165f23b755275c1f09a9c4250d252b8950ffff1d81e3a",
+    ".pcm/project/EXEC_PLAN.md": "b6d3810b8fcc301897e7bcd5bf5653bed3e6086ac8df7f7fe2dfa1dd158b1cdc",
     ".pcm/project/PROJECT_OBJECTIVE.md": "05be9dcd74a20a1a2855f3ba5c63184cb42de13ebddc7b6b378da36ae762d51b",
     ".pcm/project/REQUIREMENTS.md": "1dba44b0dd7ed57dead8a40835fea7bfea46642da7599686010652d39efa4126",
     "AGENTS.md": "d431f1a0c139912606211474880d5ecf595549507eface0f4e5ae4b3f52b468d",
@@ -62,24 +52,24 @@
   "blockers": [],
   "checkpoint": {
     "branch": "work/ds-i01-context-contract-repair",
-    "source_head": "005fc799bc85c822486b09d0ac50da960984a15d",
-    "source_tree": "0410ef0bc25d74a01dc978a3ecb5816c304cd132",
+    "source_head": "556f8d2a6813928af72e8310f7866275a114a110",
+    "source_tree": "150c4605d8e15b6346e538216f5699331b0e6412",
     "working_state_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
   "claims_hash": "4d972026e949813141677eec36ad4d646c440afd81507fe52402d94c8970c58d",
-  "generated_at": "2026-10-04T07:14:06Z",
+  "generated_at": "2026-10-04T07:16:01Z",
   "last_receipt": null,
   "migration_provenance": null,
   "next_transition": {
-    "actor_class": "INDEPENDENT_REVIEW",
-    "next_leaf": "DS-R01"
+    "actor_class": "AUTONOMOUS",
+    "next_leaf": "DS-T01-R01"
   },
   "ready_tasks": [
-    "DS-R01"
+    "DS-T01-R01"
   ],
   "receipt_hashes": {},
-  "repo_fingerprint": "fab368eb0198748c654c6e4ddb33f7928519a4addfde8a72559a639428ecc14e",
+  "repo_fingerprint": "89950306f47a98d94b9a02143464b38f00a92ac8d1f4dc2371f0f2f94de422d9",
   "schema_version": 1,
-  "task_contract_hash": "9c82f75602d07e56a384c0390b212153e23cc4b046ba0d6716ef0472df4f1c24",
+  "task_contract_hash": "bf72799a8eb5e9a1e8155e15225ae049e8a0e3eb68587267706d9d81cc4b47d5",
   "unresolved_claims": []
 }

@@ -91,6 +91,30 @@
 **Stop:** provider-specific parsing would move into the calculation owner, M00 table access would be required, schema/role isolation cannot be proved, or implementation needs an unadmitted API/semantic decision.
 <!-- CONTROL:TASK:DS-I01:END -->
 
+<!-- CONTROL:TASK:DS-T01-R01:START -->
+## DS-T01-R01 — Refine foundation proof for recurrent contract drift
+
+**Requirements:** REQ-003, REQ-004, REQ-005, REQ-008, REQ-010
+
+**Proposition:** Under the bounded refinement envelope of DS-T01, strengthen executable proof for the recurrent foundation-contract/proof-boundary drift identified by DS-R01. The proof must discriminate every load-bearing Gate-2 public-seam, canonical-identity, temporal-selection, typed-lineage/result, absence and persistence-boundary proposition required by the accepted brief, without changing accepted semantics.
+
+**Write scope:** identical to DS-T01. No production source mutation.
+
+**Stop:** any required proof proposition cannot be derived from accepted authority, or closure would change requirement meaning, ownership, actor class, write scope or review law.
+<!-- CONTROL:TASK:DS-T01-R01:END -->
+
+<!-- CONTROL:TASK:DS-I01-R01:START -->
+## DS-I01-R01 — Repair recurrent foundation contract drift
+
+**Requirements:** REQ-003, REQ-004, REQ-005, REQ-008, REQ-010
+
+**Proposition:** Under the bounded refinement envelope of DS-I01 and only after DS-T01-R01 is accepted, make the smallest production repairs required for the refined Gate-2 proof to establish the already-accepted M00 projection, versioned-input, lineage, persistence and typed absence/result semantics.
+
+**Write scope:** identical to DS-I01. No kernel semantics, provider fallback, architecture expansion, package authority or external effects.
+
+**Stop:** any required repair needs new semantic meaning, direct M00 table access, provider-specific parsing in M01, widened write scope, changed actor/review law or another unproved production behaviour.
+<!-- CONTROL:TASK:DS-I01-R01:END -->
+
 <!-- CONTROL:TASK:DS-R01:START -->
 ## DS-R01 — Independently review foundation candidate
 
