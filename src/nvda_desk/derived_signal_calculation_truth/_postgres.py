@@ -149,11 +149,12 @@ class _PostgresPersistenceV1:
 
     def _from_row(self, row: tuple[object, ...]) -> DerivedSignalOccurrenceV1:
         universe_raw = row[5]
-        universe_list = (
-            universe_raw
-            if isinstance(universe_raw, list)
-            else json.loads(str(universe_raw))
-        )
+        if universe_raw is None:
+            universe_list = None
+        elif isinstance(universe_raw, list):
+            universe_list = universe_raw
+        else:
+            universe_list = json.loads(str(universe_raw))
         predecessor_raw = row[14]
         predecessor_list = (
             predecessor_raw

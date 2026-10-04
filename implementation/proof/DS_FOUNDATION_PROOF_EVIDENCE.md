@@ -270,10 +270,65 @@ The 32-test bounded set includes the 27 accepted DS-T01 product/implementation p
 
 ## PostgreSQL mechanism observation
 
-The DS-T01 PostgreSQL tests exercise a real local PostgreSQL 17.9 server, not SQLite or an in-memory substitute. The private M01 persistence factory creates its table through the M01 proof role/current schema; a derived occurrence can be appended, retrieved and listed through the private persistence mechanism, while the public M01 API does not export that factory.
+The DS-T01 PostgreSQL tests exercise a real local PostgreSQL 17.9 server, not SQLite or an in-memory substitute. The private M01 persistence factory creates its table through the M01 proof role/current schema, while the public M01 API does not export that factory.
 
 The proof environment names do not resolve the accepted brief's deliberately deferred production role/schema names.
 
+## First committed candidate and direct persistence defect discovery
+
+The first substantive DS-I01 candidate was frozen at:
+
+- commit `79652dfefdb73d1b223065d29adb5550c5abe3c4`;
+- tree `1a8c0e264900b142e370b1168384276edb599e4f`;
+- `projectctl check`: PASS;
+- routed leaf: `DS-I01`;
+- worktree: clean.
+
+From that exact commit the bounded 32-test foundation/lifecycle surface passed, architecture/bootstrap passed 74/74, structural/dependency/public-seam validation passed, mypy passed for 19 source files and Ruff passed. The repository-configured aggregate `pytest -q` also passed 74/74 architecture/bootstrap tests.
+
+A separate direct PostgreSQL occurrence round-trip was then executed because durable occurrence persistence is a load-bearing DS-I01 proposition and the accepted DS-T01 tests did not exercise read-back of a persisted nullable universe. That direct probe found the first unmet invariant: PostgreSQL JSONB `null` for `universe` is returned by psycopg as Python `None`, but `_PostgresPersistenceV1._from_row` attempted `json.loads(str(None))`, causing `JSONDecodeError` on read-back.
+
+Observed failure class:
+
+```text
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+```
+
+This was a DS-I01 persistence decoder defect, not a test-environment failure. Downstream close/review was stopped at that point.
+
+The bounded repair changes only `src/nvda_desk/derived_signal_calculation_truth/_postgres.py`: nullable JSONB `universe` is now decoded as `None`; list-valued JSONB continues to decode as an immutable tuple in the public occurrence carrier. No authority, schema name, dependency, public seam or calculation meaning changes.
+
+## Repaired-state direct PostgreSQL proof before second freeze
+
+Against the same PostgreSQL 17.9 proof cluster, direct observation established:
+
+```text
+M00_IDENTITY ('nvda_m00_proof', 'm00_proof')
+M01_IDENTITY ('nvda_m01_proof', 'm01_proof')
+M01_ON_M00_PRIVILEGES ... (False, False) for SELECT and INSERT/UPDATE/DELETE on all four exercised M00 relations
+
+ds-i01-proof-roundtrip-none-v2 ROUNDTRIP_IDENTICAL True
+ds-i01-proof-roundtrip-none-v2 CONFLICT_REFUSAL derived occurrence identity already has different content
+ds-i01-proof-roundtrip-universe-v2 ROUNDTRIP_IDENTICAL True
+ds-i01-proof-roundtrip-universe-v2 CONFLICT_REFUSAL derived occurrence identity already has different content
+HISTORY_CONTAINS_BOTH True
+```
+
+Thus the repaired private persistence mechanism round-trips both absent and non-empty universe values, is idempotent for identical content, refuses conflicting content under one occurrence ID, and returns the persisted occurrences through bounded history.
+
+After that bounded repair, the prior proof surfaces remained green:
+
+```text
+32 passed in 0.18s
+74 passed in 2.17s
+PASS: structural architecture validation
+PASS: dependency direction and cycle validation
+PASS: public-seam validation
+Success: no issues found in 19 source files
+All checks passed!
+git diff --check: PASS
+```
+
 ## Remaining verification before DS-I01 close
 
-The substantive candidate must be committed cleanly and the same bounded foundation, architecture/bootstrap, structural/dependency/public-seam, typing and lint proof re-run from the exact committed candidate. Those committed-state results are recorded in a successor evidence-only update before DS-I01 is closed and DS-R01 becomes reviewable.
+The repaired source/evidence bytes must now be committed and the same proof re-run from that exact clean commit. Those committed-state results are recorded in a successor evidence-only update before DS-I01 is closed and DS-R01 becomes reviewable.
