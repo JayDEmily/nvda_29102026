@@ -154,7 +154,7 @@
         "REQ-008",
         "REQ-010"
       ],
-      "status": "pending",
+      "status": "accepted",
       "title": "Establish foundation proof boundary before production code",
       "verification": {
         "leaf_close": [],

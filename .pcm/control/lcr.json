@@ -7,12 +7,12 @@
   },
   "accepted_base": {
     "branch": "main",
-    "head": "ad5508f65760dc1b1949f067223f35cdc3e46cfb",
-    "tree": "df82b37cba84d878d833c5200a7b2c930c84a6c6"
+    "head": "01cfa89fd17f22f3d3bc1001dc7ee3fd49b9b781",
+    "tree": "530eea8ee1bc357b0b89926fa07482482e2b0234"
   },
   "active_leaf": {
-    "id": "DS-T01",
-    "label": "Establish foundation proof boundary before production code",
+    "id": "DS-I01",
+    "label": "Implement M00 projection and Derived Signal foundation",
     "status": "pending"
   },
   "applicable_context": {
@@ -27,9 +27,10 @@
       "DS-A01",
       "DS-A02",
       "DS-A03",
-      "DS-A04"
+      "DS-A04",
+      "DS-T01"
     ],
-    "plan_leaf": "DS-T01",
+    "plan_leaf": "DS-I01",
     "requirements": [
       "REQ-001",
       "REQ-002",
@@ -57,25 +58,25 @@
   },
   "blockers": [],
   "checkpoint": {
-    "branch": "work/ds-t01-foundation-proof-v2",
-    "source_head": "ee9068dac291b55b085b0d23c72404d0d782bcab",
-    "source_tree": "be927ff9203a218712a25eb32fbd4c43ce01a80d",
+    "branch": "main",
+    "source_head": "01cfa89fd17f22f3d3bc1001dc7ee3fd49b9b781",
+    "source_tree": "530eea8ee1bc357b0b89926fa07482482e2b0234",
     "working_state_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
   "claims_hash": "4d972026e949813141677eec36ad4d646c440afd81507fe52402d94c8970c58d",
-  "generated_at": "2026-10-04T05:03:46Z",
+  "generated_at": "2026-10-04T05:04:38Z",
   "last_receipt": null,
   "migration_provenance": null,
   "next_transition": {
     "actor_class": "AUTONOMOUS",
-    "next_leaf": "DS-T01"
+    "next_leaf": "DS-I01"
   },
   "ready_tasks": [
-    "DS-T01"
+    "DS-I01"
   ],
   "receipt_hashes": {},
-  "repo_fingerprint": "1ccc301658a50b936067b07e81bbe3ee3c259b13db8c244a6a39d4f51d20fe1d",
+  "repo_fingerprint": "483022e1393f374ba2f6fb4aba65d1a873b176ebb26cb0d21ebf265052f10ba8",
   "schema_version": 1,
-  "task_contract_hash": "1a23082ecdb408535e83c036e1ae979596dea7ba7b19d046c40e13e34db95ceb",
+  "task_contract_hash": "8d8c2b138f9ad37ab7f2978e791f6d81cc44238116badb0d0df32e535d64750e",
   "unresolved_claims": []
 }
