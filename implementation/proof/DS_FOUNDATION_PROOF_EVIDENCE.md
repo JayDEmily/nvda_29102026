@@ -187,3 +187,93 @@ This successor evidence update changes this evidence record and generated contro
 This evidence establishes only that the DS-T01 foundation proof boundary has been physically authored, collected and exercised expected-red before production implementation, while the inherited architecture proof remains green.
 
 It does **not** establish that M00 projection or M01 foundation behaviour is implemented, that PostgreSQL role/schema isolation has passed, that any `Dxxx` is calculable, that DS-I01 is accepted, or that later kernel/integration/package proof has been reached.
+
+---
+
+# DS-I01 — foundation implementation evidence
+
+## Scope and claim boundary
+
+This section records DS-I01 implementation evidence against the already-accepted DS-T01 proof boundary. It does not claim DS-R01 independent-review PASS, any D-kernel implementation, M01 activation/composability, final package authority or downstream external-effect authority.
+
+## Programme Owner bounded write-scope decisions
+
+During DS-I01, two lifecycle-proof fixtures became stale only because the lawfully admitted implementation shell changes M01's truthful lifecycle from `placeholder` to `bootstrap`:
+
+1. `tests/architecture/test_object_lifecycle.py` — authorised as an additional DS-I01 write path and recorded by governance commit `de1d6a3d3b54fd0cecaf803471ecd420a7236fe7`;
+2. `tests/bootstrap/test_minimal_imports.py` — authorised as an additional DS-I01 write path and recorded by governance commit `4fb75554e518e94616ef89052936bd885eba4158`.
+
+Neither decision changes calculation meaning, M01 identity/allocation, owner dependency direction, public-seam authority or review law.
+
+## Implemented foundation surfaces
+
+DS-I01 changes only the authorised foundation surfaces:
+
+- `src/nvda_desk/raw_signal_occurrence_truth/api.py` — additive typed M00 raw-value/history projection;
+- `src/nvda_desk/derived_signal_calculation_truth/__init__.py` — owner package shell;
+- `src/nvda_desk/derived_signal_calculation_truth/api.py` — typed/versioned contexts, request/occurrence/lineage carriers, absence-preserving calculation/read foundation;
+- `src/nvda_desk/derived_signal_calculation_truth/_postgres.py` — private M01 PostgreSQL occurrence persistence mechanism;
+- `config/architecture/modules.yaml` — M01 lifecycle `placeholder -> bootstrap` with semantic ownership/dependency unchanged;
+- `implementation/work_order/DS_IMPLEMENTATION_WORK_ORDER.md` — current lifecycle wording aligned to the admitted implementation shell;
+- `tests/architecture/test_object_lifecycle.py` — M01 lifecycle assertion aligned to `bootstrap` while retaining non-composability proof;
+- `tests/bootstrap/test_minimal_imports.py` — admitted source-package census accepts both `bootstrap` and `active` owners;
+- `implementation/review/DS_FOUNDATION_CANDIDATE.md` — exact DS-R01 candidate narrative;
+- this evidence record.
+
+No D-kernel source, catalogue/dependency meaning, package metadata, provider integration or external-effect implementation is added.
+
+## Pre-freeze implementation proof
+
+A fresh PostgreSQL 17.9 proof cluster was used under `/mnt/data/ds_i01_pgproof`. The proof roles/schemas were temporary mechanism identities only:
+
+- M00 proof role/schema: `nvda_m00_proof` / `m00_proof`;
+- M01 proof role/schema: `nvda_m01_proof` / `m01_proof`.
+
+The roles are distinct, the schemas are distinct, and the M01 proof role has neither SELECT nor INSERT/UPDATE/DELETE privilege on the M00 proof relations exercised by the DS-T01 boundary test.
+
+Using the preserved Python 3.13 proof environment, psycopg 3.3.4, the repository source tree and the host PyYAML dependency, observed before candidate freeze:
+
+```text
+python -m pytest tests/product/derived_signal tests/implementation/derived_signal \
+  tests/architecture/test_object_lifecycle.py tests/bootstrap/test_minimal_imports.py -q
+32 passed in 0.19s
+
+python -m pytest tests/architecture tests/bootstrap -q
+74 passed in 2.18s
+
+python tools/validate_architecture.py
+architecture objects: 6
+active runtime modules: 1
+implementation allocations: 2
+admitted test families: 11
+promotion sets: 1
+dependency/public-seam violations: 0
+PASS: structural architecture validation
+
+python tools/check_dependencies.py
+PASS: dependency direction and cycle validation
+
+python tools/check_public_seams.py
+PASS: public-seam validation
+
+python -m mypy src --show-error-codes
+Success: no issues found in 19 source files
+
+python -m ruff check src tests tools
+All checks passed!
+
+git diff --check
+PASS (no output)
+```
+
+The 32-test bounded set includes the 27 accepted DS-T01 product/implementation proofs plus the M01 lifecycle and bootstrap source-tree regression assertions required by the two authorised lifecycle transitions.
+
+## PostgreSQL mechanism observation
+
+The DS-T01 PostgreSQL tests exercise a real local PostgreSQL 17.9 server, not SQLite or an in-memory substitute. The private M01 persistence factory creates its table through the M01 proof role/current schema; a derived occurrence can be appended, retrieved and listed through the private persistence mechanism, while the public M01 API does not export that factory.
+
+The proof environment names do not resolve the accepted brief's deliberately deferred production role/schema names.
+
+## Remaining verification before DS-I01 close
+
+The substantive candidate must be committed cleanly and the same bounded foundation, architecture/bootstrap, structural/dependency/public-seam, typing and lint proof re-run from the exact committed candidate. Those committed-state results are recorded in a successor evidence-only update before DS-I01 is closed and DS-R01 becomes reviewable.

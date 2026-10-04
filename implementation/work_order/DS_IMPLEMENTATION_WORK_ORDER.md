@@ -16,7 +16,7 @@ The work order is bound to:
 ## Admitted architecture target
 
 - Runtime semantic owner: `M01`, `derived_signal_calculation_truth`.
-- Current lifecycle state: `placeholder`; registration/allocation records the owner identity and future boundary only and does not claim an admitted implementation shell, composability or executable behaviour.
+- Current lifecycle state: `bootstrap`; DS-I01 now admits the bounded foundation implementation shell while composability and active runtime behaviour remain unadmitted pending later governed proof/implementation.
 - Intended Python owner root: `nvda_desk.derived_signal_calculation_truth`.
 - Declared public seam: `nvda_desk.derived_signal_calculation_truth.api`.
 - Permitted runtime owner dependency: `M01 -> M00` only, through M00's declared public seam.

@@ -12,7 +12,7 @@ def _admitted_top_level_packages() -> set[str]:
     return {
         item.package.split(".", 1)[1].split(".", 1)[0]
         for item in registry.package_owners()
-        if item.status == "active" and item.package is not None
+        if item.status in {"bootstrap", "active"} and item.package is not None
     }
 
 

@@ -549,6 +549,66 @@ class RawObservationOccurrenceV1:
 
 
 @dataclass(frozen=True, slots=True)
+class RawSignalProjectionMappingV1:
+    """Immutable raw-side mapping from one canonical Rxxx to one native field."""
+
+    mapping_id: str
+    version: int
+    raw_signal_catalogue_id: RawSignalCatalogueId
+    source_provider: str
+    source_variant: str | None
+    native_field_path: tuple[str, ...]
+    native_units: str
+
+    def __post_init__(self) -> None:
+        if type(self.mapping_id) is not str or not self.mapping_id:
+            raise ValueError("mapping_id must be a non-empty string")
+        if type(self.version) is not int or self.version <= 0:
+            raise ValueError("version must be a positive integer")
+        if type(self.raw_signal_catalogue_id) is not RawSignalCatalogueId:
+            raise TypeError("raw_signal_catalogue_id must be RawSignalCatalogueId")
+        if type(self.source_provider) is not str or not self.source_provider:
+            raise ValueError("source_provider must be a non-empty string")
+        if self.source_variant is not None and (
+            type(self.source_variant) is not str or not self.source_variant
+        ):
+            raise ValueError("source_variant must be a non-empty string or absent")
+        if type(self.native_field_path) is not tuple or not self.native_field_path:
+            raise ValueError("native_field_path must be a non-empty tuple")
+        if any(type(part) is not str or not part for part in self.native_field_path):
+            raise ValueError("native_field_path must contain non-empty strings")
+        if type(self.native_units) is not str or not self.native_units:
+            raise ValueError("native_units must be a non-empty string")
+
+
+@dataclass(frozen=True, slots=True)
+class ProjectedRawValueV1:
+    raw_signal_catalogue_id: RawSignalCatalogueId
+    observation_occurrence_id: _ObservationOccurrenceId
+    projection_mapping_id: str
+    projection_mapping_version: int
+    source_provider: str
+    source_variant: str | None
+    native_field_path: tuple[str, ...]
+    native_value: NativeValueV1
+    native_units: str
+    subject_instrument: str | None
+    source_temporal_kind: SourceTemporalKind
+    source_timestamp_raw: str | None
+    source_timezone_native: str | None
+    received_ts_utc: datetime
+    ingestion_sequence: int
+    ingestion_sequence_scope: _IngestionSequenceScope
+    revision_vintage_native: str | None
+
+
+@dataclass(frozen=True, slots=True)
+class ProjectedRawHistoryPageV1:
+    items: tuple[ProjectedRawValueV1, ...]
+    next_cursor: str | None
+
+
+@dataclass(frozen=True, slots=True)
 class CaptureReceiptEvidenceRelationV1:
     concept_id: _ConceptId
     contract_id: _ContractId
@@ -893,6 +953,8 @@ class _CommandsV1:
 class _ReadsV1:
     __slots__ = (
         "__list_assessments",
+        "__list_projected_raw_history",
+        "__project_raw_value",
         "__read_assessment",
         "__read_capture",
         "__read_observation",
@@ -906,12 +968,16 @@ class _ReadsV1:
         read_observation: _ReadObservation,
         read_assessment: _ReadAssessment,
         list_assessments: _ListAssessments,
+        project_raw_value: Callable[..., ProjectedRawValueV1 | None],
+        list_projected_raw_history: Callable[..., ProjectedRawHistoryPageV1],
     ) -> None:
         self.__read_policy = read_policy
         self.__read_capture = read_capture
         self.__read_observation = read_observation
         self.__read_assessment = read_assessment
         self.__list_assessments = list_assessments
+        self.__project_raw_value = project_raw_value
+        self.__list_projected_raw_history = list_projected_raw_history
 
     def get_capture_scope_policy(
         self, scope_policy_id: _ScopePolicyId, scope_policy_version: int
@@ -937,6 +1003,36 @@ class _ReadsV1:
         self, capture_occurrence_id: _CaptureOccurrenceId
     ) -> Sequence[CaptureReceiptPresenceAssessmentV1]:
         return self.__list_assessments(capture_occurrence_id)
+
+    def project_raw_value(
+        self,
+        raw_signal_catalogue_id: RawSignalCatalogueId,
+        observation_occurrence_id: _ObservationOccurrenceId,
+        *,
+        mappings: Sequence[RawSignalProjectionMappingV1],
+    ) -> ProjectedRawValueV1 | None:
+        return self.__project_raw_value(
+            raw_signal_catalogue_id, observation_occurrence_id, mappings=mappings
+        )
+
+    def list_projected_raw_history(
+        self,
+        raw_signal_catalogue_id: RawSignalCatalogueId,
+        *,
+        mappings: Sequence[RawSignalProjectionMappingV1],
+        subject_instrument: str | None,
+        received_at_or_before_utc: datetime | None,
+        limit: int,
+        cursor: str | None,
+    ) -> ProjectedRawHistoryPageV1:
+        return self.__list_projected_raw_history(
+            raw_signal_catalogue_id,
+            mappings=mappings,
+            subject_instrument=subject_instrument,
+            received_at_or_before_utc=received_at_or_before_utc,
+            limit=limit,
+            cursor=cursor,
+        )
 
 
 def _build_owner_facets(
@@ -1531,6 +1627,125 @@ def _build_owner_facets(
             )
         )
 
+    def project_raw_value(
+        raw_signal_catalogue_id: RawSignalCatalogueId,
+        observation_occurrence_id: _ObservationOccurrenceId,
+        *,
+        mappings: Sequence[RawSignalProjectionMappingV1],
+    ) -> ProjectedRawValueV1 | None:
+        if type(raw_signal_catalogue_id) is not RawSignalCatalogueId:
+            raise TypeError("raw_signal_catalogue_id must be RawSignalCatalogueId")
+        _require_exact_type(
+            observation_occurrence_id, _ObservationOccurrenceId, "observation_occurrence_id"
+        )
+        observation = read_observation(observation_occurrence_id)
+        if observation is None:
+            return None
+        if (
+            observation.raw_signal_catalogue_ids is None
+            or raw_signal_catalogue_id not in observation.raw_signal_catalogue_ids
+        ):
+            return None
+        candidates = tuple(
+            mapping
+            for mapping in mappings
+            if type(mapping) is RawSignalProjectionMappingV1
+            and mapping.raw_signal_catalogue_id == raw_signal_catalogue_id
+            and mapping.source_provider == observation.source_provider.value
+            and mapping.source_variant == observation.source_variant
+        )
+        if len(candidates) != 1:
+            return None
+        mapping = candidates[0]
+        value: NativeValueV1 = observation.native_record
+        for part in mapping.native_field_path:
+            if not isinstance(value, Mapping) or part not in value:
+                return None
+            value = value[part]
+        return ProjectedRawValueV1(
+            raw_signal_catalogue_id=raw_signal_catalogue_id,
+            observation_occurrence_id=observation.observation_occurrence_id,
+            projection_mapping_id=mapping.mapping_id,
+            projection_mapping_version=mapping.version,
+            source_provider=observation.source_provider.value,
+            source_variant=observation.source_variant,
+            native_field_path=mapping.native_field_path,
+            native_value=value,
+            native_units=mapping.native_units,
+            subject_instrument=observation.subject_instrument,
+            source_temporal_kind=observation.source_temporal_kind,
+            source_timestamp_raw=observation.source_timestamp_raw,
+            source_timezone_native=observation.source_timezone_native,
+            received_ts_utc=observation.received_ts_utc,
+            ingestion_sequence=observation.ingestion_sequence,
+            ingestion_sequence_scope=observation.ingestion_sequence_scope,
+            revision_vintage_native=observation.revision_vintage_native,
+        )
+
+    def list_projected_raw_history(
+        raw_signal_catalogue_id: RawSignalCatalogueId,
+        *,
+        mappings: Sequence[RawSignalProjectionMappingV1],
+        subject_instrument: str | None,
+        received_at_or_before_utc: datetime | None,
+        limit: int,
+        cursor: str | None,
+    ) -> ProjectedRawHistoryPageV1:
+        if type(limit) is not int or limit <= 0:
+            raise ValueError("limit must be a positive integer")
+        if received_at_or_before_utc is not None:
+            _require_utc(received_at_or_before_utc, "received_at_or_before_utc")
+        if subject_instrument is not None and (
+            type(subject_instrument) is not str or not subject_instrument
+        ):
+            raise ValueError("subject_instrument must be a non-empty string or absent")
+        if cursor is None:
+            offset = 0
+        else:
+            if type(cursor) is not str or not cursor.isdigit():
+                raise ValueError("cursor is invalid")
+            offset = int(cursor)
+
+        if durability_port is None:
+            observations = tuple(state.observations_by_identity.values())
+        else:
+            start = datetime.min.replace(tzinfo=UTC)
+            end = datetime.max.replace(tzinfo=UTC)
+            with durability_port.transaction(write=False) as transaction:
+                observations = tuple(transaction.list_observations_received_between(start, end))
+
+        projected: list[ProjectedRawValueV1] = []
+        for observation in observations:
+            if (
+                subject_instrument is not None
+                and observation.subject_instrument != subject_instrument
+            ):
+                continue
+            if (
+                received_at_or_before_utc is not None
+                and observation.received_ts_utc > received_at_or_before_utc
+            ):
+                continue
+            item = project_raw_value(
+                raw_signal_catalogue_id,
+                observation.observation_occurrence_id,
+                mappings=mappings,
+            )
+            if item is not None:
+                projected.append(item)
+        projected.sort(
+            key=lambda item: (
+                item.received_ts_utc,
+                item.ingestion_sequence_scope.value,
+                item.ingestion_sequence,
+                item.observation_occurrence_id.value,
+            )
+        )
+        items = tuple(projected[offset : offset + limit])
+        next_offset = offset + len(items)
+        next_cursor = str(next_offset) if next_offset < len(projected) else None
+        return ProjectedRawHistoryPageV1(items=items, next_cursor=next_cursor)
+
     def reconcile_owed_slots(
         scope_policy_ref: _ScopePolicyRef,
         slot_starts_utc: Sequence[datetime],
@@ -1616,6 +1831,8 @@ def _build_owner_facets(
             read_observation=read_observation,
             read_assessment=read_assessment,
             list_assessments=list_assessments,
+            project_raw_value=project_raw_value,
+            list_projected_raw_history=list_projected_raw_history,
         ),
     )
 
@@ -1659,8 +1876,11 @@ __all__ = [
     "CaptureReceiptPresenceAssessmentV1",
     "CaptureScopePolicyV1",
     "NativeValueV1",
+    "ProjectedRawHistoryPageV1",
+    "ProjectedRawValueV1",
     "RawObservationOccurrenceV1",
     "RawSignalCatalogueId",
+    "RawSignalProjectionMappingV1",
     "ScheduledCaptureOccurrenceV1",
     "assessment_occurrence_id",
     "capture_occurrence_id",
