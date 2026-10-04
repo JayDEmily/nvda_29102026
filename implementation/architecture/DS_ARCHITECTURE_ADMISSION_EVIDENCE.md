@@ -143,6 +143,56 @@ A pre-commit invocation of `tools/run_promotion_gate.py` returned `FAIL: worktre
 - Final distribution name/version remains deferred to `DS-PO01`.
 - The accepted D catalogue/kernels/dependency meanings are unchanged.
 
-## 8. Clean-state completion evidence
+## 8. Clean committed-state promotion
 
-The exact clean committed-state promotion identity and result are intentionally populated only after the architecture candidate is committed and the repository-native promotion wrapper can truthfully run against a clean worktree. The review packet source identity will bind the final Git commit/tree containing this evidence.
+The architecture/work-order candidate was first committed at:
+
+- commit: `560bb5995d109dfa7de2ff773bddfe49e494319c`;
+- tree: `2d7d2c65a130e47162a4825bd26a703afcda2477`;
+- worktree: clean before promotion.
+
+From that exact clean state, observed results were:
+
+```text
+python .pcm/projectctl.py check
+CHECK: PASS
+ready=DS-A03
+
+python tools/run_promotion_gate.py --set architecture_kernel
+74 passed
+PASS: structural architecture validation
+promotion set: architecture_kernel
+resolved test paths: 11
+
+python tools/validate_architecture.py
+architecture objects: 6
+active runtime modules: 1
+implementation allocations: 2
+admitted test families: 11
+promotion sets: 1
+dependency/public-seam violations: 0
+PASS: structural architecture validation
+
+python -m pytest tests/architecture tests/bootstrap -q
+74 passed
+
+python tools/check_dependencies.py
+PASS: dependency direction and cycle validation
+
+python tools/check_public_seams.py
+PASS: public-seam validation
+
+python -m mypy src --show-error-codes
+Success: no issues found in 16 source files
+
+ruff check src tests tools
+All checks passed!
+
+git diff --check
+PASS (no output)
+
+git status --porcelain
+<empty>
+```
+
+This successor evidence update changes evidence text only. The review packet source identity will bind the final Git commit/tree containing this exact evidence; DS-A04 remains a separate independent-review responsibility.
