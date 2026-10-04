@@ -385,7 +385,7 @@
           "unresolved_stops": []
         }
       ],
-      "status": "pending",
+      "status": "accepted",
       "test_first": {
         "exception_task_id": null,
         "red_check_id": null,

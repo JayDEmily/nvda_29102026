@@ -10,12 +10,12 @@
   },
   "accepted_base": {
     "branch": "main",
-    "head": "de61f260bc72446995d2d1f8806ea8a281e8e50a",
-    "tree": "263fd13d6455755a65db1183be09f45e87a366e1"
+    "head": "72ea5fd360890aa5c24fa89f55df874451b46f02",
+    "tree": "0e4861c3fb753e6f401835e8442d14c0d563fd08"
   },
   "active_leaf": {
-    "id": "DS-I01-R01",
-    "label": "Repair recurrent foundation contract drift",
+    "id": "DS-R01",
+    "label": "Independently review foundation candidate",
     "status": "pending"
   },
   "applicable_context": {
@@ -26,12 +26,24 @@
       "GUARDRAILS.md",
       "AGENTS.md"
     ],
-    "dependencies": [],
-    "plan_leaf": "DS-I01-R01",
+    "dependencies": [
+      "DS-A01",
+      "DS-A02",
+      "DS-A03",
+      "DS-A04",
+      "DS-T01",
+      "DS-I01",
+      "DS-T01-R01",
+      "DS-I01-R01"
+    ],
+    "plan_leaf": "DS-R01",
     "requirements": [
+      "REQ-001",
+      "REQ-002",
+      "REQ-012",
       "REQ-003",
-      "REQ-004",
       "REQ-005",
+      "REQ-004",
       "REQ-008",
       "REQ-010"
     ]
@@ -52,25 +64,25 @@
   },
   "blockers": [],
   "checkpoint": {
-    "branch": "work/ds-i01-r01-foundation-contract-repair",
-    "source_head": "d9aa11c18cd949eced71aff4179a76aa7525b276",
-    "source_tree": "ef4332c75cdb8db4e00462ff86199e53dabf756d",
+    "branch": "main",
+    "source_head": "72ea5fd360890aa5c24fa89f55df874451b46f02",
+    "source_tree": "0e4861c3fb753e6f401835e8442d14c0d563fd08",
     "working_state_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
   "claims_hash": "4d972026e949813141677eec36ad4d646c440afd81507fe52402d94c8970c58d",
-  "generated_at": "2026-10-04T10:28:06Z",
+  "generated_at": "2026-10-04T10:31:47Z",
   "last_receipt": null,
   "migration_provenance": null,
   "next_transition": {
-    "actor_class": "AUTONOMOUS",
-    "next_leaf": "DS-I01-R01"
+    "actor_class": "INDEPENDENT_REVIEW",
+    "next_leaf": "DS-R01"
   },
   "ready_tasks": [
-    "DS-I01-R01"
+    "DS-R01"
   ],
   "receipt_hashes": {},
-  "repo_fingerprint": "91b0a916f6e7843ad1b7923c541d6973366e16e3dde6a99c47386dde56d81c6b",
+  "repo_fingerprint": "7c6d10b92430e9f99fb5eaa51b4f8ec76dc85ef281d16a61e11866e341bda59f",
   "schema_version": 1,
-  "task_contract_hash": "79ee5c0a9bfc799c001d5bfa9e8f5fe1a613ad1a2197f472b69129a68236202d",
+  "task_contract_hash": "06a6c018edaf6569aa0ea38f714080071b13931bdf69f6c3d773fa650957a883",
   "unresolved_claims": []
 }
