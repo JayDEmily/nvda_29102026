@@ -32,6 +32,59 @@ def _require_derived_signal_id(value: str) -> None:
         raise ValueError("derived_signal_id must be in D001-D209")
 
 
+def _require_raw_signal_id(value: str) -> None:
+    if type(value) is not str or len(value) != 4 or value[0] != "R" or not value[1:].isdigit():
+        raise ValueError("raw_signal_id must be canonical RNNN form")
+    if not 1 <= int(value[1:]) <= 323:
+        raise ValueError("raw_signal_id must be in R001-R323")
+
+
+def _require_version_refs(value: tuple[VersionRefV1, ...], field_name: str) -> None:
+    if type(value) is not tuple:
+        raise TypeError(f"{field_name} must be a tuple")
+    keys: list[tuple[str, int]] = []
+    for item in value:
+        if type(item) is not VersionRefV1:
+            raise TypeError(f"{field_name} must contain exact VersionRefV1 values")
+        keys.append((item.context_id, item.version))
+    if len(keys) != len(set(keys)):
+        raise ValueError(f"{field_name} must not contain duplicate identity/version references")
+
+
+def _require_raw_lineage(value: tuple[RawInputLineageV1, ...], field_name: str) -> None:
+    if type(value) is not tuple:
+        raise TypeError(f"{field_name} must be a tuple")
+    for item in value:
+        if type(item) is not RawInputLineageV1:
+            raise TypeError(f"{field_name} must contain exact RawInputLineageV1 values")
+
+
+def _require_non_empty_distinct_strings(value: tuple[str, ...], field_name: str) -> None:
+    if type(value) is not tuple:
+        raise TypeError(f"{field_name} must be a tuple")
+    for item in value:
+        _require_non_empty_string(item, field_name)
+    if len(value) != len(set(value)):
+        raise ValueError(f"{field_name} must contain distinct values")
+
+
+def _require_derived_result(value: DerivedResultV1, field_name: str = "result") -> None:
+    if value is None:
+        raise ValueError(f"{field_name} must contain a persisted value; absence is not a result")
+    if type(value) in {bool, int, Decimal, str}:
+        if type(value) is str and not value:
+            raise ValueError(f"{field_name} string values must be non-empty")
+        return
+    if type(value) is datetime:
+        _require_utc(value, field_name)
+        return
+    if type(value) is tuple:
+        for item in value:
+            _require_derived_result(item, field_name)  # type: ignore[arg-type]
+        return
+    raise TypeError(f"{field_name} contains a value outside DerivedResultV1")
+
+
 @dataclass(frozen=True, slots=True)
 class _VersionedContextV1:
     context_id: str
@@ -524,8 +577,7 @@ class RawInputLineageV1:
     canonical_units: str
 
     def __post_init__(self) -> None:
-        if type(self.raw_signal_id) is not str or len(self.raw_signal_id) != 4:
-            raise ValueError("raw_signal_id must be canonical RNNN form")
+        _require_raw_signal_id(self.raw_signal_id)
         _require_non_empty_string(self.observation_occurrence_id, "observation_occurrence_id")
         _require_non_empty_string(self.projection_mapping_id, "projection_mapping_id")
         _require_positive_version(self.projection_mapping_version, "projection_mapping_version")
@@ -535,7 +587,7 @@ class RawInputLineageV1:
         _require_non_empty_string(self.canonical_units, "canonical_units")
 
 
-type DerivedResultV1 = None | bool | int | Decimal | str | datetime | tuple["DerivedResultV1", ...]
+type DerivedResultV1 = bool | int | Decimal | str | datetime | tuple["DerivedResultV1", ...]
 
 
 @dataclass(frozen=True, slots=True)
@@ -572,16 +624,15 @@ class DerivedSignalOccurrenceV1:
         _require_non_empty_string(self.result_shape, "result_shape")
         if self.window is not None and (type(self.window) is not str or not self.window):
             raise ValueError("window must be a non-empty string or absent")
-        if self.universe is not None and type(self.universe) is not tuple:
-            raise TypeError("universe must be a tuple or absent")
-        if type(self.parameter_context_refs) is not tuple:
-            raise TypeError("parameter_context_refs must be a tuple")
-        if type(self.raw_input_lineage) is not tuple:
-            raise TypeError("raw_input_lineage must be a tuple")
-        if type(self.predecessor_occurrence_ids) is not tuple:
-            raise TypeError("predecessor_occurrence_ids must be a tuple")
-        if type(self.convention_refs) is not tuple:
-            raise TypeError("convention_refs must be a tuple")
+        if self.universe is not None:
+            _require_non_empty_distinct_strings(self.universe, "universe")
+        _require_version_refs(self.parameter_context_refs, "parameter_context_refs")
+        _require_raw_lineage(self.raw_input_lineage, "raw_input_lineage")
+        _require_non_empty_distinct_strings(
+            self.predecessor_occurrence_ids, "predecessor_occurrence_ids"
+        )
+        _require_version_refs(self.convention_refs, "convention_refs")
+        _require_derived_result(self.result)
 
 
 @dataclass(frozen=True, slots=True)
@@ -611,8 +662,7 @@ class CalculationRequestV1:
         _require_positive_version(
             self.input_selection_policy_version, "input_selection_policy_version"
         )
-        if type(self.context_refs) is not tuple:
-            raise TypeError("context_refs must be a tuple")
+        _require_version_refs(self.context_refs, "context_refs")
 
 
 class RawProjectionReaderV1(Protocol):

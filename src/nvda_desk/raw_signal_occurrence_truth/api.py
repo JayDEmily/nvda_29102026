@@ -1022,6 +1022,7 @@ class _ReadsV1:
         mappings: Sequence[RawSignalProjectionMappingV1],
         subject_instrument: str | None,
         received_at_or_before_utc: datetime | None,
+        event_at_or_before_utc: datetime | None = None,
         limit: int,
         cursor: str | None,
     ) -> ProjectedRawHistoryPageV1:
@@ -1030,9 +1031,30 @@ class _ReadsV1:
             mappings=mappings,
             subject_instrument=subject_instrument,
             received_at_or_before_utc=received_at_or_before_utc,
+            event_at_or_before_utc=event_at_or_before_utc,
             limit=limit,
             cursor=cursor,
         )
+
+
+
+def _true_instant_event_utc(observation: RawObservationOccurrenceV1) -> datetime | None:
+    """Return a lawfully established UTC event instant, or absence when none is established."""
+
+    if observation.source_temporal_kind != "true_instant":
+        return None
+    raw = observation.source_timestamp_raw
+    if raw is None:
+        return None
+    try:
+        parsed = datetime.fromisoformat(raw.replace("Z", "+00:00"))
+    except ValueError:
+        return None
+    if parsed.tzinfo is None:
+        if observation.source_timezone_native != "UTC":
+            return None
+        parsed = parsed.replace(tzinfo=UTC)
+    return parsed.astimezone(UTC)
 
 
 def _build_owner_facets(
@@ -1688,6 +1710,7 @@ def _build_owner_facets(
         mappings: Sequence[RawSignalProjectionMappingV1],
         subject_instrument: str | None,
         received_at_or_before_utc: datetime | None,
+        event_at_or_before_utc: datetime | None = None,
         limit: int,
         cursor: str | None,
     ) -> ProjectedRawHistoryPageV1:
@@ -1695,6 +1718,8 @@ def _build_owner_facets(
             raise ValueError("limit must be a positive integer")
         if received_at_or_before_utc is not None:
             _require_utc(received_at_or_before_utc, "received_at_or_before_utc")
+        if event_at_or_before_utc is not None:
+            _require_utc(event_at_or_before_utc, "event_at_or_before_utc")
         if subject_instrument is not None and (
             type(subject_instrument) is not str or not subject_instrument
         ):
@@ -1726,6 +1751,10 @@ def _build_owner_facets(
                 and observation.received_ts_utc > received_at_or_before_utc
             ):
                 continue
+            if event_at_or_before_utc is not None:
+                event_utc = _true_instant_event_utc(observation)
+                if event_utc is None or event_utc > event_at_or_before_utc:
+                    continue
             item = project_raw_value(
                 raw_signal_catalogue_id,
                 observation.observation_occurrence_id,

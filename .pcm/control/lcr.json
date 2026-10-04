@@ -52,13 +52,13 @@
   },
   "blockers": [],
   "checkpoint": {
-    "branch": "main",
-    "source_head": "de61f260bc72446995d2d1f8806ea8a281e8e50a",
-    "source_tree": "263fd13d6455755a65db1183be09f45e87a366e1",
+    "branch": "work/ds-i01-r01-foundation-contract-repair",
+    "source_head": "34164d20c1a699afeae3ccc7ef201b89f83be8e8",
+    "source_tree": "c89da7247748e9f7260257a44ea5d46573065de8",
     "working_state_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
   "claims_hash": "4d972026e949813141677eec36ad4d646c440afd81507fe52402d94c8970c58d",
-  "generated_at": "2026-10-04T10:20:36Z",
+  "generated_at": "2026-10-04T10:20:38Z",
   "last_receipt": null,
   "migration_provenance": null,
   "next_transition": {
@@ -69,7 +69,7 @@
     "DS-I01-R01"
   ],
   "receipt_hashes": {},
-  "repo_fingerprint": "55c09a60fa3822bb892238462f4c67e7d5c58e663d9456c65675f4fd5ef2a246",
+  "repo_fingerprint": "c01fe840d546ad1bf64d12f92e05b2e46a9bddaca0a89a67942f91b3c4101605",
   "schema_version": 1,
   "task_contract_hash": "79ee5c0a9bfc799c001d5bfa9e8f5fe1a613ad1a2197f472b69129a68236202d",
   "unresolved_claims": []

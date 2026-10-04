@@ -611,3 +611,71 @@ The failures are semantic witnesses of the reviewed recurrent class:
 The four passing propositions show that the refined proof itself is not merely globally red: malformed-length raw IDs already fail, the admitted recursive immutable structured result carrier is accepted, and the previously repaired clause-6 context-specific contracts remain constructible.
 
 This is proof-first evidence only. No production source is changed by DS-T01-R01. DS-I01-R01 must remain blocked until this refined proof is durably accepted.
+
+## DS-I01-R01 — production repair against accepted recurrent-class proof
+
+`DS-T01-R01` is durably accepted at tag `accepted/DS-T01-R01` targeting commit `de61f260bc72446995d2d1f8806ea8a281e8e50a` / tree `263fd13d6455755a65db1183be09f45e87a366e1`. The post-tag controller state routes `DS-I01-R01` as the only ready autonomous leaf.
+
+The production repair is bounded to two already-admitted foundation source surfaces plus candidate/evidence text:
+
+- `src/nvda_desk/raw_signal_occurrence_truth/api.py`: add explicit `event_at_or_before_utc` selection to projected raw history and establish true-event UTC only from an admitted `true_instant`; receipt/date-only or unestablished source instants fail closed under event-time filtering;
+- `src/nvda_desk/derived_signal_calculation_truth/api.py`: enforce canonical `R001-R323` raw lineage identity, exact typed/duplicate-safe version references and raw-lineage collections, non-empty/distinct predecessor/universe identities, and runtime validation of the admitted persisted `DerivedResultV1` carrier with `None` reserved for public absence rather than persisted value;
+- `implementation/review/DS_FOUNDATION_CANDIDATE.md`: update the exact DS-R01 candidate narrative;
+- this evidence record.
+
+No accepted DS-T01/DS-T01-R01 test bytes, PostgreSQL mechanism, architecture state, dependency/public-seam declaration, package metadata, kernel semantics, concrete production mapping/context instance or external-effect surface is changed by DS-I01-R01.
+
+### Pre-freeze refined proof and regression evidence
+
+Against the repaired working candidate, the accepted recurrent-class proof transitions from `18 failed, 4 passed` to:
+
+```text
+pytest -q tests/product/derived_signal/test_ds_t01_r01_foundation_contract_refinement.py
+22 passed
+```
+
+A fresh preserved Python 3.13.5 / PostgreSQL 17.9 proof environment was reconstructed from the hash-verified offline bootstrap/runtime assets. Temporary proof-only database identities were created as `nvda_m00_r01` / `m00_r01` and `nvda_m01_r01` / `m01_r01`; those names remain proof mechanics and do not resolve production schema/role identity.
+
+Using that environment, observed before candidate freeze:
+
+```text
+pytest -q tests/product/derived_signal tests/implementation/derived_signal \
+  tests/architecture/test_object_lifecycle.py tests/bootstrap/test_minimal_imports.py
+54 passed
+
+pytest -q tests/architecture tests/bootstrap
+74 passed
+
+python tools/validate_architecture.py
+PASS: structural architecture validation
+
+python tools/check_dependencies.py
+PASS: dependency direction and cycle validation
+
+python tools/check_public_seams.py
+PASS: public-seam validation
+
+mypy src/nvda_desk/derived_signal_calculation_truth/api.py \
+  src/nvda_desk/raw_signal_occurrence_truth/api.py --show-error-codes
+Success: no issues found in 2 source files
+
+ruff check src/nvda_desk/derived_signal_calculation_truth/api.py \
+  src/nvda_desk/raw_signal_occurrence_truth/api.py \
+  tests/product/derived_signal/test_ds_t01_r01_foundation_contract_refinement.py
+All checks passed!
+
+git diff --check
+PASS (no output)
+```
+
+A direct real-PostgreSQL structured-occurrence probe through the private M01 persistence mechanism also established:
+
+```text
+ROUNDTRIP_IDENTICAL True
+IDEMPOTENT_IDENTICAL True
+UNKNOWN_ABSENCE True
+```
+
+That probe persisted non-empty parameter/context refs, canonical raw lineage, predecessor lineage, convention refs, a non-empty universe and a nested immutable result containing `Decimal`, category/boolean and UTC `datetime`, then read the exact occurrence back. This confirms the stricter public carrier contract remains compatible with durable structured-result persistence.
+
+The substantive repaired source/candidate/evidence bytes must now be frozen in Git and the same proof rerun from that exact clean commit before a fresh DS-R01 packet is exported.

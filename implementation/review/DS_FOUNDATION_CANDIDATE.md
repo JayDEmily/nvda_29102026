@@ -28,7 +28,7 @@ The implementation preserves the architecture admission:
 - `project_raw_value(...)` returns a value only when exactly one mapping matches the requested `Rxxx`, provider and source variant and the mapped native field exists;
 - absent or ambiguous mappings, missing observation/catalogue provenance, or missing native field produce no projection rather than a guessed value;
 - `ProjectedRawValueV1` preserves source observation identity, mapping identity/version, provider/variant, native field/value/units, subject, temporal metadata, receipt ordering and revision metadata;
-- `list_projected_raw_history(...)` provides bounded deterministic ordering and pagination with optional subject and receipt-cutoff filtering;
+- `list_projected_raw_history(...)` provides bounded deterministic ordering and pagination with optional subject, receipt-cutoff and true-event-cutoff filtering; event filtering refuses observations that do not carry an established `true_instant` rather than fabricating event time;
 - the projection performs no D calculation, aggregation, interpolation, window calculation or unit rescaling.
 
 The existing `RawObservationOccurrenceV1` stored payload and identity are unchanged.
@@ -58,6 +58,20 @@ The repaired public seam now makes those context meanings constructible and vali
 - all context carriers remain frozen/version-identified, and the repair adds no D-kernel mathematics, no provider-specific fallback, no concrete production mappings/parameters/context instances and no external-effect authority.
 
 The accepted DS-T01 test bytes are unchanged by this repair. Fresh review must therefore challenge the higher-authority context-content proposition directly in addition to the inherited proof suite.
+
+## DS-R01 recurrent foundation-contract repair
+
+The second DS-R01 review classified the remaining defect mechanism as `RECURRENT_CLASS foundation-contract/proof-boundary drift`: accepted Gate-2 semantics were still stronger than the inherited green/shape proof in more than one public contract. Programme Owner authority therefore admitted the bounded proof refinement `DS-T01-R01` before any further source repair, followed by this implementation refinement `DS-I01-R01`.
+
+The accepted refinement proof directly discriminates the complete repaired class boundary without adding kernel semantics. This candidate now additionally establishes:
+
+- M00 projected-history selection can express a true-event cutoff independently from receipt cutoff; a `receipt_only`/`date_only` observation or an unparseable/unauthorised source instant is not assigned a fabricated event instant and is excluded when an event criterion is requested;
+- `RawInputLineageV1.raw_signal_id` is restricted to canonical admitted `R001-R323`;
+- `CalculationRequestV1.context_refs`, `DerivedSignalOccurrenceV1.parameter_context_refs` and `convention_refs` contain exact typed `VersionRefV1` values and reject duplicate identity/version references;
+- persisted raw lineage contains exact `RawInputLineageV1` values; predecessor occurrence IDs and universe members are non-empty/distinct;
+- persisted occurrence values exclude `None` because absence is represented by the public read/materialise seam, and runtime validation rejects mutable/float/arbitrary carriers outside the admitted recursive immutable `DerivedResultV1` contract while retaining nested tuple/Decimal/datetime/category/boolean values.
+
+The repair changes only the already-admitted M00 read projection and M01 foundation carrier validation. It does not add provider-specific parsing to M01, any D-kernel implementation, a concrete production mapping/context instance, architecture expansion or external-effect authority.
 
 ## M01 persistence mechanism and ownership separation
 
