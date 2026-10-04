@@ -3,26 +3,785 @@
   "tasks": [
     {
       "acceptance": [
-        "{{PROJECT_INSTANTIATION_ACCEPTANCE}}"
+        "Exact accepted brief and companion digest are rebound to current state with a non-empty acceptance reference.",
+        "A bounded implementation-admission/BICP candidate and architecture projection intent exist without a caller-selected numeric create identifier.",
+        "No production source or architecture registry is mutated."
       ],
       "depends_on": [],
-      "id": "PCM-I01",
+      "id": "DS-A01",
       "requirements": [
-        "REQ-001"
+        "REQ-001",
+        "REQ-002",
+        "REQ-012"
       ],
       "status": "pending",
-      "title": "Project authority instantiation draft",
+      "title": "Bind accepted brief and prepare implementation-admission candidate",
       "verification": {
         "leaf_close": [],
         "promotion": []
       },
       "work_type": "non_code",
       "write_paths": [
-        ".pcm/project/PROJECT_OBJECTIVE.md",
-        ".pcm/project/REQUIREMENTS.md",
-        ".pcm/project/EXEC_PLAN.md",
-        ".pcm/control/tasks.json",
-        ".pcm/control/delegation.json"
+        "implementation/authority/",
+        "handoff/authority/"
+      ]
+    },
+    {
+      "acceptance": [
+        "Independent review establishes exact brief identity, acceptance provenance, bounded semantic scope and lawful create/modify projection intent for the exact candidate."
+      ],
+      "depends_on": [
+        "DS-A01"
+      ],
+      "id": "DS-A02",
+      "independent_review": {
+        "candidate_paths": [
+          "handoff/authority/DS_BICP_CANDIDATE.md"
+        ],
+        "evidence_paths": [
+          "implementation/authority/DS_INGRESS_EVIDENCE.md"
+        ],
+        "repair_task_id": "DS-A01",
+        "source_paths": [
+          ".pcm/control/instantiation.json",
+          ".pcm/project/REQUIREMENTS.md",
+          ".pcm/project/EXEC_PLAN.md",
+          "GUARDRAILS.md",
+          "AGENTS.md"
+        ]
+      },
+      "requirements": [
+        "REQ-001",
+        "REQ-002",
+        "REQ-012"
+      ],
+      "status": "pending",
+      "title": "Independently review authority ingress candidate",
+      "verification": {
+        "leaf_close": [],
+        "promotion": []
+      },
+      "work_type": "non_code",
+      "write_paths": [
+        ".pcm/control/independent_review_results/"
+      ]
+    },
+    {
+      "acceptance": [
+        "Current architecture mechanically resolves and durably records the lawful new owner identity without reuse.",
+        "M00 modification, new-owner responsibility, dependency/public-seam declarations and implementation allocation remain within accepted authority.",
+        "A bounded implementation work order exists for downstream coding without semantic expansion."
+      ],
+      "depends_on": [
+        "DS-A02"
+      ],
+      "id": "DS-A03",
+      "requirements": [
+        "REQ-002",
+        "REQ-003",
+        "REQ-005",
+        "REQ-012"
+      ],
+      "status": "pending",
+      "title": "Admit architecture allocation and bounded implementation work order",
+      "verification": {
+        "leaf_close": [],
+        "promotion": []
+      },
+      "work_type": "non_code",
+      "write_paths": [
+        "config/architecture/",
+        "implementation/architecture/",
+        "implementation/authority/",
+        "implementation/work_order/",
+        "tests/architecture/",
+        "tests/bootstrap/"
+      ]
+    },
+    {
+      "acceptance": [
+        "Independent review establishes lawful identifier allocation, ownership, dependency direction, public seam and absence of unapproved architecture expansion."
+      ],
+      "depends_on": [
+        "DS-A03"
+      ],
+      "id": "DS-A04",
+      "independent_review": {
+        "candidate_paths": [
+          "implementation/architecture/DS_ARCHITECTURE_ADMISSION_CANDIDATE.md"
+        ],
+        "evidence_paths": [
+          "implementation/architecture/DS_ARCHITECTURE_ADMISSION_EVIDENCE.md"
+        ],
+        "repair_task_id": "DS-A03",
+        "source_paths": [
+          ".pcm/control/instantiation.json",
+          ".pcm/project/REQUIREMENTS.md",
+          ".pcm/project/EXEC_PLAN.md",
+          "GUARDRAILS.md",
+          "AGENTS.md"
+        ]
+      },
+      "requirements": [
+        "REQ-002",
+        "REQ-003",
+        "REQ-005",
+        "REQ-012"
+      ],
+      "status": "pending",
+      "title": "Independently review architecture admission",
+      "verification": {
+        "leaf_close": [],
+        "promotion": []
+      },
+      "work_type": "non_code",
+      "write_paths": [
+        ".pcm/control/independent_review_results/"
+      ]
+    },
+    {
+      "acceptance": [
+        "Foundation proof specifies and exercises the required M00 projection, unit/context, persistence-role, typed-result and public-seam propositions before production implementation begins."
+      ],
+      "depends_on": [
+        "DS-A04"
+      ],
+      "id": "DS-T01",
+      "requirements": [
+        "REQ-003",
+        "REQ-004",
+        "REQ-005",
+        "REQ-008",
+        "REQ-010"
+      ],
+      "status": "pending",
+      "title": "Establish foundation proof boundary before production code",
+      "verification": {
+        "leaf_close": [],
+        "promotion": []
+      },
+      "work_type": "test_proof",
+      "write_paths": [
+        "tests/product/",
+        "tests/implementation/",
+        "implementation/proof/DS_FOUNDATION_PROOF_EVIDENCE.md"
+      ]
+    },
+    {
+      "acceptance": [
+        "The additive M00 typed projection exists through the admitted public seam without direct-table exposure or provider-parsing fallback in the calculation owner.",
+        "The admitted calculation owner has typed/versioned contexts, derived occurrence/lineage persistence, separate database writer boundary and typed calculation/read foundation.",
+        "The candidate remains bounded to accepted semantics and is frozen in a candidate record."
+      ],
+      "depends_on": [
+        "DS-T01"
+      ],
+      "id": "DS-I01",
+      "requirements": [
+        "REQ-003",
+        "REQ-004",
+        "REQ-005",
+        "REQ-008",
+        "REQ-010"
+      ],
+      "status": "pending",
+      "test_first": {
+        "exception_task_id": null,
+        "red_check_id": null,
+        "red_required": false,
+        "test_task_id": "DS-T01"
+      },
+      "title": "Implement M00 projection and Derived Signal foundation",
+      "verification": {
+        "leaf_close": [],
+        "promotion": []
+      },
+      "work_type": "implementation",
+      "write_paths": [
+        "src/nvda_desk/raw_signal_occurrence_truth/",
+        "src/nvda_desk/",
+        "config/architecture/",
+        "schemas/",
+        "implementation/",
+        "pyproject.toml"
+      ]
+    },
+    {
+      "acceptance": [
+        "Independent review establishes projection ambiguity refusal, unit/version discipline, M00/public-seam isolation, separate persistence ownership and typed absence/result behaviour for the exact candidate."
+      ],
+      "depends_on": [
+        "DS-I01"
+      ],
+      "id": "DS-R01",
+      "independent_review": {
+        "candidate_paths": [
+          "implementation/review/DS_FOUNDATION_CANDIDATE.md"
+        ],
+        "evidence_paths": [
+          "implementation/proof/DS_FOUNDATION_PROOF_EVIDENCE.md"
+        ],
+        "repair_task_id": "DS-I01",
+        "source_paths": [
+          ".pcm/control/instantiation.json",
+          ".pcm/project/REQUIREMENTS.md",
+          ".pcm/project/EXEC_PLAN.md",
+          "GUARDRAILS.md",
+          "AGENTS.md"
+        ]
+      },
+      "requirements": [
+        "REQ-003",
+        "REQ-004",
+        "REQ-005",
+        "REQ-008"
+      ],
+      "status": "pending",
+      "title": "Independently review foundation candidate",
+      "verification": {
+        "leaf_close": [],
+        "promotion": []
+      },
+      "work_type": "non_code",
+      "write_paths": [
+        ".pcm/control/independent_review_results/"
+      ]
+    },
+    {
+      "acceptance": [
+        "Proof exists for every catalogue row in the K01-K08/K16/K17 group and for the representative accepted-brief examples, history sufficiency, version mixing refusal and graph ordering relevant to that group."
+      ],
+      "depends_on": [
+        "DS-R01"
+      ],
+      "id": "DS-T02",
+      "requirements": [
+        "REQ-004",
+        "REQ-006",
+        "REQ-007",
+        "REQ-009",
+        "REQ-010"
+      ],
+      "status": "pending",
+      "title": "Establish proof for foundational kernel group",
+      "verification": {
+        "leaf_close": [],
+        "promotion": []
+      },
+      "work_type": "test_proof",
+      "write_paths": [
+        "tests/product/",
+        "tests/implementation/",
+        "implementation/proof/DS_FOUNDATIONAL_KERNEL_PROOF_EVIDENCE.md"
+      ]
+    },
+    {
+      "acceptance": [
+        "All catalogue rows bound to K01-K08, K16 and K17 are implemented under the accepted formulas, parameter/context laws and fail-closed history rules.",
+        "Version-consistent predecessor resolution and exact lineage are preserved.",
+        "The candidate is frozen for independent review."
+      ],
+      "depends_on": [
+        "DS-T02"
+      ],
+      "id": "DS-I02",
+      "requirements": [
+        "REQ-004",
+        "REQ-006",
+        "REQ-007",
+        "REQ-010"
+      ],
+      "status": "pending",
+      "test_first": {
+        "exception_task_id": null,
+        "red_check_id": null,
+        "red_required": false,
+        "test_task_id": "DS-T02"
+      },
+      "title": "Implement foundational kernel group",
+      "verification": {
+        "leaf_close": [],
+        "promotion": []
+      },
+      "work_type": "implementation",
+      "write_paths": [
+        "src/nvda_desk/",
+        "implementation/",
+        "pyproject.toml"
+      ]
+    },
+    {
+      "acceptance": [
+        "Independent review establishes mathematical/catalogue fidelity and relevant ordering/optionality/version constraints for the exact foundational-kernel candidate."
+      ],
+      "depends_on": [
+        "DS-I02"
+      ],
+      "id": "DS-R02",
+      "independent_review": {
+        "candidate_paths": [
+          "implementation/review/DS_FOUNDATIONAL_KERNEL_CANDIDATE.md"
+        ],
+        "evidence_paths": [
+          "implementation/proof/DS_FOUNDATIONAL_KERNEL_PROOF_EVIDENCE.md"
+        ],
+        "repair_task_id": "DS-I02",
+        "source_paths": [
+          ".pcm/control/instantiation.json",
+          ".pcm/project/REQUIREMENTS.md",
+          ".pcm/project/EXEC_PLAN.md",
+          "GUARDRAILS.md",
+          "AGENTS.md"
+        ]
+      },
+      "requirements": [
+        "REQ-004",
+        "REQ-006",
+        "REQ-007",
+        "REQ-009"
+      ],
+      "status": "pending",
+      "title": "Independently review foundational kernels",
+      "verification": {
+        "leaf_close": [],
+        "promotion": []
+      },
+      "work_type": "non_code",
+      "write_paths": [
+        ".pcm/control/independent_review_results/"
+      ]
+    },
+    {
+      "acceptance": [
+        "Proof exists for every catalogue row in K09-K15 and challenges the required option/PnL/evaluation conventions, scenario/candidate alignment, nonlinear live-position revaluation, attribution and no-look-ahead."
+      ],
+      "depends_on": [
+        "DS-R02"
+      ],
+      "id": "DS-T03",
+      "requirements": [
+        "REQ-004",
+        "REQ-006",
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-010"
+      ],
+      "status": "pending",
+      "title": "Establish proof for advanced kernel group",
+      "verification": {
+        "leaf_close": [],
+        "promotion": []
+      },
+      "work_type": "test_proof",
+      "write_paths": [
+        "tests/product/",
+        "tests/implementation/",
+        "implementation/proof/DS_ADVANCED_KERNEL_PROOF_EVIDENCE.md"
+      ]
+    },
+    {
+      "acceptance": [
+        "All catalogue rows bound to K09-K15 are implemented under the accepted fixed model/convention/context laws.",
+        "No action-like result produces an external effect.",
+        "The candidate is frozen for independent review."
+      ],
+      "depends_on": [
+        "DS-T03"
+      ],
+      "id": "DS-I03",
+      "requirements": [
+        "REQ-004",
+        "REQ-006",
+        "REQ-007",
+        "REQ-008",
+        "REQ-010"
+      ],
+      "status": "pending",
+      "test_first": {
+        "exception_task_id": null,
+        "red_check_id": null,
+        "red_required": false,
+        "test_task_id": "DS-T03"
+      },
+      "title": "Implement advanced kernel group",
+      "verification": {
+        "leaf_close": [],
+        "promotion": []
+      },
+      "work_type": "implementation",
+      "write_paths": [
+        "src/nvda_desk/",
+        "implementation/",
+        "pyproject.toml"
+      ]
+    },
+    {
+      "acceptance": [
+        "Independent review establishes model/convention identity, scenario and candidate alignment, attribution/cost accounting, evaluation no-look-ahead and bounded external-effect exclusion for the exact advanced-kernel candidate."
+      ],
+      "depends_on": [
+        "DS-I03"
+      ],
+      "id": "DS-R03",
+      "independent_review": {
+        "candidate_paths": [
+          "implementation/review/DS_ADVANCED_KERNEL_CANDIDATE.md"
+        ],
+        "evidence_paths": [
+          "implementation/proof/DS_ADVANCED_KERNEL_PROOF_EVIDENCE.md"
+        ],
+        "repair_task_id": "DS-I03",
+        "source_paths": [
+          ".pcm/control/instantiation.json",
+          ".pcm/project/REQUIREMENTS.md",
+          ".pcm/project/EXEC_PLAN.md",
+          "GUARDRAILS.md",
+          "AGENTS.md"
+        ]
+      },
+      "requirements": [
+        "REQ-004",
+        "REQ-006",
+        "REQ-007",
+        "REQ-008",
+        "REQ-009"
+      ],
+      "status": "pending",
+      "title": "Independently review advanced kernels",
+      "verification": {
+        "leaf_close": [],
+        "promotion": []
+      },
+      "work_type": "non_code",
+      "write_paths": [
+        ".pcm/control/independent_review_results/"
+      ]
+    },
+    {
+      "acceptance": [
+        "One integrated proof surface covers all 27 accepted-brief proof classes for the exact current candidate and all 209 catalogue identities.",
+        "Catalogue/dependency integrity, M00 isolation, persistence isolation, recursive lineage, deterministic recalculation and external-effect exclusion are separately evidenced."
+      ],
+      "depends_on": [
+        "DS-R03"
+      ],
+      "id": "DS-T04",
+      "requirements": [
+        "REQ-001",
+        "REQ-003",
+        "REQ-004",
+        "REQ-005",
+        "REQ-006",
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-010"
+      ],
+      "status": "pending",
+      "title": "Establish whole-catalogue integration proof",
+      "verification": {
+        "leaf_close": [],
+        "promotion": []
+      },
+      "work_type": "test_proof",
+      "write_paths": [
+        "tests/product/",
+        "tests/implementation/",
+        "implementation/proof/DS_WHOLE_CATALOGUE_PROOF_EVIDENCE.md"
+      ]
+    },
+    {
+      "acceptance": [
+        "Any production changes needed by whole-catalogue integration stay within already-admitted semantics and close only evidenced integration defects.",
+        "No D identity, dependency edge, kernel meaning, context meaning, owner boundary or external-effect boundary changes.",
+        "One exact integrated candidate is frozen."
+      ],
+      "depends_on": [
+        "DS-T04"
+      ],
+      "id": "DS-I04",
+      "requirements": [
+        "REQ-003",
+        "REQ-004",
+        "REQ-005",
+        "REQ-006",
+        "REQ-007",
+        "REQ-008",
+        "REQ-010",
+        "REQ-012"
+      ],
+      "status": "pending",
+      "test_first": {
+        "exception_task_id": null,
+        "red_check_id": null,
+        "red_required": false,
+        "test_task_id": "DS-T04"
+      },
+      "title": "Close bounded integration defects",
+      "verification": {
+        "leaf_close": [],
+        "promotion": []
+      },
+      "work_type": "implementation",
+      "write_paths": [
+        "src/nvda_desk/",
+        "config/architecture/",
+        "schemas/",
+        "implementation/",
+        "pyproject.toml"
+      ]
+    },
+    {
+      "acceptance": [
+        "Independent whole-brief review accepts the exact integrated candidate only when all accepted semantic, lineage, isolation, no-look-ahead, idempotence and external-effect exclusions remain satisfied."
+      ],
+      "depends_on": [
+        "DS-I04"
+      ],
+      "id": "DS-R04",
+      "independent_review": {
+        "candidate_paths": [
+          "implementation/review/DS_INTEGRATED_CANDIDATE.md"
+        ],
+        "evidence_paths": [
+          "implementation/proof/DS_WHOLE_CATALOGUE_PROOF_EVIDENCE.md"
+        ],
+        "repair_task_id": "DS-I04",
+        "source_paths": [
+          ".pcm/control/instantiation.json",
+          ".pcm/project/REQUIREMENTS.md",
+          ".pcm/project/EXEC_PLAN.md",
+          "GUARDRAILS.md",
+          "AGENTS.md"
+        ]
+      },
+      "requirements": [
+        "REQ-001",
+        "REQ-003",
+        "REQ-004",
+        "REQ-005",
+        "REQ-006",
+        "REQ-007",
+        "REQ-008",
+        "REQ-009",
+        "REQ-012"
+      ],
+      "status": "pending",
+      "title": "Independently review exact integrated candidate",
+      "verification": {
+        "leaf_close": [],
+        "promotion": []
+      },
+      "work_type": "non_code",
+      "write_paths": [
+        ".pcm/control/independent_review_results/"
+      ]
+    },
+    {
+      "acceptance": [
+        "The record states current package metadata/topology, all material consequences of available lawful choices, and the smallest unresolved distribution name/version decision without making that decision."
+      ],
+      "depends_on": [
+        "DS-R04"
+      ],
+      "id": "DS-PKG01",
+      "requirements": [
+        "REQ-011",
+        "REQ-012"
+      ],
+      "status": "pending",
+      "title": "Prepare exact package identity decision record",
+      "verification": {
+        "leaf_close": [],
+        "promotion": []
+      },
+      "work_type": "non_code",
+      "write_paths": [
+        "implementation/authority/DS_PACKAGE_IDENTITY_PROPOSAL.md"
+      ]
+    },
+    {
+      "acceptance": [
+        "A current Programme Owner decision explicitly authorises the final distribution name and version or explicit retention of current values, with no semantic expansion."
+      ],
+      "depends_on": [
+        "DS-PKG01"
+      ],
+      "id": "DS-PO01",
+      "programme_owner_review": {
+        "candidate_paths": [
+          "implementation/authority/DS_PACKAGE_IDENTITY_PROPOSAL.md"
+        ],
+        "freedoms": [
+          "Choose one lawful identity supported by the admitted architecture/package topology.",
+          "Defer the decision if evidence is insufficient rather than inventing a value."
+        ],
+        "material_decisions": [
+          "Final distribution/package name.",
+          "Final distribution/package version.",
+          "Whether current metadata is retained unchanged or replaced exactly as authorised."
+        ],
+        "prohibitions": [
+          "Do not change Derived Signal calculation semantics, architecture ownership or dependency meaning.",
+          "Do not activate provider/network, external-effect or downstream-action capability."
+        ],
+        "requested_decision": "Authorise the exact final distribution name and version to be used for final package proof and terminal freeze."
+      },
+      "requirements": [
+        "REQ-011",
+        "REQ-012"
+      ],
+      "status": "pending",
+      "title": "Programme Owner package identity authority",
+      "verification": {
+        "leaf_close": [],
+        "promotion": []
+      },
+      "work_type": "non_code",
+      "write_paths": [
+        ".pcm/control/programme_owner_decisions/"
+      ]
+    },
+    {
+      "acceptance": [
+        "Complete required product/architecture/whole-brief proof is green for one exact clean commit.",
+        "Built distribution identity/content/hash and isolated installation outside the source tree are proved.",
+        "Admitted behaviour is exposed and unadmitted capability remains absent/inactive."
+      ],
+      "depends_on": [
+        "DS-PO01"
+      ],
+      "id": "DS-T05",
+      "requirements": [
+        "REQ-008",
+        "REQ-009",
+        "REQ-011"
+      ],
+      "status": "pending",
+      "title": "Prove final aggregate, package and isolated installation",
+      "verification": {
+        "leaf_close": [],
+        "promotion": []
+      },
+      "work_type": "test_proof",
+      "write_paths": [
+        "tests/product/",
+        "tests/architecture/",
+        "tests/bootstrap/",
+        "implementation/proof/DS_FINAL_PACKAGE_PROOF_EVIDENCE.md",
+        "dist/"
+      ]
+    },
+    {
+      "acceptance": [
+        "Independent review accepts the exact final implementation/proof/package state against the accepted brief and explicit package authority with no stale evidence or overclaim."
+      ],
+      "depends_on": [
+        "DS-T05"
+      ],
+      "id": "DS-R05",
+      "independent_review": {
+        "candidate_paths": [
+          "implementation/review/DS_FINAL_PACKAGE_CANDIDATE.md"
+        ],
+        "evidence_paths": [
+          "implementation/proof/DS_FINAL_PACKAGE_PROOF_EVIDENCE.md"
+        ],
+        "repair_task_id": "DS-I04",
+        "source_paths": [
+          ".pcm/control/instantiation.json",
+          ".pcm/project/REQUIREMENTS.md",
+          ".pcm/project/EXEC_PLAN.md",
+          "GUARDRAILS.md",
+          "AGENTS.md"
+        ]
+      },
+      "requirements": [
+        "REQ-001",
+        "REQ-008",
+        "REQ-009",
+        "REQ-011",
+        "REQ-012"
+      ],
+      "status": "pending",
+      "title": "Independent whole-system/package review",
+      "verification": {
+        "leaf_close": [],
+        "promotion": []
+      },
+      "work_type": "non_code",
+      "write_paths": [
+        ".pcm/control/independent_review_results/"
+      ]
+    },
+    {
+      "acceptance": [
+        "Exact terminal Git/package/proof/review identities and bounded non-claims are recorded.",
+        "A durable full-Git recovery artefact is created and read back/reconstructed against the recorded identities.",
+        "Repository integrity and clean state are established without substantive post-review byte drift."
+      ],
+      "depends_on": [
+        "DS-R05"
+      ],
+      "id": "DS-F01",
+      "requirements": [
+        "REQ-009",
+        "REQ-011",
+        "REQ-012"
+      ],
+      "status": "pending",
+      "title": "Freeze terminal provenance and durable recovery artefact",
+      "verification": {
+        "leaf_close": [],
+        "promotion": []
+      },
+      "work_type": "non_code",
+      "write_paths": [
+        "implementation/handoff/",
+        "implementation/proof/DS_TERMINAL_FREEZE_EVIDENCE.md",
+        "handoff/control/",
+        "recovery/"
+      ]
+    },
+    {
+      "acceptance": [
+        "Independent terminal review confirms prerequisites, exact terminal identities, no post-review substantive drift, recovery readback/reconstruction, clean state and truthful boundedness; PASS requires STOP."
+      ],
+      "depends_on": [
+        "DS-F01"
+      ],
+      "id": "DS-R06",
+      "independent_review": {
+        "candidate_paths": [
+          "implementation/handoff/DS_TERMINAL_FREEZE_CANDIDATE.md"
+        ],
+        "evidence_paths": [
+          "implementation/proof/DS_TERMINAL_FREEZE_EVIDENCE.md"
+        ],
+        "repair_task_id": "DS-F01",
+        "source_paths": [
+          ".pcm/control/instantiation.json",
+          ".pcm/project/REQUIREMENTS.md",
+          ".pcm/project/EXEC_PLAN.md",
+          "GUARDRAILS.md",
+          "AGENTS.md"
+        ]
+      },
+      "requirements": [
+        "REQ-009",
+        "REQ-011",
+        "REQ-012"
+      ],
+      "status": "pending",
+      "title": "Independent terminal freeze review and STOP",
+      "verification": {
+        "leaf_close": [],
+        "promotion": []
+      },
+      "work_type": "non_code",
+      "write_paths": [
+        ".pcm/control/independent_review_results/"
       ]
     }
   ]

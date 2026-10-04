@@ -32,7 +32,7 @@
     ".pcm/project/REQUIREMENTS.md",
     ".pcm/project/EXEC_PLAN.md"
   ],
-  "project_name": "{{PROJECT_NAME}}",
+  "project_name": "NVDA Derived Signal Calculation Truth",
   "project_objective_path": ".pcm/project/PROJECT_OBJECTIVE.md",
   "requirements_path": ".pcm/project/REQUIREMENTS.md",
   "runtime_budget_minutes": 300,
