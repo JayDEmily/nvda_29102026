@@ -55,7 +55,7 @@
         "REQ-002",
         "REQ-012"
       ],
-      "status": "pending",
+      "status": "accepted",
       "title": "Independently review authority ingress candidate",
       "verification": {
         "leaf_close": [],

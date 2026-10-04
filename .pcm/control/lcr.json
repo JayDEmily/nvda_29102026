@@ -1,13 +1,15 @@
 {
-  "acceptance_tags": {},
+  "acceptance_tags": {
+    "DS-A01": "b373caf8b8463e502e5bdedd8c2e5791af26d24e"
+  },
   "accepted_base": {
     "branch": "main",
-    "head": "b9a1846ae9a7a5c6ab3b969824821f8106f94445",
-    "tree": "6f799c13c10e0acfaee09cc2b7f34548bfb37104"
+    "head": "b373caf8b8463e502e5bdedd8c2e5791af26d24e",
+    "tree": "98e4901321f0b7f9337e05a035c3e9fe33bb7f2e"
   },
   "active_leaf": {
-    "id": "DS-A02",
-    "label": "Independently review authority ingress candidate",
+    "id": "DS-A03",
+    "label": "Admit architecture allocation and bounded implementation work order",
     "status": "pending"
   },
   "applicable_context": {
@@ -19,13 +21,16 @@
       "AGENTS.md"
     ],
     "dependencies": [
-      "DS-A01"
+      "DS-A01",
+      "DS-A02"
     ],
-    "plan_leaf": "DS-A02",
+    "plan_leaf": "DS-A03",
     "requirements": [
       "REQ-001",
       "REQ-002",
-      "REQ-012"
+      "REQ-012",
+      "REQ-003",
+      "REQ-005"
     ]
   },
   "authority_hashes": {
@@ -45,24 +50,24 @@
   "blockers": [],
   "checkpoint": {
     "branch": "main",
-    "source_head": "b9a1846ae9a7a5c6ab3b969824821f8106f94445",
-    "source_tree": "6f799c13c10e0acfaee09cc2b7f34548bfb37104",
+    "source_head": "b373caf8b8463e502e5bdedd8c2e5791af26d24e",
+    "source_tree": "98e4901321f0b7f9337e05a035c3e9fe33bb7f2e",
     "working_state_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
   "claims_hash": "4d972026e949813141677eec36ad4d646c440afd81507fe52402d94c8970c58d",
-  "generated_at": "2026-10-04T01:19:25Z",
+  "generated_at": "2026-10-04T01:33:09Z",
   "last_receipt": null,
   "migration_provenance": null,
   "next_transition": {
-    "actor_class": "INDEPENDENT_REVIEW",
-    "next_leaf": "DS-A02"
+    "actor_class": "AUTONOMOUS",
+    "next_leaf": "DS-A03"
   },
   "ready_tasks": [
-    "DS-A02"
+    "DS-A03"
   ],
   "receipt_hashes": {},
-  "repo_fingerprint": "ca990954f15ed46f0a05ec90822fe6c155ad0702645d728dcf66b39da0865fe9",
+  "repo_fingerprint": "2c7ee44044d99d805d8868812c8f6193a5fa576d4736f94ff8961a237f862843",
   "schema_version": 1,
-  "task_contract_hash": "21b2fa5dd46ddba846d90eed6e13a86470ea04cc4815700908a2de6c957b3dce",
+  "task_contract_hash": "087d077e58152b1721ec700396c39a69315e0f41e629bf2ad1543525fb80ffb6",
   "unresolved_claims": []
 }
