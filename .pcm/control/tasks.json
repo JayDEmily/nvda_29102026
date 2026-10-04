@@ -184,7 +184,7 @@
         "REQ-008",
         "REQ-010"
       ],
-      "status": "pending",
+      "status": "accepted",
       "test_first": {
         "exception_task_id": null,
         "red_check_id": null,

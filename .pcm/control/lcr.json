@@ -8,12 +8,12 @@
   },
   "accepted_base": {
     "branch": "main",
-    "head": "8c1183c9ac34952a651bd4a51fd0a065c73759d0",
-    "tree": "1fcaee50fd247a8d4b4638da62dba3efad449c54"
+    "head": "566612798a64b3eb3c3888046867ab54fd4f61d9",
+    "tree": "41cb196e071bda9fb254970b54a9fd311f9749ae"
   },
   "active_leaf": {
-    "id": "DS-I01",
-    "label": "Implement M00 projection and Derived Signal foundation",
+    "id": "DS-R01",
+    "label": "Independently review foundation candidate",
     "status": "pending"
   },
   "applicable_context": {
@@ -29,9 +29,10 @@
       "DS-A02",
       "DS-A03",
       "DS-A04",
-      "DS-T01"
+      "DS-T01",
+      "DS-I01"
     ],
-    "plan_leaf": "DS-I01",
+    "plan_leaf": "DS-R01",
     "requirements": [
       "REQ-001",
       "REQ-002",
@@ -59,25 +60,25 @@
   },
   "blockers": [],
   "checkpoint": {
-    "branch": "work/ds-i01-foundation-implementation",
-    "source_head": "b099fbc1ddb277e9faba28bfec3d2b71d2b66c71",
-    "source_tree": "a974c5039819f8a4034529ee365cb433fb2eec69",
+    "branch": "main",
+    "source_head": "566612798a64b3eb3c3888046867ab54fd4f61d9",
+    "source_tree": "41cb196e071bda9fb254970b54a9fd311f9749ae",
     "working_state_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
   "claims_hash": "4d972026e949813141677eec36ad4d646c440afd81507fe52402d94c8970c58d",
-  "generated_at": "2026-10-04T05:45:43Z",
+  "generated_at": "2026-10-04T05:46:57Z",
   "last_receipt": null,
   "migration_provenance": null,
   "next_transition": {
-    "actor_class": "AUTONOMOUS",
-    "next_leaf": "DS-I01"
+    "actor_class": "INDEPENDENT_REVIEW",
+    "next_leaf": "DS-R01"
   },
   "ready_tasks": [
-    "DS-I01"
+    "DS-R01"
   ],
   "receipt_hashes": {},
-  "repo_fingerprint": "52b685f92e0ca69b72e594609e5f57eafe995e08958c58a324799442d8fee27f",
+  "repo_fingerprint": "2568fce4712125356de0de80cfca40d24364e263d957447cfa50e26693b85e9d",
   "schema_version": 1,
-  "task_contract_hash": "9c324ab43b09437c2c710beda3029b18ac43f6d67fff1976b1a7e4703eacc737",
+  "task_contract_hash": "9c82f75602d07e56a384c0390b212153e23cc4b046ba0d6716ef0472df4f1c24",
   "unresolved_claims": []
 }
