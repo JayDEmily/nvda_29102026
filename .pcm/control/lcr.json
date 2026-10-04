@@ -1,12 +1,13 @@
 {
   "acceptance_tags": {
     "DS-A01": "b373caf8b8463e502e5bdedd8c2e5791af26d24e",
-    "DS-A02": "4740566dd9176d8700d09fbc4b3fe64b36070c9c"
+    "DS-A02": "4740566dd9176d8700d09fbc4b3fe64b36070c9c",
+    "DS-A03": "1ff62ca416bd209329261eac62b8e3b15609131b"
   },
   "accepted_base": {
     "branch": "main",
-    "head": "3688dd5e6d6dec63de04eada01b5b83c87f4506e",
-    "tree": "f317f4f7be6f672277411db50c3f70262d2633bb"
+    "head": "1ff62ca416bd209329261eac62b8e3b15609131b",
+    "tree": "9d0335d7650c9696b126dce2b5f1a1772a4d031f"
   },
   "active_leaf": {
     "id": "DS-A04",
@@ -51,13 +52,13 @@
   },
   "blockers": [],
   "checkpoint": {
-    "branch": "main",
-    "source_head": "3688dd5e6d6dec63de04eada01b5b83c87f4506e",
-    "source_tree": "f317f4f7be6f672277411db50c3f70262d2633bb",
+    "branch": "work/ds-a03-lifecycle-repair",
+    "source_head": "1ff62ca416bd209329261eac62b8e3b15609131b",
+    "source_tree": "9d0335d7650c9696b126dce2b5f1a1772a4d031f",
     "working_state_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
   "claims_hash": "4d972026e949813141677eec36ad4d646c440afd81507fe52402d94c8970c58d",
-  "generated_at": "2026-10-04T02:57:41Z",
+  "generated_at": "2026-10-04T02:59:18Z",
   "last_receipt": null,
   "migration_provenance": null,
   "next_transition": {
