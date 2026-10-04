@@ -454,7 +454,7 @@
           "unresolved_stops": []
         }
       ],
-      "status": "pending",
+      "status": "in_progress",
       "title": "Refine persistence-boundary proof for recurrent contract drift",
       "verification": {
         "leaf_close": [],
