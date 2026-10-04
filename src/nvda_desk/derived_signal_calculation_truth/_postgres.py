@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+from dataclasses import dataclass
 from datetime import datetime
 from decimal import Decimal
 from typing import Any
@@ -14,6 +15,18 @@ from .api import (
 )
 
 _TABLE = "dsct_derived_signal_occurrence_v1"
+
+
+@dataclass(frozen=True, slots=True)
+class PostgresBoundaryIdentityV1:
+    writer_role: str
+    schema: str
+
+    def __post_init__(self) -> None:
+        if type(self.writer_role) is not str or not self.writer_role:
+            raise ValueError("writer_role must be a non-empty string")
+        if type(self.schema) is not str or not self.schema:
+            raise ValueError("schema must be a non-empty string")
 
 
 def _psycopg() -> Any:
@@ -97,16 +110,48 @@ def _decode_raw_lineage(value: object) -> tuple[RawInputLineageV1, ...]:
     )
 
 
-class _PostgresPersistenceV1:
-    __slots__ = ("_dsn",)
+def _connection_identity(connection: Any) -> PostgresBoundaryIdentityV1:
+    row = connection.execute("SELECT current_user, current_schema()").fetchone()
+    if row is None or row[1] is None:
+        raise ValueError("PostgreSQL connection must resolve one current schema")
+    return PostgresBoundaryIdentityV1(writer_role=str(row[0]), schema=str(row[1]))
 
-    def __init__(self, dsn: str) -> None:
+
+def _require_separate_from_m00(
+    own_boundary: PostgresBoundaryIdentityV1,
+    m00_boundary: PostgresBoundaryIdentityV1,
+) -> None:
+    if own_boundary.writer_role == m00_boundary.writer_role:
+        raise ValueError("M01 persistence writer role must be separate from M00 writer role")
+    if own_boundary.schema == m00_boundary.schema:
+        raise ValueError("M01 persistence schema must be separate from M00 schema")
+
+
+class _PostgresPersistenceV1:
+    __slots__ = ("_dsn", "_m00_boundary", "_own_boundary")
+
+    def __init__(
+        self,
+        dsn: str,
+        *,
+        m00_boundary: PostgresBoundaryIdentityV1,
+        own_boundary: PostgresBoundaryIdentityV1,
+    ) -> None:
         self._dsn = dsn
+        self._m00_boundary = m00_boundary
+        self._own_boundary = own_boundary
+
+    def _validate_connection(self, connection: Any) -> None:
+        current = _connection_identity(connection)
+        _require_separate_from_m00(current, self._m00_boundary)
+        if current != self._own_boundary:
+            raise ValueError("M01 persistence PostgreSQL boundary changed after construction")
 
     def append_occurrence(self, value: DerivedSignalOccurrenceV1) -> DerivedSignalOccurrenceV1:
         psycopg = _psycopg()
         payload = json.dumps(_encode_value(value.result))
         with psycopg.connect(self._dsn) as connection:
+            self._validate_connection(connection)
             existing = self.get_occurrence(value.derived_occurrence_id)
             if existing is not None:
                 if existing != value:
@@ -187,6 +232,7 @@ class _PostgresPersistenceV1:
     def get_occurrence(self, derived_occurrence_id: str) -> DerivedSignalOccurrenceV1 | None:
         psycopg = _psycopg()
         with psycopg.connect(self._dsn) as connection:
+            self._validate_connection(connection)
             row = connection.execute(
                 f"""
                 SELECT derived_occurrence_id, derived_signal_id, calculation_definition_version,
@@ -208,6 +254,7 @@ class _PostgresPersistenceV1:
             raise ValueError("limit must be a positive integer")
         psycopg = _psycopg()
         with psycopg.connect(self._dsn) as connection:
+            self._validate_connection(connection)
             rows = connection.execute(
                 f"""
                 SELECT derived_occurrence_id, derived_signal_id, calculation_definition_version,
@@ -225,14 +272,17 @@ class _PostgresPersistenceV1:
         return tuple(self._from_row(row) for row in rows)
 
 
-def create_postgres_persistence(dsn: str) -> _PostgresPersistenceV1:
+def create_postgres_persistence(
+    dsn: str, *, m00_boundary: PostgresBoundaryIdentityV1
+) -> _PostgresPersistenceV1:
     if type(dsn) is not str or not dsn:
         raise ValueError("dsn must be a non-empty string")
+    if type(m00_boundary) is not PostgresBoundaryIdentityV1:
+        raise TypeError("m00_boundary must be PostgresBoundaryIdentityV1")
     psycopg = _psycopg()
     with psycopg.connect(dsn) as connection:
-        schema_row = connection.execute("SELECT current_schema()").fetchone()
-        if schema_row is None or schema_row[0] is None:
-            raise ValueError("PostgreSQL connection must resolve one current schema")
+        own_boundary = _connection_identity(connection)
+        _require_separate_from_m00(own_boundary, m00_boundary)
         connection.execute(
             f"""
             CREATE TABLE IF NOT EXISTS {_TABLE} (
@@ -256,7 +306,9 @@ def create_postgres_persistence(dsn: str) -> _PostgresPersistenceV1:
             )
             """
         )
-    return _PostgresPersistenceV1(dsn)
+    return _PostgresPersistenceV1(
+        dsn, m00_boundary=m00_boundary, own_boundary=own_boundary
+    )
 
 
 __all__ = ["create_postgres_persistence"]

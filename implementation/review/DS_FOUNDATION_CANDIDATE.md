@@ -83,9 +83,17 @@ Persistence semantics implemented here include:
 - conflicting content under the same occurrence ID is rejected;
 - reads return absence for unknown identity;
 - bounded history is stably ordered;
-- the PostgreSQL factory is not exported on the M01 public API.
+- the private factory requires an explicit runtime identity for the M00 writer/schema boundary and refuses construction if either the connected writer role or current schema is shared with M00;
+- the constructed persistence mechanism retains its observed M01 boundary identity and revalidates writer/schema separation on every new PostgreSQL connection, so later role/search-path drift cannot silently move persistence onto M00;
+- the PostgreSQL factory and boundary identity remain private mechanism surfaces and are not exported on the M01 public API.
 
-The implementation does not name or grant production database roles/schemas. The proof environment uses temporary distinct roles/schemas only to establish the accepted separation invariant.
+The implementation does not name or grant production database roles/schemas. Concrete role/schema names remain runtime configuration; the proof environment uses temporary identities only to establish lawful separation and adverse shared-boundary refusal.
+
+## DS-R01 recurrent PostgreSQL boundary repair
+
+The third DS-R01 review retained the `RECURRENT_CLASS foundation-contract/proof-boundary drift` classification because the prior proof established only one lawful separated PostgreSQL configuration and did not prove refusal of the adverse shared M00 writer/schema configuration. The same-actor bounded refinements `DS-T01-R02` then `DS-I01-R02` preserve the existing Gate-2 authority envelope.
+
+The accepted DS-T01-R02 proof discriminates both separation dimensions independently. DS-I01-R02 therefore adds only a private persistence-boundary guard: M00's current writer-role/schema identity is supplied as runtime mechanism configuration, not as a fixed production name; M01 introspects its own connection identity before table creation and refuses if either writer role or schema matches M00. The constructed mechanism also rejects later connection-boundary drift. This does not grant M01 M00 credentials or table access and does not resolve concrete production database identities.
 
 ## Lifecycle truth
 

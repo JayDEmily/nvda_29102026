@@ -785,3 +785,60 @@ DS-T01-R02 requires an explicit private M00 persistence-boundary identity contra
 This is the intended proof-first red state. The test module itself passes Ruff. No source, architecture, schema, package metadata or accepted DS-T01/DS-T01-R01 proof bytes were changed to obtain this result.
 
 DS-I01-R02 remains blocked until this proof refinement is durably accepted.
+
+## DS-I01-R02 — PostgreSQL persistence-boundary production repair
+
+`DS-T01-R02` is durably accepted at tag `accepted/DS-T01-R02`, targeting commit `59c796e072ecc7a0344c0ee45d78c1d6a62b6f46`. DS-I01-R02 is the same-actor implementation refinement under the already-admitted DS-I01 envelope and changes no requirement, semantic route, write scope, actor class or review contract.
+
+### Bounded implementation mechanism
+
+The repair changes only the private M01 PostgreSQL mechanism plus candidate/evidence text. `src/nvda_desk/derived_signal_calculation_truth/_postgres.py` now defines an immutable private `PostgresBoundaryIdentityV1` carrying runtime `writer_role` and `schema` identity. `create_postgres_persistence(...)` requires the observed M00 boundary identity as a private mechanism input, introspects its own `current_user/current_schema()`, and refuses construction if either writer role or schema is shared with M00.
+
+The constructed persistence object stores both the accepted M00 boundary and its own observed M01 boundary and revalidates both on every new PostgreSQL connection. A later role/search-path change therefore fails closed rather than redirecting unqualified persistence onto an M00-owned boundary. The repair does not hard-code, select or grant production role/schema names, does not receive an M00 DSN, and does not read or write M00-owned relations.
+
+### Pre-freeze proof
+
+Using the preserved PostgreSQL 17.9 proof environment with temporary identities `nvda_m00_r01` / `m00_r01` and `nvda_m01_r01` / `m01_r01`, the accepted DS-T01-R02 proof produced:
+
+```text
+pytest -q tests/implementation/derived_signal/test_ds_t01_r02_persistence_boundary_refinement.py
+4 passed
+```
+
+The proof establishes lawful separate construction, exact shared-boundary refusal, same-writer/different-schema refusal and different-writer/same-schema refusal. The proof-only M00 role was granted database `CREATE` solely so the alternate-schema adversary could be constructed; this does not alter production authority.
+
+The complete Gate-2 and architecture regressions then produced:
+
+```text
+pytest -q tests/product/derived_signal tests/implementation/derived_signal \
+  tests/architecture/test_object_lifecycle.py tests/bootstrap/test_minimal_imports.py
+58 passed
+
+pytest -q tests/architecture tests/bootstrap
+74 passed
+
+python tools/validate_architecture.py
+PASS: structural architecture validation
+
+python tools/check_dependencies.py
+PASS: dependency direction and cycle validation
+
+python tools/check_public_seams.py
+PASS: public-seam validation
+
+mypy src/nvda_desk/derived_signal_calculation_truth/_postgres.py --show-error-codes
+Success: no issues found in 1 source file
+
+ruff check src/nvda_desk/derived_signal_calculation_truth/_postgres.py \
+  tests/implementation/derived_signal/test_ds_t01_r02_persistence_boundary_refinement.py
+All checks passed!
+```
+
+A separate direct real-PostgreSQL operation-drift probe constructed M01 lawfully, then changed the proof M01 role's default search path onto M00's schema after construction. The next persistence read was refused before querying the derived table:
+
+```text
+OPERATION_DRIFT_REFUSED M01 persistence schema must be separate from M00 schema
+POST_RESET_IDENTITY ('nvda_m01_r01', 'm01_r01')
+```
+
+The proof role configuration and schema privilege were reset after the probe. The substantive repaired source/candidate/evidence bytes must now be committed and the same proof rerun from that exact clean commit before DS-I01-R02 can be accepted and a fresh DS-R01 packet exported.
