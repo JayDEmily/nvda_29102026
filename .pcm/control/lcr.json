@@ -4,12 +4,13 @@
     "DS-A02": "4740566dd9176d8700d09fbc4b3fe64b36070c9c",
     "DS-A03": "1ff62ca416bd209329261eac62b8e3b15609131b",
     "DS-A04": "ad5508f65760dc1b1949f067223f35cdc3e46cfb",
+    "DS-I01": "de6e4891d4c9f5f276dc564c3235c8dab6b9f243",
     "DS-T01": "8c1183c9ac34952a651bd4a51fd0a065c73759d0"
   },
   "accepted_base": {
     "branch": "main",
-    "head": "566612798a64b3eb3c3888046867ab54fd4f61d9",
-    "tree": "41cb196e071bda9fb254970b54a9fd311f9749ae"
+    "head": "de6e4891d4c9f5f276dc564c3235c8dab6b9f243",
+    "tree": "ec5100b92084ed7a589c4050c2b764a74743b802"
   },
   "active_leaf": {
     "id": "DS-R01",
@@ -60,13 +61,13 @@
   },
   "blockers": [],
   "checkpoint": {
-    "branch": "main",
-    "source_head": "566612798a64b3eb3c3888046867ab54fd4f61d9",
-    "source_tree": "41cb196e071bda9fb254970b54a9fd311f9749ae",
+    "branch": "work/ds-i01-context-contract-repair",
+    "source_head": "de6e4891d4c9f5f276dc564c3235c8dab6b9f243",
+    "source_tree": "ec5100b92084ed7a589c4050c2b764a74743b802",
     "working_state_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
   "claims_hash": "4d972026e949813141677eec36ad4d646c440afd81507fe52402d94c8970c58d",
-  "generated_at": "2026-10-04T05:46:57Z",
+  "generated_at": "2026-10-04T05:49:01Z",
   "last_receipt": null,
   "migration_provenance": null,
   "next_transition": {
