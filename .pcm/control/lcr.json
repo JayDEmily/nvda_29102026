@@ -15,7 +15,11 @@
     "head": "59c796e072ecc7a0344c0ee45d78c1d6a62b6f46",
     "tree": "22d4cc34054c9ffb730f6af14476ee4f35d4b220"
   },
-  "active_leaf": null,
+  "active_leaf": {
+    "id": "DS-I01-R02",
+    "label": "Repair persistence-boundary recurrent contract drift",
+    "status": "in_progress"
+  },
   "applicable_context": {
     "ancestors": [],
     "authority_files": [
@@ -25,8 +29,14 @@
       "AGENTS.md"
     ],
     "dependencies": [],
-    "plan_leaf": null,
-    "requirements": []
+    "plan_leaf": "DS-I01-R02",
+    "requirements": [
+      "REQ-003",
+      "REQ-004",
+      "REQ-005",
+      "REQ-008",
+      "REQ-010"
+    ]
   },
   "authority_hashes": {
     ".pcm/AGENTS.md": "b787f72c13d1d650d3ead15a33b33d846478278c1144dc3b3dff8218b2a5df7e",
@@ -44,26 +54,25 @@
   },
   "blockers": [],
   "checkpoint": {
-    "branch": "main",
-    "source_head": "59c796e072ecc7a0344c0ee45d78c1d6a62b6f46",
-    "source_tree": "22d4cc34054c9ffb730f6af14476ee4f35d4b220",
+    "branch": "work/ds-i01-r02-persistence-boundary-repair",
+    "source_head": "d93c20f0b63390c1cfbbefe3a6f766d4ec602dad",
+    "source_tree": "c3b01294b0636147270b40fafabe6752093e9a85",
     "working_state_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
   "claims_hash": "4d972026e949813141677eec36ad4d646c440afd81507fe52402d94c8970c58d",
-  "generated_at": "2026-10-04T11:24:03Z",
+  "generated_at": "2026-10-04T11:24:05Z",
   "last_receipt": null,
   "migration_provenance": null,
   "next_transition": {
     "actor_class": "AUTONOMOUS",
-    "next_leaf": null
+    "next_leaf": "DS-I01-R02"
   },
   "ready_tasks": [
-    "DS-I01-R02",
     "DS-R01"
   ],
   "receipt_hashes": {},
-  "repo_fingerprint": "ef35747cde4a5245622fa864e8d891b0c9e437f3ccd578a6bde8b7d605e280e3",
+  "repo_fingerprint": "92413de7c03783879aa6f26ebf4b875100697c0a954eb1ec7577977ea518db60",
   "schema_version": 1,
-  "task_contract_hash": "bf259ad9abddae19350abd64fb3d442ea2a08a85792b916a88b848a6e39d07eb",
+  "task_contract_hash": "aa4b127a1c618bc420f766be2dcdd435e919e06795a98d597ef18f50eab2bf13",
   "unresolved_claims": []
 }
