@@ -495,3 +495,67 @@ The PostgreSQL DS-T01 isolation test therefore remained green across the context
 
 The repaired source/candidate/evidence bytes must now be committed and the direct context probes plus the same applicable regression proof re-run from that exact clean commit before a fresh DS-R01 packet is exported.
 
+### Clean committed context-contract repair proof
+
+The substantive context-contract repair was frozen at:
+
+- branch: `work/ds-i01-context-contract-repair`;
+- commit: `005fc799bc85c822486b09d0ac50da960984a15d`;
+- tree: `0410ef0bc25d74a01dc978a3ecb5816c304cd132`;
+- M01 public-seam file SHA-256: `e396dfd74874d9d81f31297f523ffaf95ba008cb4e6f56ede9780a4c1b21426e`;
+- DS-R01 candidate SHA-256: `148e8d84b76dcd2cc4f8d2126e6d50272016b73c18e9ecd0c4f2304dd198d587`;
+- worktree before committed-state verification: clean.
+
+From that exact committed state, the direct public-seam construction/refusal probe produced:
+
+```text
+CONTEXT_COUNT 15
+CONTEXT_SPECIFIC_FIELDS PASS
+REVIEWER_PROBES PASS
+empty_required_policy REFUSED ValueError requirements must not be empty
+zero_risk_capital REFUSED ValueError risk_capital_currency must be positive
+negative_staleness REFUSED ValueError maximum_staleness must be non-negative
+misaligned_attribution REFUSED ValueError attribution path occurrence reference tuples must be exactly aligned
+```
+
+The same committed state, using a freshly recreated PostgreSQL 17.9 proof boundary with distinct M00/M01 proof users and schemas, produced:
+
+```text
+projectctl check
+CHECK: PASS
+ready=DS-R01
+
+pytest tests/product/derived_signal tests/implementation/derived_signal \
+  tests/architecture/test_object_lifecycle.py tests/bootstrap/test_minimal_imports.py -q
+32 passed in 0.19s
+
+pytest tests/architecture tests/bootstrap -q
+74 passed in 2.22s
+
+python tools/validate_architecture.py
+PASS: structural architecture validation
+
+python tools/check_dependencies.py
+PASS: dependency direction and cycle validation
+
+python tools/check_public_seams.py
+PASS: public-seam validation
+
+ruff check src tests tools
+All checks passed!
+
+mypy src/nvda_desk/derived_signal_calculation_truth/api.py --show-error-codes
+Success: no issues found in 1 source file
+
+pytest -q
+74 passed in 2.13s
+
+git diff --check
+PASS (no output)
+
+git status --short
+<empty>
+```
+
+No production source, candidate, test, architecture, persistence or authority bytes changed after `005fc799...` during this committed-state verification. This successor update records evidence/control bytes only so a fresh DS-R01 packet can bind the exact repaired candidate and its committed-state proof.
+
