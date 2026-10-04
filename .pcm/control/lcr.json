@@ -54,12 +54,12 @@
   "blockers": [],
   "checkpoint": {
     "branch": "work/ds-t01-r02-persistence-boundary-proof",
-    "source_head": "9f3d7b25a9cf5d4b15d81d8132ba6a355fc29969",
-    "source_tree": "d4c68038aaa38e4bee099c9d59043a14dcd9417a",
+    "source_head": "ef60ea6065f8989c07faf453b532f4a0691240d5",
+    "source_tree": "07ef7f9b929ac0b0d25027aeca04b3dc012bd4ce",
     "working_state_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
   "claims_hash": "4d972026e949813141677eec36ad4d646c440afd81507fe52402d94c8970c58d",
-  "generated_at": "2026-10-04T11:14:57Z",
+  "generated_at": "2026-10-04T11:22:49Z",
   "last_receipt": null,
   "migration_provenance": null,
   "next_transition": {
@@ -70,7 +70,7 @@
     "DS-R01"
   ],
   "receipt_hashes": {},
-  "repo_fingerprint": "6898febff385d19532b02e2a0d60f552df4e53021005160307f7ece9f96fc14c",
+  "repo_fingerprint": "8b98270344f837ee47a49487718d8353f0153c781d0f4e5d384206c9a1649d68",
   "schema_version": 1,
   "task_contract_hash": "6332ee6bb3f4b51019f2c2a9f0d45c742c2811e2e01b63f94a0269c09e5e60a7",
   "unresolved_claims": []
