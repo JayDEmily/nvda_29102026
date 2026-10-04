@@ -332,3 +332,77 @@ git diff --check: PASS
 ## Remaining verification before DS-I01 close
 
 The repaired source/evidence bytes must now be committed and the same proof re-run from that exact clean commit. Those committed-state results are recorded in a successor evidence-only update before DS-I01 is closed and DS-R01 becomes reviewable.
+
+## Clean committed repaired-candidate proof
+
+The bounded persistence repair was committed at:
+
+- commit: `b099fbc1ddb277e9faba28bfec3d2b71d2b66c71`;
+- tree: `a974c5039819f8a4034529ee365cb433fb2eec69`;
+- branch: `work/ds-i01-foundation-implementation`;
+- `projectctl check`: PASS;
+- routed leaf: `DS-I01`;
+- worktree before verification: clean.
+
+From that exact committed state, direct PostgreSQL 17.9 proof established distinct M00/M01 role/schema identities and no M01 SELECT or INSERT/UPDATE/DELETE privilege on the four exercised M00-owned relations. Two committed-state occurrence probes then passed for both `universe=None` and `universe=('NVDA', 'AMD')`:
+
+```text
+M00_IDENTITY ('nvda_m00_proof', 'm00_proof')
+M01_IDENTITY ('nvda_m01_proof', 'm01_proof')
+M01_ON_M00_PRIVILEGES ... (False, False) for every exercised relation
+
+ds-i01-committed-none-v1 ROUNDTRIP_IDENTICAL True
+ds-i01-committed-none-v1 CONFLICT_REFUSAL derived occurrence identity already has different content
+ds-i01-committed-universe-v1 ROUNDTRIP_IDENTICAL True
+ds-i01-committed-universe-v1 CONFLICT_REFUSAL derived occurrence identity already has different content
+HISTORY_CONTAINS_BOTH True
+```
+
+The same committed state produced:
+
+```text
+projectctl check
+CHECK: PASS
+ready=DS-I01
+
+pytest tests/product/derived_signal tests/implementation/derived_signal \
+  tests/architecture/test_object_lifecycle.py tests/bootstrap/test_minimal_imports.py -q
+32 passed in 0.18s
+
+pytest tests/architecture tests/bootstrap -q
+74 passed in 2.07s
+
+python tools/validate_architecture.py
+architecture objects: 6
+active runtime modules: 1
+implementation allocations: 2
+admitted test families: 11
+promotion sets: 1
+dependency/public-seam violations: 0
+PASS: structural architecture validation
+
+python tools/check_dependencies.py
+PASS: dependency direction and cycle validation
+
+python tools/check_public_seams.py
+PASS: public-seam validation
+
+python -m mypy src --show-error-codes
+Success: no issues found in 19 source files
+
+python -m ruff check src tests tools
+All checks passed!
+
+pytest -q
+74 passed in 2.09s
+
+git diff --check
+PASS (no output)
+
+git status --short
+<empty>
+```
+
+The configured aggregate `pytest -q` remains the architecture/bootstrap aggregate; the 32-test foundation set is therefore recorded separately rather than being silently conflated with that aggregate.
+
+This successor evidence update changes evidence/control bytes only. The substantive source/config/test/candidate bytes under review are unchanged from the repaired commit above.
