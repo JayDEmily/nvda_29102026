@@ -559,3 +559,55 @@ git status --short
 
 No production source, candidate, test, architecture, persistence or authority bytes changed after `005fc799...` during this committed-state verification. This successor update records evidence/control bytes only so a fresh DS-R01 packet can bind the exact repaired candidate and its committed-state proof.
 
+
+---
+
+# DS-T01-R01 — recurrent foundation-contract proof refinement
+
+## Authority and recurrence boundary
+
+The second independent DS-R01 review of packet `2f5c2232394921bf2e5098afc633fc68ce2e6adc4e0a048cc847df5d6cb69536` returned `REPAIR -> DS-I01` with internal result SHA-256 `c409fe3be22c0609100d1ee4980668650198d43b4ba5befc45a29ffd5633aadc` and classified the defect mechanism as `RECURRENT_CLASS foundation-contract/proof-boundary drift`.
+
+The reviewer established that the prior clause-6 context repair fixed one witness but that the same mechanism remained elsewhere: accepted semantic requirements were stronger than the inherited DS-T01 green/shape proof. The named witnesses were lack of event-time filtering on the M00 projected-history seam and non-canonical `RawInputLineageV1.raw_signal_id` acceptance. The reviewer required class-level closure across the complete DS-I01 foundation contract and required a lawful proof/governance refinement before any further production repair where accepted DS-T01 proof bytes were insufficient.
+
+The Programme Owner explicitly authorised that bounded proof-refinement route on 2026-10-04. Governance commit `9af612d` appends `DS-T01-R01` and `DS-I01-R01` as same-actor bounded refinements, keeps the original requirements/write scopes/acceptance law, routes DS-R01 behind the implementation refinement, and leaves kernel semantics, architecture ownership and external-effect authority unchanged.
+
+## Authority-derived class-level proof surface
+
+`tests/product/derived_signal/test_ds_t01_r01_foundation_contract_refinement.py` strengthens the Gate-2 proof without changing accepted semantics. It directly discriminates:
+
+- M00 projected-history receipt-time and true-event-time criteria as separate public-seam dimensions;
+- refusal to fabricate event instants for receipt-only observations;
+- canonical admitted `R001-R323` identity on exact raw-input lineage;
+- exact `VersionRefV1` typing and duplicate-ref refusal for request/context lineage;
+- exact `RawInputLineageV1` typing for persisted raw lineage;
+- non-empty/distinct predecessor occurrence identity and universe membership;
+- persisted value versus absence separation (`result=None` is not a persisted occurrence value);
+- rejection of unadmitted mutable/float/object result carriers and acceptance of the admitted recursive immutable result carrier; and
+- continued constructibility of the repaired clause-6 context-specific contracts.
+
+The refinement intentionally does not add any D-kernel mathematics, concrete production mappings/context instances, provider parsing fallback, architecture expansion or external effects.
+
+## Expected-red execution against the reviewed DS-I01 candidate
+
+Against repository state immediately after the governance refinement and before any production repair, the refined test produced:
+
+```text
+18 failed, 4 passed
+```
+
+The failures are semantic witnesses of the reviewed recurrent class:
+
+- 2 failures: `list_projected_raw_history` has no `event_at_or_before_utc` criterion;
+- 3 failures: `RawInputLineageV1` accepts invalid four-character/out-of-range raw IDs (`ABCD`, `R000`, `R324`);
+- 2 failures: `CalculationRequestV1.context_refs` accepts untyped and duplicate version references;
+- 3 failures: `DerivedSignalOccurrenceV1` accepts untyped parameter-context, raw-lineage and convention collections;
+- 1 failure: duplicate occurrence version references are accepted;
+- 1 failure: empty/duplicate predecessor occurrence IDs are accepted;
+- 1 failure: empty/duplicate universe members are accepted;
+- 1 failure: `result=None` is accepted as persisted value although public absence is a separate state;
+- 4 failures: list/dict/float/arbitrary-object result carriers are accepted despite being outside `DerivedResultV1`.
+
+The four passing propositions show that the refined proof itself is not merely globally red: malformed-length raw IDs already fail, the admitted recursive immutable structured result carrier is accepted, and the previously repaired clause-6 context-specific contracts remain constructible.
+
+This is proof-first evidence only. No production source is changed by DS-T01-R01. DS-I01-R01 must remain blocked until this refined proof is durably accepted.
