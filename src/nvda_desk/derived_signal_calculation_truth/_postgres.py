@@ -133,29 +133,54 @@ def _require_no_m00_relation_privileges(
 ) -> None:
     rows = connection.execute(
         """
-        SELECT c.relname,
-               has_table_privilege(current_user, c.oid, 'SELECT'),
-               has_table_privilege(current_user, c.oid, 'INSERT'),
-               has_table_privilege(current_user, c.oid, 'UPDATE'),
-               has_table_privilege(current_user, c.oid, 'DELETE')
-        FROM pg_catalog.pg_class AS c
-        JOIN pg_catalog.pg_namespace AS n ON n.oid = c.relnamespace
-        WHERE n.nspname = %s
-          AND c.relkind IN ('r', 'p', 'v', 'm', 'f')
-        ORDER BY c.relname
+        WITH m00_relations AS (
+            SELECT c.oid, c.relname
+            FROM pg_catalog.pg_class AS c
+            JOIN pg_catalog.pg_namespace AS n ON n.oid = c.relnamespace
+            WHERE n.nspname = %s
+              AND c.relkind IN ('r', 'p', 'v', 'm', 'f')
+        ),
+        table_privileges(privilege) AS (
+            VALUES
+                ('SELECT'),
+                ('INSERT'),
+                ('UPDATE'),
+                ('DELETE'),
+                ('TRUNCATE'),
+                ('REFERENCES'),
+                ('TRIGGER'),
+                ('MAINTAIN')
+        ),
+        column_privileges(privilege) AS (
+            VALUES ('SELECT'), ('INSERT'), ('UPDATE'), ('REFERENCES')
+        )
+        SELECT relation_name, privilege_scope, privilege
+        FROM (
+            SELECT r.relname AS relation_name,
+                   'table'::text AS privilege_scope,
+                   p.privilege
+            FROM m00_relations AS r
+            CROSS JOIN table_privileges AS p
+            WHERE has_table_privilege(current_user, r.oid, p.privilege)
+
+            UNION ALL
+
+            SELECT r.relname AS relation_name,
+                   'column'::text AS privilege_scope,
+                   p.privilege
+            FROM m00_relations AS r
+            CROSS JOIN column_privileges AS p
+            WHERE has_any_column_privilege(current_user, r.oid, p.privilege)
+              AND NOT has_table_privilege(current_user, r.oid, p.privilege)
+        ) AS effective_privileges
+        ORDER BY relation_name, privilege_scope, privilege
         """,
         (m00_boundary.schema,),
     ).fetchall()
-    privilege_names = ("SELECT", "INSERT", "UPDATE", "DELETE")
-    violations = [
-        f"{row[0]}:{privilege}"
-        for row in rows
-        for index, privilege in enumerate(privilege_names, start=1)
-        if bool(row[index])
-    ]
+    violations = [f"{row[0]}:{row[1]}:{row[2]}" for row in rows]
     if violations:
         raise ValueError(
-            "M01 persistence role must have no direct read/write privilege on M00-owned "
+            "M01 persistence role must have no database-role privilege on M00-owned "
             f"relations: {', '.join(violations)}"
         )
 

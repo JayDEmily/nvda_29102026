@@ -1119,3 +1119,59 @@ The four passing cases are the already-repaired table-level `SELECT`, `INSERT`, 
 - post-construction `TRUNCATE` drift and column-level `SELECT` drift are not refused.
 
 Every failure is an expected semantic witness of the reviewed recurrent class: `pytest.raises(ValueError)` was required but the persistence factory/operation proceeded. This is proof-first evidence only. No production source, architecture, package metadata, schema definition or previously accepted proof byte was changed to obtain it. DS-I01-R04 remains blocked until this proof refinement is durably accepted.
+
+## DS-I01-R04 — PostgreSQL privilege-surface production repair
+
+`DS-T01-R04` is durably accepted at tag `accepted/DS-T01-R04`. DS-I01-R04 is the same-actor implementation refinement under the already-admitted DS-I01 envelope and changes no requirement, semantic route, write scope, actor class or review contract.
+
+### Bounded implementation mechanism
+
+The repair changes only the private M01 PostgreSQL mechanism plus candidate/evidence text. `src/nvda_desk/derived_signal_calculation_truth/_postgres.py` now evaluates the complete PostgreSQL 17.9 relation ACL surface for relations in the runtime-declared M00 schema.
+
+The fail-closed guard checks:
+
+- every table privilege supported for table-like relations: `SELECT`, `INSERT`, `UPDATE`, `DELETE`, `TRUNCATE`, `REFERENCES`, `TRIGGER`, and `MAINTAIN` via `has_table_privilege`; and
+- every column privilege form: `SELECT`, `INSERT`, `UPDATE`, and `REFERENCES` via `has_any_column_privilege`, reported separately when the corresponding table privilege is absent.
+
+This implements the already-admitted architecture/work-order rule that M01 has no database-role privilege over M00-owned relations. Construction and every later persistence connection run the same guard, so privilege drift fails closed. The guard uses `pg_catalog` privilege metadata only; it does not read M00 row content, accept an M00 DSN, grant/revoke production privileges, or select production role/schema names.
+
+### Pre-freeze proof
+
+Against the repaired working candidate, the accepted DS-T01-R04 proof transitions from `10 failed, 4 passed` to:
+
+```text
+pytest -q tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py
+14 passed
+```
+
+Using the same fresh PostgreSQL 17.9 proof boundary, the complete Gate-2 foundation/lifecycle surface produced:
+
+```text
+pytest -q tests/product/derived_signal tests/implementation/derived_signal \
+  tests/architecture/test_object_lifecycle.py tests/bootstrap/test_minimal_imports.py
+77 passed
+
+pytest -q tests/architecture tests/bootstrap
+74 passed
+
+python tools/validate_architecture.py
+PASS: structural architecture validation
+
+python tools/check_dependencies.py
+PASS: dependency direction and cycle validation
+
+python tools/check_public_seams.py
+PASS: public-seam validation
+
+mypy src/nvda_desk/derived_signal_calculation_truth/_postgres.py --show-error-codes
+Success: no issues found in 1 source file
+
+ruff check src/nvda_desk/derived_signal_calculation_truth/_postgres.py \
+  tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py
+All checks passed!
+
+git diff --check
+PASS (no output)
+```
+
+The substantive repaired source/candidate/evidence bytes must now be frozen in Git and the same proof rerun from that exact clean commit before DS-I01-R04 can be accepted and a fresh DS-R01 packet exported.

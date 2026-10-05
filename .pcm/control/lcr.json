@@ -59,12 +59,12 @@
   "blockers": [],
   "checkpoint": {
     "branch": "work/ds-i01-r04-privilege-surface-repair",
-    "source_head": "9593967a73085f04ca42cb5c144d8258c4f9ed46",
-    "source_tree": "3f3807f1e3f08d7e48edab676baa3a9e50546efb",
+    "source_head": "ffa998ad2e1ecf944444540c1d43d16e161ad190",
+    "source_tree": "ee9e746e448b1cb77410698323ce72a29e89b7ad",
     "working_state_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
   "claims_hash": "4d972026e949813141677eec36ad4d646c440afd81507fe52402d94c8970c58d",
-  "generated_at": "2026-10-05T23:50:44Z",
+  "generated_at": "2026-10-05T23:51:02Z",
   "last_receipt": null,
   "migration_provenance": null,
   "next_transition": {
@@ -75,7 +75,7 @@
     "DS-R01"
   ],
   "receipt_hashes": {},
-  "repo_fingerprint": "5483c3fa233903dfa3feccad21e8437c2bc62c01f183238fffaebcb2ffb11a98",
+  "repo_fingerprint": "eb939ccd359b2e601e6bd60f5cb3987b4bde914d4d9b575d4820f280ce89d7d2",
   "schema_version": 1,
   "task_contract_hash": "c8f10cf52d8eecb3ce4c10d33a55fa6f15d6ef0d6302a15a3451feaeb818247c",
   "unresolved_claims": []
