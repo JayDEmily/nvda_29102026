@@ -127,6 +127,39 @@ def _require_separate_from_m00(
         raise ValueError("M01 persistence schema must be separate from M00 schema")
 
 
+def _require_no_m00_relation_privileges(
+    connection: Any,
+    m00_boundary: PostgresBoundaryIdentityV1,
+) -> None:
+    rows = connection.execute(
+        """
+        SELECT c.relname,
+               has_table_privilege(current_user, c.oid, 'SELECT'),
+               has_table_privilege(current_user, c.oid, 'INSERT'),
+               has_table_privilege(current_user, c.oid, 'UPDATE'),
+               has_table_privilege(current_user, c.oid, 'DELETE')
+        FROM pg_catalog.pg_class AS c
+        JOIN pg_catalog.pg_namespace AS n ON n.oid = c.relnamespace
+        WHERE n.nspname = %s
+          AND c.relkind IN ('r', 'p', 'v', 'm', 'f')
+        ORDER BY c.relname
+        """,
+        (m00_boundary.schema,),
+    ).fetchall()
+    privilege_names = ("SELECT", "INSERT", "UPDATE", "DELETE")
+    violations = [
+        f"{row[0]}:{privilege}"
+        for row in rows
+        for index, privilege in enumerate(privilege_names, start=1)
+        if bool(row[index])
+    ]
+    if violations:
+        raise ValueError(
+            "M01 persistence role must have no direct read/write privilege on M00-owned "
+            f"relations: {', '.join(violations)}"
+        )
+
+
 class _PostgresPersistenceV1:
     __slots__ = ("_dsn", "_m00_boundary", "_own_boundary")
 
@@ -144,6 +177,7 @@ class _PostgresPersistenceV1:
     def _validate_connection(self, connection: Any) -> None:
         current = _connection_identity(connection)
         _require_separate_from_m00(current, self._m00_boundary)
+        _require_no_m00_relation_privileges(connection, self._m00_boundary)
         if current != self._own_boundary:
             raise ValueError("M01 persistence PostgreSQL boundary changed after construction")
 
@@ -283,6 +317,7 @@ def create_postgres_persistence(
     with psycopg.connect(dsn) as connection:
         own_boundary = _connection_identity(connection)
         _require_separate_from_m00(own_boundary, m00_boundary)
+        _require_no_m00_relation_privileges(connection, m00_boundary)
         connection.execute(
             f"""
             CREATE TABLE IF NOT EXISTS {_TABLE} (

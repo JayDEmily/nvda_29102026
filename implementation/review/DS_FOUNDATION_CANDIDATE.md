@@ -85,15 +85,22 @@ Persistence semantics implemented here include:
 - bounded history is stably ordered;
 - the private factory requires an explicit runtime identity for the M00 writer/schema boundary and refuses construction if either the connected writer role or current schema is shared with M00;
 - the constructed persistence mechanism retains its observed M01 boundary identity and revalidates writer/schema separation on every new PostgreSQL connection, so later role/search-path drift cannot silently move persistence onto M00;
+- construction and every later persistence connection inspect PostgreSQL catalogue privilege metadata and refuse if the effective M01 role has `SELECT`, `INSERT`, `UPDATE` or `DELETE` privilege on any relation in the declared M00 schema; this checks boundary authority only and does not read M00 row content;
 - the PostgreSQL factory and boundary identity remain private mechanism surfaces and are not exported on the M01 public API.
 
-The implementation does not name or grant production database roles/schemas. Concrete role/schema names remain runtime configuration; the proof environment uses temporary identities only to establish lawful separation and adverse shared-boundary refusal.
+The implementation does not name or grant production database roles/schemas. Concrete role/schema names remain runtime configuration; the proof environment uses temporary identities only to establish lawful separation, adverse shared-boundary refusal and adverse direct-privilege refusal.
 
 ## DS-R01 recurrent PostgreSQL boundary repair
 
 The third DS-R01 review retained the `RECURRENT_CLASS foundation-contract/proof-boundary drift` classification because the prior proof established only one lawful separated PostgreSQL configuration and did not prove refusal of the adverse shared M00 writer/schema configuration. The same-actor bounded refinements `DS-T01-R02` then `DS-I01-R02` preserve the existing Gate-2 authority envelope.
 
 The accepted DS-T01-R02 proof discriminates both separation dimensions independently. DS-I01-R02 therefore adds only a private persistence-boundary guard: M00's current writer-role/schema identity is supplied as runtime mechanism configuration, not as a fixed production name; M01 introspects its own connection identity before table creation and refuses if either writer role or schema matches M00. The constructed mechanism also rejects later connection-boundary drift. This does not grant M01 M00 credentials or table access and does not resolve concrete production database identities.
+
+## DS-R01 recurrent PostgreSQL privilege-boundary repair
+
+The fourth DS-R01 review confirmed the writer/schema repair but retained the same `RECURRENT_CLASS` finding because a distinct M01 role could still hold direct read/write privilege over M00-owned relations. The accepted DS-T01-R03 proof therefore discriminates effective `SELECT`, `INSERT`, `UPDATE` and `DELETE` privilege plus post-construction privilege drift before this production repair.
+
+DS-I01-R03 adds only a private fail-closed privilege guard. Using the already-supplied runtime M00 schema identity, the M01 persistence connection queries PostgreSQL catalogue privilege metadata for relations in that schema and refuses construction or later operation if its effective role has any of those direct read/write privileges. The guard does not select production role/schema names, obtain an M00 DSN, read M00 row content, or grant M01 any M00 access.
 
 ## Lifecycle truth
 

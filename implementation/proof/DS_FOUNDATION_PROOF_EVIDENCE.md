@@ -951,3 +951,58 @@ All checks passed!
 ```
 
 This is the intended proof-first red state. No production source, architecture, package metadata, schema definition or previously accepted proof byte was changed to obtain it. DS-I01-R03 remains blocked until this proof refinement is durably accepted.
+
+## DS-I01-R03 — PostgreSQL privilege-boundary production repair
+
+`DS-T01-R03` is durably accepted at tag `accepted/DS-T01-R03`. DS-I01-R03 is the same-actor implementation refinement under the already-admitted DS-I01 envelope and changes no requirement, semantic route, write scope, actor class or review contract.
+
+### Bounded implementation mechanism
+
+The repair changes only the private M01 PostgreSQL mechanism plus candidate/evidence text. `src/nvda_desk/derived_signal_calculation_truth/_postgres.py` now inspects PostgreSQL catalogue privilege metadata for relations in the runtime-declared M00 schema. Construction and every subsequent M01 persistence connection fail closed if the effective connected role has any `SELECT`, `INSERT`, `UPDATE` or `DELETE` privilege on an M00-schema relation.
+
+The check uses PostgreSQL privilege metadata only. It does not read M00 row content, does not accept an M00 DSN, does not select production role/schema names, and does not grant or revoke production privileges. The existing writer/schema identity separation and post-construction boundary-drift checks remain in force.
+
+### Pre-freeze proof
+
+Using the fresh PostgreSQL 17.9 proof environment with temporary identities `nvda_m00_r03` / `m00_r03` and `nvda_m01_r03` / `m01_r03`, the accepted DS-T01-R03 adverse privilege proof transitioned to:
+
+```text
+pytest -q tests/implementation/derived_signal/test_ds_t01_r03_postgres_privilege_boundary_refinement.py
+5 passed
+```
+
+The complete Gate-2 foundation/lifecycle surface produced:
+
+```text
+pytest -q tests/product/derived_signal tests/implementation/derived_signal \
+  tests/architecture/test_object_lifecycle.py tests/bootstrap/test_minimal_imports.py
+63 passed
+```
+
+The existing DS-T01-R02 alternate-schema adversary initially encountered proof-environment `CREATE` permission denial for the temporary M00 proof role; granting that role `CREATE` on the isolated proof database restored the already-accepted adversary without changing repository bytes. With the process-local Git safe-directory setting required by extracted ownership, architecture and static checks then produced:
+
+```text
+pytest -q tests/architecture tests/bootstrap
+74 passed
+
+python tools/validate_architecture.py
+PASS: structural architecture validation
+
+python tools/check_dependencies.py
+PASS: dependency direction and cycle validation
+
+python tools/check_public_seams.py
+PASS: public-seam validation
+
+mypy src/nvda_desk/derived_signal_calculation_truth/_postgres.py --show-error-codes
+Success: no issues found in 1 source file
+
+ruff check src/nvda_desk/derived_signal_calculation_truth/_postgres.py \
+  tests/implementation/derived_signal/test_ds_t01_r03_postgres_privilege_boundary_refinement.py
+All checks passed!
+
+git diff --check
+PASS (no output)
+```
+
+The substantive repaired source/candidate/evidence bytes must now be frozen in Git and the same proof rerun from that exact clean commit before DS-I01-R03 can be accepted and a fresh DS-R01 packet exported.

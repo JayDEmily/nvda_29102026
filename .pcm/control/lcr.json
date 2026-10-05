@@ -57,12 +57,12 @@
   "blockers": [],
   "checkpoint": {
     "branch": "work/ds-i01-r03-privilege-boundary-repair",
-    "source_head": "1b90a71d068b983f0ad925f320eb42d0693b33c4",
-    "source_tree": "37eb11b9de217409b633a3a6fc12f19a4820bbd5",
+    "source_head": "6973e6d50687dce23364cb1046c01f6113984bf3",
+    "source_tree": "018fe1a21b1ac8f50e67453480867e04a1a08553",
     "working_state_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
   "claims_hash": "4d972026e949813141677eec36ad4d646c440afd81507fe52402d94c8970c58d",
-  "generated_at": "2026-10-05T22:32:29Z",
+  "generated_at": "2026-10-05T22:32:43Z",
   "last_receipt": null,
   "migration_provenance": null,
   "next_transition": {
@@ -73,7 +73,7 @@
     "DS-R01"
   ],
   "receipt_hashes": {},
-  "repo_fingerprint": "8431c926b860179100e6b75407512a2ae903ec613f23a4588db1a3468eca959c",
+  "repo_fingerprint": "ad807fae4d89f7ccb09cd0ee857ceddee3239d07f29d9e89986a3b213ffa46a1",
   "schema_version": 1,
   "task_contract_hash": "31c29e32a6b865ae7ff2e3ffd0e94016ef07284ac40f3fd6178dee82a8c2ac22",
   "unresolved_claims": []
