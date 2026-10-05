@@ -139,6 +139,30 @@
 **Stop:** any repair requires concrete production database identity, direct M00 table access, changed semantic meaning, widened write scope, changed actor/review law or another unproved production behaviour.
 <!-- CONTROL:TASK:DS-I01-R02:END -->
 
+<!-- CONTROL:TASK:DS-T01-R03:START -->
+## DS-T01-R03 — Refine PostgreSQL privilege-boundary proof for recurrent contract drift
+
+**Requirements:** REQ-003, REQ-004, REQ-005, REQ-008, REQ-010
+
+**Proposition:** Under the bounded refinement envelope of DS-T01 and the existing `FOUNDATION-CONTRACT-PROOF-DRIFT` mechanism, strengthen executable proof so the M01 persistence role fails closed when it has any direct read or write privilege over M00-owned relations, including privilege drift after lawful construction, while retaining the already-accepted separate writer/schema proof and without selecting production role/schema names.
+
+**Write scope:** identical to DS-T01. No production source mutation.
+
+**Stop:** any required proof proposition cannot be derived from accepted authority, or closure would change requirement meaning, ownership, actor class, write scope, review law, require direct M01 access to M00 data, or resolve concrete production database identities.
+<!-- CONTROL:TASK:DS-T01-R03:END -->
+
+<!-- CONTROL:TASK:DS-I01-R03:START -->
+## DS-I01-R03 — Repair PostgreSQL privilege-boundary recurrent contract drift
+
+**Requirements:** REQ-003, REQ-004, REQ-005, REQ-008, REQ-010
+
+**Proposition:** Under the bounded refinement envelope of DS-I01 and only after DS-T01-R03 is accepted, make the smallest production repair required for the M01 persistence mechanism to refuse construction or operation while its database role has direct read or write privilege over M00-owned relations, without selecting concrete production role/schema names or granting M01 direct M00 access.
+
+**Write scope:** identical to DS-I01. No kernel semantics, provider fallback, architecture expansion, package authority or external effects.
+
+**Stop:** any repair requires concrete production database identity, reading M00 row content, changed semantic meaning, widened write scope, changed actor/review law or another unproved production behaviour.
+<!-- CONTROL:TASK:DS-I01-R03:END -->
+
 <!-- CONTROL:TASK:DS-R01:START -->
 ## DS-R01 — Independently review foundation candidate
 
