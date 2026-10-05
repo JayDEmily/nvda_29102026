@@ -18,11 +18,7 @@
     "head": "c3ef6c8f48ad08941f5075e6dd76e168d7eef5e8",
     "tree": "3bc220327765b83fe41d1c7bb0dfd6a5f89524e0"
   },
-  "active_leaf": {
-    "id": "DS-R01",
-    "label": "Independently review foundation candidate",
-    "status": "pending"
-  },
+  "active_leaf": null,
   "applicable_context": {
     "ancestors": [],
     "authority_files": [
@@ -31,36 +27,18 @@
       "GUARDRAILS.md",
       "AGENTS.md"
     ],
-    "dependencies": [
-      "DS-A01",
-      "DS-A02",
-      "DS-A03",
-      "DS-A04",
-      "DS-T01",
-      "DS-I01",
-      "DS-T01-R01",
-      "DS-I01-R01"
-    ],
-    "plan_leaf": "DS-R01",
-    "requirements": [
-      "REQ-001",
-      "REQ-002",
-      "REQ-012",
-      "REQ-003",
-      "REQ-005",
-      "REQ-004",
-      "REQ-008",
-      "REQ-010"
-    ]
+    "dependencies": [],
+    "plan_leaf": null,
+    "requirements": []
   },
   "authority_hashes": {
     ".pcm/AGENTS.md": "b787f72c13d1d650d3ead15a33b33d846478278c1144dc3b3dff8218b2a5df7e",
     ".pcm/CHATGPT_PROJECT_INSTRUCTIONS.md": "a590003a3098f83e3f6bc38ca5c765c420a027663e995d0c0d52bdc85dcbeba9",
     ".pcm/CODING_PROGRAMME.md": "926c6860665fc7aa6f8a933e2d72a51ef9d0cd6591a3770708ccdba0e13f52fc",
     ".pcm/GUARDRAILS.md": "714a3915543572991252ff62b3c50bf165cce1c783bb229d8f043b15bba4c0b8",
-    ".pcm/control/delegation.json": "6814f1833a65f8dc6a0af1669b048feccfb2c883e5d3ec5dd8af630254ce1d04",
+    ".pcm/control/delegation.json": "f43eef7938bfb63c292abac13c28db589b57d706ccb6924ab7559818b8aaa02c",
     ".pcm/control/instantiation.json": "4f8707eb2a8c562e03c8dc15429a6458ce891e7345cd10f4c4844e9378c7fd19",
-    ".pcm/project/EXEC_PLAN.md": "b7f1307947a2b1eb6c25ef57bbf4ae766cd23e13294e8e35c7ea322809538e96",
+    ".pcm/project/EXEC_PLAN.md": "a74a90c0fa611c29b2389aee8d3cd5b43de56b69174c350b60bbd179b82b71ec",
     ".pcm/project/PROJECT_OBJECTIVE.md": "05be9dcd74a20a1a2855f3ba5c63184cb42de13ebddc7b6b378da36ae762d51b",
     ".pcm/project/REQUIREMENTS.md": "1dba44b0dd7ed57dead8a40835fea7bfea46642da7599686010652d39efa4126",
     "AGENTS.md": "d431f1a0c139912606211474880d5ecf595549507eface0f4e5ae4b3f52b468d",
@@ -70,24 +48,25 @@
   "blockers": [],
   "checkpoint": {
     "branch": "main",
-    "source_head": "c3ef6c8f48ad08941f5075e6dd76e168d7eef5e8",
-    "source_tree": "3bc220327765b83fe41d1c7bb0dfd6a5f89524e0",
+    "source_head": "de57ecc5162a924dfad6755d40c6706e540b7586",
+    "source_tree": "64b0f81be8be4b014c9a91f935a9ba5bc87e2bda",
     "working_state_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
   "claims_hash": "4d972026e949813141677eec36ad4d646c440afd81507fe52402d94c8970c58d",
-  "generated_at": "2026-10-05T22:36:58Z",
+  "generated_at": "2026-10-05T22:37:00Z",
   "last_receipt": null,
   "migration_provenance": null,
   "next_transition": {
-    "actor_class": "INDEPENDENT_REVIEW",
-    "next_leaf": "DS-R01"
+    "actor_class": "AUTONOMOUS",
+    "next_leaf": null
   },
   "ready_tasks": [
+    "DS-T01-R04",
     "DS-R01"
   ],
   "receipt_hashes": {},
-  "repo_fingerprint": "c2088921f15c2a540e2778383257937948f41a7a237b10f23a729765915dc15c",
+  "repo_fingerprint": "b0bbac35c19b813919f72da74594d6b2fe2881beb8b7d3cd21959ebdc4e7e0c8",
   "schema_version": 1,
-  "task_contract_hash": "a27be8cc58b7127d5d828af7b2b9fcf1ad76427e7025e8413b3979f74bd1855e",
+  "task_contract_hash": "329be40cf2f5b09f13408d35e8c05df033d07e3925fcfdfe7fd18d3bd1cb01b3",
   "unresolved_claims": []
 }
