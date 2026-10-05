@@ -907,3 +907,47 @@ POST_RESET_IDENTITY ('nvda_m01_r01', 'm01_r01')
 The operation-drift probe granted only temporary proof-environment schema visibility, reset the M01 role's search path to its own schema and revoked that visibility afterwards. No production database identity or privilege was selected or changed.
 
 No substantive source/candidate/test/architecture bytes changed after `b4d2bf3...` during committed-state verification. This successor evidence update changes evidence/control bytes only so DS-I01-R02 can be accepted and a fresh DS-R01 packet can bind the exact repaired candidate and committed-state proof.
+
+---
+
+# DS-T01-R03 — PostgreSQL privilege-boundary proof refinement
+
+## Authority and recurrence boundary
+
+The fourth independent DS-R01 review of packet `5742c502855a2f9d95cec5f2df02c40296d12021bf60119af95567c788176e43` returned `REPAIR -> DS-I01-R01` with internal result SHA-256 `6dbc7d314e9631d808ebab62c8847d3ee3edd24b7b7f0fee18b7c9aa78f49a32`, reviewer actor instance `24b174ae65e2939a776bf696358fbd19`, and externally supplied result-file SHA-256 `fa07fef62b41b9ee0c6ff3e736c6549f3338bd95bfd42dcb8cf3d37b219a1083`.
+
+The reviewer confirmed that DS-T01-R02/DS-I01-R02 correctly enforce distinct writer/schema identity, but retained the `RECURRENT_CLASS foundation-contract/proof-boundary drift` classification because the calculation-owner role can still hold direct read/write privilege on M00-owned relations. The accepted brief clause 10 and REQ-005 require both boundary separation and no calculation-owner database-role privilege to read or write M00-owned tables.
+
+Under the existing same-actor bounded-refinement contract for `FOUNDATION-CONTRACT-PROOF-DRIFT`, DS-T01-R03 strengthens proof before any further persistence behaviour change. It does not select concrete production role/schema names, grant production privilege, or authorise M01 to read M00 row content.
+
+## Authority-derived adverse privilege proof
+
+`tests/implementation/derived_signal/test_ds_t01_r03_postgres_privilege_boundary_refinement.py` directly exercises five propositions against real PostgreSQL 17.9:
+
+1. a distinct M01 writer/schema holding effective `SELECT` on an M00-owned relation must be refused by persistence construction;
+2. effective `INSERT` privilege on that M00 relation must be refused;
+3. effective `UPDATE` privilege on that M00 relation must be refused;
+4. effective `DELETE` privilege on that M00 relation must be refused; and
+5. a lawfully constructed persistence object must fail closed if M01 later gains effective `SELECT` privilege on the M00 relation before an operation.
+
+The proof derives the M00/M01 role and schema identities from the live database. It grants only temporary proof-environment schema usage and table privilege, verifies that the adverse privilege is actually effective through the M01 role, and revokes it in cleanup. The proof never reads M00 row content as part of the product mechanism and does not fix production role/schema names.
+
+## Expected-red execution before DS-I01-R03
+
+A fresh hash-verified Python 3.13.5 / psycopg 3.3.4 / PostgreSQL 17.9 proof environment was reconstructed from the preserved offline bootstrap/runtime assets. Temporary proof-only database identities are `nvda_m00_r03` / `m00_r03` and `nvda_m01_r03` / `m01_r03`.
+
+Against the current reviewed candidate, before any production repair, observed:
+
+```text
+pytest -q tests/implementation/derived_signal/test_ds_t01_r03_postgres_privilege_boundary_refinement.py
+5 failed
+```
+
+Each failure occurs because a `ValueError` is required but the existing persistence mechanism constructs or operates successfully while the M01 role has the adverse effective M00-table privilege. The test file itself passes Ruff:
+
+```text
+ruff check tests/implementation/derived_signal/test_ds_t01_r03_postgres_privilege_boundary_refinement.py
+All checks passed!
+```
+
+This is the intended proof-first red state. No production source, architecture, package metadata, schema definition or previously accepted proof byte was changed to obtain it. DS-I01-R03 remains blocked until this proof refinement is durably accepted.
