@@ -746,7 +746,7 @@
           "unresolved_stops": []
         }
       ],
-      "status": "in_progress",
+      "status": "accepted",
       "title": "Refine PostgreSQL privilege-surface proof for recurrent contract drift",
       "verification": {
         "leaf_close": [],
