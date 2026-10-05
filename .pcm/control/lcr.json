@@ -58,12 +58,12 @@
   "blockers": [],
   "checkpoint": {
     "branch": "work/ds-t01-r04-privilege-surface-proof",
-    "source_head": "18027310afffa72247e574b843676d09d8dad72f",
-    "source_tree": "70633d4ea42eacb35f42e052bcd8604c3fdc4f84",
+    "source_head": "d2a87a2f77bb1c8e71de055ff8f8e8227ef68dec",
+    "source_tree": "e49592ba5ca39664e0a00af2a0fd10577e2fedcf",
     "working_state_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
   "claims_hash": "4d972026e949813141677eec36ad4d646c440afd81507fe52402d94c8970c58d",
-  "generated_at": "2026-10-05T23:46:00Z",
+  "generated_at": "2026-10-05T23:46:35Z",
   "last_receipt": null,
   "migration_provenance": null,
   "next_transition": {
@@ -74,7 +74,7 @@
     "DS-R01"
   ],
   "receipt_hashes": {},
-  "repo_fingerprint": "d6d74751441990881c3d846507f5d90c47fdc21e3c24df2bbd918bcc8fb1102c",
+  "repo_fingerprint": "403c5123073ac1ac0442d18317e164576df52630ea78a084a7858fc55a12708d",
   "schema_version": 1,
   "task_contract_hash": "9c40fdda7ab2feedff864566d21e4adb9753549dde8fdf0347e53b9118cb113b",
   "unresolved_claims": []

@@ -1071,3 +1071,51 @@ M00_PRIVILEGES_CLEAR True RELATIONS 4
 The occurrence included canonical raw lineage, typed parameter/convention references and a decimal result. The privilege readback queried PostgreSQL metadata only and established that the effective M01 proof role had no `SELECT`, `INSERT`, `UPDATE` or `DELETE` privilege on the four current M00 relations.
 
 No substantive source/candidate/test/architecture/persistence bytes changed after `754361e...` during committed-state verification. This successor evidence update changes evidence/control bytes only so DS-I01-R03 can be accepted and a fresh DS-R01 packet can bind the exact repaired candidate plus committed-state proof.
+
+---
+
+# DS-T01-R04 — PostgreSQL privilege-surface proof refinement
+
+## Authority and recurrence boundary
+
+The fifth independent DS-R01 review of packet `47bd8d911ca07cb304572927d0f45ef0dcfb93410a451fb0b940ae015d062b4d` returned `REPAIR -> DS-I01-R01` with internal result SHA-256 `9a1df8ee27451fa17a18b4d15ef5893094c0377fe14a9e7ae0c58d31a32ad15e`, reviewer actor instance `3aa6ad928c8e0cfece5a75fc4bf40c59`, and supplied result-file SHA-256 `0ee961f527e1aa41b9cb448e2a067094bfda3e0a1c831d9c4ea62833cef00ba3`.
+
+The reviewer confirmed that DS-T01-R03/DS-I01-R03 correctly reject effective table-level `SELECT`/`INSERT`/`UPDATE`/`DELETE` privilege and privilege drift, but retained the `RECURRENT_CLASS foundation-contract/proof-boundary drift` classification because PostgreSQL exposes additional relation privilege forms. The concrete witnesses were table-level `TRUNCATE` and column-level `SELECT` on an M00-owned relation, both of which remained constructible under the reviewed candidate.
+
+The accepted architecture/work order is stronger than those individual witnesses: M01 has a separate PostgreSQL role/schema boundary with **no M01 database-role privilege over M00-owned relations**. Accepted brief clause 10 and REQ-005 independently require no calculation-owner direct read/write privilege over M00-owned tables. DS-T01-R04 therefore proves the complete PostgreSQL relation ACL surface applicable to the admitted boundary rather than adding only the two newest examples.
+
+PostgreSQL 17.9 exposes table relation privileges `SELECT`, `INSERT`, `UPDATE`, `DELETE`, `TRUNCATE`, `REFERENCES`, `TRIGGER`, and `MAINTAIN`, and column privilege forms `SELECT`, `INSERT`, `UPDATE`, and `REFERENCES`. The proof treats any of those privileges on an M00-owned relation as incompatible with the already-admitted no-M01-relation-privilege architecture boundary. It uses PostgreSQL privilege metadata only and never reads M00 row content.
+
+## Authority-derived adverse privilege-surface proof
+
+`tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py` directly exercises, against real PostgreSQL 17.9:
+
+1. construction refusal for every table-level relation privilege: `SELECT`, `INSERT`, `UPDATE`, `DELETE`, `TRUNCATE`, `REFERENCES`, `TRIGGER`, and `MAINTAIN`;
+2. construction refusal for every PostgreSQL column-grant form: `SELECT`, `INSERT`, `UPDATE`, and `REFERENCES` on an M00-owned column;
+3. proof that a column-only grant is independently effective while the corresponding table-level privilege remains false;
+4. operation-time refusal after a lawfully constructed persistence object later gains destructive table privilege `TRUNCATE`; and
+5. operation-time refusal after a lawfully constructed persistence object later gains column-level `SELECT`.
+
+The proof derives M00/M01 role and schema identities from the live proof database, grants only temporary proof-environment privileges, verifies the adverse privilege is effective through PostgreSQL's own privilege functions, and revokes it during cleanup. No production role/schema identity is selected or modified.
+
+## Expected-red execution before DS-I01-R04
+
+A fresh hash-verified Python 3.13.5 / psycopg 3.3.4 / PostgreSQL 17.9 proof environment was reconstructed from the preserved offline bootstrap/runtime assets. Temporary proof-only database identities are `nvda_m00_r04` / `m00_r04` and `nvda_m01_r04` / `m01_r04`.
+
+Against the current reviewed candidate, before any DS-I01-R04 production repair, observed:
+
+```text
+ruff check tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py
+All checks passed!
+
+pytest -q tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py
+10 failed, 4 passed
+```
+
+The four passing cases are the already-repaired table-level `SELECT`, `INSERT`, `UPDATE`, and `DELETE` refusals. The ten failures are the newly discriminated surface:
+
+- table-level `TRUNCATE`, `REFERENCES`, `TRIGGER`, and `MAINTAIN` are not refused;
+- column-level `SELECT`, `INSERT`, `UPDATE`, and `REFERENCES` are not refused even though PostgreSQL reports the column privilege as effective while `has_table_privilege` remains false; and
+- post-construction `TRUNCATE` drift and column-level `SELECT` drift are not refused.
+
+Every failure is an expected semantic witness of the reviewed recurrent class: `pytest.raises(ValueError)` was required but the persistence factory/operation proceeded. This is proof-first evidence only. No production source, architecture, package metadata, schema definition or previously accepted proof byte was changed to obtain it. DS-I01-R04 remains blocked until this proof refinement is durably accepted.
