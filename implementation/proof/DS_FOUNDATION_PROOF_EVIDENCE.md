@@ -1006,3 +1006,68 @@ PASS (no output)
 ```
 
 The substantive repaired source/candidate/evidence bytes must now be frozen in Git and the same proof rerun from that exact clean commit before DS-I01-R03 can be accepted and a fresh DS-R01 packet exported.
+
+### Clean committed DS-I01-R03 proof
+
+The substantive PostgreSQL privilege-boundary repair was frozen at:
+
+- branch: `work/ds-i01-r03-privilege-boundary-repair`;
+- commit: `754361e4283a3ba850d479b9b04a26e8e08c6edc`;
+- tree: `1ba5e911a8048d080e13802be1a994303bbb9cd3`;
+- private M01 PostgreSQL mechanism SHA-256: `d33cb23da944ed590646c316737e61837cded63e5cbe095a8be51247972f844c`;
+- DS-R01 candidate SHA-256: `38c530858969ecde1ab4a0a21a3b86f2e6417e6968c6d918173595bf5644845e`;
+- worktree before committed-state verification: clean.
+
+From that exact commit, the accepted privilege-boundary proof produced:
+
+```text
+pytest -q tests/implementation/derived_signal/test_ds_t01_r03_postgres_privilege_boundary_refinement.py
+5 passed
+```
+
+The complete Gate-2 and architecture surfaces from the same clean commit produced:
+
+```text
+pytest -q tests/product/derived_signal tests/implementation/derived_signal \
+  tests/architecture/test_object_lifecycle.py tests/bootstrap/test_minimal_imports.py
+63 passed
+
+pytest -q tests/architecture tests/bootstrap
+74 passed
+
+python tools/validate_architecture.py
+PASS: structural architecture validation
+
+python tools/check_dependencies.py
+PASS: dependency direction and cycle validation
+
+python tools/check_public_seams.py
+PASS: public-seam validation
+
+mypy src/nvda_desk/derived_signal_calculation_truth/_postgres.py --show-error-codes
+Success: no issues found in 1 source file
+
+ruff check src/nvda_desk/derived_signal_calculation_truth/_postgres.py \
+  tests/implementation/derived_signal/test_ds_t01_r03_postgres_privilege_boundary_refinement.py
+All checks passed!
+
+git diff --check
+PASS (no output)
+
+git status --short
+<empty>
+```
+
+The architecture/bootstrap rerun uses only a process-local Git `safe.directory` override because the extracted handoff ownership differs from the runtime user; no repository or global Git configuration was changed.
+
+A direct lawful persistence probe from the same clean commit established:
+
+```text
+ROUNDTRIP_IDENTICAL True
+IDEMPOTENT_IDENTICAL True
+M00_PRIVILEGES_CLEAR True RELATIONS 4
+```
+
+The occurrence included canonical raw lineage, typed parameter/convention references and a decimal result. The privilege readback queried PostgreSQL metadata only and established that the effective M01 proof role had no `SELECT`, `INSERT`, `UPDATE` or `DELETE` privilege on the four current M00 relations.
+
+No substantive source/candidate/test/architecture/persistence bytes changed after `754361e...` during committed-state verification. This successor evidence update changes evidence/control bytes only so DS-I01-R03 can be accepted and a fresh DS-R01 packet can bind the exact repaired candidate plus committed-state proof.
