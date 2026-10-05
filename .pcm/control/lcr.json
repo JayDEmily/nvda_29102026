@@ -11,12 +11,13 @@
     "DS-T01": "8c1183c9ac34952a651bd4a51fd0a065c73759d0",
     "DS-T01-R01": "de61f260bc72446995d2d1f8806ea8a281e8e50a",
     "DS-T01-R02": "59c796e072ecc7a0344c0ee45d78c1d6a62b6f46",
-    "DS-T01-R03": "b307cea4d2d9d8ec579cb4acff3ee904042bd8ca"
+    "DS-T01-R03": "b307cea4d2d9d8ec579cb4acff3ee904042bd8ca",
+    "DS-T01-R04": "cb52928b83080a8c24aec94d9b70464cd3a001ee"
   },
   "accepted_base": {
     "branch": "main",
-    "head": "758bd707f13bfda3ac0fdc70dfafc46fba651507",
-    "tree": "2bd504cf48dbb2234e07b1fc9994c3cba33c96ad"
+    "head": "cb52928b83080a8c24aec94d9b70464cd3a001ee",
+    "tree": "a39da1f06a142ed9cfa3248208ca92e645cb2cd4"
   },
   "active_leaf": null,
   "applicable_context": {
@@ -48,12 +49,12 @@
   "blockers": [],
   "checkpoint": {
     "branch": "main",
-    "source_head": "758bd707f13bfda3ac0fdc70dfafc46fba651507",
-    "source_tree": "2bd504cf48dbb2234e07b1fc9994c3cba33c96ad",
+    "source_head": "cb52928b83080a8c24aec94d9b70464cd3a001ee",
+    "source_tree": "a39da1f06a142ed9cfa3248208ca92e645cb2cd4",
     "working_state_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
   "claims_hash": "4d972026e949813141677eec36ad4d646c440afd81507fe52402d94c8970c58d",
-  "generated_at": "2026-10-05T23:49:55Z",
+  "generated_at": "2026-10-05T23:50:42Z",
   "last_receipt": null,
   "migration_provenance": null,
   "next_transition": {
