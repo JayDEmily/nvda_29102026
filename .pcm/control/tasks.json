@@ -599,7 +599,7 @@
           "unresolved_stops": []
         }
       ],
-      "status": "pending",
+      "status": "in_progress",
       "title": "Refine PostgreSQL privilege-boundary proof for recurrent contract drift",
       "verification": {
         "leaf_close": [],
