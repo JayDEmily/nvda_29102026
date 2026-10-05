@@ -1175,3 +1175,60 @@ PASS (no output)
 ```
 
 The substantive repaired source/candidate/evidence bytes must now be frozen in Git and the same proof rerun from that exact clean commit before DS-I01-R04 can be accepted and a fresh DS-R01 packet exported.
+
+### Clean committed DS-I01-R04 proof
+
+The substantive PostgreSQL privilege-surface repair was frozen at:
+
+- branch: `work/ds-i01-r04-privilege-surface-repair`;
+- commit: `ec52fbd60009f7b9e5f65319c6ec533a936836d8`;
+- tree: `7ad7765460119d06ce17c659439c252fece57e35`;
+- private M01 PostgreSQL mechanism SHA-256: `cc9957b2d83aa2261bc988090744aaa5fcf58fe9198338b1cceb68aedcb056c3`;
+- DS-R01 candidate SHA-256: `4c0e2cd6c14166431cf1dd7a9b505d5a7f9483e5c6e6548be93be86930391175`;
+- worktree before committed-state verification: clean.
+
+A fresh proof-schema reset was performed before execution so no pre-freeze adverse grant could survive into committed-state verification. From that exact clean commit, observed:
+
+```text
+pytest -q tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py
+14 passed
+
+pytest -q tests/product/derived_signal tests/implementation/derived_signal \
+  tests/architecture/test_object_lifecycle.py tests/bootstrap/test_minimal_imports.py
+77 passed
+
+pytest -q tests/architecture tests/bootstrap
+74 passed
+
+python tools/validate_architecture.py
+PASS: structural architecture validation
+
+python tools/check_dependencies.py
+PASS: dependency direction and cycle validation
+
+python tools/check_public_seams.py
+PASS: public-seam validation
+
+mypy src/nvda_desk/derived_signal_calculation_truth/_postgres.py --show-error-codes
+Success: no issues found in 1 source file
+
+ruff check src/nvda_desk/derived_signal_calculation_truth/_postgres.py \
+  tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py
+All checks passed!
+
+git diff --check
+PASS (no output)
+
+git status --short
+<empty>
+```
+
+A direct PostgreSQL metadata readback from the same proof state enumerated all four current M00 table-like relations and all table/column privilege categories exercised by DS-T01-R04:
+
+```text
+M00_RELATIONS 4
+M01_EFFECTIVE_RELATION_PRIVILEGES []
+PRIVILEGE_SURFACE_CLEAR True
+```
+
+No M00 row content was read by the privilege guard or this metadata proof. No substantive source/candidate/test/architecture/persistence bytes changed after `ec52fbd...` during committed-state verification. This successor evidence update changes evidence/control bytes only so DS-I01-R04 can be accepted and a fresh DS-R01 packet can bind the exact repaired candidate plus committed-state proof.
