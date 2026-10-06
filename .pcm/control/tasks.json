@@ -895,7 +895,7 @@
           "unresolved_stops": []
         }
       ],
-      "status": "pending",
+      "status": "in_progress",
       "title": "Refine PostgreSQL role-membership proof for recurrent contract drift",
       "verification": {
         "leaf_close": [],
