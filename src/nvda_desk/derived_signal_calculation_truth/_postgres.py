@@ -185,6 +185,81 @@ def _require_no_m00_relation_privileges(
         )
 
 
+def _require_no_m00_role_assumption(
+    connection: Any,
+    m00_boundary: PostgresBoundaryIdentityV1,
+) -> None:
+    rows = connection.execute(
+        """
+        WITH m00_relations AS (
+            SELECT c.oid, c.relname
+            FROM pg_catalog.pg_class AS c
+            JOIN pg_catalog.pg_namespace AS n ON n.oid = c.relnamespace
+            WHERE n.nspname = %s
+              AND c.relkind IN ('r', 'p', 'v', 'm', 'f')
+        ),
+        table_privileges(privilege) AS (
+            VALUES
+                ('SELECT'),
+                ('INSERT'),
+                ('UPDATE'),
+                ('DELETE'),
+                ('TRUNCATE'),
+                ('REFERENCES'),
+                ('TRIGGER'),
+                ('MAINTAIN')
+        ),
+        column_privileges(privilege) AS (
+            VALUES ('SELECT'), ('INSERT'), ('UPDATE'), ('REFERENCES')
+        ),
+        assumable_roles AS (
+            SELECT r.oid, r.rolname
+            FROM pg_catalog.pg_roles AS r
+            WHERE r.rolname = session_user
+               OR pg_catalog.pg_has_role(session_user, r.oid, 'SET')
+        )
+        SELECT role_name, capability_scope, capability
+        FROM (
+            SELECT a.rolname AS role_name,
+                   'writer'::text AS capability_scope,
+                   'SET ROLE'::text AS capability
+            FROM assumable_roles AS a
+            WHERE a.rolname = %s
+
+            UNION ALL
+
+            SELECT a.rolname AS role_name,
+                   'table'::text AS capability_scope,
+                   p.privilege AS capability
+            FROM assumable_roles AS a
+            CROSS JOIN m00_relations AS r
+            CROSS JOIN table_privileges AS p
+            WHERE has_table_privilege(a.oid, r.oid, p.privilege)
+
+            UNION ALL
+
+            SELECT a.rolname AS role_name,
+                   'column'::text AS capability_scope,
+                   p.privilege AS capability
+            FROM assumable_roles AS a
+            CROSS JOIN m00_relations AS r
+            CROSS JOIN column_privileges AS p
+            WHERE has_any_column_privilege(a.oid, r.oid, p.privilege)
+              AND NOT has_table_privilege(a.oid, r.oid, p.privilege)
+        ) AS role_capabilities
+        ORDER BY role_name, capability_scope, capability
+        """,
+        (m00_boundary.schema, m00_boundary.writer_role),
+    ).fetchall()
+    violations = [f"{row[0]}:{row[1]}:{row[2]}" for row in rows]
+    if violations:
+        raise ValueError(
+            "M01 credentials must have no SET ROLE authority to the M00 writer or "
+            "roles with database-role privilege on M00-owned relations: "
+            f"{', '.join(violations)}"
+        )
+
+
 class _PostgresPersistenceV1:
     __slots__ = ("_dsn", "_m00_boundary", "_own_boundary")
 
@@ -203,6 +278,7 @@ class _PostgresPersistenceV1:
         current = _connection_identity(connection)
         _require_separate_from_m00(current, self._m00_boundary)
         _require_no_m00_relation_privileges(connection, self._m00_boundary)
+        _require_no_m00_role_assumption(connection, self._m00_boundary)
         if current != self._own_boundary:
             raise ValueError("M01 persistence PostgreSQL boundary changed after construction")
 
@@ -343,6 +419,7 @@ def create_postgres_persistence(
         own_boundary = _connection_identity(connection)
         _require_separate_from_m00(own_boundary, m00_boundary)
         _require_no_m00_relation_privileges(connection, m00_boundary)
+        _require_no_m00_role_assumption(connection, m00_boundary)
         connection.execute(
             f"""
             CREATE TABLE IF NOT EXISTS {_TABLE} (

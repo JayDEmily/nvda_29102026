@@ -1275,3 +1275,68 @@ pytest -q tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_memb
 The fifteen failures are the intended semantic witnesses: the current persistence factory/operation proceeds instead of raising for the direct and transitive M00-writer paths, all eight settable-role table-privilege cases, all four settable-role column-privilege cases, and post-construction `SET ROLE` authority drift. The one passing case is the negative control where M01 has `NOINHERIT` membership in the M00 writer but `SET FALSE`, so PostgreSQL reports that M01 cannot assume the M00 role and construction remains lawful.
 
 This is proof-first evidence only. No production source, architecture, package metadata, schema definition or previously accepted proof byte has been changed to obtain the red state. DS-I01-R05 remains blocked until this proof refinement is durably accepted.
+
+## DS-I01-R05 — PostgreSQL role-membership production repair
+
+`DS-T01-R05` is durably accepted at tag `accepted/DS-T01-R05`, targeting commit `d37d882f6b0565331d101f14c900fa140afad4e0`. DS-I01-R05 is the same-actor implementation refinement under the already-admitted DS-I01 envelope and changes no requirement, semantic route, write scope, actor class or review contract.
+
+### Bounded implementation mechanism
+
+The repair changes only the private M01 PostgreSQL mechanism plus candidate/evidence text. `src/nvda_desk/derived_signal_calculation_truth/_postgres.py` now evaluates the login/session role's PostgreSQL role-assumption authority in addition to the already-accepted current-role relation ACL checks.
+
+The new private guard derives the set of roles the session user can actually assume using PostgreSQL's `pg_has_role(session_user, role_oid, 'SET')` authority evaluation. It fails closed when that assumable set contains:
+
+- the runtime-declared M00 writer role itself; or
+- any role with an admitted-forbidden effective M00 table privilege (`SELECT`, `INSERT`, `UPDATE`, `DELETE`, `TRUNCATE`, `REFERENCES`, `TRIGGER`, `MAINTAIN`) or column privilege (`SELECT`, `INSERT`, `UPDATE`, `REFERENCES`).
+
+The session user itself is also included so a connection whose login identity is already the M00 writer cannot evade the role-assumption check by changing `current_user`. Construction and every subsequent persistence connection execute the same guard, so later membership/`SET ROLE` drift fails closed. A membership path with `SET FALSE` remains lawful when it confers neither current effective M00 privilege nor role-assumption authority. The mechanism queries PostgreSQL catalogue/privilege metadata only; it does not read M00 row content, mutate role membership, grant/revoke production privilege or select production database identities.
+
+### Pre-freeze proof
+
+Against the repaired working candidate, the accepted DS-T01-R05 proof transitioned from `15 failed, 1 passed` to:
+
+```text
+pytest -q tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py
+16 passed
+```
+
+The complete prior R04 privilege-surface proof remained green:
+
+```text
+pytest -q tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py
+14 passed
+```
+
+For the broader regression, the freshly reconstructed proof environment initially exposed two environment prerequisites already present in historical Gate-2 evidence rather than repository defects: the isolated Python wheelhouse does not contain PyYAML, and the fresh M00 proof role did not initially have the proof-only database `CREATE` capability required by the accepted R02 alternate-schema adversary. PyYAML 6.0.3 was supplied from the existing host Python 3.13 environment by appending only the host site-packages path after the preserved proof environment, leaving pytest 9.0.3 loaded from the preserved proof venv. The temporary M00 proof role was granted `CREATE` on the isolated proof database solely for that accepted adversary.
+
+With those proof-environment prerequisites restored, observed:
+
+```text
+pytest -q tests/product/derived_signal tests/implementation/derived_signal \
+  tests/architecture/test_object_lifecycle.py tests/bootstrap/test_minimal_imports.py
+93 passed
+
+pytest -q tests/architecture tests/bootstrap
+74 passed
+
+python tools/validate_architecture.py
+PASS: structural architecture validation
+
+python tools/check_dependencies.py
+PASS: dependency direction and cycle validation
+
+python tools/check_public_seams.py
+PASS: public-seam validation
+
+mypy src/nvda_desk/derived_signal_calculation_truth/_postgres.py --show-error-codes
+Success: no issues found in 1 source file
+
+ruff check src/nvda_desk/derived_signal_calculation_truth/_postgres.py \
+  tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py
+All checks passed!
+
+git diff --check
+PASS (no output)
+```
+
+The substantive repaired source/candidate/evidence bytes must now be frozen in Git and the same proof rerun from that exact clean commit before DS-I01-R05 can be accepted and a fresh DS-R01 packet exported.
