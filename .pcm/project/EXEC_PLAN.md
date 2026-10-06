@@ -187,6 +187,30 @@
 **Stop:** any repair requires concrete production database identity, reading M00 row content, changed semantic meaning, widened write scope, changed actor/review law or another unproved production behaviour.
 <!-- CONTROL:TASK:DS-I01-R04:END -->
 
+<!-- CONTROL:TASK:DS-T01-R05:START -->
+## DS-T01-R05 — Refine PostgreSQL role-membership proof for recurrent contract drift
+
+**Requirements:** REQ-003, REQ-004, REQ-005, REQ-008, REQ-010
+
+**Proposition:** Under the bounded refinement envelope of DS-T01 and the existing `FOUNDATION-CONTRACT-PROOF-DRIFT` mechanism, strengthen executable proof so M01 credentials fail closed whenever PostgreSQL role-membership or `SET ROLE` authority provides a direct or transitive path to the M00 writer or to a role whose effective M00 relation capability would violate the admitted M00/M01 isolation boundary, including authority drift after lawful construction, without selecting production role/schema names or reading M00 row content.
+
+**Write scope:** identical to DS-T01. No production source mutation.
+
+**Stop:** any required proof proposition cannot be derived from accepted authority, or closure would change requirement meaning, ownership, actor class, write scope, review law, require M01 row access to M00, or resolve concrete production database identities.
+<!-- CONTROL:TASK:DS-T01-R05:END -->
+
+<!-- CONTROL:TASK:DS-I01-R05:START -->
+## DS-I01-R05 — Repair PostgreSQL role-membership recurrent contract drift
+
+**Requirements:** REQ-003, REQ-004, REQ-005, REQ-008, REQ-010
+
+**Proposition:** Under the bounded refinement envelope of DS-I01 and only after DS-T01-R05 is accepted, make the smallest production repair required for the M01 persistence mechanism to refuse construction or operation whenever M01 credentials can directly or transitively `SET ROLE` to the M00 writer or to a role whose effective M00 relation capability violates the admitted M00/M01 isolation boundary, including authority drift after lawful construction, without selecting concrete production role/schema names or reading M00 row content.
+
+**Write scope:** identical to DS-I01. No kernel semantics, provider fallback, architecture expansion, package authority or external effects.
+
+**Stop:** any repair requires concrete production database identity, reading M00 row content, changed semantic meaning, widened write scope, changed actor/review law or another unproved production behaviour.
+<!-- CONTROL:TASK:DS-I01-R05:END -->
+
 <!-- CONTROL:TASK:DS-R01:START -->
 ## DS-R01 — Independently review foundation candidate
 

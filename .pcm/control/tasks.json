@@ -852,6 +852,157 @@
     },
     {
       "acceptance": [
+        "Foundation proof specifies and exercises the required M00 projection, unit/context, persistence-role, typed-result and public-seam propositions before production implementation begins."
+      ],
+      "depends_on": [
+        "DS-I01-R04"
+      ],
+      "id": "DS-T01-R05",
+      "requirements": [
+        "REQ-003",
+        "REQ-004",
+        "REQ-005",
+        "REQ-008",
+        "REQ-010"
+      ],
+      "semantic_routes": [
+        {
+          "bounded_records": [
+            {
+              "admitted_task_id": "DS-A04",
+              "id": "DS-FOUNDATION-REQUIREMENTS",
+              "path": ".pcm/project/REQUIREMENTS.md",
+              "sha256": "1dba44b0dd7ed57dead8a40835fea7bfea46642da7599686010652d39efa4126"
+            },
+            {
+              "admitted_task_id": "DS-A04",
+              "id": "DS-FOUNDATION-WORK-ORDER",
+              "path": "implementation/work_order/DS_IMPLEMENTATION_WORK_ORDER.md",
+              "sha256": "77ec86a9cf9b3357d913a401985ed203a480ee74cfecafc5a8fa2ee4e70fae50"
+            }
+          ],
+          "complete_records": [],
+          "conditional_triggers": [],
+          "exclusions": [],
+          "id": "DS-FOUNDATION-AUTHORITY",
+          "owner_record": {
+            "admitted_task_id": "DS-A04",
+            "id": "DS-BRIEF-AUTHORITY",
+            "path": ".pcm/brief/accepted_brief.tar",
+            "sha256": "8ea9bf69f6a651f19e84bd1401cb9f4e8c10f8e62603a3ff407f4418936e1731"
+          },
+          "route_mode": "CONSUME_ADMITTED",
+          "unresolved_stops": []
+        }
+      ],
+      "status": "pending",
+      "title": "Refine PostgreSQL role-membership proof for recurrent contract drift",
+      "verification": {
+        "leaf_close": [],
+        "promotion": []
+      },
+      "work_type": "test_proof",
+      "write_paths": [
+        "tests/product/",
+        "tests/implementation/",
+        "implementation/proof/DS_FOUNDATION_PROOF_EVIDENCE.md"
+      ],
+      "refinement": {
+        "envelope_task_id": "DS-T01",
+        "fresh_review_required": true,
+        "mechanism_id": "FOUNDATION-CONTRACT-PROOF-DRIFT",
+        "prior_repair_task_ids": [
+          "DS-T01-R01",
+          "DS-T01-R02",
+          "DS-T01-R03",
+          "DS-T01-R04"
+        ]
+      }
+    },
+    {
+      "acceptance": [
+        "The additive M00 typed projection exists through the admitted public seam without direct-table exposure or provider-parsing fallback in the calculation owner.",
+        "The admitted calculation owner has typed/versioned contexts, derived occurrence/lineage persistence, separate database writer boundary and typed calculation/read foundation.",
+        "The candidate remains bounded to accepted semantics and is frozen in a candidate record."
+      ],
+      "depends_on": [
+        "DS-T01-R05"
+      ],
+      "id": "DS-I01-R05",
+      "requirements": [
+        "REQ-003",
+        "REQ-004",
+        "REQ-005",
+        "REQ-008",
+        "REQ-010"
+      ],
+      "semantic_routes": [
+        {
+          "bounded_records": [
+            {
+              "admitted_task_id": "DS-A04",
+              "id": "DS-FOUNDATION-REQUIREMENTS",
+              "path": ".pcm/project/REQUIREMENTS.md",
+              "sha256": "1dba44b0dd7ed57dead8a40835fea7bfea46642da7599686010652d39efa4126"
+            },
+            {
+              "admitted_task_id": "DS-A04",
+              "id": "DS-FOUNDATION-WORK-ORDER",
+              "path": "implementation/work_order/DS_IMPLEMENTATION_WORK_ORDER.md",
+              "sha256": "77ec86a9cf9b3357d913a401985ed203a480ee74cfecafc5a8fa2ee4e70fae50"
+            }
+          ],
+          "complete_records": [],
+          "conditional_triggers": [],
+          "exclusions": [],
+          "id": "DS-FOUNDATION-AUTHORITY",
+          "owner_record": {
+            "admitted_task_id": "DS-A04",
+            "id": "DS-BRIEF-AUTHORITY",
+            "path": ".pcm/brief/accepted_brief.tar",
+            "sha256": "8ea9bf69f6a651f19e84bd1401cb9f4e8c10f8e62603a3ff407f4418936e1731"
+          },
+          "route_mode": "CONSUME_ADMITTED",
+          "unresolved_stops": []
+        }
+      ],
+      "status": "pending",
+      "test_first": {
+        "exception_task_id": null,
+        "red_check_id": null,
+        "red_required": false,
+        "test_task_id": "DS-T01-R05"
+      },
+      "title": "Repair PostgreSQL role-membership recurrent contract drift",
+      "verification": {
+        "leaf_close": [],
+        "promotion": []
+      },
+      "work_type": "implementation",
+      "write_paths": [
+        "src/nvda_desk/raw_signal_occurrence_truth/",
+        "src/nvda_desk/",
+        "config/architecture/",
+        "schemas/",
+        "implementation/",
+        "pyproject.toml",
+        "tests/architecture/test_object_lifecycle.py",
+        "tests/bootstrap/test_minimal_imports.py"
+      ],
+      "refinement": {
+        "envelope_task_id": "DS-I01",
+        "fresh_review_required": true,
+        "mechanism_id": "FOUNDATION-CONTRACT-PROOF-DRIFT",
+        "prior_repair_task_ids": [
+          "DS-I01-R01",
+          "DS-I01-R02",
+          "DS-I01-R03",
+          "DS-I01-R04"
+        ]
+      }
+    },
+    {
+      "acceptance": [
         "Independent review establishes projection ambiguity refusal, unit/version discipline, M00/public-seam isolation, separate persistence ownership and typed absence/result behaviour for the exact candidate."
       ],
       "depends_on": [
