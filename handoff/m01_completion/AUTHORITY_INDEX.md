@@ -1,0 +1,37 @@
+# M01 continuation authority index
+
+## Current Programme Owner instruction
+
+Continue and complete **M01 — `derived_signal_calculation_truth`** from the clean post-foundation repository. Financial Calendar and any prospective later module are out of scope. PCM V5 remains retired and must not be recreated. Distribution/package version remains `1.0.0` unless separately authorised later.
+
+## Exact accepted M01 authority recovered from Git history
+
+The three files in `handoff/m01_completion/authority/` are byte-for-byte recovered from the previously accepted brief archive at reviewer-evidence commit `bbf4b7b97db53c7b635af72842674a049eb285ea`.
+
+Original accepted archive identity:
+
+- archive SHA-256: `8ea9bf69f6a651f19e84bd1401cb9f4e8c10f8e62603a3ff407f4418936e1731`
+- accepted brief source commit: `23968fdfcc489cdc2ea14aa9dd1e1aea3b3d72ce`
+- accepted brief source tree: `81ff4871ddb14f8c5feec2bf1a543ce290fba0be`
+
+Recovered member identities:
+
+- `NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md` — SHA-256 `603b850802a418780109095e7ae69bcece449da79fb24140a6d50297605e927c`
+- `NVDA_DERIVED_SIGNAL_CATALOGUE.csv` — SHA-256 `63bc1b776fc8fa8ba82eb3c9b16916f295c9ec3d480a5a068937c2f25146f5f5`
+- `NVDA_80_STEP_ACADEMIC_EVIDENCE_AUDIT_WITH_SIGNALS_ADDENDUM_81_94.xlsx` — SHA-256 `519ea9449297d564ae4a02afc1bf4e60e4471631c81a0842620f9fb60bb4f9ae`
+
+Authority roles remain exactly those defined by the accepted brief: the Markdown is the implementation-ready input brief; the CSV is the normative per-signal catalogue by exact digest; the workbook is reference evidence only.
+
+## Accepted starting boundary
+
+The M01 foundation through DS-R01 is accepted as the starting boundary for this continuation.
+
+Preserved review evidence:
+
+- reviewed implementation source: `14a6085b863afd083b7ccf2c8a8f02ad435d758e`
+- reviewer-evidence commit: `bbf4b7b97db53c7b635af72842674a049eb285ea`
+- review packet semantic SHA-256: `98f474171f642541136a139f4a047882af3c92b1b61be809016cd17db491ed58`
+- review result semantic SHA-256: `13de5887f33c5806581536adc05d052b7ac3398b76458ed39d9381b7b2f2ca91`
+- preserved result: `handoff/m01_completion/review/DS_R01_FOUNDATION_PASS.json`
+
+This PASS establishes the **foundation only**. It does not establish any D001–D209 calculation kernel or whole-M01 completion.
