@@ -74,12 +74,12 @@
   "blockers": [],
   "checkpoint": {
     "branch": "main",
-    "source_head": "b11379e04712b85a02dfb61c43e66dc9318f349f",
-    "source_tree": "00723895f83a0b7b8aef3d8bd58902cecbc2f2ae",
+    "source_head": "14a6085b863afd083b7ccf2c8a8f02ad435d758e",
+    "source_tree": "d0efb6ec890a2f1d9429e31fec4db84955012da7",
     "working_state_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
   "claims_hash": "4d972026e949813141677eec36ad4d646c440afd81507fe52402d94c8970c58d",
-  "generated_at": "2026-10-06T08:56:04Z",
+  "generated_at": "2026-10-06T08:56:09Z",
   "last_receipt": null,
   "migration_provenance": null,
   "next_transition": {
@@ -90,7 +90,7 @@
     "DS-R01"
   ],
   "receipt_hashes": {},
-  "repo_fingerprint": "24a171ef1a36aab5933f7dd35d092108be3513c2d9b69b46da3513b7043259d4",
+  "repo_fingerprint": "e886b80ea627e8e9cd18e65fdf4bbb47a4213906c0546a1d2cf74ac2d133f9ee",
   "schema_version": 1,
   "task_contract_hash": "94521adb1d25995f1bb4859e64908e47b68708e5d3828185b6a41e452b7f4e80",
   "unresolved_claims": []
