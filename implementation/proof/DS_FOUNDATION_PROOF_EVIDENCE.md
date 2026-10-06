@@ -1232,3 +1232,46 @@ PRIVILEGE_SURFACE_CLEAR True
 ```
 
 No M00 row content was read by the privilege guard or this metadata proof. No substantive source/candidate/test/architecture/persistence bytes changed after `ec52fbd...` during committed-state verification. This successor evidence update changes evidence/control bytes only so DS-I01-R04 can be accepted and a fresh DS-R01 packet can bind the exact repaired candidate plus committed-state proof.
+
+---
+
+# DS-T01-R05 — PostgreSQL role-membership proof refinement
+
+## Authority and recurrence boundary
+
+The latest independent DS-R01 review of packet `2fadd47d0409ca037767ec6f75ddad36c3944e26491192bc31bb2b2ae9025396` returned `REPAIR -> DS-I01-R01` with internal result SHA-256 `2fd834cec969eb1fb692fa410670f27c778130e1fbb0955d8d4a3329b6d0063e`, reviewer actor instance `85d01ceafb66e8f0364d1cf72c2b7f0b`, and supplied result-file SHA-256 `d6218678c4836842fdaba6b5c2868ea465345097a3d45b6e9387ce266f8ae022`.
+
+The reviewer confirmed that DS-T01-R04/DS-I01-R04 correctly close the PostgreSQL table/column ACL surface, but retained the `RECURRENT_CLASS foundation-contract/proof-boundary drift` classification because an M01 login can remain a distinct writer/schema with no current effective M00 relation privilege while holding `SET ROLE` authority to the M00 writer or another role that has forbidden M00 relation capability. That role-assumption path collapses the admitted database-role isolation boundary while evading checks limited to `current_user` and its current effective relation ACLs.
+
+Accepted brief clause 10, REQ-005 and the admitted implementation work order require a separate M01 database role/write boundary and no M01 database-role privilege over M00-owned relations. Under the already-admitted `FOUNDATION-CONTRACT-PROOF-DRIFT` mechanism, DS-T01-R05 strengthens proof for that existing boundary without selecting concrete production role/schema identities, reading M00 row content or changing calculation semantics.
+
+## Authority-derived adverse role-membership proof
+
+`tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py` directly exercises, against real PostgreSQL 17.9:
+
+1. construction refusal when the M01 login can directly `SET ROLE` to the actual M00 writer while its current effective M00 table privilege remains false;
+2. construction refusal for a transitive `SET ROLE` chain from M01 through an intermediate role to the M00 writer;
+3. construction refusal for a settable intermediate role carrying each admitted-forbidden M00 table privilege: `SELECT`, `INSERT`, `UPDATE`, `DELETE`, `TRUNCATE`, `REFERENCES`, `TRIGGER`, and `MAINTAIN`;
+4. construction refusal for a settable intermediate role carrying each admitted-forbidden M00 column privilege: `SELECT`, `INSERT`, `UPDATE`, and `REFERENCES`, while the corresponding table-level privilege remains false;
+5. a negative control showing that `NOINHERIT` membership without `SET ROLE` authority does not by itself violate the boundary; and
+6. operation-time refusal when a lawfully constructed M01 persistence object later acquires `SET ROLE` authority to the M00 writer.
+
+The proof derives M00/M01 role and schema identities from the live proof database. Adverse memberships and helper-role privileges are temporary proof-environment state and are revoked/dropped during cleanup. Relation privilege assertions use PostgreSQL relation OIDs and privilege metadata, so the proof does not require M01 schema visibility or read M00 row content.
+
+## Expected-red execution before DS-I01-R05
+
+A fresh hash-verified Python 3.13.5 / pytest 9.0.3 / psycopg 3.3.4 / PostgreSQL 17.9 proof environment was reconstructed from the preserved offline bootstrap/runtime assets. Temporary proof-only database identities are `nvda_m00_r05` / `m00_r05` and `nvda_m01_r05` / `m01_r05`.
+
+Before production repair, cleanup inspection established no surviving `nvda_ds_r05_%` helper roles and no memberships granted to `nvda_m01_r05`. The proof module passed Ruff and then produced:
+
+```text
+ruff check tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py
+All checks passed!
+
+pytest -q tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py
+15 failed, 1 passed
+```
+
+The fifteen failures are the intended semantic witnesses: the current persistence factory/operation proceeds instead of raising for the direct and transitive M00-writer paths, all eight settable-role table-privilege cases, all four settable-role column-privilege cases, and post-construction `SET ROLE` authority drift. The one passing case is the negative control where M01 has `NOINHERIT` membership in the M00 writer but `SET FALSE`, so PostgreSQL reports that M01 cannot assume the M00 role and construction remains lawful.
+
+This is proof-first evidence only. No production source, architecture, package metadata, schema definition or previously accepted proof byte has been changed to obtain the red state. DS-I01-R05 remains blocked until this proof refinement is durably accepted.
