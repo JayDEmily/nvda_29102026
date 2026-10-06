@@ -1,78 +1,69 @@
-# Derived Signal Calculation Truth — Gate-2 Foundation Tranche Checkpoint
+# Derived Signal Calculation Truth — Foundation Tranche / PCM Retirement Checkpoint
 
 ## Status
 
-**PROGRAMME-OWNER CHECKPOINT — TRANCHE COMPLETE / PCM V5 RETIRED FOR THIS PROJECT FROM THIS CHECKPOINT FORWARD**
+**PROGRAMME-OWNER CHECKPOINT — FOUNDATION TRANCHE CLOSED; PCM V5 RETIRED AND NOT CARRIED FORWARD ON ACTIVE `main`**
 
-This checkpoint records the Programme Owner's current instruction on 2026-10-06 to close the present Derived Signal Calculation Truth foundation tranche and retire the PCM V5 methodology that governed this project's work to this point.
+This record supersedes the earlier form of this checkpoint that left `.pcm/` visible in the active tree.
 
-This is a project-governance checkpoint. It does not rewrite or erase the PCM history, accepted tags, review evidence, failed iterations, repair lineage, or any earlier Git state.
+## Programme Owner instruction
 
-## Exact state entering this checkpoint
+On 2026-10-06 the Programme Owner directed that the PCM methodology used for this tranche be retired from the active repository state. The intended repository pattern is the same structural pattern visible at the terminal M00 boundary: product/source/history remain, while temporary project-execution machinery does not remain in the active `main` tree.
 
-The repository was clean on branch `main` at:
+Accordingly:
 
-- HEAD: `bbf4b7b97db53c7b635af72842674a049eb285ea`
-- tree: `9264f003412c18b01d6a9b96c4f3c68aee5e0a85`
-- commit purpose: reviewer evidence commit for the DS-R01 PASS.
+- `.pcm/**` is classified **DO_NOT_CARRY_FORWARD**;
+- `.pcm/` is absent from the active `main` tree after this checkpoint;
+- the exact pre-cleanup state remains recoverable in normal Git history and at branch `archive/pcm-v5-derived-signal-gate2-20261006`;
+- Git history is not rewritten or pruned;
+- the PCM controller is not a post-retirement repository requirement.
 
-The exact DS-R01 candidate independently reviewed by that result was:
+## Exact pre-cleanup boundary
 
-- reviewed source HEAD: `14a6085b863afd083b7ccf2c8a8f02ad435d758e`
-- reviewed source tree: `d0efb6ec890a2f1d9429e31fec4db84955012da7`
-- review packet semantic SHA-256: `98f474171f642541136a139f4a047882af3c92b1b61be809016cd17db491ed58`
-- review result semantic SHA-256: `13de5887f33c5806581536adc05d052b7ac3398b76458ed39d9381b7b2f2ca91`
-- formal result path: `.pcm/control/independent_review_results/DS-R01/98f474171f642541136a139f4a047882af3c92b1b61be809016cd17db491ed58.json`
-- disposition: `PASS`.
+The state immediately before active-tree cleanup was:
 
-The independent review established the Gate-2 foundation candidate against the admitted public-seam, mapping ambiguity, versioned-context, lineage, persistence-role and fail-closed requirements, including the final PostgreSQL role-assumption boundary repair.
+- commit `d0ed951148e33077975ecc5066c8431fed51c5b8`;
+- tree `c51d848e5868611f62bd91d851517ed53326285d`;
+- tag `checkpoint/ds-gate2-foundation-tranche-complete-20261006`.
 
-## Tranche closure
+The final independent DS-R01 PASS entering that checkpoint was preserved at:
 
-By explicit current Programme Owner instruction, the tranche ending at DS-R01 is **COMPLETE AND CLOSED** at this checkpoint.
+- reviewer-evidence commit `bbf4b7b97db53c7b635af72842674a049eb285ea`;
+- reviewed source `14a6085b863afd083b7ccf2c8a8f02ad435d758e`;
+- reviewed source tree `d0efb6ec890a2f1d9429e31fec4db84955012da7`;
+- review packet semantic SHA-256 `98f474171f642541136a139f4a047882af3c92b1b61be809016cd17db491ed58`;
+- review result semantic SHA-256 `13de5887f33c5806581536adc05d052b7ac3398b76458ed39d9381b7b2f2ca91`;
+- disposition `PASS`.
 
-The closed tranche comprises the Derived Signal Calculation Truth work through:
+The former PCM review-result file remains recoverable from the archive branch/history; it is intentionally not present as an active `.pcm/` path after cleanup.
+
+## Closed work
+
+The completed and independently reviewed tranche comprises:
 
 1. accepted-authority ingress and independent review (`DS-A01` / `DS-A02`);
-2. architecture admission and independent review (`DS-A03` / `DS-A04`);
-3. Gate-2 foundation proof/test work and its bounded proof refinements;
-4. Gate-2 M01 foundation implementation and its bounded repair iterations; and
-5. the final independent DS-R01 `PASS` identified above.
+2. architecture admission of M01 and independent review (`DS-A03` / `DS-A04`);
+3. foundation proof/test work and bounded proof refinements;
+4. M01 foundation implementation and bounded repair iterations; and
+5. final independent DS-R01 `PASS`.
 
-For avoidance of doubt, this checkpoint does **not** claim completion of the entire Derived Signal Calculation Truth project. In particular, it does not claim completion of the later foundational-kernel, advanced-kernel, whole-catalogue integration, packaging, whole-system review, or terminal-freeze work that the retired PCM plan had scheduled after DS-R01.
+## Completeness/non-claim boundary
 
-## PCM methodology retirement
+This checkpoint closes **that foundation tranche only**.
 
-The PCM V5 methodology instantiated for this project is identified by:
+It does **not** assert that the entire M01 Derived Signal Calculation Truth module is implemented. Current source explicitly retains the DS-I01 boundary that no D-kernel is admitted there. The former plan's later D001–D209 kernel, advanced-kernel, whole-catalogue integration and package/freeze work was not executed before PCM retirement.
 
-- methodology commit: `be664a582fbc83a4afe356980eccc8789eb1a002`
-- methodology tree: `9d7cb6e0e69ad8743380ec0a508cf0132ce00dbf`
-- controller SHA-256: `99630080357f321c8fc32b3433e9e14deaf1062ae0753885648256d1a3e6bfa4`.
+Therefore:
 
-**That PCM methodology is retired for this project from this checkpoint forward.** It no longer governs routing, readiness, promotion, reviewer/worker cycling, or future project progression after this checkpoint.
+- M00 remains the completed Raw Signal semantic owner from the prior terminal baseline;
+- M01 is durably assigned as `derived_signal_calculation_truth` and its reviewed foundation exists;
+- the full authoritative M01 calculation behaviour remains future work unless a future Programme Owner explicitly changes scope;
+- no provider/network effects, order/account mutation or downstream action authority is created by this checkpoint.
 
-The `.pcm/**` material, task ledger, LCR, accepted tags, review results, packets and repair history remain in Git as historical provenance. They are not deleted, rewritten or normalised to manufacture a terminal PCM state.
+## Version
 
-Consequently, an invocation of the retired controller may continue to report its last internal state (including DS-R01 as pending/ready because the former PM/orchestrator acceptance step was not executed). Such output is a historical snapshot of the retired methodology, not the active post-checkpoint project route. The Programme Owner's present instruction closes this tranche directly and supersedes any requirement to perform an additional PCM promotion solely to make that retired ledger appear terminal.
+The repository remains at distribution version `1.0.0`. No version bump is authorised or required by this governance cleanup.
 
-## Post-checkpoint authority boundary
+## Next-work boundary
 
-No later PCM leaf is authorised by this checkpoint.
-
-If Derived Signal Calculation Truth work resumes beyond the closed Gate-2 foundation tranche, the next work must first be placed under an explicitly selected current governance/methodology and bound to this checkpoint's exact Git lineage. The retired PCM task graph must not be resumed implicitly merely because its files remain present in the repository.
-
-## Preserved non-claims
-
-At this checkpoint:
-
-- `M01` is the admitted Derived Signal Calculation Truth owner and its reviewed foundation exists;
-- M00 remains the Raw Signal semantic owner and the M01 dependency remains bounded through the admitted M00 public projection;
-- this checkpoint does not assert implementation of the authoritative `D001`–`D209` calculation kernel set;
-- it does not assert completion of Gates 3–6 from the retired PCM plan;
-- it does not select final package/distribution identity or version;
-- it does not authorise provider/network effects, orders, account mutation or downstream action authority; and
-- it does not alter the accepted calculation semantics or architecture ownership established by the completed tranche.
-
-## Recovery rule
-
-This checkpoint and the ordinary Git ancestry leading to it are the durable recovery point for the closed tranche. Historical PCM and reviewer/worker material remains recoverable from Git and must not be destructively rewritten merely because the methodology has been retired.
+No project methodology is active after this cleanup checkpoint. A future programme manager must establish new governance from the clean `main` baseline and must re-establish the intended next semantic unit from current repository evidence before changing product state.
