@@ -21,7 +21,11 @@
     "head": "d37d882f6b0565331d101f14c900fa140afad4e0",
     "tree": "a552469794074c4841182b8e8134fbce0b4e9cbf"
   },
-  "active_leaf": null,
+  "active_leaf": {
+    "id": "DS-I01-R05",
+    "label": "Repair PostgreSQL role-membership recurrent contract drift",
+    "status": "in_progress"
+  },
   "applicable_context": {
     "ancestors": [],
     "authority_files": [
@@ -31,8 +35,14 @@
       "AGENTS.md"
     ],
     "dependencies": [],
-    "plan_leaf": null,
-    "requirements": []
+    "plan_leaf": "DS-I01-R05",
+    "requirements": [
+      "REQ-003",
+      "REQ-004",
+      "REQ-005",
+      "REQ-008",
+      "REQ-010"
+    ]
   },
   "authority_hashes": {
     ".pcm/AGENTS.md": "b787f72c13d1d650d3ead15a33b33d846478278c1144dc3b3dff8218b2a5df7e",
@@ -50,26 +60,25 @@
   },
   "blockers": [],
   "checkpoint": {
-    "branch": "main",
-    "source_head": "d37d882f6b0565331d101f14c900fa140afad4e0",
-    "source_tree": "a552469794074c4841182b8e8134fbce0b4e9cbf",
+    "branch": "work/ds-i01-r05-role-membership-repair",
+    "source_head": "5f79b2dd755d5f8d99ce50840a93965b4693b2f7",
+    "source_tree": "8b2b871d854a01d41cc3f1a77df0710177c44d8c",
     "working_state_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
   "claims_hash": "4d972026e949813141677eec36ad4d646c440afd81507fe52402d94c8970c58d",
-  "generated_at": "2026-10-06T08:48:50Z",
+  "generated_at": "2026-10-06T08:49:15Z",
   "last_receipt": null,
   "migration_provenance": null,
   "next_transition": {
     "actor_class": "AUTONOMOUS",
-    "next_leaf": null
+    "next_leaf": "DS-I01-R05"
   },
   "ready_tasks": [
-    "DS-I01-R05",
     "DS-R01"
   ],
   "receipt_hashes": {},
-  "repo_fingerprint": "cae59cae662c468c8b702dd662013dd62d0edbded4ee0da9f8c9b5a83d867460",
+  "repo_fingerprint": "fa298789763cdb1555617086c5d8a49fb4f9dd5f50113c22fe5eb125a7e392a6",
   "schema_version": 1,
-  "task_contract_hash": "0466d44dd406a740435108b89cf853f63d79346b0bdfa3f6ecacc0e40e1cdb71",
+  "task_contract_hash": "988f4c409f731b51a7b771bf8c613d807a3345a29e15cd83b27f1468fa5d4c16",
   "unresolved_claims": []
 }
