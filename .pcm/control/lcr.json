@@ -61,12 +61,12 @@
   "blockers": [],
   "checkpoint": {
     "branch": "work/ds-i01-r05-role-membership-repair",
-    "source_head": "7eaca8561a76c6568270ce169ba31b0ba659b957",
-    "source_tree": "d0827fd587633da990c42c6872921236084de04e",
+    "source_head": "3b193db8df1037fc8386cb67efbacbfb488b487e",
+    "source_tree": "6a3ab75a96f33ebce7e79e1a4ac8411e05cc7728",
     "working_state_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
   "claims_hash": "4d972026e949813141677eec36ad4d646c440afd81507fe52402d94c8970c58d",
-  "generated_at": "2026-10-06T08:49:33Z",
+  "generated_at": "2026-10-06T08:53:57Z",
   "last_receipt": null,
   "migration_provenance": null,
   "next_transition": {
@@ -77,7 +77,7 @@
     "DS-R01"
   ],
   "receipt_hashes": {},
-  "repo_fingerprint": "4da901265605ba7306ac7e9728770ecf39518310a8cac8ba1241959d2e147e7b",
+  "repo_fingerprint": "d0989b470a709448ba9c88d9013c7368e570b7f8be5ce0b22d5800a4d6866c52",
   "schema_version": 1,
   "task_contract_hash": "988f4c409f731b51a7b771bf8c613d807a3345a29e15cd83b27f1468fa5d4c16",
   "unresolved_claims": []

@@ -1340,3 +1340,65 @@ PASS (no output)
 ```
 
 The substantive repaired source/candidate/evidence bytes must now be frozen in Git and the same proof rerun from that exact clean commit before DS-I01-R05 can be accepted and a fresh DS-R01 packet exported.
+
+### Clean committed DS-I01-R05 proof
+
+The substantive PostgreSQL role-membership repair was frozen at:
+
+- branch: `work/ds-i01-r05-role-membership-repair`;
+- commit: `3b193db8df1037fc8386cb67efbacbfb488b487e`;
+- tree: `6a3ab75a96f33ebce7e79e1a4ac8411e05cc7728`;
+- private M01 PostgreSQL mechanism SHA-256: `cca885a91a60fdbdbab8d9a158d69cae9c5dd03ad9eb1d46f88b08436cd870bc`;
+- DS-R01 candidate SHA-256: `ca9d8c81fef3fa69580659d77952181d43b21f55297c4e8de4eae71a555ac868`;
+- worktree before committed-state verification: clean.
+
+Before committed-state execution, the isolated proof database was reset to fresh `nvda_m00_r05` / `m00_r05` and `nvda_m01_r05` / `m01_r05` identities. The M00 proof role retained only the proof-environment database `CREATE` capability required by the already-accepted R02 alternate-schema adversary. From exact commit `3b193db8...`, observed:
+
+```text
+pytest -q tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py
+16 passed
+
+pytest -q tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py
+14 passed
+
+pytest -q tests/product/derived_signal tests/implementation/derived_signal \
+  tests/architecture/test_object_lifecycle.py tests/bootstrap/test_minimal_imports.py
+93 passed
+
+pytest -q tests/architecture tests/bootstrap
+74 passed
+
+python tools/validate_architecture.py
+PASS: structural architecture validation
+
+python tools/check_dependencies.py
+PASS: dependency direction and cycle validation
+
+python tools/check_public_seams.py
+PASS: public-seam validation
+
+mypy src/nvda_desk/derived_signal_calculation_truth/_postgres.py --show-error-codes
+Success: no issues found in 1 source file
+
+ruff check src/nvda_desk/derived_signal_calculation_truth/_postgres.py \
+  tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py
+All checks passed!
+
+git diff --check
+PASS (no output)
+
+git status --short
+<empty>
+
+projectctl check
+CHECK: PASS
+```
+
+Post-test PostgreSQL metadata cleanup/readback established:
+
+```text
+R05_HELPER_ROLES []
+M01_MEMBERSHIPS []
+```
+
+Thus the committed-state proof leaves no R05 adverse helper role or membership attached to the M01 proof identity. No substantive source/candidate/test/architecture/persistence bytes changed after `3b193db8...` during committed-state verification. This successor evidence update changes evidence/control bytes only so DS-I01-R05 can be accepted and a fresh DS-R01 packet can bind the exact repaired candidate plus committed-state proof.
