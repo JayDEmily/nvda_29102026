@@ -1448,7 +1448,9 @@ def test_public_seam_refuses_raw_inputs_from_another_subject() -> None:
             utc_now=lambda: NOW,
         )
 
-        def request(binding_subject: str) -> api.CalculationRequestV1:
+        def request(
+            binding_subject: str, selection_context_id: str
+        ) -> api.CalculationRequestV1:
             return api.CalculationRequestV1(
                 derived_signal_id="D011",
                 subject_instrument="NVDA",
@@ -1457,7 +1459,7 @@ def test_public_seam_refuses_raw_inputs_from_another_subject() -> None:
                 calculation_definition_version="calc-v1",
                 parameter_set_id=p_basic.context_id,
                 parameter_set_version=1,
-                input_selection_policy_id=selection.context_id,
+                input_selection_policy_id=selection_context_id,
                 input_selection_policy_version=1,
                 context_refs=(),
                 parameter_profile_refs=(profile_ref,),
@@ -1479,9 +1481,9 @@ def test_public_seam_refuses_raw_inputs_from_another_subject() -> None:
 
         # The minimum single-instrument subject law is mandatory even when a supplied
         # policy omits subject_instrument from its configurable join keys.
-        assert owner.materialise(request("AAPL")) is None
+        assert owner.materialise(request("AAPL", selection.context_id)) is None
         # The reader is an external seam: a mismatched returned observation must also fail closed.
-        assert owner.materialise(request("NVDA")) is None
+        assert owner.materialise(request("NVDA", selection.context_id)) is None
 
 def test_graph_refuses_future_raw_inputs_and_incompatible_stored_predecessor_versions() -> None:
     s1 = _stage1()
