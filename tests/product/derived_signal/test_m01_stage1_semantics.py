@@ -1545,3 +1545,169 @@ def test_structured_result_carrier_and_postgres_codec_round_trip_nested_stage1_v
     )
     encoded = pg._encode_value(value)
     assert pg._decode_value(encoded) == value
+
+
+def test_public_seam_enforces_declared_option_contract_selection_identity() -> None:
+    raw_api = importlib.import_module("nvda_desk.raw_signal_occurrence_truth.api")
+    identity_type = getattr(raw_api, "RawSelectionIdentityV1", None)
+    assert identity_type is not None, "M00 projection must expose typed selection identity"
+
+    projected_type = raw_api.ProjectedRawValueV1
+    page_type = raw_api.ProjectedRawHistoryPageV1
+
+    def identity(contract_id: str) -> Any:
+        return identity_type(
+            values=(
+                ("contract_id", contract_id),
+                ("underlying_instrument", "NVDA"),
+                ("expiry", "2026-12-18"),
+                ("strike", Decimal("150")),
+                ("option_right", "call"),
+            )
+        )
+
+    c1 = identity("C1")
+    c2 = identity("C2")
+
+    def projected(
+        raw_id: str, occurrence_id: str, mapping_id: str, value: str, contract: Any
+    ) -> Any:
+        return projected_type(
+            raw_signal_catalogue_id=raw_api.RawSignalCatalogueId(raw_id),
+            observation_occurrence_id=raw_api.observation_occurrence_id(occurrence_id),
+            projection_mapping_id=mapping_id,
+            projection_mapping_version=1,
+            source_provider="p",
+            source_variant="snapshot",
+            native_field_path=("quote", "bid" if raw_id == "R034" else "ask"),
+            native_value=Decimal(value),
+            native_units="price",
+            subject_instrument="NVDA",
+            source_temporal_kind="true_instant",
+            source_timestamp_raw=NOW.isoformat(),
+            source_timezone_native="UTC",
+            received_ts_utc=NOW,
+            ingestion_sequence=1 if raw_id == "R034" else 2,
+            ingestion_sequence_scope=raw_api.ingestion_sequence_scope("p:snapshot"),
+            revision_vintage_native=None,
+            selection_identity=contract,
+        )
+
+    class Reader:
+        def __init__(self, ask_contract: Any) -> None:
+            self._values = {
+                "R034": projected("R034", "contract-C1-bid", "m-bid", "100", c1),
+                "R035": projected("R035", "contract-ask", "m-ask", "102", ask_contract),
+            }
+
+        def list_projected_raw_history(self, raw_signal_catalogue_id: Any, **kwargs: Any) -> Any:
+            item = self._values.get(raw_signal_catalogue_id.value)
+            return page_type(items=() if item is None else (item,), next_cursor=None)
+
+        def project_raw_value(self, *args: object, **kwargs: object) -> object | None:
+            return None
+
+    p_basic = _p("P_BASIC", selection_mode="exact")
+    selection = api.InputSelectionPolicyVersionV1(
+        context_id="selection-option-contract",
+        version=1,
+        join_keys=(
+            "contract_id",
+            "underlying_instrument",
+            "expiry",
+            "strike",
+            "option_right",
+        ),
+        maximum_staleness=timedelta(minutes=1),
+        maximum_skew=timedelta(seconds=10),
+        temporal_basis_permissions=("true_instant",),
+        basket_membership=(),
+    )
+    unit = api.UnitConventionVersionV1(
+        context_id="unit-price-contract-selection",
+        version=1,
+        native_units="price",
+        canonical_units="price",
+        scale=Decimal("1"),
+        offset=Decimal("0"),
+    )
+    mappings = (
+        raw_api.RawSignalProjectionMappingV1(
+            mapping_id="m-bid",
+            version=1,
+            raw_signal_catalogue_id=raw_api.RawSignalCatalogueId("R034"),
+            source_provider="p",
+            source_variant="snapshot",
+            native_field_path=("quote", "bid"),
+            native_units="price",
+        ),
+        raw_api.RawSignalProjectionMappingV1(
+            mapping_id="m-ask",
+            version=1,
+            raw_signal_catalogue_id=raw_api.RawSignalCatalogueId("R035"),
+            source_provider="p",
+            source_variant="snapshot",
+            native_field_path=("quote", "ask"),
+            native_units="price",
+        ),
+    )
+    profile_ref = api.ParameterProfileRefV1("P_BASIC", p_basic.context_id, 1)
+
+    def request(ask_binding_identity: Any | None) -> api.CalculationRequestV1:
+        return api.CalculationRequestV1(
+            derived_signal_id="D087",
+            subject_instrument="NVDA",
+            as_of_utc=NOW,
+            knowledge_cutoff_utc=NOW,
+            calculation_definition_version="calc-v1",
+            parameter_set_id=p_basic.context_id,
+            parameter_set_version=1,
+            input_selection_policy_id=selection.context_id,
+            input_selection_policy_version=1,
+            context_refs=(),
+            parameter_profile_refs=(profile_ref,),
+            raw_input_bindings=(
+                api.RawInputBindingV1(
+                    "R034",
+                    api.VersionRefV1("m-bid", 1),
+                    api.VersionRefV1(unit.context_id, 1),
+                    "NVDA",
+                    selection_identity=c1,
+                ),
+                api.RawInputBindingV1(
+                    "R035",
+                    api.VersionRefV1("m-ask", 1),
+                    api.VersionRefV1(unit.context_id, 1),
+                    "NVDA",
+                    selection_identity=ask_binding_identity,
+                ),
+            ),
+        )
+
+    matching_owner = api.create_owner(
+        raw_projection_reader=Reader(c1),
+        raw_projection_mappings=mappings,
+        parameter_sets=(p_basic,),
+        input_selection_policies=(selection,),
+        unit_conventions=(unit,),
+        contexts=(),
+        utc_now=lambda: NOW,
+    )
+    matching = matching_owner.materialise(request(c1))
+    assert matching is not None and matching.result == Decimal("101")
+
+    # Required raw inputs cannot advertise one join while naming different exact contracts.
+    assert matching_owner.materialise(request(c2)) is None
+    # A reader that returns a different exact contract than the binding must not be trusted.
+    hostile_owner = api.create_owner(
+        raw_projection_reader=Reader(c2),
+        raw_projection_mappings=mappings,
+        parameter_sets=(p_basic,),
+        input_selection_policies=(selection,),
+        unit_conventions=(unit,),
+        contexts=(),
+        utc_now=lambda: NOW,
+    )
+    assert hostile_owner.materialise(request(c1)) is None
+    # A policy cannot advertise a join dimension that its bindings/projections cannot establish.
+    assert matching_owner.materialise(request(None)) is None

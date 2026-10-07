@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from dataclasses import replace
 from datetime import UTC, datetime, timedelta
 from decimal import Decimal
 
@@ -168,3 +169,73 @@ def test_projected_history_is_bounded_repeatably_ordered_and_paginates_without_d
             limit=0,
             cursor=None,
         )
+
+
+def test_projection_exposes_exact_mapped_selection_identity_and_refuses_missing_dimension() -> None:
+    owner = raw_api.create_owner()
+    base = raw_observation(
+        "5", native_value=Decimal("100"), received_ts_utc=datetime(2026, 10, 4, 1, 0, 5, tzinfo=UTC)
+    )
+    observation = replace(
+        base,
+        native_identifier="provider-contract-C1",
+        native_record={
+            "quote": {"bid": Decimal("100")},
+            "option": {
+                "contract_id": "C1",
+                "underlying_instrument": "NVDA",
+                "expiry": "2026-12-18",
+                "strike": Decimal("150"),
+                "option_right": "call",
+            },
+        },
+    )
+    owner.commands.admit_raw_observation_occurrence(observation)
+
+    mapping = raw_api.RawSignalProjectionMappingV1(
+        mapping_id="provider-a:snapshot:R001:v1:quote.bid:contract-selection",
+        version=1,
+        raw_signal_catalogue_id=raw_api.RawSignalCatalogueId("R001"),
+        source_provider="provider-a",
+        source_variant="snapshot",
+        native_field_path=("quote", "bid"),
+        native_units="percent",
+        selection_identity_field_paths=(
+            ("contract_id", ("option", "contract_id")),
+            ("underlying_instrument", ("option", "underlying_instrument")),
+            ("expiry", ("option", "expiry")),
+            ("strike", ("option", "strike")),
+            ("option_right", ("option", "option_right")),
+        ),
+    )
+    projected = owner.reads.project_raw_value(
+        raw_api.RawSignalCatalogueId("R001"),
+        observation.observation_occurrence_id,
+        mappings=(mapping,),
+    )
+    assert projected is not None
+    assert projected.selection_identity is not None
+    assert projected.selection_identity.values == (
+        ("contract_id", "C1"),
+        ("underlying_instrument", "NVDA"),
+        ("expiry", "2026-12-18"),
+        ("strike", Decimal("150")),
+        ("option_right", "call"),
+    )
+
+    missing_dimension_mapping = replace(
+        mapping,
+        mapping_id="provider-a:snapshot:R001:v2:quote.bid:contract-selection",
+        version=2,
+        selection_identity_field_paths=(
+            ("contract_id", ("option", "missing_contract_id")),
+        ),
+    )
+    assert (
+        owner.reads.project_raw_value(
+            raw_api.RawSignalCatalogueId("R001"),
+            observation.observation_occurrence_id,
+            mappings=(missing_dimension_mapping,),
+        )
+        is None
+    )
