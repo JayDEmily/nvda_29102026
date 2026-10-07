@@ -3,10 +3,11 @@ from __future__ import annotations
 import csv
 import importlib
 import math
-from datetime import UTC, datetime, timedelta
+from datetime import UTC, date, datetime, timedelta
 from decimal import Decimal
 from pathlib import Path
 from typing import Any
+from zoneinfo import ZoneInfo
 
 import pytest
 
@@ -909,6 +910,8 @@ def test_structured_result_carrier_and_postgres_codec_round_trip_nested_stage1_v
         ("vector", (Decimal("1"), Decimal("2"))),
         ("matrix", ((Decimal("1"), Decimal("2")), (Decimal("3"), Decimal("4")))),
         ("stamp", NOW),
+        ("local_stamp", datetime(2026, 10, 7, 12, 0, tzinfo=ZoneInfo("Australia/Melbourne"))),
+        ("trading_date", date(2026, 10, 7)),
     )
     encoded = pg._encode_value(value)
     assert pg._decode_value(encoded) == value
