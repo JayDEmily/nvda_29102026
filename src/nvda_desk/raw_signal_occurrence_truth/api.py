@@ -752,6 +752,30 @@ _ReconcileOwedSlots = Callable[
 _UtcNow = Callable[[], datetime]
 
 
+class _ProjectRawValue(Protocol):
+    def __call__(
+        self,
+        raw_signal_catalogue_id: RawSignalCatalogueId,
+        observation_occurrence_id: _ObservationOccurrenceId,
+        *,
+        mappings: Sequence[RawSignalProjectionMappingV1],
+    ) -> ProjectedRawValueV1 | None: ...
+
+
+class _ListProjectedRawHistory(Protocol):
+    def __call__(
+        self,
+        raw_signal_catalogue_id: RawSignalCatalogueId,
+        *,
+        mappings: Sequence[RawSignalProjectionMappingV1],
+        subject_instrument: str | None,
+        received_at_or_before_utc: datetime | None,
+        event_at_or_before_utc: datetime | None = None,
+        limit: int,
+        cursor: str | None,
+    ) -> ProjectedRawHistoryPageV1: ...
+
+
 class _AssessmentPersistencePort(Protocol):
     """Accepted U04 append-only technical sink for owner-decided assessments."""
 
@@ -968,8 +992,8 @@ class _ReadsV1:
         read_observation: _ReadObservation,
         read_assessment: _ReadAssessment,
         list_assessments: _ListAssessments,
-        project_raw_value: Callable[..., ProjectedRawValueV1 | None],
-        list_projected_raw_history: Callable[..., ProjectedRawHistoryPageV1],
+        project_raw_value: _ProjectRawValue,
+        list_projected_raw_history: _ListProjectedRawHistory,
     ) -> None:
         self.__read_policy = read_policy
         self.__read_capture = read_capture

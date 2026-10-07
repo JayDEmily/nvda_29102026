@@ -15,9 +15,12 @@ import nvda_desk.composition as composition
 ROOT = Path(__file__).resolve().parents[3]
 
 
-def test_architecture_runtime_edge_is_exactly_a00_to_m00() -> None:
+def test_architecture_runtime_edges_include_admitted_a00_and_m01_to_m00() -> None:
     rules = yaml.safe_load((ROOT / "config/architecture/dependency_rules.yaml").read_text())
-    assert rules["declared_owner_edges"] == [{"source": "A00", "target": "M00"}]
+    assert rules["declared_owner_edges"] == [
+        {"source": "A00", "target": "M00"},
+        {"source": "M01", "target": "M00"},
+    ]
 
 
 def test_a00_composition_uses_public_m00_seam_plus_exact_technical_exception() -> None:
