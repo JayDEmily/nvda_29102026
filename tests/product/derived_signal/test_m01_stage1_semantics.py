@@ -1398,15 +1398,6 @@ def test_public_seam_refuses_raw_inputs_from_another_subject() -> None:
             return None
 
     p_basic = _p("P_BASIC", selection_mode="exact")
-    selection = api.InputSelectionPolicyVersionV1(
-        context_id="selection-subject-match",
-        version=1,
-        join_keys=("subject_instrument",),
-        maximum_staleness=timedelta(minutes=1),
-        maximum_skew=timedelta(seconds=10),
-        temporal_basis_permissions=("true_instant",),
-        basket_membership=(),
-    )
     unit = api.UnitConventionVersionV1(
         context_id="unit-price-subject-match",
         version=1,
@@ -1435,50 +1426,62 @@ def test_public_seam_refuses_raw_inputs_from_another_subject() -> None:
             native_units="price",
         ),
     )
-    owner = api.create_owner(
-        raw_projection_reader=Reader(),
-        raw_projection_mappings=mappings,
-        parameter_sets=(p_basic,),
-        input_selection_policies=(selection,),
-        unit_conventions=(unit,),
-        contexts=(),
-        utc_now=lambda: NOW,
-    )
     profile_ref = api.ParameterProfileRefV1("P_BASIC", p_basic.context_id, 1)
 
-    def request(binding_subject: str) -> api.CalculationRequestV1:
-        return api.CalculationRequestV1(
-            derived_signal_id="D011",
-            subject_instrument="NVDA",
-            as_of_utc=NOW,
-            knowledge_cutoff_utc=NOW,
-            calculation_definition_version="calc-v1",
-            parameter_set_id=p_basic.context_id,
-            parameter_set_version=1,
-            input_selection_policy_id=selection.context_id,
-            input_selection_policy_version=1,
-            context_refs=(),
-            parameter_profile_refs=(profile_ref,),
-            raw_input_bindings=(
-                api.RawInputBindingV1(
-                    "R034",
-                    api.VersionRefV1("m-bid", 1),
-                    api.VersionRefV1(unit.context_id, 1),
-                    binding_subject,
-                ),
-                api.RawInputBindingV1(
-                    "R035",
-                    api.VersionRefV1("m-ask", 1),
-                    api.VersionRefV1(unit.context_id, 1),
-                    binding_subject,
-                ),
-            ),
+    for join_keys in (("subject_instrument",), ("contract_id",)):
+        selection = api.InputSelectionPolicyVersionV1(
+            context_id=f"selection-subject-match-{'-'.join(join_keys)}",
+            version=1,
+            join_keys=join_keys,
+            maximum_staleness=timedelta(minutes=1),
+            maximum_skew=timedelta(seconds=10),
+            temporal_basis_permissions=("true_instant",),
+            basket_membership=(),
+        )
+        owner = api.create_owner(
+            raw_projection_reader=Reader(),
+            raw_projection_mappings=mappings,
+            parameter_sets=(p_basic,),
+            input_selection_policies=(selection,),
+            unit_conventions=(unit,),
+            contexts=(),
+            utc_now=lambda: NOW,
         )
 
-    # Reviewer witness: request NVDA while both binding and projected observations are AAPL.
-    assert owner.materialise(request("AAPL")) is None
-    # The reader is an external seam: a mismatched returned observation must also fail closed.
-    assert owner.materialise(request("NVDA")) is None
+        def request(binding_subject: str) -> api.CalculationRequestV1:
+            return api.CalculationRequestV1(
+                derived_signal_id="D011",
+                subject_instrument="NVDA",
+                as_of_utc=NOW,
+                knowledge_cutoff_utc=NOW,
+                calculation_definition_version="calc-v1",
+                parameter_set_id=p_basic.context_id,
+                parameter_set_version=1,
+                input_selection_policy_id=selection.context_id,
+                input_selection_policy_version=1,
+                context_refs=(),
+                parameter_profile_refs=(profile_ref,),
+                raw_input_bindings=(
+                    api.RawInputBindingV1(
+                        "R034",
+                        api.VersionRefV1("m-bid", 1),
+                        api.VersionRefV1(unit.context_id, 1),
+                        binding_subject,
+                    ),
+                    api.RawInputBindingV1(
+                        "R035",
+                        api.VersionRefV1("m-ask", 1),
+                        api.VersionRefV1(unit.context_id, 1),
+                        binding_subject,
+                    ),
+                ),
+            )
+
+        # The minimum single-instrument subject law is mandatory even when a supplied
+        # policy omits subject_instrument from its configurable join keys.
+        assert owner.materialise(request("AAPL")) is None
+        # The reader is an external seam: a mismatched returned observation must also fail closed.
+        assert owner.materialise(request("NVDA")) is None
 
 def test_graph_refuses_future_raw_inputs_and_incompatible_stored_predecessor_versions() -> None:
     s1 = _stage1()
