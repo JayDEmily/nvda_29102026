@@ -1477,7 +1477,7 @@ def test_public_seam_refuses_raw_inputs_from_another_subject() -> None:
 
     # Reviewer witness: request NVDA while both binding and projected observations are AAPL.
     assert owner.materialise(request("AAPL")) is None
-    # The projection reader is an external seam: a mismatched returned observation must also fail closed.
+    # The reader is an external seam: a mismatched returned observation must also fail closed.
     assert owner.materialise(request("NVDA")) is None
 
 def test_graph_refuses_future_raw_inputs_and_incompatible_stored_predecessor_versions() -> None:
