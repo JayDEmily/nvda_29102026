@@ -161,7 +161,28 @@ def test_k01_age_market_local_session_expiry_and_event_countdown_are_exact() -> 
         derived={"D001": (d001,)},
         params=_p("P_TIME", exchange_timezone="Australia/Melbourne"),
     )
-    assert age is not None and age.value == Decimal("1800")
+    assert age is not None
+    assert _named(age.value) == {"basis": "source_event", "age_seconds": Decimal("1800")}
+
+    receipt_age = _eval(
+        "D002",
+        raw={
+            "R001": (_kv(Decimal("1"), received=NOW - timedelta(seconds=15)),),
+            "R002": (
+                _kv(
+                    "receipt-only",
+                    received=NOW - timedelta(seconds=15),
+                    temporal_kind="receipt_only",
+                ),
+            ),
+        },
+        params=_p("P_TIME", exchange_timezone="Australia/Melbourne"),
+    )
+    assert receipt_age is not None
+    assert _named(receipt_age.value) == {
+        "basis": "collector_receipt",
+        "age_seconds": Decimal("15"),
+    }
 
     local = _eval(
         "D003",
@@ -207,6 +228,37 @@ def test_k01_age_market_local_session_expiry_and_event_countdown_are_exact() -> 
     assert tte is not None
     assert tte.value == Decimal(39) / Decimal(24) / Decimal(365)
 
+
+
+def test_k01_session_phase_and_market_open_use_explicit_calendar_without_undeclared_d005_edge() -> None:
+    local_weekday = datetime(2026, 10, 5, 10, 0, tzinfo=ZoneInfo("America/New_York"))
+    params = _p(
+        "P_TIME",
+        session_phases=("overnight|20:00|04:00", "rth|09:30|16:00"),
+        liquid_phases=("rth",),
+        market_open_weekdays=(0, 1, 2, 3, 4),
+        market_closed_dates=("2026-10-12",),
+    )
+    phase = _eval("D005", derived={"D003": (_kv(local_weekday),)}, params=params)
+    assert phase is not None and phase.value == "rth"
+
+    overnight = _eval(
+        "D005",
+        derived={
+            "D003": (
+                _kv(datetime(2026, 10, 5, 23, 30, tzinfo=ZoneInfo("America/New_York"))),
+            )
+        },
+        params=params,
+    )
+    assert overnight is not None and overnight.value == "overnight"
+
+    open_flag = _eval("D010", derived={"D003": (_kv(local_weekday),)}, params=params)
+    assert open_flag is not None and open_flag.value is True
+
+    weekend = datetime(2026, 10, 10, 10, 0, tzinfo=ZoneInfo("America/New_York"))
+    closed_flag = _eval("D010", derived={"D003": (_kv(weekend),)}, params=params)
+    assert closed_flag is not None and closed_flag.value is False
 
 def test_k02_fixed_algebra_examples_preserve_declared_scaling() -> None:
     midpoint = _eval("D011", raw={"R034": (_kv(Decimal("100")),), "R035": (_kv(Decimal("102")),)})
@@ -301,6 +353,59 @@ def test_k02_breadth_uses_component_specific_eligible_denominators() -> None:
         "above_prior_close_fraction": Decimal("0.6666666666666666666666666667"),
     }
 
+
+
+def test_k02_candidate_greeks_require_context_and_breakeven_returns_every_real_root() -> None:
+    greeks_raw = {
+        "R112": (_kv(Decimal("0.5"), occurrence_id="leg"),),
+        "R115": (_kv(Decimal("0.1"), occurrence_id="leg"),),
+        "R116": (_kv(Decimal("0.2"), occurrence_id="leg"),),
+        "R117": (_kv(Decimal("-0.05"), occurrence_id="leg"),),
+        "R016": (_kv(Decimal("100"), occurrence_id="leg"),),
+    }
+    assert _eval("D168", raw=greeks_raw, params=_p("P_BASIC")) is None
+
+    candidate = api.CandidateStructureContextV1(
+        context_id="candidate-straddle",
+        version=1,
+        candidate_identity="long-straddle",
+        leg_contract_identities=("C100", "P100"),
+        leg_sides=("buy", "buy"),
+        leg_quantities=(Decimal("1"), Decimal("1")),
+        quantity=Decimal("1"),
+        premium_assumptions=(("C100", Decimal("5")), ("P100", Decimal("4"))),
+        entry_assumptions=(),
+        risk_capital_currency=Decimal("1000"),
+    )
+    breakeven = _eval(
+        "D170",
+        raw={
+            "R014": (
+                _kv(
+                    Decimal("100"),
+                    occurrence_id="strike-call",
+                    subject="C100",
+                    metadata=(("option_right", "call"),),
+                ),
+                _kv(
+                    Decimal("100"),
+                    occurrence_id="strike-put",
+                    subject="P100",
+                    metadata=(("option_right", "put"),),
+                ),
+            )
+        },
+        derived={
+            "D087": (
+                _kv(Decimal("5"), occurrence_id="mid-call", subject="C100"),
+                _kv(Decimal("4"), occurrence_id="mid-put", subject="P100"),
+            )
+        },
+        params=_p("P_BASIC"),
+        contexts=(candidate,),
+    )
+    assert breakeven is not None
+    assert breakeven.value == (Decimal("91"), Decimal("109"))
 
 def test_k03_uses_latest_anchor_at_or_before_cutoff_and_never_looks_forward() -> None:
     current = _kv(Decimal("110"), occurrence_id="now", at=NOW)
@@ -642,6 +747,76 @@ def test_k08_l2_insert_delete_replenishment_and_resilience_use_reconstructed_sta
     assert reconstructed[2].restored_size == Decimal("6")
     assert reconstructed[3].removed_size == Decimal("10")
 
+    same_time = NOW - timedelta(seconds=10)
+    out_of_query_order = (
+        s1.BookEventV1(
+            "late-update",
+            same_time,
+            0,
+            "update",
+            "bid",
+            Decimal("100"),
+            Decimal("4"),
+            "X",
+            ingestion_sequence=2,
+        ),
+        s1.BookEventV1(
+            "early-insert",
+            same_time,
+            0,
+            "insert",
+            "bid",
+            Decimal("100"),
+            Decimal("10"),
+            "X",
+            ingestion_sequence=1,
+        ),
+    )
+    ordered = s1.reconstruct_book(out_of_query_order)
+    assert tuple(item.event.occurrence_id for item in ordered) == ("early-insert", "late-update")
+    assert ordered[-1].resulting_size == Decimal("4")
+
+
+
+def test_k08_resilience_requires_joint_depth_and_spread_recovery() -> None:
+    def event_field(values: tuple[tuple[str, datetime, object], ...]) -> tuple[Any, ...]:
+        return tuple(_kv(value, occurrence_id=oid, at=at) for oid, at, value in values)
+
+    t0 = NOW - timedelta(seconds=4)
+    t1 = NOW - timedelta(seconds=3)
+    t2 = NOW - timedelta(seconds=2)
+    rows = (
+        ("bid-insert", t0, 0, "insert", "bid", Decimal("100"), Decimal("10")),
+        ("ask-insert", t0, 0, "insert", "ask", Decimal("101"), Decimal("10")),
+        ("bid-shock", t1, 0, "update", "bid", Decimal("100"), Decimal("2")),
+        ("bid-recover", t2, 0, "update", "bid", Decimal("100"), Decimal("8")),
+    )
+    raw = {
+        "R185": event_field(tuple((oid, at, pos) for oid, at, pos, *_ in rows)),
+        "R187": event_field(tuple((oid, at, op) for oid, at, _, op, *_ in rows)),
+        "R188": event_field(tuple((oid, at, side) for oid, at, _, _, side, *_ in rows)),
+        "R189": event_field(tuple((oid, at, price) for oid, at, *_, price, _ in rows)),
+        "R190": event_field(tuple((oid, at, size) for oid, at, *_, size in rows)),
+        "R034": (_kv(Decimal("100"), occurrence_id="best-bid", at=t0),),
+        "R035": (_kv(Decimal("101"), occurrence_id="best-ask", at=t0),),
+    }
+    result = _eval(
+        "D142",
+        raw=raw,
+        params=_p(
+            "P_RULE",
+            depth_levels=1,
+            shock_depth_fraction=Decimal("0.7"),
+            shock_spread_multiple=Decimal("2"),
+            recovery_depth_fraction=Decimal("0.8"),
+            recovery_spread_multiple=Decimal("1.2"),
+        ),
+    )
+    assert result is not None
+    values = _named(result.value)
+    assert values["seconds"] == Decimal("1")
+    assert values["recovered_depth"] == Decimal("18")
+    assert values["recovered_spread"] == Decimal("1")
 
 def test_k08_candidate_selection_risk_size_limit_and_action_precedence_are_deterministic() -> None:
     candidate_type = api.CandidateSetContextV1
