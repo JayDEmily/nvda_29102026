@@ -326,7 +326,8 @@ def test_k04_historical_zscore_midrank_percentile_and_cross_section_are_separate
         params=_p("P_BASELINE", minimum_sample=2, history_count=4),
     )
     assert z is not None
-    assert z.value == Decimal("1.936491673103708442589632700")
+    expected_z = (Decimal("5") - Decimal("2.5")) / (Decimal("5") / Decimal("3")).sqrt()
+    assert z.value == expected_z
 
     pct = _eval(
         "D106",
