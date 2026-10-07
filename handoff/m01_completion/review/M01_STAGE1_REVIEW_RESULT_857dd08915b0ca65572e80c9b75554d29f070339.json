@@ -1,0 +1,49 @@
+{
+  "authority": {
+    "brief_sha256": "603b850802a418780109095e7ae69bcece449da79fb24140a6d50297605e927c",
+    "catalogue_sha256": "63bc1b776fc8fa8ba82eb3c9b16916f295c9ec3d480a5a068937c2f25146f5f5",
+    "rule": "Accepted brief clause 8.1 requires, at minimum, single-instrument calculations to use the same canonical subject/instrument identity across all required inputs; clause 17 requires failure on missing subject matching."
+  },
+  "classification": "RECURRENT_CLASS",
+  "finding": "The first NVDA/AAPL witness was repaired only when InputSelectionPolicyVersion.join_keys contains 'subject_instrument'. The public seam still permits a single-instrument policy whose join_keys omit subject_instrument. With join_keys=('contract_id',), an NVDA D011 request using AAPL R034/R035 bindings and AAPL projected observations materialised successfully as an NVDA occurrence with result 101 and AAPL raw lineage. Therefore the minimum single-instrument subject invariant remains configuration-optional and the accepted selection law is not yet enforced fail-closed.",
+  "generated_at_utc": "2026-10-07T09:37:19.866083+00:00",
+  "independent_evidence": {
+    "adverse_public_seam_probe": {
+      "binding_subject": "AAPL",
+      "observed_materialised": true,
+      "observed_occurrence_subject": "NVDA",
+      "observed_raw_lineage_occurrence_ids": [
+        "aapl-bid",
+        "aapl-ask"
+      ],
+      "observed_result": "101",
+      "projected_subject": "AAPL",
+      "request_derived_signal_id": "D011",
+      "request_subject": "NVDA",
+      "selection_join_keys": [
+        "contract_id"
+      ]
+    },
+    "architecture_validation": "PASS",
+    "dependency_validation": "PASS",
+    "derived_signal_tests": "79 passed",
+    "focused_stage1_tests": "34 passed",
+    "note": "Review stopped at the first failed semantic invariant after confirming the prior witness repair.",
+    "public_seam_validation": "PASS",
+    "worker_repair_order": {
+      "lint_only_test_commit": "e1be404040e659e7ed282ae27a2881b315c6b727",
+      "production_repair_commit": "857dd08915b0ca65572e80c9b75554d29f070339",
+      "proof_commit": "f5b23d0f1eaa7c7ee6f00000e66cb2edb16c5e71",
+      "proof_precedes_production": true
+    }
+  },
+  "kind": "independent_review_result",
+  "repair_proposition": "Close the Stage-1 subject-selection class, not only this witness: for every single-instrument calculation, canonical request/binding/projected-input subject identity must be mandatory and cannot be disabled by omitting subject_instrument from a supplied selection policy. Authority-derived proof must discriminate adverse policy configurations as well as mismatched bindings/returned projections. Repair only the Stage-1 selection path required to make that class-level proposition true. Do not start Stage 2.",
+  "review": "M01_STAGE1",
+  "reviewed_branch": "work/m01-completion",
+  "reviewed_head": "857dd08915b0ca65572e80c9b75554d29f070339",
+  "reviewed_tree": "6c0dcf167057b0237eaf2ed75a6d153e8e8645da",
+  "route": "RETURN_TO_WORKER_STAGE1",
+  "stage2_authorised": false,
+  "verdict": "REPAIR"
+}
