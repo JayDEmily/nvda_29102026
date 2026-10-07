@@ -997,13 +997,12 @@ class _OwnerV1:
         )
         if not bindings:
             return None
-        if "subject_instrument" in selection.join_keys:
-            binding_subjects = {item.subject_instrument for item in bindings}
-            if selection.basket_membership:
-                if binding_subjects != set(selection.basket_membership):
-                    return None
-            elif binding_subjects != {request.subject_instrument}:
+        binding_subjects = {item.subject_instrument for item in bindings}
+        if selection.basket_membership:
+            if binding_subjects != set(selection.basket_membership):
                 return None
+        elif binding_subjects != {request.subject_instrument}:
+            return None
         kernel_values: list[KernelValueV1] = []
         lineage: list[RawInputLineageV1] = []
         convention_refs: list[VersionRefV1] = []
