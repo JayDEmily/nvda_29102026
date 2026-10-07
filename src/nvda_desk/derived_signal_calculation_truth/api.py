@@ -8,6 +8,8 @@ from datetime import UTC, date, datetime, timedelta
 from decimal import Decimal
 from typing import TYPE_CHECKING, Protocol, cast
 
+from nvda_desk.raw_signal_occurrence_truth.api import RawSelectionIdentityV1
+
 if TYPE_CHECKING:
     from ._stage1 import KernelValueV1
 
@@ -708,6 +710,7 @@ class RawInputBindingV1:
     projection_mapping_ref: VersionRefV1
     unit_convention_ref: VersionRefV1
     subject_instrument: str
+    selection_identity: RawSelectionIdentityV1 | None = None
 
     def __post_init__(self) -> None:
         _require_raw_signal_id(self.raw_signal_id)
@@ -716,6 +719,11 @@ class RawInputBindingV1:
         if type(self.unit_convention_ref) is not VersionRefV1:
             raise TypeError("unit_convention_ref must be VersionRefV1")
         _require_non_empty_string(self.subject_instrument, "subject_instrument")
+        if (
+            self.selection_identity is not None
+            and type(self.selection_identity) is not RawSelectionIdentityV1
+        ):
+            raise TypeError("selection_identity must be RawSelectionIdentityV1 or absent")
 
 
 @dataclass(frozen=True, slots=True)
@@ -979,6 +987,73 @@ class _OwnerV1:
                 return None
         return contexts
 
+    @staticmethod
+    def _identity_value(
+        identity: RawSelectionIdentityV1 | None, key: str
+    ) -> object | None:
+        if identity is None:
+            return None
+        return identity.value_for(key)
+
+    @classmethod
+    def _same_identity_value(
+        cls, left: RawSelectionIdentityV1 | None, right: RawSelectionIdentityV1 | None, key: str
+    ) -> bool:
+        left_value = cls._identity_value(left, key)
+        right_value = cls._identity_value(right, key)
+        if left_value is None or right_value is None:
+            return False
+        return type(left_value) is type(right_value) and left_value == right_value
+
+    @classmethod
+    def _bindings_satisfy_join_keys(
+        cls,
+        request: CalculationRequestV1,
+        raw_signal_ids: tuple[str, ...],
+        selection: InputSelectionPolicyVersionV1,
+    ) -> bool:
+        join_keys = tuple(key for key in selection.join_keys if key != "subject_instrument")
+        if not join_keys or not raw_signal_ids:
+            return True
+        bindings = tuple(
+            item for item in request.raw_input_bindings if item.raw_signal_id in raw_signal_ids
+        )
+        if not bindings:
+            return False
+        for subject in {item.subject_instrument for item in bindings}:
+            subject_bindings = tuple(
+                item for item in bindings if item.subject_instrument == subject
+            )
+            for key in join_keys:
+                first = cls._identity_value(subject_bindings[0].selection_identity, key)
+                if first is None:
+                    return False
+                for binding in subject_bindings[1:]:
+                    value = cls._identity_value(binding.selection_identity, key)
+                    if value is None or type(value) is not type(first) or value != first:
+                        return False
+        return True
+
+    @classmethod
+    def _projection_matches_binding_join_keys(
+        cls,
+        binding: RawInputBindingV1,
+        projected_identity: object,
+        selection: InputSelectionPolicyVersionV1,
+    ) -> bool:
+        if (
+            projected_identity is not None
+            and type(projected_identity) is not RawSelectionIdentityV1
+        ):
+            return False
+        typed_projected = cast(RawSelectionIdentityV1 | None, projected_identity)
+        for key in selection.join_keys:
+            if key == "subject_instrument":
+                continue
+            if not cls._same_identity_value(binding.selection_identity, typed_projected, key):
+                return False
+        return True
+
     def _raw_values(
         self,
         request: CalculationRequestV1,
@@ -1062,6 +1137,10 @@ class _OwnerV1:
                     or projected_subject != binding.subject_instrument
                 ):
                     return None
+                if not self._projection_matches_binding_join_keys(
+                    binding, getattr(item, "selection_identity", None), selection
+                ):
+                    continue
                 native = getattr(item, "native_value", None)
                 if type(native) is Decimal:
                     canonical: object = unit.convert(native, native_units=unit.native_units)
@@ -1203,6 +1282,8 @@ class _OwnerV1:
         selection = self._selection_policy(request)
         contexts = self._contexts_for_row(request, row.typed_contexts)
         if parameter_set is None or selection is None or contexts is None:
+            return None
+        if not self._bindings_satisfy_join_keys(request, row.raw_dependencies, selection):
             return None
         parameter_ref = VersionRefV1(parameter_set.context_id, parameter_set.version)
         selection_ref = VersionRefV1(selection.context_id, selection.version)

@@ -104,6 +104,9 @@ type NativeValueV1 = (
 )
 
 
+type RawSelectionIdentityScalarV1 = bool | int | float | Decimal | str | bytes
+
+
 _POLICY_CONCEPT = "raw_signal.capture_scope_policy"
 _POLICY_CONTRACT = "nvda.raw_signal.CaptureScopePolicy.v1"
 _CAPTURE_CONCEPT = "raw_signal.scheduled_capture_occurrence"
@@ -549,6 +552,37 @@ class RawObservationOccurrenceV1:
 
 
 @dataclass(frozen=True, slots=True)
+class RawSelectionIdentityV1:
+    """Exact raw-side identity dimensions available for semantic input selection."""
+
+    values: tuple[tuple[str, RawSelectionIdentityScalarV1], ...]
+
+    def __post_init__(self) -> None:
+        if type(self.values) is not tuple or not self.values:
+            raise ValueError("values must be a non-empty tuple")
+        keys: list[str] = []
+        for item in self.values:
+            if type(item) is not tuple or len(item) != 2:
+                raise TypeError("values entries must be exact (key, scalar) tuples")
+            key, value = item
+            if type(key) is not str or not key:
+                raise ValueError("selection identity keys must be non-empty strings")
+            if type(value) not in {bool, int, float, Decimal, str, bytes}:
+                raise TypeError("selection identity values must be exact native scalars")
+            keys.append(key)
+        if len(keys) != len(set(keys)):
+            raise ValueError("selection identity keys must be distinct")
+
+    def value_for(self, key: str) -> RawSelectionIdentityScalarV1 | None:
+        if type(key) is not str or not key:
+            raise ValueError("key must be a non-empty string")
+        for candidate, value in self.values:
+            if candidate == key:
+                return value
+        return None
+
+
+@dataclass(frozen=True, slots=True)
 class RawSignalProjectionMappingV1:
     """Immutable raw-side mapping from one canonical Rxxx to one native field."""
 
@@ -559,6 +593,7 @@ class RawSignalProjectionMappingV1:
     source_variant: str | None
     native_field_path: tuple[str, ...]
     native_units: str
+    selection_identity_field_paths: tuple[tuple[str, tuple[str, ...]], ...] = ()
 
     def __post_init__(self) -> None:
         if type(self.mapping_id) is not str or not self.mapping_id:
@@ -579,6 +614,26 @@ class RawSignalProjectionMappingV1:
             raise ValueError("native_field_path must contain non-empty strings")
         if type(self.native_units) is not str or not self.native_units:
             raise ValueError("native_units must be a non-empty string")
+        if type(self.selection_identity_field_paths) is not tuple:
+            raise TypeError("selection_identity_field_paths must be a tuple")
+        identity_keys: list[str] = []
+        for item in self.selection_identity_field_paths:
+            if type(item) is not tuple or len(item) != 2:
+                raise TypeError(
+                    "selection_identity_field_paths entries must be exact (key, path) tuples"
+                )
+            key, path = item
+            if type(key) is not str or not key:
+                raise ValueError("selection identity field keys must be non-empty strings")
+            if (
+                type(path) is not tuple
+                or not path
+                or any(type(part) is not str or not part for part in path)
+            ):
+                raise ValueError("selection identity field paths must contain non-empty strings")
+            identity_keys.append(key)
+        if len(identity_keys) != len(set(identity_keys)):
+            raise ValueError("selection identity field keys must be distinct")
 
 
 @dataclass(frozen=True, slots=True)
@@ -600,6 +655,14 @@ class ProjectedRawValueV1:
     ingestion_sequence: int
     ingestion_sequence_scope: _IngestionSequenceScope
     revision_vintage_native: str | None
+    selection_identity: RawSelectionIdentityV1 | None = None
+
+    def __post_init__(self) -> None:
+        if (
+            self.selection_identity is not None
+            and type(self.selection_identity) is not RawSelectionIdentityV1
+        ):
+            raise TypeError("selection_identity must be RawSelectionIdentityV1 or absent")
 
 
 @dataclass(frozen=True, slots=True)
@@ -1708,6 +1771,19 @@ def _build_owner_facets(
             if not isinstance(value, Mapping) or part not in value:
                 return None
             value = value[part]
+        selection_values: list[tuple[str, RawSelectionIdentityScalarV1]] = []
+        for key, path in mapping.selection_identity_field_paths:
+            identity_value: NativeValueV1 = observation.native_record
+            for part in path:
+                if not isinstance(identity_value, Mapping) or part not in identity_value:
+                    return None
+                identity_value = identity_value[part]
+            if type(identity_value) not in {bool, int, float, Decimal, str, bytes}:
+                return None
+            selection_values.append((key, cast(RawSelectionIdentityScalarV1, identity_value)))
+        selection_identity = (
+            RawSelectionIdentityV1(tuple(selection_values)) if selection_values else None
+        )
         return ProjectedRawValueV1(
             raw_signal_catalogue_id=raw_signal_catalogue_id,
             observation_occurrence_id=observation.observation_occurrence_id,
@@ -1726,6 +1802,7 @@ def _build_owner_facets(
             ingestion_sequence=observation.ingestion_sequence,
             ingestion_sequence_scope=observation.ingestion_sequence_scope,
             revision_vintage_native=observation.revision_vintage_native,
+            selection_identity=selection_identity,
         )
 
     def list_projected_raw_history(
