@@ -9,25 +9,27 @@ from functools import lru_cache
 from pathlib import Path
 
 CATALOGUE_SHA256 = "63bc1b776fc8fa8ba82eb3c9b16916f295c9ec3d480a5a068937c2f25146f5f5"
-ADMITTED_KERNEL_IDS = frozenset({
-    "K01_TIME",
-    "K02_ALGEBRA",
-    "K03_CHANGE_RETURN",
-    "K04_STANDARDISE_RANK",
-    "K05_REALIZED_RISK",
-    "K06_REGRESSION_DEPENDENCE",
-    "K07_WEIGHTED_SCORE",
-    "K08_RULE_BUCKET_POLICY",
-    "K09_SURFACE_DENSITY",
-    "K10_DISTRIBUTION_SCENARIO",
-    "K11_EXPOSURE_STRESS",
-    "K12_VALUE_UTILITY",
-    "K13_EXPECTATION_RISK_UTILITY",
-    "K14_PNL_ATTRIBUTION",
-    "K15_EVALUATION",
-    "K16_STRUCTURED_ASSEMBLY",
-    "K17_ORDER_FLOW_IMBALANCE",
-})
+ADMITTED_KERNEL_IDS = frozenset(
+    {
+        "K01_TIME",
+        "K02_ALGEBRA",
+        "K03_CHANGE_RETURN",
+        "K04_STANDARDISE_RANK",
+        "K05_REALIZED_RISK",
+        "K06_REGRESSION_DEPENDENCE",
+        "K07_WEIGHTED_SCORE",
+        "K08_RULE_BUCKET_POLICY",
+        "K09_SURFACE_DENSITY",
+        "K10_DISTRIBUTION_SCENARIO",
+        "K11_EXPOSURE_STRESS",
+        "K12_VALUE_UTILITY",
+        "K13_EXPECTATION_RISK_UTILITY",
+        "K14_PNL_ATTRIBUTION",
+        "K15_EVALUATION",
+        "K16_STRUCTURED_ASSEMBLY",
+        "K17_ORDER_FLOW_IMBALANCE",
+    }
+)
 
 
 @dataclass(frozen=True, slots=True)
@@ -98,7 +100,12 @@ def catalogue_rows() -> tuple[CatalogueRow, ...]:
         raise RuntimeError("runtime D catalogue contains an unresolved derived dependency")
     for row in rows:
         for dep in row.raw_dependencies:
-            if len(dep) != 4 or dep[0] != "R" or not dep[1:].isdigit() or not 1 <= int(dep[1:]) <= 323:
+            if (
+                len(dep) != 4
+                or dep[0] != "R"
+                or not dep[1:].isdigit()
+                or not 1 <= int(dep[1:]) <= 323
+            ):
                 raise RuntimeError(f"runtime D catalogue contains invalid raw dependency {dep!r}")
     # Exercise the graph while loading so a cycle is a hard startup failure.
     _topological(rows)

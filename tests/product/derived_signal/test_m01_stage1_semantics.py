@@ -1,15 +1,11 @@
 from __future__ import annotations
 
-import csv
 import importlib
 import math
 from datetime import UTC, date, datetime, timedelta
 from decimal import Decimal
-from pathlib import Path
 from typing import Any
 from zoneinfo import ZoneInfo
-
-import pytest
 
 from nvda_desk.derived_signal_calculation_truth import api
 
@@ -90,7 +86,9 @@ def _named(value: object) -> dict[str, object]:
 def test_stage1_runtime_catalogue_is_exact_hash_bound_209_row_authority() -> None:
     cat = _catalogue()
     rows = cat.catalogue_rows()
-    assert cat.CATALOGUE_SHA256 == "63bc1b776fc8fa8ba82eb3c9b16916f295c9ec3d480a5a068937c2f25146f5f5"
+    assert (
+        cat.CATALOGUE_SHA256 == "63bc1b776fc8fa8ba82eb3c9b16916f295c9ec3d480a5a068937c2f25146f5f5"
+    )
     assert len(rows) == 209
     assert tuple(row.derived_id for row in rows) == tuple(f"D{i:03d}" for i in range(1, 210))
 
@@ -111,9 +109,7 @@ def test_stage1_has_an_explicit_dispatch_for_every_stage1_catalogue_row() -> Non
     cat = _catalogue()
     s1 = _stage1()
     expected = {
-        row.derived_id
-        for row in cat.catalogue_rows()
-        if row.kernel_id in s1.STAGE1_KERNEL_IDS
+        row.derived_id for row in cat.catalogue_rows() if row.kernel_id in s1.STAGE1_KERNEL_IDS
     }
     assert len(expected) == 174
     assert set(s1.supported_stage1_ids()) == expected
@@ -229,8 +225,9 @@ def test_k01_age_market_local_session_expiry_and_event_countdown_are_exact() -> 
     assert tte.value == Decimal(39) / Decimal(24) / Decimal(365)
 
 
-
-def test_k01_session_phase_and_market_open_use_explicit_calendar_without_undeclared_d005_edge() -> None:
+def test_k01_session_phase_and_market_open_use_explicit_calendar_without_undeclared_d005_edge() -> (
+    None
+):
     local_weekday = datetime(2026, 10, 5, 10, 0, tzinfo=ZoneInfo("America/New_York"))
     params = _p(
         "P_TIME",
@@ -245,9 +242,7 @@ def test_k01_session_phase_and_market_open_use_explicit_calendar_without_undecla
     overnight = _eval(
         "D005",
         derived={
-            "D003": (
-                _kv(datetime(2026, 10, 5, 23, 30, tzinfo=ZoneInfo("America/New_York"))),
-            )
+            "D003": (_kv(datetime(2026, 10, 5, 23, 30, tzinfo=ZoneInfo("America/New_York"))),)
         },
         params=params,
     )
@@ -259,6 +254,7 @@ def test_k01_session_phase_and_market_open_use_explicit_calendar_without_undecla
     weekend = datetime(2026, 10, 10, 10, 0, tzinfo=ZoneInfo("America/New_York"))
     closed_flag = _eval("D010", derived={"D003": (_kv(weekend),)}, params=params)
     assert closed_flag is not None and closed_flag.value is False
+
 
 def test_k02_fixed_algebra_examples_preserve_declared_scaling() -> None:
     midpoint = _eval("D011", raw={"R034": (_kv(Decimal("100")),), "R035": (_kv(Decimal("102")),)})
@@ -354,7 +350,6 @@ def test_k02_breadth_uses_component_specific_eligible_denominators() -> None:
     }
 
 
-
 def test_k02_candidate_greeks_require_context_and_breakeven_returns_every_real_root() -> None:
     greeks_raw = {
         "R112": (_kv(Decimal("0.5"), occurrence_id="leg"),),
@@ -408,7 +403,6 @@ def test_k02_candidate_greeks_require_context_and_breakeven_returns_every_real_r
     assert breakeven.value == (Decimal("91"), Decimal("109"))
 
 
-
 def test_k01_macro_vintage_status_preserves_realtime_period_and_ignores_future_receipts() -> None:
     t0 = NOW - timedelta(days=3)
     t1 = NOW - timedelta(days=2)
@@ -417,12 +411,24 @@ def test_k01_macro_vintage_status_preserves_realtime_period_and_ignores_future_r
         "R280": (
             _kv("2026-10-01", occurrence_id="v1", at=t0, received=t0, temporal_kind="date_only"),
             _kv("2026-10-02", occurrence_id="v2", at=t1, received=t1, temporal_kind="date_only"),
-            _kv("2026-10-03", occurrence_id="v3", at=future, received=future, temporal_kind="date_only"),
+            _kv(
+                "2026-10-03",
+                occurrence_id="v3",
+                at=future,
+                received=future,
+                temporal_kind="date_only",
+            ),
         ),
         "R281": (
             _kv("2026-10-01", occurrence_id="v1", at=t0, received=t0, temporal_kind="date_only"),
             _kv("9999-12-31", occurrence_id="v2", at=t1, received=t1, temporal_kind="date_only"),
-            _kv("9999-12-31", occurrence_id="v3", at=future, received=future, temporal_kind="date_only"),
+            _kv(
+                "9999-12-31",
+                occurrence_id="v3",
+                at=future,
+                received=future,
+                temporal_kind="date_only",
+            ),
         ),
         "R282": (
             _kv("2026-10-01T10:00:00+00:00", occurrence_id="v1", at=t0, received=t0),
@@ -450,13 +456,21 @@ def test_k02_atm_straddle_requires_exact_call_put_same_expiry_without_metadata_d
                     Decimal("5"),
                     occurrence_id="call",
                     subject="C100",
-                    metadata=(("right", "call"), ("delta", Decimal("0.50")), ("expiry", "2026-10-16")),
+                    metadata=(
+                        ("right", "call"),
+                        ("delta", Decimal("0.50")),
+                        ("expiry", "2026-10-16"),
+                    ),
                 ),
                 _kv(
                     Decimal("4"),
                     occurrence_id="put",
                     subject="P100",
-                    metadata=(("right", "put"), ("delta", Decimal("-0.50")), ("expiry", "2026-10-16")),
+                    metadata=(
+                        ("right", "put"),
+                        ("delta", Decimal("-0.50")),
+                        ("expiry", "2026-10-16"),
+                    ),
                 ),
             )
         },
@@ -467,8 +481,24 @@ def test_k02_atm_straddle_requires_exact_call_put_same_expiry_without_metadata_d
         "D109",
         derived={
             "D087": (
-                _kv(Decimal("5"), occurrence_id="call", metadata=(("right", "call"), ("delta", Decimal("0.50")), ("expiry", "2026-10-16"))),
-                _kv(Decimal("4"), occurrence_id="put", metadata=(("right", "put"), ("delta", Decimal("-0.50")), ("expiry", "2026-10-23"))),
+                _kv(
+                    Decimal("5"),
+                    occurrence_id="call",
+                    metadata=(
+                        ("right", "call"),
+                        ("delta", Decimal("0.50")),
+                        ("expiry", "2026-10-16"),
+                    ),
+                ),
+                _kv(
+                    Decimal("4"),
+                    occurrence_id="put",
+                    metadata=(
+                        ("right", "put"),
+                        ("delta", Decimal("-0.50")),
+                        ("expiry", "2026-10-23"),
+                    ),
+                ),
             )
         },
     )
@@ -478,8 +508,16 @@ def test_k02_atm_straddle_requires_exact_call_put_same_expiry_without_metadata_d
         "D109",
         derived={
             "D087": (
-                _kv(Decimal("5"), occurrence_id="call", metadata=(("delta", Decimal("0.50")), ("expiry", "2026-10-16"))),
-                _kv(Decimal("4"), occurrence_id="put", metadata=(("delta", Decimal("-0.50")), ("expiry", "2026-10-16"))),
+                _kv(
+                    Decimal("5"),
+                    occurrence_id="call",
+                    metadata=(("delta", Decimal("0.50")), ("expiry", "2026-10-16")),
+                ),
+                _kv(
+                    Decimal("4"),
+                    occurrence_id="put",
+                    metadata=(("delta", Decimal("-0.50")), ("expiry", "2026-10-16")),
+                ),
             )
         },
     )
@@ -509,7 +547,13 @@ def test_k02_open_interest_change_uses_chronological_exact_contract_history() ->
 def test_k02_smart_direct_gap_matches_direct_venue_rows_to_smart_side_and_level() -> None:
     def field(rows: tuple[tuple[str, datetime, object, str], ...]) -> tuple[Any, ...]:
         return tuple(
-            _kv(value, occurrence_id=oid, at=at, subject="NVDA", metadata=(("ingestion_sequence", i),))
+            _kv(
+                value,
+                occurrence_id=oid,
+                at=at,
+                subject="NVDA",
+                metadata=(("ingestion_sequence", i),),
+            )
             for i, (oid, at, value, _venue) in enumerate(rows, start=1)
         )
 
@@ -524,16 +568,44 @@ def test_k02_smart_direct_gap_matches_direct_venue_rows_to_smart_side_and_level(
     )
     raw = {
         "R185": field(smart),
-        "R187": field((("sb", t0, "insert", ""), ("sa", t0 + timedelta(microseconds=1), "insert", ""))),
+        "R187": field(
+            (("sb", t0, "insert", ""), ("sa", t0 + timedelta(microseconds=1), "insert", ""))
+        ),
         "R188": field((("sb", t0, "bid", ""), ("sa", t0 + timedelta(microseconds=1), "ask", ""))),
-        "R189": field((("sb", t0, Decimal("100"), ""), ("sa", t0 + timedelta(microseconds=1), Decimal("101"), ""))),
-        "R190": field((("sb", t0, Decimal("10"), ""), ("sa", t0 + timedelta(microseconds=1), Decimal("12"), ""))),
+        "R189": field(
+            (
+                ("sb", t0, Decimal("100"), ""),
+                ("sa", t0 + timedelta(microseconds=1), Decimal("101"), ""),
+            )
+        ),
+        "R190": field(
+            (
+                ("sb", t0, Decimal("10"), ""),
+                ("sa", t0 + timedelta(microseconds=1), Decimal("12"), ""),
+            )
+        ),
         "R192": field(direct),
-        "R193": field((("db", t0, "ARCA", "ARCA"), ("da", t0 + timedelta(microseconds=1), "ARCA", "ARCA"))),
-        "R194": field((("db", t0, "insert", "ARCA"), ("da", t0 + timedelta(microseconds=1), "insert", "ARCA"))),
-        "R195": field((("db", t0, "bid", "ARCA"), ("da", t0 + timedelta(microseconds=1), "ask", "ARCA"))),
-        "R196": field((("db", t0, Decimal("99.9"), "ARCA"), ("da", t0 + timedelta(microseconds=1), Decimal("101.1"), "ARCA"))),
-        "R197": field((("db", t0, Decimal("7"), "ARCA"), ("da", t0 + timedelta(microseconds=1), Decimal("8"), "ARCA"))),
+        "R193": field(
+            (("db", t0, "ARCA", "ARCA"), ("da", t0 + timedelta(microseconds=1), "ARCA", "ARCA"))
+        ),
+        "R194": field(
+            (("db", t0, "insert", "ARCA"), ("da", t0 + timedelta(microseconds=1), "insert", "ARCA"))
+        ),
+        "R195": field(
+            (("db", t0, "bid", "ARCA"), ("da", t0 + timedelta(microseconds=1), "ask", "ARCA"))
+        ),
+        "R196": field(
+            (
+                ("db", t0, Decimal("99.9"), "ARCA"),
+                ("da", t0 + timedelta(microseconds=1), Decimal("101.1"), "ARCA"),
+            )
+        ),
+        "R197": field(
+            (
+                ("db", t0, Decimal("7"), "ARCA"),
+                ("da", t0 + timedelta(microseconds=1), Decimal("8"), "ARCA"),
+            )
+        ),
     }
     result = _eval("D144", raw=raw)
     assert result is not None
@@ -582,6 +654,7 @@ def test_k02_candidate_greeks_align_quantities_by_exact_leg_contract_not_row_ord
         "vega": Decimal("-5"),
         "theta": Decimal("2"),
     }
+
 
 def test_k03_uses_latest_anchor_at_or_before_cutoff_and_never_looks_forward() -> None:
     current = _kv(Decimal("110"), occurrence_id="now", at=NOW)
@@ -670,7 +743,10 @@ def test_k05_realised_variation_requires_full_window_and_atr_uses_true_range() -
     atr = _eval(
         "D039",
         raw={
-            "R141": (_kv(Decimal("11"), occurrence_id="b1"), _kv(Decimal("13"), occurrence_id="b2")),
+            "R141": (
+                _kv(Decimal("11"), occurrence_id="b1"),
+                _kv(Decimal("13"), occurrence_id="b2"),
+            ),
             "R142": (_kv(Decimal("9"), occurrence_id="b1"), _kv(Decimal("10"), occurrence_id="b2")),
             "R143": (
                 _kv(Decimal("10"), occurrence_id="b0", at=NOW - timedelta(minutes=10)),
@@ -756,7 +832,9 @@ def test_k06_book_slope_and_partial_correlation_have_explicit_ridge_semantics() 
     assert named["ask_slope"] == Decimal("18")
 
 
-def test_k07_all_authorised_scalar_extractors_are_implemented_without_implicit_scalarisation() -> None:
+def test_k07_all_authorised_scalar_extractors_are_implemented_without_implicit_scalarisation() -> (
+    None
+):
     s1 = _stage1()
     structured = (
         ("a", Decimal("3")),
@@ -766,7 +844,9 @@ def test_k07_all_authorised_scalar_extractors_are_implemented_without_implicit_s
         ("distribution", ((Decimal("-1"), Decimal("0.25")), (Decimal("1"), Decimal("0.75")))),
     )
     assert s1.extract_scalar(structured, "component", ("a",)) == Decimal("3")
-    assert s1.extract_scalar(structured, "weighted_component_sum", ("a", Decimal("2"), "b", Decimal("-1"))) == Decimal("2")
+    assert s1.extract_scalar(
+        structured, "weighted_component_sum", ("a", Decimal("2"), "b", Decimal("-1"))
+    ) == Decimal("2")
     assert s1.extract_scalar(structured, "class_probability", ("up",)) == Decimal("0.7")
     assert s1.extract_scalar(structured, "probability_margin", ()) == Decimal("0.4")
     entropy = s1.extract_scalar(structured, "normalised_entropy", ())
@@ -778,7 +858,9 @@ def test_k07_all_authorised_scalar_extractors_are_implemented_without_implicit_s
     assert s1.extract_scalar(structured, "frobenius", ()) == Decimal(str(math.sqrt(30)))
 
 
-def test_k07_score_schema_controls_transform_orientation_weight_and_missing_feature_refusal() -> None:
+def test_k07_score_schema_controls_transform_orientation_weight_and_missing_feature_refusal() -> (
+    None
+):
     feature_type = getattr(api, "ScoreFeatureV1", None)
     assert feature_type is not None
     features = (
@@ -846,12 +928,18 @@ def test_k08_required_field_completeness_and_trade_sign_never_guess() -> None:
         params=_p("P_RULE", rule="required_field_completeness"),
         contexts=(policy,),
     )
-    assert completeness is not None and completeness.value == Decimal("0.6666666666666666666666666667")
+    assert completeness is not None and completeness.value == Decimal(
+        "0.6666666666666666666666666667"
+    )
 
     midpoint = _kv(Decimal("100"), occurrence_id="mid")
     buyer = _eval(
         "D015",
-        raw={"R120": (_kv(Decimal("101")),), "R126": (_kv(Decimal("1")),), "R127": (_kv(Decimal("1")),)},
+        raw={
+            "R120": (_kv(Decimal("101")),),
+            "R126": (_kv(Decimal("1")),),
+            "R127": (_kv(Decimal("1")),),
+        },
         derived={"D011": (midpoint,)},
         params=_p("P_RULE", rule="trade_sign"),
     )
@@ -859,7 +947,11 @@ def test_k08_required_field_completeness_and_trade_sign_never_guess() -> None:
 
     unknown = _eval(
         "D015",
-        raw={"R120": (_kv(Decimal("100")),), "R126": (_kv(Decimal("1")),), "R127": (_kv(Decimal("1")),)},
+        raw={
+            "R120": (_kv(Decimal("100")),),
+            "R126": (_kv(Decimal("1")),),
+            "R127": (_kv(Decimal("1")),),
+        },
         derived={"D011": (midpoint,)},
         params=_p("P_RULE", rule="trade_sign"),
     )
@@ -897,8 +989,14 @@ def test_k08_bucket_and_concentration_rules_use_absolute_gamma_and_canonical_hhi
         "D128",
         derived={
             "D125": (
-                _kv((("gamma_exposure", Decimal("-30")), ("spot_distance", Decimal("1"))), occurrence_id="g1"),
-                _kv((("gamma_exposure", Decimal("70")), ("spot_distance", Decimal("5"))), occurrence_id="g2"),
+                _kv(
+                    (("gamma_exposure", Decimal("-30")), ("spot_distance", Decimal("1"))),
+                    occurrence_id="g1",
+                ),
+                _kv(
+                    (("gamma_exposure", Decimal("70")), ("spot_distance", Decimal("5"))),
+                    occurrence_id="g2",
+                ),
             ),
             "D089": (_kv(Decimal("1")),),
         },
@@ -912,10 +1010,18 @@ def test_k08_l2_insert_delete_replenishment_and_resilience_use_reconstructed_sta
     s1 = _stage1()
     assert callable(s1.reconstruct_book)
     events = (
-        s1.BookEventV1("e1", NOW - timedelta(seconds=4), 0, "insert", "bid", Decimal("100"), Decimal("10"), "X"),
-        s1.BookEventV1("e2", NOW - timedelta(seconds=3), 0, "update", "bid", Decimal("100"), Decimal("4"), "X"),
-        s1.BookEventV1("e3", NOW - timedelta(seconds=2), 0, "update", "bid", Decimal("100"), Decimal("10"), "X"),
-        s1.BookEventV1("e4", NOW - timedelta(seconds=1), 0, "delete", "bid", Decimal("100"), Decimal("0"), "X"),
+        s1.BookEventV1(
+            "e1", NOW - timedelta(seconds=4), 0, "insert", "bid", Decimal("100"), Decimal("10"), "X"
+        ),
+        s1.BookEventV1(
+            "e2", NOW - timedelta(seconds=3), 0, "update", "bid", Decimal("100"), Decimal("4"), "X"
+        ),
+        s1.BookEventV1(
+            "e3", NOW - timedelta(seconds=2), 0, "update", "bid", Decimal("100"), Decimal("10"), "X"
+        ),
+        s1.BookEventV1(
+            "e4", NOW - timedelta(seconds=1), 0, "delete", "bid", Decimal("100"), Decimal("0"), "X"
+        ),
     )
     reconstructed = s1.reconstruct_book(events)
     assert reconstructed[0].inserted_size == Decimal("10")
@@ -951,7 +1057,6 @@ def test_k08_l2_insert_delete_replenishment_and_resilience_use_reconstructed_sta
     ordered = s1.reconstruct_book(out_of_query_order)
     assert tuple(item.event.occurrence_id for item in ordered) == ("early-insert", "late-update")
     assert ordered[-1].resulting_size == Decimal("4")
-
 
 
 def test_k08_resilience_requires_joint_depth_and_spread_recovery() -> None:
@@ -993,6 +1098,7 @@ def test_k08_resilience_requires_joint_depth_and_spread_recovery() -> None:
     assert values["seconds"] == Decimal("1")
     assert values["recovered_depth"] == Decimal("18")
     assert values["recovered_spread"] == Decimal("1")
+
 
 def test_k08_candidate_selection_risk_size_limit_and_action_precedence_are_deterministic() -> None:
     candidate_type = api.CandidateSetContextV1
@@ -1064,9 +1170,36 @@ def test_k16_state_vector_is_ordered_schema_assembly_without_hidden_weighting() 
 
 def test_k17_ofi_uses_adjacent_states_without_strict_length_pairing_bug() -> None:
     states = (
-        _kv((("bid_price", Decimal("100")), ("bid_size", Decimal("10")), ("ask_price", Decimal("101")), ("ask_size", Decimal("8"))), occurrence_id="s1", at=NOW - timedelta(seconds=2)),
-        _kv((("bid_price", Decimal("100")), ("bid_size", Decimal("12")), ("ask_price", Decimal("101")), ("ask_size", Decimal("7"))), occurrence_id="s2", at=NOW - timedelta(seconds=1)),
-        _kv((("bid_price", Decimal("101")), ("bid_size", Decimal("5")), ("ask_price", Decimal("102")), ("ask_size", Decimal("9"))), occurrence_id="s3", at=NOW),
+        _kv(
+            (
+                ("bid_price", Decimal("100")),
+                ("bid_size", Decimal("10")),
+                ("ask_price", Decimal("101")),
+                ("ask_size", Decimal("8")),
+            ),
+            occurrence_id="s1",
+            at=NOW - timedelta(seconds=2),
+        ),
+        _kv(
+            (
+                ("bid_price", Decimal("100")),
+                ("bid_size", Decimal("12")),
+                ("ask_price", Decimal("101")),
+                ("ask_size", Decimal("7")),
+            ),
+            occurrence_id="s2",
+            at=NOW - timedelta(seconds=1),
+        ),
+        _kv(
+            (
+                ("bid_price", Decimal("101")),
+                ("bid_size", Decimal("5")),
+                ("ask_price", Decimal("102")),
+                ("ask_size", Decimal("9")),
+            ),
+            occurrence_id="s3",
+            at=NOW,
+        ),
     )
     result = _eval(
         "D145",
@@ -1194,8 +1327,12 @@ def test_graph_materialise_recurses_topologically_and_preserves_ultimate_raw_lin
         context_refs=(),
         parameter_profile_refs=(profile_ref_type("P_BASIC", p_basic.context_id, 1),),
         raw_input_bindings=(
-            binding_type("R034", api.VersionRefV1("m-bid", 1), api.VersionRefV1(unit.context_id, 1), "NVDA"),
-            binding_type("R035", api.VersionRefV1("m-ask", 1), api.VersionRefV1(unit.context_id, 1), "NVDA"),
+            binding_type(
+                "R034", api.VersionRefV1("m-bid", 1), api.VersionRefV1(unit.context_id, 1), "NVDA"
+            ),
+            binding_type(
+                "R035", api.VersionRefV1("m-ask", 1), api.VersionRefV1(unit.context_id, 1), "NVDA"
+            ),
         ),
     )
     occurrence = owner.materialise(request)

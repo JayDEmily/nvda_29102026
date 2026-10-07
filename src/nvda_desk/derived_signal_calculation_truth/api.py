@@ -2,10 +2,14 @@
 
 from __future__ import annotations
 
+from collections.abc import Callable
 from dataclasses import dataclass
-from datetime import date, datetime, timedelta
+from datetime import UTC, date, datetime, timedelta
 from decimal import Decimal
-from typing import Protocol
+from typing import TYPE_CHECKING, Protocol, cast
+
+if TYPE_CHECKING:
+    from ._stage1 import KernelValueV1
 
 
 def _require_non_empty_string(value: str, field_name: str) -> None:
@@ -240,7 +244,11 @@ class ScoreFeatureV1:
             _require_decimal(self.clip_min, "clip_min")
         if self.clip_max is not None:
             _require_decimal(self.clip_max, "clip_max")
-        if self.clip_min is not None and self.clip_max is not None and self.clip_min > self.clip_max:
+        if (
+            self.clip_min is not None
+            and self.clip_max is not None
+            and self.clip_min > self.clip_max
+        ):
             raise ValueError("clip_min must not exceed clip_max")
         _require_decimal_tuple(self.baseline_values, "baseline_values")
 
@@ -743,13 +751,15 @@ class CalculationRequestV1:
         _require_tuple(self.parameter_profile_refs, "parameter_profile_refs")
         for item in self.parameter_profile_refs:
             if type(item) is not ParameterProfileRefV1:
-                raise TypeError("parameter_profile_refs must contain exact ParameterProfileRefV1 values")
+                raise TypeError(
+                    "parameter_profile_refs must contain exact ParameterProfileRefV1 values"
+                )
         profiles = tuple(item.profile for item in self.parameter_profile_refs)
         if len(profiles) != len(set(profiles)):
             raise ValueError("parameter_profile_refs must contain distinct profiles")
         _require_tuple(self.raw_input_bindings, "raw_input_bindings")
-        for item in self.raw_input_bindings:
-            if type(item) is not RawInputBindingV1:
+        for binding_item in self.raw_input_bindings:
+            if type(binding_item) is not RawInputBindingV1:
                 raise TypeError("raw_input_bindings must contain exact RawInputBindingV1 values")
         binding_keys = tuple(
             (item.raw_signal_id, item.subject_instrument) for item in self.raw_input_bindings
@@ -764,6 +774,30 @@ class RawProjectionReaderV1(Protocol):
     def project_raw_value(self, *args: object, **kwargs: object) -> object | None: ...
 
     def list_projected_raw_history(self, *args: object, **kwargs: object) -> object: ...
+
+
+class _VersionedContextLikeV1(Protocol):
+    context_id: str
+    version: int
+
+
+class _RawProjectionMappingLikeV1(Protocol):
+    mapping_id: str
+    version: int
+
+
+class _ProjectedRawValueLikeV1(Protocol):
+    observation_occurrence_id: object
+
+
+def _context_key(value: object) -> tuple[str, int]:
+    typed = cast(_VersionedContextLikeV1, value)
+    return typed.context_id, typed.version
+
+
+def _mapping_key(value: object) -> tuple[str, int]:
+    typed = cast(_RawProjectionMappingLikeV1, value)
+    return typed.mapping_id, typed.version
 
 
 class _PersistenceV1(Protocol):
@@ -833,13 +867,13 @@ class _ReadsV1:
 
 class _OwnerV1:
     __slots__ = (
-        "_persistence",
-        "_raw_projection_reader",
-        "_raw_projection_mappings",
-        "_parameter_sets",
-        "_input_selection_policies",
-        "_unit_conventions",
         "_contexts",
+        "_input_selection_policies",
+        "_parameter_sets",
+        "_persistence",
+        "_raw_projection_mappings",
+        "_raw_projection_reader",
+        "_unit_conventions",
         "_utc_now",
         "reads",
     )
@@ -854,7 +888,7 @@ class _OwnerV1:
         input_selection_policies: tuple[InputSelectionPolicyVersionV1, ...],
         unit_conventions: tuple[UnitConventionVersionV1, ...],
         contexts: tuple[object, ...],
-        utc_now: object,
+        utc_now: Callable[[], datetime],
     ) -> None:
         self._raw_projection_reader = raw_projection_reader
         self._persistence = persistence
@@ -864,9 +898,7 @@ class _OwnerV1:
             (v.context_id, v.version): v for v in input_selection_policies
         }
         self._unit_conventions = {(v.context_id, v.version): v for v in unit_conventions}
-        self._contexts = {
-            (getattr(v, "context_id"), getattr(v, "version")): v for v in contexts
-        }
+        self._contexts = {_context_key(v): v for v in contexts}
         self._utc_now = utc_now
         self.reads = _ReadsV1(persistence)
 
@@ -891,7 +923,7 @@ class _OwnerV1:
                 parsed = parsed.replace(tzinfo=ZoneInfo(timezone_name))
             except Exception:
                 return None
-        return parsed.astimezone(__import__("datetime").UTC)
+        return parsed.astimezone(UTC)
 
     def _parameter_set_for_profile(
         self, request: CalculationRequestV1, profile: str
@@ -952,8 +984,12 @@ class _OwnerV1:
         request: CalculationRequestV1,
         raw_signal_id: str,
         selection: InputSelectionPolicyVersionV1,
-    ) -> tuple[tuple[object, ...], tuple[RawInputLineageV1, ...], tuple[VersionRefV1, ...]] | None:
+    ) -> (
+        tuple[tuple[KernelValueV1, ...], tuple[RawInputLineageV1, ...], tuple[VersionRefV1, ...]]
+        | None
+    ):
         from nvda_desk.raw_signal_occurrence_truth import api as raw_api
+
         from ._stage1 import KernelValueV1, select_eligible_values
 
         bindings = tuple(
@@ -995,11 +1031,21 @@ class _OwnerV1:
                 if type(cursor) is not str or not cursor:
                     return None
             for item in projected:
-                if getattr(getattr(item, "raw_signal_catalogue_id", None), "value", None) != raw_signal_id:
+                typed_item = cast(_ProjectedRawValueLikeV1, item)
+                if (
+                    getattr(getattr(item, "raw_signal_catalogue_id", None), "value", None)
+                    != raw_signal_id
+                ):
                     return None
-                if getattr(item, "projection_mapping_id", None) != binding.projection_mapping_ref.context_id:
+                if (
+                    getattr(item, "projection_mapping_id", None)
+                    != binding.projection_mapping_ref.context_id
+                ):
                     return None
-                if getattr(item, "projection_mapping_version", None) != binding.projection_mapping_ref.version:
+                if (
+                    getattr(item, "projection_mapping_version", None)
+                    != binding.projection_mapping_ref.version
+                ):
                     return None
                 if getattr(item, "native_units", None) != unit.native_units:
                     return None
@@ -1026,17 +1072,25 @@ class _OwnerV1:
                 metadata: tuple[tuple[str, object], ...] = (
                     ("source_provider", str(getattr(item, "source_provider", ""))),
                     ("source_variant", str(getattr(item, "source_variant", "") or "")),
-                    ("source_timezone_native", str(getattr(item, "source_timezone_native", "") or "")),
-                    ("revision_vintage_native", str(getattr(item, "revision_vintage_native", "") or "")),
+                    (
+                        "source_timezone_native",
+                        str(getattr(item, "source_timezone_native", "") or ""),
+                    ),
+                    (
+                        "revision_vintage_native",
+                        str(getattr(item, "revision_vintage_native", "") or ""),
+                    ),
                     ("ingestion_sequence", int(getattr(item, "ingestion_sequence", 0))),
                 )
                 kernel_values.append(
                     KernelValueV1(
                         value=canonical,
-                        occurrence_id=str(getattr(item, "observation_occurrence_id")),
+                        occurrence_id=str(typed_item.observation_occurrence_id),
                         effective_at_utc=effective,
                         received_ts_utc=received,
-                        subject_instrument=str(getattr(item, "subject_instrument", "") or binding.subject_instrument),
+                        subject_instrument=str(
+                            getattr(item, "subject_instrument", "") or binding.subject_instrument
+                        ),
                         source_temporal_kind=temporal_kind,
                         source_timestamp_raw=getattr(item, "source_timestamp_raw", None),
                         metadata=metadata,
@@ -1045,7 +1099,7 @@ class _OwnerV1:
                 lineage.append(
                     RawInputLineageV1(
                         raw_signal_id=raw_signal_id,
-                        observation_occurrence_id=str(getattr(item, "observation_occurrence_id")),
+                        observation_occurrence_id=str(typed_item.observation_occurrence_id),
                         projection_mapping_id=binding.projection_mapping_ref.context_id,
                         projection_mapping_version=binding.projection_mapping_ref.version,
                         unit_convention_id=binding.unit_convention_ref.context_id,
@@ -1085,7 +1139,7 @@ class _OwnerV1:
         return eligible, selected_lineage, tuple(convention_refs)
 
     @staticmethod
-    def _occurrence_kernel_value(value: DerivedSignalOccurrenceV1) -> object:
+    def _occurrence_kernel_value(value: DerivedSignalOccurrenceV1) -> KernelValueV1:
         from ._stage1 import KernelValueV1
 
         return KernelValueV1(
@@ -1142,7 +1196,7 @@ class _OwnerV1:
         parameter_ref = VersionRefV1(parameter_set.context_id, parameter_set.version)
         selection_ref = VersionRefV1(selection.context_id, selection.version)
 
-        raw_inputs: dict[str, tuple[object, ...]] = {}
+        raw_inputs: dict[str, tuple[KernelValueV1, ...]] = {}
         direct_lineage: list[RawInputLineageV1] = []
         convention_refs: list[VersionRefV1] = []
         for raw_signal_id in row.raw_dependencies:
@@ -1163,7 +1217,7 @@ class _OwnerV1:
             if latest and max(latest) - min(latest) > selection.maximum_skew:
                 return None
 
-        derived_inputs: dict[str, tuple[object, ...]] = {}
+        derived_inputs: dict[str, tuple[KernelValueV1, ...]] = {}
         immediate_predecessors: list[DerivedSignalOccurrenceV1] = []
         inherited_lineage: list[RawInputLineageV1] = []
         for predecessor_id in row.derived_dependencies:
@@ -1185,9 +1239,7 @@ class _OwnerV1:
                 selection_ref=selection_ref,
             )
             if predecessor_row.kernel_id in STAGE1_KERNEL_IDS:
-                current = self._materialise(
-                    request, predecessor_id, (*stack, derived_signal_id)
-                )
+                current = self._materialise(request, predecessor_id, (*stack, derived_signal_id))
                 if current is None:
                     return None
                 history_by_id = {value.derived_occurrence_id: value for value in history}
@@ -1222,8 +1274,8 @@ class _OwnerV1:
 
         evaluated = evaluate_stage1_kernel(
             derived_signal_id,
-            raw_inputs=raw_inputs,  # type: ignore[arg-type]
-            derived_inputs=derived_inputs,  # type: ignore[arg-type]
+            raw_inputs=raw_inputs,
+            derived_inputs=derived_inputs,
             parameter_set=parameter_set,
             contexts=contexts,
             as_of_utc=request.as_of_utc,
@@ -1247,16 +1299,12 @@ class _OwnerV1:
         predecessor_ids = tuple(
             sorted({value.derived_occurrence_id for value in immediate_predecessors})
         )
-        context_refs = tuple(
-            dict.fromkeys((parameter_ref, selection_ref, *request.context_refs))
-        )
+        context_refs = tuple(dict.fromkeys((parameter_ref, selection_ref, *request.context_refs)))
         convention_refs_exact = tuple(dict.fromkeys(convention_refs))
         version_keys = tuple(
-            (ref.context_id, ref.version)
-            for ref in (*context_refs, *convention_refs_exact)
+            (ref.context_id, ref.version) for ref in (*context_refs, *convention_refs_exact)
         ) + tuple(
-            (item.projection_mapping_id, item.projection_mapping_version)
-            for item in exact_lineage
+            (item.projection_mapping_id, item.projection_mapping_version) for item in exact_lineage
         )
         identity = occurrence_identity(
             derived_signal_id,
@@ -1281,7 +1329,9 @@ class _OwnerV1:
             limit=100000,
         )
         supersedes = (
-            max(previous, key=lambda value: (value.effective_as_of_utc, value.derived_occurrence_id)).derived_occurrence_id
+            max(
+                previous, key=lambda value: (value.effective_as_of_utc, value.derived_occurrence_id)
+            ).derived_occurrence_id
             if previous
             else None
         )
@@ -1321,7 +1371,12 @@ def _require_distinct_context_versions(values: tuple[object, ...], field_name: s
     for value in values:
         context_id = getattr(value, "context_id", None)
         version = getattr(value, "version", None)
-        if type(context_id) is not str or not context_id or type(version) is not int or version <= 0:
+        if (
+            type(context_id) is not str
+            or not context_id
+            or type(version) is not int
+            or version <= 0
+        ):
             raise TypeError(f"{field_name} entries must expose a valid immutable identity/version")
         keys.append((context_id, version))
     if len(keys) != len(set(keys)):
@@ -1337,7 +1392,7 @@ def create_owner(
     input_selection_policies: tuple[InputSelectionPolicyVersionV1, ...] = (),
     unit_conventions: tuple[UnitConventionVersionV1, ...] = (),
     contexts: tuple[object, ...] = (),
-    utc_now: object | None = None,
+    utc_now: Callable[[], datetime] | None = None,
 ) -> _OwnerV1:
     from nvda_desk.raw_signal_occurrence_truth import api as raw_api
 
@@ -1367,15 +1422,17 @@ def create_owner(
     _require_distinct_context_versions(input_selection_policies, "input_selection_policies")
     _require_distinct_context_versions(unit_conventions, "unit_conventions")
     _require_distinct_context_versions(contexts, "contexts")
-    mapping_keys = tuple(
-        (item.mapping_id, item.version) for item in raw_projection_mappings
-    )
+    mapping_keys = tuple(_mapping_key(item) for item in raw_projection_mappings)
     if len(mapping_keys) != len(set(mapping_keys)):
         raise ValueError("raw_projection_mappings contains duplicate identity/version values")
     if persistence is None:
         persistence = _MemoryPersistenceV1()
     if utc_now is None:
-        utc_now = lambda: datetime.now(__import__("datetime").UTC)
+
+        def default_utc_now() -> datetime:
+            return datetime.now(UTC)
+
+        utc_now = default_utc_now
     if not callable(utc_now):
         raise TypeError("utc_now must be callable")
     return _OwnerV1(
@@ -1405,13 +1462,13 @@ __all__ = [
     "LivePositionContextV1",
     "OptionRevaluationConventionVersionV1",
     "OrderIntentContextV1",
+    "ParameterProfileRefV1",
     "PnLConventionVersionV1",
+    "RawInputBindingV1",
     "RawInputLineageV1",
     "RawProjectionReaderV1",
     "RecalculationScheduleV1",
     "RequiredFieldPolicyV1",
-    "RawInputBindingV1",
-    "ParameterProfileRefV1",
     "ScoreFeatureV1",
     "UnitConventionVersionV1",
     "VersionRefV1",
