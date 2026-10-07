@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import json
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import date, datetime
 from decimal import Decimal
 from typing import Any
 
@@ -42,6 +42,8 @@ def _encode_value(value: object) -> object:
         return {"__kind__": "decimal", "value": str(value)}
     if type(value) is datetime:
         return {"__kind__": "datetime", "value": value.isoformat()}
+    if type(value) is date:
+        return {"__kind__": "date", "value": value.isoformat()}
     if type(value) is tuple:
         return {"__kind__": "tuple", "items": [_encode_value(item) for item in value]}
     raise TypeError("derived result contains an unsupported value")
@@ -55,6 +57,8 @@ def _decode_value(value: object) -> object:
         return Decimal(str(value["value"]))
     if kind == "datetime":
         return datetime.fromisoformat(str(value["value"]))
+    if kind == "date":
+        return date.fromisoformat(str(value["value"]))
     if kind == "tuple":
         items = value.get("items")
         if not isinstance(items, list):

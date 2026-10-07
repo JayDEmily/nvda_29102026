@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from datetime import datetime, timedelta
+from datetime import date, datetime, timedelta
 from decimal import Decimal
 from typing import Protocol
 
@@ -76,7 +76,10 @@ def _require_derived_result(value: DerivedResultV1, field_name: str = "result") 
             raise ValueError(f"{field_name} string values must be non-empty")
         return
     if type(value) is datetime:
-        _require_utc(value, field_name)
+        if value.tzinfo is None:
+            raise ValueError(f"{field_name} datetime values must be timezone-aware")
+        return
+    if type(value) is date:
         return
     if type(value) is tuple:
         for item in value:
@@ -207,14 +210,58 @@ def _require_non_negative_timedelta(value: timedelta, field_name: str) -> None:
 
 
 @dataclass(frozen=True, slots=True)
+class ScoreFeatureV1:
+    signal_id: str
+    extractor: str
+    extractor_arguments: tuple[ImmutableContextScalarV1, ...]
+    transform: str
+    transform_scale: Decimal | None
+    orientation: int
+    weight: Decimal
+    clip_min: Decimal | None
+    clip_max: Decimal | None
+    baseline_values: tuple[Decimal, ...]
+
+    def __post_init__(self) -> None:
+        _require_derived_signal_id(self.signal_id)
+        _require_non_empty_string(self.extractor, "extractor")
+        _require_tuple(self.extractor_arguments, "extractor_arguments")
+        for item in self.extractor_arguments:
+            _require_immutable_context_value(item, "extractor_arguments")
+        _require_non_empty_string(self.transform, "transform")
+        if self.transform_scale is not None:
+            _require_decimal(self.transform_scale, "transform_scale")
+        if type(self.orientation) is not int or self.orientation not in {-1, 1}:
+            raise ValueError("orientation must be -1 or +1")
+        _require_decimal(self.weight, "weight")
+        if self.weight < 0:
+            raise ValueError("weight must be non-negative")
+        if self.clip_min is not None:
+            _require_decimal(self.clip_min, "clip_min")
+        if self.clip_max is not None:
+            _require_decimal(self.clip_max, "clip_max")
+        if self.clip_min is not None and self.clip_max is not None and self.clip_min > self.clip_max:
+            raise ValueError("clip_min must not exceed clip_max")
+        _require_decimal_tuple(self.baseline_values, "baseline_values")
+
+
+@dataclass(frozen=True, slots=True)
 class CalculationParameterSetV1(_VersionedContextV1):
     profile: str
     parameters: tuple[tuple[str, ImmutableContextValueV1], ...]
+    score_features: tuple[ScoreFeatureV1, ...] = ()
 
     def __post_init__(self) -> None:
         _VersionedContextV1.__post_init__(self)
         _require_non_empty_string(self.profile, "profile")
         _require_named_context_values(self.parameters, "parameters", non_empty=True)
+        _require_tuple(self.score_features, "score_features")
+        for feature in self.score_features:
+            if type(feature) is not ScoreFeatureV1:
+                raise TypeError("score_features must contain exact ScoreFeatureV1 values")
+        ids = tuple(feature.signal_id for feature in self.score_features)
+        if len(ids) != len(set(ids)):
+            raise ValueError("score_features must contain distinct signal identities")
 
 
 @dataclass(frozen=True, slots=True)
@@ -587,7 +634,7 @@ class RawInputLineageV1:
         _require_non_empty_string(self.canonical_units, "canonical_units")
 
 
-type DerivedResultV1 = bool | int | Decimal | str | datetime | tuple["DerivedResultV1", ...]
+type DerivedResultV1 = bool | int | Decimal | str | date | datetime | tuple["DerivedResultV1", ...]
 
 
 @dataclass(frozen=True, slots=True)
@@ -636,6 +683,34 @@ class DerivedSignalOccurrenceV1:
 
 
 @dataclass(frozen=True, slots=True)
+class ParameterProfileRefV1:
+    profile: str
+    context_id: str
+    version: int
+
+    def __post_init__(self) -> None:
+        _require_non_empty_string(self.profile, "profile")
+        _require_non_empty_string(self.context_id, "context_id")
+        _require_positive_version(self.version)
+
+
+@dataclass(frozen=True, slots=True)
+class RawInputBindingV1:
+    raw_signal_id: str
+    projection_mapping_ref: VersionRefV1
+    unit_convention_ref: VersionRefV1
+    subject_instrument: str
+
+    def __post_init__(self) -> None:
+        _require_raw_signal_id(self.raw_signal_id)
+        if type(self.projection_mapping_ref) is not VersionRefV1:
+            raise TypeError("projection_mapping_ref must be VersionRefV1")
+        if type(self.unit_convention_ref) is not VersionRefV1:
+            raise TypeError("unit_convention_ref must be VersionRefV1")
+        _require_non_empty_string(self.subject_instrument, "subject_instrument")
+
+
+@dataclass(frozen=True, slots=True)
 class CalculationRequestV1:
     derived_signal_id: str
     subject_instrument: str
@@ -647,6 +722,8 @@ class CalculationRequestV1:
     input_selection_policy_id: str
     input_selection_policy_version: int
     context_refs: tuple[VersionRefV1, ...]
+    parameter_profile_refs: tuple[ParameterProfileRefV1, ...] = ()
+    raw_input_bindings: tuple[RawInputBindingV1, ...] = ()
 
     def __post_init__(self) -> None:
         _require_derived_signal_id(self.derived_signal_id)
@@ -663,6 +740,24 @@ class CalculationRequestV1:
             self.input_selection_policy_version, "input_selection_policy_version"
         )
         _require_version_refs(self.context_refs, "context_refs")
+        _require_tuple(self.parameter_profile_refs, "parameter_profile_refs")
+        for item in self.parameter_profile_refs:
+            if type(item) is not ParameterProfileRefV1:
+                raise TypeError("parameter_profile_refs must contain exact ParameterProfileRefV1 values")
+        profiles = tuple(item.profile for item in self.parameter_profile_refs)
+        if len(profiles) != len(set(profiles)):
+            raise ValueError("parameter_profile_refs must contain distinct profiles")
+        _require_tuple(self.raw_input_bindings, "raw_input_bindings")
+        for item in self.raw_input_bindings:
+            if type(item) is not RawInputBindingV1:
+                raise TypeError("raw_input_bindings must contain exact RawInputBindingV1 values")
+        binding_keys = tuple(
+            (item.raw_signal_id, item.subject_instrument) for item in self.raw_input_bindings
+        )
+        if len(binding_keys) != len(set(binding_keys)):
+            raise ValueError(
+                "raw_input_bindings must contain distinct raw-signal/subject identities"
+            )
 
 
 class RawProjectionReaderV1(Protocol):
@@ -737,35 +832,562 @@ class _ReadsV1:
 
 
 class _OwnerV1:
-    __slots__ = ("_persistence", "_raw_projection_reader", "reads")
+    __slots__ = (
+        "_persistence",
+        "_raw_projection_reader",
+        "_raw_projection_mappings",
+        "_parameter_sets",
+        "_input_selection_policies",
+        "_unit_conventions",
+        "_contexts",
+        "_utc_now",
+        "reads",
+    )
 
     def __init__(
         self,
         *,
         raw_projection_reader: RawProjectionReaderV1,
         persistence: _PersistenceV1,
+        raw_projection_mappings: tuple[object, ...],
+        parameter_sets: tuple[CalculationParameterSetV1, ...],
+        input_selection_policies: tuple[InputSelectionPolicyVersionV1, ...],
+        unit_conventions: tuple[UnitConventionVersionV1, ...],
+        contexts: tuple[object, ...],
+        utc_now: object,
     ) -> None:
         self._raw_projection_reader = raw_projection_reader
         self._persistence = persistence
+        self._raw_projection_mappings = raw_projection_mappings
+        self._parameter_sets = {(v.context_id, v.version): v for v in parameter_sets}
+        self._input_selection_policies = {
+            (v.context_id, v.version): v for v in input_selection_policies
+        }
+        self._unit_conventions = {(v.context_id, v.version): v for v in unit_conventions}
+        self._contexts = {
+            (getattr(v, "context_id"), getattr(v, "version")): v for v in contexts
+        }
+        self._utc_now = utc_now
         self.reads = _ReadsV1(persistence)
+
+    @staticmethod
+    def _event_instant(projected: object) -> datetime | None:
+        if getattr(projected, "source_temporal_kind", None) != "true_instant":
+            return None
+        raw = getattr(projected, "source_timestamp_raw", None)
+        if type(raw) is not str or not raw:
+            return None
+        try:
+            parsed = datetime.fromisoformat(raw.replace("Z", "+00:00"))
+        except ValueError:
+            return None
+        if parsed.tzinfo is None:
+            timezone_name = getattr(projected, "source_timezone_native", None)
+            if type(timezone_name) is not str or not timezone_name:
+                return None
+            try:
+                from zoneinfo import ZoneInfo
+
+                parsed = parsed.replace(tzinfo=ZoneInfo(timezone_name))
+            except Exception:
+                return None
+        return parsed.astimezone(__import__("datetime").UTC)
+
+    def _parameter_set_for_profile(
+        self, request: CalculationRequestV1, profile: str
+    ) -> CalculationParameterSetV1 | None:
+        refs = {item.profile: item for item in request.parameter_profile_refs}
+        ref = refs.get(profile)
+        if ref is None:
+            candidate = self._parameter_sets.get(
+                (request.parameter_set_id, request.parameter_set_version)
+            )
+            if candidate is None or candidate.profile != profile:
+                return None
+            return candidate
+        candidate = self._parameter_sets.get((ref.context_id, ref.version))
+        if candidate is None or candidate.profile != profile:
+            return None
+        return candidate
+
+    def _selection_policy(
+        self, request: CalculationRequestV1
+    ) -> InputSelectionPolicyVersionV1 | None:
+        return self._input_selection_policies.get(
+            (request.input_selection_policy_id, request.input_selection_policy_version)
+        )
+
+    def _mapping(self, ref: VersionRefV1, raw_signal_id: str) -> object | None:
+        candidates = tuple(
+            mapping
+            for mapping in self._raw_projection_mappings
+            if getattr(mapping, "mapping_id", None) == ref.context_id
+            and getattr(mapping, "version", None) == ref.version
+            and getattr(getattr(mapping, "raw_signal_catalogue_id", None), "value", None)
+            == raw_signal_id
+        )
+        return candidates[0] if len(candidates) == 1 else None
+
+    def _contexts_for_row(
+        self, request: CalculationRequestV1, typed_contexts: tuple[str, ...]
+    ) -> tuple[object, ...] | None:
+        supplied = tuple(
+            self._contexts.get((ref.context_id, ref.version)) for ref in request.context_refs
+        )
+        if any(item is None for item in supplied):
+            return None
+        contexts = tuple(item for item in supplied if item is not None)
+        for requirement in typed_contexts:
+            context_type = requirement.split(":", 1)[0]
+            if context_type == "CalculationParameterSet":
+                continue
+            expected_name = f"{context_type}V1"
+            matches = tuple(item for item in contexts if type(item).__name__ == expected_name)
+            if len(matches) != 1:
+                return None
+        return contexts
+
+    def _raw_values(
+        self,
+        request: CalculationRequestV1,
+        raw_signal_id: str,
+        selection: InputSelectionPolicyVersionV1,
+    ) -> tuple[tuple[object, ...], tuple[RawInputLineageV1, ...], tuple[VersionRefV1, ...]] | None:
+        from nvda_desk.raw_signal_occurrence_truth import api as raw_api
+        from ._stage1 import KernelValueV1, select_eligible_values
+
+        bindings = tuple(
+            item for item in request.raw_input_bindings if item.raw_signal_id == raw_signal_id
+        )
+        if not bindings:
+            return None
+        kernel_values: list[KernelValueV1] = []
+        lineage: list[RawInputLineageV1] = []
+        convention_refs: list[VersionRefV1] = []
+        for binding in bindings:
+            mapping = self._mapping(binding.projection_mapping_ref, raw_signal_id)
+            unit = self._unit_conventions.get(
+                (binding.unit_convention_ref.context_id, binding.unit_convention_ref.version)
+            )
+            if mapping is None or unit is None:
+                return None
+            if getattr(mapping, "native_units", None) != unit.native_units:
+                return None
+            cursor: str | None = None
+            projected: list[object] = []
+            while True:
+                page = self._raw_projection_reader.list_projected_raw_history(
+                    raw_api.RawSignalCatalogueId(raw_signal_id),
+                    mappings=(mapping,),
+                    subject_instrument=binding.subject_instrument,
+                    received_at_or_before_utc=request.knowledge_cutoff_utc,
+                    event_at_or_before_utc=None,
+                    limit=1000,
+                    cursor=cursor,
+                )
+                items = getattr(page, "items", None)
+                if type(items) is not tuple:
+                    return None
+                projected.extend(items)
+                cursor = getattr(page, "next_cursor", None)
+                if cursor is None:
+                    break
+                if type(cursor) is not str or not cursor:
+                    return None
+            for item in projected:
+                if getattr(getattr(item, "raw_signal_catalogue_id", None), "value", None) != raw_signal_id:
+                    return None
+                if getattr(item, "projection_mapping_id", None) != binding.projection_mapping_ref.context_id:
+                    return None
+                if getattr(item, "projection_mapping_version", None) != binding.projection_mapping_ref.version:
+                    return None
+                if getattr(item, "native_units", None) != unit.native_units:
+                    return None
+                native = getattr(item, "native_value", None)
+                if type(native) is Decimal:
+                    canonical: object = unit.convert(native, native_units=unit.native_units)
+                elif type(native) is int and type(native) is not bool:
+                    canonical = unit.convert(Decimal(native), native_units=unit.native_units)
+                else:
+                    if unit.scale != Decimal(1) or unit.offset != Decimal(0):
+                        return None
+                    canonical = native
+                temporal_kind = str(getattr(item, "source_temporal_kind", ""))
+                received = getattr(item, "received_ts_utc", None)
+                if type(received) is not datetime:
+                    return None
+                event = self._event_instant(item)
+                if temporal_kind == "true_instant":
+                    if event is None:
+                        return None
+                    effective = event
+                else:
+                    effective = received
+                metadata: tuple[tuple[str, object], ...] = (
+                    ("source_provider", str(getattr(item, "source_provider", ""))),
+                    ("source_variant", str(getattr(item, "source_variant", "") or "")),
+                    ("source_timezone_native", str(getattr(item, "source_timezone_native", "") or "")),
+                    ("revision_vintage_native", str(getattr(item, "revision_vintage_native", "") or "")),
+                    ("ingestion_sequence", int(getattr(item, "ingestion_sequence", 0))),
+                )
+                kernel_values.append(
+                    KernelValueV1(
+                        value=canonical,
+                        occurrence_id=str(getattr(item, "observation_occurrence_id")),
+                        effective_at_utc=effective,
+                        received_ts_utc=received,
+                        subject_instrument=str(getattr(item, "subject_instrument", "") or binding.subject_instrument),
+                        source_temporal_kind=temporal_kind,
+                        source_timestamp_raw=getattr(item, "source_timestamp_raw", None),
+                        metadata=metadata,
+                    )
+                )
+                lineage.append(
+                    RawInputLineageV1(
+                        raw_signal_id=raw_signal_id,
+                        observation_occurrence_id=str(getattr(item, "observation_occurrence_id")),
+                        projection_mapping_id=binding.projection_mapping_ref.context_id,
+                        projection_mapping_version=binding.projection_mapping_ref.version,
+                        unit_convention_id=binding.unit_convention_ref.context_id,
+                        unit_convention_version=binding.unit_convention_ref.version,
+                        native_units=unit.native_units,
+                        canonical_units=unit.canonical_units,
+                    )
+                )
+            convention_refs.append(binding.unit_convention_ref)
+        eligible = select_eligible_values(
+            tuple(kernel_values),
+            as_of_utc=request.as_of_utc,
+            knowledge_cutoff_utc=request.knowledge_cutoff_utc,
+            # Historical kernels apply their own exact window.  Freshness is enforced below
+            # on each subject's latest point; applying it to history would erase the window.
+            maximum_staleness=None,
+            temporal_basis_permissions=selection.temporal_basis_permissions,
+        )
+        if not eligible:
+            return None
+        for subject in {item.subject_instrument for item in eligible}:
+            latest = max(
+                (item for item in eligible if item.subject_instrument == subject),
+                key=lambda item: (item.effective_at_utc, item.received_ts_utc, item.occurrence_id),
+            )
+            basis = (
+                latest.effective_at_utc
+                if latest.source_temporal_kind == "true_instant"
+                else latest.received_ts_utc
+            )
+            if request.as_of_utc - basis > selection.maximum_staleness:
+                return None
+        eligible_ids = {item.occurrence_id for item in eligible}
+        selected_lineage = tuple(
+            item for item in lineage if item.observation_occurrence_id in eligible_ids
+        )
+        return eligible, selected_lineage, tuple(convention_refs)
+
+    @staticmethod
+    def _occurrence_kernel_value(value: DerivedSignalOccurrenceV1) -> object:
+        from ._stage1 import KernelValueV1
+
+        return KernelValueV1(
+            value=value.result,
+            occurrence_id=value.derived_occurrence_id,
+            effective_at_utc=value.effective_as_of_utc,
+            received_ts_utc=value.calculated_at_utc,
+            subject_instrument=value.subject_instrument,
+            source_temporal_kind="derived",
+            metadata=(("units", value.units), ("result_shape", value.result_shape)),
+        )
+
+    def _compatible_history(
+        self,
+        *,
+        derived_signal_id: str,
+        request: CalculationRequestV1,
+        parameter_ref: VersionRefV1,
+        selection_ref: VersionRefV1,
+    ) -> tuple[DerivedSignalOccurrenceV1, ...]:
+        candidates = self._persistence.list_occurrences(
+            derived_signal_id=derived_signal_id,
+            subject_instrument=request.subject_instrument,
+            limit=100000,
+        )
+        required = {parameter_ref, selection_ref}
+        return tuple(
+            value
+            for value in candidates
+            if value.calculation_definition_version == request.calculation_definition_version
+            and value.effective_as_of_utc <= request.as_of_utc
+            and value.knowledge_cutoff_utc <= request.knowledge_cutoff_utc
+            and required <= set(value.parameter_context_refs)
+        )
+
+    def _materialise(
+        self, request: CalculationRequestV1, derived_signal_id: str, stack: tuple[str, ...]
+    ) -> DerivedSignalOccurrenceV1 | None:
+        from ._catalogue import catalogue_row
+        from ._stage1 import STAGE1_KERNEL_IDS, evaluate_stage1_kernel, occurrence_identity
+
+        if derived_signal_id in stack:
+            return None
+        row = catalogue_row(derived_signal_id)
+        if row.kernel_id not in STAGE1_KERNEL_IDS:
+            return None
+        if len(row.parameter_profiles) != 1:
+            return None
+        parameter_set = self._parameter_set_for_profile(request, row.parameter_profiles[0])
+        selection = self._selection_policy(request)
+        contexts = self._contexts_for_row(request, row.typed_contexts)
+        if parameter_set is None or selection is None or contexts is None:
+            return None
+        parameter_ref = VersionRefV1(parameter_set.context_id, parameter_set.version)
+        selection_ref = VersionRefV1(selection.context_id, selection.version)
+
+        raw_inputs: dict[str, tuple[object, ...]] = {}
+        direct_lineage: list[RawInputLineageV1] = []
+        convention_refs: list[VersionRefV1] = []
+        for raw_signal_id in row.raw_dependencies:
+            loaded = self._raw_values(request, raw_signal_id, selection)
+            if loaded is None:
+                return None
+            values, lineage, conventions = loaded
+            raw_inputs[raw_signal_id] = values
+            direct_lineage.extend(lineage)
+            convention_refs.extend(conventions)
+
+        if len(raw_inputs) > 1:
+            latest = [
+                max(values, key=lambda item: item.effective_at_utc).effective_at_utc
+                for values in raw_inputs.values()
+                if values
+            ]
+            if latest and max(latest) - min(latest) > selection.maximum_skew:
+                return None
+
+        derived_inputs: dict[str, tuple[object, ...]] = {}
+        immediate_predecessors: list[DerivedSignalOccurrenceV1] = []
+        inherited_lineage: list[RawInputLineageV1] = []
+        for predecessor_id in row.derived_dependencies:
+            predecessor_row = catalogue_row(predecessor_id)
+            if len(predecessor_row.parameter_profiles) != 1:
+                return None
+            predecessor_parameters = self._parameter_set_for_profile(
+                request, predecessor_row.parameter_profiles[0]
+            )
+            if predecessor_parameters is None:
+                return None
+            predecessor_parameter_ref = VersionRefV1(
+                predecessor_parameters.context_id, predecessor_parameters.version
+            )
+            history = self._compatible_history(
+                derived_signal_id=predecessor_id,
+                request=request,
+                parameter_ref=predecessor_parameter_ref,
+                selection_ref=selection_ref,
+            )
+            if predecessor_row.kernel_id in STAGE1_KERNEL_IDS:
+                current = self._materialise(
+                    request, predecessor_id, (*stack, derived_signal_id)
+                )
+                if current is None:
+                    return None
+                history_by_id = {value.derived_occurrence_id: value for value in history}
+                history_by_id[current.derived_occurrence_id] = current
+                history = tuple(
+                    sorted(
+                        history_by_id.values(),
+                        key=lambda value: (
+                            value.effective_as_of_utc,
+                            value.knowledge_cutoff_utc,
+                            value.derived_occurrence_id,
+                        ),
+                    )
+                )
+            elif not history:
+                return None
+            if not history:
+                return None
+            current = max(
+                history,
+                key=lambda value: (
+                    value.effective_as_of_utc,
+                    value.knowledge_cutoff_utc,
+                    value.derived_occurrence_id,
+                ),
+            )
+            immediate_predecessors.append(current)
+            inherited_lineage.extend(current.raw_input_lineage)
+            derived_inputs[predecessor_id] = tuple(
+                self._occurrence_kernel_value(value) for value in history
+            )
+
+        evaluated = evaluate_stage1_kernel(
+            derived_signal_id,
+            raw_inputs=raw_inputs,  # type: ignore[arg-type]
+            derived_inputs=derived_inputs,  # type: ignore[arg-type]
+            parameter_set=parameter_set,
+            contexts=contexts,
+            as_of_utc=request.as_of_utc,
+            knowledge_cutoff_utc=request.knowledge_cutoff_utc,
+        )
+        if evaluated is None:
+            return None
+
+        lineage_by_key: dict[tuple[str, str, str, int, str, int], RawInputLineageV1] = {}
+        for item in (*direct_lineage, *inherited_lineage):
+            key = (
+                item.raw_signal_id,
+                item.observation_occurrence_id,
+                item.projection_mapping_id,
+                item.projection_mapping_version,
+                item.unit_convention_id,
+                item.unit_convention_version,
+            )
+            lineage_by_key[key] = item
+        exact_lineage = tuple(lineage_by_key[key] for key in sorted(lineage_by_key))
+        predecessor_ids = tuple(
+            sorted({value.derived_occurrence_id for value in immediate_predecessors})
+        )
+        context_refs = tuple(
+            dict.fromkeys((parameter_ref, selection_ref, *request.context_refs))
+        )
+        convention_refs_exact = tuple(dict.fromkeys(convention_refs))
+        version_keys = tuple(
+            (ref.context_id, ref.version)
+            for ref in (*context_refs, *convention_refs_exact)
+        ) + tuple(
+            (item.projection_mapping_id, item.projection_mapping_version)
+            for item in exact_lineage
+        )
+        identity = occurrence_identity(
+            derived_signal_id,
+            calculation_definition_version=request.calculation_definition_version,
+            subject_instrument=request.subject_instrument,
+            effective_as_of_utc=request.as_of_utc,
+            knowledge_cutoff_utc=request.knowledge_cutoff_utc,
+            input_occurrence_ids=tuple(
+                sorted(
+                    {item.observation_occurrence_id for item in exact_lineage}
+                    | set(predecessor_ids)
+                )
+            ),
+            version_keys=version_keys,
+        )
+        existing = self._persistence.get_occurrence(identity)
+        if existing is not None:
+            return existing
+        previous = self._persistence.list_occurrences(
+            derived_signal_id=derived_signal_id,
+            subject_instrument=request.subject_instrument,
+            limit=100000,
+        )
+        supersedes = (
+            max(previous, key=lambda value: (value.effective_as_of_utc, value.derived_occurrence_id)).derived_occurrence_id
+            if previous
+            else None
+        )
+        calculated_at = self._utc_now()
+        if type(calculated_at) is not datetime:
+            raise TypeError("utc_now must return datetime")
+        _require_utc(calculated_at, "utc_now result")
+        occurrence = DerivedSignalOccurrenceV1(
+            derived_signal_id=derived_signal_id,
+            derived_occurrence_id=identity,
+            calculation_definition_version=request.calculation_definition_version,
+            parameter_context_refs=context_refs,
+            subject_instrument=request.subject_instrument,
+            universe=selection.basket_membership or None,
+            effective_as_of_utc=request.as_of_utc,
+            window=row.parameter_window or None,
+            knowledge_cutoff_utc=request.knowledge_cutoff_utc,
+            calculated_at_utc=calculated_at,
+            result=evaluated.value,  # type: ignore[arg-type]
+            units=row.units,
+            result_shape=evaluated.result_shape,
+            raw_input_lineage=exact_lineage,
+            predecessor_occurrence_ids=predecessor_ids,
+            convention_refs=convention_refs_exact,
+            supersedes_derived_occurrence_id=supersedes,
+        )
+        return self._persistence.append_occurrence(occurrence)
 
     def materialise(self, request: CalculationRequestV1) -> DerivedSignalOccurrenceV1 | None:
         if type(request) is not CalculationRequestV1:
             raise TypeError("request must be CalculationRequestV1")
-        # DS-I01 establishes the calculation/read foundation only. No D-kernel is admitted in
-        # this leaf, so the sole lawful result until a later kernel leaf supplies all required
-        # inputs and calculation meaning is absence.
-        return None
+        return self._materialise(request, request.derived_signal_id, ())
+
+
+def _require_distinct_context_versions(values: tuple[object, ...], field_name: str) -> None:
+    keys: list[tuple[str, int]] = []
+    for value in values:
+        context_id = getattr(value, "context_id", None)
+        version = getattr(value, "version", None)
+        if type(context_id) is not str or not context_id or type(version) is not int or version <= 0:
+            raise TypeError(f"{field_name} entries must expose a valid immutable identity/version")
+        keys.append((context_id, version))
+    if len(keys) != len(set(keys)):
+        raise ValueError(f"{field_name} contains duplicate identity/version values")
 
 
 def create_owner(
     *,
     raw_projection_reader: RawProjectionReaderV1,
     persistence: _PersistenceV1 | None = None,
+    raw_projection_mappings: tuple[object, ...] = (),
+    parameter_sets: tuple[CalculationParameterSetV1, ...] = (),
+    input_selection_policies: tuple[InputSelectionPolicyVersionV1, ...] = (),
+    unit_conventions: tuple[UnitConventionVersionV1, ...] = (),
+    contexts: tuple[object, ...] = (),
+    utc_now: object | None = None,
 ) -> _OwnerV1:
+    from nvda_desk.raw_signal_occurrence_truth import api as raw_api
+
+    if type(raw_projection_mappings) is not tuple or any(
+        type(item) is not raw_api.RawSignalProjectionMappingV1 for item in raw_projection_mappings
+    ):
+        raise TypeError(
+            "raw_projection_mappings must contain exact M00 RawSignalProjectionMappingV1 values"
+        )
+    if type(parameter_sets) is not tuple or any(
+        type(item) is not CalculationParameterSetV1 for item in parameter_sets
+    ):
+        raise TypeError("parameter_sets must contain exact CalculationParameterSetV1 values")
+    if type(input_selection_policies) is not tuple or any(
+        type(item) is not InputSelectionPolicyVersionV1 for item in input_selection_policies
+    ):
+        raise TypeError(
+            "input_selection_policies must contain exact InputSelectionPolicyVersionV1 values"
+        )
+    if type(unit_conventions) is not tuple or any(
+        type(item) is not UnitConventionVersionV1 for item in unit_conventions
+    ):
+        raise TypeError("unit_conventions must contain exact UnitConventionVersionV1 values")
+    if type(contexts) is not tuple:
+        raise TypeError("contexts must be a tuple")
+    _require_distinct_context_versions(parameter_sets, "parameter_sets")
+    _require_distinct_context_versions(input_selection_policies, "input_selection_policies")
+    _require_distinct_context_versions(unit_conventions, "unit_conventions")
+    _require_distinct_context_versions(contexts, "contexts")
+    mapping_keys = tuple(
+        (item.mapping_id, item.version) for item in raw_projection_mappings
+    )
+    if len(mapping_keys) != len(set(mapping_keys)):
+        raise ValueError("raw_projection_mappings contains duplicate identity/version values")
     if persistence is None:
         persistence = _MemoryPersistenceV1()
-    return _OwnerV1(raw_projection_reader=raw_projection_reader, persistence=persistence)
+    if utc_now is None:
+        utc_now = lambda: datetime.now(__import__("datetime").UTC)
+    if not callable(utc_now):
+        raise TypeError("utc_now must be callable")
+    return _OwnerV1(
+        raw_projection_reader=raw_projection_reader,
+        persistence=persistence,
+        raw_projection_mappings=raw_projection_mappings,
+        parameter_sets=parameter_sets,
+        input_selection_policies=input_selection_policies,
+        unit_conventions=unit_conventions,
+        contexts=contexts,
+        utc_now=utc_now,
+    )
 
 
 __all__ = [
@@ -788,6 +1410,9 @@ __all__ = [
     "RawProjectionReaderV1",
     "RecalculationScheduleV1",
     "RequiredFieldPolicyV1",
+    "RawInputBindingV1",
+    "ParameterProfileRefV1",
+    "ScoreFeatureV1",
     "UnitConventionVersionV1",
     "VersionRefV1",
     "create_owner",

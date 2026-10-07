@@ -1,0 +1,1449 @@
+"""Deterministic Stage-1 calculation kernels for M01.
+
+This module owns only K01-K08, K16 and K17.  It is deliberately pure: M00 reads,
+version selection and persistence remain in the public owner in :mod:`api`.
+"""
+
+from __future__ import annotations
+
+import hashlib
+import json
+from dataclasses import dataclass
+from datetime import UTC, date, datetime, time, timedelta
+from decimal import Decimal
+from typing import Any, Iterable
+from zoneinfo import ZoneInfo
+
+from . import api
+from ._catalogue import catalogue_row, catalogue_rows
+
+STAGE1_KERNEL_IDS = frozenset(
+    {
+        "K01_TIME",
+        "K02_ALGEBRA",
+        "K03_CHANGE_RETURN",
+        "K04_STANDARDISE_RANK",
+        "K05_REALIZED_RISK",
+        "K06_REGRESSION_DEPENDENCE",
+        "K07_WEIGHTED_SCORE",
+        "K08_RULE_BUCKET_POLICY",
+        "K16_STRUCTURED_ASSEMBLY",
+        "K17_ORDER_FLOW_IMBALANCE",
+    }
+)
+
+
+@dataclass(frozen=True, slots=True)
+class KernelValueV1:
+    value: object
+    occurrence_id: str
+    effective_at_utc: datetime
+    received_ts_utc: datetime
+    subject_instrument: str
+    source_temporal_kind: str
+    source_timestamp_raw: str | None = None
+    metadata: tuple[tuple[str, object], ...] = ()
+
+    def __post_init__(self) -> None:
+        if not self.occurrence_id:
+            raise ValueError("occurrence_id must not be empty")
+        if self.effective_at_utc.tzinfo is None or self.effective_at_utc.utcoffset() != timedelta(0):
+            raise ValueError("effective_at_utc must be UTC-aware")
+        if self.received_ts_utc.tzinfo is None or self.received_ts_utc.utcoffset() != timedelta(0):
+            raise ValueError("received_ts_utc must be UTC-aware")
+        if not self.subject_instrument:
+            raise ValueError("subject_instrument must not be empty")
+        if self.source_temporal_kind not in {"true_instant", "receipt_only", "date_only", "derived"}:
+            raise ValueError("unadmitted source_temporal_kind")
+
+
+@dataclass(frozen=True, slots=True)
+class KernelResultV1:
+    value: object
+    units: str
+    result_shape: str
+    input_occurrence_ids: tuple[str, ...]
+
+
+@dataclass(frozen=True, slots=True)
+class BookEventV1:
+    occurrence_id: str
+    event_time_utc: datetime
+    position: int
+    operation: str
+    side: str
+    price: Decimal
+    size: Decimal
+    venue: str = ""
+    ingestion_sequence: int = 0
+
+
+@dataclass(frozen=True, slots=True)
+class BookMutationV1:
+    event: BookEventV1
+    prior_size: Decimal
+    resulting_size: Decimal
+    inserted_size: Decimal
+    depleted_size: Decimal
+    restored_size: Decimal
+    removed_size: Decimal
+
+
+_DEC0 = Decimal(0)
+_DEC1 = Decimal(1)
+_DEC100 = Decimal(100)
+_DEC10000 = Decimal(10000)
+
+
+def _d(value: object) -> Decimal:
+    if type(value) is Decimal:
+        return value
+    if type(value) is int:
+        return Decimal(value)
+    if type(value) is str:
+        return Decimal(value)
+    raise TypeError(f"expected Decimal-compatible scalar, got {type(value).__name__}")
+
+
+def _parameter_map(parameter_set: api.CalculationParameterSetV1) -> dict[str, object]:
+    return dict(parameter_set.parameters)
+
+
+def _metadata(value: KernelValueV1) -> dict[str, object]:
+    return dict(value.metadata)
+
+
+def _named(value: object) -> dict[str, object]:
+    if type(value) is not tuple:
+        return {}
+    output: dict[str, object] = {}
+    for item in value:
+        if type(item) is not tuple or len(item) < 2 or type(item[0]) is not str:
+            return {}
+        output[item[0]] = item[1]
+    return output
+
+
+def _named_tuple(values: Iterable[tuple[str, object]]) -> tuple[tuple[str, object], ...]:
+    return tuple(values)
+
+
+def _all_values(
+    raw_inputs: dict[str, tuple[KernelValueV1, ...]],
+    derived_inputs: dict[str, tuple[KernelValueV1, ...]],
+) -> tuple[KernelValueV1, ...]:
+    return tuple(item for values in (*raw_inputs.values(), *derived_inputs.values()) for item in values)
+
+
+def select_eligible_values(
+    values: tuple[KernelValueV1, ...],
+    *,
+    as_of_utc: datetime,
+    knowledge_cutoff_utc: datetime,
+    maximum_staleness: timedelta | None,
+    temporal_basis_permissions: tuple[str, ...],
+) -> tuple[KernelValueV1, ...]:
+    eligible: list[KernelValueV1] = []
+    for item in values:
+        if item.source_temporal_kind not in temporal_basis_permissions and item.source_temporal_kind != "derived":
+            continue
+        if item.received_ts_utc > knowledge_cutoff_utc:
+            continue
+        if item.source_temporal_kind in {"true_instant", "derived"} and item.effective_at_utc > as_of_utc:
+            continue
+        basis = item.effective_at_utc if item.source_temporal_kind in {"true_instant", "derived"} else item.received_ts_utc
+        if maximum_staleness is not None and as_of_utc - basis > maximum_staleness:
+            continue
+        eligible.append(item)
+    eligible.sort(key=lambda item: (item.effective_at_utc, item.received_ts_utc, item.occurrence_id))
+    return tuple(eligible)
+
+
+def _values(mapping: dict[str, tuple[KernelValueV1, ...]], identity: str) -> tuple[KernelValueV1, ...]:
+    return mapping.get(identity, ())
+
+
+def _latest(mapping: dict[str, tuple[KernelValueV1, ...]], identity: str) -> KernelValueV1 | None:
+    values = _values(mapping, identity)
+    if not values:
+        return None
+    return max(values, key=lambda item: (item.effective_at_utc, item.received_ts_utc, item.occurrence_id))
+
+
+def _scalar(mapping: dict[str, tuple[KernelValueV1, ...]], identity: str) -> object | None:
+    item = _latest(mapping, identity)
+    return None if item is None else item.value
+
+
+def _input_ids(*mappings: dict[str, tuple[KernelValueV1, ...]]) -> tuple[str, ...]:
+    return tuple(sorted({item.occurrence_id for mapping in mappings for values in mapping.values() for item in values}))
+
+
+def _result(identity: str, value: object, raw: dict[str, tuple[KernelValueV1, ...]], derived: dict[str, tuple[KernelValueV1, ...]]) -> KernelResultV1:
+    row = catalogue_row(identity)
+    shape = "structured" if type(value) is tuple else "scalar"
+    return KernelResultV1(value=value, units=row.units, result_shape=shape, input_occurrence_ids=_input_ids(raw, derived))
+
+
+def _decimal_values(mapping: dict[str, tuple[KernelValueV1, ...]], identity: str) -> tuple[Decimal, ...]:
+    return tuple(_d(item.value) for item in _values(mapping, identity))
+
+
+def _sample_mean(values: tuple[Decimal, ...]) -> Decimal:
+    return sum(values, _DEC0) / Decimal(len(values))
+
+
+def _sample_sd(values: tuple[Decimal, ...]) -> Decimal | None:
+    if len(values) < 2:
+        return None
+    mean = _sample_mean(values)
+    variance = sum(((item - mean) ** 2 for item in values), _DEC0) / Decimal(len(values) - 1)
+    if variance <= 0:
+        return None
+    return variance.sqrt()
+
+
+def _pearson(left: tuple[Decimal, ...], right: tuple[Decimal, ...]) -> Decimal | None:
+    if len(left) != len(right) or len(left) < 2:
+        return None
+    ml, mr = _sample_mean(left), _sample_mean(right)
+    dl = tuple(item - ml for item in left)
+    dr = tuple(item - mr for item in right)
+    den = (sum((item * item for item in dl), _DEC0) * sum((item * item for item in dr), _DEC0)).sqrt()
+    if den == 0:
+        return None
+    return sum((a * b for a, b in zip(dl, dr, strict=True)), _DEC0) / den
+
+
+def _solve(matrix: list[list[Decimal]], vector: list[Decimal]) -> list[Decimal] | None:
+    n = len(vector)
+    augmented = [list(row) + [vector[i]] for i, row in enumerate(matrix)]
+    for col in range(n):
+        pivot = next((r for r in range(col, n) if augmented[r][col] != 0), None)
+        if pivot is None:
+            return None
+        if pivot != col:
+            augmented[col], augmented[pivot] = augmented[pivot], augmented[col]
+        divisor = augmented[col][col]
+        augmented[col] = [v / divisor for v in augmented[col]]
+        for row in range(n):
+            if row == col:
+                continue
+            factor = augmented[row][col]
+            if factor == 0:
+                continue
+            augmented[row] = [a - factor * b for a, b in zip(augmented[row], augmented[col], strict=True)]
+    return [augmented[i][-1] for i in range(n)]
+
+
+def _ols(y: tuple[Decimal, ...], columns: tuple[tuple[Decimal, ...], ...]) -> tuple[Decimal, ...] | None:
+    if not y or any(len(column) != len(y) for column in columns):
+        return None
+    rows = [(Decimal(1), *(column[i] for column in columns)) for i in range(len(y))]
+    ncoef = 1 + len(columns)
+    xtx = [[sum((row[i] * row[j] for row in rows), _DEC0) for j in range(ncoef)] for i in range(ncoef)]
+    xty = [sum((row[i] * target for row, target in zip(rows, y, strict=True)), _DEC0) for i in range(ncoef)]
+    solved = _solve(xtx, xty)
+    return None if solved is None else tuple(solved)
+
+
+def _ols_slope(x: tuple[Decimal, ...], y: tuple[Decimal, ...]) -> Decimal | None:
+    fit = _ols(y, (x,))
+    return None if fit is None else fit[1]
+
+
+def _history_anchor(values: tuple[KernelValueV1, ...], *, as_of: datetime, seconds: int | None = None, days: int | None = None) -> tuple[KernelValueV1, KernelValueV1] | None:
+    eligible = tuple(v for v in values if v.effective_at_utc <= as_of)
+    if not eligible:
+        return None
+    current = max(eligible, key=lambda v: (v.effective_at_utc, v.received_ts_utc, v.occurrence_id))
+    anchor = current.effective_at_utc - (timedelta(seconds=seconds) if seconds is not None else timedelta(days=days or 0))
+    refs = tuple(v for v in eligible if v.effective_at_utc <= anchor and v.occurrence_id != current.occurrence_id)
+    if not refs:
+        return None
+    reference = max(refs, key=lambda v: (v.effective_at_utc, v.received_ts_utc, v.occurrence_id))
+    return current, reference
+
+
+def _align_occurrence_fields(
+    raw: dict[str, tuple[KernelValueV1, ...]], fields: tuple[str, ...]
+) -> tuple[dict[str, KernelValueV1], ...]:
+    maps = [{item.occurrence_id: item for item in raw.get(field, ())} for field in fields]
+    if not maps:
+        return ()
+    ids = set(maps[0])
+    for mapping in maps[1:]:
+        ids &= set(mapping)
+    rows: list[dict[str, KernelValueV1]] = []
+    for occurrence_id in ids:
+        rows.append(
+            {
+                field: mapping[occurrence_id]
+                for field, mapping in zip(fields, maps, strict=True)
+            }
+        )
+    rows.sort(
+        key=lambda row: (
+            max(v.effective_at_utc for v in row.values()),
+            next(iter(row.values())).occurrence_id,
+        )
+    )
+    return tuple(rows)
+
+
+def _latest_by_subject(
+    mapping: dict[str, tuple[KernelValueV1, ...]], identity: str
+) -> dict[str, KernelValueV1]:
+    output: dict[str, KernelValueV1] = {}
+    for item in mapping.get(identity, ()):
+        current = output.get(item.subject_instrument)
+        if current is None or (
+            item.effective_at_utc, item.received_ts_utc, item.occurrence_id
+        ) > (current.effective_at_utc, current.received_ts_utc, current.occurrence_id):
+            output[item.subject_instrument] = item
+    return output
+
+
+def reconstruct_book(events: tuple[BookEventV1, ...]) -> tuple[BookMutationV1, ...]:
+    state: dict[tuple[str, str, int], tuple[Decimal, Decimal]] = {}
+    mutations: list[BookMutationV1] = []
+    indexed = list(enumerate(events))
+    indexed.sort(
+        key=lambda pair: (
+            pair[1].event_time_utc,
+            pair[1].ingestion_sequence,
+            pair[1].occurrence_id,
+            pair[0],
+        )
+    )
+    for _, event in indexed:
+        operation = event.operation.lower()
+        side = event.side.lower()
+        if operation not in {"insert", "update", "delete", "remove", "cancel"} or side not in {"bid", "ask"}:
+            continue
+        key = (event.venue, side, event.position)
+        prior_price, prior_size = state.get(key, (event.price, _DEC0))
+        inserted = depleted = restored = removed = _DEC0
+        if operation == "insert":
+            resulting = event.size
+            inserted = event.size
+            state[key] = (event.price, resulting)
+        elif operation == "update":
+            resulting = event.size
+            if resulting < prior_size:
+                depleted = prior_size - resulting
+            elif resulting > prior_size:
+                restored = resulting - prior_size
+            state[key] = (event.price, resulting)
+        else:
+            resulting = _DEC0
+            removed = prior_size
+            state.pop(key, None)
+        mutations.append(BookMutationV1(event, prior_size, resulting, inserted, depleted, restored, removed))
+    return tuple(mutations)
+
+
+def _book_events(raw: dict[str, tuple[KernelValueV1, ...]], *, direct: bool = False) -> tuple[BookEventV1, ...]:
+    if direct:
+        # Direct exchange depth: position, market-maker/venue, operation, side, price, size.
+        position_id, venue_id, operation_id, side_id, price_id, size_id = (
+            "R192", "R193", "R194", "R195", "R196", "R197"
+        )
+    else:
+        position_id, operation_id, side_id, price_id, size_id, venue_id = "R185", "R187", "R188", "R189", "R190", None
+    required = tuple(field for field in (position_id, operation_id, side_id, size_id) if field)
+    rows = _align_occurrence_fields(raw, required)
+    by_price = {item.occurrence_id: item for item in raw.get(price_id, ())}
+    by_venue = {} if venue_id is None else {item.occurrence_id: item for item in raw.get(venue_id, ())}
+    events: list[BookEventV1] = []
+    for row in rows:
+        base = row[position_id]
+        price_item = by_price.get(base.occurrence_id)
+        price = _DEC0 if price_item is None else _d(price_item.value)
+        venue = "" if venue_id is None or base.occurrence_id not in by_venue else str(by_venue[base.occurrence_id].value)
+        events.append(
+            BookEventV1(
+                base.occurrence_id,
+                max(v.effective_at_utc for v in row.values()),
+                int(row[position_id].value),
+                str(row[operation_id].value).lower(),
+                str(row[side_id].value).lower(),
+                price,
+                _d(row[size_id].value),
+                venue,
+                int(_metadata(base).get("ingestion_sequence", 0)),
+            )
+        )
+    return tuple(events)
+
+
+def _book_final_state(events: tuple[BookEventV1, ...]) -> dict[tuple[str, str, int], tuple[Decimal, Decimal]]:
+    state: dict[tuple[str, str, int], tuple[Decimal, Decimal]] = {}
+    indexed = list(enumerate(events))
+    indexed.sort(
+        key=lambda pair: (
+            pair[1].event_time_utc,
+            pair[1].ingestion_sequence,
+            pair[1].occurrence_id,
+            pair[0],
+        )
+    )
+    for _, event in indexed:
+        key = (event.venue, event.side.lower(), event.position)
+        if event.operation.lower() in {"delete", "remove", "cancel"}:
+            state.pop(key, None)
+        else:
+            state[key] = (event.price, event.size)
+    return state
+
+
+def _context(contexts: tuple[object, ...], kind: type[Any]) -> Any | None:
+    matches = [item for item in contexts if type(item) is kind]
+    return matches[0] if len(matches) == 1 else None
+
+
+def supported_stage1_ids() -> tuple[str, ...]:
+    return tuple(row.derived_id for row in catalogue_rows() if row.kernel_id in STAGE1_KERNEL_IDS)
+
+
+def occurrence_identity(
+    derived_signal_id: str,
+    *,
+    calculation_definition_version: str,
+    subject_instrument: str,
+    effective_as_of_utc: datetime,
+    knowledge_cutoff_utc: datetime,
+    input_occurrence_ids: tuple[str, ...],
+    version_keys: tuple[tuple[str, int], ...],
+) -> str:
+    payload = {
+        "derived_signal_id": derived_signal_id,
+        "calculation_definition_version": calculation_definition_version,
+        "subject_instrument": subject_instrument,
+        "effective_as_of_utc": effective_as_of_utc.isoformat(),
+        "knowledge_cutoff_utc": knowledge_cutoff_utc.isoformat(),
+        "input_occurrence_ids": sorted(input_occurrence_ids),
+        "version_keys": sorted((str(identity), int(version)) for identity, version in version_keys),
+    }
+    digest = hashlib.sha256(json.dumps(payload, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
+    return f"{derived_signal_id.lower()}-{digest}"
+
+
+def extract_scalar(value: object, extractor: str, arguments: tuple[object, ...]) -> Decimal:
+    named = _named(value)
+    if extractor == "component":
+        current: object = value
+        for part in arguments:
+            if type(current) is tuple:
+                mapped = _named(current)
+                if str(part) not in mapped:
+                    raise ValueError("component path not present")
+                current = mapped[str(part)]
+            else:
+                raise ValueError("component path traverses non-structured value")
+        return _d(current)
+    if extractor == "weighted_component_sum":
+        if len(arguments) % 2:
+            raise ValueError("weighted_component_sum needs name/coefficient pairs")
+        total = _DEC0
+        for i in range(0, len(arguments), 2):
+            name, coefficient = str(arguments[i]), _d(arguments[i + 1])
+            if name not in named:
+                raise ValueError("weighted component missing")
+            total += coefficient * _d(named[name])
+        return total
+    probabilities = _named(named.get("probabilities", ()))
+    if extractor == "class_probability":
+        label = str(arguments[0])
+        if label not in probabilities:
+            raise ValueError("class probability missing")
+        return _d(probabilities[label])
+    if extractor == "probability_margin":
+        ordered = sorted((_d(item) for item in probabilities.values()), reverse=True)
+        if len(ordered) < 2:
+            raise ValueError("probability margin requires two classes")
+        return ordered[0] - ordered[1]
+    if extractor == "normalised_entropy":
+        probs = tuple(_d(item) for item in probabilities.values())
+        if len(probs) < 2 or any(p < 0 for p in probs) or sum(probs, _DEC0) != _DEC1:
+            raise ValueError("invalid probability vector")
+        entropy = -sum((p * p.ln() for p in probs if p > 0), _DEC0)
+        return entropy / Decimal(len(probs)).ln()
+    distribution = named.get("distribution")
+    if extractor in {"distribution_cdf", "upper_tail", "distribution_mean", "distribution_variance"}:
+        if type(distribution) is not tuple:
+            raise ValueError("stored distribution missing")
+        points = tuple((_d(item[0]), _d(item[1])) for item in distribution if type(item) is tuple and len(item) == 2)
+        if not points or sum((p for _, p in points), _DEC0) != _DEC1:
+            raise ValueError("invalid stored distribution")
+        if extractor == "distribution_cdf":
+            x = _d(arguments[0])
+            return sum((p for v, p in points if v <= x), _DEC0)
+        if extractor == "upper_tail":
+            x = _d(arguments[0])
+            return _DEC1 - sum((p for v, p in points if v <= x), _DEC0)
+        mean = sum((v * p for v, p in points), _DEC0)
+        if extractor == "distribution_mean":
+            return mean
+        return sum((((v - mean) ** 2) * p for v, p in points), _DEC0)
+    matrix = named.get("matrix")
+    if extractor in {"matrix_entry", "row_l2", "frobenius"}:
+        if type(matrix) is not tuple:
+            raise ValueError("matrix missing")
+        rows = tuple(tuple(_d(v) for v in row) for row in matrix)
+        if extractor == "matrix_entry":
+            return rows[int(arguments[0])][int(arguments[1])]
+        if extractor == "row_l2":
+            row = rows[int(arguments[0])]
+            return Decimal(str(sum((float(v) ** 2 for v in row)) ** 0.5))
+        return Decimal(str(sum((float(v) ** 2 for row in rows for v in row)) ** 0.5))
+    raise ValueError(f"unadmitted scalar extractor {extractor!r}")
+
+
+def _transform(value: Decimal, feature: api.ScoreFeatureV1) -> Decimal:
+    if feature.transform == "identity":
+        transformed = value
+    elif feature.transform == "signed_log":
+        scale = feature.transform_scale
+        if scale is None or scale <= 0:
+            raise ValueError("signed_log requires positive transform_scale")
+        transformed = (_DEC1 if value >= 0 else -_DEC1) * (_DEC1 + abs(value) / scale).ln()
+    elif feature.transform == "bounded_ratio":
+        scale = feature.transform_scale
+        if scale is None or scale <= 0:
+            raise ValueError("bounded_ratio requires positive transform_scale")
+        transformed = value / (scale + abs(value))
+    elif feature.transform == "z_score":
+        baseline = feature.baseline_values
+        sd = _sample_sd(baseline)
+        if sd is None:
+            raise ValueError("z_score requires non-degenerate prior baseline")
+        transformed = (value - _sample_mean(baseline)) / sd
+    else:
+        raise ValueError(f"unadmitted score transform {feature.transform!r}")
+    if feature.clip_min is not None:
+        transformed = max(transformed, feature.clip_min)
+    if feature.clip_max is not None:
+        transformed = min(transformed, feature.clip_max)
+    return Decimal(feature.orientation) * transformed
+
+
+def _score(identity: str, derived: dict[str, tuple[KernelValueV1, ...]], parameter_set: api.CalculationParameterSetV1) -> object | None:
+    if not parameter_set.score_features:
+        return None
+    transformed: list[tuple[api.ScoreFeatureV1, Decimal]] = []
+    for feature in parameter_set.score_features:
+        occurrence = _latest(derived, feature.signal_id)
+        if occurrence is None:
+            return None
+        try:
+            scalar = extract_scalar(occurrence.value, feature.extractor, tuple(feature.extractor_arguments))
+            transformed.append((feature, _transform(scalar, feature)))
+        except (TypeError, ValueError, IndexError, KeyError):
+            return None
+    params = _parameter_map(parameter_set)
+    if identity == "D157":
+        matrix_occ = _latest(derived, "D156")
+        if matrix_occ is None:
+            return None
+        m = _named(matrix_occ.value)
+        matrix = m.get("partial_correlation_matrix", m.get("matrix"))
+        if type(matrix) is not tuple or len(matrix) != len(transformed):
+            return None
+        u: list[Decimal] = []
+        for j, (feature, _) in enumerate(transformed):
+            row = matrix[j]
+            if type(row) is not tuple or len(row) != len(transformed):
+                return None
+            duplicate = sum((abs(_d(row[k])) for k in range(len(transformed)) if k != j), _DEC0)
+            u.append(feature.weight / (_DEC1 + duplicate))
+        total_u = sum(u, _DEC0)
+        if total_u <= 0:
+            return None
+        weights = tuple(item / total_u for item in u)
+        mean = sum((w * z for w, (_, z) in zip(weights, transformed, strict=True)), _DEC0)
+        return sum((w * ((z - mean) ** 2) for w, (_, z) in zip(weights, transformed, strict=True)), _DEC0).sqrt()
+    raw = _d(params.get("intercept", _DEC0)) + sum((feature.weight * z for feature, z in transformed), _DEC0)
+    bounded = bool(params.get("bounded_output", catalogue_row(identity).units == "0-1"))
+    if bounded:
+        # Decimal has exp(); stable enough for the admitted deterministic carrier.
+        return _DEC1 / (_DEC1 + (-raw).exp())
+    return raw
+
+
+def _phase_for_local(local: datetime, phases: object) -> str | None:
+    if type(phases) is not tuple:
+        return None
+    matches: list[str] = []
+    local_time = local.timetz().replace(tzinfo=None)
+    for specification in phases:
+        if type(specification) is not str:
+            return None
+        try:
+            name, start, end = specification.split("|")
+            sh, sm = (int(v) for v in start.split(":"))
+            eh, em = (int(v) for v in end.split(":"))
+            start_time = time(sh, sm)
+            end_time = time(eh, em)
+        except Exception:
+            return None
+        if start_time == end_time:
+            return None
+        inside = (
+            start_time <= local_time < end_time
+            if start_time < end_time
+            else local_time >= start_time or local_time < end_time
+        )
+        if inside:
+            matches.append(name)
+    return matches[0] if len(matches) == 1 else None
+
+
+def _eval_k01(identity: str, raw: dict[str, tuple[KernelValueV1, ...]], derived: dict[str, tuple[KernelValueV1, ...]], params: dict[str, object], as_of: datetime, cutoff: datetime) -> object | None:
+    if identity == "D001":
+        source = _latest(raw, "R002")
+        if source is None or source.source_temporal_kind != "true_instant":
+            return None
+        value = source.source_timestamp_raw or source.value
+        if type(value) is datetime:
+            stamp = value
+        elif type(value) is str:
+            try:
+                stamp = datetime.fromisoformat(value.replace("Z", "+00:00"))
+            except ValueError:
+                return None
+        else:
+            return None
+        if stamp.tzinfo is None:
+            timezone_name = str(_scalar(raw, "R003") or params.get("exchange_timezone", ""))
+            if not timezone_name:
+                return None
+            stamp = stamp.replace(tzinfo=ZoneInfo(timezone_name))
+        return stamp.astimezone(UTC)
+    if identity == "D002":
+        source = _latest(raw, "R002")
+        if source is None or source.source_temporal_kind == "date_only":
+            return None
+        if source.source_temporal_kind == "true_instant":
+            d001 = _latest(derived, "D001")
+            if d001 is None or type(d001.value) is not datetime:
+                return None
+            seconds = Decimal(str((cutoff - d001.value).total_seconds()))
+            if seconds < 0:
+                return None
+            return _named_tuple((("basis", "source_event"), ("age_seconds", seconds)))
+        if source.source_temporal_kind == "receipt_only":
+            seconds = Decimal(str((cutoff - source.received_ts_utc).total_seconds()))
+            if seconds < 0:
+                return None
+            return _named_tuple((("basis", "collector_receipt"), ("age_seconds", seconds)))
+        return None
+    if identity == "D003":
+        source = _latest(derived, "D001")
+        if source is None or type(source.value) is not datetime:
+            return None
+        timezone_name = str(_scalar(raw, "R004") or params.get("exchange_timezone", ""))
+        if not timezone_name:
+            return None
+        try:
+            return source.value.astimezone(ZoneInfo(timezone_name))
+        except Exception:
+            return None
+    if identity == "D004":
+        local = _scalar(derived, "D003")
+        if type(local) is not datetime:
+            return None
+        # Session-date offset is explicit when an overnight session requires one.
+        boundary = params.get("trading_date_boundary")
+        trading_date = local.date()
+        if type(boundary) is str:
+            hh, mm = (int(v) for v in boundary.split(":"))
+            if local.timetz().replace(tzinfo=None) < time(hh, mm):
+                trading_date -= timedelta(days=1)
+        return trading_date
+    if identity == "D005":
+        local = _scalar(derived, "D003")
+        if type(local) is not datetime:
+            return None
+        return _phase_for_local(local, params.get("session_phases"))
+    if identity == "D009":
+        rows = _align_occurrence_fields(raw, ("R280", "R281", "R282"))
+        visible = tuple(
+            row
+            for row in rows
+            if all(item.received_ts_utc <= cutoff for item in row.values())
+        )
+        if not visible:
+            return None
+        ordered = sorted(
+            visible,
+            key=lambda row: (
+                max(item.received_ts_utc for item in row.values()),
+                row["R280"].occurrence_id,
+            ),
+        )
+        current = ordered[-1]
+        category = "initial" if len(ordered) == 1 else "latest_known_at_cutoff"
+        return _named_tuple(
+            (
+                ("status", category),
+                ("realtime_start", current["R280"].value),
+                ("realtime_end", current["R281"].value),
+                ("last_updated", current["R282"].value),
+                ("cutoff", cutoff),
+            )
+        )
+    if identity == "D010":
+        local = _scalar(derived, "D003")
+        liquid = params.get("liquid_phases")
+        weekdays = params.get("market_open_weekdays")
+        closed_dates = params.get("market_closed_dates")
+        open_dates = params.get("market_open_dates", ())
+        if (
+            type(local) is not datetime
+            or type(liquid) is not tuple
+            or type(weekdays) is not tuple
+            or type(closed_dates) is not tuple
+            or type(open_dates) is not tuple
+        ):
+            return None
+        if any(type(item) is not int or not 0 <= item <= 6 for item in weekdays):
+            return None
+        local_date = local.date().isoformat()
+        if any(type(item) is not str for item in (*closed_dates, *open_dates)):
+            return None
+        is_open_day = local_date in open_dates or (
+            local.weekday() in weekdays and local_date not in closed_dates
+        )
+        if not is_open_day:
+            return False
+        phase = _phase_for_local(local, params.get("session_phases"))
+        return False if phase is None else phase in liquid
+    if identity == "D062":
+        events = [item for item in raw.get("R284", ()) if type(item.value) is datetime and item.value > as_of and item.received_ts_utc <= cutoff]
+        if not events:
+            return None
+        event = min(events, key=lambda item: item.value)
+        seconds = Decimal(str((event.value - as_of).total_seconds()))
+        return _named_tuple((("seconds", seconds), ("minutes", seconds / Decimal(60))))
+    if identity == "D085":
+        expiry = _scalar(raw, "R013"); trading = _scalar(derived, "D004")
+        try:
+            expiry_date = expiry if type(expiry) is date and type(expiry) is not datetime else date.fromisoformat(str(expiry))
+            trading_date = trading if type(trading) is date and type(trading) is not datetime else date.fromisoformat(str(trading))
+        except Exception:
+            return None
+        days = (expiry_date - trading_date).days
+        return days if days >= 0 else None
+    if identity == "D086":
+        expiry = _scalar(raw, "R013"); now = _scalar(derived, "D001")
+        if type(now) is not datetime or expiry is None:
+            return None
+        try:
+            expiry_date = expiry if type(expiry) is date and type(expiry) is not datetime else date.fromisoformat(str(expiry))
+            expiry_time = str(params["expiry_time"])
+            timezone_name = str(params["exchange_timezone"])
+            hh, mm = (int(v) for v in expiry_time.split(":"))
+            expiry_instant = datetime.combine(expiry_date, time(hh, mm), ZoneInfo(timezone_name)).astimezone(UTC)
+        except Exception:
+            return None
+        seconds = Decimal(str((expiry_instant - now).total_seconds()))
+        if seconds < 0:
+            return None
+        return seconds / Decimal(86400) / Decimal(365)
+    return None
+
+
+def _eval_k02(identity: str, raw: dict[str, tuple[KernelValueV1, ...]], derived: dict[str, tuple[KernelValueV1, ...]], params: dict[str, object], contexts: tuple[object, ...]) -> object | None:
+    try:
+        if identity in {"D011", "D087"}:
+            bid, ask = _d(_scalar(raw, "R034")), _d(_scalar(raw, "R035")); return (bid + ask) / Decimal(2)
+        if identity == "D012":
+            return _d(_scalar(raw, "R035")) - _d(_scalar(raw, "R034"))
+        if identity == "D013":
+            mid, spread = _d(_scalar(derived, "D011")), _d(_scalar(derived, "D012")); return None if mid == 0 else _DEC100 * spread / mid
+        if identity == "D014":
+            bid, ask = _d(_scalar(raw, "R033")), _d(_scalar(raw, "R036")); den = bid + ask; return None if den == 0 else (bid - ask) / den
+        if identity == "D017":
+            rows = _align_occurrence_fields(raw, ("R120", "R121")); den = sum((_d(r["R121"].value) for r in rows), _DEC0); return None if den == 0 else sum((_d(r["R120"].value) * _d(r["R121"].value) for r in rows), _DEC0) / den
+        if identity == "D018":
+            provider, calc = _d(_scalar(raw, "R137")), _d(_scalar(derived, "D017")); diff = provider - calc; return None if calc == 0 else _named_tuple((("price_difference", diff), ("bps_difference", _DEC10000 * diff / calc)))
+        if identity == "D025":
+            low, high, last = _d(_scalar(raw, "R039")), _d(_scalar(raw, "R040")), _d(_scalar(raw, "R037")); den = high-low; return None if den == 0 else (last-low)/den
+        if identity in {"D042", "D043"}:
+            short = "R247" if identity == "D042" else "R246"; return _DEC100 * (_d(_scalar(raw, "R249")) - _d(_scalar(raw, short)))
+        if identity == "D047": return _DEC10000 * (_d(_scalar(raw, "R257")) - _d(_scalar(raw, "R256")))
+        if identity in {"D057", "D058", "D059"}:
+            pair = {"D057": ("R238", "R239"), "D058": ("R239", "R236"), "D059": ("R236", "R240")}[identity]; a,b=(_d(_scalar(raw,x)) for x in pair); return None if b==0 else _named_tuple((("point_difference", a-b),("ratio",a/b)))
+        if identity == "D060":
+            vix=_d(_scalar(raw,"R236")); return None if vix==0 else _d(_scalar(raw,"R237"))/vix
+        if identity == "D076": return _d(_scalar(derived,"D072"))-_d(_scalar(derived,"D071"))
+        if identity == "D077":
+            q=_d(_scalar(derived,"D072")); smh=_latest(derived,"D073"); soxx=_latest(derived,"D074")
+            if smh and soxx: return (_d(smh.value)+_d(soxx.value))/Decimal(2)-q
+            proxy=params.get("single_proxy")
+            if proxy in {"D073","D074"}: return _d(_scalar(derived,str(proxy)))-q
+            return None
+        if identity == "D088":
+            mid=_d(_scalar(derived,"D087")); bid=_d(_scalar(raw,"R034")); ask=_d(_scalar(raw,"R035")); return None if mid==0 else _DEC100*(ask-bid)/mid
+        if identity == "D089":
+            spot=_d(_scalar(raw,"R118")); return None if spot==0 else _d(_scalar(raw,"R014"))/spot
+        if identity == "D090":
+            ratio=_eval_k02("D089",raw,derived,params,contexts); return None if ratio is None or ratio<=0 else ratio.ln()
+        if identity == "D092": return (_d(_scalar(raw,"R084"))+_d(_scalar(raw,"R093")))/Decimal(2)
+        if identity == "D093": return _DEC100*(_d(_scalar(raw,"R093"))-_d(_scalar(raw,"R084")))
+        if identity in {"D097","D098"}:
+            points=[]
+            for item in derived.get("D096",()):
+                n=_named(item.value); day=n.get("expiry_day",_metadata(item).get("expiry_day")); iv=n.get("iv",n.get("value",item.value if type(item.value) is Decimal else None))
+                if day is not None and iv is not None: points.append((_d(day),_d(iv)))
+            points.sort()
+            if identity=="D097" and len(points)>=2:
+                (d1,i1),(d2,i2)=points[:2]; return None if d2==d1 else _DEC100*(i2-i1)/(d2-d1)
+            if identity=="D098" and len(points)>=3:
+                (d1,i1),(d2,i2),(d3,i3)=points[:3]
+                if d2==d1 or d3==d2 or d3==d1:return None
+                return Decimal(2)*(_DEC100*(i3-i2)/(d3-d2)-_DEC100*(i2-i1)/(d2-d1))/(d3-d1)
+            return None
+        if identity in {"D099","D100","D101"}:
+            # The selected IV points must carry right/delta metadata; never infer labels from query order.
+            points=[]
+            for item in raw.get("R111",()):
+                m=_metadata(item); points.append((str(m.get("right","" )).lower(), abs(_d(m.get("delta",0))), _d(item.value)))
+            target=Decimal("0.25") if identity in {"D099","D101"} else Decimal("0.10")
+            call=next((iv for right,delta,iv in points if right in {"c","call"} and delta==target),None); put=next((iv for right,delta,iv in points if right in {"p","put"} and delta==target),None)
+            if identity in {"D099","D100"}: return None if call is None or put is None else _DEC100*(put-call)
+            atm_candidates=[iv for _,delta,iv in points if delta==Decimal("0.50")]
+            if call is None or put is None or not atm_candidates:return None
+            return _DEC100*(put+call-Decimal(2)*_sample_mean(tuple(atm_candidates)))
+        if identity in {"D107","D108"}: return _DEC100*(_d(_scalar(derived,"D096"))-_d(_scalar(derived,"D035" if identity=="D107" else "D036")))
+        if identity == "D109":
+            atm_by_expiry: dict[str, dict[str, Decimal]] = {}
+            for item in derived.get("D087", ()):
+                metadata = _metadata(item)
+                right = str(metadata.get("right", "")).lower()
+                delta = metadata.get("delta")
+                expiry = metadata.get("expiry")
+                if right not in {"call", "c", "put", "p"} or delta is None or expiry is None:
+                    return None
+                if abs(_d(delta)) != Decimal("0.50"):
+                    continue
+                canonical_right = "call" if right in {"call", "c"} else "put"
+                expiry_key = str(expiry)
+                bucket = atm_by_expiry.setdefault(expiry_key, {})
+                if canonical_right in bucket:
+                    return None
+                bucket[canonical_right] = _d(item.value)
+            complete = [
+                values
+                for values in atm_by_expiry.values()
+                if set(values) == {"call", "put"}
+            ]
+            if len(complete) != 1:
+                return None
+            return complete[0]["call"] + complete[0]["put"]
+        if identity == "D110":
+            spot=_d(_scalar(raw,"R118")); return None if spot==0 else _DEC100*_d(_scalar(derived,"D109"))/spot
+        if identity == "D116":
+            oi=_d(_scalar(raw,"R075")); return None if oi==0 else _d(_scalar(raw,"R041"))/oi
+        if identity in {"D118","D119"}:
+            a,b=("R049","R050") if identity=="D118" else ("R047","R048"); den=sum(_decimal_values(raw,b),_DEC0); return None if den==0 else sum(_decimal_values(raw,a),_DEC0)/den
+        if identity == "D123":
+            changes: list[Decimal] = []
+            for raw_id in ("R047", "R048"):
+                by_contract: dict[str, list[KernelValueV1]] = {}
+                for item in raw.get(raw_id, ()):
+                    by_contract.setdefault(item.subject_instrument, []).append(item)
+                for history in by_contract.values():
+                    ordered = sorted(
+                        history,
+                        key=lambda item: (
+                            item.effective_at_utc,
+                            item.received_ts_utc,
+                            item.occurrence_id,
+                        ),
+                    )
+                    if len(ordered) < 2:
+                        return None
+                    changes.append(_d(ordered[-1].value) - _d(ordered[-2].value))
+            return sum(changes, _DEC0) if changes else None
+        if identity in {"D131","D134","D135"}:
+            events=_book_events(raw); state=_book_final_state(events)
+            side=None if identity=="D131" else ("bid" if identity=="D134" else "ask")
+            rows=[(key,val) for key,val in state.items() if side is None or key[1]==side]
+            if identity=="D131":
+                mid=_d(_scalar(derived,"D087")); max_distance=params.get("depth_price_distance")
+                if max_distance is None:return None
+                rows=[(k,v) for k,v in rows if abs(v[0]-mid)<=_d(max_distance)]
+            else:
+                levels=params.get("depth_levels")
+                if type(levels) is not int or levels<=0:return None
+                rows=sorted(rows,key=lambda item:item[0][2])[:levels]
+            return sum((value[1] for _,value in rows),_DEC0)
+        if identity == "D136":
+            bid,ask=_d(_scalar(derived,"D134")),_d(_scalar(derived,"D135")); den=bid+ask; return None if den==0 else (bid-ask)/den
+        if identity == "D137":
+            bid,ask,bs,asz=(_d(_scalar(raw,x)) for x in ("R034","R035","R033","R036")); den=bs+asz; return None if den==0 else (ask*bs+bid*asz)/den
+        if identity == "D143":
+            events=_book_events(raw,direct=True); state=_book_final_state(events); by_venue:dict[str,Decimal]={}
+            for (venue,_,_),(_,size) in state.items(): by_venue[venue]=by_venue.get(venue,_DEC0)+abs(size)
+            total=sum(by_venue.values(),_DEC0); return None if total<=0 else sum(((v/total)**2 for v in by_venue.values()),_DEC0)
+        if identity == "D144":
+            smart = _book_final_state(_book_events(raw))
+            direct = _book_final_state(_book_events(raw, direct=True))
+            rows = []
+            for (venue, side, position), (direct_price, direct_size) in sorted(direct.items()):
+                smart_value = smart.get(("", side, position))
+                if smart_value is None:
+                    continue
+                smart_price, smart_size = smart_value
+                rows.append(
+                    (
+                        f"{side}:{position}:{venue}",
+                        (
+                            ("price_difference", smart_price - direct_price),
+                            ("depth_difference", smart_size - direct_size),
+                        ),
+                    )
+                )
+            return tuple(rows) if rows else None
+        if identity == "D151":
+            members=params.get("basket_membership")
+            if type(members) is not tuple or not members:return None
+            def by_subject(rid:str)->dict[str,Decimal]: return {v.subject_instrument:_d(v.value) for v in raw.get(rid,()) if v.subject_instrument in members}
+            last,opn,vwap,prior=(by_subject(x) for x in ("R037","R043","R137","R042"))
+            def fraction(reference:dict[str,Decimal])->Decimal|None:
+                eligible=[m for m in members if m in last and m in reference]
+                return None if not eligible else Decimal(sum(last[m]>reference[m] for m in eligible))/Decimal(len(eligible))
+            a,b,c=fraction(opn),fraction(vwap),fraction(prior)
+            if a is None or b is None or c is None:return None
+            return _named_tuple((("positive_return_fraction",a),("above_vwap_fraction",b),("above_prior_close_fraction",c)))
+        if identity == "D164":
+            base=_d(_scalar(derived,"D133")); schedule=_context(contexts,api.ExecutionCostScheduleVersionV1)
+            if schedule is None:return None
+            commission=sum((v for _,v in schedule.commission_rules),_DEC0); fees=sum((v for _,v in schedule.fee_rules),_DEC0); multi=sum((v for _,v in schedule.multi_leg_incremental_cost_rules),_DEC0)
+            return _named_tuple((("expected_spread_slippage_cost",base),("commissions",commission),("fees",fees),("multi_leg_incremental_cost",multi),("total",base+commission+fees+multi)))
+        if identity == "D168":
+            candidate = _context(contexts, api.CandidateStructureContextV1)
+            if candidate is None:
+                return None
+            fields = {
+                raw_id: _latest_by_subject(raw, raw_id)
+                for raw_id in ("R112", "R115", "R116", "R117", "R016")
+            }
+            if any(
+                contract not in field
+                for contract in candidate.leg_contract_identities
+                for field in fields.values()
+            ):
+                return None
+            signed_quantities: dict[str, Decimal] = {}
+            for contract, side, quantity in zip(
+                candidate.leg_contract_identities,
+                candidate.leg_sides,
+                candidate.leg_quantities,
+                strict=True,
+            ):
+                if quantity <= 0 or side.lower() not in {"buy", "sell"}:
+                    return None
+                signed_quantities[contract] = quantity if side.lower() == "buy" else -quantity
+            names = ("delta", "gamma", "vega", "theta")
+            raw_ids = ("R112", "R115", "R116", "R117")
+            output = []
+            for name, raw_id in zip(names, raw_ids, strict=True):
+                total = sum(
+                    (
+                        signed_quantities[contract]
+                        * _d(fields["R016"][contract].value)
+                        * _d(fields[raw_id][contract].value)
+                        for contract in candidate.leg_contract_identities
+                    ),
+                    _DEC0,
+                )
+                output.append((name, total))
+            return tuple(output)
+        if identity == "D170":
+            candidate=_context(contexts,api.CandidateStructureContextV1)
+            if candidate is None:return None
+            strike_by_contract={}
+            right_by_contract={}
+            for item in raw.get("R014",()):
+                contract=item.subject_instrument
+                if contract in strike_by_contract:return None
+                strike_by_contract[contract]=_d(item.value)
+                right=str(_metadata(item).get("option_right",_metadata(item).get("right",""))).lower()
+                if right not in {"call","c","put","p"}:return None
+                right_by_contract[contract]="call" if right in {"call","c"} else "put"
+            premium_by_contract={}
+            for item in derived.get("D087",()):
+                contract=item.subject_instrument
+                if contract in premium_by_contract:return None
+                premium_by_contract[contract]=_d(item.value)
+            assumed=dict(candidate.premium_assumptions)
+            legs=[]
+            for contract,side,quantity in zip(candidate.leg_contract_identities,candidate.leg_sides,candidate.leg_quantities,strict=True):
+                if contract not in strike_by_contract or contract not in right_by_contract:return None
+                if side.lower() not in {"buy","sell"}:return None
+                premium=premium_by_contract.get(contract,assumed.get(contract))
+                if premium is None:return None
+                if contract in premium_by_contract and contract in assumed and premium_by_contract[contract]!=assumed[contract]:return None
+                sign=_DEC1 if side.lower()=="buy" else -_DEC1
+                legs.append((right_by_contract[contract],strike_by_contract[contract],sign*quantity,_d(premium)))
+            if len(legs)!=len(candidate.leg_contract_identities):return None
+            strikes=sorted({strike for _,strike,_,_ in legs})
+            if not strikes:return None
+            premium_constant=-sum((signed_qty*premium for _,_,signed_qty,premium in legs),_DEC0)
+            boundaries=[_DEC0,*strikes]
+            roots=set()
+            segments=[]
+            for i,left in enumerate(boundaries):
+                right=boundaries[i+1] if i+1<len(boundaries) else None
+                probe=(left+right)/Decimal(2) if right is not None else left+_DEC1
+                slope=_DEC0
+                intercept=premium_constant
+                for option_right,strike,signed_qty,_ in legs:
+                    if option_right=="call" and probe>=strike:
+                        slope+=signed_qty;intercept-=signed_qty*strike
+                    elif option_right=="put" and probe<=strike:
+                        slope-=signed_qty;intercept+=signed_qty*strike
+                if slope==0:
+                    if intercept==0:return None
+                    continue
+                root=-intercept/slope
+                if root<0:continue
+                if right is None:
+                    if root>=left:roots.add(root)
+                elif left<=root<=right:
+                    roots.add(root)
+            return tuple(sorted(roots)) if roots else None
+        if identity == "D179":
+            fill,benchmark=_d(_scalar(raw,"R229")),_d(_scalar(raw,"R221")); side=str(params.get("side","" )).lower(); sign=Decimal(1) if side=="buy" else Decimal(-1) if side=="sell" else None
+            if sign is None or benchmark==0:return None
+            slip=sign*(fill-benchmark); return _named_tuple((("price_slippage",slip),("bps_slippage",_DEC10000*slip/benchmark)))
+        if identity == "D180":
+            filled,remaining=_d(_scalar(raw,"R219")),_d(_scalar(raw,"R220")); den=filled+remaining; return None if den<=0 else filled/den
+        if identity in {"D181","D182","D183","D184"}:
+            greek={"D181":"R112","D182":"R115","D183":"R116","D184":"R117"}[identity]; rows=_align_occurrence_fields(raw,("R212",greek,"R016")); return sum((_d(r["R212"].value)*_d(r[greek].value)*_d(r["R016"].value) for r in rows),_DEC0) if rows else None
+        if identity == "D185":
+            realised,unreal,total=(_scalar(raw,x) for x in ("R214","R215","R216"));
+            if realised is None or unreal is None or total is None:return None
+            return _named_tuple((("realised",_d(realised)),("unrealised",_d(unreal)),("total",_d(total))))
+        if identity == "D190":
+            cset=_context(contexts,api.CandidateSetContextV1); hold=_d(_scalar(derived,"D188")) if type(_scalar(derived,"D188")) is Decimal else _d(_named(_scalar(derived,"D188")).get("utility"));
+            if cset is None:return None
+            vals={str(_named(v.value).get("candidate")):_d(_named(v.value).get("value")) for v in derived.get("D165",()) if _named(v.value).get("candidate") is not None}
+            eligible=[vals[c] for c in cset.candidate_identities if c in vals]; return None if not eligible else max(eligible)-hold
+        if identity == "D191":
+            fill=_named(_scalar(derived,"D133")); costs=_named(_scalar(derived,"D164")); expected=fill.get("expected_fill_price");
+            if expected is None:return None
+            quantity=_d(params.get("liquidation_quantity",Decimal(1))); multiplier=_d(params.get("multiplier",Decimal(1))); non_slippage=_d(costs.get("commissions",0))+_d(costs.get("fees",0))+_d(costs.get("multi_leg_incremental_cost",0)); return _d(expected)*quantity*multiplier-non_slippage
+        if identity == "D193":
+            fill,commission,qty,mult=(_d(_scalar(raw,x)) for x in ("R229","R233","R228","R016")); benchmark=_d(_scalar(derived,"D087")); side=str(params.get("side","" )).lower(); sign=Decimal(1) if side=="buy" else Decimal(-1) if side=="sell" else None
+            return None if sign is None else commission+sign*(fill-benchmark)*qty*mult
+        if identity == "D199":
+            observed=_d(_scalar(raw,"R216")); explained=sum((_d(_scalar(derived,d)) for d in ("D194","D195","D196","D197","D198")),_DEC0); pnl=_context(contexts,api.PnLConventionVersionV1); cost=_d(_scalar(derived,"D193")) if pnl is not None and pnl.observed_total_pnl_is_gross_of_execution_costs else _DEC0; return observed-explained-cost
+    except (TypeError, ValueError, ArithmeticError):
+        return None
+    return None
+
+
+def _eval_k03(identity: str, raw: dict[str, tuple[KernelValueV1, ...]], derived: dict[str, tuple[KernelValueV1, ...]], params: dict[str, object], as_of: datetime) -> object | None:
+    fixed_seconds={"D019":60,"D020":300,"D021":1800,"D027":300,"D094":300}
+    fixed_days={"D066":1,"D067":1,"D068":1,"D069":1,"D095":1}
+    source_map={
+        "D019":"R143","D020":"R143","D021":"R143","D027":"R137","D044":"R252","D045":"R249","D046":"R255","D048":"R245","D049":"R274","D050":"R275","D051":"R276","D052":"R236","D053":"R237","D054":"R238","D055":"R239","D056":"R240","D066":"R270","D067":"R271","D068":"R272","D069":"R273","D094":"R111","D095":"R111",
+    }
+    try:
+        if identity in {"D022","D023"}:
+            current=_d(_scalar(raw,"R037")); reference=_d(_scalar(raw,"R043" if identity=="D022" else "R042")); return None if current<=0 or reference<=0 else (current/reference).ln()
+        if identity == "D024":
+            q1=_d(_scalar(derived,"D019"));q5=_d(_scalar(derived,"D020"))/Decimal(5);q30=_d(_scalar(derived,"D021"))/Decimal(30); return _named_tuple((("q1",q1),("q5",q5),("q30",q30),("accel_1v5",q1-q5),("accel_5v30",q5-q30)))
+        if identity == "D026":
+            current,vwap=_d(_scalar(raw,"R037")),_d(_scalar(raw,"R137")); return None if vwap==0 else _named_tuple((("price_difference",current-vwap),("percent_difference",_DEC100*(current/vwap-_DEC1))))
+        if identity in {"D071","D072","D073","D074","D075"}:
+            current,prior=_d(_scalar(raw,"R037")),_d(_scalar(raw,"R042")); return None if current<=0 or prior<=0 else (current/prior).ln()
+        if identity == "D103":
+            current=[v for v in raw.get("R111",()) if _metadata(v).get("snapshot")=="current"]; prior={_metadata(v).get("grid_key"):v for v in raw.get("R111",()) if _metadata(v).get("snapshot")=="prior"}; diffs=[_d(v.value)-_d(prior[_metadata(v).get("grid_key")].value) for v in current if _metadata(v).get("grid_key") in prior]; return None if not diffs else _DEC100*_sample_mean(tuple(diffs))
+        if identity == "D104":
+            # D099/D100 are skew measures; compare latest with the exact prior anchor.
+            vals=tuple(derived.get("D099",()))+tuple(derived.get("D100",())); seconds=int(params.get("anchor_seconds",0))
+            pair=_history_anchor(vals,as_of=as_of,seconds=seconds) if seconds>0 else None
+            return None if pair is None else _d(pair[0].value)-_d(pair[1].value)
+        rid=source_map.get(identity)
+        if rid is None:return None
+        if identity in fixed_seconds: pair=_history_anchor(raw.get(rid,()),as_of=as_of,seconds=int(params.get("anchor_seconds",fixed_seconds[identity])))
+        elif identity in fixed_days: pair=_history_anchor(raw.get(rid,()),as_of=as_of,days=int(params.get("anchor_days",fixed_days[identity])))
+        else:
+            if "anchor_seconds" in params: pair=_history_anchor(raw.get(rid,()),as_of=as_of,seconds=int(params["anchor_seconds"]))
+            elif "anchor_days" in params: pair=_history_anchor(raw.get(rid,()),as_of=as_of,days=int(params["anchor_days"]))
+            else:return None
+        if pair is None:return None
+        current,reference=pair; a,b=_d(current.value),_d(reference.value)
+        if identity=="D027":
+            minutes=Decimal(str((current.effective_at_utc-reference.effective_at_utc).total_seconds()))/Decimal(60); return None if minutes<=0 or b==0 else _named_tuple((("price_per_minute",(a-b)/minutes),("percent_per_minute",_DEC100*(a/b-_DEC1)/minutes)))
+        if identity in {"D044","D045","D046"}: return _DEC10000*(a-b)
+        if identity in {"D048","D049","D050","D051"}: return None if b==0 else _DEC100*(a/b-_DEC1)
+        if identity in {"D052","D053","D054","D055","D056"}: return None if b==0 else _named_tuple((("point_change",a-b),("percent_change",_DEC100*(a/b-_DEC1))))
+        if identity in {"D094","D095"}: return _DEC100*(a-b)
+        return None if a<=0 or b<=0 else (a/b).ln()
+    except (TypeError,ValueError,ArithmeticError): return None
+
+
+def _eval_k04(identity: str, raw: dict[str, tuple[KernelValueV1, ...]], params: dict[str, object]) -> object | None:
+    try:
+        if identity == "D083":
+            members=params.get("basket_membership")
+            if type(members) is not tuple or len(members)<2:return None
+            current={v.subject_instrument:_d(v.value) for v in raw.get("R037",())}; prior={v.subject_instrument:_d(v.value) for v in raw.get("R042",())}; returns=tuple((current[m]/prior[m]).ln() for m in members if m in current and m in prior and current[m]>0 and prior[m]>0); return _sample_sd(returns) if len(returns)==len(members) else None
+        rid={"D028":"R041","D029":"R144","D030":"R062","D031":"R063","D105":"R183","D106":"R183","D117":"R041"}.get(identity)
+        if identity=="D063":
+            rows=_align_occurrence_fields(raw,("R286","R285")); values=tuple((_d(r["R286"].value)-_d(r["R285"].value),max(v.effective_at_utc for v in r.values())) for r in rows)
+        elif rid:
+            values=tuple((_d(v.value),v.effective_at_utc) for v in raw.get(rid,()))
+        else:return None
+        if not values:return None
+        values=tuple(sorted(values,key=lambda x:x[1])); current,current_at=values[-1]; history=tuple(v for v,at in values[:-1] if at<current_at)
+        count=int(params.get("history_count",len(history))); history=history[-count:]
+        minimum=int(params.get("minimum_sample",2))
+        if identity=="D028": return None if len(history)<minimum or _sample_mean(history)==0 else current/_sample_mean(history)
+        if identity=="D105":
+            if len(history)<minimum:return None
+            lo,hi=min(history),max(history); return None if hi==lo else _DEC100*(current-lo)/(hi-lo)
+        if identity=="D106":
+            if len(history)<minimum:return None
+            below=sum(v<current for v in history); equal=sum(v==current for v in history); return _DEC100*(Decimal(below)+Decimal("0.5")*Decimal(equal))/Decimal(len(history))
+        if len(history)<minimum:return None
+        sd=_sample_sd(history); return None if sd is None else (current-_sample_mean(history))/sd
+    except (TypeError,ValueError,ArithmeticError):return None
+
+
+def _log_returns(values: tuple[Decimal, ...]) -> tuple[Decimal, ...] | None:
+    if len(values)<2 or any(v<=0 for v in values):return None
+    return tuple((values[i]/values[i-1]).ln() for i in range(1,len(values)))
+
+
+def _eval_k05(identity: str, raw: dict[str, tuple[KernelValueV1, ...]], params: dict[str, object]) -> object | None:
+    try:
+        if identity == "D039":
+            highs={v.occurrence_id:_d(v.value) for v in raw.get("R141",())}; lows={v.occurrence_id:_d(v.value) for v in raw.get("R142",())}; closes=sorted(raw.get("R143",()),key=lambda v:v.effective_at_utc); bar_count=int(params["bar_count"])
+            close_by={v.occurrence_id:_d(v.value) for v in closes}; ids=[v.occurrence_id for v in closes if v.occurrence_id in highs and v.occurrence_id in lows]
+            if len(ids)<bar_count:return None
+            selected=ids[-bar_count:]; trs=[]
+            for oid in selected:
+                idx=next(i for i,v in enumerate(closes) if v.occurrence_id==oid)
+                if idx==0:return None
+                prev=_d(closes[idx-1].value); h,l=highs[oid],lows[oid]; trs.append(max(h-l,abs(h-prev),abs(l-prev)))
+            return _sample_mean(tuple(trs))
+        closes=tuple(_d(v.value) for v in sorted(raw.get("R151",()),key=lambda v:v.effective_at_utc)); returns=_log_returns(closes)
+        if returns is None:return None
+        required=int(params.get("required_intervals",0));
+        if required<=0 or len(returns)<required:return None
+        returns=returns[-required:]
+        if identity=="D038":
+            rv=sum((r*r for r in returns),_DEC0); bv=Decimal(str(3.141592653589793))/Decimal(2)*sum((abs(returns[i])*abs(returns[i-1]) for i in range(1,len(returns))),_DEC0); return max(rv-bv,_DEC0)
+        dt=_d(params["trading_year_fraction_per_interval"]); den=dt*Decimal(len(returns)); return None if den<=0 else (sum((r*r for r in returns),_DEC0)/den).sqrt()
+    except (TypeError,ValueError,ArithmeticError,KeyError):return None
+
+
+def _factor_rows(derived: dict[str, tuple[KernelValueV1, ...]], identities: tuple[str, ...]) -> tuple[tuple[Decimal,...], ...] | None:
+    maps=[{v.effective_at_utc:_d(v.value) for v in derived.get(identity,())} for identity in identities]; common=set(maps[0]) if maps else set()
+    for mapping in maps[1:]:common&=set(mapping)
+    if not common:return None
+    ordered=sorted(common); return tuple(tuple(mapping[t] for t in ordered) for mapping in maps)
+
+
+def _eval_k06(identity: str, raw: dict[str, tuple[KernelValueV1, ...]], derived: dict[str, tuple[KernelValueV1, ...]], params: dict[str, object]) -> object | None:
+    try:
+        if identity in {"D079","D080","D081","D078"}:
+            aligned=_factor_rows(derived,("D075","D071","D076","D077")); minimum=int(params.get("minimum_sample",4))
+            if aligned is None:return None
+            y,m,t,s=aligned
+            if identity=="D078":
+                if len(y)<minimum+1:return None
+                fit=_ols(y[:-1],(m[:-1],t[:-1],s[:-1])); return None if fit is None else y[-1]-(fit[0]+fit[1]*m[-1]+fit[2]*t[-1]+fit[3]*s[-1])
+            if len(y)<minimum:return None
+            fit=_ols(y,(m,t,s));
+            if fit is None:return None
+            return fit[{"D079":1,"D080":2,"D081":3}[identity]]
+        if identity=="D082":
+            values=raw.get("R151",()); by_subject:dict[str,list[tuple[datetime,Decimal]]]={}
+            for v in values:by_subject.setdefault(v.subject_instrument,[]).append((v.effective_at_utc,_d(v.value)))
+            subjects=tuple(sorted(by_subject)); series={s:{t:x for t,x in by_subject[s]} for s in subjects}; common=set.intersection(*(set(v) for v in series.values())) if series else set(); ordered=sorted(common)
+            if len(ordered)<2:return None
+            matrix=[]
+            for a in subjects:
+                row=[]
+                for b in subjects: row.append(_pearson(tuple(series[a][t] for t in ordered),tuple(series[b][t] for t in ordered)) or _DEC0)
+                matrix.append(tuple(row))
+            return _named_tuple((("subjects",subjects),("matrix",tuple(matrix))))
+        if identity=="D138":
+            midpoint=_d(_scalar(derived,"D011")); rows=_align_occurrence_fields(raw,("R189","R190","R188")); output=[]
+            for side in ("bid","ask"):
+                side_rows=[r for r in rows if str(r["R188"].value).lower()==side]; side_rows.sort(key=lambda r:abs(_d(r["R189"].value)-midpoint)); cumulative=_DEC0; x=[]; y=[]
+                for r in side_rows: cumulative+=_d(r["R190"].value);x.append(abs(_d(r["R189"].value)-midpoint));y.append(cumulative)
+                slope=_ols_slope(tuple(x),tuple(y));
+                if slope is None:return None
+                output.append((f"{side}_slope",slope))
+            return tuple(output)
+        if identity=="D156":
+            histories=derived.get("D155",()); ridge=_d(params.get("ridge_coefficient"));
+            if len(histories)<2:return None
+            vectors=[]
+            for occurrence in histories:
+                named=_named(occurrence.value); vals=tuple(_d(item[1]) for item in occurrence.value if type(item) is tuple and len(item)>=2 and type(item[1]) in {Decimal,int})
+                if not vals:return None
+                vectors.append(vals)
+            n=len(vectors[0]);
+            if any(len(v)!=n for v in vectors):return None
+            cols=tuple(tuple(row[j] for row in vectors) for j in range(n)); corr=tuple(tuple(_DEC1 if i==j else (_pearson(cols[i],cols[j]) or _DEC0) for j in range(n)) for i in range(n)); cov=[]
+            means=tuple(_sample_mean(c) for c in cols)
+            for i in range(n):cov.append([sum(((row[i]-means[i])*(row[j]-means[j]) for row in vectors),_DEC0)/Decimal(len(vectors)-1)+(ridge if i==j else _DEC0) for j in range(n)])
+            inverse_cols=[]
+            for j in range(n):
+                solution=_solve([list(r) for r in cov],[Decimal(1) if i==j else _DEC0 for i in range(n)]);
+                if solution is None:return None
+                inverse_cols.append(solution)
+            precision=[[inverse_cols[j][i] for j in range(n)] for i in range(n)]; partial=[]
+            for i in range(n):
+                row=[]
+                for j in range(n): row.append(_DEC1 if i==j else -precision[i][j]/(precision[i][i]*precision[j][j]).sqrt())
+                partial.append(tuple(row))
+            return _named_tuple((("correlation_matrix",corr),("partial_correlation_matrix",tuple(partial))))
+    except (TypeError,ValueError,ArithmeticError,KeyError):return None
+    return None
+
+
+def _eval_k08(identity: str, raw: dict[str, tuple[KernelValueV1, ...]], derived: dict[str, tuple[KernelValueV1, ...]], params: dict[str, object], contexts: tuple[object,...], as_of: datetime) -> object | None:
+    try:
+        if identity=="D007":
+            policy=_context(contexts,api.RequiredFieldPolicyV1); return None if policy is None or not policy.requirements else Decimal(sum(bool(raw.get(req)) for req in policy.requirements))/Decimal(len(policy.requirements))
+        if identity=="D015":
+            trade=_d(_scalar(raw,"R120"));mid=_d(_scalar(derived,"D011"));
+            if trade>mid:return 1
+            if trade<mid:return -1
+            trades=sorted(raw.get("R120",()),key=lambda v:v.effective_at_utc);current=_latest(raw,"R120")
+            if current:
+                prior=next((v for v in reversed(trades) if v.effective_at_utc<current.effective_at_utc and _d(v.value)!=trade),None)
+                if prior:return 1 if trade>_d(prior.value) else -1
+            return 0
+        if identity=="D016":
+            signs={v.occurrence_id:int(v.value) for v in derived.get("D015",())}; sizes={v.occurrence_id:_d(v.value) for v in raw.get("R121",())}; return sum((Decimal(signs[i])*sizes[i] for i in set(signs)&set(sizes)),_DEC0)
+        if identity=="D065":
+            pre=_d(params.get("pre_window_seconds"));post=_d(params.get("post_window_seconds"));threshold=_d(params.get("importance_threshold")); candidates=[]
+            for event in raw.get("R284",()):
+                if type(event.value) is datetime and as_of-timedelta(seconds=float(post))<=event.value<=as_of+timedelta(seconds=float(pre)):candidates.append(event)
+            if not candidates:return False
+            selected=min(candidates,key=lambda v:(abs((v.value-as_of).total_seconds()),v.value)); importance=next((_d(v.value) for v in derived.get("D064",()) if v.occurrence_id==selected.occurrence_id),None); return importance is not None and importance>=threshold
+        if identity=="D091":
+            delta=abs(_d(_scalar(raw,"R112")));bounds=params.get("delta_bucket_boundaries");labels=params.get("delta_bucket_labels")
+            if type(bounds) is not tuple or type(labels) is not tuple or len(bounds)!=len(labels)+1:return None
+            for i,label in enumerate(labels):
+                lo,hi=_d(bounds[i]),_d(bounds[i+1]);
+                if lo<=delta<(hi if i<len(labels)-1 else hi+Decimal("1e-40")):return str(label)
+            return None
+        if identity=="D120":
+            rows=_align_occurrence_fields(raw,("R120","R121","R015")); signs={v.occurrence_id:int(v.value) for v in derived.get("D015",())}; signed_contracts=_DEC0;signed_premium=_DEC0
+            for row in rows:
+                oid=row["R120"].occurrence_id
+                if oid not in signs:continue
+                sign=Decimal(signs[oid]);size=_d(row["R121"].value);price=_d(row["R120"].value);mult=_d(row["R015"].value);signed_contracts+=sign*size;signed_premium+=sign*size*price*mult
+            return _named_tuple((("signed_contracts",signed_contracts),("signed_premium_notional",signed_premium)))
+        if identity in {"D121","D122"}:
+            grouped:dict[str,Decimal]={}; group_id="D091" if identity=="D121" else "D085"; groups={v.occurrence_id:str(v.value) for v in derived.get(group_id,())}
+            for item in derived.get("D120",()):
+                group=groups.get(item.occurrence_id) or str(_metadata(item).get("group","")); val=_named(item.value).get("signed_premium_notional")
+                if group and val is not None:grouped[group]=grouped.get(group,_DEC0)+_d(val)
+            return tuple(sorted(grouped.items())) if grouped else None
+        if identity=="D124":
+            vals=tuple(abs(v) for v in _decimal_values(raw,"R047")+_decimal_values(raw,"R048"));total=sum(vals,_DEC0)
+            if total<=0:return None
+            shares=tuple(v/total for v in vals);return _named_tuple((("shares",shares),("hhi",sum((s*s for s in shares),_DEC0))))
+        if identity=="D128":
+            bounds=params.get("spot_distance_boundaries");
+            if type(bounds) is not tuple or len(bounds)<2:return None
+            bins=[_DEC0]*(len(bounds)-1);total=_DEC0
+            for item in derived.get("D125",()):
+                n=_named(item.value);g=abs(_d(n.get("gamma_exposure")));dist=abs(_d(n.get("spot_distance")));total+=g
+                for i in range(len(bins)):
+                    if _d(bounds[i])<=dist<(_d(bounds[i+1]) if i<len(bins)-1 else _d(bounds[i+1])+Decimal("1e-40")):bins[i]+=g;break
+            if total<=0:return None
+            shares=tuple(v/total for v in bins);return _named_tuple((("shares",shares),("hhi",sum((s*s for s in shares),_DEC0))))
+        if identity in {"D139","D140","D141"}:
+            mutations=reconstruct_book(_book_events(raw));window=_d(params.get("window_seconds",1));
+            if window<=0:return None
+            if identity in {"D139","D140"}:
+                attr="inserted_size" if identity=="D139" else "removed_size"; selected=[m for m in mutations if getattr(m,attr)>0];count=Decimal(len(selected))/window;size=sum((getattr(m,attr) for m in selected),_DEC0)/window;return _named_tuple((("event_count_rate",count),("size_rate",size)))
+            depleted=[m for m in mutations if m.depleted_size>0];credited=_DEC0;total=sum((m.depleted_size for m in depleted),_DEC0);max_dt=_d(params.get("replenishment_max_seconds",0))
+            for dep in depleted:
+                restoration=next((m for m in mutations if m.event.event_time_utc>dep.event.event_time_utc and m.event.side==dep.event.side and m.event.price==dep.event.price and m.restored_size>0 and Decimal(str((m.event.event_time_utc-dep.event.event_time_utc).total_seconds()))<=max_dt),None)
+                if restoration:credited+=min(dep.depleted_size,restoration.restored_size)
+            return None if total<=0 else credited/total
+        if identity=="D142":
+            events=_book_events(raw)
+            levels=params.get("depth_levels")
+            shock_depth_fraction=_d(params.get("shock_depth_fraction"))
+            shock_spread_multiple=_d(params.get("shock_spread_multiple"))
+            recovery_depth_fraction=_d(params.get("recovery_depth_fraction"))
+            recovery_spread_multiple=_d(params.get("recovery_spread_multiple"))
+            if (type(levels) is not int or levels<=0 or shock_depth_fraction<=0 or shock_spread_multiple<=0 or recovery_depth_fraction<=0 or recovery_spread_multiple<=0):return None
+            ordered=sorted(events,key=lambda e:(e.event_time_utc,e.ingestion_sequence,e.occurrence_id))
+            state:dict[tuple[str,str,int],tuple[Decimal,Decimal]]={}
+            snapshots=[]
+            for event in ordered:
+                key=(event.venue,event.side.lower(),event.position)
+                if event.operation.lower() in {"delete","remove","cancel"}:state.pop(key,None)
+                else:state[key]=(event.price,event.size)
+                bids=sorted(((k,v) for k,v in state.items() if k[1]=="bid"),key=lambda item:(item[0][2],-item[1][0]))[:levels]
+                asks=sorted(((k,v) for k,v in state.items() if k[1]=="ask"),key=lambda item:(item[0][2],item[1][0]))[:levels]
+                if not bids or not asks:continue
+                best_bid=max(v[0] for _,v in bids);best_ask=min(v[0] for _,v in asks)
+                spread=best_ask-best_bid
+                if spread<0:return None
+                depth=sum((v[1] for _,v in (*bids,*asks)),_DEC0)
+                snapshots.append((event.event_time_utc,depth,spread))
+            if len(snapshots)<3:return None
+            shock_index=None
+            pre=None
+            for i in range(1,len(snapshots)):
+                prior=snapshots[i-1];current=snapshots[i]
+                if prior[1]<=0 or prior[2]<0:continue
+                depth_shock=current[1]<=prior[1]*shock_depth_fraction
+                spread_shock=prior[2]>0 and current[2]>=prior[2]*shock_spread_multiple
+                if depth_shock or spread_shock:
+                    shock_index=i;pre=prior;break
+            if shock_index is None or pre is None:return None
+            shock=snapshots[shock_index]
+            for current in snapshots[shock_index+1:]:
+                if current[1]>=pre[1]*recovery_depth_fraction and current[2]<=pre[2]*recovery_spread_multiple:
+                    seconds=Decimal(str((current[0]-shock[0]).total_seconds()))
+                    if seconds<0:return None
+                    return _named_tuple((("seconds",seconds),("recovered_depth",current[1]),("recovered_spread",current[2]),("pre_shock_depth",pre[1]),("pre_shock_spread",pre[2]),("shock_depth",shock[1]),("shock_spread",shock[2])))
+            return None
+        if identity=="D166": return _d(_scalar(derived,"D159"))>=_d(params.get("minimum_identifiability")) and _d(_scalar(derived,"D165"))>=_d(params.get("minimum_utility"))
+        if identity=="D167":
+            cset=_context(contexts,api.CandidateSetContextV1)
+            if cset is None:return None
+            flags={str(_named(v.value).get("candidate")):_named(v.value).get("value") for v in derived.get("D166",())}; vals={str(_named(v.value).get("candidate")):_d(_named(v.value).get("value")) for v in derived.get("D165",()) if _named(v.value).get("candidate") is not None}
+            lawful=[c for c in cset.candidate_identities if c in flags and c in vals]
+            if not lawful:return None
+            eligible=[c for c in lawful if flags[c] is True]
+            if not eligible:return "no_trade"
+            best=max(vals[c] for c in eligible);return next(c for c in cset.candidate_identities if c in eligible and vals[c]==best)
+        if identity=="D175":
+            limits=[]
+            for rid in ("R205","R206","R209","R208"):
+                limits.extend(abs(v) for v in _decimal_values(raw,rid))
+            for did in ("D162","D174"):
+                for item in derived.get(did,()):
+                    n=_named(item.value);candidate=n.get("CVaR_currency",n.get("stress_loss",item.value if type(item.value) is Decimal else None));
+                    if candidate is not None:limits.append(abs(_d(candidate)))
+            return min(limits) if limits else None
+        if identity=="D176":
+            risk=_d(_scalar(derived,"D175"));per_unit=_d(params.get("risk_per_unit"));unc=_d(params.get("uncertainty_multiplier",1));liq=_d(params.get("liquidity_multiplier",1));den=per_unit*unc*liq;return None if den<=0 else int(risk//den)
+        if identity=="D178":
+            bid,ask=_d(_scalar(raw,"R034")),_d(_scalar(raw,"R035"));mid=(bid+ask)/Decimal(2);allowed=_d(params.get("allowed_execution_cost_per_unit"));side=str(params.get("side",""));return min(ask,mid+allowed) if side=="buy" else max(bid,mid-allowed) if side=="sell" else None
+        if identity=="D186":
+            entry=_context(contexts,api.EntryStateContextV1);current=_scalar(derived,"D155");
+            if entry is None or current is None:return None
+            current_map={str(i[0]):_d(i[1]) for i in current if type(i) is tuple and len(i)>=2 and type(i[1]) in {Decimal,int}};entry_map={str(i[0]):_d(i[1]) for i in entry.entry_state_vector if type(i) is tuple and len(i)>=2 and type(i[1]) in {Decimal,int}};weights=params.get("similarity_weights");scales=params.get("similarity_scales")
+            if type(weights) is not tuple or type(scales) is not tuple:return None
+            w=dict(weights);s=dict(scales);common=set(current_map)&set(entry_map)
+            if not common or sum((_d(w[k]) for k in common),_DEC0)!=_DEC1:return None
+            d2=_DEC0;deltas=[]
+            for key in sorted(common):
+                scale=_d(s[key]);weight=_d(w[key]);
+                if scale<=0 or weight<0:return None
+                delta=current_map[key]-entry_map[key];z=delta/scale;d2+=weight*z*z;deltas.append((key,(delta,z)))
+            return _named_tuple((("similarity",(-Decimal("0.5")*d2).exp()),("distance_squared",d2),("deltas",tuple(deltas))))
+        if identity=="D189":
+            bands=params.get("target_bands");
+            if type(bands) is not tuple:return None
+            current={name:_d(_scalar(derived,did)) for name,did in (("delta","D181"),("gamma","D182"),("vega","D183"),("theta","D184"))};out=[]
+            for spec in bands:
+                if type(spec) is not str:return None
+                name,los,his=spec.split("|");lo,hi=_d(los),_d(his);x=current[name];target=(lo+hi)/Decimal(2);out.append((name,_DEC0 if lo<=x<=hi else target-x))
+            return tuple(out)
+        if identity=="D192":
+            invalid=bool(_scalar(derived,"D187"));
+            if bool(params.get("mandatory_exit_on_invalidation",False)) and invalid:return "exit"
+            hedge=_named(_scalar(derived,"D189"));
+            if bool(params.get("mandatory_hedge_on_risk",False)) and any(_d(v)!=0 for v in hedge.values() if type(v) in {Decimal,int}):return "hedge"
+            modify=_d(_scalar(derived,"D190"));
+            if modify>_d(params.get("modify_minimum",0)):return "modify"
+            exit_value=_d(_scalar(derived,"D191"));hold=_named(_scalar(derived,"D188")).get("expected_currency_PnL");
+            if hold is not None and exit_value>_d(hold)+_d(params.get("exit_margin_currency",0)):return "exit"
+            return "hold"
+        if identity=="D208":
+            info=_d(_scalar(derived,"D202"));decay=_d(_scalar(derived,"D207"));thresholds=params.get("classification_thresholds");
+            if type(thresholds) is not tuple:return None
+            for spec in thresholds:
+                name,min_info,max_decay=str(spec).split("|");
+                if info>=_d(min_info) and decay<=_d(max_decay):return name
+            return "non-informative"
+        if identity=="D209":
+            schedule=_context(contexts,api.RecalculationScheduleV1);latest=_latest(raw,"R001");
+            if latest is None and schedule is None:return None
+            return _named_tuple((("trigger","m00_receipt" if latest is not None else "scheduled"),("at",latest.received_ts_utc if latest is not None else as_of)))
+    except (TypeError,ValueError,ArithmeticError,KeyError):return None
+    return None
+
+
+def _eval_k16(identity: str, derived: dict[str, tuple[KernelValueV1, ...]], params: dict[str, object]) -> object | None:
+    if identity!="D155":return None
+    order=params.get("component_order")
+    if type(order) is not tuple or not order:return None
+    output=[]
+    for did in order:
+        item=_latest(derived,str(did))
+        if item is None:return None
+        output.append((str(did),item.value,item.occurrence_id))
+    return tuple(output)
+
+
+def _eval_k17(raw: dict[str, tuple[KernelValueV1, ...]], params: dict[str, object], as_of: datetime) -> object | None:
+    states=raw.get("__book_states__",())
+    if not states:return None
+    window=_d(params.get("window_seconds"));start=as_of-timedelta(seconds=float(window));ordered=sorted((v for v in states if start<=v.effective_at_utc<=as_of),key=lambda v:v.effective_at_utc)
+    if len(ordered)<2:return None
+    total=_DEC0
+    for previous,current in zip(ordered,ordered[1:]):
+        p,c=_named(previous.value),_named(current.value);pb0,qb0,pa0,qa0=(_d(p[k]) for k in ("bid_price","bid_size","ask_price","ask_size"));pb,qb,pa,qa=(_d(c[k]) for k in ("bid_price","bid_size","ask_price","ask_size"));total+=(qb if pb>=pb0 else _DEC0)-(qb0 if pb<=pb0 else _DEC0)-(qa if pa<=pa0 else _DEC0)+(qa0 if pa>=pa0 else _DEC0)
+    return total
+
+
+def evaluate_stage1_kernel(
+    derived_signal_id: str,
+    *,
+    raw_inputs: dict[str, tuple[KernelValueV1, ...]],
+    derived_inputs: dict[str, tuple[KernelValueV1, ...]],
+    parameter_set: api.CalculationParameterSetV1,
+    contexts: tuple[object, ...],
+    as_of_utc: datetime,
+    knowledge_cutoff_utc: datetime,
+) -> KernelResultV1 | None:
+    try:
+        row=catalogue_row(derived_signal_id)
+    except KeyError:
+        return None
+    if row.kernel_id not in STAGE1_KERNEL_IDS or parameter_set.profile not in row.parameter_profiles:
+        return None
+    params=_parameter_map(parameter_set)
+    value: object | None
+    if row.kernel_id=="K01_TIME":value=_eval_k01(derived_signal_id,raw_inputs,derived_inputs,params,as_of_utc,knowledge_cutoff_utc)
+    elif row.kernel_id=="K02_ALGEBRA":value=_eval_k02(derived_signal_id,raw_inputs,derived_inputs,params,contexts)
+    elif row.kernel_id=="K03_CHANGE_RETURN":value=_eval_k03(derived_signal_id,raw_inputs,derived_inputs,params,as_of_utc)
+    elif row.kernel_id=="K04_STANDARDISE_RANK":value=_eval_k04(derived_signal_id,raw_inputs,params)
+    elif row.kernel_id=="K05_REALIZED_RISK":value=_eval_k05(derived_signal_id,raw_inputs,params)
+    elif row.kernel_id=="K06_REGRESSION_DEPENDENCE":value=_eval_k06(derived_signal_id,raw_inputs,derived_inputs,params)
+    elif row.kernel_id=="K07_WEIGHTED_SCORE":value=_score(derived_signal_id,derived_inputs,parameter_set)
+    elif row.kernel_id=="K08_RULE_BUCKET_POLICY":value=_eval_k08(derived_signal_id,raw_inputs,derived_inputs,params,contexts,as_of_utc)
+    elif row.kernel_id=="K16_STRUCTURED_ASSEMBLY":value=_eval_k16(derived_signal_id,derived_inputs,params)
+    elif row.kernel_id=="K17_ORDER_FLOW_IMBALANCE":value=_eval_k17(raw_inputs,params,as_of_utc)
+    else:value=None
+    return None if value is None else _result(derived_signal_id,value,raw_inputs,derived_inputs)
+
+
+__all__=[
+    "BookEventV1","BookMutationV1","KernelResultV1","KernelValueV1","STAGE1_KERNEL_IDS",
+    "evaluate_stage1_kernel","extract_scalar","occurrence_identity","reconstruct_book","select_eligible_values","supported_stage1_ids",
+]
