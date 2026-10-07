@@ -997,6 +997,13 @@ class _OwnerV1:
         )
         if not bindings:
             return None
+        if "subject_instrument" in selection.join_keys:
+            binding_subjects = {item.subject_instrument for item in bindings}
+            if selection.basket_membership:
+                if binding_subjects != set(selection.basket_membership):
+                    return None
+            elif binding_subjects != {request.subject_instrument}:
+                return None
         kernel_values: list[KernelValueV1] = []
         lineage: list[RawInputLineageV1] = []
         convention_refs: list[VersionRefV1] = []
@@ -1049,6 +1056,13 @@ class _OwnerV1:
                     return None
                 if getattr(item, "native_units", None) != unit.native_units:
                     return None
+                projected_subject = getattr(item, "subject_instrument", None)
+                if (
+                    type(projected_subject) is not str
+                    or not projected_subject
+                    or projected_subject != binding.subject_instrument
+                ):
+                    return None
                 native = getattr(item, "native_value", None)
                 if type(native) is Decimal:
                     canonical: object = unit.convert(native, native_units=unit.native_units)
@@ -1088,9 +1102,7 @@ class _OwnerV1:
                         occurrence_id=str(typed_item.observation_occurrence_id),
                         effective_at_utc=effective,
                         received_ts_utc=received,
-                        subject_instrument=str(
-                            getattr(item, "subject_instrument", "") or binding.subject_instrument
-                        ),
+                        subject_instrument=projected_subject,
                         source_temporal_kind=temporal_kind,
                         source_timestamp_raw=getattr(item, "source_timestamp_raw", None),
                         metadata=metadata,
