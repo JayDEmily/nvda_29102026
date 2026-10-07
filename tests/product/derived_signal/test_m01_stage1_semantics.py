@@ -1343,6 +1343,143 @@ def test_graph_materialise_recurses_topologically_and_preserves_ultimate_raw_lin
     assert {line.raw_signal_id for line in occurrence.raw_input_lineage} == {"R034", "R035"}
 
 
+def test_public_seam_refuses_raw_inputs_from_another_subject() -> None:
+    raw_api = importlib.import_module("nvda_desk.raw_signal_occurrence_truth.api")
+    projected_type = raw_api.ProjectedRawValueV1
+    page_type = raw_api.ProjectedRawHistoryPageV1
+
+    values = {
+        "R034": projected_type(
+            raw_signal_catalogue_id=raw_api.RawSignalCatalogueId("R034"),
+            observation_occurrence_id=raw_api.observation_occurrence_id("aapl-bid"),
+            projection_mapping_id="m-bid",
+            projection_mapping_version=1,
+            source_provider="p",
+            source_variant="snapshot",
+            native_field_path=("bid",),
+            native_value=Decimal("100"),
+            native_units="price",
+            subject_instrument="AAPL",
+            source_temporal_kind="true_instant",
+            source_timestamp_raw=NOW.isoformat(),
+            source_timezone_native="UTC",
+            received_ts_utc=NOW,
+            ingestion_sequence=1,
+            ingestion_sequence_scope=raw_api.ingestion_sequence_scope("p:snapshot"),
+            revision_vintage_native=None,
+        ),
+        "R035": projected_type(
+            raw_signal_catalogue_id=raw_api.RawSignalCatalogueId("R035"),
+            observation_occurrence_id=raw_api.observation_occurrence_id("aapl-ask"),
+            projection_mapping_id="m-ask",
+            projection_mapping_version=1,
+            source_provider="p",
+            source_variant="snapshot",
+            native_field_path=("ask",),
+            native_value=Decimal("102"),
+            native_units="price",
+            subject_instrument="AAPL",
+            source_temporal_kind="true_instant",
+            source_timestamp_raw=NOW.isoformat(),
+            source_timezone_native="UTC",
+            received_ts_utc=NOW,
+            ingestion_sequence=2,
+            ingestion_sequence_scope=raw_api.ingestion_sequence_scope("p:snapshot"),
+            revision_vintage_native=None,
+        ),
+    }
+
+    class Reader:
+        def list_projected_raw_history(self, raw_signal_catalogue_id: Any, **kwargs: Any) -> Any:
+            item = values.get(raw_signal_catalogue_id.value)
+            return page_type(items=() if item is None else (item,), next_cursor=None)
+
+        def project_raw_value(self, *args: object, **kwargs: object) -> object | None:
+            return None
+
+    p_basic = _p("P_BASIC", selection_mode="exact")
+    selection = api.InputSelectionPolicyVersionV1(
+        context_id="selection-subject-match",
+        version=1,
+        join_keys=("subject_instrument",),
+        maximum_staleness=timedelta(minutes=1),
+        maximum_skew=timedelta(seconds=10),
+        temporal_basis_permissions=("true_instant",),
+        basket_membership=(),
+    )
+    unit = api.UnitConventionVersionV1(
+        context_id="unit-price-subject-match",
+        version=1,
+        native_units="price",
+        canonical_units="price",
+        scale=Decimal("1"),
+        offset=Decimal("0"),
+    )
+    mappings = (
+        raw_api.RawSignalProjectionMappingV1(
+            mapping_id="m-bid",
+            version=1,
+            raw_signal_catalogue_id=raw_api.RawSignalCatalogueId("R034"),
+            source_provider="p",
+            source_variant="snapshot",
+            native_field_path=("bid",),
+            native_units="price",
+        ),
+        raw_api.RawSignalProjectionMappingV1(
+            mapping_id="m-ask",
+            version=1,
+            raw_signal_catalogue_id=raw_api.RawSignalCatalogueId("R035"),
+            source_provider="p",
+            source_variant="snapshot",
+            native_field_path=("ask",),
+            native_units="price",
+        ),
+    )
+    owner = api.create_owner(
+        raw_projection_reader=Reader(),
+        raw_projection_mappings=mappings,
+        parameter_sets=(p_basic,),
+        input_selection_policies=(selection,),
+        unit_conventions=(unit,),
+        contexts=(),
+        utc_now=lambda: NOW,
+    )
+    profile_ref = api.ParameterProfileRefV1("P_BASIC", p_basic.context_id, 1)
+
+    def request(binding_subject: str) -> api.CalculationRequestV1:
+        return api.CalculationRequestV1(
+            derived_signal_id="D011",
+            subject_instrument="NVDA",
+            as_of_utc=NOW,
+            knowledge_cutoff_utc=NOW,
+            calculation_definition_version="calc-v1",
+            parameter_set_id=p_basic.context_id,
+            parameter_set_version=1,
+            input_selection_policy_id=selection.context_id,
+            input_selection_policy_version=1,
+            context_refs=(),
+            parameter_profile_refs=(profile_ref,),
+            raw_input_bindings=(
+                api.RawInputBindingV1(
+                    "R034",
+                    api.VersionRefV1("m-bid", 1),
+                    api.VersionRefV1(unit.context_id, 1),
+                    binding_subject,
+                ),
+                api.RawInputBindingV1(
+                    "R035",
+                    api.VersionRefV1("m-ask", 1),
+                    api.VersionRefV1(unit.context_id, 1),
+                    binding_subject,
+                ),
+            ),
+        )
+
+    # Reviewer witness: request NVDA while both binding and projected observations are AAPL.
+    assert owner.materialise(request("AAPL")) is None
+    # The projection reader is an external seam: a mismatched returned observation must also fail closed.
+    assert owner.materialise(request("NVDA")) is None
+
 def test_graph_refuses_future_raw_inputs_and_incompatible_stored_predecessor_versions() -> None:
     s1 = _stage1()
     assert callable(s1.select_eligible_values)
