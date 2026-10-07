@@ -407,6 +407,182 @@ def test_k02_candidate_greeks_require_context_and_breakeven_returns_every_real_r
     assert breakeven is not None
     assert breakeven.value == (Decimal("91"), Decimal("109"))
 
+
+
+def test_k01_macro_vintage_status_preserves_realtime_period_and_ignores_future_receipts() -> None:
+    t0 = NOW - timedelta(days=3)
+    t1 = NOW - timedelta(days=2)
+    future = NOW + timedelta(seconds=1)
+    raw = {
+        "R280": (
+            _kv("2026-10-01", occurrence_id="v1", at=t0, received=t0, temporal_kind="date_only"),
+            _kv("2026-10-02", occurrence_id="v2", at=t1, received=t1, temporal_kind="date_only"),
+            _kv("2026-10-03", occurrence_id="v3", at=future, received=future, temporal_kind="date_only"),
+        ),
+        "R281": (
+            _kv("2026-10-01", occurrence_id="v1", at=t0, received=t0, temporal_kind="date_only"),
+            _kv("9999-12-31", occurrence_id="v2", at=t1, received=t1, temporal_kind="date_only"),
+            _kv("9999-12-31", occurrence_id="v3", at=future, received=future, temporal_kind="date_only"),
+        ),
+        "R282": (
+            _kv("2026-10-01T10:00:00+00:00", occurrence_id="v1", at=t0, received=t0),
+            _kv("2026-10-02T10:00:00+00:00", occurrence_id="v2", at=t1, received=t1),
+            _kv("2026-10-03T10:00:00+00:00", occurrence_id="v3", at=future, received=future),
+        ),
+    }
+    result = _eval("D009", raw=raw, params=_p("P_TIME", exchange_timezone="UTC"), cutoff=NOW)
+    assert result is not None
+    assert _named(result.value) == {
+        "status": "latest_known_at_cutoff",
+        "realtime_start": "2026-10-02",
+        "realtime_end": "9999-12-31",
+        "last_updated": "2026-10-02T10:00:00+00:00",
+        "cutoff": NOW,
+    }
+
+
+def test_k02_atm_straddle_requires_exact_call_put_same_expiry_without_metadata_defaults() -> None:
+    valid = _eval(
+        "D109",
+        derived={
+            "D087": (
+                _kv(
+                    Decimal("5"),
+                    occurrence_id="call",
+                    subject="C100",
+                    metadata=(("right", "call"), ("delta", Decimal("0.50")), ("expiry", "2026-10-16")),
+                ),
+                _kv(
+                    Decimal("4"),
+                    occurrence_id="put",
+                    subject="P100",
+                    metadata=(("right", "put"), ("delta", Decimal("-0.50")), ("expiry", "2026-10-16")),
+                ),
+            )
+        },
+    )
+    assert valid is not None and valid.value == Decimal("9")
+
+    mismatched_expiry = _eval(
+        "D109",
+        derived={
+            "D087": (
+                _kv(Decimal("5"), occurrence_id="call", metadata=(("right", "call"), ("delta", Decimal("0.50")), ("expiry", "2026-10-16"))),
+                _kv(Decimal("4"), occurrence_id="put", metadata=(("right", "put"), ("delta", Decimal("-0.50")), ("expiry", "2026-10-23"))),
+            )
+        },
+    )
+    assert mismatched_expiry is None
+
+    missing_right = _eval(
+        "D109",
+        derived={
+            "D087": (
+                _kv(Decimal("5"), occurrence_id="call", metadata=(("delta", Decimal("0.50")), ("expiry", "2026-10-16"))),
+                _kv(Decimal("4"), occurrence_id="put", metadata=(("delta", Decimal("-0.50")), ("expiry", "2026-10-16"))),
+            )
+        },
+    )
+    assert missing_right is None
+
+
+def test_k02_open_interest_change_uses_chronological_exact_contract_history() -> None:
+    t0 = NOW - timedelta(days=1)
+    current = _kv(Decimal("125"), occurrence_id="new", at=NOW, subject="C100")
+    prior = _kv(Decimal("100"), occurrence_id="old", at=t0, subject="C100")
+    result = _eval("D123", raw={"R047": (current, prior), "R048": ()})
+    assert result is not None and result.value == Decimal("25")
+
+    mixed_contract = _eval(
+        "D123",
+        raw={
+            "R047": (
+                _kv(Decimal("125"), occurrence_id="new", at=NOW, subject="C100"),
+                _kv(Decimal("100"), occurrence_id="old", at=t0, subject="C105"),
+            ),
+            "R048": (),
+        },
+    )
+    assert mixed_contract is None
+
+
+def test_k02_smart_direct_gap_matches_direct_venue_rows_to_smart_side_and_level() -> None:
+    def field(rows: tuple[tuple[str, datetime, object, str], ...]) -> tuple[Any, ...]:
+        return tuple(
+            _kv(value, occurrence_id=oid, at=at, subject="NVDA", metadata=(("ingestion_sequence", i),))
+            for i, (oid, at, value, _venue) in enumerate(rows, start=1)
+        )
+
+    t0 = NOW - timedelta(seconds=1)
+    smart = (
+        ("sb", t0, 0, ""),
+        ("sa", t0 + timedelta(microseconds=1), 0, ""),
+    )
+    direct = (
+        ("db", t0, 0, "ARCA"),
+        ("da", t0 + timedelta(microseconds=1), 0, "ARCA"),
+    )
+    raw = {
+        "R185": field(smart),
+        "R187": field((("sb", t0, "insert", ""), ("sa", t0 + timedelta(microseconds=1), "insert", ""))),
+        "R188": field((("sb", t0, "bid", ""), ("sa", t0 + timedelta(microseconds=1), "ask", ""))),
+        "R189": field((("sb", t0, Decimal("100"), ""), ("sa", t0 + timedelta(microseconds=1), Decimal("101"), ""))),
+        "R190": field((("sb", t0, Decimal("10"), ""), ("sa", t0 + timedelta(microseconds=1), Decimal("12"), ""))),
+        "R192": field(direct),
+        "R193": field((("db", t0, "ARCA", "ARCA"), ("da", t0 + timedelta(microseconds=1), "ARCA", "ARCA"))),
+        "R194": field((("db", t0, "insert", "ARCA"), ("da", t0 + timedelta(microseconds=1), "insert", "ARCA"))),
+        "R195": field((("db", t0, "bid", "ARCA"), ("da", t0 + timedelta(microseconds=1), "ask", "ARCA"))),
+        "R196": field((("db", t0, Decimal("99.9"), "ARCA"), ("da", t0 + timedelta(microseconds=1), Decimal("101.1"), "ARCA"))),
+        "R197": field((("db", t0, Decimal("7"), "ARCA"), ("da", t0 + timedelta(microseconds=1), Decimal("8"), "ARCA"))),
+    }
+    result = _eval("D144", raw=raw)
+    assert result is not None
+    assert result.value == (
+        ("ask:0:ARCA", (("price_difference", Decimal("-0.1")), ("depth_difference", Decimal("4")))),
+        ("bid:0:ARCA", (("price_difference", Decimal("0.1")), ("depth_difference", Decimal("3")))),
+    )
+
+
+def test_k02_candidate_greeks_align_quantities_by_exact_leg_contract_not_row_order() -> None:
+    candidate = api.CandidateStructureContextV1(
+        context_id="candidate-greeks",
+        version=1,
+        candidate_identity="two-leg",
+        leg_contract_identities=("C100", "P100"),
+        leg_sides=("buy", "sell"),
+        leg_quantities=(Decimal("2"), Decimal("3")),
+        quantity=Decimal("1"),
+        premium_assumptions=(),
+        entry_assumptions=(),
+        risk_capital_currency=Decimal("1000"),
+    )
+
+    def legs(call: Decimal, put: Decimal) -> tuple[Any, ...]:
+        # Put is deliberately first and occurrence identifiers do not match candidate order.
+        return (
+            _kv(put, occurrence_id="z-put", subject="P100"),
+            _kv(call, occurrence_id="a-call", subject="C100"),
+        )
+
+    result = _eval(
+        "D168",
+        raw={
+            "R112": legs(Decimal("0.50"), Decimal("-0.40")),
+            "R115": legs(Decimal("0.10"), Decimal("0.08")),
+            "R116": legs(Decimal("0.20"), Decimal("0.15")),
+            "R117": legs(Decimal("-0.05"), Decimal("-0.04")),
+            "R016": legs(Decimal("100"), Decimal("100")),
+        },
+        contexts=(candidate,),
+    )
+    assert result is not None
+    assert _named(result.value) == {
+        "delta": Decimal("220"),
+        "gamma": Decimal("-4"),
+        "vega": Decimal("-5"),
+        "theta": Decimal("2"),
+    }
+
 def test_k03_uses_latest_anchor_at_or_before_cutoff_and_never_looks_forward() -> None:
     current = _kv(Decimal("110"), occurrence_id="now", at=NOW)
     before = _kv(Decimal("100"), occurrence_id="before", at=NOW - timedelta(minutes=5))
