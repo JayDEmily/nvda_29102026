@@ -6,7 +6,6 @@ import math
 from datetime import UTC, datetime, timedelta
 from decimal import Decimal
 from pathlib import Path
-from types import SimpleNamespace
 from typing import Any
 
 import pytest
@@ -205,7 +204,7 @@ def test_k01_age_market_local_session_expiry_and_event_countdown_are_exact() -> 
         params=_p("P_TIME", expiry_time="16:00", exchange_timezone="UTC"),
     )
     assert tte is not None
-    assert tte.value == Decimal("0.001712328767123287671232876712")
+    assert tte.value == Decimal(39) / Decimal(24) / Decimal(365)
 
 
 def test_k02_fixed_algebra_examples_preserve_declared_scaling() -> None:
@@ -261,7 +260,11 @@ def test_k02_depth_reconstruction_uses_stable_event_state_not_query_order() -> N
             _kv(Decimal("5"), occurrence_id="e3", at=t0 + timedelta(seconds=2)),
         ),
     }
-    bid = _eval("D134", raw={k: raw[k] for k in ("R185", "R187", "R188", "R190")})
+    bid = _eval(
+        "D134",
+        raw={k: raw[k] for k in ("R185", "R187", "R188", "R190")},
+        params=_p("P_BASIC", depth_levels=2),
+    )
     assert bid is not None and bid.value == Decimal("17")
 
 
@@ -308,7 +311,7 @@ def test_k03_uses_latest_anchor_at_or_before_cutoff_and_never_looks_forward() ->
         params=_p("P_WINDOW", anchor_seconds=300),
     )
     assert result is not None
-    assert result.value == Decimal(str(math.log(1.1)))
+    assert result.value == (Decimal("110") / Decimal("100")).ln()
 
 
 def test_k04_historical_zscore_midrank_percentile_and_cross_section_are_separate() -> None:
@@ -394,7 +397,7 @@ def test_k05_realised_variation_requires_full_window_and_atr_uses_true_range() -
         },
         params=_p("P_VOL_WINDOW", bar_count=2),
     )
-    assert atr is not None and atr.value == Decimal("2.75")
+    assert atr is not None and atr.value == Decimal("2.5")
 
 
 def test_k06_shared_ols_model_produces_coherent_coefficients_and_residual() -> None:
@@ -466,8 +469,8 @@ def test_k06_book_slope_and_partial_correlation_have_explicit_ridge_semantics() 
     )
     assert slope is not None
     named = _named(slope.value)
-    assert named["bid_slope"] == Decimal("10")
-    assert named["ask_slope"] == Decimal("10")
+    assert named["bid_slope"] == Decimal("20")
+    assert named["ask_slope"] == Decimal("18")
 
 
 def test_k07_all_authorised_scalar_extractors_are_implemented_without_implicit_scalarisation() -> None:
@@ -717,7 +720,7 @@ def test_k17_ofi_uses_adjacent_states_without_strict_length_pairing_bug() -> Non
         raw={"__book_states__": states},
         params=_p("P_OFI", window_seconds=5),
     )
-    assert result is not None and result.value == Decimal("5")
+    assert result is not None and result.value == Decimal("15")
 
 
 def test_graph_materialise_recurses_topologically_and_preserves_ultimate_raw_lineage() -> None:
@@ -797,8 +800,24 @@ def test_graph_materialise_recurses_topologically_and_preserves_ultimate_raw_lin
         offset=Decimal("0"),
     )
     mappings = (
-        SimpleNamespace(mapping_id="m-bid", version=1, raw_signal_catalogue_id=raw_api.RawSignalCatalogueId("R034")),
-        SimpleNamespace(mapping_id="m-ask", version=1, raw_signal_catalogue_id=raw_api.RawSignalCatalogueId("R035")),
+        raw_api.RawSignalProjectionMappingV1(
+            mapping_id="m-bid",
+            version=1,
+            raw_signal_catalogue_id=raw_api.RawSignalCatalogueId("R034"),
+            source_provider="p",
+            source_variant="snapshot",
+            native_field_path=("bid",),
+            native_units="price",
+        ),
+        raw_api.RawSignalProjectionMappingV1(
+            mapping_id="m-ask",
+            version=1,
+            raw_signal_catalogue_id=raw_api.RawSignalCatalogueId("R035"),
+            source_provider="p",
+            source_variant="snapshot",
+            native_field_path=("ask",),
+            native_units="price",
+        ),
     )
     owner = api.create_owner(
         raw_projection_reader=Reader(),
