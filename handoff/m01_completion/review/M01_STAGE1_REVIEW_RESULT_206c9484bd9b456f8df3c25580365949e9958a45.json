@@ -1,0 +1,35 @@
+{
+  "classification": "ISOLATED",
+  "finding": "Stage 1 fails the accepted input-selection/subject-matching law. A public-seam CalculationRequestV1 for subject NVDA and D011 was materialised successfully from raw R034/R035 bindings whose subject_instrument and projected observations were AAPL. The resulting occurrence was labelled NVDA with result 101 while its raw lineage identified the AAPL observations. Accepted brief clause 8.1 requires single-instrument calculations to use the same canonical subject/instrument identity across all required inputs and clause 17 requires fail-closed behaviour when matching prerequisites are not satisfied.",
+  "generated_at_utc": "2026-10-07T07:03:47.386271+00:00",
+  "independent_evidence": {
+    "architecture_validation": "PASS",
+    "dependency_validation": "PASS",
+    "derived_signal_tests": "78 passed",
+    "focused_stage1_tests": "33 passed",
+    "note": "The existing green proof does not exercise this cross-subject public-seam case. Review stopped at the first failed semantic invariant.",
+    "public_seam_probe": {
+      "observed_materialised": true,
+      "observed_occurrence_subject": "NVDA",
+      "observed_raw_lineage_occurrence_ids": [
+        "aapl-bid",
+        "aapl-ask"
+      ],
+      "observed_result": "101",
+      "raw_binding_subject": "AAPL",
+      "raw_observation_subject": "AAPL",
+      "request_derived_signal_id": "D011",
+      "request_subject": "NVDA"
+    },
+    "public_seam_validation": "PASS"
+  },
+  "kind": "independent_review_result",
+  "repair_proposition": "The Stage-1 input-selection path must enforce the accepted row/policy subject, contract, basket and temporal matching law before calculation. In particular, a single-instrument request must not materialise from raw bindings/observations for another subject. Add authority-derived proof that discriminates this mismatch, repair only the Stage-1 selection path required to make that proposition true, and return a fresh exact Stage-1 candidate. Do not start Stage 2.",
+  "review": "M01_STAGE1",
+  "reviewed_branch": "work/m01-completion",
+  "reviewed_head": "206c9484bd9b456f8df3c25580365949e9958a45",
+  "reviewed_tree": "e6f1abb279f24e61a70e294bb5b81a9ae2e98c4f",
+  "route": "RETURN_TO_WORKER_STAGE1",
+  "stage2_authorised": false,
+  "verdict": "REPAIR"
+}
