@@ -346,3 +346,36 @@ def test_leaf2_public_stage1_refuses_stale_stage2_predecessor() -> None:
 
     assert materialise_at(seed_age_seconds=20) is not None
     assert materialise_at(seed_age_seconds=120) is None
+
+
+def test_leaf2_atr_refuses_nonpositive_or_incomplete_window_length() -> None:
+    def point(oid: str, value: str, age_minutes: int = 0) -> _stage1.KernelValueV1:
+        instant = NOW - timedelta(minutes=age_minutes)
+        return _stage1.KernelValueV1(
+            value=Decimal(value), occurrence_id=oid,
+            effective_at_utc=instant, received_ts_utc=instant,
+            subject_instrument="NVDA", source_temporal_kind="true_instant",
+        )
+
+    raw = {
+        "R141": (point("b1", "11"), point("b2", "13")),
+        "R142": (point("b1", "9"), point("b2", "10")),
+        "R143": (
+            point("b0", "10", 10), point("b1", "10.5", 5), point("b2", "12"),
+        ),
+    }
+
+    def evaluate(*, bar_count: int) -> object | None:
+        profile = api.CalculationParameterSetV1(
+            context_id="atr", version=1, profile="P_VOL_WINDOW",
+            parameters=(("bar_count", bar_count),),
+        )
+        return _stage1.evaluate_stage1_kernel(
+            "D039", raw_inputs=raw, derived_inputs={}, parameter_set=profile,
+            contexts=(), as_of_utc=NOW, knowledge_cutoff_utc=NOW,
+        )
+
+    assert evaluate(bar_count=2) is not None
+    assert evaluate(bar_count=3) is None
+    assert evaluate(bar_count=0) is None
+    assert evaluate(bar_count=-1) is None
