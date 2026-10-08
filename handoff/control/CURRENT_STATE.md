@@ -2,7 +2,7 @@
 
 ## Status
 
-**M01 COMPLETION CONTINUATION — F2 REVIEW REPAIR; F2a TEMPORAL SIGN WORKER RETURN ONLY**
+**M01 COMPLETION CONTINUATION — F2 REVIEW REPAIR; F2a + F2b INTERNAL CHECKPOINTS, ONE CONSOLIDATED F2 REVIEW**
 
 The previous foundation-cleanup checkpoint was not the end of M01. Current Programme Owner instruction is to continue and finish M01 before commissioning a later module.
 
@@ -29,7 +29,7 @@ Exact accepted M01 authority is under `handoff/m01_completion/authority/` and in
 
 ## Current actor and next action
 
-**Actor: WORKER — F2a contemporaneous quote/trade identity repair only, following independent F2 review of `dcd2067bbd30`; see `handoff/m01_completion/review/M01_F2_INDEPENDENT_REVIEW_20261009.md` and `handoff/m01_completion/repair/M01_F2A_TEMPORAL_SIGN_WORKER_HANDOFF_20261009.md`. F1 remains accepted, F2 is not accepted, and Stage 2 is not authorised.**
+**Actor: WORKER — F2a contemporaneous quote/trade identity, then F2b D064/D065 event-score prerequisite and remaining F2 observation-class closure, as two internal proof-before-code Git checkpoints followed by a single independent F2 review.** This Programme Owner 2026-10-09 routing amendment is in root `EXEC_PLAN.md` and `handoff/m01_completion/repair/M01_F2_CONSOLIDATED_WORKER_HANDOFF_20261009.md`. It supersedes the earlier F2a-only *interim stop*, not the substantive independent F2 review finding or evidence. If F2b encounters a real unresolved authority/capability prerequisite, stop `BLOCKED` immediately; do not force a full candidate or proceed to F3. **F1 remains accepted; F2, F3, Stage 1 and Stage 2 are not accepted/authorised.**
 
 Programme Owner amended the Stage-1 acceptance boundary on 2026-10-08 to resolve the normative cross-stage dependency circularity: 174 Stage-1-kernel rows comprise 144 Stage-1-closed rows and 30 cross-stage rows whose end-to-end reachability is deferred until Stage 2. The amendment is recorded in root `EXEC_PLAN.md` and `handoff/m01_completion/STAGE1_ACCEPTANCE_BOUNDARY_AMENDMENT_20261008.md`.
 

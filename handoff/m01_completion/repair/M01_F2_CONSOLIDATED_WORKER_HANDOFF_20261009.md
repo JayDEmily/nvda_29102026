@@ -1,0 +1,42 @@
+# Worker handoff — F2a + F2b internal checkpoints, one consolidated F2 review
+
+**Active instruction (Programme Owner, 2026-10-09):** This document supersedes the **routing and interim-review stop** in `M01_F2A_TEMPORAL_SIGN_WORKER_HANDOFF_20261009.md` and the previous F2 independent review's `next_worker_unit` field. It **does not** supersede the underlying verified finding, failing witness, proof requirements, accepted F1 inventory, historical review result or the accepted M01 brief/catalogue. Follow the 2026-10-09 F2 reviewer-return batching amendment in the active root `EXEC_PLAN.md`. Stage-1 remains rejected, F2 unaccepted, and F3/F4/Stage 2 unauthorised.
+
+| Sequence | Work unit | Git checkpoint | Independent reviewer stop? |
+| --- | --- | --- | --- |
+| 1 | F2a — contemporaneous trade/quote sign and source lineage | Yes: failing proof, repair, focused result | **No**; continue to F2b if valid |
+| 2 | F2b — D064/R289 score prerequisite, D065/R284 event association and remaining F2 observation classes | Yes: authority decision, failing proof, repair where authorised, focused result | **No**; continue to F2 consolidation if valid |
+| 3 | Consolidated F2 — class/edge reconciliation and necessary regression | Yes: one exact clean candidate | **Yes: one independent F2 review** |
+| Exception | Missing/conflicting required authority or failed invariant | Preserve last proved checkpoint and exact blocker | **Stop `BLOCKED` immediately** |
+
+## Start and authority
+
+1. Read **in full** root `GUARDRAILS.md`, `AGENTS.md`, `EXEC_PLAN.md`, `handoff/control/CURRENT_STATE.md` and `handoff/m01_completion/AUTHORITY_INDEX.md`, then read the exact accepted brief and normative catalogue. Respect applicable nested AGENTS files for any files you touch.
+2. Trace the current Git ancestry from reviewer commit `5e210f096b6220182a3a1d575020364fd92909c4` and worker candidate `dcd2067bbd306e1cf1aeb5fc9665dce25a4c8684`. Read `handoff/m01_completion/review/M01_F2_INDEPENDENT_REVIEW_20261009.md`, `handoff/m01_completion/review/M01_F2_REVIEW_RESULT_20261009.json`, the unmodified `review/proof/test_f2_late_quote_sign_20261009.py` and red log, the original signed-flow reviewer witness, F1 class-to-edge mapping, U01/U04/U06 unresolved ledger and F2 worker checkpoint.
+3. Treat worker-reported tests as evidence only. Preserve existing demonstrated D016/D120 positive cases, D017 evidence and all historical reviewer artefacts. Do not change M00-owned semantics, public projection boundaries, normative D/R edges, `GUARDRAILS.md`, `AGENTS.md`, accepted brief/catalogue, or package version `1.0.0`.
+
+## F2a — first internal engineering checkpoint: trade/quote temporal identity
+
+**Required proposition:** A D015 classification binds an identified trade to the quote lawfully contemporaneous with that trade, not a later quote selected merely because the request `as_of` advanced. With unchanged eligible trade history, a quote-only update cannot reclassify an earlier buy/sell. Downstream D016 and D120 use the associated per-trade signs and actual source trades and persist truthful lineage. Authority may permit a separate explicit revision/recalculation, but no implicit retroactive look-ahead.
+
+- Derive the trade/quote time and preceding-trade tick-test selection from accepted K08 D015, exact §8.1 timing and §11 no-look-ahead, and the *actual* typed raw projections. Establish whether every required association is representable; if not, stop `BLOCKED` on the exact missing invariant before changing code.
+- **Commit proof-only public-seam tests first**. Keep the independently failing late-quote test and its expected output unchanged. Exercise two opposite trades, quote-only updates, quotes before/after trade time and cutoff, ambiguous midpoints/tick direction, same/different contracts, mismatched identity/version, direct-D and ultimate-R lineage, idempotency/recalculation and rightful absence. Preserve the original signed-flow witness (`D011=5`, `D015=+1`, `D016=2`, `D120=(2,1200)`). Do not turn computable signed totals into `None` to conceal the classification error.
+- Only after the proof commit, make the smallest authority-derived production repair to contemporaneous trade/quote correlation and dependent signed-flow results. Run focused checks and necessary regression; commit an **F2a checkpoint** (source commit after proof commit) with commands, output, exact HEAD/tree and unresolved items.
+- **Continue directly to F2b after valid F2a proof. Do not request independent review just because F2a ends.** Do not perform F3 grouping repairs within F2a.
+
+## F2b — second internal engineering checkpoint: event score and observation-class closure
+
+**Required proposition:** D064's raw R289 source must lawfully produce its accepted K07 score, and D065 must select the correct scheduled R284 event and correlate it to that event's derived D064 score through actual admitted lineage/identity, never assumed equality of a raw occurrence ID and a derived occurrence ID. Do not treat an implementation blockage as proof that the accepted norm is missing.
+
+- **First inspect authority and capability, before writing a fix.** Read the specific accepted K07/D064 and K08/D065 brief clauses and both catalogue rows, score parameter/feature schema and raw R289/R284 projection capabilities. Trace the source-level K07 `P_SCORE` requirement and the D065 event match. Determine whether existing accepted authority already defines the raw-score input mapping, selected-event identity and exact timing/eligibility law.
+- Where determined, commit independent *failing* proof-first public-seam cases for lawful D064 output and D065 event selection/threshold, multiple/competing events, earlier/later events, absent/mismatched lineage, missing version or score, incompatible subject/contract and cutoff. Prove relevant D017 raw/raw identity and reconcile all remaining F2 per-observation relationship mechanisms from the F1 map. Do not silently move a mandatory F2 item to F3.
+- Then make **only** minimal necessary authorised repair and commit it after the test proof. Preserve every previously passing F2a test and the reviewer late-quote witness. Record an exact **F2b checkpoint** and updated F1-class-to-edge coverage/unresolved register.
+- **Stop `BLOCKED` if a mandatory semantic rule or typed data relationship cannot be established from accepted authority or is unrepresentable.** Return one full-Git evidence packet naming the first missing/conflicting law and the precise programme decision required. Do not fabricate a scoring extractor, cross-namespace join, or proxy `PASS`; do not enter F3.
+
+## Single consolidated F2 return — no unnecessary round trips
+
+When F2a and F2b are established, rerun the required focused and relevant regression, architecture, type/lint, and database/public-seam checks; report both runs and non-runs precisely. Reconcile the **F1 census/class map** against F2 class coverage with specific proof references, unresolved items and justified exclusions. Then freeze a **single clean, complete Git repository archive** containing proof-before-production history, F2a/F2b checkpoints, tests, logs, implementation, current governing plan, reviewer results and one worker-to-reviewer handoff. Provide exact commit, tree and verification commands.
+
+**Reviewer boundary:** One independent review of the consolidated F2 candidate, not two individual F2a/F2b reviews. No F2 `PASS` or F3 authorisation until that review. F3's D109/D170 and D121/D122 grouped predecessor proof and F4's Stage-1 complete review remain separate work; Stage 2 stays blocked until full Stage-1 acceptance. Genuine missing authority, failed invariant or unsafe condition still requires an immediate stop rather than forced batching.
+
+**Delivery to Programme Owner:** Return **one downloadable full-Git `.tar.gz`** containing everything. Do not require separate instruction, proof, checksum or JSON files to be handed to the next actor.
