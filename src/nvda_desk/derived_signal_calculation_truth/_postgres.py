@@ -8,6 +8,8 @@ from datetime import date, datetime
 from decimal import Decimal
 from typing import Any
 
+from nvda_desk.raw_signal_occurrence_truth.api import RawSelectionIdentityV1
+
 from .api import (
     DerivedSignalOccurrenceV1,
     RawInputLineageV1,
@@ -112,6 +114,70 @@ def _decode_raw_lineage(value: object) -> tuple[RawInputLineageV1, ...]:
         )
         for row in rows
     )
+
+
+def _encode_selection_scalar(value: object) -> dict[str, object]:
+    if type(value) is bool:
+        return {"kind": "bool", "value": value}
+    if type(value) is int:
+        return {"kind": "int", "value": str(value)}
+    if type(value) is float:
+        return {"kind": "float", "value": value.hex()}
+    if type(value) is Decimal:
+        return {"kind": "decimal", "value": str(value)}
+    if type(value) is str:
+        return {"kind": "str", "value": value}
+    if type(value) is bytes:
+        return {"kind": "bytes", "value": value.hex()}
+    raise TypeError("selection identity contains an unsupported scalar")
+
+
+def _selection_identity(value: RawSelectionIdentityV1 | None) -> str | None:
+    if value is None:
+        return None
+    return json.dumps(
+        [
+            {"key": key, "scalar": _encode_selection_scalar(item)}
+            for key, item in value.values
+        ]
+    )
+
+
+def _decode_selection_scalar(value: object) -> bool | int | float | Decimal | str | bytes:
+    if not isinstance(value, dict):
+        raise ValueError("invalid selection identity scalar encoding")
+    kind = value.get("kind")
+    encoded = value.get("value")
+    if kind == "bool" and type(encoded) is bool:
+        return encoded
+    if kind == "int" and type(encoded) is str:
+        return int(encoded)
+    if kind == "float" and type(encoded) is str:
+        return float.fromhex(encoded)
+    if kind == "decimal" and type(encoded) is str:
+        return Decimal(encoded)
+    if kind == "str" and type(encoded) is str:
+        return encoded
+    if kind == "bytes" and type(encoded) is str:
+        return bytes.fromhex(encoded)
+    raise ValueError("invalid selection identity scalar encoding")
+
+
+def _decode_selection_identity(value: object) -> RawSelectionIdentityV1 | None:
+    if value is None:
+        return None
+    rows = value if isinstance(value, list) else json.loads(str(value))
+    if not isinstance(rows, list) or not rows:
+        raise ValueError("invalid selection identity encoding")
+    decoded: list[tuple[str, bool | int | float | Decimal | str | bytes]] = []
+    for row in rows:
+        if not isinstance(row, dict):
+            raise ValueError("invalid selection identity row encoding")
+        key = row.get("key")
+        if type(key) is not str or not key:
+            raise ValueError("invalid selection identity key encoding")
+        decoded.append((key, _decode_selection_scalar(row.get("scalar"))))
+    return RawSelectionIdentityV1(values=tuple(decoded))
 
 
 def _connection_identity(connection: Any) -> PostgresBoundaryIdentityV1:
@@ -303,10 +369,10 @@ class _PostgresPersistenceV1:
                     parameter_context_refs, subject_instrument, universe, effective_as_of_utc,
                     window_value, knowledge_cutoff_utc, calculated_at_utc, result_value, units,
                     result_shape, raw_input_lineage, predecessor_occurrence_ids, convention_refs,
-                    supersedes_derived_occurrence_id
+                    selection_identity, supersedes_derived_occurrence_id
                 ) VALUES (
                     %s, %s, %s, %s::jsonb, %s, %s::jsonb, %s, %s, %s, %s, %s::jsonb, %s,
-                    %s, %s::jsonb, %s::jsonb, %s::jsonb, %s
+                    %s, %s::jsonb, %s::jsonb, %s::jsonb, %s::jsonb, %s
                 )
                 """,
                 (
@@ -326,6 +392,7 @@ class _PostgresPersistenceV1:
                     _raw_lineage(value.raw_input_lineage),
                     json.dumps(value.predecessor_occurrence_ids),
                     _version_refs(value.convention_refs),
+                    _selection_identity(value.selection_identity),
                     value.supersedes_derived_occurrence_id,
                 ),
             )
@@ -365,7 +432,8 @@ class _PostgresPersistenceV1:
             raw_input_lineage=_decode_raw_lineage(row[13]),
             predecessor_occurrence_ids=tuple(str(item) for item in predecessor_list),
             convention_refs=_decode_refs(row[15]),
-            supersedes_derived_occurrence_id=None if row[16] is None else str(row[16]),
+            selection_identity=_decode_selection_identity(row[16]),
+            supersedes_derived_occurrence_id=None if row[17] is None else str(row[17]),
         )
 
     def get_occurrence(self, derived_occurrence_id: str) -> DerivedSignalOccurrenceV1 | None:
@@ -378,7 +446,7 @@ class _PostgresPersistenceV1:
                        parameter_context_refs, subject_instrument, universe, effective_as_of_utc,
                        window_value, knowledge_cutoff_utc, calculated_at_utc, result_value, units,
                        result_shape, raw_input_lineage, predecessor_occurrence_ids, convention_refs,
-                       supersedes_derived_occurrence_id
+                       selection_identity, supersedes_derived_occurrence_id
                 FROM {_TABLE}
                 WHERE derived_occurrence_id = %s
                 """,
@@ -400,7 +468,7 @@ class _PostgresPersistenceV1:
                        parameter_context_refs, subject_instrument, universe, effective_as_of_utc,
                        window_value, knowledge_cutoff_utc, calculated_at_utc, result_value, units,
                        result_shape, raw_input_lineage, predecessor_occurrence_ids, convention_refs,
-                       supersedes_derived_occurrence_id
+                       selection_identity, supersedes_derived_occurrence_id
                 FROM {_TABLE}
                 WHERE derived_signal_id = %s AND subject_instrument = %s
                 ORDER BY effective_as_of_utc, derived_occurrence_id
@@ -443,9 +511,13 @@ def create_postgres_persistence(
                 raw_input_lineage JSONB NOT NULL,
                 predecessor_occurrence_ids JSONB NOT NULL,
                 convention_refs JSONB NOT NULL,
+                selection_identity JSONB,
                 supersedes_derived_occurrence_id TEXT
             )
             """
+        )
+        connection.execute(
+            f"ALTER TABLE {_TABLE} ADD COLUMN IF NOT EXISTS selection_identity JSONB"
         )
     return _PostgresPersistenceV1(
         dsn, m00_boundary=m00_boundary, own_boundary=own_boundary

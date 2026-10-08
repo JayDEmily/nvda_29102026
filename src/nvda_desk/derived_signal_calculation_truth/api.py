@@ -13,6 +13,8 @@ from nvda_desk.raw_signal_occurrence_truth.api import RawSelectionIdentityV1
 if TYPE_CHECKING:
     from ._stage1 import KernelValueV1
 
+type _SelectionIdentityScalarV1 = bool | int | float | Decimal | str | bytes
+
 
 _OPTION_CONTRACT_JOIN_KEYS = frozenset(
     {
@@ -717,6 +719,7 @@ class DerivedSignalOccurrenceV1:
     raw_input_lineage: tuple[RawInputLineageV1, ...]
     predecessor_occurrence_ids: tuple[str, ...]
     convention_refs: tuple[VersionRefV1, ...]
+    selection_identity: RawSelectionIdentityV1 | None = None
     supersedes_derived_occurrence_id: str | None = None
 
     def __post_init__(self) -> None:
@@ -741,6 +744,11 @@ class DerivedSignalOccurrenceV1:
             self.predecessor_occurrence_ids, "predecessor_occurrence_ids"
         )
         _require_version_refs(self.convention_refs, "convention_refs")
+        if (
+            self.selection_identity is not None
+            and type(self.selection_identity) is not RawSelectionIdentityV1
+        ):
+            raise TypeError("selection_identity must be RawSelectionIdentityV1 or absent")
         _require_derived_result(self.result)
 
 
@@ -1332,9 +1340,155 @@ class _OwnerV1:
         return eligible, selected_lineage, tuple(convention_refs)
 
     @staticmethod
+    def _selection_join_keys(selection: InputSelectionPolicyVersionV1) -> tuple[str, ...]:
+        return tuple(key for key in selection.join_keys if key != "subject_instrument")
+
+    @staticmethod
+    def _same_typed_value(left: object, right: object) -> bool:
+        return type(left) is type(right) and left == right
+
+    @classmethod
+    def _merge_selection_value(
+        cls,
+        selected: dict[str, _SelectionIdentityScalarV1],
+        key: str,
+        value: object,
+    ) -> bool:
+        if type(value) not in {bool, int, float, Decimal, str, bytes}:
+            return False
+        typed_value = cast(_SelectionIdentityScalarV1, value)
+        existing = selected.get(key)
+        if existing is None:
+            selected[key] = typed_value
+            return True
+        return cls._same_typed_value(existing, typed_value)
+
+    @classmethod
+    def _merge_direct_selection_identity(
+        cls,
+        selected: dict[str, _SelectionIdentityScalarV1],
+        raw_inputs: dict[str, tuple[KernelValueV1, ...]],
+        keys: tuple[str, ...],
+    ) -> bool:
+        for values in raw_inputs.values():
+            for value in values:
+                metadata = dict(value.metadata)
+                for key in keys:
+                    if key in metadata and not cls._merge_selection_value(
+                        selected, key, metadata[key]
+                    ):
+                        return False
+        return True
+
+    @staticmethod
+    def _occurrence_selection_values(
+        value: DerivedSignalOccurrenceV1, keys: tuple[str, ...]
+    ) -> dict[str, _SelectionIdentityScalarV1] | None:
+        if not keys:
+            return {}
+        identity = value.selection_identity
+        if identity is None:
+            return None
+        resolved: dict[str, _SelectionIdentityScalarV1] = {}
+        for key in keys:
+            selected = identity.value_for(key)
+            if selected is None:
+                return None
+            resolved[key] = selected
+        return resolved
+
+    @classmethod
+    def _merge_occurrence_selection_identity(
+        cls,
+        selected: dict[str, _SelectionIdentityScalarV1],
+        value: DerivedSignalOccurrenceV1,
+        keys: tuple[str, ...],
+    ) -> bool:
+        resolved = cls._occurrence_selection_values(value, keys)
+        if resolved is None:
+            return False
+        return all(
+            cls._merge_selection_value(selected, key, item)
+            for key, item in resolved.items()
+        )
+
+    @classmethod
+    def _filter_predecessor_history_for_selection(
+        cls,
+        history: tuple[DerivedSignalOccurrenceV1, ...],
+        *,
+        keys: tuple[str, ...],
+        selected: dict[str, _SelectionIdentityScalarV1],
+        selection: InputSelectionPolicyVersionV1,
+    ) -> tuple[DerivedSignalOccurrenceV1, ...]:
+        candidates = history
+        if selection.basket_membership:
+            candidates = tuple(
+                value for value in candidates if value.universe == selection.basket_membership
+            )
+        if not keys:
+            return candidates
+        resolved_candidates: list[
+            tuple[DerivedSignalOccurrenceV1, dict[str, _SelectionIdentityScalarV1]]
+        ] = []
+        for value in candidates:
+            resolved = cls._occurrence_selection_values(value, keys)
+            if resolved is None:
+                continue
+            if any(
+                key in selected and not cls._same_typed_value(selected[key], item)
+                for key, item in resolved.items()
+            ):
+                continue
+            resolved_candidates.append((value, resolved))
+        if not resolved_candidates:
+            return ()
+        signatures: list[
+            tuple[tuple[str, type[object], _SelectionIdentityScalarV1], ...]
+        ] = []
+        for _, resolved in resolved_candidates:
+            signature = tuple((key, type(resolved[key]), resolved[key]) for key in keys)
+            if not any(
+                len(signature) == len(existing)
+                and all(
+                    key == other_key
+                    and value_type is other_type
+                    and cls._same_typed_value(value, other_value)
+                    for (key, value_type, value), (other_key, other_type, other_value) in zip(
+                        signature, existing, strict=True
+                    )
+                )
+                for existing in signatures
+            ):
+                signatures.append(signature)
+        if len(signatures) != 1:
+            return ()
+        chosen = resolved_candidates[0][1]
+        if not all(cls._merge_selection_value(selected, key, item) for key, item in chosen.items()):
+            return ()
+        return tuple(
+            value
+            for value, resolved in resolved_candidates
+            if all(cls._same_typed_value(resolved[key], selected[key]) for key in keys)
+        )
+
+    @staticmethod
+    def _resolved_selection_identity(
+        selected: dict[str, _SelectionIdentityScalarV1], keys: tuple[str, ...]
+    ) -> RawSelectionIdentityV1 | None:
+        if not keys:
+            return None
+        if any(key not in selected for key in keys):
+            return None
+        return RawSelectionIdentityV1(values=tuple((key, selected[key]) for key in keys))
+
+    @staticmethod
     def _occurrence_kernel_value(value: DerivedSignalOccurrenceV1) -> KernelValueV1:
         from ._stage1 import KernelValueV1
 
+        selection_metadata = (
+            () if value.selection_identity is None else value.selection_identity.values
+        )
         return KernelValueV1(
             value=value.result,
             occurrence_id=value.derived_occurrence_id,
@@ -1342,7 +1496,11 @@ class _OwnerV1:
             received_ts_utc=value.calculated_at_utc,
             subject_instrument=value.subject_instrument,
             source_temporal_kind="derived",
-            metadata=(("units", value.units), ("result_shape", value.result_shape)),
+            metadata=(
+                ("units", value.units),
+                ("result_shape", value.result_shape),
+                *selection_metadata,
+            ),
         )
 
     def _compatible_history(
@@ -1416,6 +1574,13 @@ class _OwnerV1:
             if latest and max(latest) - min(latest) > selection.maximum_skew:
                 return None
 
+        selection_keys = self._selection_join_keys(selection)
+        selected_identity_values: dict[str, _SelectionIdentityScalarV1] = {}
+        if not self._merge_direct_selection_identity(
+            selected_identity_values, raw_inputs, selection_keys
+        ):
+            return None
+
         derived_inputs: dict[str, tuple[KernelValueV1, ...]] = {}
         immediate_predecessors: list[DerivedSignalOccurrenceV1] = []
         inherited_lineage: list[RawInputLineageV1] = []
@@ -1441,6 +1606,10 @@ class _OwnerV1:
                 current = self._materialise(request, predecessor_id, (*stack, derived_signal_id))
                 if current is None:
                     return None
+                if not self._merge_occurrence_selection_identity(
+                    selected_identity_values, current, selection_keys
+                ):
+                    return None
                 history_by_id = {value.derived_occurrence_id: value for value in history}
                 history_by_id[current.derived_occurrence_id] = current
                 history = tuple(
@@ -1455,6 +1624,12 @@ class _OwnerV1:
                 )
             elif not history:
                 return None
+            history = self._filter_predecessor_history_for_selection(
+                history,
+                keys=selection_keys,
+                selected=selected_identity_values,
+                selection=selection,
+            )
             if not history:
                 return None
             current = max(
@@ -1470,6 +1645,12 @@ class _OwnerV1:
             derived_inputs[predecessor_id] = tuple(
                 self._occurrence_kernel_value(value) for value in history
             )
+
+        selected_identity = self._resolved_selection_identity(
+            selected_identity_values, selection_keys
+        )
+        if selection_keys and selected_identity is None:
+            return None
 
         evaluated = evaluate_stage1_kernel(
             derived_signal_id,
@@ -1555,6 +1736,7 @@ class _OwnerV1:
             raw_input_lineage=exact_lineage,
             predecessor_occurrence_ids=predecessor_ids,
             convention_refs=convention_refs_exact,
+            selection_identity=selected_identity,
             supersedes_derived_occurrence_id=supersedes,
         )
         return self._persistence.append_occurrence(occurrence)
