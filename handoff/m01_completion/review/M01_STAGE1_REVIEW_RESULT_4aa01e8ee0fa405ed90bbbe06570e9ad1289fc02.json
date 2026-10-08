@@ -1,0 +1,54 @@
+{
+  "authority": {
+    "brief_sha256": "603b850802a418780109095e7ae69bcece449da79fb24140a6d50297605e927c",
+    "catalogue_sha256": "63bc1b776fc8fa8ba82eb3c9b16916f295c9ec3d480a5a068937c2f25146f5f5",
+    "rule": "Accepted brief clause 8.1 makes exact subject/contract/time selection part of calculation meaning, and clause 13 requires predecessor occurrences to remain compatible with the requesting calculation's subject/context/version state. Material contract/bucket/basket identity therefore cannot be lost when a Stage-1 row combines direct raw inputs with predecessor-D occurrences."
+  },
+  "classification": "RECURRENT_CLASS",
+  "finding": "The worker correctly expanded direct raw-input row authority for exact option contracts, matched option history, per-expiry/per-strike calculations, selected-option L2 and cross-sectional baskets. The remaining recurrent defect is at derived-dependency boundaries. Through the public M01 seam, D131 was requested with a complete option-contract selection policy. Its D087 predecessor midpoint was lawfully materialised from option contract C1, while D131's direct L2 raw inputs R185/R187/R188/R189/R190 were lawfully selected from option contract C2. M01 then materialised D131=10 and persisted lineage from both C1 and C2. The current predecessor compatibility path checks calculation/parameter/selection references and subject/time state, but the derived occurrence does not retain or expose the material selection identity needed to prove that the predecessor and direct inputs belong to the same selected option contract. Thus row-authority selection remains enforceable only within each direct-raw subcalculation, not across the Stage-1 calculation graph.",
+  "generated_at_utc": "2026-10-08T04:53:38.904948+00:00",
+  "independent_evidence": {
+    "adverse_public_seam_probe": {
+      "D087_midpoint_contract": "C1",
+      "D131_depth_contract": "C2",
+      "derived_signal_id": "D131",
+      "observed_materialised": true,
+      "observed_predecessor_count": 1,
+      "observed_raw_lineage_occurrence_ids": [
+        "q-bid",
+        "q-ask",
+        "depth1"
+      ],
+      "observed_result": "10",
+      "request_subject": "NVDA",
+      "selection_join_keys": [
+        "contract_id",
+        "underlying_instrument",
+        "expiry",
+        "strike",
+        "option_right"
+      ]
+    },
+    "architecture_validation": "PASS",
+    "dependency_validation": "PASS",
+    "focused_stage1_tests": "40 passed",
+    "full_derived_signal_tests": "86 passed",
+    "mechanism_observation": "The requesting row and predecessor share subject_instrument and the same selection-policy version, but DerivedSignalOccurrenceV1/its KernelValue projection does not preserve the material raw selection identity used by the predecessor, so cross-edge contract compatibility cannot presently be established.",
+    "note": "Review stopped at this first remaining Stage-1 semantic invariant after confirming the worker's direct row-authority repair and regression state.",
+    "public_seam_validation": "PASS",
+    "worker_repair_order": {
+      "production_repair_commit": "4aa01e8",
+      "proof_commit": "9eae616",
+      "proof_precedes_production": true
+    }
+  },
+  "kind": "independent_review_result",
+  "repair_proposition": "Close the Stage-1 selection class across graph edges. For every Stage-1 row whose accepted semantics require direct raw inputs and/or predecessor-D occurrences to share a material contract, expiry, strike, option-right, delta-bucket, basket/member or other admitted selection identity, materialisation must prove that compatibility across the entire requesting calculation, not merely within each direct-raw row and not merely by sharing an InputSelectionPolicyVersion reference. The exact selected identity must remain reconstructable from durable occurrence/lineage state so predecessor reuse can be independently validated. Add authority-derived proof for representative raw-to-predecessor and predecessor-to-predecessor mismatch cases, including D131's D087 midpoint versus selected depth book, then make only the Stage-1 repair required to satisfy that class-level proposition. Do not start Stage 2.",
+  "review": "M01_STAGE1",
+  "reviewed_branch": "work/m01-completion",
+  "reviewed_head": "4aa01e8ee0fa405ed90bbbe06570e9ad1289fc02",
+  "reviewed_tree": "7aebe772f1a6075f9b27fbfee0f07d110c8def78",
+  "route": "RETURN_TO_WORKER_STAGE1",
+  "stage2_authorised": false,
+  "verdict": "REPAIR"
+}
