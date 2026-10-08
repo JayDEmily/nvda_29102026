@@ -6,15 +6,16 @@ from datetime import UTC, datetime, timedelta
 from decimal import Decimal
 from typing import Any, cast
 
-from nvda_desk.derived_signal_calculation_truth import api
-from nvda_desk.derived_signal_calculation_truth import _stage1
+from nvda_desk.derived_signal_calculation_truth import _stage1, api
 from nvda_desk.raw_signal_occurrence_truth import api as raw_api
 
 NOW = datetime(2026, 10, 8, 6, 0, tzinfo=UTC)
 
 
-def _point(raw_id: str, label: str, value: Decimal, *, seconds: int = 0,
-           received_seconds: int | None = None, kind: str = "true_instant") -> raw_api.ProjectedRawValueV1:
+def _point(
+    raw_id: str, label: str, value: Decimal, *, seconds: int = 0,
+    received_seconds: int | None = None, kind: str = "true_instant",
+) -> raw_api.ProjectedRawValueV1:
     moment = NOW + timedelta(seconds=seconds)
     receipt = NOW + timedelta(seconds=seconds if received_seconds is None else received_seconds)
     return raw_api.ProjectedRawValueV1(
@@ -36,7 +37,10 @@ def _setup(*, values: dict[str, tuple[raw_api.ProjectedRawValueV1, ...]],
            skew_seconds: int = 10, stale_seconds: int = 60,
            allowed: tuple[str, ...] = ("true_instant",),
            context: tuple[api.VersionRefV1, ...] = (),
-           persistence: Any = None) -> tuple[Any, api.CalculationRequestV1]:
+           persistence: Any = None,
+           extra_contexts: tuple[object, ...] = (),
+           extra_parameters: tuple[api.CalculationParameterSetV1, ...] = (),
+           ) -> tuple[Any, api.CalculationRequestV1]:
     class Reader:
         def list_projected_raw_history(self, raw_signal_catalogue_id: Any, **kwargs: Any) -> Any:
             return raw_api.ProjectedRawHistoryPageV1(
@@ -73,8 +77,8 @@ def _setup(*, values: dict[str, tuple[raw_api.ProjectedRawValueV1, ...]],
     ) for rid in all_ids)
     owner = api.create_owner(
         raw_projection_reader=Reader(), persistence=persistence, raw_projection_mappings=mappings,
-        parameter_sets=(parameter,), input_selection_policies=(selection,),
-        unit_conventions=(unit,), contexts=(), utc_now=lambda: NOW,
+        parameter_sets=(parameter, *extra_parameters), input_selection_policies=(selection,),
+        unit_conventions=(unit,), contexts=extra_contexts, utc_now=lambda: NOW,
     )
     request = api.CalculationRequestV1(
         derived_signal_id="D013", subject_instrument="NVDA", as_of_utc=NOW,
@@ -107,6 +111,7 @@ def test_leaf2_public_cutoff_as_of_freshness_and_skew_refuse() -> None:
         _raw(bid_seconds=-61),       # latest bid outside freshness
         _raw(bid_seconds=-30),       # individually fresh but outside synchronous skew
         _raw(bid_kind="receipt_only"),  # temporal basis not permitted
+        {"R034": _raw()["R034"]},  # required R035 is absent
     ):
         owner, checked = _setup(values=values)
         assert owner.materialise(checked) is None
@@ -147,11 +152,33 @@ def test_leaf2_history_reuse_requires_exact_context_and_raw_mapping_unit_version
     )
     assert first_predecessor in permitted
 
+    # An unrelated context is not an input to D011 and cannot make its
+    # materialisation incompatible by itself.  A *required* context is exact.
     alternate_context = replace(request, context_refs=(api.VersionRefV1("other-context", 3),))
-    assert not cast(Any, owner)._compatible_history(
+    assert first_predecessor in cast(Any, owner)._compatible_history(
         derived_signal_id=first_predecessor.derived_signal_id, request=alternate_context,
         parameter_ref=api.VersionRefV1("basic", 1),
         selection_ref=api.VersionRefV1("selector", 1),
+    )
+    policy1 = api.RequiredFieldPolicyV1(context_id="policy", version=1, requirements=("R034",))
+    policy2 = api.RequiredFieldPolicyV1(context_id="policy", version=2, requirements=("R034",))
+    context_owner, context_request = _setup(values=_raw(), extra_contexts=(policy1, policy2))
+    seed = replace(
+        first_predecessor, derived_signal_id="D007", derived_occurrence_id="seeded-d007",
+        parameter_context_refs=(*first_predecessor.parameter_context_refs,
+                                api.VersionRefV1("policy", 1)),
+        raw_input_lineage=(), convention_refs=(),
+    )
+    cast(Any, context_owner)._persistence.append_occurrence(seed)
+    expected = dict(derived_signal_id="D007", parameter_ref=api.VersionRefV1("basic", 1),
+                    selection_ref=api.VersionRefV1("selector", 1))
+    assert seed in cast(Any, context_owner)._compatible_history(
+        request=replace(context_request, context_refs=(api.VersionRefV1("policy", 1),)),
+        **expected,
+    )
+    assert seed not in cast(Any, context_owner)._compatible_history(
+        request=replace(context_request, context_refs=(api.VersionRefV1("policy", 2),)),
+        **expected,
     )
 
     # A future definition/revision and a different exact field-level mapping cannot
@@ -256,3 +283,66 @@ def test_leaf2_k05_requires_exact_versioned_sampling_schedule_not_only_return_co
     wrong = (*closes[:2], replace(closes[2], effective_at_utc=NOW - timedelta(days=20)),
              *closes[3:])
     assert evaluate(wrong, **config, required_sample_instants_utc=full_schedule) is None
+
+
+def test_leaf2_public_stage1_refuses_stale_stage2_predecessor() -> None:
+    # D097 uses stored Stage-2 D096 truth. It must not read stale snapshots
+    # merely because every input in its graph is stale by the same amount.
+    source, base_request = _setup(values=_raw())
+    base = source.materialise(base_request)
+    assert base is not None
+    template = source.reads.get_derived_occurrence(base.predecessor_occurrence_ids[0])
+    assert template is not None
+
+    surface = api.CalculationParameterSetV1(
+        context_id="surface", version=1, profile="P_SURFACE",
+        parameters=(("selection_mode", "exact"),),
+    )
+
+    def materialise_at(*, seed_age_seconds: int) -> object | None:
+        owner, request = _setup(values={}, extra_parameters=(surface,))
+        request = replace(
+            request, derived_signal_id="D097",
+            parameter_profile_refs=(
+                *request.parameter_profile_refs,
+                api.ParameterProfileRefV1("P_SURFACE", "surface", 1),
+            ),
+            raw_input_bindings=(
+                *request.raw_input_bindings,
+                *(
+                    api.RawInputBindingV1(
+                        raw_id, api.VersionRefV1(f"map-{raw_id}", 1),
+                        api.VersionRefV1("units", 1), "NVDA",
+                    )
+                    for raw_id in ("R111", "R112")
+                ),
+            ),
+        )
+        lineage = tuple(
+            replace(
+                template.raw_input_lineage[0], raw_signal_id=raw_id,
+                projection_mapping_id=f"map-{raw_id}",
+            )
+            for raw_id in ("R111", "R112")
+        )
+        for i, seconds in enumerate((-seed_age_seconds, -seed_age_seconds + 1)):
+            seed = replace(
+                template,
+                derived_signal_id="D096", derived_occurrence_id=f"stored-d096-{i}",
+                result=(
+                    ("expiry_day", Decimal(i + 2)),
+                    ("iv", Decimal("0.30") + Decimal(i) / 100),
+                ),
+                effective_as_of_utc=NOW + timedelta(seconds=seconds),
+                knowledge_cutoff_utc=NOW + timedelta(seconds=seconds),
+                parameter_context_refs=(
+                    api.VersionRefV1("surface", 1), api.VersionRefV1("selector", 1),
+                ),
+                raw_input_lineage=lineage, convention_refs=(api.VersionRefV1("units", 1),),
+                predecessor_occurrence_ids=(),
+            )
+            cast(Any, owner)._persistence.append_occurrence(seed)
+        return owner.materialise(request)
+
+    assert materialise_at(seed_age_seconds=20) is not None
+    assert materialise_at(seed_age_seconds=120) is None

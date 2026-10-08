@@ -757,6 +757,7 @@ def test_k05_realised_variation_requires_full_window_and_atr_uses_true_range() -
         params=_p(
             "P_VOL_WINDOW",
             required_intervals=5,
+            required_sample_instants_utc=tuple(point.effective_at_utc for point in closes),
             trading_year_fraction_per_interval=Decimal("0.003968253968253968253968253968"),
         ),
     )
@@ -768,6 +769,7 @@ def test_k05_realised_variation_requires_full_window_and_atr_uses_true_range() -
         params=_p(
             "P_VOL_WINDOW",
             required_intervals=5,
+            required_sample_instants_utc=tuple(point.effective_at_utc for point in closes),
             trading_year_fraction_per_interval=Decimal("0.003968253968253968253968253968"),
         ),
     )
