@@ -1,5 +1,15 @@
 # M01 Stage-1 predecessor-selection scope — worker repair candidate
 
+> **Post-freeze environment revalidation (2026-10-08):** The PostgreSQL exclusions
+> below describe the original `7b21aae` freeze run, not the current handoff evidence.
+> The supplied proof-environment attachments were subsequently used to execute all
+> excluded PostgreSQL tests. See
+> [`M01_STAGE1_POSTGRES_PRE_REVIEW_VERIFICATION_20261008.md`](M01_STAGE1_POSTGRES_PRE_REVIEW_VERIFICATION_20261008.md)
+> for 42 passing M01 isolation tests, 55 M00 durability cases (five bounded runs),
+> 662 combined Stage-1 tests and 34 M00 implementation tests, with limitations stated.
+> No production or test code changed as part of this revalidation.
+
+
 ## Authority and reviewer disposition
 
 - Governing files: root `GUARDRAILS.md`, root `AGENTS.md`, `tests/AGENTS.override.md`, accepted root `EXEC_PLAN.md` Stage 1, and exact accepted M01 brief/catalogue indexed by `handoff/m01_completion/AUTHORITY_INDEX.md`.

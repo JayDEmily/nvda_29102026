@@ -1,0 +1,8 @@
+...............                                                          [100%]
+=============================== warnings summary ===============================
+tests/product/raw_signal/test_u05_postgresql_durability.py::test_injected_record_only_port_rejects_private_adapter_recovery
+  /usr/lib/python3.13/multiprocessing/popen_fork.py:67: DeprecationWarning: This process (pid=27279) is multi-threaded, use of fork() may lead to deadlocks in the child.
+    self.pid = os.fork()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+15 passed, 1 warning in 1.38s
