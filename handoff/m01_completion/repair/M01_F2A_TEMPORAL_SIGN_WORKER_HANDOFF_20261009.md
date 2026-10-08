@@ -1,0 +1,16 @@
+# Worker return — F2a only: stable trade/quote identity through time
+
+**Action:** execute this single bounded F2 observation-level temporal-correlation repair; stop and return for independent review. Current Stage-1 F2 reviewer disposition is `REPAIR / RECURRENT_CLASS`; F1 inventory remains accepted, while F2/Stage-1 do not.
+
+## Current exact failure
+Read `handoff/m01_completion/review/M01_F2_INDEPENDENT_REVIEW_20261009.md`, the independent public-seam test `handoff/m01_completion/review/proof/test_f2_late_quote_sign_20261009.py`, and its red log. The source mismatch is D015 **trade ↔ contemporaneous quote** temporal correlation, *not* merely D016/D120 failure handling. The root accepted §5 K08 and §§8.1,11 require true trade-time selection, no look-ahead, source lineage and exact signed sums. The original one-trade and two-trade tests are to be retained.
+
+## One bounded semantic unit
+1. Read `GUARDRAILS.md`, `AGENTS.md`, `EXEC_PLAN.md`, exact digest-indexed brief and CSV, F1 classes RC07/RC08 and reviewer history. Determine the authority-derived D015 point-in-time trade/quote rule, including eligible quote and prior distinct trade price, and whether the current public request/typed M00 projection can provide exact correlation. If a mandatory selection law is missing or unrepresentable without changing accepted authority, **stop BLOCKED**, identify the precise law/capability and do not invent one.
+2. First commit proof-only discriminating public-seam tests: reviewer late-quote witness unmodified; quote moves with no new trade; opposite trades in one window; quotes arriving before versus after trade and cutoff; ambiguous midpoint/tick; exact M00 R120 source IDs; necessary predecessor-D/ultimate raw lineage; reuse/recalculation and incompatible contract/version/cutoff refusal. Do **not** satisfy tests by modifying their expected outputs or by hiding a wrong trade result behind blanket `None` if accepted inputs establish a computable result.
+3. Only after red proof commit, implement the smallest repair enabling immutable per-trade signed classification and exact quote input pairing, using admitted interfaces/versions. Preserve M00 ownership, D001–D209 graph and catalogue, D016/D120 existing positive repairs, no defaults and `1.0.0` version. No D064/D065, D121/D122 or other F3/F4 changes in this worker pass.
+4. Rerun the new public proofs, unchanged independent canonical D016/D120 reproducer, existing F2 tests and necessary architecture/type/lint regression. Record commands, environment and exact results; do not claim unexecuted PostgreSQL durability as passed. Commit proof-before-code and freeze full Git with clean state.
+5. Return a **single full-Git tarball** containing this plan, exact code/tests/proofs, logs, reviewer-facing checkpoint and unresolved list. Stop for independent reviewer acceptance; no automatic F2/F3 progression.
+
+## Independent unresolved item — do not merge into F2a
+`F2-U04`: D064 current score dependency/`P_SCORE` implementation and D065 event-to-D064 lineage remain blocked. Keep visible without speculatively changing their law. The next checkpoint will establish whether the admitted brief and typed projection provide a lawful upstream D064 proof, or raise a precise programme authority question. F2a repair must not be represented as F2-wide closure.
