@@ -460,6 +460,7 @@ def test_k02_atm_straddle_requires_exact_call_put_same_expiry_without_metadata_d
                         ("right", "call"),
                         ("delta", Decimal("0.50")),
                         ("expiry", "2026-10-16"),
+                        ("strike", Decimal("150")),
                     ),
                 ),
                 _kv(
@@ -470,6 +471,7 @@ def test_k02_atm_straddle_requires_exact_call_put_same_expiry_without_metadata_d
                         ("right", "put"),
                         ("delta", Decimal("-0.50")),
                         ("expiry", "2026-10-16"),
+                        ("strike", Decimal("150")),
                     ),
                 ),
             )
@@ -488,6 +490,7 @@ def test_k02_atm_straddle_requires_exact_call_put_same_expiry_without_metadata_d
                         ("right", "call"),
                         ("delta", Decimal("0.50")),
                         ("expiry", "2026-10-16"),
+                        ("strike", Decimal("150")),
                     ),
                 ),
                 _kv(
@@ -497,12 +500,42 @@ def test_k02_atm_straddle_requires_exact_call_put_same_expiry_without_metadata_d
                         ("right", "put"),
                         ("delta", Decimal("-0.50")),
                         ("expiry", "2026-10-23"),
+                        ("strike", Decimal("150")),
                     ),
                 ),
             )
         },
     )
     assert mismatched_expiry is None
+
+    mismatched_strike = _eval(
+        "D109",
+        derived={
+            "D087": (
+                _kv(
+                    Decimal("5"),
+                    occurrence_id="call",
+                    metadata=(
+                        ("right", "call"),
+                        ("delta", Decimal("0.50")),
+                        ("expiry", "2026-10-16"),
+                        ("strike", Decimal("150")),
+                    ),
+                ),
+                _kv(
+                    Decimal("4"),
+                    occurrence_id="put",
+                    metadata=(
+                        ("right", "put"),
+                        ("delta", Decimal("-0.50")),
+                        ("expiry", "2026-10-16"),
+                        ("strike", Decimal("155")),
+                    ),
+                ),
+            )
+        },
+    )
+    assert mismatched_strike is None
 
     missing_right = _eval(
         "D109",
@@ -1864,3 +1897,438 @@ def test_each_option_rows_require_complete_contract_selection_policy_before_calc
         incomplete = tuple(key for key in mandatory_contract_join_keys if key != omitted)
         assert materialise(incomplete) is None
     assert materialise(("subject_instrument",)) is None
+
+
+def test_k02_per_expiry_skew_refuses_cross_expiry_points_and_requires_exact_delta() -> None:
+    valid = _eval(
+        "D099",
+        raw={
+            "R111": (
+                _kv(
+                    Decimal("0.30"),
+                    occurrence_id="call-25",
+                    metadata=(
+                        ("right", "call"),
+                        ("delta", Decimal("0.25")),
+                        ("expiry", "2026-10-16"),
+                    ),
+                ),
+                _kv(
+                    Decimal("0.35"),
+                    occurrence_id="put-25",
+                    metadata=(
+                        ("right", "put"),
+                        ("delta", Decimal("-0.25")),
+                        ("expiry", "2026-10-16"),
+                    ),
+                ),
+            )
+        },
+    )
+    assert valid is not None and valid.value == Decimal("5.00")
+
+    mixed_expiry = _eval(
+        "D099",
+        raw={
+            "R111": (
+                _kv(
+                    Decimal("0.30"),
+                    occurrence_id="call-25",
+                    metadata=(
+                        ("right", "call"),
+                        ("delta", Decimal("0.25")),
+                        ("expiry", "2026-10-16"),
+                    ),
+                ),
+                _kv(
+                    Decimal("0.35"),
+                    occurrence_id="put-25",
+                    metadata=(
+                        ("right", "put"),
+                        ("delta", Decimal("-0.25")),
+                        ("expiry", "2026-10-23"),
+                    ),
+                ),
+            )
+        },
+    )
+    assert mixed_expiry is None
+
+    wrong_delta = _eval(
+        "D099",
+        raw={
+            "R111": (
+                _kv(
+                    Decimal("0.30"),
+                    occurrence_id="call-25",
+                    metadata=(
+                        ("right", "call"),
+                        ("delta", Decimal("0.25")),
+                        ("expiry", "2026-10-16"),
+                    ),
+                ),
+                _kv(
+                    Decimal("0.35"),
+                    occurrence_id="put-30",
+                    metadata=(
+                        ("right", "put"),
+                        ("delta", Decimal("-0.30")),
+                        ("expiry", "2026-10-16"),
+                    ),
+                ),
+            )
+        },
+    )
+    assert wrong_delta is None
+
+
+def test_k03_iv_change_refuses_cross_contract_or_cross_delta_bucket_history() -> None:
+    t0 = NOW - timedelta(minutes=5)
+    exact_contract = _eval(
+        "D094",
+        raw={
+            "R111": (
+                _kv(
+                    Decimal("0.30"),
+                    occurrence_id="old-c1",
+                    at=t0,
+                    metadata=(("contract_id", "C1"),),
+                ),
+                _kv(
+                    Decimal("0.40"),
+                    occurrence_id="new-c1",
+                    metadata=(("contract_id", "C1"),),
+                ),
+            )
+        },
+        params=_p("P_WINDOW", anchor_seconds=300),
+    )
+    assert exact_contract is not None and exact_contract.value == Decimal("10.00")
+
+    mixed_contract = _eval(
+        "D094",
+        raw={
+            "R111": (
+                _kv(
+                    Decimal("0.30"),
+                    occurrence_id="old-c2",
+                    at=t0,
+                    metadata=(("contract_id", "C2"),),
+                ),
+                _kv(
+                    Decimal("0.40"),
+                    occurrence_id="new-c1",
+                    metadata=(("contract_id", "C1"),),
+                ),
+            )
+        },
+        params=_p("P_WINDOW", anchor_seconds=300),
+    )
+    assert mixed_contract is None
+
+    exact_bucket = _eval(
+        "D094",
+        raw={
+            "R111": (
+                _kv(
+                    Decimal("0.30"),
+                    occurrence_id="old-25d",
+                    at=t0,
+                    metadata=(
+                        ("expiry", "2026-10-16"),
+                        ("option_right", "call"),
+                        ("delta_bucket", "25d"),
+                    ),
+                ),
+                _kv(
+                    Decimal("0.40"),
+                    occurrence_id="new-25d",
+                    metadata=(
+                        ("expiry", "2026-10-16"),
+                        ("option_right", "call"),
+                        ("delta_bucket", "25d"),
+                    ),
+                ),
+            )
+        },
+        params=_p("P_WINDOW", anchor_seconds=300),
+    )
+    assert exact_bucket is not None and exact_bucket.value == Decimal("10.00")
+
+    mixed_bucket = _eval(
+        "D094",
+        raw={
+            "R111": (
+                _kv(
+                    Decimal("0.30"),
+                    occurrence_id="old-50d",
+                    at=t0,
+                    metadata=(
+                        ("expiry", "2026-10-16"),
+                        ("option_right", "call"),
+                        ("delta_bucket", "50d"),
+                    ),
+                ),
+                _kv(
+                    Decimal("0.40"),
+                    occurrence_id="new-25d",
+                    metadata=(
+                        ("expiry", "2026-10-16"),
+                        ("option_right", "call"),
+                        ("delta_bucket", "25d"),
+                    ),
+                ),
+            )
+        },
+        params=_p("P_WINDOW", anchor_seconds=300),
+    )
+    assert mixed_bucket is None
+
+
+def test_public_seam_refuses_selected_option_l2_without_complete_contract_selection() -> None:
+    raw_api = importlib.import_module("nvda_desk.raw_signal_occurrence_truth.api")
+    identity_type = raw_api.RawSelectionIdentityV1
+    projected_type = raw_api.ProjectedRawValueV1
+    page_type = raw_api.ProjectedRawHistoryPageV1
+
+    def identity(contract_id: str) -> Any:
+        return identity_type(
+            values=(
+                ("contract_id", contract_id),
+                ("underlying_instrument", "NVDA"),
+                ("expiry", "2026-12-18"),
+                ("strike", Decimal("150")),
+                ("option_right", "call"),
+            )
+        )
+
+    c1 = identity("C1")
+    c2 = identity("C2")
+    values = {
+        "R034": ("100", "price", c1),
+        "R035": ("101", "price", c1),
+        "R033": ("1", "size", c2),
+        "R036": ("1", "size", c2),
+    }
+
+    def projected(raw_id: str, contract: Any) -> Any:
+        value, units, _ = values[raw_id]
+        return projected_type(
+            raw_signal_catalogue_id=raw_api.RawSignalCatalogueId(raw_id),
+            observation_occurrence_id=raw_api.observation_occurrence_id(f"d137-{raw_id}"),
+            projection_mapping_id=f"m-{raw_id}",
+            projection_mapping_version=1,
+            source_provider="p",
+            source_variant="snapshot",
+            native_field_path=("quote", raw_id),
+            native_value=Decimal(value),
+            native_units=units,
+            subject_instrument="NVDA",
+            source_temporal_kind="true_instant",
+            source_timestamp_raw=NOW.isoformat(),
+            source_timezone_native="UTC",
+            received_ts_utc=NOW,
+            ingestion_sequence=int(raw_id[1:]),
+            ingestion_sequence_scope=raw_api.ingestion_sequence_scope("p:snapshot"),
+            revision_vintage_native=None,
+            selection_identity=contract,
+        )
+
+    class Reader:
+        def list_projected_raw_history(self, raw_signal_catalogue_id: Any, **kwargs: Any) -> Any:
+            raw_id = raw_signal_catalogue_id.value
+            contract = values[raw_id][2]
+            return page_type(items=(projected(raw_id, contract),), next_cursor=None)
+
+        def project_raw_value(self, *args: object, **kwargs: object) -> object | None:
+            return None
+
+    p_basic = _p("P_BASIC", selection_mode="exact")
+    subject_only = api.InputSelectionPolicyVersionV1(
+        context_id="selection-d137-subject-only",
+        version=1,
+        join_keys=("subject_instrument",),
+        maximum_staleness=timedelta(minutes=1),
+        maximum_skew=timedelta(seconds=10),
+        temporal_basis_permissions=("true_instant",),
+        basket_membership=(),
+    )
+    price_unit = api.UnitConventionVersionV1(
+        context_id="unit-d137-price",
+        version=1,
+        native_units="price",
+        canonical_units="price",
+        scale=Decimal("1"),
+        offset=Decimal("0"),
+    )
+    size_unit = api.UnitConventionVersionV1(
+        context_id="unit-d137-size",
+        version=1,
+        native_units="size",
+        canonical_units="size",
+        scale=Decimal("1"),
+        offset=Decimal("0"),
+    )
+    mappings = tuple(
+        raw_api.RawSignalProjectionMappingV1(
+            mapping_id=f"m-{raw_id}",
+            version=1,
+            raw_signal_catalogue_id=raw_api.RawSignalCatalogueId(raw_id),
+            source_provider="p",
+            source_variant="snapshot",
+            native_field_path=("quote", raw_id),
+            native_units=units,
+        )
+        for raw_id, (_, units, _) in values.items()
+    )
+    owner = api.create_owner(
+        raw_projection_reader=Reader(),
+        raw_projection_mappings=mappings,
+        parameter_sets=(p_basic,),
+        input_selection_policies=(subject_only,),
+        unit_conventions=(price_unit, size_unit),
+        contexts=(),
+        utc_now=lambda: NOW,
+    )
+    profile_ref = api.ParameterProfileRefV1("P_BASIC", p_basic.context_id, 1)
+    request = api.CalculationRequestV1(
+        derived_signal_id="D137",
+        subject_instrument="NVDA",
+        as_of_utc=NOW,
+        knowledge_cutoff_utc=NOW,
+        calculation_definition_version="calc-v1",
+        parameter_set_id=p_basic.context_id,
+        parameter_set_version=1,
+        input_selection_policy_id=subject_only.context_id,
+        input_selection_policy_version=1,
+        context_refs=(),
+        parameter_profile_refs=(profile_ref,),
+        raw_input_bindings=tuple(
+            api.RawInputBindingV1(
+                raw_id,
+                api.VersionRefV1(f"m-{raw_id}", 1),
+                api.VersionRefV1(
+                    price_unit.context_id if units == "price" else size_unit.context_id, 1
+                ),
+                "NVDA",
+                selection_identity=contract,
+            )
+            for raw_id, (_, units, contract) in values.items()
+        ),
+    )
+    assert owner.materialise(request) is None
+
+
+def test_public_seam_requires_exact_versioned_cross_section_basket() -> None:
+    raw_api = importlib.import_module("nvda_desk.raw_signal_occurrence_truth.api")
+    projected_type = raw_api.ProjectedRawValueV1
+    page_type = raw_api.ProjectedRawHistoryPageV1
+
+    p_cross = _p("P_CROSS_SECTION", basket_membership=("A", "B"))
+    selection = api.InputSelectionPolicyVersionV1(
+        context_id="selection-d083-wrong-basket",
+        version=1,
+        join_keys=("subject_instrument",),
+        maximum_staleness=timedelta(minutes=1),
+        maximum_skew=timedelta(seconds=10),
+        temporal_basis_permissions=("true_instant",),
+        basket_membership=("A", "B", "C"),
+    )
+    unit = api.UnitConventionVersionV1(
+        context_id="unit-d083-price",
+        version=1,
+        native_units="price",
+        canonical_units="price",
+        scale=Decimal("1"),
+        offset=Decimal("0"),
+    )
+    mappings = tuple(
+        raw_api.RawSignalProjectionMappingV1(
+            mapping_id=f"m-{raw_id}",
+            version=1,
+            raw_signal_catalogue_id=raw_api.RawSignalCatalogueId(raw_id),
+            source_provider="p",
+            source_variant="snapshot",
+            native_field_path=("quote", raw_id),
+            native_units="price",
+        )
+        for raw_id in ("R037", "R042")
+    )
+    values = {
+        ("R037", "A"): Decimal("110"),
+        ("R037", "B"): Decimal("90"),
+        ("R037", "C"): Decimal("105"),
+        ("R042", "A"): Decimal("100"),
+        ("R042", "B"): Decimal("100"),
+        ("R042", "C"): Decimal("100"),
+    }
+
+    class Reader:
+        def list_projected_raw_history(
+            self, raw_signal_catalogue_id: Any, **kwargs: Any
+        ) -> Any:
+            raw_id = raw_signal_catalogue_id.value
+            subject = kwargs.get("subject_instrument")
+            value = values.get((raw_id, subject))
+            if value is None:
+                return page_type(items=(), next_cursor=None)
+            item = projected_type(
+                raw_signal_catalogue_id=raw_api.RawSignalCatalogueId(raw_id),
+                observation_occurrence_id=raw_api.observation_occurrence_id(
+                    f"d083-{raw_id}-{subject}"
+                ),
+                projection_mapping_id=f"m-{raw_id}",
+                projection_mapping_version=1,
+                source_provider="p",
+                source_variant="snapshot",
+                native_field_path=("quote", raw_id),
+                native_value=value,
+                native_units="price",
+                subject_instrument=subject,
+                source_temporal_kind="true_instant",
+                source_timestamp_raw=NOW.isoformat(),
+                source_timezone_native="UTC",
+                received_ts_utc=NOW,
+                ingestion_sequence=1,
+                ingestion_sequence_scope=raw_api.ingestion_sequence_scope("p:snapshot"),
+                revision_vintage_native=None,
+            )
+            return page_type(items=(item,), next_cursor=None)
+
+        def project_raw_value(self, *args: object, **kwargs: object) -> object | None:
+            return None
+
+    owner = api.create_owner(
+        raw_projection_reader=Reader(),
+        raw_projection_mappings=mappings,
+        parameter_sets=(p_cross,),
+        input_selection_policies=(selection,),
+        unit_conventions=(unit,),
+        contexts=(),
+        utc_now=lambda: NOW,
+    )
+    profile_ref = api.ParameterProfileRefV1("P_CROSS_SECTION", p_cross.context_id, 1)
+    request = api.CalculationRequestV1(
+        derived_signal_id="D083",
+        subject_instrument="NVDA",
+        as_of_utc=NOW,
+        knowledge_cutoff_utc=NOW,
+        calculation_definition_version="calc-v1",
+        parameter_set_id=p_cross.context_id,
+        parameter_set_version=1,
+        input_selection_policy_id=selection.context_id,
+        input_selection_policy_version=1,
+        context_refs=(),
+        parameter_profile_refs=(profile_ref,),
+        raw_input_bindings=tuple(
+            api.RawInputBindingV1(
+                raw_id,
+                api.VersionRefV1(f"m-{raw_id}", 1),
+                api.VersionRefV1(unit.context_id, 1),
+                subject,
+            )
+            for raw_id in ("R037", "R042")
+            for subject in ("A", "B", "C")
+        ),
+    )
+    assert owner.materialise(request) is None
