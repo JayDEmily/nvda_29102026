@@ -271,3 +271,64 @@ def test_k08_risk_quantity_refuses_implicit_uncertainty_and_liquidity_multiplier
 def test_k08_insert_delete_rates_require_versioned_window() -> None:
     for identity in ("D139", "D140"):
         assert evaluate(identity, parameters=param("P_RULE")) is None
+
+
+def test_every_stage1_row_routes_once_via_its_hash_bound_kernel(monkeypatch: object) -> None:
+    # Runtime branch census: inject a recorder at each kernel's unique
+    # mathematical entrypoint. This proves dispatch, not numerical semantics;
+    # separate live mathematical tests exercise the real implementations.
+    from pytest import MonkeyPatch
+
+    assert isinstance(monkeypatch, MonkeyPatch)
+    dispatch = {
+        "K01_TIME": "_eval_k01",
+        "K02_ALGEBRA": "_eval_k02",
+        "K03_CHANGE_RETURN": "_eval_k03",
+        "K04_STANDARDISE_RANK": "_eval_k04",
+        "K05_REALIZED_RISK": "_eval_k05",
+        "K06_REGRESSION_DEPENDENCE": "_eval_k06",
+        "K07_WEIGHTED_SCORE": "_eval_k07",
+        "K08_RULE_BUCKET_POLICY": "_eval_k08",
+        "K16_STRUCTURED_ASSEMBLY": "_eval_k16",
+        "K17_ORDER_FLOW_IMBALANCE": "_eval_k17",
+    }
+    routed: list[str] = []
+    for kernel, name in dispatch.items():
+        def marker(*args: object, _kernel: str = kernel, **kwargs: object) -> Decimal:
+            routed.append(_kernel)
+            return Decimal(3)
+        monkeypatch.setattr(_stage1, name, marker)
+    for row in _catalogue.catalogue_rows():
+        if row.kernel_id not in dispatch:
+            continue
+        routed.clear()
+        result = evaluate(row.derived_id, parameters=param(row.parameter_profiles[0]))
+        assert result is not None and result.value == Decimal(3), row.derived_id
+        assert routed == [row.kernel_id], row.derived_id
+
+
+def test_static_stage1_row_branches_have_explicit_implementation_markers() -> None:
+    # An implementation marker is not a proof of correct arithmetic, but
+    # catches a catalogue ID added without any corresponding kernel handling.
+    import ast
+    from pathlib import Path
+
+    module = ast.parse(Path(_stage1.__file__).read_text(encoding="utf-8"))
+    functions = {
+        node.name: node for node in module.body if isinstance(node, ast.FunctionDef)
+    }
+    branches = {
+        "K01_TIME": "_eval_k01", "K02_ALGEBRA": "_eval_k02",
+        "K03_CHANGE_RETURN": "_eval_k03", "K04_STANDARDISE_RANK": "_eval_k04",
+        "K06_REGRESSION_DEPENDENCE": "_eval_k06",
+        "K08_RULE_BUCKET_POLICY": "_eval_k08",
+        "K16_STRUCTURED_ASSEMBLY": "_eval_k16",
+    }
+    for row in _catalogue.catalogue_rows():
+        if row.kernel_id not in branches:
+            continue
+        markers = {
+            node.value for node in ast.walk(functions[branches[row.kernel_id]])
+            if isinstance(node, ast.Constant) and isinstance(node.value, str)
+        }
+        assert row.derived_id in markers, row.derived_id
