@@ -1516,7 +1516,37 @@ class _OwnerV1:
             subject_instrument=request.subject_instrument,
             limit=100000,
         )
+        # A D identity and the two obvious references are insufficient to
+        # authorise history reuse: context, mapping and canonical-unit versions
+        # are part of the predecessor's calculation meaning (brief §§8, 13).
+        # Only contexts actually used by the predecessor's declared row
+        # govern its reuse; an unrelated context for the requesting row does
+        # not retroactively alter the predecessor's meaning.
+        from ._catalogue import catalogue_row
+
+        predecessor_requirements = {
+            item.split(":", 1)[0]
+            for item in catalogue_row(derived_signal_id).typed_contexts
+            if not item.startswith("CalculationParameterSet:")
+        }
         required = {parameter_ref, selection_ref}
+        for ref in request.context_refs:
+            resolved_context = self._contexts.get((ref.context_id, ref.version))
+            if (
+                resolved_context is not None
+                and type(resolved_context).__name__.removesuffix("V1") in predecessor_requirements
+            ):
+                required.add(ref)
+        allowed_raw_versions = {
+            (
+                binding.raw_signal_id,
+                binding.projection_mapping_ref.context_id,
+                binding.projection_mapping_ref.version,
+                binding.unit_convention_ref.context_id,
+                binding.unit_convention_ref.version,
+            )
+            for binding in request.raw_input_bindings
+        }
         return tuple(
             value
             for value in candidates
@@ -1524,6 +1554,21 @@ class _OwnerV1:
             and value.effective_as_of_utc <= request.as_of_utc
             and value.knowledge_cutoff_utc <= request.knowledge_cutoff_utc
             and required <= set(value.parameter_context_refs)
+            and all(
+                (
+                    item.raw_signal_id,
+                    item.projection_mapping_id,
+                    item.projection_mapping_version,
+                    item.unit_convention_id,
+                    item.unit_convention_version,
+                ) in allowed_raw_versions
+                for item in value.raw_input_lineage
+            )
+            and all(
+                VersionRefV1(item.unit_convention_id, item.unit_convention_version)
+                in value.convention_refs
+                for item in value.raw_input_lineage
+            )
         )
 
     def _materialise(
@@ -1564,15 +1609,6 @@ class _OwnerV1:
             raw_inputs[raw_signal_id] = values
             direct_lineage.extend(lineage)
             convention_refs.extend(conventions)
-
-        if len(raw_inputs) > 1:
-            latest = [
-                max(values, key=lambda item: item.effective_at_utc).effective_at_utc
-                for values in raw_inputs.values()
-                if values
-            ]
-            if latest and max(latest) - min(latest) > selection.maximum_skew:
-                return None
 
         selection_keys = self._selection_join_keys(selection)
         selected_identity_values: dict[str, _SelectionIdentityScalarV1] = {}
@@ -1640,11 +1676,39 @@ class _OwnerV1:
                     value.derived_occurrence_id,
                 ),
             )
+            # A uniformly stale predecessor graph cannot pass the skew test
+            # merely because all its members agree on an obsolete instant.
+            # Historical observations needed inside a kernel remain available
+            # in `history`; this freshness gate applies to the current edge.
+            if request.as_of_utc - current.effective_as_of_utc > selection.maximum_staleness:
+                return None
             immediate_predecessors.append(current)
             inherited_lineage.extend(current.raw_input_lineage)
             derived_inputs[predecessor_id] = tuple(
                 self._occurrence_kernel_value(value) for value in history
             )
+
+        # Max skew applies across the actual latest subject/member of each
+        # direct R input AND each current predecessor D input.  Comparing one
+        # maximum per R family misses over-skewed members in a versioned basket;
+        # ignoring D edges permits an asynchronous graph to masquerade as a
+        # synchronous snapshot.
+        synchronous_instants = [
+            max(
+                (item for item in values if item.subject_instrument == subject),
+                key=lambda item: (item.effective_at_utc, item.received_ts_utc, item.occurrence_id),
+            ).effective_at_utc
+            for values in raw_inputs.values()
+            for subject in {item.subject_instrument for item in values}
+        ]
+        synchronous_instants.extend(
+            value.effective_as_of_utc for value in immediate_predecessors
+        )
+        if (
+            synchronous_instants
+            and max(synchronous_instants) - min(synchronous_instants) > selection.maximum_skew
+        ):
+            return None
 
         selected_identity = self._resolved_selection_identity(
             selected_identity_values, selection_keys

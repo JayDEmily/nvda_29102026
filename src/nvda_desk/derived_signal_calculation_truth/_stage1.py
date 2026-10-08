@@ -1766,9 +1766,15 @@ def _eval_k04(
         ordered_values = tuple(sorted(values, key=lambda x: x[1]))
         current_value, current_at = ordered_values[-1]
         history_values = tuple(v for v, at in ordered_values[:-1] if at < current_at)
-        count = _i(params.get("history_count", len(history_values)))
+        # A historical baseline is an exact parameterised window, never the
+        # number of observations the reader happened to return today.
+        if "history_count" not in params or "minimum_sample" not in params:
+            return None
+        count = _i(params["history_count"])
+        minimum = _i(params["minimum_sample"])
+        if count < minimum or minimum < 2 or len(history_values) < count:
+            return None
         history_values = history_values[-count:]
-        minimum = _i(params.get("minimum_sample", 2))
         if identity == "D028":
             return (
                 None
@@ -1813,6 +1819,8 @@ def _eval_k05(
             lows = {v.occurrence_id: _d(v.value) for v in raw.get("R142", ())}
             bars = sorted(raw.get("R143", ()), key=lambda v: v.effective_at_utc)
             bar_count = _i(params["bar_count"])
+            if bar_count <= 0:
+                return None
             ids = [
                 v.occurrence_id
                 for v in bars
@@ -1830,16 +1838,42 @@ def _eval_k05(
                 high, low = highs[oid], lows[oid]
                 trs.append(max(high - low, abs(high - prev), abs(low - prev)))
             return _sample_mean(tuple(trs))
-        price_series = tuple(
-            _d(v.value) for v in sorted(raw.get("R151", ()), key=lambda v: v.effective_at_utc)
-        )
+        # Required sample instants are supplied by the immutable versioned
+        # calendar/sampling policy.  The return count alone cannot prove five
+        # trading days or any other named interval was actually covered.
+        required = _i(params["required_intervals"])
+        expected = params.get("required_sample_instants_utc")
+        if (
+            required <= 0
+            or type(expected) is not tuple
+            or len(expected) != required + 1
+            or any(
+                type(instant) is not datetime
+                or instant.tzinfo is None
+                or instant.utcoffset() != timedelta(0)
+                for instant in expected
+            )
+            or tuple(sorted(set(expected))) != expected
+        ):
+            return None
+        # In the presence of revisions, the newest receipt visible at cutoff
+        # wins for each declared sample instant; unknown/missing instants fail.
+        by_instant: dict[datetime, KernelValueV1] = {}
+        for value in raw.get("R151", ()):
+            instant = value.effective_at_utc
+            if instant in expected and (
+                instant not in by_instant
+                or (value.received_ts_utc, value.occurrence_id)
+                > (by_instant[instant].received_ts_utc, by_instant[instant].occurrence_id)
+            ):
+                by_instant[instant] = value
+        if set(by_instant) != set(expected):
+            return None
+        price_series = tuple(_d(by_instant[instant].value) for instant in expected)
         log_returns = _log_returns(price_series)
-        if log_returns is None:
+        if log_returns is None or len(log_returns) != required:
             return None
-        required = _i(params.get("required_intervals", 0))
-        if required <= 0 or len(log_returns) < required:
-            return None
-        selected_returns = log_returns[-required:]
+        selected_returns = log_returns
         if identity == "D038":
             rv = sum((r * r for r in selected_returns), _DEC0)
             bv = (
