@@ -48,7 +48,7 @@ The Worker may perform proof-authoring and implementation sequentially on this b
 
 ### Proposition
 
-Every authoritative catalogue row bound to `K01_TIME` through `K08_RULE_BUCKET_POLICY`, plus `K16_STRUCTURED_ASSEMBLY` and `K17_ORDER_FLOW_IMBALANCE`, is calculated under the exact accepted mathematics and version-consistent dependency/history rules with no hidden defaults.
+Every authoritative catalogue row bound to `K01_TIME` through `K08_RULE_BUCKET_POLICY`, plus `K16_STRUCTURED_ASSEMBLY` and `K17_ORDER_FLOW_IMBALANCE`, has its Stage-1 kernel logic bound and implemented under the exact accepted mathematics and version-consistent dependency/history rules with no hidden defaults. Rows whose complete dependency closure is available within Stage 1 are also publicly reachable end to end at this stage; rows whose normative dependency closure requires Stage-2 predecessors remain fail-closed at the public graph boundary until those predecessors exist.
 
 ### Required proof/implementation scope
 
@@ -66,6 +66,20 @@ Cover the accepted catalogue bindings and representative/adversarial behaviour f
 - order-flow imbalance, including D145;
 - version-consistent predecessor reuse, topological evaluation and history sufficiency;
 - fail-closed absence, no-look-ahead and idempotent/append-only occurrence behaviour insofar as exercised by this group.
+
+
+### Stage-1 cross-stage dependency boundary — Programme Owner amendment 2026-10-08
+
+The accepted catalogue contains 174 rows whose own kernel belongs to Stage 1. Dependency analysis of the normative `derived_dependencies` graph establishes:
+
+- **144 Stage-1 rows** have a complete predecessor closure entirely within Stage 1 and therefore must be publicly reachable end to end for Stage-1 acceptance;
+- **25 Stage-1 rows** have at least one direct Stage-2 predecessor: `D097`, `D098`, `D107`, `D108`, `D128`, `D155`, `D158`, `D159`, `D163`, `D164`, `D166`, `D167`, `D172`, `D173`, `D175`, `D176`, `D178`, `D187`, `D190`, `D191`, `D192`, `D199`, `D200`, `D207`, `D208`;
+- **5 additional Stage-1 rows** reach Stage 2 transitively through another Stage-1 predecessor: `D156`, `D157`, `D171`, `D186`, `D189`;
+- therefore **30 Stage-1 rows** cannot yet have complete public end-to-end graph materialisation without implementing Stage-2 authority prematurely.
+
+For Stage-1 acceptance, all 174 Stage-1 rows will have exact catalogue binding and Stage-1 kernel implementation/proof. The 144 Stage-1-closed rows will additionally be publicly reachable end to end. For the 30 cross-stage rows, Stage 1 will prove the row's own kernel semantics, binding, dependency declaration and fail-closed behaviour using exact predecessor values where required, but public end-to-end reachability through the real graph is deferred until the normative Stage-2 predecessors exist. Stage 2 will prove those cross-stage connections when it implements `K09` through `K15`; Stage 3 will prove the complete 209-row graph end to end.
+
+This amendment changes only the execution/acceptance boundary. It does not alter any accepted `Dxxx` identity, dependency edge, kernel binding, mathematics or final M01 acceptance requirement.
 
 ### Stage 1 execution leaves — Programme Owner amendment 2026-10-08
 
@@ -106,12 +120,13 @@ This leaf will:
 
 #### Leaf 3 — Stage-1 kernel and catalogue closure
 
-**Proposition:** Every authoritative Stage-1 catalogue row is bound, implemented, reachable and semantically faithful to its accepted kernel mathematics under the now-closed selection and graph laws.
+**Proposition:** Every authoritative Stage-1 catalogue row is bound, implemented and semantically faithful to its accepted kernel mathematics under the now-closed selection and graph laws; every Stage-1-closed row is publicly reachable end to end, while every cross-stage row remains correctly fail-closed until its normative Stage-2 predecessors exist.
 
 This leaf will:
 
 - census the complete Stage-1 population bound to `K01_TIME` through `K08_RULE_BUCKET_POLICY`, `K16_STRUCTURED_ASSEMBLY` and `K17_ORDER_FLOW_IMBALANCE`;
 - prove that every authoritative Stage-1 row is implemented exactly once with the accepted dependency set, parameter profile and typed-context conjunction;
+- prove end-to-end public reachability for all 144 Stage-1-closed rows and prove kernel semantics plus fail-closed public behaviour for all 30 cross-stage rows without introducing Stage-2 implementation;
 - run representative and adversarial mathematical proof across every Stage-1 kernel family, including temporal calculations, algebra/scaling, anchored returns, rank/baseline law, realised-risk history, regression/dependence, scoring/transforms, rule ordering/tie-breaks, D155 structured assembly and D145 order-flow imbalance;
 - run the full Stage-1 regression plus the necessary architecture, dependency, public-seam, type and lint checks;
 - verify that no Stage-2 kernel (`K09` through `K15`) or later-module behaviour has been introduced;
@@ -127,7 +142,7 @@ Every authoritative catalogue row bound to `K09_SURFACE_DENSITY` through `K15_EV
 
 ### Required proof/implementation scope
 
-Cover the accepted surface/density, conditional-distribution/scenario, exposure/stress, execution-aware value, expected-risk utility, path-attribution and evaluation semantics, including required option/P&L/evaluation conventions, candidate/live-position contexts, no-look-ahead and cost double-counting exclusion.
+Cover the accepted surface/density, conditional-distribution/scenario, exposure/stress, execution-aware value, expected-risk utility, path-attribution and evaluation semantics, including required option/P&L/evaluation conventions, candidate/live-position contexts, no-look-ahead and cost double-counting exclusion. Implement the normative Stage-2 predecessors required by the 30 cross-stage Stage-1 rows and prove those previously deferred cross-stage graph connections become lawfully reachable without changing their Stage-1 kernel semantics.
 
 ### Review boundary
 
