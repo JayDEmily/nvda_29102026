@@ -1,0 +1,175 @@
+derived_id,workbook_row,signal_name,kernel_id,parameter_profiles,typed_contexts,parameter_window,raw_dependencies,derived_dependencies,raw_count,derived_count,stage2_boundary,direct_stage2_predecessors,transitive_stage2_ancestors,brief_rule_ref,binding_note
+D001,Derived Signals!5,Canonical event timestamp UTC,K01_TIME,P_TIME,,,R002;R003,,2,0,STAGE1_CLOSED,,,§5 K01_TIME — explicit D001 rule,
+D002,Derived Signals!6,Observation/source age,K01_TIME,P_TIME,,,R001;R002,D001,2,1,STAGE1_CLOSED,,,§5 K01_TIME — explicit D002 rule,
+D003,Derived Signals!7,Market-local timestamp,K01_TIME,P_TIME,,,R004,D001,1,1,STAGE1_CLOSED,,,§5 K01_TIME — explicit D003 rule,
+D004,Derived Signals!8,Exchange-local trading date,K01_TIME,P_TIME,,,R023;R024,D003,2,1,STAGE1_CLOSED,,,§5 K01_TIME — explicit D004 rule,
+D005,Derived Signals!9,Market session phase,K01_TIME,P_TIME,,,R023;R024,D003,2,1,STAGE1_CLOSED,,,§5 K01_TIME — explicit D005 rule,
+D006,Derived Signals!10,Quote staleness score,K07_WEIGHTED_SCORE,P_SCORE,,,R005;R001;R058,D002,3,1,STAGE1_CLOSED,,,§5 K07_WEIGHTED_SCORE — apply kernel to this row concept,
+D007,Derived Signals!11,Required-field completeness ratio,K08_RULE_BUCKET_POLICY,P_RULE,RequiredFieldPolicy,,,,0,0,STAGE1_CLOSED,,,§5 K08_RULE_BUCKET_POLICY — explicit D007 rule,
+D008,Derived Signals!12,Cross-source temporal alignment quality,K07_WEIGHTED_SCORE,P_SCORE,,,R001,D001;D002,1,2,STAGE1_CLOSED,,,§5 K07_WEIGHTED_SCORE — explicit D008 rule,
+D009,Derived Signals!13,Macro series revision/vintage status,K01_TIME,P_TIME,,,R280;R281;R282,,3,0,STAGE1_CLOSED,,,§5 K01_TIME — explicit D009 rule,Mutually exclusive vintage classification precedence fixed in K01.
+D010,Derived Signals!14,Market-open/liquid-session flag,K01_TIME,P_TIME,,,R023;R024;R005,D003,3,1,STAGE1_CLOSED,,,§5 K01_TIME — explicit D010 rule,
+D011,Derived Signals!15,Bid-ask midpoint,K02_ALGEBRA,P_BASIC,,,R034;R035,,2,0,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D011 rule,
+D012,Derived Signals!16,Absolute bid-ask spread,K02_ALGEBRA,P_BASIC,,,R034;R035,,2,0,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D012 rule,
+D013,Derived Signals!17,Relative bid-ask spread,K02_ALGEBRA,P_BASIC,,,,D011;D012,0,2,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D013 rule,
+D014,Derived Signals!18,Top-of-book size imbalance,K02_ALGEBRA,P_BASIC,,,R033;R036,,2,0,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D014 rule,
+D015,Derived Signals!19,Trade direction proxy,K08_RULE_BUCKET_POLICY,P_RULE,,,R120;R126;R127,D011,3,1,STAGE1_CLOSED,,,§5 K08_RULE_BUCKET_POLICY — explicit D015 rule,
+D016,Derived Signals!20,Signed trade volume,K08_RULE_BUCKET_POLICY,P_RULE,,1s/5s/1m/5m,R121,D015,1,1,STAGE1_CLOSED,,,§5 K08_RULE_BUCKET_POLICY — explicit D016 rule,
+D017,Derived Signals!21,System-computed session VWAP,K02_ALGEBRA,P_BASIC,,Session or anchored window,R120;R121,,2,0,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D017 rule,
+D018,Derived Signals!22,IBKR VWAP versus system VWAP difference,K02_ALGEBRA,P_BASIC,,,R137,D017,1,1,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D018 rule,
+D019,Derived Signals!23,1-minute log return,K03_CHANGE_RETURN,P_WINDOW,,1 minute,R143,,1,0,STAGE1_CLOSED,,,§5 K03_CHANGE_RETURN — explicit D019 rule,
+D020,Derived Signals!24,5-minute log return,K03_CHANGE_RETURN,P_WINDOW,,5 minutes,R143,,1,0,STAGE1_CLOSED,,,§5 K03_CHANGE_RETURN — explicit D020 rule,
+D021,Derived Signals!25,30-minute log return,K03_CHANGE_RETURN,P_WINDOW,,30 minutes,R143,,1,0,STAGE1_CLOSED,,,§5 K03_CHANGE_RETURN — explicit D021 rule,
+D022,Derived Signals!26,Session-to-date return,K03_CHANGE_RETURN,P_WINDOW,,Session-to-date,R043;R037,,2,0,STAGE1_CLOSED,,,§5 K03_CHANGE_RETURN — explicit D022 rule,
+D023,Derived Signals!27,Overnight/pre-market gap,K03_CHANGE_RETURN,P_WINDOW,,Prior close to current/open,R042;R037,,2,0,STAGE1_CLOSED,,,§5 K03_CHANGE_RETURN — explicit D023 rule,
+D024,Derived Signals!28,Return acceleration/deceleration,K03_CHANGE_RETURN,P_WINDOW,,1m vs 5m vs 30m,,D019;D020;D021,0,3,STAGE1_CLOSED,,,§5 K03_CHANGE_RETURN — explicit D024 rule,
+D025,Derived Signals!29,Position within session high-low range,K02_ALGEBRA,P_BASIC,,,R039;R040;R037,,3,0,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D025 rule,
+D026,Derived Signals!30,Price deviation from VWAP,K03_CHANGE_RETURN,P_WINDOW,,,R037;R137,,2,0,STAGE1_CLOSED,,,§5 K03_CHANGE_RETURN — explicit D026 rule,
+D027,Derived Signals!31,VWAP rate of change,K03_CHANGE_RETURN,P_WINDOW,,5 minutes,R137,,1,0,STAGE1_CLOSED,,,§5 K03_CHANGE_RETURN — explicit D027 rule,
+D028,Derived Signals!32,Relative volume versus normal time-of-day,K04_STANDARDISE_RANK,P_BASELINE,,Time-of-day baseline,R041;R044,,2,0,STAGE1_CLOSED,,,§5 K04_STANDARDISE_RANK — explicit D028 rule,Historical baseline only; current observation excluded by K04 no-look-ahead law.
+D029,Derived Signals!33,Volume z-score,K04_STANDARDISE_RANK,P_BASELINE,,20-60 sessions,R144,,1,0,STAGE1_CLOSED,,,§5 K04_STANDARDISE_RANK — explicit D029 rule,Historical baseline only; current observation excluded by K04 no-look-ahead law.
+D030,Derived Signals!34,Trade-rate z-score,K04_STANDARDISE_RANK,P_BASELINE,,20-60 sessions,R062,,1,0,STAGE1_CLOSED,,,§5 K04_STANDARDISE_RANK — explicit D030 rule,Historical baseline only; current observation excluded by K04 no-look-ahead law.
+D031,Derived Signals!35,Volume-rate z-score,K04_STANDARDISE_RANK,P_BASELINE,,20-60 sessions,R063,,1,0,STAGE1_CLOSED,,,§5 K04_STANDARDISE_RANK — explicit D031 rule,Historical baseline only; current observation excluded by K04 no-look-ahead law.
+D032,Derived Signals!36,5-minute realised volatility,K05_REALIZED_RISK,P_VOL_WINDOW,,5 minutes,R151,,1,0,STAGE1_CLOSED,,,§5 K05_REALIZED_RISK — explicit D032 rule,
+D033,Derived Signals!37,30-minute realised volatility,K05_REALIZED_RISK,P_VOL_WINDOW,,30 minutes,R151,,1,0,STAGE1_CLOSED,,,§5 K05_REALIZED_RISK — explicit D033 rule,
+D034,Derived Signals!38,Intraday/session realised volatility,K05_REALIZED_RISK,P_VOL_WINDOW,,1 session,R151,,1,0,STAGE1_CLOSED,,,§5 K05_REALIZED_RISK — explicit D034 rule,
+D035,Derived Signals!39,5-day realised volatility,K05_REALIZED_RISK,P_VOL_WINDOW,,5 trading days,R151,,1,0,STAGE1_CLOSED,,,§5 K05_REALIZED_RISK — explicit D035 rule,
+D036,Derived Signals!40,10-day realised volatility,K05_REALIZED_RISK,P_VOL_WINDOW,,10 trading days,R151,,1,0,STAGE1_CLOSED,,,§5 K05_REALIZED_RISK — explicit D036 rule,
+D037,Derived Signals!41,20-day realised volatility,K05_REALIZED_RISK,P_VOL_WINDOW,,20 trading days,R151,,1,0,STAGE1_CLOSED,,,§5 K05_REALIZED_RISK — explicit D037 rule,
+D038,Derived Signals!42,Jump-variation estimate,K05_REALIZED_RISK,P_VOL_WINDOW,,Intraday / rolling days,R151;R149;R150,,3,0,STAGE1_CLOSED,,,§5 K05_REALIZED_RISK — explicit D038 rule,
+D039,Derived Signals!43,5-minute average true range,K05_REALIZED_RISK,P_VOL_WINDOW,,Rolling 5-minute bars,R141;R142;R143,,3,0,STAGE1_CLOSED,,,§5 K05_REALIZED_RISK — explicit D039 rule,
+D040,Derived Signals!44,Trend strength score,K07_WEIGHTED_SCORE,P_SCORE,,Intraday multi-horizon,,D020;D021;D027;D024,0,4,STAGE1_CLOSED,,,§5 K07_WEIGHTED_SCORE — apply kernel to this row concept,
+D041,Derived Signals!45,Mean-reversion score,K07_WEIGHTED_SCORE,P_SCORE,,Intraday,,D026;D040;D033,0,3,STAGE1_CLOSED,,,§5 K07_WEIGHTED_SCORE — apply kernel to this row concept,
+D042,Derived Signals!46,2s10s Treasury slope,K02_ALGEBRA,P_BASIC,,,R247;R249,,2,0,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D042 rule,
+D043,Derived Signals!47,3m10y Treasury slope,K02_ALGEBRA,P_BASIC,,,R246;R249,,2,0,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D043 rule,
+D044,Derived Signals!48,10-year real-yield change,K03_CHANGE_RETURN,P_WINDOW,,1d/5d,R252,,1,0,STAGE1_CLOSED,,,§5 K03_CHANGE_RETURN — explicit D044 rule,
+D045,Derived Signals!49,10-year nominal-yield change,K03_CHANGE_RETURN,P_WINDOW,,1d/5d,R249,,1,0,STAGE1_CLOSED,,,§5 K03_CHANGE_RETURN — explicit D045 rule,
+D046,Derived Signals!50,10-year breakeven-inflation change,K03_CHANGE_RETURN,P_WINDOW,,1d/5d,R255,,1,0,STAGE1_CLOSED,,,§5 K03_CHANGE_RETURN — explicit D046 rule,
+D047,Derived Signals!51,SOFR minus effective Fed funds spread,K02_ALGEBRA,P_BASIC,,,R257;R256,,2,0,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D047 rule,
+D048,Derived Signals!52,Broad USD rate of change,K03_CHANGE_RETURN,P_WINDOW,,1d/5d/20d,R245,,1,0,STAGE1_CLOSED,,,§5 K03_CHANGE_RETURN — explicit D048 rule,
+D049,Derived Signals!53,JPY/USD rate of change,K03_CHANGE_RETURN,P_WINDOW,,1d/5d,R274,,1,0,STAGE1_CLOSED,,,§5 K03_CHANGE_RETURN — explicit D049 rule,
+D050,Derived Signals!54,HKD/USD rate of change,K03_CHANGE_RETURN,P_WINDOW,,1d/5d,R275,,1,0,STAGE1_CLOSED,,,§5 K03_CHANGE_RETURN — explicit D050 rule,
+D051,Derived Signals!55,CNY/USD rate of change,K03_CHANGE_RETURN,P_WINDOW,,1d/5d,R276,,1,0,STAGE1_CLOSED,,,§5 K03_CHANGE_RETURN — explicit D051 rule,
+D052,Derived Signals!56,VIX change,K03_CHANGE_RETURN,P_WINDOW,,5m/1h/1d where source permits,R236,,1,0,STAGE1_CLOSED,,,§5 K03_CHANGE_RETURN — explicit D052 rule,
+D053,Derived Signals!57,VVIX change,K03_CHANGE_RETURN,P_WINDOW,,5m/1h/1d where source permits,R237,,1,0,STAGE1_CLOSED,,,§5 K03_CHANGE_RETURN — explicit D053 rule,
+D054,Derived Signals!58,VIX1D change,K03_CHANGE_RETURN,P_WINDOW,,5m/1h/1d where source permits,R238,,1,0,STAGE1_CLOSED,,,§5 K03_CHANGE_RETURN — explicit D054 rule,
+D055,Derived Signals!59,VIX9D change,K03_CHANGE_RETURN,P_WINDOW,,5m/1h/1d where source permits,R239,,1,0,STAGE1_CLOSED,,,§5 K03_CHANGE_RETURN — explicit D055 rule,
+D056,Derived Signals!60,VIX3M change,K03_CHANGE_RETURN,P_WINDOW,,5m/1h/1d where source permits,R240,,1,0,STAGE1_CLOSED,,,§5 K03_CHANGE_RETURN — explicit D056 rule,
+D057,Derived Signals!61,VIX1D-to-VIX9D term slope,K02_ALGEBRA,P_BASIC,,,R238;R239,,2,0,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D057 rule,
+D058,Derived Signals!62,VIX9D-to-VIX term slope,K02_ALGEBRA,P_BASIC,,,R239;R236,,2,0,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D058 rule,
+D059,Derived Signals!63,VIX-to-VIX3M term slope,K02_ALGEBRA,P_BASIC,,,R236;R240,,2,0,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D059 rule,
+D060,Derived Signals!64,VVIX/VIX ratio,K02_ALGEBRA,P_BASIC,,,R237;R236,,2,0,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D060 rule,
+D061,Derived Signals!65,Composite US volatility regime score,K07_WEIGHTED_SCORE,P_SCORE,,,,D052;D053;D057;D058;D059;D060,0,6,STAGE1_CLOSED,,,§5 K07_WEIGHTED_SCORE — apply kernel to this row concept,
+D062,Derived Signals!66,Time to next scheduled event,K01_TIME,P_TIME,,,R284,D001,1,1,STAGE1_CLOSED,,,§5 K01_TIME — explicit D062 rule,
+D063,Derived Signals!67,Standardised macro surprise,K04_STANDARDISE_RANK,P_BASELINE,,Release-specific historical window,R286;R285,,2,0,STAGE1_CLOSED,,,§5 K04_STANDARDISE_RANK — explicit D063 rule,Historical baseline only; current observation excluded by K04 no-look-ahead law.
+D064,Derived Signals!68,Event importance score,K07_WEIGHTED_SCORE,P_SCORE,,,R289,,1,0,STAGE1_CLOSED,,,§5 K07_WEIGHTED_SCORE — apply kernel to this row concept,
+D065,Derived Signals!69,Active event-window flag,K08_RULE_BUCKET_POLICY,P_RULE,CalculationParameterSet:P_RULE,,R284,D062;D064,1,2,STAGE1_CLOSED,,,§5 K08_RULE_BUCKET_POLICY — explicit D065 rule,R284 is authoritative for pre/post event-window selection; D062 is pre-event countdown only.
+D066,Derived Signals!70,Nikkei 225 return,K03_CHANGE_RETURN,P_WINDOW,,1d,R270,,1,0,STAGE1_CLOSED,,,§5 K03_CHANGE_RETURN — explicit D066 rule,
+D067,Derived Signals!71,Hong Kong index return,K03_CHANGE_RETURN,P_WINDOW,,1d,R271,,1,0,STAGE1_CLOSED,,,§5 K03_CHANGE_RETURN — explicit D067 rule,
+D068,Derived Signals!72,China index return,K03_CHANGE_RETURN,P_WINDOW,,1d,R272,,1,0,STAGE1_CLOSED,,,§5 K03_CHANGE_RETURN — explicit D068 rule,
+D069,Derived Signals!73,China technology index return,K03_CHANGE_RETURN,P_WINDOW,,1d,R273,,1,0,STAGE1_CLOSED,,,§5 K03_CHANGE_RETURN — explicit D069 rule,
+D070,Derived Signals!74,International overnight risk score,K07_WEIGHTED_SCORE,P_SCORE,,,,D066;D067;D068;D069;D049;D050;D051,0,7,STAGE1_CLOSED,,,§5 K07_WEIGHTED_SCORE — apply kernel to this row concept,
+D071,Derived Signals!75,SPY/S&P proxy intraday return,K03_CHANGE_RETURN,P_WINDOW,,,R037;R042,,2,0,STAGE1_CLOSED,,,§5 K03_CHANGE_RETURN — explicit D071 rule,
+D072,Derived Signals!76,QQQ/Nasdaq-100 proxy intraday return,K03_CHANGE_RETURN,P_WINDOW,,,R037;R042,,2,0,STAGE1_CLOSED,,,§5 K03_CHANGE_RETURN — explicit D072 rule,
+D073,Derived Signals!77,SMH semiconductor ETF intraday return,K03_CHANGE_RETURN,P_WINDOW,,,R037;R042,,2,0,STAGE1_CLOSED,,,§5 K03_CHANGE_RETURN — explicit D073 rule,
+D074,Derived Signals!78,SOXX semiconductor ETF intraday return,K03_CHANGE_RETURN,P_WINDOW,,,R037;R042,,2,0,STAGE1_CLOSED,,,§5 K03_CHANGE_RETURN — explicit D074 rule,
+D075,Derived Signals!79,NVDA intraday return,K03_CHANGE_RETURN,P_WINDOW,,,R037;R042,,2,0,STAGE1_CLOSED,,,§5 K03_CHANGE_RETURN — explicit D075 rule,
+D076,Derived Signals!80,Technology relative strength versus broad market,K02_ALGEBRA,P_BASIC,,,,D072;D071,0,2,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D076 rule,
+D077,Derived Signals!81,Semiconductor relative strength versus technology,K02_ALGEBRA,P_BASIC,,,,D073;D074;D072,0,3,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D077 rule,
+D078,Derived Signals!82,NVDA residual/idiosyncratic return,K06_REGRESSION_DEPENDENCE,P_REGRESSION,,,,D075;D071;D076;D077;D079;D080;D081,0,7,STAGE1_CLOSED,,,§5 K06_REGRESSION_DEPENDENCE — explicit D078 rule,
+D079,Derived Signals!83,Conditional NVDA market beta,K06_REGRESSION_DEPENDENCE,P_REGRESSION,,Regime and horizon specific,,D075;D071;D076;D077,0,4,STAGE1_CLOSED,,,§5 K06_REGRESSION_DEPENDENCE — explicit D079 rule,Shared regression fit explicitly includes dependent variable D075.
+D080,Derived Signals!84,Conditional NVDA technology beta,K06_REGRESSION_DEPENDENCE,P_REGRESSION,,Regime and horizon specific,,D075;D071;D076;D077,0,4,STAGE1_CLOSED,,,§5 K06_REGRESSION_DEPENDENCE — explicit D080 rule,Shared regression fit explicitly includes dependent variable D075.
+D081,Derived Signals!85,Conditional NVDA semiconductor beta,K06_REGRESSION_DEPENDENCE,P_REGRESSION,,Regime and horizon specific,,D075;D071;D076;D077,0,4,STAGE1_CLOSED,,,§5 K06_REGRESSION_DEPENDENCE — explicit D081 rule,Shared regression fit explicitly includes dependent variable D075.
+D082,Derived Signals!86,Rolling NVDA-market/sector correlations,K06_REGRESSION_DEPENDENCE,P_REGRESSION,,5d/20d/intraday,R151,,1,0,STAGE1_CLOSED,,,§5 K06_REGRESSION_DEPENDENCE — explicit D082 rule,
+D083,Derived Signals!87,Cross-sectional market/sector dispersion proxy,K04_STANDARDISE_RANK,P_CROSS_SECTION,,Intraday/session,R037;R042,,2,0,STAGE1_CLOSED,,,§5 K04_STANDARDISE_RANK — explicit D083 rule,Contemporaneous cross-section only; no historical P_BASELINE applies.
+D084,Derived Signals!88,Sector rotation score,K07_WEIGHTED_SCORE,P_SCORE,,,,D076;D077;D083,0,3,STAGE1_CLOSED,,,§5 K07_WEIGHTED_SCORE — apply kernel to this row concept,
+D085,Derived Signals!89,Calendar days to expiry,K01_TIME,P_TIME,,,R013;R001,D004,2,1,STAGE1_CLOSED,,,§5 K01_TIME — explicit D085 rule,
+D086,Derived Signals!90,Time to expiry in years,K01_TIME,P_TIME,,,R013,D001,1,1,STAGE1_CLOSED,,,§5 K01_TIME — explicit D086 rule,
+D087,Derived Signals!91,Option midpoint,K02_ALGEBRA,P_BASIC,,,R034;R035,,2,0,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D087 rule,
+D088,Derived Signals!92,Option relative spread,K02_ALGEBRA,P_BASIC,,,R034;R035,D087,2,1,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D088 rule,
+D089,Derived Signals!93,Spot moneyness,K02_ALGEBRA,P_BASIC,,,R014;R118,,2,0,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D089 rule,
+D090,Derived Signals!94,Log-moneyness,K02_ALGEBRA,P_BASIC,,,R014;R118,,2,0,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D090 rule,
+D091,Derived Signals!95,Delta bucket,K08_RULE_BUCKET_POLICY,P_RULE,,,R112,,1,0,STAGE1_CLOSED,,,§5 K08_RULE_BUCKET_POLICY — explicit D091 rule,
+D092,Derived Signals!96,Mid-quote implied volatility estimate,K02_ALGEBRA,P_BASIC,,,R084;R093,,2,0,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D092 rule,
+D093,Derived Signals!97,Implied-volatility bid/ask width,K02_ALGEBRA,P_BASIC,,,R084;R093,,2,0,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D093 rule,
+D094,Derived Signals!98,5-minute IV change,K03_CHANGE_RETURN,P_WINDOW,,5 minutes,R111,,1,0,STAGE1_CLOSED,,,§5 K03_CHANGE_RETURN — explicit D094 rule,
+D095,Derived Signals!99,1-day IV change,K03_CHANGE_RETURN,P_WINDOW,,1 trading day,R111;R183,,2,0,STAGE1_CLOSED,,,§5 K03_CHANGE_RETURN — explicit D095 rule,
+D097,Derived Signals!101,Near-term IV term-structure slope,K02_ALGEBRA,P_BASIC,,e.g. 2D vs 9D / 9D vs 30D,,D096,0,1,CROSS_STAGE_DIRECT,D096,D096,§5 K02_ALGEBRA — explicit D097 rule,
+D098,Derived Signals!102,IV term-structure curvature,K02_ALGEBRA,P_BASIC,,Near/mid/long expiries,,D096,0,1,CROSS_STAGE_DIRECT,D096,D096,§5 K02_ALGEBRA — explicit D098 rule,
+D099,Derived Signals!103,25-delta put-call skew / risk reversal,K02_ALGEBRA,P_BASIC,,,R111;R112;R015,,3,0,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D099 rule,
+D100,Derived Signals!104,10-delta wing skew,K02_ALGEBRA,P_BASIC,,,R111;R112;R015,,3,0,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D100 rule,
+D101,Derived Signals!105,Volatility smile curvature,K02_ALGEBRA,P_BASIC,,,R111;R112,,2,0,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D101 rule,
+D103,Derived Signals!107,Parallel IV surface shift,K03_CHANGE_RETURN,P_WINDOW,,Snapshot-to-snapshot / 5m / 1d,R111,,1,0,STAGE1_CLOSED,,,§5 K03_CHANGE_RETURN — explicit D103 rule,
+D104,Derived Signals!108,Skew rotation,K03_CHANGE_RETURN,P_WINDOW,,5m/1h/1d,,D099;D100,0,2,STAGE1_CLOSED,,,§5 K03_CHANGE_RETURN — explicit D104 rule,
+D105,Derived Signals!109,1-year IV rank,K04_STANDARDISE_RANK,P_BASELINE,,1 year,R183,,1,0,STAGE1_CLOSED,,,§5 K04_STANDARDISE_RANK — explicit D105 rule,Historical baseline only; current observation excluded by K04 no-look-ahead law.
+D106,Derived Signals!110,1-year IV percentile,K04_STANDARDISE_RANK,P_BASELINE,,1 year,R183,,1,0,STAGE1_CLOSED,,,§5 K04_STANDARDISE_RANK — explicit D106 rule,Historical baseline only; current observation excluded by K04 no-look-ahead law.
+D107,Derived Signals!111,IV minus 5-day realised volatility,K02_ALGEBRA,P_BASIC,,,,D096;D035,0,2,CROSS_STAGE_DIRECT,D096,D096,§5 K02_ALGEBRA — explicit D107 rule,
+D108,Derived Signals!112,IV minus 10-day realised volatility,K02_ALGEBRA,P_BASIC,,,,D096;D036,0,2,CROSS_STAGE_DIRECT,D096,D096,§5 K02_ALGEBRA — explicit D108 rule,
+D109,Derived Signals!113,ATM straddle midpoint premium,K02_ALGEBRA,P_BASIC,,,,D087;D091,0,2,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D109 rule,
+D110,Derived Signals!114,ATM straddle implied move percentage,K02_ALGEBRA,P_BASIC,,,R118,D109,1,1,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D110 rule,
+D116,Derived Signals!120,Option volume/open-interest ratio,K02_ALGEBRA,P_BASIC,,,R041;R075,,2,0,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D116 rule,
+D117,Derived Signals!121,Unusual option volume z-score,K04_STANDARDISE_RANK,P_BASELINE,,20-60 sessions,R041;R075,,2,0,STAGE1_CLOSED,,,§5 K04_STANDARDISE_RANK — explicit D117 rule,Historical baseline only; current observation excluded by K04 no-look-ahead law.
+D118,Derived Signals!122,Call/put volume ratio,K02_ALGEBRA,P_BASIC,,Expiry/DTE bucket,R049;R050,,2,0,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D118 rule,
+D119,Derived Signals!123,Call/put open-interest ratio,K02_ALGEBRA,P_BASIC,,Expiry/DTE bucket,R047;R048,,2,0,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D119 rule,
+D120,Derived Signals!124,Signed option order flow,K08_RULE_BUCKET_POLICY,P_RULE,,1m/5m/session,R120;R121;R126;R127;R015,D015,5,1,STAGE1_CLOSED,,,§5 K08_RULE_BUCKET_POLICY — explicit D120 rule,
+D121,Derived Signals!125,Signed flow by delta bucket,K08_RULE_BUCKET_POLICY,P_RULE,,1m/5m/session,,D120;D091,0,2,STAGE1_CLOSED,,,§5 K08_RULE_BUCKET_POLICY — explicit D121 rule,
+D122,Derived Signals!126,Signed flow by expiry,K08_RULE_BUCKET_POLICY,P_RULE,,1m/5m/session,,D120;D085,0,2,STAGE1_CLOSED,,,§5 K08_RULE_BUCKET_POLICY — explicit D122 rule,
+D123,Derived Signals!127,Open-interest change,K02_ALGEBRA,P_BASIC,,Daily refresh,R047;R048,,2,0,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D123 rule,
+D124,Derived Signals!128,Open-interest concentration by strike/expiry,K08_RULE_BUCKET_POLICY,P_RULE,,,R047;R048,,2,0,STAGE1_CLOSED,,,§5 K08_RULE_BUCKET_POLICY — explicit D124 rule,HHI uses fractional shares and canonical 0-1 scale.
+D128,Derived Signals!132,Gamma concentration around spot,K08_RULE_BUCKET_POLICY,P_RULE,,Spot-distance bands,,D125;D089,0,2,CROSS_STAGE_DIRECT,D125,D125,§5 K08_RULE_BUCKET_POLICY — explicit D128 rule,Concentration shares use absolute gamma-exposure magnitude.
+D131,Derived Signals!135,Cumulative option depth near midpoint,K02_ALGEBRA,P_BASIC,,Top N levels / bps band,R185;R187;R188;R189;R190,D087,5,1,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D131 rule,Authoritative raw dependency set contains complete book reconstruction fields required by the repaired L2 law.
+D132,Derived Signals!136,Composite option liquidity score,K07_WEIGHTED_SCORE,P_SCORE,,,R033;R036;R041;R062,D088;D131,4,2,STAGE1_CLOSED,,,§5 K07_WEIGHTED_SCORE — apply kernel to this row concept,Adds R062 trade rate required by the row concept.
+D134,Derived Signals!138,SMART cumulative bid depth,K02_ALGEBRA,P_BASIC,,Top N levels,R188;R190;R185,,3,0,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D134 rule,
+D135,Derived Signals!139,SMART cumulative ask depth,K02_ALGEBRA,P_BASIC,,Top N levels,R188;R190;R185,,3,0,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D135 rule,
+D136,Derived Signals!140,SMART depth imbalance,K02_ALGEBRA,P_BASIC,,Top N levels / price band,,D134;D135,0,2,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D136 rule,
+D137,Derived Signals!141,Order-book microprice,K02_ALGEBRA,P_BASIC,,,R034;R035;R033;R036,,4,0,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D137 rule,
+D138,Derived Signals!142,Order-book slope,K06_REGRESSION_DEPENDENCE,P_REGRESSION,,Top N levels,R189;R190;R188,D011,3,1,STAGE1_CLOSED,,,§5 K06_REGRESSION_DEPENDENCE — explicit D138 rule,
+D139,Derived Signals!143,Depth insertion rate,K08_RULE_BUCKET_POLICY,P_RULE,CalculationParameterSet:P_RULE,1s/5s/1m,R187;R185;R188;R190;R001,,5,0,STAGE1_CLOSED,,,§5 K08_RULE_BUCKET_POLICY — explicit D139 rule,Authoritative raw dependency set contains complete book reconstruction fields required by the repaired L2 law.
+D140,Derived Signals!144,Depth cancellation/deletion rate,K08_RULE_BUCKET_POLICY,P_RULE,CalculationParameterSet:P_RULE,1s/5s/1m,R187;R185;R188;R190;R001,,5,0,STAGE1_CLOSED,,,§5 K08_RULE_BUCKET_POLICY — explicit D140 rule,Authoritative raw dependency set contains complete book reconstruction fields required by the repaired L2 law.
+D141,Derived Signals!145,Queue replenishment/reloading proxy,K08_RULE_BUCKET_POLICY,P_RULE,CalculationParameterSet:P_RULE,Rolling seconds/minutes,R187;R185;R188;R189;R190;R120;R121,,7,0,STAGE1_CLOSED,,,§5 K08_RULE_BUCKET_POLICY — explicit D141 rule,Authoritative raw dependency set contains complete book reconstruction fields required by the repaired L2 law.
+D142,Derived Signals!146,Liquidity resilience,K08_RULE_BUCKET_POLICY,P_RULE,CalculationParameterSet:P_RULE,Event response,R185;R187;R188;R189;R190;R034;R035;R001,,8,0,STAGE1_CLOSED,,,§5 K08_RULE_BUCKET_POLICY — explicit D142 rule,Authoritative raw dependency set contains complete book reconstruction fields required by the repaired L2 law.
+D143,Derived Signals!147,Direct-exchange depth concentration,K02_ALGEBRA,P_BASIC,,Top N levels,R192;R193;R194;R195;R196;R197,,6,0,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D143 rule,Authoritative raw dependency set contains complete book reconstruction fields required by the repaired L2 law.
+D144,Derived Signals!148,SMART versus direct depth divergence,K02_ALGEBRA,P_BASIC,,,R185;R187;R188;R189;R190;R192;R193;R194;R195;R196;R197,,11,0,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D144 rule,Authoritative raw dependency set contains complete book reconstruction fields required by the repaired L2 law.
+D145,Derived Signals!149,Order-flow imbalance (OFI),K17_ORDER_FLOW_IMBALANCE,P_OFI,,1s/5s/1m,R187;R188;R189;R190,,4,0,STAGE1_CLOSED,,,§5 K17_ORDER_FLOW_IMBALANCE — explicit D145 rule,
+D146,Derived Signals!150,Latent growth-shock factor,K07_WEIGHTED_SCORE,P_SCORE,,,R267;R268;R269;R264;R265;R266,D063,6,1,STAGE1_CLOSED,,,§5 K07_WEIGHTED_SCORE — apply kernel to this row concept,
+D147,Derived Signals!151,Latent inflation-shock factor,K07_WEIGHTED_SCORE,P_SCORE,,,R260;R261;R262;R263;R255,D063,5,1,STAGE1_CLOSED,,,§5 K07_WEIGHTED_SCORE — apply kernel to this row concept,
+D148,Derived Signals!152,Latent policy/rates factor,K07_WEIGHTED_SCORE,P_SCORE,,,R256;R258;R259;R247;R249;R252,D042;D044;D045,6,3,STAGE1_CLOSED,,,§5 K07_WEIGHTED_SCORE — apply kernel to this row concept,
+D149,Derived Signals!153,Latent funding/liquidity factor,K07_WEIGHTED_SCORE,P_SCORE,,,R257;R256,D047;D061,2,2,STAGE1_CLOSED,,,§5 K07_WEIGHTED_SCORE — apply kernel to this row concept,
+D150,Derived Signals!154,Composite global risk factor,K07_WEIGHTED_SCORE,P_SCORE,,,,D070;D146;D147;D148;D149;D048,0,6,STAGE1_CLOSED,,,§5 K07_WEIGHTED_SCORE — apply kernel to this row concept,
+D151,Derived Signals!155,US market breadth proxy,K02_ALGEBRA,P_BASIC,,Intraday,R037;R043;R137;R042,,4,0,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D151 rule,Positive-return anchor=session open; VWAP and prior close are separate breadth components.
+D155,Derived Signals!159,Canonical market-state vector,K16_STRUCTURED_ASSEMBLY,P_STATE_VECTOR,,,,D150;D152;D084;D078;D153;D154;D061;D132;D008,0,9,CROSS_STAGE_DIRECT,D152;D153;D154,D096;D125;D126;D127;D129;D130;D152;D153;D154,§5 K16_STRUCTURED_ASSEMBLY — explicit D155 rule,
+D156,Derived Signals!160,Signal redundancy/dependence matrix,K06_REGRESSION_DEPENDENCE,P_REGRESSION,,Rolling/regime-specific,,D155;D082,0,2,CROSS_STAGE_TRANSITIVE,,D096;D125;D126;D127;D129;D130;D152;D153;D154,§5 K06_REGRESSION_DEPENDENCE — explicit D156 rule,
+D157,Derived Signals!161,Signal conflict/disagreement score,K07_WEIGHTED_SCORE,P_SCORE,CalculationParameterSet:P_SCORE,,,D155;D156,0,2,CROSS_STAGE_TRANSITIVE,,D096;D125;D126;D127;D129;D130;D152;D153;D154,§5 K07_WEIGHTED_SCORE — explicit D157 rule,
+D158,Derived Signals!162,Composite data-quality score,K07_WEIGHTED_SCORE,P_SCORE,,,,D006;D007;D008;D102,0,4,CROSS_STAGE_DIRECT,D102,D102,§5 K07_WEIGHTED_SCORE — apply kernel to this row concept,
+D159,Derived Signals!163,State identifiability/tradeability score,K07_WEIGHTED_SCORE,P_SCORE,,,,D158;D157;D153;D154;D132,0,5,CROSS_STAGE_DIRECT,D153;D154,D096;D102;D125;D126;D127;D129;D130;D152;D153;D154,§5 K07_WEIGHTED_SCORE — apply kernel to this row concept,
+D163,Derived Signals!167,Model-uncertainty penalty,K07_WEIGHTED_SCORE,P_SCORE,,,,D157;D159;D102,0,3,CROSS_STAGE_DIRECT,D102,D096;D102;D125;D126;D127;D129;D130;D152;D153;D154,§5 K07_WEIGHTED_SCORE — apply kernel to this row concept,
+D164,Derived Signals!168,Total expected execution cost,K02_ALGEBRA,P_BASIC,ExecutionCostScheduleVersion;OrderIntentContext;CandidateStructureContext,,,D133,0,1,CROSS_STAGE_DIRECT,D133,D133,§5 K02_ALGEBRA — explicit D164 rule,Pre-trade expected cost; realised R233 removed and replaced by immutable ExecutionCostScheduleVersion. All three typed contexts are required; semicolon denotes conjunction.
+D166,Derived Signals!170,Tradeable distribution flag,K08_RULE_BUCKET_POLICY,P_RULE,CandidateStructureContext,,,D159;D165,0,2,CROSS_STAGE_DIRECT,D165,D096;D102;D111;D114;D125;D126;D127;D129;D130;D133;D152;D153;D154;D160;D161;D162;D165;D174,§5 K08_RULE_BUCKET_POLICY — explicit D166 rule,
+D167,Derived Signals!171,Selected exposure state,K08_RULE_BUCKET_POLICY,P_RULE,CandidateSetContext,,,D166;D165,0,2,CROSS_STAGE_DIRECT,D165,D096;D102;D111;D114;D125;D126;D127;D129;D130;D133;D152;D153;D154;D160;D161;D162;D165;D174,§5 K08_RULE_BUCKET_POLICY — explicit D167 rule,Selection universe and deterministic ordering come from CandidateSetContext.
+D168,Derived Signals!172,Aggregate structure Greeks,K02_ALGEBRA,P_BASIC,CandidateStructureContext,,R112;R115;R116;R117;R016,,5,0,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D168 rule,
+D170,Derived Signals!174,Structure breakeven points,K02_ALGEBRA,P_BASIC,CandidateStructureContext,,R014,D087,1,1,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D170 rule,
+D171,Derived Signals!175,Expiry suitability score,K07_WEIGHTED_SCORE,P_SCORE,CandidateStructureContext,,,D062;D097;D098;D132;D168,0,5,CROSS_STAGE_TRANSITIVE,,D096,§5 K07_WEIGHTED_SCORE — apply kernel to this row concept,
+D172,Derived Signals!176,Strike suitability score,K07_WEIGHTED_SCORE,P_SCORE,CandidateStructureContext,,,D091;D099;D102;D132;D111;D114,0,6,CROSS_STAGE_DIRECT,D102;D111;D114,D102;D111;D114,§5 K07_WEIGHTED_SCORE — apply kernel to this row concept,
+D173,Derived Signals!177,Neighbour-contract relative score,K07_WEIGHTED_SCORE,P_SCORE,CandidateStructureContext;CandidateSetContext,,,D171;D172;D165,0,3,CROSS_STAGE_DIRECT,D165,D096;D102;D111;D114;D125;D126;D127;D129;D130;D133;D152;D153;D154;D160;D161;D162;D165;D174,§5 K07_WEIGHTED_SCORE — apply kernel to this row concept,CandidateSetContext supplies the explicit neighbour relation for the subject candidate.
+D175,Derived Signals!179,Maximum permissible position risk,K08_RULE_BUCKET_POLICY,P_RULE,CandidateStructureContext,,R205;R206;R209;R208,D162;D174,4,2,CROSS_STAGE_DIRECT,D162;D174,D096;D102;D111;D114;D125;D126;D127;D129;D130;D152;D153;D154;D160;D162;D174,§5 K08_RULE_BUCKET_POLICY — explicit D175 rule,
+D176,Derived Signals!180,Recommended position size,K08_RULE_BUCKET_POLICY,P_RULE,CandidateStructureContext,,,D175;D165;D163;D132,0,4,CROSS_STAGE_DIRECT,D165,D096;D102;D111;D114;D125;D126;D127;D129;D130;D133;D152;D153;D154;D160;D161;D162;D165;D174,§5 K08_RULE_BUCKET_POLICY — explicit D176 rule,
+D178,Derived Signals!182,Limit-price target,K08_RULE_BUCKET_POLICY,P_RULE,CandidateStructureContext;OrderIntentContext,,R034;R035;R189;R190,D133;D177,4,2,CROSS_STAGE_DIRECT,D133;D177,D096;D102;D111;D114;D125;D126;D127;D129;D130;D133;D152;D153;D154;D160;D161;D162;D165;D174;D177,§5 K08_RULE_BUCKET_POLICY — explicit D178 rule,
+D179,Derived Signals!183,Realised fill slippage,K02_ALGEBRA,P_BASIC,,,R229;R221,D087,2,1,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D179 rule,
+D180,Derived Signals!184,Fill completion ratio,K02_ALGEBRA,P_BASIC,,,R219;R220,,2,0,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D180 rule,
+D181,Derived Signals!185,Live portfolio delta,K02_ALGEBRA,P_BASIC,,,R212;R112;R016,,3,0,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D181 rule,
+D182,Derived Signals!186,Live portfolio gamma,K02_ALGEBRA,P_BASIC,,,R212;R115;R016,,3,0,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D182 rule,
+D183,Derived Signals!187,Live portfolio vega,K02_ALGEBRA,P_BASIC,,,R212;R116;R016,,3,0,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D183 rule,
+D184,Derived Signals!188,Live portfolio theta,K02_ALGEBRA,P_BASIC,,,R212;R117;R016,,3,0,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D184 rule,
+D185,Derived Signals!189,Live position P&L state,K02_ALGEBRA,P_BASIC,,,R214;R215;R216,,3,0,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D185 rule,
+D186,Derived Signals!190,Current-state similarity to entry state,K08_RULE_BUCKET_POLICY,P_RULE,EntryStateContext,,,D155,0,1,CROSS_STAGE_TRANSITIVE,,D096;D125;D126;D127;D129;D130;D152;D153;D154,§5 K08_RULE_BUCKET_POLICY — explicit D186 rule,
+D187,Derived Signals!191,Position invalidation score,K07_WEIGHTED_SCORE,P_SCORE,,,,D186;D153;D154;D065;D132,0,5,CROSS_STAGE_DIRECT,D153;D154,D096;D125;D126;D127;D129;D130;D152;D153;D154,§5 K07_WEIGHTED_SCORE — apply kernel to this row concept,
+D189,Derived Signals!193,Required hedge exposure,K08_RULE_BUCKET_POLICY,P_RULE,,,,D181;D182;D183;D184;D175,0,5,CROSS_STAGE_TRANSITIVE,,D096;D102;D111;D114;D125;D126;D127;D129;D130;D152;D153;D154;D160;D162;D174,§5 K08_RULE_BUCKET_POLICY — explicit D189 rule,Adds D184 theta exposure and D175 risk-limit clipping.
+D190,Derived Signals!194,Expected value gain from modification,K02_ALGEBRA,P_BASIC,CandidateSetContext,,,D188;D165,0,2,CROSS_STAGE_DIRECT,D188;D165,D096;D102;D111;D114;D125;D126;D127;D129;D130;D133;D152;D153;D154;D160;D161;D162;D165;D174;D188,§5 K02_ALGEBRA — explicit D190 rule,Best modification is selected from CandidateSetContext using D165; D165 already includes candidate-specific D164 execution cost.
+D191,Derived Signals!195,Immediate exit value after costs,K02_ALGEBRA,P_BASIC,,,R034;R035,D133;D164,2,2,CROSS_STAGE_DIRECT,D133,D133,§5 K02_ALGEBRA — explicit D191 rule,Executable fill from D133 embeds slippage; subtract only the non-slippage commissions/fees component retained in D164 so slippage is counted once.
+D192,Derived Signals!196,Action decision state,K08_RULE_BUCKET_POLICY,P_RULE,,,,D187;D188;D189;D190;D191;D175,0,6,CROSS_STAGE_DIRECT,D188,D096;D102;D111;D114;D125;D126;D127;D129;D130;D133;D152;D153;D154;D160;D161;D162;D165;D174;D188,§5 K08_RULE_BUCKET_POLICY — explicit D192 rule,"Deterministic action precedence; D189 hedge vector is never value-ranked, D190 is tested in its declared utility domain, and exit-vs-hold compares D191 currency with D188 expected_currency_PnL."
+D193,Derived Signals!197,Realised transaction cost,K02_ALGEBRA,P_BASIC,,,R229;R233;R228;R016,D087;D179,4,2,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D193 rule,
+D199,Derived Signals!203,Unexplained/residual P&L,K02_ALGEBRA,P_BASIC,PnLConventionVersion,,R216;R215,D194;D195;D196;D197;D198;D193,2,6,CROSS_STAGE_DIRECT,D194;D195;D196;D197;D198,D194;D195;D196;D197;D198,§5 K02_ALGEBRA — explicit D199 rule,D193 subtraction conditional on provider P&L gross/net convention.
+D200,Derived Signals!204,Decision-quality score independent of realised outcome,K07_WEIGHTED_SCORE,P_SCORE,,,,D166;D165;D159,0,3,CROSS_STAGE_DIRECT,D165,D096;D102;D111;D114;D125;D126;D127;D129;D130;D133;D152;D153;D154;D160;D161;D162;D165;D174,§5 K07_WEIGHTED_SCORE — apply kernel to this row concept,
+D207,Derived Signals!211,Model decay/drift score,K07_WEIGHTED_SCORE,P_SCORE,EvaluationSet,,,D203;D206;D202,0,3,CROSS_STAGE_DIRECT,D203;D206;D202,D096;D102;D111;D114;D125;D126;D127;D129;D130;D133;D152;D153;D154;D160;D161;D162;D165;D174;D202;D203;D206,§5 K07_WEIGHTED_SCORE — explicit D207 rule,
+D208,Derived Signals!212,Signal disposition classification,K08_RULE_BUCKET_POLICY,P_RULE,,,,D202;D207,0,2,CROSS_STAGE_DIRECT,D202,D096;D102;D111;D114;D125;D126;D127;D129;D130;D133;D152;D153;D154;D160;D161;D162;D165;D174;D202;D203;D206,§5 K08_RULE_BUCKET_POLICY — explicit D208 rule,
+D209,Derived Signals!213,Next observation/update trigger,K08_RULE_BUCKET_POLICY,P_RULE,RecalculationSchedule,,R001,,1,0,STAGE1_CLOSED,,,§5 K08_RULE_BUCKET_POLICY — explicit D209 rule,R001 supplies the admitted M00 receipt event; RecalculationSchedule supplies the scheduled trigger rule. No separate trigger context is invented.
