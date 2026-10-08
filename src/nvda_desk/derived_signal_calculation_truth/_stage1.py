@@ -407,6 +407,91 @@ def _align_occurrence_fields(
     return tuple(rows)
 
 
+_TRADE_IDENTITY_KEYS = ("contract_id", "underlying_instrument", "expiry", "strike", "option_right")
+
+
+def _source_identity_compatible(left: KernelValueV1, right: KernelValueV1) -> bool:
+    if left.subject_instrument != right.subject_instrument:
+        return False
+    left_meta, right_meta = _metadata(left), _metadata(right)
+    for key in _TRADE_IDENTITY_KEYS:
+        lhs, rhs = left_meta.get(key), right_meta.get(key)
+        if (lhs is not None or rhs is not None) and (
+            lhs is None or rhs is None or type(lhs) is not type(rhs) or lhs != rhs
+        ):
+            return False
+    return True
+
+
+def _observation_signs(
+    observations: tuple[KernelValueV1, ...],
+    signed_predecessors: tuple[KernelValueV1, ...],
+) -> dict[str, tuple[int, str]] | None:
+    """Match D015 per-trade signs to their native M00 observation, never D IDs.
+
+    A D015 occurrence can contain a history of trade sources. Reconstruct the
+    *selected* source as the unique latest eligible native trade in its stored
+    lineage at its own calculation time/cutoff. Reject missing or ambiguous
+    reconstruction rather than synthesising a partial signed total.
+    """
+    if not observations or not signed_predecessors:
+        return None
+    observation_ids = {v.occurrence_id for v in observations}
+    if len(observation_ids) != len(observations):
+        return None
+    result: dict[str, tuple[int, str]] = {}
+    selected_version: dict[str, tuple[datetime, datetime, str]] = {}
+    for predecessor in signed_predecessors:
+        metadata = _metadata(predecessor)
+        lineage = metadata.get("raw_input_lineage")
+        cutoff = metadata.get("source_knowledge_cutoff_utc")
+        if (
+            type(lineage) is not tuple
+            or type(cutoff) is not datetime
+            or not all(type(item) is api.RawInputLineageV1 for item in lineage)
+        ):
+            return None
+        source_ids = {
+            item.observation_occurrence_id for item in lineage if item.raw_signal_id == "R120"
+        }
+        if not source_ids:
+            return None
+        matching = [
+            item
+            for item in observations
+            if item.occurrence_id in source_ids
+            and item.effective_at_utc <= predecessor.effective_at_utc
+            and item.received_ts_utc <= cutoff
+            and _source_identity_compatible(item, predecessor)
+        ]
+        if not matching:
+            # An older D015 history item can legitimately predate the raw
+            # window currently being aggregated. It contributes no trade.
+            continue
+        if not source_ids <= observation_ids:
+            # Some native trades used by this D015 classification are absent
+            # from the parent's required per-trade field. Choosing a visible
+            # older source as the sign's anchor would fabricate correlation.
+            return None
+        latest_at = max((v.effective_at_utc, v.received_ts_utc) for v in matching)
+        newest = [v for v in matching if (v.effective_at_utc, v.received_ts_utc) == latest_at]
+        if len({v.occurrence_id for v in newest}) != 1:
+            return None
+        selected_id = newest[0].occurrence_id
+        if type(predecessor.value) is not int or predecessor.value not in {-1, 1}:
+            return None
+        if selected_id in result and result[selected_id][0] != predecessor.value:
+            # Conflicting classifications cannot be silently selected.
+            return None
+        priority = (predecessor.effective_at_utc, cutoff, predecessor.occurrence_id)
+        if selected_id not in result or priority > selected_version[selected_id]:
+            result[selected_id] = (predecessor.value, predecessor.occurrence_id)
+            selected_version[selected_id] = priority
+    if {item.occurrence_id for item in observations} != set(result):
+        return None
+    return result
+
+
 def _latest_by_subject(
     mapping: dict[str, tuple[KernelValueV1, ...]], identity: str
 ) -> dict[str, KernelValueV1]:
@@ -1063,7 +1148,13 @@ def _eval_k02(
             den = bid + ask
             return None if den == 0 else (bid - ask) / den
         if identity == "D017":
+            price_ids = {v.occurrence_id for v in raw.get("R120", ())}
+            size_ids = {v.occurrence_id for v in raw.get("R121", ())}
+            if not price_ids or price_ids != size_ids:
+                return None
             rows = _align_occurrence_fields(raw, ("R120", "R121"))
+            if any(not _source_identity_compatible(row["R120"], row["R121"]) for row in rows):
+                return None
             den = sum((_d(r["R121"].value) for r in rows), _DEC0)
             return (
                 None
@@ -2213,9 +2304,11 @@ def _eval_k08(
                     return 1 if trade > _d(prior_trade.value) else -1
             return 0
         if identity == "D016":
-            signs = {v.occurrence_id: _i(v.value) for v in derived.get("D015", ())}
-            sizes = {v.occurrence_id: _d(v.value) for v in raw.get("R121", ())}
-            return sum((Decimal(signs[i]) * sizes[i] for i in set(signs) & set(sizes)), _DEC0)
+            sizes = raw.get("R121", ())
+            signs = _observation_signs(sizes, derived.get("D015", ()))
+            if signs is None:
+                return None
+            return sum((Decimal(signs[v.occurrence_id][0]) * _d(v.value) for v in sizes), _DEC0)
         if identity == "D065":
             pre = _d(params.get("pre_window_seconds"))
             post = _d(params.get("post_window_seconds"))
@@ -2261,15 +2354,27 @@ def _eval_k08(
                     return str(label)
             return None
         if identity == "D120":
-            signed_rows = _align_occurrence_fields(raw, ("R120", "R121", "R015"))
-            signs = {v.occurrence_id: _i(v.value) for v in derived.get("D015", ())}
+            fields = ("R120", "R121", "R015")
+            if not all(raw.get(field) for field in fields):
+                return None
+            input_ids = [{v.occurrence_id for v in raw[field]} for field in fields]
+            if not all(ids == input_ids[0] for ids in input_ids[1:]):
+                return None
+            signed_rows = _align_occurrence_fields(raw, fields)
+            signs = _observation_signs(
+                tuple(row["R120"] for row in signed_rows), derived.get("D015", ())
+            )
+            if signs is None:
+                return None
             signed_contracts = _DEC0
             signed_premium = _DEC0
             for signed_row in signed_rows:
                 oid = signed_row["R120"].occurrence_id
-                if oid not in signs:
-                    continue
-                sign = Decimal(signs[oid])
+                if not all(
+                    _source_identity_compatible(signed_row["R120"], v) for v in signed_row.values()
+                ):
+                    return None
+                sign = Decimal(signs[oid][0])
                 size = _d(signed_row["R121"].value)
                 price = _d(signed_row["R120"].value)
                 mult = _d(signed_row["R015"].value)
@@ -2648,9 +2753,11 @@ def _eval_k16(
         metadata = _metadata(item)
         if not metadata.get("units"):
             return None
-        preserved = (*item.metadata,
-                     ("effective_at_utc", item.effective_at_utc),
-                     ("received_ts_utc", item.received_ts_utc))
+        preserved = (
+            *item.metadata,
+            ("effective_at_utc", item.effective_at_utc),
+            ("received_ts_utc", item.received_ts_utc),
+        )
         output.append((str(did), item.value, item.occurrence_id, preserved))
     return tuple(output)
 
@@ -2685,10 +2792,15 @@ def _eval_k17(
                 for row in rows
                 if max(item.effective_at_utc for item in row.values()) == timestamp
             )
-            batch = tuple(sorted(batch, key=lambda row: (
-                _i(_metadata(row["R187"]).get("ingestion_sequence", 0)),
-                row["R187"].occurrence_id,
-            )))
+            batch = tuple(
+                sorted(
+                    batch,
+                    key=lambda row: (
+                        _i(_metadata(row["R187"]).get("ingestion_sequence", 0)),
+                        row["R187"].occurrence_id,
+                    ),
+                )
+            )
             for row in batch:
                 operation = str(row["R187"].value).lower()
                 side = str(row["R188"].value).lower()

@@ -1520,6 +1520,8 @@ class _OwnerV1:
             metadata=(
                 ("units", value.units),
                 ("result_shape", value.result_shape),
+                ("raw_input_lineage", value.raw_input_lineage),
+                ("source_knowledge_cutoff_utc", value.knowledge_cutoff_utc),
                 *selection_metadata,
             ),
         )
@@ -1756,6 +1758,8 @@ class _OwnerV1:
 
         derived_inputs: dict[str, tuple[KernelValueV1, ...]] = {}
         immediate_predecessors: list[DerivedSignalOccurrenceV1] = []
+        sign_history_occurrences: list[DerivedSignalOccurrenceV1] = []
+        predecessor_sync_instants: list[datetime] = []
         inherited_lineage: list[RawInputLineageV1] = []
         for predecessor_id in row.derived_dependencies:
             predecessor_row = catalogue_row(predecessor_id)
@@ -1861,8 +1865,12 @@ class _OwnerV1:
                     selected_identity_values, latest, selection_keys
                 ):
                     return None
-                immediate_predecessors.append(latest)
-                inherited_lineage.extend(latest.raw_input_lineage)
+                predecessor_sync_instants.append(latest.effective_as_of_utc)
+                if predecessor_id == "D015" and derived_signal_id in {"D016", "D120"}:
+                    sign_history_occurrences.extend(history)
+                else:
+                    immediate_predecessors.append(latest)
+                    inherited_lineage.extend(latest.raw_input_lineage)
                 predecessor_values.extend(
                     self._occurrence_kernel_value(value)
                     for value in ((latest,) if scoped_edge else history)
@@ -1882,7 +1890,7 @@ class _OwnerV1:
             for values in raw_inputs.values()
             for subject in {item.subject_instrument for item in values}
         ]
-        synchronous_instants.extend(value.effective_as_of_utc for value in immediate_predecessors)
+        synchronous_instants.extend(predecessor_sync_instants)
         if (
             synchronous_instants
             and max(synchronous_instants) - min(synchronous_instants) > selection.maximum_skew
@@ -1906,6 +1914,28 @@ class _OwnerV1:
         )
         if evaluated is None:
             return None
+
+        if derived_signal_id in {"D016", "D120"}:
+            # The kernel establishes which historical D015 classification
+            # belongs to each native M00 trade. Persist *all and only* the
+            # predecessor occurrences used by that calculation, including
+            # prior trades and direct ultimate M00 observation lineage.
+            from ._stage1 import _observation_signs
+
+            trade_field = "R121" if derived_signal_id == "D016" else "R120"
+            matched = _observation_signs(
+                raw_inputs.get(trade_field, ()), derived_inputs.get("D015", ())
+            )
+            if matched is None:
+                return None
+            used_ids = {source_id for _, source_id in matched.values()}
+            previous_by_id = {item.derived_occurrence_id: item for item in sign_history_occurrences}
+            if not used_ids <= set(previous_by_id):
+                return None
+            for predecessor_id in sorted(used_ids):
+                predecessor = previous_by_id[predecessor_id]
+                immediate_predecessors.append(predecessor)
+                inherited_lineage.extend(predecessor.raw_input_lineage)
 
         lineage_by_key: dict[tuple[str, str, str, int, str, int], RawInputLineageV1] = {}
         for item in (*direct_lineage, *inherited_lineage):
