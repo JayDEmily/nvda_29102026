@@ -766,7 +766,7 @@ def _eval_k07(
         if not instants or not derived.get("D001") or not derived.get("D002"):
             return None
         score = _score(identity, derived, parameter_set)
-        if score is None or not _DEC0 <= score <= _DEC1:
+        if type(score) is not Decimal or not _DEC0 <= score <= _DEC1:
             return None
         skew = Decimal(str((max(instants) - min(instants)).total_seconds()))
         return _named_tuple(
@@ -1594,8 +1594,10 @@ def _eval_k02(
             expected_fill = fill_components.get("expected_fill_price")
             if expected_fill is None:
                 return None
-            liquidation_quantity = _d(params.get("liquidation_quantity", Decimal(1)))
-            contract_multiplier = _d(params.get("multiplier", Decimal(1)))
+            liquidation_quantity = _d(params["liquidation_quantity"])
+            contract_multiplier = _d(params["multiplier"])
+            if liquidation_quantity <= 0 or contract_multiplier <= 0:
+                return None
             non_slippage = (
                 _d(cost_components.get("commissions", 0))
                 + _d(cost_components.get("fees", 0))
@@ -1636,7 +1638,7 @@ def _eval_k02(
                 else _DEC0
             )
             return observed - explained - cost
-    except (TypeError, ValueError, ArithmeticError):
+    except (TypeError, ValueError, ArithmeticError, KeyError):
         return None
     return None
 
@@ -2040,22 +2042,25 @@ def _eval_k06(
                     (v.effective_at_utc, _d(v.value))
                 )
             subjects = tuple(sorted(by_subject))
+            minimum = _i(params["minimum_sample"])
+            if minimum < 2 or len(subjects) < 2:
+                return None
             series = {s: {t: x for t, x in by_subject[s]} for s in subjects}
             common = set.intersection(*(set(v) for v in series.values())) if series else set()
             ordered = sorted(common)
-            if len(ordered) < 2:
+            if len(ordered) < minimum:
                 return None
             matrix = []
             for a in subjects:
                 row = []
                 for b in subjects:
-                    row.append(
-                        _pearson(
-                            tuple(series[a][t] for t in ordered),
-                            tuple(series[b][t] for t in ordered),
-                        )
-                        or _DEC0
+                    correlation = _pearson(
+                        tuple(series[a][t] for t in ordered),
+                        tuple(series[b][t] for t in ordered),
                     )
+                    if correlation is None:
+                        return None
+                    row.append(correlation)
                 matrix.append(tuple(row))
             return _named_tuple((("subjects", subjects), ("matrix", tuple(matrix))))
         if identity == "D138":
@@ -2302,8 +2307,8 @@ def _eval_k08(
             return _named_tuple((("shares", shares), ("hhi", sum((s * s for s in shares), _DEC0))))
         if identity in {"D139", "D140", "D141"}:
             book_mutations = reconstruct_book(_book_events(raw))
-            window = _d(params.get("window_seconds", 1))
-            if window <= 0:
+            window = _d(params["window_seconds"])
+            if window <= 0 or not book_mutations:
                 return None
             if identity in {"D139", "D140"}:
                 attr = "inserted_size" if identity == "D139" else "removed_size"
@@ -2314,7 +2319,9 @@ def _eval_k08(
             depleted = [m for m in book_mutations if m.depleted_size > 0]
             credited = _DEC0
             total = sum((m.depleted_size for m in depleted), _DEC0)
-            max_dt = _d(params.get("replenishment_max_seconds", 0))
+            max_dt = _d(params["replenishment_max_seconds"])
+            if max_dt <= 0:
+                return None
             for dep in depleted:
                 restoration = next(
                     (
@@ -2472,8 +2479,8 @@ def _eval_k08(
         if identity == "D176":
             risk = _d(_scalar(derived, "D175"))
             per_unit = _d(params.get("risk_per_unit"))
-            unc = _d(params.get("uncertainty_multiplier", 1))
-            liq = _d(params.get("liquidity_multiplier", 1))
+            unc = _d(params["uncertainty_multiplier"])
+            liq = _d(params["liquidity_multiplier"])
             den = per_unit * unc * liq
             return None if den <= 0 else int(risk // den)
         if identity == "D178":
