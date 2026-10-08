@@ -14,7 +14,7 @@ if TYPE_CHECKING:
     from ._stage1 import KernelValueV1
 
 
-_MANDATORY_EACH_OPTION_JOIN_KEYS = frozenset(
+_OPTION_CONTRACT_JOIN_KEYS = frozenset(
     {
         "contract_id",
         "underlying_instrument",
@@ -23,6 +23,47 @@ _MANDATORY_EACH_OPTION_JOIN_KEYS = frozenset(
         "option_right",
     }
 )
+
+# Clause 8.1 selection authority is row-semantic, not a string interpretation of
+# ``applicable_universe``.  These identities are the Stage-1 rows whose accepted
+# calculation meaning makes one exact option contract the calculation subject.
+_EXACT_OPTION_CONTRACT_ROW_IDS = frozenset(
+    {
+        "D085",
+        "D086",
+        "D087",
+        "D088",
+        "D089",
+        "D090",
+        "D091",
+        "D092",
+        "D093",
+        "D116",
+        "D123",
+    }
+)
+
+# D094/D095/D117 explicitly admit either an exact contract or an exact
+# expiry/right/delta bucket.  The subject invariant is enforced independently.
+_MATCHED_OPTION_HISTORY_ROW_IDS = frozenset({"D094", "D095", "D117"})
+_OPTION_BUCKET_JOIN_KEYS = frozenset({"expiry", "option_right", "delta_bucket"})
+
+# These calculations combine multiple contracts while retaining exact shared
+# selection dimensions.  Right/contract identity intentionally differ within the
+# calculation and therefore are not universal join keys for the row.
+_PER_EXPIRY_ROW_IDS = frozenset({"D099", "D100", "D101"})
+_PER_EXPIRY_JOIN_KEYS = frozenset({"underlying_instrument", "expiry"})
+_PER_EXPIRY_STRIKE_ROW_IDS = frozenset({"D109", "D110"})
+_PER_EXPIRY_STRIKE_JOIN_KEYS = frozenset({"underlying_instrument", "expiry", "strike"})
+
+# D134-D145 can be evaluated for the underlying book or for one selected option
+# book.  If the supplied projection bindings carry option identity, that option
+# identity is material and the caller cannot downgrade the row to subject-only
+# selection by choosing weaker join keys.
+_OPTION_OR_UNDERLYING_L2_ROW_IDS = frozenset({f"D{identity:03d}" for identity in range(134, 146)})
+
+# Clause 8.1 requires the exact versioned member set for cross-sectional rows.
+_CROSS_SECTION_ROW_IDS = frozenset({"D082", "D083", "D151"})
 
 
 def _require_non_empty_string(value: str, field_name: str) -> None:
@@ -999,9 +1040,7 @@ class _OwnerV1:
         return contexts
 
     @staticmethod
-    def _identity_value(
-        identity: RawSelectionIdentityV1 | None, key: str
-    ) -> object | None:
+    def _identity_value(identity: RawSelectionIdentityV1 | None, key: str) -> object | None:
         if identity is None:
             return None
         return identity.value_for(key)
@@ -1016,13 +1055,49 @@ class _OwnerV1:
             return False
         return type(left_value) is type(right_value) and left_value == right_value
 
-    @staticmethod
+    @classmethod
     def _selection_policy_satisfies_row_authority(
-        applicable_universe: str, selection: InputSelectionPolicyVersionV1
+        cls,
+        derived_signal_id: str,
+        request: CalculationRequestV1,
+        parameter_set: CalculationParameterSetV1,
+        selection: InputSelectionPolicyVersionV1,
     ) -> bool:
-        if applicable_universe != "Each option":
-            return True
-        return set(selection.join_keys) >= _MANDATORY_EACH_OPTION_JOIN_KEYS
+        """Enforce the minimum row-semantic selection law from brief clause 8.1.
+
+        Caller policy is additive: it may tighten selection but cannot erase a
+        dimension that the authoritative row meaning makes mandatory.
+        """
+
+        join_keys = set(selection.join_keys)
+        if derived_signal_id in _EXACT_OPTION_CONTRACT_ROW_IDS:
+            return join_keys >= _OPTION_CONTRACT_JOIN_KEYS
+        if derived_signal_id in _MATCHED_OPTION_HISTORY_ROW_IDS:
+            return join_keys >= _OPTION_CONTRACT_JOIN_KEYS or join_keys >= _OPTION_BUCKET_JOIN_KEYS
+        if derived_signal_id in _PER_EXPIRY_ROW_IDS:
+            return join_keys >= _PER_EXPIRY_JOIN_KEYS
+        if derived_signal_id in _PER_EXPIRY_STRIKE_ROW_IDS:
+            return join_keys >= _PER_EXPIRY_STRIKE_JOIN_KEYS
+        if derived_signal_id in _OPTION_OR_UNDERLYING_L2_ROW_IDS:
+            option_identity_present = any(
+                any(
+                    cls._identity_value(binding.selection_identity, key) is not None
+                    for key in _OPTION_CONTRACT_JOIN_KEYS
+                )
+                for binding in request.raw_input_bindings
+            )
+            if option_identity_present and not join_keys >= _OPTION_CONTRACT_JOIN_KEYS:
+                return False
+        if derived_signal_id in _CROSS_SECTION_ROW_IDS:
+            if not selection.basket_membership:
+                return False
+            configured = dict(parameter_set.parameters).get("basket_membership")
+            if configured is not None:
+                if type(configured) is not tuple:
+                    return False
+                if tuple(str(item) for item in configured) != selection.basket_membership:
+                    return False
+        return True
 
     @classmethod
     def _bindings_satisfy_join_keys(
@@ -1180,6 +1255,14 @@ class _OwnerV1:
                     effective = event
                 else:
                     effective = received
+                projected_identity = getattr(item, "selection_identity", None)
+                if (
+                    projected_identity is not None
+                    and type(projected_identity) is not RawSelectionIdentityV1
+                ):
+                    return None
+                typed_identity = cast(RawSelectionIdentityV1 | None, projected_identity)
+                identity_metadata = () if typed_identity is None else typed_identity.values
                 metadata: tuple[tuple[str, object], ...] = (
                     ("source_provider", str(getattr(item, "source_provider", ""))),
                     ("source_variant", str(getattr(item, "source_variant", "") or "")),
@@ -1192,6 +1275,7 @@ class _OwnerV1:
                         str(getattr(item, "revision_vintage_native", "") or ""),
                     ),
                     ("ingestion_sequence", int(getattr(item, "ingestion_sequence", 0))),
+                    *identity_metadata,
                 )
                 kernel_values.append(
                     KernelValueV1(
@@ -1303,7 +1387,7 @@ class _OwnerV1:
         if parameter_set is None or selection is None or contexts is None:
             return None
         if not self._selection_policy_satisfies_row_authority(
-            row.applicable_universe, selection
+            row.derived_id, request, parameter_set, selection
         ):
             return None
         if not self._bindings_satisfy_join_keys(request, row.raw_dependencies, selection):

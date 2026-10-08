@@ -135,6 +135,42 @@ def _metadata(value: KernelValueV1) -> dict[str, object]:
     return dict(value.metadata)
 
 
+def _option_right(metadata: dict[str, object]) -> str:
+    value = metadata.get("option_right", metadata.get("right", ""))
+    return str(value).lower()
+
+
+def _same_option_history_selection(current: KernelValueV1, reference: KernelValueV1) -> bool:
+    """Require D094/D095 history to describe the same contract or exact bucket."""
+
+    if current.subject_instrument != reference.subject_instrument:
+        return False
+    current_metadata = _metadata(current)
+    reference_metadata = _metadata(reference)
+    current_contract = current_metadata.get("contract_id")
+    reference_contract = reference_metadata.get("contract_id")
+    if current_contract is not None or reference_contract is not None:
+        return (
+            current_contract is not None
+            and reference_contract is not None
+            and type(current_contract) is type(reference_contract)
+            and current_contract == reference_contract
+        )
+    for key in ("expiry", "delta_bucket"):
+        current_value = current_metadata.get(key)
+        reference_value = reference_metadata.get(key)
+        if (
+            current_value is None
+            or reference_value is None
+            or type(current_value) is not type(reference_value)
+            or current_value != reference_value
+        ):
+            return False
+    current_right = _option_right(current_metadata)
+    reference_right = _option_right(reference_metadata)
+    return bool(current_right) and current_right == reference_right
+
+
 def _named(value: object) -> dict[str, object]:
     if type(value) is not tuple:
         return {}
@@ -1028,69 +1064,83 @@ def _eval_k02(
                 )
             return None
         if identity in {"D099", "D100", "D101"}:
-            # The selected IV points must carry right/delta metadata;
-            # never infer labels from query order.
-            skew_points: list[tuple[str, Decimal, Decimal]] = []
+            # The selected IV points must carry right/delta/expiry identity;
+            # never infer labels or cross expiry boundaries from query order.
+            skew_points: list[tuple[str, str, Decimal, Decimal]] = []
             for item in raw.get("R111", ()):
                 metadata = _metadata(item)
+                expiry = metadata.get("expiry")
+                right = _option_right(metadata)
+                delta = metadata.get("delta")
+                if expiry is None or not right or delta is None:
+                    return None
                 skew_points.append(
                     (
-                        str(metadata.get("right", "")).lower(),
-                        abs(_d(metadata.get("delta", 0))),
+                        str(expiry),
+                        right,
+                        abs(_d(delta)),
                         _d(item.value),
                     )
                 )
             target = Decimal("0.25") if identity in {"D099", "D101"} else Decimal("0.10")
-            call = next(
-                (
+            complete_skew_groups: list[tuple[Decimal, Decimal, tuple[Decimal, ...]]] = []
+            for expiry in sorted({point[0] for point in skew_points}):
+                expiry_points = tuple(point for point in skew_points if point[0] == expiry)
+                calls = tuple(
                     iv
-                    for right, delta, iv in skew_points
+                    for _, right, delta, iv in expiry_points
                     if right in {"c", "call"} and delta == target
-                ),
-                None,
-            )
-            put = next(
-                (
+                )
+                puts = tuple(
                     iv
-                    for right, delta, iv in skew_points
+                    for _, right, delta, iv in expiry_points
                     if right in {"p", "put"} and delta == target
-                ),
-                None,
-            )
-            if identity in {"D099", "D100"}:
-                return None if call is None or put is None else _DEC100 * (put - call)
-            atm_candidates = [iv for _, delta, iv in skew_points if delta == Decimal("0.50")]
-            if call is None or put is None or not atm_candidates:
+                )
+                if len(calls) != 1 or len(puts) != 1:
+                    continue
+                atm = tuple(iv for _, _, delta, iv in expiry_points if delta == Decimal("0.50"))
+                complete_skew_groups.append((calls[0], puts[0], atm))
+            if len(complete_skew_groups) != 1:
                 return None
-            return _DEC100 * (put + call - Decimal(2) * _sample_mean(tuple(atm_candidates)))
+            call, put, atm_candidates = complete_skew_groups[0]
+            if identity in {"D099", "D100"}:
+                return _DEC100 * (put - call)
+            if not atm_candidates:
+                return None
+            return _DEC100 * (put + call - Decimal(2) * _sample_mean(atm_candidates))
         if identity in {"D107", "D108"}:
             return _DEC100 * (
                 _d(_scalar(derived, "D096"))
                 - _d(_scalar(derived, "D035" if identity == "D107" else "D036"))
             )
         if identity == "D109":
-            atm_by_expiry: dict[str, dict[str, Decimal]] = {}
+            atm_by_contract_pair: dict[tuple[str, object], dict[str, Decimal]] = {}
             for item in derived.get("D087", ()):
                 metadata = _metadata(item)
-                right = str(metadata.get("right", "")).lower()
+                right = _option_right(metadata)
                 delta = metadata.get("delta")
                 expiry = metadata.get("expiry")
-                if right not in {"call", "c", "put", "p"} or delta is None or expiry is None:
+                strike = metadata.get("strike")
+                if (
+                    right not in {"call", "c", "put", "p"}
+                    or delta is None
+                    or expiry is None
+                    or strike is None
+                ):
                     return None
                 if abs(_d(delta)) != Decimal("0.50"):
                     continue
                 canonical_right = "call" if right in {"call", "c"} else "put"
-                expiry_key = str(expiry)
-                bucket = atm_by_expiry.setdefault(expiry_key, {})
+                bucket = atm_by_contract_pair.setdefault((str(expiry), strike), {})
                 if canonical_right in bucket:
                     return None
                 bucket[canonical_right] = _d(item.value)
-            complete = [
-                values for values in atm_by_expiry.values() if set(values) == {"call", "put"}
+            complete_straddle_groups = [
+                values for values in atm_by_contract_pair.values() if set(values) == {"call", "put"}
             ]
-            if len(complete) != 1:
+            if len(complete_straddle_groups) != 1:
                 return None
-            return complete[0]["call"] + complete[0]["put"]
+            return complete_straddle_groups[0]["call"] + complete_straddle_groups[0]["put"]
         if identity == "D110":
             spot = _d(_scalar(raw, "R118"))
             return None if spot == 0 else _DEC100 * _d(_scalar(derived, "D109")) / spot
@@ -1614,6 +1664,10 @@ def _eval_k03(
         if pair is None:
             return None
         current_point, reference_point = pair
+        if identity in {"D094", "D095"} and not _same_option_history_selection(
+            current_point, reference_point
+        ):
+            return None
         current_value, reference_value = _d(current_point.value), _d(reference_point.value)
         if identity == "D027":
             minutes = Decimal(
