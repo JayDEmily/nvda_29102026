@@ -1771,6 +1771,29 @@ class _OwnerV1:
             if predecessor_requests is None:
                 return None
             scoped_edge = len(predecessor_requests) != 1 or predecessor_requests[0] is not request
+            if (row.derived_id, predecessor_id) == ("D015", "D011"):
+                # The contemporaneous D011 quote belongs to the selected
+                # R120 trade's source instant, not the later request instant.
+                # Keep the parent's knowledge cutoff (visibility), but do not
+                # permit a quote event occurring after the trade to classify it.
+                trade_values = raw_inputs.get("R120", ())
+                if not trade_values or any(
+                    item.source_temporal_kind != "true_instant" for item in trade_values
+                ):
+                    return None
+                trade_time = max(item.effective_at_utc for item in trade_values)
+                selected_trades = tuple(
+                    item for item in trade_values if item.effective_at_utc == trade_time
+                )
+                if len(selected_trades) != 1:
+                    # Multiple trades at one timestamp have no uniquely
+                    # selected trade for the scalar D015 observation.
+                    return None
+                predecessor_requests = (
+                    replace(request, as_of_utc=trade_time),
+                )
+                # This is time scoping, *not* multi-contract child scoping.
+                scoped_edge = False
             predecessor_values: list[KernelValueV1] = []
             for predecessor_request in predecessor_requests:
                 predecessor_selection = self._selection_policy(predecessor_request)
