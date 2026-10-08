@@ -97,7 +97,7 @@ def test_quote_only_update_preserves_trade_sign_aggregates_and_quote_lineage():
     ):
         result = _calc(owner, did, t10)
         assert result is not None and result.result == expected
-        assert {before_buy.derived_occurrence_id, before_sell.derived_occurrence_id} <= set(result.predecessor_occurrence_ids)
+        assert {before_buy.derived_occurrence_id, after.derived_occurrence_id} <= set(result.predecessor_occurrence_ids)
         assert _calc(owner, did, t10) == result
 
 
