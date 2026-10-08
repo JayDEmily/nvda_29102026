@@ -94,7 +94,7 @@ def test_reviewer_canonical_trade_sign_volume_and_notional_public() -> None:
         "signed_premium_notional": Decimal("1200"),
     }
     assert _raw_ids(notional, "R120") == {
-        reviewer.points["R120"].observation_occurrence_id
+        str(reviewer.points["R120"].observation_occurrence_id)
     }
     assert notional.predecessor_occurrence_ids
 
@@ -115,9 +115,7 @@ def test_two_opposing_trades_have_distinct_exact_lineage_and_stable_retry() -> N
         request = _request(did, t2)
         result = owner.materialise(request)
         assert result is not None and result.result == expected
-        assert {buy.derived_occurrence_id, sell.derived_occurrence_id} <= set(result.predecessor_occurrence_ids) or (
-            did == "D016" and sell.derived_occurrence_id in result.predecessor_occurrence_ids
-        )
+        assert {buy.derived_occurrence_id, sell.derived_occurrence_id} <= set(result.predecessor_occurrence_ids)
         assert _raw_ids(result, "R121") == {"trade-buy-C100", "trade-sell-C100"}
         assert owner.materialise(request) == result
         assert all(x.derived_occurrence_id != "trade-buy-C100" for x in (buy, sell))
@@ -160,3 +158,96 @@ def test_original_reviewer_fixture_separate_contract_mismatch_is_not_accepted() 
     points["R121"] = (_raw_point("R121", Decimal("2"), "wrong-C200", reviewer.NOW, contract=wrong),)
     assert _owner(points).materialise(_request("D016", reviewer.NOW)) is None
     assert _owner(points).materialise(_request("D120", reviewer.NOW)) is None
+
+
+def test_no_sign_or_ambiguous_native_trade_refuses_instead_of_zero() -> None:
+    at = reviewer.NOW
+    # Quote midpoint = 5 and no different prior trade: D015 is explicitly unknown.
+    points = {rid: (value,) for rid, value in reviewer.points.items()}
+    points["R120"] = (_raw_point("R120", Decimal("5"), "obs-trade-C100", at),)
+    owner = _owner(points)
+    sign = owner.materialise(_request("D015", at))
+    assert sign is not None and sign.result == 0
+    assert owner.materialise(_request("D016", at)) is None
+    assert owner.materialise(_request("D120", at)) is None
+
+    # Two independent native trades have the same event/receipt instant;
+    # neither sign-to-trade pairing may be made by opaque-ID ordering.
+    collisions = _two_trade_points()
+    for rid in ("R120", "R121", "R015", "R126", "R127"):
+        collisions[rid] = (
+            collisions[rid][0], replace(
+                collisions[rid][1],
+                source_timestamp_raw=at.isoformat(), received_ts_utc=at,
+            )
+        )
+    assert _owner(collisions).materialise(_request("D016", at)) is None
+    assert _owner(collisions).materialise(_request("D120", at)) is None
+
+
+def test_d015_lineage_does_not_relabel_an_earlier_trade_when_latest_size_is_missing() -> None:
+    points = _two_trade_points()
+    points["R121"] = points["R121"][:1]
+    # New D015 knows latest trade B, but the only size belongs to trade A.
+    # Do not attach B's sign to A by overlapping historical lineage.
+    owner = _owner(points)
+    t2 = reviewer.NOW + timedelta(seconds=5)
+    assert owner.materialise(_request("D015", t2)) is not None
+    assert owner.materialise(_request("D016", t2)) is None
+    assert owner.materialise(_request("D120", t2)) is None
+
+
+def test_native_trade_cutoff_excludes_future_trade_and_history_is_append_only() -> None:
+    owner = _owner(_two_trade_points())
+    t1, t2 = reviewer.NOW, reviewer.NOW + timedelta(seconds=5)
+    past = owner.materialise(_request("D016", t1))
+    assert past is not None and past.result == Decimal("2")
+    assert _raw_ids(past, "R121") == {"trade-buy-C100"}
+    owner.materialise(_request("D015", t2))
+    current = owner.materialise(_request("D016", t2))
+    assert current is not None and current.result == Decimal("-1")
+    assert current.supersedes_derived_occurrence_id == past.derived_occurrence_id
+    assert owner.materialise(_request("D016", t1)) == past
+
+
+def test_second_exact_contract_is_not_associated_with_first_contract_sign() -> None:
+    c200 = raw.RawSelectionIdentityV1(values=tuple(
+        (k, "C200" if k == "contract_id" else v)
+        for k, v in reviewer.IDENT.values
+    ))
+    points = {
+        rid: (_raw_point(rid, value, "quote-C200" if rid in ("R034", "R035")
+                         else "trade-C200", reviewer.NOW, contract=c200),)
+        for rid, value in reviewer.raw_values.items()
+    }
+    bindings = tuple(replace(binding, selection_identity=c200) for binding in reviewer.bindings)
+    class Reader:
+        def list_projected_raw_history(self, raw_signal_catalogue_id: Any, **kwargs: Any) -> Any:
+            rid = raw_signal_catalogue_id.value
+            return raw.ProjectedRawHistoryPageV1(items=points.get(rid, ()), next_cursor=None)
+        def project_raw_value(self, *args: object, **kwargs: object) -> None:
+            return None
+    owner = api.create_owner(
+        raw_projection_reader=Reader(), raw_projection_mappings=reviewer.models,
+        parameter_sets=reviewer.params, input_selection_policies=(reviewer.selection,),
+        unit_conventions=(reviewer.unit,), contexts=(), utc_now=lambda: reviewer.NOW,
+    )
+    request = replace(reviewer.request("D120"), raw_input_bindings=bindings)
+    result = owner.materialise(request)
+    assert result is not None and dict(result.result) == {
+        "signed_contracts": Decimal("2"), "signed_premium_notional": Decimal("1200")
+    }
+    assert _raw_ids(result, "R120") == {"trade-C200"}
+    assert "trade-C100" not in _raw_ids(result, "R120")
+
+
+def test_incompatible_trade_mapping_or_cutoff_refuses() -> None:
+    at = reviewer.NOW
+    points = {rid: (value,) for rid, value in reviewer.points.items()}
+    points["R121"] = (replace(points["R121"][0], projection_mapping_version=2),)
+    assert _owner(points).materialise(_request("D016", at)) is None
+    assert _owner(points).materialise(_request("D120", at)) is None
+    points = {rid: (value,) for rid, value in reviewer.points.items()}
+    points["R121"] = (replace(points["R121"][0], received_ts_utc=at + timedelta(seconds=5)),)
+    assert _owner(points).materialise(_request("D016", at)) is None
+    assert _owner(points).materialise(_request("D120", at)) is None
