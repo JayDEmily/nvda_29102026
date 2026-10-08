@@ -12,7 +12,6 @@ from collections.abc import Iterable
 from dataclasses import dataclass
 from datetime import UTC, date, datetime, time, timedelta
 from decimal import Decimal
-from itertools import pairwise
 from typing import Any
 from zoneinfo import ZoneInfo
 
@@ -692,6 +691,11 @@ def _score(
 ) -> object | None:
     if not parameter_set.score_features:
         return None
+    declared_dependencies = set(catalogue_row(identity).derived_dependencies)
+    if any(
+        feature.signal_id not in declared_dependencies for feature in parameter_set.score_features
+    ):
+        return None
     transformed: list[tuple[api.ScoreFeatureV1, Decimal]] = []
     for feature in parameter_set.score_features:
         occurrence = _latest(derived, feature.signal_id)
@@ -731,11 +735,100 @@ def _score(
     raw = _d(params.get("intercept", _DEC0)) + sum(
         (feature.weight * z for feature, z in transformed), _DEC0
     )
-    bounded = bool(params.get("bounded_output", catalogue_row(identity).units == "0-1"))
+    # D008's alignment_score is explicitly a bounded quality component.
+    bounded = identity == "D008" or bool(
+        params.get("bounded_output", catalogue_row(identity).units == "0-1")
+    )
     if bounded:
         # Decimal has exp(); stable enough for the admitted deterministic carrier.
         return _DEC1 / (_DEC1 + (-raw).exp())
     return raw
+
+
+def _eval_k07(
+    identity: str,
+    raw: dict[str, tuple[KernelValueV1, ...]],
+    derived: dict[str, tuple[KernelValueV1, ...]],
+    parameter_set: api.CalculationParameterSetV1,
+    contexts: tuple[object, ...],
+) -> object | None:
+    if identity == "D008":
+        # Only admitted true-instants contribute to event-time skew. Receipt and
+        # date-only sources contribute to missingness, never fabricated instants.
+        sources = raw.get("R001", ())
+        if not sources or len({source.occurrence_id for source in sources}) != len(sources):
+            return None
+        instants = tuple(
+            source.effective_at_utc
+            for source in sources
+            if source.source_temporal_kind == "true_instant"
+        )
+        if not instants or not derived.get("D001") or not derived.get("D002"):
+            return None
+        score = _score(identity, derived, parameter_set)
+        if score is None or not _DEC0 <= score <= _DEC1:
+            return None
+        skew = Decimal(str((max(instants) - min(instants)).total_seconds()))
+        return _named_tuple(
+            (
+                ("max_true_instant_skew_seconds", skew),
+                ("event_time_coverage_fraction", Decimal(len(instants)) / Decimal(len(sources))),
+                ("missing_event_time_count", len(sources) - len(instants)),
+                ("alignment_score", score),
+            )
+        )
+    if identity != "D173":
+        return _score(identity, derived, parameter_set)
+
+    # Neighbour relations are directed, versioned identities, not a proximity
+    # search on available candidate results. A candidate-scoped score is valid
+    # only when every configured feature has exactly one matching occurrence.
+    subject = _context(contexts, api.CandidateStructureContextV1)
+    candidate_set = _context(contexts, api.CandidateSetContextV1)
+    if subject is None or candidate_set is None:
+        return None
+    candidate_id = subject.candidate_identity
+    if candidate_id not in candidate_set.candidate_identities:
+        return None
+    neighbours = tuple(
+        other for source, other in candidate_set.neighbour_relations if source == candidate_id
+    )
+    if not neighbours or not parameter_set.score_features:
+        return None
+    if any(
+        feature.signal_id not in catalogue_row(identity).derived_dependencies
+        for feature in parameter_set.score_features
+    ):
+        return None
+    scores: dict[str, Decimal] = {}
+    params = _parameter_map(parameter_set)
+    for candidate in (candidate_id, *neighbours):
+        total = _d(params.get("intercept", _DEC0))
+        for feature in parameter_set.score_features:
+            matching = tuple(
+                item
+                for item in derived.get(feature.signal_id, ())
+                if _named(item.value).get("candidate") == candidate
+            )
+            if len(matching) != 1:
+                return None
+            try:
+                scalar = extract_scalar(
+                    matching[0].value, feature.extractor, tuple(feature.extractor_arguments)
+                )
+                total += feature.weight * _transform(scalar, feature)
+            except (TypeError, ValueError, KeyError, ArithmeticError, IndexError):
+                return None
+        scores[candidate] = total
+    subject_score = scores[candidate_id]
+    return _named_tuple(
+        (
+            ("subject_candidate", candidate_id),
+            ("subject_score", subject_score),
+            ("comparisons", tuple((c, scores[c] - subject_score) for c in neighbours)),
+            ("neighbour_scores", tuple((c, scores[c]) for c in neighbours)),
+        )
+    )
 
 
 def _phase_for_local(local: datetime, phases: object) -> str | None:
@@ -2512,43 +2605,106 @@ def _eval_k16(
     if identity != "D155":
         return None
     order = params.get("component_order")
-    if type(order) is not tuple or not order:
+    if type(order) is not tuple or not order or len(set(order)) != len(order):
+        return None
+    if set(order) != set(catalogue_row(identity).derived_dependencies):
         return None
     output = []
     for did in order:
         item = _latest(derived, str(did))
         if item is None:
             return None
-        output.append((str(did), item.value, item.occurrence_id))
+        # Preserve original units/quality plus exact temporal freshness facts;
+        # do not fabricate a missing quality grade.
+        metadata = _metadata(item)
+        if not metadata.get("units"):
+            return None
+        preserved = (*item.metadata,
+                     ("effective_at_utc", item.effective_at_utc),
+                     ("received_ts_utc", item.received_ts_utc))
+        output.append((str(did), item.value, item.occurrence_id, preserved))
     return tuple(output)
 
 
 def _eval_k17(
     raw: dict[str, tuple[KernelValueV1, ...]], params: dict[str, object], as_of: datetime
 ) -> object | None:
-    states = raw.get("__book_states__", ())
-    if not states:
+    # The authoritative D145 raw set is R187/R188/R189/R190. Resolve
+    # consecutive top-of-book states without an internal synthetic input.
+    # A replacement level is explicit only with delete and insert events;
+    # an update at an unseen price cannot silently erase an unknown level.
+    try:
+        window = _d(params["window_seconds"])
+        if window <= 0:
+            return None
+        start = as_of - timedelta(seconds=float(window))
+        rows = _align_occurrence_fields(raw, ("R187", "R188", "R189", "R190"))
+        if not rows:
+            return None
+        state: dict[tuple[str, Decimal], Decimal] = {}
+        predecessor: tuple[Decimal, Decimal, Decimal, Decimal] | None = None
+        total = _DEC0
+        transitions = 0
+        # Same-event-time mutations form one deterministic book-state transition.
+        # Intermediate partial states are not invented as market snapshots.
+        instants = sorted({max(item.effective_at_utc for item in row.values()) for row in rows})
+        for timestamp in instants:
+            if timestamp > as_of:
+                continue
+            batch = tuple(
+                row
+                for row in rows
+                if max(item.effective_at_utc for item in row.values()) == timestamp
+            )
+            batch = tuple(sorted(batch, key=lambda row: (
+                _i(_metadata(row["R187"]).get("ingestion_sequence", 0)),
+                row["R187"].occurrence_id,
+            )))
+            for row in batch:
+                operation = str(row["R187"].value).lower()
+                side = str(row["R188"].value).lower()
+                price = _d(row["R189"].value)
+                size = _d(row["R190"].value)
+                if side not in {"bid", "ask"} or price <= 0 or size < 0:
+                    return None
+                key = (side, price)
+                if operation == "insert":
+                    if key in state or size <= 0:
+                        return None
+                    state[key] = size
+                elif operation == "update":
+                    if key not in state or size <= 0:
+                        return None
+                    state[key] = size
+                elif operation in {"delete", "remove", "cancel"}:
+                    if key not in state:
+                        return None
+                    del state[key]
+                else:
+                    return None
+            bids = tuple((p, q) for (s, p), q in state.items() if s == "bid")
+            asks = tuple((p, q) for (s, p), q in state.items() if s == "ask")
+            if not bids or not asks:
+                predecessor = None
+                continue
+            pb, qb = max(bids)
+            pa, qa = min(asks)
+            if pb >= pa:
+                return None
+            current = (pb, qb, pa, qa)
+            if predecessor is not None and timestamp >= start:
+                pb0, qb0, pa0, qa0 = predecessor
+                total += (
+                    (qb if pb >= pb0 else _DEC0)
+                    - (qb0 if pb <= pb0 else _DEC0)
+                    - (qa if pa <= pa0 else _DEC0)
+                    + (qa0 if pa >= pa0 else _DEC0)
+                )
+                transitions += 1
+            predecessor = current
+        return total if transitions > 0 else None
+    except (ValueError, TypeError, KeyError, ArithmeticError, OverflowError):
         return None
-    window = _d(params.get("window_seconds"))
-    start = as_of - timedelta(seconds=float(window))
-    ordered = sorted(
-        (v for v in states if start <= v.effective_at_utc <= as_of),
-        key=lambda v: v.effective_at_utc,
-    )
-    if len(ordered) < 2:
-        return None
-    total = _DEC0
-    for previous, current in pairwise(ordered):
-        p, c = _named(previous.value), _named(current.value)
-        pb0, qb0, pa0, qa0 = (_d(p[k]) for k in ("bid_price", "bid_size", "ask_price", "ask_size"))
-        pb, qb, pa, qa = (_d(c[k]) for k in ("bid_price", "bid_size", "ask_price", "ask_size"))
-        total += (
-            (qb if pb >= pb0 else _DEC0)
-            - (qb0 if pb <= pb0 else _DEC0)
-            - (qa if pa <= pa0 else _DEC0)
-            + (qa0 if pa >= pa0 else _DEC0)
-        )
-    return total
 
 
 def evaluate_stage1_kernel(
@@ -2587,7 +2743,7 @@ def evaluate_stage1_kernel(
     elif row.kernel_id == "K06_REGRESSION_DEPENDENCE":
         value = _eval_k06(derived_signal_id, raw_inputs, derived_inputs, params)
     elif row.kernel_id == "K07_WEIGHTED_SCORE":
-        value = _score(derived_signal_id, derived_inputs, parameter_set)
+        value = _eval_k07(derived_signal_id, raw_inputs, derived_inputs, parameter_set, contexts)
     elif row.kernel_id == "K08_RULE_BUCKET_POLICY":
         value = _eval_k08(
             derived_signal_id, raw_inputs, derived_inputs, params, contexts, as_of_utc
