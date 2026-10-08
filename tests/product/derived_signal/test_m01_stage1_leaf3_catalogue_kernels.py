@@ -137,7 +137,7 @@ def test_d008_is_structured_with_admitted_temporal_coverage_and_skew() -> None:
     result = evaluate(
         "D008",
         raw={"R001": (
-            kv("quote", "r1", temporal="true_instant"),
+            kv("quote", "r1", at=AT - timedelta(seconds=2), temporal="true_instant"),
             kv("quote", "r3", temporal="true_instant"),
             kv("news", "r2", temporal="receipt_only"),
         )},
@@ -156,20 +156,23 @@ def test_d008_is_structured_with_admitted_temporal_coverage_and_skew() -> None:
 
 
 def test_d155_preserves_component_units_quality_freshness_and_occurrence_id() -> None:
+    component_ids = _catalogue.catalogue_row("D155").derived_dependencies
+    components = {
+        did: (kv(Decimal("2"), f"{did}-1", at=AT - timedelta(seconds=4), metadata=(
+            ("units", "score"), ("quality", "admitted"), ("freshness", "current"),
+        )),)
+        for did in component_ids
+    }
     result = evaluate(
         "D155",
-        derived={"D150": (
-            kv(Decimal("2"), "d150-1", at=AT - timedelta(seconds=4), metadata=(
-                ("units", "score"), ("quality", "admitted"), ("freshness", "current"),
-            )),
-        )},
-        parameters=param("P_STATE_VECTOR", component_order=("D150",)),
+        derived=components,
+        parameters=param("P_STATE_VECTOR", component_order=component_ids),
     )
     assert result is not None
     component = result.value[0]
     assert component[0] == "D150"
     assert component[1] == Decimal("2")
-    assert component[2] == "d150-1"
+    assert component[2] == "D150-1"
     assert dict(component[3])["units"] == "score"
     assert dict(component[3])["quality"] == "admitted"
     assert dict(component[3])["freshness"] == "current"
@@ -200,7 +203,8 @@ def test_d173_refuses_undeclared_neighbours_even_when_predecessor_values_exist()
         kv((("candidate", "A"), ("value", Decimal(10))), "a"),
         kv((("candidate", "B"), ("value", Decimal(13))), "b"),
         kv((("candidate", "C"), ("value", Decimal(99))), "c"),
-    )}
+    ), "D171": (kv(Decimal(1), "advice-1"),),
+        "D172": (kv(Decimal(1), "advice-2"),)}
     result = evaluate("D173", derived=derived, parameters=p, contexts=(subject, universe))
     assert result is not None
     comps = dict(result.value)

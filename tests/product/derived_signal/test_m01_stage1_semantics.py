@@ -1182,63 +1182,46 @@ def test_k08_candidate_selection_risk_size_limit_and_action_precedence_are_deter
 
 
 def test_k16_state_vector_is_ordered_schema_assembly_without_hidden_weighting() -> None:
-    params = _p(
-        "P_STATE_VECTOR",
-        component_order=("D150", "D084", "D061"),
-    )
+    components = _catalogue().catalogue_row("D155").derived_dependencies
+    params = _p("P_STATE_VECTOR", component_order=components)
     result = _eval(
         "D155",
         derived={
-            "D150": (_kv(Decimal("1"), occurrence_id="a"),),
-            "D084": (_kv(Decimal("2"), occurrence_id="b"),),
-            "D061": (_kv(Decimal("3"), occurrence_id="c"),),
+            did: (_kv(Decimal(index + 1), occurrence_id=f"component-{index}",
+                       metadata=(("units", "score"), ("quality", "valid"))),)
+            for index, did in enumerate(components)
         },
         params=params,
     )
     assert result is not None
-    assert result.value == (
-        ("D150", Decimal("1"), "a"),
-        ("D084", Decimal("2"), "b"),
-        ("D061", Decimal("3"), "c"),
+    assert tuple(item[0] for item in result.value) == components
+    assert tuple(item[1] for item in result.value) == tuple(
+        Decimal(index + 1) for index in range(len(components))
     )
+    assert all(dict(item[3])["units"] == "score" for item in result.value)
+    assert all(dict(item[3])["quality"] == "valid" for item in result.value)
 
 
-def test_k17_ofi_uses_adjacent_states_without_strict_length_pairing_bug() -> None:
-    states = (
-        _kv(
-            (
-                ("bid_price", Decimal("100")),
-                ("bid_size", Decimal("10")),
-                ("ask_price", Decimal("101")),
-                ("ask_size", Decimal("8")),
-            ),
-            occurrence_id="s1",
-            at=NOW - timedelta(seconds=2),
-        ),
-        _kv(
-            (
-                ("bid_price", Decimal("100")),
-                ("bid_size", Decimal("12")),
-                ("ask_price", Decimal("101")),
-                ("ask_size", Decimal("7")),
-            ),
-            occurrence_id="s2",
-            at=NOW - timedelta(seconds=1),
-        ),
-        _kv(
-            (
-                ("bid_price", Decimal("101")),
-                ("bid_size", Decimal("5")),
-                ("ask_price", Decimal("102")),
-                ("ask_size", Decimal("9")),
-            ),
-            occurrence_id="s3",
-            at=NOW,
-        ),
+def test_k17_ofi_uses_consecutive_best_book_states_from_catalogue_events() -> None:
+    events = (
+        ("a", NOW - timedelta(seconds=2), "insert", "bid", "100", "10"),
+        ("b", NOW - timedelta(seconds=2), "insert", "ask", "101", "8"),
+        ("c", NOW - timedelta(seconds=1), "update", "bid", "100", "12"),
+        ("d", NOW - timedelta(seconds=1), "update", "ask", "101", "7"),
+        ("e", NOW, "delete", "bid", "100", "0"),
+        ("f", NOW, "delete", "ask", "101", "0"),
+        ("g", NOW, "insert", "bid", "101", "5"),
+        ("h", NOW, "insert", "ask", "102", "9"),
     )
+    raw: dict[str, list[Any]] = {key: [] for key in ("R187", "R188", "R189", "R190")}
+    for oid, at, operation, side, price, size in events:
+        for rid, value in zip(
+            ("R187", "R188", "R189", "R190"),
+            (operation, side, Decimal(price), Decimal(size)), strict=True,
+        ):
+            raw[rid].append(_kv(value, occurrence_id=oid, at=at))
     result = _eval(
-        "D145",
-        raw={"__book_states__": states},
+        "D145", raw={key: tuple(reversed(items)) for key, items in raw.items()},
         params=_p("P_OFI", window_seconds=5),
     )
     assert result is not None and result.value == Decimal("15")
