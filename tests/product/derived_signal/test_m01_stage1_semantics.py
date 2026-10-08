@@ -1711,3 +1711,156 @@ def test_public_seam_enforces_declared_option_contract_selection_identity() -> N
     assert hostile_owner.materialise(request(c1)) is None
     # A policy cannot advertise a join dimension that its bindings/projections cannot establish.
     assert matching_owner.materialise(request(None)) is None
+
+
+def test_each_option_rows_require_complete_contract_selection_policy_before_calculation() -> None:
+    raw_api = importlib.import_module("nvda_desk.raw_signal_occurrence_truth.api")
+    identity_type = raw_api.RawSelectionIdentityV1
+    projected_type = raw_api.ProjectedRawValueV1
+    page_type = raw_api.ProjectedRawHistoryPageV1
+
+    contract = identity_type(
+        values=(
+            ("contract_id", "C1"),
+            ("underlying_instrument", "NVDA"),
+            ("expiry", "2026-12-18"),
+            ("strike", Decimal("150")),
+            ("option_right", "call"),
+        )
+    )
+
+    def projected(raw_id: str, occurrence_id: str, mapping_id: str, value: str) -> Any:
+        return projected_type(
+            raw_signal_catalogue_id=raw_api.RawSignalCatalogueId(raw_id),
+            observation_occurrence_id=raw_api.observation_occurrence_id(occurrence_id),
+            projection_mapping_id=mapping_id,
+            projection_mapping_version=1,
+            source_provider="p",
+            source_variant="snapshot",
+            native_field_path=("quote", "bid" if raw_id == "R034" else "ask"),
+            native_value=Decimal(value),
+            native_units="price",
+            subject_instrument="NVDA",
+            source_temporal_kind="true_instant",
+            source_timestamp_raw=NOW.isoformat(),
+            source_timezone_native="UTC",
+            received_ts_utc=NOW,
+            ingestion_sequence=1 if raw_id == "R034" else 2,
+            ingestion_sequence_scope=raw_api.ingestion_sequence_scope("p:snapshot"),
+            revision_vintage_native=None,
+            selection_identity=contract,
+        )
+
+    values = {
+        "R034": projected("R034", "contract-C1-bid", "m-bid", "100"),
+        "R035": projected("R035", "contract-C1-ask", "m-ask", "102"),
+    }
+
+    class Reader:
+        def list_projected_raw_history(self, raw_signal_catalogue_id: Any, **kwargs: Any) -> Any:
+            item = values.get(raw_signal_catalogue_id.value)
+            return page_type(items=() if item is None else (item,), next_cursor=None)
+
+        def project_raw_value(self, *args: object, **kwargs: object) -> object | None:
+            return None
+
+    p_basic = _p("P_BASIC", selection_mode="exact")
+    unit = api.UnitConventionVersionV1(
+        context_id="unit-price-mandatory-contract-selection",
+        version=1,
+        native_units="price",
+        canonical_units="price",
+        scale=Decimal("1"),
+        offset=Decimal("0"),
+    )
+    mappings = (
+        raw_api.RawSignalProjectionMappingV1(
+            mapping_id="m-bid",
+            version=1,
+            raw_signal_catalogue_id=raw_api.RawSignalCatalogueId("R034"),
+            source_provider="p",
+            source_variant="snapshot",
+            native_field_path=("quote", "bid"),
+            native_units="price",
+        ),
+        raw_api.RawSignalProjectionMappingV1(
+            mapping_id="m-ask",
+            version=1,
+            raw_signal_catalogue_id=raw_api.RawSignalCatalogueId("R035"),
+            source_provider="p",
+            source_variant="snapshot",
+            native_field_path=("quote", "ask"),
+            native_units="price",
+        ),
+    )
+    profile_ref = api.ParameterProfileRefV1("P_BASIC", p_basic.context_id, 1)
+    mandatory_contract_join_keys = (
+        "contract_id",
+        "underlying_instrument",
+        "expiry",
+        "strike",
+        "option_right",
+    )
+
+    def materialise(join_keys: tuple[str, ...]) -> api.DerivedSignalOccurrenceV1 | None:
+        selection = api.InputSelectionPolicyVersionV1(
+            context_id=f"selection-mandatory-option-{'-'.join(join_keys)}",
+            version=1,
+            join_keys=join_keys,
+            maximum_staleness=timedelta(minutes=1),
+            maximum_skew=timedelta(seconds=10),
+            temporal_basis_permissions=("true_instant",),
+            basket_membership=(),
+        )
+        owner = api.create_owner(
+            raw_projection_reader=Reader(),
+            raw_projection_mappings=mappings,
+            parameter_sets=(p_basic,),
+            input_selection_policies=(selection,),
+            unit_conventions=(unit,),
+            contexts=(),
+            utc_now=lambda: NOW,
+        )
+        request = api.CalculationRequestV1(
+            derived_signal_id="D087",
+            subject_instrument="NVDA",
+            as_of_utc=NOW,
+            knowledge_cutoff_utc=NOW,
+            calculation_definition_version="calc-v1",
+            parameter_set_id=p_basic.context_id,
+            parameter_set_version=1,
+            input_selection_policy_id=selection.context_id,
+            input_selection_policy_version=1,
+            context_refs=(),
+            parameter_profile_refs=(profile_ref,),
+            raw_input_bindings=(
+                api.RawInputBindingV1(
+                    "R034",
+                    api.VersionRefV1("m-bid", 1),
+                    api.VersionRefV1(unit.context_id, 1),
+                    "NVDA",
+                    selection_identity=contract,
+                ),
+                api.RawInputBindingV1(
+                    "R035",
+                    api.VersionRefV1("m-ask", 1),
+                    api.VersionRefV1(unit.context_id, 1),
+                    "NVDA",
+                    selection_identity=contract,
+                ),
+            ),
+        )
+        return owner.materialise(request)
+
+    row = _catalogue().catalogue_row("D087")
+    assert row.applicable_universe == "Each option"
+    complete = materialise(mandatory_contract_join_keys)
+    assert complete is not None and complete.result == Decimal("101")
+
+    # Clause 8.1 and the row's exact per-option universe make every contract-selection
+    # dimension mandatory. A caller policy cannot erase that row authority by omission,
+    # even when the supplied observations happen to describe the same contract.
+    for omitted in mandatory_contract_join_keys:
+        incomplete = tuple(key for key in mandatory_contract_join_keys if key != omitted)
+        assert materialise(incomplete) is None
+    assert materialise(("subject_instrument",)) is None
