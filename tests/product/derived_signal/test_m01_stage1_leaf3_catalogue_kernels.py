@@ -219,3 +219,55 @@ def test_d173_refuses_undeclared_neighbours_even_when_predecessor_values_exist()
         evaluate("D173", derived=derived, parameters=p, contexts=(subject, no_neighbours))
         is None
     )
+
+
+def test_k06_pearson_correlations_refuse_zero_variance_not_substitute_zero() -> None:
+    readings = tuple(
+        kv(Decimal("100"), f"nvda-{i}", at=AT - timedelta(minutes=3 - i))
+        for i in range(3)
+    ) + tuple(
+        _stage1.KernelValueV1(
+            value=Decimal(i + 1), occurrence_id=f"spy-{i}",
+            effective_at_utc=AT - timedelta(minutes=3 - i),
+            received_ts_utc=AT, subject_instrument="SPY",
+            source_temporal_kind="true_instant",
+        )
+        for i in range(3)
+    )
+    assert evaluate(
+        "D082", raw={"R151": readings},
+        parameters=param("P_REGRESSION", minimum_sample=3),
+    ) is None
+
+
+def test_k02_liquidation_requires_exact_quantity_and_multiplier() -> None:
+    derived = {
+        "D133": (kv((("expected_fill_price", Decimal("5")),), "fill"),),
+        "D164": (kv((("commissions", Decimal("3")), ("fees", Decimal("1")),
+                       ("multi_leg_incremental_cost", Decimal("2"))), "cost"),),
+    }
+    assert evaluate("D191", derived=derived, parameters=param("P_BASIC")) is None
+    calculated = evaluate(
+        "D191", derived=derived,
+        parameters=param("P_BASIC", liquidation_quantity=Decimal("2"), multiplier=Decimal("100")),
+    )
+    assert calculated is not None and calculated.value == Decimal("994")
+
+
+def test_k08_risk_quantity_refuses_implicit_uncertainty_and_liquidity_multipliers() -> None:
+    derived = {"D175": (kv(Decimal("100"), "risk"),)}
+    assert evaluate(
+        "D176", derived=derived, parameters=param("P_RULE", risk_per_unit=Decimal("10")),
+    ) is None
+    calculated = evaluate(
+        "D176", derived=derived,
+        parameters=param("P_RULE", risk_per_unit=Decimal("10"),
+                         uncertainty_multiplier=Decimal("1.25"),
+                         liquidity_multiplier=Decimal("2")),
+    )
+    assert calculated is not None and calculated.value == 4
+
+
+def test_k08_insert_delete_rates_require_versioned_window() -> None:
+    for identity in ("D139", "D140"):
+        assert evaluate(identity, parameters=param("P_RULE")) is None
