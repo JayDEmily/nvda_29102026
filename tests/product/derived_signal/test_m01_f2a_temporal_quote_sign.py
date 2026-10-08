@@ -3,6 +3,7 @@
 Public-seam propositions are derived from accepted brief K08 D015/D016/D120,
 §8.1 temporally compatible input selection and §11 no-look-ahead.
 """
+
 from __future__ import annotations
 
 import importlib.util
@@ -14,7 +15,10 @@ from pathlib import Path
 from nvda_desk.derived_signal_calculation_truth import api
 from nvda_desk.raw_signal_occurrence_truth import api as raw
 
-_REVIEW = Path(__file__).resolve().parents[3] / "handoff/m01_completion/review/proof/stage1_signed_flow_public_fixture.py"
+_REVIEW = (
+    Path(__file__).resolve().parents[3]
+    / "handoff/m01_completion/review/proof/stage1_signed_flow_public_fixture.py"
+)
 _spec = importlib.util.spec_from_file_location("f2a_authority_reviewer_fixture", _REVIEW)
 assert _spec is not None and _spec.loader is not None
 fixture = importlib.util.module_from_spec(_spec)
@@ -42,29 +46,36 @@ def _owner(events):
             return None
 
     return api.create_owner(
-        raw_projection_reader=Reader(), raw_projection_mappings=fixture.models,
-        parameter_sets=fixture.params, input_selection_policies=(fixture.selection,),
-        unit_conventions=(fixture.unit,), contexts=(),
+        raw_projection_reader=Reader(),
+        raw_projection_mappings=fixture.models,
+        parameter_sets=fixture.params,
+        input_selection_policies=(fixture.selection,),
+        unit_conventions=(fixture.unit,),
+        contexts=(),
         utc_now=lambda: fixture.NOW + timedelta(seconds=20),
     )
 
 
 def _calc(owner, did, at, *, cutoff=None):
-    return owner.materialise(replace(
-        fixture.request(did), as_of_utc=at,
-        knowledge_cutoff_utc=at if cutoff is None else cutoff,
-    ))
+    return owner.materialise(
+        replace(
+            fixture.request(did),
+            as_of_utc=at,
+            knowledge_cutoff_utc=at if cutoff is None else cutoff,
+        )
+    )
 
 
-def _trades_and_quotes(*, later_bid=Decimal("2"), later_ask=Decimal("4"),
-                       first_quote_delay=0):
+def _trades_and_quotes(*, later_bid=Decimal("2"), later_ask=Decimal("4"), first_quote_delay=0):
     t0 = fixture.NOW
     t5 = t0 + timedelta(seconds=5)
     t10 = t0 + timedelta(seconds=10)
     events = {}
     for rid, value in fixture.raw_values.items():
         if rid in {"R034", "R035"}:
-            events[rid] = (_point(rid, value, "quote-before", t0 + timedelta(seconds=first_quote_delay)),)
+            events[rid] = (
+                _point(rid, value, "quote-before", t0 + timedelta(seconds=first_quote_delay)),
+            )
         else:
             second = {"R120": Decimal("4"), "R121": Decimal("3")}.get(rid, value)
             events[rid] = (
@@ -97,12 +108,14 @@ def test_quote_only_update_preserves_trade_sign_aggregates_and_quote_lineage():
     ):
         result = _calc(owner, did, t10)
         assert result is not None and result.result == expected
-        assert {before_buy.derived_occurrence_id, after.derived_occurrence_id} <= set(result.predecessor_occurrence_ids)
+        assert {before_buy.derived_occurrence_id, after.derived_occurrence_id} <= set(
+            result.predecessor_occurrence_ids
+        )
         assert _calc(owner, did, t10) == result
 
 
 def test_different_later_midpoint_cannot_override_trade_time_midpoint():
-    events, t0, t5, t10 = _trades_and_quotes(later_bid=Decimal("8"), later_ask=Decimal("10"))
+    events, _t0, t5, t10 = _trades_and_quotes(later_bid=Decimal("8"), later_ask=Decimal("10"))
     owner = _owner(events)
     assert _calc(owner, "D015", t5).result == -1
     after = _calc(owner, "D015", t10)
@@ -111,7 +124,7 @@ def test_different_later_midpoint_cannot_override_trade_time_midpoint():
 
 
 def test_only_post_trade_quote_must_not_classify_old_trade():
-    events, t0, t5, t10 = _trades_and_quotes(first_quote_delay=7)
+    events, _t0, t5, t10 = _trades_and_quotes(first_quote_delay=7)
     owner = _owner(events)
     # A quote at t7 and one at t10 both postdate the trade at t5.
     assert _calc(owner, "D015", t5, cutoff=t10) is None
