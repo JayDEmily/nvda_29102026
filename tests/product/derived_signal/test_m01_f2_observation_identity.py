@@ -8,12 +8,10 @@ from __future__ import annotations
 
 import importlib.util
 from dataclasses import replace
-from datetime import UTC, datetime, timedelta
+from datetime import datetime, timedelta
 from decimal import Decimal
 from pathlib import Path
 from typing import Any
-
-import pytest
 
 from nvda_desk.derived_signal_calculation_truth import api
 from nvda_desk.raw_signal_occurrence_truth import api as raw
@@ -26,7 +24,9 @@ reviewer = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(reviewer)
 
 
-def _raw_point(rid: str, value: object, oid: str, at: datetime, *, contract: Any = None) -> raw.ProjectedRawValueV1:
+def _raw_point(
+    rid: str, value: object, oid: str, at: datetime, *, contract: Any = None
+) -> raw.ProjectedRawValueV1:
     original = reviewer.points[rid]
     return replace(
         original,
@@ -63,7 +63,9 @@ def _request(did: str, instant: datetime) -> api.CalculationRequestV1:
     return replace(reviewer.request(did), as_of_utc=instant, knowledge_cutoff_utc=instant)
 
 
-def _two_trade_points(*, second_size: Decimal = Decimal("3"), second_price: Decimal = Decimal("4")) -> dict[str, tuple[raw.ProjectedRawValueV1, ...]]:
+def _two_trade_points(
+    *, second_size: Decimal = Decimal("3"), second_price: Decimal = Decimal("4")
+) -> dict[str, tuple[raw.ProjectedRawValueV1, ...]]:
     t1, t2 = reviewer.NOW, reviewer.NOW + timedelta(seconds=5)
     values: dict[str, tuple[raw.ProjectedRawValueV1, ...]] = {}
     for rid in reviewer.raw_values:
@@ -83,7 +85,9 @@ def _raw_ids(occ: api.DerivedSignalOccurrenceV1, rid: str) -> set[str]:
 
 def test_reviewer_canonical_trade_sign_volume_and_notional_public() -> None:
     for did, expected in (
-        ("D011", Decimal("5")), ("D015", 1), ("D016", Decimal("2")),
+        ("D011", Decimal("5")),
+        ("D015", 1),
+        ("D016", Decimal("2")),
     ):
         occurrence = reviewer.owner.materialise(reviewer.request(did))
         assert occurrence is not None and occurrence.result == expected
@@ -93,9 +97,7 @@ def test_reviewer_canonical_trade_sign_volume_and_notional_public() -> None:
         "signed_contracts": Decimal("2"),
         "signed_premium_notional": Decimal("1200"),
     }
-    assert _raw_ids(notional, "R120") == {
-        str(reviewer.points["R120"].observation_occurrence_id)
-    }
+    assert _raw_ids(notional, "R120") == {str(reviewer.points["R120"].observation_occurrence_id)}
     assert notional.predecessor_occurrence_ids
 
 
@@ -115,11 +117,15 @@ def test_two_opposing_trades_have_distinct_exact_lineage_and_stable_retry() -> N
         request = _request(did, t2)
         result = owner.materialise(request)
         assert result is not None and result.result == expected
-        assert {buy.derived_occurrence_id, sell.derived_occurrence_id} <= set(result.predecessor_occurrence_ids)
+        assert {buy.derived_occurrence_id, sell.derived_occurrence_id} <= set(
+            result.predecessor_occurrence_ids
+        )
         assert _raw_ids(result, "R121") == {"trade-buy-C100", "trade-sell-C100"}
         assert owner.materialise(request) == result
         assert all(x.derived_occurrence_id != "trade-buy-C100" for x in (buy, sell))
-    changed = owner.materialise(replace(_request("D016", t2), knowledge_cutoff_utc=t2 + timedelta(seconds=1)))
+    changed = owner.materialise(
+        replace(_request("D016", t2), knowledge_cutoff_utc=t2 + timedelta(seconds=1))
+    )
     assert changed is not None
     assert changed.supersedes_derived_occurrence_id is not None
 
@@ -152,9 +158,9 @@ def test_d017_only_pairs_trade_fields_from_same_m00_native_record() -> None:
 
 def test_original_reviewer_fixture_separate_contract_mismatch_is_not_accepted() -> None:
     points = {rid: (value,) for rid, value in reviewer.points.items()}
-    wrong = raw.RawSelectionIdentityV1(values=tuple(
-        (k, "C200" if k == "contract_id" else v) for k, v in reviewer.IDENT.values
-    ))
+    wrong = raw.RawSelectionIdentityV1(
+        values=tuple((k, "C200" if k == "contract_id" else v) for k, v in reviewer.IDENT.values)
+    )
     points["R121"] = (_raw_point("R121", Decimal("2"), "wrong-C200", reviewer.NOW, contract=wrong),)
     assert _owner(points).materialise(_request("D016", reviewer.NOW)) is None
     assert _owner(points).materialise(_request("D120", reviewer.NOW)) is None
@@ -176,10 +182,12 @@ def test_no_sign_or_ambiguous_native_trade_refuses_instead_of_zero() -> None:
     collisions = _two_trade_points()
     for rid in ("R120", "R121", "R015", "R126", "R127"):
         collisions[rid] = (
-            collisions[rid][0], replace(
+            collisions[rid][0],
+            replace(
                 collisions[rid][1],
-                source_timestamp_raw=at.isoformat(), received_ts_utc=at,
-            )
+                source_timestamp_raw=at.isoformat(),
+                received_ts_utc=at,
+            ),
         )
     assert _owner(collisions).materialise(_request("D016", at)) is None
     assert _owner(collisions).materialise(_request("D120", at)) is None
@@ -211,31 +219,45 @@ def test_native_trade_cutoff_excludes_future_trade_and_history_is_append_only() 
 
 
 def test_second_exact_contract_is_not_associated_with_first_contract_sign() -> None:
-    c200 = raw.RawSelectionIdentityV1(values=tuple(
-        (k, "C200" if k == "contract_id" else v)
-        for k, v in reviewer.IDENT.values
-    ))
+    c200 = raw.RawSelectionIdentityV1(
+        values=tuple((k, "C200" if k == "contract_id" else v) for k, v in reviewer.IDENT.values)
+    )
     points = {
-        rid: (_raw_point(rid, value, "quote-C200" if rid in ("R034", "R035")
-                         else "trade-C200", reviewer.NOW, contract=c200),)
+        rid: (
+            _raw_point(
+                rid,
+                value,
+                "quote-C200" if rid in ("R034", "R035") else "trade-C200",
+                reviewer.NOW,
+                contract=c200,
+            ),
+        )
         for rid, value in reviewer.raw_values.items()
     }
     bindings = tuple(replace(binding, selection_identity=c200) for binding in reviewer.bindings)
+
     class Reader:
         def list_projected_raw_history(self, raw_signal_catalogue_id: Any, **kwargs: Any) -> Any:
             rid = raw_signal_catalogue_id.value
             return raw.ProjectedRawHistoryPageV1(items=points.get(rid, ()), next_cursor=None)
+
         def project_raw_value(self, *args: object, **kwargs: object) -> None:
             return None
+
     owner = api.create_owner(
-        raw_projection_reader=Reader(), raw_projection_mappings=reviewer.models,
-        parameter_sets=reviewer.params, input_selection_policies=(reviewer.selection,),
-        unit_conventions=(reviewer.unit,), contexts=(), utc_now=lambda: reviewer.NOW,
+        raw_projection_reader=Reader(),
+        raw_projection_mappings=reviewer.models,
+        parameter_sets=reviewer.params,
+        input_selection_policies=(reviewer.selection,),
+        unit_conventions=(reviewer.unit,),
+        contexts=(),
+        utc_now=lambda: reviewer.NOW,
     )
     request = replace(reviewer.request("D120"), raw_input_bindings=bindings)
     result = owner.materialise(request)
     assert result is not None and dict(result.result) == {
-        "signed_contracts": Decimal("2"), "signed_premium_notional": Decimal("1200")
+        "signed_contracts": Decimal("2"),
+        "signed_premium_notional": Decimal("1200"),
     }
     assert _raw_ids(result, "R120") == {"trade-C200"}
     assert "trade-C100" not in _raw_ids(result, "R120")
