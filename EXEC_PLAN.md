@@ -40,7 +40,9 @@ For each stage below:
 3. implement only the behaviour established by accepted authority and that proof boundary;
 4. run the relevant focused proof plus the necessary regression/architecture checks;
 5. freeze one exact candidate and return it to an independent reviewer;
-6. on reviewer PASS, continue to the next stage; on REPAIR, repair only the proved defect/class and return for fresh review.
+6. on reviewer PASS, continue to the next stage; on REPAIR, follow the active reviewer-return repair/checkpoint sequence, repair only the proved defect/class, and return for fresh review.
+
+For the current Stage-1 `RECURRENT_CLASS` review return, the later **Stage-1 reviewer-return foundation checkpoint** section controls worker re-entry and adds a mandatory independent F1 inventory acceptance before further production repair.
 
 The Worker may perform proof-authoring and implementation sequentially on this branch, but the Git history must preserve their order: the proof/test commit precedes the production-behaviour commit. Independent review remains a separate actor/thread.
 
@@ -133,6 +135,60 @@ This leaf will:
 - freeze one exact Stage-1 candidate with clean Git state and complete proof identities for independent review.
 
 **Leaf completion and Stage-1 review boundary:** after Leaf 3, the Worker stops and returns the one exact frozen Stage-1 candidate to the independent Reviewer. Stage 2 remains unauthorised until that independent Stage-1 review returns `PASS`.
+
+### Stage-1 reviewer-return foundation checkpoint — Programme Owner amendment 2026-10-08
+
+**Authority and activation.** The Programme Owner authorised this amendment on 2026-10-08 after the independent Stage-1 `REPAIR / RECURRENT_CLASS` review of Worker `514cf90e4c49a3dc72d318796549a6da9dc38cc7` (reviewer disposition commit `2b5b086099561c2e28aa86bf20dfa222c5d4b3ec`). **This checkpoint is active now; Stage 2 remains unauthorised.** The reviewer result and public-seam reproducer at `handoff/m01_completion/review/` are evidence, not a new mathematics, identity or dependency authority.
+
+**Reason for this re-entry.** The previous three Stage-1 internal leaves and their checkpoints remain historical implementation/proof evidence, but no Stage-1 `PASS` has been established. Their broad selection/lineage obligation did not prevent a derived D015 occurrence ID from being joined as though it were an M00 raw-observation ID when D016/D120 applied signed-trade information. The accepted brief already requires exact per-trade signed arithmetic, source lineage, compatible predecessor reuse and fail-closed missing prerequisites (§5 K08; §§7–9, 12–14, 17–18). The intervention below changes the *order and independent proof boundary* for the rejected Stage-1 repair; it does not change these normative obligations.
+
+**Precedence and workload limit.** For this return only, the F1–F4 sequence below supersedes the prior instruction to proceed directly through Leaf 1 → Leaf 2 → Leaf 3 without interim reviewer engagement. The three original leaf propositions and full Stage-1 acceptance conditions remain binding; previously authored work is reused where evidenced, not blindly repeated or declared accepted. Work **F1 only** before its independent reviewer checkpoint. Do not advance F2/F3/F4, edit production, or turn uncertain relationship meaning into implementation policy while F1 is unaccepted. F2 and F3 are separate bounded engineering leaves with separate proof-before-production checkpoints; independent review next occurs at F4 unless a required invariant fails earlier.
+
+#### F1 — authority-derived relationship census and implementation map (evidence only)
+
+**Proposition:** Every normative Stage-1 input relationship is accounted for and classified by the exact accepted meaning needed to associate inputs with the requesting calculation; gaps between this meaning and the current public calculation path are visible before coding.
+
+The Worker will produce a reviewer-readable versioned inventory under `handoff/m01_completion/foundation/` and commit it. The inventory will:
+
+- mechanically enumerate **all 174** accepted Stage-1-kernel rows from the exact digest-indexed normative CSV and, for each row, every declared direct `Rxxx` and predecessor `Dxxx` dependency; separately account for direct and transitive Stage-2 predecessors without pretending their graph is currently executable;
+- reconcile the census to independently generated row/edge counts and expose an explicit set-difference (`missing`, `extra`, `unclassified`) rather than treating a sampled set as exhaustive; cite the precise authoritative catalogue row and applicable brief rule for each material classification;
+- classify the *required relationship*, not just the identifier field: per-observation, per-subject/contract, same-window/history, versioned basket/member, candidate/context, bucket/group aggregation or other authority-established type; distinguish **one-to-one**, **one-to-many**, **many-to-one** and **many-to-many** where derivable, and mark genuinely unspecified cardinality `UNKNOWN`, not guessed;
+- record relevant join/selection identity dimensions, source vs derived occurrence-ID namespace, direct/ultimate raw lineage, predecessor-D lineage, parameter/context/model/version identity, time basis, grouping and fail-closed/absence requirements **only where supported** by the brief/catalogue; mark non-applicable fields `N/A` and unsupported assertions `UNKNOWN` with their source gap;
+- for every distinct currently implemented selection, value-carrier, reuse, aggregation or correlation mechanism, identify the relevant production entry point and supporting tests; distinguish *current source behaviour* from *required authority* and identify unproved or mismatching implementations;
+- include the recurring D015→D016/D120 witness, the D109/D170 contract-predecessor repair and the not-yet-independently-proved D120/D091→D121 and D120/D085→D122 grouping paths, without treating other similar joins as verified failures merely because they look alike;
+- assign a stable relationship-class identifier to each classification and map each classified normative edge/row use to one class, with representative positive, negative and public-seam proof obligations per class; do **not** treat a source-code census alone as a proof of correct meaning;
+- explicitly list unresolved normative ambiguity, implementation absence and coverage gaps, with a bounded proposed disposition. A material gap that cannot be resolved from accepted authority is `BLOCKED`, not licence to invent a selection or correlation law.
+
+**Bounded execution:** F1a enumerates the authority graph and completeness census; F1b maps authority-defined relationship classes to actual source/public-seam carriers; F1c reconciles gaps and writes the proof matrix. Each is a separate Git evidence checkpoint. This is an ordering by dependency (inventory → map → proof), not three new independent acceptance gates. Use scripts as needed to census the catalogue, but do not create a second normative catalogue or redefine a D/R edge. No production changes; no new Stage-1 PASS claim.
+
+**F1 acceptance and stop:** The Worker freezes an exact clean Git **evidence-only F1 candidate** (inventory, classifications, discrepancy register, commands/results, referenced sources and handoff) and stops for independent reviewer assessment. The reviewer verifies exhaustiveness against the accepted CSV, authority-grounding of relationship classes, coverage of the known failed witness and declared gaps, and that no production/normative/governance change occurred beyond this Programme Owner amendment. Dispositions: `F1_INVENTORY_ACCEPTED` (authorises F2 only), `F1_REPAIR` (return bounded inventory defect), or `BLOCKED` (unresolved required authority). **F1_INVENTORY_ACCEPTED is not Stage-1 acceptance.** The worker may not proceed beyond F1 without that separate evidence checkpoint.
+
+#### F2 — observation-level identity and signed-flow closure
+
+**Proposition:** When an accepted calculation applies a derived per-observation fact to raw inputs, the association is explicit, exact and reconstructable through admitted source/predecessor lineage, without equating different occurrence-ID namespaces or fabricating zero on missing correlation.
+
+After `F1_INVENTORY_ACCEPTED`, the Worker will author and separately commit authority-derived public-seam proofs **before** any production repair. First prove D015→D016 and D015→D120 with known buy/sell signs, multiple distinct observations, same/different contracts, missing or ambiguous sign, mismatch refusal, correct quantities/notional, persisted R/D lineage, retry and recalculation. Extend proof to **every affected relationship class** identified in F1, not necessarily every edge by hand-written fixture; map coverage back to the census and record any unproved instance. Repair only the established correlation mechanisms; preserve M00-owned semantics, opaque ID namespaces, parameter/context versioning and existing admitted behaviour. Run focused regression and commit the F2 checkpoint. If the required model/contract was not resolved at F1, return `BLOCKED` instead of coding a substitute.
+
+#### F3 — contract-specific predecessor and grouped-aggregation closure
+
+**Proposition:** Parent and grouped Stage-1 rows select all and only compatible exact predecessor instances; bucket, expiry, call/put, contract and temporal grouping do not collapse per-contract identities or silently reuse mismatched predecessors.
+
+The Worker will preserve and re-prove the earlier D109/D170 contract-specific predecessor behaviour and author independent public-seam proofs for the **previously unassessed** D120/D091→D121 and D120/D085→D122 grouped paths with multiple distinct contracts/buckets, conflicting or absent members, correct signed totals, absence refusal and reconstructable lineage. Apply the same authority-derived proof method to other F1-classified contract/group mechanisms. Commit proofs before any bounded production repair and record an F3 checkpoint. Do not implement Stage-2 predecessor kernels merely to satisfy a deferred dependency.
+
+#### F4 — class reconciliation, full Stage-1 revalidation and single review candidate
+
+**Proposition:** The F1 complete census has no unaccounted Stage-1 relationship class or implementation discrepancy; every applicable class is supported by discriminating production/public-seam positive and adversarial evidence, and the existing Stage-1 acceptance requirements are independently reviewable against one exact candidate.
+
+The Worker will:
+
+- reconcile all F1 classified relationships and discrepancy entries to F2/F3 proofs or documented still-`BLOCKED` authority; no open material gap can be silently labelled accepted;
+- use the F1 class-to-edge map to show mechanism coverage across the **entire authoritative Stage-1 population**, including previously reviewed graph, raw/derived, history, version, temporal, subject, contract, grouped, basket and context relations; distinguish exhaustive static/accounting checks from representative adversarial runtime evidence;
+- preserve the reviewer’s deliberately failing D016/D120 reproducer as regression proof and prove it now passes without changing the expected canonical result or masking the public seam; preserve D109/D170 and prior regression witnesses;
+- rerun relevant existing tests plus necessary architecture, type, lint, PostgreSQL boundary/durability and runtime/public-seam checks in a declared reproducible environment; report unavailable or unexecuted checks explicitly, not as `PASS`;
+- enforce the unchanged Stage-1 acceptance population: **174** exact Stage-1 kernel implementations/proofs, **144** Stage-1-closed rows publicly reachable end to end, and **30** cross-stage rows with own-kernel proof and lawful public fail-closed behaviour until Stage 2; preserve all mathematics, accepted edges, units, context conjunctions and prior Leaf 1–3 obligations;
+- freeze one exact Stage-1 candidate (Git HEAD and tree, clean status, evidence identities, commands/logs and unresolved register) and stop for independent review. Stage-1 `PASS` is available only from this independent review on its full acceptance proposition, not from F1 or individual successful tests.
+
+**Scope/authority lock for F1–F4:** No edits to `GUARDRAILS.md`, `AGENTS.md`, accepted brief, normative CSV, source-ownership boundaries or package version `1.0.0`. No unrelated architectural redesign, M00 table access, later-module implementation, fabricated defaults, weaker acceptance criteria or blanket reimplementation. Any discovered authority conflict/semantic under-specification is returned `BLOCKED` with the exact contradictory/missing source, not worked around. This amendment is a finite, evidence-first repair sequence, not a new normative definition of relationships.
 
 ## 5. Stage 2 — advanced model, scenario, risk, attribution and evaluation kernels
 
