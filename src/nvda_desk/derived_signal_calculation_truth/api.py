@@ -14,6 +14,17 @@ if TYPE_CHECKING:
     from ._stage1 import KernelValueV1
 
 
+_MANDATORY_EACH_OPTION_JOIN_KEYS = frozenset(
+    {
+        "contract_id",
+        "underlying_instrument",
+        "expiry",
+        "strike",
+        "option_right",
+    }
+)
+
+
 def _require_non_empty_string(value: str, field_name: str) -> None:
     if type(value) is not str or not value:
         raise ValueError(f"{field_name} must be a non-empty string")
@@ -1005,6 +1016,14 @@ class _OwnerV1:
             return False
         return type(left_value) is type(right_value) and left_value == right_value
 
+    @staticmethod
+    def _selection_policy_satisfies_row_authority(
+        applicable_universe: str, selection: InputSelectionPolicyVersionV1
+    ) -> bool:
+        if applicable_universe != "Each option":
+            return True
+        return set(selection.join_keys) >= _MANDATORY_EACH_OPTION_JOIN_KEYS
+
     @classmethod
     def _bindings_satisfy_join_keys(
         cls,
@@ -1282,6 +1301,10 @@ class _OwnerV1:
         selection = self._selection_policy(request)
         contexts = self._contexts_for_row(request, row.typed_contexts)
         if parameter_set is None or selection is None or contexts is None:
+            return None
+        if not self._selection_policy_satisfies_row_authority(
+            row.applicable_universe, selection
+        ):
             return None
         if not self._bindings_satisfy_join_keys(request, row.raw_dependencies, selection):
             return None
