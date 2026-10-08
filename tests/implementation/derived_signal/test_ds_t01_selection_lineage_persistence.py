@@ -34,7 +34,7 @@ def _psycopg() -> Any:
 
 def _boundary_identity(dsn: str) -> object:
     private = importlib.import_module("nvda_desk.derived_signal_calculation_truth._postgres")
-    boundary_type = getattr(private, "PostgresBoundaryIdentityV1")
+    boundary_type = private.PostgresBoundaryIdentityV1
     psycopg = _psycopg()
     with psycopg.connect(dsn) as connection:
         row = connection.execute("SELECT current_user, current_schema()").fetchone()

@@ -3,7 +3,7 @@ from __future__ import annotations
 from dataclasses import fields
 from datetime import UTC, datetime, timedelta
 from decimal import Decimal
-from typing import Any
+from typing import Any, cast
 
 import pytest
 
@@ -256,16 +256,16 @@ def test_leaf1_refuses_d131_raw_to_predecessor_contract_mismatch_and_retains_ide
     mismatched_owner, mismatched_request, _ = _d131_owner_and_request(
         quote_contract="C1", depth_contract="C2"
     )
-    assert getattr(mismatched_owner, "materialise")(mismatched_request) is None
+    assert cast(Any, mismatched_owner).materialise(mismatched_request) is None
 
     matched_owner, matched_request, expected_identity = _d131_owner_and_request(
         quote_contract="C1", depth_contract="C1"
     )
-    occurrence = getattr(matched_owner, "materialise")(matched_request)
+    occurrence = cast(Any, matched_owner).materialise(matched_request)
     assert occurrence is not None
     assert occurrence.result == Decimal("10")
     assert getattr(occurrence, "selection_identity", None) == expected_identity
-    predecessor = getattr(matched_owner, "reads").get_derived_occurrence(
+    predecessor = cast(Any, matched_owner).reads.get_derived_occurrence(
         occurrence.predecessor_occurrence_ids[0]
     )
     assert predecessor is not None
@@ -410,7 +410,7 @@ def test_leaf1_refuses_predecessor_to_predecessor_selection_mismatch_or_absence(
     matched_owner, matched_request, expected_identity = _d190_owner_and_request(
         left_contract="C1", right_contract="C1"
     )
-    matched = getattr(matched_owner, "materialise")(matched_request)
+    matched = cast(Any, matched_owner).materialise(matched_request)
     assert matched is not None
     assert matched.result == Decimal("3")
     assert getattr(matched, "selection_identity", None) == expected_identity
@@ -418,9 +418,9 @@ def test_leaf1_refuses_predecessor_to_predecessor_selection_mismatch_or_absence(
     mismatched_owner, mismatched_request, _ = _d190_owner_and_request(
         left_contract="C1", right_contract="C2"
     )
-    assert getattr(mismatched_owner, "materialise")(mismatched_request) is None
+    assert cast(Any, mismatched_owner).materialise(mismatched_request) is None
 
     absent_owner, absent_request, _ = _d190_owner_and_request(
         left_contract="C1", right_contract=None
     )
-    assert getattr(absent_owner, "materialise")(absent_request) is None
+    assert cast(Any, absent_owner).materialise(absent_request) is None
