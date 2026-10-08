@@ -1,0 +1,65 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+__________ test_d016_trade_signed_volume_must_match_d015_trade_truth ___________
+
+    def test_d016_trade_signed_volume_must_match_d015_trade_truth():
+        sign = scenario.owner.materialise(scenario.request("D015"))
+        assert sign is not None and sign.result == 1
+        occurrence = scenario.owner.materialise(scenario.request("D016"))
+        assert occurrence is not None
+>       assert occurrence.result == Decimal("2")
+E       AssertionError: assert Decimal('0') == Decimal('2')
+E        +  where Decimal('0') = DerivedSignalOccurrenceV1(derived_signal_id='D016', derived_occurrence_id='d016-3f3054dde456c855e46300a900c9da8d39cd2d...'expiry', '2026-12-18'), ('strike', Decimal('100')), ('option_right', 'call'))), supersedes_derived_occurrence_id=None).result
+E        +  and   Decimal('2') = Decimal('2')
+
+handoff/m01_completion/review/proof/test_stage1_signed_flow_public.py:18: AssertionError
+_________ test_d120_trade_signed_notional_must_match_d015_trade_truth __________
+
+    def test_d120_trade_signed_notional_must_match_d015_trade_truth():
+        sign = scenario.owner.materialise(scenario.request("D015"))
+        assert sign is not None and sign.result == 1
+        occurrence = scenario.owner.materialise(scenario.request("D120"))
+        assert occurrence is not None
+>       assert dict(occurrence.result) == {
+            "signed_contracts": Decimal("2"),
+            "signed_premium_notional": Decimal("1200"),
+        }
+E       AssertionError: assert {'signed_cont... Decimal('0')} == {'signed_cont...cimal('1200')}
+E         
+E         Differing items:
+E         {'signed_contracts': Decimal('0')} != {'signed_contracts': Decimal('2')}
+E         {'signed_premium_notional': Decimal('0')} != {'signed_premium_notional': Decimal('1200')}
+E         
+E         Full diff:
+E           {
+E         -     'signed_contracts': Decimal('2'),
+E         ?                                  ^
+E         +     'signed_contracts': Decimal('0'),
+E         ?                                  ^
+E         -     'signed_premium_notional': Decimal('1200'),
+E         ?                                         ---
+E         +     'signed_premium_notional': Decimal('0'),
+E           }
+
+handoff/m01_completion/review/proof/test_stage1_signed_flow_public.py:26: AssertionError
+=========================== short test summary info ============================
+FAILED handoff/m01_completion/review/proof/test_stage1_signed_flow_public.py::test_d016_trade_signed_volume_must_match_d015_trade_truth - AssertionError: assert Decimal('0') == Decimal('2')
+ +  where Decimal('0') = DerivedSignalOccurrenceV1(derived_signal_id='D016', derived_occurrence_id='d016-3f3054dde456c855e46300a900c9da8d39cd2d...'expiry', '2026-12-18'), ('strike', Decimal('100')), ('option_right', 'call'))), supersedes_derived_occurrence_id=None).result
+ +  and   Decimal('2') = Decimal('2')
+FAILED handoff/m01_completion/review/proof/test_stage1_signed_flow_public.py::test_d120_trade_signed_notional_must_match_d015_trade_truth - AssertionError: assert {'signed_cont... Decimal('0')} == {'signed_cont...cimal('1200')}
+  
+  Differing items:
+  {'signed_contracts': Decimal('0')} != {'signed_contracts': Decimal('2')}
+  {'signed_premium_notional': Decimal('0')} != {'signed_premium_notional': Decimal('1200')}
+  
+  Full diff:
+    {
+  -     'signed_contracts': Decimal('2'),
+  ?                                  ^
+  +     'signed_contracts': Decimal('0'),
+  ?                                  ^
+  -     'signed_premium_notional': Decimal('1200'),
+  ?                                         ---
+  +     'signed_premium_notional': Decimal('0'),
+    }
+2 failed in 0.37s
