@@ -1,0 +1,19 @@
+f1_edge_id,derived_row,source_type,source_id,relationship_class,f2_observed_status,f2_evidence_or_gap
+D015:R:01,D015,R,R120,RC07,SUPPORTED_FOR_REVIEW,D015 source sign and provenance exercised via public D015->D016/D120; quote/tick variants not individually exhaustive
+D015:R:02,D015,R,R126,RC07,SUPPORTED_FOR_REVIEW,D015 source sign and provenance exercised via public D015->D016/D120; quote/tick variants not individually exhaustive
+D015:R:03,D015,R,R127,RC07,SUPPORTED_FOR_REVIEW,D015 source sign and provenance exercised via public D015->D016/D120; quote/tick variants not individually exhaustive
+D015:D:01,D015,D,D011,RC07,SUPPORTED_FOR_REVIEW,D015 source sign and provenance exercised via public D015->D016/D120; quote/tick variants not individually exhaustive
+D016:R:01,D016,R,R121,RC08,SUPPORTED_FOR_REVIEW,"Public exact M00 R121-to-D015 correlation: canonical, opposing signs, missing, mismatch, version/cutoff, lineage/retry"
+D016:D:01,D016,D,D015,RC08,SUPPORTED_FOR_REVIEW,"Public exact M00 R121-to-D015 correlation: canonical, opposing signs, missing, mismatch, version/cutoff, lineage/retry"
+D017:R:01,D017,R,R120,RC09,SUPPORTED_FOR_REVIEW,Public R120/R121 same-native-record VWAP and missing-pair refusal
+D017:R:02,D017,R,R121,RC09,SUPPORTED_FOR_REVIEW,Public R120/R121 same-native-record VWAP and missing-pair refusal
+D064:R:01,D064,R,R289,RC21,UNPROVED_BLOCKING_PREREQUISITE,"D064 is K07 P_SCORE, declares R289 but no derived input; current _score only consumes declared derived feature inputs; no feasible public D064 occurrence established"
+D065:R:01,D065,R,R284,RC01,UNPROVED_BLOCKED_BY_D064,Public D065 matched event->D064 association not executable; source tests raw R284 occurrence_id against derived D064 occurrence_id; no accepted cross-namespace identity proof; no replacement law invented
+D065:D:01,D065,D,D062,RC01,UNPROVED_BLOCKED_BY_D064,Public D065 matched event->D064 association not executable; source tests raw R284 occurrence_id against derived D064 occurrence_id; no accepted cross-namespace identity proof; no replacement law invented
+D065:D:02,D065,D,D064,RC01,UNPROVED_BLOCKED_BY_D064,Public D065 matched event->D064 association not executable; source tests raw R284 occurrence_id against derived D064 occurrence_id; no accepted cross-namespace identity proof; no replacement law invented
+D120:R:01,D120,R,R120,RC08,SUPPORTED_FOR_REVIEW,"Public R120/R121/R015 trade join, D015 history, notional and signed quantity, lineage and refusal"
+D120:R:02,D120,R,R121,RC08,SUPPORTED_FOR_REVIEW,"Public R120/R121/R015 trade join, D015 history, notional and signed quantity, lineage and refusal"
+D120:R:03,D120,R,R126,RC08,SUPPORTED_FOR_REVIEW,"Public R120/R121/R015 trade join, D015 history, notional and signed quantity, lineage and refusal"
+D120:R:04,D120,R,R127,RC08,SUPPORTED_FOR_REVIEW,"Public R120/R121/R015 trade join, D015 history, notional and signed quantity, lineage and refusal"
+D120:R:05,D120,R,R015,RC08,SUPPORTED_FOR_REVIEW,"Public R120/R121/R015 trade join, D015 history, notional and signed quantity, lineage and refusal"
+D120:D:01,D120,D,D015,RC08,SUPPORTED_FOR_REVIEW,"Public R120/R121/R015 trade join, D015 history, notional and signed quantity, lineage and refusal"
