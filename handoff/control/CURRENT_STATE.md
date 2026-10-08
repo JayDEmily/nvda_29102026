@@ -29,16 +29,12 @@ Exact accepted M01 authority is under `handoff/m01_completion/authority/` and in
 
 ## Current actor and next action
 
-**Actor: WORKER.**
+**Actor: WORKER — Stage-1 repair required.**
 
-The latest independent Stage-1 review is `REPAIR` / `RECURRENT_CLASS`, preserved at `handoff/m01_completion/review/M01_STAGE1_REVIEW_RESULT_4aa01e8ee0fa405ed90bbbe06570e9ad1289fc02.json`. Its current closure proposition is selection identity compatibility across direct raw inputs and predecessor-D graph edges.
+Programme Owner amended the Stage-1 acceptance boundary on 2026-10-08 to resolve the normative cross-stage dependency circularity: 174 Stage-1-kernel rows comprise 144 Stage-1-closed rows and 30 cross-stage rows whose end-to-end reachability is deferred until Stage 2. The amendment is recorded in root `EXEC_PLAN.md` and `handoff/m01_completion/STAGE1_ACCEPTANCE_BOUNDARY_AMENDMENT_20261008.md`.
 
-Programme Owner instruction dated 2026-10-08 restructures the remaining Stage-1 work into three internal Worker leaves defined in the root `EXEC_PLAN.md`:
+The post-Leaf-3 independent Stage-1 review is `REPAIR` / `RECURRENT_CLASS`, preserved at `handoff/m01_completion/review/M01_STAGE1_REVIEW_RESULT_8446b5944a029cc944530588a6dcfcb9cf08bbfc.json`. The first remaining invariant is parent/child selection-granularity compatibility across Stage-1 graph edges: aggregate/pair/multi-leg rows must be able to resolve narrower per-contract predecessors without weakening exact predecessor selection. D109→D087 and D170→D087 are the independent public-seam witnesses.
 
-1. selection identity and lineage closure;
-2. temporal, history and graph-consistency closure;
-3. Stage-1 kernel and catalogue closure.
+Repair only that Stage-1 graph-selection class, preserve proof-before-production Git ordering, freeze a fresh Stage-1 candidate and return it for independent review. **Do not start Stage 2.**
 
-Complete the leaves in order. Preserve proof-before-production Git ordering and a distinct checkpoint for each leaf. **Do not return to the independent Reviewer between leaves.** After Leaf 3, freeze one exact Stage-1 candidate and return it for independent review. Stage 2 remains unauthorised until that review returns `PASS`.
-
-Financial Calendar, M02/later-module work, PCM reinstatement and package-version changes are out of scope.
+Financial Calendar, later-module work, PCM reinstatement and package-version changes remain out of scope.

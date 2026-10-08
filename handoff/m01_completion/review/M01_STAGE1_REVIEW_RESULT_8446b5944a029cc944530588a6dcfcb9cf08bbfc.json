@@ -1,0 +1,70 @@
+{
+  "authority": {
+    "brief_sha256": "603b850802a418780109095e7ae69bcece449da79fb24140a6d50297605e927c",
+    "catalogue_sha256": "63bc1b776fc8fa8ba82eb3c9b16916f295c9ec3d480a5a068937c2f25146f5f5",
+    "plan_boundary": {
+      "cross_stage_rows": 30,
+      "direct_stage2_predecessor_rows": 25,
+      "stage1_closed_rows": 144,
+      "stage1_kernel_rows": 174,
+      "transitive_only_stage2_rows": 5
+    },
+    "rule": "Accepted brief clauses 7, 8.1, 13 and 17 require exact normative dependencies, row-semantic selection identity, compatible predecessor reuse, and fail-closed behaviour. Stage-1-closed rows must be publicly reachable end to end under the amended ExecPlan."
+  },
+  "classification": "RECURRENT_CLASS",
+  "finding": "The worker completed the three-leaf Stage-1 candidate and the amended cross-stage boundary removes the prior false requirement to materialise Stage-2 predecessors. The first remaining genuine Stage-1 invariant fails within the 144 Stage-1-closed rows: recursive predecessor resolution cannot lawfully change selection granularity from an aggregate/multi-entity parent row to narrower per-contract predecessor rows. The public materialiser recursively invokes each Stage-1 predecessor with the same CalculationRequestV1/InputSelectionPolicyVersion as the parent. D087 requires one exact option contract identity, while D109 requires a call/put pair at one expiry/strike and D170 requires multiple candidate legs. A pair-level parent policy is rejected by D087 for missing exact-contract keys; a full-contract parent policy cannot merge the differing call/put or leg identities. Therefore D109 and D170 are not publicly reachable even when all lawful raw facts, contexts, mappings and unit conventions are supplied.",
+  "generated_at_utc": "2026-10-08T09:14:18.154770+00:00",
+  "governing_plan_amendment_commit": "ce941547a0eee444777bb098aab6aa64574e2233",
+  "independent_evidence": {
+    "adverse_public_seam_probes": [
+      {
+        "dependency": "D087",
+        "derived_signal_id": "D109",
+        "expected_parent_result_with_supplied_quotes": "10.0",
+        "full_contract_join_keys": [
+          "contract_id",
+          "underlying_instrument",
+          "expiry",
+          "strike",
+          "option_right"
+        ],
+        "observed_full_contract_materialised": false,
+        "observed_pair_level_materialised": false,
+        "pair_level_join_keys": [
+          "underlying_instrument",
+          "expiry",
+          "strike"
+        ],
+        "parent_semantics": "same-expiry/same-strike call+put midpoint pair"
+      },
+      {
+        "candidate_legs": [
+          "C100",
+          "P100"
+        ],
+        "dependency": "D087",
+        "derived_signal_id": "D170",
+        "observed_materialised": false,
+        "observed_same_request_D087_materialised": false,
+        "parent_semantics": "multi-leg candidate structure"
+      }
+    ],
+    "mechanism_observation": "api._materialise recursively calls a Stage-1 predecessor with the unchanged parent request and selection_ref. The selected identity accumulator then expects one common value for the parent selection keys. This cannot represent a parent whose lawful dependency is a set of narrower per-contract predecessor occurrences.",
+    "note": "Review stopped at the first failed semantic invariant after resolving the planning conflict.",
+    "plan_correction": "Catalogue analysis found 25 Stage-1 rows with direct Stage-2 predecessors plus five additional Stage-1 rows with transitive Stage-2 dependency, so the accepted amended boundary is 144 Stage-1-closed and 30 cross-stage rows.",
+    "rerun": {
+      "command": "pytest -q tests/product/derived_signal tests/architecture tests/bootstrap",
+      "environment": "preserved Python 3.13.5 proof environment; Git safe-directory supplied externally",
+      "result": "182 passed"
+    }
+  },
+  "kind": "independent_review_result",
+  "repair_proposition": "Close the Stage-1 selection-identity class across parent/child scope changes. A Stage-1 aggregate, pair, basket or candidate-structure row must lawfully resolve the exact set of narrower predecessor occurrences required by its normative dependency semantics, with each predecessor calculated/reused under the predecessor row's own mandatory selection identity, while the parent retains and proves its aggregate selection meaning and exact lineage. Do not weaken D087 exact-contract selection to make an aggregate row pass. Add authority-derived public-seam proof for at least D109 resolving separate call and put D087 occurrences and D170 resolving per-leg D087 occurrences, including mismatch/absence refusal and exact predecessor lineage. Repair only this Stage-1 graph-selection mechanism, rerun the relevant Stage-1 regression, freeze a new Stage-1 candidate, and return for fresh independent review. Do not start Stage 2.",
+  "review": "M01_STAGE1_POST_LEAF3",
+  "reviewed_branch": "work/m01-completion",
+  "reviewed_worker_head": "8446b5944a029cc944530588a6dcfcb9cf08bbfc",
+  "reviewed_worker_tree": "5fe76dded505aa88a8e9ef1c1d3e970d0dd6942a",
+  "route": "RETURN_TO_WORKER_STAGE1",
+  "stage2_authorised": false,
+  "verdict": "REPAIR"
+}
