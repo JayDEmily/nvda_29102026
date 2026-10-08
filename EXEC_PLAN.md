@@ -67,9 +67,57 @@ Cover the accepted catalogue bindings and representative/adversarial behaviour f
 - version-consistent predecessor reuse, topological evaluation and history sufficiency;
 - fail-closed absence, no-look-ahead and idempotent/append-only occurrence behaviour insofar as exercised by this group.
 
-### Review boundary
+### Stage 1 execution leaves — Programme Owner amendment 2026-10-08
 
-Stop after one exact Stage-1 candidate and obtain independent review before Stage 2.
+The Worker completes the following three internal leaves in order. These leaves are engineering closure targets inside **one Stage-1 acceptance unit**; they are not independent-review gates. No independent-review stop occurs between Leaf 1, Leaf 2 and Leaf 3. The Worker records a distinct Git checkpoint at the end of each leaf and continues directly to the next leaf unless a governing invariant is `BLOCKED`.
+
+#### Leaf 1 — selection identity and lineage closure
+
+**Proposition:** Stage-1 selection identity remains exact and reconstructable across the entire requesting calculation, including direct raw inputs and predecessor-D graph edges.
+
+This leaf will:
+
+- derive every mandatory Stage-1 selection dimension from accepted row semantics rather than caller policy convenience;
+- enforce canonical subject identity for single-instrument calculations;
+- enforce material option contract, underlying, expiry, strike, option-right, delta-bucket and selected-option/L2 identities wherever the accepted row semantics require them;
+- enforce exact versioned basket/member identity for cross-sectional calculations wherever the accepted row semantics require it;
+- preserve the selected identity required to validate predecessor-D reuse in durable occurrence/lineage state;
+- prove raw-to-raw, raw-to-predecessor and predecessor-to-predecessor mismatch refusal, including the accepted D131/D087 selected-contract case;
+- fail closed when a required selection identity is absent, ambiguous, incompatible or omitted from a caller-supplied policy.
+
+**Leaf completion:** the Worker commits the complete authority-derived proof before the production repair, runs the focused and necessary regression checks, records the Leaf-1 checkpoint, and continues directly to Leaf 2.
+
+#### Leaf 2 — temporal, history and graph-consistency closure
+
+**Proposition:** Every Stage-1 calculation and predecessor reuse decision obeys the accepted temporal, history, version and graph-consistency law with no look-ahead or hidden substitution.
+
+This leaf will:
+
+- enforce knowledge-cutoff eligibility and the accepted event/receipt temporal distinctions;
+- enforce required freshness and synchronous-skew constraints;
+- enforce exact history sufficiency and refuse insufficient history;
+- enforce calculation-definition, parameter, context, unit and selection-version compatibility for predecessor reuse;
+- preserve topological evaluation and refuse incompatible, absent or stale predecessor truth;
+- enforce no-look-ahead and prohibit fabricated timestamps, silent nearest-neighbour substitution or interpolation unless the accepted row/kernel explicitly authorises it;
+- prove deterministic retry/idempotency and append-only successor behaviour where Stage-1 recalculation exercises those obligations;
+- prove fail-closed absence across representative direct, history-dependent and predecessor-dependent Stage-1 paths.
+
+**Leaf completion:** the Worker commits the complete authority-derived proof before any production repair required by this leaf, runs the focused and necessary regression checks, records the Leaf-2 checkpoint, and continues directly to Leaf 3.
+
+#### Leaf 3 — Stage-1 kernel and catalogue closure
+
+**Proposition:** Every authoritative Stage-1 catalogue row is bound, implemented, reachable and semantically faithful to its accepted kernel mathematics under the now-closed selection and graph laws.
+
+This leaf will:
+
+- census the complete Stage-1 population bound to `K01_TIME` through `K08_RULE_BUCKET_POLICY`, `K16_STRUCTURED_ASSEMBLY` and `K17_ORDER_FLOW_IMBALANCE`;
+- prove that every authoritative Stage-1 row is implemented exactly once with the accepted dependency set, parameter profile and typed-context conjunction;
+- run representative and adversarial mathematical proof across every Stage-1 kernel family, including temporal calculations, algebra/scaling, anchored returns, rank/baseline law, realised-risk history, regression/dependence, scoring/transforms, rule ordering/tie-breaks, D155 structured assembly and D145 order-flow imbalance;
+- run the full Stage-1 regression plus the necessary architecture, dependency, public-seam, type and lint checks;
+- verify that no Stage-2 kernel (`K09` through `K15`) or later-module behaviour has been introduced;
+- freeze one exact Stage-1 candidate with clean Git state and complete proof identities for independent review.
+
+**Leaf completion and Stage-1 review boundary:** after Leaf 3, the Worker stops and returns the one exact frozen Stage-1 candidate to the independent Reviewer. Stage 2 remains unauthorised until that independent Stage-1 review returns `PASS`.
 
 ## 5. Stage 2 — advanced model, scenario, risk, attribution and evaluation kernels
 

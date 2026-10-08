@@ -15,4 +15,4 @@ Read, in order:
 5. `handoff/m01_completion/AUTHORITY_INDEX.md`
 6. the exact accepted authority under `handoff/m01_completion/authority/`
 
-Then begin Stage 1 in `EXEC_PLAN.md`: establish the foundational-kernel proof/tests first, commit that proof boundary, then implement the authorised kernels. Stop at the independent-review boundary defined by the plan.
+The current Stage-1 reviewer result is `REPAIR` and is preserved under `handoff/m01_completion/review/`. Programme Owner instruction dated 2026-10-08 divides the remaining Stage-1 work into **three internal Worker leaves** in `EXEC_PLAN.md`. Complete Leaf 1, Leaf 2 and Leaf 3 in order without returning to the Reviewer between leaves. Each leaf will preserve proof-before-production Git ordering and a distinct checkpoint. Return only after Leaf 3 with one exact frozen Stage-1 candidate, unless a governing invariant becomes `BLOCKED`. Stage 2 remains unauthorised until that candidate receives independent `PASS`.

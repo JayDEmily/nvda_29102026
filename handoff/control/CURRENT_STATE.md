@@ -31,6 +31,14 @@ Exact accepted M01 authority is under `handoff/m01_completion/authority/` and in
 
 **Actor: WORKER.**
 
-Proceed under the current root `EXEC_PLAN.md` with **Stage 1 — foundational kernels and graph mechanics**. Establish and commit the proof/test boundary before changing production calculation behaviour, then implement only that authorised stage. Return the exact candidate to an independent reviewer at the Stage-1 review boundary.
+The latest independent Stage-1 review is `REPAIR` / `RECURRENT_CLASS`, preserved at `handoff/m01_completion/review/M01_STAGE1_REVIEW_RESULT_4aa01e8ee0fa405ed90bbbe06570e9ad1289fc02.json`. Its current closure proposition is selection identity compatibility across direct raw inputs and predecessor-D graph edges.
+
+Programme Owner instruction dated 2026-10-08 restructures the remaining Stage-1 work into three internal Worker leaves defined in the root `EXEC_PLAN.md`:
+
+1. selection identity and lineage closure;
+2. temporal, history and graph-consistency closure;
+3. Stage-1 kernel and catalogue closure.
+
+Complete the leaves in order. Preserve proof-before-production Git ordering and a distinct checkpoint for each leaf. **Do not return to the independent Reviewer between leaves.** After Leaf 3, freeze one exact Stage-1 candidate and return it for independent review. Stage 2 remains unauthorised until that review returns `PASS`.
 
 Financial Calendar, M02/later-module work, PCM reinstatement and package-version changes are out of scope.
