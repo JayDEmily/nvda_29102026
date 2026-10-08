@@ -1207,27 +1207,45 @@ def _eval_k02(
                 - _d(_scalar(derived, "D035" if identity == "D107" else "D036"))
             )
         if identity == "D109":
+            # The catalogue declares D091 (versioned delta-bucket classification)
+            # as the ATM selector; a D087 midpoint does not own R112 delta.
+            atm_labels: dict[str, str] = {}
+            if derived.get("D091"):
+                label = params.get("atm_delta_bucket")
+                if type(label) is not str or not label:
+                    return None
+                for bucket_occurrence in derived["D091"]:
+                    contract = _metadata(bucket_occurrence).get("contract_id")
+                    if type(contract) is not str or contract in atm_labels:
+                        return None
+                    atm_labels[contract] = str(bucket_occurrence.value)
             atm_by_contract_pair: dict[tuple[str, object], dict[str, Decimal]] = {}
             for item in derived.get("D087", ()):
                 metadata = _metadata(item)
                 right = _option_right(metadata)
                 delta = metadata.get("delta")
+                contract = metadata.get("contract_id")
                 expiry = metadata.get("expiry")
                 strike = metadata.get("strike")
                 if (
                     right not in {"call", "c", "put", "p"}
-                    or delta is None
+                    or (delta is None and not atm_labels)
                     or expiry is None
                     or strike is None
                 ):
                     return None
-                if abs(_d(delta)) != Decimal("0.50"):
+                if atm_labels:
+                    if type(contract) is not str or contract not in atm_labels:
+                        return None
+                    if atm_labels[contract] != params["atm_delta_bucket"]:
+                        continue
+                elif abs(_d(delta)) != Decimal("0.50"):
                     continue
                 canonical_right = "call" if right in {"call", "c"} else "put"
-                bucket = atm_by_contract_pair.setdefault((str(expiry), strike), {})
-                if canonical_right in bucket:
+                pair_values = atm_by_contract_pair.setdefault((str(expiry), strike), {})
+                if canonical_right in pair_values:
                     return None
-                bucket[canonical_right] = _d(item.value)
+                pair_values[canonical_right] = _d(item.value)
             complete_straddle_groups = [
                 values for values in atm_by_contract_pair.values() if set(values) == {"call", "put"}
             ]
@@ -1442,7 +1460,9 @@ def _eval_k02(
             strike_by_contract = {}
             right_by_contract = {}
             for item in raw.get("R014", ()):
-                contract = item.subject_instrument
+                contract = _metadata(item).get("contract_id", item.subject_instrument)
+                if type(contract) is not str:
+                    return None
                 if contract in strike_by_contract:
                     return None
                 strike_by_contract[contract] = _d(item.value)
@@ -1454,7 +1474,9 @@ def _eval_k02(
                 right_by_contract[contract] = "call" if right in {"call", "c"} else "put"
             premium_by_contract = {}
             for item in derived.get("D087", ()):
-                contract = item.subject_instrument
+                contract = _metadata(item).get("contract_id", item.subject_instrument)
+                if type(contract) is not str:
+                    return None
                 if contract in premium_by_contract:
                     return None
                 premium_by_contract[contract] = _d(item.value)

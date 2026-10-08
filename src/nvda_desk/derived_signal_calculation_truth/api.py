@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from collections.abc import Callable
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from datetime import UTC, date, datetime, timedelta
 from decimal import Decimal
 from typing import TYPE_CHECKING, Protocol, cast
@@ -800,6 +800,7 @@ class CalculationRequestV1:
     context_refs: tuple[VersionRefV1, ...]
     parameter_profile_refs: tuple[ParameterProfileRefV1, ...] = ()
     raw_input_bindings: tuple[RawInputBindingV1, ...] = ()
+    predecessor_selection_policy_refs: tuple[tuple[str, VersionRefV1], ...] = ()
 
     def __post_init__(self) -> None:
         _require_derived_signal_id(self.derived_signal_id)
@@ -825,16 +826,33 @@ class CalculationRequestV1:
         profiles = tuple(item.profile for item in self.parameter_profile_refs)
         if len(profiles) != len(set(profiles)):
             raise ValueError("parameter_profile_refs must contain distinct profiles")
+        _require_tuple(self.predecessor_selection_policy_refs, "predecessor_selection_policy_refs")
+        scoped_ids: list[str] = []
+        for scoped_ref in self.predecessor_selection_policy_refs:
+            if type(scoped_ref) is not tuple or len(scoped_ref) != 2:
+                raise TypeError("predecessor_selection_policy_refs require (Dxxx, VersionRefV1)")
+            predecessor_id, selection_ref = scoped_ref
+            _require_derived_signal_id(predecessor_id)
+            if type(selection_ref) is not VersionRefV1:
+                raise TypeError("predecessor selection must reference an immutable policy version")
+            scoped_ids.append(predecessor_id)
+        if len(scoped_ids) != len(set(scoped_ids)):
+            raise ValueError("predecessor selection references must be distinct by D identity")
         _require_tuple(self.raw_input_bindings, "raw_input_bindings")
         for binding_item in self.raw_input_bindings:
             if type(binding_item) is not RawInputBindingV1:
                 raise TypeError("raw_input_bindings must contain exact RawInputBindingV1 values")
         binding_keys = tuple(
-            (item.raw_signal_id, item.subject_instrument) for item in self.raw_input_bindings
+            (
+                item.raw_signal_id,
+                item.subject_instrument,
+                None if item.selection_identity is None else item.selection_identity.values,
+            )
+            for item in self.raw_input_bindings
         )
         if len(binding_keys) != len(set(binding_keys)):
             raise ValueError(
-                "raw_input_bindings must contain distinct raw-signal/subject identities"
+                "raw_input_bindings must contain distinct raw-signal/subject/selection identities"
             )
 
 
@@ -1149,7 +1167,13 @@ class _OwnerV1:
         ):
             return False
         typed_projected = cast(RawSelectionIdentityV1 | None, projected_identity)
-        for key in selection.join_keys:
+        # The policy names the row's *shared* keys, whereas a binding can
+        # distinguish multiple narrower source records (e.g. the call and put
+        # quotes in one straddle). Never broaden a named binding to its peers.
+        keys = set(selection.join_keys)
+        if binding.selection_identity is not None:
+            keys.update(key for key, _ in binding.selection_identity.values)
+        for key in keys:
             if key == "subject_instrument":
                 continue
             if not cls._same_identity_value(binding.selection_identity, typed_projected, key):
@@ -1408,8 +1432,7 @@ class _OwnerV1:
         if resolved is None:
             return False
         return all(
-            cls._merge_selection_value(selected, key, item)
-            for key, item in resolved.items()
+            cls._merge_selection_value(selected, key, item) for key, item in resolved.items()
         )
 
     @classmethod
@@ -1443,9 +1466,7 @@ class _OwnerV1:
             resolved_candidates.append((value, resolved))
         if not resolved_candidates:
             return ()
-        signatures: list[
-            tuple[tuple[str, type[object], _SelectionIdentityScalarV1], ...]
-        ] = []
+        signatures: list[tuple[tuple[str, type[object], _SelectionIdentityScalarV1], ...]] = []
         for _, resolved in resolved_candidates:
             signature = tuple((key, type(resolved[key]), resolved[key]) for key in keys)
             if not any(
@@ -1561,7 +1582,8 @@ class _OwnerV1:
                     item.projection_mapping_version,
                     item.unit_convention_id,
                     item.unit_convention_version,
-                ) in allowed_raw_versions
+                )
+                in allowed_raw_versions
                 for item in value.raw_input_lineage
             )
             and all(
@@ -1570,6 +1592,121 @@ class _OwnerV1:
                 for item in value.raw_input_lineage
             )
         )
+
+    def _scoped_contract_requests(
+        self,
+        request: CalculationRequestV1,
+        parent_id: str,
+        predecessor_id: str,
+        parent_selection: InputSelectionPolicyVersionV1,
+    ) -> tuple[CalculationRequestV1, ...] | None:
+        """Resolve only admitted multi-contract graph edges under exact child policies.
+
+        The parent's pair/candidate selection is not a D087 contract selection.
+        Scope comes from bound exact facts and the candidate-structure context,
+        never from nearest-neighbour searches or a fabricated policy version.
+        """
+        if (parent_id, predecessor_id) not in {
+            ("D109", "D087"),
+            ("D109", "D091"),
+            ("D170", "D087"),
+        }:
+            return (request,)
+        explicit = dict(request.predecessor_selection_policy_refs).get(predecessor_id)
+        if explicit is None:
+            return None
+        child_selection = self._input_selection_policies.get(
+            (explicit.context_id, explicit.version)
+        )
+        if child_selection is None or set(child_selection.join_keys) < _OPTION_CONTRACT_JOIN_KEYS:
+            return None
+        if (
+            child_selection.maximum_staleness > parent_selection.maximum_staleness
+            or child_selection.maximum_skew > parent_selection.maximum_skew
+            or not set(child_selection.temporal_basis_permissions)
+            <= set(parent_selection.temporal_basis_permissions)
+            or child_selection.basket_membership != parent_selection.basket_membership
+        ):
+            return None
+        all_bindings = request.raw_input_bindings
+        if parent_id == "D109":
+            required_raw = ("R034", "R035", "R112")
+            anchor = "R034"
+        else:
+            required_raw = ("R014", "R034", "R035")
+            anchor = "R014"
+        anchored = tuple(item for item in all_bindings if item.raw_signal_id == anchor)
+        if not anchored:
+            return None
+        exact_by_contract: dict[str, RawSelectionIdentityV1] = {}
+        for binding in anchored:
+            identity = binding.selection_identity
+            if identity is None or any(
+                identity.value_for(key) is None for key in _OPTION_CONTRACT_JOIN_KEYS
+            ):
+                return None
+            contract_id = identity.value_for("contract_id")
+            if type(contract_id) is not str or not contract_id or contract_id in exact_by_contract:
+                return None
+            exact_by_contract[contract_id] = identity
+        if parent_id == "D109":
+            if len(exact_by_contract) != 2:
+                return None
+            rights = {
+                str(identity.value_for("option_right")).lower()
+                for identity in exact_by_contract.values()
+            }
+            if rights not in ({"call", "put"}, {"c", "p"}):
+                return None
+            # D109's two contracts must share every pair-level selection key.
+            for key in _PER_EXPIRY_STRIKE_JOIN_KEYS:
+                selected = [identity.value_for(key) for identity in exact_by_contract.values()]
+                if not self._same_typed_value(selected[0], selected[1]):
+                    return None
+        else:
+            candidate = next(
+                (
+                    self._contexts.get((ref.context_id, ref.version))
+                    for ref in request.context_refs
+                    if type(self._contexts.get((ref.context_id, ref.version)))
+                    is CandidateStructureContextV1
+                ),
+                None,
+            )
+            if type(candidate) is not CandidateStructureContextV1:
+                return None
+            if set(exact_by_contract) != set(candidate.leg_contract_identities):
+                return None
+        scoped: list[CalculationRequestV1] = []
+        for contract in sorted(exact_by_contract):
+            identity = exact_by_contract[contract]
+            chosen: list[RawInputBindingV1] = []
+            for raw_id in required_raw:
+                matches = tuple(
+                    binding
+                    for binding in all_bindings
+                    if binding.raw_signal_id == raw_id
+                    and binding.selection_identity is not None
+                    and all(
+                        self._same_identity_value(binding.selection_identity, identity, key)
+                        for key in _OPTION_CONTRACT_JOIN_KEYS
+                    )
+                )
+                if len(matches) != 1:
+                    return None
+                chosen.extend(matches)
+            # Unrelated raw edges may still be bound by this parent. Never
+            # change their identities when constructing a child request.
+            scoped.append(
+                replace(
+                    request,
+                    derived_signal_id=predecessor_id,
+                    input_selection_policy_id=child_selection.context_id,
+                    input_selection_policy_version=child_selection.version,
+                    raw_input_bindings=tuple(chosen),
+                )
+            )
+        return tuple(scoped)
 
     def _materialise(
         self, request: CalculationRequestV1, derived_signal_id: str, stack: tuple[str, ...]
@@ -1624,33 +1761,93 @@ class _OwnerV1:
             predecessor_row = catalogue_row(predecessor_id)
             if len(predecessor_row.parameter_profiles) != 1:
                 return None
-            predecessor_parameters = self._parameter_set_for_profile(
-                request, predecessor_row.parameter_profiles[0]
+            predecessor_requests = self._scoped_contract_requests(
+                request, row.derived_id, predecessor_id, selection
             )
-            if predecessor_parameters is None:
+            if predecessor_requests is None:
                 return None
-            predecessor_parameter_ref = VersionRefV1(
-                predecessor_parameters.context_id, predecessor_parameters.version
-            )
-            history = self._compatible_history(
-                derived_signal_id=predecessor_id,
-                request=request,
-                parameter_ref=predecessor_parameter_ref,
-                selection_ref=selection_ref,
-            )
-            if predecessor_row.kernel_id in STAGE1_KERNEL_IDS:
-                current = self._materialise(request, predecessor_id, (*stack, derived_signal_id))
-                if current is None:
+            scoped_edge = len(predecessor_requests) != 1 or predecessor_requests[0] is not request
+            predecessor_values: list[KernelValueV1] = []
+            for predecessor_request in predecessor_requests:
+                predecessor_selection = self._selection_policy(predecessor_request)
+                if predecessor_selection is None:
                     return None
-                if not self._merge_occurrence_selection_identity(
-                    selected_identity_values, current, selection_keys
-                ):
+                predecessor_parameters = self._parameter_set_for_profile(
+                    predecessor_request, predecessor_row.parameter_profiles[0]
+                )
+                if predecessor_parameters is None:
                     return None
-                history_by_id = {value.derived_occurrence_id: value for value in history}
-                history_by_id[current.derived_occurrence_id] = current
-                history = tuple(
-                    sorted(
-                        history_by_id.values(),
+                predecessor_parameter_ref = VersionRefV1(
+                    predecessor_parameters.context_id, predecessor_parameters.version
+                )
+                predecessor_selection_ref = VersionRefV1(
+                    predecessor_selection.context_id, predecessor_selection.version
+                )
+                history = self._compatible_history(
+                    derived_signal_id=predecessor_id,
+                    request=predecessor_request,
+                    parameter_ref=predecessor_parameter_ref,
+                    selection_ref=predecessor_selection_ref,
+                )
+                current: DerivedSignalOccurrenceV1 | None = None
+                if predecessor_row.kernel_id in STAGE1_KERNEL_IDS:
+                    current = self._materialise(
+                        predecessor_request, predecessor_id, (*stack, derived_signal_id)
+                    )
+                    if current is None:
+                        return None
+                elif not history:
+                    return None
+                predecessor_keys = self._selection_join_keys(predecessor_selection)
+                child_selected: dict[str, _SelectionIdentityScalarV1] = {}
+                if scoped_edge:
+                    # Pre-bind the child's exact contract to exclude other
+                    # contracts from durable history before choosing a value.
+                    if not predecessor_request.raw_input_bindings:
+                        return None
+                    child_identity = predecessor_request.raw_input_bindings[0].selection_identity
+                    if child_identity is None:
+                        return None
+                    for key in predecessor_keys:
+                        value = child_identity.value_for(key)
+                        if value is None or not self._merge_selection_value(
+                            child_selected, key, value
+                        ):
+                            return None
+                if current is not None:
+                    if not self._merge_occurrence_selection_identity(
+                        child_selected, current, predecessor_keys
+                    ):
+                        return None
+                    if not self._merge_occurrence_selection_identity(
+                        selected_identity_values, current, selection_keys
+                    ):
+                        return None
+                    history_by_id = {value.derived_occurrence_id: value for value in history}
+                    history_by_id[current.derived_occurrence_id] = current
+                    history = tuple(
+                        sorted(
+                            history_by_id.values(),
+                            key=lambda value: (
+                                value.effective_as_of_utc,
+                                value.knowledge_cutoff_utc,
+                                value.derived_occurrence_id,
+                            ),
+                        )
+                    )
+                history = self._filter_predecessor_history_for_selection(
+                    history,
+                    keys=predecessor_keys if scoped_edge else selection_keys,
+                    selected=child_selected if scoped_edge else selected_identity_values,
+                    selection=predecessor_selection if scoped_edge else selection,
+                )
+                if not history:
+                    return None
+                latest = (
+                    current
+                    if current is not None
+                    else max(
+                        history,
                         key=lambda value: (
                             value.effective_as_of_utc,
                             value.knowledge_cutoff_utc,
@@ -1658,35 +1855,19 @@ class _OwnerV1:
                         ),
                     )
                 )
-            elif not history:
-                return None
-            history = self._filter_predecessor_history_for_selection(
-                history,
-                keys=selection_keys,
-                selected=selected_identity_values,
-                selection=selection,
-            )
-            if not history:
-                return None
-            current = max(
-                history,
-                key=lambda value: (
-                    value.effective_as_of_utc,
-                    value.knowledge_cutoff_utc,
-                    value.derived_occurrence_id,
-                ),
-            )
-            # A uniformly stale predecessor graph cannot pass the skew test
-            # merely because all its members agree on an obsolete instant.
-            # Historical observations needed inside a kernel remain available
-            # in `history`; this freshness gate applies to the current edge.
-            if request.as_of_utc - current.effective_as_of_utc > selection.maximum_staleness:
-                return None
-            immediate_predecessors.append(current)
-            inherited_lineage.extend(current.raw_input_lineage)
-            derived_inputs[predecessor_id] = tuple(
-                self._occurrence_kernel_value(value) for value in history
-            )
+                if request.as_of_utc - latest.effective_as_of_utc > selection.maximum_staleness:
+                    return None
+                if not self._merge_occurrence_selection_identity(
+                    selected_identity_values, latest, selection_keys
+                ):
+                    return None
+                immediate_predecessors.append(latest)
+                inherited_lineage.extend(latest.raw_input_lineage)
+                predecessor_values.extend(
+                    self._occurrence_kernel_value(value)
+                    for value in ((latest,) if scoped_edge else history)
+                )
+            derived_inputs[predecessor_id] = tuple(predecessor_values)
 
         # Max skew applies across the actual latest subject/member of each
         # direct R input AND each current predecessor D input.  Comparing one
@@ -1701,9 +1882,7 @@ class _OwnerV1:
             for values in raw_inputs.values()
             for subject in {item.subject_instrument for item in values}
         ]
-        synchronous_instants.extend(
-            value.effective_as_of_utc for value in immediate_predecessors
-        )
+        synchronous_instants.extend(value.effective_as_of_utc for value in immediate_predecessors)
         if (
             synchronous_instants
             and max(synchronous_instants) - min(synchronous_instants) > selection.maximum_skew
@@ -1730,7 +1909,7 @@ class _OwnerV1:
 
         lineage_by_key: dict[tuple[str, str, str, int, str, int], RawInputLineageV1] = {}
         for item in (*direct_lineage, *inherited_lineage):
-            key = (
+            lineage_key = (
                 item.raw_signal_id,
                 item.observation_occurrence_id,
                 item.projection_mapping_id,
@@ -1738,7 +1917,7 @@ class _OwnerV1:
                 item.unit_convention_id,
                 item.unit_convention_version,
             )
-            lineage_by_key[key] = item
+            lineage_by_key[lineage_key] = item
         exact_lineage = tuple(lineage_by_key[key] for key in sorted(lineage_by_key))
         predecessor_ids = tuple(
             sorted({value.derived_occurrence_id for value in immediate_predecessors})
