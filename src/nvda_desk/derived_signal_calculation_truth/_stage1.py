@@ -8,10 +8,10 @@ from __future__ import annotations
 
 import hashlib
 import json
-from collections.abc import Iterable
+from collections.abc import Iterable, Mapping
 from dataclasses import dataclass
 from datetime import UTC, date, datetime, time, timedelta
-from decimal import Decimal
+from decimal import Decimal, InvalidOperation
 from typing import Any
 from zoneinfo import ZoneInfo
 
@@ -171,6 +171,10 @@ def _same_option_history_selection(current: KernelValueV1, reference: KernelValu
 
 
 def _named(value: object) -> dict[str, object]:
+    if isinstance(value, Mapping):
+        if not all(type(key) is str for key in value):
+            return {}
+        return dict(value)
     if type(value) is not tuple:
         return {}
     output: dict[str, object] = {}
@@ -666,7 +670,7 @@ def extract_scalar(value: object, extractor: str, arguments: tuple[object, ...])
     if extractor == "component":
         current: object = value
         for part in arguments:
-            if type(current) is tuple:
+            if type(current) is tuple or isinstance(current, Mapping):
                 mapped = _named(current)
                 if str(part) not in mapped:
                     raise ValueError("component path not present")
@@ -771,19 +775,24 @@ def _transform(value: Decimal, feature: api.ScoreFeatureV1) -> Decimal:
 
 def _score(
     identity: str,
+    raw_inputs: dict[str, tuple[KernelValueV1, ...]],
     derived: dict[str, tuple[KernelValueV1, ...]],
     parameter_set: api.CalculationParameterSetV1,
 ) -> object | None:
     if not parameter_set.score_features:
         return None
-    declared_dependencies = set(catalogue_row(identity).derived_dependencies)
+    row = catalogue_row(identity)
+    declared_dependencies = set((*row.raw_dependencies, *row.derived_dependencies))
     if any(
         feature.signal_id not in declared_dependencies for feature in parameter_set.score_features
     ):
         return None
     transformed: list[tuple[api.ScoreFeatureV1, Decimal]] = []
     for feature in parameter_set.score_features:
-        occurrence = _latest(derived, feature.signal_id)
+        occurrence = _latest(
+            raw_inputs if feature.signal_id.startswith("R") else derived,
+            feature.signal_id,
+        )
         if occurrence is None:
             return None
         try:
@@ -791,7 +800,7 @@ def _score(
                 occurrence.value, feature.extractor, tuple(feature.extractor_arguments)
             )
             transformed.append((feature, _transform(scalar, feature)))
-        except (TypeError, ValueError, IndexError, KeyError):
+        except (TypeError, ValueError, IndexError, KeyError, InvalidOperation):
             return None
     params = _parameter_map(parameter_set)
     if identity == "D157":
@@ -850,7 +859,7 @@ def _eval_k07(
         )
         if not instants or not derived.get("D001") or not derived.get("D002"):
             return None
-        score = _score(identity, derived, parameter_set)
+        score = _score(identity, raw, derived, parameter_set)
         if type(score) is not Decimal or not _DEC0 <= score <= _DEC1:
             return None
         skew = Decimal(str((max(instants) - min(instants)).total_seconds()))
@@ -863,7 +872,7 @@ def _eval_k07(
             )
         )
     if identity != "D173":
-        return _score(identity, derived, parameter_set)
+        return _score(identity, raw, derived, parameter_set)
 
     # Neighbour relations are directed, versioned identities, not a proximity
     # search on available candidate results. A candidate-scoped score is valid
@@ -2329,15 +2338,37 @@ def _eval_k08(
                     pair[0],
                 ),
             )
-            importance = next(
-                (
-                    _d(v.value)
-                    for v in derived.get("D064", ())
-                    if v.occurrence_id == selected_event.occurrence_id
-                ),
-                None,
+            event_metadata = dict(selected_event.metadata)
+            key = tuple(
+                event_metadata.get(k) for k in ("event_id", "source_provider", "source_variant")
             )
-            return importance is not None and importance >= threshold
+            if (
+                type(key[0]) is not str
+                or not key[0]
+                or type(key[1]) is not str
+                or not key[1]
+                or type(key[2]) is not str
+            ):
+                return None
+            predecessors = tuple(
+                item
+                for item in derived.get("D064", ())
+                if tuple(
+                    dict(item.metadata).get(k)
+                    for k in ("event_id", "source_provider", "source_variant")
+                )
+                == key
+            )
+            if not predecessors:
+                return None
+            chosen = _latest({"D064": predecessors}, "D064")
+            if chosen is None:
+                return None
+            try:
+                importance = _d(chosen.value)
+            except (TypeError, ValueError):
+                return None
+            return importance >= threshold
         if identity == "D091":
             delta = abs(_d(_scalar(raw, "R112")))
             bounds = params.get("delta_bucket_boundaries")

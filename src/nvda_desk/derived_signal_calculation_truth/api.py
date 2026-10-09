@@ -283,7 +283,10 @@ class ScoreFeatureV1:
     baseline_values: tuple[Decimal, ...]
 
     def __post_init__(self) -> None:
-        _require_derived_signal_id(self.signal_id)
+        if self.signal_id.startswith("R"):
+            _require_raw_signal_id(self.signal_id)
+        else:
+            _require_derived_signal_id(self.signal_id)
         _require_non_empty_string(self.extractor, "extractor")
         _require_tuple(self.extractor_arguments, "extractor_arguments")
         for item in self.extractor_arguments:
@@ -1276,6 +1279,18 @@ class _OwnerV1:
                     if unit.scale != Decimal(1) or unit.offset != Decimal(0):
                         return None
                     canonical = native
+                if raw_signal_id == "R284" and type(canonical) is str:
+                    # M00's NativeValueV1 carries timestamps as native strings;
+                    # the immutable unit convention explicitly admits ISO-8601 UTC.
+                    if unit.canonical_units != "utc_iso8601":
+                        return None
+                    try:
+                        canonical_ts = datetime.fromisoformat(canonical.replace("Z", "+00:00"))
+                    except ValueError:
+                        return None
+                    if canonical_ts.utcoffset() != timedelta(0):
+                        return None
+                    canonical = canonical_ts
                 temporal_kind = str(getattr(item, "source_temporal_kind", ""))
                 received = getattr(item, "received_ts_utc", None)
                 if type(received) is not datetime:
@@ -1710,6 +1725,147 @@ class _OwnerV1:
             )
         return tuple(scoped)
 
+    @staticmethod
+    def _event_key(value: KernelValueV1) -> tuple[str, str, str] | None:
+        metadata = dict(value.metadata)
+        eid = metadata.get("event_id")
+        provider = metadata.get("source_provider")
+        variant = metadata.get("source_variant")
+        if not (
+            type(eid) is str and eid and type(provider) is str and provider and type(variant) is str
+        ):
+            return None
+        return cast(tuple[str, str, str], (eid, provider, variant))
+
+    @classmethod
+    def _latest_event_revision(cls, values: tuple[KernelValueV1, ...]) -> KernelValueV1 | None:
+        if not values or any(cls._event_key(item) is None for item in values):
+            return None
+        # Receipt is the admitted knowledge basis. Equal receipt/sequence
+        # leaves revision order unresolved, rather than using a UUID tie break.
+        if any(type(dict(item.metadata).get("ingestion_sequence")) is not int for item in values):
+            return None
+        ordered = sorted(
+            values,
+            key=lambda item: (
+                item.received_ts_utc,
+                cast(int, dict(item.metadata)["ingestion_sequence"]),
+            ),
+        )
+        latest = ordered[-1]
+        top = (latest.received_ts_utc, dict(latest.metadata).get("ingestion_sequence"))
+        if (
+            sum(
+                (item.received_ts_utc, dict(item.metadata).get("ingestion_sequence")) == top
+                for item in ordered
+            )
+            != 1
+        ):
+            return None
+        return latest
+
+    @classmethod
+    def _selected_event_revision(
+        cls,
+        values: tuple[KernelValueV1, ...],
+        *,
+        as_of: datetime,
+        pre: Decimal,
+        post: Decimal,
+    ) -> tuple[KernelValueV1 | None, tuple[KernelValueV1, ...]] | None:
+        by_key: dict[tuple[str, str, str], list[KernelValueV1]] = {}
+        for value in values:
+            key = cls._event_key(value)
+            if key is None:
+                return None
+            by_key.setdefault(key, []).append(value)
+        current: list[KernelValueV1] = []
+        for revisions in by_key.values():
+            latest = cls._latest_event_revision(tuple(revisions))
+            if latest is None or type(latest.value) is not datetime:
+                return None
+            current.append(latest)
+        candidates = tuple(
+            item
+            for item in current
+            if as_of - timedelta(seconds=float(post))
+            <= cast(datetime, item.value)
+            <= as_of + timedelta(seconds=float(pre))
+        )
+        if not candidates:
+            return None, tuple(current)
+        chosen = min(
+            candidates,
+            key=lambda item: (
+                abs((cast(datetime, item.value) - as_of).total_seconds()),
+                cast(datetime, item.value),
+            ),
+        )
+        tied = tuple(
+            item
+            for item in candidates
+            if (
+                abs((cast(datetime, item.value) - as_of).total_seconds()),
+                cast(datetime, item.value),
+            )
+            == (
+                abs((cast(datetime, chosen.value) - as_of).total_seconds()),
+                cast(datetime, chosen.value),
+            )
+        )
+        if len(tied) != 1:
+            return None
+        return chosen, tuple(current)
+
+    def _event_scoped_d064_request(
+        self,
+        request: CalculationRequestV1,
+        event: KernelValueV1,
+        parent_policy: InputSelectionPolicyVersionV1,
+    ) -> CalculationRequestV1 | None:
+        key = self._event_key(event)
+        ref = dict(request.predecessor_selection_policy_refs).get("D064")
+        if key is None or ref is None:
+            return None
+        selection = self._input_selection_policies.get((ref.context_id, ref.version))
+        if (
+            selection is None
+            or "event_id" not in selection.join_keys
+            or selection.maximum_staleness > parent_policy.maximum_staleness
+            or selection.maximum_skew > parent_policy.maximum_skew
+            or not set(selection.temporal_basis_permissions)
+            <= set(parent_policy.temporal_basis_permissions)
+        ):
+            return None
+        matches = tuple(
+            binding for binding in request.raw_input_bindings if binding.raw_signal_id == "R289"
+        )
+        if len(matches) != 1:
+            return None
+        if (
+            matches[0].selection_identity is not None
+            and matches[0].selection_identity.value_for("event_id") != key[0]
+        ):
+            return None
+        mapping = self._mapping(matches[0].projection_mapping_ref, "R289")
+        if (
+            mapping is None
+            or getattr(mapping, "source_provider", None) != key[1]
+            or (getattr(mapping, "source_variant", None) or "") != key[2]
+        ):
+            return None
+        return replace(
+            request,
+            derived_signal_id="D064",
+            input_selection_policy_id=selection.context_id,
+            input_selection_policy_version=selection.version,
+            raw_input_bindings=(
+                replace(
+                    matches[0], selection_identity=RawSelectionIdentityV1((("event_id", key[0]),))
+                ),
+            ),
+        )
+
     def _materialise(
         self, request: CalculationRequestV1, derived_signal_id: str, stack: tuple[str, ...]
     ) -> DerivedSignalOccurrenceV1 | None:
@@ -1749,7 +1905,53 @@ class _OwnerV1:
             direct_lineage.extend(lineage)
             convention_refs.extend(conventions)
 
+        selected_event: KernelValueV1 | None = None
+        if derived_signal_id == "D065":
+            params = dict(parameter_set.parameters)
+            try:
+                pre = Decimal(str(params["pre_window_seconds"]))
+                post = Decimal(str(params["post_window_seconds"]))
+                if pre < 0 or post < 0:
+                    return None
+            except (KeyError, ValueError, TypeError):
+                return None
+            selection_result = self._selected_event_revision(
+                raw_inputs.get("R284", ()),
+                as_of=request.as_of_utc,
+                pre=pre,
+                post=post,
+            )
+            if selection_result is None:
+                return None
+            selected_event, current_events = selection_result
+            # Retain the exact latest revision(s) used for membership/window
+            # decision; do not persist superseded raw event revisions.
+            raw_inputs["R284"] = (selected_event,) if selected_event else current_events
+            used_ids = {item.occurrence_id for item in raw_inputs["R284"]}
+            direct_lineage = [
+                item
+                for item in direct_lineage
+                if item.raw_signal_id != "R284" or item.observation_occurrence_id in used_ids
+            ]
+        elif derived_signal_id == "D064":
+            raw_revisions = raw_inputs.get("R289", ())
+            if not raw_revisions or len({self._event_key(item) for item in raw_revisions}) != 1:
+                return None
+            latest_importance = self._latest_event_revision(raw_revisions)
+            if latest_importance is None:
+                return None
+            raw_inputs["R289"] = (latest_importance,)
+            direct_lineage = [
+                item
+                for item in direct_lineage
+                if item.raw_signal_id != "R289"
+                or item.observation_occurrence_id == latest_importance.occurrence_id
+            ]
         selection_keys = self._selection_join_keys(selection)
+        if derived_signal_id == "D064":
+            selection_keys = tuple(
+                dict.fromkeys((*selection_keys, "event_id", "source_provider", "source_variant"))
+            )
         selected_identity_values: dict[str, _SelectionIdentityScalarV1] = {}
         if not self._merge_direct_selection_identity(
             selected_identity_values, raw_inputs, selection_keys
@@ -1765,9 +1967,20 @@ class _OwnerV1:
             predecessor_row = catalogue_row(predecessor_id)
             if len(predecessor_row.parameter_profiles) != 1:
                 return None
-            predecessor_requests = self._scoped_contract_requests(
-                request, row.derived_id, predecessor_id, selection
-            )
+            predecessor_requests: tuple[CalculationRequestV1, ...] | None
+            if derived_signal_id == "D065" and predecessor_id == "D064":
+                if selected_event is None:
+                    # A known calendar with no event in the configured window
+                    # lawfully yields FALSE without assessing event importance.
+                    continue
+                event_request = self._event_scoped_d064_request(request, selected_event, selection)
+                if event_request is None:
+                    return None
+                predecessor_requests = (event_request,)
+            else:
+                predecessor_requests = self._scoped_contract_requests(
+                    request, row.derived_id, predecessor_id, selection
+                )
             if predecessor_requests is None:
                 return None
             scoped_edge = len(predecessor_requests) != 1 or predecessor_requests[0] is not request
@@ -1789,9 +2002,7 @@ class _OwnerV1:
                     # Multiple trades at one timestamp have no uniquely
                     # selected trade for the scalar D015 observation.
                     return None
-                predecessor_requests = (
-                    replace(request, as_of_utc=trade_time),
-                )
+                predecessor_requests = (replace(request, as_of_utc=trade_time),)
                 # This is time scoping, *not* multi-contract child scoping.
                 scoped_edge = False
             predecessor_values: list[KernelValueV1] = []
@@ -1822,6 +2033,11 @@ class _OwnerV1:
                         predecessor_request, predecessor_id, (*stack, derived_signal_id)
                     )
                     if current is None:
+                        if derived_signal_id == "D065" and predecessor_id == "D062":
+                            # D062 reports the next *future* event only; its
+                            # absence after an event cannot erase D065's
+                            # explicitly accepted post-event window.
+                            continue
                         return None
                 elif not history:
                     return None
@@ -1862,11 +2078,29 @@ class _OwnerV1:
                             ),
                         )
                     )
+                event_edge = derived_signal_id == "D065" and predecessor_id == "D064"
+                if event_edge:
+                    scoped_key = self._event_key(selected_event) if selected_event else None
+                    if scoped_key is None:
+                        return None
+                    child_selected.update(
+                        {
+                            "event_id": scoped_key[0],
+                            "source_provider": scoped_key[1],
+                            "source_variant": scoped_key[2],
+                        }
+                    )
                 history = self._filter_predecessor_history_for_selection(
                     history,
-                    keys=predecessor_keys if scoped_edge else selection_keys,
-                    selected=child_selected if scoped_edge else selected_identity_values,
-                    selection=predecessor_selection if scoped_edge else selection,
+                    keys=("event_id", "source_provider", "source_variant")
+                    if event_edge
+                    else predecessor_keys
+                    if scoped_edge
+                    else selection_keys,
+                    selected=child_selected
+                    if event_edge or scoped_edge
+                    else selected_identity_values,
+                    selection=predecessor_selection if event_edge or scoped_edge else selection,
                 )
                 if not history:
                     return None
@@ -1923,6 +2157,17 @@ class _OwnerV1:
         selected_identity = self._resolved_selection_identity(
             selected_identity_values, selection_keys
         )
+        if derived_signal_id == "D065" and selected_event is not None:
+            chosen_event_key = self._event_key(selected_event)
+            if chosen_event_key is None:
+                return None
+            selected_identity = RawSelectionIdentityV1(
+                (
+                    ("event_id", chosen_event_key[0]),
+                    ("source_provider", chosen_event_key[1]),
+                    ("source_variant", chosen_event_key[2]),
+                )
+            )
         if selection_keys and selected_identity is None:
             return None
 
