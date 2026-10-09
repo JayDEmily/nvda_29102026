@@ -1,8 +1,8 @@
-"""F4 RC12: D134/D135 native snapshot public reachability witness.
+"""F4 RC12: retained D134/D135 public witness with authorised R187 events.
 
-The accepted CSV declares only R185/R188/R190 for each row, while the
-current code's book-event reconstruction requires undeclared R187. This
-public witness must not be labelled green or a provider integration proof.
+The historical deliberately red three-field witness remains in Git commit
+450b7e6. The exact 10/7 and D136 numerical expectations are unchanged;
+its input stream now includes the required explicit insertion operation.
 """
 
 from __future__ import annotations
@@ -15,7 +15,7 @@ from nvda_desk.derived_signal_calculation_truth import api
 from nvda_desk.raw_signal_occurrence_truth import api as raw
 
 AT = datetime(2026, 10, 9, 9, tzinfo=UTC)
-REQUIRED = ("R185", "R188", "R190")
+REQUIRED = ("R185", "R187", "R188", "R190")
 
 
 def _public_snapshot() -> tuple[api.DerivedSignalCalculationOwnerV1, api.CalculationRequestV1]:
@@ -29,7 +29,7 @@ def _public_snapshot() -> tuple[api.DerivedSignalCalculationOwnerV1, api.Calcula
                 observation_occurrence_id=raw.observation_occurrence_id("depth-" + side),
                 delivery_artifact_ref=raw.delivery_artifact_ref("depth-source" + side),
                 source_provider=raw.provider_id("controlled-snapshot"),
-                native_record={"level": 1, "side": side, "size": size},
+                native_record={"level": 1, "operation": "insert", "side": side, "size": size},
                 received_ts_utc=moment,
                 ingestion_sequence=n,
                 ingestion_sequence_scope=raw.ingestion_sequence_scope("controlled-snapshot:depth"),
@@ -43,8 +43,8 @@ def _public_snapshot() -> tuple[api.DerivedSignalCalculationOwnerV1, api.Calcula
                 revision_vintage_native="v1",
             )
         )
-    names = ("level", "side", "size")
-    units = ("level", "side", "contracts")
+    names = ("level", "operation", "side", "size")
+    units = ("level", "operation", "side", "contracts")
     mappings = tuple(
         raw.RawSignalProjectionMappingV1(
             "depth-map-" + rid,
@@ -113,7 +113,7 @@ def _public_snapshot() -> tuple[api.DerivedSignalCalculationOwnerV1, api.Calcula
     return owner, request
 
 
-def test_d134_d135_and_d136_have_nonzero_lawful_public_depths_without_undeclared_operations() -> (
+def test_d134_d135_and_d136_have_nonzero_lawful_public_depths_with_declared_operations() -> (
     None
 ):
     owner, request = _public_snapshot()

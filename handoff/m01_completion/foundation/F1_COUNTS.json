@@ -1,6 +1,6 @@
 {
   "all_rows": 209,
-  "catalogue_sha256": "63bc1b776fc8fa8ba82eb3c9b16916f295c9ec3d480a5a068937c2f25146f5f5",
+  "catalogue_sha256": "8045c8c0c4a62fbc3b88759a65b415efb1f0d549764ddbdcae2c5c911cd8a64a",
   "cross_stage_direct": 25,
   "cross_stage_direct_ids": [
     "D097",
@@ -37,7 +37,7 @@
     "D186",
     "D189"
   ],
-  "csv_edge_records_including_zero_dependency_sentinels": 489,
+  "csv_edge_records_including_zero_dependency_sentinels": 491,
   "derived_edges": 197,
   "direct_stage2_edges": 40,
   "kernel_rows": {
@@ -52,7 +52,7 @@
     "K16_STRUCTURED_ASSEMBLY": 1,
     "K17_ORDER_FLOW_IMBALANCE": 1
   },
-  "raw_edges": 291,
+  "raw_edges": 293,
   "source": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv",
   "stage1_closed": 144,
   "stage1_row_ids": [
@@ -232,7 +232,7 @@
     "D209"
   ],
   "stage1_rows": 174,
-  "total_declared_edges": 488,
+  "total_declared_edges": 490,
   "zero_edge_ids": [
     "D007"
   ],

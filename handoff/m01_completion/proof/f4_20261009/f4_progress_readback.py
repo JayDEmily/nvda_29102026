@@ -1,8 +1,9 @@
 """Conservative F4 progress reconciliation against accepted catalogue and F3 ledger.
 
-Only six bounded public rows and one zero-edge sentinel are advanced here.
-This script does NOT confer proof on other D rows or on an entire class.
-An unresolved D134/D135 public mismatch is NOT marked as passing.
+The original F3 ledger remains immutable historical evidence. Its row-edge IDs are
+mechanically rebased by (D row, kind, source ID) onto the authorised F1
+D134/D135 R187 correction; no historical acceptance is silently invented.
+The new D134/D135/D136 proofs apply only to their bounded public mechanism.
 """
 
 from __future__ import annotations
@@ -17,9 +18,24 @@ ROOT = Path(__file__).resolve().parents[4]
 AUTHORITY = ROOT / "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv"
 F3 = ROOT / "handoff/m01_completion/proof/f3_20261009/F3_ALL_EDGES_RECONCILIATION.csv"
 OUT = Path(__file__).resolve().parent
-NORMATIVE_SHA256 = "63bc1b776fc8fa8ba82eb3c9b16916f295c9ec3d480a5a068937c2f25146f5f5"
+NORMATIVE_SHA256 = "8045c8c0c4a62fbc3b88759a65b415efb1f0d549764ddbdcae2c5c911cd8a64a"
 STAGE1_KERNELS = {f"K{i:02d}" for i in range(1, 9)} | {"K16", "K17"}
 F4_BOUNDED_PUBLIC_ROWS = {
+    "D134": (
+        "RC12",
+        "tests/product/derived_signal/test_m01_f4_positional_book_class.py",
+        "M00 position-shifting operation reconstruction; top-two bid 17; missing operation refusal and exact lineage",
+    ),
+    "D135": (
+        "RC12",
+        "tests/product/derived_signal/test_m01_f4_positional_book_class.py",
+        "M00 independent ask book top-two 13; explicit operations and exact lineage",
+    ),
+    "D136": (
+        "RC12",
+        "tests/product/derived_signal/test_m01_f4_positional_book_class.py",
+        "M00 D134/D135 reconstructed ratio 4/30 with inherited lineage",
+    ),
     "D145": (
         "RC12",
         "tests/product/derived_signal/test_m01_f4_book_ofi_public.py",
@@ -90,11 +106,40 @@ def main() -> None:
     assert set(F4_BOUNDED_PUBLIC_ROWS).issubset(closed_rows)
 
     with F3.open(newline="", encoding="utf-8") as handle:
-        edges = list(csv.DictReader(handle))
-    assert len(edges) == 489, "488 dependencies plus D007 zero-edge sentinel"
+        old_edges = list(csv.DictReader(handle))
+    assert len(old_edges) == 489, "Historical F3 ledger must remain the original 488+1"
+    old_by_identity = {(e["derived_row"], e["source_type"], e["source_id"]): e for e in old_edges}
+    assert len(old_by_identity) == 489
+    classified = ROOT / "handoff/m01_completion/foundation/F1_CLASSIFIED_EDGE_MAP.csv"
+    with classified.open(newline="", encoding="utf-8") as handle:
+        canonical_edges = list(csv.DictReader(handle))
+    assert len(canonical_edges) == 491, "490 amended dependencies plus D007 sentinel"
+    edges = []
+    added = []
+    for edge in canonical_edges:
+        key = (edge["derived_id"], edge["source_type"], edge["source_id"])
+        inherited = old_by_identity.get(key)
+        if inherited is None:
+            assert key in {("D134", "R", "R187"), ("D135", "R", "R187")}, key
+            added.append(key)
+            item = {
+                "f1_edge_id": edge["edge_id"], "derived_row": edge["derived_id"],
+                "source_type": edge["source_type"], "source_id": edge["source_id"],
+                "relationship_class": edge["relationship_class"],
+                "stage2_boundary": edge["stage2_boundary"],
+                "f3c_disposition": "F4_OUTSTANDING_RELATIONSHIP_PROOF",
+                "evidence_and_scope": "Programme Owner 2026-10-09 R187 amendment; no inherited F3 proof",
+            }
+        else:
+            item = dict(inherited)
+            item["f1_edge_id"] = edge["edge_id"]
+            assert item["relationship_class"] == edge["relationship_class"]
+            assert item["stage2_boundary"] == edge["stage2_boundary"]
+        edges.append(item)
+    assert len(added) == 2 and len(edges) == 491
     ids = [item["f1_edge_id"] for item in edges]
-    assert len(set(ids)) == 489
-    assert sum(item["source_type"] in {"R", "D"} for item in edges) == 488
+    assert len(set(ids)) == 491
+    assert sum(item["source_type"] in {"R", "D"} for item in edges) == 490
     for item in edges:
         did = item["derived_row"]
         if did in F4_BOUNDED_PUBLIC_ROWS:
@@ -120,8 +165,8 @@ def main() -> None:
         "F2_ACCEPTED_SCOPED_EVIDENCE": 18,
         "F3A_BOUNDED_PUBLIC_PROOF": 4,
         "F3B_BOUNDED_PUBLIC_PROOF": 7,
-        "F4_BOUNDED_PUBLIC_ROW_PROOF": 35,
-        "F4_OUTSTANDING_RELATIONSHIP_PROOF": 317,
+        "F4_BOUNDED_PUBLIC_ROW_PROOF": 45,
+        "F4_OUTSTANDING_RELATIONSHIP_PROOF": 309,
         "STAGE2_BOUNDARY_DEFERRED": 107,
         "F4_ZERO_EDGE_PUBLIC_PROOF": 1,
     }, statuses
@@ -138,19 +183,19 @@ def main() -> None:
         "stage1_closed_rows": len(closed_rows),
         "cross_stage_rows": len(deferred),
         "f4_new_bounded_public_rows": sorted(F4_BOUNDED_PUBLIC_ROWS),
-        "total_dependency_edges": 488,
+        "total_dependency_edges": 490,
+        "new_authorised_raw_edges": ["D134/R187", "D135/R187"],
         "zero_edge_sentinels": 1,
         "f4_dispositions": dict(sorted(statuses.items())),
-        "unresolved_rc12_public_rows": ["D134", "D135", "D136"],
-        "confirmed_public_witness_failure": (
-            "D134 persisted zero with projected nonzero size and no undeclared R187 operation"
-        ),
-        "depth_snapshot_vs_event_reconstruction_authority": "BLOCKED",
+        "unresolved_rc12_public_rows": ["D131", "D137", "D138", "D141", "D142"],
+        "historical_three_field_witness": "retained in commit 450b7e6; formerly produced zero",
+        "repaired_event_witness": "explicit R187 operation; D134=10, D135=7, D136=3/17",
+        "depth_snapshot_vs_event_reconstruction_authority": "AUTHORISATION_RESOLVED_EVENT_DRIVEN",
         "stage1_f4_candidate_ready": False,
         "stage1_independent_acceptance": False,
         "boundary": (
             "Bounded row proofs do not prove all 144 Stage-1-closed rows or 30 cross-stage rows; "
-            "D134/D135 additionally need authoritative snapshot-versus-event reconstruction rule"
+            "F4 outstanding edge classes and public reachability remain unproved"
         ),
     }
     (OUT / "F4_PROGRESS_READBACK.json").write_text(

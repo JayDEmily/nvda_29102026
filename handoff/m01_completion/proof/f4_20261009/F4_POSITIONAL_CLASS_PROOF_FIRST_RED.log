@@ -1,0 +1,146 @@
+FFFFFFFF                                                                 [100%]
+=================================== FAILURES ===================================
+_ test_book_insert_shifts_levels_update_and_delete_reindexes_each_side_and_source _
+
+    def test_book_insert_shifts_levels_update_and_delete_reindexes_each_side_and_source() -> None:
+        events = (
+            event("b0", -8, 0, "insert", "bid", 10),
+            event("b1", -7, 1, "insert", "bid", 5),
+            event("a0", -6, 0, "insert", "ask", 9),
+            event("other", -5, 0, "insert", "bid", 100, "DIRECT"),
+            event("push", -4, 0, "insert", "bid", 7),
+        )
+        state = _book_final_state(tuple(reversed(events)))
+        assert state is not None
+>       assert [state[("SMART", "bid", i)][1] for i in range(3)] == list(map(Decimal, (7, 10, 5)))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: ('SMART', 'bid', 2)
+
+tests/product/derived_signal/test_m01_f4_positional_book_class.py:43: KeyError
+_______ test_unestablished_or_unsupported_book_state_fails_closed[bad0] ________
+
+bad = (BookEventV1(occurrence_id='bad-update', event_time_utc=datetime.datetime(2026, 10, 9, 10, 0, tzinfo=datetime.timezone...sition=0, operation='update', side='bid', price=Decimal('0'), size=Decimal('2'), venue='SMART', ingestion_sequence=0),)
+
+    @pytest.mark.parametrize("bad", [
+        (event("bad-update", 0, 0, "update", "bid", 2),),
+        (event("bad-delete", 0, 0, "delete", "bid", 0),),
+        (event("bad-gap", 0, 3, "insert", "bid", 2),),
+        (event("bad-side", 0, 0, "insert", "unknown", 2),),
+        (event("bad-op", 0, 0, "replace", "bid", 2),),
+    ])
+    def test_unestablished_or_unsupported_book_state_fails_closed(bad: tuple[BookEventV1, ...]) -> None:
+>       assert _book_final_state(bad) is None
+E       AssertionError: assert {('SMART', 'bid', 0): (Decimal('0'), Decimal('2'))} is None
+E        +  where {('SMART', 'bid', 0): (Decimal('0'), Decimal('2'))} = _book_final_state((BookEventV1(occurrence_id='bad-update', event_time_utc=datetime.datetime(2026, 10, 9, 10, 0, tzinfo=datetime.timezone...sition=0, operation='update', side='bid', price=Decimal('0'), size=Decimal('2'), venue='SMART', ingestion_sequence=0),))
+
+tests/product/derived_signal/test_m01_f4_positional_book_class.py:67: AssertionError
+_______ test_unestablished_or_unsupported_book_state_fails_closed[bad1] ________
+
+bad = (BookEventV1(occurrence_id='bad-delete', event_time_utc=datetime.datetime(2026, 10, 9, 10, 0, tzinfo=datetime.timezone...sition=0, operation='delete', side='bid', price=Decimal('0'), size=Decimal('0'), venue='SMART', ingestion_sequence=0),)
+
+    @pytest.mark.parametrize("bad", [
+        (event("bad-update", 0, 0, "update", "bid", 2),),
+        (event("bad-delete", 0, 0, "delete", "bid", 0),),
+        (event("bad-gap", 0, 3, "insert", "bid", 2),),
+        (event("bad-side", 0, 0, "insert", "unknown", 2),),
+        (event("bad-op", 0, 0, "replace", "bid", 2),),
+    ])
+    def test_unestablished_or_unsupported_book_state_fails_closed(bad: tuple[BookEventV1, ...]) -> None:
+>       assert _book_final_state(bad) is None
+E       AssertionError: assert {} is None
+E        +  where {} = _book_final_state((BookEventV1(occurrence_id='bad-delete', event_time_utc=datetime.datetime(2026, 10, 9, 10, 0, tzinfo=datetime.timezone...sition=0, operation='delete', side='bid', price=Decimal('0'), size=Decimal('0'), venue='SMART', ingestion_sequence=0),))
+
+tests/product/derived_signal/test_m01_f4_positional_book_class.py:67: AssertionError
+_______ test_unestablished_or_unsupported_book_state_fails_closed[bad2] ________
+
+bad = (BookEventV1(occurrence_id='bad-gap', event_time_utc=datetime.datetime(2026, 10, 9, 10, 0, tzinfo=datetime.timezone.ut...sition=3, operation='insert', side='bid', price=Decimal('0'), size=Decimal('2'), venue='SMART', ingestion_sequence=0),)
+
+    @pytest.mark.parametrize("bad", [
+        (event("bad-update", 0, 0, "update", "bid", 2),),
+        (event("bad-delete", 0, 0, "delete", "bid", 0),),
+        (event("bad-gap", 0, 3, "insert", "bid", 2),),
+        (event("bad-side", 0, 0, "insert", "unknown", 2),),
+        (event("bad-op", 0, 0, "replace", "bid", 2),),
+    ])
+    def test_unestablished_or_unsupported_book_state_fails_closed(bad: tuple[BookEventV1, ...]) -> None:
+>       assert _book_final_state(bad) is None
+E       AssertionError: assert {('SMART', 'bid', 3): (Decimal('0'), Decimal('2'))} is None
+E        +  where {('SMART', 'bid', 3): (Decimal('0'), Decimal('2'))} = _book_final_state((BookEventV1(occurrence_id='bad-gap', event_time_utc=datetime.datetime(2026, 10, 9, 10, 0, tzinfo=datetime.timezone.ut...sition=3, operation='insert', side='bid', price=Decimal('0'), size=Decimal('2'), venue='SMART', ingestion_sequence=0),))
+
+tests/product/derived_signal/test_m01_f4_positional_book_class.py:67: AssertionError
+_______ test_unestablished_or_unsupported_book_state_fails_closed[bad3] ________
+
+bad = (BookEventV1(occurrence_id='bad-side', event_time_utc=datetime.datetime(2026, 10, 9, 10, 0, tzinfo=datetime.timezone.u...on=0, operation='insert', side='unknown', price=Decimal('0'), size=Decimal('2'), venue='SMART', ingestion_sequence=0),)
+
+    @pytest.mark.parametrize("bad", [
+        (event("bad-update", 0, 0, "update", "bid", 2),),
+        (event("bad-delete", 0, 0, "delete", "bid", 0),),
+        (event("bad-gap", 0, 3, "insert", "bid", 2),),
+        (event("bad-side", 0, 0, "insert", "unknown", 2),),
+        (event("bad-op", 0, 0, "replace", "bid", 2),),
+    ])
+    def test_unestablished_or_unsupported_book_state_fails_closed(bad: tuple[BookEventV1, ...]) -> None:
+>       assert _book_final_state(bad) is None
+E       AssertionError: assert {('SMART', 'unknown', 0): (Decimal('0'), Decimal('2'))} is None
+E        +  where {('SMART', 'unknown', 0): (Decimal('0'), Decimal('2'))} = _book_final_state((BookEventV1(occurrence_id='bad-side', event_time_utc=datetime.datetime(2026, 10, 9, 10, 0, tzinfo=datetime.timezone.u...on=0, operation='insert', side='unknown', price=Decimal('0'), size=Decimal('2'), venue='SMART', ingestion_sequence=0),))
+
+tests/product/derived_signal/test_m01_f4_positional_book_class.py:67: AssertionError
+_______ test_unestablished_or_unsupported_book_state_fails_closed[bad4] ________
+
+bad = (BookEventV1(occurrence_id='bad-op', event_time_utc=datetime.datetime(2026, 10, 9, 10, 0, tzinfo=datetime.timezone.utc...ition=0, operation='replace', side='bid', price=Decimal('0'), size=Decimal('2'), venue='SMART', ingestion_sequence=0),)
+
+    @pytest.mark.parametrize("bad", [
+        (event("bad-update", 0, 0, "update", "bid", 2),),
+        (event("bad-delete", 0, 0, "delete", "bid", 0),),
+        (event("bad-gap", 0, 3, "insert", "bid", 2),),
+        (event("bad-side", 0, 0, "insert", "unknown", 2),),
+        (event("bad-op", 0, 0, "replace", "bid", 2),),
+    ])
+    def test_unestablished_or_unsupported_book_state_fails_closed(bad: tuple[BookEventV1, ...]) -> None:
+>       assert _book_final_state(bad) is None
+E       AssertionError: assert {('SMART', 'bid', 0): (Decimal('0'), Decimal('2'))} is None
+E        +  where {('SMART', 'bid', 0): (Decimal('0'), Decimal('2'))} = _book_final_state((BookEventV1(occurrence_id='bad-op', event_time_utc=datetime.datetime(2026, 10, 9, 10, 0, tzinfo=datetime.timezone.utc...ition=0, operation='replace', side='bid', price=Decimal('0'), size=Decimal('2'), venue='SMART', ingestion_sequence=0),))
+
+tests/product/derived_signal/test_m01_f4_positional_book_class.py:67: AssertionError
+______ test_public_d134_d135_d136_shifted_depth_results_and_exact_lineage ______
+
+    def test_public_d134_d135_d136_shifted_depth_results_and_exact_lineage() -> None:
+        owner, request = public_book(ROWS)
+        bid = owner.materialise(request)
+        ask = owner.materialise(replace(request, derived_signal_id="D135"))
+        ratio = owner.materialise(replace(request, derived_signal_id="D136"))
+>       assert bid is not None and bid.result == Decimal(17)
+E       AssertionError: assert (DerivedSignalOccurrenceV1(derived_signal_id='D134', derived_occurrence_id='d134-3c3e563679e11bb74dba7e679ff514e09e4c97...sionRefV1(context_id='position-unit-R185', version=1)), selection_identity=None, supersedes_derived_occurrence_id=None) is not None and Decimal('0') == Decimal('17'))
+E        +  where Decimal('0') = DerivedSignalOccurrenceV1(derived_signal_id='D134', derived_occurrence_id='d134-3c3e563679e11bb74dba7e679ff514e09e4c97...sionRefV1(context_id='position-unit-R185', version=1)), selection_identity=None, supersedes_derived_occurrence_id=None).result
+E        +  and   Decimal('17') = Decimal(17)
+
+tests/product/derived_signal/test_m01_f4_positional_book_class.py:132: AssertionError
+_ test_public_book_missing_operation_and_temporal_cutoff_refuse_or_recalculate _
+
+    def test_public_book_missing_operation_and_temporal_cutoff_refuse_or_recalculate() -> None:
+        owner, request = public_book(ROWS, missing="bid-shift")
+>       assert owner.materialise(request) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D134', derived_occurrence_id='d134-3c3e563679e11bb74dba7e679ff514e09e4c97...sionRefV1(context_id='position-unit-R185', version=1)), selection_identity=None, supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(derived_signal_id='D134', derived_occurrence_id='d134-3c3e563679e11bb74dba7e679ff514e09e4c97...sionRefV1(context_id='position-unit-R185', version=1)), selection_identity=None, supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D134', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 9, 10,...ion-unit-R190', version=1), subject_instrument='NVDA', selection_identity=None)), predecessor_selection_policy_refs=()))
+E        +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7fd7eda0ac70>.materialise
+
+tests/product/derived_signal/test_m01_f4_positional_book_class.py:142: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/derived_signal/test_m01_f4_positional_book_class.py::test_book_insert_shifts_levels_update_and_delete_reindexes_each_side_and_source - KeyError: ('SMART', 'bid', 2)
+FAILED tests/product/derived_signal/test_m01_f4_positional_book_class.py::test_unestablished_or_unsupported_book_state_fails_closed[bad0] - AssertionError: assert {('SMART', 'bid', 0): (Decimal('0'), Decimal('2'))} is None
+ +  where {('SMART', 'bid', 0): (Decimal('0'), Decimal('2'))} = _book_final_state((BookEventV1(occurrence_id='bad-update', event_time_utc=datetime.datetime(2026, 10, 9, 10, 0, tzinfo=datetime.timezone...sition=0, operation='update', side='bid', price=Decimal('0'), size=Decimal('2'), venue='SMART', ingestion_sequence=0),))
+FAILED tests/product/derived_signal/test_m01_f4_positional_book_class.py::test_unestablished_or_unsupported_book_state_fails_closed[bad1] - AssertionError: assert {} is None
+ +  where {} = _book_final_state((BookEventV1(occurrence_id='bad-delete', event_time_utc=datetime.datetime(2026, 10, 9, 10, 0, tzinfo=datetime.timezone...sition=0, operation='delete', side='bid', price=Decimal('0'), size=Decimal('0'), venue='SMART', ingestion_sequence=0),))
+FAILED tests/product/derived_signal/test_m01_f4_positional_book_class.py::test_unestablished_or_unsupported_book_state_fails_closed[bad2] - AssertionError: assert {('SMART', 'bid', 3): (Decimal('0'), Decimal('2'))} is None
+ +  where {('SMART', 'bid', 3): (Decimal('0'), Decimal('2'))} = _book_final_state((BookEventV1(occurrence_id='bad-gap', event_time_utc=datetime.datetime(2026, 10, 9, 10, 0, tzinfo=datetime.timezone.ut...sition=3, operation='insert', side='bid', price=Decimal('0'), size=Decimal('2'), venue='SMART', ingestion_sequence=0),))
+FAILED tests/product/derived_signal/test_m01_f4_positional_book_class.py::test_unestablished_or_unsupported_book_state_fails_closed[bad3] - AssertionError: assert {('SMART', 'unknown', 0): (Decimal('0'), Decimal('2'))} is None
+ +  where {('SMART', 'unknown', 0): (Decimal('0'), Decimal('2'))} = _book_final_state((BookEventV1(occurrence_id='bad-side', event_time_utc=datetime.datetime(2026, 10, 9, 10, 0, tzinfo=datetime.timezone.u...on=0, operation='insert', side='unknown', price=Decimal('0'), size=Decimal('2'), venue='SMART', ingestion_sequence=0),))
+FAILED tests/product/derived_signal/test_m01_f4_positional_book_class.py::test_unestablished_or_unsupported_book_state_fails_closed[bad4] - AssertionError: assert {('SMART', 'bid', 0): (Decimal('0'), Decimal('2'))} is None
+ +  where {('SMART', 'bid', 0): (Decimal('0'), Decimal('2'))} = _book_final_state((BookEventV1(occurrence_id='bad-op', event_time_utc=datetime.datetime(2026, 10, 9, 10, 0, tzinfo=datetime.timezone.utc...ition=0, operation='replace', side='bid', price=Decimal('0'), size=Decimal('2'), venue='SMART', ingestion_sequence=0),))
+FAILED tests/product/derived_signal/test_m01_f4_positional_book_class.py::test_public_d134_d135_d136_shifted_depth_results_and_exact_lineage - AssertionError: assert (DerivedSignalOccurrenceV1(derived_signal_id='D134', derived_occurrence_id='d134-3c3e563679e11bb74dba7e679ff514e09e4c97...sionRefV1(context_id='position-unit-R185', version=1)), selection_identity=None, supersedes_derived_occurrence_id=None) is not None and Decimal('0') == Decimal('17'))
+ +  where Decimal('0') = DerivedSignalOccurrenceV1(derived_signal_id='D134', derived_occurrence_id='d134-3c3e563679e11bb74dba7e679ff514e09e4c97...sionRefV1(context_id='position-unit-R185', version=1)), selection_identity=None, supersedes_derived_occurrence_id=None).result
+ +  and   Decimal('17') = Decimal(17)
+FAILED tests/product/derived_signal/test_m01_f4_positional_book_class.py::test_public_book_missing_operation_and_temporal_cutoff_refuse_or_recalculate - AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D134', derived_occurrence_id='d134-3c3e563679e11bb74dba7e679ff514e09e4c97...sionRefV1(context_id='position-unit-R185', version=1)), selection_identity=None, supersedes_derived_occurrence_id=None) is None
+ +  where DerivedSignalOccurrenceV1(derived_signal_id='D134', derived_occurrence_id='d134-3c3e563679e11bb74dba7e679ff514e09e4c97...sionRefV1(context_id='position-unit-R185', version=1)), selection_identity=None, supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D134', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 9, 10,...ion-unit-R190', version=1), subject_instrument='NVDA', selection_identity=None)), predecessor_selection_policy_refs=()))
+ +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7fd7eda0ac70>.materialise
+8 failed in 0.18s

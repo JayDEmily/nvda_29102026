@@ -87,7 +87,7 @@ def test_stage1_runtime_catalogue_is_exact_hash_bound_209_row_authority() -> Non
     cat = _catalogue()
     rows = cat.catalogue_rows()
     assert (
-        cat.CATALOGUE_SHA256 == "63bc1b776fc8fa8ba82eb3c9b16916f295c9ec3d480a5a068937c2f25146f5f5"
+        cat.CATALOGUE_SHA256 == "8045c8c0c4a62fbc3b88759a65b415efb1f0d549764ddbdcae2c5c911cd8a64a"
     )
     assert len(rows) == 209
     assert tuple(row.derived_id for row in rows) == tuple(f"D{i:03d}" for i in range(1, 210))

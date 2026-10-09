@@ -119,8 +119,8 @@ D124,Derived Signals!128,Open-interest concentration by strike/expiry,K08_RULE_B
 D128,Derived Signals!132,Gamma concentration around spot,K08_RULE_BUCKET_POLICY,P_RULE,,Spot-distance bands,,D125;D089,0,2,CROSS_STAGE_DIRECT,D125,D125,§5 K08_RULE_BUCKET_POLICY — explicit D128 rule,Concentration shares use absolute gamma-exposure magnitude.
 D131,Derived Signals!135,Cumulative option depth near midpoint,K02_ALGEBRA,P_BASIC,,Top N levels / bps band,R185;R187;R188;R189;R190,D087,5,1,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D131 rule,Authoritative raw dependency set contains complete book reconstruction fields required by the repaired L2 law.
 D132,Derived Signals!136,Composite option liquidity score,K07_WEIGHTED_SCORE,P_SCORE,,,R033;R036;R041;R062,D088;D131,4,2,STAGE1_CLOSED,,,§5 K07_WEIGHTED_SCORE — apply kernel to this row concept,Adds R062 trade rate required by the row concept.
-D134,Derived Signals!138,SMART cumulative bid depth,K02_ALGEBRA,P_BASIC,,Top N levels,R188;R190;R185,,3,0,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D134 rule,
-D135,Derived Signals!139,SMART cumulative ask depth,K02_ALGEBRA,P_BASIC,,Top N levels,R188;R190;R185,,3,0,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D135 rule,
+D134,Derived Signals!138,SMART cumulative bid depth,K02_ALGEBRA,P_BASIC,,Top N levels,R185;R187;R188;R190,,4,0,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D134 rule,
+D135,Derived Signals!139,SMART cumulative ask depth,K02_ALGEBRA,P_BASIC,,Top N levels,R185;R187;R188;R190,,4,0,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D135 rule,
 D136,Derived Signals!140,SMART depth imbalance,K02_ALGEBRA,P_BASIC,,Top N levels / price band,,D134;D135,0,2,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D136 rule,
 D137,Derived Signals!141,Order-book microprice,K02_ALGEBRA,P_BASIC,,,R034;R035;R033;R036,,4,0,STAGE1_CLOSED,,,§5 K02_ALGEBRA — explicit D137 rule,
 D138,Derived Signals!142,Order-book slope,K06_REGRESSION_DEPENDENCE,P_REGRESSION,,Top N levels,R189;R190;R188,D011,3,1,STAGE1_CLOSED,,,§5 K06_REGRESSION_DEPENDENCE — explicit D138 rule,

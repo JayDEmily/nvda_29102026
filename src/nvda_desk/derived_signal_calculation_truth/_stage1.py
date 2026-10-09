@@ -511,48 +511,79 @@ def _latest_by_subject(
     return output
 
 
-def reconstruct_book(events: tuple[BookEventV1, ...]) -> tuple[BookMutationV1, ...]:
-    state: dict[tuple[str, str, int], tuple[Decimal, Decimal]] = {}
-    mutations: list[BookMutationV1] = []
-    indexed = list(enumerate(events))
-    indexed.sort(
-        key=lambda pair: (
-            pair[1].event_time_utc,
-            pair[1].ingestion_sequence,
-            pair[1].occurrence_id,
-            pair[0],
+def _ordered_book_events(events: tuple[BookEventV1, ...]) -> tuple[BookEventV1, ...]:
+    """Provider receipt/sequence order with a stable deterministic identity tie-break."""
+    return tuple(
+        event
+        for _, event in sorted(
+            enumerate(events),
+            key=lambda pair: (
+                pair[1].event_time_utc,
+                pair[1].ingestion_sequence,
+                pair[1].occurrence_id,
+                pair[0],
+            ),
         )
     )
-    for _, event in indexed:
-        operation = event.operation.lower()
-        side = event.side.lower()
-        if operation not in {"insert", "update", "delete", "remove", "cancel"} or side not in {
-            "bid",
-            "ask",
-        }:
-            continue
-        key = (event.venue, side, event.position)
-        _, prior_size = state.get(key, (event.price, _DEC0))
-        inserted = depleted = restored = removed = _DEC0
-        if operation == "insert":
+
+
+def _apply_book_event(
+    state: dict[tuple[str, str, int], tuple[Decimal, Decimal]], event: BookEventV1
+) -> BookMutationV1:
+    """Apply an admitted positional mutation, shifting rows of the same book/side.
+
+    An event at an as-yet-unseen position may be a partial rate-only stream;
+    a depth-state consumer separately rejects a non-contiguous final book.
+    An update/delete without an established predecessor is never fabricated.
+    """
+    op, side = event.operation.lower(), event.side.lower()
+    if (
+        op not in {"insert", "update", "delete", "remove", "cancel"}
+        or side not in {"bid", "ask"}
+        or event.position < 0
+        or event.size < 0
+    ):
+        raise ValueError("invalid provider book operation/side/position/quantity")
+    key = (event.venue, side, event.position)
+    present = key in state
+    prior_size = state[key][1] if present else _DEC0
+    inserted = depleted = restored = removed = _DEC0
+    if op == "insert":
+        # A positional insertion never overwrites the row it displaces.
+        affected = sorted(
+            (k for k in state if k[:2] == key[:2] and k[2] >= event.position),
+            key=lambda k: k[2],
+            reverse=True,
+        )
+        for old in affected:
+            state[(old[0], old[1], old[2] + 1)] = state.pop(old)
+        state[key] = (event.price, event.size)
+        inserted = event.size
+        prior_size = _DEC0  # an insert creates a row, not a size restoration
+        resulting = event.size
+    else:
+        if not present:
+            raise ValueError("book update/delete has no established row at source position")
+        if op == "update":
             resulting = event.size
-            inserted = event.size
-            state[key] = (event.price, resulting)
-        elif operation == "update":
-            resulting = event.size
-            if resulting < prior_size:
-                depleted = prior_size - resulting
-            elif resulting > prior_size:
-                restored = resulting - prior_size
+            depleted = max(prior_size - resulting, _DEC0)
+            restored = max(resulting - prior_size, _DEC0)
             state[key] = (event.price, resulting)
         else:
             resulting = _DEC0
             removed = prior_size
-            state.pop(key, None)
-        mutations.append(
-            BookMutationV1(event, prior_size, resulting, inserted, depleted, restored, removed)
-        )
-    return tuple(mutations)
+            state.pop(key)
+            affected = sorted(
+                (k for k in state if k[:2] == key[:2] and k[2] > event.position), key=lambda k: k[2]
+            )
+            for old in affected:
+                state[(old[0], old[1], old[2] - 1)] = state.pop(old)
+    return BookMutationV1(event, prior_size, resulting, inserted, depleted, restored, removed)
+
+
+def reconstruct_book(events: tuple[BookEventV1, ...]) -> tuple[BookMutationV1, ...]:
+    state: dict[tuple[str, str, int], tuple[Decimal, Decimal]] = {}
+    return tuple(_apply_book_event(state, event) for event in _ordered_book_events(events))
 
 
 def _book_events(
@@ -578,14 +609,36 @@ def _book_events(
             None,
         )
     required = tuple(field for field in (position_id, operation_id, side_id, size_id) if field)
+    field_sets = [{item.occurrence_id for item in raw.get(field, ())} for field in required]
+    if not field_sets[0] or any(ids != field_sets[0] for ids in field_sets[1:]):
+        raise ValueError("incomplete native book-event field set")
     rows = _align_occurrence_fields(raw, required)
+    if raw.get(price_id) and {v.occurrence_id for v in raw[price_id]} != field_sets[0]:
+        raise ValueError("partial native price field set")
+    if venue_id is not None and {v.occurrence_id for v in raw.get(venue_id, ())} != field_sets[0]:
+        raise ValueError("incomplete direct venue field set")
     by_price = {item.occurrence_id: item for item in raw.get(price_id, ())}
     by_venue = (
         {} if venue_id is None else {item.occurrence_id: item for item in raw.get(venue_id, ())}
     )
     events: list[BookEventV1] = []
+    source_streams: set[tuple[str, str]] = set()
     for row in rows:
         base = row[position_id]
+        stream = (
+            str(_metadata(base).get("source_provider", "")),
+            str(_metadata(base).get("source_variant", "")),
+        )
+        for field in required:
+            meta = _metadata(row[field])
+            if (
+                str(meta.get("source_provider", "")),
+                str(meta.get("source_variant", "")),
+            ) != stream:
+                raise ValueError("book fields for one occurrence have incompatible sources")
+            if row[field].subject_instrument != base.subject_instrument:
+                raise ValueError("book fields for one occurrence have incompatible subjects")
+        source_streams.add(stream)
         price_item = by_price.get(base.occurrence_id)
         price = _DEC0 if price_item is None else _d(price_item.value)
         venue = (
@@ -606,28 +659,29 @@ def _book_events(
                 _i(_metadata(base).get("ingestion_sequence", 0)),
             )
         )
+    if len(source_streams) != 1:
+        raise ValueError("multiple unmatched book source streams")
     return tuple(events)
 
 
 def _book_final_state(
     events: tuple[BookEventV1, ...],
-) -> dict[tuple[str, str, int], tuple[Decimal, Decimal]]:
+) -> dict[tuple[str, str, int], tuple[Decimal, Decimal]] | None:
     state: dict[tuple[str, str, int], tuple[Decimal, Decimal]] = {}
-    indexed = list(enumerate(events))
-    indexed.sort(
-        key=lambda pair: (
-            pair[1].event_time_utc,
-            pair[1].ingestion_sequence,
-            pair[1].occurrence_id,
-            pair[0],
-        )
-    )
-    for _, event in indexed:
-        key = (event.venue, event.side.lower(), event.position)
-        if event.operation.lower() in {"delete", "remove", "cancel"}:
-            state.pop(key, None)
-        else:
-            state[key] = (event.price, event.size)
+    try:
+        for event in _ordered_book_events(events):
+            _apply_book_event(state, event)
+    except ValueError:
+        return None
+    # No completeness assertion is synthesised from a hole in the observed
+    # provider row indices. Both 0-based and 1-based source positions occur.
+    streams = {(venue, side) for venue, side, _ in state}
+    for venue, side in streams:
+        positions = sorted(k[2] for k in state if k[:2] == (venue, side))
+        if positions[0] not in {0, 1} or positions != list(
+            range(positions[0], positions[0] + len(positions))
+        ):
+            return None
     return state
 
 
@@ -1390,6 +1444,8 @@ def _eval_k02(
         if identity in {"D131", "D134", "D135"}:
             depth_events = _book_events(raw)
             depth_state = _book_final_state(depth_events)
+            if depth_state is None:
+                return None
             depth_side = None if identity == "D131" else ("bid" if identity == "D134" else "ask")
             depth_rows = [
                 (key, value)
@@ -1411,7 +1467,7 @@ def _eval_k02(
                 if type(depth_levels) is not int or depth_levels <= 0:
                     return None
                 depth_rows = sorted(depth_rows, key=lambda item: item[0][2])[:depth_levels]
-            return sum((value[1] for _, value in depth_rows), _DEC0)
+            return sum((value[1] for _, value in depth_rows), _DEC0) if depth_rows else None
         if identity == "D136":
             bid, ask = _d(_scalar(derived, "D134")), _d(_scalar(derived, "D135"))
             den = bid + ask
@@ -1432,6 +1488,8 @@ def _eval_k02(
             if len(direct_events) != len(event_ids[0]):
                 return None
             direct_state = _book_final_state(direct_events)
+            if direct_state is None:
+                return None
             by_venue: dict[str, Decimal] = {}
             for (venue, _, _), (_, size) in direct_state.items():
                 by_venue[venue] = by_venue.get(venue, _DEC0) + abs(size)
@@ -1449,6 +1507,8 @@ def _eval_k02(
                     return None
             smart = _book_final_state(_book_events(raw))
             direct = _book_final_state(_book_events(raw, direct=True))
+            if smart is None or direct is None:
+                return None
             gap_rows: list[tuple[str, tuple[tuple[str, Decimal], ...]]] = []
             for (venue, side, position), (direct_price, direct_size) in sorted(direct.items()):
                 smart_value = smart.get(("", side, position))
@@ -2715,18 +2775,11 @@ def _eval_k08(
                 or recovery_spread_multiple <= 0
             ):
                 return None
-            ordered_events = sorted(
-                resilience_events,
-                key=lambda e: (e.event_time_utc, e.ingestion_sequence, e.occurrence_id),
-            )
+            ordered_events = _ordered_book_events(resilience_events)
             resilience_state: dict[tuple[str, str, int], tuple[Decimal, Decimal]] = {}
             snapshots: list[tuple[datetime, Decimal, Decimal]] = []
             for book_event in ordered_events:
-                book_key = (book_event.venue, book_event.side.lower(), book_event.position)
-                if book_event.operation.lower() in {"delete", "remove", "cancel"}:
-                    resilience_state.pop(book_key, None)
-                else:
-                    resilience_state[book_key] = (book_event.price, book_event.size)
+                _apply_book_event(resilience_state, book_event)
                 bids = sorted(
                     ((k, v) for k, v in resilience_state.items() if k[1] == "bid"),
                     key=lambda item: (item[0][2], -item[1][0]),

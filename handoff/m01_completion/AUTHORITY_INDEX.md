@@ -35,3 +35,12 @@ Preserved review evidence:
 - preserved result: `handoff/m01_completion/review/DS_R01_FOUNDATION_PASS.json`
 
 This PASS establishes the **foundation only**. It does not establish any D001–D209 calculation kernel or whole-M01 completion.
+
+## Explicit D134/D135 dependency exception — Programme Owner, 2026-10-09
+
+The recovered original catalogue SHA-256 above remains historical provenance, **not**
+the current effective catalogue digest. The Programme Owner authorised adding
+R187 (provider operation) to D134 and D135, preserving their remaining fields
+and all calculation mathematics. The effective catalogue digest is
+`8045c8c0c4a62fbc3b88759a65b415efb1f0d549764ddbdcae2c5c911cd8a64a`. The corresponding two source-controlled CSV copies
+and hash-bound runtime loader are synchronised under this narrow exception.

@@ -12,7 +12,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[3]
 OUT=Path(__file__).resolve().parent
 SOURCE=ROOT/"handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv"
-HASH="63bc1b776fc8fa8ba82eb3c9b16916f295c9ec3d480a5a068937c2f25146f5f5"
+HASH="8045c8c0c4a62fbc3b88759a65b415efb1f0d549764ddbdcae2c5c911cd8a64a"
 
 def records(path):
     with path.open(newline="",encoding="utf-8-sig") as f:return list(csv.DictReader(f))
