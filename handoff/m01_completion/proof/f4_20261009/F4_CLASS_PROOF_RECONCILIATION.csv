@@ -1,6 +1,6 @@
 relationship_class,declared_ledger_records,stage1_closed_outstanding_edges,stage1_closed_outstanding_rows,stage2_deferred_edges,status
 RC01,35,32,12,0,UNPROVED
-RC02,29,29,14,0,UNPROVED
+RC02,29,21,10,0,UNPROVED
 RC03,29,29,24,0,UNPROVED
 RC04,17,17,12,0,UNPROVED
 RC05,20,20,5,0,UNPROVED

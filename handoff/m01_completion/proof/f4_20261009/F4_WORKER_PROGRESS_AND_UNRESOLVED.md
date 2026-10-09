@@ -32,3 +32,41 @@ The first unresolved authority invariant is **D134/D135 representation**: accept
 The conservative revised ledger accounts for **35 bounded F4 edges**, **317 still-unproved Stage-1-closed edges**, 18 accepted F2, 11 bounded F3, 107 Stage-2-deferred and the D007 zero-edge public sentinel, totalling the unchanged 488 normative dependencies plus the sentinel. The six D134/D135 raw edges remain **unproved**. Full public proof for 144 closed and kernel/refusal proof for 30 cross-stage remains open.
 
 Focused deliberately failing witness: `F4_RC12_D134_D135_PUBLIC_DEPTH_RED.log`. Combined test run excluding **that failing witness** and separate M00 durability suite: **734 passed** with separate M00/M01 PostgreSQL DSNs (`F4_CURRENT_GIVEN_UNRESOLVED_PUBLIC_TEST_EXCLUDED.log`). Ruff and 21-source-file mypy pass (`F4_CURRENT_RUFF.log`, `F4_CURRENT_MYPY.log`). **The failed witness was not made to pass.** No full-F4 review candidate is offered; stop at programme-owner authority decision.
+
+
+## 10-10-2026 internal RC02 continuation — current count/readback
+
+Programme Owner's 09-10-2026 R187 exception and book repair are now committed,
+resolving the previously documented D134/D135 authority blocker. After
+`db943a7`, independent public M00 tests at
+`tests/product/derived_signal/test_m01_f4_nbbo_algebra_public.py` establish:
+
+- D011 midpoint `(100+102)/2 = 101`, exact R034/R035 lineage;
+- D012 spread `102-100 = 2`, exact R034/R035 lineage;
+- D013 percentage spread `100*2/101 = 200/101`, exact D011/D012 predecessor occurrence
+  references with inherited R034/R035 lineage (no test-injected predecessor);
+- D014 size imbalance `(8-2)/(8+2) = 0.6`, exact R033/R036 lineage;
+- negative missing-field, future and other-subject observation exclusion; repeat
+  materialisation returns the same derived occurrence.
+
+Tests committed at `954889f` before reconciliation changes, with Ruff-only
+format hygiene at `566834e`. Focused: **11 passed**. Combined full non-durability:
+**768 passed**, command:
+`PYTHONPATH=.:src python -m pytest -q tests/product tests/architecture tests/bootstrap tests/implementation/derived_signal --ignore=tests/product/raw_signal/test_u05_postgresql_durability.py`,
+under Python 3.13.5, PostgreSQL 17.9 and distinct `f4_m00`/`f4_m01` writer roles
+with distinct same-named schemas. First run **767 passed, 1 failed** because
+`f4_m00` lacked database-level schema CREATE privilege for a test-created probe;
+this was corrected in the external **test environment**, not production, and the
+whole suite rerun green. See `F4_RC02_FIRST_ROLE_NO_CREATE_FAIL.log` and
+`F4_RC02_M00_M01_POSTGRESQL_COMBINED_REGRESSION.log`. `python -m ruff check
+src tests tools handoff/m01_completion/proof/f4_20261009/f4_progress_readback.py`
+passed; `python -m mypy src` passed (21 files). M00 durability suite not rerun.
+
+The amended effective catalogue digest is
+`8045c8c0c4a62fbc3b88759a65b415efb1f0d549764ddbdcae2c5c911cd8a64a`;
+490 normative edges + D007 zero-edge sentinel reconcile to **272**
+Stage-1-closed outstanding edges across **113** rows. All **30** cross-stage
+own-kernel/refusal obligations remain open. This is bounded RC02 proof only,
+not proof of every RC02 row or full Stage-1 acceptance. Continue F4 without
+new intermediate independent review; preserve single consolidated acceptance
+boundary. No Stage 2 implementation or authority change.

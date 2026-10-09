@@ -21,6 +21,30 @@ OUT = Path(__file__).resolve().parent
 NORMATIVE_SHA256 = "8045c8c0c4a62fbc3b88759a65b415efb1f0d549764ddbdcae2c5c911cd8a64a"
 STAGE1_KERNELS = {f"K{i:02d}" for i in range(1, 9)} | {"K16", "K17"}
 F4_BOUNDED_PUBLIC_ROWS = {
+    "D011": (
+        "RC02",
+        "tests/product/derived_signal/test_m01_f4_nbbo_algebra_public.py",
+        "admitted M00 bid/ask source identities; midpoint 101, exact raw lineage, "
+        "missing/future/different-subject refusal and idempotent retry",
+    ),
+    "D012": (
+        "RC02",
+        "tests/product/derived_signal/test_m01_f4_nbbo_algebra_public.py",
+        "admitted M00 bid/ask source identities; absolute spread 2, exact raw lineage, "
+        "missing-source refusal and idempotent retry",
+    ),
+    "D013": (
+        "RC02",
+        "tests/product/derived_signal/test_m01_f4_nbbo_algebra_public.py",
+        "public recursive D011/D012 predecessor graph; percentage 200/101, "
+        "exact D and inherited raw lineage; missing/future/wrong-subject refusal",
+    ),
+    "D014": (
+        "RC02",
+        "tests/product/derived_signal/test_m01_f4_nbbo_algebra_public.py",
+        "admitted M00 bid/ask size source identities; imbalance 0.6, "
+        "exact raw lineage; missing/future/wrong-subject refusal",
+    ),
     "D131": (
         "RC12",
         "tests/product/derived_signal/test_m01_f4_option_depth_public.py",
@@ -204,8 +228,8 @@ def main() -> None:
         "F2_ACCEPTED_SCOPED_EVIDENCE": 18,
         "F3A_BOUNDED_PUBLIC_PROOF": 4,
         "F3B_BOUNDED_PUBLIC_PROOF": 7,
-        "F4_BOUNDED_PUBLIC_ROW_PROOF": 74,
-        "F4_OUTSTANDING_RELATIONSHIP_PROOF": 280,
+        "F4_BOUNDED_PUBLIC_ROW_PROOF": 82,
+        "F4_OUTSTANDING_RELATIONSHIP_PROOF": 272,
         "STAGE2_BOUNDARY_DEFERRED": 107,
         "F4_ZERO_EDGE_PUBLIC_PROOF": 1,
     }, statuses
@@ -253,7 +277,7 @@ def main() -> None:
     assert len(row_records) == 174
     assert sum(x["stage_boundary"] == "STAGE1_CLOSED" for x in row_records) == 144
     assert sum(x["stage_boundary"] == "CROSS_STAGE" for x in row_records) == 30
-    assert sum(x["outstanding_stage1_closed_edges"] for x in row_records) == 280
+    assert sum(x["outstanding_stage1_closed_edges"] for x in row_records) == 272
     with (OUT / "F4_ROW_EVIDENCE_MATRIX.csv").open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, list(row_records[0]))
         writer.writeheader()
@@ -275,7 +299,7 @@ def main() -> None:
                 "status": "UNPROVED" if missing else "NO_OPEN_STAGE1_EDGES_NOT_CLASS_ACCEPTANCE",
             }
         )
-    assert sum(x["stage1_closed_outstanding_edges"] for x in class_records) == 280
+    assert sum(x["stage1_closed_outstanding_edges"] for x in class_records) == 272
     with (OUT / "F4_CLASS_PROOF_RECONCILIATION.csv").open(
         "w", newline="", encoding="utf-8"
     ) as handle:

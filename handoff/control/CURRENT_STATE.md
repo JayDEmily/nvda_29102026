@@ -2,6 +2,35 @@
 
 ## Status
 
+## 10-10-2026 current F4 continuation — supersedes older F4 blocker/count statements below
+
+**ACTIVE: F4 INTERNAL PROOF; NOT A STAGE-1 CANDIDATE.** The Programme Owner's
+09-10-2026 narrow normative exception adding R187 to D134/D135 and the shared
+positional-book repair are committed in the ancestry. Most recent RC12 book
+public proofs are in the base checkpoint `db943a7`; the inherited blocker is
+resolved, not an active authority stop. The retained original red witness and
+explicit-operation green replay are both in Git. The accepted catalogue digest
+is `8045c8c0c4a62fbc3b88759a65b415efb1f0d549764ddbdcae2c5c911cd8a64a`.
+
+**Further F4 RC02:** New independent public-M00 proofs for D011/D012/D013/D014
+establish exact NBBO arithmetic (101, 2, 200/101, 0.6), raw/predecessor lineage,
+missing/future/wrong-subject refusal and deterministic retry. Eleven focused tests
+pass. Reconciliation readback accounts for 490 normative edges plus D007 sentinel;
+**272 Stage-1-closed dependency proofs remain open across 113 rows** and all
+**30 cross-stage own-kernel/refusal obligations remain open**. No unproved edge
+has been labelled a defect or accepted by inference.
+
+Current post-RC02 rerun: **768 applicable non-durability tests passed** against
+live PostgreSQL 17.9 with distinct M00/M01 test roles; Ruff clean and source
+mypy 21 files clean. The first attempt had one test-environment database CREATE
+privilege failure; corrected role setup and whole-suite rerun are preserved as
+separate logs. The 55 M00 durability tests **have not been rerun in this pass**.
+Source of truth for exact per-edge status:
+`handoff/m01_completion/proof/f4_20261009/F4_PROGRESS_READBACK.json` and the
+associated F4 ledger/matrices. F4 remains in progress; Stage 1 not accepted;
+Stage 2 unauthorised. Older headings/statements below retain historical context
+and must not be read as current routing or counts.
+
 **M01 COMPLETION CONTINUATION — F4 INTERNAL PROOF IN PROGRESS; F2 ACCEPTED, F3 WORKER CHECKPOINT PRESERVED; STAGE 1 NOT ACCEPTED**
 
 The previous foundation-cleanup checkpoint was not the end of M01. Current Programme Owner instruction is to continue and finish M01 before commissioning a later module.
