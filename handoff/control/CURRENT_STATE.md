@@ -2,11 +2,13 @@
 
 ## Status
 
-**M01 COMPLETION CONTINUATION — F2 REVIEW REPAIR; F2a + F2b INTERNAL CHECKPOINTS, ONE CONSOLIDATED F2 REVIEW**
+**M01 COMPLETION CONTINUATION — F4 INTERNAL PROOF IN PROGRESS; F2 ACCEPTED, F3 WORKER CHECKPOINT PRESERVED; STAGE 1 NOT ACCEPTED**
 
 The previous foundation-cleanup checkpoint was not the end of M01. Current Programme Owner instruction is to continue and finish M01 before commissioning a later module.
 
 **09-10-2026 F3 worker checkpoint:** Following independent F2 `F2_ACCEPTED`, F3a D109/D170 exact-contract graph proofs and F3b D121/D122/D124 multi-contract grouping repairs have been committed proof-first, and F3c reconciles 488 F1 edges (plus one zero-edge sentinel) with accepted F2 and bounded F3 evidence. All 720 combined applicable tests and 55 separately batched M00 durability cases pass; static/type/architecture checks pass. **This is F3 worker evidence only, not Stage-1 or F4 acceptance**. Full F4 class/144-row public reachability evidence remains unreconciled. Details: `handoff/m01_completion/proof/f3_20261009/F3_PROOF_AND_F4_BOUNDARY.md`. F4 is next; Stage 2 is unauthorised. Older F2-era statuses below are retained as history and superseded by this paragraph for current F3 routing.
+
+**09-10-2026 F4 INTERNAL WORKER CHECKPOINT (most recent):** After the F3 `36105f0` proof checkpoint, F4 public M00→M01 witnesses established D145 four-field OFI event reconstruction and D151 component-specific basket breadth, with proof-before-production repair for D145 incomplete-event refusal. Combined regression: 725 passed with separate PostgreSQL M00/M01 role connections; Ruff, mypy and structural validation passed. The exact F1/F3 relationship readback now records 8 bounded F4 edges and **344 Stage-1-closed edges still awaiting edge-specific F4 proof**. Full 144-row public reachability and 30 cross-stage own-kernel/refusal evidence are **not yet established**. This is **not** a Stage-1 review candidate; F4 continues internally without an intermediate reviewer round-trip. See `handoff/m01_completion/proof/f4_20261009/F4_WORKER_PROGRESS_AND_UNRESOLVED.md`. The earlier F3/F2 statuses below remain historical evidence.
 
 ## Repository boundary
 
