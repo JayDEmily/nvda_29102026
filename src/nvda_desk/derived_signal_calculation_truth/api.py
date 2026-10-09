@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import re
 from collections.abc import Callable
 from dataclasses import dataclass, replace
 from datetime import UTC, date, datetime, timedelta
@@ -1188,6 +1189,8 @@ class _OwnerV1:
         request: CalculationRequestV1,
         raw_signal_id: str,
         selection: InputSelectionPolicyVersionV1,
+        *,
+        allow_absence: bool = False,
     ) -> (
         tuple[tuple[KernelValueV1, ...], tuple[RawInputLineageV1, ...], tuple[VersionRefV1, ...]]
         | None
@@ -1359,7 +1362,9 @@ class _OwnerV1:
             temporal_basis_permissions=selection.temporal_basis_permissions,
         )
         if not eligible:
-            return None
+            # D007 deliberately measures absence under an explicit policy;
+            # other calculations never turn missing inputs into a zero result.
+            return ((), (), tuple(convention_refs)) if allow_absence else None
         for subject in {item.subject_instrument for item in eligible}:
             latest = max(
                 (item for item in eligible if item.subject_instrument == subject),
@@ -1371,7 +1376,7 @@ class _OwnerV1:
                 else latest.received_ts_utc
             )
             if request.as_of_utc - basis > selection.maximum_staleness:
-                return None
+                return ((), (), tuple(convention_refs)) if allow_absence else None
         eligible_ids = {item.occurrence_id for item in eligible}
         selected_lineage = tuple(
             item for item in lineage if item.observation_occurrence_id in eligible_ids
@@ -1977,8 +1982,23 @@ class _OwnerV1:
         raw_inputs: dict[str, tuple[KernelValueV1, ...]] = {}
         direct_lineage: list[RawInputLineageV1] = []
         convention_refs: list[VersionRefV1] = []
-        for raw_signal_id in row.raw_dependencies:
-            loaded = self._raw_values(request, raw_signal_id, selection)
+        raw_ids = row.raw_dependencies
+        if derived_signal_id == "D007":
+            # D007's zero-edge catalogue binding is intentional: its immutable
+            # RequiredFieldPolicy supplies the *runtime* completeness criteria.
+            # These are M00 field-level presence probes, not new static D007
+            # dependencies. Each must have an explicit public projection and
+            # unit-convention binding, including when the fact is absent.
+            required = [ctx for ctx in contexts if type(ctx) is RequiredFieldPolicyV1]
+            if len(required) != 1:
+                return None
+            raw_ids = required[0].requirements
+            if any(not re.fullmatch(r"R\d{3}", rid) for rid in raw_ids):
+                return None
+        for raw_signal_id in raw_ids:
+            loaded = self._raw_values(
+                request, raw_signal_id, selection, allow_absence=derived_signal_id == "D007"
+            )
             if loaded is None:
                 return None
             values, lineage, conventions = loaded

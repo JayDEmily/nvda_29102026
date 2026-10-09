@@ -7,6 +7,7 @@ as a passing proof or weaken the expected 2/3 result to 0.
 
 from __future__ import annotations
 
+from dataclasses import replace
 from datetime import UTC, datetime, timedelta
 from decimal import Decimal
 
@@ -17,7 +18,7 @@ AT = datetime(2026, 10, 9, 9, 30, tzinfo=UTC)
 RAW_IDS = ("R001", "R002", "R003")
 
 
-def test_d007_public_required_field_completeness_counts_present_and_absent() -> None:
+def _public_completeness() -> tuple[api.DerivedSignalCalculationOwnerV1, api.CalculationRequestV1]:
     m00 = raw.create_owner()
     m00.commands.admit_raw_observation_occurrence(
         raw.RawObservationOccurrenceV1(
@@ -105,6 +106,11 @@ def test_d007_public_required_field_completeness_counts_present_and_absent() -> 
             for rid in RAW_IDS
         ),
     )
+    return owner, request
+
+
+def test_d007_public_required_field_completeness_counts_present_and_absent() -> None:
+    owner, request = _public_completeness()
     result = owner.materialise(request)
     assert result is not None
     assert result.result == Decimal(2) / Decimal(3)
@@ -114,3 +120,32 @@ def test_d007_public_required_field_completeness_counts_present_and_absent() -> 
         ("R001", "f4-completeness"),
         ("R003", "f4-completeness"),
     }
+
+
+def test_d007_public_refuses_missing_or_incompatible_mappings() -> None:
+    owner, request = _public_completeness()
+    # Missing R002 is a counted field absence, but missing its field-level
+    # projection mapping is a mandatory unknown and cannot be counted as zero.
+    assert (
+        owner.materialise(replace(request, raw_input_bindings=request.raw_input_bindings[:2]))
+        is None
+    )
+    altered = tuple(
+        replace(binding, projection_mapping_ref=api.VersionRefV1("unverified", 1))
+        if binding.raw_signal_id == "R002"
+        else binding
+        for binding in request.raw_input_bindings
+    )
+    assert owner.materialise(replace(request, raw_input_bindings=altered)) is None
+    assert owner.materialise(replace(request, input_selection_policy_version=2)) is None
+
+
+def test_d007_public_does_not_read_future_fields_for_earlier_cutoff() -> None:
+    owner, request = _public_completeness()
+    earlier = replace(
+        request, as_of_utc=AT - timedelta(seconds=1), knowledge_cutoff_utc=AT - timedelta(seconds=1)
+    )
+    result = owner.materialise(earlier)
+    assert result is not None
+    assert result.result == Decimal(0)
+    assert not result.raw_input_lineage
