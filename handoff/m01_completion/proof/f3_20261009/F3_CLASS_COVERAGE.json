@@ -33,8 +33,7 @@
       "F3A_BOUNDED_PUBLIC_PROOF": 4
     },
     "RC11": {
-      "F3B_BOUNDED_PUBLIC_PROOF": 5,
-      "F4_OUTSTANDING_RELATIONSHIP_PROOF": 2,
+      "F3B_BOUNDED_PUBLIC_PROOF": 7,
       "STAGE2_BOUNDARY_DEFERRED": 2
     },
     "RC12": {
@@ -76,15 +75,15 @@
   "f1_zero_edge_sentinel": 1,
   "f2_accepted_scoped_edges": 18,
   "f3_a_contract_edges": 4,
-  "f3_b_grouped_edges": 5,
+  "f3_b_grouped_edges": 7,
   "stage1_closed_rows": 144,
   "stage1_rows": 174,
   "stage2_deferred_rows": 30,
   "statuses": {
     "F2_ACCEPTED_SCOPED_EVIDENCE": 18,
     "F3A_BOUNDED_PUBLIC_PROOF": 4,
-    "F3B_BOUNDED_PUBLIC_PROOF": 5,
-    "F4_OUTSTANDING_RELATIONSHIP_PROOF": 354,
+    "F3B_BOUNDED_PUBLIC_PROOF": 7,
+    "F4_OUTSTANDING_RELATIONSHIP_PROOF": 352,
     "STAGE2_BOUNDARY_DEFERRED": 107,
     "ZERO_EDGE_SENTINEL_NO_DEPENDENCY": 1
   }

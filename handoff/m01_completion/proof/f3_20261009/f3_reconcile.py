@@ -43,8 +43,16 @@ for r in f2:
     )
 
 f3a = {"D109:D:01", "D109:D:02", "D170:R:01", "D170:D:01"}
-f3b = {"D091:R:01", "D121:D:01", "D121:D:02", "D122:D:01", "D122:D:02"}
-assert len(f3a | f3b) == 9 and not ((f3a | f3b) & f2_keys)
+f3b = {
+    "D091:R:01",
+    "D121:D:01",
+    "D121:D:02",
+    "D122:D:01",
+    "D122:D:02",
+    "D124:R:01",
+    "D124:R:02",
+}
+assert len(f3a | f3b) == 11 and not ((f3a | f3b) & f2_keys)
 for i in f3a:
     assert actual[i]["relationship_class"] == "RC10"
 for i in f3b:
@@ -79,8 +87,10 @@ with OUT.open("w", newline="", encoding="utf-8") as f:
         elif eid in f3b:
             status = "F3B_BOUNDED_PUBLIC_PROOF"
             evidence = (
-                "test_m01_f3_grouped_public.py (16 focused tests); D121/D122 grouping "
-                "and D091 delta across multiple contracts"
+                "test_m01_f3_open_interest_public.py (4 tests); D124 strike-expiry OI/HHI"
+                if a["derived_id"] == "D124"
+                else "test_m01_f3_grouped_public.py (16 tests); "
+                "D121/D122 and D091 multi-contract grouping"
             )
         elif eid in f2_keys:
             status = "F2_ACCEPTED_SCOPED_EVIDENCE"
@@ -116,7 +126,7 @@ with OUT.open("w", newline="", encoding="utf-8") as f:
         )
 assert sum(summary.values()) == 489
 assert summary["F3A_BOUNDED_PUBLIC_PROOF"] == 4
-assert summary["F3B_BOUNDED_PUBLIC_PROOF"] == 5
+assert summary["F3B_BOUNDED_PUBLIC_PROOF"] == 7
 assert summary["F2_ACCEPTED_SCOPED_EVIDENCE"] == 18
 assert summary["ZERO_EDGE_SENTINEL_NO_DEPENDENCY"] == 1
 assert len(classes) == 21
@@ -128,11 +138,11 @@ result = {
     "stage2_deferred_rows": 30,
     "f2_accepted_scoped_edges": 18,
     "f3_a_contract_edges": 4,
-    "f3_b_grouped_edges": 5,
+    "f3_b_grouped_edges": 7,
     "statuses": dict(sorted(summary.items())),
     "classes": {key: dict(sorted(value.items())) for key, value in sorted(classes.items())},
     "boundary": "Evidence accounting is not proof of all edges; remaining F4 obligations explicit",
 }
 CLASSES_OUT.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-print("F3c PASS: F1 488 edges + 1 sentinel, F2 18, F3a 4, F3b 5, no overlaps, 21 classes")
+print("F3c PASS: F1 488 edges + 1 sentinel, F2 18, F3a 4, F3b 7, no overlaps, 21 classes")
 print("F3c remaining:", dict(sorted(summary.items())))

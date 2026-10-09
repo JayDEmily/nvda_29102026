@@ -190,7 +190,7 @@ D089:R:01,D089,R,R014,RC14,STAGE1_CLOSED,F4_OUTSTANDING_RELATIONSHIP_PROOF,Unrec
 D089:R:02,D089,R,R118,RC14,STAGE1_CLOSED,F4_OUTSTANDING_RELATIONSHIP_PROOF,Unreconciled at F3; prior kernel tests alone do not establish this exact public join
 D090:R:01,D090,R,R014,RC14,STAGE1_CLOSED,F4_OUTSTANDING_RELATIONSHIP_PROOF,Unreconciled at F3; prior kernel tests alone do not establish this exact public join
 D090:R:02,D090,R,R118,RC14,STAGE1_CLOSED,F4_OUTSTANDING_RELATIONSHIP_PROOF,Unreconciled at F3; prior kernel tests alone do not establish this exact public join
-D091:R:01,D091,R,R112,RC11,STAGE1_CLOSED,F3B_BOUNDED_PUBLIC_PROOF,test_m01_f3_grouped_public.py (16 focused tests); D121/D122 grouping and D091 delta across multiple contracts
+D091:R:01,D091,R,R112,RC11,STAGE1_CLOSED,F3B_BOUNDED_PUBLIC_PROOF,test_m01_f3_grouped_public.py (16 tests); D121/D122 and D091 multi-contract grouping
 D092:R:01,D092,R,R084,RC14,STAGE1_CLOSED,F4_OUTSTANDING_RELATIONSHIP_PROOF,Unreconciled at F3; prior kernel tests alone do not establish this exact public join
 D092:R:02,D092,R,R093,RC14,STAGE1_CLOSED,F4_OUTSTANDING_RELATIONSHIP_PROOF,Unreconciled at F3; prior kernel tests alone do not establish this exact public join
 D093:R:01,D093,R,R084,RC14,STAGE1_CLOSED,F4_OUTSTANDING_RELATIONSHIP_PROOF,Unreconciled at F3; prior kernel tests alone do not establish this exact public join
@@ -235,14 +235,14 @@ D120:R:03,D120,R,R126,RC08,STAGE1_CLOSED,F2_ACCEPTED_SCOPED_EVIDENCE,F2_EDGE_REC
 D120:R:04,D120,R,R127,RC08,STAGE1_CLOSED,F2_ACCEPTED_SCOPED_EVIDENCE,F2_EDGE_RECONCILIATION.csv; reviewer F2_ACCEPTED; other class edges still require proof
 D120:R:05,D120,R,R015,RC08,STAGE1_CLOSED,F2_ACCEPTED_SCOPED_EVIDENCE,F2_EDGE_RECONCILIATION.csv; reviewer F2_ACCEPTED; other class edges still require proof
 D120:D:01,D120,D,D015,RC08,STAGE1_CLOSED,F2_ACCEPTED_SCOPED_EVIDENCE,F2_EDGE_RECONCILIATION.csv; reviewer F2_ACCEPTED; other class edges still require proof
-D121:D:01,D121,D,D120,RC11,STAGE1_CLOSED,F3B_BOUNDED_PUBLIC_PROOF,test_m01_f3_grouped_public.py (16 focused tests); D121/D122 grouping and D091 delta across multiple contracts
-D121:D:02,D121,D,D091,RC11,STAGE1_CLOSED,F3B_BOUNDED_PUBLIC_PROOF,test_m01_f3_grouped_public.py (16 focused tests); D121/D122 grouping and D091 delta across multiple contracts
-D122:D:01,D122,D,D120,RC11,STAGE1_CLOSED,F3B_BOUNDED_PUBLIC_PROOF,test_m01_f3_grouped_public.py (16 focused tests); D121/D122 grouping and D091 delta across multiple contracts
-D122:D:02,D122,D,D085,RC11,STAGE1_CLOSED,F3B_BOUNDED_PUBLIC_PROOF,test_m01_f3_grouped_public.py (16 focused tests); D121/D122 grouping and D091 delta across multiple contracts
+D121:D:01,D121,D,D120,RC11,STAGE1_CLOSED,F3B_BOUNDED_PUBLIC_PROOF,test_m01_f3_grouped_public.py (16 tests); D121/D122 and D091 multi-contract grouping
+D121:D:02,D121,D,D091,RC11,STAGE1_CLOSED,F3B_BOUNDED_PUBLIC_PROOF,test_m01_f3_grouped_public.py (16 tests); D121/D122 and D091 multi-contract grouping
+D122:D:01,D122,D,D120,RC11,STAGE1_CLOSED,F3B_BOUNDED_PUBLIC_PROOF,test_m01_f3_grouped_public.py (16 tests); D121/D122 and D091 multi-contract grouping
+D122:D:02,D122,D,D085,RC11,STAGE1_CLOSED,F3B_BOUNDED_PUBLIC_PROOF,test_m01_f3_grouped_public.py (16 tests); D121/D122 and D091 multi-contract grouping
 D123:R:01,D123,R,R047,RC02,STAGE1_CLOSED,F4_OUTSTANDING_RELATIONSHIP_PROOF,Unreconciled at F3; prior kernel tests alone do not establish this exact public join
 D123:R:02,D123,R,R048,RC02,STAGE1_CLOSED,F4_OUTSTANDING_RELATIONSHIP_PROOF,Unreconciled at F3; prior kernel tests alone do not establish this exact public join
-D124:R:01,D124,R,R047,RC11,STAGE1_CLOSED,F4_OUTSTANDING_RELATIONSHIP_PROOF,Unreconciled at F3; prior kernel tests alone do not establish this exact public join
-D124:R:02,D124,R,R048,RC11,STAGE1_CLOSED,F4_OUTSTANDING_RELATIONSHIP_PROOF,Unreconciled at F3; prior kernel tests alone do not establish this exact public join
+D124:R:01,D124,R,R047,RC11,STAGE1_CLOSED,F3B_BOUNDED_PUBLIC_PROOF,test_m01_f3_open_interest_public.py (4 tests); D124 strike-expiry OI/HHI
+D124:R:02,D124,R,R048,RC11,STAGE1_CLOSED,F3B_BOUNDED_PUBLIC_PROOF,test_m01_f3_open_interest_public.py (4 tests); D124 strike-expiry OI/HHI
 D128:D:01,D128,D,D125,RC11,CROSS_STAGE_DIRECT,STAGE2_BOUNDARY_DEFERRED,ExecPlan 144 closed/30 cross-stage rows; own Stage1 kernel proof still required at F4
 D128:D:02,D128,D,D089,RC11,CROSS_STAGE_DIRECT,STAGE2_BOUNDARY_DEFERRED,ExecPlan 144 closed/30 cross-stage rows; own Stage1 kernel proof still required at F4
 D131:R:01,D131,R,R185,RC12,STAGE1_CLOSED,F4_OUTSTANDING_RELATIONSHIP_PROOF,Unreconciled at F3; prior kernel tests alone do not establish this exact public join
