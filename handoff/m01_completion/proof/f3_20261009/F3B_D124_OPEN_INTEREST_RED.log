@@ -1,0 +1,127 @@
+FFFF                                                                     [100%]
+=================================== FAILURES ===================================
+___ test_d124_public_groups_call_put_same_strike_and_proves_hhi_and_lineage ____
+
+    def test_d124_public_groups_call_put_same_strike_and_proves_hhi_and_lineage() -> None:
+        owner, request = public_concentration()
+        result = owner.materialise(request)
+        assert result is not None
+        fields = dict(result.result)
+>       assert fields["hhi"] == Decimal(37) / Decimal(72)
+E       AssertionError: assert Decimal('0.4305555555555555555555555555') == (Decimal('37') / Decimal('72'))
+E        +  where Decimal('37') = Decimal(37)
+E        +  and   Decimal('72') = Decimal(72)
+
+tests/product/derived_signal/test_m01_f3_open_interest_public.py:146: AssertionError
+_____ test_d124_public_refuses_invalid_contract_grouping[missing_identity] _____
+
+variation = 'missing_identity'
+
+    @pytest.mark.parametrize("variation", ["missing_identity", "duplicate_call", "negative_oi"])
+    def test_d124_public_refuses_invalid_contract_grouping(variation: str) -> None:
+        owner, request = public_concentration(**{variation: True})
+>       assert owner.materialise(request) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D124', derived_occurrence_id='d124-bc476c131ccb4eeb05fdf2e037aefcddfd4fd4...on_identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),)), supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(derived_signal_id='D124', derived_occurrence_id='d124-bc476c131ccb4eeb05fdf2e037aefcddfd4fd4...on_identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),)), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D124', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 8, 3, ...expiry', '2026-12-18'), ('strike', Decimal('105')), ('option_right', 'call'))))), predecessor_selection_policy_refs=()))
+E        +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7f11e9439700>.materialise
+
+tests/product/derived_signal/test_m01_f3_open_interest_public.py:161: AssertionError
+______ test_d124_public_refuses_invalid_contract_grouping[duplicate_call] ______
+
+variation = 'duplicate_call'
+
+    @pytest.mark.parametrize("variation", ["missing_identity", "duplicate_call", "negative_oi"])
+    def test_d124_public_refuses_invalid_contract_grouping(variation: str) -> None:
+>       owner, request = public_concentration(**{variation: True})
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/derived_signal/test_m01_f3_open_interest_public.py:160: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/derived_signal/test_m01_f3_open_interest_public.py:124: in public_concentration
+    request = api.CalculationRequestV1(
+<string>:16: in __init__
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = CalculationRequestV1(derived_signal_id='D124', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 8, 3, ...expiry', '2026-12-18'), ('strike', Decimal('100')), ('option_right', 'call'))))), predecessor_selection_policy_refs=())
+
+    def __post_init__(self) -> None:
+        _require_derived_signal_id(self.derived_signal_id)
+        _require_non_empty_string(self.subject_instrument, "subject_instrument")
+        _require_utc(self.as_of_utc, "as_of_utc")
+        _require_utc(self.knowledge_cutoff_utc, "knowledge_cutoff_utc")
+        _require_non_empty_string(
+            self.calculation_definition_version, "calculation_definition_version"
+        )
+        _require_non_empty_string(self.parameter_set_id, "parameter_set_id")
+        _require_positive_version(self.parameter_set_version, "parameter_set_version")
+        _require_non_empty_string(self.input_selection_policy_id, "input_selection_policy_id")
+        _require_positive_version(
+            self.input_selection_policy_version, "input_selection_policy_version"
+        )
+        _require_version_refs(self.context_refs, "context_refs")
+        _require_tuple(self.parameter_profile_refs, "parameter_profile_refs")
+        for item in self.parameter_profile_refs:
+            if type(item) is not ParameterProfileRefV1:
+                raise TypeError(
+                    "parameter_profile_refs must contain exact ParameterProfileRefV1 values"
+                )
+        profiles = tuple(item.profile for item in self.parameter_profile_refs)
+        if len(profiles) != len(set(profiles)):
+            raise ValueError("parameter_profile_refs must contain distinct profiles")
+        _require_tuple(self.predecessor_selection_policy_refs, "predecessor_selection_policy_refs")
+        scoped_ids: list[str] = []
+        for scoped_ref in self.predecessor_selection_policy_refs:
+            if type(scoped_ref) is not tuple or len(scoped_ref) != 2:
+                raise TypeError("predecessor_selection_policy_refs require (Dxxx, VersionRefV1)")
+            predecessor_id, selection_ref = scoped_ref
+            _require_derived_signal_id(predecessor_id)
+            if type(selection_ref) is not VersionRefV1:
+                raise TypeError("predecessor selection must reference an immutable policy version")
+            scoped_ids.append(predecessor_id)
+        if len(scoped_ids) != len(set(scoped_ids)):
+            raise ValueError("predecessor selection references must be distinct by D identity")
+        _require_tuple(self.raw_input_bindings, "raw_input_bindings")
+        for binding_item in self.raw_input_bindings:
+            if type(binding_item) is not RawInputBindingV1:
+                raise TypeError("raw_input_bindings must contain exact RawInputBindingV1 values")
+        binding_keys = tuple(
+            (
+                item.raw_signal_id,
+                item.subject_instrument,
+                None if item.selection_identity is None else item.selection_identity.values,
+            )
+            for item in self.raw_input_bindings
+        )
+        if len(binding_keys) != len(set(binding_keys)):
+>           raise ValueError(
+                "raw_input_bindings must contain distinct raw-signal/subject/selection identities"
+            )
+E           ValueError: raw_input_bindings must contain distinct raw-signal/subject/selection identities
+
+src/nvda_desk/derived_signal_calculation_truth/api.py:857: ValueError
+_______ test_d124_public_refuses_invalid_contract_grouping[negative_oi] ________
+
+variation = 'negative_oi'
+
+    @pytest.mark.parametrize("variation", ["missing_identity", "duplicate_call", "negative_oi"])
+    def test_d124_public_refuses_invalid_contract_grouping(variation: str) -> None:
+        owner, request = public_concentration(**{variation: True})
+>       assert owner.materialise(request) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D124', derived_occurrence_id='d124-bc476c131ccb4eeb05fdf2e037aefcddfd4fd4...on_identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),)), supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(derived_signal_id='D124', derived_occurrence_id='d124-bc476c131ccb4eeb05fdf2e037aefcddfd4fd4...on_identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),)), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D124', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 8, 3, ...expiry', '2026-12-18'), ('strike', Decimal('105')), ('option_right', 'call'))))), predecessor_selection_policy_refs=()))
+E        +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7f11e8bf2650>.materialise
+
+tests/product/derived_signal/test_m01_f3_open_interest_public.py:161: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/derived_signal/test_m01_f3_open_interest_public.py::test_d124_public_groups_call_put_same_strike_and_proves_hhi_and_lineage - AssertionError: assert Decimal('0.4305555555555555555555555555') == (Decimal('37') / Decimal('72'))
+ +  where Decimal('37') = Decimal(37)
+ +  and   Decimal('72') = Decimal(72)
+FAILED tests/product/derived_signal/test_m01_f3_open_interest_public.py::test_d124_public_refuses_invalid_contract_grouping[missing_identity] - AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D124', derived_occurrence_id='d124-bc476c131ccb4eeb05fdf2e037aefcddfd4fd4...on_identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),)), supersedes_derived_occurrence_id=None) is None
+ +  where DerivedSignalOccurrenceV1(derived_signal_id='D124', derived_occurrence_id='d124-bc476c131ccb4eeb05fdf2e037aefcddfd4fd4...on_identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),)), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D124', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 8, 3, ...expiry', '2026-12-18'), ('strike', Decimal('105')), ('option_right', 'call'))))), predecessor_selection_policy_refs=()))
+ +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7f11e9439700>.materialise
+FAILED tests/product/derived_signal/test_m01_f3_open_interest_public.py::test_d124_public_refuses_invalid_contract_grouping[duplicate_call] - ValueError: raw_input_bindings must contain distinct raw-signal/subject/selection identities
+FAILED tests/product/derived_signal/test_m01_f3_open_interest_public.py::test_d124_public_refuses_invalid_contract_grouping[negative_oi] - AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D124', derived_occurrence_id='d124-bc476c131ccb4eeb05fdf2e037aefcddfd4fd4...on_identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),)), supersedes_derived_occurrence_id=None) is None
+ +  where DerivedSignalOccurrenceV1(derived_signal_id='D124', derived_occurrence_id='d124-bc476c131ccb4eeb05fdf2e037aefcddfd4fd4...on_identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),)), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D124', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 8, 3, ...expiry', '2026-12-18'), ('strike', Decimal('105')), ('option_right', 'call'))))), predecessor_selection_policy_refs=()))
+ +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7f11e8bf2650>.materialise
+4 failed in 0.14s
