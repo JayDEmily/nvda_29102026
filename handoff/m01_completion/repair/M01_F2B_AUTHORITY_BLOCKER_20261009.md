@@ -1,3 +1,6 @@
+> **SUPERSEDED AS A WORKER STOP — 09-10-2026, programme-owner 14:13 clarification.**
+> The earlier absence of verified provider-native event-ID source data is no longer an F2b blocker for **provider-independent** M01 calculation. Controlled versioned events through the actual admitted M00 projection are expressly authorised. The previous field-search evidence and historical blocker are preserved below as a record, **not** as active work authority. Real-provider field identity, stability and integration remain `UNVERIFIED`. Current F2b calculation evidence: `../proof/f2b_provider_independent_20261009/F2_PROVIDER_INDEPENDENT_PROOF.md`.
+
 # M01 F2b — BLOCKED on event-to-score identity authority
 
 ## Decision and scope

@@ -1,0 +1,1 @@
+FIRST DURABILITY RUN WITH INCORRECT DSN: 12 passed, 3 failed due undefined tables; test _admin_dsn targets database postgres. Source test and source code unmodified.

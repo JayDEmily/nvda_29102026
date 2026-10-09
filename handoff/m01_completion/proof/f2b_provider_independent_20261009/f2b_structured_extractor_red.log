@@ -1,0 +1,37 @@
+.................F                                                       [100%]
+=================================== FAILURES ===================================
+_______ test_d064_uses_explicit_component_coefficients_from_native_r289 ________
+
+    def test_d064_uses_explicit_component_coefficients_from_native_r289() -> None:
+        feature = replace(
+            _feature(),
+            extractor="weighted_component_sum",
+            extractor_arguments=(
+                "impact",
+                Decimal("0.7"),
+                "historical_sensitivity",
+                Decimal("0.3"),
+            ),
+        )
+        native_fields = {"impact": Decimal("0.6"), "historical_sensitivity": Decimal("0.4")}
+        owner, request, _ = _fixture(
+            (_base()[0], _obs("R289", EVENT, -20, "structured-importance", native_fields)),
+            importance_feature=feature,
+        )
+        score_request = replace(
+            request,
+            derived_signal_id="D064",
+            parameter_set_id="score-event",
+            input_selection_policy_id="one-event",
+            raw_input_bindings=(
+                replace(request.raw_input_bindings[1], selection_identity=_identity(EVENT)),
+            ),
+        )
+        score = owner.materialise(score_request)
+>       assert score is not None and score.result == Decimal("0.64")
+E       assert (None is not None)
+
+tests/product/derived_signal/test_m01_f2b_event_public.py:476: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/derived_signal/test_m01_f2b_event_public.py::test_d064_uses_explicit_component_coefficients_from_native_r289 - assert (None is not None)
+1 failed, 17 passed in 0.15s

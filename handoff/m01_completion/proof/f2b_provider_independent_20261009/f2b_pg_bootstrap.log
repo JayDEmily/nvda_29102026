@@ -1,0 +1,8 @@
+postgres_user=oai uid=1000
+postgres_version=17.9
+server_encoding=UTF8
+fsync=on
+synchronous_commit=on
+full_page_writes=on
+listen_addresses=<empty>
+NVDA_TEST_POSTGRES_DSN=host=/mnt/data/f2b_pg_runtime/pgsocket port=55432 dbname=postgres user=oai
