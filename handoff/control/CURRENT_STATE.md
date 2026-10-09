@@ -2,6 +2,30 @@
 
 ## Status
 
+## 10-10-2026 F4 RC01 temporal and RC02 VWAP gap public proofs — latest
+
+**F4 remains internally in progress, not an acceptance submission.** The public
+M00→M01 graph proof for D018 establishes exact recursively constructed D017
+VWAP against independent provider VWAP, exact numeric difference/bps, lineage,
+and missing/ineligible-input refusal (proof commit `ff1bb57`). D001–D005
+independent temporal public proofs use true provider-native instants, session
+boundary and source kinds. They exposed a D002 public graph failure for a
+lawful `receipt_only` observation (`97857be` failing proof). The bounded repair
+at `d5c34df` uses actual selected M00 R002 source kind: true-instants still
+require D001, while receipt-only age uses M00 received time with no fabricated
+D001; date-only refuses seconds-valued age. The governing catalogue and M00
+source ownership were unchanged.
+
+Applicable combined PostgreSQL 17.9 non-durability regression: **809 passed**;
+Ruff and source mypy (21 files) passed. Full-Git checkpoint and exact current
+commit are recorded in Git, with commands and logs in
+`handoff/m01_completion/proof/f4_20261009/`. Current catalogue remains
+**490 authoritative edges + D007 sentinel**; **240 Stage-1-closed edge
+obligations across 99 rows** remain unproved, as do the **30 cross-stage
+own-kernel/public-refusal obligations**. These are evidence obligations, not
+presumptively production defects. Stage 1 not accepted; Stage 2 unauthorised.
+The earlier 255/272 counts below are preserved historical checkpoints.
+
 ## 10-10-2026 F4 RC02 expanded continuation — latest proof inventory
 
 **Internal checkpoint only:** A further eight RC02 raw-scalar rows have been

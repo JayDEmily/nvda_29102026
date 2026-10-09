@@ -96,3 +96,29 @@ outstanding Stage-1-closed edges across 105 rows, 107 deferred Stage-2
 edges, 18 accepted F2 scoped evidence, 11 bounded F3 edges, and one D007
 zero-edge sentinel. 30 cross-stage own-kernel/refusal obligations remain
 unproved. Stage 1 remains unaccepted; this is an internal proof checkpoint.
+
+
+## 10-10-2026 RC02 provider VWAP gap and RC01 temporal repair (internal)
+
+- `ff1bb57`: D018 public calculation with real M00 native trade-pair inputs,
+  D017 recursive VWAP 4.8, provider VWAP 5, D018 result difference 0.2 and
+  bps 10000*0.2/4.8; exact native/derived lineage and negative evidence.
+- `97857be`: RC01 native M00 public D001–D005 temporal tests committed **red**:
+  12 passed, receipt-only D002 failed because public graph demanded a
+  nonexistent D001 even though accepted K01 age rule permits receipt age.
+- `d5c34df`: bounded production graph repair passes all 13 RC01 temporal
+  tests, including true-instant D001 and D002, date-only refusal, receipt-only
+  D002 with collector basis and no invented D001, configured exchange date and
+  overnight session phase, missing/future refusal and exact raw lineage.
+  D002's **catalogue** D001 dependency was not removed.
+- Combined readback:
+  `F4_RC01_D002_D018_COMBINED_REGRESSION.log`: **809 passed** in separate
+  PostgreSQL 17.9 M00/M01 roles, excluding the separately scoped 55-case M00
+  durability suite. Ruff and 21-file source mypy passed:
+  `F4_RC01_D002_D018_RUFF.log`, `F4_RC01_D002_D018_MYPY.log`.
+- Current F4 reconciliation enumerates **490 authority edges** and the D007
+  sentinel; **240 Stage-1-closed relationship edges across 99 rows remain**
+  unproved, alongside **30 unproved cross-stage kernel/public-refusal rows**.
+  No row is accepted merely because class-level or per-edge accounting exists.
+  Do not submit Stage 1 for review yet. M00 provider/live compatibility and
+  Stage-2 functionality remain outside this proof.
