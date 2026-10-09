@@ -1,6 +1,7 @@
 {
   "authority_catalogue_sha256": "8045c8c0c4a62fbc3b88759a65b415efb1f0d549764ddbdcae2c5c911cd8a64a",
   "boundary": "Bounded row proofs do not prove all 144 Stage-1-closed rows or 30 cross-stage rows; F4 outstanding edge classes and public reachability remain unproved",
+  "cross_stage_kernel_and_refusal_rows_unproved": 30,
   "cross_stage_rows": 30,
   "depth_snapshot_vs_event_reconstruction_authority": "AUTHORISATION_RESOLVED_EVENT_DRIVEN",
   "f4_dispositions": {
@@ -31,6 +32,7 @@
   "prior_f3_ledger_sha256": "67f354ca64946963e3ddd0acde632bc6a507a190f20547c5150d0698a128dd23",
   "repaired_event_witness": "explicit R187 operation; D134=10, D135=7, D136=3/17",
   "stage1_closed_rows": 144,
+  "stage1_closed_rows_with_outstanding_edges": 122,
   "stage1_f4_candidate_ready": false,
   "stage1_independent_acceptance": false,
   "stage1_rows": 174,

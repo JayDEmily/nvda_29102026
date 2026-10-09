@@ -24,7 +24,8 @@ F4_BOUNDED_PUBLIC_ROWS = {
     "D134": (
         "RC12",
         "tests/product/derived_signal/test_m01_f4_positional_book_class.py",
-        "M00 position-shifting operation reconstruction; top-two bid 17; missing operation refusal and exact lineage",
+        "M00 position-shifting operation reconstruction; top-two bid 17; "
+        "missing operation refusal and exact lineage",
     ),
     "D135": (
         "RC12",
@@ -56,12 +57,14 @@ F4_BOUNDED_PUBLIC_ROWS = {
     "D143": (
         "RC12",
         "tests/product/derived_signal/test_m01_f4_direct_book_public.py",
-        "controlled M00 direct venue concentration; missing native venue refusal",
+        "controlled M00 direct venue concentration; missing venue refusal; "
+        "independent venue insertion shifting, update and delete",
     ),
     "D144": (
         "RC12",
         "tests/product/derived_signal/test_m01_f4_direct_book_public.py",
-        "controlled M00 SMART/direct matched-book divergence; incomplete event refusal",
+        "controlled M00 SMART/direct matched-book divergence; incomplete event refusal; "
+        "independent SMART and direct insertion shifting and delete",
     ),
     "D151": (
         "RC13",
@@ -123,12 +126,16 @@ def main() -> None:
             assert key in {("D134", "R", "R187"), ("D135", "R", "R187")}, key
             added.append(key)
             item = {
-                "f1_edge_id": edge["edge_id"], "derived_row": edge["derived_id"],
-                "source_type": edge["source_type"], "source_id": edge["source_id"],
+                "f1_edge_id": edge["edge_id"],
+                "derived_row": edge["derived_id"],
+                "source_type": edge["source_type"],
+                "source_id": edge["source_id"],
                 "relationship_class": edge["relationship_class"],
                 "stage2_boundary": edge["stage2_boundary"],
                 "f3c_disposition": "F4_OUTSTANDING_RELATIONSHIP_PROOF",
-                "evidence_and_scope": "Programme Owner 2026-10-09 R187 amendment; no inherited F3 proof",
+                "evidence_and_scope": (
+                    "Programme Owner 2026-10-09 R187 amendment; no inherited F3 proof"
+                ),
             }
         else:
             item = dict(inherited)
@@ -176,6 +183,73 @@ def main() -> None:
         writer = csv.DictWriter(handle, columns)
         writer.writeheader()
         writer.writerows(edges)
+    # Full-population evidence readback: a bounded edge status is not Stage-1
+    # acceptance, and a Stage-2 boundary is an unsatisfied kernel/public proof.
+    by_row: dict[str, list[dict[str, str]]] = {did: [] for did in stage1}
+    by_class: dict[str, list[dict[str, str]]] = {}
+    for item in edges:
+        if item["derived_row"] in by_row:
+            by_row[item["derived_row"]].append(item)
+        by_class.setdefault(item["relationship_class"], []).append(item)
+    row_records: list[dict[str, object]] = []
+    for did in sorted(stage1):
+        row_edges = by_row[did]
+        pending_count = sum(
+            item["f4_disposition"] == "F4_OUTSTANDING_RELATIONSHIP_PROOF" for item in row_edges
+        )
+        if did in deferred:
+            status = "CROSS_STAGE_OWN_KERNEL_AND_PUBLIC_REFUSAL_UNPROVED"
+        elif pending_count:
+            status = "STAGE1_CLOSED_PUBLIC_RELATIONSHIP_PROOF_UNRESOLVED"
+        else:
+            status = "BOUNDED_EDGE_EVIDENCE_ONLY_NO_ROW_ACCEPTANCE"
+        row_records.append(
+            {
+                "derived_id": did,
+                "stage_boundary": "CROSS_STAGE" if did in deferred else "STAGE1_CLOSED",
+                "public_acceptance_status": status,
+                "total_ledger_relationships": len(row_edges),
+                "outstanding_stage1_closed_edges": pending_count,
+                "observed_bounded_dispositions": ";".join(
+                    sorted({item["f4_disposition"] for item in row_edges})
+                ),
+                "relationship_classes": ";".join(
+                    sorted({item["relationship_class"] for item in row_edges})
+                ),
+            }
+        )
+    assert len(row_records) == 174
+    assert sum(x["stage_boundary"] == "STAGE1_CLOSED" for x in row_records) == 144
+    assert sum(x["stage_boundary"] == "CROSS_STAGE" for x in row_records) == 30
+    assert sum(x["outstanding_stage1_closed_edges"] for x in row_records) == 309
+    with (OUT / "F4_ROW_EVIDENCE_MATRIX.csv").open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, list(row_records[0]))
+        writer.writeheader()
+        writer.writerows(row_records)
+    class_records = []
+    for cl, group in sorted(by_class.items()):
+        missing = [
+            item for item in group if item["f4_disposition"] == "F4_OUTSTANDING_RELATIONSHIP_PROOF"
+        ]
+        class_records.append(
+            {
+                "relationship_class": cl,
+                "declared_ledger_records": len(group),
+                "stage1_closed_outstanding_edges": len(missing),
+                "stage1_closed_outstanding_rows": len({item["derived_row"] for item in missing}),
+                "stage2_deferred_edges": sum(
+                    item["f4_disposition"] == "STAGE2_BOUNDARY_DEFERRED" for item in group
+                ),
+                "status": "UNPROVED" if missing else "NO_OPEN_STAGE1_EDGES_NOT_CLASS_ACCEPTANCE",
+            }
+        )
+    assert sum(x["stage1_closed_outstanding_edges"] for x in class_records) == 309
+    with (OUT / "F4_CLASS_PROOF_RECONCILIATION.csv").open(
+        "w", newline="", encoding="utf-8"
+    ) as handle:
+        writer = csv.DictWriter(handle, list(class_records[0]))
+        writer.writeheader()
+        writer.writerows(class_records)
     metadata = {
         "authority_catalogue_sha256": _sha256(AUTHORITY),
         "prior_f3_ledger_sha256": _sha256(F3),
@@ -184,6 +258,10 @@ def main() -> None:
         "cross_stage_rows": len(deferred),
         "f4_new_bounded_public_rows": sorted(F4_BOUNDED_PUBLIC_ROWS),
         "total_dependency_edges": 490,
+        "stage1_closed_rows_with_outstanding_edges": sum(
+            bool(item["outstanding_stage1_closed_edges"]) for item in row_records
+        ),
+        "cross_stage_kernel_and_refusal_rows_unproved": 30,
         "new_authorised_raw_edges": ["D134/R187", "D135/R187"],
         "zero_edge_sentinels": 1,
         "f4_dispositions": dict(sorted(statuses.items())),

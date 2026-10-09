@@ -99,10 +99,13 @@ def public_book(
     provider: str = "controlled-positional",
     missing: str | None = None,
     depth: int = 2,
+    decoy_instrument: bool = False,
 ) -> tuple[api.DerivedSignalCalculationOwnerV1, api.CalculationRequestV1]:
     m00 = raw.create_owner()
     units = ("level", "operation", "side", "contracts")
     names = ("position", "operation", "side", "quantity")
+    if decoy_instrument:
+        rows = (*rows, ("amd-book", -3, 0, "insert", "bid", 500))
     for n, (tag, offset, position, operation, side, size) in enumerate(rows, 1):
         moment = NOW + timedelta(seconds=offset)
         record = {
@@ -129,7 +132,7 @@ def public_book(
                 source_timezone_native="UTC",
                 raw_signal_catalogue_ids=tuple(raw.RawSignalCatalogueId(k) for k in FIELDS),
                 source_variant="book",
-                subject_instrument="NVDA",
+                subject_instrument="AMD" if tag == "amd-book" else "NVDA",
                 native_units="book_event",
                 revision_vintage_native="v1",
             )
@@ -241,3 +244,21 @@ def test_public_book_missing_operation_and_temporal_cutoff_refuse_or_recalculate
     assert {v.observation_occurrence_id for v in latest.raw_input_lineage} == {
         row[0] for row in ROWS
     }
+
+
+def test_public_depth_limits_choose_exact_final_levels_and_exclude_other_instruments() -> None:
+    owner_one, request_one = public_book(ROWS, depth=1, decoy_instrument=True)
+    bid_one = owner_one.materialise(request_one)
+    ask_one = owner_one.materialise(replace(request_one, derived_signal_id="D135"))
+    ratio_one = owner_one.materialise(replace(request_one, derived_signal_id="D136"))
+    assert bid_one is not None and bid_one.result == Decimal(7)
+    assert ask_one is not None and ask_one.result == Decimal(9)
+    assert ratio_one is not None and ratio_one.result == Decimal(-1) / Decimal(8)
+    assert {r.observation_occurrence_id for r in bid_one.raw_input_lineage} == {r[0] for r in ROWS}
+    owner_three, request_three = public_book(ROWS, depth=3)
+    bid_three = owner_three.materialise(request_three)
+    ask_three = owner_three.materialise(replace(request_three, derived_signal_id="D135"))
+    ratio_three = owner_three.materialise(replace(request_three, derived_signal_id="D136"))
+    assert bid_three is not None and bid_three.result == Decimal(22)
+    assert ask_three is not None and ask_three.result == Decimal(13)
+    assert ratio_three is not None and ratio_three.result == Decimal(9) / Decimal(35)
