@@ -2600,16 +2600,61 @@ def _eval_k08(
             shares = tuple(v / total for v in bins)
             return _named_tuple((("shares", shares), ("hhi", sum((s * s for s in shares), _DEC0))))
         if identity in {"D139", "D140", "D141"}:
+            # A projected native event is atomic: a missing operation/side/level/
+            # quantity cannot silently remove one mutation from the history.
+            native_book_fields = ("R185", "R187", "R188", "R190")
+            if identity == "D141":
+                native_book_fields = (*native_book_fields, "R189")
+            native_occurrences = [
+                {v.occurrence_id for v in raw.get(field, ())} for field in native_book_fields
+            ]
+            if not native_occurrences[0] or any(
+                item != native_occurrences[0] for item in native_occurrences[1:]
+            ):
+                return None
             book_mutations = reconstruct_book(_book_events(raw))
             window = _d(params["window_seconds"])
-            if window <= 0 or not book_mutations:
+            if window <= 0 or len(book_mutations) != len(native_occurrences[0]):
                 return None
             if identity in {"D139", "D140"}:
+                # P_RULE establishes non-overlapping positive book-level bands;
+                # a source position outside the configured bands cannot be
+                # silently omitted or assigned an invented fallback bucket.
+                upper_bounds = params.get("level_bucket_upper_bounds")
+                if (
+                    type(upper_bounds) is not tuple
+                    or not upper_bounds
+                    or any(type(bound) is not int or bound <= 0 for bound in upper_bounds)
+                    or tuple(sorted(set(upper_bounds))) != upper_bounds
+                ):
+                    return None
                 attr = "inserted_size" if identity == "D139" else "removed_size"
                 selected_mutations = [m for m in book_mutations if getattr(m, attr) > 0]
+                groups: dict[tuple[str, int], tuple[int, Decimal]] = {}
+                for mutation in selected_mutations:
+                    side = mutation.event.side.lower()
+                    level = mutation.event.position
+                    if side not in {"bid", "ask"} or level <= 0:
+                        return None
+                    bucket = next((b for b in upper_bounds if level <= b), None)
+                    if bucket is None:
+                        return None
+                    key = (side, bucket)
+                    count, size = groups.get(key, (0, _DEC0))
+                    groups[key] = (count + 1, size + getattr(mutation, attr))
                 count = Decimal(len(selected_mutations)) / window
                 size = sum((getattr(m, attr) for m in selected_mutations), _DEC0) / window
-                return _named_tuple((("event_count_rate", count), ("size_rate", size)))
+                by_side_level = tuple(
+                    (key, (Decimal(n) / window, total / window))
+                    for key, (n, total) in sorted(groups.items())
+                )
+                return _named_tuple(
+                    (
+                        ("event_count_rate", count),
+                        ("size_rate", size),
+                        ("by_side_level", by_side_level),
+                    )
+                )
             depleted = [m for m in book_mutations if m.depleted_size > 0]
             credited = _DEC0
             total = sum((m.depleted_size for m in depleted), _DEC0)

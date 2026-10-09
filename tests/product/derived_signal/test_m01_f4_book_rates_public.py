@@ -23,12 +23,21 @@ VALUES: tuple[tuple[str, int, int, str, str, Decimal], ...] = (
 )
 
 
-def _public_rates(*, missing_event_side: bool = False) -> tuple[api.DerivedSignalCalculationOwnerV1, api.CalculationRequestV1]:
+def _public_rates(
+    *, missing_event_side: bool = False
+) -> tuple[api.DerivedSignalCalculationOwnerV1, api.CalculationRequestV1]:
     m00 = raw.create_owner()
     for seq, (tag, offset, level, op, side, size) in enumerate(VALUES, 1):
         moment = NOW + timedelta(seconds=offset)
-        native = {"book": {"event_ts": moment.isoformat(), "level": level,
-                           "operation": op, "side": side, "quantity": size}}
+        native = {
+            "book": {
+                "event_ts": moment.isoformat(),
+                "level": level,
+                "operation": op,
+                "side": side,
+                "quantity": size,
+            }
+        }
         if missing_event_side and tag == "ask-cancel":
             del native["book"]["side"]
         m00.commands.admit_raw_observation_occurrence(
@@ -54,20 +63,43 @@ def _public_rates(*, missing_event_side: bool = False) -> tuple[api.DerivedSigna
         )
     paths = ("event_ts", "level", "operation", "side", "quantity")
     units = ("iso8601", "level", "operation", "side", "contracts")
-    mappings = tuple(raw.RawSignalProjectionMappingV1(
-        f"f4-book-{rid}", 1, raw.RawSignalCatalogueId(rid), "controlled-rates", "smart",
-        ("book", path), unit,
-    ) for rid, path, unit in zip(FIELDS, paths, units, strict=True))
-    unit_conventions = tuple(api.UnitConventionVersionV1(
-        f"f4-unit-{rid}", 1, native, native, Decimal(1), Decimal(0),
-    ) for rid, native in zip(FIELDS, units, strict=True))
+    mappings = tuple(
+        raw.RawSignalProjectionMappingV1(
+            f"f4-book-{rid}",
+            1,
+            raw.RawSignalCatalogueId(rid),
+            "controlled-rates",
+            "smart",
+            ("book", path),
+            unit,
+        )
+        for rid, path, unit in zip(FIELDS, paths, units, strict=True)
+    )
+    unit_conventions = tuple(
+        api.UnitConventionVersionV1(
+            f"f4-unit-{rid}",
+            1,
+            native,
+            native,
+            Decimal(1),
+            Decimal(0),
+        )
+        for rid, native in zip(FIELDS, units, strict=True)
+    )
     params = api.CalculationParameterSetV1(
-        "f4-book-rule", 1, "P_RULE", (("window_seconds", 10),
-                                        ("level_bucket_upper_bounds", (1, 3))),
+        "f4-book-rule",
+        1,
+        "P_RULE",
+        (("window_seconds", 10), ("level_bucket_upper_bounds", (1, 3))),
     )
     policy = api.InputSelectionPolicyVersionV1(
-        "f4-rate-selection", 1, ("subject_instrument",), timedelta(seconds=15),
-        timedelta(seconds=15), ("true_instant",), (),
+        "f4-rate-selection",
+        1,
+        ("subject_instrument",),
+        timedelta(seconds=15),
+        timedelta(seconds=15),
+        ("true_instant",),
+        (),
     )
     owner = api.create_owner(
         raw_projection_reader=m00.reads,
@@ -79,12 +111,26 @@ def _public_rates(*, missing_event_side: bool = False) -> tuple[api.DerivedSigna
         utc_now=lambda: NOW + timedelta(seconds=1),
     )
     request = api.CalculationRequestV1(
-        "D139", "NVDA", NOW, NOW, "f4-book-rates-v1", "f4-book-rule", 1,
-        "f4-rate-selection", 1, (),
-        raw_input_bindings=tuple(api.RawInputBindingV1(
-            rid, api.VersionRefV1(f"f4-book-{rid}", 1),
-            api.VersionRefV1(f"f4-unit-{rid}", 1), "NVDA", None,
-        ) for rid in FIELDS),
+        "D139",
+        "NVDA",
+        NOW,
+        NOW,
+        "f4-book-rates-v1",
+        "f4-book-rule",
+        1,
+        "f4-rate-selection",
+        1,
+        (),
+        raw_input_bindings=tuple(
+            api.RawInputBindingV1(
+                rid,
+                api.VersionRefV1(f"f4-book-{rid}", 1),
+                api.VersionRefV1(f"f4-unit-{rid}", 1),
+                "NVDA",
+                None,
+            )
+            for rid in FIELDS
+        ),
     )
     return owner, request
 
@@ -99,9 +145,7 @@ def test_d139_public_insert_rate_preserves_exact_side_and_level_buckets() -> Non
         ("bid", 1): (Decimal("0.1"), Decimal(1)),
         ("ask", 3): (Decimal("0.1"), Decimal("0.7")),
     }
-    assert {x.observation_occurrence_id for x in result.raw_input_lineage} == {
-        x[0] for x in VALUES
-    }
+    assert {x.observation_occurrence_id for x in result.raw_input_lineage} == {x[0] for x in VALUES}
     assert owner.materialise(request) == result
 
 
@@ -114,9 +158,7 @@ def test_d140_public_cancel_uses_immediate_pre_delete_size_not_zero() -> None:
         ("bid", 1): (Decimal("0.1"), Decimal(1)),
         ("ask", 3): (Decimal("0.1"), Decimal("0.7")),
     }
-    assert {x.observation_occurrence_id for x in result.raw_input_lineage} == {
-        x[0] for x in VALUES
-    }
+    assert {x.observation_occurrence_id for x in result.raw_input_lineage} == {x[0] for x in VALUES}
 
 
 def test_d139_d140_refuse_absent_level_buckets_or_missing_native_field() -> None:
