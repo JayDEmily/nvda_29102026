@@ -2522,14 +2522,56 @@ def _eval_k08(
                 for key, value in sorted(grouped.items())
             )
         if identity == "D124":
-            vals = tuple(
-                abs(v) for v in _decimal_values(raw, "R047") + _decimal_values(raw, "R048")
-            )
-            total = sum(vals, _DEC0)
+            # Call and put OI are separate raw observations; strike/expiry
+            # concentration groups both rights by their original *contract*
+            # identities.  Raw observation IDs are not buckets.  A missing
+            # or duplicate contract identity would make HHI unreconstructable.
+            if params.get("grouping") != "strike_expiry":
+                return None
+            by_strike_expiry: dict[tuple[str, Decimal], Decimal] = {}
+            seen_contracts: set[tuple[object, ...]] = set()
+            for raw_id, right in (("R047", "call"), ("R048", "put")):
+                for item in raw.get(raw_id, ()):
+                    meta = _metadata(item)
+                    cid = meta.get("contract_id")
+                    subject = meta.get("underlying_instrument")
+                    expiry = meta.get("expiry")
+                    strike = meta.get("strike")
+                    if (
+                        type(cid) is not str
+                        or not cid
+                        or type(subject) is not str
+                        or not subject
+                        or subject != item.subject_instrument
+                        or type(expiry) is not str
+                        or not expiry
+                        or _option_right(meta) != right
+                    ):
+                        return None
+                    try:
+                        strike_amount = _d(strike)
+                        oi = _d(item.value)
+                    except (TypeError, ValueError, ArithmeticError):
+                        return None
+                    if (
+                        not strike_amount.is_finite()
+                        or strike_amount <= 0
+                        or not oi.is_finite()
+                        or oi < 0
+                    ):
+                        return None
+                    contract = (subject, cid, expiry, strike_amount, right)
+                    if contract in seen_contracts:
+                        return None
+                    seen_contracts.add(contract)
+                    key = (expiry, strike_amount)
+                    by_strike_expiry[key] = by_strike_expiry.get(key, _DEC0) + oi
+            total = sum(by_strike_expiry.values(), _DEC0)
             if total <= 0:
                 return None
-            shares = tuple(v / total for v in vals)
-            return _named_tuple((("shares", shares), ("hhi", sum((s * s for s in shares), _DEC0))))
+            oi_shares = tuple((key, oi / total) for key, oi in sorted(by_strike_expiry.items()))
+            hhi = sum((share * share for _, share in oi_shares), _DEC0)
+            return _named_tuple((("shares", oi_shares), ("hhi", hhi)))
         if identity == "D128":
             bounds = params.get("spot_distance_boundaries")
             if type(bounds) is not tuple or len(bounds) < 2:

@@ -1009,12 +1009,32 @@ def test_k08_bucket_and_concentration_rules_use_absolute_gamma_and_canonical_hhi
         "D124",
         raw={
             "R047": (
-                _kv(Decimal("30"), occurrence_id="a"),
-                _kv(Decimal("70"), occurrence_id="b"),
+                _kv(
+                    Decimal("30"),
+                    occurrence_id="a",
+                    metadata=(
+                        ("contract_id", "C100"),
+                        ("underlying_instrument", "NVDA"),
+                        ("expiry", "2026-12-18"),
+                        ("strike", Decimal("100")),
+                        ("option_right", "call"),
+                    ),
+                ),
+                _kv(
+                    Decimal("70"),
+                    occurrence_id="b",
+                    metadata=(
+                        ("contract_id", "C105"),
+                        ("underlying_instrument", "NVDA"),
+                        ("expiry", "2026-12-18"),
+                        ("strike", Decimal("105")),
+                        ("option_right", "call"),
+                    ),
+                ),
             ),
             "R048": (),
         },
-        params=_p("P_RULE", grouping="occurrence"),
+        params=_p("P_RULE", grouping="strike_expiry"),
     )
     assert oi is not None
     named = _named(oi.value)
@@ -1187,8 +1207,13 @@ def test_k16_state_vector_is_ordered_schema_assembly_without_hidden_weighting() 
     result = _eval(
         "D155",
         derived={
-            did: (_kv(Decimal(index + 1), occurrence_id=f"component-{index}",
-                       metadata=(("units", "score"), ("quality", "valid"))),)
+            did: (
+                _kv(
+                    Decimal(index + 1),
+                    occurrence_id=f"component-{index}",
+                    metadata=(("units", "score"), ("quality", "valid")),
+                ),
+            )
             for index, did in enumerate(components)
         },
         params=params,
@@ -1217,11 +1242,13 @@ def test_k17_ofi_uses_consecutive_best_book_states_from_catalogue_events() -> No
     for oid, at, operation, side, price, size in events:
         for rid, value in zip(
             ("R187", "R188", "R189", "R190"),
-            (operation, side, Decimal(price), Decimal(size)), strict=True,
+            (operation, side, Decimal(price), Decimal(size)),
+            strict=True,
         ):
             raw[rid].append(_kv(value, occurrence_id=oid, at=at))
     result = _eval(
-        "D145", raw={key: tuple(reversed(items)) for key, items in raw.items()},
+        "D145",
+        raw={key: tuple(reversed(items)) for key, items in raw.items()},
         params=_p("P_OFI", window_seconds=5),
     )
     assert result is not None and result.value == Decimal("15")
@@ -1466,9 +1493,7 @@ def test_public_seam_refuses_raw_inputs_from_another_subject() -> None:
             utc_now=lambda: NOW,
         )
 
-        def request(
-            binding_subject: str, selection_context_id: str
-        ) -> api.CalculationRequestV1:
+        def request(binding_subject: str, selection_context_id: str) -> api.CalculationRequestV1:
             return api.CalculationRequestV1(
                 derived_signal_id="D011",
                 subject_instrument="NVDA",
@@ -1502,6 +1527,7 @@ def test_public_seam_refuses_raw_inputs_from_another_subject() -> None:
         assert owner.materialise(request("AAPL", selection.context_id)) is None
         # The reader is an external seam: a mismatched returned observation must also fail closed.
         assert owner.materialise(request("NVDA", selection.context_id)) is None
+
 
 def test_graph_refuses_future_raw_inputs_and_incompatible_stored_predecessor_versions() -> None:
     s1 = _stage1()
@@ -2249,9 +2275,7 @@ def test_public_seam_requires_exact_versioned_cross_section_basket() -> None:
     }
 
     class Reader:
-        def list_projected_raw_history(
-            self, raw_signal_catalogue_id: Any, **kwargs: Any
-        ) -> Any:
+        def list_projected_raw_history(self, raw_signal_catalogue_id: Any, **kwargs: Any) -> Any:
             raw_id = raw_signal_catalogue_id.value
             subject = kwargs.get("subject_instrument")
             value = values.get((raw_id, subject))

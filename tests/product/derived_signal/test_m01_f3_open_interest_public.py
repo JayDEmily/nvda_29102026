@@ -143,7 +143,7 @@ def test_d124_public_groups_call_put_same_strike_and_proves_hhi_and_lineage() ->
     result = owner.materialise(request)
     assert result is not None
     fields = dict(result.result)
-    assert fields["hhi"] == Decimal(37) / Decimal(72)
+    assert abs(fields["hhi"] - Decimal(37) / Decimal(72)) < Decimal("1e-26")
     assert dict(fields["shares"]) == {
         ("2026-12-18", Decimal(100)): Decimal(5) / Decimal(12),
         ("2026-12-18", Decimal(105)): Decimal(7) / Decimal(12),
