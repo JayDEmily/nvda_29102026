@@ -2418,15 +2418,109 @@ def _eval_k08(
                 )
             )
         if identity in {"D121", "D122"}:
-            grouped: dict[str, Decimal] = {}
+            # K08 exact per-contract grouping: D120, D091 and D085 live in
+            # independent D-occurrence namespaces.  Contract selection must be
+            # reconstructed from each child's immutable selection identity;
+            # an equal UUID or a free-form `group` metadata string proves nothing.
             group_id = "D091" if identity == "D121" else "D085"
-            groups = {v.occurrence_id: str(v.value) for v in derived.get(group_id, ())}
-            for item in derived.get("D120", ()):
-                group = groups.get(item.occurrence_id) or str(_metadata(item).get("group", ""))
-                val = _named(item.value).get("signed_premium_notional")
-                if group and val is not None:
-                    grouped[group] = grouped.get(group, _DEC0) + _d(val)
-            return tuple(sorted(grouped.items())) if grouped else None
+            flows = derived.get("D120", ())
+            labels = derived.get(group_id, ())
+            contract_keys = (
+                "contract_id",
+                "underlying_instrument",
+                "expiry",
+                "strike",
+                "option_right",
+            )
+
+            def contract_key(item: KernelValueV1) -> tuple[object, ...] | None:
+                meta = _metadata(item)
+                values = tuple(meta.get(key) for key in contract_keys)
+                if any(value is None for value in values):
+                    return None
+                return values
+
+            if not flows or not labels:
+                return None
+            signed_by_contract: dict[tuple[object, ...], tuple[Decimal, Decimal]] = {}
+            labels_by_contract: dict[tuple[object, ...], object] = {}
+            for flow in flows:
+                flow_key = contract_key(flow)
+                parts = _named(flow.value)
+                signed_qty = parts.get("signed_contracts")
+                notional = parts.get("signed_premium_notional")
+                if (
+                    flow_key is None
+                    or flow_key in signed_by_contract
+                    or type(signed_qty) is not Decimal
+                    or type(notional) is not Decimal
+                ):
+                    return None
+                signed_by_contract[flow_key] = (signed_qty, notional)
+            for label in labels:
+                label_key = contract_key(label)
+                if label_key is None or label_key in labels_by_contract:
+                    return None
+                labels_by_contract[label_key] = label.value
+            if set(signed_by_contract) != set(labels_by_contract):
+                return None
+            bucket_bounds = params.get("dte_bucket_boundaries")
+            bucket_labels = params.get("dte_bucket_labels")
+            if identity == "D122" and (
+                type(bucket_bounds) is not tuple
+                or type(bucket_labels) is not tuple
+                or len(bucket_bounds) != len(bucket_labels) + 1
+                or not bucket_labels
+                or any(
+                    _d(bucket_bounds[i]) >= _d(bucket_bounds[i + 1])
+                    for i in range(len(bucket_labels))
+                )
+            ):
+                return None
+            grouped: dict[tuple[str, ...], tuple[Decimal, Decimal]] = {}
+            for key in sorted(signed_by_contract):
+                _, _, expiry, _, right = key
+                if type(expiry) is not str or not expiry or type(right) is not str or not right:
+                    return None
+                label = labels_by_contract[key]
+                group: tuple[str, ...]
+                if identity == "D121":
+                    if type(label) is not str or not label:
+                        return None
+                    group = (expiry, right.lower(), label)
+                else:
+                    if type(label) is not int or label < 0:
+                        return None
+                    assert type(bucket_labels) is tuple and type(bucket_bounds) is tuple
+                    matches = [
+                        str(bucket_labels[i])
+                        for i in range(len(bucket_labels))
+                        if _d(bucket_bounds[i])
+                        <= Decimal(label)
+                        < (
+                            _d(bucket_bounds[i + 1])
+                            if i < len(bucket_labels) - 1
+                            else _d(bucket_bounds[i + 1]) + Decimal("1e-40")
+                        )
+                    ]
+                    if len(matches) != 1 or not matches[0]:
+                        return None
+                    group = (expiry, matches[0])
+                old_qty, old_notional = grouped.get(group, (_DEC0, _DEC0))
+                qty, premium = signed_by_contract[key]
+                grouped[group] = (old_qty + qty, old_notional + premium)
+            return tuple(
+                (
+                    key,
+                    _named_tuple(
+                        (
+                            ("signed_contracts", value[0]),
+                            ("signed_premium_notional", value[1]),
+                        )
+                    ),
+                )
+                for key, value in sorted(grouped.items())
+            )
         if identity == "D124":
             vals = tuple(
                 abs(v) for v in _decimal_values(raw, "R047") + _decimal_values(raw, "R048")

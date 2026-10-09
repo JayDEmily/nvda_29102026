@@ -1627,6 +1627,10 @@ class _OwnerV1:
             ("D109", "D087"),
             ("D109", "D091"),
             ("D170", "D087"),
+            ("D121", "D120"),
+            ("D121", "D091"),
+            ("D122", "D120"),
+            ("D122", "D085"),
         }:
             return (request,)
         explicit = dict(request.predecessor_selection_policy_refs).get(predecessor_id)
@@ -1646,6 +1650,83 @@ class _OwnerV1:
         ):
             return None
         all_bindings = request.raw_input_bindings
+        if parent_id in {"D121", "D122"}:
+            # A grouped parent has no direct raw edge; its declared child
+            # observations must nevertheless be requested once per exact
+            # option contract. Never use a single latest derived occurrence
+            # as a proxy for the whole option chain (brief K08, §8.1).
+            required = {
+                "R034",
+                "R035",
+                "R120",
+                "R121",
+                "R126",
+                "R127",
+                "R015",
+                *(
+                    ("R112",)
+                    if parent_id == "D121"
+                    else ("R001", "R002", "R003", "R004", "R013", "R023", "R024")
+                ),
+            }
+            relevant = tuple(b for b in all_bindings if b.raw_signal_id in required)
+            anchors = tuple(b for b in relevant if b.raw_signal_id == "R120")
+            if not anchors or set(parent_selection.join_keys) - set(child_selection.join_keys):
+                return None
+            by_contract: dict[str, RawSelectionIdentityV1] = {}
+            for anchor_binding in anchors:
+                identity = anchor_binding.selection_identity
+                if identity is None or any(
+                    identity.value_for(key) is None for key in _OPTION_CONTRACT_JOIN_KEYS
+                ):
+                    return None
+                contract = identity.value_for("contract_id")
+                if type(contract) is not str or not contract or contract in by_contract:
+                    return None
+                by_contract[contract] = identity
+            scoped_groups: list[CalculationRequestV1] = []
+            for contract in sorted(by_contract):
+                identity = by_contract[contract]
+                member_bindings: list[RawInputBindingV1] = []
+                for raw_id in sorted(required):
+                    matches = tuple(
+                        binding
+                        for binding in relevant
+                        if binding.raw_signal_id == raw_id
+                        and binding.selection_identity is not None
+                        and all(
+                            self._same_identity_value(binding.selection_identity, identity, key)
+                            for key in _OPTION_CONTRACT_JOIN_KEYS
+                        )
+                    )
+                    if len(matches) != 1:
+                        return None
+                    member_bindings.append(matches[0])
+                scoped_groups.append(
+                    replace(
+                        request,
+                        derived_signal_id=predecessor_id,
+                        input_selection_policy_id=child_selection.context_id,
+                        input_selection_policy_version=child_selection.version,
+                        raw_input_bindings=tuple(member_bindings),
+                    )
+                )
+            # Every grouping-relevant bound contract must be one of the
+            # explicitly anchored R120 contracts; surplus member labels are
+            # ambiguity, never permission to silently discard an input.
+            if any(
+                b.selection_identity is None
+                or not any(
+                    all(
+                        self._same_identity_value(b.selection_identity, identity, key)
+                        for key in _OPTION_CONTRACT_JOIN_KEYS
+                    )
+                    for identity in by_contract.values()
+                )
+                for b in relevant
+            ):
+                return None
+            return tuple(scoped_groups)
         if parent_id == "D109":
             required_raw = ("R034", "R035", "R112")
             anchor = "R034"
