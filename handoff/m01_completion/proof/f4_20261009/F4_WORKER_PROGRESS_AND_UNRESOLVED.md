@@ -122,3 +122,41 @@ unproved. Stage 1 remains unaccepted; this is an internal proof checkpoint.
   No row is accepted merely because class-level or per-edge accounting exists.
   Do not submit Stage 1 for review yet. M00 provider/live compatibility and
   Stage-2 functionality remain outside this proof.
+
+
+## 10-10-2026 current RC01 / RC14 native exact-contract evidence and durability
+
+Additional `daf8ab2` and `d4442fa` proof-first (test-only) commits establish:
+
+- D010 public configured open/closed market calendar, native raw and D003
+  predecessor evidence, missing-input refusal;
+- D085 public seven whole expiry days with exact option-contract identity and
+  D004 overnight trading-day predecessor, missing/past-expiry refusal;
+- D086 public ACT/365F from exact UTC D001 and provider expiry at configured
+  16:00 Australia/Melbourne with exact option-contract identity, missing/past
+  expiry refusal;
+- D087/D088 public exact-contract midpoint 100/spread 2 and D087 recursive
+  predecessor linkage, and D089/D090 strike 150/spot 120=1.25/log(1.25),
+  selecting the true contract over competing C2 and refusing missing, future,
+  and zero denominator. Each preserves bounded raw/derived lineage and retries.
+
+Whole applicable non-durability regression **832 passed** using Python 3.13.5,
+pinned pytest 9.0.3 and PostgreSQL 17.9 with independent M00/M01 roles.
+Ruff and mypy 21 files pass. Exact logs:
+`F4_RC01_RC14_832_PINNED_PYTEST_COMBINED_REGRESSION.log`,
+`F4_RC01_RC14_832_PINNED_RUFF.log`,
+`F4_RC01_RC14_832_PINNED_MYPY.log`.
+
+Separately scoped M00 durability proof: **55/55 passed in eight non-overlapping
+batches** under a clean Python 3.13.5 virtualenv with pinned pytest and
+psycopg 3.3.4. An unrelated Pydantic object graph exception prevented an
+initial **ambient** invocation (14 passed, 1 failed in the final 15-test
+batch); that failed run and negative diagnosis remain available. No M00 code
+or test was modified to obtain the passing isolated rerun. Details, exact
+collected test IDs and 8 passing logs in `F4_M00_DURABILITY_CLEAN_READBACK.md`.
+
+Current ledger: 490 authority dependencies + D007 sentinel, 132 newly
+bounded F4 public edges plus inherited 18 accepted F2 scoped, 11 bounded F3,
+107 deferred cross-stage edges; **222 outstanding Stage-1-closed edges across
+92 rows** and **all 30 cross-stage own-kernel/refusal row obligations** remain.
+This is not the consolidated F4/Stage-1 review candidate.

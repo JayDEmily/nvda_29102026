@@ -1,0 +1,93 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+__ test_record_only_proxy_rewrite_rewrites_nested_public_storage_capabilities __
+
+>   ???
+
+/mnt/data/m01_f4_takeover/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/product/raw_signal/test_u05_postgresql_durability.py:2983: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/mnt/data/m01_f4_takeover/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/product/raw_signal/test_u05_postgresql_durability.py:2631: in _rewire_production_graph_reference
+    ???
+/mnt/data/m01_f4_takeover/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/product/raw_signal/test_u05_postgresql_durability.py:2613: in rewrite
+    ???
+/mnt/data/m01_f4_takeover/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/product/raw_signal/test_u05_postgresql_durability.py:2488: in contains_target_capability
+    ???
+/mnt/data/m01_f4_takeover/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/product/raw_signal/test_u05_postgresql_durability.py:2489: in <genexpr>
+    ???
+/mnt/data/m01_f4_takeover/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/product/raw_signal/test_u05_postgresql_durability.py:2476: in contains_target_capability
+    ???
+/mnt/data/m01_f4_takeover/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/product/raw_signal/test_u05_postgresql_durability.py:2482: in contains_target_capability
+    ???
+/mnt/data/m01_f4_takeover/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/product/raw_signal/test_u05_postgresql_durability.py:2483: in <genexpr>
+    ???
+/mnt/data/m01_f4_takeover/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/product/raw_signal/test_u05_postgresql_durability.py:2494: in contains_target_capability
+    ???
+/mnt/data/m01_f4_takeover/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/product/raw_signal/test_u05_postgresql_durability.py:2488: in contains_target_capability
+    ???
+/mnt/data/m01_f4_takeover/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/product/raw_signal/test_u05_postgresql_durability.py:2489: in <genexpr>
+    ???
+/mnt/data/m01_f4_takeover/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/product/raw_signal/test_u05_postgresql_durability.py:2476: in contains_target_capability
+    ???
+/mnt/data/m01_f4_takeover/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/product/raw_signal/test_u05_postgresql_durability.py:2476: in contains_target_capability
+    ???
+/mnt/data/m01_f4_takeover/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/product/raw_signal/test_u05_postgresql_durability.py:2482: in contains_target_capability
+    ???
+/mnt/data/m01_f4_takeover/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/product/raw_signal/test_u05_postgresql_durability.py:2483: in <genexpr>
+    ???
+/mnt/data/m01_f4_takeover/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/product/raw_signal/test_u05_postgresql_durability.py:2494: in contains_target_capability
+    ???
+/mnt/data/m01_f4_takeover/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/product/raw_signal/test_u05_postgresql_durability.py:2488: in contains_target_capability
+    ???
+/mnt/data/m01_f4_takeover/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/product/raw_signal/test_u05_postgresql_durability.py:2489: in <genexpr>
+    ???
+/mnt/data/m01_f4_takeover/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/product/raw_signal/test_u05_postgresql_durability.py:2476: in contains_target_capability
+    ???
+/mnt/data/m01_f4_takeover/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/product/raw_signal/test_u05_postgresql_durability.py:2482: in contains_target_capability
+    ???
+/mnt/data/m01_f4_takeover/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/product/raw_signal/test_u05_postgresql_durability.py:2483: in <genexpr>
+    ???
+/mnt/data/m01_f4_takeover/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/product/raw_signal/test_u05_postgresql_durability.py:2453: in contains_target_capability
+    ???
+/mnt/data/m01_f4_takeover/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/product/raw_signal/test_u05_postgresql_durability.py:2455: in <genexpr>
+    ???
+/mnt/data/m01_f4_takeover/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/product/raw_signal/test_u05_postgresql_durability.py:2494: in contains_target_capability
+    ???
+/mnt/data/m01_f4_takeover/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/product/raw_signal/test_u05_postgresql_durability.py:2488: in contains_target_capability
+    ???
+/mnt/data/m01_f4_takeover/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/product/raw_signal/test_u05_postgresql_durability.py:2489: in <genexpr>
+    ???
+/mnt/data/m01_f4_takeover/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/product/raw_signal/test_u05_postgresql_durability.py:2476: in contains_target_capability
+    ???
+/mnt/data/m01_f4_takeover/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/product/raw_signal/test_u05_postgresql_durability.py:2482: in contains_target_capability
+    ???
+/mnt/data/m01_f4_takeover/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/product/raw_signal/test_u05_postgresql_durability.py:2483: in <genexpr>
+    ???
+/mnt/data/m01_f4_takeover/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/product/raw_signal/test_u05_postgresql_durability.py:2453: in contains_target_capability
+    ???
+/mnt/data/m01_f4_takeover/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/product/raw_signal/test_u05_postgresql_durability.py:2455: in <genexpr>
+    ???
+/mnt/data/m01_f4_takeover/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/product/raw_signal/test_u05_postgresql_durability.py:2482: in contains_target_capability
+    ???
+/mnt/data/m01_f4_takeover/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/product/raw_signal/test_u05_postgresql_durability.py:2483: in <genexpr>
+    ???
+/mnt/data/m01_f4_takeover/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/product/raw_signal/test_u05_postgresql_durability.py:2488: in contains_target_capability
+    ???
+/mnt/data/m01_f4_takeover/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/product/raw_signal/test_u05_postgresql_durability.py:2489: in <genexpr>
+    ???
+/mnt/data/m01_f4_takeover/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/product/raw_signal/test_u05_postgresql_durability.py:2497: in contains_target_capability
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = <pydantic._internal._mock_val_ser.MockValSer object at 0x7f7de415e400>
+
+>   ???
+E   pydantic.errors.PydanticUserError: Pydantic models should inherit from BaseModel, BaseModel cannot be instantiated directly
+E   
+E   For further information visit https://errors.pydantic.dev/2.13/u/base-model-instantiated
+
+/mnt/data/m01_f4_takeover/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/product/raw_signal/test_u05_postgresql_durability.py:2413: PydanticUserError
+=========================== short test summary info ============================
+FAILED tests/product/raw_signal/test_u05_postgresql_durability.py::test_record_only_proxy_rewrite_rewrites_nested_public_storage_capabilities - pydantic.errors.PydanticUserError: Pydantic models should inherit from BaseModel, BaseModel cannot be instantiated directly
+
+For further information visit https://errors.pydantic.dev/2.13/u/base-model-instantiated
+1 failed in 0.28s

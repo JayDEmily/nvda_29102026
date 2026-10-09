@@ -2,6 +2,30 @@
 
 ## Status
 
+## 10-10-2026 F4 RC01 + RC14 exact-contract proof; clean M00 durability (current)
+
+**F4 internal checkpoint only, Stage 1 not accepted.** Public M00 tests now cover
+D010's versioned market-session calendar (including known false closure),
+D085/D086 exact option-contract whole days and ACT/365F expiry, and the
+contract-qualified D087/D088 midpoint/spread and D089/D090 strike/spot and log
+moneyness (including cross-contract decoy, missing/future/zero-spot refusal and
+native/derived lineage). Added proof commits `daf8ab2` and `d4442fa`;
+no production code change was required for these additional seven rows.
+
+All **832 applicable non-durability tests** pass under pinned pytest 9.0.3,
+Python 3.13.5, PostgreSQL 17.9 and independent M00/M01 roles. Ruff and
+source mypy pass. The previously excluded 55 M00 PostgreSQL durability tests
+have now **all passed in eight non-overlapping batches in a clean pinned Python
+virtualenv**. The failed ambient-Pydantic graph-walk invocation and successful
+isolated readback are both preserved; see
+`handoff/m01_completion/proof/f4_20261009/F4_M00_DURABILITY_CLEAN_READBACK.md`.
+
+Conservative authority-locked ledger: **490 dependency edges + D007 sentinel**;
+**222 outstanding Stage-1-closed public relationship edges across 92 rows**;
+**30 cross-stage own-kernel and lawful public refusal obligations still open**.
+No Stage-1 acceptance or Stage-2 authority is asserted. Historical 240/255/272
+counts below are superseded by this readback, not erased from Git.
+
 ## 10-10-2026 F4 RC01 temporal and RC02 VWAP gap public proofs — latest
 
 **F4 remains internally in progress, not an acceptance submission.** The public

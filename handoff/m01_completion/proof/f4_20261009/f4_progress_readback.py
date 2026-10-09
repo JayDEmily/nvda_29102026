@@ -52,6 +52,51 @@ F4_BOUNDED_PUBLIC_ROWS = {
         "versioned non-overlapping phase schedule yields overnight; actual public "
         "D003 predecessor, M00 lineage and missing schedule input refusal",
     ),
+    "D010": (
+        "RC01",
+        "tests/product/derived_signal/test_m01_f4_temporal_public.py",
+        "public D003 exchange-local timestamp and versioned market calendar/RTH "
+        "policy; open overnight Saturday true, dated closure false, "
+        "raw and derived lineage, missing-source refusal",
+    ),
+    "D085": (
+        "RC01",
+        "tests/product/derived_signal/test_m01_f4_temporal_public.py",
+        "exact option-contract public D004 overnight trading-date predecessor; "
+        "expiry 2026-10-16 minus local 2026-10-09 yields seven whole days; "
+        "missing and expired-date refusal; raw/derived lineage",
+    ),
+    "D086": (
+        "RC01",
+        "tests/product/derived_signal/test_m01_f4_temporal_public.py",
+        "exact option-contract public D001 UTC event predecessor; native expiry "
+        "at configured 16:00 Melbourne converted UTC and ACT/365F; "
+        "missing and expired-date refusal; raw/derived lineage",
+    ),
+    "D087": (
+        "RC14",
+        "tests/product/derived_signal/test_m01_f4_option_scalar_public.py",
+        "exact option-contract M00 bid/ask midpoint 100; same-contract selection "
+        "against decoy, raw lineage, absent/future refusal, retry",
+    ),
+    "D088": (
+        "RC14",
+        "tests/product/derived_signal/test_m01_f4_option_scalar_public.py",
+        "exact contract option percentage spread 2 using recursively calculated "
+        "D087 midpoint 100, R034/R035 and D occurrence lineage, missing/future refusal",
+    ),
+    "D089": (
+        "RC14",
+        "tests/product/derived_signal/test_m01_f4_option_scalar_public.py",
+        "exact contract strike 150 / spot 120 = 1.25, native M00 raw lineage, "
+        "other-contract/future/missing/zero-spot refusal and deterministic retry",
+    ),
+    "D090": (
+        "RC14",
+        "tests/product/derived_signal/test_m01_f4_option_scalar_public.py",
+        "exact contract log(150/120) = ln(1.25), native M00 raw lineage, "
+        "other-contract/future/missing/zero-spot refusal and deterministic retry",
+    ),
     "D011": (
         "RC02",
         "tests/product/derived_signal/test_m01_f4_nbbo_algebra_public.py",
@@ -315,8 +360,8 @@ def main() -> None:
         "F2_ACCEPTED_SCOPED_EVIDENCE": 18,
         "F3A_BOUNDED_PUBLIC_PROOF": 4,
         "F3B_BOUNDED_PUBLIC_PROOF": 7,
-        "F4_BOUNDED_PUBLIC_ROW_PROOF": 114,
-        "F4_OUTSTANDING_RELATIONSHIP_PROOF": 240,
+        "F4_BOUNDED_PUBLIC_ROW_PROOF": 132,
+        "F4_OUTSTANDING_RELATIONSHIP_PROOF": 222,
         "STAGE2_BOUNDARY_DEFERRED": 107,
         "F4_ZERO_EDGE_PUBLIC_PROOF": 1,
     }, statuses
@@ -364,7 +409,7 @@ def main() -> None:
     assert len(row_records) == 174
     assert sum(x["stage_boundary"] == "STAGE1_CLOSED" for x in row_records) == 144
     assert sum(x["stage_boundary"] == "CROSS_STAGE" for x in row_records) == 30
-    assert sum(x["outstanding_stage1_closed_edges"] for x in row_records) == 240
+    assert sum(x["outstanding_stage1_closed_edges"] for x in row_records) == 222
     with (OUT / "F4_ROW_EVIDENCE_MATRIX.csv").open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, list(row_records[0]))
         writer.writeheader()
@@ -386,7 +431,7 @@ def main() -> None:
                 "status": "UNPROVED" if missing else "NO_OPEN_STAGE1_EDGES_NOT_CLASS_ACCEPTANCE",
             }
         )
-    assert sum(x["stage1_closed_outstanding_edges"] for x in class_records) == 240
+    assert sum(x["stage1_closed_outstanding_edges"] for x in class_records) == 222
     with (OUT / "F4_CLASS_PROOF_RECONCILIATION.csv").open(
         "w", newline="", encoding="utf-8"
     ) as handle:
