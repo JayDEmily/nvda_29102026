@@ -2341,3 +2341,45 @@ def test_public_seam_requires_exact_versioned_cross_section_basket() -> None:
         ),
     )
     assert owner.materialise(request) is None
+
+
+def test_f4_k08_resilience_positional_insert_shifts_depth_before_shock() -> None:
+    """RC12: D142 must use shifted top-two book state, never row overwrite."""
+    t0 = NOW - timedelta(seconds=6)
+    rows = (
+        ("bid-base", t0, 0, "insert", "bid", Decimal(100), Decimal(10)),
+        ("ask-base", t0 + timedelta(seconds=1), 0, "insert", "ask", Decimal(101), Decimal(10)),
+        ("bid-second", t0 + timedelta(seconds=2), 1, "insert", "bid", Decimal(99), Decimal(5)),
+        ("bid-shock", t0 + timedelta(seconds=3), 0, "insert", "bid", Decimal(100), Decimal(1)),
+        ("bid-recover", t0 + timedelta(seconds=4), 0, "update", "bid", Decimal(100), Decimal(5)),
+    )
+
+    def field(index: int) -> tuple[Any, ...]:
+        return tuple(_kv(row[index], occurrence_id=row[0], at=row[1]) for row in rows)
+
+    values = _eval(
+        "D142",
+        raw={
+            "R185": field(2),
+            "R187": field(3),
+            "R188": field(4),
+            "R189": field(5),
+            "R190": field(6),
+            "R034": (_kv(Decimal(100), occurrence_id="quote-bid", at=t0),),
+            "R035": (_kv(Decimal(101), occurrence_id="quote-ask", at=t0),),
+        },
+        params=_p(
+            "P_RULE",
+            depth_levels=2,
+            shock_depth_fraction=Decimal("0.9"),
+            shock_spread_multiple=Decimal(3),
+            recovery_depth_fraction=Decimal("0.9"),
+            recovery_spread_multiple=Decimal("1.2"),
+        ),
+    )
+    assert values is not None
+    actual = _named(values.value)
+    assert actual["pre_shock_depth"] == Decimal(25)
+    assert actual["shock_depth"] == Decimal(21)
+    assert actual["recovered_depth"] == Decimal(25)
+    assert actual["seconds"] == Decimal(1)
