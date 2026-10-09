@@ -69,7 +69,9 @@ def public_book_quote(
         raw_projection_reader=m00.reads,
         raw_projection_mappings=mappings,
         parameter_sets=(
-            api.CalculationParameterSetV1("rc02-basic", 1, "P_BASIC", (("subject_instrument", "NVDA"),)),
+            api.CalculationParameterSetV1(
+                "rc02-basic", 1, "P_BASIC", (("subject_instrument", "NVDA"),)
+            ),
         ),
         input_selection_policies=(
             api.InputSelectionPolicyVersionV1(
