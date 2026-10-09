@@ -6,6 +6,8 @@
 
 The previous foundation-cleanup checkpoint was not the end of M01. Current Programme Owner instruction is to continue and finish M01 before commissioning a later module.
 
+**09-10-2026 F3 worker checkpoint:** Following independent F2 `F2_ACCEPTED`, F3a D109/D170 exact-contract graph proofs and F3b D121/D122 multi-contract grouping repair have been committed proof-first, and F3c reconciles 488 F1 edges (plus one zero-edge sentinel) with accepted F2 and bounded F3 evidence. All 716 combined applicable tests and 55 separately batched M00 durability cases pass; static/type/architecture checks pass. **This is F3 worker evidence only, not Stage-1 or F4 acceptance**. Full F4 class/144-row public reachability evidence remains unreconciled. Details: `handoff/m01_completion/proof/f3_20261009/F3_PROOF_AND_F4_BOUNDARY.md`. F4 is next; Stage 2 is unauthorised. Older F2-era statuses below are retained as history and superseded by this paragraph for current F3 routing.
+
 ## Repository boundary
 
 - Continuation branch: `work/m01-completion`.
