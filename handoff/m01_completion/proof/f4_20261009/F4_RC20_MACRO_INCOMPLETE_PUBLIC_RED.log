@@ -1,0 +1,19 @@
+..F                                                                      [100%]
+=================================== FAILURES ===================================
+______ test_rc20_public_incomplete_latest_native_vintage_must_fail_closed ______
+
+    def test_rc20_public_incomplete_latest_native_vintage_must_fail_closed() -> None:
+        # A newer event cannot be silently elided merely because R282 was missing.
+        # Otherwise the prior vintage masquerades as the current complete state.
+        owner, req = macro_owner(omit_latest="R282")
+>       assert owner.materialise(req) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D009', derived_occurrence_id='d009-728d52ed2e23675cf39c2ff095dd4a7226c778...=(VersionRefV1(context_id='vintage-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(derived_signal_id='D009', derived_occurrence_id='d009-728d52ed2e23675cf39c2ff095dd4a7226c778...=(VersionRefV1(context_id='vintage-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D009', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 10, 1,...'vintage-unit', version=1), subject_instrument='NVDA', selection_identity=None)), predecessor_selection_policy_refs=()))
+E        +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7f97bc5203c0>.materialise
+
+tests/product/derived_signal/test_m01_f4_macro_vintage_public.py:112: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/derived_signal/test_m01_f4_macro_vintage_public.py::test_rc20_public_incomplete_latest_native_vintage_must_fail_closed - AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D009', derived_occurrence_id='d009-728d52ed2e23675cf39c2ff095dd4a7226c778...=(VersionRefV1(context_id='vintage-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) is None
+ +  where DerivedSignalOccurrenceV1(derived_signal_id='D009', derived_occurrence_id='d009-728d52ed2e23675cf39c2ff095dd4a7226c778...=(VersionRefV1(context_id='vintage-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D009', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 10, 1,...'vintage-unit', version=1), subject_instrument='NVDA', selection_identity=None)), predecessor_selection_policy_refs=()))
+ +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7f97bc5203c0>.materialise
+1 failed, 2 passed in 0.09s
