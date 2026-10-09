@@ -153,13 +153,13 @@ def test_grouped_public_signed_notional_and_complete_identity_lineage(target: st
     assert result is not None
     if target == "D121":
         assert result.result == (
-            (("2026-12-18", "call", "wing"), Decimal("1200")),
-            (("2026-12-25", "put", "core"), Decimal("-1200")),
+            (("2026-12-18", "call", "wing"), (("signed_contracts", Decimal("2")), ("signed_premium_notional", Decimal("1200")))),
+            (("2026-12-25", "put", "core"), (("signed_contracts", Decimal("-3")), ("signed_premium_notional", Decimal("-1200")))),
         )
     else:
         assert result.result == (
-            (("2026-12-18", "far"), Decimal("1200")),
-            (("2026-12-25", "far"), Decimal("-1200")),
+            (("2026-12-18", "near"), (("signed_contracts", Decimal("2")), ("signed_premium_notional", Decimal("1200")))),
+            (("2026-12-25", "far"), (("signed_contracts", Decimal("-3")), ("signed_premium_notional", Decimal("-1200")))),
         )
     children = [owner.reads.get_derived_occurrence(oid) for oid in result.predecessor_occurrence_ids]
     assert len(children) == 4
