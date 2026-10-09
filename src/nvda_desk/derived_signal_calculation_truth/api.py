@@ -2066,6 +2066,25 @@ class _OwnerV1:
         predecessor_sync_instants: list[datetime] = []
         inherited_lineage: list[RawInputLineageV1] = []
         for predecessor_id in row.derived_dependencies:
+            if derived_signal_id == "D002" and predecessor_id == "D001":
+                # K01 has two mutually exclusive admitted time bases. R002's
+                # actual selected temporal kind determines whether D001 is
+                # meaningful: receipt-only age uses M00's collector timestamp
+                # directly and must neither invent nor require an event instant.
+                # Retain the declared D001 edge for true-instant observations.
+                source_values = raw_inputs.get("R002", ())
+                if not source_values:
+                    return None
+                selected_source = max(
+                    source_values,
+                    key=lambda item: (
+                        item.effective_at_utc,
+                        item.received_ts_utc,
+                        item.occurrence_id,
+                    ),
+                )
+                if selected_source.source_temporal_kind == "receipt_only":
+                    continue
             predecessor_row = catalogue_row(predecessor_id)
             if len(predecessor_row.parameter_profiles) != 1:
                 return None
