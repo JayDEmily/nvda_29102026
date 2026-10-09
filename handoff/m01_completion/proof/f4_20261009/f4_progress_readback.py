@@ -37,6 +37,18 @@ F4_BOUNDED_PUBLIC_ROWS = {
         "tests/product/derived_signal/test_m01_f4_positional_book_class.py",
         "M00 D134/D135 reconstructed ratio 4/30 with inherited lineage",
     ),
+    "D137": (
+        "RC12",
+        "tests/product/derived_signal/test_m01_f4_microprice_public.py",
+        "admitted M00 contemporaneous best bid/ask and independent bid/ask sizes; "
+        "microprice 101.6, exact raw lineage, future and missing-size refusal",
+    ),
+    "D138": (
+        "RC12",
+        "tests/product/derived_signal/test_m01_f4_book_slope_public.py",
+        "M00 source-complete price/size/side rows; D011 midpoint OLS 12.5/12; "
+        "incomplete and unsupported-side refusal, predecessor/raw lineage",
+    ),
     "D145": (
         "RC12",
         "tests/product/derived_signal/test_m01_f4_book_ofi_public.py",
@@ -172,8 +184,8 @@ def main() -> None:
         "F2_ACCEPTED_SCOPED_EVIDENCE": 18,
         "F3A_BOUNDED_PUBLIC_PROOF": 4,
         "F3B_BOUNDED_PUBLIC_PROOF": 7,
-        "F4_BOUNDED_PUBLIC_ROW_PROOF": 45,
-        "F4_OUTSTANDING_RELATIONSHIP_PROOF": 309,
+        "F4_BOUNDED_PUBLIC_ROW_PROOF": 53,
+        "F4_OUTSTANDING_RELATIONSHIP_PROOF": 301,
         "STAGE2_BOUNDARY_DEFERRED": 107,
         "F4_ZERO_EDGE_PUBLIC_PROOF": 1,
     }, statuses
@@ -221,7 +233,7 @@ def main() -> None:
     assert len(row_records) == 174
     assert sum(x["stage_boundary"] == "STAGE1_CLOSED" for x in row_records) == 144
     assert sum(x["stage_boundary"] == "CROSS_STAGE" for x in row_records) == 30
-    assert sum(x["outstanding_stage1_closed_edges"] for x in row_records) == 309
+    assert sum(x["outstanding_stage1_closed_edges"] for x in row_records) == 301
     with (OUT / "F4_ROW_EVIDENCE_MATRIX.csv").open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, list(row_records[0]))
         writer.writeheader()
@@ -243,7 +255,7 @@ def main() -> None:
                 "status": "UNPROVED" if missing else "NO_OPEN_STAGE1_EDGES_NOT_CLASS_ACCEPTANCE",
             }
         )
-    assert sum(x["stage1_closed_outstanding_edges"] for x in class_records) == 309
+    assert sum(x["stage1_closed_outstanding_edges"] for x in class_records) == 301
     with (OUT / "F4_CLASS_PROOF_RECONCILIATION.csv").open(
         "w", newline="", encoding="utf-8"
     ) as handle:
@@ -265,7 +277,7 @@ def main() -> None:
         "new_authorised_raw_edges": ["D134/R187", "D135/R187"],
         "zero_edge_sentinels": 1,
         "f4_dispositions": dict(sorted(statuses.items())),
-        "unresolved_rc12_public_rows": ["D131", "D137", "D138", "D141", "D142"],
+        "unresolved_rc12_public_rows": ["D131", "D141", "D142"],
         "historical_three_field_witness": "retained in commit 450b7e6; formerly produced zero",
         "repaired_event_witness": "explicit R187 operation; D134=10, D135=7, D136=3/17",
         "depth_snapshot_vs_event_reconstruction_authority": "AUTHORISATION_RESOLVED_EVENT_DRIVEN",

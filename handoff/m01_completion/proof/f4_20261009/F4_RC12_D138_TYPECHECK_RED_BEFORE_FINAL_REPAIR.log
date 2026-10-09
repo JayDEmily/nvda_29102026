@@ -1,0 +1,55 @@
+........................................................................ [  9%]
+........................................................................ [ 19%]
+........................................................................ [ 28%]
+........................................................................ [ 38%]
+........................................................................ [ 47%]
+........................................................................ [ 57%]
+........................................................................ [ 67%]
+........................................................................ [ 76%]
+........................................................................ [ 86%]
+...................................................F.................... [ 95%]
+...............................                                          [100%]
+=================================== FAILURES ===================================
+__________ test_current_source_tree_passes_admitted_static_typecheck ___________
+
+>   ???
+E   AssertionError: src/nvda_desk/derived_signal_calculation_truth/_stage1.py:2278: error: Incompatible types in assignment (expression has type "dict[str, KernelValueV1]", variable has type "list[Decimal]")  [assignment]
+E     src/nvda_desk/derived_signal_calculation_truth/_stage1.py:2279: error: No overload variant of "__getitem__" of "list" matches argument type "str"  [call-overload]
+E     src/nvda_desk/derived_signal_calculation_truth/_stage1.py:2279: note: Possible overload variants:
+E     src/nvda_desk/derived_signal_calculation_truth/_stage1.py:2279: note:     def __getitem__(self, SupportsIndex, /) -> Decimal
+E     src/nvda_desk/derived_signal_calculation_truth/_stage1.py:2279: note:     def __getitem__(self, slice[SupportsIndex | None, SupportsIndex | None, SupportsIndex | None], /) -> list[Decimal]
+E     src/nvda_desk/derived_signal_calculation_truth/_stage1.py:2291: error: "list[Decimal]" has no attribute "values"  [attr-defined]
+E     src/nvda_desk/derived_signal_calculation_truth/_stage1.py:2294: error: No overload variant of "__getitem__" of "list" matches argument type "str"  [call-overload]
+E     src/nvda_desk/derived_signal_calculation_truth/_stage1.py:2294: note: Possible overload variants:
+E     src/nvda_desk/derived_signal_calculation_truth/_stage1.py:2294: note:     def __getitem__(self, SupportsIndex, /) -> Decimal
+E     src/nvda_desk/derived_signal_calculation_truth/_stage1.py:2294: note:     def __getitem__(self, slice[SupportsIndex | None, SupportsIndex | None, SupportsIndex | None], /) -> list[Decimal]
+E     src/nvda_desk/derived_signal_calculation_truth/_stage1.py:2296: error: No overload variant of "__getitem__" of "list" matches argument type "str"  [call-overload]
+E     src/nvda_desk/derived_signal_calculation_truth/_stage1.py:2296: note: Possible overload variants:
+E     src/nvda_desk/derived_signal_calculation_truth/_stage1.py:2296: note:     def __getitem__(self, SupportsIndex, /) -> Decimal
+E     src/nvda_desk/derived_signal_calculation_truth/_stage1.py:2296: note:     def __getitem__(self, slice[SupportsIndex | None, SupportsIndex | None, SupportsIndex | None], /) -> list[Decimal]
+E     Found 5 errors in 1 file (checked 21 source files)
+E     
+E   assert 1 == 0
+E    +  where 1 = CompletedProcess(args=['/mnt/data/m01_f4_env/work/venv/bin/python', '-m', 'mypy', '--config-file', '/mnt/data/m01_f4_t...x | None, SupportsIndex | None], /) -> list[Decimal]\nFound 5 errors in 1 file (checked 21 source files)\n', stderr='').returncode
+
+/mnt/data/f4_completion/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/architecture/test_static_typecheck.py:32: AssertionError
+=========================== short test summary info ============================
+FAILED tests/architecture/test_static_typecheck.py::test_current_source_tree_passes_admitted_static_typecheck - AssertionError: src/nvda_desk/derived_signal_calculation_truth/_stage1.py:2278: error: Incompatible types in assignment (expression has type "dict[str, KernelValueV1]", variable has type "list[Decimal]")  [assignment]
+  src/nvda_desk/derived_signal_calculation_truth/_stage1.py:2279: error: No overload variant of "__getitem__" of "list" matches argument type "str"  [call-overload]
+  src/nvda_desk/derived_signal_calculation_truth/_stage1.py:2279: note: Possible overload variants:
+  src/nvda_desk/derived_signal_calculation_truth/_stage1.py:2279: note:     def __getitem__(self, SupportsIndex, /) -> Decimal
+  src/nvda_desk/derived_signal_calculation_truth/_stage1.py:2279: note:     def __getitem__(self, slice[SupportsIndex | None, SupportsIndex | None, SupportsIndex | None], /) -> list[Decimal]
+  src/nvda_desk/derived_signal_calculation_truth/_stage1.py:2291: error: "list[Decimal]" has no attribute "values"  [attr-defined]
+  src/nvda_desk/derived_signal_calculation_truth/_stage1.py:2294: error: No overload variant of "__getitem__" of "list" matches argument type "str"  [call-overload]
+  src/nvda_desk/derived_signal_calculation_truth/_stage1.py:2294: note: Possible overload variants:
+  src/nvda_desk/derived_signal_calculation_truth/_stage1.py:2294: note:     def __getitem__(self, SupportsIndex, /) -> Decimal
+  src/nvda_desk/derived_signal_calculation_truth/_stage1.py:2294: note:     def __getitem__(self, slice[SupportsIndex | None, SupportsIndex | None, SupportsIndex | None], /) -> list[Decimal]
+  src/nvda_desk/derived_signal_calculation_truth/_stage1.py:2296: error: No overload variant of "__getitem__" of "list" matches argument type "str"  [call-overload]
+  src/nvda_desk/derived_signal_calculation_truth/_stage1.py:2296: note: Possible overload variants:
+  src/nvda_desk/derived_signal_calculation_truth/_stage1.py:2296: note:     def __getitem__(self, SupportsIndex, /) -> Decimal
+  src/nvda_desk/derived_signal_calculation_truth/_stage1.py:2296: note:     def __getitem__(self, slice[SupportsIndex | None, SupportsIndex | None, SupportsIndex | None], /) -> list[Decimal]
+  Found 5 errors in 1 file (checked 21 source files)
+  
+assert 1 == 0
+ +  where 1 = CompletedProcess(args=['/mnt/data/m01_f4_env/work/venv/bin/python', '-m', 'mypy', '--config-file', '/mnt/data/m01_f4_t...x | None, SupportsIndex | None], /) -> list[Decimal]\nFound 5 errors in 1 file (checked 21 source files)\n', stderr='').returncode
+1 failed, 750 passed in 7.02s

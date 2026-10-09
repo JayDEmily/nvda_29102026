@@ -2265,10 +2265,40 @@ def _eval_k06(
             return _named_tuple((("subjects", subjects), ("matrix", tuple(matrix))))
         if identity == "D138":
             midpoint = _d(_scalar(derived, "D011"))
-            rows = _align_occurrence_fields(raw, ("R189", "R190", "R188"))
+            native_fields = ("R189", "R190", "R188")
+            # Each price/size/side triple denotes one native book row.  An
+            # incomplete triple may not vanish from an OLS regression by
+            # intersection of projected field-occurrence IDs.
+            ids_by_field = [
+                {value.occurrence_id for value in raw.get(field, ())} for field in native_fields
+            ]
+            if not ids_by_field[0] or any(ids != ids_by_field[0] for ids in ids_by_field[1:]):
+                return None
+            book_rows = _align_occurrence_fields(raw, native_fields)
+            for native_row in book_rows:
+                base = native_row["R189"]
+                source = (
+                    _metadata(base).get("source_provider"),
+                    _metadata(base).get("source_variant"),
+                )
+                if any(
+                    item.subject_instrument != base.subject_instrument
+                    or (
+                        _metadata(item).get("source_provider"),
+                        _metadata(item).get("source_variant"),
+                    )
+                    != source
+                    for item in native_row.values()
+                ):
+                    return None
+                if str(native_row["R188"].value).lower() not in {"bid", "ask"}:
+                    return None
+                price, amount = _d(native_row["R189"].value), _d(native_row["R190"].value)
+                if not price.is_finite() or not amount.is_finite() or amount < 0:
+                    return None
             slope_output: list[tuple[str, Decimal]] = []
             for side in ("bid", "ask"):
-                side_rows = [r for r in rows if str(r["R188"].value).lower() == side]
+                side_rows = [r for r in book_rows if str(r["R188"].value).lower() == side]
                 side_rows.sort(key=lambda r: abs(_d(r["R189"].value) - midpoint))
                 cumulative = _DEC0
                 distance_values: list[Decimal] = []
