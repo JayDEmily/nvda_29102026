@@ -1,0 +1,23 @@
+M01 F2b proposed event-identity source readback — 2026-10-09
+Repository checkout start HEAD: 176a87ffd9fde0201141dfdf3cafe8d2f6181308
+Inspected scope: current tracked src/, config/, schemas/, tests/, accepted catalogue/brief, M00 raw projection contract and Git history references.
+
+$ git grep -n -E "R284|R289" HEAD -- src tests config schemas
+HEAD:src/nvda_desk/derived_signal_calculation_truth/NVDA_DERIVED_SIGNAL_CATALOGUE.csv:63:D062,Derived Signals!66,Macro/events,Time to next scheduled event,time_to_event,R284,D001,K01_TIME,P_TIME,FIXED,,,seconds/minutes,Decision cycle,Relevant macro/company events,Elapsed UTC time from current decision instant to the next relevant scheduled event.,§5 K01_TIME — explicit D062 rule,
+HEAD:src/nvda_desk/derived_signal_calculation_truth/NVDA_DERIVED_SIGNAL_CATALOGUE.csv:65:D064,Derived Signals!68,Macro/events,Event importance score,event_importance,R289,,K07_WEIGHTED_SCORE,P_SCORE,PARAMETERISED,,,score,Event calendar update,Scheduled events,Map event category/importance and historical NVDA/market sensitivity into a bounded importance score.,§5 K07_WEIGHTED_SCORE — apply kernel to this row concept,
+HEAD:src/nvda_desk/derived_signal_calculation_truth/NVDA_DERIVED_SIGNAL_CATALOGUE.csv:66:D065,Derived Signals!69,Macro/events,Active event-window flag,event_window,R284,D062;D064,K08_RULE_BUCKET_POLICY,P_RULE,PARAMETERISED,CalculationParameterSet:P_RULE,,boolean/score,Decision cycle,Scheduled events,Flag whether the decision lies inside a pre/post-event window scaled by event importance.,§5 K08_RULE_BUCKET_POLICY — explicit D065 rule,R284 is authoritative for pre/post event-window selection; D062 is pre-event countdown only.
+HEAD:src/nvda_desk/derived_signal_calculation_truth/_stage1.py:1074:        for event_value in raw.get("R284", ()):
+HEAD:src/nvda_desk/derived_signal_calculation_truth/_stage1.py:2317:            for event_value in raw.get("R284", ()):
+HEAD:tests/product/derived_signal/test_m01_stage1_semantics.py:195:            "R284": (
+
+$ git grep -n -E "event_id|eventId|calendar_event|economic_event" HEAD -- src tests config schemas
+
+$ git grep -n -E "raw_signal_catalogue_id=.*(R284|R289)" HEAD -- src tests
+
+$ git ls-files | grep -Ei "(native.*event|event.*sample|economic.*calendar|\.db$|\.sqlite$|\.parquet$|\.jsonl$)"
+
+Existing M00 exact native selection mapping tested in tests/product/derived_signal/test_ds_t01_m00_projection.py (5 passed).
+Derived Signal product tests: 133 passed.
+Retained reviewer late-quote witness: 1 passed.
+No actual R284/R289 provider records or their native event-id field/verified revision stability were established in this active repository.
+No production, governance, catalogue, brief or M00 source changes performed.
