@@ -1924,9 +1924,10 @@ class _OwnerV1:
             if selection_result is None:
                 return None
             selected_event, current_events = selection_result
-            # Retain the exact latest revision(s) used for membership/window
-            # decision; do not persist superseded raw event revisions.
-            raw_inputs["R284"] = (selected_event,) if selected_event else current_events
+            # The nearest-event decision depends on every eligible competing
+            # event. Persist all latest event revisions considered, not only
+            # the winner; omit superseded revisions that did not participate.
+            raw_inputs["R284"] = current_events
             used_ids = {item.occurrence_id for item in raw_inputs["R284"]}
             direct_lineage = [
                 item
