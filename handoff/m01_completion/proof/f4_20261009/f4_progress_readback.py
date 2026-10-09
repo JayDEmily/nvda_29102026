@@ -1,7 +1,8 @@
 """Conservative F4 progress reconciliation against accepted catalogue and F3 ledger.
 
-Only two newly established public rows are advanced here. This script does NOT
-confer public proof on other D rows or on an entire relationship class.
+Only six bounded public rows and one zero-edge sentinel are advanced here.
+This script does NOT confer proof on other D rows or on an entire class.
+An unresolved D134/D135 public mismatch is NOT marked as passing.
 """
 
 from __future__ import annotations
@@ -24,6 +25,27 @@ F4_BOUNDED_PUBLIC_ROWS = {
         "tests/product/derived_signal/test_m01_f4_book_ofi_public.py",
         "admitted M00 four-field ordered book; exact raw lineage; "
         "incomplete-field and cutoff refusal",
+    ),
+    "D139": (
+        "RC12",
+        "tests/product/derived_signal/test_m01_f4_book_rates_public.py",
+        "controlled M00 book event rates by side/level; native event completeness; exact lineage",
+    ),
+    "D140": (
+        "RC12",
+        "tests/product/derived_signal/test_m01_f4_book_rates_public.py",
+        "controlled M00 book quantity rates by side/level; "
+        "native event completeness; exact lineage",
+    ),
+    "D143": (
+        "RC12",
+        "tests/product/derived_signal/test_m01_f4_direct_book_public.py",
+        "controlled M00 direct venue concentration; missing native venue refusal",
+    ),
+    "D144": (
+        "RC12",
+        "tests/product/derived_signal/test_m01_f4_direct_book_public.py",
+        "controlled M00 SMART/direct matched-book divergence; incomplete event refusal",
     ),
     "D151": (
         "RC13",
@@ -82,6 +104,13 @@ def main() -> None:
             assert item["f3c_disposition"] == "F4_OUTSTANDING_RELATIONSHIP_PROOF"
             item["f4_disposition"] = "F4_BOUNDED_PUBLIC_ROW_PROOF"
             item["f4_evidence"] = witness + ": " + proof
+        elif did == "D007" and item["source_type"] == "NONE":
+            assert item["f3c_disposition"] == "ZERO_EDGE_SENTINEL_NO_DEPENDENCY"
+            item["f4_disposition"] = "F4_ZERO_EDGE_PUBLIC_PROOF"
+            item["f4_evidence"] = (
+                "tests/product/derived_signal/test_m01_f4_required_field_public.py: "
+                "required-field policy and M00 projection with allowed absence, future refusal"
+            )
         else:
             item["f4_disposition"] = item["f3c_disposition"]
             item["f4_evidence"] = item["evidence_and_scope"]
@@ -91,10 +120,10 @@ def main() -> None:
         "F2_ACCEPTED_SCOPED_EVIDENCE": 18,
         "F3A_BOUNDED_PUBLIC_PROOF": 4,
         "F3B_BOUNDED_PUBLIC_PROOF": 7,
-        "F4_BOUNDED_PUBLIC_ROW_PROOF": 8,
-        "F4_OUTSTANDING_RELATIONSHIP_PROOF": 344,
+        "F4_BOUNDED_PUBLIC_ROW_PROOF": 35,
+        "F4_OUTSTANDING_RELATIONSHIP_PROOF": 317,
         "STAGE2_BOUNDARY_DEFERRED": 107,
-        "ZERO_EDGE_SENTINEL_NO_DEPENDENCY": 1,
+        "F4_ZERO_EDGE_PUBLIC_PROOF": 1,
     }, statuses
     csv_target = OUT / "F4_RELATIONSHIP_PROOF_LEDGER.csv"
     columns = [*edges[0].keys()]
@@ -112,11 +141,16 @@ def main() -> None:
         "total_dependency_edges": 488,
         "zero_edge_sentinels": 1,
         "f4_dispositions": dict(sorted(statuses.items())),
+        "unresolved_rc12_public_rows": ["D134", "D135", "D136"],
+        "confirmed_public_witness_failure": (
+            "D134 persisted zero with projected nonzero size and no undeclared R187 operation"
+        ),
+        "depth_snapshot_vs_event_reconstruction_authority": "BLOCKED",
         "stage1_f4_candidate_ready": False,
         "stage1_independent_acceptance": False,
         "boundary": (
-            "Row-level public witness is not a proof of every member of "
-            "RC12/RC13 or all 144 Stage-1-closed rows"
+            "Bounded row proofs do not prove all 144 Stage-1-closed rows or 30 cross-stage rows; "
+            "D134/D135 additionally need authoritative snapshot-versus-event reconstruction rule"
         ),
     }
     (OUT / "F4_PROGRESS_READBACK.json").write_text(
