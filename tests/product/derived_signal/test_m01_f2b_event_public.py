@@ -247,7 +247,7 @@ def test_d065_same_event_competing_identity_and_lineage() -> None:
     assert result is not None and result.result is False  # B is nearer than A.
     assert {
         x.observation_occurrence_id for x in result.raw_input_lineage if x.raw_signal_id == "R284"
-    } == {"schedule-b-1"}
+    } == {"schedule-a-1", "schedule-b-1"}  # Both revisions determined nearest selection.
     assert {
         x.observation_occurrence_id for x in result.raw_input_lineage if x.raw_signal_id == "R289"
     } == {"importance-b-1"}
@@ -442,6 +442,9 @@ def test_d065_equal_distance_tie_prefers_earlier_event() -> None:
     assert result is not None and result.result is True
     assert result.selection_identity is not None
     assert result.selection_identity.value_for("event_id") == "early"
+    assert {
+        r.observation_occurrence_id for r in result.raw_input_lineage if r.raw_signal_id == "R284"
+    } == {"event-early", "event-late"}
     assert {
         r.observation_occurrence_id for r in result.raw_input_lineage if r.raw_signal_id == "R289"
     } == {"importance-early"}
