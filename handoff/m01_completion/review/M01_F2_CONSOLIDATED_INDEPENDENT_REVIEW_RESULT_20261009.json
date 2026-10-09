@@ -1,0 +1,28 @@
+{
+  "review_date": "2026-10-09",
+  "review_role": "independent_reviewer",
+  "candidate_head": "867b875ba58063d2531ba67c9fe9fa2c76adc310",
+  "candidate_tree": "fe1e8e4c2704f595c7187dc1a650b7bfa79576fe",
+  "disposition": "F2_ACCEPTED",
+  "scope": "bounded F2a/F2b only; controlled provider-independent M00 public projection",
+  "independent_evidence": {
+    "combined_without_m00_durability_passed": 693,
+    "m01_postgres_passed": 44,
+    "focused_passed": 34,
+    "direct_ingress_adversarial": "passed",
+    "f2_scoped_edges": 18,
+    "f1_reference_edges": 488,
+    "ruff": "passed",
+    "mypy_src": "passed 21 files",
+    "architecture": "passed"
+  },
+  "not_proved": [
+    "real-provider native event-ID stability/mapping",
+    "real provider R289 categorical scoring",
+    "55-case M00 durability rerun by reviewer",
+    "all 488 F1 relationships",
+    "full 174-row Stage 1 acceptance",
+    "Stage 2"
+  ],
+  "next_authorised": "F3 internal engineering checkpoints then F4 Stage-1 review per EXEC_PLAN.md"
+}
