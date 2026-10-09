@@ -92,8 +92,13 @@ def _public_book(
         ),
         input_selection_policies=(
             api.InputSelectionPolicyVersionV1(
-                "f4-book-selection", 1, ("subject_instrument",),
-                timedelta(seconds=5), timedelta(seconds=5), ("true_instant",), (),
+                "f4-book-selection",
+                1,
+                ("subject_instrument",),
+                timedelta(seconds=5),
+                timedelta(seconds=5),
+                ("true_instant",),
+                (),
             ),
         ),
         unit_conventions=units,
@@ -113,8 +118,11 @@ def _public_book(
         context_refs=(),
         raw_input_bindings=tuple(
             api.RawInputBindingV1(
-                rid, api.VersionRefV1("f4-map-" + rid, 1),
-                api.VersionRefV1("f4-unit-" + unit, 1), "NVDA", None,
+                rid,
+                api.VersionRefV1("f4-map-" + rid, 1),
+                api.VersionRefV1("f4-unit-" + unit, 1),
+                "NVDA",
+                None,
             )
             for rid, unit in zip(FIELDS, UNITS, strict=True)
         ),
@@ -128,7 +136,10 @@ def test_d145_public_reconstructed_ofi_and_complete_source_lineage() -> None:
     assert result is not None
     assert result.result == Decimal(3)
     assert {item.observation_occurrence_id for item in result.raw_input_lineage} == {
-        "init-bid", "init-ask", "adjust-bid", "adjust-ask"
+        "init-bid",
+        "init-ask",
+        "adjust-bid",
+        "adjust-ask",
     }
     assert {item.raw_signal_id for item in result.raw_input_lineage} == set(FIELDS)
     assert owner.materialise(request) == result
@@ -145,7 +156,8 @@ def test_d145_public_refuses_future_update_and_missing_cutoff_history() -> None:
     result = owner.materialise(request)
     assert result is not None
     assert result.result == Decimal(2)
-    assert "adjust-ask" not in {
-        item.observation_occurrence_id for item in result.raw_input_lineage
-    }
-    assert owner.materialise(replace(request, knowledge_cutoff_utc=AS_OF-timedelta(seconds=4))) is None
+    assert "adjust-ask" not in {item.observation_occurrence_id for item in result.raw_input_lineage}
+    assert (
+        owner.materialise(replace(request, knowledge_cutoff_utc=AS_OF - timedelta(seconds=4)))
+        is None
+    )

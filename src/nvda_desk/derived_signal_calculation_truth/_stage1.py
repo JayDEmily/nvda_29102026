@@ -2941,7 +2941,18 @@ def _eval_k17(
         if window <= 0:
             return None
         start = as_of - timedelta(seconds=float(window))
-        rows = _align_occurrence_fields(raw, ("R187", "R188", "R189", "R190"))
+        required_fields = ("R187", "R188", "R189", "R190")
+        # Each book mutation is one native record with four required fields.
+        # Intersection-only alignment would silently drop a partially projected
+        # update and calculate OFI from a fabricated shorter event sequence.
+        event_ids = tuple(
+            tuple(item.occurrence_id for item in raw.get(field, ())) for field in required_fields
+        )
+        if any(len(ids) != len(set(ids)) for ids in event_ids):
+            return None
+        if not event_ids or any(set(ids) != set(event_ids[0]) for ids in event_ids[1:]):
+            return None
+        rows = _align_occurrence_fields(raw, required_fields)
         if not rows:
             return None
         state: dict[tuple[str, Decimal], Decimal] = {}
