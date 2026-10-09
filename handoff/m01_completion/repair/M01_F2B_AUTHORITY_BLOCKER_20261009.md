@@ -21,3 +21,24 @@ The F2a temporal-sign repair is preserved, but **F2b production work is BLOCKED*
 ## Stop boundary
 
 No F2b production modifications, no invented score extractor or join, no changed canonical catalogue/brief, no weakening of source/public schemas. Preserve F2a proof-before-production history and submit this full-Git BLOCKED evidence packet to the programme owner for that decision. Resume F2b only after the requisite law is established. One consolidated independent F2 review is still required after actual F2b closure.
+
+## Programme-owner clarification — 09-10-2026, 13:41 AEDT
+
+**Status: AUTHORISED CLARIFICATION.** This instruction is a programme-owner decision about *where event filtering is applied*, not a revision of the accepted D001–D209 catalogue, the existing M01 mathematical contracts, or the still-missing F2b event-correlation law.
+
+**M01 calculation truth (unchanged):**
+
+- **D064 — Event Importance Score:** preserve the accepted K07 importance-score calculation and its existing R289 input, `P_SCORE` parameter profile, immutable feature/transform/weight requirements, versioning, lineage and fail-closed missing-feature behaviour. Do **not** introduce the proposed event-level coefficient range `0.01–100` into M01.
+- **D065 — Active Event-Window Flag:** calculate the actual `TRUE`/`FALSE` applicability under accepted K08 rules, including selected R284 event time, deterministic window/tie-break selection, correlation with that selected event's D064, importance threshold, version/temporal eligibility, lineage and fail-closed missing/ambiguous prerequisites. Do **not** make D065 permanently `TRUE` or `FALSE` or fabricate a flag where required truth is unavailable.
+
+**Deferred to a future analysis/strategy module (record only; not authorised to implement in M01):**
+
+| Configuration | Type | Default | Effect |
+| --- | --- | --- | --- |
+| `event_filter_enabled` | Boolean | `FALSE` | `FALSE`: downstream strategy decisions do not apply event-window filtering. `TRUE`: downstream strategy decisions apply the **actual D065 result**. |
+
+Missing or unavailable D065 truth must never be silently converted into either Boolean value. This downstream switch controls *use* of a valid D065 result in strategy decisions; it does not alter the D064 or D065 calculation, eligibility or persistence semantics.
+
+**F2b authority remains `BLOCKED`:** This clarification does **not** identify the stable versioned event identity, its admitted raw-projection carrier, or the exact update/revision matching rule needed to associate separate R284 scheduled-event and R289 importance/sensitivity observations. The **ONE AUTHORITY QUESTION** above remains open *unchanged*. No invented extractor or event join, no weakened accepted contract, no F2b production repair and no F3 progression are authorised.
+
+**Routing:** retain the consolidated F2a→F2b worker sequence with one independent review only **after both** F2 units are established. At the present unresolved F2b prerequisite, invoke the governing immediate-`BLOCKED` stop; preserve the F2a checkpoint and return one full-Git handoff. This clarification grants neither F2b acceptance, F2 acceptance, Stage-1 acceptance nor authority to begin F3/F4/Stage 2. It supersedes only the earlier proposed `0.01–100` coefficient range and the suggestion to hardcode D065 to `TRUE`.

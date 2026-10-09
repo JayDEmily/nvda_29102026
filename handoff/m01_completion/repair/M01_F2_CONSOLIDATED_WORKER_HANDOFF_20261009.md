@@ -40,3 +40,11 @@ When F2a and F2b are established, rerun the required focused and relevant regres
 **Reviewer boundary:** One independent review of the consolidated F2 candidate, not two individual F2a/F2b reviews. No F2 `PASS` or F3 authorisation until that review. F3's D109/D170 and D121/D122 grouped predecessor proof and F4's Stage-1 complete review remain separate work; Stage 2 stays blocked until full Stage-1 acceptance. Genuine missing authority, failed invariant or unsafe condition still requires an immediate stop rather than forced batching.
 
 **Delivery to Programme Owner:** Return **one downloadable full-Git `.tar.gz`** containing everything. Do not require separate instruction, proof, checksum or JSON files to be handed to the next actor.
+
+## Programme-owner event-filter clarification, 09-10-2026 — applies to this handoff
+
+The programme owner has separated *calculation truth* from a future strategy decision to *use* the resulting event-window flag. Preserve D064's accepted score, original R289/`P_SCORE` inputs, versions and lineage; preserve D065's actual K08 Boolean calculation, event-time selection, event identity, importance threshold and refusal behaviour. Do not add an event-level `0.01–100` coefficient range to M01 or hardcode D065 `TRUE`/`FALSE`.
+
+Record for a **future analysis/strategy module only**, without implementation here: `event_filter_enabled` is Boolean, default `FALSE`; `FALSE` disables downstream use of event-window filtering, `TRUE` causes strategy decisions to apply the actual D065 result, and missing/unavailable D065 is never treated as a Boolean. This switch does not change D064/D065 signal truth.
+
+**F2b still `BLOCKED`** on the same unestablished R284↔R289 stable versioned event identity and revision-matching law documented in `M01_F2B_AUTHORITY_BLOCKER_20261009.md`; this clarification does not supply that law. Preserve the existing F2a proof/code and the internal F2a→F2b sequence, but stop at the F2b missing-authority invariant and return a full-Git handoff. Do not claim consolidated F2 acceptance or enter F3, F4 or Stage 2. The future analysis/strategy module is not authorised.
