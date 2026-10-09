@@ -153,7 +153,11 @@ def _public_books(
     owner = api.create_owner(
         raw_projection_reader=m00.reads,
         raw_projection_mappings=tuple(mapped),
-        parameter_sets=(api.CalculationParameterSetV1("f4-basic", 1, "P_BASIC", (("subject_instrument", "NVDA"),)),),
+        parameter_sets=(
+            api.CalculationParameterSetV1(
+                "f4-basic", 1, "P_BASIC", (("subject_instrument", "NVDA"),)
+            ),
+        ),
         input_selection_policies=(
             api.InputSelectionPolicyVersionV1(
                 "f4-book",

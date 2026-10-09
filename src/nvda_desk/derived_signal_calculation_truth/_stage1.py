@@ -1421,7 +1421,16 @@ def _eval_k02(
             den = bs + asz
             return None if den == 0 else (ask * bs + bid * asz) / den
         if identity == "D143":
+            # Every direct-exchange mutation must carry its own exact native
+            # venue, operation, side, level, price and quantity. Dropping a
+            # missing field would alter the concentration denominator.
+            direct_field_ids = ("R192", "R193", "R194", "R195", "R196", "R197")
+            event_ids = [{v.occurrence_id for v in raw.get(rid, ())} for rid in direct_field_ids]
+            if not event_ids[0] or any(ids != event_ids[0] for ids in event_ids[1:]):
+                return None
             direct_events = _book_events(raw, direct=True)
+            if len(direct_events) != len(event_ids[0]):
+                return None
             direct_state = _book_final_state(direct_events)
             by_venue: dict[str, Decimal] = {}
             for (venue, _, _), (_, size) in direct_state.items():
@@ -1429,6 +1438,15 @@ def _eval_k02(
             total = sum(by_venue.values(), _DEC0)
             return None if total <= 0 else sum(((v / total) ** 2 for v in by_venue.values()), _DEC0)
         if identity == "D144":
+            for field_ids in (
+                ("R185", "R187", "R188", "R189", "R190"),
+                ("R192", "R193", "R194", "R195", "R196", "R197"),
+            ):
+                event_ids = [{v.occurrence_id for v in raw.get(rid, ())} for rid in field_ids]
+                if not event_ids[0] or any(ids != event_ids[0] for ids in event_ids[1:]):
+                    return None
+                if len(_book_events(raw, direct=field_ids[0] == "R192")) != len(event_ids[0]):
+                    return None
             smart = _book_final_state(_book_events(raw))
             direct = _book_final_state(_book_events(raw, direct=True))
             gap_rows: list[tuple[str, tuple[tuple[str, Decimal], ...]]] = []
