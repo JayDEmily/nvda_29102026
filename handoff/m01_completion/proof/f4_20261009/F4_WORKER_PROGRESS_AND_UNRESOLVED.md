@@ -70,3 +70,29 @@ own-kernel/refusal obligations remain open. This is bounded RC02 proof only,
 not proof of every RC02 row or full Stage-1 acceptance. Continue F4 without
 new intermediate independent review; preserve single consolidated acceptance
 boundary. No Stage 2 implementation or authority change.
+
+
+## 10-10-2026 expanded RC02 public proof — supersedes 272-edge snapshot
+
+Proof-first commit `892ab71` adds
+`tests/product/derived_signal/test_m01_f4_rc02_scalar_algebra_public.py`
+with **25 passing tests** for D025 (0.5), D042 (1.25 percentage points),
+D043 (1 percentage point), D047 (10 bps), D057 (-2 points, ratio 0.9),
+D058 (1 point, ratio 20/19), D059 (-2 points, ratio 19/21), and D060
+(ratio 110/19). Inputs are separately owned native M00 observations, selected
+via exact public versioned projections. Each result is tested for canonical
+numerical result, full R lineage and deterministic retry. Missing, future and
+wrong-subject raw inputs are refused, as are zero denominators for D025/D060.
+No production repair was required for these eight rows.
+
+Complete applicable non-durability regression **793 passed** in live
+PostgreSQL 17.9 separate M00/M01 role environment; Ruff and mypy (21 source
+files) passed. Exact logs:
+`F4_RC02_EXPANDED_POSTGRESQL_COMBINED_REGRESSION.log`,
+`F4_RC02_EXPANDED_RUFF_PASS.log`, `F4_RC02_EXPANDED_MYPY_PASS.log`.
+The M00 55 durability tests have not been rerun in this pass.
+The reconciled F4 ledger now classifies **99 bounded F4 public edges**, 255
+outstanding Stage-1-closed edges across 105 rows, 107 deferred Stage-2
+edges, 18 accepted F2 scoped evidence, 11 bounded F3 edges, and one D007
+zero-edge sentinel. 30 cross-stage own-kernel/refusal obligations remain
+unproved. Stage 1 remains unaccepted; this is an internal proof checkpoint.

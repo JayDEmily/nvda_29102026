@@ -45,6 +45,54 @@ F4_BOUNDED_PUBLIC_ROWS = {
         "admitted M00 bid/ask size source identities; imbalance 0.6, "
         "exact raw lineage; missing/future/wrong-subject refusal",
     ),
+    "D025": (
+        "RC02",
+        "tests/product/derived_signal/test_m01_f4_rc02_scalar_algebra_public.py",
+        "session price range position 0.5; R039/R040/R037 separate M00 sources; "
+        "zero-range, missing, future and subject refusal",
+    ),
+    "D042": (
+        "RC02",
+        "tests/product/derived_signal/test_m01_f4_rc02_scalar_algebra_public.py",
+        "Treasury 2s10s percentage-point slope 1.25 from canonical decimal yields "
+        "R247/R249; missing/future/subject refusal",
+    ),
+    "D043": (
+        "RC02",
+        "tests/product/derived_signal/test_m01_f4_rc02_scalar_algebra_public.py",
+        "Treasury 3m10y slope 1 from canonical decimal yields R246/R249; "
+        "missing/future/subject refusal",
+    ),
+    "D047": (
+        "RC02",
+        "tests/product/derived_signal/test_m01_f4_rc02_scalar_algebra_public.py",
+        "SOFR minus EFFR 10 basis points from canonical decimal R257/R256; "
+        "missing/future/subject refusal",
+    ),
+    "D057": (
+        "RC02",
+        "tests/product/derived_signal/test_m01_f4_rc02_scalar_algebra_public.py",
+        "VIX1D minus VIX9D -2 index points and ratio 0.9; R238/R239 lineage; "
+        "missing/future/subject refusal",
+    ),
+    "D058": (
+        "RC02",
+        "tests/product/derived_signal/test_m01_f4_rc02_scalar_algebra_public.py",
+        "VIX9D minus VIX 1 index point and ratio 20/19; R239/R236 lineage; "
+        "missing/future/subject refusal",
+    ),
+    "D059": (
+        "RC02",
+        "tests/product/derived_signal/test_m01_f4_rc02_scalar_algebra_public.py",
+        "VIX minus VIX3M -2 index points and ratio 19/21; R236/R240 lineage; "
+        "missing/future/subject refusal",
+    ),
+    "D060": (
+        "RC02",
+        "tests/product/derived_signal/test_m01_f4_rc02_scalar_algebra_public.py",
+        "VVIX/VIX ratio 110/19, zero-VIX and missing/future/subject refusal; "
+        "R237/R236 lineage",
+    ),
     "D131": (
         "RC12",
         "tests/product/derived_signal/test_m01_f4_option_depth_public.py",
@@ -102,7 +150,8 @@ F4_BOUNDED_PUBLIC_ROWS = {
     "D139": (
         "RC12",
         "tests/product/derived_signal/test_m01_f4_book_rates_public.py",
-        "controlled M00 book event rates by side/level; native event completeness; exact lineage",
+        "controlled M00 book event rates by side/level; native event completeness; "
+        "exact lineage",
     ),
     "D140": (
         "RC12",
@@ -228,8 +277,8 @@ def main() -> None:
         "F2_ACCEPTED_SCOPED_EVIDENCE": 18,
         "F3A_BOUNDED_PUBLIC_PROOF": 4,
         "F3B_BOUNDED_PUBLIC_PROOF": 7,
-        "F4_BOUNDED_PUBLIC_ROW_PROOF": 82,
-        "F4_OUTSTANDING_RELATIONSHIP_PROOF": 272,
+        "F4_BOUNDED_PUBLIC_ROW_PROOF": 99,
+        "F4_OUTSTANDING_RELATIONSHIP_PROOF": 255,
         "STAGE2_BOUNDARY_DEFERRED": 107,
         "F4_ZERO_EDGE_PUBLIC_PROOF": 1,
     }, statuses
@@ -277,7 +326,7 @@ def main() -> None:
     assert len(row_records) == 174
     assert sum(x["stage_boundary"] == "STAGE1_CLOSED" for x in row_records) == 144
     assert sum(x["stage_boundary"] == "CROSS_STAGE" for x in row_records) == 30
-    assert sum(x["outstanding_stage1_closed_edges"] for x in row_records) == 272
+    assert sum(x["outstanding_stage1_closed_edges"] for x in row_records) == 255
     with (OUT / "F4_ROW_EVIDENCE_MATRIX.csv").open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, list(row_records[0]))
         writer.writeheader()
@@ -299,7 +348,7 @@ def main() -> None:
                 "status": "UNPROVED" if missing else "NO_OPEN_STAGE1_EDGES_NOT_CLASS_ACCEPTANCE",
             }
         )
-    assert sum(x["stage1_closed_outstanding_edges"] for x in class_records) == 272
+    assert sum(x["stage1_closed_outstanding_edges"] for x in class_records) == 255
     with (OUT / "F4_CLASS_PROOF_RECONCILIATION.csv").open(
         "w", newline="", encoding="utf-8"
     ) as handle:

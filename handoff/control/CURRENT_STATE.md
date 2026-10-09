@@ -2,6 +2,25 @@
 
 ## Status
 
+## 10-10-2026 F4 RC02 expanded continuation — latest proof inventory
+
+**Internal checkpoint only:** A further eight RC02 raw-scalar rows have been
+proved through independent controlled M00 public records: D025, D042, D043,
+D047, D057, D058, D059 and D060. Each has exact persisted numerical result,
+separate raw occurrence lineage, missing-source refusal, future/foreign-subject
+refusal and retry proof; D025/D060 additionally refuse zero denominators.
+Proof-first Git commit `892ab71`. Combined PostgreSQL 17.9 M00/M01 regression:
+**793 passed**; Ruff and 21-file mypy checks pass. There is no production code
+change in the expanded RC02 proof unit.
+
+The current reconciled 490 authoritative edges and D007 zero-edge sentinel
+contain **255 unproved Stage-1-closed relationship edges across 105 rows**;
+**30 cross-stage own-kernel/public-refusal obligations** remain unproved.
+Neither Stage 1 nor F4 is accepted. Stage 2 remains unauthorised. See the
+latest `F4_PROGRESS_READBACK.json` for exact dispositions. The immediately
+following 272-edge RC02 and earlier F4 entries are historical snapshots, not
+current status.
+
 ## 10-10-2026 current F4 continuation — supersedes older F4 blocker/count statements below
 
 **ACTIVE: F4 INTERNAL PROOF; NOT A STAGE-1 CANDIDATE.** The Programme Owner's
