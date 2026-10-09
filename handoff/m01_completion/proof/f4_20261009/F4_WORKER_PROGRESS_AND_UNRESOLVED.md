@@ -160,3 +160,36 @@ bounded F4 public edges plus inherited 18 accepted F2 scoped, 11 bounded F3,
 107 deferred cross-stage edges; **222 outstanding Stage-1-closed edges across
 92 rows** and **all 30 cross-stage own-kernel/refusal row obligations** remain.
 This is not the consolidated F4/Stage-1 review candidate.
+
+
+## 10-10-2026 RC01 D062 + RC20 D009 complete-vintage proof and repair
+
+- `feeeb52` is proof-first public M00 D062 earliest eligible future event:
+  event in 120 seconds/2 minutes beats 300 seconds; exact native R284 and
+  D001 predecessor/raw R002/R003 lineage; historical/past-only, missing and
+  future-received input refusal; deterministic retry.
+- `b509b04` is a separately committed **red** RC20 public D009 macro-vintage
+  test (1 failed, 2 passed): a newer source-native revision with missing
+  required R282 was excluded from alignment, causing older complete revision
+  to masquerade as latest known vintage. Original red log preserved:
+  `F4_RC20_MACRO_INCOMPLETE_PUBLIC_RED.log`.
+- `a5ab688` is the bounded production completeness repair for native D009
+  macro revision fields R280/R281/R282. Focused D009/D062: 6 passed;
+  no changes to the normative catalogue or M00 source ownership.
+- The full applicable non-durability PostgreSQL 17.9 suite passes **838
+  tests**. Exact invocation after sourcing `/mnt/data/f4_pg_env/postgres.env`:
+  `PYTHONPATH=.:src python -m pytest -q tests/product tests/architecture tests/bootstrap tests/implementation/derived_signal --ignore=tests/product/raw_signal/test_u05_postgresql_durability.py`
+  with `NVDA_TEST_M00_POSTGRES_DSN` and `NVDA_TEST_M01_POSTGRES_DSN`
+  individually set to local PostgreSQL 17.9 `f4_m00` and `f4_m01` roles.
+  `python -m ruff check src tests tools handoff/m01_completion/proof/f4_20261009/f4_progress_readback.py`
+  and `python -m mypy src` both pass. Logs:
+  `F4_RC01_RC20_838_POSTGRESQL_COMBINED_REGRESSION.log`,
+  `F4_RC01_RC20_838_RUFF.log`, `F4_RC01_RC20_838_MYPY.log`.
+- Readback is conservatively reconciled to **137 newly bounded F4 public
+  relationship edges**, **217 still-unproved Stage-1-closed edges across 90
+  rows**, 18 inherited accepted F2 scoped edges, 11 bounded F3 edges, 107
+  deferred cross-stage edges, and the D007 zero-edge sentinel. All 30
+  cross-stage own-kernel/refusal obligations remain. Do not promote
+  bounded proof status into Stage-1 acceptance.
+- Separately scoped M00 durability 55/55 pass remains prior clean pinned
+  readback at `30c5e54`; it was **not rerun** for these two public rows.

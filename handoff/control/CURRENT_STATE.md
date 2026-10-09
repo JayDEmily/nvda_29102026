@@ -2,6 +2,26 @@
 
 ## Status
 
+## 10-10-2026 F4 RC01 event countdown and RC20 macro-vintage completeness (current)
+
+**F4 internal proof checkpoint; not Stage-1 acceptance.** Proof-first Git
+commits `feeeb52` and `b509b04` establish public native M00-to-M01 D062
+countdown and D009 vintage behaviour. The deliberately red D009 test
+reproduced silent promotion of an older complete vintage when a newer native
+vintage is missing a required revision field. Bounded production repair
+`a5ab688` refuses incomplete newer revisions instead of filtering them out.
+
+Combined PostgreSQL 17.9 role-separated regression: **838 passed**;
+Ruff and mypy passed. Evidence logs:
+`handoff/m01_completion/proof/f4_20261009/F4_RC01_RC20_838_POSTGRESQL_COMBINED_REGRESSION.log`,
+`F4_RC01_RC20_838_RUFF.log`, `F4_RC01_RC20_838_MYPY.log`.
+The reconciled catalogue remains **490 edges + D007 zero-edge sentinel**;
+**217 unproved Stage-1-closed edges across 90 rows**, **30 cross-stage
+own-kernel/refusal obligations** remain open. The separate 55 M00 durability
+cases passed in the clean pinned environment at prior checkpoint `30c5e54`;
+they were not rerun for these new D009/D062 proofs. Stage 2 is unauthorised.
+
+
 ## 10-10-2026 F4 RC01 + RC14 exact-contract proof; clean M00 durability (current)
 
 **F4 internal checkpoint only, Stage 1 not accepted.** Public M00 tests now cover
