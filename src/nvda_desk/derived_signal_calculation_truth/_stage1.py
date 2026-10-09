@@ -2602,7 +2602,7 @@ def _eval_k08(
         if identity in {"D139", "D140", "D141"}:
             # A projected native event is atomic: a missing operation/side/level/
             # quantity cannot silently remove one mutation from the history.
-            native_book_fields = ("R185", "R187", "R188", "R190")
+            native_book_fields: tuple[str, ...] = ("R185", "R187", "R188", "R190")
             if identity == "D141":
                 native_book_fields = (*native_book_fields, "R189")
             native_occurrences = [
@@ -2628,6 +2628,7 @@ def _eval_k08(
                     or tuple(sorted(set(upper_bounds))) != upper_bounds
                 ):
                     return None
+                typed_upper_bounds = cast(tuple[int, ...], upper_bounds)
                 attr = "inserted_size" if identity == "D139" else "removed_size"
                 selected_mutations = [m for m in book_mutations if getattr(m, attr) > 0]
                 groups: dict[tuple[str, int], tuple[int, Decimal]] = {}
@@ -2636,13 +2637,13 @@ def _eval_k08(
                     level = mutation.event.position
                     if side not in {"bid", "ask"} or level <= 0:
                         return None
-                    bucket = next((b for b in upper_bounds if level <= b), None)
+                    bucket = next((b for b in typed_upper_bounds if level <= b), None)
                     if bucket is None:
                         return None
                     key = (side, bucket)
-                    count, size = groups.get(key, (0, _DEC0))
-                    groups[key] = (count + 1, size + getattr(mutation, attr))
-                count = Decimal(len(selected_mutations)) / window
+                    bucket_count, bucket_size = groups.get(key, (0, _DEC0))
+                    groups[key] = (bucket_count + 1, bucket_size + getattr(mutation, attr))
+                total_count_rate = Decimal(len(selected_mutations)) / window
                 size = sum((getattr(m, attr) for m in selected_mutations), _DEC0) / window
                 by_side_level = tuple(
                     (key, (Decimal(n) / window, total / window))
@@ -2650,7 +2651,7 @@ def _eval_k08(
                 )
                 return _named_tuple(
                     (
-                        ("event_count_rate", count),
+                        ("event_count_rate", total_count_rate),
                         ("size_rate", size),
                         ("by_side_level", by_side_level),
                     )
