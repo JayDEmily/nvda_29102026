@@ -1082,7 +1082,20 @@ def _eval_k01(
             return None
         return _phase_for_local(local, params.get("session_phases"))
     if identity == "D009":
-        rows = _align_occurrence_fields(raw, ("R280", "R281", "R282"))
+        # A macro revision is one co-referenced native M00 occurrence with
+        # all three versioning fields. Set intersection alone would silently
+        # drop a newer partial revision and mislabel an older one as current.
+        required_fields = ("R280", "R281", "R282")
+        occurrence_sets: list[set[str]] = []
+        for field in required_fields:
+            values = raw.get(field, ())
+            ids = {item.occurrence_id for item in values}
+            if not values or len(ids) != len(values):
+                return None
+            occurrence_sets.append(ids)
+        if any(ids != occurrence_sets[0] for ids in occurrence_sets[1:]):
+            return None
+        rows = _align_occurrence_fields(raw, required_fields)
         visible = tuple(
             row for row in rows if all(item.received_ts_utc <= cutoff for item in row.values())
         )
