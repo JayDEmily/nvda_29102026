@@ -1,0 +1,64 @@
+FF.F                                                                     [100%]
+=================================== FAILURES ===================================
+___ test_d124_public_groups_call_put_same_strike_and_proves_hhi_and_lineage ____
+
+    def test_d124_public_groups_call_put_same_strike_and_proves_hhi_and_lineage() -> None:
+        owner, request = public_concentration()
+        result = owner.materialise(request)
+        assert result is not None
+        fields = dict(result.result)
+>       assert fields["hhi"] == Decimal(37) / Decimal(72)
+E       AssertionError: assert Decimal('0.4305555555555555555555555555') == (Decimal('37') / Decimal('72'))
+E        +  where Decimal('37') = Decimal(37)
+E        +  and   Decimal('72') = Decimal(72)
+
+tests/product/derived_signal/test_m01_f3_open_interest_public.py:146: AssertionError
+_____ test_d124_public_refuses_invalid_contract_grouping[missing_identity] _____
+
+variation = 'missing_identity'
+
+    @pytest.mark.parametrize("variation", ["missing_identity", "duplicate_call", "negative_oi"])
+    def test_d124_public_refuses_invalid_contract_grouping(variation: str) -> None:
+        if variation == "duplicate_call":
+            # The admitted request type rejects duplicate raw/identity bindings
+            # before the owner is constructed; this is still a fail-closed refusal.
+            with pytest.raises(ValueError, match="distinct raw-signal/subject/selection"):
+                public_concentration(duplicate_call=True)
+            return
+        owner, request = public_concentration(**{variation: True})
+>       assert owner.materialise(request) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D124', derived_occurrence_id='d124-bc476c131ccb4eeb05fdf2e037aefcddfd4fd4...on_identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),)), supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(derived_signal_id='D124', derived_occurrence_id='d124-bc476c131ccb4eeb05fdf2e037aefcddfd4fd4...on_identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),)), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D124', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 8, 3, ...expiry', '2026-12-18'), ('strike', Decimal('105')), ('option_right', 'call'))))), predecessor_selection_policy_refs=()))
+E        +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7f1b36005700>.materialise
+
+tests/product/derived_signal/test_m01_f3_open_interest_public.py:167: AssertionError
+_______ test_d124_public_refuses_invalid_contract_grouping[negative_oi] ________
+
+variation = 'negative_oi'
+
+    @pytest.mark.parametrize("variation", ["missing_identity", "duplicate_call", "negative_oi"])
+    def test_d124_public_refuses_invalid_contract_grouping(variation: str) -> None:
+        if variation == "duplicate_call":
+            # The admitted request type rejects duplicate raw/identity bindings
+            # before the owner is constructed; this is still a fail-closed refusal.
+            with pytest.raises(ValueError, match="distinct raw-signal/subject/selection"):
+                public_concentration(duplicate_call=True)
+            return
+        owner, request = public_concentration(**{variation: True})
+>       assert owner.materialise(request) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D124', derived_occurrence_id='d124-bc476c131ccb4eeb05fdf2e037aefcddfd4fd4...on_identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),)), supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(derived_signal_id='D124', derived_occurrence_id='d124-bc476c131ccb4eeb05fdf2e037aefcddfd4fd4...on_identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),)), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D124', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 8, 3, ...expiry', '2026-12-18'), ('strike', Decimal('105')), ('option_right', 'call'))))), predecessor_selection_policy_refs=()))
+E        +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7f1b360053f0>.materialise
+
+tests/product/derived_signal/test_m01_f3_open_interest_public.py:167: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/derived_signal/test_m01_f3_open_interest_public.py::test_d124_public_groups_call_put_same_strike_and_proves_hhi_and_lineage - AssertionError: assert Decimal('0.4305555555555555555555555555') == (Decimal('37') / Decimal('72'))
+ +  where Decimal('37') = Decimal(37)
+ +  and   Decimal('72') = Decimal(72)
+FAILED tests/product/derived_signal/test_m01_f3_open_interest_public.py::test_d124_public_refuses_invalid_contract_grouping[missing_identity] - AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D124', derived_occurrence_id='d124-bc476c131ccb4eeb05fdf2e037aefcddfd4fd4...on_identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),)), supersedes_derived_occurrence_id=None) is None
+ +  where DerivedSignalOccurrenceV1(derived_signal_id='D124', derived_occurrence_id='d124-bc476c131ccb4eeb05fdf2e037aefcddfd4fd4...on_identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),)), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D124', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 8, 3, ...expiry', '2026-12-18'), ('strike', Decimal('105')), ('option_right', 'call'))))), predecessor_selection_policy_refs=()))
+ +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7f1b36005700>.materialise
+FAILED tests/product/derived_signal/test_m01_f3_open_interest_public.py::test_d124_public_refuses_invalid_contract_grouping[negative_oi] - AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D124', derived_occurrence_id='d124-bc476c131ccb4eeb05fdf2e037aefcddfd4fd4...on_identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),)), supersedes_derived_occurrence_id=None) is None
+ +  where DerivedSignalOccurrenceV1(derived_signal_id='D124', derived_occurrence_id='d124-bc476c131ccb4eeb05fdf2e037aefcddfd4fd4...on_identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),)), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D124', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 8, 3, ...expiry', '2026-12-18'), ('strike', Decimal('105')), ('option_right', 'call'))))), predecessor_selection_policy_refs=()))
+ +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7f1b360053f0>.materialise
+3 failed, 1 passed in 0.10s

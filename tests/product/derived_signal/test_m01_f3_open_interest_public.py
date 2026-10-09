@@ -157,5 +157,11 @@ def test_d124_public_groups_call_put_same_strike_and_proves_hhi_and_lineage() ->
 
 @pytest.mark.parametrize("variation", ["missing_identity", "duplicate_call", "negative_oi"])
 def test_d124_public_refuses_invalid_contract_grouping(variation: str) -> None:
+    if variation == "duplicate_call":
+        # The admitted request type rejects duplicate raw/identity bindings
+        # before the owner is constructed; this is still a fail-closed refusal.
+        with pytest.raises(ValueError, match="distinct raw-signal/subject/selection"):
+            public_concentration(duplicate_call=True)
+        return
     owner, request = public_concentration(**{variation: True})
     assert owner.materialise(request) is None
