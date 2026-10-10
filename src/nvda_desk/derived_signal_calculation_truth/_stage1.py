@@ -1826,27 +1826,17 @@ def _eval_k02(
             )
             return _d(expected_fill) * liquidation_quantity * contract_multiplier - non_slippage
         if identity == "D193":
-            realised_fill, commission_paid, executed_quantity, contract_multiplier = (
-                _d(_scalar(raw, x)) for x in ("R229", "R233", "R228", "R016")
-            )
-            decision_benchmark = _d(_scalar(derived, "D087"))
-            realised_side = str(params.get("side", "")).lower()
-            realised_sign = (
-                Decimal(1)
-                if realised_side == "buy"
-                else Decimal(-1)
-                if realised_side == "sell"
-                else None
-            )
-            return (
-                None
-                if realised_sign is None
-                else commission_paid
-                + realised_sign
-                * (realised_fill - decision_benchmark)
-                * executed_quantity
-                * contract_multiplier
-            )
+            # The signed per-fill slippage is already established by D179
+            # against the admitted R221 arrival benchmark.  D087 remains a
+            # declared quote predecessor but is not that execution benchmark.
+            # Recomputing from D087 silently changes the cost basis.
+            commission_paid = _d(_scalar(raw, "R233"))
+            executed_quantity = _d(_scalar(raw, "R228"))
+            contract_multiplier = _d(_scalar(raw, "R016"))
+            signed_slippage = _named(_scalar(derived, "D179")).get("price_slippage")
+            if signed_slippage is None:
+                return None
+            return commission_paid + _d(signed_slippage) * executed_quantity * contract_multiplier
         if identity == "D199":
             observed = _d(_scalar(raw, "R216"))
             explained = sum(
