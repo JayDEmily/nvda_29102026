@@ -344,3 +344,26 @@ def test_rc03_public_d024_uses_three_distinct_fixed_predecessor_anchors() -> Non
         "compound-30m",
     }
     assert owner.materialise(request) == out
+
+
+def test_rc03_public_d024_refuses_absent_thirty_minute_predecessor_history() -> None:
+    end = NOW - timedelta(seconds=2)
+    events = (
+        ("R143", "short-current", Decimal(120), end, "NVDA"),
+        ("R143", "short-1m", Decimal(110), end - timedelta(seconds=60), "NVDA"),
+        ("R143", "short-5m", Decimal(100), end - timedelta(seconds=300), "NVDA"),
+    )
+    owner, request = _public("D024", events)
+    # D024 may not invent its D021 thirty-minute predecessor from a shorter history.
+    assert owner.materialise(request) is None
+
+
+def test_rc03_public_history_ignores_future_received_competitor_at_cutoff() -> None:
+    events = (
+        *_anchored_events(60),
+        ("R143", "future-quote", Decimal(800), NOW + timedelta(seconds=2), "NVDA"),
+    )
+    owner, request = _public("D019", events, anchor=60)
+    out = owner.materialise(request)
+    assert out is not None and out.result == (Decimal(120) / Decimal(100)).ln()
+    assert "future-quote" not in {x.observation_occurrence_id for x in out.raw_input_lineage}
