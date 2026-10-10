@@ -1939,16 +1939,16 @@ def _eval_k03(
                 ):
                     return None
                 surfaces[snapshot][grid_key] = point
-            prior, current = surfaces["prior"], surfaces["current"]
-            if not current or set(current) != set(prior):
+            prior_grid, current_grid = surfaces["prior"], surfaces["current"]
+            if not current_grid or set(current_grid) != set(prior_grid):
                 return None
-            if max(v.effective_at_utc for v in prior.values()) >= min(
-                v.effective_at_utc for v in current.values()
+            if max(v.effective_at_utc for v in prior_grid.values()) >= min(
+                v.effective_at_utc for v in current_grid.values()
             ):
                 return None
             return _DEC100 * _sample_mean(tuple(
-                _d(current[key].value) - _d(prior[key].value)
-                for key in sorted(current)
+                _d(current_grid[key].value) - _d(prior_grid[key].value)
+                for key in sorted(current_grid)
             ))
         if identity == "D104":
             # D099/D100 are skew measures; compare latest with the exact prior anchor.

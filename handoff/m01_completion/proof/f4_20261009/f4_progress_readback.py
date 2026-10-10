@@ -627,6 +627,17 @@ F4_BOUNDED_PUBLIC_ROWS["D077"] = (
     "lineage and missing/future member refusal; named single-proxy mode not proved",
 )
 
+# RC14 D103 proof-first 9143a5e and bounded full-grid repair a48ded0.
+# The presence of one matching point does not establish a complete comparable
+# IV surface: unmatched, unclassified, duplicate and reversed snapshots refuse.
+F4_BOUNDED_PUBLIC_ROWS["D103"] = (
+    "RC14", "tests/product/derived_signal/test_m01_f4_rc14_surface_shift_public.py",
+    "M00 native R111 matched two-strike current/prior IV grid produces exact "
+    "five-vol-point mean parallel shift, four-source raw lineage and retry; "
+    "missing/future/wrong-subject unmatched grid, duplicate grid, unclassified "
+    "snapshot and reversed temporal ordering all refuse",
+)
+
 def _sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
@@ -724,8 +735,8 @@ def main() -> None:
         "F2_ACCEPTED_SCOPED_EVIDENCE": 18,
         "F3A_BOUNDED_PUBLIC_PROOF": 4,
         "F3B_BOUNDED_PUBLIC_PROOF": 7,
-        "F4_BOUNDED_PUBLIC_ROW_PROOF": 284,
-        "F4_OUTSTANDING_RELATIONSHIP_PROOF": 70,
+        "F4_BOUNDED_PUBLIC_ROW_PROOF": 285,
+        "F4_OUTSTANDING_RELATIONSHIP_PROOF": 69,
         "STAGE2_BOUNDARY_DEFERRED": 107,
         "F4_ZERO_EDGE_PUBLIC_PROOF": 1,
     }, statuses
@@ -773,7 +784,7 @@ def main() -> None:
     assert len(row_records) == 174
     assert sum(x["stage_boundary"] == "STAGE1_CLOSED" for x in row_records) == 144
     assert sum(x["stage_boundary"] == "CROSS_STAGE" for x in row_records) == 30
-    assert sum(x["outstanding_stage1_closed_edges"] for x in row_records) == 70
+    assert sum(x["outstanding_stage1_closed_edges"] for x in row_records) == 69
     with (OUT / "F4_ROW_EVIDENCE_MATRIX.csv").open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, list(row_records[0]))
         writer.writeheader()
@@ -795,7 +806,7 @@ def main() -> None:
                 "status": "UNPROVED" if missing else "NO_OPEN_STAGE1_EDGES_NOT_CLASS_ACCEPTANCE",
             }
         )
-    assert sum(x["stage1_closed_outstanding_edges"] for x in class_records) == 70
+    assert sum(x["stage1_closed_outstanding_edges"] for x in class_records) == 69
     with (OUT / "F4_CLASS_PROOF_RECONCILIATION.csv").open(
         "w", newline="", encoding="utf-8"
     ) as handle:

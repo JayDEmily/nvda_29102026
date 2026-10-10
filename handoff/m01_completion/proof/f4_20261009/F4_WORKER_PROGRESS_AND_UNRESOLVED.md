@@ -434,3 +434,37 @@ This is not the consolidated F4/Stage-1 review candidate.
 - Consolidated regression after correction: **1037 passed** against the established PostgreSQL 17.9 test setup, using `PYTHONPATH=.:src pytest -q tests/product tests/architecture tests/bootstrap tests/implementation/derived_signal --ignore=tests/product/raw_signal/test_u05_postgresql_durability.py`, with separate existing `f4_m00_role`/`f4_m01_role` and `f4_m00_schema`/`f4_m01_schema` via DSNs and local `oai` admin DSN. `F4_RC13_RELATIVE_COMBINED_REGRESSION_20261010.log`. Ruff `ruff check src tests tools handoff/m01_completion/proof/f4_20261009/f4_progress_readback.py` and mypy `mypy src` both pass (21 source files).
 - Earlier attempts at the full suite without mandatory PostgreSQL role DSNs failed 41 boundary tests (environment configuration, not a product regression). The initial role-configured run failed one privilege-isolation test due to an observed transient `INSERT` privilege on M00 at factory construction; the unchanged isolated test passed on retry and the full suite subsequently passed unchanged (1037). Keep the observed failure distinct from its unproved cause. The separate 55-case durability suite was not rerun in this tranche; earlier successful evidence remains in history.
 - F1 relationship reconciliation now accounts for **490 accepted dependency edges** plus the intentional D007 zero-edge sentinel: D076 (2) and D077 (3) have bounded two-proxy public evidence, leaving **70 outstanding Stage-1-closed edges across 21 rows**. The 30 cross-stage row kernel/refusal obligations remain open. The optional parameterised D077 single-proxy mode was **not independently proved** by this tranche; do not infer its complete semantics from the two-proxy witness. Neither F4 nor Stage 1 is accepted; Stage 2 remains unauthorised.
+
+## 10-10-2026 RC14 D103 two-snapshot IV-grid completeness continuation
+
+- Authority: accepted §5 K03 and catalogue D103 R111; no normative changes. Native
+  snapshots must be matched by exact surface grid key with complete, strictly
+  ordered prior and current snapshot grids; silently averaging only their
+  intersection would misrepresent a partial surface as a full parallel shift.
+- Proof-first commit `9143a5e` adds eight M00 public cases in
+  `test_m01_f4_rc14_surface_shift_public.py`; red log
+  `F4_RC14_SURFACE_SHIFT_RED_20261010.log` shows **7 failed, 1 passed**.
+  Adversarial cases distinguish missing prior/current grid members, future
+  receipt, wrong instrument, duplicate grid, unclassified snapshot label, and
+  temporally reversed snapshot labels; the positive case has 0.30/0.40 prior
+  and 0.35/0.45 current IV, yielding exact five-vol-point parallel shift.
+- Bounded production commit `a48ded0` changes only D103 grid matching in
+  `_stage1.py`: it rejects duplicate/unclassified keys, unequal two-snapshot
+  grids and impossible snapshot chronology; it no longer shortens the grid by
+  taking its intersection. Focused M00 tests **8 passed**. A subsequent
+  typing-only local repair renamed shadowing `prior`/`current` dictionary
+  variables to `prior_grid`/`current_grid` (the pre-existing `prior` identifier
+  was previously Decimal in this function). The first 1045-case combined test
+  attempt failed only its architectural mypy check (1044 passed / 1 failed);
+  the same combined suite then passed **1045** unchanged after that typing
+  fix (`F4_RC14_SURFACE_SHIFT_COMBINED_20261010.log`). Ruff
+  (`F4_RC14_SURFACE_SHIFT_RUFF_20261010.log`) and mypy across 21 source files
+  (`F4_RC14_SURFACE_SHIFT_MYPY_20261010.log`) pass.
+- The F4 ledger credits only D103's **one** authoritative R111 dependency,
+  yielding **285 F4 bounded edges**, **69 outstanding closed-stage edges**
+  across the remaining **20** rows, plus **30** unproved cross-stage
+  own-kernel/public-refusal obligations. Catalogue census remains 490
+  normative edges plus D007 zero-edge sentinel; D077 optional single-proxy
+  mode and remaining F4 classes remain unproved. Separate 55-case M00
+  PostgreSQL durability not rerun for this tranche. F4/Stage 1 not accepted;
+  Stage 2 unauthorised.
