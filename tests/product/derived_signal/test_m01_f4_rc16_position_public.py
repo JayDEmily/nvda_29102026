@@ -35,9 +35,14 @@ def _public(
             ("pos-leg-b", {"R212": Decimal(-1), "R016": Decimal(100), greek: second}),
         )
     elif did == "D180":
-        data = (("order-42-status", {"R219": Decimal(0) if denominator_zero else Decimal(6), "R220": Decimal(0) if denominator_zero else Decimal(4)}),)
+        data = (("order-42-status", {
+            "R219": Decimal(0) if denominator_zero else Decimal(6),
+            "R220": Decimal(0) if denominator_zero else Decimal(4),
+        }),)
     else:
-        data = (("position-pnl", {"R214": Decimal(125), "R215": Decimal(-45), "R216": Decimal(80)}),)
+        data = (("position-pnl", {
+            "R214": Decimal(125), "R215": Decimal(-45), "R216": Decimal(80),
+        }),)
     active_ids = tuple(dict.fromkeys(key for _, values in data for key in values))
     for seq, (oid, values) in enumerate(data, 1):
         v = dict(values)
@@ -52,7 +57,10 @@ def _public(
                 delivery_artifact_ref=raw.delivery_artifact_ref("rc16-" + oid),
                 source_provider=raw.provider_id("controlled-rc16"),
                 native_record={"position": v},
-                received_ts_utc=NOW + timedelta(seconds=1) if future_second_leg and oid == "pos-leg-b" else stamp,
+                received_ts_utc=(
+                    NOW + timedelta(seconds=1)
+                    if future_second_leg and oid == "pos-leg-b" else stamp
+                ),
                 ingestion_sequence=seq,
                 ingestion_sequence_scope=raw.ingestion_sequence_scope("rc16:positions"),
                 source_temporal_kind="true_instant",
@@ -73,7 +81,9 @@ def _public(
                 "controlled-rc16", "position", ("position", rid), "canonical",
             ) for rid in active_ids
         ),
-        parameter_sets=(api.CalculationParameterSetV1("rc16-basic", 1, "P_BASIC", (("subject_instrument", "NVDA"),)),),
+        parameter_sets=(api.CalculationParameterSetV1(
+            "rc16-basic", 1, "P_BASIC", (("subject_instrument", "NVDA"),),
+        ),),
         input_selection_policies=(api.InputSelectionPolicyVersionV1(
             "rc16-select", 1, ("subject_instrument",),
             timedelta(seconds=30), timedelta(seconds=30), ("true_instant",), (),
