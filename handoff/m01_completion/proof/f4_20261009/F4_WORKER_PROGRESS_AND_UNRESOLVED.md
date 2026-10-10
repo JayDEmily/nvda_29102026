@@ -289,3 +289,38 @@ This is not the consolidated F4/Stage-1 review candidate.
 - The separately scoped 55-test M00 durability suite has **not** been
   rerun in this continuation; previous 55/55 checkpoint remains historical.
   F4 and Stage 1 are not accepted. Stage 2 remains unauthorised.
+
+
+
+## 10-10-2026 RC04 D032-D039 bounded public risk/window proof and D039 repair
+
+- Proof-first Git `380f6d5`: all six annualised realised-volatility
+  horizons D032–D037 through M00: exact configured 5m/30m/intraday
+  grids and five/ten/twenty consecutive weekday trading-day intervals,
+  correct squared-log-return and trading-year-fraction law, missing
+  instant/calendar-window refusal, full raw lineage and idempotent retry.
+  D038 bipower variation with native R151/R149/R150 co-occurrence and
+  source lineage; D039 two full five-minute native bars, prior close,
+  high and low, exact numeric average.  Original D039 negative public
+  witness: an incomplete required bar is silently dropped and replaced
+  by an older complete bar (1 failed/19 passed in red log).
+- Production Git `defa123`: D039 now chooses the **actual latest** bar
+  window by its close series before checking complete high/low co-reference.
+  No missing bar may be substituted by an earlier bar.
+- Second proof-first Git `7b98d34`: a 10-minute gap in a required
+  rolling pair of five-minute bars must refuse (1 failed/20 passed
+  in red log). Production Git `fbd36b7` establishes actual contiguous
+  300-second native bar-close instants; gap now refuses without
+  silently promoting an incomplete series.
+- Focused D032–D039 M00 tests **21 passed**; whole applicable PostgreSQL
+  M00/M01 suite **913 passed**. Ruff and mypy pass, exact logs:
+  `F4_RC04_913_POSTGRESQL_COMBINED_REGRESSION.log`,
+  `F4_RC04_913_RUFF.log`, `F4_RC04_913_MYPY.log`.
+- F1 ledger reconciles 490 normative edges + D007 zero-edge sentinel.
+  12 D032–D039 dependency edges (eight rows) promoted to bounded
+  public proof: **166 outstanding Stage-1-closed edges across 54
+  rows**, plus **30 cross-stage kernel/refusal obligations** still open.
+  RC04 D029/D030/D031 same-time-of-day baseline matching remains
+  **unproved**, notwithstanding the earlier sample-SD arithmetic
+  witnesses. The separately scoped 55 M00 durability tests were
+  **not rerun** in this continuation. No Stage-1 acceptance.

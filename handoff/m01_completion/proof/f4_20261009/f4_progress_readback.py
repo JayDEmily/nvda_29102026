@@ -21,6 +21,52 @@ OUT = Path(__file__).resolve().parent
 NORMATIVE_SHA256 = "8045c8c0c4a62fbc3b88759a65b415efb1f0d549764ddbdcae2c5c911cd8a64a"
 STAGE1_KERNELS = {f"K{i:02d}" for i in range(1, 9)} | {"K16", "K17"}
 F4_BOUNDED_PUBLIC_ROWS = {
+    "D032": (
+        "RC04", "tests/product/derived_signal/test_m01_f4_rc04_realised_risk_public.py",
+        "M00 exact 5-minute three-price return grid; two 2.5-minute intervals, "
+        "annualised sum log-return squares per declared trading-year fraction; "
+        "missing required sample refusal, full raw lineage, deterministic retry",
+    ),
+    "D033": (
+        "RC04", "tests/product/derived_signal/test_m01_f4_rc04_realised_risk_public.py",
+        "M00 exact 30-minute three-price return grid; two 15-minute intervals, "
+        "annualised realised volatility, missing sample refusal and full lineage",
+    ),
+    "D034": (
+        "RC04", "tests/product/derived_signal/test_m01_f4_rc04_realised_risk_public.py",
+        "M00 exact 2-hour intraday three-price grid; two declared trading-time "
+        "one-hour intervals, annualised realised volatility and cutoff refusal",
+    ),
+    "D035": (
+        "RC04", "tests/product/derived_signal/test_m01_f4_rc04_realised_risk_public.py",
+        "six successive valid weekday close instants spanning five complete "
+        "trading-day intervals, declared policy and time-fraction, exact RV "
+        "result, missing/future/subject refusal and full M00 lineage",
+    ),
+    "D036": (
+        "RC04", "tests/product/derived_signal/test_m01_f4_rc04_realised_risk_public.py",
+        "eleven successive valid weekday close instants spanning ten complete "
+        "trading-day intervals; exact annualised RV, missing sample refusal",
+    ),
+    "D037": (
+        "RC04", "tests/product/derived_signal/test_m01_f4_rc04_realised_risk_public.py",
+        "twenty-one successive valid weekday close instants spanning twenty "
+        "trading-day intervals; exact full-window volatility and absence refusal",
+    ),
+    "D038": (
+        "RC04", "tests/product/derived_signal/test_m01_f4_rc04_realised_risk_public.py",
+        "M00 same-occurrence native R151/R149/R150 with required instant grid; "
+        "explicit RV minus pi-over-two bipower result, full R-lineage, "
+        "wrong-subject/missing-window refusal and deterministic retry",
+    ),
+    "D039": (
+        "RC04", "tests/product/derived_signal/test_m01_f4_rc04_realised_risk_public.py",
+        "M00 two true-range five-minute bars, previous-close formula and exact "
+        "16.5/18.5 averages; original red witness proves incomplete latest bar "
+        "cannot silently substitute older complete bar; second red witness "
+        "proves missing five-minute interval refuses; exact high/low/close "
+        "lineage, wrong-subject and missing-window refusal, retry",
+    ),
     "D028": (
         "RC04",
         "tests/product/derived_signal/test_m01_f4_rc04_elapsed_fraction_public.py",
@@ -459,8 +505,8 @@ def main() -> None:
         "F2_ACCEPTED_SCOPED_EVIDENCE": 18,
         "F3A_BOUNDED_PUBLIC_PROOF": 4,
         "F3B_BOUNDED_PUBLIC_PROOF": 7,
-        "F4_BOUNDED_PUBLIC_ROW_PROOF": 176,
-        "F4_OUTSTANDING_RELATIONSHIP_PROOF": 178,
+        "F4_BOUNDED_PUBLIC_ROW_PROOF": 188,
+        "F4_OUTSTANDING_RELATIONSHIP_PROOF": 166,
         "STAGE2_BOUNDARY_DEFERRED": 107,
         "F4_ZERO_EDGE_PUBLIC_PROOF": 1,
     }, statuses
@@ -508,7 +554,7 @@ def main() -> None:
     assert len(row_records) == 174
     assert sum(x["stage_boundary"] == "STAGE1_CLOSED" for x in row_records) == 144
     assert sum(x["stage_boundary"] == "CROSS_STAGE" for x in row_records) == 30
-    assert sum(x["outstanding_stage1_closed_edges"] for x in row_records) == 178
+    assert sum(x["outstanding_stage1_closed_edges"] for x in row_records) == 166
     with (OUT / "F4_ROW_EVIDENCE_MATRIX.csv").open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, list(row_records[0]))
         writer.writeheader()
@@ -530,7 +576,7 @@ def main() -> None:
                 "status": "UNPROVED" if missing else "NO_OPEN_STAGE1_EDGES_NOT_CLASS_ACCEPTANCE",
             }
         )
-    assert sum(x["stage1_closed_outstanding_edges"] for x in class_records) == 178
+    assert sum(x["stage1_closed_outstanding_edges"] for x in class_records) == 166
     with (OUT / "F4_CLASS_PROOF_RECONCILIATION.csv").open(
         "w", newline="", encoding="utf-8"
     ) as handle:
