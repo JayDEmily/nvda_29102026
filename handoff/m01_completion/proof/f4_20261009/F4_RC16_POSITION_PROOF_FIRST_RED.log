@@ -1,0 +1,520 @@
+FFFFFFFFFFFFFFF                                                          [100%]
+=================================== FAILURES ===================================
+________________ test_rc16_complete_two_leg_live_exposure[D181] ________________
+
+did = 'D181'
+
+    @pytest.mark.parametrize("did", tuple(GREEKS))
+    def test_rc16_complete_two_leg_live_exposure(did: str) -> None:
+>       owner, req = _public(did)
+                     ^^^^^^^^^^^^
+
+tests/product/derived_signal/test_m01_f4_rc16_position_public.py:99: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/derived_signal/test_m01_f4_rc16_position_public.py:76: in _public
+    parameter_sets=(api.CalculationParameterSetV1("rc16-basic", 1, "P_BASIC", ()),),
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<string>:8: in __init__
+    ???
+src/nvda_desk/derived_signal_calculation_truth/api.py:325: in __post_init__
+    _require_named_context_values(self.parameters, "parameters", non_empty=True)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = (), field_name = 'parameters'
+
+    def _require_named_context_values(
+        value: tuple[tuple[str, ImmutableContextValueV1], ...],
+        field_name: str,
+        *,
+        non_empty: bool = False,
+    ) -> None:
+        _require_tuple(value, field_name)
+        if non_empty and not value:
+>           raise ValueError(f"{field_name} must not be empty")
+E           ValueError: parameters must not be empty
+
+src/nvda_desk/derived_signal_calculation_truth/api.py:235: ValueError
+________________ test_rc16_complete_two_leg_live_exposure[D182] ________________
+
+did = 'D182'
+
+    @pytest.mark.parametrize("did", tuple(GREEKS))
+    def test_rc16_complete_two_leg_live_exposure(did: str) -> None:
+>       owner, req = _public(did)
+                     ^^^^^^^^^^^^
+
+tests/product/derived_signal/test_m01_f4_rc16_position_public.py:99: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/derived_signal/test_m01_f4_rc16_position_public.py:76: in _public
+    parameter_sets=(api.CalculationParameterSetV1("rc16-basic", 1, "P_BASIC", ()),),
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<string>:8: in __init__
+    ???
+src/nvda_desk/derived_signal_calculation_truth/api.py:325: in __post_init__
+    _require_named_context_values(self.parameters, "parameters", non_empty=True)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = (), field_name = 'parameters'
+
+    def _require_named_context_values(
+        value: tuple[tuple[str, ImmutableContextValueV1], ...],
+        field_name: str,
+        *,
+        non_empty: bool = False,
+    ) -> None:
+        _require_tuple(value, field_name)
+        if non_empty and not value:
+>           raise ValueError(f"{field_name} must not be empty")
+E           ValueError: parameters must not be empty
+
+src/nvda_desk/derived_signal_calculation_truth/api.py:235: ValueError
+________________ test_rc16_complete_two_leg_live_exposure[D183] ________________
+
+did = 'D183'
+
+    @pytest.mark.parametrize("did", tuple(GREEKS))
+    def test_rc16_complete_two_leg_live_exposure(did: str) -> None:
+>       owner, req = _public(did)
+                     ^^^^^^^^^^^^
+
+tests/product/derived_signal/test_m01_f4_rc16_position_public.py:99: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/derived_signal/test_m01_f4_rc16_position_public.py:76: in _public
+    parameter_sets=(api.CalculationParameterSetV1("rc16-basic", 1, "P_BASIC", ()),),
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<string>:8: in __init__
+    ???
+src/nvda_desk/derived_signal_calculation_truth/api.py:325: in __post_init__
+    _require_named_context_values(self.parameters, "parameters", non_empty=True)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = (), field_name = 'parameters'
+
+    def _require_named_context_values(
+        value: tuple[tuple[str, ImmutableContextValueV1], ...],
+        field_name: str,
+        *,
+        non_empty: bool = False,
+    ) -> None:
+        _require_tuple(value, field_name)
+        if non_empty and not value:
+>           raise ValueError(f"{field_name} must not be empty")
+E           ValueError: parameters must not be empty
+
+src/nvda_desk/derived_signal_calculation_truth/api.py:235: ValueError
+________________ test_rc16_complete_two_leg_live_exposure[D184] ________________
+
+did = 'D184'
+
+    @pytest.mark.parametrize("did", tuple(GREEKS))
+    def test_rc16_complete_two_leg_live_exposure(did: str) -> None:
+>       owner, req = _public(did)
+                     ^^^^^^^^^^^^
+
+tests/product/derived_signal/test_m01_f4_rc16_position_public.py:99: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/derived_signal/test_m01_f4_rc16_position_public.py:76: in _public
+    parameter_sets=(api.CalculationParameterSetV1("rc16-basic", 1, "P_BASIC", ()),),
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<string>:8: in __init__
+    ???
+src/nvda_desk/derived_signal_calculation_truth/api.py:325: in __post_init__
+    _require_named_context_values(self.parameters, "parameters", non_empty=True)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = (), field_name = 'parameters'
+
+    def _require_named_context_values(
+        value: tuple[tuple[str, ImmutableContextValueV1], ...],
+        field_name: str,
+        *,
+        non_empty: bool = False,
+    ) -> None:
+        _require_tuple(value, field_name)
+        if non_empty and not value:
+>           raise ValueError(f"{field_name} must not be empty")
+E           ValueError: parameters must not be empty
+
+src/nvda_desk/derived_signal_calculation_truth/api.py:235: ValueError
+__________ test_rc16_incomplete_second_position_leg_must_refuse[D181] __________
+
+did = 'D181'
+
+    @pytest.mark.parametrize("did", tuple(GREEKS))
+    def test_rc16_incomplete_second_position_leg_must_refuse(did: str) -> None:
+>       owner, req = _public(did, missing_on_second_leg=GREEKS[did][0])
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/derived_signal/test_m01_f4_rc16_position_public.py:113: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/derived_signal/test_m01_f4_rc16_position_public.py:76: in _public
+    parameter_sets=(api.CalculationParameterSetV1("rc16-basic", 1, "P_BASIC", ()),),
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<string>:8: in __init__
+    ???
+src/nvda_desk/derived_signal_calculation_truth/api.py:325: in __post_init__
+    _require_named_context_values(self.parameters, "parameters", non_empty=True)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = (), field_name = 'parameters'
+
+    def _require_named_context_values(
+        value: tuple[tuple[str, ImmutableContextValueV1], ...],
+        field_name: str,
+        *,
+        non_empty: bool = False,
+    ) -> None:
+        _require_tuple(value, field_name)
+        if non_empty and not value:
+>           raise ValueError(f"{field_name} must not be empty")
+E           ValueError: parameters must not be empty
+
+src/nvda_desk/derived_signal_calculation_truth/api.py:235: ValueError
+__________ test_rc16_incomplete_second_position_leg_must_refuse[D182] __________
+
+did = 'D182'
+
+    @pytest.mark.parametrize("did", tuple(GREEKS))
+    def test_rc16_incomplete_second_position_leg_must_refuse(did: str) -> None:
+>       owner, req = _public(did, missing_on_second_leg=GREEKS[did][0])
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/derived_signal/test_m01_f4_rc16_position_public.py:113: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/derived_signal/test_m01_f4_rc16_position_public.py:76: in _public
+    parameter_sets=(api.CalculationParameterSetV1("rc16-basic", 1, "P_BASIC", ()),),
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<string>:8: in __init__
+    ???
+src/nvda_desk/derived_signal_calculation_truth/api.py:325: in __post_init__
+    _require_named_context_values(self.parameters, "parameters", non_empty=True)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = (), field_name = 'parameters'
+
+    def _require_named_context_values(
+        value: tuple[tuple[str, ImmutableContextValueV1], ...],
+        field_name: str,
+        *,
+        non_empty: bool = False,
+    ) -> None:
+        _require_tuple(value, field_name)
+        if non_empty and not value:
+>           raise ValueError(f"{field_name} must not be empty")
+E           ValueError: parameters must not be empty
+
+src/nvda_desk/derived_signal_calculation_truth/api.py:235: ValueError
+__________ test_rc16_incomplete_second_position_leg_must_refuse[D183] __________
+
+did = 'D183'
+
+    @pytest.mark.parametrize("did", tuple(GREEKS))
+    def test_rc16_incomplete_second_position_leg_must_refuse(did: str) -> None:
+>       owner, req = _public(did, missing_on_second_leg=GREEKS[did][0])
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/derived_signal/test_m01_f4_rc16_position_public.py:113: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/derived_signal/test_m01_f4_rc16_position_public.py:76: in _public
+    parameter_sets=(api.CalculationParameterSetV1("rc16-basic", 1, "P_BASIC", ()),),
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<string>:8: in __init__
+    ???
+src/nvda_desk/derived_signal_calculation_truth/api.py:325: in __post_init__
+    _require_named_context_values(self.parameters, "parameters", non_empty=True)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = (), field_name = 'parameters'
+
+    def _require_named_context_values(
+        value: tuple[tuple[str, ImmutableContextValueV1], ...],
+        field_name: str,
+        *,
+        non_empty: bool = False,
+    ) -> None:
+        _require_tuple(value, field_name)
+        if non_empty and not value:
+>           raise ValueError(f"{field_name} must not be empty")
+E           ValueError: parameters must not be empty
+
+src/nvda_desk/derived_signal_calculation_truth/api.py:235: ValueError
+__________ test_rc16_incomplete_second_position_leg_must_refuse[D184] __________
+
+did = 'D184'
+
+    @pytest.mark.parametrize("did", tuple(GREEKS))
+    def test_rc16_incomplete_second_position_leg_must_refuse(did: str) -> None:
+>       owner, req = _public(did, missing_on_second_leg=GREEKS[did][0])
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/derived_signal/test_m01_f4_rc16_position_public.py:113: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/derived_signal/test_m01_f4_rc16_position_public.py:76: in _public
+    parameter_sets=(api.CalculationParameterSetV1("rc16-basic", 1, "P_BASIC", ()),),
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<string>:8: in __init__
+    ???
+src/nvda_desk/derived_signal_calculation_truth/api.py:325: in __post_init__
+    _require_named_context_values(self.parameters, "parameters", non_empty=True)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = (), field_name = 'parameters'
+
+    def _require_named_context_values(
+        value: tuple[tuple[str, ImmutableContextValueV1], ...],
+        field_name: str,
+        *,
+        non_empty: bool = False,
+    ) -> None:
+        _require_tuple(value, field_name)
+        if non_empty and not value:
+>           raise ValueError(f"{field_name} must not be empty")
+E           ValueError: parameters must not be empty
+
+src/nvda_desk/derived_signal_calculation_truth/api.py:235: ValueError
+____________ test_rc16_future_second_position_leg_must_refuse[D181] ____________
+
+did = 'D181'
+
+    @pytest.mark.parametrize("did", tuple(GREEKS))
+    def test_rc16_future_second_position_leg_must_refuse(did: str) -> None:
+>       owner, req = _public(did, future_second_leg=True)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/derived_signal/test_m01_f4_rc16_position_public.py:119: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/derived_signal/test_m01_f4_rc16_position_public.py:76: in _public
+    parameter_sets=(api.CalculationParameterSetV1("rc16-basic", 1, "P_BASIC", ()),),
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<string>:8: in __init__
+    ???
+src/nvda_desk/derived_signal_calculation_truth/api.py:325: in __post_init__
+    _require_named_context_values(self.parameters, "parameters", non_empty=True)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = (), field_name = 'parameters'
+
+    def _require_named_context_values(
+        value: tuple[tuple[str, ImmutableContextValueV1], ...],
+        field_name: str,
+        *,
+        non_empty: bool = False,
+    ) -> None:
+        _require_tuple(value, field_name)
+        if non_empty and not value:
+>           raise ValueError(f"{field_name} must not be empty")
+E           ValueError: parameters must not be empty
+
+src/nvda_desk/derived_signal_calculation_truth/api.py:235: ValueError
+____________ test_rc16_future_second_position_leg_must_refuse[D182] ____________
+
+did = 'D182'
+
+    @pytest.mark.parametrize("did", tuple(GREEKS))
+    def test_rc16_future_second_position_leg_must_refuse(did: str) -> None:
+>       owner, req = _public(did, future_second_leg=True)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/derived_signal/test_m01_f4_rc16_position_public.py:119: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/derived_signal/test_m01_f4_rc16_position_public.py:76: in _public
+    parameter_sets=(api.CalculationParameterSetV1("rc16-basic", 1, "P_BASIC", ()),),
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<string>:8: in __init__
+    ???
+src/nvda_desk/derived_signal_calculation_truth/api.py:325: in __post_init__
+    _require_named_context_values(self.parameters, "parameters", non_empty=True)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = (), field_name = 'parameters'
+
+    def _require_named_context_values(
+        value: tuple[tuple[str, ImmutableContextValueV1], ...],
+        field_name: str,
+        *,
+        non_empty: bool = False,
+    ) -> None:
+        _require_tuple(value, field_name)
+        if non_empty and not value:
+>           raise ValueError(f"{field_name} must not be empty")
+E           ValueError: parameters must not be empty
+
+src/nvda_desk/derived_signal_calculation_truth/api.py:235: ValueError
+____________ test_rc16_future_second_position_leg_must_refuse[D183] ____________
+
+did = 'D183'
+
+    @pytest.mark.parametrize("did", tuple(GREEKS))
+    def test_rc16_future_second_position_leg_must_refuse(did: str) -> None:
+>       owner, req = _public(did, future_second_leg=True)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/derived_signal/test_m01_f4_rc16_position_public.py:119: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/derived_signal/test_m01_f4_rc16_position_public.py:76: in _public
+    parameter_sets=(api.CalculationParameterSetV1("rc16-basic", 1, "P_BASIC", ()),),
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<string>:8: in __init__
+    ???
+src/nvda_desk/derived_signal_calculation_truth/api.py:325: in __post_init__
+    _require_named_context_values(self.parameters, "parameters", non_empty=True)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = (), field_name = 'parameters'
+
+    def _require_named_context_values(
+        value: tuple[tuple[str, ImmutableContextValueV1], ...],
+        field_name: str,
+        *,
+        non_empty: bool = False,
+    ) -> None:
+        _require_tuple(value, field_name)
+        if non_empty and not value:
+>           raise ValueError(f"{field_name} must not be empty")
+E           ValueError: parameters must not be empty
+
+src/nvda_desk/derived_signal_calculation_truth/api.py:235: ValueError
+____________ test_rc16_future_second_position_leg_must_refuse[D184] ____________
+
+did = 'D184'
+
+    @pytest.mark.parametrize("did", tuple(GREEKS))
+    def test_rc16_future_second_position_leg_must_refuse(did: str) -> None:
+>       owner, req = _public(did, future_second_leg=True)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/derived_signal/test_m01_f4_rc16_position_public.py:119: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/derived_signal/test_m01_f4_rc16_position_public.py:76: in _public
+    parameter_sets=(api.CalculationParameterSetV1("rc16-basic", 1, "P_BASIC", ()),),
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<string>:8: in __init__
+    ???
+src/nvda_desk/derived_signal_calculation_truth/api.py:325: in __post_init__
+    _require_named_context_values(self.parameters, "parameters", non_empty=True)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = (), field_name = 'parameters'
+
+    def _require_named_context_values(
+        value: tuple[tuple[str, ImmutableContextValueV1], ...],
+        field_name: str,
+        *,
+        non_empty: bool = False,
+    ) -> None:
+        _require_tuple(value, field_name)
+        if non_empty and not value:
+>           raise ValueError(f"{field_name} must not be empty")
+E           ValueError: parameters must not be empty
+
+src/nvda_desk/derived_signal_calculation_truth/api.py:235: ValueError
+_____________ test_rc16_public_fill_completion_exact_six_over_ten ______________
+
+    def test_rc16_public_fill_completion_exact_six_over_ten() -> None:
+>       owner, req = _public("D180")
+                     ^^^^^^^^^^^^^^^
+
+tests/product/derived_signal/test_m01_f4_rc16_position_public.py:124: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/derived_signal/test_m01_f4_rc16_position_public.py:76: in _public
+    parameter_sets=(api.CalculationParameterSetV1("rc16-basic", 1, "P_BASIC", ()),),
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<string>:8: in __init__
+    ???
+src/nvda_desk/derived_signal_calculation_truth/api.py:325: in __post_init__
+    _require_named_context_values(self.parameters, "parameters", non_empty=True)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = (), field_name = 'parameters'
+
+    def _require_named_context_values(
+        value: tuple[tuple[str, ImmutableContextValueV1], ...],
+        field_name: str,
+        *,
+        non_empty: bool = False,
+    ) -> None:
+        _require_tuple(value, field_name)
+        if non_empty and not value:
+>           raise ValueError(f"{field_name} must not be empty")
+E           ValueError: parameters must not be empty
+
+src/nvda_desk/derived_signal_calculation_truth/api.py:235: ValueError
+__________ test_rc16_public_fill_completion_zero_denominator_refuses ___________
+
+    def test_rc16_public_fill_completion_zero_denominator_refuses() -> None:
+>       owner, req = _public("D180", denominator_zero=True)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/derived_signal/test_m01_f4_rc16_position_public.py:132: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/derived_signal/test_m01_f4_rc16_position_public.py:76: in _public
+    parameter_sets=(api.CalculationParameterSetV1("rc16-basic", 1, "P_BASIC", ()),),
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<string>:8: in __init__
+    ???
+src/nvda_desk/derived_signal_calculation_truth/api.py:325: in __post_init__
+    _require_named_context_values(self.parameters, "parameters", non_empty=True)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = (), field_name = 'parameters'
+
+    def _require_named_context_values(
+        value: tuple[tuple[str, ImmutableContextValueV1], ...],
+        field_name: str,
+        *,
+        non_empty: bool = False,
+    ) -> None:
+        _require_tuple(value, field_name)
+        if non_empty and not value:
+>           raise ValueError(f"{field_name} must not be empty")
+E           ValueError: parameters must not be empty
+
+src/nvda_desk/derived_signal_calculation_truth/api.py:235: ValueError
+_____________ test_rc16_public_pnl_state_preserves_all_components ______________
+
+    def test_rc16_public_pnl_state_preserves_all_components() -> None:
+>       owner, req = _public("D185")
+                     ^^^^^^^^^^^^^^^
+
+tests/product/derived_signal/test_m01_f4_rc16_position_public.py:137: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/derived_signal/test_m01_f4_rc16_position_public.py:76: in _public
+    parameter_sets=(api.CalculationParameterSetV1("rc16-basic", 1, "P_BASIC", ()),),
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<string>:8: in __init__
+    ???
+src/nvda_desk/derived_signal_calculation_truth/api.py:325: in __post_init__
+    _require_named_context_values(self.parameters, "parameters", non_empty=True)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = (), field_name = 'parameters'
+
+    def _require_named_context_values(
+        value: tuple[tuple[str, ImmutableContextValueV1], ...],
+        field_name: str,
+        *,
+        non_empty: bool = False,
+    ) -> None:
+        _require_tuple(value, field_name)
+        if non_empty and not value:
+>           raise ValueError(f"{field_name} must not be empty")
+E           ValueError: parameters must not be empty
+
+src/nvda_desk/derived_signal_calculation_truth/api.py:235: ValueError
+=========================== short test summary info ============================
+FAILED tests/product/derived_signal/test_m01_f4_rc16_position_public.py::test_rc16_complete_two_leg_live_exposure[D181] - ValueError: parameters must not be empty
+FAILED tests/product/derived_signal/test_m01_f4_rc16_position_public.py::test_rc16_complete_two_leg_live_exposure[D182] - ValueError: parameters must not be empty
+FAILED tests/product/derived_signal/test_m01_f4_rc16_position_public.py::test_rc16_complete_two_leg_live_exposure[D183] - ValueError: parameters must not be empty
+FAILED tests/product/derived_signal/test_m01_f4_rc16_position_public.py::test_rc16_complete_two_leg_live_exposure[D184] - ValueError: parameters must not be empty
+FAILED tests/product/derived_signal/test_m01_f4_rc16_position_public.py::test_rc16_incomplete_second_position_leg_must_refuse[D181] - ValueError: parameters must not be empty
+FAILED tests/product/derived_signal/test_m01_f4_rc16_position_public.py::test_rc16_incomplete_second_position_leg_must_refuse[D182] - ValueError: parameters must not be empty
+FAILED tests/product/derived_signal/test_m01_f4_rc16_position_public.py::test_rc16_incomplete_second_position_leg_must_refuse[D183] - ValueError: parameters must not be empty
+FAILED tests/product/derived_signal/test_m01_f4_rc16_position_public.py::test_rc16_incomplete_second_position_leg_must_refuse[D184] - ValueError: parameters must not be empty
+FAILED tests/product/derived_signal/test_m01_f4_rc16_position_public.py::test_rc16_future_second_position_leg_must_refuse[D181] - ValueError: parameters must not be empty
+FAILED tests/product/derived_signal/test_m01_f4_rc16_position_public.py::test_rc16_future_second_position_leg_must_refuse[D182] - ValueError: parameters must not be empty
+FAILED tests/product/derived_signal/test_m01_f4_rc16_position_public.py::test_rc16_future_second_position_leg_must_refuse[D183] - ValueError: parameters must not be empty
+FAILED tests/product/derived_signal/test_m01_f4_rc16_position_public.py::test_rc16_future_second_position_leg_must_refuse[D184] - ValueError: parameters must not be empty
+FAILED tests/product/derived_signal/test_m01_f4_rc16_position_public.py::test_rc16_public_fill_completion_exact_six_over_ten - ValueError: parameters must not be empty
+FAILED tests/product/derived_signal/test_m01_f4_rc16_position_public.py::test_rc16_public_fill_completion_zero_denominator_refuses - ValueError: parameters must not be empty
+FAILED tests/product/derived_signal/test_m01_f4_rc16_position_public.py::test_rc16_public_pnl_state_preserves_all_components - ValueError: parameters must not be empty
+15 failed in 0.63s
