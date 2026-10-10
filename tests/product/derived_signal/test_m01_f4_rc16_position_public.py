@@ -73,7 +73,7 @@ def _public(
                 "controlled-rc16", "position", ("position", rid), "canonical",
             ) for rid in active_ids
         ),
-        parameter_sets=(api.CalculationParameterSetV1("rc16-basic", 1, "P_BASIC", ()),),
+        parameter_sets=(api.CalculationParameterSetV1("rc16-basic", 1, "P_BASIC", (("subject_instrument", "NVDA"),)),),
         input_selection_policies=(api.InputSelectionPolicyVersionV1(
             "rc16-select", 1, ("subject_instrument",),
             timedelta(seconds=30), timedelta(seconds=30), ("true_instant",), (),
