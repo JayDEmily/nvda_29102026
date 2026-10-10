@@ -2167,7 +2167,12 @@ def _eval_k05(
             trs = []
             for idx in range(len(bars) - bar_count, len(bars)):
                 oid = bars[idx].occurrence_id
-                if oid not in highs or oid not in lows:
+                if (
+                    oid not in highs
+                    or oid not in lows
+                    or bars[idx].effective_at_utc - bars[idx - 1].effective_at_utc
+                    != timedelta(minutes=5)
+                ):
                     return None
                 prev = _d(bars[idx - 1].value)
                 high, low = highs[oid], lows[oid]
