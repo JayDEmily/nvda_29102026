@@ -232,9 +232,11 @@ def test_leaf2_k04_refuses_shortened_or_unspecified_historical_baseline() -> Non
             effective_at_utc=NOW - timedelta(days=4 - i),
             received_ts_utc=NOW - timedelta(days=4 - i),
             subject_instrument="NVDA", source_temporal_kind="true_instant",
+            metadata=(("time_of_day_bucket", "09:30"),),
         ) for i in range(5)
     )
     def evaluate(**settings: object) -> object:
+        settings = {"matching_rule": "source_native_time_of_day_bucket", **settings}
         parameter = api.CalculationParameterSetV1(
             context_id="baseline", version=1, profile="P_BASELINE",
             parameters=tuple(settings.items()),
