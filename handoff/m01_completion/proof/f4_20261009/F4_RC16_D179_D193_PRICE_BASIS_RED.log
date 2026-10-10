@@ -1,0 +1,42 @@
+..FF......                                                               [100%]
+=================================== FAILURES ===================================
+_ test_d193_cost_uses_d179_arrival_slippage_not_d087_quote_mid[buy-expected0] __
+
+side = 'buy', expected = Decimal('122')
+
+    @pytest.mark.parametrize(("side", "expected"), (("buy", Decimal(122)), ("sell", Decimal(-118))))
+    def test_d193_cost_uses_d179_arrival_slippage_not_d087_quote_mid(
+        side: str,
+        expected: Decimal,
+    ) -> None:
+        owner, req = _public("D193", side=side)
+        out = owner.materialise(req)
+        assert out is not None
+>       assert out.result == expected
+E       AssertionError: assert Decimal('62.0') == Decimal('122')
+E        +  where Decimal('62.0') = DerivedSignalOccurrenceV1(derived_signal_id='D193', derived_occurrence_id='d193-9b53c7b2b8ec32859a4c5019968c23381396b7...'expiry', '2026-12-18'), ('strike', Decimal('150')), ('option_right', 'call'))), supersedes_derived_occurrence_id=None).result
+
+tests/product/derived_signal/test_m01_f4_rc16_fill_cost_public.py:182: AssertionError
+_ test_d193_cost_uses_d179_arrival_slippage_not_d087_quote_mid[sell-expected1] _
+
+side = 'sell', expected = Decimal('-118')
+
+    @pytest.mark.parametrize(("side", "expected"), (("buy", Decimal(122)), ("sell", Decimal(-118))))
+    def test_d193_cost_uses_d179_arrival_slippage_not_d087_quote_mid(
+        side: str,
+        expected: Decimal,
+    ) -> None:
+        owner, req = _public("D193", side=side)
+        out = owner.materialise(req)
+        assert out is not None
+>       assert out.result == expected
+E       AssertionError: assert Decimal('-58.0') == Decimal('-118')
+E        +  where Decimal('-58.0') = DerivedSignalOccurrenceV1(derived_signal_id='D193', derived_occurrence_id='d193-9b53c7b2b8ec32859a4c5019968c23381396b7...'expiry', '2026-12-18'), ('strike', Decimal('150')), ('option_right', 'call'))), supersedes_derived_occurrence_id=None).result
+
+tests/product/derived_signal/test_m01_f4_rc16_fill_cost_public.py:182: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/derived_signal/test_m01_f4_rc16_fill_cost_public.py::test_d193_cost_uses_d179_arrival_slippage_not_d087_quote_mid[buy-expected0] - AssertionError: assert Decimal('62.0') == Decimal('122')
+ +  where Decimal('62.0') = DerivedSignalOccurrenceV1(derived_signal_id='D193', derived_occurrence_id='d193-9b53c7b2b8ec32859a4c5019968c23381396b7...'expiry', '2026-12-18'), ('strike', Decimal('150')), ('option_right', 'call'))), supersedes_derived_occurrence_id=None).result
+FAILED tests/product/derived_signal/test_m01_f4_rc16_fill_cost_public.py::test_d193_cost_uses_d179_arrival_slippage_not_d087_quote_mid[sell-expected1] - AssertionError: assert Decimal('-58.0') == Decimal('-118')
+ +  where Decimal('-58.0') = DerivedSignalOccurrenceV1(derived_signal_id='D193', derived_occurrence_id='d193-9b53c7b2b8ec32859a4c5019968c23381396b7...'expiry', '2026-12-18'), ('strike', Decimal('150')), ('option_right', 'call'))), supersedes_derived_occurrence_id=None).result
+2 failed, 8 passed in 0.13s
