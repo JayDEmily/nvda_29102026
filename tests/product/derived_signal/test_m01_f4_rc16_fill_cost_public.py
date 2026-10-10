@@ -49,8 +49,8 @@ def _public(
     )
     for seq, (tag, native, seconds) in enumerate(records, start=1):
         data = dict(native)
-        if missing in data:
-            del data[missing]
+        if missing is not None:
+            data.pop(missing, None)
         stamp = NOW - timedelta(seconds=seconds)
         identity = dict(IDENTITY.values)
         if wrong_quote_contract and tag == "quote":

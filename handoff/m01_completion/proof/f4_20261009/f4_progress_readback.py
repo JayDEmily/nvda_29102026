@@ -470,6 +470,20 @@ F4_BOUNDED_PUBLIC_ROWS = {
 }
 
 
+F4_BOUNDED_PUBLIC_ROWS["D179"] = (
+    "RC16", "tests/product/derived_signal/test_m01_f4_rc16_fill_cost_public.py",
+    "Admitted M00 arrival R221=99.8 vs fill R229=100.2; D087 quote midpoint=100 "
+    "does not replace arrival benchmark; buy +0.4 and sell -0.4, exact bps, "
+    "raw and predecessor lineage; missing/future/wrong-contract refusal and retry",
+)
+F4_BOUNDED_PUBLIC_ROWS["D193"] = (
+    "RC16", "tests/product/derived_signal/test_m01_f4_rc16_fill_cost_public.py",
+    "M00 matched execution quantity=3, multiplier=100, fees=2; consumes D179 "
+    "signed arrival price slippage, buy cost 122 / sell cost -118, refuses "
+    "missing benchmark/execution and mismatched/future quote; complete lineage and retry",
+)
+
+
 # RC21 D063 macro surprise proof first at d4ff247, bounded native completeness
 # correction at 9a701de. Missing release fields must not delete releases
 # from the selected baseline or substitute an older current print.
@@ -685,8 +699,8 @@ def main() -> None:
         "F2_ACCEPTED_SCOPED_EVIDENCE": 18,
         "F3A_BOUNDED_PUBLIC_PROOF": 4,
         "F3B_BOUNDED_PUBLIC_PROOF": 7,
-        "F4_BOUNDED_PUBLIC_ROW_PROOF": 269,
-        "F4_OUTSTANDING_RELATIONSHIP_PROOF": 85,
+        "F4_BOUNDED_PUBLIC_ROW_PROOF": 278,
+        "F4_OUTSTANDING_RELATIONSHIP_PROOF": 76,
         "STAGE2_BOUNDARY_DEFERRED": 107,
         "F4_ZERO_EDGE_PUBLIC_PROOF": 1,
     }, statuses
@@ -734,7 +748,7 @@ def main() -> None:
     assert len(row_records) == 174
     assert sum(x["stage_boundary"] == "STAGE1_CLOSED" for x in row_records) == 144
     assert sum(x["stage_boundary"] == "CROSS_STAGE" for x in row_records) == 30
-    assert sum(x["outstanding_stage1_closed_edges"] for x in row_records) == 85
+    assert sum(x["outstanding_stage1_closed_edges"] for x in row_records) == 76
     with (OUT / "F4_ROW_EVIDENCE_MATRIX.csv").open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, list(row_records[0]))
         writer.writeheader()
@@ -756,7 +770,7 @@ def main() -> None:
                 "status": "UNPROVED" if missing else "NO_OPEN_STAGE1_EDGES_NOT_CLASS_ACCEPTANCE",
             }
         )
-    assert sum(x["stage1_closed_outstanding_edges"] for x in class_records) == 85
+    assert sum(x["stage1_closed_outstanding_edges"] for x in class_records) == 76
     with (OUT / "F4_CLASS_PROOF_RECONCILIATION.csv").open(
         "w", newline="", encoding="utf-8"
     ) as handle:
