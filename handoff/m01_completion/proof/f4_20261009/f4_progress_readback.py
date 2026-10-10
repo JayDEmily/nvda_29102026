@@ -277,6 +277,61 @@ F4_BOUNDED_PUBLIC_ROWS = {
 }
 
 
+# RC03 Stage-1-closed public proofs were committed independently, before this
+# reconciliation update, at proof-first commit 3480116.  This remains bounded
+# edge-level evidence rather than acceptance of all Stage 1.
+RC03_WITNESS = "tests/product/derived_signal/test_m01_f4_rc03_history_public.py"
+for _did in ("D019", "D020", "D021"):
+    F4_BOUNDED_PUBLIC_ROWS[_did] = (
+        "RC03", RC03_WITNESS,
+        "M00 true-instant minute-anchor history; past-versus-near sample selection, "
+        "competing instrument exclusion, exact log return, missing/late anchor refusal, "
+        "future observation cutoff, persisted lineage and deterministic retry",
+    )
+for _did in ("D022", "D023", "D026"):
+    F4_BOUNDED_PUBLIC_ROWS[_did] = (
+        "RC03", RC03_WITNESS,
+        "M00 exact-subject current/reference source values, log return or price/VWAP "
+        "difference; missing/mismatched subject refusal, raw lineage and retry",
+    )
+F4_BOUNDED_PUBLIC_ROWS["D024"] = (
+    "RC03", RC03_WITNESS,
+    "M00 independently anchored 1m/5m/30m public predecessor graph, exact "
+    "momentum vector and differences, three persisted D occurrences and ultimate "
+    "R143 raw lineage; absent 30m anchor refused, retry",
+)
+for _did in ("D027",):
+    F4_BOUNDED_PUBLIC_ROWS[_did] = (
+        "RC03", RC03_WITNESS,
+        "M00 aligned VWAP five-minute anchor, exact 4 price/minute and 4%/minute, "
+        "closer non-anchor and competing instrument exclusion, absent anchor refusal",
+    )
+for _did in ("D044", "D045", "D046"):
+    F4_BOUNDED_PUBLIC_ROWS[_did] = (
+        "RC03", RC03_WITNESS,
+        "M00 300-second time anchor for nominal/real/yield change, exact 1000 bp; "
+        "nearest-without-anchor refusal, competing instrument exclusion, raw lineage",
+    )
+for _did in ("D048", "D049", "D050", "D051"):
+    F4_BOUNDED_PUBLIC_ROWS[_did] = (
+        "RC03", RC03_WITNESS,
+        "M00 anchor-based 20% value change, raw lineage, competing instrument "
+        "exclusion and missing proper anchor refusal",
+    )
+for _did in ("D052", "D053", "D054", "D055", "D056"):
+    F4_BOUNDED_PUBLIC_ROWS[_did] = (
+        "RC03", RC03_WITNESS,
+        "M00 exact 20-point and 20% paired change over configured anchor, "
+        "raw lineage and refusal with only an ineligible closer sample",
+    )
+for _did in ("D066", "D067", "D068", "D069"):
+    F4_BOUNDED_PUBLIC_ROWS[_did] = (
+        "RC03", RC03_WITNESS,
+        "M00 one-day instant anchor and exact ln(1.2) return, competing instrument "
+        "exclusion and absence refusal; no invented market-calendar adjustment",
+    )
+
+
 def _sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
@@ -374,8 +429,8 @@ def main() -> None:
         "F2_ACCEPTED_SCOPED_EVIDENCE": 18,
         "F3A_BOUNDED_PUBLIC_PROOF": 4,
         "F3B_BOUNDED_PUBLIC_PROOF": 7,
-        "F4_BOUNDED_PUBLIC_ROW_PROOF": 137,
-        "F4_OUTSTANDING_RELATIONSHIP_PROOF": 217,
+        "F4_BOUNDED_PUBLIC_ROW_PROOF": 166,
+        "F4_OUTSTANDING_RELATIONSHIP_PROOF": 188,
         "STAGE2_BOUNDARY_DEFERRED": 107,
         "F4_ZERO_EDGE_PUBLIC_PROOF": 1,
     }, statuses
@@ -423,7 +478,7 @@ def main() -> None:
     assert len(row_records) == 174
     assert sum(x["stage_boundary"] == "STAGE1_CLOSED" for x in row_records) == 144
     assert sum(x["stage_boundary"] == "CROSS_STAGE" for x in row_records) == 30
-    assert sum(x["outstanding_stage1_closed_edges"] for x in row_records) == 217
+    assert sum(x["outstanding_stage1_closed_edges"] for x in row_records) == 188
     with (OUT / "F4_ROW_EVIDENCE_MATRIX.csv").open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, list(row_records[0]))
         writer.writeheader()
@@ -445,7 +500,7 @@ def main() -> None:
                 "status": "UNPROVED" if missing else "NO_OPEN_STAGE1_EDGES_NOT_CLASS_ACCEPTANCE",
             }
         )
-    assert sum(x["stage1_closed_outstanding_edges"] for x in class_records) == 217
+    assert sum(x["stage1_closed_outstanding_edges"] for x in class_records) == 188
     with (OUT / "F4_CLASS_PROOF_RECONCILIATION.csv").open(
         "w", newline="", encoding="utf-8"
     ) as handle:

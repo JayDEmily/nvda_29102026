@@ -193,3 +193,43 @@ This is not the consolidated F4/Stage-1 review candidate.
   bounded proof status into Stage-1 acceptance.
 - Separately scoped M00 durability 55/55 pass remains prior clean pinned
   readback at `30c5e54`; it was **not rerun** for these two public rows.
+
+
+## 10-10-2026 RC03 public history/anchor class — post-838 continuation
+
+- Proof-first commit `3480116` adds independent M00 public-interface cases across
+  **all 24 RC03 Stage-1-closed rows**: D019–D024, D026–D027, D044–D046,
+  D048–D056 and D066–D069.  There are **29 matching RC03 relationship
+  edges** in the authoritative F1 inventory. The proof includes distinct
+  1m/5m/30m anchors and D024 predecessor graph, exact log returns, session
+  open/prior close/VWAP comparisons, configured yield/volatility/risk history,
+  price/percent/basis-point output, one-day anchors, and M00 raw/derived
+  lineage plus deterministic retry. Negative witnesses cover wrong subjects,
+  ineligible nearer observations, missing references and future-cutoff inputs.
+  No production change or catalogue mutation was necessary for this class.
+- The focused suite passes **29/29** cases
+  (`test_m01_f4_rc03_history_public.py`). The expanded live PostgreSQL 17.9
+  regression passes **867 tests** with separate writer roles and schemas;
+  exact log `F4_RC03_867_POSTGRESQL_COMBINED_REGRESSION.log`. Ruff and mypy
+  (21 files) pass in `F4_RC03_RUFF.log` and `F4_RC03_MYPY.log`.
+- Environmental attempts and diagnostics are preserved:
+  an initial collection failure for absent PyYAML 6.0.3 was observed and
+  summarised in `F4_RC03_ENVIRONMENT_DIAGNOSTIC.md`;
+  `F4_RC03_FULL_POSTGRESQL_COMBINED_REGRESSION.log` documents the interim
+  866-pass/1-fail run with inherited ANSI colour forced in mypy output.
+  The final pinned execution isolated colour configuration without editing
+  or bypassing any tests, and was green.
+- Effective normative catalogue remains the authorised R187-adjusted
+  SHA-256 `8045c8c0c4a62fbc3b88759a65b415efb1f0d549764ddbdcae2c5c911cd8a64a`
+  with **490 edges plus one D007 sentinel**. F4 ledger now records **166
+  bounded F4 public edges**, **188 outstanding Stage-1-closed edges across
+  66 rows**, 18 inherited F2 scoped edges, 11 F3 bounded edges, 107
+  deferred Stage-2 edges and one D007 zero-edge sentinel. **All 30
+  cross-stage own-kernel/refusal obligations remain open.** RC03 bounded
+  public edge evidence is not whole Stage-1 or independent acceptance.
+- The previous separate **55/55** pinned M00 PostgreSQL durability readback
+  is retained at `30c5e54`; this run did not independently rerun that suite.
+- A potential D123 exact-contract/open-interest history concern was
+  identified by static source inspection only; no positive defect claim or
+  F4 ledger credit is made without a public reproducer. Continue with
+  authority-derived unproved classes, not Stage 2.
