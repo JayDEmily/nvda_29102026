@@ -324,3 +324,34 @@ This is not the consolidated F4/Stage-1 review candidate.
   **unproved**, notwithstanding the earlier sample-SD arithmetic
   witnesses. The separately scoped 55 M00 durability tests were
   **not rerun** in this continuation. No Stage-1 acceptance.
+
+
+
+## 10-10-2026 RC13 exact instrument returns and contemporaneous basket
+
+- Git `9e1447d` proves M00-public D071–D075 independently against SPY,
+  QQQ, SMH, SOXX and NVDA requests, respectively: current 120/prior 100
+  yields ln(1.2) for the *requested* exact subject, excluding an AMD
+  decoy.  Missing/wrong-subject prior, future-received current, full
+  native raw lineage and deterministic retry are proved in 15 focused
+  tests. These five rows account for ten normative RC13 edges.
+- Git `9365cd0` adds three M00-public D083 proofs: immutable,
+  three-member NVDA/AMD/INTC basket selected by exact per-member bindings;
+  N-1 sample dispersion of three contemporaneous log returns; fail-closed
+  missing INTC prior and mismatch between basket membership in
+  parameter profile and input selection; full R037/R042 source lineage.
+  Two D083 edges receive bounded public credit.
+- Full applicable PostgreSQL M00/M01 non-durability regression **931
+  passed**; Ruff and mypy pass in exact logs
+  `F4_RC13_931_POSTGRESQL_COMBINED_REGRESSION.log`,
+  `F4_RC13_931_RUFF.log`, `F4_RC13_931_MYPY.log`.
+- Ledger still derives mechanically from **490 catalogue dependencies**
+  plus D007 sentinel. Twelve RC13 edges (six rows) added to bounded F4
+  public evidence; **154 still outstanding Stage-1-closed edges across
+  48 rows** and all **30** cross-stage kernel/refusal obligations.
+  D076/D077 predecessor-to-different-sector-subject mapping and all
+  other unproved RC13/RC05/RC06 relations remain explicitly **UNKNOWN /
+  unproved** until appropriate public and authority checks; no inference
+  of correct multi-subject recursion is made from the direct scalar tests.
+- The separate 55-case M00 PostgreSQL durability suite was **not
+  rerun** in this continuation. F4 and Stage 1 remain unaccepted.

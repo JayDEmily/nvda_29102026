@@ -21,6 +21,38 @@ OUT = Path(__file__).resolve().parent
 NORMATIVE_SHA256 = "8045c8c0c4a62fbc3b88759a65b415efb1f0d549764ddbdcae2c5c911cd8a64a"
 STAGE1_KERNELS = {f"K{i:02d}" for i in range(1, 9)} | {"K16", "K17"}
 F4_BOUNDED_PUBLIC_ROWS = {
+    "D083": (
+        "RC13", "tests/product/derived_signal/test_m01_f4_rc13_cross_section_public.py",
+        "M00 immutable exact NVDA/AMD/INTC contemporaneous basket of three "
+        "current/prior subject-scoped pairs; independently calculated N-1 "
+        "sample SD of cross-member log returns; missing member and "
+        "parameter/selection basket mismatch refusal, full R-lineage and retry",
+    ),
+    "D071": (
+        "RC13", "tests/product/derived_signal/test_m01_f4_rc13_sector_returns_public.py",
+        "M00 SPY instrument-specific current 120/prior close 100 => ln(1.2); "
+        "AMD decoy excluded, wrong-subject/future-cutoff refusal, full lineage and retry",
+    ),
+    "D072": (
+        "RC13", "tests/product/derived_signal/test_m01_f4_rc13_sector_returns_public.py",
+        "M00 QQQ instrument-specific current/prior return ln(1.2); "
+        "AMD decoy excluded, wrong-subject/future-cutoff refusal, full lineage and retry",
+    ),
+    "D073": (
+        "RC13", "tests/product/derived_signal/test_m01_f4_rc13_sector_returns_public.py",
+        "M00 SMH instrument-specific current/prior return ln(1.2); "
+        "AMD decoy excluded, wrong-subject/future-cutoff refusal, full lineage and retry",
+    ),
+    "D074": (
+        "RC13", "tests/product/derived_signal/test_m01_f4_rc13_sector_returns_public.py",
+        "M00 SOXX instrument-specific current/prior return ln(1.2); "
+        "AMD decoy excluded, wrong-subject/future-cutoff refusal, full lineage and retry",
+    ),
+    "D075": (
+        "RC13", "tests/product/derived_signal/test_m01_f4_rc13_sector_returns_public.py",
+        "M00 NVDA instrument-specific current/prior return ln(1.2); "
+        "AMD decoy excluded, wrong-subject/future-cutoff refusal, full lineage and retry",
+    ),
     "D032": (
         "RC04", "tests/product/derived_signal/test_m01_f4_rc04_realised_risk_public.py",
         "M00 exact 5-minute three-price return grid; two 2.5-minute intervals, "
@@ -505,8 +537,8 @@ def main() -> None:
         "F2_ACCEPTED_SCOPED_EVIDENCE": 18,
         "F3A_BOUNDED_PUBLIC_PROOF": 4,
         "F3B_BOUNDED_PUBLIC_PROOF": 7,
-        "F4_BOUNDED_PUBLIC_ROW_PROOF": 188,
-        "F4_OUTSTANDING_RELATIONSHIP_PROOF": 166,
+        "F4_BOUNDED_PUBLIC_ROW_PROOF": 200,
+        "F4_OUTSTANDING_RELATIONSHIP_PROOF": 154,
         "STAGE2_BOUNDARY_DEFERRED": 107,
         "F4_ZERO_EDGE_PUBLIC_PROOF": 1,
     }, statuses
@@ -554,7 +586,7 @@ def main() -> None:
     assert len(row_records) == 174
     assert sum(x["stage_boundary"] == "STAGE1_CLOSED" for x in row_records) == 144
     assert sum(x["stage_boundary"] == "CROSS_STAGE" for x in row_records) == 30
-    assert sum(x["outstanding_stage1_closed_edges"] for x in row_records) == 166
+    assert sum(x["outstanding_stage1_closed_edges"] for x in row_records) == 154
     with (OUT / "F4_ROW_EVIDENCE_MATRIX.csv").open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, list(row_records[0]))
         writer.writeheader()
@@ -576,7 +608,7 @@ def main() -> None:
                 "status": "UNPROVED" if missing else "NO_OPEN_STAGE1_EDGES_NOT_CLASS_ACCEPTANCE",
             }
         )
-    assert sum(x["stage1_closed_outstanding_edges"] for x in class_records) == 166
+    assert sum(x["stage1_closed_outstanding_edges"] for x in class_records) == 154
     with (OUT / "F4_CLASS_PROOF_RECONCILIATION.csv").open(
         "w", newline="", encoding="utf-8"
     ) as handle:
