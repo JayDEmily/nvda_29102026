@@ -79,12 +79,18 @@ def _public(
     future_index: int | None = None,
     extra_d039_bar: bool = False,
     omit_bar_field: tuple[int, str] | None = None,
+    gap_at_index: int | None = None,
 ) -> tuple[api.DerivedSignalCalculationOwnerV1, api.CalculationRequestV1, tuple[datetime, ...]]:
     m00 = raw.create_owner()
     bar_total = 4 if extra_d039_bar else 3
     stamps = _instants(did) if did != "D039" else tuple(
         NOW - timedelta(minutes=5 * (bar_total - 1 - i)) for i in range(bar_total)
     )
+    if did == "D039" and gap_at_index is not None:
+        stamps = tuple(
+            instant - timedelta(minutes=5) if i < gap_at_index else instant
+            for i, instant in enumerate(stamps)
+        )
     source_ids = (
         ("R141", "R142", "R143") if did == "D039" else
         ("R151", "R149", "R150") if did == "D038" else
@@ -308,3 +314,10 @@ def test_rc04_public_d039_four_bar_control_true_range() -> None:
     # bar3 previous close=105 -> max(120-100,15,5)=20.
     assert result is not None and result.result == Decimal("18.5")
     assert owner.materialise(req) == result
+
+
+def test_rc04_public_d039_gap_in_required_five_minute_bars_refuses() -> None:
+    owner, req, _ = _public("D039", gap_at_index=2)
+    # Recorded closes are now 10 minutes apart in the final required
+    # predecessor step: three native closes do not form two 5-minute bars.
+    assert owner.materialise(req) is None
