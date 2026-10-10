@@ -115,9 +115,11 @@ def test_rc16_incomplete_second_position_leg_must_refuse(did: str) -> None:
 
 
 @pytest.mark.parametrize("did", tuple(GREEKS))
-def test_rc16_future_second_position_leg_must_refuse(did: str) -> None:
+def test_rc16_entirely_future_leg_not_visible_at_cutoff(did: str) -> None:
     owner, req = _public(did, future_second_leg=True)
-    assert owner.materialise(req) is None
+    out = owner.materialise(req)
+    assert out is not None and out.result == Decimal(2) * Decimal(100) * GREEKS[did][1][0]
+    assert {item.observation_occurrence_id for item in out.raw_input_lineage} == {"pos-leg-a"}
 
 
 def test_rc16_public_fill_completion_exact_six_over_ten() -> None:
