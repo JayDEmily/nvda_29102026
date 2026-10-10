@@ -24,7 +24,7 @@ def _public(
 ) -> tuple[api.DerivedSignalCalculationOwnerV1, api.CalculationRequestV1]:
     m00 = raw.create_owner()
     rows = (
-        ("prior-1", Decimal("0.20"), 100),
+        ("prior-1", Decimal("0.20"), 365),
         ("prior-2", Decimal("0.40"), 50),
         ("current", current, 0),
         ("other-point", Decimal("0.99"), 1),
