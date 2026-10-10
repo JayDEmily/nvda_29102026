@@ -75,6 +75,13 @@ F4_BOUNDED_PUBLIC_ROWS = {
         "Native realised 125/unrealised -45/total 80 retained as named "
         "components, exact three-field raw lineage and retry",
     ),
+    "D117": (
+        "RC14", "tests/product/derived_signal/test_m01_f4_rc14_option_volume_z_public.py",
+        "M00 exact NVDA call contract option volume R041 history 8/12 and current "
+        "16 gives 6/sqrt(8) with versioned two-sample historical baseline, "
+        "required R075, competing-contract exclusion, exact persisted R lineage, "
+        "missing history/OI, zero-variance, future-cutoff refusal, retry",
+    ),
     "D116": (
         "RC14", "tests/product/derived_signal/test_m01_f4_rc14_option_volume_oi_public.py",
         "M00 source-native R041 option volume 300 and R075 official OI "
@@ -756,8 +763,8 @@ def main() -> None:
         "F2_ACCEPTED_SCOPED_EVIDENCE": 18,
         "F3A_BOUNDED_PUBLIC_PROOF": 4,
         "F3B_BOUNDED_PUBLIC_PROOF": 7,
-        "F4_BOUNDED_PUBLIC_ROW_PROOF": 288,
-        "F4_OUTSTANDING_RELATIONSHIP_PROOF": 66,
+        "F4_BOUNDED_PUBLIC_ROW_PROOF": 290,
+        "F4_OUTSTANDING_RELATIONSHIP_PROOF": 64,
         "STAGE2_BOUNDARY_DEFERRED": 107,
         "F4_ZERO_EDGE_PUBLIC_PROOF": 1,
     }, statuses
@@ -805,7 +812,7 @@ def main() -> None:
     assert len(row_records) == 174
     assert sum(x["stage_boundary"] == "STAGE1_CLOSED" for x in row_records) == 144
     assert sum(x["stage_boundary"] == "CROSS_STAGE" for x in row_records) == 30
-    assert sum(x["outstanding_stage1_closed_edges"] for x in row_records) == 66
+    assert sum(x["outstanding_stage1_closed_edges"] for x in row_records) == 64
     with (OUT / "F4_ROW_EVIDENCE_MATRIX.csv").open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, list(row_records[0]))
         writer.writeheader()
@@ -827,7 +834,7 @@ def main() -> None:
                 "status": "UNPROVED" if missing else "NO_OPEN_STAGE1_EDGES_NOT_CLASS_ACCEPTANCE",
             }
         )
-    assert sum(x["stage1_closed_outstanding_edges"] for x in class_records) == 66
+    assert sum(x["stage1_closed_outstanding_edges"] for x in class_records) == 64
     with (OUT / "F4_CLASS_PROOF_RECONCILIATION.csv").open(
         "w", newline="", encoding="utf-8"
     ) as handle:
