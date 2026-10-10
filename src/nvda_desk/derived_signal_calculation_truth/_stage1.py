@@ -1324,36 +1324,63 @@ def _eval_k02(
                 )
             return None
         if identity in {"D099", "D100", "D101"}:
-            # The selected IV points must carry right/delta/expiry identity;
-            # never infer labels or cross expiry boundaries from query order.
-            skew_points: list[tuple[str, str, Decimal, Decimal]] = []
-            for item in raw.get("R111", ()):
-                metadata = _metadata(item)
-                expiry = metadata.get("expiry")
-                right = _option_right(metadata)
-                delta = metadata.get("delta")
-                if expiry is None or not right or delta is None:
+            # Every IV point must join its own source-native R112 delta by
+            # exact option contract; copied/independently labelled IV metadata
+            # is not authoritative delta truth. D099/100 also require the
+            # declared R015 strike. Never silently discard a missing or
+            # contradictory member of the selected expiry surface.
+            raw_fields = ("R111", "R112", "R015") if identity != "D101" else ("R111", "R112")
+            by_field: dict[str, dict[str, KernelValueV1]] = {}
+            for field in raw_fields:
+                selected: dict[str, KernelValueV1] = {}
+                for item in raw.get(field, ()):
+                    cid = _metadata(item).get("contract_id")
+                    if type(cid) is not str or not cid or cid in selected:
+                        return None
+                    selected[cid] = item
+                if not selected:
                     return None
+                by_field[field] = selected
+            contracts = set(by_field["R111"])
+            if any(set(by_field[field]) != contracts for field in raw_fields[1:]):
+                return None
+            skew_points: list[tuple[str, str, Decimal, Decimal]] = []
+            for cid in sorted(contracts):
+                iv_point = by_field["R111"][cid]
+                delta_point = by_field["R112"][cid]
+                iv_meta = _metadata(iv_point)
+                expiry = iv_meta.get("expiry")
+                right = _option_right(iv_meta)
+                if (
+                    expiry is None or right not in {"c", "call", "p", "put"}
+                    or not _source_identity_compatible(iv_point, delta_point)
+                    or _metadata(iv_point).get("source_provider")
+                    != _metadata(delta_point).get("source_provider")
+                ):
+                    return None
+                if identity != "D101":
+                    strike_point = by_field["R015"][cid]
+                    if (
+                        not _source_identity_compatible(iv_point, strike_point)
+                        or _metadata(iv_point).get("source_provider")
+                        != _metadata(strike_point).get("source_provider")
+                        or iv_meta.get("strike") is None
+                        or _d(strike_point.value) != _d(iv_meta["strike"])
+                    ):
+                        return None
                 skew_points.append(
-                    (
-                        str(expiry),
-                        right,
-                        abs(_d(delta)),
-                        _d(item.value),
-                    )
+                    (str(expiry), right, abs(_d(delta_point.value)), _d(iv_point.value))
                 )
             target = Decimal("0.25") if identity in {"D099", "D101"} else Decimal("0.10")
             complete_skew_groups: list[tuple[Decimal, Decimal, tuple[Decimal, ...]]] = []
             for expiry in sorted({point[0] for point in skew_points}):
                 expiry_points = tuple(point for point in skew_points if point[0] == expiry)
                 calls = tuple(
-                    iv
-                    for _, right, delta, iv in expiry_points
+                    iv for _, right, delta, iv in expiry_points
                     if right in {"c", "call"} and delta == target
                 )
                 puts = tuple(
-                    iv
-                    for _, right, delta, iv in expiry_points
+                    iv for _, right, delta, iv in expiry_points
                     if right in {"p", "put"} and delta == target
                 )
                 if len(calls) != 1 or len(puts) != 1:

@@ -1920,85 +1920,37 @@ def test_each_option_rows_require_complete_contract_selection_policy_before_calc
 
 
 def test_k02_per_expiry_skew_refuses_cross_expiry_points_and_requires_exact_delta() -> None:
-    valid = _eval(
-        "D099",
-        raw={
-            "R111": (
-                _kv(
-                    Decimal("0.30"),
-                    occurrence_id="call-25",
-                    metadata=(
-                        ("right", "call"),
-                        ("delta", Decimal("0.25")),
-                        ("expiry", "2026-10-16"),
-                    ),
-                ),
-                _kv(
-                    Decimal("0.35"),
-                    occurrence_id="put-25",
-                    metadata=(
-                        ("right", "put"),
-                        ("delta", Decimal("-0.25")),
-                        ("expiry", "2026-10-16"),
-                    ),
-                ),
+    # Preserve the original expected skew/refusal assertions while supplying
+    # each authoritative K02 dependency as an independent contract-matched
+    # occurrence. Delta truth belongs to R112, strike to R015, IV to R111.
+    def skew_raw(
+        *, mixed_expiry: bool = False, wrong_delta: bool = False
+    ) -> dict[str, tuple[Any, ...]]:
+        observations: dict[str, list[Any]] = {"R111": [], "R112": [], "R015": []}
+        for cid, right, expiry, strike, delta, iv in (
+            ("C25", "call", "2026-10-16", Decimal(155), Decimal("0.25"), Decimal("0.30")),
+            ("P25", "put", "2026-10-23" if mixed_expiry else "2026-10-16",
+             Decimal(145), Decimal("-0.30") if wrong_delta else Decimal("-0.25"),
+             Decimal("0.35")),
+        ):
+            metadata = (
+                ("contract_id", cid), ("underlying_instrument", "NVDA"),
+                ("expiry", expiry), ("strike", strike), ("right", right),
+                ("source_provider", "controlled"),
             )
-        },
-    )
+            for rid, value in (("R111", iv), ("R112", delta), ("R015", strike)):
+                observations[rid].append(
+                    _kv(value, occurrence_id=f"{cid}-{rid}", metadata=metadata)
+                )
+        return {rid: tuple(values) for rid, values in observations.items()}
+
+    valid = _eval("D099", raw=skew_raw())
     assert valid is not None and valid.value == Decimal("5.00")
 
-    mixed_expiry = _eval(
-        "D099",
-        raw={
-            "R111": (
-                _kv(
-                    Decimal("0.30"),
-                    occurrence_id="call-25",
-                    metadata=(
-                        ("right", "call"),
-                        ("delta", Decimal("0.25")),
-                        ("expiry", "2026-10-16"),
-                    ),
-                ),
-                _kv(
-                    Decimal("0.35"),
-                    occurrence_id="put-25",
-                    metadata=(
-                        ("right", "put"),
-                        ("delta", Decimal("-0.25")),
-                        ("expiry", "2026-10-23"),
-                    ),
-                ),
-            )
-        },
-    )
+    mixed_expiry = _eval("D099", raw=skew_raw(mixed_expiry=True))
     assert mixed_expiry is None
 
-    wrong_delta = _eval(
-        "D099",
-        raw={
-            "R111": (
-                _kv(
-                    Decimal("0.30"),
-                    occurrence_id="call-25",
-                    metadata=(
-                        ("right", "call"),
-                        ("delta", Decimal("0.25")),
-                        ("expiry", "2026-10-16"),
-                    ),
-                ),
-                _kv(
-                    Decimal("0.35"),
-                    occurrence_id="put-30",
-                    metadata=(
-                        ("right", "put"),
-                        ("delta", Decimal("-0.30")),
-                        ("expiry", "2026-10-16"),
-                    ),
-                ),
-            )
-        },
-    )
+    wrong_delta = _eval("D099", raw=skew_raw(wrong_delta=True))
     assert wrong_delta is None
 
 
