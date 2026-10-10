@@ -53,7 +53,11 @@ def _public(did: str, *, missing_contract_field: tuple[str, str] | None = None,
                 delivery_artifact_ref=raw.delivery_artifact_ref(f"skew-{contract}-{rid}"),
                 source_provider=raw.provider_id("controlled-native-skew"),
                 native_record={
-                    "metric": {rid: Decimal("0.30") if wrong_delta == contract and rid == "R112" else value},
+                    "metric": {
+                        rid: Decimal("0.30")
+                        if wrong_delta == contract and rid == "R112"
+                        else value
+                    },
                     "identity": dict(identity.values),
                 },
                 received_ts_utc=NOW + timedelta(seconds=1)
@@ -99,7 +103,9 @@ def _public(did: str, *, missing_contract_field: tuple[str, str] | None = None,
 @pytest.mark.parametrize("did,expected", (
     ("D099", Decimal(10)), ("D100", Decimal(30)), ("D101", Decimal(4)),
 ))
-def test_skew_uses_native_delta_strike_exact_expiry_and_lineage(did: str, expected: Decimal) -> None:
+def test_skew_uses_native_delta_strike_exact_expiry_and_lineage(
+    did: str, expected: Decimal
+) -> None:
     owner, request = _public(did)
     out = owner.materialise(request)
     assert out is not None and out.result == expected
