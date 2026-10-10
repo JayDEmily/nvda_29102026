@@ -332,6 +332,27 @@ for _did in ("D066", "D067", "D068", "D069"):
     )
 
 
+# RC01 public temporal/data-quality and trigger evidence, committed at 1a8a0c6.
+F4_BOUNDED_PUBLIC_ROWS["D006"] = (
+    "RC01", "tests/product/derived_signal/test_m01_f4_rc01_quality_public.py",
+    "native M00 three-field P_SCORE source/type/cadence and actual D002 receipt age; "
+    "exact versioned weighted result 2.75, persisted predecessor/raw lineage and "
+    "missing/wrong-subject/refusal with deterministic retry",
+)
+F4_BOUNDED_PUBLIC_ROWS["D008"] = (
+    "RC01", "tests/product/derived_signal/test_m01_f4_rc01_quality_public.py",
+    "native M00 heterogeneous true-instant versus receipt-only sources, structured "
+    "max-skew 5 sec, coverage 2/3, one missing instant and versioned sigmoid "
+    "score; actual D001/D002 predecessor graph, all-receipt refusal and lineage",
+)
+F4_BOUNDED_PUBLIC_ROWS["D209"] = (
+    "RC01", "tests/product/derived_signal/test_m01_f4_rc01_trigger_public.py",
+    "versioned RecalculationSchedule and native receipt-only R001 M00 event; "
+    "public trigger fact and receipt timestamp without external action, "
+    "persisted raw lineage, missing/future/wrong-subject refusal and retry",
+)
+
+
 def _sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
@@ -429,8 +450,8 @@ def main() -> None:
         "F2_ACCEPTED_SCOPED_EVIDENCE": 18,
         "F3A_BOUNDED_PUBLIC_PROOF": 4,
         "F3B_BOUNDED_PUBLIC_PROOF": 7,
-        "F4_BOUNDED_PUBLIC_ROW_PROOF": 166,
-        "F4_OUTSTANDING_RELATIONSHIP_PROOF": 188,
+        "F4_BOUNDED_PUBLIC_ROW_PROOF": 174,
+        "F4_OUTSTANDING_RELATIONSHIP_PROOF": 180,
         "STAGE2_BOUNDARY_DEFERRED": 107,
         "F4_ZERO_EDGE_PUBLIC_PROOF": 1,
     }, statuses
@@ -478,7 +499,7 @@ def main() -> None:
     assert len(row_records) == 174
     assert sum(x["stage_boundary"] == "STAGE1_CLOSED" for x in row_records) == 144
     assert sum(x["stage_boundary"] == "CROSS_STAGE" for x in row_records) == 30
-    assert sum(x["outstanding_stage1_closed_edges"] for x in row_records) == 188
+    assert sum(x["outstanding_stage1_closed_edges"] for x in row_records) == 180
     with (OUT / "F4_ROW_EVIDENCE_MATRIX.csv").open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, list(row_records[0]))
         writer.writeheader()
@@ -500,7 +521,7 @@ def main() -> None:
                 "status": "UNPROVED" if missing else "NO_OPEN_STAGE1_EDGES_NOT_CLASS_ACCEPTANCE",
             }
         )
-    assert sum(x["stage1_closed_outstanding_edges"] for x in class_records) == 188
+    assert sum(x["stage1_closed_outstanding_edges"] for x in class_records) == 180
     with (OUT / "F4_CLASS_PROOF_RECONCILIATION.csv").open(
         "w", newline="", encoding="utf-8"
     ) as handle:

@@ -8,8 +8,8 @@
     "F2_ACCEPTED_SCOPED_EVIDENCE": 18,
     "F3A_BOUNDED_PUBLIC_PROOF": 4,
     "F3B_BOUNDED_PUBLIC_PROOF": 7,
-    "F4_BOUNDED_PUBLIC_ROW_PROOF": 166,
-    "F4_OUTSTANDING_RELATIONSHIP_PROOF": 188,
+    "F4_BOUNDED_PUBLIC_ROW_PROOF": 174,
+    "F4_OUTSTANDING_RELATIONSHIP_PROOF": 180,
     "F4_ZERO_EDGE_PUBLIC_PROOF": 1,
     "STAGE2_BOUNDARY_DEFERRED": 107
   },
@@ -19,6 +19,8 @@
     "D003",
     "D004",
     "D005",
+    "D006",
+    "D008",
     "D009",
     "D010",
     "D011",
@@ -78,7 +80,8 @@
     "D143",
     "D144",
     "D145",
-    "D151"
+    "D151",
+    "D209"
   ],
   "historical_three_field_witness": "retained in commit 450b7e6; formerly produced zero",
   "new_authorised_raw_edges": [
@@ -88,7 +91,7 @@
   "prior_f3_ledger_sha256": "67f354ca64946963e3ddd0acde632bc6a507a190f20547c5150d0698a128dd23",
   "repaired_event_witness": "explicit R187 operation; D134=10, D135=7, D136=3/17",
   "stage1_closed_rows": 144,
-  "stage1_closed_rows_with_outstanding_edges": 66,
+  "stage1_closed_rows_with_outstanding_edges": 63,
   "stage1_f4_candidate_ready": false,
   "stage1_independent_acceptance": false,
   "stage1_rows": 174,

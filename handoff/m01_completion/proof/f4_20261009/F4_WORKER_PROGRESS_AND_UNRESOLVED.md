@@ -233,3 +233,26 @@ This is not the consolidated F4/Stage-1 review candidate.
   identified by static source inspection only; no positive defect claim or
   F4 ledger credit is made without a public reproducer. Continue with
   authority-derived unproved classes, not Stage 2.
+
+
+## 10-10-2026 RC01 data-quality and receipt trigger — post-RC03 continuation
+
+- Proof-first commit `1a8a0c6` adds public M00 witnesses for D006
+  staleness score, D008 structured alignment and D209 recalculation trigger.
+  Immutable declared P_SCORE features combine age, admitted provider type
+  code and cadence in D006 (exact result 2.75); D008 reports two true instants
+  of five-second skew, coverage 2/3, one receipt-only missing event instant,
+  and a versioned bounded sigmoid score. D209 persists the native receipt
+  timestamp and control fact with versioned schedule context, without actions.
+  Tests cover full raw/predecessor lineage, deterministic retry, incomplete
+  fields, wrong source and future/receipt-only refusal. 12 focused tests pass.
+- Full applicable isolated PostgreSQL 17.9 non-durability regression:
+  **879 passed** (`F4_RC01_879_POSTGRESQL_COMBINED_REGRESSION.log`).
+  Ruff and mypy pass (`F4_RC01_879_RUFF.log`, `F4_RC01_879_MYPY.log`).
+  The prior 55 passing M00 durability tests were not rerun this time.
+- The amended normative catalogue is unchanged at 490 dependency edges
+  (plus D007 zero-edge sentinel). RC01 now has zero unproved Stage-1-closed
+  relationships. F4 ledger stands at **174 newly bounded public edges**
+  and **180 still unproved Stage-1-closed edges across 63 rows**.
+  All 30 cross-stage own-kernel/public-refusal obligations remain open.
+  This is bounded evidence only, not full Stage-1 proof or acceptance.
