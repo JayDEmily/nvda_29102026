@@ -470,6 +470,17 @@ F4_BOUNDED_PUBLIC_ROWS = {
 }
 
 
+# RC21 D063 macro surprise proof first at d4ff247, bounded native completeness
+# correction at 9a701de. Missing release fields must not delete releases
+# from the selected baseline or substitute an older current print.
+F4_BOUNDED_PUBLIC_ROWS["D063"] = (
+    "RC21", "tests/product/derived_signal/test_m01_f4_rc21_macro_surprise_public.py",
+    "M00 exact release-family native actual/consensus z-score, selected two "
+    "prior surprises, complete release membership, other-family exclusion, "
+    "non-zero historical SD, future-cutoff refusal, raw lineage and retry",
+)
+
+
 # RC03 Stage-1-closed public proofs were committed independently, before this
 # reconciliation update, at proof-first commit 3480116.  This remains bounded
 # edge-level evidence rather than acceptance of all Stage 1.
@@ -643,8 +654,8 @@ def main() -> None:
         "F2_ACCEPTED_SCOPED_EVIDENCE": 18,
         "F3A_BOUNDED_PUBLIC_PROOF": 4,
         "F3B_BOUNDED_PUBLIC_PROOF": 7,
-        "F4_BOUNDED_PUBLIC_ROW_PROOF": 249,
-        "F4_OUTSTANDING_RELATIONSHIP_PROOF": 105,
+        "F4_BOUNDED_PUBLIC_ROW_PROOF": 251,
+        "F4_OUTSTANDING_RELATIONSHIP_PROOF": 103,
         "STAGE2_BOUNDARY_DEFERRED": 107,
         "F4_ZERO_EDGE_PUBLIC_PROOF": 1,
     }, statuses
@@ -692,7 +703,7 @@ def main() -> None:
     assert len(row_records) == 174
     assert sum(x["stage_boundary"] == "STAGE1_CLOSED" for x in row_records) == 144
     assert sum(x["stage_boundary"] == "CROSS_STAGE" for x in row_records) == 30
-    assert sum(x["outstanding_stage1_closed_edges"] for x in row_records) == 105
+    assert sum(x["outstanding_stage1_closed_edges"] for x in row_records) == 103
     with (OUT / "F4_ROW_EVIDENCE_MATRIX.csv").open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, list(row_records[0]))
         writer.writeheader()
@@ -714,7 +725,7 @@ def main() -> None:
                 "status": "UNPROVED" if missing else "NO_OPEN_STAGE1_EDGES_NOT_CLASS_ACCEPTANCE",
             }
         )
-    assert sum(x["stage1_closed_outstanding_edges"] for x in class_records) == 105
+    assert sum(x["stage1_closed_outstanding_edges"] for x in class_records) == 103
     with (OUT / "F4_CLASS_PROOF_RECONCILIATION.csv").open(
         "w", newline="", encoding="utf-8"
     ) as handle:
