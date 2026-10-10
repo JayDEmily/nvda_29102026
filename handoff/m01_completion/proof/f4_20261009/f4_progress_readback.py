@@ -610,6 +610,23 @@ F4_BOUNDED_PUBLIC_ROWS["D209"] = (
 )
 
 
+
+# RC13 D076/D077 proof-first e6b98e9, bounded sector-identity repair 0067dbc.
+# This is the two-proxy standard D077 case; optional single-proxy policy is
+# not independently proved by this witness and remains an explicit caveat.
+F4_BOUNDED_PUBLIC_ROWS["D076"] = (
+    "RC13", "tests/product/derived_signal/test_m01_f4_rc13_relative_sector_public.py",
+    "M00 distinct SPY and QQQ R037/R042 observations; exact QQQ-minus-SPY "
+    "log return spread, separate D072/D071 occurrence subjects and raw/D lineage, "
+    "absent/future predecessor refusal, ambiguous SPY/SPX proxy refusal and retry",
+)
+F4_BOUNDED_PUBLIC_ROWS["D077"] = (
+    "RC13", "tests/product/derived_signal/test_m01_f4_rc13_relative_sector_public.py",
+    "M00 distinct SMH/SOXX/QQQ R037/R042 observations, two-proxy mean(SMH,SOXX) "
+    "minus QQQ log return, three independent predecessor occurrences, full raw/D "
+    "lineage and missing/future member refusal; named single-proxy mode not proved",
+)
+
 def _sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
@@ -707,8 +724,8 @@ def main() -> None:
         "F2_ACCEPTED_SCOPED_EVIDENCE": 18,
         "F3A_BOUNDED_PUBLIC_PROOF": 4,
         "F3B_BOUNDED_PUBLIC_PROOF": 7,
-        "F4_BOUNDED_PUBLIC_ROW_PROOF": 279,
-        "F4_OUTSTANDING_RELATIONSHIP_PROOF": 75,
+        "F4_BOUNDED_PUBLIC_ROW_PROOF": 284,
+        "F4_OUTSTANDING_RELATIONSHIP_PROOF": 70,
         "STAGE2_BOUNDARY_DEFERRED": 107,
         "F4_ZERO_EDGE_PUBLIC_PROOF": 1,
     }, statuses
@@ -756,7 +773,7 @@ def main() -> None:
     assert len(row_records) == 174
     assert sum(x["stage_boundary"] == "STAGE1_CLOSED" for x in row_records) == 144
     assert sum(x["stage_boundary"] == "CROSS_STAGE" for x in row_records) == 30
-    assert sum(x["outstanding_stage1_closed_edges"] for x in row_records) == 75
+    assert sum(x["outstanding_stage1_closed_edges"] for x in row_records) == 70
     with (OUT / "F4_ROW_EVIDENCE_MATRIX.csv").open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, list(row_records[0]))
         writer.writeheader()
@@ -778,7 +795,7 @@ def main() -> None:
                 "status": "UNPROVED" if missing else "NO_OPEN_STAGE1_EDGES_NOT_CLASS_ACCEPTANCE",
             }
         )
-    assert sum(x["stage1_closed_outstanding_edges"] for x in class_records) == 75
+    assert sum(x["stage1_closed_outstanding_edges"] for x in class_records) == 70
     with (OUT / "F4_CLASS_PROOF_RECONCILIATION.csv").open(
         "w", newline="", encoding="utf-8"
     ) as handle:
