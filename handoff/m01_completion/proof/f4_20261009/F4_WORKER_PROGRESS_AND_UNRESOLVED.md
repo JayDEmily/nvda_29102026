@@ -256,3 +256,36 @@ This is not the consolidated F4/Stage-1 review candidate.
   and **180 still unproved Stage-1-closed edges across 63 rows**.
   All 30 cross-stage own-kernel/public-refusal obligations remain open.
   This is bounded evidence only, not full Stage-1 proof or acceptance.
+
+
+
+## 10-10-2026 RC04 D028 exact elapsed-session-fraction repair
+
+- Proof-first commit `d86b83b` includes accepted-brief §5 K04 public M00 evidence:
+  D028 R041/R044 per-native-occurrence pairing; prior source volume at
+  elapsed fractions 0.25 and 0.75 may not be compared with current 0.5.
+  Original public red output preserved in
+  `F4_RC04_D028_ELAPSED_FRACTION_PUBLIC_RED.log` (1 failed/10 passed).
+  Additional tests demonstrate D029–D031 sample N-1 z arithmetic and
+  insufficient/zero-SD refusal; these **do not** independently establish the
+  matching same-time-of-day/20–60-session horizon requirements, so those
+  rows receive **no F4 public proof ledger credit**.
+- Bounded production repair commit `fe293a0`: D028 now pairs R041/R044 using
+  the *same native M00 observation occurrence*, refuses missing/invalid
+  elapsed fractions, filters historical volumes to the exact current
+  fraction and never treats unmatched values as suitable baseline inputs.
+  The interleaved wrong-fraction volume=999 cannot change the correct
+  D028 result 16/mean(8,12)=1.6.  No normative catalogue mutation.
+- Final focused RC04 D028 + K04 arithmetic tests **13 passed**; combined
+  applicable non-durability PostgreSQL M00/M01 suite **892 passed**.
+  Ruff and mypy pass; see `F4_RC04_D028_892_POSTGRESQL_COMBINED_REGRESSION.log`,
+  `F4_RC04_892_RUFF.log`, `F4_RC04_892_MYPY.log`.
+- Exact F1/F4 reconciliation remains 490 normative edges plus D007
+  zero-edge sentinel. Only D028 R041/R044 (two edges) promoted to bounded
+  public proof, leaving **178 outstanding Stage-1-closed edges across
+  62 rows**; all 30 cross-stage own-kernel/public-refusal obligations
+  remain open.  D029–D031, remaining RC04 and other F4 classes remain
+  unproved beyond the explicitly stated partial arithmetic checks.
+- The separately scoped 55-test M00 durability suite has **not** been
+  rerun in this continuation; previous 55/55 checkpoint remains historical.
+  F4 and Stage 1 are not accepted. Stage 2 remains unauthorised.
