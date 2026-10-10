@@ -21,6 +21,58 @@ OUT = Path(__file__).resolve().parent
 NORMATIVE_SHA256 = "8045c8c0c4a62fbc3b88759a65b415efb1f0d549764ddbdcae2c5c911cd8a64a"
 STAGE1_KERNELS = {f"K{i:02d}" for i in range(1, 9)} | {"K16", "K17"}
 F4_BOUNDED_PUBLIC_ROWS = {
+    "D116": (
+        "RC14", "tests/product/derived_signal/test_m01_f4_rc14_option_volume_oi_public.py",
+        "M00 source-native R041 option volume 300 and R075 official OI "
+        "200 selected by exact contract => 1.5, persisted contract identity "
+        "and raw lineage, zero-OI/absent/future/other-contract refusal, retry",
+    ),
+    "D092": (
+        "RC14", "tests/product/derived_signal/test_m01_f4_rc14_option_iv_public.py",
+        "M00 exact option contract R084/R093 bid .48 and ask .52 -> .50 "
+        "IV midpoint, C2 distractor excluded, exact source lineage, "
+        "missing/future refusal and deterministic retry",
+    ),
+    "D093": (
+        "RC14", "tests/product/derived_signal/test_m01_f4_rc14_option_iv_public.py",
+        "M00 exact option contract R084/R093 .48/.52 -> four volatility "
+        "points of ask-minus-bid IV, C2 distractor excluded, exact "
+        "lineage, missing/future refusal and retry",
+    ),
+    "D094": (
+        "RC14", "tests/product/derived_signal/test_m01_f4_rc14_option_iv_history_public.py",
+        "M00 exact contract R111 as-of five-minute IV .53-.50 -> three "
+        "vol points; newer nearer-than-anchor IV .90 excluded, as-of "
+        "same-contract historical lineage, no eligible historical value "
+        "or different-contract reference refusal, retry",
+    ),
+    "D095": (
+        "RC14", "tests/product/derived_signal/test_m01_f4_rc14_option_iv_history_public.py",
+        "M00 exact contract R111/R183 prior comparable day .53-.48 -> "
+        "five volatility points, 5m/near distractors excluded, required "
+        "R183 present and in raw lineage, absence and wrong-contract "
+        "history refusal, retry",
+    ),
+    "D040": (
+        "RC06", "tests/product/derived_signal/test_m01_f4_rc06_trend_score_public.py",
+        "M00 D020/D021/D027/D024 full four-predecessor momentum/acceleration "
+        "weighted schema, exact numeric source inputs 1m/5m/30m, raw/D "
+        "lineage, no 30m anchor or wrong-subject VWAP refusal, retry",
+    ),
+    "D061": (
+        "RC06", "tests/product/derived_signal/test_m01_f4_rc06_market_regime_scores_public.py",
+        "M00 D052/D053/D057/D058/D059/D060 full six-predecessor scored "
+        "volatility regime with versioned P_SCORE feature extractors, "
+        "300s history anchors, exact numerical arithmetic, source/predecessor "
+        "lineage, missing/future/wrong-subject refusal and retry",
+    ),
+    "D070": (
+        "RC06", "tests/product/derived_signal/test_m01_f4_rc06_market_regime_scores_public.py",
+        "M00 D066/D067/D068/D069/D049/D050/D051 full seven-predecessor "
+        "international risk schema, versioned daily and 300s anchors, "
+        "exact numerical score, native source/D lineage, "
+        "missing/future/wrong-subject refusal and retry",
+    ),
     "D083": (
         "RC13", "tests/product/derived_signal/test_m01_f4_rc13_cross_section_public.py",
         "M00 immutable exact NVDA/AMD/INTC contemporaneous basket of three "
@@ -537,8 +589,8 @@ def main() -> None:
         "F2_ACCEPTED_SCOPED_EVIDENCE": 18,
         "F3A_BOUNDED_PUBLIC_PROOF": 4,
         "F3B_BOUNDED_PUBLIC_PROOF": 7,
-        "F4_BOUNDED_PUBLIC_ROW_PROOF": 200,
-        "F4_OUTSTANDING_RELATIONSHIP_PROOF": 154,
+        "F4_BOUNDED_PUBLIC_ROW_PROOF": 226,
+        "F4_OUTSTANDING_RELATIONSHIP_PROOF": 128,
         "STAGE2_BOUNDARY_DEFERRED": 107,
         "F4_ZERO_EDGE_PUBLIC_PROOF": 1,
     }, statuses
@@ -586,7 +638,7 @@ def main() -> None:
     assert len(row_records) == 174
     assert sum(x["stage_boundary"] == "STAGE1_CLOSED" for x in row_records) == 144
     assert sum(x["stage_boundary"] == "CROSS_STAGE" for x in row_records) == 30
-    assert sum(x["outstanding_stage1_closed_edges"] for x in row_records) == 154
+    assert sum(x["outstanding_stage1_closed_edges"] for x in row_records) == 128
     with (OUT / "F4_ROW_EVIDENCE_MATRIX.csv").open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, list(row_records[0]))
         writer.writeheader()
@@ -608,7 +660,7 @@ def main() -> None:
                 "status": "UNPROVED" if missing else "NO_OPEN_STAGE1_EDGES_NOT_CLASS_ACCEPTANCE",
             }
         )
-    assert sum(x["stage1_closed_outstanding_edges"] for x in class_records) == 154
+    assert sum(x["stage1_closed_outstanding_edges"] for x in class_records) == 128
     with (OUT / "F4_CLASS_PROOF_RECONCILIATION.csv").open(
         "w", newline="", encoding="utf-8"
     ) as handle:

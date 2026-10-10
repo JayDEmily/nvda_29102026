@@ -355,3 +355,44 @@ This is not the consolidated F4/Stage-1 review candidate.
   of correct multi-subject recursion is made from the direct scalar tests.
 - The separate 55-case M00 PostgreSQL durability suite was **not
   rerun** in this continuation. F4 and Stage 1 remain unaccepted.
+
+
+## 10-10-2026 RC06 multi-predecessor scores and RC14 option contract/IV proofs
+
+- Proof-first test Git `d4d7d66` adds M00 public-interface proofs for
+  D040 (four exact time-grid trend features), D061 (six precursor microstructure
+  scores), and D070 (seven constituent liquidity/momentum scores). Public
+  witnesses prove deterministic configured P_SCORE arithmetic, predecessor-D
+  and ultimate raw-R lineage, exact subject/time versioning, retry and
+  incomplete/mismatched prerequisite refusal. Eleven focused tests pass.
+  These three rows provide **17** independently bounded raw/predecessor edges.
+- Git `a74fcf9` adds exact-contract public option IV witnesses: D092
+  bid/ask IV midpoint, D093 IV spread, D094 five-minute IV change and
+  D095 prior-session/day IV change, with a competing contract,
+  snapshots as-of the historical anchor, eligibility/refusal, raw lineage
+  and repeat request. The authorised anchor is latest eligible observation
+  at or before the historical instant, **not** exact-timestamp equality.
+  Thirteen focused tests pass; these four rows provide **7** edges.
+  Initial transient uncommitted tests incorrectly asserted exact-time
+  staleness refusal and were corrected after inspection of the authority
+  and `_history_anchor`; no production defect is inferred.
+- Git `dbe2138` independently proves D116 native option contract
+  volume/open-interest ratio, competing contract exclusion, exact 1.5
+  result, missing/zero/future refusal and persisted R041/R075 lineage.
+  Five focused tests pass; **2** edges receive bounded public proof.
+- New F4 public proof totals **226** bounded edges; **128** Stage-1-closed
+  dependency edges remain outstanding across **40** rows. The complete
+  census continues to reconcile **490** authoritative dependency edges
+  plus D007 sentinel and **30** outstanding cross-stage own-kernel/public
+  fail-closed obligations. All catalogue mathematics and dependencies
+  remain unchanged since the prior authorised R187 correction.
+- PostgreSQL 17.9 separate-role whole applicable non-durability regression
+  **960 passed** (`F4_RC06_RC14_POSTGRESQL_COMBINED_REGRESSION.log`).
+  Ruff (`F4_RC06_RC14_RUFF.log`), mypy across 21 source files
+  (`F4_RC06_RC14_MYPY.log`) and the F1/F4 reconciler
+  (`F4_RC06_RC14_RECON.log`) all exit 0. This continuation has **not**
+  independently rerun the separately scoped 55-case M00 durability suite.
+- D076/D077 cross-subject predecessor selection, D041 parent trend P_SCORE
+  profile compatibility and the remaining F1 classes remain unproved
+  until separately exercised. No new production change was required in
+  this tranche. F4 and Stage 1 are not accepted; Stage 2 unauthorised.

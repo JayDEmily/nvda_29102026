@@ -1,0 +1,4 @@
+COMMAND: /mnt/data/nvda_f4_env/venv/bin/ruff check src tests tools handoff/m01_completion/proof/f4_20261009/f4_progress_readback.py
+EXIT: 0
+All checks passed!
+
