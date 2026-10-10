@@ -2294,29 +2294,44 @@ def _eval_k06(
                 return None
             return fit[{"D079": 1, "D080": 2, "D081": 3}[identity]]
         if identity == "D082":
-            values = raw.get("R151", ())
-            by_subject: dict[str, list[tuple[datetime, Decimal]]] = {}
-            for v in values:
-                by_subject.setdefault(v.subject_instrument, []).append(
-                    (v.effective_at_utc, _d(v.value))
-                )
-            subjects = tuple(sorted(by_subject))
+            # R151 supplies closes, not precomputed returns.  Pearson on
+            # untransformed price levels is a different financial statistic.
+            # The P_REGRESSION window selects exactly N aligned *returns*,
+            # which require N+1 actual positive closing-price observations.
             minimum = _i(params["minimum_sample"])
-            if minimum < 2 or len(subjects) < 2:
+            count = _i(params["history_count"])
+            values = raw.get("R151", ())
+            by_subject: dict[str, dict[datetime, Decimal]] = {}
+            for item in values:
+                series = by_subject.setdefault(item.subject_instrument, {})
+                if item.effective_at_utc in series:
+                    # Contradictory same-time native closes are not a window.
+                    return None
+                series[item.effective_at_utc] = _d(item.value)
+            subjects = tuple(sorted(by_subject))
+            if minimum < 2 or count < minimum or len(subjects) < 2:
                 return None
-            series = {s: {t: x for t, x in by_subject[s]} for s in subjects}
-            common = set.intersection(*(set(v) for v in series.values())) if series else set()
-            ordered = sorted(common)
-            if len(ordered) < minimum:
+            # A missing member of any selected native time point must not be
+            # repaired by intersection: this would bridge a gap and produce
+            # a materially different return interval for that subject.
+            times = sorted(set().union(*(set(series) for series in by_subject.values())))
+            if len(times) < count + 1:
                 return None
+            window = times[-(count + 1):]
+            returns: dict[str, tuple[Decimal, ...]] = {}
+            for subject in subjects:
+                series = by_subject[subject]
+                if any(at not in series for at in window):
+                    return None
+                calculated = _log_returns(tuple(series[at] for at in window))
+                if calculated is None:
+                    return None
+                returns[subject] = calculated
             matrix = []
             for a in subjects:
                 row = []
                 for b in subjects:
-                    correlation = _pearson(
-                        tuple(series[a][t] for t in ordered),
-                        tuple(series[b][t] for t in ordered),
-                    )
+                    correlation = _pearson(returns[a], returns[b])
                     if correlation is None:
                         return None
                     row.append(correlation)
