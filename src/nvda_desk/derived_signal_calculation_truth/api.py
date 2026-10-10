@@ -1615,6 +1615,82 @@ class _OwnerV1:
             )
         )
 
+    def _sector_predecessor_request(
+        self,
+        request: CalculationRequestV1,
+        parent_id: str,
+        predecessor_id: str,
+        selection: InputSelectionPolicyVersionV1,
+    ) -> CalculationRequestV1 | None:
+        """Use the accepted market-proxy identity for each sector predecessor.
+
+        The parent represents a relative-sector *basket*, not a source ETF.
+        Its distinct R037/R042 identities must not be evaluated as though all
+        predecessors share the parent's nominal subject.  No ticker aliases
+        are chosen opportunistically: ambiguous subscribed aliases refuse.
+        """
+        accepted = {
+            "D071": frozenset({"SPY", "SPX"}),
+            "D072": frozenset({"QQQ", "NDX"}),
+            "D073": frozenset({"SMH"}),
+            "D074": frozenset({"SOXX"}),
+        }
+        declared = (
+            ("D072", "D071") if parent_id == "D076"
+            else ("D073", "D074", "D072")
+        )
+        if predecessor_id not in declared or selection.join_keys != ("subject_instrument",):
+            return None
+        reference = dict(request.predecessor_selection_policy_refs).get(predecessor_id)
+        if reference is None:
+            return None
+        child = self._input_selection_policies.get((reference.context_id, reference.version))
+        if (
+            child is None
+            or child.join_keys != ("subject_instrument",)
+            or child.basket_membership
+            or child.maximum_staleness > selection.maximum_staleness
+            or child.maximum_skew > selection.maximum_skew
+            or not set(child.temporal_basis_permissions)
+            <= set(selection.temporal_basis_permissions)
+        ):
+            return None
+        subjects = set(selection.basket_membership)
+        # Exactly one versioned/bound source identity for each accepted proxy;
+        # an absent or doubled alias cannot be selected by runtime convenience.
+        selected: dict[str, str] = {}
+        for did in declared:
+            candidates = subjects & accepted[did]
+            if len(candidates) != 1:
+                return None
+            selected[did] = next(iter(candidates))
+        if subjects != set(selected.values()):
+            return None
+        chosen = selected[predecessor_id]
+        required = {"R037", "R042"}
+        bindings = tuple(
+            b for b in request.raw_input_bindings if b.subject_instrument == chosen
+        )
+        if (
+            len(bindings) != 2
+            or {b.raw_signal_id for b in bindings} != required
+            or len(request.raw_input_bindings) != len(declared) * 2
+            or any(
+                len(tuple(b for b in request.raw_input_bindings
+                          if b.raw_signal_id == rid and b.subject_instrument == subject)) != 1
+                for subject in subjects for rid in required
+            )
+        ):
+            return None
+        return replace(
+            request,
+            derived_signal_id=predecessor_id,
+            subject_instrument=chosen,
+            input_selection_policy_id=child.context_id,
+            input_selection_policy_version=child.version,
+            raw_input_bindings=bindings,
+        )
+
     def _scoped_contract_requests(
         self,
         request: CalculationRequestV1,
@@ -1628,6 +1704,11 @@ class _OwnerV1:
         Scope comes from bound exact facts and the candidate-structure context,
         never from nearest-neighbour searches or a fabricated policy version.
         """
+        if parent_id in {"D076", "D077"}:
+            sector_request = self._sector_predecessor_request(
+                request, parent_id, predecessor_id, parent_selection
+            )
+            return None if sector_request is None else (sector_request,)
         if (parent_id, predecessor_id) not in {
             ("D109", "D087"),
             ("D109", "D091"),
@@ -2164,9 +2245,9 @@ class _OwnerV1:
                     return None
                 predecessor_keys = self._selection_join_keys(predecessor_selection)
                 child_selected: dict[str, _SelectionIdentityScalarV1] = {}
-                if scoped_edge:
-                    # Pre-bind the child's exact contract to exclude other
-                    # contracts from durable history before choosing a value.
+                if scoped_edge and predecessor_keys:
+                    # Pre-bind exact child contract; subject-only market-proxy
+                    # children are scoped by their separate request subjects.
                     if not predecessor_request.raw_input_bindings:
                         return None
                     child_identity = predecessor_request.raw_input_bindings[0].selection_identity

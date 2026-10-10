@@ -129,7 +129,8 @@ def test_rc13_relative_returns_use_exact_distinct_predecessor_subjects(did: str)
     owner, request = _public(did)
     out = owner.materialise(request)
     assert out is not None
-    log = lambda symbol: RATIOS[symbol].ln()
+    def log(symbol: str) -> Decimal:
+        return RATIOS[symbol].ln()
     expected = log("QQQ") - log("SPY") if did == "D076" else (
         (log("SMH") + log("SOXX")) / 2 - log("QQQ")
     )
@@ -148,7 +149,9 @@ def test_rc13_relative_returns_use_exact_distinct_predecessor_subjects(did: str)
 @pytest.mark.parametrize("did,missing", (
     ("D076", ("SPY", "prior")), ("D077", ("SOXX", "prior")),
 ))
-def test_rc13_relative_returns_refuse_missing_exact_member(did: str, missing: tuple[str, str]) -> None:
+def test_rc13_relative_returns_refuse_missing_exact_member(
+    did: str, missing: tuple[str, str]
+) -> None:
     owner, request = _public(did, absent=missing)
     assert owner.materialise(request) is None
 
