@@ -1921,20 +1921,35 @@ def _eval_k03(
             current, prior = _d(_scalar(raw, "R037")), _d(_scalar(raw, "R042"))
             return None if current <= 0 or prior <= 0 else (current / prior).ln()
         if identity == "D103":
-            current_surface = [
-                v for v in raw.get("R111", ()) if _metadata(v).get("snapshot") == "current"
-            ]
-            prior_surface_by_grid = {
-                _metadata(v).get("grid_key"): v
-                for v in raw.get("R111", ())
-                if _metadata(v).get("snapshot") == "prior"
+            # A parallel surface shift compares an identical strike/expiry grid
+            # across two ordered snapshots. Intersecting grids would silently
+            # turn a missing contract into a valid, but different, surface.
+            surfaces: dict[str, dict[str, KernelValueV1]] = {
+                "prior": {}, "current": {},
             }
-            surface_diffs = [
-                _d(v.value) - _d(prior_surface_by_grid[_metadata(v).get("grid_key")].value)
-                for v in current_surface
-                if _metadata(v).get("grid_key") in prior_surface_by_grid
-            ]
-            return None if not surface_diffs else _DEC100 * _sample_mean(tuple(surface_diffs))
+            for point in raw.get("R111", ()):
+                metadata = _metadata(point)
+                snapshot, grid_key = metadata.get("snapshot"), metadata.get("grid_key")
+                if (
+                    type(snapshot) is not str
+                    or snapshot not in surfaces
+                    or type(grid_key) is not str
+                    or not grid_key
+                    or grid_key in surfaces[snapshot]
+                ):
+                    return None
+                surfaces[snapshot][grid_key] = point
+            prior, current = surfaces["prior"], surfaces["current"]
+            if not current or set(current) != set(prior):
+                return None
+            if max(v.effective_at_utc for v in prior.values()) >= min(
+                v.effective_at_utc for v in current.values()
+            ):
+                return None
+            return _DEC100 * _sample_mean(tuple(
+                _d(current[key].value) - _d(prior[key].value)
+                for key in sorted(current)
+            ))
         if identity == "D104":
             # D099/D100 are skew measures; compare latest with the exact prior anchor.
             vals = tuple(derived.get("D099", ())) + tuple(derived.get("D100", ()))
