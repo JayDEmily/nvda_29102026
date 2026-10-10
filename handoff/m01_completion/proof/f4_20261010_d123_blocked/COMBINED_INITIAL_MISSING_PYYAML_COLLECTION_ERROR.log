@@ -1,0 +1,146 @@
+
+==================================== ERRORS ====================================
+____ ERROR collecting tests/product/raw_signal/test_u06_a00_composition.py _____
+ImportError while importing test module '/mnt/data/NVDA_M01_F4_RC14_WORK_20261010/tests/product/raw_signal/test_u06_a00_composition.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/product/raw_signal/test_u06_a00_composition.py:10: in <module>
+    import yaml
+E   ModuleNotFoundError: No module named 'yaml'
+_______ ERROR collecting tests/architecture/test_activation_readiness.py _______
+ImportError while importing test module '/mnt/data/NVDA_M01_F4_RC14_WORK_20261010/tests/architecture/test_activation_readiness.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/architecture/test_activation_readiness.py:5: in <module>
+    import yaml
+E   ModuleNotFoundError: No module named 'yaml'
+_______ ERROR collecting tests/architecture/test_dependency_direction.py _______
+ImportError while importing test module '/mnt/data/NVDA_M01_F4_RC14_WORK_20261010/tests/architecture/test_dependency_direction.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/architecture/test_dependency_direction.py:6: in <module>
+    import yaml
+E   ModuleNotFoundError: No module named 'yaml'
+_______ ERROR collecting tests/architecture/test_identifier_taxonomy.py ________
+ImportError while importing test module '/mnt/data/NVDA_M01_F4_RC14_WORK_20261010/tests/architecture/test_identifier_taxonomy.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/architecture/test_identifier_taxonomy.py:5: in <module>
+    import yaml
+E   ModuleNotFoundError: No module named 'yaml'
+_ ERROR collecting tests/architecture/test_implementation_authority_ingress.py _
+ImportError while importing test module '/mnt/data/NVDA_M01_F4_RC14_WORK_20261010/tests/architecture/test_implementation_authority_ingress.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/architecture/test_implementation_authority_ingress.py:10: in <module>
+    import yaml
+E   ModuleNotFoundError: No module named 'yaml'
+_________ ERROR collecting tests/architecture/test_object_lifecycle.py _________
+ImportError while importing test module '/mnt/data/NVDA_M01_F4_RC14_WORK_20261010/tests/architecture/test_object_lifecycle.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/architecture/test_object_lifecycle.py:5: in <module>
+    from nvda_desk.architecture.registry import ArchitectureObject, ArchitectureRegistry
+src/nvda_desk/architecture/__init__.py:4: in <module>
+    from .registry import ArchitectureObject, ArchitectureRegistry
+src/nvda_desk/architecture/registry.py:9: in <module>
+    import yaml
+E   ModuleNotFoundError: No module named 'yaml'
+__________ ERROR collecting tests/architecture/test_proof_control.py ___________
+ImportError while importing test module '/mnt/data/NVDA_M01_F4_RC14_WORK_20261010/tests/architecture/test_proof_control.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/architecture/test_proof_control.py:6: in <module>
+    from nvda_desk.architecture.proof import load_and_validate_proof_state
+src/nvda_desk/architecture/__init__.py:4: in <module>
+    from .registry import ArchitectureObject, ArchitectureRegistry
+src/nvda_desk/architecture/registry.py:9: in <module>
+    import yaml
+E   ModuleNotFoundError: No module named 'yaml'
+_________ ERROR collecting tests/architecture/test_public_seam_law.py __________
+ImportError while importing test module '/mnt/data/NVDA_M01_F4_RC14_WORK_20261010/tests/architecture/test_public_seam_law.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/architecture/test_public_seam_law.py:3: in <module>
+    from nvda_desk.architecture.dependencies import analyse_source_tree
+src/nvda_desk/architecture/__init__.py:4: in <module>
+    from .registry import ArchitectureObject, ArchitectureRegistry
+src/nvda_desk/architecture/registry.py:9: in <module>
+    import yaml
+E   ModuleNotFoundError: No module named 'yaml'
+_________ ERROR collecting tests/architecture/test_registry_schema.py __________
+ImportError while importing test module '/mnt/data/NVDA_M01_F4_RC14_WORK_20261010/tests/architecture/test_registry_schema.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/architecture/test_registry_schema.py:6: in <module>
+    from nvda_desk.architecture.registry import ArchitectureRegistry
+src/nvda_desk/architecture/__init__.py:4: in <module>
+    from .registry import ArchitectureObject, ArchitectureRegistry
+src/nvda_desk/architecture/registry.py:9: in <module>
+    import yaml
+E   ModuleNotFoundError: No module named 'yaml'
+__________ ERROR collecting tests/bootstrap/test_legacy_exclusion.py ___________
+ImportError while importing test module '/mnt/data/NVDA_M01_F4_RC14_WORK_20261010/tests/bootstrap/test_legacy_exclusion.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/bootstrap/test_legacy_exclusion.py:4: in <module>
+    import yaml
+E   ModuleNotFoundError: No module named 'yaml'
+___________ ERROR collecting tests/bootstrap/test_minimal_imports.py ___________
+ImportError while importing test module '/mnt/data/NVDA_M01_F4_RC14_WORK_20261010/tests/bootstrap/test_minimal_imports.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/bootstrap/test_minimal_imports.py:5: in <module>
+    from nvda_desk.architecture.registry import ArchitectureRegistry
+src/nvda_desk/architecture/__init__.py:4: in <module>
+    from .registry import ArchitectureObject, ArchitectureRegistry
+src/nvda_desk/architecture/registry.py:9: in <module>
+    import yaml
+E   ModuleNotFoundError: No module named 'yaml'
+=========================== short test summary info ============================
+ERROR tests/product/raw_signal/test_u06_a00_composition.py
+ERROR tests/architecture/test_activation_readiness.py
+ERROR tests/architecture/test_dependency_direction.py
+ERROR tests/architecture/test_identifier_taxonomy.py
+ERROR tests/architecture/test_implementation_authority_ingress.py
+ERROR tests/architecture/test_object_lifecycle.py
+ERROR tests/architecture/test_proof_control.py
+ERROR tests/architecture/test_public_seam_law.py
+ERROR tests/architecture/test_registry_schema.py
+ERROR tests/bootstrap/test_legacy_exclusion.py
+ERROR tests/bootstrap/test_minimal_imports.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 11 errors during collection !!!!!!!!!!!!!!!!!!!
+11 errors in 4.07s

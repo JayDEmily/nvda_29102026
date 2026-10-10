@@ -47,3 +47,11 @@ The same reference workbook calls **R075** `Average Option Volume` (Tick 87), wh
 ## Validation and handoff restriction
 
 The known failing D123 public test must remain failing until the programme owner resolves the source/dependency law and a proof-first repair is undertaken. Do **not** delete it, weaken its expected `+25`, or mark the existing test suite green by excluding it without explicitly declaring its scope. This package is an authority-blocker handoff, **not** the requested final independent F4 review candidate.
+
+## Attempted broader regression (not a passing claim)
+
+- Local proof virtualenv from the supplied U05 bootstrap initially lacked the `PyYAML` runtime dependency, causing **11 pytest collection errors** (`COMBINED_INITIAL_MISSING_PYYAML_COLLECTION_ERROR.log`). This is environment setup, not an M01 semantic failure.
+- PyYAML **6.0.3** was restored to the disposable proof virtualenv from the system's already installed matching 6.0.3, with package version readback; no repository file was changed by this step.
+- With that import restored, the comprehensive applicable `tests/product tests/architecture tests/bootstrap tests/implementation/derived_signal` invocation (excluding only the separately scoped M00 durability module, as in the RC14 earlier worker command) advanced to approximately **94%** before the 120-second command execution limit terminated it; one `F` was already visible from the newly added intentional D123 red witness. `COMBINED_PYYAML_RESTORED_TIMED_OUT_AT_94_PERCENT.log` is **partial and inconclusive**, not an overall regression `PASS`.
+- The pinned `mypy src` attempt before restoring PyYAML failed with **five missing `yaml` import-stub diagnostics** in unchanged architecture source, recorded in `MYPY_UNCHANGED_SOURCE.log`; it has not been converted into a passing typecheck result. `ruff` on the new public proof passed.
+- PostgreSQL cluster readback established 17.9, UTF8, `fsync=on`, `synchronous_commit=on`, `full_page_writes=on` and local Unix socket. Separate M00/M01 test roles and schemas were created in this disposable proof cluster. Neither PostgreSQL nor Python proof environment is packaged as repository authority.
