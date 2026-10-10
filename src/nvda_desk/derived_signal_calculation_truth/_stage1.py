@@ -2065,7 +2065,23 @@ def _eval_k04(
             "D117": "R041",
         }.get(identity)
         if identity == "D063":
+            # Actual and consensus belong to the same native release.  An
+            # intersection silently drops an incomplete newer release (or
+            # selected historical sample), then standardises against stale
+            # surprises.  Require complete co-referenced native membership.
+            actuals = raw.get("R286", ())
+            consensuses = raw.get("R285", ())
             rows = _align_occurrence_fields(raw, ("R286", "R285"))
+            if (
+                not actuals
+                or len(rows) != len(actuals)
+                or len(rows) != len(consensuses)
+                or any(
+                    row["R286"].effective_at_utc != row["R285"].effective_at_utc
+                    for row in rows
+                )
+            ):
+                return None
             values = tuple(
                 (
                     _d(r["R286"].value) - _d(r["R285"].value),

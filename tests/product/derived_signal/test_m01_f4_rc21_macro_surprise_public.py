@@ -43,7 +43,9 @@ def _public(
             delivery_artifact_ref=raw.delivery_artifact_ref("surprise-" + tag),
             source_provider=raw.provider_id("controlled-rc21-macro"),
             native_record={"fields": data, "identity": {"release_family": family}},
-            received_ts_utc=NOW + timedelta(seconds=1) if future_current and tag == "current" else stamp,
+            received_ts_utc=(
+                NOW + timedelta(seconds=1) if future_current and tag == "current" else stamp
+            ),
             ingestion_sequence=seq,
             ingestion_sequence_scope=raw.ingestion_sequence_scope("rc21:macro-surprise"),
             source_temporal_kind="true_instant",
@@ -61,7 +63,8 @@ def _public(
             (("release_family", ("identity", "release_family")),),
         ) for rid in FIELDS),
         parameter_sets=(api.CalculationParameterSetV1(
-            "rc21-surprise-baseline", 1, "P_BASELINE", (("history_count", 2), ("minimum_sample", 2)),
+            "rc21-surprise-baseline", 1, "P_BASELINE",
+            (("history_count", 2), ("minimum_sample", 2)),
         ),),
         input_selection_policies=(api.InputSelectionPolicyVersionV1(
             "rc21-surprise-select", 1, ("release_family",),
