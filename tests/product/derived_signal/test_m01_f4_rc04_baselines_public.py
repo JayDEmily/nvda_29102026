@@ -36,11 +36,11 @@ def _owner_request(
     m00 = raw.create_owner()
     anchor = NOW - timedelta(minutes=1)
     samples = (
-        ("baseline-older", Decimal(8), anchor - timedelta(minutes=4), "NVDA"),
+        ("baseline-older", Decimal(8), anchor - timedelta(days=4), "NVDA"),
         ("baseline-prior", Decimal(8 if flat_history else 12),
-         anchor - timedelta(minutes=2), "NVDA"),
+         anchor - timedelta(days=2), "NVDA"),
         ("baseline-current", Decimal(16), anchor, "NVDA"),
-        ("baseline-other-subject", Decimal(999), anchor - timedelta(minutes=3), "AMD"),
+        ("baseline-other-subject", Decimal(999), anchor - timedelta(days=3), "AMD"),
     )
     source_ids = (rid,) if did != "D028" else (rid, "R044")
     seq = 0
@@ -59,7 +59,10 @@ def _owner_request(
                 observation_occurrence_id=raw.observation_occurrence_id(oid),
                 delivery_artifact_ref=raw.delivery_artifact_ref("baseline-" + oid),
                 source_provider=raw.provider_id("controlled-rc04"),
-                native_record={"metrics": {rid: value}},
+                native_record={
+                    "metrics": {rid: value},
+                    "time_of_day_bucket": anchor.strftime("%H:%M"),
+                },
                 received_ts_utc=effective,
                 ingestion_sequence=seq,
                 ingestion_sequence_scope=raw.ingestion_sequence_scope("controlled-rc04:baseline"),
@@ -103,12 +106,17 @@ def _owner_request(
                 "rc04-baseline-map-" + key, 1,
                 raw.RawSignalCatalogueId(key),
                 "controlled-rc04", "metric", ("metrics", key), "canonical",
+                selection_identity_field_paths=(("time_of_day_bucket", ("time_of_day_bucket",)),)
+                if did in {"D029", "D030", "D031"} else (),
             )
             for key in source_ids
         ),
         parameter_sets=(
             api.CalculationParameterSetV1(
                 "rc04-baseline", 1, "P_BASELINE",
+                (("history_count", 2), ("minimum_sample", 2),
+                 ("matching_rule", "source_native_time_of_day_bucket"))
+                if did in {"D029", "D030", "D031"} else
                 (("history_count", 2), ("minimum_sample", 2)),
             ),
         ),

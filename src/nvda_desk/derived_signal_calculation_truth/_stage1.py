@@ -2123,6 +2123,36 @@ def _eval_k04(
                 ),
                 (_d(current_row["R041"].value), current_row["R041"].effective_at_utc),
             )
+        elif identity in {"D029", "D030", "D031"}:
+            # P_BASELINE owns the source-native comparison bucket.  An
+            # unrelated minute of the session must not be counted simply
+            # because it was received more recently than a matching bar.
+            if params.get("matching_rule") != "source_native_time_of_day_bucket":
+                return None
+            candidates = raw.get(rid or "", ())
+            if not candidates:
+                return None
+            if any(
+                v.source_temporal_kind != "true_instant"
+                or type(_metadata(v).get("time_of_day_bucket")) is not str
+                or not _metadata(v)["time_of_day_bucket"]
+                for v in candidates
+            ):
+                return None
+            current = max(
+                candidates,
+                key=lambda v: (v.effective_at_utc, v.received_ts_utc, v.occurrence_id),
+            )
+            current_bucket = _metadata(current)["time_of_day_bucket"]
+            values = (
+                *(
+                    (_d(v.value), v.effective_at_utc)
+                    for v in candidates
+                    if v is not current
+                    and _metadata(v)["time_of_day_bucket"] == current_bucket
+                ),
+                (_d(current.value), current.effective_at_utc),
+            )
         elif rid:
             values = tuple((_d(v.value), v.effective_at_utc) for v in raw.get(rid, ()))
         else:

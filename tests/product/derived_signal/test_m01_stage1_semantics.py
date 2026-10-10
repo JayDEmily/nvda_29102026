@@ -708,10 +708,19 @@ def test_k04_historical_zscore_midrank_percentile_and_cross_section_are_separate
         for i, v in enumerate((Decimal("1"), Decimal("2"), Decimal("3"), Decimal("4")))
     )
     current = _kv(Decimal("5"), occurrence_id="cur", at=NOW)
+    # Preserve the original sample-SD assertion with a complete versioned
+    # comparison rule and matching native minute-bucket identity.
+    z_history = tuple(
+        _kv(v.value, occurrence_id=v.occurrence_id, at=v.effective_at_utc,
+            metadata=(("time_of_day_bucket", "09:30"),)) for v in history
+    )
+    z_current = _kv(Decimal("5"), occurrence_id="cur", at=NOW,
+                    metadata=(("time_of_day_bucket", "09:30"),))
     z = _eval(
         "D029",
-        raw={"R144": (*history, current)},
-        params=_p("P_BASELINE", minimum_sample=2, history_count=4),
+        raw={"R144": (*z_history, z_current)},
+        params=_p("P_BASELINE", minimum_sample=2, history_count=4,
+                  matching_rule="source_native_time_of_day_bucket"),
     )
     assert z is not None
     expected_z = (Decimal("5") - Decimal("2.5")) / (Decimal("5") / Decimal("3")).sqrt()
