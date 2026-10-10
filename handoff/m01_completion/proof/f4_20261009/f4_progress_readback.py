@@ -21,6 +21,30 @@ OUT = Path(__file__).resolve().parent
 NORMATIVE_SHA256 = "8045c8c0c4a62fbc3b88759a65b415efb1f0d549764ddbdcae2c5c911cd8a64a"
 STAGE1_KERNELS = {f"K{i:02d}" for i in range(1, 9)} | {"K16", "K17"}
 F4_BOUNDED_PUBLIC_ROWS = {
+    "D105": (
+        "RC14", "tests/product/derived_signal/test_m01_f4_rc14_iv_baseline_public.py",
+        "Exact NVDA ATM30D IV R183 within a year-long historical selection, "
+        "prior .20/.40 and current .30 => rank 50; tie .40 => 100, "
+        "full R-lineage, missing/wrong-point/future refusal and retry",
+    ),
+    "D106": (
+        "RC14", "tests/product/derived_signal/test_m01_f4_rc14_iv_baseline_public.py",
+        "Exact NVDA ATM30D IV R183 historical percentile prior .20/.40 "
+        "current .30 => 50; .40 tie midrank => 75, historical-only "
+        "full R-lineage, missing/wrong-point/future refusal and retry",
+    ),
+    "D118": (
+        "RC14", "tests/product/derived_signal/test_m01_f4_rc14_option_chain_ratio_public.py",
+        "Controlled M00 source-native aggregate R049 call 300 / R050 put 150 => 2 "
+        "at exact expiry/strike region; unrelated region excluded, full R lineage, "
+        "missing/zero/future/mismatched put refusal and retry",
+    ),
+    "D119": (
+        "RC14", "tests/product/derived_signal/test_m01_f4_rc14_option_chain_ratio_public.py",
+        "Controlled M00 source-native aggregate R047 call 400 / R048 put 200 => 2 "
+        "at exact expiry/strike region; unrelated region excluded, full R lineage, "
+        "missing/zero/future/mismatched put refusal and retry",
+    ),
     "D180": (
         "RC16", "tests/product/derived_signal/test_m01_f4_rc16_position_public.py",
         "M00 native matched status R219=6/R220=4 => 0.6 completion, "
@@ -619,8 +643,8 @@ def main() -> None:
         "F2_ACCEPTED_SCOPED_EVIDENCE": 18,
         "F3A_BOUNDED_PUBLIC_PROOF": 4,
         "F3B_BOUNDED_PUBLIC_PROOF": 7,
-        "F4_BOUNDED_PUBLIC_ROW_PROOF": 243,
-        "F4_OUTSTANDING_RELATIONSHIP_PROOF": 111,
+        "F4_BOUNDED_PUBLIC_ROW_PROOF": 249,
+        "F4_OUTSTANDING_RELATIONSHIP_PROOF": 105,
         "STAGE2_BOUNDARY_DEFERRED": 107,
         "F4_ZERO_EDGE_PUBLIC_PROOF": 1,
     }, statuses
@@ -668,7 +692,7 @@ def main() -> None:
     assert len(row_records) == 174
     assert sum(x["stage_boundary"] == "STAGE1_CLOSED" for x in row_records) == 144
     assert sum(x["stage_boundary"] == "CROSS_STAGE" for x in row_records) == 30
-    assert sum(x["outstanding_stage1_closed_edges"] for x in row_records) == 111
+    assert sum(x["outstanding_stage1_closed_edges"] for x in row_records) == 105
     with (OUT / "F4_ROW_EVIDENCE_MATRIX.csv").open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, list(row_records[0]))
         writer.writeheader()
@@ -690,7 +714,7 @@ def main() -> None:
                 "status": "UNPROVED" if missing else "NO_OPEN_STAGE1_EDGES_NOT_CLASS_ACCEPTANCE",
             }
         )
-    assert sum(x["stage1_closed_outstanding_edges"] for x in class_records) == 111
+    assert sum(x["stage1_closed_outstanding_edges"] for x in class_records) == 105
     with (OUT / "F4_CLASS_PROOF_RECONCILIATION.csv").open(
         "w", newline="", encoding="utf-8"
     ) as handle:
