@@ -2158,18 +2158,16 @@ def _eval_k05(
             bar_count = _i(params["bar_count"])
             if bar_count <= 0:
                 return None
-            ids = [
-                v.occurrence_id
-                for v in bars
-                if v.occurrence_id in highs and v.occurrence_id in lows
-            ]
-            if len(ids) < bar_count:
+            # Select the actual latest configured bars by the close series,
+            # *before* testing co-referenced highs and lows.  Filtering
+            # incomplete bars first silently substitutes stale bars from
+            # outside the required window and fabricates a complete ATR.
+            if len(bars) < bar_count + 1:
                 return None
-            selected = ids[-bar_count:]
             trs = []
-            for oid in selected:
-                idx = next(i for i, v in enumerate(bars) if v.occurrence_id == oid)
-                if idx == 0:
+            for idx in range(len(bars) - bar_count, len(bars)):
+                oid = bars[idx].occurrence_id
+                if oid not in highs or oid not in lows:
                     return None
                 prev = _d(bars[idx - 1].value)
                 high, low = highs[oid], lows[oid]
