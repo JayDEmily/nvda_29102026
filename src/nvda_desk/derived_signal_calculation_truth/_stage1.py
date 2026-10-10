@@ -1763,6 +1763,14 @@ def _eval_k02(
             return None if den <= 0 else filled / den
         if identity in {"D181", "D182", "D183", "D184"}:
             greek = {"D181": "R112", "D182": "R115", "D183": "R116", "D184": "R117"}[identity]
+            # A live portfolio total requires every admitted position leg.
+            # Intersecting the native occurrence IDs without checking their
+            # equality silently drops legs with absent Greeks/multipliers.
+            leg_ids = {item.occurrence_id for item in raw.get("R212", ())}
+            greek_ids = {item.occurrence_id for item in raw.get(greek, ())}
+            multiplier_ids = {item.occurrence_id for item in raw.get("R016", ())}
+            if not leg_ids or leg_ids != greek_ids or leg_ids != multiplier_ids:
+                return None
             rows = _align_occurrence_fields(raw, ("R212", greek, "R016"))
             return (
                 sum(
