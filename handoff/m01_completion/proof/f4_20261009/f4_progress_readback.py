@@ -481,6 +481,37 @@ F4_BOUNDED_PUBLIC_ROWS["D063"] = (
 )
 
 
+# D146/D147 bounded native macro factor scores: all named raw features plus the
+# exact D063 release-family predecessor are propagated by the admitted M00 seam.
+# The proof covers one versioned, coherent release-family selection; it does
+# not establish arbitrarily heterogeneous macro-source joins.
+F4_BOUNDED_PUBLIC_ROWS["D146"] = (
+    "RC21", "tests/product/derived_signal/test_m01_f4_rc21_macro_growth_factor_public.py",
+    "M00 six source-native growth fields plus complete historical D063 release "
+    "surprise, exact weighted score 21+20/sqrt(200), seven-source lineage, "
+    "other-family exclusion, incomplete-field and future receipt refusal, retry; "
+    "bounded to one explicit release-family selection",
+)
+F4_BOUNDED_PUBLIC_ROWS["D147"] = (
+    "RC21", "tests/product/derived_signal/test_m01_f4_rc21_macro_inflation_factor_public.py",
+    "M00 five source-native inflation fields plus complete historical D063 "
+    "release surprise, exact weighted score 15+20/sqrt(200), six-source lineage, "
+    "other-family exclusion, incomplete-field and future receipt refusal, retry; "
+    "bounded to one explicit release-family selection",
+)
+
+
+# RC15 D168 candidate Greek vector through exact M00 contract-leg subjects.
+F4_BOUNDED_PUBLIC_ROWS["D168"] = (
+    "RC15", "tests/product/derived_signal/test_m01_f4_rc15_candidate_greeks_public.py",
+    "M00 exact two-member candidate basket C100/P100 with independent signed "
+    "quantities and native 100x multipliers; delta 220/gamma -4/vega -5/" 
+    "theta 2 retained as named vector, full ten field/leg raw lineage, "
+    "unselected contract exclusion, missing/future selected leg and "
+    "omitted context/invalid basket refusal, retry",
+)
+
+
 # RC03 Stage-1-closed public proofs were committed independently, before this
 # reconciliation update, at proof-first commit 3480116.  This remains bounded
 # edge-level evidence rather than acceptance of all Stage 1.
@@ -654,8 +685,8 @@ def main() -> None:
         "F2_ACCEPTED_SCOPED_EVIDENCE": 18,
         "F3A_BOUNDED_PUBLIC_PROOF": 4,
         "F3B_BOUNDED_PUBLIC_PROOF": 7,
-        "F4_BOUNDED_PUBLIC_ROW_PROOF": 251,
-        "F4_OUTSTANDING_RELATIONSHIP_PROOF": 103,
+        "F4_BOUNDED_PUBLIC_ROW_PROOF": 269,
+        "F4_OUTSTANDING_RELATIONSHIP_PROOF": 85,
         "STAGE2_BOUNDARY_DEFERRED": 107,
         "F4_ZERO_EDGE_PUBLIC_PROOF": 1,
     }, statuses
@@ -703,7 +734,7 @@ def main() -> None:
     assert len(row_records) == 174
     assert sum(x["stage_boundary"] == "STAGE1_CLOSED" for x in row_records) == 144
     assert sum(x["stage_boundary"] == "CROSS_STAGE" for x in row_records) == 30
-    assert sum(x["outstanding_stage1_closed_edges"] for x in row_records) == 103
+    assert sum(x["outstanding_stage1_closed_edges"] for x in row_records) == 85
     with (OUT / "F4_ROW_EVIDENCE_MATRIX.csv").open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, list(row_records[0]))
         writer.writeheader()
@@ -725,7 +756,7 @@ def main() -> None:
                 "status": "UNPROVED" if missing else "NO_OPEN_STAGE1_EDGES_NOT_CLASS_ACCEPTANCE",
             }
         )
-    assert sum(x["stage1_closed_outstanding_edges"] for x in class_records) == 103
+    assert sum(x["stage1_closed_outstanding_edges"] for x in class_records) == 85
     with (OUT / "F4_CLASS_PROOF_RECONCILIATION.csv").open(
         "w", newline="", encoding="utf-8"
     ) as handle:
