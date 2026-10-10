@@ -2065,6 +2065,35 @@ def _eval_k04(
                 )
                 for r in rows
             )
+        elif identity == "D028":
+            # Each volume observation must carry its own source-native elapsed
+            # session fraction.  R044 is not merely a presence prerequisite:
+            # historical R041 samples from other session fractions must never
+            # silently enter the normalised D028 baseline.
+            volumes = raw.get("R041", ())
+            fractions = raw.get("R044", ())
+            rows = _align_occurrence_fields(raw, ("R041", "R044"))
+            if (
+                not volumes
+                or len(rows) != len(volumes)
+                or len(rows) != len(fractions)
+                or any(
+                    row["R041"].effective_at_utc != row["R044"].effective_at_utc
+                    or not _DEC0 <= _d(row["R044"].value) <= Decimal(1)
+                    for row in rows
+                )
+            ):
+                return None
+            current_row = rows[-1]
+            current_fraction = _d(current_row["R044"].value)
+            values = (
+                *(
+                    (_d(row["R041"].value), row["R041"].effective_at_utc)
+                    for row in rows[:-1]
+                    if _d(row["R044"].value) == current_fraction
+                ),
+                (_d(current_row["R041"].value), current_row["R041"].effective_at_utc),
+            )
         elif rid:
             values = tuple((_d(v.value), v.effective_at_utc) for v in raw.get(rid, ()))
         else:

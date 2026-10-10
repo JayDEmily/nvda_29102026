@@ -20,9 +20,13 @@ def _public(
     fractions: tuple[Decimal, Decimal, Decimal],
 ) -> tuple[api.DerivedSignalCalculationOwnerV1, api.CalculationRequestV1]:
     m00 = raw.create_owner()
-    values = (Decimal(8), Decimal(12), Decimal(16))
+    values = (
+        (Decimal(8), Decimal(999), Decimal(12), Decimal(16))
+        if len(fractions) == 4
+        else (Decimal(8), Decimal(12), Decimal(16))
+    )
     for i, (fraction, value) in enumerate(zip(fractions, values, strict=True)):
-        instant = NOW - timedelta(minutes=(6 - 2 * i))
+        instant = NOW - timedelta(minutes=2 * (len(fractions) - i))
         m00.commands.admit_raw_observation_occurrence(
             raw.RawObservationOccurrenceV1(
                 concept_id=raw.concept_id("raw_signal.raw_observation_occurrence"),
@@ -109,3 +113,21 @@ def test_d028_public_same_fraction_history_gives_exact_volume_ratio() -> None:
         "elapsed-0", "elapsed-1", "elapsed-2"
     }
     assert owner.materialise(request) == result
+
+
+def test_d028_public_skips_interleaved_wrong_fraction_in_complete_history() -> None:
+    owner, request = _public(
+        (Decimal("0.5"), Decimal("0.25"), Decimal("0.5"), Decimal("0.5"))
+    )
+    # The intervening 999 quantity must not displace either valid .5
+    # historical volume, even though it is temporally nearer.
+    result = owner.materialise(request)
+    assert result is not None and result.result == Decimal("1.6")
+    assert owner.materialise(request) == result
+
+
+def test_d028_public_refuses_invalid_native_session_fraction() -> None:
+    owner, request = _public(
+        (Decimal("0.5"), Decimal("1.5"), Decimal("0.5"))
+    )
+    assert owner.materialise(request) is None
