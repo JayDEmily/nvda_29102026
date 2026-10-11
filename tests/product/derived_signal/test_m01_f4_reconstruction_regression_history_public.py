@@ -236,6 +236,15 @@ def test_regression_window_excludes_earlier_outlier_outside_selected_history():
         output = owner.materialise(replace(request, derived_signal_id=did))
         assert output is not None
         assert abs(output.result - expected) < Decimal("0.000000000001")
+        # Neither the oldest excluded factor occurrence nor its raw source
+        # observation is part of this seven-sample fit's exact provenance.
+        assert len(output.predecessor_occurrence_ids) == 28
+        assert len(output.raw_input_lineage) == 40
+        assert not any(
+            item.observation_occurrence_id == f"recon-reg-{name}-0"
+            for item in output.raw_input_lineage
+            for name in INSTRUMENTS
+        )
 
 
 def test_regression_three_coefficients_share_exact_fitted_samples_and_versions():
