@@ -36,7 +36,8 @@ def test_d123_controlled_public_result_persists_exact_postgresql_raw_lineage() -
     assert restored == output
     assert restored.selection_identity == output.selection_identity
     assert {entry.observation_occurrence_id for entry in restored.raw_input_lineage} == {
-        "controlled-prior", "controlled-current",
+        "controlled-prior",
+        "controlled-current",
     }
     assert {entry.projection_mapping_version for entry in restored.raw_input_lineage} == {1}
     assert {entry.unit_convention_version for entry in restored.raw_input_lineage} == {1}

@@ -576,7 +576,7 @@ F4_BOUNDED_PUBLIC_ROWS["D147"] = (
 F4_BOUNDED_PUBLIC_ROWS["D168"] = (
     "RC15", "tests/product/derived_signal/test_m01_f4_rc15_candidate_greeks_public.py",
     "M00 exact two-member candidate basket C100/P100 with independent signed "
-    "quantities and native 100x multipliers; delta 220/gamma -4/vega -5/" 
+    "quantities and native 100x multipliers; delta 220/gamma -4/vega -5/"
     "theta 2 retained as named vector, full ten field/leg raw lineage, "
     "unselected contract exclusion, missing/future selected leg and "
     "omitted context/invalid basket refusal, retry",
@@ -693,7 +693,7 @@ F4_BOUNDED_PUBLIC_ROWS["D110"] = (
     "RC14", "tests/product/derived_signal/test_m01_f4_d110_spot_expected_move_public.py",
     "M00 R118 spot 100 and exact-expiry/strike C100/P100 native mid prices "
     "5 + 4 via public D087/D091/D109 predecessor graph => D110=9 percent; "
-    "persisted exact raw R118/R034/R035/R112 and D109 lineage, missing/wrong/" 
+    "persisted exact raw R118/R034/R035/R112 and D109 lineage, missing/wrong/"
     "future R118 or missing ATM put quote refusal, deterministic retry",
 )
 
