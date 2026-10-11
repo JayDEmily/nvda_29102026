@@ -327,3 +327,68 @@ def test_d078_refuses_missing_aligned_factor_in_required_fit():
     owner, request = _data(missing=("SPY", 0))
     _seed_history(owner, request, allow_missing=True)
     assert owner.materialise(replace(request, derived_signal_id="D078")) is None
+
+
+def test_d078_kernel_refuses_coefficient_not_matching_its_prior_fit():
+    """An injected coefficient cannot be ignored in the D078 regression rule."""
+    from nvda_desk.derived_signal_calculation_truth import _stage1
+
+    factor_grid = (
+        ("0", "0", "0"),
+        ("1", "0", "0"),
+        ("0", "1", "0"),
+        ("0", "0", "1"),
+        ("1", "1", "1"),
+    )
+    derived = {did: [] for did in ("D075", "D071", "D076", "D077")}
+    for i, (x, y, z) in enumerate(factor_grid):
+        values = (
+            Decimal(1)
+            + 2 * Decimal(x)
+            + 3 * Decimal(y)
+            + 4 * Decimal(z)
+            + (Decimal("0.02") if i == 4 else Decimal(0)),
+            Decimal(x),
+            Decimal(y),
+            Decimal(z),
+        )
+        instant = NOW - timedelta(minutes=5 - i)
+        for did, v in zip(("D075", "D071", "D076", "D077"), values, strict=True):
+            derived[did].append(
+                _stage1.KernelValueV1(
+                    value=v,
+                    occurrence_id=f"{did}-{i}",
+                    effective_at_utc=instant,
+                    received_ts_utc=instant,
+                    subject_instrument="NVDA",
+                    source_temporal_kind="derived",
+                    metadata=(),
+                )
+            )
+    for did, v in (("D079", 99), ("D080", 3), ("D081", 4)):
+        derived[did] = [
+            _stage1.KernelValueV1(
+                value=Decimal(v),
+                occurrence_id=f"{did}-wrong",
+                effective_at_utc=NOW,
+                received_ts_utc=NOW,
+                subject_instrument="NVDA",
+                source_temporal_kind="derived",
+                metadata=(),
+            )
+        ]
+    result = _stage1.evaluate_stage1_kernel(
+        "D078",
+        raw_inputs={},
+        derived_inputs={did: tuple(values) for did, values in derived.items()},
+        parameter_set=api.CalculationParameterSetV1(
+            "regression-guard",
+            1,
+            "P_REGRESSION",
+            (("minimum_sample", 4), ("history_count", 4)),
+        ),
+        contexts=(),
+        as_of_utc=NOW,
+        knowledge_cutoff_utc=NOW,
+    )
+    assert result is None
