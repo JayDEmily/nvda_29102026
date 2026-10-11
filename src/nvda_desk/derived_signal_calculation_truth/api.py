@@ -2287,6 +2287,34 @@ class _OwnerV1:
             direct_lineage.extend(lineage)
             convention_refs.extend(conventions)
 
+        if derived_signal_id in {"D071", "D072", "D073", "D074", "D075"}:
+            # These K03 returns consume one current native close and one
+            # declared prior-close anchor, not all retained source ticks.
+            # Carry only the actual raw observations into derived lineage.
+            used: set[str] = set()
+            for rid in ("R037", "R042"):
+                candidates = raw_inputs.get(rid, ())
+                if not candidates:
+                    return None
+                return_latest = max(
+                    candidates,
+                    key=lambda value: (value.effective_at_utc, value.received_ts_utc),
+                )
+                if (
+                    sum(
+                        (value.effective_at_utc, value.received_ts_utc)
+                        == (return_latest.effective_at_utc, return_latest.received_ts_utc)
+                        for value in candidates
+                    )
+                    != 1
+                ):
+                    return None
+                raw_inputs[rid] = (return_latest,)
+                used.add(return_latest.occurrence_id)
+            direct_lineage = [
+                value for value in direct_lineage if value.observation_occurrence_id in used
+            ]
+
         if derived_signal_id == "D116":
             # D116 is a current ratio, not D123's two-official-period delta.
             # The actually consumed numerator and applicable-side denominator
@@ -2582,6 +2610,28 @@ class _OwnerV1:
                 )
                 if not history:
                     return None
+                regression_history = derived_signal_id in {
+                    "D079",
+                    "D080",
+                    "D081",
+                } and predecessor_id in {"D075", "D071", "D076", "D077"}
+                if regression_history:
+                    declared_count = dict(parameter_set.parameters).get("history_count")
+                    if declared_count is not None:
+                        if type(declared_count) is not int or declared_count <= 0:
+                            return None
+                        # The shared historical fit and its durable lineage
+                        # must use the *same* authorised sample window.
+                        history = tuple(
+                            sorted(
+                                history,
+                                key=lambda value: (
+                                    value.effective_as_of_utc,
+                                    value.knowledge_cutoff_utc,
+                                    value.derived_occurrence_id,
+                                ),
+                            )[-declared_count:]
+                        )
                 latest = (
                     current
                     if current is not None
@@ -2605,24 +2655,12 @@ class _OwnerV1:
                 # units in its raw lineage. Its unit conventions must remain
                 # part of the parent's version provenance, or a valid nested
                 # predecessor will fail subsequent version-compatible reuse.
-                convention_sources = (
-                    history
-                    if (
-                        derived_signal_id in {"D079", "D080", "D081"}
-                        and predecessor_id in {"D075", "D071", "D076", "D077"}
-                    )
-                    else (latest,)
-                )
+                convention_sources = history if regression_history else (latest,)
                 for source_occurrence in convention_sources:
                     convention_refs.extend(source_occurrence.convention_refs)
                 if predecessor_id == "D015" and derived_signal_id in {"D016", "D120"}:
                     sign_history_occurrences.extend(history)
                 else:
-                    regression_history = derived_signal_id in {
-                        "D079",
-                        "D080",
-                        "D081",
-                    } and predecessor_id in {"D075", "D071", "D076", "D077"}
                     participating = history if regression_history else (latest,)
                     immediate_predecessors.extend(participating)
                     for participating_occurrence in participating:
