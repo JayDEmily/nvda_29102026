@@ -101,7 +101,7 @@ def _data(*, missing: tuple[str, int] | None = None):
         api.VersionRefV1("regression-unit", 1), name, None,
     ) for name in INSTRUMENTS for rid in ("R037", "R042"))
     request = api.CalculationRequestV1(
-        "D079", "NVDA", NOW, NOW, "regression-def", "regression-reg", 1,
+        "D079", "NVDA", NOW - timedelta(minutes=1), NOW - timedelta(minutes=1), "regression-def", "regression-reg", 1,
         "regression-parent", 1, (),
         parameter_profile_refs=(
             api.ParameterProfileRefV1("P_REGRESSION", "regression-reg", 1),
