@@ -1,0 +1,56 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_____ test_d123_refuses_two_ticks_without_proved_distinct_official_periods _____
+
+    def test_d123_refuses_two_ticks_without_proved_distinct_official_periods() -> None:
+        exact_contract = (
+            ("contract_id", "C150"),
+            ("underlying_instrument", "NVDA"),
+            ("expiry", "2026-12-18"),
+            ("strike", Decimal(150)),
+            ("option_right", "call"),
+            ("source_provider", "controlled-native-official-oi"),
+            ("source_variant", "official-oi"),
+            ("revision_vintage_native", "official-v1"),
+        )
+        ticks = (
+            KernelValueV1(
+                value=Decimal(100),
+                occurrence_id="tick-1",
+                effective_at_utc=NOW - timedelta(days=1),
+                received_ts_utc=NOW - timedelta(days=1) + timedelta(seconds=1),
+                subject_instrument="NVDA",
+                source_temporal_kind="true_instant",
+                source_timestamp_raw=(NOW - timedelta(days=1)).isoformat(),
+                metadata=exact_contract,
+            ),
+            KernelValueV1(
+                value=Decimal(125),
+                occurrence_id="tick-2",
+                effective_at_utc=NOW - timedelta(minutes=1),
+                received_ts_utc=NOW - timedelta(seconds=50),
+                subject_instrument="NVDA",
+                source_temporal_kind="true_instant",
+                source_timestamp_raw=(NOW - timedelta(minutes=1)).isoformat(),
+                metadata=exact_contract,
+            ),
+        )
+        result = evaluate_stage1_kernel(
+            "D123",
+            raw_inputs={"R047": ticks},
+            derived_inputs={},
+            parameter_set=api.CalculationParameterSetV1("d123-basic", 1, "P_BASIC", (("subject_instrument", "NVDA"),)),
+            contexts=(),
+            as_of_utc=NOW,
+            knowledge_cutoff_utc=NOW,
+        )
+        # Neither tick asserts an immutable official reporting-period identity.
+        # A value of +25 would invent that two received ticks are two distinct
+        # official refreshes; D123 must fail closed on this source history.
+>       assert result is None
+E       AssertionError: assert KernelResultV1(value=Decimal('25'), units='contracts', result_shape='scalar', input_occurrence_ids=('tick-1', 'tick-2')) is None
+
+tests/product/derived_signal/test_m01_f4_d123_official_reporting_identity_red.py:71: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/derived_signal/test_m01_f4_d123_official_reporting_identity_red.py::test_d123_refuses_two_ticks_without_proved_distinct_official_periods - AssertionError: assert KernelResultV1(value=Decimal('25'), units='contracts', result_shape='scalar', input_occurrence_ids=('tick-1', 'tick-2')) is None
+1 failed in 0.18s
