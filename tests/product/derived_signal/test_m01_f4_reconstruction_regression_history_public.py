@@ -34,10 +34,15 @@ def _data(
     *,
     missing: tuple[str, int] | None = None,
     old_outlier: bool = False,
+    current_outlier: bool = False,
 ):
     m00 = raw.create_owner()
     seq = 0
-    grid = (("0.003", "0.007", "-0.006"), *FACTORS) if old_outlier else FACTORS
+    grid = (
+        (("0.003", "0.007", "-0.006"), *FACTORS)
+        if old_outlier
+        else ((*FACTORS, ("0.001", "0.002", "0.003")) if current_outlier else FACTORS)
+    )
     for name in INSTRUMENTS:
         observations = [("prior", NOW - timedelta(days=1), Decimal(100))]
         for i, (market, tech, semis) in enumerate(grid):
@@ -47,7 +52,8 @@ def _data(
                 + 2 * m
                 + 3 * t
                 + 4 * s
-                + (Decimal("0.08") if old_outlier and i == 0 else Decimal(0)),
+                + (Decimal("0.08") if old_outlier and i == 0 else Decimal(0))
+                + (Decimal("0.02") if current_outlier and i == len(grid) - 1 else Decimal(0)),
                 "SPY": m,
                 "QQQ": m + t,
                 "SMH": m + t + s,
@@ -287,26 +293,33 @@ def test_regression_refuses_unbound_extra_alias():
     )
 
 
-def test_d078_public_residual_uses_the_identical_seven_sample_coefficient_fit():
-    """§5 K06: in-sample residual and all D079-D081 fit versions must agree."""
-    owner, request = _data()
-    _seed_history(owner, request)
+def test_d078_public_residual_uses_prior_fitted_model_for_current_outlier():
+    """§5 K06: fit seven prior observations and explain the eighth current return."""
+    owner, request = _data(current_outlier=True)
+    _seed_history(owner, request, factor_count=len(FACTORS) + 1)
+    prior_request = replace(
+        request,
+        as_of_utc=NOW - timedelta(minutes=2),
+        knowledge_cutoff_utc=NOW - timedelta(minutes=2),
+    )
     coefficients = {
-        did: owner.materialise(replace(request, derived_signal_id=did))
+        did: owner.materialise(replace(prior_request, derived_signal_id=did))
         for did in ("D079", "D080", "D081")
     }
     assert all(value is not None for value in coefficients.values())
+    for did, expected in EXPECTED.items():
+        assert abs(coefficients[did].result - expected) < Decimal("0.000000000001")
     out = owner.materialise(replace(request, derived_signal_id="D078"))
-    assert out is not None, "D078 must consume the same fitted coefficient identities"
-    assert abs(out.result) < Decimal("0.000000000001")
+    assert out is not None, "D078 must consume the prior fitted coefficient identities"
+    assert abs(out.result - Decimal("0.02")) < Decimal("0.000000000001")
     assert {value.derived_occurrence_id for value in coefficients.values()} <= set(
         out.predecessor_occurrence_ids
     )
-    assert {owner.reads.get_derived_occurrence(value).derived_signal_id for value in
-            out.predecessor_occurrence_ids} == {
-        "D075", "D071", "D076", "D077", "D079", "D080", "D081"
-    }
-    assert len(out.raw_input_lineage) == 40
+    assert {
+        owner.reads.get_derived_occurrence(value).derived_signal_id
+        for value in out.predecessor_occurrence_ids
+    } == {"D075", "D071", "D076", "D077", "D079", "D080", "D081"}
+    assert len(out.raw_input_lineage) == 45
     assert owner.materialise(replace(request, derived_signal_id="D078")) == out
 
 
