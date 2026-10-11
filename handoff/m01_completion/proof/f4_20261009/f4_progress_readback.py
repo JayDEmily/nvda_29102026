@@ -736,6 +736,19 @@ F4_BOUNDED_PUBLIC_ROWS["D084"] = (
 )
 
 
+# Controlled native option public proof for four direct raw liquidity facts,
+# genuine D088 spread and event-reconstructed D131 midpoint-window depth.
+F4_BOUNDED_PUBLIC_ROWS["D132"] = (
+    "RC06", "tests/product/derived_signal/test_m01_f4_reconstruction_d132_public.py",
+    "Exact selected option-contract M00 R033/R036/R041/R062, matching "
+    "D088 bid/ask spread and D131 reconstructed event-depth; score=459 "
+    "with 11 raw source signal IDs, two persisted D predecessors and full "
+    "source occurrence lineage; other-contract book row excluded, future "
+    "book event ignored with lawful historic score=452, missing quote/book "
+    "operation/direct trade-rate, wrong contract/mapping/strike rejected, retry",
+)
+
+
 # Reconstruction from 734cf58. Public proof exercises all six declared
 # macro sources and three actual Stage-1 predecessor calculations.
 F4_BOUNDED_PUBLIC_ROWS["D148"] = (
@@ -887,8 +900,8 @@ def main() -> None:
         "F2_ACCEPTED_SCOPED_EVIDENCE": 18,
         "F3A_BOUNDED_PUBLIC_PROOF": 4,
         "F3B_BOUNDED_PUBLIC_PROOF": 7,
-        "F4_BOUNDED_PUBLIC_ROW_PROOF": 322,
-        "F4_OUTSTANDING_RELATIONSHIP_PROOF": 33,
+        "F4_BOUNDED_PUBLIC_ROW_PROOF": 328,
+        "F4_OUTSTANDING_RELATIONSHIP_PROOF": 27,
         "STAGE2_BOUNDARY_DEFERRED": 107,
         "F4_ZERO_EDGE_PUBLIC_PROOF": 1,
     }, statuses
@@ -941,7 +954,7 @@ def main() -> None:
     assert len(row_records) == 174
     assert sum(x["stage_boundary"] == "STAGE1_CLOSED" for x in row_records) == 144
     assert sum(x["stage_boundary"] == "CROSS_STAGE" for x in row_records) == 30
-    assert sum(x["outstanding_stage1_closed_edges"] for x in row_records) == 33
+    assert sum(x["outstanding_stage1_closed_edges"] for x in row_records) == 27
     with (OUT / "F4_ROW_EVIDENCE_MATRIX.csv").open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, list(row_records[0]))
         writer.writeheader()
@@ -974,7 +987,7 @@ def main() -> None:
                 ),
             }
         )
-    assert sum(x["stage1_closed_outstanding_edges"] for x in class_records) == 33
+    assert sum(x["stage1_closed_outstanding_edges"] for x in class_records) == 27
     assert sum(x["stage1_closed_authority_blocked_edges"] for x in class_records) == 0
     with (OUT / "F4_CLASS_PROOF_RECONCILIATION.csv").open(
         "w", newline="", encoding="utf-8"
