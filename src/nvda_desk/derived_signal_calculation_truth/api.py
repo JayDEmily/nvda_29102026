@@ -1723,7 +1723,7 @@ class _OwnerV1:
         Scope comes from bound exact facts and the candidate-structure context,
         never from nearest-neighbour searches or a fabricated policy version.
         """
-        if parent_id in {"D079", "D080", "D081"} and predecessor_id in {
+        if parent_id in {"D078", "D079", "D080", "D081"} and predecessor_id in {
             "D075",
             "D071",
             "D076",
@@ -2466,6 +2466,24 @@ class _OwnerV1:
                 )
             if predecessor_requests is None:
                 return None
+            if derived_signal_id == "D078" and predecessor_id in {"D079", "D080", "D081"}:
+                # A residual is an out-of-sample current observation explained
+                # by one *prior* fitted model. The fit origin is the actual
+                # previous D075 source period, never a guessed clock interval.
+                dependent_history = derived_inputs.get("D075", ())
+                ordered_origins = sorted({v.effective_at_utc for v in dependent_history})
+                if len(ordered_origins) < 2:
+                    return None
+                prior_origin = ordered_origins[-2]
+                if prior_origin >= request.as_of_utc:
+                    return None
+                predecessor_requests = (
+                    replace(
+                        request,
+                        as_of_utc=prior_origin,
+                        knowledge_cutoff_utc=min(request.knowledge_cutoff_utc, prior_origin),
+                    ),
+                )
             scoped_edge = len(predecessor_requests) != 1 or predecessor_requests[0] is not request
             if (row.derived_id, predecessor_id) == ("D015", "D011"):
                 # The contemporaneous D011 quote belongs to the selected
@@ -2611,6 +2629,7 @@ class _OwnerV1:
                 if not history:
                     return None
                 regression_history = derived_signal_id in {
+                    "D078",
                     "D079",
                     "D080",
                     "D081",
@@ -2630,7 +2649,7 @@ class _OwnerV1:
                                     value.knowledge_cutoff_utc,
                                     value.derived_occurrence_id,
                                 ),
-                            )[-declared_count:]
+                            )[-(declared_count + (1 if derived_signal_id == "D078" else 0)) :]
                         )
                 latest = (
                     current
@@ -2707,6 +2726,34 @@ class _OwnerV1:
             )
         if selection_keys and selected_identity is None:
             return None
+
+        if derived_signal_id == "D078":
+            # All three declared coefficients must belong to one and the
+            # same persisted prior fit, not merely have plausible numerical
+            # values. Their exact four-series inputs and version provenance
+            # identify that fit across D079/D080/D081 occurrences.
+            coefficients = {
+                did: tuple(item for item in immediate_predecessors if item.derived_signal_id == did)
+                for did in ("D079", "D080", "D081")
+            }
+            if any(len(group) != 1 for group in coefficients.values()):
+                return None
+            fit_occurrences = tuple(group[0] for group in coefficients.values())
+            fit_source = fit_occurrences[0]
+            if any(
+                item.effective_as_of_utc != fit_source.effective_as_of_utc
+                or item.knowledge_cutoff_utc != fit_source.knowledge_cutoff_utc
+                or item.parameter_context_refs != fit_source.parameter_context_refs
+                or item.convention_refs != fit_source.convention_refs
+                or item.raw_input_lineage != fit_source.raw_input_lineage
+                or item.predecessor_occurrence_ids != fit_source.predecessor_occurrence_ids
+                for item in fit_occurrences[1:]
+            ):
+                return None
+            if not set(fit_source.predecessor_occurrence_ids) <= {
+                item.derived_occurrence_id for item in immediate_predecessors
+            }:
+                return None
 
         evaluated = evaluate_stage1_kernel(
             derived_signal_id,

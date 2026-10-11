@@ -2460,11 +2460,17 @@ def _eval_k06(
                     return None
                 y, m, t, s = (series[-(count + 1) :] for series in (y, m, t, s))
                 fit = _ols(y[:-1], (m[:-1], t[:-1], s[:-1]))
-                return (
-                    None
-                    if fit is None
-                    else y[-1] - (fit[0] + fit[1] * m[-1] + fit[2] * t[-1] + fit[3] * s[-1])
-                )
+                if fit is None:
+                    return None
+                # The accepted D078 expression expressly consumes the three
+                # predecessor coefficient occurrences of this *same* fit.
+                # Reconstructing a different private model and ignoring those
+                # declared inputs would make the D079-D081 graph ornamental.
+                for did, expected in (("D079", fit[1]), ("D080", fit[2]), ("D081", fit[3])):
+                    candidates = derived.get(did, ())
+                    if len(candidates) != 1 or _d(candidates[0].value) != expected:
+                        return None
+                return y[-1] - (fit[0] + fit[1] * m[-1] + fit[2] * t[-1] + fit[3] * s[-1])
             if len(y) < count:
                 return None
             y, m, t, s = (series[-count:] for series in (y, m, t, s))
