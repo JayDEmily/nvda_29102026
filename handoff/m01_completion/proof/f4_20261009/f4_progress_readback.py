@@ -777,7 +777,8 @@ F4_BOUNDED_PUBLIC_ROWS["D149"] = (
 # exact truncated raw/D lineage. D078's current residual is NOT thereby proved.
 for _regression_id in ("D079", "D080", "D081"):
     F4_BOUNDED_PUBLIC_ROWS[_regression_id] = (
-        "RC05", "tests/product/derived_signal/test_m01_f4_reconstruction_regression_history_public.py",
+        "RC05",
+        "tests/product/derived_signal/test_m01_f4_reconstruction_regression_history_public.py",
         "Controlled M00 NVDA/SPY/QQQ/SMH/SOXX native close observations; "
         "versioned independent D075/D071/D076/D077 factor history with "
         "seven aligned timestamps and explicit P_REGRESSION window; "
@@ -798,6 +799,24 @@ F4_BOUNDED_PUBLIC_ROWS["D078"] = (
     "D078=0.02, three matching prior model coefficient identities, persisted "
     "source and predecessor lineage, mismatched injected beta refusal, "
     "missing aligned prior observation refusal and deterministic retry",
+)
+
+
+# RC06 continuation: D150's six exact Stage-1 predecessor edges are backed by
+# controlled M00-to-M01 public materialisation with individually versioned
+# P_SCORE profiles, independent scalar oracle, persisted raw/D lineage,
+# required-child absence/refusal, temporal and mapping-version adversarial cases.
+# The D104 mixed-skew RED and its semantic authority blocker remain untouched.
+F4_BOUNDED_PUBLIC_ROWS["D150"] = (
+    "RC21",
+    "tests/product/derived_signal/test_m01_f4_d150_composite_public.py",
+    "Controlled M00 exact D070/D146/D147/D148/D149/D048 graph with independently "
+    "versioned K07 child feature schemas, D063 release history and matched "
+    "time anchors, exact composite 195.8972630820587276330172811, "
+    "51 selected raw lineage entries, six persisted direct D lineage IDs, "
+    "deterministic retry, missing member from each of six parents refusal, "
+    "missing release consensus, incompatible mapping version, wrong subject "
+    "and knowledge-cutoff refusal; no external-provider integration claim",
 )
 
 
@@ -930,8 +949,8 @@ def main() -> None:
         "F2_ACCEPTED_SCOPED_EVIDENCE": 18,
         "F3A_BOUNDED_PUBLIC_PROOF": 4,
         "F3B_BOUNDED_PUBLIC_PROOF": 7,
-        "F4_BOUNDED_PUBLIC_ROW_PROOF": 347,
-        "F4_OUTSTANDING_RELATIONSHIP_PROOF": 8,
+        "F4_BOUNDED_PUBLIC_ROW_PROOF": 353,
+        "F4_OUTSTANDING_RELATIONSHIP_PROOF": 2,
         "STAGE2_BOUNDARY_DEFERRED": 107,
         "F4_ZERO_EDGE_PUBLIC_PROOF": 1,
     }, statuses
@@ -984,7 +1003,7 @@ def main() -> None:
     assert len(row_records) == 174
     assert sum(x["stage_boundary"] == "STAGE1_CLOSED" for x in row_records) == 144
     assert sum(x["stage_boundary"] == "CROSS_STAGE" for x in row_records) == 30
-    assert sum(x["outstanding_stage1_closed_edges"] for x in row_records) == 8
+    assert sum(x["outstanding_stage1_closed_edges"] for x in row_records) == 2
     with (OUT / "F4_ROW_EVIDENCE_MATRIX.csv").open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, list(row_records[0]))
         writer.writeheader()
@@ -1017,7 +1036,7 @@ def main() -> None:
                 ),
             }
         )
-    assert sum(x["stage1_closed_outstanding_edges"] for x in class_records) == 8
+    assert sum(x["stage1_closed_outstanding_edges"] for x in class_records) == 2
     assert sum(x["stage1_closed_authority_blocked_edges"] for x in class_records) == 0
     with (OUT / "F4_CLASS_PROOF_RECONCILIATION.csv").open(
         "w", newline="", encoding="utf-8"
@@ -1052,7 +1071,7 @@ def main() -> None:
         "stage1_independent_acceptance": False,
         "boundary": (
             "Bounded row proofs do not prove all 144 Stage-1-closed rows or 30 cross-stage rows; "
-            "8 unproved Stage-1-closed edges and 30 cross-stage own-kernel/refusal "
+            "2 D104 unproved Stage-1-closed edges and 30 cross-stage own-kernel/refusal "
             "obligations prevent acceptance; D116 controlled ratio is bounded proof only"
         ),
     }

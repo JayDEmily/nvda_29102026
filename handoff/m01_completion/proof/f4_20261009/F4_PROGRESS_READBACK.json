@@ -1,6 +1,6 @@
 {
   "authority_catalogue_sha256": "d651436df1fcd1395f8f1147dfd80db1ed178da4834447a947c3c9c32fd82aa7",
-  "boundary": "Bounded row proofs do not prove all 144 Stage-1-closed rows or 30 cross-stage rows; 8 unproved Stage-1-closed edges and 30 cross-stage own-kernel/refusal obligations prevent acceptance; D116 controlled ratio is bounded proof only",
+  "boundary": "Bounded row proofs do not prove all 144 Stage-1-closed rows or 30 cross-stage rows; 2 D104 unproved Stage-1-closed edges and 30 cross-stage own-kernel/refusal obligations prevent acceptance; D116 controlled ratio is bounded proof only",
   "cross_stage_kernel_and_refusal_rows_unproved": 30,
   "cross_stage_rows": 30,
   "d116_corrected_dependencies": [
@@ -14,8 +14,8 @@
     "F2_ACCEPTED_SCOPED_EVIDENCE": 18,
     "F3A_BOUNDED_PUBLIC_PROOF": 4,
     "F3B_BOUNDED_PUBLIC_PROOF": 7,
-    "F4_BOUNDED_PUBLIC_ROW_PROOF": 347,
-    "F4_OUTSTANDING_RELATIONSHIP_PROOF": 8,
+    "F4_BOUNDED_PUBLIC_ROW_PROOF": 353,
+    "F4_OUTSTANDING_RELATIONSHIP_PROOF": 2,
     "F4_ZERO_EDGE_PUBLIC_PROOF": 1,
     "STAGE2_BOUNDARY_DEFERRED": 107
   },
@@ -138,6 +138,7 @@
     "D147",
     "D148",
     "D149",
+    "D150",
     "D151",
     "D168",
     "D179",
@@ -160,7 +161,7 @@
   "stage1_closed_authority_blocked_edges": 0,
   "stage1_closed_authority_blocked_rows": [],
   "stage1_closed_rows": 144,
-  "stage1_closed_rows_with_outstanding_edges": 2,
+  "stage1_closed_rows_with_outstanding_edges": 1,
   "stage1_f4_candidate_ready": false,
   "stage1_independent_acceptance": false,
   "stage1_rows": 174,
