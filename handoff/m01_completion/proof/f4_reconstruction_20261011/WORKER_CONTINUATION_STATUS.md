@@ -32,14 +32,22 @@ the accepted normative catalogue, D116, D123, M00 ownership, or Stage-2 kernels.
   missing/future/extra-alias/incorrect-basket/version/child-ref refusals and
   deterministic retry. The initial broad regression exposed a Mypy variable
   collision, repaired before the passing rerun; both logs are preserved.
+- D132: proof-only `baa87fb` (no production repair was necessary).
+  Exact-contract direct R033/R036/R041/R062 and computed D088/D131 produce
+  score `459`, with both D predecessors and full selected raw lineage.
+  The nine public tests also show proper refusal for missing/incorrect sources,
+  mapping and option identity, and omission of a knowledge-ineligible future
+  book update while retaining the earlier lawful score `452`. The corrected
+  initial test-design misconception is documented separately in
+  `d132_test_design_correction.md`.
 
 The original F4 reconciliation was regenerated from the accepted CSV; the immutable
 population/accounting invariants remain 174/144/30 Stage-1 rows, 491 dependency
 edges plus D007 sentinel. Current bounded public edge proof increased from 303
-to 322 and unresolved Stage-1-closed edges decreased from 52 to **33 across
-7 rows**: D078 (7), D079 (4), D080 (4), D081 (4), D104 (2),
-D132 (6), D150 (6). The **30 cross-stage own-kernel/refusal obligations** remain
-unproven. These are not necessarily 63 software defects. Existing F1/F2/F3
+to 328 and unresolved Stage-1-closed edges decreased from 52 to **27 across
+6 rows**: D078 (7), D079 (4), D080 (4), D081 (4), D104 (2),
+D150 (6). The **30 cross-stage own-kernel/refusal obligations** remain
+unproven. These are not necessarily 57 software defects. Existing F1/F2/F3
 proof and historical reviewer evidence are preserved, not re-admitted.
 
 ## Exact reproducible check results for current reconstructed tree
@@ -60,6 +68,11 @@ inputs, not hidden inside this Git tree.
 - Earlier reconstructed broader suite **1,127 passed**: `pg_broader_non_durability.log`, command:
   `python -m pytest -q tests/architecture tests/bootstrap tests/product tests/implementation/derived_signal --ignore=tests/product/raw_signal/test_u05_postgresql_durability.py`
   with M00/M01 DSNs configured and PyYAML 6.0.3 available via local path.
+- Latest post-D132 broader suite **1,144 passed**:
+  `d132_broader_non_durability.log`, including PostgreSQL M00/M01 boundary,
+  architecture static typecheck and all reconstructed M01 proofs. D132 public
+  suite **9 passed** (`d132_public_9_pass.log`); Ruff lint/format and scoped
+  Mypy pass (`d132_ruff_lint.log`, `d132_ruff_format.log`, `d132_mypy.log`).
 - Latest post-D084 broader suite **1,135 passed**:
   `d084_broader_non_durability_rerun.log`, including architecture static
   typecheck and M00/M01 PostgreSQL public-boundary cases. The first post-D084
@@ -93,9 +106,8 @@ inputs, not hidden inside this Git tree.
 ## Remaining execution
 
 Next reconstruct exact D078–D081 coherent aligned factor-regression history and
-lineage, respecting §5 K06; then D104 skew-rotation history, D132 exact
-option-liquidity inputs and D150 composite
-risk, followed by the 30 cross-stage own-kernel and fail-closed proofs. Keep
+lineage, respecting §5 K06; then D104 skew-rotation history and D150
+composite risk, followed by the 30 cross-stage own-kernel and fail-closed proofs. Keep
 proof-first Git commits, run full acceptance validation, and hand off for independent
 review **only at the consolidated F4/Stage-1 candidate boundary**. Incomplete
 future work does not authorise a Stage-2 implementation.

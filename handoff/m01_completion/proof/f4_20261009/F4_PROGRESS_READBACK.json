@@ -1,6 +1,6 @@
 {
   "authority_catalogue_sha256": "d651436df1fcd1395f8f1147dfd80db1ed178da4834447a947c3c9c32fd82aa7",
-  "boundary": "Bounded row proofs do not prove all 144 Stage-1-closed rows or 30 cross-stage rows; 36 unproved Stage-1-closed edges and 30 cross-stage own-kernel/refusal obligations prevent acceptance; D116 controlled ratio is bounded proof only",
+  "boundary": "Bounded row proofs do not prove all 144 Stage-1-closed rows or 30 cross-stage rows; 27 unproved Stage-1-closed edges and 30 cross-stage own-kernel/refusal obligations prevent acceptance; D116 controlled ratio is bounded proof only",
   "cross_stage_kernel_and_refusal_rows_unproved": 30,
   "cross_stage_rows": 30,
   "d116_corrected_dependencies": [
