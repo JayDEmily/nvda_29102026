@@ -771,6 +771,23 @@ F4_BOUNDED_PUBLIC_ROWS["D149"] = (
 )
 
 
+# Authorised reconstruction RC05. One immutable seven-sample OLS fit is
+# established through the admitted controlled M00 public route; the three
+# coefficient results share the same four aligned factor populations and
+# exact truncated raw/D lineage. D078's current residual is NOT thereby proved.
+for _regression_id in ("D079", "D080", "D081"):
+    F4_BOUNDED_PUBLIC_ROWS[_regression_id] = (
+        "RC05", "tests/product/derived_signal/test_m01_f4_reconstruction_regression_history_public.py",
+        "Controlled M00 NVDA/SPY/QQQ/SMH/SOXX native close observations; "
+        "versioned independent D075/D071/D076/D077 factor history with "
+        "seven aligned timestamps and explicit P_REGRESSION window; "
+        "D079=2 D080=3 D081=4, shared 28 D predecessor occurrences and "
+        "40 actual R source occurrences excluding older out-of-window "
+        "history, missing factor/selection and extra alias refusal, "
+        "persisted exact fit lineage and deterministic retry",
+    )
+
+
 def _sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
@@ -900,8 +917,8 @@ def main() -> None:
         "F2_ACCEPTED_SCOPED_EVIDENCE": 18,
         "F3A_BOUNDED_PUBLIC_PROOF": 4,
         "F3B_BOUNDED_PUBLIC_PROOF": 7,
-        "F4_BOUNDED_PUBLIC_ROW_PROOF": 328,
-        "F4_OUTSTANDING_RELATIONSHIP_PROOF": 27,
+        "F4_BOUNDED_PUBLIC_ROW_PROOF": 340,
+        "F4_OUTSTANDING_RELATIONSHIP_PROOF": 15,
         "STAGE2_BOUNDARY_DEFERRED": 107,
         "F4_ZERO_EDGE_PUBLIC_PROOF": 1,
     }, statuses
@@ -954,7 +971,7 @@ def main() -> None:
     assert len(row_records) == 174
     assert sum(x["stage_boundary"] == "STAGE1_CLOSED" for x in row_records) == 144
     assert sum(x["stage_boundary"] == "CROSS_STAGE" for x in row_records) == 30
-    assert sum(x["outstanding_stage1_closed_edges"] for x in row_records) == 27
+    assert sum(x["outstanding_stage1_closed_edges"] for x in row_records) == 15
     with (OUT / "F4_ROW_EVIDENCE_MATRIX.csv").open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, list(row_records[0]))
         writer.writeheader()
@@ -987,7 +1004,7 @@ def main() -> None:
                 ),
             }
         )
-    assert sum(x["stage1_closed_outstanding_edges"] for x in class_records) == 27
+    assert sum(x["stage1_closed_outstanding_edges"] for x in class_records) == 15
     assert sum(x["stage1_closed_authority_blocked_edges"] for x in class_records) == 0
     with (OUT / "F4_CLASS_PROOF_RECONCILIATION.csv").open(
         "w", newline="", encoding="utf-8"
@@ -1022,7 +1039,7 @@ def main() -> None:
         "stage1_independent_acceptance": False,
         "boundary": (
             "Bounded row proofs do not prove all 144 Stage-1-closed rows or 30 cross-stage rows; "
-            "27 unproved Stage-1-closed edges and 30 cross-stage own-kernel/refusal "
+            "15 unproved Stage-1-closed edges and 30 cross-stage own-kernel/refusal "
             "obligations prevent acceptance; D116 controlled ratio is bounded proof only"
         ),
     }
