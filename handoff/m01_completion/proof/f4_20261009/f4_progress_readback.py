@@ -733,6 +733,17 @@ F4_BOUNDED_PUBLIC_ROWS["D148"] = (
 )
 
 
+# Reconstruction from 734cf58. Separate P_SCORE schemas for D149 and D061;
+# R257/R256 and D047/D061 publicly evaluated from controlled M00 sources.
+F4_BOUNDED_PUBLIC_ROWS["D149"] = (
+    "RC21", "tests/product/derived_signal/test_m01_f4_reconstruction_d149_public.py",
+    "Native M00 current R257/R256 funding rates yield D047=50 basis points; "
+    "independent versioned D061 six-predecessor risk score from R236-R240; "
+    "exact D149 sum and full nine raw/two immediate D lineage; missing/future/"
+    "wrong-subject and missing nested score/history refusal, retry",
+)
+
+
 def _sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
@@ -862,8 +873,8 @@ def main() -> None:
         "F2_ACCEPTED_SCOPED_EVIDENCE": 18,
         "F3A_BOUNDED_PUBLIC_PROOF": 4,
         "F3B_BOUNDED_PUBLIC_PROOF": 7,
-        "F4_BOUNDED_PUBLIC_ROW_PROOF": 315,
-        "F4_OUTSTANDING_RELATIONSHIP_PROOF": 40,
+        "F4_BOUNDED_PUBLIC_ROW_PROOF": 319,
+        "F4_OUTSTANDING_RELATIONSHIP_PROOF": 36,
         "STAGE2_BOUNDARY_DEFERRED": 107,
         "F4_ZERO_EDGE_PUBLIC_PROOF": 1,
     }, statuses
@@ -916,7 +927,7 @@ def main() -> None:
     assert len(row_records) == 174
     assert sum(x["stage_boundary"] == "STAGE1_CLOSED" for x in row_records) == 144
     assert sum(x["stage_boundary"] == "CROSS_STAGE" for x in row_records) == 30
-    assert sum(x["outstanding_stage1_closed_edges"] for x in row_records) == 40
+    assert sum(x["outstanding_stage1_closed_edges"] for x in row_records) == 36
     with (OUT / "F4_ROW_EVIDENCE_MATRIX.csv").open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, list(row_records[0]))
         writer.writeheader()
@@ -949,7 +960,7 @@ def main() -> None:
                 ),
             }
         )
-    assert sum(x["stage1_closed_outstanding_edges"] for x in class_records) == 40
+    assert sum(x["stage1_closed_outstanding_edges"] for x in class_records) == 36
     assert sum(x["stage1_closed_authority_blocked_edges"] for x in class_records) == 0
     with (OUT / "F4_CLASS_PROOF_RECONCILIATION.csv").open(
         "w", newline="", encoding="utf-8"
@@ -984,7 +995,7 @@ def main() -> None:
         "stage1_independent_acceptance": False,
         "boundary": (
             "Bounded row proofs do not prove all 144 Stage-1-closed rows or 30 cross-stage rows; "
-            "40 unproved Stage-1-closed edges and 30 cross-stage own-kernel/refusal "
+            "36 unproved Stage-1-closed edges and 30 cross-stage own-kernel/refusal "
             "obligations prevent acceptance; D116 controlled ratio is bounded proof only"
         ),
     }
