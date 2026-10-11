@@ -1,0 +1,24 @@
+....F...                                                                 [100%]
+=================================== FAILURES ===================================
+___ test_regression_window_excludes_earlier_outlier_outside_selected_history ___
+
+    def test_regression_window_excludes_earlier_outlier_outside_selected_history():
+        owner, request = _data(old_outlier=True)
+        _seed_history(owner, request, factor_count=len(FACTORS) + 1)
+        for did, expected in EXPECTED.items():
+            output = owner.materialise(replace(request, derived_signal_id=did))
+            assert output is not None
+            assert abs(output.result - expected) < Decimal("0.000000000001")
+            # Neither the oldest excluded factor occurrence nor its raw source
+            # observation is part of this seven-sample fit's exact provenance.
+>           assert len(output.predecessor_occurrence_ids) == 28
+E           AssertionError: assert 32 == 28
+E            +  where 32 = len(('d071-09e93a745a1eb02e8e399fe09d318585eb78952d9bb2b984adfd4c5ce44c7e61', 'd071-2116dfc034bcb3e0d4d40be159672a09e450f9...fe2060c728a70a71c40b98e56c5da6e4f3e4611', 'd071-a2757da25733d9e369570ccb36b3c5d3e0c0bd3664bd0c39f5493b80fc633cff', ...))
+E            +    where ('d071-09e93a745a1eb02e8e399fe09d318585eb78952d9bb2b984adfd4c5ce44c7e61', 'd071-2116dfc034bcb3e0d4d40be159672a09e450f9...fe2060c728a70a71c40b98e56c5da6e4f3e4611', 'd071-a2757da25733d9e369570ccb36b3c5d3e0c0bd3664bd0c39f5493b80fc633cff', ...) = DerivedSignalOccurrenceV1(derived_signal_id='D079', derived_occurrence_id='d079-4cf7b3a19a97d2cdc9f7c901a4793565a416da...ersionRefV1(context_id='regression-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None).predecessor_occurrence_ids
+
+tests/product/derived_signal/test_m01_f4_reconstruction_regression_history_public.py:241: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/derived_signal/test_m01_f4_reconstruction_regression_history_public.py::test_regression_window_excludes_earlier_outlier_outside_selected_history - AssertionError: assert 32 == 28
+ +  where 32 = len(('d071-09e93a745a1eb02e8e399fe09d318585eb78952d9bb2b984adfd4c5ce44c7e61', 'd071-2116dfc034bcb3e0d4d40be159672a09e450f9...fe2060c728a70a71c40b98e56c5da6e4f3e4611', 'd071-a2757da25733d9e369570ccb36b3c5d3e0c0bd3664bd0c39f5493b80fc633cff', ...))
+ +    where ('d071-09e93a745a1eb02e8e399fe09d318585eb78952d9bb2b984adfd4c5ce44c7e61', 'd071-2116dfc034bcb3e0d4d40be159672a09e450f9...fe2060c728a70a71c40b98e56c5da6e4f3e4611', 'd071-a2757da25733d9e369570ccb36b3c5d3e0c0bd3664bd0c39f5493b80fc633cff', ...) = DerivedSignalOccurrenceV1(derived_signal_id='D079', derived_occurrence_id='d079-4cf7b3a19a97d2cdc9f7c901a4793565a416da...ersionRefV1(context_id='regression-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None).predecessor_occurrence_ids
+1 failed, 7 passed in 0.20s

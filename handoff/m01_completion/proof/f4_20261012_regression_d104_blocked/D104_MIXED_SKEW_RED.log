@@ -1,0 +1,36 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+__________ test_d104_never_pairs_current_25_delta_with_prior_10_delta __________
+
+    def test_d104_never_pairs_current_25_delta_with_prior_10_delta() -> None:
+        prior = AT - timedelta(minutes=1)
+        result = _stage1.evaluate_stage1_kernel(
+            "D104",
+            raw_inputs={},
+            derived_inputs={
+                "D099": (_kv(10, "a-prior99", prior), _kv(20, "z-current99", AT)),
+                "D100": (_kv(30, "z-prior100", prior), _kv(40, "a-current100", AT)),
+            },
+            parameter_set=api.CalculationParameterSetV1(
+                "skew-window",
+                1,
+                "P_WINDOW",
+                (("anchor_seconds", 60),),
+            ),
+            contexts=(),
+            as_of_utc=AT,
+            knowledge_cutoff_utc=AT,
+        )
+        # Either lawful same-family change equals +10. The cross-family -10
+        # is inadmissible, irrespective of the still-undefined scalar selection.
+>       assert result is None or result.value != Decimal(-10)
+E       AssertionError: assert (KernelResultV1(value=Decimal('-10'), units='vol points', result_shape='scalar', input_occurrence_ids=('a-current100', 'a-prior99', 'z-current99', 'z-prior100')) is None or Decimal('-10') != Decimal('-10'))
+E        +  where Decimal('-10') = KernelResultV1(value=Decimal('-10'), units='vol points', result_shape='scalar', input_occurrence_ids=('a-current100', 'a-prior99', 'z-current99', 'z-prior100')).value
+E        +  and   Decimal('-10') = Decimal(-10)
+
+tests/product/derived_signal/test_m01_f4_d104_skew_family_collision_red.py:50: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/derived_signal/test_m01_f4_d104_skew_family_collision_red.py::test_d104_never_pairs_current_25_delta_with_prior_10_delta - AssertionError: assert (KernelResultV1(value=Decimal('-10'), units='vol points', result_shape='scalar', input_occurrence_ids=('a-current100', 'a-prior99', 'z-current99', 'z-prior100')) is None or Decimal('-10') != Decimal('-10'))
+ +  where Decimal('-10') = KernelResultV1(value=Decimal('-10'), units='vol points', result_shape='scalar', input_occurrence_ids=('a-current100', 'a-prior99', 'z-current99', 'z-prior100')).value
+ +  and   Decimal('-10') = Decimal(-10)
+1 failed in 0.06s

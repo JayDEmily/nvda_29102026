@@ -1,0 +1,23 @@
+....F...                                                                 [100%]
+=================================== FAILURES ===================================
+___ test_regression_window_excludes_earlier_outlier_outside_selected_history ___
+
+    def test_regression_window_excludes_earlier_outlier_outside_selected_history():
+        owner, request = _data(old_outlier=True)
+        _seed_history(owner, request, factor_count=len(FACTORS) + 1)
+        for did, expected in EXPECTED.items():
+            output = owner.materialise(replace(request, derived_signal_id=did))
+            assert output is not None
+>           assert abs(output.result - expected) < Decimal("0.000000000001")
+E           AssertionError: assert Decimal('0.008203699808039395974247865') < Decimal('1E-12')
+E            +  where Decimal('0.008203699808039395974247865') = abs((Decimal('1.991796300191960604025752135') - Decimal('2')))
+E            +    where Decimal('1.991796300191960604025752135') = DerivedSignalOccurrenceV1(derived_signal_id='D079', derived_occurrence_id='d079-4cf7b3a19a97d2cdc9f7c901a4793565a416da...ersionRefV1(context_id='regression-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None).result
+E            +  and   Decimal('1E-12') = Decimal('0.000000000001')
+
+tests/product/derived_signal/test_m01_f4_reconstruction_regression_history_public.py:231: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/derived_signal/test_m01_f4_reconstruction_regression_history_public.py::test_regression_window_excludes_earlier_outlier_outside_selected_history - AssertionError: assert Decimal('0.008203699808039395974247865') < Decimal('1E-12')
+ +  where Decimal('0.008203699808039395974247865') = abs((Decimal('1.991796300191960604025752135') - Decimal('2')))
+ +    where Decimal('1.991796300191960604025752135') = DerivedSignalOccurrenceV1(derived_signal_id='D079', derived_occurrence_id='d079-4cf7b3a19a97d2cdc9f7c901a4793565a416da...ersionRefV1(context_id='regression-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None).result
+ +  and   Decimal('1E-12') = Decimal('0.000000000001')
+1 failed, 7 passed in 0.22s

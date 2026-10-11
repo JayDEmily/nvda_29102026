@@ -1,0 +1,73 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_______ test_d078_kernel_refuses_coefficient_not_matching_its_prior_fit ________
+
+    def test_d078_kernel_refuses_coefficient_not_matching_its_prior_fit():
+        """An injected coefficient cannot be ignored in the D078 regression rule."""
+        from nvda_desk.derived_signal_calculation_truth import _stage1
+    
+        factor_grid = (
+            ("0", "0", "0"),
+            ("1", "0", "0"),
+            ("0", "1", "0"),
+            ("0", "0", "1"),
+            ("1", "1", "1"),
+        )
+        derived = {did: [] for did in ("D075", "D071", "D076", "D077")}
+        for i, (x, y, z) in enumerate(factor_grid):
+            values = (
+                Decimal(1)
+                + 2 * Decimal(x)
+                + 3 * Decimal(y)
+                + 4 * Decimal(z)
+                + (Decimal("0.02") if i == 4 else Decimal(0)),
+                Decimal(x),
+                Decimal(y),
+                Decimal(z),
+            )
+            instant = NOW - timedelta(minutes=5 - i)
+            for did, v in zip(("D075", "D071", "D076", "D077"), values, strict=True):
+                derived[did].append(
+                    _stage1.KernelValueV1(
+                        value=v,
+                        occurrence_id=f"{did}-{i}",
+                        effective_at_utc=instant,
+                        received_ts_utc=instant,
+                        subject_instrument="NVDA",
+                        source_temporal_kind="derived",
+                        metadata=(),
+                    )
+                )
+        for did, v in (("D079", 99), ("D080", 3), ("D081", 4)):
+            derived[did] = [
+                _stage1.KernelValueV1(
+                    value=Decimal(v),
+                    occurrence_id=f"{did}-wrong",
+                    effective_at_utc=NOW,
+                    received_ts_utc=NOW,
+                    subject_instrument="NVDA",
+                    source_temporal_kind="derived",
+                    metadata=(),
+                )
+            ]
+        result = _stage1.evaluate_stage1_kernel(
+            "D078",
+            raw_inputs={},
+            derived_inputs={did: tuple(values) for did, values in derived.items()},
+            parameter_set=api.CalculationParameterSetV1(
+                "regression-guard",
+                1,
+                "P_REGRESSION",
+                (("minimum_sample", 4), ("history_count", 4)),
+            ),
+            contexts=(),
+            as_of_utc=NOW,
+            knowledge_cutoff_utc=NOW,
+        )
+>       assert result is None
+E       AssertionError: assert KernelResultV1(value=Decimal('0.020000000000000000000000002'), units='return', result_shape='scalar', input_occurrence...76-2', 'D076-3', 'D076-4', 'D077-0', 'D077-1', 'D077-2', 'D077-3', 'D077-4', 'D079-wrong', 'D080-wrong', 'D081-wrong')) is None
+
+tests/product/derived_signal/test_m01_f4_reconstruction_regression_history_public.py:394: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/derived_signal/test_m01_f4_reconstruction_regression_history_public.py::test_d078_kernel_refuses_coefficient_not_matching_its_prior_fit - AssertionError: assert KernelResultV1(value=Decimal('0.020000000000000000000000002'), units='return', result_shape='scalar', input_occurrence...76-2', 'D076-3', 'D076-4', 'D077-0', 'D077-1', 'D077-2', 'D077-3', 'D077-4', 'D079-wrong', 'D080-wrong', 'D081-wrong')) is None
+1 failed, 10 deselected in 0.07s
