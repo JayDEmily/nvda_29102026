@@ -139,6 +139,102 @@ def _option_right(metadata: dict[str, object]) -> str:
     return str(value).lower()
 
 
+def select_d123_official_period_pair(
+    raw: dict[str, tuple[KernelValueV1, ...]],
+    *,
+    as_of_utc: datetime,
+    knowledge_cutoff_utc: datetime,
+) -> tuple[str, tuple[KernelValueV1, KernelValueV1]] | None:
+    """D123-only selection of two authoritative, distinct official OI periods.
+
+    The four official-* metadata fields must be explicitly provided by an
+    admitted M00 projection. They are NOT inferred from ticks or native vintage.
+    Revision precedence is numeric only for the *controlled, mapped contract*;
+    no particular live-provider revision ordering is asserted here.
+    """
+    populated = tuple(rid for rid in ("R047", "R048") if raw.get(rid))
+    if len(populated) != 1:
+        return None
+    rid = populated[0]
+    eligible = select_eligible_values(
+        raw[rid], as_of_utc=as_of_utc,
+        knowledge_cutoff_utc=knowledge_cutoff_utc,
+        maximum_staleness=None,
+        temporal_basis_permissions=("true_instant", "date_only", "receipt_only"),
+    )
+    if len(eligible) < 2:
+        return None
+    right = "call" if rid == "R047" else "put"
+    contract_fields = (
+        "contract_id", "underlying_instrument", "expiry", "strike",
+        "option_right", "source_provider", "source_variant",
+    )
+    baseline = _metadata(eligible[0])
+    if (
+        baseline.get("option_right") != right
+        or any(baseline.get(key) is None for key in contract_fields)
+        or baseline.get("underlying_instrument") != eligible[0].subject_instrument
+    ):
+        return None
+    by_period: dict[str, list[KernelValueV1]] = {}
+    ordinal_by_period: dict[str, int] = {}
+    period_by_ordinal: dict[int, str] = {}
+    for value in eligible:
+        fields = _metadata(value)
+        if value.subject_instrument != eligible[0].subject_instrument:
+            return None
+        if any(
+            type(fields.get(key)) is not type(baseline[key])
+            or fields[key] != baseline[key]
+            for key in contract_fields
+        ):
+            return None
+        period = fields.get("official_reporting_period_id")
+        ordinal = fields.get("official_reporting_period_order")
+        revision = fields.get("official_revision_id")
+        precedence = fields.get("official_revision_precedence")
+        if (
+            type(period) is not str or not period
+            or type(ordinal) is not int or ordinal < 0
+            or type(revision) is not str or not revision
+            or type(precedence) is not int or precedence <= 0
+        ):
+            return None
+        if (
+            (period in ordinal_by_period and ordinal_by_period[period] != ordinal)
+            or (ordinal in period_by_ordinal and period_by_ordinal[ordinal] != period)
+        ):
+            return None
+        ordinal_by_period[period] = ordinal
+        period_by_ordinal[ordinal] = period
+        by_period.setdefault(period, []).append(value)
+    if len(by_period) < 2:
+        return None
+    selected: list[KernelValueV1] = []
+    for ordinal in sorted(period_by_ordinal, reverse=True)[:2]:
+        revisions = by_period[period_by_ordinal[ordinal]]
+        by_precedence: dict[int, str] = {}
+        by_revision: dict[str, int] = {}
+        for revision in revisions:
+            meta = _metadata(revision)
+            precedence = meta["official_revision_precedence"]
+            revision_id = meta["official_revision_id"]
+            assert type(precedence) is int and type(revision_id) is str
+            if precedence in by_precedence or revision_id in by_revision:
+                # Multiple raw observations of the same revision are not an
+                # invented sequence of distinct authoritative corrections.
+                return None
+            by_precedence[precedence] = revision_id
+            by_revision[revision_id] = precedence
+        selected.append(
+            max(
+                revisions,
+                key=lambda item: cast(int, _metadata(item)["official_revision_precedence"]),
+            )
+        )
+    return rid, (selected[0], selected[1])
+
+
 def _same_option_history_selection(current: KernelValueV1, reference: KernelValueV1) -> bool:
     """Require D094/D095 history to describe the same contract or exact bucket."""
 
@@ -1463,24 +1559,8 @@ def _eval_k02(
                 else sum(_decimal_values(raw, numerator_id), _DEC0) / ratio_denominator
             )
         if identity == "D123":
-            changes: list[Decimal] = []
-            for raw_id in ("R047", "R048"):
-                by_contract: dict[str, list[KernelValueV1]] = {}
-                for item in raw.get(raw_id, ()):
-                    by_contract.setdefault(item.subject_instrument, []).append(item)
-                for history in by_contract.values():
-                    ordered = sorted(
-                        history,
-                        key=lambda item: (
-                            item.effective_at_utc,
-                            item.received_ts_utc,
-                            item.occurrence_id,
-                        ),
-                    )
-                    if len(ordered) < 2:
-                        return None
-                    changes.append(_d(ordered[-1].value) - _d(ordered[-2].value))
-            return sum(changes, _DEC0) if changes else None
+            values = raw.get("R047", ()) or raw.get("R048", ())
+            return _d(values[0].value) - _d(values[1].value) if len(values) == 2 else None
         if identity in {"D131", "D134", "D135"}:
             depth_events = _book_events(raw)
             depth_state = _book_final_state(depth_events)
@@ -3338,6 +3418,13 @@ def evaluate_stage1_kernel(
         or parameter_set.profile not in row.parameter_profiles
     ):
         return None
+    if derived_signal_id == "D123" and any(raw_inputs.values()):
+        pair = select_d123_official_period_pair(
+            raw_inputs, as_of_utc=as_of_utc, knowledge_cutoff_utc=knowledge_cutoff_utc
+        )
+        if pair is None:
+            return None
+        raw_inputs = {pair[0]: pair[1]}
     params = _parameter_map(parameter_set)
     value: object | None
     if row.kernel_id == "K01_TIME":

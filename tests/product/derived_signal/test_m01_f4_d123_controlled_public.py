@@ -60,7 +60,8 @@ def _public(
     m00 = raw.create_owner()
     for i, rec in enumerate(records, 1):
         selection = dict(_identity(rec.contract, rec.right).values)
-        for key, value in zip(PERIOD_KEYS, (rec.period, rec.order, rec.revision, rec.precedence)):
+        period_values = (rec.period, rec.order, rec.revision, rec.precedence)
+        for key, value in zip(PERIOD_KEYS, period_values, strict=True):
             if value is not None:
                 selection[key] = value
         event = NOW - timedelta(days=rec.event_days)
@@ -150,13 +151,13 @@ def test_d123_explicit_revision_precedence_out_of_arrival_order_and_cutoff() -> 
     # period: latest two ticks differ from latest two official periods.
     correction = OI("revision", "2026-10-09", 1, "correction", 2, 110,
                     event_days=2, receipt_seconds=5)
-    owner, req = _public(BASE + (correction,))
+    owner, req = _public((*BASE, correction))
     final = owner.materialise(req)
     assert final is not None and final.result == Decimal(15)
     assert {x.observation_occurrence_id for x in final.raw_input_lineage} == {
         "controlled-revision", "controlled-current",
     }
-    owner_cut, req_cut = _public(BASE + (correction,), cutoff=NOW - timedelta(seconds=20))
+    owner_cut, req_cut = _public((*BASE, correction), cutoff=NOW - timedelta(seconds=20))
     historical = owner_cut.materialise(req_cut)
     assert historical is not None and historical.result == Decimal(25)
     assert {x.observation_occurrence_id for x in historical.raw_input_lineage} == {

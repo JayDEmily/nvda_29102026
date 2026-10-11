@@ -44,7 +44,13 @@ def test_d123_exact_call_oi_change_with_lawful_put_source_present() -> None:
             observation_occurrence_id=raw.observation_occurrence_id(f"d123-oi-{i}"),
             delivery_artifact_ref=raw.delivery_artifact_ref(f"d123-oi-{i}"),
             source_provider=raw.provider_id("controlled-native-official-oi"),
-            native_record={"value": value, "identity": dict(ident.values)},
+            native_record={"value": value, "identity": {
+                **dict(ident.values),
+                "official_reporting_period_id": "2026-10-09" if age.days else "2026-10-10",
+                "official_reporting_period_order": 1 if age.days else 2,
+                "official_revision_id": "first",
+                "official_revision_precedence": 1,
+            }},
             received_ts_utc=stamp + timedelta(seconds=1),
             ingestion_sequence=i,
             ingestion_sequence_scope=raw.ingestion_sequence_scope("d123:oi"),
@@ -56,6 +62,10 @@ def test_d123_exact_call_oi_change_with_lawful_put_source_present() -> None:
             native_units="contracts", revision_vintage_native="official-v1",
         ))
     paths = tuple((key, ("identity", key)) for key, _ in call.values)
+    paths += tuple((key, ("identity", key)) for key in (
+        "official_reporting_period_id", "official_reporting_period_order",
+        "official_revision_id", "official_revision_precedence",
+    ))
     owner = api.create_owner(
         raw_projection_reader=m00.reads,
         raw_projection_mappings=tuple(raw.RawSignalProjectionMappingV1(
@@ -81,7 +91,7 @@ def test_d123_exact_call_oi_change_with_lawful_put_source_present() -> None:
         raw_input_bindings=tuple(api.RawInputBindingV1(
             rid, api.VersionRefV1(f"d123-map-{rid}", 1),
             api.VersionRefV1("d123-units", 1), "NVDA", ident,
-        ) for rid, ident in (("R047", call), ("R048", put))),
+        ) for rid, ident in (("R047", call),)),
     )
     # Expected from accepted K02 D123 on the selected exact call contract:
     # current 125 minus prior official 100 = 25 contracts.
@@ -90,7 +100,7 @@ def test_d123_exact_call_oi_change_with_lawful_put_source_present() -> None:
     assert owner._selection_policy_satisfies_row_authority(
         "D123", request, owner._parameter_sets[("d123-basic", 1)], selection
     )
-    assert not owner._bindings_satisfy_join_keys(request, ("R047", "R048"), selection)
+    assert owner._bindings_satisfy_join_keys(request, ("R047",), selection)
     result = owner.materialise(request)
     assert result is not None and result.result == Decimal(25)
     assert result.selection_identity == call

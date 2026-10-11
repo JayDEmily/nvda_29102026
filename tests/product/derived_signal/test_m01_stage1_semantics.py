@@ -559,20 +559,38 @@ def test_k02_atm_straddle_requires_exact_call_put_same_expiry_without_metadata_d
 
 def test_k02_open_interest_change_uses_chronological_exact_contract_history() -> None:
     t0 = NOW - timedelta(days=1)
-    current = _kv(Decimal("125"), occurrence_id="new", at=NOW, subject="C100")
-    prior = _kv(Decimal("100"), occurrence_id="old", at=t0, subject="C100")
+    contract = (
+        ("contract_id", "C100"), ("underlying_instrument", "NVDA"),
+        ("expiry", "2026-12-18"), ("strike", Decimal(100)),
+        ("option_right", "call"), ("source_provider", "controlled-official"),
+        ("source_variant", "versioned-periods"),
+    )
+    current = _kv(
+        Decimal("125"), occurrence_id="new", at=NOW, metadata=(*contract,
+            ("official_reporting_period_id", "day-2"),
+            ("official_reporting_period_order", 2),
+            ("official_revision_id", "initial"),
+            ("official_revision_precedence", 1),
+        ),
+    )
+    prior = _kv(
+        Decimal("100"), occurrence_id="old", at=t0, metadata=(*contract,
+            ("official_reporting_period_id", "day-1"),
+            ("official_reporting_period_order", 1),
+            ("official_revision_id", "initial"),
+            ("official_revision_precedence", 1),
+        ),
+    )
     result = _eval("D123", raw={"R047": (current, prior), "R048": ()})
     assert result is not None and result.value == Decimal("25")
 
     mixed_contract = _eval(
         "D123",
-        raw={
-            "R047": (
-                _kv(Decimal("125"), occurrence_id="new", at=NOW, subject="C100"),
-                _kv(Decimal("100"), occurrence_id="old", at=t0, subject="C105"),
-            ),
-            "R048": (),
-        },
+        raw={"R047": (current, _kv(
+            Decimal("100"), occurrence_id="wrong", at=t0,
+            metadata=tuple((key, "C105" if key == "contract_id" else value)
+                           for key, value in prior.metadata),
+        )), "R048": ()},
     )
     assert mixed_contract is None
 

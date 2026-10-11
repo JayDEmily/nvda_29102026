@@ -2055,7 +2055,23 @@ class _OwnerV1:
             row.derived_id, request, parameter_set, selection
         ):
             return None
-        if not self._bindings_satisfy_join_keys(request, row.raw_dependencies, selection):
+        raw_ids = row.raw_dependencies
+        if derived_signal_id == "D123":
+            # D123 has one *selected* exact option contract. The caller must
+            # bind that applicable right unambiguously. Other-right M00
+            # observations never become mandatory conjunctive inputs.
+            candidates = tuple(
+                binding for binding in request.raw_input_bindings
+                if binding.raw_signal_id in {"R047", "R048"}
+            )
+            if len(candidates) != 1 or candidates[0].selection_identity is None:
+                return None
+            bound_right = candidates[0].selection_identity.value_for("option_right")
+            expected = "R047" if bound_right == "call" else "R048" if bound_right == "put" else None
+            if expected != candidates[0].raw_signal_id:
+                return None
+            raw_ids = (expected,)
+        if not self._bindings_satisfy_join_keys(request, raw_ids, selection):
             return None
         parameter_ref = VersionRefV1(parameter_set.context_id, parameter_set.version)
         selection_ref = VersionRefV1(selection.context_id, selection.version)
@@ -2063,7 +2079,6 @@ class _OwnerV1:
         raw_inputs: dict[str, tuple[KernelValueV1, ...]] = {}
         direct_lineage: list[RawInputLineageV1] = []
         convention_refs: list[VersionRefV1] = []
-        raw_ids = row.raw_dependencies
         if derived_signal_id == "D007":
             # D007's zero-edge catalogue binding is intentional: its immutable
             # RequiredFieldPolicy supplies the *runtime* completeness criteria.
@@ -2086,6 +2101,24 @@ class _OwnerV1:
             raw_inputs[raw_signal_id] = values
             direct_lineage.extend(lineage)
             convention_refs.extend(conventions)
+
+        if derived_signal_id == "D123":
+            from ._stage1 import select_d123_official_period_pair
+
+            official_pair = select_d123_official_period_pair(
+                raw_inputs,
+                as_of_utc=request.as_of_utc,
+                knowledge_cutoff_utc=request.knowledge_cutoff_utc,
+            )
+            if official_pair is None:
+                return None
+            chosen_ids = {value.occurrence_id for value in official_pair[1]}
+            raw_inputs = {official_pair[0]: official_pair[1]}
+            direct_lineage = [
+                entry for entry in direct_lineage
+                if entry.raw_signal_id == official_pair[0]
+                and entry.observation_occurrence_id in chosen_ids
+            ]
 
         selected_event: KernelValueV1 | None = None
         if derived_signal_id == "D065":
