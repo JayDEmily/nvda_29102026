@@ -60,7 +60,9 @@ def test_d123_refuses_two_ticks_without_proved_distinct_official_periods() -> No
         "D123",
         raw_inputs={"R047": ticks},
         derived_inputs={},
-        parameter_set=api.CalculationParameterSetV1("d123-basic", 1, "P_BASIC", (("subject_instrument", "NVDA"),)),
+        parameter_set=api.CalculationParameterSetV1(
+            "d123-basic", 1, "P_BASIC", (("subject_instrument", "NVDA"),)
+        ),
         contexts=(),
         as_of_utc=NOW,
         knowledge_cutoff_utc=NOW,

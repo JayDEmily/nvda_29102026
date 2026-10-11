@@ -55,7 +55,7 @@ def _identity(contract: str, right: str) -> raw.RawSelectionIdentityV1:
 def _public(
     records: tuple[OI, ...] = BASE, *, right: str = "call",
     cutoff: datetime = NOW, mapping_version: int = 1,
-    bind_opposite: bool = False,
+    bind_opposite: bool = False, persistence: object | None = None,
 ) -> tuple[api.DerivedSignalCalculationOwnerV1, api.CalculationRequestV1]:
     m00 = raw.create_owner()
     for i, rec in enumerate(records, 1):
@@ -101,6 +101,7 @@ def _public(
         unit_conventions=(api.UnitConventionVersionV1(
             "controlled-contracts", 1, "contracts", "contracts", Decimal(1), Decimal(0)),),
         contexts=(), utc_now=lambda: NOW,
+        **({"persistence": persistence} if persistence is not None else {}),
     )
     bindings = [api.RawInputBindingV1(
         "R047" if right == "call" else "R048",

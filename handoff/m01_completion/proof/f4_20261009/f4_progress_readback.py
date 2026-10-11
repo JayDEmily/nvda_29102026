@@ -685,6 +685,19 @@ F4_BOUNDED_PUBLIC_ROWS["D103"] = (
     "snapshot and reversed temporal ordering all refuse",
 )
 
+# Programme Owner 2026-10-11 controlled provider-independent official-period
+# proof: both D123 catalogue edges are conditionally applicable and both have
+# independently discriminated public M00 call/put tests.
+F4_BOUNDED_PUBLIC_ROWS["D123"] = (
+    "RC02", "tests/product/derived_signal/test_m01_f4_d123_controlled_public.py",
+    "Controlled and versioned M00 official-reporting-period identities: exact call "
+    "R047 / put R048 +25, absent opposite-side allowed, competing contract "
+    "excluded, late prior-period correction +15 with cutoff-specific historical "
+    "+25, ambiguous/missing period/revision/version refused; exact selected "
+    "two raw versioned observations persisted in lineage; live provider unverified",
+)
+
+
 def _sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
@@ -766,6 +779,19 @@ def main() -> None:
             assert item["f3c_disposition"] == "F4_OUTSTANDING_RELATIONSHIP_PROOF"
             item["f4_disposition"] = "F4_BOUNDED_PUBLIC_ROW_PROOF"
             item["f4_evidence"] = witness + ": " + proof
+            if did == "D116":
+                # Existing numeric witness labelled synthetic R075 as OI.
+                # The accepted raw-source workbook says R075 is *average
+                # option volume*, not OI. That synthetically green test does
+                # not establish the accepted D116 denominator semantics.
+                item["f4_disposition"] = "F4_AUTHORITY_BLOCKED_SOURCE_SEMANTICS"
+                item["f4_evidence"] = (
+                    "Accepted M01 brief D116=volume/open_interest but accepted "
+                    "reference workbook Raw Signals R075=Average Option Volume "
+                    "(IBKR tick 87); tests/product/derived_signal/"
+                    "test_m01_f4_rc14_option_volume_oi_public.py uses controlled "
+                    "R075 as synthetic official OI; cannot claim semantic proof"
+                )
         elif did == "D007" and item["source_type"] == "NONE":
             assert item["f3c_disposition"] == "ZERO_EDGE_SENTINEL_NO_DEPENDENCY"
             item["f4_disposition"] = "F4_ZERO_EDGE_PUBLIC_PROOF"
@@ -783,7 +809,8 @@ def main() -> None:
         "F3A_BOUNDED_PUBLIC_PROOF": 4,
         "F3B_BOUNDED_PUBLIC_PROOF": 7,
         "F4_BOUNDED_PUBLIC_ROW_PROOF": 298,
-        "F4_OUTSTANDING_RELATIONSHIP_PROOF": 56,
+        "F4_OUTSTANDING_RELATIONSHIP_PROOF": 54,
+        "F4_AUTHORITY_BLOCKED_SOURCE_SEMANTICS": 2,
         "STAGE2_BOUNDARY_DEFERRED": 107,
         "F4_ZERO_EDGE_PUBLIC_PROOF": 1,
     }, statuses
@@ -809,6 +836,11 @@ def main() -> None:
         )
         if did in deferred:
             status = "CROSS_STAGE_OWN_KERNEL_AND_PUBLIC_REFUSAL_UNPROVED"
+        elif any(
+            item["f4_disposition"] == "F4_AUTHORITY_BLOCKED_SOURCE_SEMANTICS"
+            for item in row_edges
+        ):
+            status = "STAGE1_CLOSED_NORMATIVE_SOURCE_AUTHORITY_BLOCKED"
         elif pending_count:
             status = "STAGE1_CLOSED_PUBLIC_RELATIONSHIP_PROOF_UNRESOLVED"
         else:
@@ -831,7 +863,7 @@ def main() -> None:
     assert len(row_records) == 174
     assert sum(x["stage_boundary"] == "STAGE1_CLOSED" for x in row_records) == 144
     assert sum(x["stage_boundary"] == "CROSS_STAGE" for x in row_records) == 30
-    assert sum(x["outstanding_stage1_closed_edges"] for x in row_records) == 56
+    assert sum(x["outstanding_stage1_closed_edges"] for x in row_records) == 54
     with (OUT / "F4_ROW_EVIDENCE_MATRIX.csv").open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, list(row_records[0]))
         writer.writeheader()
@@ -846,14 +878,26 @@ def main() -> None:
                 "relationship_class": cl,
                 "declared_ledger_records": len(group),
                 "stage1_closed_outstanding_edges": len(missing),
+                "stage1_closed_authority_blocked_edges": sum(
+                    item["f4_disposition"] == "F4_AUTHORITY_BLOCKED_SOURCE_SEMANTICS"
+                    for item in group
+                ),
                 "stage1_closed_outstanding_rows": len({item["derived_row"] for item in missing}),
                 "stage2_deferred_edges": sum(
                     item["f4_disposition"] == "STAGE2_BOUNDARY_DEFERRED" for item in group
                 ),
-                "status": "UNPROVED" if missing else "NO_OPEN_STAGE1_EDGES_NOT_CLASS_ACCEPTANCE",
+                "status": (
+                    "SOURCE_AUTHORITY_BLOCKED"
+                    if any(
+                        item["f4_disposition"] == "F4_AUTHORITY_BLOCKED_SOURCE_SEMANTICS"
+                        for item in group
+                    )
+                    else "UNPROVED" if missing else "NO_OPEN_STAGE1_EDGES_NOT_CLASS_ACCEPTANCE"
+                ),
             }
         )
-    assert sum(x["stage1_closed_outstanding_edges"] for x in class_records) == 56
+    assert sum(x["stage1_closed_outstanding_edges"] for x in class_records) == 54
+    assert sum(x["stage1_closed_authority_blocked_edges"] for x in class_records) == 2
     with (OUT / "F4_CLASS_PROOF_RECONCILIATION.csv").open(
         "w", newline="", encoding="utf-8"
     ) as handle:
@@ -866,12 +910,15 @@ def main() -> None:
         "stage1_rows": len(stage1),
         "stage1_closed_rows": len(closed_rows),
         "cross_stage_rows": len(deferred),
-        "f4_new_bounded_public_rows": sorted(F4_BOUNDED_PUBLIC_ROWS),
+        "f4_new_bounded_public_rows": sorted(set(F4_BOUNDED_PUBLIC_ROWS) - {"D116"}),
         "total_dependency_edges": 490,
         "stage1_closed_rows_with_outstanding_edges": sum(
             bool(item["outstanding_stage1_closed_edges"]) for item in row_records
         ),
         "cross_stage_kernel_and_refusal_rows_unproved": 30,
+        "stage1_closed_authority_blocked_rows": ["D116"],
+        "stage1_closed_authority_blocked_edges": 2,
+        "d123_provider_independent_proof": "BOUNDED_PUBLIC_VERIFIED_LIVE_PROVIDER_UNVERIFIED",
         "new_authorised_raw_edges": ["D134/R187", "D135/R187"],
         "zero_edge_sentinels": 1,
         "f4_dispositions": dict(sorted(statuses.items())),
@@ -883,7 +930,7 @@ def main() -> None:
         "stage1_independent_acceptance": False,
         "boundary": (
             "Bounded row proofs do not prove all 144 Stage-1-closed rows or 30 cross-stage rows; "
-            "F4 outstanding edge classes and public reachability remain unproved"
+            "F4 outstanding edges and D116/R075 source meaning prevent acceptance"
         ),
     }
     (OUT / "F4_PROGRESS_READBACK.json").write_text(
