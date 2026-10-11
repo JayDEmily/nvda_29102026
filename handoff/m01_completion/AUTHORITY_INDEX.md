@@ -44,3 +44,7 @@ R187 (provider operation) to D134 and D135, preserving their remaining fields
 and all calculation mathematics. The effective catalogue digest is
 `8045c8c0c4a62fbc3b88759a65b415efb1f0d549764ddbdcae2c5c911cd8a64a`. The corresponding two source-controlled CSV copies
 and hash-bound runtime loader are synchronised under this narrow exception.
+
+## D123 bounded normative clarification — Programme Owner, 2026-10-11
+
+`authority/D123_CALCULATION_DEFINITION_AUTHORISED_CLARIFICATION_20261011.md` records the authorised D123-only option-right-conditional R047/R048 semantics and latest-two-distinct-eligible-official-refresh requirement as authority revision `D123-20261011-01`. The effective catalogue dependencies are unchanged. This normative clarification does **not** supply a missing native official-reporting-period identity or revision precedence; the exact blocker and evidence are retained at `proof/f4_20261011_d123_official_refresh_blocked/`. No assertion of D123 implementation completion follows from the clarification.
