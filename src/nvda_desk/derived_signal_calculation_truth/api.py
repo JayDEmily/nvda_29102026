@@ -1723,6 +1723,85 @@ class _OwnerV1:
         Scope comes from bound exact facts and the candidate-structure context,
         never from nearest-neighbour searches or a fabricated policy version.
         """
+        if parent_id == "D084" and predecessor_id in {"D076", "D077", "D083"}:
+            # D084 is one scored state of three separately admitted baskets,
+            # not a single market instrument. Each predecessor has its own
+            # versioned selection policy and exact R037/R042 membership.
+            refs = dict(request.predecessor_selection_policy_refs)
+            policies = {
+                did: self._input_selection_policies.get((refs[did].context_id, refs[did].version))
+                if did in refs
+                else None
+                for did in ("D076", "D077", "D083")
+            }
+            if parent_selection.join_keys != ("subject_instrument",) or any(
+                policy is None for policy in policies.values()
+            ):
+                return None
+            sector_allowed = {
+                "D076": (frozenset({"SPY", "SPX"}), frozenset({"QQQ", "NDX"})),
+                "D077": (
+                    frozenset({"SMH"}),
+                    frozenset({"SOXX"}),
+                    frozenset({"QQQ", "NDX"}),
+                ),
+            }
+            for did, accepted in sector_allowed.items():
+                policy = policies[did]
+                if policy is None:
+                    return None
+                members = set(policy.basket_membership)
+                if len(members) != len(accepted) or any(
+                    len(members & candidate) != 1 for candidate in accepted
+                ):
+                    return None
+            cross_parameter = self._parameter_set_for_profile(request, "P_CROSS_SECTION")
+            if cross_parameter is None:
+                return None
+            cross_members = dict(cross_parameter.parameters).get("basket_membership")
+            cross_selection = policies["D083"]
+            if (
+                type(cross_members) is not tuple
+                or cross_selection is None
+                or tuple(cross_selection.basket_membership) != cross_members
+                or len(set(cross_members)) != len(cross_members)
+                or len(cross_members) < 2
+            ):
+                return None
+            for policy in policies.values():
+                if (
+                    policy is None
+                    or policy.join_keys != ("subject_instrument",)
+                    or policy.maximum_staleness > parent_selection.maximum_staleness
+                    or policy.maximum_skew > parent_selection.maximum_skew
+                    or not set(policy.temporal_basis_permissions)
+                    <= set(parent_selection.temporal_basis_permissions)
+                ):
+                    return None
+            universe = set().union(*(p.basket_membership for p in policies.values() if p))
+            bindings = request.raw_input_bindings
+            if len(bindings) != len(universe) * 2 or {
+                (b.subject_instrument, b.raw_signal_id) for b in bindings
+            } != {(member, rid) for member in universe for rid in ("R037", "R042")}:
+                return None
+            child = policies[predecessor_id]
+            if child is None:
+                return None
+            member_bindings = tuple(
+                b for b in bindings if b.subject_instrument in child.basket_membership
+            )
+            return (
+                replace(
+                    request,
+                    derived_signal_id=predecessor_id,
+                    subject_instrument={"D076": "US_TECH", "D077": "SEMIS", "D083": "NVDA"}[
+                        predecessor_id
+                    ],
+                    input_selection_policy_id=child.context_id,
+                    input_selection_policy_version=child.version,
+                    raw_input_bindings=member_bindings,
+                ),
+            )
         if parent_id in {"D076", "D077"}:
             sector_request = self._sector_predecessor_request(
                 request, parent_id, predecessor_id, parent_selection
