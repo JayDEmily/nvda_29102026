@@ -285,3 +285,32 @@ def test_regression_refuses_unbound_extra_alias():
         owner.materialise(replace(request, raw_input_bindings=(*request.raw_input_bindings, extra)))
         is None
     )
+
+
+def test_d078_public_residual_uses_the_identical_seven_sample_coefficient_fit():
+    """§5 K06: in-sample residual and all D079-D081 fit versions must agree."""
+    owner, request = _data()
+    _seed_history(owner, request)
+    coefficients = {
+        did: owner.materialise(replace(request, derived_signal_id=did))
+        for did in ("D079", "D080", "D081")
+    }
+    assert all(value is not None for value in coefficients.values())
+    out = owner.materialise(replace(request, derived_signal_id="D078"))
+    assert out is not None, "D078 must consume the same fitted coefficient identities"
+    assert abs(out.result) < Decimal("0.000000000001")
+    assert {value.derived_occurrence_id for value in coefficients.values()} <= set(
+        out.predecessor_occurrence_ids
+    )
+    assert {owner.reads.get_derived_occurrence(value).derived_signal_id for value in
+            out.predecessor_occurrence_ids} == {
+        "D075", "D071", "D076", "D077", "D079", "D080", "D081"
+    }
+    assert len(out.raw_input_lineage) == 40
+    assert owner.materialise(replace(request, derived_signal_id="D078")) == out
+
+
+def test_d078_refuses_missing_aligned_factor_in_required_fit():
+    owner, request = _data(missing=("SPY", 0))
+    _seed_history(owner, request, allow_missing=True)
+    assert owner.materialise(replace(request, derived_signal_id="D078")) is None
