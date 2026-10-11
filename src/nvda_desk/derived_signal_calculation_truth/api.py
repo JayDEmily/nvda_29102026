@@ -1787,7 +1787,7 @@ class _OwnerV1:
             child = policies[predecessor_id]
             if child is None:
                 return None
-            member_bindings = tuple(
+            sector_child_bindings = tuple(
                 b for b in bindings if b.subject_instrument in child.basket_membership
             )
             return (
@@ -1799,7 +1799,7 @@ class _OwnerV1:
                     ],
                     input_selection_policy_id=child.context_id,
                     input_selection_policy_version=child.version,
-                    raw_input_bindings=member_bindings,
+                    raw_input_bindings=sector_child_bindings,
                 ),
             )
         if parent_id in {"D076", "D077"}:

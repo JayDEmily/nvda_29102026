@@ -1,0 +1,38 @@
+..................................................................F..... [  6%]
+........................................................................ [ 12%]
+........................................................................ [ 19%]
+........................................................................ [ 25%]
+........................................................................ [ 31%]
+........................................................................ [ 38%]
+........................................................................ [ 44%]
+........................................................................ [ 50%]
+........................................................................ [ 57%]
+........................................................................ [ 63%]
+........................................................................ [ 69%]
+........................................................................ [ 76%]
+........................................................................ [ 82%]
+........................................................................ [ 88%]
+........................................................................ [ 95%]
+.......................................................                  [100%]
+=================================== FAILURES ===================================
+__________ test_current_source_tree_passes_admitted_static_typecheck ___________
+
+    def test_current_source_tree_passes_admitted_static_typecheck() -> None:
+        completed = _run_mypy("src")
+>       assert completed.returncode == 0, completed.stdout + completed.stderr
+E       AssertionError: src/nvda_desk/derived_signal_calculation_truth/api.py:1874: error: Name "member_bindings" already defined on line 1790  [no-redef]
+E         src/nvda_desk/derived_signal_calculation_truth/api.py:1888: error: "tuple[RawInputBindingV1, ...]" has no attribute "append"  [attr-defined]
+E         Found 2 errors in 1 file (checked 21 source files)
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['/mnt/data/f4-recon-venv/bin/python', '-m', 'mypy', '--config-file', '/mnt/data/NVDA_M01_F4_REC...gV1, ...]" has no attribute "append"  [attr-defined]\nFound 2 errors in 1 file (checked 21 source files)\n', stderr='').returncode
+
+tests/architecture/test_static_typecheck.py:32: AssertionError
+=========================== short test summary info ============================
+FAILED tests/architecture/test_static_typecheck.py::test_current_source_tree_passes_admitted_static_typecheck - AssertionError: src/nvda_desk/derived_signal_calculation_truth/api.py:1874: error: Name "member_bindings" already defined on line 1790  [no-redef]
+  src/nvda_desk/derived_signal_calculation_truth/api.py:1888: error: "tuple[RawInputBindingV1, ...]" has no attribute "append"  [attr-defined]
+  Found 2 errors in 1 file (checked 21 source files)
+  
+assert 1 == 0
+ +  where 1 = CompletedProcess(args=['/mnt/data/f4-recon-venv/bin/python', '-m', 'mypy', '--config-file', '/mnt/data/NVDA_M01_F4_REC...gV1, ...]" has no attribute "append"  [attr-defined]\nFound 2 errors in 1 file (checked 21 source files)\n', stderr='').returncode
+1 failed, 1134 passed in 7.04s

@@ -24,14 +24,22 @@ the accepted normative catalogue, D116, D123, M00 ownership, or Stage-2 kernels.
 - D149: proof `fe9039c`, ledger `a581aeb`. The score uses direct R257/R256,
   actual D047 rate spread and independently versioned D061 score; tests check
   exact arithmetic, public lineage, missing/late/wrong-subject refusal and retry.
+- D084: RED public proof `20089d8`, extended refusal proof `a038c29`,
+  bounded production correction `240bde4`. Each of the independently versioned
+  D076 (SPY/QQQ), D077 (SMH/SOXX/QQQ), and D083 (NVDA/AMD/INTC)
+  predecessors selects its exact admitted M00 basket. The proof checks exact
+  numerical score, all three predecessor identities, 14 raw lineage entries,
+  missing/future/extra-alias/incorrect-basket/version/child-ref refusals and
+  deterministic retry. The initial broad regression exposed a Mypy variable
+  collision, repaired before the passing rerun; both logs are preserved.
 
 The original F4 reconciliation was regenerated from the accepted CSV; the immutable
 population/accounting invariants remain 174/144/30 Stage-1 rows, 491 dependency
 edges plus D007 sentinel. Current bounded public edge proof increased from 303
-to 319 and unresolved Stage-1-closed edges decreased from 52 to **36 across
-8 rows**: D078 (7), D079 (4), D080 (4), D081 (4), D084 (3), D104 (2),
+to 322 and unresolved Stage-1-closed edges decreased from 52 to **33 across
+7 rows**: D078 (7), D079 (4), D080 (4), D081 (4), D104 (2),
 D132 (6), D150 (6). The **30 cross-stage own-kernel/refusal obligations** remain
-unproven. These are not necessarily 66 software defects. Existing F1/F2/F3
+unproven. These are not necessarily 63 software defects. Existing F1/F2/F3
 proof and historical reviewer evidence are preserved, not re-admitted.
 
 ## Exact reproducible check results for current reconstructed tree
@@ -49,9 +57,22 @@ inputs, not hidden inside this Git tree.
   Initial isolated venv attempt lacked PyYAML and stopped at collection; the
   initial failure `architecture_bootstrap.log` is preserved.
 - Derived-product suite at earlier D041 tree: **571 passed**, `derived_product_regression.log`.
-- Current broader suite **1,127 passed**: `pg_broader_non_durability.log`, command:
+- Earlier reconstructed broader suite **1,127 passed**: `pg_broader_non_durability.log`, command:
   `python -m pytest -q tests/architecture tests/bootstrap tests/product tests/implementation/derived_signal --ignore=tests/product/raw_signal/test_u05_postgresql_durability.py`
   with M00/M01 DSNs configured and PyYAML 6.0.3 available via local path.
+- Latest post-D084 broader suite **1,135 passed**:
+  `d084_broader_non_durability_rerun.log`, including architecture static
+  typecheck and M00/M01 PostgreSQL public-boundary cases. The first post-D084
+  broad run failed exactly one architecture static-typecheck because a local
+  variable name was reused in `_scoped_contract_requests`; preserved as
+  `d084_broader_non_durability.log`. This error was repaired and the complete
+  broader suite rerun successfully without removing tests.
+- Latest post-D084 scoped public suite **8 passed**:
+  `d084_public_8_pass.log`; original RED witness `d084_public_red.log`.
+- Latest post-D084 isolated full M00 PostgreSQL durability **55 passed**:
+  `d084_m00_durability_clean.log`.
+- Latest post-D084 Ruff lint/format and derived-source Mypy pass:
+  `d084_ruff_lint.log`, `d084_ruff_format.log`, `d084_mypy.log`.
 - Current isolated full M00 PostgreSQL durability suite: **55 passed** in one run,
   `m00_durability_clean.log`, command:
   `PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONPATH=.:src python -m pytest -q tests/product/raw_signal/test_u05_postgresql_durability.py`,
@@ -72,8 +93,8 @@ inputs, not hidden inside this Git tree.
 ## Remaining execution
 
 Next reconstruct exact D078–D081 coherent aligned factor-regression history and
-lineage, respecting §5 K06; then D084 sector/dispersion separate child scopes,
-D104 skew-rotation history, D132 exact option-liquidity inputs and D150 composite
+lineage, respecting §5 K06; then D104 skew-rotation history, D132 exact
+option-liquidity inputs and D150 composite
 risk, followed by the 30 cross-stage own-kernel and fail-closed proofs. Keep
 proof-first Git commits, run full acceptance validation, and hand off for independent
 review **only at the consolidated F4/Stage-1 candidate boundary**. Incomplete

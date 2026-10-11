@@ -722,6 +722,20 @@ F4_BOUNDED_PUBLIC_ROWS["D041"] = (
 )
 
 
+# Authorised reconstruction of the three independent D084 sector/dispersion
+# predecessor baskets. The RED public seam precedes the bounded D084-specific
+# scoped-policy production correction, with exact raw and predecessor lineage.
+F4_BOUNDED_PUBLIC_ROWS["D084"] = (
+    "RC06", "tests/product/derived_signal/test_m01_f4_reconstruction_d084_public.py",
+    "Controlled M00 raw series for SPY/QQQ technology relative strength, "
+    "SMH/SOXX/QQQ semiconductor relative strength, and NVDA/AMD/INTC "
+    "contemporaneous sample dispersion are separately scoped by immutable "
+    "selection-policy and parameter references; exact three-D output, "
+    "14 raw observation lineages, missing/late/incompatible version/"
+    "extra alias/absent child policy refusal and deterministic retry",
+)
+
+
 # Reconstruction from 734cf58. Public proof exercises all six declared
 # macro sources and three actual Stage-1 predecessor calculations.
 F4_BOUNDED_PUBLIC_ROWS["D148"] = (
@@ -873,8 +887,8 @@ def main() -> None:
         "F2_ACCEPTED_SCOPED_EVIDENCE": 18,
         "F3A_BOUNDED_PUBLIC_PROOF": 4,
         "F3B_BOUNDED_PUBLIC_PROOF": 7,
-        "F4_BOUNDED_PUBLIC_ROW_PROOF": 319,
-        "F4_OUTSTANDING_RELATIONSHIP_PROOF": 36,
+        "F4_BOUNDED_PUBLIC_ROW_PROOF": 322,
+        "F4_OUTSTANDING_RELATIONSHIP_PROOF": 33,
         "STAGE2_BOUNDARY_DEFERRED": 107,
         "F4_ZERO_EDGE_PUBLIC_PROOF": 1,
     }, statuses
@@ -927,7 +941,7 @@ def main() -> None:
     assert len(row_records) == 174
     assert sum(x["stage_boundary"] == "STAGE1_CLOSED" for x in row_records) == 144
     assert sum(x["stage_boundary"] == "CROSS_STAGE" for x in row_records) == 30
-    assert sum(x["outstanding_stage1_closed_edges"] for x in row_records) == 36
+    assert sum(x["outstanding_stage1_closed_edges"] for x in row_records) == 33
     with (OUT / "F4_ROW_EVIDENCE_MATRIX.csv").open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, list(row_records[0]))
         writer.writeheader()
@@ -960,7 +974,7 @@ def main() -> None:
                 ),
             }
         )
-    assert sum(x["stage1_closed_outstanding_edges"] for x in class_records) == 36
+    assert sum(x["stage1_closed_outstanding_edges"] for x in class_records) == 33
     assert sum(x["stage1_closed_authority_blocked_edges"] for x in class_records) == 0
     with (OUT / "F4_CLASS_PROOF_RECONCILIATION.csv").open(
         "w", newline="", encoding="utf-8"
