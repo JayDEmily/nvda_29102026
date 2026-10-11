@@ -805,6 +805,7 @@ class CalculationRequestV1:
     parameter_profile_refs: tuple[ParameterProfileRefV1, ...] = ()
     raw_input_bindings: tuple[RawInputBindingV1, ...] = ()
     predecessor_selection_policy_refs: tuple[tuple[str, VersionRefV1], ...] = ()
+    predecessor_parameter_profile_refs: tuple[tuple[str, ParameterProfileRefV1], ...] = ()
 
     def __post_init__(self) -> None:
         _require_derived_signal_id(self.derived_signal_id)
@@ -842,6 +843,22 @@ class CalculationRequestV1:
             scoped_ids.append(predecessor_id)
         if len(scoped_ids) != len(set(scoped_ids)):
             raise ValueError("predecessor selection references must be distinct by D identity")
+        _require_tuple(
+            self.predecessor_parameter_profile_refs, "predecessor_parameter_profile_refs"
+        )
+        scoped_profiles: list[tuple[str, str]] = []
+        for predecessor_ref in self.predecessor_parameter_profile_refs:
+            if type(predecessor_ref) is not tuple or len(predecessor_ref) != 2:
+                raise TypeError(
+                    "predecessor parameter references require (Dxxx, ParameterProfileRefV1)"
+                )
+            predecessor_id, profile_ref = predecessor_ref
+            _require_derived_signal_id(predecessor_id)
+            if type(profile_ref) is not ParameterProfileRefV1:
+                raise TypeError("predecessor parameter profiles require an immutable version")
+            scoped_profiles.append((predecessor_id, profile_ref.profile))
+        if len(scoped_profiles) != len(set(scoped_profiles)):
+            raise ValueError("predecessor parameter references must be distinct by D and profile")
         _require_tuple(self.raw_input_bindings, "raw_input_bindings")
         for binding_item in self.raw_input_bindings:
             if type(binding_item) is not RawInputBindingV1:
@@ -2280,6 +2297,29 @@ class _OwnerV1:
                 scoped_edge = False
             predecessor_values: list[KernelValueV1] = []
             for predecessor_request in predecessor_requests:
+                # A nested P_SCORE calculation has its own immutable feature
+                # schema. A parent P_SCORE does not authorise evaluating a
+                # different D row with the parent's schema (brief §5 K07).
+                # Apply exact D-scoped version references *only* to the child
+                # request; the parent's parameter identity stays unchanged.
+                child_profile = predecessor_row.parameter_profiles[0]
+                overrides = tuple(
+                    ref
+                    for did, ref in request.predecessor_parameter_profile_refs
+                    if did == predecessor_id and ref.profile == child_profile
+                )
+                if overrides:
+                    predecessor_request = replace(
+                        predecessor_request,
+                        parameter_profile_refs=(
+                            *(
+                                ref
+                                for ref in predecessor_request.parameter_profile_refs
+                                if ref.profile != child_profile
+                            ),
+                            overrides[0],
+                        ),
+                    )
                 predecessor_selection = self._selection_policy(predecessor_request)
                 if predecessor_selection is None:
                     return None
