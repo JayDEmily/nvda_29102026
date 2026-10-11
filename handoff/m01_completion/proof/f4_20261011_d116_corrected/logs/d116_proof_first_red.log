@@ -1,0 +1,212 @@
+FFFFFFFFFF....FF..                                                       [100%]
+=================================== FAILURES ===================================
+_ test_d116_correct_ratio_persistence_identity_lineage_and_retry[False-False-call] _
+
+right = 'call', opposing = False, unrelated = False
+
+    @pytest.mark.parametrize("right", ("call", "put"))
+    @pytest.mark.parametrize("opposing", (False, True))
+    @pytest.mark.parametrize("unrelated", (False, True))
+    def test_d116_correct_ratio_persistence_identity_lineage_and_retry(
+        right: str, opposing: bool, unrelated: bool,
+    ) -> None:
+        owner, req = public(right=right, opposing=opposing, unrelated=unrelated, r075=True)
+        result = owner.materialise(req)
+        oi = "R047" if right == "call" else "R048"
+>       assert result is not None and result.result == Decimal("0.3")
+E       assert (None is not None)
+
+tests/product/derived_signal/test_m01_f4_d116_authorised_public.py:116: AssertionError
+_ test_d116_correct_ratio_persistence_identity_lineage_and_retry[False-False-put] _
+
+right = 'put', opposing = False, unrelated = False
+
+    @pytest.mark.parametrize("right", ("call", "put"))
+    @pytest.mark.parametrize("opposing", (False, True))
+    @pytest.mark.parametrize("unrelated", (False, True))
+    def test_d116_correct_ratio_persistence_identity_lineage_and_retry(
+        right: str, opposing: bool, unrelated: bool,
+    ) -> None:
+        owner, req = public(right=right, opposing=opposing, unrelated=unrelated, r075=True)
+        result = owner.materialise(req)
+        oi = "R047" if right == "call" else "R048"
+>       assert result is not None and result.result == Decimal("0.3")
+E       assert (None is not None)
+
+tests/product/derived_signal/test_m01_f4_d116_authorised_public.py:116: AssertionError
+_ test_d116_correct_ratio_persistence_identity_lineage_and_retry[False-True-call] _
+
+right = 'call', opposing = True, unrelated = False
+
+    @pytest.mark.parametrize("right", ("call", "put"))
+    @pytest.mark.parametrize("opposing", (False, True))
+    @pytest.mark.parametrize("unrelated", (False, True))
+    def test_d116_correct_ratio_persistence_identity_lineage_and_retry(
+        right: str, opposing: bool, unrelated: bool,
+    ) -> None:
+        owner, req = public(right=right, opposing=opposing, unrelated=unrelated, r075=True)
+        result = owner.materialise(req)
+        oi = "R047" if right == "call" else "R048"
+>       assert result is not None and result.result == Decimal("0.3")
+E       assert (None is not None)
+
+tests/product/derived_signal/test_m01_f4_d116_authorised_public.py:116: AssertionError
+_ test_d116_correct_ratio_persistence_identity_lineage_and_retry[False-True-put] _
+
+right = 'put', opposing = True, unrelated = False
+
+    @pytest.mark.parametrize("right", ("call", "put"))
+    @pytest.mark.parametrize("opposing", (False, True))
+    @pytest.mark.parametrize("unrelated", (False, True))
+    def test_d116_correct_ratio_persistence_identity_lineage_and_retry(
+        right: str, opposing: bool, unrelated: bool,
+    ) -> None:
+        owner, req = public(right=right, opposing=opposing, unrelated=unrelated, r075=True)
+        result = owner.materialise(req)
+        oi = "R047" if right == "call" else "R048"
+>       assert result is not None and result.result == Decimal("0.3")
+E       assert (None is not None)
+
+tests/product/derived_signal/test_m01_f4_d116_authorised_public.py:116: AssertionError
+_ test_d116_correct_ratio_persistence_identity_lineage_and_retry[True-False-call] _
+
+right = 'call', opposing = False, unrelated = True
+
+    @pytest.mark.parametrize("right", ("call", "put"))
+    @pytest.mark.parametrize("opposing", (False, True))
+    @pytest.mark.parametrize("unrelated", (False, True))
+    def test_d116_correct_ratio_persistence_identity_lineage_and_retry(
+        right: str, opposing: bool, unrelated: bool,
+    ) -> None:
+        owner, req = public(right=right, opposing=opposing, unrelated=unrelated, r075=True)
+        result = owner.materialise(req)
+        oi = "R047" if right == "call" else "R048"
+>       assert result is not None and result.result == Decimal("0.3")
+E       assert (None is not None)
+
+tests/product/derived_signal/test_m01_f4_d116_authorised_public.py:116: AssertionError
+_ test_d116_correct_ratio_persistence_identity_lineage_and_retry[True-False-put] _
+
+right = 'put', opposing = False, unrelated = True
+
+    @pytest.mark.parametrize("right", ("call", "put"))
+    @pytest.mark.parametrize("opposing", (False, True))
+    @pytest.mark.parametrize("unrelated", (False, True))
+    def test_d116_correct_ratio_persistence_identity_lineage_and_retry(
+        right: str, opposing: bool, unrelated: bool,
+    ) -> None:
+        owner, req = public(right=right, opposing=opposing, unrelated=unrelated, r075=True)
+        result = owner.materialise(req)
+        oi = "R047" if right == "call" else "R048"
+>       assert result is not None and result.result == Decimal("0.3")
+E       assert (None is not None)
+
+tests/product/derived_signal/test_m01_f4_d116_authorised_public.py:116: AssertionError
+_ test_d116_correct_ratio_persistence_identity_lineage_and_retry[True-True-call] _
+
+right = 'call', opposing = True, unrelated = True
+
+    @pytest.mark.parametrize("right", ("call", "put"))
+    @pytest.mark.parametrize("opposing", (False, True))
+    @pytest.mark.parametrize("unrelated", (False, True))
+    def test_d116_correct_ratio_persistence_identity_lineage_and_retry(
+        right: str, opposing: bool, unrelated: bool,
+    ) -> None:
+        owner, req = public(right=right, opposing=opposing, unrelated=unrelated, r075=True)
+        result = owner.materialise(req)
+        oi = "R047" if right == "call" else "R048"
+>       assert result is not None and result.result == Decimal("0.3")
+E       assert (None is not None)
+
+tests/product/derived_signal/test_m01_f4_d116_authorised_public.py:116: AssertionError
+_ test_d116_correct_ratio_persistence_identity_lineage_and_retry[True-True-put] _
+
+right = 'put', opposing = True, unrelated = True
+
+    @pytest.mark.parametrize("right", ("call", "put"))
+    @pytest.mark.parametrize("opposing", (False, True))
+    @pytest.mark.parametrize("unrelated", (False, True))
+    def test_d116_correct_ratio_persistence_identity_lineage_and_retry(
+        right: str, opposing: bool, unrelated: bool,
+    ) -> None:
+        owner, req = public(right=right, opposing=opposing, unrelated=unrelated, r075=True)
+        result = owner.materialise(req)
+        oi = "R047" if right == "call" else "R048"
+>       assert result is not None and result.result == Decimal("0.3")
+E       assert (None is not None)
+
+tests/product/derived_signal/test_m01_f4_d116_authorised_public.py:116: AssertionError
+___________ test_d116_valid_zero_numerator_is_zero_not_absent[call] ____________
+
+right = 'call'
+
+    @pytest.mark.parametrize("right", ("call", "put"))
+    def test_d116_valid_zero_numerator_is_zero_not_absent(right: str) -> None:
+        owner, req = public(right=right, volume=Decimal(0))
+        result = owner.materialise(req)
+>       assert result is not None and result.result == Decimal(0)
+E       assert (None is not None)
+
+tests/product/derived_signal/test_m01_f4_d116_authorised_public.py:129: AssertionError
+____________ test_d116_valid_zero_numerator_is_zero_not_absent[put] ____________
+
+right = 'put'
+
+    @pytest.mark.parametrize("right", ("call", "put"))
+    def test_d116_valid_zero_numerator_is_zero_not_absent(right: str) -> None:
+        owner, req = public(right=right, volume=Decimal(0))
+        result = owner.materialise(req)
+>       assert result is not None and result.result == Decimal(0)
+E       assert (None is not None)
+
+tests/product/derived_signal/test_m01_f4_d116_authorised_public.py:129: AssertionError
+____ test_d116_missing_applicable_side_and_r075_substitution_refuses[call] _____
+
+right = 'call'
+
+    @pytest.mark.parametrize("right", ("call", "put"))
+    def test_d116_missing_applicable_side_and_r075_substitution_refuses(right: str) -> None:
+        oi = "R047" if right == "call" else "R048"
+        owner, req = public(right=right, missing=oi, r075=True)
+        assert owner.materialise(req) is None
+        owner, req = public(right=right, r075=True, bind_override=("R041", "R075"))
+>       assert owner.materialise(req) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D116', derived_occurrence_id='d116-ed75d6195c4ee3eaf97ceddcef402e98fb1d46...'expiry', '2026-12-18'), ('strike', Decimal('150')), ('option_right', 'call'))), supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(derived_signal_id='D116', derived_occurrence_id='d116-ed75d6195c4ee3eaf97ceddcef402e98fb1d46...'expiry', '2026-12-18'), ('strike', Decimal('150')), ('option_right', 'call'))), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D116', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 11, 4,...expiry', '2026-12-18'), ('strike', Decimal('150')), ('option_right', 'call'))))), predecessor_selection_policy_refs=()))
+E        +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7f7f8fac4900>.materialise
+
+tests/product/derived_signal/test_m01_f4_d116_authorised_public.py:145: AssertionError
+_____ test_d116_missing_applicable_side_and_r075_substitution_refuses[put] _____
+
+right = 'put'
+
+    @pytest.mark.parametrize("right", ("call", "put"))
+    def test_d116_missing_applicable_side_and_r075_substitution_refuses(right: str) -> None:
+        oi = "R047" if right == "call" else "R048"
+        owner, req = public(right=right, missing=oi, r075=True)
+        assert owner.materialise(req) is None
+        owner, req = public(right=right, r075=True, bind_override=("R041", "R075"))
+>       assert owner.materialise(req) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D116', derived_occurrence_id='d116-ed75d6195c4ee3eaf97ceddcef402e98fb1d46...('expiry', '2026-12-18'), ('strike', Decimal('150')), ('option_right', 'put'))), supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(derived_signal_id='D116', derived_occurrence_id='d116-ed75d6195c4ee3eaf97ceddcef402e98fb1d46...('expiry', '2026-12-18'), ('strike', Decimal('150')), ('option_right', 'put'))), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D116', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 11, 4,...'expiry', '2026-12-18'), ('strike', Decimal('150')), ('option_right', 'put'))))), predecessor_selection_policy_refs=()))
+E        +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7f7f8fac6490>.materialise
+
+tests/product/derived_signal/test_m01_f4_d116_authorised_public.py:145: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/derived_signal/test_m01_f4_d116_authorised_public.py::test_d116_correct_ratio_persistence_identity_lineage_and_retry[False-False-call] - assert (None is not None)
+FAILED tests/product/derived_signal/test_m01_f4_d116_authorised_public.py::test_d116_correct_ratio_persistence_identity_lineage_and_retry[False-False-put] - assert (None is not None)
+FAILED tests/product/derived_signal/test_m01_f4_d116_authorised_public.py::test_d116_correct_ratio_persistence_identity_lineage_and_retry[False-True-call] - assert (None is not None)
+FAILED tests/product/derived_signal/test_m01_f4_d116_authorised_public.py::test_d116_correct_ratio_persistence_identity_lineage_and_retry[False-True-put] - assert (None is not None)
+FAILED tests/product/derived_signal/test_m01_f4_d116_authorised_public.py::test_d116_correct_ratio_persistence_identity_lineage_and_retry[True-False-call] - assert (None is not None)
+FAILED tests/product/derived_signal/test_m01_f4_d116_authorised_public.py::test_d116_correct_ratio_persistence_identity_lineage_and_retry[True-False-put] - assert (None is not None)
+FAILED tests/product/derived_signal/test_m01_f4_d116_authorised_public.py::test_d116_correct_ratio_persistence_identity_lineage_and_retry[True-True-call] - assert (None is not None)
+FAILED tests/product/derived_signal/test_m01_f4_d116_authorised_public.py::test_d116_correct_ratio_persistence_identity_lineage_and_retry[True-True-put] - assert (None is not None)
+FAILED tests/product/derived_signal/test_m01_f4_d116_authorised_public.py::test_d116_valid_zero_numerator_is_zero_not_absent[call] - assert (None is not None)
+FAILED tests/product/derived_signal/test_m01_f4_d116_authorised_public.py::test_d116_valid_zero_numerator_is_zero_not_absent[put] - assert (None is not None)
+FAILED tests/product/derived_signal/test_m01_f4_d116_authorised_public.py::test_d116_missing_applicable_side_and_r075_substitution_refuses[call] - AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D116', derived_occurrence_id='d116-ed75d6195c4ee3eaf97ceddcef402e98fb1d46...'expiry', '2026-12-18'), ('strike', Decimal('150')), ('option_right', 'call'))), supersedes_derived_occurrence_id=None) is None
+ +  where DerivedSignalOccurrenceV1(derived_signal_id='D116', derived_occurrence_id='d116-ed75d6195c4ee3eaf97ceddcef402e98fb1d46...'expiry', '2026-12-18'), ('strike', Decimal('150')), ('option_right', 'call'))), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D116', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 11, 4,...expiry', '2026-12-18'), ('strike', Decimal('150')), ('option_right', 'call'))))), predecessor_selection_policy_refs=()))
+ +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7f7f8fac4900>.materialise
+FAILED tests/product/derived_signal/test_m01_f4_d116_authorised_public.py::test_d116_missing_applicable_side_and_r075_substitution_refuses[put] - AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D116', derived_occurrence_id='d116-ed75d6195c4ee3eaf97ceddcef402e98fb1d46...('expiry', '2026-12-18'), ('strike', Decimal('150')), ('option_right', 'put'))), supersedes_derived_occurrence_id=None) is None
+ +  where DerivedSignalOccurrenceV1(derived_signal_id='D116', derived_occurrence_id='d116-ed75d6195c4ee3eaf97ceddcef402e98fb1d46...('expiry', '2026-12-18'), ('strike', Decimal('150')), ('option_right', 'put'))), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D116', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 11, 4,...'expiry', '2026-12-18'), ('strike', Decimal('150')), ('option_right', 'put'))))), predecessor_selection_policy_refs=()))
+ +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7f7f8fac6490>.materialise
+12 failed, 6 passed in 0.15s
