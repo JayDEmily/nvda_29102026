@@ -262,3 +262,41 @@ def test_reconstructed_d084_missing_child_selection_ref_refuses():
         ),
     )
     assert owner.materialise(altered) is None
+
+
+def test_reconstructed_d084_disallows_silent_extra_alias_binding():
+    owner, req = _public()
+    # SPX and SPY cannot silently compete for the same market proxy. No
+    # accepting a convenient seven-member subset of a declared eight-member set.
+    added = api.RawInputBindingV1(
+        "R037",
+        api.VersionRefV1("recon-d084-map-R037", 1),
+        api.VersionRefV1("recon-d084-unit", 1),
+        "SPX",
+        None,
+    )
+    assert (
+        owner.materialise(replace(req, raw_input_bindings=(*req.raw_input_bindings, added))) is None
+    )
+
+
+def test_reconstructed_d084_disallows_missing_technology_selection_ref():
+    owner, req = _public()
+    altered = replace(
+        req,
+        predecessor_selection_policy_refs=tuple(
+            item for item in req.predecessor_selection_policy_refs if item[0] != "D076"
+        ),
+    )
+    assert owner.materialise(altered) is None
+
+
+def test_reconstructed_d084_mapping_version_mismatch_refuses():
+    owner, req = _public()
+    altered = tuple(
+        replace(item, projection_mapping_ref=api.VersionRefV1("recon-d084-map-R037", 2))
+        if item.subject_instrument == "QQQ" and item.raw_signal_id == "R037"
+        else item
+        for item in req.raw_input_bindings
+    )
+    assert owner.materialise(replace(req, raw_input_bindings=altered)) is None
