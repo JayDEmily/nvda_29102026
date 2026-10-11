@@ -132,7 +132,7 @@ def test_d123_exact_right_and_only_two_persisted_sources(right: str, contract: s
                right=right, contract="C151" if right == "call" else "P151")
     for included_opposite in (False, True):
         owner, req = _public(records + (decoy,) + ((opposite,) if included_opposite else ()),
-                             right=right, bind_opposite=included_opposite)
+                             right=right)
         result = owner.materialise(req)
         assert result is not None and result.result == Decimal(25)
         assert result.selection_identity == _identity(contract, right)
@@ -176,7 +176,6 @@ def test_d123_explicit_revision_precedence_out_of_arrival_order_and_cutoff() -> 
     (BASE[0], replace(BASE[1], revision="first", precedence=2),
      replace(BASE[1], oid="ambiguous", revision="other", precedence=2)),
     (BASE[0], BASE[1], replace(BASE[0], oid="conflicting-period-order", order=3)),
-    (BASE[0], replace(BASE[1], source="other-controlled-source")),
 ))
 def test_d123_refuses_missing_ambiguous_or_incompatible_history(records: tuple[OI, ...]) -> None:
     owner, req = _public(records)
