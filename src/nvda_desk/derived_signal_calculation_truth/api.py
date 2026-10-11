@@ -1723,6 +1723,92 @@ class _OwnerV1:
         Scope comes from bound exact facts and the candidate-structure context,
         never from nearest-neighbour searches or a fabricated policy version.
         """
+        if parent_id in {"D079", "D080", "D081"} and predecessor_id in {
+            "D075",
+            "D071",
+            "D076",
+            "D077",
+        }:
+            # The regression has four independently named subject/basket
+            # histories. A parent NVDA request may neither project its own
+            # raw sources as SPY/QQQ/SMH/SOXX nor use an arbitrary subset.
+            refs = dict(request.predecessor_selection_policy_refs)
+            if (
+                parent_selection.join_keys != ("subject_instrument",)
+                or parent_selection.basket_membership
+            ):
+                return None
+            policies = {
+                did: self._input_selection_policies.get((refs[did].context_id, refs[did].version))
+                if did in refs
+                else None
+                for did in ("D075", "D071", "D076", "D077")
+            }
+            if any(policy is None for policy in policies.values()):
+                return None
+            nvda_policy, market_policy = policies["D075"], policies["D071"]
+            tech_policy, semi_policy = policies["D076"], policies["D077"]
+            if (
+                nvda_policy is None
+                or market_policy is None
+                or tech_policy is None
+                or semi_policy is None
+                or nvda_policy.basket_membership
+                or market_policy.basket_membership
+                or len(set(tech_policy.basket_membership)) != 2
+                or len(set(semi_policy.basket_membership)) != 3
+                or len(set(tech_policy.basket_membership) & {"SPY", "SPX"}) != 1
+                or len(set(tech_policy.basket_membership) & {"QQQ", "NDX"}) != 1
+                or len(set(semi_policy.basket_membership) & {"SMH"}) != 1
+                or len(set(semi_policy.basket_membership) & {"SOXX"}) != 1
+                or len(set(semi_policy.basket_membership) & {"QQQ", "NDX"}) != 1
+                or set(tech_policy.basket_membership) - set(semi_policy.basket_membership)
+                != (set(tech_policy.basket_membership) & {"SPY", "SPX"})
+            ):
+                return None
+            policies_all = tuple(policies.values())
+            if any(
+                policy is None
+                or policy.join_keys != ("subject_instrument",)
+                or policy.maximum_staleness > parent_selection.maximum_staleness
+                or policy.maximum_skew > parent_selection.maximum_skew
+                or not set(policy.temporal_basis_permissions)
+                <= set(parent_selection.temporal_basis_permissions)
+                for policy in policies_all
+            ):
+                return None
+            market = next(iter(set(tech_policy.basket_membership) & {"SPY", "SPX"}))
+            universe = (
+                set(tech_policy.basket_membership) | set(semi_policy.basket_membership) | {"NVDA"}
+            )
+            bindings = request.raw_input_bindings
+            if len(bindings) != 2 * len(universe) or {
+                (b.subject_instrument, b.raw_signal_id) for b in bindings
+            } != {(name, rid) for name in universe for rid in ("R037", "R042")}:
+                return None
+            if predecessor_id == "D075":
+                child_subject, child_members = "NVDA", {"NVDA"}
+            elif predecessor_id == "D071":
+                child_subject, child_members = market, {market}
+            elif predecessor_id == "D076":
+                child_subject, child_members = "US_TECH", set(tech_policy.basket_membership)
+            else:
+                child_subject, child_members = "SEMIS", set(semi_policy.basket_membership)
+            policy = policies[predecessor_id]
+            if policy is None:
+                return None
+            return (
+                replace(
+                    request,
+                    derived_signal_id=predecessor_id,
+                    subject_instrument=child_subject,
+                    input_selection_policy_id=policy.context_id,
+                    input_selection_policy_version=policy.version,
+                    raw_input_bindings=tuple(
+                        b for b in bindings if b.subject_instrument in child_members
+                    ),
+                ),
+            )
         if parent_id == "D084" and predecessor_id in {"D076", "D077", "D083"}:
             # D084 is one scored state of three separately admitted baskets,
             # not a single market instrument. Each predecessor has its own
@@ -2515,14 +2601,35 @@ class _OwnerV1:
                 ):
                     return None
                 predecessor_sync_instants.append(latest.effective_as_of_utc)
+                # A derived-only predecessor still carries exact M00 mapping
+                # units in its raw lineage. Its unit conventions must remain
+                # part of the parent's version provenance, or a valid nested
+                # predecessor will fail subsequent version-compatible reuse.
+                convention_sources = (
+                    history
+                    if (
+                        derived_signal_id in {"D079", "D080", "D081"}
+                        and predecessor_id in {"D075", "D071", "D076", "D077"}
+                    )
+                    else (latest,)
+                )
+                for source_occurrence in convention_sources:
+                    convention_refs.extend(source_occurrence.convention_refs)
                 if predecessor_id == "D015" and derived_signal_id in {"D016", "D120"}:
                     sign_history_occurrences.extend(history)
                 else:
-                    immediate_predecessors.append(latest)
-                    inherited_lineage.extend(latest.raw_input_lineage)
+                    regression_history = derived_signal_id in {
+                        "D079",
+                        "D080",
+                        "D081",
+                    } and predecessor_id in {"D075", "D071", "D076", "D077"}
+                    participating = history if regression_history else (latest,)
+                    immediate_predecessors.extend(participating)
+                    for participating_occurrence in participating:
+                        inherited_lineage.extend(participating_occurrence.raw_input_lineage)
                 predecessor_values.extend(
                     self._occurrence_kernel_value(value)
-                    for value in ((latest,) if scoped_edge else history)
+                    for value in (history if not scoped_edge or regression_history else (latest,))
                 )
             derived_inputs[predecessor_id] = tuple(predecessor_values)
 

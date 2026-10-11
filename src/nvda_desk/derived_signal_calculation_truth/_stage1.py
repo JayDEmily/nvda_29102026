@@ -2448,17 +2448,26 @@ def _eval_k06(
             if aligned is None:
                 return None
             y, m, t, s = aligned
+            # P_REGRESSION selects an immutable trailing sample subset; older
+            # states cannot enter a fit simply because they remain in durable
+            # predecessor history. Without an explicit count, retain the
+            # accepted whole-available-history direct-kernel convention.
+            count = _i(params.get("history_count", len(y) - (1 if identity == "D078" else 0)))
+            if count < minimum:
+                return None
             if identity == "D078":
-                if len(y) < minimum + 1:
+                if len(y) < count + 1:
                     return None
+                y, m, t, s = (series[-(count + 1) :] for series in (y, m, t, s))
                 fit = _ols(y[:-1], (m[:-1], t[:-1], s[:-1]))
                 return (
                     None
                     if fit is None
                     else y[-1] - (fit[0] + fit[1] * m[-1] + fit[2] * t[-1] + fit[3] * s[-1])
                 )
-            if len(y) < minimum:
+            if len(y) < count:
                 return None
+            y, m, t, s = (series[-count:] for series in (y, m, t, s))
             fit = _ols(y, (m, t, s))
             if fit is None:
                 return None
