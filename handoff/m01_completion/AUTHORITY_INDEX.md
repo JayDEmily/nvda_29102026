@@ -48,3 +48,7 @@ and hash-bound runtime loader are synchronised under this narrow exception.
 ## D123 bounded normative clarification — Programme Owner, 2026-10-11
 
 `authority/D123_CALCULATION_DEFINITION_AUTHORISED_CLARIFICATION_20261011.md` records the authorised D123-only option-right-conditional R047/R048 semantics and latest-two-distinct-eligible-official-refresh requirement as authority revision `D123-20261011-01`. The effective catalogue dependencies are unchanged. This normative clarification does **not** supply a missing native official-reporting-period identity or revision precedence; the exact blocker and evidence are retained at `proof/f4_20261011_d123_official_refresh_blocked/`. No assertion of D123 implementation completion follows from the clarification.
+
+## D116 bounded normative dependency correction — Programme Owner, 2026-10-11
+
+`authority/D116_CALCULATION_DEFINITION_AUTHORISED_CORRECTION_20261011.md` establishes the option-right-conditional `R041;R047;R048` dependency for D116, superseding only the old `R041;R075` row. D116 arithmetic and all unrelated catalogue rows, including D117/R075, remain unchanged. Previous catalogue SHA-256 digests above are historical. The new effective runtime/authority catalogue SHA-256 is `d651436df1fcd1395f8f1147dfd80db1ed178da4834447a947c3c9c32fd82aa7` (two byte-identical CSV copies). The original RC14 R075 numerical witness remains in Git history but is not semantic acceptance evidence.

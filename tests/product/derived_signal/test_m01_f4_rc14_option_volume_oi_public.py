@@ -1,4 +1,4 @@
-"""F4 RC14: D116 option volume/OI through exact-contract M00 bindings."""
+"""RC14 D116 contract, missing, zero, future and retry propositions updated for R047."""
 
 from __future__ import annotations
 
@@ -29,7 +29,7 @@ def _public(
     wrong_contract: str | None = None,
 ) -> tuple[api.DerivedSignalCalculationOwnerV1, api.CalculationRequestV1]:
     m00 = raw.create_owner()
-    values = (("R041", Decimal(300)), ("R075", Decimal(0) if oi_zero else Decimal(200)))
+    values = (("R041", Decimal(300)), ("R047", Decimal(0) if oi_zero else Decimal(1000)))
     for i, (rid, value) in enumerate(values, 1):
         if rid == missing:
             continue
@@ -62,40 +62,69 @@ def _public(
         raw_projection_reader=m00.reads,
         raw_projection_mappings=tuple(
             raw.RawSignalProjectionMappingV1(
-                "volume-oi-map-" + rid, 1,
+                "volume-oi-map-" + rid,
+                1,
                 raw.RawSignalCatalogueId(rid),
-                "controlled-option-oi", "option-volume-oi",
-                ("metric", rid), "canonical", KEY_PATHS,
-            ) for rid in ("R041", "R075")
+                "controlled-option-oi",
+                "option-volume-oi",
+                ("metric", rid),
+                "canonical",
+                KEY_PATHS,
+            )
+            for rid in ("R041", "R047")
         ),
         parameter_sets=(
             api.CalculationParameterSetV1(
-                "volume-oi-basic", 1, "P_BASIC", (("subject_instrument", "NVDA"),),
+                "volume-oi-basic",
+                1,
+                "P_BASIC",
+                (("subject_instrument", "NVDA"),),
             ),
         ),
         input_selection_policies=(
             api.InputSelectionPolicyVersionV1(
-                "volume-oi-select", 1, tuple(dict(IDENTITY.values)),
-                timedelta(seconds=30), timedelta(seconds=30),
-                ("true_instant",), (),
+                "volume-oi-select",
+                1,
+                tuple(dict(IDENTITY.values)),
+                timedelta(seconds=30),
+                timedelta(seconds=30),
+                ("true_instant",),
+                (),
             ),
         ),
         unit_conventions=(
             api.UnitConventionVersionV1(
-                "volume-oi-unit", 1, "canonical", "canonical",
-                Decimal(1), Decimal(0),
+                "volume-oi-unit",
+                1,
+                "canonical",
+                "canonical",
+                Decimal(1),
+                Decimal(0),
             ),
         ),
-        contexts=(), utc_now=lambda: NOW,
+        contexts=(),
+        utc_now=lambda: NOW,
     )
     req = api.CalculationRequestV1(
-        "D116", "NVDA", NOW, NOW, "volume-oi-public",
-        "volume-oi-basic", 1, "volume-oi-select", 1, (),
+        "D116",
+        "NVDA",
+        NOW,
+        NOW,
+        "volume-oi-public",
+        "volume-oi-basic",
+        1,
+        "volume-oi-select",
+        1,
+        (),
         raw_input_bindings=tuple(
             api.RawInputBindingV1(
-                rid, api.VersionRefV1("volume-oi-map-" + rid, 1),
-                api.VersionRefV1("volume-oi-unit", 1), "NVDA", IDENTITY,
-            ) for rid in ("R041", "R075")
+                rid,
+                api.VersionRefV1("volume-oi-map-" + rid, 1),
+                api.VersionRefV1("volume-oi-unit", 1),
+                "NVDA",
+                IDENTITY,
+            )
+            for rid in ("R041", "R047")
         ),
     )
     return owner, req
@@ -104,17 +133,18 @@ def _public(
 def test_rc14_public_d116_exact_contract_volume_to_oi_3_over_2() -> None:
     owner, req = _public()
     out = owner.materialise(req)
-    assert out is not None and out.result == Decimal("1.5")
+    assert out is not None and out.result == Decimal("0.3")
     assert out.selection_identity == IDENTITY
-    assert {r.raw_signal_id for r in out.raw_input_lineage} == {"R041", "R075"}
+    assert {r.raw_signal_id for r in out.raw_input_lineage} == {"R041", "R047"}
     assert {r.observation_occurrence_id for r in out.raw_input_lineage} == {
-        "option-oi-R041", "option-oi-R075"
+        "option-oi-R041",
+        "option-oi-R047",
     }
     assert owner.materialise(req) == out
 
 
 def test_rc14_public_d116_missing_oi_refuses() -> None:
-    owner, req = _public(missing="R075")
+    owner, req = _public(missing="R047")
     assert owner.materialise(req) is None
 
 
@@ -124,10 +154,10 @@ def test_rc14_public_d116_zero_open_interest_refuses() -> None:
 
 
 def test_rc14_public_d116_mismatched_open_interest_contract_refuses() -> None:
-    owner, req = _public(wrong_contract="R075")
+    owner, req = _public(wrong_contract="R047")
     assert owner.materialise(req) is None
 
 
 def test_rc14_public_d116_future_oi_receipt_refuses() -> None:
-    owner, req = _public(future="R075")
+    owner, req = _public(future="R047")
     assert owner.materialise(req) is None

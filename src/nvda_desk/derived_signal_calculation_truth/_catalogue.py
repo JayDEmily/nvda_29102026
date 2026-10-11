@@ -8,7 +8,7 @@ from dataclasses import dataclass
 from functools import lru_cache
 from pathlib import Path
 
-CATALOGUE_SHA256 = "8045c8c0c4a62fbc3b88759a65b415efb1f0d549764ddbdcae2c5c911cd8a64a"
+CATALOGUE_SHA256 = "d651436df1fcd1395f8f1147dfd80db1ed178da4834447a947c3c9c32fd82aa7"
 ADMITTED_KERNEL_IDS = frozenset(
     {
         "K01_TIME",

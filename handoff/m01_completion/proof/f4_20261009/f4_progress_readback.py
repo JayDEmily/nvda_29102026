@@ -18,7 +18,7 @@ ROOT = Path(__file__).resolve().parents[4]
 AUTHORITY = ROOT / "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv"
 F3 = ROOT / "handoff/m01_completion/proof/f3_20261009/F3_ALL_EDGES_RECONCILIATION.csv"
 OUT = Path(__file__).resolve().parent
-NORMATIVE_SHA256 = "8045c8c0c4a62fbc3b88759a65b415efb1f0d549764ddbdcae2c5c911cd8a64a"
+NORMATIVE_SHA256 = "d651436df1fcd1395f8f1147dfd80db1ed178da4834447a947c3c9c32fd82aa7"
 STAGE1_KERNELS = {f"K{i:02d}" for i in range(1, 9)} | {"K16", "K17"}
 F4_BOUNDED_PUBLIC_ROWS = {
     "D105": (
@@ -102,10 +102,12 @@ F4_BOUNDED_PUBLIC_ROWS = {
         "missing history/OI, zero-variance, future-cutoff refusal, retry",
     ),
     "D116": (
-        "RC14", "tests/product/derived_signal/test_m01_f4_rc14_option_volume_oi_public.py",
-        "M00 source-native R041 option volume 300 and R075 official OI "
-        "200 selected by exact contract => 1.5, persisted contract identity "
-        "and raw lineage, zero-OI/absent/future/other-contract refusal, retry",
+        "RC14", "tests/product/derived_signal/test_m01_f4_d116_authorised_public.py",
+        "Programme Owner 2026-10-11 corrected R041/R047/R048: conditional exact "
+        "call R047 or put R048, 300 volume / 1000 OI = 0.3, competing "
+        "contract/opposite right/R075 excluded, zero-volume allowed, zero or "
+        "negative OI refused, wrong contract/absence/future/version refusal, "
+        "exact two-input lineage and deterministic public retry",
     ),
     "D092": (
         "RC14", "tests/product/derived_signal/test_m01_f4_rc14_option_iv_public.py",
@@ -738,15 +740,47 @@ def main() -> None:
     assert len(old_by_identity) == 489
     classified = ROOT / "handoff/m01_completion/foundation/F1_CLASSIFIED_EDGE_MAP.csv"
     with classified.open(newline="", encoding="utf-8") as handle:
-        canonical_edges = list(csv.DictReader(handle))
-    assert len(canonical_edges) == 491, "490 amended dependencies plus D007 sentinel"
+        historical_f1_edges = list(csv.DictReader(handle))
+    assert len(historical_f1_edges) == 491, "historical F1 + D134/D135 correction is preserved"
+    # D116-only 2026-10-11 programme-owner correction; original F1 and F3
+    # ledgers remain immutable historical evidence. Mechanically rebase the
+    # effective F4 relationship census to the currently accepted catalogue.
+    canonical_edges = []
+    for original in historical_f1_edges:
+        if original["derived_id"] != "D116":
+            canonical_edges.append(original)
+            continue
+        if original["source_id"] == "R075":
+            for ordinal, rid in ((2, "R047"), (3, "R048")):
+                amended = dict(original)
+                amended.update({
+                    "edge_id": f"D116:R:{ordinal:02d}",
+                    "source_id": rid,
+                    "dependency_ordinal": str(ordinal),
+                    "raw_dependencies": "R041;R047;R048",
+                    "authority_rule": f"§5 K02; programme owner 2026-10-11; D116/{rid}",
+                    "relationship_label": ("Conditional exact-contract call/put "
+                                           "open-interest source"),
+                })
+                canonical_edges.append(amended)
+        else:
+            amended = dict(original)
+            amended["raw_dependencies"] = "R041;R047;R048"
+            canonical_edges.append(amended)
+    assert len(canonical_edges) == 492, "491 active dependencies plus D007 sentinel"
+    assert {(x['source_id']) for x in canonical_edges if x['derived_id']=='D116'} == {
+        'R041', 'R047', 'R048'
+    }
     edges = []
     added = []
     for edge in canonical_edges:
         key = (edge["derived_id"], edge["source_type"], edge["source_id"])
         inherited = old_by_identity.get(key)
         if inherited is None:
-            assert key in {("D134", "R", "R187"), ("D135", "R", "R187")}, key
+            assert key in {
+                ("D134", "R", "R187"), ("D135", "R", "R187"),
+                ("D116", "R", "R047"), ("D116", "R", "R048"),
+            }, key
             added.append(key)
             item = {
                 "f1_edge_id": edge["edge_id"],
@@ -757,7 +791,7 @@ def main() -> None:
                 "stage2_boundary": edge["stage2_boundary"],
                 "f3c_disposition": "F4_OUTSTANDING_RELATIONSHIP_PROOF",
                 "evidence_and_scope": (
-                    "Programme Owner 2026-10-09 R187 amendment; no inherited F3 proof"
+                    "Programme Owner authorised amended edge; no inherited F3 proof"
                 ),
             }
         else:
@@ -766,10 +800,10 @@ def main() -> None:
             assert item["relationship_class"] == edge["relationship_class"]
             assert item["stage2_boundary"] == edge["stage2_boundary"]
         edges.append(item)
-    assert len(added) == 2 and len(edges) == 491
+    assert len(added) == 4 and len(edges) == 492
     ids = [item["f1_edge_id"] for item in edges]
-    assert len(set(ids)) == 491
-    assert sum(item["source_type"] in {"R", "D"} for item in edges) == 490
+    assert len(set(ids)) == 492
+    assert sum(item["source_type"] in {"R", "D"} for item in edges) == 491
     for item in edges:
         did = item["derived_row"]
         if did in F4_BOUNDED_PUBLIC_ROWS:
@@ -779,19 +813,6 @@ def main() -> None:
             assert item["f3c_disposition"] == "F4_OUTSTANDING_RELATIONSHIP_PROOF"
             item["f4_disposition"] = "F4_BOUNDED_PUBLIC_ROW_PROOF"
             item["f4_evidence"] = witness + ": " + proof
-            if did == "D116":
-                # Existing numeric witness labelled synthetic R075 as OI.
-                # The accepted raw-source workbook says R075 is *average
-                # option volume*, not OI. That synthetically green test does
-                # not establish the accepted D116 denominator semantics.
-                item["f4_disposition"] = "F4_AUTHORITY_BLOCKED_SOURCE_SEMANTICS"
-                item["f4_evidence"] = (
-                    "Accepted M01 brief D116=volume/open_interest but accepted "
-                    "reference workbook Raw Signals R075=Average Option Volume "
-                    "(IBKR tick 87); tests/product/derived_signal/"
-                    "test_m01_f4_rc14_option_volume_oi_public.py uses controlled "
-                    "R075 as synthetic official OI; cannot claim semantic proof"
-                )
         elif did == "D007" and item["source_type"] == "NONE":
             assert item["f3c_disposition"] == "ZERO_EDGE_SENTINEL_NO_DEPENDENCY"
             item["f4_disposition"] = "F4_ZERO_EDGE_PUBLIC_PROOF"
@@ -808,9 +829,8 @@ def main() -> None:
         "F2_ACCEPTED_SCOPED_EVIDENCE": 18,
         "F3A_BOUNDED_PUBLIC_PROOF": 4,
         "F3B_BOUNDED_PUBLIC_PROOF": 7,
-        "F4_BOUNDED_PUBLIC_ROW_PROOF": 298,
+        "F4_BOUNDED_PUBLIC_ROW_PROOF": 301,
         "F4_OUTSTANDING_RELATIONSHIP_PROOF": 54,
-        "F4_AUTHORITY_BLOCKED_SOURCE_SEMANTICS": 2,
         "STAGE2_BOUNDARY_DEFERRED": 107,
         "F4_ZERO_EDGE_PUBLIC_PROOF": 1,
     }, statuses
@@ -897,7 +917,7 @@ def main() -> None:
             }
         )
     assert sum(x["stage1_closed_outstanding_edges"] for x in class_records) == 54
-    assert sum(x["stage1_closed_authority_blocked_edges"] for x in class_records) == 2
+    assert sum(x["stage1_closed_authority_blocked_edges"] for x in class_records) == 0
     with (OUT / "F4_CLASS_PROOF_RECONCILIATION.csv").open(
         "w", newline="", encoding="utf-8"
     ) as handle:
@@ -910,14 +930,15 @@ def main() -> None:
         "stage1_rows": len(stage1),
         "stage1_closed_rows": len(closed_rows),
         "cross_stage_rows": len(deferred),
-        "f4_new_bounded_public_rows": sorted(set(F4_BOUNDED_PUBLIC_ROWS) - {"D116"}),
-        "total_dependency_edges": 490,
+        "f4_new_bounded_public_rows": sorted(F4_BOUNDED_PUBLIC_ROWS),
+        "total_dependency_edges": 491,
         "stage1_closed_rows_with_outstanding_edges": sum(
             bool(item["outstanding_stage1_closed_edges"]) for item in row_records
         ),
         "cross_stage_kernel_and_refusal_rows_unproved": 30,
-        "stage1_closed_authority_blocked_rows": ["D116"],
-        "stage1_closed_authority_blocked_edges": 2,
+        "stage1_closed_authority_blocked_rows": [],
+        "stage1_closed_authority_blocked_edges": 0,
+        "d116_corrected_dependencies": ["D116/R041", "D116/R047", "D116/R048"],
         "d123_provider_independent_proof": "BOUNDED_PUBLIC_VERIFIED_LIVE_PROVIDER_UNVERIFIED",
         "new_authorised_raw_edges": ["D134/R187", "D135/R187"],
         "zero_edge_sentinels": 1,
@@ -930,7 +951,8 @@ def main() -> None:
         "stage1_independent_acceptance": False,
         "boundary": (
             "Bounded row proofs do not prove all 144 Stage-1-closed rows or 30 cross-stage rows; "
-            "F4 outstanding edges and D116/R075 source meaning prevent acceptance"
+            "54 unproved Stage-1-closed edges and 30 cross-stage own-kernel/refusal "
+            "obligations prevent acceptance; D116 controlled ratio is bounded proof only"
         ),
     }
     (OUT / "F4_PROGRESS_READBACK.json").write_text(

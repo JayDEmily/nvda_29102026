@@ -157,7 +157,8 @@ def select_d123_official_period_pair(
         return None
     rid = populated[0]
     eligible = select_eligible_values(
-        raw[rid], as_of_utc=as_of_utc,
+        raw[rid],
+        as_of_utc=as_of_utc,
         knowledge_cutoff_utc=knowledge_cutoff_utc,
         maximum_staleness=None,
         temporal_basis_permissions=("true_instant", "date_only", "receipt_only"),
@@ -166,8 +167,13 @@ def select_d123_official_period_pair(
         return None
     right = "call" if rid == "R047" else "put"
     contract_fields = (
-        "contract_id", "underlying_instrument", "expiry", "strike",
-        "option_right", "source_provider", "source_variant",
+        "contract_id",
+        "underlying_instrument",
+        "expiry",
+        "strike",
+        "option_right",
+        "source_provider",
+        "source_variant",
     )
     baseline = _metadata(eligible[0])
     if (
@@ -184,8 +190,7 @@ def select_d123_official_period_pair(
         if value.subject_instrument != eligible[0].subject_instrument:
             return None
         if any(
-            type(fields.get(key)) is not type(baseline[key])
-            or fields[key] != baseline[key]
+            type(fields.get(key)) is not type(baseline[key]) or fields[key] != baseline[key]
             for key in contract_fields
         ):
             return None
@@ -194,15 +199,18 @@ def select_d123_official_period_pair(
         revision = fields.get("official_revision_id")
         precedence = fields.get("official_revision_precedence")
         if (
-            type(period) is not str or not period
-            or type(ordinal) is not int or ordinal < 0
-            or type(revision) is not str or not revision
-            or type(precedence) is not int or precedence <= 0
+            type(period) is not str
+            or not period
+            or type(ordinal) is not int
+            or ordinal < 0
+            or type(revision) is not str
+            or not revision
+            or type(precedence) is not int
+            or precedence <= 0
         ):
             return None
-        if (
-            (period in ordinal_by_period and ordinal_by_period[period] != ordinal)
-            or (ordinal in period_by_ordinal and period_by_ordinal[ordinal] != period)
+        if (period in ordinal_by_period and ordinal_by_period[period] != ordinal) or (
+            ordinal in period_by_ordinal and period_by_ordinal[ordinal] != period
         ):
             return None
         ordinal_by_period[period] = ordinal
@@ -1448,7 +1456,8 @@ def _eval_k02(
                 expiry = iv_meta.get("expiry")
                 right = _option_right(iv_meta)
                 if (
-                    expiry is None or right not in {"c", "call", "p", "put"}
+                    expiry is None
+                    or right not in {"c", "call", "p", "put"}
                     or not _source_identity_compatible(iv_point, delta_point)
                     or _metadata(iv_point).get("source_provider")
                     != _metadata(delta_point).get("source_provider")
@@ -1472,11 +1481,13 @@ def _eval_k02(
             for expiry in sorted({point[0] for point in skew_points}):
                 expiry_points = tuple(point for point in skew_points if point[0] == expiry)
                 calls = tuple(
-                    iv for _, right, delta, iv in expiry_points
+                    iv
+                    for _, right, delta, iv in expiry_points
                     if right in {"c", "call"} and delta == target
                 )
                 puts = tuple(
-                    iv for _, right, delta, iv in expiry_points
+                    iv
+                    for _, right, delta, iv in expiry_points
                     if right in {"p", "put"} and delta == target
                 )
                 if len(calls) != 1 or len(puts) != 1:
@@ -1546,8 +1557,16 @@ def _eval_k02(
             spot = _d(_scalar(raw, "R118"))
             return None if spot == 0 else _DEC100 * _d(_scalar(derived, "D109")) / spot
         if identity == "D116":
-            oi = _d(_scalar(raw, "R075"))
-            return None if oi == 0 else _d(_scalar(raw, "R041")) / oi
+            if len(raw.get("R041", ())) != 1:
+                return None
+            present = tuple(rid for rid in ("R047", "R048") if raw.get(rid))
+            if len(present) != 1 or len(raw[present[0]]) != 1:
+                return None
+            volume = _d(raw["R041"][0].value)
+            oi = _d(raw[present[0]][0].value)
+            if not (volume.is_finite() and oi.is_finite()) or volume < 0 or oi <= 0:
+                return None
+            return volume / oi
         if identity in {"D118", "D119"}:
             numerator_id, denominator_id = (
                 ("R049", "R050") if identity == "D118" else ("R047", "R048")
@@ -2032,7 +2051,8 @@ def _eval_k03(
             # across two ordered snapshots. Intersecting grids would silently
             # turn a missing contract into a valid, but different, surface.
             surfaces: dict[str, dict[str, KernelValueV1]] = {
-                "prior": {}, "current": {},
+                "prior": {},
+                "current": {},
             }
             for point in raw.get("R111", ()):
                 metadata = _metadata(point)
@@ -2053,10 +2073,12 @@ def _eval_k03(
                 v.effective_at_utc for v in current_grid.values()
             ):
                 return None
-            return _DEC100 * _sample_mean(tuple(
-                _d(current_grid[key].value) - _d(prior_grid[key].value)
-                for key in sorted(current_grid)
-            ))
+            return _DEC100 * _sample_mean(
+                tuple(
+                    _d(current_grid[key].value) - _d(prior_grid[key].value)
+                    for key in sorted(current_grid)
+                )
+            )
         if identity == "D104":
             # D099/D100 are skew measures; compare latest with the exact prior anchor.
             vals = tuple(derived.get("D099", ())) + tuple(derived.get("D100", ()))
@@ -2188,10 +2210,7 @@ def _eval_k04(
                 not actuals
                 or len(rows) != len(actuals)
                 or len(rows) != len(consensuses)
-                or any(
-                    row["R286"].effective_at_utc != row["R285"].effective_at_utc
-                    for row in rows
-                )
+                or any(row["R286"].effective_at_utc != row["R285"].effective_at_utc for row in rows)
             ):
                 return None
             values = tuple(
@@ -2255,8 +2274,7 @@ def _eval_k04(
                 *(
                     (_d(v.value), v.effective_at_utc)
                     for v in candidates
-                    if v is not current
-                    and _metadata(v)["time_of_day_bucket"] == current_bucket
+                    if v is not current and _metadata(v)["time_of_day_bucket"] == current_bucket
                 ),
                 (_d(current.value), current.effective_at_utc),
             )
@@ -2469,7 +2487,7 @@ def _eval_k06(
             times = sorted(set().union(*(set(series) for series in by_subject.values())))
             if len(times) < count + 1:
                 return None
-            window = times[-(count + 1):]
+            window = times[-(count + 1) :]
             returns: dict[str, tuple[Decimal, ...]] = {}
             for subject in subjects:
                 series = by_subject[subject]

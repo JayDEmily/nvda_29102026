@@ -1635,10 +1635,7 @@ class _OwnerV1:
             "D073": frozenset({"SMH"}),
             "D074": frozenset({"SOXX"}),
         }
-        declared = (
-            ("D072", "D071") if parent_id == "D076"
-            else ("D073", "D074", "D072")
-        )
+        declared = ("D072", "D071") if parent_id == "D076" else ("D073", "D074", "D072")
         if predecessor_id not in declared or selection.join_keys != ("subject_instrument",):
             return None
         reference = dict(request.predecessor_selection_policy_refs).get(predecessor_id)
@@ -1668,17 +1665,22 @@ class _OwnerV1:
             return None
         chosen = selected[predecessor_id]
         required = {"R037", "R042"}
-        bindings = tuple(
-            b for b in request.raw_input_bindings if b.subject_instrument == chosen
-        )
+        bindings = tuple(b for b in request.raw_input_bindings if b.subject_instrument == chosen)
         if (
             len(bindings) != 2
             or {b.raw_signal_id for b in bindings} != required
             or len(request.raw_input_bindings) != len(declared) * 2
             or any(
-                len(tuple(b for b in request.raw_input_bindings
-                          if b.raw_signal_id == rid and b.subject_instrument == subject)) != 1
-                for subject in subjects for rid in required
+                len(
+                    tuple(
+                        b
+                        for b in request.raw_input_bindings
+                        if b.raw_signal_id == rid and b.subject_instrument == subject
+                    )
+                )
+                != 1
+                for subject in subjects
+                for rid in required
             )
         ):
             return None
@@ -2056,21 +2058,22 @@ class _OwnerV1:
         ):
             return None
         raw_ids = row.raw_dependencies
-        if derived_signal_id == "D123":
-            # D123 has one *selected* exact option contract. The caller must
+        if derived_signal_id in {"D116", "D123"}:
+            # D116 and D123 each have one *selected* exact option contract. The caller must
             # bind that applicable right unambiguously. Other-right M00
             # observations never become mandatory conjunctive inputs.
-            candidates = tuple(
-                binding for binding in request.raw_input_bindings
+            side_bindings = tuple(
+                binding
+                for binding in request.raw_input_bindings
                 if binding.raw_signal_id in {"R047", "R048"}
             )
-            if len(candidates) != 1 or candidates[0].selection_identity is None:
+            if len(side_bindings) != 1 or side_bindings[0].selection_identity is None:
                 return None
-            bound_right = candidates[0].selection_identity.value_for("option_right")
+            bound_right = side_bindings[0].selection_identity.value_for("option_right")
             expected = "R047" if bound_right == "call" else "R048" if bound_right == "put" else None
-            if expected != candidates[0].raw_signal_id:
+            if expected != side_bindings[0].raw_signal_id:
                 return None
-            raw_ids = (expected,)
+            raw_ids = ("R041", expected) if derived_signal_id == "D116" else (expected,)
         if not self._bindings_satisfy_join_keys(request, raw_ids, selection):
             return None
         parameter_ref = VersionRefV1(parameter_set.context_id, parameter_set.version)
@@ -2102,6 +2105,40 @@ class _OwnerV1:
             direct_lineage.extend(lineage)
             convention_refs.extend(conventions)
 
+        if derived_signal_id == "D116":
+            # D116 is a current ratio, not D123's two-official-period delta.
+            # The actually consumed numerator and applicable-side denominator
+            # must have unambiguous eligible latest observations. Never record
+            # unrelated history as participating raw-to-derived lineage.
+            selected_inputs: dict[str, tuple[KernelValueV1, ...]] = {}
+            for rid in raw_ids:
+                eligible_observations = raw_inputs.get(rid, ())
+                if not eligible_observations:
+                    return None
+                latest_raw = max(
+                    eligible_observations,
+                    key=lambda value: (value.effective_at_utc, value.received_ts_utc),
+                )
+                if (
+                    sum(
+                        (value.effective_at_utc, value.received_ts_utc)
+                        == (latest_raw.effective_at_utc, latest_raw.received_ts_utc)
+                        for value in eligible_observations
+                    )
+                    != 1
+                ):
+                    return None
+                selected_inputs[rid] = (latest_raw,)
+            selected_occurrences = {
+                value.occurrence_id for values in selected_inputs.values() for value in values
+            }
+            raw_inputs = selected_inputs
+            direct_lineage = [
+                entry
+                for entry in direct_lineage
+                if entry.observation_occurrence_id in selected_occurrences
+            ]
+
         if derived_signal_id == "D123":
             from ._stage1 import select_d123_official_period_pair
 
@@ -2115,7 +2152,8 @@ class _OwnerV1:
             chosen_ids = {value.occurrence_id for value in official_pair[1]}
             raw_inputs = {official_pair[0]: official_pair[1]}
             direct_lineage = [
-                entry for entry in direct_lineage
+                entry
+                for entry in direct_lineage
                 if entry.raw_signal_id == official_pair[0]
                 and entry.observation_occurrence_id in chosen_ids
             ]
