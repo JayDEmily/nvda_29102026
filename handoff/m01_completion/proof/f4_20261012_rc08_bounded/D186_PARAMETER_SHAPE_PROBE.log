@@ -1,0 +1,4 @@
+NESTED_NAMED_PAIRS: refused TypeError parameters tuple values must contain immutable scalar values
+FLAT_NAMED_SCALARS: admitted (('similarity_weight:x', Decimal('1')), ('similarity_scale:x', Decimal('2')))
+ENTRY_CONTEXT_REFERENCE: D155-entry-uuid
+P_NOTE: syntactic admission does NOT establish authorised naming, decoder, or entry resolver
