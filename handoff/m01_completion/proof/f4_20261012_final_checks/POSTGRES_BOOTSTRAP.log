@@ -1,0 +1,55 @@
+./ENVIRONMENT_RECEIPT.md: OK
+./EXPECTED_POSTGRES_RUNTIME.sha256: OK
+./README.md: OK
+./requirements.lock: OK
+./scripts/bootstrap_all.sh: OK
+./scripts/bootstrap_postgres.sh: OK
+./scripts/bootstrap_python.sh: OK
+./scripts/common.sh: OK
+./scripts/stop_postgres.sh: OK
+./scripts/verify_bundle.sh: OK
+./scripts/verify_env.sh: OK
+./wheelhouse/iniconfig-2.3.0-py3-none-any.whl: OK
+./wheelhouse/librt-0.9.0-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl: OK
+./wheelhouse/mypy-1.20.1-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl: OK
+./wheelhouse/mypy_extensions-1.1.0-py3-none-any.whl: OK
+./wheelhouse/packaging-26.2-py3-none-any.whl: OK
+./wheelhouse/pathspec-1.1.1-py3-none-any.whl: OK
+./wheelhouse/pluggy-1.6.0-py3-none-any.whl: OK
+./wheelhouse/psycopg-3.3.4-py3-none-any.whl: OK
+./wheelhouse/psycopg_binary-3.3.4-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl: OK
+./wheelhouse/pygments-2.20.0-py3-none-any.whl: OK
+./wheelhouse/pytest-9.0.3-py3-none-any.whl: OK
+./wheelhouse/ruff-0.15.11-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl: OK
+./wheelhouse/typing_extensions-4.15.0-py3-none-any.whl: OK
+Looking in links: /mnt/data/m01_toolenv/NVDA_U05_PROOF_ENV_BOOTSTRAP_PY313_PG17_9_20260926/wheelhouse
+Processing ./wheelhouse/pytest-9.0.3-py3-none-any.whl (from -r /mnt/data/m01_toolenv/NVDA_U05_PROOF_ENV_BOOTSTRAP_PY313_PG17_9_20260926/requirements.lock (line 2))
+Processing ./wheelhouse/mypy-1.20.1-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (from -r /mnt/data/m01_toolenv/NVDA_U05_PROOF_ENV_BOOTSTRAP_PY313_PG17_9_20260926/requirements.lock (line 3))
+Processing ./wheelhouse/ruff-0.15.11-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (from -r /mnt/data/m01_toolenv/NVDA_U05_PROOF_ENV_BOOTSTRAP_PY313_PG17_9_20260926/requirements.lock (line 4))
+Processing ./wheelhouse/psycopg-3.3.4-py3-none-any.whl (from psycopg[binary]==3.3.4->-r /mnt/data/m01_toolenv/NVDA_U05_PROOF_ENV_BOOTSTRAP_PY313_PG17_9_20260926/requirements.lock (line 5))
+Processing ./wheelhouse/iniconfig-2.3.0-py3-none-any.whl (from pytest==9.0.3->-r /mnt/data/m01_toolenv/NVDA_U05_PROOF_ENV_BOOTSTRAP_PY313_PG17_9_20260926/requirements.lock (line 2))
+Processing ./wheelhouse/packaging-26.2-py3-none-any.whl (from pytest==9.0.3->-r /mnt/data/m01_toolenv/NVDA_U05_PROOF_ENV_BOOTSTRAP_PY313_PG17_9_20260926/requirements.lock (line 2))
+Processing ./wheelhouse/pluggy-1.6.0-py3-none-any.whl (from pytest==9.0.3->-r /mnt/data/m01_toolenv/NVDA_U05_PROOF_ENV_BOOTSTRAP_PY313_PG17_9_20260926/requirements.lock (line 2))
+Processing ./wheelhouse/pygments-2.20.0-py3-none-any.whl (from pytest==9.0.3->-r /mnt/data/m01_toolenv/NVDA_U05_PROOF_ENV_BOOTSTRAP_PY313_PG17_9_20260926/requirements.lock (line 2))
+Processing ./wheelhouse/typing_extensions-4.15.0-py3-none-any.whl (from mypy==1.20.1->-r /mnt/data/m01_toolenv/NVDA_U05_PROOF_ENV_BOOTSTRAP_PY313_PG17_9_20260926/requirements.lock (line 3))
+Processing ./wheelhouse/mypy_extensions-1.1.0-py3-none-any.whl (from mypy==1.20.1->-r /mnt/data/m01_toolenv/NVDA_U05_PROOF_ENV_BOOTSTRAP_PY313_PG17_9_20260926/requirements.lock (line 3))
+Processing ./wheelhouse/pathspec-1.1.1-py3-none-any.whl (from mypy==1.20.1->-r /mnt/data/m01_toolenv/NVDA_U05_PROOF_ENV_BOOTSTRAP_PY313_PG17_9_20260926/requirements.lock (line 3))
+Processing ./wheelhouse/librt-0.9.0-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (from mypy==1.20.1->-r /mnt/data/m01_toolenv/NVDA_U05_PROOF_ENV_BOOTSTRAP_PY313_PG17_9_20260926/requirements.lock (line 3))
+Processing ./wheelhouse/psycopg_binary-3.3.4-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (from psycopg[binary]==3.3.4->-r /mnt/data/m01_toolenv/NVDA_U05_PROOF_ENV_BOOTSTRAP_PY313_PG17_9_20260926/requirements.lock (line 5))
+Installing collected packages: typing_extensions, ruff, pygments, psycopg-binary, psycopg, pluggy, pathspec, packaging, mypy_extensions, librt, iniconfig, pytest, mypy
+
+Successfully installed iniconfig-2.3.0 librt-0.9.0 mypy-1.20.1 mypy_extensions-1.1.0 packaging-26.2 pathspec-1.1.1 pluggy-1.6.0 psycopg-3.3.4 psycopg-binary-3.3.4 pygments-2.20.0 pytest-9.0.3 ruff-0.15.11 typing_extensions-4.15.0
+python=3.13.5
+pytest=9.0.3
+mypy=1.20.1
+psycopg=3.3.4
+ruff 0.15.11
+postgres_user=oai uid=1000
+postgres_version=17.9
+server_encoding=UTF8
+fsync=on
+synchronous_commit=on
+full_page_writes=on
+listen_addresses=<empty>
+NVDA_TEST_POSTGRES_DSN=host=/mnt/data/nvda_f4_pg_env_20261012/pgsocket port=55432 dbname=postgres user=oai
+environment_file=/mnt/data/nvda_f4_pg_env_20261012/environment.env
