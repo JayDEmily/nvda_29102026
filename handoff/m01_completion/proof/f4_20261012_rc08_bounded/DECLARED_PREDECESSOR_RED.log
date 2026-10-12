@@ -1,0 +1,72 @@
+FFFF                                                                     [100%]
+=================================== FAILURES ===================================
+_ test_cross_stage_kernel_refuses_missing_mandatory_declared_predecessor[D178-D133] _
+
+did = 'D178', missing = 'D133'
+
+    @pytest.mark.parametrize(
+        "did,missing",
+        [("D178", "D133"), ("D178", "D177"), ("D189", "D175"), ("D192", "D175")],
+    )
+    def test_cross_stage_kernel_refuses_missing_mandatory_declared_predecessor(did, missing):
+        assert _evaluate(did) is not None  # Control: test inputs exercise an emitting branch.
+>       assert _evaluate(did, without=missing) is None
+E       AssertionError: assert KernelResultV1(value=Decimal('5.5'), units='option premium', result_shape='scalar', input_occurrence_ids=('D177-mandatory-probe', 'R034-mandatory-probe', 'R035-mandatory-probe', 'R189-mandatory-probe', 'R190-mandatory-probe')) is None
+E        +  where KernelResultV1(value=Decimal('5.5'), units='option premium', result_shape='scalar', input_occurrence_ids=('D177-mandatory-probe', 'R034-mandatory-probe', 'R035-mandatory-probe', 'R189-mandatory-probe', 'R190-mandatory-probe')) = _evaluate('D178', without='D133')
+
+tests/product/derived_signal/test_m01_f4_cross_stage_declared_predecessor_fail_closed.py:83: AssertionError
+_ test_cross_stage_kernel_refuses_missing_mandatory_declared_predecessor[D178-D177] _
+
+did = 'D178', missing = 'D177'
+
+    @pytest.mark.parametrize(
+        "did,missing",
+        [("D178", "D133"), ("D178", "D177"), ("D189", "D175"), ("D192", "D175")],
+    )
+    def test_cross_stage_kernel_refuses_missing_mandatory_declared_predecessor(did, missing):
+        assert _evaluate(did) is not None  # Control: test inputs exercise an emitting branch.
+>       assert _evaluate(did, without=missing) is None
+E       AssertionError: assert KernelResultV1(value=Decimal('5.5'), units='option premium', result_shape='scalar', input_occurrence_ids=('D133-mandatory-probe', 'R034-mandatory-probe', 'R035-mandatory-probe', 'R189-mandatory-probe', 'R190-mandatory-probe')) is None
+E        +  where KernelResultV1(value=Decimal('5.5'), units='option premium', result_shape='scalar', input_occurrence_ids=('D133-mandatory-probe', 'R034-mandatory-probe', 'R035-mandatory-probe', 'R189-mandatory-probe', 'R190-mandatory-probe')) = _evaluate('D178', without='D177')
+
+tests/product/derived_signal/test_m01_f4_cross_stage_declared_predecessor_fail_closed.py:83: AssertionError
+_ test_cross_stage_kernel_refuses_missing_mandatory_declared_predecessor[D189-D175] _
+
+did = 'D189', missing = 'D175'
+
+    @pytest.mark.parametrize(
+        "did,missing",
+        [("D178", "D133"), ("D178", "D177"), ("D189", "D175"), ("D192", "D175")],
+    )
+    def test_cross_stage_kernel_refuses_missing_mandatory_declared_predecessor(did, missing):
+        assert _evaluate(did) is not None  # Control: test inputs exercise an emitting branch.
+>       assert _evaluate(did, without=missing) is None
+E       AssertionError: assert KernelResultV1(value=(('delta', Decimal('-10')), ('gamma', Decimal('0'))), units='target Greek adjustments', result_sh... input_occurrence_ids=('D181-mandatory-probe', 'D182-mandatory-probe', 'D183-mandatory-probe', 'D184-mandatory-probe')) is None
+E        +  where KernelResultV1(value=(('delta', Decimal('-10')), ('gamma', Decimal('0'))), units='target Greek adjustments', result_sh... input_occurrence_ids=('D181-mandatory-probe', 'D182-mandatory-probe', 'D183-mandatory-probe', 'D184-mandatory-probe')) = _evaluate('D189', without='D175')
+
+tests/product/derived_signal/test_m01_f4_cross_stage_declared_predecessor_fail_closed.py:83: AssertionError
+_ test_cross_stage_kernel_refuses_missing_mandatory_declared_predecessor[D192-D175] _
+
+did = 'D192', missing = 'D175'
+
+    @pytest.mark.parametrize(
+        "did,missing",
+        [("D178", "D133"), ("D178", "D177"), ("D189", "D175"), ("D192", "D175")],
+    )
+    def test_cross_stage_kernel_refuses_missing_mandatory_declared_predecessor(did, missing):
+        assert _evaluate(did) is not None  # Control: test inputs exercise an emitting branch.
+>       assert _evaluate(did, without=missing) is None
+E       AssertionError: assert KernelResultV1(value='hold', units='category', result_shape='scalar', input_occurrence_ids=('D187-mandatory-probe', 'D188-mandatory-probe', 'D189-mandatory-probe', 'D190-mandatory-probe', 'D191-mandatory-probe')) is None
+E        +  where KernelResultV1(value='hold', units='category', result_shape='scalar', input_occurrence_ids=('D187-mandatory-probe', 'D188-mandatory-probe', 'D189-mandatory-probe', 'D190-mandatory-probe', 'D191-mandatory-probe')) = _evaluate('D192', without='D175')
+
+tests/product/derived_signal/test_m01_f4_cross_stage_declared_predecessor_fail_closed.py:83: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/derived_signal/test_m01_f4_cross_stage_declared_predecessor_fail_closed.py::test_cross_stage_kernel_refuses_missing_mandatory_declared_predecessor[D178-D133] - AssertionError: assert KernelResultV1(value=Decimal('5.5'), units='option premium', result_shape='scalar', input_occurrence_ids=('D177-mandatory-probe', 'R034-mandatory-probe', 'R035-mandatory-probe', 'R189-mandatory-probe', 'R190-mandatory-probe')) is None
+ +  where KernelResultV1(value=Decimal('5.5'), units='option premium', result_shape='scalar', input_occurrence_ids=('D177-mandatory-probe', 'R034-mandatory-probe', 'R035-mandatory-probe', 'R189-mandatory-probe', 'R190-mandatory-probe')) = _evaluate('D178', without='D133')
+FAILED tests/product/derived_signal/test_m01_f4_cross_stage_declared_predecessor_fail_closed.py::test_cross_stage_kernel_refuses_missing_mandatory_declared_predecessor[D178-D177] - AssertionError: assert KernelResultV1(value=Decimal('5.5'), units='option premium', result_shape='scalar', input_occurrence_ids=('D133-mandatory-probe', 'R034-mandatory-probe', 'R035-mandatory-probe', 'R189-mandatory-probe', 'R190-mandatory-probe')) is None
+ +  where KernelResultV1(value=Decimal('5.5'), units='option premium', result_shape='scalar', input_occurrence_ids=('D133-mandatory-probe', 'R034-mandatory-probe', 'R035-mandatory-probe', 'R189-mandatory-probe', 'R190-mandatory-probe')) = _evaluate('D178', without='D177')
+FAILED tests/product/derived_signal/test_m01_f4_cross_stage_declared_predecessor_fail_closed.py::test_cross_stage_kernel_refuses_missing_mandatory_declared_predecessor[D189-D175] - AssertionError: assert KernelResultV1(value=(('delta', Decimal('-10')), ('gamma', Decimal('0'))), units='target Greek adjustments', result_sh... input_occurrence_ids=('D181-mandatory-probe', 'D182-mandatory-probe', 'D183-mandatory-probe', 'D184-mandatory-probe')) is None
+ +  where KernelResultV1(value=(('delta', Decimal('-10')), ('gamma', Decimal('0'))), units='target Greek adjustments', result_sh... input_occurrence_ids=('D181-mandatory-probe', 'D182-mandatory-probe', 'D183-mandatory-probe', 'D184-mandatory-probe')) = _evaluate('D189', without='D175')
+FAILED tests/product/derived_signal/test_m01_f4_cross_stage_declared_predecessor_fail_closed.py::test_cross_stage_kernel_refuses_missing_mandatory_declared_predecessor[D192-D175] - AssertionError: assert KernelResultV1(value='hold', units='category', result_shape='scalar', input_occurrence_ids=('D187-mandatory-probe', 'D188-mandatory-probe', 'D189-mandatory-probe', 'D190-mandatory-probe', 'D191-mandatory-probe')) is None
+ +  where KernelResultV1(value='hold', units='category', result_shape='scalar', input_occurrence_ids=('D187-mandatory-probe', 'D188-mandatory-probe', 'D189-mandatory-probe', 'D190-mandatory-probe', 'D191-mandatory-probe')) = _evaluate('D192', without='D175')
+4 failed in 0.28s
