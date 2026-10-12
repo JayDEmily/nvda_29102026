@@ -1,0 +1,168 @@
+FFFFFFFF.F                                                               [100%]
+=================================== FAILURES ===================================
+__ test_authorised_difference_of_differences[values990-values1000-expected0] ___
+
+values99 = (10, 20), values100 = (30, 40), expected = Decimal('0')
+
+    @pytest.mark.parametrize("values99,values100,expected", [
+        ((10, 20), (30, 40), Decimal(0)),
+        ((10, 20), (30, 50), Decimal(10)),
+        ((10, 20), (30, 35), Decimal(-5)),
+        ((10, 20), (30, 25), Decimal(-15)),
+    ])
+    def test_authorised_difference_of_differences(values99, values100, expected):
+        value = _kernel(values99, values100)
+>       assert value is not None and value.value == expected
+E       AssertionError: assert (KernelResultV1(value=Decimal('10'), units='vol points', result_shape='scalar', input_occurrence_ids=('D099:current', 'D099:prior', 'D100:current', 'D100:prior')) is not None and Decimal('10') == Decimal('0'))
+E        +  where Decimal('10') = KernelResultV1(value=Decimal('10'), units='vol points', result_shape='scalar', input_occurrence_ids=('D099:current', 'D099:prior', 'D100:current', 'D100:prior')).value
+
+tests/product/derived_signal/test_m01_f4_d104_owner_rule.py:61: AssertionError
+__ test_authorised_difference_of_differences[values991-values1001-expected1] ___
+
+values99 = (10, 20), values100 = (30, 50), expected = Decimal('10')
+
+    @pytest.mark.parametrize("values99,values100,expected", [
+        ((10, 20), (30, 40), Decimal(0)),
+        ((10, 20), (30, 50), Decimal(10)),
+        ((10, 20), (30, 35), Decimal(-5)),
+        ((10, 20), (30, 25), Decimal(-15)),
+    ])
+    def test_authorised_difference_of_differences(values99, values100, expected):
+        value = _kernel(values99, values100)
+>       assert value is not None and value.value == expected
+E       AssertionError: assert (KernelResultV1(value=Decimal('20'), units='vol points', result_shape='scalar', input_occurrence_ids=('D099:current', 'D099:prior', 'D100:current', 'D100:prior')) is not None and Decimal('20') == Decimal('10'))
+E        +  where Decimal('20') = KernelResultV1(value=Decimal('20'), units='vol points', result_shape='scalar', input_occurrence_ids=('D099:current', 'D099:prior', 'D100:current', 'D100:prior')).value
+
+tests/product/derived_signal/test_m01_f4_d104_owner_rule.py:61: AssertionError
+__ test_authorised_difference_of_differences[values992-values1002-expected2] ___
+
+values99 = (10, 20), values100 = (30, 35), expected = Decimal('-5')
+
+    @pytest.mark.parametrize("values99,values100,expected", [
+        ((10, 20), (30, 40), Decimal(0)),
+        ((10, 20), (30, 50), Decimal(10)),
+        ((10, 20), (30, 35), Decimal(-5)),
+        ((10, 20), (30, 25), Decimal(-15)),
+    ])
+    def test_authorised_difference_of_differences(values99, values100, expected):
+        value = _kernel(values99, values100)
+>       assert value is not None and value.value == expected
+E       AssertionError: assert (KernelResultV1(value=Decimal('5'), units='vol points', result_shape='scalar', input_occurrence_ids=('D099:current', 'D099:prior', 'D100:current', 'D100:prior')) is not None and Decimal('5') == Decimal('-5'))
+E        +  where Decimal('5') = KernelResultV1(value=Decimal('5'), units='vol points', result_shape='scalar', input_occurrence_ids=('D099:current', 'D099:prior', 'D100:current', 'D100:prior')).value
+
+tests/product/derived_signal/test_m01_f4_d104_owner_rule.py:61: AssertionError
+__ test_authorised_difference_of_differences[values993-values1003-expected3] ___
+
+values99 = (10, 20), values100 = (30, 25), expected = Decimal('-15')
+
+    @pytest.mark.parametrize("values99,values100,expected", [
+        ((10, 20), (30, 40), Decimal(0)),
+        ((10, 20), (30, 50), Decimal(10)),
+        ((10, 20), (30, 35), Decimal(-5)),
+        ((10, 20), (30, 25), Decimal(-15)),
+    ])
+    def test_authorised_difference_of_differences(values99, values100, expected):
+        value = _kernel(values99, values100)
+>       assert value is not None and value.value == expected
+E       AssertionError: assert (KernelResultV1(value=Decimal('-5'), units='vol points', result_shape='scalar', input_occurrence_ids=('D099:current', 'D099:prior', 'D100:current', 'D100:prior')) is not None and Decimal('-5') == Decimal('-15'))
+E        +  where Decimal('-5') = KernelResultV1(value=Decimal('-5'), units='vol points', result_shape='scalar', input_occurrence_ids=('D099:current', 'D099:prior', 'D100:current', 'D100:prior')).value
+
+tests/product/derived_signal/test_m01_f4_d104_owner_rule.py:61: AssertionError
+______________ test_absent_family_or_prior_or_late_anchor_refuses ______________
+
+    def test_absent_family_or_prior_or_late_anchor_refuses():
+>       assert _kernel(D100=()) is None
+E       AssertionError: assert KernelResultV1(value=Decimal('10'), units='vol points', result_shape='scalar', input_occurrence_ids=('D099:current', 'D099:prior')) is None
+E        +  where KernelResultV1(value=Decimal('10'), units='vol points', result_shape='scalar', input_occurrence_ids=('D099:current', 'D099:prior')) = _kernel(D100=())
+
+tests/product/derived_signal/test_m01_f4_d104_owner_rule.py:66: AssertionError
+_____________________ test_mismatched_expiry_refuses[D099] _____________________
+
+family = 'D099'
+
+    @pytest.mark.parametrize("family", ["D099", "D100"])
+    def test_mismatched_expiry_refuses(family):
+        original = (_kv(family, 10, "prior"), _kv(family, 20, "current", expiry="2027-01-15"))
+>       assert _kernel(**{family: original}) is None
+E       AssertionError: assert KernelResultV1(value=Decimal('10'), units='vol points', result_shape='scalar', input_occurrence_ids=('D099:current', 'D099:prior', 'D100:current', 'D100:prior')) is None
+E        +  where KernelResultV1(value=Decimal('10'), units='vol points', result_shape='scalar', input_occurrence_ids=('D099:current', 'D099:prior', 'D100:current', 'D100:prior')) = _kernel(**{'D099': (KernelValueV1(value=Decimal('10'), occurrence_id='D099:prior', effective_at_utc=datetime.datetime(2026, 10, ...al_kind='derived', source_timestamp_raw=None, metadata=(('underlying_instrument', 'NVDA'), ('expiry', '2027-01-15'))))})
+
+tests/product/derived_signal/test_m01_f4_d104_owner_rule.py:75: AssertionError
+_____________________ test_mismatched_expiry_refuses[D100] _____________________
+
+family = 'D100'
+
+    @pytest.mark.parametrize("family", ["D099", "D100"])
+    def test_mismatched_expiry_refuses(family):
+        original = (_kv(family, 10, "prior"), _kv(family, 20, "current", expiry="2027-01-15"))
+>       assert _kernel(**{family: original}) is None
+E       AssertionError: assert KernelResultV1(value=Decimal('10'), units='vol points', result_shape='scalar', input_occurrence_ids=('D099:current', 'D099:prior', 'D100:current', 'D100:prior')) is None
+E        +  where KernelResultV1(value=Decimal('10'), units='vol points', result_shape='scalar', input_occurrence_ids=('D099:current', 'D099:prior', 'D100:current', 'D100:prior')) = _kernel(**{'D100': (KernelValueV1(value=Decimal('10'), occurrence_id='D100:prior', effective_at_utc=datetime.datetime(2026, 10, ...al_kind='derived', source_timestamp_raw=None, metadata=(('underlying_instrument', 'NVDA'), ('expiry', '2027-01-15'))))})
+
+tests/product/derived_signal/test_m01_f4_d104_owner_rule.py:75: AssertionError
+___________ test_public_history_via_m00_then_persisted_exact_lineage ___________
+
+    def test_public_history_via_m00_then_persisted_exact_lineage():
+        owner, request = _controlled_public()
+        # Create prior published D099/D100 states through the same admitted M00
+        # projections. No manually inserted derived answer is permitted.
+        for family in ("D099", "D100"):
+            prior_request = replace(request, derived_signal_id=family, as_of_utc=PRIOR,
+                                    knowledge_cutoff_utc=PRIOR, parameter_set_id="d104-basic",
+                                    parameter_set_version=1)
+            prior = owner.materialise(prior_request)
+            assert prior is not None, f"prior {family} not publicly materialised"
+        current = owner.materialise(request)
+>       assert current is not None and current.result == Decimal(0)
+E       assert (None is not None)
+
+tests/product/derived_signal/test_m01_f4_d104_owner_rule.py:159: AssertionError
+__________ test_d104_never_pairs_current_25_delta_with_prior_10_delta __________
+
+    def test_d104_never_pairs_current_25_delta_with_prior_10_delta() -> None:
+        prior = AT - timedelta(minutes=1)
+        result = _stage1.evaluate_stage1_kernel(
+            "D104",
+            raw_inputs={},
+            derived_inputs={
+                "D099": (_kv(10, "a-prior99", prior), _kv(20, "z-current99", AT)),
+                "D100": (_kv(30, "z-prior100", prior), _kv(40, "a-current100", AT)),
+            },
+            parameter_set=api.CalculationParameterSetV1(
+                "skew-window",
+                1,
+                "P_WINDOW",
+                (("anchor_seconds", 60),),
+            ),
+            contexts=(),
+            as_of_utc=AT,
+            knowledge_cutoff_utc=AT,
+        )
+        # Either lawful same-family change equals +10. The cross-family -10
+        # is inadmissible, irrespective of the still-undefined scalar selection.
+>       assert result is None or result.value != Decimal(-10)
+E       AssertionError: assert (KernelResultV1(value=Decimal('-10'), units='vol points', result_shape='scalar', input_occurrence_ids=('a-current100', 'a-prior99', 'z-current99', 'z-prior100')) is None or Decimal('-10') != Decimal('-10'))
+E        +  where Decimal('-10') = KernelResultV1(value=Decimal('-10'), units='vol points', result_shape='scalar', input_occurrence_ids=('a-current100', 'a-prior99', 'z-current99', 'z-prior100')).value
+E        +  and   Decimal('-10') = Decimal(-10)
+
+tests/product/derived_signal/test_m01_f4_d104_skew_family_collision_red.py:50: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/derived_signal/test_m01_f4_d104_owner_rule.py::test_authorised_difference_of_differences[values990-values1000-expected0] - AssertionError: assert (KernelResultV1(value=Decimal('10'), units='vol points', result_shape='scalar', input_occurrence_ids=('D099:current', 'D099:prior', 'D100:current', 'D100:prior')) is not None and Decimal('10') == Decimal('0'))
+ +  where Decimal('10') = KernelResultV1(value=Decimal('10'), units='vol points', result_shape='scalar', input_occurrence_ids=('D099:current', 'D099:prior', 'D100:current', 'D100:prior')).value
+FAILED tests/product/derived_signal/test_m01_f4_d104_owner_rule.py::test_authorised_difference_of_differences[values991-values1001-expected1] - AssertionError: assert (KernelResultV1(value=Decimal('20'), units='vol points', result_shape='scalar', input_occurrence_ids=('D099:current', 'D099:prior', 'D100:current', 'D100:prior')) is not None and Decimal('20') == Decimal('10'))
+ +  where Decimal('20') = KernelResultV1(value=Decimal('20'), units='vol points', result_shape='scalar', input_occurrence_ids=('D099:current', 'D099:prior', 'D100:current', 'D100:prior')).value
+FAILED tests/product/derived_signal/test_m01_f4_d104_owner_rule.py::test_authorised_difference_of_differences[values992-values1002-expected2] - AssertionError: assert (KernelResultV1(value=Decimal('5'), units='vol points', result_shape='scalar', input_occurrence_ids=('D099:current', 'D099:prior', 'D100:current', 'D100:prior')) is not None and Decimal('5') == Decimal('-5'))
+ +  where Decimal('5') = KernelResultV1(value=Decimal('5'), units='vol points', result_shape='scalar', input_occurrence_ids=('D099:current', 'D099:prior', 'D100:current', 'D100:prior')).value
+FAILED tests/product/derived_signal/test_m01_f4_d104_owner_rule.py::test_authorised_difference_of_differences[values993-values1003-expected3] - AssertionError: assert (KernelResultV1(value=Decimal('-5'), units='vol points', result_shape='scalar', input_occurrence_ids=('D099:current', 'D099:prior', 'D100:current', 'D100:prior')) is not None and Decimal('-5') == Decimal('-15'))
+ +  where Decimal('-5') = KernelResultV1(value=Decimal('-5'), units='vol points', result_shape='scalar', input_occurrence_ids=('D099:current', 'D099:prior', 'D100:current', 'D100:prior')).value
+FAILED tests/product/derived_signal/test_m01_f4_d104_owner_rule.py::test_absent_family_or_prior_or_late_anchor_refuses - AssertionError: assert KernelResultV1(value=Decimal('10'), units='vol points', result_shape='scalar', input_occurrence_ids=('D099:current', 'D099:prior')) is None
+ +  where KernelResultV1(value=Decimal('10'), units='vol points', result_shape='scalar', input_occurrence_ids=('D099:current', 'D099:prior')) = _kernel(D100=())
+FAILED tests/product/derived_signal/test_m01_f4_d104_owner_rule.py::test_mismatched_expiry_refuses[D099] - AssertionError: assert KernelResultV1(value=Decimal('10'), units='vol points', result_shape='scalar', input_occurrence_ids=('D099:current', 'D099:prior', 'D100:current', 'D100:prior')) is None
+ +  where KernelResultV1(value=Decimal('10'), units='vol points', result_shape='scalar', input_occurrence_ids=('D099:current', 'D099:prior', 'D100:current', 'D100:prior')) = _kernel(**{'D099': (KernelValueV1(value=Decimal('10'), occurrence_id='D099:prior', effective_at_utc=datetime.datetime(2026, 10, ...al_kind='derived', source_timestamp_raw=None, metadata=(('underlying_instrument', 'NVDA'), ('expiry', '2027-01-15'))))})
+FAILED tests/product/derived_signal/test_m01_f4_d104_owner_rule.py::test_mismatched_expiry_refuses[D100] - AssertionError: assert KernelResultV1(value=Decimal('10'), units='vol points', result_shape='scalar', input_occurrence_ids=('D099:current', 'D099:prior', 'D100:current', 'D100:prior')) is None
+ +  where KernelResultV1(value=Decimal('10'), units='vol points', result_shape='scalar', input_occurrence_ids=('D099:current', 'D099:prior', 'D100:current', 'D100:prior')) = _kernel(**{'D100': (KernelValueV1(value=Decimal('10'), occurrence_id='D100:prior', effective_at_utc=datetime.datetime(2026, 10, ...al_kind='derived', source_timestamp_raw=None, metadata=(('underlying_instrument', 'NVDA'), ('expiry', '2027-01-15'))))})
+FAILED tests/product/derived_signal/test_m01_f4_d104_owner_rule.py::test_public_history_via_m00_then_persisted_exact_lineage - assert (None is not None)
+FAILED tests/product/derived_signal/test_m01_f4_d104_skew_family_collision_red.py::test_d104_never_pairs_current_25_delta_with_prior_10_delta - AssertionError: assert (KernelResultV1(value=Decimal('-10'), units='vol points', result_shape='scalar', input_occurrence_ids=('a-current100', 'a-prior99', 'z-current99', 'z-prior100')) is None or Decimal('-10') != Decimal('-10'))
+ +  where Decimal('-10') = KernelResultV1(value=Decimal('-10'), units='vol points', result_shape='scalar', input_occurrence_ids=('a-current100', 'a-prior99', 'z-current99', 'z-prior100')).value
+ +  and   Decimal('-10') = Decimal(-10)
+9 failed, 1 passed in 0.23s
