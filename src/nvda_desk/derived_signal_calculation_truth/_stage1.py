@@ -3209,6 +3209,8 @@ def _eval_k08(
             den = per_unit * unc * liq
             return None if den <= 0 else int(risk // den)
         if identity == "D178":
+            if not derived.get("D133") or not derived.get("D177"):
+                return None
             bid, ask = _d(_scalar(raw, "R034")), _d(_scalar(raw, "R035"))
             mid = (bid + ask) / Decimal(2)
             allowed = _d(params.get("allowed_execution_cost_per_unit"))
@@ -3263,6 +3265,8 @@ def _eval_k08(
                 )
             )
         if identity == "D189":
+            if not derived.get("D175"):
+                return None
             bands = params.get("target_bands")
             if type(bands) is not tuple:
                 return None
@@ -3286,6 +3290,8 @@ def _eval_k08(
                 out.append((exposure_name, _DEC0 if lo <= x <= hi else target - x))
             return tuple(out)
         if identity == "D192":
+            if not derived.get("D175"):
+                return None
             invalid = bool(_scalar(derived, "D187"))
             if bool(params.get("mandatory_exit_on_invalidation", False)) and invalid:
                 return "exit"
