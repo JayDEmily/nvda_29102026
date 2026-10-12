@@ -820,6 +820,21 @@ F4_BOUNDED_PUBLIC_ROWS["D150"] = (
 )
 
 
+# Programme Owner 2026-10-12, D104-20261012-01: each skew family is
+# separately history-selected and D104 is the 10-delta change minus 25-delta
+# change. Public M00 snapshots, persisted prior skew occurrences and direct
+# raw/derived provenance are tested before crediting these two exact edges.
+F4_BOUNDED_PUBLIC_ROWS["D104"] = (
+    "RC14",
+    "tests/product/derived_signal/test_m01_f4_d104_owner_rule.py",
+    "Controlled two-refresh M00 exact-expiry native option surfaces; prior and current "
+    "D099/D100 materialised independently; D104=0 for matching +10/+10 skew "
+    "changes with exactly four persisted D predecessor identities and 24 raw "
+    "observation identities; adversarial missing family/prior, mismatched "
+    "expiry, incomplete native point, reverse-family regression and retry",
+)
+
+
 def _sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
@@ -949,8 +964,7 @@ def main() -> None:
         "F2_ACCEPTED_SCOPED_EVIDENCE": 18,
         "F3A_BOUNDED_PUBLIC_PROOF": 4,
         "F3B_BOUNDED_PUBLIC_PROOF": 7,
-        "F4_BOUNDED_PUBLIC_ROW_PROOF": 353,
-        "F4_OUTSTANDING_RELATIONSHIP_PROOF": 2,
+        "F4_BOUNDED_PUBLIC_ROW_PROOF": 355,
         "STAGE2_BOUNDARY_DEFERRED": 107,
         "F4_ZERO_EDGE_PUBLIC_PROOF": 1,
     }, statuses
@@ -1003,7 +1017,7 @@ def main() -> None:
     assert len(row_records) == 174
     assert sum(x["stage_boundary"] == "STAGE1_CLOSED" for x in row_records) == 144
     assert sum(x["stage_boundary"] == "CROSS_STAGE" for x in row_records) == 30
-    assert sum(x["outstanding_stage1_closed_edges"] for x in row_records) == 2
+    assert sum(x["outstanding_stage1_closed_edges"] for x in row_records) == 0
     with (OUT / "F4_ROW_EVIDENCE_MATRIX.csv").open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, list(row_records[0]))
         writer.writeheader()
@@ -1036,7 +1050,7 @@ def main() -> None:
                 ),
             }
         )
-    assert sum(x["stage1_closed_outstanding_edges"] for x in class_records) == 2
+    assert sum(x["stage1_closed_outstanding_edges"] for x in class_records) == 0
     assert sum(x["stage1_closed_authority_blocked_edges"] for x in class_records) == 0
     with (OUT / "F4_CLASS_PROOF_RECONCILIATION.csv").open(
         "w", newline="", encoding="utf-8"
@@ -1071,8 +1085,8 @@ def main() -> None:
         "stage1_independent_acceptance": False,
         "boundary": (
             "Bounded row proofs do not prove all 144 Stage-1-closed rows or 30 cross-stage rows; "
-            "2 D104 unproved Stage-1-closed edges and 30 cross-stage own-kernel/refusal "
-            "obligations prevent acceptance; D116 controlled ratio is bounded proof only"
+            "30 cross-stage own-kernel/refusal obligations remain unproved and prevent "
+            "Stage-1 candidate acceptance; D116 controlled ratio is bounded proof only"
         ),
     }
     (OUT / "F4_PROGRESS_READBACK.json").write_text(

@@ -1,0 +1,116 @@
+....FFFF.                                                                [100%]
+=================================== FAILURES ===================================
+_______ test_public_stage1_refuses_unavailable_stage2_predecessor[D097] ________
+
+did = 'D097'
+
+    @pytest.mark.parametrize("did", ("D097", "D098", "D107", "D108"))
+    def test_public_stage1_refuses_unavailable_stage2_predecessor(did):
+        m00 = raw.create_owner()
+        owner = api.create_owner(
+            raw_projection_reader=m00.reads,
+            parameter_sets=(api.CalculationParameterSetV1(
+                "cross-k02", 1, "P_BASIC", (("selection_mode", "exact"),)),),
+            input_selection_policies=(api.InputSelectionPolicyVersionV1(
+                "cross-policy", 1, ("subject_instrument",),
+                timedelta(days=90), timedelta(days=90), ("true_instant",), (),
+            ),),
+            utc_now=lambda: AT,
+        )
+        request = api.CalculationRequestV1(
+            did, "NVDA", AT, AT, "stage1-cross-proof", "cross-k02", 1,
+            "cross-policy", 1, (),
+        )
+        assert owner.materialise(request) is None
+>       assert owner.reads.list_derived_history(did, subject_instrument="NVDA", limit=10) == ()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: _ReadsV1.list_derived_history() takes 1 positional argument but 2 positional arguments (and 2 keyword-only arguments) were given
+
+tests/product/derived_signal/test_m01_f4_cross_stage_k02_stage1_kernel.py:75: TypeError
+_______ test_public_stage1_refuses_unavailable_stage2_predecessor[D098] ________
+
+did = 'D098'
+
+    @pytest.mark.parametrize("did", ("D097", "D098", "D107", "D108"))
+    def test_public_stage1_refuses_unavailable_stage2_predecessor(did):
+        m00 = raw.create_owner()
+        owner = api.create_owner(
+            raw_projection_reader=m00.reads,
+            parameter_sets=(api.CalculationParameterSetV1(
+                "cross-k02", 1, "P_BASIC", (("selection_mode", "exact"),)),),
+            input_selection_policies=(api.InputSelectionPolicyVersionV1(
+                "cross-policy", 1, ("subject_instrument",),
+                timedelta(days=90), timedelta(days=90), ("true_instant",), (),
+            ),),
+            utc_now=lambda: AT,
+        )
+        request = api.CalculationRequestV1(
+            did, "NVDA", AT, AT, "stage1-cross-proof", "cross-k02", 1,
+            "cross-policy", 1, (),
+        )
+        assert owner.materialise(request) is None
+>       assert owner.reads.list_derived_history(did, subject_instrument="NVDA", limit=10) == ()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: _ReadsV1.list_derived_history() takes 1 positional argument but 2 positional arguments (and 2 keyword-only arguments) were given
+
+tests/product/derived_signal/test_m01_f4_cross_stage_k02_stage1_kernel.py:75: TypeError
+_______ test_public_stage1_refuses_unavailable_stage2_predecessor[D107] ________
+
+did = 'D107'
+
+    @pytest.mark.parametrize("did", ("D097", "D098", "D107", "D108"))
+    def test_public_stage1_refuses_unavailable_stage2_predecessor(did):
+        m00 = raw.create_owner()
+        owner = api.create_owner(
+            raw_projection_reader=m00.reads,
+            parameter_sets=(api.CalculationParameterSetV1(
+                "cross-k02", 1, "P_BASIC", (("selection_mode", "exact"),)),),
+            input_selection_policies=(api.InputSelectionPolicyVersionV1(
+                "cross-policy", 1, ("subject_instrument",),
+                timedelta(days=90), timedelta(days=90), ("true_instant",), (),
+            ),),
+            utc_now=lambda: AT,
+        )
+        request = api.CalculationRequestV1(
+            did, "NVDA", AT, AT, "stage1-cross-proof", "cross-k02", 1,
+            "cross-policy", 1, (),
+        )
+        assert owner.materialise(request) is None
+>       assert owner.reads.list_derived_history(did, subject_instrument="NVDA", limit=10) == ()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: _ReadsV1.list_derived_history() takes 1 positional argument but 2 positional arguments (and 2 keyword-only arguments) were given
+
+tests/product/derived_signal/test_m01_f4_cross_stage_k02_stage1_kernel.py:75: TypeError
+_______ test_public_stage1_refuses_unavailable_stage2_predecessor[D108] ________
+
+did = 'D108'
+
+    @pytest.mark.parametrize("did", ("D097", "D098", "D107", "D108"))
+    def test_public_stage1_refuses_unavailable_stage2_predecessor(did):
+        m00 = raw.create_owner()
+        owner = api.create_owner(
+            raw_projection_reader=m00.reads,
+            parameter_sets=(api.CalculationParameterSetV1(
+                "cross-k02", 1, "P_BASIC", (("selection_mode", "exact"),)),),
+            input_selection_policies=(api.InputSelectionPolicyVersionV1(
+                "cross-policy", 1, ("subject_instrument",),
+                timedelta(days=90), timedelta(days=90), ("true_instant",), (),
+            ),),
+            utc_now=lambda: AT,
+        )
+        request = api.CalculationRequestV1(
+            did, "NVDA", AT, AT, "stage1-cross-proof", "cross-k02", 1,
+            "cross-policy", 1, (),
+        )
+        assert owner.materialise(request) is None
+>       assert owner.reads.list_derived_history(did, subject_instrument="NVDA", limit=10) == ()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: _ReadsV1.list_derived_history() takes 1 positional argument but 2 positional arguments (and 2 keyword-only arguments) were given
+
+tests/product/derived_signal/test_m01_f4_cross_stage_k02_stage1_kernel.py:75: TypeError
+=========================== short test summary info ============================
+FAILED tests/product/derived_signal/test_m01_f4_cross_stage_k02_stage1_kernel.py::test_public_stage1_refuses_unavailable_stage2_predecessor[D097] - TypeError: _ReadsV1.list_derived_history() takes 1 positional argument but 2 positional arguments (and 2 keyword-only arguments) were given
+FAILED tests/product/derived_signal/test_m01_f4_cross_stage_k02_stage1_kernel.py::test_public_stage1_refuses_unavailable_stage2_predecessor[D098] - TypeError: _ReadsV1.list_derived_history() takes 1 positional argument but 2 positional arguments (and 2 keyword-only arguments) were given
+FAILED tests/product/derived_signal/test_m01_f4_cross_stage_k02_stage1_kernel.py::test_public_stage1_refuses_unavailable_stage2_predecessor[D107] - TypeError: _ReadsV1.list_derived_history() takes 1 positional argument but 2 positional arguments (and 2 keyword-only arguments) were given
+FAILED tests/product/derived_signal/test_m01_f4_cross_stage_k02_stage1_kernel.py::test_public_stage1_refuses_unavailable_stage2_predecessor[D108] - TypeError: _ReadsV1.list_derived_history() takes 1 positional argument but 2 positional arguments (and 2 keyword-only arguments) were given
+4 failed, 5 passed in 0.11s
