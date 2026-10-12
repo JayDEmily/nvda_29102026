@@ -2080,11 +2080,36 @@ def _eval_k03(
                 )
             )
         if identity == "D104":
-            # D099/D100 are skew measures; compare latest with the exact prior anchor.
-            vals = tuple(derived.get("D099", ())) + tuple(derived.get("D100", ()))
+            # Programme-owner D104-20261012-01: changes must be paired within
+            # their own 25-/10-delta skew family before the relative difference.
             seconds = _i(params.get("anchor_seconds", 0))
-            pair = _history_anchor(vals, as_of=as_of, seconds=seconds) if seconds > 0 else None
-            return None if pair is None else _d(pair[0].value) - _d(pair[1].value)
+            if seconds <= 0:
+                return None
+            pair25 = _history_anchor(derived.get("D099", ()), as_of=as_of, seconds=seconds)
+            pair10 = _history_anchor(derived.get("D100", ()), as_of=as_of, seconds=seconds)
+            if pair25 is None or pair10 is None:
+                return None
+            selected = (*pair25, *pair10)
+            identities = tuple(
+                (_metadata(value).get("underlying_instrument"), _metadata(value).get("expiry"))
+                for value in selected
+            )
+            if (
+                any(
+                    type(subject) is not str or not subject or type(expiry) is not str or not expiry
+                    for subject, expiry in identities
+                )
+                or len(set(identities)) != 1
+                or len({item.subject_instrument for item in selected}) != 1
+                or selected[0].effective_at_utc != selected[2].effective_at_utc
+                or selected[1].effective_at_utc != selected[3].effective_at_utc
+            ):
+                return None
+            return (
+                _d(pair10[0].value)
+                - _d(pair10[1].value)
+                - (_d(pair25[0].value) - _d(pair25[1].value))
+            )
         rid = source_map.get(identity)
         if rid is None:
             return None
@@ -3486,6 +3511,21 @@ def evaluate_stage1_kernel(
         value = _eval_k17(raw_inputs, params, as_of_utc)
     else:
         value = None
+    if value is not None and derived_signal_id == "D104" and any(derived_inputs.values()):
+        # Only the four actually used skew occurrences belong in the kernel
+        # provenance, not any older records retained in a historical view.
+        seconds = _i(params.get("anchor_seconds", 0))
+        selected_skews: dict[str, tuple[KernelValueV1, ...]] = {}
+        if seconds <= 0:
+            return None
+        for skew_id in ("D099", "D100"):
+            skew_selected_pair = _history_anchor(
+                derived_inputs.get(skew_id, ()), as_of=as_of_utc, seconds=seconds
+            )
+            if skew_selected_pair is None:
+                return None
+            selected_skews[skew_id] = skew_selected_pair
+        derived_inputs = selected_skews
     return None if value is None else _result(derived_signal_id, value, raw_inputs, derived_inputs)
 
 

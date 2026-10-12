@@ -2315,6 +2315,39 @@ class _OwnerV1:
                 value for value in direct_lineage if value.observation_occurrence_id in used
             ]
 
+        if derived_signal_id in {"D099", "D100", "D101"}:
+            # A current expiry surface consists of one latest eligible value
+            # per exact contract and R field, not every historical refresh of
+            # that contract. Keep only the source points actually consumed.
+            selected_surface: dict[str, tuple[KernelValueV1, ...]] = {}
+            for rid in raw_ids:
+                latest_by_contract: dict[str, KernelValueV1] = {}
+                for point in raw_inputs.get(rid, ()):
+                    contract = dict(point.metadata).get("contract_id")
+                    if type(contract) is not str or not contract:
+                        return None
+                    prior_point = latest_by_contract.get(contract)
+                    if prior_point is not None and (
+                        point.effective_at_utc,
+                        point.received_ts_utc,
+                    ) == (prior_point.effective_at_utc, prior_point.received_ts_utc):
+                        return None
+                    if prior_point is None or (point.effective_at_utc, point.received_ts_utc) > (
+                        prior_point.effective_at_utc,
+                        prior_point.received_ts_utc,
+                    ):
+                        latest_by_contract[contract] = point
+                if not latest_by_contract:
+                    return None
+                selected_surface[rid] = tuple(latest_by_contract.values())
+            raw_inputs = selected_surface
+            selected_ids = {
+                point.occurrence_id for values in raw_inputs.values() for point in values
+            }
+            direct_lineage = [
+                entry for entry in direct_lineage if entry.observation_occurrence_id in selected_ids
+            ]
+
         if derived_signal_id == "D116":
             # D116 is a current ratio, not D123's two-official-period delta.
             # The actually consumed numerator and applicable-side denominator
@@ -2628,6 +2661,26 @@ class _OwnerV1:
                 )
                 if not history:
                     return None
+                if derived_signal_id == "D104" and predecessor_id in {"D099", "D100"}:
+                    seconds = dict(parameter_set.parameters).get("anchor_seconds")
+                    if type(seconds) is not int or seconds <= 0:
+                        return None
+                    from ._stage1 import _history_anchor
+
+                    skew_kernel_history = tuple(
+                        self._occurrence_kernel_value(value) for value in history
+                    )
+                    skew_pair = _history_anchor(
+                        skew_kernel_history, as_of=request.as_of_utc, seconds=seconds
+                    )
+                    if skew_pair is None:
+                        return None
+                    selected_ids = {point.occurrence_id for point in skew_pair}
+                    history = tuple(
+                        value for value in history if value.derived_occurrence_id in selected_ids
+                    )
+                    if len(history) != 2:
+                        return None
                 regression_history = derived_signal_id in {
                     "D078",
                     "D079",
@@ -2677,10 +2730,11 @@ class _OwnerV1:
                 convention_sources = history if regression_history else (latest,)
                 for source_occurrence in convention_sources:
                     convention_refs.extend(source_occurrence.convention_refs)
+                d104_history = derived_signal_id == "D104" and predecessor_id in {"D099", "D100"}
                 if predecessor_id == "D015" and derived_signal_id in {"D016", "D120"}:
                     sign_history_occurrences.extend(history)
                 else:
-                    participating = history if regression_history else (latest,)
+                    participating = history if regression_history or d104_history else (latest,)
                     immediate_predecessors.extend(participating)
                     for participating_occurrence in participating:
                         inherited_lineage.extend(participating_occurrence.raw_input_lineage)
