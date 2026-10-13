@@ -1,0 +1,155 @@
+{
+  "classification": "PROPOSED_EXAMPLE_ARITHMETIC_ONLY",
+  "exact_breach_equivalence_sweep_points": 648,
+  "cases": [
+    {
+      "case": "positive_and_equality",
+      "limits": {
+        "capital": "1000",
+        "concentration": "2000",
+        "liquidity": "1250",
+        "tail": "1500",
+        "stress": "1500"
+      },
+      "maximum_currency": "1000",
+      "maximum_percent": "10",
+      "breach": false,
+      "native_constraint_breach": false
+    },
+    {
+      "case": "tail_breach",
+      "limits": {
+        "capital": "1000",
+        "concentration": "2000",
+        "liquidity": "1250",
+        "tail": "500",
+        "stress": "1500"
+      },
+      "maximum_currency": "500",
+      "maximum_percent": "5",
+      "breach": true,
+      "native_constraint_breach": true
+    },
+    {
+      "case": "stress_breach",
+      "limits": {
+        "capital": "1000",
+        "concentration": "2000",
+        "liquidity": "1250",
+        "tail": "1500",
+        "stress": "500"
+      },
+      "maximum_currency": "500",
+      "maximum_percent": "5",
+      "breach": true,
+      "native_constraint_breach": true
+    },
+    {
+      "case": "concentration_breach",
+      "limits": {
+        "capital": "1000",
+        "concentration": "400",
+        "liquidity": "1250",
+        "tail": "1500",
+        "stress": "1500"
+      },
+      "maximum_currency": "400",
+      "maximum_percent": "4",
+      "breach": true,
+      "native_constraint_breach": true
+    },
+    {
+      "case": "liquidity_breach",
+      "limits": {
+        "capital": "1000",
+        "concentration": "2000",
+        "liquidity": "200",
+        "tail": "1500",
+        "stress": "1500"
+      },
+      "maximum_currency": "200",
+      "maximum_percent": "2",
+      "breach": true,
+      "native_constraint_breach": true
+    },
+    {
+      "case": "negative_available_zero_capacity",
+      "limits": {
+        "capital": "1000",
+        "concentration": "2000",
+        "liquidity": "0",
+        "tail": "1500",
+        "stress": "1500"
+      },
+      "maximum_currency": "0",
+      "maximum_percent": "0",
+      "breach": true,
+      "native_constraint_breach": true
+    },
+    {
+      "case": "maintenance_exceeds_NLV",
+      "limits": {
+        "capital": "1000",
+        "concentration": "2000",
+        "liquidity": "0",
+        "tail": "1500",
+        "stress": "1500"
+      },
+      "maximum_currency": "0",
+      "maximum_percent": "0",
+      "breach": true,
+      "native_constraint_breach": true
+    },
+    {
+      "case": "zero_native_losses_nonbinding",
+      "limits": {
+        "capital": "1000",
+        "concentration": "2000",
+        "liquidity": "1250"
+      },
+      "maximum_currency": "1000",
+      "maximum_percent": "10",
+      "breach": false,
+      "native_constraint_breach": false
+    },
+    {
+      "case": "tail_explicitly_inactive",
+      "limits": {
+        "capital": "1000",
+        "concentration": "2000",
+        "liquidity": "1250",
+        "stress": "1500"
+      },
+      "maximum_currency": "1000",
+      "maximum_percent": "10",
+      "breach": false,
+      "native_constraint_breach": false
+    },
+    {
+      "case": "zero_usage_zero_native_losses",
+      "limits": {
+        "capital": "1000",
+        "concentration": "2000",
+        "liquidity": "1250"
+      },
+      "maximum_currency": "1000",
+      "maximum_percent": "10",
+      "breach": false,
+      "native_constraint_breach": false
+    },
+    {
+      "case": "indicative_clip_only",
+      "lambda": "1/2",
+      "adjustment_delta": "-500",
+      "residual_envelope": "500",
+      "post_adjustment_native_losses": "REQUIRES_REVALUATION_NOT_CHECKED"
+    },
+    {
+      "case": "zero_envelope_positive_nonlinear_loss",
+      "G": 0,
+      "W": 400,
+      "expected": "REFUSE_ZERO_COORDINATE",
+      "classification": "PROPOSED_CONTRACT_CASE_NOT_PRODUCT_TEST"
+    }
+  ]
+}
