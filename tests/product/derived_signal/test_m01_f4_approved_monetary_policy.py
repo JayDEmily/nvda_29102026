@@ -41,7 +41,7 @@ def fixture(vector=(D(1000), D(0), D(0), D(0))):
     ))
     membership = api.CalculationParameterSetV1("membership", 1, "P_BASIC", (
         ("account_identity", "account"), ("sleeve_identity", "managed"),
-        ("complete_members", (("option", D(2), "position-source"),)),
+        ("complete_members", ("option|2|position-source",)),
     ))
     policy = dict(definition.parameters) | dict(
         limit_policy_definition="REFERENCE_CALIBRATED_ENVELOPE_V1",
