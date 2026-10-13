@@ -2716,6 +2716,29 @@ class _OwnerV1:
                         ),
                     )
                 )
+                d186_history = derived_signal_id == "D186" and predecessor_id == "D155"
+                if d186_history:
+                    entry_context = next(
+                        (item for item in contexts if type(item) is EntryStateContextV1), None
+                    )
+                    if entry_context is None:
+                        return None
+                    entry_candidates = tuple(
+                        value
+                        for value in history
+                        if value.derived_occurrence_id == entry_context.d155_occurrence_id
+                    )
+                    if len(entry_candidates) != 1:
+                        return None
+                    entry_occurrence = entry_candidates[0]
+                    if (
+                        entry_occurrence.derived_occurrence_id == latest.derived_occurrence_id
+                        or entry_occurrence.effective_as_of_utc >= latest.effective_as_of_utc
+                    ):
+                        return None
+                    # The exact persisted entry and selected current state
+                    # are both real predecessors, never an inline context value.
+                    history = (entry_occurrence, latest)
                 if request.as_of_utc - latest.effective_as_of_utc > selection.maximum_staleness:
                     return None
                 if not self._merge_occurrence_selection_identity(
@@ -2727,14 +2750,16 @@ class _OwnerV1:
                 # units in its raw lineage. Its unit conventions must remain
                 # part of the parent's version provenance, or a valid nested
                 # predecessor will fail subsequent version-compatible reuse.
-                convention_sources = history if regression_history else (latest,)
+                convention_sources = history if regression_history or d186_history else (latest,)
                 for source_occurrence in convention_sources:
                     convention_refs.extend(source_occurrence.convention_refs)
                 d104_history = derived_signal_id == "D104" and predecessor_id in {"D099", "D100"}
                 if predecessor_id == "D015" and derived_signal_id in {"D016", "D120"}:
                     sign_history_occurrences.extend(history)
                 else:
-                    participating = history if regression_history or d104_history else (latest,)
+                    participating = (
+                        history if regression_history or d104_history or d186_history else (latest,)
+                    )
                     immediate_predecessors.extend(participating)
                     for participating_occurrence in participating:
                         inherited_lineage.extend(participating_occurrence.raw_input_lineage)

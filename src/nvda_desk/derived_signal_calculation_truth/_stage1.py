@@ -2665,6 +2665,168 @@ def _eval_k06(
     return None
 
 
+def _d186_profile(
+    params: dict[str, object],
+) -> tuple[tuple[str, str, tuple[object, ...], Decimal, Decimal], ...] | None:
+    """Resolve the explicitly authorised flat, versioned P_RULE feature schema.
+
+    A feature is (D155 component D-id, existing K07 scalar extractor, arguments).
+    Profile indices are strictly contiguous and weights/scales are exact Decimals.
+    """
+    feature_keys = {name for name in params if name.startswith("similarity_feature:")}
+    if not feature_keys:
+        return None
+    n = len(feature_keys)
+    if set(params) != {
+        f"similarity_{kind}:{index}"
+        for index in range(1, n + 1)
+        for kind in ("feature", "weight", "scale")
+    }:
+        return None
+    allowed_extractors = {
+        "component",
+        "weighted_component_sum",
+        "class_probability",
+        "probability_margin",
+        "normalised_entropy",
+        "distribution_cdf",
+        "upper_tail",
+        "distribution_mean",
+        "distribution_variance",
+        "matrix_entry",
+        "row_l2",
+        "frobenius",
+    }
+    argument_counts: dict[str, int] = {
+        "class_probability": 1,
+        "probability_margin": 0,
+        "normalised_entropy": 0,
+        "distribution_cdf": 1,
+        "upper_tail": 1,
+        "distribution_mean": 0,
+        "distribution_variance": 0,
+        "matrix_entry": 2,
+        "row_l2": 1,
+        "frobenius": 0,
+    }
+    output: list[tuple[str, str, tuple[object, ...], Decimal, Decimal]] = []
+    for index in range(1, n + 1):
+        specification = params[f"similarity_feature:{index}"]
+        weight = params[f"similarity_weight:{index}"]
+        scale = params[f"similarity_scale:{index}"]
+        if (
+            type(specification) is not tuple
+            or len(specification) < 2
+            or type(specification[0]) is not str
+            or specification[0] not in catalogue_row("D155").derived_dependencies
+            or type(specification[1]) is not str
+            or specification[1] not in allowed_extractors
+            or type(weight) is not Decimal
+            or not weight.is_finite()
+            or weight < 0
+            or type(scale) is not Decimal
+            or not scale.is_finite()
+            or scale <= 0
+        ):
+            return None
+        extractor = specification[1]
+        arguments = specification[2:]
+        if extractor in argument_counts and len(arguments) != argument_counts[extractor]:
+            return None
+        if extractor == "weighted_component_sum" and (not arguments or len(arguments) % 2):
+            return None
+        if extractor == "component" and any(type(part) not in {str, int} for part in arguments):
+            return None
+        output.append((specification[0], extractor, arguments, weight, scale))
+    if sum((v[3] for v in output), _DEC0) != _DEC1:
+        return None
+    if len({(v[0], v[1], v[2]) for v in output}) != n:
+        return None
+    return tuple(output)
+
+
+def _d186_components(value: object) -> dict[str, tuple[object, str]] | None:
+    """Read actual K16 D155 components without implicit scalarisation."""
+    if type(value) is not tuple:
+        return None
+    components: dict[str, tuple[object, str]] = {}
+    for item in value:
+        if (
+            type(item) is not tuple
+            or len(item) != 4
+            or type(item[0]) is not str
+            or type(item[2]) is not str
+            or not item[2]
+            or type(item[3]) is not tuple
+        ):
+            return None
+        component_id, component_value, _, metadata = item
+        try:
+            info = dict(metadata)
+        except (TypeError, ValueError):
+            return None
+        if component_id in components or type(info.get("units")) is not str or not info["units"]:
+            return None
+        components[component_id] = (component_value, info["units"])
+    if set(components) != set(catalogue_row("D155").derived_dependencies):
+        return None
+    return components
+
+
+def _d186_selected_states(
+    derived: dict[str, tuple[KernelValueV1, ...]],
+    contexts: tuple[object, ...],
+    as_of: datetime,
+    cutoff: datetime,
+) -> tuple[KernelValueV1, KernelValueV1] | None:
+    entry_ref = _context(contexts, api.EntryStateContextV1)
+    if entry_ref is None:
+        return None
+    history = derived.get("D155", ())
+    anchor = tuple(v for v in history if v.occurrence_id == entry_ref.d155_occurrence_id)
+    if len(anchor) != 1 or len({v.occurrence_id for v in history}) != len(history):
+        return None
+    eligible = tuple(
+        v
+        for v in history
+        if v.source_temporal_kind == "derived"
+        and v.effective_at_utc <= as_of
+        and v.received_ts_utc <= cutoff
+    )
+    if not eligible or anchor[0] not in eligible:
+        return None
+    current = max(
+        eligible,
+        key=lambda v: (v.effective_at_utc, v.received_ts_utc, v.occurrence_id),
+    )
+    entry = anchor[0]
+    if (
+        entry.occurrence_id == current.occurrence_id
+        or entry.effective_at_utc >= current.effective_at_utc
+        or entry.subject_instrument != current.subject_instrument
+        or _metadata(entry).get("result_shape") != "structured"
+        or _metadata(current).get("result_shape") != "structured"
+        or not _metadata(entry).get("units")
+        or _metadata(entry).get("units") != _metadata(current).get("units")
+        or _d186_components(entry.value) is None
+        or _d186_components(current.value) is None
+    ):
+        return None
+    old = _d186_components(entry.value)
+    new = _d186_components(current.value)
+    if (
+        old is None
+        or new is None
+        or tuple(old) != tuple(new)
+        or any(
+            old[name][1] != new[name][1] or type(old[name][0]) is not type(new[name][0])
+            for name in old
+        )
+    ):
+        return None
+    return (entry, current)
+
+
 def _eval_k08(
     identity: str,
     raw: dict[str, tuple[KernelValueV1, ...]],
@@ -3223,40 +3385,24 @@ def _eval_k08(
                 else None
             )
         if identity == "D186":
-            entry = _context(contexts, api.EntryStateContextV1)
-            current_state_value = _scalar(derived, "D155")
-            if entry is None or type(current_state_value) is not tuple:
+            features = _d186_profile(params)
+            values = derived.get("D155", ())
+            if features is None or len(values) != 2:
                 return None
-            current_state_map = {
-                str(i[0]): _d(i[1])
-                for i in current_state_value
-                if type(i) is tuple and len(i) >= 2 and type(i[1]) in {Decimal, int}
-            }
-            entry_map = {
-                str(i[0]): _d(i[1])
-                for i in entry.entry_state_vector
-                if type(i) is tuple and len(i) >= 2 and type(i[1]) in {Decimal, int}
-            }
-            weights = params.get("similarity_weights")
-            scales = params.get("similarity_scales")
-            if type(weights) is not tuple or type(scales) is not tuple:
-                return None
-            w = dict(weights)
-            s = dict(scales)
-            common = set(current_state_map) & set(entry_map)
-            if not common or sum((_d(w[k]) for k in common), _DEC0) != _DEC1:
+            entry, current = values
+            old = _d186_components(entry.value)
+            new = _d186_components(current.value)
+            if old is None or new is None:
                 return None
             d2 = _DEC0
             deltas = []
-            for feature_name in sorted(common):
-                scale = _d(s[feature_name])
-                weight = _d(w[feature_name])
-                if scale <= 0 or weight < 0:
-                    return None
-                delta = current_state_map[feature_name] - entry_map[feature_name]
-                z = delta / scale
-                d2 += weight * z * z
-                deltas.append((feature_name, (delta, z)))
+            for index, (did, extractor, arguments, weight, scale) in enumerate(features, 1):
+                entry_scalar = extract_scalar(old[did][0], extractor, arguments)
+                current_scalar = extract_scalar(new[did][0], extractor, arguments)
+                difference = current_scalar - entry_scalar
+                standardised = difference / scale
+                d2 += weight * standardised * standardised
+                deltas.append((f"{index}:{did}:{extractor}", (difference, standardised)))
             return _named_tuple(
                 (
                     ("similarity", (-Decimal("0.5") * d2).exp()),
@@ -3489,6 +3635,11 @@ def evaluate_stage1_kernel(
         if pair is None:
             return None
         raw_inputs = {pair[0]: pair[1]}
+    if derived_signal_id == "D186":
+        selection = _d186_selected_states(derived_inputs, contexts, as_of_utc, knowledge_cutoff_utc)
+        if selection is None:
+            return None
+        derived_inputs = {"D155": selection}
     params = _parameter_map(parameter_set)
     value: object | None
     if row.kernel_id == "K01_TIME":
