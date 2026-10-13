@@ -1,0 +1,655 @@
+{
+  "source_sha256": "519ea9449297d564ae4a02afc1bf4e60e4471631c81a0842620f9fb60bb4f9ae",
+  "normative_catalogue_sha256": "26c5486d1a4c7ff68025c7ce2d7e6847a7798759b847a716c942fd05345f3803",
+  "repository_head": "eb08239cd99f387ad5c24cf3a67d1133f3ab4c27",
+  "rows": 209,
+  "old_families": 34,
+  "new_families": 40,
+  "source_families_split": {
+    "Time & data quality": {
+      "Time and session semantics": 7,
+      "Data quality and reconciliation": 3
+    },
+    "Underlying/price path": {
+      "Price path and VWAP": 10,
+      "Data quality and reconciliation": 1
+    },
+    "Options distribution": {
+      "Option-implied move proxy": 2,
+      "Option probability distributions": 4
+    },
+    "Execution": {
+      "Candidate valuation and risk metrics": 1,
+      "Pretrade execution and order pricing": 2,
+      "Execution outcomes and realised costs": 2
+    },
+    "State synthesis": {
+      "Latent macro risk factors": 5,
+      "US market and cross-market breadth": 1,
+      "Probabilistic regime inference": 3,
+      "State assembly and coherence": 4,
+      "Data quality and reconciliation": 1
+    },
+    "Decision/scenarios": {
+      "Joint scenario generation": 1,
+      "Candidate valuation and risk metrics": 3,
+      "Candidate decision scoring and selection": 4
+    },
+    "Structure selection": {
+      "Candidate valuation and risk metrics": 3,
+      "Candidate decision scoring and selection": 3
+    },
+    "Post-trade": {
+      "Execution outcomes and realised costs": 1,
+      "Post-trade P&L attribution": 6,
+      "Decision review and counterfactuals": 2
+    },
+    "Learning": {
+      "Forecast and signal validation": 6,
+      "Decision review and counterfactuals": 1
+    }
+  },
+  "source_families_single": {
+    "Market microstructure": {
+      "L1 quotes and trade direction": 6
+    },
+    "Volume/activity": {
+      "Volume and trade activity": 4
+    },
+    "Volatility": {
+      "Realised volatility and range": 8
+    },
+    "Regime features": {
+      "Trend and reversion features": 2
+    },
+    "Macro/rates": {
+      "Rates and funding spreads": 6
+    },
+    "Macro/FX": {
+      "Foreign-exchange changes": 4
+    },
+    "Volatility complex": {
+      "Volatility indices and regimes": 10
+    },
+    "Macro/events": {
+      "Scheduled-event state": 4
+    },
+    "International": {
+      "International equity context": 5
+    },
+    "US market": {
+      "US market and cross-market breadth": 4
+    },
+    "Sector": {
+      "Technology and semiconductor sector": 5
+    },
+    "NVDA state": {
+      "NVDA factor-relative state": 5
+    },
+    "Options contract": {
+      "Option expiry and moneyness": 5
+    },
+    "Options liquidity": {
+      "Option quote liquidity": 4
+    },
+    "Options surface": {
+      "Implied-volatility surface and fit": 15
+    },
+    "Options relative value": {
+      "IV and probability relative value": 3
+    },
+    "Options activity": {
+      "Option volume and open interest": 6
+    },
+    "Options flow": {
+      "Signed option order flow": 3
+    },
+    "Dealer positioning": {
+      "Inferred dealer exposures": 6
+    },
+    "L2 microstructure": {
+      "L2 book depth and dynamics": 12
+    },
+    "Risk/stress": {
+      "Candidate valuation and risk metrics": 1
+    },
+    "Risk/sizing": {
+      "Risk limits and position sizing": 2
+    },
+    "Live risk": {
+      "Live portfolio exposures and P&L": 5
+    },
+    "Live control": {
+      "Live position assessment and decisions": 7
+    },
+    "Control loop": {
+      "Observation and recalculation scheduling": 1
+    }
+  },
+  "target_families_merged": {
+    "Data quality and reconciliation": {
+      "Time & data quality": 3,
+      "Underlying/price path": 1,
+      "State synthesis": 1
+    },
+    "US market and cross-market breadth": {
+      "US market": 4,
+      "State synthesis": 1
+    },
+    "Candidate valuation and risk metrics": {
+      "Execution": 1,
+      "Decision/scenarios": 3,
+      "Structure selection": 3,
+      "Risk/stress": 1
+    },
+    "Candidate decision scoring and selection": {
+      "Decision/scenarios": 4,
+      "Structure selection": 3
+    },
+    "Execution outcomes and realised costs": {
+      "Execution": 2,
+      "Post-trade": 1
+    },
+    "Decision review and counterfactuals": {
+      "Post-trade": 2,
+      "Learning": 1
+    }
+  },
+  "families_split_count": 9,
+  "old_rows_in_split_families": 76,
+  "rows_outside_old_family_plurality": 29,
+  "rows_reassigned_semantically": 81,
+  "mapping_output": "/mnt/data/NVDA_DERIVED_FAMILY_FULL_209_ROW_AUDIT_20261014.csv",
+  "family_output": "/mnt/data/NVDA_DERIVED_FAMILY_PROPOSED_40_DEFINITIONS_20261014.csv",
+  "groups": [
+    {
+      "name": "Time and session semantics",
+      "ids": [
+        "D001",
+        "D002",
+        "D003",
+        "D004",
+        "D005",
+        "D009",
+        "D010"
+      ],
+      "definition": "Canonical/market-local time, trading date, session phase and source vintage state.",
+      "exclude": "Exclude availability/quality scoring and option-expiry arithmetic."
+    },
+    {
+      "name": "L1 quotes and trade direction",
+      "ids": [
+        "D011",
+        "D012",
+        "D013",
+        "D014",
+        "D015",
+        "D016"
+      ],
+      "definition": "Best bid/ask prices and size imbalance; trade-sign inference and signed traded volume.",
+      "exclude": "Exclude market-depth reconstruction and order-book event dynamics."
+    },
+    {
+      "name": "Price path and VWAP",
+      "ids": [
+        "D017",
+        "D019",
+        "D020",
+        "D021",
+        "D022",
+        "D023",
+        "D024",
+        "D025",
+        "D026",
+        "D027"
+      ],
+      "definition": "Underlying price returns, gaps, VWAP, price location and VWAP momentum.",
+      "exclude": "Exclude provider-to-system data-integrity comparison D018."
+    },
+    {
+      "name": "Volume and trade activity",
+      "ids": [
+        "D028",
+        "D029",
+        "D030",
+        "D031"
+      ],
+      "definition": "Relative volume and standardized trading-volume/trade-rate activity.",
+      "exclude": "Exclude options-chain volume/open-interest analytics."
+    },
+    {
+      "name": "Realised volatility and range",
+      "ids": [
+        "D032",
+        "D033",
+        "D034",
+        "D035",
+        "D036",
+        "D037",
+        "D038",
+        "D039"
+      ],
+      "definition": "Return-based realised volatility, jump variation and bar true range.",
+      "exclude": "Exclude implied volatility surfaces, VIX-family indices and composite regimes."
+    },
+    {
+      "name": "Trend and reversion features",
+      "ids": [
+        "D040",
+        "D041"
+      ],
+      "definition": "Composite trend strength and mean-reversion features of the underlying.",
+      "exclude": "Exclude pure returns, VWAP changes, and volatility estimates."
+    },
+    {
+      "name": "Rates and funding spreads",
+      "ids": [
+        "D042",
+        "D043",
+        "D044",
+        "D045",
+        "D046",
+        "D047"
+      ],
+      "definition": "Yield-curve slopes and rate, inflation-expectation and funding-spread changes.",
+      "exclude": "Exclude composite macro latent-factor inference."
+    },
+    {
+      "name": "Foreign-exchange changes",
+      "ids": [
+        "D048",
+        "D049",
+        "D050",
+        "D051"
+      ],
+      "definition": "Observed broad-dollar and bilateral currency changes over specified windows.",
+      "exclude": "Exclude country equity-index returns and combined international scores."
+    },
+    {
+      "name": "Volatility indices and regimes",
+      "ids": [
+        "D052",
+        "D053",
+        "D054",
+        "D055",
+        "D056",
+        "D057",
+        "D058",
+        "D059",
+        "D060",
+        "D061"
+      ],
+      "definition": "Cboe volatility-index changes, term slopes and volatility-index-based composite regime score.",
+      "exclude": "Exclude NVDA options IV surface and realised-volatility estimation."
+    },
+    {
+      "name": "Scheduled-event state",
+      "ids": [
+        "D062",
+        "D063",
+        "D064",
+        "D065"
+      ],
+      "definition": "Time-to-event, release surprise, event importance and active-event-window measures.",
+      "exclude": "Exclude prospective trade gating, candidate utility and strategy decisions."
+    },
+    {
+      "name": "International equity context",
+      "ids": [
+        "D066",
+        "D067",
+        "D068",
+        "D069",
+        "D070"
+      ],
+      "definition": "Non-US index returns and aggregated international overnight risk condition.",
+      "exclude": "Exclude FX-only transformations already assigned to FX."
+    },
+    {
+      "name": "US market and cross-market breadth",
+      "ids": [
+        "D071",
+        "D072",
+        "D082",
+        "D083",
+        "D151"
+      ],
+      "definition": "US market proxy returns, NVDA-market/sector correlations, return dispersion and monitored-basket breadth.",
+      "exclude": "Exclude sector-relative/rotation composite calculations."
+    },
+    {
+      "name": "Technology and semiconductor sector",
+      "ids": [
+        "D073",
+        "D074",
+        "D076",
+        "D077",
+        "D084"
+      ],
+      "definition": "Sector ETF returns, technology/semiconductor relative strength and rotation state.",
+      "exclude": "Exclude NVDA-specific residual return or estimated beta."
+    },
+    {
+      "name": "NVDA factor-relative state",
+      "ids": [
+        "D075",
+        "D078",
+        "D079",
+        "D080",
+        "D081"
+      ],
+      "definition": "NVDA underlying return, conditional market/sector beta and residual stock-specific return.",
+      "exclude": "Exclude sector ETF or broad index return series."
+    },
+    {
+      "name": "Option expiry and moneyness",
+      "ids": [
+        "D085",
+        "D086",
+        "D089",
+        "D090",
+        "D091"
+      ],
+      "definition": "Option time-to-expiry, spot/log moneyness and standard delta-category placement.",
+      "exclude": "Exclude quoted premiums, spreads and implied volatility."
+    },
+    {
+      "name": "Option quote liquidity",
+      "ids": [
+        "D087",
+        "D088",
+        "D131",
+        "D132"
+      ],
+      "definition": "Option premium midpoint, spread, displayed nearby depth and combined liquidity score.",
+      "exclude": "Exclude full book reconstruction and execution-price action."
+    },
+    {
+      "name": "Implied-volatility surface and fit",
+      "ids": [
+        "D092",
+        "D093",
+        "D094",
+        "D095",
+        "D096",
+        "D097",
+        "D098",
+        "D099",
+        "D100",
+        "D101",
+        "D102",
+        "D103",
+        "D104",
+        "D105",
+        "D106"
+      ],
+      "definition": "Quoted implied-volatility measures, changes, term structure, skew, smile, fit error and IV rank/percentile.",
+      "exclude": "Exclude realised-vol comparisons and probability distributions."
+    },
+    {
+      "name": "Data quality and reconciliation",
+      "ids": [
+        "D006",
+        "D007",
+        "D008",
+        "D018",
+        "D158"
+      ],
+      "definition": "Staleness, required-field coverage, cross-source temporal alignment, independent VWAP cross-check and composite data quality.",
+      "exclude": "Exclude market price/return and fitted IV-surface error."
+    },
+    {
+      "name": "Option-implied move proxy",
+      "ids": [
+        "D109",
+        "D110"
+      ],
+      "definition": "ATM straddle mid-premium and premium-to-spot implied movement proxy.",
+      "exclude": "Exclude calibrated probability densities/tail probabilities."
+    },
+    {
+      "name": "Option probability distributions",
+      "ids": [
+        "D111",
+        "D112",
+        "D113",
+        "D114"
+      ],
+      "definition": "Risk-neutral density and tails; conditional physical return density.",
+      "exclude": "Exclude straddle premium proxies and comparisons between distributions."
+    },
+    {
+      "name": "IV and probability relative value",
+      "ids": [
+        "D107",
+        "D108",
+        "D115"
+      ],
+      "definition": "Implied-versus-realised volatility gaps and risk-neutral versus physical distribution disagreement.",
+      "exclude": "Exclude generating the underlying probability distributions."
+    },
+    {
+      "name": "Option volume and open interest",
+      "ids": [
+        "D116",
+        "D117",
+        "D118",
+        "D119",
+        "D123",
+        "D124"
+      ],
+      "definition": "Option volume/OI ratios, abnormal activity, call/put mixes, OI change and OI concentration.",
+      "exclude": "Exclude signed aggressive option order flow and dealer-side inference."
+    },
+    {
+      "name": "Signed option order flow",
+      "ids": [
+        "D120",
+        "D121",
+        "D122"
+      ],
+      "definition": "Signed option trades and aggregated flow by delta bucket or expiry.",
+      "exclude": "Exclude public-volume/OI measures without signed initiator information."
+    },
+    {
+      "name": "Inferred dealer exposures",
+      "ids": [
+        "D125",
+        "D126",
+        "D127",
+        "D128",
+        "D129",
+        "D130"
+      ],
+      "definition": "Dealer-position-assumption-dependent Greek OI proxies, gamma zones/flips and hedge-pressure scenarios.",
+      "exclude": "Exclude directly observed option volume/OI and measured account holdings."
+    },
+    {
+      "name": "L2 book depth and dynamics",
+      "ids": [
+        "D134",
+        "D135",
+        "D136",
+        "D137",
+        "D138",
+        "D139",
+        "D140",
+        "D141",
+        "D142",
+        "D143",
+        "D144",
+        "D145"
+      ],
+      "definition": "SMART/direct book depth, imbalance, microprice, dynamics, venue structure and OFI.",
+      "exclude": "Exclude top-of-book best-quote arithmetic and candidate order pricing."
+    },
+    {
+      "name": "Latent macro risk factors",
+      "ids": [
+        "D146",
+        "D147",
+        "D148",
+        "D149",
+        "D150"
+      ],
+      "definition": "Growth, inflation, policy, funding and global latent market-factor synthesis.",
+      "exclude": "Exclude direct rate/FX transformations and probability vectors."
+    },
+    {
+      "name": "Probabilistic regime inference",
+      "ids": [
+        "D152",
+        "D153",
+        "D154"
+      ],
+      "definition": "Estimated probabilities of dominant market drivers and NVDA underlying/options regimes.",
+      "exclude": "Exclude deterministic source summaries and decision gate outputs."
+    },
+    {
+      "name": "State assembly and coherence",
+      "ids": [
+        "D155",
+        "D156",
+        "D157",
+        "D159"
+      ],
+      "definition": "Assembled market-state vector, redundancy and signal conflict measures, and state identifiability/readiness.",
+      "exclude": "Exclude source quality tests and explicit allow/no-trade policy decisions."
+    },
+    {
+      "name": "Joint scenario generation",
+      "ids": [
+        "D160"
+      ],
+      "definition": "Probability-weighted conditional joint future-market scenario paths.",
+      "exclude": "Exclude candidate valuation and structure-specific scenario stress matrices."
+    },
+    {
+      "name": "Candidate valuation and risk metrics",
+      "ids": [
+        "D133",
+        "D161",
+        "D162",
+        "D164",
+        "D168",
+        "D169",
+        "D170",
+        "D174"
+      ],
+      "definition": "Candidate slippage and total execution-cost estimates, expected P&L, tail risk, aggregate Greeks, payoff loss, breakevens and stress losses.",
+      "exclude": "Exclude utility preferences, ranked selection, allowable risk limits and order placement decisions."
+    },
+    {
+      "name": "Candidate decision scoring and selection",
+      "ids": [
+        "D163",
+        "D165",
+        "D166",
+        "D167",
+        "D171",
+        "D172",
+        "D173"
+      ],
+      "definition": "Uncertainty/utility penalties, candidate utility, trade/no-trade eligibility and exposure/strike/expiry preference scoring/selection.",
+      "exclude": "Exclude purely measured candidate loss, market-state identifiability and permissible position risk."
+    },
+    {
+      "name": "Risk limits and position sizing",
+      "ids": [
+        "D175",
+        "D176"
+      ],
+      "definition": "Permissible capital/tail/concentration risk bounds and candidate position sizing.",
+      "exclude": "Exclude raw account balance, observed Greeks and action-state logic."
+    },
+    {
+      "name": "Pretrade execution and order pricing",
+      "ids": [
+        "D177",
+        "D178"
+      ],
+      "definition": "Refreshed net entry edge and proposed limit-price target for intended execution.",
+      "exclude": "Exclude predicted transaction costs, observed fills and realised costs."
+    },
+    {
+      "name": "Execution outcomes and realised costs",
+      "ids": [
+        "D179",
+        "D180",
+        "D193"
+      ],
+      "definition": "Post-submission fill slippage/completion and measured realised transaction costs.",
+      "exclude": "Exclude proposed limit prices and prospective cost estimates."
+    },
+    {
+      "name": "Live portfolio exposures and P&L",
+      "ids": [
+        "D181",
+        "D182",
+        "D183",
+        "D184",
+        "D185"
+      ],
+      "definition": "Observed live portfolio Greek aggregates and portfolio realised/unrealised P&L state.",
+      "exclude": "Exclude action policy, hedging decisions and retrospective attribution."
+    },
+    {
+      "name": "Live position assessment and decisions",
+      "ids": [
+        "D186",
+        "D187",
+        "D188",
+        "D189",
+        "D190",
+        "D191",
+        "D192"
+      ],
+      "definition": "Entry-state comparison, invalidation, continuation/modification/exit valuation, hedge needs and hold/modify/exit decision.",
+      "exclude": "Exclude measured live portfolio Greeks and post-trade realised attribution."
+    },
+    {
+      "name": "Post-trade P&L attribution",
+      "ids": [
+        "D194",
+        "D195",
+        "D196",
+        "D197",
+        "D198",
+        "D199"
+      ],
+      "definition": "Breakdown of observed position P&L by delta/gamma/vega/theta/skew and residual.",
+      "exclude": "Exclude decision/process quality and alternative-path counterfactuals."
+    },
+    {
+      "name": "Decision review and counterfactuals",
+      "ids": [
+        "D200",
+        "D201",
+        "D206"
+      ],
+      "definition": "Decision-process quality, no-trade/alternative counterfactuals and out-of-sample decision performance.",
+      "exclude": "Exclude raw P&L attribution and probabilistic calibration measures."
+    },
+    {
+      "name": "Forecast and signal validation",
+      "ids": [
+        "D202",
+        "D203",
+        "D204",
+        "D205",
+        "D207",
+        "D208"
+      ],
+      "definition": "Incremental signal information, probability calibration/proper scores, drift and signal disposition.",
+      "exclude": "Exclude realised position P&L attribution and next-update scheduling."
+    },
+    {
+      "name": "Observation and recalculation scheduling",
+      "ids": [
+        "D209"
+      ],
+      "definition": "The event or schedule trigger for the next observe/calculate iteration.",
+      "exclude": "Exclude market-data timestamps and financial signal transformations."
+    }
+  ]
+}
