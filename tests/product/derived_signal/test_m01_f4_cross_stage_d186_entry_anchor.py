@@ -99,6 +99,55 @@ def _eval(history, anchor: str, profile=DEFAULT):
     )
 
 
+def test_d186_accepts_actual_d155_k16_assembly_with_canonical_units():
+    """Use the genuine Stage-1 K16 assembler, not a fabricated D155 shape."""
+    assembly_profile = api.CalculationParameterSetV1(
+        "state-vector", 1, "P_STATE_VECTOR", (("component_order", _COMPONENTS),)
+    )
+
+    def state(occurrence_id: str, age: int, d150: Decimal) -> _stage1.KernelValueV1:
+        when = AT - timedelta(minutes=age)
+        components = {
+            did: (
+                _stage1.KernelValueV1(
+                    value=d150 if did == "D150" else Decimal(1),
+                    occurrence_id=f"{occurrence_id}-{did}",
+                    effective_at_utc=when,
+                    received_ts_utc=when,
+                    subject_instrument="NVDA",
+                    source_temporal_kind="derived",
+                    metadata=(("units", catalogue_row(did).units),),
+                ),
+            )
+            for did in _COMPONENTS
+        }
+        assembled = _stage1.evaluate_stage1_kernel(
+            "D155",
+            raw_inputs={},
+            derived_inputs=components,
+            parameter_set=assembly_profile,
+            contexts=(),
+            as_of_utc=when,
+            knowledge_cutoff_utc=when,
+        )
+        assert assembled is not None
+        assert assembled.result_shape == "structured"
+        return _stage1.KernelValueV1(
+            value=assembled.value,
+            occurrence_id=occurrence_id,
+            effective_at_utc=when,
+            received_ts_utc=when,
+            subject_instrument="NVDA",
+            source_temporal_kind="derived",
+            metadata=(("units", assembled.units), ("result_shape", assembled.result_shape)),
+        )
+
+    result = _eval((state("entry", 4, Decimal(10)), state("current", 0, Decimal(12))), "entry")
+    assert result is not None
+    assert dict(result.value)["distance_squared"] == Decimal(1)
+    assert result.input_occurrence_ids == ("current", "entry")
+
+
 def test_d186_resolves_explicit_stored_entry_id_not_undeclared_inline_payload():
     entry = _v("original-entry", 4, Decimal(10))
     current = _v("current-state", 0, Decimal(12))
