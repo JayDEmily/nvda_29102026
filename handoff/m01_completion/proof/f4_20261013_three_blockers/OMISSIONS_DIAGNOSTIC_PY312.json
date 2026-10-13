@@ -1,0 +1,63 @@
+{
+  "python": "3.12.14",
+  "classification": "DIAGNOSTIC_NOT_ACCEPTANCE",
+  "D178_predecessor_nonuse": [
+    {
+      "D133": "4",
+      "D177": "2",
+      "observed": "5.5"
+    },
+    {
+      "D133": "400",
+      "D177": "-200",
+      "observed": "5.5"
+    }
+  ],
+  "D178_typed_sell_ignored": "5.5",
+  "D189_limit_nonuse": [
+    {
+      "D175": "0",
+      "observed": [
+        [
+          "delta",
+          "-10"
+        ],
+        [
+          "gamma",
+          "-7"
+        ],
+        [
+          "vega",
+          "-8"
+        ],
+        [
+          "theta",
+          "-9"
+        ]
+      ]
+    },
+    {
+      "D175": "100000",
+      "observed": [
+        [
+          "delta",
+          "-10"
+        ],
+        [
+          "gamma",
+          "-7"
+        ],
+        [
+          "vega",
+          "-8"
+        ],
+        [
+          "theta",
+          "-9"
+        ]
+      ]
+    }
+  ],
+  "D192_hedge_without_risk_value": "hedge",
+  "D175_structured_stress_matrix_not_consumed": "50"
+}
