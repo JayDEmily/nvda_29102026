@@ -1904,6 +1904,46 @@ def _eval_k02(
             if not leg_ids or leg_ids != greek_ids or leg_ids != multiplier_ids:
                 return None
             rows = _align_occurrence_fields(raw, ("R212", greek, "R016"))
+            live_contexts = [c for c in contexts if type(c) is api.LivePositionContextV1]
+            if live_contexts:
+                from ._financial_policy import greek_input_unit
+
+                if len(live_contexts) != 1:
+                    return None
+                live = live_contexts[0]
+                if len(live.m00_occurrence_refs) != len(live.leg_contract_identities):
+                    return None
+                source_rows = {row["R212"].occurrence_id: row for row in rows}
+                if set(source_rows) != set(live.m00_occurrence_refs):
+                    return None
+                scopes = [c for c in contexts if type(c) is api.RiskScopeContextV1]
+                if len(scopes) > 1:
+                    return None
+                for contract, quantity, multiplier, source in zip(
+                    live.leg_contract_identities, live.signed_quantities, live.multipliers,
+                    live.m00_occurrence_refs, strict=True,
+                ):
+                    row = source_rows[source]
+                    if (
+                        row["R212"].value != quantity or row["R016"].value != multiplier
+                        or any(
+                            dict(v.metadata).get("contract_id") != contract for v in row.values()
+                        )
+                        or dict(row["R212"].metadata).get("canonical_units") != "contracts"
+                        or dict(row["R016"].metadata).get("canonical_units") != "shares_per_contract"
+                    ):
+                        return None
+                    if scopes:
+                        scope = scopes[0]
+                        if (
+                            scope.live_position_ref != api.VersionRefV1(live.context_id, live.version)
+                            or set(scope.position_membership_source_refs)
+                            != set(live.m00_occurrence_refs)
+                                or dict(row[greek].metadata).get("currency") != scope.currency_code
+                                or dict(row[greek].metadata).get("canonical_units")
+                                != greek_input_unit(identity, scope.currency_code)
+                        ):
+                            return None
             return (
                 sum(
                     (_d(r["R212"].value) * _d(r[greek].value) * _d(r["R016"].value) for r in rows),

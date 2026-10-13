@@ -8,7 +8,7 @@ import pytest
 from nvda_desk.derived_signal_calculation_truth import api
 from nvda_desk.raw_signal_occurrence_truth import api as raw
 
-from .test_m01_f4_approved_monetary_policy import NOW, fixture
+from .test_m01_f4_approved_monetary_policy import NOW
 from .test_m01_f4_rc16_position_public import GREEKS, _public
 
 
@@ -21,15 +21,8 @@ def test_public_live_greek_retains_actual_position_sources_and_declared_units(id
     metadata = dict(projected.metadata)
     assert metadata.get("position_source_refs") is not None
     assert set(metadata["position_source_refs"]) == {"pos-leg-a", "pos-leg-b"}
-    assert (
-        metadata["canonical_risk_unit"]
-        == {
-            "D181": "shares",
-            "D182": "shares_per_currency",
-            "D183": "currency_per_volatility_point",
-            "D184": "currency_per_day",
-        }[identity]
-    )
+    # Generic historical "canonical" units are insufficient risk-unit evidence.
+    assert "canonical_risk_unit" not in metadata
     assert metadata["parameter_context_refs"] == occurrence.parameter_context_refs
 
 

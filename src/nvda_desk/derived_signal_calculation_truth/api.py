@@ -1608,13 +1608,26 @@ class _OwnerV1:
                 "D181": "shares", "D182": "shares_per_currency",
                 "D183": "currency_per_volatility_point", "D184": "currency_per_day",
             }
-            retained_metadata.extend((
-                ("canonical_risk_unit", canonical_units[value.derived_signal_id]),
-                ("position_source_refs", tuple(sorted({
-                    item.observation_occurrence_id for item in value.raw_input_lineage
-                    if item.raw_signal_id == "R212"
-                }))),
-            ))
+            from ._financial_policy import greek_input_unit
+
+            greek_id = {"D181": "R112", "D182": "R115", "D183": "R116", "D184": "R117"}[
+                value.derived_signal_id
+            ]
+            scope_candidates = [self._contexts.get((r.context_id, r.version))
+                                for r in value.parameter_context_refs]
+            scopes = [c for c in scope_candidates if type(c) is RiskScopeContextV1]
+            actual_greek_units = {r.canonical_units for r in value.raw_input_lineage
+                                  if r.raw_signal_id == greek_id}
+            if len(scopes) == 1 and actual_greek_units == {
+                greek_input_unit(value.derived_signal_id, scopes[0].currency_code)
+            }:
+                retained_metadata.append(
+                    ("canonical_risk_unit", canonical_units[value.derived_signal_id])
+                )
+            retained_metadata.append(("position_source_refs", tuple(sorted({
+                item.observation_occurrence_id for item in value.raw_input_lineage
+                if item.raw_signal_id == "R212"
+            }))))
         # A domain label is retained only from the exact producer's immutable
         # parameter reference; the consumer's configuration cannot relabel it.
         if value.derived_signal_id in {"D190", "D191"}:
