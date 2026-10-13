@@ -302,7 +302,31 @@ def test_every_stage1_row_routes_once_via_its_hash_bound_kernel(monkeypatch: obj
         if row.kernel_id not in dispatch:
             continue
         routed.clear()
-        result = evaluate(row.derived_id, parameters=param(row.parameter_profiles[0]))
+        if row.derived_id == "D186":
+            # D186 has a mandatory typed entry anchor. Dispatch must receive
+            # valid D155 carriers, not bypass the authorised preconditions.
+            component_ids = _catalogue.catalogue_row("D155").derived_dependencies
+            def state(oid: str, age: int) -> _stage1.KernelValueV1:
+                component_values = tuple(
+                    (did, Decimal(1), f"{oid}-{did}", (("units", "score"),))
+                    for did in component_ids
+                )
+                return kv(component_values, oid, at=AT - timedelta(minutes=age))
+            result = evaluate(
+                row.derived_id,
+                parameters=param(
+                    "P_RULE",
+                    **{
+                        "similarity_feature:1": (component_ids[0], "component"),
+                        "similarity_weight:1": Decimal(1),
+                        "similarity_scale:1": Decimal(1),
+                    },
+                ),
+                derived={"D155": (state("entry", 3), state("current", 0))},
+                contexts=(api.EntryStateContextV1("anchor", 1, "entry"),),
+            )
+        else:
+            result = evaluate(row.derived_id, parameters=param(row.parameter_profiles[0]))
         assert result is not None and result.value == Decimal(3), row.derived_id
         assert routed == [row.kernel_id], row.derived_id
 
