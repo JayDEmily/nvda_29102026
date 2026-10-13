@@ -310,7 +310,12 @@ def test_every_stage1_row_routes_once_via_its_hash_bound_kernel(monkeypatch: obj
                 oid: str, age: int, component_ids: tuple[str, ...] = component_ids
             ) -> _stage1.KernelValueV1:
                 component_values = tuple(
-                    (did, Decimal(1), f"{oid}-{did}", (("units", "score"),))
+                    (
+                        did,
+                        Decimal(1),
+                        f"{oid}-{did}",
+                        (("units", _catalogue.catalogue_row(did).units),),
+                    )
                     for did in component_ids
                 )
                 return kv(
@@ -318,7 +323,7 @@ def test_every_stage1_row_routes_once_via_its_hash_bound_kernel(monkeypatch: obj
                     oid,
                     at=AT - timedelta(minutes=age),
                     metadata=(
-                        ("units", "similarity/feature deltas"),
+                        ("units", _catalogue.catalogue_row("D155").units),
                         ("result_shape", "structured"),
                     ),
                 )

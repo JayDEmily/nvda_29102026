@@ -24,6 +24,8 @@ def _v(
     received_age: int | None = None,
     changed_component_type: bool = False,
     changed_outer_shape: bool = False,
+    wrong_component_units: bool = False,
+    wrong_outer_units: bool = False,
 ) -> _stage1.KernelValueV1:
     when = AT - timedelta(minutes=age)
     received = AT - timedelta(minutes=received_age if received_age is not None else age)
@@ -38,7 +40,16 @@ def _v(
             if changed_component_type and did == "D132"
             else Decimal(1),
             f"{id}-{did}",
-            (("units", altered_unit if altered_unit and did == "D150" else "score"),),
+            (
+                (
+                    "units",
+                    altered_unit
+                    if altered_unit and did == "D150"
+                    else "wrong"
+                    if wrong_component_units
+                    else catalogue_row(did).units,
+                ),
+            ),
         )
         for did in _COMPONENTS
         if did != missing_component
@@ -51,7 +62,7 @@ def _v(
         subject_instrument=subject,
         source_temporal_kind="derived",
         metadata=(
-            ("units", "similarity/feature deltas"),
+            ("units", "wrong" if wrong_outer_units else catalogue_row("D155").units),
             ("result_shape", "scalar" if changed_outer_shape else "structured"),
         ),
     )
@@ -130,6 +141,8 @@ def test_d186_extracts_nested_scalar_using_k07_and_uses_only_selected_history():
         "future_current",
         "schema_type",
         "outer_shape",
+        "noncanonical_component_units_pair",
+        "noncanonical_outer_units_pair",
     ],
 )
 def test_d186_refuses_incompatible_history(scenario: str):
@@ -153,6 +166,16 @@ def test_d186_refuses_incompatible_history(scenario: str):
         history = (entry, _v("current", 0, Decimal(12), changed_component_type=True))
     elif scenario == "outer_shape":
         history = (entry, _v("current", 0, Decimal(12), changed_outer_shape=True))
+    elif scenario == "noncanonical_component_units_pair":
+        history = (
+            _v("entry", 4, Decimal(10), wrong_component_units=True),
+            _v("current", 0, Decimal(12), wrong_component_units=True),
+        )
+    elif scenario == "noncanonical_outer_units_pair":
+        history = (
+            _v("entry", 4, Decimal(10), wrong_outer_units=True),
+            _v("current", 0, Decimal(12), wrong_outer_units=True),
+        )
     else:
         history = (entry, _v("current", -1, Decimal(12)))
     assert _eval(history, "entry") is None
