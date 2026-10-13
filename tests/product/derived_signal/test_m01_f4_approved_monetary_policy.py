@@ -81,6 +81,7 @@ def ev(identity, f):
 def budget(f):
     result = ev("D175", f)
     assert result is not None, "approved reference-calibrated limit is absent"
+    assert type(result.value) is tuple, "D175 still returns a shortcut scalar, not exact limits"
     return result.value
 
 
