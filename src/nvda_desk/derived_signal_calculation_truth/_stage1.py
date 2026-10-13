@@ -3645,6 +3645,16 @@ def evaluate_stage1_kernel(
             return None
         derived_inputs = {"D155": selection}
     params = _parameter_map(parameter_set)
+    if derived_signal_id == "D178":
+        from ._financial_policy import limit_price
+
+        try:
+            policy_value = limit_price(
+                raw_inputs, derived_inputs, params, contexts, as_of_utc, knowledge_cutoff_utc
+            )
+        except (TypeError, ValueError, ArithmeticError, KeyError, AttributeError):
+            return None
+        return _result(derived_signal_id, policy_value, raw_inputs, derived_inputs)
     value: object | None
     if row.kernel_id == "K01_TIME":
         value = _eval_k01(
