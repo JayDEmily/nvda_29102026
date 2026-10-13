@@ -245,3 +245,18 @@ def test_actual_numeric_score_boolean_catalogue_carrier_is_not_python_truthiness
     f["derived"]["D187"] = (owner._occurrence_kernel_value(occurrence),)
     result = ev("D192", f)
     assert (None if result is None else result.value) == expected
+
+
+@pytest.mark.parametrize("identity", ("D174", "D162"))
+def test_embedded_reference_time_cannot_relabel_an_older_actual_producer(identity):
+    f = fixture()
+    f["derived"][identity] = (replace(f["derived"][identity][0],
+        effective_at_utc=NOW - timedelta(seconds=1)),)
+    assert ev("D175", f) is None
+
+
+def test_live_greek_from_another_effective_snapshot_requires_revaluation():
+    f = hedge_fixture(fixture())
+    f["derived"]["D183"] = (replace(f["derived"]["D183"][0],
+        effective_at_utc=NOW - timedelta(seconds=1)),)
+    assert ev("D189", f) is None
