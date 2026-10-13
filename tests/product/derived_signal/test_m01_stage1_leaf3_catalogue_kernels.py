@@ -314,8 +314,13 @@ def test_every_stage1_row_routes_once_via_its_hash_bound_kernel(monkeypatch: obj
                     for did in component_ids
                 )
                 return kv(
-                    component_values, oid, at=AT - timedelta(minutes=age),
-                    metadata=(("units", "similarity/feature deltas"), ("result_shape", "structured")),
+                    component_values,
+                    oid,
+                    at=AT - timedelta(minutes=age),
+                    metadata=(
+                        ("units", "similarity/feature deltas"),
+                        ("result_shape", "structured"),
+                    ),
                 )
             result = evaluate(
                 row.derived_id,
