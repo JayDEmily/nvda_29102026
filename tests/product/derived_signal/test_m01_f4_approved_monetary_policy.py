@@ -219,3 +219,17 @@ def test_tampered_or_incomparable_action_evidence_refuses(mutation):
     elif mutation == "missing_hold_currency": f["derived"]["D188"] = (kv("D188", nt(utility=D(1))),)
     else: f["derived"]["D190"] = (kv("D190", D(2), utility_domain="sigmoid"),)
     assert ev("D192", f) is None
+
+
+def test_d176_sizes_against_canonical_currency_envelope():
+    f = fixture(); f["params"]["capital_fraction"] = D(".01")
+    value = budget(f)
+    f["raw"] = {}
+    f["derived"] = {"D175": (kv("D175", value),), "D165": (kv("D165", D(1)),),
+                    "D163": (kv("D163", D(1)),), "D132": (kv("D132", D(1)),)}
+    f["params"].update(risk_per_unit=D(5), uncertainty_multiplier=D(2), liquidity_multiplier=D(2),
+                       risk_per_unit_currency="USD", risk_per_unit_definition="GREEK_SHOCK_ENVELOPE_V1")
+    result = ev("D176", f)
+    assert result is not None and result.value == 5
+    f["params"]["risk_per_unit_currency"] = "EUR"
+    assert ev("D176", f) is None

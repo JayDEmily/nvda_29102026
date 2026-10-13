@@ -102,3 +102,19 @@ def test_missing_urgency_and_impossible_retained_edge_refuse():
     c = case(); c["params"]["urgency_cost_caps"] = ("urgent|0.5",)
     assert evaluate(c) is None
     assert evaluate(case(edge=D(-100), reserve=D(30))) is None
+
+
+def test_d164_consumes_retained_currency_slippage_once():
+    c = case()
+    schedule = api.ExecutionCostScheduleVersionV1(
+        "schedule", 1, (("fixed", D(1)),), (("exchange", D(2)),), (("multi", D(3)),), "USD"
+    )
+    def calculate(cost):
+        return _stage1.evaluate_stage1_kernel(
+            "D164", raw_inputs={}, derived_inputs={"D133": (k("D133", cost),)},
+            parameter_set=api.CalculationParameterSetV1("fees", 1, "P_BASIC", (("rule", "fees"),)),
+            contexts=(schedule,), as_of_utc=NOW, knowledge_cutoff_utc=NOW)
+    result = calculate(c["cost"])
+    assert result is not None and dict(result.value)["total"] == D(106)
+    cost = dict(c["cost"]);cost["currency"] = "EUR"
+    assert calculate(tuple(cost.items())) is None
