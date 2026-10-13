@@ -1,0 +1,9 @@
+src/nvda_desk/derived_signal_calculation_truth/_stage1.py:1928:101: E501 Line too long (105 > 100)
+src/nvda_desk/derived_signal_calculation_truth/_stage1.py:1930:101: E501 Line too long (107 > 100)
+src/nvda_desk/derived_signal_calculation_truth/_stage1.py:1934:101: E501 Line too long (102 > 100)
+src/nvda_desk/derived_signal_calculation_truth/_stage1.py:1935:101: E501 Line too long (110 > 100)
+src/nvda_desk/derived_signal_calculation_truth/api.py:1624:101: E501 Line too long (107 > 100)
+tests/product/derived_signal/test_m01_f4_review_regressions.py:13:56: F401 [*] `.test_m01_f4_approved_execution_edge.evaluate` imported but unused
+tests/product/derived_signal/test_m01_f4_review_regressions.py:17:5: F401 [*] `.test_m01_f4_approved_monetary_policy.budget` imported but unused
+Found 7 errors.
+[*] 2 fixable with the `--fix` option.

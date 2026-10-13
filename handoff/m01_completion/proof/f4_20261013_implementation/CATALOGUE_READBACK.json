@@ -1,0 +1,56 @@
+{
+  "base": "3fe9f792b10c1eb9d2797eccc2f81d623620f69c",
+  "effective_catalogue_sha256": "26c5486d1a4c7ff68025c7ce2d7e6847a7798759b847a716c942fd05345f3803",
+  "exact_field_changes": [
+    [
+      "D175",
+      "typed_contexts",
+      "CandidateStructureContext",
+      "CandidateStructureContext;RiskScopeContext"
+    ],
+    [
+      "D189",
+      "typed_contexts",
+      "",
+      "LivePositionContext;RiskScopeContext"
+    ]
+  ],
+  "identities": 209,
+  "stage1_rows": 174,
+  "stage1_closed_rows": 144,
+  "cross_stage_rows": [
+    "D097",
+    "D098",
+    "D107",
+    "D108",
+    "D128",
+    "D155",
+    "D156",
+    "D157",
+    "D158",
+    "D159",
+    "D163",
+    "D164",
+    "D166",
+    "D167",
+    "D171",
+    "D172",
+    "D173",
+    "D175",
+    "D176",
+    "D178",
+    "D186",
+    "D187",
+    "D189",
+    "D190",
+    "D191",
+    "D192",
+    "D199",
+    "D200",
+    "D207",
+    "D208"
+  ],
+  "kernel_dependency_changes": [],
+  "stage2_production_implementation_added": false,
+  "classification": "STATIC_AUTHORITY_ACCOUNTING_NOT_RUNTIME_ACCEPTANCE"
+}

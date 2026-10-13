@@ -6,7 +6,6 @@ D175 breach detection, or Stage-2/public reachability.
 """
 
 from datetime import UTC, datetime
-from decimal import Decimal
 
 import pytest
 
@@ -28,20 +27,41 @@ def _value(did: str, datum: object) -> _stage1.KernelValueV1:
 
 def _evaluate(did: str, *, without: str | None = None) -> _stage1.KernelResultV1 | None:
     from .test_m01_f4_approved_execution_edge import NOW, case, k
-    from .test_m01_f4_approved_monetary_policy import action_fixture, ev, fixture, hedge_fixture
+    from .test_m01_f4_approved_monetary_policy import action_fixture, fixture, hedge_fixture
+
     if did == "D178":
         c = case()
-        f = dict(raw={key: (k(key, value, contract_id="option", currency="USD", unit_convention_ref=("premium", 1)),) for key, value in c["raw"].items()},
-                 derived={"D133": (k("D133", c["cost"]),), "D177": (k("D177", c["utility"]),)},
-                 params=c["params"], contexts=c["contexts"])
+        f = dict(
+            raw={
+                key: (
+                    k(
+                        key,
+                        value,
+                        contract_id="option",
+                        currency="USD",
+                        unit_convention_ref=("premium", 1),
+                    ),
+                )
+                for key, value in c["raw"].items()
+            },
+            derived={"D133": (k("D133", c["cost"]),), "D177": (k("D177", c["utility"]),)},
+            params=c["params"],
+            contexts=c["contexts"],
+        )
     else:
         f = hedge_fixture(fixture()) if did == "D189" else action_fixture()
     if without is not None:
         f["derived"].pop(without)
     return _stage1.evaluate_stage1_kernel(
-        did, raw_inputs=f["raw"], derived_inputs=f["derived"],
-        parameter_set=api.CalculationParameterSetV1("mandatory", 1, "P_RULE", tuple(f["params"].items())),
-        contexts=f["contexts"], as_of_utc=NOW, knowledge_cutoff_utc=NOW,
+        did,
+        raw_inputs=f["raw"],
+        derived_inputs=f["derived"],
+        parameter_set=api.CalculationParameterSetV1(
+            "mandatory", 1, "P_RULE", tuple(f["params"].items())
+        ),
+        contexts=f["contexts"],
+        as_of_utc=NOW,
+        knowledge_cutoff_utc=NOW,
     )
 
 

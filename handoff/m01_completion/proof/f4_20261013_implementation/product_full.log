@@ -1,0 +1,681 @@
+........................................................................ [  5%]
+........................................................................ [ 11%]
+........................................................................ [ 17%]
+........................................................................ [ 23%]
+........................................................................ [ 29%]
+........................................................................ [ 34%]
+........................................................................ [ 40%]
+........................................................................ [ 46%]
+........................................................................ [ 52%]
+........................................................................ [ 58%]
+........................................................................ [ 63%]
+........................................................................ [ 69%]
+........................................................................ [ 75%]
+........................................................................ [ 81%]
+........................................................................ [ 87%]
+........................................................................ [ 92%]
+.........................EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE [ 98%]
+EEEEEEEE........                                                         [100%]
+==================================== ERRORS ====================================
+______ ERROR at setup of test_tcp_probe_requires_explicit_degraded_opt_in ______
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_tcp_probe_uses_direct_process_only_under_explicit_degraded_opt_in _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_degraded_tcp_pid_namespace_probe_is_explicitly_unproved _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+___ ERROR at setup of test_degraded_tcp_probe_uses_confined_work_directories ___
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_each_commit_ack_action_prepares_owner_before_ready_and_write _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_______ ERROR at setup of test_proof_environment_is_real_postgresql_17_9 _______
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_postgresql_sync_commit_barrier_itself_waits_for_server_acknowledgement _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_semantic_write_handshake_excludes_owner_setup_transaction _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_semantic_write_trace_rejects_split_marker_surrogate_payload_in_postgresql _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_semantic_marker_xid_binding_rejects_setup_then_semantic_commits _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_semantic_write_trace_rejects_split_marker_surrogate_payload_transactions _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_public_factory_uses_same_semantic_owner_type_with_and_without_postgresql _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_process_boundary_forbids_shared_local_file_persistence _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_semantic_state_moves_with_postgresql_database_clone_and_not_original_process_state _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_public_return_barrier_stops_separate_session_descendant_process _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_public_success_return_requires_postgresql_commit_acknowledgement[boundary_write_policy-policy-read_policy-None] _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_public_success_return_requires_postgresql_commit_acknowledgement[boundary_write_capture-capture-read_capture-None] _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_public_success_return_requires_postgresql_commit_acknowledgement[boundary_write_observation-observation-read_observation-None] _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_public_success_return_requires_postgresql_commit_acknowledgement[boundary_write_zero_assessment-zero-read_assessment-zero] _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_public_success_return_requires_postgresql_commit_acknowledgement[boundary_write_one_assessment-one-read_assessment-one] _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_command_return_is_durable_if_writer_is_killed_immediately_after_success _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_each_command_is_visible_before_writer_shutdown_and_matches_prewrite_authority _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_postgresql_is_only_configured_cross_process_semantic_source_for_complete_facts _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_postgresql_restart_preserves_catalogue_id_numeric_sign_precision_type_and_null[R038-Last Size-value0-contracts/shares] _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_postgresql_restart_preserves_catalogue_id_numeric_sign_precision_type_and_null[R084-Bid Option Computation.impliedVolatility--1.23456789e-10-volatility] _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_postgresql_restart_preserves_catalogue_id_numeric_sign_precision_type_and_null[R246-DGS3MO--0.375-Percent] _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_durable_retry_and_conflicting_reuse_cross_process_boundaries _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_append_only_assessment_chain_is_exact_across_fresh_processes _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_restart_preserves_policy_capture_assessment_and_scope_high_water_invariants _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_restart_reconciliation_commits_capture_before_assessment_and_recovers_exact_facts _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_public_owner_accepts_explicit_technical_persistence_port_injection _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_record_only_proxy_rewrite_rejects_cached_private_adapter_capability _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_record_only_proxy_rewrite_rejects_nested_private_adapter_capability[list] _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_record_only_proxy_rewrite_rejects_nested_private_adapter_capability[dict] _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_record_only_proxy_rewrite_rejects_nested_private_adapter_capability[tuple] _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_record_only_proxy_rewrite_rejects_nested_private_adapter_capability[partial_function] _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_record_only_proxy_rewrite_rejects_nested_private_adapter_capability[partial_argument] _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_record_only_proxy_rewrite_rejects_nested_private_adapter_capability[partial_keyword] _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_record_only_proxy_rewrite_rejects_nested_private_adapter_capability[closure] _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_record_only_proxy_rewrite_rejects_external_private_adapter_capability[class] _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_record_only_proxy_rewrite_rejects_external_private_adapter_capability[slots] _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_record_only_proxy_rewrite_rejects_external_private_adapter_capability[global] _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_record_only_proxy_rewrite_rejects_external_private_adapter_capability[module] _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_record_only_proxy_rewrite_rejects_weak_adapter_capability[ref] _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_record_only_proxy_rewrite_rejects_weak_adapter_capability[method] _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_record_only_proxy_rewrite_rejects_weak_adapter_capability[proxy] _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_record_only_proxy_rewrite_rejects_weak_adapter_capability[callable_proxy] _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_injected_record_only_port_rejects_private_adapter_recovery _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_graph_checker_does_not_treat_adapter_holding_record_proxy_as_opaque _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_record_only_proxy_rewrite_rewrites_nested_public_storage_capabilities _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_postgresql_durability_port_exposes_only_authorised_transaction_query_contract _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_postgresql_adapter_preserves_owner_decided_assessment_without_rederiving _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_postgresql_adapter_is_invariant_under_opposing_eligibility_authority _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_owner_package_has_no_alternate_durable_backend_or_external_semantic_service _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_persistence_proof_does_not_claim_cross_kind_atomicity_or_replay_sla _
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+/mnt/data/rc06_work/repository/tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+=========================== short test summary info ============================
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_tcp_probe_requires_explicit_degraded_opt_in
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_tcp_probe_uses_direct_process_only_under_explicit_degraded_opt_in
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_degraded_tcp_pid_namespace_probe_is_explicitly_unproved
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_degraded_tcp_probe_uses_confined_work_directories
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_each_commit_ack_action_prepares_owner_before_ready_and_write
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_proof_environment_is_real_postgresql_17_9
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_postgresql_sync_commit_barrier_itself_waits_for_server_acknowledgement
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_semantic_write_handshake_excludes_owner_setup_transaction
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_semantic_write_trace_rejects_split_marker_surrogate_payload_in_postgresql
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_semantic_marker_xid_binding_rejects_setup_then_semantic_commits
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_semantic_write_trace_rejects_split_marker_surrogate_payload_transactions
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_public_factory_uses_same_semantic_owner_type_with_and_without_postgresql
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_process_boundary_forbids_shared_local_file_persistence
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_semantic_state_moves_with_postgresql_database_clone_and_not_original_process_state
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_public_return_barrier_stops_separate_session_descendant_process
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_public_success_return_requires_postgresql_commit_acknowledgement[boundary_write_policy-policy-read_policy-None]
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_public_success_return_requires_postgresql_commit_acknowledgement[boundary_write_capture-capture-read_capture-None]
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_public_success_return_requires_postgresql_commit_acknowledgement[boundary_write_observation-observation-read_observation-None]
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_public_success_return_requires_postgresql_commit_acknowledgement[boundary_write_zero_assessment-zero-read_assessment-zero]
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_public_success_return_requires_postgresql_commit_acknowledgement[boundary_write_one_assessment-one-read_assessment-one]
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_command_return_is_durable_if_writer_is_killed_immediately_after_success
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_each_command_is_visible_before_writer_shutdown_and_matches_prewrite_authority
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_postgresql_is_only_configured_cross_process_semantic_source_for_complete_facts
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_postgresql_restart_preserves_catalogue_id_numeric_sign_precision_type_and_null[R038-Last Size-value0-contracts/shares]
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_postgresql_restart_preserves_catalogue_id_numeric_sign_precision_type_and_null[R084-Bid Option Computation.impliedVolatility--1.23456789e-10-volatility]
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_postgresql_restart_preserves_catalogue_id_numeric_sign_precision_type_and_null[R246-DGS3MO--0.375-Percent]
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_durable_retry_and_conflicting_reuse_cross_process_boundaries
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_append_only_assessment_chain_is_exact_across_fresh_processes
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_restart_preserves_policy_capture_assessment_and_scope_high_water_invariants
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_restart_reconciliation_commits_capture_before_assessment_and_recovers_exact_facts
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_public_owner_accepts_explicit_technical_persistence_port_injection
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_record_only_proxy_rewrite_rejects_cached_private_adapter_capability
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_record_only_proxy_rewrite_rejects_nested_private_adapter_capability[list]
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_record_only_proxy_rewrite_rejects_nested_private_adapter_capability[dict]
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_record_only_proxy_rewrite_rejects_nested_private_adapter_capability[tuple]
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_record_only_proxy_rewrite_rejects_nested_private_adapter_capability[partial_function]
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_record_only_proxy_rewrite_rejects_nested_private_adapter_capability[partial_argument]
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_record_only_proxy_rewrite_rejects_nested_private_adapter_capability[partial_keyword]
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_record_only_proxy_rewrite_rejects_nested_private_adapter_capability[closure]
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_record_only_proxy_rewrite_rejects_external_private_adapter_capability[class]
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_record_only_proxy_rewrite_rejects_external_private_adapter_capability[slots]
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_record_only_proxy_rewrite_rejects_external_private_adapter_capability[global]
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_record_only_proxy_rewrite_rejects_external_private_adapter_capability[module]
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_record_only_proxy_rewrite_rejects_weak_adapter_capability[ref]
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_record_only_proxy_rewrite_rejects_weak_adapter_capability[method]
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_record_only_proxy_rewrite_rejects_weak_adapter_capability[proxy]
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_record_only_proxy_rewrite_rejects_weak_adapter_capability[callable_proxy]
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_injected_record_only_port_rejects_private_adapter_recovery
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_graph_checker_does_not_treat_adapter_holding_record_proxy_as_opaque
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_record_only_proxy_rewrite_rewrites_nested_public_storage_capabilities
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_postgresql_durability_port_exposes_only_authorised_transaction_query_contract
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_postgresql_adapter_preserves_owner_decided_assessment_without_rederiving
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_postgresql_adapter_is_invariant_under_opposing_eligibility_authority
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_owner_package_has_no_alternate_durable_backend_or_external_semantic_service
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_persistence_proof_does_not_claim_cross_kind_atomicity_or_replay_sla
+1185 passed, 55 errors in 3.18s

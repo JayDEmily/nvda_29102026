@@ -1,0 +1,192 @@
+........................................................................ [  9%]
+........................................................................ [ 19%]
+.............................................FFFF......................F [ 28%]
+..F.FF.................................................................. [ 38%]
+........................................................................ [ 48%]
+........................................................................ [ 57%]
+........................................................................ [ 67%]
+........................................................................ [ 77%]
+........................................................................ [ 86%]
+.........................................F...............F.............. [ 96%]
+...........F..............                                               [100%]
+=================================== FAILURES ===================================
+_ test_cross_stage_kernel_refuses_missing_mandatory_declared_predecessor[D178-D133] _
+
+did = 'D178', missing = 'D133'
+
+>   ???
+E   AssertionError: assert None is not None
+E    +  where None = _evaluate('D178')
+
+/mnt/data/NVDA_RC07_WORK_20261012/repository/tests/product/derived_signal/test_m01_f4_cross_stage_declared_predecessor_fail_closed.py:82: AssertionError
+_ test_cross_stage_kernel_refuses_missing_mandatory_declared_predecessor[D178-D177] _
+
+did = 'D178', missing = 'D177'
+
+>   ???
+E   AssertionError: assert None is not None
+E    +  where None = _evaluate('D178')
+
+/mnt/data/NVDA_RC07_WORK_20261012/repository/tests/product/derived_signal/test_m01_f4_cross_stage_declared_predecessor_fail_closed.py:82: AssertionError
+_ test_cross_stage_kernel_refuses_missing_mandatory_declared_predecessor[D189-D175] _
+
+did = 'D189', missing = 'D175'
+
+>   ???
+E   AssertionError: assert None is not None
+E    +  where None = _evaluate('D189')
+
+/mnt/data/NVDA_RC07_WORK_20261012/repository/tests/product/derived_signal/test_m01_f4_cross_stage_declared_predecessor_fail_closed.py:82: AssertionError
+_ test_cross_stage_kernel_refuses_missing_mandatory_declared_predecessor[D192-D175] _
+
+did = 'D192', missing = 'D175'
+
+>   ???
+E   AssertionError: assert None is not None
+E    +  where None = _evaluate('D192')
+
+/mnt/data/NVDA_RC07_WORK_20261012/repository/tests/product/derived_signal/test_m01_f4_cross_stage_declared_predecessor_fail_closed.py:82: AssertionError
+_____________ test_d192_fixed_action_order_from_controlled_values ______________
+
+>   ???
+E   assert (None is not None)
+
+/mnt/data/rc06_work/repository/tests/product/derived_signal/test_m01_f4_cross_stage_remaining_own_kernel.py:137: AssertionError
+_ test_stage1_cross_stage_rule_algebra_numeric_and_lineage[D175-derived2-raw2-params2-expected2] _
+
+did = 'D175', derived = {'D162': Decimal('80'), 'D174': Decimal('70')}
+raw = {'R205': Decimal('100'), 'R206': Decimal('50'), 'R208': Decimal('60'), 'R209': Decimal('90')}
+params = (), expected = Decimal('50')
+
+>   ???
+E   assert (None is not None)
+
+/mnt/data/rc06_work/repository/tests/product/derived_signal/test_m01_f4_cross_stage_rule_algebra_own_kernel.py:143: AssertionError
+_ test_stage1_cross_stage_rule_algebra_numeric_and_lineage[D178-derived4-raw4-params4-expected4] _
+
+did = 'D178', derived = {'D133': Decimal('4'), 'D177': Decimal('2')}
+raw = {'R034': Decimal('4'), 'R035': Decimal('6'), 'R189': Decimal('5'), 'R190': Decimal('8')}
+params = (('allowed_execution_cost_per_unit', Decimal('0.5')), ('side', 'buy'))
+expected = Decimal('5.5')
+
+>   ???
+E   assert (None is not None)
+
+/mnt/data/rc06_work/repository/tests/product/derived_signal/test_m01_f4_cross_stage_rule_algebra_own_kernel.py:143: AssertionError
+_ test_stage1_cross_stage_rule_algebra_numeric_and_lineage[D189-derived5-raw5-params5-expected5] _
+
+did = 'D189'
+derived = {'D175': Decimal('30'), 'D181': Decimal('15'), 'D182': Decimal('4'), 'D183': Decimal('5'), ...}
+raw = {}, params = (('target_bands', ('delta|0|10', 'gamma|0|10')),)
+expected = (('delta', Decimal('-10')), ('gamma', Decimal('0')))
+
+>   ???
+E   assert (None is not None)
+
+/mnt/data/rc06_work/repository/tests/product/derived_signal/test_m01_f4_cross_stage_rule_algebra_own_kernel.py:143: AssertionError
+_________ test_every_stage1_row_routes_once_via_its_hash_bound_kernel __________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fce84c34180>
+
+    def test_every_stage1_row_routes_once_via_its_hash_bound_kernel(monkeypatch: object) -> None:
+        # Runtime branch census: inject a recorder at each kernel's unique
+        # mathematical entrypoint. This proves dispatch, not numerical semantics;
+        # separate live mathematical tests exercise the real implementations.
+        from pytest import MonkeyPatch
+    
+        assert isinstance(monkeypatch, MonkeyPatch)
+        dispatch = {
+            "K01_TIME": "_eval_k01",
+            "K02_ALGEBRA": "_eval_k02",
+            "K03_CHANGE_RETURN": "_eval_k03",
+            "K04_STANDARDISE_RANK": "_eval_k04",
+            "K05_REALIZED_RISK": "_eval_k05",
+            "K06_REGRESSION_DEPENDENCE": "_eval_k06",
+            "K07_WEIGHTED_SCORE": "_eval_k07",
+            "K08_RULE_BUCKET_POLICY": "_eval_k08",
+            "K16_STRUCTURED_ASSEMBLY": "_eval_k16",
+            "K17_ORDER_FLOW_IMBALANCE": "_eval_k17",
+        }
+        routed: list[str] = []
+        for kernel, name in dispatch.items():
+            def marker(*args: object, _kernel: str = kernel, **kwargs: object) -> Decimal:
+                routed.append(_kernel)
+                return Decimal(3)
+            monkeypatch.setattr(_stage1, name, marker)
+        for row in _catalogue.catalogue_rows():
+            if row.kernel_id not in dispatch:
+                continue
+            routed.clear()
+            if row.derived_id == "D186":
+                # D186 has a mandatory typed entry anchor. Dispatch must receive
+                # valid D155 carriers, not bypass the authorised preconditions.
+                component_ids = _catalogue.catalogue_row("D155").derived_dependencies
+                def state(
+                    oid: str, age: int, component_ids: tuple[str, ...] = component_ids
+                ) -> _stage1.KernelValueV1:
+                    component_values = tuple(
+                        (
+                            did,
+                            Decimal(1),
+                            f"{oid}-{did}",
+                            (("units", _catalogue.catalogue_row(did).units),),
+                        )
+                        for did in component_ids
+                    )
+                    return kv(
+                        component_values,
+                        oid,
+                        at=AT - timedelta(minutes=age),
+                        metadata=(
+                            ("units", _catalogue.catalogue_row("D155").units),
+                            ("result_shape", "structured"),
+                        ),
+                    )
+                result = evaluate(
+                    row.derived_id,
+                    parameters=param(
+                        "P_RULE",
+                        **{
+                            "similarity_feature:1": (component_ids[0], "component"),
+                            "similarity_weight:1": Decimal(1),
+                            "similarity_scale:1": Decimal(1),
+                        },
+                    ),
+                    derived={"D155": (state("entry", 3), state("current", 0))},
+                    contexts=(api.EntryStateContextV1("anchor", 1, "entry"),),
+                )
+            else:
+                result = evaluate(row.derived_id, parameters=param(row.parameter_profiles[0]))
+>           assert result is not None and result.value == Decimal(3), row.derived_id
+E           AssertionError: D175
+E           assert (None is not None)
+
+tests/product/derived_signal/test_m01_stage1_leaf3_catalogue_kernels.py:345: AssertionError
+_____ test_stage1_runtime_catalogue_is_exact_hash_bound_209_row_authority ______
+
+>   ???
+E   AssertionError: assert '26c5486d1a4c...2fd05345f3803' == 'd651436df1fc...3c9c32fd82aa7'
+E     
+E     - d651436df1fcd1395f8f1147dfd80db1ed178da4834447a947c3c9c32fd82aa7
+E     + 26c5486d1a4c7ff68025c7ce2d7e6847a7798759b847a716c942fd05345f3803
+
+/mnt/data/rc06_work/repository/tests/product/derived_signal/test_m01_stage1_semantics.py:89: AssertionError
+_ test_k08_candidate_selection_risk_size_limit_and_action_precedence_are_deterministic _
+
+>   ???
+E   assert (None is not None)
+
+/mnt/data/rc06_work/repository/tests/product/derived_signal/test_m01_stage1_semantics.py:1228: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/derived_signal/test_m01_f4_cross_stage_declared_predecessor_fail_closed.py::test_cross_stage_kernel_refuses_missing_mandatory_declared_predecessor[D178-D133]
+FAILED tests/product/derived_signal/test_m01_f4_cross_stage_declared_predecessor_fail_closed.py::test_cross_stage_kernel_refuses_missing_mandatory_declared_predecessor[D178-D177]
+FAILED tests/product/derived_signal/test_m01_f4_cross_stage_declared_predecessor_fail_closed.py::test_cross_stage_kernel_refuses_missing_mandatory_declared_predecessor[D189-D175]
+FAILED tests/product/derived_signal/test_m01_f4_cross_stage_declared_predecessor_fail_closed.py::test_cross_stage_kernel_refuses_missing_mandatory_declared_predecessor[D192-D175]
+FAILED tests/product/derived_signal/test_m01_f4_cross_stage_remaining_own_kernel.py::test_d192_fixed_action_order_from_controlled_values
+FAILED tests/product/derived_signal/test_m01_f4_cross_stage_rule_algebra_own_kernel.py::test_stage1_cross_stage_rule_algebra_numeric_and_lineage[D175-derived2-raw2-params2-expected2]
+FAILED tests/product/derived_signal/test_m01_f4_cross_stage_rule_algebra_own_kernel.py::test_stage1_cross_stage_rule_algebra_numeric_and_lineage[D178-derived4-raw4-params4-expected4]
+FAILED tests/product/derived_signal/test_m01_f4_cross_stage_rule_algebra_own_kernel.py::test_stage1_cross_stage_rule_algebra_numeric_and_lineage[D189-derived5-raw5-params5-expected5]
+FAILED tests/product/derived_signal/test_m01_stage1_leaf3_catalogue_kernels.py::test_every_stage1_row_routes_once_via_its_hash_bound_kernel
+FAILED tests/product/derived_signal/test_m01_stage1_semantics.py::test_stage1_runtime_catalogue_is_exact_hash_bound_209_row_authority
+FAILED tests/product/derived_signal/test_m01_stage1_semantics.py::test_k08_candidate_selection_risk_size_limit_and_action_precedence_are_deterministic
+11 failed, 735 passed in 1.61s

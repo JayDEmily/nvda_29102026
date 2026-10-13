@@ -14,12 +14,30 @@ UNITS = ("shares", "shares_per_currency", "currency_per_volatility_point", "curr
 
 
 def kv(identity, value, subject="NVDA", **metadata):
-    references = tuple(api.VersionRefV1(name, 1) for name in (
-        "candidate", "live", "scope", "membership", "risk-definition", "grid", "model", "option-model"))
-    provenance = dict(parameter_context_refs=references,
-        convention_refs=(api.VersionRefV1("option-model", 1),), source_knowledge_cutoff_utc=NOW)
-    predecessors = {"D174": ("D160", "D168"), "D162": ("D160", "D174"),
-                    "D175": ("D162", "D174"), "D189": ("D181", "D182", "D183", "D184", "D175")}
+    references = tuple(
+        api.VersionRefV1(name, 1)
+        for name in (
+            "candidate",
+            "live",
+            "scope",
+            "membership",
+            "risk-definition",
+            "grid",
+            "model",
+            "option-model",
+        )
+    )
+    provenance = dict(
+        parameter_context_refs=references,
+        convention_refs=(api.VersionRefV1("option-model", 1),),
+        source_knowledge_cutoff_utc=NOW,
+    )
+    predecessors = {
+        "D174": ("D160", "D168"),
+        "D162": ("D160", "D174"),
+        "D175": ("D162", "D174"),
+        "D189": ("D181", "D182", "D183", "D184", "D175"),
+    }
     if identity in predecessors:
         provenance["predecessor_occurrence_ids"] = predecessors[identity]
     metadata = provenance | metadata

@@ -36,3 +36,23 @@ PostgreSQL execution BLOCKED in current host: only uid/gid 0 is mapped. runuser
 reports `cannot set groups: Operation not permitted`; chown to oai reports
 `Invalid argument`; unshare alternate non-root mapping reports `Operation not permitted`.
 No PostgreSQL startup/security check is bypassed. Database acceptance cannot be claimed.
+
+## User-requested pause, 13-10-2026 21:47 Melbourne
+
+Development paused; all local edits and logs are being frozen as a preservation
+checkpoint, not promoted to a completed Stage-1 candidate. See PAUSE_HANDOFF.md.
+Independent review returned four Important findings; their RED proofs and repairs
+are preserved. Latest focused regressions are 15 passed. Full-tree verification
+after the last snapshot edits, PostgreSQL and final Stage-1 evidence reconciliation
+remain unfinished. Stage 2 is not started.
+
+Ruling: preserve exact finite-Decimal vector products after rounding only the shared
+lambda — the approved clipping equation requires common scaling — independent
+component rounding can reject a valid hedge or distort its direction.
+Ruling: validate supplied live context against actual selected native quantities,
+contracts, multipliers and named units; unknown generic units remain insufficient
+risk evidence — matching IDs alone do not prove scope — wrong matching would
+misstate monetary risk. No extra catalogue context requirement is introduced.
+Ruling: classify the independent reviewer return as evidence and repaired findings,
+not Stage-1 admission — only the review's inspected tree was assessed — overstating
+this boundary would hide unfinished acceptance obligations.

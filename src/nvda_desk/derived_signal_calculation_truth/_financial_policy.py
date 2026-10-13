@@ -55,7 +55,7 @@ def finite_decimal(value: Fraction) -> Decimal:
         return Decimal(scaled).scaleb(-places)
 
 
-def producer_evidence(value, *, context_refs=(), convention_refs=(), predecessors=(), cutoff):
+def producer_evidence(value, *, context_refs=(), convention_refs=(), predecessors=(), cutoff, as_of):
     metadata = dict(value.metadata)
     contexts = metadata["parameter_context_refs"]
     conventions = metadata["convention_refs"]
@@ -71,6 +71,7 @@ def producer_evidence(value, *, context_refs=(), convention_refs=(), predecessor
         or not set(predecessors)
         <= set(metadata["predecessor_occurrence_ids"] if predecessors else ())
         or metadata["source_knowledge_cutoff_utc"] != cutoff
+        or value.effective_at_utc != as_of
     ):
         raise ValueError("embedded claim differs from actual producer provenance")
 
@@ -131,13 +132,13 @@ def limit_price(raw, derived, params, contexts, now, cutoff):
         cost_input,
         context_refs=(ref(candidate), ref(order)),
         convention_refs=(cost["convention_ref"],),
-        cutoff=cutoff,
+        cutoff=cutoff, as_of=now,
     )
     producer_evidence(
         one(derived, "D177", now, cutoff),
         context_refs=(ref(candidate), edge["utility_definition_ref"]),
         convention_refs=(edge["convention_ref"],),
-        cutoff=cutoff,
+        cutoff=cutoff, as_of=now,
     )
     if cost["convention_ref"] != edge["convention_ref"] or not cost["convention_ref"]:
         raise ValueError("convention mismatch")
@@ -405,14 +406,14 @@ def risk_budget(raw, derived, params, contexts, now, cutoff):
         context_refs=references,
         convention_refs=(matrix["option_convention_ref"],),
         predecessors=(matrix["d168_occurrence_id"],),
-        cutoff=cutoff,
+        cutoff=cutoff, as_of=now,
     )
     producer_evidence(
         tail_input,
         context_refs=references,
         convention_refs=(tail["option_convention_ref"],),
         predecessors=(matrix_input.occurrence_id,),
-        cutoff=cutoff,
+        cutoff=cutoff, as_of=now,
     )
     if (
         matrix["currency"] != scope.currency_code
@@ -565,7 +566,7 @@ def hedge_adjustment(derived, params, contexts, now, cutoff):
             )
         ),
         predecessors=(b["d162_occurrence_id"], b["d174_occurrence_id"]),
-        cutoff=cutoff,
+        cutoff=cutoff, as_of=now,
     )
     if (
         b["scope_ref"] != ref(scope)
@@ -583,6 +584,10 @@ def hedge_adjustment(derived, params, contexts, now, cutoff):
         if (
             meta.get("canonical_risk_unit", meta.get("units")) != unit
             or not position_ref_matches
+            or api.VersionRefV1(scope.context_id, scope.version)
+            not in meta.get("parameter_context_refs", ())
+            or value.effective_at_utc != now
+            or meta.get("source_knowledge_cutoff_utc") != cutoff
             or set(meta["position_source_refs"]) != set(live.m00_occurrence_refs)
         ):
             raise ValueError("live exposure units/source mismatch")
@@ -671,7 +676,7 @@ def action_decision(derived, params, now, cutoff):
             )
         ),
         predecessors=(b["d162_occurrence_id"], b["d174_occurrence_id"]),
-        cutoff=cutoff,
+        cutoff=cutoff, as_of=now,
     )
     producer_evidence(
         inputs["D189"],
@@ -686,7 +691,7 @@ def action_decision(derived, params, now, cutoff):
             )
         ),
         predecessors=(inputs["D175"].occurrence_id,),
-        cutoff=cutoff,
+        cutoff=cutoff, as_of=now,
     )
     if any(b[key] != h[key] for key in (*REFERENCE_KEYS, *DEFINITION_KEYS, *SCOPE_KEYS)):
         raise ValueError("hedge/budget reference mismatch")

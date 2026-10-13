@@ -1930,13 +1930,15 @@ def _eval_k02(
                             dict(v.metadata).get("contract_id") != contract for v in row.values()
                         )
                         or dict(row["R212"].metadata).get("canonical_units") != "contracts"
-                        or dict(row["R016"].metadata).get("canonical_units") != "shares_per_contract"
+                        or dict(row["R016"].metadata).get("canonical_units")
+                        != "shares_per_contract"
                     ):
                         return None
                     if scopes:
                         scope = scopes[0]
                         if (
-                            scope.live_position_ref != api.VersionRefV1(live.context_id, live.version)
+                            scope.live_position_ref
+                            != api.VersionRefV1(live.context_id, live.version)
                             or set(scope.position_membership_source_refs)
                             != set(live.m00_occurrence_refs)
                                 or dict(row[greek].metadata).get("currency") != scope.currency_code
