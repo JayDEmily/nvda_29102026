@@ -1,0 +1,29 @@
+..................................................................F.F... [ 97%]
+..                                                                       [100%]
+=================================== FAILURES ===================================
+__________ test_current_source_tree_passes_admitted_static_typecheck ___________
+
+>   ???
+E   AssertionError: error: INTERNAL ERROR -- Please try using mypy master on GitHub:
+E     https://mypy.readthedocs.io/en/stable/common_issues.html#using-a-development-mypy-build
+E     If this issue continues with mypy master, please report a bug at https://github.com/python/mypy/issues
+E     version: 1.20.1
+E     note: please use --show-traceback to print a traceback when reporting a bug
+E     
+E   assert 2 == 0
+E    +  where 2 = CompletedProcess(args=['/workspace/scratch/5eb867831d92/stage1_proof_env/venv/bin/python', '-m', 'mypy', '--config-fil...om/python/mypy/issues\nversion: 1.20.1\nnote: please use --show-traceback to print a traceback when reporting a bug\n').returncode
+
+/mnt/data/rc06_work/repository/tests/architecture/test_static_typecheck.py:32: AssertionError
+_________ test_incompatible_python_visible_public_seam_use_is_rejected _________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-1/test_incompatible_python_visib0')
+
+>   ???
+E   AssertionError: assert 2 == 1
+E    +  where 2 = CompletedProcess(args=['/workspace/scratch/5eb867831d92/stage1_proof_env/venv/bin/python', '-m', 'mypy', '--config-fil...om/python/mypy/issues\nversion: 1.20.1\nnote: please use --show-traceback to print a traceback when reporting a bug\n').returncode
+
+/mnt/data/rc06_work/repository/tests/architecture/test_static_typecheck.py:64: AssertionError
+=========================== short test summary info ============================
+FAILED tests/architecture/test_static_typecheck.py::test_current_source_tree_passes_admitted_static_typecheck
+FAILED tests/architecture/test_static_typecheck.py::test_incompatible_python_visible_public_seam_use_is_rejected
+2 failed, 72 passed in 3.77s

@@ -681,6 +681,47 @@ class VersionRefV1:
 
 
 @dataclass(frozen=True, slots=True)
+class RiskScopeContextV1(_VersionedContextV1):
+    """Exact managed-sleeve references; contains no calculated risk answers."""
+
+    account_identity: str
+    account_subject_identity: str
+    currency_code: str
+    sleeve_identity: str
+    underlying_identity: str
+    scope_mode: str
+    candidate_structure_ref: VersionRefV1
+    live_position_ref: VersionRefV1 | None
+    position_membership_source_refs: tuple[str, ...]
+    membership_definition_ref: VersionRefV1
+    risk_definition_parameter_ref: VersionRefV1
+
+    def __post_init__(self) -> None:
+        _VersionedContextV1.__post_init__(self)
+        for name in (
+            "account_identity", "account_subject_identity", "currency_code", "sleeve_identity"
+        ):
+            _require_non_empty_string(getattr(self, name), name)
+        if self.underlying_identity != "NVDA":
+            raise ValueError("risk scope V1 requires NVDA")
+        if self.scope_mode not in {"candidate_sleeve", "live_sleeve"}:
+            raise ValueError("unadmitted risk scope mode")
+        for name in (
+            "candidate_structure_ref", "membership_definition_ref", "risk_definition_parameter_ref"
+        ):
+            if type(getattr(self, name)) is not VersionRefV1:
+                raise TypeError(f"{name} must be VersionRefV1")
+        if self.live_position_ref is not None and type(self.live_position_ref) is not VersionRefV1:
+            raise TypeError("live_position_ref must be VersionRefV1 or None")
+        if self.scope_mode == "live_sleeve" and self.live_position_ref is None:
+            raise ValueError("live sleeve requires a live-position reference")
+        _require_string_tuple(
+            self.position_membership_source_refs,
+            "position_membership_source_refs", non_empty=True, distinct=True,
+        )
+
+
+@dataclass(frozen=True, slots=True)
 class RawInputLineageV1:
     raw_signal_id: str
     observation_occurrence_id: str
@@ -3051,6 +3092,7 @@ __all__ = [
     "PnLConventionVersionV1",
     "RawInputBindingV1",
     "RawInputLineageV1",
+    "RiskScopeContextV1",
     "RawProjectionReaderV1",
     "RecalculationScheduleV1",
     "RequiredFieldPolicyV1",

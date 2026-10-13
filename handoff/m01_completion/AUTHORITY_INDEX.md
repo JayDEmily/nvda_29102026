@@ -52,3 +52,8 @@ and hash-bound runtime loader are synchronised under this narrow exception.
 ## D116 bounded normative dependency correction — Programme Owner, 2026-10-11
 
 `authority/D116_CALCULATION_DEFINITION_AUTHORISED_CORRECTION_20261011.md` establishes the option-right-conditional `R041;R047;R048` dependency for D116, superseding only the old `R041;R075` row. D116 arithmetic and all unrelated catalogue rows, including D117/R075, remain unchanged. Previous catalogue SHA-256 digests above are historical. The new effective runtime/authority catalogue SHA-256 is `d651436df1fcd1395f8f1147dfd80db1ed178da4834447a947c3c9c32fd82aa7` (two byte-identical CSV copies). The original RC14 R075 numerical witness remains in Git history but is not semantic acceptance evidence.
+
+## Owner-approved F4 clarification, 13 October 2026
+
+See `authority/F4_OWNER_APPROVED_CLARIFICATION_20261013.md`.
+Effective catalogue SHA-256: `26c5486d1a4c7ff68025c7ce2d7e6847a7798759b847a716c942fd05345f3803`; predecessor `d651436df1fcd1395f8f1147dfd80db1ed178da4834447a947c3c9c32fd82aa7` remains historical evidence. Only D175/D189 typed-context conjunctions change.
