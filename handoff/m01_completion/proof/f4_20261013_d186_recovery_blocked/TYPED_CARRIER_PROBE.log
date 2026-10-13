@@ -1,0 +1,8 @@
+source_module= /mnt/data/nvda_m01_f4_recovery/repository/src/nvda_desk/derived_signal_calculation_truth/_stage1.py
+flat_immutable_scalars ADMITTED P_RULE
+inherited_nested_named_pairs REFUSED TypeError parameters tuple values must contain immutable scalar values
+D155_OWN_KERNEL= RESULT
+D155_component_count= 9
+D155_first_component_schema_types= ('str', 'Decimal', 'str', 'tuple')
+D155_component_ids= ('D150', 'D152', 'D084', 'D078', 'D153', 'D154', 'D061', 'D132', 'D008')
+D155_first_component= ('D150', Decimal('1'), 'component-D150', (('units', 'score'), ('effective_at_utc', datetime.datetime(2026, 10, 13, 3, 0, tzinfo=datetime.timezone.utc)), ('received_ts_utc', datetime.datetime(2026, 10, 13, 3, 0, tzinfo=datetime.timezone.utc))))

@@ -1,0 +1,38 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+__ test_d186_resolves_explicit_stored_entry_id_not_undeclared_inline_payload ___
+
+>   ???
+
+/mnt/data/rc06_work/repository/tests/product/derived_signal/test_m01_f4_cross_stage_d186_entry_anchor.py:45:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+/mnt/data/rc06_work/repository/tests/product/derived_signal/test_m01_f4_cross_stage_d186_entry_anchor.py:24: in _eval
+    ???
+<string>:8: in __init__
+    ???
+src/nvda_desk/derived_signal_calculation_truth/api.py:325: in __post_init__
+    _require_named_context_values(self.parameters, "parameters", non_empty=True)
+src/nvda_desk/derived_signal_calculation_truth/api.py:242: in _require_named_context_values
+    _require_immutable_context_value(configured, field_name)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = (('x', Decimal('1')),), field_name = 'parameters'
+
+    def _require_immutable_context_value(value: ImmutableContextValueV1, field_name: str) -> None:
+        if type(value) in {bool, int, Decimal, str, timedelta}:
+            if type(value) is str and not value:
+                raise ValueError(f"{field_name} string values must be non-empty")
+            return
+        if type(value) is datetime:
+            _require_utc(value, field_name)
+            return
+        if type(value) is tuple:
+            for item in value:
+                if type(item) not in {bool, int, Decimal, str, datetime, timedelta}:
+>                   raise TypeError(f"{field_name} tuple values must contain immutable scalar values")
+E                   TypeError: parameters tuple values must contain immutable scalar values
+
+src/nvda_desk/derived_signal_calculation_truth/api.py:221: TypeError
+=========================== short test summary info ============================
+FAILED tests/product/derived_signal/test_m01_f4_cross_stage_d186_entry_anchor.py::test_d186_resolves_explicit_stored_entry_id_not_undeclared_inline_payload - TypeError: parameters tuple values must contain immutable scalar values
+1 failed in 0.20s
