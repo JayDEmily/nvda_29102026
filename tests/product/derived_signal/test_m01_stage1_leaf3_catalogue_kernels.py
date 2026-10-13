@@ -306,7 +306,9 @@ def test_every_stage1_row_routes_once_via_its_hash_bound_kernel(monkeypatch: obj
             # D186 has a mandatory typed entry anchor. Dispatch must receive
             # valid D155 carriers, not bypass the authorised preconditions.
             component_ids = _catalogue.catalogue_row("D155").derived_dependencies
-            def state(oid: str, age: int) -> _stage1.KernelValueV1:
+            def state(
+                oid: str, age: int, component_ids: tuple[str, ...] = component_ids
+            ) -> _stage1.KernelValueV1:
                 component_values = tuple(
                     (did, Decimal(1), f"{oid}-{did}", (("units", "score"),))
                     for did in component_ids

@@ -30,7 +30,9 @@ def _v(
             did,
             (("alignment_score", alignment), ("missing_event_time_count", 0))
             if did == "D008"
-            else value if did == "D150" else Decimal(1),
+            else value
+            if did == "D150"
+            else Decimal(1),
             f"{id}-{did}",
             (("units", altered_unit if altered_unit and did == "D150" else "score"),),
         )
@@ -49,14 +51,16 @@ def _v(
 
 
 def _profile(
-    *features: tuple[str, tuple[object, ...], Decimal, Decimal]
+    *features: tuple[str, tuple[object, ...], Decimal, Decimal],
 ) -> api.CalculationParameterSetV1:
     fields: list[tuple[str, object]] = []
     for i, (did, spec, weight, scale) in enumerate(features, 1):
         fields.extend(
-            ((f"similarity_feature:{i}", (did, *spec)),
-             (f"similarity_weight:{i}", weight),
-             (f"similarity_scale:{i}", scale))
+            (
+                (f"similarity_feature:{i}", (did, *spec)),
+                (f"similarity_weight:{i}", weight),
+                (f"similarity_scale:{i}", scale),
+            )
         )
     return api.CalculationParameterSetV1("similarity", 1, "P_RULE", tuple(fields))
 
@@ -103,15 +107,22 @@ def test_d186_extracts_nested_scalar_using_k07_and_uses_only_selected_history():
     assert result is not None
     assert dict(result.value)["distance_squared"] == Decimal("1.75")
     assert result.input_occurrence_ids == ("current", "entry")
-    assert dict(dict(result.value)["deltas"])["2:D008:component"] == (
-        Decimal("0.2"), Decimal(2)
-    )
+    assert dict(dict(result.value)["deltas"])["2:D008:component"] == (Decimal("0.2"), Decimal(2))
 
 
-@pytest.mark.parametrize("scenario", [
-    "absent", "duplicate", "future_entry", "later_receipt", "different_subject",
-    "schema_missing", "schema_unit", "future_current",
-])
+@pytest.mark.parametrize(
+    "scenario",
+    [
+        "absent",
+        "duplicate",
+        "future_entry",
+        "later_receipt",
+        "different_subject",
+        "schema_missing",
+        "schema_unit",
+        "future_current",
+    ],
+)
 def test_d186_refuses_incompatible_history(scenario: str):
     entry = _v("entry", 4, Decimal(10))
     current = _v("current", 0, Decimal(12))
@@ -134,21 +145,56 @@ def test_d186_refuses_incompatible_history(scenario: str):
     assert _eval(history, "entry") is None
 
 
-@pytest.mark.parametrize("fields", [
-    (),
-    (("similarity_feature:1", ("D150", "component")),),
-    (("similarity_feature:1", ("D150", "component")), ("similarity_weight:1", Decimal(1))),
-    (("similarity_feature:2", ("D150", "component")), ("similarity_weight:2", Decimal(1)), ("similarity_scale:2", Decimal(2))),
-    (("similarity_feature:1", ("D150", "invalid")), ("similarity_weight:1", Decimal(1)), ("similarity_scale:1", Decimal(2))),
-    (("similarity_feature:1", ("D151", "component")), ("similarity_weight:1", Decimal(1)), ("similarity_scale:1", Decimal(2))),
-    (("similarity_feature:1", ("D150", "component")), ("similarity_weight:1", Decimal("0.5")), ("similarity_scale:1", Decimal(2))),
-    (("similarity_feature:1", ("D150", "component")), ("similarity_weight:1", Decimal(-1)), ("similarity_scale:1", Decimal(2))),
-    (("similarity_feature:1", ("D150", "component")), ("similarity_weight:1", Decimal(1)), ("similarity_scale:1", Decimal(0))),
-    (("similarity_feature:1", ("D150", "component")), ("similarity_weight:1", Decimal(1)), ("similarity_scale:1", Decimal(2)), ("similarity_scale:3", Decimal(2))),
-])
+@pytest.mark.parametrize(
+    "fields",
+    [
+        (),
+        (("similarity_feature:1", ("D150", "component")),),
+        (("similarity_feature:1", ("D150", "component")), ("similarity_weight:1", Decimal(1))),
+        (
+            ("similarity_feature:2", ("D150", "component")),
+            ("similarity_weight:2", Decimal(1)),
+            ("similarity_scale:2", Decimal(2)),
+        ),
+        (
+            ("similarity_feature:1", ("D150", "invalid")),
+            ("similarity_weight:1", Decimal(1)),
+            ("similarity_scale:1", Decimal(2)),
+        ),
+        (
+            ("similarity_feature:1", ("D151", "component")),
+            ("similarity_weight:1", Decimal(1)),
+            ("similarity_scale:1", Decimal(2)),
+        ),
+        (
+            ("similarity_feature:1", ("D150", "component")),
+            ("similarity_weight:1", Decimal("0.5")),
+            ("similarity_scale:1", Decimal(2)),
+        ),
+        (
+            ("similarity_feature:1", ("D150", "component")),
+            ("similarity_weight:1", Decimal(-1)),
+            ("similarity_scale:1", Decimal(2)),
+        ),
+        (
+            ("similarity_feature:1", ("D150", "component")),
+            ("similarity_weight:1", Decimal(1)),
+            ("similarity_scale:1", Decimal(0)),
+        ),
+        (
+            ("similarity_feature:1", ("D150", "component")),
+            ("similarity_weight:1", Decimal(1)),
+            ("similarity_scale:1", Decimal(2)),
+            ("similarity_scale:3", Decimal(2)),
+        ),
+    ],
+)
 def test_d186_refuses_unadmitted_feature_profiles(fields):
     parameter = api.CalculationParameterSetV1("other", 1, "P_RULE", fields or (("unrelated", 1),))
-    assert _eval((_v("entry", 4, Decimal(10)), _v("current", 0, Decimal(12))), "entry", parameter) is None
+    assert (
+        _eval((_v("entry", 4, Decimal(10)), _v("current", 0, Decimal(12))), "entry", parameter)
+        is None
+    )
 
 
 def test_d186_refuses_duplicate_feature_selector():
@@ -156,7 +202,10 @@ def test_d186_refuses_duplicate_feature_selector():
         ("D150", ("component",), Decimal("0.5"), Decimal(2)),
         ("D150", ("component",), Decimal("0.5"), Decimal(2)),
     )
-    assert _eval((_v("entry", 4, Decimal(10)), _v("current", 0, Decimal(12))), "entry", duplicate) is None
+    assert (
+        _eval((_v("entry", 4, Decimal(10)), _v("current", 0, Decimal(12))), "entry", duplicate)
+        is None
+    )
 
 
 def test_d186_nested_profile_is_not_admitted_by_typed_carrier():
