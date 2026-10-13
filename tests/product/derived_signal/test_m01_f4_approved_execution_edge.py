@@ -1,0 +1,104 @@
+"""Exact net-edge conversion; Stage-2 predecessors are controlled carriers only."""
+from datetime import UTC, datetime
+from decimal import Decimal as D
+
+import pytest
+
+from nvda_desk.derived_signal_calculation_truth import _stage1, api
+
+NOW = datetime(2026, 10, 13, 9, tzinfo=UTC)
+
+
+def named(**fields):
+    return tuple(fields.items())
+
+
+def k(identity, value, **metadata):
+    return _stage1.KernelValueV1(value, identity, NOW, NOW, "NVDA", "derived",
+                                 metadata=tuple(metadata.items()))
+
+
+def case(side="buy", edge=D(20), reserve=D(30), size=D(2), multiplier=D(100)):
+    candidate = api.CandidateStructureContextV1(
+        "candidate", 1, "candidate-id", ("option",), (side,), (size,), D(1),
+        (("option", D(5)),), (), D(1000),
+    )
+    order = api.OrderIntentContextV1("order", 1, side, size, "normal")
+    cost = named(
+        expected_fill_price=D("5.5") if side == "buy" else D("4.5"),
+        signed_slippage_per_unit=D(".5"), slippage_bps=D(1000),
+        expected_slippage_currency=size * multiplier * D(".5"),
+        intended_size=size, multiplier=multiplier, side=side, contract_identity="option",
+        decision_midpoint=D(5), currency="USD", order_intent_ref=("order", 1),
+        candidate_ref=("candidate", 1), convention_ref=("premium", 1),
+        as_of_utc=NOW, knowledge_cutoff_utc=NOW,
+    )
+    utility = named(
+        net_currency_utility=edge, currency="USD", utility_domain="net_currency",
+        utility_definition_ref=("utility", 1), candidate_ref=("candidate", 1),
+        execution_reference_id="D133", convention_ref=("premium", 1),
+        as_of_utc=NOW, knowledge_cutoff_utc=NOW,
+    )
+    params = dict(
+        execution_edge_definition="EXECUTION_EDGE_CURRENCY_V1", risk_currency="USD",
+        minimum_retained_edge_currency=reserve, urgency_cost_caps=("normal|0.8",),
+        leg_headroom_weights=("option|1",), allocation_version="allocation-v1",
+        side="sell" if side == "buy" else "buy",  # must never override typed intent
+    )
+    return dict(raw={"R034": D(4), "R035": D(6), "R189": D(10), "R190": D(10)},
+                cost=cost, utility=utility, params=params, contexts=(candidate, order))
+
+
+def evaluate(c, did="D178"):
+    raw = {key: (k(key, value),) for key, value in c["raw"].items()}
+    derived = {"D133": (k("D133", c["cost"]),), "D177": (k("D177", c["utility"]),)}
+    return _stage1.evaluate_stage1_kernel(
+        did, raw_inputs=raw, derived_inputs=derived,
+        parameter_set=api.CalculationParameterSetV1("execution-rule", 1, "P_RULE",
+                                                   tuple(c["params"].items())),
+        contexts=c["contexts"], as_of_utc=NOW, knowledge_cutoff_utc=NOW,
+    )
+
+
+@pytest.mark.parametrize("side,expected", [("buy", "5.45"), ("sell", "4.55")])
+def test_already_net_edge_reference_and_typed_side(side, expected):
+    result = evaluate(case(side))
+    assert result is not None and result.value == D(expected)
+
+
+@pytest.mark.parametrize("size,multiplier,expected", [(2, 50, "5.4"), (4, 100, "5.475")])
+def test_option_premium_conversion_uses_exact_size_and_multiplier(size, multiplier, expected):
+    result = evaluate(case(size=D(size), multiplier=D(multiplier)))
+    assert result is not None and result.value == D(expected)
+
+
+def test_execution_cost_and_urgency_caps_bind_independently():
+    c = case(edge=D(40)); result = evaluate(c)
+    assert result is not None and result.value == D("5.5")
+    c["params"]["urgency_cost_caps"] = ("normal|0.2",)
+    result = evaluate(c)
+    assert result is not None and result.value == D("5.2")
+
+
+@pytest.mark.parametrize("field,value", [
+    ("expected_slippage_currency", D(99)), ("slippage_bps", D(999)),
+    ("currency", "EUR"), ("contract_identity", "other"), ("intended_size", D(1)),
+    ("order_intent_ref", ("order", 2)), ("signed_slippage_per_unit", D("-.5")),
+])
+def test_incompatible_execution_reference_refuses(field, value):
+    c = case(); cost = dict(c["cost"]); cost[field] = value; c["cost"] = tuple(cost.items())
+    assert evaluate(c) is None
+
+
+def test_scalar_predecessors_and_nonlinear_scores_refuse():
+    c = case(); c["cost"] = D(4)
+    assert evaluate(c) is None
+    c = case(); utility = dict(c["utility"]); utility["utility_domain"] = "sigmoid_score"
+    c["utility"] = tuple(utility.items())
+    assert evaluate(c) is None
+
+
+def test_missing_urgency_and_impossible_retained_edge_refuse():
+    c = case(); c["params"]["urgency_cost_caps"] = ("urgent|0.5",)
+    assert evaluate(c) is None
+    assert evaluate(case(edge=D(-100), reserve=D(30))) is None
