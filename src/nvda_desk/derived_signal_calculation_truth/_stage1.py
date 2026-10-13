@@ -2765,7 +2765,11 @@ def _d186_components(value: object) -> dict[str, tuple[object, str]] | None:
             info = dict(metadata)
         except (TypeError, ValueError):
             return None
-        if component_id in components or type(info.get("units")) is not str or not info["units"]:
+        if (
+            component_id in components
+            or component_id not in catalogue_row("D155").derived_dependencies
+            or info.get("units") != catalogue_row(component_id).units
+        ):
             return None
         components[component_id] = (component_value, info["units"])
     if set(components) != set(catalogue_row("D155").derived_dependencies):
@@ -2806,7 +2810,7 @@ def _d186_selected_states(
         or entry.subject_instrument != current.subject_instrument
         or _metadata(entry).get("result_shape") != "structured"
         or _metadata(current).get("result_shape") != "structured"
-        or not _metadata(entry).get("units")
+        or _metadata(entry).get("units") != catalogue_row("D155").units
         or _metadata(entry).get("units") != _metadata(current).get("units")
         or _d186_components(entry.value) is None
         or _d186_components(current.value) is None
