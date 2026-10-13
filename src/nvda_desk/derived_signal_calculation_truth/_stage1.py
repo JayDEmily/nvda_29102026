@@ -1715,9 +1715,14 @@ def _eval_k02(
                 )
             )
         if identity == "D164":
-            base = _d(_scalar(derived, "D133"))
+            from ._financial_policy import named, number
+
+            execution = named(_scalar(derived, "D133"))
+            base = _d(execution["expected_slippage_currency"])
+            if number(base) < 0:
+                return None
             schedule = _context(contexts, api.ExecutionCostScheduleVersionV1)
-            if schedule is None:
+            if schedule is None or execution["currency"] != schedule.cost_units:
                 return None
             commission = sum((v for _, v in schedule.commission_rules), _DEC0)
             fees = sum((v for _, v in schedule.fee_rules), _DEC0)
@@ -2838,7 +2843,26 @@ def _eval_k08(
     params: dict[str, object],
     contexts: tuple[object, ...],
     as_of: datetime,
+    cutoff: datetime,
 ) -> object | None:
+    if identity in {"D175", "D178", "D189", "D192"}:
+        from ._financial_policy import action_decision, hedge_adjustment, limit_price, risk_budget
+
+        try:
+            if identity == "D192":
+                policy_value = action_decision(derived, params, as_of, cutoff)
+            elif identity == "D189":
+                policy_value = hedge_adjustment(
+                    derived, params, contexts, as_of, cutoff
+                )
+            else:
+                financial_policy = risk_budget if identity == "D175" else limit_price
+                policy_value = financial_policy(
+                    raw, derived, params, contexts, as_of, cutoff
+                )
+        except (TypeError, ValueError, ArithmeticError, KeyError, AttributeError):
+            return None
+        return policy_value
     try:
         if identity == "D007":
             policy = _context(contexts, api.RequiredFieldPolicyV1)
@@ -3353,41 +3377,21 @@ def _eval_k08(
                 for c in cset.candidate_identities
                 if c in eligible and candidate_values[c] == best
             )
-        if identity == "D175":
-            limits: list[Decimal] = []
-            for rid in ("R205", "R206", "R209", "R208"):
-                limits.extend(abs(v) for v in _decimal_values(raw, rid))
-            for did in ("D162", "D174"):
-                for item in derived.get(did, ()):
-                    n = _named(item.value)
-                    candidate = n.get(
-                        "CVaR_currency",
-                        n.get("stress_loss", item.value if type(item.value) is Decimal else None),
-                    )
-                    if candidate is not None:
-                        limits.append(abs(_d(candidate)))
-            return min(limits) if limits else None
         if identity == "D176":
-            risk = _d(_scalar(derived, "D175"))
-            per_unit = _d(params.get("risk_per_unit"))
-            unc = _d(params["uncertainty_multiplier"])
-            liq = _d(params["liquidity_multiplier"])
-            den = per_unit * unc * liq
-            return None if den <= 0 else int(risk // den)
-        if identity == "D178":
-            if not derived.get("D133") or not derived.get("D177"):
+            from ._financial_policy import number, one, validate_budget
+
+            for predecessor in ("D175", "D165", "D163", "D132"):
+                one(derived, predecessor, as_of, cutoff)
+            budget, _, _, risk = validate_budget(derived["D175"][0].value, params, as_of, cutoff)
+            if (params["risk_per_unit_currency"] != budget["currency"]
+                    or params["risk_per_unit_definition"] != budget["risk_definition_id"]):
                 return None
-            bid, ask = _d(_scalar(raw, "R034")), _d(_scalar(raw, "R035"))
-            mid = (bid + ask) / Decimal(2)
-            allowed = _d(params.get("allowed_execution_cost_per_unit"))
-            side = str(params.get("side", ""))
-            return (
-                min(ask, mid + allowed)
-                if side == "buy"
-                else max(bid, mid - allowed)
-                if side == "sell"
-                else None
-            )
+            per_unit = number(params["risk_per_unit"])
+            uncertainty = number(params["uncertainty_multiplier"])
+            liquidity = number(params["liquidity_multiplier"])
+            if min(per_unit, uncertainty, liquidity) <= 0:
+                return None
+            return int(risk // (per_unit * uncertainty * liquidity))
         if identity == "D186":
             features = _d186_profile(params)
             values = derived.get("D155", ())
@@ -3414,52 +3418,6 @@ def _eval_k08(
                     ("deltas", tuple(deltas)),
                 )
             )
-        if identity == "D189":
-            if not derived.get("D175"):
-                return None
-            bands = params.get("target_bands")
-            if type(bands) is not tuple:
-                return None
-            current_exposures = {
-                name: _d(_scalar(derived, did))
-                for name, did in (
-                    ("delta", "D181"),
-                    ("gamma", "D182"),
-                    ("vega", "D183"),
-                    ("theta", "D184"),
-                )
-            }
-            out = []
-            for spec in bands:
-                if type(spec) is not str:
-                    return None
-                exposure_name, los, his = spec.split("|")
-                lo, hi = _d(los), _d(his)
-                x = current_exposures[exposure_name]
-                target = (lo + hi) / Decimal(2)
-                out.append((exposure_name, _DEC0 if lo <= x <= hi else target - x))
-            return tuple(out)
-        if identity == "D192":
-            if not derived.get("D175"):
-                return None
-            invalid = bool(_scalar(derived, "D187"))
-            if bool(params.get("mandatory_exit_on_invalidation", False)) and invalid:
-                return "exit"
-            hedge = _named(_scalar(derived, "D189"))
-            if bool(params.get("mandatory_hedge_on_risk", False)) and any(
-                _d(v) != 0 for v in hedge.values() if type(v) in {Decimal, int}
-            ):
-                return "hedge"
-            modify = _d(_scalar(derived, "D190"))
-            if modify > _d(params.get("modify_minimum", 0)):
-                return "modify"
-            exit_value = _d(_scalar(derived, "D191"))
-            hold = _named(_scalar(derived, "D188")).get("expected_currency_PnL")
-            if hold is not None and exit_value > _d(hold) + _d(
-                params.get("exit_margin_currency", 0)
-            ):
-                return "exit"
-            return "hold"
         if identity == "D208":
             info = _d(_scalar(derived, "D202"))
             decay = _d(_scalar(derived, "D207"))
@@ -3645,16 +3603,6 @@ def evaluate_stage1_kernel(
             return None
         derived_inputs = {"D155": selection}
     params = _parameter_map(parameter_set)
-    if derived_signal_id == "D178":
-        from ._financial_policy import limit_price
-
-        try:
-            policy_value = limit_price(
-                raw_inputs, derived_inputs, params, contexts, as_of_utc, knowledge_cutoff_utc
-            )
-        except (TypeError, ValueError, ArithmeticError, KeyError, AttributeError):
-            return None
-        return _result(derived_signal_id, policy_value, raw_inputs, derived_inputs)
     value: object | None
     if row.kernel_id == "K01_TIME":
         value = _eval_k01(
@@ -3674,7 +3622,7 @@ def evaluate_stage1_kernel(
         value = _eval_k07(derived_signal_id, raw_inputs, derived_inputs, parameter_set, contexts)
     elif row.kernel_id == "K08_RULE_BUCKET_POLICY":
         value = _eval_k08(
-            derived_signal_id, raw_inputs, derived_inputs, params, contexts, as_of_utc
+            derived_signal_id, raw_inputs, derived_inputs, params, contexts, as_of_utc, knowledge_cutoff_utc
         )
     elif row.kernel_id == "K16_STRUCTURED_ASSEMBLY":
         value = _eval_k16(derived_signal_id, derived_inputs, params)
