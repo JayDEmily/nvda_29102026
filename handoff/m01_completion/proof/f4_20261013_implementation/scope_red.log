@@ -1,0 +1,27 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+_________ test_approved_context_conjunctions_preserve_dependency_edges _________
+
+    def test_approved_context_conjunctions_preserve_dependency_edges():
+>       assert _catalogue.catalogue_row("D175").typed_contexts == (
+            "CandidateStructureContext", "RiskScopeContext"
+        )
+E       AssertionError: assert ('CandidateStructureContext',) == ('CandidateSt...ScopeContext')
+E         
+E         Right contains one more item: 'RiskScopeContext'
+E         Use -v to get more diff
+
+tests/product/derived_signal/test_m01_f4_approved_risk_scope.py:11: AssertionError
+_______________ test_risk_scope_is_reference_only_and_immutable ________________
+
+    def test_risk_scope_is_reference_only_and_immutable():
+        cls = getattr(api, "RiskScopeContextV1", None)
+>       assert cls is not None, "approved reference-only risk scope is absent"
+E       AssertionError: approved reference-only risk scope is absent
+E       assert None is not None
+
+tests/product/derived_signal/test_m01_f4_approved_risk_scope.py:21: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/derived_signal/test_m01_f4_approved_risk_scope.py::test_approved_context_conjunctions_preserve_dependency_edges
+FAILED tests/product/derived_signal/test_m01_f4_approved_risk_scope.py::test_risk_scope_is_reference_only_and_immutable
+2 failed in 0.05s
