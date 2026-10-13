@@ -1,0 +1,225 @@
+{
+  "authority": "V1 workbook is reference evidence only; M01 accepted brief/current normative CSV govern implementation",
+  "source_file": "handoff/m01_completion/authority/NVDA_80_STEP_ACADEMIC_EVIDENCE_AUDIT_WITH_SIGNALS_ADDENDUM_81_94.xlsx",
+  "source_sha256": "519ea9449297d564ae4a02afc1bf4e60e4471631c81a0842620f9fb60bb4f9ae",
+  "source_expected_sha256": "519ea9449297d564ae4a02afc1bf4e60e4471631c81a0842620f9fb60bb4f9ae",
+  "output_file": "handoff/workbook_v2/NVDA_SIGNALS_RESEARCH_WORKBOOK_V2_PASS01.xlsx",
+  "output_sha256": "2209c5d6494fc2543df0c2571d0e3987d187f16149463a1d1083c0fcf7d17a90",
+  "original_sheets": [
+    "Evidence Audit",
+    "Source Register",
+    "Method & Legend",
+    "Summary",
+    "Raw Signals",
+    "Derived Signals",
+    "Addendum Evidence Audit"
+  ],
+  "v2_sheets": [
+    "Evidence Audit",
+    "Source Register",
+    "Method & Legend",
+    "Summary",
+    "Raw Signals",
+    "Derived Signals",
+    "Addendum Evidence Audit",
+    "00_Guardrails & Method"
+  ],
+  "original_sheet_readback": {
+    "Evidence Audit": {
+      "v1_nonempty_cells": 1134,
+      "v2_nonempty_cells": 1134,
+      "cell_difference_count": 0,
+      "merges_equal": true,
+      "hyperlinks_equal": true
+    },
+    "Source Register": {
+      "v1_nonempty_cells": 630,
+      "v2_nonempty_cells": 630,
+      "cell_difference_count": 0,
+      "merges_equal": true,
+      "hyperlinks_equal": true
+    },
+    "Method & Legend": {
+      "v1_nonempty_cells": 30,
+      "v2_nonempty_cells": 30,
+      "cell_difference_count": 0,
+      "merges_equal": true,
+      "hyperlinks_equal": true
+    },
+    "Summary": {
+      "v1_nonempty_cells": 34,
+      "v2_nonempty_cells": 34,
+      "cell_difference_count": 0,
+      "merges_equal": true,
+      "hyperlinks_equal": true
+    },
+    "Raw Signals": {
+      "v1_nonempty_cells": 7517,
+      "v2_nonempty_cells": 7517,
+      "cell_difference_count": 0,
+      "merges_equal": true,
+      "hyperlinks_equal": true
+    },
+    "Derived Signals": {
+      "v1_nonempty_cells": 2637,
+      "v2_nonempty_cells": 2637,
+      "cell_difference_count": 0,
+      "merges_equal": true,
+      "hyperlinks_equal": true
+    },
+    "Addendum Evidence Audit": {
+      "v1_nonempty_cells": 286,
+      "v2_nonempty_cells": 286,
+      "cell_difference_count": 0,
+      "merges_equal": true,
+      "hyperlinks_equal": true
+    }
+  },
+  "original_structure_diagnostics": {
+    "Evidence Audit": {
+      "original_row_attributes_equal": true,
+      "original_column_attributes_equal": true,
+      "v1_merges": 0,
+      "v2_merges": 0,
+      "v1_hyperlinks": 0,
+      "v2_hyperlinks": 0
+    },
+    "Source Register": {
+      "original_row_attributes_equal": true,
+      "original_column_attributes_equal": true,
+      "v1_merges": 0,
+      "v2_merges": 0,
+      "v1_hyperlinks": 0,
+      "v2_hyperlinks": 0
+    },
+    "Method & Legend": {
+      "original_row_attributes_equal": true,
+      "original_column_attributes_equal": true,
+      "v1_merges": 0,
+      "v2_merges": 0,
+      "v1_hyperlinks": 0,
+      "v2_hyperlinks": 0
+    },
+    "Summary": {
+      "original_row_attributes_equal": true,
+      "original_column_attributes_equal": true,
+      "v1_merges": 0,
+      "v2_merges": 0,
+      "v1_hyperlinks": 0,
+      "v2_hyperlinks": 0
+    },
+    "Raw Signals": {
+      "original_row_attributes_equal": true,
+      "original_column_attributes_equal": true,
+      "v1_merges": 2,
+      "v2_merges": 2,
+      "v1_hyperlinks": 0,
+      "v2_hyperlinks": 0
+    },
+    "Derived Signals": {
+      "original_row_attributes_equal": true,
+      "original_column_attributes_equal": true,
+      "v1_merges": 2,
+      "v2_merges": 2,
+      "v1_hyperlinks": 0,
+      "v2_hyperlinks": 0
+    },
+    "Addendum Evidence Audit": {
+      "original_row_attributes_equal": true,
+      "original_column_attributes_equal": true,
+      "v1_merges": 2,
+      "v2_merges": 2,
+      "v1_hyperlinks": 0,
+      "v2_hyperlinks": 0
+    }
+  },
+  "source_populated_cell_count": {
+    "Raw Signals": 7517,
+    "Derived Signals": 2637
+  },
+  "source_data_row_count": {
+    "Raw Signals": 323,
+    "Derived Signals": 209
+  },
+  "source_family_counts": {
+    "Raw Signals": 19,
+    "Derived Signals": 34
+  },
+  "source_families": {
+    "Raw Signals": {
+      "Time & provenance": 6,
+      "IBKR contract metadata": 20,
+      "IBKR option-chain definition": 6,
+      "IBKR L1 / generic ticks": 50,
+      "IBKR option analytics": 36,
+      "IBKR tick-by-tick": 14,
+      "IBKR RTVolume parsed fields": 6,
+      "IBKR real-time bars": 8,
+      "IBKR historical bars": 38,
+      "IBKR Level II market depth": 15,
+      "IBKR news": 5,
+      "IBKR account/risk state": 6,
+      "IBKR position state": 7,
+      "IBKR order/execution state": 18,
+      "External volatility indices": 7,
+      "FRED macro / market series": 34,
+      "FRED release/vintage metadata": 6,
+      "Economic calendar / consensus": 7,
+      "Nasdaq Data Link real-time/delayed": 34
+    },
+    "Derived Signals": {
+      "Time & data quality": 10,
+      "Market microstructure": 6,
+      "Underlying/price path": 11,
+      "Volume/activity": 4,
+      "Volatility": 8,
+      "Regime features": 2,
+      "Macro/rates": 6,
+      "Macro/FX": 4,
+      "Volatility complex": 10,
+      "Macro/events": 4,
+      "International": 5,
+      "US market": 4,
+      "Sector": 5,
+      "NVDA state": 5,
+      "Options contract": 5,
+      "Options liquidity": 4,
+      "Options surface": 15,
+      "Options relative value": 3,
+      "Options distribution": 6,
+      "Options activity": 6,
+      "Options flow": 3,
+      "Dealer positioning": 6,
+      "Execution": 5,
+      "L2 microstructure": 12,
+      "State synthesis": 14,
+      "Decision/scenarios": 8,
+      "Structure selection": 6,
+      "Risk/stress": 1,
+      "Risk/sizing": 2,
+      "Live risk": 5,
+      "Live control": 7,
+      "Post-trade": 9,
+      "Learning": 7,
+      "Control loop": 1
+    }
+  },
+  "source_status_counts": {
+    "Raw Signals": {
+      "Verified": 275,
+      "Verified symbol; live access TBD": 7,
+      "TBD provider": 7,
+      "Verified API schema": 34
+    },
+    "Derived Signals": {
+      "Specified": 206,
+      "Specified; provider pending": 3
+    }
+  },
+  "original_rows_hashed_to_csv": 532,
+  "v2_guardrail_count": 35,
+  "new_sheet_only": "00_Guardrails & Method",
+  "unapproved_01_02_created": false,
+  "original_worksheet_semantic_readback": "PASS",
+  "problems": []
+}
