@@ -1,0 +1,170 @@
+.FFFFFFFFFF.                                                             [100%]
+=================================== FAILURES ===================================
+_ test_actual_scope_and_canonical_units_cannot_be_supplied_as_labels[changed0] _
+
+changed = {'scope_quantity': Decimal('20')}
+
+    @pytest.mark.parametrize("changed", [
+        {"scope_quantity": D(20)}, {"scope_multiplier": D(10)},
+        {"canonical_unit": "USD/vol_fraction/option_unit", "scale": D(1)},
+        {"canonical_unit": "EUR/vol_point/option_unit"},
+    ])
+    def test_actual_scope_and_canonical_units_cannot_be_supplied_as_labels(changed):
+        _, result = public_vega(**changed)
+>       assert result is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D183', derived_occurrence_id='d183-7683254dfd699820ac6cae92f2549da8ddf692...n=1), VersionRefV1(context_id='unit-R016', version=1)), selection_identity=None, supersedes_derived_occurrence_id=None) is None
+
+tests/product/derived_signal/test_m01_f4_review_regressions.py:76: AssertionError
+_ test_actual_scope_and_canonical_units_cannot_be_supplied_as_labels[changed1] _
+
+changed = {'scope_multiplier': Decimal('10')}
+
+    @pytest.mark.parametrize("changed", [
+        {"scope_quantity": D(20)}, {"scope_multiplier": D(10)},
+        {"canonical_unit": "USD/vol_fraction/option_unit", "scale": D(1)},
+        {"canonical_unit": "EUR/vol_point/option_unit"},
+    ])
+    def test_actual_scope_and_canonical_units_cannot_be_supplied_as_labels(changed):
+        _, result = public_vega(**changed)
+>       assert result is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D183', derived_occurrence_id='d183-7683254dfd699820ac6cae92f2549da8ddf692...n=1), VersionRefV1(context_id='unit-R016', version=1)), selection_identity=None, supersedes_derived_occurrence_id=None) is None
+
+tests/product/derived_signal/test_m01_f4_review_regressions.py:76: AssertionError
+_ test_actual_scope_and_canonical_units_cannot_be_supplied_as_labels[changed2] _
+
+changed = {'canonical_unit': 'USD/vol_fraction/option_unit', 'scale': Decimal('1')}
+
+    @pytest.mark.parametrize("changed", [
+        {"scope_quantity": D(20)}, {"scope_multiplier": D(10)},
+        {"canonical_unit": "USD/vol_fraction/option_unit", "scale": D(1)},
+        {"canonical_unit": "EUR/vol_point/option_unit"},
+    ])
+    def test_actual_scope_and_canonical_units_cannot_be_supplied_as_labels(changed):
+        _, result = public_vega(**changed)
+>       assert result is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D183', derived_occurrence_id='d183-7683254dfd699820ac6cae92f2549da8ddf692...n=1), VersionRefV1(context_id='unit-R016', version=1)), selection_identity=None, supersedes_derived_occurrence_id=None) is None
+
+tests/product/derived_signal/test_m01_f4_review_regressions.py:76: AssertionError
+_ test_actual_scope_and_canonical_units_cannot_be_supplied_as_labels[changed3] _
+
+changed = {'canonical_unit': 'EUR/vol_point/option_unit'}
+
+    @pytest.mark.parametrize("changed", [
+        {"scope_quantity": D(20)}, {"scope_multiplier": D(10)},
+        {"canonical_unit": "USD/vol_fraction/option_unit", "scale": D(1)},
+        {"canonical_unit": "EUR/vol_point/option_unit"},
+    ])
+    def test_actual_scope_and_canonical_units_cannot_be_supplied_as_labels(changed):
+        _, result = public_vega(**changed)
+>       assert result is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D183', derived_occurrence_id='d183-7683254dfd699820ac6cae92f2549da8ddf692...n=1), VersionRefV1(context_id='unit-R016', version=1)), selection_identity=None, supersedes_derived_occurrence_id=None) is None
+
+tests/product/derived_signal/test_m01_f4_review_regressions.py:76: AssertionError
+___ test_exact_shared_lambda_products_do_not_round_components_independently ____
+
+    def test_exact_shared_lambda_products_do_not_round_components_independently():
+        f = fixture((D(".3"), D(0), D(".7"), D(0)))
+        f["params"].update(tail_fraction=D(".0001"), stress_active=False)
+        tail = dict(f["derived"]["D162"][0].value);tail["CVaR_currency"] = D(3)
+        f["derived"]["D162"] = (kv("D162", tuple(tail.items())),)
+        result = ev("D189", hedge_fixture(f))
+>       assert result is not None
+E       assert None is not None
+
+tests/product/derived_signal/test_m01_f4_review_regressions.py:85: AssertionError
+__ test_embedded_risk_reference_claims_require_actual_typed_producer_metadata __
+
+    def test_embedded_risk_reference_claims_require_actual_typed_producer_metadata():
+        f = fixture()
+        for identity in ("D174", "D162"):
+            old = f["derived"][identity][0]
+            # Actual typed occurrence and production projection carry empty actual refs.
+            occurrence = api.DerivedSignalOccurrenceV1(identity, identity, "reference", (), "NVDA", None,
+                NOW, None, NOW, NOW, old.value, "currency", "structured", (), (), ())
+            owner = api.create_owner(raw_projection_reader=raw.create_owner().reads, utc_now=lambda: NOW)
+            f["derived"][identity] = (owner._occurrence_kernel_value(occurrence),)
+>       assert ev("D175", f) is None
+E       AssertionError: assert KernelResultV1(value=(('definition', 'REFERENCE_CALIBRATED_ENVELOPE_V1'), ('maximum_currency_exact', (1000, 1)), ('max...'currency / percent', result_shape='structured', input_occurrence_ids=('D162', 'D174', 'R205', 'R206', 'R208', 'R209')) is None
+E        +  where KernelResultV1(value=(('definition', 'REFERENCE_CALIBRATED_ENVELOPE_V1'), ('maximum_currency_exact', (1000, 1)), ('max...'currency / percent', result_shape='structured', input_occurrence_ids=('D162', 'D174', 'R205', 'R206', 'R208', 'R209')) = ev('D175', {'contexts': (CandidateStructureContextV1(context_id='candidate', version=1, candidate_identity='managed', leg_contrac... tzinfo=datetime.timezone.utc)), ('account_identity', 'account'), ('currency', 'USD'), ('canonical_units', 'USD'))),)}})
+
+tests/product/derived_signal/test_m01_f4_review_regressions.py:103: AssertionError
+_ test_execution_reference_claims_require_actual_producer_context_and_convention[D133] _
+
+identity = 'D133'
+
+    @pytest.mark.parametrize("identity", ("D133", "D177"))
+    def test_execution_reference_claims_require_actual_producer_context_and_convention(identity):
+        c = case()
+        raw_values = {key: (k(key, value, contract_id="option", currency="USD", unit_convention_ref=("premium", 1)),)
+                      for key, value in c["raw"].items()}
+        inputs = {"D133": (k("D133", c["cost"]),), "D177": (k("D177", c["utility"]),)}
+        inputs[identity] = (replace(inputs[identity][0], metadata=()),)
+        result = _stage1.evaluate_stage1_kernel("D178", raw_inputs=raw_values, derived_inputs=inputs,
+            parameter_set=api.CalculationParameterSetV1("execution-rule", 1, "P_RULE", tuple(c["params"].items())),
+            contexts=c["contexts"], as_of_utc=NOW, knowledge_cutoff_utc=NOW)
+>       assert result is None
+E       AssertionError: assert KernelResultV1(value=Decimal('5.4500000000000000000000000000'), units='option premium', result_shape='scalar', input_occurrence_ids=('D133', 'D177', 'R034', 'R035', 'R189', 'R190')) is None
+
+tests/product/derived_signal/test_m01_f4_review_regressions.py:116: AssertionError
+_ test_execution_reference_claims_require_actual_producer_context_and_convention[D177] _
+
+identity = 'D177'
+
+    @pytest.mark.parametrize("identity", ("D133", "D177"))
+    def test_execution_reference_claims_require_actual_producer_context_and_convention(identity):
+        c = case()
+        raw_values = {key: (k(key, value, contract_id="option", currency="USD", unit_convention_ref=("premium", 1)),)
+                      for key, value in c["raw"].items()}
+        inputs = {"D133": (k("D133", c["cost"]),), "D177": (k("D177", c["utility"]),)}
+        inputs[identity] = (replace(inputs[identity][0], metadata=()),)
+        result = _stage1.evaluate_stage1_kernel("D178", raw_inputs=raw_values, derived_inputs=inputs,
+            parameter_set=api.CalculationParameterSetV1("execution-rule", 1, "P_RULE", tuple(c["params"].items())),
+            contexts=c["contexts"], as_of_utc=NOW, knowledge_cutoff_utc=NOW)
+>       assert result is None
+E       AssertionError: assert KernelResultV1(value=Decimal('5.4500000000000000000000000000'), units='option premium', result_shape='scalar', input_occurrence_ids=('D133', 'D177', 'R034', 'R035', 'R189', 'R190')) is None
+
+tests/product/derived_signal/test_m01_f4_review_regressions.py:116: AssertionError
+_ test_actual_numeric_score_boolean_catalogue_carrier_is_not_python_truthiness[datum0-hold] _
+
+datum = Decimal('0.2'), expected = 'hold'
+
+    @pytest.mark.parametrize("datum,expected", [(D(".2"), "hold"), (D(".9"), "exit"), (True, None)])
+    def test_actual_numeric_score_boolean_catalogue_carrier_is_not_python_truthiness(datum, expected):
+        f = action_fixture()
+        owner = api.create_owner(raw_projection_reader=raw.create_owner().reads, utc_now=lambda: NOW)
+        occurrence = api.DerivedSignalOccurrenceV1("D187", "score", "score-definition", (),
+            "NVDA", None, NOW, None, NOW, NOW, datum, "score/boolean", "scalar", (), (), ())
+        f["derived"]["D187"] = (owner._occurrence_kernel_value(occurrence),)
+        result = ev("D192", f)
+>       assert (None if result is None else result.value) == expected
+E       AssertionError: assert None == 'hold'
+
+tests/product/derived_signal/test_m01_f4_review_regressions.py:127: AssertionError
+_ test_actual_numeric_score_boolean_catalogue_carrier_is_not_python_truthiness[datum1-exit] _
+
+datum = Decimal('0.9'), expected = 'exit'
+
+    @pytest.mark.parametrize("datum,expected", [(D(".2"), "hold"), (D(".9"), "exit"), (True, None)])
+    def test_actual_numeric_score_boolean_catalogue_carrier_is_not_python_truthiness(datum, expected):
+        f = action_fixture()
+        owner = api.create_owner(raw_projection_reader=raw.create_owner().reads, utc_now=lambda: NOW)
+        occurrence = api.DerivedSignalOccurrenceV1("D187", "score", "score-definition", (),
+            "NVDA", None, NOW, None, NOW, NOW, datum, "score/boolean", "scalar", (), (), ())
+        f["derived"]["D187"] = (owner._occurrence_kernel_value(occurrence),)
+        result = ev("D192", f)
+>       assert (None if result is None else result.value) == expected
+E       AssertionError: assert None == 'exit'
+
+tests/product/derived_signal/test_m01_f4_review_regressions.py:127: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/derived_signal/test_m01_f4_review_regressions.py::test_actual_scope_and_canonical_units_cannot_be_supplied_as_labels[changed0]
+FAILED tests/product/derived_signal/test_m01_f4_review_regressions.py::test_actual_scope_and_canonical_units_cannot_be_supplied_as_labels[changed1]
+FAILED tests/product/derived_signal/test_m01_f4_review_regressions.py::test_actual_scope_and_canonical_units_cannot_be_supplied_as_labels[changed2]
+FAILED tests/product/derived_signal/test_m01_f4_review_regressions.py::test_actual_scope_and_canonical_units_cannot_be_supplied_as_labels[changed3]
+FAILED tests/product/derived_signal/test_m01_f4_review_regressions.py::test_exact_shared_lambda_products_do_not_round_components_independently
+FAILED tests/product/derived_signal/test_m01_f4_review_regressions.py::test_embedded_risk_reference_claims_require_actual_typed_producer_metadata
+FAILED tests/product/derived_signal/test_m01_f4_review_regressions.py::test_execution_reference_claims_require_actual_producer_context_and_convention[D133]
+FAILED tests/product/derived_signal/test_m01_f4_review_regressions.py::test_execution_reference_claims_require_actual_producer_context_and_convention[D177]
+FAILED tests/product/derived_signal/test_m01_f4_review_regressions.py::test_actual_numeric_score_boolean_catalogue_carrier_is_not_python_truthiness[datum0-hold]
+FAILED tests/product/derived_signal/test_m01_f4_review_regressions.py::test_actual_numeric_score_boolean_catalogue_carrier_is_not_python_truthiness[datum1-exit]
+10 failed, 2 passed in 0.14s

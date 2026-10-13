@@ -15,6 +15,10 @@ def named(**fields):
 
 
 def k(identity, value, **metadata):
+    if identity in {"D133", "D177"}:
+        metadata = dict(parameter_context_refs=tuple(api.VersionRefV1(name, 1) for name in (
+            "candidate", "order", "utility")), convention_refs=(api.VersionRefV1("premium", 1),),
+            source_knowledge_cutoff_utc=NOW) | metadata
     return _stage1.KernelValueV1(
         value, identity, NOW, NOW, "NVDA", "derived", metadata=tuple(metadata.items())
     )
