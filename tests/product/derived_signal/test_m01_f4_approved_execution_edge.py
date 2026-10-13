@@ -81,8 +81,12 @@ def case(side="buy", edge=D(20), reserve=D(30), size=D(2), multiplier=D(100)):
 
 
 def evaluate(c, did="D178"):
-    raw = {key: (k(key, value, contract_id="option", currency="USD",
-                   unit_convention_ref=("premium", 1)),) for key, value in c["raw"].items()}
+    raw = {
+        key: (
+            k(key, value, contract_id="option", currency="USD", unit_convention_ref=("premium", 1)),
+        )
+        for key, value in c["raw"].items()
+    }
     derived = {"D133": (k("D133", c["cost"]),), "D177": (k("D177", c["utility"]),)}
     return _stage1.evaluate_stage1_kernel(
         did,
@@ -184,9 +188,14 @@ def test_two_legs_do_not_each_spend_the_full_retained_edge():
     c = case()
     candidate, order = c["contexts"]
     from dataclasses import replace
-    candidate = replace(candidate, leg_contract_identities=("option", "other-option"),
-        leg_sides=("buy", "buy"), leg_quantities=(D(2), D(2)),
-        premium_assumptions=(("option", D(5)), ("other-option", D(5))))
+
+    candidate = replace(
+        candidate,
+        leg_contract_identities=("option", "other-option"),
+        leg_sides=("buy", "buy"),
+        leg_quantities=(D(2), D(2)),
+        premium_assumptions=(("option", D(5)), ("other-option", D(5))),
+    )
     c["contexts"] = (candidate, order)
     c["params"]["leg_headroom_weights"] = ("option|0.5", "other-option|0.5")
     result = evaluate(c)
@@ -197,24 +206,63 @@ def test_two_legs_do_not_each_spend_the_full_retained_edge():
 
 def test_foreign_quote_contract_and_convention_refuse():
     c = case()
-    for changed in ({"contract_id": "foreign"}, {"currency": "EUR"},
-                    {"unit_convention_ref": ("premium", 2)}):
-        raw = {key: (k(key, value, **(dict(contract_id="option", currency="USD",
-                        unit_convention_ref=("premium", 1)) | changed)),)
-               for key, value in c["raw"].items()}
-        result = _stage1.evaluate_stage1_kernel("D178", raw_inputs=raw,
+    for changed in (
+        {"contract_id": "foreign"},
+        {"currency": "EUR"},
+        {"unit_convention_ref": ("premium", 2)},
+    ):
+        raw = {
+            key: (
+                k(
+                    key,
+                    value,
+                    **(
+                        dict(
+                            contract_id="option", currency="USD", unit_convention_ref=("premium", 1)
+                        )
+                        | changed
+                    ),
+                ),
+            )
+            for key, value in c["raw"].items()
+        }
+        result = _stage1.evaluate_stage1_kernel(
+            "D178",
+            raw_inputs=raw,
             derived_inputs={"D133": (k("D133", c["cost"]),), "D177": (k("D177", c["utility"]),)},
-            parameter_set=api.CalculationParameterSetV1("execution-rule", 1, "P_RULE", tuple(c["params"].items())),
-            contexts=c["contexts"], as_of_utc=NOW, knowledge_cutoff_utc=NOW)
+            parameter_set=api.CalculationParameterSetV1(
+                "execution-rule", 1, "P_RULE", tuple(c["params"].items())
+            ),
+            contexts=c["contexts"],
+            as_of_utc=NOW,
+            knowledge_cutoff_utc=NOW,
+        )
         assert result is None
 
 
 def test_explicit_exit_currency_cannot_relabel_a_foreign_execution_reference():
-    result = _stage1.evaluate_stage1_kernel("D191", raw_inputs={"R034": (k("R034", D(4)),),
-        "R035": (k("R035", D(6)),)}, derived_inputs={
-        "D133": (k("D133", named(expected_fill_price=D(5), currency="EUR")),),
-        "D164": (k("D164", named(commissions=D(3), fees=D(1), multi_leg_incremental_cost=D(2), currency="USD")),)},
-        parameter_set=api.CalculationParameterSetV1("exit", 1, "P_BASIC", (
-            ("liquidation_quantity", D(2)), ("multiplier", D(100)), ("currency", "USD"))),
-        contexts=(), as_of_utc=NOW, knowledge_cutoff_utc=NOW)
+    result = _stage1.evaluate_stage1_kernel(
+        "D191",
+        raw_inputs={"R034": (k("R034", D(4)),), "R035": (k("R035", D(6)),)},
+        derived_inputs={
+            "D133": (k("D133", named(expected_fill_price=D(5), currency="EUR")),),
+            "D164": (
+                k(
+                    "D164",
+                    named(
+                        commissions=D(3), fees=D(1), multi_leg_incremental_cost=D(2), currency="USD"
+                    ),
+                ),
+            ),
+        },
+        parameter_set=api.CalculationParameterSetV1(
+            "exit",
+            1,
+            "P_BASIC",
+            (("liquidation_quantity", D(2)), ("multiplier", D(100)), ("currency", "USD")),
+        ),
+        contexts=(),
+        as_of_utc=NOW,
+        knowledge_cutoff_utc=NOW,
+    )
     assert result is None

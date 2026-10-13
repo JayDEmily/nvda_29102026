@@ -1273,7 +1273,8 @@ class _OwnerV1:
                 if (binding.selection_identity is None
                         or binding.selection_identity.value_for("account_identity")
                         != account_scope.account_identity
-                        or binding.selection_identity.value_for("currency") != account_scope.currency_code):
+                        or binding.selection_identity.value_for("currency")
+                        != account_scope.currency_code):
                     return None
         elif selection.basket_membership:
             if binding_subjects != set(selection.basket_membership):
@@ -1595,13 +1596,36 @@ class _OwnerV1:
             return None
         return RawSelectionIdentityV1(values=tuple((key, selected[key]) for key in keys))
 
-    @staticmethod
-    def _occurrence_kernel_value(value: DerivedSignalOccurrenceV1) -> KernelValueV1:
+    def _occurrence_kernel_value(self, value: DerivedSignalOccurrenceV1) -> KernelValueV1:
         from ._stage1 import KernelValueV1
 
         selection_metadata = (
             () if value.selection_identity is None else value.selection_identity.values
         )
+        retained_metadata: list[tuple[str, object]] = []
+        if value.derived_signal_id in {"D181", "D182", "D183", "D184"}:
+            canonical_units = {
+                "D181": "shares", "D182": "shares_per_currency",
+                "D183": "currency_per_volatility_point", "D184": "currency_per_day",
+            }
+            retained_metadata.extend((
+                ("canonical_risk_unit", canonical_units[value.derived_signal_id]),
+                ("position_source_refs", tuple(sorted({
+                    item.observation_occurrence_id for item in value.raw_input_lineage
+                    if item.raw_signal_id == "R212"
+                }))),
+            ))
+        # A domain label is retained only from the exact producer's immutable
+        # parameter reference; the consumer's configuration cannot relabel it.
+        if value.derived_signal_id in {"D190", "D191"}:
+            domain_key = "utility_domain" if value.derived_signal_id == "D190" else "currency"
+            domains = [dict(parameters.parameters).get(domain_key)
+                       for reference in value.parameter_context_refs
+                       if (parameters := self._parameter_sets.get(
+                           (reference.context_id, reference.version))) is not None
+                       and parameters.profile == "P_BASIC"]
+            if len(domains) == 1 and type(domains[0]) is str and domains[0]:
+                retained_metadata.append((domain_key, domains[0]))
         return KernelValueV1(
             value=value.result,
             occurrence_id=value.derived_occurrence_id,
@@ -1617,6 +1641,7 @@ class _OwnerV1:
                 ("parameter_context_refs", value.parameter_context_refs),
                 ("convention_refs", value.convention_refs),
                 ("predecessor_occurrence_ids", value.predecessor_occurrence_ids),
+                *retained_metadata,
                 *selection_metadata,
             ),
         )
@@ -3113,10 +3138,10 @@ __all__ = [
     "PnLConventionVersionV1",
     "RawInputBindingV1",
     "RawInputLineageV1",
-    "RiskScopeContextV1",
     "RawProjectionReaderV1",
     "RecalculationScheduleV1",
     "RequiredFieldPolicyV1",
+    "RiskScopeContextV1",
     "ScoreFeatureV1",
     "UnitConventionVersionV1",
     "VersionRefV1",

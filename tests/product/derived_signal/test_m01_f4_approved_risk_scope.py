@@ -9,10 +9,12 @@ from nvda_desk.derived_signal_calculation_truth import _catalogue, api
 
 def test_approved_context_conjunctions_preserve_dependency_edges():
     assert _catalogue.catalogue_row("D175").typed_contexts == (
-        "CandidateStructureContext", "RiskScopeContext"
+        "CandidateStructureContext",
+        "RiskScopeContext",
     )
     assert _catalogue.catalogue_row("D189").typed_contexts == (
-        "LivePositionContext", "RiskScopeContext"
+        "LivePositionContext",
+        "RiskScopeContext",
     )
 
 
@@ -20,9 +22,14 @@ def test_risk_scope_is_reference_only_and_immutable():
     cls = getattr(api, "RiskScopeContextV1", None)
     assert cls is not None, "approved reference-only risk scope is absent"
     kwargs = dict(
-        context_id="scope", version=1, account_identity="account",
-        account_subject_identity="account-subject", currency_code="USD",
-        sleeve_identity="managed", underlying_identity="NVDA", scope_mode="live_sleeve",
+        context_id="scope",
+        version=1,
+        account_identity="account",
+        account_subject_identity="account-subject",
+        currency_code="USD",
+        sleeve_identity="managed",
+        underlying_identity="NVDA",
+        scope_mode="live_sleeve",
         candidate_structure_ref=api.VersionRefV1("candidate", 1),
         live_position_ref=api.VersionRefV1("live", 1),
         position_membership_source_refs=("raw-position",),
@@ -33,8 +40,11 @@ def test_risk_scope_is_reference_only_and_immutable():
     with pytest.raises(FrozenInstanceError):
         scope.version = 2
     for changed in (
-        {"version": 0}, {"currency_code": ""}, {"scope_mode": "accountwide"},
-        {"live_position_ref": None}, {"underlying_identity": "OTHER"},
+        {"version": 0},
+        {"currency_code": ""},
+        {"scope_mode": "accountwide"},
+        {"live_position_ref": None},
+        {"underlying_identity": "OTHER"},
         {"position_membership_source_refs": ()},
         {"position_membership_source_refs": ("duplicate", "duplicate")},
         {"candidate_structure_ref": "candidate"},

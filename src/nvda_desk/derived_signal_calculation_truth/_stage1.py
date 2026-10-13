@@ -1734,6 +1734,7 @@ def _eval_k02(
                     ("fees", fees),
                     ("multi_leg_incremental_cost", multi),
                     ("total", base + commission + fees + multi),
+                    ("currency", schedule.cost_units),
                 )
             )
         if identity == "D168":
@@ -1943,6 +1944,11 @@ def _eval_k02(
         if identity == "D191":
             fill_components = _named(_scalar(derived, "D133"))
             cost_components = _named(_scalar(derived, "D164"))
+            if "currency" in params and (
+                fill_components.get("currency") != params["currency"]
+                or cost_components.get("currency") != params["currency"]
+            ):
+                return None
             expected_fill = fill_components.get("expected_fill_price")
             if expected_fill is None:
                 return None
@@ -3622,7 +3628,8 @@ def evaluate_stage1_kernel(
         value = _eval_k07(derived_signal_id, raw_inputs, derived_inputs, parameter_set, contexts)
     elif row.kernel_id == "K08_RULE_BUCKET_POLICY":
         value = _eval_k08(
-            derived_signal_id, raw_inputs, derived_inputs, params, contexts, as_of_utc, knowledge_cutoff_utc
+            derived_signal_id, raw_inputs, derived_inputs, params, contexts,
+            as_of_utc, knowledge_cutoff_utc
         )
     elif row.kernel_id == "K16_STRUCTURED_ASSEMBLY":
         value = _eval_k16(derived_signal_id, derived_inputs, params)

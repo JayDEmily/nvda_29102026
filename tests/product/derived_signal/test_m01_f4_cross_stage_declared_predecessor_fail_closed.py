@@ -31,7 +31,7 @@ def _evaluate(did: str, *, without: str | None = None) -> _stage1.KernelResultV1
     from .test_m01_f4_approved_monetary_policy import action_fixture, ev, fixture, hedge_fixture
     if did == "D178":
         c = case()
-        f = dict(raw={key: (k(key, value),) for key, value in c["raw"].items()},
+        f = dict(raw={key: (k(key, value, contract_id="option", currency="USD", unit_convention_ref=("premium", 1)),) for key, value in c["raw"].items()},
                  derived={"D133": (k("D133", c["cost"]),), "D177": (k("D177", c["utility"]),)},
                  params=c["params"], contexts=c["contexts"])
     else:
