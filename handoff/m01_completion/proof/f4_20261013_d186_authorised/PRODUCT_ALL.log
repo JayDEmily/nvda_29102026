@@ -1,0 +1,1120 @@
+........................................................................ [  6%]
+........................................................................ [ 12%]
+........................................................................ [ 18%]
+........................................................................ [ 24%]
+........................................................................ [ 30%]
+........................................................................ [ 36%]
+........................................................................ [ 42%]
+........................................................................ [ 49%]
+........................................................................ [ 55%]
+........................................................................ [ 61%]
+........................................................................ [ 67%]
+........................................................................ [ 73%]
+........................................................................ [ 79%]
+........................................................................ [ 85%]
+........................................................................ [ 91%]
+...............................EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE [ 98%]
+EEEEEEEEEEEEEE........                                                   [100%]
+==================================== ERRORS ====================================
+______ ERROR at setup of test_tcp_probe_requires_explicit_degraded_opt_in ______
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_tcp_probe_uses_direct_process_only_under_explicit_degraded_opt_in _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_degraded_tcp_pid_namespace_probe_is_explicitly_unproved _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+___ ERROR at setup of test_degraded_tcp_probe_uses_confined_work_directories ___
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_each_commit_ack_action_prepares_owner_before_ready_and_write _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_______ ERROR at setup of test_proof_environment_is_real_postgresql_17_9 _______
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_postgresql_sync_commit_barrier_itself_waits_for_server_acknowledgement _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_semantic_write_handshake_excludes_owner_setup_transaction _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_semantic_write_trace_rejects_split_marker_surrogate_payload_in_postgresql _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_semantic_marker_xid_binding_rejects_setup_then_semantic_commits _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_semantic_write_trace_rejects_split_marker_surrogate_payload_transactions _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_public_factory_uses_same_semantic_owner_type_with_and_without_postgresql _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_process_boundary_forbids_shared_local_file_persistence _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_semantic_state_moves_with_postgresql_database_clone_and_not_original_process_state _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_public_return_barrier_stops_separate_session_descendant_process _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_public_success_return_requires_postgresql_commit_acknowledgement[boundary_write_policy-policy-read_policy-None] _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_public_success_return_requires_postgresql_commit_acknowledgement[boundary_write_capture-capture-read_capture-None] _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_public_success_return_requires_postgresql_commit_acknowledgement[boundary_write_observation-observation-read_observation-None] _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_public_success_return_requires_postgresql_commit_acknowledgement[boundary_write_zero_assessment-zero-read_assessment-zero] _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_public_success_return_requires_postgresql_commit_acknowledgement[boundary_write_one_assessment-one-read_assessment-one] _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_command_return_is_durable_if_writer_is_killed_immediately_after_success _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_each_command_is_visible_before_writer_shutdown_and_matches_prewrite_authority _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_postgresql_is_only_configured_cross_process_semantic_source_for_complete_facts _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_postgresql_restart_preserves_catalogue_id_numeric_sign_precision_type_and_null[R038-Last Size-value0-contracts/shares] _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_postgresql_restart_preserves_catalogue_id_numeric_sign_precision_type_and_null[R084-Bid Option Computation.impliedVolatility--1.23456789e-10-volatility] _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_postgresql_restart_preserves_catalogue_id_numeric_sign_precision_type_and_null[R246-DGS3MO--0.375-Percent] _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_durable_retry_and_conflicting_reuse_cross_process_boundaries _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_append_only_assessment_chain_is_exact_across_fresh_processes _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_restart_preserves_policy_capture_assessment_and_scope_high_water_invariants _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_restart_reconciliation_commits_capture_before_assessment_and_recovers_exact_facts _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_public_owner_accepts_explicit_technical_persistence_port_injection _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_record_only_proxy_rewrite_rejects_cached_private_adapter_capability _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_record_only_proxy_rewrite_rejects_nested_private_adapter_capability[list] _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_record_only_proxy_rewrite_rejects_nested_private_adapter_capability[dict] _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_record_only_proxy_rewrite_rejects_nested_private_adapter_capability[tuple] _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_record_only_proxy_rewrite_rejects_nested_private_adapter_capability[partial_function] _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_record_only_proxy_rewrite_rejects_nested_private_adapter_capability[partial_argument] _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_record_only_proxy_rewrite_rejects_nested_private_adapter_capability[partial_keyword] _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_record_only_proxy_rewrite_rejects_nested_private_adapter_capability[closure] _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_record_only_proxy_rewrite_rejects_external_private_adapter_capability[class] _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_record_only_proxy_rewrite_rejects_external_private_adapter_capability[slots] _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_record_only_proxy_rewrite_rejects_external_private_adapter_capability[global] _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_record_only_proxy_rewrite_rejects_external_private_adapter_capability[module] _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_record_only_proxy_rewrite_rejects_weak_adapter_capability[ref] _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_record_only_proxy_rewrite_rejects_weak_adapter_capability[method] _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_record_only_proxy_rewrite_rejects_weak_adapter_capability[proxy] _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_record_only_proxy_rewrite_rejects_weak_adapter_capability[callable_proxy] _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_injected_record_only_port_rejects_private_adapter_recovery _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_graph_checker_does_not_treat_adapter_holding_record_proxy_as_opaque _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_record_only_proxy_rewrite_rewrites_nested_public_storage_capabilities _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_postgresql_durability_port_exposes_only_authorised_transaction_query_contract _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_postgresql_adapter_preserves_owner_decided_assessment_without_rederiving _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_postgresql_adapter_is_invariant_under_opposing_eligibility_authority _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_owner_package_has_no_alternate_durable_backend_or_external_semantic_service _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+_ ERROR at setup of test_persistence_proof_does_not_claim_cross_kind_atomicity_or_replay_sla _
+
+    @pytest.fixture(autouse=True)
+    def _isolate_u05_semantic_store() -> None:
+        """Keep independent proof cases from becoming each other's durable policy universe."""
+    
+>       _truncate_u05_semantic_store(_dsn())
+                                     ^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _dsn() -> str:
+        value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
+        if not value:
+>           pytest.fail("NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof")
+E           Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:56: Failed
+=========================== short test summary info ============================
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_tcp_probe_requires_explicit_degraded_opt_in - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_tcp_probe_uses_direct_process_only_under_explicit_degraded_opt_in - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_degraded_tcp_pid_namespace_probe_is_explicitly_unproved - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_degraded_tcp_probe_uses_confined_work_directories - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_each_commit_ack_action_prepares_owner_before_ready_and_write - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_proof_environment_is_real_postgresql_17_9 - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_postgresql_sync_commit_barrier_itself_waits_for_server_acknowledgement - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_semantic_write_handshake_excludes_owner_setup_transaction - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_semantic_write_trace_rejects_split_marker_surrogate_payload_in_postgresql - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_semantic_marker_xid_binding_rejects_setup_then_semantic_commits - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_semantic_write_trace_rejects_split_marker_surrogate_payload_transactions - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_public_factory_uses_same_semantic_owner_type_with_and_without_postgresql - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_process_boundary_forbids_shared_local_file_persistence - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_semantic_state_moves_with_postgresql_database_clone_and_not_original_process_state - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_public_return_barrier_stops_separate_session_descendant_process - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_public_success_return_requires_postgresql_commit_acknowledgement[boundary_write_policy-policy-read_policy-None] - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_public_success_return_requires_postgresql_commit_acknowledgement[boundary_write_capture-capture-read_capture-None] - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_public_success_return_requires_postgresql_commit_acknowledgement[boundary_write_observation-observation-read_observation-None] - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_public_success_return_requires_postgresql_commit_acknowledgement[boundary_write_zero_assessment-zero-read_assessment-zero] - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_public_success_return_requires_postgresql_commit_acknowledgement[boundary_write_one_assessment-one-read_assessment-one] - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_command_return_is_durable_if_writer_is_killed_immediately_after_success - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_each_command_is_visible_before_writer_shutdown_and_matches_prewrite_authority - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_postgresql_is_only_configured_cross_process_semantic_source_for_complete_facts - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_postgresql_restart_preserves_catalogue_id_numeric_sign_precision_type_and_null[R038-Last Size-value0-contracts/shares] - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_postgresql_restart_preserves_catalogue_id_numeric_sign_precision_type_and_null[R084-Bid Option Computation.impliedVolatility--1.23456789e-10-volatility] - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_postgresql_restart_preserves_catalogue_id_numeric_sign_precision_type_and_null[R246-DGS3MO--0.375-Percent] - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_durable_retry_and_conflicting_reuse_cross_process_boundaries - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_append_only_assessment_chain_is_exact_across_fresh_processes - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_restart_preserves_policy_capture_assessment_and_scope_high_water_invariants - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_restart_reconciliation_commits_capture_before_assessment_and_recovers_exact_facts - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_public_owner_accepts_explicit_technical_persistence_port_injection - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_record_only_proxy_rewrite_rejects_cached_private_adapter_capability - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_record_only_proxy_rewrite_rejects_nested_private_adapter_capability[list] - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_record_only_proxy_rewrite_rejects_nested_private_adapter_capability[dict] - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_record_only_proxy_rewrite_rejects_nested_private_adapter_capability[tuple] - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_record_only_proxy_rewrite_rejects_nested_private_adapter_capability[partial_function] - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_record_only_proxy_rewrite_rejects_nested_private_adapter_capability[partial_argument] - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_record_only_proxy_rewrite_rejects_nested_private_adapter_capability[partial_keyword] - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_record_only_proxy_rewrite_rejects_nested_private_adapter_capability[closure] - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_record_only_proxy_rewrite_rejects_external_private_adapter_capability[class] - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_record_only_proxy_rewrite_rejects_external_private_adapter_capability[slots] - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_record_only_proxy_rewrite_rejects_external_private_adapter_capability[global] - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_record_only_proxy_rewrite_rejects_external_private_adapter_capability[module] - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_record_only_proxy_rewrite_rejects_weak_adapter_capability[ref] - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_record_only_proxy_rewrite_rejects_weak_adapter_capability[method] - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_record_only_proxy_rewrite_rejects_weak_adapter_capability[proxy] - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_record_only_proxy_rewrite_rejects_weak_adapter_capability[callable_proxy] - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_injected_record_only_port_rejects_private_adapter_recovery - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_graph_checker_does_not_treat_adapter_holding_record_proxy_as_opaque - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_record_only_proxy_rewrite_rewrites_nested_public_storage_capabilities - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_postgresql_durability_port_exposes_only_authorised_transaction_query_contract - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_postgresql_adapter_preserves_owner_decided_assessment_without_rederiving - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_postgresql_adapter_is_invariant_under_opposing_eligibility_authority - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_owner_package_has_no_alternate_durable_backend_or_external_semantic_service - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+ERROR tests/product/raw_signal/test_u05_postgresql_durability.py::test_persistence_proof_does_not_claim_cross_kind_atomicity_or_replay_sla - Failed: NVDA_TEST_POSTGRES_DSN is required for real PostgreSQL product proof
+1119 passed, 55 errors in 7.46s
