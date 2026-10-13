@@ -63,38 +63,10 @@ def _ev(did: str, derived=None, raw=None, *, params=(), contexts=()):
             (("minimum_identifiability", D("0.7")), ("minimum_utility", D("0.8"))),
             True,
         ),
-        (
-            "D175",
-            {"D162": D(80), "D174": D(70)},
-            {"R205": D(100), "R206": D(50), "R209": D(90), "R208": D(60)},
-            (),
-            D(50),
-        ),
-        (
-            "D176",
-            {"D175": D(100), "D165": D(20), "D163": D(2), "D132": D(4)},
-            {},
-            (
-                ("risk_per_unit", D(5)),
-                ("uncertainty_multiplier", D(2)),
-                ("liquidity_multiplier", D(2)),
-            ),
-            5,
-        ),
-        (
-            "D178",
-            {"D133": D(4), "D177": D(2)},
-            {"R034": D(4), "R035": D(6), "R189": D(5), "R190": D(8)},
-            (("allowed_execution_cost_per_unit", D("0.5")), ("side", "buy")),
-            D("5.5"),
-        ),
-        (
-            "D189",
-            {"D181": D(15), "D182": D(4), "D183": D(5), "D184": D(2), "D175": D(30)},
-            {},
-            (("target_bands", ("delta|0|10", "gamma|0|10")),),
-            (("delta", D(-10)), ("gamma", D(0))),
-        ),
+        ("D175", {}, {}, (), D(50)),
+        ("D176", {}, {}, (), 5),
+        ("D178", {}, {}, (), D("5.5")),
+        ("D189", {}, {}, (), (("delta", D(-10)), ("gamma", D(0)), ("vega", D(0)), ("theta", D(0)))),
         (
             "D191",
             {
@@ -139,9 +111,38 @@ def test_stage1_cross_stage_rule_algebra_numeric_and_lineage(
     params,
     expected,
 ):
-    result = _ev(did, derived, raw, params=params)
-    assert result is not None and result.value == expected
-    assert set(result.input_occurrence_ids) == {f"{key}-case" for key in (*derived, *raw)}
+    if did in {"D175", "D176", "D178", "D189"}:
+        from .test_m01_f4_approved_execution_edge import case, evaluate
+        from .test_m01_f4_approved_monetary_policy import budget, ev, fixture, hedge_fixture, kv
+        if did == "D178":
+            c = case(edge=D(40)); result = evaluate(c)
+            expected_ids = {"D133", "D177", *c["raw"]}
+            assert result is not None and result.value == expected
+        else:
+            f = fixture((D(15), D(4), D(5), D(2))) if did == "D189" else fixture()
+            if did == "D175":
+                f["params"]["capital_fraction"] = D(".005")
+            elif did == "D176":
+                f["params"]["capital_fraction"] = D(".01")
+                b = budget(f); f["raw"] = {}
+                f["derived"] = {"D175": (kv("D175", b),), **{
+                    x: (kv(x, D(1)),) for x in ("D165", "D163", "D132")}}
+                f["params"].update(risk_per_unit=D(5), uncertainty_multiplier=D(2),
+                    liquidity_multiplier=D(2), risk_per_unit_currency="USD",
+                    risk_per_unit_definition="GREEK_SHOCK_ENVELOPE_V1")
+            else:
+                f = hedge_fixture(f)
+                f["params"]["target_bands"] = tuple(name + "|0|10" for name in ("delta", "gamma", "vega", "theta"))
+            result = ev(did, f)
+            expected_ids = {v.occurrence_id for values in (*f["derived"].values(), *f["raw"].values()) for v in values}
+            assert result is not None
+            value = dict(result.value)["maximum_currency"] if did == "D175" else dict(result.value)["adjustment"] if did == "D189" else result.value
+            assert value == expected
+        assert set(result.input_occurrence_ids) == expected_ids
+    else:
+        result = _ev(did, derived, raw, params=params)
+        assert result is not None and result.value == expected
+        assert set(result.input_occurrence_ids) == {f"{key}-case" for key in (*derived, *raw)}
 
 
 def test_d164_exact_versioned_execution_schedule() -> None:
@@ -153,7 +154,7 @@ def test_d164_exact_versioned_execution_schedule() -> None:
         (("multi", D(3)),),
         "USD",
     )
-    result = _ev("D164", {"D133": D(4)}, contexts=(schedule,))
+    result = _ev("D164", {"D133": (("expected_slippage_currency", D(4)), ("currency", "USD"))}, contexts=(schedule,))
     assert result is not None and dict(result.value)["total"] == D(10)
     assert result.input_occurrence_ids == ("D133-case",)
-    assert _ev("D164", {"D133": D(4)}) is None
+    assert _ev("D164", {"D133": (("expected_slippage_currency", D(4)), ("currency", "USD"))}) is None

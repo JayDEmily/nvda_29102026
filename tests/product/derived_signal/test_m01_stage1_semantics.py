@@ -87,7 +87,7 @@ def test_stage1_runtime_catalogue_is_exact_hash_bound_209_row_authority() -> Non
     cat = _catalogue()
     rows = cat.catalogue_rows()
     assert (
-        cat.CATALOGUE_SHA256 == "d651436df1fcd1395f8f1147dfd80db1ed178da4834447a947c3c9c32fd82aa7"
+        cat.CATALOGUE_SHA256 == "26c5486d1a4c7ff68025c7ce2d7e6847a7798759b847a716c942fd05345f3803"
     )
     assert len(rows) == 209
     assert tuple(row.derived_id for row in rows) == tuple(f"D{i:03d}" for i in range(1, 210))
@@ -1208,23 +1208,12 @@ def test_k08_candidate_selection_risk_size_limit_and_action_precedence_are_deter
     )
     assert selection is not None and selection.value == "A"
 
-    action = _eval(
-        "D192",
-        derived={
-            "D187": (_kv(True),),
-            "D188": (_kv((("expected_currency_PnL", Decimal("100")),)),),
-            "D189": (_kv((("delta", Decimal("0")),)),),
-            "D190": (_kv(Decimal("1000")),),
-            "D191": (_kv(Decimal("1000")),),
-            "D175": (_kv(Decimal("1000")),),
-        },
-        params=_p(
-            "P_RULE",
-            mandatory_exit_on_invalidation=True,
-            modify_minimum=Decimal("1"),
-            exit_margin_currency=Decimal("1"),
-        ),
-    )
+    from .test_m01_f4_approved_monetary_policy import action_fixture, ev, kv
+    f = action_fixture()
+    f["derived"]["D187"] = (kv("D187", Decimal(".9"), units="score"),)
+    f["derived"]["D190"] = (kv("D190", Decimal(1000), utility_domain="net_currency"),)
+    f["derived"]["D191"] = (kv("D191", Decimal(1000), currency="USD"),)
+    action = ev("D192", f)
     assert action is not None and action.value == "exit"
 
 

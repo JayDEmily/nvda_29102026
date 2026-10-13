@@ -1249,6 +1249,7 @@ class _OwnerV1:
         selection: InputSelectionPolicyVersionV1,
         *,
         allow_absence: bool = False,
+        account_scope: RiskScopeContextV1 | None = None,
     ) -> (
         tuple[tuple[KernelValueV1, ...], tuple[RawInputLineageV1, ...], tuple[VersionRefV1, ...]]
         | None
@@ -1263,7 +1264,18 @@ class _OwnerV1:
         if not bindings:
             return None
         binding_subjects = {item.subject_instrument for item in bindings}
-        if selection.basket_membership:
+        if account_scope is not None:
+            if (raw_signal_id not in {"R205", "R206", "R209", "R208"}
+                    or selection.basket_membership
+                    or binding_subjects != {account_scope.account_subject_identity}):
+                return None
+            for binding in bindings:
+                if (binding.selection_identity is None
+                        or binding.selection_identity.value_for("account_identity")
+                        != account_scope.account_identity
+                        or binding.selection_identity.value_for("currency") != account_scope.currency_code):
+                    return None
+        elif selection.basket_membership:
             if binding_subjects != set(selection.basket_membership):
                 return None
         elif binding_subjects != {request.subject_instrument}:
@@ -1383,6 +1395,8 @@ class _OwnerV1:
                         str(getattr(item, "revision_vintage_native", "") or ""),
                     ),
                     ("ingestion_sequence", int(getattr(item, "ingestion_sequence", 0))),
+                    ("canonical_units", unit.canonical_units),
+                    ("unit_convention_ref", (unit.context_id, unit.version)),
                     *identity_metadata,
                 )
                 kernel_values.append(
@@ -1600,6 +1614,9 @@ class _OwnerV1:
                 ("result_shape", value.result_shape),
                 ("raw_input_lineage", value.raw_input_lineage),
                 ("source_knowledge_cutoff_utc", value.knowledge_cutoff_utc),
+                ("parameter_context_refs", value.parameter_context_refs),
+                ("convention_refs", value.convention_refs),
+                ("predecessor_occurrence_ids", value.predecessor_occurrence_ids),
                 *selection_metadata,
             ),
         )
@@ -2319,7 +2336,11 @@ class _OwnerV1:
                 return None
         for raw_signal_id in raw_ids:
             loaded = self._raw_values(
-                request, raw_signal_id, selection, allow_absence=derived_signal_id == "D007"
+                request, raw_signal_id, selection, allow_absence=derived_signal_id == "D007",
+                account_scope=(
+                    next((value for value in contexts if type(value) is RiskScopeContextV1), None)
+                    if derived_signal_id == "D175" else None
+                ),
             )
             if loaded is None:
                 return None

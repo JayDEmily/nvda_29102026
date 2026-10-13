@@ -125,14 +125,10 @@ def test_d190_modify_utility_uses_exact_candidate_set():
 
 
 def test_d192_fixed_action_order_from_controlled_values():
-    derived = {
-        "D187": (kv("D187", False),),
-        "D188": (kv("D188", (("expected_currency_PnL", D(5)),)),),
-        "D189": (kv("D189", (("delta", D(0)),)),),
-        "D190": (kv("D190", D(4)),),
-        "D191": (kv("D191", D(8)),),
-        "D175": (kv("D175", D(100)),),
-    }
-    result = evaluate("D192", derived, params=(("modify_minimum", D(3)),))
+    from .test_m01_f4_approved_monetary_policy import action_fixture, ev, kv
+    f = action_fixture()
+    f["derived"]["D190"] = (kv("D190", D(4), utility_domain="net_currency"),)
+    f["params"]["modify_minimum"] = D(3)
+    result = ev("D192", f)
     assert result is not None and result.value == "modify"
-    assert set(result.input_occurrence_ids) == {f"{did}-0" for did in derived}
+    assert set(result.input_occurrence_ids) == set(f["derived"])

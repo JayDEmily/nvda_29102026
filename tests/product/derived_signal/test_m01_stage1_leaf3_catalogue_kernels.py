@@ -255,16 +255,16 @@ def test_k02_liquidation_requires_exact_quantity_and_multiplier() -> None:
 
 
 def test_k08_risk_quantity_refuses_implicit_uncertainty_and_liquidity_multipliers() -> None:
-    derived = {"D175": (kv(Decimal("100"), "risk"),)}
-    assert evaluate(
-        "D176", derived=derived, parameters=param("P_RULE", risk_per_unit=Decimal("10")),
-    ) is None
-    calculated = evaluate(
-        "D176", derived=derived,
-        parameters=param("P_RULE", risk_per_unit=Decimal("10"),
-                         uncertainty_multiplier=Decimal("1.25"),
-                         liquidity_multiplier=Decimal("2")),
-    )
+    from .test_m01_f4_approved_monetary_policy import budget, ev, fixture, kv
+    f = fixture(); f["params"]["capital_fraction"] = Decimal(".01")
+    b = budget(f); f["raw"] = {}
+    f["derived"] = {"D175": (kv("D175", b),), **{
+        did: (kv(did, Decimal(1)),) for did in ("D165", "D163", "D132")}}
+    f["params"].update(risk_per_unit=Decimal(10), risk_per_unit_currency="USD",
+                       risk_per_unit_definition="GREEK_SHOCK_ENVELOPE_V1")
+    assert ev("D176", f) is None
+    f["params"].update(uncertainty_multiplier=Decimal("1.25"), liquidity_multiplier=Decimal(2))
+    calculated = ev("D176", f)
     assert calculated is not None and calculated.value == 4
 
 

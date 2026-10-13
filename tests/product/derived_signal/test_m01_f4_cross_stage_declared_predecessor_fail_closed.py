@@ -26,51 +26,22 @@ def _value(did: str, datum: object) -> _stage1.KernelValueV1:
     )
 
 
-_CASES = {
-    "D178": (
-        {"D133": Decimal(4), "D177": Decimal(2)},
-        {"R034": Decimal(4), "R035": Decimal(6), "R189": Decimal(5), "R190": Decimal(8)},
-        (("allowed_execution_cost_per_unit", Decimal("0.5")), ("side", "buy")),
-        "P_RULE",
-    ),
-    "D189": (
-        {
-            "D181": Decimal(15),
-            "D182": Decimal(4),
-            "D183": Decimal(5),
-            "D184": Decimal(2),
-            "D175": Decimal(30),
-        },
-        {},
-        (("target_bands", ("delta|0|10", "gamma|0|10")),),
-        "P_RULE",
-    ),
-    "D192": (
-        {
-            "D187": False,
-            "D188": (("expected_currency_PnL", Decimal(10)),),
-            "D189": (("delta", Decimal(0)),),
-            "D190": Decimal(0),
-            "D191": Decimal(5),
-            "D175": Decimal(30),
-        },
-        {},
-        (("mandatory_exit_on_invalidation", True), ("mandatory_hedge_on_risk", True)),
-        "P_RULE",
-    ),
-}
-
-
 def _evaluate(did: str, *, without: str | None = None) -> _stage1.KernelResultV1 | None:
-    derived, raw, params, profile = _CASES[did]
+    from .test_m01_f4_approved_execution_edge import NOW, case, k
+    from .test_m01_f4_approved_monetary_policy import action_fixture, ev, fixture, hedge_fixture
+    if did == "D178":
+        c = case()
+        f = dict(raw={key: (k(key, value),) for key, value in c["raw"].items()},
+                 derived={"D133": (k("D133", c["cost"]),), "D177": (k("D177", c["utility"]),)},
+                 params=c["params"], contexts=c["contexts"])
+    else:
+        f = hedge_fixture(fixture()) if did == "D189" else action_fixture()
+    if without is not None:
+        f["derived"].pop(without)
     return _stage1.evaluate_stage1_kernel(
-        did,
-        raw_inputs={k: (_value(k, v),) for k, v in raw.items()},
-        derived_inputs={k: (_value(k, v),) for k, v in derived.items() if k != without},
-        parameter_set=api.CalculationParameterSetV1(f"absent-{did}", 1, profile, params),
-        contexts=(),
-        as_of_utc=AT,
-        knowledge_cutoff_utc=AT,
+        did, raw_inputs=f["raw"], derived_inputs=f["derived"],
+        parameter_set=api.CalculationParameterSetV1("mandatory", 1, "P_RULE", tuple(f["params"].items())),
+        contexts=f["contexts"], as_of_utc=NOW, knowledge_cutoff_utc=NOW,
     )
 
 
