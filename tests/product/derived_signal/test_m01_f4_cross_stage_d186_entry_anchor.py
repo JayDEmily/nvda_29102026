@@ -22,6 +22,8 @@ def _v(
     missing_component: str | None = None,
     altered_unit: str | None = None,
     received_age: int | None = None,
+    changed_component_type: bool = False,
+    changed_outer_shape: bool = False,
 ) -> _stage1.KernelValueV1:
     when = AT - timedelta(minutes=age)
     received = AT - timedelta(minutes=received_age if received_age is not None else age)
@@ -32,6 +34,8 @@ def _v(
             if did == "D008"
             else value
             if did == "D150"
+            else "one"
+            if changed_component_type and did == "D132"
             else Decimal(1),
             f"{id}-{did}",
             (("units", altered_unit if altered_unit and did == "D150" else "score"),),
@@ -46,7 +50,10 @@ def _v(
         received_ts_utc=received,
         subject_instrument=subject,
         source_temporal_kind="derived",
-        metadata=(("units", "similarity/feature deltas"), ("result_shape", "structured")),
+        metadata=(
+            ("units", "similarity/feature deltas"),
+            ("result_shape", "scalar" if changed_outer_shape else "structured"),
+        ),
     )
 
 
@@ -121,6 +128,8 @@ def test_d186_extracts_nested_scalar_using_k07_and_uses_only_selected_history():
         "schema_missing",
         "schema_unit",
         "future_current",
+        "schema_type",
+        "outer_shape",
     ],
 )
 def test_d186_refuses_incompatible_history(scenario: str):
@@ -140,6 +149,10 @@ def test_d186_refuses_incompatible_history(scenario: str):
         history = (entry, _v("current", 0, Decimal(12), missing_component="D132"))
     elif scenario == "schema_unit":
         history = (entry, _v("current", 0, Decimal(12), altered_unit="currency"))
+    elif scenario == "schema_type":
+        history = (entry, _v("current", 0, Decimal(12), changed_component_type=True))
+    elif scenario == "outer_shape":
+        history = (entry, _v("current", 0, Decimal(12), changed_outer_shape=True))
     else:
         history = (entry, _v("current", -1, Decimal(12)))
     assert _eval(history, "entry") is None
