@@ -21,12 +21,12 @@ ______ ERROR at setup of test_tcp_probe_requires_explicit_degraded_opt_in ______
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -40,12 +40,12 @@ _ ERROR at setup of test_tcp_probe_uses_direct_process_only_under_explicit_degra
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -59,12 +59,12 @@ _ ERROR at setup of test_degraded_tcp_pid_namespace_probe_is_explicitly_unproved
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -78,12 +78,12 @@ ___ ERROR at setup of test_degraded_tcp_probe_uses_confined_work_directories ___
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -97,12 +97,12 @@ _ ERROR at setup of test_each_commit_ack_action_prepares_owner_before_ready_and_
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -116,12 +116,12 @@ _______ ERROR at setup of test_proof_environment_is_real_postgresql_17_9 _______
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -135,12 +135,12 @@ _ ERROR at setup of test_postgresql_sync_commit_barrier_itself_waits_for_server_
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -154,12 +154,12 @@ _ ERROR at setup of test_semantic_write_handshake_excludes_owner_setup_transacti
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -173,12 +173,12 @@ _ ERROR at setup of test_semantic_write_trace_rejects_split_marker_surrogate_pay
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -192,12 +192,12 @@ _ ERROR at setup of test_semantic_marker_xid_binding_rejects_setup_then_semantic
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -211,12 +211,12 @@ _ ERROR at setup of test_semantic_write_trace_rejects_split_marker_surrogate_pay
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -230,12 +230,12 @@ _ ERROR at setup of test_public_factory_uses_same_semantic_owner_type_with_and_w
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -249,12 +249,12 @@ _ ERROR at setup of test_process_boundary_forbids_shared_local_file_persistence 
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -268,12 +268,12 @@ _ ERROR at setup of test_semantic_state_moves_with_postgresql_database_clone_and
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -287,12 +287,12 @@ _ ERROR at setup of test_public_return_barrier_stops_separate_session_descendant
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -306,12 +306,12 @@ _ ERROR at setup of test_public_success_return_requires_postgresql_commit_acknow
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -325,12 +325,12 @@ _ ERROR at setup of test_public_success_return_requires_postgresql_commit_acknow
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -344,12 +344,12 @@ _ ERROR at setup of test_public_success_return_requires_postgresql_commit_acknow
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -363,12 +363,12 @@ _ ERROR at setup of test_public_success_return_requires_postgresql_commit_acknow
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -382,12 +382,12 @@ _ ERROR at setup of test_public_success_return_requires_postgresql_commit_acknow
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -401,12 +401,12 @@ _ ERROR at setup of test_command_return_is_durable_if_writer_is_killed_immediate
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -420,12 +420,12 @@ _ ERROR at setup of test_each_command_is_visible_before_writer_shutdown_and_matc
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -439,12 +439,12 @@ _ ERROR at setup of test_postgresql_is_only_configured_cross_process_semantic_so
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -458,12 +458,12 @@ _ ERROR at setup of test_postgresql_restart_preserves_catalogue_id_numeric_sign_
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -477,12 +477,12 @@ _ ERROR at setup of test_postgresql_restart_preserves_catalogue_id_numeric_sign_
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -496,12 +496,12 @@ _ ERROR at setup of test_postgresql_restart_preserves_catalogue_id_numeric_sign_
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -515,12 +515,12 @@ _ ERROR at setup of test_durable_retry_and_conflicting_reuse_cross_process_bound
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -534,12 +534,12 @@ _ ERROR at setup of test_append_only_assessment_chain_is_exact_across_fresh_proc
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -553,12 +553,12 @@ _ ERROR at setup of test_restart_preserves_policy_capture_assessment_and_scope_h
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -572,12 +572,12 @@ _ ERROR at setup of test_restart_reconciliation_commits_capture_before_assessmen
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -591,12 +591,12 @@ _ ERROR at setup of test_public_owner_accepts_explicit_technical_persistence_por
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -610,12 +610,12 @@ _ ERROR at setup of test_record_only_proxy_rewrite_rejects_cached_private_adapte
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -629,12 +629,12 @@ _ ERROR at setup of test_record_only_proxy_rewrite_rejects_nested_private_adapte
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -648,12 +648,12 @@ _ ERROR at setup of test_record_only_proxy_rewrite_rejects_nested_private_adapte
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -667,12 +667,12 @@ _ ERROR at setup of test_record_only_proxy_rewrite_rejects_nested_private_adapte
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -686,12 +686,12 @@ _ ERROR at setup of test_record_only_proxy_rewrite_rejects_nested_private_adapte
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -705,12 +705,12 @@ _ ERROR at setup of test_record_only_proxy_rewrite_rejects_nested_private_adapte
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -724,12 +724,12 @@ _ ERROR at setup of test_record_only_proxy_rewrite_rejects_nested_private_adapte
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -743,12 +743,12 @@ _ ERROR at setup of test_record_only_proxy_rewrite_rejects_nested_private_adapte
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -762,12 +762,12 @@ _ ERROR at setup of test_record_only_proxy_rewrite_rejects_external_private_adap
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -781,12 +781,12 @@ _ ERROR at setup of test_record_only_proxy_rewrite_rejects_external_private_adap
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -800,12 +800,12 @@ _ ERROR at setup of test_record_only_proxy_rewrite_rejects_external_private_adap
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -819,12 +819,12 @@ _ ERROR at setup of test_record_only_proxy_rewrite_rejects_external_private_adap
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -838,12 +838,12 @@ _ ERROR at setup of test_record_only_proxy_rewrite_rejects_weak_adapter_capabili
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -857,12 +857,12 @@ _ ERROR at setup of test_record_only_proxy_rewrite_rejects_weak_adapter_capabili
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -876,12 +876,12 @@ _ ERROR at setup of test_record_only_proxy_rewrite_rejects_weak_adapter_capabili
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -895,12 +895,12 @@ _ ERROR at setup of test_record_only_proxy_rewrite_rejects_weak_adapter_capabili
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -914,12 +914,12 @@ _ ERROR at setup of test_injected_record_only_port_rejects_private_adapter_recov
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -933,12 +933,12 @@ _ ERROR at setup of test_graph_checker_does_not_treat_adapter_holding_record_pro
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -952,12 +952,12 @@ _ ERROR at setup of test_record_only_proxy_rewrite_rewrites_nested_public_storag
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -971,12 +971,12 @@ _ ERROR at setup of test_postgresql_durability_port_exposes_only_authorised_tran
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -990,12 +990,12 @@ _ ERROR at setup of test_postgresql_adapter_preserves_owner_decided_assessment_w
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -1009,12 +1009,12 @@ _ ERROR at setup of test_postgresql_adapter_is_invariant_under_opposing_eligibil
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -1028,12 +1028,12 @@ _ ERROR at setup of test_owner_package_has_no_alternate_durable_backend_or_exter
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
@@ -1047,12 +1047,12 @@ _ ERROR at setup of test_persistence_proof_does_not_claim_cross_kind_atomicity_o
     @pytest.fixture(autouse=True)
     def _isolate_u05_semantic_store() -> None:
         """Keep independent proof cases from becoming each other's durable policy universe."""
-    
+
 >       _truncate_u05_semantic_store(_dsn())
                                      ^^^^^^
 
-tests/product/raw_signal/test_u05_postgresql_durability.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:95:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
     def _dsn() -> str:
         value = os.environ.get("NVDA_TEST_POSTGRES_DSN")
