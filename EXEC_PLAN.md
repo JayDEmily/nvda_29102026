@@ -35,3 +35,14 @@ Prior accepted G01 remains PARTIAL/BLOCKED, with no independent foundation accep
 - G01 remains unaccepted, D120 remains source-contract blocked, and M01-1 ownership migration remains separate.
 
 **Execution order:** R01-1 → R01-2 → R01-3 → R01-4. Stop only the dependent unit at an unmet authority invariant; preserve all red evidence.
+
+## Executed state — 14 October 2026
+
+| Unit | Result | Evidence | Status |
+|---|---|---|---|
+| R01-1 | Accepted original brief SHA matched; implementation ingress returned `modify:M01`; D120 multiplier contract conflict documented | `R01_1_SOURCE_CONTRACT_DECISION.md`, `IMPLEMENTATION_INGRESS.yaml` | PASS for D025/D099/D100 authority; D120 BLOCKED |
+| R01-2 | Controlled-input discriminating proof committed before production; 34 passed, 7 failed on deliberately red witness | `c3c17c2`, `proof_logs/BEFORE_PRODUCTION_*` | PASS proof-before-production sequencing |
+| R01-3 | D025 and D099/D100 source repair; 41/41 focused, 780/780 broader, three static scripts pass | `27aa7cb`, `proof_logs/` | TESTED candidate (not independently accepted) |
+| R01-4 | Independent reviewer not available; connected GitHub `main` not in this local Git lineage | `R01_REVIEW_AND_PROMOTION_PACKET.md` | BLOCKED: no main promotion |
+
+Unresolved R015-as-multiplier D120 discrepancy persists independently. Do not enter D120 repair without owner-approved amendment. Prior G01 PARTIAL/BLOCKED remains unchanged in historical plan.
