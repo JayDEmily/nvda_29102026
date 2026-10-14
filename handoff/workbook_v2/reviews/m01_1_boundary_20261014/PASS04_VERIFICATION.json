@@ -1,0 +1,12 @@
+{
+  "original_eight_sheets_unchanged": true,
+  "full_row_classification": 209,
+  "candidate_only_tab": 114,
+  "unadmitted": 95,
+  "qualifying_to_nonqualifying_D_edges": 0,
+  "qualifying_to_account_position_order_R_edges": 0,
+  "proposed_module_id_only": true,
+  "source_and_sheet_readback": "PASS",
+  "output_sha256": "397c44260f6378d19384c57fc07be8df4bffe193d80558ca3b4861c4f25b3fd0",
+  "audit_csv_sha256": "e336e4090a65a6ab1558c956826ec9b5f889348e76ca186965f203cbcb757900"
+}
