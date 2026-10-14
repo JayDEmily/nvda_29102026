@@ -1,0 +1,210 @@
+D_ID,V1_Excel_Row,Family,Original_Family_V1,Proposed_Family_Review_Only,Family_Status,Calculation_class,Calculation_class_Status,Source_Locator
+D001,5,Time & data quality,Time & data quality,Time and session semantics,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A5:O5
+D002,6,Time & data quality,Time & data quality,Time and session semantics,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A6:O6
+D003,7,Time & data quality,Time & data quality,Time and session semantics,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A7:O7
+D004,8,Time & data quality,Time & data quality,Time and session semantics,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A8:O8
+D005,9,Time & data quality,Time & data quality,Time and session semantics,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A9:O9
+D006,10,Time & data quality,Time & data quality,Data quality and reconciliation,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A10:O10
+D007,11,Time & data quality,Time & data quality,Data quality and reconciliation,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A11:O11
+D008,12,Time & data quality,Time & data quality,Data quality and reconciliation,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A12:O12
+D009,13,Time & data quality,Time & data quality,Time and session semantics,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A13:O13
+D010,14,Time & data quality,Time & data quality,Time and session semantics,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A14:O14
+D011,15,Market microstructure,Market microstructure,L1 quotes and trade direction,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A15:O15
+D012,16,Market microstructure,Market microstructure,L1 quotes and trade direction,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A16:O16
+D013,17,Market microstructure,Market microstructure,L1 quotes and trade direction,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A17:O17
+D014,18,Market microstructure,Market microstructure,L1 quotes and trade direction,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A18:O18
+D015,19,Market microstructure,Market microstructure,L1 quotes and trade direction,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A19:O19
+D016,20,Market microstructure,Market microstructure,L1 quotes and trade direction,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A20:O20
+D017,21,Underlying/price path,Underlying/price path,Price path and VWAP,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A21:O21
+D018,22,Underlying/price path,Underlying/price path,Data quality and reconciliation,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A22:O22
+D019,23,Underlying/price path,Underlying/price path,Price path and VWAP,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A23:O23
+D020,24,Underlying/price path,Underlying/price path,Price path and VWAP,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A24:O24
+D021,25,Underlying/price path,Underlying/price path,Price path and VWAP,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A25:O25
+D022,26,Underlying/price path,Underlying/price path,Price path and VWAP,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A26:O26
+D023,27,Underlying/price path,Underlying/price path,Price path and VWAP,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A27:O27
+D024,28,Underlying/price path,Underlying/price path,Price path and VWAP,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A28:O28
+D025,29,Underlying/price path,Underlying/price path,Price path and VWAP,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A29:O29
+D026,30,Underlying/price path,Underlying/price path,Price path and VWAP,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A30:O30
+D027,31,Underlying/price path,Underlying/price path,Price path and VWAP,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A31:O31
+D028,32,Volume/activity,Volume/activity,Volume and trade activity,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A32:O32
+D029,33,Volume/activity,Volume/activity,Volume and trade activity,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A33:O33
+D030,34,Volume/activity,Volume/activity,Volume and trade activity,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A34:O34
+D031,35,Volume/activity,Volume/activity,Volume and trade activity,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A35:O35
+D032,36,Volatility,Volatility,Realised volatility and range,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A36:O36
+D033,37,Volatility,Volatility,Realised volatility and range,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A37:O37
+D034,38,Volatility,Volatility,Realised volatility and range,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A38:O38
+D035,39,Volatility,Volatility,Realised volatility and range,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A39:O39
+D036,40,Volatility,Volatility,Realised volatility and range,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A40:O40
+D037,41,Volatility,Volatility,Realised volatility and range,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A41:O41
+D038,42,Volatility,Volatility,Realised volatility and range,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A42:O42
+D039,43,Volatility,Volatility,Realised volatility and range,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A43:O43
+D040,44,Regime features,Regime features,Trend and reversion features,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A44:O44
+D041,45,Regime features,Regime features,Trend and reversion features,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A45:O45
+D042,46,Macro/rates,Macro/rates,Rates and funding spreads,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A46:O46
+D043,47,Macro/rates,Macro/rates,Rates and funding spreads,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A47:O47
+D044,48,Macro/rates,Macro/rates,Rates and funding spreads,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A48:O48
+D045,49,Macro/rates,Macro/rates,Rates and funding spreads,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A49:O49
+D046,50,Macro/rates,Macro/rates,Rates and funding spreads,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A50:O50
+D047,51,Macro/rates,Macro/rates,Rates and funding spreads,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A51:O51
+D048,52,Macro/FX,Macro/FX,Foreign-exchange changes,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A52:O52
+D049,53,Macro/FX,Macro/FX,Foreign-exchange changes,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A53:O53
+D050,54,Macro/FX,Macro/FX,Foreign-exchange changes,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A54:O54
+D051,55,Macro/FX,Macro/FX,Foreign-exchange changes,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A55:O55
+D052,56,Volatility complex,Volatility complex,Volatility indices and regimes,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A56:O56
+D053,57,Volatility complex,Volatility complex,Volatility indices and regimes,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A57:O57
+D054,58,Volatility complex,Volatility complex,Volatility indices and regimes,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A58:O58
+D055,59,Volatility complex,Volatility complex,Volatility indices and regimes,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A59:O59
+D056,60,Volatility complex,Volatility complex,Volatility indices and regimes,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A60:O60
+D057,61,Volatility complex,Volatility complex,Volatility indices and regimes,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A61:O61
+D058,62,Volatility complex,Volatility complex,Volatility indices and regimes,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A62:O62
+D059,63,Volatility complex,Volatility complex,Volatility indices and regimes,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A63:O63
+D060,64,Volatility complex,Volatility complex,Volatility indices and regimes,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A64:O64
+D061,65,Volatility complex,Volatility complex,Volatility indices and regimes,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A65:O65
+D062,66,Macro/events,Macro/events,Scheduled-event state,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A66:O66
+D063,67,Macro/events,Macro/events,Scheduled-event state,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A67:O67
+D064,68,Macro/events,Macro/events,Scheduled-event state,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A68:O68
+D065,69,Macro/events,Macro/events,Scheduled-event state,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A69:O69
+D066,70,International,International,International equity context,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A70:O70
+D067,71,International,International,International equity context,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A71:O71
+D068,72,International,International,International equity context,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A72:O72
+D069,73,International,International,International equity context,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A73:O73
+D070,74,International,International,International equity context,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A74:O74
+D071,75,US market,US market,US market and cross-market breadth,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A75:O75
+D072,76,US market,US market,US market and cross-market breadth,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A76:O76
+D073,77,Sector,Sector,Technology and semiconductor sector,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A77:O77
+D074,78,Sector,Sector,Technology and semiconductor sector,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A78:O78
+D075,79,NVDA state,NVDA state,NVDA factor-relative state,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A79:O79
+D076,80,Sector,Sector,Technology and semiconductor sector,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A80:O80
+D077,81,Sector,Sector,Technology and semiconductor sector,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A81:O81
+D078,82,NVDA state,NVDA state,NVDA factor-relative state,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A82:O82
+D079,83,NVDA state,NVDA state,NVDA factor-relative state,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A83:O83
+D080,84,NVDA state,NVDA state,NVDA factor-relative state,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A84:O84
+D081,85,NVDA state,NVDA state,NVDA factor-relative state,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A85:O85
+D082,86,US market,US market,US market and cross-market breadth,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A86:O86
+D083,87,US market,US market,US market and cross-market breadth,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A87:O87
+D084,88,Sector,Sector,Technology and semiconductor sector,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A88:O88
+D085,89,Options contract,Options contract,Option expiry and moneyness,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A89:O89
+D086,90,Options contract,Options contract,Option expiry and moneyness,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A90:O90
+D087,91,Options liquidity,Options liquidity,Option quote liquidity,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A91:O91
+D088,92,Options liquidity,Options liquidity,Option quote liquidity,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A92:O92
+D089,93,Options contract,Options contract,Option expiry and moneyness,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A93:O93
+D090,94,Options contract,Options contract,Option expiry and moneyness,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A94:O94
+D091,95,Options contract,Options contract,Option expiry and moneyness,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A95:O95
+D092,96,Options surface,Options surface,Implied-volatility surface and fit,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A96:O96
+D093,97,Options surface,Options surface,Implied-volatility surface and fit,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A97:O97
+D094,98,Options surface,Options surface,Implied-volatility surface and fit,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A98:O98
+D095,99,Options surface,Options surface,Implied-volatility surface and fit,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A99:O99
+D096,100,Options surface,Options surface,Implied-volatility surface and fit,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A100:O100
+D097,101,Options surface,Options surface,Implied-volatility surface and fit,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A101:O101
+D098,102,Options surface,Options surface,Implied-volatility surface and fit,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A102:O102
+D099,103,Options surface,Options surface,Implied-volatility surface and fit,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A103:O103
+D100,104,Options surface,Options surface,Implied-volatility surface and fit,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A104:O104
+D101,105,Options surface,Options surface,Implied-volatility surface and fit,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A105:O105
+D102,106,Options surface,Options surface,Implied-volatility surface and fit,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A106:O106
+D103,107,Options surface,Options surface,Implied-volatility surface and fit,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A107:O107
+D104,108,Options surface,Options surface,Implied-volatility surface and fit,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A108:O108
+D105,109,Options surface,Options surface,Implied-volatility surface and fit,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A109:O109
+D106,110,Options surface,Options surface,Implied-volatility surface and fit,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A110:O110
+D107,111,Options relative value,Options relative value,IV and probability relative value,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A111:O111
+D108,112,Options relative value,Options relative value,IV and probability relative value,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A112:O112
+D109,113,Options distribution,Options distribution,Option-implied move proxy,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A113:O113
+D110,114,Options distribution,Options distribution,Option-implied move proxy,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A114:O114
+D111,115,Options distribution,Options distribution,Option probability distributions,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A115:O115
+D112,116,Options distribution,Options distribution,Option probability distributions,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A116:O116
+D113,117,Options distribution,Options distribution,Option probability distributions,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A117:O117
+D114,118,Options distribution,Options distribution,Option probability distributions,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A118:O118
+D115,119,Options relative value,Options relative value,IV and probability relative value,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A119:O119
+D116,120,Options activity,Options activity,Option volume and open interest,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A120:O120
+D117,121,Options activity,Options activity,Option volume and open interest,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A121:O121
+D118,122,Options activity,Options activity,Option volume and open interest,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A122:O122
+D119,123,Options activity,Options activity,Option volume and open interest,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A123:O123
+D120,124,Options flow,Options flow,Signed option order flow,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A124:O124
+D121,125,Options flow,Options flow,Signed option order flow,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A125:O125
+D122,126,Options flow,Options flow,Signed option order flow,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A126:O126
+D123,127,Options activity,Options activity,Option volume and open interest,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A127:O127
+D124,128,Options activity,Options activity,Option volume and open interest,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A128:O128
+D125,129,Dealer positioning,Dealer positioning,Inferred dealer exposures,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A129:O129
+D126,130,Dealer positioning,Dealer positioning,Inferred dealer exposures,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A130:O130
+D127,131,Dealer positioning,Dealer positioning,Inferred dealer exposures,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A131:O131
+D128,132,Dealer positioning,Dealer positioning,Inferred dealer exposures,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A132:O132
+D129,133,Dealer positioning,Dealer positioning,Inferred dealer exposures,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A133:O133
+D130,134,Dealer positioning,Dealer positioning,Inferred dealer exposures,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A134:O134
+D131,135,Options liquidity,Options liquidity,Option quote liquidity,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A135:O135
+D132,136,Options liquidity,Options liquidity,Option quote liquidity,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A136:O136
+D133,137,Execution,Execution,Candidate valuation and risk metrics,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A137:O137
+D134,138,L2 microstructure,L2 microstructure,L2 book depth and dynamics,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A138:O138
+D135,139,L2 microstructure,L2 microstructure,L2 book depth and dynamics,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A139:O139
+D136,140,L2 microstructure,L2 microstructure,L2 book depth and dynamics,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A140:O140
+D137,141,L2 microstructure,L2 microstructure,L2 book depth and dynamics,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A141:O141
+D138,142,L2 microstructure,L2 microstructure,L2 book depth and dynamics,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A142:O142
+D139,143,L2 microstructure,L2 microstructure,L2 book depth and dynamics,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A143:O143
+D140,144,L2 microstructure,L2 microstructure,L2 book depth and dynamics,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A144:O144
+D141,145,L2 microstructure,L2 microstructure,L2 book depth and dynamics,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A145:O145
+D142,146,L2 microstructure,L2 microstructure,L2 book depth and dynamics,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A146:O146
+D143,147,L2 microstructure,L2 microstructure,L2 book depth and dynamics,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A147:O147
+D144,148,L2 microstructure,L2 microstructure,L2 book depth and dynamics,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A148:O148
+D145,149,L2 microstructure,L2 microstructure,L2 book depth and dynamics,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A149:O149
+D146,150,State synthesis,State synthesis,Latent macro risk factors,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A150:O150
+D147,151,State synthesis,State synthesis,Latent macro risk factors,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A151:O151
+D148,152,State synthesis,State synthesis,Latent macro risk factors,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A152:O152
+D149,153,State synthesis,State synthesis,Latent macro risk factors,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A153:O153
+D150,154,State synthesis,State synthesis,Latent macro risk factors,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A154:O154
+D151,155,State synthesis,State synthesis,US market and cross-market breadth,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A155:O155
+D152,156,State synthesis,State synthesis,Probabilistic regime inference,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A156:O156
+D153,157,State synthesis,State synthesis,Probabilistic regime inference,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A157:O157
+D154,158,State synthesis,State synthesis,Probabilistic regime inference,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A158:O158
+D155,159,State synthesis,State synthesis,State assembly and coherence,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A159:O159
+D156,160,State synthesis,State synthesis,State assembly and coherence,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A160:O160
+D157,161,State synthesis,State synthesis,State assembly and coherence,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A161:O161
+D158,162,State synthesis,State synthesis,Data quality and reconciliation,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A162:O162
+D159,163,State synthesis,State synthesis,State assembly and coherence,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A163:O163
+D160,164,Decision/scenarios,Decision/scenarios,Joint scenario generation,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A164:O164
+D161,165,Decision/scenarios,Decision/scenarios,Candidate valuation and risk metrics,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A165:O165
+D162,166,Decision/scenarios,Decision/scenarios,Candidate valuation and risk metrics,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A166:O166
+D163,167,Decision/scenarios,Decision/scenarios,Candidate decision scoring and selection,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A167:O167
+D164,168,Decision/scenarios,Decision/scenarios,Candidate valuation and risk metrics,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A168:O168
+D165,169,Decision/scenarios,Decision/scenarios,Candidate decision scoring and selection,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A169:O169
+D166,170,Decision/scenarios,Decision/scenarios,Candidate decision scoring and selection,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A170:O170
+D167,171,Decision/scenarios,Decision/scenarios,Candidate decision scoring and selection,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A171:O171
+D168,172,Structure selection,Structure selection,Candidate valuation and risk metrics,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A172:O172
+D169,173,Structure selection,Structure selection,Candidate valuation and risk metrics,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A173:O173
+D170,174,Structure selection,Structure selection,Candidate valuation and risk metrics,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A174:O174
+D171,175,Structure selection,Structure selection,Candidate decision scoring and selection,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A175:O175
+D172,176,Structure selection,Structure selection,Candidate decision scoring and selection,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A176:O176
+D173,177,Structure selection,Structure selection,Candidate decision scoring and selection,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A177:O177
+D174,178,Risk/stress,Risk/stress,Candidate valuation and risk metrics,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A178:O178
+D175,179,Risk/sizing,Risk/sizing,Risk limits and position sizing,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A179:O179
+D176,180,Risk/sizing,Risk/sizing,Risk limits and position sizing,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A180:O180
+D177,181,Execution,Execution,Pretrade execution and order pricing,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A181:O181
+D178,182,Execution,Execution,Pretrade execution and order pricing,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A182:O182
+D179,183,Execution,Execution,Execution outcomes and realised costs,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A183:O183
+D180,184,Execution,Execution,Execution outcomes and realised costs,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A184:O184
+D181,185,Live risk,Live risk,Live portfolio exposures and P&L,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A185:O185
+D182,186,Live risk,Live risk,Live portfolio exposures and P&L,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A186:O186
+D183,187,Live risk,Live risk,Live portfolio exposures and P&L,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A187:O187
+D184,188,Live risk,Live risk,Live portfolio exposures and P&L,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A188:O188
+D185,189,Live risk,Live risk,Live portfolio exposures and P&L,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A189:O189
+D186,190,Live control,Live control,Live position assessment and decisions,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A190:O190
+D187,191,Live control,Live control,Live position assessment and decisions,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A191:O191
+D188,192,Live control,Live control,Live position assessment and decisions,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A192:O192
+D189,193,Live control,Live control,Live position assessment and decisions,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A193:O193
+D190,194,Live control,Live control,Live position assessment and decisions,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A194:O194
+D191,195,Live control,Live control,Live position assessment and decisions,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A195:O195
+D192,196,Live control,Live control,Live position assessment and decisions,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A196:O196
+D193,197,Post-trade,Post-trade,Execution outcomes and realised costs,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A197:O197
+D194,198,Post-trade,Post-trade,Post-trade P&L attribution,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A198:O198
+D195,199,Post-trade,Post-trade,Post-trade P&L attribution,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A199:O199
+D196,200,Post-trade,Post-trade,Post-trade P&L attribution,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A200:O200
+D197,201,Post-trade,Post-trade,Post-trade P&L attribution,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A201:O201
+D198,202,Post-trade,Post-trade,Post-trade P&L attribution,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A202:O202
+D199,203,Post-trade,Post-trade,Post-trade P&L attribution,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A203:O203
+D200,204,Post-trade,Post-trade,Decision review and counterfactuals,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A204:O204
+D201,205,Post-trade,Post-trade,Decision review and counterfactuals,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A205:O205
+D202,206,Learning,Learning,Forecast and signal validation,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A206:O206
+D203,207,Learning,Learning,Forecast and signal validation,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A207:O207
+D204,208,Learning,Learning,Forecast and signal validation,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A208:O208
+D205,209,Learning,Learning,Forecast and signal validation,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A209:O209
+D206,210,Learning,Learning,Decision review and counterfactuals,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A210:O210
+D207,211,Learning,Learning,Forecast and signal validation,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A211:O211
+D208,212,Learning,Learning,Forecast and signal validation,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A212:O212
+D209,213,Control loop,Control loop,Observation and recalculation scheduling,ORIGINAL_V1_NOT_RECLASSIFIED,,UNASSESSED,Derived Signals!A213:O213
