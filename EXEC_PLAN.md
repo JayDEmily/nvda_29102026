@@ -85,3 +85,16 @@ G01 permits semantic inspection, read-only inventories and — **under the expli
 ## 5. Activation and execution evidence
 
 Programme Owner explicitly accepted this G01 plan for commit and sequential execution of G01-L1 through G01-L4 on 14 October 2026. G01 replaces the old M01 execution schedule only; it does not change production code, normative calculations or M00 authority. The accepted proposal is preserved byte-for-byte at `handoff/workbook_v2/g01/G01_ACCEPTED_PLAN_PROPOSAL_VERBATIM_20261014.md`. Each leaf will record its actual result and first unmet invariant in a separate evidence file. External independent review and further owner approval remain required before `FOUNDATION_AUTHORITY_ACCEPTED` may be claimed.
+
+## 6. Executed G01 leaf ledger — 14 October 2026
+
+The four leaves were visited sequentially; the distinction between evidence production and acceptance remains binding.
+
+| Leaf | Observed work | Semantic disposition |
+|---|---|---|
+| G01-L1 | Exact baseline, archives, accepted amendments, 209 identity/acyclicity checks; evidence commit `7f0feb17` | Identity/authority baseline VERIFIED; does not prove eligible meanings |
+| G01-L2 | Effective-catalogue 209-row full dependency crosswalk, V2 114/95 proposal, 65 frozen-convention flags, exact exception list; evidence commit `76df624c` | Population accounting VERIFIED; 114-row *semantic freeze / owner admission NOT COMPLETE* |
+| G01-L3 | Existing focused 37 PASSED; three new authority-derived public-path tests FAILED (D025 0.75 instead of 0.25; D099/D100 native C/P refusal); architecture/dependency/public-seam scripts PASSED after `PYTHONPATH=src`; red proofs committed first | Bounded test investigation executed; material defects CONFIRMED and left unrepaired |
+| G01-L4 | Review candidate and questions prepared for separate independent reviewer | Review NOT PERFORMED; owner acceptance NOT GRANTED; G01 PARTIAL/BLOCKED |
+
+The current active plan is **not** a production-authority transition. The original 209-row mathematical remit and registered M01 state are unchanged. **Do not enter a later implementation gate or repair the red calculations under this G01.** First unmet acceptance condition is the exact independent semantic review and unadmitted definition/version decisions. This is a recoverable `PARTIAL/BLOCKED` checkpoint; do not label G01 `PASS`.
