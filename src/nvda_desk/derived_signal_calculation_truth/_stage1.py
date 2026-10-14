@@ -1352,7 +1352,8 @@ def _eval_k02(
                 )
             )
         if identity == "D025":
-            low, high, last = (
+            # Canonical raw identity: R039=High, R040=Low, R037=Last.
+            high, low, last = (
                 _d(_scalar(raw, "R039")),
                 _d(_scalar(raw, "R040")),
                 _d(_scalar(raw, "R037")),
@@ -1431,8 +1432,9 @@ def _eval_k02(
             # Every IV point must join its own source-native R112 delta by
             # exact option contract; copied/independently labelled IV metadata
             # is not authoritative delta truth. D099/100 also require the
-            # declared R015 strike. Never silently discard a missing or
-            # contradictory member of the selected expiry surface.
+            # declared R015 option right (native C/P), not a numeric strike.
+            # Strike is contract selection metadata, never an R015 value.
+            # Never silently discard an incomplete or contradictory surface.
             raw_fields = ("R111", "R112", "R015") if identity != "D101" else ("R111", "R112")
             by_field: dict[str, dict[str, KernelValueV1]] = {}
             for field in raw_fields:
@@ -1464,13 +1466,16 @@ def _eval_k02(
                 ):
                     return None
                 if identity != "D101":
-                    strike_point = by_field["R015"][cid]
+                    right_point = by_field["R015"][cid]
+                    native_right = right_point.value
+                    expected_right = "C" if right in {"c", "call"} else "P"
                     if (
-                        not _source_identity_compatible(iv_point, strike_point)
+                        not _source_identity_compatible(iv_point, right_point)
                         or _metadata(iv_point).get("source_provider")
-                        != _metadata(strike_point).get("source_provider")
+                        != _metadata(right_point).get("source_provider")
                         or iv_meta.get("strike") is None
-                        or _d(strike_point.value) != _d(iv_meta["strike"])
+                        or type(native_right) is not str
+                        or native_right != expected_right
                     ):
                         return None
                 skew_points.append(

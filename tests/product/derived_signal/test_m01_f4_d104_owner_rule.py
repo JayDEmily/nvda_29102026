@@ -134,7 +134,8 @@ def _controlled_public(
                     ("option_right", right),
                 )
             )
-            for rid, val in (("R111", iv), ("R112", delta), ("R015", strike)):
+            for rid, val in (("R111", iv), ("R112", delta),
+                             ("R015", "C" if right == "call" else "P")):
                 if tag == "prior" and f"{cid}-{rid}" == missing:
                     continue
                 seq += 1
