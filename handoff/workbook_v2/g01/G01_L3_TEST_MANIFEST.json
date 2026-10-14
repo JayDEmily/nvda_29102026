@@ -1,0 +1,54 @@
+{
+  "runtime": {
+    "python": "3.13.5",
+    "pytest": "9.0.2 (observed)",
+    "repo_head_at_test": "1cba666... (proof change latest)",
+    "postgres_runtime": "not invoked",
+    "psycopg": "not importable in active interpreter"
+  },
+  "test_results": [
+    {
+      "name": "existing_focus",
+      "command": "PYTHONPATH=src python -m pytest -q tests/product/derived_signal/test_m01_f4_rc02_scalar_algebra_public.py tests/product/derived_signal/test_m01_f4_rc14_skew_from_native_delta_public.py tests/product/derived_signal/test_m01_f4_macro_vintage_public.py",
+      "log_file": "handoff/workbook_v2/g01/test_logs/L3_EXISTING_FOCUSED.txt",
+      "exit_code": 0,
+      "log_sha256": "2ab2bfc3425572ef3842f0240be3ede1e82f5c2347be6d2d976c719a0d6a0b39"
+    },
+    {
+      "name": "adversarial_initial",
+      "command": "PYTHONPATH=src python -m pytest -q handoff/workbook_v2/g01/proofs/test_g01_public_authority_witnesses.py (initial 2 tests)",
+      "log_file": "handoff/workbook_v2/g01/test_logs/L3_ADVERSARIAL.txt",
+      "exit_code": 1,
+      "log_sha256": "375bddad14111f2eebfb575fb8cc11ee8d4bee2f2fb6fd7ecbe204fc57b456e5"
+    },
+    {
+      "name": "adversarial_extended",
+      "command": "PYTHONPATH=src python -m pytest -q handoff/workbook_v2/g01/proofs/test_g01_public_authority_witnesses.py (final 3 tests)",
+      "log_file": "handoff/workbook_v2/g01/test_logs/L3_ADVERSARIAL_D025_D099_D100.txt",
+      "exit_code": 1,
+      "log_sha256": "a35f837fc818f0c16f750dcfc7a1187e4bdaf37774dfe73885110ad8d63dc075"
+    },
+    {
+      "name": "architecture",
+      "command": "PYTHONPATH=src python tools/validate_architecture.py",
+      "log_file": "handoff/workbook_v2/g01/test_logs/L3_ARCHITECTURE_CORRECTED_ENV.txt",
+      "exit_code": 0,
+      "log_sha256": "7d3e960274e806e5e58382f9a9e6ce13e329189dedb3c760b1fca65b141f0261"
+    },
+    {
+      "name": "dependencies",
+      "command": "PYTHONPATH=src python tools/check_dependencies.py",
+      "log_file": "handoff/workbook_v2/g01/test_logs/L3_DEPENDENCIES_CORRECTED_ENV.txt",
+      "exit_code": 0,
+      "log_sha256": "00f0854eaceb6c7b664bbfe6c130423fdee63a8914d31835d1b930ec3c5f2f0a"
+    },
+    {
+      "name": "public_seams",
+      "command": "PYTHONPATH=src python tools/check_public_seams.py",
+      "log_file": "handoff/workbook_v2/g01/test_logs/L3_PUBLIC_SEAMS_CORRECTED_ENV.txt",
+      "exit_code": 0,
+      "log_sha256": "b54c63764d88f95cecee13cba6510c1baca8c9431bf33d92aacd960e9f895954"
+    }
+  ],
+  "limits": "existing 37 tests prove only their fixtures; adversarial 3 RED; architecture scripts validate static laws, not mathematical semantics"
+}

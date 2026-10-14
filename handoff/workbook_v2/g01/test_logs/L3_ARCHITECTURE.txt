@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/mnt/data/NVDA_V2_G01_WORKSPACE/repository/tools/validate_architecture.py", line 4, in <module>
+    from nvda_desk.architecture.validation import validate_architecture
+ModuleNotFoundError: No module named 'nvda_desk'
