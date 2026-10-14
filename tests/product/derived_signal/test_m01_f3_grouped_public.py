@@ -21,7 +21,7 @@ CONTRACTS = (
     ("C100", "call", "2026-12-18", Decimal("0.25"), Decimal("6"), Decimal("2")),
     ("P105", "put", "2026-12-25", Decimal("-0.75"), Decimal("4"), Decimal("3")),
 )
-TRADE_RAW = ("R034", "R035", "R120", "R121", "R126", "R127", "R015")
+TRADE_RAW = ("R034", "R035", "R120", "R121", "R126", "R127", "R015", "R016")
 DATE_RAW = ("R001", "R002", "R003", "R004", "R013", "R023", "R024")
 ALL_RAW = (*TRADE_RAW, "R112", *DATE_RAW)
 EXACT = ("contract_id", "underlying_instrument", "expiry", "strike", "option_right")
@@ -66,7 +66,8 @@ def setup(
             "R121": size,
             "R126": Decimal("4"),
             "R127": Decimal("6"),
-            "R015": Decimal("100"),
+            "R015": "C" if right == "call" else "P",
+            "R016": Decimal("100"),
             "R112": delta,
             "R001": Decimal("0"),
             "R002": NOW.isoformat(),
@@ -101,10 +102,12 @@ def setup(
                     source_variant="snapshot",
                     native_field_path=("field", rid),
                     native_value=value,
-                    native_units="number",
+                    native_units="enum" if rid == "R015" else "number",
                     subject_instrument="NVDA",
-                    source_temporal_kind="true_instant",
-                    source_timestamp_raw=NOW.isoformat(),
+                    source_temporal_kind=(
+                        "receipt_only" if rid in {"R015", "R016"} else "true_instant"
+                    ),
+                    source_timestamp_raw=None if rid in {"R015", "R016"} else NOW.isoformat(),
                     source_timezone_native="UTC",
                     received_ts_utc=NOW,
                     ingestion_sequence=100 + len(points[rid]),
@@ -117,7 +120,7 @@ def setup(
                 api.RawInputBindingV1(
                     rid,
                     api.VersionRefV1(f"map-{rid}", 1),
-                    api.VersionRefV1("numeric", 1),
+                    api.VersionRefV1("right-enum" if rid == "R015" else "numeric", 1),
                     "NVDA",
                     selection_identity=selected,
                 )
@@ -138,7 +141,7 @@ def setup(
             api.RawInputBindingV1(
                 rid,
                 api.VersionRefV1(f"map-{rid}", 1),
-                api.VersionRefV1("numeric", 1),
+                api.VersionRefV1("right-enum" if rid == "R015" else "numeric", 1),
                 "NVDA",
                 ident,
             )
@@ -161,7 +164,7 @@ def setup(
             "controlled",
             "snapshot",
             ("field", rid),
-            "number",
+            "enum" if rid == "R015" else "number",
         )
         for rid in ids
     )
@@ -192,7 +195,7 @@ def setup(
         ("underlying_instrument",),
         timedelta(days=1),
         timedelta(days=1),
-        ("true_instant",),
+        ("true_instant", "receipt_only"),
         (),
     )
     exact = replace(selection, context_id="exact-contract", join_keys=EXACT)
@@ -203,6 +206,7 @@ def setup(
         input_selection_policies=(selection, exact),
         unit_conventions=(
             api.UnitConventionVersionV1("numeric", 1, "number", "number", Decimal(1), Decimal(0)),
+            api.UnitConventionVersionV1("right-enum", 1, "enum", "enum", Decimal(1), Decimal(0)),
         ),
         contexts=(),
         utc_now=lambda: NOW + timedelta(seconds=1),

@@ -531,6 +531,83 @@ def _source_identity_compatible(left: KernelValueV1, right: KernelValueV1) -> bo
     return True
 
 
+def select_d120_contract_inputs(
+    raw: dict[str, tuple[KernelValueV1, ...]],
+    *,
+    maximum_staleness: timedelta | None = None,
+) -> dict[str, tuple[KernelValueV1, ...]] | None:
+    """Bind native contract metadata to trades without conflating source IDs."""
+    trade_fields = ("R120", "R121")
+    if any(not raw.get(field) for field in (*trade_fields, "R015", "R016")):
+        return None
+    trade_ids = {item.occurrence_id for item in raw["R120"]}
+    if any(
+        len({item.occurrence_id for item in raw[field]}) != len(raw[field])
+        or {item.occurrence_id for item in raw[field]} != trade_ids
+        for field in trade_fields
+    ):
+        return None
+    selected: dict[str, dict[str, KernelValueV1]] = {"R015": {}, "R016": {}}
+    for row in _align_occurrence_fields(raw, trade_fields):
+        trade = row["R120"]
+        if not _source_identity_compatible(trade, row["R121"]):
+            return None
+        identity = _metadata(trade)
+        if any(identity.get(key) is None for key in _TRADE_IDENTITY_KEYS):
+            return None
+        right = identity.get("option_right")
+        expected_right = "C" if right in {"c", "call", "C"} else (
+            "P" if right in {"p", "put", "P"} else None
+        )
+        if expected_right is None:
+            return None
+        for field in ("R015", "R016"):
+            candidates = tuple(
+                point for point in raw[field]
+                if _source_identity_compatible(trade, point)
+                and point.source_temporal_kind in {"true_instant", "receipt_only"}
+                and point.received_ts_utc <= trade.received_ts_utc
+                and point.effective_at_utc <= (
+                    trade.received_ts_utc if point.source_temporal_kind == "receipt_only"
+                    else trade.effective_at_utc
+                )
+            )
+            if not candidates:
+                return None
+            latest_priority = max(
+                (point.effective_at_utc, point.received_ts_utc) for point in candidates
+            )
+            latest = tuple(
+                point for point in candidates
+                if (point.effective_at_utc, point.received_ts_utc) == latest_priority
+            )
+            if len(latest) != 1:
+                return None
+            point = latest[0]
+            trade_basis = (
+                trade.received_ts_utc if point.source_temporal_kind == "receipt_only"
+                else trade.effective_at_utc
+            )
+            if maximum_staleness is not None and (
+                trade_basis - point.effective_at_utc > maximum_staleness
+            ):
+                return None
+            if field == "R015":
+                if type(point.value) is not str or point.value != expected_right:
+                    return None
+            elif (
+                type(point.value) not in {Decimal, int}
+                or not _d(point.value).is_finite()
+                or _d(point.value) <= 0
+            ):
+                return None
+            selected[field][point.occurrence_id] = point
+    return {
+        **raw,
+        **{field: tuple(points.values()) for field, points in selected.items()},
+    }
+
+
 def _observation_signs(
     observations: tuple[KernelValueV1, ...],
     signed_predecessors: tuple[KernelValueV1, ...],
@@ -3020,9 +3097,10 @@ def _eval_k08(
                     return str(label)
             return None
         if identity == "D120":
-            fields = ("R120", "R121", "R015")
-            if not all(raw.get(field) for field in fields):
+            contract_inputs = select_d120_contract_inputs(raw)
+            if contract_inputs is None:
                 return None
+            fields = ("R120", "R121")
             input_ids = [{v.occurrence_id for v in raw[field]} for field in fields]
             if not all(ids == input_ids[0] for ids in input_ids[1:]):
                 return None
@@ -3043,7 +3121,15 @@ def _eval_k08(
                 sign = Decimal(signs[oid][0])
                 size = _d(signed_row["R121"].value)
                 price = _d(signed_row["R120"].value)
-                mult = _d(signed_row["R015"].value)
+                # The multiplier is a contract fact with its own M00 ID.
+                matched = select_d120_contract_inputs({
+                    **contract_inputs,
+                    "R120": (signed_row["R120"],),
+                    "R121": (signed_row["R121"],),
+                })
+                if matched is None:
+                    return None
+                mult = _d(matched["R016"][0].value)
                 signed_contracts += sign * size
                 signed_premium += sign * size * price * mult
             return _named_tuple(

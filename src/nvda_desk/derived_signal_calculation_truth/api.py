@@ -2029,6 +2029,7 @@ class _OwnerV1:
                 "R126",
                 "R127",
                 "R015",
+                "R016",
                 *(
                     ("R112",)
                     if parent_id == "D121"
@@ -2868,6 +2869,26 @@ class _OwnerV1:
                     for value in (history if not scoped_edge or regression_history else (latest,))
                 )
             derived_inputs[predecessor_id] = tuple(predecessor_values)
+
+        if derived_signal_id == "D120":
+            from ._stage1 import select_d120_contract_inputs
+
+            contract_inputs = select_d120_contract_inputs(
+                raw_inputs, maximum_staleness=selection.maximum_staleness
+            )
+            if contract_inputs is None:
+                return None
+            raw_inputs = contract_inputs
+            selected_contract_fields = {
+                (rid, point.occurrence_id)
+                for rid in ("R015", "R016") for point in raw_inputs[rid]
+            }
+            direct_lineage = [
+                entry for entry in direct_lineage
+                if entry.raw_signal_id not in {"R015", "R016"}
+                or (entry.raw_signal_id, entry.observation_occurrence_id)
+                in selected_contract_fields
+            ]
 
         # Max skew applies across the actual latest subject/member of each
         # direct R input AND each current predecessor D input.  Comparing one

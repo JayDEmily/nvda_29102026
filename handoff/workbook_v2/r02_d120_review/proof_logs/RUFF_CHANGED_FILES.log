@@ -1,0 +1,22 @@
+E501 Line too long (101 > 100)
+    --> src/nvda_desk/derived_signal_calculation_truth/api.py:2889:101
+     |
+2887 |                 entry for entry in direct_lineage
+2888 |                 if entry.raw_signal_id not in {"R015", "R016"}
+2889 |                 or (entry.raw_signal_id, entry.observation_occurrence_id) in selected_contract_fields
+     |                                                                                                     ^
+2890 |             ]
+     |
+
+E501 Line too long (103 > 100)
+   --> tests/product/derived_signal/test_m01_f3_grouped_public.py:107:101
+    |
+105 |                     native_units="enum" if rid == "R015" else "number",
+106 |                     subject_instrument="NVDA",
+107 |                     source_temporal_kind="receipt_only" if rid in {"R015", "R016"} else "true_instant",
+    |                                                                                                     ^^^
+108 |                     source_timestamp_raw=None if rid in {"R015", "R016"} else NOW.isoformat(),
+109 |                     source_timezone_native="UTC",
+    |
+
+Found 2 errors.

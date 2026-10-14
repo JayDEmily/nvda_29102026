@@ -16,8 +16,7 @@ from nvda_desk.derived_signal_calculation_truth import api
 from nvda_desk.raw_signal_occurrence_truth import api as raw
 
 _REVIEW = (
-    Path(__file__).resolve().parents[3]
-    / "handoff/m01_completion/review/proof/stage1_signed_flow_public_fixture.py"
+    Path(__file__).with_name("native_signed_flow_fixture.py")
 )
 _spec = importlib.util.spec_from_file_location("f2a_authority_reviewer_fixture", _REVIEW)
 assert _spec is not None and _spec.loader is not None
@@ -50,7 +49,7 @@ def _owner(events):
         raw_projection_mappings=fixture.models,
         parameter_sets=fixture.params,
         input_selection_policies=(fixture.selection,),
-        unit_conventions=(fixture.unit,),
+        unit_conventions=fixture.units,
         contexts=(),
         utc_now=lambda: fixture.NOW + timedelta(seconds=20),
     )

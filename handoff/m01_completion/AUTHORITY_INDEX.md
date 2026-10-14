@@ -57,3 +57,12 @@ and hash-bound runtime loader are synchronised under this narrow exception.
 
 See `authority/F4_OWNER_APPROVED_CLARIFICATION_20261013.md`.
 Effective catalogue SHA-256: `26c5486d1a4c7ff68025c7ce2d7e6847a7798759b847a716c942fd05345f3803`; predecessor `d651436df1fcd1395f8f1147dfd80db1ed178da4834447a947c3c9c32fd82aa7` remains historical evidence. Only D175/D189 typed-context conjunctions change.
+
+
+## Owner-approved D120 native multiplier dependency amendment — 15 October 2026
+
+See `../workbook_v2/r02_d120_review/D120_OWNER_APPROVED_CONTRACT_AMENDMENT.md`.
+Definition revision D120-NATIVE-MULTIPLIER-20261015-01 adds R016 to D120, retaining R015 and all existing inputs and arithmetic.
+The new exact effective runtime/authority catalogue SHA-256 is `67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549`.
+Predecessor `26c5486d1a4c7ff68025c7ce2d7e6847a7798759b847a716c942fd05345f3803` remains historical evidence.
+The accepted original brief remains byte-identical; this explicitly owner-approved exception overrides its old dependency digest for this row only.

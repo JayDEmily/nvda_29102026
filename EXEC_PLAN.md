@@ -53,11 +53,13 @@ Unresolved R015-as-multiplier D120 discrepancy persists independently. Do not en
 Current explicit instruction: “With number one, D1 20. Yes, please fix it. Number two, can you not spawn an independent worker within this environment to do the independent review? If so, proceed.”
 This supersedes the D120 stop and earlier review waiver for this bounded repair. GitHub is excluded; no main promotion is required or claimed. Root plan remains the sole execution plan.
 
-- [ ] Record the owner-approved D120 dependency amendment: add R016, retain all old raw inputs and D015; preserve accepted arithmetic, M00 and V2 allocation. Preserve original accepted brief and catalogue provenance; update two effective catalogue copies and runtime digest together.
-- [ ] Add public-path red witnesses with native C/P R015 and distinct R016 contract-metadata occurrences; capture failure before production correction.
-- [ ] Select exact contract metadata known at each trade, refusing missing, future, stale, ambiguous or invalid multiplier/right; preserve actual selected metadata lineage and version bindings. Correct D121/D122 child request bindings to carry the new D120 dependency.
-- [ ] Correct invalid numeric-R015 historical test fixtures in test-local successors; preserve historical reviewer artefacts unchanged and retain existing expected arithmetic. Run focused D120, grouped D121/D122, derived regression and repository architecture checks.
+- [x] Record the owner-approved D120 dependency amendment: add R016, retain all old raw inputs and D015; preserve accepted arithmetic, M00 and V2 allocation. Preserve original accepted brief and catalogue provenance; update two effective catalogue copies and runtime digest together.
+- [x] Add public-path red witnesses with native C/P R015 and distinct R016 contract-metadata occurrences; capture failure before production correction.
+- [x] Select exact contract metadata known at each trade, refusing missing, future, stale, ambiguous or invalid multiplier/right; preserve actual selected metadata lineage and version bindings. Correct D121/D122 child request bindings to carry the new D120 dependency.
+- [x] Correct invalid numeric-R015 historical test fixtures in test-local successors; preserve historical reviewer artefacts unchanged and retain existing expected arithmetic. Run focused D120, grouped D121/D122, derived regression and repository architecture checks.
 - [ ] Independent fresh agent reviews D025, D099/D100 and D120 candidate against authority and actual public paths; resolve material findings. Preserve exact review range/commit/tree.
 - [ ] Save one full-Git handoff with proof/review and readback evidence. No G01/whole-M01/Stage1 acceptance or ownership migration follows.
 
 Runtime boundary: supplied host is Python 3.12.14, required runtime is 3.13.5. The offline bootstrap contains cp313 wheels but no interpreter. Available-runtime runs are diagnostic, never equivalent to supported-runtime verification. Stop supported-runtime acceptance at that boundary; bounded implementation, diagnostic checks and semantic review may proceed.
+
+R02 progress: source candidate prepared; available-runtime diagnostic checks pass as itemised, except default-suite static-typecheck dependency failures. Independent review and handoff readback pending. See r02 ENVIRONMENT_BOUNDARY.md.

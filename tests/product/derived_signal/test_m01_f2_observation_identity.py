@@ -17,7 +17,7 @@ from nvda_desk.derived_signal_calculation_truth import api
 from nvda_desk.raw_signal_occurrence_truth import api as raw
 
 ROOT = Path(__file__).resolve().parents[3]
-PROOF = ROOT / "handoff/m01_completion/review/proof/stage1_signed_flow_public_fixture.py"
+PROOF = Path(__file__).with_name("native_signed_flow_fixture.py")
 SPEC = importlib.util.spec_from_file_location("f2_original_reviewer_fixture", PROOF)
 assert SPEC is not None and SPEC.loader is not None
 reviewer = importlib.util.module_from_spec(SPEC)
@@ -53,7 +53,7 @@ def _owner(points: dict[str, tuple[raw.ProjectedRawValueV1, ...]]) -> Any:
         raw_projection_mappings=reviewer.models,
         parameter_sets=reviewer.params,
         input_selection_policies=(reviewer.selection,),
-        unit_conventions=(reviewer.unit,),
+        unit_conventions=reviewer.units,
         contexts=(),
         utc_now=lambda: reviewer.NOW + timedelta(minutes=1),
     )
@@ -180,7 +180,7 @@ def test_no_sign_or_ambiguous_native_trade_refuses_instead_of_zero() -> None:
     # Two independent native trades have the same event/receipt instant;
     # neither sign-to-trade pairing may be made by opaque-ID ordering.
     collisions = _two_trade_points()
-    for rid in ("R120", "R121", "R015", "R126", "R127"):
+    for rid in ("R120", "R121", "R015", "R016", "R126", "R127"):
         collisions[rid] = (
             collisions[rid][0],
             replace(
@@ -249,7 +249,7 @@ def test_second_exact_contract_is_not_associated_with_first_contract_sign() -> N
         raw_projection_mappings=reviewer.models,
         parameter_sets=reviewer.params,
         input_selection_policies=(reviewer.selection,),
-        unit_conventions=(reviewer.unit,),
+        unit_conventions=reviewer.units,
         contexts=(),
         utc_now=lambda: reviewer.NOW,
     )

@@ -1,0 +1,20 @@
+
+==================================== ERRORS ====================================
+_________ ERROR collecting tests/architecture/test_object_lifecycle.py _________
+ImportError while importing test module '/workspace/scratch/5ae38fd70354/inspection/repository/tests/architecture/test_object_lifecycle.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/architecture/test_object_lifecycle.py:6: in <module>
+    from nvda_desk.composition import CompositionPlan
+src/nvda_desk/composition/__init__.py:11: in <module>
+    from nvda_desk.raw_signal_occurrence_truth._postgres import create_postgres_persistence
+src/nvda_desk/raw_signal_occurrence_truth/_postgres.py:17: in <module>
+    import psycopg
+E   ModuleNotFoundError: No module named 'psycopg'
+=========================== short test summary info ============================
+ERROR tests/architecture/test_object_lifecycle.py
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+1 error in 0.17s
