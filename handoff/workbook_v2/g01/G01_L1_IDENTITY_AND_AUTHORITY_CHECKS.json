@@ -1,0 +1,21 @@
+{
+  "baseline_commit": "c82daa03e0a870ff5b038ba41a4d560443dbecd3",
+  "active_G01_plan_commit": "b32aaa3d26f3511bd7ac9e6bc8549dff6701c12a",
+  "effective_catalogue_sha256": "26c5486d1a4c7ff68025c7ce2d7e6847a7798759b847a716c942fd05345f3803",
+  "runtime_catalogue_sha256": "26c5486d1a4c7ff68025c7ce2d7e6847a7798759b847a716c942fd05345f3803",
+  "catalogue_byte_equal": true,
+  "effective_hash_matches_amendment": true,
+  "row_count": 209,
+  "unique_id_count": 209,
+  "sequential_D001_D209": true,
+  "unresolved_derived_edges": {},
+  "cycles_detected": [],
+  "source_workbook_sha256": "519ea9449297d564ae4a02afc1bf4e60e4471631c81a0842620f9fb60bb4f9ae",
+  "source_workbook_hash_expected": true,
+  "v2_workbook_sha256": "c4421d85b356ec3bf2749db381fba67d059a2d89ecd54efcf398e3e880f62742",
+  "primary_archive_sha256": "0b5a459e6620d617c539bd8aa3f4830fcc176c9ecd7440484adc983d85b29429",
+  "audit_archive_sha256": "488e9462f9189b97ab4609bda9d2164e15c09ae980b8eb6296b7b8b089523afc",
+  "registered_owner_status": "M00 active; M01 bootstrap in config/architecture/modules.yaml; current product owner still old D001-D209.",
+  "all_tests": "NOT RUN IN L1",
+  "semantics": "Eligibility row-by-row and source-contract acceptance NOT proven in L1"
+}
