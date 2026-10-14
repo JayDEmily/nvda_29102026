@@ -1,4 +1,4 @@
-"""F4 RC14: K02 skew must consume native R112 deltas, not infer them from IV labels."""
+"""F4 RC14: native R112 deltas and native R015 option rights; strike is contract metadata."""
 
 from __future__ import annotations
 
@@ -26,7 +26,8 @@ KEY_PATHS = tuple((key, ("identity", key)) for key in KEYS)
 
 
 def _public(did: str, *, missing_contract_field: tuple[str, str] | None = None,
-            wrong_delta: str | None = None, future_contract: str | None = None):
+            wrong_delta: str | None = None, future_contract: str | None = None,
+            invalid_numeric_right: bool = False, conflicting_native_right: str | None = None):
     m00 = raw.create_owner()
     bindings = []
     seq = 0
@@ -35,7 +36,9 @@ def _public(did: str, *, missing_contract_field: tuple[str, str] | None = None,
             ("contract_id", contract), ("underlying_instrument", "NVDA"),
             ("expiry", EXPIRY), ("strike", strike), ("option_right", right),
         ))
-        for rid, value in (("R111", iv), ("R112", delta), ("R015", strike)):
+        for rid, value in (("R111", iv), ("R112", delta),
+                           ("R015", strike if invalid_numeric_right else
+                            ("P" if right == "put" else "C"))):
             if rid == "R015" and did == "D101":
                 continue
             if missing_contract_field == (contract, rid):
@@ -56,6 +59,8 @@ def _public(did: str, *, missing_contract_field: tuple[str, str] | None = None,
                     "metric": {
                         rid: Decimal("0.30")
                         if wrong_delta == contract and rid == "R112"
+                        else ("P" if right == "call" else "C")
+                        if conflicting_native_right == contract and rid == "R015"
                         else value
                     },
                     "identity": dict(identity.values),
@@ -103,7 +108,7 @@ def _public(did: str, *, missing_contract_field: tuple[str, str] | None = None,
 @pytest.mark.parametrize("did,expected", (
     ("D099", Decimal(10)), ("D100", Decimal(30)), ("D101", Decimal(4)),
 ))
-def test_skew_uses_native_delta_strike_exact_expiry_and_lineage(
+def test_skew_uses_native_delta_right_exact_expiry_and_lineage(
     did: str, expected: Decimal
 ) -> None:
     owner, request = _public(did)
@@ -121,7 +126,7 @@ def test_skew_refuses_missing_native_delta_for_selected_contract(did: str) -> No
     assert owner.materialise(request) is None
 
 
-def test_skew_refuses_missing_strike_for_selected_contract() -> None:
+def test_skew_refuses_missing_native_option_right_for_selected_contract() -> None:
     owner, request = _public("D099", missing_contract_field=("P25", "R015"))
     assert owner.materialise(request) is None
 
@@ -133,4 +138,16 @@ def test_skew_refuses_future_required_native_delta() -> None:
 
 def test_skew_refuses_delta_that_does_not_match_target_bucket() -> None:
     owner, request = _public("D099", wrong_delta="P25")
+    assert owner.materialise(request) is None
+
+
+@pytest.mark.parametrize("did", ("D099", "D100"))
+def test_skew_refuses_numeric_strike_disguised_as_R015(did: str) -> None:
+    owner, request = _public(did, invalid_numeric_right=True)
+    assert owner.materialise(request) is None
+
+
+@pytest.mark.parametrize("did", ("D099", "D100"))
+def test_skew_refuses_raw_R015_right_that_conflicts_with_contract_identity(did: str) -> None:
+    owner, request = _public(did, conflicting_native_right="C25")
     assert owner.materialise(request) is None
