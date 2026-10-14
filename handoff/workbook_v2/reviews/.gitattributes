@@ -1,0 +1,3 @@
+# Preserve uploaded audit and in-progress investigation bytes exactly, including CRLF.
+m01_m011_semantic_audit_20261014/** -text
+v2_investigation_20261014/** -text
