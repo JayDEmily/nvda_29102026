@@ -9,6 +9,7 @@ from __future__ import annotations
 from datetime import UTC, datetime, timedelta
 from decimal import Decimal
 from pathlib import Path
+import pytest
 import importlib.util
 
 from nvda_desk.derived_signal_calculation_truth import api
@@ -38,7 +39,8 @@ def test_g01_d025_high_low_nonsymmetric_public_result():
     )
 
 
-def test_g01_d099_native_right_c_p_not_numeric_strike_public_result():
+@pytest.mark.parametrize("did,expected", [("D099", Decimal(10)), ("D100", Decimal(30))])
+def test_g01_skew_native_right_c_p_not_numeric_strike_public_result(did: str, expected: Decimal):
     now = datetime(2026, 10, 10, 9, tzinfo=UTC)
     expiry = '2026-12-18'
     m00 = raw.create_owner()
@@ -48,6 +50,8 @@ def test_g01_d099_native_right_c_p_not_numeric_strike_public_result():
     points = (
         ('C25', 'call', Decimal(155), Decimal('0.25'), Decimal('0.30')),
         ('P25', 'put', Decimal(145), Decimal('-0.25'), Decimal('0.40')),
+        ('C10', 'call', Decimal(165), Decimal('0.10'), Decimal('0.20')),
+        ('P10', 'put', Decimal(135), Decimal('-0.10'), Decimal('0.50')),
     )
     seq = 0
     for contract, right, strike, delta, iv in points:
@@ -99,9 +103,9 @@ def test_g01_d099_native_right_c_p_not_numeric_strike_public_result():
         contexts=(), utc_now=lambda:now,
     )
     request = api.CalculationRequestV1(
-        'D099','NVDA',now,now,'g01-skew','g01-skew-basic',1,
+        did,'NVDA',now,now,'g01-skew','g01-skew-basic',1,
         'g01-skew-expiry',1,(),raw_input_bindings=tuple(bindings),
     )
     actual = owner.materialise(request)
-    assert actual is not None, 'D099 refused source-native C/P raw R015'
-    assert actual.result == Decimal(10)
+    assert actual is not None, f'{did} refused source-native C/P raw R015'
+    assert actual.result == expected
