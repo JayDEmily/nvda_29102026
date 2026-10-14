@@ -1,0 +1,12 @@
+D120 before metadata None expected None
+D120 late metadata cannot rescue earlier trade None expected None
+D120 separate receipt-only metadata None expected {'signed_contracts': Decimal('2'), 'signed_premium_notional': Decimal('900')}
+Traceback (most recent call last):
+  File "/workspace/scratch/5ae38fd70354/inspection/repository/handoff/workbook_v2/r02_d120_review/independent_review/direct_public_witness.py", line 116, in <module>
+    globals()[unit+'_witness']()
+  File "/workspace/scratch/5ae38fd70354/inspection/repository/handoff/workbook_v2/r02_d120_review/independent_review/direct_public_witness.py", line 106, in metadata_witness
+    check('D120 separate receipt-only metadata',None if out is None else dict(out.result),{'signed_contracts':D(2),'signed_premium_notional':D(900)})
+  File "/workspace/scratch/5ae38fd70354/inspection/repository/handoff/workbook_v2/r02_d120_review/independent_review/direct_public_witness.py", line 31, in check
+    print(label,repr(actual),'expected',repr(expected),flush=True); assert actual==expected,label
+                                                                           ^^^^^^^^^^^^^^^^
+AssertionError: D120 separate receipt-only metadata

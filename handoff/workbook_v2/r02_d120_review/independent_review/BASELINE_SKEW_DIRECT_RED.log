@@ -1,0 +1,10 @@
+D099 None None expected Decimal('13')
+Traceback (most recent call last):
+  File "/workspace/scratch/5ae38fd70354/inspection/repository/handoff/workbook_v2/r02_d120_review/independent_review/direct_public_witness.py", line 116, in <module>
+    globals()[unit+'_witness']()
+  File "/workspace/scratch/5ae38fd70354/inspection/repository/handoff/workbook_v2/r02_d120_review/independent_review/direct_public_witness.py", line 55, in skew_witness
+    check(did+' '+str(defect),None if out is None else out.result,expected if defect is None else None)
+  File "/workspace/scratch/5ae38fd70354/inspection/repository/handoff/workbook_v2/r02_d120_review/independent_review/direct_public_witness.py", line 31, in check
+    print(label,repr(actual),'expected',repr(expected),flush=True); assert actual==expected,label
+                                                                           ^^^^^^^^^^^^^^^^
+AssertionError: D099 None

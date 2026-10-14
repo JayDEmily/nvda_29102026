@@ -1,0 +1,27 @@
+D025 asymmetric Decimal('0.25') expected Decimal('0.25')
+D025 zero denominator None expected None
+D099 None Decimal('13.00') expected Decimal('13')
+D100 None Decimal('19.00') expected Decimal('19')
+D099 numeric None expected None
+D100 numeric None expected None
+D099 conflict None expected None
+D100 conflict None expected None
+D099 missing None expected None
+D100 missing None expected None
+D120 missing earlier sign history refuses None expected None
+D015 buy 1 expected 1
+D015 sell -1 expected -1
+D120 both signed trades {'signed_contracts': Decimal('-1'), 'signed_premium_notional': Decimal('0')} expected {'signed_contracts': Decimal('-1'), 'signed_premium_notional': Decimal('0')}
+D120 quote-only update {'signed_contracts': Decimal('-1'), 'signed_premium_notional': Decimal('0')} expected {'signed_contracts': Decimal('-1'), 'signed_premium_notional': Decimal('0')}
+D120 retry identity 'd120-77d455c1b61c9745c229e6a2fad2502ce472aebe6fd9253dff0de4e744ada01c' expected 'd120-77d455c1b61c9745c229e6a2fad2502ce472aebe6fd9253dff0de4e744ada01c'
+D120 multiplier 75 {'signed_contracts': Decimal('2'), 'signed_premium_notional': Decimal('900')} expected {'signed_contracts': Decimal('2'), 'signed_premium_notional': Decimal('900')}
+D120 multiplier selected per trade {'signed_contracts': Decimal('-1'), 'signed_premium_notional': Decimal('-600')} expected {'signed_contracts': Decimal('-1'), 'signed_premium_notional': Decimal('-600')}
+D120 missing_multiplier None expected None
+D120 numeric_right None expected None
+D120 conflict_right None expected None
+D120 zero_multiplier None expected None
+D120 before metadata None expected None
+D120 late metadata cannot rescue earlier trade None expected None
+D120 separate receipt-only metadata {'signed_contracts': Decimal('2'), 'signed_premium_notional': Decimal('900')} expected {'signed_contracts': Decimal('2'), 'signed_premium_notional': Decimal('900')}
+D120 future metadata update preserves 75 {'signed_contracts': Decimal('2'), 'signed_premium_notional': Decimal('900')} expected {'signed_contracts': Decimal('2'), 'signed_premium_notional': Decimal('900')}
+ALL REQUESTED INDEPENDENT WITNESSES PASSED

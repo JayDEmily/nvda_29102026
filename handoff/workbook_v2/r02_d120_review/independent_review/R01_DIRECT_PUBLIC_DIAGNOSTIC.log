@@ -1,0 +1,11 @@
+D025 asymmetric Decimal('0.25') expected Decimal('0.25')
+D025 zero denominator None expected None
+D099 None Decimal('13.00') expected Decimal('13')
+D100 None Decimal('19.00') expected Decimal('19')
+D099 numeric None expected None
+D100 numeric None expected None
+D099 conflict None expected None
+D100 conflict None expected None
+D099 missing None expected None
+D100 missing None expected None
+ALL REQUESTED INDEPENDENT WITNESSES PASSED

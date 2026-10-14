@@ -1,7 +1,7 @@
-# NVDA V2 — R01 bounded native-field contract repair
+# NVDA V2 — R01/R02 bounded native-field contract repair
 
 **Date:** 14 October 2026 (Australia/Melbourne)
-**Status:** BOUNDED OWNER-DIRECTED REPAIR IN PROGRESS — not foundation acceptance, not independent review, not main promotion.
+**Status:** R02 bounded semantic review PASS; supported-runtime and typecheck acceptance BLOCKED. No G01/Stage1/whole-M01 acceptance or main promotion. Original R01 sections below preserve their historical boundaries; the R02 section governs current work.
 **Parent checkpoint:** `f7c81bb0d88d0b2cf1980af06e80c8834143c7d7`
 **Explicit direction:** Programme Owner, 14 October 2026, 22:48 Melbourne: “Yeah, I agree, proceed”, agreeing to the preceding proposed bounded repair-authority, proof-first correction, independent review and guarded-main-promotion workflow. Earlier owner direction rejected meaning substitutions for R identities and required controlled input validation without live data.
 **Exact accepted implementation-ready brief:** `handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md`, SHA-256 `603b850802a418780109095e7ae69bcece449da79fb24140a6d50297605e927c`; effective D catalogue and original Raw Signals workbook provide accepted field identity. Scope is existing registered `M01` code only.
@@ -57,9 +57,11 @@ This supersedes the D120 stop and earlier review waiver for this bounded repair.
 - [x] Add public-path red witnesses with native C/P R015 and distinct R016 contract-metadata occurrences; capture failure before production correction.
 - [x] Select exact contract metadata known at each trade, refusing missing, future, stale, ambiguous or invalid multiplier/right; preserve actual selected metadata lineage and version bindings. Correct D121/D122 child request bindings to carry the new D120 dependency.
 - [x] Correct invalid numeric-R015 historical test fixtures in test-local successors; preserve historical reviewer artefacts unchanged and retain existing expected arithmetic. Run focused D120, grouped D121/D122, derived regression and repository architecture checks.
-- [ ] Independent fresh agent reviews D025, D099/D100 and D120 candidate against authority and actual public paths; resolve material findings. Preserve exact review range/commit/tree.
+- [x] Independent fresh agent reviews D025, D099/D100 and D120 candidate against authority and actual public paths; resolve material findings. Preserve exact review range/commit/tree.
 - [ ] Save one full-Git handoff with proof/review and readback evidence. No G01/whole-M01/Stage1 acceptance or ownership migration follows.
 
 Runtime boundary: supplied host is Python 3.12.14, required runtime is 3.13.5. The offline bootstrap contains cp313 wheels but no interpreter. Available-runtime runs are diagnostic, never equivalent to supported-runtime verification. Stop supported-runtime acceptance at that boundary; bounded implementation, diagnostic checks and semantic review may proceed.
 
 R02 progress: source candidate prepared; available-runtime diagnostic checks pass as itemised, except default-suite static-typecheck dependency failures. Independent review and handoff readback pending. See r02 ENVIRONMENT_BOUNDARY.md.
+
+R02 close-out: independent reviewer gave bounded semantic PASS on source commit 50cf2fe05bc5f3fb8e17c74ba31360dcbe63ea3a/tree489a7ccbd734bef3184b7bddf8dd15c6f05e109c; direct public witnesses and 69 focused tests passed. Independent review evidence hashes verified by coordinator. Default suite72/74, supported Python3.13.5 and typecheck acceptance remain BLOCKED. Final packaging/readback receipt is supplied beside the repository in the full-Git archive. Source review acceptance is limited to D025/D099/D100/D120; wider G01 and Stage1 dispositions are not advanced.

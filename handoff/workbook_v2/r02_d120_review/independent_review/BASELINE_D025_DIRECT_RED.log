@@ -1,0 +1,11 @@
+D025 asymmetric Decimal('0.75') expected Decimal('0.25')
+Traceback (most recent call last):
+  File "/workspace/scratch/5ae38fd70354/inspection/repository/handoff/workbook_v2/r02_d120_review/independent_review/direct_public_witness.py", line 116, in <module>
+    globals()[unit+'_witness']()
+  File "/workspace/scratch/5ae38fd70354/inspection/repository/handoff/workbook_v2/r02_d120_review/independent_review/direct_public_witness.py", line 36, in range_witness
+    out=h.calc('D025'); check('D025 asymmetric',None if out is None else out.result,D('.25'))
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/5ae38fd70354/inspection/repository/handoff/workbook_v2/r02_d120_review/independent_review/direct_public_witness.py", line 31, in check
+    print(label,repr(actual),'expected',repr(expected),flush=True); assert actual==expected,label
+                                                                           ^^^^^^^^^^^^^^^^
+AssertionError: D025 asymmetric
