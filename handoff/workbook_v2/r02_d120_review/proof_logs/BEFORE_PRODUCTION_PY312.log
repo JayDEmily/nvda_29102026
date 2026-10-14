@@ -1,0 +1,86 @@
+FFF.................FF..                                                 [100%]
+=================================== FAILURES ===================================
+_ test_native_right_and_independent_metadata_multiplier_calculate_exact_notional _
+
+    def test_native_right_and_independent_metadata_multiplier_calculate_exact_notional():
+        owner = owner_for(points())
+        request = replace(
+            fixture.request("D120"), calculation_definition_version="D120-NATIVE-MULTIPLIER-20261015-01"
+        )
+        result = owner.materialise(request)
+>       assert result is not None
+E       assert None is not None
+
+tests/product/derived_signal/test_m01_d120_native_multiplier_public.py:53: AssertionError
+_____ test_actual_multiplier_is_used_without_a_default[multiplier0-want0] ______
+
+multiplier = Decimal('10'), want = Decimal('120')
+
+    @pytest.mark.parametrize(
+        "multiplier,want", [(Decimal("10"), Decimal("120")), (Decimal("50"), Decimal("600"))]
+    )
+    def test_actual_multiplier_is_used_without_a_default(multiplier, want):
+        data = points()
+        data["R016"] = (replace(data["R016"][0], native_value=multiplier),)
+        result = owner_for(data).materialise(fixture.request("D120"))
+>       assert result is not None and dict(result.result)["signed_premium_notional"] == want
+E       assert (None is not None)
+
+tests/product/derived_signal/test_m01_d120_native_multiplier_public.py:71: AssertionError
+_____ test_actual_multiplier_is_used_without_a_default[multiplier1-want1] ______
+
+multiplier = Decimal('50'), want = Decimal('600')
+
+    @pytest.mark.parametrize(
+        "multiplier,want", [(Decimal("10"), Decimal("120")), (Decimal("50"), Decimal("600"))]
+    )
+    def test_actual_multiplier_is_used_without_a_default(multiplier, want):
+        data = points()
+        data["R016"] = (replace(data["R016"][0], native_value=multiplier),)
+        result = owner_for(data).materialise(fixture.request("D120"))
+>       assert result is not None and dict(result.result)["signed_premium_notional"] == want
+E       assert (None is not None)
+
+tests/product/derived_signal/test_m01_d120_native_multiplier_public.py:71: AssertionError
+_ test_latest_known_metadata_is_selected_and_older_metadata_is_not_claimed_as_input _
+
+    def test_latest_known_metadata_is_selected_and_older_metadata_is_not_claimed_as_input():
+        data = points()
+        older = replace(
+            data["R016"][0],
+            received_ts_utc=fixture.NOW - timedelta(seconds=2),
+            observation_occurrence_id=raw.observation_occurrence_id("older-multiplier"),
+            native_value=Decimal("10"),
+        )
+        data["R016"] = (older, *data["R016"])
+        result = owner_for(data).materialise(fixture.request("D120"))
+>       assert result is not None and dict(result.result)["signed_premium_notional"] == Decimal("1200")
+E       assert (None is not None)
+
+tests/product/derived_signal/test_m01_d120_native_multiplier_public.py:140: AssertionError
+____________ test_future_metadata_does_not_reprice_an_earlier_trade ____________
+
+    def test_future_metadata_does_not_reprice_an_earlier_trade():
+        data = points()
+        later = fixture.NOW + timedelta(seconds=1)
+        data["R016"] += (
+            replace(
+                data["R016"][0],
+                received_ts_utc=later,
+                observation_occurrence_id=raw.observation_occurrence_id("later-multiplier"),
+                native_value=Decimal("10"),
+            ),
+        )
+        request = replace(fixture.request("D120"), as_of_utc=later, knowledge_cutoff_utc=later)
+        result = owner_for(data).materialise(request)
+>       assert result is not None and dict(result.result)["signed_premium_notional"] == Decimal("1200")
+E       assert (None is not None)
+
+tests/product/derived_signal/test_m01_d120_native_multiplier_public.py:161: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/derived_signal/test_m01_d120_native_multiplier_public.py::test_native_right_and_independent_metadata_multiplier_calculate_exact_notional
+FAILED tests/product/derived_signal/test_m01_d120_native_multiplier_public.py::test_actual_multiplier_is_used_without_a_default[multiplier0-want0]
+FAILED tests/product/derived_signal/test_m01_d120_native_multiplier_public.py::test_actual_multiplier_is_used_without_a_default[multiplier1-want1]
+FAILED tests/product/derived_signal/test_m01_d120_native_multiplier_public.py::test_latest_known_metadata_is_selected_and_older_metadata_is_not_claimed_as_input
+FAILED tests/product/derived_signal/test_m01_d120_native_multiplier_public.py::test_future_metadata_does_not_reprice_an_earlier_trade
+5 failed, 19 passed in 0.13s
