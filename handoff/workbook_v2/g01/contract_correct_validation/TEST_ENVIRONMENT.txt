@@ -1,0 +1,4 @@
+Python 3.13.5
+pytest 9.0.2
+b171c7fef7dcb833a356c5c533edd968e6b29f3e
+work/v2-g01-contract-correct-controlled-proof-20261014

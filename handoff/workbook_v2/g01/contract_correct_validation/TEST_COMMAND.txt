@@ -1,0 +1,1 @@
+PYTHONPATH=src python -m pytest -q handoff/workbook_v2/g01/proofs/test_g01_public_authority_witnesses.py tests/product/derived_signal/test_m01_f4_rc02_scalar_algebra_public.py tests/product/derived_signal/test_m01_f4_rc14_skew_from_native_delta_public.py
