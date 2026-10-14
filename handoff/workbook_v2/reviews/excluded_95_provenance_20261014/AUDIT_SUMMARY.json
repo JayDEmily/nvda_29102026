@@ -1,0 +1,28 @@
+{
+  "D_universe": 209,
+  "academic_proof_note": "All linked papers relate to original framework propositions through required steps; do not claim a paper individually derives D calculation, validates its coefficients, establishes alpha, or mandates a module.",
+  "all_source_D_rows_accounted": 95,
+  "existing_eligible": 114,
+  "existing_excluded": 95,
+  "group_count": 30,
+  "group_singletons": 4,
+  "grouping_method": "Each D assigned to one responsibility grouping by effective calculation semantics, context and direct graph; not assigned by source-paper identity or old family.",
+  "grouping_status": "REVIEW_ONLY_NOT_MODULE_ALLOCATION",
+  "individual_D_to_specific_paper_methodological_derivation_verified_count": 0,
+  "signal_with_at_least_one_D_downstream_consumer": 73,
+  "signal_with_two_or_more_downstream_D_consumers": 39,
+  "source_evidence_strength_edges": {
+    "Adjacent": 6,
+    "Direct": 527,
+    "Partial": 277
+  },
+  "source_normative_sha256": "26c5486d1a4c7ff68025c7ce2d7e6847a7798759b847a716c942fd05345f3803",
+  "source_original_sha256": "519ea9449297d564ae4a02afc1bf4e60e4471631c81a0842620f9fb60bb4f9ae",
+  "source_pass04_sha256": "e336e4090a65a6ab1558c956826ec9b5f889348e76ca186965f203cbcb757900",
+  "source_provenance_missing_steps": 0,
+  "source_register_total": 62,
+  "source_step_links_to_addendum": 0,
+  "total_D_to_framework_step_links": 810,
+  "unique_framework_steps": 71,
+  "unique_referenced_registered_papers": 54
+}

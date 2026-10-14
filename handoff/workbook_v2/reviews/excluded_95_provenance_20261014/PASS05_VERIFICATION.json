@@ -1,0 +1,21 @@
+{
+  "D_NO_reconciled": 95,
+  "artefacts_sha256": {
+    "edges": "cd457e09bcd8c098ac80e0b7ee8e4aa125b288d78b8be449711014ad9e7da609",
+    "groups": "ef12fc050738b7667d0f39dae82c300f95aac0cbbf91d2f12bd126e14b4ce100",
+    "rows": "84bfd6c4118eaad46dbf88478040c58ac192e4e53e525ae7e3a9806f3535788a",
+    "sources": "64959df4bc3123cbeae15984f98d3c67665c206011dd392aade2e882526e32b9",
+    "xlsx": "98651e84571049ba68f20bd25d2bd88a2ed730722e6b2b520abf18aa3a769aed"
+  },
+  "cross_group_cycles": 0,
+  "cross_group_edges": 67,
+  "distinct_registered_papers": 54,
+  "edges": 810,
+  "group_count": 30,
+  "normative_catalogue_sha256": "26c5486d1a4c7ff68025c7ce2d7e6847a7798759b847a716c942fd05345f3803",
+  "original_workbook_sha256": "519ea9449297d564ae4a02afc1bf4e60e4471631c81a0842620f9fb60bb4f9ae",
+  "pass04_classification_sha256": "e336e4090a65a6ab1558c956826ec9b5f889348e76ca186965f203cbcb757900",
+  "scope_limit": "This verifies integrity and accounting; it does not prove independent paper methodology, per-D implementation, playbook ownership or architectural admission.",
+  "singletons": 4,
+  "verification": "PASS_AUDIT_ACCOUNTING_ONLY"
+}
