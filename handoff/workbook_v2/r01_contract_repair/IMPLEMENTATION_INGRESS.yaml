@@ -1,0 +1,8 @@
+schema_version: "1.0"
+brief_sha256: 603b850802a418780109095e7ae69bcece449da79fb24140a6d50297605e927c
+acceptance:
+  status: ACCEPTED_FOR_IMPLEMENTATION
+  authority_ref: "owner:2026-10-14T22:48+11:00:bounded-R01-contract-repair"
+targets:
+  - action: modify
+    object_id: M01
