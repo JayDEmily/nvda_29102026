@@ -26,6 +26,8 @@
 
 ## Practical follow-on
 
+**Review update — 15 October 2026:** [Gate 1 review addendum](handoff/workbook_v2/gates_01_02/GATE_1_REVIEW_ADDENDUM_20261015.md) recommends **RETURN** for bounded G1.2 authority correction and G1.6 latest-F4 obligation reconciliation. The original leaf submissions remain unchanged as evidence; their READY_FOR_DECISION labels do not override this review. Gate 1 is not accepted and Gate 2 remains NOT_OPEN.
+
 Perform the Gate 1 cumulative exit assessment against the six findings and the frozen ExecPlan's mandatory exit claims. Preserve unresolved evidence gaps and owner decisions explicitly; neither this consolidation nor a Git commit authorises Gate 2, creates M02/M03+, completes M01 or retires any module.
 
 **Consolidation change boundary:** This index and moving the local `main` pointer to a descendant containing the six existing findings are documentation/navigation changes only. All inherited history and investigation records remain available. The frozen ExecPlan, guardrails, agents, domain source, workbooks, architecture registries, runtime, tests and application code are unchanged.
