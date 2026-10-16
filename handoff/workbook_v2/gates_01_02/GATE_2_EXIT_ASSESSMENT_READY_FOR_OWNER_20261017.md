@@ -2,7 +2,7 @@
 
 Date: 17 October 2026 — Australia/Melbourne.
 
-**Worker recommendation: ACCEPT the revised bounded documentary Gate 2 assessment, subject to independent review of the revised exact candidate. Owner Gate2 decision: NOT RECEIVED.**
+**Worker recommendation: ACCEPT the revised bounded documentary Gate 2 assessment. Independent exit review: PASS on cc038faf. Owner Gate2 decision: NOT RECEIVED.**
 
 The prior f6caed65 return is preserved in section9 and its review receipt. The owner has now accepted all six D028 clauses; this revised assessment applies that authority and supersedes the125/83/1 checkpoint. It does not treat the D028 decision as Gate2 acceptance.
 
@@ -28,6 +28,8 @@ Nine composite scores have the owner-chosen S1 authored-model role. Twenty-two e
 | G2.6 | Material role/domain disputes have proper authority dispositions; owner Gate2 exit remains pending | Same 21 issues and 124 links retained; planning role/family treatment separated from later source/profile/proof holds. G2I-021 asks for the owner exit/boundary decision, not another hidden engineering prerequisite. |
 
 The worker submits mandatory claims(a)–(e) on the retained original leaf evidence, accepted B/S/N decisions, bounded N6 family proof and new D028 authority/reassessment. Population, effective required-contract meaning, ownership/allocation provenance, proper domain dispute decisions and no duplicate canonical owner/peer-runtime dependency are distinct claims. The independent review of this revised exact candidate is pending; earlier proposal PASS records do not automatically pass Gate2. No209-row implementation certification or application test execution is claimed.
+
+**Subsequent independent finding:** `G2_EXIT_INDEPENDENT_REVIEW_READY_20261017.md` records PASS/READY for candidate `cc038fafac3bc5e57dc0b2e7e35a3de1ef9a4ca4`, tree `065347104ddb76694e54d659eaef9d958453d993`, against all five mandatory propositions. This supersedes the review-pending wording above, not the requirement for a separate owner Gate2 decision. This subsequent receipt changes no classification, group boundary, accepted equation or receiving hold.
 
 ## 3. Proposed shared foundation population
 
