@@ -1,8 +1,10 @@
-# Gate 2 — exit assessment ready for owner decision
+# Gate 2 — exit assessment RETURNED on D028
 
 Date: 17 October 2026 — Australia/Melbourne.
 
-**Worker recommendation: ACCEPT the bounded documentary Gate 2 assessment and responsibility proposal below, subject to independent gate-exit review. Owner decision: NOT YET RECEIVED.**
+**Current disposition: RETURNED by independent review of f6caed65. Gate 2 is NOT READY for acceptance. One material D028 input-role decision remains; owner Gate 2 decision NOT RECEIVED.**
+
+The filename records the pre-review candidate; this opening and section9 supersede its readiness wording. The exact pre-review evidence remains in Git at f6caed65.
 
 This is the Gate 2 exit evidence attachment to the single frozen root ExecPlan and its accepted overlays, not another active plan. Root plan bytes remain unchanged. B1-B5 explicitly changes the exit proposition to contract-family eligibility rather than actual provider-feasibility certification. Gate 2 cannot be advanced by the worker or by a review PASS. No successor ExecPlan has been drafted or activated.
 
@@ -10,7 +12,7 @@ This is the Gate 2 exit evidence attachment to the single frozen root ExecPlan a
 
 Entry delivered checkpoint: `47495b1973262842223ca3d0f3613d9e7a2a5068`. Owner package acceptance: `f6797fbbec8de505d64dae29227eee7ffde5c4e9`, recording the owner's “Yes” to exact `G2-CONTRACT-CLASSIFICATION-20261017-01` (SHA256 `1d2d48cd8d490359f61aed1edb38f713d65b89c15d7499dc57dd25bbcde8cc5d`). Accepted main remains `77d82bd8ee4268673715fe7e5653b6a65a299b54`. Candidate commit/tree will be supplied after this evidence is committed; no candidate hash is invented in advance.
 
-The proposal is **126 shared foundation contract families, 83 downstream canonical calculations, 0 unresolved planning classifications**, accounting for 209 D identities exactly once. “Conditional” now refers to future complete conforming parameter/source instances and implementation/admission, not an unresolved choice of classification within the allowed family. An out-of-domain instance cannot claim this eligibility merely by having a version ID. Actual source feasibility remains UNKNOWN where unproved; no valid output or source/module admission is possible until the named receiving holds are proved.
+The corrected proposal is **125 conditional shared foundation families, 83 downstream canonical calculations, 1 UNKNOWN (D028)**, accounting for209 identities. D028 is not silently moved downstream or counted as eligible. “Conditional” now refers to future complete conforming parameter/source instances and implementation/admission, not an unresolved choice of classification within the allowed family. An out-of-domain instance cannot claim this eligibility merely by having a version ID. Actual source feasibility remains UNKNOWN where unproved; no valid output or source/module admission is possible until the named receiving holds are proved.
 
 Nine composite scores have the owner-chosen S1 authored-model role. Twenty-two earlier unknowns have individually applied accepted neutral contract domains. Four remaining N6 rows have independently reviewed bounded family meaning and complete input-role closure; no production pricing model was selected. The historical 100/74/35 and intermediate 122/83/4 are retained in Git/report history; hypothetical 126/83 scenario arithmetic was not used as semantic proof.
 
@@ -20,18 +22,20 @@ Nine composite scores have the owner-chosen S1 authored-model role. Twenty-two e
 | --- | --- | --- |
 | G2.1 | 209 canonical D identities, original/V2 population and source provenance reconciled | Cumulative register identity/source columns and original/effective catalogues/workbooks; exactly 209 unique identities and original/Pass08 source-cell comparisons. Counts do not prove runtime readiness. |
 | G2.2 | Effective row/kernel meaning and accepted amendments distinguished from historical workbook labels | Existing G2.2 original 15-cell readback, effective brief excerpts and indexed D-specific amendments; owner accepted B/S/N restrictions and D117/D123/L2 approvals preserved. No workbook/catalogue bytes changed. |
-| G2.3 | Complete classification-relevant R/D/typed/convention closure under required input contracts | Existing 209-row recursive closure plus row-specific accepted N domains; N6 adds explicit typed-context rate/dividend/reference and method closure. Canonical 209-D graph remains acyclic. Native source instances/feasibility are B4 holds, not certified facts. |
-| G2.4 | 126 neutral contract families and 83 downstream roles justified independently of implementation absence | Row-specific reasoning/current proposal fields; nine S1 owner-role decisions; all 53 flag dispositions; N6 bounded proof. No foundation proposal has a transitive downstream D predecessor. Future profile membership/correctness is not demonstrated. |
-| G2.5 | Singular canonical identity and exact proposed responsibility coverage with no peer-runtime edges | 26 nonempty responsibility groups below cover 83 downstream D identities exactly once; the 126 foundation D identities are listed below; historical 95 members / 30 groups / 107 references preserved as history. Local non-neutral chains remain private per peer. No actual owners/IDs admitted. |
-| G2.6 | All material planning classification disagreements have evidence/authority dispositions | Same 21 issues and 124 links retained; planning role/family treatment separated from later source/profile/proof holds. G2I-021 asks for the owner exit/boundary decision, not another hidden engineering prerequisite. |
+| G2.3 | Classification closure established except D028 required R044 role | Existing 209-row recursive closure plus row-specific accepted N domains; N6 adds explicit typed-context rate/dividend/reference and method closure. Canonical 209-D graph remains acyclic. Native source instances/feasibility are B4 holds, not certified facts. |
+| G2.4 | 125 conditional neutral families,83downstream,1UNKNOWN D028 | Row-specific reasoning/current proposal fields; nine S1 owner-role decisions; 53 flag entries, with D028 now explicitly unresolved; N6 bounded proof. No foundation proposal has a transitive downstream D predecessor. Future profile membership/correctness is not demonstrated. |
+| G2.5 | Singular canonical identity and exact proposed responsibility coverage with no peer-runtime edges | 26 nonempty responsibility groups below cover 83 downstream D identities exactly once; the125foundation D identities are listed below; D028 is separatelyUNKNOWN; historical 95 members / 30 groups / 107 references preserved as history. Local non-neutral chains remain private per peer. No actual owners/IDs admitted. |
+| G2.6 | One material D028 role/domain decision remains | Same 21 issues and 124 links retained; planning role/family treatment separated from later source/profile/proof holds. G2I-021 asks for the owner exit/boundary decision, not another hidden engineering prerequisite. |
 
-Mandatory claims (a)-(e) of the root Gate 2 exit follow from those separate propositions: population, inspected meaning/complete classification closure, distinguished ownership/allocation provenance, properly authorised dispute resolutions, and no duplicate canonical owner/peer-runtime dependency. This assessment uses retained verified original leaf evidence plus the differential accepted decisions; it is not a fresh 209-row implementation review or test execution.
+Independent review supports mandatory claims(a),(c),(e). Claims(b),(d) remain unsupported forD028: inspection identified conflicting required source meaning, not a complete authorised input role. Gate2 cannot be accepted on this evidence. This assessment uses retained verified original leaf evidence plus the differential accepted decisions; it is not a fresh 209-row implementation review or test execution.
 
 ## 3. Proposed shared foundation population
 
-These are future M02 working-design responsibilities, not registered module allocation or 126 available outputs. Concrete parameter/source instances remain mandatory before any occurrence.
+These are future M02 working-design responsibilities, not registered module allocation or 125 available outputs. Concrete parameter/source instances remain mandatory before any occurrence.
 
-D001, D002, D003, D004, D005, D009, D010, D011, D012, D013, D014, D015, D016, D017, D018, D019, D020, D021, D022, D023, D024, D025, D026, D027, D028, D029, D030, D031, D032, D033, D034, D035, D036, D037, D038, D039, D042, D043, D044, D045, D046, D047, D048, D049, D050, D051, D052, D053, D054, D055, D056, D057, D058, D059, D060, D062, D063, D066, D067, D068, D069, D071, D072, D073, D074, D075, D076, D077, D078, D079, D080, D081, D082, D083, D085, D086, D087, D088, D089, D090, D091, D092, D093, D094, D095, D096, D097, D098, D099, D100, D101, D102, D103, D104, D105, D106, D107, D108, D109, D110, D111, D112, D113, D116, D117, D118, D119, D120, D121, D122, D123, D124, D131, D134, D135, D136, D137, D138, D139, D140, D141, D142, D143, D144, D145, D151
+D001, D002, D003, D004, D005, D009, D010, D011, D012, D013, D014, D015, D016, D017, D018, D019, D020, D021, D022, D023, D024, D025, D026, D027, D029, D030, D031, D032, D033, D034, D035, D036, D037, D038, D039, D042, D043, D044, D045, D046, D047, D048, D049, D050, D051, D052, D053, D054, D055, D056, D057, D058, D059, D060, D062, D063, D066, D067, D068, D069, D071, D072, D073, D074, D075, D076, D077, D078, D079, D080, D081, D082, D083, D085, D086, D087, D088, D089, D090, D091, D092, D093, D094, D095, D096, D097, D098, D099, D100, D101, D102, D103, D104, D105, D106, D107, D108, D109, D110, D111, D112, D113, D116, D117, D118, D119, D120, D121, D122, D123, D124, D131, D134, D135, D136, D137, D138, D139, D140, D141, D142, D143, D144, D145, D151
+
+D028 is separately UNKNOWN pending `G2_D028_INPUT_ROLE_DECISION_PROPOSED_20261017.md`; its preserved accepted direct list remains R041;R044.
 
 ## 4. Proposed downstream responsibility boundaries
 
@@ -94,12 +98,18 @@ The September archive was not needed for this bounded continuation and was not u
 
 ## 7. Review and owner decision
 
-The independent reviewer must assess the exact committed candidate and record its scope/findings before a readiness claim is final. The N6 bounded PASS is only one input; earlier proposal/repair PASS records are not Gate 2 acceptance. All findings must be repaired or retained honestly.
+Independent gate-exit review of candidate `f6caed65c70045e55d3410c069c5fff24eaa8334`, tree `4b4658d5e064f9cc50f5eea6a15267da0b1a52e9`, returned one material D028 role/baseline-domain gap. The bounded N6 PASS is unaffected. See `G2_GATE_EXIT_REVIEW_RETURN_D028_20261017.md` for scope and recurrence classification.
 
-Owner decision requested after review: ACCEPT or RETURN this exact Gate 2 documentary assessment, the 126/83 classification and the 26-responsibility proposal with B4 holds. This is not runtime, implementation or source admission. If ACCEPT closes this two-gate tranche, the next authorised planning task is drafting the successor ExecPlan from ADR-WBV2-003 C–E/§8 and all carried obligations. Do not activate or execute it without its own authority.
+The current requested decision is only the six-clause D028 proposal. No Gate2 ACCEPT is requested until proper authority resolves it and the resulting assessment is reviewed. After a later separate Gate2 ACCEPT, draft the successor ExecPlan from ADR-WBV2-003 C–E/§8 and carried obligations; no activation or implementation follows automatically.
 
 ## 8. Documentary verification and first failed check
 
 Read-only parsing confirmed unchanged 111/25/19 schemas, 209/21/124 populations and unique identities/links, with no dangling links. Original/effective source fields, historical workbook eligibility/group fields, current registered owner, future admitted owner and implementation/proof fields were preserved. The effective canonical D graph resolves and remains acyclic; all 126 proposed foundation rows have no transitive downstream predecessor. Group coverage is 83 distinct downstream identities in 26 nonempty historical responsibilities, with no duplicate canonical output.
 
 The first frozen-catalogue digest assertion failed because the checking command contained a truncated expected-hash literal. No dependent candidate commit occurred on that failed check. The corrected check used the complete pinned digest `67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549`, required both catalogue copies to match it, and additionally required their exact bytes to match entry `47495b1`; all passed. This was a checker-input error, not an observed catalogue mutation, and the failed attempt is not reported as passing. Guardrails/agents/frozen-plan digests and unchanged accepted main were also confirmed. No application tests, imports or validators ran.
+
+## 9. Review correction and first unmet invariant
+
+The pre-review claim126/83/0 overclaimed D028 closure. Its53-flag audit retained “N, matching and R044 role require exact baseline domain” while treating all entries complete. That was an assessment error. R044 is the original90-daydailyAverageVolume, not a source-native elapsed fraction. Later implementation inspection exposed the same identity misuse in `_stage1.py` and its fixtures; source/tests do not resolve authority.
+
+The correction retains the requiredR044edge and all source/historical fields, marksD028UNKNOWN, and reopensG2I-020's material disposition. The register is125/83/1, with no D028 descendant and no changed downstream frontier. The16fixed-law/37measurement-domain partition is audit coverage only; among37domainentries D028 remains unresolved. New proposal `G2_D028_INPUT_ROLE_DECISION_PROPOSED_20261017.md` is not effective authority. B4 cannot defer this contract meaning to source commissioning. No dependent Gate2 promotion or successor planning occurs.
