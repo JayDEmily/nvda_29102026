@@ -49,3 +49,54 @@ The required evidence is a counter/session/reset specification and source/calend
 The 209-identity, 21-issue and 124-link populations and classifications remain unchanged: 100 conditional foundation candidates, 74 established non-foundation classifications and 35 material unknowns. Only D117/G2I-011 current decision fields and its D117/G2I-021 architecture-dependent status receive this result. G2I-021 is not resolved because D117's final classification remains unknown. The L2 blockers and other decisions remain outstanding.
 
 Main, root plan, guardrails, all agent instructions, original proposal, catalogue/runtime/workbook/source/test/schema/registry files remain unchanged. Package verification is separate from source semantics; archive extraction/readback and Git integrity do not establish source admission.
+
+## 5. Owner-requested scope audit and correction — 16 October 2026, 23:02 Melbourne
+
+**Audit baseline:** `55c7c83fc21e7a28fe8d06d021286ae2ea5294f0`; comparison origin `5845623caa5b4d7fc078df5415c12acc4c0e739b` (supplied acquisition-scope checkpoint). The owner asked to continue D117 and confirm alignment with the ExecPlan and subsequent authorisations. This section corrects the scope of the evidence gaps above; it does not amend accepted P1–P6 or accept a classification.
+
+| Work performed | Controlling authority | Audit result |
+|---|---|---|
+| Investigate D117 meaning, R075 role and complete input contract | ExecPlan G2.2/G2.3/G2.4/G2.6; accepted A1–A7 permits independent documentary work after L2 blocker | Within authorised Gate 2 investigation. D117 is not a dependency on resolving the L2 book. |
+| Remove mandatory R075 input | Owner accepted `D117-RAW-VOLUME-HISTORY-20261016-01`, exact six clauses at `ca11e1aa683e6561150d1c809f7af88162eaca7c` | Authorised semantic overlay; not an unapproved code/catalogue edit. |
+| Fix first exact-contract 20-session receipt-time version | Owner accepted P1–P6 of `D117-BASELINE-EXACT-CONTRACT-20SESSION-RECEIPT-20261016-01` at `ee82fa7460a8a253c16d2704a8d9cc2aae7bfdcc` | Explicit subsequent domain authority supplements the original plan's no-unapproved-definition-change boundary. These choices are accepted, not newly pending. |
+| Documentary source feasibility versus actual deployment evidence | Accepted A1/A2/A3 and P6 | Prior gap descriptions mixed these categories in places; corrected below. |
+| Gate 2 exit, successor planning and implementation | ExecPlan exit rules and accepted A7 | Gate 2 remains unaccepted. No successor plan activated, implementation, integration or main merge. |
+
+**Direct Git audit:** all twelve changed paths between the comparison checkpoints are handoff assessment/authority/index/register files. Root `EXEC_PLAN.md` remains SHA-256 `8abed334586aea28b22db7ec6fd0614f41cdb47a02b08cb4e839eb61b96e8b0e`; guardrails and root agents are byte-identical to the supplied checkpoint. No production source, tests, workbook, schema, runtime configuration, architecture registry or other non-handoff path changed. Main remains `77d82bd8ee4268673715fe7e5653b6a65a299b54`.
+
+The three register populations remain 209/21/124. Comparison of their inherited columns finds changes only to D117, G2I-011 and D117's G2I-021 link; four planning/operational columns were appended to all records under A6. Thus the visually large CSV diff is not evidence of a 209-row reclassification. Historical source/classification fields are retained. The new audit makes no retrospective claim about executing tests: only Git/documentary inspections were performed in these passes.
+
+### 5.1 Exact correction to prior gap descriptions
+
+The sentence in §3 SC-D117-05 that an actual mapping/stream is not established is an **operational observation**, not an independent Gate 2 semantic blocker. The same qualification applies to §2/§3 references to a specific contract ID, instantiated calendar/version, retained history and actual occurrence/status association. Their absence in an unbuilt deployment does not itself prevent planning classification. Earlier broad “source/counter/calendar” wording must not be interpreted as requiring live capture or twenty collected sessions to close Gate 2.
+
+A1 still requires evidence that the specified source can express the necessary meaning. A3 permits deployment-bound values only within an explicit, classification-preserving contract. Therefore:
+
+- Contract IDs/request IDs/mapping-instance IDs remain future bindings. The required exact identity, field correspondence, option-volume units and permissible source variant must be semantically settled now; sample IDs are not proof.
+- P2 already fixes the applicable contract's authoritative regular-session calendar, immutable version, IANA timezone, same elapsed minute and early-close refusal. A fabricated current calendar ID is unnecessary. A concrete binding and complete historical schedule coverage are prerequisites for valid runtime output; source feasibility and any meaning-changing calendar choice must still be resolved before classification.
+- Provider schedule/timezone fields and request-scoped market-data-mode reporting are documented. This supports representational feasibility; it does not certify an acquisition deployment. Source-specific date/session/counter meaning is a separate question.
+- P3/P5 already fix original receipt cutoffs, sequence scope and lineage. Proving actual retention, mapping, chronological capture and public projection is receiving operational work, subject to A2. A full twenty-session live capture is not imposed as a planning prerequisite.
+
+No operational item is declared finally deferred while its associated semantic contract remains unresolved. The correction prevents actual-instance absence from serving as a substitute reason for the remaining semantic blocker; it does not waive that blocker or establish the missing contract.
+
+## 6. Continued D117 investigation — narrowed counter-period question
+
+Reopened the current official [Streaming Data](https://www.interactivebrokers.com/docs/tws-api/doc/md/streaming-data) request/tick table/Volume Data/callback sections, [Contract Details introduction](https://www.interactivebrokers.com/docs/tws-api/doc/contracts-financial-instruments/contract-details/introduction) and [Delayed Market Data](https://www.interactivebrokers.com/docs/tws-api/doc/md/delayed-data), specifically their schedule and mode sections.
+
+**Verified provider description:** `reqMktData` uses an instrument contract and request ID; tick 8 is daily volume via `tickSize`. Native volume may include late transactions/corrections and is not a per-trade update. This supports a reported-volume observable, not a complete trade tape. The generic callback shape does not itself attach a volume-counter date. Provider “delayed transactions” within native volume must not be confused with the separate delayed-market-data delivery mode.
+
+**Separate reasoning from accepted meaning:** the regular-session minute defines the comparison coordinate. It does not, by itself, establish that the native numerator contains only regular-hours trades or resets exactly at the regular open. No opening-value subtraction, reset detector or exclusion of extended-hours trades is authorised by P1–P6. Retain the reported value; establish its counter period rather than changing it.
+
+**First unresolved source invariant:** establish what “day” identifies for the selected option native-volume stream and how a received value can be assigned to that counter period at the regular-session cutoff, particularly on first delivery/reconnect/day rollover. Recent receipt and a real-time mode flag alone do not prove that date. No exact reset instant, native day field or certification marker is invented. This remains UNKNOWN from the inspected primary material, not a universal claim that IBKR has no answer.
+
+A bounded additional official-domain search for native/daily-volume reset and option-volume period semantics did not establish that invariant. Results concerning API order-ID reset do not concern volume and were excluded. General option-volume display descriptions and repeated tick-table hits did not establish the missing rollover/association rule. This search is not an exhaustive absence proof; third-party sites and comments were not used.
+
+### 6.1 Concrete evidence request prepared, not sent
+
+The next source-custodian/provider evidence needs to answer this exact question:
+
+> For the supported TWS API `reqMktData` stream of one identified US equity option (`OPT`), with `tickSize` field 8 as the native volume source: what precisely defines the reported volume day/counter period and units; what happens at day rollover and first delivery/reconnect; and which documented response or request/session/status relationship establishes that a delivered value belongs to the intended current volume day rather than a retained earlier day? Identify the applicable interface/version qualifications and explain how late reports or cancellations affect the reported value and period assignment.
+
+This is a prepared technical question, not a message to IBKR or another person; no external contact occurred. A primary specification, applicable provider clarification or other admissible source evidence may answer it. A project schema or an assistant's invented adapter field cannot answer it. Actual source-capture proof remains separately commissioned work.
+
+**Current result:** owner-approved input and baseline definitions retained; operational-only gaps separated; D117 classification remains UNKNOWN solely where the classification-critical source contract is incomplete. Gate 2 remains BLOCKED. The next useful dependent action is obtain/evaluate the counter-period evidence above, not another measurement approval or repeated test run. No new owner decision is requested in this checkpoint.
