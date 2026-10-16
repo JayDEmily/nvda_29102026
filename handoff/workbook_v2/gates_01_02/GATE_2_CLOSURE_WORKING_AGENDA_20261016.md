@@ -42,3 +42,11 @@ D006, D008, D040, D041, D061, D062, D063, D064, D070, D078, D079, D080, D081, D0
 6. Obtain the programme owner's **separate Gate 2 acceptance**. Only then draft a successor ExecPlan from ADR-WBV2-003 C–E/§8 and carried obligations. A draft is not active until expressly accepted; it never authorises implementation by itself.
 
 No code, test, workbook, schema, registry, runtime configuration, guardrail, agent instruction, frozen root plan or accepted main is changed by this agenda. No application test or runtime operation is authorised or run. The agenda is a current synthesis of the existing plan and decision queue; it does not legislate new gate criteria, numerical conventions, named runtime modules or source facts.
+
+## 4. Continuation checkpoint — 17 October 2026
+
+`G2_CLASSIFICATION_CONTINUATION_20261017.md` records the new investigation of all 35 outstanding classification questions, the individual audit of all 53 convention flags, the separate D091/D109/D110/D121 matching findings and the D124 strike/expiry-versus-spot-band distinction. D132's candidate application scope does not by itself establish candidate-dependent mathematics; no downstream promotion was made. Current counts remain 100/74/35. The earlier queue is preserved as historical navigation, not a claim that these new findings did not occur.
+
+`G2_CLASSIFICATION_CONTRACT_DECISIONS_PROPOSED_20261017.md` is a concrete, unaccepted decision package. B explicitly proposes a Gate 2 required-input-contract assessment instead of provider-feasibility certification; S proposes authored score-model roles; N states bounded neutral measurement domains. These are not silently activated by the instruction to continue. D117's accepted mathematics is not reopened. The native provider/API module remains outside this work.
+
+Next dependent authority unit: programme-owner decision on the exact proposed package where it changes accepted scope/domain meaning. Then continue the remaining selected-convention and contract-specific closure, especially N6 option-revaluation full input closure; do not infer all 35 resolved, actual 126/83 classifications, final 26 groups or Gate 2 readiness from the scenario arithmetic. Independent available investigation can continue without a deployed source. Gate 2 acceptance and the later successor ExecPlan remain distinct steps.
