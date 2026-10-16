@@ -2,7 +2,9 @@
 
 Date: 17 October 2026 — Australia/Melbourne.
 
-**Worker recommendation: ACCEPT the revised bounded documentary Gate 2 assessment. Independent exit review: PASS on cc038faf. Owner Gate2 decision: NOT RECEIVED.**
+**Current disposition: ACCEPTED by the programme owner,17October2026. See `GATE_2_OWNER_ACCEPTANCE_20261017.md` for exact accepted baseline and limits. Independent exit review: PASS on cc038faf.**
+
+That later decision supersedes owner-decision-pending wording in the chronological assessment below. Gate2 is closed as a documentary assessment; source/profile/implementation holds remain effective.
 
 The prior f6caed65 return is preserved in section9 and its review receipt. The owner has now accepted all six D028 clauses; this revised assessment applies that authority and supersedes the125/83/1 checkpoint. It does not treat the D028 decision as Gate2 acceptance.
 

@@ -1,5 +1,7 @@
 # Gate 2 — current closure working agenda
 
+**Later owner decision,17October2026:** Gate2 ACCEPTED; see `GATE_2_OWNER_ACCEPTANCE_20261017.md`. The closure queue below is historical navigation. Current work is drafting the next two gates, not executing implementation or reopening Gate2.
+
 **Status:** Assessment navigation under frozen root `EXEC_PLAN.md`, not a second active ExecPlan, successor plan or implementation authority.
 
 **Date:** 16 October 2026 — Australia/Melbourne.
