@@ -1,9 +1,12 @@
 # Gate 2 — proposed planning/source-evidence boundary amendment
 
-**Proposal ID:** `G2-PLANNING-BOUNDARY-20261016-01`  
-**Date:** 16 October 2026 — Australia/Melbourne  
-**Status:** `PROPOSED / PREPARATION AUTHORISED / EXACT TEXT NOT YET ACCEPTED`  
-**Gate 2:** remains unaccepted and blocked on unresolved material classifications.  
+**Proposal ID:** `G2-PLANNING-BOUNDARY-20261016-01`
+
+**Date:** 16 October 2026 — Australia/Melbourne
+
+**Status:** `PROPOSED / PREPARATION AUTHORISED / EXACT TEXT NOT YET ACCEPTED`
+
+**Gate 2:** remains unaccepted and blocked on unresolved material classifications.
 **Purpose:** establish the distinction between an accepted future input contract and proof that an operational source implements it, without accepting an unknown contract or manufacturing source evidence.
 
 ## 1. Current instruction, baseline and authority boundary
@@ -126,5 +129,7 @@ This preparation adds this proposal only. It does not change root governance, th
 Primary project sources inspected for the proposed boundary: full root guardrails/agent map/active plan and master brief; ADR-WBV2-001/002; registered M00/M01 responsibility records; Gate 1 owner acceptance; G2.6 findings and subsequent L2 notes; the L2 source-custodian investigation, acquisition-scope reconciliation and owner-approved D138/D145 amendment. Current CSV headers and issue examples were inspected for extension compatibility. This pass does not claim a fresh exhaustive 209-row semantic review, provider-document revalidation, live-data inspection or runtime source conformity. Existing reported totals and source gaps are inherited assessment states, not newly proven full-population findings here.
 
 The failed attachment `NVDA_IMPLEMENTATION_ADMISSION_PM_HANDOVER_FULL_GIT_20260913.tar(1).gz` was not inspected. This proposal relies on the current supplied repository's governing files; it does not certify that missing archive or original historical archive-byte equivalence.
+
+**Verification discrepancy and diagnosis:** An initial literal workspace-to-Git-blob comparison stopped at `handoff/m01_completion/proof/f4_20261009/F4_CLASS_PROOF_RECONCILIATION.csv`: 1,408 workspace bytes versus 1,386 Git-blob bytes. Direct comparison with the supplied archive established that its 1,408 bytes were inherited unchanged; CRLF-to-LF normalisation exactly matches the Git blob, and Git attributes declare `text` and `eol=lf`. The failed literal-equality check is not reported as passing. Preservation must instead be proved in both representations: compare every inherited working file to its exact input-archive bytes, and compare inherited Git tree entries to the parent. Preserve the archived line endings rather than modifying historical evidence. The proposal's Markdown whitespace check also initially reported four hard-break lines; these were changed to blank-line-separated paragraphs before the final candidate check.
 
 **Owner decision requested:** ACCEPT or RETURN `G2-PLANNING-BOUNDARY-20261016-01` against the delivered candidate commit. Acceptance would activate only clauses A1–A7 as the bounded planning overlay described above; it would not accept Gate 2, any source contract, any particular classification or any later ExecPlan.
