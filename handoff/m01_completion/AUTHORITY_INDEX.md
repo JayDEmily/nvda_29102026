@@ -66,3 +66,8 @@ Definition revision D120-NATIVE-MULTIPLIER-20261015-01 adds R016 to D120, retain
 The new exact effective runtime/authority catalogue SHA-256 is `67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549`.
 Predecessor `26c5486d1a4c7ff68025c7ce2d7e6847a7798759b847a716c942fd05345f3803` remains historical evidence.
 The accepted original brief remains byte-identical; this explicitly owner-approved exception overrides its old dependency digest for this row only.
+
+
+## Owner-approved D138/D145 Level-II raw-dependency contract amendments — 16 October 2026
+
+See `authority/D138_D145_L2_OWNER_APPROVED_DEPENDENCY_AMENDMENT_20261016.md`. The programme owner approved **D138 `R189;R190;R188` → `R185;R187;R188;R189;R190`** and **D145 `R187;R188;R189;R190` → `R185;R187;R188;R189;R190`**, with original K06/K17 mathematics and source-refusal contracts unchanged. These two owner-approved **semantic overlays** override only their named effective raw-dependency fields. The preceding effective catalogue SHA-256 `67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549` remains the unchanged source/runtime byte object for this read-only Gate 2 work; this branch does not assert runtime/catalogue synchronisation, admitted M00 projection, implementation or Gate 2 acceptance. Native source selection/projection is outstanding; future C–E work must separately synchronise and prove production adoption under its own authority.
