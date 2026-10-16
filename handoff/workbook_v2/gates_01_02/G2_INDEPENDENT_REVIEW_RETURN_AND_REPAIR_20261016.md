@@ -38,3 +38,25 @@ Review the exact candidate commit/tree supplied in the follow-up request. Evalua
 Report PASS/RETURN for proposition 1 separately from BLOCKED/READY for proposition 2, with evidence and limits. A repair PASS is not source-feasibility proof, D117 classification approval, programme-owner acceptance or Gate 2 acceptance.
 
 The independent re-review result will be appended after review, identifying its exact reviewed object. No result is claimed in advance.
+
+## 4. Independent re-review result
+
+The following preserves the independent reviewer's returned text with Markdown line-break spacing normalised. Its PASS applies to the exact candidate identified below. The later receipt-only commit adds this result; it does not change the reviewed assessment/register files or extend the review's scope.
+
+Reviewed candidate: `94cd38b4956659752101e5aa32e024e4ce2b14be`
+Tree: `8741238b72fdb2b0a79eab152877bb7912303a83`
+Comparison: previously reviewed `aef6f3ef9b563f511b0c462a3fdc1e48d5a9e37d`.
+
+**Documentary/authority-handling repair: PASS.** No remaining material defect found within this bounded repair.
+
+- D117 reassessment §8, lines 159–173, explicitly withdraws §7’s promotion/closure, preserves the historical text, retains accepted R041-only/P1–P6 and the acquisition-module exclusion, and leaves P6/A1–A2 reconciliation open without assuming a waiver.
+- Current registers consistently restore D117 to `UNKNOWN_CLASSIFICATION_MATERIAL`: `D001_D209_TRACEABILITY.csv:118`; `ISSUES.csv:12,22`; `ISSUE_D_LINKS.csv:99–100`. G2I-011 and D117’s G2I-021 link are reopened.
+- Independent parsing confirms unchanged identities, ordering and schemas: **209/21/124** records, all D001–D209 exactly once, unique issue/link keys, no dangling links. Current recorded classifications are **100 conditional foundation / 74 non-foundation / 35 unknown**.
+- The corrected closure agenda and `G2_INDEPENDENT_REVIEW_RETURN_AND_REPAIR_20261016.md` faithfully distinguish repair review from semantic closure and gate acceptance.
+- Git comparison confirms exactly the six declared assessment/register files changed. Accepted authorities, governance/ExecPlan and production surfaces are unchanged; accepted main remains `77d82bd8ee4268673715fe7e5653b6a65a299b54`. Worktree observed clean.
+
+**Gate 2 readiness: BLOCKED.** D117’s authority/evidence-treatment question remains open, alongside the other 34 material unknown classifications and outstanding profile/group/exit decisions. This is now honestly represented rather than improperly closed.
+
+Scope: read-only differential documentary review, current guardrail reread, prior reviewed lineage and independent CSV consistency checks. No modifications, tests, application imports, provider/API work or fresh exhaustive 209-row semantic review.
+
+**This PASS corrects the documentary/authority-handling defect only. It does not close D117, prove input feasibility, approve its classification, admit a source/module or accept Gate 2.**
