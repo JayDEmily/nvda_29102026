@@ -27,3 +27,13 @@ D028 is now UNKNOWN, not downstream or eligible. Current assessment125conditiona
 `G2_D028_INPUT_ROLE_DECISION_PROPOSED_20261017.md` presents one exact six-clause owner decision: preserve the same-time ratio, replace the mandatoryR044edge with current/historicalR041only forD028, define a complete bounded neutral baseline family, retain actual source/profile/implementation holds, and preserveR044meaning. It is NOT ACCEPTED. The owner's previous B/S/N acceptance is unchanged and does not authorise this new amendment. Gate2 is not ready and no successor ExecPlan is drafted.
 
 The first correction-script assertion used a non-existent downstream disposition label; it stopped before writing any register. The literal was corrected to the existing `PROPOSED_NOT_M02_SEMANTIC_DISQUALIFIER` label. Only the later successful checks are verification evidence; no application test was run.
+
+## Independent re-review of the correction and exact proposal
+
+Reviewer `/root/accepted_contract_review` reviewed candidate `b837380a326695c30d39a16263761b56c44c11d0`, tree `4d81783df16910ef4ca309ff75211fe16af70352`, and returned **PASS for bounded documentary repair and D028 proposal readiness for owner decision**, 17 October 2026, 08:52 Australia/Melbourne. **Gate 2 remains NOT READY.**
+
+Exact proposal SHA-256: `7823c4d9cf78281f270d1fa47b3745d0be8c895f7b8576e1b6c833786caee78d`. The reviewer checked all six clauses, including the explicitly new cash-equity/share/N>=2 domain, exact calendar-derived fraction, immediately preceding equal-type/duration sessions, no interpolation/substitution/skipping/future history, positive denominator rather than positive sample SD, and preservation of the current mandatory R044 edge pending owner acceptance. The original workbook, actual code branch and actual fraction fixture were inspected directly, not executed.
+
+Independent parsing confirmed125/83/1, only D028's row changed in this correction, G2I-020 reopened with53links retained, G2I-021 updated, no D028 D-consumer, and accepted B/S/N and N6 hashes unchanged. No remaining material defect was identified within this repair/proposal scope. This is not full Gate2 PASS, a new209-row implementation review, owner acceptance or production proof. The reviewer made no edits, ran no tests/imports and performed no provider operations.
+
+Next exact decision: programme owner ACCEPT/RETURN `D028-RAW-VOLUME-BASELINE-20261017-01`, six clauses, at the proposal hash above. Only after that decision can its overlay be recorded and D028 reassessed/reviewed. Gate2 acceptance remains a separate later decision.
