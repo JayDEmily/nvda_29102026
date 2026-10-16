@@ -106,3 +106,52 @@ This is a prepared technical question, not a message to IBKR or another person; 
 An initial inherited-byte preservation comparison stopped with `tarfile.ReadError: unexpected end of data`. The previous local archive `NVDA_V2_GATE_2_D117_BASELINE_ACCEPTED_SOURCE_REVIEW_FULL_GIT_20261016.tar.gz` was 12,988,416 bytes with SHA-256 `dbdd5d22b491949c0a1e869d29fe7e4b0da10ec0924d7a8f54b63433d2ed6b50`, instead of the previously recorded 17,132,530 bytes / `f70adbb5a89d8547554e3a7707df3de5a59945de1f4613169c4d0479a8ffb74b`. `gzip -t` independently reported unexpected end of file. The cause of truncation is UNKNOWN; no stronger cause is inferred.
 
 Packaging stopped at that failure. The saved version was retrieved separately from `libfile_ed688f2eb4bc8191b8d2cb0bf0e855ee`, version 0. Its bytes and SHA-256 exactly match the recorded 17,132,530-byte original. The same full inherited-file archive-to-workspace comparison was rerun against those recovered exact bytes and succeeded for every unchanged tracked file. This is exact recovery and repetition of the failed required check, not substitution of a weaker Git-only check. The truncated local file remains preserved as discrepancy evidence; the failed attempt is not labelled PASS. Final candidate packaging still requires separate extraction/readback, complete regular-file byte equality and Git integrity checks.
+
+## 7. Current owner direction: required input contract, not upstream API commissioning
+
+**Current authority:** after the previous checkpoint the programme owner said: “No, you're out of scope. The API to IBKR is another module entirely.” The owner then instructed: “Okay, keep working on the plan that looks to close gate two.” This explicit correction governs the present continuation. It is not treated as approval of a live source or as blanket closure of all other classification issues.
+
+The assistant's prior demand for an IBKR response as the next D117 task crossed this boundary. Sections 3–6 above remain historical investigation evidence, including real provider unknowns, but their routing of the acquisition investigation as a prerequisite to the D117 calculation-boundary assessment is superseded by this section. No provider contact or further API investigation is performed here. No native field, day-reset rule or certification signal has been invented to make that correction.
+
+### 7.1 Complete required D117 interface and responsibility split
+
+The following restates the already accepted dependency amendment and P1–P6; it does not introduce another measurement convention or runtime schema.
+
+| Boundary | Required responsibility / fact | Exclusion or hold point |
+|---|---|---|
+| Separate upstream acquisition module | Supply reported cumulative volume for one exact option contract, with justified source/variant, units, counter-period/session association and real-time status; preserve the acquisition evidence needed for provenance. | Exact IBKR request/callback/reset interpretation and conformity belong to that separately commissioned module. No assertion that it currently supplies these facts. |
+| M00 raw boundary | Preserve original observations, source identity/period/status evidence, temporal kind, receipt time/order and versioned field/unit projection under its public seam. Required counter/session association must be justified, not fabricated by a new native-field claim. | No network client, D117 z-score, cumulative-counter summation, interpolation or guessed event time. No actual admitted mapping is asserted. |
+| Calculation boundary, proposed M02 | Consume current and historical R041 volume facts only, under matching exact contract/provider/variant/native-counter meaning and canonical contract-count units. Bind the accepted profile, calendar, selection/mapping/unit versions and cutoff lineage. | No R075, D predecessor, portfolio/candidate/order context, provider-specific parsing fallback or acquisition responsibility. |
+
+Each eligible input must be established as belonging to its intended source-volume period/session. The producer must justify that association through native evidence or lawful source/request/status provenance; D117 is not authorised to invent it from receipt date, sequence name, presumed midnight reset or regular opening. The regular-session minute is the comparison coordinate, not a new claim that the source counter contains regular-hours trades only.
+
+The accepted sample law remains exactly twenty immediately preceding completed regular sessions and the current session, one value at the same elapsed minute of each, receipt interval `(T-60 seconds, T]`, strict receipt/sequence selection and historical knowledge cutoff. All values are finite and non-negative. Genuine zero is allowed, missing is not zero. No substitute contract, backfill, shorter window, skipped early-close coordinate or imputation. Historical mean uses 20 values; sample variance denominator is 19; output is `(current-mean)/sample_sd`, dimensionless, with strictly positive sample SD. Required metadata/configuration are provenance and fixed measurement conventions, not extra numerical R inputs.
+
+A concrete deployment may not emit a valid occurrence until those input, period, calendar, history, unit and lineage obligations are proved. This output prohibition remains intact even though the consumer's planning classification no longer commissions its upstream producer.
+
+### 7.2 Row-specific strategy-independence reassessment
+
+| ADR-WBV2-001 / ExecPlan criterion | Exact basis | Assessment |
+|---|---|---|
+| Complete market/source-time numerical closure | Accepted R041-only amendment; full 209-node D graph statically reconstructed; D117 has no D predecessor or descendant. | Numerical direct and terminal R set is R041. No upstream strategy calculation hidden in a D chain. |
+| Fixed descriptive meaning | K04 sample z-score plus accepted P1–P6 exact-contract twenty-session version. | Describes reported volume relative to that contract's prior reported activity; no forecast or trade instruction. |
+| Non-strategy configuration | Immutable horizon, minute coordinate, receipt freshness, calendar/version and strict exact-contract matching; no peer bucket or strategy coefficient. | Configuration changes require a separate measurement version; short-history contracts refuse. |
+| Selection, units, history and failure contract | Required interface above plus P1–P5 and brief §§6/8/9/11/17. | Defined at the consuming boundary. Actual source conformity remains a producer/admission obligation, not a missing D117 equation or discretionary selection convention. |
+| Implementation, public materialisation, durability and tests | ExecPlan G2.4 and ADR1 classification-versus-implementation distinction. | Not proved or admitted by this assessment. Required later evidence remains explicit. |
+
+**New assessment proposal:** `PROPOSED_M02_SEMANTIC_ELIGIBLE_CONDITIONAL` for this restricted D117 version. “Conditional” means lawful source/input provision, implementation, proof and admission before output; it does not reserve an unselected mathematical window, bucket or strategy meaning. No remaining material D117 definition decision is identified within this accepted consumer contract. The unresolved IBKR counter/callback facts are not asserted resolved; their investigation is assigned outside this Gate 2 consumer assessment by the owner's current scope direction.
+
+This is a reasoned classification proposal for the eventual Gate 2 exit candidate, **not an owner-approved final allocation, a runtime M02 admission or Gate 2 acceptance**. It is not derived from the historical YES label. G2I-011 is resolved for this bounded planning assessment; it retains its ID and all history. The D117 link to G2I-021 no longer blocks a choice between foundation and peer responsibility; the wider group-boundary issue remains open for other identities.
+
+### 7.3 Receiving obligations — no silent waiver
+
+| Reference | Receiver | Required evidence and acceptance hold point | Consequence of failure |
+|---|---|---|---|
+| D117-UPSTREAM-01 | Separately commissioned acquisition-module authority/implementer; not opened here | Source/unit/counter-period/status contract and actual capture conformity, including first delivery, rollover and reconnect. Must be accepted before D117 production input admission. | No eligible R041 for this profile; no D117 output. Return an incompatible source to source/contract authority; never silently change the estimator. |
+| D117-M00-01 | Later C–E raw-boundary/public-ingress work | Versioned field projection, actual subject/period/status provenance, receipt/order/history retention, calendar binding and public readback. | Refuse missing/ambiguous projections or insufficient history; no provider parsing inside D117. |
+| D117-CALC-01 | Later C–E calculation implementation/proof | Synchronise catalogue/hash bindings under authority; prove exact P1–P6 arithmetic, cutoff, units, complete history, refusal, lineage, retries and durable public results. | No implementation acceptance or valid production occurrence. |
+| D117-EXIT-01 | Programme owner at eventual Gate 2 exit | Evaluate this exact classification proposal with the rest of the gate evidence and remaining decisions. | Gate 2 remains unaccepted until its mandatory exit propositions are satisfied. |
+
+The source/module responsibility is named; a specific human implementer and executable later unit must be commissioned in the separately accepted receiving plan before execution. D117 has zero declared descendants, so this change does not claim downstream numerical propagation. Original 209/21/124 identities/records remain; the current classification proposal now totals 101 conditional foundation candidates, 74 established non-foundation classifications and 34 material unknowns.
+
+**Next work under the existing Gate 2 plan:** resolve remaining calculation-boundary definitions and classification disagreements in dependency order; see `GATE_2_CLOSURE_WORKING_AGENDA_20261016.md`. Do not reopen accepted D117 choices or investigate the upstream IBKR module in this tranche. Do not apply the D117-specific reassessment automatically to other source/readiness problems without examining their own required calculation contract.
