@@ -6,9 +6,9 @@
 
 ## 1. Current checkpoint and scope
 
-Continue the existing G2.3/G2.4/G2.5/G2.6 reconciliation toward an evidence-backed Gate 2 exit. The latest owner direction excludes investigation of the separate IBKR API acquisition module from the D117 consumer assessment. D117's accepted mathematics/profile remain intact; its required-contract reassessment proposes the shared foundation and separately assigns producer/M00/calculation proof obligations. See `G2_D117_ACCEPTED_PROFILE_SOURCE_REASSESSMENT_20261016.md` §7.
+Continue the existing G2.3/G2.4/G2.5/G2.6 reconciliation toward an evidence-backed Gate 2 exit. The latest owner direction excludes investigation of the separate IBKR API acquisition module from the D117 consumer assessment. D117's accepted mathematics/profile remain intact. Independent review returned its closure claim: retained P6/A1-A2 semantic-feasibility requirements must be reconciled with consumer-only scope. No API investigation is commissioned. Current disposition in `G2_D117_ACCEPTED_PROFILE_SOURCE_REASSESSMENT_20261016.md` §8 supersedes §7's closure statements.
 
-The current proposal totals are **101 conditional foundation candidates, 74 established non-foundation classifications, 34 material unknowns**; 209 canonical identities remain. The 21 issues and 124 links retain their identities/history; G2I-011 and D117's group-contingency link are resolved for planning assessment, not runtime admission or owner gate acceptance. G2I-021 remains open for the other classifications and final group-boundary decision.
+The current proposal totals are **100 conditional foundation candidates, 74 established non-foundation classifications, 35 material unknowns**; 209 canonical identities remain. The 21 issues and 124 links retain their identities/history; G2I-011 and D117's group-contingency link are reopened pending authority reconciliation. G2I-021 and the final group-boundary decision remain open. A repair review does not accept D117 or Gate 2.
 
 ## 2. Remaining semantic work by actual dependency
 
@@ -16,6 +16,7 @@ This queue is derived from current issue links, not a claim that all listed matt
 
 | Unit / issue links | Required Gate 2 result | Dependency constraint |
 |---|---|---|
+| D117 / G2I-011 and G2I-021 link | Reconcile retained P6/A1-A2 requirement with owner consumer/acquisition boundary; keep accepted mathematics and UNKNOWN classification until supported. | Open authority treatment; no API commissioning. Repair review is separate from semantic closure. |
 | D091 / G2I-007, followed by D109/D110/D121 / G2I-008 | Exact fixed delta-bucket membership/matching convention and row-specific downstream joins; assess descriptive-versus-strategy meaning. | Settle the upstream bucket before classifying the three dependants. Recommended next semantic unit. |
 | D102 / G2I-009, then D111/D112/D113 / G2I-010 | Exact descriptive surface/revaluation convention and representation; distinguish measurement fit from discretionary predictive modelling. | Settle the parent before dependent density/curve classifications. |
 | D078–D081 / G2I-005 and D082 / G2I-006 | Aligned history, fixed state/regime selection and objective comparator basket; shared mathematics is not enough. | Preserve shared-model and predecessor obligations; no implicit strategy selector. |
@@ -29,7 +30,7 @@ This queue is derived from current issue links, not a claim that all listed matt
 
 Current material unknown identities:
 
-D006, D008, D040, D041, D061, D062, D063, D064, D070, D078, D079, D080, D081, D082, D084, D091, D102, D109, D110, D111, D112, D113, D121, D122, D123, D124, D132, D138, D139, D140, D141, D142, D145, D151.
+D006, D008, D040, D041, D061, D062, D063, D064, D070, D078, D079, D080, D081, D082, D084, D091, D102, D109, D110, D111, D112, D113, D117, D121, D122, D123, D124, D132, D138, D139, D140, D141, D142, D145, D151.
 
 ## 3. Gate 2 exit path and no-drift controls
 

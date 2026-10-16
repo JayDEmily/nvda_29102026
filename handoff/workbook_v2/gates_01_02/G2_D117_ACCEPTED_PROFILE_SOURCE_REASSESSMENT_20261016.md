@@ -155,3 +155,19 @@ This is a reasoned classification proposal for the eventual Gate 2 exit candidat
 The source/module responsibility is named; a specific human implementer and executable later unit must be commissioned in the separately accepted receiving plan before execution. D117 has zero declared descendants, so this change does not claim downstream numerical propagation. Original 209/21/124 identities/records remain; the current classification proposal now totals 101 conditional foundation candidates, 74 established non-foundation classifications and 34 material unknowns.
 
 **Next work under the existing Gate 2 plan:** resolve remaining calculation-boundary definitions and classification disagreements in dependency order; see `GATE_2_CLOSURE_WORKING_AGENDA_20261016.md`. Do not reopen accepted D117 choices or investigate the upstream IBKR module in this tranche. Do not apply the D117-specific reassessment automatically to other source/readiness problems without examining their own required calculation contract.
+
+## 8. Independent RETURN answered — current disposition supersedes section 7 closure
+
+**Reviewed candidate:** `aef6f3ef9b563f511b0c462a3fdc1e48d5a9e37d`, tree `38abb318e0c2de211a378367756826b8291b9223`. Reviewer `/root/gate2_independent_review` returned the D117 closure/classification claim and found Gate 2 not acceptance-ready. The owner instructed: “Okay, can you amend accordingly and then send it back to the reviewer?”
+
+**Repair:** withdraw section 7's conditional-M02 promotion and statements resolving G2I-011 and D117's G2I-021 link. Those passages remain preserved as the returned historical candidate, not current conclusions. Current classification is **UNKNOWN_CLASSIFICATION_MATERIAL**; both planning links are reopened. Current totals return to **100 conditional foundation candidates, 74 established non-foundation classifications, 35 material unknowns**. The 209/21/124 population and schemas are unchanged.
+
+The recurrent error is substituting one proposition for another: earlier work over-required operational acquisition evidence; section 7 then treated producer responsibilities as enough to remove a retained semantic-feasibility requirement. Neither is valid. P6's explicit requirement and A1/A2 remain effective; the owner's separate acquisition-module boundary remains effective too. No waiver is inferred from that boundary correction or the current repair instruction.
+
+The outstanding proposition is **reconciliation of the retained semantic-feasibility acceptance requirement with the permitted consumer-level assessment before classifying D117**. This is an authority/evidence-treatment issue, not another unselected window, estimator or R dependency. Do not commission IBKR investigation, contact a provider, invent a day/reset field or assume an exception to obtain closure.
+
+Accepted `D117-RAW-VOLUME-HISTORY-20261016-01` and P1–P6 remain byte-unchanged and effective. The R041-only numerical contract, exact-contract twenty-session profile, cutoff/refusal law and separate producer/M00/calculation responsibilities remain recorded. Section 7.3's receiving obligations do not themselves establish that deferral is lawful under A2. Actual source conformity and runtime admission remain unproved.
+
+No new mathematical, profile or governance amendment is accepted or proposed by this repair. It does not resolve the authority question by self-amendment. Evidence/authority must support a bounded reconciliation, or a concrete future amendment must be separately presented and accepted before taking effect. Until then D117 remains UNKNOWN; independent authorised Gate 2 units may continue. This repair does not restart the out-of-scope API investigation.
+
+See `G2_INDEPENDENT_REVIEW_RETURN_AND_REPAIR_20261016.md` for finding-to-repair traceability and separate re-review questions. A repair PASS would not accept D117 or Gate 2.
