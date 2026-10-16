@@ -237,3 +237,17 @@ Independent review of this continuation and the exact candidate will be recorded
 Read-only parsing compared the three registers with entry `b002a39`: unchanged schemas 111/25/19 columns, populations 209/21/124 and every non-PB cell unchanged. Only the four explicit planning/source/proposal fields changed. The effective 209-D graph resolves and is acyclic; no equation/dependency change was made. Guardrails, agents, frozen ExecPlan and effective catalogue digests matched their pinned values. Accepted main remained `77d82bd8ee4268673715fe7e5653b6a65a299b54`. Markdown/diff whitespace inspection passed before candidate commit.
 
 The first original/Pass08 workbook comparator stopped on an `IndexError` because it indexed a zero-length worksheet row. That attempt did not establish workbook equality. After explicitly admitting empty worksheet rows as non-D rows, the comparator independently required exactly 209 unique D identities in each sheet and equality of all their first 15 cells; that check passed. This is mechanical source-cell readback, not a fresh semantic certification of all 209 rows. No application tests, imports, validators, database or provider operations ran.
+
+## 11. Independent candidate review
+
+Reviewer: `/root/gate2_continuation_review`. The earlier reviewer agent was no longer available; the expressly requested independent review was continued by this independent worker with the relevant prior findings and repair lineage available.
+
+Reviewed candidate: `bb93e41954bc61a9f2af575c500859a21509491a`, tree `e961ba21555a3df80c53b687637cb1df0def6742`, compared with `b002a3915dc8a5fbc54ba5f21e814afd87179e9b`.
+
+**Documentary assessment/proposals: PASS.** No remaining material defect found within that bounded review. The reviewer independently confirmed unchanged schemas 111/25/19, populations 209/21/124, unique identities/issues/links, no dangling links and every non-PB cell unchanged. Current classifications remain 100/74/35. The 35-row coverage, 53-flag audit (16 FIXED_LAW / 37 MEASUREMENT_DOMAIN), and explicitly hypothetical 83-row/26-group scenario were checked. Exactly six assessment files changed; frozen governance, ExecPlan, catalogue and accepted main remained unchanged. The reviewed worktree was clean and diff whitespace inspection passed.
+
+The reviewer confirmed D091 family-fit versus current A1 separation, D124's still-proposed universe/vintage contract, D132's withdrawn overclaim, B/S/N's unaccepted status, retained D117 mathematics and upstream API boundary, and N6's selected-convention closure requirement.
+
+**Gate 2 readiness: BLOCKED.** Proposed owner decisions are unaccepted. N6 and retained classification-critical contract conditions require their own closure, then group/exit reconciliation and separate owner Gate 2 acceptance. This PASS is not source feasibility, source/module admission, an accepted numerical profile, exhaustive 209-row semantic certification or Gate 2 acceptance.
+
+Review scope was independent differential documentary/consistency review, including prior return/repair lineage. No tests, application imports, provider/API operations or archive readback were part of the independent review. The subsequent receipt-only commit adds this result; it does not extend the reviewed candidate's scope or amend its decision proposal.
