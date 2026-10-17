@@ -1,0 +1,13 @@
+schema_version: "1.0"
+brief_sha256: 282f7d73c5e2fdf36ded43781665764eaf95d4a35f687f99990b87c59f744ed7
+acceptance:
+  status: ACCEPTED_FOR_IMPLEMENTATION
+  authority_ref: owner-chat/20261017T231158/G5.1-G5.2
+targets:
+  - action: create
+    category: M
+    name: neutral_market_measurement_truth
+  - action: modify
+    object_id: M00
+  - action: modify
+    object_id: G01
