@@ -2,7 +2,7 @@
 
 Date: 17 October 2026 — Australia/Melbourne. Revision: 1.
 
-**Status: ACTIVE. Gate3 IN_PROGRESS: G3.1 IN_PROGRESS; G3.2–G3.3 NOT_STARTED. Gate4 NOT_OPEN.**
+**Status: ACTIVE. Gate3 IN_PROGRESS: G3.1 COMPLETED_SOURCE_INSPECTION; G3.2–G3.3 NOT_STARTED. Gate4 NOT_OPEN.**
 
 **Activation,17October2026:** The owner stated “Okay, I approve the draft. Execute Leaf 3.1.” This accepts the draft at commit `be288c23327face2ef9c43472903c9e0d450593d`, tree `378cce1557c544c64a208c566ef04da216abb39a`, SHA-256 `5db52a2c86e370038158022fabbdba9b8fe0b8b1033b5e37b695378d5d168c89`. The single root plan is replaced on `work/v2-g3-1-shared-execution-assessment-20261017`. Its predecessor remains at `c88abc1367a6c4c755673c68e7f72536decc2c2f:EXEC_PLAN.md`. The proposed snapshot is unchanged. Draft/conditional activation language below is preserved from the approved text; this later explicit activation governs status. Current execution is limited to Leaf3.1; G3.2 is not authorised in this pass. No main merge, tests, application/provider execution or production change is authorised. Archive recovery/failure details are recorded in the cumulative assessment; the exact approved commit/tree and full Git object graph have been recovered and verified before activation.
 
@@ -123,6 +123,13 @@ Stop dependent work at genuine authority, required-evidence or integrity failure
 | Gate1 M/G/R/A/T ledger and F4-01–F4-07 | G3.2 historical/current evidence, G3.3 exhaustive receiving map, G4.1 local chains, G4.2 successor proof/migration/retirement |
 | B4 SRC-CALENDAR, SRC-MACRO, SRC-OI, SRC-VOLUME, SRC-BOOK, RAW-PROJECTION, CALC-PROFILE, MODEL-PROFILE | G3.3 readiness/receiver, G4.1 consumer closure, G4.2 prerequisite/commissioning/acceptance hold |
 
-**Current execution ledger:** G3.1 IN_PROGRESS; G3.2–G3.3 NOT_STARTED; G4.1–G4.2 NOT_OPEN. Current instruction authorises only G3.1. No original209-row implementation census or later reuse/downstream design has been completed by activation.
+**Current execution ledger:** G3.1 COMPLETED_SOURCE_INSPECTION; G3.2–G3.3 NOT_STARTED; G4.1–G4.2 NOT_OPEN. Current instruction authorises only G3.1. No original209-row implementation census or later reuse/downstream design has been completed by activation.
 
 **Authoring check:** The first structural check required every B4 hold's exact ID and failed on abbreviated IDs in the coverage table. After expanding the IDs, the same check passed, together with two-gate/five-leaf structure, C–E/six-phase coverage and unchanged master/governance/root/register/main checks. The plan was self-checked against the master and inherited obligations; no independent review of this new draft is claimed. This is a draft-document correction, not execution or failure of a planned gate.
+
+
+## 7. Execution checkpoint — Leaf3.1 only,17October2026
+
+G3.1 shared public execution/state-path source inspection is satisfied; see `handoff/workbook_v2/gates_03_04/GATES_03_04_ASSESSMENT.md` for exact scope, source paths, shared-boundary findings SM-01–SM-06, historical-proof limits and the preserved failed-archive/recovery record. This is the worker's documentary finding, not independent review, implementation acceptance or Gate3 ACCEPT. The source/semantic baseline remains be288c2; no production/test/catalogue/registry/governance or209-row register change occurred. Tests/application/database/provider operations were not run.
+
+G3.2–G3.3 remain NOT_STARTED and Gate4 NOT_OPEN. Current owner instruction ends at G3.1; next semantic unit is G3.2 when instructed. Gate3 exit remains pending the remaining leaves and the separate owner decision.
