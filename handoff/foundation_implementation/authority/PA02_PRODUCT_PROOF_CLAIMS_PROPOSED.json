@@ -1,0 +1,24 @@
+{
+  "schema_version": "2.0",
+  "control_authority": {
+    "brief_path": "handoff/foundation_implementation/authority/FOUNDATION_IMPLEMENTATION_BRIEF_PROPOSED.md",
+    "binding_path": "implementation/authority/FOUNDATION_IMPLEMENTATION_AUTHORITY_BINDING.yaml"
+  },
+  "claims": [
+    {
+      "claim_id": "raw_signal_occurrence_truth_product",
+      "profile": "legacy_bicp_v1",
+      "physical_root": "tests/product/raw_signal",
+      "legacy_config_root": "config/product_proof"
+    },
+    {
+      "claim_id": "neutral_market_measurement_truth_pilot",
+      "profile": "accepted_brief_v1",
+      "physical_root": "tests/product/market_measurement",
+      "contract_path": "handoff/foundation_implementation/authority/FOUNDATION_PILOT_PROOF_CONTRACT_PROPOSED.json",
+      "binding_path": "implementation/authority/FOUNDATION_IMPLEMENTATION_AUTHORITY_BINDING.yaml",
+      "admission_path": "config/product_proof/market_measurement/admission.json"
+    }
+  ],
+  "transitional_dispositions": "handoff/foundation_implementation/authority/PA02_PRODUCT_PATH_DISPOSITIONS_PROPOSED.json"
+}

@@ -1,0 +1,348 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_pilot",
+  "semantic_brief_path": "handoff/foundation_implementation/authority/FOUNDATION_IMPLEMENTATION_BRIEF_PROPOSED.md",
+  "target": {
+    "category": "M",
+    "responsibility_name": "neutral_market_measurement_truth",
+    "package": "nvda_desk.market_measurement_truth",
+    "public_seam": "nvda_desk.market_measurement_truth.api"
+  },
+  "proof_axis": "product",
+  "product_tier_treatment": "NOT_CLASSIFIED",
+  "architecture_proof_axis": "architecture_kernel",
+  "required_proof_ids": [
+    "FND-P01",
+    "FND-P02",
+    "FND-P03",
+    "FND-P04",
+    "FND-P05",
+    "FND-P06",
+    "FND-P07"
+  ],
+  "families": [
+    {
+      "id": "mmt_boundary_pilot",
+      "path": "tests/product/market_measurement/test_boundary_pilot.py",
+      "proof_obligation_ids": [
+        "FND-P01",
+        "FND-P02",
+        "FND-P03"
+      ],
+      "required_test_names": [
+        "test_d011_midpoint_public_exact_lineage",
+        "test_d011_refuses_missing_or_incompatible_projection",
+        "test_foundation_rejects_downstream_and_unenabled_requests"
+      ],
+      "boundary": "Actual M00 public raw construction/projection to the foundation materialise/read seam; D011-only neutral scope",
+      "proof_levels": [
+        "CONTRACT",
+        "INTEGRATION"
+      ],
+      "authoritative_inputs": [
+        "Controlled R034 Decimal('100') and R035 Decimal('102'); exact frozen section 5 mappings/times/versions; independently expected Decimal('101')"
+      ],
+      "dependency_substitutions": [
+        "Controlled native records; real M00 public owner/reader; no native IBKR certification"
+      ],
+      "case_coverage": {
+        "lawful_positive": {
+          "cases": [
+            "D011 midpoint and exact complete lineage; declared inclusive freshness/skew limits"
+          ]
+        },
+        "prohibited_false_positive": {
+          "cases": [
+            "All 83 downstream and 125 unenabled identities; P_SCORE/candidate/portfolio/order/strategy contexts; incompatible or ambiguous projection; future/stale/skew inputs"
+          ]
+        },
+        "missing_mandatory_authority": {
+          "cases": [
+            "Missing definition/configuration/mapping/unit/input version produces no occurrence"
+          ]
+        },
+        "lawful_optional_absence": {
+          "cases": [
+            "No predecessor, basket, strategy context or supersession link is required by the pilot"
+          ]
+        }
+      },
+      "expected_failure_signals": [
+        "None/no occurrence for unavailable validly shaped requests; specified TypeError/ValueError for malformed constructors/unsupported registrations; assertion failure for wrong public result or lineage"
+      ],
+      "limitations": [
+        "Controlled D011 boundary only; no native source or full126 acceptance"
+      ],
+      "adjacent_nonclaims": [
+        "No model, peer, migration, external effect or live market admission"
+      ],
+      "environment": "CPython 3.13.5; pytest 9.0.3; mypy 1.20.1; no network; PG17.9 for durable family",
+      "material_versions": [
+        "exact accepted foundation brief and ingress digest",
+        "exact admitted proof generation and file hashes",
+        "exact candidate Git commit/tree",
+        "PyYAML 6.0.3; Psycopg 3.3.4; pinned pyproject toolchain"
+      ],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/market_measurement/test_boundary_pilot.py"
+    },
+    {
+      "id": "mmt_selection_history",
+      "path": "tests/product/market_measurement/test_selection_history.py",
+      "proof_obligation_ids": [
+        "FND-P04"
+      ],
+      "required_test_names": [
+        "test_latest_eligible_history_and_ambiguity"
+      ],
+      "boundary": "Actual M00 multi-page projected history and foundation eligibility/ranking",
+      "proof_levels": [
+        "INTEGRATION",
+        "STATE"
+      ],
+      "authoritative_inputs": [
+        "Fixed quiescent controlled population with page boundaries, late arrival, eligibility and rank-tie witnesses"
+      ],
+      "dependency_substitutions": [
+        "Adversarial reader only for corrupt/repeated/incomplete cursor cases; real public M00 history for lawful selection"
+      ],
+      "case_coverage": {
+        "lawful_positive": {
+          "cases": [
+            "Latest eligible result independent of enumeration order; complete multi-page history"
+          ]
+        },
+        "prohibited_false_positive": {
+          "cases": [
+            "Newer ineligible record masks older eligible record; arrival after cutoff; ambiguous equal rank; truncated/repeated cursor accepted"
+          ]
+        },
+        "missing_mandatory_authority": {
+          "cases": [
+            "No complete eligible history means no occurrence"
+          ]
+        },
+        "lawful_optional_absence": {
+          "cases": [
+            "No next cursor at complete end; identical duplicate observation is idempotent"
+          ]
+        }
+      },
+      "expected_failure_signals": [
+        "None/no valid occurrence for incomplete or ambiguous history; selection/lineage assertion failure"
+      ],
+      "limitations": [
+        "Quiescent controlled history; no concurrent-source snapshot claim"
+      ],
+      "adjacent_nonclaims": [
+        "No provider stream completeness or calendar proof"
+      ],
+      "environment": "CPython 3.13.5; pytest 9.0.3; mypy 1.20.1; no network; PG17.9 for durable family",
+      "material_versions": [
+        "exact accepted foundation brief and ingress digest",
+        "exact admitted proof generation and file hashes",
+        "exact candidate Git commit/tree",
+        "PyYAML 6.0.3; Psycopg 3.3.4; pinned pyproject toolchain"
+      ],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/market_measurement/test_selection_history.py"
+    },
+    {
+      "id": "mmt_identity_readback",
+      "path": "tests/product/market_measurement/test_identity_readback.py",
+      "proof_obligation_ids": [
+        "FND-P05"
+      ],
+      "required_test_names": [
+        "test_retry_recalculation_and_definition_readback"
+      ],
+      "boundary": "Logical identity, immutable registration, append-only recalculation and typed readback",
+      "proof_levels": [
+        "STATE",
+        "CONTRACT"
+      ],
+      "authoritative_inputs": [
+        "Same logical retry under later clock; changed input/cutoff/declared v2 versions; exact definition/configuration payloads"
+      ],
+      "dependency_substitutions": [
+        "Explicit memory store for component identity; PostgreSQL counterpart remains a separate required family"
+      ],
+      "case_coverage": {
+        "lawful_positive": {
+          "cases": [
+            "Retry retains first calculation time and ID; material/version change appends; old/new exact readback; low ambient Decimal precision does not change arithmetic"
+          ]
+        },
+        "prohibited_false_positive": {
+          "cases": [
+            "Overwrite, same-ID conflict, changed immutable-version content, silent rounding; invented positivity/crossed-market rule"
+          ]
+        },
+        "missing_mandatory_authority": {
+          "cases": [
+            "Unregistered required version gives no occurrence"
+          ]
+        },
+        "lawful_optional_absence": {
+          "cases": [
+            "Unknown reads return None/empty tuple; supersedes remains absent"
+          ]
+        }
+      },
+      "expected_failure_signals": [
+        "Registration conflict error; assertions for identity/history/Decimal or immutable-content loss"
+      ],
+      "limitations": [
+        "Memory portion does not prove durability"
+      ],
+      "adjacent_nonclaims": [
+        "No unique supersession graph or old M01 conversion"
+      ],
+      "environment": "CPython 3.13.5; pytest 9.0.3; mypy 1.20.1; no network; PG17.9 for durable family",
+      "material_versions": [
+        "exact accepted foundation brief and ingress digest",
+        "exact admitted proof generation and file hashes",
+        "exact candidate Git commit/tree",
+        "PyYAML 6.0.3; Psycopg 3.3.4; pinned pyproject toolchain"
+      ],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/market_measurement/test_identity_readback.py"
+    },
+    {
+      "id": "mmt_public_types",
+      "path": "tests/product/market_measurement/test_public_types.py",
+      "proof_obligation_ids": [
+        "FND-P06"
+      ],
+      "required_test_names": [
+        "test_public_seam_static_compatibility"
+      ],
+      "boundary": "Real public factories, typed facets, actual M00 structural reader and negative static specimens",
+      "proof_levels": [
+        "CONTRACT"
+      ],
+      "authoritative_inputs": [
+        "Accepted exact section 4 signatures and valid_seam.py/invalid_seam.py specimens"
+      ],
+      "dependency_substitutions": [
+        "Pinned mypy subprocess; no substitute implementation"
+      ],
+      "case_coverage": {
+        "lawful_positive": {
+          "cases": [
+            "Valid seam specimen passes; declared return types and M00 reader are statically compatible without Any"
+          ]
+        },
+        "prohibited_false_positive": {
+          "cases": [
+            "Wrong argument/result/facet types or Any escape passes; unrelated import failure is counted as expected negative"
+          ]
+        },
+        "missing_mandatory_authority": {
+          "cases": [
+            "Missing symbol/type/seam fails; dependencies must be proved available first"
+          ]
+        },
+        "lawful_optional_absence": {
+          "cases": [
+            "Occurrence and lookup None are handled with declared optional types"
+          ]
+        }
+      },
+      "expected_failure_signals": [
+        "Pinned checker diagnostic count/code/site mismatch or lawful specimen failure"
+      ],
+      "limitations": [
+        "Static compatibility does not prove runtime mathematics or persistence"
+      ],
+      "adjacent_nonclaims": [
+        "No whole-target structured result API implementation"
+      ],
+      "environment": "CPython 3.13.5; pytest 9.0.3; mypy 1.20.1; no network; PG17.9 for durable family",
+      "material_versions": [
+        "exact accepted foundation brief and ingress digest",
+        "exact admitted proof generation and file hashes",
+        "exact candidate Git commit/tree",
+        "PyYAML 6.0.3; Psycopg 3.3.4; pinned pyproject toolchain"
+      ],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/market_measurement/test_public_types.py"
+    },
+    {
+      "id": "mmt_postgres_boundary",
+      "path": "tests/product/market_measurement/test_postgres_boundary.py",
+      "proof_obligation_ids": [
+        "FND-P07"
+      ],
+      "required_test_names": [
+        "test_d011_postgres_role_isolation_and_restart_readback"
+      ],
+      "boundary": "Real PostgreSQL17.9 separate writer/read roles, new-process readback, transactions and privilege isolation",
+      "proof_levels": [
+        "INTEGRATION",
+        "STATE"
+      ],
+      "authoritative_inputs": [
+        "Accepted section 7 schema/roles and controlled D011; fresh UTF8 cluster; fsync/synchronous_commit/full_page_writes on"
+      ],
+      "dependency_substitutions": [
+        "Disposable proof database only; lost acknowledgement fault may be injected around actual transaction acknowledgement, never by replacing persistence with memory"
+      ],
+      "case_coverage": {
+        "lawful_positive": {
+          "cases": [
+            "Fresh process recovers exact occurrence/definition/configuration/lineage; identical concurrency and retry retain one result"
+          ]
+        },
+        "prohibited_false_positive": {
+          "cases": [
+            "Memory/same-process substitute; partial write; false absence after lost acknowledgement; role inheritance/SET ROLE/direct SQL bypass; reader writes"
+          ]
+        },
+        "missing_mandatory_authority": {
+          "cases": [
+            "Unavailable required PG/environment/role cannot skip to success or count as domain RED"
+          ]
+        },
+        "lawful_optional_absence": {
+          "cases": [
+            "Rolled-back transaction has no occurrence; immutable configuration may exist without a successful occurrence"
+          ]
+        }
+      },
+      "expected_failure_signals": [
+        "Privilege denial at attempted forbidden boundary; PersistenceFailureV1 with correct uncertain outcome; readback/durability assertions"
+      ],
+      "limitations": [
+        "Disposable controlled proof; no deployment compatibility or migration claim"
+      ],
+      "adjacent_nonclaims": [
+        "No provider, peer, account, trading or M01-retirement authority"
+      ],
+      "environment": "CPython 3.13.5; pytest 9.0.3; mypy 1.20.1; no network; PG17.9 for durable family",
+      "material_versions": [
+        "exact accepted foundation brief and ingress digest",
+        "exact admitted proof generation and file hashes",
+        "exact candidate Git commit/tree",
+        "PyYAML 6.0.3; Psycopg 3.3.4; pinned pyproject toolchain"
+      ],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/market_measurement/test_postgres_boundary.py"
+    }
+  ],
+  "required_support_files": [
+    "tests/product/market_measurement/typing/valid_seam.py",
+    "tests/product/market_measurement/typing/invalid_seam.py"
+  ],
+  "optional_support_files": [
+    "tests/product/market_measurement/_support.py"
+  ],
+  "execution_policy": {
+    "skipped_tests": "FAIL",
+    "xfailed_tests": "FAIL",
+    "xpassed_tests": "FAIL",
+    "collection_failed": "FAIL",
+    "no_tests_collected": "FAIL",
+    "unexpected_governed_mutation": "FAIL"
+  }
+}

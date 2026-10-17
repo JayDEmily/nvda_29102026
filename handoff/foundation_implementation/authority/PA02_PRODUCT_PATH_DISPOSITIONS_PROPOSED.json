@@ -1,0 +1,390 @@
+{
+  "schema_version": "1.0",
+  "preparation_baseline": "be16a8e1641ed9f1457a81c464948cb4d95ecd22",
+  "disposition_authority": "PROPOSED_ONLY_REQUIRES_EXPLICIT_ACCEPTANCE",
+  "legacy_claim_id": "raw_signal_occurrence_truth_product",
+  "legacy_current_claim_paths": [
+    {
+      "path": "tests/product/raw_signal/test_u01_contract_owner_boundary.py",
+      "baseline_sha256": "1a749c16dcf44941b1547c298f346b9c809d1c0f11e589d1e1a0a4df38309ceb"
+    },
+    {
+      "path": "tests/product/raw_signal/test_u02_capture_schedule.py",
+      "baseline_sha256": "9a35f89e6fd602795c5961baa8bd45c6e2ea9de53228114a8e4115c7cf149175"
+    },
+    {
+      "path": "tests/product/raw_signal/test_u03_observation_native_temporal.py",
+      "baseline_sha256": "6f0204e92f61f04c8d3eb1b7f008c30456fb1b8488cf93f586e2326bd443278b"
+    },
+    {
+      "path": "tests/product/raw_signal/test_u04_receipt_assessment.py",
+      "baseline_sha256": "05c182211ba5161fba629554a98217f28063f9a7243b433ce914e3b3445ae36a"
+    },
+    {
+      "path": "tests/product/raw_signal/test_u05_postgresql_durability.py",
+      "baseline_sha256": "a9065148c58856a439345a5b121b00f3457d6ccbcee9900c0e97520c5150fbe0"
+    },
+    {
+      "path": "tests/product/raw_signal/test_u06_a00_composition.py",
+      "baseline_sha256": "fc611e3e59ab75ad1a086fb8043af68d1145a50e5126bdce81e955e4350f8257"
+    }
+  ],
+  "preserved_transitional_disposition": "PRESERVED_OUTSIDE_CURRENT_PRODUCT_AGGREGATES",
+  "preserved_transitional_owner": "M01",
+  "preserved_transitional_paths": [
+    {
+      "path": "tests/product/derived_signal/test_ds_t01_foundation_contract.py",
+      "baseline_sha256": "34e0561dc247da79b1bf9e948c5f85884c79c9503d7bac01e4af1230c5d4696b"
+    },
+    {
+      "path": "tests/product/derived_signal/test_ds_t01_m00_projection.py",
+      "baseline_sha256": "27d6ffa31cd843aa5b7ef6dc609a50f71ee9b0856b0c28740d3bd5334de52249"
+    },
+    {
+      "path": "tests/product/derived_signal/test_ds_t01_r01_foundation_contract_refinement.py",
+      "baseline_sha256": "af82153b9ce48b4d44065b417160ae663dfe83ed5004f6df1946ea8df3b48289"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_d120_native_multiplier_public.py",
+      "baseline_sha256": "25de770fbdb7a4146cb211adbe8fe5b12bd47ffe4f8b2ad431f17eb15eefbd66"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f2_observation_identity.py",
+      "baseline_sha256": "8178dcb08a956121a38da76266b32396b57d2cfa49d754a67d33e77204bfb9d8"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f2a_temporal_quote_sign.py",
+      "baseline_sha256": "11c767ff10d18663dd4a14f51b5506cd8ab81b0bb2937774bdc6fb93f1172c01"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f2b_event_public.py",
+      "baseline_sha256": "a4d477928ec311124b5f840d788c483f778b136c0a22498da8e74d99b7619368"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f3_contract_graph.py",
+      "baseline_sha256": "a9ca20219288969437ebaa387dc351ce5a019fc535911997b14eb1cdcff79faf"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f3_grouped_public.py",
+      "baseline_sha256": "438fd058fd14ea90ef9362294dc296080ba9cd6c20b12690102d60032a1e9408"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f3_open_interest_public.py",
+      "baseline_sha256": "48394ab28486c0685bcf2a06b5e4ebb40a98116649d0f8d0350e5b742b3f9652"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_approved_account_projection.py",
+      "baseline_sha256": "148411fbe8dc52be009b610fa3f19b9076e4d5f6e2b90d742cd76479dd38d2bf"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_approved_execution_edge.py",
+      "baseline_sha256": "37e3142f9781717504732e073c74fd465c7a12087d4227839a17314e4034ae28"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py",
+      "baseline_sha256": "2ca952f58afcc91763a644f88127b92adb6d91b3c7e17e7be8880fa3d228d018"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_approved_retained_provenance.py",
+      "baseline_sha256": "b8612ac05f5385b9debbb340847cc7cfacbb6c30ede4ea387d2c64c8ce939694"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_approved_risk_scope.py",
+      "baseline_sha256": "c6c38cfaa9fe5b8b66dfc74cb837db7ecd277bd83206870c43720fa45252d231"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_basket_breadth_public.py",
+      "baseline_sha256": "c86649047006b6a1f5a388d4b49a4971cdb86f9013baee5dccd933275b3f5753"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_book_ofi_public.py",
+      "baseline_sha256": "8c9412d9d7892c24c75b48644e931d85ec3e7d7f44eb8a5536951f4399e21676"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_book_rates_public.py",
+      "baseline_sha256": "6eadbee2d6f402f35f5330584171b96240a428c599353f4230cccce8430d08e6"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_book_slope_public.py",
+      "baseline_sha256": "e62e4cb6a332e03b515ab49aefd64800b7ad3072162e3e505aaa7f227f29524c"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_cross_stage_d186_entry_anchor.py",
+      "baseline_sha256": "52b9f209954cd4a33a3fddc271c045e01f17ae308f72ee50a8c4f862a873a200"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_cross_stage_declared_predecessor_fail_closed.py",
+      "baseline_sha256": "76c4c7ba6b341bec8059d706aab20a14463ccc60e8ab8a49a3eadfc12c1909f5"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_cross_stage_k02_stage1_kernel.py",
+      "baseline_sha256": "6239095949afb695fba8c9593d678718485387ba8fc10be399d9647707fc461c"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_cross_stage_k07_own_kernel.py",
+      "baseline_sha256": "8ab222d023016076072c4f600b376091f28c7d7ab716d8b419e8005f86e72e7d"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_cross_stage_remaining_own_kernel.py",
+      "baseline_sha256": "fef836831f10207143abe59fe9315170f8c58e88710f41068f37941a6ca584f5"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_cross_stage_rule_algebra_own_kernel.py",
+      "baseline_sha256": "d9b28c978f0e39d4a3b37634c403c6235981fe7aef6ce7402b5b2a53a6e09588"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_d104_owner_rule.py",
+      "baseline_sha256": "45b36b20d0a0b39f0bf5af4022ffb7704076a213768513b3045e34c1c56f1088"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_d104_skew_family_collision_red.py",
+      "baseline_sha256": "4507859d014a89fef95223684e0adf9ece6f5eb78421f9c27eebdec7a7261ba9"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_d110_spot_expected_move_public.py",
+      "baseline_sha256": "87dfd22b060f590c92e21c9fe2914b3aed38d3e1c92d991fd2a08ec771e01640"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_d116_authorised_public.py",
+      "baseline_sha256": "01a54f4f55807257ba41d23164c6370a11df42428c0ab44b736cb5988737cdc2"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_d123_controlled_public.py",
+      "baseline_sha256": "cd8b3ed755dd5d1e7f5b9ff47d1af4a025390985728374f2401d44deb65b75c2"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_d123_exact_contract_authority.py",
+      "baseline_sha256": "af43e92e2ef107788bf7027b3b133a845f776bb587f9c24d928fd74dfcd190cb"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_d123_official_reporting_identity_red.py",
+      "baseline_sha256": "a1a3ea8bca35fc821234f0f5cc5ad01a6979a54fad70995cc4aefa3644f4160c"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_d150_composite_public.py",
+      "baseline_sha256": "2485831ccd50099ca060f3643b5a89771a88636f66187d75c45c0d4002265702"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_depth_snapshot_authority.py",
+      "baseline_sha256": "58a71e379ce1c893d236ee2a0f75347ac65a2f4a786f4f6e11c5282cb7e990de"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_direct_book_public.py",
+      "baseline_sha256": "fd81aacc5e882542a7e1f6122a5806250f543bbe976e691cb38c144adbee92bc"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_macro_vintage_public.py",
+      "baseline_sha256": "5d4287c9438b548232a37744326802f359f1cd1e105feb02c71937595cdbe30a"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_microprice_public.py",
+      "baseline_sha256": "576f83e21ab838e37b0ed629c19d0ae05263bee6ccd7c43191f8e0894ea232ab"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_nbbo_algebra_public.py",
+      "baseline_sha256": "1c25a05fac53d59714a2554f005f414143e475a495d8eaf6cff2d627119de7cd"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_next_event_public.py",
+      "baseline_sha256": "a91b320b630df50a5ce453351f2f6bbefc1fdfd1fefcf1f22e238f7e7f729e77"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_option_depth_public.py",
+      "baseline_sha256": "afdda4ffd7b372f10f7974a76ebd192fab249690356c146749c89641c3e61189"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_option_scalar_public.py",
+      "baseline_sha256": "40b9a4e8e593be771d230d4222b811174bc7dd38fcc5e50ad56bf781dd8c9ed9"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_positional_book_class.py",
+      "baseline_sha256": "0d44abb4820377eee026076e64f74cc467cc61f2d1c4400e2a4f0abfd7e1a9e9"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_rc01_quality_public.py",
+      "baseline_sha256": "55994f5cb5c2d80091cd37642e5c2757640f0b91072ff95421204f0773f06f82"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_rc01_trigger_public.py",
+      "baseline_sha256": "1aaa520547671c1975df712e137134dc1e4de8bfb40689a7f5d2277f30b2bbf2"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_rc02_scalar_algebra_public.py",
+      "baseline_sha256": "680285c5550856eaba5d5a410c98cae9aef2a540bbde6718ff6ac19e5392a299"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_rc03_history_public.py",
+      "baseline_sha256": "0dac0a32e301de732779a94de102c4c96458167ab1b48bfc27ab2f123249a1c5"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_rc04_baselines_public.py",
+      "baseline_sha256": "711a82ae981af7113fbbdb16a1f6991c31eca960a080c9e3d68b4552cc1b7ba1"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_rc04_elapsed_fraction_public.py",
+      "baseline_sha256": "4e0ded9fa4e8d8ea1f5aaf9955020d6316d6327a20ebb4d8ec68a3f79c69c2b6"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_rc04_realised_risk_public.py",
+      "baseline_sha256": "01cbe3e9657c60e6185804e1494d0bf0f494e3f473102a231517e44c1bda1346"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_rc04_time_of_day_bucket_public.py",
+      "baseline_sha256": "d65f3fb005d763db09ae144a7381f195a075257e0cdd646bca4fe575bc2c1271"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_rc05_correlations_public.py",
+      "baseline_sha256": "26928984be2388fdf1e5535db14bce4f4d6ee3cb5e7a526ad8dca7178c748f71"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_rc06_market_regime_scores_public.py",
+      "baseline_sha256": "5f737f1d0d1e9c4a668519ddb55f71b1a2de0086cbada671dabd19cfae644d3b"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_rc06_trend_score_public.py",
+      "baseline_sha256": "ccaf580331693a985ff703386e2ebd88ca42c686501410b72c36c9084149a481"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_rc13_cross_section_public.py",
+      "baseline_sha256": "0aeba58041ddf13ee725f7d333de6166254c9324d17212e585c91112723afbb6"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_rc13_relative_sector_public.py",
+      "baseline_sha256": "1f5f320b83b63ea6019362b06db17ccb3862c0945ab475aca1bb859b1e557423"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_rc13_sector_returns_public.py",
+      "baseline_sha256": "abd289e1bf0e79eb6776df5a81160d1f08ef0188cd1889f37b7a73cc32b5850b"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_rc14_iv_baseline_public.py",
+      "baseline_sha256": "d8bacc695deb7ecb28770ab0df01e6ea0a9bae91b5c0d69a1ff4ac421efc2763"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_rc14_option_chain_ratio_public.py",
+      "baseline_sha256": "780439fd6307523df20ea89924c771b3a0d3a550ce854e71ed9c25a8676c9a2e"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_rc14_option_iv_history_public.py",
+      "baseline_sha256": "8fa9f16b31ecf6497df2b8f3d9e26c11fa28e6d570bca6ae3b49926f7c0d4a9a"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_rc14_option_iv_public.py",
+      "baseline_sha256": "193bb81282c6073e94410dc43eb41c918a95f4011f2cf2a670afd638df4c2162"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_rc14_option_volume_oi_public.py",
+      "baseline_sha256": "8c30e8d86086173b91fdf2b57f129c58f66a0b8e1de0fa4205e44eded095f33f"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_rc14_option_volume_z_public.py",
+      "baseline_sha256": "ba33aef7a6d5ddc7bc984da74e16e89e9fcf863d03a1b7b93bb8ab3734694604"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_rc14_skew_from_native_delta_public.py",
+      "baseline_sha256": "aa8d7d057d9c4161c64d9600e83f22757add03f99f7166336c5ca41135b0c1ef"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_rc14_surface_shift_public.py",
+      "baseline_sha256": "a2b8d0034e425381a981338c4023d9ed421e7c7b8a9d85bf4ede0ca1650583cf"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_rc15_candidate_greeks_public.py",
+      "baseline_sha256": "bdd55ac8e2fcd4b03d2088b9191675f0513b5e0799c25fce1073eda4cc3ed9ff"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_rc16_fill_cost_public.py",
+      "baseline_sha256": "35d3a3a61bd7b61cbe9219c8cf90b755c45d366d8d45c93be62aa5f41cf9a709"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_rc16_position_public.py",
+      "baseline_sha256": "282c1424dbaf235e67e1ef26051531a6e5d7023ff531f6e08f7fdf9f441b3486"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_rc21_macro_growth_factor_public.py",
+      "baseline_sha256": "691b42dec27dfcddd7dcca5fe37c993bf9856a32e1954747453767dfde958b13"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_rc21_macro_inflation_factor_public.py",
+      "baseline_sha256": "bc0cb580018e552c831fbef7f9f59b7109b8c94a30b8502dbc1cc33ede6d7db9"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_rc21_macro_surprise_public.py",
+      "baseline_sha256": "a9b3eb3d550ed5f5db7c46084f0438e38becc5586302d03c1f43351a17ab054c"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_reconstruction_d041_public.py",
+      "baseline_sha256": "c10b597ce50a390c6d0d80af74daaf8f89563769628b8b5cb2225c8d65810a7d"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_reconstruction_d084_public.py",
+      "baseline_sha256": "ecf3101b5c0deb4d4fef113311b65700d0d6f929ecf265a41126ca400cf040e5"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_reconstruction_d132_public.py",
+      "baseline_sha256": "682e8d9df751b90fc4097180643bf78a4ae4da83fd6d9baee115de710481ebc5"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_reconstruction_d148_public.py",
+      "baseline_sha256": "7410d6d3fd1c2e8abbff72b1240b3a3a5fdda2e777e27f0b25c767381ade270d"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_reconstruction_d149_public.py",
+      "baseline_sha256": "39c89c3190db6efe9ed0a7ac812648d03884a658604d7eb9b818ee29d4b3e40b"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_reconstruction_regression_history_public.py",
+      "baseline_sha256": "647f63629d3317c1ed1fadc7ce7019bb89e43eb344a3f871b4f2758035469bae"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_replenishment_public.py",
+      "baseline_sha256": "036c29fbf35b75724f294387747eb177499d90add66041ca1dab3cf4795b5d4c"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_required_field_public.py",
+      "baseline_sha256": "dfd5f139836cd1e3e287d109c51856f6fbdebe2c373b432b1c7801f96f3de06a"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_resilience_public.py",
+      "baseline_sha256": "8f52e255a5e2c6f2e05a1d12e8b9178bd387942141feab888165548fb854a66c"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_review_regressions.py",
+      "baseline_sha256": "2d9a27b6ed3afb2951b7396ea61a88362471bc33610d95a93783260dd47e781f"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_temporal_public.py",
+      "baseline_sha256": "a3e907b4e95ca179833663734c63bf3abcccceba83f764e55842a81536809993"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_f4_vwap_gap_public.py",
+      "baseline_sha256": "9c3e325c7d14ff61eb312a185f05ca72e8176f21e1d380303f9f3a889463b955"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_stage1_leaf2_temporal_graph.py",
+      "baseline_sha256": "22ef7e4a2c356b75a0db77d34cc379f9e119708d7c125c441ebe721bdda3fe95"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_stage1_leaf3_catalogue_kernels.py",
+      "baseline_sha256": "0d8fca4f89d234c0492eeea868b10cb8a43f30fb69bdb74dbc42210710f513b2"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_stage1_predecessor_scope.py",
+      "baseline_sha256": "1bcfb8d405a88a1382206d1bee8fad6a24d263a291927729fbe14ed9c2f7c5e5"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_stage1_selection_lineage.py",
+      "baseline_sha256": "9823a026e50505751b8886ca4044f6063ac1c6c944f3c91b3fcb427a0e321d44"
+    },
+    {
+      "path": "tests/product/derived_signal/test_m01_stage1_semantics.py",
+      "baseline_sha256": "efb074e0580ff1c4afb86a9115c3727f1b61fca93d7553acf8855d92caf35183"
+    }
+  ],
+  "receivers": [
+    "WI-11",
+    "WI-23",
+    "WI-29"
+  ],
+  "meaning": "Preserves existing test-source and historical acceptance lineage. Does not admit these paths to M00 or the new foundation aggregate, does not revoke any separately accepted bounded evidence and does not close M01 proof debt. Baseline hashes are provenance, not a runtime content freeze."
+}

@@ -1,18 +1,20 @@
 # NVDA V2 — neutral market measurement truth: successor implementation brief
 
-Date: 17 October 2026 — Australia/Melbourne. Version: 1.
+Date: 17 October 2026 — Australia/Melbourne. Version: 2.
 
 **PROPOSED — FOR OWNER REVIEW; NOT ACCEPTED IMPLEMENTATION AUTHORITY.**
 
 This is the A01 foundation boundary/pilot brief required by the accepted Gate 4 roadmap. It supplies a proposed concrete D011 contract and preserves the complete 126-family target. Preparing it does not activate an ExecPlan, admit an owner, authorise tests or implement anything. The closed root `EXEC_PLAN.md` remains the historical record. A separately accepted successor ExecPlan must operationalise the accepted brief.
 
-The first candidate is a **controlled-input D011 boundary and durability pilot**. It is not native-source admission, full foundation acceptance, downstream implementation, state migration or M01 retirement. The exact proof-admission obstacle in section 10 is a mandatory prerequisite: the existing M00 product-proof control cannot admit this owner unchanged. Until that obstacle has an accepted and proved resolution, this document must not be represented as an immediately executable code commission.
+The first candidate is a **controlled-input D011 boundary and durability pilot**. It is not native-source admission, full foundation acceptance, downstream implementation, state migration or M01 retirement. The proof-admission obstacle in section 10 now has a concrete incorporated PA-02 control proposal, exact machine-readable proof contract and path-disposition catalogue. That is documentary design, not implemented or executed admission. Until the proposed change has proper acceptance and proof, this document must not be represented as an immediately executable code commission.
 
 ## 1. Purpose, baseline and authority
 
 Create a runtime semantic owner for **neutral market measurement truth**: reproducible, precisely defined, strategy-independent descriptive market/source-time measurements, including the statistical families allowed by the accepted restrictions. The complete input chain must terminate in lawful raw facts, qualifying foundation predecessors or fixed neutral measurement conventions. A deterministic model, an immutable parameter object or existing M01 code does not by itself establish eligibility.
 
 The commissioning instruction is the owner's request: “Now that the outstanding work has been done, it's now time to prepare the successor implementation brief.” Its scope is preparation. No acceptance for implementation is inferred from that instruction.
+
+The later “Go”, after the proposed brief and supplied historical handovers, is taken as authorisation to prepare PA-02's concrete proof-admission proposal. This revision incorporates that design and corrects the native ingress machine-name spelling. Version 1 remains in Git at `be16a8e1641ed9f1457a81c464948cb4d95ecd22`; its hash `8f51e887fd8a71ceabcafc38444a033de9db284f4647f4012e29f5ea52fc668b` identifies different proposed bytes. No binding/acceptance is inherited from it.
 
 The inspected preparation baseline is commit `00f617c7f9de940e3a2de5a1a93d1900d7e50b54`, tree `e628f84ec9ccb4320367342c2e8aa189d148cc8c`. Gate 3 acceptance and Gate 4 acceptance/closure are recorded in root sections 10 and 12; section 13 and assessment section 22 record the subsequent readiness reconciliation. Those records retain their original evidential limits. Main remains outside this commission.
 
@@ -38,8 +40,9 @@ Proposed ingress intents:
 
 | Intent | Exact boundary |
 | --- | --- |
-| `create`, category `M`, responsibility name `neutral market measurement truth` | New owner-local package `nvda_desk.market_measurement_truth`; sole public seam `nvda_desk.market_measurement_truth.api`; lawful runtime dependency on M00's declared public seam only. No numeric ID is supplied. |
+| `create`, category `M`, machine responsibility name `neutral_market_measurement_truth` | Human label “neutral market measurement truth”; native underscore spelling satisfies the existing ingress schema. New owner-local package `nvda_desk.market_measurement_truth`; sole public seam `nvda_desk.market_measurement_truth.api`; lawful runtime dependency on M00's declared public seam only. No numeric ID is supplied. |
 | `modify M00` | Extend the declared read-projection consumer class to include the newly admitted foundation owner for existing `list_projected_raw_history`/mapping/projected-value carriers. No raw contract field, stored payload, identity, writer, mathematical transformation or collector changes. No new M00 runtime dependency on the consumer. |
+| `modify G01` | Bounded claim-scoped product-proof control, exact companion/physical-proof admission and strict aggregate outcomes specified by the incorporated PA-02 proposal. Preserve the M00 claim and kernel/product separation; no runtime dependency or new governance owner. |
 
 Resolve the create candidate from then-current registered, retired and durable allocated identities under AK-INGRESS-003. Re-read `modules.yaml` and `implementation_allocations.yaml`; a working label such as M02 does not reserve a number. Resolution is not allocation, activation or admission. The numeric result must be admitted before production construction and recorded in implementation evidence, never guessed here.
 
@@ -333,6 +336,8 @@ Durable proof requires PostgreSQL 17.9 with fresh UTF8 cluster, non-root server 
 
 This section is the proposed domain proof admission, effective only if these exact brief bytes are accepted and the section 10 admission prerequisite is satisfied. Domain proposition IDs below are local to this brief; they do not become generic kernel law or inherit M00's IA17/IA22R01 identifiers. No product Tier A/B/C classification is invented. Architecture promotion retains its separate AK-PROOF jurisdiction.
 
+The exact incorporated `FOUNDATION_PILOT_PROOF_CONTRACT_PROPOSED.json` supplies machine-readable family/ID/test-name, four-case, environment and nonclaim bindings for this same manifest. It creates no current physical proof generation. `PA02_PRODUCT_PROOF_ADMISSION_PROPOSED.md` specifies exact-brief/companion binding, the separate catalogue/profiles, proof-generation integrity, bootstrap-development versus active-promotion distinction and complete observed outcome requirements. N15-P01–P08/P12 and N19-P01/P02/P04/P05/P11/P12 are incorporated for those general proof requirements from the exact preserved source records; their historical state descriptions and unrelated profiles are not activated.
+
 | Physical path / named proof | Binding and mandatory observation |
 | --- | --- |
 | `tests/product/market_measurement/test_boundary_pilot.py` — `test_d011_midpoint_public_exact_lineage` | FND-P01: construct actual public M00 raw observations, project through its real public reads, then materialise through the new public owner; independent `(100+102)/2=101`; exact owner/definition/config/mapping/unit/selected raw/time lineage. No hand-built projected-value fixture as the sole public-path evidence. |
@@ -375,16 +380,16 @@ Make recoverable Git checkpoints for accepted ingress/admission, discriminating 
 | ID | Established gap / required disposition | Effect |
 | --- | --- | --- |
 | PA-01 | These exact proposed bytes have not been accepted for implementation; no successor ExecPlan is active and no ingress binding/new owner admission exists. | Owner/programme decision and normal ingress/registry process required before implementation or tests. No self-issued acceptance. |
-| PA-02 | Current product proof is M00-specific. `product_proof_authority.schema.json` fixes BICP/IRB paths and IA17/IA22R01 IDs; families and aggregates use those IDs. `tools/validate_product_proof.py` binds one target, one aggregate and all physical `tests/product/test_*.py` recursively to that authority. This is source inspection, not a validator execution. | The exact section 8 foundation paths/propositions cannot lawfully be appended to the M00 claim. A separate accepted proof-admission change is required before pilot code. |
+| PA-02 | Current product proof is M00-specific. The incorporated PA-02 proposal now specifies the exact claim/authority/path/proof-generation/outcome contract and future changed surfaces; active schemas/validator/runner remain unchanged. Six M00 files and 87 preserved M01 files are separately accounted for by the proposed path-disposition companion. | Documentary design prepared; still requires acceptance, concrete implementation diff, control proof and review before the prerequisite is satisfied. No M00 obligation is retargeted or M01 proof debt silently closed. |
 | PA-03 | Actual native IBKR field mappings/availability and admitted complete concurrent source histories are not established by the controlled instance. | Controlled pilot may proceed after PA-01/02; native or operational D011 admission remains held by RAW-PROJECTION/CALC-PROFILE and applicable source proof. |
 | PA-04 | Current-host pinned interpreter, PostgreSQL compatibility, role provisioning and durable settings have not been executed in preparation. | Establish the exact proof environment before treating a test result as semantic evidence; preserve infrastructure failures separately. |
 | PA-05 | Existing populated state, actual consumers and cutover/backup/rollback facts are UNKNOWN. | No migration/old-state compatibility or M01 retirement; WI-13/31/32 remain receivers. |
 
-**PA-02 is a real execution stop, not a request for an implementer to improvise a registry.** The proposed resolution is a bounded, separately reviewed extension of the current product-proof control to represent a second independently hash-bound owner claim, exact foundation physical family paths and FND-P01–P07 bindings, with the existing M00 claim/IDs/authority bytes preserved. It must retain fail-closed physical coverage, reject cross-claim IDs, prevent duplicate/unowned physical paths and preserve existing M00 proof obligations and architecture promotion. No broad schema regex relaxation, copied BICP identity, retargeted M00 authority or unregistered direct-pytest workaround is authorised. The exact schema/config/tool diff and its proof admission must be made reviewable and accepted before it is applied. This brief fixes the required foundation proposition/physical path set; it does not pretend that an absent multi-owner control already exists.
+**PA-02 remains an execution prerequisite with its design now specified.** Apply only the incorporated claim-scoped control contract: retain the unchanged M00 authority/family/aggregate documents and schemas, add the bounded accepted-brief profile, account explicitly for preserved M01 paths, reject cross-claim IDs and unowned physical paths, and preserve separate architecture/product evidence. No broad schema regex relaxation, copied BICP identity, retargeted M00 authority or unregistered direct-pytest workaround is authorised. The concrete implementation diff and its proof admission must be reviewable and accepted before application. The proposal's existence does not claim the control already works.
 
-If that bounded change cannot be lawfully projected without new kernel meaning, return the precise defect to the owner; do not broaden this domain brief silently. The current commission ends with this proposed successor brief and named prerequisites. It does not execute PA-02, commission a new generic proof framework or claim A02 is unblocked.
+If that bounded change cannot be lawfully projected without new kernel meaning, return the precise defect to the owner; do not broaden this domain brief silently. The current commission ends with this revised proposed brief, incorporated PA-02 design and named prerequisites. It does not execute PA-02, commission a new generic proof framework or claim A02 is unblocked.
 
-The owner may accept the domain/pilot proposal, return named clauses, or commission PA-02's exact proof-admission design. Acceptance of the document as planning is distinct from explicit acceptance of its exact bytes for implementation. Even implementation acceptance leaves the successor-plan, ingress, component/reader/proof admission and environment hold points applicable. Full 126-family acceptance requires the later evidence in the roadmap; nothing here silently discharges the inherited backlog.
+The owner may accept or return these exact revised domain/pilot/control proposal bytes. Acceptance as planning is distinct from explicit acceptance for implementation. Even implementation acceptance leaves the successor-plan, ingress, component/reader/proof admission and environment hold points applicable. Full 126-family acceptance requires the later evidence in the roadmap; nothing here silently discharges the inherited backlog.
 
 ## 11. Preparation evidence and limits
 
@@ -392,11 +397,19 @@ Prepared by documentary comparison of the master, closed plan/accepted roadmap, 
 
 Preparation verification is restricted to standard-library document/CSV parsing, exact identity/population/assignment/hash checks and Git/archive integrity. No tests, application imports/execution, lint/type checks, runtime validators, provider/database calls or environment bootstrap are run. No new independent review of this proposed brief is claimed. All execution/review/acceptance steps above are future obligations.
 
-Only this proposed Markdown brief is added to the preparation branch. Root `EXEC_PLAN.md`, frozen guardrails/agents, accepted source/math/workbook/register/backlog/config/test bytes and main remain unchanged. The full repository history accompanies the handoff; no previous acceptance record is rewritten.
+The successor preparation branch adds only the PA-02 documentary proposal, exact JSON contract/catalogue/path-disposition companions and byte-identical primary-source copies, and revises this unaccepted brief. Root `EXEC_PLAN.md`, frozen guardrails/agents, accepted source/math/workbook/register/backlog/config/test bytes and main remain unchanged. The full repository history accompanies the handoff; no previous acceptance record is rewritten.
 
 ## Annex A. Exact incorporated authority and evidence bytes
 
-The table is generated from the preparation baseline. `authority` rows supply accepted meaning/acceptance or governance; `evidence` rows preserve assessment, carry-forward and inspected implementation/control facts. An evidence hash never upgrades its jurisdiction to mathematical authority. Historical status prose within a pinned artefact is interpreted with the later explicit acceptance/closure overlays described in section 1.
+The table is generated from the preparation baseline and the exact PA-02 additions. `authority` rows supply accepted meaning/acceptance or governance; `evidence` rows preserve assessment, carry-forward and inspected implementation/control facts; `proposal` rows are the new companions proposed for incorporation only if these revised brief bytes are accepted. A hash never upgrades an evidence/proposal jurisdiction to already accepted mathematical authority. Historical status prose within a pinned artefact is interpreted with the later explicit acceptance/closure overlays described in section 1.
+
+The following exact one-line markers bind the machine-readable PA-02 companions; the proposed control must require each once and match its raw bytes. The active catalogue, when authorised, must be a byte-identical copy of its proposal companion.
+
+PA02-PROOF-CONTRACT-SHA256: 6c7da209a8aac8c1c907c0d55f06af7d310bdfac26dc0acbc722ed77503839aa
+
+PA02-PATH-DISPOSITIONS-SHA256: df08ac8fa5539e35d03af8c027a15426c857769f02c78ed21946f9f17b436641
+
+PA02-CLAIM-CATALOGUE-SHA256: 63a2fdc35ddb2540a8429eb89b098b32751e638bc4db874901e877a0781c9444
 
 | Path | Role | SHA-256 |
 | --- | --- | --- |
@@ -452,6 +465,25 @@ The table is generated from the preparation baseline. `authority` rows supply ac
 | `src/nvda_desk/raw_signal_occurrence_truth/api.py` | evidence | `3f6f01045a19acaa73c2626bc2139efbce88c2050e0fec36f9d4c6abb756191a` |
 | `src/nvda_desk/derived_signal_calculation_truth/api.py` | evidence | `92c6e472208b88905136e6ed8eb15bf89e61f2e64dcf2887bfbd070177b1d98b` |
 | `src/nvda_desk/derived_signal_calculation_truth/_postgres.py` | evidence | `8d009855dcad7fcef6dc618866847ccba5ecad05c7243608d24162a9e8c34511` |
+| `handoff/foundation_implementation/authority/PA02_PRODUCT_PROOF_ADMISSION_PROPOSED.md` | proposal | `76a40bb8ba2f5809c222d08cafb05a1f8e3e35a847d286b1e7abdb28a281aa7a` |
+| `handoff/foundation_implementation/authority/FOUNDATION_PILOT_PROOF_CONTRACT_PROPOSED.json` | proposal | `6c7da209a8aac8c1c907c0d55f06af7d310bdfac26dc0acbc722ed77503839aa` |
+| `handoff/foundation_implementation/authority/PA02_PRODUCT_PATH_DISPOSITIONS_PROPOSED.json` | proposal | `df08ac8fa5539e35d03af8c027a15426c857769f02c78ed21946f9f17b436641` |
+| `handoff/foundation_implementation/authority/PA02_PRODUCT_PROOF_CLAIMS_PROPOSED.json` | proposal | `63a2fdc35ddb2540a8429eb89b098b32751e638bc4db874901e877a0781c9444` |
+| `handoff/foundation_implementation/evidence/pa02_sources/CODE_001_CURRENT_STATE_20260919.md` | evidence | `b0ce45bc9a1a12a19844bab39b7e27d331e8b33dcf7aba02b4c231f0ed8135e9` |
+| `handoff/foundation_implementation/evidence/pa02_sources/CODE_001_METHOD.md` | evidence | `e2159155e296cf201aa9199c1931e52219e89b4432ff277ec7037c5aa4dc11f8` |
+| `handoff/foundation_implementation/evidence/pa02_sources/N15_PRODUCT_PROOF.md` | evidence | `62bbaed0306e1cf3e85de3e482284f967a971e5ff806d75e7674dd7c35d8403e` |
+| `handoff/foundation_implementation/evidence/pa02_sources/N19_ARCHITECTURE_PROOF_PROJECTION.md` | evidence | `d46567a2594657e26c54d3c0bb45e44c4adadca58b8ca349d516f980dc7504fb` |
+| `handoff/foundation_implementation/evidence/pa02_sources/PM_HANDOVER_20260913.md` | evidence | `ee4c2c0c7d8376aecc9030a0a4b94bead65e47c6b1ef1fc22afe4bcc3764fd89` |
+| `implementation/proof/VI09_PRODUCT_PROOF_CONTROL_DESIGN.md` | evidence | `61244af6bf9fa216017a1f5b438f77dbd48ea60dc1e12b951b563f18cc3ebac8` |
+| `implementation/proof/VI09_PRODUCT_PROOF_CONTROL_EVIDENCE.md` | evidence | `fd47e45260f170e9091a969b586a689b390bc96ddef60b6cdea478d0d615042d` |
+| `implementation/handoff/WORKER_002_VI09_PRODUCT_PROOF_CONTROL.md` | evidence | `e1c2fc9d3f7f06b648ecbc056054b104482f6f7492d0e542c9c40f399f1e92eb` |
+| `schemas/implementation_authority_binding.schema.json` | evidence | `9edccd1c2d77cd3d2db9b5b46f1fc416494fe26b44b5aed47b915490d40a2efc` |
+| `src/nvda_desk/architecture/implementation_authority.py` | evidence | `6d420280f0727a485f844dfa2a1ec620b190eb61af278136a28a076797c1a200` |
+| `config/architecture/governance_planes.yaml` | evidence | `aec057dc947644f74840b71acea5f6aa6f299da6b740284bc506a3f6c8fe6319` |
+| `tests/architecture/test_proof_control.py` | evidence | `536cd2e84e4f3cf691f7ebfd23502f324d50aa2ab8ce16cd1b9d2ffb9b2b3964` |
+| `config/proof/test_families.yaml` | evidence | `aff6f5d98bcfd026ecfa820aa46fced389b39706fabd5365e9e53e8a9d56a87b` |
+| `config/proof/proof_blocks.yaml` | evidence | `262d708ebbdf72134188ffd67ad4c54aff6fe42a855bceeb00057e9e7a5478e8` |
+| `config/proof/promotion_sets.yaml` | evidence | `30addede65d4d222b9e4def0492d1dac99aa946fd60b3260b996ef686456f9ec` |
 
 ## Annex B. Complete conditional foundation target — 126 identities
 
@@ -619,4 +651,4 @@ Each row enumerates the exact canonical IDs assigned to that proposal in the pin
 | P29 | D202, D203, D204, D205, D206, D207, D208 | 7 |
 | P30 | D209 | 1 |
 
-TS: 17-10-26 21:12
+TS: 17-10-26 21:42
