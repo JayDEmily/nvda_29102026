@@ -2,7 +2,7 @@
 
 Date: 17 October 2026 — Australia/Melbourne.
 
-**Status: PROPOSED, NOT ACTIVATED; implementation NOT AUTHORISED.** This is the G4.2 deliverable under the accepted root `EXEC_PLAN.md`, not a replacement active plan. The owner instructed “OKD Leaf 4.2.” and subsequently “Keep working?”. Both continue the same planning leaf. Gate3 acceptance remains recorded; Gate4 acceptance remains the owner's separate decision.
+**Status: ACCEPTED_AS_PLANNING_DELIVERABLE; NOT ACTIVATED; implementation NOT AUTHORISED.** The owner accepted the Gate4 package on17October2026 at18:37Australia/Melbourne and instructed closure at18:42. Gates3–4 and their root ExecPlan are now completed and closed; see `EXEC_PLAN.md` section12 and `GATES_03_04_ASSESSMENT.md` section21 for exact accepted candidate/limits. This roadmap remains a proposed future execution sequence, not an active successor plan. Older candidate/pending-decision wording below describes the submitted checkpoint; this status and the closure record govern the current planning state.
 
 **Goal:** preserve the useful original engineering and accepted mathematics while establishing the conditional126-family neutral foundation and83canonical downstream outputs in26independent proposed responsibilities, with exact source, proof and transition boundaries.
 
@@ -79,7 +79,7 @@ Run the exact admitted tests first to establish the expected missing/new behavio
 
 | ID | Decision/missing fact | Responsible role; receiver; consequence |
 | --- | --- | --- |
-| Q01 | Owner ACCEPT/RETURN/BLOCK on the coherent Gate4 planning package | Programme owner. ACCEPT closes investigation within its limits; does not activate this roadmap or authorise implementation. |
+| Q01 | RESOLVED: owner ACCEPT on the coherent Gate4 planning package,17October2026 | Gates3–4 investigation/planning commission CLOSED; exact candidate and instruction recorded in root section12/report section21. Does not activate this roadmap or authorise implementation. |
 | Q02 | Exact A01 brief bytes, enabled pilot scope, neutral typed seam/state/owner transition and external implementation authority | Programme owner/brief authority; WI-01/02/03/11/12. No code/registry mutation until accepted. The full126target remains tracked. |
 | Q03 | Actual source/projection/calendar/macro/OI/volume/book contracts | Named custodians UNKNOWN; WI-04–09 and section5. Commission separately; missing evidence leaves affected family unavailable, not mathematically invalid. |
 | Q04 | Concrete neutral/model/context instances including N6 revaluation full input closure | Calculation/convention/model authorities; WI-03/25/35. Exact methods/coefficients/provider fields are not chosen here. |
