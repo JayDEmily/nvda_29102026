@@ -16,10 +16,55 @@ Replacement full-Git archive `NVDA_V2_SUCCESSOR_EXEC_PLAN_RECOVERED_FULL_GIT_202
 
 ## G5.1 progress
 
-Status: IN_PROGRESS, not complete. G5.2 has not started. No calculator, owner allocation, proof-control behaviour or product generation has been created or admitted.
+Status: PARTIAL_BLOCKED, not complete. G5.2 has not started. No calculator, owner allocation, proof-control behaviour or product generation has been created or admitted. The later observed failure below governs the current status; earlier environment notes describe the preceding preparation checkpoint.
 
 Pre-flight interfaces: native brief/binding -> PA-02 catalogue/claim resolver; accepted contract/actual bootstrap target -> immutable physical-proof generation; admitted development proof -> controlled pilot; active target -> later aggregate promotion. The resolver must use actual allocated package/seam identity, not a freshly resolved create candidate after allocation. All three companion marker hashes and the preserved legacy claim remain binding. The nullable generation pointer prevents false readiness and avoids requiring active production before RED.
 
 Environment observations: host `python3 --version` was 3.12.14; `uv python find 3.13.5 --no-python-downloads` found none. A separate managed CPython3.13.5 installation was obtained with uv under `/workspace/scratch/670b13e87153/proof_runtime/python`, without replacing the host interpreter. U05 archive and portable PG archive match their accepted roadmap hashes. U05 README/bootstrap source was inspected: it requires a host3.13.5 interpreter and contains wheels, not that interpreter. Portable PG's extracted binary reports `postgres (PostgreSQL) 17.9` on the current GLIBC2.39 host; `oai` UID1001 and `runuser` are available. These are preparation observations, not a running database, privilege proof or suite result.
 
 Next: validate genuine native ingress under the pinned environment, prepare the bounded concrete PA-02 diff and its admitted discriminating control proof, then satisfy the required acceptance/review and regression steps. Required evidence may not be inferred from the recovery hashes or successful binary version probes. No repository tests, application execution or database startup has occurred at this checkpoint.
+
+## G5.1 observed authority and first environment failure
+
+The complete U05 member SHA256SUMS manifest was checked against actual extracted bytes. A fresh venv uses CPython3.13.5; package metadata readback confirms pytest9.0.3, mypy1.20.1, Ruff0.15.11, Psycopg/psycopg-binary3.3.4, PyYAML6.0.3, hatchling1.29.0 and project1.0.0. Direct proof-tool installation used the supplied offline wheelhouse; declared PyYAML/hatchling were installed at their exact project pins. No project dependency/configuration was changed.
+
+Two recoverable editable-install attempts are preserved as failures, not successful proof: `--no-build-isolation` failed because hatchling's editable backend needed `editables`; the normal isolated invocation from the repository then failed because its inherited uv `find-links` referred to absent `vendor/wheels`. Running the same native isolated build with `uv pip install --no-config --no-deps -e <actual-repository>` succeeded, using the project's pinned hatchling build requirement rather than modifying pyproject or the package. This was environment setup only, not product or packaging acceptance.
+
+Native ingress command under the proved interpreter:
+
+```text
+python tools/validate_implementation_authority.py --binding implementation/authority/FOUNDATION_IMPLEMENTATION_AUTHORITY_BINDING.yaml --brief handoff/foundation_implementation/authority/FOUNDATION_IMPLEMENTATION_BRIEF_PROPOSED.md
+exit 0
+PASS: implementation authority brief_sha256=282f7d73c5e2fdf36ded43781665764eaf95d4a35f687f99990b87c59f744ed7
+candidate_targets: create:neutral_market_measurement_truth->M02, modify:M00, modify:G01
+```
+
+This is mechanical binding/current projection evidence only. M02 is a non-durable candidate returned by the kernel, not a worker-selected or allocated identity. Modules/allocations/M00 reader metadata and all active proof-control sources/configuration remain unchanged.
+
+**First unmet required environment invariant:** the preserved `bootstrap_postgres.sh` was invoked with the exact PG archive and a newly selected disposable `/tmp/nvda-g5-1-*` namespace, targeting existing OS user `oai`. It exited 2 during tar extraction, before initdb or server start:
+
+```text
+tar: NVDA_POSTGRESQL_17_9_PORTABLE_RUNTIME_20260921/BUILD_RECEIPT.md: Cannot change ownership to uid 0, gid 1001: Invalid argument
+tar: Exiting with failure status due to previous errors
+```
+
+The same ownership error occurred for subsequent archived entries; the tool output reported 1486 lines and was truncated. No unobserved full log is claimed. Earlier outer-archive and member-digest observations are not negated by this ownership-restoration failure; nor does a binary version probe establish successful bootstrap.
+
+Bounded diagnosis established the execution namespace/capability barrier directly:
+
+```text
+cat /proc/self/uid_map
+         0          0          1
+cat /proc/self/gid_map
+         0          0          1
+runuser -u oai -- id
+runuser: cannot set groups: Operation not permitted
+runuser -u nobody -- id
+runuser: cannot set groups: Operation not permitted
+```
+
+Only UID/GID0 are mapped in the current namespace; passwd entries for `oai` and `nobody` do not make switching to them possible. Removing tar ownership restoration would not resolve the independently observed non-root execution failure. A root-run PG instance, relabelled identity, memory substitute or skipped database proof cannot satisfy the accepted non-root/role-isolation requirement. No privileged escape, approval bypass or weakened proof is attempted.
+
+**Disposition:** G5.1 remains PARTIAL_BLOCKED. Its mandatory real M00/PG regression and later control acceptance cannot be established in this current execution context. G5.2 remains NOT_STARTED. Resume at the required non-root proof-environment invariant in a context that permits a genuine mapped non-root UID/GID and local Unix socket; retain the exact pinned assets, brief/binding and proof requirements. The source/control patch, RED/GREEN, independent review, actual owner allocation and product-generation admission remain unexecuted. No unit/integration/product/architecture suite, lint or mypy run occurred; no domain application/database/provider execution occurred. Only environment setup/probes and the explicitly identified native authority validator ran.
+
+Recovery was completed and persistently saved before this execution attempt. This failure does not reclassify either G5.1 or G5.2 as completed, and the old accepted Gates3–4 remain closed. Main, frozen GUARDRAILS/AGENTS, original mathematical/workbook/register/backlog and all production/test/schema/active proof-control bytes remain unchanged from recovered b4a3227.
