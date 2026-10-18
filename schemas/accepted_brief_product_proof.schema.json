@@ -1,0 +1,402 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "claim_id",
+    "semantic_brief_path",
+    "target",
+    "proof_axis",
+    "product_tier_treatment",
+    "architecture_proof_axis",
+    "required_proof_ids",
+    "families",
+    "required_support_files",
+    "optional_support_files",
+    "execution_policy"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "claim_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "semantic_brief_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "category",
+        "responsibility_name",
+        "package",
+        "public_seam",
+        "intent"
+      ],
+      "properties": {
+        "category": {
+          "type": "string",
+          "minLength": 1
+        },
+        "responsibility_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "package": {
+          "type": "string",
+          "minLength": 1
+        },
+        "public_seam": {
+          "type": "string",
+          "minLength": 1
+        },
+        "intent": {
+          "enum": [
+            "create",
+            "modify"
+          ]
+        },
+        "existing_object_id": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "intent": {
+                "const": "modify"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "existing_object_id"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "intent": {
+                "const": "create"
+              }
+            }
+          },
+          "then": {
+            "not": {
+              "required": [
+                "existing_object_id"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "proof_axis": {
+      "const": "product"
+    },
+    "product_tier_treatment": {
+      "const": "NOT_CLASSIFIED"
+    },
+    "architecture_proof_axis": {
+      "const": "architecture_kernel"
+    },
+    "required_proof_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "families": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "path",
+          "proof_obligation_ids",
+          "required_test_names",
+          "boundary",
+          "proof_levels",
+          "authoritative_inputs",
+          "dependency_substitutions",
+          "case_coverage",
+          "expected_failure_signals",
+          "limitations",
+          "adjacent_nonclaims",
+          "environment",
+          "material_versions",
+          "tier_treatment",
+          "command"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "proof_obligation_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "required_test_names": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "boundary": {
+            "type": "string",
+            "minLength": 1
+          },
+          "proof_levels": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "CONTRACT",
+                "COMPONENT_DETERMINISTIC",
+                "INTEGRATION",
+                "STATE",
+                "SEQUENTIAL_END_TO_END",
+                "REPLAY"
+              ]
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "authoritative_inputs": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "dependency_substitutions": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0,
+            "uniqueItems": true
+          },
+          "case_coverage": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "lawful_positive",
+              "prohibited_false_positive",
+              "missing_mandatory_authority",
+              "lawful_optional_absence"
+            ],
+            "properties": {
+              "lawful_positive": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [],
+                "properties": {
+                  "cases": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "uniqueItems": true
+                  },
+                  "not_applicable_reason": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              },
+              "prohibited_false_positive": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [],
+                "properties": {
+                  "cases": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "uniqueItems": true
+                  },
+                  "not_applicable_reason": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              },
+              "missing_mandatory_authority": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [],
+                "properties": {
+                  "cases": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "uniqueItems": true
+                  },
+                  "not_applicable_reason": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              },
+              "lawful_optional_absence": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [],
+                "properties": {
+                  "cases": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "uniqueItems": true
+                  },
+                  "not_applicable_reason": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            }
+          },
+          "expected_failure_signals": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "adjacent_nonclaims": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "environment": {
+            "type": "string",
+            "minLength": 1
+          },
+          "material_versions": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "tier_treatment": {
+            "type": "string",
+            "minLength": 1
+          },
+          "command": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "required_support_files": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "optional_support_files": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "execution_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "skipped_tests",
+        "xfailed_tests",
+        "xpassed_tests",
+        "collection_failed",
+        "no_tests_collected",
+        "unexpected_governed_mutation"
+      ],
+      "properties": {
+        "skipped_tests": {
+          "const": "FAIL"
+        },
+        "xfailed_tests": {
+          "const": "FAIL"
+        },
+        "xpassed_tests": {
+          "const": "FAIL"
+        },
+        "collection_failed": {
+          "const": "FAIL"
+        },
+        "no_tests_collected": {
+          "const": "FAIL"
+        },
+        "unexpected_governed_mutation": {
+          "const": "FAIL"
+        }
+      }
+    }
+  }
+}
