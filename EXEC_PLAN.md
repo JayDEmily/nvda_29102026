@@ -1,5 +1,15 @@
 # NVDA V2 — ACTIVE successor ExecPlan: Gate 5 execution
 
+## Current checkpoint — 19 October 2026: concrete control candidate prepared
+
+The owner requested continuation with G5.2 at08:44. Its required G5.1 control/M00/bootstrap prerequisites remain open. Under existing authority, an isolated concrete G01 candidate is prepared on `work/v2-sqlite-control-candidate-20261019`, commit `1bec046d6d1a0c310bfd197de70e9a00c3d80955`. The active working tree retains its previous control/production bytes; the full candidate branch and exact12-path patch are preserved for the already-required concrete-diff acceptance. See `handoff/foundation_implementation/control_candidate/REVIEW_AND_ACCEPTANCE_20261019.md` and its SHA-bound patch.
+
+**Current ledger:** G5.1 AWAITING_CONCRETE_CONTROL_DIFF_ACCEPTANCE; G5.2 NOT_STARTED; G5.3 NOT_AUTHORISED; G6 NOT_OPEN. The candidate has actual missing-capability RED, independently reviewed mechanics, an admission-history repair proved RED→GREEN,112passing architecture/bootstrap tests, clean scoped tool typing/lint and explicit pending product states. Two inherited full-tree lint findings remain. No real M00 SQLite/product generation or foundation allocation exists. Independent review found a revocation gap at the earlier candidate; the author repaired it and verified the full suite, without claiming independent re-review or final control acceptance.
+
+The immediate decision is acceptance of the exact concrete control diff before application, as already required by §4 below and incorporated brief §10. This is not a repeat request for version3 implementation authority. After that application, actual M00 proof/admission/RED→GREEN and independent control/bootstrap closure still precede G5.2. The following environment and earlier checkpoints remain historical records.
+
+---
+
 ## Current checkpoint — 19 October 2026: version 3 accepted; environment preparation
 
 The owner answered “Yes, I do.” at08:28:55 Melbourne to the explicit question “Do you accept version 3 and its incorporated proof contracts for bounded G5.1/G5.2 implementation?” This accepts the exact delivered version3 brief SHA-256 `3ad4cdc9ffba4cf91ff9a27edf1dd3b1a9824a421514bb4b5a2cc1b9c504f233` and incorporated companions at baseline `a263a7b30e1bcf22407d9f0ee00a4503a8dea260`. The native binding now records that genuine acceptance and createMneutral_market_measurement_truth/modifyM00/G01/A00 intents. Accepted brief/companion bytes remain unchanged; their original proposed-status prose is historical, not a new approval request.
