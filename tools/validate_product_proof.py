@@ -60,7 +60,10 @@ def _allowed_authority_bindings(bicp: dict[str, Any]) -> dict[str, set[str]]:
     return allowed
 
 
-def validate_product_proof(repository_root: Path) -> list[str]:
+def _validate_legacy_product_proof(
+    repository_root: Path,
+    accounted_paths: set[str] | None = None,
+) -> list[str]:
     config_root = repository_root / "config" / "product_proof"
     schema_root = repository_root / "schemas"
     specs = (
@@ -109,8 +112,7 @@ def validate_product_proof(repository_root: Path) -> list[str]:
     if route_ids != authority["routed_authority_ids"]:
         configured_route_ids = authority["routed_authority_ids"]
         raise ValueError(
-            f"routed authority mismatch; BICP={route_ids}, "
-            f"configured={configured_route_ids}"
+            f"routed authority mismatch; BICP={route_ids}, configured={configured_route_ids}"
         )
 
     registry = ArchitectureRegistry.from_repository(repository_root)
@@ -136,20 +138,18 @@ def validate_product_proof(repository_root: Path) -> list[str]:
 
     physical_root = repository_root / "tests" / "product"
     physical_paths = (
-        {
-            path.relative_to(repository_root).as_posix()
-            for path in physical_root.rglob("test_*.py")
-        }
+        {path.relative_to(repository_root).as_posix() for path in physical_root.rglob("test_*.py")}
         if physical_root.exists()
         else set()
     )
     admitted_paths = set(family_paths)
+    if accounted_paths is not None:
+        physical_paths = accounted_paths
     if physical_paths != admitted_paths:
         unadmitted = sorted(physical_paths - admitted_paths)
         missing = sorted(admitted_paths - physical_paths)
         raise ValueError(
-            f"product-test admission mismatch; unadmitted={unadmitted}, "
-            f"missing={missing}"
+            f"product-test admission mismatch; unadmitted={unadmitted}, missing={missing}"
         )
 
     obligation_by_id = {item["proof_id"]: item for item in product_obligations}
@@ -163,13 +163,11 @@ def validate_product_proof(repository_root: Path) -> list[str]:
         unknown = set(obligation_ids) - set(required_ids)
         if unknown:
             raise ValueError(
-                f"family {family['id']} cites non-current product obligations: "
-                f"{sorted(unknown)}"
+                f"family {family['id']} cites non-current product obligations: {sorted(unknown)}"
             )
         if set(obligation_ids) & architecture_obligations:
             raise ValueError(
-                f"family {family['id']} contaminates product proof with "
-                "architecture obligations"
+                f"family {family['id']} contaminates product proof with architecture obligations"
             )
         if set(obligation_ids) & forbidden:
             raise ValueError(f"family {family['id']} cites forbidden predecessor proof IDs")
@@ -205,9 +203,7 @@ def validate_product_proof(repository_root: Path) -> list[str]:
                 )
         expected_command = f"python -m pytest {family['path']}"
         if family["command"] != expected_command:
-            raise ValueError(
-                f"family {family['id']} command must be exactly {expected_command!r}"
-            )
+            raise ValueError(f"family {family['id']} command must be exactly {expected_command!r}")
 
     aggregates = aggregates_doc["aggregates"]
     if len(aggregates) != 1:
@@ -249,13 +245,31 @@ def validate_product_proof(repository_root: Path) -> list[str]:
     ]
 
 
+def validate_product_proof(
+    repository_root: Path,
+    claim_id: str = "raw_signal_occurrence_truth_sqlite",
+) -> list[str]:
+    from product_proof_claims import load_product_proof_claim
+
+    claim = load_product_proof_claim(repository_root, claim_id)
+    return [
+        "PASS: control validity only; this is not executed product proof",
+        f"claim: {claim.claim_id} profile={claim.profile} state={claim.state}",
+        f"target: {claim.target_id} status={claim.target_status}",
+        f"authority_sha256: {claim.authority_sha256}",
+        f"generation_sha256: {claim.generation_sha256}",
+        f"declared physical families: {len(claim.families)}",
+    ]
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--repository", type=Path)
+    parser.add_argument("--claim", default="raw_signal_occurrence_truth_sqlite")
     args = parser.parse_args()
     root = (args.repository or Path(__file__).resolve().parents[1]).resolve()
     try:
-        for line in validate_product_proof(root):
+        for line in validate_product_proof(root, args.claim):
             print(line)
     except Exception as exc:  # fail closed with attributable message
         print(f"FAIL: {exc}")

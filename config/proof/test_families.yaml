@@ -46,7 +46,7 @@ test_families:
     path: tests/architecture/test_proof_control.py
     tier: Tier A
     lifecycle: current_blocking
-    proposition_ids: [AK-PROOF-001, AK-PROOF-002]
+    proposition_ids: [AK-PROOF-001, AK-PROOF-002, AK-INGRESS-001, AK-INGRESS-002]
     proof_block_id: proof_control
     promotion_sets: [architecture_kernel]
   - id: minimal_imports

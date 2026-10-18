@@ -2,6 +2,14 @@
 
 Date: 17 October 2026 — Australia/Melbourne.
 
+## Concrete control application authorised — 19 October 2026
+
+At09:08:04 Melbourne the owner answered “Yes, I do.” to the exact supplied candidate-application question. Reference `owner-chat/20261019T090804/control-candidate-1bec046` records external acceptance of candidate `1bec046d6d1a0c310bfd197de70e9a00c3d80955`, tree `91e8b3ad2d2119360b87a510f3dcbe59737e4b58`, and patch SHA256 `74edd8eff5e9b2404a3279a113c9cf69e1a3882946e9aca9e4bcb89e7f05ed7a`. Starting active HEAD is `8bf588c715a80046b8d50999e89597ef84126732`. The preceding full-Git delivery SHA256 is `32b0b130a8ac3f8932fb13d668cb85f7bc399c6799a8ed7c1d6a7b1879eeef57`. No repeat acceptance of the already accepted version3 brief is required.
+
+The exact twelve-path diff is mechanically applied after its raw hash and clean applicability are checked. This applies the independently reviewed/repaired candidate; it adds no extra source/schema/test requirement and changes no production owner. Both actual product admission pointers remain null. The original test-first checkpoint and review/repair lineage remain on the retained candidate branch. Authoring a duplicate RED or altering accepted proof/control bytes would not add evidence for exact patch application.
+
+G5.1 resumes at actual-checkout control verification, followed by actual M00 SQLite physical proof preparation/review/admission. G5.2 remains NOT_STARTED behind actual M00 regression, final independent control/M00 disposition and lawful bootstrap/reader admission. No foundation owner is allocated and no M00/A00 storage behaviour is implemented by this application. The final clean architecture/product-state observations for this checkout will be recorded after execution, separately from the earlier candidate results.
+
 ## Concrete control prerequisite for G5.2 — 19 October 2026
 
 Owner instruction at08:44 requested G5.2 continuation. G5.1 remained open, so work continued through its authorised prerequisite: a concrete isolated control candidate, without applying the unaccepted diff to the active tree. Baseline `6ba0314750627ba568552b5f502d4f77428ddb4c`; RED `a75d2be`; independently reviewed mechanics `9b53f9333281c938b9e7ea383c4386029a38e6e4`; repaired candidate `1bec046d6d1a0c310bfd197de70e9a00c3d80955`, tree `91e8b3ad2d2119360b87a510f3dcbe59737e4b58`. The exact12-path patch SHA256 is `74edd8eff5e9b2404a3279a113c9cf69e1a3882946e9aca9e4bcb89e7f05ed7a`. Its candidate branch is retained in this full Git repository. Detailed scope, initial failures, independent findings, repairs, actual commands/results and the exact acceptance decision are in `control_candidate/REVIEW_AND_ACCEPTANCE_20261019.md`.

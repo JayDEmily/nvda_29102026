@@ -1,5 +1,15 @@
 # NVDA V2 — ACTIVE successor ExecPlan: Gate 5 execution
 
+## Current checkpoint — 19 October 2026: concrete control diff accepted and applied
+
+At09:08:04 Melbourne the owner answered “Yes, I do.” to “Do you accept applying candidate `1bec046`?” This accepts the exact twelve-path control diff to `1bec046d6d1a0c310bfd197de70e9a00c3d80955`, patch SHA256 `74edd8eff5e9b2404a3279a113c9cf69e1a3882946e9aca9e4bcb89e7f05ed7a`, supplied in the preceding full-Git handoff. Acceptance reference: `owner-chat/20261019T090804/control-candidate-1bec046`. The patch is applied to the existing active work branch; no concrete-diff acceptance gap remains.
+
+**Current ledger:** G5.1 IN_PROGRESS_CONTROL_APPLIED_M00_PROOF_REQUIRED; G5.2 NOT_STARTED; G5.3 NOT_AUTHORISED; G6 NOT_OPEN. Applied control bytes must match the accepted candidate exactly. Verify them in this actual checkout, preserve the original null pointers, and then continue the four-family M00 proof preparation/review/admission before storage behaviour. Actual M00 SQLite GREEN, final independent control/M00 disposition and lawful foundation bootstrap/reader admission remain necessary for G5.1 closure. Acceptance/application alone does not discharge them.
+
+The existing root plan/record retain the execution ledger. The executing-plans and proof-before-behaviour workflows continue within that single plan. Earlier independently observed RED/repair evidence is retained; no new test or production implementation is invented merely to repeat the accepted patch application. Main and all uncommissioned programme work remain outside this execution scope.
+
+---
+
 ## Current checkpoint — 19 October 2026: concrete control candidate prepared
 
 The owner requested continuation with G5.2 at08:44. Its required G5.1 control/M00/bootstrap prerequisites remain open. Under existing authority, an isolated concrete G01 candidate is prepared on `work/v2-sqlite-control-candidate-20261019`, commit `1bec046d6d1a0c310bfd197de70e9a00c3d80955`. The active working tree retains its previous control/production bytes; the full candidate branch and exact12-path patch are preserved for the already-required concrete-diff acceptance. See `handoff/foundation_implementation/control_candidate/REVIEW_AND_ACCEPTANCE_20261019.md` and its SHA-bound patch.
