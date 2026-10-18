@@ -1,0 +1,40 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/8641b5bf92db/sqlite_authority_work/repository
+configfile: pyproject.toml
+collected 112 items
+
+tests/architecture/test_activation_readiness.py ............             [ 10%]
+tests/architecture/test_dependency_direction.py ......                   [ 16%]
+tests/architecture/test_identifier_taxonomy.py .....................     [ 34%]
+tests/architecture/test_implementation_authority_ingress.py ............ [ 45%]
+...                                                                      [ 48%]
+tests/architecture/test_object_lifecycle.py ...                          [ 50%]
+tests/architecture/test_proof_control.py ............................... [ 78%]
+..........                                                               [ 87%]
+tests/architecture/test_public_seam_law.py .....                         [ 91%]
+tests/architecture/test_registry_schema.py .                             [ 92%]
+tests/architecture/test_static_typecheck.py ...                          [ 95%]
+tests/bootstrap/test_legacy_exclusion.py ...                             [ 98%]
+tests/bootstrap/test_minimal_imports.py ..                               [100%]
+
+============================= 112 passed in 32.20s =============================
+architecture objects: 6
+active runtime modules: 1
+implementation allocations: 2
+admitted test families: 11
+promotion sets: 1
+dependency/public-seam violations: 0
+promotion set: architecture_kernel
+resolved test paths: 11
+  tests/architecture/test_activation_readiness.py
+  tests/architecture/test_dependency_direction.py
+  tests/architecture/test_identifier_taxonomy.py
+  tests/architecture/test_implementation_authority_ingress.py
+  tests/architecture/test_object_lifecycle.py
+  tests/architecture/test_proof_control.py
+  tests/architecture/test_public_seam_law.py
+  tests/architecture/test_registry_schema.py
+  tests/architecture/test_static_typecheck.py
+  tests/bootstrap/test_legacy_exclusion.py
+  tests/bootstrap/test_minimal_imports.py
