@@ -1,5 +1,15 @@
 # NVDA V2 — ACTIVE successor ExecPlan: Gate 5 execution
 
+## Current checkpoint — 19 October 2026: version 3 accepted; environment preparation
+
+The owner answered “Yes, I do.” at08:28:55 Melbourne to the explicit question “Do you accept version 3 and its incorporated proof contracts for bounded G5.1/G5.2 implementation?” This accepts the exact delivered version3 brief SHA-256 `3ad4cdc9ffba4cf91ff9a27edf1dd3b1a9824a421514bb4b5a2cc1b9c504f233` and incorporated companions at baseline `a263a7b30e1bcf22407d9f0ee00a4503a8dea260`. The native binding now records that genuine acceptance and createMneutral_market_measurement_truth/modifyM00/G01/A00 intents. Accepted brief/companion bytes remain unchanged; their original proposed-status prose is historical, not a new approval request.
+
+**Current ledger:** G5.1 IN_PROGRESS_ENVIRONMENT_AND_CONTROL_PREPARATION; G5.2 NOT_STARTED; G5.3 NOT_AUTHORISED; G6 NOT_OPEN. No leaf is complete. Establish the exact offline3.12environment, then mechanical native validation and separately reviewable control candidate. The concrete control-diff acceptance, independent proof review/admission and actual M00 SQLite regression remain required; accepting version3 does not certify unwritten control/storage behaviour. G5.2 stays behind G5.1. No new approval of the trusted-application choice or these exact brief bytes is needed.
+
+Execution stays in the existing separate sandbox checkout/work branch, not main, another host or the user's PC. The existing root ledger/record are retained instead of creating a competing skill plan. No storage production change precedes admitted independently derived RED. The environment unit may make only the prescribed Python/Ruff/mypy and optional/dev Psycopg metadata changes plus the complete hash-recorded offline bundle; missing infrastructure is not behavioural RED. All earlier checkpoints below are retained historical evidence.
+
+---
+
 ## Latest checkpoint — 18 October 2026: exact SQLite package prepared
 
 `handoff/foundation_implementation/authority/SQLITE_IMPLEMENTATION_BRIEF_PROPOSED.md`, version3, raw SHA-256 `3ad4cdc9ffba4cf91ff9a27edf1dd3b1a9824a421514bb4b5a2cc1b9c504f233`, now supplies the concrete physical/transaction/public-storage contract, M00 SQLite regression and exact incorporated proof/control companions. The accepted isolation direction remains unchanged. Added projection `modify A00` is explicit because production construction changes; proposed native intents are createMneutral_market_measurement_truth plus modifyM00/G01/A00, never a supplied numeric create ID.

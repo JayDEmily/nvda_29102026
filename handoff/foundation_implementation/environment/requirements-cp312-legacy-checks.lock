@@ -1,0 +1,4 @@
+# Explicit optional PostgreSQL client only for retained architecture imports.
+# No server, database, subscription or SQLite runtime requirement.
+-r requirements-cp312-dev.lock
+psycopg-binary==3.3.4 --hash=sha256:e7510c37550f91a187e3660a8cc50d4b760f8c3b8b2f89ebc5698cd2c7f2c85d
