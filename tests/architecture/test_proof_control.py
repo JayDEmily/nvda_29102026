@@ -314,6 +314,26 @@ def test_historical_backend_is_accounted_but_not_executable(tmp_path):
     api = _controls()
     claim = api.load_product_proof_claim(ROOT, "raw_signal_occurrence_truth_product")
     assert claim.state == "HISTORICAL_NOT_RUNNABLE" and len(claim.families) == 6
+    root = _copy_candidate(tmp_path)
+    assert _run_control_probe(root).returncode == 4
+    env = dict(os.environ, PYTHONPATH=str(root / "tools") + os.pathsep + str(root / "src"))
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(root / "tools/run_product_proof_gate.py"),
+            "--aggregate",
+            "raw_signal_occurrence_truth_product",
+        ],
+        cwd=root,
+        env=env,
+        text=True,
+        capture_output=True,
+    )
+    reason = json.loads((root / "config/product_proof/claims.json").read_text())["claims"][0][
+        "reason"
+    ]
+    assert result.returncode == 4
+    assert reason in result.stdout
 
 
 def test_sqlite_claim_target_uses_existing_m00_modify_intent(tmp_path):
@@ -436,6 +456,53 @@ def test_mutation_during_observed_run_is_rejected(tmp_path):
     )
     result = _run_control_probe(root)
     assert result.returncode == 6, result.stdout + result.stderr
+
+
+@pytest.mark.parametrize("mode", ["reinstate_uncommitted", "reinstate_committed", "new_generation"])
+def test_revoked_generation_requires_fresh_admission(tmp_path, mode):
+    api = _controls()
+    root = _copy_candidate(tmp_path)
+    entry, _, record, _ = _control_generation(root)
+    assert _run_control_probe(root).returncode == 0
+    path = root / entry["admission_path"]
+    old_pointer = json.loads(path.read_text())
+    _json_write(path, {"schema_version": "1.0", "current_generation": None})
+    subprocess.run(["git", "add", "."], cwd=root, check=True)
+    commit = [
+        "git",
+        "-c",
+        "user.name=Control fixture",
+        "-c",
+        "user.email=fixture@example.invalid",
+        "commit",
+        "-qm",
+    ]
+    subprocess.run([*commit, "revoke generation1"], cwd=root, check=True)
+    assert api.load_product_proof_claim(root, entry["claim_id"]).state == "INCOMPLETE_COVERAGE"
+    if mode == "new_generation":
+        record["generation"] = 2
+        record["previous_generation"] = old_pointer["current_generation"]
+        record["adequacy_review_ref"] = "control-fixture/new-review"
+        record["admission_authority_ref"] = "control-fixture/new-admission"
+        name = Path(entry["admission_path"]).parent / "generations/0002.json"
+        _json_write(root / name, record)
+        _json_write(
+            path,
+            {
+                "schema_version": "1.0",
+                "current_generation": {"path": name.as_posix(), "sha256": _sha(root / name)},
+            },
+        )
+        assert api.load_product_proof_claim(root, entry["claim_id"]).state == "READY_FOR_PROOF"
+    else:
+        _json_write(path, old_pointer)
+        if mode == "reinstate_committed":
+            subprocess.run(["git", "add", "."], cwd=root, check=True)
+            subprocess.run(
+                [*commit, "counterfeit old admission reinstatement"], cwd=root, check=True
+            )
+        with pytest.raises(ValueError, match=r"revoked|history|advance"):
+            api.load_product_proof_claim(root, entry["claim_id"])
 
 
 def test_outcome_positive_and_phase_corruption():

@@ -33,6 +33,11 @@ def run_product_proof(repository_root: Path, aggregate_id: str) -> int:
         print(f"FAIL: {exc}")
         return 3 if "unknown" in str(exc) else 1
     print(f"product-proof aggregate: {claim.claim_id} state={claim.state}")
+    if claim.state == "HISTORICAL_NOT_RUNNABLE":
+        catalogue = read_json(root / "config/product_proof/claims.json")
+        selected = next(row for row in catalogue["claims"] if row["claim_id"] == claim.claim_id)
+        print(f"FAIL: {selected['reason']}")
+        return 4
     if claim.state != "READY_FOR_PROOF" or claim.target_status != "active":
         print("FAIL: selected claim has no ready active admitted proof target")
         return 4

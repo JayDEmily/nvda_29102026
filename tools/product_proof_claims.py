@@ -253,6 +253,73 @@ def _target(root: Path, target: dict[str, Any]) -> tuple[str | None, str | None]
     return actual.id, actual.status
 
 
+def _admission_history(root: Path, entry: dict[str, Any], pointer: dict[str, Any]) -> None:
+    """Retained Git transitions distinguish first admission from revoked reuse.
+
+    Pure document fixtures may have no Git history. Actual execution separately
+    requires a committed clean repository; inspect every retained pointer change
+    and then the current bytes, so committing a counterfeit transition cannot
+    erase revocation. Never infer admission from the latest pointer alone.
+    """
+    directory = str(PurePosixPath(entry["admission_path"]).parent)
+    completed = subprocess.run(
+        ["git", "log", "--reverse", "--format=%H", "--", directory],
+        cwd=root,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    if completed.returncode != 0:
+        return
+    previous: dict[str, str] | None = None
+    last_admitted: dict[str, str] | None = None
+    highest = 0
+    snapshots: list[tuple[str | None, dict[str, Any]]] = []
+    for commit in completed.stdout.splitlines():
+        content = subprocess.run(
+            ["git", "show", f"{commit}:{entry['admission_path']}"],
+            cwd=root,
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+        if content.returncode == 0:
+            historical = json.loads(content.stdout, object_pairs_hook=_pairs)
+            _schema(root, historical, "product_proof_admission.schema.json")
+            if set(historical) != {"schema_version", "current_generation"}:
+                raise ValueError("invalid historical admission pointer")
+            snapshots.append((commit, historical))
+    snapshots.append((None, pointer))
+    for historical_commit, historical in snapshots:
+        reference = historical["current_generation"]
+        if reference is None:
+            previous = None
+            continue
+        safe_path(root, reference["path"])
+        if historical_commit is None:
+            raw = (root / reference["path"]).read_bytes()
+        else:
+            raw = subprocess.check_output(
+                ["git", "show", f"{historical_commit}:{reference['path']}"],
+                cwd=root,
+            )
+        if hashlib.sha256(raw).hexdigest() != reference["sha256"]:
+            raise ValueError("admission history generation hash mismatch")
+        record = json.loads(raw, object_pairs_hook=_pairs)
+        _schema(root, record, "product_proof_admission.schema.json")
+        if "generation" not in record:
+            raise ValueError("invalid historical generation record")
+        if reference != previous:
+            if (
+                record["generation"] != highest + 1
+                or record["previous_generation"] != last_admitted
+            ):
+                raise ValueError("revoked/reused generation must advance admission history")
+            highest = record["generation"]
+            last_admitted = reference
+        previous = reference
+
+
 def _generation(
     root: Path,
     entry: dict[str, Any],
@@ -265,9 +332,12 @@ def _generation(
         return None, {}
     pointer = read_json(pointer_path)
     _schema(root, pointer, "product_proof_admission.schema.json")
+    if set(pointer) != {"schema_version", "current_generation"}:
+        raise ValueError("invalid admission pointer shape")
     reference = pointer["current_generation"]
     if reference is None:
         return None, {}
+    _admission_history(root, entry, pointer)
     prefix = str(PurePosixPath(entry["admission_path"]).parent / "generations") + "/"
     seen: set[str] = set()
     current: dict[str, Any] | None = None
