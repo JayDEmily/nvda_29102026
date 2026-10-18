@@ -2,6 +2,16 @@
 
 Date: 17 October 2026 — Australia/Melbourne.
 
+## Current documentary continuation — 18 October 2026
+
+The owner accepted SQLite trusted-application separation at17:38, then directed continuation. `authority/SQLITE_PROFILE_OWNER_AMENDMENT_20261018.md` now records that authority, exact baseline reconciliation, preserved domain guarantees, changed assurance boundary and dependency steps inside the existing G5 leaves. The accepted decision/rationale is preserved byte-for-byte in `evidence/NVDA_SANDBOX_COMPATIBILITY_DECISION_20261018.md`. The root ExecPlan has one overriding current amendment; its earlier body and the historical failure record below remain intact.
+
+Recovered baseline: commit `6bd7992daa1871a9f0c48cfb73b1ae961a80f57a`, tree `b8cb56b2118fc58a49746ea72f857a3bf924dbcb`; archive SHA-256 `ea4aefee6c9996cd9fda29bb828a1f4d0ff715914556ac135791a6eb2d25befa`. The original Gates3–4 assessed closure is an ancestor; later audit, PA-02, successor activation and the prior binding are preserved. Supplied predecessor transport digests match the existing record: PA-02 `6e55f114bee8085d3e4d368ba5f06540e400bbe24580cd5d2856e841a7acb97a`; recovered successor `743705d08d422f6901691934b0ce2fed100be332d816700ab6279fbede6dc0b3`. Full gzip EOF/CRC and baseline Git integrity checks were performed before changes; dangling historical objects were retained.
+
+Current state is G5.1 PARTIAL_BLOCKED_BY_REVISED_IMPLEMENTATION_CONTRACT_AND_PROOF_ADMISSION; G5.2 NOT_STARTED. The PostgreSQL namespace failure remains true historical evidence, but the accepted new profile no longer directs the worker to provision PostgreSQL. The first remaining invariant is a revised exact implementation/proof package for SQLite, not a new decision on the accepted assurance trade-off. No new native binding, allocated owner, product generation, control implementation, runtime pin or database adapter exists from this continuation.
+
+This pass changes only the root plan, this record, one scoped authority amendment and its byte-identical accepted-decision evidence. No test/application import/runtime-validator/lint/typecheck/database/provider operation ran. No independent review or gate/leaf acceptance is claimed. Source/config/tests, the previous exact brief/binding/companions, frozen governance, main, catalogue/workbook/register/backlog and Git history are preserved. File/hash/Git/archive checks establish those documentary/recovery claims only. The earlier sections below remain the original checkpoint evidence and do not override this later status.
+
 ## Authority and boundary
 
 Owner instruction at 23:11:58: “Okay, some space has been cleared so you can save. Um, execute the first leaf, or the first two leaves of gate five only and make available as downloads at the completion of each leaf.” Execution is bounded to G5.1 and, after its prerequisites, G5.2. Root activation identifies the exact adopted plan/brief and preserves the earlier closed root. This interpretation permits the leaves' required verification; it neither reruns the completed audit nor waives exact control-diff acceptance, independent review or other admission conditions. No new programme/domain law is created by the binding.
