@@ -8,7 +8,6 @@ from datetime import datetime
 from typing import Any
 
 from nvda_desk.architecture.registry import ArchitectureRegistry
-from nvda_desk.raw_signal_occurrence_truth._postgres import create_postgres_persistence
 from nvda_desk.raw_signal_occurrence_truth.api import (
     CaptureReceiptEvidenceRelationV1,
     CaptureReceiptPresenceAssessmentV1,
@@ -79,13 +78,10 @@ class Application:
 
         registered_policy = commands.register_capture_scope_policy(capture_scope_policy)
         authoritative_policy_ref = make_scope_policy_ref(
-            f"{registered_policy.scope_policy_id.value}@"
-            f"{registered_policy.scope_policy_version}"
+            f"{registered_policy.scope_policy_id.value}@{registered_policy.scope_policy_version}"
         )
         if scope_policy_ref != authoritative_policy_ref:
-            raise ValueError(
-                "scope_policy_ref must identify the policy accepted for this sequence"
-            )
+            raise ValueError("scope_policy_ref must identify the policy accepted for this sequence")
 
         capture = commands.realise_scheduled_capture_occurrence(
             scope_policy_ref=scope_policy_ref,
@@ -104,9 +100,7 @@ class Application:
             evidence_as_of_ts_utc=assessment_evidence_as_of_ts_utc,
             supersedes_assessment_ref=supersedes_assessment_ref,
         )
-        readback = reads.get_raw_observation_occurrence(
-            observation.observation_occurrence_id
-        )
+        readback = reads.get_raw_observation_occurrence(observation.observation_occurrence_id)
         return RawSignalSequenceResult(
             policy=registered_policy,
             capture=capture,
@@ -120,12 +114,13 @@ class Application:
 def create_application(
     *,
     postgres_dsn: str | None = None,
+    sqlite_path: str | None = None,
     raw_signal_owner_factory: _RawSignalOwnerFactory | None = None,
     raw_signal_eligibility_resolver: _RawSignalEligibilityResolver | None = None,
 ) -> Application:
     """Construct the admitted A00 -> M00 production composition.
 
-    The production path requires a PostgreSQL DSN and constructs the accepted technical
+    The production path requires exactly one store and constructs the accepted technical
     persistence mechanism before injecting it into M00. A bounded owner-factory-only path
     exists for proof of A00 delegation without fabricating a production database dependency.
     """
@@ -134,9 +129,25 @@ def create_application(
     if raw_signal_eligibility_resolver is not None:
         owner_kwargs["eligibility_resolver"] = raw_signal_eligibility_resolver
 
+    if postgres_dsn is not None and sqlite_path is not None:
+        raise ValueError("exactly one of postgres_dsn or sqlite_path is required")
+    if sqlite_path is not None:
+        if raw_signal_owner_factory is not None:
+            raise ValueError("raw_signal_owner_factory cannot be combined with sqlite_path")
+        if type(sqlite_path) is not str:
+            raise TypeError("sqlite_path must be a string")
+        if not sqlite_path:
+            raise ValueError("sqlite_path must be nonempty")
+        from nvda_desk.raw_signal_occurrence_truth._sqlite import create_sqlite_persistence
+
+        durability_port = create_sqlite_persistence(sqlite_path, create=False)
+        return Application(create_owner(durability_port=durability_port, **owner_kwargs))
+
     if postgres_dsn is None:
         if raw_signal_owner_factory is None:
-            raise ValueError("postgres_dsn is required for production application construction")
+            raise ValueError(
+                "exactly one store is required for production application construction"
+            )
         return Application(raw_signal_owner_factory(**owner_kwargs))
 
     if raw_signal_owner_factory is not None:
@@ -145,6 +156,8 @@ def create_application(
         )
     if type(postgres_dsn) is not str or not postgres_dsn.strip():
         raise ValueError("postgres_dsn must be a non-empty string")
+
+    from nvda_desk.raw_signal_occurrence_truth._postgres import create_postgres_persistence
 
     durability_port = create_postgres_persistence(postgres_dsn)
     owner = create_owner(durability_port=durability_port, **owner_kwargs)

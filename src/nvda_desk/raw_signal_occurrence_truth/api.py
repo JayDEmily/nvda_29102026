@@ -9,6 +9,14 @@ from struct import pack
 from typing import Literal, NoReturn, Protocol, cast
 
 
+class PersistenceFailureV1(RuntimeError):
+    """The requested persistence operation did not establish an acknowledged success."""
+
+    def __init__(self, message: str, *, outcome_uncertain: bool = False) -> None:
+        super().__init__(message)
+        self.outcome_uncertain = outcome_uncertain
+
+
 @dataclass(frozen=True, slots=True)
 class _OpaqueIdentity:
     value: str
@@ -2002,6 +2010,7 @@ def create_owner(
 
 
 __all__ = [
+    "PersistenceFailureV1",
     "CaptureReceiptEvidenceRelationV1",
     "CaptureReceiptPresenceAssessmentV1",
     "CaptureScopePolicyV1",
