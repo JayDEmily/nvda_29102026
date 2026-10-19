@@ -1,0 +1,66 @@
+F
+=================================== FAILURES ===================================
+__________________ test_d011_sqlite_commit_and_fresh_readback __________________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-3/test_d011_sqlite_commit_and_fr0')
+
+    def test_d011_sqlite_commit_and_fresh_readback(tmp_path):
+        assert sys.version_info[:3] == (3, 12, 14) and sqlite3.sqlite_version == "3.53.1"
+        raw, raw_path = raw_source(tmp_path)
+        f = foundation()
+        path = tmp_path / "foundation.sqlite"
+        config = configuration(f, raw.reads, storage=f.SQLiteStorageV1(str(path), True))
+>       o = f.create_owner(**config)
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/market_measurement/test_sqlite_boundary.py:55: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/nvda_desk/market_measurement_truth/api.py:325: in create_owner
+    return build_owner(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def build_owner(
+        *,
+        admission: f.OwnerAdmissionV1,
+        raw_projection_reader: f.RawProjectionReaderV1,
+        definitions: tuple[f.CalculationDefinitionV1, ...],
+        parameter_sets: tuple[f.CalculationParameterSetV1, ...],
+        input_selection_policies: tuple[f.InputSelectionPolicyVersionV1, ...],
+        unit_conventions: tuple[f.UnitConventionVersionV1, ...],
+        raw_projection_mappings: tuple[raw_api.RawSignalProjectionMappingV1, ...],
+        storage: f.MemoryStorageV1 | f.SQLiteStorageV1,
+        utc_now: Callable[[], datetime],
+    ) -> f.MeasurementOwnerV1:
+        if type(admission) is not f.OwnerAdmissionV1 or not callable(utc_now):
+            raise TypeError("exact admission and UTC clock are required")
+        if not callable(getattr(raw_projection_reader, "list_projected_raw_history", None)):
+            raise TypeError("declared M00 projection reader required")
+        state = _Memory()
+        groups = (
+            (definitions, f.CalculationDefinitionV1),
+            (parameter_sets, f.CalculationParameterSetV1),
+            (input_selection_policies, f.InputSelectionPolicyVersionV1),
+            (unit_conventions, f.UnitConventionVersionV1),
+            (raw_projection_mappings, raw_api.RawSignalProjectionMappingV1),
+        )
+        for records, cls in groups:
+            if type(records) is not tuple or any(type(record) is not cls for record in records):
+                raise TypeError("exact tuple of declared registration records required")
+            for record in records:
+                if canonical(record) != canonical(_expected(record)):
+                    raise ValueError("configuration is outside the accepted controlled D011 payload")
+                if isinstance(record, f.CalculationDefinitionV1):
+                    state.definitions[
+                        (record.derived_signal_id, record.calculation_definition_version)
+                    ] = record
+                else:
+                    state.configuration[_key(record)] = record
+        if type(storage) is f.SQLiteStorageV1:
+>           raise NotImplementedError("G5.2 SQLite durability unit")
+E           NotImplementedError: G5.2 SQLite durability unit
+
+src/nvda_desk/market_measurement_truth/_catalogue.py:385: NotImplementedError
+=========================== short test summary info ============================
+FAILED tests/product/market_measurement/test_sqlite_boundary.py::test_d011_sqlite_commit_and_fresh_readback
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed in 0.10s
