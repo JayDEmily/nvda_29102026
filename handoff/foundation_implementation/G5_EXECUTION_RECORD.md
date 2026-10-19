@@ -1,5 +1,9 @@
 # Gate 5 execution and recovered checkpoint
 
+### D014 authored proof RETURN preserved — 20 October 2026, 10:14 Melbourne
+
+Actual e13ccd9 independent RETURN ref independent-review/g61-d014-authored-proof/e13ccd9/20261020, full3files/reportSHA5936ebae8c91ed3648f437d0f20221ebbb2aa747cbbef4cebaf8276359066cbb preserved exactly/read. Main agrees F001duplicate order/page/native representation RECURRENT_CLASS; F002exactPK/CHECK/FK declaration ISOLATED. Concrete bounded proof RETURN/ruling in G6_1_D014_PROOF_REVIEW_20261020.md, including incidental total-call-bound scope correction. No product failure/execution/admission/gen/runtime inferred. Preserve then repair new unadmitted proof, revised adequacy before admission/RED/behaviour. Authoreddelta over85b83 verified/saved; G6.1open/123/all83 unenabled.
+
 ### D014 physical proof authored, not admitted — 20 October 2026, 10:10 Melbourne
 
 Corrected bounded-control fullGit85b83e9/tree de78be41 saved; SHA256c8aabfd121910c2da3b6266ca94c87de6863646b6abc7c192550379ce05fd072/101868716bytes,1891tracked workingbytes/modes/links/GitHEAD-tree/fsck0 verified. Authored exactly new four physical D014 sources/six required names, literal support and10negative static diagnostic sites; root records exacthashes. Actual syntax/static-source/scopedRuff checks only. No domain execution/collection/newAPI type success/gen/runtime inferred. Required independent authored adequacy precedes immutable admission/intendedRED. Standing delegation not a waiver; G6.1open,remaining123/all83.

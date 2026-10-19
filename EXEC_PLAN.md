@@ -1,5 +1,9 @@
 # NVDA V2 — ACTIVE successor ExecPlan: Gate 5 execution
 
+## D014 authored proof returned for bounded repair — 20 October 2026, 10:14 Melbourne
+
+Actual independent-review/g61-d014-authored-proof/e13ccd9/20261020 RETURN; all3files preserved byte-identically in d014_proof_review_initial_20261020/, reportSHA5936ebae8c91ed3648f437d0f20221ebbb2aa747cbbef4cebaf8276359066cbb. Main read full report/script/results and upholds F001ImportantRECURRENT_CLASS duplicate order/pages/native-representation discriminator gap and F002ImportantISOLATED declaredPK/CHECK/FK versus current-row integrity gap. G6_1_D014_PROOF_REVIEW_20261020.md records exact closure/lineage plus main operation-scope ruling removing unmandated total-call convenience bound while retaining all refusal/pagecap/history propositions. Actual compile/static/Ruff/documentarySQLite observations only; no domain execution or candidate product defect. Nullpointer/no generation/runtime. Preserve firstRETURN then bounded unadmitted source repair/revised independent adequacy; do not advance§7.3.2 admission/RED or behaviour yet. Authoreddeltae13ccd9 over saved85b83 fullbase recoverychecked/clean/fsck/fourbytes and saved, SHA10ab63db5e4716f85fe79663bb2c03ca2f4f21de2685de4838e2cd4f9c99c31f/20730bytes. G6.1open,remaining123/all83.
+
 ## D014 physical proof authored; adequacy review required — 20 October 2026, 10:10 Melbourne
 
 Actual corrected control checkpoint85b83e91649fef0f259796b722c90b0771d86be0/tree de78be413655146bf7a623468aeaf6d197e90d16 fullGit saved successfully,101868716bytes/SHA256c8aabfd121910c2da3b6266ca94c87de6863646b6abc7c192550379ce05fd072; all1891tracked workingbytes/modes/links and extractedGitHEAD/tree/fsck0 verified. Original locally verified72d2daf archive remains separate, includes the transparently corrected timestamp error; not substituted for corrected delivery. Bounded control report also saved.
