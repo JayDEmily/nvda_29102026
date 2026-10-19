@@ -1,0 +1,97 @@
+"""Authority-derived G5.3 sequences; no Worker configuration/helper imports."""
+from datetime import UTC, datetime, timedelta
+from decimal import Decimal
+from dataclasses import replace
+from pathlib import Path
+import hashlib, pickle, subprocess, sys, json, tempfile
+from nvda_desk.market_measurement_truth import api as f
+from nvda_desk.raw_signal_occurrence_truth import api as r
+from nvda_desk.raw_signal_occurrence_truth._sqlite import create_sqlite_persistence
+
+BASE=Path('/workspace/scratch/d549b6d808a9/g53-review')
+ASOF=datetime(2026,10,16,1,tzinfo=UTC)
+BRIEF='3ad4cdc9ffba4cf91ff9a27edf1dd3b1a9824a421514bb4b5a2cc1b9c504f233'
+PROVIDER='foundation-pilot-fixture'
+SCOPE=PROVIDER+'/cash_quote_v1'
+ADMISSION=f.OwnerAdmissionV1('M02',BRIEF)
+AUTH=(
+ f.AuthorityArtifactRefV1('handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md','603b850802a418780109095e7ae69bcece449da79fb24140a6d50297605e927c'),
+ f.AuthorityArtifactRefV1('handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv','67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549'),
+)
+clock=[ASOF+timedelta(seconds=1)]
+MAPPINGS=tuple(r.RawSignalProjectionMappingV1('mmt-pilot-'+side,v,r.RawSignalCatalogueId(rid),PROVIDER,'cash_quote_v1',('quote',side),'price',()) for v in (1,2) for side,rid in [('bid','R034'),('ask','R035')])
+CONFIG=dict(admission=ADMISSION,
+ definitions=tuple(f.CalculationDefinitionV1('D011','D011-MIDPOINT-'+str(v),'K02_ALGEBRA','(R034 + R035) / 2',('R034','R035'),(),'P_BASIC','price','scalar_decimal',AUTH) for v in (1,2)),
+ parameter_sets=tuple(f.CalculationParameterSetV1('mmt-pilot-basic',v,'P_BASIC','NVDA',('NVDA',)) for v in (1,2)),
+ input_selection_policies=tuple(f.InputSelectionPolicyVersionV1('mmt-pilot-selection',v,('subject_instrument',),timedelta(seconds=60),timedelta(seconds=10),('true_instant',),(),PROVIDER,'cash_quote_v1',SCOPE,100,1000) for v in (1,2)),
+ unit_conventions=tuple(f.UnitConventionVersionV1('mmt-pilot-price',v,'price','price',Decimal('1'),Decimal('0')) for v in (1,2)),
+ raw_projection_mappings=MAPPINGS,utc_now=lambda:clock[0])
+def req(v=1):
+ return f.CalculationRequestV1('D011','NVDA',ASOF,ASOF,'D011-MIDPOINT-'+str(v),f.VersionRefV1('mmt-pilot-basic',v),f.VersionRefV1('mmt-pilot-selection',v),(),tuple(f.RawInputBindingV1(rid,f.VersionRefV1('mmt-pilot-'+side,v),f.VersionRefV1('mmt-pilot-price',v),'NVDA') for side,rid in [('bid','R034'),('ask','R035')]))
+def obs(side,rid,n,value):
+ return r.RawObservationOccurrenceV1(concept_id=r.concept_id('raw_signal.raw_observation_occurrence'),contract_id=r.contract_id('nvda.raw_signal.RawObservationOccurrence.v1'),observation_occurrence_id=r.observation_occurrence_id('mmt-pilot-'+side+'-001'),delivery_artifact_ref=r.delivery_artifact_ref('mmt-pilot-delivery-001'),source_provider=r.provider_id(PROVIDER),native_record={'quote':{side:Decimal(value)}},received_ts_utc=ASOF-timedelta(seconds=2-n),ingestion_sequence=n,ingestion_sequence_scope=r.ingestion_sequence_scope(SCOPE),source_temporal_kind='true_instant',raw_signal_catalogue_ids=(r.RawSignalCatalogueId(rid),),source_variant='cash_quote_v1',subject_instrument='NVDA',native_units='price',source_timestamp_raw=(ASOF-timedelta(seconds=3-n)).isoformat().replace('+00:00','Z'),source_timezone_native='UTC')
+def history(owner):
+ return owner.reads.list_derived_history(derived_signal_id='D011',subject_instrument='NVDA',effective_at_or_before_utc=ASOF,knowledge_at_or_before_utc=ASOF,limit=100)
+
+with tempfile.TemporaryDirectory(prefix='direct-',dir=BASE) as temp:
+ temp=Path(temp)
+ raw=r.create_owner(durability_port=create_sqlite_persistence(str(temp/'raw.sqlite'),create=True))
+ raw.commands.admit_raw_observation_occurrence(obs('bid','R034',1,'100'))
+ raw.commands.admit_raw_observation_occurrence(obs('ask','R035',2,'102'))
+ path=temp/'foundation.sqlite'
+ owner=f.create_owner(raw_projection_reader=raw.reads,storage=f.SQLiteStorageV1(str(path),True),**CONFIG)
+ first=owner.materialise(req())
+ assert first is not None and first.result==Decimal('101')
+ clock[0]+=timedelta(days=1)
+ again=owner.materialise(req())
+ assert again==first and again.calculated_at_utc==ASOF+timedelta(seconds=1)
+ print('PASS direct SQLite materialise -> later-clock retry',flush=True)
+ before=history(owner)
+ assert owner.materialise(replace(req(),derived_signal_id='D006')) is None
+ assert history(owner)==before
+ print('PASS direct refused D006 -> bounded history unchanged',flush=True)
+ second=owner.materialise(req(2))
+ assert second is not None and second.derived_occurrence_id!=first.derived_occurrence_id
+ assert owner.reads.get_derived_occurrence(first.derived_occurrence_id)==first
+ assert owner.reads.get_derived_occurrence(second.derived_occurrence_id)==second
+ assert len(history(owner))==2
+ print('PASS direct version change -> old/new exact reads',flush=True)
+ child='''
+from nvda_desk.market_measurement_truth import api as f
+import sys,pickle
+r=f.create_reader(admission=f.OwnerAdmissionV1('M02',sys.argv[2]),storage=f.SQLiteReadStorageV1(sys.argv[1]))
+old=r.get_derived_occurrence(sys.argv[3]); new=r.get_derived_occurrence(sys.argv[4])
+assert not hasattr(r,'materialise')
+assert r.get_calculation_definition(derived_signal_id='D011',calculation_definition_version='D011-MIDPOINT-1') is not None
+for occurrence in (old,new):
+ assert r.get_parameter_set(occurrence.parameter_context_refs[0]) is not None
+ assert r.get_input_selection_policy(occurrence.parameter_context_refs[1]) is not None
+ assert all(r.get_unit_convention(ref) is not None for ref in occurrence.convention_refs)
+ assert all(r.get_projection_mapping(item.projection_mapping_ref) is not None for item in occurrence.raw_input_lineage)
+sys.stdout.buffer.write(pickle.dumps((old,new)))
+'''
+ output=subprocess.check_output([sys.executable,'-c',child,str(path),BRIEF,first.derived_occurrence_id,second.derived_occurrence_id])
+ assert pickle.loads(output)==(first,second)
+ print('PASS fresh-process read-only SQLite reopen -> complete typed facts/references',flush=True)
+
+ # An adversarial declared public carrier exercises consistency independent of eligibility.
+ class ConflictReader:
+  def __init__(self,mode): self.mode=mode
+  def list_projected_raw_history(self,rid,**kwargs):
+   page=raw.reads.list_projected_raw_history(rid,**kwargs)
+   if rid.value!='R034': return page
+   item=page.items[0]
+   if self.mode=='different-id-ineligible':
+    bad=replace(item,observation_occurrence_id=r.observation_occurrence_id('other'),native_units='shares')
+   elif self.mode=='same-id-ineligible': bad=replace(item,native_units='shares')
+   elif self.mode=='same-id-nonfinite': bad=replace(item,native_value=Decimal('NaN'))
+   elif self.mode=='same-id-stale': bad=replace(item,source_timestamp_raw='2026-10-16T00:58:00Z')
+   elif self.mode=='same-id-eligible': bad=replace(item,native_value=Decimal('999'))
+   elif self.mode=='identical': bad=item
+   return r.ProjectedRawHistoryPageV1((item,bad),None)
+ for mode in ('identical','different-id-ineligible','same-id-eligible','same-id-ineligible','same-id-nonfinite','same-id-stale'):
+  component=f.create_owner(raw_projection_reader=ConflictReader(mode),storage=f.MemoryStorageV1(),**CONFIG)
+  result=component.materialise(req())
+  print('duplicate-consistency',mode, 'REFUSED' if result is None else 'MATERIALISED '+str(result.result),flush=True)
+  if mode in ('same-id-ineligible','same-id-nonfinite','same-id-stale'):
+   assert result is None, 'REQUIRED INVARIANT FAILURE: inconsistent same-observation content accepted when one carrier is ineligible'

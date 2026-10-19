@@ -206,3 +206,93 @@ def test_real_public_m00_conflicting_equal_rank_and_identical_retry():
         observation("bid", identity="second", sequence=1, receipt=ASOF, value=Decimal("104"))
     )
     assert o.materialise(request(f)) is None
+
+
+@pytest.mark.parametrize(
+    "change",
+    [
+        {"native_units": "shares"},
+        {"source_timestamp_raw": "2026-10-16T00:58:00Z"},
+        {"received_ts_utc": ASOF + timedelta(microseconds=1)},
+        {"native_value": Decimal("NaN")},
+    ],
+)
+@pytest.mark.parametrize("ineligible_first", [False, True])
+@pytest.mark.parametrize("cross_page", [False, True])
+def test_duplicate_consistency_precedes_eligibility(change, ineligible_first, cross_page):
+    """Section5 algorithm3: one observation cannot carry two conflicting facts."""
+    raw = raw_api.create_owner()
+    for side in ("bid", "ask"):
+        raw.commands.admit_raw_observation_occurrence(observation(side))
+
+    class Reader:
+        def list_projected_raw_history(self, rid, **kwargs):
+            page = raw.reads.list_projected_raw_history(rid, **(kwargs | {"cursor": None}))
+            if rid.value == "R035":
+                return page
+            good = page.items[0]
+            bad = replace(good, **change)
+            pair = (bad, good) if ineligible_first else (good, bad)
+            if not cross_page:
+                return raw_api.ProjectedRawHistoryPageV1(pair, None)
+            if kwargs["cursor"] is None:
+                return raw_api.ProjectedRawHistoryPageV1(pair[:1], "1")
+            assert kwargs["cursor"] == "1"
+            return raw_api.ProjectedRawHistoryPageV1(pair[1:], None)
+
+    f = foundation()
+    owner = f.create_owner(**configuration(f, Reader()))
+    assert owner.materialise(request(f)) is None
+    assert (
+        owner.reads.list_derived_history(
+            derived_signal_id="D011",
+            subject_instrument="NVDA",
+            effective_at_or_before_utc=ASOF,
+            knowledge_at_or_before_utc=ASOF,
+            limit=100,
+        )
+        == ()
+    )
+
+
+@pytest.mark.parametrize("mode", ["identical", "unrelated-units", "unrelated-nonfinite"])
+@pytest.mark.parametrize("reverse", [False, True])
+@pytest.mark.parametrize("cross_page", [False, True])
+def test_duplicate_consistency_preserves_lawful_history(mode, reverse, cross_page):
+    raw = raw_api.create_owner()
+    for side in ("bid", "ask"):
+        raw.commands.admit_raw_observation_occurrence(observation(side))
+
+    class Reader:
+        def list_projected_raw_history(self, rid, **kwargs):
+            page = raw.reads.list_projected_raw_history(rid, **(kwargs | {"cursor": None}))
+            if rid.value == "R035":
+                return page
+            good = page.items[0]
+            other = good
+            if mode != "identical":
+                change = (
+                    {"native_units": "shares"}
+                    if mode == "unrelated-units"
+                    else {"native_value": Decimal("NaN")}
+                )
+                other = replace(
+                    good,
+                    observation_occurrence_id=raw_api.observation_occurrence_id("other"),
+                    **change,
+                )
+            # Repeat the unrelated ineligible fact too: no blanket native-value rejection.
+            items = (good, other, other)
+            if reverse:
+                items = tuple(reversed(items))
+            if not cross_page:
+                return raw_api.ProjectedRawHistoryPageV1(items, None)
+            if kwargs["cursor"] is None:
+                return raw_api.ProjectedRawHistoryPageV1(items[:1], "1")
+            assert kwargs["cursor"] == "1"
+            return raw_api.ProjectedRawHistoryPageV1(items[1:], None)
+
+    f = foundation()
+    result = f.create_owner(**configuration(f, Reader())).materialise(request(f))
+    assert result is not None and result.result == Decimal("101")
+    assert result.raw_input_lineage[0].observation_occurrence_id == "mmt-pilot-bid-001"

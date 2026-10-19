@@ -1,0 +1,11 @@
+control-exact-baseline exit 4 product-proof aggregate: neutral_market_measurement_truth_pilot state=READY_FOR_PROOF
+FAIL: selected claim has no ready active admitted proof target 
+control-null-pointer exit 4 product-proof aggregate: neutral_market_measurement_truth_pilot state=INCOMPLETE_COVERAGE
+FAIL: selected claim has no ready active admitted proof target 
+control-admitted-proof-change exit 1 FAIL: admitted family/support hash mismatch 
+control-cross-claim exit 1 FAIL: revoked/reused generation must advance admission history 
+Traceback (most recent call last):
+  File "/workspace/scratch/d549b6d808a9/g53-review/control_review.py", line 57, in <module>
+    assert 'claim' in p.stdout.lower()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
