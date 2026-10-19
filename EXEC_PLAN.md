@@ -1,5 +1,15 @@
 # NVDA V2 — ACTIVE successor ExecPlan: Gate 5 execution
 
+## G5.2 engineering leaf completed — 19 October 2026, 21:03 Melbourne
+
+The four sequential G5.2 units have supported-runtime evidence at source/config/proof candidate01080afc938eefedd6f8c385330876d3e2cb57d7, treeee97ac0759d8730f7334a7d89aeb4e5cd79b30ff. Public D011 boundary, complete selection/history, immutable identity/types and separate SQLite durability are implemented. Independently reviewed immutable generation3 SHA25655e2284c8ee790cf996c6af445a43b00b5e7b9706a2a5f10fbe53ed597f1d1e4 supports all seven pilot propositions. Separately authorised bootstrap development proof executes85cases with strict complete outcomes/no skips/xfails/deselection or governed mutation; it is expressly not the active-target aggregate. Actual M00 SQLite aggregate30PASS, retained M00 semantic regression416PASS, architecture promotion113PASS/11families/zero dependency-public-seam violations, full source/control mypy34files and scoped Ruff PASS. Standard Ruff retains exactly two inherited M01 E501 findings; no standard-lint success is claimed.
+
+Current ledger: G5.1 ACCEPTED_CLOSED; G5.2 ENGINEERING_LEAF_COMPLETE_BOOTSTRAP_CANDIDATE; G5.3 NOT_AUTHORISED; G6 NOT_OPEN. Actual M02 remains bootstrap/non-composable. Active-target foundation aggregate correctly refuses with exit4. No G5.3 independent pilot implementation review, owner pilot acceptance, target activation/promotion or Gate5 closure has occurred. See G5_2_CLOSEOUT_20261019.md and committed logs/strict outcome report in handoff/foundation_implementation for exact limits, RED/repair/admission lineage and reproducibility. This closes only the commissioned next leaf; stop before G5.3.
+
+All predecessor entries below are chronological evidence, not competing current ledgers. Accepted brief/companions, M00/A00/M01, pins/dependencies and frozen guardrails/agent bytes are unchanged from accepted68d3c2f. No main merge, native IBKR mapping/acquisition, live effects, migration, retirement, legacy dependency reduction or historical destruction occurred.
+
+---
+
 ## Current owner decision — 19 October 2026, 20:27 Melbourne
 
 The owner answered “Yes, I do. Complete the next leaf only.” to the explicit acceptance question for G5.1 candidate68d3c2fbb263403a36f215696e45872505b2a340. Reference: `owner-chat/20261019T202718/G5.1-accept-G5.2-only`. G5.1 is ACCEPTED_CLOSED for its precisely delivered scope and evidence limits. The next leaf is G5.2: all four ordered proof-before-behaviour units in §5, under accepted version3 and its SQLite companions. Execute sequentially within this leaf; no G5.3 review/activation/promotion or later programme work is authorised. Necessary independent proof-adequacy review/admission within G5.2 remains required and is not G5.3 pilot acceptance.

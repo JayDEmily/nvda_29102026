@@ -1,0 +1,37 @@
+"""One-shot separately authorised bootstrap development proof; no target activation."""
+import json
+import os
+import secrets
+import subprocess
+import sys
+from pathlib import Path
+
+ROOT = Path('/workspace/scratch/d549b6d808a9/g52-recovery/repository')
+sys.path.insert(0, str(ROOT / 'tools'))
+from product_proof_claims import governed_snapshot, load_product_proof_claim
+from product_proof_outcomes import validate_outcomes
+
+claim = load_product_proof_claim(ROOT, 'neutral_market_measurement_truth_pilot')
+assert claim.state == 'READY_FOR_PROOF' and claim.target_status == 'bootstrap'
+status = subprocess.check_output(['git','status','--porcelain=v1','--untracked-files=all'],cwd=ROOT)
+assert status == b''
+assert governed_snapshot(ROOT) == claim.governed_files
+nonce = secrets.token_hex(32)
+report_path = Path('/workspace/scratch/d549b6d808a9/g52-complete-outcomes.json')
+env = os.environ.copy()
+env.pop('PYTEST_ADDOPTS',None)
+env.update(NVDA_PROOF_REPORT=str(report_path),NVDA_PROOF_NONCE=nonce,
+           PYTHONPATH=os.pathsep.join([str(ROOT/'tools'),str(ROOT/'src')]),
+           PYTEST_DISABLE_PLUGIN_AUTOLOAD='1')
+print('Separately authorised bootstrap development proof; no active-target aggregate',flush=True)
+print('candidate='+subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),flush=True)
+print('generation='+claim.generation_sha256,flush=True)
+completed = subprocess.run([sys.executable,'-m','pytest','-p','product_proof_outcomes',
+                            *[family.path for family in claim.families]],cwd=ROOT,env=env)
+report = json.loads(report_path.read_text())
+result = validate_outcomes(report,nonce,{f.path:f.required_test_names for f in claim.families},completed.returncode)
+assert subprocess.check_output(['git','status','--porcelain=v1','--untracked-files=all'],cwd=ROOT)==status
+assert governed_snapshot(ROOT)==claim.governed_files
+print('complete-development-proof-outcome='+str(result),flush=True)
+print('executed='+str(len(report['collected'])),flush=True)
+raise SystemExit(result)

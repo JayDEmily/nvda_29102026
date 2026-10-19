@@ -1,5 +1,11 @@
 # Gate 5 execution and recovered checkpoint
 
+### G5.2 engineering leaf complete; stop before G5.3
+
+Exact engineering candidate01080afc938eefedd6f8c385330876d3e2cb57d7/treeee97ac0759d8730f7334a7d89aeb4e5cd79b30ff has85strict complete bootstrap development cases,30M00SQLite aggregate cases,416retained M00semantic cases,113architecture promotion cases/11families/zero seam-dependency violations,34source-control files mypy and scoped Ruff success. Standard Ruff still has the same two inherited M01 E501 findings. Current independently reviewed proof generation3SHA55e2284c8ee790cf996c6af445a43b00b5e7b9706a2a5f10fbe53ed597f1d1e4 chains immutable generations1/2. Unit RED/repair/evidence and proof-source review corrections are preserved. Closeout identifies exact commands, environment and limits.
+
+G5.1 ACCEPTED_CLOSED; G5.2 ENGINEERING_LEAF_COMPLETE_BOOTSTRAP_CANDIDATE; G5.3 NOT_AUTHORISED; G6 NOT_OPEN. M02 remains bootstrap/non-composable and actual active-target foundation aggregate refuses exit4. No independent pilot implementation acceptance/activation/promotion, Gate5 closure, main merge or external/provider/live/migration/retirement work. No G5.3 reviewer was commissioned. Earlier record sections remain historical evidence.
+
 ### G5.2 admitted proof and first behaviour RED
 
 Complete five-family/eight-file proof at a9b4c56 received actual independent PASS_FOR_ADMISSION after the five first-review class repairs. Exact lineage is G5_2_PROOF_REVIEW_20261019.md. Immutable generation1 admitted atb0c7e37, SHA4c7dcf87c445bd1797c75a73950c4111ac35b43ac99e43ff7897075f65b72f96. Actual resolver reports READY_FOR_PROOF, M02bootstrap, accepted3ad4cdc9brief; this does not authorise active promotion.
