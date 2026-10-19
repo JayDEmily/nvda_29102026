@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from collections.abc import Callable
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from datetime import datetime, timedelta
 from decimal import Decimal
 from typing import Any, cast
@@ -116,16 +116,20 @@ class _Memory:
     definitions: dict[tuple[str, str], f.CalculationDefinitionV1] = field(default_factory=dict)
     configuration: dict[tuple[str, str, int], _Configuration] = field(default_factory=dict)
     occurrences: dict[str, f.DerivedSignalOccurrenceV1] = field(default_factory=dict)
+    logical: dict[str, bytes] = field(default_factory=dict)
 
     def append(
         self, occurrence: f.DerivedSignalOccurrenceV1, payload: bytes
     ) -> f.DerivedSignalOccurrenceV1:
         existing = self.occurrences.get(occurrence.derived_occurrence_id)
         if existing is not None:
-            if canonical(existing) != canonical(occurrence):
-                raise ValueError("immutable occurrence identity conflict")
+            if self.logical[occurrence.derived_occurrence_id] != payload or canonical(
+                existing
+            ) != canonical(replace(occurrence, calculated_at_utc=existing.calculated_at_utc)):
+                raise f.PersistenceFailureV1("immutable occurrence identity conflict")
             return existing
         self.occurrences[occurrence.derived_occurrence_id] = occurrence
+        self.logical[occurrence.derived_occurrence_id] = payload
         return occurrence
 
 
@@ -186,20 +190,27 @@ class _Reads:
         return self._state.definitions.get((derived_signal_id, calculation_definition_version))
 
     def get_parameter_set(self, ref: f.VersionRefV1) -> f.CalculationParameterSetV1 | None:
-        raise NotImplementedError("G5.2 immutable typed configuration read unit")
+        return cast(f.CalculationParameterSetV1 | None, self._configuration("parameter", ref))
 
     def get_input_selection_policy(
         self, ref: f.VersionRefV1
     ) -> f.InputSelectionPolicyVersionV1 | None:
-        raise NotImplementedError("G5.2 immutable typed configuration read unit")
+        return cast(f.InputSelectionPolicyVersionV1 | None, self._configuration("selection", ref))
 
     def get_unit_convention(self, ref: f.VersionRefV1) -> f.UnitConventionVersionV1 | None:
-        raise NotImplementedError("G5.2 immutable typed configuration read unit")
+        return cast(f.UnitConventionVersionV1 | None, self._configuration("unit", ref))
 
     def get_projection_mapping(
         self, ref: f.VersionRefV1
     ) -> raw_api.RawSignalProjectionMappingV1 | None:
-        raise NotImplementedError("G5.2 immutable typed configuration read unit")
+        return cast(
+            raw_api.RawSignalProjectionMappingV1 | None, self._configuration("raw_mapping", ref)
+        )
+
+    def _configuration(self, kind: str, ref: f.VersionRefV1) -> _Configuration | None:
+        if type(ref) is not f.VersionRefV1:
+            raise TypeError("an exact version reference is required")
+        return self._state.configuration.get((kind, ref.context_id, ref.version))
 
 
 class _Owner:
