@@ -1,5 +1,9 @@
 # Gate 5 execution and recovered checkpoint
 
+### D014 pagination proof repair, unadmitted — 20 October 2026, 10:42 Melbourne
+
+OnlyphysicaltestSHA7e26d16d59ac42ac456e631e2acb8a5bee204e937550d5667f6bc580ba99f836 after89dcfirstfailure. Typedgeneratedcursorpagesuseactualpublicseedwithoutfeedingfakecursorintonativefiniteoffsethistory; all4faultcriteria/None/history retained. Syntax/RuffPASSonly; everyproductionbyte0d360/gen1/support/specimensunchanged. No repairedexecutionbefore requiredindependentreview/gen2; oldpointerpreserved, no inplacereseal. P05/P06/fullstrictpending/G6.1open.
+
 ### D014 engineering first failure preserved — 20 October 2026, 10:40 Melbourne
 
 Actual0d360/tree6d4886 nativeReady/mypy38PASS then173targeted4FAIL169PASS33.11s1; fourphysical415IndexErrors repeatedcursor/pagecap emptypopulated. Nativecursor1=>actualfiniteM00empty page, fixtureindexesemptybeforegeneratedresponse. All7rawlogs/metadata/harness preserved/hashverified, fullfailurelogparsed(primarytrace/nativefunctionsread). P05/P06/fullstrictnotrun. Report G6_1_D014_ENGINEERING_FIRST_FAILURE_20261020.md defines boundedproofpreconditionrepair, originalcriteria/historyretained, freshreview/gen2beforetests; no productionfixorproofreseal. G6.1open/D014partial/123awaitacceptance(other122all83unenabled).

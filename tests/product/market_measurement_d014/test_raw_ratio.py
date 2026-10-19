@@ -357,10 +357,32 @@ def test_d014_selection_and_refusal(tmp_path, populated, mode):
     seam()
     active = [False]
     calls = []
+    synthetic_cursor_modes = ("cursor", "repeated-cursor", "empty-cursor", "page-cap")
+    page_seed = (
+        raw.reads.project_raw_value(
+            raw_api.RawSignalCatalogueId("R033"),
+            raw_api.observation_occurrence_id("mmt-size-bid-001"),
+            mappings=(mapping("bid"),),
+        )
+        if mode in synthetic_cursor_modes
+        else None
+    )
 
     class Reader:
         def list_projected_raw_history(self, rid, **kwargs):
             calls.append((rid.value, kwargs.get("cursor")))
+            if active[0] and rid.value == "R033" and mode in synthetic_cursor_modes:
+                # These are generated adversarial pages, not native offset
+                # cursors. Keep their real public seed independent of exhausting
+                # the one-record M00 history on the second fabricated cursor.
+                assert type(page_seed) is raw_api.ProjectedRawValueV1
+                cursor = kwargs.get("cursor")
+                nxt = "bad" if mode == "cursor" else str(int(cursor or "0") + 1)
+                if mode == "repeated-cursor":
+                    nxt = "1"
+                return raw_api.ProjectedRawHistoryPageV1(
+                    () if mode == "empty-cursor" else (page_seed,), nxt
+                )
             page = raw.reads.list_projected_raw_history(rid, **kwargs)
             if (
                 active[0]
@@ -467,14 +489,6 @@ def test_d014_selection_and_refusal(tmp_path, populated, mode):
                 return replace(page, items=(first, first))
             if mode == "oversized-page":
                 return replace(page, items=(first,) * 101)
-            if mode in ("cursor", "repeated-cursor", "empty-cursor", "page-cap"):
-                cursor = kwargs.get("cursor")
-                nxt = "bad" if mode == "cursor" else str(int(cursor or "0") + 1)
-                if mode == "repeated-cursor":
-                    nxt = "1"
-                return replace(
-                    page, items=() if mode == "empty-cursor" else (first,), next_cursor=nxt
-                )
             if mode == "storage-error":
                 raise f.PersistenceFailureV1("upstream persistence failed")
             return page
