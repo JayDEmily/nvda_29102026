@@ -1,14 +1,37 @@
 """RSQL-P01/P03/P04/P05/P08/P12: actual file-backed public M00 contract."""
 
-from dataclasses import fields, replace
+import subprocess
+import sys
+from collections.abc import Mapping
+from dataclasses import MISSING, fields, is_dataclass, replace
 from datetime import timedelta
 from decimal import Decimal
-from struct import unpack
+from struct import pack, unpack
 
 import pytest
-from _support import T0, fresh_observation, observation, owner, policy, representation
+from _support import T0, fresh_observation, fresh_record, observation, owner, policy
 
 from nvda_desk.raw_signal_occurrence_truth import api
+
+
+def representation(value):
+    if isinstance(value, Mapping):
+        return ["mapping", [[key, representation(value[key])] for key in sorted(value)]]
+    if type(value) is Decimal:
+        t = value.as_tuple()
+        return ["decimal", t.sign, list(t.digits), str(t.exponent)]
+    if type(value) is float:
+        return ["float", pack("!d", value).hex()]
+    if type(value) is bytes:
+        return ["bytes", value.hex()]
+    if type(value) in (tuple, list):
+        return [type(value).__name__, [representation(item) for item in value]]
+    if is_dataclass(value):
+        return [
+            type(value).__name__,
+            {f.name: representation(getattr(value, f.name)) for f in fields(value)},
+        ]
+    return [type(value).__name__, str(value)]
 
 
 def test_sqlite_public_contracts_and_typed_identity_layers(tmp_path):
@@ -114,7 +137,7 @@ def test_sqlite_public_contracts_and_typed_identity_layers(tmp_path):
     assert o.commands.admit_raw_observation_occurrence(raw) is raw
     assert o.reads.get_raw_observation_occurrence(raw.observation_occurrence_id) == raw
     # No capture scope is required to preserve a valid observation.
-    assert fresh_observation(tmp_path / "raw.db", "obs")["kind"] == "receipt_only"
+    assert fresh_observation(tmp_path / "raw.db", "obs").source_temporal_kind == "receipt_only"
 
 
 def test_sqlite_native_fidelity_and_temporal_absence(tmp_path):
@@ -152,22 +175,23 @@ def test_sqlite_native_fidelity_and_temporal_absence(tmp_path):
             source_timestamp_raw=timestamp,
             received_epoch_ns=10**70,
             revision_vintage_native="native-revision",
+            source_product_api="api-v1",
+            source_endpoint_callback="callback",
+            native_identifier="native-id",
+            native_tick_series_identifier="series",
+            source_variant="variant",
+            subject_instrument="subject",
+            native_units="units",
+            availability_session="availability",
+            source_status_native="status",
+            market_timezone_iana="Australia/Melbourne",
+            market_session_native="session",
+            raw_signal_catalogue_ids=(api.RawSignalCatalogueId("R034"),),
         )
         o.commands.admit_raw_observation_occurrence(raw)
         read = fresh_observation(path, kind)
-        assert read == {
-            "native": representation(native),
-            "provider": "controlled-provider",
-            "delivery": "delivery",
-            "kind": kind,
-            "source_timestamp_raw": timestamp,
-            "sequence": str(index),
-            "scope": "scope-A",
-            "receipt": T0.isoformat(),
-            "epoch": str(10**70),
-            "revision": "native-revision",
-            "timezone": None,
-        }
+        assert representation(read) == representation(raw)
+        assert representation(read.native_record) == representation(native)
     with pytest.raises(ValueError):
         observation(source_temporal_kind="receipt_only", source_timestamp_raw="2026-09-20")
     with pytest.raises(ValueError):
@@ -190,5 +214,133 @@ def test_sqlite_retry_conflict_and_retransmission(tmp_path):
             reopened.commands.admit_raw_observation_occurrence(changed)
     again = replace(raw, observation_occurrence_id=api.observation_occurrence_id("retransmit"))
     reopened.commands.admit_raw_observation_occurrence(again)
-    assert fresh_observation(path, "obs")["native"] == representation(raw.native_record)
-    assert fresh_observation(path, "retransmit")["native"] == representation(raw.native_record)
+    assert representation(fresh_observation(path, "obs")) == representation(raw)
+    assert representation(fresh_observation(path, "retransmit")) == representation(again)
+
+
+def test_sqlite_requiredness_time_layers_and_static_public_facets(tmp_path):
+    o = owner(tmp_path / "raw.db", create=True)
+    p = policy(deactivation_ts_utc=T0 + timedelta(minutes=1))
+    c = api.ScheduledCaptureOccurrenceV1(
+        api.concept_id("raw_signal.scheduled_capture_occurrence"),
+        api.contract_id("nvda.raw_signal.ScheduledCaptureOccurrence.v1"),
+        "not_applicable",
+        api.capture_occurrence_id("c"),
+        api.scope_policy_ref("policy@1"),
+        T0,
+        T0 + timedelta(seconds=30),
+    )
+    r = api.CaptureReceiptEvidenceRelationV1(
+        api.concept_id("raw_signal.capture_receipt_evidence_relation"),
+        api.contract_id("nvda.raw_signal.CaptureReceiptEvidenceRelation.v1"),
+        "not_applicable",
+        api.observation_occurrence_id("obs"),
+        c.capture_occurrence_id,
+        c.scope_policy_ref,
+        T0,
+        "evidences_receipt_presence_only",
+    )
+    a = api.CaptureReceiptPresenceAssessmentV1(
+        api.concept_id("raw_signal.capture_receipt_presence_assessment"),
+        api.contract_id("nvda.raw_signal.CaptureReceiptPresenceAssessment.v1"),
+        "not_applicable",
+        api.assessment_occurrence_id("a"),
+        c.capture_occurrence_id,
+        "zero_received",
+        T0,
+    )
+    identities = [
+        f("same")
+        for f in (
+            api.concept_id,
+            api.contract_id,
+            api.scope_policy_id,
+            api.scope_policy_ref,
+            api.eligibility_policy_ref,
+            api.capture_occurrence_id,
+            api.observation_occurrence_id,
+            api.assessment_occurrence_id,
+            api.provider_id,
+            api.delivery_artifact_ref,
+            api.ingestion_sequence_scope,
+        )
+    ]
+    identities.append(api.RawSignalCatalogueId("R034"))
+    optional = {
+        api.CaptureScopePolicyV1: {"deactivation_ts_utc"},
+        api.ScheduledCaptureOccurrenceV1: set(),
+        api.CaptureReceiptEvidenceRelationV1: set(),
+        api.CaptureReceiptPresenceAssessmentV1: {"supersedes_assessment_ref"},
+        api.RawObservationOccurrenceV1: {
+            f.name
+            for f in fields(observation())
+            if f.name
+            not in {
+                "concept_id",
+                "contract_id",
+                "observation_occurrence_id",
+                "delivery_artifact_ref",
+                "source_provider",
+                "native_record",
+                "received_ts_utc",
+                "ingestion_sequence",
+                "ingestion_sequence_scope",
+                "source_temporal_kind",
+            }
+        },
+    }
+    for value in (p, c, r, a, observation()):
+        cls = type(value)
+        assert {f.name for f in fields(value) if f.default is not MISSING} == optional[cls]
+        for field in fields(value):
+            item = getattr(value, field.name)
+            if field.default is MISSING:
+                args = {
+                    f.name: getattr(value, f.name) for f in fields(value) if f.name != field.name
+                }
+                with pytest.raises(TypeError):
+                    cls(**args)
+            if hasattr(item, "value"):
+                for wrong in identities:
+                    if type(wrong) is not type(item):
+                        with pytest.raises((TypeError, ValueError)):
+                            replace(value, **{field.name: wrong})
+            if field.name.endswith("_utc"):
+                with pytest.raises(ValueError):
+                    replace(value, **{field.name: T0.replace(tzinfo=None)})
+        if hasattr(value, "units"):
+            with pytest.raises(ValueError):
+                replace(value, units="price")
+    for invalid in (None, "", "contains", "final", "two_received"):
+        with pytest.raises(ValueError):
+            replace(a, outcome=invalid)
+    with pytest.raises(ValueError):
+        replace(r, relation_role="contains")
+    # Two provider logical records in one delivery remain distinct original facts.
+    first, second = observation("first"), observation("second", 2)
+    o.commands.admit_raw_observation_occurrence(first)
+    o.commands.admit_raw_observation_occurrence(second)
+    assert fresh_record(tmp_path / "raw.db", "observation", "first") == first
+    assert fresh_record(tmp_path / "raw.db", "observation", "second") == second
+    assert first.delivery_artifact_ref == second.delivery_artifact_ref
+    # Actual pinned checker verifies command/read returns, not annotation spelling alone.
+    specimen = """
+from typing import assert_type
+from nvda_desk.raw_signal_occurrence_truth import api
+o = api.create_owner()
+assert_type(o.reads.get_raw_observation_occurrence(api.observation_occurrence_id("o")),
+            api.RawObservationOccurrenceV1 | None)
+assert_type(o.reads.get_scheduled_capture_occurrence(api.capture_occurrence_id("c")),
+            api.ScheduledCaptureOccurrenceV1 | None)
+assert_type(o.reads.get_capture_scope_policy(api.scope_policy_id("p"), 1),
+            api.CaptureScopePolicyV1 | None)
+assert_type(o.reads.get_receipt_presence_assessment(api.assessment_occurrence_id("a")),
+            api.CaptureReceiptPresenceAssessmentV1 | None)
+"""
+    checked = subprocess.run(
+        [sys.executable, "-m", "mypy", "--strict", "--disallow-any-expr", "-c", specimen],
+        capture_output=True,
+        text=True,
+        timeout=30,
+    )
+    assert checked.returncode == 0, checked.stdout + checked.stderr

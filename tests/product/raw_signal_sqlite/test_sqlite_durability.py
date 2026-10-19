@@ -1,5 +1,9 @@
-"""RSQL-P04/P07–P11: native commit, failure, complete facts and actual file provenance."""
+"""RSQL-P04/P07-P11: native commit, failure, complete facts and actual file provenance."""
 
+import base64
+import hashlib
+import json
+import pickle
 import secrets
 import sqlite3
 import subprocess
@@ -11,13 +15,14 @@ import pytest
 from _support import (
     T0,
     fresh_observation,
+    fresh_record,
     mechanism,
     observation,
     owner,
     policy,
     process_env,
-    representation,
 )
+from test_contract_native import representation
 
 from nvda_desk.raw_signal_occurrence_truth import api
 
@@ -64,9 +69,68 @@ def test_sqlite_environment_and_only_configured_semantic_source(tmp_path):
         owner(path).reads.get_raw_observation_occurrence(raw.observation_occurrence_id)
 
 
-def test_sqlite_public_return_requires_native_commit(tmp_path):
+@pytest.mark.parametrize("kind", ["policy", "capture", "observation", "assessment"])
+def test_sqlite_public_return_requires_native_commit(tmp_path, kind):
     path = tmp_path / "raw.db"
     o = owner(path, create=True)
+    nonce = secrets.token_hex(32)
+    p = policy(eligibility_policy_ref=api.eligibility_policy_ref(nonce))
+    if kind != "policy":
+        o.commands.register_capture_scope_policy(p)
+    if kind == "assessment":
+        capture = o.commands.realise_scheduled_capture_occurrence(
+            scope_policy_ref=api.scope_policy_ref("policy@1"),
+            slot_start_utc=T0,
+            capture_occurrence_id=api.capture_occurrence_id("capture"),
+        )
+    if kind == "policy":
+        expected, identity = p, "policy"
+
+        def call():
+            return o.commands.register_capture_scope_policy(expected)
+    elif kind == "capture":
+        expected = api.ScheduledCaptureOccurrenceV1(
+            api.concept_id("raw_signal.scheduled_capture_occurrence"),
+            api.contract_id("nvda.raw_signal.ScheduledCaptureOccurrence.v1"),
+            "not_applicable",
+            api.capture_occurrence_id(nonce),
+            api.scope_policy_ref("policy@1"),
+            T0,
+            T0.replace(second=30),
+        )
+        identity = nonce
+
+        def call():
+            return o.commands.realise_scheduled_capture_occurrence(
+                scope_policy_ref=expected.scope_policy_ref,
+                slot_start_utc=T0,
+                capture_occurrence_id=expected.capture_occurrence_id,
+            )
+    elif kind == "observation":
+        expected, identity = observation(native={"nonce": nonce}), "obs"
+
+        def call():
+            return o.commands.admit_raw_observation_occurrence(expected)
+    else:
+        expected = api.CaptureReceiptPresenceAssessmentV1(
+            api.concept_id("raw_signal.capture_receipt_presence_assessment"),
+            api.contract_id("nvda.raw_signal.CaptureReceiptPresenceAssessment.v1"),
+            "not_applicable",
+            api.assessment_occurrence_id(nonce),
+            capture.capture_occurrence_id,
+            "zero_received",
+            T0,
+        )
+        identity = nonce
+
+        def call():
+            return o.commands.append_capture_receipt_presence_assessment(
+                assessment_occurrence_id=expected.assessment_occurrence_id,
+                capture_occurrence_ref=expected.capture_occurrence_ref,
+                evidence_as_of_ts_utc=T0,
+                supersedes_assessment_ref=None,
+            )
+
     # First prove the independent barrier rejects an ordinary native COMMIT.
     reader = sqlite3.connect(path, isolation_level=None)
     reader.execute("BEGIN")
@@ -77,27 +141,47 @@ def test_sqlite_public_return_requires_native_commit(tmp_path):
         canary.execute("COMMIT")
     canary.execute("ROLLBACK")
     canary.close()
-    raw = observation(native={"nonce": secrets.token_hex(32)})
     try:
         with pytest.raises(api.PersistenceFailureV1) as failure:
-            o.commands.admit_raw_observation_occurrence(raw)
+            call()
         assert failure.value.outcome_uncertain is False
     finally:
         reader.execute("ROLLBACK")
         reader.close()
-    assert fresh_observation(path, "obs") is None
+    assert fresh_record(path, kind, identity) is None
     # A separate writer stays alive immediately after public return; kill it there.
-    nonce = secrets.token_hex(32)
     code = """
-import sys
-from _support import owner, observation
+import base64, pickle, sys
+from _support import owner
 o = owner(sys.argv[1])
-o.commands.admit_raw_observation_occurrence(observation("committed", native={"nonce":sys.argv[2]}))
+kind = sys.argv[2]
+v = pickle.loads(base64.b64decode(sys.argv[3]))
+if kind == "policy":
+    o.commands.register_capture_scope_policy(v)
+elif kind == "observation":
+    o.commands.admit_raw_observation_occurrence(v)
+elif kind == "capture":
+    o.commands.realise_scheduled_capture_occurrence(scope_policy_ref=v.scope_policy_ref,
+        slot_start_utc=v.slot_start_utc, capture_occurrence_id=v.capture_occurrence_id)
+else:
+    o.commands.append_capture_receipt_presence_assessment(
+        assessment_occurrence_id=v.assessment_occurrence_id,
+        capture_occurrence_ref=v.capture_occurrence_ref,
+        evidence_as_of_ts_utc=v.evidence_as_of_ts_utc,
+        supersedes_assessment_ref=v.supersedes_assessment_ref)
 print("RETURNED", flush=True)
 sys.stdin.read()
 """
     proc = subprocess.Popen(
-        [sys.executable, "-u", "-c", code, str(path), nonce],
+        [
+            sys.executable,
+            "-u",
+            "-c",
+            code,
+            str(path),
+            kind,
+            base64.b64encode(pickle.dumps(expected)).decode("ascii"),
+        ],
         env=process_env(),
         stdin=subprocess.PIPE,
         stdout=subprocess.PIPE,
@@ -106,11 +190,11 @@ sys.stdin.read()
     )
     try:
         assert proc.stdout.readline().strip() == "RETURNED"
-        assert fresh_observation(path, "committed")["native"] == representation({"nonce": nonce})
+        assert representation(fresh_record(path, kind, identity)) == representation(expected)
     finally:
         proc.kill()
         proc.communicate(timeout=10)
-    assert fresh_observation(path, "committed")["native"] == representation({"nonce": nonce})
+    assert representation(fresh_record(path, kind, identity)) == representation(expected)
 
 
 def test_sqlite_failed_write_and_killed_writer_nonfabrication(tmp_path):
@@ -170,7 +254,7 @@ def test_sqlite_uncertain_commit_and_concurrent_identity(tmp_path, monkeypatch):
             o.commands.admit_raw_observation_occurrence(raw)
         assert failure.value.outcome_uncertain is True
     assert lost
-    assert fresh_observation(path, "obs")["native"] == representation(raw.native_record)
+    assert representation(fresh_observation(path, "obs")) == representation(raw)
     assert o.commands.admit_raw_observation_occurrence(raw) == raw
     with pytest.raises(ValueError):
         o.commands.admit_raw_observation_occurrence(replace(raw, native_record={"nonce": "wrong"}))
@@ -209,7 +293,7 @@ def test_sqlite_native_roundtrip_and_consistent_backup(tmp_path):
     with sqlite3.connect(path) as source, sqlite3.connect(clone) as destination:
         source.backup(destination)
     path.rename(tmp_path / "unavailable.db")
-    assert fresh_observation(clone, "obs")["native"] == representation(raw.native_record)
+    assert representation(fresh_observation(clone, "obs")) == representation(raw)
     with pytest.raises(api.PersistenceFailureV1):
         o.reads.get_raw_observation_occurrence(raw.observation_occurrence_id)
     assert not path.exists()
@@ -248,26 +332,237 @@ def test_sqlite_port_is_nonsemantic_and_record_only(tmp_path):
         owner(path).reads.get_receipt_presence_assessment(counterfactual.assessment_occurrence_id)
         == counterfactual
     )
-    with port.transaction(write=False) as tx:
-        with pytest.raises((RuntimeError, api.PersistenceFailureV1)):
-            tx.append_observation(observation())
+    with (
+        port.transaction(write=False) as tx,
+        pytest.raises((RuntimeError, api.PersistenceFailureV1)),
+    ):
+        tx.append_observation(observation())
 
 
 def test_sqlite_proof_rejects_surrogate_commit_and_payload(tmp_path):
     path = tmp_path / "raw.db"
     o = owner(path, create=True)
     nonce = secrets.token_hex(32)
-    expected = representation({"nonce": nonce, "complete": [None, Decimal("2.000")]})
-    o.commands.register_capture_scope_policy(policy())
-    # Setup-only committed state cannot satisfy semantic observation readback.
-    assert fresh_observation(path, "target") is None
-    o.commands.admit_raw_observation_occurrence(observation("target", native={"nonce": nonce}))
-    surrogate = fresh_observation(path, "target")
-    assert surrogate["native"] != expected
-    # The correspondence oracle is demonstrably sensitive to omission/type/precision.
-    for false in (
-        {"nonce": nonce},
-        {"nonce": nonce, "complete": [None, Decimal("2.0")]},
-        {"nonce": nonce, "complete": (None, Decimal("2.000"))},
-    ):
-        assert representation(false) != expected
+    expected = observation("target", native={"nonce": nonce, "complete": [None, Decimal("2.000")]})
+
+    def correspondence(operation):
+        returned = operation()
+        assert representation(returned) == representation(expected)
+        assert representation(fresh_record(path, "observation", "target")) == representation(
+            expected
+        )
+
+    def setup_only():
+        o.commands.register_capture_scope_policy(policy())
+        return expected
+
+    # Actual native commits to marker/setup state must not pass the real correspondence check.
+    with pytest.raises(AssertionError):
+        correspondence(setup_only)
+
+    def split_commit():
+        # Real target row is uncommitted while an unrelated setup transaction has committed.
+        with mechanism().create_sqlite_persistence(str(path)).transaction(write=True) as tx:
+            tx.append_observation(expected)
+            assert fresh_record(path, "observation", "target") is None
+            raise RuntimeError("public success would precede semantic commit")
+
+    with pytest.raises(RuntimeError, match="precedes semantic commit"):
+        split_commit()
+    with pytest.raises(AssertionError):
+        correspondence(lambda: expected)
+
+    def subset_commit():
+        o.commands.admit_raw_observation_occurrence(
+            replace(expected, native_record={"nonce": nonce})
+        )
+        return expected
+
+    with pytest.raises(AssertionError):
+        correspondence(subset_commit)
+
+
+def test_sqlite_schema_settings_canonical_payload_and_index_integrity(tmp_path, monkeypatch):
+    path = tmp_path / "raw.db"
+    o = owner(path, create=True)
+    observed = []
+    original = sqlite3.connect
+
+    class ObservedConnection(sqlite3.Connection):
+        def execute(self, sql, parameters=()):
+            if sql.strip().upper().startswith("BEGIN"):
+                settings = {
+                    key: super(ObservedConnection, self).execute("PRAGMA " + key).fetchone()[0]
+                    for key in (
+                        "foreign_keys",
+                        "synchronous",
+                        "busy_timeout",
+                        "query_only",
+                        "journal_mode",
+                    )
+                }
+                observed.append((sql.upper(), settings))
+            return super().execute(sql, parameters)
+
+    def connect(*args, **kwargs):
+        return original(*args, **dict(kwargs, factory=ObservedConnection))
+
+    with monkeypatch.context() as patch:
+        patch.setattr(sqlite3, "connect", connect)
+        o.commands.admit_raw_observation_occurrence(observation())
+        o.reads.get_raw_observation_occurrence(api.observation_occurrence_id("obs"))
+    assert any(
+        sql == "BEGIN IMMEDIATE"
+        and settings
+        == {
+            "foreign_keys": 1,
+            "synchronous": 3,
+            "busy_timeout": 0,
+            "query_only": 0,
+            "journal_mode": "delete",
+        }
+        for sql, settings in observed
+    )
+    assert any(
+        sql == "BEGIN"
+        and settings["query_only"] == 1
+        and settings["foreign_keys"] == 1
+        and settings["busy_timeout"] == 0
+        for sql, settings in observed
+    )
+    columns = {
+        "rsot_capture_scope_policy_v1": {
+            "scope_policy_id",
+            "scope_policy_version",
+            "scope_policy_ref",
+            "activation_ts_utc",
+            "deactivation_ts_utc",
+            "eligibility_policy_ref",
+        },
+        "rsot_scheduled_capture_occurrence_v1": {
+            "capture_occurrence_id",
+            "scope_policy_ref",
+            "slot_start_utc",
+            "slot_end_utc",
+        },
+        "rsot_raw_observation_occurrence_v1": {
+            "observation_occurrence_id",
+            "received_ts_utc",
+            "ingestion_sequence_scope",
+            "ingestion_sequence",
+            "ingestion_sort_key",
+        },
+        "rsot_capture_receipt_presence_assessment_v1": {
+            "assessment_occurrence_id",
+            "capture_occurrence_ref",
+            "outcome",
+            "evidence_as_of_ts_utc",
+            "supersedes_assessment_ref",
+        },
+    }
+    with sqlite3.connect(path) as c:
+        assert {
+            row[0]
+            for row in c.execute("SELECT name FROM sqlite_schema WHERE type='table'")
+            if not row[0].startswith("sqlite_")
+        } == set(columns)
+        for table, names in columns.items():
+            info = c.execute("PRAGMA table_info(" + table + ")").fetchall()
+            assert {row[1] for row in info} == names | {"payload", "content_sha256"}
+            for row in info:
+                if row[1] not in {"deactivation_ts_utc", "supersedes_assessment_ref"}:
+                    assert row[3] == 1
+            triggers = [
+                row[0].upper()
+                for row in c.execute(
+                    "SELECT sql FROM sqlite_schema WHERE type='trigger' AND tbl_name=?", (table,)
+                )
+            ]
+            assert any("BEFORE UPDATE" in sql for sql in triggers)
+            assert any("BEFORE DELETE" in sql for sql in triggers)
+        assert c.execute("PRAGMA foreign_key_list(rsot_scheduled_capture_occurrence_v1)").fetchall()
+        assert (
+            len(
+                c.execute(
+                    "PRAGMA foreign_key_list(rsot_capture_receipt_presence_assessment_v1)"
+                ).fetchall()
+            )
+            == 2
+        )
+        payload, digest, key = c.execute(
+            "SELECT payload,content_sha256,ingestion_sort_key "
+            "FROM rsot_raw_observation_occurrence_v1"
+        ).fetchone()
+        assert hashlib.sha256(payload).hexdigest() == digest
+        decoded = json.loads(payload)
+        assert (
+            json.dumps(decoded, sort_keys=True, ensure_ascii=True, separators=(",", ":")).encode()
+            == payload
+        )
+        expected_native = (
+            b"NVDA-NATIVE-V1\0m"
+            + (1).to_bytes(8, "big")
+            + (5).to_bytes(8, "big")
+            + b"value"
+            + b"d\0"
+            + (3).to_bytes(8, "big")
+            + b"\1\0\0"
+            + (2).to_bytes(8, "big")
+            + b"-2"
+        )
+        assert decoded["native_record"] == expected_native.hex()
+        assert decoded["observation_occurrence_id"] == {
+            "kind": "observation_occurrence_id",
+            "value": "obs",
+        }
+        assert decoded["received_ts_utc"] == "2026-09-20T12:00:00.000000Z"
+        assert key == b"\1" + (1).to_bytes(8, "big") + b"1"
+        # Retain valid payload/hash but corrupt the searchable metadata: decoding must reject.
+        for (name,) in c.execute("SELECT name FROM sqlite_schema WHERE type='trigger'").fetchall():
+            c.execute('DROP TRIGGER "' + name + '"')
+        c.execute("UPDATE rsot_raw_observation_occurrence_v1 SET ingestion_sequence='2'")
+    with pytest.raises(api.PersistenceFailureV1):
+        owner(path).reads.get_raw_observation_occurrence(api.observation_occurrence_id("obs"))
+
+
+def test_sqlite_competing_same_identity_converges_and_conflict_refuses(tmp_path):
+    path = tmp_path / "raw.db"
+    owner(path, create=True)
+    raw = observation(native={"nonce": secrets.token_hex(32)})
+    # First same-ID writer holds a genuine uncommitted row, while child attempts same ID.
+    port = mechanism().create_sqlite_persistence(str(path))
+    with port.transaction(write=True) as tx:
+        tx.append_observation(raw)
+        code = """
+import base64, pickle, sys
+from _support import owner
+from nvda_desk.raw_signal_occurrence_truth.api import PersistenceFailureV1
+raw = pickle.loads(base64.b64decode(sys.argv[2]))
+try:
+    owner(sys.argv[1]).commands.admit_raw_observation_occurrence(raw)
+except PersistenceFailureV1 as exc:
+    assert not exc.outcome_uncertain
+    print("RETRY_REQUIRED")
+else:
+    raise AssertionError("competing uncommitted same-ID call returned success")
+"""
+        result = subprocess.run(
+            [
+                sys.executable,
+                "-c",
+                code,
+                str(path),
+                base64.b64encode(pickle.dumps(raw)).decode("ascii"),
+            ],
+            env=process_env(),
+            capture_output=True,
+            text=True,
+            timeout=15,
+        )
+        assert result.returncode == 0 and result.stdout.strip() == "RETRY_REQUIRED", result.stderr
+    assert owner(path).commands.admit_raw_observation_occurrence(raw) == raw
+    with pytest.raises(ValueError):
+        owner(path).commands.admit_raw_observation_occurrence(
+            replace(raw, native_record={"nonce": "conflicting"})
+        )
+    assert representation(fresh_observation(path, "obs")) == representation(raw)

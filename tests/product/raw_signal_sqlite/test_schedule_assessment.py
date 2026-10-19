@@ -5,7 +5,7 @@ from dataclasses import replace
 from datetime import timedelta
 
 import pytest
-from _support import T0, mechanism, observation, owner, policy
+from _support import T0, fresh_record, mechanism, observation, owner, policy
 
 from nvda_desk.raw_signal_occurrence_truth import api
 
@@ -43,6 +43,30 @@ def test_sqlite_owed_slot_and_policy_boundary_law(tmp_path):
         o.commands.register_capture_scope_policy(policy(scope_policy_version=2))
     successor = policy(scope_policy_version=2, activation_ts_utc=p.deactivation_ts_utc)
     assert o.commands.register_capture_scope_policy(successor) == successor
+    retry = o.commands.realise_scheduled_capture_occurrence(
+        scope_policy_ref=ref,
+        slot_start_utc=T0,
+        capture_occurrence_id=api.capture_occurrence_id("0"),
+    )
+    assert retry.capture_occurrence_id == api.capture_occurrence_id("0")
+    with pytest.raises(ValueError):
+        o.commands.realise_scheduled_capture_occurrence(
+            scope_policy_ref=ref,
+            slot_start_utc=T0,
+            capture_occurrence_id=api.capture_occurrence_id("different-retry-id"),
+        )
+    with pytest.raises(ValueError):
+        o.commands.realise_scheduled_capture_occurrence(
+            scope_policy_ref=ref,
+            slot_start_utc=T0.replace(second=30),
+            capture_occurrence_id=api.capture_occurrence_id("0"),
+        )
+    with pytest.raises(KeyError):
+        o.commands.realise_scheduled_capture_occurrence(
+            scope_policy_ref=api.scope_policy_ref("absent@1"),
+            slot_start_utc=T0,
+            capture_occurrence_id=api.capture_occurrence_id("absent"),
+        )
 
 
 def test_sqlite_receipt_relation_and_assessment_chain(tmp_path):
@@ -158,3 +182,68 @@ def test_sqlite_scope_high_water_and_restart_unknown(tmp_path):
     result = restarted.commands.reconcile_owed_slots(**kwargs)
     assert result[0].outcome == "unknown_not_established"
     assert result[0].supersedes_assessment_ref is None
+    assert tuple(fresh_record(path, "chain", "restart")) == tuple(result)
+
+
+def test_sqlite_assessment_without_relation_capture_isolation_and_missing_authority(tmp_path):
+    path = tmp_path / "raw.db"
+    o = owner(path, create=True)
+    o.commands.register_capture_scope_policy(policy())
+    ref = api.scope_policy_ref("policy@1")
+    a = o.commands.realise_scheduled_capture_occurrence(
+        scope_policy_ref=ref,
+        slot_start_utc=T0,
+        capture_occurrence_id=api.capture_occurrence_id("A"),
+    )
+    b = o.commands.realise_scheduled_capture_occurrence(
+        scope_policy_ref=ref,
+        slot_start_utc=T0 + timedelta(seconds=30),
+        capture_occurrence_id=api.capture_occurrence_id("B"),
+    )
+    zero_kwargs = dict(
+        assessment_occurrence_id=api.assessment_occurrence_id("a-zero"),
+        capture_occurrence_ref=a.capture_occurrence_id,
+        evidence_as_of_ts_utc=T0,
+        supersedes_assessment_ref=None,
+    )
+    zero = o.commands.append_capture_receipt_presence_assessment(**zero_kwargs)
+    raw = observation("late", received_ts_utc=T0 + timedelta(seconds=1))
+    o.commands.admit_raw_observation_occurrence(raw)
+    # No relation derivation precedes this assessment. Receipt truth is not relation storage.
+    one = o.commands.append_capture_receipt_presence_assessment(
+        assessment_occurrence_id=api.assessment_occurrence_id("a-one"),
+        capture_occurrence_ref=a.capture_occurrence_id,
+        evidence_as_of_ts_utc=T0 + timedelta(seconds=2),
+        supersedes_assessment_ref=zero.assessment_occurrence_id,
+    )
+    assert one.outcome == "one_or_more_received"
+    assert o.commands.append_capture_receipt_presence_assessment(**zero_kwargs) == zero
+    no_b = o.commands.append_capture_receipt_presence_assessment(
+        assessment_occurrence_id=api.assessment_occurrence_id("b-zero"),
+        capture_occurrence_ref=b.capture_occurrence_id,
+        evidence_as_of_ts_utc=T0 + timedelta(minutes=1),
+        supersedes_assessment_ref=None,
+    )
+    assert no_b.outcome == "zero_received"
+    assert tuple(fresh_record(path, "chain", "A")) == (zero, one)
+    assert tuple(fresh_record(path, "chain", "B")) == (no_b,)
+    for capture, predecessor in (
+        (api.capture_occurrence_id("missing"), None),
+        (a.capture_occurrence_id, api.assessment_occurrence_id("missing")),
+        (a.capture_occurrence_id, no_b.assessment_occurrence_id),
+    ):
+        with pytest.raises((KeyError, ValueError)):
+            o.commands.append_capture_receipt_presence_assessment(
+                assessment_occurrence_id=api.assessment_occurrence_id("invalid"),
+                capture_occurrence_ref=capture,
+                evidence_as_of_ts_utc=T0,
+                supersedes_assessment_ref=predecessor,
+            )
+    missing = api.create_owner(durability_port=mechanism().create_sqlite_persistence(str(path)))
+    with pytest.raises(ValueError):
+        missing.commands.append_capture_receipt_presence_assessment(
+            assessment_occurrence_id=api.assessment_occurrence_id("missing-eligibility"),
+            capture_occurrence_ref=a.capture_occurrence_id,
+            evidence_as_of_ts_utc=T0,
+            supersedes_assessment_ref=one.assessment_occurrence_id,
+        )

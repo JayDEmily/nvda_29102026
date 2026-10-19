@@ -1,14 +1,13 @@
 """Literal fixtures and process plumbing; expected answers live in the proof families."""
 
+import base64
 import importlib
 import importlib.util
-import json
+import pickle
 import subprocess
 import sys
-from collections.abc import Mapping
 from datetime import UTC, datetime
 from decimal import Decimal
-from struct import pack
 
 from nvda_desk.raw_signal_occurrence_truth import api
 
@@ -59,49 +58,42 @@ def observation(identity="obs", sequence=1, scope="scope-A", native=None, **chan
     return api.RawObservationOccurrenceV1(**(values | changes))
 
 
-def representation(value):
-    """Independent native representation oracle, deliberately not the production codec."""
-    if isinstance(value, Mapping):
-        return ["mapping", [[key, representation(value[key])] for key in sorted(value)]]
-    if type(value) is Decimal:
-        t = value.as_tuple()
-        return ["decimal", t.sign, list(t.digits), str(t.exponent)]
-    if type(value) is float:
-        return ["float", pack("!d", value).hex()]
-    if type(value) is bytes:
-        return ["bytes", value.hex()]
-    if type(value) in (tuple, list):
-        return [type(value).__name__, [representation(item) for item in value]]
-    return [type(value).__name__, str(value)]
-
-
 def fresh_observation(path, identity):
+    return fresh_record(path, "observation", identity)
+
+
+def fresh_record(path, kind, identity, version=1):
     """Child gets only the selected file and lookup identity, never expected content."""
     code = """
-import json, sys
+import base64, pickle, sys
 from nvda_desk.raw_signal_occurrence_truth import api
 from nvda_desk.raw_signal_occurrence_truth._sqlite import create_sqlite_persistence
-from _support import representation
 o = api.create_owner(durability_port=create_sqlite_persistence(sys.argv[1]))
-r = o.reads.get_raw_observation_occurrence(api.observation_occurrence_id(sys.argv[2]))
-print(json.dumps(None if r is None else {
-    "native": representation(r.native_record), "provider": r.source_provider.value,
-    "delivery": r.delivery_artifact_ref.value, "kind": r.source_temporal_kind,
-    "source_timestamp_raw": r.source_timestamp_raw, "sequence": str(r.ingestion_sequence),
-    "scope": r.ingestion_sequence_scope.value, "receipt": r.received_ts_utc.isoformat(),
-    "epoch": None if r.received_epoch_ns is None else str(r.received_epoch_ns),
-    "revision": r.revision_vintage_native, "timezone": r.source_timezone_native,
-}))
+kind, identity = sys.argv[2:4]
+if kind == "observation":
+    r = o.reads.get_raw_observation_occurrence(api.observation_occurrence_id(identity))
+elif kind == "policy":
+    r = o.reads.get_capture_scope_policy(api.scope_policy_id(identity), int(sys.argv[4]))
+elif kind == "capture":
+    r = o.reads.get_scheduled_capture_occurrence(api.capture_occurrence_id(identity))
+elif kind == "assessment":
+    r = o.reads.get_receipt_presence_assessment(api.assessment_occurrence_id(identity))
+elif kind == "chain":
+    r = o.reads.list_receipt_presence_assessments(api.capture_occurrence_id(identity))
+else:
+    raise AssertionError("unknown read kind")
+print(base64.b64encode(pickle.dumps(r)).decode("ascii"))
 """
     result = subprocess.run(
-        [sys.executable, "-c", code, str(path), identity],
+        [sys.executable, "-c", code, str(path), kind, identity, str(version)],
         env=process_env(),
         capture_output=True,
         text=True,
         timeout=20,
     )
     assert result.returncode == 0, result.stderr
-    return json.loads(result.stdout)
+    # Trusted child under this proof's control; transport only, no expected-answer logic.
+    return pickle.loads(base64.b64decode(result.stdout))
 
 
 def process_env():
