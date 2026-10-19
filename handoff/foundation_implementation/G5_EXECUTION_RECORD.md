@@ -1,5 +1,9 @@
 # Gate 5 execution and recovered checkpoint
 
+### D014 initial documentary RETURN preserved — 20 October 2026, 00:43 Melbourne
+
+Actual independent-review/g61-d014-design/ec570da/20261019 RETURN_FOR_BOUNDED_DOCUMENTARY_CORRECTION, reportSHA67cee20b46b3fcc0f851fefb74effcd8f259bac818687b1e4d17eb285f09c00b. Full report/results read and preserved byte-identically in d014_design_review_initial_20261020/. F001/F002/F003 each Minor/ISOLATED: distinguish public-documentation network retrieval from broker/provider API operations; correct stale contract-marker position wording; use actual M00 field selection_identity_field_paths. No substantive math/interface/storage/proof defect established, signed artificial algebra not native size certificate. Main agrees after actual primary checks; exact three-item documentary repair and revised-byte review precede any brief/root admission/control/proof/behaviour. D014 remains unadmitted; G6.1 open. Exact original proposal ec570da archive recovery-verified1799trackedfiles and saved SHA20b1e9fe42c3c7ee390764ca74af4ff847fc167b79c685bbf2a0fc28d571d56e/100197607bytes.
+
 ### D013 excluded partial-log preservation correction — 20 October 2026, 00:42 Melbourne
 
 Direct byte comparison proves original excluded stdout344bytes/SHA3073bf56... versus retained text345bytes/SHA7b9b244a..., exactly one appended LF. Earlier candidate report's exact-output wording is corrected by G6_1_D013_PARTIAL_LOG_PROVENANCE_20261020.md, preserving original report/history and recoverable hex for all344 originalbytes. Hex decoded/hash/original comparison verified. No aggregate outcome in either partial; both excluded/causeUNKNOWN. Complete author80 retry/independent80 and bounded D013 acceptance unchanged. No runtime/proof/authority modification; independent D014 proposal review proceeds on unchanged exact bytes.
