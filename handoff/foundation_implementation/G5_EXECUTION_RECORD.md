@@ -1,5 +1,9 @@
 # Gate 5 execution and recovered checkpoint
 
+### D013 operation-scoped unadmitted proof correction — 19 October 2026, 23:58 Melbourne
+
+FollowingpreservedRETURN96b1540, newdiffonlytest_ratio: unsupportedreadbudget resets/assertsperrequest; actualnewdefinition2insertproveswriterpolicyandtablecount2, separatelyretainedoriginalretryhasnorequiredwriterpath. No validsemanticassertionremoved; actualsource/refusal/history/firstwrite/fault/corruption/typeproofretained,179projectedcases. ScopedRuffPASS. No domainexecution/collection/staticnewAPImypy/generation/code. Repairedsource requiresactualindependentadequacybeforeanyadmission/RED; no newhumanpermissionneeded.
+
 ### D013 unadmitted proof RETURN preserved — 19 October 2026, 23:58 Melbourne
 
 Actualindependent-review/g61-d013-proof/a31b71c/20261019 RETURN, reportSHAdce2737f3aefad7dccd3f6b0b4d9a4f75245dd1fba009a54c6b22c8cb612d85c plusthreeexactfiles in d013_proof_review_initial_20261019/. F001ImportantRECURRENT_CLASS operation-scopeoverconstraint: existingretryneednotwrite; read-onceisperrequestnot208requestbatch. Requiredclassclosure preservesactualnewinsertpolicy/validretry/perrequestreads/allrefusals/unchangedhistory. Mainagreesafterprimarysource/specinspection. Originalnestedrehash-equationwitness soundbecauseoldlogicalIDexcludesresult; provisionalreviewconcernwithdrawn. Fourcompile/RuffPASS andsevennegativesource-sites reviewed, notdomainexecution/mypy. No generation/code. RootrecordsboundedP06ASTcanaryruling/cost, nofutureimplementationfreeze. PreserveRETURNbeforeonlytwounadmittedassertionscopechanges, thenrequiredrevisedadequacyreview.

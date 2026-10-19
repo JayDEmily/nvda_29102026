@@ -1,5 +1,9 @@
 # NVDA V2 — ACTIVE successor ExecPlan: Gate 5 execution
 
+## D013 unadmitted proof scope repair prepared — 19 October 2026, 23:58 Melbourne
+
+AfterpreservedRETURN96b1540, onlytest_ratio changed: clear/assertpredecessorreadtracewithineachunsupportedrequest; requirewriterpolicyonnewD013definition2logicalfact beforeordinaryoriginalfactretry, withactualtablecount2. Retryitselfstillmustreturnoriginalcompletefact/timebutneednotwrite. Alloldrefusal/immediateempty-populatedhistory/nativefirstwrite/fault/recovery/corruption/typingassertions retained; support/specimens/authority/control/runtimeunchanged. ScopedRuffPASS;179projectedcasesunchanged. No unadmitteddomaintest/execution usedasfalseRED. Requiredrevisedindependentadequacy beforegeneration/code remainsunmet; candidate issource-onlyrepair, notsemanticGREEN. Standingdelegationstillneedsnonewownerpermission.
+
 ## D013 authored-proof RETURN preserved; operation-scoped correction required — 19 October 2026, 23:58 Melbourne
 
 Actualindependent-review/g61-d013-proof/a31b71c/20261019 RETURN_FOR_AUTHORED_PROOF_REPAIR; reportSHAdce2737f3aefad7dccd3f6b0b4d9a4f75245dd1fba009a54c6b22c8cb612d85c andexactthreefiles preserved in d013_proof_review_initial_20261019/. Mainreadfullreport/staticscript/results. F001ImportantRECURRENT_CLASS: operation-specificinvariant promotedtogenericpath/testscope; P05requireswriteBEGINonexistingretry althoughauthorityassignsittoactualnewinsert; P02aggregatesread-onceover208separaterequests insteadoneperrequest. Classclosure mustallowlawfulread-onlyretry andseparaterefusalreads, retainactualfirst-insertpolicy/allrefusals/immediateunchangedhistories. Thisis unadmittedproofinadequacy, notobservedproductdefect orintendeddomainRED. RelevantD012proof/controlscope-repairlineage inspectedbyreviewer.

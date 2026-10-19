@@ -477,8 +477,11 @@ def test_d013_predecessor_compatibility_and_refusal(tmp_path, populated, mode):
         for number in range(1, 210):
             if number == 13:
                 continue
+            # Each call has its own read budget, regardless of validation order.
+            calls.clear()
             assert owner.materialise(replace(request, derived_signal_id=f"D{number:03d}")) is None
             assert history(owner.reads) == before
+            assert len(calls) == len(set(calls))
     elif mode == "reader-storage-failure":
         with pytest.raises(f.PersistenceFailureV1) as failed:
             owner.materialise(request)
@@ -959,15 +962,22 @@ def test_d013_sqlite_recovery_faults_and_integrity(tmp_path, monkeypatch, mode):
             return original_connect(*args, **kwargs)
 
         monkeypatch.setattr(mechanism.sqlite3, "connect", observed_connect)
+        # Observe mandatory write policy on a genuinely new logical fact.
+        # The subsequent original-fact retry may lawfully be read-only.
+        new_request = replace(request, calculation_definition_version="D013-RELATIVE-SPREAD-2")
+        new_fact = owner.materialise(new_request)
+        assert_ratio(new_fact, 200, 101)
+        assert new_fact.derived_occurrence_id != fact.derived_occurrence_id
+        assert ("write", 3, 1, 0) in observed_policy
+        assert any(url == path.as_uri() + "?mode=rw" for url, _ in observed_connections)
         assert owner.materialise(request) == fact
         independent = f.create_ratio_reader(
             admission=config["admission"], storage=f.SQLiteReadStorageV1(str(path))
         )
         assert independent.get_derived_occurrence(fact.derived_occurrence_id) == fact
-        assert ("write", 3, 1, 0) in observed_policy and ("read", 1, 1, 0) in observed_policy
+        assert ("read", 1, 1, 0) in observed_policy
         assert all(uri is True for _, uri in observed_connections)
         assert any(url == path.as_uri() + "?mode=ro" for url, _ in observed_connections)
-        assert any(url == path.as_uri() + "?mode=rw" for url, _ in observed_connections)
         monkeypatch.undo()
         with original_connect(path) as connection:
             assert connection.execute("PRAGMA application_id").fetchone() == (0x4E560003,)
@@ -1002,7 +1012,7 @@ def test_d013_sqlite_recovery_faults_and_integrity(tmp_path, monkeypatch, mode):
                             if operation == "DELETE"
                             else ("UPDATE " + current + " SET payload=payload")
                         )
-            assert connection.execute("SELECT count(*) FROM " + table).fetchone() == (1,)
+            assert connection.execute("SELECT count(*) FROM " + table).fetchone() == (2,)
         for other in (tmp_path / "raw.sqlite", predecessor_path):
             before = other.read_bytes()
             with pytest.raises((ValueError, f.PersistenceFailureV1)):
