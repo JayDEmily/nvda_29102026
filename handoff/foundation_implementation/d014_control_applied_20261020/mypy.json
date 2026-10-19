@@ -1,0 +1,22 @@
+{
+  "argv": [
+    "/tmp/nvda-g61-runtime-GBILkakx/dev/bin/python",
+    "-m",
+    "mypy",
+    "src",
+    "tools/product_proof_claims.py",
+    "tools/product_proof_outcomes.py",
+    "tools/validate_product_proof.py",
+    "tools/run_product_proof_gate.py"
+  ],
+  "cwd": "/workspace/scratch/d549b6d808a9/resume-20261020-ejayrse7/repository",
+  "candidate": "6c37588947ce4d61d0794d0f99ebaf497c970309",
+  "expected_exit": 0,
+  "expected_marker": "Success: no issues found",
+  "exit": 0,
+  "completed": true,
+  "log_sha256": "b9a24dbbfc500f3a6b6b477230619d55ea16fc2ce67e17d268b9aa44ded04d6a",
+  "marker_present": true,
+  "unchanged_head": true,
+  "clean_after": true
+}

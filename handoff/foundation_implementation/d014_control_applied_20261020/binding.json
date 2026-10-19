@@ -1,0 +1,20 @@
+{
+  "argv": [
+    "/tmp/nvda-g61-runtime-GBILkakx/dev/bin/python",
+    "tools/validate_implementation_authority.py",
+    "--binding",
+    "implementation/authority/G6_1_D014_IMPLEMENTATION_AUTHORITY_BINDING.yaml",
+    "--brief",
+    "handoff/foundation_implementation/authority/G6_1_D014_IMPLEMENTATION_BRIEF_PROPOSED.md"
+  ],
+  "cwd": "/workspace/scratch/d549b6d808a9/resume-20261020-ejayrse7/repository",
+  "candidate": "6c37588947ce4d61d0794d0f99ebaf497c970309",
+  "expected_exit": 0,
+  "expected_marker": "PASS: implementation authority",
+  "exit": 0,
+  "completed": true,
+  "log_sha256": "1d4f690680073ba15d384c1af969d6c91e487a2da4080eca717c815dec16f5ae",
+  "marker_present": true,
+  "unchanged_head": true,
+  "clean_after": true
+}
