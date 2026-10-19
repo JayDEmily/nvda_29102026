@@ -1,0 +1,39 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/d549b6d808a9/g52-recovery/repository
+configfile: pyproject.toml
+collected 1 item
+
+tests/product/market_measurement_d013/test_ratio.py F                    [100%]
+
+=================================== FAILURES ===================================
+___________ test_d013_sqlite_recovery_faults_and_integrity[profile] ____________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-57/test_d013_sqlite_recovery_faul0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f8ce0415cd0>
+mode = 'profile'
+
+    @pytest.mark.parametrize("mode", STORAGE_CASES)
+    def test_d013_sqlite_recovery_faults_and_integrity(tmp_path, monkeypatch, mode):
+        raw = raw_source(tmp_path / "raw.sqlite")
+        for side in ("bid", "ask"):
+            raw.commands.admit_raw_observation_occurrence(observation(side))
+        predecessor_path = tmp_path / "predecessors.sqlite"
+        previous = f.create_owner(**predecessor_configuration(raw.reads, predecessor_path))
+        midpoint = previous.materialise(predecessor_request(identity="D011"))
+        spread = previous.materialise(predecessor_request(identity="D012"))
+        assert midpoint.result == Decimal("101") and spread.result == Decimal("2")
+        ratio_seam()
+>       assert importlib.util.find_spec("nvda_desk.market_measurement_truth._rational_sqlite") is not (
+            None
+        ), "admitted isolated ratio SQLite behaviour is absent"
+E       AssertionError: admitted isolated ratio SQLite behaviour is absent
+E       assert None is not None
+E        +  where None = <function find_spec at 0x7f8ce0e57ec0>('nvda_desk.market_measurement_truth._rational_sqlite')
+E        +    where <function find_spec at 0x7f8ce0e57ec0> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/product/market_measurement_d013/test_ratio.py:843: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/market_measurement_d013/test_ratio.py::test_d013_sqlite_recovery_faults_and_integrity[profile]
+============================== 1 failed in 0.18s ===============================

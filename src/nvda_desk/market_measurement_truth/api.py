@@ -8,6 +8,7 @@ from collections.abc import Callable, Sequence
 from dataclasses import dataclass, fields, is_dataclass
 from datetime import datetime, timedelta
 from decimal import Decimal
+from math import gcd
 from pathlib import Path
 from typing import Protocol, get_args, get_origin, get_type_hints
 
@@ -355,18 +356,166 @@ def create_reader(
     return build_reader(admission=admission, storage=storage)
 
 
+@dataclass(frozen=True, slots=True)
+class ExactRatioV1(_Validated):
+    numerator: int
+    denominator: int
+
+    def __post_init__(self) -> None:
+        _Validated.__post_init__(self)
+        if (
+            self.denominator <= 0
+            or gcd(abs(self.numerator), self.denominator) != 1
+            or (self.numerator == 0 and self.denominator != 1)
+        ):
+            raise ValueError("canonical reduced ratio with positive denominator required")
+
+
+@dataclass(frozen=True, slots=True)
+class PredecessorEvidenceV1(_Validated):
+    occurrence: DerivedSignalOccurrenceV1
+    definition: CalculationDefinitionV1
+    parameter_set: CalculationParameterSetV1
+    input_selection_policy: InputSelectionPolicyVersionV1
+    unit_conventions: tuple[UnitConventionVersionV1, ...]
+    projection_mappings: tuple[raw_api.RawSignalProjectionMappingV1, ...]
+
+
+@dataclass(frozen=True, slots=True)
+class RatioCalculationRequestV1(_Validated):
+    derived_signal_id: str
+    subject_instrument: str
+    as_of_utc: datetime
+    knowledge_cutoff_utc: datetime
+    calculation_definition_version: str
+    parameter_set_ref: VersionRefV1
+    predecessor_occurrence_ids: tuple[str, ...]
+
+    def __post_init__(self) -> None:
+        _Validated.__post_init__(self)
+        if len(self.predecessor_occurrence_ids) != 2:
+            raise ValueError("exactly two explicit predecessor identities required")
+
+
+@dataclass(frozen=True, slots=True)
+class RatioOccurrenceV1(_Validated):
+    owner_object_id: str
+    owner_namespace: str
+    implementation_brief_sha256: str
+    derived_signal_id: str
+    derived_occurrence_id: str
+    calculation_definition_version: str
+    definition_content_sha256: str
+    parameter_context_refs: tuple[VersionRefV1, ...]
+    subject_instrument: str
+    universe: tuple[str, ...] | None
+    effective_as_of_utc: datetime
+    window: str | None
+    knowledge_cutoff_utc: datetime
+    calculated_at_utc: datetime
+    result: ExactRatioV1
+    units: str
+    result_shape: str
+    raw_input_lineage: tuple[RawInputLineageV1, ...]
+    predecessor_occurrence_ids: tuple[str, ...]
+    convention_refs: tuple[VersionRefV1, ...]
+    supersedes_derived_occurrence_id: str | None
+    predecessor_evidence: tuple[PredecessorEvidenceV1, ...]
+
+    def __post_init__(self) -> None:
+        _Validated.__post_init__(self)
+        if (
+            self.raw_input_lineage
+            or self.convention_refs
+            or self.universe is not None
+            or self.window is not None
+            or self.supersedes_derived_occurrence_id is not None
+            or len(self.parameter_context_refs) != 1
+            or len(self.predecessor_evidence) != 2
+            or self.predecessor_occurrence_ids
+            != tuple(item.occurrence.derived_occurrence_id for item in self.predecessor_evidence)
+            or self.units != "percent"
+            or self.result_shape != "scalar_exact_ratio"
+        ):
+            raise ValueError("complete exact-ratio metadata and ordered predecessor pair required")
+
+
+class MeasurementRatioReadsV1(Protocol):
+    def get_derived_occurrence(self, derived_occurrence_id: str) -> RatioOccurrenceV1 | None: ...
+    def list_derived_history(
+        self,
+        *,
+        derived_signal_id: str,
+        subject_instrument: str,
+        effective_at_or_before_utc: datetime,
+        knowledge_at_or_before_utc: datetime,
+        limit: int,
+    ) -> tuple[RatioOccurrenceV1, ...]: ...
+    def get_calculation_definition(
+        self,
+        *,
+        derived_signal_id: str,
+        calculation_definition_version: str,
+    ) -> CalculationDefinitionV1 | None: ...
+    def get_parameter_set(self, ref: VersionRefV1) -> CalculationParameterSetV1 | None: ...
+
+
+class MeasurementRatioOwnerV1(Protocol):
+    @property
+    def reads(self) -> MeasurementRatioReadsV1: ...
+
+    def materialise(self, request: RatioCalculationRequestV1) -> RatioOccurrenceV1 | None: ...
+
+
+def create_ratio_owner(
+    *,
+    admission: OwnerAdmissionV1,
+    predecessor_reader: MeasurementReadsV1,
+    definitions: tuple[CalculationDefinitionV1, ...],
+    parameter_sets: tuple[CalculationParameterSetV1, ...],
+    storage: MemoryStorageV1 | SQLiteStorageV1,
+    utc_now: Callable[[], datetime],
+) -> MeasurementRatioOwnerV1:
+    from ._rational import build_owner
+
+    return build_owner(
+        admission=admission,
+        predecessor_reader=predecessor_reader,
+        definitions=definitions,
+        parameter_sets=parameter_sets,
+        storage=storage,
+        utc_now=utc_now,
+    )
+
+
+def create_ratio_reader(
+    *,
+    admission: OwnerAdmissionV1,
+    storage: SQLiteReadStorageV1,
+) -> MeasurementRatioReadsV1:
+    from ._rational import build_reader
+
+    return build_reader(admission=admission, storage=storage)
+
+
 __all__ = [
     "AuthorityArtifactRefV1",
     "CalculationDefinitionV1",
     "CalculationParameterSetV1",
     "CalculationRequestV1",
     "DerivedSignalOccurrenceV1",
+    "ExactRatioV1",
     "InputSelectionPolicyVersionV1",
     "MeasurementOwnerV1",
+    "MeasurementRatioOwnerV1",
+    "MeasurementRatioReadsV1",
     "MeasurementReadsV1",
     "MemoryStorageV1",
     "OwnerAdmissionV1",
     "PersistenceFailureV1",
+    "PredecessorEvidenceV1",
+    "RatioCalculationRequestV1",
+    "RatioOccurrenceV1",
     "RawInputBindingV1",
     "RawInputLineageV1",
     "RawProjectionReaderV1",
@@ -375,5 +524,7 @@ __all__ = [
     "UnitConventionVersionV1",
     "VersionRefV1",
     "create_owner",
+    "create_ratio_owner",
+    "create_ratio_reader",
     "create_reader",
 ]

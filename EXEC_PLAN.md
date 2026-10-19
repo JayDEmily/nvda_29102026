@@ -1,5 +1,11 @@
 # NVDA V2 — ACTIVE successor ExecPlan: Gate 5 execution
 
+## D013 additive memory component and intended storage RED — 20 October 2026, 00:06 Melbourne
+
+AftercommittedfullRED01d8821, onlyapi.py/additive_rational.py nowimplementexactnewrecords/facets/factories, fixedD013service/exactintegerarithmetic/completepublicpredecessorsnapshots. ActualadmittedtargetedP01[memory]1PASS0.39s; componentonly, notdurability/fullP01–P04closure. Oldpublicnodes/Decimalcode unchanged; reuseexistingownerprivate _expected/_Memory/_validate_occurrence withoutedit/extraction orcompetingoldmath. Exactnewadmission required. Newprivatecodec preservesoldtagsandaddsratiointegertextwithoutgloballimitmutation. Initialnew__all__RUF022formatfinding correctedmechanically; scopedAPI/newserviceRuffnowPASS, no fullmypy/aggregateinferred.
+
+ActualadmittedP05[profile]1failed0.18s onlyexplicitfind_specassert 'admitted isolated ratio SQLite behaviour is absent', afterrealoldproducers/newpublicseam. Notmissingimport/collectionfailure. FullmemoryandstorageREDlogs preservedbeforestoragecode in G6_1_D013_MEMORY_COMPONENT_20261020.log and G6_1_D013_STORAGE_SEAM_RED_20261020.log. Nextonlynew_rational_sqlite.py exactbrief§7; no oldstorage/path/schema/dependencychange. Remainingadmittedfamily/regressions/independentimplementationreviewstillrequired;G6.1open.
+
 ## D013 admitted actual intended RED preserved — 20 October 2026, 00:02 Melbourne
 
 Cleanproof-only7f97b91c20e4d8507c80c236d6938eecb4b82683; actualnativeall4claimsREADY_FOR_PROOF/activeM02, oldgenerationhashes unchanged/newgen1fb4095de4d5fe9da885f9e8e6574cfe495de1fdebbb8b37f3fcd31710f5bdf02. Pinnedstrictnewaggregatecollected179; all179failed onlyexplicitAssertionError 'admitted additive D013 ratio seam is absent',32.65s/strict1/process1. rgallfailureE-lines establishes179sameguard/nootherfailuremechanism. Existingpublicproducers/environment/collection/admission reachedbeforeguard. Full6337line/331081byte log preservedbyte-identical at G6_1_D013_ADMITTED_RED_20261020.log SHA27cb88b9d646fde51aea4a175f4177a99bdccea5453e8a77709108e9bf32cb9b beforeproductionchange. No governedmutation/skip/infrastructurefailure countedasRED. Root§7.2.2 satisfied; nextonly§7.2.3 additivepublicexactratio/service/isolatedstorage againstunchangedadmittedproof. G6.1stillopen; no engineeringGREEN or acceptance.

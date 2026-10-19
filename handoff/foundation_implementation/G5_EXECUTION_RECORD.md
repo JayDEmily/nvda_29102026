@@ -1,5 +1,9 @@
 # Gate 5 execution and recovered checkpoint
 
+### D013 memory component witness and storage absence RED — 20 October 2026, 00:06 Melbourne
+
+ActualadmittedP01[memory]1PASS0.39s afterfullRED01d8821 andnewapi.py/_rational.py only. Exacttypedratio/fullactualoldproducerlineage/IDoracle/readsfacet provesmemorycomponent, notallP01–P04orSQLite. Existingv1publicnodes/semantics untouched; oldprivatevalidator/configreusedas-is, noextraction/competingoldmath. Mechanicalnew__all__sortafterRUF022;scopednewsourceRuffPASS. AdmittedP05[profile]1failed0.18s exactexplicitabsent_sqlitemoduleassert afteroldproducers/newpublicseam, notimportfailure; preservedfullbeforestorageimplementation. LogsG6_1_D013_MEMORY_COMPONENT_20261020.log and G6_1_D013_STORAGE_SEAM_RED_20261020.log. NextnewisolatedSQLitestorageonly; admittedproof/generationimmutable andwholefamily/regressions/reviewremain.
+
 ### D013 actual admitted missing-feature RED — 20 October 2026, 00:02 Melbourne
 
 Actualpinnedstrictaggregate atclean7f97b91 collected179/all179failed sameexplicitmissingcreate_ratio_ownerassertionafteractualoldproducers,32.65s/strict1/process1. All4nativeclaimsREADY/activeM02; originalgenerationsunchanged/newgen1fb4095de4d5fe9da885f9e8e6574cfe495de1fdebbb8b37f3fcd31710f5bdf02. No collection/import/admissionfailure or governancemutation masqueradesasRED. Fullfirstlog6337lines331081bytes preservedexactly G6_1_D013_ADMITTED_RED_20261020.log SHA27cb88b9d646fde51aea4a175f4177a99bdccea5453e8a77709108e9bf32cb9b; cmpwithoriginalpasses, allE-linescount179sameguard. Preservebeforeanynewruntimecode; §7.2.2nowprovedorderedprerequisite, §7.2.3next. No D013GREEN/G6.1closure.
