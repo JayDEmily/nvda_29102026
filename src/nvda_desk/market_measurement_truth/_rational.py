@@ -13,7 +13,7 @@ from math import gcd
 from typing import TYPE_CHECKING, Any, get_args, get_origin, get_type_hints
 
 from . import api as f
-from ._catalogue import _AUTHORITY, _expected, _key
+from ._catalogue import _AUTHORITY, _Configuration, _expected, _key
 from ._catalogue import _Memory as _OriginalMemory
 from ._evaluation import canonical as original_canonical
 from ._evaluation import tagged as original_tagged
@@ -172,12 +172,13 @@ def validate_evidence(value: f.PredecessorEvidenceV1, now: datetime) -> None:
     state.definitions[
         (value.definition.derived_signal_id, value.definition.calculation_definition_version)
     ] = value.definition
-    for configuration in (
+    configurations: tuple[_Configuration, ...] = (
         value.parameter_set,
         value.input_selection_policy,
         *value.unit_conventions,
         *value.projection_mappings,
-    ):
+    )
+    for configuration in configurations:
         key = _key(configuration)
         if key in state.configuration and original_canonical(state.configuration[key]) != (
             original_canonical(configuration)
@@ -225,19 +226,33 @@ def capture(reader: f.MeasurementReadsV1, identity: str) -> f.PredecessorEvidenc
         return None
     if len(occurrence.parameter_context_refs) != 2:
         return None
+    definition = reader.get_calculation_definition(
+        derived_signal_id=occurrence.derived_signal_id,
+        calculation_definition_version=occurrence.calculation_definition_version,
+    )
+    parameter = reader.get_parameter_set(occurrence.parameter_context_refs[0])
+    selection = reader.get_input_selection_policy(occurrence.parameter_context_refs[1])
+    if definition is None or parameter is None or selection is None:
+        return None
+    units = []
+    for ref in occurrence.convention_refs:
+        unit = reader.get_unit_convention(ref)
+        if unit is None:
+            return None
+        units.append(unit)
+    mappings = []
+    for item in occurrence.raw_input_lineage:
+        mapping = reader.get_projection_mapping(item.projection_mapping_ref)
+        if mapping is None:
+            return None
+        mappings.append(mapping)
     return f.PredecessorEvidenceV1(
         occurrence,
-        reader.get_calculation_definition(
-            derived_signal_id=occurrence.derived_signal_id,
-            calculation_definition_version=occurrence.calculation_definition_version,
-        ),
-        reader.get_parameter_set(occurrence.parameter_context_refs[0]),
-        reader.get_input_selection_policy(occurrence.parameter_context_refs[1]),
-        tuple(reader.get_unit_convention(ref) for ref in occurrence.convention_refs),
-        tuple(
-            reader.get_projection_mapping(item.projection_mapping_ref)
-            for item in occurrence.raw_input_lineage
-        ),
+        definition,
+        parameter,
+        selection,
+        tuple(units),
+        tuple(mappings),
     )
 
 
@@ -318,7 +333,7 @@ def evaluate(
         parameter_set=parameter,
         predecessor_evidence=evidence,
     )
-    occurrence = f.RatioOccurrenceV1(
+    ratio_occurrence = f.RatioOccurrenceV1(
         "M02",
         NAMESPACE,
         BRIEF,
@@ -342,7 +357,7 @@ def evaluate(
         None,
         evidence,
     )
-    return occurrence, canonical(logical)
+    return ratio_occurrence, canonical(logical)
 
 
 @dataclass

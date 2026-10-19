@@ -1,5 +1,9 @@
 # NVDA V2 — ACTIVE successor ExecPlan: Gate 5 execution
 
+## D013 bounded typing repair; strict candidate evidence next — 20 October 2026, 00:10 Melbourne
+
+Preservedstaticfirstfailure4a7c7bb beforeonlynew_rational.py repair: annotateexistingprivateconfigurationunion; explicitlyreturnNoneforunavailabledefinition/parameter/selection/unit/mappingbeforeconstructingcompleteevidence; distinctratio_occurrenceoutputlocal. No Any/cast/ignore/publictype/schema/test/generation/oldsourcechange. Fullsource/controlmypy36nowPASS; scopednewsource/control/proofRuffPASS. Repairedtypingoutputpreserved G6_1_D013_REPAIRED_TYPING_20261020.log. Earlier179physicalPASSremainsattributedtofirstdurablecandidate, notclaimedrepairedstrictsuccess. Nextcleanstrict179andactualrequiredregressions/metadata/review; no D013acceptanceorG6.1closureyet.
+
 ## D013 first durable family GREEN; whole-source typing first failure — 20 October 2026, 00:09 Melbourne
 
 New_rational_sqlite.py implementsseparateappid0x4E560003/threeSTRICTimmutabletables/fulloldpredecessor/newratioidentity-equationvalidation/readonly/atomicregistration-append/uncertainty. Actualadmittedfullphysicalfamily179PASS99.02s/process0, includingpositiveandexact7negativestaticseams/nativefaults/firstwrite/freshprocess/integrity; thisisnotyetstrictaggregate/promotion/finalacceptance. ScopedM02sourceRuffPASS. Existingv1storage/sourceunchanged; noextraneoussurfaceedit.

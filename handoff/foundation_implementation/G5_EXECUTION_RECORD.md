@@ -1,5 +1,9 @@
 # Gate 5 execution and recovered checkpoint
 
+### D013 static repair GREEN; exact strict candidate pending — 20 October 2026, 00:10 Melbourne
+
+Onlynew_rational.py changesafterpreserved9errors4a7c7bb: existingconfigurationunionannotation, explicitoptionalgetterabsencechecksbeforeevidenceconstruction, distinctold/newoutputlocal. No casts/ignores/Anywidening/oldsource/test/schemachanges. Fullsource/controlmypy36PASS; scopedsource/control/proofRuffPASS. Preservedrepairedtypinglog. Earlier179physicalPASSnotrelabelledasrepairedstrictaggregate. Nextcleanstrict179/newcandidate/regressions/independentreviewbeforeconcretedisposition;G6.1open.
+
 ### D013 first durable179PASS; static9failure preserved — 20 October 2026, 00:09 Melbourne
 
 Newisolated_rational_sqlite.py aftercommittedstorageRED7c7a17b. Actualadmittedwholephysicalfamily179PASS99.02s/process0, notstrictaggregateoracceptance. ScopedM02sourceRuffPASS. Fullsource/controlmypy9errors(newserviceonly): tuplecommonobject2, un-narrowedoptionalreadresults5, reusedold/newoccurrencelocal2. Exactfirstlogandwholefamilylog preservedbeforetypingrepair. Requireddependentpromotion/admissionstoppedatstaticfailure; no test/meaning/publictype/storagechangesneeded, onlyexistingdefinedconfigunion/explicitunavailablegetterchecks/distincttypedlocals. No casts/ignores/Anywideningproposed. Recordboundedrepairthenrequiredcompletechecks. Earliermemorycomponentstatusfilename additive_rational.py meansactualnew_rational.py; noadditionalfileexists.
