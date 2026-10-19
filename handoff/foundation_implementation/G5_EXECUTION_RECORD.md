@@ -1,5 +1,9 @@
 # Gate 5 execution and recovered checkpoint
 
+### D013 excluded partial-log preservation correction — 20 October 2026, 00:42 Melbourne
+
+Direct byte comparison proves original excluded stdout344bytes/SHA3073bf56... versus retained text345bytes/SHA7b9b244a..., exactly one appended LF. Earlier candidate report's exact-output wording is corrected by G6_1_D013_PARTIAL_LOG_PROVENANCE_20261020.md, preserving original report/history and recoverable hex for all344 originalbytes. Hex decoded/hash/original comparison verified. No aggregate outcome in either partial; both excluded/causeUNKNOWN. Complete author80 retry/independent80 and bounded D013 acceptance unchanged. No runtime/proof/authority modification; independent D014 proposal review proceeds on unchanged exact bytes.
+
 ### D014 proposed design/contract prepared for independent review — 20 October 2026, 00:38 Melbourne
 
 New exactbriefSHAca1a5365052c594ff2fe42533ece47a8a85de5e31f05e73b5ad1cc12a8952cb7/contractSHA54850f780c4442924e2d28ed319ae5f0fb109e291b367391ac0a4c86190294fc. Direct-raw exactratio interface preserves old Decimal/D013 facets and reuses existing canonical ratio codec/public M00 selection; separate profile/complete raw configuration lineage. Documentary self-review corrected parameter_context_refs to include selection and convention_refs to retain unit versions, clarified independently lawful per-binding versions. Eight exact incorporated byte objects/contract marker/six proof names checked, no tests/runtimevalidators. Readonly workbook source evidence/current official TWS Decimal callback documentation do not create native mapping/collection admission. Proposal only; independent design review and actual delegated brief/root disposition precede any D014 control/proof/behaviour. Standing22:28 delegation remains, not routine approval pause; G6.1 open.
