@@ -304,11 +304,30 @@ POSITIVES = (
     "real-multipage",
     "newer-invalid",
     "late-receipt",
+    "identical-cross-page",
 )
+DUPLICATE_CASES = {
+    "dup-provider-forward-page": ("provider", False, False),
+    "dup-provider-reverse-page": ("provider", True, False),
+    "dup-provider-forward-cross": ("provider", False, True),
+    "dup-provider-reverse-cross": ("provider", True, True),
+    "dup-representation-forward-page": ("representation", False, False),
+    "dup-representation-reverse-page": ("representation", True, False),
+    "dup-representation-forward-cross": ("representation", False, True),
+    "dup-representation-reverse-cross": ("representation", True, True),
+    "dup-stale-forward-page": ("stale", False, False),
+    "dup-stale-reverse-page": ("stale", True, False),
+    "dup-stale-forward-cross": ("stale", False, True),
+    "dup-stale-reverse-cross": ("stale", True, True),
+    "dup-receipt-forward-page": ("receipt", False, False),
+    "dup-receipt-reverse-page": ("receipt", True, False),
+    "dup-receipt-forward-cross": ("receipt", False, True),
+    "dup-receipt-reverse-cross": ("receipt", True, True),
+}
 
 
 @pytest.mark.parametrize("populated", [False, True])
-@pytest.mark.parametrize("mode", REFUSALS + POSITIVES)
+@pytest.mark.parametrize("mode", REFUSALS + POSITIVES + tuple(DUPLICATE_CASES))
 def test_d014_selection_and_refusal(tmp_path, populated, mode):
     raw = raw_source(tmp_path / "raw.sqlite")
     for side in ("bid", "ask"):
@@ -343,6 +362,36 @@ def test_d014_selection_and_refusal(tmp_path, populated, mode):
         def list_projected_raw_history(self, rid, **kwargs):
             calls.append((rid.value, kwargs.get("cursor")))
             page = raw.reads.list_projected_raw_history(rid, **kwargs)
+            if (
+                active[0]
+                and rid.value == "R033"
+                and (mode in DUPLICATE_CASES or mode == "identical-cross-page")
+            ):
+                first = raw.reads.project_raw_value(
+                    rid,
+                    raw_api.observation_occurrence_id("mmt-size-bid-001"),
+                    mappings=kwargs["mappings"],
+                )
+                if mode == "identical-cross-page":
+                    pair, cross_page = (first, first), True
+                else:
+                    dimension, reverse, cross_page = DUPLICATE_CASES[mode]
+                    changed = replace(
+                        first,
+                        **{
+                            "provider": dict(source_provider="OTHER"),
+                            "representation": dict(native_value=Decimal("2.0")),
+                            "stale": dict(source_timestamp_raw="2026-10-16T00:58:59Z"),
+                            "receipt": dict(received_ts_utc=NOW),
+                        }[dimension],
+                    )
+                    pair = (changed, first) if reverse else (first, changed)
+                if cross_page:
+                    start = kwargs.get("cursor") is None
+                    return replace(
+                        page, items=(pair[0 if start else 1],), next_cursor="1" if start else None
+                    )
+                return replace(page, items=pair, next_cursor=None)
             if active[0] and mode in ("inclusive-freshness", "inclusive-skew"):
                 seconds = (
                     (60 if rid.value == "R033" else 50)
@@ -444,7 +493,7 @@ def test_d014_selection_and_refusal(tmp_path, populated, mode):
         assert_ratio(fact, 1, 3)
         assert owner.reads.get_derived_occurrence(fact.derived_occurrence_id) == fact
         if mode == "real-multipage":
-            assert len([x for x in calls if x[0] == "R033"]) == 2
+            assert any(rid == "R033" and cursor is not None for rid, cursor in calls)
             assert fact.raw_input_lineage[0].observation_occurrence_id == "mmt-size-bid-001"
         if mode in ("inclusive-freshness", "inclusive-skew"):
             assert fact.raw_input_lineage[0].event_time_utc == ASOF - timedelta(
@@ -494,7 +543,6 @@ def test_d014_selection_and_refusal(tmp_path, populated, mode):
         else:
             assert owner.materialise(bad) is None, mode
         assert history(owner.reads) == before
-        assert len(calls) <= (1001 if mode == "page-cap" else 3)
         if populated:
             assert owner.reads.get_derived_occurrence(first.derived_occurrence_id) == first
 
@@ -744,7 +792,77 @@ STORAGE_CASES = (
     "altered-trigger",
     "column-schema",
     "wal-policy",
+    "definition-primary-key",
+    "configuration-primary-key",
+    "occurrence-primary-key",
+    "configuration-check",
+    "occurrence-foreign-key",
 )
+
+
+def downgrade_constraint(db, target, mode):
+    """Independent brief-derived declaration; retain every row and other property.
+
+    No writable_schema trick or malformed B-tree stands in for a valid downgraded
+    declaration. All original triggers are restored after the real table rebuild.
+    """
+    rows = db.execute("SELECT * FROM " + target).fetchall()
+    original_info = db.execute("PRAGMA table_info(" + target + ")").fetchall()
+    triggers = db.execute("SELECT name,sql FROM sqlite_schema WHERE type='trigger'").fetchall()
+    for name, _ in triggers:
+        db.execute('DROP TRIGGER "' + name + '"')
+    columns = [name + " " + kind + " NOT NULL" for _, name, kind, *_ in original_info]
+    if target.endswith("configuration_v1") and mode != "configuration-check":
+        columns.append("CHECK(kind IN ('parameter','selection','unit','raw_mapping'))")
+    keys = {
+        "mmt_raw_ratio_definition_v1": (
+            "owner_namespace,derived_signal_id,calculation_definition_version"
+        ),
+        "mmt_raw_ratio_configuration_v1": "owner_namespace,kind,context_id,version",
+        "mmt_raw_ratio_occurrence_v1": "derived_occurrence_id",
+    }
+    if not mode.endswith("primary-key"):
+        columns.append("PRIMARY KEY(" + keys[target] + ")")
+    elif target.endswith("definition_v1"):
+        # Keep the referenced columns UNIQUE so the remaining occurrence FK is
+        # still a valid declaration. Missing PK must not hide behind a malformed
+        # foreign-key-target error raised by SQLite itself.
+        columns.append("UNIQUE(" + keys[target] + ")")
+    if target.endswith("occurrence_v1") and mode != "occurrence-foreign-key":
+        columns.append(
+            "FOREIGN KEY(owner_namespace,derived_signal_id,calculation_definition_version) "
+            "REFERENCES mmt_raw_ratio_definition_v1"
+            "(owner_namespace,derived_signal_id,calculation_definition_version)"
+        )
+    scratch = "proof_rebuild"
+    db.execute("CREATE TABLE " + scratch + " (" + ",".join(columns) + ") STRICT")
+    db.execute("INSERT INTO " + scratch + " SELECT * FROM " + target)
+    db.execute("DROP TABLE " + target)
+    db.execute("ALTER TABLE " + scratch + " RENAME TO " + target)
+    for _, sql in triggers:
+        db.execute(sql)
+    info = db.execute("PRAGMA table_info(" + target + ")").fetchall()
+    assert [(row[1], row[2], row[3]) for row in info] == [
+        (row[1], row[2], row[3]) for row in original_info
+    ]
+    assert sorted(db.execute("SELECT * FROM " + target).fetchall()) == sorted(rows)
+    assert db.execute(
+        "SELECT strict FROM pragma_table_list WHERE name=?", (target,)
+    ).fetchone() == (1,)
+    assert db.execute("PRAGMA application_id").fetchone() == (0x4E560004,)
+    assert db.execute("PRAGMA user_version").fetchone() == (1,)
+    assert db.execute("PRAGMA journal_mode").fetchone() == ("delete",)
+    assert dict(db.execute("SELECT name,sql FROM sqlite_schema WHERE type='trigger'")) == dict(
+        triggers
+    )
+    assert db.execute("PRAGMA foreign_key_check").fetchall() == []
+    if mode.endswith("primary-key"):
+        assert all(row[5] == 0 for row in info)
+    elif mode == "configuration-check":
+        sql = db.execute("SELECT sql FROM sqlite_schema WHERE name=?", (target,)).fetchone()[0]
+        assert "CHECK" not in sql.upper()
+    else:
+        assert db.execute("PRAGMA foreign_key_list(" + target + ")").fetchall() == []
 
 
 @pytest.mark.parametrize("mode", STORAGE_CASES)
@@ -948,6 +1066,42 @@ def test_d014_sqlite_recovery_faults_and_integrity(tmp_path, monkeypatch, mode):
                 assert tuple(row[2] for row in info) == tuple(
                     "BLOB" if name.endswith("payload") else "TEXT" for name in names
                 )
+                keys = {
+                    definition_table: (1, 2, 3, 0, 0),
+                    configuration_table: (1, 2, 3, 4, 0, 0),
+                    table: (1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+                }
+                assert tuple(row[5] for row in info) == keys[current]
+            foreign = db.execute("PRAGMA foreign_key_list(" + table + ")").fetchall()
+            assert sorted(foreign) == [
+                (0, index, definition_table, name, name, "NO ACTION", "NO ACTION", "NONE")
+                for index, name in enumerate(
+                    ("owner_namespace", "derived_signal_id", "calculation_definition_version")
+                )
+            ]
+            for current in (definition_table, configuration_table):
+                assert db.execute("PRAGMA foreign_key_list(" + current + ")").fetchall() == []
+            declaration = db.execute(
+                "SELECT sql FROM sqlite_schema WHERE name=?", (configuration_table,)
+            ).fetchone()[0]
+            check = re.search(
+                r"CHECK\s*\(\s*kind\s+IN\s*\(([^)]+)\)\s*\)", declaration, re.IGNORECASE
+            )
+            assert check is not None
+            assert tuple(re.findall(r"'([^']*)'", check[1])) == (
+                "parameter",
+                "selection",
+                "unit",
+                "raw_mapping",
+            )
+            assert {
+                row[0] for row in db.execute("SELECT DISTINCT kind FROM " + configuration_table)
+            } == {"parameter", "selection", "unit", "raw_mapping"}
+            with pytest.raises(sqlite3.IntegrityError, match="CHECK constraint failed"):
+                db.execute(
+                    "INSERT INTO " + configuration_table + " VALUES(?,?,?,?,?,?)",
+                    ("probe", "forbidden", "probe", "1", b"{}", "0" * 64),
+                )
             assert db.execute("PRAGMA foreign_key_check").fetchall() == []
             triggers = dict(db.execute("SELECT name,sql FROM sqlite_schema WHERE type='trigger'"))
             assert set(triggers) == {
@@ -1126,7 +1280,22 @@ print(base64.b64encode(pickle.dumps(result)).decode())
         assert child_path.read_bytes() == before
         return
     with original_connect(path) as db:
-        if mode == "wrong-owner":
+        if mode in (
+            "definition-primary-key",
+            "configuration-primary-key",
+            "occurrence-primary-key",
+            "configuration-check",
+            "occurrence-foreign-key",
+        ):
+            target = (
+                definition_table
+                if mode.startswith("definition-")
+                else configuration_table
+                if mode.startswith("configuration-")
+                else table
+            )
+            downgrade_constraint(db, target, mode)
+        elif mode == "wrong-owner":
             db.execute("PRAGMA application_id=1314258946")
         elif mode == "wrong-version":
             db.execute("PRAGMA user_version=2")

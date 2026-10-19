@@ -1,5 +1,9 @@
 # Gate 5 execution and recovered checkpoint
 
+### D014 bounded unadmitted repair prepared — 20 October 2026, 10:17 Melbourne
+
+Only new test_raw_ratio nowSHA588abd5c69bda15ea1305a12a3bbc35e7fe3f0ed3f57515e7cdd7926524d8db2; three support/specimens unchanged. Added16duplicate order/page/native/metadata cases plus identicalcrosspage positive, exactPK/CHECK/FK/declaration-downgrade checks, retainedallprevioussemanticassertions. Operation-scoped arbitrarytotaltrace/exactcallcount restriction removed per recorded ruling, fullpage/exhaustion/refusal/history evidence retained. Actual compile-only/RuffPASS,202sourceprojected not executed. FirstRETURN intact; fresh revisedadequacy needed before gen1/RED/runtime. G6.1open/123/all83.
+
 ### D014 authored proof RETURN preserved — 20 October 2026, 10:14 Melbourne
 
 Actual e13ccd9 independent RETURN ref independent-review/g61-d014-authored-proof/e13ccd9/20261020, full3files/reportSHA5936ebae8c91ed3648f437d0f20221ebbb2aa747cbbef4cebaf8276359066cbb preserved exactly/read. Main agrees F001duplicate order/page/native representation RECURRENT_CLASS; F002exactPK/CHECK/FK declaration ISOLATED. Concrete bounded proof RETURN/ruling in G6_1_D014_PROOF_REVIEW_20261020.md, including incidental total-call-bound scope correction. No product failure/execution/admission/gen/runtime inferred. Preserve then repair new unadmitted proof, revised adequacy before admission/RED/behaviour. Authoreddelta over85b83 verified/saved; G6.1open/123/all83 unenabled.
