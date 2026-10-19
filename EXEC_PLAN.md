@@ -1,5 +1,16 @@
 # NVDA V2 — ACTIVE successor ExecPlan: Gate 5 execution
 
+## Current continuation — 19 October 2026, 15:58 Melbourne: G5.1 only
+
+Current owner instruction: “There is space available in the library now. So complete G5.1 only.” Reference: `owner-chat/20261019T155833/G5.1-only`.
+This authorises necessary G5.1 environment, independently reviewed/admitted proof, RED-before-behaviour implementation, regression and bootstrap work. G5.2 is not authorised in this continuation and must not start. G5.3/G6, main merge, provider/live effects, migration and retirement remain outside scope. Exact accepted version-3 authority and concrete control acceptance remain unchanged.
+
+Recovery: workspace maintenance removed the prior local pin-alignment checkpoint; its attempted persistent save had failed. The attached applied archive is recovered with SHA256 `f3f8145f88ba52b1238310531ae2cd143cca2dbc7e28df3b5bea3ae68f24b285` and HEAD `98e8309080a50fcfdbd501a7c2afef03b3e0a370`. The authorised `.python-version` correction to 3.12.14 is reapplied here; this does not claim recovery of prior commit `25c56163acab39d72e0806fd830663e934ea272c`.
+
+Ledger: G5.1 IN_PROGRESS_RECOVERED_ENVIRONMENT_PREFLIGHT; G5.2 NOT_STARTED_NOT_AUTHORISED_THIS_CONTINUATION. No new product proof or runtime result exists yet. Continue using this root plan and `handoff/foundation_implementation/G5_EXECUTION_RECORD.md`; no competing skill plan or ledger is created.
+
+---
+
 ## Current checkpoint — 19 October 2026: concrete control diff accepted and applied
 
 At09:08:04 Melbourne the owner answered “Yes, I do.” to “Do you accept applying candidate `1bec046`?” This accepts the exact twelve-path control diff to `1bec046d6d1a0c310bfd197de70e9a00c3d80955`, patch SHA256 `74edd8eff5e9b2404a3279a113c9cf69e1a3882946e9aca9e4bcb89e7f05ed7a`, supplied in the preceding full-Git handoff. Acceptance reference: `owner-chat/20261019T090804/control-candidate-1bec046`. The patch is applied to the existing active work branch; no concrete-diff acceptance gap remains.
