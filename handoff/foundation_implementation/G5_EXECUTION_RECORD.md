@@ -1,5 +1,11 @@
 # Gate 5 execution and recovered checkpoint
 
+### G5.3 concrete candidate/activation decision reached
+
+Independent review returned one ImportantISOLATEDduplicate-consistency defect on9e605bd. Current proofgen4SHA24a5af4054c277b01a140ec43481e86851e5e76263826644a80993c12c2495b7 has separate independent proof adequacy;16negative REDs preceded repairb25eea9ec4d717f11accced033a6191a07485a89. Author final evidence:113strict pilotPASS,30M00SQLitePASS,416retainedsemanticPASS,113kernelpromotionPASS/11families/zero seam-dependency violations,34filemypy/scopedRuffPASS; two inherited M01E501 findings remain. Four independent public sequences/control checks and author direct replay are separately attributed. No independent implementation rereview/favourable whole-candidate disposition is fabricated.
+
+G5.3 AWAITING_CONCRETE_OWNER_CANDIDATE_AND_ACTIVATION_DECISION; M02 remainsbootstrap; Gate5notclosed; sequential G6commission remains pending exact prerequisites. The concrete two-path activation diff is prepared/unapplied, SHA687f0644880e4de20c2b6af9f45d921e3816d6ba42b92ee6c90077ba4f9a5467. Decisionpackage explains actual§6 owner boundary, subsequent active aggregate/promotion/finaldisposition and retainedG6family-contract steps. Source/acceptedauthority/M00/A00/M01/pin/vendor boundaries remain unchanged except boundedfoundationrepair/admittedproof. Stopdependent execution at this human-decision invariant; no speculative G6 or cleanup follows.
+
 ### Remaining current-plan leaves commissioned sequentially
 
 Owner-chat/20261019T213947/remaining-plan-in-order broadens earlier G5.3-only scope: finish G5.3 then G6.1–G6.4 sequentially under the exact current plan. Necessary detailed family-contract/proof/plan-amendment preparation is included; missing domain conventions, concrete acceptance decisions and source facts are not invented. Existing independent candidate review continues. Dependent G6 execution waits for its actual predecessor and exact accepted family contracts. No external/broker/live/main/migration/retirement expansion follows from the commissioning phrase.
