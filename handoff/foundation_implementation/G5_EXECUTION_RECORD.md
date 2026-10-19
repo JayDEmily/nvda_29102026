@@ -1,5 +1,23 @@
 # Gate 5 execution and recovered checkpoint
 
+## G5.1 final engineering return — 19 October 2026, 19:43 Melbourne
+
+Engineering source/config/proof candidate4c9bdb8d36fc9f393cc90ac4c62e7adda83e71c0 is ready for the separately required owner decision. Full result/commands/limits are in G5_1_CLOSEOUT_20261019.md; subsequent commits package evidence without changing those verified bytes.
+
+Final reviewer isolated F001 atbd787fb. Changed proof2902c1d was independently judged adequate and admitted as immutable generation3 at5de245d, SHA51e87129c2a31c71599b7a01beb8ba39717ed5118a4d5c849bcb2015b6c80c6f. All7boundary cases failed before repaira59b29e and passed afterwards. Exact native integer bytes and metadata/ref meaning are retained through context-independent exact representation conversion, without caller-wide interpreter settings. The narrowly identified policy-reference conversion defect is repaired in api/A00 under version3§5's explicit returned-contract-defect allowance. No financial policy is added.
+
+Final: fixed F001 — test_sqlite_integer_fidelity_beyond_runtime_decimal_conversion_limit and test_sqlite_large_policy_version_remains_exact_through_a00 RED→GREEN; strict current product aggregate30/30, retained M00semantic416/416, default architecture/bootstrap113/113 and registry promotion113/113. Source/control mypy28files passes. Runtime-only installed wheel completes production A00 SQLite sequence and reopened exact read with no Psycopg. Standard source/tests/tools lint remains red on2unchanged M01E501 findings. Wider exploratory repository lint has738findings including historical handoff scripts; no whole-repository green claim is made.
+
+Independent remaining-scope final review reference independent-review/g51-final/4c9bdb8/20261019/remaining-scope gives PASS for controls/bootstrap and unchanged M00/A00 scope, including direct negative sequences in disposable clones and public assessment without prior relation derivation. It does not independently re-review F001 or certify the author's commands. No new Critical/Important/Minor findings were returned. Existing historical source, accepted authority, frozen guardrails/agents, old PostgreSQL adapter and original93product test files compare unchanged against98e8309.
+
+Ruling: repair exact accepted integer representation without global settings — accepted domain requires it — cost if wrong: representation/compatibility loss; covered by admitted independent expected bytes, signed witnesses, retry/high-water and regressions.
+
+Ruling: adapt stale kernel fixtures to M02reservation/M03next and optional bootstrap source — existing lifecycle law permits it — cost if wrong: weaker admission evidence; production validators unchanged, active-source/unowned-package checks retained, independently reviewed.
+
+Ruling: preserve inherited lint/history findings outside bounded production scope — no G5.1 broad reformatting authority — cost if wrong: broader lint remains red, disclosed. No deferred reviewer Minor finding exists.
+
+G5.1 ENGINEERING_READY_AWAITING_OWNER_CANDIDATE_DECISION. Accepted SQLite admission contract§5 calls for the final G5.1owner decision after M00GREEN and independent review. Existing version3/control approvals remain accepted. G5.2NOT_STARTED_NOT_AUTHORISED; no main/live/migration/retirement action.
+
 ## G5.1-only continuation — 19 October 2026, 15:58 owner instruction
 
 Authority: `owner-chat/20261019T155833/G5.1-only`, exact accepted version3 and previously accepted/applied1bec046 controls. Workspace recovery and reapplication of the Python pin are recorded in the root plan. Existing root plan/this record remain the single ledger; no skill-generated competing plan is adopted. Baseline112tests pass; native authority validates the four intents; all17offline wheel hashes match. Fresh dev/optional-client and separate runtime-only environments use CPython3.12.14/SQLite3.53.1; the runtime-only install has project/PyYAML and no Psycopg.
