@@ -9,7 +9,9 @@ from dataclasses import fields
 from pathlib import Path
 
 import pytest
-from _support import ROOT, foundation
+from _support import ROOT, configuration, foundation
+
+from nvda_desk.raw_signal_occurrence_truth import api as raw_api
 
 
 def test_public_seam_static_compatibility(tmp_path):
@@ -82,3 +84,28 @@ def test_exact_frozen_public_record_shapes_from_accepted_authority():
         assert cls.__dataclass_params__.frozen and hasattr(cls, "__slots__")
         with pytest.raises(TypeError):
             cls(unapproved_field="x")
+
+
+@pytest.mark.parametrize(
+    "field,value",
+    [
+        ("raw_dependencies", ("",)),
+        ("raw_dependencies", ("R000",)),
+        ("raw_dependencies", ("R324",)),
+        ("raw_dependencies", ("R34",)),
+        ("derived_dependencies", ("D000",)),
+        ("derived_dependencies", ("D210",)),
+        ("raw_dependencies", ("R034", "R034")),
+        ("raw_dependencies", (34,)),
+    ],
+)
+def test_constructor_tuple_identity_content(field, value):
+    from dataclasses import replace
+
+    f = foundation()
+    definition = configuration(f, raw_api.create_owner().reads)["definitions"][0]
+    error = TypeError if value == (34,) else ValueError
+    with pytest.raises(error):
+        replace(definition, **{field: value})
+    with pytest.raises(ValueError):
+        f.CalculationParameterSetV1("members", 1, "P_BASIC", "NVDA", ("",))
