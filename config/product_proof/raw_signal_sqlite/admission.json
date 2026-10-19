@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "current_generation": {
-    "path": "config/product_proof/raw_signal_sqlite/generations/0001.json",
-    "sha256": "12a2092d4b358a8160c6f6a33b04595d1baf98813f80a3dbc5c65f3a3642ce35"
+    "path": "config/product_proof/raw_signal_sqlite/generations/0002.json",
+    "sha256": "21268cabed8c70d2c7b62a0a02a34cc571d9e0f1c2bf0d7149acc0af27a5cb9e"
   }
 }

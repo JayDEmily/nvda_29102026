@@ -29,4 +29,14 @@ No remaining important static admission blocker or authority gap was identified 
 
 ## Admission jurisdiction
 
+## Generation2 — isolated static-witness invocation
+
+Generation1's first implementation run executed23cases:22passed; the static specimen failed with mypy exit2 because inherited `pyproject.toml` `files=["src"]` conflicts with command-text `-c`. This is a proof-driver failure, not semantic RED or product success. The full result remains in `M00_SQLITE_FIRST_IMPLEMENTATION_RESULT_20261019.log`.
+
+Exact changed-proof candidate `64b292e16ed2f46a44a9702478fcfa646b6a3080`, tree `f10ece1a7a03eb511868b06389437f1c928bfa84`, changes only the inline checker driver from implementation baseline `cd2499b`. Independent review reference `independent-review/g51-m00-sqlite/64b292e/gen2-driver/20261019` returned **PASS_FOR_ADMISSION**. The temporary explicit config removes inherited source selection while retaining Python3.12, imported-source following, strict/no-Any flags, identical positive/negative specimens, all13signature disclosures, Any rejection and exact negative diagnostic counts/codes. No assertion was weakened. The reviewer ran no tests, made no writes and did not review implementation.
+
+Generation2 retains generation1 unchanged and references its exact file/hash. It is separately admitted under the same current owner execution authority after the genuine changed-proof review. This does not change version3 authority or assert a product pass.
+
+## Delegated admission boundary
+
 The worker admits only these exact five source files as generation1 under accepted version3, this genuine independent adequacy disposition, and the owner's current G5.1-only execution authority `owner-chat/20261019T155833/G5.1-only`. This is delegated proof admission within the accepted contract, not a fabricated new owner acceptance or product success. Foundation generation remains null; no G5.2 source or behaviour is included.
