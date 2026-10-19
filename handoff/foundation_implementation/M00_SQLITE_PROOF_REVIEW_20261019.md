@@ -40,3 +40,11 @@ Generation2 retains generation1 unchanged and references its exact file/hash. It
 ## Delegated admission boundary
 
 The worker admits only these exact five source files as generation1 under accepted version3, this genuine independent adequacy disposition, and the owner's current G5.1-only execution authority `owner-chat/20261019T155833/G5.1-only`. This is delegated proof admission within the accepted contract, not a fabricated new owner acceptance or product success. Foundation generation remains null; no G5.2 source or behaviour is included.
+# Generation 3 — isolated integer-conversion boundary repair
+
+Fresh final review at bd787fb returned Important isolated F001: native or metadata integers beyond CPython's default decimal conversion ceiling construct validly but fail persistence. Reference: independent-review/g51-final/bd787fb6e4f70d306e8ee8fe7ba9efd684918e3e/20261019/F001. It stopped whole-candidate review; uncompleted control/bootstrap areas are not certified.
+
+Changed proof source 2902c1d8236bc0ab68ef7be3ba6fd27c3728cbc7 adds seven independent witnesses, positive/negative native/sequence/receipt-epoch integers and large policy version through A00, with fresh readback, binary expected-value comparison, unchanged native byte expectation, retry and high-water checks. All seven failed at production conversion before the repair. These are accepted storage-domain witnesses, not IBKR magnitude claims. IBKR documents Python price float and size Decimal callbacks; native preservation must not invent blanket Decimal conversion or financial validation. Source: https://www.interactivebrokers.com/docs/tws-api/doc/md/streaming-data and https://interactivebrokers.github.io/tws-api/market_depth.html (inspected 19 October 2026). No integration is admitted.
+
+Independent changed-proof review reference independent-review/g51-m00-sqlite/2902c1d/gen3-integers/20261019 gives PASS_FOR_ADMISSION: exact seven-case delta discriminates the conversion class; temporary mypy cache isolates checking without weakening strictness. Reviewer did not run tests or certify implementation GREEN. Generation3 is separately admitted under the existing delegated G5.1 execution authority; generation1/2 bytes are retained, with the exact predecessor chain. This is not final G5.1 owner disposition.
+
