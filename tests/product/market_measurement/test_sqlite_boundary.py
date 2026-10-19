@@ -285,7 +285,11 @@ def test_sqlite_immutable_concurrency_rollback_and_uncertain_commit(tmp_path, mo
         f.create_owner(**(config | {"parameter_sets": (config["parameter_sets"][1], bad)}))
     assert reader.get_parameter_set(f.VersionRefV1("mmt-pilot-basic", 2)) is None
     with real_connect(path) as connection:
-        connection.execute("DROP TRIGGER mmt_occurrence_v1_update")
+        trigger_name, trigger_sql = connection.execute(
+            "SELECT name,sql FROM sqlite_schema WHERE type='trigger' "
+            "AND tbl_name='mmt_occurrence_v1' AND upper(sql) LIKE '%BEFORE UPDATE%'"
+        ).fetchone()
+        connection.execute('DROP TRIGGER "' + trigger_name.replace('"', '""') + '"')
         payload = connection.execute("SELECT payload FROM mmt_occurrence_v1").fetchone()[0]
         document = json.loads(payload)
         document["result"] = {"kind": "decimal", "sign": 0, "digits": "999", "exponent": 0}
@@ -296,10 +300,7 @@ def test_sqlite_immutable_concurrency_rollback_and_uncertain_commit(tmp_path, mo
             "UPDATE mmt_occurrence_v1 SET payload=?,content_sha256=?",
             (poisoned, hashlib.sha256(poisoned).hexdigest()),
         )
-        connection.execute(
-            "CREATE TRIGGER mmt_occurrence_v1_update BEFORE UPDATE ON mmt_occurrence_v1 "
-            "BEGIN SELECT RAISE(ABORT,'immutable foundation record'); END"
-        )
+        connection.execute(trigger_sql)
     with pytest.raises((ValueError, f.PersistenceFailureV1)):
         o.materialise(request(f))
 
@@ -385,15 +386,16 @@ def test_sqlite_integrity_failure_is_not_missing_input(tmp_path, mutation):
             elif mutation == "schema":
                 c.execute("CREATE TABLE alien(value TEXT)")
             else:
-                c.execute("DROP TRIGGER mmt_occurrence_v1_update")
+                trigger_name, trigger_sql = c.execute(
+                    "SELECT name,sql FROM sqlite_schema WHERE type='trigger' "
+                    "AND tbl_name='mmt_occurrence_v1' AND upper(sql) LIKE '%BEFORE UPDATE%'"
+                ).fetchone()
+                c.execute('DROP TRIGGER "' + trigger_name.replace('"', '""') + '"')
                 if mutation == "hash":
                     c.execute("UPDATE mmt_occurrence_v1 SET content_sha256=?", ("0" * 64,))
                 else:
                     c.execute("UPDATE mmt_occurrence_v1 SET subject_instrument='OTHER'")
-                c.execute(
-                    "CREATE TRIGGER mmt_occurrence_v1_update BEFORE UPDATE ON mmt_occurrence_v1 "
-                    "BEGIN SELECT RAISE(ABORT,'immutable foundation record'); END"
-                )
+                c.execute(trigger_sql)
     with pytest.raises(f.PersistenceFailureV1):
         o.reads.get_derived_occurrence(result.derived_occurrence_id)
     if mutation == "deleted":
