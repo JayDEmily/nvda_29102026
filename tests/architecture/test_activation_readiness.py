@@ -14,10 +14,14 @@ ROOT = Path(__file__).resolve().parents[2]
 
 def _copy_repository_surface(tmp_path: Path, name: str, *, full: bool = False) -> Path:
     repository = tmp_path / name
-    source_names = ("config", "schemas", "src", "docs", "tests") if full else (
-        "config",
-        "schemas",
-        "src",
+    source_names = (
+        ("config", "schemas", "src", "docs", "tests")
+        if full
+        else (
+            "config",
+            "schemas",
+            "src",
+        )
     )
     for source_name in source_names:
         shutil.copytree(ROOT / source_name, repository / source_name)
@@ -112,6 +116,13 @@ def test_aggregate_validator_accepts_lawful_protocol_and_kernel_activation(
     tmp_path: Path,
 ) -> None:
     repository = _copy_repository_surface(tmp_path, "p-k-activation", full=True)
+    baseline_modules = yaml.safe_load(
+        (repository / "config/architecture/modules.yaml").read_text(encoding="utf-8")
+    )["modules"]
+    expected_active_ids = {item["id"] for item in baseline_modules if item["status"] == "active"}
+    baseline_object_ids = {
+        item.id for item in ArchitectureRegistry.from_repository(repository).objects
+    }
 
     protocols_path = repository / "config/architecture/protocols.yaml"
     protocols = yaml.safe_load(protocols_path.read_text(encoding="utf-8"))
@@ -163,8 +174,13 @@ def test_aggregate_validator_accepts_lawful_protocol_and_kernel_activation(
 
     result = validate_architecture(repository)
 
-    assert "architecture objects: 10" in result
-    assert "active runtime modules: 1" in result
+    expected_object_ids = baseline_object_ids | {"P02", "P03", "K02"}
+    observed_registry = ArchitectureRegistry.from_repository(repository)
+    assert "architecture objects: " + str(len(expected_object_ids)) in result
+    assert {item.id for item in observed_registry.objects} == expected_object_ids
+    # Activating protocols/kernels must preserve the actual module population.
+    assert f"active runtime modules: {len(expected_active_ids)}" in result
+    assert {item.id for item in observed_registry.active_runtime_modules()} == expected_active_ids
 
 
 def test_real_config_accepts_declared_m_to_m_and_rejects_undeclared_edge(tmp_path: Path) -> None:

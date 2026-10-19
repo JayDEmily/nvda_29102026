@@ -1,5 +1,11 @@
 # Gate 5 execution and recovered checkpoint
 
+### First active promotion failure and bounded fixture diagnosis
+
+At5a3e178 the actual active foundation aggregate passes113cases/strict0 and M00SQLite passes30/strict0. Architecture promotion produced1failed/112passed at test_aggregate_validator_accepts_lawful_protocol_and_kernel_activation: literal active-runtime-module count1 conflicted with the authorised current M00+M02 population2. Primary validator output and unchanged registry source establish correct actual count; no validator/schema/runtime failure is inferred. First log is committed before repair.
+
+Relevant lineage4c9bdb8 previously changed this copied-real-state fixture's architecture-object count9→10 after bootstrap admission while leaving active count1. Current failure is RECURRENT_CLASS: copied checkpoint population used as timeless fixture law. Required class proposition: protocol/kernel activation adds exactlyP02/P03/K02 to baseline object IDs and preserves the independently read baseline module identities/count, while all active package/seam and negative controls remain. The bounded test repair reads expected active IDs directly from fixture YAML and baseline object IDs before mutation; afterwards it asserts exact new object membership/count and unchanged active module membership/count. This closes both checkpoint-count assumptions rather than substituting another literal. No production validator or still-valid rejection is weakened. Existing source/productproof generation4 remains untouched. Full promotion is required before any closure claim; dependent G6 execution remains stopped.
+
 ### G5.3 concrete candidate/activation approved
 
 At22:03:31Melbourne19October2026 the owner answered “I approve continuing.” to acceptance of repairedb25eea9 and its packaged exact isolated M02activation diff. Reference owner-chat/20261019T220331/G5.3-candidate-and-activation. Exact proposalSHA687f0644880e4de20c2b6af9f45d921e3816d6ba42b92ee6c90077ba4f9a5467 is authorised for application; gen4proof remains unchanged. Current state advances to accepted isolated activation/actual promotion evidence, not fabricated final Gate5 acceptance. Existing sequential G6commission survives with exact dependencies/domain contracts.
