@@ -1,0 +1,240 @@
+FFFFFFFF                                                                 [100%]
+=================================== FAILURES ===================================
+_______ test_constructor_tuple_identity_content[raw_dependencies-value0] _______
+
+field = 'raw_dependencies', value = ('',)
+
+    @pytest.mark.parametrize(
+        "field,value",
+        [
+            ("raw_dependencies", ("",)),
+            ("raw_dependencies", ("R000",)),
+            ("raw_dependencies", ("R324",)),
+            ("raw_dependencies", ("R34",)),
+            ("derived_dependencies", ("D000",)),
+            ("derived_dependencies", ("D210",)),
+            ("raw_dependencies", ("R034", "R034")),
+            ("raw_dependencies", (34,)),
+        ],
+    )
+    def test_constructor_tuple_identity_content(field, value):
+        from dataclasses import replace
+    
+        f = foundation()
+        definition = configuration(f, raw_api.create_owner().reads)["definitions"][0]
+        error = TypeError if value == (34,) else ValueError
+>       with pytest.raises(error):
+             ^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/product/market_measurement/test_public_types.py:108: Failed
+_______ test_constructor_tuple_identity_content[raw_dependencies-value1] _______
+
+field = 'raw_dependencies', value = ('R000',)
+
+    @pytest.mark.parametrize(
+        "field,value",
+        [
+            ("raw_dependencies", ("",)),
+            ("raw_dependencies", ("R000",)),
+            ("raw_dependencies", ("R324",)),
+            ("raw_dependencies", ("R34",)),
+            ("derived_dependencies", ("D000",)),
+            ("derived_dependencies", ("D210",)),
+            ("raw_dependencies", ("R034", "R034")),
+            ("raw_dependencies", (34,)),
+        ],
+    )
+    def test_constructor_tuple_identity_content(field, value):
+        from dataclasses import replace
+    
+        f = foundation()
+        definition = configuration(f, raw_api.create_owner().reads)["definitions"][0]
+        error = TypeError if value == (34,) else ValueError
+>       with pytest.raises(error):
+             ^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/product/market_measurement/test_public_types.py:108: Failed
+_______ test_constructor_tuple_identity_content[raw_dependencies-value2] _______
+
+field = 'raw_dependencies', value = ('R324',)
+
+    @pytest.mark.parametrize(
+        "field,value",
+        [
+            ("raw_dependencies", ("",)),
+            ("raw_dependencies", ("R000",)),
+            ("raw_dependencies", ("R324",)),
+            ("raw_dependencies", ("R34",)),
+            ("derived_dependencies", ("D000",)),
+            ("derived_dependencies", ("D210",)),
+            ("raw_dependencies", ("R034", "R034")),
+            ("raw_dependencies", (34,)),
+        ],
+    )
+    def test_constructor_tuple_identity_content(field, value):
+        from dataclasses import replace
+    
+        f = foundation()
+        definition = configuration(f, raw_api.create_owner().reads)["definitions"][0]
+        error = TypeError if value == (34,) else ValueError
+>       with pytest.raises(error):
+             ^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/product/market_measurement/test_public_types.py:108: Failed
+_______ test_constructor_tuple_identity_content[raw_dependencies-value3] _______
+
+field = 'raw_dependencies', value = ('R34',)
+
+    @pytest.mark.parametrize(
+        "field,value",
+        [
+            ("raw_dependencies", ("",)),
+            ("raw_dependencies", ("R000",)),
+            ("raw_dependencies", ("R324",)),
+            ("raw_dependencies", ("R34",)),
+            ("derived_dependencies", ("D000",)),
+            ("derived_dependencies", ("D210",)),
+            ("raw_dependencies", ("R034", "R034")),
+            ("raw_dependencies", (34,)),
+        ],
+    )
+    def test_constructor_tuple_identity_content(field, value):
+        from dataclasses import replace
+    
+        f = foundation()
+        definition = configuration(f, raw_api.create_owner().reads)["definitions"][0]
+        error = TypeError if value == (34,) else ValueError
+>       with pytest.raises(error):
+             ^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/product/market_measurement/test_public_types.py:108: Failed
+_____ test_constructor_tuple_identity_content[derived_dependencies-value4] _____
+
+field = 'derived_dependencies', value = ('D000',)
+
+    @pytest.mark.parametrize(
+        "field,value",
+        [
+            ("raw_dependencies", ("",)),
+            ("raw_dependencies", ("R000",)),
+            ("raw_dependencies", ("R324",)),
+            ("raw_dependencies", ("R34",)),
+            ("derived_dependencies", ("D000",)),
+            ("derived_dependencies", ("D210",)),
+            ("raw_dependencies", ("R034", "R034")),
+            ("raw_dependencies", (34,)),
+        ],
+    )
+    def test_constructor_tuple_identity_content(field, value):
+        from dataclasses import replace
+    
+        f = foundation()
+        definition = configuration(f, raw_api.create_owner().reads)["definitions"][0]
+        error = TypeError if value == (34,) else ValueError
+>       with pytest.raises(error):
+             ^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/product/market_measurement/test_public_types.py:108: Failed
+_____ test_constructor_tuple_identity_content[derived_dependencies-value5] _____
+
+field = 'derived_dependencies', value = ('D210',)
+
+    @pytest.mark.parametrize(
+        "field,value",
+        [
+            ("raw_dependencies", ("",)),
+            ("raw_dependencies", ("R000",)),
+            ("raw_dependencies", ("R324",)),
+            ("raw_dependencies", ("R34",)),
+            ("derived_dependencies", ("D000",)),
+            ("derived_dependencies", ("D210",)),
+            ("raw_dependencies", ("R034", "R034")),
+            ("raw_dependencies", (34,)),
+        ],
+    )
+    def test_constructor_tuple_identity_content(field, value):
+        from dataclasses import replace
+    
+        f = foundation()
+        definition = configuration(f, raw_api.create_owner().reads)["definitions"][0]
+        error = TypeError if value == (34,) else ValueError
+>       with pytest.raises(error):
+             ^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/product/market_measurement/test_public_types.py:108: Failed
+_______ test_constructor_tuple_identity_content[raw_dependencies-value6] _______
+
+field = 'raw_dependencies', value = ('R034', 'R034')
+
+    @pytest.mark.parametrize(
+        "field,value",
+        [
+            ("raw_dependencies", ("",)),
+            ("raw_dependencies", ("R000",)),
+            ("raw_dependencies", ("R324",)),
+            ("raw_dependencies", ("R34",)),
+            ("derived_dependencies", ("D000",)),
+            ("derived_dependencies", ("D210",)),
+            ("raw_dependencies", ("R034", "R034")),
+            ("raw_dependencies", (34,)),
+        ],
+    )
+    def test_constructor_tuple_identity_content(field, value):
+        from dataclasses import replace
+    
+        f = foundation()
+        definition = configuration(f, raw_api.create_owner().reads)["definitions"][0]
+        error = TypeError if value == (34,) else ValueError
+        with pytest.raises(error):
+            replace(definition, **{field: value})
+>       with pytest.raises(ValueError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/product/market_measurement/test_public_types.py:110: Failed
+_______ test_constructor_tuple_identity_content[raw_dependencies-value7] _______
+
+field = 'raw_dependencies', value = (34,)
+
+    @pytest.mark.parametrize(
+        "field,value",
+        [
+            ("raw_dependencies", ("",)),
+            ("raw_dependencies", ("R000",)),
+            ("raw_dependencies", ("R324",)),
+            ("raw_dependencies", ("R34",)),
+            ("derived_dependencies", ("D000",)),
+            ("derived_dependencies", ("D210",)),
+            ("raw_dependencies", ("R034", "R034")),
+            ("raw_dependencies", (34,)),
+        ],
+    )
+    def test_constructor_tuple_identity_content(field, value):
+        from dataclasses import replace
+    
+        f = foundation()
+        definition = configuration(f, raw_api.create_owner().reads)["definitions"][0]
+        error = TypeError if value == (34,) else ValueError
+        with pytest.raises(error):
+            replace(definition, **{field: value})
+>       with pytest.raises(ValueError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/product/market_measurement/test_public_types.py:110: Failed
+=========================== short test summary info ============================
+FAILED tests/product/market_measurement/test_public_types.py::test_constructor_tuple_identity_content[raw_dependencies-value0]
+FAILED tests/product/market_measurement/test_public_types.py::test_constructor_tuple_identity_content[raw_dependencies-value1]
+FAILED tests/product/market_measurement/test_public_types.py::test_constructor_tuple_identity_content[raw_dependencies-value2]
+FAILED tests/product/market_measurement/test_public_types.py::test_constructor_tuple_identity_content[raw_dependencies-value3]
+FAILED tests/product/market_measurement/test_public_types.py::test_constructor_tuple_identity_content[derived_dependencies-value4]
+FAILED tests/product/market_measurement/test_public_types.py::test_constructor_tuple_identity_content[derived_dependencies-value5]
+FAILED tests/product/market_measurement/test_public_types.py::test_constructor_tuple_identity_content[raw_dependencies-value6]
+FAILED tests/product/market_measurement/test_public_types.py::test_constructor_tuple_identity_content[raw_dependencies-value7]
+8 failed in 0.07s
