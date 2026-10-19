@@ -97,7 +97,12 @@ def untagged(value: Any, hint: Any) -> Any:
         if len(value) != len(args):
             raise ValueError("stored tuple arity mismatch")
         return tuple(untagged(item, cls) for item, cls in zip(value, args, strict=True))
-    if hint in (f.PredecessorEvidenceV1, f.RatioCalculationRequestV1, f.RatioOccurrenceV1):
+    if hint in (
+        f.PredecessorEvidenceV1,
+        f.RatioCalculationRequestV1,
+        f.RatioOccurrenceV1,
+        f.RawRatioOccurrenceV1,
+    ):
         hints = get_type_hints(hint)
         if type(value) is not dict or set(value) != set(hints):
             raise ValueError("incomplete or extra exact-ratio record fields")

@@ -528,3 +528,125 @@ __all__ = [
     "create_ratio_reader",
     "create_reader",
 ]
+
+
+@dataclass(frozen=True, slots=True)
+class RawRatioOccurrenceV1(_Validated):
+    owner_object_id: str
+    owner_namespace: str
+    implementation_brief_sha256: str
+    derived_signal_id: str
+    derived_occurrence_id: str
+    calculation_definition_version: str
+    definition_content_sha256: str
+    parameter_context_refs: tuple[VersionRefV1, ...]
+    subject_instrument: str
+    universe: tuple[str, ...] | None
+    effective_as_of_utc: datetime
+    window: str | None
+    knowledge_cutoff_utc: datetime
+    calculated_at_utc: datetime
+    result: ExactRatioV1
+    units: str
+    result_shape: str
+    raw_input_lineage: tuple[RawInputLineageV1, ...]
+    predecessor_occurrence_ids: tuple[str, ...]
+    convention_refs: tuple[VersionRefV1, ...]
+    supersedes_derived_occurrence_id: str | None
+
+    def __post_init__(self) -> None:
+        _Validated.__post_init__(self)
+        units = {item.unit_convention_ref for item in self.raw_input_lineage}
+        if (
+            tuple(item.raw_signal_id for item in self.raw_input_lineage) != ("R033", "R036")
+            or self.predecessor_occurrence_ids
+            or len(self.parameter_context_refs) != 2
+            or self.convention_refs
+            != tuple(sorted(units, key=lambda ref: (ref.context_id, ref.version)))
+            or self.universe is not None
+            or self.window is not None
+            or self.supersedes_derived_occurrence_id is not None
+            or self.units != "-1 to 1"
+            or self.result_shape != "scalar_exact_ratio"
+        ):
+            raise ValueError("complete ordered direct-raw ratio metadata required")
+
+
+class MeasurementRawRatioReadsV1(Protocol):
+    def get_derived_occurrence(self, derived_occurrence_id: str) -> RawRatioOccurrenceV1 | None: ...
+    def list_derived_history(
+        self,
+        *,
+        derived_signal_id: str,
+        subject_instrument: str,
+        effective_at_or_before_utc: datetime,
+        knowledge_at_or_before_utc: datetime,
+        limit: int,
+    ) -> tuple[RawRatioOccurrenceV1, ...]: ...
+    def get_calculation_definition(
+        self,
+        *,
+        derived_signal_id: str,
+        calculation_definition_version: str,
+    ) -> CalculationDefinitionV1 | None: ...
+    def get_parameter_set(self, ref: VersionRefV1) -> CalculationParameterSetV1 | None: ...
+    def get_input_selection_policy(
+        self, ref: VersionRefV1
+    ) -> InputSelectionPolicyVersionV1 | None: ...
+    def get_unit_convention(self, ref: VersionRefV1) -> UnitConventionVersionV1 | None: ...
+    def get_projection_mapping(
+        self, ref: VersionRefV1
+    ) -> raw_api.RawSignalProjectionMappingV1 | None: ...
+
+
+class MeasurementRawRatioOwnerV1(Protocol):
+    @property
+    def reads(self) -> MeasurementRawRatioReadsV1: ...
+
+    def materialise(self, request: CalculationRequestV1) -> RawRatioOccurrenceV1 | None: ...
+
+
+def create_raw_ratio_owner(
+    *,
+    admission: OwnerAdmissionV1,
+    raw_projection_reader: RawProjectionReaderV1,
+    definitions: tuple[CalculationDefinitionV1, ...],
+    parameter_sets: tuple[CalculationParameterSetV1, ...],
+    input_selection_policies: tuple[InputSelectionPolicyVersionV1, ...],
+    unit_conventions: tuple[UnitConventionVersionV1, ...],
+    raw_projection_mappings: tuple[raw_api.RawSignalProjectionMappingV1, ...],
+    storage: MemoryStorageV1 | SQLiteStorageV1,
+    utc_now: Callable[[], datetime],
+) -> MeasurementRawRatioOwnerV1:
+    from ._raw_rational import build_owner
+
+    return build_owner(
+        admission=admission,
+        raw_projection_reader=raw_projection_reader,
+        definitions=definitions,
+        parameter_sets=parameter_sets,
+        input_selection_policies=input_selection_policies,
+        unit_conventions=unit_conventions,
+        raw_projection_mappings=raw_projection_mappings,
+        storage=storage,
+        utc_now=utc_now,
+    )
+
+
+def create_raw_ratio_reader(
+    *,
+    admission: OwnerAdmissionV1,
+    storage: SQLiteReadStorageV1,
+) -> MeasurementRawRatioReadsV1:
+    from ._raw_rational import build_reader
+
+    return build_reader(admission=admission, storage=storage)
+
+
+__all__ += [
+    "MeasurementRawRatioOwnerV1",
+    "MeasurementRawRatioReadsV1",
+    "RawRatioOccurrenceV1",
+    "create_raw_ratio_owner",
+    "create_raw_ratio_reader",
+]
