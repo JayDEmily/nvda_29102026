@@ -30,6 +30,334 @@ D013_CONTRACT = "handoff/foundation_implementation/authority/G6_1_D013_PROOF_CON
 D013_BINDING = "implementation/authority/G6_1_D013_IMPLEMENTATION_AUTHORITY_BINDING.yaml"
 
 
+D014_CLAIM = "neutral_market_measurement_truth_d014"
+D014_ROOT = "config/product_proof/market_measurement_d014"
+D014_BRIEF = (
+    "handoff/foundation_implementation/authority/G6_1_D014_IMPLEMENTATION_BRIEF_PROPOSED.md"
+)
+D014_CONTRACT = "handoff/foundation_implementation/authority/G6_1_D014_PROOF_CONTRACT_PROPOSED.json"
+D014_BINDING = "implementation/authority/G6_1_D014_IMPLEMENTATION_AUTHORITY_BINDING.yaml"
+_D014_SELECTED = (
+    "raw_signal_occurrence_truth_sqlite",
+    "neutral_market_measurement_truth_pilot",
+    D012_CLAIM,
+    D013_CLAIM,
+    D014_CLAIM,
+)
+
+
+def _d014_descriptor():
+    return {
+        "schema_version": "1.0",
+        "claim_id": D014_CLAIM,
+        "brief_path": D014_BRIEF,
+        "binding_path": D014_BINDING,
+        "contract_path": D014_CONTRACT,
+        "physical_root": "tests/product/market_measurement_d014",
+        "admission_path": D014_ROOT + "/admission.json",
+    }
+
+
+def _d014_control_candidate(tmp_path, body="assert 7 * 6 == 42"):
+    # Three exact, disjoint extensions in a disposable control-only universe.
+    root = _d013_control_candidate(tmp_path)
+    for name in (D012_ROOT, D013_ROOT):
+        assert (root / name / "claim.json").is_file()
+    entry = _d014_descriptor()
+    _json_write(root / D014_ROOT / "claim.json", entry)
+    contract = json.loads((root / D014_CONTRACT).read_text())
+    rows = []
+    for family in contract["families"]:
+        path = root / family["path"]
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(
+            "\n".join(f"def {name}():\n    {body}\n" for name in family["required_test_names"])
+        )
+        rows.append({"path": family["path"], "sha256": _sha(path)})
+    support = []
+    for name in contract["required_support_files"]:
+        path = root / name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text("# Disposable D014 control canary, never actual domain proof.\n")
+        support.append({"path": name, "sha256": _sha(path)})
+    generation = {
+        "schema_version": "1.0",
+        "claim_id": D014_CLAIM,
+        "generation": 1,
+        "brief_sha256": _sha(root / D014_BRIEF),
+        "binding_sha256": _sha(root / D014_BINDING),
+        "contract_sha256": _sha(root / D014_CONTRACT),
+        "implementation_target_id": "M02",
+        "adequacy_review_ref": "control-fixture/d014-review",
+        "admission_authority_ref": "control-fixture/d014-admission",
+        "family_files": rows,
+        "support_files": support,
+        "previous_generation": None,
+    }
+    path = root / D014_ROOT / "generations/0001.json"
+    _json_write(path, generation)
+    _d014_select_generation(root, path)
+    return root
+
+
+def _d014_select_generation(root, path):
+    _json_write(
+        root / D014_ROOT / "admission.json",
+        {
+            "schema_version": "1.0",
+            "current_generation": {
+                "path": path.relative_to(root).as_posix(),
+                "sha256": _sha(path),
+            },
+        },
+    )
+
+
+def test_d014_combined_extensions_have_complete_disjoint_ownership(tmp_path):
+    api = _controls()
+    root = _d014_control_candidate(tmp_path)
+    protected = {
+        path: path.read_bytes()
+        for name in (D012_ROOT, D013_ROOT)
+        for path in (root / name).rglob("*.json")
+    }
+    for identity, brief in (
+        (D012_CLAIM, D012_BRIEF),
+        (D013_CLAIM, D013_BRIEF),
+        (D014_CLAIM, D014_BRIEF),
+    ):
+        claim = api.load_product_proof_claim(root, identity)
+        assert claim.state == "READY_FOR_PROOF" and claim.target_id == "M02"
+        assert claim.authority_sha256 == _sha(ROOT / brief)
+        assert len(claim.families) == 1 and len(claim.families[0].proof_ids) == 6
+    for identity in _D014_SELECTED[:2]:
+        assert api.load_product_proof_claim(root, identity).state == (
+            "INCOMPLETE_NO_PHYSICAL_FAMILIES"
+        )
+    assert all(path.read_bytes() == value for path, value in protected.items())
+
+
+@pytest.mark.parametrize(
+    "name", ["test_orphan.py", "_support.py", "nested/helper.py", "dangling.py"]
+)
+def test_d014_absent_descriptor_rejects_every_python_ownership(tmp_path, name):
+    api = _controls()
+    root = _d013_control_candidate(tmp_path)
+    for identity in _D014_SELECTED[:-1]:
+        assert api.load_product_proof_claim(root, identity).claim_id == identity
+    path = root / "tests/product/market_measurement_d014" / name
+    path.parent.mkdir(parents=True, exist_ok=True)
+    if name == "dangling.py":
+        path.symlink_to("absent-target.py")
+    else:
+        path.write_text("# Unowned D014 Python without its descriptor.\n")
+    for identity in _D014_SELECTED:
+        with pytest.raises(ValueError, match=r"unowned|symlink"):
+            api.load_product_proof_claim(root, identity)
+
+
+@pytest.mark.parametrize(
+    "surface",
+    [
+        "bad_json",
+        "extra_key",
+        "overlap",
+        "wrong_claim",
+        "wrong_target",
+        "intents",
+        "brief",
+        "binding",
+        "contract",
+        "generation_claim",
+        "generation_target",
+        "cross_claim_generation",
+        "unowned",
+        "support_hash",
+        "missing_binding",
+        "missing_contract",
+        "missing_brief",
+        "missing_test_name",
+        "missing_support",
+    ],
+)
+def test_d014_bad_extension_rejects_every_selected_claim(tmp_path, surface):
+    api = _controls()
+    root = _d014_control_candidate(tmp_path)
+    assert api.load_product_proof_claim(root, D014_CLAIM).state == "READY_FOR_PROOF"
+    if surface == "bad_json":
+        (root / D014_ROOT / "claim.json").write_text("{")
+    elif surface in {"extra_key", "overlap", "wrong_claim"}:
+        descriptor = _d014_descriptor()
+        descriptor.update(
+            {
+                "extra_key": {"extra": True},
+                "overlap": {"physical_root": "tests/product/market_measurement_d013"},
+                "wrong_claim": {"claim_id": D013_CLAIM},
+            }[surface]
+        )
+        _json_write(root / D014_ROOT / "claim.json", descriptor)
+    elif surface in {"generation_claim", "generation_target"}:
+        path = root / D014_ROOT / "generations/0001.json"
+        value = json.loads(path.read_text())
+        value["claim_id" if surface == "generation_claim" else "implementation_target_id"] = (
+            D013_CLAIM if surface == "generation_claim" else "M00"
+        )
+        _json_write(path, value)
+        _d014_select_generation(root, path)
+    elif surface == "cross_claim_generation":
+        _d014_select_generation(root, root / D013_ROOT / "generations/0001.json")
+    elif surface in {"wrong_target", "intents"}:
+        path = root / D014_BINDING
+        path.write_text(
+            path.read_text().replace("M02", "M00")
+            if surface == "wrong_target"
+            else path.read_text().replace("G01", "A00")
+        )
+    elif surface in {"brief", "binding", "contract"}:
+        path = (
+            root
+            / {"brief": D014_BRIEF, "binding": D014_BINDING, "contract": D014_CONTRACT}[surface]
+        )
+        path.write_bytes(path.read_bytes() + b"\n")
+    elif surface.startswith("missing_") and surface != "missing_test_name":
+        relative = {
+            "missing_binding": D014_BINDING,
+            "missing_contract": D014_CONTRACT,
+            "missing_brief": D014_BRIEF,
+            "missing_support": "tests/product/market_measurement_d014/_support.py",
+        }[surface]
+        (root / relative).unlink()
+    elif surface == "missing_test_name":
+        path = root / "tests/product/market_measurement_d014/test_raw_ratio.py"
+        path.write_text(
+            path.read_text().replace(
+                "test_d014_actual_raw_projections_exact_ratio", "test_not_the_required_name"
+            )
+        )
+        generation = root / D014_ROOT / "generations/0001.json"
+        value = json.loads(generation.read_text())
+        value["family_files"][0]["sha256"] = _sha(path)
+        _json_write(generation, value)
+        _d014_select_generation(root, generation)
+    elif surface == "unowned":
+        (root / "tests/product/market_measurement_d014/nested_helper.py").write_text("pass\n")
+    else:
+        assert surface == "support_hash"
+        (root / "tests/product/market_measurement_d014/_support.py").write_text("changed\n")
+    for identity in _D014_SELECTED:
+        with pytest.raises((ValueError, OSError)):
+            api.load_product_proof_claim(root, identity)
+
+
+def test_d014_null_admission_is_incomplete(tmp_path):
+    root = _d014_control_candidate(tmp_path)
+    _json_write(
+        root / D014_ROOT / "admission.json", {"schema_version": "1.0", "current_generation": None}
+    )
+    assert _controls().load_product_proof_claim(root, D014_CLAIM).state == "INCOMPLETE_COVERAGE"
+
+
+@pytest.mark.parametrize(
+    "body,expected",
+    [
+        ("assert 7 * 6 == 42", 0),
+        ("import pytest; pytest.skip('control canary')", 1),
+        ("from pathlib import Path; Path('GUARDRAILS.md').write_text('fixture mutation')", 6),
+    ],
+)
+def test_d014_direct_strict_outcomes(tmp_path, body, expected):
+    _controls()
+    result = _run_control_probe(_d014_control_candidate(tmp_path, body), D014_CLAIM)
+    assert result.returncode == expected, result.stdout + result.stderr
+
+
+def test_d014_pre_admission_fixture_explicitly_resets_all_three(tmp_path, monkeypatch):
+    source = tmp_path / "source"
+    source.mkdir()
+    for name in ("config", "schemas", "docs", "tests", "implementation", "handoff", "src", "tools"):
+        shutil.copytree(ROOT / name, source / name, ignore=shutil.ignore_patterns("__pycache__"))
+    for name in ("pyproject.toml", "GUARDRAILS.md", "AGENTS.md", ".gitignore"):
+        shutil.copy2(ROOT / name, source / name)
+    _json_write(source / D014_ROOT / "claim.json", _d014_descriptor())
+    support = source / "tests/product/market_measurement_d014/_support.py"
+    support.parent.mkdir(parents=True, exist_ok=True)
+    support.write_text("# Disposable pre-admission universe witness, no domain proof.\n")
+    protected = (source / D014_ROOT / "claim.json").read_bytes()
+    monkeypatch.setitem(globals(), "ROOT", source)
+    target = _copy_candidate(tmp_path / "pre-admission")
+    for suffix in ("d012", "d013", "d014"):
+        assert not (target / f"config/product_proof/market_measurement_{suffix}").exists()
+        assert not (target / f"tests/product/market_measurement_{suffix}").exists()
+    assert (source / D014_ROOT / "claim.json").read_bytes() == protected
+    assert support.is_file()
+
+
+def test_d014_actual_four_old_generations_preserved():
+    test_d013_actual_original_claim_generations_are_preserved()
+    generation = ROOT / D013_ROOT / "generations/0001.json"
+    assert _sha(generation) == "fb4095de4d5fe9da885f9e8e6574cfe495de1fdebbb8b37f3fcd31710f5bdf02"
+    protected = {p: p.read_bytes() for p in generation.parent.parent.rglob("*.json")}
+    assert _controls().load_product_proof_claim(ROOT, D013_CLAIM).claim_id == D013_CLAIM
+    assert all(path.read_bytes() == value for path, value in protected.items())
+
+
+@pytest.mark.parametrize(
+    "claim_id,directory",
+    [
+        ("raw_signal_occurrence_truth_sqlite", "raw_signal_sqlite"),
+        ("neutral_market_measurement_truth_pilot", "market_measurement"),
+        (D012_CLAIM, "market_measurement_d012"),
+        (D013_CLAIM, "market_measurement_d013"),
+    ],
+)
+@pytest.mark.parametrize("transition", ["advance", "revoke"])
+def test_d014_preservation_allows_lawful_old_pointer_changes(
+    tmp_path, monkeypatch, claim_id, directory, transition
+):
+    root = tmp_path / "current"
+    root.mkdir()
+    for name in ("config", "schemas", "docs", "tests", "implementation", "handoff", "src", "tools"):
+        shutil.copytree(ROOT / name, root / name, ignore=shutil.ignore_patterns("__pycache__"))
+    for name in ("pyproject.toml", "GUARDRAILS.md", "AGENTS.md", ".gitignore"):
+        shutil.copy2(ROOT / name, root / name)
+    api = _controls()
+    assert api.load_product_proof_claim(root, claim_id).state == "READY_FOR_PROOF"
+    pointer = root / "config/product_proof" / directory / "admission.json"
+    original = json.loads(pointer.read_text())["current_generation"]
+    generation_path = root / original["path"]
+    immutable = generation_path.read_bytes()
+    if transition == "advance":
+        generation = json.loads(immutable)
+        generation.update(
+            generation=generation["generation"] + 1,
+            previous_generation=original,
+            adequacy_review_ref="control-fixture/d014-pointer-review",
+            admission_authority_ref="control-fixture/d014-pointer-admission",
+        )
+        path = pointer.parent / "generations" / f"{generation['generation']:04d}.json"
+        assert not path.exists()
+        _json_write(path, generation)
+        _json_write(
+            pointer,
+            {
+                "schema_version": "1.0",
+                "current_generation": {
+                    "path": path.relative_to(root).as_posix(),
+                    "sha256": _sha(path),
+                },
+            },
+        )
+        claim = api.load_product_proof_claim(root, claim_id)
+        assert claim.state == "READY_FOR_PROOF" and claim.generation_sha256 == _sha(path)
+    else:
+        _json_write(pointer, {"schema_version": "1.0", "current_generation": None})
+        assert api.load_product_proof_claim(root, claim_id).state == "INCOMPLETE_COVERAGE"
+    assert generation_path.read_bytes() == immutable
+    monkeypatch.setitem(globals(), "ROOT", root)
+    test_d014_actual_four_old_generations_preserved()
+    assert generation_path.read_bytes() == immutable
+
+
 def _d013_descriptor():
     return {
         "schema_version": "1.0",
