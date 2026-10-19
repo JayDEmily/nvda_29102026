@@ -60,6 +60,16 @@ class _Validated:
                 raise ValueError("version/page bound must be positive")
             if type(value) is tuple and any(item in value[:i] for i, item in enumerate(value)):
                 raise ValueError(f"{field.name} members must be distinct")
+            if type(value) is tuple and any(type(item) is str and not item for item in value):
+                raise ValueError(f"{field.name} identities must be nonempty")
+            if field.name in {"raw_dependencies", "derived_dependencies"}:
+                prefix, maximum = ("R", 323) if field.name == "raw_dependencies" else ("D", 209)
+                if any(
+                    not re.fullmatch(prefix + r"[0-9]{3}", item)
+                    or not 1 <= int(item[1:]) <= maximum
+                    for item in value
+                ):
+                    raise ValueError("dependency identities must use the admitted canonical range")
             if field.name == "derived_signal_id" and not re.fullmatch(r"D[0-9]{3}", value):
                 raise ValueError("canonical D identity required")
             if field.name == "derived_signal_id" and not 1 <= int(value[1:]) <= 209:
