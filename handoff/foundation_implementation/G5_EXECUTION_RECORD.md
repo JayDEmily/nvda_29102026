@@ -1,5 +1,9 @@
 # Gate 5 execution and recovered checkpoint
 
+### Timestamp metadata correction — 20 October 2026, 10:03 Melbourne
+
+Observed actual clock10:03; applied-control report/root/record10:07 and user update10:08 were incorrect future timestamp estimates. They are not elapsed runtime evidence. Exact tested6c375/complete outcomes/disposition unchanged. This correction is included in the delivered documentary checkpoint after initial locally verified72d2daf; original erroneous bytes/history remain recoverable.
+
 ### D014 applied control boundedly accepted — 20 October 2026, 10:07 Melbourne
 
 Actual clean6c37588947ce4d61d0794d0f99ebaf497c970309/tree44f9aabdef8f92ff8ff246eeb7cb07dd86f52161 fullcontrol130/191.22s,mypy36/scopedRuff/nativebindingPASS; original complete strict179/80/113/30 all0. NewnullD014 incomplete4,not domainRED. Nineteen exact executed harness/log/metadata files preserved; allhash/outcome/prepostclean invariants and unchanged original four JSON groups verified. Main concrete ACCEPT_BOUNDED_D014_CONTROL_ONLY under standing22:28; report G6_1_D014_CONTROL_APPLIED_20261020.md. Root§7.3.1 satisfied; checkpoint then actual four physical sources/required independentadequacy/admission/intendedRED before runtime. Actor/causeUNKNOWN, old failures preserved; no host-wide immunity, new arithmetic/G6.1/full126/native/latergate claim. Remaining123/all83 unenabled.

@@ -29,3 +29,7 @@ Historical review-state actor/cause remains UNKNOWN, old blocked/partial observa
 Earlier pending delta recovery and the first Git-only working-recovery failure remain separately recorded in external G6_1_D014_PENDING_CONTROL_CHECKPOINT_20261020.md; corrected fresh full-base recovery succeeded. Recoverability does not replace the tested candidate's semantic evidence.
 
 TS: 20-10-26 10:07
+
+Timestamp correction: actual checked clock20October10:03 Melbourne. Above10:07 was an erroneous future estimate, not execution-duration evidence. Original timestamp is retained transparently; tested candidate, full outputs and concrete disposition unchanged. Corrected documentary checkpoint includes this note.
+
+TS: 20-10-26 10:03

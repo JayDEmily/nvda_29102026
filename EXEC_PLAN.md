@@ -1,5 +1,9 @@
 # NVDA V2 — ACTIVE successor ExecPlan: Gate 5 execution
 
+## Timestamp metadata correction — 20 October 2026, 10:03 Melbourne
+
+The preceding applied-control acceptance entry/report/record was stamped10:07 before the actual clock was checked. Observed clock is20October10:03; those timestamps are erroneous future metadata, not elapsed execution evidence. The concrete bounded disposition remains effective as recorded before this correction; exact tested6c375 outcomes, bytes and review are unchanged. First documentary delivery candidate72d2daf/tree9539c941 and its locally verified archive retain that metadata error; current corrected documentary checkpoint includes this explicit correction. User-facing10:08 estimate was likewise incorrect. No repeated tests or changed acceptance criteria are required to correct time metadata.
+
 ## D014 applied control proved and boundedly accepted — 20 October 2026, 10:07 Melbourne
 
 Actual clean6c37588947ce4d61d0794d0f99ebaf497c970309/tree44f9aabdef8f92ff8ff246eeb7cb07dd86f52161: fullcontrol130PASS191.22s,mypy36/scopedRuff/exactnativebindingPASS; original strictD013179/D01280/foundation113/M00SQLite30 complete strict/process0. New actual nullD014 incomplete/exit4,not semanticRED. All19 harness/log/metadata files preserved byte-identically in d014_control_applied_20261020/; nine outcomes/hashes and original four JSON groups verified. Actual source/authority/catalogue/schemas/tests/runner/outcome preservation diff empty against cd57c79. Concrete ACCEPT_BOUNDED_D014_CONTROL_ONLY under standing22:28 in G6_1_D014_CONTROL_APPLIED_20261020.md. §7.3.1 satisfied; save recoverable checkpoint then §7.3.2 four physical sources/independent adequacy/admission/intendedRED before behaviour. Historicalactor/causeUNKNOWN; no host-wide immunity/full-lint/promotion/D014 arithmetic claim. G6.1open,remaining123/all83 unenabled.
