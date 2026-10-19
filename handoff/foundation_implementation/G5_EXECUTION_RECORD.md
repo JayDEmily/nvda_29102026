@@ -1,5 +1,11 @@
 # Gate 5 execution and recovered checkpoint
 
+### G5.2 admitted proof and first behaviour RED
+
+Complete five-family/eight-file proof at a9b4c56 received actual independent PASS_FOR_ADMISSION after the five first-review class repairs. Exact lineage is G5_2_PROOF_REVIEW_20261019.md. Immutable generation1 admitted atb0c7e37, SHA4c7dcf87c445bd1797c75a73950c4111ac35b43ac99e43ff7897075f65b72f96. Actual resolver reports READY_FOR_PROOF, M02bootstrap, accepted3ad4cdc9brief; this does not authorise active promotion.
+
+First targeted public-boundary test establishes real public M00 Decimal projection before an explicit missing-foundation-seam assertion, then fails at that assertion (1failed, no collection/dependency error). Exact command/output retained in G5_2_UNIT1_RED_20261019.log and committed before foundation production. New isolated3.12.14dev install succeeded offline from all17hash-verified wheels; stdlibSQLite3.53.1 and actual import point to this recovered current checkout.
+
 ## Owner acceptance and G5.2 activation — 19 October 2026, 20:27 Melbourne
 
 Actual owner instruction accepts concrete68d3c2f and authorises next leafG5.2 only; external reference owner-chat/20261019T202718/G5.1-accept-G5.2-only. Exact decision/scope are in G5_1_OWNER_ACCEPTANCE_20261019.md and the current root plan. Recovered the saved96,647,371byte archive with exactSHA7daad208e4c9d03defda4e5cdf3ecd08adec10a538073a5f0219a90dd48973cc into a new isolated checkout after observing earlier local5de245d. Restored68d3c2f before newG5.2branch. G5.1ACCEPTED_CLOSED; G5.2IN_PROGRESS_PROOF_PREPARATION; G5.3NOT_AUTHORISED. No G5.1 test rerun is required merely to record this decision; its candidate evidence is recovered intact.
