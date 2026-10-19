@@ -1,5 +1,9 @@
 # Gate 5 execution and recovered checkpoint
 
+### D013 repaired strict179GREEN and truthful bounded metadata — 20 October 2026, 00:12 Melbourne
+
+Actualcleanbc61b44newstrict179PASS98.59s/strict0/process0 onunchangedadmittedgen1fb4095de4d5fe9da885f9e8e6574cfe495de1fdebbb8b37f3fcd31710f5bdf02. Fullstrictlogpreserved. Repairedsource/controlmypy36/scopedRuffPASS. AfteractualengineeringGREENonly, M02registrymetadataupdatedtodescribeseparateadditiveD013proof/result/facets/store/remaining123, noedge/lifecycle/owner/A00/M00/M01/pinscope. Stillnotcandidateacceptance/fullG6.1. Nextcleanexactcandidateall4strictaggregates/typing/lint/promotion/preservationthenrequiredindependentdirectreview/concretedelegateddisposition.
+
 ### D013 static repair GREEN; exact strict candidate pending — 20 October 2026, 00:10 Melbourne
 
 Onlynew_rational.py changesafterpreserved9errors4a7c7bb: existingconfigurationunionannotation, explicitoptionalgetterabsencechecksbeforeevidenceconstruction, distinctold/newoutputlocal. No casts/ignores/Anywidening/oldsource/test/schemachanges. Fullsource/controlmypy36PASS; scopedsource/control/proofRuffPASS. Preservedrepairedtypinglog. Earlier179physicalPASSnotrelabelledasrepairedstrictaggregate. Nextcleanstrict179/newcandidate/regressions/independentreviewbeforeconcretedisposition;G6.1open.
