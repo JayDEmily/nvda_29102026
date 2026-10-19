@@ -1,0 +1,13 @@
+# D013 control — concrete delegated pre-application disposition
+
+19 October 2026, 23:40 Melbourne.
+
+Independent review `independent-review/g61-d013-control-v2/6b5559b/20261019` returned PASS_FOR_PREAPPLICATION_CONTROL_SCOPE on candidate `6b5559ba98825715a3ec8808002bb0c88ee66fae` and exact UNAPPLIED V2 patch SHA256 `a69225e81bd33fd834358823a7a23ec000b118d3ddbcd4cff6eb59e90d1be8d7`. Report SHA256 `5c2d9e17613e0fdbf8bd20f3b16db77de5f9709ea8f4d032f08f52a4ea3876a5`; report, final direct script/log, targeted/static outputs and explicitly excluded initial sequential probes are preserved unchanged in `d013_control_review_v2_20261019/`. Main worker read the complete report, final direct script/output and scoped command results, and compared all seven preserved files with their originals.
+
+Actual review: 30 D013 control cases PASS/62 deselected, four-tool mypy and loader/test Ruff PASS. Independent fresh-copy sequences bypassed worker generation/copy helpers: lawful advance and revoke for each of raw SQLite, foundation and D012 preserve immutable old bytes and claim association; four descriptor-absent orphan variants reject all three original selections; valid combined descriptor gives new incomplete state, malformed descriptor rejects all four. F001 recurrent checkpoint-as-invariant class and F002 mandatory new scoped lint are closed for this bounded control patch. Initial RETURN remains unchanged history. No full92 actual application run or domain implementation proof is inferred.
+
+DELEGATED DISPOSITION: ACCEPT_FOR_BOUNDED_CONTROL_APPLICATION under actual owner-chat/20261019T222804/D012-and-standing-human-exceptions. This is the worker's exact judgement under standing human-checkpoint delegation, not another human utterance or independent domain admission. Apply only the reviewed V2 loader body; expected loader SHA256 `4720fb69f9d6b34032742ce47585b57f1be3610305061faf2ac9d1458c66c478`. Install the brief's exact fixed D013 descriptor and null admission pointer, then obtain actual full92 control GREEN, native authority, full source/control typing, scoped lint and old-claim preservation before physical D013 domain work. Cost if this disposition is wrong: original claim partition/authority routing could be contaminated; actual original-claim resolution and separate regression remain required discriminators.
+
+No schema, strict runner, outcome policy, old authority/binding/catalogue/generation, product runtime/proof, dependency, pin or provider change is admitted by this disposition. G6.1 remains open; G6.2–6.4 prerequisites and source/live/composition/migration/retirement/main holds remain.
+
+TS: 19-10-26 23:40

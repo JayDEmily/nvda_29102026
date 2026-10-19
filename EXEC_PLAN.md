@@ -1,5 +1,9 @@
 # NVDA V2 — ACTIVE successor ExecPlan: Gate 5 execution
 
+## D013 V2 pre-application review and concrete delegated disposition — 19 October 2026, 23:40 Melbourne
+
+Independent PASS_FOR_PREAPPLICATION_CONTROL_SCOPE independent-review/g61-d013-control-v2/6b5559b/20261019 on exactV2patchSHAa69225e81bd33fd834358823a7a23ec000b118d3ddbcd4cff6eb59e90d1be8d7. ReportSHA5c2d9e17613e0fdbf8bd20f3b16db77de5f9709ea8f4d032f08f52a4ea3876a5 and seven exact files preserved in d013_control_review_v2_20261019/. Actual30targetedPASS/62deselected, four-toolmypy/scopedRuffPASS, fresh directall3advance/revoke/orphan/descriptorcontrolsPASS. F001classclosure and F002scopedlintclosed for controlonly. Mainworker exact ACCEPT_FOR_BOUNDED_CONTROL_APPLICATION under standing22:28authority recorded in G6_1_D013_CONTROL_DISPOSITION_20261019.md before loaderapplication. No actualfull92/domainGREEN inferred. Next applyexactdiff/installfixeddescriptor/nullpointer, thenactualmandatorycontrolchecks beforephysicaldomainproof. G6.1open.
+
 ## D013 class-level proof repair and V2 diff prepared — 19 October 2026, 23:32 Melbourne
 
 After preservedRETURN8c8525c, six additional advance/revoke canaries across rawSQLite/foundation/D012 each observed intendedRED at526cee6 before testrepair3269035; allsixthenPASS against unchangedactualD012loader. Preservation now pins old immutable generationfilebytes and protects all existingrecords/pointers from readsideeffects, without freezing currentselectedhash/readiness. Existing forged/reused/revoked-historynegatives retained. Separate predictedfixtureuniversehazard was proved1RED atc15ab77 before addingonlyD013copiedconfig/proofroots to the alreadyexplicitpre-admissionreset;1GREENfollows, actualsourceuntouched. This applies existingbrief§8ruling rather than weakeningactualownership; directactualstate remainsseparatelyproved. BothfirstREDandGREENlogs preserved.
