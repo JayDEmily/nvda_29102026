@@ -1,6 +1,6 @@
 # NVDA V2 — ACTIVE successor ExecPlan: Gate 5 execution
 
-## D014 physical proof authored; adequacy review required — 20 October 2026, 10:11 Melbourne
+## D014 physical proof authored; adequacy review required — 20 October 2026, 10:10 Melbourne
 
 Actual corrected control checkpoint85b83e91649fef0f259796b722c90b0771d86be0/tree de78be413655146bf7a623468aeaf6d197e90d16 fullGit saved successfully,101868716bytes/SHA256c8aabfd121910c2da3b6266ca94c87de6863646b6abc7c192550379ce05fd072; all1891tracked workingbytes/modes/links and extractedGitHEAD/tree/fsck0 verified. Original locally verified72d2daf archive remains separate, includes the transparently corrected timestamp error; not substituted for corrected delivery. Bounded control report also saved.
 

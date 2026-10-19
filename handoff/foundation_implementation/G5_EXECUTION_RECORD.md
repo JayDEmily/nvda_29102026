@@ -1,6 +1,6 @@
 # Gate 5 execution and recovered checkpoint
 
-### D014 physical proof authored, not admitted — 20 October 2026, 10:11 Melbourne
+### D014 physical proof authored, not admitted — 20 October 2026, 10:10 Melbourne
 
 Corrected bounded-control fullGit85b83e9/tree de78be41 saved; SHA256c8aabfd121910c2da3b6266ca94c87de6863646b6abc7c192550379ce05fd072/101868716bytes,1891tracked workingbytes/modes/links/GitHEAD-tree/fsck0 verified. Authored exactly new four physical D014 sources/six required names, literal support and10negative static diagnostic sites; root records exacthashes. Actual syntax/static-source/scopedRuff checks only. No domain execution/collection/newAPI type success/gen/runtime inferred. Required independent authored adequacy precedes immutable admission/intendedRED. Standing delegation not a waiver; G6.1open,remaining123/all83.
 
