@@ -1,0 +1,18 @@
+{
+  "candidate": "0d3600c30c716344245e5d5f7718f725160bba4a",
+  "tree": "6d4886bbe20c0793bebf4a3e7ac2dec6f53eb483",
+  "argv": [
+    "/tmp/nvda-g61-runtime-GBILkakx/dev/bin/python",
+    "tools/validate_product_proof.py",
+    "--claim",
+    "neutral_market_measurement_truth_d014"
+  ],
+  "cwd": "/workspace/scratch/d549b6d808a9/resume-20261020-ejayrse7/repository",
+  "completed": true,
+  "exit": 0,
+  "expected_marker": "state=READY_FOR_PROOF",
+  "marker_present": true,
+  "log_sha256": "26a1298bddb3dc63ae20e823c4442796abf0df6afe0881cc849977458c538e32",
+  "unchanged_head": true,
+  "clean_after": true
+}

@@ -1,5 +1,9 @@
 # Gate 5 execution and recovered checkpoint
 
+### D014 engineering first failure preserved — 20 October 2026, 10:40 Melbourne
+
+Actual0d360/tree6d4886 nativeReady/mypy38PASS then173targeted4FAIL169PASS33.11s1; fourphysical415IndexErrors repeatedcursor/pagecap emptypopulated. Nativecursor1=>actualfiniteM00empty page, fixtureindexesemptybeforegeneratedresponse. All7rawlogs/metadata/harness preserved/hashverified, fullfailurelogparsed(primarytrace/nativefunctionsread). P05/P06/fullstrictnotrun. Report G6_1_D014_ENGINEERING_FIRST_FAILURE_20261020.md defines boundedproofpreconditionrepair, originalcriteria/historyretained, freshreview/gen2beforetests; no productionfixorproofreseal. G6.1open/D014partial/123awaitacceptance(other122all83unenabled).
+
 ### D014 isolated store drafted after observed RED — 20 October 2026, 10:37 Melbourne
 
 Componentf098delta verifiedfullbaserestore/all1922workingbytes/clean/fsck0 and saved SHA1df816f614c3569f3a059c860e12eaaa9ecd1f193adb38c19a7a3b8670539c4c/14589bytes. Onlynew_raw_rational_sqlite.py nowadded underexact§7.3.3 afterpreservedP05missingstorageRED. Compile-only/scopedRuffPASS, oldAPIprefix/gen1/4proofhashesunchanged. No functional/durable/fulltyping/strictGREEN inferred. Nextstatic+admittedwitnessesfirstfailurestop, thenrequiredmetadata/regression/review/disposition. G6.1open/D014partial/123awaitacceptance(other122all83unenabled).
