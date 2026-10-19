@@ -1,5 +1,15 @@
 # NVDA V2 — ACTIVE successor ExecPlan: Gate 5 execution
 
+## D012 authority accepted; standing human-checkpoint authority — 19 October 2026, 22:28 Melbourne
+
+Current owner instruction: “Yes, I do, and for all further human exceptions, I authorise them right now.” Reference owner-chat/20261019T222804/D012-and-standing-human-exceptions. This explicitly accepts the submitted exact D012 brief SHA256 a31c482d2dc4822539ede99e955761319585af4badea93b9fc279638e1e1f393 and root §7.1 amendment at c8fa2ea91416432ed7426bf1f5b1083b93a9ee51 for implementation/testing. §7.1 is ACTIVE under this acceptance; its earlier pending labels are historical submission text. Existing frozen brief bytes are not rewritten. Execute its ordered authority/control/proof/RED/behaviour/GREEN/review obligations now.
+
+Standing authority covers further human-only exception/approval/admission checkpoints within the already commissioned current G6 sequence. The worker may record and exercise this delegation after concrete required meaning, proof and independent review exist, without asking the owner to repeat approval. Record exact candidate/authority/evidence and disposition under this reference; do not manufacture an owner utterance or label delegated judgement an independent review. It does not waive semantic prerequisites, actual proof, independent judgement, missing source facts, fail-closed integrity, or supply an unspecified financial convention. Current provider/live/main/composition/migration/retirement boundaries remain outside the commissioned leaves. Frozen GUARDRAILS is unchanged.
+
+Current ledger: Gate5 ACCEPTED_CLOSED_CONTROLLED_D011_ONLY; G6.1 IN_PROGRESS_D012_AUTHORITY_AND_CONTROL; G6.2–G6.4 commissioned in order pending actual predecessors. The root and G5_EXECUTION_RECORD remain the sole execution ledger. The executing-plans/TDD workflows are subordinate to this accepted root; no additional skill ledger or destructive workspace cleanup is introduced.
+
+---
+
 ## G6.1 first scalar authority package prepared — 19 October 2026, 22:19 Melbourne
 
 Gate5 remains ACCEPTED_CLOSED_CONTROLLED_D011_ONLY under the actual owner decision below. The existing sequential commission has progressed to the §7 authority handoff. Proposed exact next unit is controlled D012 (ask minus bid), with no new predecessor/source/result shape. Exact brief handoff/foundation_implementation/authority/G6_1_D012_IMPLEMENTATION_BRIEF_PROPOSED.md SHA256 a31c482d2dc4822539ede99e955761319585af4badea93b9fc279638e1e1f393 and incorporated proof contract SHA256 b8907ef6fba60ab18aadc1a1899997dde11f55735544fee6f2d13d21c7e2a02c are prepared. The proposed amendment in §7.1 below is INACTIVE_PENDING_EXACT_OWNER_ACCEPTANCE. No new code/control/test admission or G6 execution result is claimed. Documentary raw-hash/JSON-field/proposition checks only; no tests/runtime validators run in this pass.
