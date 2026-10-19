@@ -157,19 +157,36 @@ def test_d013_preservation_allows_lawful_generation_transitions(
 
 def test_d013_actual_original_claim_generations_are_preserved():
     api = _controls()
-    for claim_id, expected in (
+    originals = (
         (
             "raw_signal_occurrence_truth_sqlite",
+            "config/product_proof/raw_signal_sqlite/generations/0003.json",
             "51e87129c2a31c71599b7a01beb8ba39717ed5118a4d5c849bcb2015b6c80c6f",
         ),
         (
             "neutral_market_measurement_truth_pilot",
+            "config/product_proof/market_measurement/generations/0004.json",
             "24a5af4054c277b01a140ec43481e86851e5e76263826644a80993c12c2495b7",
         ),
-        (D012_CLAIM, "26d2b4e371c38b0960cb6081798cc618c9f308567d0df12b2aa40f3777dd2a25"),
-    ):
-        claim = api.load_product_proof_claim(ROOT, claim_id)
-        assert claim.state == "READY_FOR_PROOF" and claim.generation_sha256 == expected
+        (
+            D012_CLAIM,
+            D012_ROOT + "/generations/0001.json",
+            "26d2b4e371c38b0960cb6081798cc618c9f308567d0df12b2aa40f3777dd2a25",
+        ),
+    )
+    # Old immutable records are fixed; a currently selected pointer/readiness
+    # is not. Protect every existing record and pointer from read side effects.
+    protected = {}
+    for _, name, expected in originals:
+        assert _sha(ROOT / name) == expected
+        for path in (ROOT / name).parent.parent.rglob("*.json"):
+            protected[path] = path.read_bytes()
+    protected[ROOT / "config/product_proof/claims.json"] = (
+        ROOT / "config/product_proof/claims.json"
+    ).read_bytes()
+    for claim_id, _, _ in originals:
+        assert api.load_product_proof_claim(ROOT, claim_id).claim_id == claim_id
+    assert all(path.read_bytes() == expected for path, expected in protected.items())
 
 
 @pytest.mark.parametrize(
