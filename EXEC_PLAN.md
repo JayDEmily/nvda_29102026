@@ -1,5 +1,9 @@
 # NVDA V2 — ACTIVE successor ExecPlan: Gate 5 execution
 
+## D013 revised proof adequate and generation1 admitted — 20 October 2026, 00:00 Melbourne
+
+Actualindependent-review/g61-d013-proof-v2/3876ad0/20261019 PASS_FOR_PHYSICAL_PROOF_ADMISSION; exactreportSHAab463c1a7170ca937a0e4d2ba42c3e0111d35dd996b2e1fd18d80769acfb9c63 preservedwithstaticresults in d013_proof_review_v2_20261020/. Mainreadfullreturnedfiles/matchedfourphysicalhashes. Operation-scopeF001classclosedatauthoredprooflevel; unchangedsource-projected179cases/sevenexactnegative sites, notexecutedproof. Concrete delegated ADMIT_EXACT_D013_PHYSICAL_GENERATION_1 under standing22:28authority, generationSHAfb4095de4d5fe9da885f9e8e6574cfe495de1fdebbb8b37f3fcd31710f5bdf02. Exactdisposition/limits in G6_1_D013_PROOF_ADMISSION_20261020.md. No domaincodeyet; nextclean nativeaggregateactualintendedRED, notcollection/import/admissionfailure. Alloldgovernedauthority/generations unchanged. G6.1open.
+
 ## D013 unadmitted proof scope repair prepared — 19 October 2026, 23:58 Melbourne
 
 AfterpreservedRETURN96b1540, onlytest_ratio changed: clear/assertpredecessorreadtracewithineachunsupportedrequest; requirewriterpolicyonnewD013definition2logicalfact beforeordinaryoriginalfactretry, withactualtablecount2. Retryitselfstillmustreturnoriginalcompletefact/timebutneednotwrite. Alloldrefusal/immediateempty-populatedhistory/nativefirstwrite/fault/recovery/corruption/typingassertions retained; support/specimens/authority/control/runtimeunchanged. ScopedRuffPASS;179projectedcasesunchanged. No unadmitteddomaintest/execution usedasfalseRED. Requiredrevisedindependentadequacy beforegeneration/code remainsunmet; candidate issource-onlyrepair, notsemanticGREEN. Standingdelegationstillneedsnonewownerpermission.

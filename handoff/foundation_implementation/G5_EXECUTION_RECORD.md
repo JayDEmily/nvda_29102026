@@ -1,5 +1,9 @@
 # Gate 5 execution and recovered checkpoint
 
+### D013 exactgeneration1 admitted after revised proof PASS — 20 October 2026, 00:00 Melbourne
+
+IndependentadequacyPASS independent-review/g61-d013-proof-v2/3876ad0/20261019, reportSHAab463c1a7170ca937a0e4d2ba42c3e0111d35dd996b2e1fd18d80769acfb9c63 and staticresults preservedunchanged/read. Fourphysicalhashescheckedagainstactualbeforeadmission; F001scopeclassclosed atsourcelevel. Concrete delegatedgeneration1admissionunderstanding22:28authority, SHAfb4095de4d5fe9da885f9e8e6574cfe495de1fdebbb8b37f3fcd31710f5bdf02; exactbrief/binding/contract/review/activeM02refs inimmutablefile. See G6_1_D013_PROOF_ADMISSION_20261020.md. No actualdomainexecution/staticnewAPItyping/productionyet. NextcleanstrictaggregateactualintendedmissingfeatureREDbeforeboundedcode, notinfrastructurefailure. Oldgenerationsretained;G6.1open.
+
 ### D013 operation-scoped unadmitted proof correction — 19 October 2026, 23:58 Melbourne
 
 FollowingpreservedRETURN96b1540, newdiffonlytest_ratio: unsupportedreadbudget resets/assertsperrequest; actualnewdefinition2insertproveswriterpolicyandtablecount2, separatelyretainedoriginalretryhasnorequiredwriterpath. No validsemanticassertionremoved; actualsource/refusal/history/firstwrite/fault/corruption/typeproofretained,179projectedcases. ScopedRuffPASS. No domainexecution/collection/staticnewAPImypy/generation/code. Repairedsource requiresactualindependentadequacybeforeanyadmission/RED; no newhumanpermissionneeded.
