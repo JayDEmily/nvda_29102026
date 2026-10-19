@@ -1,4 +1,7 @@
 {
   "schema_version": "1.0",
-  "current_generation": null
+  "current_generation": {
+    "path": "config/product_proof/market_measurement_d012/generations/0001.json",
+    "sha256": "26d2b4e371c38b0960cb6081798cc618c9f308567d0df12b2aa40f3777dd2a25"
+  }
 }
