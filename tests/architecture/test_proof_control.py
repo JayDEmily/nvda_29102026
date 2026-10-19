@@ -232,6 +232,15 @@ def _copy_candidate(tmp_path):
     # Control canaries require an explicit pre-admission universe, independently of
     # the real checkout's evolving product generations. Never rewrite actual history.
     assert tmp_path.resolve() != ROOT.resolve() and not (tmp_path / ".git").exists()
+    # This fixture owns the original pre-admission universe, even after lawful
+    # optional extensions exist in the real checkout. Actual claims stay intact.
+    for relative in (
+        "config/product_proof/market_measurement_d012",
+        "tests/product/market_measurement_d012",
+    ):
+        disposable = tmp_path / relative
+        if disposable.exists():
+            shutil.rmtree(disposable)
     catalogue = json.loads((tmp_path / "config/product_proof/claims.json").read_text())
     for entry in catalogue["claims"]:
         if entry["profile"] != "accepted_brief_v2":

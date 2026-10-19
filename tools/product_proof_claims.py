@@ -508,14 +508,14 @@ def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductPro
             if covered != set(contract["required_proof_ids"]):
                 raise ValueError("incomplete contract proposition coverage")
             contracts[row["claim_id"]] = contract
-    family_ids: set[str] = set()
+    owned_family_ids: set[str] = set()
     proof_ids: set[str] = set()
     for contract in contracts.values():
         current_families = {family["id"] for family in contract["families"]}
         current_proofs = set(contract["required_proof_ids"])
-        if family_ids & current_families or proof_ids & current_proofs:
+        if owned_family_ids & current_families or proof_ids & current_proofs:
             raise ValueError("cross-claim family/proof ownership collision")
-        family_ids.update(current_families)
+        owned_family_ids.update(current_families)
         proof_ids.update(current_proofs)
     from validate_product_proof import _validate_legacy_product_proof
 
