@@ -1,5 +1,9 @@
 # Gate 5 execution and recovered checkpoint
 
+### D013 first durable179PASS; static9failure preserved — 20 October 2026, 00:09 Melbourne
+
+Newisolated_rational_sqlite.py aftercommittedstorageRED7c7a17b. Actualadmittedwholephysicalfamily179PASS99.02s/process0, notstrictaggregateoracceptance. ScopedM02sourceRuffPASS. Fullsource/controlmypy9errors(newserviceonly): tuplecommonobject2, un-narrowedoptionalreadresults5, reusedold/newoccurrencelocal2. Exactfirstlogandwholefamilylog preservedbeforetypingrepair. Requireddependentpromotion/admissionstoppedatstaticfailure; no test/meaning/publictype/storagechangesneeded, onlyexistingdefinedconfigunion/explicitunavailablegetterchecks/distincttypedlocals. No casts/ignores/Anywideningproposed. Recordboundedrepairthenrequiredcompletechecks. Earliermemorycomponentstatusfilename additive_rational.py meansactualnew_rational.py; noadditionalfileexists.
+
 ### D013 memory component witness and storage absence RED — 20 October 2026, 00:06 Melbourne
 
 ActualadmittedP01[memory]1PASS0.39s afterfullRED01d8821 andnewapi.py/_rational.py only. Exacttypedratio/fullactualoldproducerlineage/IDoracle/readsfacet provesmemorycomponent, notallP01–P04orSQLite. Existingv1publicnodes/semantics untouched; oldprivatevalidator/configreusedas-is, noextraction/competingoldmath. Mechanicalnew__all__sortafterRUF022;scopednewsourceRuffPASS. AdmittedP05[profile]1failed0.18s exactexplicitabsent_sqlitemoduleassert afteroldproducers/newpublicseam, notimportfailure; preservedfullbeforestorageimplementation. LogsG6_1_D013_MEMORY_COMPONENT_20261020.log and G6_1_D013_STORAGE_SEAM_RED_20261020.log. NextnewisolatedSQLitestorageonly; admittedproof/generationimmutable andwholefamily/regressions/reviewremain.

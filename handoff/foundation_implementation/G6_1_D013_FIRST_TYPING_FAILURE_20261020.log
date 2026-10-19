@@ -1,0 +1,12 @@
+src/nvda_desk/derived_signal_calculation_truth/_financial_policy.py:188: note: By default the bodies of untyped functions are not checked, consider using --check-untyped-defs  [annotation-unchecked]
+src/nvda_desk/derived_signal_calculation_truth/_financial_policy.py:201: note: By default the bodies of untyped functions are not checked, consider using --check-untyped-defs  [annotation-unchecked]
+src/nvda_desk/market_measurement_truth/_rational.py:181: error: Argument 1 to "_key" has incompatible type "object"; expected "CalculationParameterSetV1 | InputSelectionPolicyVersionV1 | UnitConventionVersionV1 | RawSignalProjectionMappingV1"  [arg-type]
+src/nvda_desk/market_measurement_truth/_rational.py:186: error: Incompatible types in assignment (expression has type "object", target has type "CalculationParameterSetV1 | InputSelectionPolicyVersionV1 | UnitConventionVersionV1 | RawSignalProjectionMappingV1")  [assignment]
+src/nvda_desk/market_measurement_truth/_rational.py:230: error: Argument 2 to "PredecessorEvidenceV1" has incompatible type "CalculationDefinitionV1 | None"; expected "CalculationDefinitionV1"  [arg-type]
+src/nvda_desk/market_measurement_truth/_rational.py:234: error: Argument 3 to "PredecessorEvidenceV1" has incompatible type "CalculationParameterSetV1 | None"; expected "CalculationParameterSetV1"  [arg-type]
+src/nvda_desk/market_measurement_truth/_rational.py:235: error: Argument 4 to "PredecessorEvidenceV1" has incompatible type "InputSelectionPolicyVersionV1 | None"; expected "InputSelectionPolicyVersionV1"  [arg-type]
+src/nvda_desk/market_measurement_truth/_rational.py:236: error: Generator has incompatible item type "UnitConventionVersionV1 | None"; expected "UnitConventionVersionV1"  [misc]
+src/nvda_desk/market_measurement_truth/_rational.py:238: error: Generator has incompatible item type "RawSignalProjectionMappingV1 | None"; expected "RawSignalProjectionMappingV1"  [misc]
+src/nvda_desk/market_measurement_truth/_rational.py:321: error: Incompatible types in assignment (expression has type "RatioOccurrenceV1", variable has type "DerivedSignalOccurrenceV1")  [assignment]
+src/nvda_desk/market_measurement_truth/_rational.py:345: error: Incompatible return value type (got "tuple[DerivedSignalOccurrenceV1, bytes]", expected "tuple[RatioOccurrenceV1, bytes] | None")  [return-value]
+Found 9 errors in 1 file (checked 36 source files)

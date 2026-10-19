@@ -1,5 +1,11 @@
 # NVDA V2 — ACTIVE successor ExecPlan: Gate 5 execution
 
+## D013 first durable family GREEN; whole-source typing first failure — 20 October 2026, 00:09 Melbourne
+
+New_rational_sqlite.py implementsseparateappid0x4E560003/threeSTRICTimmutabletables/fulloldpredecessor/newratioidentity-equationvalidation/readonly/atomicregistration-append/uncertainty. Actualadmittedfullphysicalfamily179PASS99.02s/process0, includingpositiveandexact7negativestaticseams/nativefaults/firstwrite/freshprocess/integrity; thisisnotyetstrictaggregate/promotion/finalacceptance. ScopedM02sourceRuffPASS. Existingv1storage/sourceunchanged; noextraneoussurfaceedit.
+
+Concurrentrequiredfullsource/controlmypyfirstfailure9errors innew_rational.py: heterogeneousconfigurationtupleinferredobject(2), optionalpublicgetteroutputsnotexplicitlynarrowed(5), sameoccurrence localreusedforold/newtypes(2). Fullfirsttypinglog preserved G6_1_D013_FIRST_TYPING_FAILURE_20261020.log; fullphysicalfamilylog G6_1_D013_FIRST_DURABLE_FAMILY_20261020.log. Diagnosisfromexactsites/workingoldcataloguepattern: runtimeconstructorrejectsbadtypesbutmypy needs explicitoptionalnarrowing/typedconfigurationunion, andold/newlocalsmustdistincttypes. No meaning/publictype/schema/proofchange needed. Stopdependentpromotion/candidateadmission; preserveexactsource/firstfailurebeforeboundedtypingrepair, thenwholetyping/newstrictaggregate/regressions. G6.1open.
+
 ## D013 additive memory component and intended storage RED — 20 October 2026, 00:06 Melbourne
 
 AftercommittedfullRED01d8821, onlyapi.py/additive_rational.py nowimplementexactnewrecords/facets/factories, fixedD013service/exactintegerarithmetic/completepublicpredecessorsnapshots. ActualadmittedtargetedP01[memory]1PASS0.39s; componentonly, notdurability/fullP01–P04closure. Oldpublicnodes/Decimalcode unchanged; reuseexistingownerprivate _expected/_Memory/_validate_occurrence withoutedit/extraction orcompetingoldmath. Exactnewadmission required. Newprivatecodec preservesoldtagsandaddsratiointegertextwithoutgloballimitmutation. Initialnew__all__RUF022formatfinding correctedmechanically; scopedAPI/newserviceRuffnowPASS, no fullmypy/aggregateinferred.
