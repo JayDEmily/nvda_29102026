@@ -1,0 +1,46 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+__________________ test_latest_eligible_history_and_ambiguity __________________
+
+    def test_latest_eligible_history_and_ambiguity():
+        raw = raw_api.create_owner()
+        raw.commands.admit_raw_observation_occurrence(observation("ask", sequence=0))
+        # A fixed complete population before enumeration; no live/concurrent snapshot claim.
+        for index in range(1, 103):
+            raw.commands.admit_raw_observation_occurrence(
+                observation(
+                    "bid",
+                    identity=f"history-{index}",
+                    sequence=index,
+                    event=ASOF - timedelta(seconds=3 if index < 101 else 2),
+                    value=Decimal("100") if index < 102 else 999.0,
+                )
+            )
+        raw.commands.admit_raw_observation_occurrence(
+            observation(
+                "bid",
+                identity="late-after",
+                sequence=103,
+                event=ASOF - timedelta(seconds=1),
+                receipt=ASOF + timedelta(microseconds=1),
+                value=Decimal("999"),
+            )
+        )
+        calls = []
+    
+        class CountingReader:
+            def list_projected_raw_history(self, rid, **kwargs):
+                calls.append((rid, kwargs))
+                return raw.reads.list_projected_raw_history(rid, **kwargs)
+    
+        f = foundation()
+        o = f.create_owner(**configuration(f, CountingReader()))
+        result = o.materialise(request(f))
+>       assert result.result == Decimal("101")
+               ^^^^^^^^^^^^^
+E       AttributeError: 'NoneType' object has no attribute 'result'
+
+tests/product/market_measurement/test_selection_history.py:47: AttributeError
+=========================== short test summary info ============================
+FAILED tests/product/market_measurement/test_selection_history.py::test_latest_eligible_history_and_ambiguity
+1 failed in 0.07s
