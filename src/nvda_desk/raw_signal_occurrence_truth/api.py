@@ -2010,11 +2010,11 @@ def create_owner(
 
 
 __all__ = [
-    "PersistenceFailureV1",
     "CaptureReceiptEvidenceRelationV1",
     "CaptureReceiptPresenceAssessmentV1",
     "CaptureScopePolicyV1",
     "NativeValueV1",
+    "PersistenceFailureV1",
     "ProjectedRawHistoryPageV1",
     "ProjectedRawValueV1",
     "RawObservationOccurrenceV1",

@@ -1,0 +1,10 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/d549b6d808a9/g51/repository
+configfile: pyproject.toml
+collected 42 items
+
+tests/architecture/test_proof_control.py ............................... [ 73%]
+...........                                                              [100%]
+
+============================= 42 passed in 29.38s ==============================

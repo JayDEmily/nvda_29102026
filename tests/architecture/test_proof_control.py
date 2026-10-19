@@ -29,6 +29,45 @@ def _copy_candidate(tmp_path):
     shutil.copytree(ROOT / "tools", tmp_path / "tools")
     for name in ("pyproject.toml", "GUARDRAILS.md", "AGENTS.md", ".gitignore"):
         shutil.copy2(ROOT / name, tmp_path / name)
+    # Control canaries require an explicit pre-admission universe, independently of
+    # the real checkout's evolving product generations. Never rewrite actual history.
+    assert tmp_path.resolve() != ROOT.resolve() and not (tmp_path / ".git").exists()
+    catalogue = json.loads((tmp_path / "config/product_proof/claims.json").read_text())
+    for entry in catalogue["claims"]:
+        if entry["profile"] != "accepted_brief_v2":
+            continue
+        physical = tmp_path / entry["physical_root"]
+        assert physical.is_relative_to(tmp_path / "tests/product")
+        if physical.exists():
+            shutil.rmtree(physical)
+        pointer = tmp_path / entry["admission_path"]
+        generations = pointer.parent / "generations"
+        if generations.exists():
+            shutil.rmtree(generations)
+        _json_write(pointer, {"schema_version": "1.0", "current_generation": None})
+    import yaml
+
+    path = tmp_path / "config/architecture/modules.yaml"
+    doc = yaml.safe_load(path.read_text())
+    removed = {
+        item["id"] for item in doc["modules"] if item["name"] == "neutral_market_measurement_truth"
+    }
+    doc["modules"] = [item for item in doc["modules"] if item["id"] not in removed]
+    path.write_text(yaml.safe_dump(doc))
+    path = tmp_path / "config/architecture/implementation_allocations.yaml"
+    doc = yaml.safe_load(path.read_text())
+    doc["implementation_allocations"] = [
+        item for item in doc["implementation_allocations"] if item["object_id"] not in removed
+    ]
+    path.write_text(yaml.safe_dump(doc))
+    path = tmp_path / "config/architecture/dependency_rules.yaml"
+    doc = yaml.safe_load(path.read_text())
+    doc["declared_owner_edges"] = [
+        edge
+        for edge in doc["declared_owner_edges"]
+        if edge["source"] not in removed and edge["target"] not in removed
+    ]
+    path.write_text(yaml.safe_dump(doc))
     return tmp_path
 
 
@@ -142,14 +181,26 @@ def test_physical_product_partition_is_complete(tmp_path):
         api.load_product_proof_claim(root, "raw_signal_occurrence_truth_sqlite")
 
 
-def test_pending_authority_target_and_empty_proof_are_not_success():
+def test_pending_authority_target_and_empty_proof_are_not_success(tmp_path):
     api = _controls()
-    assert api.load_product_proof_claim(ROOT, "raw_signal_occurrence_truth_sqlite").state == (
+    root = _copy_candidate(tmp_path)
+    assert api.load_product_proof_claim(root, "raw_signal_occurrence_truth_sqlite").state == (
         "INCOMPLETE_NO_PHYSICAL_FAMILIES"
     )
-    assert api.load_product_proof_claim(ROOT, "neutral_market_measurement_truth_pilot").state == (
+    assert api.load_product_proof_claim(root, "neutral_market_measurement_truth_pilot").state == (
         "AWAITING_TARGET"
     )
+
+
+def test_actual_m00_generation_and_foundation_bootstrap_remain_distinct():
+    api = _controls()
+    raw = api.load_product_proof_claim(ROOT, "raw_signal_occurrence_truth_sqlite")
+    foundation = api.load_product_proof_claim(ROOT, "neutral_market_measurement_truth_pilot")
+    assert raw.state == "READY_FOR_PROOF" and raw.target_id == "M00"
+    assert raw.target_status == "active" and raw.generation_sha256 is not None
+    assert foundation.target_status == "bootstrap"
+    assert foundation.state == "INCOMPLETE_NO_PHYSICAL_FAMILIES"
+    assert foundation.generation_sha256 is None
 
 
 def test_target_status_does_not_make_red_circular(tmp_path):

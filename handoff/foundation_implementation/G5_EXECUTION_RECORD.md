@@ -1,5 +1,25 @@
 # Gate 5 execution and recovered checkpoint
 
+## G5.1-only continuation — 19 October 2026, 15:58 owner instruction
+
+Authority: `owner-chat/20261019T155833/G5.1-only`, exact accepted version3 and previously accepted/applied1bec046 controls. Workspace recovery and reapplication of the Python pin are recorded in the root plan. Existing root plan/this record remain the single ledger; no skill-generated competing plan is adopted. Baseline112tests pass; native authority validates the four intents; all17offline wheel hashes match. Fresh dev/optional-client and separate runtime-only environments use CPython3.12.14/SQLite3.53.1; the runtime-only install has project/PyYAML and no Psycopg.
+
+### Proof, RED and bounded implementation
+
+The exact independently reviewed proof lineage is in `M00_SQLITE_PROOF_REVIEW_20261019.md`. Source at819b49f received genuine PASS_FOR_ADMISSION only after class-level repairs for complete native own-commit correspondence, direct optional-operation independence, full typed facets and exact A00 wiring. Generation1 was admitted at895d8f8. The resolver reported READY_FOR_PROOF, actualM00/active and exact generation SHA12a2092d4b358a8160c6f6a33b04595d1baf98813f80a3dbc5c65f3a3642ce35. The first targeted witness failed at the explicit missing-SQLite-capability assertion, not import/collection failure; full strict aggregate collected23cases and failed23. Both raw outputs were committed at77715cb before any storage behaviour.
+
+Implementation atcd2499b adds only owner-local SQLite/native-codec translation, public persistence-failure exception, bounded A00 selector/lazy imports and the exact technical seam exception. Original M00 semantic algorithms and PostgreSQL adapter remain unchanged. The copied NVDA-NATIVE-V1codec retains the old tags/bytes. No M01 production or historical product source is changed. Initial actual product run had22passes and one proof-driver failure: mypy inherited `files=["src"]` conflicted with inline `-c`. That output is preserved and is not labelled semantic RED or GREEN. A private decoded-metadata dictionary annotation was corrected after the exact mypy assignment diagnostic; source typing then passed.
+
+Changed proof driver at64b292e received independent exact review before generation2 admission; see the review record. It preserves all original assertions and uses an explicit temporary Python3.12/mypy configuration. Generation1 is retained and generation2 points to its exact predecessor. Actual strict raw SQLite aggregate on37e3cec exits0 with23passes and no skips/xfail/xpass, complete observed collection and governed-byte integrity. U01/U02/U03/U04 retained semantic regression has416passes; this is not a rerun or relabelling of the historical PostgreSQL aggregate.
+
+### Bootstrap/control candidate and verification boundary
+
+Before allocation, the current native resolver returned M02. Its accepted neutral-owner boundary is now declared bootstrap/non-composable, M00-only, with explicit future state/writer/read roles, controlledD011 exclusions and M00 public reader declaration. No foundation source/package/test/generation or A00 runtime dependency is created. Allocation reserves identity only; it is not implementation maturity or pilot proof. M01 metadata/attribution is unchanged.
+
+The first current-checkout control-family run had18failures/23passes because canaries copied real generation2 into synthetic generation1 fixtures and attempted duplicate M02 admission; an initial-state test also asserted real M00 was still missing proof. The source/output diagnosed fixture-state contamination, not a failed resolver invariant. Disposable fixtures now explicitly provision their initial proof/target universe, while a new actual-state witness requires real M00 admission and distinct unproved foundation bootstrap. All existing negative assertions and revocation-history falsifiers remain. Corrected control family has42passes. Scoped source/proof Ruff passes; full-source plus four control tools mypy passes28files. Full-tree Ruff retains the two unchanged M01E501 findings; full-tree lint is not green.
+
+Final exact-candidate promotion/runtime checks and independent implementation/control/bootstrap review are next. G5.1 remains open; no final candidate acceptance is fabricated. G5.2 and later/live/main/migration/retirement work remain outside this continuation. Required final owner disposition remains separate from implementation/test evidence.
+
 Date: 17 October 2026 — Australia/Melbourne.
 
 ## Concrete control application authorised — 19 October 2026

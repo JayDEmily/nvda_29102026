@@ -22,6 +22,8 @@ category_rules:
     may_depend_on: []
     forbidden: [A, M, P, G, K]
 declared_owner_edges:
+  - source: M02
+    target: M00
   - source: A00
     target: M00
   - source: M01

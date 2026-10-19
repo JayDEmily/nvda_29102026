@@ -1,0 +1,833 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/d549b6d808a9/g51/repository
+configfile: pyproject.toml
+collected 41 items
+
+tests/architecture/test_proof_control.py ........FFFF....F.F..FF....FFFF [ 75%]
+FFFFFF....                                                               [100%]
+
+=================================== FAILURES ===================================
+________ test_pending_authority_target_and_empty_proof_are_not_success _________
+
+    def test_pending_authority_target_and_empty_proof_are_not_success():
+        api = _controls()
+>       assert api.load_product_proof_claim(ROOT, "raw_signal_occurrence_truth_sqlite").state == (
+            "INCOMPLETE_NO_PHYSICAL_FAMILIES"
+        )
+E       AssertionError: assert 'READY_FOR_PROOF' == 'INCOMPLETE_N...ICAL_FAMILIES'
+E         
+E         - INCOMPLETE_NO_PHYSICAL_FAMILIES
+E         + READY_FOR_PROOF
+
+tests/architecture/test_proof_control.py:147: AssertionError
+________________ test_target_status_does_not_make_red_circular _________________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-5/test_target_status_does_not_ma0')
+
+    def test_target_status_does_not_make_red_circular(tmp_path):
+        api = _controls()
+        root = _copy_candidate(tmp_path)
+        import yaml
+    
+        path = root / "config/architecture/modules.yaml"
+        doc = yaml.safe_load(path.read_text())
+        target = dict(doc["modules"][1])
+        target.update(
+            id="M02",
+            name="neutral_market_measurement_truth",
+            status="bootstrap",
+            package="nvda_desk.market_measurement_truth",
+            public_seam="nvda_desk.market_measurement_truth.api",
+        )
+        doc["modules"].append(target)
+        path.write_text(yaml.safe_dump(doc))
+        path = root / "config/architecture/implementation_allocations.yaml"
+        allocations = yaml.safe_load(path.read_text())
+        allocations["implementation_allocations"].append(
+            {
+                "object_id": "M02",
+                "name": "neutral_market_measurement_truth",
+                "implemented_on": "2026-10-19",
+            }
+        )
+        path.write_text(yaml.safe_dump(allocations))
+>       claim = api.load_product_proof_claim(root, "neutral_market_measurement_truth_pilot")
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/architecture/test_proof_control.py:182: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tools/product_proof_claims.py:417: in load_product_proof_claim
+    authority = _authority(root, catalogue)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tools/product_proof_claims.py:97: in _authority
+    validate_implementation_authority(root, binding, brief)
+src/nvda_desk/architecture/implementation_authority.py:144: in validate_implementation_authority
+    targets = _resolve_target_projection(repository_root, document["targets"])
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/nvda_desk/architecture/implementation_authority.py:76: in _resolve_target_projection
+    create_ids = iter(resolve_candidate_identifiers(repository_root, create_categories))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/nvda_desk/architecture/allocation.py:64: in resolve_candidate_identifiers
+    consumed = consumed_identifiers(repository_root)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/nvda_desk/architecture/allocation.py:50: in consumed_identifiers
+    registry = ArchitectureRegistry.from_repository(repository_root)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/nvda_desk/architecture/registry.py:97: in from_repository
+    return cls(tuple(objects), frozenset(retired))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/nvda_desk/architecture/registry.py:56: in __init__
+    self.validate_integrity()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <nvda_desk.architecture.registry.ArchitectureRegistry object at 0x7fb213bc89b0>
+
+    def validate_integrity(self) -> None:
+        ids = [item.id for item in self.objects]
+        if len(ids) != len(set(ids)):
+>           raise ValueError("active architecture identifiers are not unique")
+E           ValueError: active architecture identifiers are not unique
+
+src/nvda_desk/architecture/registry.py:102: ValueError
+_________________ test_proof_generation_hash_and_supersession __________________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-5/test_proof_generation_hash_and0')
+
+    def test_proof_generation_hash_and_supersession(tmp_path):
+        api = _controls()
+        root = _copy_candidate(tmp_path)
+        _, contract, _, _ = _control_generation(root)
+>       assert api.load_product_proof_claim(root, "raw_signal_occurrence_truth_sqlite").state == (
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "READY_FOR_PROOF"
+        )
+
+tests/architecture/test_proof_control.py:191: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tools/product_proof_claims.py:481: in load_product_proof_claim
+    generation_hash, files = _generation(root, entry, contract, brief_hash, target_id)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/tmp/pytest-of-root/pytest-5/test_proof_generation_hash_and0')
+entry = {'admission_path': 'config/product_proof/raw_signal_sqlite/admission.json', 'binding_path': 'implementation/authority/...h_sqlite', 'contract_path': 'handoff/foundation_implementation/authority/M00_SQLITE_PROOF_CONTRACT_PROPOSED.json', ...}
+contract = {'architecture_proof_axis': 'architecture_kernel', 'claim_id': 'raw_signal_occurrence_truth_sqlite', 'execution_policy...blic owner, provisions missing store, imports broad private helpers or composes new unauthorised owner']}}, ...}], ...}
+brief_hash = '3ad4cdc9ffba4cf91ff9a27edf1dd3b1a9824a421514bb4b5a2cc1b9c504f233'
+target_id = 'M00'
+
+    def _generation(
+        root: Path,
+        entry: dict[str, Any],
+        contract: dict[str, Any],
+        brief_hash: str,
+        target_id: str | None,
+    ) -> tuple[str | None, dict[str, str]]:
+        pointer_path = safe_path(root, entry["admission_path"])
+        if not pointer_path.exists():
+            return None, {}
+        pointer = read_json(pointer_path)
+        _schema(root, pointer, "product_proof_admission.schema.json")
+        if set(pointer) != {"schema_version", "current_generation"}:
+            raise ValueError("invalid admission pointer shape")
+        reference = pointer["current_generation"]
+        if reference is None:
+            return None, {}
+        _admission_history(root, entry, pointer)
+        prefix = str(PurePosixPath(entry["admission_path"]).parent / "generations") + "/"
+        seen: set[str] = set()
+        current: dict[str, Any] | None = None
+        expected_number = None
+        while reference is not None:
+            name = reference["path"]
+            if name in seen or not name.startswith(prefix):
+                raise ValueError("generation path/cycle/cross-claim mismatch")
+            path = safe_path(root, name)
+            if sha256(path) != reference["sha256"]:
+                raise ValueError("generation pointer hash mismatch")
+            seen.add(name)
+            record = read_json(path)
+            _schema(root, record, "product_proof_admission.schema.json")
+            if "generation" not in record or record["generation"] < 1:
+                raise ValueError("invalid generation number")
+            if expected_number is not None and record["generation"] != expected_number:
+                raise ValueError("generation predecessor number mismatch")
+            if record["claim_id"] != entry["claim_id"]:
+                raise ValueError("generation claim mismatch")
+            if record["generation"] == 1 and record["previous_generation"] is not None:
+                raise ValueError("generation1 must have no predecessor")
+            if record["generation"] > 1 and record["previous_generation"] is None:
+                raise ValueError("generation predecessor missing")
+            if current is None:
+                current = record
+            expected_number = record["generation"] - 1
+            reference = record["previous_generation"]
+        assert current is not None
+        retained = {path.relative_to(root).as_posix() for path in (root / prefix).glob("*.json")}
+        if retained != seen:
+>           raise ValueError("generation rollback/fork or unreferenced retained generation")
+E           ValueError: generation rollback/fork or unreferenced retained generation
+
+tools/product_proof_claims.py:372: ValueError
+__________________ test_aggregate_collects_all_required_proof __________________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-5/test_aggregate_collects_all_re0')
+
+    def test_aggregate_collects_all_required_proof(tmp_path):
+        _controls()
+        root = _copy_candidate(tmp_path)
+        _, contract, _, _ = _control_generation(root)
+        path = root / contract["families"][0]["path"]
+        path.write_text("def test_wrong_name(): assert True\n")
+        # Reseal only this deliberately constructed temporary control fixture.
+        # Production generations may never be edited this way.
+        _reseal_control_fixture(root, path)
+        result = _run_control_probe(root)
+>       assert result.returncode == 5, result.stdout + result.stderr
+E       AssertionError: FAIL: generation rollback/fork or unreferenced retained generation
+E         
+E       assert 1 == 5
+E        +  where 1 = CompletedProcess(args=['/workspace/scratch/d549b6d808a9/g51-dev/bin/python', '/tmp/pytest-of-root/pytest-5/test_aggreg...roof_gate.py'], returncode=1, stdout='FAIL: generation rollback/fork or unreferenced retained generation\n', stderr='').returncode
+
+tests/architecture/test_proof_control.py:237: AssertionError
+______________ test_governed_mutation_and_dirty_start_fail_closed ______________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-5/test_governed_mutation_and_dir0')
+
+    def test_governed_mutation_and_dirty_start_fail_closed(tmp_path):
+        _controls()
+        root = _copy_candidate(tmp_path)
+        _control_generation(root)
+>       assert _run_control_probe(root).returncode == 0
+E       AssertionError: assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['/workspace/scratch/d549b6d808a9/g51-dev/bin/python', '/tmp/pytest-of-root/pytest-5/test_govern...roof_gate.py'], returncode=1, stdout='FAIL: generation rollback/fork or unreferenced retained generation\n', stderr='').returncode
+E        +    where CompletedProcess(args=['/workspace/scratch/d549b6d808a9/g51-dev/bin/python', '/tmp/pytest-of-root/pytest-5/test_govern...roof_gate.py'], returncode=1, stdout='FAIL: generation rollback/fork or unreferenced retained generation\n', stderr='') = _run_control_probe(PosixPath('/tmp/pytest-of-root/pytest-5/test_governed_mutation_and_dir0'))
+
+tests/architecture/test_proof_control.py:295: AssertionError
+___________ test_historical_backend_is_accounted_but_not_executable ____________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-5/test_historical_backend_is_acc0')
+
+    def test_historical_backend_is_accounted_but_not_executable(tmp_path):
+        api = _controls()
+        claim = api.load_product_proof_claim(ROOT, "raw_signal_occurrence_truth_product")
+        assert claim.state == "HISTORICAL_NOT_RUNNABLE" and len(claim.families) == 6
+        root = _copy_candidate(tmp_path)
+>       assert _run_control_probe(root).returncode == 4
+E       AssertionError: assert 1 == 4
+E        +  where 1 = CompletedProcess(args=['/workspace/scratch/d549b6d808a9/g51-dev/bin/python', '/tmp/pytest-of-root/pytest-5/test_histor...ct_proof_gate.py'], returncode=1, stdout='FAIL: revoked/reused generation must advance admission history\n', stderr='').returncode
+E        +    where CompletedProcess(args=['/workspace/scratch/d549b6d808a9/g51-dev/bin/python', '/tmp/pytest-of-root/pytest-5/test_histor...ct_proof_gate.py'], returncode=1, stdout='FAIL: revoked/reused generation must advance admission history\n', stderr='') = _run_control_probe(PosixPath('/tmp/pytest-of-root/pytest-5/test_historical_backend_is_acc0'))
+
+tests/architecture/test_proof_control.py:318: AssertionError
+_____________ test_sqlite_default_and_m00_regression_are_explicit ______________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-5/test_sqlite_default_and_m00_re0')
+
+    def test_sqlite_default_and_m00_regression_are_explicit(tmp_path):
+        _controls()
+        root = _copy_candidate(tmp_path)
+        _control_generation(root)
+        result = _run_control_probe(root)
+>       assert result.returncode == 0, result.stdout + result.stderr
+E       AssertionError: FAIL: generation rollback/fork or unreferenced retained generation
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['/workspace/scratch/d549b6d808a9/g51-dev/bin/python', '/tmp/pytest-of-root/pytest-5/test_sqlite...roof_gate.py'], returncode=1, stdout='FAIL: generation rollback/fork or unreferenced retained generation\n', stderr='').returncode
+
+tests/architecture/test_proof_control.py:370: AssertionError
+__________ test_sqlite_current_and_historical_paths_partition_exactly __________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-5/test_sqlite_current_and_histor0')
+
+    def test_sqlite_current_and_historical_paths_partition_exactly(tmp_path):
+        api = _controls()
+        root = _copy_candidate(tmp_path)
+>       assert len(list((root / "tests/product").rglob("test_*.py"))) == 93
+E       AssertionError: assert 97 == 93
+E        +  where 97 = len([PosixPath('/tmp/pytest-of-root/pytest-5/test_sqlite_current_and_histor0/tests/product/raw_signal/test_u06_a00_composi...est-of-root/pytest-5/test_sqlite_current_and_histor0/tests/product/raw_signal/test_u05_postgresql_durability.py'), ...])
+E        +    where [PosixPath('/tmp/pytest-of-root/pytest-5/test_sqlite_current_and_histor0/tests/product/raw_signal/test_u06_a00_composi...est-of-root/pytest-5/test_sqlite_current_and_histor0/tests/product/raw_signal/test_u05_postgresql_durability.py'), ...] = list(<generator object Path.rglob at 0x7fb213c3fef0>)
+E        +      where <generator object Path.rglob at 0x7fb213c3fef0> = rglob('test_*.py')
+E        +        where rglob = (PosixPath('/tmp/pytest-of-root/pytest-5/test_sqlite_current_and_histor0') / 'tests/product').rglob
+
+tests/architecture/test_proof_control.py:377: AssertionError
+________________ test_generation_failure_and_revocation[cycle] _________________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-5/test_generation_failure_and_re0')
+mutation = 'cycle'
+
+    @pytest.mark.parametrize(
+        "mutation",
+        ["cycle", "missing_predecessor", "wrong_target", "empty_review", "support", "revocation"],
+    )
+    def test_generation_failure_and_revocation(tmp_path, mutation):
+        api = _controls()
+        root = _copy_candidate(tmp_path)
+        entry, _, record, name = _control_generation(root)
+>       assert api.load_product_proof_claim(root, entry["claim_id"]).state == "READY_FOR_PROOF"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/architecture/test_proof_control.py:422: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tools/product_proof_claims.py:481: in load_product_proof_claim
+    generation_hash, files = _generation(root, entry, contract, brief_hash, target_id)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/tmp/pytest-of-root/pytest-5/test_generation_failure_and_re0')
+entry = {'admission_path': 'config/product_proof/raw_signal_sqlite/admission.json', 'binding_path': 'implementation/authority/...h_sqlite', 'contract_path': 'handoff/foundation_implementation/authority/M00_SQLITE_PROOF_CONTRACT_PROPOSED.json', ...}
+contract = {'architecture_proof_axis': 'architecture_kernel', 'claim_id': 'raw_signal_occurrence_truth_sqlite', 'execution_policy...blic owner, provisions missing store, imports broad private helpers or composes new unauthorised owner']}}, ...}], ...}
+brief_hash = '3ad4cdc9ffba4cf91ff9a27edf1dd3b1a9824a421514bb4b5a2cc1b9c504f233'
+target_id = 'M00'
+
+    def _generation(
+        root: Path,
+        entry: dict[str, Any],
+        contract: dict[str, Any],
+        brief_hash: str,
+        target_id: str | None,
+    ) -> tuple[str | None, dict[str, str]]:
+        pointer_path = safe_path(root, entry["admission_path"])
+        if not pointer_path.exists():
+            return None, {}
+        pointer = read_json(pointer_path)
+        _schema(root, pointer, "product_proof_admission.schema.json")
+        if set(pointer) != {"schema_version", "current_generation"}:
+            raise ValueError("invalid admission pointer shape")
+        reference = pointer["current_generation"]
+        if reference is None:
+            return None, {}
+        _admission_history(root, entry, pointer)
+        prefix = str(PurePosixPath(entry["admission_path"]).parent / "generations") + "/"
+        seen: set[str] = set()
+        current: dict[str, Any] | None = None
+        expected_number = None
+        while reference is not None:
+            name = reference["path"]
+            if name in seen or not name.startswith(prefix):
+                raise ValueError("generation path/cycle/cross-claim mismatch")
+            path = safe_path(root, name)
+            if sha256(path) != reference["sha256"]:
+                raise ValueError("generation pointer hash mismatch")
+            seen.add(name)
+            record = read_json(path)
+            _schema(root, record, "product_proof_admission.schema.json")
+            if "generation" not in record or record["generation"] < 1:
+                raise ValueError("invalid generation number")
+            if expected_number is not None and record["generation"] != expected_number:
+                raise ValueError("generation predecessor number mismatch")
+            if record["claim_id"] != entry["claim_id"]:
+                raise ValueError("generation claim mismatch")
+            if record["generation"] == 1 and record["previous_generation"] is not None:
+                raise ValueError("generation1 must have no predecessor")
+            if record["generation"] > 1 and record["previous_generation"] is None:
+                raise ValueError("generation predecessor missing")
+            if current is None:
+                current = record
+            expected_number = record["generation"] - 1
+            reference = record["previous_generation"]
+        assert current is not None
+        retained = {path.relative_to(root).as_posix() for path in (root / prefix).glob("*.json")}
+        if retained != seen:
+>           raise ValueError("generation rollback/fork or unreferenced retained generation")
+E           ValueError: generation rollback/fork or unreferenced retained generation
+
+tools/product_proof_claims.py:372: ValueError
+_________ test_generation_failure_and_revocation[missing_predecessor] __________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-5/test_generation_failure_and_re1')
+mutation = 'missing_predecessor'
+
+    @pytest.mark.parametrize(
+        "mutation",
+        ["cycle", "missing_predecessor", "wrong_target", "empty_review", "support", "revocation"],
+    )
+    def test_generation_failure_and_revocation(tmp_path, mutation):
+        api = _controls()
+        root = _copy_candidate(tmp_path)
+        entry, _, record, name = _control_generation(root)
+>       assert api.load_product_proof_claim(root, entry["claim_id"]).state == "READY_FOR_PROOF"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/architecture/test_proof_control.py:422: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tools/product_proof_claims.py:481: in load_product_proof_claim
+    generation_hash, files = _generation(root, entry, contract, brief_hash, target_id)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/tmp/pytest-of-root/pytest-5/test_generation_failure_and_re1')
+entry = {'admission_path': 'config/product_proof/raw_signal_sqlite/admission.json', 'binding_path': 'implementation/authority/...h_sqlite', 'contract_path': 'handoff/foundation_implementation/authority/M00_SQLITE_PROOF_CONTRACT_PROPOSED.json', ...}
+contract = {'architecture_proof_axis': 'architecture_kernel', 'claim_id': 'raw_signal_occurrence_truth_sqlite', 'execution_policy...blic owner, provisions missing store, imports broad private helpers or composes new unauthorised owner']}}, ...}], ...}
+brief_hash = '3ad4cdc9ffba4cf91ff9a27edf1dd3b1a9824a421514bb4b5a2cc1b9c504f233'
+target_id = 'M00'
+
+    def _generation(
+        root: Path,
+        entry: dict[str, Any],
+        contract: dict[str, Any],
+        brief_hash: str,
+        target_id: str | None,
+    ) -> tuple[str | None, dict[str, str]]:
+        pointer_path = safe_path(root, entry["admission_path"])
+        if not pointer_path.exists():
+            return None, {}
+        pointer = read_json(pointer_path)
+        _schema(root, pointer, "product_proof_admission.schema.json")
+        if set(pointer) != {"schema_version", "current_generation"}:
+            raise ValueError("invalid admission pointer shape")
+        reference = pointer["current_generation"]
+        if reference is None:
+            return None, {}
+        _admission_history(root, entry, pointer)
+        prefix = str(PurePosixPath(entry["admission_path"]).parent / "generations") + "/"
+        seen: set[str] = set()
+        current: dict[str, Any] | None = None
+        expected_number = None
+        while reference is not None:
+            name = reference["path"]
+            if name in seen or not name.startswith(prefix):
+                raise ValueError("generation path/cycle/cross-claim mismatch")
+            path = safe_path(root, name)
+            if sha256(path) != reference["sha256"]:
+                raise ValueError("generation pointer hash mismatch")
+            seen.add(name)
+            record = read_json(path)
+            _schema(root, record, "product_proof_admission.schema.json")
+            if "generation" not in record or record["generation"] < 1:
+                raise ValueError("invalid generation number")
+            if expected_number is not None and record["generation"] != expected_number:
+                raise ValueError("generation predecessor number mismatch")
+            if record["claim_id"] != entry["claim_id"]:
+                raise ValueError("generation claim mismatch")
+            if record["generation"] == 1 and record["previous_generation"] is not None:
+                raise ValueError("generation1 must have no predecessor")
+            if record["generation"] > 1 and record["previous_generation"] is None:
+                raise ValueError("generation predecessor missing")
+            if current is None:
+                current = record
+            expected_number = record["generation"] - 1
+            reference = record["previous_generation"]
+        assert current is not None
+        retained = {path.relative_to(root).as_posix() for path in (root / prefix).glob("*.json")}
+        if retained != seen:
+>           raise ValueError("generation rollback/fork or unreferenced retained generation")
+E           ValueError: generation rollback/fork or unreferenced retained generation
+
+tools/product_proof_claims.py:372: ValueError
+_____________ test_generation_failure_and_revocation[wrong_target] _____________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-5/test_generation_failure_and_re2')
+mutation = 'wrong_target'
+
+    @pytest.mark.parametrize(
+        "mutation",
+        ["cycle", "missing_predecessor", "wrong_target", "empty_review", "support", "revocation"],
+    )
+    def test_generation_failure_and_revocation(tmp_path, mutation):
+        api = _controls()
+        root = _copy_candidate(tmp_path)
+        entry, _, record, name = _control_generation(root)
+>       assert api.load_product_proof_claim(root, entry["claim_id"]).state == "READY_FOR_PROOF"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/architecture/test_proof_control.py:422: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tools/product_proof_claims.py:481: in load_product_proof_claim
+    generation_hash, files = _generation(root, entry, contract, brief_hash, target_id)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/tmp/pytest-of-root/pytest-5/test_generation_failure_and_re2')
+entry = {'admission_path': 'config/product_proof/raw_signal_sqlite/admission.json', 'binding_path': 'implementation/authority/...h_sqlite', 'contract_path': 'handoff/foundation_implementation/authority/M00_SQLITE_PROOF_CONTRACT_PROPOSED.json', ...}
+contract = {'architecture_proof_axis': 'architecture_kernel', 'claim_id': 'raw_signal_occurrence_truth_sqlite', 'execution_policy...blic owner, provisions missing store, imports broad private helpers or composes new unauthorised owner']}}, ...}], ...}
+brief_hash = '3ad4cdc9ffba4cf91ff9a27edf1dd3b1a9824a421514bb4b5a2cc1b9c504f233'
+target_id = 'M00'
+
+    def _generation(
+        root: Path,
+        entry: dict[str, Any],
+        contract: dict[str, Any],
+        brief_hash: str,
+        target_id: str | None,
+    ) -> tuple[str | None, dict[str, str]]:
+        pointer_path = safe_path(root, entry["admission_path"])
+        if not pointer_path.exists():
+            return None, {}
+        pointer = read_json(pointer_path)
+        _schema(root, pointer, "product_proof_admission.schema.json")
+        if set(pointer) != {"schema_version", "current_generation"}:
+            raise ValueError("invalid admission pointer shape")
+        reference = pointer["current_generation"]
+        if reference is None:
+            return None, {}
+        _admission_history(root, entry, pointer)
+        prefix = str(PurePosixPath(entry["admission_path"]).parent / "generations") + "/"
+        seen: set[str] = set()
+        current: dict[str, Any] | None = None
+        expected_number = None
+        while reference is not None:
+            name = reference["path"]
+            if name in seen or not name.startswith(prefix):
+                raise ValueError("generation path/cycle/cross-claim mismatch")
+            path = safe_path(root, name)
+            if sha256(path) != reference["sha256"]:
+                raise ValueError("generation pointer hash mismatch")
+            seen.add(name)
+            record = read_json(path)
+            _schema(root, record, "product_proof_admission.schema.json")
+            if "generation" not in record or record["generation"] < 1:
+                raise ValueError("invalid generation number")
+            if expected_number is not None and record["generation"] != expected_number:
+                raise ValueError("generation predecessor number mismatch")
+            if record["claim_id"] != entry["claim_id"]:
+                raise ValueError("generation claim mismatch")
+            if record["generation"] == 1 and record["previous_generation"] is not None:
+                raise ValueError("generation1 must have no predecessor")
+            if record["generation"] > 1 and record["previous_generation"] is None:
+                raise ValueError("generation predecessor missing")
+            if current is None:
+                current = record
+            expected_number = record["generation"] - 1
+            reference = record["previous_generation"]
+        assert current is not None
+        retained = {path.relative_to(root).as_posix() for path in (root / prefix).glob("*.json")}
+        if retained != seen:
+>           raise ValueError("generation rollback/fork or unreferenced retained generation")
+E           ValueError: generation rollback/fork or unreferenced retained generation
+
+tools/product_proof_claims.py:372: ValueError
+_____________ test_generation_failure_and_revocation[empty_review] _____________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-5/test_generation_failure_and_re3')
+mutation = 'empty_review'
+
+    @pytest.mark.parametrize(
+        "mutation",
+        ["cycle", "missing_predecessor", "wrong_target", "empty_review", "support", "revocation"],
+    )
+    def test_generation_failure_and_revocation(tmp_path, mutation):
+        api = _controls()
+        root = _copy_candidate(tmp_path)
+        entry, _, record, name = _control_generation(root)
+>       assert api.load_product_proof_claim(root, entry["claim_id"]).state == "READY_FOR_PROOF"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/architecture/test_proof_control.py:422: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tools/product_proof_claims.py:481: in load_product_proof_claim
+    generation_hash, files = _generation(root, entry, contract, brief_hash, target_id)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/tmp/pytest-of-root/pytest-5/test_generation_failure_and_re3')
+entry = {'admission_path': 'config/product_proof/raw_signal_sqlite/admission.json', 'binding_path': 'implementation/authority/...h_sqlite', 'contract_path': 'handoff/foundation_implementation/authority/M00_SQLITE_PROOF_CONTRACT_PROPOSED.json', ...}
+contract = {'architecture_proof_axis': 'architecture_kernel', 'claim_id': 'raw_signal_occurrence_truth_sqlite', 'execution_policy...blic owner, provisions missing store, imports broad private helpers or composes new unauthorised owner']}}, ...}], ...}
+brief_hash = '3ad4cdc9ffba4cf91ff9a27edf1dd3b1a9824a421514bb4b5a2cc1b9c504f233'
+target_id = 'M00'
+
+    def _generation(
+        root: Path,
+        entry: dict[str, Any],
+        contract: dict[str, Any],
+        brief_hash: str,
+        target_id: str | None,
+    ) -> tuple[str | None, dict[str, str]]:
+        pointer_path = safe_path(root, entry["admission_path"])
+        if not pointer_path.exists():
+            return None, {}
+        pointer = read_json(pointer_path)
+        _schema(root, pointer, "product_proof_admission.schema.json")
+        if set(pointer) != {"schema_version", "current_generation"}:
+            raise ValueError("invalid admission pointer shape")
+        reference = pointer["current_generation"]
+        if reference is None:
+            return None, {}
+        _admission_history(root, entry, pointer)
+        prefix = str(PurePosixPath(entry["admission_path"]).parent / "generations") + "/"
+        seen: set[str] = set()
+        current: dict[str, Any] | None = None
+        expected_number = None
+        while reference is not None:
+            name = reference["path"]
+            if name in seen or not name.startswith(prefix):
+                raise ValueError("generation path/cycle/cross-claim mismatch")
+            path = safe_path(root, name)
+            if sha256(path) != reference["sha256"]:
+                raise ValueError("generation pointer hash mismatch")
+            seen.add(name)
+            record = read_json(path)
+            _schema(root, record, "product_proof_admission.schema.json")
+            if "generation" not in record or record["generation"] < 1:
+                raise ValueError("invalid generation number")
+            if expected_number is not None and record["generation"] != expected_number:
+                raise ValueError("generation predecessor number mismatch")
+            if record["claim_id"] != entry["claim_id"]:
+                raise ValueError("generation claim mismatch")
+            if record["generation"] == 1 and record["previous_generation"] is not None:
+                raise ValueError("generation1 must have no predecessor")
+            if record["generation"] > 1 and record["previous_generation"] is None:
+                raise ValueError("generation predecessor missing")
+            if current is None:
+                current = record
+            expected_number = record["generation"] - 1
+            reference = record["previous_generation"]
+        assert current is not None
+        retained = {path.relative_to(root).as_posix() for path in (root / prefix).glob("*.json")}
+        if retained != seen:
+>           raise ValueError("generation rollback/fork or unreferenced retained generation")
+E           ValueError: generation rollback/fork or unreferenced retained generation
+
+tools/product_proof_claims.py:372: ValueError
+_______________ test_generation_failure_and_revocation[support] ________________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-5/test_generation_failure_and_re4')
+mutation = 'support'
+
+    @pytest.mark.parametrize(
+        "mutation",
+        ["cycle", "missing_predecessor", "wrong_target", "empty_review", "support", "revocation"],
+    )
+    def test_generation_failure_and_revocation(tmp_path, mutation):
+        api = _controls()
+        root = _copy_candidate(tmp_path)
+        entry, _, record, name = _control_generation(root)
+>       assert api.load_product_proof_claim(root, entry["claim_id"]).state == "READY_FOR_PROOF"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/architecture/test_proof_control.py:422: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tools/product_proof_claims.py:481: in load_product_proof_claim
+    generation_hash, files = _generation(root, entry, contract, brief_hash, target_id)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/tmp/pytest-of-root/pytest-5/test_generation_failure_and_re4')
+entry = {'admission_path': 'config/product_proof/raw_signal_sqlite/admission.json', 'binding_path': 'implementation/authority/...h_sqlite', 'contract_path': 'handoff/foundation_implementation/authority/M00_SQLITE_PROOF_CONTRACT_PROPOSED.json', ...}
+contract = {'architecture_proof_axis': 'architecture_kernel', 'claim_id': 'raw_signal_occurrence_truth_sqlite', 'execution_policy...blic owner, provisions missing store, imports broad private helpers or composes new unauthorised owner']}}, ...}], ...}
+brief_hash = '3ad4cdc9ffba4cf91ff9a27edf1dd3b1a9824a421514bb4b5a2cc1b9c504f233'
+target_id = 'M00'
+
+    def _generation(
+        root: Path,
+        entry: dict[str, Any],
+        contract: dict[str, Any],
+        brief_hash: str,
+        target_id: str | None,
+    ) -> tuple[str | None, dict[str, str]]:
+        pointer_path = safe_path(root, entry["admission_path"])
+        if not pointer_path.exists():
+            return None, {}
+        pointer = read_json(pointer_path)
+        _schema(root, pointer, "product_proof_admission.schema.json")
+        if set(pointer) != {"schema_version", "current_generation"}:
+            raise ValueError("invalid admission pointer shape")
+        reference = pointer["current_generation"]
+        if reference is None:
+            return None, {}
+        _admission_history(root, entry, pointer)
+        prefix = str(PurePosixPath(entry["admission_path"]).parent / "generations") + "/"
+        seen: set[str] = set()
+        current: dict[str, Any] | None = None
+        expected_number = None
+        while reference is not None:
+            name = reference["path"]
+            if name in seen or not name.startswith(prefix):
+                raise ValueError("generation path/cycle/cross-claim mismatch")
+            path = safe_path(root, name)
+            if sha256(path) != reference["sha256"]:
+                raise ValueError("generation pointer hash mismatch")
+            seen.add(name)
+            record = read_json(path)
+            _schema(root, record, "product_proof_admission.schema.json")
+            if "generation" not in record or record["generation"] < 1:
+                raise ValueError("invalid generation number")
+            if expected_number is not None and record["generation"] != expected_number:
+                raise ValueError("generation predecessor number mismatch")
+            if record["claim_id"] != entry["claim_id"]:
+                raise ValueError("generation claim mismatch")
+            if record["generation"] == 1 and record["previous_generation"] is not None:
+                raise ValueError("generation1 must have no predecessor")
+            if record["generation"] > 1 and record["previous_generation"] is None:
+                raise ValueError("generation predecessor missing")
+            if current is None:
+                current = record
+            expected_number = record["generation"] - 1
+            reference = record["previous_generation"]
+        assert current is not None
+        retained = {path.relative_to(root).as_posix() for path in (root / prefix).glob("*.json")}
+        if retained != seen:
+>           raise ValueError("generation rollback/fork or unreferenced retained generation")
+E           ValueError: generation rollback/fork or unreferenced retained generation
+
+tools/product_proof_claims.py:372: ValueError
+______________ test_generation_failure_and_revocation[revocation] ______________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-5/test_generation_failure_and_re5')
+mutation = 'revocation'
+
+    @pytest.mark.parametrize(
+        "mutation",
+        ["cycle", "missing_predecessor", "wrong_target", "empty_review", "support", "revocation"],
+    )
+    def test_generation_failure_and_revocation(tmp_path, mutation):
+        api = _controls()
+        root = _copy_candidate(tmp_path)
+        entry, _, record, name = _control_generation(root)
+>       assert api.load_product_proof_claim(root, entry["claim_id"]).state == "READY_FOR_PROOF"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/architecture/test_proof_control.py:422: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tools/product_proof_claims.py:481: in load_product_proof_claim
+    generation_hash, files = _generation(root, entry, contract, brief_hash, target_id)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/tmp/pytest-of-root/pytest-5/test_generation_failure_and_re5')
+entry = {'admission_path': 'config/product_proof/raw_signal_sqlite/admission.json', 'binding_path': 'implementation/authority/...h_sqlite', 'contract_path': 'handoff/foundation_implementation/authority/M00_SQLITE_PROOF_CONTRACT_PROPOSED.json', ...}
+contract = {'architecture_proof_axis': 'architecture_kernel', 'claim_id': 'raw_signal_occurrence_truth_sqlite', 'execution_policy...blic owner, provisions missing store, imports broad private helpers or composes new unauthorised owner']}}, ...}], ...}
+brief_hash = '3ad4cdc9ffba4cf91ff9a27edf1dd3b1a9824a421514bb4b5a2cc1b9c504f233'
+target_id = 'M00'
+
+    def _generation(
+        root: Path,
+        entry: dict[str, Any],
+        contract: dict[str, Any],
+        brief_hash: str,
+        target_id: str | None,
+    ) -> tuple[str | None, dict[str, str]]:
+        pointer_path = safe_path(root, entry["admission_path"])
+        if not pointer_path.exists():
+            return None, {}
+        pointer = read_json(pointer_path)
+        _schema(root, pointer, "product_proof_admission.schema.json")
+        if set(pointer) != {"schema_version", "current_generation"}:
+            raise ValueError("invalid admission pointer shape")
+        reference = pointer["current_generation"]
+        if reference is None:
+            return None, {}
+        _admission_history(root, entry, pointer)
+        prefix = str(PurePosixPath(entry["admission_path"]).parent / "generations") + "/"
+        seen: set[str] = set()
+        current: dict[str, Any] | None = None
+        expected_number = None
+        while reference is not None:
+            name = reference["path"]
+            if name in seen or not name.startswith(prefix):
+                raise ValueError("generation path/cycle/cross-claim mismatch")
+            path = safe_path(root, name)
+            if sha256(path) != reference["sha256"]:
+                raise ValueError("generation pointer hash mismatch")
+            seen.add(name)
+            record = read_json(path)
+            _schema(root, record, "product_proof_admission.schema.json")
+            if "generation" not in record or record["generation"] < 1:
+                raise ValueError("invalid generation number")
+            if expected_number is not None and record["generation"] != expected_number:
+                raise ValueError("generation predecessor number mismatch")
+            if record["claim_id"] != entry["claim_id"]:
+                raise ValueError("generation claim mismatch")
+            if record["generation"] == 1 and record["previous_generation"] is not None:
+                raise ValueError("generation1 must have no predecessor")
+            if record["generation"] > 1 and record["previous_generation"] is None:
+                raise ValueError("generation predecessor missing")
+            if current is None:
+                current = record
+            expected_number = record["generation"] - 1
+            reference = record["previous_generation"]
+        assert current is not None
+        retained = {path.relative_to(root).as_posix() for path in (root / prefix).glob("*.json")}
+        if retained != seen:
+>           raise ValueError("generation rollback/fork or unreferenced retained generation")
+E           ValueError: generation rollback/fork or unreferenced retained generation
+
+tools/product_proof_claims.py:372: ValueError
+________________ test_mutation_during_observed_run_is_rejected _________________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-5/test_mutation_during_observed_0')
+
+    def test_mutation_during_observed_run_is_rejected(tmp_path):
+        _controls()
+        root = _copy_candidate(tmp_path)
+        _control_generation(
+            root,
+            body=(
+                "__import__('pathlib').Path('config/product_proof/claims.json').write_text('mutated')"
+            ),
+        )
+        result = _run_control_probe(root)
+>       assert result.returncode == 6, result.stdout + result.stderr
+E       AssertionError: FAIL: generation rollback/fork or unreferenced retained generation
+E         
+E       assert 1 == 6
+E        +  where 1 = CompletedProcess(args=['/workspace/scratch/d549b6d808a9/g51-dev/bin/python', '/tmp/pytest-of-root/pytest-5/test_mutati...roof_gate.py'], returncode=1, stdout='FAIL: generation rollback/fork or unreferenced retained generation\n', stderr='').returncode
+
+tests/architecture/test_proof_control.py:458: AssertionError
+___ test_revoked_generation_requires_fresh_admission[reinstate_uncommitted] ____
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-5/test_revoked_generation_requir0')
+mode = 'reinstate_uncommitted'
+
+    @pytest.mark.parametrize("mode", ["reinstate_uncommitted", "reinstate_committed", "new_generation"])
+    def test_revoked_generation_requires_fresh_admission(tmp_path, mode):
+        api = _controls()
+        root = _copy_candidate(tmp_path)
+        entry, _, record, _ = _control_generation(root)
+>       assert _run_control_probe(root).returncode == 0
+E       AssertionError: assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['/workspace/scratch/d549b6d808a9/g51-dev/bin/python', '/tmp/pytest-of-root/pytest-5/test_revoke...roof_gate.py'], returncode=1, stdout='FAIL: generation rollback/fork or unreferenced retained generation\n', stderr='').returncode
+E        +    where CompletedProcess(args=['/workspace/scratch/d549b6d808a9/g51-dev/bin/python', '/tmp/pytest-of-root/pytest-5/test_revoke...roof_gate.py'], returncode=1, stdout='FAIL: generation rollback/fork or unreferenced retained generation\n', stderr='') = _run_control_probe(PosixPath('/tmp/pytest-of-root/pytest-5/test_revoked_generation_requir0'))
+
+tests/architecture/test_proof_control.py:466: AssertionError
+____ test_revoked_generation_requires_fresh_admission[reinstate_committed] _____
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-5/test_revoked_generation_requir1')
+mode = 'reinstate_committed'
+
+    @pytest.mark.parametrize("mode", ["reinstate_uncommitted", "reinstate_committed", "new_generation"])
+    def test_revoked_generation_requires_fresh_admission(tmp_path, mode):
+        api = _controls()
+        root = _copy_candidate(tmp_path)
+        entry, _, record, _ = _control_generation(root)
+>       assert _run_control_probe(root).returncode == 0
+E       AssertionError: assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['/workspace/scratch/d549b6d808a9/g51-dev/bin/python', '/tmp/pytest-of-root/pytest-5/test_revoke...roof_gate.py'], returncode=1, stdout='FAIL: generation rollback/fork or unreferenced retained generation\n', stderr='').returncode
+E        +    where CompletedProcess(args=['/workspace/scratch/d549b6d808a9/g51-dev/bin/python', '/tmp/pytest-of-root/pytest-5/test_revoke...roof_gate.py'], returncode=1, stdout='FAIL: generation rollback/fork or unreferenced retained generation\n', stderr='') = _run_control_probe(PosixPath('/tmp/pytest-of-root/pytest-5/test_revoked_generation_requir1'))
+
+tests/architecture/test_proof_control.py:466: AssertionError
+_______ test_revoked_generation_requires_fresh_admission[new_generation] _______
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-5/test_revoked_generation_requir2')
+mode = 'new_generation'
+
+    @pytest.mark.parametrize("mode", ["reinstate_uncommitted", "reinstate_committed", "new_generation"])
+    def test_revoked_generation_requires_fresh_admission(tmp_path, mode):
+        api = _controls()
+        root = _copy_candidate(tmp_path)
+        entry, _, record, _ = _control_generation(root)
+>       assert _run_control_probe(root).returncode == 0
+E       AssertionError: assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['/workspace/scratch/d549b6d808a9/g51-dev/bin/python', '/tmp/pytest-of-root/pytest-5/test_revoke...roof_gate.py'], returncode=1, stdout='FAIL: generation rollback/fork or unreferenced retained generation\n', stderr='').returncode
+E        +    where CompletedProcess(args=['/workspace/scratch/d549b6d808a9/g51-dev/bin/python', '/tmp/pytest-of-root/pytest-5/test_revoke...roof_gate.py'], returncode=1, stdout='FAIL: generation rollback/fork or unreferenced retained generation\n', stderr='') = _run_control_probe(PosixPath('/tmp/pytest-of-root/pytest-5/test_revoked_generation_requir2'))
+
+tests/architecture/test_proof_control.py:466: AssertionError
+=========================== short test summary info ============================
+FAILED tests/architecture/test_proof_control.py::test_pending_authority_target_and_empty_proof_are_not_success
+FAILED tests/architecture/test_proof_control.py::test_target_status_does_not_make_red_circular
+FAILED tests/architecture/test_proof_control.py::test_proof_generation_hash_and_supersession
+FAILED tests/architecture/test_proof_control.py::test_aggregate_collects_all_required_proof
+FAILED tests/architecture/test_proof_control.py::test_governed_mutation_and_dirty_start_fail_closed
+FAILED tests/architecture/test_proof_control.py::test_historical_backend_is_accounted_but_not_executable
+FAILED tests/architecture/test_proof_control.py::test_sqlite_default_and_m00_regression_are_explicit
+FAILED tests/architecture/test_proof_control.py::test_sqlite_current_and_historical_paths_partition_exactly
+FAILED tests/architecture/test_proof_control.py::test_generation_failure_and_revocation[cycle]
+FAILED tests/architecture/test_proof_control.py::test_generation_failure_and_revocation[missing_predecessor]
+FAILED tests/architecture/test_proof_control.py::test_generation_failure_and_revocation[wrong_target]
+FAILED tests/architecture/test_proof_control.py::test_generation_failure_and_revocation[empty_review]
+FAILED tests/architecture/test_proof_control.py::test_generation_failure_and_revocation[support]
+FAILED tests/architecture/test_proof_control.py::test_generation_failure_and_revocation[revocation]
+FAILED tests/architecture/test_proof_control.py::test_mutation_during_observed_run_is_rejected
+FAILED tests/architecture/test_proof_control.py::test_revoked_generation_requires_fresh_admission[reinstate_uncommitted]
+FAILED tests/architecture/test_proof_control.py::test_revoked_generation_requires_fresh_admission[reinstate_committed]
+FAILED tests/architecture/test_proof_control.py::test_revoked_generation_requires_fresh_admission[new_generation]
+======================== 18 failed, 23 passed in 33.09s ========================

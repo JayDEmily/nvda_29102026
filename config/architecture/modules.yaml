@@ -34,9 +34,11 @@ modules:
     state_writer_boundary: M00-owned command/service boundary through the M00 persistence port.
     state_reader_boundaries:
       - M00 referential-read facet exposed to A00.
+      - Existing typed raw-value/history public projection declared for bootstrap M02 neutral_market_measurement_truth; this declaration grants no M02 runtime composition or physical foundation proof admission.
       - Read-only typed raw-value/history projection exposed to M01 through the M00 public seam; it preserves exact Rxxx-to-native-field mapping/version, native value/units, source occurrence identity, temporal/receipt ordering and relevant subject/revision metadata and performs no Dxxx calculation, aggregation, interpolation or semantic rescaling.
     persistence_mechanisms:
       - Direct Psycopg 3.3.4 PostgreSQL adapter as a non-owning technical mechanism.
+      - Owner-local SQLite file and stdlib adapter under accepted version3 trusted-application profile; conforming public-seam separation, not hostile-code or database-role isolation.
     prohibited_state_writers:
       - A00
       - PostgreSQL/SQL schema/driver/adapter as semantic owners
@@ -95,6 +97,48 @@ modules:
       - provider/network adapters
     replay_obligations:
       - Deterministic retries are idempotent for identical logical identity/inputs/versions/time; material input or version changes create append-only successor occurrences and historical Derived Signal truth is not overwritten.
+    predecessors: []
+    successors: []
+  - id: M02
+    name: neutral_market_measurement_truth
+    status: bootstrap
+    description: Accepted neutral measurement boundary declared non-composable for later proof-first D011 work; no foundation implementation or physical proof generation exists.
+    semantic_responsibility: Own strategy-independent neutral market measurement meaning and immutable definition/configuration/result truth under the accepted exact version3 controlled D011 contract; only that pilot is commissioned and no calculation capability is claimed by this declaration.
+    inputs:
+      - Existing typed M00 raw-value/history projection and exact immutable raw projection mappings through the M00 public seam only.
+      - Exact controlled D011 definition, parameter, selection and unit versions supplied by accepted version3.
+    outputs:
+      - Future controlled D011 scalar-Decimal occurrences and exact typed lineage/readback after G5.2 proof and implementation; none implemented at this checkpoint.
+    permitted_dependencies:
+      - M00
+    package: nvda_desk.market_measurement_truth
+    public_seam: nvda_desk.market_measurement_truth.api
+    exclusions:
+      - Runtime composition while bootstrap; no A00 edge to this owner.
+      - Other125 foundation identities and all83 downstream outputs or peer/private strategy chains.
+      - Native IBKR mappings, acquisition, live providers, accounts, orders and external effects.
+      - M01 private imports, direct cross-owner SQL, migration, retirement, populated-state or full126 acceptance.
+      - Hostile-code/database-role isolation, replay/SLA/performance/retention/RTO/RPO guarantees.
+    state_ownership: Own immutable definitions, controlled configuration snapshots, D011 occurrence identities and full lineage in a separate owner-local store; M00 remains raw semantic owner and M01 retains all original state/attribution.
+    time_ownership: Calculation time, effective as-of and knowledge cutoff for controlled results; preserve M00 source/receipt distinctions and invent no absent event time.
+    side_effects:
+      - No runtime effect while bootstrap; later own-command append only after acknowledged own-store commit under admitted proof.
+    component_forms:
+      - contract
+      - schema
+      - service
+      - repository
+      - configuration
+      - adapter
+    state_writer_boundary: Future typed MeasurementOwnerV1.materialise and immutable registration under accepted version3; no implemented writer yet.
+    state_reader_boundaries:
+      - Future typed MeasurementReadsV1 exact occurrence/history/definition/configuration facets; no implemented reader yet.
+    persistence_mechanisms:
+      - Future explicit SQLiteStorageV1 and SQLiteReadStorageV1 in a separate owner-local file; MemoryStorageV1 is component proof only and never fallback.
+    prohibited_state_writers:
+      - A00, M00, M01, peers, readers and storage mechanisms as semantic owners.
+    replay_obligations:
+      - Future logical retries preserve first committed identity/time; material inputs/versions append; exact immutable typed readback, with no authoritative replay or migration capability.
     predecessors: []
     successors: []
 retired_ids: []

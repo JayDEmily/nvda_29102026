@@ -1,5 +1,15 @@
 # NVDA V2 — ACTIVE successor ExecPlan: Gate 5 execution
 
+## Current checkpoint — G5.1 M00 SQLite proof and bootstrap candidate
+
+Generation2 of `raw_signal_occurrence_truth_sqlite` is independently adequacy-reviewed and admitted, SHA256 `21268cabed8c70d2c7b62a0a02a34cc571d9e0f1c2bf0d7149acc0af27a5cb9e`; generation1 and its failure/history remain immutable. Intended missing-capability RED was committed in77715cb before bounded M00/A00 behaviour. Actual strict product aggregate at37e3cec exits0 with23passing tests; retained M00 U01–U04 semantic regression passes416tests. Full-source/control mypy passes28files; scoped changed-source/proof lint passes. Full-tree lint retains two inherited M01 E501 findings, which are not repaired or represented as green.
+
+Kernel candidate resolution returned M02 before durable allocation. It is declared bootstrap/non-composable with the exact accepted package/seam, M00-only edge, ownership/exclusions/state roles and M00 reader metadata; there is no foundation package, physical proof generation or A00 composition edge. The minimal allocation registry uses its existing `implemented_on` field to reserve this bootstrap identity, not to assert implemented foundation behaviour.
+
+Control fixtures failed after real proof/generation/target admission exposed their assumptions about the original empty checkout. Their disposable copies now explicitly provision the pre-admission canary universe; all original falsifiers remain and an additional actual-checkout separation assertion is present. The observed18failures are retained, followed by42passing control cases. No production resolver/schema/runner/contract was weakened. Final exact-candidate architecture promotion, runtime-only construction and independent control/M00/bootstrap decision remain pending. G5.1 is IN_PROGRESS_FINAL_VERIFICATION_AND_REVIEW; G5.2 NOT_STARTED_NOT_AUTHORISED_THIS_CONTINUATION.
+
+---
+
 ## Current continuation — 19 October 2026, 15:58 Melbourne: G5.1 only
 
 Current owner instruction: “There is space available in the library now. So complete G5.1 only.” Reference: `owner-chat/20261019T155833/G5.1-only`.
