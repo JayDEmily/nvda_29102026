@@ -118,10 +118,23 @@ def test_d011_midpoint_public_exact_lineage():
 )
 def test_d011_refuses_missing_or_incompatible_projection(change):
     raw = raw_api.create_owner()
-    raw.commands.admit_raw_observation_occurrence(observation("bid", **change))
+    # The mapping supplies projected units; the optional observation header is
+    # not the foundation's units carrier. Challenge the returned public field.
+    unit_change = change == {"native_units": "shares"}
+    raw.commands.admit_raw_observation_occurrence(
+        observation("bid", **({} if unit_change else change))
+    )
     raw.commands.admit_raw_observation_occurrence(observation("ask"))
+
+    class Reader:
+        def list_projected_raw_history(self, rid, **kwargs):
+            page = raw.reads.list_projected_raw_history(rid, **kwargs)
+            if unit_change and rid.value == "R034":
+                return replace(page, items=(replace(page.items[0], native_units="shares"),))
+            return page
+
     f = foundation()
-    o = f.create_owner(**configuration(f, raw.reads))
+    o = f.create_owner(**configuration(f, Reader()))
     assert o.materialise(request(f)) is None
     assert (
         o.reads.list_derived_history(

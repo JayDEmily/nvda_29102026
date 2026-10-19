@@ -1,0 +1,46 @@
+...F...................                                                  [100%]
+=================================== FAILURES ===================================
+________ test_d011_refuses_missing_or_incompatible_projection[change2] _________
+
+change = {'native_units': 'shares'}
+
+    @pytest.mark.parametrize(
+        "change",
+        [
+            {"subject_instrument": "OTHER"},
+            {"source_variant": "other"},
+            {"native_units": "shares"},
+            {"source_provider": raw_api.provider_id("other")},
+            {"ingestion_sequence_scope": raw_api.ingestion_sequence_scope("other")},
+            {"source_timezone_native": "EST"},
+            {"source_timestamp_raw": "2026-10-16T00:59:58+00:00"},
+            {"revision_vintage_native": "vintage"},
+            {"value": float("nan")},
+            {"value": 100.0},
+            {"value": Decimal("Infinity")},
+            {"native_record": {"quote": {}}},
+            {"event": ASOF + timedelta(microseconds=1)},
+            {"receipt": ASOF + timedelta(microseconds=1)},
+            {"event": ASOF - timedelta(seconds=60, microseconds=1)},
+            {"event": ASOF - timedelta(seconds=11, microseconds=1)},
+            {"event": ASOF, "receipt": ASOF - timedelta(seconds=1)},
+            {"source_temporal_kind": "date_only", "source_timestamp_raw": "2026-10-16"},
+            {"source_temporal_kind": "receipt_only", "source_timestamp_raw": None},
+        ],
+    )
+    def test_d011_refuses_missing_or_incompatible_projection(change):
+        raw = raw_api.create_owner()
+        raw.commands.admit_raw_observation_occurrence(observation("bid", **change))
+        raw.commands.admit_raw_observation_occurrence(observation("ask"))
+        f = foundation()
+        o = f.create_owner(**configuration(f, raw.reads))
+>       assert o.materialise(request(f)) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(owner_object_id='M02', owner_namespace='neutral_market_measurement_truth/v1', implementation...ds=(), convention_refs=(VersionRefV1(context_id='mmt-pilot-price', version=1),), supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(owner_object_id='M02', owner_namespace='neutral_market_measurement_truth/v1', implementation...ds=(), convention_refs=(VersionRefV1(context_id='mmt-pilot-price', version=1),), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D011', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 16, 1,...k', version=1), unit_convention_ref=VersionRefV1(context_id='mmt-pilot-price', version=1), subject_instrument='NVDA'))))
+E        +    where materialise = <nvda_desk.market_measurement_truth._catalogue._Owner object at 0x7f5becde1520>.materialise
+E        +    and   CalculationRequestV1(derived_signal_id='D011', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 16, 1,...k', version=1), unit_convention_ref=VersionRefV1(context_id='mmt-pilot-price', version=1), subject_instrument='NVDA'))) = request(<module 'nvda_desk.market_measurement_truth.api' from '/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py'>)
+
+tests/product/market_measurement/test_boundary_pilot.py:125: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/market_measurement/test_boundary_pilot.py::test_d011_refuses_missing_or_incompatible_projection[change2]
+1 failed, 22 passed in 0.15s
