@@ -13,6 +13,139 @@ from nvda_desk.architecture.proof import load_and_validate_proof_state
 
 ROOT = Path(__file__).resolve().parents[2]
 
+D012_CLAIM = "neutral_market_measurement_truth_d012"
+D012_ROOT = "config/product_proof/market_measurement_d012"
+D012_BRIEF = (
+    "handoff/foundation_implementation/authority/G6_1_D012_IMPLEMENTATION_BRIEF_PROPOSED.md"
+)
+D012_CONTRACT = (
+    "handoff/foundation_implementation/authority/G6_1_D012_PROOF_CONTRACT_PROPOSED.json"
+)
+D012_BINDING = "implementation/authority/G6_1_D012_IMPLEMENTATION_AUTHORITY_BINDING.yaml"
+
+
+def _d012_descriptor():
+    return {
+        "schema_version": "1.0",
+        "claim_id": D012_CLAIM,
+        "brief_path": D012_BRIEF,
+        "binding_path": D012_BINDING,
+        "contract_path": D012_CONTRACT,
+        "physical_root": "tests/product/market_measurement_d012",
+        "admission_path": D012_ROOT + "/admission.json",
+    }
+
+
+def _d012_control_candidate(tmp_path, body="assert 7 * 6 == 42"):
+    root = _copy_candidate(tmp_path)
+    # Existing target and original pre-admission controls are independent facts.
+    for name in ("modules.yaml", "implementation_allocations.yaml", "dependency_rules.yaml"):
+        shutil.copy2(ROOT / "config/architecture" / name, root / "config/architecture" / name)
+    entry = _d012_descriptor()
+    _json_write(root / D012_ROOT / "claim.json", entry)
+    contract = json.loads((root / D012_CONTRACT).read_text())
+    rows = []
+    for family in contract["families"]:
+        path = root / family["path"]
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text("\n".join(
+            f"def {name}():\n    {body}\n" for name in family["required_test_names"]
+        ))
+        rows.append({"path": family["path"], "sha256": _sha(path)})
+    support = []
+    for name in contract["required_support_files"]:
+        path = root / name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text("# Disposable control witness, not domain proof.\n")
+        support.append({"path": name, "sha256": _sha(path)})
+    generation = {
+        "schema_version": "1.0", "claim_id": D012_CLAIM, "generation": 1,
+        "brief_sha256": _sha(root / D012_BRIEF),
+        "binding_sha256": _sha(root / D012_BINDING),
+        "contract_sha256": _sha(root / D012_CONTRACT),
+        "implementation_target_id": "M02",
+        "adequacy_review_ref": "control-fixture/d012-review",
+        "admission_authority_ref": "control-fixture/d012-admission",
+        "family_files": rows, "support_files": support, "previous_generation": None,
+    }
+    path = root / D012_ROOT / "generations/0001.json"
+    _json_write(path, generation)
+    _json_write(root / entry["admission_path"], {
+        "schema_version": "1.0", "current_generation": {
+            "path": path.relative_to(root).as_posix(), "sha256": _sha(path),
+        },
+    })
+    return root
+
+
+def test_d012_extension_resolves_without_resealing_original_claims(tmp_path):
+    api = _controls()
+    root = _d012_control_candidate(tmp_path)
+    claim = api.load_product_proof_claim(root, D012_CLAIM)
+    assert claim.state == "READY_FOR_PROOF" and claim.target_id == "M02"
+    assert claim.authority_sha256 == _sha(ROOT / D012_BRIEF)
+    assert len(claim.families) == 1 and len(claim.families[0].proof_ids) == 6
+    assert (root / "config/product_proof/claims.json").read_bytes() == (
+        ROOT / "config/product_proof/claims.json"
+    ).read_bytes()
+    for original in ("raw_signal_occurrence_truth_sqlite", "neutral_market_measurement_truth_pilot"):
+        resolved = api.load_product_proof_claim(root, original)
+        assert resolved.authority_sha256 == _sha(
+            ROOT / "handoff/foundation_implementation/authority/SQLITE_IMPLEMENTATION_BRIEF_PROPOSED.md"
+        )
+        assert resolved.state == "INCOMPLETE_NO_PHYSICAL_FAMILIES"
+
+
+@pytest.mark.parametrize("surface", [
+    "extra_key", "overlap", "wrong_claim", "wrong_target", "intents", "brief", "binding",
+    "contract", "generation_claim", "generation_target", "unowned", "missing_binding",
+])
+def test_d012_extension_corruption_rejects_even_original_claim(tmp_path, surface):
+    api = _controls()
+    root = _d012_control_candidate(tmp_path)
+    if surface in {"extra_key", "overlap", "wrong_claim"}:
+        descriptor = _d012_descriptor()
+        descriptor.update({
+            "extra_key": {"extra": True},
+            "overlap": {"physical_root": "tests/product/market_measurement"},
+            "wrong_claim": {"claim_id": "neutral_market_measurement_truth_pilot"},
+        }[surface])
+        _json_write(root / D012_ROOT / "claim.json", descriptor)
+    elif surface in {"generation_claim", "generation_target"}:
+        p = root / D012_ROOT / "generations/0001.json"
+        value = json.loads(p.read_text())
+        value["claim_id" if surface == "generation_claim" else "implementation_target_id"] = (
+            "neutral_market_measurement_truth_pilot" if surface == "generation_claim" else "M00"
+        )
+        _json_write(p, value)
+        _json_write(root / D012_ROOT / "admission.json", {
+            "schema_version": "1.0", "current_generation": {
+                "path": p.relative_to(root).as_posix(), "sha256": _sha(p),
+            },
+        })
+    elif surface == "unowned":
+        (root / "tests/product/market_measurement_d012/test_unowned.py").write_text("pass\n")
+    elif surface == "missing_binding":
+        (root / D012_BINDING).unlink()
+    elif surface in {"wrong_target", "intents"}:
+        p = root / D012_BINDING
+        p.write_text(p.read_text().replace("M02", "M00") if surface == "wrong_target" else (
+            p.read_text().replace("G01", "A00")
+        ))
+    else:
+        p = root / {"brief": D012_BRIEF, "binding": D012_BINDING, "contract": D012_CONTRACT}[surface]
+        p.write_bytes(p.read_bytes() + b"\n")
+    with pytest.raises((ValueError, OSError)):
+        api.load_product_proof_claim(root, "raw_signal_occurrence_truth_sqlite")
+
+
+def test_d012_missing_generation_is_not_ready(tmp_path):
+    root = _d012_control_candidate(tmp_path)
+    _json_write(root / D012_ROOT / "admission.json", {
+        "schema_version": "1.0", "current_generation": None,
+    })
+    assert _controls().load_product_proof_claim(root, D012_CLAIM).state == "INCOMPLETE_COVERAGE"
+
 
 def _controls():
     # An attributable missing-capability assertion, after the interpreter and
