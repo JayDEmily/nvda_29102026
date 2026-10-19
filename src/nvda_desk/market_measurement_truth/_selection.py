@@ -9,6 +9,7 @@ from decimal import Decimal
 from nvda_desk.raw_signal_occurrence_truth import api as raw_api
 
 from . import api as f
+from ._evaluation import canonical
 
 
 def eligible(
@@ -68,27 +69,63 @@ def select(
     policy: f.InputSelectionPolicyVersionV1,
     request: f.CalculationRequestV1,
 ) -> tuple[raw_api.ProjectedRawValueV1, datetime] | None:
-    page = reader.list_projected_raw_history(
-        mapping.raw_signal_catalogue_id,
-        mappings=(mapping,),
-        subject_instrument=request.subject_instrument,
-        received_at_or_before_utc=request.knowledge_cutoff_utc,
-        event_at_or_before_utc=request.as_of_utc,
-        limit=policy.history_page_size,
-        cursor=None,
-    )
-    if type(page) is not raw_api.ProjectedRawHistoryPageV1 or type(page.items) is not tuple:
-        return None
-    # Complete pagination is the following ordered G5.2 unit; a prefix cannot emit truth.
-    if page.next_cursor is not None:
-        return None
-    candidates = []
-    for item in page.items:
-        when = eligible(item, mapping, policy, request)
-        if when is not None:
+    cursor: str | None = None
+    cursors: set[str] = set()
+    seen: dict[str, bytes] = {}
+    candidates: list[tuple[raw_api.ProjectedRawValueV1, datetime]] = []
+    for _ in range(policy.history_page_limit):
+        try:
+            page = reader.list_projected_raw_history(
+                mapping.raw_signal_catalogue_id,
+                mappings=(mapping,),
+                subject_instrument=request.subject_instrument,
+                received_at_or_before_utc=request.knowledge_cutoff_utc,
+                event_at_or_before_utc=request.as_of_utc,
+                limit=policy.history_page_size,
+                cursor=cursor,
+            )
+        except (TypeError, ValueError):
+            return None
+        if (
+            type(page) is not raw_api.ProjectedRawHistoryPageV1
+            or type(page.items) is not tuple
+            or len(page.items) > policy.history_page_size
+        ):
+            return None
+        for item in page.items:
+            if type(item) is not raw_api.ProjectedRawValueV1:
+                return None
+            when = eligible(item, mapping, policy, request)
+            if when is None:
+                continue
+            content = canonical(item)
+            identity = item.observation_occurrence_id.value
+            if identity in seen:
+                if seen[identity] != content:
+                    return None
+                continue
+            seen[identity] = content
             candidates.append((item, when))
+        cursor = page.next_cursor
+        if cursor is None:
+            break
+        if (
+            type(cursor) is not str
+            or not re.fullmatch(r"[1-9][0-9]*", cursor)
+            or cursor in cursors
+            or not page.items
+        ):
+            return None
+        cursors.add(cursor)
+    else:
+        return None
     if not candidates:
         return None
-    return max(
-        candidates, key=lambda pair: (pair[1], pair[0].received_ts_utc, pair[0].ingestion_sequence)
-    )
+
+    def rank(pair: tuple[raw_api.ProjectedRawValueV1, datetime]) -> tuple[datetime, datetime, int]:
+        return pair[1], pair[0].received_ts_utc, pair[0].ingestion_sequence
+
+    selected = max(candidates, key=rank)
+    if sum(rank(pair) == rank(selected) for pair in candidates) != 1:
+        return None
+    return selected
