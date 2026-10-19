@@ -5,6 +5,7 @@ from __future__ import annotations
 from collections.abc import Callable
 from dataclasses import dataclass
 from datetime import datetime
+from decimal import Decimal
 from typing import Any
 
 from nvda_desk.architecture.registry import ArchitectureRegistry
@@ -78,7 +79,7 @@ class Application:
 
         registered_policy = commands.register_capture_scope_policy(capture_scope_policy)
         authoritative_policy_ref = make_scope_policy_ref(
-            f"{registered_policy.scope_policy_id.value}@{registered_policy.scope_policy_version}"
+            f"{registered_policy.scope_policy_id.value}@{Decimal(registered_policy.scope_policy_version)}"
         )
         if scope_policy_ref != authoritative_policy_ref:
             raise ValueError("scope_policy_ref must identify the policy accepted for this sequence")

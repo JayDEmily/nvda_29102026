@@ -1,4 +1,4 @@
-"""Lossless NVDA-NATIVE-V1 codec carried byte-for-byte from the retained backend."""
+"""Lossless NVDA-NATIVE-V1 codec preserving the retained backend's wire bytes."""
 
 from collections.abc import Mapping
 from decimal import Decimal
@@ -8,6 +8,22 @@ from typing import cast
 from .api import NativeValueV1
 
 _NATIVE_CODEC_PREFIX = b"NVDA-NATIVE-V1\x00"
+
+
+def _integer_text(value: int) -> str:
+    # Decimal(int) is exact, context-independent and has exponent zero. This
+    # preserves decimal wire bytes without changing the interpreter-wide limit.
+    return str(Decimal(value))
+
+
+def _integer_from_text(text: str) -> int:
+    digits = text[1:] if text.startswith("-") else text
+    if not digits or any(digit not in "0123456789" for digit in digits):
+        raise ValueError("invalid integer representation")
+    result = int(Decimal(text))
+    if _integer_text(result) != text:
+        raise ValueError("noncanonical integer representation")
+    return result
 
 
 def _encode_length(value: int) -> bytes:
@@ -22,7 +38,7 @@ def _encode_native_value(value: NativeValueV1) -> bytes:
     if type(value) is bool:
         return b"b\x01" if value else b"b\x00"
     if type(value) is int:
-        payload = str(value).encode("ascii")
+        payload = _integer_text(value).encode("ascii")
         return b"i" + _encode_length(len(payload)) + payload
     if type(value) is float:
         return b"f" + pack("!d", value)
@@ -99,7 +115,7 @@ class _NativeCodecReader:
                 raise ValueError("native bool codec payload is invalid")
             return raw == b"\x01"
         if tag == b"i":
-            return int(self.take(self.length()).decode("ascii"))
+            return _integer_from_text(self.take(self.length()).decode("ascii"))
         if tag == b"f":
             return unpack("!d", self.take(8))[0]
         if tag == b"d":

@@ -789,7 +789,7 @@ class _OwnerState:
 
 
 def _scope_ref_for_policy(value: CaptureScopePolicyV1) -> _ScopePolicyRef:
-    return _ScopePolicyRef(f"{value.scope_policy_id.value}@{value.scope_policy_version}")
+    return _ScopePolicyRef(f"{value.scope_policy_id.value}@{Decimal(value.scope_policy_version)}")
 
 
 _RegisterPolicy = Callable[[CaptureScopePolicyV1], CaptureScopePolicyV1]

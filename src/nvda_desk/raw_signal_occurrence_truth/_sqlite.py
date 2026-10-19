@@ -14,7 +14,12 @@ from pathlib import Path
 from typing import Any, cast
 
 from . import api
-from ._native_codec import _decode_native_record, _encode_native_record
+from ._native_codec import (
+    _decode_native_record,
+    _encode_native_record,
+    _integer_from_text,
+    _integer_text,
+)
 
 _POLICY = "rsot_capture_scope_policy_v1"
 _CAPTURE = "rsot_scheduled_capture_occurrence_v1"
@@ -115,7 +120,7 @@ def _timestamp(value: datetime) -> str:
 
 
 def _integer_key(value: int) -> bytes:
-    digits = str(abs(value))
+    digits = _integer_text(abs(value))
     if value >= 0:
         return b"\x01" + len(digits).to_bytes(8, "big") + digits.encode("ascii")
     complemented = "".join(str(9 - int(digit)) for digit in digits)
@@ -126,7 +131,7 @@ def _metadata(value: Any) -> Any:
     if value is None or type(value) is str:
         return value
     if type(value) is int:
-        return {"kind": "integer", "value": str(value)}
+        return {"kind": "integer", "value": _integer_text(value)}
     if type(value) is datetime:
         return _timestamp(value)
     if type(value) in _IDENTITY_NAMES:
@@ -164,10 +169,7 @@ def _decode_metadata(value: Any) -> Any:
         if set(value) != {"kind", "value"} or type(value["value"]) is not str:
             raise ValueError("invalid tagged M00 metadata")
         if value["kind"] == "integer":
-            number = int(value["value"])
-            if str(number) != value["value"]:
-                raise ValueError("noncanonical integer metadata")
-            return number
+            return _integer_from_text(value["value"])
         return _FACTORIES[value["kind"]](value["value"])
     if type(value) is list:
         return tuple(_decode_metadata(item) for item in value)
@@ -204,8 +206,8 @@ def _index(table: str, value: Any) -> tuple[Any, ...]:
     if table == _POLICY:
         return (
             value.scope_policy_id.value,
-            str(value.scope_policy_version),
-            f"{value.scope_policy_id.value}@{value.scope_policy_version}",
+            _integer_text(value.scope_policy_version),
+            f"{value.scope_policy_id.value}@{_integer_text(value.scope_policy_version)}",
             _timestamp(value.activation_ts_utc),
             None if value.deactivation_ts_utc is None else _timestamp(value.deactivation_ts_utc),
             value.eligibility_policy_ref.value,
@@ -222,7 +224,7 @@ def _index(table: str, value: Any) -> tuple[Any, ...]:
             value.observation_occurrence_id.value,
             _timestamp(value.received_ts_utc),
             value.ingestion_sequence_scope.value,
-            str(value.ingestion_sequence),
+            _integer_text(value.ingestion_sequence),
             _integer_key(value.ingestion_sequence),
         )
     return (
@@ -338,7 +340,8 @@ class _SQLiteTransaction:
             (
                 p
                 for p in self.__rows(_POLICY)
-                if f"{p.scope_policy_id.value}@{p.scope_policy_version}" == scope_policy_ref.value
+                if f"{p.scope_policy_id.value}@{_integer_text(p.scope_policy_version)}"
+                == scope_policy_ref.value
             ),
             None,
         )
