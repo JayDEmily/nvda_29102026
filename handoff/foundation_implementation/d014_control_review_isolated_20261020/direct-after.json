@@ -1,0 +1,11 @@
+{
+  "argv": [
+    "/tmp/nvda-g61-runtime-GBILkakx/dev/bin/python",
+    "/tmp/nvda-d014-review-babm9GDf/direct_independent.py"
+  ],
+  "cwd": "/tmp/nvda-d014-review-babm9GDf",
+  "script_sha256_before": "bfe97aead8afb2496dc0e82e9c0c3824a8bfe1c2c351220659154bad7e594984",
+  "exit": 0,
+  "script_sha256_after": "bfe97aead8afb2496dc0e82e9c0c3824a8bfe1c2c351220659154bad7e594984",
+  "log_sha256": "af16a503fc29a9799eb78b933434e7086b42bfae53dab673a7a9aa632cdf54e6"
+}

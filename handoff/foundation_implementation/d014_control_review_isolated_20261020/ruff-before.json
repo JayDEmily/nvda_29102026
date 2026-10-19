@@ -1,0 +1,13 @@
+{
+  "argv": [
+    "/tmp/nvda-g61-runtime-GBILkakx/dev/bin/python",
+    "/tmp/nvda-d014-review-babm9GDf/invoke.py",
+    "module",
+    "ruff",
+    "check",
+    "tools/product_proof_claims.py",
+    "tests/architecture/test_proof_control.py"
+  ],
+  "cwd": "/tmp/nvda-d014-review-babm9GDf/candidate",
+  "invoke_sha256": "b5310f21ec59c799deb8cbe318209a3931188d097821ff97b4535073917ba588"
+}

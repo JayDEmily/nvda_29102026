@@ -1,0 +1,200 @@
+SOURCE nvda_desk.architecture.identifiers /tmp/nvda-d014-review-babm9GDf/isolated-0/src/nvda_desk/architecture/identifiers.py 49c66359b8223432d5f96a12ff998471e138b1fcbe8ecded973657aa953818a6
+SOURCE nvda_desk.architecture.schema /tmp/nvda-d014-review-babm9GDf/isolated-0/src/nvda_desk/architecture/schema.py 1ac4afe7ed9b1a1efcd2a7f0150a1edd3cb40435b441e4a6f2689d995c48e1cf
+SOURCE nvda_desk.architecture.registry /tmp/nvda-d014-review-babm9GDf/isolated-0/src/nvda_desk/architecture/registry.py d72373c0ad31bf0f8ca5901590835cb6b0fa9087ed0d1bfea1cab1cf018c0e81
+SOURCE nvda_desk.architecture /tmp/nvda-d014-review-babm9GDf/isolated-0/src/nvda_desk/architecture/__init__.py 76a440f1d1a08913f332ab2601564a810165dffb54f6dd1d27ad498cc1a5c802
+SOURCE nvda_desk.architecture.allocation /tmp/nvda-d014-review-babm9GDf/isolated-0/src/nvda_desk/architecture/allocation.py 78d6d96231a2e5429c2e22d0c2f907962ef0c59ce205a871403398cee463410b
+SOURCE nvda_desk.architecture.implementation_authority /tmp/nvda-d014-review-babm9GDf/isolated-0/src/nvda_desk/architecture/implementation_authority.py 6d420280f0727a485f844dfa2a1ec620b190eb61af278136a28a076797c1a200
+LOADER /tmp/nvda-d014-review-babm9GDf/isolated-0/tools/product_proof_claims.py b2670e26f51d4b6f4fc8c656c859b9e5d63ca9aadd84ff2f818ff06cd9bb118a
+malformed raw_signal_occurrence_truth_sqlite ValueError cannot read JSON /tmp/nvda-d014-review-babm9GDf/isolated-0/config/product_proof/market_measurement_d014/claim.json: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+PASS 0 malformed raw_signal_occurrence_truth_sqlite old bytes retained
+SOURCE nvda_desk.architecture.identifiers /tmp/nvda-d014-review-babm9GDf/isolated-1/src/nvda_desk/architecture/identifiers.py 49c66359b8223432d5f96a12ff998471e138b1fcbe8ecded973657aa953818a6
+SOURCE nvda_desk.architecture.schema /tmp/nvda-d014-review-babm9GDf/isolated-1/src/nvda_desk/architecture/schema.py 1ac4afe7ed9b1a1efcd2a7f0150a1edd3cb40435b441e4a6f2689d995c48e1cf
+SOURCE nvda_desk.architecture.registry /tmp/nvda-d014-review-babm9GDf/isolated-1/src/nvda_desk/architecture/registry.py d72373c0ad31bf0f8ca5901590835cb6b0fa9087ed0d1bfea1cab1cf018c0e81
+SOURCE nvda_desk.architecture /tmp/nvda-d014-review-babm9GDf/isolated-1/src/nvda_desk/architecture/__init__.py 76a440f1d1a08913f332ab2601564a810165dffb54f6dd1d27ad498cc1a5c802
+SOURCE nvda_desk.architecture.allocation /tmp/nvda-d014-review-babm9GDf/isolated-1/src/nvda_desk/architecture/allocation.py 78d6d96231a2e5429c2e22d0c2f907962ef0c59ce205a871403398cee463410b
+SOURCE nvda_desk.architecture.implementation_authority /tmp/nvda-d014-review-babm9GDf/isolated-1/src/nvda_desk/architecture/implementation_authority.py 6d420280f0727a485f844dfa2a1ec620b190eb61af278136a28a076797c1a200
+LOADER /tmp/nvda-d014-review-babm9GDf/isolated-1/tools/product_proof_claims.py b2670e26f51d4b6f4fc8c656c859b9e5d63ca9aadd84ff2f818ff06cd9bb118a
+malformed neutral_market_measurement_truth_pilot ValueError cannot read JSON /tmp/nvda-d014-review-babm9GDf/isolated-1/config/product_proof/market_measurement_d014/claim.json: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+PASS 1 malformed neutral_market_measurement_truth_pilot old bytes retained
+SOURCE nvda_desk.architecture.identifiers /tmp/nvda-d014-review-babm9GDf/isolated-2/src/nvda_desk/architecture/identifiers.py 49c66359b8223432d5f96a12ff998471e138b1fcbe8ecded973657aa953818a6
+SOURCE nvda_desk.architecture.schema /tmp/nvda-d014-review-babm9GDf/isolated-2/src/nvda_desk/architecture/schema.py 1ac4afe7ed9b1a1efcd2a7f0150a1edd3cb40435b441e4a6f2689d995c48e1cf
+SOURCE nvda_desk.architecture.registry /tmp/nvda-d014-review-babm9GDf/isolated-2/src/nvda_desk/architecture/registry.py d72373c0ad31bf0f8ca5901590835cb6b0fa9087ed0d1bfea1cab1cf018c0e81
+SOURCE nvda_desk.architecture /tmp/nvda-d014-review-babm9GDf/isolated-2/src/nvda_desk/architecture/__init__.py 76a440f1d1a08913f332ab2601564a810165dffb54f6dd1d27ad498cc1a5c802
+SOURCE nvda_desk.architecture.allocation /tmp/nvda-d014-review-babm9GDf/isolated-2/src/nvda_desk/architecture/allocation.py 78d6d96231a2e5429c2e22d0c2f907962ef0c59ce205a871403398cee463410b
+SOURCE nvda_desk.architecture.implementation_authority /tmp/nvda-d014-review-babm9GDf/isolated-2/src/nvda_desk/architecture/implementation_authority.py 6d420280f0727a485f844dfa2a1ec620b190eb61af278136a28a076797c1a200
+LOADER /tmp/nvda-d014-review-babm9GDf/isolated-2/tools/product_proof_claims.py b2670e26f51d4b6f4fc8c656c859b9e5d63ca9aadd84ff2f818ff06cd9bb118a
+malformed neutral_market_measurement_truth_d012 ValueError cannot read JSON /tmp/nvda-d014-review-babm9GDf/isolated-2/config/product_proof/market_measurement_d014/claim.json: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+PASS 2 malformed neutral_market_measurement_truth_d012 old bytes retained
+SOURCE nvda_desk.architecture.identifiers /tmp/nvda-d014-review-babm9GDf/isolated-3/src/nvda_desk/architecture/identifiers.py 49c66359b8223432d5f96a12ff998471e138b1fcbe8ecded973657aa953818a6
+SOURCE nvda_desk.architecture.schema /tmp/nvda-d014-review-babm9GDf/isolated-3/src/nvda_desk/architecture/schema.py 1ac4afe7ed9b1a1efcd2a7f0150a1edd3cb40435b441e4a6f2689d995c48e1cf
+SOURCE nvda_desk.architecture.registry /tmp/nvda-d014-review-babm9GDf/isolated-3/src/nvda_desk/architecture/registry.py d72373c0ad31bf0f8ca5901590835cb6b0fa9087ed0d1bfea1cab1cf018c0e81
+SOURCE nvda_desk.architecture /tmp/nvda-d014-review-babm9GDf/isolated-3/src/nvda_desk/architecture/__init__.py 76a440f1d1a08913f332ab2601564a810165dffb54f6dd1d27ad498cc1a5c802
+SOURCE nvda_desk.architecture.allocation /tmp/nvda-d014-review-babm9GDf/isolated-3/src/nvda_desk/architecture/allocation.py 78d6d96231a2e5429c2e22d0c2f907962ef0c59ce205a871403398cee463410b
+SOURCE nvda_desk.architecture.implementation_authority /tmp/nvda-d014-review-babm9GDf/isolated-3/src/nvda_desk/architecture/implementation_authority.py 6d420280f0727a485f844dfa2a1ec620b190eb61af278136a28a076797c1a200
+LOADER /tmp/nvda-d014-review-babm9GDf/isolated-3/tools/product_proof_claims.py b2670e26f51d4b6f4fc8c656c859b9e5d63ca9aadd84ff2f818ff06cd9bb118a
+malformed neutral_market_measurement_truth_d013 ValueError cannot read JSON /tmp/nvda-d014-review-babm9GDf/isolated-3/config/product_proof/market_measurement_d014/claim.json: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+PASS 3 malformed neutral_market_measurement_truth_d013 old bytes retained
+SOURCE nvda_desk.architecture.identifiers /tmp/nvda-d014-review-babm9GDf/isolated-4/src/nvda_desk/architecture/identifiers.py 49c66359b8223432d5f96a12ff998471e138b1fcbe8ecded973657aa953818a6
+SOURCE nvda_desk.architecture.schema /tmp/nvda-d014-review-babm9GDf/isolated-4/src/nvda_desk/architecture/schema.py 1ac4afe7ed9b1a1efcd2a7f0150a1edd3cb40435b441e4a6f2689d995c48e1cf
+SOURCE nvda_desk.architecture.registry /tmp/nvda-d014-review-babm9GDf/isolated-4/src/nvda_desk/architecture/registry.py d72373c0ad31bf0f8ca5901590835cb6b0fa9087ed0d1bfea1cab1cf018c0e81
+SOURCE nvda_desk.architecture /tmp/nvda-d014-review-babm9GDf/isolated-4/src/nvda_desk/architecture/__init__.py 76a440f1d1a08913f332ab2601564a810165dffb54f6dd1d27ad498cc1a5c802
+SOURCE nvda_desk.architecture.allocation /tmp/nvda-d014-review-babm9GDf/isolated-4/src/nvda_desk/architecture/allocation.py 78d6d96231a2e5429c2e22d0c2f907962ef0c59ce205a871403398cee463410b
+SOURCE nvda_desk.architecture.implementation_authority /tmp/nvda-d014-review-babm9GDf/isolated-4/src/nvda_desk/architecture/implementation_authority.py 6d420280f0727a485f844dfa2a1ec620b190eb61af278136a28a076797c1a200
+LOADER /tmp/nvda-d014-review-babm9GDf/isolated-4/tools/product_proof_claims.py b2670e26f51d4b6f4fc8c656c859b9e5d63ca9aadd84ff2f818ff06cd9bb118a
+malformed neutral_market_measurement_truth_d014 ValueError cannot read JSON /tmp/nvda-d014-review-babm9GDf/isolated-4/config/product_proof/market_measurement_d014/claim.json: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+PASS 4 malformed neutral_market_measurement_truth_d014 old bytes retained
+SOURCE nvda_desk.architecture.identifiers /tmp/nvda-d014-review-babm9GDf/isolated-5/src/nvda_desk/architecture/identifiers.py 49c66359b8223432d5f96a12ff998471e138b1fcbe8ecded973657aa953818a6
+SOURCE nvda_desk.architecture.schema /tmp/nvda-d014-review-babm9GDf/isolated-5/src/nvda_desk/architecture/schema.py 1ac4afe7ed9b1a1efcd2a7f0150a1edd3cb40435b441e4a6f2689d995c48e1cf
+SOURCE nvda_desk.architecture.registry /tmp/nvda-d014-review-babm9GDf/isolated-5/src/nvda_desk/architecture/registry.py d72373c0ad31bf0f8ca5901590835cb6b0fa9087ed0d1bfea1cab1cf018c0e81
+SOURCE nvda_desk.architecture /tmp/nvda-d014-review-babm9GDf/isolated-5/src/nvda_desk/architecture/__init__.py 76a440f1d1a08913f332ab2601564a810165dffb54f6dd1d27ad498cc1a5c802
+SOURCE nvda_desk.architecture.allocation /tmp/nvda-d014-review-babm9GDf/isolated-5/src/nvda_desk/architecture/allocation.py 78d6d96231a2e5429c2e22d0c2f907962ef0c59ce205a871403398cee463410b
+SOURCE nvda_desk.architecture.implementation_authority /tmp/nvda-d014-review-babm9GDf/isolated-5/src/nvda_desk/architecture/implementation_authority.py 6d420280f0727a485f844dfa2a1ec620b190eb61af278136a28a076797c1a200
+LOADER /tmp/nvda-d014-review-babm9GDf/isolated-5/tools/product_proof_claims.py b2670e26f51d4b6f4fc8c656c859b9e5d63ca9aadd84ff2f818ff06cd9bb118a
+overlap raw_signal_occurrence_truth_sqlite ValueError invalid D014 extension descriptor
+PASS 5 overlap raw_signal_occurrence_truth_sqlite old bytes retained
+SOURCE nvda_desk.architecture.identifiers /tmp/nvda-d014-review-babm9GDf/isolated-6/src/nvda_desk/architecture/identifiers.py 49c66359b8223432d5f96a12ff998471e138b1fcbe8ecded973657aa953818a6
+SOURCE nvda_desk.architecture.schema /tmp/nvda-d014-review-babm9GDf/isolated-6/src/nvda_desk/architecture/schema.py 1ac4afe7ed9b1a1efcd2a7f0150a1edd3cb40435b441e4a6f2689d995c48e1cf
+SOURCE nvda_desk.architecture.registry /tmp/nvda-d014-review-babm9GDf/isolated-6/src/nvda_desk/architecture/registry.py d72373c0ad31bf0f8ca5901590835cb6b0fa9087ed0d1bfea1cab1cf018c0e81
+SOURCE nvda_desk.architecture /tmp/nvda-d014-review-babm9GDf/isolated-6/src/nvda_desk/architecture/__init__.py 76a440f1d1a08913f332ab2601564a810165dffb54f6dd1d27ad498cc1a5c802
+SOURCE nvda_desk.architecture.allocation /tmp/nvda-d014-review-babm9GDf/isolated-6/src/nvda_desk/architecture/allocation.py 78d6d96231a2e5429c2e22d0c2f907962ef0c59ce205a871403398cee463410b
+SOURCE nvda_desk.architecture.implementation_authority /tmp/nvda-d014-review-babm9GDf/isolated-6/src/nvda_desk/architecture/implementation_authority.py 6d420280f0727a485f844dfa2a1ec620b190eb61af278136a28a076797c1a200
+LOADER /tmp/nvda-d014-review-babm9GDf/isolated-6/tools/product_proof_claims.py b2670e26f51d4b6f4fc8c656c859b9e5d63ca9aadd84ff2f818ff06cd9bb118a
+overlap neutral_market_measurement_truth_pilot ValueError invalid D014 extension descriptor
+PASS 6 overlap neutral_market_measurement_truth_pilot old bytes retained
+SOURCE nvda_desk.architecture.identifiers /tmp/nvda-d014-review-babm9GDf/isolated-7/src/nvda_desk/architecture/identifiers.py 49c66359b8223432d5f96a12ff998471e138b1fcbe8ecded973657aa953818a6
+SOURCE nvda_desk.architecture.schema /tmp/nvda-d014-review-babm9GDf/isolated-7/src/nvda_desk/architecture/schema.py 1ac4afe7ed9b1a1efcd2a7f0150a1edd3cb40435b441e4a6f2689d995c48e1cf
+SOURCE nvda_desk.architecture.registry /tmp/nvda-d014-review-babm9GDf/isolated-7/src/nvda_desk/architecture/registry.py d72373c0ad31bf0f8ca5901590835cb6b0fa9087ed0d1bfea1cab1cf018c0e81
+SOURCE nvda_desk.architecture /tmp/nvda-d014-review-babm9GDf/isolated-7/src/nvda_desk/architecture/__init__.py 76a440f1d1a08913f332ab2601564a810165dffb54f6dd1d27ad498cc1a5c802
+SOURCE nvda_desk.architecture.allocation /tmp/nvda-d014-review-babm9GDf/isolated-7/src/nvda_desk/architecture/allocation.py 78d6d96231a2e5429c2e22d0c2f907962ef0c59ce205a871403398cee463410b
+SOURCE nvda_desk.architecture.implementation_authority /tmp/nvda-d014-review-babm9GDf/isolated-7/src/nvda_desk/architecture/implementation_authority.py 6d420280f0727a485f844dfa2a1ec620b190eb61af278136a28a076797c1a200
+LOADER /tmp/nvda-d014-review-babm9GDf/isolated-7/tools/product_proof_claims.py b2670e26f51d4b6f4fc8c656c859b9e5d63ca9aadd84ff2f818ff06cd9bb118a
+overlap neutral_market_measurement_truth_d012 ValueError invalid D014 extension descriptor
+PASS 7 overlap neutral_market_measurement_truth_d012 old bytes retained
+SOURCE nvda_desk.architecture.identifiers /tmp/nvda-d014-review-babm9GDf/isolated-8/src/nvda_desk/architecture/identifiers.py 49c66359b8223432d5f96a12ff998471e138b1fcbe8ecded973657aa953818a6
+SOURCE nvda_desk.architecture.schema /tmp/nvda-d014-review-babm9GDf/isolated-8/src/nvda_desk/architecture/schema.py 1ac4afe7ed9b1a1efcd2a7f0150a1edd3cb40435b441e4a6f2689d995c48e1cf
+SOURCE nvda_desk.architecture.registry /tmp/nvda-d014-review-babm9GDf/isolated-8/src/nvda_desk/architecture/registry.py d72373c0ad31bf0f8ca5901590835cb6b0fa9087ed0d1bfea1cab1cf018c0e81
+SOURCE nvda_desk.architecture /tmp/nvda-d014-review-babm9GDf/isolated-8/src/nvda_desk/architecture/__init__.py 76a440f1d1a08913f332ab2601564a810165dffb54f6dd1d27ad498cc1a5c802
+SOURCE nvda_desk.architecture.allocation /tmp/nvda-d014-review-babm9GDf/isolated-8/src/nvda_desk/architecture/allocation.py 78d6d96231a2e5429c2e22d0c2f907962ef0c59ce205a871403398cee463410b
+SOURCE nvda_desk.architecture.implementation_authority /tmp/nvda-d014-review-babm9GDf/isolated-8/src/nvda_desk/architecture/implementation_authority.py 6d420280f0727a485f844dfa2a1ec620b190eb61af278136a28a076797c1a200
+LOADER /tmp/nvda-d014-review-babm9GDf/isolated-8/tools/product_proof_claims.py b2670e26f51d4b6f4fc8c656c859b9e5d63ca9aadd84ff2f818ff06cd9bb118a
+overlap neutral_market_measurement_truth_d013 ValueError invalid D014 extension descriptor
+PASS 8 overlap neutral_market_measurement_truth_d013 old bytes retained
+SOURCE nvda_desk.architecture.identifiers /tmp/nvda-d014-review-babm9GDf/isolated-9/src/nvda_desk/architecture/identifiers.py 49c66359b8223432d5f96a12ff998471e138b1fcbe8ecded973657aa953818a6
+SOURCE nvda_desk.architecture.schema /tmp/nvda-d014-review-babm9GDf/isolated-9/src/nvda_desk/architecture/schema.py 1ac4afe7ed9b1a1efcd2a7f0150a1edd3cb40435b441e4a6f2689d995c48e1cf
+SOURCE nvda_desk.architecture.registry /tmp/nvda-d014-review-babm9GDf/isolated-9/src/nvda_desk/architecture/registry.py d72373c0ad31bf0f8ca5901590835cb6b0fa9087ed0d1bfea1cab1cf018c0e81
+SOURCE nvda_desk.architecture /tmp/nvda-d014-review-babm9GDf/isolated-9/src/nvda_desk/architecture/__init__.py 76a440f1d1a08913f332ab2601564a810165dffb54f6dd1d27ad498cc1a5c802
+SOURCE nvda_desk.architecture.allocation /tmp/nvda-d014-review-babm9GDf/isolated-9/src/nvda_desk/architecture/allocation.py 78d6d96231a2e5429c2e22d0c2f907962ef0c59ce205a871403398cee463410b
+SOURCE nvda_desk.architecture.implementation_authority /tmp/nvda-d014-review-babm9GDf/isolated-9/src/nvda_desk/architecture/implementation_authority.py 6d420280f0727a485f844dfa2a1ec620b190eb61af278136a28a076797c1a200
+LOADER /tmp/nvda-d014-review-babm9GDf/isolated-9/tools/product_proof_claims.py b2670e26f51d4b6f4fc8c656c859b9e5d63ca9aadd84ff2f818ff06cd9bb118a
+overlap neutral_market_measurement_truth_d014 ValueError invalid D014 extension descriptor
+PASS 9 overlap neutral_market_measurement_truth_d014 old bytes retained
+SOURCE nvda_desk.architecture.identifiers /tmp/nvda-d014-review-babm9GDf/isolated-10/src/nvda_desk/architecture/identifiers.py 49c66359b8223432d5f96a12ff998471e138b1fcbe8ecded973657aa953818a6
+SOURCE nvda_desk.architecture.schema /tmp/nvda-d014-review-babm9GDf/isolated-10/src/nvda_desk/architecture/schema.py 1ac4afe7ed9b1a1efcd2a7f0150a1edd3cb40435b441e4a6f2689d995c48e1cf
+SOURCE nvda_desk.architecture.registry /tmp/nvda-d014-review-babm9GDf/isolated-10/src/nvda_desk/architecture/registry.py d72373c0ad31bf0f8ca5901590835cb6b0fa9087ed0d1bfea1cab1cf018c0e81
+SOURCE nvda_desk.architecture /tmp/nvda-d014-review-babm9GDf/isolated-10/src/nvda_desk/architecture/__init__.py 76a440f1d1a08913f332ab2601564a810165dffb54f6dd1d27ad498cc1a5c802
+SOURCE nvda_desk.architecture.allocation /tmp/nvda-d014-review-babm9GDf/isolated-10/src/nvda_desk/architecture/allocation.py 78d6d96231a2e5429c2e22d0c2f907962ef0c59ce205a871403398cee463410b
+SOURCE nvda_desk.architecture.implementation_authority /tmp/nvda-d014-review-babm9GDf/isolated-10/src/nvda_desk/architecture/implementation_authority.py 6d420280f0727a485f844dfa2a1ec620b190eb61af278136a28a076797c1a200
+LOADER /tmp/nvda-d014-review-babm9GDf/isolated-10/tools/product_proof_claims.py b2670e26f51d4b6f4fc8c656c859b9e5d63ca9aadd84ff2f818ff06cd9bb118a
+crossgen raw_signal_occurrence_truth_sqlite ValueError generation path/cycle/cross-claim mismatch
+PASS 10 crossgen raw_signal_occurrence_truth_sqlite old bytes retained
+SOURCE nvda_desk.architecture.identifiers /tmp/nvda-d014-review-babm9GDf/isolated-11/src/nvda_desk/architecture/identifiers.py 49c66359b8223432d5f96a12ff998471e138b1fcbe8ecded973657aa953818a6
+SOURCE nvda_desk.architecture.schema /tmp/nvda-d014-review-babm9GDf/isolated-11/src/nvda_desk/architecture/schema.py 1ac4afe7ed9b1a1efcd2a7f0150a1edd3cb40435b441e4a6f2689d995c48e1cf
+SOURCE nvda_desk.architecture.registry /tmp/nvda-d014-review-babm9GDf/isolated-11/src/nvda_desk/architecture/registry.py d72373c0ad31bf0f8ca5901590835cb6b0fa9087ed0d1bfea1cab1cf018c0e81
+SOURCE nvda_desk.architecture /tmp/nvda-d014-review-babm9GDf/isolated-11/src/nvda_desk/architecture/__init__.py 76a440f1d1a08913f332ab2601564a810165dffb54f6dd1d27ad498cc1a5c802
+SOURCE nvda_desk.architecture.allocation /tmp/nvda-d014-review-babm9GDf/isolated-11/src/nvda_desk/architecture/allocation.py 78d6d96231a2e5429c2e22d0c2f907962ef0c59ce205a871403398cee463410b
+SOURCE nvda_desk.architecture.implementation_authority /tmp/nvda-d014-review-babm9GDf/isolated-11/src/nvda_desk/architecture/implementation_authority.py 6d420280f0727a485f844dfa2a1ec620b190eb61af278136a28a076797c1a200
+LOADER /tmp/nvda-d014-review-babm9GDf/isolated-11/tools/product_proof_claims.py b2670e26f51d4b6f4fc8c656c859b9e5d63ca9aadd84ff2f818ff06cd9bb118a
+crossgen neutral_market_measurement_truth_pilot ValueError generation path/cycle/cross-claim mismatch
+PASS 11 crossgen neutral_market_measurement_truth_pilot old bytes retained
+SOURCE nvda_desk.architecture.identifiers /tmp/nvda-d014-review-babm9GDf/isolated-12/src/nvda_desk/architecture/identifiers.py 49c66359b8223432d5f96a12ff998471e138b1fcbe8ecded973657aa953818a6
+SOURCE nvda_desk.architecture.schema /tmp/nvda-d014-review-babm9GDf/isolated-12/src/nvda_desk/architecture/schema.py 1ac4afe7ed9b1a1efcd2a7f0150a1edd3cb40435b441e4a6f2689d995c48e1cf
+SOURCE nvda_desk.architecture.registry /tmp/nvda-d014-review-babm9GDf/isolated-12/src/nvda_desk/architecture/registry.py d72373c0ad31bf0f8ca5901590835cb6b0fa9087ed0d1bfea1cab1cf018c0e81
+SOURCE nvda_desk.architecture /tmp/nvda-d014-review-babm9GDf/isolated-12/src/nvda_desk/architecture/__init__.py 76a440f1d1a08913f332ab2601564a810165dffb54f6dd1d27ad498cc1a5c802
+SOURCE nvda_desk.architecture.allocation /tmp/nvda-d014-review-babm9GDf/isolated-12/src/nvda_desk/architecture/allocation.py 78d6d96231a2e5429c2e22d0c2f907962ef0c59ce205a871403398cee463410b
+SOURCE nvda_desk.architecture.implementation_authority /tmp/nvda-d014-review-babm9GDf/isolated-12/src/nvda_desk/architecture/implementation_authority.py 6d420280f0727a485f844dfa2a1ec620b190eb61af278136a28a076797c1a200
+LOADER /tmp/nvda-d014-review-babm9GDf/isolated-12/tools/product_proof_claims.py b2670e26f51d4b6f4fc8c656c859b9e5d63ca9aadd84ff2f818ff06cd9bb118a
+crossgen neutral_market_measurement_truth_d012 ValueError generation path/cycle/cross-claim mismatch
+PASS 12 crossgen neutral_market_measurement_truth_d012 old bytes retained
+SOURCE nvda_desk.architecture.identifiers /tmp/nvda-d014-review-babm9GDf/isolated-13/src/nvda_desk/architecture/identifiers.py 49c66359b8223432d5f96a12ff998471e138b1fcbe8ecded973657aa953818a6
+SOURCE nvda_desk.architecture.schema /tmp/nvda-d014-review-babm9GDf/isolated-13/src/nvda_desk/architecture/schema.py 1ac4afe7ed9b1a1efcd2a7f0150a1edd3cb40435b441e4a6f2689d995c48e1cf
+SOURCE nvda_desk.architecture.registry /tmp/nvda-d014-review-babm9GDf/isolated-13/src/nvda_desk/architecture/registry.py d72373c0ad31bf0f8ca5901590835cb6b0fa9087ed0d1bfea1cab1cf018c0e81
+SOURCE nvda_desk.architecture /tmp/nvda-d014-review-babm9GDf/isolated-13/src/nvda_desk/architecture/__init__.py 76a440f1d1a08913f332ab2601564a810165dffb54f6dd1d27ad498cc1a5c802
+SOURCE nvda_desk.architecture.allocation /tmp/nvda-d014-review-babm9GDf/isolated-13/src/nvda_desk/architecture/allocation.py 78d6d96231a2e5429c2e22d0c2f907962ef0c59ce205a871403398cee463410b
+SOURCE nvda_desk.architecture.implementation_authority /tmp/nvda-d014-review-babm9GDf/isolated-13/src/nvda_desk/architecture/implementation_authority.py 6d420280f0727a485f844dfa2a1ec620b190eb61af278136a28a076797c1a200
+LOADER /tmp/nvda-d014-review-babm9GDf/isolated-13/tools/product_proof_claims.py b2670e26f51d4b6f4fc8c656c859b9e5d63ca9aadd84ff2f818ff06cd9bb118a
+crossgen neutral_market_measurement_truth_d013 ValueError generation path/cycle/cross-claim mismatch
+PASS 13 crossgen neutral_market_measurement_truth_d013 old bytes retained
+SOURCE nvda_desk.architecture.identifiers /tmp/nvda-d014-review-babm9GDf/isolated-14/src/nvda_desk/architecture/identifiers.py 49c66359b8223432d5f96a12ff998471e138b1fcbe8ecded973657aa953818a6
+SOURCE nvda_desk.architecture.schema /tmp/nvda-d014-review-babm9GDf/isolated-14/src/nvda_desk/architecture/schema.py 1ac4afe7ed9b1a1efcd2a7f0150a1edd3cb40435b441e4a6f2689d995c48e1cf
+SOURCE nvda_desk.architecture.registry /tmp/nvda-d014-review-babm9GDf/isolated-14/src/nvda_desk/architecture/registry.py d72373c0ad31bf0f8ca5901590835cb6b0fa9087ed0d1bfea1cab1cf018c0e81
+SOURCE nvda_desk.architecture /tmp/nvda-d014-review-babm9GDf/isolated-14/src/nvda_desk/architecture/__init__.py 76a440f1d1a08913f332ab2601564a810165dffb54f6dd1d27ad498cc1a5c802
+SOURCE nvda_desk.architecture.allocation /tmp/nvda-d014-review-babm9GDf/isolated-14/src/nvda_desk/architecture/allocation.py 78d6d96231a2e5429c2e22d0c2f907962ef0c59ce205a871403398cee463410b
+SOURCE nvda_desk.architecture.implementation_authority /tmp/nvda-d014-review-babm9GDf/isolated-14/src/nvda_desk/architecture/implementation_authority.py 6d420280f0727a485f844dfa2a1ec620b190eb61af278136a28a076797c1a200
+LOADER /tmp/nvda-d014-review-babm9GDf/isolated-14/tools/product_proof_claims.py b2670e26f51d4b6f4fc8c656c859b9e5d63ca9aadd84ff2f818ff06cd9bb118a
+crossgen neutral_market_measurement_truth_d014 ValueError generation path/cycle/cross-claim mismatch
+PASS 14 crossgen neutral_market_measurement_truth_d014 old bytes retained
+SOURCE nvda_desk.architecture.identifiers /tmp/nvda-d014-review-babm9GDf/isolated-15/src/nvda_desk/architecture/identifiers.py 49c66359b8223432d5f96a12ff998471e138b1fcbe8ecded973657aa953818a6
+SOURCE nvda_desk.architecture.schema /tmp/nvda-d014-review-babm9GDf/isolated-15/src/nvda_desk/architecture/schema.py 1ac4afe7ed9b1a1efcd2a7f0150a1edd3cb40435b441e4a6f2689d995c48e1cf
+SOURCE nvda_desk.architecture.registry /tmp/nvda-d014-review-babm9GDf/isolated-15/src/nvda_desk/architecture/registry.py d72373c0ad31bf0f8ca5901590835cb6b0fa9087ed0d1bfea1cab1cf018c0e81
+SOURCE nvda_desk.architecture /tmp/nvda-d014-review-babm9GDf/isolated-15/src/nvda_desk/architecture/__init__.py 76a440f1d1a08913f332ab2601564a810165dffb54f6dd1d27ad498cc1a5c802
+SOURCE nvda_desk.architecture.allocation /tmp/nvda-d014-review-babm9GDf/isolated-15/src/nvda_desk/architecture/allocation.py 78d6d96231a2e5429c2e22d0c2f907962ef0c59ce205a871403398cee463410b
+SOURCE nvda_desk.architecture.implementation_authority /tmp/nvda-d014-review-babm9GDf/isolated-15/src/nvda_desk/architecture/implementation_authority.py 6d420280f0727a485f844dfa2a1ec620b190eb61af278136a28a076797c1a200
+LOADER /tmp/nvda-d014-review-babm9GDf/isolated-15/tools/product_proof_claims.py b2670e26f51d4b6f4fc8c656c859b9e5d63ca9aadd84ff2f818ff06cd9bb118a
+PASS 15 advance raw_signal_occurrence_truth_sqlite old bytes retained
+SOURCE nvda_desk.architecture.identifiers /tmp/nvda-d014-review-babm9GDf/isolated-16/src/nvda_desk/architecture/identifiers.py 49c66359b8223432d5f96a12ff998471e138b1fcbe8ecded973657aa953818a6
+SOURCE nvda_desk.architecture.schema /tmp/nvda-d014-review-babm9GDf/isolated-16/src/nvda_desk/architecture/schema.py 1ac4afe7ed9b1a1efcd2a7f0150a1edd3cb40435b441e4a6f2689d995c48e1cf
+SOURCE nvda_desk.architecture.registry /tmp/nvda-d014-review-babm9GDf/isolated-16/src/nvda_desk/architecture/registry.py d72373c0ad31bf0f8ca5901590835cb6b0fa9087ed0d1bfea1cab1cf018c0e81
+SOURCE nvda_desk.architecture /tmp/nvda-d014-review-babm9GDf/isolated-16/src/nvda_desk/architecture/__init__.py 76a440f1d1a08913f332ab2601564a810165dffb54f6dd1d27ad498cc1a5c802
+SOURCE nvda_desk.architecture.allocation /tmp/nvda-d014-review-babm9GDf/isolated-16/src/nvda_desk/architecture/allocation.py 78d6d96231a2e5429c2e22d0c2f907962ef0c59ce205a871403398cee463410b
+SOURCE nvda_desk.architecture.implementation_authority /tmp/nvda-d014-review-babm9GDf/isolated-16/src/nvda_desk/architecture/implementation_authority.py 6d420280f0727a485f844dfa2a1ec620b190eb61af278136a28a076797c1a200
+LOADER /tmp/nvda-d014-review-babm9GDf/isolated-16/tools/product_proof_claims.py b2670e26f51d4b6f4fc8c656c859b9e5d63ca9aadd84ff2f818ff06cd9bb118a
+PASS 16 advance neutral_market_measurement_truth_pilot old bytes retained
+SOURCE nvda_desk.architecture.identifiers /tmp/nvda-d014-review-babm9GDf/isolated-17/src/nvda_desk/architecture/identifiers.py 49c66359b8223432d5f96a12ff998471e138b1fcbe8ecded973657aa953818a6
+SOURCE nvda_desk.architecture.schema /tmp/nvda-d014-review-babm9GDf/isolated-17/src/nvda_desk/architecture/schema.py 1ac4afe7ed9b1a1efcd2a7f0150a1edd3cb40435b441e4a6f2689d995c48e1cf
+SOURCE nvda_desk.architecture.registry /tmp/nvda-d014-review-babm9GDf/isolated-17/src/nvda_desk/architecture/registry.py d72373c0ad31bf0f8ca5901590835cb6b0fa9087ed0d1bfea1cab1cf018c0e81
+SOURCE nvda_desk.architecture /tmp/nvda-d014-review-babm9GDf/isolated-17/src/nvda_desk/architecture/__init__.py 76a440f1d1a08913f332ab2601564a810165dffb54f6dd1d27ad498cc1a5c802
+SOURCE nvda_desk.architecture.allocation /tmp/nvda-d014-review-babm9GDf/isolated-17/src/nvda_desk/architecture/allocation.py 78d6d96231a2e5429c2e22d0c2f907962ef0c59ce205a871403398cee463410b
+SOURCE nvda_desk.architecture.implementation_authority /tmp/nvda-d014-review-babm9GDf/isolated-17/src/nvda_desk/architecture/implementation_authority.py 6d420280f0727a485f844dfa2a1ec620b190eb61af278136a28a076797c1a200
+LOADER /tmp/nvda-d014-review-babm9GDf/isolated-17/tools/product_proof_claims.py b2670e26f51d4b6f4fc8c656c859b9e5d63ca9aadd84ff2f818ff06cd9bb118a
+PASS 17 advance neutral_market_measurement_truth_d012 old bytes retained
+SOURCE nvda_desk.architecture.identifiers /tmp/nvda-d014-review-babm9GDf/isolated-18/src/nvda_desk/architecture/identifiers.py 49c66359b8223432d5f96a12ff998471e138b1fcbe8ecded973657aa953818a6
+SOURCE nvda_desk.architecture.schema /tmp/nvda-d014-review-babm9GDf/isolated-18/src/nvda_desk/architecture/schema.py 1ac4afe7ed9b1a1efcd2a7f0150a1edd3cb40435b441e4a6f2689d995c48e1cf
+SOURCE nvda_desk.architecture.registry /tmp/nvda-d014-review-babm9GDf/isolated-18/src/nvda_desk/architecture/registry.py d72373c0ad31bf0f8ca5901590835cb6b0fa9087ed0d1bfea1cab1cf018c0e81
+SOURCE nvda_desk.architecture /tmp/nvda-d014-review-babm9GDf/isolated-18/src/nvda_desk/architecture/__init__.py 76a440f1d1a08913f332ab2601564a810165dffb54f6dd1d27ad498cc1a5c802
+SOURCE nvda_desk.architecture.allocation /tmp/nvda-d014-review-babm9GDf/isolated-18/src/nvda_desk/architecture/allocation.py 78d6d96231a2e5429c2e22d0c2f907962ef0c59ce205a871403398cee463410b
+SOURCE nvda_desk.architecture.implementation_authority /tmp/nvda-d014-review-babm9GDf/isolated-18/src/nvda_desk/architecture/implementation_authority.py 6d420280f0727a485f844dfa2a1ec620b190eb61af278136a28a076797c1a200
+LOADER /tmp/nvda-d014-review-babm9GDf/isolated-18/tools/product_proof_claims.py b2670e26f51d4b6f4fc8c656c859b9e5d63ca9aadd84ff2f818ff06cd9bb118a
+PASS 18 advance neutral_market_measurement_truth_d013 old bytes retained
+SOURCE nvda_desk.architecture.identifiers /tmp/nvda-d014-review-babm9GDf/isolated-19/src/nvda_desk/architecture/identifiers.py 49c66359b8223432d5f96a12ff998471e138b1fcbe8ecded973657aa953818a6
+SOURCE nvda_desk.architecture.schema /tmp/nvda-d014-review-babm9GDf/isolated-19/src/nvda_desk/architecture/schema.py 1ac4afe7ed9b1a1efcd2a7f0150a1edd3cb40435b441e4a6f2689d995c48e1cf
+SOURCE nvda_desk.architecture.registry /tmp/nvda-d014-review-babm9GDf/isolated-19/src/nvda_desk/architecture/registry.py d72373c0ad31bf0f8ca5901590835cb6b0fa9087ed0d1bfea1cab1cf018c0e81
+SOURCE nvda_desk.architecture /tmp/nvda-d014-review-babm9GDf/isolated-19/src/nvda_desk/architecture/__init__.py 76a440f1d1a08913f332ab2601564a810165dffb54f6dd1d27ad498cc1a5c802
+SOURCE nvda_desk.architecture.allocation /tmp/nvda-d014-review-babm9GDf/isolated-19/src/nvda_desk/architecture/allocation.py 78d6d96231a2e5429c2e22d0c2f907962ef0c59ce205a871403398cee463410b
+SOURCE nvda_desk.architecture.implementation_authority /tmp/nvda-d014-review-babm9GDf/isolated-19/src/nvda_desk/architecture/implementation_authority.py 6d420280f0727a485f844dfa2a1ec620b190eb61af278136a28a076797c1a200
+LOADER /tmp/nvda-d014-review-babm9GDf/isolated-19/tools/product_proof_claims.py b2670e26f51d4b6f4fc8c656c859b9e5d63ca9aadd84ff2f818ff06cd9bb118a
+PASS 19 revoke raw_signal_occurrence_truth_sqlite old bytes retained
+SOURCE nvda_desk.architecture.identifiers /tmp/nvda-d014-review-babm9GDf/isolated-20/src/nvda_desk/architecture/identifiers.py 49c66359b8223432d5f96a12ff998471e138b1fcbe8ecded973657aa953818a6
+SOURCE nvda_desk.architecture.schema /tmp/nvda-d014-review-babm9GDf/isolated-20/src/nvda_desk/architecture/schema.py 1ac4afe7ed9b1a1efcd2a7f0150a1edd3cb40435b441e4a6f2689d995c48e1cf
+SOURCE nvda_desk.architecture.registry /tmp/nvda-d014-review-babm9GDf/isolated-20/src/nvda_desk/architecture/registry.py d72373c0ad31bf0f8ca5901590835cb6b0fa9087ed0d1bfea1cab1cf018c0e81
+SOURCE nvda_desk.architecture /tmp/nvda-d014-review-babm9GDf/isolated-20/src/nvda_desk/architecture/__init__.py 76a440f1d1a08913f332ab2601564a810165dffb54f6dd1d27ad498cc1a5c802
+SOURCE nvda_desk.architecture.allocation /tmp/nvda-d014-review-babm9GDf/isolated-20/src/nvda_desk/architecture/allocation.py 78d6d96231a2e5429c2e22d0c2f907962ef0c59ce205a871403398cee463410b
+SOURCE nvda_desk.architecture.implementation_authority /tmp/nvda-d014-review-babm9GDf/isolated-20/src/nvda_desk/architecture/implementation_authority.py 6d420280f0727a485f844dfa2a1ec620b190eb61af278136a28a076797c1a200
+LOADER /tmp/nvda-d014-review-babm9GDf/isolated-20/tools/product_proof_claims.py b2670e26f51d4b6f4fc8c656c859b9e5d63ca9aadd84ff2f818ff06cd9bb118a
+PASS 20 revoke neutral_market_measurement_truth_pilot old bytes retained
+SOURCE nvda_desk.architecture.identifiers /tmp/nvda-d014-review-babm9GDf/isolated-21/src/nvda_desk/architecture/identifiers.py 49c66359b8223432d5f96a12ff998471e138b1fcbe8ecded973657aa953818a6
+SOURCE nvda_desk.architecture.schema /tmp/nvda-d014-review-babm9GDf/isolated-21/src/nvda_desk/architecture/schema.py 1ac4afe7ed9b1a1efcd2a7f0150a1edd3cb40435b441e4a6f2689d995c48e1cf
+SOURCE nvda_desk.architecture.registry /tmp/nvda-d014-review-babm9GDf/isolated-21/src/nvda_desk/architecture/registry.py d72373c0ad31bf0f8ca5901590835cb6b0fa9087ed0d1bfea1cab1cf018c0e81
+SOURCE nvda_desk.architecture /tmp/nvda-d014-review-babm9GDf/isolated-21/src/nvda_desk/architecture/__init__.py 76a440f1d1a08913f332ab2601564a810165dffb54f6dd1d27ad498cc1a5c802
+SOURCE nvda_desk.architecture.allocation /tmp/nvda-d014-review-babm9GDf/isolated-21/src/nvda_desk/architecture/allocation.py 78d6d96231a2e5429c2e22d0c2f907962ef0c59ce205a871403398cee463410b
+SOURCE nvda_desk.architecture.implementation_authority /tmp/nvda-d014-review-babm9GDf/isolated-21/src/nvda_desk/architecture/implementation_authority.py 6d420280f0727a485f844dfa2a1ec620b190eb61af278136a28a076797c1a200
+LOADER /tmp/nvda-d014-review-babm9GDf/isolated-21/tools/product_proof_claims.py b2670e26f51d4b6f4fc8c656c859b9e5d63ca9aadd84ff2f818ff06cd9bb118a
+PASS 21 revoke neutral_market_measurement_truth_d012 old bytes retained
+SOURCE nvda_desk.architecture.identifiers /tmp/nvda-d014-review-babm9GDf/isolated-22/src/nvda_desk/architecture/identifiers.py 49c66359b8223432d5f96a12ff998471e138b1fcbe8ecded973657aa953818a6
+SOURCE nvda_desk.architecture.schema /tmp/nvda-d014-review-babm9GDf/isolated-22/src/nvda_desk/architecture/schema.py 1ac4afe7ed9b1a1efcd2a7f0150a1edd3cb40435b441e4a6f2689d995c48e1cf
+SOURCE nvda_desk.architecture.registry /tmp/nvda-d014-review-babm9GDf/isolated-22/src/nvda_desk/architecture/registry.py d72373c0ad31bf0f8ca5901590835cb6b0fa9087ed0d1bfea1cab1cf018c0e81
+SOURCE nvda_desk.architecture /tmp/nvda-d014-review-babm9GDf/isolated-22/src/nvda_desk/architecture/__init__.py 76a440f1d1a08913f332ab2601564a810165dffb54f6dd1d27ad498cc1a5c802
+SOURCE nvda_desk.architecture.allocation /tmp/nvda-d014-review-babm9GDf/isolated-22/src/nvda_desk/architecture/allocation.py 78d6d96231a2e5429c2e22d0c2f907962ef0c59ce205a871403398cee463410b
+SOURCE nvda_desk.architecture.implementation_authority /tmp/nvda-d014-review-babm9GDf/isolated-22/src/nvda_desk/architecture/implementation_authority.py 6d420280f0727a485f844dfa2a1ec620b190eb61af278136a28a076797c1a200
+LOADER /tmp/nvda-d014-review-babm9GDf/isolated-22/tools/product_proof_claims.py b2670e26f51d4b6f4fc8c656c859b9e5d63ca9aadd84ff2f818ff06cd9bb118a
+PASS 22 revoke neutral_market_measurement_truth_d013 old bytes retained
+ALL 23 PRISTINE INDEPENDENT ACTUAL-STATE CASES PASS

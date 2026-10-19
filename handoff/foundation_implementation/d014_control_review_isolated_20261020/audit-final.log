@@ -1,0 +1,54 @@
+{
+  "head": "f01ad17c48f0eb21148cb7b2aa4e2b2f428c0f2b",
+  "tree": "622a5baf9186ba7ea09fe6869bfe33e58fb253dd",
+  "scoped_count": 281,
+  "only_difference": [
+    "tools/product_proof_claims.py"
+  ],
+  "no_shared_tracked_inodes": true,
+  "candidate_symlinks": false,
+  "git_alternates": false,
+  "actual_clean": true,
+  "lineage_scoped_diff": "",
+  "preserved_ASTs": [
+    "_authority",
+    "_partition",
+    "_generation",
+    "_admission_history",
+    "governed_snapshot"
+  ],
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "sqlite": "3.53.1",
+  "versions": {
+    "pytest": "9.0.3",
+    "mypy": "1.20.1",
+    "ruff": "0.15.11",
+    "PyYAML": "6.0.3"
+  },
+  "hashes": {
+    "tools/product_proof_claims.py": {
+      "active": "4720fb69f9d6b34032742ce47585b57f1be3610305061faf2ac9d1458c66c478",
+      "candidate": "b2670e26f51d4b6f4fc8c656c859b9e5d63ca9aadd84ff2f818ff06cd9bb118a"
+    },
+    "tests/architecture/test_proof_control.py": {
+      "active": "e038ed1eca2847b8ed79495ea19b9e2cdaf4a3b3cdfdbb01c15f07111c45de44",
+      "candidate": "e038ed1eca2847b8ed79495ea19b9e2cdaf4a3b3cdfdbb01c15f07111c45de44"
+    },
+    "handoff/foundation_implementation/authority/G6_1_D014_CONTROL_CANDIDATE_20261020.patch": {
+      "active": "08ea24676070b2998e719243ad00a953d7ab8242a56aa77ecfd3012494e5ec0e",
+      "candidate": "08ea24676070b2998e719243ad00a953d7ab8242a56aa77ecfd3012494e5ec0e"
+    },
+    "handoff/foundation_implementation/authority/G6_1_D014_IMPLEMENTATION_BRIEF_PROPOSED.md": {
+      "active": "c23ea315c94b478c568f105e94891a03af62393792a1478c33027a0371738bb8",
+      "candidate": "c23ea315c94b478c568f105e94891a03af62393792a1478c33027a0371738bb8"
+    },
+    "handoff/foundation_implementation/authority/G6_1_D014_PROOF_CONTRACT_PROPOSED.json": {
+      "active": "54850f780c4442924e2d28ed319ae5f0fb109e291b367391ac0a4c86190294fc",
+      "candidate": "54850f780c4442924e2d28ed319ae5f0fb109e291b367391ac0a4c86190294fc"
+    },
+    "implementation/authority/G6_1_D014_IMPLEMENTATION_AUTHORITY_BINDING.yaml": {
+      "active": "bd148a280c0dee497230ea463b46e25be510b418e926dc23fbe1ebbe0d085f7d",
+      "candidate": "bd148a280c0dee497230ea463b46e25be510b418e926dc23fbe1ebbe0d085f7d"
+    }
+  }
+}
