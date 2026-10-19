@@ -1,5 +1,11 @@
 # Gate 5 execution and recovered checkpoint
 
+## Owner acceptance and G5.2 activation — 19 October 2026, 20:27 Melbourne
+
+Actual owner instruction accepts concrete68d3c2f and authorises next leafG5.2 only; external reference owner-chat/20261019T202718/G5.1-accept-G5.2-only. Exact decision/scope are in G5_1_OWNER_ACCEPTANCE_20261019.md and the current root plan. Recovered the saved96,647,371byte archive with exactSHA7daad208e4c9d03defda4e5cdf3ecd08adec10a538073a5f0219a90dd48973cc into a new isolated checkout after observing earlier local5de245d. Restored68d3c2f before newG5.2branch. G5.1ACCEPTED_CLOSED; G5.2IN_PROGRESS_PROOF_PREPARATION; G5.3NOT_AUTHORISED. No G5.1 test rerun is required merely to record this decision; its candidate evidence is recovered intact.
+
+Pre-flight interfaces: public-boundary types/configuration feed selection, then immutable identity/typed reads, then SQLite representation/recovery. All consume the same accepted v2records and v3storage changes. Ruling: latest instruction to complete the next leaf authorises all fourG5.2units sequentially within one pass — root's one-unit-at-a-time law remains, without stopping to ask between units — cost if wrong: larger execution tranche withinG5.2; noG5.3 or beyond is entered.
+
 ## G5.1 final engineering return — 19 October 2026, 19:43 Melbourne
 
 Engineering source/config/proof candidate4c9bdb8d36fc9f393cc90ac4c62e7adda83e71c0 is ready for the separately required owner decision. Full result/commands/limits are in G5_1_CLOSEOUT_20261019.md; subsequent commits package evidence without changing those verified bytes.

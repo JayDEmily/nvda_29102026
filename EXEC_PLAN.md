@@ -1,5 +1,17 @@
 # NVDA V2 — ACTIVE successor ExecPlan: Gate 5 execution
 
+## Current owner decision — 19 October 2026, 20:27 Melbourne
+
+The owner answered “Yes, I do. Complete the next leaf only.” to the explicit acceptance question for G5.1 candidate68d3c2fbb263403a36f215696e45872505b2a340. Reference: `owner-chat/20261019T202718/G5.1-accept-G5.2-only`. G5.1 is ACCEPTED_CLOSED for its precisely delivered scope and evidence limits. The next leaf is G5.2: all four ordered proof-before-behaviour units in §5, under accepted version3 and its SQLite companions. Execute sequentially within this leaf; no G5.3 review/activation/promotion or later programme work is authorised. Necessary independent proof-adequacy review/admission within G5.2 remains required and is not G5.3 pilot acceptance.
+
+Recovery observation: this turn's local workspace resumed at earlier5de245d and lacked later Git objects. The successfully saved G5.1 candidate was recovered from its exact persistent archive, SHA2567daad208e4c9d03defda4e5cdf3ecd08adec10a538073a5f0219a90dd48973cc; restored HEAD68d3c2f was verified before branching `work/v2-g52-pilot-20261019`. The earlier local checkout is preserved. No reconstruction or repeat acceptance substitutes for those recovered exact bytes.
+
+Current ledger: G5.1 ACCEPTED_CLOSED; G5.2 IN_PROGRESS_AUTHORITY_AND_PROOF_PREPARATION; G5.3 NOT_AUTHORISED; G6 NOT_OPEN. Preserve the registered M02 bootstrap/non-composable identity. Author/review/admit complete five-family proof and required typing specimens before production. Each ordered unit then receives admitted RED, bounded implementation and targeted/applicable GREEN. Keep target bootstrap; active-target aggregate/pilot owner disposition belongs to G5.3.
+
+The root plan/`G5_EXECUTION_RECORD.md` remain the single execution ledger. Existing PG-specific rows below are historical where version3 expressly supersedes them; SQLite storage constructors, test_sqlite_boundary.py and _sqlite.py are the accepted current interfaces. No separate plan, generic storage framework, M01 change, native IBKR mapping or live effect is commissioned.
+
+---
+
 ## Current checkpoint — G5.1 engineering candidate ready for owner decision
 
 Generation3 of `raw_signal_occurrence_truth_sqlite` is independently adequacy-reviewed and admitted, SHA256 `51e87129c2a31c71599b7a01beb8ba39717ed5118a4d5c849bcb2015b6c80c6f`; generations1/2 and their history remain immutable. Intended missing-capability RED was committed in77715cb before bounded M00/A00 behaviour. Independent final review returned isolated Important F001 on accepted integers beyond the interpreter conversion ceiling. Seven added proof cases were independently reviewed at2902c1d, admitted at5de245d, observed RED before repaira59b29e and then GREEN. The exact native wire representation is preserved; no interpreter-wide limit or financial calculation policy is changed. These are storage-domain witnesses, not IBKR feed-magnitude claims.
