@@ -162,16 +162,16 @@ def spread(bid: Decimal, ask: Decimal) -> Decimal | None:
                 coefficient = coefficient * 10 + digit
             parts.append((-coefficient if sign else coefficient, int(exponent)))
         (bid_coefficient, bid_exponent), (ask_coefficient, ask_exponent) = parts
-        exponent = min(bid_exponent, ask_exponent)
-        number = ask_coefficient * 10 ** (ask_exponent - exponent) - bid_coefficient * 10 ** (
-            bid_exponent - exponent
-        )
+        aligned_exponent = min(bid_exponent, ask_exponent)
+        number = ask_coefficient * 10 ** (
+            ask_exponent - aligned_exponent
+        ) - bid_coefficient * 10 ** (bid_exponent - aligned_exponent)
         sign, number = int(number < 0), abs(number)
         result = []
         while number:
             number, digit = divmod(number, 10)
             result.append(digit)
-        return Decimal((sign, tuple(reversed(result)) if result else (0,), exponent))
+        return Decimal((sign, tuple(reversed(result)) if result else (0,), aligned_exponent))
     except (ArithmeticError, ValueError, MemoryError):
         return None
 

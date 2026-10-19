@@ -1,5 +1,11 @@
 # NVDA V2 — ACTIVE successor ExecPlan: Gate 5 execution
 
+## D012 static first failure and bounded variable repair — 19 October 2026, 22:52 Melbourne
+
+At5dd8e22 actual strict product aggregates pass80D012/113foundation/30M00, all strict0; scoped lintPASS. Full typing reports7errors because spread reused the native Decimal tuple exponent variable (statically int/nonfinite-marker union) for the aligned finite integer exponent. Architecture promotion correspondingly1failed132passed, sole failure admitted static-typecheck; zero dependency/public-seam violations. Both first failures preserved at3c95f28 before repair. Root-cause comparison with existing midpoint shows its coefficient helper narrows exponent on return; new subtraction reused that local name in the outer scope. Small repair uses distinct aligned_exponent, retaining exact finite arithmetic/representation and no ignores/casts/schema/public changes. Full source/control mypy34files nowPASS. Required aggregate/promotion evidence on the repaired clean candidate remains to be obtained; no promotion success is inferred from runtime GREEN.
+
+---
+
 ## D012 engineering GREEN; exact regression/review candidate — 19 October 2026, 22:49 Melbourne
 
 After committed intendedRED17e21d7, bounded production80c1946cf7d054c14a09912afe8b9e7bcc161eec passes all80admittedD012cases/strict0 on unchanged generation1SHA26d2b4e371c38b0960cb6081798cc618c9f308567d0df12b2aa40f3777dd2a25. Only _catalogue.py/_evaluation.py/_sqlite.py changed; exact scoped subtraction/registration/request/readback semantics, original authority stillD011only. No public seam/field/schema/dependency/M00/A00/M01/pin/vendor change. Registry metadata now describes the separately accepted isolated D012 proof scope under current brief/standing authority; no final implementation acceptance is inferred. Required original aggregates, full source/control typing, scoped lint, architecture promotion and independent fixture-bypassing implementation review remain to establish on the exact clean candidate. G6.1 remains open; no native/full126 or downstream acceptance follows from80green cases.
