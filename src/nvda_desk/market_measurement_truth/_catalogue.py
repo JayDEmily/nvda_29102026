@@ -6,13 +6,16 @@ from collections.abc import Callable
 from dataclasses import dataclass, field, replace
 from datetime import datetime, timedelta
 from decimal import Decimal
-from typing import Any, cast
+from typing import TYPE_CHECKING, Any, cast
 
 from nvda_desk.raw_signal_occurrence_truth import api as raw_api
 
 from . import api as f
 from ._evaluation import canonical, digest, midpoint
 from ._selection import select
+
+if TYPE_CHECKING:
+    from ._sqlite import _SQLiteState
 
 NAMESPACE = "neutral_market_measurement_truth/v1"
 _AUTHORITY = (
@@ -134,7 +137,7 @@ class _Memory:
 
 
 class _Reads:
-    def __init__(self, state: _Memory) -> None:
+    def __init__(self, state: _Memory | _SQLiteState) -> None:
         self._state = state
 
     def get_derived_occurrence(
@@ -218,7 +221,7 @@ class _Owner:
         self,
         admission: f.OwnerAdmissionV1,
         reader: f.RawProjectionReaderV1,
-        state: _Memory,
+        state: _Memory | _SQLiteState,
         now: Callable[[], datetime],
     ) -> None:
         self._admission, self._raw, self._state, self._now = admission, reader, state, now
@@ -382,7 +385,11 @@ def build_owner(
             else:
                 state.configuration[_key(record)] = record
     if type(storage) is f.SQLiteStorageV1:
-        raise NotImplementedError("G5.2 SQLite durability unit")
+        from ._sqlite import create_state
+
+        return _Owner(
+            admission, raw_projection_reader, create_state(storage, admission, state), utc_now
+        )
     if type(storage) is not f.MemoryStorageV1:
         raise TypeError("explicit writer storage required")
     return _Owner(admission, raw_projection_reader, state, utc_now)
@@ -391,4 +398,10 @@ def build_owner(
 def build_reader(
     *, admission: f.OwnerAdmissionV1, storage: f.SQLiteReadStorageV1
 ) -> f.MeasurementReadsV1:
-    raise NotImplementedError("G5.2 SQLite durability unit")
+    if type(admission) is not f.OwnerAdmissionV1 or type(storage) is not f.SQLiteReadStorageV1:
+        raise TypeError("exact admission and read storage required")
+    from ._sqlite import _SQLiteState
+
+    state = _SQLiteState(storage.database_path, admission)
+    state.snapshot()
+    return _Reads(state)

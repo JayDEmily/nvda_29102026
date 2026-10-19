@@ -4,10 +4,11 @@ from __future__ import annotations
 
 import hashlib
 import json
+import types
 from dataclasses import fields, is_dataclass
 from datetime import datetime, timedelta
 from decimal import Decimal
-from typing import Any
+from typing import Any, Literal, get_args, get_origin, get_type_hints
 
 from nvda_desk.raw_signal_occurrence_truth import api as raw_api
 
@@ -63,6 +64,89 @@ def canonical(value: Any) -> bytes:
 
 def digest(value: Any) -> str:
     return hashlib.sha256(canonical(value)).hexdigest()
+
+
+def untagged(value: Any, hint: Any) -> Any:
+    """Decode only the exact declared public record/factory at this position."""
+    args = get_args(hint)
+    if get_origin(hint) is Literal:
+        if type(value) is not str or value not in args:
+            raise ValueError("invalid literal content")
+        return value
+    if get_origin(hint) is types.UnionType:
+        if value is None and type(None) in args:
+            return None
+        for option in args:
+            if option is type(None):
+                continue
+            try:
+                return untagged(value, option)
+            except (TypeError, ValueError, KeyError):
+                pass
+        raise ValueError("invalid union content")
+    if get_origin(hint) is tuple:
+        if type(value) is not list:
+            raise ValueError("tuple content must be an array")
+        if len(args) == 2 and args[1] is Ellipsis:
+            return tuple(untagged(item, args[0]) for item in value)
+        if len(value) != len(args):
+            raise ValueError("tuple arity mismatch")
+        return tuple(untagged(item, cls) for item, cls in zip(value, args, strict=True))
+    if hint in _IDENTITIES:
+        name = _IDENTITIES[hint]
+        if type(value) is not dict or set(value) != {"kind", "value"} or value["kind"] != name:
+            raise ValueError("opaque public identity layer mismatch")
+        return _FACTORIES[name](value["value"])
+    if hint is Decimal:
+        if type(value) is not dict or set(value) != {"kind", "sign", "digits", "exponent"}:
+            raise ValueError("invalid Decimal tag")
+        if (
+            value["kind"] != "decimal"
+            or type(value["sign"]) is not int
+            or value["sign"] not in (0, 1)
+            or type(value["digits"]) is not str
+            or not value["digits"]
+            or any(c not in "0123456789" for c in value["digits"])
+            or type(value["exponent"]) is not int
+        ):
+            raise ValueError("invalid exact Decimal content")
+        return Decimal((value["sign"], tuple(map(int, value["digits"])), value["exponent"]))
+    if hint is datetime:
+        if type(value) is not str:
+            raise TypeError("instant must be a string")
+        return datetime.fromisoformat(value.replace("Z", "+00:00"))
+    if hint is timedelta:
+        if type(value) is not int:
+            raise TypeError("duration must be exact microseconds")
+        return timedelta(microseconds=value)
+    if isinstance(hint, type) and is_dataclass(hint):
+        hints = get_type_hints(hint)
+        if type(value) is not dict or set(value) != set(hints):
+            raise ValueError("incomplete or extra record fields")
+        return hint(
+            **{
+                key: untagged(
+                    value[key],
+                    Decimal
+                    if hint is raw_api.ProjectedRawValueV1 and key == "native_value"
+                    else cls,
+                )
+                for key, cls in hints.items()
+            }
+        )
+    if hint is Any:
+        # Projected native value is broader in M00; this pilot stores only Decimal.
+        return untagged(value, Decimal)
+    if type(value) is not hint:
+        raise TypeError("stored scalar type mismatch")
+    return value
+
+
+def decode(payload: bytes, cls: Any) -> Any:
+    value = untagged(json.loads(payload), cls)
+    if canonical(value) != payload:
+        raise ValueError("noncanonical or lossy persisted representation")
+    return value
 
 
 def midpoint(bid: Decimal, ask: Decimal) -> Decimal | None:
