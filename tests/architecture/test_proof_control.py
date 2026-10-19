@@ -147,6 +147,18 @@ def test_d012_missing_generation_is_not_ready(tmp_path):
     assert _controls().load_product_proof_claim(root, D012_CLAIM).state == "INCOMPLETE_COVERAGE"
 
 
+@pytest.mark.parametrize("body,expected", [
+    ("assert 7 * 6 == 42", 0),
+    ("import pytest; pytest.skip('control canary')", 5),
+    ("from pathlib import Path; Path('GUARDRAILS.md').write_text('fixture mutation')", 6),
+])
+def test_d012_direct_strict_runner_outcomes(tmp_path, body, expected):
+    _controls()
+    root = _d012_control_candidate(tmp_path, body)
+    result = _run_control_probe(root, D012_CLAIM)
+    assert result.returncode == expected, result.stdout + result.stderr
+
+
 def _controls():
     # An attributable missing-capability assertion, after the interpreter and
     # existing kernel imports are established. Never call import failure RED.
@@ -384,7 +396,7 @@ def test_proof_generation_hash_and_supersession(tmp_path):
         api.load_product_proof_claim(root, "raw_signal_occurrence_truth_sqlite")
 
 
-def _run_control_probe(root):
+def _run_control_probe(root, aggregate=None):
     env = dict(os.environ, PYTHONPATH=str(root / "tools") + os.pathsep + str(root / "src"))
     subprocess.run(["git", "init", "-q"], cwd=root, check=True)
     subprocess.run(["git", "add", "."], cwd=root, check=True)
@@ -403,7 +415,9 @@ def _run_control_probe(root):
         check=True,
     )
     return subprocess.run(
-        [sys.executable, str(root / "tools/run_product_proof_gate.py")],
+        [sys.executable, str(root / "tools/run_product_proof_gate.py"), *(
+            [] if aggregate is None else ["--aggregate", aggregate]
+        )],
         cwd=root,
         env=env,
         text=True,
