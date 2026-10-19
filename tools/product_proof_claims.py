@@ -407,9 +407,9 @@ def _generation(
 
 
 def _scalar_extension(
-    root: Path, identity: Literal["D012", "D013"]
+    root: Path, identity: Literal["D012", "D013", "D014"]
 ) -> tuple[dict[str, Any], dict[str, Any], str] | None:
-    """Two fixed separately accepted extensions; never discover arbitrary claims."""
+    """Three fixed separately accepted extensions; never discover arbitrary claims."""
     name = identity.lower()
     directory = f"config/product_proof/market_measurement_{name}"
     descriptor = safe_path(root, directory + "/claim.json")
@@ -440,7 +440,7 @@ def _scalar_extension(
         raise ValueError(f"{identity} projection intent mismatch")
     text = brief.read_text(encoding="utf-8")
     rows = re.findall(r"^\| ([^|]+?) \| ([0-9a-f]{64}) \|$", text, re.M)
-    count = {"D012": 8, "D013": 11}[identity]
+    count = {"D012": 8, "D013": 11, "D014": 8}[identity]
     if len(rows) != count or len(dict(rows)) != count:
         raise ValueError(f"invalid {identity} incorporated-byte table")
     for name, digest in rows:
@@ -473,7 +473,7 @@ def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductPro
     authority = _authority(root, catalogue)
     extensions: dict[str, tuple[dict[str, Any], dict[str, Any], str]] = {}
     if authority is not None:
-        identities: tuple[Literal["D012", "D013"], ...] = ("D012", "D013")
+        identities: tuple[Literal["D012", "D013", "D014"], ...] = ("D012", "D013", "D014")
         for identity in identities:
             extension = _scalar_extension(root, identity)
             if extension is not None:
