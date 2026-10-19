@@ -1,5 +1,9 @@
 # Gate 5 execution and recovered checkpoint
 
+### G5.3-only current authorisation
+
+At21:23:27 Melbourne19October2026 the owner instructed “Okay, execute gate five point three only.” Reference owner-chat/20261019T212327/G5.3-only. Independent review is commissioned against delivered9e605bd and its exact accepted authority/generation3. No favourable disposition, target activation, Gate5 closure or later work is inferred from this permission. The root accepted plan governs the explicit concrete owner decision. Existing isolated worktree/branch is retained on work/v2-g53-review-20261019; no competing skill ledger or cleanup/deletion is performed. Prior checkpoints below remain evidence.
+
 ### G5.2 engineering leaf complete; stop before G5.3
 
 Exact engineering candidate01080afc938eefedd6f8c385330876d3e2cb57d7/treeee97ac0759d8730f7334a7d89aeb4e5cd79b30ff has85strict complete bootstrap development cases,30M00SQLite aggregate cases,416retained M00semantic cases,113architecture promotion cases/11families/zero seam-dependency violations,34source-control files mypy and scoped Ruff success. Standard Ruff still has the same two inherited M01 E501 findings. Current independently reviewed proof generation3SHA55e2284c8ee790cf996c6af445a43b00b5e7b9706a2a5f10fbe53ed597f1d1e4 chains immutable generations1/2. Unit RED/repair/evidence and proof-source review corrections are preserved. Closeout identifies exact commands, environment and limits.

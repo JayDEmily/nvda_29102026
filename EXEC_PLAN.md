@@ -1,5 +1,13 @@
 # NVDA V2 — ACTIVE successor ExecPlan: Gate 5 execution
 
+## G5.3 execution authorised — 19 October 2026, 21:23 Melbourne
+
+Current owner instruction: “Okay, execute gate five point three only.” Reference owner-chat/20261019T212327/G5.3-only. G5.3 is authorised for the independent boundary/pilot decision and its necessary review, bounded findings repair/proof and concrete admission preparation. Candidate submitted is delivered9e605bd1bc191761d9534dd90d883507cff93f49, source/proof engineering candidate01080afc938eefedd6f8c385330876d3e2cb57d7, immutable foundation generation3 SHA55e2284c8ee790cf996c6af445a43b00b5e7b9706a2a5f10fbe53ed597f1d1e4. Actual target remains bootstrap pending the §6 owner disposition and lawful activation boundary; execution permission does not fabricate a favourable independent review or acceptance of a changed candidate. Preserve root plan/G5_EXECUTION_RECORD as sole ledger. No extra skill ledger, main merge, G6/native/provider/live/migration/retirement work is authorised.
+
+Current ledger: G5.1 ACCEPTED_CLOSED; G5.2 ENGINEERING_LEAF_COMPLETE_BOOTSTRAP_CANDIDATE; G5.3 IN_PROGRESS_INDEPENDENT_REVIEW; G6 NOT_OPEN. Work branch work/v2-g53-review-20261019. Exact candidate/control/authority objects exist locally and hashes were re-established before review. No tests or domain source changes are needed merely to record this authority.
+
+---
+
 ## G5.2 engineering leaf completed — 19 October 2026, 21:03 Melbourne
 
 The four sequential G5.2 units have supported-runtime evidence at source/config/proof candidate01080afc938eefedd6f8c385330876d3e2cb57d7, treeee97ac0759d8730f7334a7d89aeb4e5cd79b30ff. Public D011 boundary, complete selection/history, immutable identity/types and separate SQLite durability are implemented. Independently reviewed immutable generation3 SHA25655e2284c8ee790cf996c6af445a43b00b5e7b9706a2a5f10fbe53ed597f1d1e4 supports all seven pilot propositions. Separately authorised bootstrap development proof executes85cases with strict complete outcomes/no skips/xfails/deselection or governed mutation; it is expressly not the active-target aggregate. Actual M00 SQLite aggregate30PASS, retained M00 semantic regression416PASS, architecture promotion113PASS/11families/zero dependency-public-seam violations, full source/control mypy34files and scoped Ruff PASS. Standard Ruff retains exactly two inherited M01 E501 findings; no standard-lint success is claimed.
