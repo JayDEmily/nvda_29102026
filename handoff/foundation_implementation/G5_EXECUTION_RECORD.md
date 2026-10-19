@@ -1,5 +1,9 @@
 # Gate 5 execution and recovered checkpoint
 
+### Active promotion proved; final Gate5 disposition remains human
+
+Exact final promoted candidateb83a1a071153d3bdff7f0aa1b6b49bcd3c90ceb2/tree4e2d3197c929ec9f06e0fdc6b0e204244c3c1a78: actual active foundation113PASS/strict0, M00SQLite30PASS/strict0, kernel113PASS/11families/zero dependency-seam violations and scoped changed architecture-test lintPASS. Product proof/runtime/authority/dependencies remain unchanged from acceptedb25eea9; currentgen4unchanged. First kernelpromotion failure and recurrent checkpoint-count fixture repair are preserved; no validator weakened. Owner candidate/activation approval is effective. G5.3 is PROMOTION_PROVED_AWAITING_FINAL_OWNER_DISPOSITION, not ownerclosed. Exact§6 finalacceptance needs actual owner disposition on this promotion evidence. Existing sequentialG6commission persists with prerequisites; no dependent later leaf started. Current project consolidation attachment is available/gzipvalid; no re-upload required. See G5_3_PROMOTION_EVIDENCE_20261019.md for complete attribution/limits and recommended boundedACCEPT.
+
 ### First active promotion failure and bounded fixture diagnosis
 
 At5a3e178 the actual active foundation aggregate passes113cases/strict0 and M00SQLite passes30/strict0. Architecture promotion produced1failed/112passed at test_aggregate_validator_accepts_lawful_protocol_and_kernel_activation: literal active-runtime-module count1 conflicted with the authorised current M00+M02 population2. Primary validator output and unchanged registry source establish correct actual count; no validator/schema/runtime failure is inferred. First log is committed before repair.

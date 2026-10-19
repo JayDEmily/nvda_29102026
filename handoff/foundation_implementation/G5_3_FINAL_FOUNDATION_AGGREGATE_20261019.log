@@ -1,0 +1,19 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/d549b6d808a9/g52-recovery/repository
+configfile: pyproject.toml
+collected 113 items
+
+tests/product/market_measurement/test_boundary_pilot.py ................ [ 14%]
+.......                                                                  [ 20%]
+tests/product/market_measurement/test_selection_history.py ............. [ 31%]
+...............................................                          [ 73%]
+tests/product/market_measurement/test_identity_readback.py ........      [ 80%]
+tests/product/market_measurement/test_public_types.py ..........         [ 89%]
+tests/product/market_measurement/test_sqlite_boundary.py ............    [100%]
+
+============================= 113 passed in 3.51s ==============================
+product-proof aggregate: neutral_market_measurement_truth_pilot state=READY_FOR_PROOF
+authority=3ad4cdc9ffba4cf91ff9a27edf1dd3b1a9824a421514bb4b5a2cc1b9c504f233 generation=24a5af4054c277b01a140ec43481e86851e5e76263826644a80993c12c2495b7
+candidate=b83a1a071153d3bdff7f0aa1b6b49bcd3c90ceb2
+observed aggregate outcome: exit=0

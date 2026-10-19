@@ -1,5 +1,15 @@
 # NVDA V2 — ACTIVE successor ExecPlan: Gate 5 execution
 
+## G5.3 active promotion proved; final owner disposition pending — 19 October 2026, 22:09 Melbourne
+
+Owner acceptance at22:03 was recorded and exact isolated activation applied at5a3e178. Actual final candidateb83a1a071153d3bdff7f0aa1b6b49bcd3c90ceb2/tree4e2d3197c929ec9f06e0fdc6b0e204244c3c1a78 passes the active-target foundation aggregate113cases/strict0, M00SQLiteaggregate30cases/strict0 and architecture promotion113cases/11families/zero dependency-public-seam violations. Changed architecture-test scoped lint passes. Accepted brief, runtime source/productproof/pins/dependencies/vendor remain unchanged from acceptedb25eea9; foundation generation4SHA24a5af4054c277b01a140ec43481e86851e5e76263826644a80993c12c2495b7 is unchanged. Prior416retainedM00semantic/34filemypy evidence remains separately attributable; two inherited M01E501 lint findings remain disclosed.
+
+First architecture promotion failed a stale copied-real-state fixture count1 against lawful activeM00+M02. Failure preserved before repair; lineage4c9bdb8 establishes RECURRENT_CLASS checkpoint-count assumptions. Bounded test repair now proves exact protocol/kernel object additions and unchanged baseline active modules, closing both stale-count literals without validator/schema/runtime weakening. Full promotion then passes. See G5_3_PROMOTION_EVIDENCE_20261019.md and actual logs for exact commands/environment/review attribution/limits.
+
+Current ledger: G5.1 ACCEPTED_CLOSED; G5.2 ENGINEERING_LEAF_COMPLETE; G5.3 PROMOTION_PROVED_AWAITING_FINAL_OWNER_DISPOSITION; Gate5 NOT_YET_OWNER_CLOSED; M02 active for isolated D011only; G6.1–G6.4 COMMISSIONED_IN_ORDER_PENDING_REQUIRED_PREDECESSOR_AND_EXACT_FAMILY_CONTRACTS. The remaining invariant is final owner ACCEPT/RETURN/BLOCK based on these actual results under§6. Candidate and activation approval are already effective and are not reopened. No final decision, independent repair review or Gate6 execution is fabricated. Current project consolidation attachment is available and gzip integrity passes; no re-upload is needed.
+
+---
+
 ## G5.3 candidate and isolated activation accepted — 19 October 2026, 22:03 Melbourne
 
 The owner answered “I approve continuing.” to the concrete question accepting repaired candidateb25eea9 and its packaged M02 isolated D011 activation proposal. Reference owner-chat/20261019T220331/G5.3-candidate-and-activation. This accepts that exact bounded candidate with the disclosed review/repair/evidence limits and authorises the two-path diff SHA687f0644880e4de20c2b6af9f45d921e3816d6ba42b92ee6c90077ba4f9a5467. Apply the exact diff, preserve proof generation4 unchanged, obtain actual active-target foundation/M00 aggregates and architecture promotion on the clean admitted candidate, then record actual results for the final§6 disposition. No result or final gate acceptance is inferred in advance. Sequential remaining-leaf commissioning remains current.
