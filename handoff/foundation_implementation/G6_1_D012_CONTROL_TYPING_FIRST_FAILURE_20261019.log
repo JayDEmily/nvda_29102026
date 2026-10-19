@@ -1,0 +1,6 @@
+src/nvda_desk/derived_signal_calculation_truth/_financial_policy.py:188: note: By default the bodies of untyped functions are not checked, consider using --check-untyped-defs  [annotation-unchecked]
+src/nvda_desk/derived_signal_calculation_truth/_financial_policy.py:201: note: By default the bodies of untyped functions are not checked, consider using --check-untyped-defs  [annotation-unchecked]
+tools/product_proof_claims.py:511: error: Name "family_ids" already defined on line 497  [no-redef]
+tools/product_proof_claims.py:516: error: Unsupported left operand type for & ("list[Any]")  [operator]
+tools/product_proof_claims.py:518: error: "list[Any]" has no attribute "update"  [attr-defined]
+Found 3 errors in 1 file (checked 34 source files)

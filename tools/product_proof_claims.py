@@ -406,15 +406,72 @@ def _generation(
     return pointer["current_generation"]["sha256"], files
 
 
+def _d012_extension(root: Path) -> tuple[dict[str, Any], dict[str, Any], str] | None:
+    """One separately accepted extension; never reseal the original catalogue."""
+    directory = "config/product_proof/market_measurement_d012"
+    descriptor = safe_path(root, directory + "/claim.json")
+    if not descriptor.exists():
+        physical = safe_path(root, "tests/product/market_measurement_d012")
+        if physical.exists() and any(p.is_file() or p.is_symlink() for p in physical.rglob("*.py")):
+            raise ValueError("unowned D012 extension Python source without descriptor")
+        return None
+    prefix = "handoff/foundation_implementation/authority/G6_1_D012_"
+    expected = {
+        "schema_version": "1.0",
+        "claim_id": "neutral_market_measurement_truth_d012",
+        "brief_path": prefix + "IMPLEMENTATION_BRIEF_PROPOSED.md",
+        "binding_path": "implementation/authority/G6_1_D012_IMPLEMENTATION_AUTHORITY_BINDING.yaml",
+        "contract_path": prefix + "PROOF_CONTRACT_PROPOSED.json",
+        "physical_root": "tests/product/market_measurement_d012",
+        "admission_path": directory + "/admission.json",
+    }
+    if read_json(descriptor) != expected:
+        raise ValueError("invalid D012 extension descriptor")
+    brief = safe_path(root, expected["brief_path"])
+    binding = safe_path(root, expected["binding_path"])
+    validate_implementation_authority(root, binding, brief)
+    intents = yaml.safe_load(binding.read_text(encoding="utf-8"))["targets"]
+    if intents != [{"action": "modify", "object_id": name} for name in ("M02", "G01")]:
+        raise ValueError("D012 projection intent mismatch")
+    text = brief.read_text(encoding="utf-8")
+    rows = re.findall(r"^\| ([^|]+?) \| ([0-9a-f]{64}) \|$", text, re.M)
+    if len(rows) != 8 or len(dict(rows)) != 8:
+        raise ValueError("invalid D012 incorporated-byte table")
+    for name, digest in rows:
+        if sha256(safe_path(root, name)) != digest:
+            raise ValueError("D012 incorporated companion hash mismatch")
+    contract_path = safe_path(root, expected["contract_path"])
+    if sha256(contract_path) != _marker(text, "D012-PROOF-CONTRACT-SHA256"):
+        raise ValueError("D012 contract marker mismatch")
+    contract = read_json(contract_path)
+    _schema(root, contract, "accepted_brief_product_proof.schema.json")
+    if (
+        contract["claim_id"] != expected["claim_id"]
+        or contract["semantic_brief_path"] != expected["brief_path"]
+        or contract["target"]["intent"] != "modify"
+        or contract["target"].get("existing_object_id") != "M02"
+    ):
+        raise ValueError("D012 cross-claim authority association mismatch")
+    entry = {key: value for key, value in expected.items() if key != "brief_path"}
+    entry["profile"] = "accepted_brief_v2"
+    target_id, _ = _target(root, contract["target"])
+    # Validate an admitted extension even when an original claim was selected.
+    _generation(root, entry, contract, sha256(brief), target_id)
+    return entry, contract, sha256(brief)
+
+
 def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductProofClaim:
     root = repository_root.resolve()
     catalogue = read_json(root / "config/product_proof/claims.json")
     _schema(root, catalogue, "product_proof_claims.schema.json")
+    authority = _authority(root, catalogue)
+    extension = _d012_extension(root) if authority is not None else None
+    if extension is not None:
+        catalogue = {**catalogue, "claims": [*catalogue["claims"], extension[0]]}
     ids = [entry["claim_id"] for entry in catalogue["claims"]]
     if len(ids) != len(set(ids)) or claim_id not in ids:
         raise ValueError(f"unknown/duplicate product claim: {claim_id}")
     entry = next(row for row in catalogue["claims"] if row["claim_id"] == claim_id)
-    authority = _authority(root, catalogue)
     if authority is None:
         return ProductProofClaim(
             claim_id, entry["profile"], None, None, None, None, "AWAITING_AUTHORITY", (), (), ()
@@ -423,14 +480,17 @@ def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductPro
     contracts = {}
     for row in catalogue["claims"]:
         if row["profile"] == "accepted_brief_v2":
-            if row["contract_path"] not in incorporated:
+            is_extension = extension is not None and row["claim_id"] == extension[0]["claim_id"]
+            if not is_extension and row["contract_path"] not in incorporated:
                 raise ValueError("unincorporated claim contract")
             contract = read_json(safe_path(root, row["contract_path"]))
             _schema(root, contract, "accepted_brief_product_proof.schema.json")
-            if (
-                contract["claim_id"] != row["claim_id"]
-                or contract["semantic_brief_path"] != catalogue["control_authority"]["brief_path"]
-                or row["binding_path"] != catalogue["control_authority"]["binding_path"]
+            if contract["claim_id"] != row["claim_id"] or (
+                not is_extension
+                and (
+                    contract["semantic_brief_path"] != catalogue["control_authority"]["brief_path"]
+                    or row["binding_path"] != catalogue["control_authority"]["binding_path"]
+                )
             ):
                 raise ValueError("cross-claim authority association mismatch")
             paths = [family["path"] for family in contract["families"]]
@@ -448,6 +508,15 @@ def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductPro
             if covered != set(contract["required_proof_ids"]):
                 raise ValueError("incomplete contract proposition coverage")
             contracts[row["claim_id"]] = contract
+    family_ids: set[str] = set()
+    proof_ids: set[str] = set()
+    for contract in contracts.values():
+        current_families = {family["id"] for family in contract["families"]}
+        current_proofs = set(contract["required_proof_ids"])
+        if family_ids & current_families or proof_ids & current_proofs:
+            raise ValueError("cross-claim family/proof ownership collision")
+        family_ids.update(current_families)
+        proof_ids.update(current_proofs)
     from validate_product_proof import _validate_legacy_product_proof
 
     legacy_families = yaml.safe_load((root / "config/product_proof/families.yaml").read_text())[
@@ -477,6 +546,8 @@ def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductPro
             snapshot,
         )
     contract = contracts[claim_id]
+    if extension is not None and claim_id == extension[0]["claim_id"]:
+        brief_hash = extension[2]
     target_id, status = _target(root, contract["target"])
     generation_hash, files = _generation(root, entry, contract, brief_hash, target_id)
     families = tuple(
