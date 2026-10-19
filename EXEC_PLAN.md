@@ -1,5 +1,11 @@
 # NVDA V2 — ACTIVE successor ExecPlan: Gate 5 execution
 
+## D012 engineering GREEN; exact regression/review candidate — 19 October 2026, 22:49 Melbourne
+
+After committed intendedRED17e21d7, bounded production80c1946cf7d054c14a09912afe8b9e7bcc161eec passes all80admittedD012cases/strict0 on unchanged generation1SHA26d2b4e371c38b0960cb6081798cc618c9f308567d0df12b2aa40f3777dd2a25. Only _catalogue.py/_evaluation.py/_sqlite.py changed; exact scoped subtraction/registration/request/readback semantics, original authority stillD011only. No public seam/field/schema/dependency/M00/A00/M01/pin/vendor change. Registry metadata now describes the separately accepted isolated D012 proof scope under current brief/standing authority; no final implementation acceptance is inferred. Required original aggregates, full source/control typing, scoped lint, architecture promotion and independent fixture-bypassing implementation review remain to establish on the exact clean candidate. G6.1 remains open; no native/full126 or downstream acceptance follows from80green cases.
+
+---
+
 ## D012 generation1 admitted and actual intended RED preserved — 19 October 2026, 22:48 Melbourne
 
 Independent adequacy PASS reference independent-review/g61-d012-proof-v2/7eaddf9/20261019 on exact test_spread SHA f2911a597f55ffd152d2089b722813e8e7d3800bf55f75b8c845d54cd93095bc and unchanged three support/specimen hashes. Actual delegated generation1 admission at2de528340e151fe044efaf3351dcb94789064437, generationSHA26d2b4e371c38b0960cb6081798cc618c9f308567d0df12b2aa40f3777dd2a25. Strict native D012 aggregate was READY_FOR_PROOF/activeM02 and collected80cases;79failed from existing _expected rejecting D012-SPREAD definitions,1legacy/typecompatibility case passed; strict/process1. Complete first log preserved before production change. Environment/collection/admission succeeded; this is intended missing-domain-capability RED. No test skip or authority mismatch was counted as RED. Next is only the accepted bounded D012 source/metadata implementation, then required targeted/full regression and independent implementation review.

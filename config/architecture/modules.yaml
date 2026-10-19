@@ -102,24 +102,24 @@ modules:
   - id: M02
     name: neutral_market_measurement_truth
     status: active
-    description: Bounded neutral measurement owner admitted for isolated controlled D011 pilot proof under accepted version3; application composition and full126 acceptance remain outside this admission.
-    semantic_responsibility: Own strategy-independent neutral market measurement meaning and immutable definition/configuration/result truth under the accepted exact version3 controlled D011 contract; only D011 is enabled.
+    description: Bounded neutral measurement owner admitted for isolated controlled D011 and separately authorised D012 proof; application composition and full126 acceptance remain outside this admission.
+    semantic_responsibility: Own strategy-independent neutral market measurement meaning and immutable definition/configuration/result truth under exact accepted construction authority; original version3 enables D011 only, and the accepted D012 extension enables controlled D011/D012.
     inputs:
       - Existing typed M00 raw-value/history projection and exact immutable raw projection mappings through the M00 public seam only.
-      - Exact controlled D011 definition, parameter, selection and unit versions supplied by accepted version3.
+      - Exact controlled D011 definition, parameter, selection and unit versions supplied by accepted version3, plus separately accepted D012 definition and construction authority using the same controlled inputs.
     outputs:
-      - Controlled D011 scalar-Decimal occurrences with immutable complete lineage and exact typed readback through the admitted public seam.
+      - Controlled D011 midpoint and authority-enabled D012 signed spread scalar-Decimal occurrences with immutable complete lineage and exact typed readback through the admitted public seam.
     permitted_dependencies:
       - M00
     package: nvda_desk.market_measurement_truth
     public_seam: nvda_desk.market_measurement_truth.api
     exclusions:
-      - Application composition or consumer admission beyond isolated controlled D011 pilot proof; no A00 edge to this owner.
-      - Other125 foundation identities and all83 downstream outputs or peer/private strategy chains.
+      - Application composition or consumer admission beyond isolated controlled D011/D012 proof; no A00 edge to this owner.
+      - Other124 foundation identities and all83 downstream outputs or peer/private strategy chains; original D011 construction remains D011-only.
       - Native IBKR mappings, acquisition, live providers, accounts, orders and external effects.
       - M01 private imports, direct cross-owner SQL, migration, retirement, populated-state or full126 acceptance.
       - Hostile-code/database-role isolation, replay/SLA/performance/retention/RTO/RPO guarantees.
-    state_ownership: Own immutable definitions, controlled configuration snapshots, D011 occurrence identities and full lineage in a separate owner-local store; M00 remains raw semantic owner and M01 retains all original state/attribution.
+    state_ownership: Own immutable definitions, controlled configuration snapshots, authority-scoped D011/D012 occurrence identities and full lineage in a separate owner-local store; M00 remains raw semantic owner and M01 retains all original state/attribution.
     time_ownership: Calculation time, effective as-of and knowledge cutoff for controlled results; preserve M00 source/receipt distinctions and invent no absent event time.
     side_effects:
       - Owner-authorised immutable registration and own-command append only after acknowledged own-store commit under admitted proof.
@@ -130,7 +130,7 @@ modules:
       - repository
       - configuration
       - adapter
-    state_writer_boundary: Typed MeasurementOwnerV1.materialise and atomic immutable registration under accepted version3 through the sole owner-local writer.
+    state_writer_boundary: Typed MeasurementOwnerV1.materialise and atomic immutable registration under exact accepted version3 or D012-extension construction authority through the sole owner-local writer.
     state_reader_boundaries:
       - Typed MeasurementReadsV1 exact occurrence/history/definition/configuration facets; read-only storage exposes no writer/materialisation capability.
     persistence_mechanisms:
