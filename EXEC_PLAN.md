@@ -1,5 +1,13 @@
 # NVDA V2 — ACTIVE successor ExecPlan: Gate 5 execution
 
+## Final Gate 5 owner acceptance — 19 October 2026, 22:14 Melbourne
+
+The owner answered “Yes I do.” to the explicit question accepting Gate 5 as closed for the controlled D011 pilot, after receiving the actual promotion results and saved evidence at ecb57538d0513a680c9e2ce2d0def4d992c3d833. Reference: owner-chat/20261019T2214/Gate5-final-acceptance. This is final ACCEPT under §6 for promoted candidate b83a1a071153d3bdff7f0aa1b6b49bcd3c90ceb2, tree 4e2d3197c929ec9f06e0fdc6b0e204244c3c1a78, foundation generation4 SHA256 24a5af4054c277b01a140ec43481e86851e5e76263826644a80993c12c2495b7. Evidence and limits remain exactly as recorded in G5_3_PROMOTION_EVIDENCE_20261019.md: CPython3.12.14/SQLite3.53.1; active foundation113PASS/strict0, M00SQLite30PASS/strict0, architecture113PASS/zero dependency-public-seam violations; two inherited M01 E501 findings; independent original review and author repair verification separately attributed.
+
+Current ledger: G5.1 ACCEPTED_CLOSED; G5.2 ENGINEERING_LEAF_COMPLETE_ACCEPTED_WITH_GATE5; G5.3 ACCEPTED_CLOSED; Gate5 ACCEPTED_CLOSED_CONTROLLED_D011_ONLY. Existing commissioning of G6.1→G6.4 remains effective. G6.1 now enters documentary family-contract/proof/root-amendment preparation under §7; affected code execution awaits exact accepted family authority and amendment. No full126 acceptance, native acquisition, A00 composition, populated-state compatibility, migration, retirement or main merge follows. Earlier status entries are historical evidence.
+
+---
+
 ## G5.3 active promotion proved; final owner disposition pending — 19 October 2026, 22:09 Melbourne
 
 Owner acceptance at22:03 was recorded and exact isolated activation applied at5a3e178. Actual final candidateb83a1a071153d3bdff7f0aa1b6b49bcd3c90ceb2/tree4e2d3197c929ec9f06e0fdc6b0e204244c3c1a78 passes the active-target foundation aggregate113cases/strict0, M00SQLiteaggregate30cases/strict0 and architecture promotion113cases/11families/zero dependency-public-seam violations. Changed architecture-test scoped lint passes. Accepted brief, runtime source/productproof/pins/dependencies/vendor remain unchanged from acceptedb25eea9; foundation generation4SHA24a5af4054c277b01a140ec43481e86851e5e76263826644a80993c12c2495b7 is unchanged. Prior416retainedM00semantic/34filemypy evidence remains separately attributable; two inherited M01E501 lint findings remain disclosed.
