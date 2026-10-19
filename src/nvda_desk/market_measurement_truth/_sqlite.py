@@ -15,8 +15,8 @@ from typing import Any
 from nvda_desk.raw_signal_occurrence_truth import api as raw_api
 
 from . import api as f
-from ._catalogue import NAMESPACE, _Configuration, _expected, _key, _Memory
-from ._evaluation import canonical, decode, digest, midpoint, timestamp, untagged
+from ._catalogue import NAMESPACE, _Configuration, _enabled, _expected, _key, _Memory
+from ._evaluation import canonical, decode, digest, midpoint, spread, timestamp, untagged
 from ._selection import eligible
 
 _DEF = "mmt_definition_v1"
@@ -220,7 +220,7 @@ def _validate_occurrence(
     }
     conventions = tuple(units[key] for key in sorted(units))
     if (
-        req.derived_signal_id != "D011"
+        not _enabled(req.derived_signal_id, admission)
         or req.subject_instrument != "NVDA"
         or req.context_refs
         or not req.as_of_utc <= req.knowledge_cutoff_utc <= occurrence.calculated_at_utc
@@ -264,14 +264,15 @@ def _validate_occurrence(
     )
     if canonical(expected_payload) != logical:
         raise ValueError("logical identity/reference content mismatch")
-    result = midpoint(selected_lineage[0].canonical_value, selected_lineage[1].canonical_value)
+    evaluate = spread if req.derived_signal_id == "D012" else midpoint
+    result = evaluate(selected_lineage[0].canonical_value, selected_lineage[1].canonical_value)
     if result is None:
         raise ValueError("unrepresentable stored result")
     expected = f.DerivedSignalOccurrenceV1(
         admission.object_id,
         NAMESPACE,
         admission.implementation_brief_sha256,
-        "D011",
+        req.derived_signal_id,
         "mmt1:" + _hash(logical),
         definition.calculation_definition_version,
         digest(definition),
@@ -300,14 +301,14 @@ def _load(c: sqlite3.Connection, admission: f.OwnerAdmissionV1) -> _Memory:
         value = decode(row[-2], f.CalculationDefinitionV1)
         if row[:-2] != _definition_index(value) or row[-1] != _hash(row[-2]):
             raise ValueError("definition index/hash mismatch")
-        if canonical(value) != canonical(_expected(value)):
+        if canonical(value) != canonical(_expected(value, admission)):
             raise ValueError("unsupported stored definition")
         state.definitions[(value.derived_signal_id, value.calculation_definition_version)] = value
     for row in c.execute(f"SELECT * FROM {_CFG}"):
         value = decode(row[-2], _KINDS[row[1]])
         if row[:-2] != _configuration_index(value) or row[-1] != _hash(row[-2]):
             raise ValueError("configuration index/hash mismatch")
-        if canonical(value) != canonical(_expected(value)):
+        if canonical(value) != canonical(_expected(value, admission)):
             raise ValueError("unsupported stored configuration")
         state.configuration[_key(value)] = value
     for row in c.execute(f"SELECT * FROM {_OCC}"):

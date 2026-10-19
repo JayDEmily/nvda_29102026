@@ -149,6 +149,33 @@ def decode(payload: bytes, cls: Any) -> Any:
     return value
 
 
+def spread(bid: Decimal, ask: Decimal) -> Decimal | None:
+    """Signed ask minus bid at the aligned exponent, without ambient rounding."""
+    try:
+        if not bid.is_finite() or not ask.is_finite():
+            return None
+        parts = []
+        for value in (bid, ask):
+            sign, digits, exponent = value.as_tuple()
+            coefficient = 0
+            for digit in digits:
+                coefficient = coefficient * 10 + digit
+            parts.append((-coefficient if sign else coefficient, int(exponent)))
+        (bid_coefficient, bid_exponent), (ask_coefficient, ask_exponent) = parts
+        exponent = min(bid_exponent, ask_exponent)
+        number = ask_coefficient * 10 ** (ask_exponent - exponent) - bid_coefficient * 10 ** (
+            bid_exponent - exponent
+        )
+        sign, number = int(number < 0), abs(number)
+        result = []
+        while number:
+            number, digit = divmod(number, 10)
+            result.append(digit)
+        return Decimal((sign, tuple(reversed(result)) if result else (0,), exponent))
+    except (ArithmeticError, ValueError, MemoryError):
+        return None
+
+
 def midpoint(bid: Decimal, ask: Decimal) -> Decimal | None:
     """Exact coefficient alignment/division; no ambient Decimal arithmetic."""
     try:

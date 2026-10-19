@@ -11,13 +11,14 @@ from typing import TYPE_CHECKING, Any, cast
 from nvda_desk.raw_signal_occurrence_truth import api as raw_api
 
 from . import api as f
-from ._evaluation import canonical, digest, midpoint
+from ._evaluation import canonical, digest, midpoint, spread
 from ._selection import select
 
 if TYPE_CHECKING:
     from ._sqlite import _SQLiteState
 
 NAMESPACE = "neutral_market_measurement_truth/v1"
+_D012_BRIEF = "a31c482d2dc4822539ede99e955761319585af4badea93b9fc279638e1e1f393"
 _AUTHORITY = (
     (
         "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md",
@@ -38,15 +39,26 @@ type _Configuration = (
 )
 
 
-def _expected(value: Any) -> Any:
+def _enabled(identity: str, admission: f.OwnerAdmissionV1) -> bool:
+    return identity == "D011" or (
+        identity == "D012" and admission.implementation_brief_sha256 == _D012_BRIEF
+    )
+
+
+def _expected(value: Any, admission: f.OwnerAdmissionV1) -> Any:
     if type(value) is f.CalculationDefinitionV1:
-        if value.calculation_definition_version not in {"D011-MIDPOINT-1", "D011-MIDPOINT-2"}:
+        identity = value.derived_signal_id
+        label = "SPREAD" if identity == "D012" else "MIDPOINT"
+        if not _enabled(identity, admission) or value.calculation_definition_version not in {
+            f"{identity}-{label}-1",
+            f"{identity}-{label}-2",
+        }:
             raise ValueError("unadmitted definition version")
         return f.CalculationDefinitionV1(
-            "D011",
+            identity,
             value.calculation_definition_version,
             "K02_ALGEBRA",
-            "(R034 + R035) / 2",
+            "R035 - R034" if identity == "D012" else "(R034 + R035) / 2",
             ("R034", "R035"),
             (),
             "P_BASIC",
@@ -237,14 +249,16 @@ class _Owner:
         now = self._now()
         f._utc(now)
         if (
-            request.derived_signal_id != "D011"
+            not _enabled(request.derived_signal_id, self._admission)
             or request.subject_instrument != "NVDA"
             or request.context_refs
             or not request.as_of_utc <= request.knowledge_cutoff_utc <= now
             or tuple(b.raw_signal_id for b in request.raw_input_bindings) != ("R034", "R035")
         ):
             return None
-        definition = self._state.definitions.get(("D011", request.calculation_definition_version))
+        definition = self._state.definitions.get(
+            (request.derived_signal_id, request.calculation_definition_version)
+        )
         parameter = self._state.configuration.get(
             ("parameter", request.parameter_set_ref.context_id, request.parameter_set_ref.version)
         )
@@ -306,7 +320,8 @@ class _Owner:
             units[(unit.context_id, unit.version)] = unit
         if abs(lineage[0].event_time_utc - lineage[1].event_time_utc) > selection.maximum_skew:
             return None
-        value = midpoint(lineage[0].canonical_value, lineage[1].canonical_value)
+        evaluate = spread if request.derived_signal_id == "D012" else midpoint
+        value = evaluate(lineage[0].canonical_value, lineage[1].canonical_value)
         if value is None:
             return None
         convention_snapshots = tuple(units[key] for key in sorted(units))
@@ -326,7 +341,7 @@ class _Owner:
             self._admission.object_id,
             NAMESPACE,
             self._admission.implementation_brief_sha256,
-            "D011",
+            request.derived_signal_id,
             "mmt1:" + digest(payload),
             definition.calculation_definition_version,
             digest(definition),
@@ -376,8 +391,8 @@ def build_owner(
         if type(records) is not tuple or any(type(record) is not cls for record in records):
             raise TypeError("exact tuple of declared registration records required")
         for record in records:
-            if canonical(record) != canonical(_expected(record)):
-                raise ValueError("configuration is outside the accepted controlled D011 payload")
+            if canonical(record) != canonical(_expected(record, admission)):
+                raise ValueError("configuration is outside the accepted controlled payload")
             if isinstance(record, f.CalculationDefinitionV1):
                 state.definitions[
                     (record.derived_signal_id, record.calculation_definition_version)
