@@ -27,6 +27,12 @@ from test_contract_native import representation
 from nvda_desk.raw_signal_occurrence_truth import api
 
 
+def require_committed_return(path, kind, identity, returned, expected):
+    """One complete-fact discriminator for actual public returns and canary substitutes."""
+    assert representation(returned) == representation(expected)
+    assert representation(fresh_record(path, kind, identity)) == representation(expected)
+
+
 def test_sqlite_environment_and_only_configured_semantic_source(tmp_path):
     assert sys.version_info[:3] == (3, 12, 14)
     assert sqlite3.sqlite_version == "3.53.1"
@@ -157,19 +163,19 @@ o = owner(sys.argv[1])
 kind = sys.argv[2]
 v = pickle.loads(base64.b64decode(sys.argv[3]))
 if kind == "policy":
-    o.commands.register_capture_scope_policy(v)
+    result = o.commands.register_capture_scope_policy(v)
 elif kind == "observation":
-    o.commands.admit_raw_observation_occurrence(v)
+    result = o.commands.admit_raw_observation_occurrence(v)
 elif kind == "capture":
-    o.commands.realise_scheduled_capture_occurrence(scope_policy_ref=v.scope_policy_ref,
+    result = o.commands.realise_scheduled_capture_occurrence(scope_policy_ref=v.scope_policy_ref,
         slot_start_utc=v.slot_start_utc, capture_occurrence_id=v.capture_occurrence_id)
 else:
-    o.commands.append_capture_receipt_presence_assessment(
+    result = o.commands.append_capture_receipt_presence_assessment(
         assessment_occurrence_id=v.assessment_occurrence_id,
         capture_occurrence_ref=v.capture_occurrence_ref,
         evidence_as_of_ts_utc=v.evidence_as_of_ts_utc,
         supersedes_assessment_ref=v.supersedes_assessment_ref)
-print("RETURNED", flush=True)
+print(base64.b64encode(pickle.dumps(result)).decode("ascii"), flush=True)
 sys.stdin.read()
 """
     proc = subprocess.Popen(
@@ -189,8 +195,8 @@ sys.stdin.read()
         text=True,
     )
     try:
-        assert proc.stdout.readline().strip() == "RETURNED"
-        assert representation(fresh_record(path, kind, identity)) == representation(expected)
+        returned = pickle.loads(base64.b64decode(proc.stdout.readline().strip()))
+        require_committed_return(path, kind, identity, returned, expected)
     finally:
         proc.kill()
         proc.communicate(timeout=10)
@@ -347,10 +353,7 @@ def test_sqlite_proof_rejects_surrogate_commit_and_payload(tmp_path):
 
     def correspondence(operation):
         returned = operation()
-        assert representation(returned) == representation(expected)
-        assert representation(fresh_record(path, "observation", "target")) == representation(
-            expected
-        )
+        require_committed_return(path, "observation", "target", returned, expected)
 
     def setup_only():
         o.commands.register_capture_scope_policy(policy())
@@ -526,10 +529,10 @@ def test_sqlite_schema_settings_canonical_payload_and_index_integrity(tmp_path, 
         trigger_sql = c.execute(
             "SELECT name,sql FROM sqlite_schema WHERE type='trigger'"
         ).fetchall()
-        for name, sql in trigger_sql:
+        for name, _sql in trigger_sql:
             c.execute('DROP TRIGGER "' + name + '"')
         c.execute("UPDATE rsot_raw_observation_occurrence_v1 SET ingestion_sequence='2'")
-        for name, sql in trigger_sql:
+        for _name, sql in trigger_sql:
             c.execute(sql)
     with pytest.raises(api.PersistenceFailureV1):
         owner(path).reads.get_raw_observation_occurrence(api.observation_occurrence_id("obs"))

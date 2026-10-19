@@ -325,11 +325,24 @@ def test_sqlite_requiredness_time_layers_and_static_public_facets(tmp_path):
     assert first.delivery_artifact_ref == second.delivery_artifact_ref
     # Actual pinned checker verifies command/read returns, not annotation spelling alone.
     specimen = """
-from typing import assert_type
+from typing import assert_type, reveal_type
 from collections.abc import Sequence
 from datetime import datetime
 from nvda_desk.raw_signal_occurrence_truth import api
 o = api.create_owner()
+reveal_type(o.commands.register_capture_scope_policy)
+reveal_type(o.commands.realise_scheduled_capture_occurrence)
+reveal_type(o.commands.admit_raw_observation_occurrence)
+reveal_type(o.commands.derive_capture_receipt_evidence_relation)
+reveal_type(o.commands.append_capture_receipt_presence_assessment)
+reveal_type(o.commands.reconcile_owed_slots)
+reveal_type(o.reads.get_capture_scope_policy)
+reveal_type(o.reads.get_scheduled_capture_occurrence)
+reveal_type(o.reads.get_raw_observation_occurrence)
+reveal_type(o.reads.get_receipt_presence_assessment)
+reveal_type(o.reads.list_receipt_presence_assessments)
+reveal_type(o.reads.project_raw_value)
+reveal_type(o.reads.list_projected_raw_history)
 assert_type(o.reads.get_raw_observation_occurrence(api.observation_occurrence_id("o")),
             api.RawObservationOccurrenceV1 | None)
 assert_type(o.reads.get_scheduled_capture_occurrence(api.capture_occurrence_id("c")),
@@ -367,6 +380,8 @@ def commands(p: api.CaptureScopePolicyV1, raw: api.RawObservationOccurrenceV1,
         timeout=30,
     )
     assert checked.returncode == 0, checked.stdout + checked.stderr
+    assert checked.stdout.count("Revealed type is") == 13
+    assert "Any" not in checked.stdout
     negative = (
         specimen
         + """
