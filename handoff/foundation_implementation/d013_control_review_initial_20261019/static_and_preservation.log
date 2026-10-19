@@ -1,0 +1,13 @@
+Scoped command: /workspace/scratch/d549b6d808a9/g52-dev/bin/python -m mypy tools/product_proof_claims.py tools/product_proof_outcomes.py tools/validate_product_proof.py tools/run_product_proof_gate.py
+Success: no issues found in 4 source files
+Exit: 0
+Native command: /workspace/scratch/d549b6d808a9/g52-dev/bin/python tools/validate_implementation_authority.py --binding implementation/authority/G6_1_D013_IMPLEMENTATION_AUTHORITY_BINDING.yaml --brief handoff/foundation_implementation/authority/G6_1_D013_IMPLEMENTATION_BRIEF_PROPOSED.md
+PASS: implementation authority brief_sha256=1f53d9c21c6eb4b90213137c4699a0688f994cd0ed55e54082268d8477abc148
+candidate_targets: modify:M02, modify:G01
+Exit: 0
+PRESERVATION_MATCH 205 source/config/authority/schema/product-proof files
+D012_physical_present True
+D013_physical_absent True
+D013_config_absent True
+original_loader_sha 656094bca1603e8c650d6ddfdd62a72e868dfb7e695d794696792cb18067ba1e
+patched_loader_sha eb622b799454e2c2462a1ea251cfdf061bf2dd15f0ae3470f17ab1e98e96b93f
