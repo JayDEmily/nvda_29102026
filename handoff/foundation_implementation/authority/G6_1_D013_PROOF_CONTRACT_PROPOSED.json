@@ -1,0 +1,121 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_d013",
+  "semantic_brief_path": "handoff/foundation_implementation/authority/G6_1_D013_IMPLEMENTATION_BRIEF_PROPOSED.md",
+  "target": {
+    "category": "M",
+    "responsibility_name": "neutral_market_measurement_truth",
+    "package": "nvda_desk.market_measurement_truth",
+    "public_seam": "nvda_desk.market_measurement_truth.api",
+    "intent": "modify",
+    "existing_object_id": "M02"
+  },
+  "proof_axis": "product",
+  "product_tier_treatment": "NOT_CLASSIFIED",
+  "architecture_proof_axis": "architecture_kernel",
+  "required_proof_ids": [
+    "D013-P01",
+    "D013-P02",
+    "D013-P03",
+    "D013-P04",
+    "D013-P05",
+    "D013-P06"
+  ],
+  "families": [
+    {
+      "id": "mmt_d013_exact_ratio",
+      "path": "tests/product/market_measurement_d013/test_ratio.py",
+      "proof_obligation_ids": [
+        "D013-P01",
+        "D013-P02",
+        "D013-P03",
+        "D013-P04",
+        "D013-P05",
+        "D013-P06"
+      ],
+      "required_test_names": [
+        "test_d013_actual_predecessors_exact_ratio",
+        "test_d013_predecessor_compatibility_and_refusal",
+        "test_d013_exact_ratio_canonical_domain",
+        "test_d013_identity_versions_and_later_retry",
+        "test_d013_sqlite_recovery_faults_and_integrity",
+        "test_d013_additive_types_and_legacy_preservation"
+      ],
+      "boundary": "Actual file-backed public M00→M02 D011/D012 producers, then same-owner public predecessor reads→D013 ratio owner→separate durable ratio reader. No precomputed predecessor fixture establishes producer closure.",
+      "proof_levels": [
+        "CONTRACT",
+        "INTEGRATION",
+        "STATE",
+        "SEQUENTIAL_END_TO_END",
+        "REPLAY"
+      ],
+      "authoritative_inputs": [
+        "Accepted K02 D013 = 100 * D012 / D011, strictly nonzero denominator; exact finite-Decimal predecessors through unchanged accepted D011/D012 production path.",
+        "Reference bid100/ask102 gives midpoint101 and spread2, then ExactRatioV1(200,101); bid1/ask3 gives100/1; crossed102/100 gives-200/101; locked nonzero midpoint gives0/1; zero midpoint refuses."
+      ],
+      "dependency_substitutions": [
+        "Controlled public raw records retain their existing accepted fixture source, not IBKR source certification.",
+        "Adversarial public predecessor reader may falsify one metadata/content/configuration dimension at a time; native SQLite transaction injection only for explicit storage faults. Real predecessor production and file-backed recovery remain mandatory."
+      ],
+      "case_coverage": {
+        "lawful_positive": {
+          "cases": [
+            "Actual D011/D012 full input-chain production and exact ratio with complete typed predecessor/configuration/ultimate raw lineage; no rounding.",
+            "Canonical exact integer ratio, later-clock retry, independently material definition/reference changes, complete fresh reader recovery after writer exits."
+          ]
+        },
+        "prohibited_false_positive": {
+          "cases": [
+            "Rounded Decimal/float ratio, silently shortened numeric domain, strategy precision/threshold, abs sign or positivity heuristic.",
+            "Prefilled predecessor answer substitutes for producer integration; inconsistent subject/as-of/cutoff/parameter/selection/raw mapping/unit/source or wrong authority/definition/owner/hash/representation accepted.",
+            "Missing predecessor gives zero; unrelated peer/source family required; old Decimal v1 contract silently widened; generic unsupported D enabled; memory substitutes for durability."
+          ]
+        },
+        "missing_mandatory_authority": {
+          "cases": [
+            "Absent exact binding/descriptor/proof admission fails before domain execution.",
+            "Unavailable or invalid complete predecessor evidence, unsupported definition/profile, incompatible versions or zero midpoint refuses without any new D013 occurrence. Persistence failure remains distinct and truthful."
+          ]
+        },
+        "lawful_optional_absence": {
+          "cases": [
+            "No new direct R input, raw-provider callback, strategy context, calendar, basket, external peer, automatic predecessor materialisation or raw access is required at D013 evaluation.",
+            "No result means None/empty history, not stored semantic NULL; no unrelated result shape or transcendental precision rule is supplied."
+          ]
+        }
+      },
+      "expected_failure_signals": [
+        "Malformed public types/content raise TypeError/ValueError; available shape but invalid/absent prerequisites return None; owner persistence faults raise PersistenceFailureV1 with truthful uncertainty.",
+        "Actual unsupported ratio seam gives intended first RED only after admitted proof/environment/control readiness; missing generation/import infrastructure is not semantic RED."
+      ],
+      "limitations": [
+        "Controlled D013 exact rational and controlled D011/D012 predecessor chain only; no complete G6.1/native/full126 admission."
+      ],
+      "adjacent_nonclaims": [
+        "No generic recursive graph engine, arbitrary formula/model callback, general structured carrier, new dependency, A00 composition, provider acquisition/live effect, populated-state migration, retirement or main merge."
+      ],
+      "environment": "CPython3.12.14, existing exact offline dependency pins and recorded SQLite engine; no new dependency.",
+      "material_versions": [
+        "Exact new brief/binding/contract and independently reviewed immutable proof generation.",
+        "Exact predecessor authorities/definitions/configuration/occurrence content; exact new Git candidate/tree/environment.",
+        "All existing D011/D012/M00 claim/generation bytes remain immutable."
+      ],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/market_measurement_d013/test_ratio.py"
+    }
+  ],
+  "required_support_files": [
+    "tests/product/market_measurement_d013/_support.py",
+    "tests/product/market_measurement_d013/typing/valid_seam.py",
+    "tests/product/market_measurement_d013/typing/invalid_seam.py"
+  ],
+  "optional_support_files": [],
+  "execution_policy": {
+    "skipped_tests": "FAIL",
+    "xfailed_tests": "FAIL",
+    "xpassed_tests": "FAIL",
+    "collection_failed": "FAIL",
+    "no_tests_collected": "FAIL",
+    "unexpected_governed_mutation": "FAIL"
+  }
+}
