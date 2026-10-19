@@ -1,0 +1,753 @@
+FFFFFFFFFFFFFFFF............                                             [100%]
+=================================== FAILURES ===================================
+_____ test_duplicate_consistency_precedes_eligibility[False-False-change0] _____
+
+change = {'native_units': 'shares'}, ineligible_first = False
+cross_page = False
+
+    @pytest.mark.parametrize(
+        "change",
+        [
+            {"native_units": "shares"},
+            {"source_timestamp_raw": "2026-10-16T00:58:00Z"},
+            {"received_ts_utc": ASOF + timedelta(microseconds=1)},
+            {"native_value": Decimal("NaN")},
+        ],
+    )
+    @pytest.mark.parametrize("ineligible_first", [False, True])
+    @pytest.mark.parametrize("cross_page", [False, True])
+    def test_duplicate_consistency_precedes_eligibility(change, ineligible_first, cross_page):
+        """Section5 algorithm3: one observation cannot carry two conflicting facts."""
+        raw = raw_api.create_owner()
+        for side in ("bid", "ask"):
+            raw.commands.admit_raw_observation_occurrence(observation(side))
+    
+        class Reader:
+            def list_projected_raw_history(self, rid, **kwargs):
+                page = raw.reads.list_projected_raw_history(rid, **(kwargs | {"cursor": None}))
+                if rid.value == "R035":
+                    return page
+                good = page.items[0]
+                bad = replace(good, **change)
+                pair = (bad, good) if ineligible_first else (good, bad)
+                if not cross_page:
+                    return raw_api.ProjectedRawHistoryPageV1(pair, None)
+                if kwargs["cursor"] is None:
+                    return raw_api.ProjectedRawHistoryPageV1(pair[:1], "1")
+                assert kwargs["cursor"] == "1"
+                return raw_api.ProjectedRawHistoryPageV1(pair[1:], None)
+    
+        f = foundation()
+        owner = f.create_owner(**configuration(f, Reader()))
+>       assert owner.materialise(request(f)) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(owner_object_id='M02', owner_namespace='neutral_market_measurement_truth/v1', implementation...ds=(), convention_refs=(VersionRefV1(context_id='mmt-pilot-price', version=1),), supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(owner_object_id='M02', owner_namespace='neutral_market_measurement_truth/v1', implementation...ds=(), convention_refs=(VersionRefV1(context_id='mmt-pilot-price', version=1),), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D011', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 16, 1,...k', version=1), unit_convention_ref=VersionRefV1(context_id='mmt-pilot-price', version=1), subject_instrument='NVDA'))))
+E        +    where materialise = <nvda_desk.market_measurement_truth._catalogue._Owner object at 0x7f5274d7af00>.materialise
+E        +    and   CalculationRequestV1(derived_signal_id='D011', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 16, 1,...k', version=1), unit_convention_ref=VersionRefV1(context_id='mmt-pilot-price', version=1), subject_instrument='NVDA'))) = request(<module 'nvda_desk.market_measurement_truth.api' from '/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py'>)
+
+tests/product/market_measurement/test_selection_history.py:245: AssertionError
+_____ test_duplicate_consistency_precedes_eligibility[False-False-change1] _____
+
+change = {'source_timestamp_raw': '2026-10-16T00:58:00Z'}
+ineligible_first = False, cross_page = False
+
+    @pytest.mark.parametrize(
+        "change",
+        [
+            {"native_units": "shares"},
+            {"source_timestamp_raw": "2026-10-16T00:58:00Z"},
+            {"received_ts_utc": ASOF + timedelta(microseconds=1)},
+            {"native_value": Decimal("NaN")},
+        ],
+    )
+    @pytest.mark.parametrize("ineligible_first", [False, True])
+    @pytest.mark.parametrize("cross_page", [False, True])
+    def test_duplicate_consistency_precedes_eligibility(change, ineligible_first, cross_page):
+        """Section5 algorithm3: one observation cannot carry two conflicting facts."""
+        raw = raw_api.create_owner()
+        for side in ("bid", "ask"):
+            raw.commands.admit_raw_observation_occurrence(observation(side))
+    
+        class Reader:
+            def list_projected_raw_history(self, rid, **kwargs):
+                page = raw.reads.list_projected_raw_history(rid, **(kwargs | {"cursor": None}))
+                if rid.value == "R035":
+                    return page
+                good = page.items[0]
+                bad = replace(good, **change)
+                pair = (bad, good) if ineligible_first else (good, bad)
+                if not cross_page:
+                    return raw_api.ProjectedRawHistoryPageV1(pair, None)
+                if kwargs["cursor"] is None:
+                    return raw_api.ProjectedRawHistoryPageV1(pair[:1], "1")
+                assert kwargs["cursor"] == "1"
+                return raw_api.ProjectedRawHistoryPageV1(pair[1:], None)
+    
+        f = foundation()
+        owner = f.create_owner(**configuration(f, Reader()))
+>       assert owner.materialise(request(f)) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(owner_object_id='M02', owner_namespace='neutral_market_measurement_truth/v1', implementation...ds=(), convention_refs=(VersionRefV1(context_id='mmt-pilot-price', version=1),), supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(owner_object_id='M02', owner_namespace='neutral_market_measurement_truth/v1', implementation...ds=(), convention_refs=(VersionRefV1(context_id='mmt-pilot-price', version=1),), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D011', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 16, 1,...k', version=1), unit_convention_ref=VersionRefV1(context_id='mmt-pilot-price', version=1), subject_instrument='NVDA'))))
+E        +    where materialise = <nvda_desk.market_measurement_truth._catalogue._Owner object at 0x7f5274d81fd0>.materialise
+E        +    and   CalculationRequestV1(derived_signal_id='D011', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 16, 1,...k', version=1), unit_convention_ref=VersionRefV1(context_id='mmt-pilot-price', version=1), subject_instrument='NVDA'))) = request(<module 'nvda_desk.market_measurement_truth.api' from '/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py'>)
+
+tests/product/market_measurement/test_selection_history.py:245: AssertionError
+_____ test_duplicate_consistency_precedes_eligibility[False-False-change2] _____
+
+change = {'received_ts_utc': datetime.datetime(2026, 10, 16, 1, 0, 0, 1, tzinfo=datetime.timezone.utc)}
+ineligible_first = False, cross_page = False
+
+    @pytest.mark.parametrize(
+        "change",
+        [
+            {"native_units": "shares"},
+            {"source_timestamp_raw": "2026-10-16T00:58:00Z"},
+            {"received_ts_utc": ASOF + timedelta(microseconds=1)},
+            {"native_value": Decimal("NaN")},
+        ],
+    )
+    @pytest.mark.parametrize("ineligible_first", [False, True])
+    @pytest.mark.parametrize("cross_page", [False, True])
+    def test_duplicate_consistency_precedes_eligibility(change, ineligible_first, cross_page):
+        """Section5 algorithm3: one observation cannot carry two conflicting facts."""
+        raw = raw_api.create_owner()
+        for side in ("bid", "ask"):
+            raw.commands.admit_raw_observation_occurrence(observation(side))
+    
+        class Reader:
+            def list_projected_raw_history(self, rid, **kwargs):
+                page = raw.reads.list_projected_raw_history(rid, **(kwargs | {"cursor": None}))
+                if rid.value == "R035":
+                    return page
+                good = page.items[0]
+                bad = replace(good, **change)
+                pair = (bad, good) if ineligible_first else (good, bad)
+                if not cross_page:
+                    return raw_api.ProjectedRawHistoryPageV1(pair, None)
+                if kwargs["cursor"] is None:
+                    return raw_api.ProjectedRawHistoryPageV1(pair[:1], "1")
+                assert kwargs["cursor"] == "1"
+                return raw_api.ProjectedRawHistoryPageV1(pair[1:], None)
+    
+        f = foundation()
+        owner = f.create_owner(**configuration(f, Reader()))
+>       assert owner.materialise(request(f)) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(owner_object_id='M02', owner_namespace='neutral_market_measurement_truth/v1', implementation...ds=(), convention_refs=(VersionRefV1(context_id='mmt-pilot-price', version=1),), supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(owner_object_id='M02', owner_namespace='neutral_market_measurement_truth/v1', implementation...ds=(), convention_refs=(VersionRefV1(context_id='mmt-pilot-price', version=1),), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D011', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 16, 1,...k', version=1), unit_convention_ref=VersionRefV1(context_id='mmt-pilot-price', version=1), subject_instrument='NVDA'))))
+E        +    where materialise = <nvda_desk.market_measurement_truth._catalogue._Owner object at 0x7f5274d83740>.materialise
+E        +    and   CalculationRequestV1(derived_signal_id='D011', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 16, 1,...k', version=1), unit_convention_ref=VersionRefV1(context_id='mmt-pilot-price', version=1), subject_instrument='NVDA'))) = request(<module 'nvda_desk.market_measurement_truth.api' from '/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py'>)
+
+tests/product/market_measurement/test_selection_history.py:245: AssertionError
+_____ test_duplicate_consistency_precedes_eligibility[False-False-change3] _____
+
+change = {'native_value': Decimal('NaN')}, ineligible_first = False
+cross_page = False
+
+    @pytest.mark.parametrize(
+        "change",
+        [
+            {"native_units": "shares"},
+            {"source_timestamp_raw": "2026-10-16T00:58:00Z"},
+            {"received_ts_utc": ASOF + timedelta(microseconds=1)},
+            {"native_value": Decimal("NaN")},
+        ],
+    )
+    @pytest.mark.parametrize("ineligible_first", [False, True])
+    @pytest.mark.parametrize("cross_page", [False, True])
+    def test_duplicate_consistency_precedes_eligibility(change, ineligible_first, cross_page):
+        """Section5 algorithm3: one observation cannot carry two conflicting facts."""
+        raw = raw_api.create_owner()
+        for side in ("bid", "ask"):
+            raw.commands.admit_raw_observation_occurrence(observation(side))
+    
+        class Reader:
+            def list_projected_raw_history(self, rid, **kwargs):
+                page = raw.reads.list_projected_raw_history(rid, **(kwargs | {"cursor": None}))
+                if rid.value == "R035":
+                    return page
+                good = page.items[0]
+                bad = replace(good, **change)
+                pair = (bad, good) if ineligible_first else (good, bad)
+                if not cross_page:
+                    return raw_api.ProjectedRawHistoryPageV1(pair, None)
+                if kwargs["cursor"] is None:
+                    return raw_api.ProjectedRawHistoryPageV1(pair[:1], "1")
+                assert kwargs["cursor"] == "1"
+                return raw_api.ProjectedRawHistoryPageV1(pair[1:], None)
+    
+        f = foundation()
+        owner = f.create_owner(**configuration(f, Reader()))
+>       assert owner.materialise(request(f)) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(owner_object_id='M02', owner_namespace='neutral_market_measurement_truth/v1', implementation...ds=(), convention_refs=(VersionRefV1(context_id='mmt-pilot-price', version=1),), supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(owner_object_id='M02', owner_namespace='neutral_market_measurement_truth/v1', implementation...ds=(), convention_refs=(VersionRefV1(context_id='mmt-pilot-price', version=1),), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D011', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 16, 1,...k', version=1), unit_convention_ref=VersionRefV1(context_id='mmt-pilot-price', version=1), subject_instrument='NVDA'))))
+E        +    where materialise = <nvda_desk.market_measurement_truth._catalogue._Owner object at 0x7f5274d841d0>.materialise
+E        +    and   CalculationRequestV1(derived_signal_id='D011', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 16, 1,...k', version=1), unit_convention_ref=VersionRefV1(context_id='mmt-pilot-price', version=1), subject_instrument='NVDA'))) = request(<module 'nvda_desk.market_measurement_truth.api' from '/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py'>)
+
+tests/product/market_measurement/test_selection_history.py:245: AssertionError
+_____ test_duplicate_consistency_precedes_eligibility[False-True-change0] ______
+
+change = {'native_units': 'shares'}, ineligible_first = True, cross_page = False
+
+    @pytest.mark.parametrize(
+        "change",
+        [
+            {"native_units": "shares"},
+            {"source_timestamp_raw": "2026-10-16T00:58:00Z"},
+            {"received_ts_utc": ASOF + timedelta(microseconds=1)},
+            {"native_value": Decimal("NaN")},
+        ],
+    )
+    @pytest.mark.parametrize("ineligible_first", [False, True])
+    @pytest.mark.parametrize("cross_page", [False, True])
+    def test_duplicate_consistency_precedes_eligibility(change, ineligible_first, cross_page):
+        """Section5 algorithm3: one observation cannot carry two conflicting facts."""
+        raw = raw_api.create_owner()
+        for side in ("bid", "ask"):
+            raw.commands.admit_raw_observation_occurrence(observation(side))
+    
+        class Reader:
+            def list_projected_raw_history(self, rid, **kwargs):
+                page = raw.reads.list_projected_raw_history(rid, **(kwargs | {"cursor": None}))
+                if rid.value == "R035":
+                    return page
+                good = page.items[0]
+                bad = replace(good, **change)
+                pair = (bad, good) if ineligible_first else (good, bad)
+                if not cross_page:
+                    return raw_api.ProjectedRawHistoryPageV1(pair, None)
+                if kwargs["cursor"] is None:
+                    return raw_api.ProjectedRawHistoryPageV1(pair[:1], "1")
+                assert kwargs["cursor"] == "1"
+                return raw_api.ProjectedRawHistoryPageV1(pair[1:], None)
+    
+        f = foundation()
+        owner = f.create_owner(**configuration(f, Reader()))
+>       assert owner.materialise(request(f)) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(owner_object_id='M02', owner_namespace='neutral_market_measurement_truth/v1', implementation...ds=(), convention_refs=(VersionRefV1(context_id='mmt-pilot-price', version=1),), supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(owner_object_id='M02', owner_namespace='neutral_market_measurement_truth/v1', implementation...ds=(), convention_refs=(VersionRefV1(context_id='mmt-pilot-price', version=1),), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D011', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 16, 1,...k', version=1), unit_convention_ref=VersionRefV1(context_id='mmt-pilot-price', version=1), subject_instrument='NVDA'))))
+E        +    where materialise = <nvda_desk.market_measurement_truth._catalogue._Owner object at 0x7f5274d85250>.materialise
+E        +    and   CalculationRequestV1(derived_signal_id='D011', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 16, 1,...k', version=1), unit_convention_ref=VersionRefV1(context_id='mmt-pilot-price', version=1), subject_instrument='NVDA'))) = request(<module 'nvda_desk.market_measurement_truth.api' from '/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py'>)
+
+tests/product/market_measurement/test_selection_history.py:245: AssertionError
+_____ test_duplicate_consistency_precedes_eligibility[False-True-change1] ______
+
+change = {'source_timestamp_raw': '2026-10-16T00:58:00Z'}
+ineligible_first = True, cross_page = False
+
+    @pytest.mark.parametrize(
+        "change",
+        [
+            {"native_units": "shares"},
+            {"source_timestamp_raw": "2026-10-16T00:58:00Z"},
+            {"received_ts_utc": ASOF + timedelta(microseconds=1)},
+            {"native_value": Decimal("NaN")},
+        ],
+    )
+    @pytest.mark.parametrize("ineligible_first", [False, True])
+    @pytest.mark.parametrize("cross_page", [False, True])
+    def test_duplicate_consistency_precedes_eligibility(change, ineligible_first, cross_page):
+        """Section5 algorithm3: one observation cannot carry two conflicting facts."""
+        raw = raw_api.create_owner()
+        for side in ("bid", "ask"):
+            raw.commands.admit_raw_observation_occurrence(observation(side))
+    
+        class Reader:
+            def list_projected_raw_history(self, rid, **kwargs):
+                page = raw.reads.list_projected_raw_history(rid, **(kwargs | {"cursor": None}))
+                if rid.value == "R035":
+                    return page
+                good = page.items[0]
+                bad = replace(good, **change)
+                pair = (bad, good) if ineligible_first else (good, bad)
+                if not cross_page:
+                    return raw_api.ProjectedRawHistoryPageV1(pair, None)
+                if kwargs["cursor"] is None:
+                    return raw_api.ProjectedRawHistoryPageV1(pair[:1], "1")
+                assert kwargs["cursor"] == "1"
+                return raw_api.ProjectedRawHistoryPageV1(pair[1:], None)
+    
+        f = foundation()
+        owner = f.create_owner(**configuration(f, Reader()))
+>       assert owner.materialise(request(f)) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(owner_object_id='M02', owner_namespace='neutral_market_measurement_truth/v1', implementation...ds=(), convention_refs=(VersionRefV1(context_id='mmt-pilot-price', version=1),), supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(owner_object_id='M02', owner_namespace='neutral_market_measurement_truth/v1', implementation...ds=(), convention_refs=(VersionRefV1(context_id='mmt-pilot-price', version=1),), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D011', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 16, 1,...k', version=1), unit_convention_ref=VersionRefV1(context_id='mmt-pilot-price', version=1), subject_instrument='NVDA'))))
+E        +    where materialise = <nvda_desk.market_measurement_truth._catalogue._Owner object at 0x7f5274d874a0>.materialise
+E        +    and   CalculationRequestV1(derived_signal_id='D011', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 16, 1,...k', version=1), unit_convention_ref=VersionRefV1(context_id='mmt-pilot-price', version=1), subject_instrument='NVDA'))) = request(<module 'nvda_desk.market_measurement_truth.api' from '/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py'>)
+
+tests/product/market_measurement/test_selection_history.py:245: AssertionError
+_____ test_duplicate_consistency_precedes_eligibility[False-True-change2] ______
+
+change = {'received_ts_utc': datetime.datetime(2026, 10, 16, 1, 0, 0, 1, tzinfo=datetime.timezone.utc)}
+ineligible_first = True, cross_page = False
+
+    @pytest.mark.parametrize(
+        "change",
+        [
+            {"native_units": "shares"},
+            {"source_timestamp_raw": "2026-10-16T00:58:00Z"},
+            {"received_ts_utc": ASOF + timedelta(microseconds=1)},
+            {"native_value": Decimal("NaN")},
+        ],
+    )
+    @pytest.mark.parametrize("ineligible_first", [False, True])
+    @pytest.mark.parametrize("cross_page", [False, True])
+    def test_duplicate_consistency_precedes_eligibility(change, ineligible_first, cross_page):
+        """Section5 algorithm3: one observation cannot carry two conflicting facts."""
+        raw = raw_api.create_owner()
+        for side in ("bid", "ask"):
+            raw.commands.admit_raw_observation_occurrence(observation(side))
+    
+        class Reader:
+            def list_projected_raw_history(self, rid, **kwargs):
+                page = raw.reads.list_projected_raw_history(rid, **(kwargs | {"cursor": None}))
+                if rid.value == "R035":
+                    return page
+                good = page.items[0]
+                bad = replace(good, **change)
+                pair = (bad, good) if ineligible_first else (good, bad)
+                if not cross_page:
+                    return raw_api.ProjectedRawHistoryPageV1(pair, None)
+                if kwargs["cursor"] is None:
+                    return raw_api.ProjectedRawHistoryPageV1(pair[:1], "1")
+                assert kwargs["cursor"] == "1"
+                return raw_api.ProjectedRawHistoryPageV1(pair[1:], None)
+    
+        f = foundation()
+        owner = f.create_owner(**configuration(f, Reader()))
+>       assert owner.materialise(request(f)) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(owner_object_id='M02', owner_namespace='neutral_market_measurement_truth/v1', implementation...ds=(), convention_refs=(VersionRefV1(context_id='mmt-pilot-price', version=1),), supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(owner_object_id='M02', owner_namespace='neutral_market_measurement_truth/v1', implementation...ds=(), convention_refs=(VersionRefV1(context_id='mmt-pilot-price', version=1),), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D011', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 16, 1,...k', version=1), unit_convention_ref=VersionRefV1(context_id='mmt-pilot-price', version=1), subject_instrument='NVDA'))))
+E        +    where materialise = <nvda_desk.market_measurement_truth._catalogue._Owner object at 0x7f5274d8a600>.materialise
+E        +    and   CalculationRequestV1(derived_signal_id='D011', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 16, 1,...k', version=1), unit_convention_ref=VersionRefV1(context_id='mmt-pilot-price', version=1), subject_instrument='NVDA'))) = request(<module 'nvda_desk.market_measurement_truth.api' from '/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py'>)
+
+tests/product/market_measurement/test_selection_history.py:245: AssertionError
+_____ test_duplicate_consistency_precedes_eligibility[False-True-change3] ______
+
+change = {'native_value': Decimal('NaN')}, ineligible_first = True
+cross_page = False
+
+    @pytest.mark.parametrize(
+        "change",
+        [
+            {"native_units": "shares"},
+            {"source_timestamp_raw": "2026-10-16T00:58:00Z"},
+            {"received_ts_utc": ASOF + timedelta(microseconds=1)},
+            {"native_value": Decimal("NaN")},
+        ],
+    )
+    @pytest.mark.parametrize("ineligible_first", [False, True])
+    @pytest.mark.parametrize("cross_page", [False, True])
+    def test_duplicate_consistency_precedes_eligibility(change, ineligible_first, cross_page):
+        """Section5 algorithm3: one observation cannot carry two conflicting facts."""
+        raw = raw_api.create_owner()
+        for side in ("bid", "ask"):
+            raw.commands.admit_raw_observation_occurrence(observation(side))
+    
+        class Reader:
+            def list_projected_raw_history(self, rid, **kwargs):
+                page = raw.reads.list_projected_raw_history(rid, **(kwargs | {"cursor": None}))
+                if rid.value == "R035":
+                    return page
+                good = page.items[0]
+                bad = replace(good, **change)
+                pair = (bad, good) if ineligible_first else (good, bad)
+                if not cross_page:
+                    return raw_api.ProjectedRawHistoryPageV1(pair, None)
+                if kwargs["cursor"] is None:
+                    return raw_api.ProjectedRawHistoryPageV1(pair[:1], "1")
+                assert kwargs["cursor"] == "1"
+                return raw_api.ProjectedRawHistoryPageV1(pair[1:], None)
+    
+        f = foundation()
+        owner = f.create_owner(**configuration(f, Reader()))
+>       assert owner.materialise(request(f)) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(owner_object_id='M02', owner_namespace='neutral_market_measurement_truth/v1', implementation...ds=(), convention_refs=(VersionRefV1(context_id='mmt-pilot-price', version=1),), supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(owner_object_id='M02', owner_namespace='neutral_market_measurement_truth/v1', implementation...ds=(), convention_refs=(VersionRefV1(context_id='mmt-pilot-price', version=1),), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D011', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 16, 1,...k', version=1), unit_convention_ref=VersionRefV1(context_id='mmt-pilot-price', version=1), subject_instrument='NVDA'))))
+E        +    where materialise = <nvda_desk.market_measurement_truth._catalogue._Owner object at 0x7f5274d88470>.materialise
+E        +    and   CalculationRequestV1(derived_signal_id='D011', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 16, 1,...k', version=1), unit_convention_ref=VersionRefV1(context_id='mmt-pilot-price', version=1), subject_instrument='NVDA'))) = request(<module 'nvda_desk.market_measurement_truth.api' from '/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py'>)
+
+tests/product/market_measurement/test_selection_history.py:245: AssertionError
+_____ test_duplicate_consistency_precedes_eligibility[True-False-change0] ______
+
+change = {'native_units': 'shares'}, ineligible_first = False, cross_page = True
+
+    @pytest.mark.parametrize(
+        "change",
+        [
+            {"native_units": "shares"},
+            {"source_timestamp_raw": "2026-10-16T00:58:00Z"},
+            {"received_ts_utc": ASOF + timedelta(microseconds=1)},
+            {"native_value": Decimal("NaN")},
+        ],
+    )
+    @pytest.mark.parametrize("ineligible_first", [False, True])
+    @pytest.mark.parametrize("cross_page", [False, True])
+    def test_duplicate_consistency_precedes_eligibility(change, ineligible_first, cross_page):
+        """Section5 algorithm3: one observation cannot carry two conflicting facts."""
+        raw = raw_api.create_owner()
+        for side in ("bid", "ask"):
+            raw.commands.admit_raw_observation_occurrence(observation(side))
+    
+        class Reader:
+            def list_projected_raw_history(self, rid, **kwargs):
+                page = raw.reads.list_projected_raw_history(rid, **(kwargs | {"cursor": None}))
+                if rid.value == "R035":
+                    return page
+                good = page.items[0]
+                bad = replace(good, **change)
+                pair = (bad, good) if ineligible_first else (good, bad)
+                if not cross_page:
+                    return raw_api.ProjectedRawHistoryPageV1(pair, None)
+                if kwargs["cursor"] is None:
+                    return raw_api.ProjectedRawHistoryPageV1(pair[:1], "1")
+                assert kwargs["cursor"] == "1"
+                return raw_api.ProjectedRawHistoryPageV1(pair[1:], None)
+    
+        f = foundation()
+        owner = f.create_owner(**configuration(f, Reader()))
+>       assert owner.materialise(request(f)) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(owner_object_id='M02', owner_namespace='neutral_market_measurement_truth/v1', implementation...ds=(), convention_refs=(VersionRefV1(context_id='mmt-pilot-price', version=1),), supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(owner_object_id='M02', owner_namespace='neutral_market_measurement_truth/v1', implementation...ds=(), convention_refs=(VersionRefV1(context_id='mmt-pilot-price', version=1),), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D011', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 16, 1,...k', version=1), unit_convention_ref=VersionRefV1(context_id='mmt-pilot-price', version=1), subject_instrument='NVDA'))))
+E        +    where materialise = <nvda_desk.market_measurement_truth._catalogue._Owner object at 0x7f5274d8b230>.materialise
+E        +    and   CalculationRequestV1(derived_signal_id='D011', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 16, 1,...k', version=1), unit_convention_ref=VersionRefV1(context_id='mmt-pilot-price', version=1), subject_instrument='NVDA'))) = request(<module 'nvda_desk.market_measurement_truth.api' from '/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py'>)
+
+tests/product/market_measurement/test_selection_history.py:245: AssertionError
+_____ test_duplicate_consistency_precedes_eligibility[True-False-change1] ______
+
+change = {'source_timestamp_raw': '2026-10-16T00:58:00Z'}
+ineligible_first = False, cross_page = True
+
+    @pytest.mark.parametrize(
+        "change",
+        [
+            {"native_units": "shares"},
+            {"source_timestamp_raw": "2026-10-16T00:58:00Z"},
+            {"received_ts_utc": ASOF + timedelta(microseconds=1)},
+            {"native_value": Decimal("NaN")},
+        ],
+    )
+    @pytest.mark.parametrize("ineligible_first", [False, True])
+    @pytest.mark.parametrize("cross_page", [False, True])
+    def test_duplicate_consistency_precedes_eligibility(change, ineligible_first, cross_page):
+        """Section5 algorithm3: one observation cannot carry two conflicting facts."""
+        raw = raw_api.create_owner()
+        for side in ("bid", "ask"):
+            raw.commands.admit_raw_observation_occurrence(observation(side))
+    
+        class Reader:
+            def list_projected_raw_history(self, rid, **kwargs):
+                page = raw.reads.list_projected_raw_history(rid, **(kwargs | {"cursor": None}))
+                if rid.value == "R035":
+                    return page
+                good = page.items[0]
+                bad = replace(good, **change)
+                pair = (bad, good) if ineligible_first else (good, bad)
+                if not cross_page:
+                    return raw_api.ProjectedRawHistoryPageV1(pair, None)
+                if kwargs["cursor"] is None:
+                    return raw_api.ProjectedRawHistoryPageV1(pair[:1], "1")
+                assert kwargs["cursor"] == "1"
+                return raw_api.ProjectedRawHistoryPageV1(pair[1:], None)
+    
+        f = foundation()
+        owner = f.create_owner(**configuration(f, Reader()))
+>       assert owner.materialise(request(f)) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(owner_object_id='M02', owner_namespace='neutral_market_measurement_truth/v1', implementation...ds=(), convention_refs=(VersionRefV1(context_id='mmt-pilot-price', version=1),), supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(owner_object_id='M02', owner_namespace='neutral_market_measurement_truth/v1', implementation...ds=(), convention_refs=(VersionRefV1(context_id='mmt-pilot-price', version=1),), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D011', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 16, 1,...k', version=1), unit_convention_ref=VersionRefV1(context_id='mmt-pilot-price', version=1), subject_instrument='NVDA'))))
+E        +    where materialise = <nvda_desk.market_measurement_truth._catalogue._Owner object at 0x7f5274d88e90>.materialise
+E        +    and   CalculationRequestV1(derived_signal_id='D011', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 16, 1,...k', version=1), unit_convention_ref=VersionRefV1(context_id='mmt-pilot-price', version=1), subject_instrument='NVDA'))) = request(<module 'nvda_desk.market_measurement_truth.api' from '/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py'>)
+
+tests/product/market_measurement/test_selection_history.py:245: AssertionError
+_____ test_duplicate_consistency_precedes_eligibility[True-False-change2] ______
+
+change = {'received_ts_utc': datetime.datetime(2026, 10, 16, 1, 0, 0, 1, tzinfo=datetime.timezone.utc)}
+ineligible_first = False, cross_page = True
+
+    @pytest.mark.parametrize(
+        "change",
+        [
+            {"native_units": "shares"},
+            {"source_timestamp_raw": "2026-10-16T00:58:00Z"},
+            {"received_ts_utc": ASOF + timedelta(microseconds=1)},
+            {"native_value": Decimal("NaN")},
+        ],
+    )
+    @pytest.mark.parametrize("ineligible_first", [False, True])
+    @pytest.mark.parametrize("cross_page", [False, True])
+    def test_duplicate_consistency_precedes_eligibility(change, ineligible_first, cross_page):
+        """Section5 algorithm3: one observation cannot carry two conflicting facts."""
+        raw = raw_api.create_owner()
+        for side in ("bid", "ask"):
+            raw.commands.admit_raw_observation_occurrence(observation(side))
+    
+        class Reader:
+            def list_projected_raw_history(self, rid, **kwargs):
+                page = raw.reads.list_projected_raw_history(rid, **(kwargs | {"cursor": None}))
+                if rid.value == "R035":
+                    return page
+                good = page.items[0]
+                bad = replace(good, **change)
+                pair = (bad, good) if ineligible_first else (good, bad)
+                if not cross_page:
+                    return raw_api.ProjectedRawHistoryPageV1(pair, None)
+                if kwargs["cursor"] is None:
+                    return raw_api.ProjectedRawHistoryPageV1(pair[:1], "1")
+                assert kwargs["cursor"] == "1"
+                return raw_api.ProjectedRawHistoryPageV1(pair[1:], None)
+    
+        f = foundation()
+        owner = f.create_owner(**configuration(f, Reader()))
+>       assert owner.materialise(request(f)) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(owner_object_id='M02', owner_namespace='neutral_market_measurement_truth/v1', implementation...ds=(), convention_refs=(VersionRefV1(context_id='mmt-pilot-price', version=1),), supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(owner_object_id='M02', owner_namespace='neutral_market_measurement_truth/v1', implementation...ds=(), convention_refs=(VersionRefV1(context_id='mmt-pilot-price', version=1),), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D011', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 16, 1,...k', version=1), unit_convention_ref=VersionRefV1(context_id='mmt-pilot-price', version=1), subject_instrument='NVDA'))))
+E        +    where materialise = <nvda_desk.market_measurement_truth._catalogue._Owner object at 0x7f5274d84c50>.materialise
+E        +    and   CalculationRequestV1(derived_signal_id='D011', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 16, 1,...k', version=1), unit_convention_ref=VersionRefV1(context_id='mmt-pilot-price', version=1), subject_instrument='NVDA'))) = request(<module 'nvda_desk.market_measurement_truth.api' from '/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py'>)
+
+tests/product/market_measurement/test_selection_history.py:245: AssertionError
+_____ test_duplicate_consistency_precedes_eligibility[True-False-change3] ______
+
+change = {'native_value': Decimal('NaN')}, ineligible_first = False
+cross_page = True
+
+    @pytest.mark.parametrize(
+        "change",
+        [
+            {"native_units": "shares"},
+            {"source_timestamp_raw": "2026-10-16T00:58:00Z"},
+            {"received_ts_utc": ASOF + timedelta(microseconds=1)},
+            {"native_value": Decimal("NaN")},
+        ],
+    )
+    @pytest.mark.parametrize("ineligible_first", [False, True])
+    @pytest.mark.parametrize("cross_page", [False, True])
+    def test_duplicate_consistency_precedes_eligibility(change, ineligible_first, cross_page):
+        """Section5 algorithm3: one observation cannot carry two conflicting facts."""
+        raw = raw_api.create_owner()
+        for side in ("bid", "ask"):
+            raw.commands.admit_raw_observation_occurrence(observation(side))
+    
+        class Reader:
+            def list_projected_raw_history(self, rid, **kwargs):
+                page = raw.reads.list_projected_raw_history(rid, **(kwargs | {"cursor": None}))
+                if rid.value == "R035":
+                    return page
+                good = page.items[0]
+                bad = replace(good, **change)
+                pair = (bad, good) if ineligible_first else (good, bad)
+                if not cross_page:
+                    return raw_api.ProjectedRawHistoryPageV1(pair, None)
+                if kwargs["cursor"] is None:
+                    return raw_api.ProjectedRawHistoryPageV1(pair[:1], "1")
+                assert kwargs["cursor"] == "1"
+                return raw_api.ProjectedRawHistoryPageV1(pair[1:], None)
+    
+        f = foundation()
+        owner = f.create_owner(**configuration(f, Reader()))
+>       assert owner.materialise(request(f)) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(owner_object_id='M02', owner_namespace='neutral_market_measurement_truth/v1', implementation...ds=(), convention_refs=(VersionRefV1(context_id='mmt-pilot-price', version=1),), supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(owner_object_id='M02', owner_namespace='neutral_market_measurement_truth/v1', implementation...ds=(), convention_refs=(VersionRefV1(context_id='mmt-pilot-price', version=1),), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D011', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 16, 1,...k', version=1), unit_convention_ref=VersionRefV1(context_id='mmt-pilot-price', version=1), subject_instrument='NVDA'))))
+E        +    where materialise = <nvda_desk.market_measurement_truth._catalogue._Owner object at 0x7f5274d86e40>.materialise
+E        +    and   CalculationRequestV1(derived_signal_id='D011', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 16, 1,...k', version=1), unit_convention_ref=VersionRefV1(context_id='mmt-pilot-price', version=1), subject_instrument='NVDA'))) = request(<module 'nvda_desk.market_measurement_truth.api' from '/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py'>)
+
+tests/product/market_measurement/test_selection_history.py:245: AssertionError
+______ test_duplicate_consistency_precedes_eligibility[True-True-change0] ______
+
+change = {'native_units': 'shares'}, ineligible_first = True, cross_page = True
+
+    @pytest.mark.parametrize(
+        "change",
+        [
+            {"native_units": "shares"},
+            {"source_timestamp_raw": "2026-10-16T00:58:00Z"},
+            {"received_ts_utc": ASOF + timedelta(microseconds=1)},
+            {"native_value": Decimal("NaN")},
+        ],
+    )
+    @pytest.mark.parametrize("ineligible_first", [False, True])
+    @pytest.mark.parametrize("cross_page", [False, True])
+    def test_duplicate_consistency_precedes_eligibility(change, ineligible_first, cross_page):
+        """Section5 algorithm3: one observation cannot carry two conflicting facts."""
+        raw = raw_api.create_owner()
+        for side in ("bid", "ask"):
+            raw.commands.admit_raw_observation_occurrence(observation(side))
+    
+        class Reader:
+            def list_projected_raw_history(self, rid, **kwargs):
+                page = raw.reads.list_projected_raw_history(rid, **(kwargs | {"cursor": None}))
+                if rid.value == "R035":
+                    return page
+                good = page.items[0]
+                bad = replace(good, **change)
+                pair = (bad, good) if ineligible_first else (good, bad)
+                if not cross_page:
+                    return raw_api.ProjectedRawHistoryPageV1(pair, None)
+                if kwargs["cursor"] is None:
+                    return raw_api.ProjectedRawHistoryPageV1(pair[:1], "1")
+                assert kwargs["cursor"] == "1"
+                return raw_api.ProjectedRawHistoryPageV1(pair[1:], None)
+    
+        f = foundation()
+        owner = f.create_owner(**configuration(f, Reader()))
+>       assert owner.materialise(request(f)) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(owner_object_id='M02', owner_namespace='neutral_market_measurement_truth/v1', implementation...ds=(), convention_refs=(VersionRefV1(context_id='mmt-pilot-price', version=1),), supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(owner_object_id='M02', owner_namespace='neutral_market_measurement_truth/v1', implementation...ds=(), convention_refs=(VersionRefV1(context_id='mmt-pilot-price', version=1),), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D011', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 16, 1,...k', version=1), unit_convention_ref=VersionRefV1(context_id='mmt-pilot-price', version=1), subject_instrument='NVDA'))))
+E        +    where materialise = <nvda_desk.market_measurement_truth._catalogue._Owner object at 0x7f5274d868a0>.materialise
+E        +    and   CalculationRequestV1(derived_signal_id='D011', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 16, 1,...k', version=1), unit_convention_ref=VersionRefV1(context_id='mmt-pilot-price', version=1), subject_instrument='NVDA'))) = request(<module 'nvda_desk.market_measurement_truth.api' from '/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py'>)
+
+tests/product/market_measurement/test_selection_history.py:245: AssertionError
+______ test_duplicate_consistency_precedes_eligibility[True-True-change1] ______
+
+change = {'source_timestamp_raw': '2026-10-16T00:58:00Z'}
+ineligible_first = True, cross_page = True
+
+    @pytest.mark.parametrize(
+        "change",
+        [
+            {"native_units": "shares"},
+            {"source_timestamp_raw": "2026-10-16T00:58:00Z"},
+            {"received_ts_utc": ASOF + timedelta(microseconds=1)},
+            {"native_value": Decimal("NaN")},
+        ],
+    )
+    @pytest.mark.parametrize("ineligible_first", [False, True])
+    @pytest.mark.parametrize("cross_page", [False, True])
+    def test_duplicate_consistency_precedes_eligibility(change, ineligible_first, cross_page):
+        """Section5 algorithm3: one observation cannot carry two conflicting facts."""
+        raw = raw_api.create_owner()
+        for side in ("bid", "ask"):
+            raw.commands.admit_raw_observation_occurrence(observation(side))
+    
+        class Reader:
+            def list_projected_raw_history(self, rid, **kwargs):
+                page = raw.reads.list_projected_raw_history(rid, **(kwargs | {"cursor": None}))
+                if rid.value == "R035":
+                    return page
+                good = page.items[0]
+                bad = replace(good, **change)
+                pair = (bad, good) if ineligible_first else (good, bad)
+                if not cross_page:
+                    return raw_api.ProjectedRawHistoryPageV1(pair, None)
+                if kwargs["cursor"] is None:
+                    return raw_api.ProjectedRawHistoryPageV1(pair[:1], "1")
+                assert kwargs["cursor"] == "1"
+                return raw_api.ProjectedRawHistoryPageV1(pair[1:], None)
+    
+        f = foundation()
+        owner = f.create_owner(**configuration(f, Reader()))
+>       assert owner.materialise(request(f)) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(owner_object_id='M02', owner_namespace='neutral_market_measurement_truth/v1', implementation...ds=(), convention_refs=(VersionRefV1(context_id='mmt-pilot-price', version=1),), supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(owner_object_id='M02', owner_namespace='neutral_market_measurement_truth/v1', implementation...ds=(), convention_refs=(VersionRefV1(context_id='mmt-pilot-price', version=1),), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D011', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 16, 1,...k', version=1), unit_convention_ref=VersionRefV1(context_id='mmt-pilot-price', version=1), subject_instrument='NVDA'))))
+E        +    where materialise = <nvda_desk.market_measurement_truth._catalogue._Owner object at 0x7f5274d839e0>.materialise
+E        +    and   CalculationRequestV1(derived_signal_id='D011', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 16, 1,...k', version=1), unit_convention_ref=VersionRefV1(context_id='mmt-pilot-price', version=1), subject_instrument='NVDA'))) = request(<module 'nvda_desk.market_measurement_truth.api' from '/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py'>)
+
+tests/product/market_measurement/test_selection_history.py:245: AssertionError
+______ test_duplicate_consistency_precedes_eligibility[True-True-change2] ______
+
+change = {'received_ts_utc': datetime.datetime(2026, 10, 16, 1, 0, 0, 1, tzinfo=datetime.timezone.utc)}
+ineligible_first = True, cross_page = True
+
+    @pytest.mark.parametrize(
+        "change",
+        [
+            {"native_units": "shares"},
+            {"source_timestamp_raw": "2026-10-16T00:58:00Z"},
+            {"received_ts_utc": ASOF + timedelta(microseconds=1)},
+            {"native_value": Decimal("NaN")},
+        ],
+    )
+    @pytest.mark.parametrize("ineligible_first", [False, True])
+    @pytest.mark.parametrize("cross_page", [False, True])
+    def test_duplicate_consistency_precedes_eligibility(change, ineligible_first, cross_page):
+        """Section5 algorithm3: one observation cannot carry two conflicting facts."""
+        raw = raw_api.create_owner()
+        for side in ("bid", "ask"):
+            raw.commands.admit_raw_observation_occurrence(observation(side))
+    
+        class Reader:
+            def list_projected_raw_history(self, rid, **kwargs):
+                page = raw.reads.list_projected_raw_history(rid, **(kwargs | {"cursor": None}))
+                if rid.value == "R035":
+                    return page
+                good = page.items[0]
+                bad = replace(good, **change)
+                pair = (bad, good) if ineligible_first else (good, bad)
+                if not cross_page:
+                    return raw_api.ProjectedRawHistoryPageV1(pair, None)
+                if kwargs["cursor"] is None:
+                    return raw_api.ProjectedRawHistoryPageV1(pair[:1], "1")
+                assert kwargs["cursor"] == "1"
+                return raw_api.ProjectedRawHistoryPageV1(pair[1:], None)
+    
+        f = foundation()
+        owner = f.create_owner(**configuration(f, Reader()))
+>       assert owner.materialise(request(f)) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(owner_object_id='M02', owner_namespace='neutral_market_measurement_truth/v1', implementation...ds=(), convention_refs=(VersionRefV1(context_id='mmt-pilot-price', version=1),), supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(owner_object_id='M02', owner_namespace='neutral_market_measurement_truth/v1', implementation...ds=(), convention_refs=(VersionRefV1(context_id='mmt-pilot-price', version=1),), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D011', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 16, 1,...k', version=1), unit_convention_ref=VersionRefV1(context_id='mmt-pilot-price', version=1), subject_instrument='NVDA'))))
+E        +    where materialise = <nvda_desk.market_measurement_truth._catalogue._Owner object at 0x7f5274d81ee0>.materialise
+E        +    and   CalculationRequestV1(derived_signal_id='D011', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 16, 1,...k', version=1), unit_convention_ref=VersionRefV1(context_id='mmt-pilot-price', version=1), subject_instrument='NVDA'))) = request(<module 'nvda_desk.market_measurement_truth.api' from '/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py'>)
+
+tests/product/market_measurement/test_selection_history.py:245: AssertionError
+______ test_duplicate_consistency_precedes_eligibility[True-True-change3] ______
+
+change = {'native_value': Decimal('NaN')}, ineligible_first = True
+cross_page = True
+
+    @pytest.mark.parametrize(
+        "change",
+        [
+            {"native_units": "shares"},
+            {"source_timestamp_raw": "2026-10-16T00:58:00Z"},
+            {"received_ts_utc": ASOF + timedelta(microseconds=1)},
+            {"native_value": Decimal("NaN")},
+        ],
+    )
+    @pytest.mark.parametrize("ineligible_first", [False, True])
+    @pytest.mark.parametrize("cross_page", [False, True])
+    def test_duplicate_consistency_precedes_eligibility(change, ineligible_first, cross_page):
+        """Section5 algorithm3: one observation cannot carry two conflicting facts."""
+        raw = raw_api.create_owner()
+        for side in ("bid", "ask"):
+            raw.commands.admit_raw_observation_occurrence(observation(side))
+    
+        class Reader:
+            def list_projected_raw_history(self, rid, **kwargs):
+                page = raw.reads.list_projected_raw_history(rid, **(kwargs | {"cursor": None}))
+                if rid.value == "R035":
+                    return page
+                good = page.items[0]
+                bad = replace(good, **change)
+                pair = (bad, good) if ineligible_first else (good, bad)
+                if not cross_page:
+                    return raw_api.ProjectedRawHistoryPageV1(pair, None)
+                if kwargs["cursor"] is None:
+                    return raw_api.ProjectedRawHistoryPageV1(pair[:1], "1")
+                assert kwargs["cursor"] == "1"
+                return raw_api.ProjectedRawHistoryPageV1(pair[1:], None)
+    
+        f = foundation()
+        owner = f.create_owner(**configuration(f, Reader()))
+>       assert owner.materialise(request(f)) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(owner_object_id='M02', owner_namespace='neutral_market_measurement_truth/v1', implementation...ds=(), convention_refs=(VersionRefV1(context_id='mmt-pilot-price', version=1),), supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(owner_object_id='M02', owner_namespace='neutral_market_measurement_truth/v1', implementation...ds=(), convention_refs=(VersionRefV1(context_id='mmt-pilot-price', version=1),), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D011', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 16, 1,...k', version=1), unit_convention_ref=VersionRefV1(context_id='mmt-pilot-price', version=1), subject_instrument='NVDA'))))
+E        +    where materialise = <nvda_desk.market_measurement_truth._catalogue._Owner object at 0x7f5274d35c10>.materialise
+E        +    and   CalculationRequestV1(derived_signal_id='D011', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 16, 1,...k', version=1), unit_convention_ref=VersionRefV1(context_id='mmt-pilot-price', version=1), subject_instrument='NVDA'))) = request(<module 'nvda_desk.market_measurement_truth.api' from '/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py'>)
+
+tests/product/market_measurement/test_selection_history.py:245: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/market_measurement/test_selection_history.py::test_duplicate_consistency_precedes_eligibility[False-False-change0]
+FAILED tests/product/market_measurement/test_selection_history.py::test_duplicate_consistency_precedes_eligibility[False-False-change1]
+FAILED tests/product/market_measurement/test_selection_history.py::test_duplicate_consistency_precedes_eligibility[False-False-change2]
+FAILED tests/product/market_measurement/test_selection_history.py::test_duplicate_consistency_precedes_eligibility[False-False-change3]
+FAILED tests/product/market_measurement/test_selection_history.py::test_duplicate_consistency_precedes_eligibility[False-True-change0]
+FAILED tests/product/market_measurement/test_selection_history.py::test_duplicate_consistency_precedes_eligibility[False-True-change1]
+FAILED tests/product/market_measurement/test_selection_history.py::test_duplicate_consistency_precedes_eligibility[False-True-change2]
+FAILED tests/product/market_measurement/test_selection_history.py::test_duplicate_consistency_precedes_eligibility[False-True-change3]
+FAILED tests/product/market_measurement/test_selection_history.py::test_duplicate_consistency_precedes_eligibility[True-False-change0]
+FAILED tests/product/market_measurement/test_selection_history.py::test_duplicate_consistency_precedes_eligibility[True-False-change1]
+FAILED tests/product/market_measurement/test_selection_history.py::test_duplicate_consistency_precedes_eligibility[True-False-change2]
+FAILED tests/product/market_measurement/test_selection_history.py::test_duplicate_consistency_precedes_eligibility[True-False-change3]
+FAILED tests/product/market_measurement/test_selection_history.py::test_duplicate_consistency_precedes_eligibility[True-True-change0]
+FAILED tests/product/market_measurement/test_selection_history.py::test_duplicate_consistency_precedes_eligibility[True-True-change1]
+FAILED tests/product/market_measurement/test_selection_history.py::test_duplicate_consistency_precedes_eligibility[True-True-change2]
+FAILED tests/product/market_measurement/test_selection_history.py::test_duplicate_consistency_precedes_eligibility[True-True-change3]
+16 failed, 12 passed, 32 deselected in 0.23s
