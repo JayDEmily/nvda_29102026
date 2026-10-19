@@ -913,6 +913,8 @@ def _copy_candidate(tmp_path):
         "tests/product/market_measurement_d012",
         "config/product_proof/market_measurement_d013",
         "tests/product/market_measurement_d013",
+        "config/product_proof/market_measurement_d014",
+        "tests/product/market_measurement_d014",
     ):
         disposable = tmp_path / relative
         if disposable.exists():

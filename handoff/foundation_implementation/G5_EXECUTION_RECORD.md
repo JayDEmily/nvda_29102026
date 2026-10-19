@@ -1,5 +1,9 @@
 # Gate 5 execution and recovered checkpoint
 
+### D014 disposable fixture reset RED→GREEN — 20 October 2026, 00:55 Melbourne
+
+At clean164ddb5 isolated newfixture witness1RED/129deselected0.29s before only two copied D014 optional roots added to existing _copy_candidate reset tuple, expressly acceptedbrief§8. Same witness1GREEN/129deselected0.31s; full RED/GREEN logs preserved, actual source/control loader unchanged. No real proof/generation deleted; disposable fixture asserts separate target/root identity. This is pre-admission-universe bookkeeping, not ownership/arithmetic proof; direct actual-state global orphan/cross-claim checks remain mandatory. §7.3.1 control-source/firstRED obligation evidenced. Next prepare exact fixed-third-descriptor loaderdiff for independent preapplication review/concrete disposition before applying. G6.1 open, no domainproof/generation/runtime.
+
 ### D014 first intended control RED — 20 October 2026, 00:53 Melbourne
 
 Actual pinned pytest tests/architecture/test_proof_control.py -k d014:130collected/38selected,29failed9passed92deselected/51.57s/process1. New physical control source precedes any loader change; changedtestRuffPASS. Failure mechanisms: unknown D014claim/strictCLI3, combined partition sees unowned D014test, absent-descriptor support/nested ownership not rejected or newclaimlookup bypasses specific orphan guard, and disposable pre-admission helper omits third-root reset. Existing actual-four-generation preservation/eight lawful advance-revoke cases pass. No import/environment/acceptedbrief/nativebinding failure counted asRED. Full1685line76671byte firstlog preserved byte-identically G6_1_D014_CONTROL_RED_20261020.log. No domainproductproof/generation/runtime or appliedloaderchange. Preserve proof-only checkpoint; next narrowly fix explicit fixture universe under accepted§8 then prepare exact bounded loaderpatch for independentpreapplicationreview before applying it. G6.1 open.
