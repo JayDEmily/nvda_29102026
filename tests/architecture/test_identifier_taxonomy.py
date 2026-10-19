@@ -31,20 +31,21 @@ def test_identifier_allocation_crosses_two_digit_boundary_without_enumeration() 
 
 def test_current_post_reset_allocation_history_contains_admitted_m00() -> None:
     allocations = load_implementation_allocations(ROOT)
-    assert [(item.object_id, item.name, item.implemented_on) for item in allocations] == [
+    assert sorted((item.object_id, item.name, item.implemented_on) for item in allocations) == [
         ("M00", "raw_signal_occurrence_truth", "2026-09-19"),
         ("M01", "derived_signal_calculation_truth", "2026-10-04"),
+        ("M02", "neutral_market_measurement_truth", "2026-10-19"),
     ]
 
 
 def test_candidate_resolution_uses_current_post_reset_state_in_request_order() -> None:
-    assert resolve_candidate_identifiers(ROOT, ["M", "M", "A"]) == ("M02", "M03", "A01")
+    assert resolve_candidate_identifiers(ROOT, ["M", "M", "A"]) == ("M03", "M04", "A01")
 
 
 def test_candidate_resolution_does_not_mutate_allocation_history() -> None:
     allocation_path = ROOT / "config/architecture/implementation_allocations.yaml"
     before = allocation_path.read_bytes()
-    assert resolve_candidate_identifiers(ROOT, ["M"]) == ("M02",)
+    assert resolve_candidate_identifiers(ROOT, ["M"]) == ("M03",)
     assert allocation_path.read_bytes() == before
 
 
@@ -55,7 +56,7 @@ def test_candidate_resolution_honours_retired_and_durable_post_reset_ids(tmp_pat
 
     modules_path = repository / "config/architecture/modules.yaml"
     modules = yaml.safe_load(modules_path.read_text(encoding="utf-8"))
-    modules["retired_ids"] = ["M02"]
+    modules["retired_ids"] = ["M03"]
     modules_path.write_text(yaml.safe_dump(modules, sort_keys=False), encoding="utf-8")
 
     allocations_path = repository / "config/architecture/implementation_allocations.yaml"
@@ -65,7 +66,7 @@ def test_candidate_resolution_honours_retired_and_durable_post_reset_ids(tmp_pat
                 "schema_version": "1.0",
                 "implementation_allocations": [
                     {
-                        "object_id": "M03",
+                        "object_id": "M04",
                         "name": "previously_implemented",
                         "implemented_on": "2026-09-10",
                     }
@@ -76,4 +77,4 @@ def test_candidate_resolution_honours_retired_and_durable_post_reset_ids(tmp_pat
         encoding="utf-8",
     )
 
-    assert resolve_candidate_identifiers(repository, ["M", "M"]) == ("M04", "M05")
+    assert resolve_candidate_identifiers(repository, ["M", "M"]) == ("M05", "M06")
