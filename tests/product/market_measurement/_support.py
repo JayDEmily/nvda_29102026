@@ -165,13 +165,31 @@ def process_env():
 
 
 def fresh_read(path, identity):
+    return fresh_bundle(path, identity)["occurrence"]
+
+
+def fresh_bundle(path, identity):
     # Expected content/configuration/raw reader are deliberately not sent to the child.
     code = """
 import base64,pickle,sys
 from nvda_desk.market_measurement_truth import api as f
 r=f.create_reader(admission=f.OwnerAdmissionV1("M02",sys.argv[3]),
     storage=f.SQLiteReadStorageV1(sys.argv[1]))
-value=r.get_derived_occurrence(sys.argv[2])
+occurrence=r.get_derived_occurrence(sys.argv[2])
+value={"occurrence":occurrence}
+if occurrence is not None:
+    value.update(
+        definition=r.get_calculation_definition(derived_signal_id=occurrence.derived_signal_id,
+            calculation_definition_version=occurrence.calculation_definition_version),
+        parameter=r.get_parameter_set(occurrence.parameter_context_refs[0]),
+        selection=r.get_input_selection_policy(occurrence.parameter_context_refs[1]),
+        units=tuple(r.get_unit_convention(ref) for ref in occurrence.convention_refs),
+        mappings=tuple(r.get_projection_mapping(item.projection_mapping_ref)
+            for item in occurrence.raw_input_lineage),
+        history=r.list_derived_history(derived_signal_id=occurrence.derived_signal_id,
+            subject_instrument=occurrence.subject_instrument,
+            effective_at_or_before_utc=occurrence.effective_as_of_utc,
+            knowledge_at_or_before_utc=occurrence.knowledge_cutoff_utc,limit=100))
 print(base64.b64encode(pickle.dumps(value)).decode("ascii"))
 """
     result = subprocess.run(

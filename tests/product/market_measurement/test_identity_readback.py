@@ -49,6 +49,60 @@ def canonical(value):
     ).encode()
 
 
+def expected_occurrence(f, config, req, projections, result):
+    """Independent complete expected fact from prewrite inputs and exact authority."""
+    lineage = tuple(
+        f.RawInputLineageV1(
+            rid,
+            item.observation_occurrence_id.value,
+            binding.projection_mapping_ref,
+            binding.unit_convention_ref,
+            item,
+            item.native_value,
+            datetime.fromisoformat(item.source_timestamp_raw.replace("Z", "+00:00")),
+        )
+        for rid, binding, item in zip(
+            ("R034", "R035"), req.raw_input_bindings, projections, strict=True
+        )
+    )
+    definition_hash = hashlib.sha256(canonical(config["definitions"][0])).hexdigest()
+    payload = dict(
+        owner_object_id="M02",
+        owner_namespace="neutral_market_measurement_truth/v1",
+        implementation_brief_sha256=config["admission"].implementation_brief_sha256,
+        request=req,
+        definition_content_sha256=definition_hash,
+        parameter_set=config["parameter_sets"][0],
+        input_selection_policy=config["input_selection_policies"][0],
+        unit_conventions=config["unit_conventions"],
+        projection_mappings=config["raw_projection_mappings"],
+        raw_input_lineage=lineage,
+    )
+    return f.DerivedSignalOccurrenceV1(
+        owner_object_id="M02",
+        owner_namespace="neutral_market_measurement_truth/v1",
+        implementation_brief_sha256=config["admission"].implementation_brief_sha256,
+        derived_signal_id="D011",
+        derived_occurrence_id="mmt1:" + hashlib.sha256(canonical(payload)).hexdigest(),
+        calculation_definition_version="D011-MIDPOINT-1",
+        definition_content_sha256=definition_hash,
+        parameter_context_refs=(req.parameter_set_ref, req.input_selection_policy_ref),
+        subject_instrument="NVDA",
+        universe=None,
+        effective_as_of_utc=req.as_of_utc,
+        window=None,
+        knowledge_cutoff_utc=req.knowledge_cutoff_utc,
+        calculated_at_utc=NOW,
+        result=result,
+        units="price",
+        result_shape="scalar_decimal",
+        raw_input_lineage=lineage,
+        predecessor_occurrence_ids=(),
+        convention_refs=(f.VersionRefV1("mmt-pilot-price", 1),),
+        supersedes_derived_occurrence_id=None,
+    )
+
+
 def test_retry_recalculation_and_definition_readback():
     raw = raw_api.create_owner()
     for side in ("bid", "ask"):

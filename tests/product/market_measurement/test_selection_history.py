@@ -132,6 +132,21 @@ def test_history_enumeration_and_cursor_discriminators(mode):
         ("native_field_path", ("quote", "ask")),
         ("selection_identity", raw_api.RawSelectionIdentityV1((("x", "y"),))),
         ("received_ts_utc", ASOF.replace(tzinfo=None)),
+        ("source_provider", "other"),
+        ("source_variant", "other"),
+        ("ingestion_sequence_scope", raw_api.ingestion_sequence_scope("other")),
+        ("native_units", "shares"),
+        ("subject_instrument", "OTHER"),
+        ("source_temporal_kind", "date_only"),
+        ("source_timestamp_raw", None),
+        ("source_timestamp_raw", "2026-10-16T00:59:58+00:00"),
+        ("source_timestamp_raw", "2026-10-16T00:59:58.1234567Z"),
+        ("source_timezone_native", None),
+        ("source_timezone_native", "EST"),
+        ("revision_vintage_native", "vintage"),
+        ("native_value", 100.0),
+        ("native_value", None),
+        ("native_value", Decimal("Infinity")),
     ],
 )
 def test_projection_metadata_is_independently_checked(field, value):
@@ -148,3 +163,46 @@ def test_projection_metadata_is_independently_checked(field, value):
 
     f = foundation()
     assert f.create_owner(**configuration(f, Reader())).materialise(request(f)) is None
+
+
+def test_real_public_m00_event_receipt_and_scoped_sequence_ranking():
+    raw = raw_api.create_owner()
+    raw.commands.admit_raw_observation_occurrence(observation("ask", sequence=0))
+    specimens = (
+        ("older-event", 3, 0, 1, "90"),
+        ("early-receipt", 2, 1, 2, "100"),
+        ("later-receipt", 2, 0, 3, "104"),
+        ("greatest-sequence", 2, 0, 4, "106"),
+        ("greater-sequence-older-receipt", 2, 1, 5, "999"),
+        ("greatest-sequence-older-event", 3, 0, 6, "888"),
+    )
+    for identity, age, receipt_age, sequence, value in specimens:
+        raw.commands.admit_raw_observation_occurrence(
+            observation(
+                "bid",
+                identity=identity,
+                sequence=sequence,
+                event=ASOF - timedelta(seconds=age),
+                receipt=ASOF - timedelta(seconds=receipt_age),
+                value=Decimal(value),
+            )
+        )
+    f = foundation()
+    result = f.create_owner(**configuration(f, raw.reads)).materialise(request(f))
+    assert result.result == Decimal("104")
+    assert result.raw_input_lineage[0].observation_occurrence_id == "greatest-sequence"
+
+
+def test_real_public_m00_conflicting_equal_rank_and_identical_retry():
+    raw = raw_api.create_owner()
+    raw.commands.admit_raw_observation_occurrence(observation("ask", sequence=0))
+    first = observation("bid", identity="first", sequence=1, receipt=ASOF)
+    raw.commands.admit_raw_observation_occurrence(first)
+    raw.commands.admit_raw_observation_occurrence(first)
+    f = foundation()
+    o = f.create_owner(**configuration(f, raw.reads))
+    assert o.materialise(request(f)).result == Decimal("101")
+    raw.commands.admit_raw_observation_occurrence(
+        observation("bid", identity="second", sequence=1, receipt=ASOF, value=Decimal("104"))
+    )
+    assert o.materialise(request(f)) is None

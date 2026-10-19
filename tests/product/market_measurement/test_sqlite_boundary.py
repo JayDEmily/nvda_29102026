@@ -20,12 +20,14 @@ from _support import (
     NOW,
     configuration,
     foundation,
+    fresh_bundle,
     fresh_read,
+    mapping,
     observation,
     process_env,
     request,
 )
-from test_identity_readback import canonical
+from test_identity_readback import canonical, expected_occurrence
 
 from nvda_desk.raw_signal_occurrence_truth import api as raw_api
 from nvda_desk.raw_signal_occurrence_truth._sqlite import create_sqlite_persistence
@@ -86,6 +88,22 @@ def test_d011_sqlite_commit_and_fresh_readback(tmp_path):
             "bid", identity="nonce-bid", sequence=3, event=ASOF, receipt=ASOF, value=literal
         )
     )
+    selected = tuple(
+        raw.reads.project_raw_value(
+            raw_api.RawSignalCatalogueId(rid),
+            raw_api.observation_occurrence_id(identity),
+            mappings=(mapping(side),),
+        )
+        for rid, identity, side in (
+            ("R034", "nonce-bid", "bid"),
+            ("R035", "mmt-pilot-ask-001", "ask"),
+        )
+    )
+    numerator = digits + 102
+    expected_result = (
+        Decimal(numerator // 2) if numerator % 2 == 0 else Decimal(str(numerator // 2) + ".5")
+    )
+    expected = expected_occurrence(f, config, request(f), selected, expected_result)
     # Child reconstructs only public construction inputs; it stays alive immediately after return.
     code = """
 import base64,pickle,sys
@@ -117,21 +135,21 @@ sys.stdin.read()
         assert returned.result == expected_result
         assert returned.raw_input_lineage[0].projection.native_value == literal
         assert returned.raw_input_lineage[0].observation_occurrence_id == "nonce-bid"
-        committed_fact(path, returned, returned)
+        committed_fact(path, returned, expected)
         proc.kill()
         proc.wait(timeout=10)
     finally:
         if proc.poll() is None:
             proc.kill()
             proc.wait(timeout=10)
-    committed_fact(path, returned, returned)
+    committed_fact(path, returned, expected)
     for surrogate in (
         None,
         replace(returned, raw_input_lineage=()),
         replace(returned, result=Decimal("0")),
     ):
         with pytest.raises((AssertionError, TypeError)):
-            committed_fact(path, surrogate, returned)
+            committed_fact(path, surrogate, expected)
     # An uncommitted row followed by process death cannot satisfy the discriminator.
     blank = tmp_path / "blank.sqlite"
     f.create_owner(**configuration(f, raw.reads, storage=f.SQLiteStorageV1(str(blank), True)))
@@ -163,7 +181,7 @@ sys.stdin.read()
     try:
         assert pending.stdout.readline().strip() == "INSERTED"
         with pytest.raises(AssertionError):
-            committed_fact(blank, returned, returned)
+            committed_fact(blank, returned, expected)
     finally:
         pending.kill()
         pending.wait(timeout=10)
@@ -200,7 +218,24 @@ sys.stdin.read()
         clone = tmp_path / "backup.sqlite"
         with sqlite3.connect(clone) as backup:
             connection.backup(backup)
-    committed_fact(clone, returned, returned)
+    moved = tmp_path / "original-held-away.sqlite"
+    path.rename(moved)
+    try:
+        committed_fact(clone, returned, expected)
+        recovered = fresh_bundle(clone, expected.derived_occurrence_id)
+        assert canonical(recovered) == canonical(
+            dict(
+                occurrence=expected,
+                definition=config["definitions"][0],
+                parameter=config["parameter_sets"][0],
+                selection=config["input_selection_policies"][0],
+                units=config["unit_conventions"],
+                mappings=config["raw_projection_mappings"],
+                history=(expected,),
+            )
+        )
+    finally:
+        moved.rename(path)
     later = f.create_owner(
         **configuration(
             f,
@@ -223,24 +258,34 @@ def test_sqlite_immutable_concurrency_rollback_and_uncertain_commit(tmp_path, mo
     mechanism = importlib.import_module("nvda_desk.market_measurement_truth._sqlite")
     real_connect = sqlite3.connect
     mode = ["before"]
+    reached = []
 
     class Fault(sqlite3.Connection):
+        wrote = False
+
         def execute(self, sql, *args, **kwargs):
-            if sql.strip().upper() == "COMMIT" and mode[0] == "before":
+            statement = sql.strip().upper()
+            if statement == "COMMIT" and self.wrote and mode[0] == "before":
+                reached.append("before-foundation-write-commit")
                 raise sqlite3.OperationalError("injected precommit failure")
             result = super().execute(sql, *args, **kwargs)
-            if sql.strip().upper() == "COMMIT" and mode[0] == "after":
+            if statement.startswith("INSERT") and "MMT_OCCURRENCE_V1" in statement:
+                self.wrote = True
+            if statement == "COMMIT" and self.wrote and mode[0] == "after":
+                reached.append("after-foundation-write-commit")
                 raise sqlite3.OperationalError("injected lost commit acknowledgement")
             return result
 
     def connect(*args, **kwargs):
-        kwargs["factory"] = Fault
+        if str(args[0]).startswith(path.as_uri() + "?"):
+            kwargs["factory"] = Fault
         return real_connect(*args, **kwargs)
 
     monkeypatch.setattr(mechanism.sqlite3, "connect", connect)
     with pytest.raises(f.PersistenceFailureV1) as failure:
         o.materialise(request(f))
     assert failure.value.outcome_uncertain is False
+    assert reached == ["before-foundation-write-commit"]
     mode[0] = "none"
     assert (
         reader.list_derived_history(
@@ -256,6 +301,7 @@ def test_sqlite_immutable_concurrency_rollback_and_uncertain_commit(tmp_path, mo
     with pytest.raises(f.PersistenceFailureV1) as failure:
         o.materialise(request(f))
     assert failure.value.outcome_uncertain is True
+    assert reached == ["before-foundation-write-commit", "after-foundation-write-commit"]
     mode[0] = "none"
     committed = reader.list_derived_history(
         derived_signal_id="D011",
@@ -303,6 +349,68 @@ def test_sqlite_immutable_concurrency_rollback_and_uncertain_commit(tmp_path, mo
         connection.execute(trigger_sql)
     with pytest.raises((ValueError, f.PersistenceFailureV1)):
         o.materialise(request(f))
+
+
+def test_sqlite_configuration_registration_rolls_back_after_real_partial_write(
+    tmp_path, monkeypatch
+):
+    raw, _ = raw_source(tmp_path)
+    f = foundation()
+    path = tmp_path / "foundation.sqlite"
+    original = configuration(f, raw.reads, storage=f.SQLiteStorageV1(str(path), True))
+    f.create_owner(**original)
+    before = {}
+    with sqlite3.connect(path) as c:
+        for table in ("mmt_definition_v1", "mmt_configuration_v1", "mmt_occurrence_v1"):
+            before[table] = c.execute("SELECT * FROM " + table + " ORDER BY 1,2,3").fetchall()
+    real_connect = sqlite3.connect
+    reached = []
+
+    class RegistrationFault(sqlite3.Connection):
+        wrote = False
+
+        def execute(self, sql, *args, **kwargs):
+            statement = sql.strip().upper()
+            if statement.startswith("INSERT") and "MMT_" in statement and self.wrote:
+                reached.append("failed-after-lawful-new-row")
+                raise sqlite3.OperationalError("registration partial-write canary")
+            result = super().execute(sql, *args, **kwargs)
+            if statement.startswith("INSERT") and "MMT_" in statement and result.rowcount == 1:
+                self.wrote = True
+                reached.append("lawful-new-row-written")
+            return result
+
+    def connect(*args, **kwargs):
+        if str(args[0]).startswith(path.as_uri() + "?"):
+            kwargs["factory"] = RegistrationFault
+        return real_connect(*args, **kwargs)
+
+    monkeypatch.setattr(sqlite3, "connect", connect)
+    with pytest.raises(f.PersistenceFailureV1) as failure:
+        f.create_owner(
+            **configuration(
+                f, raw.reads, storage=f.SQLiteStorageV1(str(path), False), versions=(1, 2)
+            )
+        )
+    assert failure.value.outcome_uncertain is False
+    assert reached == ["lawful-new-row-written", "failed-after-lawful-new-row"]
+    monkeypatch.undo()
+    with sqlite3.connect(path) as c:
+        for table, rows in before.items():
+            assert c.execute("SELECT * FROM " + table + " ORDER BY 1,2,3").fetchall() == rows
+    reader = f.create_reader(
+        admission=original["admission"], storage=f.SQLiteReadStorageV1(str(path))
+    )
+    assert reader.get_parameter_set(f.VersionRefV1("mmt-pilot-basic", 2)) is None
+    assert reader.get_input_selection_policy(f.VersionRefV1("mmt-pilot-selection", 2)) is None
+    assert reader.get_unit_convention(f.VersionRefV1("mmt-pilot-price", 2)) is None
+    assert reader.get_projection_mapping(f.VersionRefV1("mmt-pilot-bid", 2)) is None
+    assert (
+        reader.get_calculation_definition(
+            derived_signal_id="D011", calculation_definition_version="D011-MIDPOINT-2"
+        )
+        is None
+    )
 
 
 def test_sqlite_actual_competing_identical_materialisations(tmp_path):
@@ -400,6 +508,68 @@ def test_sqlite_integrity_failure_is_not_missing_input(tmp_path, mutation):
         o.reads.get_derived_occurrence(result.derived_occurrence_id)
     if mutation == "deleted":
         assert not path.exists()
+
+
+def test_production_foundation_connection_settings_and_transaction_modes(tmp_path, monkeypatch):
+    raw, _ = raw_source(tmp_path)
+    f = foundation()
+    path = tmp_path / "foundation.sqlite"
+    real_connect = sqlite3.connect
+    seen = []
+
+    class Audit(sqlite3.Connection):
+        def execute(self, sql, *args, **kwargs):
+            statement = sql.strip().upper()
+            result = super().execute(sql, *args, **kwargs)
+            if statement in {"BEGIN", "BEGIN IMMEDIATE"}:
+                settings = {
+                    name: sqlite3.Connection.execute(self, "PRAGMA " + name).fetchone()[0]
+                    for name in (
+                        "foreign_keys",
+                        "journal_mode",
+                        "synchronous",
+                        "busy_timeout",
+                        "query_only",
+                    )
+                }
+                seen.append((self.uri, statement, settings, self.isolation_level))
+                if "mode=ro" in self.uri:
+                    # Exercise the actual production-opened connection, inside its read transaction.
+                    with pytest.raises(sqlite3.OperationalError):
+                        sqlite3.Connection.execute(
+                            self, "INSERT INTO mmt_definition_v1 VALUES ('a','b','c',X'00','bad')"
+                        )
+            return result
+
+    def connect(*args, **kwargs):
+        if not str(args[0]).startswith(path.as_uri() + "?"):
+            return real_connect(*args, **kwargs)
+        assert kwargs.get("uri") is True
+        kwargs["factory"] = Audit
+        connection = real_connect(*args, **kwargs)
+        connection.uri = str(args[0])
+        return connection
+
+    monkeypatch.setattr(sqlite3, "connect", connect)
+    config = configuration(f, raw.reads, storage=f.SQLiteStorageV1(str(path), True))
+    o = f.create_owner(**config)
+    result = o.materialise(request(f))
+    reads = f.create_reader(admission=config["admission"], storage=f.SQLiteReadStorageV1(str(path)))
+    assert reads.get_derived_occurrence(result.derived_occurrence_id) == result
+    writers = [entry for entry in seen if "mode=rw" in entry[0]]
+    readers = [entry for entry in seen if "mode=ro" in entry[0]]
+    assert writers and readers
+    for uri, begin, settings, isolation in writers:
+        assert uri.startswith(path.as_uri() + "?") and "immutable=1" not in uri
+        assert begin == "BEGIN IMMEDIATE" and isolation is None
+        assert settings == dict(
+            foreign_keys=1, journal_mode="delete", synchronous=3, busy_timeout=0, query_only=0
+        )
+    for uri, begin, settings, isolation in readers:
+        assert uri.startswith(path.as_uri() + "?") and "immutable=1" not in uri
+        assert begin == "BEGIN" and isolation is None
+        assert settings["foreign_keys"] == settings["query_only"] == 1
+        assert settings["journal_mode"] == "delete" and settings["busy_timeout"] == 0
 
 
 def test_sqlite_read_facet_and_owner_file_binding(tmp_path):
