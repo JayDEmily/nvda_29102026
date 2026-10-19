@@ -192,14 +192,14 @@ def test_pending_authority_target_and_empty_proof_are_not_success(tmp_path):
     )
 
 
-def test_actual_m00_generation_and_foundation_bootstrap_remain_distinct():
+def test_actual_m00_and_foundation_generations_remain_distinct():
     api = _controls()
     raw = api.load_product_proof_claim(ROOT, "raw_signal_occurrence_truth_sqlite")
     foundation = api.load_product_proof_claim(ROOT, "neutral_market_measurement_truth_pilot")
     assert raw.state == "READY_FOR_PROOF" and raw.target_id == "M00"
     assert raw.target_status == "active" and raw.generation_sha256 is not None
-    assert foundation.target_status == "bootstrap"
-    # G5.2 admits development proof without activating/promoting its owner.
+    assert foundation.target_status == "active"
+    # G5.3 admits only the isolated pilot; claim/generation separation remains.
     assert foundation.target_id == "M02"
     assert foundation.state == "READY_FOR_PROOF"
     assert foundation.generation_sha256 is not None

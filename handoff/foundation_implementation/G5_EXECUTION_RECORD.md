@@ -1,5 +1,9 @@
 # Gate 5 execution and recovered checkpoint
 
+### G5.3 concrete candidate/activation approved
+
+At22:03:31Melbourne19October2026 the owner answered “I approve continuing.” to acceptance of repairedb25eea9 and its packaged exact isolated M02activation diff. Reference owner-chat/20261019T220331/G5.3-candidate-and-activation. Exact proposalSHA687f0644880e4de20c2b6af9f45d921e3816d6ba42b92ee6c90077ba4f9a5467 is authorised for application; gen4proof remains unchanged. Current state advances to accepted isolated activation/actual promotion evidence, not fabricated final Gate5 acceptance. Existing sequential G6commission survives with exact dependencies/domain contracts.
+
 ### G5.3 concrete candidate/activation decision reached
 
 Independent review returned one ImportantISOLATEDduplicate-consistency defect on9e605bd. Current proofgen4SHA24a5af4054c277b01a140ec43481e86851e5e76263826644a80993c12c2495b7 has separate independent proof adequacy;16negative REDs preceded repairb25eea9ec4d717f11accced033a6191a07485a89. Author final evidence:113strict pilotPASS,30M00SQLitePASS,416retainedsemanticPASS,113kernelpromotionPASS/11families/zero seam-dependency violations,34filemypy/scopedRuffPASS; two inherited M01E501 findings remain. Four independent public sequences/control checks and author direct replay are separately attributed. No independent implementation rereview/favourable whole-candidate disposition is fabricated.

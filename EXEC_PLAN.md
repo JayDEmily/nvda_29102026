@@ -1,5 +1,13 @@
 # NVDA V2 — ACTIVE successor ExecPlan: Gate 5 execution
 
+## G5.3 candidate and isolated activation accepted — 19 October 2026, 22:03 Melbourne
+
+The owner answered “I approve continuing.” to the concrete question accepting repaired candidateb25eea9 and its packaged M02 isolated D011 activation proposal. Reference owner-chat/20261019T220331/G5.3-candidate-and-activation. This accepts that exact bounded candidate with the disclosed review/repair/evidence limits and authorises the two-path diff SHA687f0644880e4de20c2b6af9f45d921e3816d6ba42b92ee6c90077ba4f9a5467. Apply the exact diff, preserve proof generation4 unchanged, obtain actual active-target foundation/M00 aggregates and architecture promotion on the clean admitted candidate, then record actual results for the final§6 disposition. No result or final gate acceptance is inferred in advance. Sequential remaining-leaf commissioning remains current.
+
+Current ledger: G5.3 IN_PROGRESS_ACCEPTED_ISOLATED_ACTIVATION_AND_PROMOTION; G6.1–G6.4 COMMISSIONED_IN_ORDER_PENDING_REQUIRED_PREDECESSOR_AND_FAMILY_CONTRACTS. Existing isolated branch remains current. No new acceptance of SQLite/v3/control/candidate is requested. No A00 composition/native/provider/live/migration/retirement/main work is added.
+
+---
+
 ## G5.3 repaired candidate at required owner decision — 19 October 2026, 21:49 Melbourne
 
 Independent review of9e605bd returned ImportantISOLATEDF001: eligibility filtering hid conflicting repeated observation identities. Exact review/proof-admission lineage and limits are preserved in G5_3_INDEPENDENT_REVIEW_20261019.md. Generation4 SHA24a5af4054c277b01a140ec43481e86851e5e76263826644a80993c12c2495b7 was independently adequacy-reviewed/admitted before16caseRED and bounded repairb25eea9ec4d717f11accced033a6191a07485a89/tree4fe1df8761f19bb66fab7b457ff435b48ac37625. Author closure has113strict complete pilot cases,30M00SQLite aggregate cases,416retained M00semantic cases,113architecture promotion cases/11families/zero dependency-seam violations,34filemypy and scoped Ruff PASS. Standard Ruff retains two inherited M01 E501 findings. Independent direct sequences/control checks and author post-repair replay remain distinctly attributed; no independent whole-candidate repair PASS is invented.
