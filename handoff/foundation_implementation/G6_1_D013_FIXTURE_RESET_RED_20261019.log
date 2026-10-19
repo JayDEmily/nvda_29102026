@@ -1,0 +1,41 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/d549b6d808a9/g52-recovery/repository
+configfile: pyproject.toml
+collected 92 items / 91 deselected / 1 selected
+
+tests/architecture/test_proof_control.py F                               [100%]
+
+=================================== FAILURES ===================================
+______ test_d013_pre_admission_fixture_explicitly_resets_both_extensions _______
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-48/test_d013_pre_admission_fixtur0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f8dd6b2b9e0>
+
+    def test_d013_pre_admission_fixture_explicitly_resets_both_extensions(tmp_path, monkeypatch):
+        source = tmp_path / "source"
+        source.mkdir()
+        for name in ("config", "schemas", "docs", "tests", "implementation", "handoff", "src", "tools"):
+            shutil.copytree(ROOT / name, source / name, ignore=shutil.ignore_patterns("__pycache__"))
+        for name in ("pyproject.toml", "GUARDRAILS.md", "AGENTS.md", ".gitignore"):
+            shutil.copy2(ROOT / name, source / name)
+        _json_write(source / D013_ROOT / "claim.json", _d013_descriptor())
+        _json_write(
+            source / D013_ROOT / "admission.json", {"schema_version": "1.0", "current_generation": None}
+        )
+        support = source / "tests/product/market_measurement_d013/_support.py"
+        support.parent.mkdir(parents=True, exist_ok=True)
+        support.write_text("# Disposable fixture-state control, not domain source.\n")
+        original = (source / D013_ROOT / "claim.json").read_bytes()
+        monkeypatch.setitem(globals(), "ROOT", source)
+        target = _copy_candidate(tmp_path / "pre-admission")
+        for suffix in ("d012", "d013"):
+>           assert not (target / f"config/product_proof/market_measurement_{suffix}").exists()
+E           AssertionError: assert not True
+E            +  where True = exists()
+E            +    where exists = (PosixPath('/tmp/pytest-of-root/pytest-48/test_d013_pre_admission_fixtur0/pre-admission') / 'config/product_proof/market_measurement_d013').exists
+
+tests/architecture/test_proof_control.py:176: AssertionError
+=========================== short test summary info ============================
+FAILED tests/architecture/test_proof_control.py::test_d013_pre_admission_fixture_explicitly_resets_both_extensions
+======================= 1 failed, 91 deselected in 0.62s =======================

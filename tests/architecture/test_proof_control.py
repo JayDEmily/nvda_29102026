@@ -155,6 +155,31 @@ def test_d013_preservation_allows_lawful_generation_transitions(
     assert old_generation.read_bytes() == old_bytes
 
 
+def test_d013_pre_admission_fixture_explicitly_resets_both_extensions(tmp_path, monkeypatch):
+    source = tmp_path / "source"
+    source.mkdir()
+    for name in ("config", "schemas", "docs", "tests", "implementation", "handoff", "src", "tools"):
+        shutil.copytree(ROOT / name, source / name, ignore=shutil.ignore_patterns("__pycache__"))
+    for name in ("pyproject.toml", "GUARDRAILS.md", "AGENTS.md", ".gitignore"):
+        shutil.copy2(ROOT / name, source / name)
+    _json_write(source / D013_ROOT / "claim.json", _d013_descriptor())
+    _json_write(
+        source / D013_ROOT / "admission.json", {"schema_version": "1.0", "current_generation": None}
+    )
+    support = source / "tests/product/market_measurement_d013/_support.py"
+    support.parent.mkdir(parents=True, exist_ok=True)
+    support.write_text("# Disposable fixture-state control, not domain source.\n")
+    original = (source / D013_ROOT / "claim.json").read_bytes()
+    monkeypatch.setitem(globals(), "ROOT", source)
+    target = _copy_candidate(tmp_path / "pre-admission")
+    for suffix in ("d012", "d013"):
+        assert not (target / f"config/product_proof/market_measurement_{suffix}").exists()
+        assert not (target / f"tests/product/market_measurement_{suffix}").exists()
+    assert (source / D013_ROOT / "claim.json").read_bytes() == original
+    assert support.is_file()
+    assert (source / D012_ROOT / "generations/0001.json").is_file()
+
+
 def test_d013_actual_original_claim_generations_are_preserved():
     api = _controls()
     originals = (
