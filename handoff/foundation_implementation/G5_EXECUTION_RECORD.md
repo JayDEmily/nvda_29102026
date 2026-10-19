@@ -1,5 +1,9 @@
 # Gate 5 execution and recovered checkpoint
 
+### Remaining current-plan leaves commissioned sequentially
+
+Owner-chat/20261019T213947/remaining-plan-in-order broadens earlier G5.3-only scope: finish G5.3 then G6.1–G6.4 sequentially under the exact current plan. Necessary detailed family-contract/proof/plan-amendment preparation is included; missing domain conventions, concrete acceptance decisions and source facts are not invented. Existing independent candidate review continues. Dependent G6 execution waits for its actual predecessor and exact accepted family contracts. No external/broker/live/main/migration/retirement expansion follows from the commissioning phrase.
+
 ### G5.3-only current authorisation
 
 At21:23:27 Melbourne19October2026 the owner instructed “Okay, execute gate five point three only.” Reference owner-chat/20261019T212327/G5.3-only. Independent review is commissioned against delivered9e605bd and its exact accepted authority/generation3. No favourable disposition, target activation, Gate5 closure or later work is inferred from this permission. The root accepted plan governs the explicit concrete owner decision. Existing isolated worktree/branch is retained on work/v2-g53-review-20261019; no competing skill ledger or cleanup/deletion is performed. Prior checkpoints below remain evidence.

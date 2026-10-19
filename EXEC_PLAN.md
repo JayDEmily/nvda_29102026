@@ -1,5 +1,13 @@
 # NVDA V2 — ACTIVE successor ExecPlan: Gate 5 execution
 
+## Remaining leaves commissioned in order — 19 October 2026, 21:39 Melbourne
+
+Current owner instruction: “I want you to complete all of the leaves and gates in sequential order, as laid out by the exact plan, the current one. If there is any confusion, please let me know before you start.” Reference owner-chat/20261019T213947/remaining-plan-in-order. This broadens execution scope beyond the prior G5.3-only instruction. Continue G5.3, then G6.1, G6.2, G6.3 and G6.4 in that order, retaining all actual prerequisites and explicit concrete owner/domain-acceptance boundaries in §§6–7. It authorises the necessary next-family specification/proof and plan-amendment preparation; it supplies no missing mathematical convention, native-source certification, acceptance of unwritten bytes or favourable review. The current D011 pilot contract cannot authorise other125 implementations by extrapolation. No extra peer, broker/live, migration/retirement or main-merge work outside these plan leaves is inferred.
+
+Current ledger: G5.3 IN_PROGRESS_INDEPENDENT_REVIEW; G6.1–G6.4 COMMISSIONED_IN_ORDER_PENDING_G5_AND_EXACT_FAMILY_CONTRACTS. Independent review of candidate9e605bd continues unchanged. Do not start a dependent later leaf before its predecessor and exact authority/proof conditions are satisfied. Project root/record remain the only execution ledger.
+
+---
+
 ## G5.3 execution authorised — 19 October 2026, 21:23 Melbourne
 
 Current owner instruction: “Okay, execute gate five point three only.” Reference owner-chat/20261019T212327/G5.3-only. G5.3 is authorised for the independent boundary/pilot decision and its necessary review, bounded findings repair/proof and concrete admission preparation. Candidate submitted is delivered9e605bd1bc191761d9534dd90d883507cff93f49, source/proof engineering candidate01080afc938eefedd6f8c385330876d3e2cb57d7, immutable foundation generation3 SHA55e2284c8ee790cf996c6af445a43b00b5e7b9706a2a5f10fbe53ed597f1d1e4. Actual target remains bootstrap pending the §6 owner disposition and lawful activation boundary; execution permission does not fabricate a favourable independent review or acceptance of a changed candidate. Preserve root plan/G5_EXECUTION_RECORD as sole ledger. No extra skill ledger, main merge, G6/native/provider/live/migration/retirement work is authorised.
