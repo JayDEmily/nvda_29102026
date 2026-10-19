@@ -176,7 +176,6 @@ def test_d014_absent_descriptor_rejects_every_python_ownership(tmp_path, name):
         "missing_binding",
         "missing_contract",
         "missing_brief",
-        "missing_test_name",
         "missing_support",
     ],
 )
@@ -219,7 +218,7 @@ def test_d014_bad_extension_rejects_every_selected_claim(tmp_path, surface):
             / {"brief": D014_BRIEF, "binding": D014_BINDING, "contract": D014_CONTRACT}[surface]
         )
         path.write_bytes(path.read_bytes() + b"\n")
-    elif surface.startswith("missing_") and surface != "missing_test_name":
+    elif surface.startswith("missing_"):
         relative = {
             "missing_binding": D014_BINDING,
             "missing_contract": D014_CONTRACT,
@@ -227,18 +226,6 @@ def test_d014_bad_extension_rejects_every_selected_claim(tmp_path, surface):
             "missing_support": "tests/product/market_measurement_d014/_support.py",
         }[surface]
         (root / relative).unlink()
-    elif surface == "missing_test_name":
-        path = root / "tests/product/market_measurement_d014/test_raw_ratio.py"
-        path.write_text(
-            path.read_text().replace(
-                "test_d014_actual_raw_projections_exact_ratio", "test_not_the_required_name"
-            )
-        )
-        generation = root / D014_ROOT / "generations/0001.json"
-        value = json.loads(generation.read_text())
-        value["family_files"][0]["sha256"] = _sha(path)
-        _json_write(generation, value)
-        _d014_select_generation(root, generation)
     elif surface == "unowned":
         (root / "tests/product/market_measurement_d014/nested_helper.py").write_text("pass\n")
     else:
@@ -247,6 +234,26 @@ def test_d014_bad_extension_rejects_every_selected_claim(tmp_path, surface):
     for identity in _D014_SELECTED:
         with pytest.raises((ValueError, OSError)):
             api.load_product_proof_claim(root, identity)
+
+
+def test_d014_missing_mandatory_name_fails_strict_collection(tmp_path):
+    root = _d014_control_candidate(tmp_path)
+    # Hash-valid control admission is readiness, not observed complete proof.
+    path = root / "tests/product/market_measurement_d014/test_raw_ratio.py"
+    path.write_text(
+        path.read_text().replace(
+            "test_d014_actual_raw_projections_exact_ratio", "test_not_the_required_name"
+        )
+    )
+    generation = root / D014_ROOT / "generations/0001.json"
+    value = json.loads(generation.read_text())
+    value["family_files"][0]["sha256"] = _sha(path)
+    _json_write(generation, value)
+    _d014_select_generation(root, generation)
+    assert _controls().load_product_proof_claim(root, D014_CLAIM).state == "READY_FOR_PROOF"
+    result = _run_control_probe(root, D014_CLAIM)
+    assert result.returncode == 5, result.stdout + result.stderr
+    assert "observed aggregate outcome: exit=5" in result.stdout
 
 
 def test_d014_null_admission_is_incomplete(tmp_path):
