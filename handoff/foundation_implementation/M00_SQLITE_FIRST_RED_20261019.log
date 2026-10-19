@@ -1,0 +1,34 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/d549b6d808a9/g51/repository
+configfile: pyproject.toml
+collected 1 item
+
+tests/product/raw_signal_sqlite/test_contract_native.py F                [100%]
+
+=================================== FAILURES ===================================
+____________ test_sqlite_public_contracts_and_typed_identity_layers ____________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-1/test_sqlite_public_contracts_a0')
+
+    def test_sqlite_public_contracts_and_typed_identity_layers(tmp_path):
+>       o = owner(tmp_path / "raw.db", create=True)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/raw_signal_sqlite/test_contract_native.py:38: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal_sqlite/_support.py:24: in owner
+    port = mechanism().create_sqlite_persistence(str(path), create=create)
+           ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def mechanism():
+        name = "nvda_desk.raw_signal_occurrence_truth._sqlite"
+>       assert importlib.util.find_spec(name) is not None, "accepted M00 SQLite capability is missing"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: accepted M00 SQLite capability is missing
+
+tests/product/raw_signal_sqlite/_support.py:19: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/raw_signal_sqlite/test_contract_native.py::test_sqlite_public_contracts_and_typed_identity_layers
+============================== 1 failed in 0.05s ===============================
