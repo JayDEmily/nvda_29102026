@@ -360,17 +360,22 @@ def test_sqlite_proof_rejects_surrogate_commit_and_payload(tmp_path):
     with pytest.raises(AssertionError):
         correspondence(setup_only)
 
-    def split_commit():
-        # Real target row is uncommitted while an unrelated setup transaction has committed.
-        with mechanism().create_sqlite_persistence(str(path)).transaction(write=True) as tx:
-            tx.append_observation(expected)
-            assert fresh_record(path, "observation", "target") is None
-            raise RuntimeError("public success would precede semantic commit")
+    pending = mechanism().create_sqlite_persistence(str(path)).transaction(write=True)
 
-    with pytest.raises(RuntimeError, match="precedes semantic commit"):
-        split_commit()
-    with pytest.raises(AssertionError):
-        correspondence(lambda: expected)
+    def split_commit():
+        # Return actual expected content while its semantic transaction remains uncommitted.
+        # A distinct setup transaction above has committed; that commit cannot certify this row.
+        tx = pending.__enter__()
+        tx.append_observation(expected)
+        return expected
+
+    try:
+        with pytest.raises(AssertionError):
+            correspondence(split_commit)
+    finally:
+        rollback = RuntimeError("deliberately roll back split-commit canary")
+        pending.__exit__(RuntimeError, rollback, None)
+    assert fresh_record(path, "observation", "target") is None
 
     def subset_commit():
         o.commands.admit_raw_observation_occurrence(
@@ -518,9 +523,14 @@ def test_sqlite_schema_settings_canonical_payload_and_index_integrity(tmp_path, 
         assert decoded["received_ts_utc"] == "2026-09-20T12:00:00.000000Z"
         assert key == b"\1" + (1).to_bytes(8, "big") + b"1"
         # Retain valid payload/hash but corrupt the searchable metadata: decoding must reject.
-        for (name,) in c.execute("SELECT name FROM sqlite_schema WHERE type='trigger'").fetchall():
+        trigger_sql = c.execute(
+            "SELECT name,sql FROM sqlite_schema WHERE type='trigger'"
+        ).fetchall()
+        for name, sql in trigger_sql:
             c.execute('DROP TRIGGER "' + name + '"')
         c.execute("UPDATE rsot_raw_observation_occurrence_v1 SET ingestion_sequence='2'")
+        for name, sql in trigger_sql:
+            c.execute(sql)
     with pytest.raises(api.PersistenceFailureV1):
         owner(path).reads.get_raw_observation_occurrence(api.observation_occurrence_id("obs"))
 

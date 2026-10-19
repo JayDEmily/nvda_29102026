@@ -326,6 +326,8 @@ def test_sqlite_requiredness_time_layers_and_static_public_facets(tmp_path):
     # Actual pinned checker verifies command/read returns, not annotation spelling alone.
     specimen = """
 from typing import assert_type
+from collections.abc import Sequence
+from datetime import datetime
 from nvda_desk.raw_signal_occurrence_truth import api
 o = api.create_owner()
 assert_type(o.reads.get_raw_observation_occurrence(api.observation_occurrence_id("o")),
@@ -336,6 +338,27 @@ assert_type(o.reads.get_capture_scope_policy(api.scope_policy_id("p"), 1),
             api.CaptureScopePolicyV1 | None)
 assert_type(o.reads.get_receipt_presence_assessment(api.assessment_occurrence_id("a")),
             api.CaptureReceiptPresenceAssessmentV1 | None)
+assert_type(o.reads.list_receipt_presence_assessments(api.capture_occurrence_id("c")),
+            Sequence[api.CaptureReceiptPresenceAssessmentV1])
+def commands(p: api.CaptureScopePolicyV1, raw: api.RawObservationOccurrenceV1,
+             when: datetime) -> None:
+    assert_type(o.commands.register_capture_scope_policy(p), api.CaptureScopePolicyV1)
+    assert_type(o.commands.admit_raw_observation_occurrence(raw), api.RawObservationOccurrenceV1)
+    assert_type(o.commands.realise_scheduled_capture_occurrence(
+        scope_policy_ref=api.scope_policy_ref("p@1"), slot_start_utc=when,
+        capture_occurrence_id=api.capture_occurrence_id("c")), api.ScheduledCaptureOccurrenceV1)
+    assert_type(o.commands.derive_capture_receipt_evidence_relation(
+        observation_occurrence_ref=raw.observation_occurrence_id,
+        capture_occurrence_ref=api.capture_occurrence_id("c"),
+        scope_policy_ref=api.scope_policy_ref("p@1")), api.CaptureReceiptEvidenceRelationV1 | None)
+    assert_type(o.commands.append_capture_receipt_presence_assessment(
+        assessment_occurrence_id=api.assessment_occurrence_id("a"),
+        capture_occurrence_ref=api.capture_occurrence_id("c"), evidence_as_of_ts_utc=when,
+        supersedes_assessment_ref=None), api.CaptureReceiptPresenceAssessmentV1)
+    assert_type(o.commands.reconcile_owed_slots(scope_policy_ref=api.scope_policy_ref("p@1"),
+        slot_starts_utc=(when,), capture_occurrence_ids=(api.capture_occurrence_id("c"),),
+        assessment_occurrence_ids=(api.assessment_occurrence_id("a"),)),
+        Sequence[api.CaptureReceiptPresenceAssessmentV1])
 """
     checked = subprocess.run(
         [sys.executable, "-m", "mypy", "--strict", "--disallow-any-expr", "-c", specimen],
@@ -344,3 +367,17 @@ assert_type(o.reads.get_receipt_presence_assessment(api.assessment_occurrence_id
         timeout=30,
     )
     assert checked.returncode == 0, checked.stdout + checked.stderr
+    negative = (
+        specimen
+        + """
+o.reads.get_raw_observation_occurrence(api.capture_occurrence_id("wrong-layer"))
+"""
+    )
+    refused = subprocess.run(
+        [sys.executable, "-m", "mypy", "--strict", "--disallow-any-expr", "-c", negative],
+        capture_output=True,
+        text=True,
+        timeout=30,
+    )
+    assert refused.returncode == 1
+    assert refused.stdout.count("error:") == 1 and "[arg-type]" in refused.stdout
