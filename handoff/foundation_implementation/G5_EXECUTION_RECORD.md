@@ -1,6 +1,10 @@
 # Gate 5 execution and recovered checkpoint
 
-### D013 exact design/brief and root§7.2 admitted — 19 October 2026, 23:17 Melbourne
+### D013 first intended control RED — 19 October 2026, 23:18 Melbourne
+
+Exactnewbinding nativevalidationPASS for modify:M02/modify:G01, currentisolatedworkbranchverified. Actual23newcontrolcases before loaderchange:20failed3passed62deselected/process1. Failures establish unknownnewclaim and absent-descriptor support/nestedhelper omissions; positiveguards stop negativecanaries accepting an unrelatedreject. Actual original3claim/generationpreservation and genericorphan test/symlinkrejection pass. FullfirstlogG6_1_D013_CONTROL_RED_20261019.log preserved before sourceproposal/application. No domaincode/productproof/generation. Next boundedconcreteloaderpatch requires independentpreapplicationreview/delegateddisposition. Prioradmissiontimestampcorrected23:17toactual23:16 in currentrecord/root, without rewritingsource/history/authority.
+
+### D013 exact design/brief and root§7.2 admitted — 19 October 2026, 23:16 Melbourne
 
 Independent documentary PASS independent-review/g61-d013-design/462e0d3/20261019, no findings, supports concrete delegated ACCEPT_FOR_BOUNDED_D013_IMPLEMENTATION_AND_TESTING under actual owner-chat/20261019T222804/D012-and-standing-human-exceptions. Exact unchanged briefSHA1f53d9c21c6eb4b90213137c4699a0688f994cd0ed55e54082268d8477abc148/contractSHA7eab93055c2e2f19e74563ec9588bbc04dfdb8664d4c8e3279527f70917d4a47. Returned review scope, reasoning, actual delegated judgement and cost-if-wrong are preserved in G6_1_D013_DESIGN_REVIEW_20261019.md. Root§7.2 is concrete ordered single-plan amendment, self-reviewed against everybriefsection/interface/prooffocus and accepted under the same standingdelegation. No future owner utterance or independent implementation verdict is invented. Separate new nativebinding exactmodify:M02/modify:G01. G6.1 beginsD013authority/control; proof/admission/RED/behaviour/GREEN/reviewstillrequired. No producttest/code/configgeneration yet; no G6.1/native/full126/composition/provider/live/migration/retirement/main closure. Existing D012acceptedcheckpoint remains saved and immutable.
 

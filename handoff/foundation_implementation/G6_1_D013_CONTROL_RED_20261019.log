@@ -1,0 +1,915 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/d549b6d808a9/g52-recovery/repository
+configfile: pyproject.toml
+collected 85 items / 62 deselected / 23 selected
+
+tests/architecture/test_proof_control.py .FF..FFFFFFFFFFFFFFFFFF         [100%]
+
+=================================== FAILURES ===================================
+____ test_d013_absent_descriptor_rejects_all_python_ownership[_support.py] _____
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-42/test_d013_absent_descriptor_re0')
+name = '_support.py'
+
+    @pytest.mark.parametrize(
+        "name", ["_support.py", "nested/helper.py", "test_orphan.py", "dangling.py"]
+    )
+    def test_d013_absent_descriptor_rejects_all_python_ownership(tmp_path, name):
+        api = _controls()
+        root = _d012_control_candidate(tmp_path)
+        originals = (
+            "raw_signal_occurrence_truth_sqlite",
+            "neutral_market_measurement_truth_pilot",
+            D012_CLAIM,
+        )
+        for claim_id in originals:
+            api.load_product_proof_claim(root, claim_id)
+        path = root / "tests/product/market_measurement_d013" / name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        if name == "dangling.py":
+            path.symlink_to("absent-target.py")
+        else:
+            path.write_text("# Undeclared Python source, no D013 descriptor.\n")
+        for claim_id in originals:
+>           with pytest.raises(ValueError, match=r"unowned|symlink"):
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/architecture/test_proof_control.py:135: Failed
+__ test_d013_absent_descriptor_rejects_all_python_ownership[nested/helper.py] __
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-42/test_d013_absent_descriptor_re1')
+name = 'nested/helper.py'
+
+    @pytest.mark.parametrize(
+        "name", ["_support.py", "nested/helper.py", "test_orphan.py", "dangling.py"]
+    )
+    def test_d013_absent_descriptor_rejects_all_python_ownership(tmp_path, name):
+        api = _controls()
+        root = _d012_control_candidate(tmp_path)
+        originals = (
+            "raw_signal_occurrence_truth_sqlite",
+            "neutral_market_measurement_truth_pilot",
+            D012_CLAIM,
+        )
+        for claim_id in originals:
+            api.load_product_proof_claim(root, claim_id)
+        path = root / "tests/product/market_measurement_d013" / name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        if name == "dangling.py":
+            path.symlink_to("absent-target.py")
+        else:
+            path.write_text("# Undeclared Python source, no D013 descriptor.\n")
+        for claim_id in originals:
+>           with pytest.raises(ValueError, match=r"unowned|symlink"):
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/architecture/test_proof_control.py:135: Failed
+___________ test_d013_combined_extensions_resolve_without_resealing ____________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-42/test_d013_combined_extensions_0')
+
+    def test_d013_combined_extensions_resolve_without_resealing(tmp_path):
+        api = _controls()
+        root = _d013_control_candidate(tmp_path)
+        original_bytes = {
+            name: (root / name).read_bytes()
+            for name in (
+                "config/product_proof/claims.json",
+                "implementation/authority/FOUNDATION_IMPLEMENTATION_AUTHORITY_BINDING.yaml",
+                D012_BINDING,
+                D012_ROOT + "/claim.json",
+                D012_ROOT + "/generations/0001.json",
+            )
+        }
+        for claim_id, brief in ((D012_CLAIM, D012_BRIEF), (D013_CLAIM, D013_BRIEF)):
+>           claim = api.load_product_proof_claim(root, claim_id)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/architecture/test_proof_control.py:153: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tools/product_proof_claims.py:526: in load_product_proof_claim
+    _partition(root, catalogue, contracts)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/tmp/pytest-of-root/pytest-42/test_d013_combined_extensions_0')
+catalogue = {'claims': [{'claim_id': 'raw_signal_occurrence_truth_product', 'execution_state': 'HISTORICAL_NOT_RUNNABLE', 'legacy_...transitional_dispositions': 'handoff/foundation_implementation/authority/PA02_PRODUCT_PATH_DISPOSITIONS_PROPOSED.json'}
+contracts = {'neutral_market_measurement_truth_d012': {'architecture_proof_axis': 'architecture_kernel', 'claim_id': 'neutral_mark...: [...]}, 'missing_mandatory_authority': {'cases': [...]}, 'prohibited_false_positive': {'cases': [...]}}, ...}], ...}}
+
+    def _partition(root: Path, catalogue: dict[str, Any], contracts: dict[str, Any]) -> None:
+        disposition = read_json(safe_path(root, catalogue["transitional_dispositions"]))
+        owned: dict[str, str] = {}
+        roots: list[str] = []
+        for entry in catalogue["claims"]:
+            prefix = entry["physical_root"]
+            safe_path(root, prefix)
+            if not prefix.startswith("tests/product/"):
+                raise ValueError("invalid physical claim root")
+            if any(
+                prefix == old or prefix.startswith(old + "/") or old.startswith(prefix + "/")
+                for old in roots
+            ):
+                raise ValueError("overlapping physical claim roots")
+            roots.append(prefix)
+            if entry["profile"] == "historical_backend_v1":
+                paths = [row["path"] for row in disposition["legacy_current_claim_paths"]]
+            else:
+                paths = [row["path"] for row in contracts[entry["claim_id"]]["families"]]
+                allowed = set(
+                    paths
+                    + contracts[entry["claim_id"]]["required_support_files"]
+                    + contracts[entry["claim_id"]]["optional_support_files"]
+                )
+                for path in (root / prefix).rglob("*.py"):
+                    if path.relative_to(root).as_posix() not in allowed:
+                        raise ValueError("unowned physical proof support file")
+            for name in paths:
+                if name in owned or not name.startswith(prefix + "/"):
+                    raise ValueError("overlapping or mismatched claim path")
+                safe_path(root, name)
+                owned[name] = entry["claim_id"]
+        for row in disposition["preserved_transitional_paths"]:
+            name = row["path"]
+            if name in owned:
+                raise ValueError("overlapping transitional path")
+            safe_path(root, name)
+            owned[name] = "preserved_transitional"
+        for row in disposition["legacy_current_claim_paths"]:
+            if sha256(safe_path(root, row["path"])) != row["baseline_sha256"]:
+                raise ValueError("preserved legacy physical proof hash mismatch")
+        for path in (root / "tests/product").rglob("*"):
+            if path.is_symlink():
+                raise ValueError("symlink in product proof jurisdiction")
+            if path.is_file() and path.name.startswith("test_") and path.suffix == ".py":
+                name = path.relative_to(root).as_posix()
+                if name not in owned:
+>                   raise ValueError(f"unowned physical product path: {name}")
+E                   ValueError: unowned physical product path: tests/product/market_measurement_d013/test_ratio.py
+
+tools/product_proof_claims.py:221: ValueError
+____ test_d013_extension_corruption_rejects_every_selected_claim[extra_key] ____
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-42/test_d013_extension_corruption0')
+surface = 'extra_key'
+
+    @pytest.mark.parametrize(
+        "surface",
+        [
+            "extra_key",
+            "overlap",
+            "wrong_claim",
+            "wrong_target",
+            "intents",
+            "brief",
+            "binding",
+            "contract",
+            "generation_claim",
+            "generation_target",
+            "unowned",
+            "missing_binding",
+            "support_hash",
+        ],
+    )
+    def test_d013_extension_corruption_rejects_every_selected_claim(tmp_path, surface):
+        api = _controls()
+        root = _d013_control_candidate(tmp_path)
+>       assert api.load_product_proof_claim(root, D013_CLAIM).state == "READY_FOR_PROOF"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/architecture/test_proof_control.py:189: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+repository_root = PosixPath('/tmp/pytest-of-root/pytest-42/test_d013_extension_corruption0')
+claim_id = 'neutral_market_measurement_truth_d013'
+
+    def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductProofClaim:
+        root = repository_root.resolve()
+        catalogue = read_json(root / "config/product_proof/claims.json")
+        _schema(root, catalogue, "product_proof_claims.schema.json")
+        authority = _authority(root, catalogue)
+        extension = _d012_extension(root) if authority is not None else None
+        if extension is not None:
+            catalogue = {**catalogue, "claims": [*catalogue["claims"], extension[0]]}
+        ids = [entry["claim_id"] for entry in catalogue["claims"]]
+        if len(ids) != len(set(ids)) or claim_id not in ids:
+>           raise ValueError(f"unknown/duplicate product claim: {claim_id}")
+E           ValueError: unknown/duplicate product claim: neutral_market_measurement_truth_d013
+
+tools/product_proof_claims.py:473: ValueError
+_____ test_d013_extension_corruption_rejects_every_selected_claim[overlap] _____
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-42/test_d013_extension_corruption1')
+surface = 'overlap'
+
+    @pytest.mark.parametrize(
+        "surface",
+        [
+            "extra_key",
+            "overlap",
+            "wrong_claim",
+            "wrong_target",
+            "intents",
+            "brief",
+            "binding",
+            "contract",
+            "generation_claim",
+            "generation_target",
+            "unowned",
+            "missing_binding",
+            "support_hash",
+        ],
+    )
+    def test_d013_extension_corruption_rejects_every_selected_claim(tmp_path, surface):
+        api = _controls()
+        root = _d013_control_candidate(tmp_path)
+>       assert api.load_product_proof_claim(root, D013_CLAIM).state == "READY_FOR_PROOF"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/architecture/test_proof_control.py:189: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+repository_root = PosixPath('/tmp/pytest-of-root/pytest-42/test_d013_extension_corruption1')
+claim_id = 'neutral_market_measurement_truth_d013'
+
+    def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductProofClaim:
+        root = repository_root.resolve()
+        catalogue = read_json(root / "config/product_proof/claims.json")
+        _schema(root, catalogue, "product_proof_claims.schema.json")
+        authority = _authority(root, catalogue)
+        extension = _d012_extension(root) if authority is not None else None
+        if extension is not None:
+            catalogue = {**catalogue, "claims": [*catalogue["claims"], extension[0]]}
+        ids = [entry["claim_id"] for entry in catalogue["claims"]]
+        if len(ids) != len(set(ids)) or claim_id not in ids:
+>           raise ValueError(f"unknown/duplicate product claim: {claim_id}")
+E           ValueError: unknown/duplicate product claim: neutral_market_measurement_truth_d013
+
+tools/product_proof_claims.py:473: ValueError
+___ test_d013_extension_corruption_rejects_every_selected_claim[wrong_claim] ___
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-42/test_d013_extension_corruption2')
+surface = 'wrong_claim'
+
+    @pytest.mark.parametrize(
+        "surface",
+        [
+            "extra_key",
+            "overlap",
+            "wrong_claim",
+            "wrong_target",
+            "intents",
+            "brief",
+            "binding",
+            "contract",
+            "generation_claim",
+            "generation_target",
+            "unowned",
+            "missing_binding",
+            "support_hash",
+        ],
+    )
+    def test_d013_extension_corruption_rejects_every_selected_claim(tmp_path, surface):
+        api = _controls()
+        root = _d013_control_candidate(tmp_path)
+>       assert api.load_product_proof_claim(root, D013_CLAIM).state == "READY_FOR_PROOF"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/architecture/test_proof_control.py:189: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+repository_root = PosixPath('/tmp/pytest-of-root/pytest-42/test_d013_extension_corruption2')
+claim_id = 'neutral_market_measurement_truth_d013'
+
+    def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductProofClaim:
+        root = repository_root.resolve()
+        catalogue = read_json(root / "config/product_proof/claims.json")
+        _schema(root, catalogue, "product_proof_claims.schema.json")
+        authority = _authority(root, catalogue)
+        extension = _d012_extension(root) if authority is not None else None
+        if extension is not None:
+            catalogue = {**catalogue, "claims": [*catalogue["claims"], extension[0]]}
+        ids = [entry["claim_id"] for entry in catalogue["claims"]]
+        if len(ids) != len(set(ids)) or claim_id not in ids:
+>           raise ValueError(f"unknown/duplicate product claim: {claim_id}")
+E           ValueError: unknown/duplicate product claim: neutral_market_measurement_truth_d013
+
+tools/product_proof_claims.py:473: ValueError
+__ test_d013_extension_corruption_rejects_every_selected_claim[wrong_target] ___
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-42/test_d013_extension_corruption3')
+surface = 'wrong_target'
+
+    @pytest.mark.parametrize(
+        "surface",
+        [
+            "extra_key",
+            "overlap",
+            "wrong_claim",
+            "wrong_target",
+            "intents",
+            "brief",
+            "binding",
+            "contract",
+            "generation_claim",
+            "generation_target",
+            "unowned",
+            "missing_binding",
+            "support_hash",
+        ],
+    )
+    def test_d013_extension_corruption_rejects_every_selected_claim(tmp_path, surface):
+        api = _controls()
+        root = _d013_control_candidate(tmp_path)
+>       assert api.load_product_proof_claim(root, D013_CLAIM).state == "READY_FOR_PROOF"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/architecture/test_proof_control.py:189: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+repository_root = PosixPath('/tmp/pytest-of-root/pytest-42/test_d013_extension_corruption3')
+claim_id = 'neutral_market_measurement_truth_d013'
+
+    def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductProofClaim:
+        root = repository_root.resolve()
+        catalogue = read_json(root / "config/product_proof/claims.json")
+        _schema(root, catalogue, "product_proof_claims.schema.json")
+        authority = _authority(root, catalogue)
+        extension = _d012_extension(root) if authority is not None else None
+        if extension is not None:
+            catalogue = {**catalogue, "claims": [*catalogue["claims"], extension[0]]}
+        ids = [entry["claim_id"] for entry in catalogue["claims"]]
+        if len(ids) != len(set(ids)) or claim_id not in ids:
+>           raise ValueError(f"unknown/duplicate product claim: {claim_id}")
+E           ValueError: unknown/duplicate product claim: neutral_market_measurement_truth_d013
+
+tools/product_proof_claims.py:473: ValueError
+_____ test_d013_extension_corruption_rejects_every_selected_claim[intents] _____
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-42/test_d013_extension_corruption4')
+surface = 'intents'
+
+    @pytest.mark.parametrize(
+        "surface",
+        [
+            "extra_key",
+            "overlap",
+            "wrong_claim",
+            "wrong_target",
+            "intents",
+            "brief",
+            "binding",
+            "contract",
+            "generation_claim",
+            "generation_target",
+            "unowned",
+            "missing_binding",
+            "support_hash",
+        ],
+    )
+    def test_d013_extension_corruption_rejects_every_selected_claim(tmp_path, surface):
+        api = _controls()
+        root = _d013_control_candidate(tmp_path)
+>       assert api.load_product_proof_claim(root, D013_CLAIM).state == "READY_FOR_PROOF"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/architecture/test_proof_control.py:189: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+repository_root = PosixPath('/tmp/pytest-of-root/pytest-42/test_d013_extension_corruption4')
+claim_id = 'neutral_market_measurement_truth_d013'
+
+    def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductProofClaim:
+        root = repository_root.resolve()
+        catalogue = read_json(root / "config/product_proof/claims.json")
+        _schema(root, catalogue, "product_proof_claims.schema.json")
+        authority = _authority(root, catalogue)
+        extension = _d012_extension(root) if authority is not None else None
+        if extension is not None:
+            catalogue = {**catalogue, "claims": [*catalogue["claims"], extension[0]]}
+        ids = [entry["claim_id"] for entry in catalogue["claims"]]
+        if len(ids) != len(set(ids)) or claim_id not in ids:
+>           raise ValueError(f"unknown/duplicate product claim: {claim_id}")
+E           ValueError: unknown/duplicate product claim: neutral_market_measurement_truth_d013
+
+tools/product_proof_claims.py:473: ValueError
+______ test_d013_extension_corruption_rejects_every_selected_claim[brief] ______
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-42/test_d013_extension_corruption5')
+surface = 'brief'
+
+    @pytest.mark.parametrize(
+        "surface",
+        [
+            "extra_key",
+            "overlap",
+            "wrong_claim",
+            "wrong_target",
+            "intents",
+            "brief",
+            "binding",
+            "contract",
+            "generation_claim",
+            "generation_target",
+            "unowned",
+            "missing_binding",
+            "support_hash",
+        ],
+    )
+    def test_d013_extension_corruption_rejects_every_selected_claim(tmp_path, surface):
+        api = _controls()
+        root = _d013_control_candidate(tmp_path)
+>       assert api.load_product_proof_claim(root, D013_CLAIM).state == "READY_FOR_PROOF"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/architecture/test_proof_control.py:189: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+repository_root = PosixPath('/tmp/pytest-of-root/pytest-42/test_d013_extension_corruption5')
+claim_id = 'neutral_market_measurement_truth_d013'
+
+    def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductProofClaim:
+        root = repository_root.resolve()
+        catalogue = read_json(root / "config/product_proof/claims.json")
+        _schema(root, catalogue, "product_proof_claims.schema.json")
+        authority = _authority(root, catalogue)
+        extension = _d012_extension(root) if authority is not None else None
+        if extension is not None:
+            catalogue = {**catalogue, "claims": [*catalogue["claims"], extension[0]]}
+        ids = [entry["claim_id"] for entry in catalogue["claims"]]
+        if len(ids) != len(set(ids)) or claim_id not in ids:
+>           raise ValueError(f"unknown/duplicate product claim: {claim_id}")
+E           ValueError: unknown/duplicate product claim: neutral_market_measurement_truth_d013
+
+tools/product_proof_claims.py:473: ValueError
+_____ test_d013_extension_corruption_rejects_every_selected_claim[binding] _____
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-42/test_d013_extension_corruption6')
+surface = 'binding'
+
+    @pytest.mark.parametrize(
+        "surface",
+        [
+            "extra_key",
+            "overlap",
+            "wrong_claim",
+            "wrong_target",
+            "intents",
+            "brief",
+            "binding",
+            "contract",
+            "generation_claim",
+            "generation_target",
+            "unowned",
+            "missing_binding",
+            "support_hash",
+        ],
+    )
+    def test_d013_extension_corruption_rejects_every_selected_claim(tmp_path, surface):
+        api = _controls()
+        root = _d013_control_candidate(tmp_path)
+>       assert api.load_product_proof_claim(root, D013_CLAIM).state == "READY_FOR_PROOF"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/architecture/test_proof_control.py:189: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+repository_root = PosixPath('/tmp/pytest-of-root/pytest-42/test_d013_extension_corruption6')
+claim_id = 'neutral_market_measurement_truth_d013'
+
+    def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductProofClaim:
+        root = repository_root.resolve()
+        catalogue = read_json(root / "config/product_proof/claims.json")
+        _schema(root, catalogue, "product_proof_claims.schema.json")
+        authority = _authority(root, catalogue)
+        extension = _d012_extension(root) if authority is not None else None
+        if extension is not None:
+            catalogue = {**catalogue, "claims": [*catalogue["claims"], extension[0]]}
+        ids = [entry["claim_id"] for entry in catalogue["claims"]]
+        if len(ids) != len(set(ids)) or claim_id not in ids:
+>           raise ValueError(f"unknown/duplicate product claim: {claim_id}")
+E           ValueError: unknown/duplicate product claim: neutral_market_measurement_truth_d013
+
+tools/product_proof_claims.py:473: ValueError
+____ test_d013_extension_corruption_rejects_every_selected_claim[contract] _____
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-42/test_d013_extension_corruption7')
+surface = 'contract'
+
+    @pytest.mark.parametrize(
+        "surface",
+        [
+            "extra_key",
+            "overlap",
+            "wrong_claim",
+            "wrong_target",
+            "intents",
+            "brief",
+            "binding",
+            "contract",
+            "generation_claim",
+            "generation_target",
+            "unowned",
+            "missing_binding",
+            "support_hash",
+        ],
+    )
+    def test_d013_extension_corruption_rejects_every_selected_claim(tmp_path, surface):
+        api = _controls()
+        root = _d013_control_candidate(tmp_path)
+>       assert api.load_product_proof_claim(root, D013_CLAIM).state == "READY_FOR_PROOF"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/architecture/test_proof_control.py:189: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+repository_root = PosixPath('/tmp/pytest-of-root/pytest-42/test_d013_extension_corruption7')
+claim_id = 'neutral_market_measurement_truth_d013'
+
+    def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductProofClaim:
+        root = repository_root.resolve()
+        catalogue = read_json(root / "config/product_proof/claims.json")
+        _schema(root, catalogue, "product_proof_claims.schema.json")
+        authority = _authority(root, catalogue)
+        extension = _d012_extension(root) if authority is not None else None
+        if extension is not None:
+            catalogue = {**catalogue, "claims": [*catalogue["claims"], extension[0]]}
+        ids = [entry["claim_id"] for entry in catalogue["claims"]]
+        if len(ids) != len(set(ids)) or claim_id not in ids:
+>           raise ValueError(f"unknown/duplicate product claim: {claim_id}")
+E           ValueError: unknown/duplicate product claim: neutral_market_measurement_truth_d013
+
+tools/product_proof_claims.py:473: ValueError
+_ test_d013_extension_corruption_rejects_every_selected_claim[generation_claim] _
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-42/test_d013_extension_corruption8')
+surface = 'generation_claim'
+
+    @pytest.mark.parametrize(
+        "surface",
+        [
+            "extra_key",
+            "overlap",
+            "wrong_claim",
+            "wrong_target",
+            "intents",
+            "brief",
+            "binding",
+            "contract",
+            "generation_claim",
+            "generation_target",
+            "unowned",
+            "missing_binding",
+            "support_hash",
+        ],
+    )
+    def test_d013_extension_corruption_rejects_every_selected_claim(tmp_path, surface):
+        api = _controls()
+        root = _d013_control_candidate(tmp_path)
+>       assert api.load_product_proof_claim(root, D013_CLAIM).state == "READY_FOR_PROOF"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/architecture/test_proof_control.py:189: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+repository_root = PosixPath('/tmp/pytest-of-root/pytest-42/test_d013_extension_corruption8')
+claim_id = 'neutral_market_measurement_truth_d013'
+
+    def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductProofClaim:
+        root = repository_root.resolve()
+        catalogue = read_json(root / "config/product_proof/claims.json")
+        _schema(root, catalogue, "product_proof_claims.schema.json")
+        authority = _authority(root, catalogue)
+        extension = _d012_extension(root) if authority is not None else None
+        if extension is not None:
+            catalogue = {**catalogue, "claims": [*catalogue["claims"], extension[0]]}
+        ids = [entry["claim_id"] for entry in catalogue["claims"]]
+        if len(ids) != len(set(ids)) or claim_id not in ids:
+>           raise ValueError(f"unknown/duplicate product claim: {claim_id}")
+E           ValueError: unknown/duplicate product claim: neutral_market_measurement_truth_d013
+
+tools/product_proof_claims.py:473: ValueError
+_ test_d013_extension_corruption_rejects_every_selected_claim[generation_target] _
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-42/test_d013_extension_corruption9')
+surface = 'generation_target'
+
+    @pytest.mark.parametrize(
+        "surface",
+        [
+            "extra_key",
+            "overlap",
+            "wrong_claim",
+            "wrong_target",
+            "intents",
+            "brief",
+            "binding",
+            "contract",
+            "generation_claim",
+            "generation_target",
+            "unowned",
+            "missing_binding",
+            "support_hash",
+        ],
+    )
+    def test_d013_extension_corruption_rejects_every_selected_claim(tmp_path, surface):
+        api = _controls()
+        root = _d013_control_candidate(tmp_path)
+>       assert api.load_product_proof_claim(root, D013_CLAIM).state == "READY_FOR_PROOF"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/architecture/test_proof_control.py:189: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+repository_root = PosixPath('/tmp/pytest-of-root/pytest-42/test_d013_extension_corruption9')
+claim_id = 'neutral_market_measurement_truth_d013'
+
+    def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductProofClaim:
+        root = repository_root.resolve()
+        catalogue = read_json(root / "config/product_proof/claims.json")
+        _schema(root, catalogue, "product_proof_claims.schema.json")
+        authority = _authority(root, catalogue)
+        extension = _d012_extension(root) if authority is not None else None
+        if extension is not None:
+            catalogue = {**catalogue, "claims": [*catalogue["claims"], extension[0]]}
+        ids = [entry["claim_id"] for entry in catalogue["claims"]]
+        if len(ids) != len(set(ids)) or claim_id not in ids:
+>           raise ValueError(f"unknown/duplicate product claim: {claim_id}")
+E           ValueError: unknown/duplicate product claim: neutral_market_measurement_truth_d013
+
+tools/product_proof_claims.py:473: ValueError
+_____ test_d013_extension_corruption_rejects_every_selected_claim[unowned] _____
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-42/test_d013_extension_corruption10')
+surface = 'unowned'
+
+    @pytest.mark.parametrize(
+        "surface",
+        [
+            "extra_key",
+            "overlap",
+            "wrong_claim",
+            "wrong_target",
+            "intents",
+            "brief",
+            "binding",
+            "contract",
+            "generation_claim",
+            "generation_target",
+            "unowned",
+            "missing_binding",
+            "support_hash",
+        ],
+    )
+    def test_d013_extension_corruption_rejects_every_selected_claim(tmp_path, surface):
+        api = _controls()
+        root = _d013_control_candidate(tmp_path)
+>       assert api.load_product_proof_claim(root, D013_CLAIM).state == "READY_FOR_PROOF"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/architecture/test_proof_control.py:189: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+repository_root = PosixPath('/tmp/pytest-of-root/pytest-42/test_d013_extension_corruption10')
+claim_id = 'neutral_market_measurement_truth_d013'
+
+    def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductProofClaim:
+        root = repository_root.resolve()
+        catalogue = read_json(root / "config/product_proof/claims.json")
+        _schema(root, catalogue, "product_proof_claims.schema.json")
+        authority = _authority(root, catalogue)
+        extension = _d012_extension(root) if authority is not None else None
+        if extension is not None:
+            catalogue = {**catalogue, "claims": [*catalogue["claims"], extension[0]]}
+        ids = [entry["claim_id"] for entry in catalogue["claims"]]
+        if len(ids) != len(set(ids)) or claim_id not in ids:
+>           raise ValueError(f"unknown/duplicate product claim: {claim_id}")
+E           ValueError: unknown/duplicate product claim: neutral_market_measurement_truth_d013
+
+tools/product_proof_claims.py:473: ValueError
+_ test_d013_extension_corruption_rejects_every_selected_claim[missing_binding] _
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-42/test_d013_extension_corruption11')
+surface = 'missing_binding'
+
+    @pytest.mark.parametrize(
+        "surface",
+        [
+            "extra_key",
+            "overlap",
+            "wrong_claim",
+            "wrong_target",
+            "intents",
+            "brief",
+            "binding",
+            "contract",
+            "generation_claim",
+            "generation_target",
+            "unowned",
+            "missing_binding",
+            "support_hash",
+        ],
+    )
+    def test_d013_extension_corruption_rejects_every_selected_claim(tmp_path, surface):
+        api = _controls()
+        root = _d013_control_candidate(tmp_path)
+>       assert api.load_product_proof_claim(root, D013_CLAIM).state == "READY_FOR_PROOF"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/architecture/test_proof_control.py:189: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+repository_root = PosixPath('/tmp/pytest-of-root/pytest-42/test_d013_extension_corruption11')
+claim_id = 'neutral_market_measurement_truth_d013'
+
+    def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductProofClaim:
+        root = repository_root.resolve()
+        catalogue = read_json(root / "config/product_proof/claims.json")
+        _schema(root, catalogue, "product_proof_claims.schema.json")
+        authority = _authority(root, catalogue)
+        extension = _d012_extension(root) if authority is not None else None
+        if extension is not None:
+            catalogue = {**catalogue, "claims": [*catalogue["claims"], extension[0]]}
+        ids = [entry["claim_id"] for entry in catalogue["claims"]]
+        if len(ids) != len(set(ids)) or claim_id not in ids:
+>           raise ValueError(f"unknown/duplicate product claim: {claim_id}")
+E           ValueError: unknown/duplicate product claim: neutral_market_measurement_truth_d013
+
+tools/product_proof_claims.py:473: ValueError
+__ test_d013_extension_corruption_rejects_every_selected_claim[support_hash] ___
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-42/test_d013_extension_corruption12')
+surface = 'support_hash'
+
+    @pytest.mark.parametrize(
+        "surface",
+        [
+            "extra_key",
+            "overlap",
+            "wrong_claim",
+            "wrong_target",
+            "intents",
+            "brief",
+            "binding",
+            "contract",
+            "generation_claim",
+            "generation_target",
+            "unowned",
+            "missing_binding",
+            "support_hash",
+        ],
+    )
+    def test_d013_extension_corruption_rejects_every_selected_claim(tmp_path, surface):
+        api = _controls()
+        root = _d013_control_candidate(tmp_path)
+>       assert api.load_product_proof_claim(root, D013_CLAIM).state == "READY_FOR_PROOF"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/architecture/test_proof_control.py:189: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+repository_root = PosixPath('/tmp/pytest-of-root/pytest-42/test_d013_extension_corruption12')
+claim_id = 'neutral_market_measurement_truth_d013'
+
+    def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductProofClaim:
+        root = repository_root.resolve()
+        catalogue = read_json(root / "config/product_proof/claims.json")
+        _schema(root, catalogue, "product_proof_claims.schema.json")
+        authority = _authority(root, catalogue)
+        extension = _d012_extension(root) if authority is not None else None
+        if extension is not None:
+            catalogue = {**catalogue, "claims": [*catalogue["claims"], extension[0]]}
+        ids = [entry["claim_id"] for entry in catalogue["claims"]]
+        if len(ids) != len(set(ids)) or claim_id not in ids:
+>           raise ValueError(f"unknown/duplicate product claim: {claim_id}")
+E           ValueError: unknown/duplicate product claim: neutral_market_measurement_truth_d013
+
+tools/product_proof_claims.py:473: ValueError
+_____________ test_d013_null_generation_is_incomplete_not_success ______________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-42/test_d013_null_generation_is_i0')
+
+    def test_d013_null_generation_is_incomplete_not_success(tmp_path):
+        root = _d013_control_candidate(tmp_path)
+        _json_write(
+            root / D013_ROOT / "admission.json", {"schema_version": "1.0", "current_generation": None}
+        )
+>       assert _controls().load_product_proof_claim(root, D013_CLAIM).state == "INCOMPLETE_COVERAGE"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/architecture/test_proof_control.py:251: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+repository_root = PosixPath('/tmp/pytest-of-root/pytest-42/test_d013_null_generation_is_i0')
+claim_id = 'neutral_market_measurement_truth_d013'
+
+    def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductProofClaim:
+        root = repository_root.resolve()
+        catalogue = read_json(root / "config/product_proof/claims.json")
+        _schema(root, catalogue, "product_proof_claims.schema.json")
+        authority = _authority(root, catalogue)
+        extension = _d012_extension(root) if authority is not None else None
+        if extension is not None:
+            catalogue = {**catalogue, "claims": [*catalogue["claims"], extension[0]]}
+        ids = [entry["claim_id"] for entry in catalogue["claims"]]
+        if len(ids) != len(set(ids)) or claim_id not in ids:
+>           raise ValueError(f"unknown/duplicate product claim: {claim_id}")
+E           ValueError: unknown/duplicate product claim: neutral_market_measurement_truth_d013
+
+tools/product_proof_claims.py:473: ValueError
+____________ test_d013_direct_strict_outcomes[assert 7 * 6 == 42-0] ____________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-42/test_d013_direct_strict_outcom0')
+body = 'assert 7 * 6 == 42', expected = 0
+
+    @pytest.mark.parametrize(
+        "body,expected",
+        [
+            ("assert 7 * 6 == 42", 0),
+            ("import pytest; pytest.skip('control canary')", 1),
+            ("from pathlib import Path; Path('GUARDRAILS.md').write_text('fixture mutation')", 6),
+        ],
+    )
+    def test_d013_direct_strict_outcomes(tmp_path, body, expected):
+        _controls()
+        root = _d013_control_candidate(tmp_path, body)
+        result = _run_control_probe(root, D013_CLAIM)
+>       assert result.returncode == expected, result.stdout + result.stderr
+E       AssertionError: FAIL: unknown/duplicate product claim: neutral_market_measurement_truth_d013
+E         
+E       assert 3 == 0
+E        +  where 3 = CompletedProcess(args=['/workspace/scratch/d549b6d808a9/g52-dev/bin/python', '/tmp/pytest-of-root/pytest-42/test_d013_...13'], returncode=3, stdout='FAIL: unknown/duplicate product claim: neutral_market_measurement_truth_d013\n', stderr='').returncode
+
+tests/architecture/test_proof_control.py:266: AssertionError
+_ test_d013_direct_strict_outcomes[import pytest; pytest.skip('control canary')-1] _
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-42/test_d013_direct_strict_outcom1')
+body = "import pytest; pytest.skip('control canary')", expected = 1
+
+    @pytest.mark.parametrize(
+        "body,expected",
+        [
+            ("assert 7 * 6 == 42", 0),
+            ("import pytest; pytest.skip('control canary')", 1),
+            ("from pathlib import Path; Path('GUARDRAILS.md').write_text('fixture mutation')", 6),
+        ],
+    )
+    def test_d013_direct_strict_outcomes(tmp_path, body, expected):
+        _controls()
+        root = _d013_control_candidate(tmp_path, body)
+        result = _run_control_probe(root, D013_CLAIM)
+>       assert result.returncode == expected, result.stdout + result.stderr
+E       AssertionError: FAIL: unknown/duplicate product claim: neutral_market_measurement_truth_d013
+E         
+E       assert 3 == 1
+E        +  where 3 = CompletedProcess(args=['/workspace/scratch/d549b6d808a9/g52-dev/bin/python', '/tmp/pytest-of-root/pytest-42/test_d013_...13'], returncode=3, stdout='FAIL: unknown/duplicate product claim: neutral_market_measurement_truth_d013\n', stderr='').returncode
+
+tests/architecture/test_proof_control.py:266: AssertionError
+_ test_d013_direct_strict_outcomes[from pathlib import Path; Path('GUARDRAILS.md').write_text('fixture mutation')-6] _
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-42/test_d013_direct_strict_outcom2')
+body = "from pathlib import Path; Path('GUARDRAILS.md').write_text('fixture mutation')"
+expected = 6
+
+    @pytest.mark.parametrize(
+        "body,expected",
+        [
+            ("assert 7 * 6 == 42", 0),
+            ("import pytest; pytest.skip('control canary')", 1),
+            ("from pathlib import Path; Path('GUARDRAILS.md').write_text('fixture mutation')", 6),
+        ],
+    )
+    def test_d013_direct_strict_outcomes(tmp_path, body, expected):
+        _controls()
+        root = _d013_control_candidate(tmp_path, body)
+        result = _run_control_probe(root, D013_CLAIM)
+>       assert result.returncode == expected, result.stdout + result.stderr
+E       AssertionError: FAIL: unknown/duplicate product claim: neutral_market_measurement_truth_d013
+E         
+E       assert 3 == 6
+E        +  where 3 = CompletedProcess(args=['/workspace/scratch/d549b6d808a9/g52-dev/bin/python', '/tmp/pytest-of-root/pytest-42/test_d013_...13'], returncode=3, stdout='FAIL: unknown/duplicate product claim: neutral_market_measurement_truth_d013\n', stderr='').returncode
+
+tests/architecture/test_proof_control.py:266: AssertionError
+=========================== short test summary info ============================
+FAILED tests/architecture/test_proof_control.py::test_d013_absent_descriptor_rejects_all_python_ownership[_support.py]
+FAILED tests/architecture/test_proof_control.py::test_d013_absent_descriptor_rejects_all_python_ownership[nested/helper.py]
+FAILED tests/architecture/test_proof_control.py::test_d013_combined_extensions_resolve_without_resealing
+FAILED tests/architecture/test_proof_control.py::test_d013_extension_corruption_rejects_every_selected_claim[extra_key]
+FAILED tests/architecture/test_proof_control.py::test_d013_extension_corruption_rejects_every_selected_claim[overlap]
+FAILED tests/architecture/test_proof_control.py::test_d013_extension_corruption_rejects_every_selected_claim[wrong_claim]
+FAILED tests/architecture/test_proof_control.py::test_d013_extension_corruption_rejects_every_selected_claim[wrong_target]
+FAILED tests/architecture/test_proof_control.py::test_d013_extension_corruption_rejects_every_selected_claim[intents]
+FAILED tests/architecture/test_proof_control.py::test_d013_extension_corruption_rejects_every_selected_claim[brief]
+FAILED tests/architecture/test_proof_control.py::test_d013_extension_corruption_rejects_every_selected_claim[binding]
+FAILED tests/architecture/test_proof_control.py::test_d013_extension_corruption_rejects_every_selected_claim[contract]
+FAILED tests/architecture/test_proof_control.py::test_d013_extension_corruption_rejects_every_selected_claim[generation_claim]
+FAILED tests/architecture/test_proof_control.py::test_d013_extension_corruption_rejects_every_selected_claim[generation_target]
+FAILED tests/architecture/test_proof_control.py::test_d013_extension_corruption_rejects_every_selected_claim[unowned]
+FAILED tests/architecture/test_proof_control.py::test_d013_extension_corruption_rejects_every_selected_claim[missing_binding]
+FAILED tests/architecture/test_proof_control.py::test_d013_extension_corruption_rejects_every_selected_claim[support_hash]
+FAILED tests/architecture/test_proof_control.py::test_d013_null_generation_is_incomplete_not_success
+FAILED tests/architecture/test_proof_control.py::test_d013_direct_strict_outcomes[assert 7 * 6 == 42-0]
+FAILED tests/architecture/test_proof_control.py::test_d013_direct_strict_outcomes[import pytest; pytest.skip('control canary')-1]
+FAILED tests/architecture/test_proof_control.py::test_d013_direct_strict_outcomes[from pathlib import Path; Path('GUARDRAILS.md').write_text('fixture mutation')-6]
+================= 20 failed, 3 passed, 62 deselected in 19.16s =================

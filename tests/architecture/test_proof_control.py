@@ -21,6 +21,250 @@ D012_BRIEF = (
 D012_CONTRACT = "handoff/foundation_implementation/authority/G6_1_D012_PROOF_CONTRACT_PROPOSED.json"
 D012_BINDING = "implementation/authority/G6_1_D012_IMPLEMENTATION_AUTHORITY_BINDING.yaml"
 
+D013_CLAIM = "neutral_market_measurement_truth_d013"
+D013_ROOT = "config/product_proof/market_measurement_d013"
+D013_BRIEF = (
+    "handoff/foundation_implementation/authority/G6_1_D013_IMPLEMENTATION_BRIEF_PROPOSED.md"
+)
+D013_CONTRACT = "handoff/foundation_implementation/authority/G6_1_D013_PROOF_CONTRACT_PROPOSED.json"
+D013_BINDING = "implementation/authority/G6_1_D013_IMPLEMENTATION_AUTHORITY_BINDING.yaml"
+
+
+def _d013_descriptor():
+    return {
+        "schema_version": "1.0",
+        "claim_id": D013_CLAIM,
+        "brief_path": D013_BRIEF,
+        "binding_path": D013_BINDING,
+        "contract_path": D013_CONTRACT,
+        "physical_root": "tests/product/market_measurement_d013",
+        "admission_path": D013_ROOT + "/admission.json",
+    }
+
+
+def _d013_control_candidate(tmp_path, body="assert 7 * 6 == 42"):
+    # Retain the separately valid D012 extension too: this is a combined
+    # physical partition, not a fixture that makes the earlier extension absent.
+    root = _d012_control_candidate(tmp_path)
+    assert (root / D012_ROOT / "claim.json").read_bytes() == (
+        ROOT / D012_ROOT / "claim.json"
+    ).read_bytes()
+    entry = _d013_descriptor()
+    _json_write(root / D013_ROOT / "claim.json", entry)
+    contract = json.loads((root / D013_CONTRACT).read_text())
+    rows = []
+    for family in contract["families"]:
+        path = root / family["path"]
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(
+            "\n".join(f"def {name}():\n    {body}\n" for name in family["required_test_names"])
+        )
+        rows.append({"path": family["path"], "sha256": _sha(path)})
+    support = []
+    for name in contract["required_support_files"]:
+        path = root / name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text("# Disposable D013 control canary, not domain proof.\n")
+        support.append({"path": name, "sha256": _sha(path)})
+    generation = {
+        "schema_version": "1.0",
+        "claim_id": D013_CLAIM,
+        "generation": 1,
+        "brief_sha256": _sha(root / D013_BRIEF),
+        "binding_sha256": _sha(root / D013_BINDING),
+        "contract_sha256": _sha(root / D013_CONTRACT),
+        "implementation_target_id": "M02",
+        "adequacy_review_ref": "control-fixture/d013-review",
+        "admission_authority_ref": "control-fixture/d013-admission",
+        "family_files": rows,
+        "support_files": support,
+        "previous_generation": None,
+    }
+    path = root / D013_ROOT / "generations/0001.json"
+    _json_write(path, generation)
+    _json_write(
+        root / entry["admission_path"],
+        {
+            "schema_version": "1.0",
+            "current_generation": {
+                "path": path.relative_to(root).as_posix(),
+                "sha256": _sha(path),
+            },
+        },
+    )
+    return root
+
+
+def test_d013_actual_original_claim_generations_are_preserved():
+    api = _controls()
+    for claim_id, expected in (
+        (
+            "raw_signal_occurrence_truth_sqlite",
+            "51e87129c2a31c71599b7a01beb8ba39717ed5118a4d5c849bcb2015b6c80c6f",
+        ),
+        (
+            "neutral_market_measurement_truth_pilot",
+            "24a5af4054c277b01a140ec43481e86851e5e76263826644a80993c12c2495b7",
+        ),
+        (D012_CLAIM, "26d2b4e371c38b0960cb6081798cc618c9f308567d0df12b2aa40f3777dd2a25"),
+    ):
+        claim = api.load_product_proof_claim(ROOT, claim_id)
+        assert claim.state == "READY_FOR_PROOF" and claim.generation_sha256 == expected
+
+
+@pytest.mark.parametrize(
+    "name", ["_support.py", "nested/helper.py", "test_orphan.py", "dangling.py"]
+)
+def test_d013_absent_descriptor_rejects_all_python_ownership(tmp_path, name):
+    api = _controls()
+    root = _d012_control_candidate(tmp_path)
+    originals = (
+        "raw_signal_occurrence_truth_sqlite",
+        "neutral_market_measurement_truth_pilot",
+        D012_CLAIM,
+    )
+    for claim_id in originals:
+        api.load_product_proof_claim(root, claim_id)
+    path = root / "tests/product/market_measurement_d013" / name
+    path.parent.mkdir(parents=True, exist_ok=True)
+    if name == "dangling.py":
+        path.symlink_to("absent-target.py")
+    else:
+        path.write_text("# Undeclared Python source, no D013 descriptor.\n")
+    for claim_id in originals:
+        with pytest.raises(ValueError, match=r"unowned|symlink"):
+            api.load_product_proof_claim(root, claim_id)
+
+
+def test_d013_combined_extensions_resolve_without_resealing(tmp_path):
+    api = _controls()
+    root = _d013_control_candidate(tmp_path)
+    original_bytes = {
+        name: (root / name).read_bytes()
+        for name in (
+            "config/product_proof/claims.json",
+            "implementation/authority/FOUNDATION_IMPLEMENTATION_AUTHORITY_BINDING.yaml",
+            D012_BINDING,
+            D012_ROOT + "/claim.json",
+            D012_ROOT + "/generations/0001.json",
+        )
+    }
+    for claim_id, brief in ((D012_CLAIM, D012_BRIEF), (D013_CLAIM, D013_BRIEF)):
+        claim = api.load_product_proof_claim(root, claim_id)
+        assert claim.state == "READY_FOR_PROOF" and claim.target_id == "M02"
+        assert claim.authority_sha256 == _sha(ROOT / brief)
+        assert len(claim.families) == 1 and len(claim.families[0].proof_ids) == 6
+    for claim_id in (
+        "raw_signal_occurrence_truth_sqlite",
+        "neutral_market_measurement_truth_pilot",
+    ):
+        assert (
+            api.load_product_proof_claim(root, claim_id).state == "INCOMPLETE_NO_PHYSICAL_FAMILIES"
+        )
+    for name, expected in original_bytes.items():
+        assert (root / name).read_bytes() == expected
+
+
+@pytest.mark.parametrize(
+    "surface",
+    [
+        "extra_key",
+        "overlap",
+        "wrong_claim",
+        "wrong_target",
+        "intents",
+        "brief",
+        "binding",
+        "contract",
+        "generation_claim",
+        "generation_target",
+        "unowned",
+        "missing_binding",
+        "support_hash",
+    ],
+)
+def test_d013_extension_corruption_rejects_every_selected_claim(tmp_path, surface):
+    api = _controls()
+    root = _d013_control_candidate(tmp_path)
+    assert api.load_product_proof_claim(root, D013_CLAIM).state == "READY_FOR_PROOF"
+    if surface in {"extra_key", "overlap", "wrong_claim"}:
+        descriptor = _d013_descriptor()
+        descriptor.update(
+            {
+                "extra_key": {"extra": True},
+                "overlap": {"physical_root": "tests/product/market_measurement_d012"},
+                "wrong_claim": {"claim_id": D012_CLAIM},
+            }[surface]
+        )
+        _json_write(root / D013_ROOT / "claim.json", descriptor)
+    elif surface in {"generation_claim", "generation_target"}:
+        path = root / D013_ROOT / "generations/0001.json"
+        value = json.loads(path.read_text())
+        value["claim_id" if surface == "generation_claim" else "implementation_target_id"] = (
+            D012_CLAIM if surface == "generation_claim" else "M00"
+        )
+        _json_write(path, value)
+        _json_write(
+            root / D013_ROOT / "admission.json",
+            {
+                "schema_version": "1.0",
+                "current_generation": {
+                    "path": path.relative_to(root).as_posix(),
+                    "sha256": _sha(path),
+                },
+            },
+        )
+    elif surface == "unowned":
+        (root / "tests/product/market_measurement_d013/nested_helper.py").write_text("pass\n")
+    elif surface == "support_hash":
+        (root / "tests/product/market_measurement_d013/_support.py").write_text("changed\n")
+    elif surface == "missing_binding":
+        (root / D013_BINDING).unlink()
+    elif surface in {"wrong_target", "intents"}:
+        path = root / D013_BINDING
+        path.write_text(
+            path.read_text().replace("M02", "M00")
+            if surface == "wrong_target"
+            else path.read_text().replace("G01", "A00")
+        )
+    else:
+        path = (
+            root
+            / {"brief": D013_BRIEF, "binding": D013_BINDING, "contract": D013_CONTRACT}[surface]
+        )
+        path.write_bytes(path.read_bytes() + b"\n")
+    for claim_id in (
+        "raw_signal_occurrence_truth_sqlite",
+        "neutral_market_measurement_truth_pilot",
+        D012_CLAIM,
+        D013_CLAIM,
+    ):
+        with pytest.raises((ValueError, OSError)):
+            api.load_product_proof_claim(root, claim_id)
+
+
+def test_d013_null_generation_is_incomplete_not_success(tmp_path):
+    root = _d013_control_candidate(tmp_path)
+    _json_write(
+        root / D013_ROOT / "admission.json", {"schema_version": "1.0", "current_generation": None}
+    )
+    assert _controls().load_product_proof_claim(root, D013_CLAIM).state == "INCOMPLETE_COVERAGE"
+
+
+@pytest.mark.parametrize(
+    "body,expected",
+    [
+        ("assert 7 * 6 == 42", 0),
+        ("import pytest; pytest.skip('control canary')", 1),
+        ("from pathlib import Path; Path('GUARDRAILS.md').write_text('fixture mutation')", 6),
+    ],
+)
+def test_d013_direct_strict_outcomes(tmp_path, body, expected):
+    _controls()
+    root = _d013_control_candidate(tmp_path, body)
+    result = _run_control_probe(root, D013_CLAIM)
+    assert result.returncode == expected, result.stdout + result.stderr
+
 
 def _d012_descriptor():
     return {

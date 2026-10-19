@@ -1,6 +1,12 @@
 # NVDA V2 — ACTIVE successor ExecPlan: Gate 5 execution
 
-## D013 reviewed design/brief and root amendment admitted — 19 October 2026, 23:17 Melbourne
+## D013 exact native authority and intended control RED — 19 October 2026, 23:18 Melbourne
+
+Native newbrief binding validationPASS, exactmodify:M02/modify:G01; isolatedworkbranchconfirmed. Added23D013controlcases before loaderbehaviour. Actual pinned targetedcommand -m pytest tests/architecture/test_proof_control.py -k d013:20failed/3passed/62deselected, process1. Existing three actualclaim/generation preservation passes; test-orphan/danglingsymlink alreadyreject through genericownership. Missing support/nestedhelper rejection and unknownD013claim produce the intended boundedRED. Positive initialization guards prevent the13negative mutationcases passing vacuously on unknownclaim. Strictsuccess/skip/mutationcanaries allcurrentlyrefuseunknownclaim3, not falsely domainRED. Full log preserved in G6_1_D013_CONTROL_RED_20261019.log before changedloader. No runtimeproductproof/code/admission exists. Next exactconcretetwo-descriptorcontrolpatch and independentpreapplicationreview, not directapplication. Timestampmetadata for preceding admission corrected23:17→actual23:16; no semantic/authoritybyteschanged.
+
+---
+
+## D013 reviewed design/brief and root amendment admitted — 19 October 2026, 23:16 Melbourne
 
 Independent documentary design PASS independent-review/g61-d013-design/462e0d3/20261019, no findings, is preserved with limits in G6_1_D013_DESIGN_REVIEW_20261019.md. Concrete delegated disposition under owner-chat/20261019T222804/D012-and-standing-human-exceptions: ACCEPT_FOR_BOUNDED_D013_IMPLEMENTATION_AND_TESTING, exact unchanged briefSHA1f53d9c21c6eb4b90213137c4699a0688f994cd0ed55e54082268d8477abc148/contractSHA7eab93055c2e2f19e74563ec9588bbc04dfdb8664d4c8e3279527f70917d4a47, and ACCEPT root§7.2 amendment below after spec/interface/coverage self-review. This is actual worker judgement under explicit owner delegation, not a later owner statement, independent implementationreview or permission to bypass proof. New native binding records only this exactbrief with modify:M02/modify:G01. Earlier proposed headings remain historical exactbytes; they do not require another routine ownerapproval.
 
