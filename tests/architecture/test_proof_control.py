@@ -199,8 +199,11 @@ def test_actual_m00_generation_and_foundation_bootstrap_remain_distinct():
     assert raw.state == "READY_FOR_PROOF" and raw.target_id == "M00"
     assert raw.target_status == "active" and raw.generation_sha256 is not None
     assert foundation.target_status == "bootstrap"
-    assert foundation.state == "INCOMPLETE_NO_PHYSICAL_FAMILIES"
-    assert foundation.generation_sha256 is None
+    # G5.2 admits development proof without activating/promoting its owner.
+    assert foundation.target_id == "M02"
+    assert foundation.state == "READY_FOR_PROOF"
+    assert foundation.generation_sha256 is not None
+    assert foundation.generation_sha256 != raw.generation_sha256
 
 
 def test_target_status_does_not_make_red_circular(tmp_path):
