@@ -1,5 +1,11 @@
 # NVDA V2 — ACTIVE successor ExecPlan: Gate 5 execution
 
+## D012 generation1 admitted and actual intended RED preserved — 19 October 2026, 22:48 Melbourne
+
+Independent adequacy PASS reference independent-review/g61-d012-proof-v2/7eaddf9/20261019 on exact test_spread SHA f2911a597f55ffd152d2089b722813e8e7d3800bf55f75b8c845d54cd93095bc and unchanged three support/specimen hashes. Actual delegated generation1 admission at2de528340e151fe044efaf3351dcb94789064437, generationSHA26d2b4e371c38b0960cb6081798cc618c9f308567d0df12b2aa40f3777dd2a25. Strict native D012 aggregate was READY_FOR_PROOF/activeM02 and collected80cases;79failed from existing _expected rejecting D012-SPREAD definitions,1legacy/typecompatibility case passed; strict/process1. Complete first log preserved before production change. Environment/collection/admission succeeded; this is intended missing-domain-capability RED. No test skip or authority mismatch was counted as RED. Next is only the accepted bounded D012 source/metadata implementation, then required targeted/full regression and independent implementation review.
+
+---
+
 ## D012 physical proof RETURN; revised source awaiting adequacy — 19 October 2026, 22:47 Melbourne
 
 After installing the optional descriptor and explicit disposable-fixture reset, full control62PASS. Original actual strict aggregates at9b692ec retain foundation113PASS/strict0 and M00SQLite30PASS/strict0 with unchanged original authority/generations. D012 physical proof was authored at9b692ec before behaviour and submitted independently before admission/execution. Review reference independent-review/g61-d012-proof/9b692ec/20261019 returned F001ImportantRECURRENT_CLASS metadata/duplicate-order/page/representation gaps; F002ImportantISOLATED first-write competition absent; F003ImportantISOLATED separate payload/hash/index falsifiers absent; F004ImportantISOLATED version identity confounded by changing all refs together. All findings preserved in G6_1_D012_PROOF_REVIEW_20261019.md with lineage and exact original proof hashes. Revised proof source supplies these separately; new source remains unexecuted/unadmitted pending required adequacy review. Runtime M02 source remains the accepted Gate5 baseline. No G6 domain implementation/admission/closure is claimed.
