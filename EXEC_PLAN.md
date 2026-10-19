@@ -1,5 +1,9 @@
 # NVDA V2 — ACTIVE successor ExecPlan: Gate 5 execution
 
+## D014 memory component GREEN; explicit storage RED — 20 October 2026, 10:32 Melbourne
+
+Clean78358831f5159b8f0745baffb01ae49f358432d5/tree8b9c7768b68ab5d72db733c1f562ce3112a5fd27 actual nativeREADY then admitted exactP01[memory]1PASS0.11s/process0, completeabsence→publicadmission→1/3/typedlineage/config/identity/readback. ExactP05[profile]1FAIL0.09s/process1 at explicitmissingisolatedSQLitestorageassertion line874 afterpublicproducers/newseamnames, not importfailure. All7 logs/metadata/executedharness preserved byte-identically in d014_component_20261020/; fulloutputs/hashes/prepostclean verified. G6_1_D014_COMPONENT_FRONTIER_20261020.md exactboundary. Preservefrontier then admitted isolatedstorage; pendingSQLite-backedP01–P04 remain unchanged/notredirected. No fulltyping/aggregateGREEN/durability/acceptance. Accepted completedD011/D012/D013; D014partialmemory(oneof123awaitingcompleteacceptance), other122/all83unenabled. G6.1open; remaining§7.3.3/4 obligations retained.
+
 ## D014 public component frontier drafted after admitted RED — 20 October 2026, 10:30 Melbourne
 
 Saved exact proofRED fullGit2427b1030515305b682e67c4bec64c0ebdeb1621/tree0816e3ac73938bcb67f98a48157f0b30362743bf,102710283bytes/SHA25637e967604192d0f0365b08be4da46527f49efe277af102acc6d862dcc931e5a0; all1913tracked workingbytes/modes/links/GitHEAD-tree/fsck0 verified, archive/report saved successfully. Actual202intendedRED remains predecessor evidence.

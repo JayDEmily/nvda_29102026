@@ -1,5 +1,9 @@
 # Gate 5 execution and recovered checkpoint
 
+### D014 actual memory and storage frontier — 20 October 2026, 10:32 Melbourne
+
+Actualclean7835883/tree8b9c7768 nativeReady, exactadmittedP01memory1PASS0.11s0; P05profile1FAIL0.09s1 explicitmissingstorageassertion line874, no construction/importfailure counted. All7 actualharness/completeoutputs/metadata preservedexactly/read/verifiedprepostclean. Report G6_1_D014_COMPONENT_FRONTIER_20261020.md. Preservebeforeisolatedstorage; unchangedP01–P04SQLwitnessespending. Nofulltyping/strict202GREEN/durability/domainacceptance. D014partialmemory, acceptedcompleted3;123awaitfullacceptanceinclD014,other122/all83unenabled. G6.1open,alllaterholds.
+
 ### D014 postRED public frontier, unproved — 20 October 2026, 10:30 Melbourne
 
 Exact2427b10proofRED fullGit saved SHA37e967604192d0f0365b08be4da46527f49efe277af102acc6d862dcc931e5a0/102710283bytes,1913workingbytes/modes/links/GitHEAD-tree/fsck0 verified. Draft permitted appendedapi/new_raw_rational/onecodecallowlist only; original API prefix exact/admitted proof unchanged. Compile-only/scopedRuffPASS after draft appendedexport-order RUF022 corrected locally; no functionalGREEN yet. Next admitted P01memory, explicit missingstorageP05RED, then storage and pendingSQLite-backedP01–P04, no redirecting proof. No newstorefile/M02metadata/promotion/acceptance; G6.1open/123/all83.
