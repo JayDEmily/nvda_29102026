@@ -1,5 +1,11 @@
 # NVDA V2 — ACTIVE successor ExecPlan: Gate 5 execution
 
+## D012 physical proof RETURN; revised source awaiting adequacy — 19 October 2026, 22:47 Melbourne
+
+After installing the optional descriptor and explicit disposable-fixture reset, full control62PASS. Original actual strict aggregates at9b692ec retain foundation113PASS/strict0 and M00SQLite30PASS/strict0 with unchanged original authority/generations. D012 physical proof was authored at9b692ec before behaviour and submitted independently before admission/execution. Review reference independent-review/g61-d012-proof/9b692ec/20261019 returned F001ImportantRECURRENT_CLASS metadata/duplicate-order/page/representation gaps; F002ImportantISOLATED first-write competition absent; F003ImportantISOLATED separate payload/hash/index falsifiers absent; F004ImportantISOLATED version identity confounded by changing all refs together. All findings preserved in G6_1_D012_PROOF_REVIEW_20261019.md with lineage and exact original proof hashes. Revised proof source supplies these separately; new source remains unexecuted/unadmitted pending required adequacy review. Runtime M02 source remains the accepted Gate5 baseline. No G6 domain implementation/admission/closure is claimed.
+
+---
+
 ## D012 control admitted and proved; physical proof preparation — 19 October 2026, 22:38 Melbourne
 
 Revised pre-application independent review PASS reference independent-review/g61-d012-control-v2/7289806/20261019; exact V2 patch SHAb38d565046b63aa7a1ae4e6660a6081866756512d94aba868c152ad9471d05ef. Reviewer observed20control cases and direct fixture-independent original-claim/orphan support/nested/test/symlink rejection. Delegated application under current22:28authority recorded in control review report. Actual source applied at50e6ae9; author full existing control-family62PASS. First static check found3errors from local family_ids variable collision; preserved before mechanical name repair. Full source/control mypy34files thenPASS. Scoped lintPASS. Original catalogue/binding/generation4 digests unchanged. No product D012 behaviour or claim admission yet.

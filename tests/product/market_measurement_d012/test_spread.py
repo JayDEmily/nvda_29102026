@@ -11,10 +11,12 @@ import sqlite3
 import subprocess
 import sys
 import tarfile
+from concurrent.futures import ThreadPoolExecutor
 from dataclasses import replace
 from datetime import timedelta
 from decimal import Decimal, Inexact, Rounded, localcontext
 from pathlib import Path
+from threading import Event
 
 import pytest
 from _support import (
@@ -122,6 +124,16 @@ def test_d012_public_spread_exact_lineage(tmp_path, bid, ask, expected):
         "version",
         "context",
         "unenabled",
+        "field",
+        "variant",
+        "scope",
+        "mapping-mismatch",
+        "missing-mapping",
+        "mapping-version",
+        "field-mismatch",
+        "variant-mismatch",
+        "scope-mismatch",
+        "provider-mismatch",
     ],
 )
 def test_d012_selection_refusal_and_scope(tmp_path, mode):
@@ -137,6 +149,9 @@ def test_d012_selection_refusal_and_scope(tmp_path, mode):
         "skew": {"event": ASOF - timedelta(seconds=11, microseconds=1)},
         "temporal": {"source_temporal_kind": "date_only", "source_timestamp_raw": "2026-10-16"},
         "revision": {"revision_vintage_native": "revision"},
+        "field": {"native_record": {"quote": {"other": Decimal("100")}}},
+        "variant": {"source_variant": "other"},
+        "scope": {"ingestion_sequence_scope": raw_api.ingestion_sequence_scope("other")},
     }.get(mode, {})
     if mode != "missing":
         raw.commands.admit_raw_observation_occurrence(observation("bid", **change))
@@ -149,12 +164,37 @@ def test_d012_selection_refusal_and_scope(tmp_path, mode):
                 return replace(
                     page, items=tuple(replace(x, native_units="shares") for x in page.items)
                 )
+            if mode == "mapping-mismatch" and rid.value == "R034":
+                return replace(
+                    page, items=tuple(replace(x, projection_mapping_id="other") for x in page.items)
+                )
+            metadata = {
+                "mapping-version": {"projection_mapping_version": 2},
+                "field-mismatch": {"native_field_path": ("quote", "other")},
+                "variant-mismatch": {"source_variant": "other"},
+                "scope-mismatch": {
+                    "ingestion_sequence_scope": raw_api.ingestion_sequence_scope("other")
+                },
+                "provider-mismatch": {"source_provider": "other"},
+            }.get(mode)
+            if metadata is not None and rid.value == "R034":
+                return replace(page, items=tuple(replace(x, **metadata) for x in page.items))
             return page
 
     owner = f.create_owner(**configuration(Reader(), tmp_path / "measurement.sqlite"))
     req = request(2) if mode == "version" else request()
     if mode == "context":
         req = request(context_refs=(f.VersionRefV1("strategy", 1),))
+    if mode == "missing-mapping":
+        req = replace(
+            req,
+            raw_input_bindings=(
+                replace(
+                    req.raw_input_bindings[0], projection_mapping_ref=f.VersionRefV1("absent", 1)
+                ),
+                req.raw_input_bindings[1],
+            ),
+        )
     identities = [f"D{i:03d}" for i in range(1, 210) if i not in (11, 12)]
     if mode == "unenabled":
         for identity in identities:
@@ -235,8 +275,21 @@ def test_d012_latest_eligible_real_multipage_history(tmp_path):
     assert owner.materialise(request()).result == Decimal("-2")
 
 
-@pytest.mark.parametrize("mode", ["identical", "unrelated", "units", "nonfinite", "repeat"])
-@pytest.mark.parametrize("reverse,cross_page", [(False, False), (True, True)])
+@pytest.mark.parametrize(
+    "mode",
+    [
+        "identical",
+        "unrelated",
+        "units",
+        "nonfinite",
+        "stale",
+        "receipt",
+        "representation",
+        "repeat",
+    ],
+)
+@pytest.mark.parametrize("reverse", [False, True])
+@pytest.mark.parametrize("cross_page", [False, True])
 def test_d012_duplicate_consistency_and_pagination(tmp_path, mode, reverse, cross_page):
     raw = inputs(tmp_path)
 
@@ -251,6 +304,12 @@ def test_d012_duplicate_consistency_and_pagination(tmp_path, mode, reverse, cros
                 other = replace(good, native_units="shares")
             if mode == "nonfinite":
                 other = replace(good, native_value=Decimal("NaN"))
+            if mode == "stale":
+                other = replace(good, source_timestamp_raw="2026-10-16T00:58:00Z")
+            if mode == "receipt":
+                other = replace(good, received_ts_utc=NOW)
+            if mode == "representation":
+                other = replace(good, native_value=Decimal("100.0"))
             if mode == "unrelated":
                 other = replace(
                     other, observation_occurrence_id=raw_api.observation_occurrence_id("unrelated")
@@ -320,6 +379,58 @@ def test_d012_identity_versions_and_later_clock_retry(tmp_path):
     assert first.result == second.result == cutoff.result == Decimal("2")
     assert midpoint.result == Decimal("101")
     assert len({x.derived_occurrence_id for x in (first, second, cutoff, midpoint)}) == 4
+    # Change each version dimension alone; combined v2 cannot prove all members.
+    base = request()
+    variants = (
+        replace(base, calculation_definition_version="D012-SPREAD-2"),
+        replace(base, parameter_set_ref=f.VersionRefV1("mmt-pilot-basic", 2)),
+        replace(base, input_selection_policy_ref=f.VersionRefV1("mmt-pilot-selection", 2)),
+        replace(
+            base,
+            raw_input_bindings=(
+                replace(
+                    base.raw_input_bindings[0],
+                    projection_mapping_ref=f.VersionRefV1("mmt-pilot-bid", 2),
+                ),
+                base.raw_input_bindings[1],
+            ),
+        ),
+        replace(
+            base,
+            raw_input_bindings=(
+                base.raw_input_bindings[0],
+                replace(
+                    base.raw_input_bindings[1],
+                    projection_mapping_ref=f.VersionRefV1("mmt-pilot-ask", 2),
+                ),
+            ),
+        ),
+        replace(
+            base,
+            raw_input_bindings=tuple(
+                replace(binding, unit_convention_ref=f.VersionRefV1("mmt-pilot-price", 2))
+                for binding in base.raw_input_bindings
+            ),
+        ),
+    )
+    isolated = tuple(owner.materialise(req) for req in variants)
+    assert all(item.result == Decimal("2") for item in isolated)
+    assert (
+        len({x.derived_occurrence_id for x in (first, second, cutoff, midpoint, *isolated)}) == 10
+    )
+    for req, item in zip(variants, isolated, strict=True):
+        assert item.calculation_definition_version == req.calculation_definition_version
+        assert item.parameter_context_refs == (
+            req.parameter_set_ref,
+            req.input_selection_policy_ref,
+        )
+        assert tuple(x.projection_mapping_ref for x in item.raw_input_lineage) == tuple(
+            x.projection_mapping_ref for x in req.raw_input_bindings
+        )
+        assert tuple(x.unit_convention_ref for x in item.raw_input_lineage) == tuple(
+            x.unit_convention_ref for x in req.raw_input_bindings
+        )
+        assert owner.reads.get_derived_occurrence(item.derived_occurrence_id) == item
     raw.commands.admit_raw_observation_occurrence(
         observation(
             "bid", identity="changed", sequence=3, event=ASOF, receipt=ASOF, value=Decimal("104")
@@ -332,7 +443,7 @@ def test_d012_identity_versions_and_later_clock_retry(tmp_path):
     )
     for item in (first, second, cutoff, changed):
         assert owner.reads.get_derived_occurrence(item.derived_occurrence_id) == item
-    assert len(history(owner.reads)) == 4 and len(history(owner.reads, "D011")) == 1
+    assert len(history(owner.reads)) == 10 and len(history(owner.reads, "D011")) == 1
     assert owner.reads.get_derived_occurrence("unknown") is None
     assert owner.reads.get_parameter_set(f.VersionRefV1("absent", 1)) is None
     bad = config | {
@@ -454,6 +565,78 @@ print(base64.b64encode(pickle.dumps(r)).decode())
             (payload, hashlib.sha256(payload).hexdigest()),
         )
         c.execute(trigger)
+    with pytest.raises((ValueError, f.PersistenceFailureV1)):
+        f.create_reader(admission=config["admission"], storage=f.SQLiteReadStorageV1(str(path)))
+
+
+def test_d012_competing_identical_first_public_writes(tmp_path, monkeypatch):
+    raw = inputs(tmp_path)
+    path = tmp_path / "measurement.sqlite"
+    first = f.create_owner(**configuration(raw.reads, path))
+    second = f.create_owner(
+        **configuration(raw.reads, path, create=False, now=lambda: NOW + timedelta(days=1))
+    )
+    inserted, release = Event(), Event()
+    original = sqlite3.connect
+    mechanism = importlib.import_module("nvda_desk.market_measurement_truth._sqlite")
+
+    class Barrier(sqlite3.Connection):
+        def execute(self, sql, *args, **kwargs):
+            value = super().execute(sql, *args, **kwargs)
+            if sql.upper().startswith("INSERT INTO MMT_OCCURRENCE_V1"):
+                inserted.set()
+                assert release.wait(timeout=10), "public first writer was not released"
+            return value
+
+    def connect(*args, **kwargs):
+        if str(args[0]).startswith(path.as_uri() + "?"):
+            kwargs["factory"] = Barrier
+        return original(*args, **kwargs)
+
+    monkeypatch.setattr(mechanism.sqlite3, "connect", connect)
+    assert history(first.reads) == ()
+    with ThreadPoolExecutor(max_workers=1) as pool:
+        pending = pool.submit(first.materialise, request())
+        try:
+            assert inserted.wait(timeout=10), "first public call did not reach native INSERT"
+            assert history(second.reads) == ()  # first tentative fact is still uncommitted
+            with pytest.raises(f.PersistenceFailureV1) as contention:
+                second.materialise(request())
+            assert contention.value.outcome_uncertain is False
+        finally:
+            release.set()
+        committed = pending.result(timeout=20)
+    monkeypatch.undo()
+    assert committed.result == Decimal("2") and committed.calculated_at_utc == NOW
+    assert second.materialise(request()) == committed
+    assert history(second.reads) == (committed,)
+
+
+@pytest.mark.parametrize("mode", ["payload", "hash", "index", "owner"])
+def test_d012_separate_durable_integrity_falsifiers(tmp_path, mode):
+    raw = inputs(tmp_path)
+    path = tmp_path / "measurement.sqlite"
+    config = configuration(raw.reads, path)
+    owner = f.create_owner(**config)
+    fact = owner.materialise(request())
+    assert fact.result == Decimal("2")
+    with sqlite3.connect(path) as connection:
+        if mode == "owner":
+            connection.execute("PRAGMA application_id=1314258945")
+        else:
+            name, sql = connection.execute(
+                "SELECT name,sql FROM sqlite_schema WHERE type='trigger' "
+                "AND tbl_name='mmt_occurrence_v1' AND upper(sql) LIKE '%BEFORE UPDATE%'"
+            ).fetchone()
+            connection.execute('DROP TRIGGER "' + name + '"')
+            if mode == "payload":
+                payload = connection.execute("SELECT payload FROM mmt_occurrence_v1").fetchone()[0]
+                connection.execute("UPDATE mmt_occurrence_v1 SET payload=?", (payload + b" ",))
+            elif mode == "hash":
+                connection.execute("UPDATE mmt_occurrence_v1 SET content_sha256=?", ("0" * 64,))
+            else:
+                connection.execute("UPDATE mmt_occurrence_v1 SET subject_instrument='OTHER'")
+            connection.execute(sql)
     with pytest.raises((ValueError, f.PersistenceFailureV1)):
         f.create_reader(admission=config["admission"], storage=f.SQLiteReadStorageV1(str(path)))
 
