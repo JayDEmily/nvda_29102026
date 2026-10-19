@@ -1,0 +1,15 @@
+Cloning into '/workspace/scratch/d549b6d808a9/d014-independent-fvguaHBj/actual-state-v2'...
+done.
+{'raw_signal_occurrence_truth_sqlite': 'READY_FOR_PROOF', 'neutral_market_measurement_truth_pilot': 'READY_FOR_PROOF', 'neutral_market_measurement_truth_d012': 'READY_FOR_PROOF', 'neutral_market_measurement_truth_d013': 'READY_FOR_PROOF'}
+{'raw_signal_occurrence_truth_sqlite': 'READY_FOR_PROOF', 'neutral_market_measurement_truth_pilot': 'READY_FOR_PROOF', 'neutral_market_measurement_truth_d012': 'READY_FOR_PROOF', 'neutral_market_measurement_truth_d013': 'READY_FOR_PROOF'}
+{'neutral_market_measurement_truth_d014': 'INCOMPLETE_NO_PHYSICAL_FAMILIES'}
+literal descriptor/null, no physical family: PASS
+absent-descriptor/_support.py raw_signal_occurrence_truth_sqlite ValueError unowned D014 extension Python source without descriptor
+absent-descriptor/_support.py neutral_market_measurement_truth_pilot ValueError unowned D014 extension Python source without descriptor
+absent-descriptor/_support.py neutral_market_measurement_truth_d012 ValueError unowned D014 extension Python source without descriptor
+Traceback (most recent call last):
+  File "/workspace/scratch/d549b6d808a9/d014-independent-fvguaHBj/direct_actual.py", line 64, in <module>
+    rejects('absent-descriptor/' + name)
+  File "/workspace/scratch/d549b6d808a9/d014-independent-fvguaHBj/direct_actual.py", line 46, in rejects
+    raise AssertionError((label, identity, 'unexpected acceptance'))
+AssertionError: ('absent-descriptor/_support.py', 'neutral_market_measurement_truth_d013', 'unexpected acceptance')

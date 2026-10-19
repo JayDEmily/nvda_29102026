@@ -1,0 +1,80 @@
+PASS 0 null all old bytes retained
+support raw_signal_occurrence_truth_sqlite ValueError unowned D014 extension Python source without descriptor
+PASS 1 support raw_signal_occurrence_truth_sqlite old bytes retained
+support neutral_market_measurement_truth_pilot ValueError unowned D014 extension Python source without descriptor
+PASS 2 support neutral_market_measurement_truth_pilot old bytes retained
+support neutral_market_measurement_truth_d012 ValueError unowned D014 extension Python source without descriptor
+PASS 3 support neutral_market_measurement_truth_d012 old bytes retained
+support neutral_market_measurement_truth_d013 ValueError unowned D014 extension Python source without descriptor
+PASS 4 support neutral_market_measurement_truth_d013 old bytes retained
+support neutral_market_measurement_truth_d014 ValueError unowned D014 extension Python source without descriptor
+PASS 5 support neutral_market_measurement_truth_d014 old bytes retained
+nested raw_signal_occurrence_truth_sqlite ValueError unowned D014 extension Python source without descriptor
+PASS 6 nested raw_signal_occurrence_truth_sqlite old bytes retained
+nested neutral_market_measurement_truth_pilot ValueError unowned D014 extension Python source without descriptor
+PASS 7 nested neutral_market_measurement_truth_pilot old bytes retained
+nested neutral_market_measurement_truth_d012 ValueError unowned D014 extension Python source without descriptor
+PASS 8 nested neutral_market_measurement_truth_d012 old bytes retained
+nested neutral_market_measurement_truth_d013 ValueError unowned D014 extension Python source without descriptor
+PASS 9 nested neutral_market_measurement_truth_d013 old bytes retained
+nested neutral_market_measurement_truth_d014 ValueError unowned D014 extension Python source without descriptor
+PASS 10 nested neutral_market_measurement_truth_d014 old bytes retained
+test raw_signal_occurrence_truth_sqlite ValueError unowned D014 extension Python source without descriptor
+PASS 11 test raw_signal_occurrence_truth_sqlite old bytes retained
+test neutral_market_measurement_truth_pilot ValueError unowned D014 extension Python source without descriptor
+PASS 12 test neutral_market_measurement_truth_pilot old bytes retained
+test neutral_market_measurement_truth_d012 ValueError unowned D014 extension Python source without descriptor
+PASS 13 test neutral_market_measurement_truth_d012 old bytes retained
+test neutral_market_measurement_truth_d013 ValueError unowned D014 extension Python source without descriptor
+PASS 14 test neutral_market_measurement_truth_d013 old bytes retained
+test neutral_market_measurement_truth_d014 ValueError unowned D014 extension Python source without descriptor
+PASS 15 test neutral_market_measurement_truth_d014 old bytes retained
+dangling raw_signal_occurrence_truth_sqlite ValueError unowned D014 extension Python source without descriptor
+PASS 16 dangling raw_signal_occurrence_truth_sqlite old bytes retained
+dangling neutral_market_measurement_truth_pilot ValueError unowned D014 extension Python source without descriptor
+PASS 17 dangling neutral_market_measurement_truth_pilot old bytes retained
+dangling neutral_market_measurement_truth_d012 ValueError unowned D014 extension Python source without descriptor
+PASS 18 dangling neutral_market_measurement_truth_d012 old bytes retained
+dangling neutral_market_measurement_truth_d013 ValueError unowned D014 extension Python source without descriptor
+PASS 19 dangling neutral_market_measurement_truth_d013 old bytes retained
+dangling neutral_market_measurement_truth_d014 ValueError unowned D014 extension Python source without descriptor
+PASS 20 dangling neutral_market_measurement_truth_d014 old bytes retained
+malformed raw_signal_occurrence_truth_sqlite ValueError cannot read JSON /workspace/scratch/d549b6d808a9/d014-independent-fvguaHBj/isolated-21/config/product_proof/market_measurement_d014/claim.json: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+PASS 21 malformed raw_signal_occurrence_truth_sqlite old bytes retained
+malformed neutral_market_measurement_truth_pilot ValueError cannot read JSON /workspace/scratch/d549b6d808a9/d014-independent-fvguaHBj/isolated-22/config/product_proof/market_measurement_d014/claim.json: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+PASS 22 malformed neutral_market_measurement_truth_pilot old bytes retained
+malformed neutral_market_measurement_truth_d012 ValueError cannot read JSON /workspace/scratch/d549b6d808a9/d014-independent-fvguaHBj/isolated-23/config/product_proof/market_measurement_d014/claim.json: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+PASS 23 malformed neutral_market_measurement_truth_d012 old bytes retained
+malformed neutral_market_measurement_truth_d013 ValueError cannot read JSON /workspace/scratch/d549b6d808a9/d014-independent-fvguaHBj/isolated-24/config/product_proof/market_measurement_d014/claim.json: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+PASS 24 malformed neutral_market_measurement_truth_d013 old bytes retained
+malformed neutral_market_measurement_truth_d014 ValueError cannot read JSON /workspace/scratch/d549b6d808a9/d014-independent-fvguaHBj/isolated-25/config/product_proof/market_measurement_d014/claim.json: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+PASS 25 malformed neutral_market_measurement_truth_d014 old bytes retained
+overlap raw_signal_occurrence_truth_sqlite ValueError invalid D014 extension descriptor
+PASS 26 overlap raw_signal_occurrence_truth_sqlite old bytes retained
+overlap neutral_market_measurement_truth_pilot ValueError invalid D014 extension descriptor
+PASS 27 overlap neutral_market_measurement_truth_pilot old bytes retained
+overlap neutral_market_measurement_truth_d012 ValueError invalid D014 extension descriptor
+PASS 28 overlap neutral_market_measurement_truth_d012 old bytes retained
+overlap neutral_market_measurement_truth_d013 ValueError invalid D014 extension descriptor
+PASS 29 overlap neutral_market_measurement_truth_d013 old bytes retained
+overlap neutral_market_measurement_truth_d014 ValueError invalid D014 extension descriptor
+PASS 30 overlap neutral_market_measurement_truth_d014 old bytes retained
+crossgen raw_signal_occurrence_truth_sqlite ValueError generation path/cycle/cross-claim mismatch
+PASS 31 crossgen raw_signal_occurrence_truth_sqlite old bytes retained
+crossgen neutral_market_measurement_truth_pilot ValueError generation path/cycle/cross-claim mismatch
+PASS 32 crossgen neutral_market_measurement_truth_pilot old bytes retained
+crossgen neutral_market_measurement_truth_d012 ValueError generation path/cycle/cross-claim mismatch
+PASS 33 crossgen neutral_market_measurement_truth_d012 old bytes retained
+crossgen neutral_market_measurement_truth_d013 ValueError generation path/cycle/cross-claim mismatch
+PASS 34 crossgen neutral_market_measurement_truth_d013 old bytes retained
+crossgen neutral_market_measurement_truth_d014 ValueError generation path/cycle/cross-claim mismatch
+PASS 35 crossgen neutral_market_measurement_truth_d014 old bytes retained
+PASS 36 advance raw_signal_occurrence_truth_sqlite old bytes retained
+PASS 37 advance neutral_market_measurement_truth_pilot old bytes retained
+PASS 38 advance neutral_market_measurement_truth_d012 old bytes retained
+PASS 39 advance neutral_market_measurement_truth_d013 old bytes retained
+PASS 40 revoke raw_signal_occurrence_truth_sqlite old bytes retained
+PASS 41 revoke neutral_market_measurement_truth_pilot old bytes retained
+PASS 42 revoke neutral_market_measurement_truth_d012 old bytes retained
+PASS 43 revoke neutral_market_measurement_truth_d013 old bytes retained
+ALL 44 PRISTINE INDEPENDENT ACTUAL-STATE CASES PASS

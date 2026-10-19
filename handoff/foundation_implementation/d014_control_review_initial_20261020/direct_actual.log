@@ -1,0 +1,53 @@
+Cloning into '/workspace/scratch/d549b6d808a9/d014-independent-fvguaHBj/actual-state'...
+done.
+{'raw_signal_occurrence_truth_sqlite': 'READY_FOR_PROOF', 'neutral_market_measurement_truth_pilot': 'READY_FOR_PROOF', 'neutral_market_measurement_truth_d012': 'READY_FOR_PROOF', 'neutral_market_measurement_truth_d013': 'READY_FOR_PROOF'}
+{'raw_signal_occurrence_truth_sqlite': 'READY_FOR_PROOF', 'neutral_market_measurement_truth_pilot': 'READY_FOR_PROOF', 'neutral_market_measurement_truth_d012': 'READY_FOR_PROOF', 'neutral_market_measurement_truth_d013': 'READY_FOR_PROOF'}
+{'neutral_market_measurement_truth_d014': 'INCOMPLETE_NO_PHYSICAL_FAMILIES'}
+literal descriptor/null, no physical family: PASS
+absent-descriptor/_support.py raw_signal_occurrence_truth_sqlite ValueError unowned D014 extension Python source without descriptor
+absent-descriptor/_support.py neutral_market_measurement_truth_pilot ValueError unowned D014 extension Python source without descriptor
+absent-descriptor/_support.py neutral_market_measurement_truth_d012 ValueError unowned D014 extension Python source without descriptor
+absent-descriptor/_support.py neutral_market_measurement_truth_d013 ValueError unowned D014 extension Python source without descriptor
+absent-descriptor/_support.py neutral_market_measurement_truth_d014 ValueError unowned D014 extension Python source without descriptor
+absent-descriptor/nested/helper.py raw_signal_occurrence_truth_sqlite ValueError unowned D014 extension Python source without descriptor
+absent-descriptor/nested/helper.py neutral_market_measurement_truth_pilot ValueError unowned D014 extension Python source without descriptor
+absent-descriptor/nested/helper.py neutral_market_measurement_truth_d012 ValueError unowned physical proof support file
+absent-descriptor/nested/helper.py neutral_market_measurement_truth_d013 ValueError unowned physical proof support file
+absent-descriptor/nested/helper.py neutral_market_measurement_truth_d014 ValueError unowned physical proof support file
+absent-descriptor/test_orphan.py raw_signal_occurrence_truth_sqlite ValueError unowned physical proof support file
+absent-descriptor/test_orphan.py neutral_market_measurement_truth_pilot ValueError unowned physical proof support file
+absent-descriptor/test_orphan.py neutral_market_measurement_truth_d012 ValueError unowned physical proof support file
+absent-descriptor/test_orphan.py neutral_market_measurement_truth_d013 ValueError unowned physical proof support file
+absent-descriptor/test_orphan.py neutral_market_measurement_truth_d014 ValueError unowned physical proof support file
+absent-descriptor/dangling.py raw_signal_occurrence_truth_sqlite ValueError unowned physical proof support file
+absent-descriptor/dangling.py neutral_market_measurement_truth_pilot ValueError unowned physical proof support file
+absent-descriptor/dangling.py neutral_market_measurement_truth_d012 ValueError unowned physical proof support file
+absent-descriptor/dangling.py neutral_market_measurement_truth_d013 ValueError unowned physical proof support file
+absent-descriptor/dangling.py neutral_market_measurement_truth_d014 ValueError unowned physical proof support file
+malformed descriptor raw_signal_occurrence_truth_sqlite ValueError cannot read JSON /workspace/scratch/d549b6d808a9/d014-independent-fvguaHBj/actual-state/config/product_proof/market_measurement_d014/claim.json: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+malformed descriptor neutral_market_measurement_truth_pilot ValueError cannot read JSON /workspace/scratch/d549b6d808a9/d014-independent-fvguaHBj/actual-state/config/product_proof/market_measurement_d014/claim.json: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+malformed descriptor neutral_market_measurement_truth_d012 ValueError cannot read JSON /workspace/scratch/d549b6d808a9/d014-independent-fvguaHBj/actual-state/config/product_proof/market_measurement_d014/claim.json: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+malformed descriptor neutral_market_measurement_truth_d013 ValueError cannot read JSON /workspace/scratch/d549b6d808a9/d014-independent-fvguaHBj/actual-state/config/product_proof/market_measurement_d014/claim.json: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+malformed descriptor neutral_market_measurement_truth_d014 ValueError cannot read JSON /workspace/scratch/d549b6d808a9/d014-independent-fvguaHBj/actual-state/config/product_proof/market_measurement_d014/claim.json: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+overlap descriptor raw_signal_occurrence_truth_sqlite ValueError invalid D014 extension descriptor
+overlap descriptor neutral_market_measurement_truth_pilot ValueError invalid D014 extension descriptor
+overlap descriptor neutral_market_measurement_truth_d012 ValueError invalid D014 extension descriptor
+overlap descriptor neutral_market_measurement_truth_d013 ValueError invalid D014 extension descriptor
+overlap descriptor neutral_market_measurement_truth_d014 ValueError invalid D014 extension descriptor
+cross-claim generation raw_signal_occurrence_truth_sqlite ValueError generation path/cycle/cross-claim mismatch
+cross-claim generation neutral_market_measurement_truth_pilot ValueError generation path/cycle/cross-claim mismatch
+cross-claim generation neutral_market_measurement_truth_d012 ValueError generation path/cycle/cross-claim mismatch
+cross-claim generation neutral_market_measurement_truth_d013 ValueError generation path/cycle/cross-claim mismatch
+cross-claim generation neutral_market_measurement_truth_d014 ValueError generation path/cycle/cross-claim mismatch
+Traceback (most recent call last):
+  File "/workspace/scratch/d549b6d808a9/d014-independent-fvguaHBj/direct_actual.py", line 88, in <module>
+    assert states([identity])[identity] == 'READY_FOR_PROOF'
+           ^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/d549b6d808a9/d014-independent-fvguaHBj/direct_actual.py", line 36, in states
+    result = {identity: load_product_proof_claim(root, identity).state for identity in ids}
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/d549b6d808a9/d014-independent-fvguaHBj/actual-state/tools/product_proof_claims.py", line 541, in load_product_proof_claim
+    _partition(root, catalogue, contracts)
+  File "/workspace/scratch/d549b6d808a9/d014-independent-fvguaHBj/actual-state/tools/product_proof_claims.py", line 200, in _partition
+    raise ValueError("unowned physical proof support file")
+ValueError: unowned physical proof support file

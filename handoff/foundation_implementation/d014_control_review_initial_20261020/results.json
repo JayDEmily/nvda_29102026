@@ -1,0 +1,62 @@
+{
+  "targeted": {
+    "argv": [
+      "/workspace/scratch/d549b6d808a9/g52-dev/bin/python",
+      "-m",
+      "pytest",
+      "tests/architecture/test_proof_control.py",
+      "-k",
+      "d014"
+    ],
+    "cwd": "/workspace/scratch/d549b6d808a9/d014-independent-fvguaHBj/proposed",
+    "exit": 0
+  },
+  "full-control": {
+    "argv": [
+      "/workspace/scratch/d549b6d808a9/g52-dev/bin/python",
+      "-m",
+      "pytest",
+      "tests/architecture/test_proof_control.py"
+    ],
+    "cwd": "/workspace/scratch/d549b6d808a9/d014-independent-fvguaHBj/proposed",
+    "exit": 0
+  },
+  "mypy": {
+    "argv": [
+      "/workspace/scratch/d549b6d808a9/g52-dev/bin/python",
+      "-m",
+      "mypy",
+      "src",
+      "tools/product_proof_claims.py",
+      "tools/product_proof_outcomes.py",
+      "tools/validate_product_proof.py",
+      "tools/run_product_proof_gate.py"
+    ],
+    "cwd": "/workspace/scratch/d549b6d808a9/d014-independent-fvguaHBj/proposed",
+    "exit": 0
+  },
+  "ruff": {
+    "argv": [
+      "/workspace/scratch/d549b6d808a9/g52-dev/bin/python",
+      "-m",
+      "ruff",
+      "check",
+      "tools/product_proof_claims.py",
+      "tests/architecture/test_proof_control.py"
+    ],
+    "cwd": "/workspace/scratch/d549b6d808a9/d014-independent-fvguaHBj/proposed",
+    "exit": 0
+  },
+  "binding": {
+    "argv": [
+      "/workspace/scratch/d549b6d808a9/g52-dev/bin/python",
+      "tools/validate_implementation_authority.py",
+      "--binding",
+      "implementation/authority/G6_1_D014_IMPLEMENTATION_AUTHORITY_BINDING.yaml",
+      "--brief",
+      "handoff/foundation_implementation/authority/G6_1_D014_IMPLEMENTATION_BRIEF_PROPOSED.md"
+    ],
+    "cwd": "/workspace/scratch/d549b6d808a9/d014-independent-fvguaHBj/proposed",
+    "exit": 0
+  }
+}
