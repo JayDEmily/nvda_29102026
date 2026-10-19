@@ -1,5 +1,9 @@
 # Gate 5 execution and recovered checkpoint
 
+### D014 revised adequacy and gen1 admission — 20 October 2026, 10:23 Melbourne
+
+Actual fresh V2 PASS ref independent-review/g61-d014-authored-proof-v2/ec0f363/20261020, reportSHA0374311fc92ee0cc8fcbf16f0b02558b4ee37e166ded73622053a1f7b396e6af/all9 evidence files preserved/read/verified. Both source gaps closed/scope ruling upheld. Main actual ADMIT_D014_PROOF_GENERATION_1_ONLY under standing22:28, exactgenSHAf531b7216a3ce1e468015b40d6d3ca01742b56eb09587e49a972d41f33a47b23/4physicalhashes/activeM02/brief/binding/contract/genuine refs. Native readiness/clean strict intendedRED remain before runtime, not inferred from source202. Current root first2§7.3.2 source obligations evidenced; final includes actualRED stillopen. Revisedproofdeltaec0/all1899workingbytes recovery/clean/fsck0 saved. No new runtime/semanticGREEN/G6.1/native/full126/latergate claim;123/all83 unenabled.
+
 ### D014 bounded unadmitted repair prepared — 20 October 2026, 10:17 Melbourne
 
 Only new test_raw_ratio nowSHA588abd5c69bda15ea1305a12a3bbc35e7fe3f0ed3f57515e7cdd7926524d8db2; three support/specimens unchanged. Added16duplicate order/page/native/metadata cases plus identicalcrosspage positive, exactPK/CHECK/FK/declaration-downgrade checks, retainedallprevioussemanticassertions. Operation-scoped arbitrarytotaltrace/exactcallcount restriction removed per recorded ruling, fullpage/exhaustion/refusal/history evidence retained. Actual compile-only/RuffPASS,202sourceprojected not executed. FirstRETURN intact; fresh revisedadequacy needed before gen1/RED/runtime. G6.1open/123/all83.
