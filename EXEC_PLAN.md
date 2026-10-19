@@ -1,5 +1,11 @@
 # NVDA V2 — ACTIVE successor ExecPlan: Gate 5 execution
 
+## D012 control review RETURN and bounded pre-application repair — 19 October 2026, 22:35 Melbourne
+
+Authority binding validates modify:M02/modify:G01; actual environment3.12.14/SQLite3.53.1 and pinned tools re-established. New control proof preceded proposed behaviour: initial2failed12passed, expanded5failed12passed for unrecognised selected claim. Independent review reference independent-review/g61-d012-control/e46e9dd-1a5cf9e/20261019 returned F001 Important RECURRENT_CLASS (9b53f93 undeclared-support mechanism): descriptor absence hid orphan support under the optional D012 root, allowing both originals READY. F002 Important ISOLATED: author skip witness expected5 instead of existing strict outcome1; primary validator confirms1 and witness is corrected, runner unchanged. First failures/review/old patch preserved. Two new support/nested-helper controls observed RED and orphan test control passed before revised V2 source. Revised exact-root ownership patch remains unapplied pending pre-application review. No downstream product proof/code begun and no candidate acceptance manufactured. Standing human-checkpoint authority remains effective; this stop is unmet proof/review, not a new owner permission request.
+
+---
+
 ## D012 authority accepted; standing human-checkpoint authority — 19 October 2026, 22:28 Melbourne
 
 Current owner instruction: “Yes, I do, and for all further human exceptions, I authorise them right now.” Reference owner-chat/20261019T222804/D012-and-standing-human-exceptions. This explicitly accepts the submitted exact D012 brief SHA256 a31c482d2dc4822539ede99e955761319585af4badea93b9fc279638e1e1f393 and root §7.1 amendment at c8fa2ea91416432ed7426bf1f5b1083b93a9ee51 for implementation/testing. §7.1 is ACTIVE under this acceptance; its earlier pending labels are historical submission text. Existing frozen brief bytes are not rewritten. Execute its ordered authority/control/proof/RED/behaviour/GREEN/review obligations now.
