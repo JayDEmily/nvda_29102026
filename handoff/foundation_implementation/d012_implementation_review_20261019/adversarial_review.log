@@ -1,0 +1,12 @@
+PASS independent persisted corruption refusal: equation
+PASS independent persisted corruption refusal: representation
+PASS independent persisted corruption refusal: lineage_representation
+PASS independent persisted corruption refusal: hash
+PASS independent persisted corruption refusal: index
+PASS independent persisted corruption refusal: logical_hash
+PASS actual direct loader raw_signal_occurrence_truth_sqlite 51e87129c2a31c71599b7a01beb8ba39717ed5118a4d5c849bcb2015b6c80c6f
+PASS actual direct loader neutral_market_measurement_truth_pilot 24a5af4054c277b01a140ec43481e86851e5e76263826644a80993c12c2495b7
+PASS actual direct loader neutral_market_measurement_truth_d012 26d2b4e371c38b0960cb6081798cc618c9f308567d0df12b2aa40f3777dd2a25
+PASS malformed optional extension rejects both original selected claims
+PASS descriptor-absent original universe READY, then nested support rejects both original selected claims
+ALL INDEPENDENT ADVERSARIES PASS
