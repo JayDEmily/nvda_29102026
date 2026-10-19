@@ -1,5 +1,11 @@
 # NVDA V2 — ACTIVE successor ExecPlan: Gate 5 execution
 
+## D012 complete engineering evidence; independent implementation review next — 19 October 2026, 22:54 Melbourne
+
+Exact repaired candidate5a7bcfe252a633ec8d13d9a9e2fbe1709b0ea188/treea8ff96bc45862d4cbaee4d89c7f6f3e4baf40160 passes actual strict D01280/foundation113/M00SQLite30, all strict/process0; architecture promotion133PASS/11families/zero dependency-public-seam violations; source/control mypy34files and scoped RuffPASS. Standard full Ruff retains exactly two inherited M01E501 findings; unchanged original authority/catalogue/bindings/generations verified. See G6_1_D012_CANDIDATE_20261019.md and exact logs. Current status G6.1_D012_ENGINEERING_PROVED_AWAITING_INDEPENDENT_IMPLEMENTATION_REVIEW; G6.1 NOT_COMPLETE, G6.2–6.4 pending predecessor closure. No independent implementation verdict/delegated final candidate disposition is inferred. Existing standing human-checkpoint delegation is current; no further routine owner permission is sought.
+
+---
+
 ## D012 static first failure and bounded variable repair — 19 October 2026, 22:52 Melbourne
 
 At5dd8e22 actual strict product aggregates pass80D012/113foundation/30M00, all strict0; scoped lintPASS. Full typing reports7errors because spread reused the native Decimal tuple exponent variable (statically int/nonfinite-marker union) for the aligned finite integer exponent. Architecture promotion correspondingly1failed132passed, sole failure admitted static-typecheck; zero dependency/public-seam violations. Both first failures preserved at3c95f28 before repair. Root-cause comparison with existing midpoint shows its coefficient helper narrows exponent on return; new subtraction reused that local name in the outer scope. Small repair uses distinct aligned_exponent, retaining exact finite arithmetic/representation and no ignores/casts/schema/public changes. Full source/control mypy34files nowPASS. Required aggregate/promotion evidence on the repaired clean candidate remains to be obtained; no promotion success is inferred from runtime GREEN.
