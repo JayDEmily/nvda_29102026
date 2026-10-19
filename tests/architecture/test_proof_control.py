@@ -583,6 +583,8 @@ def _copy_candidate(tmp_path):
     for relative in (
         "config/product_proof/market_measurement_d012",
         "tests/product/market_measurement_d012",
+        "config/product_proof/market_measurement_d013",
+        "tests/product/market_measurement_d013",
     ):
         disposable = tmp_path / relative
         if disposable.exists():

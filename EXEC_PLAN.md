@@ -1,5 +1,13 @@
 # NVDA V2 — ACTIVE successor ExecPlan: Gate 5 execution
 
+## D013 class-level proof repair and V2 diff prepared — 19 October 2026, 23:32 Melbourne
+
+After preservedRETURN8c8525c, six additional advance/revoke canaries across rawSQLite/foundation/D012 each observed intendedRED at526cee6 before testrepair3269035; allsixthenPASS against unchangedactualD012loader. Preservation now pins old immutable generationfilebytes and protects all existingrecords/pointers from readsideeffects, without freezing currentselectedhash/readiness. Existing forged/reused/revoked-historynegatives retained. Separate predictedfixtureuniversehazard was proved1RED atc15ab77 before addingonlyD013copiedconfig/proofroots to the alreadyexplicitpre-admissionreset;1GREENfollows, actualsourceuntouched. This applies existingbrief§8ruling rather than weakeningactualownership; directactualstate remainsseparatelyproved. BothfirstREDandGREENlogs preserved.
+
+Revised exactUNAPPLIEDV2patchSHAa69225e81bd33fd834358823a7a23ec000b118d3ddbcd4cff6eb59e90d1be8d7 changes only mandatorynewbindingpathlineformatrelativeV1; nosemanticloaderdiffchange. Actual tools/runtime/config remainatacceptedD012bytes. ChangedcontroltestRuffPASS. Newphysicalcontrolfamilycontains92cases;30D013selected sourcecases nowawaitrequiredrevisedpreapplicationreviewwiththeV2patch. No wholecontrolGREEN/admission/sourceapplication/domainproofisclaimed. G6.1open;standingauthorityneedsnonewroutinepermission.
+
+---
+
 ## D013 pre-application RETURN; immutable evidence versus live pointer — 19 October 2026, 23:27 Melbourne
 
 Independent RETURN independent-review/g61-d013-control/3ea87b2/20261019 on exactunappliedpatchSHA7c56924cafef9491abb8e2d39bb3930c037131c2d8b0058ceb95431158749519. ReportSHAeb70e127d5e5ca59eecaa19a2118c0515fd918da15f6ca5c23df0b91d5bc773f and actualscripts/logs preserved unchanged in d013_control_review_initial_20261019/. F001ImportantRECURRENT_CLASS: newtestconfuses preserved immutablegenerationbytes with eternally selectedcurrenthash. DirectsyntheticlawfulD012generation2 remainsREADY undernativeadmissionhistorywhile newtestassertionfails. Lineagebd787fb→cc89069→5a3e178 repeatscheckpoint-as-generic-invariant mechanism. Requiredclassclosure is unchangedoldbytes/correctassociation plus lawfuladvancement/revocation across allthreeoriginalclaims, retainingforged/stale/reusedtransitionrefusal. F002MinorISOLATED: exactnewloaderbindingpathf-string106chars failsmandatoryscopedRuffE501; mustformatbeforeadmission, no unrelatedM01repair.
