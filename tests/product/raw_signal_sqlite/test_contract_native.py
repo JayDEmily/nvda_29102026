@@ -22,6 +22,10 @@ def representation(value):
         return ["decimal", t.sign, list(t.digits), str(t.exponent)]
     if type(value) is float:
         return ["float", pack("!d", value).hex()]
+    if type(value) is int:
+        # Independent binary witness, not the storage codec's decimal conversion.
+        magnitude = abs(value)
+        return ["int", value < 0, magnitude.to_bytes((magnitude.bit_length() + 7) // 8, "big")]
     if type(value) is bytes:
         return ["bytes", value.hex()]
     if type(value) in (tuple, list):
@@ -218,6 +222,78 @@ def test_sqlite_retry_conflict_and_retransmission(tmp_path):
     assert representation(fresh_observation(path, "retransmit")) == representation(again)
 
 
+@pytest.mark.parametrize("sign", (-1, 1))
+@pytest.mark.parametrize("field", ("native", "sequence", "epoch"))
+def test_sqlite_integer_fidelity_beyond_runtime_decimal_conversion_limit(tmp_path, field, sign):
+    # Storage-contract boundary witness, NOT a claim about IBKR feed magnitudes.
+    huge = sign * 10**5000
+    path = tmp_path / "huge.db"
+    o = owner(path, create=True)
+    raw = observation(
+        native={"value": huge} if field == "native" else {"value": 1},
+        sequence=huge if field == "sequence" else 1,
+        received_epoch_ns=huge if field == "epoch" else None,
+    )
+    assert o.commands.admit_raw_observation_occurrence(raw) is raw
+    assert representation(fresh_observation(path, "obs")) == representation(raw)
+    reopened = owner(path)
+    assert representation(
+        reopened.commands.admit_raw_observation_occurrence(raw)
+    ) == representation(raw)
+    if field == "sequence":
+        with pytest.raises(ValueError, match="must not decrease"):
+            reopened.commands.admit_raw_observation_occurrence(observation("lower", huge - 1))
+        higher = observation("higher", huge + 1)
+        reopened.commands.admit_raw_observation_occurrence(higher)
+        assert fresh_observation(path, "higher").ingestion_sequence == huge + 1
+        reopened.commands.admit_raw_observation_occurrence(observation("other", 0, "other-scope"))
+    if field == "native":
+        # Exact old codec bytes: one mapping entry, key 'value', integer ASCII payload.
+        import json
+        import sqlite3
+
+        text = ("-" if sign < 0 else "") + "1" + "0" * 5000
+        expected = (
+            b"NVDA-NATIVE-V1\x00m"
+            + (1).to_bytes(8, "big")
+            + (5).to_bytes(8, "big")
+            + b"valuei"
+            + len(text).to_bytes(8, "big")
+            + text.encode("ascii")
+        )
+        with sqlite3.connect(path) as connection:
+            payload = connection.execute(
+                "SELECT payload FROM rsot_raw_observation_occurrence_v1"
+            ).fetchone()[0]
+        assert bytes.fromhex(json.loads(payload)["native_record"]) == expected
+
+
+def test_sqlite_large_policy_version_remains_exact_through_a00(tmp_path):
+    from nvda_desk.composition import create_application
+
+    path = tmp_path / "policy.db"
+    owner(path, create=True)
+    version = 10**5000
+    p = policy(scope_policy_version=version)
+    ref = api.scope_policy_ref("policy@1" + "0" * 5000)
+    app = create_application(
+        sqlite_path=str(path), raw_signal_eligibility_resolver=lambda observation, policy: True
+    )
+    result = app.run_raw_signal_proof_sequence(
+        capture_scope_policy=p,
+        scope_policy_ref=ref,
+        slot_start_utc=T0,
+        capture_occurrence_id=api.capture_occurrence_id("capture"),
+        raw_observation=observation(),
+        assessment_occurrence_id=api.assessment_occurrence_id("a"),
+        assessment_evidence_as_of_ts_utc=T0,
+        supersedes_assessment_ref=None,
+    )
+    assert result.policy.scope_policy_version == version
+    assert owner(path).reads.get_capture_scope_policy(p.scope_policy_id, version) == p
+    assert fresh_record(path, "capture", "capture").scope_policy_ref == ref
+
+
 def test_sqlite_requiredness_time_layers_and_static_public_facets(tmp_path):
     o = owner(tmp_path / "raw.db", create=True)
     p = policy(deactivation_ts_utc=T0 + timedelta(minutes=1))
@@ -381,6 +457,8 @@ def commands(p: api.CaptureScopePolicyV1, raw: api.RawObservationOccurrenceV1,
         "mypy",
         "--config-file",
         str(configuration),
+        "--cache-dir",
+        str(tmp_path / "mypy-cache"),
         "--strict",
         "--disallow-any-expr",
         "-c",
