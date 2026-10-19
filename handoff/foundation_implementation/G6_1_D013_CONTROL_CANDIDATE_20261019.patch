@@ -1,0 +1,81 @@
+*** Begin Patch
+*** Update File: tools/product_proof_claims.py
+@@
+-from typing import Any
++from typing import Any, Literal
+@@
+-def _d012_extension(root: Path) -> tuple[dict[str, Any], dict[str, Any], str] | None:
+-    """One separately accepted extension; never reseal the original catalogue."""
+-    directory = "config/product_proof/market_measurement_d012"
++def _scalar_extension(
++    root: Path, identity: Literal["D012", "D013"]
++) -> tuple[dict[str, Any], dict[str, Any], str] | None:
++    """Two fixed separately accepted extensions; never discover arbitrary claims."""
++    name = identity.lower()
++    directory = f"config/product_proof/market_measurement_{name}"
+@@
+-        physical = safe_path(root, "tests/product/market_measurement_d012")
++        physical = safe_path(root, f"tests/product/market_measurement_{name}")
+@@
+-            raise ValueError("unowned D012 extension Python source without descriptor")
++            raise ValueError(f"unowned {identity} extension Python source without descriptor")
+@@
+-    prefix = "handoff/foundation_implementation/authority/G6_1_D012_"
++    prefix = f"handoff/foundation_implementation/authority/G6_1_{identity}_"
+@@
+-        "claim_id": "neutral_market_measurement_truth_d012",
++        "claim_id": f"neutral_market_measurement_truth_{name}",
+@@
+-        "binding_path": "implementation/authority/G6_1_D012_IMPLEMENTATION_AUTHORITY_BINDING.yaml",
++        "binding_path": f"implementation/authority/G6_1_{identity}_IMPLEMENTATION_AUTHORITY_BINDING.yaml",
+@@
+-        "physical_root": "tests/product/market_measurement_d012",
++        "physical_root": f"tests/product/market_measurement_{name}",
+@@
+-        raise ValueError("invalid D012 extension descriptor")
++        raise ValueError(f"invalid {identity} extension descriptor")
+@@
+-        raise ValueError("D012 projection intent mismatch")
++        raise ValueError(f"{identity} projection intent mismatch")
+@@
+-    if len(rows) != 8 or len(dict(rows)) != 8:
+-        raise ValueError("invalid D012 incorporated-byte table")
++    count = {"D012": 8, "D013": 11}[identity]
++    if len(rows) != count or len(dict(rows)) != count:
++        raise ValueError(f"invalid {identity} incorporated-byte table")
+@@
+-            raise ValueError("D012 incorporated companion hash mismatch")
++            raise ValueError(f"{identity} incorporated companion hash mismatch")
+@@
+-    if sha256(contract_path) != _marker(text, "D012-PROOF-CONTRACT-SHA256"):
+-        raise ValueError("D012 contract marker mismatch")
++    if sha256(contract_path) != _marker(text, f"{identity}-PROOF-CONTRACT-SHA256"):
++        raise ValueError(f"{identity} contract marker mismatch")
+@@
+-        raise ValueError("D012 cross-claim authority association mismatch")
++        raise ValueError(f"{identity} cross-claim authority association mismatch")
+@@
+-    extension = _d012_extension(root) if authority is not None else None
+-    if extension is not None:
+-        catalogue = {**catalogue, "claims": [*catalogue["claims"], extension[0]]}
++    extensions: dict[str, tuple[dict[str, Any], dict[str, Any], str]] = {}
++    if authority is not None:
++        identities: tuple[Literal["D012", "D013"], ...] = ("D012", "D013")
++        for identity in identities:
++            extension = _scalar_extension(root, identity)
++            if extension is not None:
++                extensions[extension[0]["claim_id"]] = extension
++    if extensions:
++        catalogue = {
++            **catalogue,
++            "claims": [*catalogue["claims"], *(item[0] for item in extensions.values())],
++        }
+@@
+-            is_extension = extension is not None and row["claim_id"] == extension[0]["claim_id"]
++            is_extension = row["claim_id"] in extensions
+@@
+-    if extension is not None and claim_id == extension[0]["claim_id"]:
+-        brief_hash = extension[2]
++    if claim_id in extensions:
++        brief_hash = extensions[claim_id][2]
+*** End Patch
