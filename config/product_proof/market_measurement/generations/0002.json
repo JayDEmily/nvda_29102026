@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_pilot",
+  "generation": 2,
+  "brief_sha256": "3ad4cdc9ffba4cf91ff9a27edf1dd3b1a9824a421514bb4b5a2cc1b9c504f233",
+  "binding_sha256": "7c7fa7df69e75825853bf7b355343d9b6f793beab247b37223bfa71737248b87",
+  "contract_sha256": "6f93441993e57e12ab4111fe8b98d08ad227c174a706aeab2c2eb14d4494501a",
+  "implementation_target_id": "M02",
+  "adequacy_review_ref": "independent-review/g52-foundation-proof/af20809/gen2-units/20261019",
+  "admission_authority_ref": "owner-chat/20261019T202718/G5.1-accept-G5.2-only;accepted-SQLite-version3-section6",
+  "family_files": [
+    {
+      "path": "tests/product/market_measurement/test_boundary_pilot.py",
+      "sha256": "023b97b21b8fb4299cbd1d5f53377783d86c978b4f09103860eec3498317836a"
+    },
+    {
+      "path": "tests/product/market_measurement/test_selection_history.py",
+      "sha256": "99ca0dbe2711073db52739cec5ee0edd920a81824c40fb56d72c57bb8ac8c1e3"
+    },
+    {
+      "path": "tests/product/market_measurement/test_identity_readback.py",
+      "sha256": "1c9c32a67c7145d8ef0cf405bf3f631e988ceb315d63bb4e88f49b3fe923edf3"
+    },
+    {
+      "path": "tests/product/market_measurement/test_public_types.py",
+      "sha256": "a5baccc8112a8547a4a98a6f7970220b59bf1f6a75a08da394948382b1ea48c2"
+    },
+    {
+      "path": "tests/product/market_measurement/test_sqlite_boundary.py",
+      "sha256": "bd7781b22d02d2d1110431d6324628254a8695d525ee47ecf60a969c98a2ebf7"
+    }
+  ],
+  "support_files": [
+    {
+      "path": "tests/product/market_measurement/typing/valid_seam.py",
+      "sha256": "cf7bc548a2ea3483ff2f2db98965dafdb7ecc3154fbd5a0b4ae089f2825451e0"
+    },
+    {
+      "path": "tests/product/market_measurement/typing/invalid_seam.py",
+      "sha256": "b79860407ad084b073627ec8a3ac33a2ca0de4bd4e804e3e9176f3a81a01264b"
+    },
+    {
+      "path": "tests/product/market_measurement/_support.py",
+      "sha256": "7346630a41da3decbe7218df4534b8b83d19c9ec005484c2509faed89ed0b2ea"
+    }
+  ],
+  "previous_generation": {
+    "path": "config/product_proof/market_measurement/generations/0001.json",
+    "sha256": "4c7dcf87c445bd1797c75a73950c4111ac35b43ac99e43ff7897075f65b72f96"
+  }
+}
