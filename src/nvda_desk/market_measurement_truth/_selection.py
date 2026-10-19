@@ -3,13 +3,40 @@
 from __future__ import annotations
 
 import re
+import struct
+from collections.abc import Mapping
+from dataclasses import fields, is_dataclass
 from datetime import datetime, timedelta
 from decimal import Decimal
+from typing import Any
 
 from nvda_desk.raw_signal_occurrence_truth import api as raw_api
 
 from . import api as f
-from ._evaluation import canonical
+
+
+def _same_content(left: Any, right: Any) -> bool:
+    """Compare transient public carriers before narrowing the calculation domain."""
+    if isinstance(left, Mapping) and isinstance(right, Mapping):
+        return left.keys() == right.keys() and all(
+            _same_content(left[key], right[key]) for key in left
+        )
+    if type(left) is not type(right):
+        return False
+    if type(left) is Decimal:
+        return left.as_tuple() == right.as_tuple()
+    if type(left) is float:
+        return struct.pack(">d", left) == struct.pack(">d", right)
+    if type(left) in (tuple, list):
+        return len(left) == len(right) and all(
+            _same_content(a, b) for a, b in zip(left, right, strict=True)
+        )
+    if is_dataclass(left) and not isinstance(left, type):
+        return all(
+            _same_content(getattr(left, field.name), getattr(right, field.name))
+            for field in fields(left)
+        )
+    return bool(left == right)
 
 
 def eligible(
@@ -71,7 +98,7 @@ def select(
 ) -> tuple[raw_api.ProjectedRawValueV1, datetime] | None:
     cursor: str | None = None
     cursors: set[str] = set()
-    seen: dict[str, bytes] = {}
+    seen: dict[str, raw_api.ProjectedRawValueV1] = {}
     candidates: list[tuple[raw_api.ProjectedRawValueV1, datetime]] = []
     for _ in range(policy.history_page_limit):
         try:
@@ -93,19 +120,19 @@ def select(
         ):
             return None
         for item in page.items:
-            if type(item) is not raw_api.ProjectedRawValueV1:
+            if type(item) is not raw_api.ProjectedRawValueV1 or type(
+                item.observation_occurrence_id
+            ) is not type(raw_api.observation_occurrence_id("id")):
                 return None
-            when = eligible(item, mapping, policy, request)
-            if when is None:
-                continue
-            content = canonical(item)
             identity = item.observation_occurrence_id.value
             if identity in seen:
-                if seen[identity] != content:
+                if not _same_content(seen[identity], item):
                     return None
                 continue
-            seen[identity] = content
-            candidates.append((item, when))
+            seen[identity] = item
+            when = eligible(item, mapping, policy, request)
+            if when is not None:
+                candidates.append((item, when))
         cursor = page.next_cursor
         if cursor is None:
             break
