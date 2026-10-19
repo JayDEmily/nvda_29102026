@@ -1,5 +1,9 @@
 # Gate 5 execution and recovered checkpoint
 
+### D013 actual admitted missing-feature RED — 20 October 2026, 00:02 Melbourne
+
+Actualpinnedstrictaggregate atclean7f97b91 collected179/all179failed sameexplicitmissingcreate_ratio_ownerassertionafteractualoldproducers,32.65s/strict1/process1. All4nativeclaimsREADY/activeM02; originalgenerationsunchanged/newgen1fb4095de4d5fe9da885f9e8e6574cfe495de1fdebbb8b37f3fcd31710f5bdf02. No collection/import/admissionfailure or governancemutation masqueradesasRED. Fullfirstlog6337lines331081bytes preservedexactly G6_1_D013_ADMITTED_RED_20261020.log SHA27cb88b9d646fde51aea4a175f4177a99bdccea5453e8a77709108e9bf32cb9b; cmpwithoriginalpasses, allE-linescount179sameguard. Preservebeforeanynewruntimecode; §7.2.2nowprovedorderedprerequisite, §7.2.3next. No D013GREEN/G6.1closure.
+
 ### D013 exactgeneration1 admitted after revised proof PASS — 20 October 2026, 00:00 Melbourne
 
 IndependentadequacyPASS independent-review/g61-d013-proof-v2/3876ad0/20261019, reportSHAab463c1a7170ca937a0e4d2ba42c3e0111d35dd996b2e1fd18d80769acfb9c63 and staticresults preservedunchanged/read. Fourphysicalhashescheckedagainstactualbeforeadmission; F001scopeclassclosed atsourcelevel. Concrete delegatedgeneration1admissionunderstanding22:28authority, SHAfb4095de4d5fe9da885f9e8e6574cfe495de1fdebbb8b37f3fcd31710f5bdf02; exactbrief/binding/contract/review/activeM02refs inimmutablefile. See G6_1_D013_PROOF_ADMISSION_20261020.md. No actualdomainexecution/staticnewAPItyping/productionyet. NextcleanstrictaggregateactualintendedmissingfeatureREDbeforeboundedcode, notinfrastructurefailure. Oldgenerationsretained;G6.1open.
