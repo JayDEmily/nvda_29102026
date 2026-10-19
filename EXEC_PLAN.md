@@ -1,5 +1,9 @@
 # NVDA V2 — ACTIVE successor ExecPlan: Gate 5 execution
 
+## D014 generation2 independently reviewed and concretely admitted — 20 October 2026, 10:46 Melbourne
+
+Actual fresh independent-review/g61-d014-proof-gen2/96086e4/20261020 PASS, reportSHA377f05e2af297c922e94569cfa6b8a0fe9ac4f01df56551038c4f83d8a2f7b5b; all4 returned files preserved/read. Main actual ADMIT_D014_PROOF_GENERATION_2_ONLY in G6_1_D014_PROOF_GEN2_ADMISSION_20261020.md under standing22:28, exactfamily7e26/supportunchanged/gen2SHA903dc5a43b82cd91e1ab04e758549477dc386835ea7203e8d94e9d5d406fc3f8 linking immutablegen1f531. Firstfailure and production0d360 unchanged. Important/ISOLATED cursoradapterprecondition closed at authored-source adequacy only, not runtime. Save checkpoint then nativeReady/four-case replay/complete173 before28P05/1P06/full202; stop first failure. G6.1open/D014partial/other122all83unenabled.
+
 ## D014 bounded pagination proof repair awaiting generation2 review — 20 October 2026, 10:42 Melbourne
 
 After preservedfirstfailure89dc128, only physicaltest_raw_ratio changed toSHA7e26d16d59ac42ac456e631e2acb8a5bee204e937550d5667f6bc580ba99f836. Allfour syntheticcursorfault modes now emit typed pages from a real public projection seed independently of nativeoffsetexhaustion, before nativepageddelegation; ordinaryactualM00history/duplicate/selection paths andallNone/immediateempty/nonemptyhistory criteria retained. Removed formerdead generatorbranch, no catch/skip/sourcefix. Actualsyntax/scopedRuffPASS only, revisedtestnotexecuted. EveryproductionPythonbyte remains exact0d360 andgen1record/pointer/support/specimensunchanged. Currentpointer deliberatelystilloldgen1; editedphysicalbytesnotadmitted, so no producttests/oldaggregate workaround until fresh concrete independentadequacy andimmutablegen2linkingpreservedgen1. Required review next; P05/P06/fullstrict stillunreached. G6.1open/D014partial/123awaitacceptance(other122all83unenabled).
