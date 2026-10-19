@@ -1,0 +1,4 @@
+PASS lawful one-sided new-identity refusal + compatible full new pair + retained old reads
+PASS lawful one-sided new-representation refusal + compatible full new pair + retained old reads
+PASS original version3 D011 Decimal fresh readonly; old factory D012/D013 refusal
+PASS independent fully rehashed outer200/999 + forged old999 rejected by readonly recovery
