@@ -373,8 +373,20 @@ def commands(p: api.CaptureScopePolicyV1, raw: api.RawObservationOccurrenceV1,
         assessment_occurrence_ids=(api.assessment_occurrence_id("a"),)),
         Sequence[api.CaptureReceiptPresenceAssessmentV1])
 """
+    configuration = tmp_path / "mypy.ini"
+    configuration.write_text("[mypy]\npython_version = 3.12\nfollow_untyped_imports = True\n")
+    checker = [
+        sys.executable,
+        "-m",
+        "mypy",
+        "--config-file",
+        str(configuration),
+        "--strict",
+        "--disallow-any-expr",
+        "-c",
+    ]
     checked = subprocess.run(
-        [sys.executable, "-m", "mypy", "--strict", "--disallow-any-expr", "-c", specimen],
+        [*checker, specimen],
         capture_output=True,
         text=True,
         timeout=30,
@@ -389,7 +401,7 @@ o.reads.get_raw_observation_occurrence(api.capture_occurrence_id("wrong-layer"))
 """
     )
     refused = subprocess.run(
-        [sys.executable, "-m", "mypy", "--strict", "--disallow-any-expr", "-c", negative],
+        [*checker, negative],
         capture_output=True,
         text=True,
         timeout=30,
