@@ -1,5 +1,9 @@
 # Gate 5 execution and recovered checkpoint
 
+### D013 engineering candidate ready for independent implementation review — 20 October 2026, 00:16 Melbourne
+
+Actual8bed3b9/treed20529035166cbbb5255eb5cd07b3b4a182de28e: strict179/80/113/30 allPASS0; architecture163/11families/zeroseamviolations; mypy36/scopedRuffPASS; standardfullRuffexact2inheritedM01E501notGREEN. InitialD012344byteincompleteoutputwrapper0 hasnoaggregateproof, retained/excludedcauseUNKNOWN; freshsamecandidate80strict0complete. All9logs preserved; exactreport G6_1_D013_CANDIDATE_20261020.md. Oldsource/catalogue/binding/generations unchanged/newgen1/testdigestsunchanged. Requiredfreshindependentdirectcandidate review/concretedelegateddispositionnext, notacceptanceorG6.1closure.
+
 ### D013 repaired strict179GREEN and truthful bounded metadata — 20 October 2026, 00:12 Melbourne
 
 Actualcleanbc61b44newstrict179PASS98.59s/strict0/process0 onunchangedadmittedgen1fb4095de4d5fe9da885f9e8e6574cfe495de1fdebbb8b37f3fcd31710f5bdf02. Fullstrictlogpreserved. Repairedsource/controlmypy36/scopedRuffPASS. AfteractualengineeringGREENonly, M02registrymetadataupdatedtodescribeseparateadditiveD013proof/result/facets/store/remaining123, noedge/lifecycle/owner/A00/M00/M01/pinscope. Stillnotcandidateacceptance/fullG6.1. Nextcleanexactcandidateall4strictaggregates/typing/lint/promotion/preservationthenrequiredindependentdirectreview/concretedelegateddisposition.
