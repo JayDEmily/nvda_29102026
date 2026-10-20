@@ -1,29 +1,24 @@
-# Remaining preparation gaps and exact receivers (P3.2)
+# NVDA V2 — full-coverage M01→M02 preparation: precise remaining holds
 
-**Pinned source scope:** `19c14ee` full archive + `27abad7` task branch. The concurrent worker's live branch, new D014 state and any subsequent M02 family acceptance are **UNKNOWN**. This document does not request retroactive approval, provider integration or execution tests.
+**Scope:** All 126 foundation IDs have an individually attributable documentary reuse/fixture investigation in the committed preparation branch. **None of this certifies the native provider source or a future M02 result.** All 83 downstream IDs remain outside this tranche. The original eight sample packets retain their historical status; 118 later assessed identities retain precise holds.
 
-## Audit coverage
+## Material unresolved claims and receivers
 
-- Exact foundation census: **126 unique Annex-B D IDs**; downstream: **83 unique Annex-C IDs / 26 proposed peers**; disjoint union **209**. This is membership reconciliation only.
-- **8 IDs** have documentary family packets with M01 source/test pointers, explicit math witnesses and fixture/source holds: D035/D036/D037, D042/D043/D047, D094/D095. These eight have **no M02 implementation/proof acceptance in inspected snapshot**.
-- **118 IDs** retain `P0_2_CENSUS_ONLY`, **including D011/D012/D013 bounded accepted and D014 partial at that snapshot**. Their membership and snapshot readiness are known, but **this preparation tranche did not re-audit their individual M01 logic/fixture semantics**. Do not equate this documentary status with lack of existing M02 implementation or with no tests.
-- `M01_STATIC_LITERAL_LOCATORS.csv` is an exhaustive 126-ID *lexical navigation index* to current M01 source/test lines. Zero-hit IDs: D102, D111, D112, D113. A literal match proves neither a valid implementation nor a usable test, and is not substituted for missing semantic audit.
+| IDs / family | Missing evidence or accepted convention | Receiver / work boundary |
+| --- | --- | --- |
+| D035–D037; D042/D043/D047; D094/D095; time/calendar F01 | Native IBKR historical bar and option-IV timestamp/contract identity, FRED release/vintage/unit alignment, regular-session/holiday/calendar version and M00 mapping; synthetic values alone are not native-valid. | Native provider/source researcher → M00 projection owner → M02 typed calculation owner. |
+| D116, D118, D119, D123, D124 (F29) | Contract-qualified trade volume and call/put OI membership; OI official period, revisions, right, account of missing or contradictory native fields; source-native 2-period reporting required for D123 only. Controlled D123 official keys do **not** prove an IBKR reporting-period native mapping. | IBKR/OI source-contract custodian → M00 projection owner. |
+| D117 (F30) | Versioned actual regular-session calendar/IANA timezone for selected contract; R041 cumulative source and real-time state, stream-generation and receipt/ingestion ordering for exactly 20 prior sessions plus current. The accepted planning law exists; operational feasibility is unproved. | IBKR cumulative-volume/calendar/real-time-state researcher → M00 + M02 source-profile owner. |
+| D120–D122 (F31) | Native option trade/size/quote timing and sign, exact contract/right and numeric multiplier field mapping R015/R016, independently versioned D091 delta/D085 expiry bucket/grouping and public occurrence co-identity. | IBKR options/source researcher → M00 → M02 owner. |
+| D131 (F32) | Complete reconstructed option depth across declared level/price band, native operation/position semantics, source/subject and D087 midpoint alignment. | IBKR depth source custodian → M00 replay/selection owner → M02. |
+| D134–D138, D143–D144 (F33) | SMART and direct native position/update/delete/reindex/reset state; venue/market-maker provenance; source completeness; exact D138 corrected 5-field graph and D144 level/side/skew matching policy. A matched numeric position alone is insufficient. | IBKR reqMarketDepth/reqSmartComponents API research → M00 projection/replay owner → M02. |
+| D139–D142, D145 (F34) | Windowed/native insert/remove pre-size, sequence/recovery semantics, replenishment one-to-one matching, shock observation window, warm-up and error317 reset. D145 must use R185 position and R187 operation despite legacy four-field code. | IBKR L2 source custodian → M00 book-state owner → M02. |
+| D151 (F35) | Exact immutable monitored basket (and weight mode if authorised), real-time last/open/VWAP/prior official close identity and per-member source/time alignment. Missing component members must change only that component's denominator. | Basket source/profile owner → M00/M02. |
+| D102 and D111–D113 (previous F27/F28) | Admitted model/revaluation/fitting/grid, covariance-free exact output expectations and density-tail profile; no model outputs can be fabricated from synthetic scalar points. | Model/surface authority custodian → M02. |
+| All 126 | Typed results, complete source/parameter/provenance/retry identities, SQLite first-write/idempotency/read-only fresh-process recovery, immutable proof admission, negative typing and strict aggregate control. Existing M01 tests are not admitted M02 proof. | Active Gate 6 worker under current root ExecPlan. |
 
-## Required source/provider answers — do not commission broad rediscovery
+## Stop/transfer rule
 
-| Affected IDs | Receiver | Precise unresolved question | Blocking scope |
-| --- | --- | --- | --- |
-| D042/D043/D047 | FRED/native publisher research → M00 projection owner → M02 calculation owner | For R246/R247/R249/R256/R257 give actual series-specific native `value` field, Percent/decimal unit codec, missing sentinel, release/effective/receipt time, revision/vintage precedence and series alignment/selection version. | Native source-certified publication, **not controlled mathematical difference**. |
-| D035–D037 | IBKR historical-bar/official-calendar researcher → M00/source/calendar custodian | For R151 give admitted native bar close field, interval/session identity, receipt/effective time, exchange timezone/holiday/early-close and revision handling; exact 5/10/20 trading-session grid and trading-year fractions. | Native calendar/historical-source validity; controlled synthetic formulas remain usable. |
-| D094/D095 | IBKR options/IV API research → M00 projection owner | Map R111, R183 to actual native option IV fields, right/strike/expiry/contract identity, callback/reporting/receipt timestamps, unit scale, missing state and any historical source availability. Resolve D095's 1-*trading-day* versus code's 1-calendar-day anchor and role of R183. | Native option-history/source-time admission, not numerical subtraction. |
-| All eight | M02 contract/proof owner | Confirm a typed M02 result/parameter/history contract, exact Decimal precision/rounding or exact-ratio output where necessary, SQLite independent first-write/read isolation, immutable history, proof admission and rejection conditions. | New M02 family implementation/acceptance, separately governed. |
+An `AUDITED_WITH_PRECISE_HOLDS` row means **the audit identified its exact mathematical/fixture contract and open proposition**, not that every open provider/model question has been resolved. Do not fill missing source/market/calendar conventions by a guessed normal operating range. Do not infer the collector's IBKR/FRED/Cboe capture capability is connected to accepted M00 input merely from a repository README. For a selected future implementation family, obtain the necessary admitted source/contract evidence and only then produce M02 tests, proofs and runtime changes under the active plan.
 
-## Unresolved elsewhere: no speculative auto-closure
-
-The other **118** have not had equation-specific expected witness construction or test/history cardinality review in this tranche. Future sequence must be dependency-closed and ranked by accepted need, not merely numerical order. G6.2 option interpolation/model/surface/density and G6.3 book state/sequence/reset families need dedicated source/mathematical contracts; do **not** reduce them to scalar or rate-family proofs. Accepted global holds remain `SRC-CALENDAR`, `SRC-MACRO`, `SRC-OI`, `SRC-VOLUME`, `SRC-BOOK`, `RAW-PROJECTION`, `CALC-PROFILE`, `MODEL-PROFILE`, applied per impacted signal.
-
-## Integration/authority
-
-- Root `EXEC_PLAN.md` is the single active programme plan; this task-local proposed plan is not a competing source of authority. The handoff is **proposal material**, not approved source-contract changes.
-- Do not merge preparation directly into the active worker's branch without reconciling its later HEAD and dispositions. No GA acceptance, native provider acquisition, main merge, tests, admitted proof amendment, M01 retirement or SQLite schema changes were part of this work.
-- Separate independent proof reviewer assessment and owner/delegated adoption remain external to this documentary extraction; no new acceptance is manufactured by a commit.
+Also require the receiving worker's independent **Gate 6 delivery-methodology proposal** as described in `HANDOFF.md`: reduce repeated engineering while retaining individual semantic proof. The proposal is not itself a root plan amendment.
