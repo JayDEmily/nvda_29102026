@@ -1,5 +1,9 @@
 # Gate 5 execution and recovered checkpoint
 
+### Recovered D014 engineering GREEN — 21 October 2026
+
+Actual clean 761ff9ca9eb21354e6ca333d50df18b12800c0aa: native readiness and 38-file mypy pass; P01–P04 173/67.63s, P05 28, P06 1, full strict 202/66.95s all pass with strict/process 0 and unchanged clean candidate. Preserved exact engineering logs/metadata/executed harness in d014_completion_20261021/engineering/. Existing production and gen2 proof retained without repair; original historical failure/gen1 remain preserved. Only permitted truthful M02 metadata added after GREEN. Final exact-candidate validation and fresh independent implementation review pending. Full lint has three inherited findings (two M01 E501 and unchanged old typing specimen I001), explicitly not GREEN; preserve admitted bytes rather than cosmetic proof repair. Pilot remains paused.
+
 ### D014 completion resumed — 21 October 2026, 20:33 Melbourne
 
 Owner authorises completing D014 from recovered 3dbcaa40a34b7920d9a1883b85cd9ba166d6a59f; prior pause lifted for this unit only, pilot remains paused. Reuse admitted proof/production and established historical RED; obtain outstanding supported-runtime replay and §7.3.4 validation/review/disposition. Initial environment command used a root-relative lock filename that does not exist; dependency installation stopped before tests. Locate the existing pinned lock and install its unchanged hashed offline wheels; no dependency change or behavioural failure inferred.

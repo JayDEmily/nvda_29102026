@@ -1,0 +1,22 @@
+{
+  "candidate": "761ff9ca9eb21354e6ca333d50df18b12800c0aa",
+  "tree": "e8be63643268f2fe94b65e6cf8bb487112f141c1",
+  "argv": [
+    "/workspace/scratch/56b9974b28a0/d014-runtime/bin/python",
+    "-m",
+    "mypy",
+    "src",
+    "tools/product_proof_claims.py",
+    "tools/product_proof_outcomes.py",
+    "tools/validate_product_proof.py",
+    "tools/run_product_proof_gate.py"
+  ],
+  "cwd": "/workspace/scratch/56b9974b28a0/implementation-recovery",
+  "completed": true,
+  "exit": 0,
+  "expected_marker": "Success: no issues found",
+  "marker_present": true,
+  "log_sha256": "3b2e0aa58d181263c403615d42f62c3038c7cdd68eca49d7976f20dff63a5af5",
+  "unchanged_head": true,
+  "clean_after": true
+}

@@ -102,22 +102,24 @@ modules:
   - id: M02
     name: neutral_market_measurement_truth
     status: active
-    description: Bounded neutral measurement owner admitted for isolated controlled D011 and separately authorised D012/D013 proof; application composition and full126 acceptance remain outside this admission.
+    description: Bounded neutral measurement owner admitted for isolated controlled D011 and separately authorised D012/D013/D014 proof; application composition and full126 acceptance remain outside this admission.
     semantic_responsibility: Own strategy-independent neutral market measurement meaning and immutable definition/configuration/result truth under exact accepted construction authority; original version3 enables D011 only, the D012 extension enables controlled D011/D012, and the separately accepted D013 facet enables only exact relative spread from their compatible public facts.
     inputs:
       - Existing typed M00 raw-value/history projection and exact immutable raw projection mappings through the M00 public seam only.
       - Exact controlled D011 definition, parameter, selection and unit versions supplied by accepted version3, plus separately accepted D012 definition and construction authority using the same controlled inputs.
       - Explicit compatible D011/D012 occurrence IDs and complete typed public predecessor/configuration snapshots for the separately admitted D013 exact-ratio facet; no recursive producer or direct predecessor SQL access.
+      - Ordered R033/R036 public raw projections and exact controlled size configurations for the separately admitted D014 direct-raw exact-ratio facet.
     outputs:
       - Controlled D011 midpoint and authority-enabled D012 signed spread scalar-Decimal occurrences with immutable complete lineage and exact typed readback through the admitted public seam.
       - Separately typed controlled D013 exact rational relative-spread occurrences, complete immutable nested predecessor evidence and isolated durable readback; original Decimal facets remain unchanged.
+      - Separately typed controlled D014 direct-raw exact-ratio occurrences with complete raw/configuration lineage and isolated durable readback.
     permitted_dependencies:
       - M00
     package: nvda_desk.market_measurement_truth
     public_seam: nvda_desk.market_measurement_truth.api
     exclusions:
-      - Application composition or consumer admission beyond isolated controlled D011/D012/D013 proof; no A00 edge to this owner.
-      - Other123 foundation identities and all83 downstream outputs or peer/private strategy chains; original version3 construction remains D011-only, D012 authority remains D011/D012-only and the exact-ratio facet permits only D013.
+      - Application composition or consumer admission beyond isolated controlled D011/D012/D013/D014 proof; no A00 edge to this owner.
+      - Other122 foundation identities and all83 downstream outputs or peer/private strategy chains; original version3 construction remains D011-only, D012 authority remains D011/D012-only, predecessor exact-ratio facet permits only D013 and direct-raw exact-ratio facet permits only D014.
       - Native IBKR mappings, acquisition, live providers, accounts, orders and external effects.
       - M01 private imports, direct cross-owner SQL, migration, retirement, populated-state or full126 acceptance.
       - Hostile-code/database-role isolation, replay/SLA/performance/retention/RTO/RPO guarantees.
@@ -136,9 +138,11 @@ modules:
     state_reader_boundaries:
       - Typed MeasurementReadsV1 exact occurrence/history/definition/configuration facets; read-only storage exposes no writer/materialisation capability.
       - Additive MeasurementRatioReadsV1 exact-ratio occurrence/history/definition/parameter facet; complete nested evidence is recoverable without a raw reader or live predecessor producer.
+      - Additive MeasurementRawRatioReadsV1 exact-ratio occurrence/history/definition/configuration facet; complete raw lineage is recoverable without a raw reader or re-registration.
     persistence_mechanisms:
       - Explicit SQLiteStorageV1 and SQLiteReadStorageV1 in a separate owner-local file; MemoryStorageV1 is component proof only and never fallback.
       - Distinct D013 exact-ratio SQLite profile and file with unchanged original Decimal profile; a profile cannot open or rewrite the other's state.
+      - Distinct D014 direct-raw exact-ratio SQLite profile application_id 0x4E560004 with three immutable STRICT tables; original profiles and files remain separate.
     prohibited_state_writers:
       - A00, M00, M01, peers, readers and storage mechanisms as semantic owners.
     replay_obligations:

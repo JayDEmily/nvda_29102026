@@ -1,5 +1,11 @@
 # NVDA V2 — ACTIVE successor ExecPlan: Gate 5 execution
 
+## D014 recovered engineering proof GREEN; exact candidate validation next — 21 October 2026
+
+Clean candidate 761ff9ca9eb21354e6ca333d50df18b12800c0aa/tree e8be63643268f2fe94b65e6cf8bb487112f141c1: actual pinned CPython3.12.14/SQLite3.53.1 native readiness, full source/control mypy (38 files), P01–P04 173 passed (67.63s), P05 28 passed, P06 1 passed, full D014 strict 202 passed (66.95s), strict/process exit 0. All checks retained clean unchanged HEAD. Exact binary logs, metadata and executed harness in d014_completion_20261021/engineering/. Existing production and admitted generation 2 are unchanged from 19c14ee; no rewritten code/proof or missing-continuation result supplies this evidence. Permitted M02 metadata now reflects this separately admitted D014 scope, without lifecycle/edge change. §7.3.4 exact-candidate regressions/promotion and fresh independent implementation review remain outstanding; D014 acceptance is not yet established.
+
+Full lint currently reports THREE inherited findings: the two recorded M01 E501 sites plus I001 in unchanged admitted tests/product/market_measurement/typing/valid_seam.py. Prior two-only disclosure does not describe this current observation; full_ruff.log preserves it. No admitted proof is cosmetically rewritten/resealed. Changed-source scoped lint remains mandatory. No native/full126/pilot acceptance follows.
+
 ## D014 completion resumed — 21 October 2026, 20:33 Melbourne
 
 Current owner instruction “Okay, complete D zero fourteen” lifts the recovery Section-5 pause for D014 only. Execute the outstanding §7.3 sequence from recovered 3dbcaa40a34b7920d9a1883b85cd9ba166d6a59f, retaining admitted generation 2 and existing production. No missing-continuation result is credited. The D042/D043/D047 pilot remains paused at this close-out boundary. Existing standing delegated acceptance authority remains applicable after actual required validation and independent review.

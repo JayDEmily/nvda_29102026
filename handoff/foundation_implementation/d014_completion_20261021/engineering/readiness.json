@@ -1,0 +1,18 @@
+{
+  "candidate": "761ff9ca9eb21354e6ca333d50df18b12800c0aa",
+  "tree": "e8be63643268f2fe94b65e6cf8bb487112f141c1",
+  "argv": [
+    "/workspace/scratch/56b9974b28a0/d014-runtime/bin/python",
+    "tools/validate_product_proof.py",
+    "--claim",
+    "neutral_market_measurement_truth_d014"
+  ],
+  "cwd": "/workspace/scratch/56b9974b28a0/implementation-recovery",
+  "completed": true,
+  "exit": 0,
+  "expected_marker": "state=READY_FOR_PROOF",
+  "marker_present": true,
+  "log_sha256": "dd4c08f60d929e455f3a4a138da98aaf6dce058d00b31726c3b5900f1c527ad5",
+  "unchanged_head": true,
+  "clean_after": true
+}
