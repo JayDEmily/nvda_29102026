@@ -1,0 +1,14 @@
+{
+  "command": [
+    "/workspace/scratch/56b9974b28a0/d014-runtime/bin/python",
+    "-m",
+    "mypy",
+    "src",
+    "tools/product_proof_claims.py",
+    "tools/product_proof_outcomes.py",
+    "tools/run_product_proof_gate.py",
+    "tests/architecture/test_proof_control.py"
+  ],
+  "returncode": 0,
+  "stdout_sha256": "3b2e0aa58d181263c403615d42f62c3038c7cdd68eca49d7976f20dff63a5af5"
+}

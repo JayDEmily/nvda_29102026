@@ -1,0 +1,7 @@
+{
+  "facts": 8,
+  "equal_complete_typed_bundle": true,
+  "readonly_bytes_unchanged": true,
+  "writer_exit_before_reader": true,
+  "sha256": "7009cf117e3cd4be2ce7efde85e57be2403626149e7ab2aeaf164f038549648c"
+}
