@@ -1,0 +1,260 @@
+{
+  "schema": "nvda_g4_controlled_negative_refinements_v1",
+  "count": 23,
+  "not_native_or_executable_m02_proof": true,
+  "records": [
+    {
+      "D_id": "D001",
+      "scenario_id": "D001-G4-NEG-SYNTH-01",
+      "positive_case_ref": "D001-TYPED-MATH-01",
+      "mutated_fixture_component": "Replace R002 true_instant with a date_only value 2026-10-10 and remove all R002 instants.",
+      "expected_controlled_semantics": "No UTC source-event instant, hence no valid D001 occurrence; do not fabricate T00:00Z.",
+      "applicability": "CONTROLLED_SYNTHETIC_SPEC_ONLY; M00/M02 physical negative proof must follow accepted profile",
+      "input_preconditions": "one eligible R002 source event; R003 supplies timezone when source is naive; no invented midnight",
+      "primary_packet": "See FAMILY_F01_TEMPORAL_E11_SOURCE_EXTRACTION.md:9,10,11,20,35,37,49,50,51,63,80; FAMILY_F01_TEMPORAL_E11_SOURCE_EXTRACTION.md:E1.2:D001",
+      "model_or_source_authority_not_supplied": true
+    },
+    {
+      "D_id": "D002",
+      "scenario_id": "D002-G4-NEG-SYNTH-01",
+      "positive_case_ref": "D002-TYPED-MATH-01",
+      "mutated_fixture_component": "Keep the true event and receipt but change cutoff from 14:00:00Z to 13:59:40Z.",
+      "expected_controlled_semantics": "Both event 13:59:50Z and receipt 13:59:45Z postdate cutoff: refuse/future-age; do not output a negative age.",
+      "applicability": "CONTROLLED_SYNTHETIC_SPEC_ONLY; M00/M02 physical negative proof must follow accepted profile",
+      "input_preconditions": "one eligible R002 and R001 observation, D001 required only for true_instant; cutoff and receipt timestamps must be known and unmodified",
+      "primary_packet": "See FAMILY_F01_TEMPORAL_E11_SOURCE_EXTRACTION.md:10,36,50,64,80; FAMILY_F01_TEMPORAL_E11_SOURCE_EXTRACTION.md:E1.2:D002",
+      "model_or_source_authority_not_supplied": true
+    },
+    {
+      "D_id": "D003",
+      "scenario_id": "D003-G4-NEG-SYNTH-01",
+      "positive_case_ref": "D003-TYPED-MATH-01",
+      "mutated_fixture_component": "Retain D001 instant but replace configured IANA zone Australia/Melbourne with invalid zone no-such/zone.",
+      "expected_controlled_semantics": "No lawful zoned datetime; do not substitute UTC or a fixed offset.",
+      "applicability": "CONTROLLED_SYNTHETIC_SPEC_ONLY; M00/M02 physical negative proof must follow accepted profile",
+      "input_preconditions": "D001 predecessor plus R004/configured zone; timezone and DST policy versioned, no look-ahead",
+      "primary_packet": "See FAMILY_F01_TEMPORAL_E11_SOURCE_EXTRACTION.md:11,12,13,15,20,37,51,52,53,55,65,80; FAMILY_F01_TEMPORAL_E11_SOURCE_EXTRACTION.md:E1.2:D003",
+      "model_or_source_authority_not_supplied": true
+    },
+    {
+      "D_id": "D004",
+      "scenario_id": "D004-G4-NEG-SYNTH-01",
+      "positive_case_ref": "D004-TYPED-MATH-01",
+      "mutated_fixture_component": "Remove synthetic overnight-calendar/trading-date rule while retaining local timestamp 00:59:50.",
+      "expected_controlled_semantics": "Trading date cannot be inferred from civil date; do not fabricate D004.",
+      "applicability": "CONTROLLED_SYNTHETIC_SPEC_ONLY; M00/M02 physical negative proof must follow accepted profile",
+      "input_preconditions": "D003 and R023/R024 plus a complete versioned calendar/session rule, not merely clock offset; overnight boundary and holidays must be consistent",
+      "primary_packet": "See FAMILY_F01_TEMPORAL_E11_SOURCE_EXTRACTION.md:12,22,38,52,66,80; FAMILY_F01_TEMPORAL_E11_SOURCE_EXTRACTION.md:E1.2:D004",
+      "model_or_source_authority_not_supplied": true
+    },
+    {
+      "D_id": "D005",
+      "scenario_id": "D005-G4-NEG-SYNTH-01",
+      "positive_case_ref": "D005-TYPED-MATH-01",
+      "mutated_fixture_component": "Replace nonoverlapping phases with overnight [00:00,06:00) and day [05:00,16:00), observing at 05:30.",
+      "expected_controlled_semantics": "Two phases overlap; controlled configuration is invalid, refuse instead of arbitrary priority.",
+      "applicability": "CONTROLLED_SYNTHETIC_SPEC_ONLY; M00/M02 physical negative proof must follow accepted profile",
+      "input_preconditions": "D003 and R023/R024 plus an ordered non-overlapping versioned phase schedule; half-open endpoint selection must be explicit",
+      "primary_packet": "See FAMILY_F01_TEMPORAL_E11_SOURCE_EXTRACTION.md:13,22,39,53,67,80; FAMILY_F01_TEMPORAL_E11_SOURCE_EXTRACTION.md:E1.2:D005",
+      "model_or_source_authority_not_supplied": true
+    },
+    {
+      "D_id": "D009",
+      "scenario_id": "D009-G4-NEG-SYNTH-01",
+      "positive_case_ref": "D009-TYPED-MATH-01",
+      "mutated_fixture_component": "Provide v1/v2 complete R280,R281,R282 co-reference triples but omit R282 from newest v3 while giving v3 R280 and R281.",
+      "expected_controlled_semantics": "Do not treat incomplete v3 as fully admitted/latest, nor silently misattribute its fields to v2; refusal/explicit incomplete result subject to accepted D009 contract.",
+      "applicability": "CONTROLLED_SYNTHETIC_SPEC_ONLY; M00/M02 physical negative proof must follow accepted profile",
+      "input_preconditions": "For three statuses require three native occurrence identities each with R280/R281/R282 (nine projected field values), released/received before cutoff; a newest partial triple must cause refusal, not implicit fallback",
+      "primary_packet": "See FAMILY_F01_TEMPORAL_E11_SOURCE_EXTRACTION.md:14,21,40,54,57,68,78,80; FAMILY_F01_TEMPORAL_E11_SOURCE_EXTRACTION.md:E1.2:D009",
+      "model_or_source_authority_not_supplied": true
+    },
+    {
+      "D_id": "D010",
+      "scenario_id": "D010-G4-NEG-SYNTH-01",
+      "positive_case_ref": "D010-TYPED-MATH-01",
+      "mutated_fixture_component": "Keep the same synthetic timestamp and phase but set an explicitly known calendar closed-state for 2026-10-10.",
+      "expected_controlled_semantics": "Expected Boolean false (known closed), not an exception, and not an inferred true from phase membership.",
+      "applicability": "CONTROLLED_SYNTHETIC_SPEC_ONLY; M00/M02 physical negative proof must follow accepted profile",
+      "input_preconditions": "D003 and R005/R023/R024 plus coherent market-open and liquid-phase configuration; use knowable closed state instead of fabricating an open reading",
+      "primary_packet": "See FAMILY_F01_TEMPORAL_E11_SOURCE_EXTRACTION.md:15,22,41,55,69,80; FAMILY_F01_TEMPORAL_E11_SOURCE_EXTRACTION.md:E1.2:D010",
+      "model_or_source_authority_not_supplied": true
+    },
+    {
+      "D_id": "D011",
+      "scenario_id": "D011-G4-NEG-SYNTH-01",
+      "positive_case_ref": "D011-TYPED-MATH-01",
+      "mutated_fixture_component": "Keep R034 bid=100; remove eligible R035 ask=102 at the selected cutoff.",
+      "expected_controlled_semantics": "No valid midpoint is calculable; do not use unrelated later ask or zero fill.",
+      "applicability": "CONTROLLED_SYNTHETIC_SPEC_ONLY; M00/M02 physical negative proof must follow accepted profile",
+      "input_preconditions": "two eligible R034/R035 raw projections; explicit freshness/skew selection, cutoff and first-write/retry",
+      "primary_packet": "FAMILY_F02_QUOTE_RATIOS_E11_E15.md:3,9,11,14,22,24,33,35,36,42,43,53",
+      "model_or_source_authority_not_supplied": true
+    },
+    {
+      "D_id": "D012",
+      "scenario_id": "D012-G4-NEG-SYNTH-01",
+      "positive_case_ref": "D012-TYPED-MATH-01",
+      "mutated_fixture_component": "Keep bid=100 but mutate ask=102 to crossed ask=99 under same identity/time.",
+      "expected_controlled_semantics": "Negative spread is not a valid accepted selected quote; apply admitted crossed-quote/refusal rule; do not claim arbitrary source-bound limit.",
+      "applicability": "CONTROLLED_SYNTHETIC_SPEC_ONLY; M00/M02 physical negative proof must follow accepted profile",
+      "input_preconditions": "two eligible raw projections, controlled 60s freshness/10s skew; negative/crossed and multi-page refusals; first-write/history",
+      "primary_packet": "FAMILY_F02_QUOTE_RATIOS_E11_E15.md:3,10,11,14,23,24,34,35,36,42,43,53",
+      "model_or_source_authority_not_supplied": true
+    },
+    {
+      "D_id": "D013",
+      "scenario_id": "D013-G4-NEG-SYNTH-01",
+      "positive_case_ref": "D013-TYPED-MATH-01",
+      "mutated_fixture_component": "Keep D011 midpoint=101; remove the independently materialised D012 spread predecessor, leaving raw quote values only.",
+      "expected_controlled_semantics": "No lawful D013 result: cannot silently recreate D012 from private raw data.",
+      "applicability": "CONTROLLED_SYNTHETIC_SPEC_ONLY; M00/M02 physical negative proof must follow accepted profile",
+      "input_preconditions": "two independently materialised compatible D011/D012 predecessor identities; fully retained snapshots; no raw source substitution",
+      "primary_packet": "FAMILY_F02_QUOTE_RATIOS_E11_E15.md:3,11,12,14,24,27,35,38,43,51,53,55",
+      "model_or_source_authority_not_supplied": true
+    },
+    {
+      "D_id": "D014",
+      "scenario_id": "D014-G4-NEG-SYNTH-01",
+      "positive_case_ref": "D014-TYPED-MATH-01",
+      "mutated_fixture_component": "Keep bid size=2 and mutate matched ask size from 1 to 0 without changing input identity rules.",
+      "expected_controlled_semantics": "Ratio denominator zero: no valid 1/3 output; refusal and no new accepted occurrence.",
+      "applicability": "CONTROLLED_SYNTHETIC_SPEC_ONLY; M00/M02 physical negative proof must follow accepted profile",
+      "input_preconditions": "two eligible ordered raw size projections, controlled 60s freshness/10s skew; complete pages, immutable mapping/unit versions",
+      "primary_packet": "FAMILY_F02_QUOTE_RATIOS_E11_E15.md:3,12,14,25,27,36,38,44,46,51,53,55",
+      "model_or_source_authority_not_supplied": true
+    },
+    {
+      "D_id": "D015",
+      "scenario_id": "D015-G4-NEG-SYNTH-01",
+      "positive_case_ref": "D015-TYPED-MATH-01",
+      "mutated_fixture_component": "Keep trade price 101 but remove the admitted quote/midpoint at that trade instant; supply only one later midpoint.",
+      "expected_controlled_semantics": "Trade sign cannot use later quote as though observed at trade time; refuse/no derived sign.",
+      "applicability": "CONTROLLED_SYNTHETIC_SPEC_ONLY; M00/M02 physical negative proof must follow accepted profile",
+      "input_preconditions": "latest eligible trade by exact native event identity; compare last different prior trade price only at midpoint; trade-time quote cannot be later than trade; knowledge cutoff independent",
+      "primary_packet": "See FAMILY_F03_TRADE_SIGN_AND_VOLUME_E11_E15.md:1,9,10,12,16,32,34,48,53,54,56,62; handoff/foundation_implementation/reuse_preparation/FAMILY_F03_TRADE_SIGN_AND_VOLUME_E11_E15.md#E1.2:D015",
+      "model_or_source_authority_not_supplied": true
+    },
+    {
+      "D_id": "D016",
+      "scenario_id": "D016-G4-NEG-SYNTH-01",
+      "positive_case_ref": "D016-TYPED-MATH-01",
+      "mutated_fixture_component": "Keep other valid trades but mutate one included trade sign to UNKNOWN rather than ±1.",
+      "expected_controlled_semantics": "Do not silently treat UNKNOWN as zero or infer side; corresponding sign/volume claim is not justified.",
+      "applicability": "CONTROLLED_SYNTHETIC_SPEC_ONLY; M00/M02 physical negative proof must follow accepted profile",
+      "input_preconditions": "distinct positive 1s/5s/60s/300s selections; trade-time event set complete; no duplicates; unknown 0 sign refuses; exact edge/session/cutoff profile unresolved",
+      "primary_packet": "See FAMILY_F03_TRADE_SIGN_AND_VOLUME_E11_E15.md:1,10,12,30,48,53,54,56,62,68,69,70; handoff/foundation_implementation/reuse_preparation/FAMILY_F03_TRADE_SIGN_AND_VOLUME_E11_E15.md#E1.2:D016",
+      "model_or_source_authority_not_supplied": true
+    },
+    {
+      "D_id": "D017",
+      "scenario_id": "D017-G4-NEG-SYNTH-01",
+      "positive_case_ref": "D017-TYPED-MATH-01",
+      "mutated_fixture_component": "Retain trade prices [6,4] and matching IDs but omit size for the second trade.",
+      "expected_controlled_semantics": "No valid 24/5 session VWAP; paired price-size history incomplete.",
+      "applicability": "CONTROLLED_SYNTHETIC_SPEC_ONLY; M00/M02 physical negative proof must follow accepted profile",
+      "input_preconditions": "actual admitted session/anchor lower bound and cutoff; complete occurrence paired R120/R121; exact exchange-calendar/inclusivity/source-time/source-completeness profile held; M01 currently loads all eligible history",
+      "primary_packet": "FAMILY_F04_SESSION_VWAP_E11_E15.md:1,3,9,10,12,24,25,26,27,28,29,35",
+      "model_or_source_authority_not_supplied": true
+    },
+    {
+      "D_id": "D018",
+      "scenario_id": "D018-G4-NEG-SYNTH-01",
+      "positive_case_ref": "D018-TYPED-MATH-01",
+      "mutated_fixture_component": "Retain D017 VWAP 4.8 but change R137 provider VWAP session identity to a different trading session.",
+      "expected_controlled_semantics": "Cannot calculate provider-system VWAP difference for mismatched sessions; refusal/no occurrence.",
+      "applicability": "CONTROLLED_SYNTHETIC_SPEC_ONLY; M00/M02 physical negative proof must follow accepted profile",
+      "input_preconditions": "R137 must match predecessor D017 subject/session/as-of/anchor/temporal and compatible source/definition/version; no future receipts; actual provider time basis held",
+      "primary_packet": "See FAMILY_F04_SESSION_VWAP_E11_E15.md:1,3,10,12,27,28,29,35,39,40,44,56; handoff/foundation_implementation/reuse_preparation/FAMILY_F04_SESSION_VWAP_E11_E15.md#E1.2:D018",
+      "model_or_source_authority_not_supplied": true
+    },
+    {
+      "D_id": "D035",
+      "scenario_id": "D035-G4-NEG-SYNTH-01",
+      "positive_case_ref": "D035-TYPED-MATH-01",
+      "mutated_fixture_component": "Remove one of six ordered close instants so only four of the five required returns remain.",
+      "expected_controlled_semantics": "Five-return volatility witness cannot be produced; no shortened window.",
+      "applicability": "CONTROLLED_SYNTHETIC_SPEC_ONLY; M00/M02 physical negative proof must follow accepted profile",
+      "input_preconditions": "6 ordered UTC close instants; 5 consecutive returns; complete immutable grid",
+      "primary_packet": "See FAMILY_REALIZED_VOL_D035_D037.md:1,15,30,33,45; FAMILY_REALIZED_VOL_D035_D037.md; INDEPENDENT_WITNESS_CALCULATED_DOCUMENTARY_ONLY",
+      "model_or_source_authority_not_supplied": true
+    },
+    {
+      "D_id": "D036",
+      "scenario_id": "D036-G4-NEG-SYNTH-01",
+      "positive_case_ref": "D036-TYPED-MATH-01",
+      "mutated_fixture_component": "Remove one close so ten consecutive complete returns cannot be formed.",
+      "expected_controlled_semantics": "Ten-return volatility witness cannot be produced; no shortened window.",
+      "applicability": "CONTROLLED_SYNTHETIC_SPEC_ONLY; M00/M02 physical negative proof must follow accepted profile",
+      "input_preconditions": "11 ordered UTC close instants; 10 consecutive returns; complete immutable grid",
+      "primary_packet": "See FAMILY_REALIZED_VOL_D035_D037.md:16,31,34; FAMILY_REALIZED_VOL_D035_D037.md; INDEPENDENT_WITNESS_CALCULATED_DOCUMENTARY_ONLY",
+      "model_or_source_authority_not_supplied": true
+    },
+    {
+      "D_id": "D037",
+      "scenario_id": "D037-G4-NEG-SYNTH-01",
+      "positive_case_ref": "D037-TYPED-MATH-01",
+      "mutated_fixture_component": "Remove one close so twenty consecutive complete returns cannot be formed.",
+      "expected_controlled_semantics": "Twenty-return volatility witness cannot be produced; no shortened window.",
+      "applicability": "CONTROLLED_SYNTHETIC_SPEC_ONLY; M00/M02 physical negative proof must follow accepted profile",
+      "input_preconditions": "21 ordered UTC close instants; 20 consecutive returns; complete immutable grid",
+      "primary_packet": "See FAMILY_REALIZED_VOL_D035_D037.md:1,17,32,35; FAMILY_REALIZED_VOL_D035_D037.md; INDEPENDENT_WITNESS_CALCULATED_DOCUMENTARY_ONLY",
+      "model_or_source_authority_not_supplied": true
+    },
+    {
+      "D_id": "D042",
+      "scenario_id": "D042-G4-NEG-SYNTH-01",
+      "positive_case_ref": "D042-TYPED-MATH-01",
+      "mutated_fixture_component": "Remove eligible R247 DGS2 fraction while retaining R249 DGS10 fraction at same cutoff.",
+      "expected_controlled_semantics": "The two-input spread has no valid result; do not infer missing input or use live provider value.",
+      "applicability": "CONTROLLED_SYNTHETIC_SPEC_ONLY; M00/M02 physical negative proof must follow accepted profile",
+      "input_preconditions": "1 eligible R247 + 1 eligible R249; fixed request as_of/cutoff; no lookahead",
+      "primary_packet": "FAMILY_RATE_SPREADS_P12_P22.md:1,7,19,20,21",
+      "model_or_source_authority_not_supplied": true
+    },
+    {
+      "D_id": "D043",
+      "scenario_id": "D043-G4-NEG-SYNTH-01",
+      "positive_case_ref": "D043-TYPED-MATH-01",
+      "mutated_fixture_component": "Remove eligible R246 DGS3MO fraction while retaining R249 DGS10 fraction.",
+      "expected_controlled_semantics": "The two-input spread has no valid result; do not replace R246 with similarly named tenor.",
+      "applicability": "CONTROLLED_SYNTHETIC_SPEC_ONLY; M00/M02 physical negative proof must follow accepted profile",
+      "input_preconditions": "1 eligible R246 + 1 eligible R249; fixed request as_of/cutoff; no lookahead",
+      "primary_packet": "FAMILY_RATE_SPREADS_P12_P22.md:1,7,22,23,24",
+      "model_or_source_authority_not_supplied": true
+    },
+    {
+      "D_id": "D047",
+      "scenario_id": "D047-G4-NEG-SYNTH-01",
+      "positive_case_ref": "D047-TYPED-MATH-01",
+      "mutated_fixture_component": "Remove eligible R256 DFF fraction while retaining R257 SOFR fraction.",
+      "expected_controlled_semantics": "No valid SOFR-minus-DFF basis-point result; no forward-fill without admitted rule.",
+      "applicability": "CONTROLLED_SYNTHETIC_SPEC_ONLY; M00/M02 physical negative proof must follow accepted profile",
+      "input_preconditions": "1 eligible R257 + 1 eligible R256; fixed request as_of/cutoff; no lookahead",
+      "primary_packet": "FAMILY_RATE_SPREADS_P12_P22.md:1,7,25,26,27",
+      "model_or_source_authority_not_supplied": true
+    },
+    {
+      "D_id": "D094",
+      "scenario_id": "D094-G4-NEG-SYNTH-01",
+      "positive_case_ref": "D094-TYPED-MATH-01",
+      "mutated_fixture_component": "Provide an R111 sample at T-2min but remove all sample data at/before required T-5min reference cutoff.",
+      "expected_controlled_semantics": "Five-minute prior eligible IV is absent; do not use nearer T-2min or future receipt.",
+      "applicability": "CONTROLLED_SYNTHETIC_SPEC_ONLY; M00/M02 physical negative proof must follow accepted profile",
+      "input_preconditions": "4 R111 events current/2m/5m/1day plus 1 R183 context; choose latest same-contract at/before 5m anchor",
+      "primary_packet": "FAMILY_IV_HISTORY_D094_D095.md:1,3,7,14,16,17,24,25,26",
+      "model_or_source_authority_not_supplied": true
+    },
+    {
+      "D_id": "D095",
+      "scenario_id": "D095-G4-NEG-SYNTH-01",
+      "positive_case_ref": "D095-TYPED-MATH-01",
+      "mutated_fixture_component": "Provide R111 at T-5min but remove all sample data at/before required previous-day anchor.",
+      "expected_controlled_semantics": "Previous-day eligible IV is absent; do not reuse same-day value.",
+      "applicability": "CONTROLLED_SYNTHETIC_SPEC_ONLY; M00/M02 physical negative proof must follow accepted profile",
+      "input_preconditions": "4 R111 events current/2m/5m/1day plus 1 R183 context; choose latest same-contract at/before 1day anchor",
+      "primary_packet": "FAMILY_IV_HISTORY_D094_D095.md:1,3,7,15,17,27,28,29,39",
+      "model_or_source_authority_not_supplied": true
+    }
+  ]
+}

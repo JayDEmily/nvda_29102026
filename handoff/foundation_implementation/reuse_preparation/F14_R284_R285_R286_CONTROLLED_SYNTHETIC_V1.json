@@ -1,0 +1,367 @@
+{
+  "document_id": "F14_R284_R285_R286_CONTROLLED_SYNTHETIC_V1",
+  "classification": "SYNTHETIC_CONTROLLED_SPECIFICATION_ONLY",
+  "provider": "NONE_SELECTED",
+  "is_native_payload": false,
+  "is_live_mapping_admitted": false,
+  "is_executable_m02_proof": false,
+  "authority": "D062/K01_TIME; D063/K04_STANDARDISE_RANK as referenced in FAMILY_F14_EXTENDED_E11_E15.md; values are illustrative, not source domain law",
+  "schema_note": "Field keys below are fixture-local labels, NOT asserted native API fields or admitted M00/M02 mappings. All numeric scalars encoded as Decimal-safe strings.",
+  "time_note": "Scheduled event instant, when calendar data became known, and collector receipt are distinct. Timestamps are invented timezone-aware UTC instants for controlled scenarios, not claims about a real economic-calendar publisher.",
+  "d062": {
+    "as_of_utc": "2026-10-21T12:00:00Z",
+    "knowledge_cutoff_utc": "2026-10-21T12:00:00Z",
+    "predecessor": {
+      "D001": "2026-10-21T12:00:00Z",
+      "kind": "true_instant"
+    },
+    "relevant_family": "US-MACRO-SYNTHETIC",
+    "raw_input": "R284",
+    "records": [
+      {
+        "event_id": "syn-cal-past",
+        "event_family": "US-MACRO-SYNTHETIC",
+        "scheduled_utc": "2026-10-21T11:59:00Z",
+        "disclosed_utc": "2026-10-21T11:40:00Z",
+        "received_utc": "2026-10-21T11:40:01Z",
+        "schedule_revision": "s1"
+      },
+      {
+        "event_id": "syn-cal-exact",
+        "event_family": "US-MACRO-SYNTHETIC",
+        "scheduled_utc": "2026-10-21T12:00:00Z",
+        "disclosed_utc": "2026-10-21T11:40:00Z",
+        "received_utc": "2026-10-21T11:40:02Z",
+        "schedule_revision": "s1"
+      },
+      {
+        "event_id": "syn-cal-a",
+        "event_family": "US-MACRO-SYNTHETIC",
+        "scheduled_utc": "2026-10-21T12:01:30Z",
+        "disclosed_utc": "2026-10-21T11:45:00Z",
+        "received_utc": "2026-10-21T11:45:01Z",
+        "schedule_revision": "s1"
+      },
+      {
+        "event_id": "syn-cal-b",
+        "event_family": "US-MACRO-SYNTHETIC",
+        "scheduled_utc": "2026-10-21T12:03:00Z",
+        "disclosed_utc": "2026-10-21T11:50:00Z",
+        "received_utc": "2026-10-21T11:50:01Z",
+        "schedule_revision": "s1"
+      },
+      {
+        "event_id": "syn-cal-late",
+        "event_family": "US-MACRO-SYNTHETIC",
+        "scheduled_utc": "2026-10-21T12:00:30Z",
+        "disclosed_utc": "2026-10-21T12:00:05Z",
+        "received_utc": "2026-10-21T12:00:06Z",
+        "schedule_revision": "s1"
+      }
+    ],
+    "scenarios": [
+      {
+        "id": "D062-SELECT",
+        "record_ids": [
+          "syn-cal-past",
+          "syn-cal-exact",
+          "syn-cal-a",
+          "syn-cal-b",
+          "syn-cal-late"
+        ],
+        "expected": {
+          "outcome": "value",
+          "selected_event_id": "syn-cal-a",
+          "seconds": "90",
+          "minutes": "1.5"
+        },
+        "discriminator": "Earliest strictly future, previously received relevant event wins; exactly-now, past and late-received earlier events excluded."
+      },
+      {
+        "id": "D062-PAST-ONLY",
+        "record_ids": [
+          "syn-cal-past",
+          "syn-cal-exact"
+        ],
+        "expected": {
+          "outcome": "no_occurrence"
+        },
+        "discriminator": "Strictly greater-than, not greater-than-or-equal."
+      },
+      {
+        "id": "D062-KNOWN-LATE",
+        "record_ids": [
+          "syn-cal-late"
+        ],
+        "expected": {
+          "outcome": "no_occurrence"
+        },
+        "discriminator": "Future schedule not disclosed/received by cutoff cannot be used."
+      },
+      {
+        "id": "D062-MISSING",
+        "record_ids": [],
+        "expected": {
+          "outcome": "no_occurrence"
+        },
+        "discriminator": "No relevant scheduled event; do not invent zero duration."
+      },
+      {
+        "id": "D062-RECEIPT-AFTER-CUTOFF",
+        "record_ids": [
+          "syn-cal-b"
+        ],
+        "mutation": {
+          "syn-cal-b": {
+            "received_utc": "2026-10-21T12:00:01Z"
+          }
+        },
+        "expected": {
+          "outcome": "no_occurrence"
+        },
+        "discriminator": "Published schedule but unavailable in repository at knowledge cutoff."
+      },
+      {
+        "id": "D062-WRONG-FAMILY",
+        "record_ids": [
+          "syn-cal-a"
+        ],
+        "mutation": {
+          "syn-cal-a": {
+            "event_family": "UNRELATED-SYNTHETIC"
+          }
+        },
+        "expected": {
+          "outcome": "no_occurrence"
+        },
+        "discriminator": "Provided positive case first; rejected on event relevance, not absent input."
+      }
+    ]
+  },
+  "d063": {
+    "raw_inputs": [
+      "R285",
+      "R286"
+    ],
+    "relevant_family": "US-CPI-HEADLINE-YOY-SYNTHETIC",
+    "parameter_fixture": {
+      "history_count": 3,
+      "minimum_sample": 2,
+      "baseline_law": "prior_release_only_sample_std_N_minus_1",
+      "parameter_source": "CONTROLLED_SCENARIO_NOT_NATIVE_POLICY"
+    },
+    "knowledge_cutoff_utc": "2026-10-15T13:00:00Z",
+    "units": "synthetic percent YoY on both actual and consensus; differences are synthetic percentage points; no native or canonical unit conversion is admitted",
+    "records": [
+      {
+        "release_id": "syn-release-jul",
+        "release_family": "US-CPI-HEADLINE-YOY-SYNTHETIC",
+        "release_scheduled_utc": "2026-07-15T12:30:00Z",
+        "r285_consensus": "2.5",
+        "r285_units": "synthetic_pct_yoy",
+        "r285_known_utc": "2026-07-14T12:00:00Z",
+        "r285_revision": "c1",
+        "r286_actual": "2.4",
+        "r286_units": "synthetic_pct_yoy",
+        "r286_received_utc": "2026-07-15T12:30:02Z",
+        "r286_revision": "a1",
+        "observation_effective_release_utc": "2026-07-15T12:30:00Z"
+      },
+      {
+        "release_id": "syn-release-aug",
+        "release_family": "US-CPI-HEADLINE-YOY-SYNTHETIC",
+        "release_scheduled_utc": "2026-08-14T12:30:00Z",
+        "r285_consensus": "2.5",
+        "r285_units": "synthetic_pct_yoy",
+        "r285_known_utc": "2026-08-13T12:00:00Z",
+        "r285_revision": "c1",
+        "r286_actual": "2.5",
+        "r286_units": "synthetic_pct_yoy",
+        "r286_received_utc": "2026-08-14T12:30:02Z",
+        "r286_revision": "a1",
+        "observation_effective_release_utc": "2026-08-14T12:30:00Z"
+      },
+      {
+        "release_id": "syn-release-sep",
+        "release_family": "US-CPI-HEADLINE-YOY-SYNTHETIC",
+        "release_scheduled_utc": "2026-09-15T12:30:00Z",
+        "r285_consensus": "2.5",
+        "r285_units": "synthetic_pct_yoy",
+        "r285_known_utc": "2026-09-14T12:00:00Z",
+        "r285_revision": "c1",
+        "r286_actual": "2.6",
+        "r286_units": "synthetic_pct_yoy",
+        "r286_received_utc": "2026-09-15T12:30:02Z",
+        "r286_revision": "a1",
+        "observation_effective_release_utc": "2026-09-15T12:30:00Z"
+      },
+      {
+        "release_id": "syn-release-oct",
+        "release_family": "US-CPI-HEADLINE-YOY-SYNTHETIC",
+        "release_scheduled_utc": "2026-10-15T12:30:00Z",
+        "r285_consensus": "2.5",
+        "r285_units": "synthetic_pct_yoy",
+        "r285_known_utc": "2026-10-14T12:00:00Z",
+        "r285_revision": "c1",
+        "r286_actual": "2.7",
+        "r286_units": "synthetic_pct_yoy",
+        "r286_received_utc": "2026-10-15T12:30:02Z",
+        "r286_revision": "a1",
+        "observation_effective_release_utc": "2026-10-15T12:30:00Z"
+      }
+    ],
+    "scenarios": [
+      {
+        "id": "D063-SELECT",
+        "release_ids": [
+          "syn-release-jul",
+          "syn-release-aug",
+          "syn-release-sep",
+          "syn-release-oct"
+        ],
+        "expected": {
+          "outcome": "value",
+          "current_release_id": "syn-release-oct",
+          "history_release_ids": [
+            "syn-release-jul",
+            "syn-release-aug",
+            "syn-release-sep"
+          ],
+          "history_surprises_pct_points": [
+            "-0.1",
+            "0.0",
+            "0.1"
+          ],
+          "current_surprise_pct_points": "0.2",
+          "history_sample_mean": "0",
+          "history_sample_sd": "0.1",
+          "z_score": "2"
+        },
+        "discriminator": "Full release-specific co-reference; same units; strictly prior releases only; N-1 sample SD."
+      },
+      {
+        "id": "D063-MISSING-CURRENT-CONSENSUS",
+        "release_ids": [
+          "syn-release-jul",
+          "syn-release-aug",
+          "syn-release-sep",
+          "syn-release-oct"
+        ],
+        "mutation": {
+          "syn-release-oct": {
+            "r285_consensus": null
+          }
+        },
+        "expected": {
+          "outcome": "no_occurrence"
+        },
+        "discriminator": "Missing R285 for current release is not zero or an older release substitution."
+      },
+      {
+        "id": "D063-MISSING-HISTORY-ACTUAL",
+        "release_ids": [
+          "syn-release-jul",
+          "syn-release-aug",
+          "syn-release-sep",
+          "syn-release-oct"
+        ],
+        "mutation": {
+          "syn-release-aug": {
+            "r286_actual": null
+          }
+        },
+        "expected": {
+          "outcome": "no_occurrence"
+        },
+        "discriminator": "Selected history cardinality is not repaired by silently skipping release."
+      },
+      {
+        "id": "D063-INSUFFICIENT-HISTORY",
+        "release_ids": [
+          "syn-release-sep",
+          "syn-release-oct"
+        ],
+        "expected": {
+          "outcome": "no_occurrence"
+        },
+        "discriminator": "Selected N=3 fixture has only one prior release; N >= 2 for any z score."
+      },
+      {
+        "id": "D063-ZERO-VARIANCE",
+        "release_ids": [
+          "syn-release-jul",
+          "syn-release-aug",
+          "syn-release-sep",
+          "syn-release-oct"
+        ],
+        "mutation": {
+          "syn-release-jul": {
+            "r286_actual": "2.5"
+          },
+          "syn-release-sep": {
+            "r286_actual": "2.5"
+          }
+        },
+        "expected": {
+          "outcome": "no_occurrence"
+        },
+        "discriminator": "All previous surprises zero: sample standard deviation zero."
+      },
+      {
+        "id": "D063-POST-RELEASE-CONSENSUS-REVISION",
+        "release_ids": [
+          "syn-release-jul",
+          "syn-release-aug",
+          "syn-release-sep",
+          "syn-release-oct"
+        ],
+        "mutation": {
+          "syn-release-oct": {
+            "additional_consensus_revision": {
+              "value": "2.9",
+              "known_utc": "2026-10-15T12:31:00Z",
+              "revision": "c2"
+            }
+          }
+        },
+        "expected": {
+          "outcome": "hold_source_policy",
+          "safe_rule": "Do not silently replace pre-release c1 consensus with post-release c2; exact provider revision/selection must be admitted."
+        },
+        "discriminator": "Post-release forecast cannot be silently treated as a prior-known forecast."
+      },
+      {
+        "id": "D063-WRONG-RELEASE-FAMILY",
+        "release_ids": [
+          "syn-release-jul",
+          "syn-release-aug",
+          "syn-release-sep",
+          "syn-release-oct"
+        ],
+        "mutation": {
+          "syn-release-aug": {
+            "release_family": "US-PCE-HEADLINE-YOY-SYNTHETIC"
+          }
+        },
+        "expected": {
+          "outcome": "no_occurrence"
+        },
+        "discriminator": "No cross-series pairing or backfill of an incomplete selected historical release."
+      },
+      {
+        "id": "D063-CURRENT-IN-BASELINE",
+        "release_ids": [
+          "syn-release-jul",
+          "syn-release-aug",
+          "syn-release-sep",
+          "syn-release-oct"
+        ],
+        "expected": {
+          "outcome": "value",
+          "z_score": "2"
+        },
+        "discriminator": "A calculation incorporating the current +0.2 in the historical baseline must fail the exact z=2 oracle."
+      }
+    ]
+  }
+}
