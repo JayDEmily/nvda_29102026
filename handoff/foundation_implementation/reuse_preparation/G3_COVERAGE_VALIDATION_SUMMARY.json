@@ -1,0 +1,32 @@
+{
+  "signals": 126,
+  "families": 35,
+  "raw_references": 82,
+  "case_count": 157,
+  "per_signal_scenarios_including_positive_negative": 409,
+  "no_quantified_end_to_end_model_oracle": [
+    "D102",
+    "D111"
+  ],
+  "model_conditional_half_mass": [
+    "D112",
+    "D113"
+  ],
+  "fully_physical_executable_tests_in_gate3": 0,
+  "positive_negative_sequence_specs": 126,
+  "numeric_or_symbolic_scenario_refs_by_signal": 124,
+  "unresolved_physical_fixture_literalisation_count": 97,
+  "scenario_kind_counts": {
+    "INDEPENDENT_PACKET_TABLE_EXAMPLE; TEXTUAL_RECORD_SHAPE_NOT_YET_MACHINE_TYPED": 13,
+    "G2_REUSED": 23,
+    "CONTROLLED_TRADE_SIGN; PREDECESSOR_D011_MUST_BE_MATERIALISED": 5,
+    "CONTROLLED_PER_WINDOW; REQUIRES ACTUAL PUBLIC D015 EVENTS": 4,
+    "CONTROLLED_WORKED_WITNESS_DOCUMENTARY_LITERAL; NEEDS MACHINE TYPED FIELDS": 24,
+    "EXPLICIT_PACKET_MATH_WITNESS; SYMBOLIC_CARRIER_POSSIBLY_HELD": 9,
+    "AUTHORITY_LINKED_NUMERIC_OR_SYMBOLIC_PACKET_WITNESS; NOT PHYSICAL M02 TEST": 54,
+    "SYNTHETIC_CONTROLLED_DATE_ONLY_OR_TRUE_INSTANT_SELECTION_REQUIRES_ACCEPTED_POLICY": 9,
+    "SYNTHETIC_CALENDAR_UNMAPPED_NATIVE_SCHEMA": 14,
+    "MATH_CONDITIONAL_ON_ACCEPTED_D111_AND_INTEGRATION_EDGE_POLICY; NOT END_TO_END D111 ORACLE": 2
+  },
+  "source_status": "ALL SYNTHETIC, NOT CERTIFIED"
+}
