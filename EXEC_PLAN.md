@@ -1,5 +1,9 @@
 # NVDA V2 — ACTIVE successor ExecPlan: Gate 5 execution
 
+## D014 completion resumed — 21 October 2026, 20:33 Melbourne
+
+Current owner instruction “Okay, complete D zero fourteen” lifts the recovery Section-5 pause for D014 only. Execute the outstanding §7.3 sequence from recovered 3dbcaa40a34b7920d9a1883b85cd9ba166d6a59f, retaining admitted generation 2 and existing production. No missing-continuation result is credited. The D042/D043/D047 pilot remains paused at this close-out boundary. Existing standing delegated acceptance authority remains applicable after actual required validation and independent review.
+
 ## Owner-directed recovery and research incorporation — 21 October 2026
 
 Owner instruction at 20:19 designates 19c14ee461140649110d5d1cc4c1d5d7f40123be (tree dc2b9fe81de02a5d2a381589f3947283d202e6ba) as the implementation recovery baseline. Branch work/v2-g6-recovery-20261021 preserves its history. Missing reported continuations 246cbc5/900b271 are not reconstructed or credited with results. D011–D013 retain their recorded bounded acceptances; D014 retains accepted corrected control and admitted generation 2, with engineering replay and final acceptance outstanding. Existing production is retained, not rewritten merely for recovery.

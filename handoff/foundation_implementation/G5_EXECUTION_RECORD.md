@@ -1,5 +1,9 @@
 # Gate 5 execution and recovered checkpoint
 
+### D014 completion resumed — 21 October 2026, 20:33 Melbourne
+
+Owner authorises completing D014 from recovered 3dbcaa40a34b7920d9a1883b85cd9ba166d6a59f; prior pause lifted for this unit only, pilot remains paused. Reuse admitted proof/production and established historical RED; obtain outstanding supported-runtime replay and §7.3.4 validation/review/disposition. Initial environment command used a root-relative lock filename that does not exist; dependency installation stopped before tests. Locate the existing pinned lock and install its unchanged hashed offline wheels; no dependency change or behavioural failure inferred.
+
 ### Owner-directed recovery; pause before implementation — 21 October 2026
 
 Recovery baseline 19c14ee461140649110d5d1cc4c1d5d7f40123be/tree dc2b9fe81de02a5d2a381589f3947283d202e6ba restored cleanly on work/v2-g6-recovery-20261021 under owner instruction 20:19. Missing continuations are not recreated and their reported results are not credited. Research f0190af646378441b5eabfc3616c26b3fc46c252/tree 0a2e9052d764b49f8bec63079ba8bd9065d22c0f incorporated by non-fast-forward merge c72dce5466a045c3df422fb9761252c03697b635: all 66 changed paths confined to reuse_preparation, no conflicts or changes to implementation/proof/authority/governance. The root now carries approved §7.0 and exact G0–4 research routing; historical research-local plans are not active programme plans. Existing proof and source are reused, not reauthored. No product tests, calculations or provider calls were run for this documentary recovery.
