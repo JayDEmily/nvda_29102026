@@ -1,0 +1,886 @@
+{
+  "schema": "nvda_g4_35_family_independent_offline_challenge_v1",
+  "families": 35,
+  "passed": 35,
+  "reviewer_scope": "Independent offline derivations and deliberately chosen negative/temporal discriminators; does not execute M00/M02 or independently admit proof",
+  "conditional_density_qualification": "F28 checks D112 only conditional on supplied D111 triangular density; D111 model has no numerical oracle",
+  "records": [
+    {
+      "family": "F01",
+      "D_id": "D001",
+      "expected_documentary": "2026-10-09T13:59:50Z",
+      "independent_result": "2026-10-09T13:59:50Z",
+      "independent_math_disposition": "MATCH_NUMERIC_EQUIVALENCE",
+      "negative_or_temporal_challenge": "Replace true_instant with date_only: no event instant can be converted; do not fabricate midnight.",
+      "negative_challenge_type": "REVIEWED_DOCUMENTARY_DISCRIMINATOR; NOT_EXECUTED_PRODUCT_TEST",
+      "scope": "REVIEWED_CONTROLLED_MATH_AND_SPECIFIED_NEGATIVE; NOT_M02_TEST",
+      "witness_source": "G3_126_TYPED_CONTROLLED_MATH_CASES.json:D001"
+    },
+    {
+      "family": "F02",
+      "D_id": "D011",
+      "expected_documentary": "101",
+      "independent_result": "101",
+      "independent_math_disposition": "MATCH_NUMERIC_EQUIVALENCE",
+      "negative_or_temporal_challenge": "Missing one quote side forbids midpoint; wrong-side provenance cannot yield a valid pair.",
+      "negative_challenge_type": "REVIEWED_DOCUMENTARY_DISCRIMINATOR; NOT_EXECUTED_PRODUCT_TEST",
+      "scope": "REVIEWED_CONTROLLED_MATH_AND_SPECIFIED_NEGATIVE; NOT_M02_TEST",
+      "witness_source": "G3_126_TYPED_CONTROLLED_MATH_CASES.json:D011"
+    },
+    {
+      "family": "F03",
+      "D_id": "D015",
+      "expected_documentary": "+1",
+      "independent_result": "+1",
+      "independent_math_disposition": "MATCH_NUMERIC_EQUIVALENCE",
+      "negative_or_temporal_challenge": "Omit the actual trade-time D011: a current quote cannot replace the historical aligned midpoint.",
+      "negative_challenge_type": "REVIEWED_DOCUMENTARY_DISCRIMINATOR; NOT_EXECUTED_PRODUCT_TEST",
+      "scope": "REVIEWED_CONTROLLED_MATH_AND_SPECIFIED_NEGATIVE; NOT_M02_TEST",
+      "witness_source": "G3_126_TYPED_CONTROLLED_MATH_CASES.json:D015"
+    },
+    {
+      "family": "F04",
+      "D_id": "D017",
+      "expected_documentary": "24/5",
+      "independent_result": "24/5",
+      "independent_math_disposition": "MATCH_NUMERIC_EQUIVALENCE",
+      "negative_or_temporal_challenge": "Remove a size for one trade: matched price-size VWAP cannot be computed as though missing quantity were zero.",
+      "negative_challenge_type": "REVIEWED_DOCUMENTARY_DISCRIMINATOR; NOT_EXECUTED_PRODUCT_TEST",
+      "scope": "REVIEWED_CONTROLLED_MATH_AND_SPECIFIED_NEGATIVE; NOT_M02_TEST",
+      "witness_source": "G3_126_TYPED_CONTROLLED_MATH_CASES.json:D017"
+    },
+    {
+      "family": "F05",
+      "D_id": "D019",
+      "expected_documentary": "ln(12/11)",
+      "independent_result": "ln(12/11)",
+      "independent_math_disposition": "MATCH_NUMERIC_EQUIVALENCE",
+      "negative_or_temporal_challenge": "Remove the observation at the required lookback anchor; a nearer but ineligible later record is not a substitute.",
+      "negative_challenge_type": "REVIEWED_DOCUMENTARY_DISCRIMINATOR; NOT_EXECUTED_PRODUCT_TEST",
+      "scope": "REVIEWED_CONTROLLED_MATH_AND_SPECIFIED_NEGATIVE; NOT_M02_TEST",
+      "witness_source": "G3_126_TYPED_CONTROLLED_MATH_CASES.json:D019"
+    },
+    {
+      "family": "F06",
+      "D_id": "D028",
+      "expected_documentary": "2",
+      "independent_result": "2",
+      "independent_math_disposition": "MATCH_NUMERIC_EQUIVALENCE",
+      "negative_or_temporal_challenge": "Omit one mandated prior session fraction, preventing the comparator baseline from being considered complete.",
+      "negative_challenge_type": "REVIEWED_DOCUMENTARY_DISCRIMINATOR; NOT_EXECUTED_PRODUCT_TEST",
+      "scope": "REVIEWED_CONTROLLED_MATH_AND_SPECIFIED_NEGATIVE; NOT_M02_TEST",
+      "witness_source": "G3_126_TYPED_CONTROLLED_MATH_CASES.json:D028"
+    },
+    {
+      "family": "F07",
+      "D_id": "D032",
+      "expected_documentary": "sqrt(2/theta)*ln(2)",
+      "independent_result": "sqrt(2/theta)*ln(2)",
+      "independent_math_disposition": "MATCH_NUMERIC_EQUIVALENCE",
+      "negative_or_temporal_challenge": "Remove the middle required sample; different sample spacing cannot be silently substituted.",
+      "negative_challenge_type": "REVIEWED_DOCUMENTARY_DISCRIMINATOR; NOT_EXECUTED_PRODUCT_TEST",
+      "scope": "REVIEWED_CONTROLLED_MATH_AND_SPECIFIED_NEGATIVE; NOT_M02_TEST",
+      "witness_source": "G3_126_TYPED_CONTROLLED_MATH_CASES.json:D032"
+    },
+    {
+      "family": "F08",
+      "D_id": "D035",
+      "expected_documentary": "sqrt(252/5)*ln(11/10)",
+      "independent_result": "sqrt(252/5)*ln(11/10)",
+      "independent_math_disposition": "MATCH_NUMERIC_EQUIVALENCE",
+      "negative_or_temporal_challenge": "Provide only four of the five required completed daily returns: sample cardinality invalid.",
+      "negative_challenge_type": "REVIEWED_DOCUMENTARY_DISCRIMINATOR; NOT_EXECUTED_PRODUCT_TEST",
+      "scope": "REVIEWED_CONTROLLED_MATH_AND_SPECIFIED_NEGATIVE; NOT_M02_TEST",
+      "witness_source": "G3_126_TYPED_CONTROLLED_MATH_CASES.json:D035"
+    },
+    {
+      "family": "F09",
+      "D_id": "D042",
+      "expected_documentary": "0.35",
+      "independent_result": "0.3500",
+      "independent_math_disposition": "MATCH_NUMERIC_EQUIVALENCE",
+      "negative_or_temporal_challenge": "Feed native percent 4.25 as 4.25 rather than canonical .0425: reject incorrect scale assumption.",
+      "negative_challenge_type": "REVIEWED_DOCUMENTARY_DISCRIMINATOR; NOT_EXECUTED_PRODUCT_TEST",
+      "scope": "REVIEWED_CONTROLLED_MATH_AND_SPECIFIED_NEGATIVE; NOT_M02_TEST",
+      "witness_source": "G3_126_TYPED_CONTROLLED_MATH_CASES.json:D042"
+    },
+    {
+      "family": "F10",
+      "D_id": "D044",
+      "expected_documentary": "15",
+      "independent_result": "15.0000",
+      "independent_math_disposition": "MATCH_NUMERIC_EQUIVALENCE",
+      "negative_or_temporal_challenge": "Substitute a five-minute anchor for the mandated daily reference, even if numeric value matches.",
+      "negative_challenge_type": "REVIEWED_DOCUMENTARY_DISCRIMINATOR; NOT_EXECUTED_PRODUCT_TEST",
+      "scope": "REVIEWED_CONTROLLED_MATH_AND_SPECIFIED_NEGATIVE; NOT_M02_TEST",
+      "witness_source": "G3_126_TYPED_CONTROLLED_MATH_CASES.json:D044"
+    },
+    {
+      "family": "F11",
+      "D_id": "D048",
+      "expected_documentary": "20",
+      "independent_result": "20",
+      "independent_math_disposition": "MATCH_NUMERIC_EQUIVALENCE",
+      "negative_or_temporal_challenge": "Invert quote orientation of broad USD index or provide zero reference; no canonical percent change.",
+      "negative_challenge_type": "REVIEWED_DOCUMENTARY_DISCRIMINATOR; NOT_EXECUTED_PRODUCT_TEST",
+      "scope": "REVIEWED_CONTROLLED_MATH_AND_SPECIFIED_NEGATIVE; NOT_M02_TEST",
+      "witness_source": "G3_126_TYPED_CONTROLLED_MATH_CASES.json:D048"
+    },
+    {
+      "family": "F12",
+      "D_id": "D052",
+      "expected_documentary": {
+        "point_change": "20",
+        "percent_change": "20"
+      },
+      "independent_result": {
+        "point_change": "20",
+        "percent_change": "20"
+      },
+      "independent_math_disposition": "MATCH_NUMERIC_EQUIVALENCE",
+      "negative_or_temporal_challenge": "Remove historical reference reading; current index alone cannot define point or relative change.",
+      "negative_challenge_type": "REVIEWED_DOCUMENTARY_DISCRIMINATOR; NOT_EXECUTED_PRODUCT_TEST",
+      "scope": "REVIEWED_CONTROLLED_MATH_AND_SPECIFIED_NEGATIVE; NOT_M02_TEST",
+      "witness_source": "G3_126_TYPED_CONTROLLED_MATH_CASES.json:D052"
+    },
+    {
+      "family": "F13",
+      "D_id": "D057",
+      "expected_documentary": {
+        "ratio": "3/4",
+        "difference": "-5"
+      },
+      "independent_result": {
+        "ratio": "3/4",
+        "difference": "-5"
+      },
+      "independent_math_disposition": "MATCH_NUMERIC_EQUIVALENCE",
+      "negative_or_temporal_challenge": "Set denominator to zero; ratio undefined although point difference remains computable.",
+      "negative_challenge_type": "REVIEWED_DOCUMENTARY_DISCRIMINATOR; NOT_EXECUTED_PRODUCT_TEST",
+      "scope": "REVIEWED_CONTROLLED_MATH_AND_SPECIFIED_NEGATIVE; NOT_M02_TEST",
+      "witness_source": "G3_126_TYPED_CONTROLLED_MATH_CASES.json:D057"
+    },
+    {
+      "family": "F14",
+      "D_id": "D062",
+      "expected_documentary": {
+        "seconds": "90",
+        "minutes": "3/2"
+      },
+      "independent_result": {
+        "seconds": "90",
+        "minutes": "3/2"
+      },
+      "independent_math_disposition": "MATCH_NUMERIC_EQUIVALENCE",
+      "negative_or_temporal_challenge": "Make a later-published event available only after as-of cutoff; it cannot be selected.",
+      "negative_challenge_type": "REVIEWED_DOCUMENTARY_DISCRIMINATOR; NOT_EXECUTED_PRODUCT_TEST",
+      "scope": "REVIEWED_CONTROLLED_MATH_AND_SPECIFIED_NEGATIVE; NOT_M02_TEST",
+      "witness_source": "G3_126_TYPED_CONTROLLED_MATH_CASES.json:D062"
+    },
+    {
+      "family": "F15",
+      "D_id": "D066",
+      "expected_documentary": "ln(11/10)",
+      "independent_result": "ln(11/10)",
+      "independent_math_disposition": "MATCH_NUMERIC_EQUIVALENCE",
+      "negative_or_temporal_challenge": "Provide a mismatched holiday/session index close; no aligned return may be asserted.",
+      "negative_challenge_type": "REVIEWED_DOCUMENTARY_DISCRIMINATOR; NOT_EXECUTED_PRODUCT_TEST",
+      "scope": "REVIEWED_CONTROLLED_MATH_AND_SPECIFIED_NEGATIVE; NOT_M02_TEST",
+      "witness_source": "G3_126_TYPED_CONTROLLED_MATH_CASES.json:D066"
+    },
+    {
+      "family": "F16",
+      "D_id": "D071",
+      "expected_documentary": "ln(11/10)",
+      "independent_result": "ln(11/10)",
+      "independent_math_disposition": "MATCH_NUMERIC_EQUIVALENCE",
+      "negative_or_temporal_challenge": "Change only symbol identity from SPY to a different index; refuse cross-subject pair.",
+      "negative_challenge_type": "REVIEWED_DOCUMENTARY_DISCRIMINATOR; NOT_EXECUTED_PRODUCT_TEST",
+      "scope": "REVIEWED_CONTROLLED_MATH_AND_SPECIFIED_NEGATIVE; NOT_M02_TEST",
+      "witness_source": "G3_126_TYPED_CONTROLLED_MATH_CASES.json:D071"
+    },
+    {
+      "family": "F17",
+      "D_id": "D076",
+      "expected_documentary": "3/100",
+      "independent_result": "3/100",
+      "independent_math_disposition": "MATCH_NUMERIC_EQUIVALENCE",
+      "negative_or_temporal_challenge": "Substitute one-hour QQQ for one-day broad index predecessor; period alignment invalid.",
+      "negative_challenge_type": "REVIEWED_DOCUMENTARY_DISCRIMINATOR; NOT_EXECUTED_PRODUCT_TEST",
+      "scope": "REVIEWED_CONTROLLED_MATH_AND_SPECIFIED_NEGATIVE; NOT_M02_TEST",
+      "witness_source": "G3_126_TYPED_CONTROLLED_MATH_CASES.json:D076"
+    },
+    {
+      "family": "F18",
+      "D_id": "D078",
+      "expected_documentary": "3",
+      "independent_result": "3",
+      "independent_math_disposition": "MATCH_NUMERIC_EQUIVALENCE",
+      "negative_or_temporal_challenge": "Use independently fitted betas from unrelated windows instead of one versioned fit.",
+      "negative_challenge_type": "REVIEWED_DOCUMENTARY_DISCRIMINATOR; NOT_EXECUTED_PRODUCT_TEST",
+      "scope": "REVIEWED_CONTROLLED_MATH_AND_SPECIFIED_NEGATIVE; NOT_M02_TEST",
+      "witness_source": "G3_126_TYPED_CONTROLLED_MATH_CASES.json:D078"
+    },
+    {
+      "family": "F19",
+      "D_id": "D083",
+      "expected_documentary": "1",
+      "independent_result": "1",
+      "independent_math_disposition": "MATCH_NUMERIC_EQUIVALENCE",
+      "negative_or_temporal_challenge": "Remove a member without an accepted denominator/missing-member policy; cannot silently recompute different basket.",
+      "negative_challenge_type": "REVIEWED_DOCUMENTARY_DISCRIMINATOR; NOT_EXECUTED_PRODUCT_TEST",
+      "scope": "REVIEWED_CONTROLLED_MATH_AND_SPECIFIED_NEGATIVE; NOT_M02_TEST",
+      "witness_source": "G3_126_TYPED_CONTROLLED_MATH_CASES.json:D083"
+    },
+    {
+      "family": "F20",
+      "D_id": "D085",
+      "expected_documentary": "3",
+      "independent_result": "3",
+      "independent_math_disposition": "MATCH_NUMERIC_EQUIVALENCE",
+      "negative_or_temporal_challenge": "Expiration before trading date gives negative DTE, not an arbitrarily clipped zero.",
+      "negative_challenge_type": "REVIEWED_DOCUMENTARY_DISCRIMINATOR; NOT_EXECUTED_PRODUCT_TEST",
+      "scope": "REVIEWED_CONTROLLED_MATH_AND_SPECIFIED_NEGATIVE; NOT_M02_TEST",
+      "witness_source": "G3_126_TYPED_CONTROLLED_MATH_CASES.json:D085"
+    },
+    {
+      "family": "F21",
+      "D_id": "D089",
+      "expected_documentary": "11/10",
+      "independent_result": "11/10",
+      "independent_math_disposition": "MATCH_NUMERIC_EQUIVALENCE",
+      "negative_or_temporal_challenge": "Spot zero or wrong underlying contract prevents a valid strike/spot ratio.",
+      "negative_challenge_type": "REVIEWED_DOCUMENTARY_DISCRIMINATOR; NOT_EXECUTED_PRODUCT_TEST",
+      "scope": "REVIEWED_CONTROLLED_MATH_AND_SPECIFIED_NEGATIVE; NOT_M02_TEST",
+      "witness_source": "G3_126_TYPED_CONTROLLED_MATH_CASES.json:D089"
+    },
+    {
+      "family": "F22",
+      "D_id": "D087",
+      "expected_documentary": "3",
+      "independent_result": "3",
+      "independent_math_disposition": "MATCH_NUMERIC_EQUIVALENCE",
+      "negative_or_temporal_challenge": "Mix two option contracts or misalign quote instant; no valid midpoint despite available numbers.",
+      "negative_challenge_type": "REVIEWED_DOCUMENTARY_DISCRIMINATOR; NOT_EXECUTED_PRODUCT_TEST",
+      "scope": "REVIEWED_CONTROLLED_MATH_AND_SPECIFIED_NEGATIVE; NOT_M02_TEST",
+      "witness_source": "G3_126_TYPED_CONTROLLED_MATH_CASES.json:D087"
+    },
+    {
+      "family": "F23",
+      "D_id": "D094",
+      "expected_documentary": "3",
+      "independent_result": "3.00",
+      "independent_math_disposition": "MATCH_NUMERIC_EQUIVALENCE",
+      "negative_or_temporal_challenge": "Change expiry/tenor on historical IV reference; wrong contract even if subtraction is possible.",
+      "negative_challenge_type": "REVIEWED_DOCUMENTARY_DISCRIMINATOR; NOT_EXECUTED_PRODUCT_TEST",
+      "scope": "REVIEWED_CONTROLLED_MATH_AND_SPECIFIED_NEGATIVE; NOT_M02_TEST",
+      "witness_source": "G3_126_TYPED_CONTROLLED_MATH_CASES.json:D094"
+    },
+    {
+      "family": "F24",
+      "D_id": "D096",
+      "expected_documentary": "1/4",
+      "independent_result": "1/4",
+      "independent_math_disposition": "MATCH_NUMERIC_EQUIVALENCE",
+      "negative_or_temporal_challenge": "Provide both delta samples below target .50: no bracket, refuse extrapolation without new authority.",
+      "negative_challenge_type": "REVIEWED_DOCUMENTARY_DISCRIMINATOR; NOT_EXECUTED_PRODUCT_TEST",
+      "scope": "REVIEWED_CONTROLLED_MATH_AND_SPECIFIED_NEGATIVE; NOT_M02_TEST",
+      "witness_source": "G3_126_TYPED_CONTROLLED_MATH_CASES.json:D096"
+    },
+    {
+      "family": "F25",
+      "D_id": "D103",
+      "expected_documentary": "10",
+      "independent_result": "10.00",
+      "independent_math_disposition": "MATCH_NUMERIC_EQUIVALENCE",
+      "negative_or_temporal_challenge": "Prior grid lacks one strike/expiry key; do not average different grids.",
+      "negative_challenge_type": "REVIEWED_DOCUMENTARY_DISCRIMINATOR; NOT_EXECUTED_PRODUCT_TEST",
+      "scope": "REVIEWED_CONTROLLED_MATH_AND_SPECIFIED_NEGATIVE; NOT_M02_TEST",
+      "witness_source": "G3_126_TYPED_CONTROLLED_MATH_CASES.json:D103"
+    },
+    {
+      "family": "F26",
+      "D_id": "D107",
+      "expected_documentary": "10",
+      "independent_result": "10.00",
+      "independent_math_disposition": "MATCH_NUMERIC_EQUIVALENCE",
+      "negative_or_temporal_challenge": "Mix current implied with stale realised volatility from another window/instrument.",
+      "negative_challenge_type": "REVIEWED_DOCUMENTARY_DISCRIMINATOR; NOT_EXECUTED_PRODUCT_TEST",
+      "scope": "REVIEWED_CONTROLLED_MATH_AND_SPECIFIED_NEGATIVE; NOT_M02_TEST",
+      "witness_source": "G3_126_TYPED_CONTROLLED_MATH_CASES.json:D107"
+    },
+    {
+      "family": "F27",
+      "D_id": "D109",
+      "expected_documentary": "5",
+      "independent_result": "5",
+      "independent_math_disposition": "MATCH_NUMERIC_EQUIVALENCE",
+      "negative_or_temporal_challenge": "Supply put midpoint from a different strike; refuse nominal straddle sum.",
+      "negative_challenge_type": "REVIEWED_DOCUMENTARY_DISCRIMINATOR; NOT_EXECUTED_PRODUCT_TEST",
+      "scope": "REVIEWED_CONTROLLED_MATH_AND_SPECIFIED_NEGATIVE; NOT_M02_TEST",
+      "witness_source": "G3_126_TYPED_CONTROLLED_MATH_CASES.json:D109"
+    },
+    {
+      "family": "F28",
+      "D_id": "D112",
+      "expected_documentary": "1/2",
+      "independent_result": "1/2",
+      "independent_math_disposition": "MATCH_NUMERIC_EQUIVALENCE",
+      "negative_or_temporal_challenge": "Remove the lower segment of accepted density: tail mass is not recoverable, and D111 remains model-held.",
+      "negative_challenge_type": "REVIEWED_DOCUMENTARY_DISCRIMINATOR; NOT_EXECUTED_PRODUCT_TEST",
+      "scope": "CONDITIONAL_D111_GRID_ONLY",
+      "witness_source": "G3_126_TYPED_CONTROLLED_MATH_CASES.json:D112"
+    },
+    {
+      "family": "F29",
+      "D_id": "D116",
+      "expected_documentary": "3/2",
+      "independent_result": "3/2",
+      "independent_math_disposition": "MATCH_NUMERIC_EQUIVALENCE",
+      "negative_or_temporal_challenge": "Replace call OI with opposite-right OI; reject source identity even if denominator nonzero.",
+      "negative_challenge_type": "REVIEWED_DOCUMENTARY_DISCRIMINATOR; NOT_EXECUTED_PRODUCT_TEST",
+      "scope": "REVIEWED_CONTROLLED_MATH_AND_SPECIFIED_NEGATIVE; NOT_M02_TEST",
+      "witness_source": "G3_126_TYPED_CONTROLLED_MATH_CASES.json:D116"
+    },
+    {
+      "family": "F30",
+      "D_id": "D117",
+      "expected_documentary": "sqrt(19/5)",
+      "independent_result": "sqrt(19/5)",
+      "independent_math_disposition": "MATCH_NUMERIC_EQUIVALENCE",
+      "negative_or_temporal_challenge": "Omit one of 20 prior regular sessions or use current in baseline: refuse incomplete comparator.",
+      "negative_challenge_type": "REVIEWED_DOCUMENTARY_DISCRIMINATOR; NOT_EXECUTED_PRODUCT_TEST",
+      "scope": "REVIEWED_CONTROLLED_MATH_AND_SPECIFIED_NEGATIVE; NOT_M02_TEST",
+      "witness_source": "G3_126_TYPED_CONTROLLED_MATH_CASES.json:D117"
+    },
+    {
+      "family": "F31",
+      "D_id": "D120",
+      "expected_documentary": {
+        "signed_contracts": "2",
+        "signed_premium_notional": "200"
+      },
+      "independent_result": {
+        "signed_contracts": "2",
+        "signed_premium_notional": "200"
+      },
+      "independent_math_disposition": "MATCH_NUMERIC_EQUIVALENCE",
+      "negative_or_temporal_challenge": "Remove explicit multiplier on one option contract: no inferred 100x default allowed.",
+      "negative_challenge_type": "REVIEWED_DOCUMENTARY_DISCRIMINATOR; NOT_EXECUTED_PRODUCT_TEST",
+      "scope": "REVIEWED_CONTROLLED_MATH_AND_SPECIFIED_NEGATIVE; NOT_M02_TEST",
+      "witness_source": "G3_126_TYPED_CONTROLLED_MATH_CASES.json:D120"
+    },
+    {
+      "family": "F32",
+      "D_id": "D131",
+      "expected_documentary": {
+        "bid_depth": "5",
+        "ask_depth": "3",
+        "total_depth": "8"
+      },
+      "independent_result": {
+        "bid_depth": "5",
+        "ask_depth": "3",
+        "total_depth": "8"
+      },
+      "independent_math_disposition": "MATCH_NUMERIC_EQUIVALENCE",
+      "negative_or_temporal_challenge": "Mark one row deleted before selection: it must not count towards standing depth.",
+      "negative_challenge_type": "REVIEWED_DOCUMENTARY_DISCRIMINATOR; NOT_EXECUTED_PRODUCT_TEST",
+      "scope": "REVIEWED_CONTROLLED_MATH_AND_SPECIFIED_NEGATIVE; NOT_M02_TEST",
+      "witness_source": "G3_126_TYPED_CONTROLLED_MATH_CASES.json:D131"
+    },
+    {
+      "family": "F33",
+      "D_id": "D134",
+      "expected_documentary": "8",
+      "independent_result": "8",
+      "independent_math_disposition": "MATCH_NUMERIC_EQUIVALENCE",
+      "negative_or_temporal_challenge": "Apply a remove/position-shift update: summing historical insert sizes is invalid.",
+      "negative_challenge_type": "REVIEWED_DOCUMENTARY_DISCRIMINATOR; NOT_EXECUTED_PRODUCT_TEST",
+      "scope": "REVIEWED_CONTROLLED_MATH_AND_SPECIFIED_NEGATIVE; NOT_M02_TEST",
+      "witness_source": "G3_126_TYPED_CONTROLLED_MATH_CASES.json:D134"
+    },
+    {
+      "family": "F34",
+      "D_id": "D139",
+      "expected_documentary": {
+        "event_count_rate": "1/2",
+        "inserted_size_rate": "2"
+      },
+      "independent_result": {
+        "event_count_rate": "1/2",
+        "inserted_size_rate": "2"
+      },
+      "independent_math_disposition": "MATCH_NUMERIC_EQUIVALENCE",
+      "negative_or_temporal_challenge": "Reclassify one update as insertion, causing false event count and size rates.",
+      "negative_challenge_type": "REVIEWED_DOCUMENTARY_DISCRIMINATOR; NOT_EXECUTED_PRODUCT_TEST",
+      "scope": "REVIEWED_CONTROLLED_MATH_AND_SPECIFIED_NEGATIVE; NOT_M02_TEST",
+      "witness_source": "G3_126_TYPED_CONTROLLED_MATH_CASES.json:D139"
+    },
+    {
+      "family": "F35",
+      "D_id": "D151",
+      "expected_documentary": {
+        "positive_return_fraction": "2/3",
+        "above_vwap_fraction": "1/3",
+        "above_prior_close_fraction": "2/3"
+      },
+      "independent_result": {
+        "positive_return_fraction": "2/3",
+        "above_vwap_fraction": "1/3",
+        "above_prior_close_fraction": "2/3"
+      },
+      "independent_math_disposition": "MATCH_NUMERIC_EQUIVALENCE",
+      "negative_or_temporal_challenge": "Remove B VWAP only: VWAP denominator becomes 2 while open/prior-close denominators remain 3.",
+      "negative_challenge_type": "REVIEWED_DOCUMENTARY_DISCRIMINATOR; NOT_EXECUTED_PRODUCT_TEST",
+      "scope": "REVIEWED_CONTROLLED_MATH_AND_SPECIFIED_NEGATIVE; NOT_M02_TEST",
+      "witness_source": "G3_126_TYPED_CONTROLLED_MATH_CASES.json:D151"
+    }
+  ],
+  "additional_unique_mechanism_challenges": {
+    "number": 42,
+    "passing": 42,
+    "recorded_in": "additional_unique_mechanism_challenges.records",
+    "scope": "Distinct controlled output/calculation mechanisms reviewed independently; not a sample count of executable tests",
+    "records": [
+      {
+        "D_id": "D002",
+        "kind": "typed_age_pair",
+        "actual": {
+          "basis": "source_event",
+          "age_seconds": "10"
+        },
+        "expected": {
+          "basis": "source_event",
+          "age_seconds": "10"
+        },
+        "pass": true
+      },
+      {
+        "D_id": "D003",
+        "kind": "zoned_datetime",
+        "actual": "2026-10-10T00:59:50+11:00",
+        "expected": "2026-10-10T00:59:50+11:00",
+        "pass": true
+      },
+      {
+        "D_id": "D004",
+        "kind": "trading_date",
+        "actual": "2026-10-09",
+        "expected": "2026-10-09",
+        "pass": true
+      },
+      {
+        "D_id": "D005",
+        "kind": "enum",
+        "actual": "overnight",
+        "expected": "overnight",
+        "pass": true
+      },
+      {
+        "D_id": "D009",
+        "kind": "versioned_vintage_categories",
+        "actual": [
+          "initial",
+          "revised",
+          "latest_known_at_cutoff"
+        ],
+        "expected": [
+          "initial",
+          "revised",
+          "latest_known_at_cutoff"
+        ],
+        "pass": true
+      },
+      {
+        "D_id": "D010",
+        "kind": "boolean",
+        "actual": true,
+        "expected": true,
+        "pass": true
+      },
+      {
+        "D_id": "D013",
+        "kind": "exact_ratio_percent",
+        "actual": "200/101",
+        "expected": "200/101",
+        "pass": true
+      },
+      {
+        "D_id": "D014",
+        "kind": "exact_ratio",
+        "actual": "1/3",
+        "expected": "1/3",
+        "pass": true
+      },
+      {
+        "D_id": "D016",
+        "kind": "signed_quantity",
+        "actual": "-4",
+        "expected": "-4",
+        "pass": true
+      },
+      {
+        "D_id": "D018",
+        "kind": "structured_price_bps",
+        "actual": {
+          "price_difference": "6/125",
+          "bps_difference": "100"
+        },
+        "expected": {
+          "price_difference": "0.048",
+          "bps_difference": "100"
+        },
+        "pass": true
+      },
+      {
+        "D_id": "D024",
+        "kind": "structured_symbolic",
+        "actual": {
+          "q1": "ln(12/11)",
+          "q5": "ln(6/5)/5",
+          "q30": "ln(3/2)/30",
+          "accel_1v5": "ln(12/11)-ln(6/5)/5",
+          "accel_5v30": "ln(6/5)/5-ln(3/2)/30"
+        },
+        "expected": {
+          "q1": "ln(12/11)",
+          "q5": "ln(6/5)/5",
+          "q30": "ln(3/2)/30",
+          "accel_1v5": "ln(12/11)-ln(6/5)/5",
+          "accel_5v30": "ln(6/5)/5-ln(3/2)/30"
+        },
+        "pass": true
+      },
+      {
+        "D_id": "D026",
+        "kind": "structured_decimal_ratio",
+        "actual": {
+          "price_difference": "10",
+          "percent_difference": "10"
+        },
+        "expected": {
+          "price_difference": "10",
+          "percent_difference": "10"
+        },
+        "pass": true
+      },
+      {
+        "D_id": "D029",
+        "kind": "symbolic_exact_z",
+        "actual": "3/sqrt(2)",
+        "expected": "3/sqrt(2)",
+        "pass": true
+      },
+      {
+        "D_id": "D038",
+        "kind": "structured_symbolic",
+        "actual": {
+          "RV": "(ln(2))^2",
+          "BV": "0",
+          "JV": "(ln(2))^2"
+        },
+        "expected": {
+          "RV": "(ln(2))^2",
+          "BV": "0",
+          "JV": "(ln(2))^2"
+        },
+        "pass": true
+      },
+      {
+        "D_id": "D039",
+        "kind": "decimal_price",
+        "actual": "33/2",
+        "expected": "16.5",
+        "pass": true
+      },
+      {
+        "D_id": "D063",
+        "kind": "z_score",
+        "actual": "2",
+        "expected": "2",
+        "pass": true
+      },
+      {
+        "D_id": "D079",
+        "kind": "ols_coefficients",
+        "actual": {
+          "alpha": "1",
+          "beta_market": "1",
+          "beta_tech": "2",
+          "beta_semi": "3"
+        },
+        "expected": {
+          "alpha": "1",
+          "beta_market": "1",
+          "beta_tech": "2",
+          "beta_semi": "3"
+        },
+        "pass": true
+      },
+      {
+        "D_id": "D080",
+        "kind": "ols_beta_tech",
+        "actual": "2",
+        "expected": "2",
+        "pass": true
+      },
+      {
+        "D_id": "D081",
+        "kind": "ols_beta_semi",
+        "actual": "3",
+        "expected": "3",
+        "pass": true
+      },
+      {
+        "D_id": "D082",
+        "kind": "pearson_matrix",
+        "actual": [
+          [
+            "1",
+            "-1"
+          ],
+          [
+            "-1",
+            "1"
+          ]
+        ],
+        "expected": [
+          [
+            "1",
+            "-1"
+          ],
+          [
+            "-1",
+            "1"
+          ]
+        ],
+        "pass": true
+      },
+      {
+        "D_id": "D086",
+        "kind": "years_fraction",
+        "actual": "1/365",
+        "expected": "1/365",
+        "pass": true
+      },
+      {
+        "D_id": "D088",
+        "kind": "relative_spread_percent",
+        "actual": "200/3",
+        "expected": "200/3",
+        "pass": true
+      },
+      {
+        "D_id": "D090",
+        "kind": "log_moneyness",
+        "actual": "ln(11/10)",
+        "expected": "ln(11/10)",
+        "pass": true
+      },
+      {
+        "D_id": "D091",
+        "kind": "delta_bucket",
+        "actual": "25D",
+        "expected": "25D",
+        "pass": true
+      },
+      {
+        "D_id": "D092",
+        "kind": "IV_fraction",
+        "actual": "1/4",
+        "expected": "1/4",
+        "pass": true
+      },
+      {
+        "D_id": "D097",
+        "kind": "volatility_points_per_calendar_day",
+        "actual": "3/10",
+        "expected": "3/10",
+        "pass": true
+      },
+      {
+        "D_id": "D098",
+        "kind": "volatility_points_per_day_squared",
+        "actual": "-1/100",
+        "expected": "-1/100",
+        "pass": true
+      },
+      {
+        "D_id": "D104",
+        "kind": "volatility_point_rotation",
+        "actual": "1",
+        "expected": "1",
+        "pass": true
+      },
+      {
+        "D_id": "D105",
+        "kind": "iv_rank_percent",
+        "actual": "50",
+        "expected": "50",
+        "pass": true
+      },
+      {
+        "D_id": "D106",
+        "kind": "iv_percentile_percent",
+        "actual": "75/2",
+        "expected": "37.5",
+        "pass": true
+      },
+      {
+        "D_id": "D110",
+        "kind": "percent",
+        "actual": "5",
+        "expected": "5",
+        "pass": true
+      },
+      {
+        "D_id": "D121",
+        "kind": "delta_bucket_map",
+        "actual": {
+          "B1": {
+            "contracts": "3",
+            "notional": "600"
+          },
+          "B2": {
+            "contracts": "-1",
+            "notional": "-400"
+          }
+        },
+        "expected": {
+          "B1": {
+            "contracts": "3",
+            "notional": "600"
+          },
+          "B2": {
+            "contracts": "-1",
+            "notional": "-400"
+          }
+        },
+        "pass": true
+      },
+      {
+        "D_id": "D122",
+        "kind": "expiry_bucket_map",
+        "actual": {
+          "DTE7": {
+            "contracts": "3",
+            "notional": "600"
+          },
+          "DTE30": {
+            "contracts": "-1",
+            "notional": "-400"
+          }
+        },
+        "expected": {
+          "DTE7": {
+            "contracts": "3",
+            "notional": "600"
+          },
+          "DTE30": {
+            "contracts": "-1",
+            "notional": "-400"
+          }
+        },
+        "pass": true
+      },
+      {
+        "D_id": "D123",
+        "kind": "OI_change",
+        "actual": "25",
+        "expected": "25",
+        "pass": true
+      },
+      {
+        "D_id": "D124",
+        "kind": "HHI",
+        "actual": "5/8",
+        "expected": "5/8",
+        "pass": true
+      },
+      {
+        "D_id": "D137",
+        "kind": "price_microprice",
+        "actual": "201/2",
+        "expected": "201/2",
+        "pass": true
+      },
+      {
+        "D_id": "D138",
+        "kind": "structured_book_slope",
+        "actual": {
+          "bid_slope": "7/2",
+          "ask_slope": "5/2"
+        },
+        "expected": {
+          "bid_slope": "7/2",
+          "ask_slope": "5/2"
+        },
+        "pass": true
+      },
+      {
+        "D_id": "D140",
+        "kind": "structured_depth_deletion_rate",
+        "actual": {
+          "cancel_count_rate": "1/2",
+          "removed_size_rate": "3"
+        },
+        "expected": {
+          "cancel_count_rate": "1/2",
+          "removed_size_rate": "3"
+        },
+        "pass": true
+      },
+      {
+        "D_id": "D141",
+        "kind": "replenishment_fraction",
+        "actual": "3/5",
+        "expected": "3/5",
+        "pass": true
+      },
+      {
+        "D_id": "D142",
+        "kind": "structured_resilience",
+        "actual": {
+          "seconds": "3",
+          "recovered_depth": "20",
+          "recovered_spread": "1"
+        },
+        "expected": {
+          "seconds": "3",
+          "recovered_depth": "20",
+          "recovered_spread": "1"
+        },
+        "pass": true
+      },
+      {
+        "D_id": "D144",
+        "kind": "structured_book_divergence",
+        "actual": {
+          "price_difference": "1/2",
+          "depth_difference": "3"
+        },
+        "expected": {
+          "price_difference": "0.5",
+          "depth_difference": "3"
+        },
+        "pass": true
+      },
+      {
+        "D_id": "D145",
+        "kind": "OFI",
+        "actual": "4",
+        "expected": "4",
+        "pass": true
+      }
+    ]
+  },
+  "total_distinct_D_ids_reviewed": 77,
+  "distinct_result_representation_types_covered": 68,
+  "distinct_result_representation_types_total_in_G3": 69,
+  "uncalculable_model_type_representatives": [
+    "D102",
+    "D111"
+  ],
+  "raw_source_profile_types_represented_by_77_reviews": 16
+}
