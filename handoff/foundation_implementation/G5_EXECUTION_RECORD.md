@@ -1,5 +1,13 @@
 # Gate 5 execution and recovered checkpoint
 
+### Owner-directed recovery; pause before implementation — 21 October 2026
+
+Recovery baseline 19c14ee461140649110d5d1cc4c1d5d7f40123be/tree dc2b9fe81de02a5d2a381589f3947283d202e6ba restored cleanly on work/v2-g6-recovery-20261021 under owner instruction 20:19. Missing continuations are not recreated and their reported results are not credited. Research f0190af646378441b5eabfc3616c26b3fc46c252/tree 0a2e9052d764b49f8bec63079ba8bd9065d22c0f incorporated by non-fast-forward merge c72dce5466a045c3df422fb9761252c03697b635: all 66 changed paths confined to reuse_preparation, no conflicts or changes to implementation/proof/authority/governance. The root now carries approved §7.0 and exact G0–4 research routing; historical research-local plans are not active programme plans. Existing proof and source are reused, not reauthored. No product tests, calculations or provider calls were run for this documentary recovery.
+
+Recovery checks: merge ancestry includes both designated baseline and research HEAD; complete incoming diff outside preparation is empty. D014 current-pointer/generation-2/four physical-source/predecessor hashes match their admitted records; exact brief SHA c23ea315c94b478c568f105e94891a03af62393792a1478c33027a0371738bb8 retained. All incoming JSON parses and CSV row widths agree with headers; this is transfer structure checking, not a repeated mathematical audit or runtime evidence. Bundle verification/full Git integrity already established; final checkpoint receives fresh-clone readback before delivery.
+
+D014 corrected control remains accepted; generation 2 admitted, engineering/acceptance outstanding. The root's explicit generation-2 admission supersedes this record's older unadmitted-repair heading below. Latest owner direction pauses before recovery-instruction Section 5: no D014 replay or pilot execution. Next on authorised resumption is the existing readiness/replay→P05/P06/strict→candidate regression/independent review/disposition sequence. Source/profile and concrete companion requirements still govern pilot entry. See root recovery entry and §7.0 for the single current reconciliation.
+
 ### D014 pagination proof repair, unadmitted — 20 October 2026, 10:42 Melbourne
 
 OnlyphysicaltestSHA7e26d16d59ac42ac456e631e2acb8a5bee204e937550d5667f6bc580ba99f836 after89dcfirstfailure. Typedgeneratedcursorpagesuseactualpublicseedwithoutfeedingfakecursorintonativefiniteoffsethistory; all4faultcriteria/None/history retained. Syntax/RuffPASSonly; everyproductionbyte0d360/gen1/support/specimensunchanged. No repairedexecutionbefore requiredindependentreview/gen2; oldpointerpreserved, no inplacereseal. P05/P06/fullstrictpending/G6.1open.
