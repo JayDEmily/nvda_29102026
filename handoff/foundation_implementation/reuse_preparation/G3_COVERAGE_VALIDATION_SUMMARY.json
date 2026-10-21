@@ -28,5 +28,21 @@
     "SYNTHETIC_CALENDAR_UNMAPPED_NATIVE_SCHEMA": 14,
     "MATH_CONDITIONAL_ON_ACCEPTED_D111_AND_INTEGRATION_EDGE_POLICY; NOT END_TO_END D111 ORACLE": 2
   },
-  "source_status": "ALL SYNTHETIC, NOT CERTIFIED"
+  "source_status": "ALL SYNTHETIC, NOT CERTIFIED",
+  "typed_math_scenario_count": 126,
+  "typed_math_with_explicit_expected_formula_or_result": 124,
+  "model_numerical_authority_holds": [
+    "D102",
+    "D111"
+  ],
+  "conditional_upstream_density_cases": [
+    "D112",
+    "D113"
+  ],
+  "independently_audited_numeric_cases": 90,
+  "independently_audited_symbolic_enum_cases": 34,
+  "independently_audited_distinct_witness_ids": 124,
+  "M00_M02_physical_source_records_currently_admitted": 0,
+  "research_gate3_disposition": "DOCUMENTARY_SYNTHETIC_CALCULATION_VECTORS_AND_FIXTURE_INSTRUCTIONS_PREPARED_WITH_PRECISE_MODEL_AND_CONCRETE_SEAM_HOLDS",
+  "supersedes_previous_intermediate_97_prose_lack_count": "YES_FOR_CONTROLLED_MATH_OPERANDS_ONLY; PHYSICAL_NATIVE_ROW_AUTHORING_IS_SEPARATE"
 }
