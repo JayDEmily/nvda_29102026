@@ -78,7 +78,10 @@ def test_d018_vwap_comparison(tmp_path, zero):
             index + 1,
         )
     context = f.WindowContextV1(
-        f.VersionRefV1("controlled-vwap-session", 1), literals.START, literals.START + timedelta(hours=1), literals.START
+        f.VersionRefV1("controlled-vwap-session", 1),
+        literals.START,
+        literals.START + timedelta(hours=1),
+        literals.START,
     )
     predecessor_owner = f.create_window_owner(
         admission=f.OwnerAdmissionV1("M02", D017),
@@ -211,7 +214,10 @@ def test_d018_vwap_comparison(tmp_path, zero):
     assert result.unit_conventions == (predecessor.unit_conventions[0],)
     assert result.projection_mappings == (_mapping(),) and result.predecessors == (predecessor,)
     assert result.units == "price / bps" and result.result_shape == "named_exact_comparison"
-    assert result.effective_as_of_utc == literals.ASOF and result.knowledge_cutoff_utc == literals.CUTOFF
+    assert (
+        result.effective_as_of_utc == literals.ASOF
+        and result.knowledge_cutoff_utc == literals.CUTOFF
+    )
     assert result.calculated_at_utc == literals.NOW
     assert result.raw_input_lineage == (
         f.RawInputLineageV1(
