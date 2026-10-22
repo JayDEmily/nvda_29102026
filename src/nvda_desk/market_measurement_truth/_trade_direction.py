@@ -489,6 +489,18 @@ def build_owner(
     _admission(admission)
     if not callable(utc_now):
         raise TypeError("clock must be callable")
+    if not callable(getattr(raw_projection_reader, "list_projected_raw_history", None)):
+        raise TypeError("declared public raw history reader required")
+    for method in (
+        "get_derived_occurrence",
+        "get_calculation_definition",
+        "get_parameter_set",
+        "get_input_selection_policy",
+        "get_unit_convention",
+        "get_projection_mapping",
+    ):
+        if not callable(getattr(predecessor_reader, method, None)):
+            raise TypeError("declared complete v1 predecessor read facet required")
     if type(storage) is f.MemoryStorageV1:
         state: _State = _Memory()
     elif type(storage) is f.SQLiteStorageV1:
