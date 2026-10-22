@@ -1,0 +1,95 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_d023",
+  "semantic_brief_path": "handoff/foundation_implementation/authority/D023_IMPLEMENTATION_BRIEF.md",
+  "target": {
+    "category": "M",
+    "responsibility_name": "neutral_market_measurement_truth",
+    "package": "nvda_desk.market_measurement_truth",
+    "public_seam": "nvda_desk.market_measurement_truth.api",
+    "intent": "modify",
+    "existing_object_id": "M02"
+  },
+  "proof_axis": "product",
+  "product_tier_treatment": "NOT_CLASSIFIED",
+  "architecture_proof_axis": "architecture_kernel",
+  "required_proof_ids": [
+    "D023-CALCULATION"
+  ],
+  "families": [
+    {
+      "id": "mmt_d023",
+      "path": "tests/product/market_measurement_d023/test_overnight_gap.py",
+      "proof_obligation_ids": [
+        "D023-CALCULATION"
+      ],
+      "required_test_names": [
+        "test_d023_overnight_gap"
+      ],
+      "boundary": "K03 D023: ln(R037 current pre-market / R042 previous official close), catalogue order R042,R037.",
+      "proof_levels": [
+        "CONTRACT",
+        "INTEGRATION",
+        "STATE",
+        "SEQUENTIAL_END_TO_END"
+      ],
+      "authoritative_inputs": [
+        "K03 D023: ln(R037 current pre-market / R042 previous official close), catalogue order R042,R037.",
+        "Definition D023-OVERNIGHT-GAP-1; parameter mmt-overnight-gap-50d-half-even/1 P_WINDOW; policy mmt-overnight-gap-selection/1. Native currentS/pre_market at20Oct11:50, priorS_prev/official_close at19Oct13:00;48h reference visibility,60s current; context controlled-preopen-pair/1 [11:00,12:01). Reuse admitted log kernel and D022 role selector unchanged.",
+        "Positive actual close80 and current120 -> exact L30. Negative actual previous-session intraday80 at12:59, otherwise lawful; current same, kind exposed by native mapping."
+      ],
+      "dependency_substitutions": [
+        "Controlled synthetic source/session/completeness only, not native certification.",
+        "Reuse accepted M00/common M02 mechanisms, existing window interface/record store, prior immutable evidence. Exact cases also qualify authorised shared prerequisite; no added suites."
+      ],
+      "case_coverage": {
+        "lawful_positive": {
+          "cases": [
+            "Positive actual close80 and current120 -> exact L30. Negative actual previous-session intraday80 at12:59, otherwise lawful; current same, kind exposed by native mapping. Complete typed metadata, lineage and public durable reopen."
+          ]
+        },
+        "prohibited_false_positive": {
+          "cases": [
+            "Present intraday80 is not previous official close; refuse specifically on native kind/event role, no substituted intraday tick."
+          ]
+        },
+        "missing_mandatory_authority": {
+          "cases": [
+            "Exact bound controlled profile, admission and immutable generation required before runtime."
+          ]
+        },
+        "lawful_optional_absence": {
+          "cases": [
+            "No live provider/calendar integration or other signal required; unsupported prerequisites refuse by contract."
+          ]
+        }
+      },
+      "expected_failure_signals": [
+        "Unsupported admitted D023 owner after actual public prerequisites; no import/fixture failures counted as semantic RED.",
+        "Unavailable lawful prerequisites return None and materialise no occurrence."
+      ],
+      "limitations": [
+        "Exactly two cases; no generic fault/boundary/numeric variant probes, broad suites or earlier claims."
+      ],
+      "adjacent_nonclaims": [
+        "No acceptance beyond this ID; no native-source certification or M00 mutation."
+      ],
+      "environment": "CPython3.12.14 SQLite3.53.1 and existing pinned offline tools.",
+      "material_versions": [
+        "Exact brief/binding/contract/generation and candidate/tree/runtime; old generations preserved."
+      ],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/market_measurement_d023/test_overnight_gap.py"
+    }
+  ],
+  "required_support_files": [],
+  "optional_support_files": [],
+  "execution_policy": {
+    "skipped_tests": "FAIL",
+    "xfailed_tests": "FAIL",
+    "xpassed_tests": "FAIL",
+    "collection_failed": "FAIL",
+    "no_tests_collected": "FAIL",
+    "unexpected_governed_mutation": "FAIL"
+  }
+}
