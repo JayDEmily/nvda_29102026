@@ -1,0 +1,13 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/83dd7c79f14f/NVDA_V2_D021_D025_EXECUTION_20261023
+configfile: pyproject.toml
+collected 2 items
+
+tests/product/market_measurement_d023/test_overnight_gap.py ..           [100%]
+
+============================== 2 passed in 0.33s ===============================
+product-proof aggregate: neutral_market_measurement_truth_d023 state=READY_FOR_PROOF
+authority=77e1ca015da4277c0b197fc9a961513ebca8475c4125e709c6f41967c3af66b4 generation=ec252ea5e144b12783c3957557293110676c8d75a486da68e865328411148e31
+candidate=267adf1c47f7bdff912fbc720aa3ffc7b9b13b5c
+observed aggregate outcome: exit=0
