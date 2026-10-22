@@ -185,3 +185,11 @@ Owner instruction commissions D026–D036 and a downloadable bundle after each s
 Preflight interfaces: D026/D027 add distinct named exact result carriers to the existing result union; D028 adds a separate baseline context; D029 introduces the shared exact-root numeric helper; D032 adds a separate risk context and consumes unchanged log/root helpers. Context union widening preserves all existing dataclass field layouts/canonical bytes; later IDs extend only their fixed admissions/profiles. No D predecessor edges.
 
 D026 admitted19eab38: two intended unsupported-owner RED failures after actual public R037/R137 setup. First scoped mypy found optional source-timestamp narrowing and a local lineage/result variable-name collision. Added exact string guard and renamed only the lineage loop variable; first output retained, affected source typing/lint repeated after repair. No runtime GREEN attempted.
+
+### D026 — ACCEPTED controlled profile
+
+product-proof aggregate: neutral_market_measurement_truth_d026 state=READY_FOR_PROOF
+authority=a2f3fc76cd2cc846fd4885d4f3d3df7a1a3e5c7370700a613ecb0706c853412f generation=60da27538ede2c67c0a947223a54f75701472904a1d75bee8346461e488161b9
+candidate=8861608bc071937c3f40167af7c49f54524b7672
+observed aggregate outcome: exit=0
+Tree 556a66d9c3484c1645369b3aca4ce54206da91d0. Independent final judgement ACCEPT: handoff/foundation_implementation/d026_execution/final_review.md. Full first RED/final GREEN and scoped static results retained in that directory; any first preparation/static failure remains preserved with its repair. No additional cases, old claims, broad suite or successful repeats. Selected source lineage and public typed SQLite reopen qualified inside the two cases. Native certification remains held. Commit acceptance and save the full-history checkpoint before advancing.
