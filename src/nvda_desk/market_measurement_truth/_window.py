@@ -432,10 +432,16 @@ def build_owner(
     from . import (
         _log_return,
         _return_acceleration,
+        _session_range,
         _session_returns,
         _session_vwap,
         _vwap_comparison,
     )
+
+    if type(admission) is f.OwnerAdmissionV1 and admission == f.OwnerAdmissionV1(
+        "M02", _session_range.BRIEF
+    ):
+        return _session_range.build_owner(admission, raw, predecessor, storage, now)
 
     if type(admission) is f.OwnerAdmissionV1 and admission == f.OwnerAdmissionV1(
         "M02", _return_acceleration.BRIEF
@@ -494,10 +500,18 @@ def build_reader(
     from . import (
         _log_return,
         _return_acceleration,
+        _session_range,
         _session_returns,
         _session_vwap,
         _vwap_comparison,
     )
+
+    if type(admission) is f.OwnerAdmissionV1 and admission == f.OwnerAdmissionV1(
+        "M02", _session_range.BRIEF
+    ):
+        if type(storage) is not f.SQLiteReadStorageV1:
+            raise TypeError("exact read-only storage required")
+        return _Reads(RecordState(storage, _decode, _session_range.validate))
 
     if type(admission) is f.OwnerAdmissionV1 and admission == f.OwnerAdmissionV1(
         "M02", _return_acceleration.BRIEF
