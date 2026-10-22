@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_d015",
+  "semantic_brief_path": "handoff/foundation_implementation/authority/D015_IMPLEMENTATION_BRIEF.md",
+  "target": {
+    "category": "M", "responsibility_name": "neutral_market_measurement_truth",
+    "package": "nvda_desk.market_measurement_truth",
+    "public_seam": "nvda_desk.market_measurement_truth.api",
+    "intent": "modify", "existing_object_id": "M02"
+  },
+  "proof_axis": "product",
+  "product_tier_treatment": "NOT_CLASSIFIED",
+  "architecture_proof_axis": "architecture_kernel",
+  "required_proof_ids": ["D015-CALCULATION"],
+  "families": [{
+    "id": "mmt_d015_trade_direction",
+    "path": "tests/product/market_measurement_d015/test_trade_direction.py",
+    "proof_obligation_ids": ["D015-CALCULATION"],
+    "required_test_names": ["test_d015_trade_direction"],
+    "boundary": "Actual public M00 records/projections and unchanged actual D011 producer/read facet to additive D015 public sign owner and ordinary SQLite public readback.",
+    "proof_levels": ["CONTRACT", "INTEGRATION", "STATE", "SEQUENTIAL_END_TO_END"],
+    "authoritative_inputs": [
+      "Accepted K08 quote-first, last-different tick test, unknown zero; R120/R126/R127 plus actual trade-time D011. Exact controlled source correspondence in D015 brief, not native cross-R equivalence.",
+      "Midpoint100: trade101/+1; trade99/-1; trade100 with last different98/+1 or102/-1; no eligible different/0; only post-trade quote/refusal."
+    ],
+    "dependency_substitutions": [
+      "Controlled synthetic quiescent public M00 input only, never provider certification. Actual D011 is retained, not replaced with an injected scalar.",
+      "Unchanged accepted M00/common-M02 evidence is reused where applicable. New result/store roundtrip is exercised by public readback in the successful calculation cases; one positive consumer specimen plus source/control mypy establishes bounded additive type compatibility."
+    ],
+    "case_coverage": {
+      "lawful_positive": {"cases": ["Five enum outcomes, including equality after an immediately prior equal-price trade, with full typed result, units, raw/predecessor lineage and public durable readback."]},
+      "prohibited_false_positive": {"cases": ["Only post-trade quote/D011 cannot classify an earlier trade; this fixture must otherwise reach the actual causal incompatibility. No local midpoint, precomputed sign, bool, guessed direction or implementation-computed oracle."]},
+      "missing_mandatory_authority": {"cases": ["No runtime proof before exact design/binding/control/source adequacy and immutable admission. No actual D011 or incompatible source/time correspondence gives no occurrence."]},
+      "lawful_optional_absence": {"cases": ["No eligible last different prior price gives a lawful sign0. No live provider integration, peer, strategy, exchange calendar or arbitrary precision policy is needed for this fixed controlled sign comparison."]}
+    },
+    "expected_failure_signals": ["Intentional missing additive D015 seam assertion RED after real raw/D011 preconditions; source/admission/import/environment errors are not semantic RED.", "Public invalid type/content TypeError/ValueError, lawful unavailable input None, storage/integrity PersistenceFailureV1."],
+    "limitations": ["Six controlled cases are not native/source certification. They do not repeat generic M00 or old M02 fault/mutation matrices; changed shared mechanisms receive only their attributable bounded checks."],
+    "adjacent_nonclaims": ["No D016–D020 acceptance, old D011 extension, M00 mutation, migration, live effects, retired pilot or gate schedule."],
+    "environment": "CPython3.12.14, existing exact offline dependency pins and compatible recorded SQLite environment; actual host readiness must be established.",
+    "material_versions": ["Exact D015 brief/binding/contract, fixed controlled source/request/configuration and immutable physical proof generation; exact implementation candidate/tree and environment; original accepted generations unchanged."],
+    "tier_treatment": "NOT_CLASSIFIED",
+    "command": "python -m pytest tests/product/market_measurement_d015/test_trade_direction.py"
+  }],
+  "required_support_files": ["tests/product/market_measurement_d015/typing/valid_trade_direction.py"],
+  "optional_support_files": ["tests/product/market_measurement_d015/_support.py"],
+  "execution_policy": {
+    "skipped_tests": "FAIL", "xfailed_tests": "FAIL", "xpassed_tests": "FAIL",
+    "collection_failed": "FAIL", "no_tests_collected": "FAIL", "unexpected_governed_mutation": "FAIL"
+  }
+}

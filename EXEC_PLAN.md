@@ -6,7 +6,7 @@
 
 On 22 October 2026 the owner directed: retire the D042/D043/D047 pilot; specify only D015–D020; retire the previous gate schedule; create a new working branch and cleanly rewrite this plan and its conflicting instructions. This instruction authorises this documentary replacement and its test-local companion. This is the sole current root plan; it introduces no gate hierarchy or alternative programme plan.
 
-**Current status: PLAN_REWRITTEN; IMPLEMENTATION_NOT_STARTED.** This turn performs planning only. Future execution follows §§3–6 after a subsequent execution instruction and the applicable concrete contract/proof admissions. No test result, implementation, new source policy or numerical convention is admitted by writing this plan. Do not ask the owner to reauthorise this already requested rewrite. Existing standing delegation may be used within its scope for concrete later dispositions; it does not supply missing domain decisions or independent review.
+**Current status: EXECUTION_AUTHORISED; D015_CONTRACT_PREPARATION.** On 22 October 2026 the owner instructed “Okay, execute the plan”, accepting execution from `45d6b5e9fc241eec7a78c7e7d52a3b9be644ae69` (plan SHA256 `176313bf9d490b632f141607f8f5ec50b835e9d2c72f19eba0083f41e787dfcf`). Execute §§3–6 in order under their concrete contract/proof admissions. No test result, new source policy or numerical convention follows merely from execution permission. Existing standing delegation may be used within its scope for concrete dispositions; it does not supply missing domain decisions or independent review.
 
 ### 1.2 Exact baseline and preservation
 
@@ -171,8 +171,14 @@ Default pytest collection in `pyproject.toml` remains architecture/bootstrap. It
 | Work | Current status / next action |
 | --- | --- |
 | Plan replacement and scoped agent/README reconciliation | WRITTEN; documentary scope/preservation checks recorded at delivery; no implementation execution |
-| Concrete per-ID authority, source/result policies and common control | NOT_STARTED; §5.1 is the first future execution work |
+| Concrete per-ID authority, source/result policies and common control | IN_PROGRESS: D015 controlled contract preparation; no new behaviour/control applied |
 | D015 / D016 / D017 / D018 / D019 / D020 | NOT_STARTED / NOT_STARTED / NOT_STARTED / NOT_STARTED / NOT_STARTED / NOT_STARTED |
-| New proof admissions, RED/GREEN, independent implementation dispositions | NOT_RUN / NOT_OBTAINED in this planning turn |
+| New proof admissions, RED/GREEN, independent implementation dispositions | NOT_RUN / NOT_OBTAINED in this execution continuation |
 
 Use this section for current progress, decisions, discoveries and the first unmet invariant; retain detailed logs as evidence, not as another execution schedule. At a missing authority, failed integrity check or observed required failure, stop dependent work, preserve the last proved state and diagnose only that reached condition. Retiring old scheduling never converts a missing invariant into success.
+
+### 7.1 Execution preflight — 22 October 2026
+
+Baseline `45d6b5e` was clean on the designated work branch. The current system `/usr/bin/python3.12` reports 3.12.3 and is not the proof interpreter; the runtime-owned `/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12` reports the required 3.12.14. No runtime test has been executed.
+
+Shared-interface finding: D015 has R120/R126/R127 plus actual D011, whereas accepted D011 retains R034/R035. Read-only independent assessment `/root/d015_authority_check` confirmed that this distinction is not itself a proved blocker: §5.1 commissions a precise new controlled correspondence, not replacement of the old D011 maps. Ruling: specify separate controlled D015 observations with explicit correspondence to unchanged actual D011 quote facts; preserve old single-R reference observations and make no native cross-R equivalence claim. Cost if wrong: the proposed contract must return before admission, not be implemented by silent aliasing. Exact controlled source/temporal/result bytes and their design judgement remain the first unmet entry condition. No legacy fixture or author judgement alone admits them.
