@@ -1,0 +1,385 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/83dd7c79f14f/NVDA_V2_CLEAN_RECOVERED_REPO_20261022
+configfile: pyproject.toml
+collected 5 items
+
+tests/product/market_measurement_d016/test_signed_trade_volume.py FFFFF  [100%]
+
+=================================== FAILURES ===================================
+______________ test_d016_signed_trade_volume[1-False-2-selected0] ______________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-3/test_d016_signed_trade_volume_0')
+seconds = 1, unknown = False, expected = '2', selected = ('A',)
+
+    @pytest.mark.parametrize(
+        "seconds,unknown,expected,selected",
+        [(1, False, "2", ("A",)), (5, False, "-1", ("A", "B")),
+         (60, False, "3", ("A", "B", "C")),
+         (300, False, "-4", ("A", "B", "C", "D")),
+         (1, True, None, ("A",))],
+    )
+    def test_d016_signed_trade_volume(tmp_path, seconds, unknown, expected, selected):
+        literals = _literals()
+        asof = datetime(2026, 10, 20, 12, 0, 10, tzinfo=UTC)
+        cutoff = asof + timedelta(seconds=1)
+        now = cutoff + timedelta(seconds=1)
+        raw = r.create_owner()
+        config = literals.configuration(f, raw.reads, now=lambda: now)
+        config["admission"] = f.OwnerAdmissionV1("M02", MID_BRIEF)
+        midpoint_owner = f.create_owner(**config)
+        sign_owner = f.create_trade_direction_owner(
+            admission=f.OwnerAdmissionV1("M02", SIGN_BRIEF), raw_projection_reader=raw.reads,
+            predecessor_reader=midpoint_owner.reads, storage=f.MemoryStorageV1(), utc_now=lambda: now,
+        )
+        signs = {}
+        # Oldest first. Unknown A is first in this separate case: no different prior price.
+        trades = [("A", 0.5, "100", "2", 0)] if unknown else [
+            ("D", 120, "99", "7", -1), ("C", 30, "101", "4", 1),
+            ("B", 3, "99", "3", -1), ("A", 0.5, "101", "2", 1),
+        ]
+        for index, (identity, age, price, size, expected_sign) in enumerate(trades):
+            event = asof - timedelta(seconds=age)
+            for side, value, rid in (("bid", "99", "R126"), ("ask", "101", "R127")):
+                quote = literals.observation(
+                    side, identity=identity + "-old-" + side, value=Decimal(value),
+                    event=event, receipt=event, sequence=index * 5 + (1 if side == "bid" else 2),
+                )
+                raw.commands.admit_raw_observation_occurrence(quote)
+                raw.commands.admit_raw_observation_occurrence(replace(
+                    quote, observation_occurrence_id=r.observation_occurrence_id(identity + "-" + rid),
+                    raw_signal_catalogue_ids=(r.RawSignalCatalogueId(rid),),
+                ))
+            midpoint = midpoint_owner.materialise(literals.request(
+                f, as_of_utc=event, knowledge_cutoff_utc=cutoff,
+            ))
+            assert midpoint is not None and midpoint.result == Decimal("100")
+            # One native trade occurrence, two explicit field mappings with distinct units.
+            trade = replace(
+                literals.observation("bid", event=event, receipt=event),
+                observation_occurrence_id=r.observation_occurrence_id(identity),
+                native_record={"trade": {"price": Decimal(price), "size": Decimal(size)}},
+                raw_signal_catalogue_ids=(r.RawSignalCatalogueId("R120"), r.RawSignalCatalogueId("R121")),
+                ingestion_sequence=index * 5 + 3, native_units=None,
+            )
+            raw.commands.admit_raw_observation_occurrence(trade)
+            sign_request = f.TradeDirectionRequestV1(f.CalculationRequestV1(
+                "D015", "NVDA", event, cutoff, "D015-TRADE-DIRECTION-1",
+                f.VersionRefV1("mmt-trade-rule", 1), f.VersionRefV1("mmt-pilot-selection", 1), (),
+                tuple(f.RawInputBindingV1(
+                    rid, f.VersionRefV1(_mapping(rid).mapping_id, 1),
+                    f.VersionRefV1("mmt-pilot-price", 1), "NVDA",
+                ) for rid in ("R120", "R126", "R127")),
+            ), midpoint.derived_occurrence_id)
+            signs[identity] = sign_owner.materialise(sign_request)
+            assert signs[identity] is not None and signs[identity].result == expected_sign
+            assert signs[identity].raw_input_lineage[0].observation_occurrence_id == identity
+>       assert hasattr(f, "create_window_owner"), "admitted M02 window calculation capability is absent"
+E       AssertionError: admitted M02 window calculation capability is absent
+E       assert False
+E        +  where False = hasattr(f, 'create_window_owner')
+
+tests/product/market_measurement_d016/test_signed_trade_volume.py:104: AssertionError
+_____________ test_d016_signed_trade_volume[5-False--1-selected1] ______________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-3/test_d016_signed_trade_volume_1')
+seconds = 5, unknown = False, expected = '-1', selected = ('A', 'B')
+
+    @pytest.mark.parametrize(
+        "seconds,unknown,expected,selected",
+        [(1, False, "2", ("A",)), (5, False, "-1", ("A", "B")),
+         (60, False, "3", ("A", "B", "C")),
+         (300, False, "-4", ("A", "B", "C", "D")),
+         (1, True, None, ("A",))],
+    )
+    def test_d016_signed_trade_volume(tmp_path, seconds, unknown, expected, selected):
+        literals = _literals()
+        asof = datetime(2026, 10, 20, 12, 0, 10, tzinfo=UTC)
+        cutoff = asof + timedelta(seconds=1)
+        now = cutoff + timedelta(seconds=1)
+        raw = r.create_owner()
+        config = literals.configuration(f, raw.reads, now=lambda: now)
+        config["admission"] = f.OwnerAdmissionV1("M02", MID_BRIEF)
+        midpoint_owner = f.create_owner(**config)
+        sign_owner = f.create_trade_direction_owner(
+            admission=f.OwnerAdmissionV1("M02", SIGN_BRIEF), raw_projection_reader=raw.reads,
+            predecessor_reader=midpoint_owner.reads, storage=f.MemoryStorageV1(), utc_now=lambda: now,
+        )
+        signs = {}
+        # Oldest first. Unknown A is first in this separate case: no different prior price.
+        trades = [("A", 0.5, "100", "2", 0)] if unknown else [
+            ("D", 120, "99", "7", -1), ("C", 30, "101", "4", 1),
+            ("B", 3, "99", "3", -1), ("A", 0.5, "101", "2", 1),
+        ]
+        for index, (identity, age, price, size, expected_sign) in enumerate(trades):
+            event = asof - timedelta(seconds=age)
+            for side, value, rid in (("bid", "99", "R126"), ("ask", "101", "R127")):
+                quote = literals.observation(
+                    side, identity=identity + "-old-" + side, value=Decimal(value),
+                    event=event, receipt=event, sequence=index * 5 + (1 if side == "bid" else 2),
+                )
+                raw.commands.admit_raw_observation_occurrence(quote)
+                raw.commands.admit_raw_observation_occurrence(replace(
+                    quote, observation_occurrence_id=r.observation_occurrence_id(identity + "-" + rid),
+                    raw_signal_catalogue_ids=(r.RawSignalCatalogueId(rid),),
+                ))
+            midpoint = midpoint_owner.materialise(literals.request(
+                f, as_of_utc=event, knowledge_cutoff_utc=cutoff,
+            ))
+            assert midpoint is not None and midpoint.result == Decimal("100")
+            # One native trade occurrence, two explicit field mappings with distinct units.
+            trade = replace(
+                literals.observation("bid", event=event, receipt=event),
+                observation_occurrence_id=r.observation_occurrence_id(identity),
+                native_record={"trade": {"price": Decimal(price), "size": Decimal(size)}},
+                raw_signal_catalogue_ids=(r.RawSignalCatalogueId("R120"), r.RawSignalCatalogueId("R121")),
+                ingestion_sequence=index * 5 + 3, native_units=None,
+            )
+            raw.commands.admit_raw_observation_occurrence(trade)
+            sign_request = f.TradeDirectionRequestV1(f.CalculationRequestV1(
+                "D015", "NVDA", event, cutoff, "D015-TRADE-DIRECTION-1",
+                f.VersionRefV1("mmt-trade-rule", 1), f.VersionRefV1("mmt-pilot-selection", 1), (),
+                tuple(f.RawInputBindingV1(
+                    rid, f.VersionRefV1(_mapping(rid).mapping_id, 1),
+                    f.VersionRefV1("mmt-pilot-price", 1), "NVDA",
+                ) for rid in ("R120", "R126", "R127")),
+            ), midpoint.derived_occurrence_id)
+            signs[identity] = sign_owner.materialise(sign_request)
+            assert signs[identity] is not None and signs[identity].result == expected_sign
+            assert signs[identity].raw_input_lineage[0].observation_occurrence_id == identity
+>       assert hasattr(f, "create_window_owner"), "admitted M02 window calculation capability is absent"
+E       AssertionError: admitted M02 window calculation capability is absent
+E       assert False
+E        +  where False = hasattr(f, 'create_window_owner')
+
+tests/product/market_measurement_d016/test_signed_trade_volume.py:104: AssertionError
+_____________ test_d016_signed_trade_volume[60-False-3-selected2] ______________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-3/test_d016_signed_trade_volume_2')
+seconds = 60, unknown = False, expected = '3', selected = ('A', 'B', 'C')
+
+    @pytest.mark.parametrize(
+        "seconds,unknown,expected,selected",
+        [(1, False, "2", ("A",)), (5, False, "-1", ("A", "B")),
+         (60, False, "3", ("A", "B", "C")),
+         (300, False, "-4", ("A", "B", "C", "D")),
+         (1, True, None, ("A",))],
+    )
+    def test_d016_signed_trade_volume(tmp_path, seconds, unknown, expected, selected):
+        literals = _literals()
+        asof = datetime(2026, 10, 20, 12, 0, 10, tzinfo=UTC)
+        cutoff = asof + timedelta(seconds=1)
+        now = cutoff + timedelta(seconds=1)
+        raw = r.create_owner()
+        config = literals.configuration(f, raw.reads, now=lambda: now)
+        config["admission"] = f.OwnerAdmissionV1("M02", MID_BRIEF)
+        midpoint_owner = f.create_owner(**config)
+        sign_owner = f.create_trade_direction_owner(
+            admission=f.OwnerAdmissionV1("M02", SIGN_BRIEF), raw_projection_reader=raw.reads,
+            predecessor_reader=midpoint_owner.reads, storage=f.MemoryStorageV1(), utc_now=lambda: now,
+        )
+        signs = {}
+        # Oldest first. Unknown A is first in this separate case: no different prior price.
+        trades = [("A", 0.5, "100", "2", 0)] if unknown else [
+            ("D", 120, "99", "7", -1), ("C", 30, "101", "4", 1),
+            ("B", 3, "99", "3", -1), ("A", 0.5, "101", "2", 1),
+        ]
+        for index, (identity, age, price, size, expected_sign) in enumerate(trades):
+            event = asof - timedelta(seconds=age)
+            for side, value, rid in (("bid", "99", "R126"), ("ask", "101", "R127")):
+                quote = literals.observation(
+                    side, identity=identity + "-old-" + side, value=Decimal(value),
+                    event=event, receipt=event, sequence=index * 5 + (1 if side == "bid" else 2),
+                )
+                raw.commands.admit_raw_observation_occurrence(quote)
+                raw.commands.admit_raw_observation_occurrence(replace(
+                    quote, observation_occurrence_id=r.observation_occurrence_id(identity + "-" + rid),
+                    raw_signal_catalogue_ids=(r.RawSignalCatalogueId(rid),),
+                ))
+            midpoint = midpoint_owner.materialise(literals.request(
+                f, as_of_utc=event, knowledge_cutoff_utc=cutoff,
+            ))
+            assert midpoint is not None and midpoint.result == Decimal("100")
+            # One native trade occurrence, two explicit field mappings with distinct units.
+            trade = replace(
+                literals.observation("bid", event=event, receipt=event),
+                observation_occurrence_id=r.observation_occurrence_id(identity),
+                native_record={"trade": {"price": Decimal(price), "size": Decimal(size)}},
+                raw_signal_catalogue_ids=(r.RawSignalCatalogueId("R120"), r.RawSignalCatalogueId("R121")),
+                ingestion_sequence=index * 5 + 3, native_units=None,
+            )
+            raw.commands.admit_raw_observation_occurrence(trade)
+            sign_request = f.TradeDirectionRequestV1(f.CalculationRequestV1(
+                "D015", "NVDA", event, cutoff, "D015-TRADE-DIRECTION-1",
+                f.VersionRefV1("mmt-trade-rule", 1), f.VersionRefV1("mmt-pilot-selection", 1), (),
+                tuple(f.RawInputBindingV1(
+                    rid, f.VersionRefV1(_mapping(rid).mapping_id, 1),
+                    f.VersionRefV1("mmt-pilot-price", 1), "NVDA",
+                ) for rid in ("R120", "R126", "R127")),
+            ), midpoint.derived_occurrence_id)
+            signs[identity] = sign_owner.materialise(sign_request)
+            assert signs[identity] is not None and signs[identity].result == expected_sign
+            assert signs[identity].raw_input_lineage[0].observation_occurrence_id == identity
+>       assert hasattr(f, "create_window_owner"), "admitted M02 window calculation capability is absent"
+E       AssertionError: admitted M02 window calculation capability is absent
+E       assert False
+E        +  where False = hasattr(f, 'create_window_owner')
+
+tests/product/market_measurement_d016/test_signed_trade_volume.py:104: AssertionError
+____________ test_d016_signed_trade_volume[300-False--4-selected3] _____________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-3/test_d016_signed_trade_volume_3')
+seconds = 300, unknown = False, expected = '-4', selected = ('A', 'B', 'C', 'D')
+
+    @pytest.mark.parametrize(
+        "seconds,unknown,expected,selected",
+        [(1, False, "2", ("A",)), (5, False, "-1", ("A", "B")),
+         (60, False, "3", ("A", "B", "C")),
+         (300, False, "-4", ("A", "B", "C", "D")),
+         (1, True, None, ("A",))],
+    )
+    def test_d016_signed_trade_volume(tmp_path, seconds, unknown, expected, selected):
+        literals = _literals()
+        asof = datetime(2026, 10, 20, 12, 0, 10, tzinfo=UTC)
+        cutoff = asof + timedelta(seconds=1)
+        now = cutoff + timedelta(seconds=1)
+        raw = r.create_owner()
+        config = literals.configuration(f, raw.reads, now=lambda: now)
+        config["admission"] = f.OwnerAdmissionV1("M02", MID_BRIEF)
+        midpoint_owner = f.create_owner(**config)
+        sign_owner = f.create_trade_direction_owner(
+            admission=f.OwnerAdmissionV1("M02", SIGN_BRIEF), raw_projection_reader=raw.reads,
+            predecessor_reader=midpoint_owner.reads, storage=f.MemoryStorageV1(), utc_now=lambda: now,
+        )
+        signs = {}
+        # Oldest first. Unknown A is first in this separate case: no different prior price.
+        trades = [("A", 0.5, "100", "2", 0)] if unknown else [
+            ("D", 120, "99", "7", -1), ("C", 30, "101", "4", 1),
+            ("B", 3, "99", "3", -1), ("A", 0.5, "101", "2", 1),
+        ]
+        for index, (identity, age, price, size, expected_sign) in enumerate(trades):
+            event = asof - timedelta(seconds=age)
+            for side, value, rid in (("bid", "99", "R126"), ("ask", "101", "R127")):
+                quote = literals.observation(
+                    side, identity=identity + "-old-" + side, value=Decimal(value),
+                    event=event, receipt=event, sequence=index * 5 + (1 if side == "bid" else 2),
+                )
+                raw.commands.admit_raw_observation_occurrence(quote)
+                raw.commands.admit_raw_observation_occurrence(replace(
+                    quote, observation_occurrence_id=r.observation_occurrence_id(identity + "-" + rid),
+                    raw_signal_catalogue_ids=(r.RawSignalCatalogueId(rid),),
+                ))
+            midpoint = midpoint_owner.materialise(literals.request(
+                f, as_of_utc=event, knowledge_cutoff_utc=cutoff,
+            ))
+            assert midpoint is not None and midpoint.result == Decimal("100")
+            # One native trade occurrence, two explicit field mappings with distinct units.
+            trade = replace(
+                literals.observation("bid", event=event, receipt=event),
+                observation_occurrence_id=r.observation_occurrence_id(identity),
+                native_record={"trade": {"price": Decimal(price), "size": Decimal(size)}},
+                raw_signal_catalogue_ids=(r.RawSignalCatalogueId("R120"), r.RawSignalCatalogueId("R121")),
+                ingestion_sequence=index * 5 + 3, native_units=None,
+            )
+            raw.commands.admit_raw_observation_occurrence(trade)
+            sign_request = f.TradeDirectionRequestV1(f.CalculationRequestV1(
+                "D015", "NVDA", event, cutoff, "D015-TRADE-DIRECTION-1",
+                f.VersionRefV1("mmt-trade-rule", 1), f.VersionRefV1("mmt-pilot-selection", 1), (),
+                tuple(f.RawInputBindingV1(
+                    rid, f.VersionRefV1(_mapping(rid).mapping_id, 1),
+                    f.VersionRefV1("mmt-pilot-price", 1), "NVDA",
+                ) for rid in ("R120", "R126", "R127")),
+            ), midpoint.derived_occurrence_id)
+            signs[identity] = sign_owner.materialise(sign_request)
+            assert signs[identity] is not None and signs[identity].result == expected_sign
+            assert signs[identity].raw_input_lineage[0].observation_occurrence_id == identity
+>       assert hasattr(f, "create_window_owner"), "admitted M02 window calculation capability is absent"
+E       AssertionError: admitted M02 window calculation capability is absent
+E       assert False
+E        +  where False = hasattr(f, 'create_window_owner')
+
+tests/product/market_measurement_d016/test_signed_trade_volume.py:104: AssertionError
+_____________ test_d016_signed_trade_volume[1-True-None-selected4] _____________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-3/test_d016_signed_trade_volume_4')
+seconds = 1, unknown = True, expected = None, selected = ('A',)
+
+    @pytest.mark.parametrize(
+        "seconds,unknown,expected,selected",
+        [(1, False, "2", ("A",)), (5, False, "-1", ("A", "B")),
+         (60, False, "3", ("A", "B", "C")),
+         (300, False, "-4", ("A", "B", "C", "D")),
+         (1, True, None, ("A",))],
+    )
+    def test_d016_signed_trade_volume(tmp_path, seconds, unknown, expected, selected):
+        literals = _literals()
+        asof = datetime(2026, 10, 20, 12, 0, 10, tzinfo=UTC)
+        cutoff = asof + timedelta(seconds=1)
+        now = cutoff + timedelta(seconds=1)
+        raw = r.create_owner()
+        config = literals.configuration(f, raw.reads, now=lambda: now)
+        config["admission"] = f.OwnerAdmissionV1("M02", MID_BRIEF)
+        midpoint_owner = f.create_owner(**config)
+        sign_owner = f.create_trade_direction_owner(
+            admission=f.OwnerAdmissionV1("M02", SIGN_BRIEF), raw_projection_reader=raw.reads,
+            predecessor_reader=midpoint_owner.reads, storage=f.MemoryStorageV1(), utc_now=lambda: now,
+        )
+        signs = {}
+        # Oldest first. Unknown A is first in this separate case: no different prior price.
+        trades = [("A", 0.5, "100", "2", 0)] if unknown else [
+            ("D", 120, "99", "7", -1), ("C", 30, "101", "4", 1),
+            ("B", 3, "99", "3", -1), ("A", 0.5, "101", "2", 1),
+        ]
+        for index, (identity, age, price, size, expected_sign) in enumerate(trades):
+            event = asof - timedelta(seconds=age)
+            for side, value, rid in (("bid", "99", "R126"), ("ask", "101", "R127")):
+                quote = literals.observation(
+                    side, identity=identity + "-old-" + side, value=Decimal(value),
+                    event=event, receipt=event, sequence=index * 5 + (1 if side == "bid" else 2),
+                )
+                raw.commands.admit_raw_observation_occurrence(quote)
+                raw.commands.admit_raw_observation_occurrence(replace(
+                    quote, observation_occurrence_id=r.observation_occurrence_id(identity + "-" + rid),
+                    raw_signal_catalogue_ids=(r.RawSignalCatalogueId(rid),),
+                ))
+            midpoint = midpoint_owner.materialise(literals.request(
+                f, as_of_utc=event, knowledge_cutoff_utc=cutoff,
+            ))
+            assert midpoint is not None and midpoint.result == Decimal("100")
+            # One native trade occurrence, two explicit field mappings with distinct units.
+            trade = replace(
+                literals.observation("bid", event=event, receipt=event),
+                observation_occurrence_id=r.observation_occurrence_id(identity),
+                native_record={"trade": {"price": Decimal(price), "size": Decimal(size)}},
+                raw_signal_catalogue_ids=(r.RawSignalCatalogueId("R120"), r.RawSignalCatalogueId("R121")),
+                ingestion_sequence=index * 5 + 3, native_units=None,
+            )
+            raw.commands.admit_raw_observation_occurrence(trade)
+            sign_request = f.TradeDirectionRequestV1(f.CalculationRequestV1(
+                "D015", "NVDA", event, cutoff, "D015-TRADE-DIRECTION-1",
+                f.VersionRefV1("mmt-trade-rule", 1), f.VersionRefV1("mmt-pilot-selection", 1), (),
+                tuple(f.RawInputBindingV1(
+                    rid, f.VersionRefV1(_mapping(rid).mapping_id, 1),
+                    f.VersionRefV1("mmt-pilot-price", 1), "NVDA",
+                ) for rid in ("R120", "R126", "R127")),
+            ), midpoint.derived_occurrence_id)
+            signs[identity] = sign_owner.materialise(sign_request)
+            assert signs[identity] is not None and signs[identity].result == expected_sign
+            assert signs[identity].raw_input_lineage[0].observation_occurrence_id == identity
+>       assert hasattr(f, "create_window_owner"), "admitted M02 window calculation capability is absent"
+E       AssertionError: admitted M02 window calculation capability is absent
+E       assert False
+E        +  where False = hasattr(f, 'create_window_owner')
+
+tests/product/market_measurement_d016/test_signed_trade_volume.py:104: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/market_measurement_d016/test_signed_trade_volume.py::test_d016_signed_trade_volume[1-False-2-selected0]
+FAILED tests/product/market_measurement_d016/test_signed_trade_volume.py::test_d016_signed_trade_volume[5-False--1-selected1]
+FAILED tests/product/market_measurement_d016/test_signed_trade_volume.py::test_d016_signed_trade_volume[60-False-3-selected2]
+FAILED tests/product/market_measurement_d016/test_signed_trade_volume.py::test_d016_signed_trade_volume[300-False--4-selected3]
+FAILED tests/product/market_measurement_d016/test_signed_trade_volume.py::test_d016_signed_trade_volume[1-True-None-selected4]
+============================== 5 failed in 0.51s ===============================
+product-proof aggregate: neutral_market_measurement_truth_d016 state=READY_FOR_PROOF
+authority=bcf43f272179b7291a9851a5a1731efc7a90fb156d92de7108e41683045dae01 generation=aea26b41063fa3ec1536f14e383e6cd5f55c805e0f326e2b4bf6d26ff86e573c
+candidate=4ef58ce4b1b655106b2e65704a3c2a6903a2bda4
+observed aggregate outcome: exit=1

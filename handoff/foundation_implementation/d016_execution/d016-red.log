@@ -1,0 +1,1 @@
+FAIL: implementation binding schema failure: $.acceptance.authority_ref: value 'owner-chat/20261022/D016-necessary-prerequisite-authorised;standing-delegation' does not match '^[A-Za-z0-9][A-Za-z0-9._:/@#-]{0,255}$'

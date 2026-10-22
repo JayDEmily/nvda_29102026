@@ -744,3 +744,89 @@ __all__ += [
     "create_trade_direction_owner",
     "create_trade_direction_reader",
 ]
+
+
+@dataclass(frozen=True, slots=True)
+class WindowContextV1(_Validated):
+    ref: VersionRefV1
+    session_start_utc: datetime
+    session_end_utc: datetime
+    history_complete_from_utc: datetime
+
+
+@dataclass(frozen=True, slots=True)
+class WindowCalculationRequestV1(_Validated):
+    calculation: CalculationRequestV1
+    context: WindowContextV1
+    predecessor_occurrence_ids: tuple[str, ...]
+
+
+@dataclass(frozen=True, slots=True)
+class WindowMeasurementOccurrenceV1(_Validated):
+    owner_object_id: str
+    owner_namespace: str
+    implementation_brief_sha256: str
+    derived_signal_id: str
+    derived_occurrence_id: str
+    request: WindowCalculationRequestV1
+    definition: CalculationDefinitionV1
+    parameter_set: CalculationParameterSetV1
+    input_selection_policy: InputSelectionPolicyVersionV1
+    unit_conventions: tuple[UnitConventionVersionV1, ...]
+    projection_mappings: tuple[raw_api.RawSignalProjectionMappingV1, ...]
+    raw_input_lineage: tuple[RawInputLineageV1, ...]
+    predecessors: tuple[TradeDirectionOccurrenceV1, ...]
+    window_seconds: int
+    result: Decimal
+    units: str
+    result_shape: str
+    effective_as_of_utc: datetime
+    knowledge_cutoff_utc: datetime
+    calculated_at_utc: datetime
+
+
+class MeasurementWindowReadsV1(Protocol):
+    def get_derived_occurrence(
+        self, derived_occurrence_id: str
+    ) -> WindowMeasurementOccurrenceV1 | None: ...
+    def list_derived_history(
+        self, *, derived_signal_id: str, subject_instrument: str,
+        effective_at_or_before_utc: datetime, knowledge_at_or_before_utc: datetime, limit: int,
+    ) -> tuple[WindowMeasurementOccurrenceV1, ...]: ...
+
+
+class MeasurementWindowOwnerV1(Protocol):
+    @property
+    def reads(self) -> MeasurementWindowReadsV1: ...
+    def materialise(
+        self, request: WindowCalculationRequestV1
+    ) -> WindowMeasurementOccurrenceV1 | None: ...
+
+
+def create_window_owner(
+    *, admission: OwnerAdmissionV1, raw_projection_reader: RawProjectionReaderV1,
+    predecessor_reader: MeasurementTradeDirectionReadsV1,
+    storage: MemoryStorageV1 | SQLiteStorageV1, utc_now: Callable[[], datetime],
+) -> MeasurementWindowOwnerV1:
+    from ._window import build_owner
+
+    return build_owner(admission, raw_projection_reader, predecessor_reader, storage, utc_now)
+
+
+def create_window_reader(
+    *, admission: OwnerAdmissionV1, storage: SQLiteReadStorageV1,
+) -> MeasurementWindowReadsV1:
+    from ._window import build_reader
+
+    return build_reader(admission, storage)
+
+
+__all__ += [
+    "MeasurementWindowOwnerV1",
+    "MeasurementWindowReadsV1",
+    "WindowCalculationRequestV1",
+    "WindowContextV1",
+    "WindowMeasurementOccurrenceV1",
+    "create_window_owner",
+    "create_window_reader",
+]

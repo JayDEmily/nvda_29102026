@@ -1,0 +1,63 @@
+I001 [*] Import block is un-sorted or un-formatted
+  --> src/nvda_desk/market_measurement_truth/_window.py:3:1
+   |
+ 1 |   """Fixed window selection and D016 signed-volume law over actual public evidence."""
+ 2 |
+ 3 | / from __future__ import annotations
+ 4 | |
+ 5 | | import hashlib
+ 6 | | import re
+ 7 | | from collections.abc import Callable
+ 8 | | from dataclasses import fields, replace
+ 9 | | from datetime import UTC, datetime, timedelta
+10 | | from decimal import Decimal
+11 | | from typing import cast
+12 | |
+13 | | from nvda_desk.raw_signal_occurrence_truth import api as raw_api
+14 | |
+15 | | from . import api as f
+16 | | from ._catalogue import _AUTHORITY
+17 | | from ._evaluation import canonical, decode as decode_record, spread
+18 | | from ._record_store import RecordState
+19 | | from ._selection import _same_content, eligible
+20 | | from ._trade_direction import POLICY as SIGN_POLICY, validate as validate_sign
+   | |______________________________________________________________________________^
+21 |
+22 |   BRIEF = "bcf43f272179b7291a9851a5a1731efc7a90fb156d92de7108e41683045dae01"
+   |
+help: Organize imports
+
+E501 Line too long (109 > 100)
+   --> src/nvda_desk/market_measurement_truth/api.py:789:101
+    |
+788 | class MeasurementWindowReadsV1(Protocol):
+789 |     def get_derived_occurrence(self, derived_occurrence_id: str) -> WindowMeasurementOccurrenceV1 | None: ...
+    |                                                                                                     ^^^^^^^^^
+790 |     def list_derived_history(
+791 |         self, *, derived_signal_id: str, subject_instrument: str,
+    |
+
+E501 Line too long (107 > 100)
+   --> src/nvda_desk/market_measurement_truth/api.py:799:101
+    |
+797 |     @property
+798 |     def reads(self) -> MeasurementWindowReadsV1: ...
+799 |     def materialise(self, request: WindowCalculationRequestV1) -> WindowMeasurementOccurrenceV1 | None: ...
+    |                                                                                                     ^^^^^^^
+    |
+
+RUF022 [*] `__all__` is not sorted
+   --> src/nvda_desk/market_measurement_truth/api.py:820:12
+    |
+820 |   __all__ += [
+    |  ____________^
+821 | |     "WindowContextV1", "WindowCalculationRequestV1", "WindowMeasurementOccurrenceV1",
+822 | |     "MeasurementWindowReadsV1", "MeasurementWindowOwnerV1",
+823 | |     "create_window_owner", "create_window_reader",
+824 | | ]
+    | |_^
+    |
+help: Apply an isort-style sorting to `__all__`
+
+Found 4 errors.
+[*] 2 fixable with the `--fix` option.
