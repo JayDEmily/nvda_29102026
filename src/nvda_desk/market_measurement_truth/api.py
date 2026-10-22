@@ -777,7 +777,7 @@ class WindowMeasurementOccurrenceV1(_Validated):
     raw_input_lineage: tuple[RawInputLineageV1, ...]
     predecessors: tuple[TradeDirectionOccurrenceV1, ...]
     window_seconds: int
-    result: Decimal
+    result: Decimal | ExactRatioV1
     units: str
     result_shape: str
     effective_as_of_utc: datetime
@@ -805,7 +805,7 @@ class MeasurementWindowOwnerV1(Protocol):
 
 def create_window_owner(
     *, admission: OwnerAdmissionV1, raw_projection_reader: RawProjectionReaderV1,
-    predecessor_reader: MeasurementTradeDirectionReadsV1,
+    predecessor_reader: MeasurementTradeDirectionReadsV1 | None = None,
     storage: MemoryStorageV1 | SQLiteStorageV1, utc_now: Callable[[], datetime],
 ) -> MeasurementWindowOwnerV1:
     from ._window import build_owner

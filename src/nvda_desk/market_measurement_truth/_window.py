@@ -420,15 +420,22 @@ class _Owner:
 def build_owner(
     admission: f.OwnerAdmissionV1,
     raw: f.RawProjectionReaderV1,
-    predecessor: f.MeasurementTradeDirectionReadsV1,
+    predecessor: f.MeasurementTradeDirectionReadsV1 | None,
     storage: f.MemoryStorageV1 | f.SQLiteStorageV1,
     now: Callable[[], datetime],
 ) -> f.MeasurementWindowOwnerV1:
+    from . import _session_vwap
+
+    if type(admission) is f.OwnerAdmissionV1 and admission == f.OwnerAdmissionV1(
+        "M02", _session_vwap.BRIEF
+    ):
+        return _session_vwap.build_owner(admission, raw, predecessor, storage, now)
     _admission(admission)
     if (
         type(storage) not in (f.MemoryStorageV1, f.SQLiteStorageV1)
         or not callable(now)
         or not callable(getattr(raw, "list_projected_raw_history", None))
+        or predecessor is None
         or not callable(getattr(predecessor, "get_derived_occurrence", None))
     ):
         raise TypeError("declared window dependencies required")
@@ -438,6 +445,14 @@ def build_owner(
 def build_reader(
     admission: f.OwnerAdmissionV1, storage: f.SQLiteReadStorageV1
 ) -> f.MeasurementWindowReadsV1:
+    from . import _session_vwap
+
+    if type(admission) is f.OwnerAdmissionV1 and admission == f.OwnerAdmissionV1(
+        "M02", _session_vwap.BRIEF
+    ):
+        if type(storage) is not f.SQLiteReadStorageV1:
+            raise TypeError("exact read-only storage required")
+        return _Reads(RecordState(storage, _decode, _session_vwap.validate))
     _admission(admission)
     if type(storage) is not f.SQLiteReadStorageV1:
         raise TypeError("exact read-only storage required")
