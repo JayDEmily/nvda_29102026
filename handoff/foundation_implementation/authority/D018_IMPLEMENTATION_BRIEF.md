@@ -1,0 +1,28 @@
+# D018 — bounded controlled implementation
+
+Status: ACCEPTED_FOR_IMPLEMENTATION under owner instruction to complete D018,D019,D020 and subsequent Yes authorising necessary shared prerequisites and 50-significant-digit round-half-even logarithms. Standing delegation binds these concrete controlled policies and worker source/fixture adequacy; one final independent review required. Work in ID order and accept individually.
+
+## 1. Meaning and exact controlled profile
+Primary K02 D018 and catalogue row: named price_difference=provider_vwap−D017; bps_difference=10000*difference/D017. Both components use canonical ExactRatioV1, preserving nonterminating answers without rounding; units price / bps, shape named_exact_comparison. D017 must be an actual compatible immutable occurrence with nonzero result; never injected or recomputed locally.
+
+Controlled NVDA foundation-pilot-fixture/cash_quote_v1, same scope and true_instant UTC ISO-Z event/receipt policy as D017. Reuse exact controlled-vwap-session/1 WindowContext, bounds and complete-history declaration from accepted D017. Require predecessor request context, as-of and cutoff exactly equal parent, calculated_at<=now, exact accepted D017 admission/definition/configuration validated unchanged. R137 projection mmt-provider-vwap/1 maps vwap.value/price and exposes native selection identities session from vwap.session and as_of from vwap.as_of. Exact identity values controlled-vwap-session/1 and parent's ISO-Z as-of; source event equals as-of, receipt<=cutoff. Policy mmt-comparison-selection/1 is D017 policy with context ID replaced. Unit mmt-pilot-price/1 unchanged. Explicitly validate selection identity first, then reuse common eligibility with identity cleared only on a transient eligibility copy; retain original complete projection in lineage. Enumerate source pages completely, deduplicate exact IDs, reject conflicts/incomplete paging, select unique latest eligible rank. Definition D018-VWAP-COMPARISON-1, equation provider_vwap - D017; 10000 * difference / D017, K02_ALGEBRA, raw R137, predecessor D017, P_BASIC. Parameter mmt-vwap-comparison/1 P_BASIC NVDA membership. Raw lineage one R137; full actual D017 snapshot retained in predecessors, including ultimate raw lineage. This is controlled correspondence, not native RTVolume certification.
+
+## 2. Required bounded change
+Add reusable MeasurementComparisonV1(price_difference:ExactRatioV1,bps_difference:ExactRatioV1) to existing window result union and permit full WindowMeasurementOccurrenceV1 predecessors/MeasurementWindowReadsV1 alongside existing sign carriers. Use narrow exact-admission routing and a D018 calculation module; no new factory family or store. Reuse existing owner-local record store/schema/canonical/hash/identity/readback and immutable first-fact mechanics. Namespace neutral_market_measurement_truth/window/v1; mmtwindow1: full logical-record SHA256 excludes only own ID/calculated time; full payload retains both. Complete typed request/context/definition/configuration/lineage snapshots are validated on read without source readers. Reject wrong admission rather than reading another signal file. Preserve prior tests, authority/contracts/generations and earlier calculation paths. No M00, provider, schema, proof-loader or architecture-registry changes.
+
+## 3. Exact proof and execution budget
+D018-PROOF-CONTRACT-SHA256: 3f938094bbb89255fc5f0dcd63ffb203fbcace1a46c7f18cc32257d852823a5e
+
+Exactly two cases: actual D01724/5 from (6,2),(4,3), R1374.848 -> exact price_difference6/125 and bps_difference100/1; actual lawful D0170/1 from zero-price trades with positive sizes plus R1371. Second case must reach actual zero D017 denominator and refuse, with no D018 persisted occurrence. Worker independently inspected literal inputs and reached refusal preconditions against incorporated meaning before admitting these bytes. This is worker adequacy under delegation, not invented independent judgement. One admitted strict RED (missing MeasurementComparisonV1 assertion after real M00 and actual D017 prerequisites), one sole independent final GREEN, one scoped mypy and one changed-path Ruff; no extra cases, hidden scenarios, duplicate successful checks or broad/prior-signal suites. Command python tools/run_product_proof_gate.py --aggregate neutral_market_measurement_truth_d018. The same two cases qualify the newly authorised prerequisite. Full logs retained and one concise root acceptance entry; stop dependent work on actual failure.
+
+## 4. Exact incorporated bytes
+| Path | SHA256 |
+| --- | --- |
+| handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md | 603b850802a418780109095e7ae69bcece449da79fb24140a6d50297605e927c |
+| handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv | 67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549 |
+| handoff/foundation_implementation/authority/FOUNDATION_IMPLEMENTATION_BRIEF_PROPOSED.md | 282f7d73c5e2fdf36ded43781665764eaf95d4a35f687f99990b87c59f744ed7 |
+| handoff/foundation_implementation/authority/SQLITE_IMPLEMENTATION_BRIEF_PROPOSED.md | 3ad4cdc9ffba4cf91ff9a27edf1dd3b1a9824a421514bb4b5a2cc1b9c504f233 |
+| handoff/foundation_implementation/authority/G6_1_D012_IMPLEMENTATION_BRIEF_PROPOSED.md | a31c482d2dc4822539ede99e955761319585af4badea93b9fc279638e1e1f393 |
+| implementation/authority/G6_1_D012_IMPLEMENTATION_AUTHORITY_BINDING.yaml | f1eedec4aa2fcc543a66b709ecd925dd713d01ecabf19c776d5f1b07d3e15f8e |
+| handoff/foundation_implementation/authority/D018_PROOF_CONTRACT.json | 3f938094bbb89255fc5f0dcd63ffb203fbcace1a46c7f18cc32257d852823a5e |
+
