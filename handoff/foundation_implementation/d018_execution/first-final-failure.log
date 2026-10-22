@@ -1,0 +1,269 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/83dd7c79f14f/NVDA_V2_CLEAN_RECOVERED_REPO_20261022
+configfile: pyproject.toml
+collected 2 items
+
+tests/product/market_measurement_d018/test_vwap_comparison.py F.         [100%]
+
+=================================== FAILURES ===================================
+_______________________ test_d018_vwap_comparison[False] _______________________
+
+path = '/tmp/pytest-of-root/pytest-8/test_d018_vwap_comparison_Fals0/comparison.sqlite'
+
+    @contextmanager
+    def _transaction(
+        path: str, *, write: bool, initialise: bool = False
+    ) -> Iterator[sqlite3.Connection]:
+        c = None
+        committing = False
+        try:
+            _path(path)
+            c = sqlite3.connect(
+                Path(path).as_uri() + ("?mode=rw" if write else "?mode=ro"),
+                uri=True,
+                isolation_level=None,
+                timeout=0,
+            )
+            c.execute("PRAGMA foreign_keys=ON")
+            c.execute("PRAGMA busy_timeout=0")
+            c.execute("PRAGMA synchronous=EXTRA" if write else "PRAGMA query_only=ON")
+            expected = {"foreign_keys": 1, "busy_timeout": 0, "journal_mode": "delete"}
+            expected["synchronous" if write else "query_only"] = 3 if write else 1
+            if any(c.execute("PRAGMA " + k).fetchone()[0] != v for k, v in expected.items()):
+                raise f.PersistenceFailureV1("measurement connection policy mismatch")
+            c.execute("BEGIN IMMEDIATE" if write else "BEGIN")
+            if not initialise:
+                _schema(c)
+>           yield c
+
+src/nvda_desk/market_measurement_truth/_record_store.py:65: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/nvda_desk/market_measurement_truth/_record_store.py:161: in append
+    v for v in self._load(c) if v.derived_occurrence_id == value.derived_occurrence_id
+               ^^^^^^^^^^^^^
+src/nvda_desk/market_measurement_truth/_record_store.py:120: in _load
+    value = self.decode(payload)
+            ^^^^^^^^^^^^^^^^^^^^
+src/nvda_desk/market_measurement_truth/_window.py:306: in _decode
+    f.WindowMeasurementOccurrenceV1, decode_record(payload, f.WindowMeasurementOccurrenceV1)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/nvda_desk/market_measurement_truth/_evaluation.py:146: in decode
+    value = untagged(json.loads(payload), cls)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/nvda_desk/market_measurement_truth/_evaluation.py:128: in untagged
+    key: untagged(
+src/nvda_desk/market_measurement_truth/_evaluation.py:91: in untagged
+    return tuple(untagged(item, args[0]) for item in value)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/nvda_desk/market_measurement_truth/_evaluation.py:91: in <genexpr>
+    return tuple(untagged(item, args[0]) for item in value)
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+src/nvda_desk/market_measurement_truth/_evaluation.py:128: in untagged
+    key: untagged(
+src/nvda_desk/market_measurement_truth/_evaluation.py:128: in untagged
+    key: untagged(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = {'values': [['session', 'controlled-vwap-session/1'], ['as_of', '2026-10-20T12:02:00Z']]}
+hint = nvda_desk.raw_signal_occurrence_truth.api.RawSelectionIdentityV1 | None
+
+    def untagged(value: Any, hint: Any) -> Any:
+        """Decode only the exact declared public record/factory at this position."""
+        args = get_args(hint)
+        if get_origin(hint) is Literal:
+            if type(value) is not str or value not in args:
+                raise ValueError("invalid literal content")
+            return value
+        if get_origin(hint) is types.UnionType:
+            if value is None and type(None) in args:
+                return None
+            for option in args:
+                if option is type(None):
+                    continue
+                try:
+                    return untagged(value, option)
+                except (TypeError, ValueError, KeyError):
+                    pass
+>           raise ValueError("invalid union content")
+E           ValueError: invalid union content
+
+src/nvda_desk/market_measurement_truth/_evaluation.py:86: ValueError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-8/test_d018_vwap_comparison_Fals0')
+zero = False
+
+    @pytest.mark.parametrize("zero", [False, True])
+    def test_d018_vwap_comparison(tmp_path, zero):
+        literals = _literals()
+        raw = r.create_owner()
+        for index, (price, size) in enumerate((("6", "2"), ("4", "3"))):
+            _admit(
+                raw,
+                f"trade-{index}",
+                {"trade": {"price": Decimal("0" if zero else price), "size": Decimal(size)}},
+                ("R120", "R121"),
+                literals.START + timedelta(seconds=10 * (index + 1)),
+                index + 1,
+            )
+        context = f.WindowContextV1(
+            f.VersionRefV1("controlled-vwap-session", 1),
+            literals.START,
+            literals.START + timedelta(hours=1),
+            literals.START,
+        )
+        predecessor_owner = f.create_window_owner(
+            admission=f.OwnerAdmissionV1("M02", D017),
+            raw_projection_reader=raw.reads,
+            storage=f.MemoryStorageV1(),
+            utc_now=lambda: literals.NOW,
+        )
+        p_request = f.WindowCalculationRequestV1(
+            f.CalculationRequestV1(
+                "D017",
+                "NVDA",
+                literals.ASOF,
+                literals.CUTOFF,
+                "D017-SESSION-VWAP-1",
+                f.VersionRefV1("mmt-session-vwap", 1),
+                f.VersionRefV1("mmt-vwap-selection", 1),
+                (context.ref,),
+                tuple(
+                    f.RawInputBindingV1(
+                        rid,
+                        f.VersionRefV1(literals._mapping(rid).mapping_id, 1),
+                        f.VersionRefV1("mmt-pilot-price" if rid == "R120" else "mmt-trade-shares", 1),
+                        "NVDA",
+                    )
+                    for rid in ("R120", "R121")
+                ),
+            ),
+            context,
+            (),
+        )
+        predecessor = predecessor_owner.materialise(p_request)
+        assert predecessor is not None
+        assert predecessor.result == (f.ExactRatioV1(0, 1) if zero else f.ExactRatioV1(24, 5))
+        provider_value = Decimal("1" if zero else "4.848")
+        _admit(
+            raw,
+            "provider",
+            {
+                "vwap": {
+                    "value": provider_value,
+                    "session": "controlled-vwap-session/1",
+                    "as_of": literals.ASOF.isoformat().replace("+00:00", "Z"),
+                }
+            },
+            ("R137",),
+            literals.ASOF,
+            3,
+        )
+        projection = raw.reads.project_raw_value(
+            r.RawSignalCatalogueId("R137"),
+            r.observation_occurrence_id("provider"),
+            mappings=(_mapping(),),
+        )
+        assert projection is not None and projection.native_value == provider_value
+        assert hasattr(f, "MeasurementComparisonV1"), "admitted named comparison result is absent"
+        admission = f.OwnerAdmissionV1("M02", BRIEF)
+        path = str(tmp_path / "comparison.sqlite")
+        owner = f.create_window_owner(
+            admission=admission,
+            raw_projection_reader=raw.reads,
+            predecessor_reader=predecessor_owner.reads,
+            storage=f.SQLiteStorageV1(path, True),
+            utc_now=lambda: literals.NOW,
+        )
+        request = f.WindowCalculationRequestV1(
+            f.CalculationRequestV1(
+                "D018",
+                "NVDA",
+                literals.ASOF,
+                literals.CUTOFF,
+                "D018-VWAP-COMPARISON-1",
+                f.VersionRefV1("mmt-vwap-comparison", 1),
+                f.VersionRefV1("mmt-comparison-selection", 1),
+                (context.ref,),
+                (
+                    f.RawInputBindingV1(
+                        "R137",
+                        f.VersionRefV1("mmt-provider-vwap", 1),
+                        f.VersionRefV1("mmt-pilot-price", 1),
+                        "NVDA",
+                    ),
+                ),
+            ),
+            context,
+            (predecessor.derived_occurrence_id,),
+        )
+>       result = owner.materialise(request)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/market_measurement_d018/test_vwap_comparison.py:171: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/nvda_desk/market_measurement_truth/_vwap_comparison.py:266: in materialise
+    return cast(f.WindowMeasurementOccurrenceV1, self.state.append(value))
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^
+src/nvda_desk/market_measurement_truth/_record_store.py:151: in append
+    with _transaction(self.path, write=True) as c:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/contextlib.py:158: in __exit__
+    self.gen.throw(value)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = '/tmp/pytest-of-root/pytest-8/test_d018_vwap_comparison_Fals0/comparison.sqlite'
+
+    @contextmanager
+    def _transaction(
+        path: str, *, write: bool, initialise: bool = False
+    ) -> Iterator[sqlite3.Connection]:
+        c = None
+        committing = False
+        try:
+            _path(path)
+            c = sqlite3.connect(
+                Path(path).as_uri() + ("?mode=rw" if write else "?mode=ro"),
+                uri=True,
+                isolation_level=None,
+                timeout=0,
+            )
+            c.execute("PRAGMA foreign_keys=ON")
+            c.execute("PRAGMA busy_timeout=0")
+            c.execute("PRAGMA synchronous=EXTRA" if write else "PRAGMA query_only=ON")
+            expected = {"foreign_keys": 1, "busy_timeout": 0, "journal_mode": "delete"}
+            expected["synchronous" if write else "query_only"] = 3 if write else 1
+            if any(c.execute("PRAGMA " + k).fetchone()[0] != v for k, v in expected.items()):
+                raise f.PersistenceFailureV1("measurement connection policy mismatch")
+            c.execute("BEGIN IMMEDIATE" if write else "BEGIN")
+            if not initialise:
+                _schema(c)
+            yield c
+            committing = True
+            c.execute("COMMIT")
+        except BaseException as exc:
+            uncertain = bool(committing and c is not None and not c.in_transaction)
+            if c is not None and c.in_transaction:
+                try:
+                    c.execute("ROLLBACK")
+                except sqlite3.Error:
+                    uncertain = True
+            if isinstance(
+                exc,
+                (sqlite3.Error, OSError, ValueError, TypeError, KeyError, ArithmeticError, MemoryError),
+            ):
+>               raise f.PersistenceFailureV1(
+                    "measurement record operation failed", outcome_uncertain=uncertain
+                ) from exc
+E               nvda_desk.market_measurement_truth.api.PersistenceFailureV1: measurement record operation failed
+
+src/nvda_desk/market_measurement_truth/_record_store.py:79: PersistenceFailureV1
+=========================== short test summary info ============================
+FAILED tests/product/market_measurement_d018/test_vwap_comparison.py::test_d018_vwap_comparison[False]
+========================= 1 failed, 1 passed in 0.45s ==========================
+product-proof aggregate: neutral_market_measurement_truth_d018 state=READY_FOR_PROOF
+authority=1f65edb4e3050c89604c749accc5fdf39ff03e69e54eca43a50cfa496298e90e generation=ccf86dcce5b438d84fce42bfa7a8a1280f6982de3e129506186ba5a29761598e
+candidate=3f2b3b073720403d0abc5d816ac280cda594244d
+observed aggregate outcome: exit=1

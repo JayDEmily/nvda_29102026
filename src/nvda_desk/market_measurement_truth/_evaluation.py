@@ -8,7 +8,7 @@ import types
 from dataclasses import fields, is_dataclass
 from datetime import datetime, timedelta
 from decimal import Decimal
-from typing import Any, Literal, get_args, get_origin, get_type_hints
+from typing import Any, Literal, TypeAliasType, get_args, get_origin, get_type_hints
 
 from nvda_desk.raw_signal_occurrence_truth import api as raw_api
 
@@ -68,6 +68,8 @@ def digest(value: Any) -> str:
 
 def untagged(value: Any, hint: Any) -> Any:
     """Decode only the exact declared public record/factory at this position."""
+    if isinstance(hint, TypeAliasType):
+        return untagged(value, hint.__value__)
     args = get_args(hint)
     if get_origin(hint) is Literal:
         if type(value) is not str or value not in args:
