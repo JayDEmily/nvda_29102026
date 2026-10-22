@@ -1,0 +1,13 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/83dd7c79f14f/NVDA_V2_D021_D025_EXECUTION_20261023
+configfile: pyproject.toml
+collected 2 items
+
+tests/product/market_measurement_d029/test_volume_zscore.py ..           [100%]
+
+============================== 2 passed in 1.37s ===============================
+product-proof aggregate: neutral_market_measurement_truth_d029 state=READY_FOR_PROOF
+authority=8209530693ea66f600b7033ff9841c31878a6a2393959d3c8840ae1ed592af8e generation=1f19be2dc7f3917a1f37b64fa54a465b7b64392f3b6a1705b6786921f1631905
+candidate=01dd5fa2818a447defe60350777b8a4b13d1d7f6
+observed aggregate outcome: exit=0

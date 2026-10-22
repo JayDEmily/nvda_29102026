@@ -217,3 +217,11 @@ observed aggregate outcome: exit=0
 Tree 602d07272b47395cd649799a3697032eb50ecd0e. Independent final judgement ACCEPT: handoff/foundation_implementation/d028_execution/final_review.md. Full first RED/final GREEN and scoped static results retained in that directory; any first preparation/static failure remains preserved with its repair. No additional cases, old claims, broad suite or successful repeats. Selected source lineage and public typed SQLite reopen qualified inside the two cases. Native certification remains held. Commit acceptance and save the full-history checkpoint before advancing.
 
 D029 first scoped mypy stopped on an internal error. Preserved first output and diagnostic traceback, which established malformed mypy cache SQLite, not a product failure. Re-ran only failed scoped mypy with fresh cache directory; no runtime probe. Ruff passed once. New exact Fraction sample variance/signed final50digit root helper and fixed R144 same-bucket selector; no accepted old claim repeated.
+
+### D029 — ACCEPTED controlled profile
+
+product-proof aggregate: neutral_market_measurement_truth_d029 state=READY_FOR_PROOF
+authority=8209530693ea66f600b7033ff9841c31878a6a2393959d3c8840ae1ed592af8e generation=1f19be2dc7f3917a1f37b64fa54a465b7b64392f3b6a1705b6786921f1631905
+candidate=01dd5fa2818a447defe60350777b8a4b13d1d7f6
+observed aggregate outcome: exit=0
+Tree b6d41820e830e001032c4ee4b19c7ff858580143. Independent final judgement ACCEPT: handoff/foundation_implementation/d029_execution/final_review.md. Full first RED/final GREEN and scoped static results retained in that directory; any first preparation/static failure remains preserved with its repair. No additional cases, old claims, broad suite or successful repeats. Selected source lineage and public typed SQLite reopen qualified inside the two cases. Native certification remains held. Commit acceptance and save the full-history checkpoint before advancing.
