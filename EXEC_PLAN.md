@@ -207,3 +207,11 @@ Tree 2d2876e749821bd4d22ac9593876e9cfdef462a5. Independent final judgement ACCEP
 D028 first scoped Ruff found import/export ordering and two proof-only style issues. Preserved first output; repaired ordering, unused loop binding and authority tuple syntax without changing operands/assertions. Formatting repair had one transient parse error, corrected before sealing generation2; generation1 stays immutable. Mypy already succeeded and was not repeated; affected Ruff succeeded. Two intended semantic RED failures atb814497 remain; no extra runtime.
 
 D028 pre-runtime inspection corrected definition kernel metadata to normative K04_STANDARDISE_RANK in source/proof (linked generation3). Independent review also found ISOLATED loose native bool equality; canonical typed comparison now distinguishes counter.complete_from_open=True from numeric1. No extra cases/runtime. Repeated affected module mypy/changed-path Ruff only after these material repairs.
+
+### D028 — ACCEPTED controlled profile
+
+product-proof aggregate: neutral_market_measurement_truth_d028 state=READY_FOR_PROOF
+authority=c0c2788a727681d87f7b971d242f263d0f04657c896cc113bcf8a57126e684a9 generation=d53a97add3050d6480bdec008d5722919c57cdf7a70cd48153fde6df415e3084
+candidate=bef3b1b261af6eec0425bd5ef5ddd310f1226024
+observed aggregate outcome: exit=0
+Tree 602d07272b47395cd649799a3697032eb50ecd0e. Independent final judgement ACCEPT: handoff/foundation_implementation/d028_execution/final_review.md. Full first RED/final GREEN and scoped static results retained in that directory; any first preparation/static failure remains preserved with its repair. No additional cases, old claims, broad suite or successful repeats. Selected source lineage and public typed SQLite reopen qualified inside the two cases. Native certification remains held. Commit acceptance and save the full-history checkpoint before advancing.
