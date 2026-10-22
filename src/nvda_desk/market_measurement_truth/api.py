@@ -650,3 +650,97 @@ __all__ += [
     "create_raw_ratio_owner",
     "create_raw_ratio_reader",
 ]
+
+
+@dataclass(frozen=True, slots=True)
+class TradeDirectionRequestV1(_Validated):
+    calculation: CalculationRequestV1
+    midpoint_occurrence_id: str
+
+
+@dataclass(frozen=True, slots=True)
+class TradeDirectionOccurrenceV1(_Validated):
+    owner_object_id: str
+    owner_namespace: str
+    implementation_brief_sha256: str
+    derived_signal_id: str
+    derived_occurrence_id: str
+    request: TradeDirectionRequestV1
+    definition: CalculationDefinitionV1
+    parameter_set: CalculationParameterSetV1
+    input_selection_policy: InputSelectionPolicyVersionV1
+    unit_conventions: tuple[UnitConventionVersionV1, ...]
+    projection_mappings: tuple[raw_api.RawSignalProjectionMappingV1, ...]
+    raw_input_lineage: tuple[RawInputLineageV1, ...]
+    predecessor: PredecessorEvidenceV1
+    result: int
+    units: str
+    result_shape: str
+    effective_as_of_utc: datetime
+    knowledge_cutoff_utc: datetime
+    calculated_at_utc: datetime
+
+    def __post_init__(self) -> None:
+        _Validated.__post_init__(self)
+        if self.result not in (-1, 0, 1):
+            raise ValueError("trade direction must be -1, 0 or +1")
+
+
+class MeasurementTradeDirectionReadsV1(Protocol):
+    def get_derived_occurrence(
+        self, derived_occurrence_id: str
+    ) -> TradeDirectionOccurrenceV1 | None: ...
+    def list_derived_history(
+        self,
+        *,
+        derived_signal_id: str,
+        subject_instrument: str,
+        effective_at_or_before_utc: datetime,
+        knowledge_at_or_before_utc: datetime,
+        limit: int,
+    ) -> tuple[TradeDirectionOccurrenceV1, ...]: ...
+
+
+class MeasurementTradeDirectionOwnerV1(Protocol):
+    @property
+    def reads(self) -> MeasurementTradeDirectionReadsV1: ...
+    def materialise(
+        self, request: TradeDirectionRequestV1
+    ) -> TradeDirectionOccurrenceV1 | None: ...
+
+
+def create_trade_direction_owner(
+    *,
+    admission: OwnerAdmissionV1,
+    raw_projection_reader: RawProjectionReaderV1,
+    predecessor_reader: MeasurementReadsV1,
+    storage: MemoryStorageV1 | SQLiteStorageV1,
+    utc_now: Callable[[], datetime],
+) -> MeasurementTradeDirectionOwnerV1:
+    from ._trade_direction import build_owner
+
+    return build_owner(
+        admission=admission,
+        raw_projection_reader=raw_projection_reader,
+        predecessor_reader=predecessor_reader,
+        storage=storage,
+        utc_now=utc_now,
+    )
+
+
+def create_trade_direction_reader(
+    *, admission: OwnerAdmissionV1, storage: SQLiteReadStorageV1
+) -> MeasurementTradeDirectionReadsV1:
+    from ._trade_direction import build_reader
+
+    return build_reader(admission=admission, storage=storage)
+
+
+__all__ += [
+    "MeasurementTradeDirectionOwnerV1",
+    "MeasurementTradeDirectionReadsV1",
+    "TradeDirectionOccurrenceV1",
+    "TradeDirectionRequestV1",
+    "create_trade_direction_owner",
+    "create_trade_direction_reader",
+]
