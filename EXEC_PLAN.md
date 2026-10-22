@@ -195,3 +195,11 @@ observed aggregate outcome: exit=0
 Tree 556a66d9c3484c1645369b3aca4ce54206da91d0. Independent final judgement ACCEPT: handoff/foundation_implementation/d026_execution/final_review.md. Full first RED/final GREEN and scoped static results retained in that directory; any first preparation/static failure remains preserved with its repair. No additional cases, old claims, broad suite or successful repeats. Selected source lineage and public typed SQLite reopen qualified inside the two cases. Native certification remains held. Commit acceptance and save the full-history checkpoint before advancing.
 
 D027 independent pre-runtime review found ISOLATED elapsed-time truncation: eligible microsecond reference times require exact timedelta measurement, not integer window metadata as the divisor. Repaired Fraction from integer microseconds; original two cases unchanged and no final runtime had run. Repeated only changed-module mypy/Ruff after this material repair.
+
+### D027 — ACCEPTED controlled profile
+
+product-proof aggregate: neutral_market_measurement_truth_d027 state=READY_FOR_PROOF
+authority=6c4a8b6a4451ddfa6b555e9f1b02d659af269ec0788e8ebc15b8ddf9528796bf generation=ffeb2c482be1d42a4d0d378a9ec1a15f279fc8c1b81361738a5be4cd89fee960
+candidate=6a76ae9de7b4698d4aaea1758de972dbbc513948
+observed aggregate outcome: exit=0
+Tree 2d2876e749821bd4d22ac9593876e9cfdef462a5. Independent final judgement ACCEPT: handoff/foundation_implementation/d027_execution/final_review.md. Full first RED/final GREEN and scoped static results retained in that directory; any first preparation/static failure remains preserved with its repair. No additional cases, old claims, broad suite or successful repeats. Selected source lineage and public typed SQLite reopen qualified inside the two cases. Native certification remains held. Commit acceptance and save the full-history checkpoint before advancing.
