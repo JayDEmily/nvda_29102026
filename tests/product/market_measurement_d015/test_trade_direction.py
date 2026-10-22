@@ -194,16 +194,48 @@ def test_d015_trade_direction(tmp_path, mode, price, prior, expected):
     assert result.implementation_brief_sha256 == BRIEF and result.derived_signal_id == "D015"
     assert result.derived_occurrence_id.startswith("mmtsign1:")
     assert result.request == request
-    assert result.definition.equation == "quote_first_then_last_different_trade_else_0"
-    assert result.definition.raw_dependencies == ("R120", "R126", "R127")
-    assert result.definition.derived_dependencies == ("D011",)
+    assert result.definition == f.CalculationDefinitionV1(
+        "D015",
+        "D015-TRADE-DIRECTION-1",
+        "K08_RULE_BUCKET_POLICY",
+        "quote_first_then_last_different_trade_else_0",
+        ("R120", "R126", "R127"),
+        ("D011",),
+        "P_RULE",
+        "sign",
+        "enum_trade_sign",
+        (
+            f.AuthorityArtifactRefV1(
+                "handoff/m01_completion/authority/"
+                "NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md",
+                "603b850802a418780109095e7ae69bcece449da79fb24140a6d50297605e927c",
+            ),
+            f.AuthorityArtifactRefV1(
+                "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv",
+                "67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549",
+            ),
+        ),
+    )
     assert result.parameter_set == f.CalculationParameterSetV1(
         "mmt-trade-rule", 1, "P_RULE", "NVDA", ("NVDA",)
     )
     assert result.input_selection_policy == config["input_selection_policies"][0]
     assert result.unit_conventions == config["unit_conventions"]
     assert result.projection_mappings == tuple(_mapping(rid) for rid in ("R120", "R126", "R127"))
-    assert result.predecessor.occurrence == midpoint
+    predecessor_reads = midpoint_owner.reads
+    assert result.predecessor == f.PredecessorEvidenceV1(
+        midpoint,
+        predecessor_reads.get_calculation_definition(
+            derived_signal_id="D011", calculation_definition_version="D011-MIDPOINT-1"
+        ),
+        predecessor_reads.get_parameter_set(midpoint.parameter_context_refs[0]),
+        predecessor_reads.get_input_selection_policy(midpoint.parameter_context_refs[1]),
+        tuple(predecessor_reads.get_unit_convention(ref) for ref in midpoint.convention_refs),
+        tuple(
+            predecessor_reads.get_projection_mapping(item.projection_mapping_ref)
+            for item in midpoint.raw_input_lineage
+        ),
+    )
     assert result.units == "sign" and result.result_shape == "enum_trade_sign"
     assert result.effective_as_of_utc == result.knowledge_cutoff_utc == cutoff
     assert result.calculated_at_utc == clock[0]
@@ -211,6 +243,13 @@ def test_d015_trade_direction(tmp_path, mode, price, prior, expected):
     if prior is not None:
         expected_ids += ("trade-prior-different",)
     assert tuple(x.observation_occurrence_id for x in result.raw_input_lineage) == expected_ids
+    expected_lineage = []
+    event_times = {
+        "trade-current": trade_time,
+        "trade-quote-bid": bid_at,
+        "trade-quote-ask": ask_at,
+        "trade-prior-different": trade_time - timedelta(seconds=120),
+    }
     for item in result.raw_input_lineage:
         projection = raw.reads.project_raw_value(
             raw_api.RawSignalCatalogueId(item.raw_signal_id),
@@ -219,6 +258,18 @@ def test_d015_trade_direction(tmp_path, mode, price, prior, expected):
         )
         assert item.projection == projection
         assert item.canonical_value.as_tuple() == projection.native_value.as_tuple()
+        expected_lineage.append(
+            f.RawInputLineageV1(
+                item.raw_signal_id,
+                item.observation_occurrence_id,
+                f.VersionRefV1(_mapping(item.raw_signal_id).mapping_id, 1),
+                f.VersionRefV1("mmt-pilot-price", 1),
+                projection,
+                projection.native_value,
+                event_times[item.observation_occurrence_id],
+            )
+        )
+    assert result.raw_input_lineage == tuple(expected_lineage)
     assert owner.reads.get_derived_occurrence(result.derived_occurrence_id) == result
     if mode == "above":
         clock[0] += timedelta(seconds=3)
