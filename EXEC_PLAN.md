@@ -1,5 +1,7 @@
 # NVDA V2 — bounded D015–D020 execution plan
 
+Current owner direction, 22 October 2026: complete **D017 only**, followed by “Yes” to the exact-ratio/raw-only window interface prerequisite. This supersedes earlier D016-only stop wording below. D016 remains accepted. Necessary extension is bounded by D017_IMPLEMENTATION_BRIEF.md and the same two agreed D017 cases; no new API family, store, additional cases or broad validation. Standing delegation binds the explicit controlled session/completeness/exact-ratio profile. Stop after D017; D018–D020 remain unauthorised.
+
 ## 1. Authority and current stop
 
 On 22 October 2026 the owner directed a strict rewrite after the D015 workflow audit: no repeated successful testing, no tests outside the agreed signal cases, no serial approval machinery, and no module API work inside a routine signal task. This is the sole active plan. The subsequent instruction authorises **D016 only**, followed by explicit authorisation for its necessary M02 prerequisite (§2). D015 remains accepted; D017–D020 are not authorised.
