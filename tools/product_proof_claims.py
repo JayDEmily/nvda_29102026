@@ -408,9 +408,9 @@ def _generation(
 
 def _scalar_extension(
     root: Path,
-    identity: Literal["D012", "D013", "D014", "D015", "D016", "D017", "D018", "D019", "D020"],
+    identity: Literal["D012", "D013", "D014", "D015", "D016", "D017", "D018", "D019", "D020", "D021", "D022", "D023", "D024", "D025"],
 ) -> tuple[dict[str, Any], dict[str, Any], str] | None:
-    """Nine fixed separately accepted extensions; never discover arbitrary claims."""
+    """Fourteen fixed separately accepted extensions; never discover arbitrary claims."""
     name = identity.lower()
     directory = f"config/product_proof/market_measurement_{name}"
     descriptor = safe_path(root, directory + "/claim.json")
@@ -449,7 +449,7 @@ def _scalar_extension(
     rows = re.findall(r"^\| ([^|]+?) \| ([0-9a-f]{64}) \|$", text, re.M)
     count = {
         "D012": 8, "D013": 11, "D014": 8,
-        "D015": 7, "D016": 7, "D017": 7, "D018": 7, "D019": 7, "D020": 7,
+        "D015": 7, "D016": 7, "D017": 7, "D018": 7, "D019": 7, "D020": 7, "D021": 7, "D022": 7, "D023": 7, "D024": 7, "D025": 7,
     }[identity]
     if len(rows) != count or len(dict(rows)) != count:
         raise ValueError(f"invalid {identity} incorporated-byte table")
@@ -484,8 +484,8 @@ def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductPro
     extensions: dict[str, tuple[dict[str, Any], dict[str, Any], str]] = {}
     if authority is not None:
         identities: tuple[
-            Literal["D012", "D013", "D014", "D015", "D016", "D017", "D018", "D019", "D020"], ...
-        ] = ("D012", "D013", "D014", "D015", "D016", "D017", "D018", "D019", "D020")
+            Literal["D012", "D013", "D014", "D015", "D016", "D017", "D018", "D019", "D020", "D021", "D022", "D023", "D024", "D025"], ...
+        ] = ("D012", "D013", "D014", "D015", "D016", "D017", "D018", "D019", "D020", "D021", "D022", "D023", "D024", "D025")
         for identity in identities:
             extension = _scalar_extension(root, identity)
             if extension is not None:

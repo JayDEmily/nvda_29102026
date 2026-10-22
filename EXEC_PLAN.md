@@ -138,3 +138,7 @@ Do not add seven reports, review queues, implementation-independent checkpoint c
 | D021, D022, D023, D024, D025 | NOT_STARTED. Ten-case manifest and proposed controlled profiles prepared; no implementation/proof execution authorised by this turn. |
 | Claim-loader declarations / D024 carrier | Known bounded prerequisites proposed in §4; not implemented. |
 | This planning change | Root plan plus directly conflicting worker/README guidance only; textual diff/source inspection, no tests/mypy/lint. |
+
+## 8. Execution commission and ledger — 23 October 2026
+
+Owner instruction commissions D021 through D025 in order and a full-history verified downloadable checkpoint after each individual acceptance. This supersedes the planning-only stop and single-final-bundle schedule above. All other bounded case/review/check restrictions apply. Recovered c03f70f from the saved bundle into this isolated checkout; the older dirty D015 checkout is preserved untouched. Environment rebuilt once offline from the pinned hashed dev lock: CPython3.12.14, SQLite3.53.1, pytest9.0.3, mypy1.20.1, Ruff0.15.11, PyYAML6.0.3. Preflight: D021 extends the accepted fixed-log configuration; D024 consumes actual compatible D019/D020/D021 occurrences. Root ledger carries progress; no separate skill bookkeeping or extra qualification suites.
