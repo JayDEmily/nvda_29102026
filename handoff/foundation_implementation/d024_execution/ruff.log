@@ -1,0 +1,21 @@
+RUF022 [*] `__all__` is not sorted
+   --> src/nvda_desk/market_measurement_truth/api.py:839:12
+    |
+839 |   __all__ += [
+    |  ____________^
+840 | |     "MeasurementComparisonV1",
+841 | |     "ReturnAccelerationV1",
+842 | |     "MeasurementWindowOwnerV1",
+843 | |     "MeasurementWindowReadsV1",
+844 | |     "WindowCalculationRequestV1",
+845 | |     "WindowContextV1",
+846 | |     "WindowMeasurementOccurrenceV1",
+847 | |     "create_window_owner",
+848 | |     "create_window_reader",
+849 | | ]
+    | |_^
+    |
+help: Apply an isort-style sorting to `__all__`
+
+Found 1 error.
+[*] 1 fixable with the `--fix` option.

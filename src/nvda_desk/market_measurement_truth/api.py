@@ -753,6 +753,15 @@ class MeasurementComparisonV1(_Validated):
 
 
 @dataclass(frozen=True, slots=True)
+class ReturnAccelerationV1(_Validated):
+    q1: ExactRatioV1
+    q5: ExactRatioV1
+    q30: ExactRatioV1
+    accel_1v5: ExactRatioV1
+    accel_5v30: ExactRatioV1
+
+
+@dataclass(frozen=True, slots=True)
 class WindowContextV1(_Validated):
     ref: VersionRefV1
     session_start_utc: datetime
@@ -783,7 +792,7 @@ class WindowMeasurementOccurrenceV1(_Validated):
     raw_input_lineage: tuple[RawInputLineageV1, ...]
     predecessors: tuple[TradeDirectionOccurrenceV1 | WindowMeasurementOccurrenceV1, ...]
     window_seconds: int
-    result: Decimal | ExactRatioV1 | MeasurementComparisonV1
+    result: Decimal | ExactRatioV1 | MeasurementComparisonV1 | ReturnAccelerationV1
     units: str
     result_shape: str
     effective_as_of_utc: datetime
@@ -831,6 +840,7 @@ __all__ += [
     "MeasurementComparisonV1",
     "MeasurementWindowOwnerV1",
     "MeasurementWindowReadsV1",
+    "ReturnAccelerationV1",
     "WindowCalculationRequestV1",
     "WindowContextV1",
     "WindowMeasurementOccurrenceV1",
