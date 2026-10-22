@@ -1,20 +1,17 @@
 # Test-local supplement
 
-Architecture/bootstrap tests establish their named kernel propositions, not M02 signal semantics. Preserve existing enforcement tests and all accepted M00/D011–D020 physical proof, contracts, immutable generations and evidence.
+Preserve architecture/bootstrap enforcement and all accepted M00/D011–D025 proof, contracts, immutable generations and evidence. Root EXEC_PLAN.md governs the proposed D026–D036 tranche. This turn commissions planning only.
 
-## Prospective D021–D025 work
+## Bounded next-tranche proof
 
-Root `EXEC_PLAN.md` §§3–6 supplies the exact prospective scope and execution budget. Execution was commissioned on23October2026 with a checkpoint after each signal. Root section8 records completion; do not rerun proof merely for a documentary update or packaging.
-
-- Exactly one named parameterised public-path function per signal, two cases each: D021=2, D022=2, D023=2, D024=2, D025=2. Ten total; do not pad to six or add scenarios inside helpers/loops/scripts.
-- Use actual public M00 facts and actual required D predecessors. Normal D019/D020/D021 construction inside D024's cases is a prerequisite, not permission to rerun those old claims.
-- Success asserts complete relevant typed result/fields/units/configuration/identity/selected raw and actual predecessor lineage plus ordinary public durable reopen. Refusal reaches its intended semantic cause and persists no occurrence.
-- One admitted semantic RED, then one independent final strict GREEN per signal. The reviewer is the sole final runtime executor. No worker GREEN followed by reviewer GREEN or focused GREEN followed by aggregate GREEN.
-- Preserve the first failure; repeat only an affected declared check after a relevant material repair. Never repeat a successful outcome for review, documentation, commit, checkpoint, download or tranche close.
-- No default pytest, architecture/bootstrap, promotion220, control149, earlier product claims, mutation matrices, ad-hoc probes or final five-claim sweep. Existing unchanged shared evidence is reused.
-- One scoped mypy and one changed-path Ruff invocation for the current delta; include the changed fixed-loader file once when needed. No full-repository lint, repeated unchanged-tool checks, reviewer duplicates or automatic extra consumer/type specimens.
-- One independent final source/case review per signal. Fixture sequencing/independence is established inside the exact cases, not through another reviewer test sequence or preliminary approval round.
-- Native hash-bound admission and immutable linked generations remain required. Format and inspect physical proof before sealing it; do not overwrite prior admitted generations or accepted briefs.
-- Only the known bounded loader declarations and D024 carrier prerequisite proposed in root §4 accompany the next execution commission. Other API/store/schema/codec/framework/provider changes remain outside routine signal scope and require an explicit owner decision.
-- Historical preparation's exhaustive falsifiers are not new test requirements. An uncovered mandatory proposition is reported precisely before execution, not silently converted into additional tests.
-- Documentation-only edits require textual diff inspection, no Python tests/mypy/lint.
+- Eleven named parameterised functions, exactly two cases each, 22 total, in the exact paths/functions in root §3. No hidden cases in helpers, loops, scripts or expanded bodies; six remains a ceiling, not a quota.
+- Use actual public M00 source observations/projections. These eleven IDs have no D predecessor; do not invent a D017/D019/D020/D021 dependency for convenience.
+- Success asserts the complete typed result/fields/units/configuration/context/identity/selected raw lineage plus ordinary public SQLite reopen. Refusal must reach its exact named condition after otherwise lawful prerequisites, with no materialisation.
+- D028 applies the accepted R041-only overlay, not R044-as-fraction. D029–D031 require twenty distinct immediately prior sessions, sample SD and current exclusion. D032–D036 require complete exact grids and admitted trading-year measures; no missing-sample compression or shortened horizon.
+- One admitted semantic RED and one independent final strict GREEN per ID; reviewer is sole final runtime executor. No worker GREEN followed by reviewer GREEN, focused GREEN followed by aggregate GREEN, extra reviewer sequence or final eleven-claim sweep.
+- Retain first failure and repeat only the affected declared check after a relevant material repair. Never repeat a successful result for a document, turn, reviewer, commit, checkpoint or download. Changed admitted proof creates a linked generation.
+- Complete formatting/parsing inspection successfully before sealing proof hashes. Collection/import/environment/control failures are preparation failures, not semantic RED.
+- One scoped mypy and one changed-path Ruff per current delta. Include the fixed loader only at its initial change. No automatic type-consumer or negative typing specimens, unchanged-tool repeats, broad lint or reviewer duplicates.
+- Only root §5's bounded loader/carrier/context/math/module changes accompany a future execution commission. Do not change old context payload shapes or hash identities; new contexts are separate types. D028 incorporates eight authority rows; other new IDs seven.
+- No default pytest, architecture/bootstrap, promotion220, control149, old claims, mutation matrices, ad-hoc probes or broad requalification. Preparation's exhaustive falsifiers are not a second test manifest.
+- An uncovered mandatory proposition requires its exact gap and proposed scope/test list before added testing. Documentary changes and bundle packaging need textual/diff inspection, no tests/mypy/lint.

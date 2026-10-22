@@ -1,174 +1,179 @@
-# NVDA V2 — bounded D021–D025 execution plan
+# NVDA V2 — bounded D026–D036 execution plan
 
-## 1. Authority, baseline and current stop
+## 1. Commission, baseline and stop
 
-Owner direction, 22 October 2026: prepare the next plan for **D021, D022, D023, D024 and D025**, retaining the expedited workflow and restrictions on repeated/out-of-scope testing. The owner commissioned execution on23October2026, including a verified full-history checkpoint after each signal. **Current status: D021–D025 individually ACCEPTED for their controlled profiles; stop at D025.** Section8 preserves exact candidates, immutable generations, first failures/repairs and final outcomes. The original planning-only stop is superseded by that execution instruction.
+Owner direction, 23 October 2026: create the next plan for **D026 through D036 inclusive: eleven signals**. This turn commissions documentary planning only. The exact cases, controlled profiles, numerical conventions and bounded shared changes below are proposals for review; a subsequent instruction to execute this plan commissions that stated scope. No new implementation, test execution or proof admission occurs now.
 
-Baseline: `4885e144c7d214831f8e781ee939b2cf0f4a0cfb`, branch `work/v2-d021-d025-plan-20261022`. Accepted M00 and D011–D020 behaviours, physical tests, immutable briefs/contracts/generations and evidence remain preserved. The preceding root plan and its complete acceptance history are recoverable with `git show 4885e14:EXEC_PLAN.md`. Do not replay its completed work.
+Baseline: `875fc9e492b3903f4bc3d318cb8ec12f070b9938`. Planning branch: `work/v2-d026-d036-plan-20261023`. M00 and D011–D025 retain their bounded acceptances, physical proof, immutable contracts/generations and raw evidence. Recover the complete prior execution narrative with `git show 875fc9e:EXEC_PLAN.md`. Its D025 cumulative bundle remains the accepted predecessor checkpoint; no completed work is replayed.
 
-Execute in order **D021 → D022 → D023 → D024 → D025**, accept each individually, then stop. These are five signal work units; they do not require five simultaneous agents or five separate planning/review programmes. D024 depends on accepted D021 and actual D019/D020 producers. No D026+, retired D042/D043/D047 pilot, old gate schedule, live provider/TWS work, source certification, M00 mutation, migration or main merge is in scope.
+Execute D026 → D027 → D028 → D029 → D030 → D031 → D032 → D033 → D034 → D035 → D036, accepting and checkpointing each separately, then stop. None of these eleven declares a D predecessor. Shared implementation reuse is not a new dependency edge or combined acceptance. Preserve the owner's checkpoint-after-each-signal instruction. No D037+, retired D042/D043/D047 pilot/gate schedule, live provider/API/TWS work, M00 change, migration, M01 import/retirement, main merge or source certification.
 
-`GUARDRAILS.md` remains frozen and governs authority/evidence. Preserve standing delegation for concrete controlled profiles and hash-bound admission; the plan cannot create domain authority or convert a proposal into acceptance.
+`GUARDRAILS.md` stays frozen. Root `EXEC_PLAN.md` is the sole active plan once accepted. `DO_NOT_CARRY_FORWARD` the completed D021–D025 schedule into active work; its evidence remains in Git.
 
-## 2. Reuse before new work
+## 2. Governing meaning and reuse
 
-Primary meaning: `handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md`, K02/K03 and §§6–9,11–15,17; adjacent `NVDA_DERIVED_SIGNAL_CATALOGUE.csv`, rows D021–D025. Preparation: `handoff/foundation_implementation/reuse_preparation/FAMILY_F05_PRICE_PATH_E11_E15.md` and the affected G2/G3 source-linked and typed-math rows. Reuse its established findings and literals. Do not repeat the 126-signal census, M01 audit, native-source investigation or earlier fixture research. Historical exhaustive falsifiers are not this tranche's test manifest.
+Read only affected portions of these sources, not the full 126-signal census:
 
-Reuse these current M02 mechanisms rather than cloning them:
+- `handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md`: K03 D026/D027, K04, K05 and §§6–9,11–15,17; adjacent `NVDA_DERIVED_SIGNAL_CATALOGUE.csv` rows D026–D036.
+- **D028 controlling overlay:** `handoff/m01_completion/authority/D028_OWNER_APPROVED_RAW_VOLUME_BASELINE_AMENDMENT_20261017.md`, SHA256 `115edc89241c9973793f2c74bdc2f4f946a42fe38217b2462c2cab932fa1837c`. All six accepted clauses govern. Effective D028 dependency is **R041 only**, not the historical CSV's R041;R044. R044 remains 90-day Average Volume and is never an elapsed fraction.
+- `handoff/workbook_v2/gates_03_04/GATES_03_04_ASSESSMENT.md`: affected D028 overlay/incorporation findings, P_BASELINE/P_VOL_WINDOW rows and §22 D026 price/percent-only reconciliation.
+- Under `handoff/foundation_implementation/reuse_preparation/`: `FAMILY_F05_PRICE_PATH_E11_E15.md` D026/D027; complete `FAMILY_F06_EXTENDED_E11_E15.md`; affected D032–D034 in `FAMILY_F07_EXTENDED_E11_E15.md`; complete `FAMILY_REALIZED_VOL_D035_D037.md` for D035/D036; corresponding G2/G3 per-ID specification/math/fixture rows and precise holds in `OPEN_GAPS.md`.
 
-| Existing path under src/nvda_desk/market_measurement_truth/ | Reused proposition |
-| --- | --- |
-| `api.py` | WindowContextV1, WindowCalculationRequestV1, WindowMeasurementOccurrenceV1, ExactRatioV1 and existing owner/read contracts. |
-| `_log_return.py` | Exact positive-price log ratio, rational remainder bounds, 50-significant-digit ROUND_HALF_EVEN output; fixed-anchor current/reference mechanism. |
-| `_selection.py` | Public M00 history enumeration, receipt/event visibility, source/type/unit eligibility, duplicate/rank/paging checks where applicable. |
-| `_window.py` | Exact-admission routing, existing public ID/history reads and logical occurrence identity. |
-| `_evaluation.py` | Canonical typed encoding/decoding, including the repaired declared-scalar-type-alias handling. |
-| `_record_store.py` | Existing immutable owner-local SQLite profile, atomic first fact, integrity checking and ordinary durable readback. |
-| `_vwap_comparison.py` | Pattern for validating native selection identities and complete actual window-predecessor snapshots; do not copy its D018-specific equation. |
+Preparation's exhaustive falsifiers are research evidence, not a second test manifest. The old two-sample z-score example does not satisfy this plan's twenty-session profile. Old weekday/daily-grid fixtures do not certify a real exchange calendar. D026 has **two fields only, no sigma**; D027 uses actual elapsed minutes, not an unconditional divisor of five.
 
-Normal construction of actual D019/D020/D021 prerequisites inside D024's cases is allowed. It is **not** permission to execute their old tests or strict claims. Never inject predecessor numbers, use private M01 calculators, calculate expectations with production helpers, or treat old green evidence as proof of new signal semantics.
+Reuse current M02 `api.py` window factories/request/occurrence/read protocols, ExactRatioV1, `_window.py` dispatch/identity/reads, `_evaluation.py` canonical typed codec, `_record_store.py` immutable SQLite storage, `_selection.py` bounded public M00 eligibility/paging and `_session_returns.py` native role identity pattern. Reuse `_log_return._logarithm` unchanged for its admitted 50-significant-digit ROUND_HALF_EVEN logarithm. Do not clone stores/factories, import M01 private arithmetic or run old product claims.
 
-Use the pinned CPython3.12.14 / SQLite3.53.1 environment and existing offline pytest9.0.3, mypy1.20.1, Ruff0.15.11 and PyYAML6.0.3. Check actual environment once on a genuinely new/resumed environment, then reuse it; do not rebuild or requalify it per signal.
+Environment: CPython 3.12.14, SQLite 3.53.1, pytest 9.0.3, mypy 1.20.1, Ruff 0.15.11, PyYAML 6.0.3 and existing hashed offline locks. Verify once on a new/resumed environment, then reuse.
 
-## 3. Exact manifest — ten cases total
+## 3. Exact manifest — 22 cases
 
-**Two cases per signal, one named parameterised test function per physical file. Maximum six remains an absolute ceiling, not a target: do not pad these two-case sets.** Success includes the complete relevant typed value, every required field/unit, definition/configuration/context/identity, selected raw and actual predecessor lineage, and ordinary public durable reopen. Refusal must reach its named incompatibility with otherwise lawful prerequisites and persist no occurrence.
+One named parameterised test function per physical file, **two cases per signal; 22 total**. Six is a ceiling, never a quota. Inputs repeated across real historical observations are data, not hidden extra scenarios. Helpers cannot introduce additional cases or pre-materialise the transition being proved.
 
-Let:
+Every success asserts the complete typed value/fields/units, exact definition/parameters/selection/mapping/unit/context versions, ordered selected M00 occurrence/projection lineage, owner/admission/logical identity, effective/knowledge/calculation times and ordinary public SQLite read-only reopen. Every refusal first establishes otherwise lawful public inputs, reaches the named defect and persists no occurrence. All eleven have empty D-predecessor tuples.
 
-- `L1 = 0.087011376989629766167765901873749540976783972605843`;
-- `L5 = 0.18232155679395462621171802515451463319738933791449`;
-- `L30 = 0.40546510810816438197801311546434913657199042346249`.
+Paths below are relative to `tests/product/`; the sole function is `test_dnnn_<file stem without test_>`.
 
-These are finite canonical 50-significant-digit, round-half-even log oracles for ln(12/11), ln(6/5) and ln(3/2). L1/L5 are reused from accepted D019/D020. L30 was prepared once during planning independently of production, using Decimal ln(3)−ln(2) at200digits then rounding to50; no product test was run. Assert exact Decimal tuples for scalar returns, with no comparison tolerance. Do not silently change precision, rederive these literals per worker, or replace finite numeric proof with a symbolic ln string.
-
-| ID / path under tests/product/ | Case 1: positive and discriminating input | Case 2: precise refusal |
+| Signal / file | Case 1: discriminating success | Case 2: precise refusal |
 | --- | --- | --- |
-| D021 / `market_measurement_d021/test_thirty_minute_log_return.py`; `test_d021_thirty_minute_log_return` | R143 current120 at T, reference80 at T−1800s; visible shorter100 at T−300s. Fixed1800s selection gives **L30**, not ln(120/100). | Retain current120 and shorter100, omit every eligible reference at/before T−1800s: refuse, never shorten to300s. |
-| D022 / `market_measurement_d022/test_session_return.py`; `test_d022_session_return` | R037 current120 and R043 current-session open100, with explicit matching session identity: ln(6/5) = **L5**. | Current120 exists; same-valued R043100 is actually present from a different declared session, otherwise source/type/unit/receipt-valid: refuse. An empty M00 page or ordinary freshness failure cannot stand in for the session mismatch. |
-| D023 / `market_measurement_d023/test_overnight_gap.py`; `test_d023_overnight_gap` | R037 current pre-market120 for target session and R042 previous **official** close80 for its explicitly linked previous session: ln(3/2) = **L30**. | Current120 exists; previous-session80 is actually present but is an intraday fact, not the official close: refuse. Do not replace the required official close with a numerically identical tick. |
-| D024 / `market_measurement_d024/test_return_acceleration.py`; `test_d024_return_acceleration` | Actual compatible D019=L1, D020=L5, D021=L30 produced from public R143120/110/100/80 at T/T−60/T−300/T−1800. Retain all five named exact-rate fields specified below. | Produce lawful actual D019 and D020, with no eligible1800s history so actual D021 is absent; request has only the available predecessor IDs. Refuse because the mandatory third horizon is absent, not because another prerequisite is broken. |
-| D025 / `market_measurement_d025/test_session_range_position.py`; `test_d025_session_range_position` | Explicit native R039 High109, R040 Low91, R037 Last94, same subject/session/snapshot: (94−91)/(109−91) = **ExactRatioV1(1,6)**. Asymmetry detects reversed High/Low. | High=Low=Last=91 with otherwise compatible complete inputs: refuse specifically on zero range. No clamping, rounding to a Decimal or inferred replacement range. |
+| D026 / `market_measurement_d026/test_vwap_deviation.py` | Actual R037 Last101 and compatible R137 VWAP120: named `{price_difference=ExactRatioV1(-19,1), percent_difference=ExactRatioV1(-95,6)}`. | Same lawful source/session/snapshot, VWAP0 and Last101 actually projected: zero denominator refuses. |
+| D027 / `market_measurement_d027/test_vwap_rate.py` | VWAP120 at T,100 at T−360s, visible999 at T−60s. Latest eligible at/before T−300s is100; actual6minutes gives both named rate fields `ExactRatioV1(10,3)`. | Current120 and post-anchor999 remain, but no eligible at/before300s anchor: refuse, never shorten or use999. |
+| D028 / `market_measurement_d028/test_relative_volume.py` | R041 current30 at exact1/2 session fraction; immediately prior two sessions have10 and20 at exact1/2: `ExactRatioV1(2,1)`. Visible wrong-fraction and older-session decoys must be excluded. | Keep both mandatory sessions' actual R041 states, but one explicitly reports an incomplete-from-open cumulative counter. Refuse; an older complete session cannot replace that required member. |
+| D029 / `market_measurement_d029/test_volume_zscore.py` | Current R14416; twenty required prior same-bucket observations alternate8,12 ten times. Mean10, sample variance80/19; result Z20 below. A wrong-bucket999 decoy cannot enter the sample. | One mandatory prior session's actual observation exposes the wrong bucket; nineteen eligible remain plus an older same-bucket decoy. Refuse, never skip to the older session. |
+| D030 / `market_measurement_d030/test_trade_rate_zscore.py` | Same twenty-value baseline/current16, but actual R062 trades/minute: Z20. Preserve that field/unit, not share volume. | Twenty prior R062 rates all8 with current16, all otherwise compatible: zero sample SD refuses. |
+| D031 / `market_measurement_d031/test_volume_rate_zscore.py` | Same baseline/current16, actual R063 shares/minute: Z20; not cumulative R041 or a raw R144 total. | One required historical rate is actually admitted/projectable but received after cutoff; the other nineteen are visible. Refuse, no future knowledge or older-member substitution. |
+| D032 / `market_measurement_d032/test_five_minute_realised_volatility.py` | Complete6-point one-minute grid spanning5minutes; all closes100 except final110: V5m below. | Remove the middle required minute but provide a nearby off-grid close. Refuse, never compress or replace the grid. |
+| D033 / `market_measurement_d033/test_thirty_minute_realised_volatility.py` | Complete31-point one-minute grid spanning30minutes; all100 except final110: V30m. | Only the latest complete5minutes are supplied within the unchanged30minute context: refuse, no shortened horizon. |
+| D034 / `market_measurement_d034/test_session_realised_volatility.py` | All61 one-minute points from declared session open through official close inclusive; all100 except final110: Vsession. | Opening/interior points remain but the official closing point is absent; an after-session110 is present and visible. Refuse, never claim a complete session from it. |
+| D035 / `market_measurement_d035/test_five_day_realised_volatility.py` | Six successive explicitly listed session closing prices: five100 then110, covering five complete intervening admitted sessions: V5d. | Remove one middle required closing observation but retain an older extra close. Refuse, never compress six available prices into the required five-session grid. |
+| D036 / `market_measurement_d036/test_ten_day_realised_volatility.py` | Eleven successive explicit session closes: ten100 then110, ten complete intervening admitted sessions: V10d. | Supply only the last six required closes (five returns) within the unchanged ten-session context: refuse, no five-day substitute. |
 
-### 3.1 Concrete controlled profiles
+These are the complete runtime cases. Other unchanged shared fault/identity/typing/storage mechanisms reuse accepted evidence; the reviewer inspects required guards within the same final source/case review. A real uncovered mandatory proposition is a precise scope gap requiring an owner decision before extra testing, not permission to add a matrix.
 
-Use NVDA and the existing synthetic provider `foundation-pilot-fixture`, variant `cash_quote_v1`, scope `foundation-pilot-fixture/cash_quote_v1`, exact Decimal native prices, existing `mmt-pilot-price/1` identity conversion, true-instant UTC ISO-Z source time and event<=receipt<=cutoff. Public M00 mappings must expose exact native field and any session/phase/kind identity; R tags alone are insufficient. Bounded complete quiescent fixtures are declared, not inferred to be live-feed/calendar certification.
+## 4. Concrete source, calendar and numerical profiles
 
-Controlled S is `controlled-price-session/1`; S_prev is `controlled-price-session-prev/1`. D022/D025 use a WindowContextV1 with S's ref/bounds/completeness; D023 uses `controlled-preopen-pair/1` with its measurement interval below and explicit S/S_prev relationship in the immutable profile. Raw mapping versions are 1: `mmt-current-last` (R037, trade.last), `mmt-session-open` (R043, session.open), `mmt-prior-official-close` (R042, session.close), `mmt-session-high` (R039, session.high), `mmt-session-low` (R040, session.low). Each exposes session identity from `session.id`; D023 uses a distinct `mmt-preopen-last/1` mapping for the same R037 field additionally exposing `session.phase`, and its R042 mapping additionally exposes `session.kind`. Preserve actual native selection identities in lineage, using the accepted D018 validation pattern without changing stored projections. Dependency/binding order follows the catalogue: D022 R043,R037; D023 R042,R037; D025 R039,R040,R037.
+All profiles in this section are **proposed controlled configurations**, not certified provider/calendar facts. A future execution instruction binds these choices into exact per-ID immutable briefs before RED. No investigation of live feeds is required for these synthetic witnesses.
 
-- **D021:** reuse `controlled-close-session/1` [2026-10-20T12:00Z,13:00Z), complete from12:00Z; T=12:40Z, cutoff=T+1s, captured now=T+2s. Reuse current-at-as-of/minute-grid, latest-at-or-before anchor, maximum60s reference gap, no-session-bridging and source/paging policy from D019/D020. Add fixed1800s identity only; do not edit the accepted60/300s identities.
-- **D022:** controlled current session S=[2026-10-20T12:00Z,13:00Z); T=12:40Z, cutoff/now offsets as above. R043 at S start; R037 at T. Each exposes native session=S. Wrong-session negative open belongs to declared S_prev=[2026-10-19T12:00Z,13:00Z), and must be returned by public history. Define role-specific selection: current freshness60s; session-open identity/event-at-open, with a48h enumeration/visibility allowance so the negative is not rejected merely as an old tick. Never apply the current-price60s bound to a legitimate session open.
-- **D023:** controlled target S opens2026-10-20T12:00Z; pre-open measurement interval [11:00Z,12:01Z), T=11:50Z; explicitly linked S_prev is the controlled interval above, official close at2026-10-19T13:00Z. Current fact exposes target S and phase=pre_market; reference exposes S_prev and kind=official_close. Negative exposes kind=intraday at12:59Z on the previous date with the same80 value. Reference allowance48h, current freshness60s, same receipt cutoff. This declared pair is a synthetic profile, not a guessed exchange trading calendar or midnight rule.
-- **D024:** use the same T/cutoff/session/profile as D021 for all three producers. Validate exact accepted D019/D020/D021 definitions, immutable parameter/horizon identities60/300/1800s, source subject and context; preserve all three complete predecessor snapshots and their ultimate raw lineage, in D019,D020,D021 order. A thin typed composition of actual public read facets may delegate lookups to those producers; it must not manufacture or modify returned facts. No new predecessor API family is needed.
-- **D025:** same S/T as D022. Map High/Low/Last explicitly to distinct native fields (`session.high`, `session.low`, `trade.last`) of one source observation carrying R039/R040/R037. Preserve that observation ID for all three field projections, session=S and snapshot event=T. Require exact matching source/session/time and finite values with High>=Low; no silent high/low swapping. Do not clip an inconsistent out-of-range Last into [0,1]; refuse incompatible source content. In the named negative Last=High=Low avoids a competing range-membership failure.
+### 4.1 Common raw/temporal law and D026/D027
 
-These commissioned concrete execution profiles are bound into the corresponding immutable briefs. Any unresolved source/calendar meaning outside them remains a native-readiness hold, not a reason to research/connect a provider during this tranche.
+Use NVDA; synthetic provider `foundation-pilot-fixture`, variant `cash_quote_v1`, sequence scope `foundation-pilot-fixture/cash_quote_v1`; exact finite native Decimal numeric values; true_instant UTC ISO-Z time; event<=receipt<=knowledge cutoff. Set cutoff=T+1s and captured now=T+2s unless the named negative changes only receipt visibility. Quiescent bounded public M00 histories must be fully enumerated, with duplicate/rank/cursor protection reused where applicable. Do not strip native identities in stored projections; validate them before temporary numeric-eligibility checks.
 
-### 3.2 D024's five fields and numerical representation
+D026/D027: S=`controlled-price-session/1`, bounds20Oct2026 12:00–13:00Z, complete from12:00; T=12:40Z. Use unchanged WindowContextV1 and existing price unit `mmt-pilot-price/1`. Current freshness60s. Add `mmt-session-provider-vwap/1`: R137→vwap.value, native price, identity fields session→vwap.session, as_of→vwap.as_of, basis→vwap.basis. Require session=S, native as_of equal selected event, basis=`cumulative_session`. It is distinct from the accepted D018 mapping; do not amend D018 bytes. D026 also reuses `mmt-current-last/1` R037→trade.last with session→session.id. Both D026 inputs must be same subject/session/event/source basis.
 
-The law is `q1=D019/1`, `q5=D020/5`, `q30=D021/30`, `accel_1v5=q1-q5`, `accel_5v30=q5-q30`, units return/minute. Treat each already-rounded canonical predecessor Decimal as its exact stored finite value; divide/subtract using exact rational arithmetic. Preserve upstream rounding provenance; do not claim the result is an unrounded irrational logarithm or apply a second hidden rounding policy.
+D027 current event=T; reference latest eligible event<=T−300s, at most60s before that anchor, same S/basis and receipt visibility. Reference gap60s is inclusive, admitting T−360s. Divide by exact positive (T−reference_event)/60 minutes. No log and no inferred five-minute divisor. A small role-aware selector may be added in the new VWAP module where the existing exact-event helper cannot express latest-at-before-anchor; reuse its paging/ranking law without changing accepted selectors.
 
-Admitted public carrier: frozen `ReturnAccelerationV1(q1:ExactRatioV1, q5:ExactRatioV1, q30:ExactRatioV1, accel_1v5:ExactRatioV1, accel_5v30:ExactRatioV1)`, added once to the existing window-result union. No positional unnamed vector or reuse of D018's two-field comparison carrier.
+### 4.2 Baseline calendar and mappings
 
-Independent expected numerator/denominator pairs, prepared from the declared literals rather than runtime predecessor results:
+Controlled calendar `controlled-volume-calendar/1` lists daily synthetic sessions for29September–20October2026 inclusive, each12:00–13:00Z, no breaks, type=`controlled_cash`, identities `controlled-volume-YYYYMMDD/1`. This is an explicit synthetic list including weekends; never label it a US exchange calendar or generate a supposedly certified calendar from weekdays. Each listed frame is known at cutoff and immutable;29September is an older compatible decoy, outside the mandatory twenty-session window.
 
-| Field | Numerator | Denominator |
+T=20October12:30Z. D028 fixes N=2 (18/19October are immediately prior); D029–D031 fix N=20 (30September–19October), current excluded. Historical role visibility allowance30days, current freshness60s. Session membership comes from the exact calendar order, not observed row count or whichever older sessions have data. Require one unique eligible selected state per mandatory session and exact source/unit/method compatibility. Each historical session/state precedes current.
+
+Mappings version1, same controlled provider/variant:
+
+| R / mapping | Numeric field / native units | Native identity metadata |
 | --- | --- | --- |
-| q1 | 87011376989629766167765901873749540976783972605843 | 1000000000000000000000000000000000000000000000000000 |
-| q5 | 18232155679395462621171802515451463319738933791449 | 500000000000000000000000000000000000000000000000000 |
-| q30 | 40546510810816438197801311546434913657199042346249 | 3000000000000000000000000000000000000000000000000000 |
-| accel_1v5 | 10109413126167768185084459368569322867461221004589 | 200000000000000000000000000000000000000000000000000 |
-| accel_5v30 | 13769284653111267505845900709254773252246912080489 | 600000000000000000000000000000000000000000000000000 |
+| R041 / `mmt-session-volume` | session.volume / shares | session.id, counter.generation, counter.basis, counter.complete_from_open |
+| R144 / `mmt-bar-volume` | bar.volume / shares | session.id, bucket.id |
+| R062 / `mmt-trade-rate` | activity.trades_per_minute / trades/minute | session.id, bucket.id |
+| R063 / `mmt-volume-rate` | activity.shares_per_minute / shares/minute | session.id, bucket.id |
 
-## 4. File map and bounded prerequisites
+For each row identity keys are the listed full dotted names in the listed order, mapped to the corresponding tuple field paths. Unit conventions are identity transforms: `mmt-shares/1`, `mmt-trades-per-minute/1`, `mmt-shares-per-minute/1`. Do not infer rates from totals or share volume from trade counts.
 
-The following bounded prerequisites were commissioned on23October2026 and implemented in the respective signal deltas; section8 records their evidence:
+D028 uses exact elapsed eligible trading seconds / total eligible session seconds, calculated from the admitted frame and selected event; desired fraction1/2 is12:30 in each60minute session. Cumulative values are nonnegative, basis=`cash_shares_unadjusted`, generation=`counter-YYYYMMDD/1`, complete_from_open=True. In the negative exactly one required counter reports False. Include a19October12:31 value999 (wrong fraction) and17October12:30 value999 (outside required N) in both cases; neither repairs the negative. Current30; mandatory18October10 and19October20. Require equal session type/duration, correct generation, complete-from-open counters and positive prior mean; no interpolation/scaling/skipping. Zero current is lawful if mean positive.
 
-1. **One declaration-only claim-loader extension:** `tools/product_proof_claims.py` currently enumerates D012–D020. Extend the fixed Literal identities, fixed iteration tuple and seven-row incorporated-byte counts to D021–D025 once. Bind that exact five-ID scope in D021's initial brief/binding under the execution commission; no separate preliminary review programme. Keep validators, target rules, hashes, partitions and immutable generation algorithms unchanged. Do not add dynamic claim discovery, alter the original hash-bound catalogue, redo the old149-control family, or extend controls per signal. Strict loading of the five actual admitted claims exercises the new declarations as those signals run; no preliminary runtime-control ceremony is added. A change beyond declarations must stop with its precise unproved obligation and proposed test list.
-2. **One D024 result extension:** add the exact carrier in §3.2 to `api.py` and reuse existing typed union/dataclass decoding and `_record_store.py`. The existing D024 success/readback is its bounded qualification; no new schema/store/codec framework, generic fault suite or automatic negative typing specimen.
+D029–D031 use native bucket.id=`minute-ending-1230/1`; each value describes the completed [12:29,12:30] minute in its session. Exact event=12:30, source units as above; all volumes/rates are finite and nonnegative. Baseline tuple in chronological calendar order is (8,12) repeated ten times in twenty **distinct sessions/occurrences**. Mean10, sum squared deviations80, sample variance80/19. Current16. Require exactly these twenty immediately prior sessions, not the current value, older replacements or nearest bucket. D029's wrong-bucket decoy is a separate19October12:31 observation999 with bucket `minute-ending-1231/1`; its negative changes the required30September bucket to `minute-ending-1229/1` with matching12:29 event and retains an older29September matching-bucket8 decoy outside the required twenty-session window. D031 negative changes only one required prior receipt to cutoff+1s; public direct projection establishes that future-received source exists.
 
-| Signal | Calculation files and fixed identities |
+### 4.3 Realised-volatility calendar, complete grids and annualisation
+
+Use R151→bar.close under `mmt-risk-close/1`, native price and `mmt-pilot-price/1`. Expose session.id, sample.kind and adjustment.basis. Require adjustment=`unadjusted`; intraday sample kinds=`session_open`, `minute_close`, `official_close` according to the exact grid; daily samples=`official_close`. No synthetic R151-to-R143 dependency or D019/D020/D021 predecessor.
+
+Controlled risk calendar `controlled-risk-calendar/1`: explicit sessions10–20October2026, each12:00–13:00Z, no breaks, type=`controlled_cash`, ref `controlled-risk-YYYYMMDD/1`. The **proposed synthetic trading year is252 such60minute sessions**: 15,120 eligible minutes. This is a declared fixture parameter, not an empirical market-year claim. Persist exact per-interval trading-year fractions, calculated by intersection with the listed eligible session intervals; never charge overnight/closed time.
+
+| ID | Exact required sample grid / as-of T | Return intervals / total year fraction |
+| --- | --- | --- |
+| D032 | 20Oct12:35,12:36,…,12:40 | 5; each1/15120, total5/15120 |
+| D033 | 20Oct12:10,12:11,…,12:40 | 30; each1/15120, total30/15120 |
+| D034 | 20Oct12:00,12:01,…,13:00 inclusive | 60; each1/15120, total1/252 |
+| D035 | Official closes15–20Oct at13:00 | 5; each1/252, total5/252 |
+| D036 | Official closes10–20Oct at13:00 | 10; each1/252, total10/252 |
+
+D035's15Oct close is the price anchor; the five complete measured sessions are16–20Oct. D036's10Oct anchor precedes the ten complete measured sessions11–20Oct. Known exact calendar/sampling completeness must be represented, not inferred from having six/eleven numeric values. Historical visibility allowance30days; every selected grid event matches exactly and is visible at cutoff. Required prices strictly positive. Missing official-close/minute positions refuse even if other older/off-grid prices are present. D032 negative off-grid sample is12:37:30 after omitting12:37; D034 negative after-session close is13:01, receipt13:01, cutoff13:02 and now13:03 so it is genuinely visible but cannot be the official13:00 sample. Other cases use common cutoff/now offsets.
+
+### 4.4 Fixed arithmetic and independent literals
+
+D026/D027/D028 use exact Fraction arithmetic and reduced ExactRatioV1; no Decimal division or rounding. New public frozen carriers: `VwapDeviationV1(price_difference:ExactRatioV1, percent_difference:ExactRatioV1)`; `VwapRateV1(price_per_minute:ExactRatioV1, percent_per_minute:ExactRatioV1)`. Do not reuse D018's bps-named carrier for percentages.
+
+D029–D031: compute mean/sample variance exactly as rationals; require N=20 and variance>0. Evaluate signed sqrt((current−mean)^2/variance), rounding **only the final z value** to50 significant digits ROUND_HALF_EVEN (exact zero stays Decimal("0")). Proposed shared helper in `_numeric_bounds.py`: `sqrt_ratio_50(value:Fraction)->Decimal`, for nonnegative values, with exact integer/rational lower/upper bounds refined until they round identically; no binary float or ambient Decimal context. Detect exact rational square roots and half-even ties explicitly rather than waiting forever on an interval straddling a midpoint. A negative sign applies exactly after magnitude rounding; unresolved numerical bounds refuse rather than emit a guessed value.
+
+D032–D036: for each adjacent close pair, reuse unchanged `_log_return._logarithm` to obtain its canonical50-digit half-even Decimal log. Treat each such finite log as an exact rational intermediate; square/sum and divide by exact sum of interval year fractions using Fraction. Apply sqrt_ratio_50 once for final annualised volatility. **This explicitly proposed two-stage numerical convention preserves log-rounding provenance; it does not claim an unrounded irrational result.** Do not silently switch to mean-centred sample SD, log-of-price differences, float annualisation, a second intermediate rounding, or a constant dt times count without validating the interval measures.
+
+Independent plan literals were prepared once using Decimal arithmetic at200-digit precision, outside production, followed by the stated50-digit half-even policy. RV literals use the rounded log L below as an exact Fraction before high-precision square root. This was mathematical planning, not execution of a product test.
+
+| Symbol | Canonical Decimal literal |
 | --- | --- |
-| D021 | Modify `_log_return.py` admission/horizon maps for D021/1800s; definition `D021-LOG-RETURN-1`, parameter `mmt-log-1800s-50d-half-even/1`. Reuse existing routing. |
-| D022 | Add shared `_session_returns.py` for session-role selection and reuse the existing log function; route through `_window.py`. Definition `D022-SESSION-RETURN-1`, parameter `mmt-session-return-50d-half-even/1`, P_WINDOW. |
-| D023 | Extend that same session-return module with the explicit previous-official-close/pre-market pairing; no second log implementation. Definition `D023-OVERNIGHT-GAP-1`, parameter `mmt-overnight-gap-50d-half-even/1`, P_WINDOW. |
-| D024 | Add `_return_acceleration.py`, route through `_window.py`, and the single carrier extension above. Definition `D024-RETURN-ACCELERATION-1`, parameter `mmt-return-acceleration/1`, P_WINDOW. |
-| D025 | Add `_session_range.py`, route through `_window.py`; existing ExactRatioV1. Definition `D025-SESSION-RANGE-1`, parameter `mmt-session-range/1`, P_BASIC. |
+| Z20 = 3 sqrt(19/20) | `2.9240383034426891720515239599698800897757751701012` |
+| L = rounded ln(11/10) | `0.095310179804324860043952123280765092220605365308644` |
+| V5m = sqrt(15120/5) × L | `5.2411933614380407513132873039695738036883343009577` |
+| V30m = sqrt(15120/30) × L | `2.1397082297976278396691909270830504534270372226234` |
+| Vsession = sqrt(252) × L | `1.5130021990505661763533261763515839450637636850162` |
+| V5d = sqrt(252/5) × L | `0.67663515343674674807858038377343033264846204377132` |
+| V10d = sqrt(252/10) × L | `0.47845330538432369294227349314595528724804013793782` |
 
-All module names above are relative to `src/nvda_desk/market_measurement_truth/`. Keep public `create_window_owner`, `create_window_reader`, WindowCalculationRequestV1 and MeasurementWindowReadsV1. Do not give individual signals their own API/store/registration architecture. New source-role policies and raw mappings are immutable signal configuration; exact constructors are recorded once in that signal's brief before RED.
+Assert exact Decimal tuples, zero tolerance. Keep these literals fixed in authored proof; never obtain expectations from production or rerun numerical research per signal. Z units=`z-score`; RV units=`annualised_volatility`, decimal fraction per square-root trading year.
 
-Per ID Dnnn, use existing native paths:
+## 5. Bounded shared changes and exact file map
 
-- `handoff/foundation_implementation/authority/Dnnn_IMPLEMENTATION_BRIEF.md` and `Dnnn_PROOF_CONTRACT.json`;
-- `implementation/authority/Dnnn_IMPLEMENTATION_AUTHORITY_BINDING.yaml`;
-- `config/product_proof/market_measurement_dnnn/{claim.json,admission.json,generations/0001.json}`;
-- the exact physical file/function in §3.
+These are known prerequisites proposed now, not surprise expansions during execution.
 
-Format and inspect proof before sealing hashes. Retain the seven-row incorporated-byte convention and prospective concrete delegated admission. If a real repair changes admitted proof, retain its original generation and link a new one. Never overwrite accepted evidence or fabricate an independent adequacy judgement.
+1. In `tools/product_proof_claims.py`, extend only fixed Literal identities, fixed iteration tuple and incorporated-row counts for D026–D036 once, with the initial D026 admission. Counts:7 for all new IDs **except D028=8**, which incorporates the exact accepted overlay in addition to the six standard companions plus its proof contract. Keep algorithms, schemas, target/generation/integrity rules and original claim catalogue unchanged. Actual new strict claims exercise the new declarations; no control149 rebuild or per-ID loader extension.
+2. D026/D027 add the two result carriers above to the existing window result union/export, each when its owning signal executes. The signal's own positive/reopen case qualifies it. No new factory/store/schema/codec framework or default extra typing specimen.
+3. D028 adds frozen `SessionFrameV1(ref:VersionRefV1, session_type:str, start_utc:datetime, end_utc:datetime)` and `BaselineWindowContextV1(ref, session_start_utc, session_end_utc, history_complete_from_utc, sessions:tuple[SessionFrameV1,...], prior_session_count:int, bucket_offset_seconds:int)`; the first four fields have the same types as WindowContextV1. Baseline sessions include current as last member; history completeness covers the earliest mandatory opening; bucket_offset_seconds=1800. Ordered frames are strictly separated, unique and complete for the declared controlled calendar; incompatible mandatory sessions refuse.
+4. D032 adds frozen `TradingReturnIntervalV1(start_utc:datetime, end_utc:datetime, trading_year_fraction:ExactRatioV1)` and `RealisedRiskWindowContextV1(ref, session_start_utc, session_end_utc, history_complete_from_utc, sessions:tuple[SessionFrameV1,...], sample_instants_utc:tuple[datetime,...], intervals:tuple[TradingReturnIntervalV1,...])`. First four types again match WindowContextV1. Measurement bounds are first/last required sample, **inclusive for official end close**; frames carry full calendar openings/closings; history_complete_from<=first required sample. Adjacent interval endpoints must match the entire exact ordered sample grid, positive dt and actual eligible-time measure. Interval records are distinct by endpoints even when year fractions repeat; do not put repeated fractions into a tuple subject to the existing distinct-member validator.
+5. Widen only `WindowCalculationRequestV1.context`'s accepted type union as each new context is introduced. **Do not add fields to, reorder, or reinterpret existing WindowContextV1**, request/occurrence fields or prior carriers: that would change old canonical payloads and hashes. Existing values keep exactly the same bytes/identities and prior dispatch. Reuse the codec's existing dataclass/union support and RecordState unchanged; the owning D028/D032 positive reopen supplies bounded readback qualification.
+6. D028's M02 fixed definition and its authority tuple must actually incorporate the R041-only overlay, not merely cite it in prose. Preserve historical CSV/hash bytes and old accepted bindings; the new scoped M02 definition is the effective runtime binding for D028. Do not claim the old M01 catalogue/runtime was repaired or demand R044. A global catalogue migration is outside this tranche.
 
-## 5. Hard execution budget
+Module paths below are under `src/nvda_desk/market_measurement_truth/`. Shared helpers arrive with their first consuming signal; later IDs only extend fixed configuration unless a named semantic difference needs code.
 
-- **Exactly one admitted semantic RED and one final complete strict GREEN per signal.** Assign the final independent reviewer as the sole final runtime executor; no worker GREEN followed by reviewer GREEN, focused GREEN followed by aggregate GREEN, or rerun for commit/report/download.
-- Strict command for each ID: `python tools/run_product_proof_gate.py --aggregate neutral_market_measurement_truth_dnnn`. The runner already checks readiness, binding, names, hashes, outcomes and governed bytes. Do not prepend duplicate validators except to diagnose an actual control failure. Use a clean admitted candidate; malformed authority/import/environment failure is not semantic RED.
-- **No default pytest, architecture/bootstrap, promotion220, control149, old M00/M02 claims, mutation matrices, ad-hoc probes or final five-claim sweep.** Do not rename these activities compatibility, review or release checks to evade the limit.
-- **No hidden cases:** helpers, loops, reviewer scripts and expanded bodies cannot introduce extra scenarios. Normal actual dependency construction and complete assertions inside the ten named cases are allowed. Prior generic retry/paging/fault/type evidence is reused where applicable; no recreated test matrix.
-- **One independent final review per signal**, covering source, exact two cases and fixture sequencing. No separate design/proof/implementation approval rounds or whole-tranche runtime requalification. Satisfy fixture independence within those cases; no extra adversarial sequence.
-- **One scoped mypy invocation and one changed-path Ruff invocation for the current delta.** Check the changed M02 package; when the fixed loader first changes, include that file once in the same scoped invocation. Do not repeatedly type/lint unchanged tools, run full-repository lint, add consumer specimens by default or have the reviewer repeat successful checks. Format proof before hash admission.
-- After an actual failure, preserve the first result, diagnose the reached invariant, make a relevant material repair and repeat only the affected declared check. Explain the link in one line. Never retry unchanged code to chase green. A complete failed strict claim may repeat after repair; a successful GREEN does not.
-- Additional tests or shared changes outside §4 require an explicit owner scope decision identifying the exact missing proposition and exact added test list **before execution**. No generic “applicable checks” exception. Missing required authority/capability stops only the dependent work; it does not authorise speculative downstream repairs.
-
-## 6. Minimal worker cycle and handoff
-
-For each signal, complete this one cycle without separate administrative work units:
-
-- [x] Read only affected authority/preparation and this plan; reuse established conclusions and settle the exact controlled profile.
-- [x] Prepare its two physical cases and minimum native authority/claim/generation files; inspect source/fixtures and formats before sealing. Incorporate the single §4 loader extension before the first admitted claim is run.
-- [x] Commit a clean admitted candidate; run the strict claim once for intended semantic RED, then implement only the named delta.
-- [x] Inspect the completed delta; obtain the scoped static results and one independent final review. The designated reviewer executes the sole final strict GREEN.
-- [x] Record one concise root acceptance entry: ID, candidate/tree/generation, changed paths, exact commands/outcomes, reused evidence, actual failure/repair, independent judgement and limitations; retain full logs under `handoff/foundation_implementation/dnnn_execution/`.
-- [x] Commit the accepted result and stop at the owner-designated boundary. After each individual signal, export a recoverable full-history bundle, verify the bundle itself and make it downloadable under the23October owner instruction. Packaging/closing documentation does not trigger product retesting.
-
-Do not add seven reports, review queues, implementation-independent checkpoint commits or per-signal archives. Reuse proven bytes and receipts. The owner has observed faster delivery; retain that direction without claiming a measured tenfold improvement. Record actual runtime outcomes and material rework concisely; no timing/benchmarking programme.
-
-## 7. Current status
-
-| Item | State |
+| IDs | Files / exact definition and parameter IDs |
 | --- | --- |
-| M00 and D011–D020 | Preserve accepted bounded state at baseline4885e144c7d214831f8e781ee939b2cf0f4a0cfb. Prior full disposition remains in that Git version of the plan and existing execution logs. |
-| D021, D022, D023, D024, D025 | Individually ACCEPTED for exact controlled profiles; ten final strict cases passed, two per signal. Section8 retains each candidate/tree/generation and outcome. Stop at D025. |
-| Claim-loader declarations / D024 carrier | Implemented within the commissioned bounded deltas; exercised by the corresponding admitted strict claims and scoped static results. |
-| Close-out | Full raw logs and independent judgements retained per ID. Current root and worker guidance reconciled by documentary inspection; packaging/status edits require no test reruns. |
+| D026 | New `_vwap_returns.py`, api.py carrier, _window.py routing; `D026-VWAP-DEVIATION-1`; `mmt-vwap-deviation/1`, P_WINDOW. |
+| D027 | Extend same module/routing/carrier; `D027-VWAP-RATE-1`; `mmt-vwap-rate-300s/1`, P_WINDOW. |
+| D028 | New `_volume_baseline.py`, api.py baseline context, routing; `D028-RELATIVE-VOLUME-1`; `mmt-relative-volume-2sessions/1`, P_BASELINE. |
+| D029 | Extend baseline module; new `_numeric_bounds.py` square-root helper; `D029-VOLUME-ZSCORE-1`; `mmt-volume-zscore-20sessions-50d/1`, P_BASELINE. |
+| D030 | Reuse fixed baseline/SD/root mechanism with R062 mapping; `D030-TRADE-RATE-ZSCORE-1`; `mmt-trade-rate-zscore-20sessions-50d/1`, P_BASELINE. |
+| D031 | Same with R063 mapping; `D031-VOLUME-RATE-ZSCORE-1`; `mmt-volume-rate-zscore-20sessions-50d/1`, P_BASELINE. |
+| D032 | New `_realised_volatility.py`, api.py risk context/routing; reuse unchanged log and square-root helpers; `D032-REALISED-VOL-1`; `mmt-realised-vol-5m-50d/1`, P_VOL_WINDOW. |
+| D033 | Same module, fixed30m grid admission; `D033-REALISED-VOL-1`; `mmt-realised-vol-30m-50d/1`, P_VOL_WINDOW. |
+| D034 | Same module, complete-session/end-inclusive profile; `D034-REALISED-VOL-1`; `mmt-realised-vol-session-50d/1`, P_VOL_WINDOW. |
+| D035 | Same module, six-close/five-session profile; `D035-REALISED-VOL-1`; `mmt-realised-vol-5d-50d/1`, P_VOL_WINDOW. |
+| D036 | Same module, eleven-close/ten-session profile; `D036-REALISED-VOL-1`; `mmt-realised-vol-10d-50d/1`, P_VOL_WINDOW. |
 
-## 8. Execution commission and ledger — 23 October 2026
+Selection policy IDs are the corresponding parameter stem without `-50d`, suffixed `-selection/1`; exact durations/source/mapping/context constructors and equation strings are copied into the owning brief before RED, once. Baseline context's common bounds are the current session12:00–13:00; frames retain the ordered preceding calendar and completeness covers required historical openings. Risk context's bounds are its exact first/last required sample as stated above. Result shapes: D026 `named_exact_vwap_deviation`, D027 `named_exact_vwap_rate`, D028 `exact_ratio`, D029–D036 `scalar_decimal`. Complete flat risk history lawfully yields Decimal("0"); missing history never yields zero. Preserve native field identities and actual source revisions; no guessed calendar or value defaults. Context/reference/version, required frames/samples/intervals and adjustment/counter conventions form the immutable calculation identity.
 
-Owner instruction commissions D021 through D025 in order and a full-history verified downloadable checkpoint after each individual acceptance. This supersedes the planning-only stop and single-final-bundle schedule above. All other bounded case/review/check restrictions apply. Recovered c03f70f from the saved bundle into this isolated checkout; the older dirty D015 checkout is preserved untouched. Environment rebuilt once offline from the pinned hashed dev lock: CPython3.12.14, SQLite3.53.1, pytest9.0.3, mypy1.20.1, Ruff0.15.11, PyYAML6.0.3. Preflight: D021 extends the accepted fixed-log configuration; D024 consumes actual compatible D019/D020/D021 occurrences. Root ledger carries progress; no separate skill bookkeeping or extra qualification suites.
+Per-ID native files remain `handoff/foundation_implementation/authority/Dnnn_IMPLEMENTATION_BRIEF.md` and `Dnnn_PROOF_CONTRACT.json`; `implementation/authority/Dnnn_IMPLEMENTATION_AUTHORITY_BINDING.yaml` with modify:M02/modify:G01; `config/product_proof/market_measurement_dnnn/{claim.json,admission.json,generations/NNNN.json}`; exact physical file in §3. D028 binds eight incorporated rows; all others seven. Use actual standing delegation for concrete proof adequacy/admission, never fabricate an independent judgement or new owner utterance.
 
-D021 first admitted candidate f8cb77a: strict semantic RED, two intended unsupported-owner failures after lawful public history setup. Candidate bce077f implements only fixed1800s admission, with scoped mypy18files and changed-path Ruff passing. The single final reviewer found an ISOLATED test context preparation error before final runtime: completeness remained12:30 instead of12:00. Repair changes that existing context literal only; generation1 retained and generation2 linked. No final runtime had run, no extra case or earlier test rerun. Static results reused: no source/type/lint-sensitive edit.
+## 6. Hard work budget and minimal cycle
 
-### D021 — ACCEPTED controlled profile
+- [ ] Read affected authority/preparation, settle the exact profile from this plan and author its **two** cases plus minimum native admission files. Complete formatting/parsing inspection successfully before hashing; inspect every tool exit, including authoring helpers. Freeze independent literal expectations. No design/proof approval queue.
+- [ ] Commit a clean admitted proof candidate. Run one intended semantic RED: `python tools/run_product_proof_gate.py --aggregate neutral_market_measurement_truth_dnnn`. Required public raw prerequisites must already be lawful. Import/collection/environment/control failures are preparation failures, preserved and repaired before valid semantic RED; they do not establish the calculation's absence.
+- [ ] Implement only the owning delta in §5. Obtain one scoped mypy invocation on changed M02 package and one Ruff invocation on changed Python paths; include changed loader only with D026. Reuse successful outputs; no reviewer repeats or broad unchanged-tool checks.
+- [ ] Obtain **one independent final source/case review per signal**. The reviewer is the sole final runtime executor, running the complete strict command above once for final GREEN. Establish fixture independence by setup inspection/decomposition within the same two cases. No worker GREEN then reviewer GREEN, focused GREEN then strict GREEN, extra reviewer probe, separate type-consumer suite, or final eleven-claim sweep.
+- [ ] Record one concise root acceptance entry: candidate/tree/brief/generation, changed paths, exact commands/outcomes, reused evidence, actual failure/repair, independent judgement and limitations. Retain full raw logs under `handoff/foundation_implementation/dnnn_execution/`. Commit accepted result.
+- [ ] **Immediately create, verify and save one full-history Git bundle after that signal**, then continue to the next. A material first failure with work at risk also merits a clearly labelled in-progress checkpoint, not a false ACCEPTED checkpoint. Preserve every earlier completed checkpoint. Final D036 checkpoint is cumulative; stop there.
 
-Final candidate b96b79091c55395c1011875849b93f1f3f255ce9, tree eb9a7709b597365f06c82ef34ec0398c2229d234, generation2 SHA256724e06bec1635893c5b3e4613cf96c463adab4af0054926225ff4678705086f9. Independent /root/d021_final_review ACCEPT; sole final strict command exit0,2passed0.38s. Scoped mypy18files/Ruff passed. Full first RED, final GREEN and independent judgement under d021_execution. Reused unchanged log/selection/record-store evidence; no old claim reruns. Native source/calendar certification remains held. Commit acceptance, verify/export checkpoint, then D022.
+No default pytest, architecture/bootstrap, promotion220, control149, old M00/M02 aggregates, mutation grids, ad-hoc diagnostic runtime probes, repeated successful static/GREEN runs, timing benchmarks or renamed “compatibility/release” suites. No repeat for a new document, turn, reviewer, commit or download. Do not add seven reports or administrative checkpoint commits apart from actual proof admission, implementation and acceptance commits.
 
-D022 candidate4c438d4 admitted generation1 reached semantic RED (2 unsupported-owner failures after both raw role projections present). New shared session-role selector validates native identity before ordinary numeric eligibility and retains actual projections. First scoped mypy caught a local string/RawSelectionIdentityV1 name collision; renamed only the occurrence-id variable, preserving the required selection identity. First output retained; rerun only affected static check (and changed-path Ruff for the source edit), before the sole final runtime.
+After an observed failure: preserve first output; diagnose the reached invariant; make a relevant material repair; repeat **only** its affected declared check, explaining the link once. A complete failed strict claim may repeat after repair; a successful GREEN never repeats. If admitted proof changes, retain original generation and link a new one; no overwritten old proof.
 
-### D022 — ACCEPTED controlled profile
+Additional cases, providers, shared changes beyond §5 or a new numerical convention require the exact missing proposition and proposed change/test list before execution under an owner scope decision. No generic “applicable checks” exception. Stop dependent work at an actual unresolved authority/capability invariant. Keep native RAW-PROJECTION/SRC-CALENDAR/SRC-VOLUME/CALC-PROFILE holds explicit without reopening broad research.
 
-Candidate87c5c8124cb4592c170ec8d65fa4ed827192889e, tree78f22db11e2a871e23734d3c6a673e4a79e218c4, generation1 SHA2566519b745d283dbffbaa4a18db0212ee7ed68787672e08321c0d348a6457d48d0. Independent /root/d022_final_review ACCEPT; sole strict final2passed0.24s exit0. Native wrong-session open is actually projected and otherwise role-time eligible; refusal reaches identity compatibility. All typed fields, selected raw lineage and public SQLite reopen passed. Scoped mypy18files and changed-path Ruff pass; first static collision output preserved. No extra cases/old claims/duplicate GREEN. Full records d022_execution. Native feed/calendar holds remain. Checkpoint after this acceptance, then D023.
+## 7. Planning disposition and execution ledger
 
-D023 first candidate9ce8cfb strict execution stopped at collection syntax failure (exit5), not semantic RED: a generated native mapping tuple lacked two closing parentheses. Preserved raw output as collection_first_failure.log. Corrected syntax and formatted existing two cases before sealing linked generation2; generation1 preserved. No production behaviour written before valid semantic RED. The authoring helper now requires a successful completed format operation before hashes/admission, preventing this preparation mechanism from recurring.
+| Item | Current state |
+| --- | --- |
+| M00 / D011–D025 | Preserve bounded acceptances at875fc9e and their existing immutable evidence. |
+| D026–D036 | NOT_STARTED. Eleven work units /22 proposed runtime cases; this turn is planning only. |
+| Shared additions | Precisely proposed in §5; none implemented by this plan change. |
+| Owner review boundary | Controlled calendars, N20 baseline, typed history contexts and compositional50digit RV convention are explicit proposals. An instruction to execute this plan commissions them; native provider certification does not follow. |
+| This change | Root plan plus directly conflicting agent/test/README routing; source/text inspection and diff checks only. Independent arithmetic preparation produced literals; no tests/mypy/lint. |
 
-### D023 — ACCEPTED controlled profile
-
-Candidate267adf1c47f7bdff912fbc720aa3ffc7b9b13b5c, tree8ecf8149158806a6ab23a14f7dd1f2faec1cc36a, generation2 SHA256ec252ea5e144b12783c3957557293110676c8d75a486da68e865328411148e31. Independent /root/d023_final_review ACCEPT; sole final strict2passed0.33s exit0, complete native role, typed metadata/lineage and public SQLite reopening. Scoped mypy18files/Ruff pass. First collection failure preserved distinctly from semantic RED. D022 selector/log mechanism reused unchanged; no old tests or extra scenarios. Native source/calendar certification remains held. Checkpoint after acceptance, then D024.
-
-D024 candidatec34eb9f strict semantic RED reached unsupported consumer after actual D019/D020/D021 construction (positive all3, negative onlyD019/D020). Implemented frozen five-field exact carrier, existing window dispatch and thin actual-predecessor calculation. Ultimate raw lineage is distinct current/one/five/thirty, while complete three predecessor snapshots preserve all edges; this follows existing typed tuple uniqueness. Scoped mypy19files passed. First Ruff found only new public export ordering; moved the export into lexical order, retained first output and repeated affected api.py lint only. No source meaning/test changes or extra consumer specimen.
-
-### D024 — ACCEPTED controlled profile
-
-Candidatec1a2a1966403809502540245bddae3bfaaae2102, tree47f18f2b960bcea389bfa00b1bc93bbeca0d3992, generation1 SHA2563ee435cdfd3e731ce81a35643ed33a7c7ba26d73a961879c2d6d72dad0d1a53f. Independent /root/d024_final_review ACCEPT; sole strict final2passed0.61s exit0. All five exact fields, actual compatible fixed-horizon snapshots, distinct ultimate raw lineage and publicSQLite reopen passed. Scoped mypy19files and repaired changed-path Ruff pass, first export-sort finding preserved. Actual producer construction is within two D024 cases, not old test/claim execution. No extra scenarios or duplicate GREEN. Native certification remains held. Checkpoint after acceptance, then D025.
-
-### D025 — ACCEPTED controlled profile and tranche stop
-
-Candidatedcf6b29e84258fc9339105b37f020c1678f9cbff, treecf463c8e4b042c0b74085b8386e400d0bb0d2a3a, generation1 SHA25605a81d7d3552be39e68dbb84431f1a8f142c727094c1aa434e721ca1de361f23. Independent /root/d025_final_review ACCEPT; sole final strict2passed0.27s exit0. Actual same-snapshot High/Low/Last mappings, asymmetric1/6, zero-range refusal, full typed metadata/lineage and publicSQLite reopen passed. Scoped mypy20files and changed-path Ruff passed first attempt. First semantic RED2unsupported cases preserved. Reuse unchanged role selector/result/store/codec; no old claims, extra tests or successful repeats. Full logs and judgement in d025_execution.
-
-Tranche closes with ten cases total and five independent individual acceptances. D021 generation2 context repair, D022 static name collision, D023 generation2 syntax repair and D024 export-order lint repair remain attributable in original logs/history; no failure was counted as a successful result. Native source/feed/calendar certification remains held; no live provider or broader readiness claim follows. Documentary close-out updates only current status/routing. Read-only Git comparisons found GUARDRAILS, M00 source, schemas, original claim catalogue, D011–D020 tests and D015–D020 admitted briefs/contracts/bindings/generations unchanged againstc03f70f. Each completed ID has a complete-history verified bundle; D025 is the latest cumulative checkpoint. No product retest for packaging. **STOP: no D026+ work commissioned.**
+Future execution appends individual dispositions here without creating a competing schedule. Preserve the previous accepted narrative at875fc9e. Checkpoint/export does not trigger product retesting.
