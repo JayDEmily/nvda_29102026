@@ -2,7 +2,7 @@
 
 ## 1. Authority and current stop
 
-On 22 October 2026 the owner directed a strict rewrite after the D015 workflow audit: no repeated successful testing, no tests outside the agreed signal cases, no serial approval machinery, and no module API work inside a signal task. This is the sole active plan. The current instruction authorises documentary updates and a commit only. **D015 is accepted; execution remains stopped. Do not start D016.**
+On 22 October 2026 the owner directed a strict rewrite after the D015 workflow audit: no repeated successful testing, no tests outside the agreed signal cases, no serial approval machinery, and no module API work inside a signal task. This is the sole active plan. The subsequent instruction authorises **D016 only**. D015 remains accepted; D017–D020 are not authorised. D016 is blocked at the existing-interface check recorded in §6.
 
 Branch: `work/v2-d015-d020-plan-20261022`. Rewrite baseline: `3060d8b3d05b5ecd62dc662c16b7b4f791f103bf`, tree `5956dc5708d19e77c811cc53151a4575cbd1d9a7`. The complete preceding plan and execution narrative remain recoverable with `git show 3060d8b:EXEC_PLAN.md`.
 
@@ -93,7 +93,16 @@ Runtime remains CPython 3.12.14, owner-local SQLite 3.53.1 and the existing offl
 | D015 | ACCEPTED. Implementation candidate `ef4ff63f790987a2f54e2ba796038e1eae8ee8d6`, tree `32d65e3bbb2c6ca2cb2c2c93c973f4fdb875e15b`; generation1 SHA256 `d495a09f834349b7817a28911a58afa372b635ed0d1d211efd4fc8a4f822e543`. |
 | D015 delivered checkpoint | `3060d8b3d05b5ecd62dc662c16b7b4f791f103bf`. Full disposition: `handoff/foundation_implementation/D015_ACCEPTANCE_20261022.md`; detailed execution/reviews under adjacent `d015_execution/`. |
 | D015 historical execution | Six-case RED/GREEN, independent judgement, typing/lint and complete 220-test promotion are recorded evidence. They are not instructions to repeat that workflow. |
-| D016–D020 | NOT_STARTED; await further owner execution direction. Known policy/interface gaps remain explicit in §§2–3. |
-| This amendment | Documentary scope only: rewrite plan and align conflicting worker/test/README instructions; inspect the text/diff and commit. Run no tests and start no signal. |
+| D016 | AUTHORISED, BLOCKED at §2 capability check. Read-only source inspection established the unsupported shared capability below; no implementation or tests executed. |
+| D017–D020 | NOT_STARTED; outside the current D016-only instruction. |
+| Workflow amendment | Committed at `b44a8526ca1958b602e709ef9e591bcc0a6b388e`; retained without additional testing. |
+
+### D016 existing-interface check — 22 October 2026
+
+The required capability is a public M02 calculation path that consumes source-bound R121 sizes and actual `TradeDirectionOccurrenceV1` predecessors, matches unique trades, selects one fixed 1s/5s/60s/300s window, and persists/reads the resulting Decimal volume with raw and predecessor lineage.
+
+Inspected all four public owner factories and their delegated implementations. `api.py:create_owner` has no predecessor-reader argument; `_catalogue.py:_enabled` admits only D011/D012, and `_expected` fixes quote mappings/price units. `create_ratio_owner` consumes the older `MeasurementReadsV1` facet and `_rational.py` restricts definitions to D013. `create_raw_ratio_owner` has no predecessor reader and `_raw_rational.py:expected_definition` restricts definitions to D014. `create_trade_direction_owner` accepts the older midpoint-reader facet; `_trade_direction.py:_request` fixes D015, and its public result is an integer sign restricted to −1/0/+1. None exposes the required D016 path. A generic Decimal occurrence type alone does not supply that executable path.
+
+Under §2, stop before authoring a claim, cases or implementation. No runtime probes, RED/GREEN, static checks or prior-signal reruns were performed. Accepted D015 evidence remains unchanged. The prerequisite is a separately scoped reusable M02 capability change, with its bounded acceptance proposition and exact tests agreed by the owner; it must not be disguised as another bespoke signal API/store. D016's five cases remain unchanged. Window/session/completeness policy decisions in §3 remain pending; this check does not claim to resolve them.
 
 The target is approximately one-tenth of the former routine per-signal effort. It is a delivery budget, not a measured improvement or permission to guess, skip a named case or claim unsupported acceptance. Put genuinely missing shared capability outside the signal task rather than concealing its cost in another signal completion.
