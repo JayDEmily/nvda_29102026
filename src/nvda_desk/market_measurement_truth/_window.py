@@ -435,6 +435,7 @@ def build_owner(
         _session_range,
         _session_returns,
         _session_vwap,
+        _volume_baseline,
         _vwap_comparison,
         _vwap_returns,
     )
@@ -445,6 +446,13 @@ def build_owner(
         and admission.implementation_brief_sha256 in _vwap_returns.BRIEFS.values()
     ):
         return _vwap_returns.build_owner(admission, raw, predecessor, storage, now)
+
+    if (
+        type(admission) is f.OwnerAdmissionV1
+        and admission.object_id == "M02"
+        and admission.implementation_brief_sha256 in _volume_baseline.BRIEFS.values()
+    ):
+        return _volume_baseline.build_owner(admission, raw, predecessor, storage, now)
 
     if type(admission) is f.OwnerAdmissionV1 and admission == f.OwnerAdmissionV1(
         "M02", _session_range.BRIEF
@@ -511,6 +519,7 @@ def build_reader(
         _session_range,
         _session_returns,
         _session_vwap,
+        _volume_baseline,
         _vwap_comparison,
         _vwap_returns,
     )
@@ -523,6 +532,15 @@ def build_reader(
         if type(storage) is not f.SQLiteReadStorageV1:
             raise TypeError("exact read-only storage required")
         return _Reads(RecordState(storage, _decode, _vwap_returns.validator(admission)))
+
+    if (
+        type(admission) is f.OwnerAdmissionV1
+        and admission.object_id == "M02"
+        and admission.implementation_brief_sha256 in _volume_baseline.BRIEFS.values()
+    ):
+        if type(storage) is not f.SQLiteReadStorageV1:
+            raise TypeError("exact read-only storage required")
+        return _Reads(RecordState(storage, _decode, _volume_baseline.validator(admission)))
 
     if type(admission) is f.OwnerAdmissionV1 and admission == f.OwnerAdmissionV1(
         "M02", _session_range.BRIEF

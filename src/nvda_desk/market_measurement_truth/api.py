@@ -782,9 +782,28 @@ class WindowContextV1(_Validated):
 
 
 @dataclass(frozen=True, slots=True)
+class SessionFrameV1(_Validated):
+    ref: VersionRefV1
+    session_type: str
+    start_utc: datetime
+    end_utc: datetime
+
+
+@dataclass(frozen=True, slots=True)
+class BaselineWindowContextV1(_Validated):
+    ref: VersionRefV1
+    session_start_utc: datetime
+    session_end_utc: datetime
+    history_complete_from_utc: datetime
+    sessions: tuple[SessionFrameV1, ...]
+    prior_session_count: int
+    bucket_offset_seconds: int
+
+
+@dataclass(frozen=True, slots=True)
 class WindowCalculationRequestV1(_Validated):
     calculation: CalculationRequestV1
-    context: WindowContextV1
+    context: WindowContextV1 | BaselineWindowContextV1
     predecessor_occurrence_ids: tuple[str, ...]
 
 
@@ -866,10 +885,12 @@ def create_window_reader(
 
 
 __all__ += [
+    "BaselineWindowContextV1",
     "MeasurementComparisonV1",
     "MeasurementWindowOwnerV1",
     "MeasurementWindowReadsV1",
     "ReturnAccelerationV1",
+    "SessionFrameV1",
     "VwapDeviationV1",
     "VwapRateV1",
     "WindowCalculationRequestV1",

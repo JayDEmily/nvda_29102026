@@ -1,0 +1,124 @@
+I001 [*] Import block is un-sorted or un-formatted
+  --> src/nvda_desk/market_measurement_truth/_volume_baseline.py:3:1
+   |
+ 1 |   """Fixed controlled cash-volume baseline profiles through public raw history."""
+ 2 |
+ 3 | / from __future__ import annotations
+ 4 | | from collections.abc import Callable
+ 5 | | from dataclasses import replace
+ 6 | | from datetime import UTC, datetime, timedelta
+ 7 | | from decimal import Decimal
+ 8 | | from fractions import Fraction
+ 9 | | from typing import cast
+10 | | from nvda_desk.raw_signal_occurrence_truth import api as r
+11 | | from . import api as f
+12 | | from ._catalogue import _AUTHORITY
+13 | | from ._evaluation import canonical
+14 | | from ._record_store import RecordState
+15 | | from ._selection import eligible
+16 | | from ._vwap_returns import history, chosen
+17 | | from ._window import NAMESPACE, _decode, _identity, _Reads
+   | |__________________________________________________________^
+18 |
+19 |   BRIEFS = {"D028": "c0c2788a727681d87f7b971d242f263d0f04657c896cc113bcf8a57126e684a9"}
+   |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+   --> src/nvda_desk/market_measurement_truth/_window.py:432:5
+    |
+430 |       now: Callable[[], datetime],
+431 |   ) -> f.MeasurementWindowOwnerV1:
+432 | /     from . import (
+433 | |         _log_return,
+434 | |         _return_acceleration,
+435 | |         _session_range,
+436 | |         _session_returns,
+437 | |         _session_vwap,
+438 | |         _vwap_comparison,
+439 | |         _volume_baseline,
+440 | |         _vwap_returns,
+441 | |     )
+    | |_____^
+442 |
+443 |       if (
+    |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+   --> src/nvda_desk/market_measurement_truth/_window.py:516:5
+    |
+514 |       admission: f.OwnerAdmissionV1, storage: f.SQLiteReadStorageV1
+515 |   ) -> f.MeasurementWindowReadsV1:
+516 | /     from . import (
+517 | |         _log_return,
+518 | |         _return_acceleration,
+519 | |         _session_range,
+520 | |         _session_returns,
+521 | |         _session_vwap,
+522 | |         _vwap_comparison,
+523 | |         _volume_baseline,
+524 | |         _vwap_returns,
+525 | |     )
+    | |_____^
+526 |
+527 |       if (
+    |
+help: Organize imports
+
+RUF022 [*] `__all__` is not sorted
+   --> src/nvda_desk/market_measurement_truth/api.py:887:12
+    |
+887 |   __all__ += [
+    |  ____________^
+888 | |     "MeasurementComparisonV1",
+889 | |     "MeasurementWindowOwnerV1",
+890 | |     "MeasurementWindowReadsV1",
+891 | |     "ReturnAccelerationV1",
+892 | |     "VwapDeviationV1",
+893 | |     "VwapRateV1",
+894 | |     "WindowCalculationRequestV1",
+895 | |     "WindowContextV1",
+896 | |     "SessionFrameV1",
+897 | |     "BaselineWindowContextV1",
+898 | |     "WindowMeasurementOccurrenceV1",
+899 | |     "create_window_owner",
+900 | |     "create_window_reader",
+901 | | ]
+    | |_^
+    |
+help: Apply an isort-style sorting to `__all__`
+
+RUF005 Consider iterable unpacking instead of concatenation
+   --> tests/product/market_measurement_d028/test_relative_volume.py:165:18
+    |
+163 |       tuple(
+164 |           f.AuthorityArtifactRefV1(*x)
+165 |           for x in AUTHORITY
+    |  __________________^
+166 | |         + (
+167 | |             (
+168 | |                 "handoff/m01_completion/authority/D028_OWNER_APPROVED_RAW_VOLUME_BASELINE_AMENDMENT_20261017.md",
+169 | |                 "115edc89241c9973793f2c74bdc2f4f946a42fe38217b2462c2cab932fa1837c",
+170 | |             ),
+171 | |         )
+    | |_________^
+172 |       ),
+173 |   )
+    |
+help: Replace with iterable unpacking
+
+B007 Loop control variable `bucket` not used within loop body
+   --> tests/product/market_measurement_d028/test_relative_volume.py:212:56
+    |
+210 |         )
+211 |     )
+212 |     for seq, (identity, start, event, value, complete, bucket, receipt) in enumerate(rows, 1):
+    |                                                        ^^^^^^
+213 |         session = "controlled-volume-" + start.strftime("%Y%m%d") + "/1"
+214 |         native = {
+    |
+help: Rename unused `bucket` to `_bucket`
+
+Found 6 errors.
+[*] 4 fixable with the `--fix` option (1 hidden fix can be enabled with the `--unsafe-fixes` option).

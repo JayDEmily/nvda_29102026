@@ -162,8 +162,8 @@ DEFINITION = f.CalculationDefinitionV1(
     "exact_ratio",
     tuple(
         f.AuthorityArtifactRefV1(*x)
-        for x in AUTHORITY
-        + (
+        for x in (
+            *AUTHORITY,
             (
                 "handoff/m01_completion/authority/D028_OWNER_APPROVED_RAW_VOLUME_BASELINE_AMENDMENT_20261017.md",
                 "115edc89241c9973793f2c74bdc2f4f946a42fe38217b2462c2cab932fa1837c",
@@ -209,7 +209,7 @@ def test_d028_relative_volume(tmp_path, refused):
             ),
         )
     )
-    for seq, (identity, start, event, value, complete, bucket, receipt) in enumerate(rows, 1):
+    for seq, (identity, start, event, value, complete, _bucket, receipt) in enumerate(rows, 1):
         session = "controlled-volume-" + start.strftime("%Y%m%d") + "/1"
         native = {
             "session": {"id": session, "volume": Decimal(value)},
