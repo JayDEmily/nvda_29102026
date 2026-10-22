@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_d021",
+  "generation": 2,
+  "brief_sha256": "913ba660f583f8f3e564190390681e594a374e0fc2d66227bd8452b4d0cbb8cc",
+  "binding_sha256": "c050fdebce43db639cbabf9706d12367a913db150e5da63aa2c61c149f6a7047",
+  "contract_sha256": "f38bcbe746791ccd7af5ad59c590fc92a6b86b05ba3c0c7773d336b8804bf311",
+  "implementation_target_id": "M02",
+  "adequacy_review_ref": "handoff/foundation_implementation/d021_execution/final_review.md-context-precondition-repair",
+  "admission_authority_ref": "owner-chat/20261023/D021-D025-execution-and-per-signal-checkpoints;standing-delegation",
+  "family_files": [
+    {
+      "path": "tests/product/market_measurement_d021/test_thirty_minute_log_return.py",
+      "sha256": "bf49daf976a5cbfc34df5b6cf351f56b0a65a880084c93712e461e7a61f4b3b4"
+    }
+  ],
+  "support_files": [],
+  "previous_generation": {
+    "path": "config/product_proof/market_measurement_d021/generations/0001.json",
+    "sha256": "5e134e22a48828953560c2ba22658c5fe0e8087f42920c807a58f7184921bf94"
+  }
+}

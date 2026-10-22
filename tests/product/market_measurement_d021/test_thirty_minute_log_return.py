@@ -97,7 +97,7 @@ def test_d021_thirty_minute_log_return(tmp_path, missing_reference):
         f.VersionRefV1("controlled-close-session", 1),
         ASOF - timedelta(minutes=40),
         ASOF + timedelta(minutes=20),
-        ASOF - timedelta(minutes=10),
+        ASOF - timedelta(minutes=40),
     )
     request = f.WindowCalculationRequestV1(
         f.CalculationRequestV1(
