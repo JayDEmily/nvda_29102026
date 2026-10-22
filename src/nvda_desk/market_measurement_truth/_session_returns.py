@@ -19,7 +19,10 @@ from ._record_store import RecordState
 from ._selection import _same_content, eligible
 from ._window import NAMESPACE, _decode, _identity, _Reads
 
-BRIEFS = {"D022": "831139cef8d7e18ffdfe970a6cf228d683dcbf98ffc3c3962c4d0e9c070878b8"}
+BRIEFS = {
+    "D022": "831139cef8d7e18ffdfe970a6cf228d683dcbf98ffc3c3962c4d0e9c070878b8",
+    "D023": "77e1ca015da4277c0b197fc9a961513ebca8475c4125e709c6f41967c3af66b4",
+}
 S = "controlled-price-session/1"
 PREV = "controlled-price-session-prev/1"
 START = datetime(2026, 10, 20, 12, tzinfo=UTC)
@@ -51,6 +54,8 @@ def configuration(
     tuple[r.RawSignalProjectionMappingV1, ...],
     f.WindowContextV1,
 ]:
+    if identity == "D023":
+        return _gap_configuration()
     if identity != "D022":
         raise ValueError("unadmitted session calculation")
     maps = (
@@ -188,6 +193,19 @@ def select_line(
 def roles(
     identity: str, c: f.CalculationRequestV1
 ) -> tuple[tuple[r.RawSelectionIdentityV1, datetime, timedelta], ...]:
+    if identity == "D023":
+        return (
+            (
+                r.RawSelectionIdentityV1((("session", PREV), ("kind", "official_close"))),
+                datetime(2026, 10, 19, 13, tzinfo=UTC),
+                timedelta(hours=48),
+            ),
+            (
+                r.RawSelectionIdentityV1((("session", S), ("phase", "pre_market"))),
+                c.as_of_utc,
+                timedelta(seconds=60),
+            ),
+        )
     if identity != "D022":
         raise ValueError("unadmitted role profile")
     session = r.RawSelectionIdentityV1((("session", S),))
@@ -358,3 +376,39 @@ def build_owner(
     ):
         raise TypeError("declared raw-only session dependencies required")
     return _Owner(admission, RecordState(storage, _decode, validator(admission)), raw, now)
+
+
+def _gap_configuration() -> tuple[
+    f.CalculationDefinitionV1,
+    f.CalculationParameterSetV1,
+    f.InputSelectionPolicyVersionV1,
+    tuple[r.RawSignalProjectionMappingV1, ...],
+    f.WindowContextV1,
+]:
+    definition, parameter, policy, _, _ = configuration("D022")
+    definition = replace(
+        definition,
+        derived_signal_id="D023",
+        calculation_definition_version="D023-OVERNIGHT-GAP-1",
+        equation="ln(current / prior_official_close)",
+        raw_dependencies=("R042", "R037"),
+    )
+    parameter = replace(parameter, context_id="mmt-overnight-gap-50d-half-even")
+    policy = replace(policy, context_id="mmt-overnight-gap-selection")
+    maps = (
+        mapping(
+            "R042",
+            "mmt-prior-official-close",
+            ("session", "close"),
+            (("kind", ("session", "kind")),),
+        ),
+        mapping("R037", "mmt-preopen-last", ("trade", "last"), (("phase", ("session", "phase")),)),
+    )
+    start = datetime(2026, 10, 20, 11, tzinfo=UTC)
+    context = f.WindowContextV1(
+        f.VersionRefV1("controlled-preopen-pair", 1),
+        start,
+        datetime(2026, 10, 20, 12, 1, tzinfo=UTC),
+        start,
+    )
+    return definition, parameter, policy, maps, context
