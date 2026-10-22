@@ -21,8 +21,9 @@ from ._window import NAMESPACE, _decode, _identity, _Reads
 BRIEFS = {
     "D019": "6affd5b55eb03007a23ae80a79bbd3d5665105d70b2e7e65c4050d29cf60c085",
     "D020": "811906fdfb073da9b5a7ba137563953d6ff977d50bfe99b8f43adb068f20e839",
+    "D021": "913ba660f583f8f3e564190390681e594a374e0fc2d66227bd8452b4d0cbb8cc",
 }
-HORIZONS = {"D019": 60, "D020": 300}
+HORIZONS = {"D019": 60, "D020": 300, "D021": 1800}
 CONTEXT = f.WindowContextV1(
     f.VersionRefV1("controlled-close-session", 1),
     datetime(2026, 10, 20, 12, tzinfo=UTC),

@@ -408,7 +408,22 @@ def _generation(
 
 def _scalar_extension(
     root: Path,
-    identity: Literal["D012", "D013", "D014", "D015", "D016", "D017", "D018", "D019", "D020", "D021", "D022", "D023", "D024", "D025"],
+    identity: Literal[
+        "D012",
+        "D013",
+        "D014",
+        "D015",
+        "D016",
+        "D017",
+        "D018",
+        "D019",
+        "D020",
+        "D021",
+        "D022",
+        "D023",
+        "D024",
+        "D025",
+    ],
 ) -> tuple[dict[str, Any], dict[str, Any], str] | None:
     """Fourteen fixed separately accepted extensions; never discover arbitrary claims."""
     name = identity.lower()
@@ -425,15 +440,11 @@ def _scalar_extension(
     expected = {
         "schema_version": "1.0",
         "claim_id": f"neutral_market_measurement_truth_{name}",
-        "brief_path": prefix + (
-            "IMPLEMENTATION_BRIEF_PROPOSED.md" if legacy else "IMPLEMENTATION_BRIEF.md"
-        ),
-        "binding_path": (
-            f"implementation/authority/{label}_IMPLEMENTATION_AUTHORITY_BINDING.yaml"
-        ),
-        "contract_path": prefix + (
-            "PROOF_CONTRACT_PROPOSED.json" if legacy else "PROOF_CONTRACT.json"
-        ),
+        "brief_path": prefix
+        + ("IMPLEMENTATION_BRIEF_PROPOSED.md" if legacy else "IMPLEMENTATION_BRIEF.md"),
+        "binding_path": (f"implementation/authority/{label}_IMPLEMENTATION_AUTHORITY_BINDING.yaml"),
+        "contract_path": prefix
+        + ("PROOF_CONTRACT_PROPOSED.json" if legacy else "PROOF_CONTRACT.json"),
         "physical_root": f"tests/product/market_measurement_{name}",
         "admission_path": directory + "/admission.json",
     }
@@ -448,8 +459,20 @@ def _scalar_extension(
     text = brief.read_text(encoding="utf-8")
     rows = re.findall(r"^\| ([^|]+?) \| ([0-9a-f]{64}) \|$", text, re.M)
     count = {
-        "D012": 8, "D013": 11, "D014": 8,
-        "D015": 7, "D016": 7, "D017": 7, "D018": 7, "D019": 7, "D020": 7, "D021": 7, "D022": 7, "D023": 7, "D024": 7, "D025": 7,
+        "D012": 8,
+        "D013": 11,
+        "D014": 8,
+        "D015": 7,
+        "D016": 7,
+        "D017": 7,
+        "D018": 7,
+        "D019": 7,
+        "D020": 7,
+        "D021": 7,
+        "D022": 7,
+        "D023": 7,
+        "D024": 7,
+        "D025": 7,
     }[identity]
     if len(rows) != count or len(dict(rows)) != count:
         raise ValueError(f"invalid {identity} incorporated-byte table")
@@ -484,8 +507,39 @@ def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductPro
     extensions: dict[str, tuple[dict[str, Any], dict[str, Any], str]] = {}
     if authority is not None:
         identities: tuple[
-            Literal["D012", "D013", "D014", "D015", "D016", "D017", "D018", "D019", "D020", "D021", "D022", "D023", "D024", "D025"], ...
-        ] = ("D012", "D013", "D014", "D015", "D016", "D017", "D018", "D019", "D020", "D021", "D022", "D023", "D024", "D025")
+            Literal[
+                "D012",
+                "D013",
+                "D014",
+                "D015",
+                "D016",
+                "D017",
+                "D018",
+                "D019",
+                "D020",
+                "D021",
+                "D022",
+                "D023",
+                "D024",
+                "D025",
+            ],
+            ...,
+        ] = (
+            "D012",
+            "D013",
+            "D014",
+            "D015",
+            "D016",
+            "D017",
+            "D018",
+            "D019",
+            "D020",
+            "D021",
+            "D022",
+            "D023",
+            "D024",
+            "D025",
+        )
         for identity in identities:
             extension = _scalar_extension(root, identity)
             if extension is not None:
