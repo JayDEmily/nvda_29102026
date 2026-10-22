@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_d015",
+  "generation": 1,
+  "brief_sha256": "84baa16665db5f8543eba3b1770dafcfb36cc5e8064b2f1837beb924713acb0d",
+  "binding_sha256": "9625c2a4014ac3cbb55682e17b391b8e049a873c51de65a9a2a78e5e347fa471",
+  "contract_sha256": "e4d481ca99dbb55e2ad4b753dc33b8ba244873eac50e541a8352a6f5384a73c5",
+  "implementation_target_id": "M02",
+  "adequacy_review_ref": "independent-review/d015-authored-proof/59a1c14/20261022;handoff/foundation_implementation/d015_execution/authored_proof_review_v2.md",
+  "admission_authority_ref": "owner-chat/20261019T222804/D012-and-standing-human-exceptions;EXEC_PLAN-section7.1;delegated-D015-proof-admission",
+  "family_files": [
+    {
+      "path": "tests/product/market_measurement_d015/test_trade_direction.py",
+      "sha256": "95de43d4538ee3b302430c7c6455edef0373e6bb09ee2f2cb111bfc54178f2fc"
+    }
+  ],
+  "support_files": [
+    {
+      "path": "tests/product/market_measurement_d015/typing/valid_trade_direction.py",
+      "sha256": "e1c16eaad0b86a97079ac7ff8f76887ec9b18b2f357fcfa4652f88921df727f3"
+    }
+  ],
+  "previous_generation": null
+}
