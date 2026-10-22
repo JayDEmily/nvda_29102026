@@ -1,0 +1,357 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/83dd7c79f14f/NVDA_V2_D021_D025_EXECUTION_20261023
+configfile: pyproject.toml
+collected 2 items
+
+tests/product/market_measurement_d022/test_session_return.py FF          [100%]
+
+=================================== FAILURES ===================================
+_______________________ test_d022_session_return[False] ________________________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-2/test_d022_session_return_False0')
+refused = False
+
+    @pytest.mark.parametrize("refused", [False, True])
+    def test_d022_session_return(tmp_path, refused):
+        raw = r.create_owner()
+        reference_time = START - timedelta(days=1) if refused else START
+        records = [
+            (
+                "reference",
+                reference_time,
+                {"session": {"id": PREV if refused else S, "open": Decimal("100")}},
+                ("R043",),
+            ),
+            ("current", ASOF, {"session": {"id": S}, "trade": {"last": Decimal("120")}}, ("R037",)),
+        ]
+        for sequence, (identity, event, native, tags) in enumerate(records, 1):
+            raw.commands.admit_raw_observation_occurrence(
+                r.RawObservationOccurrenceV1(
+                    concept_id=r.concept_id("raw_signal.raw_observation_occurrence"),
+                    contract_id=r.contract_id("nvda.raw_signal.RawObservationOccurrence.v1"),
+                    observation_occurrence_id=r.observation_occurrence_id(identity),
+                    delivery_artifact_ref=r.delivery_artifact_ref("controlled-session-delivery"),
+                    source_provider=r.provider_id("foundation-pilot-fixture"),
+                    native_record=native,
+                    received_ts_utc=event,
+                    ingestion_sequence=sequence,
+                    ingestion_sequence_scope=r.ingestion_sequence_scope(
+                        "foundation-pilot-fixture/cash_quote_v1"
+                    ),
+                    source_temporal_kind="true_instant",
+                    raw_signal_catalogue_ids=tuple(r.RawSignalCatalogueId(t) for t in tags),
+                    source_variant="cash_quote_v1",
+                    subject_instrument="NVDA",
+                    native_units="price",
+                    source_timestamp_raw=event.isoformat().replace("+00:00", "Z"),
+                    source_timezone_native="UTC",
+                )
+            )
+        projections = []
+        for mapping in MAPPINGS:
+            page = raw.reads.list_projected_raw_history(
+                mapping.raw_signal_catalogue_id,
+                mappings=(mapping,),
+                subject_instrument="NVDA",
+                received_at_or_before_utc=CUTOFF,
+                event_at_or_before_utc=ASOF,
+                limit=100,
+                cursor=None,
+            )
+            assert page.next_cursor is None and len(page.items) == 1
+            item = page.items[0]
+            assert item.native_field_path == mapping.native_field_path
+            assert item.projection_mapping_id == mapping.mapping_id
+            assert item.native_units == "price"
+            assert item.selection_identity is not None
+            projections.append(item)
+        assert projections[0].selection_identity == r.RawSelectionIdentityV1(
+            (("session", PREV if refused else S),)
+        )
+        assert projections[1].selection_identity == r.RawSelectionIdentityV1((("session", S),))
+        admission = f.OwnerAdmissionV1("M02", BRIEF)
+        path = str(tmp_path / "result.sqlite")
+        try:
+>           owner = f.create_window_owner(
+                admission=admission,
+                raw_projection_reader=raw.reads,
+                storage=f.SQLiteStorageV1(path, True),
+                utc_now=lambda: NOW,
+            )
+
+tests/product/market_measurement_d022/test_session_return.py:140: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/nvda_desk/market_measurement_truth/api.py:819: in create_window_owner
+    return build_owner(admission, raw_projection_reader, predecessor_reader, storage, utc_now)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/nvda_desk/market_measurement_truth/_window.py:456: in build_owner
+    _admission(admission)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+admission = OwnerAdmissionV1(object_id='M02', implementation_brief_sha256='831139cef8d7e18ffdfe970a6cf228d683dcbf98ffc3c3962c4d0e9c070878b8')
+
+    def _admission(admission: f.OwnerAdmissionV1) -> None:
+        if type(admission) is not f.OwnerAdmissionV1:
+            raise TypeError("exact owner admission required")
+        if admission != f.OwnerAdmissionV1("M02", BRIEF):
+>           raise ValueError("exact D016 admission required")
+E           ValueError: exact D016 admission required
+
+src/nvda_desk/market_measurement_truth/_window.py:70: ValueError
+
+During handling of the above exception, another exception occurred:
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-2/test_d022_session_return_False0')
+refused = False
+
+    @pytest.mark.parametrize("refused", [False, True])
+    def test_d022_session_return(tmp_path, refused):
+        raw = r.create_owner()
+        reference_time = START - timedelta(days=1) if refused else START
+        records = [
+            (
+                "reference",
+                reference_time,
+                {"session": {"id": PREV if refused else S, "open": Decimal("100")}},
+                ("R043",),
+            ),
+            ("current", ASOF, {"session": {"id": S}, "trade": {"last": Decimal("120")}}, ("R037",)),
+        ]
+        for sequence, (identity, event, native, tags) in enumerate(records, 1):
+            raw.commands.admit_raw_observation_occurrence(
+                r.RawObservationOccurrenceV1(
+                    concept_id=r.concept_id("raw_signal.raw_observation_occurrence"),
+                    contract_id=r.contract_id("nvda.raw_signal.RawObservationOccurrence.v1"),
+                    observation_occurrence_id=r.observation_occurrence_id(identity),
+                    delivery_artifact_ref=r.delivery_artifact_ref("controlled-session-delivery"),
+                    source_provider=r.provider_id("foundation-pilot-fixture"),
+                    native_record=native,
+                    received_ts_utc=event,
+                    ingestion_sequence=sequence,
+                    ingestion_sequence_scope=r.ingestion_sequence_scope(
+                        "foundation-pilot-fixture/cash_quote_v1"
+                    ),
+                    source_temporal_kind="true_instant",
+                    raw_signal_catalogue_ids=tuple(r.RawSignalCatalogueId(t) for t in tags),
+                    source_variant="cash_quote_v1",
+                    subject_instrument="NVDA",
+                    native_units="price",
+                    source_timestamp_raw=event.isoformat().replace("+00:00", "Z"),
+                    source_timezone_native="UTC",
+                )
+            )
+        projections = []
+        for mapping in MAPPINGS:
+            page = raw.reads.list_projected_raw_history(
+                mapping.raw_signal_catalogue_id,
+                mappings=(mapping,),
+                subject_instrument="NVDA",
+                received_at_or_before_utc=CUTOFF,
+                event_at_or_before_utc=ASOF,
+                limit=100,
+                cursor=None,
+            )
+            assert page.next_cursor is None and len(page.items) == 1
+            item = page.items[0]
+            assert item.native_field_path == mapping.native_field_path
+            assert item.projection_mapping_id == mapping.mapping_id
+            assert item.native_units == "price"
+            assert item.selection_identity is not None
+            projections.append(item)
+        assert projections[0].selection_identity == r.RawSelectionIdentityV1(
+            (("session", PREV if refused else S),)
+        )
+        assert projections[1].selection_identity == r.RawSelectionIdentityV1((("session", S),))
+        admission = f.OwnerAdmissionV1("M02", BRIEF)
+        path = str(tmp_path / "result.sqlite")
+        try:
+            owner = f.create_window_owner(
+                admission=admission,
+                raw_projection_reader=raw.reads,
+                storage=f.SQLiteStorageV1(path, True),
+                utc_now=lambda: NOW,
+            )
+        except ValueError as exc:
+>           pytest.fail(f"admitted D022 calculation unsupported after public inputs: {exc}")
+E           Failed: admitted D022 calculation unsupported after public inputs: exact D016 admission required
+
+tests/product/market_measurement_d022/test_session_return.py:147: Failed
+________________________ test_d022_session_return[True] ________________________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-2/test_d022_session_return_True_0')
+refused = True
+
+    @pytest.mark.parametrize("refused", [False, True])
+    def test_d022_session_return(tmp_path, refused):
+        raw = r.create_owner()
+        reference_time = START - timedelta(days=1) if refused else START
+        records = [
+            (
+                "reference",
+                reference_time,
+                {"session": {"id": PREV if refused else S, "open": Decimal("100")}},
+                ("R043",),
+            ),
+            ("current", ASOF, {"session": {"id": S}, "trade": {"last": Decimal("120")}}, ("R037",)),
+        ]
+        for sequence, (identity, event, native, tags) in enumerate(records, 1):
+            raw.commands.admit_raw_observation_occurrence(
+                r.RawObservationOccurrenceV1(
+                    concept_id=r.concept_id("raw_signal.raw_observation_occurrence"),
+                    contract_id=r.contract_id("nvda.raw_signal.RawObservationOccurrence.v1"),
+                    observation_occurrence_id=r.observation_occurrence_id(identity),
+                    delivery_artifact_ref=r.delivery_artifact_ref("controlled-session-delivery"),
+                    source_provider=r.provider_id("foundation-pilot-fixture"),
+                    native_record=native,
+                    received_ts_utc=event,
+                    ingestion_sequence=sequence,
+                    ingestion_sequence_scope=r.ingestion_sequence_scope(
+                        "foundation-pilot-fixture/cash_quote_v1"
+                    ),
+                    source_temporal_kind="true_instant",
+                    raw_signal_catalogue_ids=tuple(r.RawSignalCatalogueId(t) for t in tags),
+                    source_variant="cash_quote_v1",
+                    subject_instrument="NVDA",
+                    native_units="price",
+                    source_timestamp_raw=event.isoformat().replace("+00:00", "Z"),
+                    source_timezone_native="UTC",
+                )
+            )
+        projections = []
+        for mapping in MAPPINGS:
+            page = raw.reads.list_projected_raw_history(
+                mapping.raw_signal_catalogue_id,
+                mappings=(mapping,),
+                subject_instrument="NVDA",
+                received_at_or_before_utc=CUTOFF,
+                event_at_or_before_utc=ASOF,
+                limit=100,
+                cursor=None,
+            )
+            assert page.next_cursor is None and len(page.items) == 1
+            item = page.items[0]
+            assert item.native_field_path == mapping.native_field_path
+            assert item.projection_mapping_id == mapping.mapping_id
+            assert item.native_units == "price"
+            assert item.selection_identity is not None
+            projections.append(item)
+        assert projections[0].selection_identity == r.RawSelectionIdentityV1(
+            (("session", PREV if refused else S),)
+        )
+        assert projections[1].selection_identity == r.RawSelectionIdentityV1((("session", S),))
+        admission = f.OwnerAdmissionV1("M02", BRIEF)
+        path = str(tmp_path / "result.sqlite")
+        try:
+>           owner = f.create_window_owner(
+                admission=admission,
+                raw_projection_reader=raw.reads,
+                storage=f.SQLiteStorageV1(path, True),
+                utc_now=lambda: NOW,
+            )
+
+tests/product/market_measurement_d022/test_session_return.py:140: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/nvda_desk/market_measurement_truth/api.py:819: in create_window_owner
+    return build_owner(admission, raw_projection_reader, predecessor_reader, storage, utc_now)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/nvda_desk/market_measurement_truth/_window.py:456: in build_owner
+    _admission(admission)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+admission = OwnerAdmissionV1(object_id='M02', implementation_brief_sha256='831139cef8d7e18ffdfe970a6cf228d683dcbf98ffc3c3962c4d0e9c070878b8')
+
+    def _admission(admission: f.OwnerAdmissionV1) -> None:
+        if type(admission) is not f.OwnerAdmissionV1:
+            raise TypeError("exact owner admission required")
+        if admission != f.OwnerAdmissionV1("M02", BRIEF):
+>           raise ValueError("exact D016 admission required")
+E           ValueError: exact D016 admission required
+
+src/nvda_desk/market_measurement_truth/_window.py:70: ValueError
+
+During handling of the above exception, another exception occurred:
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-2/test_d022_session_return_True_0')
+refused = True
+
+    @pytest.mark.parametrize("refused", [False, True])
+    def test_d022_session_return(tmp_path, refused):
+        raw = r.create_owner()
+        reference_time = START - timedelta(days=1) if refused else START
+        records = [
+            (
+                "reference",
+                reference_time,
+                {"session": {"id": PREV if refused else S, "open": Decimal("100")}},
+                ("R043",),
+            ),
+            ("current", ASOF, {"session": {"id": S}, "trade": {"last": Decimal("120")}}, ("R037",)),
+        ]
+        for sequence, (identity, event, native, tags) in enumerate(records, 1):
+            raw.commands.admit_raw_observation_occurrence(
+                r.RawObservationOccurrenceV1(
+                    concept_id=r.concept_id("raw_signal.raw_observation_occurrence"),
+                    contract_id=r.contract_id("nvda.raw_signal.RawObservationOccurrence.v1"),
+                    observation_occurrence_id=r.observation_occurrence_id(identity),
+                    delivery_artifact_ref=r.delivery_artifact_ref("controlled-session-delivery"),
+                    source_provider=r.provider_id("foundation-pilot-fixture"),
+                    native_record=native,
+                    received_ts_utc=event,
+                    ingestion_sequence=sequence,
+                    ingestion_sequence_scope=r.ingestion_sequence_scope(
+                        "foundation-pilot-fixture/cash_quote_v1"
+                    ),
+                    source_temporal_kind="true_instant",
+                    raw_signal_catalogue_ids=tuple(r.RawSignalCatalogueId(t) for t in tags),
+                    source_variant="cash_quote_v1",
+                    subject_instrument="NVDA",
+                    native_units="price",
+                    source_timestamp_raw=event.isoformat().replace("+00:00", "Z"),
+                    source_timezone_native="UTC",
+                )
+            )
+        projections = []
+        for mapping in MAPPINGS:
+            page = raw.reads.list_projected_raw_history(
+                mapping.raw_signal_catalogue_id,
+                mappings=(mapping,),
+                subject_instrument="NVDA",
+                received_at_or_before_utc=CUTOFF,
+                event_at_or_before_utc=ASOF,
+                limit=100,
+                cursor=None,
+            )
+            assert page.next_cursor is None and len(page.items) == 1
+            item = page.items[0]
+            assert item.native_field_path == mapping.native_field_path
+            assert item.projection_mapping_id == mapping.mapping_id
+            assert item.native_units == "price"
+            assert item.selection_identity is not None
+            projections.append(item)
+        assert projections[0].selection_identity == r.RawSelectionIdentityV1(
+            (("session", PREV if refused else S),)
+        )
+        assert projections[1].selection_identity == r.RawSelectionIdentityV1((("session", S),))
+        admission = f.OwnerAdmissionV1("M02", BRIEF)
+        path = str(tmp_path / "result.sqlite")
+        try:
+            owner = f.create_window_owner(
+                admission=admission,
+                raw_projection_reader=raw.reads,
+                storage=f.SQLiteStorageV1(path, True),
+                utc_now=lambda: NOW,
+            )
+        except ValueError as exc:
+>           pytest.fail(f"admitted D022 calculation unsupported after public inputs: {exc}")
+E           Failed: admitted D022 calculation unsupported after public inputs: exact D016 admission required
+
+tests/product/market_measurement_d022/test_session_return.py:147: Failed
+=========================== short test summary info ============================
+FAILED tests/product/market_measurement_d022/test_session_return.py::test_d022_session_return[False]
+FAILED tests/product/market_measurement_d022/test_session_return.py::test_d022_session_return[True]
+============================== 2 failed in 0.29s ===============================
+product-proof aggregate: neutral_market_measurement_truth_d022 state=READY_FOR_PROOF
+authority=831139cef8d7e18ffdfe970a6cf228d683dcbf98ffc3c3962c4d0e9c070878b8 generation=6519b745d283dbffbaa4a18db0212ee7ed68787672e08321c0d348a6457d48d0
+candidate=4c438d402d052feef360e3b39eb976501c42ff8e
+observed aggregate outcome: exit=1
