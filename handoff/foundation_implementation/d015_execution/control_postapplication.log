@@ -1,0 +1,9 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/83dd7c79f14f/NVDA_V2_CLEAN_RECOVERED_REPO_20261022
+configfile: pyproject.toml
+collected 149 items / 130 deselected / 19 selected
+
+tests/architecture/test_proof_control.py ...................             [100%]
+
+===================== 19 passed, 130 deselected in 33.09s ======================
