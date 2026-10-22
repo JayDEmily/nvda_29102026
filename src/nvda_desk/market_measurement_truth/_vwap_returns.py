@@ -21,7 +21,10 @@ from ._selection import _same_content, eligible
 from ._session_returns import CONTEXT, S
 from ._window import NAMESPACE, _decode, _identity, _Reads
 
-BRIEFS = {"D026": "a2f3fc76cd2cc846fd4885d4f3d3df7a1a3e5c7370700a613ecb0706c853412f"}
+BRIEFS = {
+    "D027": "6c4a8b6a4451ddfa6b555e9f1b02d659af269ec0788e8ebc15b8ddf9528796bf",
+    "D026": "a2f3fc76cd2cc846fd4885d4f3d3df7a1a3e5c7370700a613ecb0706c853412f",
+}
 VWAP = r.RawSignalProjectionMappingV1(
     "mmt-session-provider-vwap",
     1,
@@ -52,23 +55,26 @@ def configuration(
     f.InputSelectionPolicyVersionV1,
     tuple[r.RawSignalProjectionMappingV1, ...],
 ]:
-    if identity != "D026":
+    if identity not in BRIEFS:
         raise ValueError("unadmitted VWAP calculation")
     definition = f.CalculationDefinitionV1(
-        "D026",
-        "D026-VWAP-DEVIATION-1",
+        identity,
+        "D027-VWAP-RATE-1" if identity == "D027" else "D026-VWAP-DEVIATION-1",
         "K03_CHANGE_RETURN",
-        "last-vwap; 100*(last/vwap-1)",
-        ("R037", "R137"),
+        "(vwap_t-vwap_ref)/elapsed_minutes; 100*(vwap_t/vwap_ref-1)/elapsed_minutes"
+        if identity == "D027"
+        else "last-vwap; 100*(last/vwap-1)",
+        ("R137",) if identity == "D027" else ("R037", "R137"),
         (),
         "P_WINDOW",
-        "price / percent",
-        "named_exact_vwap_deviation",
+        "price/minute / percent/minute" if identity == "D027" else "price / percent",
+        "named_exact_vwap_rate" if identity == "D027" else "named_exact_vwap_deviation",
         tuple(f.AuthorityArtifactRefV1(*x) for x in _AUTHORITY),
     )
-    param = f.CalculationParameterSetV1("mmt-vwap-deviation", 1, "P_WINDOW", "NVDA", ("NVDA",))
+    name = "mmt-vwap-rate-300s" if identity == "D027" else "mmt-vwap-deviation"
+    param = f.CalculationParameterSetV1(name, 1, "P_WINDOW", "NVDA", ("NVDA",))
     policy = f.InputSelectionPolicyVersionV1(
-        "mmt-vwap-deviation-selection",
+        name + "-selection",
         1,
         ("subject_instrument", "session"),
         timedelta(seconds=60),
@@ -81,7 +87,7 @@ def configuration(
         100,
         1000,
     )
-    return definition, param, policy, (LAST, VWAP)
+    return definition, param, policy, (VWAP,) if identity == "D027" else (LAST, VWAP)
 
 
 def history(
@@ -237,17 +243,37 @@ def produce(
     definition, param, policy, maps = configuration(c.derived_signal_id)
     if len(lines) != 2:
         raise ValueError("complete VWAP source pair required")
-    for selected, mapping in zip(lines, maps, strict=True):
-        if (
-            canonical(selected) != canonical(line(selected.projection, c, mapping, policy))
-            or selected.event_time_utc != c.as_of_utc
-        ):
+
+    rate = c.derived_signal_id == "D027"
+    checks = (
+        (
+            (lines[0], VWAP, c),
+            (lines[1], VWAP, replace(c, as_of_utc=c.as_of_utc - timedelta(seconds=300))),
+        )
+        if rate
+        else tuple((v, m, c) for v, m in zip(lines, maps, strict=True))
+    )
+    for selected, mapping, anchor in checks:
+        if canonical(selected) != canonical(line(selected.projection, anchor, mapping, policy)):
             raise ValueError("incompatible source snapshot")
+    if lines[0].event_time_utc != c.as_of_utc or (
+        not rate and lines[1].event_time_utc != c.as_of_utc
+    ):
+        raise ValueError("exact current snapshot required")
     last, vwap = (Fraction(v.canonical_value) for v in lines)
     if vwap <= 0:
         raise ValueError("zero VWAP denominator")
-    diff, pct = last - vwap, 100 * (last / vwap - 1)
-    result = f.VwapDeviationV1(
+    seconds = (
+        int((lines[0].event_time_utc - lines[1].event_time_utc).total_seconds())
+        if rate
+        else int((c.as_of_utc - CONTEXT.session_start_utc).total_seconds())
+    )
+    if seconds <= 0:
+        raise ValueError("positive elapsed time required")
+    divisor = Fraction(seconds, 60) if rate else Fraction(1)
+    diff, pct = (last - vwap) / divisor, 100 * (last / vwap - 1) / divisor
+    carrier = f.VwapRateV1 if rate else f.VwapDeviationV1
+    result = carrier(
         f.ExactRatioV1(diff.numerator, diff.denominator),
         f.ExactRatioV1(pct.numerator, pct.denominator),
     )
@@ -265,7 +291,7 @@ def produce(
         maps,
         lines,
         (),
-        int((c.as_of_utc - CONTEXT.session_start_utc).total_seconds()),
+        seconds,
         result,
         definition.units,
         definition.result_shape,
@@ -319,7 +345,19 @@ class _Owner:
             if BRIEFS[c.derived_signal_id] != self.admission.implementation_brief_sha256:
                 return None
             _, _, policy, maps = configuration(c.derived_signal_id)
-            lines = tuple(select(self.raw, c, m, policy) for m in maps)
+            lines = (
+                (
+                    select(self.raw, c, VWAP, policy),
+                    select(
+                        self.raw,
+                        replace(c, as_of_utc=c.as_of_utc - timedelta(seconds=300)),
+                        VWAP,
+                        policy,
+                    ),
+                )
+                if c.derived_signal_id == "D027"
+                else tuple(select(self.raw, c, m, policy) for m in maps)
+            )
             value = produce(request, lines, now)
         except (TypeError, ValueError, ArithmeticError):
             return None

@@ -762,6 +762,12 @@ class ReturnAccelerationV1(_Validated):
 
 
 @dataclass(frozen=True, slots=True)
+class VwapRateV1(_Validated):
+    price_per_minute: ExactRatioV1
+    percent_per_minute: ExactRatioV1
+
+
+@dataclass(frozen=True, slots=True)
 class VwapDeviationV1(_Validated):
     price_difference: ExactRatioV1
     percent_difference: ExactRatioV1
@@ -799,7 +805,12 @@ class WindowMeasurementOccurrenceV1(_Validated):
     predecessors: tuple[TradeDirectionOccurrenceV1 | WindowMeasurementOccurrenceV1, ...]
     window_seconds: int
     result: (
-        Decimal | ExactRatioV1 | MeasurementComparisonV1 | ReturnAccelerationV1 | VwapDeviationV1
+        Decimal
+        | ExactRatioV1
+        | MeasurementComparisonV1
+        | ReturnAccelerationV1
+        | VwapDeviationV1
+        | VwapRateV1
     )
     units: str
     result_shape: str
@@ -860,6 +871,7 @@ __all__ += [
     "MeasurementWindowReadsV1",
     "ReturnAccelerationV1",
     "VwapDeviationV1",
+    "VwapRateV1",
     "WindowCalculationRequestV1",
     "WindowContextV1",
     "WindowMeasurementOccurrenceV1",
