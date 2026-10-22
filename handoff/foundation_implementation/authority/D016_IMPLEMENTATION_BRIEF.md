@@ -1,0 +1,45 @@
+# D016 — controlled signed trade volume and required M02 capability
+
+Status: ACCEPTED_FOR_IMPLEMENTATION under the owner's 22 October 2026 instruction, “do what you need to do to complete D zero 16. I authorise it.” This supersedes the recorded §2 interface stop for the necessary bounded prerequisite only. Standing delegation admits these concrete bytes and the five-case proof; one final independent review remains required. No D017 or later work is commissioned.
+
+## 1. Meaning and fixed controlled profile
+
+Effective meaning: incorporated primary brief K08 D016 and §§6–9,11–15,17; catalogue D016; F03 prepared witnesses. D016 sums uniquely matched actual D015 sign times R121 Decimal size in one selected fixed 1/5/60/300-second window. Never sum all loaded history, inject signs or reinterpret sign0 as zero volume. The SQLite authority replaces historical PostgreSQL mechanism requirements; old accepted sources/contracts stay unchanged.
+
+This controlled profile uses NVDA, foundation-pilot-fixture/cash_quote_v1, scope foundation-pilot-fixture/cash_quote_v1, true-instant UTC ISO-Z event times, event<=receipt<=cutoff. One M00 trade occurrence carries R120 and R121 with explicit trade.price/price and trade.size/shares mappings; projection units come from the field mappings, not a guessed record-wide unit. Actual unchanged D015 selects R120 from that same occurrence. Match by exact observation ID and identical source/variant/scope/subject/event/receipt/sequence, never coincidental time alone. Each selected size has exactly one actual nonzero D015; duplicates/conflicts or a missing match refuse. Preserve full actual D015 snapshots including their D011 evidence.
+
+Window is `(as_of - seconds, as_of]`. Four fixed parameter IDs mmt-signed-volume-1s, -5s, -60s, -300s, each version1, P_RULE, NVDA membership only. Definition D016-SIGNED-VOLUME-1, K08_RULE_BUCKET_POLICY, equation `sum(matched_sign * size)`, R121, D015, P_RULE, shares, scalar_decimal, exact primary authority refs below. Input policy mmt-trade-window/1 reuses D015 source/page settings with maximum_staleness300s and maximum_skew0. Mapping mmt-trade-size/1 maps R121 trade.size in shares; unit mmt-trade-shares/1 is shares→shares, scale1 offset0. Nonfinite/negative size refuses; zero size is allowed only with a classified matched trade. Empty selected history refuses.
+
+Session and completeness are explicit immutable WindowContextV1(ref, session_start_utc, session_end_utc, history_complete_from_utc). Request context refs must equal its ref. Require history_complete_from<=window_start, session_start<=window_start and as_of<session_end. No bridging or clipping across session boundaries, no UTC-midnight/calendar inference. Exact controlled context controlled-trade-session/1 bounds 2026-10-20T11:50:10Z through12:10:10Z; completeness begins at its start. The fixture declares complete quiescent finite source history; this is not native feed completeness or exchange calendar certification. Context values are preserved in identity; changing values requires a new context version.
+
+Enumerate public R121 pages to exhaustion under subject/event/receipt upper bounds; bounded 100 records/page and1000 pages. Repeated/conflicting cursor/identity or incomplete enumeration refuses. Filter the complete eligible set by the exact window. Selected in-window R121 projections that violate source/type/time/unit prerequisites refuse rather than silently remove a contributor. The request names exactly the selected predecessor occurrence IDs; capture through their public reader, validate each complete D015 record using unchanged D015 validation, and enforce one-to-one size/sign matching. Predecessor cutoff must equal parent cutoff and its calculation time cannot exceed captured now; D015 request as-of cannot exceed parent as-of. Stable order is descending event then observation ID. Extra out-of-window or unmatched predecessor IDs refuse. All receipt visibility is preserved.
+
+Sum exact signed Decimal coefficients at their minimum exponent without ambient Decimal rounding; output Decimal shares. No precision truncation, float conversion or arbitrary tolerance.
+
+## 2. Bounded shared prerequisite
+
+Add reusable public WindowContextV1, WindowCalculationRequestV1(calculation, context, predecessor_occurrence_ids), WindowMeasurementOccurrenceV1 and MeasurementWindowReadsV1/OwnerV1, create_window_owner/reader. Occurrence contains owner/brief/D/occurrence identities, full request/definition/parameter/selection/unit/mapping snapshots, selected raw lineage, full typed D015 predecessors, window_seconds, Decimal result/units/shape and effective/cutoff/calculated times. Factory accepts admission, public raw reader, existing MeasurementTradeDirectionReadsV1, existing storage configuration and clock. Only D016 is enabled now. Unsupported requests return None; exact wrong public types/content raise TypeError/ValueError, persistence failure uses existing PersistenceFailureV1.
+
+Implement one window calculation path in _window.py and a reusable internal _record_store.py accepting typed decoder/validator callbacks. Do not clone a D016-specific SQL store or change old D015 storage. Reuse existing canonical encoding/typed decoding, _path and source eligibility/duplicate comparison. New record profile application_id0x4E560006, user_version1, table mmt_record_v1 (derived_occurrence_id TEXT PRIMARY KEY, logical_payload BLOB NOT NULL, content_sha256 TEXT NOT NULL) STRICT, immutable UPDATE/DELETE abort triggers. Same exclusive creation, owner-local regular-file paths, per-operation connections, foreign_keys ON, busy_timeout0, DELETE journal, synchronous EXTRA, read-only query_only, atomic append/idempotent full-content readback. Full payload hash and schema/profile/canonical/semantic/ID validation on read. Shared store is qualified by these five cases' ordinary public durable roundtrips, with no new fault matrix.
+
+Namespace neutral_market_measurement_truth/window/v1; ID mmtwindow1: plus SHA256 of canonical full record excluding only own ID and calculated time. Canonical payload preserves both. Repeated logical content returns first fact; changed content appends. Public reads expose ID lookup and bounded history using the existing ordering/limit convention. No source reader is needed for durable readback. No arbitrary dynamic registration or other D implementation.
+
+## 3. Exact proof and budget
+
+D016-PROOF-CONTRACT-SHA256: f90126e6e5a07a3c1587533da25d5855ea1e4b9b5f7d6cb18e9000618392991b
+
+Physical tests/product/market_measurement_d016/test_signed_trade_volume.py, sole test_d016_signed_trade_volume, exactly five cases: ages0.5/3/30/120s and signs+/−/+/−, sizes2/3/4/7 give1s→2,5s→−1,60s→3,300s→−4; fifth actually produces selected D0150 and refuses. Actual public M00→D011→D015 setup precedes the missing-window-seam RED assertion. Every success asserts complete relevant typed metadata/lineage and public durable readback. The input set and expected answers are independent literals reused from F03. No hidden additional scenarios or separate infrastructure runtime suite. The five named cases are also the exact acceptance tests for the newly authorised shared prerequisite.
+
+One admitted strict RED, one final strict GREEN by the independent reviewer, one scoped mypy and one Ruff run (only affected repair reruns after actual failure). Command: python tools/run_product_proof_gate.py --aggregate neutral_market_measurement_truth_d016. No earlier-signal/broad suite reruns. Existing D015 test/source bytes and generations are preserved. No new positive consumer is needed: the public typed package is checked by mypy; complete nested carriers are exercised by the five cases. Final independent review covers source, exact fixtures, matching/selection and storage; no preliminary approval rounds. Generation1 adequacy is the worker's explicit source/fixture inspection under standing delegation, not a fabricated independent review.
+
+## 4. Exact incorporated bytes
+
+| Path | SHA256 |
+| --- | --- |
+| handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md | 603b850802a418780109095e7ae69bcece449da79fb24140a6d50297605e927c |
+| handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv | 67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549 |
+| handoff/foundation_implementation/authority/FOUNDATION_IMPLEMENTATION_BRIEF_PROPOSED.md | 282f7d73c5e2fdf36ded43781665764eaf95d4a35f687f99990b87c59f744ed7 |
+| handoff/foundation_implementation/authority/SQLITE_IMPLEMENTATION_BRIEF_PROPOSED.md | 3ad4cdc9ffba4cf91ff9a27edf1dd3b1a9824a421514bb4b5a2cc1b9c504f233 |
+| handoff/foundation_implementation/authority/G6_1_D012_IMPLEMENTATION_BRIEF_PROPOSED.md | a31c482d2dc4822539ede99e955761319585af4badea93b9fc279638e1e1f393 |
+| implementation/authority/G6_1_D012_IMPLEMENTATION_AUTHORITY_BINDING.yaml | f1eedec4aa2fcc543a66b709ecd925dd713d01ecabf19c776d5f1b07d3e15f8e |
+| handoff/foundation_implementation/authority/D016_PROOF_CONTRACT.json | f90126e6e5a07a3c1587533da25d5855ea1e4b9b5f7d6cb18e9000618392991b |

@@ -18,7 +18,9 @@ A routine signal task consists of its calculation/selection definition within su
 
 Reuse the available module interface, storage, codecs, identity/time/provenance validation, controlled source evidence and runtime. If a required result, predecessor or selector cannot be represented through that existing interface, record the precise unsupported capability and stop the affected signal. Do not silently turn it into a module-development project or add tests to compensate. A separate module change requires explicit owner scope, its own bounded acceptance proposition and an exact test list agreed before execution; it is qualified once and then reused.
 
-Order after further execution permission: D016 → D017 → D018 → D019 → D020. Accept individually and stop at the owner-designated boundary. No live provider/TWS connection, native certification, peer/strategy work, migration, main merge or other signal is authorised here.
+Current owner exception (22 October 2026): “do what you need to do to complete D zero 16. I authorise it.” This permits the necessary M02 window interface and reusable record-store prerequisite, bounded by the exact D016 brief and the same five cases in §3. No extra runtime test list or broad suite is added. The worker exercises standing delegation to bind the explicit controlled session/window/completeness profile; it makes no native profile claim. The prior interface stop is resolved by this authorisation. Preserve the historical check below.
+
+Order: D016 → D017 → D018 → D019 → D020. Accept individually and stop at D016. No live provider/TWS connection, native certification, peer/strategy work, migration, main merge or other signal is authorised here.
 
 ### 2.1 Reuse prepared meaning
 
