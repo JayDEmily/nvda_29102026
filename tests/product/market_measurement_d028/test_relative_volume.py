@@ -153,7 +153,7 @@ PARAMETER = f.CalculationParameterSetV1(
 DEFINITION = f.CalculationDefinitionV1(
     "D028",
     "D028-RELATIVE-VOLUME-1",
-    "K04_RELATIVE_ACTIVITY",
+    "K04_STANDARDISE_RANK",
     "current / mean(prior_same_fraction)",
     ("R041",),
     (),

@@ -61,7 +61,7 @@ def configuration(
     definition = f.CalculationDefinitionV1(
         identity,
         "D028-RELATIVE-VOLUME-1",
-        "K04_RELATIVE_ACTIVITY",
+        "K04_STANDARDISE_RANK",
         "current / mean(prior_same_fraction)",
         ("R041",),
         (),
@@ -155,7 +155,7 @@ def line(
     )
     if (
         actual != event
-        or item.selection_identity != r.RawSelectionIdentityV1(expected)
+        or canonical(item.selection_identity) != canonical(r.RawSelectionIdentityV1(expected))
         or type(item.native_value) is not Decimal
         or item.native_value < 0
     ):
