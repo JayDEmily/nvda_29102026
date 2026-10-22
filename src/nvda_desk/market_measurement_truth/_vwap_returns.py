@@ -270,7 +270,11 @@ def produce(
     )
     if seconds <= 0:
         raise ValueError("positive elapsed time required")
-    divisor = Fraction(seconds, 60) if rate else Fraction(1)
+    elapsed = lines[0].event_time_utc - lines[1].event_time_utc
+    exact_seconds = Fraction(
+        (elapsed.days * 86400 + elapsed.seconds) * 1000000 + elapsed.microseconds, 1000000
+    )
+    divisor = exact_seconds / 60 if rate else Fraction(1)
     diff, pct = (last - vwap) / divisor, 100 * (last / vwap - 1) / divisor
     carrier = f.VwapRateV1 if rate else f.VwapDeviationV1
     result = carrier(

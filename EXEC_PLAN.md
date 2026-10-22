@@ -193,3 +193,5 @@ authority=a2f3fc76cd2cc846fd4885d4f3d3df7a1a3e5c7370700a613ecb0706c853412f gener
 candidate=8861608bc071937c3f40167af7c49f54524b7672
 observed aggregate outcome: exit=0
 Tree 556a66d9c3484c1645369b3aca4ce54206da91d0. Independent final judgement ACCEPT: handoff/foundation_implementation/d026_execution/final_review.md. Full first RED/final GREEN and scoped static results retained in that directory; any first preparation/static failure remains preserved with its repair. No additional cases, old claims, broad suite or successful repeats. Selected source lineage and public typed SQLite reopen qualified inside the two cases. Native certification remains held. Commit acceptance and save the full-history checkpoint before advancing.
+
+D027 independent pre-runtime review found ISOLATED elapsed-time truncation: eligible microsecond reference times require exact timedelta measurement, not integer window metadata as the divisor. Repaired Fraction from integer microseconds; original two cases unchanged and no final runtime had run. Repeated only changed-module mypy/Ruff after this material repair.
