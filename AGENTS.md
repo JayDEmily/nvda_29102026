@@ -49,7 +49,7 @@ Fresh review must also be independent of Worker convenience composition where th
 
 This is a bounded adversarial-review heuristic, not a requirement to duplicate the Worker test suite or proliferate speculative tests. Reuse Worker fixtures where they faithfully isolate the proposition; bypass or decompose them only where their composition could pre-satisfy, mask, or collapse the condition being reviewed. Record the direct sequence and observed result when it bears on disposition.
 
-For prospective D016–D020 work, the owner's bounded workflow in root `EXEC_PLAN.md` §§3–5 applies: establish fixture independence inside the agreed cases through setup inspection/decomposition and the single final reviewer execution. This rule does not authorise extra cases, standalone probes, a second GREEN or another review stage. If the agreed cases cannot establish a necessary proposition, identify the exact gap before execution; do not expand the signal task. Preserve D015 and earlier accepted proof unchanged.
+For prospective D021–D025 work, the owner's bounded workflow in root `EXEC_PLAN.md` §§3–6 applies: establish fixture independence inside the agreed two cases per signal through setup inspection/decomposition and the single final reviewer execution. This rule does not authorise extra cases, standalone probes, a second successful GREEN or another review stage. If the agreed cases cannot establish a necessary proposition, identify the exact gap before execution; do not expand the signal task. Preserve all accepted M00/D011–D020 proof unchanged. This planning turn does not authorise implementation or tests.
 
 ## Planning
 
