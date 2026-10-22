@@ -177,3 +177,9 @@ Additional cases, providers, shared changes beyond §5 or a new numerical conven
 | This change | Root plan plus directly conflicting agent/test/README routing; source/text inspection and diff checks only. Independent arithmetic preparation produced literals; no tests/mypy/lint. |
 
 Future execution appends individual dispositions here without creating a competing schedule. Preserve the previous accepted narrative at875fc9e. Checkpoint/export does not trigger product retesting.
+
+## 8. Execution commission — 23 October 2026
+
+Owner instruction commissions D026–D036 and a downloadable bundle after each signal. This supersedes the planning-only stop and commissions the exact controlled profiles, numerical conventions and bounded shared changes in §§3–5. Preserve individual sequence, two cases and one sole independent final GREEN per ID. Baseline41fadc72c3131f7dd32f44a218067d336f45d3bd is clean. No upstream/API/native certification work. Ledger remains here; no extra administrative programme.
+
+Preflight interfaces: D026/D027 add distinct named exact result carriers to the existing result union; D028 adds a separate baseline context; D029 introduces the shared exact-root numeric helper; D032 adds a separate risk context and consumes unchanged log/root helpers. Context union widening preserves all existing dataclass field layouts/canonical bytes; later IDs extend only their fixed admissions/profiles. No D predecessor edges.

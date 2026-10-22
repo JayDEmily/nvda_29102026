@@ -423,9 +423,20 @@ def _scalar_extension(
         "D023",
         "D024",
         "D025",
+        "D026",
+        "D027",
+        "D028",
+        "D029",
+        "D030",
+        "D031",
+        "D032",
+        "D033",
+        "D034",
+        "D035",
+        "D036",
     ],
 ) -> tuple[dict[str, Any], dict[str, Any], str] | None:
-    """Fourteen fixed separately accepted extensions; never discover arbitrary claims."""
+    """Twenty-five fixed separately accepted extensions; never discover arbitrary claims."""
     name = identity.lower()
     directory = f"config/product_proof/market_measurement_{name}"
     descriptor = safe_path(root, directory + "/claim.json")
@@ -473,6 +484,17 @@ def _scalar_extension(
         "D023": 7,
         "D024": 7,
         "D025": 7,
+        "D026": 7,
+        "D027": 7,
+        "D028": 8,
+        "D029": 7,
+        "D030": 7,
+        "D031": 7,
+        "D032": 7,
+        "D033": 7,
+        "D034": 7,
+        "D035": 7,
+        "D036": 7,
     }[identity]
     if len(rows) != count or len(dict(rows)) != count:
         raise ValueError(f"invalid {identity} incorporated-byte table")
@@ -522,6 +544,17 @@ def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductPro
                 "D023",
                 "D024",
                 "D025",
+        "D026",
+        "D027",
+        "D028",
+        "D029",
+        "D030",
+        "D031",
+        "D032",
+        "D033",
+        "D034",
+        "D035",
+        "D036",
             ],
             ...,
         ] = (
@@ -539,6 +572,17 @@ def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductPro
             "D023",
             "D024",
             "D025",
+        "D026",
+        "D027",
+        "D028",
+        "D029",
+        "D030",
+        "D031",
+        "D032",
+        "D033",
+        "D034",
+        "D035",
+        "D036",
         )
         for identity in identities:
             extension = _scalar_extension(root, identity)
