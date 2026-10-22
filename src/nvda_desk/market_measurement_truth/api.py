@@ -762,6 +762,12 @@ class ReturnAccelerationV1(_Validated):
 
 
 @dataclass(frozen=True, slots=True)
+class VwapDeviationV1(_Validated):
+    price_difference: ExactRatioV1
+    percent_difference: ExactRatioV1
+
+
+@dataclass(frozen=True, slots=True)
 class WindowContextV1(_Validated):
     ref: VersionRefV1
     session_start_utc: datetime
@@ -792,7 +798,9 @@ class WindowMeasurementOccurrenceV1(_Validated):
     raw_input_lineage: tuple[RawInputLineageV1, ...]
     predecessors: tuple[TradeDirectionOccurrenceV1 | WindowMeasurementOccurrenceV1, ...]
     window_seconds: int
-    result: Decimal | ExactRatioV1 | MeasurementComparisonV1 | ReturnAccelerationV1
+    result: (
+        Decimal | ExactRatioV1 | MeasurementComparisonV1 | ReturnAccelerationV1 | VwapDeviationV1
+    )
     units: str
     result_shape: str
     effective_as_of_utc: datetime
@@ -805,8 +813,13 @@ class MeasurementWindowReadsV1(Protocol):
         self, derived_occurrence_id: str
     ) -> WindowMeasurementOccurrenceV1 | None: ...
     def list_derived_history(
-        self, *, derived_signal_id: str, subject_instrument: str,
-        effective_at_or_before_utc: datetime, knowledge_at_or_before_utc: datetime, limit: int,
+        self,
+        *,
+        derived_signal_id: str,
+        subject_instrument: str,
+        effective_at_or_before_utc: datetime,
+        knowledge_at_or_before_utc: datetime,
+        limit: int,
     ) -> tuple[WindowMeasurementOccurrenceV1, ...]: ...
 
 
@@ -819,9 +832,12 @@ class MeasurementWindowOwnerV1(Protocol):
 
 
 def create_window_owner(
-    *, admission: OwnerAdmissionV1, raw_projection_reader: RawProjectionReaderV1,
+    *,
+    admission: OwnerAdmissionV1,
+    raw_projection_reader: RawProjectionReaderV1,
     predecessor_reader: MeasurementTradeDirectionReadsV1 | MeasurementWindowReadsV1 | None = None,
-    storage: MemoryStorageV1 | SQLiteStorageV1, utc_now: Callable[[], datetime],
+    storage: MemoryStorageV1 | SQLiteStorageV1,
+    utc_now: Callable[[], datetime],
 ) -> MeasurementWindowOwnerV1:
     from ._window import build_owner
 
@@ -829,7 +845,9 @@ def create_window_owner(
 
 
 def create_window_reader(
-    *, admission: OwnerAdmissionV1, storage: SQLiteReadStorageV1,
+    *,
+    admission: OwnerAdmissionV1,
+    storage: SQLiteReadStorageV1,
 ) -> MeasurementWindowReadsV1:
     from ._window import build_reader
 
@@ -841,6 +859,7 @@ __all__ += [
     "MeasurementWindowOwnerV1",
     "MeasurementWindowReadsV1",
     "ReturnAccelerationV1",
+    "VwapDeviationV1",
     "WindowCalculationRequestV1",
     "WindowContextV1",
     "WindowMeasurementOccurrenceV1",
