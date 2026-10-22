@@ -291,7 +291,12 @@ def validate(value: f.WindowMeasurementOccurrenceV1) -> None:
         ):
             raise ValueError("invalid window lineage")
     if canonical(value.result) != canonical(
-        _total(lines, value.predecessors, value.request, value.calculated_at_utc)
+        _total(
+            lines,
+            cast(tuple[f.TradeDirectionOccurrenceV1, ...], value.predecessors),
+            value.request,
+            value.calculated_at_utc,
+        )
     ) or value.derived_occurrence_id != _identity(value):
         raise ValueError("window equation/identity mismatch")
 
@@ -420,16 +425,27 @@ class _Owner:
 def build_owner(
     admission: f.OwnerAdmissionV1,
     raw: f.RawProjectionReaderV1,
-    predecessor: f.MeasurementTradeDirectionReadsV1 | None,
+    predecessor: f.MeasurementTradeDirectionReadsV1 | f.MeasurementWindowReadsV1 | None,
     storage: f.MemoryStorageV1 | f.SQLiteStorageV1,
     now: Callable[[], datetime],
 ) -> f.MeasurementWindowOwnerV1:
-    from . import _session_vwap
+    from . import _session_vwap, _vwap_comparison
+
+    if type(admission) is f.OwnerAdmissionV1 and admission == f.OwnerAdmissionV1(
+        "M02", _vwap_comparison.BRIEF
+    ):
+        return _vwap_comparison.build_owner(admission, raw, predecessor, storage, now)
 
     if type(admission) is f.OwnerAdmissionV1 and admission == f.OwnerAdmissionV1(
         "M02", _session_vwap.BRIEF
     ):
-        return _session_vwap.build_owner(admission, raw, predecessor, storage, now)
+        return _session_vwap.build_owner(
+            admission,
+            raw,
+            cast(f.MeasurementTradeDirectionReadsV1 | None, predecessor),
+            storage,
+            now,
+        )
     _admission(admission)
     if (
         type(storage) not in (f.MemoryStorageV1, f.SQLiteStorageV1)
@@ -439,13 +455,25 @@ def build_owner(
         or not callable(getattr(predecessor, "get_derived_occurrence", None))
     ):
         raise TypeError("declared window dependencies required")
-    return _Owner(RecordState(storage, _decode, validate), raw, predecessor, now)
+    return _Owner(
+        RecordState(storage, _decode, validate),
+        raw,
+        cast(f.MeasurementTradeDirectionReadsV1, predecessor),
+        now,
+    )
 
 
 def build_reader(
     admission: f.OwnerAdmissionV1, storage: f.SQLiteReadStorageV1
 ) -> f.MeasurementWindowReadsV1:
-    from . import _session_vwap
+    from . import _session_vwap, _vwap_comparison
+
+    if type(admission) is f.OwnerAdmissionV1 and admission == f.OwnerAdmissionV1(
+        "M02", _vwap_comparison.BRIEF
+    ):
+        if type(storage) is not f.SQLiteReadStorageV1:
+            raise TypeError("exact read-only storage required")
+        return _Reads(RecordState(storage, _decode, _vwap_comparison.validate))
 
     if type(admission) is f.OwnerAdmissionV1 and admission == f.OwnerAdmissionV1(
         "M02", _session_vwap.BRIEF

@@ -66,7 +66,7 @@ def _admit(raw, identity, record, ids, when, sequence):
 
 @pytest.mark.parametrize("zero", [False, True])
 def test_d018_vwap_comparison(tmp_path, zero):
-    l = _literals()
+    literals = _literals()
     raw = r.create_owner()
     for index, (price, size) in enumerate((("6", "2"), ("4", "3"))):
         _admit(
@@ -74,24 +74,24 @@ def test_d018_vwap_comparison(tmp_path, zero):
             f"trade-{index}",
             {"trade": {"price": Decimal("0" if zero else price), "size": Decimal(size)}},
             ("R120", "R121"),
-            l.START + timedelta(seconds=10 * (index + 1)),
+            literals.START + timedelta(seconds=10 * (index + 1)),
             index + 1,
         )
     context = f.WindowContextV1(
-        f.VersionRefV1("controlled-vwap-session", 1), l.START, l.START + timedelta(hours=1), l.START
+        f.VersionRefV1("controlled-vwap-session", 1), literals.START, literals.START + timedelta(hours=1), literals.START
     )
     predecessor_owner = f.create_window_owner(
         admission=f.OwnerAdmissionV1("M02", D017),
         raw_projection_reader=raw.reads,
         storage=f.MemoryStorageV1(),
-        utc_now=lambda: l.NOW,
+        utc_now=lambda: literals.NOW,
     )
     p_request = f.WindowCalculationRequestV1(
         f.CalculationRequestV1(
             "D017",
             "NVDA",
-            l.ASOF,
-            l.CUTOFF,
+            literals.ASOF,
+            literals.CUTOFF,
             "D017-SESSION-VWAP-1",
             f.VersionRefV1("mmt-session-vwap", 1),
             f.VersionRefV1("mmt-vwap-selection", 1),
@@ -99,7 +99,7 @@ def test_d018_vwap_comparison(tmp_path, zero):
             tuple(
                 f.RawInputBindingV1(
                     rid,
-                    f.VersionRefV1(l._mapping(rid).mapping_id, 1),
+                    f.VersionRefV1(literals._mapping(rid).mapping_id, 1),
                     f.VersionRefV1("mmt-pilot-price" if rid == "R120" else "mmt-trade-shares", 1),
                     "NVDA",
                 )
@@ -120,11 +120,11 @@ def test_d018_vwap_comparison(tmp_path, zero):
             "vwap": {
                 "value": provider_value,
                 "session": "controlled-vwap-session/1",
-                "as_of": l.ASOF.isoformat().replace("+00:00", "Z"),
+                "as_of": literals.ASOF.isoformat().replace("+00:00", "Z"),
             }
         },
         ("R137",),
-        l.ASOF,
+        literals.ASOF,
         3,
     )
     projection = raw.reads.project_raw_value(
@@ -141,14 +141,14 @@ def test_d018_vwap_comparison(tmp_path, zero):
         raw_projection_reader=raw.reads,
         predecessor_reader=predecessor_owner.reads,
         storage=f.SQLiteStorageV1(path, True),
-        utc_now=lambda: l.NOW,
+        utc_now=lambda: literals.NOW,
     )
     request = f.WindowCalculationRequestV1(
         f.CalculationRequestV1(
             "D018",
             "NVDA",
-            l.ASOF,
-            l.CUTOFF,
+            literals.ASOF,
+            literals.CUTOFF,
             "D018-VWAP-COMPARISON-1",
             f.VersionRefV1("mmt-vwap-comparison", 1),
             f.VersionRefV1("mmt-comparison-selection", 1),
@@ -172,8 +172,8 @@ def test_d018_vwap_comparison(tmp_path, zero):
             owner.reads.list_derived_history(
                 derived_signal_id="D018",
                 subject_instrument="NVDA",
-                effective_at_or_before_utc=l.ASOF,
-                knowledge_at_or_before_utc=l.CUTOFF,
+                effective_at_or_before_utc=literals.ASOF,
+                knowledge_at_or_before_utc=literals.CUTOFF,
                 limit=10,
             )
             == ()
@@ -200,7 +200,7 @@ def test_d018_vwap_comparison(tmp_path, zero):
         "P_BASIC",
         "price / bps",
         "named_exact_comparison",
-        tuple(f.AuthorityArtifactRefV1(*ref) for ref in l.AUTHORITY),
+        tuple(f.AuthorityArtifactRefV1(*ref) for ref in literals.AUTHORITY),
     )
     assert result.parameter_set == f.CalculationParameterSetV1(
         "mmt-vwap-comparison", 1, "P_BASIC", "NVDA", ("NVDA",)
@@ -211,8 +211,8 @@ def test_d018_vwap_comparison(tmp_path, zero):
     assert result.unit_conventions == (predecessor.unit_conventions[0],)
     assert result.projection_mappings == (_mapping(),) and result.predecessors == (predecessor,)
     assert result.units == "price / bps" and result.result_shape == "named_exact_comparison"
-    assert result.effective_as_of_utc == l.ASOF and result.knowledge_cutoff_utc == l.CUTOFF
-    assert result.calculated_at_utc == l.NOW
+    assert result.effective_as_of_utc == literals.ASOF and result.knowledge_cutoff_utc == literals.CUTOFF
+    assert result.calculated_at_utc == literals.NOW
     assert result.raw_input_lineage == (
         f.RawInputLineageV1(
             "R137",
@@ -221,7 +221,7 @@ def test_d018_vwap_comparison(tmp_path, zero):
             f.VersionRefV1("mmt-pilot-price", 1),
             projection,
             provider_value,
-            l.ASOF,
+            literals.ASOF,
         ),
     )
     assert owner.reads.get_derived_occurrence(result.derived_occurrence_id) == result

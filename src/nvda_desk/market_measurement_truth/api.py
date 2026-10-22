@@ -747,6 +747,12 @@ __all__ += [
 
 
 @dataclass(frozen=True, slots=True)
+class MeasurementComparisonV1(_Validated):
+    price_difference: ExactRatioV1
+    bps_difference: ExactRatioV1
+
+
+@dataclass(frozen=True, slots=True)
 class WindowContextV1(_Validated):
     ref: VersionRefV1
     session_start_utc: datetime
@@ -775,9 +781,9 @@ class WindowMeasurementOccurrenceV1(_Validated):
     unit_conventions: tuple[UnitConventionVersionV1, ...]
     projection_mappings: tuple[raw_api.RawSignalProjectionMappingV1, ...]
     raw_input_lineage: tuple[RawInputLineageV1, ...]
-    predecessors: tuple[TradeDirectionOccurrenceV1, ...]
+    predecessors: tuple[TradeDirectionOccurrenceV1 | WindowMeasurementOccurrenceV1, ...]
     window_seconds: int
-    result: Decimal | ExactRatioV1
+    result: Decimal | ExactRatioV1 | MeasurementComparisonV1
     units: str
     result_shape: str
     effective_as_of_utc: datetime
@@ -805,7 +811,7 @@ class MeasurementWindowOwnerV1(Protocol):
 
 def create_window_owner(
     *, admission: OwnerAdmissionV1, raw_projection_reader: RawProjectionReaderV1,
-    predecessor_reader: MeasurementTradeDirectionReadsV1 | None = None,
+    predecessor_reader: MeasurementTradeDirectionReadsV1 | MeasurementWindowReadsV1 | None = None,
     storage: MemoryStorageV1 | SQLiteStorageV1, utc_now: Callable[[], datetime],
 ) -> MeasurementWindowOwnerV1:
     from ._window import build_owner
@@ -822,6 +828,7 @@ def create_window_reader(
 
 
 __all__ += [
+    "MeasurementComparisonV1",
     "MeasurementWindowOwnerV1",
     "MeasurementWindowReadsV1",
     "WindowCalculationRequestV1",

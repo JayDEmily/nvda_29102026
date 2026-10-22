@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_d018",
+  "generation": 2,
+  "brief_sha256": "1f65edb4e3050c89604c749accc5fdf39ff03e69e54eca43a50cfa496298e90e",
+  "binding_sha256": "b1637949744ac0acbaf8c66c1eebfefeca99c846bdb42ceae04104b76fc27a50",
+  "contract_sha256": "3f938094bbb89255fc5f0dcd63ffb203fbcace1a46c7f18cc32257d852823a5e",
+  "implementation_target_id": "M02",
+  "adequacy_review_ref": "handoff/foundation_implementation/authority/D018_IMPLEMENTATION_BRIEF.md-section3-worker-inspection-under-standing-delegation",
+  "admission_authority_ref": "owner-chat/20261022/D018-D020-prerequisites-and-log-policy-authorised;standing-delegation",
+  "family_files": [
+    {
+      "path": "tests/product/market_measurement_d018/test_vwap_comparison.py",
+      "sha256": "5f695be0574d18e1cc13a9d53f15b5f15ce9f3a66fdc745fef6abbdce1eee270"
+    }
+  ],
+  "support_files": [],
+  "previous_generation": {
+    "path": "config/product_proof/market_measurement_d018/generations/0001.json",
+    "sha256": "37910517f32e933c5a6fa5fe071a48e77f3ee4b1dbac2191d0f6498ed934c234"
+  }
+}

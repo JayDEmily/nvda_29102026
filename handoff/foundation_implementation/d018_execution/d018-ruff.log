@@ -1,0 +1,42 @@
+I001 [*] Import block is un-sorted or un-formatted
+  --> src/nvda_desk/market_measurement_truth/_vwap_comparison.py:3:1
+   |
+ 1 |   """D018 named exact comparison against a compatible actual D017 snapshot."""
+ 2 |
+ 3 | / from __future__ import annotations
+ 4 | |
+ 5 | | import re
+ 6 | | from collections.abc import Callable
+ 7 | | from dataclasses import replace
+ 8 | | from datetime import datetime
+ 9 | | from decimal import Decimal
+10 | | from fractions import Fraction
+11 | | from typing import cast
+12 | |
+13 | | from nvda_desk.raw_signal_occurrence_truth import api as r
+14 | |
+15 | | from . import api as f
+16 | | from . import _session_vwap as v
+17 | | from ._evaluation import canonical
+18 | | from ._record_store import RecordState
+19 | | from ._selection import _same_content, eligible
+20 | | from ._window import NAMESPACE, _decode, _identity, _Reads
+   | |__________________________________________________________^
+21 |
+22 |   BRIEF = "1f65edb4e3050c89604c749accc5fdf39ff03e69e54eca43a50cfa496298e90e"
+   |
+help: Organize imports
+
+E741 Ambiguous variable name: `l`
+  --> tests/product/market_measurement_d018/test_vwap_comparison.py:69:5
+   |
+67 | @pytest.mark.parametrize("zero", [False, True])
+68 | def test_d018_vwap_comparison(tmp_path, zero):
+69 |     l = _literals()
+   |     ^
+70 |     raw = r.create_owner()
+71 |     for index, (price, size) in enumerate((("6", "2"), ("4", "3"))):
+   |
+
+Found 2 errors.
+[*] 1 fixable with the `--fix` option.
