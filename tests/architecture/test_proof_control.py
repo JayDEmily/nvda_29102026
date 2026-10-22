@@ -922,6 +922,18 @@ def _copy_candidate(tmp_path):
         "tests/product/market_measurement_d013",
         "config/product_proof/market_measurement_d014",
         "tests/product/market_measurement_d014",
+        "config/product_proof/market_measurement_d015",
+        "tests/product/market_measurement_d015",
+        "config/product_proof/market_measurement_d016",
+        "tests/product/market_measurement_d016",
+        "config/product_proof/market_measurement_d017",
+        "tests/product/market_measurement_d017",
+        "config/product_proof/market_measurement_d018",
+        "tests/product/market_measurement_d018",
+        "config/product_proof/market_measurement_d019",
+        "tests/product/market_measurement_d019",
+        "config/product_proof/market_measurement_d020",
+        "tests/product/market_measurement_d020",
     ):
         disposable = tmp_path / relative
         if disposable.exists():
@@ -1524,3 +1536,145 @@ def test_unadmitted_nested_physical_test_is_rejected(tmp_path: Path) -> None:
     extra.write_text("def test_unadmitted_nested(): assert True\n", encoding="utf-8")
     with pytest.raises(ValueError, match="test admission mismatch"):
         load_and_validate_proof_state(tmp_path)
+
+
+_TRANCHE_IDS = ("D015", "D016", "D017", "D018", "D019", "D020")
+
+
+def _tranche_control_candidate(tmp_path, identity="D015", body="assert True"):
+    """Disposable fixed-member canary; synthetic later briefs are never domain authority."""
+    import yaml
+
+    root = _d014_control_candidate(tmp_path)
+    name = identity.lower()
+    authority = "handoff/foundation_implementation/authority/"
+    base_contract = root / (authority + "D015_PROOF_CONTRACT.json")
+    old_hash = _sha(base_contract)
+    contract_path = root / (authority + identity + "_PROOF_CONTRACT.json")
+    contract_path.write_text(
+        base_contract.read_text().replace("D015", identity).replace("d015", name)
+    )
+    brief_path = root / (authority + identity + "_IMPLEMENTATION_BRIEF.md")
+    brief_path.write_text(
+        (ROOT / (authority + "D015_IMPLEMENTATION_BRIEF.md"))
+        .read_text()
+        .replace("D015", identity)
+        .replace("d015", name)
+        .replace(old_hash, _sha(contract_path))
+    )
+    binding_path = root / (
+        f"implementation/authority/{identity}_IMPLEMENTATION_AUTHORITY_BINDING.yaml"
+    )
+    binding = yaml.safe_load(
+        (ROOT / "implementation/authority/D015_IMPLEMENTATION_AUTHORITY_BINDING.yaml").read_text()
+    )
+    binding["brief_sha256"] = _sha(brief_path)
+    binding["acceptance"]["authority_ref"] = "control-fixture/fixed-tranche-only"
+    binding_path.write_text(yaml.safe_dump(binding))
+    prefix = f"config/product_proof/market_measurement_{name}"
+    entry = {
+        "schema_version": "1.0",
+        "claim_id": f"neutral_market_measurement_truth_{name}",
+        "brief_path": brief_path.relative_to(root).as_posix(),
+        "binding_path": binding_path.relative_to(root).as_posix(),
+        "contract_path": contract_path.relative_to(root).as_posix(),
+        "physical_root": f"tests/product/market_measurement_{name}",
+        "admission_path": prefix + "/admission.json",
+    }
+    _json_write(root / prefix / "claim.json", entry)
+    contract = json.loads(contract_path.read_text())
+    rows = []
+    for family in contract["families"]:
+        path = root / family["path"]
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(
+            "\n".join(f"def {test}():\n    {body}\n" for test in family["required_test_names"])
+        )
+        rows.append({"path": family["path"], "sha256": _sha(path)})
+    support = []
+    for relative in contract["required_support_files"]:
+        path = root / relative
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text("# Disposable control source; never actual signal proof.\n")
+        support.append({"path": relative, "sha256": _sha(path)})
+    generation = {
+        "schema_version": "1.0", "claim_id": entry["claim_id"], "generation": 1,
+        "brief_sha256": _sha(brief_path), "binding_sha256": _sha(binding_path),
+        "contract_sha256": _sha(contract_path), "implementation_target_id": "M02",
+        "adequacy_review_ref": "control-fixture/tranche-review",
+        "admission_authority_ref": "control-fixture/tranche-admission",
+        "family_files": rows, "support_files": support, "previous_generation": None,
+    }
+    path = root / prefix / "generations/0001.json"
+    _json_write(path, generation)
+    _json_write(root / entry["admission_path"], {
+        "schema_version": "1.0",
+        "current_generation": {"path": path.relative_to(root).as_posix(), "sha256": _sha(path)},
+    })
+    return root, entry
+
+
+@pytest.mark.parametrize("identity", _TRANCHE_IDS)
+def test_tranche_fixed_member_readiness_and_old_generation_preservation(tmp_path, identity):
+    api = _controls()
+    root, entry = _tranche_control_candidate(tmp_path, identity)
+    protected = {path: path.read_bytes() for rid in (D012_ROOT, D013_ROOT, D014_ROOT)
+                 for path in (root / rid).rglob("*.json")}
+    claim = api.load_product_proof_claim(root, entry["claim_id"])
+    assert claim.state == "READY_FOR_PROOF" and claim.target_id == "M02"
+    assert len(claim.families) == 1
+    for old in (D012_CLAIM, D013_CLAIM, D014_CLAIM):
+        assert api.load_product_proof_claim(root, old).state == "READY_FOR_PROOF"
+    assert all(path.read_bytes() == value for path, value in protected.items())
+
+
+@pytest.mark.parametrize("identity", _TRANCHE_IDS)
+def test_tranche_absent_descriptor_rejects_unowned_support(tmp_path, identity):
+    api = _controls()
+    root = _d014_control_candidate(tmp_path)
+    path = root / f"tests/product/market_measurement_{identity.lower()}/_support.py"
+    path.parent.mkdir(parents=True)
+    path.write_text("# deliberately unowned control canary\n")
+    with pytest.raises(ValueError, match="unowned"):
+        api.load_product_proof_claim(root, D014_CLAIM)
+
+
+@pytest.mark.parametrize("mutation", ["null", "wrong_generation", "wrong_root"])
+def test_tranche_shared_claim_association_and_incomplete_state(tmp_path, mutation):
+    api = _controls()
+    root, entry = _tranche_control_candidate(tmp_path)
+    assert api.load_product_proof_claim(root, entry["claim_id"]).state == "READY_FOR_PROOF"
+    if mutation == "null":
+        _json_write(root / entry["admission_path"], {
+            "schema_version": "1.0", "current_generation": None,
+        })
+        assert api.load_product_proof_claim(root, entry["claim_id"]).state != "READY_FOR_PROOF"
+    elif mutation == "wrong_generation":
+        pointer = json.loads((root / D014_ROOT / "admission.json").read_text())
+        _json_write(root / entry["admission_path"], pointer)
+        with pytest.raises(ValueError):
+            api.load_product_proof_claim(root, D014_CLAIM)
+    else:
+        entry["physical_root"] = "tests/product/market_measurement_d014"
+        _json_write(root / "config/product_proof/market_measurement_d015/claim.json", entry)
+        with pytest.raises(ValueError):
+            api.load_product_proof_claim(root, D014_CLAIM)
+
+
+@pytest.mark.parametrize("body,expected", [
+    ("assert True", 0),
+    ("__import__('pytest').skip('control canary')", 1),
+    ("__import__('pathlib').Path('src/tranche_mutation.txt').write_text('x')", 6),
+])
+def test_tranche_shared_strict_outcomes(tmp_path, body, expected):
+    root, entry = _tranche_control_candidate(tmp_path, body=body)
+    result = _run_control_probe(root, entry["claim_id"])
+    assert result.returncode == expected, result.stdout + result.stderr
+
+
+def test_tranche_pre_admission_universe_resets_future_optional_roots(tmp_path, monkeypatch):
+    root, _ = _tranche_control_candidate(tmp_path / "source")
+    monkeypatch.setattr(__import__(__name__, fromlist=["ROOT"]), "ROOT", root)
+    copied = _copy_candidate(tmp_path / "copied")
+    assert not (copied / "config/product_proof/market_measurement_d015").exists()
+    assert not (copied / "tests/product/market_measurement_d015").exists()
