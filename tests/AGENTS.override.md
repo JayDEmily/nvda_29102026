@@ -1,19 +1,19 @@
 # Test-local supplement
 
-This file adds local test organisation guidance only. Universal authority/test law lives in root `GUARDRAILS.md` and `AGENTS.md`.
+Architecture/bootstrap tests establish their named kernel propositions, not M02 calculation semantics. Keep existing enforcement tests and preserve accepted M00/D011–D015 physical proof, contracts and immutable generations.
 
-- `tests/architecture/` and `tests/bootstrap/` prove only the architecture-kernel propositions cited by the proof configuration.
-- Keep negative and false-positive fixtures for enforcement laws.
-- File placement alone never admits a test proposition.
-- A green architecture/bootstrap result does not establish domain semantics, implementation maturity, or future capability admission.
+## Prospective M02 D016–D020 work
 
-## M02 D015–D020 testing regime
+Root `EXEC_PLAN.md` §§2–5 is the owner's strict scope and execution budget. D015 is accepted and is not rerun under this amendment.
 
-For `tests/product/market_measurement_d015/` through `market_measurement_d020/`, root `EXEC_PLAN.md` §§3–6 specifies M02's own product testing regime. Default architecture/bootstrap collection is separate and cannot establish M02 calculation proof. This is prospective scope for these six signals only; it does not amend M00 or the admitted D011–D014 tests/generations.
-
-- One named parameterised public-path calculation test per D, with the six functions and 19 baseline cases in root §4. Use independent predetermined expectations; no universal positive/negative quota or automatic per-field mutation matrix.
-- In at least one success per signal assert complete relevant result identity/type/shape/value/units, selected raw and actual predecessor occurrence lineage, and ordinary public durable readback. Never use the implementation to compute its own oracle or replace predecessors with injected scalars.
-- Reuse unchanged accepted M00/common-M02 identity, time, provenance, configuration and SQLite evidence. Test a changed shared mechanism or new result carrier once at its owning boundary; run affected shared/static/control checks with the reason recorded. Do not clone generic storage-fault, pagination, malformed-field or negative-typing suites for each D.
-- Preserve admitted test-first semantic RED, applicable GREEN, actual independent judgement and per-ID acceptance. Fixture/admission/infrastructure failure is not semantic RED. Helpers cannot pre-satisfy the transition being proved.
-- Align future exact briefs, per-ID proof contracts and strict manifests prospectively before relying on this regime. An override cannot silently weaken an accepted contract or still-valid test. Preserve immutable generations; changed admitted proof requires fresh adequacy and a linked generation.
-- Extra proof needs an identified unproved semantic obligation or mandatory unamended requirement. Reuse evidence only with matching relevant inputs/environment/proposition and where its contract permits it. Do not silently waive required later/independent execution.
+- One named parameterised public-path calculation function per D. Hard case counts: D016=5, D017=2, D018=2, D019=2, D020=2. The retained D015 count is 6; do not pad smaller sets or add cases.
+- Use the prepared independent oracles, actual public M00 inputs and actual required D predecessors. At least one success establishes complete relevant typed value/units/identity/raw and predecessor lineage plus ordinary public durable readback; refusal reaches its intended cause and materialises nothing.
+- No hidden extra scenarios in helpers, loops, scripts or expanded case bodies. Reuse unchanged shared identity/time/provenance/storage/fault evidence. Do not clone generic mutation, pagination, factory, persistence or negative-typing suites.
+- One admitted semantic RED, then one final complete strict GREEN performed by the designated executor, normally the independent reviewer. Do not run focused GREEN followed by aggregate GREEN or worker GREEN followed by reviewer GREEN.
+- Repeat only an affected declared check after an observed failure and a diagnosed material repair that changes its relevant inputs. Preserve the first failure. Never repeat a successful result for a new report, reviewer, commit, checkpoint or tranche close.
+- No default pytest, architecture/bootstrap, 149-control, 220-promotion, prior product aggregates or ad-hoc diagnostic tests during routine signal work. Additional runtime testing requires explicit owner scope for a concrete unproved obligation before execution.
+- One scoped mypy and one changed-path Ruff invocation; reuse their results. No new positive consumer unless a genuinely new supported public type requires it, and no automatic negative specimen.
+- One final independent review covers source, the exact cases and fixture independence. Satisfy required sequencing within those cases, without a separate probe or duplicate execution. A necessary missing proposition is a precise scope gap, not permission to add tests.
+- Keep native hash-bound claim/generation integrity. Prospective briefs/contracts must match this regime before execution; an admitted proof change advances the immutable generation rather than overwriting history.
+- Module APIs, public request/result types, factories, stores, schemas, codecs, registries and proof-control changes are outside signal scope. Report an unsupported shared capability separately; do not expand the signal task to build it.
+- Documentation-only changes require text/diff inspection and no tests, typing or lint execution.
