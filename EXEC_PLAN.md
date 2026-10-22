@@ -215,3 +215,5 @@ authority=c0c2788a727681d87f7b971d242f263d0f04657c896cc113bcf8a57126e684a9 gener
 candidate=bef3b1b261af6eec0425bd5ef5ddd310f1226024
 observed aggregate outcome: exit=0
 Tree 602d07272b47395cd649799a3697032eb50ecd0e. Independent final judgement ACCEPT: handoff/foundation_implementation/d028_execution/final_review.md. Full first RED/final GREEN and scoped static results retained in that directory; any first preparation/static failure remains preserved with its repair. No additional cases, old claims, broad suite or successful repeats. Selected source lineage and public typed SQLite reopen qualified inside the two cases. Native certification remains held. Commit acceptance and save the full-history checkpoint before advancing.
+
+D029 first scoped mypy stopped on an internal error. Preserved first output and diagnostic traceback, which established malformed mypy cache SQLite, not a product failure. Re-ran only failed scoped mypy with fresh cache directory; no runtime probe. Ruff passed once. New exact Fraction sample variance/signed final50digit root helper and fixed R144 same-bucket selector; no accepted old claim repeated.

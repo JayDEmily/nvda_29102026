@@ -14,12 +14,16 @@ from nvda_desk.raw_signal_occurrence_truth import api as r
 from . import api as f
 from ._catalogue import _AUTHORITY
 from ._evaluation import canonical
+from ._numeric_bounds import sqrt_ratio_50
 from ._record_store import RecordState
 from ._selection import eligible
 from ._vwap_returns import chosen, history
 from ._window import NAMESPACE, _decode, _identity, _Reads
 
-BRIEFS = {"D028": "c0c2788a727681d87f7b971d242f263d0f04657c896cc113bcf8a57126e684a9"}
+BRIEFS = {
+    "D029": "8209530693ea66f600b7033ff9841c31878a6a2393959d3c8840ae1ed592af8e",
+    "D028": "c0c2788a727681d87f7b971d242f263d0f04657c896cc113bcf8a57126e684a9",
+}
 DATES = tuple(datetime(2026, 9, 29, 12, tzinfo=UTC) + timedelta(days=i) for i in range(22))
 OVERLAY = (
     "handoff/m01_completion/authority/D028_OWNER_APPROVED_RAW_VOLUME_BASELINE_AMENDMENT_20261017.md",
@@ -39,40 +43,72 @@ def configuration(
 ]:
     if identity not in BRIEFS:
         raise ValueError("unadmitted baseline")
-    name = "mmt-relative-volume-2sessions"
+    relative = identity == "D028"
+    table = {
+        "D029": ("volume-zscore", "bar-volume", "R144", ("bar", "volume"), "shares", "shares"),
+        "D030": (
+            "trade-rate-zscore",
+            "trade-rate",
+            "R062",
+            ("activity", "trades_per_minute"),
+            "trades/minute",
+            "trades-per-minute",
+        ),
+        "D031": (
+            "volume-rate-zscore",
+            "volume-rate",
+            "R063",
+            ("activity", "shares_per_minute"),
+            "shares/minute",
+            "shares-per-minute",
+        ),
+    }
+    stem, mapname, raw_id, field, native_units, unitname = (
+        ("relative-volume", "session-volume", "R041", ("session", "volume"), "shares", "shares")
+        if relative
+        else table[identity]
+    )
+    name = "mmt-relative-volume-2sessions" if relative else "mmt-" + stem + "-20sessions-50d"
     mapping = r.RawSignalProjectionMappingV1(
-        "mmt-session-volume",
+        "mmt-" + mapname,
         1,
-        r.RawSignalCatalogueId("R041"),
+        r.RawSignalCatalogueId(raw_id),
         "foundation-pilot-fixture",
         "cash_quote_v1",
-        ("session", "volume"),
-        "shares",
+        field,
+        native_units,
         (
             ("session.id", ("session", "id")),
             ("counter.generation", ("counter", "generation")),
             ("counter.basis", ("counter", "basis")),
             ("counter.complete_from_open", ("counter", "complete_from_open")),
-        ),
+        )
+        if relative
+        else (("session.id", ("session", "id")), ("bucket.id", ("bucket", "id"))),
     )
     unit = f.UnitConventionVersionV1(
-        "mmt-shares", 1, "shares", "shares", Decimal("1"), Decimal("0")
+        "mmt-" + unitname, 1, native_units, native_units, Decimal("1"), Decimal("0")
     )
     definition = f.CalculationDefinitionV1(
         identity,
-        "D028-RELATIVE-VOLUME-1",
+        identity + "-" + stem.upper() + "-1",
         "K04_STANDARDISE_RANK",
-        "current / mean(prior_same_fraction)",
-        ("R041",),
+        "current / mean(prior_same_fraction)"
+        if relative
+        else "(current-mean(prior_same_bucket))/sample_sd(prior_same_bucket)",
+        (raw_id,),
         (),
         "P_BASELINE",
-        "multiple",
-        "exact_ratio",
-        tuple(f.AuthorityArtifactRefV1(*x) for x in (*_AUTHORITY, OVERLAY)),
+        "multiple" if relative else "z-score",
+        "exact_ratio" if relative else "scalar_decimal",
+        tuple(
+            f.AuthorityArtifactRefV1(*x)
+            for x in ((*_AUTHORITY, OVERLAY) if relative else _AUTHORITY)
+        ),
     )
     parameter = f.CalculationParameterSetV1(name, 1, "P_BASELINE", "NVDA", ("NVDA",))
     policy = f.InputSelectionPolicyVersionV1(
-        name + "-selection",
+        name.replace("-50d", "") + "-selection",
         1,
         ("subject_instrument", "session"),
         timedelta(days=30),
@@ -99,7 +135,7 @@ def configuration(
             )
             for d in DATES
         ),
-        2,
+        2 if relative else 20,
         1800,
     )
     return definition, parameter, policy, mapping, unit, context
@@ -148,11 +184,16 @@ def line(
 ) -> f.RawInputLineageV1:
     actual = eligible(replace(item, selection_identity=None), m, policy, c)
     expected = (
-        ("session.id", frame.ref.context_id + "/1"),
-        ("counter.generation", "counter-" + frame.start_utc.strftime("%Y%m%d") + "/1"),
-        ("counter.basis", "cash_shares_unadjusted"),
-        ("counter.complete_from_open", True),
+        (
+            ("session.id", frame.ref.context_id + "/1"),
+            ("counter.generation", "counter-" + frame.start_utc.strftime("%Y%m%d") + "/1"),
+            ("counter.basis", "cash_shares_unadjusted"),
+            ("counter.complete_from_open", True),
+        )
+        if c.derived_signal_id == "D028"
+        else (("session.id", frame.ref.context_id + "/1"), ("bucket.id", "minute-ending-1230/1"))
     )
+
     if (
         actual != event
         or canonical(item.selection_identity) != canonical(r.RawSelectionIdentityV1(expected))
@@ -208,10 +249,21 @@ def produce(
             raise ValueError("lineage mismatch")
     values = tuple(Fraction(v.canonical_value) for v in lines)
     mean = sum(values[1:], Fraction()) / context.prior_session_count
-    if mean <= 0:
-        raise ValueError("nonpositive baseline")
-    ratio = values[0] / mean
-    result = f.ExactRatioV1(ratio.numerator, ratio.denominator)
+    result: f.ExactRatioV1 | Decimal
+    if c.derived_signal_id == "D028":
+        if mean <= 0:
+            raise ValueError("nonpositive baseline")
+        ratio = values[0] / mean
+        result = f.ExactRatioV1(ratio.numerator, ratio.denominator)
+    else:
+        variance = sum(((v - mean) ** 2 for v in values[1:]), Fraction()) / (
+            context.prior_session_count - 1
+        )
+        if variance <= 0:
+            raise ValueError("zero sample variance")
+        difference = values[0] - mean
+        magnitude = sqrt_ratio_50(difference * difference / variance)
+        result = magnitude.copy_negate() if difference < 0 else magnitude
     value = f.WindowMeasurementOccurrenceV1(
         "M02",
         NAMESPACE,
