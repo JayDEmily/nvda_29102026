@@ -1,0 +1,43 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/83dd7c79f14f/NVDA_V2_D021_D025_EXECUTION_20261023
+configfile: pyproject.toml
+collected 0 items / 1 error
+
+==================================== ERRORS ====================================
+_ ERROR collecting tests/product/market_measurement_d023/test_overnight_gap.py _
+../d021-runtime/lib/python3.12/site-packages/_pytest/python.py:507: in importtestmodule
+    mod = import_path(
+../d021-runtime/lib/python3.12/site-packages/_pytest/pathlib.py:587: in import_path
+    importlib.import_module(module_name)
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1331: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:935: in _load_unlocked
+    ???
+../d021-runtime/lib/python3.12/site-packages/_pytest/assertion/rewrite.py:188: in exec_module
+    source_stat, co = _rewrite_test(fn, self.config)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../d021-runtime/lib/python3.12/site-packages/_pytest/assertion/rewrite.py:357: in _rewrite_test
+    tree = ast.parse(source, filename=strfn)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/ast.py:52: in parse
+    return compile(source, filename, mode, flags,
+E     File "/workspace/scratch/83dd7c79f14f/NVDA_V2_D021_D025_EXECUTION_20261023/tests/product/market_measurement_d023/test_overnight_gap.py", line 20
+E       SPECS = [("R042", "mmt-prior-official-close", ("session", "close"), (("session", ("session", "id")), ("kind", ("session", "kind"))), ("R037", "mmt-preopen-last", ("trade", "last"), (("session", ("session", "id")), ("phase", ("session", "phase")))]
+E                                                                                                                                                                                                                                                             ^
+E   SyntaxError: closing parenthesis ']' does not match opening parenthesis '('
+=========================== short test summary info ============================
+ERROR tests/product/market_measurement_d023/test_overnight_gap.py
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+=============================== 1 error in 0.26s ===============================
+product-proof aggregate: neutral_market_measurement_truth_d023 state=READY_FOR_PROOF
+authority=77e1ca015da4277c0b197fc9a961513ebca8475c4125e709c6f41967c3af66b4 generation=94166e7ff3d4ebd2f431ecb93a92e1bcbc5bb0f5427e570ddba6786d2aac9cf5
+candidate=9ce8cfb8646346a0ae0149a38216725b4d620e3c
+observed aggregate outcome: exit=5
