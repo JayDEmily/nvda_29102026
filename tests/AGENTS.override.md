@@ -4,7 +4,7 @@ Architecture/bootstrap tests establish their named kernel propositions, not M02 
 
 ## Prospective D021–D025 work
 
-Root `EXEC_PLAN.md` §§3–6 supplies the exact prospective scope and execution budget. This planning turn authorises no implementation, proof admission or runtime tests.
+Root `EXEC_PLAN.md` §§3–6 supplies the exact prospective scope and execution budget. Execution was commissioned on23October2026 with a checkpoint after each signal. Root section8 records completion; do not rerun proof merely for a documentary update or packaging.
 
 - Exactly one named parameterised public-path function per signal, two cases each: D021=2, D022=2, D023=2, D024=2, D025=2. Ten total; do not pad to six or add scenarios inside helpers/loops/scripts.
 - Use actual public M00 facts and actual required D predecessors. Normal D019/D020/D021 construction inside D024's cases is a prerequisite, not permission to rerun those old claims.

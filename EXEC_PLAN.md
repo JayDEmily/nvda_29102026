@@ -2,7 +2,7 @@
 
 ## 1. Authority, baseline and current stop
 
-Owner direction, 22 October 2026: prepare the next plan for **D021, D022, D023, D024 and D025**, retaining the expedited workflow and restrictions on repeated/out-of-scope testing. **This instruction commissions planning only. No signal implementation, proof admission or runtime testing starts in this turn.** The ten-case manifest and the precisely bounded prerequisites below are proposed for owner review; a subsequent instruction to execute this plan commissions that stated scope.
+Owner direction, 22 October 2026: prepare the next plan for **D021, D022, D023, D024 and D025**, retaining the expedited workflow and restrictions on repeated/out-of-scope testing. The owner commissioned execution on23October2026, including a verified full-history checkpoint after each signal. **Current status: D021–D025 individually ACCEPTED for their controlled profiles; stop at D025.** Section8 preserves exact candidates, immutable generations, first failures/repairs and final outcomes. The original planning-only stop is superseded by that execution instruction.
 
 Baseline: `4885e144c7d214831f8e781ee939b2cf0f4a0cfb`, branch `work/v2-d021-d025-plan-20261022`. Accepted M00 and D011–D020 behaviours, physical tests, immutable briefs/contracts/generations and evidence remain preserved. The preceding root plan and its complete acceptance history are recoverable with `git show 4885e14:EXEC_PLAN.md`. Do not replay its completed work.
 
@@ -62,13 +62,13 @@ Controlled S is `controlled-price-session/1`; S_prev is `controlled-price-sessio
 - **D024:** use the same T/cutoff/session/profile as D021 for all three producers. Validate exact accepted D019/D020/D021 definitions, immutable parameter/horizon identities60/300/1800s, source subject and context; preserve all three complete predecessor snapshots and their ultimate raw lineage, in D019,D020,D021 order. A thin typed composition of actual public read facets may delegate lookups to those producers; it must not manufacture or modify returned facts. No new predecessor API family is needed.
 - **D025:** same S/T as D022. Map High/Low/Last explicitly to distinct native fields (`session.high`, `session.low`, `trade.last`) of one source observation carrying R039/R040/R037. Preserve that observation ID for all three field projections, session=S and snapshot event=T. Require exact matching source/session/time and finite values with High>=Low; no silent high/low swapping. Do not clip an inconsistent out-of-range Last into [0,1]; refuse incompatible source content. In the named negative Last=High=Low avoids a competing range-membership failure.
 
-These are proposed concrete execution profiles, bound into the corresponding immutable brief on commissioning. Any unresolved source/calendar meaning outside them remains a native-readiness hold, not a reason to research/connect a provider during this tranche.
+These commissioned concrete execution profiles are bound into the corresponding immutable briefs. Any unresolved source/calendar meaning outside them remains a native-readiness hold, not a reason to research/connect a provider during this tranche.
 
 ### 3.2 D024's five fields and numerical representation
 
 The law is `q1=D019/1`, `q5=D020/5`, `q30=D021/30`, `accel_1v5=q1-q5`, `accel_5v30=q5-q30`, units return/minute. Treat each already-rounded canonical predecessor Decimal as its exact stored finite value; divide/subtract using exact rational arithmetic. Preserve upstream rounding provenance; do not claim the result is an unrounded irrational logarithm or apply a second hidden rounding policy.
 
-Proposed public carrier: frozen `ReturnAccelerationV1(q1:ExactRatioV1, q5:ExactRatioV1, q30:ExactRatioV1, accel_1v5:ExactRatioV1, accel_5v30:ExactRatioV1)`, added once to the existing window-result union. No positional unnamed vector or reuse of D018's two-field comparison carrier.
+Admitted public carrier: frozen `ReturnAccelerationV1(q1:ExactRatioV1, q5:ExactRatioV1, q30:ExactRatioV1, accel_1v5:ExactRatioV1, accel_5v30:ExactRatioV1)`, added once to the existing window-result union. No positional unnamed vector or reuse of D018's two-field comparison carrier.
 
 Independent expected numerator/denominator pairs, prepared from the declared literals rather than runtime predecessor results:
 
@@ -82,7 +82,7 @@ Independent expected numerator/denominator pairs, prepared from the declared lit
 
 ## 4. File map and bounded prerequisites
 
-Known missing capabilities are identified now rather than rediscovered mid-signal. They are proposed parts of the next execution commission, **not work performed or authorised for execution by this planning turn**:
+The following bounded prerequisites were commissioned on23October2026 and implemented in the respective signal deltas; section8 records their evidence:
 
 1. **One declaration-only claim-loader extension:** `tools/product_proof_claims.py` currently enumerates D012–D020. Extend the fixed Literal identities, fixed iteration tuple and seven-row incorporated-byte counts to D021–D025 once. Bind that exact five-ID scope in D021's initial brief/binding under the execution commission; no separate preliminary review programme. Keep validators, target rules, hashes, partitions and immutable generation algorithms unchanged. Do not add dynamic claim discovery, alter the original hash-bound catalogue, redo the old149-control family, or extend controls per signal. Strict loading of the five actual admitted claims exercises the new declarations as those signals run; no preliminary runtime-control ceremony is added. A change beyond declarations must stop with its precise unproved obligation and proposed test list.
 2. **One D024 result extension:** add the exact carrier in §3.2 to `api.py` and reuse existing typed union/dataclass decoding and `_record_store.py`. The existing D024 success/readback is its bounded qualification; no new schema/store/codec framework, generic fault suite or automatic negative typing specimen.
@@ -121,12 +121,12 @@ Format and inspect proof before sealing hashes. Retain the seven-row incorporate
 
 For each signal, complete this one cycle without separate administrative work units:
 
-- [ ] Read only affected authority/preparation and this plan; reuse established conclusions and settle the exact controlled profile.
-- [ ] Prepare its two physical cases and minimum native authority/claim/generation files; inspect source/fixtures and formats before sealing. Incorporate the single §4 loader extension before the first admitted claim is run.
-- [ ] Commit a clean admitted candidate; run the strict claim once for intended semantic RED, then implement only the named delta.
-- [ ] Inspect the completed delta; obtain the scoped static results and one independent final review. The designated reviewer executes the sole final strict GREEN.
-- [ ] Record one concise root acceptance entry: ID, candidate/tree/generation, changed paths, exact commands/outcomes, reused evidence, actual failure/repair, independent judgement and limitations; retain full logs under `handoff/foundation_implementation/dnnn_execution/`.
-- [ ] Commit the accepted result and stop at the owner-designated boundary. At D025 or an explicitly requested delivery boundary, export one recoverable full-history bundle, verify the bundle itself and make it downloadable. Packaging/closing documentation does not trigger product retesting.
+- [x] Read only affected authority/preparation and this plan; reuse established conclusions and settle the exact controlled profile.
+- [x] Prepare its two physical cases and minimum native authority/claim/generation files; inspect source/fixtures and formats before sealing. Incorporate the single §4 loader extension before the first admitted claim is run.
+- [x] Commit a clean admitted candidate; run the strict claim once for intended semantic RED, then implement only the named delta.
+- [x] Inspect the completed delta; obtain the scoped static results and one independent final review. The designated reviewer executes the sole final strict GREEN.
+- [x] Record one concise root acceptance entry: ID, candidate/tree/generation, changed paths, exact commands/outcomes, reused evidence, actual failure/repair, independent judgement and limitations; retain full logs under `handoff/foundation_implementation/dnnn_execution/`.
+- [x] Commit the accepted result and stop at the owner-designated boundary. After each individual signal, export a recoverable full-history bundle, verify the bundle itself and make it downloadable under the23October owner instruction. Packaging/closing documentation does not trigger product retesting.
 
 Do not add seven reports, review queues, implementation-independent checkpoint commits or per-signal archives. Reuse proven bytes and receipts. The owner has observed faster delivery; retain that direction without claiming a measured tenfold improvement. Record actual runtime outcomes and material rework concisely; no timing/benchmarking programme.
 
@@ -135,9 +135,9 @@ Do not add seven reports, review queues, implementation-independent checkpoint c
 | Item | State |
 | --- | --- |
 | M00 and D011–D020 | Preserve accepted bounded state at baseline4885e144c7d214831f8e781ee939b2cf0f4a0cfb. Prior full disposition remains in that Git version of the plan and existing execution logs. |
-| D021, D022, D023, D024, D025 | NOT_STARTED. Ten-case manifest and proposed controlled profiles prepared; no implementation/proof execution authorised by this turn. |
-| Claim-loader declarations / D024 carrier | Known bounded prerequisites proposed in §4; not implemented. |
-| This planning change | Root plan plus directly conflicting worker/README guidance only; textual diff/source inspection, no tests/mypy/lint. |
+| D021, D022, D023, D024, D025 | Individually ACCEPTED for exact controlled profiles; ten final strict cases passed, two per signal. Section8 retains each candidate/tree/generation and outcome. Stop at D025. |
+| Claim-loader declarations / D024 carrier | Implemented within the commissioned bounded deltas; exercised by the corresponding admitted strict claims and scoped static results. |
+| Close-out | Full raw logs and independent judgements retained per ID. Current root and worker guidance reconciled by documentary inspection; packaging/status edits require no test reruns. |
 
 ## 8. Execution commission and ledger — 23 October 2026
 
@@ -166,3 +166,9 @@ D024 candidatec34eb9f strict semantic RED reached unsupported consumer after act
 ### D024 — ACCEPTED controlled profile
 
 Candidatec1a2a1966403809502540245bddae3bfaaae2102, tree47f18f2b960bcea389bfa00b1bc93bbeca0d3992, generation1 SHA2563ee435cdfd3e731ce81a35643ed33a7c7ba26d73a961879c2d6d72dad0d1a53f. Independent /root/d024_final_review ACCEPT; sole strict final2passed0.61s exit0. All five exact fields, actual compatible fixed-horizon snapshots, distinct ultimate raw lineage and publicSQLite reopen passed. Scoped mypy19files and repaired changed-path Ruff pass, first export-sort finding preserved. Actual producer construction is within two D024 cases, not old test/claim execution. No extra scenarios or duplicate GREEN. Native certification remains held. Checkpoint after acceptance, then D025.
+
+### D025 — ACCEPTED controlled profile and tranche stop
+
+Candidatedcf6b29e84258fc9339105b37f020c1678f9cbff, treecf463c8e4b042c0b74085b8386e400d0bb0d2a3a, generation1 SHA25605a81d7d3552be39e68dbb84431f1a8f142c727094c1aa434e721ca1de361f23. Independent /root/d025_final_review ACCEPT; sole final strict2passed0.27s exit0. Actual same-snapshot High/Low/Last mappings, asymmetric1/6, zero-range refusal, full typed metadata/lineage and publicSQLite reopen passed. Scoped mypy20files and changed-path Ruff passed first attempt. First semantic RED2unsupported cases preserved. Reuse unchanged role selector/result/store/codec; no old claims, extra tests or successful repeats. Full logs and judgement in d025_execution.
+
+Tranche closes with ten cases total and five independent individual acceptances. D021 generation2 context repair, D022 static name collision, D023 generation2 syntax repair and D024 export-order lint repair remain attributable in original logs/history; no failure was counted as a successful result. Native source/feed/calendar certification remains held; no live provider or broader readiness claim follows. Documentary close-out updates only current status/routing. Read-only Git comparisons found GUARDRAILS, M00 source, schemas, original claim catalogue, D011–D020 tests and D015–D020 admitted briefs/contracts/bindings/generations unchanged againstc03f70f. Each completed ID has a complete-history verified bundle; D025 is the latest cumulative checkpoint. No product retest for packaging. **STOP: no D026+ work commissioned.**
