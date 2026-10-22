@@ -1,0 +1,5 @@
+$ cd /workspace/scratch/83dd7c79f14f/NVDA_V2_CLEAN_RECOVERED_REPO_20261022
+$ /workspace/scratch/83dd7c79f14f/d015-final-runtime-xl670J/dev/bin/python -c 'import platform,sqlite3,importlib.metadata as m; actual=(platform.python_version(),sqlite3.sqlite_version,*(m.version(x) for x in ('"'"'pytest'"'"','"'"'mypy'"'"','"'"'ruff'"'"','"'"'PyYAML'"'"'))); print(actual); assert actual==('"'"'3.12.14'"'"','"'"'3.53.1'"'"','"'"'9.0.3'"'"','"'"'1.20.1'"'"','"'"'0.15.11'"'"','"'"'6.0.3'"'"')'
+('3.12.14', '3.53.1', '9.0.3', '1.20.1', '0.15.11', '6.0.3')
+
+EXIT=0

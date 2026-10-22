@@ -6,7 +6,9 @@
 
 On 22 October 2026 the owner directed: retire the D042/D043/D047 pilot; specify only D015–D020; retire the previous gate schedule; create a new working branch and cleanly rewrite this plan and its conflicting instructions. This instruction authorises this documentary replacement and its test-local companion. This is the sole current root plan; it introduces no gate hierarchy or alternative programme plan.
 
-**Current status: EXECUTION_AUTHORISED; D015_CONTRACT_PREPARATION.** On 22 October 2026 the owner instructed “Okay, execute the plan”, accepting execution from `45d6b5e9fc241eec7a78c7e7d52a3b9be644ae69` (plan SHA256 `176313bf9d490b632f141607f8f5ec50b835e9d2c72f19eba0083f41e787dfcf`). Execute §§3–6 in order under their concrete contract/proof admissions. No test result, new source policy or numerical convention follows merely from execution permission. Existing standing delegation may be used within its scope for concrete dispositions; it does not supply missing domain decisions or independent review.
+**Current status: EXECUTION_AUTHORISED; D015_ACCEPTED_STOPPED.** On 22 October 2026 the owner instructed “Okay, execute the plan”, accepting execution from `45d6b5e9fc241eec7a78c7e7d52a3b9be644ae69` (plan SHA256 `176313bf9d490b632f141607f8f5ec50b835e9d2c72f19eba0083f41e787dfcf`). Execute §§3–6 in order under their concrete contract/proof admissions. No test result, new source policy or numerical convention follows merely from execution permission. Existing standing delegation may be used within its scope for concrete dispositions; it does not supply missing domain decisions or independent review.
+
+Latest owner direction: finish D015 only, then make the results downloadable. D015 is accepted at the exact candidate and evidence recorded in §7.2; stop here. D016–D020 are prospective scope requiring further owner direction before execution.
 
 ### 1.2 Exact baseline and preservation
 
@@ -170,10 +172,10 @@ Default pytest collection in `pyproject.toml` remains architecture/bootstrap. It
 
 | Work | Current status / next action |
 | --- | --- |
-| Plan replacement and scoped agent/README reconciliation | WRITTEN; documentary scope/preservation checks recorded at delivery; no implementation execution |
+| Plan replacement and scoped agent/README reconciliation | COMPLETE; retained in the current branch history |
 | Concrete per-ID authority, source/result policies and common control | D015 authority and fixed shared control admitted; later per-ID contracts pending |
-| D015 / D016 / D017 / D018 / D019 / D020 | PROOF_ADMISSION / NOT_STARTED / NOT_STARTED / NOT_STARTED / NOT_STARTED / NOT_STARTED |
-| New proof admissions, RED/GREEN, independent implementation dispositions | D015 generation1 admitted below; semantic RED/GREEN and implementation judgement remain pending |
+| D015 / D016 / D017 / D018 / D019 / D020 | ACCEPTED / NOT_STARTED / NOT_STARTED / NOT_STARTED / NOT_STARTED / NOT_STARTED |
+| New proof admissions, RED/GREEN, independent implementation dispositions | D015 generation1, intended RED, complete GREEN and independent judgement obtained; exact acceptance in §7.2 |
 
 Use this section for current progress, decisions, discoveries and the first unmet invariant; retain detailed logs as evidence, not as another execution schedule. At a missing authority, failed integrity check or observed required failure, stop dependent work, preserve the last proved state and diagnose only that reached condition. Retiring old scheduling never converts a missing invariant into success.
 
@@ -208,3 +210,13 @@ First D015 implementation authored only additive API/new service/new store. Firs
 Owner continuation: finish **D015 only**, then provide downloadable results. D016–D020 remain in the prospective plan but are not authorised for this execution continuation. D015 candidate cde2c85 complete strict six cases passed0.36s; source/four-tool/positive-consumer typing passed41files and scoped Ruff passed. Independent implementation review freshly repeated strict six cases0.38s but returned one ISOLATED factory-boundary defect: unsupported raw/predecessor reader objects were accepted instead of TypeError (brief§3). Full report and first failure are preserved at `d015_execution/implementation_review_initial.md` and `factory_first_failure.log`. Main independently reproduced this before repair and traced the omitted structural checks against retained factories. Prepared repair checks required callable raw-history and six predecessor evidence methods before storage creation, solely in new D015 service. Existing physical proof/generation remain unchanged. No product acceptance follows yet.
 
 The first architecture-promotion run on cde2c85 was deliberately interrupted through its session with exit130 after this finding; `d015_execution/architecture_interrupted.log` is incomplete capture and excluded from PASS evidence. A separate shell PID interrupt attempt reported No such process and did not stop it; session Ctrl-C did. No architecture failure is inferred from the interruption. Complete repaired-candidate promotion, strict proof, static checks, independent boundary/sequence judgement and concrete D015 acceptance remain required. Do not advance to D016.
+
+### 7.2 D015 acceptance and owner-directed stop — 22 October 2026
+
+**ACCEPT_D015_CONTROLLED_IMPLEMENTATION** under the existing standing delegation, after actual independent judgement. Exact candidate `ef4ff63f790987a2f54e2ba796038e1eae8ee8d6`, tree `32d65e3bbb2c6ca2cb2c2c93c973f4fdb875e15b`, immutable generation1 `d495a09f834349b7817a28911a58afa372b635ed0d1d211efd4fc8a4f822e543`. Full disposition: `handoff/foundation_implementation/D015_ACCEPTANCE_20261022.md`. Independent successor PASS report at `d015_execution/implementation_review_v2/REVIEW.md`, SHA256 `97e93a7e41fa3b67f0071f89921826b151f4043fed4c310cf02a1e3096540e84`, closes the isolated factory defect and confirms the required promotion condition is resolved.
+
+Actual final evidence: main complete strict6 passed0.64s/aggregateexit0; independent fresh strict6 passed0.50s and public absence→actual predecessor→unknown0→prior-different+1→later-clock retry/reopen sequence passed. Invalid raw and predecessor facets separately reject with TypeError before SQLite creation. Source/four-control-tool/positive-consumer typing passed41files; scoped Ruff passed; complete architecture promotion220 passed371.33s/exit0, zero dependency/public-seam violations. Original API byte prefix and260 prior production/proof/authority paths are preserved; old contracts/generations unchanged. Bounded synthetic source scope and native/provider holds remain explicit.
+
+After pause the old interpreter entry was absent; cause UNKNOWN. Rebuilt the exact offline hashed environment at `/workspace/scratch/83dd7c79f14f/d015-final-runtime-xl670J/dev`, actual CPython3.12.14/SQLite3.53.1 and all pinned tools independently confirmed. The first final mypy command and diagnostic reproduction crashedexit139; full fault trace retained. Preserved the old default cache intact, then both cold-cache and exact ordinary required typing commands passed41files with unchanged source/pins/wheels/configuration. Cache dependence is supported; deeper cause UNKNOWN. The interrupted architecture capture and failed typing attempts supply no PASS evidence.
+
+Closing changes are disposition/progress/evidence copies only. Verify unchanged accepted production/proof/authority/control bytes and reuse the exact candidate's applicable complete checks under §3.3. Preserve the source/proof/checkpoint lineage in the downloadable full-history bundle and verify restoration. **STOP AT D015.** D016–D020 are unstarted; no further execution is authorised in this continuation.

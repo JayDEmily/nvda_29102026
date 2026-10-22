@@ -1,0 +1,7 @@
+$ cd /tmp/d015-implementation-v2-a1iopfla/repo
+$ /workspace/scratch/83dd7c79f14f/d015-final-runtime-xl670J/dev/bin/python /workspace/scratch/83dd7c79f14f/d015-implementation-review-v2/boundary.py /tmp/d015-implementation-v2-a1iopfla/repo
+bad_raw_only TypeError declared public raw history reader required SQLite remains absent
+bad_predecessor_only TypeError declared complete v1 predecessor read facet required SQLite remains absent
+PASS F001 independent facet closure
+
+EXIT=0

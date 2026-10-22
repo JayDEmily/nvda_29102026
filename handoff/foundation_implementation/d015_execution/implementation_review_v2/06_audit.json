@@ -1,0 +1,20 @@
+{
+  "candidate": "ef4ff63f790987a2f54e2ba796038e1eae8ee8d6",
+  "tree": "32d65e3bbb2c6ca2cb2c2c93c973f4fdb875e15b",
+  "private_clean": true,
+  "tracked_files_identical_to_active": 2097,
+  "preserved_previous_production_and_proof_paths": 260,
+  "old_api_byte_prefix_identical": true,
+  "only_successor_production_change": [
+    "src/nvda_desk/market_measurement_truth/_trade_direction.py"
+  ],
+  "initial_return_and_first_failure_preserved": true,
+  "verified_hashes": {
+    "handoff/foundation_implementation/authority/D015_IMPLEMENTATION_BRIEF.md": "84baa16665db5f8543eba3b1770dafcfb36cc5e8064b2f1837beb924713acb0d",
+    "handoff/foundation_implementation/authority/D015_PROOF_CONTRACT.json": "e4d481ca99dbb55e2ad4b753dc33b8ba244873eac50e541a8352a6f5384a73c5",
+    "config/product_proof/market_measurement_d015/generations/0001.json": "d495a09f834349b7817a28911a58afa372b635ed0d1d211efd4fc8a4f822e543",
+    "tests/product/market_measurement_d015/test_trade_direction.py": "95de43d4538ee3b302430c7c6455edef0373e6bb09ee2f2cb111bfc54178f2fc"
+  },
+  "new_service_sha256": "031c8643cab2b00eea18e9fd349e31b384ec2d304d97b38004e84184a274acea",
+  "new_store_sha256": "2b01d51ee1392439238e19b00b6de82fa0b7e64ad95a9764244801c079f71707"
+}

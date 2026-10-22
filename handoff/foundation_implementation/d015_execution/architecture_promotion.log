@@ -1,0 +1,42 @@
+/workspace/scratch/83dd7c79f14f/d015-final-runtime-xl670J/dev/bin/python tools/run_promotion_gate.py --set architecture_kernel
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/83dd7c79f14f/NVDA_V2_CLEAN_RECOVERED_REPO_20261022
+configfile: pyproject.toml
+collected 220 items
+
+tests/architecture/test_activation_readiness.py ............             [  5%]
+tests/architecture/test_dependency_direction.py ......                   [  8%]
+tests/architecture/test_identifier_taxonomy.py .....................     [ 17%]
+tests/architecture/test_implementation_authority_ingress.py ............ [ 23%]
+...                                                                      [ 24%]
+tests/architecture/test_object_lifecycle.py ...                          [ 25%]
+tests/architecture/test_proof_control.py ............................... [ 40%]
+........................................................................ [ 72%]
+..............................................                           [ 93%]
+tests/architecture/test_public_seam_law.py .....                         [ 95%]
+tests/architecture/test_registry_schema.py .                             [ 96%]
+tests/architecture/test_static_typecheck.py ...                          [ 97%]
+tests/bootstrap/test_legacy_exclusion.py ...                             [ 99%]
+tests/bootstrap/test_minimal_imports.py ..                               [100%]
+
+======================= 220 passed in 371.33s (0:06:11) ========================
+architecture objects: 7
+active runtime modules: 2
+implementation allocations: 3
+admitted test families: 11
+promotion sets: 1
+dependency/public-seam violations: 0
+promotion set: architecture_kernel
+resolved test paths: 11
+  tests/architecture/test_activation_readiness.py
+  tests/architecture/test_dependency_direction.py
+  tests/architecture/test_identifier_taxonomy.py
+  tests/architecture/test_implementation_authority_ingress.py
+  tests/architecture/test_object_lifecycle.py
+  tests/architecture/test_proof_control.py
+  tests/architecture/test_public_seam_law.py
+  tests/architecture/test_registry_schema.py
+  tests/architecture/test_static_typecheck.py
+  tests/bootstrap/test_legacy_exclusion.py
+  tests/bootstrap/test_minimal_imports.py

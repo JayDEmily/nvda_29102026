@@ -1,0 +1,10 @@
+$ cd /tmp/d015-implementation-v2-a1iopfla/repo
+$ /workspace/scratch/83dd7c79f14f/d015-final-runtime-xl670J/dev/bin/python /workspace/scratch/83dd7c79f14f/d015-implementation-review-v2/direct_public.py /tmp/d015-implementation-v2-a1iopfla/repo
+EMPTY_RAW_AND_PREDECESSOR -> None, empty public history
+RAW_PRESENT_BUT_NO_ACTUAL_D011 -> None, empty public history
+ACTUAL_TRADE_TIME_D011_AND_NO_DIFFERENT_PRIOR -> exact int0
+ADMITTED_120_SECOND_DIFFERENT_PRIOR_BEHIND_EQUAL -> exact int+1, new immutable fact; zero fact retained
+LATER_QUOTES_PLUS_LATER_CLOCK -> first complete signed fact/time retained; source-free SQLite reader recovers both facts
+PASS independent public sequence /tmp/d015-independent-public-rmy8vw57/sign.sqlite
+
+EXIT=0
