@@ -121,7 +121,7 @@ def request_check(request: f.WindowCalculationRequestV1, now: datetime) -> None:
     ):
         raise ValueError("incompatible fixed realised-risk request")
     for interval, a, b in zip(
-        context.intervals, context.sample_instants_utc, context.sample_instants_utc[1:], strict=True
+        context.intervals, context.sample_instants_utc[:-1], context.sample_instants_utc[1:], strict=True
     ):
         if interval.start_utc != a or interval.end_utc != b or not a < b:
             raise ValueError("incomplete or mismatched exact risk grid")
