@@ -1,232 +1,136 @@
-# NVDA V2 — D037–D056 bounded implementation plan
+# NVDA V2 — D038, D040 and D041 ExecPlan
 
-Current execution disposition: **COMPLETE for D037, D039 and D042–D056**, the17 commissioned controlled profiles. Independent acceptance and two new cases per signal are recorded below. D038/D040/D041 remain deferred and BLOCKED. Planning-only passages describe the approved baseline; this execution commission/ledger supersedes them for the authorised units. No native-source certification, integration/E2E completion, merge or push is claimed.
+Date: 24 October 2026 (Melbourne)
+Status: Proposed new plan — authority resolution first; implementation NOT commissioned.
 
-## 1. Authority, baseline and planning boundary
+## 1. Goal, baseline and authority
 
-Owner commissioned this plan on 23 October 2026 and amended it by the owner instruction “NVDA V2 — D037–D056 ExecPlan Amendments”, timestamp 23-10-26 15:46. This revision implements its seven requirements: bounded repair verification, canonical proof declarations, reused context/environment evidence, explicit deferrals, reconciled governance, retained assurance and planning-only delivery. **Planning only: no signal implementation, product testing or signal acceptance is commissioned by this revision.** Owner review and separate execution authorisation remain required.
+Close the three previously deferred identities without weakening mathematical correctness, provenance, immutable evidence or independent acceptance. This replaces the root plan, not the historical acceptance ledger. Baseline: `fc82a07c9aef1aeeb95493d201fc9cf9f76011be`. Branch: `work/v2-d038-d040-d041-plan-20261024`.
 
-Base: `5fabf1c936cd46a0ccdfe0200a8a775092b07225`, the D036 accepted cumulative checkpoint. New branch: `work/v2-d037-d056-plan-20261023`. No merge to main or push is part of this task. Preserve all accepted M00/D011–D036 source, proof, immutable generations and raw evidence. Previous root plan and its complete acceptance ledger remain available with `git show 5fabf1c:EXEC_PLAN.md`; D036 independent review and pinned runtime log remain in `handoff/foundation_implementation/d036_execution/`.
+The owner requested this new plan after completion of D037, D039 and D042–D056. That request commissions planning, not missing domain choices, source collection, implementation or tests. All three remain BLOCKED until their own authority conditions below are resolved and explicitly accepted. Approval to investigate does not approve the resulting numerical/model proposal. A later execution instruction cannot silently supply unspecified mathematics or score parameters.
 
-Root EXEC_PLAN.md is the sole current plan once accepted. GUARDRAILS.md stays frozen. DO_NOT_CARRY_FORWARD the completed D026–D036 schedule into active execution; retain its history. The retired D042/D043/D047 pilot and gate programme stay retired. Those IDs appear here only as ordinary members of the newly requested numeric range, not as a revival of the pilot.
+Preserve all accepted source, tests, configurations, immutable generations and evidence. The completed tranche/ledger and D056 recovery provenance remain at `git show fc82a07:EXEC_PLAN.md` and the owning execution directories. DO_NOT_CARRY_FORWARD its completed schedule as active work; retain Git history. Root EXEC_PLAN.md remains the single planning authority once accepted. GUARDRAILS.md stays frozen.
 
-The plan retains D037 through D056, twenty original identities. The owner explicitly deferred D038, D040 and D041; the executable sequence after separate commission is the remaining 17 IDs: **D037, D039, D042, D043, D044, D045, D046, D047, D048, D049, D050, D051, D052, D053, D054, D055, D056**. Deferral preserves BLOCKED status, original jurisdiction and unresolved requirements; it grants no implementation or acceptance authority for those three. No replacement IDs, D057+, API/provider/TWS collection, M00 repair, M01 import/migration, source certification, broad requalification or opportunistic refactor. Controlled examples do not certify native market sources/calendars. Integration and end-to-end testing remain separate deferred obligations, not discharged by these controlled cases.
+## 2. Scope and fixed identities
 
-## 2. Reuse and exact authority boundaries
-
-Retain mandatory governance inspection and full reading of applicable semantic authority. Read relevant signal-family material once and reuse valid prior inspection while its bytes and applicability remain unchanged. Subsequent implementation/reviewer context contains only the affected signal, source, proof, dependencies, relevant prior findings and concise references to immutable Git identities/hashes. Do not repeat catalogue-wide investigations, unchanged infrastructure reviews or large quotations. Reuse preserves independent judgement, not merely a prior disposition. No token or caching savings are claimed without measurement. Relevant sources are:
-
-- `handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md`: K02, K03, K05, K07 and applicable projection/time/identity clauses; adjacent catalogue rows D037–D056.
-- `handoff/foundation_implementation/authority/FOUNDATION_IMPLEMENTATION_BRIEF_PROPOSED.md`: Annex B relevant foundation entries and Annex C P02. D040/D041 are preserved downstream allocations, not foundation admissions. See also `handoff/workbook_v2/gates_03_04/DOWNSTREAM_SELF_SUFFICIENCY.md` D040/D041 cards: common K07 law is not a chosen parameter instance; existing generic M01 engineering is not an admitted M02 score profile.
-- Under `handoff/foundation_implementation/reuse_preparation/`: D037 in `FAMILY_REALIZED_VOL_D035_D037.md`; D038/D039 in `FAMILY_F07_EXTENDED_E11_E15.md`; `FAMILY_RATE_SPREADS_P12_P22.md`; F10, F11 and F12 packets; corresponding per-ID G2/G3 records. Preparation mathematics/fixture knowledge is reusable specification, not executable M02 acceptance. Its exhaustive falsifiers are not another test manifest.
-- Reuse current public M00 projections, M02 request/lineage/configuration/typed codec/SQLite readback mechanisms and immutable admission. No legacy PostgreSQL fixtures or M01 private runtime imports.
-
-Retain CPython3.12.14, SQLite3.53.1, pytest9.0.3, mypy1.20.1, Ruff0.15.11, PyYAML6.0.3 and existing hashed offline locks. Reuse the already qualified environment and logs. Do not switch to the attached Python3.13 wheelhouse or requalify merely because a new turn/branch/reviewer starts. If the actual environment is lost or changes, record the exact gap; do not rerun product tests to diagnose it.
-
-Execution parameter `NVDA_PROOF_PYTHON` is the absolute interpreter path for the actual environment, supplied and explicitly verified before its first use. Retain a concise environment record identifying interpreter/version, dependency-pin evidence and qualification log. Reuse that verification while the interpreter/environment remain unchanged; a new session or reviewer does not itself invalidate it or trigger installation/requalification. On an actual environment change, verify only what changed against the pins, without product tests. An unset, unavailable or mismatched parameter stops execution; never silently fall back to `python` or a remembered temporary path. No environment verification or installation is needed for this documentary amendment.
-
-## 3. Non-negotiable execution budget
-
-1. **Do not rerun previously accepted, unaffected tests.** New runtime cases prove only new or changed signal behaviour; bounded recovery is permitted solely under items 7–8. Write and inspect proof before implementation, but do not routinely execute a runtime RED. Its absence is a deliberate reduction in test-first evidence, not equivalent RED proof. The independent reviewer must assess discriminatory power substantively: trace each assertion to authority, identify the incorrect behaviour it would detect, establish that setup reaches the intended public calculation/refusal seam, and exclude vacuous refusals, pre-materialised results and production-derived expectations. Record this reasoning concisely with the strict GREEN evidence; do not add speculative cases or probes.
-2. Before first execution, record each exact new node ID, owning delta and proposition, and consult existing execution evidence. Preserve old tests and valid results. Renaming, copying, wrapping or reparameterising an old case solely to evade the no-unnecessary-rerun rule is prohibited. A new D registration is new behaviour when its actual definition/source/selection/lineage is exercised; its oracle and setup patterns may reuse prior research.
-3. Two declared cases per unblocked signal: one discriminating success and one named refusal. Six remains an absolute ceiling, not a quota or permission to add cases. The current bounded manifest is **34 new cases for 17 unblocked IDs**; D038/D040/D041 have no runnable manifest until authority is settled. Do not claim forty accepted cases or twenty runnable signals.
-4. One signal and one independent final acceptance decision at a time, after source/proof preparation. The independent sub-agent is the **sole final acceptance runtime executor**, including permitted recovery. No duplicate implementer/reviewer GREEN, focused then strict successful run, extra probe, hidden scenario loop, mutation grid or final aggregate sweep. Independent fixture scrutiny occurs inside source/case review, not in extra executions. Necessary repair review contributes to the same signal's final decision.
-5. No default pytest, Makefile broad checks, architecture/bootstrap, promotion/control suites, old M00/M01/M02 claims, integration/network/provider checks, benchmarks or speculative adversarial matrices. A new acceptance run may exercise unchanged shared code through the new signal; it does not rerun the shared code's old tests.
-6. Static validation is not a licence to rerun broad checks. Initially obtain one narrowly scoped mypy invocation for changed production Python and one Ruff invocation for changed Python paths, only when new/changed code warrants them. Keep exact file lists/commands/output. Reuse successful evidence for unchanged bytes. Failed or materially invalidated static checks follow items 7–8; no unchanged-package/repository sweep, duplicate reviewer statics or check for prose/hash-only changes. If required tooling cannot isolate the affected scope, report the precise capability/scope gap instead of broadening silently.
-7. On a failed required check, preserve the original output and stop dependent execution. Diagnose only the reached invariant; document the relevant material repair, affected proposition and exact recovery command/scope. The independent reviewer may rerun **only the failed check after that repair**. Preserve the subsequent result as well as the failure and repair justification. These bounded recovery executions are pre-authorised by the owner's amendment and need no further approval. A retry without relevant repair is prohibited. Never weaken assertions, suppress valid cases or change an oracle merely to get green.
-8. Re-execute a previously successful check only where subsequent changes **materially invalidate its evidence**. Identify the changed bytes, affected proposition and why the prior result no longer establishes it; the independent reviewer reruns only that affected check and retains old and new results. Relevant repairs may invalidate both declared cases; document this rather than assuming it. No automatic broad regression, repeated still-valid successes or speculative extra cases. Documentary entries, new turns/reviewers, commits and bundles alone do not invalidate product evidence.
-
-The limit constrains execution duplication, not mathematical correctness, case assertions or source review. A missing mandatory proposition is an explicit scope gap; do not silently omit it or add a test.
-
-**Current-signal aggregate recovery exception — owner instruction 23-10-26 16:14:** If a new signal's initial strict two-case aggregate fails, the independent reviewer may rerun that same aggregate after a documented, relevant material repair. This explicitly permits re-execution of both declared cases, including a case that passed within the failed aggregate, only for the signal currently undergoing acceptance. Previously accepted signals and their tests remain excluded. Preserve the original results, identified defect, affected proposition, repair justification and subsequent results. This bounded recovery is pre-authorised and needs no further owner approval. Retries without a material repair, speculative additional cases and broad regression testing are prohibited. Use the existing strict aggregate unchanged; do not modify the shared proof runner or acceptance infrastructure to implement this exception. This exception supersedes the former case-subset recovery restriction; all other limits in items 1–8 remain in force.
-
-## 4. Per-ID manifest and sequence
-
-All paths below: `tests/product/market_measurement_dnnn/test_signal.py`; sole parameterised function `test_dnnn_signal`, with node suffixes `[success]` and `[refusal]`. Spell D numbers lower-case in physical function names (`test_d037_signal`). Each row is an independent acceptance unit. Listed raw dependencies have no D predecessors unless explicitly stated. Exact expected rationals use reduced ExactRatioV1; decimal fields use exact tuple assertions, zero tolerance.
-
-| ID / meaning | Inputs and success oracle | Refusal inside the second case |
+| Unit | Canonical meaning/dependencies | Jurisdiction and current hold |
 | --- | --- | --- |
-| D037 / 20-session realised volatility | R151; 21 successive official closes, twenty100 then110; sqrt(252/20) × L under §5.1. | Only the last11 required closes remain inside unchanged21-point context; no ten-session substitute. |
-| D038 / jump variation | R149/R150/R151; BLOCKED under §6. | No proof authored or run until the source-role and numeric profile decision. |
-| D039 / five-minute ATR | R141 high/R142 low/R143 close; previous100; bars(110,90,105),(112,99,108); mean(TR20,TR13)=ExactRatioV1(33,2) price. | Latest required bar lacks high; older complete bar exists but must not replace it. |
-| D040 / trend strength | D020,D021,D027,D024; BLOCKED under §6. | No invented weights, extractors or transforms. |
-| D041 / mean reversion | D026,D040,D033; BLOCKED under §6, also depends on D040. | No substitution for the absent score. |
-| D042 / 2s10s slope | R249=.0390,R247=.0425; 100×difference=−0.35 percentage points; negative rates/slopes are not generically forbidden. | Correct R247 exists but receipt=cutoff+1s; no future knowledge. |
-| D043 / 3m10y slope | R249=.0430,R246=.0410; +0.20 percentage points. | R246 has incompatible series identity despite lawful projection. |
-| D044 / real-yield change | R252 .0410→.0425 at1d anchor; +15 basis points. | Only post-anchor reference available; no five-minute proxy or forward fill. |
-| D045 / nominal-yield change | R249 .0490→.0500 at1d anchor; +10 basis points. | Correct reference revision received after cutoff. |
-| D046 / breakeven change | R255 .0225→.0200 at5d anchor; −25 basis points. | Required5d reference absent, valid1d reference remains; no shortened horizon. |
-| D047 / SOFR−EFFR | R257=.0532,R256=.0530; +2 basis points. | R256 has mismatched measurement-date identity. |
-| D048 / broad USD change | R245100→120 at20d anchor; ExactRatioV1(20,1) percent. | Only5d reference available in unchanged20d request. |
-| D049 / JPY per USD change | R274100→120 at1d anchor; ExactRatioV1(20,1) percent. | Reference explicitly identifies inverse USD-per-JPY quotation. |
-| D050 / HKD per USD change | R2757.5→7.8 at1d anchor; ExactRatioV1(4,1) percent. | Otherwise compatible actual reference is0; denominator refusal. |
-| D051 / CNY per USD change | R2767.5→7.2 at5d anchor; ExactRatioV1(-4,1) percent. | Reference explicitly identifies CNH instead of onshore CNY. |
-| D052 / VIX change | R236100→120; {point_change=20,percent_change=20}. | Reference0: no partial point-only occurrence. |
-| D053 / VVIX change | R237100→90; {point_change=-10,percent_change=-10}. | Only nearer post-anchor VVIX exists, no forward reference. |
-| D054 / VIX1D change | R23810→11; {point_change=1,percent_change=10}. | Reference identifies VIX rather than VIX1D. |
-| D055 / VIX9D change | R23920→20 in distinct observations; {point_change=0,percent_change=0}, actual stored occurrence. | Reference snapshot method differs from current. |
-| D056 / VIX3M change | R24040→25; {point_change=-15,percent_change=-37.5}. | Required reference exists but is received after cutoff. |
+| D038 | Jump-variation estimate; R151, R149, R150; K05_REALIZED_RISK / P_VOL_WINDOW; variance. | Foundation/M02 candidate. Source roles, high-frequency grid and pi/log/output convention unresolved. |
+| D040 | Trend strength score; D020, D021, D027, D024; K07_WEIGHTED_SCORE / P_SCORE. | Preserved downstream P02 allocation, not automatically an M02 admission. Exact score profile and owning implementation boundary unresolved. |
+| D041 | Mean-reversion score; D026, D040, D033; K07_WEIGHTED_SCORE / P_SCORE. | Same downstream P02 jurisdiction; own exact profile unresolved and depends on accepted D040. |
 
-For D052–D056 both named fields are ExactRatioV1 (e.g. D056 percent=-75/2), with separate index-point/percent units. Never collapse to a scalar or omit the second field. Each refusal starts with lawful public admissions and projections except the one named defect and verifies no new derived occurrence. Every success verifies complete typed value/units, exact versioned definition/parameters/context, chosen public raw lineage, owner/admission/logical identity and times plus ordinary public read-only SQLite reopen. Reopen is an assertion in that same new success case, not a separate storage test. Helpers cannot pre-materialise results or derive expected values from production.
+Do not rename or replace these IDs. Do not absorb other P02 signals, D057+, M00/provider/TWS/API acquisition, native-source certification, M01 migration or adjacent repairs. A public calculation interface required by an accepted owning contract is distinct from provider/API collection; no such interface is authorised merely by this plan.
 
-Execute the 17-ID sequence in §1, accepting/checkpointing one signal before the next. The owner's explicit deferral means D038/D040/D041 do not stop the otherwise independent units. Preserve them in the manifest and §6 as BLOCKED and deferred, never completed, accepted or replaced. D041's dependency on D040 remains. This planning instruction does not start that sequence.
+Sequence after the relevant approvals: D038, D040, D041; accept and save each checkpoint before advancing. D038 has no D040 dependency. If D038 cannot be resolved, stop and report it; do not silently skip or create a fourth work unit. D041 cannot proceed without D040 acceptance. No old signal is reaccepted as part of this sequence.
 
-## 5. Proposed controlled profiles and file boundaries
+## 3. Bounded authority-resolution work
 
-These profiles are proposals for later execution acceptance, not native source certification. All new configurations require exact owning brief/contract/admission binding before runtime. Reuse existing public factories/storage; preserve every old configuration and canonical payload byte.
+### 3.1 Read and reuse
 
-### 5.1 D037
+Read mandatory governance and applicable semantic authority in full. Reuse unchanged family/source inspection, prior findings and accepted evidence by exact Git identity/hash. Restrict subsequent context to this signal, its source/proof, direct dependencies and relevant findings; no catalogue-wide re-investigation.
 
-Extend `_realised_volatility.py` with D037 fixed20d profile and exact owning brief hash; preserve D032–D036 profiles unchanged. Introduce a distinct versioned calendar `controlled-risk-20d-calendar/1`, explicitly listing30September–20October2026 inclusive, each12:00–13:00Z, type controlled_cash, no breaks, including weekends deliberately. Twenty-one official13:00 closes; anchor30September, measured sessions1–20October. Each interval's eligible session intersection is1hour/(252×3600seconds)=1/252, total20/252. Use unchanged measured-time, log and root mechanisms and R151 native identity mapping. Do not extend the old calendar under its existing version or rerun its proofs.
+Canonical sources at baseline:
 
-L is the previously fixed50-significant-digit ROUND_HALF_EVEN ln(11/10) literal `0.095310179804324860043952123280765092220605365308644`. Treat L as an exact rational, evaluate sqrt((252/20)×L²), round only final root to50 significant digits half-even. Independent planning arithmetic used a200-digit Decimal context for sqrt((252/20)×L²), then50-digit ROUND_HALF_EVEN once, giving `0.33831757671837337403929019188671516632423102188566`. Freeze this literal and exact Decimal tuple in proof; do not call the production helper for the oracle or repeat numeric research.
+- `handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md`: K05 and K07, applicable parameter/selection/time/identity law.
+- `handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv`: exact D038/D040/D041 rows and dependency identities.
+- `handoff/foundation_implementation/authority/FOUNDATION_IMPLEMENTATION_BRIEF_PROPOSED.md`: Annex B D038 and Annex C P02.
+- `handoff/foundation_implementation/reuse_preparation/FAMILY_F07_EXTENDED_E11_E15.md`: D038 mathematics, fixture knowledge and precise holds.
+- `handoff/foundation_implementation/reuse_preparation/G2_126_D_SIGNAL_SOURCE_LINKED_SPECIFICATIONS.csv`: D038 row only.
+- `handoff/workbook_v2/gates_03_04/DOWNSTREAM_SELF_SUFFICIENCY.md`: complete D040/D041 cards and their relevant shared contracts.
 
-### 5.2 D039
+Preparation/legacy code is reusable evidence, not new authority or M02 acceptance. Inspect only relevant legacy arithmetic if it answers a specified unresolved question; never import M01 private controllers or PostgreSQL fixtures.
 
-New `_true_range.py` owns fixed two-bar configuration/selection/arithmetic; use existing window context/request/storage. Controlled session20October12:00–13:00Z; previous close12:30, required five-minute bars ending12:35 and12:40, cutoff12:40:01, now12:40:02. Bind high/low/close to bar.high/bar.low/bar.close, native price, same public observation occurrence per bar, exact bar/session/5minute duration/unadjusted identities. Latest bar positions are selected before field completeness is checked. TR formula is K05, mean via Fraction, output exact ratio. Do not substitute R149/R150 for the declared R141/R142/R143.
+### 3.2 D038 — settle calculation and source profile
 
-### 5.3 D042–D056
+Accepted kernel meaning is:
 
-New `_macro_changes.py` owns fixed raw-only slope/change profiles; extend `_window.py` routing and `api.py` only where the existing result union needs the distinct frozen carrier `IndexChangeV1(point_change:ExactRatioV1, percent_change:ExactRatioV1)`. Reuse current exact ratio/Decimal encoding and immutable store, no new store/codec/factory framework.
+`r_i = ln(P_i/P_(i-1)); RV = sum(r_i^2); BV = (pi/2)*sum(|r_i|*|r_(i-1)|); JV = max(RV-BV,0)`.
 
-Synthetic provider `foundation-controlled-macro`, variant `macro_snapshot_v1`, sequence scope `foundation-controlled-macro/macro_snapshot_v1`; public mappings `mmt-macro-rNNN/1`, numeric path metric.value, native finite Decimal. Identity paths: metric.series, metric.measurement_date, metric.method, metric.quote_orientation. Exact per-R identifiers match the R catalogue and owning row (R274 JPY_per_USD, R275 HKD_per_USD, R276 onshore_CNY_per_USD); irrelevant orientation is explicitly not_applicable. Same series/method/orientation required across current/reference, measurement dates differ only by configured anchor. Simultaneous two-series slopes require equal measurement dates. Canonical yield/rate fraction native units with identity scale; do not infer conversion from magnitude or claim FRED Percent conversion proved. Index native units index_points; FX currency_per_USD. All remain controlled configurations.
+Before implementation, obtain an accepted versioned profile covering:
 
-T=20October2026 13:00Z, current atT, cutoff=T+1s, now=T+2s. Declared daily comparison anchors are exact UTC calendar-day offsets (1d=86400s,5d=432000s,20d=1728000s), a synthetic calendar-day convention, not a US trading calendar. D052–D056 choose1d only; no intraday eligibility claim. Latest eligible at/before anchor within60s is reference; current within60s, historic retrieval bound30days. Include an after-anchor value999 decoy in successful history cases, excluded from reference. Preserve event/receipt/revision/sequence identity and bounded full paging. Never interpolate, use a later event or silently shorten horizon. Named late-receipt negatives change receipt only; named identity negatives expose the actual incompatible native identity.
+1. R149/R150/R151 native paths, units, identities, co-occurrence/revision rules and the precise evidential role of each declared dependency. Do not silently discard R149/R150 or turn historical high/low into close-return operands.
+2. Exact horizon, ordered sample instants, session/calendar/completeness policy, minimum returns and event/receipt/cutoff eligibility. Do not borrow a convenient existing RV horizon without explicit acceptance; JV variance is not automatically annualised RV.
+3. Whether the contract uses mathematical pi with an independently justified evaluation bound or an explicitly accepted finite numeric convention; exact log convention, intermediate arithmetic, final precision/rounding and result carrier. A truncated legacy constant is not an accepted convention. Reuse existing bounded-log infrastructure only where its contract actually agrees.
+4. A positive witness with nonzero BV and a discriminating JV result, plus one named refusal reaching the chosen source/grid invariant with otherwise lawful actual inputs. The old BV=0 example cannot establish the pi-dependent subtraction.
+5. Independently derived expected values, including RV/BV/JV reasoning and exact final representation; never derive the oracle from the implementation.
 
-D042/D043 formula100×difference; D04710000×difference; D044–D04610000×(current-reference). Fraction arithmetic with finite exact Decimal output for these differences; D048–D051100×(current/reference−1) as exact ratios. IndexChangeV1 stores current-reference and100×(current/reference−1). No ambient Decimal rounding or floats.
+Record a concise proposal and exact unresolved owner decisions in the owning brief. If there is no authority to choose a source role or numeric convention, retain BLOCKED and request that choice. Do not generate tests as a substitute.
 
-All module names in §5 are under `src/nvda_desk/market_measurement_truth/`. Fixed definition IDs are `D037-REALISED-VOL-1`, `D039-ATR-1`, `D042-RATE-SLOPE-1`, `D043-RATE-SLOPE-1`, `D047-RATE-SPREAD-1`, `D044-RATE-CHANGE-1` through `D046-RATE-CHANGE-1`, `D048-PERCENT-CHANGE-1` through `D051-PERCENT-CHANGE-1`, and `D052-INDEX-CHANGE-1` through `D056-INDEX-CHANGE-1`. Parameter IDs use `mmt-dnnn-controlled/1`; selection IDs `mmt-dnnn-selection/1`; retain exact kernel/profile from the catalogue (P_VOL_WINDOW for D037/D039, P_BASIC for D042/D043/D047, P_WINDOW for the other raw changes). Bind only the selected horizon; other catalogue horizons remain unqualified.
+### 3.3 D040 — settle downstream ownership and score profile
 
-### 5.4 Minimum admission and shared changes
+P02 is a preserved proposed peer allocation, not an admitted runtime object ID. First obtain explicit acceptance of its owning module/responsibility, immutable admission target, public request/read seams and durable occurrence contract. Do not independently convert P02 into an M-number or implement D040 inside M02 by convenience. Shared public M02 predecessor evidence may be consumed without transferring ownership.
 
-At the first unblocked signal only, extend fixed ID literals/iteration/incorporation declarations in `tools/product_proof_claims.py` for the17 declared unblocked claims. Preserve loader algorithms, validators and old claims. Blocked IDs get no active proof target. Native per-ID paths follow existing patterns:
+Then obtain one concrete immutable P_SCORE profile:
 
-- `handoff/foundation_implementation/authority/DNNN_IMPLEMENTATION_BRIEF.md` and `DNNN_PROOF_CONTRACT.json`;
-- `implementation/authority/DNNN_IMPLEMENTATION_AUTHORITY_BINDING.yaml`;
-- `config/product_proof/market_measurement_dnnn/{claim.json,admission.json,generations/NNNN.json}`;
-- exact §4 physical proof; `handoff/foundation_implementation/dnnn_execution/` for actual logs/review.
+- Ordered dependency/feature list, exact scalar extraction path/arguments from each structured predecessor, units and compatible definition/parameter versions.
+- Each transform and its scale/baseline, clipping bounds or explicit absence, orientation, non-negative weight, intercept and final output rule. K07 specifies the procedure, not these choices. Catalogue `score` does not by itself require a sigmoid.
+- Subject, as-of/cutoff, allowed skew/staleness, horizon/session alignment and revisions; preserve the selected actual predecessor identities.
+- Baseline content/strictly-prior selection only if the chosen transform requires it. No invented normalisation or implicit scalarisation.
+- Numerical precision/rounding and complete output/provenance shape.
 
-Derive repeated declarations consistently from canonical owning authority and committed proof bytes. The accepted domain authority/owning implementation brief fixes identities, equations, parameters, units, profiles and independently justified numerical expectations; companion contracts, bindings and admissions reference those declarations rather than reconstructing their meaning independently. Compute hashes from the actual committed artefact bytes; never copy stale prose hashes or obtain an oracle from production arithmetic. Reuse existing authoring/admission infrastructure, mandatory contracts and provenance; no new document-generation framework or redundant reports.
+Current M02 offers WindowMeasurementOccurrenceV1/MeasurementWindowReadsV1, including structured ReturnAccelerationV1 and VwapRateV1 results. CalculationParameterSetV1 does not contain an ordered P_SCORE schema. These facts identify required design work; they do not authorise retrofitting a generic score framework into M02. Resolve the narrow owning interface and exact file/type map before coding. Reuse public predecessor production/read mechanisms; do not rerun their acceptance tests or substitute hand-built derived occurrences.
 
-Before sealing an immutable generation, inspect consistency once across the owning brief, contract, binding, physical proof, configuration and admission: identities/versions, parameter and numerical declarations, authority references, proof path, incorporated row count and hashes must agree with their canonical sources. Derive the count from actual bound rows once. Reuse concise references afterwards while unchanged. Preserve independent semantic review: mechanically consistent declarations do not prove mathematical correctness. Preserve every original generation and link any replacement; do not relax validators, integrity or required evidence. Scope beyond the named modules/admissions, changed shared semantics or a new numerical convention requires an explicit gap and owner decision before implementation.
+### 3.4 D041 — own profile, not a D040 alias
 
-## 6. Deferred BLOCKED signals — no tests as a substitute
+Apply the same ownership, extraction, parameter, numeric and alignment decisions to D026/D040/D033. D026's named price/percent deviation and D033's annualised volatility require explicit extraction/scale choices; acceptance of their values does not determine a mean-reversion strategy. D040 acceptance supplies a predecessor, not D041's coefficients or policy.
 
-Owner instruction 23-10-26 15:46 explicitly defers these three from this tranche. Their unresolved requirements and jurisdictions below remain intact. They are not execution prerequisites for D037, D039 or D042–D056; no runnable cases, implementation or acceptance authority is granted for them.
+Fix the exact D040 occurrence/definition/profile version accepted for the chain. Preserve all mandatory dependencies; missing features cause refusal with no weight renormalisation. D041 remains BLOCKED while its own profile or D040 is absent.
 
-**D038:** catalogue declares R149/R150/R151, while legacy arithmetic uses R151 only. The F07 packet explicitly leaves high/low source roles, exact grid and pi/log numeric convention unresolved. Do not discard two dependencies, adopt a truncated pi constant or use BV=0 data to claim general bipower correctness. Required decision: dependency roles/co-occurrence contract; exact high-frequency grid; admitted pi representation/error and final rounding rule; then a bounded manifest discriminating nonzero BV and refusal. No runnable cases are authorised here.
+### 3.5 Authority-resolution exit
 
-**D040:** Annex C assigns it to downstream P02; K07 requires ordered feature schema. Required authority: concrete extraction paths from D020/D021/D027/D024, transform/scale/orientation/weights/intercept/clipping, output rule, temporal alignment and eligible derived-input public seam. Existing predecessor acceptance does not supply these decisions. No synthetic weights or raw surrogates.
+Apply this exit to each unit separately in sequence; D038 need not wait for D040/D041 profile decisions. No unit bypasses its own prerequisites.
 
-**D041:** same downstream jurisdiction, required schema for D026/D040/D033 plus D040 acceptance and aligned predecessor selection. No score is implemented until those are resolved. These are explicit holds, not completed or silently excluded work. Root plan can operationalise accepted choices; it cannot create the missing domain policy.
+- [ ] For each ID, concise owning brief identifies accepted choices versus proposals/unknowns, authority references and remaining gaps.
+- [ ] Owner accepts the current unit's source/numeric profile (D038) or jurisdiction/score profile (D040/D041); no silent cross-jurisdiction change.
+- [ ] Amend this root plan with exact production files/types/seams, versioned parameters, physical proof paths, both numerical fixtures/oracles and each single refusal. Admit only resolved units.
+- [ ] Owner separately commissions implementation of that completed plan.
 
-## 7. Per-signal cycle after explicit execution commission
+This plan is deliberately not an executable numeric specification yet. There are currently zero admitted new runnable cases. Do not claim that six cases or three implementations are ready.
 
-- [ ] Read required governance and applicable semantic authority; reuse valid unchanged family inspection. Restrict working/reviewer context to the owning delta, dependencies and relevant prior findings. Confirm first-run or documented recovery eligibility under §3.
-- [ ] Author two new strict cases and minimum immutable admission; freeze independent oracle. Inspect source/fixture independence and exact provenance; do not execute a preparation RED.
-- [ ] Implement only owning delta; perform warranted changed-file statics and record exact paths/outcomes. Preserve first failures, make bounded relevant repairs and recover only affected checks under §3.
-- [ ] Derive companion declarations/hashes from canonical authority and committed proof bytes; inspect consistency before sealing the immutable generation. Commit clean candidate. Independent sub-agent reviews that delta, both cases' discriminatory power and reused evidence for the signal's final acceptance decision. Repair findings within scope; preserve any evidence invalidation under §3.
-- [ ] With `NVDA_PROOF_PYTHON` explicitly verified for the actual environment under §2, reviewer alone runs the initial strict pair: `PYTHONPATH=src "$NVDA_PROOF_PYTHON" tools/run_product_proof_gate.py --aggregate neutral_market_measurement_truth_dnnn`. If that aggregate fails, the same current-signal aggregate may rerun after a documented relevant material repair under §3's pre-authorised exception, preserving original results, identified defect, repair justification and subsequent results. Previously accepted signals stay excluded. No retry without material repair, speculative additional cases, broad regression, duplicate implementer run or runner/acceptance-infrastructure change. Other necessary recovery follows §3 items 7–8. Do not execute this command during planning.
-- [ ] Record actual candidate/tree, brief/generation hashes, new test node IDs, changed paths, exact command/raw output, reused evidence, independent disposition and limitations in one concise root ledger entry plus owning raw log/review. No administrative report series.
-- [ ] Accept only on sufficient independent semantic judgement and valid strict GREEN evidence for both declared cases, including any justified recovery. Commit accepted state; immediately create/verify/save a full-history Git bundle and provide its download before advancing. Bundle integrity checks are artefact checks, not product tests. Preserve uncertain save status explicitly; never claim a save based only on bundle creation.
+## 4. Conditional implementation and acceptance cycle
 
-At a blocker retain last accepted checkpoint and first unmet invariant. At D056 close the ledger and supply final cumulative bundle; no final test sweep or merge.
+After §3 is satisfied for the next unit:
 
-## 8. Historical planning disposition
+1. Author exactly two new cases: one success and one refusal. Six per signal remains the absolute ceiling, not a quota or permission to add cases: this plan specifies only two per signal. The intended three-ID initial budget is six cases total, not six per signal; any expansion requires an explicit scope decision. A mandatory proposition not covered is an explicit scope gap requiring resolution, not an excuse to weaken assertions or invent more tests.
+2. D038 success must exercise nonzero bipower variation and all accepted source roles. D040 success must exercise its actual ordered predecessor features and declared score parameters. D041 success must consume actual accepted D040 evidence with D026/D033. Choose non-degenerate witnesses that discriminate the admitted arithmetic/order/scalar extraction; do not invent coefficients to make a convenient oracle.
+3. Each success asserts the complete typed value/units, definition/parameter/context versions, actual chosen input lineage, owner/admission identity/times and ordinary public read-only durable reopen in that same case. Each refusal starts from actual lawful public prerequisites except one declared defect, reaches that defect and emits/persists no occurrence. No production-derived oracle or pre-materialised result fixture.
+4. Derive repeated identities, expectations, authority references, counts and hashes from canonical owning authority and actual proof bytes. Reuse infrastructure and accepted research; inspect consistency before sealing immutable generations. Preserve original generations and link replacements. No duplicate reports or reconstructed independent numerical reasoning across companions.
+5. Implement only the owning delta. Perform one warranted scoped mypy check for changed production Python and one scoped Ruff check for new/changed Python paths; retain exact commands/paths/results. Reuse successful checks for unchanged bytes. No package/repository sweep or duplicate reviewer statics.
+6. Commit a clean candidate. One independent reviewer makes the signal's final semantic judgement and is the sole strict runtime executor, including permitted recovery. It must assess discriminatory power, public-seam fixture independence and relevant prior findings—not merely read a GREEN label.
+7. Run only that signal's admitted strict pair once. No routine runtime RED; its omission is explicitly reduced test-first evidence, not equivalent proof. No implementer GREEN, focused-then-strict double run, hidden case loop, old suite, speculative probe, broad regression or final sweep.
+8. Accept only on sufficient semantic review plus strict GREEN for both cases. Record actual candidate/tree/brief/generation identities, full original output, reviewer disposition, reuse and limitations concisely.
+9. Commit accepted state; immediately create, verify and save a downloadable cumulative full-history Git bundle, and expose its link before advancing. At D041 close this plan; no merge/push or further signal work.
+
+The one independent acceptance reviewer per signal is retained; no extra planning or whole-branch reviewer cycle is introduced. Public predecessor materialisation used as setup in a new signal's declared case is not permission to invoke predecessor test suites or requalify them.
+
+## 5. Bounded recovery — retained owner discipline
+
+Do not rerun previously accepted, unaffected tests. On a failed check, preserve the original result, identified defect, affected proposition and relevant material repair. The independent reviewer may rerun only that failed check after repair. Re-execute a successful check only if subsequent material changes invalidate its evidence; document why and retain both results. Commits, new sessions/reviewers, packaging and documentary changes alone do not invalidate product evidence.
+
+Retain the owner's 23 October 2026 16:14 exception in the proposed successor methodology: if the current new signal's initial strict two-case aggregate fails, the independent reviewer may rerun that same aggregate after a documented relevant material repair, including both declared cases. This narrowly bounded recovery needs no further approval once this plan is accepted/commissioned. Previously accepted signals stay excluded. No retry without repair, additional speculative cases or broad regression. Do not modify the shared runner/acceptance infrastructure to implement this exception.
+
+A legitimate new owning claim may require a bounded fixed declaration extension; settle target ownership first and preserve loader algorithms/validators and every prior claim. No dynamic discovery, generic admission framework or runner relaxation. Planning changes no loader/claim/admission bytes.
+
+## 6. Runtime, evidence and allowed file boundaries
+
+Retain CPython3.12.14, SQLite3.53.1, pytest9.0.3, mypy1.20.1, Ruff0.15.11 and PyYAML6.0.3, using committed hashed dependency locks/offline wheels. Before first runtime use, explicitly verify an environment-specific absolute NVDA_PROOF_PYTHON; do not hardcode a temporary interpreter path or fall back to system Python. The previous runtime was lost during D056 recovery: it is not currently established as available. No installation, qualification or product test is needed for this planning task.
+
+Reuse unchanged environment verification; a new session/reviewer does not trigger reinstallation, requalification or product retesting. If the environment is genuinely absent/changed during commissioned implementation, restore only the missing pinned environment and verify the changed facts without product qualification tests. Do not switch to the attached Python3.13 wheelhouse.
+
+Planning changes only EXEC_PLAN.md, README.md, AGENTS.md and tests/AGENTS.override.md. Historical instructions are superseded only for this proposed scope; GUARDRAILS.md and accepted code/tests/proof remain untouched.
+
+Future owning documents follow existing per-ID naming: handoff/foundation_implementation/authority/D038_IMPLEMENTATION_BRIEF.md and D038_PROOF_CONTRACT.json for M02; D040/D041 documents/bindings must name their accepted downstream owner rather than imply foundation admission. Exact paths, target IDs, public types and claim names for those downstream units are an explicit §3.5 approval deliverable, not a worker-selected default. Preserve all mandatory contracts, immutable evidence and provenance. No new helper/report framework.
+
+## 7. Present disposition and next action
 
 | Item | State |
 | --- | --- |
-| D037–D056 plan | Revised under the owner's seven amendments; subject to owner review and separate execution authorisation. |
-| D037,D039,D042–D056 | Proposed controlled profiles and34 new cases; not executed or accepted. |
-| D038,D040,D041 | Explicitly deferred by owner; remain BLOCKED on §6 authority, zero runnable cases. |
-| Prior acceptance | Preserved at5fabf1c with original evidence; no rerun. |
-| Planning validation | Text/source/diff inspection only; no tests, mypy or Ruff. |
-| Main integration | Not performed; new work branch starts directly from D036. |
+| This planning task | Documentary plan/governance only; no product/static tests or implementation. |
+| D038 | BLOCKED — source roles/grid/pi-log-output decisions. |
+| D040 | BLOCKED — owning downstream implementation contract and concrete P_SCORE profile. |
+| D041 | BLOCKED — same own-profile decisions plus accepted D040. |
+| Completed predecessors/tranche | Preserved at fc82a07 and owning immutable evidence; excluded from automatic reruns. |
+| Next commissioned work | Bounded documentary authority resolution under §3, if owner approves; implementation remains separately gated. |
+| Deferred obligations | Native-source/calendar certification, broader integration/E2E and main integration remain separate. |
 
-## Execution commission and ledger
-
-Owner instruction “Okay, execute the plan” commissions D037, D039 and D042–D056 under the final amendment at commit 8bc212bd2e420cfd0c3f5189b6896cea1486d776. This supersedes planning-only wording for those 17 units; D038/D040/D041 remain deferred and BLOCKED. Recovered the exact full-history bundle in a new isolated checkout after the old workspace disappeared. No previous signal test was rerun. Current sequence starts at D037.
-
-Actual environment restoration: primary CPython3.12.14 / SQLite3.53.1 found; pytest was absent, so created isolated d037-runtime and installed all16 pinned packages offline with uv --require-hashes from committed requirements-cp312-dev.lock/vendor wheels. Actual versions then observed: pytest9.0.3, mypy1.20.1, Ruff0.15.11, PyYAML6.0.3. Verified execution parameter NVDA_PROOF_PYTHON=/workspace/scratch/83dd7c79f14f/d037-runtime/bin/python. Reuse this unchanged environment throughout; no product qualification tests ran during recovery.
-
-## 9. Governance reconciliation and assurance limits
-
-Current explicit owner instructions outrank repository guidance; GUARDRAILS.md remains the highest repository guardrail and is unchanged. AGENTS.md and tests/AGENTS.override.md are reconciled to this amendment's recovery rules, deferrals and deliberate omission of routine runtime RED. The completed D026–D036 RED/GREEN instructions survive as historical evidence at the baseline, not successor execution requirements. Generic skill defaults cannot restore duplicate runs, broad reviews/suites or runtime RED for this tranche.
-
-The authority-derived public-seam sequence required by AGENTS fixture-independence guidance must be embodied in the two declared cases and assessed independently, rather than added as a third probe. Strict GREEN plus source/case review remains mandatory; absence of RED is reported honestly as reduced test-first evidence. No remaining material governing-authority conflict was identified in this planning reconciliation. The owner's final planning amendment, timestamp 23-10-26 16:14, resolves the former case-subset recovery restriction through §3's current-signal aggregate exception without changing shared infrastructure. Deferred native certification, integration and end-to-end testing remain separate obligations. This amendment remains planning-only and does not commission execution.
-
-### D037 — ACCEPTED controlled profile
-
-Candidate f5bc8e98076960a02bcf99d66da959f2ab77e98e, tree 8d128ad81933aa204f76b9921da5107c647c7cea, generation 46acda82de91b9537b4aa4fbdbdb57878512fb55549a14d62fbbc374e7118aa1. Independent final disposition ACCEPT in handoff/foundation_implementation/d037_execution/final_review.md; full strict output handoff/foundation_implementation/d037_execution/final_green.log records exactly2 passed, aggregateexit0 on pinned Python3.12.14. New cases only, no routine RED, duplicate implementer run, old suite or broad sweep. Source/case scrutiny and reused evidence are in the review; any actual first failure/repair is preserved in owning evidence. Native certification/integration/end-to-end obligations remain deferred. Commit accepted state and save per-signal cumulative checkpoint before advancing.
-
-### D039 — ACCEPTED controlled profile
-
-Candidate 4fc850ff743880196d103dfd906bd3b9a5ead43c, tree f688154aba9283f6e162e10198cecf586be50556, generation 9e535e5c6e39fa7f6383540b6a6ce282a280d3bc3c97b8f8441005b2be29c5d5. Independent final disposition ACCEPT in handoff/foundation_implementation/d039_execution/final_review.md; full strict output handoff/foundation_implementation/d039_execution/final_green.log records exactly2 passed, aggregateexit0 on pinned Python3.12.14. New cases only, no routine RED, duplicate implementer run, old suite or broad sweep. Source/case scrutiny and reused evidence are in the review; any actual first failure/repair is preserved in owning evidence. Native certification/integration/end-to-end obligations remain deferred. Commit accepted state and save per-signal cumulative checkpoint before advancing.
-
-### D042 — ACCEPTED controlled profile
-
-Candidate 06cc9837496809d984de4c1b0679b0c6051e35e6, tree 672bce877458e4f573e0cda0e4ead6c9a863945b, generation f4160c3ed8ef6392f8c8062c464262d3e24c5aa215bfc9d9d690d1d6cce3d2f5. Independent final disposition ACCEPT in handoff/foundation_implementation/d042_execution/final_review.md; full strict output handoff/foundation_implementation/d042_execution/final_green.log records exactly2 passed, aggregateexit0 on pinned Python3.12.14. New cases only, no routine RED, duplicate implementer run, old suite or broad sweep. Source/case scrutiny and reused evidence are in the review; any actual first failure/repair is preserved in owning evidence. Native certification/integration/end-to-end obligations remain deferred. Commit accepted state and save per-signal cumulative checkpoint before advancing.
-
-### D043 — ACCEPTED controlled profile
-
-Candidate 45c2d685fe036cc8638bb6e1525fff9ee1507152, tree 321041292820384031541401c4c516943e846173, generation eec1d077039f1f4f46a9b87b3c64333093652d8b2375a10db4efc37e1b5f5a35. Independent final disposition ACCEPT in handoff/foundation_implementation/d043_execution/final_review.md; full strict output handoff/foundation_implementation/d043_execution/final_green.log records exactly2 passed, aggregateexit0 on pinned Python3.12.14. New cases only, no routine RED, duplicate implementer run, old suite or broad sweep. Source/case scrutiny and reused evidence are in the review; any actual first failure/repair is preserved in owning evidence. Native certification/integration/end-to-end obligations remain deferred. Commit accepted state and save per-signal cumulative checkpoint before advancing.
-
-### D044 — ACCEPTED controlled profile
-
-Candidate 25cd39058b21d7905a53a16b415f1223e2a4da2e, tree 67866b3610a2095bed4db4e7256df3d9d9fd1e6e, generation 36f03ff659c6e6b5a4571a847e88eac7cada9b4a55c38322a0233430d7042715. Independent final disposition ACCEPT in handoff/foundation_implementation/d044_execution/final_review.md; full strict output handoff/foundation_implementation/d044_execution/final_green.log records exactly2 passed, aggregateexit0 on pinned Python3.12.14. New cases only, no routine RED, duplicate implementer run, old suite or broad sweep. Source/case scrutiny and reused evidence are in the review; any actual first failure/repair is preserved in owning evidence. Native certification/integration/end-to-end obligations remain deferred. Commit accepted state and save per-signal cumulative checkpoint before advancing.
-
-### D045 — ACCEPTED controlled profile
-
-Candidate e47de6778210213a004af97be67d0fec21f0ac7f, tree c73e12d914fc0bb95c4a85fc534e9d1d4a4090d6, generation 79269cfdc6c7d2467ebecfcd83d13ccc6ca46da63735f0b504273eaf3fe2fd45. Independent final disposition ACCEPT in handoff/foundation_implementation/d045_execution/final_review.md; full strict output handoff/foundation_implementation/d045_execution/final_green.log records exactly2 passed, aggregateexit0 on pinned Python3.12.14. New cases only, no routine RED, duplicate implementer run, old suite or broad sweep. Source/case scrutiny and reused evidence are in the review; any actual first failure/repair is preserved in owning evidence. Native certification/integration/end-to-end obligations remain deferred. Commit accepted state and save per-signal cumulative checkpoint before advancing.
-
-### D046 — ACCEPTED controlled profile
-
-Candidate 133014647fd38ee8bdca7cebe51b47fc47065df8, tree 6cc411d12e5b1b54a61949264b55e11182a06a5a, generation 045ba888d685e2600a26139b71f0f88bc5a36cc623724f727fe88ddd39f86d41. Independent final disposition ACCEPT in handoff/foundation_implementation/d046_execution/final_review.md; full strict output handoff/foundation_implementation/d046_execution/final_green.log records exactly2 passed, aggregateexit0 on pinned Python3.12.14. New cases only, no routine RED, duplicate implementer run, old suite or broad sweep. Source/case scrutiny and reused evidence are in the review; any actual first failure/repair is preserved in owning evidence. Native certification/integration/end-to-end obligations remain deferred. Commit accepted state and save per-signal cumulative checkpoint before advancing.
-
-### D047 — ACCEPTED controlled profile
-
-Candidate 68af620a18850e0312ebc6e19a828fa4aff4c193, tree d055c2a013a4ca3e9da10ba9be1c7c56df0ee042, generation dc2fb77ee6d88bf715bd54b754695db28be14a44cddb6c276587984a52a5453a. Independent final disposition ACCEPT in handoff/foundation_implementation/d047_execution/final_review.md; full strict output handoff/foundation_implementation/d047_execution/final_green.log records exactly2 passed, aggregateexit0 on pinned Python3.12.14. New cases only, no routine RED, duplicate implementer run, old suite or broad sweep. Source/case scrutiny and reused evidence are in the review; any actual first failure/repair is preserved in owning evidence. Native certification/integration/end-to-end obligations remain deferred. Commit accepted state and save per-signal cumulative checkpoint before advancing.
-
-### D048 — ACCEPTED controlled profile
-
-Candidate 2f7e4f2c6526c6e1fbe88f38a4e454dc0c6f761c, tree 9ada65e36d8b4eb37f63282338fa254bb1bc7002, generation 1446ebe5e9510ee44843fd20f015487e2ab769fe01642024aeeabe5f592b5e42. Independent final disposition ACCEPT in handoff/foundation_implementation/d048_execution/final_review.md; full strict output handoff/foundation_implementation/d048_execution/final_green.log records exactly2 passed, aggregateexit0 on pinned Python3.12.14. New cases only, no routine RED, duplicate implementer run, old suite or broad sweep. Source/case scrutiny and reused evidence are in the review; any actual first failure/repair is preserved in owning evidence. Native certification/integration/end-to-end obligations remain deferred. Commit accepted state and save per-signal cumulative checkpoint before advancing.
-
-### D049 — ACCEPTED controlled profile
-
-Candidate 0fd04da44e1bffa87635b7db67244bc4e6cbddb9, tree 32202c7de9f036b0ff4450086a59d64d27e7b5c6, generation 1d2f4684f1d899c3eb27704decb8f132e5eec13a1e5be57edf75ee64caa3a1f8. Independent final disposition ACCEPT in handoff/foundation_implementation/d049_execution/final_review.md; full strict output handoff/foundation_implementation/d049_execution/final_green.log records exactly2 passed, aggregateexit0 on pinned Python3.12.14. New cases only, no routine RED, duplicate implementer run, old suite or broad sweep. Source/case scrutiny and reused evidence are in the review; any actual first failure/repair is preserved in owning evidence. Native certification/integration/end-to-end obligations remain deferred. Commit accepted state and save per-signal cumulative checkpoint before advancing.
-
-### D050 — ACCEPTED controlled profile
-
-Candidate b297add2fff1aa43e850dc3b6eb31c0a59b00b89, tree b031247e8ce9d34a844e8ba3c2cc2750d9752455, generation fd070a483f320e0e0b4590bad1abdf3df1483a062d00febef65fb2f86d0f8aaa. Independent final disposition ACCEPT in handoff/foundation_implementation/d050_execution/final_review.md; full strict output handoff/foundation_implementation/d050_execution/final_green.log records exactly2 passed, aggregateexit0 on pinned Python3.12.14. New cases only, no routine RED, duplicate implementer run, old suite or broad sweep. Source/case scrutiny and reused evidence are in the review; any actual first failure/repair is preserved in owning evidence. Native certification/integration/end-to-end obligations remain deferred. Commit accepted state and save per-signal cumulative checkpoint before advancing.
-
-### D051 — ACCEPTED controlled profile
-
-Candidate 1efdd4cffc539fd1238ca3a201379bc4cffcd5c7, tree d46f3eff81b985cf8aaa5044c6d86152616bbc62, generation 1b1f9961c14df41019bf7e85e48c4f9de9bbdbd0859e347662f79ea15cdde085. Independent final disposition ACCEPT in handoff/foundation_implementation/d051_execution/final_review.md; full strict output handoff/foundation_implementation/d051_execution/final_green.log records exactly2 passed, aggregateexit0 on pinned Python3.12.14. New cases only, no routine RED, duplicate implementer run, old suite or broad sweep. Source/case scrutiny and reused evidence are in the review; any actual first failure/repair is preserved in owning evidence. Native certification/integration/end-to-end obligations remain deferred. Commit accepted state and save per-signal cumulative checkpoint before advancing.
-
-### D052 — ACCEPTED controlled profile
-
-Candidate a772237bbe019eb334fb39a7f98a9b08c9acf786, tree 29aee1c5f2e3f1ecc6173a52485cbff92c2b2037, generation 9a5b2d9e878baef3742fed1bf32c9878eb600a8052990128b0f9a163430fb085. Independent final disposition ACCEPT in handoff/foundation_implementation/d052_execution/final_review.md; full strict output handoff/foundation_implementation/d052_execution/final_green.log records exactly2 passed, aggregateexit0 on pinned Python3.12.14. New cases only, no routine RED, duplicate implementer run, old suite or broad sweep. Source/case scrutiny and reused evidence are in the review; any actual first failure/repair is preserved in owning evidence. Native certification/integration/end-to-end obligations remain deferred. Commit accepted state and save per-signal cumulative checkpoint before advancing.
-
-### D053 — ACCEPTED controlled profile
-
-Candidate 50a806380c24c1ef242666c78a91ea5e239c4cdc, tree 267a9dd0a5c357cf370e60fcba06d7322274c91b, generation d5e5ae05ce6854da1e1afb5828ccb65e4ba8dafe3316c5237e1d011371113c85. Independent final disposition ACCEPT in handoff/foundation_implementation/d053_execution/final_review.md; full strict output handoff/foundation_implementation/d053_execution/final_green.log records exactly2 passed, aggregateexit0 on pinned Python3.12.14. New cases only, no routine RED, duplicate implementer run, old suite or broad sweep. Source/case scrutiny and reused evidence are in the review; any actual first failure/repair is preserved in owning evidence. Native certification/integration/end-to-end obligations remain deferred. Commit accepted state and save per-signal cumulative checkpoint before advancing.
-
-### D054 — ACCEPTED controlled profile
-
-Candidate 772f86ff9549195b548af9f50a1f4f74bbf373ea, tree 46a3840a728470617fb38fb4b46a99996276f016, generation 6c6c53cb48db54ab4789fb58c7df649482edd5bdeeaa31794a206b2ea8a830fa. Independent final disposition ACCEPT in handoff/foundation_implementation/d054_execution/final_review.md; full strict output handoff/foundation_implementation/d054_execution/final_green.log records exactly2 passed, aggregateexit0 on pinned Python3.12.14. New cases only, no routine RED, duplicate implementer run, old suite or broad sweep. Source/case scrutiny and reused evidence are in the review; any actual first failure/repair is preserved in owning evidence. Native certification/integration/end-to-end obligations remain deferred. Commit accepted state and save per-signal cumulative checkpoint before advancing.
-
-### D055 — ACCEPTED controlled profile
-
-Candidate 64f63382a42bd00ced97538379e6f581398a2fa4, tree 7ae44c6d6c8fd35a747f2e9d9ecd924991634c13, generation 1b510ccf66044845ef15185c7ae175ba63e544bb864d77937a49adf7df90c1de. Independent final disposition ACCEPT in handoff/foundation_implementation/d055_execution/final_review.md; full strict output handoff/foundation_implementation/d055_execution/final_green.log records exactly2 passed, aggregateexit0 on pinned Python3.12.14. New cases only, no routine RED, duplicate implementer run, old suite or broad sweep. Source/case scrutiny and reused evidence are in the review; any actual first failure/repair is preserved in owning evidence. Native certification/integration/end-to-end obligations remain deferred. Commit accepted state and save per-signal cumulative checkpoint before advancing.
-
-### D056 — ACCEPTED controlled profile
-
-Original candidate141ba0917fd5a2a9937fad8591f87f3e5045145d, tree7e83d0170e7be1300695a215990c07b94d68740c, generation2a0d61c05fc05bd434982516cb5ae7f526eea24a7356f51b1191aba603e4f6b6. Independent ACCEPT and sole strict two-case result (2passed,0.11s,exit0) are retained in handoff/foundation_implementation/d056_execution/final_review.md and final_green.log. Recovery.md distinguishes exact candidate/tree/proof recovery from documentary transcript reconstruction after workspace loss. No product/static checks were repeated.
-
-## Execution close-out
-
-All17 commissioned controlled profiles reached independent ACCEPT with34 new cases passing once. No product failure/recovery, duplicate worker GREEN, accepted unaffected test rerun, speculative case or final sweep. Omitted routine runtime RED is reduced test-first evidence. D052/D053 coincident-field literals and D055 zero-arithmetic witness limitations remain explicit in their independent reviews; source inspection is not misrepresented as extra runtime proof. Earlier scoped static failures/repairs remain in owning records. No token/cache saving measurement is claimed.
-
-Scoped Ruff for D043–D051 and D053–D056 used `"$NVDA_PROOF_PYTHON" -m ruff check src/nvda_desk/market_measurement_truth/_macro_changes.py tests/product/market_measurement_dnnn/test_signal.py` with owning ID; D052 also included api.py. D052 scoped mypy used `PYTHONPATH=src "$NVDA_PROOF_PYTHON" -m mypy src/nvda_desk/market_measurement_truth/api.py src/nvda_desk/market_measurement_truth/_macro_changes.py`. Actual outputs are in owning ruff.log/D052 mypy.log; unchanged typing reused D042 thenD052. These record prior runs, not rerun instructions.
-
-Cumulative full-history checkpoints followed each acceptance before advancing; this D056 checkpoint closes the tranche after exact candidate recovery. GUARDRAILS.md remains unchanged from8bc212b. D038/D040/D041 retain §6 identities, jurisdictions, unresolved requirements and BLOCKED status. Native-source/calendar certification, integration/E2E and main integration remain separate obligations; no D057+ work is commissioned.
+Generic skill defaults for routine RED, extra adversarial tests, fresh-context duplication, separate design reports, alternative plan paths and whole-branch review do not override this owner's established root-plan/efficiency discipline. Independent review remains substantive; no token/cache savings are inferred without measurement.
