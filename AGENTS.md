@@ -49,9 +49,9 @@ Fresh review must also be independent of Worker convenience composition where th
 
 This is a bounded adversarial-review heuristic, not a requirement to duplicate the Worker test suite or proliferate speculative tests. Reuse Worker fixtures where they faithfully isolate the proposition; bypass or decompose them only where their composition could pre-satisfy, mask, or collapse the condition being reviewed. Record the direct sequence and observed result when it bears on disposition.
 
-## Current tranche — D038, D040 and D041 planning
+## Current tranche — D038, D040 and D041 completed controlled profiles
 
-Root EXEC_PLAN.md on work/v2-d038-d040-d041-plan-20261024 is the proposed successor plan from fc82a07. D037, D039 and D042–D056 are completed controlled profiles; their ledger remains at that Git baseline. D038/D040/D041 remain BLOCKED until exact source/numeric/profile authority and D040/D041 downstream ownership are accepted. Planning does not commission implementation, product tests or missing policy choices. Preserve P02 jurisdiction; do not assign these scores to M02 by convenience.
+Root EXEC_PLAN.md on work/v2-d038-d040-d041-plan-20261024 records this CLOSED tranche. D038 was accepted under its explicitly approved source/numeric profile. Owner explicitly delegated all decisions/work required for D040/D041; P02 responsibility was lawfully admitted as kernel-allocated M03, outside M02. Each of D040/D041 passed its sole independent strict two-case aggregate and was separately accepted. Owning execution directories preserve original full output and semantic review; root §§9–14 identify checkpoints and limits. Earlier planning/approval holds are historical and superseded for these exact controlled profiles. No further signal, application/main integration or predictive/native certification is commissioned.
 
 For later accepted/commissioned work, retain two declared cases per resolved signal, six as absolute ceiling not target; one independent final semantic reviewer/sole runtime executor; no routine RED, duplicate GREEN, accepted unaffected test rerun, speculative probe, broad sweep or whole-branch review. Omitted RED is reduced test-first evidence. Assess discriminatory assertions/public-seam fixture independence within the declared cases, not through extra runs. Scope static checks to new/changed Python. Reuse unchanged family/context/environment inspection, canonical declarations, immutable provenance and concise evidence references.
 
@@ -74,3 +74,5 @@ Do not modify `GUARDRAILS.md` during ordinary work. Any proposed guardrail chang
 Current owner exception24October2026: D038 profile at c6737d5 is explicitly accepted and implementation commissioned; the earlier20signal schedule is superseded. Apply current root §9 and owning D038 brief with two cases/sole independent final executor/bounded recovery. D040/D041 authority holds remain. No prior accepted test rerun.
 
 Current owner delegation24October2026 explicitly authorises settling D040/D041 ownership/profile choices and completing both. Root §11 supersedes their earlier approval holds; preserve P02 jurisdiction through lawful new-owner admission. Two cases/sole independent executor/no historical reruns remain mandatory. Exact owning authority must be frozen and bound before implementation.
+
+Closure24October2026: D038/D040/D041 accepted, root §14. No additional product run or final sweep for documentary closure or bundle packaging. Preserve exact accepted bytes/evidence; next work requires a new scoped instruction.

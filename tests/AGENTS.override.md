@@ -1,6 +1,6 @@
-# Test-local supplement — proposed D038, D040 and D041 work
+# Test-local supplement — completed controlled D038, D040 and D041 work
 
-Root EXEC_PLAN.md governs after acceptance. This planning request does not authorise implementation, tests, admission or source/model choices. All three IDs remain BLOCKED until their own authority conditions are met; D040/D041 retain downstream P02 jurisdiction, not automatic M02 admission.
+Root EXEC_PLAN.md records the completed tranche and exact approvals/delegation in §§9–14. D038/D040/D041 each received independent strict two-case acceptance. D040/D041 belong to admitted P02/M03, not M02. Initial planning-only/blocked language below describes historical entry conditions superseded by those explicit decisions. No additional run is commissioned for closure/packaging.
 
 - Preserve all accepted tests, assertions, contracts, immutable generations and evidence. Completed D037/D039/D042–D056 and earlier acceptance remain historical evidence, not tests to rerun.
 - After exact profiles, owning interfaces and case manifest are accepted and execution commissioned: exactly two declared cases per resolved signal, success/refusal only; six is an absolute ceiling, not a quota or permission for additions. Current runnable new cases: zero.
@@ -14,3 +14,5 @@ Root EXEC_PLAN.md governs after acceptance. This planning request does not autho
 Current owner instruction24October2026 approves D038's exact profile at c6737d5 and commissions its two cases after immutable admission. The earlier20signal schedule is superseded; D040/D041 remain blocked. Root §9 governs this narrow exception to planning-only wording above.
 
 Current owner delegation24October2026 explicitly authorises settling D040/D041 ownership/profile choices and completing both. Root §11 supersedes their earlier approval holds; preserve P02 jurisdiction through lawful new-owner admission. Two cases/sole independent executor/no historical reruns remain mandatory. Exact owning authority must be frozen and bound before implementation.
+
+Closure24October2026: all three controlled profiles accepted; preserve each original immutable generation and original outputs. Do not rerun any accepted pair for session/reviewer/packaging changes. No next signal, historical regression or speculative case is authorised.

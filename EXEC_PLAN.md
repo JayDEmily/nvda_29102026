@@ -1,13 +1,13 @@
 # NVDA V2 — D038, D040 and D041 ExecPlan
 
 Date: 24 October 2026 (Melbourne)
-Status: D038 independently ACCEPTED under the owner's approved profile. D040/D041 retain their separate authority holds. Earlier20signal schedule superseded.
+Status: CLOSED — D038, D040 and D041 independently ACCEPTED under their documented controlled profiles. Earlier20signal schedule superseded. No further signal or integration work commissioned.
 
 ## 1. Goal, baseline and authority
 
 Close the three previously deferred identities without weakening mathematical correctness, provenance, immutable evidence or independent acceptance. This replaces the root plan, not the historical acceptance ledger. Baseline: `fc82a07c9aef1aeeb95493d201fc9cf9f76011be`. Branch: `work/v2-d038-d040-d041-plan-20261024`.
 
-The owner requested this new plan after completion of D037, D039 and D042–D056. That request commissions planning, not missing domain choices, source collection, implementation or tests. All three remain BLOCKED until their own authority conditions below are resolved and explicitly accepted. Approval to investigate does not approve the resulting numerical/model proposal. A later execution instruction cannot silently supply unspecified mathematics or score parameters.
+The initial request commissioned planning after D037, D039 and D042–D056. Initial authority holds below were resolved by the owner's exact D038 profile approval (§9) and explicit full completion/decision delegation for D040/D041 (§11). That delegation authorised the documented concrete P02 profiles and normal new-owner admission. §§8–14 retain the exact sequence/evidence; no generic execution request alone supplied missing parameters.
 
 Preserve all accepted source, tests, configurations, immutable generations and evidence. The completed tranche/ledger and D056 recovery provenance remain at `git show fc82a07:EXEC_PLAN.md` and the owning execution directories. DO_NOT_CARRY_FORWARD its completed schedule as active work; retain Git history. Root EXEC_PLAN.md remains the single planning authority once accepted. GUARDRAILS.md stays frozen.
 
@@ -15,9 +15,9 @@ Preserve all accepted source, tests, configurations, immutable generations and e
 
 | Unit | Canonical meaning/dependencies | Jurisdiction and current hold |
 | --- | --- | --- |
-| D038 | Jump-variation estimate; R151, R149, R150; K05_REALIZED_RISK / P_VOL_WINDOW; variance. | Foundation/M02 candidate. Source roles, high-frequency grid and pi/log/output convention unresolved. |
-| D040 | Trend strength score; D020, D021, D027, D024; K07_WEIGHTED_SCORE / P_SCORE. | Preserved downstream P02 allocation, not automatically an M02 admission. Exact score profile and owning implementation boundary unresolved. |
-| D041 | Mean-reversion score; D026, D040, D033; K07_WEIGHTED_SCORE / P_SCORE. | Same downstream P02 jurisdiction; own exact profile unresolved and depends on accepted D040. |
+| D038 | Jump-variation estimate; R151, R149, R150; K05_REALIZED_RISK / P_VOL_WINDOW; variance. | M02 controlled profile ACCEPTED; exact source/grid/log/pi/output convention and evidence in §§9–10. |
+| D040 | Trend strength score; D020, D021, D027, D024; K07_WEIGHTED_SCORE / P_SCORE. | P02 responsibility admitted as kernel-allocated M03; controlled D040 profile ACCEPTED, §§11–12. |
+| D041 | Mean-reversion score; D026, D040, D033; K07_WEIGHTED_SCORE / P_SCORE. | Same P02/M03 owner; own controlled profile and actual accepted D040 chain ACCEPTED, §§13–14. |
 
 Do not rename or replace these IDs. Do not absorb other P02 signals, D057+, M00/provider/TWS/API acquisition, native-source certification, M01 migration or adjacent repairs. A public calculation interface required by an accepted owning contract is distinct from provider/API collection; no such interface is authorised merely by this plan.
 
@@ -85,7 +85,7 @@ Apply this exit to each unit separately in sequence; D038 need not wait for D040
 - [ ] Amend this root plan with exact production files/types/seams, versioned parameters, physical proof paths, both numerical fixtures/oracles and each single refusal. Admit only resolved units.
 - [ ] Owner separately commissions implementation of that completed plan.
 
-This plan is deliberately not an executable numeric specification yet. There are currently zero admitted new runnable cases. Do not claim that six cases or three implementations are ready.
+This was the initial authority-resolution exit. It has now been met through the exact approvals/delegation and immutable per-ID authorities recorded below. Each signal's original two-case generation was executed solely by its own independent final reviewer; all three are accepted. No further executions are commissioned by closure.
 
 ## 4. Conditional implementation and acceptance cycle
 
@@ -113,11 +113,11 @@ A legitimate new owning claim may require a bounded fixed declaration extension;
 
 ## 6. Runtime, evidence and allowed file boundaries
 
-Retain CPython3.12.14, SQLite3.53.1, pytest9.0.3, mypy1.20.1, Ruff0.15.11 and PyYAML6.0.3, using committed hashed dependency locks/offline wheels. Before first runtime use, explicitly verify an environment-specific absolute NVDA_PROOF_PYTHON; do not hardcode a temporary interpreter path or fall back to system Python. The previous runtime was lost during D056 recovery: it is not currently established as available. No installation, qualification or product test is needed for this planning task.
+Retain CPython3.12.14, SQLite3.53.1, pytest9.0.3, mypy1.20.1, Ruff0.15.11 and PyYAML6.0.3, using committed hashed dependency locks/offline wheels. Before first runtime use, explicitly verify an environment-specific absolute NVDA_PROOF_PYTHON; do not hardcode a temporary interpreter path or fall back to system Python. The previous runtime was lost during D056 recovery; §9 records the actual bounded restoration and verified environment-specific interpreter reused for all three signals without subsequent reinstall/requalification.
 
 Reuse unchanged environment verification; a new session/reviewer does not trigger reinstallation, requalification or product retesting. If the environment is genuinely absent/changed during commissioned implementation, restore only the missing pinned environment and verify the changed facts without product qualification tests. Do not switch to the attached Python3.13 wheelhouse.
 
-Planning changes only EXEC_PLAN.md, README.md, AGENTS.md and tests/AGENTS.override.md. Historical instructions are superseded only for this proposed scope; GUARDRAILS.md and accepted code/tests/proof remain untouched.
+The initial planning allowlist was EXEC_PLAN.md, README.md, AGENTS.md and tests/AGENTS.override.md; subsequent commissioned implementation boundaries are the exact owning briefs and §§9/11/13. Historical instructions are superseded only for this proposed scope; GUARDRAILS.md and accepted code/tests/proof remain untouched.
 
 Future owning documents follow existing per-ID naming: handoff/foundation_implementation/authority/D038_IMPLEMENTATION_BRIEF.md and D038_PROOF_CONTRACT.json for M02; D040/D041 documents/bindings must name their accepted downstream owner rather than imply foundation admission. Exact paths, target IDs, public types and claim names for those downstream units are an explicit §3.5 approval deliverable, not a worker-selected default. Preserve all mandatory contracts, immutable evidence and provenance. No new helper/report framework.
 
@@ -125,13 +125,13 @@ Future owning documents follow existing per-ID naming: handoff/foundation_implem
 
 | Item | State |
 | --- | --- |
-| This planning task | Documentary plan/governance only; no product/static tests or implementation. |
-| D038 | ACCEPTED controlled profile — source/numeric choices approved, implementation independently reviewed, sole strict pair passed; see §10. |
-| D040 | BLOCKED — owning downstream implementation contract and concrete P_SCORE profile. |
-| D041 | BLOCKED — same own-profile decisions plus accepted D040. |
-| Completed predecessors/tranche | Preserved at fc82a07 and owning immutable evidence; excluded from automatic reruns. |
-| Next commissioned work | Bounded documentary authority resolution under §3, if owner approves; implementation remains separately gated. |
-| Deferred obligations | Native-source/calendar certification, broader integration/E2E and main integration remain separate. |
+| This execution tranche | CLOSED after individual independent acceptance of all three controlled profiles. |
+| D038 | ACCEPTED — owner-approved source/numeric profile; §10 and owning final evidence. |
+| D040 | ACCEPTED — delegated P02/M03 trend-intensity profile; §12 and owning final evidence. |
+| D041 | ACCEPTED — own reversion-conditions profile and actual accepted D040; §14 and owning final evidence. |
+| Completed predecessors/tranche | Preserved; no historical acceptance suites rerun. |
+| Next commissioned work | None. No merge/push, next signal, native certification or integration commission. |
+| Deferred obligations | Native-source/calendar certification, broader integration/E2E, empirical model calibration and main integration remain separate. |
 
 Generic skill defaults for routine RED, extra adversarial tests, fresh-context duplication, separate design reports, alternative plan paths and whole-branch review do not override this owner's established root-plan/efficiency discipline. Independent review remains substantive; no token/cache savings are inferred without measurement.
 
@@ -184,3 +184,11 @@ Independent reviewer ACCEPT for candidate e1029a079347722f70d3d3ce5246858d593bd4
 D040 accepted checkpoint 171a9149dea53f44a1bd1fec6a1d7971c3c1a9f3 was verified/saved/exposed before this unit. Owning D041 brief/profile freezes root §11's reversion equation and exact actual D026/D040/D033 contracts. As a necessary refinement of §11's preliminary fixed cutoff, D041 accepts T+1s or T+2s, while D040 stays fixed T+1s. Refusal uses actual D026/D033 atT+2s and D040 atT+1s, with an otherwise lawful D041 requestT+2s/nowT+3s; it therefore reaches the intended predecessor cutoff mismatch without fabricating an impossible D040 instance. No D040 authority/source/test changes. New _reversion.py and appended public reversion factories use unchanged owner-local codec/store and D040 validator. Exact immutable authority is bound before tests/code; two cases only, one independent executor, no historical reruns.
 
 D041 preparation: owning exact brief/profile/contract bound; original generation0001 sealed after inspection. New _reversion.py/appended public factories and actual two-case proof only. D040 calculation/test/profile/generation/codec/store unchanged. Warranted scoped statics/new-file import/authority checks passed with original style failure and pairwise repair preserved in owning logs. Product execution remains exclusively the independent final reviewer’s next action. No old acceptance suite or runtime probe ran.
+
+## 14. D041 independently accepted; three-signal plan closed
+
+Independent ACCEPT for candidate9922832134a173965dd810e293af67f2f2c16e48, tree1bc24b6140a0028b881becd5e1bd55a85ac360c6. Sole strict configured_market_conditions_d041 aggregate:2passed in0.73s,exit0. Original full final_green.log SHA256b3e14e4305564db32e7200e31b96792e0c5a3fb6945a385a566749edb04dc44b and substantive independent final_review.md in handoff/configured_market_conditions/d041_execution. Exact authority/profile/contract/generation/source/proof hashes are retained there. No runtime recovery, duplicate GREEN, extra case, old test or broad sweep occurred. D040's accepted calculation/profile/test/generation/codec/store remain byte-identical; only new D041 factories were appended to the shared public seam.
+
+Both newly commissioned signals were independently accepted with exactly two cases each, once each; scoped static repairs preserve original results and relevant changed-byte justifications. D040 checkpoint171a9149dea53f44a1bd1fec6a1d7971c3c1a9f3 was committed, full-history bundle verified/saved/exposed before D041. Commit this final accepted state and immediately verify/save/expose its cumulative full-history bundle. No further product checks are required by documentary close-out/packaging; no merge/push or new work follows.
+
+Controlled-profile mathematical/semantic acceptance is distinct from empirical prediction/profitability, native/provider/calendar certification, measured volatility stability and integration/E2E. Those remain separate obligations. D038/D040/D041 are no longer BLOCKED; preserved original holds and initial planning wording above describe their earlier entry state, superseded by the exact approvals/delegation and subsequent evidence. GUARDRAILS.md is unchanged.
