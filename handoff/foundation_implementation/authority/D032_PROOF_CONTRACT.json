@@ -1,0 +1,95 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_d032",
+  "semantic_brief_path": "handoff/foundation_implementation/authority/D032_IMPLEMENTATION_BRIEF.md",
+  "target": {
+    "category": "M",
+    "responsibility_name": "neutral_market_measurement_truth",
+    "package": "nvda_desk.market_measurement_truth",
+    "public_seam": "nvda_desk.market_measurement_truth.api",
+    "intent": "modify",
+    "existing_object_id": "M02"
+  },
+  "proof_axis": "product",
+  "product_tier_treatment": "NOT_CLASSIFIED",
+  "architecture_proof_axis": "architecture_kernel",
+  "required_proof_ids": [
+    "D032-CALCULATION"
+  ],
+  "families": [
+    {
+      "id": "mmt_d032",
+      "path": "tests/product/market_measurement_d032/test_five_minute_realised_volatility.py",
+      "proof_obligation_ids": [
+        "D032-CALCULATION"
+      ],
+      "required_test_names": [
+        "test_d032_five_minute_realised_volatility"
+      ],
+      "boundary": "R151 unadjusted bar closes at all 6 exact controlled 5m sample instants 2026-10-20T12:35:00+00:00 through 2026-10-20T12:40:00+00:00, 5 authorised return intervals, log provenance and exact annualisation fraction. Positive result 5.2411933614380407513132873039695738036883343009577 annualised volatility. Negative middle 12:37 minute omitted; 12:37:30 off-grid present must refuse and write no occurrence.",
+      "proof_levels": [
+        "CONTRACT",
+        "INTEGRATION",
+        "STATE",
+        "SEQUENTIAL_END_TO_END"
+      ],
+      "authoritative_inputs": [
+        "R151 unadjusted bar closes at all 6 exact controlled 5m sample instants 2026-10-20T12:35:00+00:00 through 2026-10-20T12:40:00+00:00, 5 authorised return intervals, log provenance and exact annualisation fraction. Positive result 5.2411933614380407513132873039695738036883343009577 annualised volatility. Negative middle 12:37 minute omitted; 12:37:30 off-grid present must refuse and write no occurrence.",
+        "### 4.3 Realised-volatility calendar, complete grids and annualisation\n\nUse R151→bar.close under `mmt-risk-close/1`, native price and `mmt-pilot-price/1`. Expose session.id, sample.kind and adjustment.basis. Require adjustment=`unadjusted`; intraday sample kinds=`session_open`, `minute_close`, `official_close` according to the exact grid; daily samples=`official_close`. No synthetic R151-to-R143 dependency or D019/D020/D021 predecessor.\n\nControlled risk calendar `controlled-risk-calendar/1`: explicit sessions10–20October2026, each12:00–13:00Z, no breaks, type=`controlled_cash`, ref `controlled-risk-YYYYMMDD/1`. The **proposed synthetic trading year is252 such60minute sessions**: 15,120 eligible minutes. This is a declared fixture parameter, not an empirical market-year claim. Persist exact per-interval trading-year fractions, calculated by intersection with the listed eligible session intervals; never charge overnight/closed time.\n\n| ID | Exact required sample grid / as-of T | Return intervals / total year fraction |\n| --- | --- | --- |\n| D032 | 20Oct12:35,12:36,…,12:40 | 5; each1/15120, total5/15120 |\n| D033 | 20Oct12:10,12:11,…,12:40 | 30; each1/15120, total30/15120 |\n| D034 | 20Oct12:00,12:01,…,13:00 inclusive | 60; each1/15120, total1/252 |\n| D035 | Official closes15–20Oct at13:00 | 5; each1/252, total5/252 |\n| D036 | Official closes10–20Oct at13:00 | 10; each1/252, total10/252 |\n\nD035's15Oct close is the price anchor; the five complete measured sessions are16–20Oct. D036's10Oct anchor precedes the ten complete measured sessions11–20Oct. Known exact calendar/sampling completeness must be represented, not inferred from having six/eleven numeric values. Historical visibility allowance30days; every selected grid event matches exactly and is visible at cutoff. Required prices strictly positive. Missing official-close/minute positions refuse even if other older/off-grid prices are present. D032 negative off-grid sample is12:37:30 after omitting12:37; D034 negative after-session close is13:01, receipt13:01, cutoff13:02 and now13:03 so it is genuinely visible but cannot be the official13:00 sample. Other cases use common cutoff/now offsets.\n\n",
+        "D032–D036: for each adjacent close pair, reuse unchanged `_log_return._logarithm` to obtain its canonical50-digit half-even Decimal log. Treat each such finite log as an exact rational intermediate; square/sum and divide by exact sum of interval year fractions using Fraction. Apply sqrt_ratio_50 once for final annualised volatility. **This explicitly proposed two-stage numerical convention preserves log-rounding provenance; it does not claim an unrounded irrational result.** Do not silently switch to mean-centred sample SD, log-of-price differences, float annualisation, a second intermediate rounding, or a constant dt times count without validating the interval measures.\n\n"
+      ],
+      "dependency_substitutions": [
+        "Controlled synthetic source/session/completeness only, not native certification.",
+        "Reuse accepted M00/common M02 mechanisms, existing window interface/record store, prior immutable evidence. Exact cases also qualify authorised shared prerequisite; no added suites."
+      ],
+      "case_coverage": {
+        "lawful_positive": {
+          "cases": [
+            "Exactly root manifest case1, independent fixed literal; complete typed metadata/source lineage/public durable reopen."
+          ]
+        },
+        "prohibited_false_positive": {
+          "cases": [
+            "Exactly root manifest case2; lawful raw preconditions reach its declared defect and persist no occurrence."
+          ]
+        },
+        "missing_mandatory_authority": {
+          "cases": [
+            "Exact bound controlled profile, admission and immutable generation required before runtime."
+          ]
+        },
+        "lawful_optional_absence": {
+          "cases": [
+            "No live provider/calendar integration or other signal required; unsupported prerequisites refuse by contract."
+          ]
+        }
+      },
+      "expected_failure_signals": [
+        "After lawful public raw R151 setup, D032 owner initially absent: valid semantic RED",
+        "Invalid required grid refuses without a persisted D032 occurrence"
+      ],
+      "limitations": [
+        "Exactly two cases; no generic fault/boundary/numeric variant probes, broad suites or earlier claims."
+      ],
+      "adjacent_nonclaims": [
+        "No acceptance beyond this ID; no native-source certification or M00 mutation."
+      ],
+      "environment": "CPython3.12.14 SQLite3.53.1 and existing pinned offline tools.",
+      "material_versions": [
+        "Exact brief/binding/contract/generation and candidate/tree/runtime; old generations preserved."
+      ],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/market_measurement_d032/test_five_minute_realised_volatility.py"
+    }
+  ],
+  "required_support_files": [],
+  "optional_support_files": [],
+  "execution_policy": {
+    "skipped_tests": "FAIL",
+    "xfailed_tests": "FAIL",
+    "xpassed_tests": "FAIL",
+    "collection_failed": "FAIL",
+    "no_tests_collected": "FAIL",
+    "unexpected_governed_mutation": "FAIL"
+  }
+}
