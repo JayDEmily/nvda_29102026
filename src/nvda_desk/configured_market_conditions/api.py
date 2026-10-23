@@ -187,3 +187,27 @@ def create_reader(
     from ._score import build_reader
 
     return build_reader(admission, storage)
+
+
+def create_reversion_owner(
+    *,
+    admission: f.OwnerAdmissionV1,
+    foundation_reader: f.MeasurementWindowReadsV1,
+    score_reader: ScoreReadsV1,
+    storage: f.MemoryStorageV1 | f.SQLiteStorageV1,
+    utc_now: Callable[[], datetime],
+) -> ScoreOwnerV1:
+    """D041 consumes public foundation facts and this owner's accepted D040 read facet."""
+    from ._reversion import build_owner
+
+    return build_owner(admission, foundation_reader, score_reader, storage, utc_now)
+
+
+def create_reversion_reader(
+    *,
+    admission: f.OwnerAdmissionV1,
+    storage: f.SQLiteReadStorageV1,
+) -> ScoreReadsV1:
+    from ._reversion import build_reader
+
+    return build_reader(admission, storage)
