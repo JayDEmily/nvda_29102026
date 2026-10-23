@@ -249,3 +249,7 @@ All61 session minute instants including13:00 official close, 60 fractions1/15120
 ### D035 — controlled implementation SELF-CHECKED, owner-waived independent review
 
 R151 six required official closes15–20October, 5×1/252 trading-year fractions, V5d exact literal; missing 17October with older14October source refuses. Proof0698f2c admitted, semantic RED observed; minimal source763fd4a. Scoped mypy24/Ruff PASS, strict final2/2 exit0. Exact results and owner-waived self-check `handoff/foundation_implementation/d035_execution/`. Native certification deferred; bundle preserved before D036.
+
+### D036 — controlled implementation SELF-CHECKED, owner-waived independent review; tranche stop
+
+R151 eleven required official daily closes10–20October,10×1/252 year fractions, fixed V10d; last-six-only negative refuses. Proof admitted c7d10d6 with intended semantic RED, minimal owner 60126ac. Scoped mypy24/Ruff PASS, strict final2/2 exit0. Exact first RED/final GREEN and self-check `handoff/foundation_implementation/d036_execution/`. Owner previously waived independent reviewer, so this is expressly not an independently reviewed claim. Native provider/calendar certification held. D026–D036 controlled tranche ends here; no D037+ execution. Seven separately saved full-history bundles D030–D036 and final cumulative D036 bundle preserve each checkpoint. No old signal proof was rerun.
