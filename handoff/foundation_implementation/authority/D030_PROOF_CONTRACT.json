@@ -1,0 +1,95 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_d030",
+  "semantic_brief_path": "handoff/foundation_implementation/authority/D030_IMPLEMENTATION_BRIEF.md",
+  "target": {
+    "category": "M",
+    "responsibility_name": "neutral_market_measurement_truth",
+    "package": "nvda_desk.market_measurement_truth",
+    "public_seam": "nvda_desk.market_measurement_truth.api",
+    "intent": "modify",
+    "existing_object_id": "M02"
+  },
+  "proof_axis": "product",
+  "product_tier_treatment": "NOT_CLASSIFIED",
+  "architecture_proof_axis": "architecture_kernel",
+  "required_proof_ids": [
+    "D030-CALCULATION"
+  ],
+  "families": [
+    {
+      "id": "mmt_d030",
+      "path": "tests/product/market_measurement_d030/test_trade_rate_zscore.py",
+      "proof_obligation_ids": [
+        "D030-CALCULATION"
+      ],
+      "required_test_names": [
+        "test_d030_trade_rate_zscore"
+      ],
+      "boundary": "R062 current16 trades/minute and twenty consecutive prior rate observations 8,12 repeated ten times; exact sample SD 80/19 gives Z20. All twenty prior R062 rates8 yields zero sample SD and must refuse.",
+      "proof_levels": [
+        "CONTRACT",
+        "INTEGRATION",
+        "STATE",
+        "SEQUENTIAL_END_TO_END"
+      ],
+      "authoritative_inputs": [
+        "R062 current16 trades/minute and twenty consecutive prior rate observations 8,12 repeated ten times; exact sample SD 80/19 gives Z20. All twenty prior R062 rates8 yields zero sample SD and must refuse.",
+        "### 4.2 Baseline calendar and mappings\n\nControlled calendar `controlled-volume-calendar/1` lists daily synthetic sessions for29September\u201320October2026 inclusive, each12:00\u201313:00Z, no breaks, type=`controlled_cash`, identities `controlled-volume-YYYYMMDD/1`. This is an explicit synthetic list including weekends; never label it a US exchange calendar or generate a supposedly certified calendar from weekdays. Each listed frame is known at cutoff and immutable;29September is an older compatible decoy, outside the mandatory twenty-session window.\n\nT=20October12:30Z. D028 fixes N=2 (18/19October are immediately prior); D029\u2013D031 fix N=20 (30September\u201319October), current excluded. Historical role visibility allowance30days, current freshness60s. Session membership comes from the exact calendar order, not observed row count or whichever older sessions have data. Require one unique eligible selected state per mandatory session and exact source/unit/method compatibility. Each historical session/state precedes current.\n\nMappings version1, same controlled provider/variant:\n\n| R / mapping | Numeric field / native units | Native identity metadata |\n| --- | --- | --- |\n| R041 / `mmt-session-volume` | session.volume / shares | session.id, counter.generation, counter.basis, counter.complete_from_open |\n| R144 / `mmt-bar-volume` | bar.volume / shares | session.id, bucket.id |\n| R062 / `mmt-trade-rate` | activity.trades_per_minute / trades/minute | session.id, bucket.id |\n| R063 / `mmt-volume-rate` | activity.shares_per_minute / shares/minute | session.id, bucket.id |\n\nFor each row identity keys are the listed full dotted names in the listed order, mapped to the corresponding tuple field paths. Unit conventions are identity transforms: `mmt-shares/1`, `mmt-trades-per-minute/1`, `mmt-shares-per-minute/1`. Do not infer rates from totals or share volume from trade counts.\n\nD028 uses exact elapsed eligible trading seconds / total eligible session seconds, calculated from the admitted frame and selected event; desired fraction1/2 is12:30 in each60minute session. Cumulative values are nonnegative, basis=`cash_shares_unadjusted`, generation=`counter-YYYYMMDD/1`, complete_from_open=True. In the negative exactly one required counter reports False. Include a19October12:31 value999 (wrong fraction) and17October12:30 value999 (outside required N) in both cases; neither repairs the negative. Current30; mandatory18October10 and19October20. Require equal session type/duration, correct generation, complete-from-open counters and positive prior mean; no interpolation/scaling/skipping. Zero current is lawful if mean positive.\n\nD029\u2013D031 use native bucket.id=`minute-ending-1230/1`; each value describes the completed [12:29,12:30] minute in its session. Exact event=12:30, source units as above; all volumes/rates are finite and nonnegative. Baseline tuple in chronological calendar order is (8,12) repeated ten times in twenty **distinct sessions/occurrences**. Mean10, sum squared deviations80, sample variance80/19. Current16. Require exactly these twenty immediately prior sessions, not the current value, older replacements or nearest bucket. D029's wrong-bucket decoy is a separate19October12:31 observation999 with bucket `minute-ending-1231/1`; its negative changes the required30September bucket to `minute-ending-1229/1` with matching12:29 event and retains an older29September matching-bucket8 decoy outside the required twenty-session window. D031 negative changes only one required prior receipt to cutoff+1s; public direct projection establishes that future-received source exists.\n\n",
+        "D029\u2013D031: compute mean/sample variance exactly as rationals; require N=20 and variance>0. Evaluate signed sqrt((current\u2212mean)^2/variance), rounding **only the final z value** to50 significant digits ROUND_HALF_EVEN (exact zero stays Decimal(\"0\")). Proposed shared helper in `_numeric_bounds.py`: `sqrt_ratio_50(value:Fraction)->Decimal`, for nonnegative values, with exact integer/rational lower/upper bounds refined until they round identically; no binary float or ambient Decimal context. Detect exact rational square roots and half-even ties explicitly rather than waiting forever on an interval straddling a midpoint. A negative sign applies exactly after magnitude rounding; unresolved numerical bounds refuse rather than emit a guessed value.\n\n"
+      ],
+      "dependency_substitutions": [
+        "Controlled synthetic source/session/completeness only, not native certification.",
+        "Reuse accepted M00/common M02 mechanisms, existing window interface/record store, prior immutable evidence. Exact cases also qualify authorised shared prerequisite; no added suites."
+      ],
+      "case_coverage": {
+        "lawful_positive": {
+          "cases": [
+            "Exactly root manifest case1, independent fixed literal; complete typed metadata/source lineage/public durable reopen."
+          ]
+        },
+        "prohibited_false_positive": {
+          "cases": [
+            "Exactly root manifest case2; lawful raw preconditions reach its declared defect and persist no occurrence."
+          ]
+        },
+        "missing_mandatory_authority": {
+          "cases": [
+            "Exact bound controlled profile, admission and immutable generation required before runtime."
+          ]
+        },
+        "lawful_optional_absence": {
+          "cases": [
+            "No live provider/calendar integration or other signal required; unsupported prerequisites refuse by contract."
+          ]
+        }
+      },
+      "expected_failure_signals": [
+        "Unsupported D030 calculation after lawful public M00 prerequisites: semantic RED only",
+        "Refusal returns None with empty derived history"
+      ],
+      "limitations": [
+        "Exactly two cases; no generic fault/boundary/numeric variant probes, broad suites or earlier claims."
+      ],
+      "adjacent_nonclaims": [
+        "No acceptance beyond this ID; no native-source certification or M00 mutation."
+      ],
+      "environment": "CPython3.12.14 SQLite3.53.1 and existing pinned offline tools.",
+      "material_versions": [
+        "Exact brief/binding/contract/generation and candidate/tree/runtime; old generations preserved."
+      ],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/market_measurement_d030/test_trade_rate_zscore.py"
+    }
+  ],
+  "required_support_files": [],
+  "optional_support_files": [],
+  "execution_policy": {
+    "skipped_tests": "FAIL",
+    "xfailed_tests": "FAIL",
+    "xpassed_tests": "FAIL",
+    "collection_failed": "FAIL",
+    "no_tests_collected": "FAIL",
+    "unexpected_governed_mutation": "FAIL"
+  }
+}
