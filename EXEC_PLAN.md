@@ -241,3 +241,7 @@ R151 exact6-minute-grid instants,5 eligible 1/15120 return intervals, fixed lite
 ### D033 — controlled implementation SELF-CHECKED, owner-waived independent review
 
 R151 fixed31-point30minute grid and 30 exact1/15120 intervals, V30m independent literal; last-six-only negative refuses. Admitted RED at eca7043 after lawful M00 setup; minimal source profile57a8895. Scoped mypy24/Ruff PASS; strict final2/2 exit0, logs and owner-waived self-check `handoff/foundation_implementation/d033_execution/`. Native holds remain. Per-ID cumulative bundle preserved before D034.
+
+### D034 — controlled implementation SELF-CHECKED, owner-waived independent review
+
+All61 session minute instants including13:00 official close, 60 fractions1/15120, fixed Vsession; missing official close despite visible 13:01 off-session record refuses. Immutable proof admitted a3e7522, valid RED; minimal source47d2e6f. Scoped mypy24/Ruff PASS and strict final2/2 exit0. Exact logs/self-check `handoff/foundation_implementation/d034_execution/`. Native certification deferred, independently reviewed label not claimed. Checkpoint before D035.
