@@ -1,0 +1,13 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/83dd7c79f14f/NVDA_D037_D056_EXECUTION_20261023
+configfile: pyproject.toml
+collected 2 items
+
+tests/product/market_measurement_d042/test_signal.py ..                  [100%]
+
+============================== 2 passed in 0.12s ===============================
+product-proof aggregate: neutral_market_measurement_truth_d042 state=READY_FOR_PROOF
+authority=fd69f8a6f1c9f015ac2c01351c93fe9ea91d94730e1c0a43b47865a616e14bd3 generation=f4160c3ed8ef6392f8c8062c464262d3e24c5aa215bfc9d9d690d1d6cce3d2f5
+candidate=06cc9837496809d984de4c1b0679b0c6051e35e6
+observed aggregate outcome: exit=0
