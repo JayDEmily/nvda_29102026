@@ -1,7 +1,7 @@
 # NVDA V2 — D038, D040 and D041 ExecPlan
 
 Date: 24 October 2026 (Melbourne)
-Status: Authority-resolution phase commissioned by owner on24October2026; D038 profile proposal ready for owner decision. Product implementation remains gated on accepted choices.
+Status: D038 independently ACCEPTED under the owner's approved profile. D040/D041 retain their separate authority holds. Earlier20signal schedule superseded.
 
 ## 1. Goal, baseline and authority
 
@@ -126,7 +126,7 @@ Future owning documents follow existing per-ID naming: handoff/foundation_implem
 | Item | State |
 | --- | --- |
 | This planning task | Documentary plan/governance only; no product/static tests or implementation. |
-| D038 | BLOCKED — source roles/grid/pi-log-output decisions. |
+| D038 | ACCEPTED controlled profile — source/numeric choices approved, implementation independently reviewed, sole strict pair passed; see §10. |
 | D040 | BLOCKED — owning downstream implementation contract and concrete P_SCORE profile. |
 | D041 | BLOCKED — same own-profile decisions plus accepted D040. |
 | Completed predecessors/tranche | Preserved at fc82a07 and owning immutable evidence; excluded from automatic reruns. |
@@ -148,3 +148,7 @@ Next invariant: owner acceptance of the new D038 source/numeric choices under §
 Owner instruction24October2026: “Please disregard the above20signal exec plan instructions. I approve this D038 profile.” The exact profile proposed at c6737d5943ceee69c44fd72c710f1ded2591c206 is accepted; this satisfies the D038 domain-choice hold and, with the prior execution request, commissions its implementation. The old20signal schedule is superseded. Preserve accepted historical evidence and retain this plan's two-case/no-repeat/bounded-repair/independent-acceptance rules. D038 definition/configuration, exact source/grid/numeric contract, literal oracle, physical proof path and file boundaries are the owning brief §§2–5. Runnable manifest after admission: test_d038_signal[success] and [refusal] only; no D040/D041 run.
 
 Actual environment was absent. Restored CPython3.12.14 virtual environment from primary interpreter SQLite3.53.1 using committed offline hash-locked16packages. NVDA_PROOF_PYTHON=/workspace/scratch/83dd7c79f14f/d038-runtime/bin/python is explicitly verified for this environment; versions recorded in owning environment.log. No product qualification tests ran. No new-session reinstall will follow while unchanged.
+
+## 10. D038 accepted controlled profile — 24 October2026
+
+Candidate0931e4b7d83b7cf81b02c6443e2848edda896a2d, treee6f9384c50039e9a97f8415826eb32daf27e8c6f, brief4bd92bd883c5fc4ab63d4cb8988783d53994b25ca88ab91a2976bda13bdaee9c, generation28274ee853c92e924c7224cde0f2dda35e23588c9ab68a41b0da7c283f9a6b7c. Independent semantic ACCEPT in handoff/foundation_implementation/d038_execution/final_review.md; full raw strict output final_green.log in the same directory: exactly2passed in0.24s, aggregateexit0 on pinned CPython3.12.14. Scope/static commands and actual outcomes are in pre_runtime.md/owning initial logs. No runtime RED, duplicate implementer GREEN, old product rerun, retry or extra case. Interval signs/floor/rounding and fixture discrimination were independently assessed; unexecuted branches/native certification/integration limits are explicit in the review. The approved brief, original immutable generation and all original outputs remain unchanged. Commit/save a verified cumulative full-history bundle before advancing. D040/D041 retain their own unapproved downstream ownership/score profiles and no runtime target.
