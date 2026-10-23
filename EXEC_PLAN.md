@@ -1,7 +1,7 @@
 # NVDA V2 — D038, D040 and D041 ExecPlan
 
 Date: 24 October 2026 (Melbourne)
-Status: Proposed new plan — authority resolution first; implementation NOT commissioned.
+Status: Authority-resolution phase commissioned by owner on24October2026; D038 profile proposal ready for owner decision. Product implementation remains gated on accepted choices.
 
 ## 1. Goal, baseline and authority
 
@@ -134,3 +134,11 @@ Future owning documents follow existing per-ID naming: handoff/foundation_implem
 | Deferred obligations | Native-source/calendar certification, broader integration/E2E and main integration remain separate. |
 
 Generic skill defaults for routine RED, extra adversarial tests, fresh-context duplication, separate design reports, alternative plan paths and whole-branch review do not override this owner's established root-plan/efficiency discipline. Independent review remains substantive; no token/cache savings are inferred without measurement.
+
+## 8. Execution ledger — 24 October2026
+
+Owner instruction “execute that plan for38,40and41” commissions this plan's ordered work. Restored exact planning checkpoint caf01260f9299fa8bf075528baab48b34db48b5c after scratch workspace loss. No old product/static check, installation or environment qualification ran.
+
+D038 §3.2 documentary preparation is complete: handoff/foundation_implementation/authority/D038_IMPLEMENTATION_BRIEF.md now contains the concrete PROPOSED three-minute source/co-occurrence contract, exact interval-arithmetic/final50digit convention, independently bounded nonzero-BV numerical oracle, two future case specifications and minimal file boundaries. This is not implementation/admission/acceptance. The independent mathematical calculation used only Python standard-library Fraction/Decimal and imported no product code; it was not a product test.
+
+Next invariant: owner acceptance of the new D038 source/numeric choices under §3.5. D038 remains BLOCKED pending that decision; no source, tests, loader, contracts, binding or immutable generation changed. D040/D041 have not advanced past their existing ownership/profile holds. Do not interpret the generic execution commission as acceptance of choices that had not yet been proposed. GUARDRAILS.md remains frozen.
