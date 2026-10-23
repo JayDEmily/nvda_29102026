@@ -274,3 +274,5 @@ Status: D026–D029 accepted at their recorded boundaries. D030 documentary repa
 ## 10. Owner-approved bounded recovery execution
 
 23 October2026 owner answered Yes to the exact §9 proposal: sequential D030–D036 independent final execution of the existing two cases per ID on Python3.12.14, after necessary owning repairs. This explicitly permits the14-existing-case recovery run despite the historical Python3.13.5 self-check results. No new cases/old signals/broad suites/repeated successful recovery GREEN. Root plan remains sole ledger; per-ID acceptance and downloadable checkpoint remain mandatory. Skill defaults for whole-branch suites/reviews are superseded by this exact commissioned process.
+
+Pinned recovery environment restored once from hashed offline lock and actual versions verified: Python3.12.14, SQLite3.53.1, pytest9.0.3, mypy1.20.1, Ruff0.15.11, PyYAML6.0.3. Reuse this environment for all remaining units. D030 source/test change is an exact brief-hash constant only after documentary repair, with independent inspection already recorded; reuse scoped static evidence and execute only the approved final strict pair.
