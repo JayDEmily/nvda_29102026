@@ -28,6 +28,10 @@ declared_owner_edges:
     target: M00
   - source: M01
     target: M00
+  - source: M03
+    target: M02
+  - source: M03
+    target: M00
 public_seam_exceptions:
   - source_owner: A00
     target_owner: M00

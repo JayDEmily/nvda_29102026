@@ -136,6 +136,7 @@ modules:
       - adapter
     state_writer_boundary: Existing typed MeasurementOwnerV1.materialise under exact version3/D012 authority, plus additive MeasurementRatioOwnerV1.materialise under exact D013 authority; each has atomic immutable registration and writes only its separate owner-local profile.
     state_reader_boundaries:
+      - M03 may consume public MeasurementWindowReadsV1 for exact controlled D040 and later separately admitted D041; no private state or write permission.
       - Typed MeasurementReadsV1 exact occurrence/history/definition/configuration facets; read-only storage exposes no writer/materialisation capability.
       - Additive MeasurementRatioReadsV1 exact-ratio occurrence/history/definition/parameter facet; complete nested evidence is recoverable without a raw reader or live predecessor producer.
       - Additive MeasurementRawRatioReadsV1 exact-ratio occurrence/history/definition/configuration facet; complete raw lineage is recoverable without a raw reader or re-registration.
@@ -147,6 +148,40 @@ modules:
       - A00, M00, M01, peers, readers and storage mechanisms as semantic owners.
     replay_obligations:
       - Logical retries preserve first committed identity/time; material inputs/versions append; exact immutable typed readback, with no authoritative replay or migration capability.
+    predecessors: []
+    successors: []
+  - id: M03
+    name: configured_market_conditions
+    status: active
+    description: P02 controlled configured composite owner; D040 only until separately accepted D041.
+    semantic_responsibility: Own exact versioned configured market-condition composite scores and complete immutable score provenance; controlled definitions only.
+    inputs:
+      - Exact typed public M02 measurement occurrences selected by immutable definition/profile/time.
+      - Exact owner-local profile and predecessor identity request.
+    outputs:
+      - D040 controlled unsigned trend-intensity exact-ratio score, with complete actual predecessor and per-feature lineage.
+    permitted_dependencies: [M02, M00]
+    package: nvda_desk.configured_market_conditions
+    public_seam: nvda_desk.configured_market_conditions.api
+    exclusions:
+      - Other P02 identities, generic strategy service and peer-to-peer imports.
+      - M00 raw reads/writes, M01 imports/migration/state retirement, provider/network/API acquisition.
+      - Native certification, predictive quality, profitability, A00 composition and external effects.
+    state_ownership: Own immutable controlled score profiles/results/evidence in a separate SQLite file; no predecessor state ownership.
+    time_ownership: Exact as-of/cutoff/calculation times and selected predecessor snapshot time compatibility.
+    side_effects:
+      - Own command appends immutable score only after acknowledged SQLite transaction/readback.
+    component_forms: [contract, schema, service, repository, configuration, adapter]
+    state_writer_boundary: ScoreOwnerV1.materialise writes only the admitted owner-local score file.
+    state_reader_boundaries:
+      - ScoreReadsV1 lookup and bounded history; durable reopen has no materialise operation.
+      - M02 MeasurementWindowReadsV1 public inputs; M00 public carrier import for decoding only, no raw-state access.
+    persistence_mechanisms:
+      - Separate immutable STRICT SQLite record file, application_id0x4E560030, hash/canonical/recomputation verification and read-only reopen.
+      - Memory storage is component-only and never durable fallback.
+    prohibited_state_writers: [M00, M01, M02, A00, peers, readers]
+    replay_obligations:
+      - Identical logical facts retain first committed result/time; changed versions/inputs append; no migration or authoritative replay claim.
     predecessors: []
     successors: []
 retired_ids: []

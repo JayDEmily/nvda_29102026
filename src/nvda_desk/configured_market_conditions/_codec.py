@@ -1,0 +1,151 @@
+"""Owner-local lossless codec copied from accepted neutral technical infrastructure."""
+
+from __future__ import annotations
+
+import hashlib
+import json
+import types
+from dataclasses import fields, is_dataclass
+from datetime import datetime, timedelta
+from decimal import Decimal
+from typing import Any, Literal, TypeAliasType, get_args, get_origin, get_type_hints
+
+from nvda_desk.raw_signal_occurrence_truth import api as raw_api
+
+_FACTORIES = {
+    "RawSignalCatalogueId": raw_api.RawSignalCatalogueId,
+    "observation_occurrence_id": raw_api.observation_occurrence_id,
+    "ingestion_sequence_scope": raw_api.ingestion_sequence_scope,
+}
+_IDENTITIES = {
+    type(factory("R034" if name == "RawSignalCatalogueId" else "identity")): name
+    for name, factory in _FACTORIES.items()
+}
+
+
+def timestamp(value: datetime) -> str:
+    return (
+        f"{value.year:04d}-{value.month:02d}-{value.day:02d}T"
+        f"{value.hour:02d}:{value.minute:02d}:{value.second:02d}.{value.microsecond:06d}Z"
+    )
+
+
+def tagged(value: Any) -> Any:
+    if type(value) in _IDENTITIES:
+        return {"kind": _IDENTITIES[type(value)], "value": value.value}
+    if type(value) is Decimal:
+        sign, digits, exponent = value.as_tuple()
+        return {
+            "kind": "decimal",
+            "sign": sign,
+            "digits": "".join(str(item) for item in digits),
+            "exponent": exponent,
+        }
+    if type(value) is datetime:
+        return timestamp(value)
+    if type(value) is timedelta:
+        return (value.days * 86400 + value.seconds) * 1000000 + value.microseconds
+    if is_dataclass(value) and not isinstance(value, type):
+        return {field.name: tagged(getattr(value, field.name)) for field in fields(value)}
+    if type(value) is tuple:
+        return [tagged(item) for item in value]
+    if type(value) is dict:
+        return {key: tagged(item) for key, item in value.items()}
+    if value is None or type(value) in (bool, int, str):
+        return value
+    raise TypeError("unsupported controlled measurement representation")
+
+
+def canonical(value: Any) -> bytes:
+    return json.dumps(
+        tagged(value), sort_keys=True, ensure_ascii=True, separators=(",", ":"), allow_nan=False
+    ).encode("utf-8")
+
+
+def digest(value: Any) -> str:
+    return hashlib.sha256(canonical(value)).hexdigest()
+
+
+def untagged(value: Any, hint: Any) -> Any:
+    """Decode only the exact declared public record/factory at this position."""
+    if isinstance(hint, TypeAliasType):
+        return untagged(value, hint.__value__)
+    args = get_args(hint)
+    if get_origin(hint) is Literal:
+        if type(value) is not str or value not in args:
+            raise ValueError("invalid literal content")
+        return value
+    if get_origin(hint) is types.UnionType:
+        if value is None and type(None) in args:
+            return None
+        for option in args:
+            if option is type(None):
+                continue
+            try:
+                return untagged(value, option)
+            except (TypeError, ValueError, KeyError):
+                pass
+        raise ValueError("invalid union content")
+    if get_origin(hint) is tuple:
+        if type(value) is not list:
+            raise ValueError("tuple content must be an array")
+        if len(args) == 2 and args[1] is Ellipsis:
+            return tuple(untagged(item, args[0]) for item in value)
+        if len(value) != len(args):
+            raise ValueError("tuple arity mismatch")
+        return tuple(untagged(item, cls) for item, cls in zip(value, args, strict=True))
+    if hint in _IDENTITIES:
+        name = _IDENTITIES[hint]
+        if type(value) is not dict or set(value) != {"kind", "value"} or value["kind"] != name:
+            raise ValueError("opaque public identity layer mismatch")
+        return _FACTORIES[name](value["value"])
+    if hint is Decimal:
+        if type(value) is not dict or set(value) != {"kind", "sign", "digits", "exponent"}:
+            raise ValueError("invalid Decimal tag")
+        if (
+            value["kind"] != "decimal"
+            or type(value["sign"]) is not int
+            or value["sign"] not in (0, 1)
+            or type(value["digits"]) is not str
+            or not value["digits"]
+            or any(c not in "0123456789" for c in value["digits"])
+            or type(value["exponent"]) is not int
+        ):
+            raise ValueError("invalid exact Decimal content")
+        return Decimal((value["sign"], tuple(map(int, value["digits"])), value["exponent"]))
+    if hint is datetime:
+        if type(value) is not str:
+            raise TypeError("instant must be a string")
+        return datetime.fromisoformat(value.replace("Z", "+00:00"))
+    if hint is timedelta:
+        if type(value) is not int:
+            raise TypeError("duration must be exact microseconds")
+        return timedelta(microseconds=value)
+    if isinstance(hint, type) and is_dataclass(hint):
+        hints = get_type_hints(hint)
+        if type(value) is not dict or set(value) != set(hints):
+            raise ValueError("incomplete or extra record fields")
+        return hint(
+            **{
+                key: untagged(
+                    value[key],
+                    Decimal
+                    if hint is raw_api.ProjectedRawValueV1 and key == "native_value"
+                    else cls,
+                )
+                for key, cls in hints.items()
+            }
+        )
+    if hint is Any:
+        # Projected native value is broader in M00; this pilot stores only Decimal.
+        return untagged(value, Decimal)
+    if type(value) is not hint:
+        raise TypeError("stored scalar type mismatch")
+    return value
+
+
+def decode(payload: bytes, cls: Any) -> Any:
+    value = untagged(json.loads(payload), cls)
+    if canonical(value) != payload:
+        raise ValueError("noncanonical or lossy persisted representation")
+    return value

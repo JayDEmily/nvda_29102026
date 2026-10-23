@@ -9,3 +9,6 @@ implementation_allocations:
   - object_id: M01
     name: derived_signal_calculation_truth
     implemented_on: "2026-10-04"
+  - object_id: M03
+    name: configured_market_conditions
+    implemented_on: "2026-10-24"

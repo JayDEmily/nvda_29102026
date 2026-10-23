@@ -1,0 +1,9 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "configured_market_conditions_d040",
+  "brief_path": "handoff/configured_market_conditions/authority/D040_IMPLEMENTATION_BRIEF.md",
+  "binding_path": "implementation/authority/D040_IMPLEMENTATION_AUTHORITY_BINDING.yaml",
+  "contract_path": "handoff/configured_market_conditions/authority/D040_PROOF_CONTRACT.json",
+  "physical_root": "tests/product/configured_conditions_d040",
+  "admission_path": "config/product_proof/configured_conditions_d040/admission.json"
+}

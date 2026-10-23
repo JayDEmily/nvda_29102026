@@ -557,6 +557,75 @@ def _scalar_extension(
     return entry, contract, sha256(brief)
 
 
+def _configured_extension(
+    root: Path,
+    identity: Literal["D040", "D041"],
+) -> tuple[dict[str, Any], dict[str, Any], str] | None:
+    """Two fixed P02 owner declarations; unchanged target/generation/partition algorithms."""
+    name = identity.lower()
+    directory = f"config/product_proof/configured_conditions_{name}"
+    prefix = "handoff/configured_market_conditions/authority/"
+    expected = {
+        "schema_version": "1.0",
+        "claim_id": f"configured_market_conditions_{name}",
+        "brief_path": prefix + f"{identity}_IMPLEMENTATION_BRIEF.md",
+        "binding_path": (
+            f"implementation/authority/{identity}_IMPLEMENTATION_AUTHORITY_BINDING.yaml"
+        ),
+        "contract_path": prefix + f"{identity}_PROOF_CONTRACT.json",
+        "physical_root": f"tests/product/configured_conditions_{name}",
+        "admission_path": directory + "/admission.json",
+    }
+    descriptor = safe_path(root, directory + "/claim.json")
+    if not descriptor.exists():
+        physical = safe_path(root, expected["physical_root"])
+        if physical.exists() and any(p.is_file() for p in physical.rglob("*.py")):
+            raise ValueError(f"unowned {identity} configured proof source")
+        return None
+    if read_json(descriptor) != expected:
+        raise ValueError(f"invalid {identity} configured descriptor")
+    brief, binding = (safe_path(root, expected[k]) for k in ("brief_path", "binding_path"))
+    validate_implementation_authority(root, binding, brief)
+    if yaml.safe_load(binding.read_text())["targets"] != [
+        {"action": "modify", "object_id": key} for key in ("M03", "M02", "G01")
+    ]:
+        raise ValueError(f"{identity} owning projection mismatch")
+    rows = re.findall(r"^\| ([^|]+?) \| ([0-9a-f]{64}) \|$", brief.read_text(), re.M)
+    required = {
+        "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md",
+        "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv",
+        f"handoff/configured_market_conditions/authority/{identity}_PROFILE.json",
+        expected["contract_path"],
+    }
+    if len(rows) != 4 or set(dict(rows)) != required:
+        raise ValueError(f"{identity} incorporated authority membership mismatch")
+    if any(sha256(safe_path(root, path)) != digest for path, digest in rows):
+        raise ValueError(f"{identity} incorporated authority hash mismatch")
+    contract = read_json(safe_path(root, expected["contract_path"]))
+    _schema(root, contract, "accepted_brief_product_proof.schema.json")
+    if (
+        sha256(root / expected["contract_path"])
+        != _marker(brief.read_text(), f"{identity}-PROOF-CONTRACT-SHA256")
+        or contract["claim_id"] != expected["claim_id"]
+        or contract["semantic_brief_path"] != expected["brief_path"]
+        or contract["target"]
+        != {
+            "category": "M",
+            "responsibility_name": "configured_market_conditions",
+            "package": "nvda_desk.configured_market_conditions",
+            "public_seam": "nvda_desk.configured_market_conditions.api",
+            "intent": "modify",
+            "existing_object_id": "M03",
+        }
+    ):
+        raise ValueError(f"{identity} exact owning contract mismatch")
+    entry = {k: v for k, v in expected.items() if k != "brief_path"}
+    entry["profile"] = "accepted_brief_v2"
+    target_id, _ = _target(root, contract["target"])
+    _generation(root, entry, contract, sha256(brief), target_id)
+    return entry, contract, sha256(brief)
+
+
 def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductProofClaim:
     root = repository_root.resolve()
     catalogue = read_json(root / "config/product_proof/claims.json")
@@ -660,6 +729,10 @@ def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductPro
             extension = _scalar_extension(root, identity)
             if extension is not None:
                 extensions[extension[0]["claim_id"]] = extension
+        for configured_identity in ("D040", "D041"):
+            configured = _configured_extension(root, configured_identity)
+            if configured is not None:
+                extensions[configured[0]["claim_id"]] = configured
     if extensions:
         catalogue = {
             **catalogue,

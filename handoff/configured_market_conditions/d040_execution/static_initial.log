@@ -1,0 +1,5 @@
+Initial scoped Ruff --fix: exit1,14 errors (1 import ordering fixed,13 remaining E501 long-line diagnostics in _score.py, proof and loader). Tool display truncated the generated single-line JSON diagnostic; this is a diagnostic summary, not claimed full raw output.
+Initial scoped mypy: exit1,2 errors:
+_store.py:14 Cannot find implementation/stub nvda_desk.market_score_truth (accidental textual name replacement while copying technical infrastructure).
+_score.py:127 ratio received unresolved broad result union instead of ExactRatioV1.
+Repair: restore public market_measurement_truth import; explicit result-carrier narrowing; represent exact embedded JSON multiline and wrap declarations/large oracle integers. Re-execution only these failed scoped static checks; no product tests have run.
