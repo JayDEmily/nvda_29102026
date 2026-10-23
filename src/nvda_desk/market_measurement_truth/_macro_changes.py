@@ -20,6 +20,7 @@ from ._vwap_returns import chosen, history
 from ._window import NAMESPACE, _decode, _identity, _Reads
 
 BRIEFS: dict[str, str] = {
+    "D055": "23c2da8d4020afa92509309ddeb6d1de83ea3fc3d7e3ad252b3739f605286167",
     "D054": "3454fc13ce357602930279fc74df663f02da838fa3c3f4da06aa54bc792fade5",
     "D053": "2adcd2f484657e484248fd211fb785ce12a69f556a8ec409ab5f6ba4cfbf02dc",
     "D052": "aed1a660136672e1818db8fe8d79bc6ae9459dfd93ddee9c51177b42820dd173",
@@ -36,6 +37,7 @@ BRIEFS: dict[str, str] = {
 }
 # raw dependencies, exact horizon days, arithmetic mode, definition label
 PROFILES: dict[str, tuple[tuple[str, ...], int, str, str]] = {
+    "D055": (("R239",), 1, "index", "INDEX-CHANGE"),
     "D054": (("R238",), 1, "index", "INDEX-CHANGE"),
     "D053": (("R237",), 1, "index", "INDEX-CHANGE"),
     "D052": (("R236",), 1, "index", "INDEX-CHANGE"),
@@ -51,6 +53,7 @@ PROFILES: dict[str, tuple[tuple[str, ...], int, str, str]] = {
     "D042": (("R247", "R249"), 0, "slope", "RATE-SLOPE"),
 }
 SERIES: dict[str, tuple[str, str, str]] = {
+    "R239": ("VIX9D", "index_points", "not_applicable"),
     "R238": ("VIX1D", "index_points", "not_applicable"),
     "R237": ("VVIX", "index_points", "not_applicable"),
     "R236": ("VIX", "index_points", "not_applicable"),
