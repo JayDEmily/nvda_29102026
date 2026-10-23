@@ -22,7 +22,7 @@ from ._window import NAMESPACE, _decode, _identity, _Reads
 
 BRIEFS = {
     "D031": "e4f9757b9e16702ec6b276e2f7fc0de9c380e93fce8c8afc9bc7d702ea02a481",
-    "D030": "5c7daf19305867f4d793cec5b41ad8fe2de02594a5dda7e52d37a8caeb3ed3bf",
+    "D030": "6a1acd3113fcb2bd19fb6e170543d98f3899407ff1090d9b4fc0b8bff6ca440f",
     "D029": "8209530693ea66f600b7033ff9841c31878a6a2393959d3c8840ae1ed592af8e",
     "D028": "c0c2788a727681d87f7b971d242f263d0f04657c896cc113bcf8a57126e684a9",
 }

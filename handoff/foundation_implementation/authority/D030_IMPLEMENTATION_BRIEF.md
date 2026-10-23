@@ -4,7 +4,7 @@ ACCEPTED_FOR_IMPLEMENTATION under owner commission 23 October 2026. This authore
 
 ## 1. Meaning and case boundaries
 
-R062 current16 trades/minute and twenty consecutive prior rate observations 8,12 repeated ten times; exact sample SD 80/19 gives Z20. All twenty prior R062 rates8 yields zero sample SD and must refuse.
+R062 current16 trades/minute and twenty consecutive prior rate observations 8,12 repeated ten times; exact sample variance 80/19 gives Z20. All twenty prior R062 rates8 yields zero sample SD and must refuse.
 
 Definition `D030-TRADE-RATE-ZSCORE-1`, parameter `mmt-trade-rate-zscore-20sessions-50d/1`, selection `mmt-trade-rate-zscore-20sessions-selection/1`, R062 native `activity.trades_per_minute`, units trades/minute, exact bucket and ordered twenty sessions. Scalar Decimal z-score 50 digits. No D predecessors.
 
@@ -37,7 +37,7 @@ D029–D031: compute mean/sample variance exactly as rationals; require N=20 and
 
 ## 2. Two-case admission
 
-Contract SHA256: `33f6465477bd41ff7feb5508e4964cf5094279a3c7a38f0d93b576f6e7a3d7ef`. Exactly one named parameterised two-case function in `tests/product/market_measurement_d030/test_trade_rate_zscore.py`. Case one asserts the fixed Z20 Decimal literal, full M00 lineage, identity and durable SQLite reopen. Case two proves refusal on zero sample SD with all twenty baseline entries otherwise lawful. No extra proof cases. Independent final review required by the active ExecPlan.
+Contract SHA256: `cb5fa4b1ed588b2bb6251ada71617571783853c4565630b046667120e73c0032`. Exactly one named parameterised two-case function in `tests/product/market_measurement_d030/test_trade_rate_zscore.py`. Case one asserts the fixed Z20 Decimal literal, full M00 lineage, identity and durable SQLite reopen. Case two proves refusal on zero sample SD with all twenty baseline entries otherwise lawful. No extra proof cases. Independent final review required by the active ExecPlan.
 
 ## 3. In-scope change
 
@@ -45,7 +45,7 @@ Extend `_volume_baseline.BRIEFS` for this identity, reuse preapproved mapping/co
 
 ## 4. Incorporated bytes
 
-D030-PROOF-CONTRACT-SHA256: cd5c8bff830e96e7da8bc67329bd1af3bcebd15e1e1005865be3d71f80c39170
+D030-PROOF-CONTRACT-SHA256: cb5fa4b1ed588b2bb6251ada71617571783853c4565630b046667120e73c0032
 
 | Path | SHA256 |
 | --- | --- |
@@ -55,4 +55,4 @@ D030-PROOF-CONTRACT-SHA256: cd5c8bff830e96e7da8bc67329bd1af3bcebd15e1e1005865be3
 | handoff/foundation_implementation/authority/SQLITE_IMPLEMENTATION_BRIEF_PROPOSED.md | 3ad4cdc9ffba4cf91ff9a27edf1dd3b1a9824a421514bb4b5a2cc1b9c504f233 |
 | handoff/foundation_implementation/authority/G6_1_D012_IMPLEMENTATION_BRIEF_PROPOSED.md | a31c482d2dc4822539ede99e955761319585af4badea93b9fc279638e1e1f393 |
 | implementation/authority/G6_1_D012_IMPLEMENTATION_AUTHORITY_BINDING.yaml | f1eedec4aa2fcc543a66b709ecd925dd713d01ecabf19c776d5f1b07d3e15f8e |
-| handoff/foundation_implementation/authority/D030_PROOF_CONTRACT.json | cd5c8bff830e96e7da8bc67329bd1af3bcebd15e1e1005865be3d71f80c39170 |
+| handoff/foundation_implementation/authority/D030_PROOF_CONTRACT.json | cb5fa4b1ed588b2bb6251ada71617571783853c4565630b046667120e73c0032 |

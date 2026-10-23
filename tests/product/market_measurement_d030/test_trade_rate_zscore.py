@@ -8,7 +8,7 @@ import pytest
 from nvda_desk.market_measurement_truth import api as f
 from nvda_desk.raw_signal_occurrence_truth import api as r
 
-BRIEF = "5c7daf19305867f4d793cec5b41ad8fe2de02594a5dda7e52d37a8caeb3ed3bf"
+BRIEF = "6a1acd3113fcb2bd19fb6e170543d98f3899407ff1090d9b4fc0b8bff6ca440f"
 AUTHORITY = (
     (
         "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md",
