@@ -245,3 +245,7 @@ R151 fixed31-point30minute grid and 30 exact1/15120 intervals, V30m independent 
 ### D034 — controlled implementation SELF-CHECKED, owner-waived independent review
 
 All61 session minute instants including13:00 official close, 60 fractions1/15120, fixed Vsession; missing official close despite visible 13:01 off-session record refuses. Immutable proof admitted a3e7522, valid RED; minimal source47d2e6f. Scoped mypy24/Ruff PASS and strict final2/2 exit0. Exact logs/self-check `handoff/foundation_implementation/d034_execution/`. Native certification deferred, independently reviewed label not claimed. Checkpoint before D035.
+
+### D035 — controlled implementation SELF-CHECKED, owner-waived independent review
+
+R151 six required official closes15–20October, 5×1/252 trading-year fractions, V5d exact literal; missing 17October with older14October source refuses. Proof0698f2c admitted, semantic RED observed; minimal source763fd4a. Scoped mypy24/Ruff PASS, strict final2/2 exit0. Exact results and owner-waived self-check `handoff/foundation_implementation/d035_execution/`. Native certification deferred; bundle preserved before D036.
