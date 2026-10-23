@@ -1,5 +1,7 @@
 # NVDA V2 — D037–D056 bounded implementation plan
 
+Current execution disposition: **COMPLETE for D037, D039 and D042–D056**, the17 commissioned controlled profiles. Independent acceptance and two new cases per signal are recorded below. D038/D040/D041 remain deferred and BLOCKED. Planning-only passages describe the approved baseline; this execution commission/ledger supersedes them for the authorised units. No native-source certification, integration/E2E completion, merge or push is claimed.
+
 ## 1. Authority, baseline and planning boundary
 
 Owner commissioned this plan on 23 October 2026 and amended it by the owner instruction “NVDA V2 — D037–D056 ExecPlan Amendments”, timestamp 23-10-26 15:46. This revision implements its seven requirements: bounded repair verification, canonical proof declarations, reused context/environment evidence, explicit deferrals, reconciled governance, retained assurance and planning-only delivery. **Planning only: no signal implementation, product testing or signal acceptance is commissioned by this revision.** Owner review and separate execution authorisation remain required.
@@ -130,7 +132,7 @@ Owner instruction 23-10-26 15:46 explicitly defers these three from this tranche
 
 At a blocker retain last accepted checkpoint and first unmet invariant. At D056 close the ledger and supply final cumulative bundle; no final test sweep or merge.
 
-## 8. Planning disposition
+## 8. Historical planning disposition
 
 | Item | State |
 | --- | --- |
@@ -216,3 +218,15 @@ Candidate 772f86ff9549195b548af9f50a1f4f74bbf373ea, tree 46a3840a728470617fb38fb
 ### D055 — ACCEPTED controlled profile
 
 Candidate 64f63382a42bd00ced97538379e6f581398a2fa4, tree 7ae44c6d6c8fd35a747f2e9d9ecd924991634c13, generation 1b510ccf66044845ef15185c7ae175ba63e544bb864d77937a49adf7df90c1de. Independent final disposition ACCEPT in handoff/foundation_implementation/d055_execution/final_review.md; full strict output handoff/foundation_implementation/d055_execution/final_green.log records exactly2 passed, aggregateexit0 on pinned Python3.12.14. New cases only, no routine RED, duplicate implementer run, old suite or broad sweep. Source/case scrutiny and reused evidence are in the review; any actual first failure/repair is preserved in owning evidence. Native certification/integration/end-to-end obligations remain deferred. Commit accepted state and save per-signal cumulative checkpoint before advancing.
+
+### D056 — ACCEPTED controlled profile
+
+Original candidate141ba0917fd5a2a9937fad8591f87f3e5045145d, tree7e83d0170e7be1300695a215990c07b94d68740c, generation2a0d61c05fc05bd434982516cb5ae7f526eea24a7356f51b1191aba603e4f6b6. Independent ACCEPT and sole strict two-case result (2passed,0.11s,exit0) are retained in handoff/foundation_implementation/d056_execution/final_review.md and final_green.log. Recovery.md distinguishes exact candidate/tree/proof recovery from documentary transcript reconstruction after workspace loss. No product/static checks were repeated.
+
+## Execution close-out
+
+All17 commissioned controlled profiles reached independent ACCEPT with34 new cases passing once. No product failure/recovery, duplicate worker GREEN, accepted unaffected test rerun, speculative case or final sweep. Omitted routine runtime RED is reduced test-first evidence. D052/D053 coincident-field literals and D055 zero-arithmetic witness limitations remain explicit in their independent reviews; source inspection is not misrepresented as extra runtime proof. Earlier scoped static failures/repairs remain in owning records. No token/cache saving measurement is claimed.
+
+Scoped Ruff for D043–D051 and D053–D056 used `"$NVDA_PROOF_PYTHON" -m ruff check src/nvda_desk/market_measurement_truth/_macro_changes.py tests/product/market_measurement_dnnn/test_signal.py` with owning ID; D052 also included api.py. D052 scoped mypy used `PYTHONPATH=src "$NVDA_PROOF_PYTHON" -m mypy src/nvda_desk/market_measurement_truth/api.py src/nvda_desk/market_measurement_truth/_macro_changes.py`. Actual outputs are in owning ruff.log/D052 mypy.log; unchanged typing reused D042 thenD052. These record prior runs, not rerun instructions.
+
+Cumulative full-history checkpoints followed each acceptance before advancing; this D056 checkpoint closes the tranche after exact candidate recovery. GUARDRAILS.md remains unchanged from8bc212b. D038/D040/D041 retain §6 identities, jurisdictions, unresolved requirements and BLOCKED status. Native-source/calendar certification, integration/E2E and main integration remain separate obligations; no D057+ work is commissioned.
