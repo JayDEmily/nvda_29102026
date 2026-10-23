@@ -308,3 +308,11 @@ Current generation config/product_proof/market_measurement_d032/generations/0002
 D032 accepted checkpoint42ff85a is created/verified and exposed for immediate download. Its persistent-upload read operation timed out; no save success is claimed and no duplicate upload was attempted. One exact-name status lookup returned no item, which does not resolve the save outcome. Continue with the preserved local full-history checkpoint and cumulative successor bundles; keep this uncertainty explicit.
 
 D033 owning brief/proof inspected:31 exact minute points12:10–12:40, final110/current endpoint, negative onlylastsix within unchanged grid. Corrected unverified waiver wording to current recovery authority and linkedgen2; source/test changes are brief constants only. Reuse D032 measured interval/typing/lint evidence and immutable log/root/store mechanisms; independent final reviewer executes only the original pair.
+
+### D033 — ACCEPTED after owner-approved pinned recovery
+
+Final candidate 1a7367268498296e39a4b6eb794299a43ca7a2ea, tree 4d7f0adf8f1448bdf290fe4b1c44d5af3322b39c. product-proof aggregate: neutral_market_measurement_truth_d033 state=READY_FOR_PROOF
+authority=302845c64e6c2b9098e7f6806b41356a269ce1e79f14c026cfb85760d70c18cd generation=93052edf80fb6e985f5082731804277ac67a323a0021756cbc7c499f7f5f74cb
+candidate=1a7367268498296e39a4b6eb794299a43ca7a2ea
+observed aggregate outcome: exit=0
+Current generation config/product_proof/market_measurement_d033/generations/0002.json / 93052edf80fb6e985f5082731804277ac67a323a0021756cbc7c499f7f5f74cb. Independent final source/case/repair judgement and sole approved Python3.12.14 strict run: handoff/foundation_implementation/d033_execution/final_review.md and pinned_final_green.log. Exactly2 cases passed, no extra/old/broad tests or successful recovery repeat. Historical3.13 self-checks remain evidence, not the basis of this acceptance. Native provider/calendar certification remains held. Commit and verify/save this per-ID full-history checkpoint before advancing. Later recovered units in the tree remain pending until their own entry.
