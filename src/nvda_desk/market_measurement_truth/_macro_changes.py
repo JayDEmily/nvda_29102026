@@ -20,6 +20,7 @@ from ._vwap_returns import chosen, history
 from ._window import NAMESPACE, _decode, _identity, _Reads
 
 BRIEFS: dict[str, str] = {
+    "D046": "61a6320423ee32323d3cf375f484c7a345c678a9f190105b8cc372cf207f4544",
     "D045": "405914f63d83e66c109bd4f7a9bf03ef560ddef4b5becb66c5a111f00914254e",
     "D044": "eaab891044f59e22586039ca458b1fa33caac33df149f78e0aa656486b1f2de8",
     "D043": "2662f4e41370209a8c3fbe6b92116bd679d12a907716337080cfd2ffcf6666b7",
@@ -27,12 +28,14 @@ BRIEFS: dict[str, str] = {
 }
 # raw dependencies, exact horizon days, arithmetic mode, definition label
 PROFILES: dict[str, tuple[tuple[str, ...], int, str, str]] = {
+    "D046": (("R255",), 5, "rate", "RATE-CHANGE"),
     "D045": (("R249",), 1, "rate", "RATE-CHANGE"),
     "D044": (("R252",), 1, "rate", "RATE-CHANGE"),
     "D043": (("R246", "R249"), 0, "slope", "RATE-SLOPE"),
     "D042": (("R247", "R249"), 0, "slope", "RATE-SLOPE"),
 }
 SERIES: dict[str, tuple[str, str, str]] = {
+    "R255": ("T10YIE", "rate_fraction", "not_applicable"),
     "R252": ("DFII10", "rate_fraction", "not_applicable"),
     "R246": ("DGS3MO", "rate_fraction", "not_applicable"),
     "R247": ("DGS2", "rate_fraction", "not_applicable"),
