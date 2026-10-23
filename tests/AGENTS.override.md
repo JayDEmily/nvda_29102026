@@ -12,3 +12,5 @@ Root EXEC_PLAN.md governs after acceptance. This planning request does not autho
 - Missing mandatory source, numeric convention, score schema, downstream owner/seam or proposition remains an explicit BLOCKED scope gap. Do not invent policy, weaken proof or silently expand scope. Deferred integration/E2E remains separate. GUARDRAILS.md stays frozen.
 
 Current owner instruction24October2026 approves D038's exact profile at c6737d5 and commissions its two cases after immutable admission. The earlier20signal schedule is superseded; D040/D041 remain blocked. Root §9 governs this narrow exception to planning-only wording above.
+
+Current owner delegation24October2026 explicitly authorises settling D040/D041 ownership/profile choices and completing both. Root §11 supersedes their earlier approval holds; preserve P02 jurisdiction through lawful new-owner admission. Two cases/sole independent executor/no historical reruns remain mandatory. Exact owning authority must be frozen and bound before implementation.

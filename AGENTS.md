@@ -72,3 +72,5 @@ Run only validations that actually bear on the proposition being changed, plus a
 Do not modify `GUARDRAILS.md` during ordinary work. Any proposed guardrail change requires explicit current human/programme authority.
 
 Current owner exception24October2026: D038 profile at c6737d5 is explicitly accepted and implementation commissioned; the earlier20signal schedule is superseded. Apply current root §9 and owning D038 brief with two cases/sole independent final executor/bounded recovery. D040/D041 authority holds remain. No prior accepted test rerun.
+
+Current owner delegation24October2026 explicitly authorises settling D040/D041 ownership/profile choices and completing both. Root §11 supersedes their earlier approval holds; preserve P02 jurisdiction through lawful new-owner admission. Two cases/sole independent executor/no historical reruns remain mandatory. Exact owning authority must be frozen and bound before implementation.
