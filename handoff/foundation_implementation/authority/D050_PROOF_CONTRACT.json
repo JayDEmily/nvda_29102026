@@ -1,0 +1,94 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_d050",
+  "semantic_brief_path": "handoff/foundation_implementation/authority/D050_IMPLEMENTATION_BRIEF.md",
+  "target": {
+    "category": "M",
+    "responsibility_name": "neutral_market_measurement_truth",
+    "package": "nvda_desk.market_measurement_truth",
+    "public_seam": "nvda_desk.market_measurement_truth.api",
+    "intent": "modify",
+    "existing_object_id": "M02"
+  },
+  "proof_axis": "product",
+  "product_tier_treatment": "NOT_CLASSIFIED",
+  "architecture_proof_axis": "architecture_kernel",
+  "required_proof_ids": [
+    "D050-CALCULATION"
+  ],
+  "families": [
+    {
+      "id": "mmt_d050",
+      "path": "tests/product/market_measurement_d050/test_signal.py",
+      "proof_obligation_ids": [
+        "D050-CALCULATION"
+      ],
+      "required_test_names": [
+        "test_d050_signal"
+      ],
+      "boundary": "D050 commissioned controlled profile: {\"raw\":[\"R275\"],\"days\":1,\"mode\":\"percent\",\"label\":\"PERCENT-CHANGE\",\"values\":[\"7.8\",\"7.5\"],\"expected\":[4,1],\"fault\":\"zero\",\"index\":1}. Owning meaning and exact success/refusal follow root manifest4 and profiles5.3 at8bc212b; source roles ordered raw dependency tuple R275; no D predecessors. Native metric.value finite Decimal, canonical units/series/orientation [[\"R275\",\"HKD_per_USD\",\"currency_per_USD\",\"HKD_per_USD\"]]. Native identity metric.series,measurement_date matching selected event's ISO date,method=controlled_snapshot/1,quote_orientation; provider foundation-controlled-macro/macro_snapshot_v1. Public mappings mmt-macro-rNNN/1 and mmt-macro-rNNN-units/1 use exact identity scale. Current20October2026 13Z, cutoff+1s/now+2s. History profiles use exact UTC calendar-day anchor (days=1), latest eligible at/before anchor within60seconds, no forwardfill/shortening; current freshness60seconds, history bound30days. Static two-source profiles require equal measurement date and no denominator/positivity rule. Context controlled-macro-history/1 spansT−30days toT+1s/historycompleteT−30days. Parameters mmt-d050-controlled/1 and selection mmt-d050-selection/1; definition D050-PERCENT-CHANGE-1. Every success asserts exact typed fields/units/configuration/request/selected actual raw lineage/time/admission and read-only SQLite reopen. The named negative changes only its specified native input condition; direct public projection proves actual input exists, including late receipt. No native-provider certification.",
+      "proof_levels": [
+        "CONTRACT",
+        "INTEGRATION",
+        "STATE"
+      ],
+      "authoritative_inputs": [
+        "D050 commissioned controlled profile: {\"raw\":[\"R275\"],\"days\":1,\"mode\":\"percent\",\"label\":\"PERCENT-CHANGE\",\"values\":[\"7.8\",\"7.5\"],\"expected\":[4,1],\"fault\":\"zero\",\"index\":1}. Owning meaning and exact success/refusal follow root manifest4 and profiles5.3 at8bc212b; source roles ordered raw dependency tuple R275; no D predecessors. Native metric.value finite Decimal, canonical units/series/orientation [[\"R275\",\"HKD_per_USD\",\"currency_per_USD\",\"HKD_per_USD\"]]. Native identity metric.series,measurement_date matching selected event's ISO date,method=controlled_snapshot/1,quote_orientation; provider foundation-controlled-macro/macro_snapshot_v1. Public mappings mmt-macro-rNNN/1 and mmt-macro-rNNN-units/1 use exact identity scale. Current20October2026 13Z, cutoff+1s/now+2s. History profiles use exact UTC calendar-day anchor (days=1), latest eligible at/before anchor within60seconds, no forwardfill/shortening; current freshness60seconds, history bound30days. Static two-source profiles require equal measurement date and no denominator/positivity rule. Context controlled-macro-history/1 spansT−30days toT+1s/historycompleteT−30days. Parameters mmt-d050-controlled/1 and selection mmt-d050-selection/1; definition D050-PERCENT-CHANGE-1. Every success asserts exact typed fields/units/configuration/request/selected actual raw lineage/time/admission and read-only SQLite reopen. The named negative changes only its specified native input condition; direct public projection proves actual input exists, including late receipt. No native-provider certification.",
+        "EXEC_PLAN.md sections3-5 at commissioned 8bc212b; owning brief declares exact profile."
+      ],
+      "dependency_substitutions": [
+        "Controlled synthetic source/session/completeness only, not native certification.",
+        "Reuse accepted M00/common M02 mechanisms, existing window interface/record store, prior immutable evidence. Exact cases also qualify authorised shared prerequisite; no added suites."
+      ],
+      "case_coverage": {
+        "lawful_positive": {
+          "cases": [
+            "Exactly root manifest case1, independent fixed literal; complete typed metadata/source lineage/public durable reopen."
+          ]
+        },
+        "prohibited_false_positive": {
+          "cases": [
+            "Exactly root manifest case2; lawful raw preconditions reach its declared defect and persist no occurrence."
+          ]
+        },
+        "missing_mandatory_authority": {
+          "cases": [
+            "Exact bound controlled profile, admission and immutable generation required before runtime."
+          ]
+        },
+        "lawful_optional_absence": {
+          "cases": [
+            "No live provider/calendar integration or other signal required; unsupported prerequisites refuse by contract."
+          ]
+        }
+      },
+      "expected_failure_signals": [
+        "Incorrect arithmetic or selected raw lineage fails exact success assertions",
+        "Named missing/incompatible input must refuse without occurrence"
+      ],
+      "limitations": [
+        "Exactly two cases; no generic fault/boundary/numeric variant probes, broad suites or earlier claims."
+      ],
+      "adjacent_nonclaims": [
+        "No acceptance beyond this ID; no native-source certification or M00 mutation."
+      ],
+      "environment": "CPython3.12.14 SQLite3.53.1 and existing pinned offline tools.",
+      "material_versions": [
+        "Exact brief/binding/contract/generation and candidate/tree/runtime; old generations preserved."
+      ],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/market_measurement_d050/test_signal.py"
+    }
+  ],
+  "required_support_files": [],
+  "optional_support_files": [],
+  "execution_policy": {
+    "skipped_tests": "FAIL",
+    "xfailed_tests": "FAIL",
+    "xpassed_tests": "FAIL",
+    "collection_failed": "FAIL",
+    "no_tests_collected": "FAIL",
+    "unexpected_governed_mutation": "FAIL"
+  }
+}
+
