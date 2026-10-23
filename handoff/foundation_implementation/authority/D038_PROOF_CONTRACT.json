@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_d038",
+  "semantic_brief_path": "handoff/foundation_implementation/authority/D038_IMPLEMENTATION_BRIEF.md",
+  "target": {
+    "category": "M",
+    "responsibility_name": "neutral_market_measurement_truth",
+    "package": "nvda_desk.market_measurement_truth",
+    "public_seam": "nvda_desk.market_measurement_truth.api",
+    "intent": "modify",
+    "existing_object_id": "M02"
+  },
+  "proof_axis": "product",
+  "product_tier_treatment": "NOT_CLASSIFIED",
+  "architecture_proof_axis": "architecture_kernel",
+  "required_proof_ids": [
+    "D038-CALCULATION"
+  ],
+  "families": [
+    {
+      "id": "mmt_d038",
+      "path": "tests/product/market_measurement_d038/test_signal.py",
+      "proof_obligation_ids": [
+        "D038-CALCULATION"
+      ],
+      "required_test_names": [
+        "test_d038_signal"
+      ],
+      "boundary": "Approved D038 source/grid/co-occurrence and whole-expression interval numerical contract in owning brief sections2-4; exactly two cases.",
+      "proof_levels": [
+        "CONTRACT",
+        "INTEGRATION",
+        "STATE"
+      ],
+      "authoritative_inputs": [
+        "Owner-approved D038_IMPLEMENTATION_BRIEF.md sections1-6, profile accepted24October2026 from c6737d5.",
+        "Root EXEC_PLAN.md sections4-6/9; K05 and exact D038 catalogue dependencies."
+      ],
+      "dependency_substitutions": [
+        "Controlled synthetic source/session/completeness only, not native certification.",
+        "Reuse accepted M00/common M02 mechanisms, existing window interface/record store, prior immutable evidence. Exact cases also qualify authorised shared prerequisite; no added suites."
+      ],
+      "case_coverage": {
+        "lawful_positive": {
+          "cases": [
+            "Exactly root manifest case1, independent fixed literal; complete typed metadata/source lineage/public durable reopen."
+          ]
+        },
+        "prohibited_false_positive": {
+          "cases": [
+            "Exactly root manifest case2; lawful raw preconditions reach its declared defect and persist no occurrence."
+          ]
+        },
+        "missing_mandatory_authority": {
+          "cases": [
+            "Exact bound controlled profile, admission and immutable generation required before runtime."
+          ]
+        },
+        "lawful_optional_absence": {
+          "cases": [
+            "No live provider/calendar integration or other signal required; unsupported prerequisites refuse by contract."
+          ]
+        }
+      },
+      "expected_failure_signals": [
+        "Incorrect arithmetic or selected raw lineage fails exact success assertions",
+        "Named missing/incompatible input must refuse without occurrence"
+      ],
+      "limitations": [
+        "Exactly two cases; no generic fault/boundary/numeric variant probes, broad suites or earlier claims."
+      ],
+      "adjacent_nonclaims": [
+        "No acceptance beyond this ID; no native-source certification or M00 mutation."
+      ],
+      "environment": "CPython3.12.14 SQLite3.53.1 and existing pinned offline tools.",
+      "material_versions": [
+        "Exact brief/binding/contract/generation and candidate/tree/runtime; old generations preserved."
+      ],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/market_measurement_d038/test_signal.py"
+    }
+  ],
+  "required_support_files": [],
+  "optional_support_files": [],
+  "execution_policy": {
+    "skipped_tests": "FAIL",
+    "xfailed_tests": "FAIL",
+    "xpassed_tests": "FAIL",
+    "collection_failed": "FAIL",
+    "no_tests_collected": "FAIL",
+    "unexpected_governed_mutation": "FAIL"
+  }
+}

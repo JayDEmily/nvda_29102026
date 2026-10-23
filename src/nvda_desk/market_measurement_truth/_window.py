@@ -430,6 +430,7 @@ def build_owner(
     now: Callable[[], datetime],
 ) -> f.MeasurementWindowOwnerV1:
     from . import (
+        _jump_variation,
         _log_return,
         _macro_changes,
         _realised_volatility,
@@ -448,6 +449,11 @@ def build_owner(
         and admission.implementation_brief_sha256 in _macro_changes.BRIEFS.values()
     ):
         return _macro_changes.build_owner(admission, raw, predecessor, storage, now)
+
+    if type(admission) is f.OwnerAdmissionV1 and admission == f.OwnerAdmissionV1(
+        "M02", _jump_variation.BRIEF
+    ):
+        return _jump_variation.build_owner(admission, raw, predecessor, storage, now)
 
     if type(admission) is f.OwnerAdmissionV1 and admission == f.OwnerAdmissionV1(
         "M02", _true_range.BRIEF
@@ -535,6 +541,7 @@ def build_reader(
     admission: f.OwnerAdmissionV1, storage: f.SQLiteReadStorageV1
 ) -> f.MeasurementWindowReadsV1:
     from . import (
+        _jump_variation,
         _log_return,
         _macro_changes,
         _realised_volatility,
@@ -556,6 +563,13 @@ def build_reader(
         if type(storage) is not f.SQLiteReadStorageV1:
             raise TypeError("exact read-only storage required")
         return _Reads(RecordState(storage, _decode, _macro_changes.validator(admission)))
+
+    if type(admission) is f.OwnerAdmissionV1 and admission == f.OwnerAdmissionV1(
+        "M02", _jump_variation.BRIEF
+    ):
+        if type(storage) is not f.SQLiteReadStorageV1:
+            raise TypeError("exact read-only storage required")
+        return _Reads(RecordState(storage, _decode, _jump_variation.validator(admission)))
 
     if type(admission) is f.OwnerAdmissionV1 and admission == f.OwnerAdmissionV1(
         "M02", _true_range.BRIEF

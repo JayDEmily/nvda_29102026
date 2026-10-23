@@ -70,3 +70,5 @@ Use repository-native entry points rather than inventing parallel workflows. Ins
 Run only validations that actually bear on the proposition being changed, plus any mandatory checks imposed by applicable instructions or the accepted ExecPlan. Record the commands and observed results; do not report a check as run if it was not run.
 
 Do not modify `GUARDRAILS.md` during ordinary work. Any proposed guardrail change requires explicit current human/programme authority.
+
+Current owner exception24October2026: D038 profile at c6737d5 is explicitly accepted and implementation commissioned; the earlier20signal schedule is superseded. Apply current root §9 and owning D038 brief with two cases/sole independent final executor/bounded recovery. D040/D041 authority holds remain. No prior accepted test rerun.

@@ -1,0 +1,11 @@
+schema_version: "1.0"
+brief_sha256: 4bd92bd883c5fc4ab63d4cb8988783d53994b25ca88ab91a2976bda13bdaee9c
+acceptance:
+  status: ACCEPTED_FOR_IMPLEMENTATION
+  authority_ref: owner-chat/20261024/D038-profile-approved-execution
+targets:
+  - action: modify
+    object_id: M02
+  - action: modify
+    object_id: G01
+

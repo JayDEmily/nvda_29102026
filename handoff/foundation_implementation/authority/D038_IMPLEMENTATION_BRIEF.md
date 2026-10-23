@@ -1,6 +1,6 @@
 # D038 — proposed controlled implementation profile
 
-Status: PROPOSED — owner approval required under root EXEC_PLAN.md §3.5. No implementation/admission/runtime acceptance.
+Status: ACCEPTED_FOR_IMPLEMENTATION — owner approved this D038 profile on24October2026 and superseded the earlier20signal execution instructions. Independent acceptance/strict evidence pending.
 Baseline: caf01260f9299fa8bf075528baab48b34db48b5c. Owner instruction: “execute that plan for38,40and41”, 24 October2026.
 
 ## 1. Established meaning and proposed choices
@@ -80,8 +80,20 @@ Refusal: retain all four required latest closes/lows and the same request. For12
 - New/changed-source mypy and Ruff only; no previous successful check or old test suite. Sole independent strict pair: PYTHONPATH=src "$NVDA_PROOF_PYTHON" tools/run_product_proof_gate.py --aggregate neutral_market_measurement_truth_d038, after runtime parameter/pins are actually verified.
 - One independent final reviewer, substantive source/case judgement, strict pair and downloadable cumulative accepted Git checkpoint. Retain root bounded failed-check recovery. No shared runner changes to implement recovery.
 
-## 6. Approval boundary and next action
+## 6. Owner approval and execution
 
-Owner decision requested: accept the §2 source roles/grid/co-occurrence/envelope contract, §3 mathematical interval evaluation/final50digit rounding, and §4 two witnesses as this controlled D038 profile, and authorise its implementation under the already requested three-signal sequence.
+Owner approved the complete proposed D038 profile in this document and requested that earlier20signal execution instructions be disregarded. The prior instruction to execute38/40/41, followed by this explicit profile approval, commissions D038 implementation now. D040/D041 retain their unresolved own-profile/jurisdiction holds. Only D038's two declared new cases may execute under this acceptance unit.
 
-Until accepted: D038 remains BLOCKED; zero runnable new cases and no admitted proof generation. D040/D041 remain at their existing profile/jurisdiction holds. Root plan requires stopping at the unresolved D038 choice; no downstream implementation or score coefficients were invented.
+## 7. Incorporated proof authority
+
+D038-PROOF-CONTRACT-SHA256: d7d2ada4f4de599b6b3f5cd926542a9b5c0f293811168c1b126ea67a8da99655
+
+| Path | SHA256 |
+| --- | --- |
+| handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md | 603b850802a418780109095e7ae69bcece449da79fb24140a6d50297605e927c |
+| handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv | 67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549 |
+| handoff/foundation_implementation/authority/FOUNDATION_IMPLEMENTATION_BRIEF_PROPOSED.md | 282f7d73c5e2fdf36ded43781665764eaf95d4a35f687f99990b87c59f744ed7 |
+| handoff/foundation_implementation/authority/SQLITE_IMPLEMENTATION_BRIEF_PROPOSED.md | 3ad4cdc9ffba4cf91ff9a27edf1dd3b1a9824a421514bb4b5a2cc1b9c504f233 |
+| handoff/foundation_implementation/authority/G6_1_D012_IMPLEMENTATION_BRIEF_PROPOSED.md | a31c482d2dc4822539ede99e955761319585af4badea93b9fc279638e1e1f393 |
+| implementation/authority/G6_1_D012_IMPLEMENTATION_AUTHORITY_BINDING.yaml | f1eedec4aa2fcc543a66b709ecd925dd713d01ecabf19c776d5f1b07d3e15f8e |
+| handoff/foundation_implementation/authority/D038_PROOF_CONTRACT.json | d7d2ada4f4de599b6b3f5cd926542a9b5c0f293811168c1b126ea67a8da99655 |
