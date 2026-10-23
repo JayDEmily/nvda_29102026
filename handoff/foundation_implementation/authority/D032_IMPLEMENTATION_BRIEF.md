@@ -1,6 +1,6 @@
 # D032 — controlled 5m exact risk admission
 
-ACCEPTED_FOR_IMPLEMENTATION under the owner's commissioned D026–D036 controlled tranche, with separate human review waived by owner and source certification deferred. No normative permission to synthesize real trading calendars.
+ACCEPTED_FOR_IMPLEMENTATION under the owner's commissioned D026–D036 controlled tranche, with independent final review and Python3.12.14 execution required under the owner-approved bounded recovery; source certification remains deferred. No normative permission to synthesize real trading calendars.
 
 ## 1. Exact semantic identity
 
