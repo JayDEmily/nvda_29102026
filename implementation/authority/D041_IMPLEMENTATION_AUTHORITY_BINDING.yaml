@@ -1,0 +1,12 @@
+schema_version: "1.0"
+brief_sha256: b9699956358b59300cac8927a3b209e4c295828084273fe7cdb6b11e3016917a
+acceptance:
+  status: ACCEPTED_FOR_IMPLEMENTATION
+  authority_ref: owner-chat/20261024/full-D040-D041-completion-delegation
+targets:
+  - action: modify
+    object_id: M03
+  - action: modify
+    object_id: M02
+  - action: modify
+    object_id: G01
