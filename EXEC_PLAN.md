@@ -276,3 +276,11 @@ Status: D026–D029 accepted at their recorded boundaries. D030 documentary repa
 23 October2026 owner answered Yes to the exact §9 proposal: sequential D030–D036 independent final execution of the existing two cases per ID on Python3.12.14, after necessary owning repairs. This explicitly permits the14-existing-case recovery run despite the historical Python3.13.5 self-check results. No new cases/old signals/broad suites/repeated successful recovery GREEN. Root plan remains sole ledger; per-ID acceptance and downloadable checkpoint remain mandatory. Skill defaults for whole-branch suites/reviews are superseded by this exact commissioned process.
 
 Pinned recovery environment restored once from hashed offline lock and actual versions verified: Python3.12.14, SQLite3.53.1, pytest9.0.3, mypy1.20.1, Ruff0.15.11, PyYAML6.0.3. Reuse this environment for all remaining units. D030 source/test change is an exact brief-hash constant only after documentary repair, with independent inspection already recorded; reuse scoped static evidence and execute only the approved final strict pair.
+
+### D030 — ACCEPTED after owner-approved pinned recovery
+
+Final candidate bfffe01d2095c4e67cba6db0542ad00522f2f7a4, tree 904165b226e333e7a281e25fee504d43910d0c0f. product-proof aggregate: neutral_market_measurement_truth_d030 state=READY_FOR_PROOF
+authority=6a1acd3113fcb2bd19fb6e170543d98f3899407ff1090d9b4fc0b8bff6ca440f generation=2a75291e12374a1dfae789b0235182179df866cf299bbe69873cc8f19bde6768
+candidate=bfffe01d2095c4e67cba6db0542ad00522f2f7a4
+observed aggregate outcome: exit=0
+Current generation config/product_proof/market_measurement_d030/generations/0002.json / 2a75291e12374a1dfae789b0235182179df866cf299bbe69873cc8f19bde6768. Independent final source/case/repair judgement and sole approved Python3.12.14 strict run: handoff/foundation_implementation/d030_execution/final_review.md and pinned_final_green.log. Exactly2 cases passed, no extra/old/broad tests or successful recovery repeat. Historical3.13 self-checks remain evidence, not the basis of this acceptance. Native provider/calendar certification remains held. Commit and verify/save this per-ID full-history checkpoint before advancing. Later recovered units in the tree remain pending until their own entry.
