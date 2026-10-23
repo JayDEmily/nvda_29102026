@@ -1,7 +1,7 @@
-# NVDA V2 — current worker entry point
+# NVDA V2 — completed D026–D036 tranche
 
-Root EXEC_PLAN.md §§8–9 govern the commissioned D026–D036 tranche and recovered state. D026–D029 retain their bounded acceptances. Later saved work through D036 is recovered, with historical two-case self-checks on Python3.13.5; it is not independently accepted under the specified Python3.12.14 workflow.
+D026–D036 controlled profiles are accepted at the individual boundaries in root EXEC_PLAN.md §11. D026–D029 acceptances were retained; D030–D036 passed their owner-approved independent final two-case runs on Python3.12.14. Full raw logs, reviews, first failures and immutable linked generations remain in Git.
 
-D030's contradictory contract-hash/variance wording is corrected in linked generation2, with independent documentary/source-case repair acceptance. Final runtime acceptance is pending. D031–D036 source review stopped at that first invariant. Read the exact proposed14-existing-case recovery decision in root§9 before any runtime. No old proof, broad suite or additional cases are authorised. Full history and original per-ID checkpoints remain recoverable.
+The final cumulative D036 full-history bundle contains the completed work and all preceding acceptance records. Separate per-ID checkpoints were created and made downloadable. D032's standalone persistent-save confirmation timed out; later confirmed cumulative bundles preserve its work and evidence.
 
-Read GUARDRAILS.md, applicable AGENTS instructions and root EXEC_PLAN.md. Native provider/calendar certification remains held; D037+ is outside scope.
+Read GUARDRAILS.md, applicable AGENTS instructions and root EXEC_PLAN.md. Native provider/calendar certification remains held. The current scope stops at D036; D037+ and broad/old-claim retesting are not commissioned. No tests are required for documentary close-out or packaging.

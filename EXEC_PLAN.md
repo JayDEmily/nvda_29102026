@@ -2,7 +2,7 @@
 
 ## 1. Commission, baseline and stop
 
-Owner direction, 23 October 2026: create the next plan for **D026 through D036 inclusive: eleven signals**. This turn commissions documentary planning only. The exact cases, controlled profiles, numerical conventions and bounded shared changes below are proposals for review; a subsequent instruction to execute this plan commissions that stated scope. No new implementation, test execution or proof admission occurs now.
+Owner commissioned and completed **D026 through D036 inclusive: eleven signals**, followed by the explicit bounded pinned-runtime recovery in §10. All eleven controlled profiles are accepted at the individual evidence boundaries below. The tranche is closed at D036; no successor execution is commissioned. Original planning, first failures, historical self-checks, recovery decisions and immutable generations remain preserved in Git and the ledger.
 
 Baseline: `875fc9e492b3903f4bc3d318cb8ec12f070b9938`. Planning branch: `work/v2-d026-d036-plan-20261023`. M00 and D011–D025 retain their bounded acceptances, physical proof, immutable contracts/generations and raw evidence. Recover the complete prior execution narrative with `git show 875fc9e:EXEC_PLAN.md`. Its D025 cumulative bundle remains the accepted predecessor checkpoint; no completed work is replayed.
 
@@ -51,7 +51,7 @@ These are the complete runtime cases. Other unchanged shared fault/identity/typi
 
 ## 4. Concrete source, calendar and numerical profiles
 
-All profiles in this section are **proposed controlled configurations**, not certified provider/calendar facts. A future execution instruction binds these choices into exact per-ID immutable briefs before RED. No investigation of live feeds is required for these synthetic witnesses.
+These are the commissioned and accepted **controlled configurations**, not certified provider/calendar facts. Exact per-ID briefs and immutable generations bind the profiles; the ledger records their individual evidence and recovery. No live-feed certification is claimed.
 
 ### 4.1 Common raw/temporal law and D026/D027
 
@@ -153,12 +153,12 @@ Per-ID native files remain `handoff/foundation_implementation/authority/Dnnn_IMP
 
 ## 6. Hard work budget and minimal cycle
 
-- [ ] Read affected authority/preparation, settle the exact profile from this plan and author its **two** cases plus minimum native admission files. Complete formatting/parsing inspection successfully before hashing; inspect every tool exit, including authoring helpers. Freeze independent literal expectations. No design/proof approval queue.
-- [ ] Commit a clean admitted proof candidate. Run one intended semantic RED: `python tools/run_product_proof_gate.py --aggregate neutral_market_measurement_truth_dnnn`. Required public raw prerequisites must already be lawful. Import/collection/environment/control failures are preparation failures, preserved and repaired before valid semantic RED; they do not establish the calculation's absence.
-- [ ] Implement only the owning delta in §5. Obtain one scoped mypy invocation on changed M02 package and one Ruff invocation on changed Python paths; include changed loader only with D026. Reuse successful outputs; no reviewer repeats or broad unchanged-tool checks.
-- [ ] Obtain **one independent final source/case review per signal**. The reviewer is the sole final runtime executor, running the complete strict command above once for final GREEN. Establish fixture independence by setup inspection/decomposition within the same two cases. No worker GREEN then reviewer GREEN, focused GREEN then strict GREEN, extra reviewer probe, separate type-consumer suite, or final eleven-claim sweep.
-- [ ] Record one concise root acceptance entry: candidate/tree/brief/generation, changed paths, exact commands/outcomes, reused evidence, actual failure/repair, independent judgement and limitations. Retain full raw logs under `handoff/foundation_implementation/dnnn_execution/`. Commit accepted result.
-- [ ] **Immediately create, verify and save one full-history Git bundle after that signal**, then continue to the next. A material first failure with work at risk also merits a clearly labelled in-progress checkpoint, not a false ACCEPTED checkpoint. Preserve every earlier completed checkpoint. Final D036 checkpoint is cumulative; stop there.
+- [x] Read affected authority/preparation, settle the exact profile from this plan and author its **two** cases plus minimum native admission files. Complete formatting/parsing inspection successfully before hashing; inspect every tool exit, including authoring helpers. Freeze independent literal expectations. No design/proof approval queue.
+- [x] Commit a clean admitted proof candidate. Run one intended semantic RED: `python tools/run_product_proof_gate.py --aggregate neutral_market_measurement_truth_dnnn`. Required public raw prerequisites must already be lawful. Import/collection/environment/control failures are preparation failures, preserved and repaired before valid semantic RED; they do not establish the calculation's absence.
+- [x] Implement only the owning delta in §5. Obtain one scoped mypy invocation on changed M02 package and one Ruff invocation on changed Python paths; include changed loader only with D026. Reuse successful outputs; no reviewer repeats or broad unchanged-tool checks.
+- [x] Obtain **one independent final source/case review per signal**. The reviewer is the sole final runtime executor, running the complete strict command above once for final GREEN. Establish fixture independence by setup inspection/decomposition within the same two cases. No worker GREEN then reviewer GREEN, focused GREEN then strict GREEN, extra reviewer probe, separate type-consumer suite, or final eleven-claim sweep.
+- [x] Record one concise root acceptance entry: candidate/tree/brief/generation, changed paths, exact commands/outcomes, reused evidence, actual failure/repair, independent judgement and limitations. Retain full raw logs under `handoff/foundation_implementation/dnnn_execution/`. Commit accepted result.
+- [x] **Immediately create, verify and save one full-history Git bundle after that signal**, then continue to the next. A material first failure with work at risk also merits a clearly labelled in-progress checkpoint, not a false ACCEPTED checkpoint. Preserve every earlier completed checkpoint. Final D036 checkpoint is cumulative; stop there.
 
 No default pytest, architecture/bootstrap, promotion220, control149, old M00/M02 aggregates, mutation grids, ad-hoc diagnostic runtime probes, repeated successful static/GREEN runs, timing benchmarks or renamed “compatibility/release” suites. No repeat for a new document, turn, reviewer, commit or download. Do not add seven reports or administrative checkpoint commits apart from actual proof admission, implementation and acceptance commits.
 
@@ -171,12 +171,12 @@ Additional cases, providers, shared changes beyond §5 or a new numerical conven
 | Item | Current state |
 | --- | --- |
 | M00 / D011–D025 | Preserve bounded acceptances at875fc9e and their existing immutable evidence. |
-| D026–D036 | NOT_STARTED. Eleven work units /22 proposed runtime cases; this turn is planning only. |
-| Shared additions | Precisely proposed in §5; none implemented by this plan change. |
-| Owner review boundary | Controlled calendars, N20 baseline, typed history contexts and compositional50digit RV convention are explicit proposals. An instruction to execute this plan commissions them; native provider certification does not follow. |
-| This change | Root plan plus directly conflicting agent/test/README routing; source/text inspection and diff checks only. Independent arithmetic preparation produced literals; no tests/mypy/lint. |
+| D026–D036 | ACCEPTED controlled profiles: eleven independently reviewed units, two cases each. D026–D029 retained; D030–D036 qualified under the approved pinned recovery. |
+| Shared additions | Implemented within §5; exact result carriers, separate typed contexts and measured-time/numeric helpers qualified by their owning cases. |
+| Owner review boundary | Controlled profiles explicitly commissioned and accepted. Native provider/calendar certification remains held. |
+| Close-out | Per-ID source/proof/runtime/review evidence below; documentary routing reconciled without rerunning tests or static checks. |
 
-Future execution appends individual dispositions here without creating a competing schedule. Preserve the previous accepted narrative at875fc9e. Checkpoint/export does not trigger product retesting.
+Individual dispositions below are the execution and acceptance record, without a competing schedule. Preserve the previous accepted narrative at875fc9e. Checkpoint/export does not trigger product retesting.
 
 ## 8. Execution commission — 23 October 2026
 
@@ -340,3 +340,31 @@ observed aggregate outcome: exit=0
 Current generation config/product_proof/market_measurement_d035/generations/0002.json / a372ac82f4880b045c5e0eb9c29bb07ed64a9d307a65bc34f8c0b8f10476f556. Independent final source/case/repair judgement and sole approved Python3.12.14 strict run: handoff/foundation_implementation/d035_execution/final_review.md and pinned_final_green.log. Exactly2 cases passed, no extra/old/broad tests or successful recovery repeat. Historical3.13 self-checks remain evidence, not the basis of this acceptance. Native provider/calendar certification remains held. Commit and verify/save this per-ID full-history checkpoint before advancing. Later recovered units in the tree remain pending until their own entry.
 
 D036 owning brief/proof inspected: eleven official closes10–20October, ten complete intervening sessions11–20October with exact measured1/252 per interval. Negative retains only last six closes15–20October inside the unchanged eleven-point context; no D035 substitution. Currentrecoveryauthority/gen2 replaces unverifiedwaiver wording; source/testBRIEFonly, values/assertions unchanged. Reuse measured-time/numeric/static evidence. D035checkpoint012e3dc verified/saved; stop after this final approved pair and final documentary close-out, no D037.
+
+### D036 — ACCEPTED after owner-approved pinned recovery
+
+Final candidate 571d3716bc33527ade6d08b884844bac5d4a8e0e, tree 1dc581018d6c70db5a8d8be29f95c9bde31439d9. product-proof aggregate: neutral_market_measurement_truth_d036 state=READY_FOR_PROOF
+authority=242dcd92d68784f9cd6f131e68f27bc120416a9749ad091653df9dd8f5bc5b94 generation=a6b9227fe2481efe8ad5acefd08092a1977e6bd4548ae95d4d7853872393ecc5
+candidate=571d3716bc33527ade6d08b884844bac5d4a8e0e
+observed aggregate outcome: exit=0
+Current generation config/product_proof/market_measurement_d036/generations/0002.json / a6b9227fe2481efe8ad5acefd08092a1977e6bd4548ae95d4d7853872393ecc5. Independent final source/case/repair judgement and sole approved Python3.12.14 strict run: handoff/foundation_implementation/d036_execution/final_review.md and pinned_final_green.log. Exactly2 cases passed, no extra/old/broad tests or successful recovery repeat. Historical3.13 self-checks remain evidence, not the basis of this acceptance. Native provider/calendar certification remains held. Commit and verify/save this per-ID full-history checkpoint before advancing. Later recovered units in the tree remain pending until their own entry.
+
+## 11. Closed controlled tranche — final disposition
+
+All D026–D036 controlled profiles are accepted at the exact candidates below. This current disposition supersedes earlier planning-only and recovery-pending statuses; historical records remain intact. D026–D029 existing bounded acceptances were retained without rerun. The owner-approved D030–D036 recovery executed exactly14 existing cases on Python3.12.14, each pair once by the independent final reviewer; all14passed, with no extra/old/broad product tests or successful recovery repeat. Scoped new-source/proof static checks and their actual repairs are preserved in the owning directories.
+
+| ID | Final runtime candidate | Cases | Raw log in owning execution directory |
+| --- | --- | --- | --- |
+| D026 | 8861608bc071937c3f40167af7c49f54524b7672 | 2/2 | final_green.log |
+| D027 | 6a76ae9de7b4698d4aaea1758de972dbbc513948 | 2/2 | final_green.log |
+| D028 | bef3b1b261af6eec0425bd5ef5ddd310f1226024 | 2/2 | final_green.log |
+| D029 | 01dd5fa2818a447defe60350777b8a4b13d1d7f6 | 2/2 | final_green.log |
+| D030 | bfffe01d2095c4e67cba6db0542ad00522f2f7a4 | 2/2 | pinned_final_green.log |
+| D031 | ac412d5a39a42cd98dbf0ac08c4ac7abec6674cf | 2/2 | pinned_final_green.log |
+| D032 | fdb2245907dddd86c400abcb5839bc764103c859 | 2/2 | pinned_final_green.log |
+| D033 | 1a7367268498296e39a4b6eb794299a43ca7a2ea | 2/2 | pinned_final_green.log |
+| D034 | 1819925fa258fb9fdfa9283871ffa6cf539fa712 | 2/2 | pinned_final_green.log |
+| D035 | 8434c095817977c6da3457e859281cc942ce4a79 | 2/2 | pinned_final_green.log |
+| D036 | 571d3716bc33527ade6d08b884844bac5d4a8e0e | 2/2 | pinned_final_green.log |
+
+One full-history bundle was created/verified and exposed for download after each acceptance. D030/D031/D033/D034/D035 saves were confirmed; D032's standalone persistent-save confirmation timed out and remains UNKNOWN, with no duplicate upload. D033 and later confirmed cumulative histories preserve its source, acceptance and evidence. Final D036 bundle includes all eleven units and the documentary close-out; its save result is reported on delivery. Native source/calendar certification remains held. No D037+, live provider/API/TWS, M00/M01 migration, main merge or broad requalification occurred. Preserve the working branch and all evidence. Stop here.

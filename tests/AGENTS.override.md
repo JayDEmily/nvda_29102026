@@ -1,6 +1,6 @@
 # Test-local supplement
 
-Preserve architecture/bootstrap enforcement and all accepted M00/D011–D025 proof, contracts, immutable generations and evidence. Root EXEC_PLAN.md governs the proposed D026–D036 tranche. This turn commissions planning only.
+Preserve architecture/bootstrap enforcement and all accepted M00/D011–D025 proof, contracts, immutable generations and evidence. Root EXEC_PLAN.md records the completed D026–D036 tranche and exact owner-approved recovery. No D037+ proof is commissioned.
 
 ## Bounded next-tranche proof
 
@@ -12,6 +12,6 @@ Preserve architecture/bootstrap enforcement and all accepted M00/D011–D025 pro
 - Retain first failure and repeat only the affected declared check after a relevant material repair. Never repeat a successful result for a document, turn, reviewer, commit, checkpoint or download. Changed admitted proof creates a linked generation.
 - Complete formatting/parsing inspection successfully before sealing proof hashes. Collection/import/environment/control failures are preparation failures, not semantic RED.
 - One scoped mypy and one changed-path Ruff per current delta. Include the fixed loader only at its initial change. No automatic type-consumer or negative typing specimens, unchanged-tool repeats, broad lint or reviewer duplicates.
-- Only root §5's bounded loader/carrier/context/math/module changes accompany a future execution commission. Do not change old context payload shapes or hash identities; new contexts are separate types. D028 incorporates eight authority rows; other new IDs seven.
+- Root §5 defines the commissioned bounded loader/carrier/context/math/module changes. Do not change old context payload shapes or hash identities; new contexts are separate types. D028 incorporates eight authority rows; other new IDs seven.
 - No default pytest, architecture/bootstrap, promotion220, control149, old claims, mutation matrices, ad-hoc probes or broad requalification. Preparation's exhaustive falsifiers are not a second test manifest.
 - An uncovered mandatory proposition requires its exact gap and proposed scope/test list before added testing. Documentary changes and bundle packaging need textual/diff inspection, no tests/mypy/lint.
