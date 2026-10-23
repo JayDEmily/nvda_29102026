@@ -20,6 +20,7 @@ from ._vwap_returns import chosen, history
 from ._window import NAMESPACE, _decode, _identity, _Reads
 
 BRIEFS: dict[str, str] = {
+    "D053": "2adcd2f484657e484248fd211fb785ce12a69f556a8ec409ab5f6ba4cfbf02dc",
     "D052": "aed1a660136672e1818db8fe8d79bc6ae9459dfd93ddee9c51177b42820dd173",
     "D051": "ed006fae2c4e9de59492f30b69e1edb62350e29732b997a2487bb73ba3d22f4a",
     "D050": "c7af64175da78b69be66482bef6f5ea0c6e710926a73e8e57c6e2b7f8ba32130",
@@ -34,6 +35,7 @@ BRIEFS: dict[str, str] = {
 }
 # raw dependencies, exact horizon days, arithmetic mode, definition label
 PROFILES: dict[str, tuple[tuple[str, ...], int, str, str]] = {
+    "D053": (("R237",), 1, "index", "INDEX-CHANGE"),
     "D052": (("R236",), 1, "index", "INDEX-CHANGE"),
     "D051": (("R276",), 5, "percent", "PERCENT-CHANGE"),
     "D050": (("R275",), 1, "percent", "PERCENT-CHANGE"),
@@ -47,6 +49,7 @@ PROFILES: dict[str, tuple[tuple[str, ...], int, str, str]] = {
     "D042": (("R247", "R249"), 0, "slope", "RATE-SLOPE"),
 }
 SERIES: dict[str, tuple[str, str, str]] = {
+    "R237": ("VVIX", "index_points", "not_applicable"),
     "R236": ("VIX", "index_points", "not_applicable"),
     "R276": ("onshore_CNY_per_USD", "currency_per_USD", "onshore_CNY_per_USD"),
     "R275": ("HKD_per_USD", "currency_per_USD", "HKD_per_USD"),
