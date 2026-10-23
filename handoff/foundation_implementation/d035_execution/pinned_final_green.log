@@ -1,0 +1,14 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/83dd7c79f14f/NVDA_D036_RECOVERED_20261023
+configfile: pyproject.toml
+collected 2 items
+
+tests/product/market_measurement_d035/test_five_day_realised_volatility.py . [ 50%]
+.                                                                        [100%]
+
+============================== 2 passed in 0.19s ===============================
+product-proof aggregate: neutral_market_measurement_truth_d035 state=READY_FOR_PROOF
+authority=5ed40abda6283704d04fb14936bf7f045724ade852091335e64099bf7060b856 generation=a372ac82f4880b045c5e0eb9c29bb07ed64a9d307a65bc34f8c0b8f10476f556
+candidate=8434c095817977c6da3457e859281cc942ce4a79
+observed aggregate outcome: exit=0
