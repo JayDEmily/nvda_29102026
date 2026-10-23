@@ -1,0 +1,204 @@
+{
+  "signal": "D040",
+  "definition": "D040-TREND-INTENSITY-1",
+  "profile_id": "p02-d040-controlled/1",
+  "kernel": "K07_WEIGHTED_SCORE",
+  "units": "score",
+  "output": "exact_ratio",
+  "intercept": [
+    0,
+    1
+  ],
+  "features": [
+    {
+      "signal": "D020",
+      "path": "result",
+      "units": "log_return",
+      "transform": "bounded_ratio",
+      "scale": [
+        1,
+        100
+      ],
+      "clip": [
+        0,
+        1
+      ],
+      "orientation": 1,
+      "weight": [
+        1,
+        4
+      ]
+    },
+    {
+      "signal": "D020",
+      "path": "result",
+      "units": "log_return",
+      "transform": "bounded_ratio",
+      "scale": [
+        1,
+        100
+      ],
+      "clip": [
+        -1,
+        0
+      ],
+      "orientation": -1,
+      "weight": [
+        1,
+        4
+      ]
+    },
+    {
+      "signal": "D021",
+      "path": "result",
+      "units": "log_return",
+      "transform": "bounded_ratio",
+      "scale": [
+        3,
+        100
+      ],
+      "clip": [
+        0,
+        1
+      ],
+      "orientation": 1,
+      "weight": [
+        1,
+        4
+      ]
+    },
+    {
+      "signal": "D021",
+      "path": "result",
+      "units": "log_return",
+      "transform": "bounded_ratio",
+      "scale": [
+        3,
+        100
+      ],
+      "clip": [
+        -1,
+        0
+      ],
+      "orientation": -1,
+      "weight": [
+        1,
+        4
+      ]
+    },
+    {
+      "signal": "D027",
+      "path": "percent_per_minute",
+      "units": "percent/minute",
+      "transform": "bounded_ratio",
+      "scale": [
+        1,
+        10
+      ],
+      "clip": [
+        0,
+        1
+      ],
+      "orientation": 1,
+      "weight": [
+        1,
+        4
+      ]
+    },
+    {
+      "signal": "D027",
+      "path": "percent_per_minute",
+      "units": "percent/minute",
+      "transform": "bounded_ratio",
+      "scale": [
+        1,
+        10
+      ],
+      "clip": [
+        -1,
+        0
+      ],
+      "orientation": -1,
+      "weight": [
+        1,
+        4
+      ]
+    },
+    {
+      "signal": "D024",
+      "path": "accel_1v5",
+      "units": "return/minute",
+      "transform": "bounded_ratio",
+      "scale": [
+        1,
+        1000
+      ],
+      "clip": [
+        0,
+        1
+      ],
+      "orientation": 1,
+      "weight": [
+        1,
+        4
+      ]
+    },
+    {
+      "signal": "D024",
+      "path": "accel_1v5",
+      "units": "return/minute",
+      "transform": "bounded_ratio",
+      "scale": [
+        1,
+        1000
+      ],
+      "clip": [
+        -1,
+        0
+      ],
+      "orientation": -1,
+      "weight": [
+        1,
+        4
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "signal": "D020",
+      "owner": "M02",
+      "brief": "811906fdfb073da9b5a7ba137563953d6ff977d50bfe99b8f43adb068f20e839",
+      "definition": "D020-LOG-RETURN-1",
+      "parameter": "mmt-log-300s-50d-half-even/1",
+      "context": "controlled-close-session/1",
+      "window": 300
+    },
+    {
+      "signal": "D021",
+      "owner": "M02",
+      "brief": "913ba660f583f8f3e564190390681e594a374e0fc2d66227bd8452b4d0cbb8cc",
+      "definition": "D021-LOG-RETURN-1",
+      "parameter": "mmt-log-1800s-50d-half-even/1",
+      "context": "controlled-close-session/1",
+      "window": 1800
+    },
+    {
+      "signal": "D027",
+      "owner": "M02",
+      "brief": "6c4a8b6a4451ddfa6b555e9f1b02d659af269ec0788e8ebc15b8ddf9528796bf",
+      "definition": "D027-VWAP-RATE-1",
+      "parameter": "mmt-vwap-rate-300s/1",
+      "context": "controlled-price-session/1",
+      "window": 300
+    },
+    {
+      "signal": "D024",
+      "owner": "M02",
+      "brief": "7776047c140ed8e6fa76af66a772b4a8ffbf1088ce4681377243ec666ddc9885",
+      "definition": "D024-RETURN-ACCELERATION-1",
+      "parameter": "mmt-return-acceleration/1",
+      "context": "controlled-close-session/1",
+      "window": 1800
+    }
+  ]
+}
