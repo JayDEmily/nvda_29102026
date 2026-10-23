@@ -1,7 +1,5 @@
-# NVDA V2 — completed D026–D036 tranche
+# NVDA V2 — D037–D056 planning branch
 
-D026–D036 controlled profiles are accepted at the individual boundaries in root EXEC_PLAN.md §11. D026–D029 acceptances were retained; D030–D036 passed their owner-approved independent final two-case runs on Python3.12.14. Full raw logs, reviews, first failures and immutable linked generations remain in Git.
+Root EXEC_PLAN.md contains the proposed next20-ID plan from accepted D036 checkpoint5fabf1c. Planning only: no new signal implementation or test execution is commissioned. D038 has source/numeric profile holds; D040/D041 are downstream parameterised scores requiring explicit authority. The other17 controlled profiles have34 narrowly defined new cases.
 
-The final cumulative D036 full-history bundle contains the completed work and all preceding acceptance records. Separate per-ID checkpoints were created and made downloadable. D032's standalone persistent-save confirmation timed out; later confirmed cumulative bundles preserve its work and evidence.
-
-Read GUARDRAILS.md, applicable AGENTS instructions and root EXEC_PLAN.md. Native provider/calendar certification remains held. The current scope stops at D036; D037+ and broad/old-claim retesting are not commissioned. No tests are required for documentary close-out or packaging.
+Read GUARDRAILS.md and applicable AGENTS instructions. Future acceptance uses one independent runtime executor per signal; no previously executed tests, automatic retries, old claims or broad sweeps. Accepted D026–D036 records remain at `git show 5fabf1c:EXEC_PLAN.md` and in owning execution directories. Native provider/calendar certification stays held. No main merge occurred.
