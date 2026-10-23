@@ -21,6 +21,7 @@ from ._vwap_returns import chosen, history
 from ._window import NAMESPACE, _decode, _identity, _Reads
 
 BRIEFS = {
+    "D030": "5c7daf19305867f4d793cec5b41ad8fe2de02594a5dda7e52d37a8caeb3ed3bf",
     "D029": "8209530693ea66f600b7033ff9841c31878a6a2393959d3c8840ae1ed592af8e",
     "D028": "c0c2788a727681d87f7b971d242f263d0f04657c896cc113bcf8a57126e684a9",
 }
