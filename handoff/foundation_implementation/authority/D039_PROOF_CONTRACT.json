@@ -1,0 +1,94 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_d039",
+  "semantic_brief_path": "handoff/foundation_implementation/authority/D039_IMPLEMENTATION_BRIEF.md",
+  "target": {
+    "category": "M",
+    "responsibility_name": "neutral_market_measurement_truth",
+    "package": "nvda_desk.market_measurement_truth",
+    "public_seam": "nvda_desk.market_measurement_truth.api",
+    "intent": "modify",
+    "existing_object_id": "M02"
+  },
+  "proof_axis": "product",
+  "product_tier_treatment": "NOT_CLASSIFIED",
+  "architecture_proof_axis": "architecture_kernel",
+  "required_proof_ids": [
+    "D039-CALCULATION"
+  ],
+  "families": [
+    {
+      "id": "mmt_d039",
+      "path": "tests/product/market_measurement_d039/test_signal.py",
+      "proof_obligation_ids": [
+        "D039-CALCULATION"
+      ],
+      "required_test_names": [
+        "test_d039_signal"
+      ],
+      "boundary": "D039 fixed two300-second OHLC bars, bar_count=2. Three close instants20October2026 12:30/12:35/12:40Z in controlled-atr-session/1, bounds12–13Z/historycomplete12Z; cutoff12:40:01/now12:40:02. R141 bar.high/R142 bar.low/R143 bar.close native price; mmt-atr-high/low/close/1, same public observation per bar, identity session.id,bar.id ISO-Z event,bar.duration_seconds300,adjustment.basis unadjusted. Controlled provider foundation-pilot-fixture/cash_quote_v1. Previous close100; complete bars110/90/105 and112/99/108. TR1=20 TR2=13 mean=ExactRatioV1(33,2) price. Select required close positions before validating co-fields; never skip incomplete latest bar for older complete one. Negative omits only latest high, retains all3 closes and older complete OHLC. Definition D039-ATR-1 K05_REALIZED_RISK/P_VOL_WINDOW, mmt-d039-controlled/1 (immutable bar_count2), mmt-d039-selection/1 maxstaleness600s/zero skew, mmt-pilot-price/1. Exact public lineage previousclose then high/low/close eachbar, fulltyped/config/time/reopen success and nooccurrence refusal. No D predecessors or native certification.",
+      "proof_levels": [
+        "CONTRACT",
+        "INTEGRATION",
+        "STATE"
+      ],
+      "authoritative_inputs": [
+        "D039 fixed two300-second OHLC bars, bar_count=2. Three close instants20October2026 12:30/12:35/12:40Z in controlled-atr-session/1, bounds12–13Z/historycomplete12Z; cutoff12:40:01/now12:40:02. R141 bar.high/R142 bar.low/R143 bar.close native price; mmt-atr-high/low/close/1, same public observation per bar, identity session.id,bar.id ISO-Z event,bar.duration_seconds300,adjustment.basis unadjusted. Controlled provider foundation-pilot-fixture/cash_quote_v1. Previous close100; complete bars110/90/105 and112/99/108. TR1=20 TR2=13 mean=ExactRatioV1(33,2) price. Select required close positions before validating co-fields; never skip incomplete latest bar for older complete one. Negative omits only latest high, retains all3 closes and older complete OHLC. Definition D039-ATR-1 K05_REALIZED_RISK/P_VOL_WINDOW, mmt-d039-controlled/1 (immutable bar_count2), mmt-d039-selection/1 maxstaleness600s/zero skew, mmt-pilot-price/1. Exact public lineage previousclose then high/low/close eachbar, fulltyped/config/time/reopen success and nooccurrence refusal. No D predecessors or native certification.",
+        "EXEC_PLAN.md sections3-5 at commissioned 8bc212b; owning brief declares exact profile."
+      ],
+      "dependency_substitutions": [
+        "Controlled synthetic source/session/completeness only, not native certification.",
+        "Reuse accepted M00/common M02 mechanisms, existing window interface/record store, prior immutable evidence. Exact cases also qualify authorised shared prerequisite; no added suites."
+      ],
+      "case_coverage": {
+        "lawful_positive": {
+          "cases": [
+            "Exactly root manifest case1, independent fixed literal; complete typed metadata/source lineage/public durable reopen."
+          ]
+        },
+        "prohibited_false_positive": {
+          "cases": [
+            "Exactly root manifest case2; lawful raw preconditions reach its declared defect and persist no occurrence."
+          ]
+        },
+        "missing_mandatory_authority": {
+          "cases": [
+            "Exact bound controlled profile, admission and immutable generation required before runtime."
+          ]
+        },
+        "lawful_optional_absence": {
+          "cases": [
+            "No live provider/calendar integration or other signal required; unsupported prerequisites refuse by contract."
+          ]
+        }
+      },
+      "expected_failure_signals": [
+        "Incorrect arithmetic or selected raw lineage fails exact success assertions",
+        "Named missing/incompatible input must refuse without occurrence"
+      ],
+      "limitations": [
+        "Exactly two cases; no generic fault/boundary/numeric variant probes, broad suites or earlier claims."
+      ],
+      "adjacent_nonclaims": [
+        "No acceptance beyond this ID; no native-source certification or M00 mutation."
+      ],
+      "environment": "CPython3.12.14 SQLite3.53.1 and existing pinned offline tools.",
+      "material_versions": [
+        "Exact brief/binding/contract/generation and candidate/tree/runtime; old generations preserved."
+      ],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/market_measurement_d039/test_signal.py"
+    }
+  ],
+  "required_support_files": [],
+  "optional_support_files": [],
+  "execution_policy": {
+    "skipped_tests": "FAIL",
+    "xfailed_tests": "FAIL",
+    "xpassed_tests": "FAIL",
+    "collection_failed": "FAIL",
+    "no_tests_collected": "FAIL",
+    "unexpected_governed_mutation": "FAIL"
+  }
+}
+
