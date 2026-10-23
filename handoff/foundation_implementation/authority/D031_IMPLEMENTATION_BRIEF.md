@@ -6,7 +6,7 @@ ACCEPTED_FOR_IMPLEMENTATION under owner commission 23 October 2026. This authore
 
 R063 current16 shares/minute and twenty consecutive prior same-bucket rates8,12 repeated ten times give Z20. One mandatory prior rate is admitted but received after cutoff; no older session can substitute.
 
-Definition `D031-TRADE-RATE-ZSCORE-1`, parameter `mmt-volume-rate-zscore-20sessions-50d/1`, selection `mmt-volume-rate-zscore-20sessions-selection/1`, R063 native `activity.shares_per_minute`, units shares/minute, exact bucket and ordered twenty sessions. Scalar Decimal z-score 50 digits. No D predecessors.
+Definition `D031-VOLUME-RATE-ZSCORE-1`, parameter `mmt-volume-rate-zscore-20sessions-50d/1`, selection `mmt-volume-rate-zscore-20sessions-selection/1`, R063 native `activity.shares_per_minute`, units shares/minute, exact bucket and ordered twenty sessions. Scalar Decimal z-score 50 digits. No D predecessors.
 
 ### 4.2 Baseline calendar and mappings
 
@@ -20,7 +20,7 @@ Mappings version1, same controlled provider/variant:
 | --- | --- | --- |
 | R041 / `mmt-session-volume` | session.volume / shares | session.id, counter.generation, counter.basis, counter.complete_from_open |
 | R144 / `mmt-bar-volume` | bar.volume / shares | session.id, bucket.id |
-| R063 / `mmt-volume-rate` | activity.trades_per_minute / shares/minute | session.id, bucket.id |
+| R062 / `mmt-trade-rate` | activity.trades_per_minute / trades/minute | session.id, bucket.id |
 | R063 / `mmt-volume-rate` | activity.shares_per_minute / shares/minute | session.id, bucket.id |
 
 For each row identity keys are the listed full dotted names in the listed order, mapped to the corresponding tuple field paths. Unit conventions are identity transforms: `mmt-shares/1`, `mmt-trades-per-minute/1`, `mmt-shares-per-minute/1`. Do not infer rates from totals or share volume from trade counts.
@@ -37,7 +37,7 @@ D029–D031: compute mean/sample variance exactly as rationals; require N=20 and
 
 ## 2. Two-case admission
 
-Contract SHA256: `33f6465477bd41ff7feb5508e4964cf5094279a3c7a38f0d93b576f6e7a3d7ef`. Exactly one named parameterised two-case function in `tests/product/market_measurement_d030/test_trade_rate_zscore.py`. Case one asserts the fixed Z20 Decimal literal, full M00 lineage, identity and durable SQLite reopen. Case two proves refusal when one required prior native record is received after cutoff although all original R063 facts are admitted; direct public projection confirms its later visibility. No extra proof cases. Independent final review required by the active ExecPlan.
+Contract SHA256: `23a215c3b6f941c7a4db2ef55ec34a54d47fea395b039489e85503c5f645df44`. Exactly one named parameterised two-case function in `tests/product/market_measurement_d031/test_volume_rate_zscore.py`. Case one asserts the fixed Z20 Decimal literal, full M00 lineage, identity and durable SQLite reopen. Case two proves refusal when one required prior native record is received after cutoff although all original R063 facts are admitted; direct public projection confirms its later visibility. No extra proof cases. Independent final review required by the active ExecPlan.
 
 ## 3. In-scope change
 
