@@ -233,3 +233,7 @@ Root §3 fixed two cases: R062 trades/minute current16 and twenty earlier altern
 ### D031 — controlled implementation SELF-CHECKED, owner-waived independent review
 
 R063 shares/minute exactly20 baseline states and fixed Z20; future-received mandatory prior raw R063 refuses despite public late-cutoff visibility. Immutable proof admitted9440913, semantic RED observed; source extends baseline owner0a4da69. Scoped mypy23/Ruff PASS, one strict final aggregate2/2 exit0. Actual first failure/final proof/output and self-check in `handoff/foundation_implementation/d031_execution/`. Prior owner instruction bypassed separate reviewer; not independently reviewed. Native certification remains held; checkpoint saved before D032.
+
+### D032 — controlled implementation SELF-CHECKED, owner-waived independent review
+
+R151 exact6-minute-grid instants,5 eligible 1/15120 return intervals, fixed literal V5m; missing middle minute with visible off-grid event refuses. Proof admitted52be902, valid semantic RED. Source implementation34f731c; first failed GREEN exposed strict zip-cardinality (6 sampled starts for5 intervals), corrected8e5f846. Corrected strict aggregate 2/2 exit0. Scoped mypy24 passed, scoped Ruff passed after nonsemantic wrapping; no successful runtime repeat. Exact logs and self-check `handoff/foundation_implementation/d032_execution/`. Independent reviewer waived, no false claim of independent review or native certification. Per-ID bundle preserved before D033.
