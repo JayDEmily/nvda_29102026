@@ -774,6 +774,12 @@ class VwapDeviationV1(_Validated):
 
 
 @dataclass(frozen=True, slots=True)
+class IndexChangeV1(_Validated):
+    point_change: ExactRatioV1
+    percent_change: ExactRatioV1
+
+
+@dataclass(frozen=True, slots=True)
 class WindowContextV1(_Validated):
     ref: VersionRefV1
     session_start_utc: datetime
@@ -844,6 +850,7 @@ class WindowMeasurementOccurrenceV1(_Validated):
     result: (
         Decimal
         | ExactRatioV1
+        | IndexChangeV1
         | MeasurementComparisonV1
         | ReturnAccelerationV1
         | VwapDeviationV1
@@ -904,6 +911,7 @@ def create_window_reader(
 
 __all__ += [
     "BaselineWindowContextV1",
+    "IndexChangeV1",
     "MeasurementComparisonV1",
     "MeasurementWindowOwnerV1",
     "MeasurementWindowReadsV1",

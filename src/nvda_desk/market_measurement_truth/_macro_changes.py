@@ -20,6 +20,7 @@ from ._vwap_returns import chosen, history
 from ._window import NAMESPACE, _decode, _identity, _Reads
 
 BRIEFS: dict[str, str] = {
+    "D052": "aed1a660136672e1818db8fe8d79bc6ae9459dfd93ddee9c51177b42820dd173",
     "D051": "ed006fae2c4e9de59492f30b69e1edb62350e29732b997a2487bb73ba3d22f4a",
     "D050": "c7af64175da78b69be66482bef6f5ea0c6e710926a73e8e57c6e2b7f8ba32130",
     "D049": "4e59e7ca124be85ccdb6faa7de7062dda05641e8687fd22f487cf9b7e717eec0",
@@ -33,6 +34,7 @@ BRIEFS: dict[str, str] = {
 }
 # raw dependencies, exact horizon days, arithmetic mode, definition label
 PROFILES: dict[str, tuple[tuple[str, ...], int, str, str]] = {
+    "D052": (("R236",), 1, "index", "INDEX-CHANGE"),
     "D051": (("R276",), 5, "percent", "PERCENT-CHANGE"),
     "D050": (("R275",), 1, "percent", "PERCENT-CHANGE"),
     "D049": (("R274",), 1, "percent", "PERCENT-CHANGE"),
@@ -45,6 +47,7 @@ PROFILES: dict[str, tuple[tuple[str, ...], int, str, str]] = {
     "D042": (("R247", "R249"), 0, "slope", "RATE-SLOPE"),
 }
 SERIES: dict[str, tuple[str, str, str]] = {
+    "R236": ("VIX", "index_points", "not_applicable"),
     "R276": ("onshore_CNY_per_USD", "currency_per_USD", "onshore_CNY_per_USD"),
     "R275": ("HKD_per_USD", "currency_per_USD", "HKD_per_USD"),
     "R274": ("JPY_per_USD", "currency_per_USD", "JPY_per_USD"),
@@ -92,14 +95,23 @@ def configuration(
         if mode == "slope"
         else "basis_points"
         if mode in ("spread", "rate")
+        else "index_points / percent"
+        if mode == "index"
         else "percent"
     )
-    shape = "scalar_decimal" if mode in ("slope", "spread", "rate") else "exact_ratio"
+    shape = (
+        "scalar_decimal"
+        if mode in ("slope", "spread", "rate")
+        else "named_exact_index_change"
+        if mode == "index"
+        else "exact_ratio"
+    )
     equations = {
         "slope": "100*(second-first)",
         "spread": "10000*(first-second)",
         "rate": "10000*(current-reference)",
         "percent": "100*(current/reference-1)",
+        "index": "current-reference; 100*(current/reference-1)",
     }
     definition = f.CalculationDefinitionV1(
         identity,
@@ -259,14 +271,21 @@ def produce(
             raise ValueError("macro selected lineage/anchor mismatch")
     values = tuple(Fraction(x.canonical_value) for x in lines)
     if mode == "slope":
-        result: Decimal | f.ExactRatioV1 = exact_decimal(100 * (values[1] - values[0]))
+        result: Decimal | f.ExactRatioV1 | f.IndexChangeV1 = exact_decimal(
+            100 * (values[1] - values[0])
+        )
     elif mode in ("spread", "rate"):
         result = exact_decimal(10000 * (values[0] - values[1]))
     else:
         if values[1] == 0:
             raise ValueError("zero macro reference")
         ratio = 100 * (values[0] / values[1] - 1)
-        result = f.ExactRatioV1(ratio.numerator, ratio.denominator)
+        percent = f.ExactRatioV1(ratio.numerator, ratio.denominator)
+        if mode == "index":
+            points = values[0] - values[1]
+            result = f.IndexChangeV1(f.ExactRatioV1(points.numerator, points.denominator), percent)
+        else:
+            result = percent
     value = f.WindowMeasurementOccurrenceV1(
         "M02",
         NAMESPACE,
