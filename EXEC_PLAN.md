@@ -225,3 +225,7 @@ authority=8209530693ea66f600b7033ff9841c31878a6a2393959d3c8840ae1ed592af8e gener
 candidate=01dd5fa2818a447defe60350777b8a4b13d1d7f6
 observed aggregate outcome: exit=0
 Tree b6d41820e830e001032c4ee4b19c7ff858580143. Independent final judgement ACCEPT: handoff/foundation_implementation/d029_execution/final_review.md. Full first RED/final GREEN and scoped static results retained in that directory; any first preparation/static failure remains preserved with its repair. No additional cases, old claims, broad suite or successful repeats. Selected source lineage and public typed SQLite reopen qualified inside the two cases. Native certification remains held. Commit acceptance and save the full-history checkpoint before advancing.
+
+### D030 — controlled implementation SELF-CHECKED, owner-waived independent review
+
+Root §3 fixed two cases: R062 trades/minute current16 and twenty earlier alternating8/12 result Z20; constant8 variance-zero refusal. Admitted proof in cfc245f, first strict semantic RED after valid public raw projection; minimal source BRIEF extension in 82174ef. Scoped mypy23 files/Ruff PASS; one strict final aggregate D030 2/2, exit0. Independent reviewer bypassed under owner's prior explicit self-check instruction; do not mislabel judgement as independent. Case/source inspection and exact raw logs: `handoff/foundation_implementation/d030_execution/`. Native feeds held. Checkpoint separately saved before D031.

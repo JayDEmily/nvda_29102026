@@ -1,0 +1,7 @@
+# D030 controlled acceptance — owner-waived independent review
+
+The owner previously expressly waived a separate independent reviewer and directed self-checking. This judgement is therefore **SELF-CHECK**, not an independent review, and does not establish native certification.
+
+Source/contract review: R062 is projected directly from activity.trades_per_minute (trades/minute), not R144 share-volume or R063 share-rate. Exactly 20 prescribed distinct immediately prior 12:30 bucket states and current16 are selected. Exact rational sample variance80/19 yields the independently fixed Z20 literal. Refusal has all twenty histories admitted with constant8 and thus zero sample variance; no fabricated missing history. Existing public raw M00 admission/projection, lineage comparison, SQLite read-only reopening and no-occurrence refusal are used within the same two prescribed cases. This review did not run additional tests or repeat a successful GREEN.
+
+First strict RED: `first_semantic_red.log`, clean candidate cfc245f; fails in the expected unadmitted D030 owner path after admitted R062 setup. Scoped mypy23 files and Ruff passed (saved logs). Final strict aggregate `neutral_market_measurement_truth_d030` exactly two passed, exit0, committed implementation candidate 82174efe7b1da6ddf55f1bffa9693e96529cd3d6. Accepted controlled-only by owner waiver of independent review; native source certification remains outstanding.
