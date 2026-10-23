@@ -237,3 +237,7 @@ R063 shares/minute exactly20 baseline states and fixed Z20; future-received mand
 ### D032 — controlled implementation SELF-CHECKED, owner-waived independent review
 
 R151 exact6-minute-grid instants,5 eligible 1/15120 return intervals, fixed literal V5m; missing middle minute with visible off-grid event refuses. Proof admitted52be902, valid semantic RED. Source implementation34f731c; first failed GREEN exposed strict zip-cardinality (6 sampled starts for5 intervals), corrected8e5f846. Corrected strict aggregate 2/2 exit0. Scoped mypy24 passed, scoped Ruff passed after nonsemantic wrapping; no successful runtime repeat. Exact logs and self-check `handoff/foundation_implementation/d032_execution/`. Independent reviewer waived, no false claim of independent review or native certification. Per-ID bundle preserved before D033.
+
+### D033 — controlled implementation SELF-CHECKED, owner-waived independent review
+
+R151 fixed31-point30minute grid and 30 exact1/15120 intervals, V30m independent literal; last-six-only negative refuses. Admitted RED at eca7043 after lawful M00 setup; minimal source profile57a8895. Scoped mypy24/Ruff PASS; strict final2/2 exit0, logs and owner-waived self-check `handoff/foundation_implementation/d033_execution/`. Native holds remain. Per-ID cumulative bundle preserved before D034.
