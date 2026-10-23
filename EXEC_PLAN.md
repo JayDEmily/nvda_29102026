@@ -320,3 +320,11 @@ Current generation config/product_proof/market_measurement_d033/generations/0002
 D033 checkpoint57c72e0 saved successfully; its cumulative Git history also preserves D032 acceptance and original checkpoint state, resolving work-loss exposure without retrying D032's uncertain upload.
 
 D034 owning proof inspection found cutoff/now fixture drift: positive used13:02/13:02:01 rather than T+1s/T+2s, negative now13:02:01 rather than declared13:03. Corrected only these two existing cases' timestamps to the exact profile, preserving actual visible13:01 after-close source and missing official13:00 refusal. Linkedgen2 and currentrecoverybrief authority; sourceBRIEFonly. Formatted changed proof before final admission; initial scopedRuff requested pairwise for adjacent tuple positions, firstoutputpreserved, boundedstdlibstyle repair passed affectedRuff. Generation2 sealed from final proof bytes before commit; no runtime/preparation claim or extra cases, no repeatM02typing.
+
+### D034 — ACCEPTED after owner-approved pinned recovery
+
+Final candidate 1819925fa258fb9fdfa9283871ffa6cf539fa712, tree 6a4cb21a1cc4a5ca6d05505ffe92c5f50631ccf8. product-proof aggregate: neutral_market_measurement_truth_d034 state=READY_FOR_PROOF
+authority=8ba71b513f760f57d69ccb6276e1e6d7a299fcda0c2ecfd41cb9eb0a9814db2c generation=a6a29308f47b367b7456bfa2f7835364c63933af2bc8444bc7b0ba463b0e6490
+candidate=1819925fa258fb9fdfa9283871ffa6cf539fa712
+observed aggregate outcome: exit=0
+Current generation config/product_proof/market_measurement_d034/generations/0002.json / a6a29308f47b367b7456bfa2f7835364c63933af2bc8444bc7b0ba463b0e6490. Independent final source/case/repair judgement and sole approved Python3.12.14 strict run: handoff/foundation_implementation/d034_execution/final_review.md and pinned_final_green.log. Exactly2 cases passed, no extra/old/broad tests or successful recovery repeat. Historical3.13 self-checks remain evidence, not the basis of this acceptance. Native provider/calendar certification remains held. Commit and verify/save this per-ID full-history checkpoint before advancing. Later recovered units in the tree remain pending until their own entry.
