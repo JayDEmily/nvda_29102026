@@ -801,9 +801,27 @@ class BaselineWindowContextV1(_Validated):
 
 
 @dataclass(frozen=True, slots=True)
+class TradingReturnIntervalV1(_Validated):
+    start_utc: datetime
+    end_utc: datetime
+    trading_year_fraction: ExactRatioV1
+
+
+@dataclass(frozen=True, slots=True)
+class RealisedRiskWindowContextV1(_Validated):
+    ref: VersionRefV1
+    session_start_utc: datetime
+    session_end_utc: datetime
+    history_complete_from_utc: datetime
+    sessions: tuple[SessionFrameV1, ...]
+    sample_instants_utc: tuple[datetime, ...]
+    intervals: tuple[TradingReturnIntervalV1, ...]
+
+
+@dataclass(frozen=True, slots=True)
 class WindowCalculationRequestV1(_Validated):
     calculation: CalculationRequestV1
-    context: WindowContextV1 | BaselineWindowContextV1
+    context: WindowContextV1 | BaselineWindowContextV1 | RealisedRiskWindowContextV1
     predecessor_occurrence_ids: tuple[str, ...]
 
 
