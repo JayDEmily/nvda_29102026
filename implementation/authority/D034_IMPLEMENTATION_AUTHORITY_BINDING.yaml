@@ -1,5 +1,5 @@
 schema_version: "1.0"
-brief_sha256: a076d55d611ad35a05d5810aa01fab288af8c0fdf8e124a533b47004319796a6
+brief_sha256: 8ba71b513f760f57d69ccb6276e1e6d7a299fcda0c2ecfd41cb9eb0a9814db2c
 acceptance:
   status: ACCEPTED_FOR_IMPLEMENTATION
   authority_ref: owner-chat/20261023/D026-D036-execution-and-per-signal-checkpoints

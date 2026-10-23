@@ -1,0 +1,14 @@
+RUF007 Prefer `itertools.pairwise()` over `zip()` when iterating over successive pairs
+   --> tests/product/market_measurement_d034/test_session_realised_volatility.py:151:55
+    |
+149 | FRAC = f.ExactRatioV1(1, 15120) if K <= 34 else f.ExactRatioV1(1, 252)
+150 | INTERVALS = tuple(
+151 |     f.TradingReturnIntervalV1(a, b, FRAC) for a, b in zip(SAMPLES[:-1], SAMPLES[1:], strict=True)
+    |                                                       ^^^
+152 | )
+153 | CONTEXT = f.RealisedRiskWindowContextV1(
+    |
+help: Replace `zip()` with `itertools.pairwise()`
+
+Found 1 error.
+No fixes available (1 hidden fix can be enabled with the `--unsafe-fixes` option).
