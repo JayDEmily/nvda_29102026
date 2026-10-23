@@ -24,6 +24,7 @@ from ._window import NAMESPACE, _decode, _identity, _Reads
 
 # Each ID is admitted only by its immutable exact brief and generation.
 BRIEFS: dict[str, str] = {
+    "D034": "a076d55d611ad35a05d5810aa01fab288af8c0fdf8e124a533b47004319796a6",
     "D033": "1e5dbfd27a61e9bea69e850c2913d60026366465fff2b264d5678becc3dfd183",
     "D032": "9201aaf3b34965acb6ee2e5ad5d0b7e5d5a002a6572b18c0b85c5c71a5022ddd",
 }
