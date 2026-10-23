@@ -24,6 +24,7 @@ from ._window import NAMESPACE, _decode, _identity, _Reads
 
 # Each ID is admitted only by its immutable exact brief and generation.
 BRIEFS: dict[str, str] = {
+    "D037": "16e0fd7b73f616284842ae2ad02ed80ac51e41fd07a1e3c83645f1fa6a3c8b8d",
     "D036": "242dcd92d68784f9cd6f131e68f27bc120416a9749ad091653df9dd8f5bc5b94",
     "D035": "5ed40abda6283704d04fb14936bf7f045724ade852091335e64099bf7060b856",
     "D034": "8ba71b513f760f57d69ccb6276e1e6d7a299fcda0c2ecfd41cb9eb0a9814db2c",
@@ -32,6 +33,7 @@ BRIEFS: dict[str, str] = {
 }
 
 _PROFILE: dict[str, tuple[str, datetime, int, timedelta]] = {
+    "D037": ("20d", datetime(2026, 9, 30, 13, tzinfo=UTC), 21, timedelta(days=1)),
     "D032": ("5m", datetime(2026, 10, 20, 12, 35, tzinfo=UTC), 6, timedelta(minutes=1)),
     "D033": ("30m", datetime(2026, 10, 20, 12, 10, tzinfo=UTC), 31, timedelta(minutes=1)),
     "D034": ("session", datetime(2026, 10, 20, 12, tzinfo=UTC), 61, timedelta(minutes=1)),
@@ -74,6 +76,12 @@ def configuration(
         raise ValueError("unadmitted controlled risk profile")
     stem, start, count, step = _PROFILE[identity]
     samples = tuple(start + i * step for i in range(count))
+    calendar_start = (
+        datetime(2026, 9, 30, 12, tzinfo=UTC)
+        if identity == "D037"
+        else datetime(2026, 10, 10, 12, tzinfo=UTC)
+    )
+    calendar_count = 21 if identity == "D037" else 11
     sessions = tuple(
         f.SessionFrameV1(
             f.VersionRefV1("controlled-risk-" + day.strftime("%Y%m%d"), 1),
@@ -81,7 +89,7 @@ def configuration(
             day,
             day + timedelta(hours=1),
         )
-        for day in (datetime(2026, 10, 10, 12, tzinfo=UTC) + timedelta(days=i) for i in range(11))
+        for day in (calendar_start + timedelta(days=i) for i in range(calendar_count))
     )
     intervals_list = []
     for start_utc, end_utc in pairwise(samples):
@@ -93,7 +101,9 @@ def configuration(
         )
     intervals = tuple(intervals_list)
     context = f.RealisedRiskWindowContextV1(
-        f.VersionRefV1("controlled-risk-calendar", 1),
+        f.VersionRefV1(
+            "controlled-risk-20d-calendar" if identity == "D037" else "controlled-risk-calendar", 1
+        ),
         samples[0],
         samples[-1],
         sessions[0].start_utc,
@@ -114,9 +124,15 @@ def configuration(
         "scalar_decimal",
         tuple(f.AuthorityArtifactRefV1(*ref) for ref in _AUTHORITY),
     )
-    parameter = f.CalculationParameterSetV1(name + "-50d", 1, "P_VOL_WINDOW", "NVDA", ("NVDA",))
+    parameter = f.CalculationParameterSetV1(
+        "mmt-d037-controlled" if identity == "D037" else name + "-50d",
+        1,
+        "P_VOL_WINDOW",
+        "NVDA",
+        ("NVDA",),
+    )
     policy = f.InputSelectionPolicyVersionV1(
-        name + "-selection",
+        "mmt-d037-selection" if identity == "D037" else name + "-selection",
         1,
         ("subject_instrument", "session"),
         timedelta(days=30),

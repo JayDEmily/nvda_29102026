@@ -1,0 +1,2 @@
+Initial scoped Ruff exited1 after formatting: tests/product/market_measurement_d037/test_signal.py I001 import ordering at3:1; B905 zip without explicit strict and RUF007 prefer pairwise at108:69. Exact diagnostic classes and source locations retained from tool output. No runtime test ran. Repair: separate third-party imports and use stdlib pairwise for adjacent samples; source/proof semantics unchanged.
+

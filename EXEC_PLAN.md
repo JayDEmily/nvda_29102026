@@ -141,7 +141,11 @@ At a blocker retain last accepted checkpoint and first unmet invariant. At D056 
 | Planning validation | Text/source/diff inspection only; no tests, mypy or Ruff. |
 | Main integration | Not performed; new work branch starts directly from D036. |
 
-No new signal execution is recorded. Append real per-ID evidence here only when authorised and obtained.
+## Execution commission and ledger
+
+Owner instruction “Okay, execute the plan” commissions D037, D039 and D042–D056 under the final amendment at commit 8bc212bd2e420cfd0c3f5189b6896cea1486d776. This supersedes planning-only wording for those 17 units; D038/D040/D041 remain deferred and BLOCKED. Recovered the exact full-history bundle in a new isolated checkout after the old workspace disappeared. No previous signal test was rerun. Current sequence starts at D037.
+
+Actual environment restoration: primary CPython3.12.14 / SQLite3.53.1 found; pytest was absent, so created isolated d037-runtime and installed all16 pinned packages offline with uv --require-hashes from committed requirements-cp312-dev.lock/vendor wheels. Actual versions then observed: pytest9.0.3, mypy1.20.1, Ruff0.15.11, PyYAML6.0.3. Verified execution parameter NVDA_PROOF_PYTHON=/workspace/scratch/83dd7c79f14f/d037-runtime/bin/python. Reuse this unchanged environment throughout; no product qualification tests ran during recovery.
 
 ## 9. Governance reconciliation and assurance limits
 
