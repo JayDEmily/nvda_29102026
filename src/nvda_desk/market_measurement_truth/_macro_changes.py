@@ -20,6 +20,7 @@ from ._vwap_returns import chosen, history
 from ._window import NAMESPACE, _decode, _identity, _Reads
 
 BRIEFS: dict[str, str] = {
+    "D049": "4e59e7ca124be85ccdb6faa7de7062dda05641e8687fd22f487cf9b7e717eec0",
     "D048": "e8fa7c970ad577bcca44f4c244b6746f202a55aceea590758b70a4b974e274c4",
     "D047": "8256432a7dd5de1236eb186b8a348598d5f0cd7b6cf3e7795af4f7971c726ba7",
     "D046": "61a6320423ee32323d3cf375f484c7a345c678a9f190105b8cc372cf207f4544",
@@ -30,6 +31,7 @@ BRIEFS: dict[str, str] = {
 }
 # raw dependencies, exact horizon days, arithmetic mode, definition label
 PROFILES: dict[str, tuple[tuple[str, ...], int, str, str]] = {
+    "D049": (("R274",), 1, "percent", "PERCENT-CHANGE"),
     "D048": (("R245",), 20, "percent", "PERCENT-CHANGE"),
     "D047": (("R257", "R256"), 0, "spread", "RATE-SPREAD"),
     "D046": (("R255",), 5, "rate", "RATE-CHANGE"),
@@ -39,6 +41,7 @@ PROFILES: dict[str, tuple[tuple[str, ...], int, str, str]] = {
     "D042": (("R247", "R249"), 0, "slope", "RATE-SLOPE"),
 }
 SERIES: dict[str, tuple[str, str, str]] = {
+    "R274": ("JPY_per_USD", "currency_per_USD", "JPY_per_USD"),
     "R245": ("DTWEXBGS", "index_points", "not_applicable"),
     "R256": ("DFF", "rate_fraction", "not_applicable"),
     "R257": ("SOFR", "rate_fraction", "not_applicable"),
