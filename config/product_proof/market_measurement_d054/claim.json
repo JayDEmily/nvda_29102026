@@ -1,0 +1,10 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_d054",
+  "brief_path": "handoff/foundation_implementation/authority/D054_IMPLEMENTATION_BRIEF.md",
+  "binding_path": "implementation/authority/D054_IMPLEMENTATION_AUTHORITY_BINDING.yaml",
+  "contract_path": "handoff/foundation_implementation/authority/D054_PROOF_CONTRACT.json",
+  "physical_root": "tests/product/market_measurement_d054",
+  "admission_path": "config/product_proof/market_measurement_d054/admission.json"
+}
+
