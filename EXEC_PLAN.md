@@ -229,3 +229,7 @@ Tree b6d41820e830e001032c4ee4b19c7ff858580143. Independent final judgement ACCEP
 ### D030 — controlled implementation SELF-CHECKED, owner-waived independent review
 
 Root §3 fixed two cases: R062 trades/minute current16 and twenty earlier alternating8/12 result Z20; constant8 variance-zero refusal. Admitted proof in cfc245f, first strict semantic RED after valid public raw projection; minimal source BRIEF extension in 82174ef. Scoped mypy23 files/Ruff PASS; one strict final aggregate D030 2/2, exit0. Independent reviewer bypassed under owner's prior explicit self-check instruction; do not mislabel judgement as independent. Case/source inspection and exact raw logs: `handoff/foundation_implementation/d030_execution/`. Native feeds held. Checkpoint separately saved before D031.
+
+### D031 — controlled implementation SELF-CHECKED, owner-waived independent review
+
+R063 shares/minute exactly20 baseline states and fixed Z20; future-received mandatory prior raw R063 refuses despite public late-cutoff visibility. Immutable proof admitted9440913, semantic RED observed; source extends baseline owner0a4da69. Scoped mypy23/Ruff PASS, one strict final aggregate2/2 exit0. Actual first failure/final proof/output and self-check in `handoff/foundation_implementation/d031_execution/`. Prior owner instruction bypassed separate reviewer; not independently reviewed. Native certification remains held; checkpoint saved before D032.
