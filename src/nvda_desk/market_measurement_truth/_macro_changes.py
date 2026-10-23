@@ -20,12 +20,14 @@ from ._vwap_returns import chosen, history
 from ._window import NAMESPACE, _decode, _identity, _Reads
 
 BRIEFS: dict[str, str] = {
+    "D045": "405914f63d83e66c109bd4f7a9bf03ef560ddef4b5becb66c5a111f00914254e",
     "D044": "eaab891044f59e22586039ca458b1fa33caac33df149f78e0aa656486b1f2de8",
     "D043": "2662f4e41370209a8c3fbe6b92116bd679d12a907716337080cfd2ffcf6666b7",
     "D042": "fd69f8a6f1c9f015ac2c01351c93fe9ea91d94730e1c0a43b47865a616e14bd3",
 }
 # raw dependencies, exact horizon days, arithmetic mode, definition label
 PROFILES: dict[str, tuple[tuple[str, ...], int, str, str]] = {
+    "D045": (("R249",), 1, "rate", "RATE-CHANGE"),
     "D044": (("R252",), 1, "rate", "RATE-CHANGE"),
     "D043": (("R246", "R249"), 0, "slope", "RATE-SLOPE"),
     "D042": (("R247", "R249"), 0, "slope", "RATE-SLOPE"),
