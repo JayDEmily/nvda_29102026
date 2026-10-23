@@ -1,7 +1,5 @@
-# NVDA V2 — D038 accepted controlled checkpoint
+# NVDA V2 — D040 accepted controlled checkpoint
 
-D038 is independently accepted under the owner-approved three-minute historical-bar profile. Its calculation encloses true log/pi arithmetic with rational bounds and certifies final50significant-digit half-even rounding. All R151/R149/R150 source roles preserve selected same-occurrence bar identity and envelope.
+D038 and D040 are independently accepted controlled profiles. D040 is owned by the newly admitted configured_market_conditions M03, preserving P02 jurisdiction. Its explicit K07 profile evaluates four unsigned bounded movement/slope/acceleration features with exact rational arithmetic and complete public predecessor provenance.
 
-The sole strict two-case aggregate passed2cases, exit0, on pinned CPython3.12.14. Complete raw output and semantic judgement: handoff/foundation_implementation/d038_execution/final_green.log and final_review.md. Scoped typing/lint passed once; no prior accepted product tests were rerun. Root EXEC_PLAN.md records exact candidate/tree/generation and acceptance limits.
-
-D040/D041 retain their separate downstream ownership/score-profile holds. The earlier20signal execution schedule is superseded. Native-provider/calendar certification, integration/E2E and main integration remain separate obligations; no merge/push occurred.
+Sole D040 strict aggregate:2passed,exit0; owning final_green.log and final_review.md retain actual evidence and limits. D041 follows next under the owner's full completion delegation, with its own profile and two cases. No historical acceptance tests rerun, no predictive/native-source certification or application/main integration claimed. Root EXEC_PLAN.md is current authority.
