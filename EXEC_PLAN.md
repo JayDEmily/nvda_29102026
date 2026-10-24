@@ -232,7 +232,7 @@ Close-out: read-only independent standard-library Decimal/Fraction documentary a
 
 Owner accepted the exact supplied plan at 2f2cd9841504702c869412aadc83afb1f96b8d09 and authorised execution. This supersedes pending/planning-only status statements in §§1/10/11, README and agent instructions solely as to commission status. All source/numeric/case/owner/efficiency rules and five holds remain unchanged.
 
-- D057: entry inspection in progress; no runtime cases executed.
+- D057: ACCEPTED controlled profile after independent final semantic review at d14431deb9ef53cd1994bbc3470a0f64f7bad216; strict aggregate exit0, exactly2 passed. Original precollection exit2/capture repair preserved; no product/runner repair. Evidence handoff/foundation_implementation/d057_execution/final_review.md and final_green.log. Cumulative full-history checkpoint must be verified/saved/exposed before D058.
 - D058–D060: not started.
 - D061: first unresolved hold, §5.1; no own profile accepted by the present general execution authorisation.
 
