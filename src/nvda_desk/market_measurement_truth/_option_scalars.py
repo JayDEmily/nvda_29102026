@@ -350,3 +350,140 @@ def build_owner_d088(
         RecordState(storage, _decode, validate_d088), raw,
         cast(f.MeasurementWindowReadsV1, predecessor), now,
     )
+
+
+# D089 is separately admitted for the controlled C1 strike/model-spot pair.
+BRIEF_D089 = "88e83eb89daf658d0e8f00115fa1262e331ba89d8e75dc98062a6f9fb4885d71"
+MAPS_D089 = tuple(
+    r.RawSignalProjectionMappingV1(
+        "mmt-" + raw.lower() + "-option", 1, r.RawSignalCatalogueId(raw),
+        PROVIDER, VARIANT, path, "USD_per_share", META,
+    ) for raw, path in (("R014", ("contract", "strike")),
+                        ("R118", ("model", "underlying_price")))
+)
+DEFINITION_D089 = f.CalculationDefinitionV1(
+    "D089", "D089-OPTION-SCALAR-1", "K02_ALGEBRA", "strike/spot",
+    ("R014", "R118"), (), "P_BASIC", "ratio", "exact_ratio",
+    tuple(f.AuthorityArtifactRefV1(*x) for x in _AUTHORITY),
+)
+PARAMETER_D089 = f.CalculationParameterSetV1("mmt-d089-controlled", 1, "P_BASIC", C1, (C1,))
+POLICY_D089 = replace(POLICY, context_id="mmt-d089-selection")
+
+
+def request_check_d089(request: f.WindowCalculationRequestV1, now: datetime) -> None:
+    expected = f.CalculationRequestV1(
+        "D089", C1, T, T + timedelta(seconds=1),
+        DEFINITION_D089.calculation_definition_version,
+        f.VersionRefV1(PARAMETER_D089.context_id, 1),
+        f.VersionRefV1(POLICY_D089.context_id, 1), (CONTEXT.ref,),
+        tuple(f.RawInputBindingV1(
+            mapping.raw_signal_catalogue_id.value,
+            f.VersionRefV1(mapping.mapping_id, 1), f.VersionRefV1(UNIT.context_id, 1), C1,
+        ) for mapping in MAPS_D089),
+    )
+    if (canonical(request.calculation) != canonical(expected)
+        or request.context != CONTEXT or request.predecessor_occurrence_ids
+        or now < expected.knowledge_cutoff_utc):
+        raise ValueError("incompatible controlled strike/spot request")
+
+
+def line_d089(item: r.ProjectedRawValueV1, c: f.CalculationRequestV1,
+              role: int) -> f.RawInputLineageV1:
+    mapping = MAPS_D089[role]
+    event = eligible(replace(item, selection_identity=None), mapping, POLICY_D089, c)
+    expected_identity = r.RawSelectionIdentityV1((
+        ("contract.id", C1), ("underlying.id", "NVDA"),
+        ("expiry.date", "2026-10-23"), ("strike.key", "110"),
+        ("option.right", "C"), ("currency.code", "USD"),
+        ("contract.multiplier", "100"), ("instrument.kind", "option"),
+        ("model.convention", "controlled-model/1"),
+        ("value.role", "option_strike" if role == 0 else "model_underlying_price"),
+    ))
+    if (event != T or item.received_ts_utc != T
+        or item.selection_identity != expected_identity
+        or type(item.native_value) is not Decimal
+        or (role == 0 and item.native_value != Decimal("110"))):
+        raise ValueError("matched exact-contract strike/model spot role required")
+    return f.RawInputLineageV1(
+        mapping.raw_signal_catalogue_id.value, item.observation_occurrence_id.value,
+        f.VersionRefV1(mapping.mapping_id, 1), f.VersionRefV1(UNIT.context_id, 1),
+        item, cast(Decimal, item.native_value), T,
+    )
+
+
+def produce_d089(request: f.WindowCalculationRequestV1,
+                 lines: tuple[f.RawInputLineageV1, ...], now: datetime
+                 ) -> f.WindowMeasurementOccurrenceV1:
+    request_check_d089(request, now)
+    if len(lines) != 2:
+        raise ValueError("strike and spot both required")
+    for role, actual in enumerate(lines):
+        if canonical(actual) != canonical(line_d089(actual.projection, request.calculation, role)):
+            raise ValueError("option strike/spot lineage mismatch")
+    strike, spot = (item.canonical_value for item in lines)
+    if spot == 0:
+        raise ValueError("nonzero selected spot denominator required")
+    ratio = Fraction(strike) / Fraction(spot)
+    value = f.WindowMeasurementOccurrenceV1(
+        "M02", NAMESPACE, BRIEF_D089, "D089", "pending", request,
+        DEFINITION_D089, PARAMETER_D089, POLICY_D089, (UNIT,), MAPS_D089,
+        lines, (), 0, f.ExactRatioV1(ratio.numerator, ratio.denominator),
+        "ratio", "exact_ratio", T, request.calculation.knowledge_cutoff_utc, now,
+    )
+    return replace(value, derived_occurrence_id=_identity(value))
+
+
+def validate_d089(value: f.WindowMeasurementOccurrenceV1) -> None:
+    if type(value) is not f.WindowMeasurementOccurrenceV1:
+        raise TypeError("exact strike/spot occurrence required")
+    f._Validated.__post_init__(value)
+    if canonical(value) != canonical(produce_d089(
+        value.request, value.raw_input_lineage, value.calculated_at_utc
+    )):
+        raise ValueError("strike/spot source or identity mismatch")
+
+
+class _MoneynessOwner:
+    def __init__(self, state: RecordState, raw: f.RawProjectionReaderV1,
+                 now: Callable[[], datetime]) -> None:
+        self.state, self.raw, self.now = state, raw, now
+        self.reads = _Reads(state)
+
+    def materialise(self, request: f.WindowCalculationRequestV1
+                    ) -> f.WindowMeasurementOccurrenceV1 | None:
+        if type(request) is not f.WindowCalculationRequestV1:
+            raise TypeError("exact strike/spot request required")
+        now = self.now()
+        f._utc(now)
+        try:
+            request_check_d089(request, now)
+            selected: list[f.RawInputLineageV1] = []
+            for role, mapping in enumerate(MAPS_D089):
+                candidates = tuple(history(self.raw, request.calculation, mapping, POLICY_D089))
+                if not candidates:
+                    raise ValueError("missing option strike/model spot")
+                def rank(item: r.ProjectedRawValueV1) -> tuple[datetime, datetime, int]:
+                    if type(item.source_timestamp_raw) is not str:
+                        raise ValueError("exact option source instant required")
+                    event = datetime.fromisoformat(item.source_timestamp_raw.replace("Z", "+00:00"))
+                    return event, item.received_ts_utc, item.ingestion_sequence
+                chosen = max(candidates, key=rank)
+                if sum(rank(item) == rank(chosen) for item in candidates) != 1:
+                    raise ValueError("ambiguous strike/model spot rank")
+                selected.append(line_d089(chosen, request.calculation, role))
+            value = produce_d089(request, tuple(selected), now)
+        except (TypeError, ValueError, ArithmeticError):
+            return None
+        return cast(f.WindowMeasurementOccurrenceV1, self.state.append(value))
+
+
+def build_owner_d089(
+    admission: f.OwnerAdmissionV1, raw: f.RawProjectionReaderV1,
+    predecessor: f.MeasurementTradeDirectionReadsV1 | f.MeasurementWindowReadsV1 | None,
+    storage: f.MemoryStorageV1 | f.SQLiteStorageV1, now: Callable[[], datetime],
+) -> f.MeasurementWindowOwnerV1:
+    if admission != f.OwnerAdmissionV1("M02", BRIEF_D089):
+        raise ValueError("exact D089 admission required")
+    if type(storage) not in (f.MemoryStorageV1, f.SQLiteStorageV1) or not callable(now):
+        raise TypeError("exact storage and clock required")
+    return _MoneynessOwner(RecordState(storage, _decode, validate_d089), raw, now)
