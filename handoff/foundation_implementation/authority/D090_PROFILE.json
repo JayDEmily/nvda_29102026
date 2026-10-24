@@ -1,0 +1,88 @@
+{
+  "id": "D090",
+  "definition": "D090-OPTION-SCALAR-1",
+  "kernel": "K02_ALGEBRA",
+  "parameter_profile": "P_BASIC",
+  "as_of": "2026-10-20T12:40:00Z",
+  "cutoff": "2026-10-20T12:40:01Z",
+  "now": "2026-10-20T12:40:02Z",
+  "provider": "foundation-controlled-options",
+  "variant": "option_snapshot_v1",
+  "mapping": {
+    "R014": {
+      "id": "mmt-r014-option",
+      "path": [
+        "contract",
+        "strike"
+      ],
+      "role": "option_strike"
+    },
+    "R118": {
+      "id": "mmt-r118-option",
+      "path": [
+        "model",
+        "underlying_price"
+      ],
+      "role": "model_underlying_price"
+    }
+  },
+  "unit_id": "mmt-option-price",
+  "native_units": "USD_per_share",
+  "metadata": {
+    "contract.id": [
+      "contract",
+      "id"
+    ],
+    "underlying.id": [
+      "underlying",
+      "id"
+    ],
+    "expiry.date": [
+      "expiry",
+      "date"
+    ],
+    "strike.key": [
+      "strike",
+      "key"
+    ],
+    "option.right": [
+      "option",
+      "right"
+    ],
+    "currency.code": [
+      "currency",
+      "code"
+    ],
+    "contract.multiplier": [
+      "contract",
+      "multiplier"
+    ],
+    "instrument.kind": [
+      "instrument",
+      "kind"
+    ],
+    "model.convention": [
+      "model",
+      "convention"
+    ],
+    "value.role": [
+      "value",
+      "role"
+    ]
+  },
+  "context_id": "controlled-option-session",
+  "selection_id": "mmt-d090-selection",
+  "success": {
+    "strike": "110",
+    "spot": "100",
+    "expected_decimal": "0.095310179804324860043952123280765092220605365308644",
+    "rounding": "50 significant digits ROUND_HALF_EVEN, bounded 32..512 terms"
+  },
+  "refusal": {
+    "strike": "110",
+    "spot": "-1",
+    "reason": "selected same-contract negative spot outside natural-log positive domain"
+  },
+  "subject": "controlled-nvda-c110-20261023",
+  "parameter_id": "mmt-d090-controlled"
+}
