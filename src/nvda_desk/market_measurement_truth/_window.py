@@ -437,6 +437,7 @@ def build_owner(
         _macro_surprise,
         _realised_volatility,
         _relative_market_return,
+        _relative_sector_return,
         _return_acceleration,
         _session_range,
         _session_returns,
@@ -448,6 +449,12 @@ def build_owner(
         _vwap_comparison,
         _vwap_returns,
     )
+
+    if (
+        type(admission) is f.OwnerAdmissionV1
+        and admission.implementation_brief_sha256 == _relative_sector_return.BRIEF
+    ):
+        return _relative_sector_return.build_owner(admission, raw, predecessor, storage, now)
 
     if (
         type(admission) is f.OwnerAdmissionV1
@@ -583,6 +590,7 @@ def build_reader(
         _macro_surprise,
         _realised_volatility,
         _relative_market_return,
+        _relative_sector_return,
         _return_acceleration,
         _session_range,
         _session_returns,
@@ -594,6 +602,15 @@ def build_reader(
         _vwap_comparison,
         _vwap_returns,
     )
+
+    if (
+        type(admission) is f.OwnerAdmissionV1
+        and admission.object_id == "M02"
+        and admission.implementation_brief_sha256 == _relative_sector_return.BRIEF
+    ):
+        if type(storage) is not f.SQLiteReadStorageV1:
+            raise TypeError("exact read-only storage required")
+        return _Reads(RecordState(storage, _decode, _relative_sector_return.validate))
 
     if (
         type(admission) is f.OwnerAdmissionV1
