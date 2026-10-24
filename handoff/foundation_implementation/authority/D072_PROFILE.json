@@ -1,0 +1,153 @@
+{
+  "id": "D072",
+  "raw_order": [
+    "R037",
+    "R042"
+  ],
+  "subject": "QQQ",
+  "series": "QQQ",
+  "as_of": "2026-10-20T12:40:00Z",
+  "reference": "2026-10-19T13:00:00Z",
+  "context_id": "controlled-underlying-session",
+  "context_start": "2026-10-19T12:00:00Z",
+  "context_end": "2026-10-20T13:00:00Z",
+  "records": [
+    [
+      0,
+      "QQQ",
+      "2026-10-20T12:40:00Z",
+      "2026-10-20T12:40:00Z",
+      {
+        "trade": {
+          "last": "90"
+        },
+        "instrument": {
+          "id": "QQQ"
+        },
+        "session": {
+          "id": "controlled-20oct12-13Z"
+        },
+        "adjustment": {
+          "basis": "controlled_unadjusted/1"
+        },
+        "price": {
+          "kind": "current_last"
+        }
+      }
+    ],
+    [
+      1,
+      "QQQ",
+      "2026-10-19T13:00:00Z",
+      "2026-10-19T13:00:00Z",
+      {
+        "official_close": {
+          "value": "100"
+        },
+        "instrument": {
+          "id": "QQQ"
+        },
+        "session": {
+          "id": "controlled-19oct12-13Z"
+        },
+        "adjustment": {
+          "basis": "controlled_unadjusted/1"
+        },
+        "price": {
+          "kind": "official_close"
+        }
+      }
+    ]
+  ],
+  "provider": "foundation-controlled-underlying",
+  "variant": "last_prior_close_v1",
+  "map_specs": [
+    [
+      "R037",
+      "mmt-r037-underlying",
+      [
+        "trade",
+        "last"
+      ],
+      "price",
+      [
+        [
+          "instrument.id",
+          [
+            "instrument",
+            "id"
+          ]
+        ],
+        [
+          "session.id",
+          [
+            "session",
+            "id"
+          ]
+        ],
+        [
+          "adjustment.basis",
+          [
+            "adjustment",
+            "basis"
+          ]
+        ],
+        [
+          "price.kind",
+          [
+            "price",
+            "kind"
+          ]
+        ]
+      ]
+    ],
+    [
+      "R042",
+      "mmt-r042-underlying",
+      [
+        "official_close",
+        "value"
+      ],
+      "price",
+      [
+        [
+          "instrument.id",
+          [
+            "instrument",
+            "id"
+          ]
+        ],
+        [
+          "session.id",
+          [
+            "session",
+            "id"
+          ]
+        ],
+        [
+          "adjustment.basis",
+          [
+            "adjustment",
+            "basis"
+          ]
+        ],
+        [
+          "price.kind",
+          [
+            "price",
+            "kind"
+          ]
+        ]
+      ]
+    ]
+  ],
+  "unit_id": "mmt-underlying-price",
+  "native_units": "price",
+  "parameter_id": "mmt-d072-controlled",
+  "selection_id": "mmt-d072-selection",
+  "definition": "D072-LOG-RETURN-1",
+  "policy": "exact two anchors, same subject/series/basis/close kind; cutoff T+1s (underlying also permits T+2s); now>=cutoff; bounded1day history100x1000 pages; no forwardfill/nearest/holiday inference; positive current/reference; source identity scale1/offset0",
+  "expected_50digit_half_even": "-0.10536051565782630122750098083931279830612037298327",
+  "refusal": "basis",
+  "manifest": "Only D072 own hash/subject registration in existing _underlying_returns.py; own profile/brief/contract/binding/claim/two-case proof/generation/evidence. Reuse unchanged routing, exact bounded log, RecordState and codec; no API/M00/runner change."
+}
