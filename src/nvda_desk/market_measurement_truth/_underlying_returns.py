@@ -22,8 +22,9 @@ from ._window import NAMESPACE, _decode, _identity, _Reads
 BRIEFS = {
     "D071": "83e3871a48ec3f9be3f019aeaa8e149bb0658930ca08b4f0158a7a3205c42710",
     "D072": "6a9ff0f10b2d1e507f75dd7d82456272b55eb02fe3a90f8911d0fe14f1ec7184",
+    "D073": "8ca4fc8976069b14962cd6c1706c38472749b807c50be81792325178d5c34f64",
 }
-PROFILES = {"D071": "SPY", "D072": "QQQ"}
+PROFILES = {"D071": "SPY", "D072": "QQQ", "D073": "SMH"}
 T = datetime(2026, 10, 20, 12, 40, tzinfo=UTC)
 REFERENCE = datetime(2026, 10, 19, 13, tzinfo=UTC)
 START = datetime(2026, 10, 19, 12, tzinfo=UTC)
