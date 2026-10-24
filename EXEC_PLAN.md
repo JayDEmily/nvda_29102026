@@ -1,7 +1,7 @@
 # NVDA V2 — D057–D076 bounded ExecPlan
 
 Date: 24 October 2026 (Melbourne).
-Status: PROPOSED — independently reviewed in one round; READY FOR OWNER REVIEW AS A CONDITIONAL PLAN. Planning and documentary review only. No implementation, product/static test execution, admission, source collection or signal acceptance commissioned by this turn.
+Status: OWNER ACCEPTED AND EXECUTION AUTHORISED on 24 October 2026 by explicit current instruction: “No, I accept it. I authorize. Proceed.” The five §5 holds remain; execute resolved units numerically, stopping at D061 unless separately resolved or dispositioned. The planning-only restrictions below describe the prior planning commission, not the current execution commission.
 Baseline: `d0a905292c7439aec5bd9f099700f0ac58bdda25`.
 Branch: `work/v2-d057-d076-plan-20261024`.
 
@@ -217,8 +217,8 @@ Reconcile current root/test-local instructions to this proposed scope; retain ex
 - [x] Draft/self-review all twenty IDs against exact catalogue/authority and current public source; preserve five explicit entry holds.
 - [x] One independent planning reviewer assesses scope, dependencies/owners, source/numeric proposals, two-case adequacy/limits, sequencing, no-repeat/recovery/environment and governing-law conflicts. Documentary inspection only; no product/static tests or implementation.
 - [x] Independent round1 identified no material planning defects requiring repair; preserve its complete record. If later material defects arise, retain findings and concise exact resolutions. Aim for at most two review rounds, but do not conceal unresolved material defects to hit that target. Second round checks the fixes/relevant consequences, not an automatic fresh whole-repository investigation.
-- [ ] Commit planning/governance changes on this branch; provide exact commit and a verified downloadable full-history checkpoint containing the reviewed plan and record.
-- [ ] Owner review/acceptance and separate execution authorisation; do not implement under the present instruction.
+- [x] Commit planning/governance changes on this branch; provide exact commit and a verified downloadable full-history checkpoint containing the reviewed plan and record.
+- [x] Owner review/acceptance and separate execution authorisation received in the current thread on 24 October 2026; execute under §§3–9.
 
 ## 11. Present ledger
 
@@ -227,3 +227,13 @@ Baseline accepted checkpoint d0a9052 remains preserved; no claim is made that ma
 Independent review: READY FOR OWNER REVIEW AS A CONDITIONAL PLAN after one round, reviewed semantic candidate6e2d6a7b5fb3979239f886e6f7301fb5de4317f8. Full independent record: handoff/planning/d057_d076/review_round1.md. No material repair/re-review requested; only this disposition/checklist is updated after review, without changing the reviewed source/numeric/case/owner/efficiency proposals. Owner acceptance: PENDING. Execution commission for D057–D076: NOT GIVEN by this planning-only instruction. No conflict with frozen GUARDRAILS.md is knowingly overridden; any reviewer-identified material conflict must be recorded and resolved before handoff.
 
 Close-out: read-only independent standard-library Decimal/Fraction documentary arithmetic also confirmed §4's L/M/U50digit literals and the D076 subtraction equation without importing/executing product code. This is numerical proposal preparation, not product proof, a static checker or environment qualification. Final planning commit and verified full-history bundle accompany the deliverable; implementation and all five authority-resolution decisions remain uncommissioned.
+
+## 12. Current execution ledger
+
+Owner accepted the exact supplied plan at 2f2cd9841504702c869412aadc83afb1f96b8d09 and authorised execution. This supersedes pending/planning-only status statements in §§1/10/11, README and agent instructions solely as to commission status. All source/numeric/case/owner/efficiency rules and five holds remain unchanged.
+
+- D057: entry inspection in progress; no runtime cases executed.
+- D058–D060: not started.
+- D061: first unresolved hold, §5.1; no own profile accepted by the present general execution authorisation.
+
+Execution uses the isolated supplied-bundle clone on its work branch. No baseline suite, routine runtime RED or whole-branch review is authorised; the accepted plan overrides generic skill defaults. One independent final reviewer/sole runtime executor per signal, two declared cases. Library skill used to save cumulative deliverables.

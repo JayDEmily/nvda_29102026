@@ -9,3 +9,5 @@ The established efficiency discipline remains: two cases per resolved signal, on
 Current task is planning and independent documentary review only. No product/static tests, implementation, dependency requalification, new owner or immutable proof admission. Owner review/acceptance and separate execution commission remain required.
 
 Independent documentary round1 cleared semantic candidate6e2d6a7b5fb3979239f886e6f7301fb5de4317f8 as READY FOR OWNER REVIEW AS A CONDITIONAL PLAN, with no material repair round. Complete record: handoff/planning/d057_d076/review_round1.md. Five named holds remain; a future numeric execution would stop at D061 unless resolved or explicitly dispositioned. No product/static checks ran.
+
+Current owner instruction accepts this plan and authorises execution; root §12 records the superseding commission. Start D057, preserve all five holds and stop numerically at D061 unless explicitly resolved/resequenced. Historical planning-only prose above is retained as prior task context.

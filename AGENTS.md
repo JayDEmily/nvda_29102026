@@ -49,9 +49,9 @@ Fresh review must also be independent of Worker convenience composition where th
 
 This is a bounded adversarial-review heuristic, not a requirement to duplicate the Worker test suite or proliferate speculative tests. Reuse Worker fixtures where they faithfully isolate the proposition; bypass or decompose them only where their composition could pre-satisfy, mask, or collapse the condition being reviewed. Record the direct sequence and observed result when it bears on disposition.
 
-## Current tranche — D057–D076 proposed planning
+## Current tranche — D057–D076 authorised execution
 
-Root EXEC_PLAN.md on work/v2-d057-d076-plan-20261024 is the proposed successor from accepted d0a905292c7439aec5bd9f099700f0ac58bdda25. The owner commissioned planning and independent documentary review only. Earlier D037–D056 and D038/D040/D041 schedules are completed historical evidence, preserved at their exact Git checkpoints. The prior delegation of choices for D040/D041 does not silently extend to this tranche.
+Root EXEC_PLAN.md on work/v2-d057-d076-plan-20261024 is the proposed successor from accepted d0a905292c7439aec5bd9f099700f0ac58bdda25. The owner has now accepted the supplied conditional plan and separately authorised execution (“No, I accept it. I authorize. Proceed.”). Prior planning-only restrictions below are historical commission statements; current execution follows root §§3–9/12, with all five holds retained. Earlier D037–D056 and D038/D040/D041 schedules are completed historical evidence, preserved at their exact Git checkpoints. The prior delegation of choices for D040/D041 does not silently extend to this tranche.
 
 Fifteen controlled foundation proposals are specified; D061/D062/D064/D065/D070 retain root §5's explicit missing profile/source/prerequisite/owner conditions. P02 is existing M03; P03 is a distinct proposed event-policy responsibility, not runtime M03 or automatic M02 admission. No numeric owner reservation, new prerequisite D001 implementation or silent deferral is authorised. Numeric execution stops at the first unresolved unit unless owner explicitly dispositions it.
 

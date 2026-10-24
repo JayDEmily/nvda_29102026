@@ -1,6 +1,6 @@
-# Test-local supplement — proposed D057–D076
+# Test-local supplement — authorised D057–D076
 
-Root EXEC_PLAN.md governs upon owner acceptance and separate execution commission. This turn permits only planning/governance and independent documentary review. Zero new runtime cases are admitted. Fifteen controlled proposals are specified; D061/D062/D064/D065/D070 retain explicit §5 holds. Do not import legacy M01, invent D001, assign P03 to M03/P02, silently defer units or implement unresolved policy.
+Root EXEC_PLAN.md is owner accepted and execution authorised by current explicit instruction. Exactly the current resolved signal’s declared pair may be admitted and executed under root §§3–9/12. Fifteen controlled proposals are specified; D061/D062/D064/D065/D070 retain explicit §5 holds. Do not import legacy M01, invent D001, assign P03 to M03/P02, silently defer units or implement unresolved policy.
 
 - Preserve all accepted tests/assertions/contracts/generations/output. No accepted unaffected test rerun, suite, default pytest, promotion/architecture/bootstrap/control regression, live/provider/API probe or final sweep.
 - Exactly two declared cases per resolved signal: one discriminating success and one reached refusal. Six per signal is an absolute ceiling, not target or permission for additions. No speculative cases, copied/renamed old tests to evade the rule, hidden scenario loops or duplicate implementer/reviewer GREEN.
@@ -13,4 +13,4 @@ Root EXEC_PLAN.md governs upon owner acceptance and separate execution commissio
 - At first unresolved mandatory source/meaning/profile/public prerequisite or proved defect, stop affected downstream work. A missing proposition is a scope gap requiring concrete resolution, not authority to weaken assertions/add tests. Native certification/integration/E2E remain separate.
 - After each independent acceptance commit, verify/save/expose the cumulative full-history Git bundle before the next signal. No product run for commits, documents or bundling.
 
-Earlier D026–D036 six-case/TDD and completed D037–D056/D038/D040/D041 instructions are superseded for this proposed scope; their original bytes remain in Git history. GUARDRAILS.md is unchanged. This supplement creates no implementation or signal-acceptance authority.
+Earlier D026–D036 six-case/TDD and completed D037–D056/D038/D040/D041 instructions are superseded for this proposed scope; their original bytes remain in Git history. GUARDRAILS.md is unchanged. Current implementation authority is the explicit owner acceptance/execution commission and root plan, not this supplement alone.
