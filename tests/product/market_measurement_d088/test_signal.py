@@ -56,7 +56,7 @@ POLICY_D087 = f.InputSelectionPolicyVersionV1(
 )
 POLICY = f.InputSelectionPolicyVersionV1(
     "mmt-d088-selection", 1, POLICY_D087.join_keys, POLICY_D087.maximum_staleness,
-    POLICY_D087.maximum_skew, POLICY_D087.permitted_temporal_kinds, (), PROVIDER,
+    POLICY_D087.maximum_skew, POLICY_D087.temporal_basis_permissions, (), PROVIDER,
     VARIANT, PROVIDER + "/" + VARIANT, 100, 1000,
 )
 DEF_PARENT = f.CalculationDefinitionV1(

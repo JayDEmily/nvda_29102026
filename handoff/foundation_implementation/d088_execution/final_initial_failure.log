@@ -1,0 +1,20 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/17246e12ecdd/nvda
+configfile: pyproject.toml
+collected 0 items / 1 error
+
+==================================== ERRORS ====================================
+____ ERROR collecting tests/product/market_measurement_d088/test_signal.py _____
+tests/product/market_measurement_d088/test_signal.py:59: in <module>
+    POLICY_D087.maximum_skew, POLICY_D087.permitted_temporal_kinds, (), PROVIDER,
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'InputSelectionPolicyVersionV1' object has no attribute 'permitted_temporal_kinds'
+=========================== short test summary info ============================
+ERROR tests/product/market_measurement_d088/test_signal.py - AttributeError: ...
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+=============================== 1 error in 0.14s ===============================
+product-proof aggregate: neutral_market_measurement_truth_d088 state=READY_FOR_PROOF
+authority=23129ece93db232f4258187a6aef130f74652814512d49cd4db2127fd4a23cfb generation=fbf64a45584e20ed8cdc6c8446e22a9c947dd3b8296152c05a237ffd5667bd43
+candidate=11b36286162a66a5a2cbc51d10f58d4f7cf25307
+observed aggregate outcome: exit=5
