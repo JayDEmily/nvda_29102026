@@ -344,3 +344,7 @@ Owner acceptance and commission: 25 October 2026. D077 independently accepted on
 ## 13. Execution ledger — D082
 
 D082 independently accepted on clean candidate `f98c7d89d366065b8ff0da957e1a9560c0dfb4e7`; sole strict aggregate reported two collected/two passed and exit0. Exact authority/source/carrier/fixture judgement and full output: `handoff/foundation_implementation/d082_execution/final_review.md` and `final_green.log`. Its original generation0001 binds two cases and the public CorrelationMatrixV1. Scope is synthetic R151 aligned four-anchor return correlation; D078–D081 fit, native provider certification and any later ID remain unaccepted. D083 may start only after D082's accepted-state cumulative checkpoint is verified, saved and exposed.
+
+## 14. Execution ledger — D083
+
+D083 independently accepted on clean candidate `09a643c9ffbfbe52e7906d611f2bf766c9742975`; sole strict aggregate observed two collected/two passed, exit0. Complete output and bounded semantic judgement: `handoff/foundation_implementation/d083_execution/final_green.log` and `final_review.md`. Own immutable generation0001 binds the exact two-case proof. Scope is the controlled three-member K04 cross-section; deferred D084 configured score and native provider certification remain unaccepted. D087 may begin only after D083's accepted cumulative checkpoint is verified, saved and exposed.
