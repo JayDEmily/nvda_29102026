@@ -1,0 +1,91 @@
+{
+  "id": "D094",
+  "definition": "D094-OPTION-IV-CHANGE-5M-1",
+  "kernel": "K02_ALGEBRA",
+  "parameter_profile": "P_WINDOW",
+  "as_of": "2026-10-20T12:40:00Z",
+  "cutoff": "2026-10-20T12:40:01Z",
+  "now": "2026-10-20T12:40:02Z",
+  "provider": "foundation-controlled-options",
+  "variant": "option_snapshot_v1",
+  "mapping": {
+    "R111": {
+      "id": "mmt-r111-option",
+      "path": [
+        "model",
+        "iv"
+      ],
+      "role": "model_iv"
+    }
+  },
+  "unit_id": "mmt-option-iv",
+  "native_units": "annualised_decimal_volatility",
+  "metadata": {
+    "contract.id": [
+      "contract",
+      "id"
+    ],
+    "underlying.id": [
+      "underlying",
+      "id"
+    ],
+    "expiry.date": [
+      "expiry",
+      "date"
+    ],
+    "strike.key": [
+      "strike",
+      "key"
+    ],
+    "option.right": [
+      "option",
+      "right"
+    ],
+    "currency.code": [
+      "currency",
+      "code"
+    ],
+    "contract.multiplier": [
+      "contract",
+      "multiplier"
+    ],
+    "instrument.kind": [
+      "instrument",
+      "kind"
+    ],
+    "model.convention": [
+      "model",
+      "convention"
+    ],
+    "value.role": [
+      "value",
+      "role"
+    ]
+  },
+  "context_id": "controlled-option-iv-window",
+  "selection_id": "mmt-d094-selection",
+  "success": {
+    "C1_T": ".53",
+    "C1_T_minus_120s": ".90",
+    "C1_T_minus_300s": ".50",
+    "C1_T_minus_360s": ".48",
+    "reference_latest_at_or_before_T_minus_300s": ".50",
+    "result_volatility_points": [
+      3,
+      1
+    ]
+  },
+  "refusal": {
+    "C1_current_and_distractor": [
+      "T",
+      "T-120s"
+    ],
+    "C2_wrong_contract_references": [
+      "T-300s",
+      "T-360s"
+    ],
+    "reason": "no C1 reference in T-600..T-300; both older alternatives wrong contract"
+  },
+  "subject": "controlled-nvda-c110-20261023",
+  "parameter_id": "mmt-d094-controlled"
+}
