@@ -1,7 +1,7 @@
 # NVDA V2 — D057–D076 bounded ExecPlan
 
 Date: 24 October 2026 (Melbourne).
-Status: OWNER ACCEPTED AND EXECUTION AUTHORISED on 24 October 2026 by explicit current instruction: “No, I accept it. I authorize. Proceed.” The five §5 holds remain; execute resolved units numerically. D061 is now explicitly owner-deferred under §13; D062 is the next unresolved entry condition. The planning-only restrictions below describe the prior planning commission, not the current execution commission.
+Status: OWNER ACCEPTED AND EXECUTION AUTHORISED on 24 October 2026 by explicit current instruction: “No, I accept it. I authorize. Proceed.” The five §5 holds remain; execute resolved units numerically. All five held IDs are explicitly owner-deferred under §§13–14; continue the resolved units in ascending order. The planning-only restrictions below describe the prior planning commission, not the current execution commission.
 Baseline: `d0a905292c7439aec5bd9f099700f0ac58bdda25`.
 Branch: `work/v2-d057-d076-plan-20261024`.
 
@@ -268,3 +268,16 @@ Ownership explanation: foundation §1 assigns strategy-independent neutral measu
 Read-only D062 entry check at prior checkpoint14dbf87bb47e61ab8e438fb1dfc90fb355f2a34e inspected root §5.2, F14 source contract, M02 public API/raw lineage, numeric codec and current M02 source/proof/config registrations. Literal D001/D062 search in those M02 surfaces returned no matches; RawInputLineageV1.canonical_value remains Decimal, not a temporal native carrier. This corroborates the specified entry gap; it is not a claim that no historical/legacy implementation exists elsewhere. Legacy M01 import/migration and a new prerequisite D001 unit remain outside this commission.
 
 D060 cumulative checkpoint was verified/restored/saved/exposed at14dbf87bb47e61ab8e438fb1dfc90fb355f2a34e, SHA25635f2584168b73a888d10735bfd5e950c8fc71e086abc877074e30d4c3b3ea8e9,955 all-ref reachable commits, restored fsck0. This documentary amendment changes no source/tests/contracts/immutable proof or accepted runtime evidence. No product/static/environment checks rerun. Earlier stop statements in §12 describe the prior close-out and are superseded solely for D061 sequencing by this section.
+
+## 14. Owner authorises remaining held-unit deferrals and resolved execution
+
+In response to the explicit proposal to park D062/D064/D065/D070 and execute the remaining resolved signals, the owner instructed: “Yes, I do. Proceed.” D061 remains deferred. This is sequencing authority, not acceptance/completion of a held signal or permission to invent its missing requirements.
+
+Deferred to-do set: D061 (§5.1, P02/M03 own score profile), D062 (§5.2, lawful D001 and temporal event contract), D064 (§5.3, P03/source/profile admission), D065 (§5.4, P03/event-window rule/prerequisites), D070 (§5.5, own score/horizon/FX profile). Preserve their exact identities, owners, unresolved requirements and original evidence. They are not implemented or accepted by deferral.
+
+Authorised remaining order: **D063, D066, D067, D068, D069, D071, D072, D073, D074, D075, D076**, one signal/independent final executor/verified saved exposed cumulative checkpoint at a time. No new D001 unit, P03 admission or held policy is commissioned. Any newly demonstrated unmet mandatory invariant still stops affected work under guardrails. All §§4/6–9 source/numeric/proof/no-repeat/recovery/environment disciplines remain.
+
+- D063: entry and proof preparation in progress.
+- D066–D069, D071–D076: not started.
+
+This section supersedes earlier stop/automatic-deferral prohibition statements solely for the five explicitly deferred IDs; no other sequencing or acceptance law changes. Prior checkpoint bb4446b1e089fc4814210bda160122db11f87b1b preserves the previous D062 entry hold.

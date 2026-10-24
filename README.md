@@ -13,3 +13,5 @@ Independent documentary round1 cleared semantic candidate6e2d6a7b5fb3979239f886e
 Current owner instruction accepts this plan and authorises execution; root §12 records the superseding commission. Start D057, preserve all five holds and stop numerically at D061 unless explicitly resolved/resequenced. Historical planning-only prose above is retained as prior task context.
 
 Current sequencing amendment: D061 is an owner-deferred P02/M03 to-do (root §13). D062 remains the next separate entry hold: lawful public D001 plus the R284 temporal contract. D057–D060 acceptance/evidence remains unchanged.
+
+Latest owner sequencing approval: all five named holds are now explicit deferred to-dos; root §14 commissions D063, D066–D069 and D071–D076 in ascending order under unchanged per-signal proof/checkpoint discipline.
