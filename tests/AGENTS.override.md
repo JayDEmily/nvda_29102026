@@ -1,4 +1,4 @@
-# Test-local supplement — D077–D096 planning only
+# Test-local supplement — Twenty-proposal D077–D118 planning only
 
 Root EXEC_PLAN.md is a proposed successor. This task authorises no physical product tests/admission/generation/source or static/product/environment execution. Preserve all prior accepted proof bytes and original evidence.
 
@@ -6,4 +6,4 @@ After owner accepts the exact proposed held dispositions/sequence and separately
 
 Reuse unchanged evidence; scoped warranted mypy/Ruff on new/changed Python and necessary ingress/import checks only. Recover failed checks only after documented relevant material repair, preserve original output/defect/rationale/subsequent result. CURRENT signal's failed strict pair may rerun as SAME aggregate under retained owner23October16:14 exception once commissioned. Successful checks repeat only after precise material invalidation, never packaging/session changes. No runner relaxation or broad regression.
 
-Upfront proposed deferrals D078/D079/D080/D081/D084/D085/D086/D091/D095/D096 have no placeholder tests; prior five deferrals remain. No automatic new deferral. Preserve ownership/source/prerequisite/profile requirements. Runtime CPython3.12.14/SQLite3.53.1 and pinned tools; no3.13 substitute, new-session install/qualification or product probe. After each future acceptance verify/save/expose cumulative full-history checkpoint before next signal. Native certification/integration/E2E separate. Frozen guardrails and user instructions govern.
+Twenty controlled proposals imply forty future cases only after acceptance/commission. Twenty-two proposed deferrals D078–D081/D084–D086/D091/D095–D098/D102/D107–D115 have no placeholder tests; prior five owner-deferred IDs remain. Extended count is twenty runnable proposals plus intervening deferrals, not twenty total identities. No automatic new deferral. Preserve ownership/source/prerequisite/profile requirements. Runtime CPython3.12.14/SQLite3.53.1 and pinned tools; no3.13 substitute, new-session install/qualification or product probe. After each future acceptance verify/save/expose cumulative full-history checkpoint before next signal. Native certification/integration/E2E separate. Frozen guardrails and user instructions govern.
