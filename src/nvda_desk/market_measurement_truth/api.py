@@ -838,6 +838,37 @@ class WindowCalculationRequestV1(_Validated):
 
 
 @dataclass(frozen=True, slots=True)
+class CorrelationMatrixV1:
+    members: tuple[str, ...]
+    rows: tuple[tuple[Decimal, ...], ...]
+
+    def __post_init__(self) -> None:
+        if (
+            type(self.members) is not tuple
+            or len(self.members) < 2
+            or any(type(member) is not str or not member for member in self.members)
+            or len(set(self.members)) != len(self.members)
+            or type(self.rows) is not tuple
+            or len(self.rows) != len(self.members)
+        ):
+            raise ValueError("exact ordered correlation member set required")
+        for i, row in enumerate(self.rows):
+            if type(row) is not tuple or len(row) != len(self.members):
+                raise ValueError("square correlation matrix required")
+            for j, entry in enumerate(row):
+                if (
+                    type(entry) is not Decimal
+                    or not entry.is_finite()
+                    or not Decimal("-1") <= entry <= Decimal("1")
+                    or (i == j and entry != 1)
+                ):
+                    raise ValueError("finite bounded correlation entry required")
+        if any(self.rows[i][j] != self.rows[j][i] for i in range(len(self.rows))
+               for j in range(i)):
+            raise ValueError("symmetric correlation matrix required")
+
+
+@dataclass(frozen=True, slots=True)
 class WindowMeasurementOccurrenceV1(_Validated):
     owner_object_id: str
     owner_namespace: str
@@ -855,6 +886,7 @@ class WindowMeasurementOccurrenceV1(_Validated):
     window_seconds: int
     result: (
         Decimal
+        | CorrelationMatrixV1
         | ExactRatioV1
         | IndexChangeV1
         | TermPairV1
@@ -918,6 +950,7 @@ def create_window_reader(
 
 __all__ += [
     "BaselineWindowContextV1",
+    "CorrelationMatrixV1",
     "IndexChangeV1",
     "MeasurementComparisonV1",
     "MeasurementWindowOwnerV1",

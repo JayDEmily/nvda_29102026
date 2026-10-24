@@ -430,6 +430,7 @@ def build_owner(
     now: Callable[[], datetime],
 ) -> f.MeasurementWindowOwnerV1:
     from . import (
+        _correlation_matrix,
         _international_returns,
         _jump_variation,
         _log_return,
@@ -449,6 +450,12 @@ def build_owner(
         _vwap_comparison,
         _vwap_returns,
     )
+
+    if (
+        type(admission) is f.OwnerAdmissionV1
+        and admission.implementation_brief_sha256 == _correlation_matrix.BRIEF
+    ):
+        return _correlation_matrix.build_owner(admission, raw, predecessor, storage, now)
 
     if (
         type(admission) is f.OwnerAdmissionV1
@@ -583,6 +590,7 @@ def build_reader(
     admission: f.OwnerAdmissionV1, storage: f.SQLiteReadStorageV1
 ) -> f.MeasurementWindowReadsV1:
     from . import (
+        _correlation_matrix,
         _international_returns,
         _jump_variation,
         _log_return,
@@ -602,6 +610,15 @@ def build_reader(
         _vwap_comparison,
         _vwap_returns,
     )
+
+    if (
+        type(admission) is f.OwnerAdmissionV1
+        and admission.object_id == "M02"
+        and admission.implementation_brief_sha256 == _correlation_matrix.BRIEF
+    ):
+        if type(storage) is not f.SQLiteReadStorageV1:
+            raise TypeError("exact read-only storage required")
+        return _Reads(RecordState(storage, _decode, _correlation_matrix.validate))
 
     if (
         type(admission) is f.OwnerAdmissionV1
