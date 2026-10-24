@@ -1,7 +1,7 @@
 # NVDA V2 — twenty controlled proposals, D077–D118 ExecPlan
 
 Date: 24 October 2026 (Melbourne).
-Status: **PROPOSED — planning and independent documentary review only. Owner acceptance and separate execution authorisation pending.**
+Status: **OWNER ACCEPTED AND EXECUTION COMMISSIONED — 25 October 2026 (Melbourne).** Per-signal proof, independent acceptance and checkpoints remain mandatory.
 Baseline: `7b343c56ced615fc585988b77e7b27ab149d2d4c` (accepted D076 cumulative checkpoint).
 Branch: `work/v2-d077-d118-20-controlled-plan-20261024`.
 
@@ -282,7 +282,7 @@ A new matrix result is justified by D082's mathematical output, not a general AP
 
 ## 6. Admission and strict case budget
 
-Twenty proposed resolved signals × exactly two cases = forty eventual new physical cases, **zero admitted now**. Twenty-two held IDs have no physical cases, no placeholder refusal tests and no runtime. Six per ID remains a hard ceiling, not target or permission to add cases. Scope gaps require concrete resolution rather than weakening assertions or adding probes by habit.
+Twenty commissioned resolved signals × exactly two cases = forty eventual new physical cases, **zero admitted at commission**. Twenty-two held IDs have no physical cases, no placeholder refusal tests and no runtime. Six per ID remains a hard ceiling, not target or permission to add cases. Scope gaps require concrete resolution rather than weakening assertions or adding probes by habit.
 
 Success asserts full typed value/units/shape/definition/parameters/member set/context/selection/admission/owner/as-of/cutoff/calculated-time, actual source and nested predecessor lineage, occurrence identity and public ordinary SQLite read-only reopen/history. Refusal first proves otherwise lawful source/predecessor presence and exact stated defect, then no result/history from both writer and reopened reader. Raw/predecessor setup must use public factories, not private test/producer helpers or prefilled derived answers. Source/case discrimination and fixture-independent action sequences stay within the declared pair. No scenario matrices, hidden loops of independent cases or added reviewer runtime probe. Reuse prior accepted source interpretation by exact version; actual predecessor production as setup is not its old acceptance test invocation.
 
@@ -318,7 +318,7 @@ A new branch/session/reviewer does not trigger dependency installation, environm
 
 Allowed writes in this task: root EXEC_PLAN.md, AGENTS.md, tests/AGENTS.override.md, README.md, and concise documentary review records under handoff/planning/d077_d118_20_controlled/ (retaining prior d077_d096 records). No product source/tests, claims/contracts/bindings/generations, dependency pins, environment installation/qualification, static/product runs, owner allocation or frozen guardrails mutation. All proposed source/typed/numeric contracts above are prose, not enabled implementation.
 
-The user chose the established cycle. Generic skill defaults for a second design/plan path, executed RED, blanket extra tests, fresh contexts per every repeated unit or whole-branch review do not override that explicit methodology. Root EXEC_PLAN.md is the single proposed successor; the accepted baseline remains governing history until owner acceptance. No extra approval is required to finish this expanded planning/review/delivery task. The latest owner instruction supersedes the earlier twenty-identity limit; the target is twenty proposals plus all intervening deferrals.
+The user chose the established cycle. Generic skill defaults for a second design/plan path, executed RED, blanket extra tests, fresh contexts per every repeated unit or whole-branch review do not override that explicit methodology. Root EXEC_PLAN.md is the owner-accepted successor; the accepted D076 baseline remains governing execution history until individual signal acceptance. No extra approval is required to finish this expanded planning/review/delivery task. The latest owner instruction supersedes the earlier twenty-identity limit; the target is twenty proposals plus all intervening deferrals.
 
 - [x] Verify accepted execution baseline and prior reviewed planning checkpoint; retain original ten proposals/ten deferrals and full original review/repair history.
 - [x] Inspect each additional identity in ascending order, including exact ownership, source/profile/native carrier needs and actual prerequisites; stop enumeration at the twentieth controlled proposal D118.
@@ -328,11 +328,11 @@ The user chose the established cycle. Generic skill defaults for a second design
 
 Delivery follows the final planning commit: complete-history/no-prerequisite Git bundle, restored exact branch HEAD/all-ref reachable history,fsck0,accepted-baseline ancestry, archive checksum readback; save/expose the archive with readable root plan/reviews. Actual results belong in external CHECKPOINT_VERIFICATION.json/SHA256SUMS, avoiding self-reference.
 
-- [ ] Owner acceptance of proposed dispositions and sequence.
-- [ ] Separate execution authorisation.
+- [x] Owner acceptance of named dispositions and sequence — explicit 25 October instruction to complete the whole plan.
+- [x] Separate execution authorisation — same explicit instruction commissions the plan and incidental work.
 
 ## 11. Present ledger and review disposition
 
 Planning only. Accepted execution baseline7b343c56ced615fc585988b77e7b27ab149d2d4c; prior reviewed conditional proposal406c3c3034db30e96569283e699802f3df93ba79. The owner changed the counting target to twenty controlled implementation proposals with deferrals additional. Current scope D077–D118 contains20 proposals/22 proposed deferrals; retain earlier five owner-deferred IDs separately. Original ten/ten core proposals remain; a documentary identity clarification now gives D087 C1/C2 distinct parameter IDs, preventing identical ID/version from naming different subject/member content. No original deferral is promoted. No implementation, new physical test/admission/claim/profile binding, product/static/environment check or dependency installation occurs in this task. Read-only source inspection, documentary arithmetic and packaging are separate.
 
-Previous documentary round1/round2 and D077 repair remain at handoff/planning/d077_d096/ and the prior planning checkpoint. They cleared the original ten only, not this expanded proposal. Expanded round1 at490ea1b9984aa6405d4104c792194e5be6fc7ee4 returned E1 RECURRENT_CLASS (D117 collapsed event/receipt basis) and E2 ISOLATED (known R015 decode scope gap), complete original record in handoff/planning/d077_d118_20_controlled/review_round1.md. Both bounded documentary repairs and class-level witness self-review are in repair_round1.md; expanded round2 atf5c9d745efd420663cce02d0917ebdf475386716: READY_FOR_OWNER_REVIEW_AS_CONDITIONAL_PLAN; E1/E2 closed documentarily, no remaining material scoped finding. Full record handoff/planning/d077_d118_20_controlled/review_round2.md. This final disposition update changes no reviewed source/numeric/case/ownership/disposition proposal. Owner acceptance: PENDING. Execution authorisation: NOT GIVEN. Complexity, quota pressure or a downstream equation's simplicity does not waive a held producer/source/profile.
+Previous documentary round1/round2 and D077 repair remain at handoff/planning/d077_d096/ and the prior planning checkpoint. They cleared the original ten only, not this expanded proposal. Expanded round1 at490ea1b9984aa6405d4104c792194e5be6fc7ee4 returned E1 RECURRENT_CLASS (D117 collapsed event/receipt basis) and E2 ISOLATED (known R015 decode scope gap), complete original record in handoff/planning/d077_d118_20_controlled/review_round1.md. Both bounded documentary repairs and class-level witness self-review are in repair_round1.md; expanded round2 atf5c9d745efd420663cce02d0917ebdf475386716: READY_FOR_OWNER_REVIEW_AS_CONDITIONAL_PLAN; E1/E2 closed documentarily, no remaining material scoped finding. Full record handoff/planning/d077_d118_20_controlled/review_round2.md. This final disposition update changes no reviewed source/numeric/case/ownership/disposition proposal. Owner acceptance and execution commission: GIVEN by direct 25 October instruction; preceding review status is historical. Complexity, quota pressure or a downstream equation's simplicity does not waive a held producer/source/profile.

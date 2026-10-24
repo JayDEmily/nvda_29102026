@@ -1,6 +1,6 @@
-# Test-local supplement — Twenty-proposal D077–D118 planning only
+# Test-local supplement — commissioned twenty-signal D077–D118 execution
 
-Root EXEC_PLAN.md is a proposed successor. This task authorises no physical product tests/admission/generation/source or static/product/environment execution. Preserve all prior accepted proof bytes and original evidence.
+The owner accepted root EXEC_PLAN.md's named dispositions and commissioned execution on 25 October 2026. Preserve all prior accepted proof bytes and original evidence.
 
 After owner accepts the exact proposed held dispositions/sequence and separately authorises execution: exactly two cases per resolved signal (success/reached refusal), six absolute ceiling not target; proof authored/inspected before production, no routine runtime RED, duplicate GREEN, historical unaffected regression, speculative/hidden scenario loop or extra reviewer probe. One independent final semantic reviewer is sole strict executor. Actual public raw/predecessor setup and ordinary public durable read-only reopen belong inside the declared pair. Full typed metadata/actual lineage mandatory; no fabricated answers/private old test imports.
 
