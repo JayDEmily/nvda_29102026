@@ -1,188 +1,179 @@
-# NVDA V2 — D057–D076 bounded ExecPlan
+# NVDA V2 — D077–D096 bounded ExecPlan
 
 Date: 24 October 2026 (Melbourne).
-Status: OWNER ACCEPTED AND EXECUTION AUTHORISED on 24 October 2026 by explicit current instruction: “No, I accept it. I authorize. Proceed.” The five §5 holds remain; execute resolved units numerically. All five held IDs are explicitly owner-deferred under §§13–14; continue the resolved units in ascending order. The planning-only restrictions below describe the prior planning commission, not the current execution commission.
-Baseline: `d0a905292c7439aec5bd9f099700f0ac58bdda25`.
-Branch: `work/v2-d057-d076-plan-20261024`.
+Status: **PROPOSED — planning and independent documentary review only. Owner acceptance and separate execution authorisation pending.**
+Baseline: `7b343c56ced615fc585988b77e7b27ab149d2d4c` (accepted D076 cumulative checkpoint).
+Branch: `work/v2-d077-d096-plan-20261024`.
 
-## 1. Goal and authority boundary
+## 1. Up-front disposition and proposed sequence
 
-Prepare the next twenty original signal identities, D057 through D076, retaining the established efficient per-signal process. The owner requested the plan and independent review, preferably within two review rounds; more rounds are permitted for material unresolved issues. This request does not revive the completed D037–D056 schedule or commission product execution.
+The owner requested the same twenty-signal planning/review cycle, with deferred-class identities identified up front. This plan covers exactly D077–D096. It proposes ten controlled foundation units and ten explicit deferrals. **Neither deferral acceptance nor execution is inferred from preparation.** Acceptance of this plan would accept its ten named deferrals and proposed sequencing; implementation still needs a separate commission.
 
-The prior three-signal plan/acceptance ledger remains exactly recoverable at `git show d0a9052:EXEC_PLAN.md`; the prior twenty-signal ledger is `git show fc82a07:EXEC_PLAN.md`. DO_NOT_CARRY_FORWARD their completed schedules as active work. Preserve all accepted source/tests, immutable generations, original failures/repairs and accepted checkpoints. No merge/push/history rewrite or GUARDRAILS.md modification.
+Proposed deferred set: **D078, D079, D080, D081, D084, D085, D086, D091, D095, D096**. Their precise unmet requirements and receivers are in §3. No unnamed/new defect may be automatically deferred. The criterion is missing meaning/profile/source/prerequisite closure, not arithmetic complexity or number of inputs. D082/D083 are statistical measurements with concrete neutral controlled proposals below; D091 remains an M02 neutral classification even though its exact rule is held. D084's strategy/configured score responsibility remains P02/existing M03.
 
-This draft specifies controlled source/numeric proposals for fifteen foundation units and names five unresolved entry conditions. It does not pretend all twenty are immediately runnable: D061/D062/D064/D065/D070 are BLOCKED for the precise reasons in §5. No new runnable physical cases exist now. The eventual budget is two cases per resolved signal (at most forty initial cases if all twenty are resolved), not forty currently admitted cases. Six per signal is the absolute ceiling, never the target or permission to expand.
+Proposed execution sequence after owner acceptance of these dispositions and separate commission: **D077, D082, D083, D087, D088, D089, D090, D092, D093, D094**. One signal, one independent final acceptance executor, one verified saved exposed cumulative checkpoint before advancing. This is an explicit proposed skip list, not a permission to discover and silently skip other gaps.
 
-Owner review/acceptance and a separate execution commission are required. Proposed controlled choices below become authority only through explicit owner acceptance; the earlier full completion delegation applied to D040/D041 and does not silently approve new strategy parameters or a new peer. Accepted equations/identities are distinct from proposed source/profile conventions.
+Prior owner-deferred D061/D062/D064/D065/D070 remain unimplemented/unaccepted and outside these twenty identities. Preserve their complete requirements at `7b343c56ced615fc585988b77e7b27ab149d2d4c:EXEC_PLAN.md` §5 and §§13–15: D061 P02/M03 own six-input score schema; D062 lawful D001 and R284 temporal contract; D064 P03/source/P_SCORE ingress; D065 P03/event-window rule and branch prerequisites; D070 own seven-input score/horizon/FX profile, including accepted D051's5d versus D049/50's1d distinction. No such issue is discharged or broadened by this successor plan. P03 remains unallocated; no numeric owner reservation or new peer is proposed here.
 
-## 2. Evidence reuse and scope
+The completed D057–D076 ledger remains exactly recoverable at the baseline root plan. **DO_NOT_CARRY_FORWARD** its finished schedule as active work; preserve all accepted source/tests/contracts/immutable generations, original failures/repairs and Git history. No merge/push/history rewrite or frozen GUARDRAILS.md change.
 
-Read current GUARDRAILS.md, AGENTS.md and applicable tests/AGENTS.override.md; obey their hierarchy. Fully read the applicable semantic authority, then reuse valid unchanged family/source/context inspection by Git identity/hash. Restrict later worker/reviewer context to the current signal, actual owning delta/dependencies/proof and relevant prior findings. No repeated catalogue-wide exploration, unchanged infrastructure review or large copied passages.
+## 2. Exact identities, owners, dependencies and evidence
 
-Canonical sources at the baseline:
+| ID | Meaning / raw inputs / derived predecessors | Disposition |
+| --- | --- | --- |
+| D077 | semiconductor relative return; R none; D073,D074,D072 | M02 controlled proposal §4.1 |
+| D078 | NVDA residual; R none; D075,D071,D076,D077,D079,D080,D081 | M02 PROPOSED DEFER §3.1 |
+| D079 | market beta; R none; D075,D071,D076,D077 | M02 PROPOSED DEFER §3.1 |
+| D080 | technology beta; same four D inputs | M02 PROPOSED DEFER §3.1 |
+| D081 | semiconductor beta; same four D inputs | M02 PROPOSED DEFER §3.1 |
+| D082 | aligned return correlation matrix; R151; D none | M02 controlled proposal §4.2 |
+| D083 | contemporaneous return dispersion; R037,R042; D none | M02 controlled proposal §4.3 |
+| D084 | sector rotation score; R none; D076,D077,D083 | P02/existing M03 PROPOSED DEFER §3.2 |
+| D085 | calendar days to expiry; R013,R001; D004 | M02 PROPOSED DEFER §3.3 |
+| D086 | ACT/365F years; R013; D001 | M02 PROPOSED DEFER §3.3 |
+| D087 | option midpoint; R034,R035; D none | M02 controlled proposal §4.5 |
+| D088 | option relative spread; R034,R035; D087 | M02 controlled proposal §4.5 |
+| D089 | strike/spot; R014,R118; D none | M02 controlled proposal §4.5 |
+| D090 | ln(strike/spot); R014,R118; D none | M02 controlled proposal §4.5 |
+| D091 | absolute-delta bucket; R112; D none | M02 PROPOSED DEFER §3.4 |
+| D092 | quote-side IV midpoint; R084,R093; D none | M02 controlled proposal §4.5 |
+| D093 | quote-side IV width; R084,R093; D none | M02 controlled proposal §4.5 |
+| D094 | five-minute matched IV change; R111; D none | M02 controlled proposal §4.6 |
+| D095 | one-trading-day matched IV change; R111,R183; D none | M02 PROPOSED DEFER §3.5 |
+| D096 | ATM IV by expiry; R111,R112; D085 | M02 PROPOSED DEFER §3.6 |
+
+Authority: frozen guardrails and applicable agent instructions; effective foundation §1/AnnexB/C; original calculation brief K02/K03/K04/K06/K07/K08/K09 plus applicable common clauses; exact current catalogue. The original brief's historical companion digest is superseded by effective foundation§1's exact catalogue binding, not silently repaired. Accepted overlays remain applicable; none is rewritten here.
+
+Pinned documentary inputs:
 
 | Path | SHA256 |
 | --- | --- |
 | handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md | 603b850802a418780109095e7ae69bcece449da79fb24140a6d50297605e927c |
 | handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv | 67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549 |
 | handoff/foundation_implementation/authority/FOUNDATION_IMPLEMENTATION_BRIEF_PROPOSED.md | 282f7d73c5e2fdf36ded43781665764eaf95d4a35f687f99990b87c59f744ed7 |
-| handoff/workbook_v2/gates_03_04/DOWNSTREAM_SELF_SUFFICIENCY.md | 7660321c04752f00d591266d45a7858f9b81a7ab874072d08ec10400ab4b6d3e |
+| handoff/foundation_implementation/reuse_preparation/G1_82_RAW_NATIVE_SOURCE_RESEARCH.csv | bd3190d5f5ec4b4a1b7a58ce94950b9556f19ba75f64f1c200804a50183f1b3c |
 
-Relevant preparation: reuse_preparation/FAMILY_F13_EXTENDED_E11_E15.md (D057–60), FAMILY_F14_EXTENDED_E11_E15.md and F14_R284_R285_R286_CONTROLLED_SYNTHETIC_V1.json (D062/63), FAMILY_F15_EXTENDED_E11_E15.md (D066–69), FAMILY_F16_EXTENDED_E11_E15.md (D071–75), FAMILY_F17_EXTENDED_E11_E15.md (D076 only). The preparation root is handoff/foundation_implementation/reuse_preparation/. Its G2_126_D_SIGNAL_SOURCE_LINKED_SPECIFICATIONS.csv and G3 records are per-ID navigation/research, not new proof/admission. Read only the relevant source-research R rows if an identified question remains. Do not rederive accepted research or import M01 private controllers, tests, PostgreSQL fixtures or answers.
+Read-only source/authority scope: exact D077–D096 catalogue rows; full F17 (D077), F18, F19, F20, F21, F22, relevant F24/D096; full FAMILY_IV_HISTORY_D094_D095.md; G1_82_RAW_NATIVE_SOURCE_RESEARCH.csv exact R001/R013/R014/R034/R035/R084/R093/R111/R112/R118/R151/R183 rows; current public M00/M02 request/result/projection/storage routes and relevant arithmetic/selection helpers; P02/M03 allocation. Family packets are documentary research, not native admission or already accepted M02 proof. Legacy source/test locators may inform later bounded inspection but are not imports, certified source facts or permission to rerun old tests.
 
-Preserve M00 and existing accepted M02/M03 production paths. Provider/TWS/API acquisition, live subscriptions, native source/calendar certification, M01 retirement/migration, other P02/P03 outputs, D077+, broad integration/E2E, performance and application/main integration are out of scope. A new public calculation facet required by a resolved owner is in scope after acceptance; it is distinct from provider/API collection. No token/cache savings are claimed without measurement.
+Reuse unchanged accepted common authority/infrastructure/environment evidence. Current relevant M02 searches of source/claim registrations found no D001/D004/D078–81/D085/D086/D091/D095/D096 registrations; this is a bounded current-owner observation, not a statement that no historical legacy implementation exists. Existing D071–75 profiles admit only their fixed decision frame, not arbitrary regression training histories. No legacy M01 private import/migration, outside-tranche prerequisite, live provider/API subscription or native mapping is commissioned.
 
-## 3. Fixed identities, owners and dependencies
+## 3. Explicit deferred requirements and resumption conditions
 
-Dependency order in this table is logical, not an assertion about an existing implementation's internal tuple order; the per-ID owning manifest must freeze the actual ordered extraction/bindings before code.
+### 3.1 D078–D081 — shared historical model, not independent coefficient arithmetic
 
-| ID | Meaning / exact R or D inputs | Owning boundary / present disposition |
-| --- | --- | --- |
-| D057 | VIX1D/VIX9D term pair; R238,R239 | M02; controlled proposal §4.1 |
-| D058 | VIX9D/VIX term pair; R239,R236 | M02; §4.1 |
-| D059 | VIX/VIX3M term pair; R236,R240 | M02; §4.1 |
-| D060 | VVIX/VIX ratio; R237,R236 | M02; §4.1 |
-| D061 | US volatility regime score; D052,D053,D057,D058,D059,D060 | Preserved P02 / existing M03; OWNER-DEFERRED TO-DO §13; exact own score profile still required |
-| D062 | Next scheduled event time; R284,D001 | M02 foundation jurisdiction; BLOCKED actual lawful D001 predecessor and event contract |
-| D063 | Standardised macro surprise; R286,R285 | M02; controlled proposal §4.2 |
-| D064 | Event importance score; R289 | Preserved P03; BLOCKED exact owner/source/P_SCORE |
-| D065 | Active event window; R284,D062,D064; P_RULE | Preserved P03; BLOCKED exact owner/rule and branch-specific prerequisites |
-| D066 | Nikkei return; R270 | M02; §4.3 |
-| D067 | Hong Kong index return; R271 | M02; §4.3 |
-| D068 | China index return; R272 | M02; §4.3 |
-| D069 | China technology index return; R273 | M02; §4.3 |
-| D070 | International overnight risk; D066,D067,D068,D069,D049,D050,D051 | Preserved P02 / existing M03; BLOCKED exact profile and horizon/FX policy |
-| D071 | Broad-market return; R037,R042, subject SPY | M02; §4.4 |
-| D072 | Technology return; R037,R042, subject QQQ | M02; §4.4 |
-| D073 | Semiconductor return; R037,R042, subject SMH | M02; §4.4 |
-| D074 | Semiconductor return; R037,R042, subject SOXX | M02; §4.4 |
-| D075 | NVDA return; R037,R042, subject NVDA | M02; §4.4 |
-| D076 | Technology minus broad return; D072,D071 | M02; §4.5 |
+Need one complete immutable P_REGRESSION sample/state/window/return-convention contract, at least the full-rank aligned training vectors, lawful public D075/D071/D076/D077 history producers, and common fit provenance. Current accepted D071–D075/D076 fixed-time controlled registrations cannot generate a full historical fit by changing request timestamps. Do not feed documentary arrays or precomputed beta carriers as if they were actual lawful D facts.
 
-P03 is a proposed responsibility label, not a currently allocated runtime ID. Do not equate it with runtime M03, which already owns P02. New-owner ingress supplies category M plus a responsibility name; the kernel resolves the next unused ID at admission. No numeric reservation in this plan. Normal ingress, registration, public reader/writer edges, owner-local durability and scoped architecture proof must precede P03 runtime use.
+Specify OLS with intercept, exact sample inclusion/minimum/history-completeness and current exclusion, conditioning or explicit unconditioned mode, singular/rank treatment, numerical representation, retained intercept/all coefficients/sample identities and immutable model_fit_id shared by all three beta occurrences. Equal numeric coefficients do not prove equal fit identity. D078 needs actual accepted D079/D080/D081 from that same fit plus a compatible current vector. Resolve dependency order D079/D080/D081 before D078 explicitly; original numeric position is not permission to fabricate prerequisites or implement all four as one unreviewed unit. Bounded prerequisite/profile amendments and their evidence budgets need owner commission; no accepted predecessor modification/regression is implicit. Receiver: M02 neutral-statistics/profile owner and owner acceptance of the concrete joint model/source proposal.
 
-Execution sequence, once commissioned: ascending numeric IDs, one accepted/saved unit before the next. At the first still-unresolved entry condition stop and report the exact gap; do not silently skip, defer, renumber or implement a prerequisite outside scope. The original first stop was D061; the owner has now explicitly deferred it under §13. The next unresolved entry is D062. An owner-approved explicit deferral or bounded prerequisite amendment may later change that sequence; neither is assumed now. D065's lawful post-event branch does not by itself require D062, but numeric skipping to reach it still needs an explicit disposition.
+### 3.2 D084 — configured sector-rotation interpretation
 
-## 4. Specified controlled proposals and exact two-case targets
+Retain P02/existing M03 responsibility. Need its own K07 ordered schema over actual D076,D077,D083, exact scalar/component extraction, transforms/scales, orientations, clipping or explicit absence, nonnegative weights/intercept, output interpretation/carrier and compatible snapshot/shared-source law. Do not reuse D040/41 coefficients or call an arbitrary directional sum a rotation state. General plan approval does not delegate missing policy choices. Receiver: owner/P02 profile, then own M03 public factory/immutable authority/proof. No generic score service or M02 convenience implementation.
 
-These are proposed synthetic contracts for owner review, never real-feed or real-calendar claims. Every future case starts from actual M00 public observations or actual public predecessor producers. Expected values are independently authored constants or equations; do not feed precomputed D results to the owner.
+### 3.3 D085/D086 — actual temporal producers and expiry source contract
 
-Common numeric law: finite exact Decimal raw values, explicit scale1/offset0 units unless the owning contract states otherwise; no float, magnitude-based conversion or ambient Decimal rounding. Exact ratios are reduced integer numerator/positive denominator. For log return use mathematical ln, existing bounded rational-log evaluation certifying one 50-significant-digit ROUND_HALF_EVEN value, refusal when its declared existing 32..512-term refinement cannot certify it. Do not change accepted log behaviour. D063 uses an exact rational baseline mean/sample variance and independently bounded square-root division certifying final50digit half-even z; the fixture gives exactly2. D076 subtracts the actual persisted rounded predecessor values exactly, not a fresh ln of a different combined ratio.
+D085 requires lawful public D004 exchange-local trading-date occurrence and declared R001 receipt/R013 contract-date lineage; D086 requires lawful public D001 true instant plus explicit expiry clock. These producers are not admitted by this tranche. A datetime, calendar constant, legacy M01 helper or fabricated predecessor cannot substitute.
 
-### 4.1 D057–D060: volatility term pairs
+Settle R013 exact date/contract-month distinction and native temporal projection/codec preserving original bytes, R001 receipt semantics (not publisher event), full option key, IANA zone, exchange session/overnight/holiday/early-close and instrument expiry/session convention. D085 whole calendar-day difference must reject negative live-contract dates; D086 ACT/365F needs a configured expiry instant and exact ratio or explicit numerical representation (1/365 is non-terminating Decimal). Receiver: temporal/calendar/source owner and M02 prerequisite owner, with separately authorised prerequisite implementation/acceptance. No D001/D004 addition is hidden inside this twenty-ID plan.
 
-Decision T=20Oct2026 13:00Z, cutoff T+1s, now T+2s; scalar observations event T/receipt T, zero allowed inter-input event skew, age <=60s. Reuse the accepted synthetic foundation-controlled-macro / macro_snapshot_v1 native metric.value shape, metric series/measurement_date/method/quote_orientation identities, source scope and per-R mappings/units from _macro_changes.py at the baseline. Only new per-D definition/admission/selection content changes. Require actual exact selected latest eligible source occurrences and matching declared series/units; inspect complete bounded histories, no fallback from a selected invalid current value to an older complete value. No revision_vintage_native in this controlled profile.
+### 3.4 D091 — explicit classification rule still needed
 
-R238=VIX1D15,R239=VIX9D20,R236=VIX25,R240=VIX3M30,R237=VVIX100; native and canonical units index_points, quote orientation not_applicable. Current metadata follows each record's UTC measurement date and the unchanged accepted per-R method convention.
+M02 neutral bucket responsibility is retained; a P_RULE name does not make this a P02 score. Need accepted ordered finite non-overlapping absolute-delta intervals, exact labels, boundary inclusion, uncovered/out-of-range behaviour and complete own immutable profile; preparation's10D/25D/50D example is not an admitted classification policy. Also bind signed R112 model delta versus absolute extraction, option right/expiry/contract, numeric scale/model variant and source eligibility. No implicit percentage conversion, guessed boundary or clipping. A future concrete neutral controlled bucket proposal can resolve this; the present plan deliberately proposes deferral rather than inventing labels/coverage choices. Receiver: owner acceptance/delegation of exact bucket profile and M02 source/carrier contract. Native certification is separate from a controlled proposal.
 
-| ID | New success value / typed shape | Single refusal with otherwise lawful inputs |
-| --- | --- | --- |
-| D057 | point_difference=-5; ratio=3/4 | Required R239 denominator is present and zero. |
-| D058 | point_difference=-5; ratio=4/5 | R239 event T-1s while R236 event T; each is fresh, but the declared zero-skew join fails. |
-| D059 | point_difference=-5; ratio=5/6 | Latest eligible R240 at T is zero; an older complete positive R240 exists but may not replace the selected invalid denominator. |
-| D060 | ExactRatioV1(4,1), scalar ratio | Required R236 denominator is present and zero. |
+### 3.5 D095 — historical IV role and trading-day comparability
 
-Both fields for D057–59 are mandatory ExactRatioV1 in a new frozen TermPairV1(point_difference,ratio); units index_points / ratio, no percent conversion. Do not misuse IndexChangeV1's percent_change name. D060 is ratio, not percent or Decimal truncation.
+Both R111 and R183 are declared. G1 research distinguishes per-contract model IV R111 from historical OPTION_IMPLIED_VOLATILITY R183; presence alone does not establish their comparable contract/tenor/bucket relationship or R183's mandatory computational/eligibility role. The old fixture's one-calendar-day selection and unused numerical companion cannot define a one-trading-day source law.
 
-### 4.2 D063: release-specific historical surprise
+Need an accepted explicit R183 role, full source/units/model/version and same-contract/bucket or explicitly justified comparable-series identity, exact prior official comparable-session anchor/calendar/roll/expiry handling, cutoff/revision and missing-member rules, numerical carrier, complete actual lineage and independently discriminatory pair. No suppressing the R183 dependency, invented condition or treating it as ceremonial provenance. Receiver: source/calendar custodian plus M02 own profile; owner resolution/delegation before execution.
 
-Reuse only D063's four release records in the existing F14 synthetic manifest: July/August/September prior pairs (consensus2.5,actual2.4),(2.5,2.5),(2.5,2.6), current October(2.5,2.7); declared same synthetic_pct_yoy units. Baseline N=3, sample denominator N-1, current excluded. Retain manifest release IDs/family, exact scheduled/forecast-known/actual-receipt timestamps and c1/a1 revisions. In this proposed controlled profile actual known_utc is its recorded receipt instant; no separate unknown provider publication time is asserted. As-of current release15Oct2026 12:30Z; cutoff13:00Z; now13:00:01Z. Only forecasts known strictly before their release may be paired; historical actuals/releases strictly precede current and all selected versions must be visible by cutoff.
+### 3.6 D096 — missing D085 plus surface coverage contract
 
-Synthetic provider foundation-controlled-events, variant release_snapshot_v1; raw paths release.consensus for R285 and release.actual for R286. Each projection retains release.id, release.family, release.scheduled_utc, release.kind(consensus/actual), release.known_utc and release.revision. Native numerical values are Decimal, not the JSON manifest's documentary strings. Forecast observation event time is its known instant; actual observation event time is its release instant. The scheduled release identity is metadata, not a future event-time invention. Distinct M00 occurrences preserve the exact forecast/actual disclosures and raw receipts. Latest eligible version selection occurs within exact release/family/kind; no pairing across releases or backfill of a missing selected member.
+Need actual lawful D085 per selected expiry; resolving raw interpolation alone does not discharge this prerequisite. Also freeze exact R111/R112 same-contract/model/expiry/right pairing, surface member universe and completeness, exact50-delta preference, nearest valid brackets, side coverage state, whether single-side coverage is allowed, explicit absence of extrapolation or separately accepted mode, duplicate/tie selection, numerical result and immutable typed per-expiry/side lineage. K09 fixes linear interpolation and call/put mean; it does not choose source/coverage policy. Receiver: M02 surface/profile owner after temporal prerequisites. No D097+ surface work is in scope.
 
-Success: surprises[-.1,0,.1], current .2; mean0, sample variance .01, SD .1, z=2, complete typed Decimal/lineage/strict-prior baseline selection. Refusal: selected September historical actual is absent while its consensus and every other current/prior input are present. N=3 required: no shortening to two or substituting another release. This is one missing-pair scenario. Post-release forecast revisions and zero variance are source-reviewed obligations, not additional runtime cases.
+## 4. Ten controlled proposals for owner review
 
-### 4.3 D066–D069: controlled international daily logs
+These are synthetic mathematical/source contracts, not real-feed, native-calendar or market-validity certification. Their numerical/profile choices become authority only if the owner accepts this plan. No production/proof scaffold is authored now. Missing mandatory scope discovered later stops affected work; two-case economy is not permission to weaken assertions. For all new raw selectors, consume complete bounded pages, deduplicate exact observation IDs and reject conflicting duplicate content/cursor exhaustion. Rank eligible exact-role candidates by (event_time,received_time,ingestion_sequence) within the declared provider/variant scope, reject ambiguous equal rank, and validate the selected numerical domain without older-value fallback. Preserve exact source identities and do not assert revision-vintage support absent from these controlled profiles.
 
-These four synthetic series have their own explicit current/prior UTC sample frames, not inferred JP/HK/China exchange calendars. T=20Oct2026 13:00Z, reference=19Oct2026 13:00Z, cutoff T+1s, now T+2s. Both sample instants required exactly, no holiday carry/interpolation/nearest-neighbour or later replacement. Dates/times here are invented controlled labels; native FRED date-only histories cannot be converted to these instants or used as if certified.
+### 4.1 D077 — actual semiconductor basket minus QQQ
 
-Provider foundation-controlled-international, variant daily_close_v1, scope same provider/variant. Native index.value Decimal; identity fields index.series,index.close_utc,index.adjustment_basis=controlled_unadjusted/1,index.close_kind=controlled_official. Mapping mmt-rNNN-international/1; unit mmt-rNNN-index-units/1, index_points->index_points scale1/offset0; R270=NIKKEI225,R271=NASDAQNQHK,R272=NASDAQNQCN,R273=NASDAQNQCN10. Calculation subject is NVDA (international context), series identity selects the exact index; no proxy substitution.
+Use actual public accepted D073 SMH,D074 SOXX,D072 QQQ producers with their unchanged source profiles at20Oct2026 12:40Z, common cutoffT+1s, nowT+3s, same prior controlled19Oct13Z close/context/window85200. Request order(D073,D074,D072), subject SEMIS_VS_TECH, explicit members(SMH,SOXX,QQQ), two-proxy mode only; no single-proxy fallback. Both semiconductor producers yield persisted L and QQQ yields persisted M, where L/M are the exact accepted50digit Decimal literals below. Return ExactRatioV1 of (Fraction(L)+Fraction(L))/2-Fraction(M), units return_spread, shape exact_ratio. Definition D077-RELATIVE-RETURN-1/K02/P_BASIC. Full nested actual predecessor/raw lineage; no direct raw bindings. Own parameter mmt-d077-controlled/1(P_BASIC,subjectSEMIS_VS_TECH,membersSMH/SOXX/QQQ); selection identity mmt-d077-selection/1, joins as-of/cutoff/context/return-convention, staleness1day enumeration metadata, skew0, true_instant, explicit basket, inherited underlying provider/variant/scope and100/1000 bounds, as for D076.
 
-| ID | Reference→current / expected log | Single refusal |
-| --- | --- | --- |
-| D066 | 100→110 / L | Required prior close native adjustment_basis differs from controlled_unadjusted/1. |
-| D067 | 200→180 / M | Current R271 exists but was received after cutoff. |
-| D068 | 50→55 / L | Prior value0 exists; ln denominator invalid. |
-| D069 | 80→100 / U | Prior sample only at reference+1s; exact required anchor absent. |
+Success ratio:100335347731075580635726552060038945263362869145957 /500000000000000000000000000000000000000000000000000. Refusal: actual lawful D073 and D072 exist with all raw inputs; required D074 is absent and no single-proxy mode is declared. Preserve explicit missing ID in request; prove the other lawful parents exist before refusal. No prefilled returns or old acceptance tests.
 
 L=0.095310179804324860043952123280765092220605365308644.
 M=-0.10536051565782630122750098083931279830612037298327.
-U=0.22314355131420975576629509030983450337460108554801.
-These independently established50digit log witnesses are frozen here for future proof; bind final Decimal tuple literals in owning proof. D068 deliberately uses a nonzero controlled registration witness instead of preparation's equal-price example; no old test is rerun.
 
-### 4.4 D071–D075: same-subject prior official close/current log
+### 4.2 D082 — neutral aligned Pearson matrix
 
-T=20Oct2026 12:40Z. The controlled request domain permits cutoff T+1s or T+2s with now>=cutoff; standalone two-case fixtures use cutoff T+1s/now T+2s. This explicit domain permits D076's genuine mismatched-cutoff predecessor setup without changing an accepted definition later. Synthetic current session20Oct12–13Z; prior session19Oct12–13Z; official prior close timestamp19Oct13Z. Current event/receipt exactlyT, prior close event/receipt exactly prior session end; distinct observation IDs. Exact subject is SPY/QQQ/SMH/SOXX/NVDA respectively. Proxy choice SPY and QQQ is explicit, not silent SPX/NDX interchangeability.
+Propose one unconditioned intraday neutral definition D082-ALIGNED-RETURN-CORRELATION-1/K06/P_REGRESSION, not a regime-predictive model or regression coefficient fit. Subject US_CORRELATION_BASKET, ordered members(NVDA,SPY,QQQ). T=20Oct2026 12:40Z, cutoffT+1s, nowT+2s. Four exact one-minute close anchors T-3min,T-2min,T-1min,T; current row included as an observation in this rolling measurement, not as its own historical z-score baseline. Source provider foundation-controlled-correlation, variant minute_close_v1, scope provider/variant, R151 at bar.close finite positive Decimal price. Mapping mmt-r151-correlation/1; unit mmt-correlation-price/1 identity price. Metadata instrument.id, bar.end_utc, bar.kind=controlled_minute_close, adjustment.basis=controlled_unadjusted/1 at matching nested paths. Every event/receipt equals its bar end. Each request raw binding names one of the three exact subjects; latest eligible within each exact subject/anchor before numeric validation; no dropped row/member, pairwise intersection, interpolation, forward fill or price-level correlation. Context controlled-correlation-window/1: session_start/history_complete=T-3min,session_end=T+1min. Maximum staleness180s bounds enumeration, skew0 means alignment at each cross-subject anchor, not synchronous all-history join; true_instant; basket as above; page100/1000. Parameter mmt-d082-controlled/1(P_REGRESSION,subjectUS_CORRELATION_BASKET,membersNVDA/SPY/QQQ); selection mmt-d082-selection/1 with join keys(subject_instrument,instrument.id,bar.end_utc); no predecessors. Exact four-anchor completeness is in the owning profile, not guessed from context alone.
 
-Provider foundation-controlled-underlying, variant last_prior_close_v1. R037 at trade.last and R042 at official_close.value, Decimal price. Each binding retains instrument.id, session.id, adjustment.basis=controlled_unadjusted/1 and price.kind=current_last/official_close as applicable. R042 retains the prior session identity, never current session. Mapping mmt-r037-underlying/1 and mmt-r042-underlying/1; unit mmt-underlying-price/1 identity price units. No live IBKR mapping or US market calendar assertion. Current age0/skew0; prior freshness is the exact named previous synthetic session, not a current-price staleness cap.
+At each interval compute unchanged bounded log return certified50significant-digit ROUND_HALF_EVEN, then treat its persisted representation as exact Fraction for centring/covariance. Pearson rho_ij=C_ij/sqrt(S_i*S_j), with C=sum centred products and S=sum centred squares; nonzero S mandatory. Use signed sqrt_ratio_50(C²/(S_i*S_j)) (zero C emits exact0), no pre-rounded SD or float. Final matrix Decimal entries50significant-digit half-even, diagonal1; refuse if an existing log/root bound cannot certify. This explicitly defines numerical representation; mathematical Pearson is not replaced by price correlation.
 
-| ID | Subject / prior→current / expected | Single refusal |
+Controlled close rows: NVDA(1,2,4,12), SPY(1,2,6,12), QQQ(1,3,9,18). Let g=rounded ln2,h=rounded ln3; return vectors(g,g,h),(g,h,g),(h,h,g), h>g. Affine centring gives exact expected matrix ((1,-.5,-1),(-.5,1,.5),(-1,.5,1)), independent of rounded g/h magnitudes. New frozen public CorrelationMatrixV1(members:tuple[str,...], rows:tuple[tuple[Decimal,...],...]) with exact square dimensions/order, symmetric finite entries[-1,1], diagonal1; add only this typed member to window result union/export. Complete12 selected actual raw lineage ordered member then anchor; units correlation, result_shape correlation_matrix, window_seconds180. Refusal removes only SPY's T-1min bar; eleven other otherwise lawful raw facts remain. Missing complete aligned sample must refuse, not compute pairwise subsets. Source/case review must also assess variance/symmetry/bounds; no extra probe loop.
+
+### 4.3 D083 — contemporaneous cross-sectional sample dispersion
+
+Definition D083-CROSS-SECTION-DISPERSION-1/K04/P_CROSS_SECTION. Subject TECH_SEMI_DISPERSION, ordered members(NVDA,QQQ,SMH), no derived predecessors and no historical P_BASELINE. Reuse exactly accepted _underlying_returns.py provider/variant, mappings mmt-r037-underlying/1,mmt-r042-underlying/1, price unit, full instrument/session/basis/price-kind metadata, T/prior-anchor/context/cutoffT+1s/nowT+2s. This is a new raw-driven basket calculation, not reuse of accepted per-ID prices or mutation of their profiles. Ordered raw bindings per member:(R037 current,R042 prior); own mmt-d083-controlled/1 and mmt-d083-selection/1, join keys(subject_instrument,instrument.id,session.id), maximumstaleness1day enumeration bound, skew0 per current/prior role across members, true_instant, explicit basket and same provider/variant/scope100/1000 bounds. Require all six exact subject-specific roles, no missing-member reduction.
+
+Current/prior: NVDA110/100, QQQ100/100, SMH100/110. Construct bounded50digit log-return representations (L,0,-L); exact rational sample mean/variance denominatorN-1, then sqrt_ratio_50 of exact variance, with no intermediate Decimal rounding. Success Decimal exact L, units return_dispersion, shape scalar_decimal, window_seconds85200; all six actual selected lineages and exact basket retained. Refusal: only required SMH prior official close absent, current SMH100 and four other roles present; no shrinking to two members. This is contemporaneous dispersion, not a z-score, historical baseline or strategy rotation score.
+
+### 4.4 Shared new controlled option-source proposal
+
+For §§4.5–4.6 only: T=20Oct2026 12:40Z, standalone cutoffT+1s,nowT+2s. Provider foundation-controlled-options,variant option_snapshot_v1,scope provider/variant; true_instant only. Native numeric values exact finite Decimal; units explicitly identity scale1/offset0: premium/strike/spot price in USD_per_share; IV in annualised_decimal_volatility. No float, magnitude-based scale inference, arbitrary native delta clamp, sentinel certification or live IBKR claim.
+
+Supported exact contract keys C1=controlled-nvda-c110-20261023 and C2=controlled-nvda-p110-20261023; both underlyingNVDA,expiry2026-10-23,strike key110,currencyUSD,multiplier100,kindoption, rightC/P respectively. Subject_instrument is the exact C1/C2 key, not plain NVDA. Both are supported in D087's proposed domain before D088 setup; other new units support C1 requests and may project C2 refusal facts. All mappings retain metadata at these ordered paths: contract.id,underlying.id,expiry.date,strike.key,option.right,currency.code,contract.multiplier,instrument.kind,model.convention,value.role; all leaves strings, model.convention=controlled-model/1, value.role per mapping below. Contract identity and metadata must agree with requested key and source role; numeric R014 strike must equal110 under this fixed contract key. These are controlled labels, not expiry-date temporal inputs or D085 substitutes.
+
+| R | Native numeric path | value.role | Native/canonical unit; unit ID |
+| --- | --- | --- | --- |
+| R034 | quote.bid | option_bid | USD_per_share; mmt-option-price/1 |
+| R035 | quote.ask | option_ask | USD_per_share; mmt-option-price/1 |
+| R014 | contract.strike | option_strike | USD_per_share; mmt-option-price/1 |
+| R118 | model.underlying_price | model_underlying_price | USD_per_share; mmt-option-price/1 |
+| R084 | bid_model.iv | bid_iv | annualised_decimal_volatility; mmt-option-iv/1 |
+| R093 | ask_model.iv | ask_iv | annualised_decimal_volatility; mmt-option-iv/1 |
+| R111 | model.iv | model_iv | annualised_decimal_volatility; mmt-option-iv/1 |
+
+Mappings mmt-rNNN-option/1 (for example mmt-r034-option/1), with exact provider/variant/native path/unit and all ten metadata fields. Latest eligible exact contract/role selection before numeric domain checks; complete bounded histories, no fallback from selected invalid numeric value. Snapshot event/receiptT except named refusal; age<=60s, maximumskew0; join keys(subject_instrument,contract.id,underlying.id,expiry.date,strike.key,option.right,currency.code,contract.multiplier,model.convention), basket empty; page100/1000. Each own P_BASIC parameter mmt-dnnn-controlled/1 has subjectC1 and members(C1,) (D087 also C2/(C2,)); selectionmmt-dnnn-selection/1. Shared WindowContextV1 controlled-option-session/1 spans20Oct12:00–13:00Z, history_complete12:00Z. Full option identity is carried in source projections/lineage; no new generic option framework or M00 contract change.
+
+### 4.5 Six option scalars — exact pairs
+
+All use existing public create_window_owner/create_window_reader, WindowCalculationRequestV1 and WindowMeasurementOccurrenceV1. Definition versions Dnnn-OPTION-SCALAR-1, kernelK02/P_BASIC, exact row equations, ordered bindings as listed, window_seconds0 (snapshot); no predecessors except D088. Success preserves actual full option source metadata, same-snapshot joins and public SQLite read-only reopen.
+
+| ID | Ordered raw bindings; equation / success result | Single reached refusal |
 | --- | --- | --- |
-| D071 | SPY /100→110 /L | Current SPY exists; the only prior official close is another subject QQQ. |
-| D072 | QQQ /100→90 /M | Exact prior close has split_adjusted basis instead of declared unadjusted basis. |
-| D073 | SMH /50→55 /L | Current SMH record exists with receipt after cutoff. |
-| D074 | SOXX /40→44 /L | Correct-subject prior official close is present with value0. |
-| D075 | NVDA /100→125 /U | Correct current last is present with negative price-1. |
+| D087 | R034,R035; (bid+ask)/2;2,4=>ExactRatioV1(3,1),option_premium/exact_ratio | Both sides present for C1 but bid4>ask2; declared controlled quote eligibility requires0<=bid<=ask. |
+| D088 | R034,R035 plus actual ordered D087;100*(ask-bid)/mid;2,4,3=>ExactRatioV1(200,3),percent/exact_ratio | C1 raw bid2/ask4 exist, but actual lawful supplied D087 belongs to C2; reject wrong contract. |
+| D089 | R014,R118;strike/spot;110,100=>ExactRatioV1(11,10),ratio/exact_ratio | Selected contemporaneous spot0 exists; nonzero denominator fails. |
+| D090 | R014,R118;ln(strike/spot);110,100=>DecimalL,dimensionless/scalar_decimal | Selected same-contract model spot-1 exists; ln positive-price domain fails. |
+| D092 | R084,R093;(bid_iv+ask_iv)/2;.20,.30=>ExactRatioV1(1,4),volatility/exact_ratio | Current C1 bid IV exists; only ask IV is C2, not C1. |
+| D093 | R084,R093;100*(ask_iv-bid_iv);.20,.30=>ExactRatioV1(10,1),volatility_points/exact_ratio | C1 ask event/receiptT-1s while bidT; both fresh but zero-skew join fails. |
 
-Every success asserts actual subject-specific mappings/selected lineage; identical numerical L or reused source patterns do not make distinct registrations interchangeable. D074's nonzero witness avoids weak zero-only acceptance. No zero/negative native-domain enforcement beyond the positive-price requirement needed by ln is inferred.
+Controlled IVs must be nonnegative; no invented upper native cap or crossed-IV prohibition beyond explicit identity/time/numeric law. D089's mathematical denominator law does not become a universal physical native-domain certification. D090 uses the unchanged32..512-term log bounds,50digit half-even, refuses uncertifiable. No ambient Decimal arithmetic/float. D088's actual public D087 must match own accepted definition/profile, exact source observation IDs/lineage, contract/units/versions/as-of/cutoff; no stale numeric midpoint substitution. Its success materialises D087 from the actual same C1 raws and includes complete nested predecessor plus direct raw lineage. Its refusal separately materialises lawful C2 D087 from C2 raws while C1 raws remain present. Both C1/C2 lawful source facts are asserted before attempting parent refusal; no historical test execution or fabricated carriers.
 
-### 4.5 D076: actual compatible QQQ minus SPY
+### 4.6 D094 — five-minute matched model-IV change
 
-Use actual accepted public D072 and D071 producers at §4.4's same T/cutoff/session/return convention; no prefilled1/20 and1/50 derived carriers from the documentary example. Request order D072, D071; subject US_TECH_VS_BROAD, members(QQQ,SPY), explicit cross-subject basket. Both definition/parameter/source conventions and exact official prior-close anchors must match their owning profiles.
+Definition D094-OPTION-IV-CHANGE-5M-1/K03/P_WINDOW, own mmt-d094-controlled/1 and mmt-d094-selection/1, subjectC1,members(C1,), no predecessors. Reuse §4.4 R111 mapping/IV units/metadata/provider/variant with own historical selection: exact currentT, reference latest eligible same C1/model/contract at or before currentT-300s and no earlier thanT-600s. Maximumstaleness600s bounds enumeration, current freshness requires exactT, skew0 applies to current role (not synchronous current/reference); all facts visible by cutoff. WindowContextV1 controlled-option-iv-window/1 start/history_completeT-600s,end13:00Z. Bounded100/1000 histories; no forward fill or replacing selected invalid IV. Reference may be older than exact5m within declared bound; do not change K03 latest-at-or-before into exact-anchor-only.
 
-Success: exact rational Fraction(M)-Fraction(L), where M/L are the persisted50digit representations fixed above; freeze its independent numerator/denominator before proof admission. Units return_spread, shape exact_ratio, actual complete nested predecessor/raw lineage. Refusal: both actual lawful predecessors exist, but D071 has knowledge cutoff T+2s while D072/request cutoffT+1s; new D071 producer request is lawful under its source contract and nowT+3s. No mixed knowledge snapshots. D071's two-value cutoff domain is explicitly proposed in §4.4 before its implementation; no accepted prerequisite needs amendment for this case.
+Success facts R111:.53atT,.90atT-120s,.50atT-300s,.48atT-360s, receipt=event; all C1. Independent result100*(.53-.50)=3, ExactRatioV1(3,1),volatility_points/exact_ratio,window_seconds300. Full actual chosen current/reference lineage retained; proof separately projects/asserts all four facts so .90 cannot silently become reference and .48 demonstrates an older eligible alternative.
 
-## 5. Five precise authority-resolution units
+Refusal keeps current/distractor C1 but changes BOTH5m-and-older facts to lawful C2 keys/metadata; independently project/assert them and the C1 facts. No same-contract reference remains. Changing just .50 would leave lawful .48 fallback and would be a weak/incorrect refusal witness. The two wrong-contract records are one named scenario, not extra cases. No R183 or one-day/calendar inference is introduced.
 
-These were originally named stops. D061 is now an explicit owner-approved deferral under §13; D062/D064/D065/D070 remain unresolved stops, with no implicit permission to add tests/IDs. Preserve their original identities, jurisdictions and dependencies.
+## 5. Minimal implementation and immutable per-ID map
 
-### 5.1 D061 / P02 existing M03
+After acceptance/commission, author each own exact profile/brief/proof contract and two-case manifest before production. New private files only as needed: _relative_sector_return.py(D077),_correlation_matrix.py(D082),_cross_section_dispersion.py(D083),_option_scalars.py(D087/88/89/90/92/93),_option_iv_change.py(D094). Route only admitted per-ID hashes in existing _window.py public factories/read-only readers. api.py adds only CorrelationMatrixV1/export/window result union for D082; existing ExactRatioV1/Decimal and window carriers cover others. Existing typed codec reflects dataclasses; change no codec unless an actual in-scope incompatibility is established and resolved narrowly. Reuse RecordState/storage/identity, bounded log/root and eligible history mechanisms; no generic strategy framework, peer, registry or shared score service.
 
-Freeze one own K07 profile over the six actual inputs; name exact D052/D053 structured component paths (point_change versus percent_change), D057/58/59 point_difference versus ratio, and D060 scalar extraction. Declare transform/scale, optional clip or explicit absence, orientation, nonnegative weights, intercept, raw versus bounded output and numerical carrier. Catalogue generic score does not imply sigmoid. All direct as-of/cutoff snapshots must be compatible, and shared underlying current raw identities across direct parents must agree. D052/D053 and other old profiles stay unchanged; materialise them as setup via public factories, never their tests.
+M02 own authority paths: handoff/foundation_implementation/authority/Dnnn_IMPLEMENTATION_BRIEF.md,Dnnn_PROFILE.json,Dnnn_PROOF_CONTRACT.json; implementation/authority/Dnnn_IMPLEMENTATION_AUTHORITY_BINDING.yaml; config/product_proof/market_measurement_dnnn/{claim.json,admission.json,generations/0001.json}; tests/product/market_measurement_dnnn/test_signal.py sole test_dnnn_signal[success]/[refusal]; owning dnnn_execution/ evidence. Exact companion count/profile hashes and finite tools/product_proof_claims.py loader declarations are added only for resolved commissioned IDs, preserving all previous validators/target/partition/immutable generation algorithms. No descriptor for held IDs and no G01 relaxation. Parameter/basket/source contracts are not duplicated opportunistically; derive repeated declarations from canonical owning profiles during authoring, inspect consistency before immutable sealing.
 
-Missing policy is not supplied by existing D040/D041 coefficients. Obtain owner acceptance or explicit delegation for a concrete new profile, then bind its own immutable brief/JSON/proof contracts. Define its own public factory/result/readback extension within M03; no generic cross-peer score service. Only then freeze its two exact cases/oracle and admit execution.
+A new matrix result is justified by D082's mathematical output, not a general API refactor. Exact typed assertions in its same success case cover matrix member order/shape/entries, full selected raw lineage, API/codec/durable reopen. Scoped new-file/ingress/import/public-seam checks include changed production sources only; unchanged old graph evidence is reused. No independent old matrix regression programme.
 
-### 5.2 D062 / actual D001 and event source law
+## 6. Admission and strict case budget
 
-Accepted law selects earliest relevant scheduled event strictly after as-of; retain seconds and exact minutes. F14 positive schedule is as-of21Oct12:00Z with known future events12:01:30 and12:03, plus past/exactly-now/late-received decoys; expected90seconds/3/2minutes. These are a candidate witness, not actual D001 evidence.
+Ten proposed resolved signals × exactly two cases = twenty eventual new physical cases, **zero admitted now**. Ten held IDs have no physical cases, no placeholder refusal tests and no runtime. Six per ID remains a hard ceiling, not target or permission to add cases. Scope gaps require concrete resolution rather than weakening assertions or adding probes by habit.
 
-Baseline M02 source/API inspection found no D001 implementation; M01 remains bootstrap legacy and no M01 import/migration is authorised. An as-of datetime or fabricated D001 occurrence cannot replace the declared D001 dependency. Stop until an actual lawful public D001 contract/producer is supplied, or the owner separately authorises its bounded prerequisite implementation/acceptance. D001 would be an explicit additional unit with its own budget/checkpoint, not silently the twenty-first signal in this plan.
-
-Also settle exact controlled R284 projection of scheduled UTC, event/relevance identity, schedule revision selection and disclosure/receipt versus scheduled time. M00 supports native string projections, while existing M02 RawInputLineageV1/codec is numeric-oriented; a temporal lineage/carrier/codec design must preserve exact ISO native bytes and parsed same UTC instant without modifying M00 or coercing schedule time into Decimal. No executed RED or numeric fixture can discharge this source/type/owner hold. Once resolved, declare exactly one success and one reached refusal.
-
-### 5.3 D064 / P03 event importance
-
-Before code, admit P03's bounded event-risk responsibility under a nonnumeric create intent, exact package/public seam, permitted M00/foundation reads, own SQLite writer/read-only boundary and immutable lineage. Do not allocate it to M03/P02 or M02 by convenience. Proposed package nvda_desk.event_risk_policy, public seam .api; numeric owner remains unresolved until normal kernel allocation.
-
-R289 needs a concrete controlled/native value shape, event identity/revision/time/unit mapping and versioned interpretation. Existing numeric R289 fixtures do not prove a native category translation or historical sensitivity model. K07 does not implicitly map categories to numbers. Resolve explicit legal scalar extraction/parameter semantics, bounded importance interpretation and exact numerical profile; do not invent an unlisted categorical extractor or disguise a precomputed D064 answer as raw/context. Bind own authority, exact typed seam and two cases only after owner acceptance/delegation.
-
-### 5.4 D065 / P03 event-centred policy
-
-Reuse that admitted same P03 owner and actual own D064, with exact selected event ID/definition/profile joined to visible R284. Own immutable P_RULE sets pre/post durations, applicability threshold/inclusion and known-calendar coverage/absence semantics. Canonical kernel selects visible events in [as_of-post,as_of+pre], nearest absolute distance, exact tie earlier; output true only if selected event's D064 meets threshold. Preserve boolean and any additionally mandated score as a named typed carrier, not an arbitrary bool/score collapse.
-
-D062 is a pre-event countdown and is not the sole post-event source. A strictly post-event branch may lawfully omit it under the accepted row; do not fabricate a future countdown or make it unconditionally mandatory. Full acceptance claims must distinguish implemented branch coverage, mandatory unproved branches and source review from runtime proof. Resolve exact supported profile/branch and complete contract before freezing two discriminatory cases; do not add pre/post/tie scenario loops. Missing required proposition is a reported scope gap, not silent weakening.
-
-### 5.5 D070 / P02 existing M03
-
-Freeze its own seven-input K07 schema, exact component paths, transform/scales, orientations, weights/intercept/output and numerical law. Equity ln returns differ from FX percent changes and quote orientations: no implicit scalarisation/unit mixing. Preserve all four index identities and JPY/HKD/onshore-CNY per-USD orientation.
-
-Important predecessor compatibility: accepted D049/D050 profiles are1d while D051 is5d. Do not rerun/change D051 to fit a convenient daily assumption. The new immutable profile must explicitly accept those distinct named horizons and state their interpretation, or owner must commission a separate compatible prerequisite/profile amendment. Fix one exact calendar/as-of/knowledge universe and any required dispersion/FX-confirmation interpretation; a linear directional proxy must not be silently called proof of dispersion/predictive risk. Actual accepted D066–69 plus lawful D049–51 supply setup, not precomputed feature scores or tests. Resolve own brief/profile/factory and two exact cases/oracle after owner decision.
-
-## 6. Minimal implementation and immutable declaration map
-
-After a signal's authority/profile is accepted, freeze its exact per-ID file/type/case manifest before implementation. Do not create scaffolding for unresolved future units.
-
-For specified M02 units, proposed private files: _volatility_terms.py (D057–60), _macro_surprise.py (D063), _international_returns.py (D066–69), _underlying_returns.py (D071–75), _relative_market_return.py (D076). Use existing api.py WindowCalculationRequestV1 / WindowMeasurementOccurrenceV1 / MeasurementWindowOwnerV1 / MeasurementWindowReadsV1 and create_window_owner/create_window_reader; add only per-ID routing in _window.py as each is admitted. Add only TermPairV1 and its explicit WindowMeasurementOccurrenceV1.result union member for D057–59. Existing scalar Decimal/ExactRatioV1 results cover the other specified units. Preserve old namespaces/validators/factories. Reuse accepted owner-local RecordState, typed codec and arithmetic helpers where exact contracts agree; any incompatible new temporal/profile carrier remains an entry hold, not an excuse for a broad framework.
-
-Per-ID M02 authority: handoff/foundation_implementation/authority/Dnnn_IMPLEMENTATION_BRIEF.md, Dnnn_PROOF_CONTRACT.json; implementation/authority/Dnnn_IMPLEMENTATION_AUTHORITY_BINDING.yaml; config/product_proof/market_measurement_dnnn/{claim.json,admission.json,generations/0001.json}; tests/product/market_measurement_dnnn/test_signal.py, sole test_dnnn_signal with success/refusal IDs; owning dnnn_execution evidence directory. P02 follows existing handoff/configured_market_conditions and configured_conditions_dnnn pattern. P03 paths/public types are frozen at §5.3 admission, with a non-overlapping physical/config claim root.
-
-One bounded fixed loader declaration extension in tools/product_proof_claims.py for the finite D057–D076 IDs/owners may be prepared during the first commissioned resolved unit, preserving every old claim, immutable generation/target/partition/validator algorithm. Add exact per-ID descriptors only as each authority is resolved. New peer target/seam must be represented honestly; never route it through an M02-only helper. No dynamic discovery, arbitrary claim registration, generic score service or shared runner relaxation. No loader or infrastructure change is authorised merely by this planning task.
-
-Repeated identities, feature parameters, hashes, authority references and numerical constants derive from the canonical owning brief/JSON and committed proof bytes. Reuse exact accepted authority/implementation/proof infrastructure, inspect consistency once before sealing each immutable generation; retain originals and link replacements. No independent reconstruction of the same constants across companion reports, duplicated reasoning or unnecessary receipt framework. Keep required contracts, evidence, provenance and independent semantic judgement.
+Success asserts full typed value/units/shape/definition/parameters/member set/context/selection/admission/owner/as-of/cutoff/calculated-time, actual source and nested predecessor lineage, occurrence identity and public ordinary SQLite read-only reopen/history. Refusal first proves otherwise lawful source/predecessor presence and exact stated defect, then no result/history from both writer and reopened reader. Raw/predecessor setup must use public factories, not private test/producer helpers or prefilled derived answers. Source/case discrimination and fixture-independent action sequences stay within the declared pair. No scenario matrices, hidden loops of independent cases or added reviewer runtime probe. Reuse prior accepted source interpretation by exact version; actual predecessor production as setup is not its old acceptance test invocation.
 
 ## 7. Execution cycle and efficiency rules
 
-For each resolved commissioned signal, in numeric order:
+For each resolved commissioned signal, in the explicit §1 order after its named deferrals are accepted:
 
 1. Confirm its entry authority, exact owning delta, actual dependencies, two node IDs, numerical oracle and named refusal; consult relevant accepted evidence without executing it. Write/inspect the new proof before production code.
 2. Author exactly two physical cases. Success proves the full typed value/units/definition/parameters/context/owner/admission/times, actual selected lineage and ordinary public read-only durable reopen within that same case. Refusal must begin with otherwise lawful actual source/predecessor facts, reach its single stated defect and persist no result/history. Actual public predecessor materialisation is lawful setup; old acceptance test invocation is not.
@@ -208,112 +199,23 @@ Keep CPython3.12.14, SQLite3.53.1, pytest9.0.3, mypy1.20.1, Ruff0.15.11, PyYAML6
 
 A new branch/session/reviewer does not trigger dependency installation, environment requalification or repeated product tests. If the verified runtime is genuinely absent/changed, restore only the missing pinned environment and verify only changed facts, no product qualification probe. Planning requires no installation or runtime/static checks. Reuse relevant family/context/authority findings while bytes/applicability remain unchanged; keep independent judgement substantive. No model token/cache/performance saving claim without measurement.
 
-## 10. This planning task: review, reconciliation and delivery
+## 10. Planning review, reconciliation and delivery
 
-Allowed mutations now: EXEC_PLAN.md, AGENTS.md, tests/AGENTS.override.md, README.md and one concise review record under handoff/planning/d057_d076/. No product source/tests, dependency pins, authority bindings/proof contracts, claim descriptors/admissions/generations, architecture registry/allocation or GUARDRAILS.md changes.
+Allowed writes in this task: root EXEC_PLAN.md, AGENTS.md, tests/AGENTS.override.md, README.md, and concise documentary review records under handoff/planning/d077_d096/. No product source/tests, claims/contracts/bindings/generations, dependency pins, environment installation/qualification, static/product runs, owner allocation or frozen guardrails mutation. All proposed source/typed/numeric contracts above are prose, not enabled implementation.
 
-Reconcile current root/test-local instructions to this proposed scope; retain exactly two cases, one independent executor, narrow recovery, no routine RED or historical regressions and all ownership/provenance law. Earlier D026–D036 six-case/TDD and completed-tranche instructions remain historical; do not silently reinstate them. Generic skill defaults for separate plan paths, executed RED, added tests, blanket suite/branch review or recurring new contexts do not override the owner methodology. Root EXEC_PLAN.md is the single plan once accepted.
+The user chose the established cycle. Generic skill defaults for a second design/plan path, executed RED, blanket extra tests, fresh contexts per every repeated unit or whole-branch review do not override that explicit methodology. Root EXEC_PLAN.md is the single proposed successor; the accepted baseline remains governing history until owner acceptance. No extra approval is required to finish this planning/review/delivery task.
 
-- [x] Draft/self-review all twenty IDs against exact catalogue/authority and current public source; preserve five explicit entry holds.
-- [x] One independent planning reviewer assesses scope, dependencies/owners, source/numeric proposals, two-case adequacy/limits, sequencing, no-repeat/recovery/environment and governing-law conflicts. Documentary inspection only; no product/static tests or implementation.
-- [x] Independent round1 identified no material planning defects requiring repair; preserve its complete record. If later material defects arise, retain findings and concise exact resolutions. Aim for at most two review rounds, but do not conceal unresolved material defects to hit that target. Second round checks the fixes/relevant consequences, not an automatic fresh whole-repository investigation.
-- [x] Commit planning/governance changes on this branch; provide exact commit and a verified downloadable full-history checkpoint containing the reviewed plan and record.
-- [x] Owner review/acceptance and separate execution authorisation received in the current thread on 24 October 2026; execute under §§3–9.
+- [x] Verify accepted baseline/clean branch; read governing/current semantic sources and exact per-ID catalogue/family/source evidence; reuse unchanged relevant findings.
+- [x] Draft all twenty entries, upfront ten proposed deferrals with precise conditions/receivers, ten controlled proposals, fixed two-case/source/numeric manifests and retained five prior deferrals.
+- [x] Self-review dependency/ownership/source/numerical/proof/selection/disposition consistency; independent standard-library Fraction arithmetic confirmed D077 ratio, D082 symbolic two-level covariance matrix and D083 symmetric sample variance, without executing/importing product code.
+- [ ] One independent documentary reviewer assesses the full proposed plan and governing reconciliation, aiming for at most two rounds while allowing necessary material repairs. Review source/math/sufficiency and upfront deferral class; no product/static/environment run, new physical proof or whole-repository audit. Preserve complete review/findings and precise repair deltas. A second round addresses material changes/relevant consequences, not an automatic fresh full investigation.
+- [ ] Commit reviewed proposal and reconcile current instructions/status without claiming owner acceptance.
+- [ ] Verify cumulative full-history bundle (no prerequisites, exact branch HEAD, restored all-ref reachable history, fsck0, prior accepted ancestry), save/expose one downloadable checkpoint plus readable root plan/review in delivery.
+- [ ] Owner acceptance, including exact proposed deferrals/sequencing.
+- [ ] Separate execution authorisation.
 
-## 11. Present ledger
+## 11. Present ledger and review disposition
 
-Baseline accepted checkpoint d0a9052 remains preserved; no claim is made that main contains it. New planning branch was created from that clean exact HEAD. Fifteen controlled proposals are specified; five entry conditions remain explicit. No new product case exists or ran, no static/product/environment check ran, no new proof/owner was admitted. Read-only Git/source inspection and documentary preparation are not product qualification.
+Planning only from accepted D076 checkpoint7b343c56ced615fc585988b77e7b27ab149d2d4c. Twenty identities assessed; ten controlled proposals and ten proposed held dispositions. Five earlier owner-deferred IDs remain unchanged. No new physical case exists/ran; no product/static/environment check ran, no owner/profile/proof admission or implementation was performed by this planning task. Read-only inspection/documentary arithmetic and Git packaging are distinct from product qualification.
 
-Independent review: READY FOR OWNER REVIEW AS A CONDITIONAL PLAN after one round, reviewed semantic candidate6e2d6a7b5fb3979239f886e6f7301fb5de4317f8. Full independent record: handoff/planning/d057_d076/review_round1.md. No material repair/re-review requested; only this disposition/checklist is updated after review, without changing the reviewed source/numeric/case/owner/efficiency proposals. Owner acceptance: PENDING. Execution commission for D057–D076: NOT GIVEN by this planning-only instruction. No conflict with frozen GUARDRAILS.md is knowingly overridden; any reviewer-identified material conflict must be recorded and resolved before handoff.
-
-Close-out: read-only independent standard-library Decimal/Fraction documentary arithmetic also confirmed §4's L/M/U50digit literals and the D076 subtraction equation without importing/executing product code. This is numerical proposal preparation, not product proof, a static checker or environment qualification. Final planning commit and verified full-history bundle accompany the deliverable; implementation and all five authority-resolution decisions remain uncommissioned.
-
-## 12. Current execution ledger
-
-Owner accepted the exact supplied plan at 2f2cd9841504702c869412aadc83afb1f96b8d09 and authorised execution. This supersedes pending/planning-only status statements in §§1/10/11, README and agent instructions solely as to commission status. All source/numeric/case/owner/efficiency rules and five holds remain unchanged.
-
-- D057: ACCEPTED controlled profile after independent final semantic review at d14431deb9ef53cd1994bbc3470a0f64f7bad216; strict aggregate exit0, exactly2 passed. Original precollection exit2/capture repair preserved; no product/runner repair. Evidence handoff/foundation_implementation/d057_execution/final_review.md and final_green.log. Cumulative full-history checkpoint must be verified/saved/exposed before D058.
-- D058: ACCEPTED controlled profile at c9d0c61; one strict aggregate exit0, exactly2 passed (0.19s), independent review/output in d058_execution. Cumulative checkpoint required before D059.
-- D059: ACCEPTED controlled profile at f27e44e; one strict aggregate exit0, exactly2 passed (0.18s), independent review/output in d059_execution. Generation0002 repairs pre-runtime no-fallback witness discrimination; original generation/test preserved. Cumulative checkpoint required before D060.
-- D060: ACCEPTED controlled scalar profile at f99471d; one strict aggregate exit0, exactly2 passed (0.17s), independent review/output in d060_execution. Cumulative checkpoint to be verified/saved/exposed at close-out.
-- D061: OWNER-DEFERRED TO-DO under §13; retain P02 / existing M03 ownership and the complete §5.1 requirements. No own score profile was supplied/accepted or choices delegated by the general execution authorisation. Need exact D052/D053 component paths, D057–59 pair extraction, D060 scalar, transform/scales/clip-or-absence/orientations, nonnegative weights/intercept, raw-or-bounded output/numerical carrier, compatible snapshot/shared-raw law and own immutable profile/factory/proof contract before execution. D061 is explicitly deferred; this does not automatically defer any other unresolved unit.
-
-Execution uses the isolated supplied-bundle clone on its work branch. No baseline suite, routine runtime RED or whole-branch review is authorised; the accepted plan overrides generic skill defaults. One independent final reviewer/sole runtime executor per signal, two declared cases. Library skill used to save cumulative deliverables.
-
-D057 checkpoint delivery: accepted412e91d78c76b03fc30095e0a87231379d65f705, cumulative bundle SHA256 bf272afef355d48b55a5ca541ae48556e81faefe1df7aa410f457c090ad8d4c4;948 all-ref reachable commits match restored mirror, full history/no prerequisites, restored fsck0, saved/exposed before D058.
-
-D058 checkpoint delivery: accepted1d8e3a0cdb8d5de2116a741572b2a94c5711fc87, cumulative bundle SHA2563e2868e3036c4866976e01263133ab0e5ff5a7fd6e81cbeef321817b61bedca9;950 all-ref reachable commits match restored mirror, complete history/no prerequisites, restored fsck0, saved/exposed before D059.
-
-D059 checkpoint delivery: accepted247ae27a4e2ad7881a2d7ef6456f751f5a083401, cumulative bundle SHA256855f5a6c08ce2a8d23781d11e35b2a95f0b74081ea89297628cf0d1c2640ff13;953 all-ref reachable commits match restored mirror, complete history/no prerequisites, restored fsck0, saved/exposed before D060.
-
-### Execution close-out at the D061 authority hold
-
-D057/D058/D059/D060 independently accepted with exactly two observed passes each (eight distinct cases total). No routine RED, old product test, speculative case or broad regression was run. D057’s initial invocation stopped before collection because in-repository output capture violated the clean-tree guard; original exit2 and capture-only repair are preserved. D059’s first documentary proof generation was strengthened before any runtime to discriminate fallback independently of skew; generation0001/original test remain recoverable and generation0002 is linked. Scoped checks/relevant material repair and all complete original runtime outputs remain in owning evidence directories. No executed RED is claimed.
-
-Runtime stays CPython3.12.14/SQLite3.53.1/pytest9.0.3/mypy1.20.1/Ruff0.15.11/PyYAML6.0.3. Earlier session’s environment directory was absent; current exact interpreter was checked, only missing pinned dependencies restored from committed offline hashed wheels. Actual environment evidence was then reused for later units; the attached3.13 wheelhouse was not used.
-
-Read full current guardrails/root/test instructions and initial plan; applicable K02/common calculation/lineage/projection law, exact D057–60 rows/F13 and relevant foundation/architecture authority/source were inspected. Applicable unchanged evidence was reused by identity; this is not a new audit of all126/209 rows, native source collection, predictive validation or integration/E2E. Full per-signal independent review scope/hashes/limits are in each final_review.md. Frozen guardrails and prior accepted product/source/proof bytes remain preserved. Only new registrations, required TermPairV1 public result and routing, finite claim declarations, owning proof/authority/evidence and current commission/ledger changed.
-
-Next action requires D061’s explicit own-profile resolution or an explicit owner sequencing disposition. The other four holds D062/D064/D065/D070 remain as §5 specifies. No unresolved unit was skipped or implemented.
-
-## 13. Owner sequencing amendment — D061 to-do; D062 next entry hold
-
-The owner instructed: “why don't you mark that as a to-do and continue with the rest of the signals.” The referent is D061. This explicitly authorises parking D061 and continuing ascending numeric entry assessment; it does not supply D061 parameters, allocate a new owner or automatically defer another named hold.
-
-- [ ] **D061 — OWNER-DEFERRED TO-DO:** composite US volatility regime score; responsibility P02, existing M03 configured_market_conditions. Preserve all §5.1 input/profile/meaning/proof requirements. It remains unimplemented/unaccepted. Resume only after its exact own profile is accepted or the owner explicitly delegates those choices.
-- **D062 — BLOCKED at next entry:** §5.2 independently requires a lawful public D001 producer and settled R284 temporal projection/lineage contract. The D061 sequencing exception does not supply or waive either. No D062 proof/production/runtime was authored or executed. No D063+ unit was silently skipped to.
-
-Ownership explanation: foundation §1 assigns strategy-independent neutral measurements to M02; AnnexC assigns D061 to P02, and current modules.yaml identifies that responsibility as existing M03. The criterion is semantic responsibility/policy meaning, not number of inputs or arithmetic complexity. D061 is still a deterministic calculation; its exact configured regime-score interpretation/profile belongs to P02/M03. No ownership change was discovered or made in this amendment.
-
-Read-only D062 entry check at prior checkpoint14dbf87bb47e61ab8e438fb1dfc90fb355f2a34e inspected root §5.2, F14 source contract, M02 public API/raw lineage, numeric codec and current M02 source/proof/config registrations. Literal D001/D062 search in those M02 surfaces returned no matches; RawInputLineageV1.canonical_value remains Decimal, not a temporal native carrier. This corroborates the specified entry gap; it is not a claim that no historical/legacy implementation exists elsewhere. Legacy M01 import/migration and a new prerequisite D001 unit remain outside this commission.
-
-D060 cumulative checkpoint was verified/restored/saved/exposed at14dbf87bb47e61ab8e438fb1dfc90fb355f2a34e, SHA25635f2584168b73a888d10735bfd5e950c8fc71e086abc877074e30d4c3b3ea8e9,955 all-ref reachable commits, restored fsck0. This documentary amendment changes no source/tests/contracts/immutable proof or accepted runtime evidence. No product/static/environment checks rerun. Earlier stop statements in §12 describe the prior close-out and are superseded solely for D061 sequencing by this section.
-
-## 14. Owner authorises remaining held-unit deferrals and resolved execution
-
-In response to the explicit proposal to park D062/D064/D065/D070 and execute the remaining resolved signals, the owner instructed: “Yes, I do. Proceed.” D061 remains deferred. This is sequencing authority, not acceptance/completion of a held signal or permission to invent its missing requirements.
-
-Deferred to-do set: D061 (§5.1, P02/M03 own score profile), D062 (§5.2, lawful D001 and temporal event contract), D064 (§5.3, P03/source/profile admission), D065 (§5.4, P03/event-window rule/prerequisites), D070 (§5.5, own score/horizon/FX profile). Preserve their exact identities, owners, unresolved requirements and original evidence. They are not implemented or accepted by deferral.
-
-Authorised remaining order: **D063, D066, D067, D068, D069, D071, D072, D073, D074, D075, D076**, one signal/independent final executor/verified saved exposed cumulative checkpoint at a time. No new D001 unit, P03 admission or held policy is commissioned. Any newly demonstrated unmet mandatory invariant still stops affected work under guardrails. All §§4/6–9 source/numeric/proof/no-repeat/recovery/environment disciplines remain.
-
-- D063: acceptance/evidence recorded below.
-- Initial remaining set at commission: D066–D069, D071–D076. Current per-ID acceptance entries below govern progress.
-
-This section supersedes earlier stop/automatic-deferral prohibition statements solely for the five explicitly deferred IDs; no other sequencing or acceptance law changes. Prior checkpoint bb4446b1e089fc4814210bda160122db11f87b1b preserves the previous D062 entry hold.
-
-- **D063: ACCEPTED controlled profile**, independently reviewed/strict execution at `31182f9464bb08dcca231a641615410392e10663`; exactly2 collected/2 passed, process and observed aggregate exit0. Full review and original output: handoff/foundation_implementation/d063_execution/. Scoped static/ingress evidence reused as recorded. Cumulative checkpoint must be verified/saved/exposed before next authorised signal.
-
-- **D066: ACCEPTED controlled profile**, independently reviewed/strict execution at `e5d18b2414b071b36496c0bf815e3f95453ae2d6`; exactly2 collected/2 passed, process and observed aggregate exit0. Full review and original output: handoff/foundation_implementation/d066_execution/. Scoped static/ingress evidence reused as recorded. Cumulative checkpoint must be verified/saved/exposed before next authorised signal.
-
-- **D067: ACCEPTED controlled profile**, independently reviewed/strict execution at `bf3b10ecc3bd6d09adabde2a4b21ef1cd03a9a90`; exactly2 collected/2 passed, process and observed aggregate exit0. Full review and original output: handoff/foundation_implementation/d067_execution/. Scoped static/ingress evidence reused as recorded. Cumulative checkpoint must be verified/saved/exposed before next authorised signal.
-
-- **D068: ACCEPTED controlled profile**, independently reviewed/strict execution at `fd686f2106c896f73437c2e8e9a6a9f0eb452666`; exactly2 collected/2 passed, process and observed aggregate exit0. Full review and original output: handoff/foundation_implementation/d068_execution/. Scoped static/ingress evidence reused as recorded. Cumulative checkpoint must be verified/saved/exposed before next authorised signal.
-
-- **D069: ACCEPTED controlled profile**, independently reviewed/strict execution at `f2852c577475bc945c08120ee42459efaf648217`; exactly2 collected/2 passed, process and observed aggregate exit0. Full review and original output: handoff/foundation_implementation/d069_execution/. Scoped static/ingress evidence reused as recorded. Cumulative checkpoint must be verified/saved/exposed before next authorised signal.
-
-- **D071: ACCEPTED controlled profile**, independently reviewed/strict execution at `3b6d991b7f9d0f1a5c7b7190dc1b7fe13ee7a65c`; exactly2 collected/2 passed, process and observed aggregate exit0. Full review and original output: handoff/foundation_implementation/d071_execution/. Scoped static/ingress evidence reused as recorded. Cumulative checkpoint must be verified/saved/exposed before next authorised signal.
-
-- **D072: ACCEPTED controlled profile**, independently reviewed/strict execution at `2f001691fb5638c8a5b28a35ee68d6198ff7f2f1`; exactly2 collected/2 passed, process and observed aggregate exit0. Full review and original output: handoff/foundation_implementation/d072_execution/. Scoped successful static/ingress evidence reused. Cumulative checkpoint verified/saved/exposed before next authorised signal.
-
-- **D073: ACCEPTED controlled profile**, independently reviewed/strict execution at `98c2f8cd5386820538ba26aa255bc33ec5661cb6`; exactly2 collected/2 passed, process and observed aggregate exit0. Full review and original output: handoff/foundation_implementation/d073_execution/. Scoped successful static/ingress evidence reused. Cumulative checkpoint verified/saved/exposed before next authorised signal.
-
-- **D074: ACCEPTED controlled profile**, independently reviewed/strict execution at `f13f1ae980aa4b30f5b559cd19954d2405cb7260`; exactly2 collected/2 passed, process and observed aggregate exit0. Full review and original output: handoff/foundation_implementation/d074_execution/. Scoped successful static/ingress evidence reused. Cumulative checkpoint verified/saved/exposed before next authorised signal.
-
-- **D075: ACCEPTED controlled profile**, independently reviewed/strict execution at `bedf06bc429c938ec52fc77bb93bbbad6c296a53`; exactly2 collected/2 passed, process and observed aggregate exit0. Full review and original output: handoff/foundation_implementation/d075_execution/. Scoped successful static/ingress evidence reused. Cumulative checkpoint verified/saved/exposed before next authorised signal.
-
-- **D076: ACCEPTED controlled profile**, independently reviewed/strict execution at `57f310b2c79189801b4c445c83981b000e8b64b5`; exactly2 collected/2 passed, process and observed aggregate exit0. Full review and original output: handoff/foundation_implementation/d076_execution/. Scoped successful static/ingress evidence reused. Cumulative checkpoint verified/saved/exposed before next authorised signal.
-
-## 15. Resolved execution close-out — 24 October 2026
-
-Fifteen controlled foundation units are independently accepted: D057–D060, D063, D066–D069, D071–D076. The exact per-ID semantic candidates, independent final reviews and complete original strict outputs are preserved in the owning execution directories and §§12/14. Exactly two declared physical cases per accepted signal: thirty distinct success/refusal cases for this tranche. D076 uses genuine public D072/D071 producers as setup, preserving complete nested actual raw lineage and exact subtraction of persisted rounded values; its refusal proves both lawful parents exist before rejecting mixed knowledge cutoffs.
-
-D061/D062/D064/D065/D070 remain explicit owner-deferred **unimplemented/unaccepted to-dos**, with all §5 missing authority/source/profile/owner/prerequisite conditions preserved. D061 remains P02/existing M03; P03 is still unallocated. No missing parameter, automatic deferral, D001 prerequisite or new peer was invented.
-
-No routine runtime RED, duplicate successful GREEN, historical acceptance rerun, broad regression, speculative probe or final product sweep. Source/proof-before-production and substantive independent final review were retained. Scope remains the controlled foundation contracts, not native/provider/exchange-calendar certification, predictive validity, application integration or E2E. Initial D057 precollection output-capture failure/relevant repair and D059 pre-runtime discriminatory-witness repair/immutable lineage remain in history; static ordering failures/repairs retain their original evidence. Later D072–D076 strict pairs each passed on their sole invocation. Packaging/close-out causes no repeated product or static checks.
-
-Pinned CPython3.12.14/SQLite3.53.1/pytest9.0.3/mypy1.20.1/Ruff0.15.11/PyYAML6.0.3 retained. After workspace pruning, D071 accepted saved full-history bundle was recovered, its SHA256994ca69863b8b376b0afb87e28f29ce2eb07f71db5cd0a42c7c269371ca0b410 matched, HEADd146108 restored,969 predecessor commits retained. Only the genuinely missing pinned environment was restored; actual observations and initial offline-cwd failure/relevant find-links repair are recorded in d072_execution/environment_restoration.log. Attached Python3.13 wheelhouse was not used.
-
-Cumulative full-history checkpoints were verified/restored/saved/exposed after each accepted unit before advancing. D072 acceptedca983925 (972commits, SHA2566b8c382daac3ec276da2668c2cdc9e49cdeae82aed8535135c93e9c6d10d7744); D073 accepted5faed914 (974commits, SHAc19d5b681c642eaaa00ca15c925dbfda911b69caca60332482951eb8809b16d7); D074 acceptedaba1a680 (976commits, SHA32b3ebe6df50de5536943ac508450bc0c48706f263b3a897734aaa336cc0959b); D075 acceptede46befdc (978commits, SHAcdcab6928fb45b192ebbf019bdb8022f329aad9762d20ec15d0b5a8de35d98ea). Each restored mirror matched all reachable history/accepted branch HEAD, fsck0 and original planning ancestry. The final D076 cumulative acceptance checkpoint is created/verified/saved/exposed after this close-out commit; no product re-execution for delivery.
-
-All earlier planning-only/pending/stop descriptions are historical and superseded for current commission/progress by §§12–15 and explicit owner sequencing authority. Frozen GUARDRAILS.md, prior accepted source/proofs and original Git history remain preserved. No merge/push/history rewrite was commissioned or performed. The resolved sequence is finished; only the five named deferred authority units await their own concrete resolution and commission.
+Independent planning review: PENDING. Owner acceptance: PENDING. Execution commission: NOT GIVEN. The present instruction commissions preparation/review and upfront classification only.
