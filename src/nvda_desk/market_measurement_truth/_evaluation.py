@@ -8,7 +8,7 @@ import types
 from dataclasses import fields, is_dataclass
 from datetime import datetime, timedelta
 from decimal import Decimal
-from typing import Any, Literal, TypeAliasType, get_args, get_origin, get_type_hints
+from typing import Any, Literal, TypeAliasType, cast, get_args, get_origin, get_type_hints
 
 from nvda_desk.raw_signal_occurrence_truth import api as raw_api
 
@@ -125,6 +125,23 @@ def untagged(value: Any, hint: Any) -> Any:
         hints = get_type_hints(hint)
         if type(value) is not dict or set(value) != set(hints):
             raise ValueError("incomplete or extra record fields")
+        from . import api as f
+
+        if hint is f.OptionRightLineageV1:
+            projection = value["projection"]
+            projection_hints = get_type_hints(raw_api.ProjectedRawValueV1)
+            if (type(projection) is not dict or set(projection) != set(projection_hints)
+                or type(projection["native_value"]) is not str
+                or projection["native_value"] not in ("C", "P")):
+                raise ValueError("invalid exact R015 categorical projection")
+            decoded_projection = raw_api.ProjectedRawValueV1(**{
+                key: projection[key] if key == "native_value" else untagged(projection[key], cls)
+                for key, cls in projection_hints.items()
+            })
+            return cast(Any, hint)(**{
+                key: decoded_projection if key == "projection" else untagged(value[key], cls)
+                for key, cls in hints.items()
+            })
         return hint(
             **{
                 key: untagged(

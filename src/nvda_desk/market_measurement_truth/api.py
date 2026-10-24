@@ -869,6 +869,44 @@ class CorrelationMatrixV1:
 
 
 @dataclass(frozen=True, slots=True)
+class OptionRightLineageV1(_Validated):
+    raw_signal_id: str
+    observation_occurrence_id: str
+    projection_mapping_ref: VersionRefV1
+    projection_mapping: raw_api.RawSignalProjectionMappingV1
+    projection: raw_api.ProjectedRawValueV1
+    native_value: str
+    canonical_value: str
+    units: str
+    event_time_utc: datetime
+
+    def __post_init__(self) -> None:
+        _Validated.__post_init__(self)
+        if (self.raw_signal_id != "R015" or self.units != "option_right"
+            or self.native_value not in ("C", "P")
+            or self.canonical_value != self.native_value
+            or self.projection.native_value != self.native_value
+            or self.projection.raw_signal_catalogue_id.value != "R015"
+            or self.projection.observation_occurrence_id.value != self.observation_occurrence_id
+            or self.projection.projection_mapping_id != self.projection_mapping.mapping_id
+            or self.projection_mapping_ref != VersionRefV1(
+                self.projection_mapping.mapping_id, self.projection_mapping.version
+            )):
+            raise ValueError("exact native R015 categorical lineage required")
+
+
+@dataclass(frozen=True, slots=True)
+class OptionSkewV1(_Validated):
+    value: ExactRatioV1
+    native_right_lineage: tuple[OptionRightLineageV1, ...]
+
+    def __post_init__(self) -> None:
+        _Validated.__post_init__(self)
+        if len(self.native_right_lineage) != 2:
+            raise ValueError("call and put native right lineage required")
+
+
+@dataclass(frozen=True, slots=True)
 class WindowMeasurementOccurrenceV1(_Validated):
     owner_object_id: str
     owner_namespace: str
@@ -887,6 +925,7 @@ class WindowMeasurementOccurrenceV1(_Validated):
     result: (
         Decimal
         | CorrelationMatrixV1
+        | OptionSkewV1
         | ExactRatioV1
         | IndexChangeV1
         | TermPairV1
@@ -955,6 +994,8 @@ __all__ += [
     "MeasurementComparisonV1",
     "MeasurementWindowOwnerV1",
     "MeasurementWindowReadsV1",
+    "OptionRightLineageV1",
+    "OptionSkewV1",
     "ReturnAccelerationV1",
     "SessionFrameV1",
     "TermPairV1",
