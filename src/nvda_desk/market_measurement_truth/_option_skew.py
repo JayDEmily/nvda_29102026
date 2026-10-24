@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import re
 from collections.abc import Callable
 from dataclasses import replace
 from datetime import datetime, timedelta
@@ -95,6 +96,17 @@ def source_identity(member: str, expiry: str, tag: str, role: int
     ))
 
 
+def source_event(item: r.ProjectedRawValueV1) -> datetime:
+    raw = item.source_timestamp_raw
+    if type(raw) is not str or not re.fullmatch(
+        r"[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\.[0-9]{1,6})?Z", raw
+    ):
+        raise ValueError("exact UTC source instant required")
+    event = datetime.fromisoformat(raw.replace("Z", "+00:00"))
+    f._utc(event)
+    return event
+
+
 def line(item: r.ProjectedRawValueV1, c: f.CalculationRequestV1,
          policy: f.InputSelectionPolicyVersionV1, member: str, expiry: str,
          tag: str, role: int) -> f.RawInputLineageV1 | f.OptionRightLineageV1:
@@ -104,7 +116,7 @@ def line(item: r.ProjectedRawValueV1, c: f.CalculationRequestV1,
         or item.subject_instrument != member
         or item.selection_identity != source_identity(member, expiry, tag, role)
         or item.received_ts_utc != c.as_of_utc
-        or item.source_timestamp_raw != c.as_of_utc.strftime("%Y-%m-%dT%H:%M:%SZ")):
+        or source_event(item) != c.as_of_utc):
         raise ValueError("incomplete exact member/source snapshot")
     if role < 2:
         event = eligible(replace(item, selection_identity=None), mapping, policy, own_request)
@@ -190,8 +202,7 @@ def choose(items: tuple[r.ProjectedRawValueV1, ...]) -> r.ProjectedRawValueV1:
     def rank(item: r.ProjectedRawValueV1) -> tuple[datetime, datetime, int]:
         if type(item.source_timestamp_raw) is not str:
             raise ValueError("exact option timestamp required")
-        event = datetime.fromisoformat(item.source_timestamp_raw.replace("Z", "+00:00"))
-        f._utc(event)
+        event = source_event(item)
         return event, item.received_ts_utc, item.ingestion_sequence
     selected = max(items, key=rank)
     if sum(rank(item) == rank(selected) for item in items) != 1:
@@ -221,8 +232,7 @@ class _Owner:
                     candidates = tuple(history(self.raw, own_request, mapping, policy))
                     selected = choose(tuple(item for item in candidates
                         if item.selection_identity == source_identity(member, expiry, tag, role)
-                        and item.source_timestamp_raw == request.calculation.as_of_utc.strftime(
-                            "%Y-%m-%dT%H:%M:%SZ")
+                        and source_event(item) == request.calculation.as_of_utc
                     ))
                     actual = line(selected, request.calculation, policy, member, expiry, tag, role)
                     if role == 2:
