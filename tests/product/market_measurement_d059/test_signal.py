@@ -94,8 +94,9 @@ def test_d059_signal(tmp_path, refused):
     # A single declared scenario per branch; these records are source setup, not probes.
     records = [(0, T, "25"), (1, T, "30")]
     if refused:
-        records[1] = (1, T, "0")
-        records.append((1, T - timedelta(seconds=1), "30"))
+        # Same event/receipt instant: older positive loses by ingestion rank only.
+        # A forbidden zero-skipping fallback would still satisfy zero skew.
+        records = [(1, T, "30"), (0, T, "25"), (1, T, "0")]
     for index, (role, event, value) in enumerate(records):
         raw.commands.admit_raw_observation_occurrence(
             r.RawObservationOccurrenceV1(
@@ -156,9 +157,12 @@ def test_d059_signal(tmp_path, refused):
             )
         )
     if refused:
-        assert projected["d059-raw-1"].native_value == Decimal("0")
-        assert projected["d059-raw-2"].native_value == Decimal("30")
-        assert records[1][1] > records[2][1]
+        assert projected["d059-raw-2"].native_value == Decimal("0")
+        assert projected["d059-raw-0"].native_value == Decimal("30")
+        assert (
+            projected["d059-raw-2"].ingestion_sequence > projected["d059-raw-0"].ingestion_sequence
+        )
+        assert records[0][1] == records[1][1] == records[2][1] == T
     admission = f.OwnerAdmissionV1("M02", BRIEF)
     path = str(tmp_path / "m02.sqlite")
     owner = f.create_window_owner(
