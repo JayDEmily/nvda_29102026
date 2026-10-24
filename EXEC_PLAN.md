@@ -364,3 +364,7 @@ D089 independently accepted on clean candidate `231d01abb4edcaf6899ab89c21b7cfb2
 ## 18. Execution ledger — D090
 
 D090 independently accepted on clean candidate `cb55ab2cacd5d0110dd7753d7e52377f5751a1a5`: sole strict aggregate collected exactly two cases, both passed, exit0. Complete runtime and semantic review: `handoff/foundation_implementation/d090_execution/final_green.log` and `final_review.md`; `pre_runtime.md` records scoped mypy class-name repair before candidate. Original immutable generation0001 binds full public C1 strike/model spot proof, bounded50-digit logarithm and selected negative-spot refusal. No native model source or D091 acceptance. D092 may start only after verified saved exposed D090 cumulative checkpoint.
+
+## 19. Execution ledger — D092
+
+D092 independently accepted on clean candidate `424182eeed1e7393cf772feb3a3bafaab75a4373`: sole strict aggregate collected two cases, both passed, exit0. Complete output/semantic review: `handoff/foundation_implementation/d092_execution/final_green.log` and `final_review.md`; own generation0001 binds the two-case proof. Controlled C1 R084/R093 IV midpoint has full actual source identity; negative C2-only ask is separately projected before refusal. Native model-IV certification and D093 width remain unaccepted. D093 may start only after verified saved exposed D092 cumulative checkpoint.
