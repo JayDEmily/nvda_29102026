@@ -194,3 +194,159 @@ def build_owner(
     if type(storage) not in (f.MemoryStorageV1, f.SQLiteStorageV1) or not callable(now):
         raise TypeError("exact storage and clock required")
     return _Owner(RecordState(storage, _decode, validate), raw, now)
+
+
+# D088 is a separate admitted occurrence with an actual D087 public predecessor.
+BRIEF_D088 = "23129ece93db232f4258187a6aef130f74652814512d49cd4db2127fd4a23cfb"
+DEFINITION_D088 = f.CalculationDefinitionV1(
+    "D088", "D088-OPTION-SCALAR-1", "K02_ALGEBRA", "100*(ask-bid)/mid",
+    ("R034", "R035"), ("D087",), "P_BASIC", "percent", "exact_ratio",
+    tuple(f.AuthorityArtifactRefV1(*x) for x in _AUTHORITY),
+)
+PARAMETER_D088 = f.CalculationParameterSetV1("mmt-d088-controlled", 1, "P_BASIC", C1, (C1,))
+POLICY_D088 = replace(POLICY, context_id="mmt-d088-selection")
+
+
+def request_check_d088(request: f.WindowCalculationRequestV1, now: datetime) -> None:
+    expected = f.CalculationRequestV1(
+        "D088", C1, T, T + timedelta(seconds=1),
+        DEFINITION_D088.calculation_definition_version,
+        f.VersionRefV1(PARAMETER_D088.context_id, 1),
+        f.VersionRefV1(POLICY_D088.context_id, 1), (CONTEXT.ref,),
+        tuple(
+            f.RawInputBindingV1(
+                mapping.raw_signal_catalogue_id.value,
+                f.VersionRefV1(mapping.mapping_id, 1),
+                f.VersionRefV1(UNIT.context_id, 1), C1,
+            ) for mapping in MAPS
+        ),
+    )
+    if (
+        canonical(request.calculation) != canonical(expected)
+        or request.context != CONTEXT
+        or len(request.predecessor_occurrence_ids) != 1
+        or now < expected.knowledge_cutoff_utc
+    ):
+        raise ValueError("incompatible exact option spread request")
+
+
+def produce_d088(
+    request: f.WindowCalculationRequestV1,
+    lines: tuple[f.RawInputLineageV1, ...],
+    predecessors: tuple[f.WindowMeasurementOccurrenceV1, ...], now: datetime,
+) -> f.WindowMeasurementOccurrenceV1:
+    request_check_d088(request, now)
+    if len(lines) != 2 or len(predecessors) != 1:
+        raise ValueError("direct quote and actual midpoint required")
+    parent = predecessors[0]
+    validate(parent)
+    if (
+        parent.derived_occurrence_id != request.predecessor_occurrence_ids[0]
+        or parent.derived_signal_id != "D087"
+        or parent.implementation_brief_sha256 != BRIEF_D087
+        or parent.request.calculation.subject_instrument != C1
+        or parent.effective_as_of_utc != T
+        or parent.knowledge_cutoff_utc != request.calculation.knowledge_cutoff_utc
+        or parent.calculated_at_utc > now
+        or parent.request.context != request.context
+        or parent.unit_conventions != (UNIT,)
+        or parent.projection_mappings != MAPS
+        or parent.window_seconds != 0
+        or type(parent.result) is not f.ExactRatioV1
+    ):
+        raise ValueError("incompatible actual exact-contract midpoint")
+    for role, actual in enumerate(lines):
+        event = eligible(replace(actual.projection, selection_identity=None),
+                         MAPS[role], POLICY_D088, request.calculation)
+        if event != T or canonical(actual) != canonical(line(
+            actual.projection, request.calculation, role
+        )):
+            raise ValueError("direct quote source or own selection mismatch")
+    if parent.raw_input_lineage != lines:
+        raise ValueError("actual midpoint must retain same selected source observations")
+    bid, ask = (item.canonical_value for item in lines)
+    midpoint = cast(f.ExactRatioV1, parent.result)
+    if bid < 0 or ask < bid or midpoint.numerator <= 0:
+        raise ValueError("positive same-contract midpoint and uncrossed quote required")
+    spread = Fraction(100) * (Fraction(ask) - Fraction(bid)) / Fraction(
+        midpoint.numerator, midpoint.denominator
+    )
+    value = f.WindowMeasurementOccurrenceV1(
+        "M02", NAMESPACE, BRIEF_D088, "D088", "pending", request,
+        DEFINITION_D088, PARAMETER_D088, POLICY_D088, (UNIT,), MAPS,
+        lines, predecessors, 0, f.ExactRatioV1(spread.numerator, spread.denominator),
+        "percent", "exact_ratio", T, request.calculation.knowledge_cutoff_utc, now,
+    )
+    return replace(value, derived_occurrence_id=_identity(value))
+
+
+def validate_d088(value: f.WindowMeasurementOccurrenceV1) -> None:
+    if type(value) is not f.WindowMeasurementOccurrenceV1:
+        raise TypeError("exact option spread occurrence required")
+    f._Validated.__post_init__(value)
+    if any(type(p) is not f.WindowMeasurementOccurrenceV1 for p in value.predecessors):
+        raise ValueError("actual window predecessor required")
+    parents = cast(tuple[f.WindowMeasurementOccurrenceV1, ...], value.predecessors)
+    if canonical(value) != canonical(produce_d088(
+        value.request, value.raw_input_lineage, parents, value.calculated_at_utc
+    )):
+        raise ValueError("option spread/source/parent/identity mismatch")
+
+
+class _SpreadOwner:
+    def __init__(
+        self, state: RecordState, raw: f.RawProjectionReaderV1,
+        predecessor: f.MeasurementWindowReadsV1, now: Callable[[], datetime],
+    ) -> None:
+        self.state, self.raw, self.predecessor, self.now = state, raw, predecessor, now
+        self.reads = _Reads(state)
+
+    def materialise(self, request: f.WindowCalculationRequestV1
+                    ) -> f.WindowMeasurementOccurrenceV1 | None:
+        if type(request) is not f.WindowCalculationRequestV1:
+            raise TypeError("exact option spread request required")
+        now = self.now()
+        f._utc(now)
+        try:
+            request_check_d088(request, now)
+            parent = self.predecessor.get_derived_occurrence(request.predecessor_occurrence_ids[0])
+            if type(parent) is not f.WindowMeasurementOccurrenceV1:
+                return None
+            selected: list[f.RawInputLineageV1] = []
+            for role, mapping in enumerate(MAPS):
+                candidates = tuple(history(self.raw, request.calculation, mapping, POLICY_D088))
+                if not candidates:
+                    raise ValueError("missing direct option quote side")
+                def rank(item: r.ProjectedRawValueV1) -> tuple[datetime, datetime, int]:
+                    if type(item.source_timestamp_raw) is not str:
+                        raise ValueError("exact option source instant required")
+                    event = datetime.fromisoformat(item.source_timestamp_raw.replace("Z", "+00:00"))
+                    return event, item.received_ts_utc, item.ingestion_sequence
+                chosen = max(candidates, key=rank)
+                if sum(rank(item) == rank(chosen) for item in candidates) != 1:
+                    raise ValueError("ambiguous direct quote rank")
+                selected.append(line(chosen, request.calculation, role))
+            value = produce_d088(request, tuple(selected), (parent,), now)
+        except (TypeError, ValueError, ArithmeticError):
+            return None
+        return cast(f.WindowMeasurementOccurrenceV1, self.state.append(value))
+
+
+def build_owner_d088(
+    admission: f.OwnerAdmissionV1, raw: f.RawProjectionReaderV1,
+    predecessor: f.MeasurementTradeDirectionReadsV1 | f.MeasurementWindowReadsV1 | None,
+    storage: f.MemoryStorageV1 | f.SQLiteStorageV1, now: Callable[[], datetime],
+) -> f.MeasurementWindowOwnerV1:
+    if admission != f.OwnerAdmissionV1("M02", BRIEF_D088):
+        raise ValueError("exact D088 admission required")
+    if (
+        type(storage) not in (f.MemoryStorageV1, f.SQLiteStorageV1)
+        or not callable(now) or predecessor is None
+        or any(not callable(getattr(predecessor, name, None))
+               for name in ("get_derived_occurrence", "list_derived_history"))
+    ):
+        raise TypeError("actual public window parent read facet required")
+    return _SpreadOwner(
+        RecordState(storage, _decode, validate_d088), raw,
+        cast(f.MeasurementWindowReadsV1, predecessor), now,
+    )
