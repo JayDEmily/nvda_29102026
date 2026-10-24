@@ -277,7 +277,9 @@ Deferred to-do set: D061 (§5.1, P02/M03 own score profile), D062 (§5.2, lawful
 
 Authorised remaining order: **D063, D066, D067, D068, D069, D071, D072, D073, D074, D075, D076**, one signal/independent final executor/verified saved exposed cumulative checkpoint at a time. No new D001 unit, P03 admission or held policy is commissioned. Any newly demonstrated unmet mandatory invariant still stops affected work under guardrails. All §§4/6–9 source/numeric/proof/no-repeat/recovery/environment disciplines remain.
 
-- D063: entry and proof preparation in progress.
+- D063: acceptance/evidence recorded below.
 - D066–D069, D071–D076: not started.
 
 This section supersedes earlier stop/automatic-deferral prohibition statements solely for the five explicitly deferred IDs; no other sequencing or acceptance law changes. Prior checkpoint bb4446b1e089fc4814210bda160122db11f87b1b preserves the previous D062 entry hold.
+
+- **D063: ACCEPTED controlled profile**, independently reviewed/strict execution at `31182f9464bb08dcca231a641615410392e10663`; exactly2 collected/2 passed, process and observed aggregate exit0. Full review and original output: handoff/foundation_implementation/d063_execution/. Scoped static/ingress evidence reused as recorded. Cumulative checkpoint must be verified/saved/exposed before next authorised signal.
