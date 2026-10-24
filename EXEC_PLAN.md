@@ -368,3 +368,7 @@ D090 independently accepted on clean candidate `cb55ab2cacd5d0110dd7753d7e52377f
 ## 19. Execution ledger — D092
 
 D092 independently accepted on clean candidate `424182eeed1e7393cf772feb3a3bafaab75a4373`: sole strict aggregate collected two cases, both passed, exit0. Complete output/semantic review: `handoff/foundation_implementation/d092_execution/final_green.log` and `final_review.md`; own generation0001 binds the two-case proof. Controlled C1 R084/R093 IV midpoint has full actual source identity; negative C2-only ask is separately projected before refusal. Native model-IV certification and D093 width remain unaccepted. D093 may start only after verified saved exposed D092 cumulative checkpoint.
+
+## 20. Execution ledger — D093
+
+D093 independently accepted on clean candidate `36efcc6d909c58791529cef2a033a21b73bd5053`: sole strict aggregate collected two cases, both passed, exit0. Complete output and semantic judgement: `handoff/foundation_implementation/d093_execution/final_green.log` and `final_review.md`; own immutable generation0001 binds the two cases. Controlled C1 R084/R093 width is exact ten volatility points; refusal has both fresh actual source roles at T/T−1s and rejects zero-skew join. No native model-IV certification or D094 historical IV change accepted. D094 may start only after verified saved exposed D093 cumulative checkpoint.
