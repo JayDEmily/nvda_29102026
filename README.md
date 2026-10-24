@@ -1,9 +1,9 @@
-# NVDA V2 — D038, D040 and D041 accepted controlled checkpoint
+# NVDA V2 — proposed D057–D076 ExecPlan
 
-All three signals in the current ExecPlan are independently accepted. D038 remains a neutral M02 measurement. D040/D041 use the separately admitted P02 configured_market_conditions responsibility, kernel-allocated M03, with explicit immutable controlled K07 score profiles.
+Branch work/v2-d057-d076-plan-20261024 starts from accepted cumulative checkpoint d0a905292c7439aec5bd9f099700f0ac58bdda25. D037–D056, including the subsequently completed D038/D040/D041, retain their accepted controlled evidence and historical plans.
 
-D040: sole strict pair2passed in0.37s,exit0. D041: sole strict pair2passed in0.73s,exit0. Full original output and independent semantic review are in handoff/configured_market_conditions/d040_execution and d041_execution. No historical test suite, duplicate GREEN, product retry, extra case or broad sweep ran. Scoped static repairs and original results are retained.
+Root EXEC_PLAN.md proposes the next twenty identities. Fifteen controlled foundation units have source/numeric/two-case proposals; D061/D062/D064/D065/D070 preserve explicit owner/profile/prerequisite conditions. P02 remains admitted M03; P03 is a separate unallocated event-policy responsibility. D062 must consume actual lawful D001, not a fabricated timestamp carrier.
 
-D040 checkpoint171a9149dea53f44a1bd1fec6a1d7971c3c1a9f3 was saved as a verified full-history bundle before D041. Final cumulative bundle follows the accepted close-out commit. EXEC_PLAN.md retains exact candidate/tree/authority/generation identities and the complete decision/evidence ledger.
+The established efficiency discipline remains: two cases per resolved signal, one independent final executor, no routine RED, historical regression or repeated successful check without material invalidation; narrow documented repair recovery; immutable evidence and a verified cumulative download after every accepted signal. Native/provider/calendar certification, integration/E2E and predictive/model validity remain separate.
 
-Acceptance is limited to the documented controlled profiles. Predictive quality/profitability, measured volatility stability, native/provider/calendar certification, integration/E2E, application/main integration and other P02 identities remain separate. No merge/push or next work is commissioned. GUARDRAILS.md is unchanged.
+Current task is planning and independent documentary review only. No product/static tests, implementation, dependency requalification, new owner or immutable proof admission. Owner review/acceptance and separate execution commission remain required.

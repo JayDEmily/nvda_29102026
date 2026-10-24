@@ -49,13 +49,19 @@ Fresh review must also be independent of Worker convenience composition where th
 
 This is a bounded adversarial-review heuristic, not a requirement to duplicate the Worker test suite or proliferate speculative tests. Reuse Worker fixtures where they faithfully isolate the proposition; bypass or decompose them only where their composition could pre-satisfy, mask, or collapse the condition being reviewed. Record the direct sequence and observed result when it bears on disposition.
 
-## Current tranche — D038, D040 and D041 completed controlled profiles
+## Current tranche — D057–D076 proposed planning
 
-Root EXEC_PLAN.md on work/v2-d038-d040-d041-plan-20261024 records this CLOSED tranche. D038 was accepted under its explicitly approved source/numeric profile. Owner explicitly delegated all decisions/work required for D040/D041; P02 responsibility was lawfully admitted as kernel-allocated M03, outside M02. Each of D040/D041 passed its sole independent strict two-case aggregate and was separately accepted. Owning execution directories preserve original full output and semantic review; root §§9–14 identify checkpoints and limits. Earlier planning/approval holds are historical and superseded for these exact controlled profiles. No further signal, application/main integration or predictive/native certification is commissioned.
+Root EXEC_PLAN.md on work/v2-d057-d076-plan-20261024 is the proposed successor from accepted d0a905292c7439aec5bd9f099700f0ac58bdda25. The owner commissioned planning and independent documentary review only. Earlier D037–D056 and D038/D040/D041 schedules are completed historical evidence, preserved at their exact Git checkpoints. The prior delegation of choices for D040/D041 does not silently extend to this tranche.
 
-For later accepted/commissioned work, retain two declared cases per resolved signal, six as absolute ceiling not target; one independent final semantic reviewer/sole runtime executor; no routine RED, duplicate GREEN, accepted unaffected test rerun, speculative probe, broad sweep or whole-branch review. Omitted RED is reduced test-first evidence. Assess discriminatory assertions/public-seam fixture independence within the declared cases, not through extra runs. Scope static checks to new/changed Python. Reuse unchanged family/context/environment inspection, canonical declarations, immutable provenance and concise evidence references.
+Fifteen controlled foundation proposals are specified; D061/D062/D064/D065/D070 retain root §5's explicit missing profile/source/prerequisite/owner conditions. P02 is existing M03; P03 is a distinct proposed event-policy responsibility, not runtime M03 or automatic M02 admission. No numeric owner reservation, new prerequisite D001 implementation or silent deferral is authorised. Numeric execution stops at the first unresolved unit unless owner explicitly dispositions it.
 
-Relevant material repair permits recovery of only the failed check; successful checks only after material evidence invalidation. The current new signal's failed initial strict pair may rerun as the same aggregate after documented relevant material repair under the carried-forward owner exception, preserving original output/defect/rationale/subsequent result. No retries without repair, accepted-signal reruns or shared runner changes to implement recovery. These rules take effect with acceptance/commission of the new plan; its authority holds cannot be bypassed by a generic execution instruction.
+After owner acceptance and separate execution commission: exactly two cases per resolved signal, six absolute ceiling not target; one independent final semantic reviewer/sole strict runtime executor, no routine runtime RED, duplicate GREEN, accepted unaffected rerun, speculative probe, hidden scenario loop, broad sweep or whole-branch review. Omitted RED reduces test-first evidence. Substantive source/case discrimination and fixture-independent public actions belong inside the declared pair. Preserve immutable generations/full original output and one verified saved cumulative full-history download after each acceptance before advancing.
+
+Carry forward narrow recovery: only failed check after documented relevant material repair; current new signal's failed strict two-case aggregate may rerun as the same aggregate under the owner's23October16:14 exception. Successful evidence reruns only on documented material invalidation, not packaging/sessions/reviewer changes. No shared runner changes for recovery. Preserve old/new outcomes, defect, affected proposition and repair reason; no automatic regressions.
+
+Use scoped warranted mypy/Ruff only new/changed Python and necessary new-file/owner ingress/import checks. Reuse unchanged authority/family/context/environment verification. No dependency install, requalification or product test for this planning/review task. Full semantic authority remains mandatory; relevant prior inspection may be reused when unchanged. GUARDRAILS.md stays frozen.
+
+The owner expressly permits independent review of this plan, aiming for two rounds while allowing necessary further material repair. This authorises documentary reviewer delegation now, not product acceptance or an extra implementation-review programme.
 
 ## Planning
 
@@ -71,8 +77,4 @@ Run only validations that actually bear on the proposition being changed, plus a
 
 Do not modify `GUARDRAILS.md` during ordinary work. Any proposed guardrail change requires explicit current human/programme authority.
 
-Current owner exception24October2026: D038 profile at c6737d5 is explicitly accepted and implementation commissioned; the earlier20signal schedule is superseded. Apply current root §9 and owning D038 brief with two cases/sole independent final executor/bounded recovery. D040/D041 authority holds remain. No prior accepted test rerun.
-
-Current owner delegation24October2026 explicitly authorises settling D040/D041 ownership/profile choices and completing both. Root §11 supersedes their earlier approval holds; preserve P02 jurisdiction through lawful new-owner admission. Two cases/sole independent executor/no historical reruns remain mandatory. Exact owning authority must be frozen and bound before implementation.
-
-Closure24October2026: D038/D040/D041 accepted, root §14. No additional product run or final sweep for documentary closure or bundle packaging. Preserve exact accepted bytes/evidence; next work requires a new scoped instruction.
+Historical exception/delegation and closure records for D038/D040/D041 remain at d0a9052:AGENTS.md and that checkpoint's root plan. The new proposed scope above supersedes those completed schedules without altering accepted source/proof/history.

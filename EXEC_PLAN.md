@@ -1,194 +1,227 @@
-# NVDA V2 — D038, D040 and D041 ExecPlan
+# NVDA V2 — D057–D076 bounded ExecPlan
 
-Date: 24 October 2026 (Melbourne)
-Status: CLOSED — D038, D040 and D041 independently ACCEPTED under their documented controlled profiles. Earlier20signal schedule superseded. No further signal or integration work commissioned.
+Date: 24 October 2026 (Melbourne).
+Status: PROPOSED — planning and independent documentary review only. No implementation, product/static test execution, admission, source collection or signal acceptance commissioned by this turn.
+Baseline: `d0a905292c7439aec5bd9f099700f0ac58bdda25`.
+Branch: `work/v2-d057-d076-plan-20261024`.
 
-## 1. Goal, baseline and authority
+## 1. Goal and authority boundary
 
-Close the three previously deferred identities without weakening mathematical correctness, provenance, immutable evidence or independent acceptance. This replaces the root plan, not the historical acceptance ledger. Baseline: `fc82a07c9aef1aeeb95493d201fc9cf9f76011be`. Branch: `work/v2-d038-d040-d041-plan-20261024`.
+Prepare the next twenty original signal identities, D057 through D076, retaining the established efficient per-signal process. The owner requested the plan and independent review, preferably within two review rounds; more rounds are permitted for material unresolved issues. This request does not revive the completed D037–D056 schedule or commission product execution.
 
-The initial request commissioned planning after D037, D039 and D042–D056. Initial authority holds below were resolved by the owner's exact D038 profile approval (§9) and explicit full completion/decision delegation for D040/D041 (§11). That delegation authorised the documented concrete P02 profiles and normal new-owner admission. §§8–14 retain the exact sequence/evidence; no generic execution request alone supplied missing parameters.
+The prior three-signal plan/acceptance ledger remains exactly recoverable at `git show d0a9052:EXEC_PLAN.md`; the prior twenty-signal ledger is `git show fc82a07:EXEC_PLAN.md`. DO_NOT_CARRY_FORWARD their completed schedules as active work. Preserve all accepted source/tests, immutable generations, original failures/repairs and accepted checkpoints. No merge/push/history rewrite or GUARDRAILS.md modification.
 
-Preserve all accepted source, tests, configurations, immutable generations and evidence. The completed tranche/ledger and D056 recovery provenance remain at `git show fc82a07:EXEC_PLAN.md` and the owning execution directories. DO_NOT_CARRY_FORWARD its completed schedule as active work; retain Git history. Root EXEC_PLAN.md remains the single planning authority once accepted. GUARDRAILS.md stays frozen.
+This draft specifies controlled source/numeric proposals for fifteen foundation units and names five unresolved entry conditions. It does not pretend all twenty are immediately runnable: D061/D062/D064/D065/D070 are BLOCKED for the precise reasons in §5. No new runnable physical cases exist now. The eventual budget is two cases per resolved signal (at most forty initial cases if all twenty are resolved), not forty currently admitted cases. Six per signal is the absolute ceiling, never the target or permission to expand.
 
-## 2. Scope and fixed identities
+Owner review/acceptance and a separate execution commission are required. Proposed controlled choices below become authority only through explicit owner acceptance; the earlier full completion delegation applied to D040/D041 and does not silently approve new strategy parameters or a new peer. Accepted equations/identities are distinct from proposed source/profile conventions.
 
-| Unit | Canonical meaning/dependencies | Jurisdiction and current hold |
-| --- | --- | --- |
-| D038 | Jump-variation estimate; R151, R149, R150; K05_REALIZED_RISK / P_VOL_WINDOW; variance. | M02 controlled profile ACCEPTED; exact source/grid/log/pi/output convention and evidence in §§9–10. |
-| D040 | Trend strength score; D020, D021, D027, D024; K07_WEIGHTED_SCORE / P_SCORE. | P02 responsibility admitted as kernel-allocated M03; controlled D040 profile ACCEPTED, §§11–12. |
-| D041 | Mean-reversion score; D026, D040, D033; K07_WEIGHTED_SCORE / P_SCORE. | Same P02/M03 owner; own controlled profile and actual accepted D040 chain ACCEPTED, §§13–14. |
+## 2. Evidence reuse and scope
 
-Do not rename or replace these IDs. Do not absorb other P02 signals, D057+, M00/provider/TWS/API acquisition, native-source certification, M01 migration or adjacent repairs. A public calculation interface required by an accepted owning contract is distinct from provider/API collection; no such interface is authorised merely by this plan.
+Read current GUARDRAILS.md, AGENTS.md and applicable tests/AGENTS.override.md; obey their hierarchy. Fully read the applicable semantic authority, then reuse valid unchanged family/source/context inspection by Git identity/hash. Restrict later worker/reviewer context to the current signal, actual owning delta/dependencies/proof and relevant prior findings. No repeated catalogue-wide exploration, unchanged infrastructure review or large copied passages.
 
-Sequence after the relevant approvals: D038, D040, D041; accept and save each checkpoint before advancing. D038 has no D040 dependency. If D038 cannot be resolved, stop and report it; do not silently skip or create a fourth work unit. D041 cannot proceed without D040 acceptance. No old signal is reaccepted as part of this sequence.
+Canonical sources at the baseline:
 
-## 3. Bounded authority-resolution work
-
-### 3.1 Read and reuse
-
-Read mandatory governance and applicable semantic authority in full. Reuse unchanged family/source inspection, prior findings and accepted evidence by exact Git identity/hash. Restrict subsequent context to this signal, its source/proof, direct dependencies and relevant findings; no catalogue-wide re-investigation.
-
-Canonical sources at baseline:
-
-- `handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md`: K05 and K07, applicable parameter/selection/time/identity law.
-- `handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv`: exact D038/D040/D041 rows and dependency identities.
-- `handoff/foundation_implementation/authority/FOUNDATION_IMPLEMENTATION_BRIEF_PROPOSED.md`: Annex B D038 and Annex C P02.
-- `handoff/foundation_implementation/reuse_preparation/FAMILY_F07_EXTENDED_E11_E15.md`: D038 mathematics, fixture knowledge and precise holds.
-- `handoff/foundation_implementation/reuse_preparation/G2_126_D_SIGNAL_SOURCE_LINKED_SPECIFICATIONS.csv`: D038 row only.
-- `handoff/workbook_v2/gates_03_04/DOWNSTREAM_SELF_SUFFICIENCY.md`: complete D040/D041 cards and their relevant shared contracts.
-
-Preparation/legacy code is reusable evidence, not new authority or M02 acceptance. Inspect only relevant legacy arithmetic if it answers a specified unresolved question; never import M01 private controllers or PostgreSQL fixtures.
-
-### 3.2 D038 — settle calculation and source profile
-
-Accepted kernel meaning is:
-
-`r_i = ln(P_i/P_(i-1)); RV = sum(r_i^2); BV = (pi/2)*sum(|r_i|*|r_(i-1)|); JV = max(RV-BV,0)`.
-
-Before implementation, obtain an accepted versioned profile covering:
-
-1. R149/R150/R151 native paths, units, identities, co-occurrence/revision rules and the precise evidential role of each declared dependency. Do not silently discard R149/R150 or turn historical high/low into close-return operands.
-2. Exact horizon, ordered sample instants, session/calendar/completeness policy, minimum returns and event/receipt/cutoff eligibility. Do not borrow a convenient existing RV horizon without explicit acceptance; JV variance is not automatically annualised RV.
-3. Whether the contract uses mathematical pi with an independently justified evaluation bound or an explicitly accepted finite numeric convention; exact log convention, intermediate arithmetic, final precision/rounding and result carrier. A truncated legacy constant is not an accepted convention. Reuse existing bounded-log infrastructure only where its contract actually agrees.
-4. A positive witness with nonzero BV and a discriminating JV result, plus one named refusal reaching the chosen source/grid invariant with otherwise lawful actual inputs. The old BV=0 example cannot establish the pi-dependent subtraction.
-5. Independently derived expected values, including RV/BV/JV reasoning and exact final representation; never derive the oracle from the implementation.
-
-Record a concise proposal and exact unresolved owner decisions in the owning brief. If there is no authority to choose a source role or numeric convention, retain BLOCKED and request that choice. Do not generate tests as a substitute.
-
-### 3.3 D040 — settle downstream ownership and score profile
-
-P02 is a preserved proposed peer allocation, not an admitted runtime object ID. First obtain explicit acceptance of its owning module/responsibility, immutable admission target, public request/read seams and durable occurrence contract. Do not independently convert P02 into an M-number or implement D040 inside M02 by convenience. Shared public M02 predecessor evidence may be consumed without transferring ownership.
-
-Then obtain one concrete immutable P_SCORE profile:
-
-- Ordered dependency/feature list, exact scalar extraction path/arguments from each structured predecessor, units and compatible definition/parameter versions.
-- Each transform and its scale/baseline, clipping bounds or explicit absence, orientation, non-negative weight, intercept and final output rule. K07 specifies the procedure, not these choices. Catalogue `score` does not by itself require a sigmoid.
-- Subject, as-of/cutoff, allowed skew/staleness, horizon/session alignment and revisions; preserve the selected actual predecessor identities.
-- Baseline content/strictly-prior selection only if the chosen transform requires it. No invented normalisation or implicit scalarisation.
-- Numerical precision/rounding and complete output/provenance shape.
-
-Current M02 offers WindowMeasurementOccurrenceV1/MeasurementWindowReadsV1, including structured ReturnAccelerationV1 and VwapRateV1 results. CalculationParameterSetV1 does not contain an ordered P_SCORE schema. These facts identify required design work; they do not authorise retrofitting a generic score framework into M02. Resolve the narrow owning interface and exact file/type map before coding. Reuse public predecessor production/read mechanisms; do not rerun their acceptance tests or substitute hand-built derived occurrences.
-
-### 3.4 D041 — own profile, not a D040 alias
-
-Apply the same ownership, extraction, parameter, numeric and alignment decisions to D026/D040/D033. D026's named price/percent deviation and D033's annualised volatility require explicit extraction/scale choices; acceptance of their values does not determine a mean-reversion strategy. D040 acceptance supplies a predecessor, not D041's coefficients or policy.
-
-Fix the exact D040 occurrence/definition/profile version accepted for the chain. Preserve all mandatory dependencies; missing features cause refusal with no weight renormalisation. D041 remains BLOCKED while its own profile or D040 is absent.
-
-### 3.5 Authority-resolution exit
-
-Apply this exit to each unit separately in sequence; D038 need not wait for D040/D041 profile decisions. No unit bypasses its own prerequisites.
-
-- [ ] For each ID, concise owning brief identifies accepted choices versus proposals/unknowns, authority references and remaining gaps.
-- [ ] Owner accepts the current unit's source/numeric profile (D038) or jurisdiction/score profile (D040/D041); no silent cross-jurisdiction change.
-- [ ] Amend this root plan with exact production files/types/seams, versioned parameters, physical proof paths, both numerical fixtures/oracles and each single refusal. Admit only resolved units.
-- [ ] Owner separately commissions implementation of that completed plan.
-
-This was the initial authority-resolution exit. It has now been met through the exact approvals/delegation and immutable per-ID authorities recorded below. Each signal's original two-case generation was executed solely by its own independent final reviewer; all three are accepted. No further executions are commissioned by closure.
-
-## 4. Conditional implementation and acceptance cycle
-
-After §3 is satisfied for the next unit:
-
-1. Author exactly two new cases: one success and one refusal. Six per signal remains the absolute ceiling, not a quota or permission to add cases: this plan specifies only two per signal. The intended three-ID initial budget is six cases total, not six per signal; any expansion requires an explicit scope decision. A mandatory proposition not covered is an explicit scope gap requiring resolution, not an excuse to weaken assertions or invent more tests.
-2. D038 success must exercise nonzero bipower variation and all accepted source roles. D040 success must exercise its actual ordered predecessor features and declared score parameters. D041 success must consume actual accepted D040 evidence with D026/D033. Choose non-degenerate witnesses that discriminate the admitted arithmetic/order/scalar extraction; do not invent coefficients to make a convenient oracle.
-3. Each success asserts the complete typed value/units, definition/parameter/context versions, actual chosen input lineage, owner/admission identity/times and ordinary public read-only durable reopen in that same case. Each refusal starts from actual lawful public prerequisites except one declared defect, reaches that defect and emits/persists no occurrence. No production-derived oracle or pre-materialised result fixture.
-4. Derive repeated identities, expectations, authority references, counts and hashes from canonical owning authority and actual proof bytes. Reuse infrastructure and accepted research; inspect consistency before sealing immutable generations. Preserve original generations and link replacements. No duplicate reports or reconstructed independent numerical reasoning across companions.
-5. Implement only the owning delta. Perform one warranted scoped mypy check for changed production Python and one scoped Ruff check for new/changed Python paths; retain exact commands/paths/results. Reuse successful checks for unchanged bytes. No package/repository sweep or duplicate reviewer statics.
-6. Commit a clean candidate. One independent reviewer makes the signal's final semantic judgement and is the sole strict runtime executor, including permitted recovery. It must assess discriminatory power, public-seam fixture independence and relevant prior findings—not merely read a GREEN label.
-7. Run only that signal's admitted strict pair once. No routine runtime RED; its omission is explicitly reduced test-first evidence, not equivalent proof. No implementer GREEN, focused-then-strict double run, hidden case loop, old suite, speculative probe, broad regression or final sweep.
-8. Accept only on sufficient semantic review plus strict GREEN for both cases. Record actual candidate/tree/brief/generation identities, full original output, reviewer disposition, reuse and limitations concisely.
-9. Commit accepted state; immediately create, verify and save a downloadable cumulative full-history Git bundle, and expose its link before advancing. At D041 close this plan; no merge/push or further signal work.
-
-The one independent acceptance reviewer per signal is retained; no extra planning or whole-branch reviewer cycle is introduced. Public predecessor materialisation used as setup in a new signal's declared case is not permission to invoke predecessor test suites or requalify them.
-
-## 5. Bounded recovery — retained owner discipline
-
-Do not rerun previously accepted, unaffected tests. On a failed check, preserve the original result, identified defect, affected proposition and relevant material repair. The independent reviewer may rerun only that failed check after repair. Re-execute a successful check only if subsequent material changes invalidate its evidence; document why and retain both results. Commits, new sessions/reviewers, packaging and documentary changes alone do not invalidate product evidence.
-
-Retain the owner's 23 October 2026 16:14 exception in the proposed successor methodology: if the current new signal's initial strict two-case aggregate fails, the independent reviewer may rerun that same aggregate after a documented relevant material repair, including both declared cases. This narrowly bounded recovery needs no further approval once this plan is accepted/commissioned. Previously accepted signals stay excluded. No retry without repair, additional speculative cases or broad regression. Do not modify the shared runner/acceptance infrastructure to implement this exception.
-
-A legitimate new owning claim may require a bounded fixed declaration extension; settle target ownership first and preserve loader algorithms/validators and every prior claim. No dynamic discovery, generic admission framework or runner relaxation. Planning changes no loader/claim/admission bytes.
-
-## 6. Runtime, evidence and allowed file boundaries
-
-Retain CPython3.12.14, SQLite3.53.1, pytest9.0.3, mypy1.20.1, Ruff0.15.11 and PyYAML6.0.3, using committed hashed dependency locks/offline wheels. Before first runtime use, explicitly verify an environment-specific absolute NVDA_PROOF_PYTHON; do not hardcode a temporary interpreter path or fall back to system Python. The previous runtime was lost during D056 recovery; §9 records the actual bounded restoration and verified environment-specific interpreter reused for all three signals without subsequent reinstall/requalification.
-
-Reuse unchanged environment verification; a new session/reviewer does not trigger reinstallation, requalification or product retesting. If the environment is genuinely absent/changed during commissioned implementation, restore only the missing pinned environment and verify the changed facts without product qualification tests. Do not switch to the attached Python3.13 wheelhouse.
-
-The initial planning allowlist was EXEC_PLAN.md, README.md, AGENTS.md and tests/AGENTS.override.md; subsequent commissioned implementation boundaries are the exact owning briefs and §§9/11/13. Historical instructions are superseded only for this proposed scope; GUARDRAILS.md and accepted code/tests/proof remain untouched.
-
-Future owning documents follow existing per-ID naming: handoff/foundation_implementation/authority/D038_IMPLEMENTATION_BRIEF.md and D038_PROOF_CONTRACT.json for M02; D040/D041 documents/bindings must name their accepted downstream owner rather than imply foundation admission. Exact paths, target IDs, public types and claim names for those downstream units are an explicit §3.5 approval deliverable, not a worker-selected default. Preserve all mandatory contracts, immutable evidence and provenance. No new helper/report framework.
-
-## 7. Present disposition and next action
-
-| Item | State |
+| Path | SHA256 |
 | --- | --- |
-| This execution tranche | CLOSED after individual independent acceptance of all three controlled profiles. |
-| D038 | ACCEPTED — owner-approved source/numeric profile; §10 and owning final evidence. |
-| D040 | ACCEPTED — delegated P02/M03 trend-intensity profile; §12 and owning final evidence. |
-| D041 | ACCEPTED — own reversion-conditions profile and actual accepted D040; §14 and owning final evidence. |
-| Completed predecessors/tranche | Preserved; no historical acceptance suites rerun. |
-| Next commissioned work | None. No merge/push, next signal, native certification or integration commission. |
-| Deferred obligations | Native-source/calendar certification, broader integration/E2E, empirical model calibration and main integration remain separate. |
+| handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md | 603b850802a418780109095e7ae69bcece449da79fb24140a6d50297605e927c |
+| handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv | 67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549 |
+| handoff/foundation_implementation/authority/FOUNDATION_IMPLEMENTATION_BRIEF_PROPOSED.md | 282f7d73c5e2fdf36ded43781665764eaf95d4a35f687f99990b87c59f744ed7 |
+| handoff/workbook_v2/gates_03_04/DOWNSTREAM_SELF_SUFFICIENCY.md | 7660321c04752f00d591266d45a7858f9b81a7ab874072d08ec10400ab4b6d3e |
 
-Generic skill defaults for routine RED, extra adversarial tests, fresh-context duplication, separate design reports, alternative plan paths and whole-branch review do not override this owner's established root-plan/efficiency discipline. Independent review remains substantive; no token/cache savings are inferred without measurement.
+Relevant preparation: reuse_preparation/FAMILY_F13_EXTENDED_E11_E15.md (D057–60), FAMILY_F14_EXTENDED_E11_E15.md and F14_R284_R285_R286_CONTROLLED_SYNTHETIC_V1.json (D062/63), FAMILY_F15_EXTENDED_E11_E15.md (D066–69), FAMILY_F16_EXTENDED_E11_E15.md (D071–75), FAMILY_F17_EXTENDED_E11_E15.md (D076 only). The preparation root is handoff/foundation_implementation/reuse_preparation/. Its G2_126_D_SIGNAL_SOURCE_LINKED_SPECIFICATIONS.csv and G3 records are per-ID navigation/research, not new proof/admission. Read only the relevant source-research R rows if an identified question remains. Do not rederive accepted research or import M01 private controllers, tests, PostgreSQL fixtures or answers.
 
-## 8. Execution ledger — 24 October2026
+Preserve M00 and existing accepted M02/M03 production paths. Provider/TWS/API acquisition, live subscriptions, native source/calendar certification, M01 retirement/migration, other P02/P03 outputs, D077+, broad integration/E2E, performance and application/main integration are out of scope. A new public calculation facet required by a resolved owner is in scope after acceptance; it is distinct from provider/API collection. No token/cache savings are claimed without measurement.
 
-Owner instruction “execute that plan for38,40and41” commissions this plan's ordered work. Restored exact planning checkpoint caf01260f9299fa8bf075528baab48b34db48b5c after scratch workspace loss. No old product/static check, installation or environment qualification ran.
+## 3. Fixed identities, owners and dependencies
 
-D038 §3.2 documentary preparation is complete: handoff/foundation_implementation/authority/D038_IMPLEMENTATION_BRIEF.md now contains the concrete PROPOSED three-minute source/co-occurrence contract, exact interval-arithmetic/final50digit convention, independently bounded nonzero-BV numerical oracle, two future case specifications and minimal file boundaries. This is not implementation/admission/acceptance. The independent mathematical calculation used only Python standard-library Fraction/Decimal and imported no product code; it was not a product test.
+Dependency order in this table is logical, not an assertion about an existing implementation's internal tuple order; the per-ID owning manifest must freeze the actual ordered extraction/bindings before code.
 
-Next invariant: owner acceptance of the new D038 source/numeric choices under §3.5. D038 remains BLOCKED pending that decision; no source, tests, loader, contracts, binding or immutable generation changed. D040/D041 have not advanced past their existing ownership/profile holds. Do not interpret the generic execution commission as acceptance of choices that had not yet been proposed. GUARDRAILS.md remains frozen.
+| ID | Meaning / exact R or D inputs | Owning boundary / present disposition |
+| --- | --- | --- |
+| D057 | VIX1D/VIX9D term pair; R238,R239 | M02; controlled proposal §4.1 |
+| D058 | VIX9D/VIX term pair; R239,R236 | M02; §4.1 |
+| D059 | VIX/VIX3M term pair; R236,R240 | M02; §4.1 |
+| D060 | VVIX/VIX ratio; R237,R236 | M02; §4.1 |
+| D061 | US volatility regime score; D052,D053,D057,D058,D059,D060 | Preserved P02 / existing M03; BLOCKED exact own score profile |
+| D062 | Next scheduled event time; R284,D001 | M02 foundation jurisdiction; BLOCKED actual lawful D001 predecessor and event contract |
+| D063 | Standardised macro surprise; R286,R285 | M02; controlled proposal §4.2 |
+| D064 | Event importance score; R289 | Preserved P03; BLOCKED exact owner/source/P_SCORE |
+| D065 | Active event window; R284,D062,D064; P_RULE | Preserved P03; BLOCKED exact owner/rule and branch-specific prerequisites |
+| D066 | Nikkei return; R270 | M02; §4.3 |
+| D067 | Hong Kong index return; R271 | M02; §4.3 |
+| D068 | China index return; R272 | M02; §4.3 |
+| D069 | China technology index return; R273 | M02; §4.3 |
+| D070 | International overnight risk; D066,D067,D068,D069,D049,D050,D051 | Preserved P02 / existing M03; BLOCKED exact profile and horizon/FX policy |
+| D071 | Broad-market return; R037,R042, subject SPY | M02; §4.4 |
+| D072 | Technology return; R037,R042, subject QQQ | M02; §4.4 |
+| D073 | Semiconductor return; R037,R042, subject SMH | M02; §4.4 |
+| D074 | Semiconductor return; R037,R042, subject SOXX | M02; §4.4 |
+| D075 | NVDA return; R037,R042, subject NVDA | M02; §4.4 |
+| D076 | Technology minus broad return; D072,D071 | M02; §4.5 |
 
-## 9. D038 profile accepted and implementation commissioned
+P03 is a proposed responsibility label, not a currently allocated runtime ID. Do not equate it with runtime M03, which already owns P02. New-owner ingress supplies category M plus a responsibility name; the kernel resolves the next unused ID at admission. No numeric reservation in this plan. Normal ingress, registration, public reader/writer edges, owner-local durability and scoped architecture proof must precede P03 runtime use.
 
-Owner instruction24October2026: “Please disregard the above20signal exec plan instructions. I approve this D038 profile.” The exact profile proposed at c6737d5943ceee69c44fd72c710f1ded2591c206 is accepted; this satisfies the D038 domain-choice hold and, with the prior execution request, commissions its implementation. The old20signal schedule is superseded. Preserve accepted historical evidence and retain this plan's two-case/no-repeat/bounded-repair/independent-acceptance rules. D038 definition/configuration, exact source/grid/numeric contract, literal oracle, physical proof path and file boundaries are the owning brief §§2–5. Runnable manifest after admission: test_d038_signal[success] and [refusal] only; no D040/D041 run.
+Execution sequence, once commissioned: ascending numeric IDs, one accepted/saved unit before the next. At the first still-unresolved entry condition stop and report the exact gap; do not silently skip, defer, renumber or implement a prerequisite outside scope. In the present draft the first such stop would be D061. An owner-approved explicit deferral or bounded prerequisite amendment may later change that sequence; neither is assumed now. D065's lawful post-event branch does not by itself require D062, but numeric skipping to reach it still needs an explicit disposition.
 
-Actual environment was absent. Restored CPython3.12.14 virtual environment from primary interpreter SQLite3.53.1 using committed offline hash-locked16packages. NVDA_PROOF_PYTHON=/workspace/scratch/83dd7c79f14f/d038-runtime/bin/python is explicitly verified for this environment; versions recorded in owning environment.log. No product qualification tests ran. No new-session reinstall will follow while unchanged.
+## 4. Specified controlled proposals and exact two-case targets
 
-## 10. D038 accepted controlled profile — 24 October2026
+These are proposed synthetic contracts for owner review, never real-feed or real-calendar claims. Every future case starts from actual M00 public observations or actual public predecessor producers. Expected values are independently authored constants or equations; do not feed precomputed D results to the owner.
 
-Candidate0931e4b7d83b7cf81b02c6443e2848edda896a2d, treee6f9384c50039e9a97f8415826eb32daf27e8c6f, brief4bd92bd883c5fc4ab63d4cb8988783d53994b25ca88ab91a2976bda13bdaee9c, generation28274ee853c92e924c7224cde0f2dda35e23588c9ab68a41b0da7c283f9a6b7c. Independent semantic ACCEPT in handoff/foundation_implementation/d038_execution/final_review.md; full raw strict output final_green.log in the same directory: exactly2passed in0.24s, aggregateexit0 on pinned CPython3.12.14. Scope/static commands and actual outcomes are in pre_runtime.md/owning initial logs. No runtime RED, duplicate implementer GREEN, old product rerun, retry or extra case. Interval signs/floor/rounding and fixture discrimination were independently assessed; unexecuted branches/native certification/integration limits are explicit in the review. The approved brief, original immutable generation and all original outputs remain unchanged. Commit/save a verified cumulative full-history bundle before advancing. D040/D041 retain their own unapproved downstream ownership/score profiles and no runtime target.
+Common numeric law: finite exact Decimal raw values, explicit scale1/offset0 units unless the owning contract states otherwise; no float, magnitude-based conversion or ambient Decimal rounding. Exact ratios are reduced integer numerator/positive denominator. For log return use mathematical ln, existing bounded rational-log evaluation certifying one 50-significant-digit ROUND_HALF_EVEN value, refusal when its declared existing 32..512-term refinement cannot certify it. Do not change accepted log behaviour. D063 uses an exact rational baseline mean/sample variance and independently bounded square-root division certifying final50digit half-even z; the fixture gives exactly2. D076 subtracts the actual persisted rounded predecessor values exactly, not a fresh ln of a different combined ratio.
 
-## 11. D040/D041 completion delegation — 24 October 2026
+### 4.1 D057–D060: volatility term pairs
 
-Current owner instruction: “I give you full permission to do whatever it is you need to do to complete D040 and D041.” This explicitly delegates the remaining ownership, interface and concrete score-profile decisions and commissions implementation; it supersedes the separate choice/commission holds in §§1–3/6–8 for these two units. It does not weaken kernel mathematics, independent acceptance or the two-case/no-repeat rules.
+Decision T=20Oct2026 13:00Z, cutoff T+1s, now T+2s; scalar observations event T/receipt T, zero allowed inter-input event skew, age <=60s. Reuse the accepted synthetic foundation-controlled-macro / macro_snapshot_v1 native metric.value shape, metric series/measurement_date/method/quote_orientation identities, source scope and per-R mappings/units from _macro_changes.py at the baseline. Only new per-D definition/admission/selection content changes. Require actual exact selected latest eligible source occurrences and matching declared series/units; inspect complete bounded histories, no fallback from a selected invalid current value to an older complete value. No revision_vintage_native in this controlled profile.
 
-Ruling: preserve P02's configured market-condition composite responsibility as a new runtime owner, allocated through normal create ingress rather than inferred from historical M labels. Its narrow present output set is D040, then D041 only. M01 retains historical bytes/state; these new controlled definitions have one new owner and do not migrate/relabel old occurrences. No other P02 identity or application composition is admitted.
+R238=VIX1D15,R239=VIX9D20,R236=VIX25,R240=VIX3M30,R237=VVIX100; native and canonical units index_points, quote orientation not_applicable. Current metadata follows each record's UTC measurement date and the unchanged accepted per-R method convention.
 
-Ruling: use K07's explicit positive/negative clipping entries to form absolute bounded feature magnitudes without inventing a new extractor/transform. D040 is a direction-neutral trend-intensity score: average of bounded magnitudes of D020, D021, D027.percent_per_minute and D024.accel_1v5. Scales are respectively 0.01 log-return, 0.03 log-return, 0.1 percent/minute and 0.001 return/minute. Each magnitude consists of two ordered component/bounded_ratio entries with clips [0,1]/[-1,0], orientations +1/-1, weights 1/4 each, intercept zero. These are controlled engineering choices, not empirically calibrated strategy efficacy.
+| ID | New success value / typed shape | Single refusal with otherwise lawful inputs |
+| --- | --- | --- |
+| D057 | point_difference=-5; ratio=3/4 | Required R239 denominator is present and zero. |
+| D058 | point_difference=-5; ratio=4/5 | R239 event T-1s while R236 event T; each is fresh, but the declared zero-skew join fails. |
+| D059 | point_difference=-5; ratio=5/6 | Latest eligible R240 at T is zero; an older complete positive R240 exists but may not replace the selected invalid denominator. |
+| D060 | ExactRatioV1(4,1), scalar ratio | Required R236 denominator is present and zero. |
 
-D041 follows accepted D040: raw = (2 + abs(D026.percent_difference)/(1+abs(D026.percent_difference)) - D040 - D033/(1+D033))/3. Its P_SCORE schema expands the absolute term through the same two clipping entries, uses identity for D040 and bounded_ratio(scale1 annualised volatility) for nonnegative D033, orientations +1/-1 as appropriate, weights 1/3 and intercept 2/3. Generic catalogue score means raw output; no sigmoid. It measures unsigned reversion conditions, not trade direction/probability. Absolute deviation rewards stretch, trend intensity and volatility penalise it; low volatility is a level proxy, not a measured volatility-stability statistic. No profitability or predictive claim.
+Both fields for D057–59 are mandatory ExactRatioV1 in a new frozen TermPairV1(point_difference,ratio); units index_points / ratio, no percent conversion. Do not misuse IndexChangeV1's percent_change name. D060 is ratio, not percent or Decimal truncation.
 
-Both exact versioned schemas and predecessor contracts will be in owning immutable JSON companions; repeated declarations derive from those bytes. Arithmetic is rational over exact persisted predecessor Decimal/ratio values; output is reduced exact numerator/denominator, no rounding. Owner-local SQLite technical codec/store are bounded copies of accepted infrastructure, with own namespace/application ID and no cross-owner private imports. Public M02 read facets supply actual predecessor occurrences; M00 imports are public carrier decoding only, no raw read permission. No M01 score controller or shared strategy service.
+### 4.2 D063: release-specific historical surprise
 
-Time: fixed controlled as-of20Oct2026 12:40Z, cutoff+1s, now+2s; all direct predecessors exactly same subject/as-of/cutoff, produced no later than now, exact admitted definition/brief/parameter/context/horizon identities. Compatible controlled close/price/risk calendars are explicitly mapped to this one instant/session, not required to have equal unrelated context IDs. Exact predecessor IDs are supplied, no latest fallback.
+Reuse only D063's four release records in the existing F14 synthetic manifest: July/August/September prior pairs (consensus2.5,actual2.4),(2.5,2.5),(2.5,2.6), current October(2.5,2.7); declared same synthetic_pct_yoy units. Baseline N=3, sample denominator N-1, current excluded. Retain manifest release IDs/family, exact scheduled/forecast-known/actual-receipt timestamps and c1/a1 revisions. In this proposed controlled profile actual known_utc is its recorded receipt instant; no separate unknown provider publication time is asserted. As-of current release15Oct2026 12:30Z; cutoff13:00Z; now13:00:01Z. Only forecasts known strictly before their release may be paired; historical actuals/releases strictly precede current and all selected versions must be visible by cutoff.
 
-Files: new nvda_desk.configured_market_conditions/{api.py,_codec.py,_store.py,_score.py}; exact P02 owning authority/profiles under handoff/configured_market_conditions/authority; config/architecture module/allocation and declared public edges; a fixed two-claim extension of tools/product_proof_claims.py with all existing validation/generation algorithms retained; per-ID config/product_proof/configured_conditions_dNNN; tests/product/configured_conditions_dNNN/test_signal.py. No existing product implementation/test is changed. Required new-owner architecture registry/dependency/seam/ingress checks are scoped to new registration/edges and executed once, not historical tests or whole-branch review.
+Synthetic provider foundation-controlled-events, variant release_snapshot_v1; raw paths release.consensus for R285 and release.actual for R286. Each projection retains release.id, release.family, release.scheduled_utc, release.kind(consensus/actual), release.known_utc and release.revision. Native numerical values are Decimal, not the JSON manifest's documentary strings. Forecast observation event time is its known instant; actual observation event time is its release instant. The scheduled release identity is metadata, not a future event-time invention. Distinct M00 occurrences preserve the exact forecast/actual disclosures and raw receipts. Latest eligible version selection occurs within exact release/family/kind; no pairing across releases or backfill of a missing selected member.
 
-D040 two cases: success with actual public D019/20/21 -> D024, and actual public D027, exercising positive and negative features with an independent rational oracle and full metadata/lineage/durable reopen. Refusal supplies those actual lawful outputs but requests D024's existing occurrence in D027's ordered slot: it must reach exact predecessor type/identity/profile mismatch and persist nothing. D041 two cases: actual public D026/D033 plus actual accepted D040, independent exact oracle/reopen; refusal supplies actual D040 with a differing cutoff while the remaining lawful inputs match, so no mixing/version renormalisation. No extra scenarios/probes. Only current unit's strict pair is executed by its independent final reviewer; omitted RED remains reduced evidence.
+Success: surprises[-.1,0,.1], current .2; mean0, sample variance .01, SD .1, z=2, complete typed Decimal/lineage/strict-prior baseline selection. Refusal: selected September historical actual is absent while its consensus and every other current/prior input are present. N=3 required: no shortening to two or substituting another release. This is one missing-pair scenario. Post-release forecast revisions and zero variance are source-reviewed obligations, not additional runtime cases.
 
-Sequence: freeze and bind D040 authority, write its two cases, implement, scoped static checks, clean commit, independent strict pair/semantic decision, accepted commit and verified downloadable cumulative bundle. Then do D041 with its own immutable authority and two cases; repeat only new/changed checks. Reuse unchanged runtime and prior context. Skills' routine RED/broad-suite/whole-branch defaults are superseded by the explicit owner methodology. No further owner approval is required for delegated choices or bounded material-repair recovery.
+### 4.3 D066–D069: controlled international daily logs
 
-D040 candidate preparation: normal create ingress eb9417d resolved M03; exact owning brief ce8a16e3f5c5f886b1847ce09be321477259577560e3543b4b18853b59ad3492 and profile/contract/generation0001 sealed before runtime. New owner declarations/public edges, owner-local technical storage/codec and eight-entry/four-component K07 profile implemented. Scoped statics and material repairs documented in owning pre_runtime.md/logs; scoped new-owner architecture checks passed. Independent strict acceptance remains pending; D041 implementation not started.
+These four synthetic series have their own explicit current/prior UTC sample frames, not inferred JP/HK/China exchange calendars. T=20Oct2026 13:00Z, reference=19Oct2026 13:00Z, cutoff T+1s, now T+2s. Both sample instants required exactly, no holiday carry/interpolation/nearest-neighbour or later replacement. Dates/times here are invented controlled labels; native FRED date-only histories cannot be converted to these instants or used as if certified.
 
-## 12. D040 independently accepted
+Provider foundation-controlled-international, variant daily_close_v1, scope same provider/variant. Native index.value Decimal; identity fields index.series,index.close_utc,index.adjustment_basis=controlled_unadjusted/1,index.close_kind=controlled_official. Mapping mmt-rNNN-international/1; unit mmt-rNNN-index-units/1, index_points->index_points scale1/offset0; R270=NIKKEI225,R271=NASDAQNQHK,R272=NASDAQNQCN,R273=NASDAQNQCN10. Calculation subject is NVDA (international context), series identity selects the exact index; no proxy substitution.
 
-Independent reviewer ACCEPT for candidate e1029a079347722f70d3d3ce5246858d593bd4a3, tree ea7dd1f261079dd198c1ca44fadaa5a736853f4e. Sole strict configured_market_conditions_d040 aggregate:2passed in0.37s,exit0. Full raw final_green.log SHA2564a20ce760f5bee42a66cae498af26d8bf233343210a83fb5a88d5483c53bc4e0 and independent final_review.md in handoff/configured_market_conditions/d040_execution. No product retries, old suites, duplicate GREEN or extra cases. Accepted controlled P02/M03 profile only; predictive/native/integration and main integration remain separate. Commit, verify/save/expose cumulative full-history checkpoint before D041.
+| ID | Reference→current / expected log | Single refusal |
+| --- | --- | --- |
+| D066 | 100→110 / L | Required prior close native adjustment_basis differs from controlled_unadjusted/1. |
+| D067 | 200→180 / M | Current R271 exists but was received after cutoff. |
+| D068 | 50→55 / L | Prior value0 exists; ln denominator invalid. |
+| D069 | 80→100 / U | Prior sample only at reference+1s; exact required anchor absent. |
 
-## 13. D041 exact delegated profile and implementation entry
+L=0.095310179804324860043952123280765092220605365308644.
+M=-0.10536051565782630122750098083931279830612037298327.
+U=0.22314355131420975576629509030983450337460108554801.
+These independently established50digit log witnesses are frozen here for future proof; bind final Decimal tuple literals in owning proof. D068 deliberately uses a nonzero controlled registration witness instead of preparation's equal-price example; no old test is rerun.
 
-D040 accepted checkpoint 171a9149dea53f44a1bd1fec6a1d7971c3c1a9f3 was verified/saved/exposed before this unit. Owning D041 brief/profile freezes root §11's reversion equation and exact actual D026/D040/D033 contracts. As a necessary refinement of §11's preliminary fixed cutoff, D041 accepts T+1s or T+2s, while D040 stays fixed T+1s. Refusal uses actual D026/D033 atT+2s and D040 atT+1s, with an otherwise lawful D041 requestT+2s/nowT+3s; it therefore reaches the intended predecessor cutoff mismatch without fabricating an impossible D040 instance. No D040 authority/source/test changes. New _reversion.py and appended public reversion factories use unchanged owner-local codec/store and D040 validator. Exact immutable authority is bound before tests/code; two cases only, one independent executor, no historical reruns.
+### 4.4 D071–D075: same-subject prior official close/current log
 
-D041 preparation: owning exact brief/profile/contract bound; original generation0001 sealed after inspection. New _reversion.py/appended public factories and actual two-case proof only. D040 calculation/test/profile/generation/codec/store unchanged. Warranted scoped statics/new-file import/authority checks passed with original style failure and pairwise repair preserved in owning logs. Product execution remains exclusively the independent final reviewer’s next action. No old acceptance suite or runtime probe ran.
+T=20Oct2026 12:40Z. The controlled request domain permits cutoff T+1s or T+2s with now>=cutoff; standalone two-case fixtures use cutoff T+1s/now T+2s. This explicit domain permits D076's genuine mismatched-cutoff predecessor setup without changing an accepted definition later. Synthetic current session20Oct12–13Z; prior session19Oct12–13Z; official prior close timestamp19Oct13Z. Current event/receipt exactlyT, prior close event/receipt exactly prior session end; distinct observation IDs. Exact subject is SPY/QQQ/SMH/SOXX/NVDA respectively. Proxy choice SPY and QQQ is explicit, not silent SPX/NDX interchangeability.
 
-## 14. D041 independently accepted; three-signal plan closed
+Provider foundation-controlled-underlying, variant last_prior_close_v1. R037 at trade.last and R042 at official_close.value, Decimal price. Each binding retains instrument.id, session.id, adjustment.basis=controlled_unadjusted/1 and price.kind=current_last/official_close as applicable. R042 retains the prior session identity, never current session. Mapping mmt-r037-underlying/1 and mmt-r042-underlying/1; unit mmt-underlying-price/1 identity price units. No live IBKR mapping or US market calendar assertion. Current age0/skew0; prior freshness is the exact named previous synthetic session, not a current-price staleness cap.
 
-Independent ACCEPT for candidate9922832134a173965dd810e293af67f2f2c16e48, tree1bc24b6140a0028b881becd5e1bd55a85ac360c6. Sole strict configured_market_conditions_d041 aggregate:2passed in0.73s,exit0. Original full final_green.log SHA256b3e14e4305564db32e7200e31b96792e0c5a3fb6945a385a566749edb04dc44b and substantive independent final_review.md in handoff/configured_market_conditions/d041_execution. Exact authority/profile/contract/generation/source/proof hashes are retained there. No runtime recovery, duplicate GREEN, extra case, old test or broad sweep occurred. D040's accepted calculation/profile/test/generation/codec/store remain byte-identical; only new D041 factories were appended to the shared public seam.
+| ID | Subject / prior→current / expected | Single refusal |
+| --- | --- | --- |
+| D071 | SPY /100→110 /L | Current SPY exists; the only prior official close is another subject QQQ. |
+| D072 | QQQ /100→90 /M | Exact prior close has split_adjusted basis instead of declared unadjusted basis. |
+| D073 | SMH /50→55 /L | Current SMH record exists with receipt after cutoff. |
+| D074 | SOXX /40→44 /L | Correct-subject prior official close is present with value0. |
+| D075 | NVDA /100→125 /U | Correct current last is present with negative price-1. |
 
-Both newly commissioned signals were independently accepted with exactly two cases each, once each; scoped static repairs preserve original results and relevant changed-byte justifications. D040 checkpoint171a9149dea53f44a1bd1fec6a1d7971c3c1a9f3 was committed, full-history bundle verified/saved/exposed before D041. Commit this final accepted state and immediately verify/save/expose its cumulative full-history bundle. No further product checks are required by documentary close-out/packaging; no merge/push or new work follows.
+Every success asserts actual subject-specific mappings/selected lineage; identical numerical L or reused source patterns do not make distinct registrations interchangeable. D074's nonzero witness avoids weak zero-only acceptance. No zero/negative native-domain enforcement beyond the positive-price requirement needed by ln is inferred.
 
-Controlled-profile mathematical/semantic acceptance is distinct from empirical prediction/profitability, native/provider/calendar certification, measured volatility stability and integration/E2E. Those remain separate obligations. D038/D040/D041 are no longer BLOCKED; preserved original holds and initial planning wording above describe their earlier entry state, superseded by the exact approvals/delegation and subsequent evidence. GUARDRAILS.md is unchanged.
+### 4.5 D076: actual compatible QQQ minus SPY
+
+Use actual accepted public D072 and D071 producers at §4.4's same T/cutoff/session/return convention; no prefilled1/20 and1/50 derived carriers from the documentary example. Request order D072, D071; subject US_TECH_VS_BROAD, members(QQQ,SPY), explicit cross-subject basket. Both definition/parameter/source conventions and exact official prior-close anchors must match their owning profiles.
+
+Success: exact rational Fraction(M)-Fraction(L), where M/L are the persisted50digit representations fixed above; freeze its independent numerator/denominator before proof admission. Units return_spread, shape exact_ratio, actual complete nested predecessor/raw lineage. Refusal: both actual lawful predecessors exist, but D071 has knowledge cutoff T+2s while D072/request cutoffT+1s; new D071 producer request is lawful under its source contract and nowT+3s. No mixed knowledge snapshots. D071's two-value cutoff domain is explicitly proposed in §4.4 before its implementation; no accepted prerequisite needs amendment for this case.
+
+## 5. Five precise authority-resolution units
+
+These are named stops, not owner-approved deferrals and not implicit permission to add tests/IDs. Preserve their original identities, jurisdictions and dependencies.
+
+### 5.1 D061 / P02 existing M03
+
+Freeze one own K07 profile over the six actual inputs; name exact D052/D053 structured component paths (point_change versus percent_change), D057/58/59 point_difference versus ratio, and D060 scalar extraction. Declare transform/scale, optional clip or explicit absence, orientation, nonnegative weights, intercept, raw versus bounded output and numerical carrier. Catalogue generic score does not imply sigmoid. All direct as-of/cutoff snapshots must be compatible, and shared underlying current raw identities across direct parents must agree. D052/D053 and other old profiles stay unchanged; materialise them as setup via public factories, never their tests.
+
+Missing policy is not supplied by existing D040/D041 coefficients. Obtain owner acceptance or explicit delegation for a concrete new profile, then bind its own immutable brief/JSON/proof contracts. Define its own public factory/result/readback extension within M03; no generic cross-peer score service. Only then freeze its two exact cases/oracle and admit execution.
+
+### 5.2 D062 / actual D001 and event source law
+
+Accepted law selects earliest relevant scheduled event strictly after as-of; retain seconds and exact minutes. F14 positive schedule is as-of21Oct12:00Z with known future events12:01:30 and12:03, plus past/exactly-now/late-received decoys; expected90seconds/3/2minutes. These are a candidate witness, not actual D001 evidence.
+
+Baseline M02 source/API inspection found no D001 implementation; M01 remains bootstrap legacy and no M01 import/migration is authorised. An as-of datetime or fabricated D001 occurrence cannot replace the declared D001 dependency. Stop until an actual lawful public D001 contract/producer is supplied, or the owner separately authorises its bounded prerequisite implementation/acceptance. D001 would be an explicit additional unit with its own budget/checkpoint, not silently the twenty-first signal in this plan.
+
+Also settle exact controlled R284 projection of scheduled UTC, event/relevance identity, schedule revision selection and disclosure/receipt versus scheduled time. M00 supports native string projections, while existing M02 RawInputLineageV1/codec is numeric-oriented; a temporal lineage/carrier/codec design must preserve exact ISO native bytes and parsed same UTC instant without modifying M00 or coercing schedule time into Decimal. No executed RED or numeric fixture can discharge this source/type/owner hold. Once resolved, declare exactly one success and one reached refusal.
+
+### 5.3 D064 / P03 event importance
+
+Before code, admit P03's bounded event-risk responsibility under a nonnumeric create intent, exact package/public seam, permitted M00/foundation reads, own SQLite writer/read-only boundary and immutable lineage. Do not allocate it to M03/P02 or M02 by convenience. Proposed package nvda_desk.event_risk_policy, public seam .api; numeric owner remains unresolved until normal kernel allocation.
+
+R289 needs a concrete controlled/native value shape, event identity/revision/time/unit mapping and versioned interpretation. Existing numeric R289 fixtures do not prove a native category translation or historical sensitivity model. K07 does not implicitly map categories to numbers. Resolve explicit legal scalar extraction/parameter semantics, bounded importance interpretation and exact numerical profile; do not invent an unlisted categorical extractor or disguise a precomputed D064 answer as raw/context. Bind own authority, exact typed seam and two cases only after owner acceptance/delegation.
+
+### 5.4 D065 / P03 event-centred policy
+
+Reuse that admitted same P03 owner and actual own D064, with exact selected event ID/definition/profile joined to visible R284. Own immutable P_RULE sets pre/post durations, applicability threshold/inclusion and known-calendar coverage/absence semantics. Canonical kernel selects visible events in [as_of-post,as_of+pre], nearest absolute distance, exact tie earlier; output true only if selected event's D064 meets threshold. Preserve boolean and any additionally mandated score as a named typed carrier, not an arbitrary bool/score collapse.
+
+D062 is a pre-event countdown and is not the sole post-event source. A strictly post-event branch may lawfully omit it under the accepted row; do not fabricate a future countdown or make it unconditionally mandatory. Full acceptance claims must distinguish implemented branch coverage, mandatory unproved branches and source review from runtime proof. Resolve exact supported profile/branch and complete contract before freezing two discriminatory cases; do not add pre/post/tie scenario loops. Missing required proposition is a reported scope gap, not silent weakening.
+
+### 5.5 D070 / P02 existing M03
+
+Freeze its own seven-input K07 schema, exact component paths, transform/scales, orientations, weights/intercept/output and numerical law. Equity ln returns differ from FX percent changes and quote orientations: no implicit scalarisation/unit mixing. Preserve all four index identities and JPY/HKD/onshore-CNY per-USD orientation.
+
+Important predecessor compatibility: accepted D049/D050 profiles are1d while D051 is5d. Do not rerun/change D051 to fit a convenient daily assumption. The new immutable profile must explicitly accept those distinct named horizons and state their interpretation, or owner must commission a separate compatible prerequisite/profile amendment. Fix one exact calendar/as-of/knowledge universe and any required dispersion/FX-confirmation interpretation; a linear directional proxy must not be silently called proof of dispersion/predictive risk. Actual accepted D066–69 plus lawful D049–51 supply setup, not precomputed feature scores or tests. Resolve own brief/profile/factory and two exact cases/oracle after owner decision.
+
+## 6. Minimal implementation and immutable declaration map
+
+After a signal's authority/profile is accepted, freeze its exact per-ID file/type/case manifest before implementation. Do not create scaffolding for unresolved future units.
+
+For specified M02 units, proposed private files: _volatility_terms.py (D057–60), _macro_surprise.py (D063), _international_returns.py (D066–69), _underlying_returns.py (D071–75), _relative_market_return.py (D076). Use existing api.py WindowCalculationRequestV1 / WindowMeasurementOccurrenceV1 / MeasurementWindowOwnerV1 / MeasurementWindowReadsV1 and create_window_owner/create_window_reader; add only per-ID routing in _window.py as each is admitted. Add only TermPairV1 and its explicit WindowMeasurementOccurrenceV1.result union member for D057–59. Existing scalar Decimal/ExactRatioV1 results cover the other specified units. Preserve old namespaces/validators/factories. Reuse accepted owner-local RecordState, typed codec and arithmetic helpers where exact contracts agree; any incompatible new temporal/profile carrier remains an entry hold, not an excuse for a broad framework.
+
+Per-ID M02 authority: handoff/foundation_implementation/authority/Dnnn_IMPLEMENTATION_BRIEF.md, Dnnn_PROOF_CONTRACT.json; implementation/authority/Dnnn_IMPLEMENTATION_AUTHORITY_BINDING.yaml; config/product_proof/market_measurement_dnnn/{claim.json,admission.json,generations/0001.json}; tests/product/market_measurement_dnnn/test_signal.py, sole test_dnnn_signal with success/refusal IDs; owning dnnn_execution evidence directory. P02 follows existing handoff/configured_market_conditions and configured_conditions_dnnn pattern. P03 paths/public types are frozen at §5.3 admission, with a non-overlapping physical/config claim root.
+
+One bounded fixed loader declaration extension in tools/product_proof_claims.py for the finite D057–D076 IDs/owners may be prepared during the first commissioned resolved unit, preserving every old claim, immutable generation/target/partition/validator algorithm. Add exact per-ID descriptors only as each authority is resolved. New peer target/seam must be represented honestly; never route it through an M02-only helper. No dynamic discovery, arbitrary claim registration, generic score service or shared runner relaxation. No loader or infrastructure change is authorised merely by this planning task.
+
+Repeated identities, feature parameters, hashes, authority references and numerical constants derive from the canonical owning brief/JSON and committed proof bytes. Reuse exact accepted authority/implementation/proof infrastructure, inspect consistency once before sealing each immutable generation; retain originals and link replacements. No independent reconstruction of the same constants across companion reports, duplicated reasoning or unnecessary receipt framework. Keep required contracts, evidence, provenance and independent semantic judgement.
+
+## 7. Execution cycle and efficiency rules
+
+For each resolved commissioned signal, in numeric order:
+
+1. Confirm its entry authority, exact owning delta, actual dependencies, two node IDs, numerical oracle and named refusal; consult relevant accepted evidence without executing it. Write/inspect the new proof before production code.
+2. Author exactly two physical cases. Success proves the full typed value/units/definition/parameters/context/owner/admission/times, actual selected lineage and ordinary public read-only durable reopen within that same case. Refusal must begin with otherwise lawful actual source/predecessor facts, reach its single stated defect and persist no result/history. Actual public predecessor materialisation is lawful setup; old acceptance test invocation is not.
+3. Implement only the owning delta. Initially run one warranted scoped mypy for new/changed production Python and one scoped Ruff for new/changed Python. Record exact file list, commands, output, relevant affected proposition. Reuse unchanged successful evidence; no package/repository sweep or checks for prose/hash-only changes. Perform only required scoped new-owner/new-file ingress/registry/import/public-seam checks; report inability to isolate required scope instead of silently broadening.
+4. Commit a clean candidate. One independent final semantic reviewer is sole acceptance runtime executor, including authorised repair recovery. It assesses math/meaning, source and fixture sufficiency, exact version/selection joins, assertions' discriminatory power and relevant prior repair lineage; never rubber-stamp GREEN. Fixture-independent public action sequences belong inside the declared pair, not extra probes.
+5. Sole strict invocation: `PYTHONPATH=src "$NVDA_PROOF_PYTHON" tools/run_product_proof_gate.py --aggregate <exact owning admitted claim>`. M02 claim neutral_market_measurement_truth_dnnn; P02 configured_market_conditions_dnnn; P03 exact claim freezes at admission. Expected exactly two observed passes, exit0, no skip/xfail/xpass/empty collection or governed mutation. Do not run focused cases successfully first and then strict aggregate.
+6. Accept only on sufficient independent semantic judgement and strict GREEN. Preserve candidate/tree/brief/binding/contract/generation/source/proof hashes, complete original runtime output and concise final review/reuse/limitations. No routine runtime RED: its omission deliberately reduces test-first evidence; source review is not equivalent executed RED.
+7. Commit the accepted state. Immediately create a cumulative full-history Git bundle, verify its complete history/accepted HEAD, save it and expose one downloadable checkpoint link before advancing. No end-of-batch delay, duplicate product run for bundling or final whole-branch sweep.
+
+Do not run bare pytest, broad Makefile checks, architecture/bootstrap/promotion/control suites, old M00/M01/M02/M03 tests, benchmarks, live/provider/API probes, speculative scenarios, mutation matrices, copied/renamed old tests to evade the no-repeat rule, or extra implementer/reviewer GREEN. New code exercised via a new signal's genuine case is not repetition of its historical suite. The limit controls waste, not correctness or assertion strength. Six is the hard per-ID ceiling, never an automatic expansion from two; a missing mandatory proposition remains a scope gap requiring a concrete owner decision.
+
+## 8. Narrow repair recovery
+
+Prohibit rerunning previously accepted, unaffected tests. Preserve a failed check's complete original output, defect, affected proposition and relevant material repair; stop dependent work. The independent reviewer may rerun only the failed check after that repair. Successful checks may re-execute only if subsequent changes materially invalidate their evidence; identify changed bytes/proposition and why, retain both results. Sessions/reviewers/commits/documentation/bundles alone do not invalidate evidence. No retry without repair, speculative extra case or automatic broad regression.
+
+Carry forward the owner's23October2026 16:14 exception: when the CURRENT new signal's initial strict two-case aggregate fails, the same independent reviewer may rerun that SAME aggregate (both cases) after documented relevant material repair. Preserve original outcome/defect/rationale/subsequent result. This is pre-authorised once this plan is accepted/commissioned, with no further owner approval. Previously accepted signals remain excluded except for the separate precisely documented materially-invalidated-evidence rule; no general regression permission is created. Do not modify the shared runner or acceptance infrastructure to implement recovery.
+
+Static repair may be performed by the implementer; independent acceptance review examines the record and does not repeat unchanged successful statics. A new owner or carrier is not permission to requalify historical products; any actual invalidation of an accepted proposition must be explicitly identified and resolved narrowly before claiming it remains supported.
+
+## 9. Runtime and context reuse
+
+Keep CPython3.12.14, SQLite3.53.1, pytest9.0.3, mypy1.20.1, Ruff0.15.11, PyYAML6.0.3 and committed hashed offline locks/wheels. Do not switch to the attached Python3.13 wheelhouse. Supply an environment-specific absolute NVDA_PROOF_PYTHON; verify its current identity/pins before first use, or reuse unchanged actual verification and the original environment log by exact Git reference. Never bake a temporary interpreter path into this plan or silently use system Python.
+
+A new branch/session/reviewer does not trigger dependency installation, environment requalification or repeated product tests. If the verified runtime is genuinely absent/changed, restore only the missing pinned environment and verify only changed facts, no product qualification probe. Planning requires no installation or runtime/static checks. Reuse relevant family/context/authority findings while bytes/applicability remain unchanged; keep independent judgement substantive. No model token/cache/performance saving claim without measurement.
+
+## 10. This planning task: review, reconciliation and delivery
+
+Allowed mutations now: EXEC_PLAN.md, AGENTS.md, tests/AGENTS.override.md, README.md and one concise review record under handoff/planning/d057_d076/. No product source/tests, dependency pins, authority bindings/proof contracts, claim descriptors/admissions/generations, architecture registry/allocation or GUARDRAILS.md changes.
+
+Reconcile current root/test-local instructions to this proposed scope; retain exactly two cases, one independent executor, narrow recovery, no routine RED or historical regressions and all ownership/provenance law. Earlier D026–D036 six-case/TDD and completed-tranche instructions remain historical; do not silently reinstate them. Generic skill defaults for separate plan paths, executed RED, added tests, blanket suite/branch review or recurring new contexts do not override the owner methodology. Root EXEC_PLAN.md is the single plan once accepted.
+
+- [ ] Draft/self-review all twenty IDs against exact catalogue/authority and current public source; preserve five explicit entry holds.
+- [ ] One independent planning reviewer assesses scope, dependencies/owners, source/numeric proposals, two-case adequacy/limits, sequencing, no-repeat/recovery/environment and governing-law conflicts. Documentary inspection only; no product/static tests or implementation.
+- [ ] Repair material planning defects; retain original findings and concise exact resolutions. Aim for at most two review rounds, but do not conceal unresolved material defects to hit that target. Second round checks the fixes/relevant consequences, not an automatic fresh whole-repository investigation.
+- [ ] Commit planning/governance changes on this branch; provide exact commit and a verified downloadable full-history checkpoint containing the reviewed plan and record.
+- [ ] Owner review/acceptance and separate execution authorisation; do not implement under the present instruction.
+
+## 11. Present ledger
+
+Baseline accepted checkpoint d0a9052 remains preserved; no claim is made that main contains it. New planning branch was created from that clean exact HEAD. Fifteen controlled proposals are specified; five entry conditions remain explicit. No new product case exists or ran, no static/product/environment check ran, no new proof/owner was admitted. Read-only Git/source inspection and documentary preparation are not product qualification.
+
+Independent review: PENDING. Owner acceptance: PENDING. Execution commission for D057–D076: NOT GIVEN by this planning-only instruction. No conflict with frozen GUARDRAILS.md is knowingly overridden; any reviewer-identified material conflict must be recorded and resolved before handoff.
