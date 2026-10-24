@@ -320,6 +320,16 @@ def test_d077_signal(tmp_path, refused):
     assert tuple(
         predecessors.get_derived_occurrence(p.derived_occurrence_id) for p in facts
     ) == tuple(facts)
+    missing_soxx_id = "mmtwindow1:d077-required-d074-absent"
+    if refused:
+        assert predecessors.get_derived_occurrence(missing_soxx_id) is None
+        predecessor_ids = (
+            facts[0].derived_occurrence_id,
+            missing_soxx_id,
+            facts[1].derived_occurrence_id,
+        )
+    else:
+        predecessor_ids = tuple(p.derived_occurrence_id for p in facts)
     request = f.WindowCalculationRequestV1(
         f.CalculationRequestV1(
             "D077",
@@ -333,7 +343,7 @@ def test_d077_signal(tmp_path, refused):
             (),
         ),
         CONTEXT,
-        tuple(p.derived_occurrence_id for p in facts),
+        predecessor_ids,
     )
     admission = f.OwnerAdmissionV1("M02", BRIEF)
     path = str(tmp_path / "D077.sqlite")
