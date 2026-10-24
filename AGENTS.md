@@ -78,3 +78,7 @@ Run only validations that actually bear on the proposition being changed, plus a
 Do not modify `GUARDRAILS.md` during ordinary work. Any proposed guardrail change requires explicit current human/programme authority.
 
 Historical exception/delegation and closure records for D038/D040/D041 remain at d0a9052:AGENTS.md and that checkpoint's root plan. The new proposed scope above supersedes those completed schedules without altering accepted source/proof/history.
+
+## Current resolved execution disposition
+
+Root EXEC_PLAN.md §15 records completion of the fifteen resolved controlled units through D076, each independently accepted with its declared pair. D061/D062/D064/D065/D070 remain owner-deferred and unaccepted under §5; no further implementation is automatically commissioned. Read the root ledger for exact evidence, limits and future entry requirements. Earlier pending/planning-only task descriptions are historical. Preserve accepted evidence; no routine reruns or final suite.

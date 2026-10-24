@@ -1,17 +1,9 @@
-# NVDA V2 — proposed D057–D076 ExecPlan
+# NVDA V2 — D057–D076 resolved execution checkpoint
 
-Branch work/v2-d057-d076-plan-20261024 starts from accepted cumulative checkpoint d0a905292c7439aec5bd9f099700f0ac58bdda25. D037–D056, including the subsequently completed D038/D040/D041, retain their accepted controlled evidence and historical plans.
+Owner accepted the reviewed root EXEC_PLAN.md and authorised execution, then explicitly deferred D061/D062/D064/D065/D070. The fifteen resolved units are independently accepted: D057–D060, D063, D066–D069 and D071–D076. Root §§12–15 contain the current ledger; prior planning-only records remain recoverable in Git history.
 
-Root EXEC_PLAN.md proposes the next twenty identities. Fifteen controlled foundation units have source/numeric/two-case proposals; D061/D062/D064/D065/D070 preserve explicit owner/profile/prerequisite conditions. P02 remains admitted M03; P03 is a separate unallocated event-policy responsibility. D062 must consume actual lawful D001, not a fabricated timestamp carrier.
+Each signal has exactly two declared success/refusal cases, independent semantic acceptance and original strict exit0 evidence: thirty distinct cases in this tranche. Owning authority/profile/contracts, immutable generations, scoped static evidence, repairs and reviews are retained. D076 consumes actual public D072/D071 facts, subtracts their persisted rounded values exactly and refuses mixed knowledge snapshots. These are controlled foundation contracts; native/provider/calendar certification, predictive validity and integration/E2E remain separate.
 
-The established efficiency discipline remains: two cases per resolved signal, one independent final executor, no routine RED, historical regression or repeated successful check without material invalidation; narrow documented repair recovery; immutable evidence and a verified cumulative download after every accepted signal. Native/provider/calendar certification, integration/E2E and predictive/model validity remain separate.
+Five owner-deferred to-dos remain unimplemented/unaccepted with complete root§5 requirements. D061 belongs to P02/existing M03. P03 remains unallocated. No missing policy/source/prerequisite was invented.
 
-Current task is planning and independent documentary review only. No product/static tests, implementation, dependency requalification, new owner or immutable proof admission. Owner review/acceptance and separate execution commission remain required.
-
-Independent documentary round1 cleared semantic candidate6e2d6a7b5fb3979239f886e6f7301fb5de4317f8 as READY FOR OWNER REVIEW AS A CONDITIONAL PLAN, with no material repair round. Complete record: handoff/planning/d057_d076/review_round1.md. Five named holds remain; a future numeric execution would stop at D061 unless resolved or explicitly dispositioned. No product/static checks ran.
-
-Current owner instruction accepts this plan and authorises execution; root §12 records the superseding commission. Start D057, preserve all five holds and stop numerically at D061 unless explicitly resolved/resequenced. Historical planning-only prose above is retained as prior task context.
-
-Current sequencing amendment: D061 is an owner-deferred P02/M03 to-do (root §13). D062 remains the next separate entry hold: lawful public D001 plus the R284 temporal contract. D057–D060 acceptance/evidence remains unchanged.
-
-Latest owner sequencing approval: all five named holds are now explicit deferred to-dos; root §14 commissions D063, D066–D069 and D071–D076 in ascending order under unchanged per-signal proof/checkpoint discipline.
+The branch is work/v2-d057-d076-plan-20261024, preserving baseline d0a905292c7439aec5bd9f099700f0ac58bdda25 and reviewed planning checkpoint2f2cd9841504702c869412aadc83afb1f96b8d09. Full-history cumulative checkpoints are verified/restored/saved/exposed after acceptance, before advancement. No routine RED, historical regression, repeated successful check or final product sweep; pinned CPython3.12.14 and dependencies retained. See root plan and owning final_review.md/final_green.log for exact evidence and limitations.
