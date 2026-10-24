@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_d076",
+  "semantic_brief_path": "handoff/foundation_implementation/authority/D076_IMPLEMENTATION_BRIEF.md",
+  "target": {
+    "category": "M",
+    "responsibility_name": "neutral_market_measurement_truth",
+    "package": "nvda_desk.market_measurement_truth",
+    "public_seam": "nvda_desk.market_measurement_truth.api",
+    "intent": "modify",
+    "existing_object_id": "M02"
+  },
+  "proof_axis": "product",
+  "product_tier_treatment": "NOT_CLASSIFIED",
+  "architecture_proof_axis": "architecture_kernel",
+  "required_proof_ids": [
+    "D076-CALCULATION"
+  ],
+  "families": [
+    {
+      "id": "mmt_d076",
+      "path": "tests/product/market_measurement_d076/test_signal.py",
+      "proof_obligation_ids": [
+        "D076-CALCULATION"
+      ],
+      "required_test_names": [
+        "test_d076_signal"
+      ],
+      "boundary": "D076 root \u00a74.5 K02_ALGEBRA/P_BASIC exact subtraction of actual persisted rounded D072 QQQ and D071 SPY return values, ordered D072,D071. Subject US_TECH_VS_BROAD, explicit members(QQQ,SPY). Definition D076-RELATIVE-RETURN-1, equation D072-D071; units return_spread, shape exact_ratio. Parameters mmt-d076-controlled/1; policy mmt-d076-selection/1, join keys(as_of_utc,knowledge_cutoff_utc,context,return_convention), staleness1day/skew0, true_instant, basket(QQQ,SPY), inherited foundation-controlled-underlying/last_prior_close_v1 source/scope, page100/1000 (no parent-history enumeration). Exact underlying context/anchors at root\u00a74.4; parent cutoff T+1s, nowT+3s, both actual parents fully validate under own immutable source profiles, identical context/as-of/cutoff/window85200/return convention and calculated_at<=now. No raw bindings/mappings/units/direct raw lineage at parent level; complete actual predecessors retain all ultimate raw lineage. Refuse mixed knowledge snapshot even when both lawful predecessors exist. No new ln, float, ambient Decimal subtraction, source invention, weights or peer.",
+      "proof_levels": [
+        "CONTRACT",
+        "INTEGRATION",
+        "STATE"
+      ],
+      "authoritative_inputs": [
+        "D076 root \u00a74.5 K02_ALGEBRA/P_BASIC exact subtraction of actual persisted rounded D072 QQQ and D071 SPY return values, ordered D072,D071. Subject US_TECH_VS_BROAD, explicit members(QQQ,SPY). Definition D076-RELATIVE-RETURN-1, equation D072-D071; units return_spread, shape exact_ratio. Parameters mmt-d076-controlled/1; policy mmt-d076-selection/1, join keys(as_of_utc,knowledge_cutoff_utc,context,return_convention), staleness1day/skew0, true_instant, basket(QQQ,SPY), inherited foundation-controlled-underlying/last_prior_close_v1 source/scope, page100/1000 (no parent-history enumeration). Exact underlying context/anchors at root\u00a74.4; parent cutoff T+1s, nowT+3s, both actual parents fully validate under own immutable source profiles, identical context/as-of/cutoff/window85200/return convention and calculated_at<=now. No raw bindings/mappings/units/direct raw lineage at parent level; complete actual predecessors retain all ultimate raw lineage. Refuse mixed knowledge snapshot even when both lawful predecessors exist. No new ln, float, ambient Decimal subtraction, source invention, weights or peer.",
+        "Accepted root EXEC_PLAN.md \u00a7\u00a74.4\u20134.5,6\u20139,14 and own incorporated profile/authority."
+      ],
+      "dependency_substitutions": [
+        "Controlled synthetic source/session only; genuine public accepted D072/D071 production is setup, not their tests.",
+        "Existing owner-local API/codec/storage/identity and immutable infrastructure reused."
+      ],
+      "case_coverage": {
+        "lawful_positive": {
+          "cases": [
+            "Exact persisted M-L numerator -100335347731075580635726552060038945263362869145957, denominator 500000000000000000000000000000000000000000000000000; actual public D072/D071 producer setup, full parent metadata/nested raw lineage and ordinary read-only durable reopen."
+          ]
+        },
+        "prohibited_false_positive": {
+          "cases": [
+            "Both actual lawful D072/D071 producers exist; D072/parent cutoffT+1s but D071 cutoffT+2s with nowT+3s. Refuse mixed snapshots and persist no result/history."
+          ]
+        },
+        "missing_mandatory_authority": {
+          "cases": [
+            "Exact bound controlled profile, admission and immutable generation required before runtime."
+          ]
+        },
+        "lawful_optional_absence": {
+          "cases": [
+            "No live provider/calendar integration or other signal required; unsupported prerequisites refuse by contract."
+          ]
+        }
+      },
+      "expected_failure_signals": [
+        "Incorrect arithmetic or selected raw lineage fails exact success assertions",
+        "Named missing/incompatible input must refuse without occurrence"
+      ],
+      "limitations": [
+        "Exactly two cases; no generic fault/boundary/numeric variant probes, broad suites or earlier claims."
+      ],
+      "adjacent_nonclaims": [
+        "No acceptance beyond this ID; no native-source certification or M00 mutation."
+      ],
+      "environment": "CPython3.12.14 SQLite3.53.1 and existing pinned offline tools.",
+      "material_versions": [
+        "Exact brief/binding/contract/generation and candidate/tree/runtime; old generations preserved."
+      ],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/market_measurement_d076/test_signal.py"
+    }
+  ],
+  "required_support_files": [],
+  "optional_support_files": [],
+  "execution_policy": {
+    "skipped_tests": "FAIL",
+    "xfailed_tests": "FAIL",
+    "xpassed_tests": "FAIL",
+    "collection_failed": "FAIL",
+    "no_tests_collected": "FAIL",
+    "unexpected_governed_mutation": "FAIL"
+  }
+}
