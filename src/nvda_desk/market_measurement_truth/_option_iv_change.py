@@ -67,15 +67,25 @@ def request_check(request: f.WindowCalculationRequestV1, now: datetime) -> None:
         raise ValueError("incompatible controlled five-minute IV request")
 
 
-def line(item: r.ProjectedRawValueV1, c: f.CalculationRequestV1) -> f.RawInputLineageV1:
-    event = eligible(replace(item, selection_identity=None), MAPPING, POLICY, c)
-    expected_identity = r.RawSelectionIdentityV1((
+def source_identity() -> r.RawSelectionIdentityV1:
+    return r.RawSelectionIdentityV1((
         ("contract.id", C1), ("underlying.id", "NVDA"),
         ("expiry.date", "2026-10-23"), ("strike.key", "110"),
         ("option.right", "C"), ("currency.code", "USD"),
         ("contract.multiplier", "100"), ("instrument.kind", "option"),
         ("model.convention", "controlled-model/1"), ("value.role", "model_iv"),
     ))
+
+
+def candidate(item: r.ProjectedRawValueV1, c: f.CalculationRequestV1) -> bool:
+    return (item.subject_instrument == C1
+            and item.selection_identity == source_identity()
+            and eligible(replace(item, selection_identity=None), MAPPING, POLICY, c) is not None)
+
+
+def line(item: r.ProjectedRawValueV1, c: f.CalculationRequestV1) -> f.RawInputLineageV1:
+    event = eligible(replace(item, selection_identity=None), MAPPING, POLICY, c)
+    expected_identity = source_identity()
     if (event is None or not EARLIEST <= event <= T
         or item.received_ts_utc != event
         or item.selection_identity != expected_identity
@@ -155,11 +165,13 @@ class _Owner:
                 f._utc(event)
                 return event
             current = line(choose(tuple(
-                item for item in candidates if event_time(item) == T
+                item for item in candidates
+                if candidate(item, request.calculation) and event_time(item) == T
             )), request.calculation)
             reference = line(choose(tuple(
                 item for item in candidates
-                if EARLIEST <= event_time(item) <= ANCHOR
+                if candidate(item, request.calculation)
+                and EARLIEST <= event_time(item) <= ANCHOR
             )), request.calculation)
             value = produce(request, (current, reference), now)
         except (TypeError, ValueError, ArithmeticError):
