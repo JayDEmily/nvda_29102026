@@ -148,18 +148,19 @@ class _Owner:
         try:
             request_check(request, now)
             candidates = tuple(history(self.raw, request.calculation, MAPPING, POLICY))
+            def event_time(item: r.ProjectedRawValueV1) -> datetime:
+                if type(item.source_timestamp_raw) is not str:
+                    raise ValueError("exact model IV timestamp required")
+                event = datetime.fromisoformat(item.source_timestamp_raw.replace("Z", "+00:00"))
+                f._utc(event)
+                return event
             current = line(choose(tuple(
-                item for item in candidates
-                if item.subject_instrument == C1 and item.source_timestamp_raw ==
-                "2026-10-20T12:40:00Z"
+                item for item in candidates if event_time(item) == T
             )), request.calculation)
-            references = tuple(
+            reference = line(choose(tuple(
                 item for item in candidates
-                if item.subject_instrument == C1 and type(item.source_timestamp_raw) is str
-                and "2026-10-20T12:30:00Z" <= item.source_timestamp_raw
-                <= "2026-10-20T12:35:00Z"
-            )
-            reference = line(choose(references), request.calculation)
+                if EARLIEST <= event_time(item) <= ANCHOR
+            )), request.calculation)
             value = produce(request, (current, reference), now)
         except (TypeError, ValueError, ArithmeticError):
             return None
