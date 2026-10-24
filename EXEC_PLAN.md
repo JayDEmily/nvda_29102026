@@ -348,3 +348,7 @@ D082 independently accepted on clean candidate `f98c7d89d366065b8ff0da957e1a9560
 ## 14. Execution ledger — D083
 
 D083 independently accepted on clean candidate `09a643c9ffbfbe52e7906d611f2bf766c9742975`; sole strict aggregate observed two collected/two passed, exit0. Complete output and bounded semantic judgement: `handoff/foundation_implementation/d083_execution/final_green.log` and `final_review.md`. Own immutable generation0001 binds the exact two-case proof. Scope is the controlled three-member K04 cross-section; deferred D084 configured score and native provider certification remain unaccepted. D087 may begin only after D083's accepted cumulative checkpoint is verified, saved and exposed.
+
+## 15. Execution ledger — D087
+
+D087 independently accepted on clean candidate `9e951d6c4777f8eb53ad44b2cb488407be974bcd`: sole strict aggregate collected two cases, both passed, exit0. Full runtime output and semantic judgement: `handoff/foundation_implementation/d087_execution/final_green.log` and `final_review.md`. Immutable generation0001 binds C1 midpoint and crossed quote cases. C2 is in the frozen request domain with distinct parameters, but its actual production remains an explicit D088 setup/proof obligation. No live/native option certification, D085/D086 temporal producer or D088 spread accepted. D088 may begin only after a verified saved exposed D087 cumulative checkpoint.
