@@ -234,9 +234,11 @@ Owner accepted the exact supplied plan at 2f2cd9841504702c869412aadc83afb1f96b8d
 
 - D057: ACCEPTED controlled profile after independent final semantic review at d14431deb9ef53cd1994bbc3470a0f64f7bad216; strict aggregate exit0, exactly2 passed. Original precollection exit2/capture repair preserved; no product/runner repair. Evidence handoff/foundation_implementation/d057_execution/final_review.md and final_green.log. Cumulative full-history checkpoint must be verified/saved/exposed before D058.
 - D058: ACCEPTED controlled profile at c9d0c61; one strict aggregate exit0, exactly2 passed (0.19s), independent review/output in d058_execution. Cumulative checkpoint required before D059.
-- D059–D060: not started.
+- D059: entry/proof declaration in progress; D060 not started.
 - D061: first unresolved hold, §5.1; no own profile accepted by the present general execution authorisation.
 
 Execution uses the isolated supplied-bundle clone on its work branch. No baseline suite, routine runtime RED or whole-branch review is authorised; the accepted plan overrides generic skill defaults. One independent final reviewer/sole runtime executor per signal, two declared cases. Library skill used to save cumulative deliverables.
 
 D057 checkpoint delivery: accepted412e91d78c76b03fc30095e0a87231379d65f705, cumulative bundle SHA256 bf272afef355d48b55a5ca541ae48556e81faefe1df7aa410f457c090ad8d4c4;948 all-ref reachable commits match restored mirror, full history/no prerequisites, restored fsck0, saved/exposed before D058.
+
+D058 checkpoint delivery: accepted1d8e3a0cdb8d5de2116a741572b2a94c5711fc87, cumulative bundle SHA2563e2868e3036c4866976e01263133ab0e5ff5a7fd6e81cbeef321817b61bedca9;950 all-ref reachable commits match restored mirror, complete history/no prerequisites, restored fsck0, saved/exposed before D059.
