@@ -1,0 +1,103 @@
+{
+  "id": "D100",
+  "definition": "D100-NATIVE-DELTA-SKEW-1",
+  "kernel": "K02_ALGEBRA",
+  "parameter_profile": "P_BASIC",
+  "subject_by_expiry": {
+    "E1": "NVDA_SKEW_2026-10-23",
+    "E2": "NVDA_SKEW_2026-10-30"
+  },
+  "members_by_expiry": {
+    "E1": [
+      "controlled-skew-2026-10-23-C10",
+      "controlled-skew-2026-10-23-P10"
+    ],
+    "E2": [
+      "controlled-skew-2026-10-30-C10",
+      "controlled-skew-2026-10-30-P10"
+    ]
+  },
+  "strikes": {
+    "C10": "130",
+    "P10": "90"
+  },
+  "signed_delta": {
+    "C10": ".10",
+    "P10": "-.10"
+  },
+  "permitted_frames": [
+    "2026-10-20T12:35:00Z",
+    "2026-10-20T12:40:00Z"
+  ],
+  "knowledge_cutoff": "2026-10-20T12:40:01Z",
+  "now": "2026-10-20T12:40:02Z",
+  "provider": "foundation-controlled-options",
+  "variant": "option_snapshot_v1",
+  "source_metadata": [
+    "contract.id",
+    "underlying.id",
+    "expiry.date",
+    "strike.key",
+    "option.right",
+    "currency.code",
+    "contract.multiplier",
+    "instrument.kind",
+    "model.convention",
+    "value.role"
+  ],
+  "mapping": {
+    "R111": {
+      "id": "mmt-r111-option",
+      "path": [
+        "model",
+        "iv"
+      ],
+      "role": "model_iv",
+      "unit": "annualised_decimal_volatility"
+    },
+    "R112": {
+      "id": "mmt-r112-option",
+      "path": [
+        "model",
+        "delta"
+      ],
+      "role": "model_delta",
+      "unit": "delta_fraction"
+    },
+    "R015": {
+      "id": "mmt-r015-option",
+      "path": [
+        "contract",
+        "right"
+      ],
+      "role": "option_right",
+      "unit": "option_right"
+    }
+  },
+  "numeric_units": [
+    "mmt-option-iv",
+    "mmt-option-delta"
+  ],
+  "categorical_unit_ref": "mmt-option-right/1, binding/lineage only; no numeric conversion",
+  "context": "controlled-option-session/1",
+  "selection": "mmt-d100-E1-selection/1 or mmt-d100-E2-selection/1",
+  "parameter": "mmt-d100-E1-controlled/1 or mmt-d100-E2-controlled/1",
+  "success": {
+    "E1_T_C10_iv": ".25",
+    "E1_T_P10_iv": ".40",
+    "R112_C10": ".10",
+    "R112_P10": "-.10",
+    "R015_C10": "C",
+    "R015_P10": "P",
+    "expected_volatility_points": [
+      15,
+      1
+    ]
+  },
+  "refusal": {
+    "P10_R112_native": "-.25",
+    "P10_required_delta": "-.10",
+    "other_five_sources": "lawful and separately projected",
+    "reason": "selected P10 signed native delta is 25D, not 10D"
+  }
+}
