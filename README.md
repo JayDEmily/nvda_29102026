@@ -11,3 +11,5 @@ Current task is planning and independent documentary review only. No product/sta
 Independent documentary round1 cleared semantic candidate6e2d6a7b5fb3979239f886e6f7301fb5de4317f8 as READY FOR OWNER REVIEW AS A CONDITIONAL PLAN, with no material repair round. Complete record: handoff/planning/d057_d076/review_round1.md. Five named holds remain; a future numeric execution would stop at D061 unless resolved or explicitly dispositioned. No product/static checks ran.
 
 Current owner instruction accepts this plan and authorises execution; root §12 records the superseding commission. Start D057, preserve all five holds and stop numerically at D061 unless explicitly resolved/resequenced. Historical planning-only prose above is retained as prior task context.
+
+Current sequencing amendment: D061 is an owner-deferred P02/M03 to-do (root §13). D062 remains the next separate entry hold: lawful public D001 plus the R284 temporal contract. D057–D060 acceptance/evidence remains unchanged.

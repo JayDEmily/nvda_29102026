@@ -1,7 +1,7 @@
 # NVDA V2 — D057–D076 bounded ExecPlan
 
 Date: 24 October 2026 (Melbourne).
-Status: OWNER ACCEPTED AND EXECUTION AUTHORISED on 24 October 2026 by explicit current instruction: “No, I accept it. I authorize. Proceed.” The five §5 holds remain; execute resolved units numerically, stopping at D061 unless separately resolved or dispositioned. The planning-only restrictions below describe the prior planning commission, not the current execution commission.
+Status: OWNER ACCEPTED AND EXECUTION AUTHORISED on 24 October 2026 by explicit current instruction: “No, I accept it. I authorize. Proceed.” The five §5 holds remain; execute resolved units numerically. D061 is now explicitly owner-deferred under §13; D062 is the next unresolved entry condition. The planning-only restrictions below describe the prior planning commission, not the current execution commission.
 Baseline: `d0a905292c7439aec5bd9f099700f0ac58bdda25`.
 Branch: `work/v2-d057-d076-plan-20261024`.
 
@@ -42,7 +42,7 @@ Dependency order in this table is logical, not an assertion about an existing im
 | D058 | VIX9D/VIX term pair; R239,R236 | M02; §4.1 |
 | D059 | VIX/VIX3M term pair; R236,R240 | M02; §4.1 |
 | D060 | VVIX/VIX ratio; R237,R236 | M02; §4.1 |
-| D061 | US volatility regime score; D052,D053,D057,D058,D059,D060 | Preserved P02 / existing M03; BLOCKED exact own score profile |
+| D061 | US volatility regime score; D052,D053,D057,D058,D059,D060 | Preserved P02 / existing M03; OWNER-DEFERRED TO-DO §13; exact own score profile still required |
 | D062 | Next scheduled event time; R284,D001 | M02 foundation jurisdiction; BLOCKED actual lawful D001 predecessor and event contract |
 | D063 | Standardised macro surprise; R286,R285 | M02; controlled proposal §4.2 |
 | D064 | Event importance score; R289 | Preserved P03; BLOCKED exact owner/source/P_SCORE |
@@ -61,7 +61,7 @@ Dependency order in this table is logical, not an assertion about an existing im
 
 P03 is a proposed responsibility label, not a currently allocated runtime ID. Do not equate it with runtime M03, which already owns P02. New-owner ingress supplies category M plus a responsibility name; the kernel resolves the next unused ID at admission. No numeric reservation in this plan. Normal ingress, registration, public reader/writer edges, owner-local durability and scoped architecture proof must precede P03 runtime use.
 
-Execution sequence, once commissioned: ascending numeric IDs, one accepted/saved unit before the next. At the first still-unresolved entry condition stop and report the exact gap; do not silently skip, defer, renumber or implement a prerequisite outside scope. In the present draft the first such stop would be D061. An owner-approved explicit deferral or bounded prerequisite amendment may later change that sequence; neither is assumed now. D065's lawful post-event branch does not by itself require D062, but numeric skipping to reach it still needs an explicit disposition.
+Execution sequence, once commissioned: ascending numeric IDs, one accepted/saved unit before the next. At the first still-unresolved entry condition stop and report the exact gap; do not silently skip, defer, renumber or implement a prerequisite outside scope. The original first stop was D061; the owner has now explicitly deferred it under §13. The next unresolved entry is D062. An owner-approved explicit deferral or bounded prerequisite amendment may later change that sequence; neither is assumed now. D065's lawful post-event branch does not by itself require D062, but numeric skipping to reach it still needs an explicit disposition.
 
 ## 4. Specified controlled proposals and exact two-case targets
 
@@ -134,7 +134,7 @@ Success: exact rational Fraction(M)-Fraction(L), where M/L are the persisted50di
 
 ## 5. Five precise authority-resolution units
 
-These are named stops, not owner-approved deferrals and not implicit permission to add tests/IDs. Preserve their original identities, jurisdictions and dependencies.
+These were originally named stops. D061 is now an explicit owner-approved deferral under §13; D062/D064/D065/D070 remain unresolved stops, with no implicit permission to add tests/IDs. Preserve their original identities, jurisdictions and dependencies.
 
 ### 5.1 D061 / P02 existing M03
 
@@ -236,7 +236,7 @@ Owner accepted the exact supplied plan at 2f2cd9841504702c869412aadc83afb1f96b8d
 - D058: ACCEPTED controlled profile at c9d0c61; one strict aggregate exit0, exactly2 passed (0.19s), independent review/output in d058_execution. Cumulative checkpoint required before D059.
 - D059: ACCEPTED controlled profile at f27e44e; one strict aggregate exit0, exactly2 passed (0.18s), independent review/output in d059_execution. Generation0002 repairs pre-runtime no-fallback witness discrimination; original generation/test preserved. Cumulative checkpoint required before D060.
 - D060: ACCEPTED controlled scalar profile at f99471d; one strict aggregate exit0, exactly2 passed (0.17s), independent review/output in d060_execution. Cumulative checkpoint to be verified/saved/exposed at close-out.
-- D061: BLOCKED — execution has reached the mandatory §5.1 stop. No own score profile was supplied/accepted or choices delegated by the general execution authorisation. Need exact D052/D053 component paths, D057–59 pair extraction, D060 scalar, transform/scales/clip-or-absence/orientations, nonnegative weights/intercept, raw-or-bounded output/numerical carrier, compatible snapshot/shared-raw law and own immutable profile/factory/proof contract before execution. No automatic deferral or D062+ work.
+- D061: OWNER-DEFERRED TO-DO under §13; retain P02 / existing M03 ownership and the complete §5.1 requirements. No own score profile was supplied/accepted or choices delegated by the general execution authorisation. Need exact D052/D053 component paths, D057–59 pair extraction, D060 scalar, transform/scales/clip-or-absence/orientations, nonnegative weights/intercept, raw-or-bounded output/numerical carrier, compatible snapshot/shared-raw law and own immutable profile/factory/proof contract before execution. D061 is explicitly deferred; this does not automatically defer any other unresolved unit.
 
 Execution uses the isolated supplied-bundle clone on its work branch. No baseline suite, routine runtime RED or whole-branch review is authorised; the accepted plan overrides generic skill defaults. One independent final reviewer/sole runtime executor per signal, two declared cases. Library skill used to save cumulative deliverables.
 
@@ -255,3 +255,16 @@ Runtime stays CPython3.12.14/SQLite3.53.1/pytest9.0.3/mypy1.20.1/Ruff0.15.11/PyY
 Read full current guardrails/root/test instructions and initial plan; applicable K02/common calculation/lineage/projection law, exact D057–60 rows/F13 and relevant foundation/architecture authority/source were inspected. Applicable unchanged evidence was reused by identity; this is not a new audit of all126/209 rows, native source collection, predictive validation or integration/E2E. Full per-signal independent review scope/hashes/limits are in each final_review.md. Frozen guardrails and prior accepted product/source/proof bytes remain preserved. Only new registrations, required TermPairV1 public result and routing, finite claim declarations, owning proof/authority/evidence and current commission/ledger changed.
 
 Next action requires D061’s explicit own-profile resolution or an explicit owner sequencing disposition. The other four holds D062/D064/D065/D070 remain as §5 specifies. No unresolved unit was skipped or implemented.
+
+## 13. Owner sequencing amendment — D061 to-do; D062 next entry hold
+
+The owner instructed: “why don't you mark that as a to-do and continue with the rest of the signals.” The referent is D061. This explicitly authorises parking D061 and continuing ascending numeric entry assessment; it does not supply D061 parameters, allocate a new owner or automatically defer another named hold.
+
+- [ ] **D061 — OWNER-DEFERRED TO-DO:** composite US volatility regime score; responsibility P02, existing M03 configured_market_conditions. Preserve all §5.1 input/profile/meaning/proof requirements. It remains unimplemented/unaccepted. Resume only after its exact own profile is accepted or the owner explicitly delegates those choices.
+- **D062 — BLOCKED at next entry:** §5.2 independently requires a lawful public D001 producer and settled R284 temporal projection/lineage contract. The D061 sequencing exception does not supply or waive either. No D062 proof/production/runtime was authored or executed. No D063+ unit was silently skipped to.
+
+Ownership explanation: foundation §1 assigns strategy-independent neutral measurements to M02; AnnexC assigns D061 to P02, and current modules.yaml identifies that responsibility as existing M03. The criterion is semantic responsibility/policy meaning, not number of inputs or arithmetic complexity. D061 is still a deterministic calculation; its exact configured regime-score interpretation/profile belongs to P02/M03. No ownership change was discovered or made in this amendment.
+
+Read-only D062 entry check at prior checkpoint14dbf87bb47e61ab8e438fb1dfc90fb355f2a34e inspected root §5.2, F14 source contract, M02 public API/raw lineage, numeric codec and current M02 source/proof/config registrations. Literal D001/D062 search in those M02 surfaces returned no matches; RawInputLineageV1.canonical_value remains Decimal, not a temporal native carrier. This corroborates the specified entry gap; it is not a claim that no historical/legacy implementation exists elsewhere. Legacy M01 import/migration and a new prerequisite D001 unit remain outside this commission.
+
+D060 cumulative checkpoint was verified/restored/saved/exposed at14dbf87bb47e61ab8e438fb1dfc90fb355f2a34e, SHA25635f2584168b73a888d10735bfd5e950c8fc71e086abc877074e30d4c3b3ea8e9,955 all-ref reachable commits, restored fsck0. This documentary amendment changes no source/tests/contracts/immutable proof or accepted runtime evidence. No product/static/environment checks rerun. Earlier stop statements in §12 describe the prior close-out and are superseded solely for D061 sequencing by this section.
