@@ -19,8 +19,11 @@ from ._selection import eligible
 from ._vwap_returns import chosen, history
 from ._window import NAMESPACE, _decode, _identity, _Reads
 
-BRIEFS = {"D066": "39e06e96fd6bc3c8415296995896710ec91964c7c7c5d9e8e49e77e59c866308"}
-PROFILES = {"D066": ("R270", "NIKKEI225")}
+BRIEFS = {
+    "D067": "41261784bfdcc5c4e94fa8f49d5b14b6dd0e01b60b1e122dd6c1240c78056a2f",
+    "D066": "39e06e96fd6bc3c8415296995896710ec91964c7c7c5d9e8e49e77e59c866308",
+}
+PROFILES = {"D067": ("R271", "NASDAQNQHK"), "D066": ("R270", "NIKKEI225")}
 T = datetime(2026, 10, 20, 13, tzinfo=UTC)
 REFERENCE = T - timedelta(days=1)
 PROVIDER, VARIANT = "foundation-controlled-international", "daily_close_v1"
