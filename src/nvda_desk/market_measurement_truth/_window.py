@@ -455,6 +455,12 @@ def build_owner(
 
     if (
         type(admission) is f.OwnerAdmissionV1
+        and admission.implementation_brief_sha256 == _option_scalars.BRIEF_D092
+    ):
+        return _option_scalars.build_owner_d092(admission, raw, predecessor, storage, now)
+
+    if (
+        type(admission) is f.OwnerAdmissionV1
         and admission.implementation_brief_sha256 == _option_scalars.BRIEF_D090
     ):
         return _option_scalars.build_owner_d090(admission, raw, predecessor, storage, now)
@@ -644,6 +650,15 @@ def build_reader(
         _vwap_comparison,
         _vwap_returns,
     )
+
+    if (
+        type(admission) is f.OwnerAdmissionV1
+        and admission.object_id == "M02"
+        and admission.implementation_brief_sha256 == _option_scalars.BRIEF_D092
+    ):
+        if type(storage) is not f.SQLiteReadStorageV1:
+            raise TypeError("exact read-only storage required")
+        return _Reads(RecordState(storage, _decode, _option_scalars.validate_d092))
 
     if (
         type(admission) is f.OwnerAdmissionV1
