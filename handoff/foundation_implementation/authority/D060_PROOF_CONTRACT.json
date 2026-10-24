@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_d060",
+  "semantic_brief_path": "handoff/foundation_implementation/authority/D060_IMPLEMENTATION_BRIEF.md",
+  "target": {
+    "category": "M",
+    "responsibility_name": "neutral_market_measurement_truth",
+    "package": "nvda_desk.market_measurement_truth",
+    "public_seam": "nvda_desk.market_measurement_truth.api",
+    "intent": "modify",
+    "existing_object_id": "M02"
+  },
+  "proof_axis": "product",
+  "product_tier_treatment": "NOT_CLASSIFIED",
+  "architecture_proof_axis": "architecture_kernel",
+  "required_proof_ids": [
+    "D060-CALCULATION"
+  ],
+  "families": [
+    {
+      "id": "mmt_d060",
+      "path": "tests/product/market_measurement_d060/test_signal.py",
+      "proof_obligation_ids": [
+        "D060-CALCULATION"
+      ],
+      "required_test_names": [
+        "test_d060_signal"
+      ],
+      "boundary": "D060: accepted root EXEC_PLAN.md \u00a74.1 at 2f2cd9841504702c869412aadc83afb1f96b8d09, owner accepted and execution authorised in current thread. Exact controlled profile {\"raw\":[\"R237\",\"R236\"],\"series\":[\"VVIX\",\"VIX\"],\"values\":[\"100\",\"25\"],\"expected\":[[4,1]],\"fault\":\"zero\"}. Ordered raw bindings follow the listed tuple; no derived predecessors. K02_ALGEBRA, P_BASIC; first-minus-second and first/second as TermPairV1(point_difference,ratio) with mandatory reduced ExactRatioV1 members for D057\u201359; D060 is ExactRatioV1 ratio only. Units index_points / ratio and shape named_exact_term_pair (D057\u201359); ratio / exact_ratio (D060). Definition D060-TERM-PAIR-1 (D057\u201359) or D060-VOL-RATIO-1 (D060). Parameters mmt-d060-controlled/1; selection mmt-d060-selection/1; subject NVDA. T=20Oct2026 13:00Z, cutoff T+1s, now T+2s; current age<=60s and selected event skew=0. Context controlled-volatility-terms/1 spans T-60s to T+1s, history complete from T-60s. Exact request fixed to that T/cutoff/context; no predecessor or other binding. Provider foundation-controlled-macro/macro_snapshot_v1, native metric.value finite Decimal; metric.series as listed, metric.measurement_date matches event UTC date, metric.method=controlled_snapshot/1, metric.quote_orientation=not_applicable, no revision vintage. Mapping mmt-macro-rNNN/1 and mmt-macro-rNNN-units/1 index_points->index_points scale1/offset0. Complete bounded histories, stable latest eligible event/receipt/sequence selection before numeric denominator validation; selected invalid zero never falls back. Zero denominator refuses; no positivity policy invented. Complete typed metadata, actual selected raw lineage, public ordinary SQLite read-only reopen/history in success; named refusal confirms its actual public input facts and no persisted occurrence/history. Exactly two cases, no executed RED/extra probes/native certification. Immutable source/profile and exact arithmetic are reviewed within the pair.",
+      "proof_levels": [
+        "CONTRACT",
+        "INTEGRATION",
+        "STATE"
+      ],
+      "authoritative_inputs": [
+        "D060: accepted root EXEC_PLAN.md \u00a74.1 at 2f2cd9841504702c869412aadc83afb1f96b8d09, owner accepted and execution authorised in current thread. Exact controlled profile {\"raw\":[\"R237\",\"R236\"],\"series\":[\"VVIX\",\"VIX\"],\"values\":[\"100\",\"25\"],\"expected\":[[4,1]],\"fault\":\"zero\"}. Ordered raw bindings follow the listed tuple; no derived predecessors. K02_ALGEBRA, P_BASIC; first-minus-second and first/second as TermPairV1(point_difference,ratio) with mandatory reduced ExactRatioV1 members for D057\u201359; D060 is ExactRatioV1 ratio only. Units index_points / ratio and shape named_exact_term_pair (D057\u201359); ratio / exact_ratio (D060). Definition D060-TERM-PAIR-1 (D057\u201359) or D060-VOL-RATIO-1 (D060). Parameters mmt-d060-controlled/1; selection mmt-d060-selection/1; subject NVDA. T=20Oct2026 13:00Z, cutoff T+1s, now T+2s; current age<=60s and selected event skew=0. Context controlled-volatility-terms/1 spans T-60s to T+1s, history complete from T-60s. Exact request fixed to that T/cutoff/context; no predecessor or other binding. Provider foundation-controlled-macro/macro_snapshot_v1, native metric.value finite Decimal; metric.series as listed, metric.measurement_date matches event UTC date, metric.method=controlled_snapshot/1, metric.quote_orientation=not_applicable, no revision vintage. Mapping mmt-macro-rNNN/1 and mmt-macro-rNNN-units/1 index_points->index_points scale1/offset0. Complete bounded histories, stable latest eligible event/receipt/sequence selection before numeric denominator validation; selected invalid zero never falls back. Zero denominator refuses; no positivity policy invented. Complete typed metadata, actual selected raw lineage, public ordinary SQLite read-only reopen/history in success; named refusal confirms its actual public input facts and no persisted occurrence/history. Exactly two cases, no executed RED/extra probes/native certification. Immutable source/profile and exact arithmetic are reviewed within the pair.",
+        "Owner accepted root \u00a7\u00a73\u20139; current immutable brief and contract."
+      ],
+      "dependency_substitutions": [
+        "Controlled synthetic source/session/completeness only, not native certification.",
+        "Reuse accepted M00/common M02 mechanisms, existing window interface/record store, prior immutable evidence. Exact cases also qualify authorised shared prerequisite; no added suites."
+      ],
+      "case_coverage": {
+        "lawful_positive": {
+          "cases": [
+            "['100', '25'] -> [[4, 1]]; full actual typed source metadata and durable public readback."
+          ]
+        },
+        "prohibited_false_positive": {
+          "cases": [
+            "zero; real source preconditions, no occurrence/history."
+          ]
+        },
+        "missing_mandatory_authority": {
+          "cases": [
+            "Exact bound controlled profile, admission and immutable generation required before runtime."
+          ]
+        },
+        "lawful_optional_absence": {
+          "cases": [
+            "No live provider/calendar integration or other signal required; unsupported prerequisites refuse by contract."
+          ]
+        }
+      },
+      "expected_failure_signals": [
+        "Incorrect arithmetic or selected raw lineage fails exact success assertions",
+        "Named missing/incompatible input must refuse without occurrence"
+      ],
+      "limitations": [
+        "Exactly two cases; no generic fault/boundary/numeric variant probes, broad suites or earlier claims."
+      ],
+      "adjacent_nonclaims": [
+        "No acceptance beyond this ID; no native-source certification or M00 mutation."
+      ],
+      "environment": "CPython3.12.14 SQLite3.53.1 and existing pinned offline tools.",
+      "material_versions": [
+        "Exact brief/binding/contract/generation and candidate/tree/runtime; old generations preserved."
+      ],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/market_measurement_d060/test_signal.py"
+    }
+  ],
+  "required_support_files": [],
+  "optional_support_files": [],
+  "execution_policy": {
+    "skipped_tests": "FAIL",
+    "xfailed_tests": "FAIL",
+    "xpassed_tests": "FAIL",
+    "collection_failed": "FAIL",
+    "no_tests_collected": "FAIL",
+    "unexpected_governed_mutation": "FAIL"
+  }
+}
