@@ -21,7 +21,7 @@ from ._selection import eligible
 from ._vwap_returns import history
 from ._window import NAMESPACE, _decode, _identity, _Reads
 
-BRIEF = "eb1feb89223ef483f51d358cf4a6d740ec09ae5ba3cb1077e6c030fba6d406c5"
+BRIEF = "93e7054fd91487f6a8fe2fa1b2118ed82e35b0094c4950841fbb174b1c41b6f5"
 MAPPING = r.RawSignalProjectionMappingV1(
     "mmt-r111-option", 1, r.RawSignalCatalogueId("R111"),
     PROVIDER, VARIANT, ("model", "iv"), "annualised_decimal_volatility", META,

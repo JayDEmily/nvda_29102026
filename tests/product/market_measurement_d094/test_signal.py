@@ -12,7 +12,7 @@ T = datetime(2026, 10, 20, 12, 40, tzinfo=UTC)
 CUTOFF, NOW = T + timedelta(seconds=1), T + timedelta(seconds=2)
 C1, C2 = "controlled-nvda-c110-20261023", "controlled-nvda-p110-20261023"
 PROVIDER, VARIANT = "foundation-controlled-options", "option_snapshot_v1"
-BRIEF = "eb1feb89223ef483f51d358cf4a6d740ec09ae5ba3cb1077e6c030fba6d406c5"
+BRIEF = "93e7054fd91487f6a8fe2fa1b2118ed82e35b0094c4950841fbb174b1c41b6f5"
 AUTHORITY = (
     f.AuthorityArtifactRefV1(
         "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md",

@@ -1,7 +1,7 @@
 {
   "id": "D094",
   "definition": "D094-OPTION-IV-CHANGE-5M-1",
-  "kernel": "K02_ALGEBRA",
+  "kernel": "K03_CHANGE_RETURN",
   "parameter_profile": "P_WINDOW",
   "as_of": "2026-10-20T12:40:00Z",
   "cutoff": "2026-10-20T12:40:01Z",
