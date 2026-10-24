@@ -1,0 +1,13 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/17246e12ecdd/restored-d088/work
+configfile: pyproject.toml
+collected 2 items
+
+tests/product/market_measurement_d089/test_signal.py ..                  [100%]
+
+============================== 2 passed in 0.22s ===============================
+product-proof aggregate: neutral_market_measurement_truth_d089 state=READY_FOR_PROOF
+authority=88e83eb89daf658d0e8f00115fa1262e331ba89d8e75dc98062a6f9fb4885d71 generation=9fa106d7398c4d9dab6059a936921abe1f8cfb0fc1ccbf3a7df32311e7b1648f
+candidate=231d01abb4edcaf6899ab89c21b7cfb2ca37647e
+observed aggregate outcome: exit=0

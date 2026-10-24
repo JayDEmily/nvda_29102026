@@ -1,0 +1,23 @@
+E501 Line too long (102 > 100)
+  --> tests/product/market_measurement_d089/test_signal.py:91:101
+   |
+89 | def native(contract, role, price):
+90 |     return {
+91 |         "contract": {"id": contract, "multiplier": "100", **({"strike": price} if role == 0 else {})},
+   |                                                                                                     ^^
+92 |         "underlying": {"id": "NVDA"}, "expiry": {"date": "2026-10-23"},
+93 |         "strike": {"key": "110"},
+   |
+
+E501 Line too long (103 > 100)
+  --> tests/product/market_measurement_d089/test_signal.py:96:101
+   |
+94 |         "option": {"right": "C" if contract == C1 else "P"},
+95 |         "currency": {"code": "USD"}, "instrument": {"kind": "option"},
+96 |         "model": {"convention": "controlled-model/1", **({"underlying_price": price} if role else {})},
+   |                                                                                                     ^^^
+97 |         "value": {"role": "option_strike" if role == 0 else "model_underlying_price"},
+98 |     }
+   |
+
+Found 2 errors.
