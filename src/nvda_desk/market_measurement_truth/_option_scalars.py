@@ -764,3 +764,144 @@ def build_owner_d092(
     if type(storage) not in (f.MemoryStorageV1, f.SQLiteStorageV1) or not callable(now):
         raise TypeError("exact storage and clock required")
     return _IvMidpointOwner(RecordState(storage, _decode, validate_d092), raw, now)
+
+
+# D093 is separately admitted for the controlled C1 quote-side IV width pair.
+BRIEF_D093 = "bc77a865f20f80f772371f3a88c6c801d86349e9afef651717a5798acbfde4ef"
+UNIT_D093 = f.UnitConventionVersionV1(
+    "mmt-option-iv", 1, "annualised_decimal_volatility",
+    "annualised_decimal_volatility", Decimal("1"), Decimal("0"),
+)
+MAPS_D093 = tuple(
+    r.RawSignalProjectionMappingV1(
+        "mmt-" + raw.lower() + "-option", 1, r.RawSignalCatalogueId(raw),
+        PROVIDER, VARIANT, path, "annualised_decimal_volatility", META,
+    ) for raw, path in (("R084", ("bid_model", "iv")),
+                        ("R093", ("ask_model", "iv")))
+)
+DEFINITION_D093 = f.CalculationDefinitionV1(
+    "D093", "D093-OPTION-SCALAR-1", "K02_ALGEBRA", "100*(ask_iv-bid_iv)",
+    ("R084", "R093"), (), "P_BASIC", "volatility_points", "exact_ratio",
+    tuple(f.AuthorityArtifactRefV1(*x) for x in _AUTHORITY),
+)
+PARAMETER_D093 = f.CalculationParameterSetV1("mmt-d093-controlled", 1, "P_BASIC", C1, (C1,))
+POLICY_D093 = replace(POLICY, context_id="mmt-d093-selection")
+
+
+def request_check_d093(request: f.WindowCalculationRequestV1, now: datetime) -> None:
+    expected = f.CalculationRequestV1(
+        "D093", C1, T, T + timedelta(seconds=1),
+        DEFINITION_D093.calculation_definition_version,
+        f.VersionRefV1(PARAMETER_D093.context_id, 1),
+        f.VersionRefV1(POLICY_D093.context_id, 1), (CONTEXT.ref,),
+        tuple(f.RawInputBindingV1(
+            mapping.raw_signal_catalogue_id.value,
+            f.VersionRefV1(mapping.mapping_id, 1), f.VersionRefV1(UNIT_D093.context_id, 1), C1,
+        ) for mapping in MAPS_D093),
+    )
+    if (canonical(request.calculation) != canonical(expected)
+        or request.context != CONTEXT or request.predecessor_occurrence_ids
+        or now < expected.knowledge_cutoff_utc):
+        raise ValueError("incompatible controlled IV width request")
+
+
+def line_d093(item: r.ProjectedRawValueV1, c: f.CalculationRequestV1,
+              role: int) -> f.RawInputLineageV1:
+    mapping = MAPS_D093[role]
+    event = eligible(replace(item, selection_identity=None), mapping, POLICY_D093, c)
+    expected_identity = r.RawSelectionIdentityV1((
+        ("contract.id", C1), ("underlying.id", "NVDA"),
+        ("expiry.date", "2026-10-23"), ("strike.key", "110"),
+        ("option.right", "C"), ("currency.code", "USD"),
+        ("contract.multiplier", "100"), ("instrument.kind", "option"),
+        ("model.convention", "controlled-model/1"),
+        ("value.role", "bid_iv" if role == 0 else "ask_iv"),
+    ))
+    if (event is None or item.received_ts_utc != event
+        or item.selection_identity != expected_identity
+        or type(item.native_value) is not Decimal
+        or item.native_value < 0):
+        raise ValueError("matched exact-contract bid/ask IV role required")
+    return f.RawInputLineageV1(
+        mapping.raw_signal_catalogue_id.value, item.observation_occurrence_id.value,
+        f.VersionRefV1(mapping.mapping_id, 1), f.VersionRefV1(UNIT_D093.context_id, 1),
+        item, cast(Decimal, item.native_value), event,
+    )
+
+
+def produce_d093(request: f.WindowCalculationRequestV1,
+                 lines: tuple[f.RawInputLineageV1, ...], now: datetime
+                 ) -> f.WindowMeasurementOccurrenceV1:
+    request_check_d093(request, now)
+    if len(lines) != 2:
+        raise ValueError("bid and ask IV both required")
+    for role, actual in enumerate(lines):
+        if canonical(actual) != canonical(line_d093(actual.projection, request.calculation, role)):
+            raise ValueError("option IV lineage mismatch")
+    if lines[0].event_time_utc != T or lines[1].event_time_utc != T:
+        raise ValueError("zero-skew contemporaneous bid/ask IV join required")
+    bid_iv, ask_iv = (item.canonical_value for item in lines)
+    ratio = Fraction(100) * (Fraction(ask_iv) - Fraction(bid_iv))
+    value = f.WindowMeasurementOccurrenceV1(
+        "M02", NAMESPACE, BRIEF_D093, "D093", "pending", request,
+        DEFINITION_D093, PARAMETER_D093, POLICY_D093, (UNIT_D093,), MAPS_D093,
+        lines, (), 0, f.ExactRatioV1(ratio.numerator, ratio.denominator),
+        "volatility_points", "exact_ratio", T, request.calculation.knowledge_cutoff_utc, now,
+    )
+    return replace(value, derived_occurrence_id=_identity(value))
+
+
+def validate_d093(value: f.WindowMeasurementOccurrenceV1) -> None:
+    if type(value) is not f.WindowMeasurementOccurrenceV1:
+        raise TypeError("exact IV width occurrence required")
+    f._Validated.__post_init__(value)
+    if canonical(value) != canonical(produce_d093(
+        value.request, value.raw_input_lineage, value.calculated_at_utc
+    )):
+        raise ValueError("IV width source or identity mismatch")
+
+
+class _IvWidthOwner:
+    def __init__(self, state: RecordState, raw: f.RawProjectionReaderV1,
+                 now: Callable[[], datetime]) -> None:
+        self.state, self.raw, self.now = state, raw, now
+        self.reads = _Reads(state)
+
+    def materialise(self, request: f.WindowCalculationRequestV1
+                    ) -> f.WindowMeasurementOccurrenceV1 | None:
+        if type(request) is not f.WindowCalculationRequestV1:
+            raise TypeError("exact IV width request required")
+        now = self.now()
+        f._utc(now)
+        try:
+            request_check_d093(request, now)
+            selected: list[f.RawInputLineageV1] = []
+            for role, mapping in enumerate(MAPS_D093):
+                candidates = tuple(history(self.raw, request.calculation, mapping, POLICY_D093))
+                if not candidates:
+                    raise ValueError("missing option bid/ask IV")
+                def rank(item: r.ProjectedRawValueV1) -> tuple[datetime, datetime, int]:
+                    if type(item.source_timestamp_raw) is not str:
+                        raise ValueError("exact option source instant required")
+                    event = datetime.fromisoformat(item.source_timestamp_raw.replace("Z", "+00:00"))
+                    return event, item.received_ts_utc, item.ingestion_sequence
+                chosen = max(candidates, key=rank)
+                if sum(rank(item) == rank(chosen) for item in candidates) != 1:
+                    raise ValueError("ambiguous bid/ask IV rank")
+                selected.append(line_d093(chosen, request.calculation, role))
+            value = produce_d093(request, tuple(selected), now)
+        except (TypeError, ValueError, ArithmeticError):
+            return None
+        return cast(f.WindowMeasurementOccurrenceV1, self.state.append(value))
+
+
+def build_owner_d093(
+    admission: f.OwnerAdmissionV1, raw: f.RawProjectionReaderV1,
+    predecessor: f.MeasurementTradeDirectionReadsV1 | f.MeasurementWindowReadsV1 | None,
+    storage: f.MemoryStorageV1 | f.SQLiteStorageV1, now: Callable[[], datetime],
+) -> f.MeasurementWindowOwnerV1:
+    if admission != f.OwnerAdmissionV1("M02", BRIEF_D093):
+        raise ValueError("exact D093 admission required")
+    if type(storage) not in (f.MemoryStorageV1, f.SQLiteStorageV1) or not callable(now):
+        raise TypeError("exact storage and clock required")
+    return _IvWidthOwner(RecordState(storage, _decode, validate_d093), raw, now)
