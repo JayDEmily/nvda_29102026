@@ -780,6 +780,12 @@ class IndexChangeV1(_Validated):
 
 
 @dataclass(frozen=True, slots=True)
+class TermPairV1(_Validated):
+    point_difference: ExactRatioV1
+    ratio: ExactRatioV1
+
+
+@dataclass(frozen=True, slots=True)
 class WindowContextV1(_Validated):
     ref: VersionRefV1
     session_start_utc: datetime
@@ -851,6 +857,7 @@ class WindowMeasurementOccurrenceV1(_Validated):
         Decimal
         | ExactRatioV1
         | IndexChangeV1
+        | TermPairV1
         | MeasurementComparisonV1
         | ReturnAccelerationV1
         | VwapDeviationV1
@@ -917,6 +924,7 @@ __all__ += [
     "MeasurementWindowReadsV1",
     "ReturnAccelerationV1",
     "SessionFrameV1",
+    "TermPairV1",
     "VwapDeviationV1",
     "VwapRateV1",
     "WindowCalculationRequestV1",

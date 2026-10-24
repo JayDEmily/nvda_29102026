@@ -1,0 +1,3 @@
+D057 exact brief/binding ingress validated; explicit owner acceptance recorded separately.
+Scoped source import/dependency analysis: ['nvda_desk/market_measurement_truth/api.py', 'nvda_desk/market_measurement_truth/_window.py', 'nvda_desk/market_measurement_truth/_volatility_terms.py']
+Zero violations on changed source; no whole-repository regression/graph requalification.
