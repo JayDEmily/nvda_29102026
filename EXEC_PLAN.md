@@ -1,7 +1,7 @@
 # NVDA V2 — D057–D076 bounded ExecPlan
 
 Date: 24 October 2026 (Melbourne).
-Status: PROPOSED — planning and independent documentary review only. No implementation, product/static test execution, admission, source collection or signal acceptance commissioned by this turn.
+Status: PROPOSED — independently reviewed in one round; READY FOR OWNER REVIEW AS A CONDITIONAL PLAN. Planning and documentary review only. No implementation, product/static test execution, admission, source collection or signal acceptance commissioned by this turn.
 Baseline: `d0a905292c7439aec5bd9f099700f0ac58bdda25`.
 Branch: `work/v2-d057-d076-plan-20261024`.
 
@@ -214,9 +214,9 @@ Allowed mutations now: EXEC_PLAN.md, AGENTS.md, tests/AGENTS.override.md, README
 
 Reconcile current root/test-local instructions to this proposed scope; retain exactly two cases, one independent executor, narrow recovery, no routine RED or historical regressions and all ownership/provenance law. Earlier D026–D036 six-case/TDD and completed-tranche instructions remain historical; do not silently reinstate them. Generic skill defaults for separate plan paths, executed RED, added tests, blanket suite/branch review or recurring new contexts do not override the owner methodology. Root EXEC_PLAN.md is the single plan once accepted.
 
-- [ ] Draft/self-review all twenty IDs against exact catalogue/authority and current public source; preserve five explicit entry holds.
-- [ ] One independent planning reviewer assesses scope, dependencies/owners, source/numeric proposals, two-case adequacy/limits, sequencing, no-repeat/recovery/environment and governing-law conflicts. Documentary inspection only; no product/static tests or implementation.
-- [ ] Repair material planning defects; retain original findings and concise exact resolutions. Aim for at most two review rounds, but do not conceal unresolved material defects to hit that target. Second round checks the fixes/relevant consequences, not an automatic fresh whole-repository investigation.
+- [x] Draft/self-review all twenty IDs against exact catalogue/authority and current public source; preserve five explicit entry holds.
+- [x] One independent planning reviewer assesses scope, dependencies/owners, source/numeric proposals, two-case adequacy/limits, sequencing, no-repeat/recovery/environment and governing-law conflicts. Documentary inspection only; no product/static tests or implementation.
+- [x] Independent round1 identified no material planning defects requiring repair; preserve its complete record. If later material defects arise, retain findings and concise exact resolutions. Aim for at most two review rounds, but do not conceal unresolved material defects to hit that target. Second round checks the fixes/relevant consequences, not an automatic fresh whole-repository investigation.
 - [ ] Commit planning/governance changes on this branch; provide exact commit and a verified downloadable full-history checkpoint containing the reviewed plan and record.
 - [ ] Owner review/acceptance and separate execution authorisation; do not implement under the present instruction.
 
@@ -224,4 +224,6 @@ Reconcile current root/test-local instructions to this proposed scope; retain ex
 
 Baseline accepted checkpoint d0a9052 remains preserved; no claim is made that main contains it. New planning branch was created from that clean exact HEAD. Fifteen controlled proposals are specified; five entry conditions remain explicit. No new product case exists or ran, no static/product/environment check ran, no new proof/owner was admitted. Read-only Git/source inspection and documentary preparation are not product qualification.
 
-Independent review: PENDING. Owner acceptance: PENDING. Execution commission for D057–D076: NOT GIVEN by this planning-only instruction. No conflict with frozen GUARDRAILS.md is knowingly overridden; any reviewer-identified material conflict must be recorded and resolved before handoff.
+Independent review: READY FOR OWNER REVIEW AS A CONDITIONAL PLAN after one round, reviewed semantic candidate6e2d6a7b5fb3979239f886e6f7301fb5de4317f8. Full independent record: handoff/planning/d057_d076/review_round1.md. No material repair/re-review requested; only this disposition/checklist is updated after review, without changing the reviewed source/numeric/case/owner/efficiency proposals. Owner acceptance: PENDING. Execution commission for D057–D076: NOT GIVEN by this planning-only instruction. No conflict with frozen GUARDRAILS.md is knowingly overridden; any reviewer-identified material conflict must be recorded and resolved before handoff.
+
+Close-out: read-only independent standard-library Decimal/Fraction documentary arithmetic also confirmed §4's L/M/U50digit literals and the D076 subtraction equation without importing/executing product code. This is numerical proposal preparation, not product proof, a static checker or environment qualification. Final planning commit and verified full-history bundle accompany the deliverable; implementation and all five authority-resolution decisions remain uncommissioned.
