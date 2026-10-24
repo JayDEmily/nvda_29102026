@@ -20,11 +20,13 @@ from ._vwap_returns import chosen, history
 from ._window import NAMESPACE, _decode, _identity, _Reads
 
 BRIEFS = {
+    "D069": "3c8796ec7b767ed1471b01ecd170c69cc4974f801aeff1c0a7343726b9e008fc",
     "D068": "e53dd3327bf582276edd55b26f1bb3464ab9f437e995b5d121042d07f9cdf7c8",
     "D067": "41261784bfdcc5c4e94fa8f49d5b14b6dd0e01b60b1e122dd6c1240c78056a2f",
     "D066": "39e06e96fd6bc3c8415296995896710ec91964c7c7c5d9e8e49e77e59c866308",
 }
 PROFILES = {
+    "D069": ("R273", "NASDAQNQCN10"),
     "D068": ("R272", "NASDAQNQCN"),
     "D067": ("R271", "NASDAQNQHK"),
     "D066": ("R270", "NIKKEI225"),

@@ -1,0 +1,97 @@
+{
+  "id": "D069",
+  "raw_order": [
+    "R273"
+  ],
+  "subject": "NVDA",
+  "series": "NASDAQNQCN10",
+  "as_of": "2026-10-20T13:00:00Z",
+  "reference": "2026-10-19T13:00:00Z",
+  "context_id": "controlled-international-r273",
+  "context_start": "2026-10-19T13:00:00Z",
+  "context_end": "2026-10-20T13:00:01Z",
+  "records": [
+    [
+      0,
+      "NVDA",
+      "2026-10-20T13:00:00Z",
+      "2026-10-20T13:00:00Z",
+      {
+        "index": {
+          "value": "100",
+          "series": "NASDAQNQCN10",
+          "close_utc": "2026-10-20T13:00:00Z",
+          "adjustment_basis": "controlled_unadjusted/1",
+          "close_kind": "controlled_official"
+        }
+      }
+    ],
+    [
+      0,
+      "NVDA",
+      "2026-10-19T13:00:00Z",
+      "2026-10-19T13:00:00Z",
+      {
+        "index": {
+          "value": "80",
+          "series": "NASDAQNQCN10",
+          "close_utc": "2026-10-19T13:00:00Z",
+          "adjustment_basis": "controlled_unadjusted/1",
+          "close_kind": "controlled_official"
+        }
+      }
+    ]
+  ],
+  "provider": "foundation-controlled-international",
+  "variant": "daily_close_v1",
+  "map_specs": [
+    [
+      "R273",
+      "mmt-r273-international",
+      [
+        "index",
+        "value"
+      ],
+      "index_points",
+      [
+        [
+          "index.series",
+          [
+            "index",
+            "series"
+          ]
+        ],
+        [
+          "index.close_utc",
+          [
+            "index",
+            "close_utc"
+          ]
+        ],
+        [
+          "index.adjustment_basis",
+          [
+            "index",
+            "adjustment_basis"
+          ]
+        ],
+        [
+          "index.close_kind",
+          [
+            "index",
+            "close_kind"
+          ]
+        ]
+      ]
+    ]
+  ],
+  "unit_id": "mmt-r273-index-units",
+  "native_units": "index_points",
+  "parameter_id": "mmt-d069-controlled",
+  "selection_id": "mmt-d069-selection",
+  "definition": "D069-LOG-RETURN-1",
+  "policy": "exact two anchors, same subject/series/basis/close kind; cutoff T+1s (underlying also permits T+2s); now>=cutoff; bounded1day history100x1000 pages; no forwardfill/nearest/holiday inference; positive current/reference; source identity scale1/offset0",
+  "expected_50digit_half_even": "0.22314355131420975576629509030983450337460108554801",
+  "refusal": "anchor",
+  "manifest": "new _international_returns.py and public _window.py routes for D066; later IDs only own hash/raw/series registry entry; owning profile/brief/contract/binding/test/generation/evidence. Reuse existing exact bounded _logarithm/RecordState/codec. No M00/API/runner change."
+}
