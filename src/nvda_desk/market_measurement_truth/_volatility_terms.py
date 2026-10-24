@@ -20,9 +20,11 @@ from ._vwap_returns import chosen, history
 from ._window import NAMESPACE, _decode, _identity, _Reads
 
 BRIEFS = {
+    "D058": "dd0d4c18be4ee9f88fb884931cd2b0c70b274099e68ba176d93c59b4c4ac4405",
     "D057": "c96b1fda3d4e2a97c839bc5669c441c21e1f9190d50472b20d0e8fd9ee067960",
 }
 PROFILES = {
+    "D058": ("R239", "R236"),
     "D057": ("R238", "R239"),
 }
 CONTEXT = f.WindowContextV1(
