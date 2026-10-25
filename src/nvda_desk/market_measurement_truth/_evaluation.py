@@ -127,7 +127,7 @@ def untagged(value: Any, hint: Any) -> Any:
             raise ValueError("incomplete or extra record fields")
         from . import api as f
 
-        if hint in (f.OptionRightLineageV1, f.TemporalRawLineageV1):
+        if hint in (f.OptionRightLineageV1, f.TemporalRawLineageV1, f.TemporalAgeRawLineageV1):
             projection = value["projection"]
             projection_hints = get_type_hints(raw_api.ProjectedRawValueV1)
             if (type(projection) is not dict or set(projection) != set(projection_hints)
@@ -140,6 +140,11 @@ def untagged(value: Any, hint: Any) -> Any:
                 {"kind": "RawSignalCatalogueId", "value": "R003"},
             ):
                 raise ValueError("unadmitted exact temporal source role")
+            if hint is f.TemporalAgeRawLineageV1 and projection["raw_signal_catalogue_id"] not in (
+                {"kind": "RawSignalCatalogueId", "value": "R001"},
+                {"kind": "RawSignalCatalogueId", "value": "R002"},
+            ):
+                raise ValueError("unadmitted exact temporal age source role")
             decoded_projection = raw_api.ProjectedRawValueV1(**{
                 key: projection[key] if key == "native_value" else untagged(projection[key], cls)
                 for key, cls in projection_hints.items()

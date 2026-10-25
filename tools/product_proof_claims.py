@@ -410,6 +410,7 @@ def _scalar_extension(
     root: Path,
     identity: Literal[
         "D001",
+        "D002",
         "D012",
         "D013",
         "D014",
@@ -525,6 +526,7 @@ def _scalar_extension(
     rows = re.findall(r"^\| ([^|]+?) \| ([0-9a-f]{64}) \|$", text, re.M)
     count = {
         "D001": 7,
+        "D002": 7,
         "D012": 8,
         "D013": 11,
         "D014": 8,
@@ -708,6 +710,7 @@ def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductPro
         identities: tuple[
             Literal[
                 "D001",
+                "D002",
                 "D012",
                 "D013",
                 "D014",
@@ -790,6 +793,7 @@ def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductPro
             ...,
         ] = (
             "D001",
+            "D002",
             "D012",
             "D013",
             "D014",

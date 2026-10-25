@@ -975,6 +975,92 @@ class TemporalOccurrenceV1(_Validated):
     calculated_at_utc: datetime
 
 
+@dataclass(frozen=True, slots=True)
+class TemporalAgeRequestV1(_Validated):
+    calculation: CalculationRequestV1
+    predecessor_occurrence_ids: tuple[str, ...]
+
+
+@dataclass(frozen=True, slots=True)
+class TemporalAgeV1(_Validated):
+    basis: str
+    age_seconds: Decimal
+
+    def __post_init__(self) -> None:
+        _Validated.__post_init__(self)
+        if self.basis not in ("source_event", "collector_receipt") or self.age_seconds < 0:
+            raise ValueError("exact nonnegative source/receipt age required")
+
+
+@dataclass(frozen=True, slots=True)
+class TemporalAgeRawLineageV1(_Validated):
+    raw_signal_id: str
+    observation_occurrence_id: str
+    projection_mapping_ref: VersionRefV1
+    unit_convention_ref: VersionRefV1
+    projection: raw_api.ProjectedRawValueV1
+    canonical_value: str
+    selected_time_utc: datetime
+    time_basis: str
+
+
+@dataclass(frozen=True, slots=True)
+class TemporalAgeOccurrenceV1(_Validated):
+    owner_object_id: str
+    owner_namespace: str
+    implementation_brief_sha256: str
+    derived_signal_id: str
+    derived_occurrence_id: str
+    request: TemporalAgeRequestV1
+    definition: CalculationDefinitionV1
+    parameter_set: CalculationParameterSetV1
+    input_selection_policy: InputSelectionPolicyVersionV1
+    unit_conventions: tuple[UnitConventionVersionV1, ...]
+    projection_mappings: tuple[raw_api.RawSignalProjectionMappingV1, ...]
+    raw_input_lineage: tuple[TemporalAgeRawLineageV1, ...]
+    predecessors: tuple[TemporalOccurrenceV1, ...]
+    result: TemporalAgeV1
+    units: str
+    result_shape: str
+    effective_as_of_utc: datetime
+    knowledge_cutoff_utc: datetime
+    calculated_at_utc: datetime
+
+
+class MeasurementTemporalAgeReadsV1(Protocol):
+    def get_derived_occurrence(self, derived_occurrence_id: str
+                               ) -> TemporalAgeOccurrenceV1 | None: ...
+    def list_derived_history(
+        self, *, derived_signal_id: str, subject_instrument: str,
+        effective_at_or_before_utc: datetime, knowledge_at_or_before_utc: datetime, limit: int,
+    ) -> tuple[TemporalAgeOccurrenceV1, ...]: ...
+
+
+class MeasurementTemporalAgeOwnerV1(Protocol):
+    @property
+    def reads(self) -> MeasurementTemporalAgeReadsV1: ...
+    def materialise(self, request: TemporalAgeRequestV1
+                    ) -> TemporalAgeOccurrenceV1 | None: ...
+
+
+def create_temporal_age_owner(
+    *, admission: OwnerAdmissionV1, raw_projection_reader: RawProjectionReaderV1,
+    predecessor_reader: MeasurementTemporalReadsV1,
+    storage: MemoryStorageV1 | SQLiteStorageV1, utc_now: Callable[[], datetime],
+) -> MeasurementTemporalAgeOwnerV1:
+    from ._temporal_age import build_owner
+
+    return build_owner(admission, raw_projection_reader, predecessor_reader, storage, utc_now)
+
+
+def create_temporal_age_reader(
+    *, admission: OwnerAdmissionV1, storage: SQLiteReadStorageV1,
+) -> MeasurementTemporalAgeReadsV1:
+    from ._temporal_age import build_reader
+
+    return build_reader(admission, storage)
+
+
 class MeasurementTemporalReadsV1(Protocol):
     def get_derived_occurrence(self, derived_occurrence_id: str) -> TemporalOccurrenceV1 | None: ...
     def list_derived_history(
@@ -1057,6 +1143,8 @@ __all__ += [
     "CorrelationMatrixV1",
     "IndexChangeV1",
     "MeasurementComparisonV1",
+    "MeasurementTemporalAgeOwnerV1",
+    "MeasurementTemporalAgeReadsV1",
     "MeasurementTemporalOwnerV1",
     "MeasurementTemporalReadsV1",
     "MeasurementWindowOwnerV1",
@@ -1065,6 +1153,10 @@ __all__ += [
     "OptionSkewV1",
     "ReturnAccelerationV1",
     "SessionFrameV1",
+    "TemporalAgeOccurrenceV1",
+    "TemporalAgeRawLineageV1",
+    "TemporalAgeRequestV1",
+    "TemporalAgeV1",
     "TemporalOccurrenceV1",
     "TemporalRawLineageV1",
     "TermPairV1",
@@ -1073,6 +1165,8 @@ __all__ += [
     "WindowCalculationRequestV1",
     "WindowContextV1",
     "WindowMeasurementOccurrenceV1",
+    "create_temporal_age_owner",
+    "create_temporal_age_reader",
     "create_temporal_owner",
     "create_temporal_reader",
     "create_window_owner",
