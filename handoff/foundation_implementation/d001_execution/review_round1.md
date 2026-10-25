@@ -1,0 +1,5 @@
+# D001 strict preflight repair — output placement
+
+Independent final reviewer inspected clean candidate `efe610c9d70062b719cac33524ef0271ab4ee5d0`, its two-case proof, typed source path and K01. No material semantic preflight blocker identified. Its first sole strict aggregate invocation exited 2 before product collection because output redirection created an untracked `final_initial_failure.log` in the repository before the runner checked clean-tree status. Exact original output is retained there. This is an isolated output-placement failure; no product case failed or executed.
+
+Repair: commit the original output and this record, restoring a clean candidate; direct the next sole strict invocation's output to a scratch path **outside** the worktree, then bring its complete output into the repository after the command finishes. No product, test, authority, runner or acceptance-code bytes changed by this repair. The same independent reviewer may rerun the same D001 strict aggregate under the accepted current-signal repair exception. Preserve the first result and record the subsequent result separately.
