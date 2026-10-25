@@ -1,0 +1,47 @@
+{
+  "id": "D103",
+  "definition": "D103-MATCHED-SURFACE-SHIFT-5M-1",
+  "kernel": "K03_CHANGE_RETURN",
+  "parameter_profile": "P_WINDOW",
+  "subject": "NVDA_SURFACE_E1",
+  "members": [
+    "controlled-skew-2026-10-23-C25",
+    "controlled-skew-2026-10-23-P25"
+  ],
+  "source": "R111 model.iv, annualised_decimal_volatility, mmt-r111-option/1, mmt-option-iv/1",
+  "provider": "foundation-controlled-options",
+  "variant": "option_snapshot_v1",
+  "model": "controlled-model/1",
+  "expiry": "2026-10-23",
+  "strikes": {
+    "C25": "120",
+    "P25": "100"
+  },
+  "anchors": [
+    "2026-10-20T12:35:00Z",
+    "2026-10-20T12:40:00Z"
+  ],
+  "cutoff": "2026-10-20T12:40:01Z",
+  "now": "2026-10-20T12:40:02Z",
+  "context": "controlled-option-session/1",
+  "parameter": "mmt-d103-controlled/1",
+  "selection": "mmt-d103-selection/1",
+  "staleness_seconds": 300,
+  "history_page_size": 100,
+  "history_page_limit": 1000,
+  "success": {
+    "C25_prior": ".10",
+    "C25_current": ".20",
+    "P25_prior": ".20",
+    "P25_current": ".35",
+    "result": [
+      25,
+      2
+    ]
+  },
+  "refusal": {
+    "P25_prior": "absent",
+    "other_three": "present and projected",
+    "reason": "complete two-member two-anchor grid required"
+  }
+}

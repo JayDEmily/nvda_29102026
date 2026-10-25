@@ -1,0 +1,5 @@
+# D103 candidate before independent strict runtime
+
+Owner-accepted root §4.8 and own D103 profile/brief/two-case proof were authored before production. The pair projects four actual R111 public option IV facts C25/P25 at current T and prior A for exact two-member matched surface shift, asserting source identity, order, own metadata, exact 25/2 volatility points and read-only SQLite reopen. Refusal independently projects three facts with prior P25 absent; no C25-only reduced mean/history. No D099 predecessor or native certification.
+
+Narrow _surface_shift.py enumerates bounded M00 history with exact member/anchor identity and parsed UTC instants, selects each role before numeric checks, refuses missing/ambiguous/selected-invalid roles and validates all four lineages/identity before exact Fraction arithmetic. Own brief hash public routes, immutable generation0001. Scoped changed Python Ruff/mypy exit0 and own authority/generation ingress READY_FOR_PROOF; one initial Ruff import-order repair was completed before candidate. No Worker product runtime. Independent final semantic review/sole strict pair pending.
