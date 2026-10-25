@@ -86,4 +86,4 @@ The completed planning task permitted only documentary writes: this root plan, n
 
 ## 7. Execution ledger — D001
 
-Owner acceptance and commission recorded 26 October 2026. D001 implementation/review pending; D118 remains the last accepted signal.
+Owner acceptance and commission recorded 26 October 2026. D001 independently accepted on clean candidate `a2b1c6dd24e8219f6059b36634de8a10ea49e8ec`: sole strict aggregate after isolated output-placement preflight repair exited 0 with exactly two collected/two passed. Full original failure, bounded repair, strict output and semantic judgement are in `handoff/foundation_implementation/d001_execution/`. Controlled R002 offset + R003 supplied-zone true instant yields aware UTC `2026-10-09T13:59:50Z` with actual typed lineages and public SQLite reopen; selected date-only R002 refuses without history. Native source certification and D002 remain unaccepted. D002 begins only after the cumulative D001 accepted-state full-history checkpoint is verified, saved and exposed.
