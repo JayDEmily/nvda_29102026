@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_d105",
+  "semantic_brief_path": "handoff/foundation_implementation/authority/D105_IMPLEMENTATION_BRIEF.md",
+  "target": {
+    "category": "M",
+    "responsibility_name": "neutral_market_measurement_truth",
+    "package": "nvda_desk.market_measurement_truth",
+    "public_seam": "nvda_desk.market_measurement_truth.api",
+    "intent": "modify",
+    "existing_object_id": "M02"
+  },
+  "proof_axis": "product",
+  "product_tier_treatment": "NOT_CLASSIFIED",
+  "architecture_proof_axis": "architecture_kernel",
+  "required_proof_ids": [
+    "D105-CALCULATION"
+  ],
+  "families": [
+    {
+      "id": "mmt_d105",
+      "path": "tests/product/market_measurement_d105/test_signal.py",
+      "proof_obligation_ids": [
+        "D105-CALCULATION"
+      ],
+      "required_test_names": [
+        "test_d105_signal"
+      ],
+      "boundary": "D105 complete365 prior synthetic daily constant-maturity R183 history and current, exact unclipped IV rank and public durable reopen under root \u00a74.9.",
+      "proof_levels": [
+        "CONTRACT",
+        "INTEGRATION",
+        "STATE"
+      ],
+      "authoritative_inputs": [
+        "Owner-accepted root \u00a74.9 K04/P_BASELINE, F25 and own D105_PROFILE.json."
+      ],
+      "dependency_substitutions": [
+        "366 actual public M00 R183 synthetic comparable-IV observations, not per-contract R111 or native IBKR data."
+      ],
+      "case_coverage": {
+        "lawful_positive": {
+          "cases": [
+            "All365 prior daily anchors plus current separately projected; multi-page public history; .20/.40/.60 prior and .70 current, exact unclipped rank125/1 and 366 lineages/reopen."
+          ]
+        },
+        "prohibited_false_positive": {
+          "cases": [
+            "All365 lawful prior anchors genuinely .40 while current .70; zero prior range refuses no history."
+          ]
+        },
+        "missing_mandatory_authority": {
+          "cases": [
+            "Own binding, profile and immutable generation before strict run."
+          ]
+        },
+        "lawful_optional_absence": {
+          "cases": [
+            "No exchange-session or native date-only conversion; exact UTC synthetic daily grid."
+          ]
+        }
+      },
+      "expected_failure_signals": [
+        "Current included in prior extrema, clipping to100, incomplete year or zero-range division fails pair."
+      ],
+      "limitations": [
+        "Exactly two cases, no native option source certification."
+      ],
+      "adjacent_nonclaims": [
+        "No D106 percentile, D095 R183 join role or native historical source certification."
+      ],
+      "environment": "CPython3.12.14 SQLite3.53.1 and existing pinned offline tools.",
+      "material_versions": [
+        "Exact brief/binding/contract/generation and candidate/tree/runtime; old generations preserved."
+      ],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/market_measurement_d105/test_signal.py"
+    }
+  ],
+  "required_support_files": [],
+  "optional_support_files": [],
+  "execution_policy": {
+    "skipped_tests": "FAIL",
+    "xfailed_tests": "FAIL",
+    "xpassed_tests": "FAIL",
+    "collection_failed": "FAIL",
+    "no_tests_collected": "FAIL",
+    "unexpected_governed_mutation": "FAIL"
+  }
+}

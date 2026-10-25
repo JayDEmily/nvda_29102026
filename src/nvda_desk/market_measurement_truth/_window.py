@@ -433,6 +433,7 @@ def build_owner(
         _correlation_matrix,
         _cross_section_dispersion,
         _international_returns,
+        _iv_history_rank,
         _jump_variation,
         _log_return,
         _macro_changes,
@@ -457,6 +458,12 @@ def build_owner(
         _vwap_comparison,
         _vwap_returns,
     )
+
+    if (
+        type(admission) is f.OwnerAdmissionV1
+        and admission.implementation_brief_sha256 == _iv_history_rank.BRIEF
+    ):
+        return _iv_history_rank.build_owner(admission, raw, predecessor, storage, now)
 
     if (
         type(admission) is f.OwnerAdmissionV1
@@ -678,6 +685,7 @@ def build_reader(
         _correlation_matrix,
         _cross_section_dispersion,
         _international_returns,
+        _iv_history_rank,
         _jump_variation,
         _log_return,
         _macro_changes,
@@ -702,6 +710,15 @@ def build_reader(
         _vwap_comparison,
         _vwap_returns,
     )
+
+    if (
+        type(admission) is f.OwnerAdmissionV1
+        and admission.object_id == "M02"
+        and admission.implementation_brief_sha256 == _iv_history_rank.BRIEF
+    ):
+        if type(storage) is not f.SQLiteReadStorageV1:
+            raise TypeError("exact read-only storage required")
+        return _Reads(RecordState(storage, _decode, _iv_history_rank.validate))
 
     if (
         type(admission) is f.OwnerAdmissionV1
