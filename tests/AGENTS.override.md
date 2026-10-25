@@ -1,6 +1,6 @@
-# Test-local supplement — conditional next-twenty planning
+# Test-local supplement — commissioned next-twenty controlled execution
 
-This turn is planning and independent documentary review only. No new tests or product/static runs. The D077–D118 acceptance ledger and instructions below describe historical execution. New proposed exact two-case manifests are root EXEC_PLAN.md §3; they become executable only after owner acceptance and separate commission. Do not treat review clearance as proof admission.
+The owner accepted and separately commissioned root EXEC_PLAN.md on 26 October 2026. Follow §5: exactly two cases per signal, six hard ceiling, one independent final semantic reviewer as sole strict executor, no routine RED/duplicate GREEN/old unaffected regression, bounded repair recovery, pinned environment and cumulative checkpoint before advancing. The D077–D118 instructions below describe historical execution. Documentary plan clearance is not per-signal proof acceptance.
 
 ## Historical commissioned twenty-signal D077–D118 execution
 
