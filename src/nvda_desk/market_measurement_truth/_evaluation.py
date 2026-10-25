@@ -127,13 +127,19 @@ def untagged(value: Any, hint: Any) -> Any:
             raise ValueError("incomplete or extra record fields")
         from . import api as f
 
-        if hint is f.OptionRightLineageV1:
+        if hint in (f.OptionRightLineageV1, f.TemporalRawLineageV1):
             projection = value["projection"]
             projection_hints = get_type_hints(raw_api.ProjectedRawValueV1)
             if (type(projection) is not dict or set(projection) != set(projection_hints)
-                or type(projection["native_value"]) is not str
-                or projection["native_value"] not in ("C", "P")):
+                or type(projection["native_value"]) is not str):
+                raise ValueError("invalid exact categorical/temporal projection")
+            if hint is f.OptionRightLineageV1 and projection["native_value"] not in ("C", "P"):
                 raise ValueError("invalid exact R015 categorical projection")
+            if hint is f.TemporalRawLineageV1 and projection["raw_signal_catalogue_id"] not in (
+                {"kind": "RawSignalCatalogueId", "value": "R002"},
+                {"kind": "RawSignalCatalogueId", "value": "R003"},
+            ):
+                raise ValueError("unadmitted exact temporal source role")
             decoded_projection = raw_api.ProjectedRawValueV1(**{
                 key: projection[key] if key == "native_value" else untagged(projection[key], cls)
                 for key, cls in projection_hints.items()

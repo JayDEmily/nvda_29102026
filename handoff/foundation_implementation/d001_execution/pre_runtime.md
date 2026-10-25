@@ -1,0 +1,9 @@
+# D001 pre-runtime record
+
+Owner accepted/commissioned the reviewed root plan 26 October 2026. D001 proof contract/profile and exactly two physical test cases were authored and inspected before product implementation. Candidate remains unaccepted until independent final semantic review and sole strict aggregate.
+
+Pinned local interpreter `/workspace/scratch/17246e12ecdd/nvda-runtime/bin/python`: observed CPython3.12.14, SQLite3.53.1, pytest9.0.3, mypy1.20.1, Ruff0.15.11, PyYAML6.0.3. An initial probe against the bare primary CPython binary found mypy absent; the existing pinned runtime was located and used. No installation or Python3.13 substitution.
+
+Scoped mypy command: `python -m mypy src/nvda_desk/market_measurement_truth/api.py src/nvda_desk/market_measurement_truth/_evaluation.py src/nvda_desk/market_measurement_truth/_temporal.py`; initial exit0, full output in `static_mypy_initial.log`. Scoped Ruff command on those three plus `tools/product_proof_claims.py` and `tests/product/market_measurement_d001/test_signal.py`; initial failure had two E501 line widths, one E731 lambda assignment and one RUF022 public export ordering, preserved in `static_ruff_initial.log`. Bounded formatting repair only in `_temporal.py`/`api.py`; same Ruff scope reran after this relevant repair, exit0 `All checks passed!` in `static_ruff_final.log`. Mypy success was not rerun because formatting changes did not materially invalidate its type proposition.
+
+Scoped claim/import preflight first failed due command path lacking `tools` (`ModuleNotFoundError: validate_product_proof`), complete `preflight_initial.log`. Corrected command adds `PYTHONPATH=src:tools` without source/claim changes; `preflight_final.log` reports D001 claim and public type, exit0. Neither preflight runs product cases. No runtime RED, duplicated GREEN, historical regression or environment install.

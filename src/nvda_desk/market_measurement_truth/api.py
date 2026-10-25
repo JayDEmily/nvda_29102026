@@ -941,6 +941,71 @@ class WindowMeasurementOccurrenceV1(_Validated):
     calculated_at_utc: datetime
 
 
+@dataclass(frozen=True, slots=True)
+class TemporalRawLineageV1(_Validated):
+    raw_signal_id: str
+    observation_occurrence_id: str
+    projection_mapping_ref: VersionRefV1
+    unit_convention_ref: VersionRefV1
+    projection: raw_api.ProjectedRawValueV1
+    canonical_value: str
+    event_time_utc: datetime
+
+
+@dataclass(frozen=True, slots=True)
+class TemporalOccurrenceV1(_Validated):
+    owner_object_id: str
+    owner_namespace: str
+    implementation_brief_sha256: str
+    derived_signal_id: str
+    derived_occurrence_id: str
+    request: CalculationRequestV1
+    definition: CalculationDefinitionV1
+    parameter_set: CalculationParameterSetV1
+    input_selection_policy: InputSelectionPolicyVersionV1
+    unit_conventions: tuple[UnitConventionVersionV1, ...]
+    projection_mappings: tuple[raw_api.RawSignalProjectionMappingV1, ...]
+    raw_input_lineage: tuple[TemporalRawLineageV1, ...]
+    predecessor_occurrence_ids: tuple[str, ...]
+    result: datetime
+    units: str
+    result_shape: str
+    effective_as_of_utc: datetime
+    knowledge_cutoff_utc: datetime
+    calculated_at_utc: datetime
+
+
+class MeasurementTemporalReadsV1(Protocol):
+    def get_derived_occurrence(self, derived_occurrence_id: str) -> TemporalOccurrenceV1 | None: ...
+    def list_derived_history(
+        self, *, derived_signal_id: str, subject_instrument: str,
+        effective_at_or_before_utc: datetime, knowledge_at_or_before_utc: datetime, limit: int,
+    ) -> tuple[TemporalOccurrenceV1, ...]: ...
+
+
+class MeasurementTemporalOwnerV1(Protocol):
+    @property
+    def reads(self) -> MeasurementTemporalReadsV1: ...
+    def materialise(self, request: CalculationRequestV1) -> TemporalOccurrenceV1 | None: ...
+
+
+def create_temporal_owner(
+    *, admission: OwnerAdmissionV1, raw_projection_reader: RawProjectionReaderV1,
+    storage: MemoryStorageV1 | SQLiteStorageV1, utc_now: Callable[[], datetime],
+) -> MeasurementTemporalOwnerV1:
+    from ._temporal import build_owner
+
+    return build_owner(admission, raw_projection_reader, storage, utc_now)
+
+
+def create_temporal_reader(
+    *, admission: OwnerAdmissionV1, storage: SQLiteReadStorageV1,
+) -> MeasurementTemporalReadsV1:
+    from ._temporal import build_reader
+
+    return build_reader(admission, storage)
+
+
 class MeasurementWindowReadsV1(Protocol):
     def get_derived_occurrence(
         self, derived_occurrence_id: str
@@ -992,18 +1057,24 @@ __all__ += [
     "CorrelationMatrixV1",
     "IndexChangeV1",
     "MeasurementComparisonV1",
+    "MeasurementTemporalOwnerV1",
+    "MeasurementTemporalReadsV1",
     "MeasurementWindowOwnerV1",
     "MeasurementWindowReadsV1",
     "OptionRightLineageV1",
     "OptionSkewV1",
     "ReturnAccelerationV1",
     "SessionFrameV1",
+    "TemporalOccurrenceV1",
+    "TemporalRawLineageV1",
     "TermPairV1",
     "VwapDeviationV1",
     "VwapRateV1",
     "WindowCalculationRequestV1",
     "WindowContextV1",
     "WindowMeasurementOccurrenceV1",
+    "create_temporal_owner",
+    "create_temporal_reader",
     "create_window_owner",
     "create_window_reader",
 ]
