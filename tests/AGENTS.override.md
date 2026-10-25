@@ -1,4 +1,8 @@
-# Test-local supplement — commissioned twenty-signal D077–D118 execution
+# Test-local supplement — conditional next-twenty planning
+
+This turn is planning and independent documentary review only. No new tests or product/static runs. The D077–D118 acceptance ledger and instructions below describe historical execution. New proposed exact two-case manifests are root EXEC_PLAN.md §3; they become executable only after owner acceptance and separate commission. Do not treat review clearance as proof admission.
+
+## Historical commissioned twenty-signal D077–D118 execution
 
 The owner accepted root EXEC_PLAN.md's named dispositions and commissioned execution on 25 October 2026. Preserve all prior accepted proof bytes and original evidence.
 

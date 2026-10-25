@@ -49,7 +49,11 @@ Fresh review must also be independent of Worker convenience composition where th
 
 This is a bounded adversarial-review heuristic, not a requirement to duplicate the Worker test suite or proliferate speculative tests. Reuse Worker fixtures where they faithfully isolate the proposition; bypass or decompose them only where their composition could pre-satisfy, mask, or collapse the condition being reviewed. Record the direct sequence and observed result when it bears on disposition.
 
-## Current task — twenty controlled proposals plus explicit deferrals
+## Current task — conditional next-twenty planning and independent review
+
+The owner requested a new ExecPlan with exactly twenty proposed coding signals excluding deferred identities, independent verification by a sub-agent, then a pause for owner approval. The new root plan is conditional and planning-only. Do not implement, admit proof, install a runtime or run product/static tests. Its exact twenty proposals and seven additional proposed holds are in root §§1–4. The D118 checkpoint `f790c9ea476b9a0d3fb264e3790b44ba01ddd311` remains the accepted execution state until owner acceptance and separate commission. Review the new controlled temporal/calendar/typed result and positional book profile critically; documentary family packets are not native admission. Preserve all old holds and history. After documentary review, deliver a verified full-history checkpoint and stop for approval.
+
+## Historical task — D077–D118 twenty controlled proposals plus explicit deferrals
 
 The owner accepted and commissioned the twenty controlled implementation proposals on 25 October 2026, with all intervening named deferrals additional. Root EXEC_PLAN.md covers D077–D118:20 controlled proposals/22 named deferrals, retaining the original ten/ten from reviewed planning checkpoint406c3c3034db30e96569283e699802f3df93ba79 and prior five owner-deferred D061/D062/D064/D065/D070. Accepted execution baseline remains7b343c56ced615fc585988b77e7b27ab149d2d4c until the first per-signal acceptance. Execution branch work/v2-d077-d118-execution-20261025; reviewed planning and invalid D077 intermediate history retained on work/v2-d077-d118-20-controlled-plan-20261024.
 
