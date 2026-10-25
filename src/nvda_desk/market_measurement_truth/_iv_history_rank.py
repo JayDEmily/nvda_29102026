@@ -183,3 +183,123 @@ def build_owner(
     if type(storage) not in (f.MemoryStorageV1, f.SQLiteStorageV1) or not callable(now):
         raise TypeError("exact storage/clock required")
     return _Owner(RecordState(storage, _decode, validate), raw, now)
+
+# D106 shares the source-series geometry, but owns a distinct complete-history
+# selection policy, equation, output and immutable admission.
+BRIEF_D106 = "4802a02310a9265e77a674b91893b1d245364a1ecb99e89fc8b525a9d91b117e"
+POLICY_D106 = replace(POLICY, context_id="mmt-d106-selection")
+PARAMETER_D106 = replace(PARAMETER, context_id="mmt-d106-controlled")
+DEFINITION_D106 = f.CalculationDefinitionV1(
+    "D106", "D106-PRIOR-YEAR-IV-MIDRANK-1", "K04_STANDARDISE_RANK",
+    "100*(strict_less_prior+equal_prior/2)/365", ("R183",), (),
+    "P_BASELINE", "percentile", "exact_ratio",
+    tuple(f.AuthorityArtifactRefV1(*x) for x in _AUTHORITY),
+)
+
+
+def request_check_d106(request: f.WindowCalculationRequestV1, now: datetime) -> None:
+    expected = f.CalculationRequestV1(
+        "D106", SUBJECT, T, T + timedelta(seconds=1),
+        DEFINITION_D106.calculation_definition_version,
+        f.VersionRefV1(PARAMETER_D106.context_id, 1),
+        f.VersionRefV1(POLICY_D106.context_id, 1),
+        (CONTEXT.ref,), (f.RawInputBindingV1(
+            "R183", f.VersionRefV1(MAPPING.mapping_id, 1),
+            f.VersionRefV1(UNIT.context_id, 1), SUBJECT,
+        ),),
+    )
+    if (canonical(request.calculation) != canonical(expected) or request.context != CONTEXT
+        or request.predecessor_occurrence_ids or now < expected.knowledge_cutoff_utc):
+        raise ValueError("incompatible complete prior-year midrank request")
+
+
+def candidate_d106(item: r.ProjectedRawValueV1, c: f.CalculationRequestV1,
+                   anchor: datetime) -> bool:
+    return (type(item) is r.ProjectedRawValueV1
+            and item.selection_identity == identity(item)
+            and source_event(item) == anchor
+            and eligible(replace(item, selection_identity=None), MAPPING,
+                         POLICY_D106, c) == anchor)
+
+
+def line_d106(item: r.ProjectedRawValueV1, c: f.CalculationRequestV1,
+              anchor: datetime) -> f.RawInputLineageV1:
+    if (not candidate_d106(item, c, anchor) or item.received_ts_utc != anchor
+        or type(item.native_value) is not Decimal or item.native_value < 0):
+        raise ValueError("exact nonnegative comparable-IV percentile source required")
+    return f.RawInputLineageV1(
+        "R183", item.observation_occurrence_id.value,
+        f.VersionRefV1(MAPPING.mapping_id, 1), f.VersionRefV1(UNIT.context_id, 1),
+        item, cast(Decimal, item.native_value), anchor,
+    )
+
+
+def produce_d106(request: f.WindowCalculationRequestV1,
+                 lines: tuple[f.RawInputLineageV1, ...], now: datetime
+                 ) -> f.WindowMeasurementOccurrenceV1:
+    request_check_d106(request, now)
+    if len(lines) != 366:
+        raise ValueError("current plus complete365 prior daily anchors required")
+    for actual, anchor in zip(lines, ANCHORS, strict=True):
+        if (type(actual) is not f.RawInputLineageV1
+            or canonical(actual) != canonical(line_d106(actual.projection,
+                                                         request.calculation, anchor))):
+            raise ValueError("midrank comparable-IV anchor/source/order mismatch")
+    current = lines[0].canonical_value
+    prior = tuple(x.canonical_value for x in lines[1:])
+    less = sum(value < current for value in prior)
+    equal = sum(value == current for value in prior)
+    midrank = Fraction(100) * (Fraction(less) + Fraction(equal, 2)) / 365
+    value = f.WindowMeasurementOccurrenceV1(
+        "M02", NAMESPACE, BRIEF_D106, "D106", "pending", request, DEFINITION_D106,
+        PARAMETER_D106, POLICY_D106, (UNIT,), (MAPPING,), lines, (), 31536000,
+        f.ExactRatioV1(midrank.numerator, midrank.denominator),
+        "percentile", "exact_ratio", T, request.calculation.knowledge_cutoff_utc, now,
+    )
+    return replace(value, derived_occurrence_id=_identity(value))
+
+
+def validate_d106(value: f.WindowMeasurementOccurrenceV1) -> None:
+    if type(value) is not f.WindowMeasurementOccurrenceV1:
+        raise TypeError("exact prior-year IV percentile occurrence required")
+    f._Validated.__post_init__(value)
+    if canonical(value) != canonical(produce_d106(value.request, value.raw_input_lineage,
+                                                  value.calculated_at_utc)):
+        raise ValueError("prior-year midrank/source/identity mismatch")
+
+
+class _OwnerD106:
+    def __init__(self, state: RecordState, raw: f.RawProjectionReaderV1,
+                 now: Callable[[], datetime]) -> None:
+        self.state, self.raw, self.now = state, raw, now
+        self.reads = _Reads(state)
+
+    def materialise(self, request: f.WindowCalculationRequestV1
+                    ) -> f.WindowMeasurementOccurrenceV1 | None:
+        if type(request) is not f.WindowCalculationRequestV1:
+            raise TypeError("exact prior-year percentile request required")
+        now = self.now()
+        f._utc(now)
+        try:
+            request_check_d106(request, now)
+            items = tuple(history(self.raw, request.calculation, MAPPING, POLICY_D106))
+            lines = tuple(line_d106(choose(tuple(item for item in items
+                                           if candidate_d106(item, request.calculation,
+                                                             anchor))),
+                                    request.calculation, anchor) for anchor in ANCHORS)
+            result = produce_d106(request, lines, now)
+        except (TypeError, ValueError, ArithmeticError):
+            return None
+        return cast(f.WindowMeasurementOccurrenceV1, self.state.append(result))
+
+
+def build_owner_d106(
+    admission: f.OwnerAdmissionV1, raw: f.RawProjectionReaderV1,
+    predecessor: f.MeasurementTradeDirectionReadsV1 | f.MeasurementWindowReadsV1 | None,
+    storage: f.MemoryStorageV1 | f.SQLiteStorageV1, now: Callable[[], datetime],
+) -> f.MeasurementWindowOwnerV1:
+    if admission != f.OwnerAdmissionV1("M02", BRIEF_D106):
+        raise ValueError("exact D106 admission required")
+    if type(storage) not in (f.MemoryStorageV1, f.SQLiteStorageV1) or not callable(now):
+        raise TypeError("exact storage/clock required")
+    return _OwnerD106(RecordState(storage, _decode, validate_d106), raw, now)

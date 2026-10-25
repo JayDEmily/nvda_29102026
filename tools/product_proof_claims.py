@@ -483,6 +483,7 @@ def _scalar_extension(
         "D103",
         "D104",
         "D105",
+        "D106",
     ],
 ) -> tuple[dict[str, Any], dict[str, Any], str] | None:
     """Fixed separately admitted signal extensions; never discover arbitrary claims."""
@@ -593,6 +594,7 @@ def _scalar_extension(
         "D103": 7,
         "D104": 7,
         "D105": 7,
+        "D106": 7,
     }[identity]
     if len(rows) != count or len(dict(rows)) != count:
         raise ValueError(f"invalid {identity} incorporated-byte table")
@@ -771,6 +773,7 @@ def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductPro
         "D103",
         "D104",
         "D105",
+        "D106",
             ],
             ...,
         ] = (
@@ -848,6 +851,7 @@ def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductPro
         "D103",
         "D104",
         "D105",
+        "D106",
         )
         for identity in identities:
             extension = _scalar_extension(root, identity)

@@ -1,0 +1,50 @@
+{
+  "id": "D106",
+  "definition": "D106-PRIOR-YEAR-IV-MIDRANK-1",
+  "kernel": "K04_STANDARDISE_RANK",
+  "parameter_profile": "P_BASELINE",
+  "subject": "NVDA_30D_ATM_CONTROLLED",
+  "member": "NVDA_30D_ATM_CONTROLLED",
+  "raw": "R183",
+  "mapping": "mmt-r183-comparable-iv/1 at iv.close",
+  "unit": "mmt-comparable-iv/1 annualised_decimal_volatility identity",
+  "provider": "foundation-controlled-iv-history",
+  "variant": "daily_constant_maturity_iv_v1",
+  "metadata": [
+    "series.id",
+    "underlying.id",
+    "tenor.days",
+    "measure.kind",
+    "model.convention",
+    "period.close_utc"
+  ],
+  "context": "controlled-comparable-iv-year/1",
+  "prior_anchors": "exact T-k*86400s for k365..1 including weekends",
+  "current": "2026-10-20T12:40:00Z",
+  "cutoff": "T+1s",
+  "now": "T+2s",
+  "parameter": "mmt-d106-controlled/1",
+  "selection": "mmt-d106-selection/1",
+  "page": [
+    100,
+    1000
+  ],
+  "success": {
+    "first100": ".20",
+    "next65": ".40",
+    "last200": ".60",
+    "current": ".40",
+    "strict_less": 100,
+    "equal": 65,
+    "midrank": [
+      2650,
+      73
+    ]
+  },
+  "refusal": {
+    "missing_anchor": "T-1day",
+    "other_prior": "364 actual",
+    "current": ".40",
+    "reason": "complete365 prior day grid mandatory"
+  }
+}
