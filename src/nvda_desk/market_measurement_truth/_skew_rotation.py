@@ -171,9 +171,11 @@ class _Owner:
                         derived_signal_id=signal, subject_instrument="NVDA_SKEW_2026-10-23",
                         effective_at_or_before_utc=anchor,
                         knowledge_at_or_before_utc=request.calculation.knowledge_cutoff_utc,
-                        limit=100,
+                        limit=POLICY.history_page_limit,
                     )
-                    if type(page) is not tuple or len(page) > 100:
+                    # The public facet truncates without a cursor and orders by ID,
+                    # not by calculated time. Only a short bounded view proves completeness.
+                    if type(page) is not tuple or len(page) >= POLICY.history_page_limit:
                         raise ValueError("incomplete public skew history")
                     selected_parents.append(selected(page, signal, anchor, now))
             if (tuple(p.derived_occurrence_id for p in selected_parents)
