@@ -1,0 +1,65 @@
+{
+  "id": "D101",
+  "definition": "D101-SMILE-CURVATURE-1",
+  "kernel": "K02_ALGEBRA",
+  "parameter_profile": "P_BASIC",
+  "subject": "NVDA_SMILE_E1",
+  "members": [
+    "controlled-skew-2026-10-23-C25",
+    "controlled-skew-2026-10-23-P25",
+    "controlled-skew-2026-10-23-C50",
+    "controlled-skew-2026-10-23-P50"
+  ],
+  "strikes": {
+    "C25": "120",
+    "P25": "100",
+    "C50": "110",
+    "P50": "110"
+  },
+  "signed_delta": {
+    "C25": ".25",
+    "P25": "-.25",
+    "C50": ".50",
+    "P50": "-.50"
+  },
+  "source_roles": [
+    "R111:model.iv:model_iv",
+    "R112:model.delta:model_delta"
+  ],
+  "provider": "foundation-controlled-options",
+  "variant": "option_snapshot_v1",
+  "metadata": [
+    "contract.id",
+    "underlying.id",
+    "expiry.date",
+    "strike.key",
+    "option.right",
+    "currency.code",
+    "contract.multiplier",
+    "instrument.kind",
+    "model.convention",
+    "value.role"
+  ],
+  "frame": "2026-10-20T12:40:00Z",
+  "cutoff": "2026-10-20T12:40:01Z",
+  "now": "2026-10-20T12:40:02Z",
+  "context": "controlled-option-session/1",
+  "parameter": "mmt-d101-controlled/1",
+  "selection": "mmt-d101-selection/1",
+  "success": {
+    "C25_iv": ".20",
+    "P25_iv": ".30",
+    "C50_iv": ".22",
+    "P50_iv": ".26",
+    "ATM": "(.22+.26)/2=.24",
+    "result": [
+      2,
+      1
+    ]
+  },
+  "refusal": {
+    "P50_R112": "absent",
+    "other_sources": "seven actual separately projected",
+    "reason": "two-sided exact50D ATM and full eight-role grid mandatory"
+  }
+}
