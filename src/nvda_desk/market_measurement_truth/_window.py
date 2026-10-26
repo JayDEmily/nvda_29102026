@@ -439,6 +439,7 @@ def build_owner(
         _macro_changes,
         _macro_surprise,
         _official_oi,
+        _oi_concentration,
         _oi_ratio,
         _option_activity,
         _option_iv_change,
@@ -462,6 +463,12 @@ def build_owner(
         _vwap_comparison,
         _vwap_returns,
     )
+
+    if (
+        type(admission) is f.OwnerAdmissionV1
+        and admission.implementation_brief_sha256 == _oi_concentration.BRIEF_D124
+    ):
+        return _oi_concentration.build_owner_d124(admission, raw, predecessor, storage, now)
 
     if (
         type(admission) is f.OwnerAdmissionV1
@@ -731,6 +738,7 @@ def build_reader(
         _macro_changes,
         _macro_surprise,
         _official_oi,
+        _oi_concentration,
         _oi_ratio,
         _option_activity,
         _option_iv_change,
@@ -754,6 +762,15 @@ def build_reader(
         _vwap_comparison,
         _vwap_returns,
     )
+
+    if (
+        type(admission) is f.OwnerAdmissionV1
+        and admission.object_id == "M02"
+        and admission.implementation_brief_sha256 == _oi_concentration.BRIEF_D124
+    ):
+        if type(storage) is not f.SQLiteReadStorageV1:
+            raise TypeError("exact read-only storage required")
+        return _Reads(RecordState(storage, _decode, _oi_concentration.validate_d124))
 
     if (
         type(admission) is f.OwnerAdmissionV1

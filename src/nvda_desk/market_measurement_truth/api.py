@@ -909,6 +909,31 @@ class OptionSkewV1(_Validated):
 
 
 @dataclass(frozen=True, slots=True)
+class OIConcentrationV1(_Validated):
+    group_keys: tuple[tuple[str, str], ...]
+    shares: tuple[ExactRatioV1, ...]
+    hhi: ExactRatioV1
+
+    def __post_init__(self) -> None:
+        _Validated.__post_init__(self)
+        from fractions import Fraction
+
+        if (not self.group_keys or len(self.group_keys) != len(self.shares)
+            or tuple(sorted(self.group_keys)) != self.group_keys
+            or len(set(self.group_keys)) != len(self.group_keys)
+            or any(len(key) != 2 or any(type(part) is not str or not part for part in key)
+                   for key in self.group_keys)):
+            raise ValueError("exact ordered strike/expiry groups required")
+        fractions = tuple(Fraction(share.numerator, share.denominator)
+                          for share in self.shares)
+        hhi = Fraction(self.hhi.numerator, self.hhi.denominator)
+        if (any(not 0 <= share <= 1 for share in fractions)
+            or sum(fractions) != 1 or sum((share * share for share in fractions),
+                                          Fraction()) != hhi):
+            raise ValueError("shares and HHI must be exact and consistent")
+
+
+@dataclass(frozen=True, slots=True)
 class WindowMeasurementOccurrenceV1(_Validated):
     owner_object_id: str
     owner_namespace: str
@@ -928,6 +953,7 @@ class WindowMeasurementOccurrenceV1(_Validated):
         Decimal
         | CorrelationMatrixV1
         | OptionSkewV1
+        | OIConcentrationV1
         | ExactRatioV1
         | IndexChangeV1
         | TermPairV1
@@ -1639,6 +1665,7 @@ __all__ += [
     "MeasurementVintageReadsV1",
     "MeasurementWindowOwnerV1",
     "MeasurementWindowReadsV1",
+    "OIConcentrationV1",
     "OptionRightLineageV1",
     "OptionSkewV1",
     "PhaseIntervalV1",
