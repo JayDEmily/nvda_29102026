@@ -90,9 +90,9 @@ def _request(request: f.MarketOpenRequestV1, now: datetime) -> None:
 def _mode_line(item: r.ProjectedRawValueV1, c: f.CalculationRequestV1
                ) -> f.MarketModeRawLineageV1:
     identity = r.RawSelectionIdentityV1((
-        ("generation.id", MODE_POLICY.generation_id), ("requested.mode", "live"),
         ("sample.id", "controlled-temporal-sample/1"),
-        ("value.role", "delivered_market_mode"),
+        ("value.role", "delivered_market_mode"), ("requested.mode", "live"),
+        ("generation.id", MODE_POLICY.generation_id),
     ))
     if (type(item) is not r.ProjectedRawValueV1
         or item.raw_signal_catalogue_id != MODE_MAP.raw_signal_catalogue_id
@@ -271,9 +271,9 @@ class _Owner:
                     raise ValueError("incomplete D010 source history")
                 if role == 0:
                     identity = r.RawSelectionIdentityV1((
-                        ("generation.id", MODE_POLICY.generation_id), ("requested.mode", "live"),
                         ("sample.id", "controlled-temporal-sample/1"),
-                        ("value.role", "delivered_market_mode"),
+                        ("value.role", "delivered_market_mode"), ("requested.mode", "live"),
+                        ("generation.id", MODE_POLICY.generation_id),
                     ))
                 else:
                     identity = r.RawSelectionIdentityV1((
