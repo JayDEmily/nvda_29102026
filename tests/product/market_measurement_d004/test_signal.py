@@ -14,7 +14,7 @@ PROVIDER, VARIANT = "foundation-controlled-temporal", "clock_v1"
 SAMPLE = "controlled-temporal-sample/1"
 D001_BRIEF = "bd023e56cbf27f4e2979587fb9e4deb288be329901fd46c7a78897f9b8b4139d"
 D003_BRIEF = "278623c1f97b5faacef1a95304672c92631a14010d5fde71efad4ff817207e1d"
-BRIEF = "94ac73562afcbb34af75cd9cd72c7b94783ecb4c4d857beecc7690340d61b495"
+BRIEF = "d95fa2da532e4edbf29345902b2f3fb4e981c8847995130d5167fe5c2f2e0eb0"
 META = (("sample.id", ("sample", "id")), ("value.role", ("value", "role")))
 MAPS = (
     r.RawSignalProjectionMappingV1("mmt-d001-r002", 1, r.RawSignalCatalogueId("R002"),
@@ -147,7 +147,7 @@ def d004_request(predecessor_id, refused):
 def test_d004_signal(tmp_path, refused):
     raw = r.create_owner()
     natives = ("2026-10-10T00:59:50+11:00", "+11:00", "Australia/Melbourne",
-               "overnight/1", "controlled-overnight/1")
+               "overnight/1", "controlled-overnight/2" if refused else "controlled-overnight/1")
     projected = []
     for index, mapping in enumerate(MAPS):
         role = ("source_timestamp", "source_timezone", "exchange_iana",
@@ -212,6 +212,8 @@ def test_d004_signal(tmp_path, refused):
                    effective_at_or_before_utc=T, knowledge_at_or_before_utc=T, limit=10)
     if refused:
         assert projected[3].native_value == "overnight/1"
+        assert projected[4].native_value == "controlled-overnight/2"
+        assert request.calendar_policy.ref.version == 2
         assert request.calendar_policy.intervals[1].session_id == "closed"
         assert result is None
         assert owner.reads.list_derived_history(**history) == ()

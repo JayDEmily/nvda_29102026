@@ -18,7 +18,7 @@ from ._evaluation import canonical, decode
 from ._record_store import RecordState
 from ._selection import _same_content
 
-BRIEF = "94ac73562afcbb34af75cd9cd72c7b94783ecb4c4d857beecc7690340d61b495"
+BRIEF = "d95fa2da532e4edbf29345902b2f3fb4e981c8847995130d5167fe5c2f2e0eb0"
 NAMESPACE = "neutral_market_measurement_truth/temporal-date/v1"
 T = _temporal.T
 PROVIDER, VARIANT = _temporal.PROVIDER, _temporal.VARIANT
@@ -118,7 +118,10 @@ def _line(item: r.ProjectedRawValueV1, role: int, c: f.CalculationRequestV1
         or item.source_temporal_kind != "true_instant"
         or item.source_timezone_native != "UTC"
         or item.received_ts_utc > c.knowledge_cutoff_utc
-        or item.native_value != ("overnight/1", "controlled-overnight/1")[role]
+        or (role == 0 and item.native_value != "overnight/1")
+        or (role == 1 and item.native_value not in (
+            "controlled-overnight/1", "controlled-overnight/2",
+        ))
     ):
         raise ValueError("unadmitted R023/R024 native source")
     f._utc(item.received_ts_utc)
@@ -162,6 +165,8 @@ def _produce(
         raise ValueError("actual D003/calendar occurrence mismatch")
     moment = predecessor.result.astimezone(UTC)
     policy = request.calendar_policy
+    if lines[1].canonical_value != f"controlled-overnight/{policy.ref.version}":
+        raise ValueError("R024 version must select the exact calendar schedule")
     if not policy.coverage_start_utc <= moment < policy.coverage_end_utc:
         raise ValueError("instant outside complete calendar coverage")
     selected = tuple(i for i in policy.intervals if i.start_utc <= moment < i.end_utc)

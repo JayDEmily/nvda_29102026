@@ -26,7 +26,7 @@
         "calendar",
         "identity"
       ],
-      "native": "controlled-overnight/1",
+      "native": "controlled-overnight/1 in success; controlled-overnight/2 in refusal",
       "units": "calendar_identity"
     }
   },
@@ -69,5 +69,5 @@
     "Saturday": "open for day and overnight under this synthetic policy"
   },
   "success_date": "2026-10-09",
-  "refusal": "no applicable overnight session, no result/history"
+  "refusal": "R024 projects controlled-overnight/2 corresponding to version2 complete schedule with overnight explicitly closed; R023 and actual D003 unchanged; no result/history"
 }

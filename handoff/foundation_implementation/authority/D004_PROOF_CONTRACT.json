@@ -46,7 +46,7 @@
         },
         "prohibited_false_positive": {
           "cases": [
-            "Same source and D003 with valid complete coverage but applicable overnight interval explicitly closed in version2: no result/history."
+            "Actual D003/R023 unchanged; R024 visibly selects controlled-overnight/2 complete calendar whose formerly applicable overnight interval is closed; no D004 result/history."
           ]
         },
         "missing_mandatory_authority": {

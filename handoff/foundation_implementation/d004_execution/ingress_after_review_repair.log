@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/workspace/scratch/17246e12ecdd/plan-d119/tools/product_proof_claims.py", line 885, in load_product_proof_claim
+    extension = _scalar_extension(root, identity)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/17246e12ecdd/plan-d119/tools/product_proof_claims.py", line 634, in _scalar_extension
+    _generation(root, entry, contract, sha256(brief), target_id)
+  File "/workspace/scratch/17246e12ecdd/plan-d119/tools/product_proof_claims.py", line 340, in _generation
+    _admission_history(root, entry, pointer)
+  File "/workspace/scratch/17246e12ecdd/plan-d119/tools/product_proof_claims.py", line 317, in _admission_history
+    raise ValueError("revoked/reused generation must advance admission history")
+ValueError: revoked/reused generation must advance admission history
