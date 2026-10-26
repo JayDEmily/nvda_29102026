@@ -1,0 +1,130 @@
+E501 Line too long (102 > 100)
+   --> src/nvda_desk/market_measurement_truth/_vintage.py:221:101
+    |
+219 |         if type(derived_occurrence_id) is not str or not derived_occurrence_id:
+220 |             raise ValueError("nonempty derived identity required")
+221 |         return next((v for v in self.state.all() if v.derived_occurrence_id == derived_occurrence_id),
+    |                                                                                                     ^^
+222 |                     None)
+    |
+
+B007 Loop control variable `role` not used within loop body
+   --> src/nvda_desk/market_measurement_truth/_vintage.py:257:17
+    |
+255 |             _request(request, now)
+256 |             by_role: list[dict[str, r.ProjectedRawValueV1]] = []
+257 |             for role, mapping in enumerate(MAPS):
+    |                 ^^^^
+258 |                 cursor: str | None = None
+259 |                 cursors: set[str] = set()
+    |
+help: Rename unused `role` to `_role`
+
+RUF022 [*] `__all__` is not sorted
+    --> src/nvda_desk/market_measurement_truth/api.py:1508:12
+     |
+1508 |   __all__ += [
+     |  ____________^
+1509 | |     "BaselineWindowContextV1",
+1510 | |     "CalendarIntervalV1",
+1511 | |     "CalendarPolicyV1",
+1512 | |     "CorrelationMatrixV1",
+1513 | |     "IndexChangeV1",
+1514 | |     "MeasurementComparisonV1",
+1515 | |     "MeasurementTemporalAgeOwnerV1",
+1516 | |     "MeasurementTemporalAgeReadsV1",
+1517 | |     "MeasurementTemporalDateOwnerV1",
+1518 | |     "MeasurementTemporalDateReadsV1",
+1519 | |     "MeasurementTemporalLocalOwnerV1",
+1520 | |     "MeasurementTemporalLocalReadsV1",
+1521 | |     "MeasurementTemporalOwnerV1",
+1522 | |     "MeasurementTemporalPhaseOwnerV1",
+1523 | |     "MeasurementTemporalPhaseReadsV1",
+1524 | |     "MeasurementTemporalReadsV1",
+1525 | |     "MeasurementWindowOwnerV1",
+1526 | |     "MeasurementWindowReadsV1",
+1527 | |     "MeasurementVintageOwnerV1",
+1528 | |     "MeasurementVintageReadsV1",
+1529 | |     "OptionRightLineageV1",
+1530 | |     "OptionSkewV1",
+1531 | |     "PhaseIntervalV1",
+1532 | |     "PhasePolicyV1",
+1533 | |     "ReturnAccelerationV1",
+1534 | |     "SessionFrameV1",
+1535 | |     "TemporalAgeOccurrenceV1",
+1536 | |     "TemporalAgeRawLineageV1",
+1537 | |     "TemporalAgeRequestV1",
+1538 | |     "TemporalAgeV1",
+1539 | |     "TemporalCalendarRawLineageV1",
+1540 | |     "TemporalDateOccurrenceV1",
+1541 | |     "TemporalDateRequestV1",
+1542 | |     "TemporalLocalOccurrenceV1",
+1543 | |     "TemporalLocalRawLineageV1",
+1544 | |     "TemporalLocalRequestV1",
+1545 | |     "TemporalOccurrenceV1",
+1546 | |     "TemporalPhaseOccurrenceV1",
+1547 | |     "TemporalPhaseRequestV1",
+1548 | |     "TemporalRawLineageV1",
+1549 | |     "TermPairV1",
+1550 | |     "VwapDeviationV1",
+1551 | |     "VwapRateV1",
+1552 | |     "VintageRawLineageV1",
+1553 | |     "VintageStatusOccurrenceV1",
+1554 | |     "VintageStatusRequestV1",
+1555 | |     "WindowCalculationRequestV1",
+1556 | |     "WindowContextV1",
+1557 | |     "WindowMeasurementOccurrenceV1",
+1558 | |     "create_temporal_age_owner",
+1559 | |     "create_temporal_age_reader",
+1560 | |     "create_temporal_date_owner",
+1561 | |     "create_temporal_date_reader",
+1562 | |     "create_temporal_local_owner",
+1563 | |     "create_temporal_local_reader",
+1564 | |     "create_temporal_owner",
+1565 | |     "create_temporal_phase_owner",
+1566 | |     "create_temporal_phase_reader",
+1567 | |     "create_temporal_reader",
+1568 | |     "create_window_owner",
+1569 | |     "create_window_reader",
+1570 | |     "create_vintage_owner",
+1571 | |     "create_vintage_reader",
+1572 | | ]
+     | |_^
+     |
+help: Apply an isort-style sorting to `__all__`
+
+E501 Line too long (101 > 100)
+   --> tests/product/market_measurement_d009/test_signal.py:111:101
+    |
+109 |                 source_temporal_kind="true_instant" if role == 2 else "date_only",
+110 |                 raw_signal_catalogue_ids=(mapping.raw_signal_catalogue_id,),
+111 |                 source_variant=VARIANT, subject_instrument="NVDA", native_units=mapping.native_units,
+    |                                                                                                     ^
+112 |                 source_timestamp_raw=native,
+113 |                 source_timezone_native="UTC" if role == 2 else None,
+    |
+
+E501 Line too long (103 > 100)
+   --> tests/product/market_measurement_d009/test_signal.py:123:101
+    |
+121 |             assert len(matched) == 1
+122 |             assert matched[0].native_value == native
+123 |             assert matched[0].received_ts_utc == datetime.fromisoformat(receipt.replace("Z", "+00:00"))
+    |                                                                                                     ^^^
+124 |             projected[(vintage_id, role)] = matched[0]
+125 |     assert len(projected) == (8 if refused else 9)
+    |
+
+E501 Line too long (101 > 100)
+   --> tests/product/market_measurement_d009/test_signal.py:155:101
+    |
+153 |         assert record.vintage_id == vid and record.publication_ordinal == ordinal
+154 |         assert record.visible_vintage_ids == ("v1", "v2", "v3")
+155 |         assert record.publication_timestamp_utc == datetime.fromisoformat(pub.replace("Z", "+00:00"))
+    |                                                                                                     ^
+156 |         assert record.realtime_start == date.fromisoformat(start)
+157 |         assert record.realtime_end == date.fromisoformat(end)
+    |
+
+Found 6 errors.
+[*] 1 fixable with the `--fix` option (1 hidden fix can be enabled with the `--unsafe-fixes` option).

@@ -1,0 +1,2 @@
+src/nvda_desk/market_measurement_truth/_vintage.py:161: error: Item "None" of "RawSelectionIdentityV1 | None" has no attribute "value_for"  [union-attr]
+Found 1 error in 1 file (checked 4 source files)

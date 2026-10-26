@@ -1211,6 +1211,87 @@ class TemporalPhaseOccurrenceV1(_Validated):
     calculated_at_utc: datetime
 
 
+@dataclass(frozen=True, slots=True)
+class VintageStatusRequestV1(_Validated):
+    calculation: CalculationRequestV1
+    series_id: str
+    reference_period: str
+
+
+@dataclass(frozen=True, slots=True)
+class VintageRawLineageV1(_Validated):
+    raw_signal_id: str
+    observation_occurrence_id: str
+    projection_mapping_ref: VersionRefV1
+    unit_convention_ref: VersionRefV1
+    projection: raw_api.ProjectedRawValueV1
+    canonical_value: date | datetime
+    publication_ordinal: int
+    publication_timestamp_utc: datetime
+
+
+@dataclass(frozen=True, slots=True)
+class VintageStatusOccurrenceV1(_Validated):
+    owner_object_id: str
+    owner_namespace: str
+    implementation_brief_sha256: str
+    derived_signal_id: str
+    derived_occurrence_id: str
+    request: VintageStatusRequestV1
+    definition: CalculationDefinitionV1
+    parameter_set: CalculationParameterSetV1
+    input_selection_policy: InputSelectionPolicyVersionV1
+    unit_conventions: tuple[UnitConventionVersionV1, ...]
+    projection_mappings: tuple[raw_api.RawSignalProjectionMappingV1, ...]
+    raw_input_lineage: tuple[VintageRawLineageV1, ...]
+    visible_vintage_ids: tuple[str, ...]
+    vintage_id: str
+    publication_ordinal: int
+    publication_timestamp_utc: datetime
+    realtime_start: date
+    realtime_end: date
+    last_updated_utc: datetime
+    result: str
+    units: str
+    result_shape: str
+    effective_as_of_utc: datetime
+    knowledge_cutoff_utc: datetime
+    calculated_at_utc: datetime
+
+
+class MeasurementVintageReadsV1(Protocol):
+    def get_derived_occurrence(self, derived_occurrence_id: str
+                               ) -> VintageStatusOccurrenceV1 | None: ...
+    def list_derived_history(
+        self, *, derived_signal_id: str, subject_instrument: str,
+        effective_at_or_before_utc: datetime, knowledge_at_or_before_utc: datetime, limit: int,
+    ) -> tuple[VintageStatusOccurrenceV1, ...]: ...
+
+
+class MeasurementVintageOwnerV1(Protocol):
+    @property
+    def reads(self) -> MeasurementVintageReadsV1: ...
+    def materialise_vintage_statuses(self, request: VintageStatusRequestV1
+                                    ) -> tuple[VintageStatusOccurrenceV1, ...] | None: ...
+
+
+def create_vintage_owner(
+    *, admission: OwnerAdmissionV1, raw_projection_reader: RawProjectionReaderV1,
+    storage: MemoryStorageV1 | SQLiteStorageV1, utc_now: Callable[[], datetime],
+) -> MeasurementVintageOwnerV1:
+    from ._vintage import build_owner
+
+    return build_owner(admission, raw_projection_reader, storage, utc_now)
+
+
+def create_vintage_reader(
+    *, admission: OwnerAdmissionV1, storage: SQLiteReadStorageV1,
+) -> MeasurementVintageReadsV1:
+    from ._vintage import build_reader
+
+    return build_reader(admission, storage)
+
+
 class MeasurementTemporalPhaseReadsV1(Protocol):
     def get_derived_occurrence(self, derived_occurrence_id: str
                                ) -> TemporalPhaseOccurrenceV1 | None: ...
@@ -1441,6 +1522,8 @@ __all__ += [
     "MeasurementTemporalPhaseOwnerV1",
     "MeasurementTemporalPhaseReadsV1",
     "MeasurementTemporalReadsV1",
+    "MeasurementVintageOwnerV1",
+    "MeasurementVintageReadsV1",
     "MeasurementWindowOwnerV1",
     "MeasurementWindowReadsV1",
     "OptionRightLineageV1",
@@ -1464,6 +1547,9 @@ __all__ += [
     "TemporalPhaseRequestV1",
     "TemporalRawLineageV1",
     "TermPairV1",
+    "VintageRawLineageV1",
+    "VintageStatusOccurrenceV1",
+    "VintageStatusRequestV1",
     "VwapDeviationV1",
     "VwapRateV1",
     "WindowCalculationRequestV1",
@@ -1479,6 +1565,8 @@ __all__ += [
     "create_temporal_phase_owner",
     "create_temporal_phase_reader",
     "create_temporal_reader",
+    "create_vintage_owner",
+    "create_vintage_reader",
     "create_window_owner",
     "create_window_reader",
 ]

@@ -144,6 +144,7 @@ def untagged(value: Any, hint: Any) -> Any:
             f.OptionRightLineageV1, f.TemporalRawLineageV1,
             f.TemporalAgeRawLineageV1, f.TemporalLocalRawLineageV1,
             f.TemporalCalendarRawLineageV1,
+            f.VintageRawLineageV1,
         ):
             projection = value["projection"]
             projection_hints = get_type_hints(raw_api.ProjectedRawValueV1)
@@ -173,6 +174,14 @@ def untagged(value: Any, hint: Any) -> Any:
                 {"kind": "RawSignalCatalogueId", "value": "R024"},
             ):
                 raise ValueError("unadmitted exact calendar source role")
+            if hint is f.VintageRawLineageV1 and projection[
+                "raw_signal_catalogue_id"
+            ] not in (
+                {"kind": "RawSignalCatalogueId", "value": "R280"},
+                {"kind": "RawSignalCatalogueId", "value": "R281"},
+                {"kind": "RawSignalCatalogueId", "value": "R282"},
+            ):
+                raise ValueError("unadmitted exact vintage source role")
             decoded_projection = raw_api.ProjectedRawValueV1(**{
                 key: projection[key] if key == "native_value" else untagged(projection[key], cls)
                 for key, cls in projection_hints.items()

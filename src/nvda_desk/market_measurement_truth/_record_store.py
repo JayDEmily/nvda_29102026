@@ -163,3 +163,35 @@ class RecordState:
             if canonical(recovered) != payload:
                 raise f.PersistenceFailureV1("measurement readback mismatch")
             return recovered
+
+    def append_many(self, values: tuple[Any, ...]) -> tuple[Any, ...]:
+        """Admit a complete immutable occurrence batch in one storage transaction."""
+        if type(values) is not tuple or not values:
+            raise ValueError("nonempty exact occurrence batch required")
+        identities = tuple(v.derived_occurrence_id for v in values)
+        if len(set(identities)) != len(identities):
+            raise ValueError("duplicate identities in atomic occurrence batch")
+        for value in values:
+            self.validate(value)
+        if self.path is None:
+            existing = self.all()
+            resolved = tuple(self._existing(existing, value) or value for value in values)
+            for value in resolved:
+                self.memory[value.derived_occurrence_id] = value
+            return resolved
+        with _transaction(self.path, write=True) as c:
+            existing = self._load(c)
+            resolved = tuple(self._existing(existing, value) or value for value in values)
+            for value in resolved:
+                if not any(old.derived_occurrence_id == value.derived_occurrence_id
+                           for old in existing):
+                    payload = canonical(value)
+                    c.execute(
+                        "INSERT INTO mmt_record_v1 VALUES (?,?,?)",
+                        (value.derived_occurrence_id, payload, hashlib.sha256(payload).hexdigest()),
+                    )
+            readback = {v.derived_occurrence_id: v for v in self._load(c)}
+            for value in resolved:
+                if canonical(readback[value.derived_occurrence_id]) != canonical(value):
+                    raise f.PersistenceFailureV1("atomic batch readback mismatch")
+            return tuple(readback[identity] for identity in identities)
