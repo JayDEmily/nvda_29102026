@@ -1,0 +1,67 @@
+{
+  "id": "D010",
+  "definition": "D010-LIVE-OPEN-LIQUID-1",
+  "kernel": "K01_TIME",
+  "provider": "foundation-controlled-temporal",
+  "variant": "clock_v1",
+  "subject": "NVDA",
+  "sample_id": "controlled-temporal-sample/1",
+  "as_of": "2026-10-09T14:00:00Z",
+  "cutoff": "2026-10-09T14:00:00Z",
+  "actual_predecessor": "D003-IANA-LOCAL-1",
+  "local_instant": "2026-10-10T00:59:50+11:00",
+  "raw": {
+    "R005": {
+      "mapping": "mmt-d010-r005",
+      "native": 1,
+      "native_type": "int",
+      "role": "delivered_market_mode",
+      "requested_mode": "live",
+      "generation": "controlled-stream/1"
+    },
+    "R023": {
+      "mapping": "mmt-d004-r023",
+      "native": "overnight/1",
+      "role": "session_identity"
+    },
+    "R024": {
+      "mapping": "mmt-d004-r024",
+      "native": "controlled-overnight/1",
+      "role": "calendar_identity"
+    }
+  },
+  "calendar_policy": "controlled-overnight/1 complete Friday00\u2013Sunday00 coverage with Saturday overnight/day open and other intervals explicitly closed",
+  "phase_policy_success": {
+    "ref": "controlled-phases/1",
+    "intervals": [
+      [
+        "2026-10-10T00:00:00+11:00",
+        "2026-10-10T06:00:00+11:00",
+        "overnight"
+      ],
+      [
+        "2026-10-10T06:00:00+11:00",
+        "2026-10-10T16:00:00+11:00",
+        "day"
+      ]
+    ]
+  },
+  "success": true,
+  "refusal": "no Boolean/history where market state is unknown",
+  "market_state_success": {
+    "ref": "controlled-market-state/1",
+    "open_dates": [
+      "2026-10-10"
+    ],
+    "closed_dates": []
+  },
+  "market_state_refusal": {
+    "ref": "controlled-market-state/2",
+    "open_dates": [],
+    "closed_dates": []
+  },
+  "delivered_mode_policy": "controlled-delivered-mode/1: code 1 live only",
+  "liquid_phases": [
+    "overnight"
+  ]
+}
