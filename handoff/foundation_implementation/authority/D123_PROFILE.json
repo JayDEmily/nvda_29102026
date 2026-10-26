@@ -1,0 +1,58 @@
+{
+  "id": "D123",
+  "definition": "D123-20261011-01",
+  "kernel": "K02_ALGEBRA",
+  "parameter_profile": "P_BASIC",
+  "selected_right": "CALL",
+  "effective_raw": [
+    "R047",
+    "R048"
+  ],
+  "selected_raw": "R047 only",
+  "subject": "controlled-nvda-2026-12-18-C150",
+  "provider": "foundation-controlled-official-oi",
+  "variant": "period_v1",
+  "contract": {
+    "contract_id": "C150",
+    "underlying_instrument": "NVDA",
+    "expiry": "2026-12-18",
+    "strike": "150",
+    "option_right": "call"
+  },
+  "controlled_source_fields": [
+    "official_reporting_period_id",
+    "official_reporting_period_order",
+    "official_revision_id",
+    "official_revision_precedence"
+  ],
+  "success": [
+    {
+      "period": "P1",
+      "ordinal": 1,
+      "revision": "base",
+      "precedence": 1,
+      "OI": 100
+    },
+    {
+      "period": "P2",
+      "ordinal": 2,
+      "revision": "base",
+      "precedence": 1,
+      "OI": 125
+    },
+    {
+      "period": "P2",
+      "ordinal": 2,
+      "revision": "correction",
+      "precedence": 2,
+      "OI": 130
+    }
+  ],
+  "result": {
+    "current": 130,
+    "prior": 100,
+    "change": 30
+  },
+  "refusal": "replace the sole P1 fact with P2 revision precursor; all three actual raw R047 remain but only one distinct period",
+  "native_boundary": "controlled provider-independent period/revision identities, no live mapping"
+}
