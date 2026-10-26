@@ -1,0 +1,31 @@
+E501 Line too long (105 > 100)
+   --> src/nvda_desk/market_measurement_truth/_temporal_local.py:164:101
+    |
+162 | def _decode(payload: bytes) -> f.TemporalLocalOccurrenceV1:
+163 |     value = cast(f.TemporalLocalOccurrenceV1, decode(payload, f.TemporalLocalOccurrenceV1))
+164 |     return replace(value, result=value.result.astimezone(_zone(value.raw_input_lineage.canonical_value)))
+    |                                                                                                     ^^^^^
+    |
+
+E501 Line too long (102 > 100)
+   --> src/nvda_desk/market_measurement_truth/_temporal_local.py:175:101
+    |
+173 |         if type(derived_occurrence_id) is not str or not derived_occurrence_id:
+174 |             raise ValueError("nonempty derived identity required")
+175 |         return next((v for v in self.state.all() if v.derived_occurrence_id == derived_occurrence_id),
+    |                                                                                                     ^^
+176 |                     None)
+    |
+
+E501 Line too long (101 > 100)
+  --> tests/product/market_measurement_d003/test_signal.py:22:101
+   |
+20 |                                    PROVIDER, VARIANT, ("time", "value"), "native_time", META),
+21 |     r.RawSignalProjectionMappingV1("mmt-d001-r003", 1, r.RawSignalCatalogueId("R003"),
+22 |                                    PROVIDER, VARIANT, ("time", "timezone"), "native_timezone", META),
+   |                                                                                                     ^
+23 |     r.RawSignalProjectionMappingV1("mmt-d003-r004", 1, r.RawSignalCatalogueId("R004"),
+24 |                                    PROVIDER, VARIANT, ("time", "iana"), "IANA_timezone", META),
+   |
+
+Found 3 errors.

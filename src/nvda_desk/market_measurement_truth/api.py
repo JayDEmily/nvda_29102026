@@ -51,7 +51,9 @@ class _Validated:
                 raise TypeError(f"{field.name} has the wrong constructor type")
             if type(value) is str and not value:
                 raise ValueError(f"{field.name} must be nonempty")
-            if type(value) is datetime:
+            if type(value) is datetime and not (
+                field.name == "result" and isinstance(self, TemporalLocalOccurrenceV1)
+            ):
                 _utc(value)
             if type(value) is timedelta and value < timedelta(0):
                 raise ValueError("duration must be nonnegative")
@@ -1027,6 +1029,86 @@ class TemporalAgeOccurrenceV1(_Validated):
     calculated_at_utc: datetime
 
 
+@dataclass(frozen=True, slots=True)
+class TemporalLocalRequestV1(_Validated):
+    calculation: CalculationRequestV1
+    predecessor_occurrence_id: str
+
+
+@dataclass(frozen=True, slots=True)
+class TemporalLocalRawLineageV1(_Validated):
+    raw_signal_id: str
+    observation_occurrence_id: str
+    projection_mapping_ref: VersionRefV1
+    unit_convention_ref: VersionRefV1
+    projection: raw_api.ProjectedRawValueV1
+    canonical_value: str
+    event_time_utc: datetime
+
+
+@dataclass(frozen=True, slots=True)
+class TemporalLocalOccurrenceV1(_Validated):
+    owner_object_id: str
+    owner_namespace: str
+    implementation_brief_sha256: str
+    derived_signal_id: str
+    derived_occurrence_id: str
+    request: TemporalLocalRequestV1
+    definition: CalculationDefinitionV1
+    parameter_set: CalculationParameterSetV1
+    input_selection_policy: InputSelectionPolicyVersionV1
+    unit_convention: UnitConventionVersionV1
+    projection_mapping: raw_api.RawSignalProjectionMappingV1
+    raw_input_lineage: TemporalLocalRawLineageV1
+    predecessor: TemporalOccurrenceV1
+    zone_policy_ref: VersionRefV1
+    result: datetime
+    units: str
+    result_shape: str
+    effective_as_of_utc: datetime
+    knowledge_cutoff_utc: datetime
+    calculated_at_utc: datetime
+
+    def __post_init__(self) -> None:
+        _Validated.__post_init__(self)
+        if self.result.tzinfo is None or self.result.utcoffset() is None:
+            raise ValueError("aware local datetime required")
+
+
+class MeasurementTemporalLocalReadsV1(Protocol):
+    def get_derived_occurrence(self, derived_occurrence_id: str
+                               ) -> TemporalLocalOccurrenceV1 | None: ...
+    def list_derived_history(
+        self, *, derived_signal_id: str, subject_instrument: str,
+        effective_at_or_before_utc: datetime, knowledge_at_or_before_utc: datetime, limit: int,
+    ) -> tuple[TemporalLocalOccurrenceV1, ...]: ...
+
+
+class MeasurementTemporalLocalOwnerV1(Protocol):
+    @property
+    def reads(self) -> MeasurementTemporalLocalReadsV1: ...
+    def materialise(self, request: TemporalLocalRequestV1
+                    ) -> TemporalLocalOccurrenceV1 | None: ...
+
+
+def create_temporal_local_owner(
+    *, admission: OwnerAdmissionV1, raw_projection_reader: RawProjectionReaderV1,
+    predecessor_reader: MeasurementTemporalReadsV1,
+    storage: MemoryStorageV1 | SQLiteStorageV1, utc_now: Callable[[], datetime],
+) -> MeasurementTemporalLocalOwnerV1:
+    from ._temporal_local import build_owner
+
+    return build_owner(admission, raw_projection_reader, predecessor_reader, storage, utc_now)
+
+
+def create_temporal_local_reader(
+    *, admission: OwnerAdmissionV1, storage: SQLiteReadStorageV1,
+) -> MeasurementTemporalLocalReadsV1:
+    from ._temporal_local import build_reader
+
+    return build_reader(admission, storage)
+
+
 class MeasurementTemporalAgeReadsV1(Protocol):
     def get_derived_occurrence(self, derived_occurrence_id: str
                                ) -> TemporalAgeOccurrenceV1 | None: ...
@@ -1145,6 +1227,8 @@ __all__ += [
     "MeasurementComparisonV1",
     "MeasurementTemporalAgeOwnerV1",
     "MeasurementTemporalAgeReadsV1",
+    "MeasurementTemporalLocalOwnerV1",
+    "MeasurementTemporalLocalReadsV1",
     "MeasurementTemporalOwnerV1",
     "MeasurementTemporalReadsV1",
     "MeasurementWindowOwnerV1",
@@ -1157,6 +1241,9 @@ __all__ += [
     "TemporalAgeRawLineageV1",
     "TemporalAgeRequestV1",
     "TemporalAgeV1",
+    "TemporalLocalOccurrenceV1",
+    "TemporalLocalRawLineageV1",
+    "TemporalLocalRequestV1",
     "TemporalOccurrenceV1",
     "TemporalRawLineageV1",
     "TermPairV1",
@@ -1167,6 +1254,8 @@ __all__ += [
     "WindowMeasurementOccurrenceV1",
     "create_temporal_age_owner",
     "create_temporal_age_reader",
+    "create_temporal_local_owner",
+    "create_temporal_local_reader",
     "create_temporal_owner",
     "create_temporal_reader",
     "create_window_owner",

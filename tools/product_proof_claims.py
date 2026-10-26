@@ -411,6 +411,7 @@ def _scalar_extension(
     identity: Literal[
         "D001",
         "D002",
+        "D003",
         "D012",
         "D013",
         "D014",
@@ -527,6 +528,7 @@ def _scalar_extension(
     count = {
         "D001": 7,
         "D002": 7,
+        "D003": 7,
         "D012": 8,
         "D013": 11,
         "D014": 8,
@@ -711,6 +713,7 @@ def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductPro
             Literal[
                 "D001",
                 "D002",
+                "D003",
                 "D012",
                 "D013",
                 "D014",
@@ -794,6 +797,7 @@ def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductPro
         ] = (
             "D001",
             "D002",
+            "D003",
             "D012",
             "D013",
             "D014",
