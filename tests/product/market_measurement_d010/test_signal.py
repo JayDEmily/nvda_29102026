@@ -12,9 +12,9 @@ T = datetime(2026, 10, 9, 14, tzinfo=UTC)
 EVENT, RECEIPT, NOW = T - timedelta(seconds=10), T - timedelta(seconds=5), T + timedelta(seconds=1)
 PROVIDER, VARIANT = "foundation-controlled-temporal", "clock_v1"
 SAMPLE = "controlled-temporal-sample/1"
-D001_BRIEF = "8eead9ba80813cd82244ce076af7a18fdef121474c0dd15a346aee814e892a98"
+D001_BRIEF = "bd023e56cbf27f4e2979587fb9e4deb288be329901fd46c7a78897f9b8b4139d"
 D003_BRIEF = "278623c1f97b5faacef1a95304672c92631a14010d5fde71efad4ff817207e1d"
-BRIEF = "74d13a1058d4ecb89235c1789d54db1956f0857280665b064e666e8d5341f587"
+BRIEF = "8eead9ba80813cd82244ce076af7a18fdef121474c0dd15a346aee814e892a98"
 META = (("sample.id", ("sample", "id")), ("value.role", ("value", "role")))
 MAPS = (
     r.RawSignalProjectionMappingV1("mmt-d001-r002", 1, r.RawSignalCatalogueId("R002"),
