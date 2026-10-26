@@ -24,6 +24,8 @@ _IDENTITIES = {
 
 
 def timestamp(value: datetime) -> str:
+    if value.tzinfo is not None and value.utcoffset() != timedelta(0):
+        return value.isoformat(timespec="microseconds")
     return (
         f"{value.year:04d}-{value.month:02d}-{value.day:02d}T"
         f"{value.hour:02d}:{value.minute:02d}:{value.second:02d}.{value.microsecond:06d}Z"
