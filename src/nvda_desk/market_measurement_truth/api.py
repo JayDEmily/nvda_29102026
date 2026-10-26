@@ -970,6 +970,104 @@ class WindowMeasurementOccurrenceV1(_Validated):
 
 
 @dataclass(frozen=True, slots=True)
+class BookEventSelectionV1(_Validated):
+    ref: VersionRefV1
+    provider: str
+    variant: str
+    generation: str
+    history_complete_from_utc: datetime
+    maximum_events: int
+
+
+@dataclass(frozen=True, slots=True)
+class BookRawLineageV1(_Validated):
+    raw_signal_id: str
+    observation_occurrence_id: str
+    projection_mapping_ref: VersionRefV1
+    unit_convention_ref: VersionRefV1
+    projection: raw_api.ProjectedRawValueV1
+    canonical_value: int | Decimal
+    event_time_utc: datetime
+
+    def __post_init__(self) -> None:
+        _Validated.__post_init__(self)
+        expected = int if self.raw_signal_id in ("R185", "R187", "R188") else Decimal
+        if type(self.canonical_value) is not expected:
+            raise TypeError("book native role type mismatch")
+
+
+@dataclass(frozen=True, slots=True)
+class BookRowV1(_Validated):
+    side: int
+    position: int
+    price: Decimal
+    size: Decimal
+
+
+@dataclass(frozen=True, slots=True)
+class BookDepthRequestV1(_Validated):
+    calculation: CalculationRequestV1
+    selection: BookEventSelectionV1
+    predecessor_occurrence_id: str
+    band: Decimal
+
+
+@dataclass(frozen=True, slots=True)
+class BookDepthOccurrenceV1(_Validated):
+    owner_object_id: str
+    owner_namespace: str
+    implementation_brief_sha256: str
+    derived_signal_id: str
+    derived_occurrence_id: str
+    request: BookDepthRequestV1
+    definition: CalculationDefinitionV1
+    parameter_set: CalculationParameterSetV1
+    unit_conventions: tuple[UnitConventionVersionV1, ...]
+    projection_mappings: tuple[raw_api.RawSignalProjectionMappingV1, ...]
+    raw_input_lineage: tuple[BookRawLineageV1, ...]
+    predecessor: WindowMeasurementOccurrenceV1
+    standing_rows: tuple[BookRowV1, ...]
+    result: Decimal
+    units: str
+    result_shape: str
+    effective_as_of_utc: datetime
+    knowledge_cutoff_utc: datetime
+    calculated_at_utc: datetime
+
+
+class MeasurementBookDepthReadsV1(Protocol):
+    def get_derived_occurrence(self, derived_occurrence_id: str
+                               ) -> BookDepthOccurrenceV1 | None: ...
+    def list_derived_history(
+        self, *, derived_signal_id: str, subject_instrument: str,
+        effective_at_or_before_utc: datetime, knowledge_at_or_before_utc: datetime,
+        limit: int,
+    ) -> tuple[BookDepthOccurrenceV1, ...]: ...
+
+
+class MeasurementBookDepthOwnerV1(Protocol):
+    @property
+    def reads(self) -> MeasurementBookDepthReadsV1: ...
+    def materialise(self, request: BookDepthRequestV1) -> BookDepthOccurrenceV1 | None: ...
+
+
+def create_book_depth_owner(
+    *, admission: OwnerAdmissionV1, raw_projection_reader: RawProjectionReaderV1,
+    predecessor_reader: MeasurementWindowReadsV1,
+    storage: MemoryStorageV1 | SQLiteStorageV1, utc_now: Callable[[], datetime],
+) -> MeasurementBookDepthOwnerV1:
+    from ._book_depth import build_owner
+    return build_owner(admission, raw_projection_reader, predecessor_reader, storage, utc_now)
+
+
+def create_book_depth_reader(
+    *, admission: OwnerAdmissionV1, storage: SQLiteReadStorageV1,
+) -> MeasurementBookDepthReadsV1:
+    from ._book_depth import build_reader
+    return build_reader(admission, storage)
+
+
+@dataclass(frozen=True, slots=True)
 class TemporalRawLineageV1(_Validated):
     raw_signal_id: str
     observation_occurrence_id: str
