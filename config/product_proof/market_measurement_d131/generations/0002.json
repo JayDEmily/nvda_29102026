@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_d131",
+  "generation": 2,
+  "brief_sha256": "c095187484e295c35e1c27906480a0793d81d76091fac21fc9002ac6c521302c",
+  "binding_sha256": "8f09390bbe8d862c38829f384d69e7eceb4c805d06cb9d9f5528c5ef3f36e820",
+  "contract_sha256": "409dda80b31238bd06321797035ec7aee36929ca3e8bfd5429aec5a51e06b467",
+  "implementation_target_id": "M02",
+  "adequacy_review_ref": "handoff/foundation_implementation/authority/D131_IMPLEMENTATION_BRIEF.md-section1-source-case-inspection",
+  "admission_authority_ref": "owner-chat/20261026/next20-plan-accepted-and-execution-commissioned",
+  "family_files": [
+    {
+      "path": "tests/product/market_measurement_d131/test_signal.py",
+      "sha256": "5e0a930d6bef7438f519947935bc6d7000bd687dcdad74643795c7e9936ecbea"
+    }
+  ],
+  "support_files": [],
+  "previous_generation": {
+    "path": "config/product_proof/market_measurement_d131/generations/0001.json",
+    "sha256": "f6556913c3bf9835c0d2d661631ed92e7f390cc1b0028f14a4403ca45d03a85d"
+  }
+}

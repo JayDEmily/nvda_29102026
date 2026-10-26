@@ -87,7 +87,8 @@ BOOK_SELECTION = f.BookEventSelectionV1(
 )
 
 
-def admit(raw, identity, provider, variant, record, ids, stamp, sequence):
+def admit(raw, identity, provider, variant, record, ids, stamp, sequence,
+          source_stamp=None):
     raw.commands.admit_raw_observation_occurrence(r.RawObservationOccurrenceV1(
         concept_id=r.concept_id("raw_signal.raw_observation_occurrence"),
         contract_id=r.contract_id("nvda.raw_signal.RawObservationOccurrence.v1"),
@@ -99,7 +100,7 @@ def admit(raw, identity, provider, variant, record, ids, stamp, sequence):
         source_temporal_kind="true_instant",
         raw_signal_catalogue_ids=tuple(r.RawSignalCatalogueId(raw_id) for raw_id in ids),
         source_variant=variant, subject_instrument=SUBJECT, native_units="mixed_book_roles",
-        source_timestamp_raw=stamp.isoformat().replace("+00:00", "Z"),
+        source_timestamp_raw=(source_stamp or stamp).isoformat().replace("+00:00", "Z"),
         source_timezone_native="UTC",
     ))
 
@@ -152,7 +153,8 @@ def option_parent(raw, tmp_path):
     return parent, reader
 
 
-def event(raw, name, position, operation, side, price, size, seconds, sequence):
+def event(raw, name, position, operation, side, price, size, seconds, sequence,
+          source_seconds=None):
     fields = ("R187",) if operation == 317 else tuple(raw_id for raw_id, _, _ in BOOK_ROLES)
     record = {
         "generation": {"id": BOOK_GENERATION}, "event": {"id": name},
@@ -162,7 +164,8 @@ def event(raw, name, position, operation, side, price, size, seconds, sequence):
         record["book"].update(position=position, side=side, price=price, size=size)
     stamp = T - timedelta(seconds=seconds)
     admit(raw, "d131-" + name, BOOK_PROVIDER, BOOK_VARIANT, record,
-          fields, stamp, sequence)
+          fields, stamp, sequence,
+          T - timedelta(seconds=source_seconds) if source_seconds is not None else None)
     selected = []
     for mapping in BOOK_MAPS:
         if mapping.raw_signal_catalogue_id.value not in fields:
@@ -191,7 +194,7 @@ def test_d131_signal(tmp_path, refused):
     observed.extend(event(raw, "ask-near", 0, 0, 1, Decimal("100.2"),
                           Decimal("3"), 2, 2))
     observed.extend(event(raw, "bid-far", 1, 0, 0, Decimal("99"),
-                          Decimal("7"), 1, 3))
+                          Decimal("7"), 1, 3, source_seconds=4))
     if refused:
         reset = event(raw, "reset", None, 317, None, None, None, 0, 4)
         assert len(reset) == 1 and reset[0].native_value == 317
@@ -243,6 +246,10 @@ def test_d131_signal(tmp_path, refused):
     assert (occurrence.effective_as_of_utc, occurrence.knowledge_cutoff_utc,
             occurrence.calculated_at_utc) == (T, CUTOFF, NOW)
     assert len(occurrence.raw_input_lineage) == 15
+    assert tuple(line.observation_occurrence_id for line in
+                 occurrence.raw_input_lineage[::5]) == (
+        "d131-bid-near", "d131-ask-near", "d131-bid-far",
+    )  # receipt order differs from native source-event timestamp order
     assert {line.observation_occurrence_id for line in occurrence.raw_input_lineage} == {
         "d131-bid-near", "d131-ask-near", "d131-bid-far",
     }

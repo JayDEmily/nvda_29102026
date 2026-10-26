@@ -136,19 +136,17 @@ def _replay(lines: tuple[f.BookRawLineageV1, ...]
     if not groups or len(groups) > SELECTION.maximum_events:
         raise ValueError("incomplete or unbounded book history")
     ordered = sorted(groups.values(), key=lambda group: (
-        next(iter(group.values())).event_time_utc,
         next(iter(group.values())).projection.received_ts_utc,
         next(iter(group.values())).projection.ingestion_sequence,
     ))
     sides: dict[int, list[f.BookRowV1]] = {0: [], 1: []}
     saw_bid = saw_ask = False
-    previous_key: tuple[datetime, datetime, int] | None = None
+    previous_key: tuple[datetime, int] | None = None
     for group in ordered:
         if "R187" not in group:
             raise ValueError("missing operation")
         first = group["R187"]
-        key = (first.event_time_utc, first.projection.received_ts_utc,
-               first.projection.ingestion_sequence)
+        key = (first.projection.received_ts_utc, first.projection.ingestion_sequence)
         if previous_key is not None and key <= previous_key:
             raise ValueError("ambiguous event order")
         previous_key = key
@@ -300,7 +298,7 @@ class _Owner:
                     if page.next_cursor == cursor:
                         raise ValueError("nonprogressing book cursor")
                     cursor = page.next_cursor
-            lines.sort(key=lambda line: (line.event_time_utc, line.projection.received_ts_utc,
+            lines.sort(key=lambda line: (line.projection.received_ts_utc,
                                          line.projection.ingestion_sequence,
                                          next(i for i, role in enumerate(ROLES)
                                               if role[0] == line.raw_signal_id)))
