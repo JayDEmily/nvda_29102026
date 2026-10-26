@@ -1035,6 +1035,73 @@ class BookDepthOccurrenceV1(_Validated):
     calculated_at_utc: datetime
 
 
+@dataclass(frozen=True, slots=True)
+class SmartSizeRowV1(_Validated):
+    side: int
+    position: int
+    size: Decimal
+
+
+@dataclass(frozen=True, slots=True)
+class SmartDepthRequestV1(_Validated):
+    calculation: CalculationRequestV1
+    selection: BookEventSelectionV1
+    depth_levels: int
+
+
+@dataclass(frozen=True, slots=True)
+class SmartDepthOccurrenceV1(_Validated):
+    owner_object_id: str
+    owner_namespace: str
+    implementation_brief_sha256: str
+    derived_signal_id: str
+    derived_occurrence_id: str
+    request: SmartDepthRequestV1
+    definition: CalculationDefinitionV1
+    parameter_set: CalculationParameterSetV1
+    unit_conventions: tuple[UnitConventionVersionV1, ...]
+    projection_mappings: tuple[raw_api.RawSignalProjectionMappingV1, ...]
+    raw_input_lineage: tuple[BookRawLineageV1, ...]
+    standing_rows: tuple[SmartSizeRowV1, ...]
+    result: Decimal
+    units: str
+    result_shape: str
+    effective_as_of_utc: datetime
+    knowledge_cutoff_utc: datetime
+    calculated_at_utc: datetime
+
+
+class MeasurementSmartDepthReadsV1(Protocol):
+    def get_derived_occurrence(self, derived_occurrence_id: str
+                               ) -> SmartDepthOccurrenceV1 | None: ...
+    def list_derived_history(
+        self, *, derived_signal_id: str, subject_instrument: str,
+        effective_at_or_before_utc: datetime, knowledge_at_or_before_utc: datetime,
+        limit: int,
+    ) -> tuple[SmartDepthOccurrenceV1, ...]: ...
+
+
+class MeasurementSmartDepthOwnerV1(Protocol):
+    @property
+    def reads(self) -> MeasurementSmartDepthReadsV1: ...
+    def materialise(self, request: SmartDepthRequestV1) -> SmartDepthOccurrenceV1 | None: ...
+
+
+def create_smart_depth_owner(
+    *, admission: OwnerAdmissionV1, raw_projection_reader: RawProjectionReaderV1,
+    storage: MemoryStorageV1 | SQLiteStorageV1, utc_now: Callable[[], datetime],
+) -> MeasurementSmartDepthOwnerV1:
+    from ._smart_depth import build_owner
+    return build_owner(admission, raw_projection_reader, storage, utc_now)
+
+
+def create_smart_depth_reader(
+    *, admission: OwnerAdmissionV1, storage: SQLiteReadStorageV1,
+) -> MeasurementSmartDepthReadsV1:
+    from ._smart_depth import build_reader
+    return build_reader(admission, storage)
+
+
 class MeasurementBookDepthReadsV1(Protocol):
     def get_derived_occurrence(self, derived_occurrence_id: str
                                ) -> BookDepthOccurrenceV1 | None: ...
