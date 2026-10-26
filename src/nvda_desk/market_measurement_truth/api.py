@@ -1071,6 +1071,65 @@ class SmartDepthOccurrenceV1(_Validated):
     calculated_at_utc: datetime
 
 
+@dataclass(frozen=True, slots=True)
+class SmartImbalanceRequestV1(_Validated):
+    calculation: CalculationRequestV1
+    predecessor_occurrence_ids: tuple[str, str]
+    requested_depth_levels: tuple[int, int]
+
+
+@dataclass(frozen=True, slots=True)
+class SmartImbalanceOccurrenceV1(_Validated):
+    owner_object_id: str
+    owner_namespace: str
+    implementation_brief_sha256: str
+    derived_signal_id: str
+    derived_occurrence_id: str
+    request: SmartImbalanceRequestV1
+    definition: CalculationDefinitionV1
+    parameter_set: CalculationParameterSetV1
+    predecessors: tuple[SmartDepthOccurrenceV1, SmartDepthOccurrenceV1]
+    result: ExactRatioV1
+    units: str
+    result_shape: str
+    effective_as_of_utc: datetime
+    knowledge_cutoff_utc: datetime
+    calculated_at_utc: datetime
+
+
+class MeasurementSmartImbalanceReadsV1(Protocol):
+    def get_derived_occurrence(self, derived_occurrence_id: str
+                               ) -> SmartImbalanceOccurrenceV1 | None: ...
+    def list_derived_history(
+        self, *, derived_signal_id: str, subject_instrument: str,
+        effective_at_or_before_utc: datetime, knowledge_at_or_before_utc: datetime,
+        limit: int,
+    ) -> tuple[SmartImbalanceOccurrenceV1, ...]: ...
+
+
+class MeasurementSmartImbalanceOwnerV1(Protocol):
+    @property
+    def reads(self) -> MeasurementSmartImbalanceReadsV1: ...
+    def materialise(self, request: SmartImbalanceRequestV1
+                    ) -> SmartImbalanceOccurrenceV1 | None: ...
+
+
+def create_smart_imbalance_owner(
+    *, admission: OwnerAdmissionV1, bid_reader: MeasurementSmartDepthReadsV1,
+    ask_reader: MeasurementSmartDepthReadsV1,
+    storage: MemoryStorageV1 | SQLiteStorageV1, utc_now: Callable[[], datetime],
+) -> MeasurementSmartImbalanceOwnerV1:
+    from ._smart_imbalance import build_owner
+    return build_owner(admission, bid_reader, ask_reader, storage, utc_now)
+
+
+def create_smart_imbalance_reader(
+    *, admission: OwnerAdmissionV1, storage: SQLiteReadStorageV1,
+) -> MeasurementSmartImbalanceReadsV1:
+    from ._smart_imbalance import build_reader
+    return build_reader(admission, storage)
+
+
 class MeasurementSmartDepthReadsV1(Protocol):
     def get_derived_occurrence(self, derived_occurrence_id: str
                                ) -> SmartDepthOccurrenceV1 | None: ...
