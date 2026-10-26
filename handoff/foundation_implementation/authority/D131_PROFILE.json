@@ -1,0 +1,73 @@
+{
+  "id": "D131",
+  "definition": "D131-POSITIONAL-OPTION-DEPTH-BAND-1",
+  "kernel": "K02_ALGEBRA",
+  "parameter_profile": "P_BASIC",
+  "subject": "controlled-nvda-c110-20261023",
+  "provider": "foundation-controlled-smart-book",
+  "variant": "positional_v1",
+  "as_of": "2026-10-20T12:40:00Z",
+  "cutoff": "2026-10-20T12:40:01Z",
+  "actual_predecessor": "D087-OPTION-SCALAR-1",
+  "midpoint": "100",
+  "band_inclusive": "0.5",
+  "native_fields": {
+    "R185": "book.position int",
+    "R187": "book.operation int",
+    "R188": "book.side int",
+    "R189": "book.price Decimal",
+    "R190": "book.size Decimal"
+  },
+  "operation_mapping": {
+    "0": "insert with positional shift",
+    "1": "update at existing position",
+    "2": "delete standing row and shift subsequent positions",
+    "317": "reset/invalidate state until complete warm-up"
+  },
+  "side_mapping": {
+    "0": "bid",
+    "1": "ask"
+  },
+  "generation": "controlled-smart-book-generation/1",
+  "source_event_groups": [
+    {
+      "event": "bid-near",
+      "position": 0,
+      "operation": 0,
+      "side": 0,
+      "price": "99.8",
+      "size": "5"
+    },
+    {
+      "event": "ask-near",
+      "position": 0,
+      "operation": 0,
+      "side": 1,
+      "price": "100.2",
+      "size": "3"
+    },
+    {
+      "event": "bid-far",
+      "position": 1,
+      "operation": 0,
+      "side": 0,
+      "price": "99",
+      "size": "7"
+    }
+  ],
+  "success": {
+    "selected_standing_rows": [
+      "bid-near",
+      "ask-near"
+    ],
+    "excluded": [
+      "bid-far"
+    ],
+    "depth": "8"
+  },
+  "refusal": {
+    "mutation": "controlled reset/error317 after warm-up before selection",
+    "effect": "invalidated book; no D131 occurrence/history"
+  },
+  "native_boundary": "synthetic operation/side enum and complete warm-up only; no native SMART feed certification"
+}
