@@ -1,0 +1,57 @@
+{
+  "id": "D119",
+  "definition": "D119-CALL-PUT-OI-BASKET-1",
+  "kernel": "K02_ALGEBRA",
+  "parameter_profile": "P_BASIC",
+  "subject": "NVDA_ACTIVITY_E1",
+  "members": [
+    "controlled-skew-2026-10-23-C25",
+    "controlled-skew-2026-10-23-C10",
+    "controlled-skew-2026-10-23-P25",
+    "controlled-skew-2026-10-23-P10"
+  ],
+  "expiry": "2026-10-23",
+  "strike_region_inclusive": [
+    90,
+    130
+  ],
+  "provider": "foundation-controlled-option-activity",
+  "variant": "member_oi_v1",
+  "raw": "R047 per call, R048 per put",
+  "mappings": {
+    "R047": "mmt-r047-member-call-oi/1 oi.call",
+    "R048": "mmt-r048-member-put-oi/1 oi.put"
+  },
+  "unit": "mmt-option-contracts/1 contracts identity",
+  "context": "controlled-option-session/1",
+  "parameter": "mmt-d119-controlled/1",
+  "selection": "mmt-d119-selection/1",
+  "success": {
+    "call": [
+      25,
+      15
+    ],
+    "put": [
+      12,
+      8
+    ],
+    "ratio": [
+      2,
+      1
+    ]
+  },
+  "refusal": {
+    "changed_only": "P10 R048 official period controlled-oi-period-20261019/1",
+    "other_members": 3,
+    "reason": "mixed official reporting period; all four actual R047/R048 remain projected"
+  },
+  "time": "2026-10-20T12:40:00Z",
+  "cutoff": "T+1s",
+  "now": "T+2s",
+  "page": [
+    100,
+    1000
+  ],
+  "official_period": "controlled-oi-period-20261020/1",
+  "official_revision": "controlled-oi-revision/1"
+}
