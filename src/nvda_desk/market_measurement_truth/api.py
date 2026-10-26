@@ -1102,6 +1102,21 @@ def create_smart_depth_reader(
     return build_reader(admission, storage)
 
 
+def create_smart_ask_owner(
+    *, admission: OwnerAdmissionV1, raw_projection_reader: RawProjectionReaderV1,
+    storage: MemoryStorageV1 | SQLiteStorageV1, utc_now: Callable[[], datetime],
+) -> MeasurementSmartDepthOwnerV1:
+    from ._smart_ask import build_owner
+    return build_owner(admission, raw_projection_reader, storage, utc_now)
+
+
+def create_smart_ask_reader(
+    *, admission: OwnerAdmissionV1, storage: SQLiteReadStorageV1,
+) -> MeasurementSmartDepthReadsV1:
+    from ._smart_ask import build_reader
+    return build_reader(admission, storage)
+
+
 class MeasurementBookDepthReadsV1(Protocol):
     def get_derived_occurrence(self, derived_occurrence_id: str
                                ) -> BookDepthOccurrenceV1 | None: ...
