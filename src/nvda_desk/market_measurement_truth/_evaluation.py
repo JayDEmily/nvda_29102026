@@ -6,7 +6,7 @@ import hashlib
 import json
 import types
 from dataclasses import fields, is_dataclass
-from datetime import datetime, timedelta
+from datetime import date, datetime, timedelta
 from decimal import Decimal
 from typing import Any, Literal, TypeAliasType, cast, get_args, get_origin, get_type_hints
 
@@ -45,6 +45,8 @@ def tagged(value: Any) -> Any:
         }
     if type(value) is datetime:
         return timestamp(value)
+    if type(value) is date:
+        return {"kind": "date", "value": value.isoformat()}
     if type(value) is timedelta:
         return (value.days * 86400 + value.seconds) * 1000000 + value.microseconds
     if is_dataclass(value) and not isinstance(value, type):
@@ -119,6 +121,15 @@ def untagged(value: Any, hint: Any) -> Any:
         if type(value) is not str:
             raise TypeError("instant must be a string")
         return datetime.fromisoformat(value.replace("Z", "+00:00"))
+    if hint is date:
+        if type(value) is not dict or set(value) != {"kind", "value"} or value["kind"] != "date":
+            raise ValueError("invalid exact date tag")
+        if type(value["value"]) is not str:
+            raise TypeError("date value must be a string")
+        parsed = date.fromisoformat(value["value"])
+        if parsed.isoformat() != value["value"]:
+            raise ValueError("noncanonical date value")
+        return parsed
     if hint is timedelta:
         if type(value) is not int:
             raise TypeError("duration must be exact microseconds")
@@ -132,6 +143,7 @@ def untagged(value: Any, hint: Any) -> Any:
         if hint in (
             f.OptionRightLineageV1, f.TemporalRawLineageV1,
             f.TemporalAgeRawLineageV1, f.TemporalLocalRawLineageV1,
+            f.TemporalCalendarRawLineageV1,
         ):
             projection = value["projection"]
             projection_hints = get_type_hints(raw_api.ProjectedRawValueV1)
@@ -154,6 +166,13 @@ def untagged(value: Any, hint: Any) -> Any:
                 {"kind": "RawSignalCatalogueId", "value": "R004"}
             ):
                 raise ValueError("unadmitted exact IANA source role")
+            if hint is f.TemporalCalendarRawLineageV1 and projection[
+                "raw_signal_catalogue_id"
+            ] not in (
+                {"kind": "RawSignalCatalogueId", "value": "R023"},
+                {"kind": "RawSignalCatalogueId", "value": "R024"},
+            ):
+                raise ValueError("unadmitted exact calendar source role")
             decoded_projection = raw_api.ProjectedRawValueV1(**{
                 key: projection[key] if key == "native_value" else untagged(projection[key], cls)
                 for key, cls in projection_hints.items()

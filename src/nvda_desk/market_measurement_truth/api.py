@@ -6,7 +6,7 @@ import re
 import types
 from collections.abc import Callable, Sequence
 from dataclasses import dataclass, fields, is_dataclass
-from datetime import datetime, timedelta
+from datetime import date, datetime, timedelta
 from decimal import Decimal
 from math import gcd
 from pathlib import Path
@@ -1075,6 +1075,116 @@ class TemporalLocalOccurrenceV1(_Validated):
             raise ValueError("aware local datetime required")
 
 
+@dataclass(frozen=True, slots=True)
+class CalendarIntervalV1(_Validated):
+    start_utc: datetime
+    end_utc: datetime
+    session_id: str
+    trading_date: date | None
+
+    def __post_init__(self) -> None:
+        _Validated.__post_init__(self)
+        if self.end_utc <= self.start_utc:
+            raise ValueError("calendar interval must be positive")
+        if (self.session_id == "closed") != (self.trading_date is None):
+            raise ValueError("closed interval cannot assign a trading date")
+
+
+@dataclass(frozen=True, slots=True)
+class CalendarPolicyV1(_Validated):
+    ref: VersionRefV1
+    iana_zone: str
+    coverage_start_utc: datetime
+    coverage_end_utc: datetime
+    intervals: tuple[CalendarIntervalV1, ...]
+
+    def __post_init__(self) -> None:
+        _Validated.__post_init__(self)
+        if (not self.intervals or self.coverage_end_utc <= self.coverage_start_utc
+            or self.intervals[0].start_utc != self.coverage_start_utc
+            or self.intervals[-1].end_utc != self.coverage_end_utc
+            or any(a.end_utc != b.start_utc for a, b in zip(
+                self.intervals, self.intervals[1:], strict=False,
+            ))):
+            raise ValueError("calendar coverage must be ordered, complete and nonoverlapping")
+
+
+@dataclass(frozen=True, slots=True)
+class TemporalDateRequestV1(_Validated):
+    calculation: CalculationRequestV1
+    predecessor_occurrence_id: str
+    calendar_policy: CalendarPolicyV1
+
+
+@dataclass(frozen=True, slots=True)
+class TemporalCalendarRawLineageV1(_Validated):
+    raw_signal_id: str
+    observation_occurrence_id: str
+    projection_mapping_ref: VersionRefV1
+    unit_convention_ref: VersionRefV1
+    projection: raw_api.ProjectedRawValueV1
+    canonical_value: str
+    event_time_utc: datetime
+
+
+@dataclass(frozen=True, slots=True)
+class TemporalDateOccurrenceV1(_Validated):
+    owner_object_id: str
+    owner_namespace: str
+    implementation_brief_sha256: str
+    derived_signal_id: str
+    derived_occurrence_id: str
+    request: TemporalDateRequestV1
+    definition: CalculationDefinitionV1
+    parameter_set: CalculationParameterSetV1
+    input_selection_policy: InputSelectionPolicyVersionV1
+    unit_conventions: tuple[UnitConventionVersionV1, ...]
+    projection_mappings: tuple[raw_api.RawSignalProjectionMappingV1, ...]
+    raw_input_lineage: tuple[TemporalCalendarRawLineageV1, ...]
+    predecessor: TemporalLocalOccurrenceV1
+    calendar_policy: CalendarPolicyV1
+    result: date
+    units: str
+    result_shape: str
+    effective_as_of_utc: datetime
+    knowledge_cutoff_utc: datetime
+    calculated_at_utc: datetime
+
+
+class MeasurementTemporalDateReadsV1(Protocol):
+    def get_derived_occurrence(self, derived_occurrence_id: str
+                               ) -> TemporalDateOccurrenceV1 | None: ...
+    def list_derived_history(
+        self, *, derived_signal_id: str, subject_instrument: str,
+        effective_at_or_before_utc: datetime, knowledge_at_or_before_utc: datetime, limit: int,
+    ) -> tuple[TemporalDateOccurrenceV1, ...]: ...
+
+
+class MeasurementTemporalDateOwnerV1(Protocol):
+    @property
+    def reads(self) -> MeasurementTemporalDateReadsV1: ...
+    def materialise(self, request: TemporalDateRequestV1
+                    ) -> TemporalDateOccurrenceV1 | None: ...
+
+
+def create_temporal_date_owner(
+    *, admission: OwnerAdmissionV1, raw_projection_reader: RawProjectionReaderV1,
+    predecessor_reader: MeasurementTemporalLocalReadsV1,
+    storage: MemoryStorageV1 | SQLiteStorageV1, utc_now: Callable[[], datetime],
+) -> MeasurementTemporalDateOwnerV1:
+    from ._temporal_date import build_owner
+
+    return build_owner(admission, raw_projection_reader, predecessor_reader, storage, utc_now)
+
+
+def create_temporal_date_reader(
+    *, admission: OwnerAdmissionV1, storage: SQLiteReadStorageV1,
+) -> MeasurementTemporalDateReadsV1:
+    from ._temporal_date import build_reader
+
+    return build_reader(admission, storage)
+
+
 class MeasurementTemporalLocalReadsV1(Protocol):
     def get_derived_occurrence(self, derived_occurrence_id: str
                                ) -> TemporalLocalOccurrenceV1 | None: ...
@@ -1222,11 +1332,15 @@ def create_window_reader(
 
 __all__ += [
     "BaselineWindowContextV1",
+    "CalendarIntervalV1",
+    "CalendarPolicyV1",
     "CorrelationMatrixV1",
     "IndexChangeV1",
     "MeasurementComparisonV1",
     "MeasurementTemporalAgeOwnerV1",
     "MeasurementTemporalAgeReadsV1",
+    "MeasurementTemporalDateOwnerV1",
+    "MeasurementTemporalDateReadsV1",
     "MeasurementTemporalLocalOwnerV1",
     "MeasurementTemporalLocalReadsV1",
     "MeasurementTemporalOwnerV1",
@@ -1241,6 +1355,9 @@ __all__ += [
     "TemporalAgeRawLineageV1",
     "TemporalAgeRequestV1",
     "TemporalAgeV1",
+    "TemporalCalendarRawLineageV1",
+    "TemporalDateOccurrenceV1",
+    "TemporalDateRequestV1",
     "TemporalLocalOccurrenceV1",
     "TemporalLocalRawLineageV1",
     "TemporalLocalRequestV1",
@@ -1254,6 +1371,8 @@ __all__ += [
     "WindowMeasurementOccurrenceV1",
     "create_temporal_age_owner",
     "create_temporal_age_reader",
+    "create_temporal_date_owner",
+    "create_temporal_date_reader",
     "create_temporal_local_owner",
     "create_temporal_local_reader",
     "create_temporal_owner",
