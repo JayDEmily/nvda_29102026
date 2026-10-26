@@ -1505,13 +1505,126 @@ def create_window_reader(
     return build_reader(admission, storage)
 
 
+@dataclass(frozen=True, slots=True)
+class DeliveredModePolicyV1(_Validated):
+    ref: VersionRefV1
+    requested_mode: str
+    live_delivered_code: int
+    generation_id: str
+
+
+@dataclass(frozen=True, slots=True)
+class MarketStatePolicyV1(_Validated):
+    ref: VersionRefV1
+    calendar_ref: VersionRefV1
+    open_dates: tuple[date, ...]
+    closed_dates: tuple[date, ...]
+
+    def __post_init__(self) -> None:
+        _Validated.__post_init__(self)
+        if set(self.open_dates) & set(self.closed_dates):
+            raise ValueError("market date cannot be both open and closed")
+
+
+@dataclass(frozen=True, slots=True)
+class MarketModeRawLineageV1(_Validated):
+    raw_signal_id: str
+    observation_occurrence_id: str
+    projection_mapping_ref: VersionRefV1
+    unit_convention_ref: VersionRefV1
+    projection: raw_api.ProjectedRawValueV1
+    canonical_value: int
+    event_time_utc: datetime
+
+
+@dataclass(frozen=True, slots=True)
+class MarketOpenRequestV1(_Validated):
+    calculation: CalculationRequestV1
+    predecessor_occurrence_id: str
+    mode_policy: DeliveredModePolicyV1
+    calendar_policy: CalendarPolicyV1
+    phase_policy: PhasePolicyV1
+    market_state_policy: MarketStatePolicyV1
+    liquid_phases: tuple[str, ...]
+
+
+@dataclass(frozen=True, slots=True)
+class MarketOpenOccurrenceV1(_Validated):
+    owner_object_id: str
+    owner_namespace: str
+    implementation_brief_sha256: str
+    derived_signal_id: str
+    derived_occurrence_id: str
+    request: MarketOpenRequestV1
+    definition: CalculationDefinitionV1
+    parameter_set: CalculationParameterSetV1
+    input_selection_policy: InputSelectionPolicyVersionV1
+    unit_conventions: tuple[UnitConventionVersionV1, ...]
+    projection_mappings: tuple[raw_api.RawSignalProjectionMappingV1, ...]
+    delivered_mode_lineage: MarketModeRawLineageV1
+    calendar_lineage: tuple[TemporalCalendarRawLineageV1, ...]
+    predecessor: TemporalLocalOccurrenceV1
+    mode_policy: DeliveredModePolicyV1
+    calendar_policy: CalendarPolicyV1
+    phase_policy: PhasePolicyV1
+    market_state_policy: MarketStatePolicyV1
+    liquid_phases: tuple[str, ...]
+    result: bool
+    units: str
+    result_shape: str
+    effective_as_of_utc: datetime
+    knowledge_cutoff_utc: datetime
+    calculated_at_utc: datetime
+
+
+class MeasurementMarketOpenReadsV1(Protocol):
+    def get_derived_occurrence(self, derived_occurrence_id: str
+                               ) -> MarketOpenOccurrenceV1 | None: ...
+    def list_derived_history(
+        self, *, derived_signal_id: str, subject_instrument: str,
+        effective_at_or_before_utc: datetime, knowledge_at_or_before_utc: datetime, limit: int,
+    ) -> tuple[MarketOpenOccurrenceV1, ...]: ...
+
+
+class MeasurementMarketOpenOwnerV1(Protocol):
+    @property
+    def reads(self) -> MeasurementMarketOpenReadsV1: ...
+    def materialise(self, request: MarketOpenRequestV1
+                    ) -> MarketOpenOccurrenceV1 | None: ...
+
+
+def create_market_open_owner(
+    *, admission: OwnerAdmissionV1, raw_projection_reader: RawProjectionReaderV1,
+    predecessor_reader: MeasurementTemporalLocalReadsV1,
+    storage: MemoryStorageV1 | SQLiteStorageV1, utc_now: Callable[[], datetime],
+) -> MeasurementMarketOpenOwnerV1:
+    from ._market_open import build_owner
+
+    return build_owner(admission, raw_projection_reader, predecessor_reader, storage, utc_now)
+
+
+def create_market_open_reader(
+    *, admission: OwnerAdmissionV1, storage: SQLiteReadStorageV1,
+) -> MeasurementMarketOpenReadsV1:
+    from ._market_open import build_reader
+
+    return build_reader(admission, storage)
+
+
 __all__ += [
     "BaselineWindowContextV1",
     "CalendarIntervalV1",
     "CalendarPolicyV1",
     "CorrelationMatrixV1",
+    "DeliveredModePolicyV1",
     "IndexChangeV1",
+    "MarketModeRawLineageV1",
+    "MarketOpenOccurrenceV1",
+    "MarketOpenRequestV1",
+    "MarketStatePolicyV1",
     "MeasurementComparisonV1",
+    "MeasurementMarketOpenOwnerV1",
+    "MeasurementMarketOpenReadsV1",
     "MeasurementTemporalAgeOwnerV1",
     "MeasurementTemporalAgeReadsV1",
     "MeasurementTemporalDateOwnerV1",
@@ -1555,6 +1668,8 @@ __all__ += [
     "WindowCalculationRequestV1",
     "WindowContextV1",
     "WindowMeasurementOccurrenceV1",
+    "create_market_open_owner",
+    "create_market_open_reader",
     "create_temporal_age_owner",
     "create_temporal_age_reader",
     "create_temporal_date_owner",

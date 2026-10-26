@@ -1,5 +1,5 @@
 schema_version: "1.0"
-brief_sha256: 74d13a1058d4ecb89235c1789d54db1956f0857280665b064e666e8d5341f587
+brief_sha256: 8eead9ba80813cd82244ce076af7a18fdef121474c0dd15a346aee814e892a98
 acceptance:
   status: ACCEPTED_FOR_IMPLEMENTATION
   authority_ref: owner-chat/20261026/next20-plan-accepted-and-execution-commissioned

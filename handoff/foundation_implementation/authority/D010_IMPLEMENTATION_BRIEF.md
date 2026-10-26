@@ -8,6 +8,8 @@ Actual public D001/D003 yield aware Saturday 2026-10-10T00:59:50+11:00. M00 proj
 
 The refusal leaves R005=1, R023/R024 and actual D003 unchanged, using controlled-market-state/2 without applicable Saturday state. It yields no Boolean/result/history. A declared known closed v3 yields false, not refusal; no third physical case. These are synthetic controlled facts; no native live feed or exchange certification.
 
+D010-PROOF-CONTRACT-SHA256: 33d74d392c97945df5c616d42b1c50855b8dcdc5615b4ad6e26b287f55f5c723
+
 ## 2. Incorporated bytes
 
 | Path | SHA256 |

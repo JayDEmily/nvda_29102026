@@ -145,12 +145,19 @@ def untagged(value: Any, hint: Any) -> Any:
             f.TemporalAgeRawLineageV1, f.TemporalLocalRawLineageV1,
             f.TemporalCalendarRawLineageV1,
             f.VintageRawLineageV1,
+            f.MarketModeRawLineageV1,
         ):
             projection = value["projection"]
             projection_hints = get_type_hints(raw_api.ProjectedRawValueV1)
             if (type(projection) is not dict or set(projection) != set(projection_hints)
-                or type(projection["native_value"]) is not str):
+                or type(projection["native_value"]) is not (
+                    int if hint is f.MarketModeRawLineageV1 else str
+                )):
                 raise ValueError("invalid exact categorical/temporal projection")
+            if hint is f.MarketModeRawLineageV1 and (projection["native_value"] != 1
+                or projection["raw_signal_catalogue_id"]
+                != {"kind": "RawSignalCatalogueId", "value": "R005"}):
+                raise ValueError("unadmitted delivered mode projection")
             if hint is f.OptionRightLineageV1 and projection["native_value"] not in ("C", "P"):
                 raise ValueError("invalid exact R015 categorical projection")
             if hint is f.TemporalRawLineageV1 and projection["raw_signal_catalogue_id"] not in (
