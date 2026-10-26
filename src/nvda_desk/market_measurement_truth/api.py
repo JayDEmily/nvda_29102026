@@ -1151,6 +1151,100 @@ class TemporalDateOccurrenceV1(_Validated):
     calculated_at_utc: datetime
 
 
+@dataclass(frozen=True, slots=True)
+class PhaseIntervalV1(_Validated):
+    start_utc: datetime
+    end_utc: datetime
+    phase: str
+
+    def __post_init__(self) -> None:
+        _Validated.__post_init__(self)
+        if self.end_utc <= self.start_utc:
+            raise ValueError("phase interval must be positive")
+
+
+@dataclass(frozen=True, slots=True)
+class PhasePolicyV1(_Validated):
+    ref: VersionRefV1
+    calendar_ref: VersionRefV1
+    iana_zone: str
+    intervals: tuple[PhaseIntervalV1, ...]
+
+    def __post_init__(self) -> None:
+        _Validated.__post_init__(self)
+        if (not self.intervals or any(a.end_utc > b.start_utc for a, b in zip(
+            self.intervals, self.intervals[1:], strict=False,
+        ))):
+            raise ValueError("ordered nonoverlapping phase schedule required")
+
+
+@dataclass(frozen=True, slots=True)
+class TemporalPhaseRequestV1(_Validated):
+    calculation: CalculationRequestV1
+    predecessor_occurrence_id: str
+    calendar_policy: CalendarPolicyV1
+    phase_policy: PhasePolicyV1
+
+
+@dataclass(frozen=True, slots=True)
+class TemporalPhaseOccurrenceV1(_Validated):
+    owner_object_id: str
+    owner_namespace: str
+    implementation_brief_sha256: str
+    derived_signal_id: str
+    derived_occurrence_id: str
+    request: TemporalPhaseRequestV1
+    definition: CalculationDefinitionV1
+    parameter_set: CalculationParameterSetV1
+    input_selection_policy: InputSelectionPolicyVersionV1
+    unit_conventions: tuple[UnitConventionVersionV1, ...]
+    projection_mappings: tuple[raw_api.RawSignalProjectionMappingV1, ...]
+    raw_input_lineage: tuple[TemporalCalendarRawLineageV1, ...]
+    predecessor: TemporalLocalOccurrenceV1
+    calendar_policy: CalendarPolicyV1
+    phase_policy: PhasePolicyV1
+    result: str
+    units: str
+    result_shape: str
+    effective_as_of_utc: datetime
+    knowledge_cutoff_utc: datetime
+    calculated_at_utc: datetime
+
+
+class MeasurementTemporalPhaseReadsV1(Protocol):
+    def get_derived_occurrence(self, derived_occurrence_id: str
+                               ) -> TemporalPhaseOccurrenceV1 | None: ...
+    def list_derived_history(
+        self, *, derived_signal_id: str, subject_instrument: str,
+        effective_at_or_before_utc: datetime, knowledge_at_or_before_utc: datetime, limit: int,
+    ) -> tuple[TemporalPhaseOccurrenceV1, ...]: ...
+
+
+class MeasurementTemporalPhaseOwnerV1(Protocol):
+    @property
+    def reads(self) -> MeasurementTemporalPhaseReadsV1: ...
+    def materialise(self, request: TemporalPhaseRequestV1
+                    ) -> TemporalPhaseOccurrenceV1 | None: ...
+
+
+def create_temporal_phase_owner(
+    *, admission: OwnerAdmissionV1, raw_projection_reader: RawProjectionReaderV1,
+    predecessor_reader: MeasurementTemporalLocalReadsV1,
+    storage: MemoryStorageV1 | SQLiteStorageV1, utc_now: Callable[[], datetime],
+) -> MeasurementTemporalPhaseOwnerV1:
+    from ._temporal_phase import build_owner
+
+    return build_owner(admission, raw_projection_reader, predecessor_reader, storage, utc_now)
+
+
+def create_temporal_phase_reader(
+    *, admission: OwnerAdmissionV1, storage: SQLiteReadStorageV1,
+) -> MeasurementTemporalPhaseReadsV1:
+    from ._temporal_phase import build_reader
+
+    return build_reader(admission, storage)
+
+
 class MeasurementTemporalDateReadsV1(Protocol):
     def get_derived_occurrence(self, derived_occurrence_id: str
                                ) -> TemporalDateOccurrenceV1 | None: ...
@@ -1344,11 +1438,15 @@ __all__ += [
     "MeasurementTemporalLocalOwnerV1",
     "MeasurementTemporalLocalReadsV1",
     "MeasurementTemporalOwnerV1",
+    "MeasurementTemporalPhaseOwnerV1",
+    "MeasurementTemporalPhaseReadsV1",
     "MeasurementTemporalReadsV1",
     "MeasurementWindowOwnerV1",
     "MeasurementWindowReadsV1",
     "OptionRightLineageV1",
     "OptionSkewV1",
+    "PhaseIntervalV1",
+    "PhasePolicyV1",
     "ReturnAccelerationV1",
     "SessionFrameV1",
     "TemporalAgeOccurrenceV1",
@@ -1362,6 +1460,8 @@ __all__ += [
     "TemporalLocalRawLineageV1",
     "TemporalLocalRequestV1",
     "TemporalOccurrenceV1",
+    "TemporalPhaseOccurrenceV1",
+    "TemporalPhaseRequestV1",
     "TemporalRawLineageV1",
     "TermPairV1",
     "VwapDeviationV1",
@@ -1376,6 +1476,8 @@ __all__ += [
     "create_temporal_local_owner",
     "create_temporal_local_reader",
     "create_temporal_owner",
+    "create_temporal_phase_owner",
+    "create_temporal_phase_reader",
     "create_temporal_reader",
     "create_window_owner",
     "create_window_reader",

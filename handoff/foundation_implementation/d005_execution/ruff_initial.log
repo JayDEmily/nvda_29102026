@@ -1,0 +1,92 @@
+RUF005 Consider iterable unpacking instead of concatenation
+  --> src/nvda_desk/market_measurement_truth/_temporal_phase.py:46:21
+   |
+44 |     intervals: tuple[f.PhaseIntervalV1, ...] = (f.PhaseIntervalV1(bounds[1], bounds[2], "day"),)
+45 |     if not refused:
+46 |         intervals = (f.PhaseIntervalV1(bounds[0], bounds[1], "overnight"),) + intervals
+   |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+47 |     return f.PhasePolicyV1(
+48 |         f.VersionRefV1("controlled-phases", 2 if refused else 1),
+   |
+help: Replace with iterable unpacking
+
+RUF022 [*] `__all__` is not sorted
+    --> src/nvda_desk/market_measurement_truth/api.py:1427:12
+     |
+1427 |   __all__ += [
+     |  ____________^
+1428 | |     "BaselineWindowContextV1",
+1429 | |     "CalendarIntervalV1",
+1430 | |     "CalendarPolicyV1",
+1431 | |     "CorrelationMatrixV1",
+1432 | |     "IndexChangeV1",
+1433 | |     "MeasurementComparisonV1",
+1434 | |     "MeasurementTemporalAgeOwnerV1",
+1435 | |     "MeasurementTemporalAgeReadsV1",
+1436 | |     "MeasurementTemporalDateOwnerV1",
+1437 | |     "MeasurementTemporalDateReadsV1",
+1438 | |     "MeasurementTemporalPhaseOwnerV1",
+1439 | |     "MeasurementTemporalPhaseReadsV1",
+1440 | |     "MeasurementTemporalLocalOwnerV1",
+1441 | |     "MeasurementTemporalLocalReadsV1",
+1442 | |     "MeasurementTemporalOwnerV1",
+1443 | |     "MeasurementTemporalReadsV1",
+1444 | |     "MeasurementWindowOwnerV1",
+1445 | |     "MeasurementWindowReadsV1",
+1446 | |     "OptionRightLineageV1",
+1447 | |     "OptionSkewV1",
+1448 | |     "ReturnAccelerationV1",
+1449 | |     "SessionFrameV1",
+1450 | |     "TemporalAgeOccurrenceV1",
+1451 | |     "TemporalAgeRawLineageV1",
+1452 | |     "TemporalAgeRequestV1",
+1453 | |     "TemporalAgeV1",
+1454 | |     "TemporalCalendarRawLineageV1",
+1455 | |     "TemporalDateOccurrenceV1",
+1456 | |     "TemporalDateRequestV1",
+1457 | |     "PhaseIntervalV1",
+1458 | |     "PhasePolicyV1",
+1459 | |     "TemporalPhaseOccurrenceV1",
+1460 | |     "TemporalPhaseRequestV1",
+1461 | |     "TemporalLocalOccurrenceV1",
+1462 | |     "TemporalLocalRawLineageV1",
+1463 | |     "TemporalLocalRequestV1",
+1464 | |     "TemporalOccurrenceV1",
+1465 | |     "TemporalRawLineageV1",
+1466 | |     "TermPairV1",
+1467 | |     "VwapDeviationV1",
+1468 | |     "VwapRateV1",
+1469 | |     "WindowCalculationRequestV1",
+1470 | |     "WindowContextV1",
+1471 | |     "WindowMeasurementOccurrenceV1",
+1472 | |     "create_temporal_age_owner",
+1473 | |     "create_temporal_age_reader",
+1474 | |     "create_temporal_date_owner",
+1475 | |     "create_temporal_date_reader",
+1476 | |     "create_temporal_phase_owner",
+1477 | |     "create_temporal_phase_reader",
+1478 | |     "create_temporal_local_owner",
+1479 | |     "create_temporal_local_reader",
+1480 | |     "create_temporal_owner",
+1481 | |     "create_temporal_reader",
+1482 | |     "create_window_owner",
+1483 | |     "create_window_reader",
+1484 | | ]
+     | |_^
+     |
+help: Apply an isort-style sorting to `__all__`
+
+RUF005 Consider iterable unpacking instead of concatenation
+   --> tests/product/market_measurement_d005/test_signal.py:138:21
+    |
+136 |     intervals = (f.PhaseIntervalV1(bounds[1], bounds[2], "day"),)
+137 |     if not refused:
+138 |         intervals = (f.PhaseIntervalV1(bounds[0], bounds[1], "overnight"),) + intervals
+    |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+139 |     return f.PhasePolicyV1(
+140 |         f.VersionRefV1("controlled-phases", 2 if refused else 1),
+    |
+help: Replace with iterable unpacking
+
+Found 3 errors.
+[*] 1 fixable with the `--fix` option (2 hidden fixes can be enabled with the `--unsafe-fixes` option).

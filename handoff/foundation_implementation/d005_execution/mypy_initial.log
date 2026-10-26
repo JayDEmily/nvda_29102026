@@ -1,0 +1,2 @@
+src/nvda_desk/market_measurement_truth/_temporal_phase.py:46: error: Incompatible types in assignment (expression has type "tuple[PhaseIntervalV1, PhaseIntervalV1]", variable has type "tuple[PhaseIntervalV1]")  [assignment]
+Found 1 error in 1 file (checked 2 source files)
