@@ -1,0 +1,76 @@
+{
+  "id": "D124",
+  "definition": "D124-STRIKE-EXPIRY-OI-HHI-1",
+  "kernel": "K08_RULE_BUCKET_POLICY",
+  "parameter_profile": "P_BASIC",
+  "subject": "NVDA_ACTIVITY_E1",
+  "members": [
+    "controlled-oi-E1-100-C",
+    "controlled-oi-E1-100-P",
+    "controlled-oi-E1-105-C",
+    "controlled-oi-E1-105-P"
+  ],
+  "expiry": "2026-10-23",
+  "strike_region_inclusive": [
+    90,
+    130
+  ],
+  "provider": "foundation-controlled-option-activity",
+  "variant": "member_oi_concentration_v1",
+  "raw": "R047 per call, R048 per put",
+  "mappings": {
+    "R047": "mmt-r047-member-call-oi/1 oi.call",
+    "R048": "mmt-r048-member-put-oi/1 oi.put"
+  },
+  "unit": "mmt-option-contracts/1 contracts identity",
+  "context": "controlled-option-session/1",
+  "parameter": "mmt-d124-controlled/1",
+  "selection": "mmt-d124-selection/1",
+  "success": {
+    "call": [
+      20,
+      6
+    ],
+    "put": [
+      10,
+      4
+    ],
+    "groups": [
+      {
+        "strike": "100",
+        "oi": 30,
+        "share": [
+          3,
+          4
+        ]
+      },
+      {
+        "strike": "105",
+        "oi": 10,
+        "share": [
+          1,
+          4
+        ]
+      }
+    ],
+    "hhi": [
+      5,
+      8
+    ]
+  },
+  "refusal": {
+    "missing_only": "strike105 PUT4",
+    "other_members": 3,
+    "reason": "configured complete four-contract membership required"
+  },
+  "time": "2026-10-20T12:40:00Z",
+  "cutoff": "T+1s",
+  "now": "T+2s",
+  "page": [
+    100,
+    1000
+  ],
+  "official_period": "controlled-oi-period-20261020/1",
+  "official_revision": "controlled-oi-revision/1",
+  "grouping": "strike_expiry"
+}
