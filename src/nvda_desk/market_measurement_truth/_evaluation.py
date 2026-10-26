@@ -146,14 +146,23 @@ def untagged(value: Any, hint: Any) -> Any:
             f.TemporalCalendarRawLineageV1,
             f.VintageRawLineageV1,
             f.MarketModeRawLineageV1,
+            f.BookRawLineageV1,
         ):
             projection = value["projection"]
             projection_hints = get_type_hints(raw_api.ProjectedRawValueV1)
             if (type(projection) is not dict or set(projection) != set(projection_hints)
                 or type(projection["native_value"]) is not (
-                    int if hint is f.MarketModeRawLineageV1 else str
+                    (int if projection["raw_signal_catalogue_id"]["value"] in
+                     ("R185", "R187", "R188") else dict)
+                    if hint is f.BookRawLineageV1 else
+                    (int if hint is f.MarketModeRawLineageV1 else str)
                 )):
                 raise ValueError("invalid exact categorical/temporal projection")
+            if hint is f.BookRawLineageV1 and projection["raw_signal_catalogue_id"] not in (
+                {"kind": "RawSignalCatalogueId", "value": raw}
+                for raw in ("R185", "R187", "R188", "R189", "R190")
+            ):
+                raise ValueError("unadmitted book source role")
             if hint is f.MarketModeRawLineageV1 and (projection["native_value"] != 1
                 or projection["raw_signal_catalogue_id"]
                 != {"kind": "RawSignalCatalogueId", "value": "R005"}):
@@ -190,7 +199,10 @@ def untagged(value: Any, hint: Any) -> Any:
             ):
                 raise ValueError("unadmitted exact vintage source role")
             decoded_projection = raw_api.ProjectedRawValueV1(**{
-                key: projection[key] if key == "native_value" else untagged(projection[key], cls)
+                key: (untagged(projection[key], int if projection[
+                    "raw_signal_catalogue_id"]["value"] in ("R185", "R187", "R188")
+                    else Decimal) if hint is f.BookRawLineageV1 else projection[key])
+                if key == "native_value" else untagged(projection[key], cls)
                 for key, cls in projection_hints.items()
             })
             return cast(Any, hint)(**{
