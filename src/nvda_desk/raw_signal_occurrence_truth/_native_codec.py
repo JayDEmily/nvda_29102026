@@ -1,6 +1,7 @@
 """Lossless NVDA-NATIVE-V1 codec preserving the retained backend's wire bytes."""
 
 from collections.abc import Mapping
+from datetime import UTC, datetime
 from decimal import Decimal
 from struct import pack, unpack
 from typing import cast
@@ -54,6 +55,11 @@ def _encode_native_value(value: NativeValueV1) -> bytes:
             + _encode_length(len(exponent))
             + exponent
         )
+    if type(value) is datetime:
+        if value.tzinfo is None or value.utcoffset() != UTC.utcoffset(value):
+            raise ValueError("native datetime carrier must be UTC-aware")
+        payload = value.isoformat().encode("ascii")
+        return b"z" + _encode_length(len(payload)) + payload
     if type(value) is str:
         payload = value.encode("utf-8")
         return b"s" + _encode_length(len(payload)) + payload
@@ -138,6 +144,16 @@ class _NativeCodecReader:
                 return Decimal(f"{sign_prefix}sNaN{diagnostic}")
             exponent = int(exponent_text)
             return Decimal((sign_raw, digits, exponent))
+        if tag == b"z":
+            text = self.take(self.length()).decode("ascii")
+            value = datetime.fromisoformat(text)
+            if (
+                value.tzinfo is None
+                or value.utcoffset() != UTC.utcoffset(value)
+                or value.isoformat() != text
+            ):
+                raise ValueError("native datetime codec payload is not canonical UTC")
+            return value
         if tag == b"s":
             return self.take(self.length()).decode("utf-8")
         if tag == b"y":
