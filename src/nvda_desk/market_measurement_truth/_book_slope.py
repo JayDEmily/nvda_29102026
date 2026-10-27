@@ -17,7 +17,7 @@ from ._catalogue import _AUTHORITY
 from ._evaluation import canonical, decode
 from ._record_store import RecordState
 
-BRIEF = "c2e78da695a7681cc75ff117282127e0208df0e00ff31a0a5717aeb4dd954647"
+BRIEF = "9506421b312273a849b16ee930c59b553e48c6ac096b7a4c081a31eb856e9150"
 NAMESPACE = "neutral_market_measurement_truth/book-slope/v1"
 SUBJECT = "NVDA"
 T = datetime(2026, 10, 16, 1, tzinfo=UTC)
@@ -43,13 +43,13 @@ UNITS = tuple(f.UnitConventionVersionV1(
     "mmt-d138-" + raw.lower() + "-unit", 1, unit, unit, Decimal(1), Decimal(0),
 ) for raw, _, unit in ROLES)
 DEFINITION = f.CalculationDefinitionV1(
-    "D138", "D138-L2-CONTRACT-20261016-01", "K06_REGRESSION",
+    "D138", "D138-L2-CONTRACT-20261016-01", "K06_REGRESSION_DEPENDENCE",
     "OLS(cumulative standing depth, abs(price - actual D011 midpoint)) per side",
-    tuple(raw for raw, _, _ in ROLES), ("D011",), "P_BASIC", "shares_per_USD",
+    tuple(raw for raw, _, _ in ROLES), ("D011",), "P_REGRESSION", "depth per price distance",
     "book_slope_pair", tuple(f.AuthorityArtifactRefV1(*x) for x in _AUTHORITY),
 )
 PARAMETER = f.CalculationParameterSetV1(
-    "mmt-d138-three-level", 1, "P_BASIC", SUBJECT, (SUBJECT,),
+    "mmt-d138-three-level", 1, "P_REGRESSION", SUBJECT, (SUBJECT,),
 )
 
 
@@ -227,7 +227,7 @@ def _produce(req: f.BookSlopeRequestV1, lines: tuple[f.BookRawLineageV1, ...],
     result = f.BookSlopePairV1(_slope(rows, midpoint, 0), _slope(rows, midpoint, 1))
     value = f.BookSlopeOccurrenceV1(
         "M02", NAMESPACE, BRIEF, "D138", "pending", req, DEFINITION, PARAMETER,
-        UNITS, MAPS, lines, parent, rows, result, "shares_per_USD", "book_slope_pair",
+        UNITS, MAPS, lines, parent, rows, result, "depth per price distance", "book_slope_pair",
         T, CUTOFF, now,
     )
     payload = {field.name: getattr(value, field.name) for field in fields(value)

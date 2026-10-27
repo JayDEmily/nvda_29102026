@@ -13,7 +13,7 @@ CUTOFF, NOW = T + timedelta(seconds=1), T + timedelta(seconds=2)
 SUBJECT = "NVDA"
 PROVIDER, VARIANT = "foundation-controlled-smart-book", "positional_slope_v1"
 GENERATION = "controlled-smart-slope-generation/1"
-BRIEF = "c2e78da695a7681cc75ff117282127e0208df0e00ff31a0a5717aeb4dd954647"
+BRIEF = "9506421b312273a849b16ee930c59b553e48c6ac096b7a4c081a31eb856e9150"
 D011_BRIEF = "3ad4cdc9ffba4cf91ff9a27edf1dd3b1a9824a421514bb4b5a2cc1b9c504f233"
 AUTHORITY = (
     f.AuthorityArtifactRefV1(
@@ -40,12 +40,14 @@ UNITS = tuple(f.UnitConventionVersionV1(
     "mmt-d138-" + raw.lower() + "-unit", 1, unit, unit, Decimal(1), Decimal(0),
 ) for raw, _, unit in ROLES)
 DEFINITION = f.CalculationDefinitionV1(
-    "D138", "D138-L2-CONTRACT-20261016-01", "K06_REGRESSION",
+    "D138", "D138-L2-CONTRACT-20261016-01", "K06_REGRESSION_DEPENDENCE",
     "OLS(cumulative standing depth, abs(price - actual D011 midpoint)) per side",
-    tuple(raw for raw, _, _ in ROLES), ("D011",), "P_BASIC", "shares_per_USD",
+    tuple(raw for raw, _, _ in ROLES), ("D011",), "P_REGRESSION", "depth per price distance",
     "book_slope_pair", AUTHORITY,
 )
-PARAMETER = f.CalculationParameterSetV1("mmt-d138-three-level", 1, "P_BASIC", SUBJECT, (SUBJECT,))
+PARAMETER = f.CalculationParameterSetV1(
+    "mmt-d138-three-level", 1, "P_REGRESSION", SUBJECT, (SUBJECT,),
+)
 SELECTION = f.BookEventSelectionV1(
     f.VersionRefV1("mmt-d138-smart-positional", 1), PROVIDER, VARIANT, GENERATION,
     T - timedelta(seconds=10), 100,
@@ -90,7 +92,9 @@ def midpoint(raw, tmp_path):
         "D011", "D011-MIDPOINT-1", "K02_ALGEBRA", "(R034 + R035) / 2",
         ("R034", "R035"), (), "P_BASIC", "price", "scalar_decimal", AUTHORITY,
     )
-    parameter = f.CalculationParameterSetV1("mmt-pilot-basic", 1, "P_BASIC", SUBJECT, (SUBJECT,))
+    parameter = f.CalculationParameterSetV1(
+        "mmt-pilot-basic", 1, "P_BASIC", SUBJECT, (SUBJECT,),
+    )
     policy = f.InputSelectionPolicyVersionV1(
         "mmt-pilot-selection", 1, ("subject_instrument",), timedelta(seconds=60),
         timedelta(seconds=10), ("true_instant",), (), provider, variant,
@@ -183,7 +187,8 @@ def test_d138_signal(tmp_path, reset):
     assert occurrence.unit_conventions == UNITS and occurrence.projection_mappings == MAPS
     assert occurrence.owner_object_id == "M02" and occurrence.implementation_brief_sha256 == BRIEF
     assert occurrence.owner_namespace == "neutral_market_measurement_truth/book-slope/v1"
-    assert occurrence.units == "shares_per_USD" and occurrence.result_shape == "book_slope_pair"
+    assert occurrence.units == "depth per price distance"
+    assert occurrence.result_shape == "book_slope_pair"
     assert (occurrence.effective_as_of_utc, occurrence.knowledge_cutoff_utc,
             occurrence.calculated_at_utc) == (T, CUTOFF, NOW)
     assert len(occurrence.raw_input_lineage) == 30
