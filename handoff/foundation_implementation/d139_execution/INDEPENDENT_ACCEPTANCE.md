@@ -1,0 +1,3 @@
+# D139 independent final acceptance
+
+Clean candidate `6d6654e8c53f3a323a3b4887439259cbc7affde5` independently accepted. Sole strict aggregate exit0, exactly two collected/two passed, no skips. Verbatim `strict-green.log` SHA256 `5ec4b3bf981863bd2372c7620b8ed1d03d18503fb18644db4c82b7dd2985d4b2`. Public M00 native aware UTC R001 equals collector receipt and remains separate from native source-event timestamp; five typed roles per complete event, receipt/ingestion positional replay and pre-window bid/ask state yield two bid inserts sizes3/5 in `(T−4s,T]`, typed rates1/2 events/s and2 shares/s. Missing second R187 while other roles are actually projected refuses. Typed SQLite read-only reopen passes. Native SMART and event-time rate certification remain unadmitted.
