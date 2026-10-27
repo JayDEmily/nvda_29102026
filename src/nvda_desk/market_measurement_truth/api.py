@@ -1377,6 +1377,21 @@ def create_book_insert_rate_reader(
     return build_reader(admission, storage)
 
 
+def create_book_delete_rate_owner(
+    *, admission: OwnerAdmissionV1, raw_projection_reader: RawProjectionReaderV1,
+    storage: MemoryStorageV1 | SQLiteStorageV1, utc_now: Callable[[], datetime],
+) -> MeasurementBookRateOwnerV1:
+    from ._book_delete_rate import build_owner
+    return build_owner(admission, raw_projection_reader, storage, utc_now)
+
+
+def create_book_delete_rate_reader(
+    *, admission: OwnerAdmissionV1, storage: SQLiteReadStorageV1,
+) -> MeasurementBookRateReadsV1:
+    from ._book_delete_rate import build_reader
+    return build_reader(admission, storage)
+
+
 def create_microprice_owner(
     *, admission: OwnerAdmissionV1, raw_projection_reader: RawProjectionReaderV1,
     storage: MemoryStorageV1 | SQLiteStorageV1, utc_now: Callable[[], datetime],
