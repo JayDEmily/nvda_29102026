@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "starting_commit": "17d7553cf3ad92700f849f696134de67b64b0dfa",
+  "hashes": {
+    "EXEC_PLAN.md": {
+      "sha256": "48855924ced49fb5b0b28e681b79cdd0e29032efb1441cd3071c1d961f731366",
+      "bytes": 29949
+    },
+    "GUARDRAILS.md": {
+      "sha256": "585dc9b1a95719a7b60929b0d3ea64696fd6d52cd19b2b4a463c5bb9d34947b6",
+      "bytes": 10259
+    },
+    "AGENTS.md": {
+      "sha256": "ab3eacbc920824d4ea7e98037bc2e75413190e3c5dfee16560d2c73b90a67edb",
+      "bytes": 10280
+    },
+    "tests/AGENTS.override.md": {
+      "sha256": "2742288b65d4918a293c470a6bbc94f58c4fcddf371ab0ae7183306f42028237",
+      "bytes": 3491
+    },
+    "handoff/planning/m00_brief2_20261027/BRIEF_2_M00_RECONCILED_V3_20261027_1622_AEDT.md": {
+      "sha256": "0d5ee211c1285b31834062ab2d871670ed2f318cbb955e7df95f80067d562007",
+      "bytes": 39975
+    },
+    "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md": {
+      "sha256": "2d95d7c5e425ed1dd231f4685100f7c1db9c85ee1369fea54f91580aab6caa5a",
+      "bytes": 46225
+    }
+  },
+  "purpose": "Documentary source identities only; no product proof or execution admission"
+}

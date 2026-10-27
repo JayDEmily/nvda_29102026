@@ -1,3 +1,9 @@
+# Test-local supplement — M00 Brief 2 planning interlude
+
+Current owner direction pauses the D143 next-twenty schedule. Root `EXEC_PLAN.md` commissions only M00 Brief 2 planning, independent documentary review and checkpoint delivery this turn; no test/production/admission changes or product execution. Future M00 proof must cover all ten positive scenarios and N01–N18 under exact lawful proof admission; the historical two-case-per-D rule below applies only to its paused signal programme. Preserve valid existing tests and immutable generations, bounded repair/failure evidence, pinned cp312 runtime, public SQLite proof and independent review. See root plan for future per-leaf checkpoint-before-continuation discipline.
+
+## Paused next-twenty signal instructions
+
 # Test-local supplement — commissioned next-twenty controlled execution
 
 The owner accepted and separately commissioned root EXEC_PLAN.md on 26 October 2026. Follow §5: exactly two cases per signal, six hard ceiling, one independent final semantic reviewer as sole strict executor, no routine RED/duplicate GREEN/old unaffected regression, bounded repair recovery, pinned environment and cumulative checkpoint before advancing. The D077–D118 instructions below describe historical execution. Documentary plan clearance is not per-signal proof acceptance.
