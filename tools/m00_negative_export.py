@@ -171,7 +171,37 @@ def replay_negatives(fixtures: Path, workspace: Path) -> list[dict[str, Any]]:
                 ],
             )
             result["discovery"] = fresh_discovery(path, q)
-            result["retained"] = retained(path, controls, data[0])
+            control_map = dict(
+                mapping_id="export-control-operation/1",
+                version=1,
+                raw_signal_catalogue_id="R187",
+                source_provider=first.source_provider.value,
+                source_variant=first.source_variant,
+                native_field_path=["operation"],
+                native_units="operation",
+            )
+            result["control_observations"] = special_read(
+                path, [v.observation_occurrence_id.value for v in controls], control_map
+            )
+            require(
+                exact([v["observation"] for v in result["control_observations"]])
+                == exact([dump_observation(v) for v in controls]),
+                "complete typed fresh control observations",
+            )
+            schema = json.loads((ART / "output_schema_v1.json").read_text())
+            for control in result["discovery"]["controls"]:
+                validate_instance(
+                    dict(
+                        kind="control",
+                        fixture_id="M00B2-CONTROLS-V1",
+                        fixture_version=1,
+                        family="CONTROLS",
+                        scenario_id="CONTROL",
+                        mapping_group="CONTROL",
+                        value=control,
+                    ),
+                    schema,
+                )
             actual = result["discovery"]["controls"]
             require(
                 [v["control"]["kind"] for v in actual]
@@ -181,7 +211,7 @@ def replay_negatives(fixtures: Path, workspace: Path) -> list[dict[str, Any]]:
             require(all(v["control"]["invalidates"] is True for v in actual), "invalidity facts")
             require(actual[-1]["control"]["generation_after"] == "STK-SMART-G2", "restart link")
             require(
-                not any(row["kind"] == "projection" for row in result["retained"]),
+                all(row["projection"] is None for row in result["control_observations"]),
                 "invented control R projection",
             )
         elif case == "N06":

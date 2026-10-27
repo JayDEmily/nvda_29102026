@@ -1,0 +1,608 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/ad31885d756b/repo
+configfile: pyproject.toml
+collected 37 items
+
+tests/product/m00_brief2/test_ibkr_native_projection.py ................ [ 43%]
+....                                                                     [ 54%]
+tests/product/m00_brief2/test_ibkr_history.py ...............            [ 94%]
+tests/product/m00_brief2/test_ibkr_controls.py .                         [ 97%]
+tests/product/m00_brief2/test_export.py F                                [100%]
+
+=================================== FAILURES ===================================
+_____________________________ test_export_pipeline _____________________________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_export_pipeline0')
+
+    def test_export_pipeline(tmp_path):
+        def run(root, name):
+            output = tmp_path / name
+            command = [
+                sys.executable,
+                str(root / "tools/export_m00_synthetic.py"),
+                "--fixtures",
+                str(root / "handoff/m00_brief2/fixtures"),
+                "--expected",
+                str(root / "handoff/m00_brief2/fixtures"),
+                "--database",
+                str(tmp_path / (name + ".db")),
+                "--output",
+                str(output),
+            ]
+            env = dict(os.environ, PYTHONPATH=os.pathsep.join((str(root / "tools"), str(root / "src"))))
+            completed = subprocess.run(command, cwd=root, env=env, capture_output=True, text=True)
+            assert completed.returncode == 0, (
+                completed.stdout
+                + completed.stderr
+                + (
+                    (output / "manifest_v1.json").read_text()
+                    if (output / "manifest_v1.json").exists()
+                    else ""
+                )
+            )
+            return output
+    
+        original_hashes = json.loads((ART / "fixture_manifest_v1.json").read_text())["hashes"]
+>       first = run(ROOT, "first")
+                ^^^^^^^^^^^^^^^^^^
+
+tests/product/m00_brief2/test_export.py:43: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/workspace/scratch/ad31885d756b/repo'), name = 'first'
+
+    def run(root, name):
+        output = tmp_path / name
+        command = [
+            sys.executable,
+            str(root / "tools/export_m00_synthetic.py"),
+            "--fixtures",
+            str(root / "handoff/m00_brief2/fixtures"),
+            "--expected",
+            str(root / "handoff/m00_brief2/fixtures"),
+            "--database",
+            str(tmp_path / (name + ".db")),
+            "--output",
+            str(output),
+        ]
+        env = dict(os.environ, PYTHONPATH=os.pathsep.join((str(root / "tools"), str(root / "src"))))
+        completed = subprocess.run(command, cwd=root, env=env, capture_output=True, text=True)
+>       assert completed.returncode == 0, (
+            completed.stdout
+            + completed.stderr
+            + (
+                (output / "manifest_v1.json").read_text()
+                if (output / "manifest_v1.json").exists()
+                else ""
+            )
+        )
+E       AssertionError: {
+E           "backend": "SQLite",
+E           "control_count": 5,
+E           "environment": {
+E             "python": "3.12.14",
+E             "sqlite": "3.53.1"
+E           },
+E           "first_mismatch": {
+E             "detail": "$.value.native_units: expected type ['string'], got NoneType",
+E             "failure": "SchemaValidationError"
+E           },
+E           "fixture_versions": {
+E             "M00B2-CONTROLS-V1": 1,
+E             "NVDA-CONTROLLED-IBKR-RECEIPT-BOOK-V1": 1,
+E             "NVDA-IBKR-M00-SYNTHETIC-INPUT-V1": 1,
+E             "NVDA-M00-COHERENT-INTEGRATION-V2": 2
+E           },
+E           "history_checks": [
+E             {
+E               "count": 1,
+E               "exact_match": true,
+E               "expected_count": 1,
+E               "mapping_group": "A1-STK",
+E               "r_id": "R033"
+E             },
+E             {
+E               "count": 1,
+E               "exact_match": true,
+E               "expected_count": 1,
+E               "mapping_group": "A1-STK",
+E               "r_id": "R034"
+E             },
+E             {
+E               "count": 1,
+E               "exact_match": true,
+E               "expected_count": 1,
+E               "mapping_group": "A1-STK",
+E               "r_id": "R035"
+E             },
+E             {
+E               "count": 1,
+E               "exact_match": true,
+E               "expected_count": 1,
+E               "mapping_group": "A1-STK",
+E               "r_id": "R036"
+E             },
+E             {
+E               "count": 1,
+E               "exact_match": true,
+E               "expected_count": 1,
+E               "mapping_group": "A2-CALL",
+E               "r_id": "R033"
+E             },
+E             {
+E               "count": 1,
+E               "exact_match": true,
+E               "expected_count": 1,
+E               "mapping_group": "A2-CALL",
+E               "r_id": "R034"
+E             },
+E             {
+E               "count": 1,
+E               "exact_match": true,
+E               "expected_count": 1,
+E               "mapping_group": "A2-CALL",
+E               "r_id": "R035"
+E             },
+E             {
+E               "count": 1,
+E               "exact_match": true,
+E               "expected_count": 1,
+E               "mapping_group": "A2-CALL",
+E               "r_id": "R036"
+E             },
+E             {
+E               "count": 1,
+E               "exact_match": true,
+E               "expected_count": 1,
+E               "mapping_group": "A3-PUT",
+E               "r_id": "R033"
+E             },
+E             {
+E               "count": 1,
+E               "exact_match": true,
+E               "expected_count": 1,
+E               "mapping_group": "A3-PUT",
+E               "r_id": "R034"
+E             },
+E             {
+E               "count": 1,
+E               "exact_match": true,
+E               "expected_count": 1,
+E               "mapping_group": "A3-PUT",
+E               "r_id": "R035"
+E             },
+E             {
+E               "count": 1,
+E               "exact_match": true,
+E               "expected_count": 1,
+E               "mapping_group": "A3-PUT",
+E               "r_id": "R036"
+E             },
+E             {
+E               "count": 4,
+E               "exact_match": true,
+E               "expected_count": 4,
+E               "mapping_group": "A4-STK",
+E               "r_id": "R185"
+E             },
+E             {
+E               "count": 4,
+E               "exact_match": true,
+E               "expected_count": 4,
+E               "mapping_group": "A4-STK",
+E               "r_id": "R187"
+E             },
+E             {
+E               "count": 4,
+E               "exact_match": true,
+E               "expected_count": 4,
+E               "mapping_group": "A4-STK",
+E               "r_id": "R188"
+E             },
+E             {
+E               "count": 4,
+E               "exact_match": true,
+E               "expected_count": 4,
+E               "mapping_group": "A4-STK",
+E               "r_id": "R189"
+E             },
+E             {
+E               "count": 4,
+E               "exact_match": true,
+E               "expected_count": 4,
+E               "mapping_group": "A4-STK",
+E               "r_id": "R190"
+E             },
+E             {
+E               "count": 3,
+E               "exact_match": true,
+E               "expected_count": 3,
+E               "mapping_group": "A5-CALL",
+E               "r_id": "R185"
+E             },
+E             {
+E               "count": 3,
+E               "exact_match": true,
+E               "expected_count": 3,
+E               "mapping_group": "A5-CALL",
+E               "r_id": "R187"
+E             },
+E             {
+E               "count": 3,
+E               "exact_match": true,
+E               "expected_count": 3,
+E               "mapping_group": "A5-CALL",
+E               "r_id": "R188"
+E             },
+E             {
+E               "count": 3,
+E               "exact_match": true,
+E               "expected_count": 3,
+E               "mapping_group": "A5-CALL",
+E               "r_id": "R189"
+E             },
+E             {
+E               "count": 3,
+E               "exact_match": true,
+E               "expected_count": 3,
+E               "mapping_group": "A5-CALL",
+E               "r_id": "R190"
+E             },
+E             {
+E               "count": 2,
+E               "exact_match": true,
+E               "expected_count": 2,
+E               "mapping_group": "A6-PUT",
+E               "r_id": "R185"
+E             },
+E             {
+E               "count": 2,
+E               "exact_match": true,
+E               "expected_count": 2,
+E               "mapping_group": "A6-PUT",
+E               "r_id": "R187"
+E             },
+E             {
+E               "count": 2,
+E               "exact_match": true,
+E               "expected_count": 2,
+E               "mapping_group": "A6-PUT",
+E               "r_id": "R188"
+E             },
+E             {
+E               "count": 2,
+E               "exact_match": true,
+E               "expected_count": 2,
+E               "mapping_group": "A6-PUT",
+E               "r_id": "R189"
+E             },
+E             {
+E               "count": 2,
+E               "exact_match": true,
+E               "expected_count": 2,
+E               "mapping_group": "A6-PUT",
+E               "r_id": "R190"
+E             },
+E             {
+E               "count": 3,
+E               "exact_match": true,
+E               "expected_count": 3,
+E               "mapping_group": "B-CALL",
+E               "r_id": "R185"
+E             },
+E             {
+E               "count": 3,
+E               "exact_match": true,
+E               "expected_count": 3,
+E               "mapping_group": "B-CALL",
+E               "r_id": "R187"
+E             },
+E             {
+E               "count": 3,
+E               "exact_match": true,
+E               "expected_count": 3,
+E               "mapping_group": "B-CALL",
+E               "r_id": "R188"
+E             },
+E             {
+E               "count": 3,
+E               "exact_match": true,
+E               "expected_count": 3,
+E               "mapping_group": "B-CALL",
+E               "r_id": "R189"
+E             },
+E             {
+E               "count": 3,
+E               "exact_match": true,
+E               "expected_count": 3,
+E               "mapping_group": "B-CALL",
+E               "r_id": "R190"
+E             },
+E             {
+E               "count": 4,
+E               "exact_match": true,
+E               "expected_count": 4,
+E               "mapping_group": "B-STK",
+E               "r_id": "R185"
+E             },
+E             {
+E               "count": 4,
+E               "exact_match": true,
+E               "expected_count": 4,
+E               "mapping_group": "B-STK",
+E               "r_id": "R187"
+E             },
+E             {
+E               "count": 4,
+E               "exact_match": true,
+E               "expected_count": 4,
+E               "mapping_group": "B-STK",
+E               "r_id": "R188"
+E             },
+E             {
+E               "count": 4,
+E               "exact_match": true,
+E               "expected_count": 4,
+E               "mapping_group": "B-STK",
+E               "r_id": "R189"
+E             },
+E             {
+E               "count": 4,
+E               "exact_match": true,
+E               "expected_count": 4,
+E               "mapping_group": "B-STK",
+E               "r_id": "R190"
+E             },
+E             {
+E               "count": 3,
+E               "exact_match": true,
+E               "expected_count": 3,
+E               "mapping_group": "C1-CALL",
+E               "r_id": "R185"
+E             },
+E             {
+E               "count": 3,
+E               "exact_match": true,
+E               "expected_count": 3,
+E               "mapping_group": "C1-CALL",
+E               "r_id": "R187"
+E             },
+E             {
+E               "count": 3,
+E               "exact_match": true,
+E               "expected_count": 3,
+E               "mapping_group": "C1-CALL",
+E               "r_id": "R188"
+E             },
+E             {
+E               "count": 3,
+E               "exact_match": true,
+E               "expected_count": 3,
+E               "mapping_group": "C1-CALL",
+E               "r_id": "R189"
+E             },
+E             {
+E               "count": 3,
+E               "exact_match": true,
+E               "expected_count": 3,
+E               "mapping_group": "C1-CALL",
+E               "r_id": "R190"
+E             },
+E             {
+E               "count": 4,
+E               "exact_match": true,
+E               "expected_count": 4,
+E               "mapping_group": "C2-STK",
+E               "r_id": "R192"
+E             },
+E             {
+E               "count": 4,
+E               "exact_match": true,
+E               "expected_count": 4,
+E               "mapping_group": "C2-STK",
+E               "r_id": "R193"
+E             },
+E             {
+E               "count": 4,
+E               "exact_match": true,
+E               "expected_count": 4,
+E               "mapping_group": "C2-STK",
+E               "r_id": "R194"
+E             },
+E             {
+E               "count": 4,
+E               "exact_match": true,
+E               "expected_count": 4,
+E               "mapping_group": "C2-STK",
+E               "r_id": "R195"
+E             },
+E             {
+E               "count": 4,
+E               "exact_match": true,
+E               "expected_count": 4,
+E               "mapping_group": "C2-STK",
+E               "r_id": "R196"
+E             },
+E             {
+E               "count": 4,
+E               "exact_match": true,
+E               "expected_count": 4,
+E               "mapping_group": "C2-STK",
+E               "r_id": "R197"
+E             },
+E             {
+E               "count": 4,
+E               "exact_match": true,
+E               "expected_count": 4,
+E               "mapping_group": "C3-CALL",
+E               "r_id": "R192"
+E             },
+E             {
+E               "count": 4,
+E               "exact_match": true,
+E               "expected_count": 4,
+E               "mapping_group": "C3-CALL",
+E               "r_id": "R193"
+E             },
+E             {
+E               "count": 4,
+E               "exact_match": true,
+E               "expected_count": 4,
+E               "mapping_group": "C3-CALL",
+E               "r_id": "R194"
+E             },
+E             {
+E               "count": 4,
+E               "exact_match": true,
+E               "expected_count": 4,
+E               "mapping_group": "C3-CALL",
+E               "r_id": "R195"
+E             },
+E             {
+E               "count": 4,
+E               "exact_match": true,
+E               "expected_count": 4,
+E               "mapping_group": "C3-CALL",
+E               "r_id": "R196"
+E             },
+E             {
+E               "count": 4,
+E               "exact_match": true,
+E               "expected_count": 4,
+E               "mapping_group": "C3-CALL",
+E               "r_id": "R197"
+E             }
+E           ],
+E           "independent_review": "NOT_PERFORMED",
+E           "input_hashes": {
+E             "A/synthetic_input_v1.jsonl": "79a20e0b2cdd3d7cf4ed6f59860ed4b0e68f8098a8f2fb39187add548b0faec0",
+E             "B/synthetic_input_v1.jsonl": "3f42e333f05690860f4db0c77133aa29bd889edabf37d8434c2c41b03669c9d5",
+E             "C/synthetic_input_v1.jsonl": "02008a7ed0e8efe7975410b7437df1c9f4a7ff4d72f7bd5b32ff940ceb8dc090",
+E             "controls/control_input_v1.jsonl": "07c6dc23294f2cffa72fcf83c002f262dd2ac850b60db850bd86d52229c3291f",
+E             "negative/N01_v1.jsonl": "83c76e9e8563cee6d0693894156306db4d8f74175d587c543672b643d7b8712c",
+E             "negative/N02_v1.jsonl": "1ed546b0c5073efc2628b8561df410cb698390089730045c6512b2d1e1349e8a",
+E             "negative/N03_v1.jsonl": "ac6b4300bcfb8f5bbb3077a435797c828e94ef2b59c799c0c272599650541af7",
+E             "negative/N04_v1.jsonl": "e07a4931ec40a922d968034407838d55d8e11a51323477538b245fda303198bd",
+E             "negative/N05_v1.jsonl": "a943584069d91ab12d7f7cdb6f0acb19f27c38d169376240dbf55cf042c59dc0",
+E             "negative/N06_v1.jsonl": "af0c4f1ae530a0599ea6b2e776f7150e52d59a09ef34e3d25fb0c6fc52cc0d62",
+E             "negative/N07_v1.jsonl": "8ada4c99e77a49859db56151227d3f61c9ee468b4c048919f292617302aa2c27",
+E             "negative/N08_v1.jsonl": "b65859efa6f2aa2fdb4ff124463e106733c986879e26e7e8857279dee5aa618f",
+E             "negative/N09_v1.jsonl": "dccc47694f262b3485bbf669bf9b944dabc708c651158d2b530a15362cecd2c3",
+E             "negative/N10_v1.jsonl": "1f01c41a2b4564eb25d5b8901a70ea8384cd46fc3da8e61c891b268ef51fd4da",
+E             "negative/N11_v1.jsonl": "fd7133c84c91c43b3900e8d75a99e29e20f900e348802cba5d4d9e42fc160400",
+E             "negative/N12_v1.jsonl": "d83e49e687f63aeaf04cbf830be013d4ad54e5ed375e76831d13b412d6928fb6",
+E             "negative/N13_v1.jsonl": "c3d1a1265dc0c89bbd5c0b594813ac664b9871c7e5c54420fdeccd5323ab4cc8",
+E             "negative/N14_v1.jsonl": "a25601c2ed00bda7e46a70626a9ca2f8ff29cc162d9799d8515dea9f158c7d3b",
+E             "negative/N15_v1.jsonl": "22357286ebe038bf0f22f826549f75a4bb8bac5b4842b0e05dec821ea3a39ace",
+E             "negative/N16_v1.jsonl": "f2959263125928f45d26c00f3891d6fc107cc154bc631332c5fe76967531592b",
+E             "negative/N17_v1.jsonl": "872be4261d22bf118d898d3d230bdd54b5036f70efc148e8a4e15bf9c246d66a",
+E             "negative/N18_v1.jsonl": "9e7bbf8be8d1cd7556f2cb4c93d237bf5ae67d902c1b6918bac9ce2ac62e7ace"
+E           },
+E           "live_ibkr": "UNVERIFIED",
+E           "manifest_version": "m00-brief2-actual-export/1",
+E           "mapping_sha256": "1a864bd18de725a7f0ecc9cdf9dc1345348e1624b4d59836794017a417eb2124",
+E           "oracle_hashes": {
+E             "A/expected_m00_output_v1.jsonl": "c581a3ab5e65ed1ada7965bc645056895c63c75794c4019bb4426c4d2eef0f76",
+E             "B/expected_m00_output_v1.jsonl": "1dc475714f661d96bdf3654c2d9cf7a1d04a30fb71f5c6d5b734af2c66e8fbf2",
+E             "C/expected_m00_output_v1.jsonl": "a86864cb2ee3d4dffefc512dae67c77f85d96c2f9cdaf55a9b1044cd22713fec",
+E             "controls/expected_control_output_v1.jsonl": "c388113d5bcbe296a5205f27ecbe081d1023d346fbd64b01aca93f87e50e8380"
+E           },
+E           "postgres_runtime": "DEFERRED",
+E           "read_only_sqlite_hash_unchanged": true,
+E           "replay_command": "python tools/export_m00_synthetic.py --fixtures <fixture-dir> --expected <oracle-dir> --database <ABSENT-ABSOLUTE-PATH> --output <NEW-DIR>",
+E           "scenarios": {
+E             "A1": {
+E               "expected_observations": 1,
+E               "expected_projections": 4,
+E               "observations": 1,
+E               "projections": 4,
+E               "row_counts_match": true
+E             },
+E             "A2": {
+E               "expected_observations": 4,
+E               "expected_projections": 4,
+E               "observations": 4,
+E               "projections": 4,
+E               "row_counts_match": true
+E             },
+E             "A3": {
+E               "expected_observations": 4,
+E               "expected_projections": 4,
+E               "observations": 4,
+E               "projections": 4,
+E               "row_counts_match": true
+E             },
+E             "A4": {
+E               "expected_observations": 4,
+E               "expected_projections": 20,
+E               "observations": 4,
+E               "projections": 20,
+E               "row_counts_match": true
+E             },
+E             "A5": {
+E               "expected_observations": 3,
+E               "expected_projections": 15,
+E               "observations": 3,
+E               "projections": 15,
+E               "row_counts_match": true
+E             },
+E             "A6": {
+E               "expected_observations": 2,
+E               "expected_projections": 10,
+E               "observations": 2,
+E               "projections": 10,
+E               "row_counts_match": true
+E             },
+E             "B": {
+E               "expected_observations": 7,
+E               "expected_projections": 35,
+E               "observations": 7,
+E               "projections": 35,
+E               "row_counts_match": true
+E             },
+E             "C1": {
+E               "expected_observations": 3,
+E               "expected_projections": 15,
+E               "observations": 3,
+E               "projections": 15,
+E               "row_counts_match": true
+E             },
+E             "C2": {
+E               "expected_observations": 4,
+E               "expected_projections": 24,
+E               "observations": 4,
+E               "projections": 24,
+E               "row_counts_match": true
+E             },
+E             "C3": {
+E               "expected_observations": 4,
+E               "expected_projections": 24,
+E               "observations": 4,
+E               "projections": 24,
+E               "row_counts_match": true
+E             }
+E           },
+E           "schema_sha256": "aa186e09599f577dab836bcebaedfa399258968a746fab7a6c26553e1e1226ad",
+E           "source_clean_at_start": true,
+E           "source_git_sha": "2c2cb01ef00777db03ff004efea57b74d74339a8",
+E           "sqlite_sha256": "d18c3722b5015e4f5c4e35f0ab065f21a4061ba0d394958e4ec8224104891dbd",
+E           "status": "FAILED_EXPORT",
+E           "total_positive_observations": 36,
+E           "total_positive_projections": 155,
+E           "versions": {
+E             "control_envelope": 1,
+E             "fixture": 1,
+E             "mapping_manifest": 1,
+E             "oracle": 1,
+E             "output_schema": 1
+E           }
+E         }
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/workspace/scratch/ad31885d756b/m00-env/bin/python', '/workspace/scratch/ad31885d756b/repo/too...first.db', '--output', '/tmp/pytest-of-root/pytest-0/test_export_pipeline0/first'], returncode=2, stdout='', stderr='').returncode
+
+tests/product/m00_brief2/test_export.py:31: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/m00_brief2/test_export.py::test_export_pipeline - Assert...
+======================== 1 failed, 36 passed in 35.65s =========================
