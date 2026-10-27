@@ -1219,6 +1219,21 @@ def create_book_depth_reader(
     return build_reader(admission, storage)
 
 
+def create_microprice_owner(
+    *, admission: OwnerAdmissionV1, raw_projection_reader: RawProjectionReaderV1,
+    storage: MemoryStorageV1 | SQLiteStorageV1, utc_now: Callable[[], datetime],
+) -> MeasurementWindowOwnerV1:
+    from ._microprice import build_owner
+    return build_owner(admission, raw_projection_reader, storage, utc_now)
+
+
+def create_microprice_reader(
+    *, admission: OwnerAdmissionV1, storage: SQLiteReadStorageV1,
+) -> MeasurementWindowReadsV1:
+    from ._microprice import build_reader
+    return build_reader(admission, storage)
+
+
 @dataclass(frozen=True, slots=True)
 class TemporalRawLineageV1(_Validated):
     raw_signal_id: str
