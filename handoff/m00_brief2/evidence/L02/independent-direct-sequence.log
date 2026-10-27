@@ -1,0 +1,3 @@
+missing collector carrier -> public R001 absent
+fresh public typed R001 equals envelope receipt; missing carrier remains absent
+DIRECT_SEQUENCE_PASS; actual SQLite bytes unchanged by fresh public reads

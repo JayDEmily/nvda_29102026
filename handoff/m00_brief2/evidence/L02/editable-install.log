@@ -1,0 +1,7 @@
+Using Python 3.12.14 environment at: m00-env
+Resolved 1 package in 4ms
+   Building nvda-architecture-kernel @ file:///workspace/scratch/ad31885d756b/repo
+      Built nvda-architecture-kernel @ file:///workspace/scratch/ad31885d756b/repo
+Prepared 1 package in 315ms
+Installed 1 package in 2ms
+ + nvda-architecture-kernel==1.0.0 (from file:///workspace/scratch/ad31885d756b/repo)
