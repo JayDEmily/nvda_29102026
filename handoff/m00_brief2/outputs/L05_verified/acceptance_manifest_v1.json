@@ -1,0 +1,29 @@
+{
+  "schema_version": "m00-brief2-acceptance/1",
+  "leaf": "L05",
+  "independent_review": "PASS",
+  "ACTUAL_M00_OUTPUT_VERIFIED": true,
+  "SQLITE_READBACK_VERIFIED": true,
+  "POSTGRES_RUNTIME_DEFERRED": true,
+  "LIVE_IBKR_UNVERIFIED": true,
+  "candidate": "63e68751107035d2747a1591700a45a83181ca11",
+  "generation_sha256": "e03468aec24f9dec4d152c9ed44135d6f6cf26704f735b0cfeb0c706b8b1ded7",
+  "strict_passed": 37,
+  "strict_command": "PYTHONPATH=src M00_EXPORT_EVIDENCE=<external-path> python tools/run_product_proof_gate.py --aggregate m00_brief2",
+  "review_sha256": "fe38385e8feabc9eca1368d3ec5c763253f2d502e7e37092b59287fa96d3caf4",
+  "original_export_manifest_sha256": "c3203e65a939d1324048d12a12e090cd9f80b4c611e818f4d5a54b0016d2287a",
+  "reproduction": {
+    "candidate": "63e68751107035d2747a1591700a45a83181ca11",
+    "source_clean": true,
+    "second_clean_checkout": true,
+    "deterministic_hashes": {
+      "actual_m00_output_v1.jsonl": "70583a82602ebf30fa4d9c3f0731746fd4c99479902e33738bc45a6cdf37a281",
+      "actual_control_output_v1.jsonl": "5b808cd12cbe566aa26e41c11935cb3efce5f6258299925cb14ed97739267501",
+      "negative_outcomes_v1.json": "576cd3674da7ce0c576fc41d2b28139c4be85c17bbc3968c24ed2920b9e6e505",
+      "actual_absence_outcomes_v1.json": "bd0faf848a3f40eaa583b82838a639b8ad16e68d6b74bdabf07a15deb665f14c"
+    },
+    "comparison": "EXACT_BYTE_HASH_EQUAL"
+  },
+  "first_failure": "evidence/L05/first-failure/; resolved by CONTROL_DOMAIN_REPAIR.md",
+  "D145": "PAUSED"
+}

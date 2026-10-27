@@ -1,0 +1,1 @@
+DIRECT_SEQUENCE_PASS {"fresh_readonly_bytes_unchanged": true, "missing_then_present": [null, {"native_type": "Decimal", "source_timestamp_raw": null, "value": "1.20"}], "numeric_equal_scale_mismatch_rejected": true}

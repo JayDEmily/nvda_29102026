@@ -1,0 +1,15 @@
+{
+  "actual": {
+    "A4_has_no_direct_R193_role": true,
+    "N04_receipt_only_with_event_cutoff": [],
+    "N08_error317_not_R187": true,
+    "N09_error316_not_R187": true
+  },
+  "exact_match": true,
+  "expected": {
+    "A4_has_no_direct_R193_role": true,
+    "N04_receipt_only_with_event_cutoff": [],
+    "N08_error317_not_R187": true,
+    "N09_error316_not_R187": true
+  }
+}
