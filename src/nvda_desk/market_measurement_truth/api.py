@@ -8,6 +8,7 @@ from collections.abc import Callable, Sequence
 from dataclasses import dataclass, fields, is_dataclass
 from datetime import date, datetime, timedelta
 from decimal import Decimal
+from fractions import Fraction
 from math import gcd
 from pathlib import Path
 from typing import Protocol, get_args, get_origin, get_type_hints
@@ -1131,6 +1132,83 @@ class BookRateOccurrenceV1(_Validated):
 
 
 @dataclass(frozen=True, slots=True)
+class DirectBookRawLineageV1(_Validated):
+    raw_signal_id: str
+    observation_occurrence_id: str
+    projection_mapping_ref: VersionRefV1
+    unit_convention_ref: VersionRefV1
+    projection: raw_api.ProjectedRawValueV1
+    canonical_value: int | str | Decimal
+    event_time_utc: datetime
+
+    def __post_init__(self) -> None:
+        _Validated.__post_init__(self)
+        expected = {
+            "R192": int, "R193": str, "R194": int, "R195": int,
+            "R196": Decimal, "R197": Decimal,
+        }.get(self.raw_signal_id)
+        if expected is None or type(self.canonical_value) is not expected:
+            raise TypeError("exact direct-book native role type required")
+
+
+@dataclass(frozen=True, slots=True)
+class DirectVenueRowV1(_Validated):
+    venue: str
+    side: int
+    position: int
+    price: Decimal
+    size: Decimal
+
+
+@dataclass(frozen=True, slots=True)
+class VenueConcentrationV1(_Validated):
+    venues: tuple[str, ...]
+    shares: tuple[ExactRatioV1, ...]
+    hhi: ExactRatioV1
+
+    def __post_init__(self) -> None:
+        _Validated.__post_init__(self)
+        if not self.venues or len(self.venues) != len(self.shares):
+            raise ValueError("complete exact venue shares required")
+        fractions = tuple(Fraction(x.numerator, x.denominator) for x in self.shares)
+        if (sum(fractions) != 1 or any(not 0 < x < 1 for x in fractions)
+            or sum((x*x for x in fractions), Fraction())
+            != Fraction(self.hhi.numerator, self.hhi.denominator)):
+            raise ValueError("exact normalised venue concentration required")
+
+
+@dataclass(frozen=True, slots=True)
+class DirectVenueRequestV1(_Validated):
+    calculation: CalculationRequestV1
+    selection: BookEventSelectionV1
+    venues: tuple[str, ...]
+    depth_levels: int
+
+
+@dataclass(frozen=True, slots=True)
+class DirectVenueOccurrenceV1(_Validated):
+    owner_object_id: str
+    owner_namespace: str
+    implementation_brief_sha256: str
+    derived_signal_id: str
+    derived_occurrence_id: str
+    request: DirectVenueRequestV1
+    definition: CalculationDefinitionV1
+    parameter_set: CalculationParameterSetV1
+    selection: BookEventSelectionV1
+    unit_conventions: tuple[UnitConventionVersionV1, ...]
+    projection_mappings: tuple[raw_api.RawSignalProjectionMappingV1, ...]
+    raw_input_lineage: tuple[DirectBookRawLineageV1, ...]
+    standing_rows: tuple[DirectVenueRowV1, ...]
+    result: VenueConcentrationV1
+    units: str
+    result_shape: str
+    effective_as_of_utc: datetime
+    knowledge_cutoff_utc: datetime
+    calculated_at_utc: datetime
+
+
+@dataclass(frozen=True, slots=True)
 class SmartSizeRowV1(_Validated):
     side: int
     position: int
@@ -1389,6 +1467,37 @@ def create_book_delete_rate_reader(
     *, admission: OwnerAdmissionV1, storage: SQLiteReadStorageV1,
 ) -> MeasurementBookRateReadsV1:
     from ._book_delete_rate import build_reader
+    return build_reader(admission, storage)
+
+
+class MeasurementDirectVenueReadsV1(Protocol):
+    def get_derived_occurrence(self, derived_occurrence_id: str
+                               ) -> DirectVenueOccurrenceV1 | None: ...
+    def list_derived_history(
+        self, *, derived_signal_id: str, subject_instrument: str,
+        effective_at_or_before_utc: datetime, knowledge_at_or_before_utc: datetime,
+        limit: int,
+    ) -> tuple[DirectVenueOccurrenceV1, ...]: ...
+
+
+class MeasurementDirectVenueOwnerV1(Protocol):
+    @property
+    def reads(self) -> MeasurementDirectVenueReadsV1: ...
+    def materialise(self, request: DirectVenueRequestV1) -> DirectVenueOccurrenceV1 | None: ...
+
+
+def create_direct_venue_owner(
+    *, admission: OwnerAdmissionV1, raw_projection_reader: RawProjectionReaderV1,
+    storage: MemoryStorageV1 | SQLiteStorageV1, utc_now: Callable[[], datetime],
+) -> MeasurementDirectVenueOwnerV1:
+    from ._direct_venue import build_owner
+    return build_owner(admission, raw_projection_reader, storage, utc_now)
+
+
+def create_direct_venue_reader(
+    *, admission: OwnerAdmissionV1, storage: SQLiteReadStorageV1,
+) -> MeasurementDirectVenueReadsV1:
+    from ._direct_venue import build_reader
     return build_reader(admission, storage)
 
 

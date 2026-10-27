@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_d143",
+  "semantic_brief_path": "handoff/foundation_implementation/authority/D143_IMPLEMENTATION_BRIEF.md",
+  "target": {
+    "category": "M",
+    "responsibility_name": "neutral_market_measurement_truth",
+    "package": "nvda_desk.market_measurement_truth",
+    "public_seam": "nvda_desk.market_measurement_truth.api",
+    "intent": "modify",
+    "existing_object_id": "M02"
+  },
+  "proof_axis": "product",
+  "product_tier_treatment": "NOT_CLASSIFIED",
+  "architecture_proof_axis": "architecture_kernel",
+  "required_proof_ids": [
+    "D143-CALCULATION"
+  ],
+  "families": [
+    {
+      "id": "mmt_d143",
+      "path": "tests/product/market_measurement_d143/test_signal.py",
+      "proof_obligation_ids": [
+        "D143-CALCULATION"
+      ],
+      "required_test_names": [
+        "test_d143_signal"
+      ],
+      "boundary": "Complete two-venue direct book, exact shares/HHI, missing native R193 refusal.",
+      "proof_levels": [
+        "CONTRACT",
+        "INTEGRATION",
+        "STATE"
+      ],
+      "authoritative_inputs": [
+        "Owner-accepted EXEC_PLAN.md \u00a7\u00a72.2,3,5; catalogue K02/P_BASIC."
+      ],
+      "dependency_substitutions": [
+        "Synthetic exact public M00 direct book with two named venues."
+      ],
+      "case_coverage": {
+        "lawful_positive": {
+          "cases": [
+            "Four bid/ask direct groups depths3,1 -> shares3/4,1/4 HHI5/8."
+          ]
+        },
+        "prohibited_false_positive": {
+          "cases": [
+            "R193 missing on selected BETA ask while size remains projected."
+          ]
+        },
+        "missing_mandatory_authority": {
+          "cases": [
+            "Six exact native direct roles, venue/side completeness."
+          ]
+        },
+        "lawful_optional_absence": {
+          "cases": [
+            "No D predecessor."
+          ]
+        }
+      },
+      "expected_failure_signals": [
+        "Missing marketMaker/venue, mixed book event, partial venue sides, wrong standing replay."
+      ],
+      "limitations": [
+        "Two controlled cases; no native direct-book admission."
+      ],
+      "adjacent_nonclaims": [
+        "D145 separate acceptance."
+      ],
+      "environment": "Pinned CPython3.12.14 SQLite3.53.1.",
+      "material_versions": [
+        "Exact brief/binding/contract/generation/candidate."
+      ],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/market_measurement_d143/test_signal.py"
+    }
+  ],
+  "required_support_files": [],
+  "optional_support_files": [],
+  "execution_policy": {
+    "skipped_tests": "FAIL",
+    "xfailed_tests": "FAIL",
+    "xpassed_tests": "FAIL",
+    "collection_failed": "FAIL",
+    "no_tests_collected": "FAIL",
+    "unexpected_governed_mutation": "FAIL"
+  }
+}
