@@ -279,3 +279,123 @@ print(json.dumps(history_rows(owner(Path(sys.argv[1])), **json.loads(sys.argv[2]
     if completed.returncode:
         raise RuntimeError(completed.stderr)
     return json.loads(completed.stdout)
+
+
+def control_observation(spec: dict[str, Any]) -> r.RawObservationOccurrenceV1:
+    """Declared control transport; callback fields and collector envelope stay distinct."""
+    collector = {
+        "schema_version": "collector-control-transport/1",
+        "origin": "synthetic",
+        "subject": spec["subject"],
+        "request": spec["request"],
+        "generation": spec["control"]["generation_before"],
+        "requested_exchange": "SMART",
+        "control": dict(spec["control"]),
+    }
+    return r.RawObservationOccurrenceV1(
+        concept_id=r.concept_id("raw_signal.raw_observation_occurrence"),
+        contract_id=r.contract_id("nvda.raw_signal.RawObservationOccurrence.v1"),
+        observation_occurrence_id=r.observation_occurrence_id(spec["control_id"]),
+        delivery_artifact_ref=r.delivery_artifact_ref("synthetic-delivery:" + spec["control_id"]),
+        source_provider=r.provider_id(spec["source_provider"]),
+        native_record={**spec["native_callback"], "_collector": collector},
+        received_ts_utc=utc(spec["receipt"]),
+        ingestion_sequence=spec["sequence"],
+        ingestion_sequence_scope=r.ingestion_sequence_scope(spec["scope"]),
+        source_temporal_kind=spec["source_temporal_kind"],
+        source_timestamp_raw=spec["source_timestamp_raw"],
+        source_product_api="TWS_SOCKET_API_SYNTHETIC_SPECIMEN",
+        source_endpoint_callback=spec["source_endpoint_callback"],
+        source_variant=spec["source_variant"],
+        subject_instrument=spec["subject"],
+        native_identifier=spec["subject"],
+        native_tick_series_identifier=spec["request"],
+    )
+
+
+def dump_control(value: r.RawObservationOccurrenceV1) -> dict[str, Any]:
+    """Serialise only actual persisted callback, collector and envelope facts."""
+    native = dict(value.native_record)
+    collector = native.pop("_collector")
+    if not isinstance(collector, Mapping):
+        raise TypeError("control requires its declared collector envelope")
+    control = collector["control"]
+    if (
+        not isinstance(control, Mapping)
+        or control.get("schema_version") != "m00-control-envelope/1"
+    ):
+        raise ValueError("unknown control envelope schema")
+    return {
+        "control_id": value.observation_occurrence_id.value,
+        "subject": value.subject_instrument,
+        "request": collector["request"],
+        "scope": value.ingestion_sequence_scope.value,
+        "receipt": stamp(value.received_ts_utc),
+        "sequence": value.ingestion_sequence,
+        "native_callback": native,
+        "control": dict(control),
+        "source_provider": value.source_provider.value,
+        "source_variant": value.source_variant,
+        "source_endpoint_callback": value.source_endpoint_callback,
+        "source_temporal_kind": value.source_temporal_kind,
+        "source_timestamp_raw": value.source_timestamp_raw,
+    }
+
+
+def observation_history(raw, query: dict[str, Any]) -> list[r.RawObservationOccurrenceV1]:
+    """Public fixed-population page exhaustion; receives selectors, never known IDs."""
+    kwargs = dict(query)
+    kwargs["received_at_or_before_utc"] = utc(kwargs["received_at_or_before_utc"])
+    kwargs["native_identity_selectors"] = tuple(
+        (tuple(path), value) for path, value in kwargs.get("native_identity_selectors", ())
+    )
+    result = []
+    cursor = None
+    cursors = set()
+    for _ in range(1000):
+        page = raw.reads.list_raw_observation_history(**kwargs, limit=1, cursor=cursor)
+        if len(page.items) > 1:
+            raise ValueError("public observation history exceeded page size")
+        result.extend(page.items)
+        cursor = page.next_cursor
+        if cursor is None:
+            return result
+        if cursor in cursors:
+            raise ValueError("public observation history repeated cursor")
+        cursors.add(cursor)
+    raise ValueError("public observation history failed to exhaust")
+
+
+def discovery_rows(raw, query: dict[str, Any]) -> dict[str, Any]:
+    """Actual observations plus recognisable controls from one public identity query."""
+    values = observation_history(raw, query)
+    controls = []
+    for value in values:
+        collector = value.native_record.get("_collector")
+        if isinstance(collector, Mapping) and "control" in collector:
+            controls.append(dump_control(value))
+    return {
+        "observations": [dump_observation(value) for value in values],
+        "controls": controls,
+    }
+
+
+def fresh_discovery(path: Path, query: dict[str, Any]) -> dict[str, Any]:
+    """Independent process receives only database path and declared selectors."""
+    code = """
+import json, sys
+from pathlib import Path
+from m00_fixture_io import owner, discovery_rows
+print(json.dumps(discovery_rows(owner(Path(sys.argv[1])), json.loads(sys.argv[2])), sort_keys=True))
+"""
+    env = dict(os.environ, PYTHONPATH=os.pathsep.join((str(ROOT / "tools"), str(ROOT / "src"))))
+    completed = subprocess.run(
+        [sys.executable, "-c", code, str(path), json.dumps(query)],
+        capture_output=True,
+        text=True,
+        env=env,
+        check=False,
+    )
+    if completed.returncode:
+        raise RuntimeError(completed.stderr)
+    return json.loads(completed.stdout)

@@ -1,0 +1,12 @@
+E501 Line too long (101 > 100)
+   --> tools/m00_fixture_io.py:323:101
+    |
+321 |         raise TypeError("control requires its declared collector envelope")
+322 |     control = collector["control"]
+323 |     if not isinstance(control, Mapping) or control.get("schema_version") != "m00-control-envelope/1":
+    |                                                                                                     ^
+324 |         raise ValueError("unknown control envelope schema")
+325 |     return {
+    |
+
+Found 1 error.
