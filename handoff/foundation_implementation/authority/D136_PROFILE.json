@@ -1,0 +1,34 @@
+{
+  "id": "D136",
+  "definition": "D136-SMART-DEPTH-IMBALANCE-1",
+  "kernel": "K02_ALGEBRA",
+  "parameter_profile": "P_BASIC",
+  "subject": "NVDA",
+  "raw_dependencies": [],
+  "derived_dependencies": [
+    "D134",
+    "D135"
+  ],
+  "as_of": "2026-10-20T12:40:00Z",
+  "cutoff": "2026-10-20T12:40:01Z",
+  "success": {
+    "actual_D134": "top two bid depth8",
+    "actual_D135": "top two ask depth6",
+    "requested_level_pair": [
+      2,
+      2
+    ],
+    "result": "1/7"
+  },
+  "refusal": {
+    "actual_D134": "top two bid depth8",
+    "actual_D135": "top two ask depth6",
+    "requested_level_pair": [
+      2,
+      3
+    ],
+    "reason": "actual D135 depth_levels2 is incompatible with requested ask depth_levels3; actual D134 remains compatible at2",
+    "effect": "no D136 result/history"
+  },
+  "boundary": "No fabricated predecessor, no raw projection; only actual public M02 D134/D135 readers, synthetic SMART source."
+}
