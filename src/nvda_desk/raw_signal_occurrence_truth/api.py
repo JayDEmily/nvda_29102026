@@ -686,6 +686,12 @@ class ProjectedRawHistoryPageV1:
 
 
 @dataclass(frozen=True, slots=True)
+class RawObservationHistoryPageV1:
+    items: tuple[RawObservationOccurrenceV1, ...]
+    next_cursor: str | None
+
+
+@dataclass(frozen=True, slots=True)
 class CaptureReceiptEvidenceRelationV1:
     concept_id: _ConceptId
     contract_id: _ContractId
@@ -851,6 +857,20 @@ class _ListProjectedRawHistory(Protocol):
         limit: int,
         cursor: str | None,
     ) -> ProjectedRawHistoryPageV1: ...
+
+
+class _ListRawObservationHistory(Protocol):
+    def __call__(
+        self,
+        *,
+        subject_instrument: str,
+        source_provider: str,
+        source_variant: str | None,
+        received_at_or_before_utc: datetime,
+        native_identity_selectors: tuple[tuple[tuple[str, ...], str], ...] = (),
+        limit: int,
+        cursor: str | None,
+    ) -> RawObservationHistoryPageV1: ...
 
 
 class _AssessmentPersistencePort(Protocol):
@@ -1055,6 +1075,7 @@ class _ReadsV1:
     __slots__ = (
         "__list_assessments",
         "__list_projected_raw_history",
+        "__list_raw_observation_history",
         "__project_raw_value",
         "__read_assessment",
         "__read_capture",
@@ -1071,6 +1092,7 @@ class _ReadsV1:
         list_assessments: _ListAssessments,
         project_raw_value: _ProjectRawValue,
         list_projected_raw_history: _ListProjectedRawHistory,
+        list_raw_observation_history: _ListRawObservationHistory,
     ) -> None:
         self.__read_policy = read_policy
         self.__read_capture = read_capture
@@ -1079,6 +1101,7 @@ class _ReadsV1:
         self.__list_assessments = list_assessments
         self.__project_raw_value = project_raw_value
         self.__list_projected_raw_history = list_projected_raw_history
+        self.__list_raw_observation_history = list_raw_observation_history
 
     def get_capture_scope_policy(
         self, scope_policy_id: _ScopePolicyId, scope_policy_version: int
@@ -1133,6 +1156,28 @@ class _ReadsV1:
             subject_instrument=subject_instrument,
             received_at_or_before_utc=received_at_or_before_utc,
             event_at_or_before_utc=event_at_or_before_utc,
+            limit=limit,
+            cursor=cursor,
+        )
+
+
+    def list_raw_observation_history(
+        self,
+        *,
+        subject_instrument: str,
+        source_provider: str,
+        source_variant: str | None,
+        received_at_or_before_utc: datetime,
+        native_identity_selectors: tuple[tuple[tuple[str, ...], str], ...] = (),
+        limit: int,
+        cursor: str | None,
+    ) -> RawObservationHistoryPageV1:
+        return self.__list_raw_observation_history(
+            subject_instrument=subject_instrument,
+            source_provider=source_provider,
+            source_variant=source_variant,
+            received_at_or_before_utc=received_at_or_before_utc,
+            native_identity_selectors=native_identity_selectors,
             limit=limit,
             cursor=cursor,
         )
@@ -1890,6 +1935,103 @@ def _build_owner_facets(
         next_cursor = str(next_offset) if next_offset < len(projected) else None
         return ProjectedRawHistoryPageV1(items=items, next_cursor=next_cursor)
 
+    def list_raw_observation_history(
+        *,
+        subject_instrument: str,
+        source_provider: str,
+        source_variant: str | None,
+        received_at_or_before_utc: datetime,
+        native_identity_selectors: tuple[tuple[tuple[str, ...], str], ...] = (),
+        limit: int,
+        cursor: str | None,
+    ) -> RawObservationHistoryPageV1:
+        """Select immutable facts; identity-path meaning remains with the caller."""
+        for name, text in (
+            ("subject_instrument", subject_instrument),
+            ("source_provider", source_provider),
+        ):
+            if type(text) is not str or not text:
+                raise ValueError(f"{name} must be a non-empty string")
+        if source_variant is not None and (
+            type(source_variant) is not str or not source_variant
+        ):
+            raise ValueError("source_variant must be a non-empty string or absent")
+        _require_utc(received_at_or_before_utc, "received_at_or_before_utc")
+        if received_at_or_before_utc == datetime.max.replace(tzinfo=UTC):
+            raise ValueError("maximum UTC receipt cutoff is unsupported")
+        if type(native_identity_selectors) is not tuple:
+            raise TypeError("native_identity_selectors must be an exact tuple")
+        paths: set[tuple[str, ...]] = set()
+        for selector in native_identity_selectors:
+            if type(selector) is not tuple or len(selector) != 2:
+                raise TypeError("native identity selectors must be exact (path, value) tuples")
+            path, expected = selector
+            if (
+                type(path) is not tuple
+                or not path
+                or any(type(part) is not str or not part for part in path)
+            ):
+                raise ValueError("native identity paths must contain non-empty strings")
+            if type(expected) is not str or not expected:
+                raise ValueError("native identity expected values must be non-empty strings")
+            if path in paths:
+                raise ValueError("native identity paths must be distinct")
+            paths.add(path)
+        if type(limit) is not int or limit <= 0:
+            raise ValueError("limit must be a positive integer")
+        if cursor is None:
+            cursor_digits = "0"
+        else:
+            if type(cursor) is not str or not cursor.isascii() or not cursor.isdigit():
+                raise ValueError("cursor is invalid")
+            cursor_digits = cursor.lstrip("0") or "0"
+
+        if durability_port is None:
+            observations = tuple(state.observations_by_identity.values())
+        else:
+            with durability_port.transaction(write=False) as transaction:
+                observations = tuple(transaction.list_observations_received_between(
+                    datetime.min.replace(tzinfo=UTC),
+                    received_at_or_before_utc + timedelta(microseconds=1),
+                ))
+        selected: list[RawObservationOccurrenceV1] = []
+        for observation in observations:
+            if (
+                observation.subject_instrument != subject_instrument
+                or observation.source_provider.value != source_provider
+                or observation.source_variant != source_variant
+                or observation.received_ts_utc > received_at_or_before_utc
+            ):
+                continue
+            matches = True
+            for path, expected in native_identity_selectors:
+                value: NativeValueV1 = observation.native_record
+                for part in path:
+                    if not isinstance(value, Mapping) or part not in value:
+                        matches = False
+                        break
+                    value = value[part]
+                if not matches or type(value) is not str or value != expected:
+                    matches = False
+                    break
+            if matches:
+                selected.append(observation)
+        selected.sort(key=lambda item: (
+            item.received_ts_utc,
+            item.ingestion_sequence_scope.value,
+            item.ingestion_sequence,
+            item.observation_occurrence_id.value,
+        ))
+        population_digits = str(len(selected))
+        beyond_population = len(cursor_digits) > len(population_digits) or (
+            len(cursor_digits) == len(population_digits) and cursor_digits > population_digits
+        )
+        offset = len(selected) if beyond_population else int(cursor_digits)
+        items = tuple(selected[offset : offset + limit])
+        next_offset = offset + len(items)
+        next_cursor = str(next_offset) if next_offset < len(selected) else None
+        return RawObservationHistoryPageV1(items=items, next_cursor=next_cursor)
+
     def reconcile_owed_slots(
         scope_policy_ref: _ScopePolicyRef,
         slot_starts_utc: Sequence[datetime],
@@ -1977,6 +2119,7 @@ def _build_owner_facets(
             list_assessments=list_assessments,
             project_raw_value=project_raw_value,
             list_projected_raw_history=list_projected_raw_history,
+            list_raw_observation_history=list_raw_observation_history,
         ),
     )
 
@@ -2023,6 +2166,7 @@ __all__ = [
     "PersistenceFailureV1",
     "ProjectedRawHistoryPageV1",
     "ProjectedRawValueV1",
+    "RawObservationHistoryPageV1",
     "RawObservationOccurrenceV1",
     "RawSignalCatalogueId",
     "RawSignalProjectionMappingV1",
