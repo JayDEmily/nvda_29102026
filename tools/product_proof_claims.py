@@ -734,6 +734,61 @@ def _configured_extension(
     return entry, contract, sha256(brief)
 
 
+def _m00_brief2_extension(root: Path) -> tuple[dict[str, Any], dict[str, Any], str] | None:
+    """One exact owner-commissioned M00 extension; original claims remain sealed."""
+    expected = {
+        "schema_version": "1.0",
+        "claim_id": "m00_brief2",
+        "brief_path": "handoff/planning/m00_brief2_20261027/"
+        "BRIEF_2_M00_RECONCILED_V3_20261027_1622_AEDT.md",
+        "binding_path": "implementation/authority/M00_BRIEF2_BINDING.yaml",
+        "contract_path": "handoff/m00_brief2/authority/PROOF_CONTRACT.json",
+        "physical_root": "tests/product/m00_brief2",
+        "admission_path": "config/product_proof/m00_brief2/admission.json",
+    }
+    descriptor = safe_path(root, "config/product_proof/m00_brief2/claim.json")
+    if not descriptor.exists():
+        physical = safe_path(root, expected["physical_root"])
+        if physical.exists() and any(physical.rglob("*.py")):
+            raise ValueError("unowned M00 Brief2 proof source")
+        return None
+    if read_json(descriptor) != expected:
+        raise ValueError("invalid M00 Brief2 descriptor")
+    brief, binding = (safe_path(root, expected[k]) for k in ("brief_path", "binding_path"))
+    digest = "0d5ee211c1285b31834062ab2d871670ed2f318cbb955e7df95f80067d562007"
+    if sha256(brief) != digest:
+        raise ValueError("M00 Brief2 original brief bytes mismatch")
+    validate_implementation_authority(root, binding, brief)
+    if yaml.safe_load(binding.read_text())["targets"] != [
+        {"action": "modify", "object_id": name} for name in ("M00", "G01")
+    ]:
+        raise ValueError("M00 Brief2 owning projection mismatch")
+    contract = read_json(safe_path(root, expected["contract_path"]))
+    _schema(root, contract, "accepted_brief_product_proof.schema.json")
+    target = {
+        "category": "M", "responsibility_name": "raw_signal_occurrence_truth",
+        "package": "nvda_desk.raw_signal_occurrence_truth",
+        "public_seam": "nvda_desk.raw_signal_occurrence_truth.api",
+        "intent": "modify", "existing_object_id": "M00",
+    }
+    if (contract["claim_id"] != "m00_brief2"
+        or contract["semantic_brief_path"] != expected["brief_path"]
+        or contract["target"] != target
+        or any(value != "FAIL" for value in contract["execution_policy"].values())):
+        raise ValueError("M00 Brief2 contract/target association mismatch")
+    names = ["test_ibkr_native_projection.py", "test_ibkr_history.py",
+             "test_ibkr_controls.py", "test_export.py"]
+    paths = [family["path"] for family in contract["families"]]
+    required = [expected["physical_root"] + "/" + name for name in names]
+    if not paths or paths != required[:len(paths)]:
+        raise ValueError("M00 Brief2 family sequence mismatch")
+    entry = {key: value for key, value in expected.items() if key != "brief_path"}
+    entry["profile"] = "accepted_brief_v2"
+    target_id, _ = _target(root, target)
+    _generation(root, entry, contract, digest, target_id)
+    return entry, contract, digest
+
+
 def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductProofClaim:
     root = repository_root.resolve()
     catalogue = read_json(root / "config/product_proof/claims.json")
@@ -949,6 +1004,9 @@ def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductPro
             configured = _configured_extension(root, configured_identity)
             if configured is not None:
                 extensions[configured[0]["claim_id"]] = configured
+    m00 = _m00_brief2_extension(root) if authority is not None else None
+    if m00 is not None:
+        extensions[m00[0]["claim_id"]] = m00
     if extensions:
         catalogue = {
             **catalogue,

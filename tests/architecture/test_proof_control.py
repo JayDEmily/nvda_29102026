@@ -1678,3 +1678,27 @@ def test_tranche_pre_admission_universe_resets_future_optional_roots(tmp_path, m
     copied = _copy_candidate(tmp_path / "copied")
     assert not (copied / "config/product_proof/market_measurement_d015").exists()
     assert not (copied / "tests/product/market_measurement_d015").exists()
+
+
+def test_m00_brief2_fixed_extension_and_exact_authority(tmp_path):
+    api = _controls()
+    assert callable(getattr(api, "_m00_brief2_extension", None)), (
+        "missing fixed M00 Brief2 admission"
+    )
+    result = api._m00_brief2_extension(ROOT)
+    assert result[0]["claim_id"] == "m00_brief2"
+    assert result[2] == "0d5ee211c1285b31834062ab2d871670ed2f318cbb955e7df95f80067d562007"
+    assert api.load_product_proof_claim(ROOT, "m00_brief2").target_id == "M00"
+    candidate = _copy_candidate(tmp_path)
+    descriptor = candidate / "config/product_proof/m00_brief2/claim.json"
+    original = descriptor.read_text()
+    changed = json.loads(original)
+    changed["physical_root"] = "tests/product/raw_signal_sqlite"
+    descriptor.write_text(json.dumps(changed))
+    with pytest.raises(ValueError, match="descriptor"):
+        api._m00_brief2_extension(candidate)
+    descriptor.write_text(original)
+    brief = candidate / json.loads(original)["brief_path"]
+    brief.write_bytes(brief.read_bytes() + b"\n")
+    with pytest.raises(ValueError):
+        api._m00_brief2_extension(candidate)

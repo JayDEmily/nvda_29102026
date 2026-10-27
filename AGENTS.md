@@ -1,3 +1,6 @@
+<!-- Current owner execution commission, 27 October 2026 -->
+The owner now explicitly accepts and commissions all root M00 Brief2 leaves continuously, with independently accepted cumulative downloadable checkpoints after each leaf. This supersedes planning-only restrictions below. D145 and other signal work remain paused; frozen guardrails and unchanged evidence remain. New Brief2 proof lives under tests/product/m00_brief2/ via separately admitted fixed claim, not the original raw SQLite claim.
+
 # NVDA architecture kernel — agent operating map
 
 ## Start here

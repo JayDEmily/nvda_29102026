@@ -1,0 +1,10 @@
+schema_version: "1.0"
+brief_sha256: 0d5ee211c1285b31834062ab2d871670ed2f318cbb955e7df95f80067d562007
+acceptance:
+  status: ACCEPTED_FOR_IMPLEMENTATION
+  authority_ref: owner-chat/20261027/M00-Brief2-execute-all-leaves
+targets:
+  - action: modify
+    object_id: M00
+  - action: modify
+    object_id: G01

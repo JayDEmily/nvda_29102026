@@ -1,3 +1,6 @@
+<!-- Current owner execution commission, 27 October 2026 -->
+The owner now explicitly accepts and commissions all root M00 Brief2 leaves continuously, with independently accepted cumulative downloadable checkpoints after each leaf. This supersedes planning-only restrictions below. D145 and other signal work remain paused; frozen guardrails and unchanged evidence remain. New Brief2 proof lives under tests/product/m00_brief2/ via separately admitted fixed claim, not the original raw SQLite claim.
+
 # Test-local supplement — M00 Brief 2 planning interlude
 
 Current owner direction pauses the D143 next-twenty schedule. Root `EXEC_PLAN.md` commissions only M00 Brief 2 planning, independent documentary review and checkpoint delivery this turn; no test/production/admission changes or product execution. Future M00 proof must cover all ten positive scenarios and N01–N18 under exact lawful proof admission; the historical two-case-per-D rule below applies only to its paused signal programme. Preserve valid existing tests and immutable generations, bounded repair/failure evidence, pinned cp312 runtime, public SQLite proof and independent review. See root plan for future per-leaf checkpoint-before-continuation discipline.

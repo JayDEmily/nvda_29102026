@@ -1,0 +1,9 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "m00_brief2",
+  "brief_path": "handoff/planning/m00_brief2_20261027/BRIEF_2_M00_RECONCILED_V3_20261027_1622_AEDT.md",
+  "binding_path": "implementation/authority/M00_BRIEF2_BINDING.yaml",
+  "contract_path": "handoff/m00_brief2/authority/PROOF_CONTRACT.json",
+  "physical_root": "tests/product/m00_brief2",
+  "admission_path": "config/product_proof/m00_brief2/admission.json"
+}

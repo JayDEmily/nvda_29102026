@@ -1,0 +1,91 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "m00_brief2",
+  "semantic_brief_path": "handoff/planning/m00_brief2_20261027/BRIEF_2_M00_RECONCILED_V3_20261027_1622_AEDT.md",
+  "target": {
+    "category": "M",
+    "responsibility_name": "raw_signal_occurrence_truth",
+    "package": "nvda_desk.raw_signal_occurrence_truth",
+    "public_seam": "nvda_desk.raw_signal_occurrence_truth.api",
+    "intent": "modify",
+    "existing_object_id": "M00"
+  },
+  "proof_axis": "product",
+  "product_tier_treatment": "NOT_CLASSIFIED",
+  "architecture_proof_axis": "architecture_kernel",
+  "required_proof_ids": [
+    "M00B2-NATIVE"
+  ],
+  "families": [
+    {
+      "id": "m00b2_native",
+      "path": "tests/product/m00_brief2/test_ibkr_native_projection.py",
+      "proof_obligation_ids": [
+        "M00B2-NATIVE"
+      ],
+      "required_test_names": [
+        "test_native_scenarios",
+        "test_native_negative"
+      ],
+      "boundary": "Brief2 ten native scenarios 36 observations/155 exact projections; N01/02/03/06/07/11/12/14/17/18 and real SQLite reopen.",
+      "proof_levels": [
+        "CONTRACT",
+        "INTEGRATION",
+        "STATE"
+      ],
+      "authoritative_inputs": [
+        "Exact owner-commissioned M00 Brief2 V3 tables and N requirements."
+      ],
+      "dependency_substitutions": [
+        "Synthetic provider callbacks, real public M00 and SQLite."
+      ],
+      "case_coverage": {
+        "lawful_positive": {
+          "cases": [
+            "All ten immutable literal scenarios through actual public owner."
+          ]
+        },
+        "prohibited_false_positive": {
+          "cases": [
+            "Side inversion, missing facts defaulted, fake atomic option quote or source clock."
+          ]
+        },
+        "missing_mandatory_authority": {
+          "cases": [
+            "Exact source/mapping/subject/typed native input must be declared."
+          ]
+        },
+        "lawful_optional_absence": {
+          "cases": [
+            "Missing native field and receipt-only source clock remain absent."
+          ]
+        }
+      },
+      "expected_failure_signals": [
+        "Exact value/type/identity mismatch or failed public SQLite readback."
+      ],
+      "limitations": [
+        "Synthetic only, no PostgreSQL runtime or live source certification."
+      ],
+      "adjacent_nonclaims": [
+        "No M02/collector/D145 change."
+      ],
+      "environment": "Pinned CPython3.12.14 SQLite3.53.1.",
+      "material_versions": [
+        "Exact brief/binding/contract/generation/candidate."
+      ],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/m00_brief2/test_ibkr_native_projection.py"
+    }
+  ],
+  "required_support_files": [],
+  "optional_support_files": [],
+  "execution_policy": {
+    "skipped_tests": "FAIL",
+    "xfailed_tests": "FAIL",
+    "xpassed_tests": "FAIL",
+    "collection_failed": "FAIL",
+    "no_tests_collected": "FAIL",
+    "unexpected_governed_mutation": "FAIL"
+  }
+}
