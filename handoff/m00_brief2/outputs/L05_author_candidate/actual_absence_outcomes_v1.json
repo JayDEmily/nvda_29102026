@@ -1,0 +1,15 @@
+{
+  "actual": {
+    "N04_receipt_only_with_event_cutoff": [],
+    "N06_non_native_R193_missing": true,
+    "N08_error317_not_R187": true,
+    "N09_error316_not_R187": true
+  },
+  "exact_match": true,
+  "expected": {
+    "N04_receipt_only_with_event_cutoff": [],
+    "N06_non_native_R193_missing": true,
+    "N08_error317_not_R187": true,
+    "N09_error316_not_R187": true
+  }
+}

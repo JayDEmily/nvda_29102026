@@ -1,0 +1,28 @@
+{
+  "actual_absence_probes_match": true,
+  "actual_output_hash_first": "aac23b90ff1cb16b9ea5434ae2ac3115a53eb6cd60fbfadb39d9db2db63ec4b5",
+  "actual_output_hash_match": true,
+  "actual_output_hash_second": "aac23b90ff1cb16b9ea5434ae2ac3115a53eb6cd60fbfadb39d9db2db63ec4b5",
+  "all_page_history_match": true,
+  "disposition": "AUTHOR_REPRODUCED_UNPINNED; NOT_ACCEPTED",
+  "exit_code_reason": "intentionally nonzero: required CPython3.12.14 absent",
+  "first_exit_code": 2,
+  "fresh_sqlite_paths_separate": true,
+  "independent_review": "NOT_PERFORMED",
+  "oracle_diff_first": null,
+  "oracle_diff_second": null,
+  "page_history_query_count": 54,
+  "per_scenario_counts_match": true,
+  "pinned_runtime_satisfied": false,
+  "read_only_hash_unchanged_first": true,
+  "read_only_hash_unchanged_second": true,
+  "runtime": {
+    "python": "3.13.5",
+    "sqlite": "3.46.1"
+  },
+  "same_source": true,
+  "second_exit_code": 2,
+  "source_clean_first": true,
+  "source_clean_second": true,
+  "source_git_commit": "080dcdd2c364c34ddb1502e2d5b8c41b9ef93fa7"
+}
