@@ -36,7 +36,7 @@ def request(bid_id: str, ask_id: str) -> f.SmartImbalanceRequestV1:
             "D136", _smart_depth.SUBJECT, _smart_depth.T, _smart_depth.CUTOFF,
             DEFINITION.calculation_definition_version,
             f.VersionRefV1(PARAMETER.context_id, 1), SELECTION, (SELECTION,), (),
-        ), (bid_id, ask_id), (2, 2),
+        ), (bid_id, ask_id), f.SmartDepthPairV1(2, 2),
     )
 
 
@@ -76,8 +76,8 @@ def _produce(req: f.SmartImbalanceRequestV1,
         or bid.unit_conventions != ask.unit_conventions
         or bid.raw_input_lineage != ask.raw_input_lineage
         or bid.standing_rows != ask.standing_rows
-        or bid.request.depth_levels != req.requested_depth_levels[0]
-        or ask.request.depth_levels != req.requested_depth_levels[1]
+        or bid.request.depth_levels != req.requested_depth_levels.bid_levels
+        or ask.request.depth_levels != req.requested_depth_levels.ask_levels
         or (bid.request.depth_levels == ask.request.depth_levels
             and bid.request.selection != ask.request.selection)
         or bid.effective_as_of_utc != _smart_depth.T

@@ -190,7 +190,8 @@ def test_d136_signal(tmp_path, refused):
         f.VersionRefV1(PARAMETER.context_id, 1),
         f.VersionRefV1("mmt-d136-same-book-selection", 1),
         (f.VersionRefV1("mmt-d136-same-book-selection", 1),), (),
-    ), (bid.derived_occurrence_id, ask.derived_occurrence_id), (2, 2))
+    ), (bid.derived_occurrence_id, ask.derived_occurrence_id),
+       f.SmartDepthPairV1(2, 2))
     admission = f.OwnerAdmissionV1("M02", BRIEF)
     path = str(tmp_path / "d136.sqlite")
     owner = f.create_smart_imbalance_owner(
@@ -205,7 +206,7 @@ def test_d136_signal(tmp_path, refused):
                  effective_at_or_before_utc=T, knowledge_at_or_before_utc=CUTOFF,
                  limit=10)
     if refused:
-        assert request.requested_depth_levels == (2, 2)
+        assert request.requested_depth_levels == f.SmartDepthPairV1(2, 2)
         assert ask.definition == ASK_DEFINITION_TOP_ONE
         assert ask.parameter_set == ASK_PARAMETER_TOP_ONE
         assert ask.request.selection == SELECTION_TOP_ONE

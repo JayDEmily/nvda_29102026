@@ -1072,10 +1072,21 @@ class SmartDepthOccurrenceV1(_Validated):
 
 
 @dataclass(frozen=True, slots=True)
+class SmartDepthPairV1(_Validated):
+    bid_levels: int
+    ask_levels: int
+
+    def __post_init__(self) -> None:
+        _Validated.__post_init__(self)
+        if self.bid_levels <= 0 or self.ask_levels <= 0:
+            raise ValueError("positive bid and ask depth levels required")
+
+
+@dataclass(frozen=True, slots=True)
 class SmartImbalanceRequestV1(_Validated):
     calculation: CalculationRequestV1
     predecessor_occurrence_ids: tuple[str, str]
-    requested_depth_levels: tuple[int, int]
+    requested_depth_levels: SmartDepthPairV1
 
 
 @dataclass(frozen=True, slots=True)

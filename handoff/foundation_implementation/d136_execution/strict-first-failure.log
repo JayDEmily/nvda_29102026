@@ -1,0 +1,193 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/17246e12ecdd/d136-restored
+configfile: pyproject.toml
+collected 2 items
+
+tests/product/market_measurement_d136/test_signal.py FF                  [100%]
+
+=================================== FAILURES ===================================
+__________________________ test_d136_signal[success] ___________________________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-1/test_d136_signal_success_0')
+refused = False
+
+    @pytest.mark.parametrize("refused", (False, True), ids=("success", "refusal"))
+    def test_d136_signal(tmp_path, refused):
+        raw = r.create_owner()
+        projected = []
+        for sequence, (event_id, position, side, size) in enumerate((
+            ("bid0", 0, 0, Decimal("5")), ("bid1", 1, 0, Decimal("3")),
+            ("ask0", 0, 1, Decimal("2")), ("ask1", 1, 1, Decimal("4")),
+        ), 1):
+            projected.extend(admit(raw, event_id, position, 0, side, size,
+                                   6 - sequence, sequence))
+        assert len(projected) == 16
+        bid_path, ask_path = str(tmp_path / "d134.sqlite"), str(tmp_path / "d135.sqlite")
+        bid_owner = f.create_smart_depth_owner(
+            admission=f.OwnerAdmissionV1("M02", BID_BRIEF), raw_projection_reader=raw.reads,
+            storage=f.SQLiteStorageV1(bid_path, True), utc_now=lambda: NOW,
+        )
+        ask_owner = f.create_smart_ask_owner(
+            admission=f.OwnerAdmissionV1("M02", ASK_BRIEF), raw_projection_reader=raw.reads,
+            storage=f.SQLiteStorageV1(ask_path, True), utc_now=lambda: NOW,
+        )
+        bid = bid_owner.materialise(parent_request("D134", BID_DEFINITION, BID_PARAMETER))
+        ask = ask_owner.materialise(parent_request(
+            "D135", ASK_DEFINITION_TOP_ONE if refused else ASK_DEFINITION,
+            ASK_PARAMETER_TOP_ONE if refused else ASK_PARAMETER,
+            selection=SELECTION_TOP_ONE if refused else SELECTION,
+            levels=1 if refused else 2,
+        ))
+        assert type(bid) is f.SmartDepthOccurrenceV1 and bid.result == Decimal("8")
+        assert type(ask) is f.SmartDepthOccurrenceV1
+        assert ask.result == (Decimal("2") if refused else Decimal("6"))
+        assert bid.raw_input_lineage == ask.raw_input_lineage
+        assert bid.request.depth_levels == 2
+        assert ask.request.depth_levels == (1 if refused else 2)
+        bid_reader = f.create_smart_depth_reader(
+            admission=f.OwnerAdmissionV1("M02", BID_BRIEF),
+            storage=f.SQLiteReadStorageV1(bid_path),
+        )
+        ask_reader = f.create_smart_ask_reader(
+            admission=f.OwnerAdmissionV1("M02", ASK_BRIEF),
+            storage=f.SQLiteReadStorageV1(ask_path),
+        )
+        assert bid_reader.get_derived_occurrence(bid.derived_occurrence_id) == bid
+        assert ask_reader.get_derived_occurrence(ask.derived_occurrence_id) == ask
+>       request = f.SmartImbalanceRequestV1(f.CalculationRequestV1(
+            "D136", SUBJECT, T, CUTOFF, DEFINITION.calculation_definition_version,
+            f.VersionRefV1(PARAMETER.context_id, 1),
+            f.VersionRefV1("mmt-d136-same-book-selection", 1),
+            (f.VersionRefV1("mmt-d136-same-book-selection", 1),), (),
+        ), (bid.derived_occurrence_id, ask.derived_occurrence_id), (2, 2))
+
+tests/product/market_measurement_d136/test_signal.py:188: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+<string>:6: in __init__
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = SmartImbalanceRequestV1(calculation=CalculationRequestV1(derived_signal_id='D136', subject_instrument='NVDA', as_of_ut...65ec2ad', 'mmtsmart1:69e8b5c8f9a45a7f5715f8f4b3070cc3c0b3e673bb997d18127a6a68c2be3fc9'), requested_depth_levels=(2, 2))
+
+    def __post_init__(self) -> None:
+        hints = get_type_hints(type(self))
+        if not is_dataclass(self):
+            raise TypeError("validation requires a declared record")
+        for field in fields(self):
+            value = getattr(self, field.name)
+            if not _matches(value, hints[field.name]):
+                raise TypeError(f"{field.name} has the wrong constructor type")
+            if type(value) is str and not value:
+                raise ValueError(f"{field.name} must be nonempty")
+            if type(value) is datetime and not (
+                field.name == "result" and isinstance(self, TemporalLocalOccurrenceV1)
+            ):
+                _utc(value)
+            if type(value) is timedelta and value < timedelta(0):
+                raise ValueError("duration must be nonnegative")
+            if type(value) is Decimal and not value.is_finite():
+                raise ValueError("finite Decimal required by the controlled calculation contract")
+            if field.name in {"version", "history_page_size", "history_page_limit"} and value <= 0:
+                raise ValueError("version/page bound must be positive")
+            if type(value) is tuple and any(item in value[:i] for i, item in enumerate(value)):
+>               raise ValueError(f"{field.name} members must be distinct")
+E               ValueError: requested_depth_levels members must be distinct
+
+src/nvda_desk/market_measurement_truth/api.py:65: ValueError
+__________________________ test_d136_signal[refusal] ___________________________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-1/test_d136_signal_refusal_0')
+refused = True
+
+    @pytest.mark.parametrize("refused", (False, True), ids=("success", "refusal"))
+    def test_d136_signal(tmp_path, refused):
+        raw = r.create_owner()
+        projected = []
+        for sequence, (event_id, position, side, size) in enumerate((
+            ("bid0", 0, 0, Decimal("5")), ("bid1", 1, 0, Decimal("3")),
+            ("ask0", 0, 1, Decimal("2")), ("ask1", 1, 1, Decimal("4")),
+        ), 1):
+            projected.extend(admit(raw, event_id, position, 0, side, size,
+                                   6 - sequence, sequence))
+        assert len(projected) == 16
+        bid_path, ask_path = str(tmp_path / "d134.sqlite"), str(tmp_path / "d135.sqlite")
+        bid_owner = f.create_smart_depth_owner(
+            admission=f.OwnerAdmissionV1("M02", BID_BRIEF), raw_projection_reader=raw.reads,
+            storage=f.SQLiteStorageV1(bid_path, True), utc_now=lambda: NOW,
+        )
+        ask_owner = f.create_smart_ask_owner(
+            admission=f.OwnerAdmissionV1("M02", ASK_BRIEF), raw_projection_reader=raw.reads,
+            storage=f.SQLiteStorageV1(ask_path, True), utc_now=lambda: NOW,
+        )
+        bid = bid_owner.materialise(parent_request("D134", BID_DEFINITION, BID_PARAMETER))
+        ask = ask_owner.materialise(parent_request(
+            "D135", ASK_DEFINITION_TOP_ONE if refused else ASK_DEFINITION,
+            ASK_PARAMETER_TOP_ONE if refused else ASK_PARAMETER,
+            selection=SELECTION_TOP_ONE if refused else SELECTION,
+            levels=1 if refused else 2,
+        ))
+        assert type(bid) is f.SmartDepthOccurrenceV1 and bid.result == Decimal("8")
+        assert type(ask) is f.SmartDepthOccurrenceV1
+        assert ask.result == (Decimal("2") if refused else Decimal("6"))
+        assert bid.raw_input_lineage == ask.raw_input_lineage
+        assert bid.request.depth_levels == 2
+        assert ask.request.depth_levels == (1 if refused else 2)
+        bid_reader = f.create_smart_depth_reader(
+            admission=f.OwnerAdmissionV1("M02", BID_BRIEF),
+            storage=f.SQLiteReadStorageV1(bid_path),
+        )
+        ask_reader = f.create_smart_ask_reader(
+            admission=f.OwnerAdmissionV1("M02", ASK_BRIEF),
+            storage=f.SQLiteReadStorageV1(ask_path),
+        )
+        assert bid_reader.get_derived_occurrence(bid.derived_occurrence_id) == bid
+        assert ask_reader.get_derived_occurrence(ask.derived_occurrence_id) == ask
+>       request = f.SmartImbalanceRequestV1(f.CalculationRequestV1(
+            "D136", SUBJECT, T, CUTOFF, DEFINITION.calculation_definition_version,
+            f.VersionRefV1(PARAMETER.context_id, 1),
+            f.VersionRefV1("mmt-d136-same-book-selection", 1),
+            (f.VersionRefV1("mmt-d136-same-book-selection", 1),), (),
+        ), (bid.derived_occurrence_id, ask.derived_occurrence_id), (2, 2))
+
+tests/product/market_measurement_d136/test_signal.py:188: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+<string>:6: in __init__
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = SmartImbalanceRequestV1(calculation=CalculationRequestV1(derived_signal_id='D136', subject_instrument='NVDA', as_of_ut...65ec2ad', 'mmtsmart1:a04fd6bbd3b343448d6e9b66635828d316df35961b252d86790541595baa0d37'), requested_depth_levels=(2, 2))
+
+    def __post_init__(self) -> None:
+        hints = get_type_hints(type(self))
+        if not is_dataclass(self):
+            raise TypeError("validation requires a declared record")
+        for field in fields(self):
+            value = getattr(self, field.name)
+            if not _matches(value, hints[field.name]):
+                raise TypeError(f"{field.name} has the wrong constructor type")
+            if type(value) is str and not value:
+                raise ValueError(f"{field.name} must be nonempty")
+            if type(value) is datetime and not (
+                field.name == "result" and isinstance(self, TemporalLocalOccurrenceV1)
+            ):
+                _utc(value)
+            if type(value) is timedelta and value < timedelta(0):
+                raise ValueError("duration must be nonnegative")
+            if type(value) is Decimal and not value.is_finite():
+                raise ValueError("finite Decimal required by the controlled calculation contract")
+            if field.name in {"version", "history_page_size", "history_page_limit"} and value <= 0:
+                raise ValueError("version/page bound must be positive")
+            if type(value) is tuple and any(item in value[:i] for i, item in enumerate(value)):
+>               raise ValueError(f"{field.name} members must be distinct")
+E               ValueError: requested_depth_levels members must be distinct
+
+src/nvda_desk/market_measurement_truth/api.py:65: ValueError
+=========================== short test summary info ============================
+FAILED tests/product/market_measurement_d136/test_signal.py::test_d136_signal[success]
+FAILED tests/product/market_measurement_d136/test_signal.py::test_d136_signal[refusal]
+============================== 2 failed in 0.45s ===============================
+product-proof aggregate: neutral_market_measurement_truth_d136 state=READY_FOR_PROOF
+authority=0e8b8a7152e1a92c6aaafcacd8f6df5133ad3ce242ba0a905e2ad1194e2cfa57 generation=1da98daed8b6d90191b399bab90a782b58b278fa4f0846e76a544eff57015696
+candidate=902b420b1946657a9bbbdfdf3e7411348f12642d
+observed aggregate outcome: exit=1
