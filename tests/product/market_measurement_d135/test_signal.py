@@ -12,7 +12,7 @@ T = datetime(2026, 10, 20, 12, 40, tzinfo=UTC)
 CUTOFF, NOW = T + timedelta(seconds=1), T + timedelta(seconds=2)
 PROVIDER, VARIANT = "foundation-controlled-smart-book", "positional_four_field_v1"
 GENERATION = "controlled-smart-four-field-generation/1"
-BRIEF = "bbd3cbf1e050bfbf9d80bd11eb828df025a0b8cadda93d178d0b028f307dd514"
+BRIEF = "9abfefacb6af1da85f8c22780d604edbe94bfb9e8a572aece3ecbd1856979840"
 SUBJECT = "NVDA"
 ROLES = (
     ("R185", "position", "book_position"), ("R187", "operation", "book_operation"),
@@ -46,8 +46,21 @@ DEFINITION = f.CalculationDefinitionV1(
 PARAMETER = f.CalculationParameterSetV1(
     "mmt-d135-top-two", 1, "P_BASIC", SUBJECT, (SUBJECT,),
 )
+DEFINITION_TOP_ONE = f.CalculationDefinitionV1(
+    "D135", "D135-SMART-TOP-ONE-ASK-1", "K02_ALGEBRA",
+    "sum(top one standing SMART ask size after positional replay)",
+    tuple(raw for raw, _, _ in ROLES), (), "P_BASIC", "shares", "scalar_decimal",
+    AUTHORITY,
+)
+PARAMETER_TOP_ONE = f.CalculationParameterSetV1(
+    "mmt-d135-top-one", 1, "P_BASIC", SUBJECT, (SUBJECT,),
+)
 SELECTION = f.BookEventSelectionV1(
     f.VersionRefV1("mmt-d134-smart-four-field", 1), PROVIDER, VARIANT,
+    GENERATION, T - timedelta(seconds=10), 100,
+)
+SELECTION_TOP_ONE = f.BookEventSelectionV1(
+    f.VersionRefV1("mmt-d135-smart-top-one", 1), PROVIDER, VARIANT,
     GENERATION, T - timedelta(seconds=10), 100,
 )
 
@@ -120,6 +133,14 @@ def test_d135_signal(tmp_path, refused):
             f.VersionRefV1(unit.context_id, 1), SUBJECT,
         ) for (raw_id, _, _), mapping, unit in zip(ROLES, MAPS, UNITS, strict=True)),
     ), SELECTION, 2)
+    top_one_request = f.SmartDepthRequestV1(f.CalculationRequestV1(
+        "D135", SUBJECT, T, CUTOFF, DEFINITION_TOP_ONE.calculation_definition_version,
+        f.VersionRefV1(PARAMETER_TOP_ONE.context_id, 1), SELECTION_TOP_ONE.ref,
+        (SELECTION_TOP_ONE.ref,), tuple(f.RawInputBindingV1(
+            raw_id, f.VersionRefV1(mapping.mapping_id, 1),
+            f.VersionRefV1(unit.context_id, 1), SUBJECT,
+        ) for (raw_id, _, _), mapping, unit in zip(ROLES, MAPS, UNITS, strict=True)),
+    ), SELECTION_TOP_ONE, 1)
     admission = f.OwnerAdmissionV1("M02", BRIEF)
     path = str(tmp_path / "d135.sqlite")
     owner = f.create_smart_ask_owner(
@@ -127,14 +148,24 @@ def test_d135_signal(tmp_path, refused):
         storage=f.SQLiteStorageV1(path, True), utc_now=lambda: NOW,
     )
     occurrence = owner.materialise(request)
+    top_one_path = str(tmp_path / "d135-top-one.sqlite")
+    top_one_owner = f.create_smart_ask_owner(
+        admission=admission, raw_projection_reader=raw.reads,
+        storage=f.SQLiteStorageV1(top_one_path, True), utc_now=lambda: NOW,
+    )
+    top_one = top_one_owner.materialise(top_one_request)
     reader = f.create_smart_ask_reader(
         admission=admission, storage=f.SQLiteReadStorageV1(path),
+    )
+    top_one_reader = f.create_smart_ask_reader(
+        admission=admission, storage=f.SQLiteReadStorageV1(top_one_path),
     )
     query = dict(derived_signal_id="D135", subject_instrument=SUBJECT,
                  effective_at_or_before_utc=T, knowledge_at_or_before_utc=CUTOFF,
                  limit=10)
     if refused:
         assert occurrence is None and reader.list_derived_history(**query) == ()
+        assert top_one is None and top_one_reader.list_derived_history(**query) == ()
         return
     assert type(occurrence) is f.SmartDepthOccurrenceV1
     assert occurrence.result == Decimal("6")
@@ -163,3 +194,15 @@ def test_d135_signal(tmp_path, refused):
                                                ("R185", "R187", "R188") else Decimal)
     assert reader.get_derived_occurrence(occurrence.derived_occurrence_id) == occurrence
     assert reader.list_derived_history(**query) == (occurrence,)
+    assert type(top_one) is f.SmartDepthOccurrenceV1
+    assert top_one.derived_occurrence_id != occurrence.derived_occurrence_id
+    assert top_one.result == Decimal("2") and top_one.request == top_one_request
+    assert top_one.definition == DEFINITION_TOP_ONE
+    assert top_one.parameter_set == PARAMETER_TOP_ONE
+    assert top_one.request.selection == SELECTION_TOP_ONE
+    assert top_one.raw_input_lineage == occurrence.raw_input_lineage
+    assert top_one.standing_rows == occurrence.standing_rows
+    assert top_one.projection_mappings == MAPS and top_one.unit_conventions == UNITS
+    assert top_one.implementation_brief_sha256 == BRIEF
+    assert top_one_reader.get_derived_occurrence(top_one.derived_occurrence_id) == top_one
+    assert top_one_reader.list_derived_history(**query) == (top_one,)

@@ -1,8 +1,8 @@
 schema_version: "1.0"
-brief_sha256: bbd3cbf1e050bfbf9d80bd11eb828df025a0b8cadda93d178d0b028f307dd514
+brief_sha256: 9abfefacb6af1da85f8c22780d604edbe94bfb9e8a572aece3ecbd1856979840
 acceptance:
   status: ACCEPTED_FOR_IMPLEMENTATION
-  authority_ref: owner-chat/20261026/next20-plan-accepted-and-execution-commissioned
+  authority_ref: owner-chat/20261027/explicit-D135-top-one-and-D136-refusal
 targets:
   - action: modify
     object_id: M02

@@ -15,7 +15,7 @@ from ._catalogue import _AUTHORITY
 from ._evaluation import canonical, decode
 from ._record_store import RecordState
 
-BRIEF = "bbd3cbf1e050bfbf9d80bd11eb828df025a0b8cadda93d178d0b028f307dd514"
+BRIEF = "9abfefacb6af1da85f8c22780d604edbe94bfb9e8a572aece3ecbd1856979840"
 DEFINITION = f.CalculationDefinitionV1(
     "D135", "D135-SMART-TOP-TWO-ASK-1", "K02_ALGEBRA",
     "sum(top two standing SMART ask sizes after positional replay)",
@@ -25,27 +25,45 @@ DEFINITION = f.CalculationDefinitionV1(
 PARAMETER = f.CalculationParameterSetV1(
     "mmt-d135-top-two", 1, "P_BASIC", _smart_depth.SUBJECT, (_smart_depth.SUBJECT,),
 )
+DEFINITION_TOP_ONE = f.CalculationDefinitionV1(
+    "D135", "D135-SMART-TOP-ONE-ASK-1", "K02_ALGEBRA",
+    "sum(top one standing SMART ask size after positional replay)",
+    tuple(raw for raw, _, _ in _smart_depth.ROLES), (), "P_BASIC", "shares",
+    "scalar_decimal", tuple(f.AuthorityArtifactRefV1(*item) for item in _AUTHORITY),
+)
+PARAMETER_TOP_ONE = f.CalculationParameterSetV1(
+    "mmt-d135-top-one", 1, "P_BASIC", _smart_depth.SUBJECT, (_smart_depth.SUBJECT,),
+)
+SELECTION_TOP_ONE = replace(
+    _smart_depth.SELECTION, ref=f.VersionRefV1("mmt-d135-smart-top-one", 1),
+)
 
 
-def request() -> f.SmartDepthRequestV1:
+def request(depth_levels: int = 2) -> f.SmartDepthRequestV1:
+    if type(depth_levels) is not int or depth_levels not in (1, 2):
+        raise ValueError("unadmitted D135 depth selection")
+    definition = DEFINITION_TOP_ONE if depth_levels == 1 else DEFINITION
+    parameter = PARAMETER_TOP_ONE if depth_levels == 1 else PARAMETER
+    selection = SELECTION_TOP_ONE if depth_levels == 1 else _smart_depth.SELECTION
     return f.SmartDepthRequestV1(
         f.CalculationRequestV1(
             "D135", _smart_depth.SUBJECT, _smart_depth.T, _smart_depth.CUTOFF,
-            DEFINITION.calculation_definition_version,
-            f.VersionRefV1(PARAMETER.context_id, 1), _smart_depth.SELECTION.ref,
-            (_smart_depth.SELECTION.ref,), tuple(f.RawInputBindingV1(
+            definition.calculation_definition_version,
+            f.VersionRefV1(parameter.context_id, 1), selection.ref,
+            (selection.ref,), tuple(f.RawInputBindingV1(
                 raw, f.VersionRefV1(mapping.mapping_id, 1),
                 f.VersionRefV1(unit.context_id, 1), _smart_depth.SUBJECT,
             ) for (raw, _, _), mapping, unit in zip(
                 _smart_depth.ROLES, _smart_depth.MAPS, _smart_depth.UNITS, strict=True)),
-        ), _smart_depth.SELECTION, 2,
+        ), selection, depth_levels,
     )
 
 
 def _request(value: f.SmartDepthRequestV1, now: datetime) -> None:
     f._utc(now)
     if (type(value) is not f.SmartDepthRequestV1
-        or canonical(value) != canonical(request())
+        or value.depth_levels not in (1, 2)
+        or canonical(value) != canonical(request(value.depth_levels))
         or now < _smart_depth.CUTOFF):
         raise ValueError("unadmitted D135 book selection")
 
@@ -55,12 +73,14 @@ def _produce(req: f.SmartDepthRequestV1, lines: tuple[f.BookRawLineageV1, ...],
     _request(req, now)
     standing = _smart_depth._replay(lines)
     ask = tuple(row for row in standing if row.side == 1 and row.position < req.depth_levels)
-    if len(ask) != 2:
+    if len(ask) != req.depth_levels:
         raise ValueError("incomplete selected ask levels")
     depth = sum((row.size for row in ask), Decimal(0))
+    definition = DEFINITION_TOP_ONE if req.depth_levels == 1 else DEFINITION
+    parameter = PARAMETER_TOP_ONE if req.depth_levels == 1 else PARAMETER
     value = f.SmartDepthOccurrenceV1(
         "M02", _smart_depth.NAMESPACE, BRIEF, "D135", "pending", req,
-        DEFINITION, PARAMETER, _smart_depth.UNITS, _smart_depth.MAPS, lines,
+        definition, parameter, _smart_depth.UNITS, _smart_depth.MAPS, lines,
         standing, depth, "shares", "scalar_decimal", _smart_depth.T,
         _smart_depth.CUTOFF, now,
     )

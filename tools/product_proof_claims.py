@@ -626,7 +626,7 @@ def _scalar_extension(
         "D124": 6,
         "D131": 6,
         "D134": 6,
-        "D135": 6,
+        "D135": 7,
     }[identity]
     if len(rows) != count or len(dict(rows)) != count:
         raise ValueError(f"invalid {identity} incorporated-byte table")
