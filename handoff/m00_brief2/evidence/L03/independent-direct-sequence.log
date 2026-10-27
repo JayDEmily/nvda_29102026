@@ -1,0 +1,1 @@
+DIRECT_SEQUENCE_PASS {"causal_order": "UNKNOWN_TIED_RECEIPT_SCOPE_SEQUENCE", "event_cutoff_rows": 0, "future_known_id_retained": true, "ordered_ids": ["independent-a", "independent-z"]}
