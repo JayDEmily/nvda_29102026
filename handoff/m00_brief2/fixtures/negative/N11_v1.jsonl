@@ -1,0 +1,1 @@
+{"base_scenario":"A2","case_id":"N11","event_index":3,"expected":"FOUR_DISTINCT_IDS_WITH_REPLACED_CONTRACT_RETAINED","replace_collector":{"contract_spec":{"currency":"USD","expiry":"2026-10-23","multiplier":100,"right":"P","security_type":"OPT","strike":"100"},"subject":"NVDA-OPT-P100-CONTROL-1"},"replace_envelope":{"subject_instrument":"NVDA-OPT-P100-CONTROL-1"}}

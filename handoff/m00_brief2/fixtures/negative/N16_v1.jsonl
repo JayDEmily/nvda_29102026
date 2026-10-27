@@ -1,0 +1,1 @@
+{"base_scenario":"A4","case_id":"N16","conflicting_native":{"price":{"native_type":"Decimal","value":"999.00"}},"event_index":0,"expected":"IDENTICAL_IDEMPOTENT_CONFLICT_REJECTED_ORIGINAL_RETAINED","identical_retry":true}

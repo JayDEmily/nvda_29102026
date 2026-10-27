@@ -1,0 +1,1 @@
+{"base_scenario":"A4","carrier_path":["time","receipt"],"case_id":"N18","event_index":0,"mapping_raw_id":"R001","missing_carrier_expected":"ABSENT","valid_carrier_expected":"EQUAL_ENVELOPE_RECEIPT_NOT_PROVIDER_TIME","valid_collector_receipt":{"native_type":"datetime","value":"2026-10-20T12:39:59.100000Z"}}

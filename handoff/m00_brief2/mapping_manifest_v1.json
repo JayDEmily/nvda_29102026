@@ -1,0 +1,3130 @@
+{
+  "callback_field_map": {
+    "collector": "_collector is synthetic collector-added metadata, never IBKR arguments",
+    "tickByTickBidAsk": "authorised snake_case aliases, values exactly as brief",
+    "tickPrice": "tickType identifies bid/ask; brief bid_price/ask_price maps to native price",
+    "tickSize": "tickType identifies bid/ask; brief bid_size/ask_size maps to native size"
+  },
+  "groups": {
+    "A1-STK": {
+      "R033": {
+        "mapping_id": "m00b2-a1-stk-r033",
+        "native_field_path": [
+          "bid_size"
+        ],
+        "native_units": "shares",
+        "raw_signal_catalogue_id": "R033",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-m00-v1",
+        "source_variant": "ibkr-bidask-atomic/native-v1",
+        "version": 1
+      },
+      "R034": {
+        "mapping_id": "m00b2-a1-stk-r034",
+        "native_field_path": [
+          "bid_price"
+        ],
+        "native_units": "USD/share",
+        "raw_signal_catalogue_id": "R034",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-m00-v1",
+        "source_variant": "ibkr-bidask-atomic/native-v1",
+        "version": 1
+      },
+      "R035": {
+        "mapping_id": "m00b2-a1-stk-r035",
+        "native_field_path": [
+          "ask_price"
+        ],
+        "native_units": "USD/share",
+        "raw_signal_catalogue_id": "R035",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-m00-v1",
+        "source_variant": "ibkr-bidask-atomic/native-v1",
+        "version": 1
+      },
+      "R036": {
+        "mapping_id": "m00b2-a1-stk-r036",
+        "native_field_path": [
+          "ask_size"
+        ],
+        "native_units": "shares",
+        "raw_signal_catalogue_id": "R036",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-m00-v1",
+        "source_variant": "ibkr-bidask-atomic/native-v1",
+        "version": 1
+      }
+    },
+    "A2-CALL": {
+      "R033": {
+        "mapping_id": "m00b2-a2-call-r033",
+        "native_field_path": [
+          "size"
+        ],
+        "native_units": "contracts",
+        "raw_signal_catalogue_id": "R033",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-m00-v1",
+        "source_variant": "ibkr-async-l1/native-v1",
+        "version": 1
+      },
+      "R034": {
+        "mapping_id": "m00b2-a2-call-r034",
+        "native_field_path": [
+          "price"
+        ],
+        "native_units": "USD/underlying-share-premium",
+        "raw_signal_catalogue_id": "R034",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-m00-v1",
+        "source_variant": "ibkr-async-l1/native-v1",
+        "version": 1
+      },
+      "R035": {
+        "mapping_id": "m00b2-a2-call-r035",
+        "native_field_path": [
+          "price"
+        ],
+        "native_units": "USD/underlying-share-premium",
+        "raw_signal_catalogue_id": "R035",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-m00-v1",
+        "source_variant": "ibkr-async-l1/native-v1",
+        "version": 1
+      },
+      "R036": {
+        "mapping_id": "m00b2-a2-call-r036",
+        "native_field_path": [
+          "size"
+        ],
+        "native_units": "contracts",
+        "raw_signal_catalogue_id": "R036",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-m00-v1",
+        "source_variant": "ibkr-async-l1/native-v1",
+        "version": 1
+      }
+    },
+    "A3-PUT": {
+      "R033": {
+        "mapping_id": "m00b2-a3-put-r033",
+        "native_field_path": [
+          "size"
+        ],
+        "native_units": "contracts",
+        "raw_signal_catalogue_id": "R033",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-m00-v1",
+        "source_variant": "ibkr-async-l1/native-v1",
+        "version": 1
+      },
+      "R034": {
+        "mapping_id": "m00b2-a3-put-r034",
+        "native_field_path": [
+          "price"
+        ],
+        "native_units": "USD/underlying-share-premium",
+        "raw_signal_catalogue_id": "R034",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-m00-v1",
+        "source_variant": "ibkr-async-l1/native-v1",
+        "version": 1
+      },
+      "R035": {
+        "mapping_id": "m00b2-a3-put-r035",
+        "native_field_path": [
+          "price"
+        ],
+        "native_units": "USD/underlying-share-premium",
+        "raw_signal_catalogue_id": "R035",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-m00-v1",
+        "source_variant": "ibkr-async-l1/native-v1",
+        "version": 1
+      },
+      "R036": {
+        "mapping_id": "m00b2-a3-put-r036",
+        "native_field_path": [
+          "size"
+        ],
+        "native_units": "contracts",
+        "raw_signal_catalogue_id": "R036",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-m00-v1",
+        "source_variant": "ibkr-async-l1/native-v1",
+        "version": 1
+      }
+    },
+    "A4-STK": {
+      "R185": {
+        "mapping_id": "m00b2-a4-stk-r185",
+        "native_field_path": [
+          "position"
+        ],
+        "native_units": "book-position",
+        "raw_signal_catalogue_id": "R185",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "isSmartDepth",
+            [
+              "isSmartDepth"
+            ]
+          ],
+          [
+            "marketMaker",
+            [
+              "marketMaker"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-m00-v1",
+        "source_variant": "ibkr-smart-depth/native-v1",
+        "version": 1
+      },
+      "R187": {
+        "mapping_id": "m00b2-a4-stk-r187",
+        "native_field_path": [
+          "operation"
+        ],
+        "native_units": "operation-code",
+        "raw_signal_catalogue_id": "R187",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "isSmartDepth",
+            [
+              "isSmartDepth"
+            ]
+          ],
+          [
+            "marketMaker",
+            [
+              "marketMaker"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-m00-v1",
+        "source_variant": "ibkr-smart-depth/native-v1",
+        "version": 1
+      },
+      "R188": {
+        "mapping_id": "m00b2-a4-stk-r188",
+        "native_field_path": [
+          "side"
+        ],
+        "native_units": "side-code",
+        "raw_signal_catalogue_id": "R188",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "isSmartDepth",
+            [
+              "isSmartDepth"
+            ]
+          ],
+          [
+            "marketMaker",
+            [
+              "marketMaker"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-m00-v1",
+        "source_variant": "ibkr-smart-depth/native-v1",
+        "version": 1
+      },
+      "R189": {
+        "mapping_id": "m00b2-a4-stk-r189",
+        "native_field_path": [
+          "price"
+        ],
+        "native_units": "USD/share",
+        "raw_signal_catalogue_id": "R189",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "isSmartDepth",
+            [
+              "isSmartDepth"
+            ]
+          ],
+          [
+            "marketMaker",
+            [
+              "marketMaker"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-m00-v1",
+        "source_variant": "ibkr-smart-depth/native-v1",
+        "version": 1
+      },
+      "R190": {
+        "mapping_id": "m00b2-a4-stk-r190",
+        "native_field_path": [
+          "size"
+        ],
+        "native_units": "shares",
+        "raw_signal_catalogue_id": "R190",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "isSmartDepth",
+            [
+              "isSmartDepth"
+            ]
+          ],
+          [
+            "marketMaker",
+            [
+              "marketMaker"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-m00-v1",
+        "source_variant": "ibkr-smart-depth/native-v1",
+        "version": 1
+      }
+    },
+    "A5-CALL": {
+      "R185": {
+        "mapping_id": "m00b2-a5-call-r185",
+        "native_field_path": [
+          "position"
+        ],
+        "native_units": "book-position",
+        "raw_signal_catalogue_id": "R185",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "isSmartDepth",
+            [
+              "isSmartDepth"
+            ]
+          ],
+          [
+            "marketMaker",
+            [
+              "marketMaker"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-m00-v1",
+        "source_variant": "ibkr-smart-depth/native-v1",
+        "version": 1
+      },
+      "R187": {
+        "mapping_id": "m00b2-a5-call-r187",
+        "native_field_path": [
+          "operation"
+        ],
+        "native_units": "operation-code",
+        "raw_signal_catalogue_id": "R187",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "isSmartDepth",
+            [
+              "isSmartDepth"
+            ]
+          ],
+          [
+            "marketMaker",
+            [
+              "marketMaker"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-m00-v1",
+        "source_variant": "ibkr-smart-depth/native-v1",
+        "version": 1
+      },
+      "R188": {
+        "mapping_id": "m00b2-a5-call-r188",
+        "native_field_path": [
+          "side"
+        ],
+        "native_units": "side-code",
+        "raw_signal_catalogue_id": "R188",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "isSmartDepth",
+            [
+              "isSmartDepth"
+            ]
+          ],
+          [
+            "marketMaker",
+            [
+              "marketMaker"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-m00-v1",
+        "source_variant": "ibkr-smart-depth/native-v1",
+        "version": 1
+      },
+      "R189": {
+        "mapping_id": "m00b2-a5-call-r189",
+        "native_field_path": [
+          "price"
+        ],
+        "native_units": "USD/underlying-share-premium",
+        "raw_signal_catalogue_id": "R189",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "isSmartDepth",
+            [
+              "isSmartDepth"
+            ]
+          ],
+          [
+            "marketMaker",
+            [
+              "marketMaker"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-m00-v1",
+        "source_variant": "ibkr-smart-depth/native-v1",
+        "version": 1
+      },
+      "R190": {
+        "mapping_id": "m00b2-a5-call-r190",
+        "native_field_path": [
+          "size"
+        ],
+        "native_units": "contracts",
+        "raw_signal_catalogue_id": "R190",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "isSmartDepth",
+            [
+              "isSmartDepth"
+            ]
+          ],
+          [
+            "marketMaker",
+            [
+              "marketMaker"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-m00-v1",
+        "source_variant": "ibkr-smart-depth/native-v1",
+        "version": 1
+      }
+    },
+    "A6-PUT": {
+      "R185": {
+        "mapping_id": "m00b2-a6-put-r185",
+        "native_field_path": [
+          "position"
+        ],
+        "native_units": "book-position",
+        "raw_signal_catalogue_id": "R185",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "isSmartDepth",
+            [
+              "isSmartDepth"
+            ]
+          ],
+          [
+            "marketMaker",
+            [
+              "marketMaker"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-m00-v1",
+        "source_variant": "ibkr-smart-depth/native-v1",
+        "version": 1
+      },
+      "R187": {
+        "mapping_id": "m00b2-a6-put-r187",
+        "native_field_path": [
+          "operation"
+        ],
+        "native_units": "operation-code",
+        "raw_signal_catalogue_id": "R187",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "isSmartDepth",
+            [
+              "isSmartDepth"
+            ]
+          ],
+          [
+            "marketMaker",
+            [
+              "marketMaker"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-m00-v1",
+        "source_variant": "ibkr-smart-depth/native-v1",
+        "version": 1
+      },
+      "R188": {
+        "mapping_id": "m00b2-a6-put-r188",
+        "native_field_path": [
+          "side"
+        ],
+        "native_units": "side-code",
+        "raw_signal_catalogue_id": "R188",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "isSmartDepth",
+            [
+              "isSmartDepth"
+            ]
+          ],
+          [
+            "marketMaker",
+            [
+              "marketMaker"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-m00-v1",
+        "source_variant": "ibkr-smart-depth/native-v1",
+        "version": 1
+      },
+      "R189": {
+        "mapping_id": "m00b2-a6-put-r189",
+        "native_field_path": [
+          "price"
+        ],
+        "native_units": "USD/underlying-share-premium",
+        "raw_signal_catalogue_id": "R189",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "isSmartDepth",
+            [
+              "isSmartDepth"
+            ]
+          ],
+          [
+            "marketMaker",
+            [
+              "marketMaker"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-m00-v1",
+        "source_variant": "ibkr-smart-depth/native-v1",
+        "version": 1
+      },
+      "R190": {
+        "mapping_id": "m00b2-a6-put-r190",
+        "native_field_path": [
+          "size"
+        ],
+        "native_units": "contracts",
+        "raw_signal_catalogue_id": "R190",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "isSmartDepth",
+            [
+              "isSmartDepth"
+            ]
+          ],
+          [
+            "marketMaker",
+            [
+              "marketMaker"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-m00-v1",
+        "source_variant": "ibkr-smart-depth/native-v1",
+        "version": 1
+      }
+    },
+    "B-CALL": {
+      "R185": {
+        "mapping_id": "m00b2-b-call-r185",
+        "native_field_path": [
+          "position"
+        ],
+        "native_units": "book-position",
+        "raw_signal_catalogue_id": "R185",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "isSmartDepth",
+            [
+              "isSmartDepth"
+            ]
+          ],
+          [
+            "marketMaker",
+            [
+              "marketMaker"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-book-v1",
+        "source_variant": "SMART",
+        "version": 1
+      },
+      "R187": {
+        "mapping_id": "m00b2-b-call-r187",
+        "native_field_path": [
+          "operation"
+        ],
+        "native_units": "operation-code",
+        "raw_signal_catalogue_id": "R187",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "isSmartDepth",
+            [
+              "isSmartDepth"
+            ]
+          ],
+          [
+            "marketMaker",
+            [
+              "marketMaker"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-book-v1",
+        "source_variant": "SMART",
+        "version": 1
+      },
+      "R188": {
+        "mapping_id": "m00b2-b-call-r188",
+        "native_field_path": [
+          "side"
+        ],
+        "native_units": "side-code",
+        "raw_signal_catalogue_id": "R188",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "isSmartDepth",
+            [
+              "isSmartDepth"
+            ]
+          ],
+          [
+            "marketMaker",
+            [
+              "marketMaker"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-book-v1",
+        "source_variant": "SMART",
+        "version": 1
+      },
+      "R189": {
+        "mapping_id": "m00b2-b-call-r189",
+        "native_field_path": [
+          "price"
+        ],
+        "native_units": "USD/underlying-share-premium",
+        "raw_signal_catalogue_id": "R189",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "isSmartDepth",
+            [
+              "isSmartDepth"
+            ]
+          ],
+          [
+            "marketMaker",
+            [
+              "marketMaker"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-book-v1",
+        "source_variant": "SMART",
+        "version": 1
+      },
+      "R190": {
+        "mapping_id": "m00b2-b-call-r190",
+        "native_field_path": [
+          "size"
+        ],
+        "native_units": "contracts",
+        "raw_signal_catalogue_id": "R190",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "isSmartDepth",
+            [
+              "isSmartDepth"
+            ]
+          ],
+          [
+            "marketMaker",
+            [
+              "marketMaker"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-book-v1",
+        "source_variant": "SMART",
+        "version": 1
+      }
+    },
+    "B-STK": {
+      "R185": {
+        "mapping_id": "m00b2-b-stk-r185",
+        "native_field_path": [
+          "position"
+        ],
+        "native_units": "book-position",
+        "raw_signal_catalogue_id": "R185",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "isSmartDepth",
+            [
+              "isSmartDepth"
+            ]
+          ],
+          [
+            "marketMaker",
+            [
+              "marketMaker"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-book-v1",
+        "source_variant": "SMART",
+        "version": 1
+      },
+      "R187": {
+        "mapping_id": "m00b2-b-stk-r187",
+        "native_field_path": [
+          "operation"
+        ],
+        "native_units": "operation-code",
+        "raw_signal_catalogue_id": "R187",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "isSmartDepth",
+            [
+              "isSmartDepth"
+            ]
+          ],
+          [
+            "marketMaker",
+            [
+              "marketMaker"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-book-v1",
+        "source_variant": "SMART",
+        "version": 1
+      },
+      "R188": {
+        "mapping_id": "m00b2-b-stk-r188",
+        "native_field_path": [
+          "side"
+        ],
+        "native_units": "side-code",
+        "raw_signal_catalogue_id": "R188",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "isSmartDepth",
+            [
+              "isSmartDepth"
+            ]
+          ],
+          [
+            "marketMaker",
+            [
+              "marketMaker"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-book-v1",
+        "source_variant": "SMART",
+        "version": 1
+      },
+      "R189": {
+        "mapping_id": "m00b2-b-stk-r189",
+        "native_field_path": [
+          "price"
+        ],
+        "native_units": "USD/share",
+        "raw_signal_catalogue_id": "R189",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "isSmartDepth",
+            [
+              "isSmartDepth"
+            ]
+          ],
+          [
+            "marketMaker",
+            [
+              "marketMaker"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-book-v1",
+        "source_variant": "SMART",
+        "version": 1
+      },
+      "R190": {
+        "mapping_id": "m00b2-b-stk-r190",
+        "native_field_path": [
+          "size"
+        ],
+        "native_units": "shares",
+        "raw_signal_catalogue_id": "R190",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "isSmartDepth",
+            [
+              "isSmartDepth"
+            ]
+          ],
+          [
+            "marketMaker",
+            [
+              "marketMaker"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-book-v1",
+        "source_variant": "SMART",
+        "version": 1
+      }
+    },
+    "C1-CALL": {
+      "R185": {
+        "mapping_id": "m00b2-c1-call-r185",
+        "native_field_path": [
+          "position"
+        ],
+        "native_units": "book-position",
+        "raw_signal_catalogue_id": "R185",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "isSmartDepth",
+            [
+              "isSmartDepth"
+            ]
+          ],
+          [
+            "marketMaker",
+            [
+              "marketMaker"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-m00-coherent-v2",
+        "source_variant": "ibkr-smart-depth/native-v2",
+        "version": 1
+      },
+      "R187": {
+        "mapping_id": "m00b2-c1-call-r187",
+        "native_field_path": [
+          "operation"
+        ],
+        "native_units": "operation-code",
+        "raw_signal_catalogue_id": "R187",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "isSmartDepth",
+            [
+              "isSmartDepth"
+            ]
+          ],
+          [
+            "marketMaker",
+            [
+              "marketMaker"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-m00-coherent-v2",
+        "source_variant": "ibkr-smart-depth/native-v2",
+        "version": 1
+      },
+      "R188": {
+        "mapping_id": "m00b2-c1-call-r188",
+        "native_field_path": [
+          "side"
+        ],
+        "native_units": "side-code",
+        "raw_signal_catalogue_id": "R188",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "isSmartDepth",
+            [
+              "isSmartDepth"
+            ]
+          ],
+          [
+            "marketMaker",
+            [
+              "marketMaker"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-m00-coherent-v2",
+        "source_variant": "ibkr-smart-depth/native-v2",
+        "version": 1
+      },
+      "R189": {
+        "mapping_id": "m00b2-c1-call-r189",
+        "native_field_path": [
+          "price"
+        ],
+        "native_units": "USD/underlying-share-premium",
+        "raw_signal_catalogue_id": "R189",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "isSmartDepth",
+            [
+              "isSmartDepth"
+            ]
+          ],
+          [
+            "marketMaker",
+            [
+              "marketMaker"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-m00-coherent-v2",
+        "source_variant": "ibkr-smart-depth/native-v2",
+        "version": 1
+      },
+      "R190": {
+        "mapping_id": "m00b2-c1-call-r190",
+        "native_field_path": [
+          "size"
+        ],
+        "native_units": "contracts",
+        "raw_signal_catalogue_id": "R190",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "isSmartDepth",
+            [
+              "isSmartDepth"
+            ]
+          ],
+          [
+            "marketMaker",
+            [
+              "marketMaker"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-m00-coherent-v2",
+        "source_variant": "ibkr-smart-depth/native-v2",
+        "version": 1
+      }
+    },
+    "C2-STK": {
+      "R192": {
+        "mapping_id": "m00b2-c2-stk-r192",
+        "native_field_path": [
+          "position"
+        ],
+        "native_units": "book-position",
+        "raw_signal_catalogue_id": "R192",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "isSmartDepth",
+            [
+              "isSmartDepth"
+            ]
+          ],
+          [
+            "marketMaker",
+            [
+              "marketMaker"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-m00-coherent-v2",
+        "source_variant": "ibkr-direct-depth/native-v2",
+        "version": 1
+      },
+      "R193": {
+        "mapping_id": "m00b2-c2-stk-r193",
+        "native_field_path": [
+          "marketMaker"
+        ],
+        "native_units": "MPID",
+        "raw_signal_catalogue_id": "R193",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "isSmartDepth",
+            [
+              "isSmartDepth"
+            ]
+          ],
+          [
+            "marketMaker",
+            [
+              "marketMaker"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-m00-coherent-v2",
+        "source_variant": "ibkr-direct-depth/native-v2",
+        "version": 1
+      },
+      "R194": {
+        "mapping_id": "m00b2-c2-stk-r194",
+        "native_field_path": [
+          "operation"
+        ],
+        "native_units": "operation-code",
+        "raw_signal_catalogue_id": "R194",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "isSmartDepth",
+            [
+              "isSmartDepth"
+            ]
+          ],
+          [
+            "marketMaker",
+            [
+              "marketMaker"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-m00-coherent-v2",
+        "source_variant": "ibkr-direct-depth/native-v2",
+        "version": 1
+      },
+      "R195": {
+        "mapping_id": "m00b2-c2-stk-r195",
+        "native_field_path": [
+          "side"
+        ],
+        "native_units": "side-code",
+        "raw_signal_catalogue_id": "R195",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "isSmartDepth",
+            [
+              "isSmartDepth"
+            ]
+          ],
+          [
+            "marketMaker",
+            [
+              "marketMaker"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-m00-coherent-v2",
+        "source_variant": "ibkr-direct-depth/native-v2",
+        "version": 1
+      },
+      "R196": {
+        "mapping_id": "m00b2-c2-stk-r196",
+        "native_field_path": [
+          "price"
+        ],
+        "native_units": "USD/share",
+        "raw_signal_catalogue_id": "R196",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "isSmartDepth",
+            [
+              "isSmartDepth"
+            ]
+          ],
+          [
+            "marketMaker",
+            [
+              "marketMaker"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-m00-coherent-v2",
+        "source_variant": "ibkr-direct-depth/native-v2",
+        "version": 1
+      },
+      "R197": {
+        "mapping_id": "m00b2-c2-stk-r197",
+        "native_field_path": [
+          "size"
+        ],
+        "native_units": "shares",
+        "raw_signal_catalogue_id": "R197",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "isSmartDepth",
+            [
+              "isSmartDepth"
+            ]
+          ],
+          [
+            "marketMaker",
+            [
+              "marketMaker"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-m00-coherent-v2",
+        "source_variant": "ibkr-direct-depth/native-v2",
+        "version": 1
+      }
+    },
+    "C3-CALL": {
+      "R192": {
+        "mapping_id": "m00b2-c3-call-r192",
+        "native_field_path": [
+          "position"
+        ],
+        "native_units": "book-position",
+        "raw_signal_catalogue_id": "R192",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "isSmartDepth",
+            [
+              "isSmartDepth"
+            ]
+          ],
+          [
+            "marketMaker",
+            [
+              "marketMaker"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-m00-coherent-v2",
+        "source_variant": "ibkr-direct-depth/native-v2",
+        "version": 1
+      },
+      "R193": {
+        "mapping_id": "m00b2-c3-call-r193",
+        "native_field_path": [
+          "marketMaker"
+        ],
+        "native_units": "MPID",
+        "raw_signal_catalogue_id": "R193",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "isSmartDepth",
+            [
+              "isSmartDepth"
+            ]
+          ],
+          [
+            "marketMaker",
+            [
+              "marketMaker"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-m00-coherent-v2",
+        "source_variant": "ibkr-direct-depth/native-v2",
+        "version": 1
+      },
+      "R194": {
+        "mapping_id": "m00b2-c3-call-r194",
+        "native_field_path": [
+          "operation"
+        ],
+        "native_units": "operation-code",
+        "raw_signal_catalogue_id": "R194",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "isSmartDepth",
+            [
+              "isSmartDepth"
+            ]
+          ],
+          [
+            "marketMaker",
+            [
+              "marketMaker"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-m00-coherent-v2",
+        "source_variant": "ibkr-direct-depth/native-v2",
+        "version": 1
+      },
+      "R195": {
+        "mapping_id": "m00b2-c3-call-r195",
+        "native_field_path": [
+          "side"
+        ],
+        "native_units": "side-code",
+        "raw_signal_catalogue_id": "R195",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "isSmartDepth",
+            [
+              "isSmartDepth"
+            ]
+          ],
+          [
+            "marketMaker",
+            [
+              "marketMaker"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-m00-coherent-v2",
+        "source_variant": "ibkr-direct-depth/native-v2",
+        "version": 1
+      },
+      "R196": {
+        "mapping_id": "m00b2-c3-call-r196",
+        "native_field_path": [
+          "price"
+        ],
+        "native_units": "USD/underlying-share-premium",
+        "raw_signal_catalogue_id": "R196",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "isSmartDepth",
+            [
+              "isSmartDepth"
+            ]
+          ],
+          [
+            "marketMaker",
+            [
+              "marketMaker"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-m00-coherent-v2",
+        "source_variant": "ibkr-direct-depth/native-v2",
+        "version": 1
+      },
+      "R197": {
+        "mapping_id": "m00b2-c3-call-r197",
+        "native_field_path": [
+          "size"
+        ],
+        "native_units": "contracts",
+        "raw_signal_catalogue_id": "R197",
+        "selection_identity_field_paths": [
+          [
+            "generation",
+            [
+              "_collector",
+              "generation"
+            ]
+          ],
+          [
+            "isSmartDepth",
+            [
+              "isSmartDepth"
+            ]
+          ],
+          [
+            "marketMaker",
+            [
+              "marketMaker"
+            ]
+          ],
+          [
+            "request",
+            [
+              "_collector",
+              "request"
+            ]
+          ],
+          [
+            "requested_exchange",
+            [
+              "_collector",
+              "requested_exchange"
+            ]
+          ],
+          [
+            "scenario_id",
+            [
+              "_collector",
+              "scenario_id"
+            ]
+          ],
+          [
+            "subject",
+            [
+              "_collector",
+              "subject"
+            ]
+          ]
+        ],
+        "source_provider": "foundation-controlled-ibkr-m00-coherent-v2",
+        "source_variant": "ibkr-direct-depth/native-v2",
+        "version": 1
+      }
+    }
+  },
+  "harness_choices": "Unspecified synthetic request/generation/reqId identities are fixed here. No real conId/feed entitlement claimed.",
+  "schema_version": "m00b2-mappings/1"
+}

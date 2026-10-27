@@ -1,0 +1,1404 @@
+{
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "observation"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "value": {
+            "additionalProperties": false,
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "source_temporal_kind": {
+                      "const": "receipt_only"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "source_timestamp_raw": {
+                      "type": "null"
+                    }
+                  }
+                }
+              }
+            ],
+            "properties": {
+              "availability_session": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "concept_id": {
+                "type": "string"
+              },
+              "contract_id": {
+                "type": "string"
+              },
+              "delivery_artifact_ref": {
+                "type": "string"
+              },
+              "ingestion_sequence": {
+                "type": "integer"
+              },
+              "ingestion_sequence_scope": {
+                "type": "string"
+              },
+              "market_session_native": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "market_timezone_iana": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "native_identifier": {
+                "type": "string"
+              },
+              "native_record": {
+                "additionalProperties": {
+                  "allOf": [
+                    {
+                      "if": {
+                        "not": {
+                          "required": [
+                            "native_type"
+                          ]
+                        }
+                      },
+                      "then": {
+                        "additionalProperties": {
+                          "allOf": [
+                            {
+                              "if": {
+                                "not": {
+                                  "required": [
+                                    "native_type"
+                                  ]
+                                }
+                              },
+                              "then": {
+                                "additionalProperties": {
+                                  "allOf": [
+                                    {
+                                      "if": {
+                                        "not": {
+                                          "required": [
+                                            "native_type"
+                                          ]
+                                        }
+                                      },
+                                      "then": {
+                                        "additionalProperties": {
+                                          "allOf": [
+                                            {
+                                              "if": {
+                                                "not": {
+                                                  "required": [
+                                                    "native_type"
+                                                  ]
+                                                }
+                                              },
+                                              "then": {
+                                                "additionalProperties": {
+                                                  "additionalProperties": false,
+                                                  "allOf": [
+                                                    {
+                                                      "if": {
+                                                        "properties": {
+                                                          "native_type": {
+                                                            "const": "Decimal"
+                                                          }
+                                                        }
+                                                      },
+                                                      "then": {
+                                                        "properties": {
+                                                          "value": {
+                                                            "pattern": "^^^^^^[+-]?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[Ee][+-]?[0-9]+)?$$$$$$",
+                                                            "type": "string"
+                                                          }
+                                                        }
+                                                      }
+                                                    },
+                                                    {
+                                                      "if": {
+                                                        "properties": {
+                                                          "native_type": {
+                                                            "const": "int"
+                                                          }
+                                                        }
+                                                      },
+                                                      "then": {
+                                                        "properties": {
+                                                          "value": {
+                                                            "pattern": "^^^^^^-?(?:0|[1-9][0-9]*)$$$$$$",
+                                                            "type": "string"
+                                                          }
+                                                        }
+                                                      }
+                                                    },
+                                                    {
+                                                      "if": {
+                                                        "properties": {
+                                                          "native_type": {
+                                                            "const": "str"
+                                                          }
+                                                        }
+                                                      },
+                                                      "then": {
+                                                        "properties": {
+                                                          "value": {
+                                                            "type": "string"
+                                                          }
+                                                        }
+                                                      }
+                                                    },
+                                                    {
+                                                      "if": {
+                                                        "properties": {
+                                                          "native_type": {
+                                                            "const": "bool"
+                                                          }
+                                                        }
+                                                      },
+                                                      "then": {
+                                                        "properties": {
+                                                          "value": {
+                                                            "type": "boolean"
+                                                          }
+                                                        }
+                                                      }
+                                                    },
+                                                    {
+                                                      "if": {
+                                                        "properties": {
+                                                          "native_type": {
+                                                            "const": "NoneType"
+                                                          }
+                                                        }
+                                                      },
+                                                      "then": {
+                                                        "properties": {
+                                                          "value": {
+                                                            "type": "null"
+                                                          }
+                                                        }
+                                                      }
+                                                    },
+                                                    {
+                                                      "if": {
+                                                        "properties": {
+                                                          "native_type": {
+                                                            "const": "datetime"
+                                                          }
+                                                        }
+                                                      },
+                                                      "then": {
+                                                        "properties": {
+                                                          "value": {
+                                                            "pattern": "^^^^^^^^^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.[0-9]{6}Z$$$$$$$$$",
+                                                            "type": "string"
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  ],
+                                                  "properties": {
+                                                    "native_type": {
+                                                      "enum": [
+                                                        "Decimal",
+                                                        "int",
+                                                        "str",
+                                                        "bool",
+                                                        "NoneType",
+                                                        "datetime"
+                                                      ]
+                                                    },
+                                                    "value": {}
+                                                  },
+                                                  "required": [
+                                                    "native_type",
+                                                    "value"
+                                                  ],
+                                                  "type": "object"
+                                                },
+                                                "type": "object"
+                                              }
+                                            }
+                                          ],
+                                          "if": {
+                                            "required": [
+                                              "native_type"
+                                            ]
+                                          },
+                                          "then": {
+                                            "additionalProperties": false,
+                                            "allOf": [
+                                              {
+                                                "if": {
+                                                  "properties": {
+                                                    "native_type": {
+                                                      "const": "Decimal"
+                                                    }
+                                                  }
+                                                },
+                                                "then": {
+                                                  "properties": {
+                                                    "value": {
+                                                      "pattern": "^^^^^^[+-]?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[Ee][+-]?[0-9]+)?$$$$$$",
+                                                      "type": "string"
+                                                    }
+                                                  }
+                                                }
+                                              },
+                                              {
+                                                "if": {
+                                                  "properties": {
+                                                    "native_type": {
+                                                      "const": "int"
+                                                    }
+                                                  }
+                                                },
+                                                "then": {
+                                                  "properties": {
+                                                    "value": {
+                                                      "pattern": "^^^^^^-?(?:0|[1-9][0-9]*)$$$$$$",
+                                                      "type": "string"
+                                                    }
+                                                  }
+                                                }
+                                              },
+                                              {
+                                                "if": {
+                                                  "properties": {
+                                                    "native_type": {
+                                                      "const": "str"
+                                                    }
+                                                  }
+                                                },
+                                                "then": {
+                                                  "properties": {
+                                                    "value": {
+                                                      "type": "string"
+                                                    }
+                                                  }
+                                                }
+                                              },
+                                              {
+                                                "if": {
+                                                  "properties": {
+                                                    "native_type": {
+                                                      "const": "bool"
+                                                    }
+                                                  }
+                                                },
+                                                "then": {
+                                                  "properties": {
+                                                    "value": {
+                                                      "type": "boolean"
+                                                    }
+                                                  }
+                                                }
+                                              },
+                                              {
+                                                "if": {
+                                                  "properties": {
+                                                    "native_type": {
+                                                      "const": "NoneType"
+                                                    }
+                                                  }
+                                                },
+                                                "then": {
+                                                  "properties": {
+                                                    "value": {
+                                                      "type": "null"
+                                                    }
+                                                  }
+                                                }
+                                              },
+                                              {
+                                                "if": {
+                                                  "properties": {
+                                                    "native_type": {
+                                                      "const": "datetime"
+                                                    }
+                                                  }
+                                                },
+                                                "then": {
+                                                  "properties": {
+                                                    "value": {
+                                                      "pattern": "^^^^^^^^^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.[0-9]{6}Z$$$$$$$$$",
+                                                      "type": "string"
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            ],
+                                            "properties": {
+                                              "native_type": {
+                                                "enum": [
+                                                  "Decimal",
+                                                  "int",
+                                                  "str",
+                                                  "bool",
+                                                  "NoneType",
+                                                  "datetime"
+                                                ]
+                                              },
+                                              "value": {}
+                                            },
+                                            "required": [
+                                              "native_type",
+                                              "value"
+                                            ],
+                                            "type": "object"
+                                          },
+                                          "type": "object"
+                                        },
+                                        "type": "object"
+                                      }
+                                    }
+                                  ],
+                                  "if": {
+                                    "required": [
+                                      "native_type"
+                                    ]
+                                  },
+                                  "then": {
+                                    "additionalProperties": false,
+                                    "allOf": [
+                                      {
+                                        "if": {
+                                          "properties": {
+                                            "native_type": {
+                                              "const": "Decimal"
+                                            }
+                                          }
+                                        },
+                                        "then": {
+                                          "properties": {
+                                            "value": {
+                                              "pattern": "^^^^^^[+-]?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[Ee][+-]?[0-9]+)?$$$$$$",
+                                              "type": "string"
+                                            }
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "if": {
+                                          "properties": {
+                                            "native_type": {
+                                              "const": "int"
+                                            }
+                                          }
+                                        },
+                                        "then": {
+                                          "properties": {
+                                            "value": {
+                                              "pattern": "^^^^^^-?(?:0|[1-9][0-9]*)$$$$$$",
+                                              "type": "string"
+                                            }
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "if": {
+                                          "properties": {
+                                            "native_type": {
+                                              "const": "str"
+                                            }
+                                          }
+                                        },
+                                        "then": {
+                                          "properties": {
+                                            "value": {
+                                              "type": "string"
+                                            }
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "if": {
+                                          "properties": {
+                                            "native_type": {
+                                              "const": "bool"
+                                            }
+                                          }
+                                        },
+                                        "then": {
+                                          "properties": {
+                                            "value": {
+                                              "type": "boolean"
+                                            }
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "if": {
+                                          "properties": {
+                                            "native_type": {
+                                              "const": "NoneType"
+                                            }
+                                          }
+                                        },
+                                        "then": {
+                                          "properties": {
+                                            "value": {
+                                              "type": "null"
+                                            }
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "if": {
+                                          "properties": {
+                                            "native_type": {
+                                              "const": "datetime"
+                                            }
+                                          }
+                                        },
+                                        "then": {
+                                          "properties": {
+                                            "value": {
+                                              "pattern": "^^^^^^^^^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.[0-9]{6}Z$$$$$$$$$",
+                                              "type": "string"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ],
+                                    "properties": {
+                                      "native_type": {
+                                        "enum": [
+                                          "Decimal",
+                                          "int",
+                                          "str",
+                                          "bool",
+                                          "NoneType",
+                                          "datetime"
+                                        ]
+                                      },
+                                      "value": {}
+                                    },
+                                    "required": [
+                                      "native_type",
+                                      "value"
+                                    ],
+                                    "type": "object"
+                                  },
+                                  "type": "object"
+                                },
+                                "type": "object"
+                              }
+                            }
+                          ],
+                          "if": {
+                            "required": [
+                              "native_type"
+                            ]
+                          },
+                          "then": {
+                            "additionalProperties": false,
+                            "allOf": [
+                              {
+                                "if": {
+                                  "properties": {
+                                    "native_type": {
+                                      "const": "Decimal"
+                                    }
+                                  }
+                                },
+                                "then": {
+                                  "properties": {
+                                    "value": {
+                                      "pattern": "^^^^^^[+-]?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[Ee][+-]?[0-9]+)?$$$$$$",
+                                      "type": "string"
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "if": {
+                                  "properties": {
+                                    "native_type": {
+                                      "const": "int"
+                                    }
+                                  }
+                                },
+                                "then": {
+                                  "properties": {
+                                    "value": {
+                                      "pattern": "^^^^^^-?(?:0|[1-9][0-9]*)$$$$$$",
+                                      "type": "string"
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "if": {
+                                  "properties": {
+                                    "native_type": {
+                                      "const": "str"
+                                    }
+                                  }
+                                },
+                                "then": {
+                                  "properties": {
+                                    "value": {
+                                      "type": "string"
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "if": {
+                                  "properties": {
+                                    "native_type": {
+                                      "const": "bool"
+                                    }
+                                  }
+                                },
+                                "then": {
+                                  "properties": {
+                                    "value": {
+                                      "type": "boolean"
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "if": {
+                                  "properties": {
+                                    "native_type": {
+                                      "const": "NoneType"
+                                    }
+                                  }
+                                },
+                                "then": {
+                                  "properties": {
+                                    "value": {
+                                      "type": "null"
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "if": {
+                                  "properties": {
+                                    "native_type": {
+                                      "const": "datetime"
+                                    }
+                                  }
+                                },
+                                "then": {
+                                  "properties": {
+                                    "value": {
+                                      "pattern": "^^^^^^^^^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.[0-9]{6}Z$$$$$$$$$",
+                                      "type": "string"
+                                    }
+                                  }
+                                }
+                              }
+                            ],
+                            "properties": {
+                              "native_type": {
+                                "enum": [
+                                  "Decimal",
+                                  "int",
+                                  "str",
+                                  "bool",
+                                  "NoneType",
+                                  "datetime"
+                                ]
+                              },
+                              "value": {}
+                            },
+                            "required": [
+                              "native_type",
+                              "value"
+                            ],
+                            "type": "object"
+                          },
+                          "type": "object"
+                        },
+                        "type": "object"
+                      }
+                    }
+                  ],
+                  "if": {
+                    "required": [
+                      "native_type"
+                    ]
+                  },
+                  "then": {
+                    "additionalProperties": false,
+                    "allOf": [
+                      {
+                        "if": {
+                          "properties": {
+                            "native_type": {
+                              "const": "Decimal"
+                            }
+                          }
+                        },
+                        "then": {
+                          "properties": {
+                            "value": {
+                              "pattern": "^^^^^^[+-]?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[Ee][+-]?[0-9]+)?$$$$$$",
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "if": {
+                          "properties": {
+                            "native_type": {
+                              "const": "int"
+                            }
+                          }
+                        },
+                        "then": {
+                          "properties": {
+                            "value": {
+                              "pattern": "^^^^^^-?(?:0|[1-9][0-9]*)$$$$$$",
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "if": {
+                          "properties": {
+                            "native_type": {
+                              "const": "str"
+                            }
+                          }
+                        },
+                        "then": {
+                          "properties": {
+                            "value": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "if": {
+                          "properties": {
+                            "native_type": {
+                              "const": "bool"
+                            }
+                          }
+                        },
+                        "then": {
+                          "properties": {
+                            "value": {
+                              "type": "boolean"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "if": {
+                          "properties": {
+                            "native_type": {
+                              "const": "NoneType"
+                            }
+                          }
+                        },
+                        "then": {
+                          "properties": {
+                            "value": {
+                              "type": "null"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "if": {
+                          "properties": {
+                            "native_type": {
+                              "const": "datetime"
+                            }
+                          }
+                        },
+                        "then": {
+                          "properties": {
+                            "value": {
+                              "pattern": "^^^^^^^^^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.[0-9]{6}Z$$$$$$$$$",
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "properties": {
+                      "native_type": {
+                        "enum": [
+                          "Decimal",
+                          "int",
+                          "str",
+                          "bool",
+                          "NoneType",
+                          "datetime"
+                        ]
+                      },
+                      "value": {}
+                    },
+                    "required": [
+                      "native_type",
+                      "value"
+                    ],
+                    "type": "object"
+                  },
+                  "type": "object"
+                },
+                "type": "object"
+              },
+              "native_tick_series_identifier": {
+                "type": "string"
+              },
+              "native_units": {
+                "type": "string"
+              },
+              "observation_occurrence_id": {
+                "type": "string"
+              },
+              "raw_signal_catalogue_ids": {
+                "items": {
+                  "pattern": "^R[0-9]{3}$",
+                  "type": "string"
+                },
+                "type": [
+                  "array",
+                  "null"
+                ]
+              },
+              "received_epoch_ns": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "received_ts_utc": {
+                "pattern": "^^^^^^^^^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.[0-9]{6}Z$$$$$$$$$",
+                "type": "string"
+              },
+              "revision_vintage_native": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "source_endpoint_callback": {
+                "type": "string"
+              },
+              "source_product_api": {
+                "type": "string"
+              },
+              "source_provider": {
+                "type": "string"
+              },
+              "source_status_native": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "source_temporal_kind": {
+                "enum": [
+                  "receipt_only",
+                  "date_only",
+                  "true_instant"
+                ]
+              },
+              "source_timestamp_raw": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "source_timezone_native": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "source_variant": {
+                "type": "string"
+              },
+              "subject_instrument": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "concept_id",
+              "contract_id",
+              "observation_occurrence_id",
+              "delivery_artifact_ref",
+              "source_provider",
+              "native_record",
+              "received_ts_utc",
+              "ingestion_sequence",
+              "ingestion_sequence_scope",
+              "source_temporal_kind",
+              "raw_signal_catalogue_ids",
+              "source_product_api",
+              "source_endpoint_callback",
+              "native_identifier",
+              "native_tick_series_identifier",
+              "source_variant",
+              "subject_instrument",
+              "native_units",
+              "availability_session",
+              "source_status_native",
+              "revision_vintage_native",
+              "received_epoch_ns",
+              "source_timestamp_raw",
+              "source_timezone_native",
+              "market_timezone_iana",
+              "market_session_native"
+            ],
+            "type": "object"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "projection"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "value": {
+            "additionalProperties": false,
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "source_temporal_kind": {
+                      "const": "receipt_only"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "source_timestamp_raw": {
+                      "type": "null"
+                    }
+                  }
+                }
+              }
+            ],
+            "properties": {
+              "ingestion_sequence": {
+                "type": "integer"
+              },
+              "ingestion_sequence_scope": {
+                "type": "string"
+              },
+              "native_field_path": {
+                "items": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "minItems": 1,
+                "type": "array"
+              },
+              "native_units": {
+                "type": "string"
+              },
+              "native_value": {
+                "additionalProperties": false,
+                "allOf": [
+                  {
+                    "if": {
+                      "properties": {
+                        "native_type": {
+                          "const": "Decimal"
+                        }
+                      }
+                    },
+                    "then": {
+                      "properties": {
+                        "value": {
+                          "pattern": "^^^^^^[+-]?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[Ee][+-]?[0-9]+)?$$$$$$",
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "if": {
+                      "properties": {
+                        "native_type": {
+                          "const": "int"
+                        }
+                      }
+                    },
+                    "then": {
+                      "properties": {
+                        "value": {
+                          "pattern": "^^^^^^-?(?:0|[1-9][0-9]*)$$$$$$",
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "if": {
+                      "properties": {
+                        "native_type": {
+                          "const": "str"
+                        }
+                      }
+                    },
+                    "then": {
+                      "properties": {
+                        "value": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "if": {
+                      "properties": {
+                        "native_type": {
+                          "const": "bool"
+                        }
+                      }
+                    },
+                    "then": {
+                      "properties": {
+                        "value": {
+                          "type": "boolean"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "if": {
+                      "properties": {
+                        "native_type": {
+                          "const": "NoneType"
+                        }
+                      }
+                    },
+                    "then": {
+                      "properties": {
+                        "value": {
+                          "type": "null"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "if": {
+                      "properties": {
+                        "native_type": {
+                          "const": "datetime"
+                        }
+                      }
+                    },
+                    "then": {
+                      "properties": {
+                        "value": {
+                          "pattern": "^^^^^^^^^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.[0-9]{6}Z$$$$$$$$$",
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                ],
+                "properties": {
+                  "native_type": {
+                    "enum": [
+                      "Decimal",
+                      "int",
+                      "str",
+                      "bool",
+                      "NoneType",
+                      "datetime"
+                    ]
+                  },
+                  "value": {}
+                },
+                "required": [
+                  "native_type",
+                  "value"
+                ],
+                "type": "object"
+              },
+              "observation_occurrence_id": {
+                "type": "string"
+              },
+              "projection_mapping_id": {
+                "type": "string"
+              },
+              "projection_mapping_version": {
+                "type": "integer"
+              },
+              "raw_signal_catalogue_id": {
+                "pattern": "^R[0-9]{3}$",
+                "type": "string"
+              },
+              "received_ts_utc": {
+                "pattern": "^^^^^^^^^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.[0-9]{6}Z$$$$$$$$$",
+                "type": "string"
+              },
+              "revision_vintage_native": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "selection_identity": {
+                "additionalProperties": {
+                  "type": [
+                    "string",
+                    "integer",
+                    "boolean"
+                  ]
+                },
+                "required": [
+                  "subject",
+                  "request",
+                  "generation",
+                  "requested_exchange",
+                  "scenario_id"
+                ],
+                "type": "object"
+              },
+              "source_provider": {
+                "type": "string"
+              },
+              "source_temporal_kind": {
+                "enum": [
+                  "receipt_only",
+                  "date_only",
+                  "true_instant"
+                ]
+              },
+              "source_timestamp_raw": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "source_timezone_native": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "source_variant": {
+                "type": "string"
+              },
+              "subject_instrument": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "raw_signal_catalogue_id",
+              "observation_occurrence_id",
+              "projection_mapping_id",
+              "projection_mapping_version",
+              "source_provider",
+              "source_variant",
+              "native_field_path",
+              "native_value",
+              "native_units",
+              "subject_instrument",
+              "source_temporal_kind",
+              "source_timestamp_raw",
+              "source_timezone_native",
+              "received_ts_utc",
+              "ingestion_sequence",
+              "ingestion_sequence_scope",
+              "revision_vintage_native",
+              "selection_identity"
+            ],
+            "type": "object"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "control"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "value": {
+            "additionalProperties": false,
+            "properties": {
+              "control": {
+                "additionalProperties": false,
+                "properties": {
+                  "generation_after": {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "generation_before": {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "invalidates": {
+                    "type": "boolean"
+                  },
+                  "kind": {
+                    "enum": [
+                      "error317",
+                      "error316",
+                      "reconnect",
+                      "gap",
+                      "restart"
+                    ]
+                  },
+                  "origin": {
+                    "enum": [
+                      "provider_callback",
+                      "collector_control"
+                    ]
+                  },
+                  "request": {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "schema_version": {
+                    "const": "m00-control-envelope/1"
+                  }
+                },
+                "required": [
+                  "schema_version",
+                  "kind",
+                  "request",
+                  "generation_before",
+                  "generation_after",
+                  "invalidates",
+                  "origin"
+                ],
+                "type": "object"
+              },
+              "control_id": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "native_callback": {
+                "additionalProperties": false,
+                "properties": {
+                  "errorCode": {
+                    "type": "integer"
+                  },
+                  "errorString": {
+                    "type": "string"
+                  },
+                  "reqId": {
+                    "type": "integer"
+                  }
+                },
+                "type": "object"
+              },
+              "receipt": {
+                "pattern": "^^^^^^^^^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.[0-9]{6}Z$$$$$$$$$",
+                "type": "string"
+              },
+              "request": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "scope": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "sequence": {
+                "type": "integer"
+              },
+              "source_endpoint_callback": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "source_provider": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "source_temporal_kind": {
+                "const": "receipt_only"
+              },
+              "source_timestamp_raw": {
+                "type": "null"
+              },
+              "source_variant": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "subject": {
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "control_id",
+              "subject",
+              "request",
+              "scope",
+              "receipt",
+              "sequence",
+              "native_callback",
+              "control",
+              "source_provider",
+              "source_variant",
+              "source_endpoint_callback",
+              "source_temporal_kind",
+              "source_timestamp_raw"
+            ],
+            "type": "object"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "absence"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "value": {
+            "additionalProperties": false,
+            "properties": {
+              "case_id": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "observation_occurrence_id": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "raw_signal_catalogue_id": {
+                "pattern": "^R[0-9]{3}$",
+                "type": "string"
+              },
+              "reason": {
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "case_id",
+              "observation_occurrence_id",
+              "raw_signal_catalogue_id",
+              "reason"
+            ],
+            "type": "object"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "rejection"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "value": {
+            "additionalProperties": false,
+            "properties": {
+              "case_id": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "observation_occurrence_id": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "reason": {
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "case_id",
+              "observation_occurrence_id",
+              "reason"
+            ],
+            "type": "object"
+          }
+        }
+      }
+    }
+  ],
+  "properties": {
+    "family": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "fixture_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "fixture_version": {
+      "type": "integer"
+    },
+    "kind": {
+      "enum": [
+        "observation",
+        "projection",
+        "control",
+        "absence",
+        "rejection"
+      ]
+    },
+    "mapping_group": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "scenario_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "value": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "kind",
+    "fixture_id",
+    "fixture_version",
+    "family",
+    "scenario_id",
+    "mapping_group",
+    "value"
+  ],
+  "type": "object"
+}
