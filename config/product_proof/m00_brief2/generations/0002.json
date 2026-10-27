@@ -1,0 +1,151 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "m00_brief2",
+  "generation": 2,
+  "brief_sha256": "0d5ee211c1285b31834062ab2d871670ed2f318cbb955e7df95f80067d562007",
+  "binding_sha256": "5fea4775e9a3d01bd0370cd62dc4737758c4ad82f75ea24d0275584903923ebe",
+  "contract_sha256": "c5fed6f1d1ec0e2f6d025226a90421963725620cafa41ae1c72c6bd605ef18e6",
+  "implementation_target_id": "M00",
+  "adequacy_review_ref": "independent-review/L03/PREFLIGHT-adequate",
+  "admission_authority_ref": "owner-chat/20261027/M00-Brief2-execute-all-leaves;independent-review/L03/PREFLIGHT-adequate",
+  "family_files": [
+    {
+      "path": "tests/product/m00_brief2/test_ibkr_native_projection.py",
+      "sha256": "d73c67e89cf8f531bda164631582fea71154e7c35a36877f5a7aa20f5d9a59d2"
+    },
+    {
+      "path": "tests/product/m00_brief2/test_ibkr_history.py",
+      "sha256": "9bbc78f5449c919723e786c87e75e57301491c3ebef8e4d5abfe248b05b03ad3"
+    }
+  ],
+  "support_files": [
+    {
+      "path": "tools/m00_fixture_io.py",
+      "sha256": "a7671ec948cd5da9be6d5565c7375593a8dcefc1613bf48d0450ff64bc83016f"
+    },
+    {
+      "path": "handoff/m00_brief2/fixture_manifest_v1.json",
+      "sha256": "0628fb8a7196b44d0322ea438db7a180eb0f97b50f36cece0b2d0739dd0f4e04"
+    },
+    {
+      "path": "handoff/m00_brief2/mapping_manifest_v1.json",
+      "sha256": "1a864bd18de725a7f0ecc9cdf9dc1345348e1624b4d59836794017a417eb2124"
+    },
+    {
+      "path": "handoff/m00_brief2/output_schema_v1.json",
+      "sha256": "aa186e09599f577dab836bcebaedfa399258968a746fab7a6c26553e1e1226ad"
+    },
+    {
+      "path": "handoff/m00_brief2/fixtures/A/expected_m00_output_v1.jsonl",
+      "sha256": "c581a3ab5e65ed1ada7965bc645056895c63c75794c4019bb4426c4d2eef0f76"
+    },
+    {
+      "path": "handoff/m00_brief2/fixtures/A/synthetic_input_v1.jsonl",
+      "sha256": "79a20e0b2cdd3d7cf4ed6f59860ed4b0e68f8098a8f2fb39187add548b0faec0"
+    },
+    {
+      "path": "handoff/m00_brief2/fixtures/B/expected_m00_output_v1.jsonl",
+      "sha256": "1dc475714f661d96bdf3654c2d9cf7a1d04a30fb71f5c6d5b734af2c66e8fbf2"
+    },
+    {
+      "path": "handoff/m00_brief2/fixtures/B/synthetic_input_v1.jsonl",
+      "sha256": "3f42e333f05690860f4db0c77133aa29bd889edabf37d8434c2c41b03669c9d5"
+    },
+    {
+      "path": "handoff/m00_brief2/fixtures/C/expected_m00_output_v1.jsonl",
+      "sha256": "a86864cb2ee3d4dffefc512dae67c77f85d96c2f9cdaf55a9b1044cd22713fec"
+    },
+    {
+      "path": "handoff/m00_brief2/fixtures/C/synthetic_input_v1.jsonl",
+      "sha256": "02008a7ed0e8efe7975410b7437df1c9f4a7ff4d72f7bd5b32ff940ceb8dc090"
+    },
+    {
+      "path": "handoff/m00_brief2/fixtures/controls/control_input_v1.jsonl",
+      "sha256": "07c6dc23294f2cffa72fcf83c002f262dd2ac850b60db850bd86d52229c3291f"
+    },
+    {
+      "path": "handoff/m00_brief2/fixtures/controls/expected_control_output_v1.jsonl",
+      "sha256": "c388113d5bcbe296a5205f27ecbe081d1023d346fbd64b01aca93f87e50e8380"
+    },
+    {
+      "path": "handoff/m00_brief2/fixtures/negative/N01_v1.jsonl",
+      "sha256": "83c76e9e8563cee6d0693894156306db4d8f74175d587c543672b643d7b8712c"
+    },
+    {
+      "path": "handoff/m00_brief2/fixtures/negative/N02_v1.jsonl",
+      "sha256": "1ed546b0c5073efc2628b8561df410cb698390089730045c6512b2d1e1349e8a"
+    },
+    {
+      "path": "handoff/m00_brief2/fixtures/negative/N03_v1.jsonl",
+      "sha256": "ac6b4300bcfb8f5bbb3077a435797c828e94ef2b59c799c0c272599650541af7"
+    },
+    {
+      "path": "handoff/m00_brief2/fixtures/negative/N04_v1.jsonl",
+      "sha256": "e07a4931ec40a922d968034407838d55d8e11a51323477538b245fda303198bd"
+    },
+    {
+      "path": "handoff/m00_brief2/fixtures/negative/N05_v1.jsonl",
+      "sha256": "a943584069d91ab12d7f7cdb6f0acb19f27c38d169376240dbf55cf042c59dc0"
+    },
+    {
+      "path": "handoff/m00_brief2/fixtures/negative/N06_v1.jsonl",
+      "sha256": "af0c4f1ae530a0599ea6b2e776f7150e52d59a09ef34e3d25fb0c6fc52cc0d62"
+    },
+    {
+      "path": "handoff/m00_brief2/fixtures/negative/N07_v1.jsonl",
+      "sha256": "8ada4c99e77a49859db56151227d3f61c9ee468b4c048919f292617302aa2c27"
+    },
+    {
+      "path": "handoff/m00_brief2/fixtures/negative/N08_v1.jsonl",
+      "sha256": "b65859efa6f2aa2fdb4ff124463e106733c986879e26e7e8857279dee5aa618f"
+    },
+    {
+      "path": "handoff/m00_brief2/fixtures/negative/N09_v1.jsonl",
+      "sha256": "dccc47694f262b3485bbf669bf9b944dabc708c651158d2b530a15362cecd2c3"
+    },
+    {
+      "path": "handoff/m00_brief2/fixtures/negative/N10_v1.jsonl",
+      "sha256": "1f01c41a2b4564eb25d5b8901a70ea8384cd46fc3da8e61c891b268ef51fd4da"
+    },
+    {
+      "path": "handoff/m00_brief2/fixtures/negative/N11_v1.jsonl",
+      "sha256": "fd7133c84c91c43b3900e8d75a99e29e20f900e348802cba5d4d9e42fc160400"
+    },
+    {
+      "path": "handoff/m00_brief2/fixtures/negative/N12_v1.jsonl",
+      "sha256": "d83e49e687f63aeaf04cbf830be013d4ad54e5ed375e76831d13b412d6928fb6"
+    },
+    {
+      "path": "handoff/m00_brief2/fixtures/negative/N13_v1.jsonl",
+      "sha256": "c3d1a1265dc0c89bbd5c0b594813ac664b9871c7e5c54420fdeccd5323ab4cc8"
+    },
+    {
+      "path": "handoff/m00_brief2/fixtures/negative/N14_v1.jsonl",
+      "sha256": "a25601c2ed00bda7e46a70626a9ca2f8ff29cc162d9799d8515dea9f158c7d3b"
+    },
+    {
+      "path": "handoff/m00_brief2/fixtures/negative/N15_v1.jsonl",
+      "sha256": "22357286ebe038bf0f22f826549f75a4bb8bac5b4842b0e05dec821ea3a39ace"
+    },
+    {
+      "path": "handoff/m00_brief2/fixtures/negative/N16_v1.jsonl",
+      "sha256": "f2959263125928f45d26c00f3891d6fc107cc154bc631332c5fe76967531592b"
+    },
+    {
+      "path": "handoff/m00_brief2/fixtures/negative/N17_v1.jsonl",
+      "sha256": "872be4261d22bf118d898d3d230bdd54b5036f70efc148e8a4e15bf9c246d66a"
+    },
+    {
+      "path": "handoff/m00_brief2/fixtures/negative/N18_v1.jsonl",
+      "sha256": "9e7bbf8be8d1cd7556f2cb4c93d237bf5ae67d902c1b6918bac9ce2ac62e7ace"
+    },
+    {
+      "path": "handoff/m00_brief2/fixtures/negative/expectations_v1.jsonl",
+      "sha256": "08fc38cf00138fe7e304401c07df7f4cd18e9915282e7e88b9ed6a8cbb0156f0"
+    }
+  ],
+  "previous_generation": {
+    "path": "config/product_proof/m00_brief2/generations/0001.json",
+    "sha256": "95eb840b1b660330bc5382b85d7de389965a6731bcb6829606540c5d7e82c913"
+  }
+}

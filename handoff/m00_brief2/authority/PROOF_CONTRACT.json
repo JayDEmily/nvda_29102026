@@ -14,7 +14,8 @@
   "product_tier_treatment": "NOT_CLASSIFIED",
   "architecture_proof_axis": "architecture_kernel",
   "required_proof_ids": [
-    "M00B2-NATIVE"
+    "M00B2-NATIVE",
+    "M00B2-HISTORY"
   ],
   "families": [
     {
@@ -76,6 +77,66 @@
       ],
       "tier_treatment": "NOT_CLASSIFIED",
       "command": "python -m pytest tests/product/m00_brief2/test_ibkr_native_projection.py"
+    },
+    {
+      "id": "m00b2_history",
+      "path": "tests/product/m00_brief2/test_ibkr_history.py",
+      "proof_obligation_ids": [
+        "M00B2-HISTORY"
+      ],
+      "required_test_names": [
+        "test_history_scenarios",
+        "test_history_negative"
+      ],
+      "boundary": "History page1/cursor typed oracle, N04/05/10/13/16 and fresh SQLite reads.",
+      "proof_levels": [
+        "CONTRACT",
+        "INTEGRATION",
+        "STATE"
+      ],
+      "authoritative_inputs": [
+        "Exact owner-commissioned M00 Brief2 V3 tables and N requirements."
+      ],
+      "dependency_substitutions": [
+        "Synthetic provider callbacks, real public M00 and SQLite."
+      ],
+      "case_coverage": {
+        "lawful_positive": {
+          "cases": [
+            "History page1/cursor typed oracle, N04/05/10/13/16 and fresh SQLite reads."
+          ]
+        },
+        "prohibited_false_positive": {
+          "cases": [
+            "No omitted/extra/wrongly selected or falsely typed public result."
+          ]
+        },
+        "missing_mandatory_authority": {
+          "cases": [
+            "Exact immutable authority and explicit selectors required."
+          ]
+        },
+        "lawful_optional_absence": {
+          "cases": [
+            "Declared missing fields/cutoffs remain absent."
+          ]
+        }
+      },
+      "expected_failure_signals": [
+        "Exact value/type/identity mismatch or failed public SQLite readback."
+      ],
+      "limitations": [
+        "Synthetic only, no PostgreSQL runtime or live source certification."
+      ],
+      "adjacent_nonclaims": [
+        "No M02/collector/D145 change."
+      ],
+      "environment": "Pinned CPython3.12.14 SQLite3.53.1.",
+      "material_versions": [
+        "Exact brief/binding/contract/generation/candidate."
+      ],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/m00_brief2/test_ibkr_history.py"
     }
   ],
   "required_support_files": [

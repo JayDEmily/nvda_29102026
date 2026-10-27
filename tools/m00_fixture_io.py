@@ -210,3 +210,72 @@ print(json.dumps(read_rows(owner(Path(sys.argv[1])), json.loads(sys.argv[2])), s
     if completed.returncode:
         raise RuntimeError(completed.stderr)
     return json.loads(completed.stdout)
+
+
+def history_rows(
+    raw,
+    group: str,
+    raw_id: str,
+    subject: str,
+    cutoff: str,
+    selection: dict[str, Any],
+    event_cutoff: str | None = None,
+) -> list[dict[str, Any]]:
+    """Exhaust actual public pages, then apply declared consumer identity selection.
+
+    M00 has subject/receipt/event selectors and map-based source selection; it has
+    no built-in request/generation selector. Check those explicit returned facts
+    here, without claiming a stronger owner API or inferring standing book state.
+    """
+    mapping = mapping_group(group)[raw_id]
+    result = []
+    cursor = None
+    cursors = set()
+    for _ in range(1000):
+        page = raw.reads.list_projected_raw_history(
+            r.RawSignalCatalogueId(raw_id),
+            mappings=(mapping,),
+            subject_instrument=subject,
+            received_at_or_before_utc=utc(cutoff),
+            event_at_or_before_utc=utc(event_cutoff) if event_cutoff else None,
+            limit=1,
+            cursor=cursor,
+        )
+        if len(page.items) > 1:
+            raise ValueError("public history exceeded page size")
+        for item in page.items:
+            value = dump_projection(item)
+            identity = value["selection_identity"]
+            if identity is not None and all(
+                key in identity and type(identity[key]) is type(wanted) and identity[key] == wanted
+                for key, wanted in selection.items()
+            ):
+                result.append(value)
+        cursor = page.next_cursor
+        if cursor is None:
+            return result
+        if cursor in cursors:
+            raise ValueError("public history repeated its cursor")
+        cursors.add(cursor)
+    raise ValueError("public history failed to exhaust")
+
+
+def fresh_history(path: Path, query: dict[str, Any]) -> list[dict[str, Any]]:
+    """New process receives only SQLite location and public query selectors."""
+    code = """
+import json, sys
+from pathlib import Path
+from m00_fixture_io import owner, history_rows
+print(json.dumps(history_rows(owner(Path(sys.argv[1])), **json.loads(sys.argv[2])), sort_keys=True))
+"""
+    env = dict(os.environ, PYTHONPATH=os.pathsep.join((str(ROOT / "tools"), str(ROOT / "src"))))
+    completed = subprocess.run(
+        [sys.executable, "-c", code, str(path), json.dumps(query)],
+        capture_output=True,
+        text=True,
+        env=env,
+        check=False,
+    )
+    if completed.returncode:
+        raise RuntimeError(completed.stderr)
+    return json.loads(completed.stdout)
