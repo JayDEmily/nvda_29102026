@@ -1,4 +1,7 @@
 {
   "schema_version": "1.0",
-  "current_generation": null
+  "current_generation": {
+    "path": "config/product_proof/m00_brief2/generations/0001.json",
+    "sha256": "95eb840b1b660330bc5382b85d7de389965a6731bcb6829606540c5d7e82c913"
+  }
 }
