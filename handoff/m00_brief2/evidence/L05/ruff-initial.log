@@ -1,0 +1,298 @@
+E501 Line too long (103 > 100)
+  --> tests/product/m00_brief2/test_export.py:38:101
+   |
+36 |     assert [item['case_id'] for item in negative] == [f'N{i:02}' for i in range(1,19)]
+37 |     assert all(item['verified'] is True for item in negative)
+38 |     rows = [json.loads(line) for line in (first/'actual_m00_output_v1.jsonl').read_text().splitlines()]
+   |                                                                                                     ^^^
+39 |     altered = copy.deepcopy(rows)
+40 |     probe = next(item for item in altered if item['kind']=='projection' and
+   |
+
+RUF005 Consider iterable unpacking instead of concatenation
+  --> tests/product/m00_brief2/test_export.py:59:17
+   |
+57 |     evidence = Path(os.environ.get('M00_EXPORT_EVIDENCE', str(tmp_path/'retained')))
+58 |     evidence.mkdir(parents=True, exist_ok=False)
+59 |     for name in files + ['manifest_v1.json','readback_requests_v1.json']:
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+60 |         shutil.copy2(first/name,evidence/name)
+61 |     (evidence/'reproduction_v1.json').write_text(json.dumps({
+   |
+help: Replace with iterable unpacking
+
+F401 [*] `m00_fixture_io.META` imported but unused
+  --> tools/export_m00_synthetic.py:21:5
+   |
+19 | from m00_fixture_io import (
+20 |     ART,
+21 |     META,
+   |     ^^^^
+22 |     canonical,
+23 |     control_observation,
+   |
+help: Remove unused import
+
+F401 [*] `m00_fixture_io.dump_control` imported but unused
+  --> tools/export_m00_synthetic.py:25:5
+   |
+23 |     control_observation,
+24 |     discovery_rows,
+25 |     dump_control,
+   |     ^^^^^^^^^^^^
+26 |     history_rows,
+27 |     jsonl,
+   |
+help: Remove unused import
+
+E501 Line too long (109 > 100)
+  --> tools/export_m00_synthetic.py:74:101
+   |
+72 |     with path.open("x", encoding="utf-8") as handle:
+73 |         for entry in rows:
+74 |             handle.write(json.dumps(entry, sort_keys=True, separators=(",", ":"), ensure_ascii=False) + "\n")
+   |                                                                                                     ^^^^^^^^^
+   |
+
+E501 Line too long (123 > 100)
+  --> tools/export_m00_synthetic.py:87:101
+   |
+85 |         e = wanted[index] if index < len(wanted) else None
+86 |         if exact(a) != exact(e):
+87 |             return {"index": index, "expected": e, "actual": a, "expected_count": len(wanted), "actual_count": len(actual)}
+   |                                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^
+88 |     return None
+   |
+
+E501 Line too long (102 > 100)
+   --> tools/export_m00_synthetic.py:99:101
+    |
+ 99 | def load_inputs(directory: Path) -> tuple[list[dict[str, Any]], list[dict[str, Any]], dict[str, str]]:
+    |                                                                                                     ^^
+100 |     paths = [directory / family / "synthetic_input_v1.jsonl" for family in "ABC"]
+101 |     paths.append(directory / "controls/control_input_v1.jsonl")
+    |
+
+I001 [*] Import block is un-sorted or un-formatted
+   --> tools/export_m00_synthetic.py:109:5
+    |
+107 |   def history_queries(data: list[dict[str, Any]]) -> list[dict[str, Any]]:
+108 |       # The selection is sourced from *input* collector fields, not desired output.
+109 | /     from m00_fixture_io import decode
+110 | |
+111 | |     from m00_fixture_io import mapping_group
+    | |____________________________________________^
+112 |
+113 |       representatives = {entry["mapping_group"]: entry for entry in data}
+    |
+help: Organize imports
+
+E501 Line too long (102 > 100)
+   --> tools/export_m00_synthetic.py:121:101
+    |
+119 |             result.append({
+120 |                 "group": group, "raw_id": role, "subject": obs["subject_instrument"],
+121 |                 "cutoff": "2026-10-26T14:00:10Z" if item["family"] == "B" else "2026-10-20T12:40:01Z",
+    |                                                                                                     ^^
+122 |                 "selection": {key: collector[key] for key in (
+123 |                     "subject", "request", "generation", "requested_exchange", "scenario_id"
+    |
+
+E501 Line too long (114 > 100)
+   --> tools/export_m00_synthetic.py:176:101
+    |
+174 |     completed = subprocess.run(cmd, cwd=ROOT, env=env, text=True, capture_output=True, check=False)
+175 |     if completed.returncode:
+176 |         raise RuntimeError(f"fresh-read-only subprocess exited {completed.returncode}: {completed.stderr[:3000]}")
+    |                                                                                                     ^^^^^^^^^^^^^^
+    |
+
+E501 Line too long (106 > 100)
+   --> tools/export_m00_synthetic.py:201:101
+    |
+199 |         "source_clean_at_start": subprocess.run(["git", "status", "--porcelain"], cwd=ROOT,
+200 |             text=True, capture_output=True, check=True).stdout == "",
+201 |         "environment": {"python": sys.version.split()[0], "sqlite": __import__("sqlite3").sqlite_version},
+    |                                                                                                     ^^^^^^
+202 |         "versions": {"fixture": 1, "oracle": 1, "output_schema": 1,
+203 |                      "mapping_manifest": 1, "control_envelope": 1},
+    |
+
+E501 Line too long (167 > 100)
+   --> tools/export_m00_synthetic.py:204:101
+    |
+202 | …
+203 | …
+204 | …xtures <fixture-dir> --expected <oracle-dir> --database <ABSENT-ABSOLUTE-PATH> --output <NEW-DIR>",
+    |                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+205 | …
+206 | …
+    |
+
+E501 Line too long (112 > 100)
+   --> tools/export_m00_synthetic.py:217:101
+    |
+215 |         for rel, h in {**input_hashes, **oracle_hashes}.items():
+216 |             if signed.get("fixtures/" + rel) != h:
+217 |                 raise ValueError(f"immutable fixture/oracle hash differs from admitted fixture manifest: {rel}")
+    |                                                                                                     ^^^^^^^^^^^^
+218 |         if len(data) != 36 or len(controls) != 5 or len(wanted) != 196:
+219 |             raise ValueError("fixture cardinality differs from L01 contract")
+    |
+
+E501 Line too long (121 > 100)
+   --> tools/export_m00_synthetic.py:244:101
+    |
+242 |         }
+243 |         write_json(output / "readback_requests_v1.json", specs)
+244 |         run_readback_subprocess(database, output / "readback_requests_v1.json", output / "fresh_public_readback_v1.json")
+    |                                                                                                     ^^^^^^^^^^^^^^^^^^^^^
+245 |         if digest(database) != writer_db_hash:
+246 |             raise ValueError("read-only fresh process changed SQLite database bytes")
+    |
+
+E501 Line too long (101 > 100)
+   --> tools/export_m00_synthetic.py:270:101
+    |
+268 |         per_scenario = {}
+269 |         for scenario in SCENARIOS:
+270 |             observed = Counter(entry["kind"] for entry in actual if entry["scenario_id"] == scenario)
+    |                                                                                                     ^
+271 |             exp = Counter(entry["kind"] for entry in wanted if entry["scenario_id"] == scenario)
+272 |             expected_count = COUNTS[scenario]
+    |
+
+E501 Line too long (102 > 100)
+   --> tools/export_m00_synthetic.py:275:101
+    |
+273 |             per_scenario[scenario] = {
+274 |                 "observations": observed["observation"], "projections": observed["projection"],
+275 |                 "expected_observations": expected_count[0], "expected_projections": expected_count[1],
+    |                                                                                                     ^^
+276 |                 "row_counts_match": (observed["observation"], observed["projection"]) == expected_count
+277 |                      and exp["observation"] == expected_count[0] and exp["projection"] == expected_count[1],
+    |
+
+E501 Line too long (103 > 100)
+   --> tools/export_m00_synthetic.py:276:101
+    |
+274 |                 "observations": observed["observation"], "projections": observed["projection"],
+275 |                 "expected_observations": expected_count[0], "expected_projections": expected_count[1],
+276 |                 "row_counts_match": (observed["observation"], observed["projection"]) == expected_count
+    |                                                                                                     ^^^
+277 |                      and exp["observation"] == expected_count[0] and exp["projection"] == expected_count[1],
+278 |             }
+    |
+
+E501 Line too long (108 > 100)
+   --> tools/export_m00_synthetic.py:277:101
+    |
+275 |                 "expected_observations": expected_count[0], "expected_projections": expected_count[1],
+276 |                 "row_counts_match": (observed["observation"], observed["projection"]) == expected_count
+277 |                      and exp["observation"] == expected_count[0] and exp["projection"] == expected_count[1],
+    |                                                                                                     ^^^^^^^^
+278 |             }
+279 |         manifest["scenarios"] = per_scenario
+    |
+
+E501 Line too long (105 > 100)
+   --> tools/export_m00_synthetic.py:280:101
+    |
+278 |             }
+279 |         manifest["scenarios"] = per_scenario
+280 |         manifest["total_positive_observations"] = sum(entry["kind"] == "observation" for entry in actual)
+    |                                                                                                     ^^^^^
+281 |         manifest["total_positive_projections"] = sum(entry["kind"] == "projection" for entry in actual)
+282 |         manifest["control_count"] = len(control_actual)
+    |
+
+E501 Line too long (103 > 100)
+   --> tools/export_m00_synthetic.py:281:101
+    |
+279 |         manifest["scenarios"] = per_scenario
+280 |         manifest["total_positive_observations"] = sum(entry["kind"] == "observation" for entry in actual)
+281 |         manifest["total_positive_projections"] = sum(entry["kind"] == "projection" for entry in actual)
+    |                                                                                                     ^^^
+282 |         manifest["control_count"] = len(control_actual)
+283 |         manifest["read_only_sqlite_hash_unchanged"] = True
+    |
+
+E501 Line too long (106 > 100)
+   --> tools/export_m00_synthetic.py:305:101
+    |
+303 |         write_json(output / "negative_outcomes_v1.json", negative)
+304 |         manifest["absence_outcomes"] = {
+305 |             "count": len(absence_probes), "exact_match": exact(absence_probes) == exact(absence_expected),
+    |                                                                                                     ^^^^^^
+306 |             "file": "actual_absence_outcomes_v1.json"}
+307 |         manifest["negative_cases"] = {"count": 18, "new_negative_execution": "ACTUAL_PUBLIC_SQLITE_REPLAY",
+    |
+
+E501 Line too long (107 > 100)
+   --> tools/export_m00_synthetic.py:307:101
+    |
+305 |             "count": len(absence_probes), "exact_match": exact(absence_probes) == exact(absence_expected),
+306 |             "file": "actual_absence_outcomes_v1.json"}
+307 |         manifest["negative_cases"] = {"count": 18, "new_negative_execution": "ACTUAL_PUBLIC_SQLITE_REPLAY",
+    |                                                                                                     ^^^^^^^
+308 |                                        "outcome_file": "negative_outcomes_v1.json"}
+309 |         manifest["actual_hashes"] = {file.name: digest(file) for file in (
+    |
+
+E501 Line too long (132 > 100)
+   --> tools/export_m00_synthetic.py:320:101
+    |
+318 |                                else "FAILED_PUBLIC_OUTPUT_COMPARISON")
+319 |         manifest["pinned_python_3_12_14"] = sys.version_info[:3] == (3, 12, 14)
+320 |         manifest["acceptance_status"] = "PENDING_INDEPENDENT_REVIEW" if ok and manifest["pinned_python_3_12_14"] else "NOT_ACCEPTED"
+    |                                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+321 |         write_json(output / "manifest_v1.json", manifest)
+322 |         return 0 if ok and manifest["pinned_python_3_12_14"] else 2
+    |
+
+E501 Line too long (118 > 100)
+   --> tools/export_m00_synthetic.py:325:101
+    |
+323 |     except BaseException as exc:
+324 |         manifest["status"] = "FAILED_EXPORT"
+325 |         manifest["first_mismatch"] = manifest["first_mismatch"] or {"failure": type(exc).__name__, "detail": str(exc)}
+    |                                                                                                     ^^^^^^^^^^^^^^^^^^
+326 |         write_json(output / "failure_v1.json", {"error": str(exc), "traceback": traceback.format_exc()})
+327 |         write_json(output / "manifest_v1.json", manifest)
+    |
+
+E501 Line too long (104 > 100)
+   --> tools/export_m00_synthetic.py:326:101
+    |
+324 |         manifest["status"] = "FAILED_EXPORT"
+325 |         manifest["first_mismatch"] = manifest["first_mismatch"] or {"failure": type(exc).__name__, "detail": str(exc)}
+326 |         write_json(output / "failure_v1.json", {"error": str(exc), "traceback": traceback.format_exc()})
+    |                                                                                                     ^^^^
+327 |         write_json(output / "manifest_v1.json", manifest)
+328 |         return 2
+    |
+
+E501 Line too long (113 > 100)
+   --> tools/export_m00_synthetic.py:336:101
+    |
+334 |         return 0
+335 |     parser = argparse.ArgumentParser(description=__doc__)
+336 |     parser.add_argument("--fixtures", required=True, help="Immutable family/controls/negative fixture directory")
+    |                                                                                                     ^^^^^^^^^^^^^
+337 |     parser.add_argument("--expected", required=True, help="Independent oracle directory with A/B/C and controls")
+338 |     parser.add_argument("--database", required=True, help="Absolute path to absent SQLite file")
+    |
+
+E501 Line too long (113 > 100)
+   --> tools/export_m00_synthetic.py:337:101
+    |
+335 |     parser = argparse.ArgumentParser(description=__doc__)
+336 |     parser.add_argument("--fixtures", required=True, help="Immutable family/controls/negative fixture directory")
+337 |     parser.add_argument("--expected", required=True, help="Independent oracle directory with A/B/C and controls")
+    |                                                                                                     ^^^^^^^^^^^^^
+338 |     parser.add_argument("--database", required=True, help="Absolute path to absent SQLite file")
+339 |     parser.add_argument("--output", required=True, help="New, non-existing output directory")
+    |
+
+Found 27 errors.
+[*] 3 fixable with the `--fix` option (1 hidden fix can be enabled with the `--unsafe-fixes` option).

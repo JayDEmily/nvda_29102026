@@ -1,0 +1,7 @@
+tools/export_m00_synthetic.py:402: error: Value of type "Collection[str]" is not indexable  [index]
+tools/export_m00_synthetic.py:403: error: Value of type "Collection[str]" is not indexable  [index]
+tools/export_m00_synthetic.py:404: error: Value of type "Collection[str]" is not indexable  [index]
+tools/export_m00_synthetic.py:407: error: Value of type "Collection[str]" is not indexable  [index]
+tools/export_m00_synthetic.py:420: error: Value of type "Collection[str]" is not indexable  [index]
+tools/export_m00_synthetic.py:421: error: Value of type "Collection[str]" is not indexable  [index]
+Found 6 errors in 1 file (checked 1 source file)

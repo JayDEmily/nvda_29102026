@@ -16,7 +16,8 @@
   "required_proof_ids": [
     "M00B2-NATIVE",
     "M00B2-HISTORY",
-    "M00B2-CONTROLS"
+    "M00B2-CONTROLS",
+    "M00B2-EXPORT"
   ],
   "families": [
     {
@@ -197,6 +198,65 @@
       ],
       "tier_treatment": "NOT_CLASSIFIED",
       "command": "python -m pytest tests/product/m00_brief2/test_ibkr_controls.py"
+    },
+    {
+      "id": "m00b2_export",
+      "path": "tests/product/m00_brief2/test_export.py",
+      "proof_obligation_ids": [
+        "M00B2-EXPORT"
+      ],
+      "required_test_names": [
+        "test_export_pipeline"
+      ],
+      "boundary": "Actual public196-row export, all18negative outcomes, exact independentoracle and cleancheckout secondSQLite reproduction.",
+      "proof_levels": [
+        "CONTRACT",
+        "INTEGRATION",
+        "STATE"
+      ],
+      "authoritative_inputs": [
+        "Exact owner-commissioned M00 Brief2 V3 tables and N requirements."
+      ],
+      "dependency_substitutions": [
+        "Synthetic provider callbacks, real public M00 and SQLite."
+      ],
+      "case_coverage": {
+        "lawful_positive": {
+          "cases": [
+            "Public subject/request/generation discovery of separate control facts, N08/09/15 and fresh SQLite reads."
+          ]
+        },
+        "prohibited_false_positive": {
+          "cases": [
+            "No omitted/extra/wrongly selected or falsely typed public result."
+          ]
+        },
+        "missing_mandatory_authority": {
+          "cases": [
+            "Exact immutable authority and explicit selectors required."
+          ]
+        },
+        "lawful_optional_absence": {
+          "cases": [
+            "Declared missing fields/cutoffs remain absent."
+          ]
+        }
+      },
+      "expected_failure_signals": [
+        "Exact value/type/identity mismatch or failed public SQLite readback."
+      ],
+      "limitations": [
+        "Synthetic only, no PostgreSQL runtime or live source certification."
+      ],
+      "adjacent_nonclaims": [
+        "No M02/collector/D145 change."
+      ],
+      "environment": "Pinned CPython3.12.14 SQLite3.53.1.",
+      "material_versions": [
+        "Exact brief/binding/contract/generation/candidate."
+      ],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/m00_brief2/test_export.py"
     }
   ],
   "required_support_files": [
@@ -231,7 +291,9 @@
     "handoff/m00_brief2/fixtures/negative/N17_v1.jsonl",
     "handoff/m00_brief2/fixtures/negative/N18_v1.jsonl",
     "handoff/m00_brief2/fixtures/negative/expectations_v1.jsonl",
-    "handoff/m00_brief2/authority/CONTROL_HISTORY_CONTRACT_V1.md"
+    "handoff/m00_brief2/authority/CONTROL_HISTORY_CONTRACT_V1.md",
+    "tools/export_m00_synthetic.py",
+    "tools/m00_negative_export.py"
   ],
   "optional_support_files": [],
   "execution_policy": {

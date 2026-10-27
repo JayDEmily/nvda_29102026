@@ -1,0 +1,27 @@
+tools/m00_negative_export.py:188: error: Expected iterable as variadic argument  [misc]
+tools/m00_negative_export.py:227: error: Argument 1 to "utc" has incompatible type "list[list[Sequence[str]]] | str | None"; expected "str"  [arg-type]
+tools/m00_negative_export.py:228: error: Item "None" of "bool | int | float | Decimal | datetime | str | bytes | list[NativeValueV1] | tuple[NativeValueV1, ...] | Mapping[str, NativeValueV1] | None" has no attribute "get"  [union-attr]
+tools/m00_negative_export.py:228: error: Item "bool" of "bool | int | float | Decimal | datetime | str | bytes | list[NativeValueV1] | tuple[NativeValueV1, ...] | Mapping[str, NativeValueV1] | None" has no attribute "get"  [union-attr]
+tools/m00_negative_export.py:228: error: Item "int" of "bool | int | float | Decimal | datetime | str | bytes | list[NativeValueV1] | tuple[NativeValueV1, ...] | Mapping[str, NativeValueV1] | None" has no attribute "get"  [union-attr]
+tools/m00_negative_export.py:228: error: Item "float" of "bool | int | float | Decimal | datetime | str | bytes | list[NativeValueV1] | tuple[NativeValueV1, ...] | Mapping[str, NativeValueV1] | None" has no attribute "get"  [union-attr]
+tools/m00_negative_export.py:228: error: Item "Decimal" of "bool | int | float | Decimal | datetime | str | bytes | list[NativeValueV1] | tuple[NativeValueV1, ...] | Mapping[str, NativeValueV1] | None" has no attribute "get"  [union-attr]
+tools/m00_negative_export.py:228: error: Item "datetime" of "bool | int | float | Decimal | datetime | str | bytes | list[NativeValueV1] | tuple[NativeValueV1, ...] | Mapping[str, NativeValueV1] | None" has no attribute "get"  [union-attr]
+tools/m00_negative_export.py:228: error: Item "str" of "bool | int | float | Decimal | datetime | str | bytes | list[NativeValueV1] | tuple[NativeValueV1, ...] | Mapping[str, NativeValueV1] | None" has no attribute "get"  [union-attr]
+tools/m00_negative_export.py:228: error: Item "bytes" of "bool | int | float | Decimal | datetime | str | bytes | list[NativeValueV1] | tuple[NativeValueV1, ...] | Mapping[str, NativeValueV1] | None" has no attribute "get"  [union-attr]
+tools/m00_negative_export.py:228: error: Item "list[NativeValueV1]" of "bool | int | float | Decimal | datetime | str | bytes | list[NativeValueV1] | tuple[NativeValueV1, ...] | Mapping[str, NativeValueV1] | None" has no attribute "get"  [union-attr]
+tools/m00_negative_export.py:228: error: Item "tuple[NativeValueV1, ...]" of "bool | int | float | Decimal | datetime | str | bytes | list[NativeValueV1] | tuple[NativeValueV1, ...] | Mapping[str, NativeValueV1] | None" has no attribute "get"  [union-attr]
+tools/m00_negative_export.py:229: error: Item "list[list[Sequence[str]]]" of "list[list[Sequence[str]]] | str | None" has no attribute "items"  [union-attr]
+tools/m00_negative_export.py:229: error: Item "str" of "list[list[Sequence[str]]] | str | None" has no attribute "items"  [union-attr]
+tools/m00_negative_export.py:229: error: Item "None" of "list[list[Sequence[str]]] | str | None" has no attribute "items"  [union-attr]
+tools/m00_negative_export.py:255: error: Value of type "bool | int | float | Decimal | datetime | str | bytes | list[NativeValueV1] | tuple[NativeValueV1, ...] | Mapping[str, NativeValueV1] | None" is not indexable  [index]
+tools/m00_negative_export.py:255: error: No overload variant of "__getitem__" of "bytes" matches argument type "str"  [call-overload]
+tools/m00_negative_export.py:255: note: Possible overload variants:
+tools/m00_negative_export.py:255: note:     def __getitem__(self, SupportsIndex, /) -> int
+tools/m00_negative_export.py:255: note:     def __getitem__(self, slice[SupportsIndex | None, SupportsIndex | None, SupportsIndex | None], /) -> bytes
+tools/m00_negative_export.py:255: error: No overload variant of "__getitem__" of "list" matches argument type "str"  [call-overload]
+tools/m00_negative_export.py:255: note:     def __getitem__(self, SupportsIndex, /) -> NativeValueV1
+tools/m00_negative_export.py:255: note:     def __getitem__(self, slice[SupportsIndex | None, SupportsIndex | None, SupportsIndex | None], /) -> list[NativeValueV1]
+tools/m00_negative_export.py:255: error: No overload variant of "__getitem__" of "tuple" matches argument type "str"  [call-overload]
+tools/m00_negative_export.py:255: note:     def __getitem__(self, slice[SupportsIndex | None, SupportsIndex | None, SupportsIndex | None], /) -> tuple[NativeValueV1, ...]
+tools/m00_negative_export.py:255: error: Invalid index type "str" for "str"; expected type "SupportsIndex | slice[SupportsIndex | None, SupportsIndex | None, SupportsIndex | None]"  [index]
+Found 20 errors in 1 file (checked 1 source file)
