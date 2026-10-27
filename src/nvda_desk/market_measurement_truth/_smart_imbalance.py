@@ -15,7 +15,7 @@ from ._catalogue import _AUTHORITY
 from ._evaluation import canonical, decode
 from ._record_store import RecordState
 
-BRIEF = "e4c8ed923a5f70ee6ce9e76f17bffc88bd6c92b9be975f033c46f2fed3922420"
+BRIEF = "0e8b8a7152e1a92c6aaafcacd8f6df5133ad3ce242ba0a905e2ad1194e2cfa57"
 NAMESPACE = "neutral_market_measurement_truth/smart-imbalance/v1"
 DEFINITION = f.CalculationDefinitionV1(
     "D136", "D136-SMART-DEPTH-IMBALANCE-1", "K02_ALGEBRA",
@@ -30,14 +30,13 @@ PARAMETER = f.CalculationParameterSetV1(
 SELECTION = f.VersionRefV1("mmt-d136-same-book-selection", 1)
 
 
-def request(bid_id: str, ask_id: str, ask_depth_levels: int = 2
-            ) -> f.SmartImbalanceRequestV1:
+def request(bid_id: str, ask_id: str) -> f.SmartImbalanceRequestV1:
     return f.SmartImbalanceRequestV1(
         f.CalculationRequestV1(
             "D136", _smart_depth.SUBJECT, _smart_depth.T, _smart_depth.CUTOFF,
             DEFINITION.calculation_definition_version,
             f.VersionRefV1(PARAMETER.context_id, 1), SELECTION, (SELECTION,), (),
-        ), (bid_id, ask_id), (2, ask_depth_levels),
+        ), (bid_id, ask_id), (2, 2),
     )
 
 
@@ -46,10 +45,8 @@ def _request(req: f.SmartImbalanceRequestV1, now: datetime) -> None:
     if (type(req) is not f.SmartImbalanceRequestV1
         or any(type(item) is not str or not item for item in req.predecessor_occurrence_ids)
         or req.predecessor_occurrence_ids[0] == req.predecessor_occurrence_ids[1]
-        or req.requested_depth_levels not in ((2, 2), (2, 3))
-        or canonical(req) != canonical(request(
-            *req.predecessor_occurrence_ids, req.requested_depth_levels[1]
-        )) or now < _smart_depth.CUTOFF):
+        or canonical(req) != canonical(request(*req.predecessor_occurrence_ids))
+        or now < _smart_depth.CUTOFF):
         raise ValueError("unadmitted D136 selection or predecessor IDs")
 
 
@@ -70,13 +67,19 @@ def _produce(req: f.SmartImbalanceRequestV1,
         or bid.request.calculation.as_of_utc != ask.request.calculation.as_of_utc
         or bid.request.calculation.knowledge_cutoff_utc
         != ask.request.calculation.knowledge_cutoff_utc
-        or bid.request.selection != ask.request.selection
+        or bid.request.selection.provider != ask.request.selection.provider
+        or bid.request.selection.variant != ask.request.selection.variant
+        or bid.request.selection.generation != ask.request.selection.generation
+        or bid.request.selection.history_complete_from_utc
+        != ask.request.selection.history_complete_from_utc
         or bid.projection_mappings != ask.projection_mappings
         or bid.unit_conventions != ask.unit_conventions
         or bid.raw_input_lineage != ask.raw_input_lineage
         or bid.standing_rows != ask.standing_rows
         or bid.request.depth_levels != req.requested_depth_levels[0]
         or ask.request.depth_levels != req.requested_depth_levels[1]
+        or (bid.request.depth_levels == ask.request.depth_levels
+            and bid.request.selection != ask.request.selection)
         or bid.effective_as_of_utc != _smart_depth.T
         or ask.effective_as_of_utc != _smart_depth.T
         or bid.knowledge_cutoff_utc != _smart_depth.CUTOFF

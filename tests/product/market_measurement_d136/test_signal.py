@@ -12,9 +12,9 @@ T = datetime(2026, 10, 20, 12, 40, tzinfo=UTC)
 CUTOFF, NOW = T + timedelta(seconds=1), T + timedelta(seconds=2)
 PROVIDER, VARIANT = "foundation-controlled-smart-book", "positional_four_field_v1"
 GENERATION = "controlled-smart-four-field-generation/1"
-ASK_BRIEF = "bbd3cbf1e050bfbf9d80bd11eb828df025a0b8cadda93d178d0b028f307dd514"
+ASK_BRIEF = "9abfefacb6af1da85f8c22780d604edbe94bfb9e8a572aece3ecbd1856979840"
 BID_BRIEF = "628cddf853ab1c074a8b89264533714d7211a83618704742b2435b02121ac336"
-BRIEF = "e4c8ed923a5f70ee6ce9e76f17bffc88bd6c92b9be975f033c46f2fed3922420"
+BRIEF = "0e8b8a7152e1a92c6aaafcacd8f6df5133ad3ce242ba0a905e2ad1194e2cfa57"
 SUBJECT = "NVDA"
 ROLES = (
     ("R185", "position", "book_position"), ("R187", "operation", "book_operation"),
@@ -48,8 +48,21 @@ ASK_DEFINITION = f.CalculationDefinitionV1(
 ASK_PARAMETER = f.CalculationParameterSetV1(
     "mmt-d135-top-two", 1, "P_BASIC", SUBJECT, (SUBJECT,),
 )
+ASK_DEFINITION_TOP_ONE = f.CalculationDefinitionV1(
+    "D135", "D135-SMART-TOP-ONE-ASK-1", "K02_ALGEBRA",
+    "sum(top one standing SMART ask size after positional replay)",
+    tuple(raw for raw, _, _ in ROLES), (), "P_BASIC", "shares", "scalar_decimal",
+    AUTHORITY,
+)
+ASK_PARAMETER_TOP_ONE = f.CalculationParameterSetV1(
+    "mmt-d135-top-one", 1, "P_BASIC", SUBJECT, (SUBJECT,),
+)
 SELECTION = f.BookEventSelectionV1(
     f.VersionRefV1("mmt-d134-smart-four-field", 1), PROVIDER, VARIANT,
+    GENERATION, T - timedelta(seconds=10), 100,
+)
+SELECTION_TOP_ONE = f.BookEventSelectionV1(
+    f.VersionRefV1("mmt-d135-smart-top-one", 1), PROVIDER, VARIANT,
     GENERATION, T - timedelta(seconds=10), 100,
 )
 
@@ -118,15 +131,15 @@ PARAMETER = f.CalculationParameterSetV1(
 )
 
 
-def parent_request(signal, definition, parameter):
+def parent_request(signal, definition, parameter, *, selection=SELECTION, levels=2):
     return f.SmartDepthRequestV1(f.CalculationRequestV1(
         signal, SUBJECT, T, CUTOFF, definition.calculation_definition_version,
-        f.VersionRefV1(parameter.context_id, 1), SELECTION.ref, (SELECTION.ref,),
+        f.VersionRefV1(parameter.context_id, 1), selection.ref, (selection.ref,),
         tuple(f.RawInputBindingV1(
             raw_id, f.VersionRefV1(mapping.mapping_id, 1),
             f.VersionRefV1(unit.context_id, 1), SUBJECT,
         ) for (raw_id, _, _), mapping, unit in zip(ROLES, MAPS, UNITS, strict=True)),
-    ), SELECTION, 2)
+    ), selection, levels)
 
 
 @pytest.mark.parametrize("refused", (False, True), ids=("success", "refusal"))
@@ -150,11 +163,18 @@ def test_d136_signal(tmp_path, refused):
         storage=f.SQLiteStorageV1(ask_path, True), utc_now=lambda: NOW,
     )
     bid = bid_owner.materialise(parent_request("D134", BID_DEFINITION, BID_PARAMETER))
-    ask = ask_owner.materialise(parent_request("D135", ASK_DEFINITION, ASK_PARAMETER))
+    ask = ask_owner.materialise(parent_request(
+        "D135", ASK_DEFINITION_TOP_ONE if refused else ASK_DEFINITION,
+        ASK_PARAMETER_TOP_ONE if refused else ASK_PARAMETER,
+        selection=SELECTION_TOP_ONE if refused else SELECTION,
+        levels=1 if refused else 2,
+    ))
     assert type(bid) is f.SmartDepthOccurrenceV1 and bid.result == Decimal("8")
-    assert type(ask) is f.SmartDepthOccurrenceV1 and ask.result == Decimal("6")
+    assert type(ask) is f.SmartDepthOccurrenceV1
+    assert ask.result == (Decimal("2") if refused else Decimal("6"))
     assert bid.raw_input_lineage == ask.raw_input_lineage
-    assert bid.request.depth_levels == ask.request.depth_levels == 2
+    assert bid.request.depth_levels == 2
+    assert ask.request.depth_levels == (1 if refused else 2)
     bid_reader = f.create_smart_depth_reader(
         admission=f.OwnerAdmissionV1("M02", BID_BRIEF),
         storage=f.SQLiteReadStorageV1(bid_path),
@@ -165,13 +185,12 @@ def test_d136_signal(tmp_path, refused):
     )
     assert bid_reader.get_derived_occurrence(bid.derived_occurrence_id) == bid
     assert ask_reader.get_derived_occurrence(ask.derived_occurrence_id) == ask
-    levels = (2, 3) if refused else (2, 2)
     request = f.SmartImbalanceRequestV1(f.CalculationRequestV1(
         "D136", SUBJECT, T, CUTOFF, DEFINITION.calculation_definition_version,
         f.VersionRefV1(PARAMETER.context_id, 1),
         f.VersionRefV1("mmt-d136-same-book-selection", 1),
         (f.VersionRefV1("mmt-d136-same-book-selection", 1),), (),
-    ), (bid.derived_occurrence_id, ask.derived_occurrence_id), levels)
+    ), (bid.derived_occurrence_id, ask.derived_occurrence_id), (2, 2))
     admission = f.OwnerAdmissionV1("M02", BRIEF)
     path = str(tmp_path / "d136.sqlite")
     owner = f.create_smart_imbalance_owner(
@@ -186,8 +205,11 @@ def test_d136_signal(tmp_path, refused):
                  effective_at_or_before_utc=T, knowledge_at_or_before_utc=CUTOFF,
                  limit=10)
     if refused:
-        assert request.requested_depth_levels == (2, 3)
-        assert bid.request.depth_levels == 2 and ask.request.depth_levels == 2
+        assert request.requested_depth_levels == (2, 2)
+        assert ask.definition == ASK_DEFINITION_TOP_ONE
+        assert ask.parameter_set == ASK_PARAMETER_TOP_ONE
+        assert ask.request.selection == SELECTION_TOP_ONE
+        assert bid.raw_input_lineage == ask.raw_input_lineage
         assert occurrence is None and reader.list_derived_history(**query) == ()
         return
     assert type(occurrence) is f.SmartImbalanceOccurrenceV1

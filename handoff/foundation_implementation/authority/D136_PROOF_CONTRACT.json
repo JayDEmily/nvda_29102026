@@ -26,17 +26,18 @@
       "required_test_names": [
         "test_d136_signal"
       ],
-      "boundary": "Two actual public D134/D135 same-book depths, typed exact imbalance, SQLite read-only reopen and mismatched requested ask depth refusal.",
+      "boundary": "Actual public D134 top-two and D135 top-two/top-one same-book depths, typed exact imbalance, SQLite read-only reopen and actual top-one predecessor refusal.",
       "proof_levels": [
         "CONTRACT",
         "INTEGRATION",
         "STATE"
       ],
       "authoritative_inputs": [
-        "Owner-accepted root EXEC_PLAN.md \u00a7\u00a72.2,3,5; K02/P_BASIC and D136_PROFILE.json."
+        "Owner-accepted root EXEC_PLAN.md \u00a7\u00a72.2,3,5; K02/P_BASIC and D136_PROFILE.json.",
+        "Owner 27 October 2026 D135 top-one amendment."
       ],
       "dependency_substitutions": [
-        "Actual public M02 D134 and D135 from same public M00 SMART source; no synthetic predecessor."
+        "Actual public M02 D134 and D135 from same public M00 SMART source, including owner-authorised D135 top-one profile; no synthetic predecessor."
       ],
       "case_coverage": {
         "lawful_positive": {
@@ -46,7 +47,7 @@
         },
         "prohibited_false_positive": {
           "cases": [
-            "Same actual D134 depth2/D135 depth2, but requested bid2/ask3, so actual D135 incompatible; no result/history."
+            "Same four public book events and actual D134 top-two8; actual public D135 top-one2 is incompatible with unchanged D136 common-top-two request; no result/history."
           ]
         },
         "missing_mandatory_authority": {
@@ -61,7 +62,7 @@
         }
       },
       "expected_failure_signals": [
-        "Prefilled parent result, mixed book context, mismatched depth accepted, denominator zero."
+        "Prefilled parent result, mixed book context, actual D135 top-one treated as top-two, denominator zero."
       ],
       "limitations": [
         "Two controlled cases; no native SMART certification."

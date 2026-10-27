@@ -21,14 +21,16 @@
     "result": "1/7"
   },
   "refusal": {
-    "actual_D134": "top two bid depth8",
-    "actual_D135": "top two ask depth6",
+    "actual_D134": "top-two bid depth8",
+    "actual_D135": "owner-authorised top-one ask depth2, definition D135-SMART-TOP-ONE-ASK-1 and selection/parameter version",
     "requested_level_pair": [
       2,
-      3
+      2
     ],
-    "reason": "actual D135 depth_levels2 is incompatible with requested ask depth_levels3; actual D134 remains compatible at2",
+    "same_four_event_groups": true,
+    "reason": "actual D135 depth_levels1 is incompatible with unchanged common-top-two D136 request",
     "effect": "no D136 result/history"
   },
-  "boundary": "No fabricated predecessor, no raw projection; only actual public M02 D134/D135 readers, synthetic SMART source."
+  "boundary": "No fabricated predecessor, no raw projection; only actual public M02 D134/D135 readers, synthetic SMART source.",
+  "owner_amendment": "handoff/foundation_implementation/authority/D135_TOP_ONE_OWNER_AMENDMENT_20261027.md"
 }
