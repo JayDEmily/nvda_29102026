@@ -1,0 +1,21 @@
+{
+  "id": "D139",
+  "kernel": "K08_RULE_BUCKET_POLICY",
+  "parameter_profile": "P_RULE",
+  "units": "events or size/time",
+  "subject": "NVDA",
+  "provider": "foundation-controlled-smart-book",
+  "variant": "receipt_rate_v1",
+  "generation": "controlled-smart-rate-generation/1",
+  "R001": "native aware UTC datetime, actual collector receipt; separate native source-event timestamp",
+  "book_roles": {
+    "R185": "position int",
+    "R187": "operation int",
+    "R188": "side int",
+    "R190": "size Decimal shares"
+  },
+  "selection": "bounded one generation, receipt bucket (T-4s,T], bid positions1-2, complete pre-window top book",
+  "success": "two genuine bid inserts sizes3,5; count rate1/2 events/s, size rate2 shares/s",
+  "refusal": "second insert missing R187 operation",
+  "boundary": "synthetic receipt-clock rate; no native event-time rate or SMART certification"
+}

@@ -1073,6 +1073,64 @@ class BookSlopeOccurrenceV1(_Validated):
 
 
 @dataclass(frozen=True, slots=True)
+class BookRateRawLineageV1(_Validated):
+    raw_signal_id: str
+    observation_occurrence_id: str
+    projection_mapping_ref: VersionRefV1
+    unit_convention_ref: VersionRefV1
+    projection: raw_api.ProjectedRawValueV1
+    canonical_value: datetime | int | Decimal
+    event_time_utc: datetime
+
+    def __post_init__(self) -> None:
+        _Validated.__post_init__(self)
+        expected = {
+            "R001": datetime, "R185": int, "R187": int, "R188": int, "R190": Decimal,
+        }.get(self.raw_signal_id)
+        if expected is None or type(self.canonical_value) is not expected:
+            raise TypeError("exact receipt-book native role type required")
+
+
+@dataclass(frozen=True, slots=True)
+class BookRatePairV1(_Validated):
+    count_per_second: ExactRatioV1
+    size_per_second: ExactRatioV1
+
+
+@dataclass(frozen=True, slots=True)
+class BookRateRequestV1(_Validated):
+    calculation: CalculationRequestV1
+    selection: BookEventSelectionV1
+    window_seconds: int
+    side: int
+    positions: tuple[int, ...]
+
+
+@dataclass(frozen=True, slots=True)
+class BookRateOccurrenceV1(_Validated):
+    owner_object_id: str
+    owner_namespace: str
+    implementation_brief_sha256: str
+    derived_signal_id: str
+    derived_occurrence_id: str
+    request: BookRateRequestV1
+    definition: CalculationDefinitionV1
+    parameter_set: CalculationParameterSetV1
+    selection: BookEventSelectionV1
+    unit_conventions: tuple[UnitConventionVersionV1, ...]
+    projection_mappings: tuple[raw_api.RawSignalProjectionMappingV1, ...]
+    raw_input_lineage: tuple[BookRateRawLineageV1, ...]
+    standing_rows: tuple[SmartSizeRowV1, ...]
+    selected_event_ids: tuple[str, ...]
+    result: BookRatePairV1
+    units: str
+    result_shape: str
+    effective_as_of_utc: datetime
+    knowledge_cutoff_utc: datetime
+    calculated_at_utc: datetime
+
+
+@dataclass(frozen=True, slots=True)
 class SmartSizeRowV1(_Validated):
     side: int
     position: int
@@ -1285,6 +1343,37 @@ def create_book_slope_reader(
     *, admission: OwnerAdmissionV1, storage: SQLiteReadStorageV1,
 ) -> MeasurementBookSlopeReadsV1:
     from ._book_slope import build_reader
+    return build_reader(admission, storage)
+
+
+class MeasurementBookRateReadsV1(Protocol):
+    def get_derived_occurrence(self, derived_occurrence_id: str
+                               ) -> BookRateOccurrenceV1 | None: ...
+    def list_derived_history(
+        self, *, derived_signal_id: str, subject_instrument: str,
+        effective_at_or_before_utc: datetime, knowledge_at_or_before_utc: datetime,
+        limit: int,
+    ) -> tuple[BookRateOccurrenceV1, ...]: ...
+
+
+class MeasurementBookRateOwnerV1(Protocol):
+    @property
+    def reads(self) -> MeasurementBookRateReadsV1: ...
+    def materialise(self, request: BookRateRequestV1) -> BookRateOccurrenceV1 | None: ...
+
+
+def create_book_insert_rate_owner(
+    *, admission: OwnerAdmissionV1, raw_projection_reader: RawProjectionReaderV1,
+    storage: MemoryStorageV1 | SQLiteStorageV1, utc_now: Callable[[], datetime],
+) -> MeasurementBookRateOwnerV1:
+    from ._book_insert_rate import build_owner
+    return build_owner(admission, raw_projection_reader, storage, utc_now)
+
+
+def create_book_insert_rate_reader(
+    *, admission: OwnerAdmissionV1, storage: SQLiteReadStorageV1,
+) -> MeasurementBookRateReadsV1:
+    from ._book_insert_rate import build_reader
     return build_reader(admission, storage)
 
 

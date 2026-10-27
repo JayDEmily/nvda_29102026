@@ -104,6 +104,7 @@ type NativeValueV1 = (
     | int
     | float
     | Decimal
+    | datetime
     | str
     | bytes
     | list[NativeValueV1]
@@ -207,6 +208,9 @@ def _snapshot_native_value(value: object, active_container_ids: set[int]) -> Nat
         return value
     if type(value) is Decimal:
         return value
+    if type(value) is datetime:
+        _require_utc(value, "native UTC datetime")
+        return value
     if type(value) is str:
         return value
     if type(value) is bytes:
@@ -295,6 +299,8 @@ def _native_values_exactly_equal(left: object, right: object) -> bool:
         return _native_float_exactly_equal(left, cast(float, right))
     if type(left) is Decimal:
         return left.as_tuple() == cast(Decimal, right).as_tuple()
+    if type(left) is datetime:
+        return left.isoformat() == cast(datetime, right).isoformat()
     if type(left) is str:
         return left == right
     if type(left) is bytes:

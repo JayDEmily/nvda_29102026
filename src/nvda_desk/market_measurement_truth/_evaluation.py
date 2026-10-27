@@ -147,22 +147,32 @@ def untagged(value: Any, hint: Any) -> Any:
             f.VintageRawLineageV1,
             f.MarketModeRawLineageV1,
             f.BookRawLineageV1,
+            f.BookRateRawLineageV1,
         ):
             projection = value["projection"]
             projection_hints = get_type_hints(raw_api.ProjectedRawValueV1)
+            rate_types = {
+                "R001": str, "R185": int, "R187": int, "R188": int, "R190": dict,
+            }
+            rid = projection["raw_signal_catalogue_id"]["value"]
+            expected_native = (
+                (int if rid in ("R185", "R187", "R188") else dict)
+                if hint is f.BookRawLineageV1 else
+                rate_types.get(rid) if hint is f.BookRateRawLineageV1 else
+                int if hint is f.MarketModeRawLineageV1 else str
+            )
             if (type(projection) is not dict or set(projection) != set(projection_hints)
-                or type(projection["native_value"]) is not (
-                    (int if projection["raw_signal_catalogue_id"]["value"] in
-                     ("R185", "R187", "R188") else dict)
-                    if hint is f.BookRawLineageV1 else
-                    (int if hint is f.MarketModeRawLineageV1 else str)
-                )):
+                or type(projection["native_value"]) is not expected_native):
                 raise ValueError("invalid exact categorical/temporal projection")
             if hint is f.BookRawLineageV1 and projection["raw_signal_catalogue_id"] not in (
                 {"kind": "RawSignalCatalogueId", "value": raw}
                 for raw in ("R185", "R187", "R188", "R189", "R190")
             ):
                 raise ValueError("unadmitted book source role")
+            if (hint is f.BookRateRawLineageV1
+                and (rid not in rate_types
+                     or type(projection["native_value"]) is not rate_types[rid])):
+                raise ValueError("unadmitted typed receipt-book projection")
             if hint is f.MarketModeRawLineageV1 and (projection["native_value"] != 1
                 or projection["raw_signal_catalogue_id"]
                 != {"kind": "RawSignalCatalogueId", "value": "R005"}):
@@ -199,9 +209,12 @@ def untagged(value: Any, hint: Any) -> Any:
             ):
                 raise ValueError("unadmitted exact vintage source role")
             decoded_projection = raw_api.ProjectedRawValueV1(**{
-                key: (untagged(projection[key], int if projection[
-                    "raw_signal_catalogue_id"]["value"] in ("R185", "R187", "R188")
-                    else Decimal) if hint is f.BookRawLineageV1 else projection[key])
+                key: (untagged(projection[key],
+                               datetime if projection["raw_signal_catalogue_id"]["value"] == "R001"
+                               else int if projection["raw_signal_catalogue_id"]["value"]
+                               in ("R185", "R187", "R188") else Decimal)
+                      if hint in (f.BookRawLineageV1, f.BookRateRawLineageV1)
+                      else projection[key])
                 if key == "native_value" else untagged(projection[key], cls)
                 for key, cls in projection_hints.items()
             })
