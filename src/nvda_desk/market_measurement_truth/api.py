@@ -1036,6 +1036,43 @@ class BookDepthOccurrenceV1(_Validated):
 
 
 @dataclass(frozen=True, slots=True)
+class BookSlopePairV1(_Validated):
+    bid: ExactRatioV1
+    ask: ExactRatioV1
+
+
+@dataclass(frozen=True, slots=True)
+class BookSlopeRequestV1(_Validated):
+    calculation: CalculationRequestV1
+    selection: BookEventSelectionV1
+    predecessor_occurrence_id: str
+    depth_levels: int
+
+
+@dataclass(frozen=True, slots=True)
+class BookSlopeOccurrenceV1(_Validated):
+    owner_object_id: str
+    owner_namespace: str
+    implementation_brief_sha256: str
+    derived_signal_id: str
+    derived_occurrence_id: str
+    request: BookSlopeRequestV1
+    definition: CalculationDefinitionV1
+    parameter_set: CalculationParameterSetV1
+    unit_conventions: tuple[UnitConventionVersionV1, ...]
+    projection_mappings: tuple[raw_api.RawSignalProjectionMappingV1, ...]
+    raw_input_lineage: tuple[BookRawLineageV1, ...]
+    predecessor: DerivedSignalOccurrenceV1
+    standing_rows: tuple[BookRowV1, ...]
+    result: BookSlopePairV1
+    units: str
+    result_shape: str
+    effective_as_of_utc: datetime
+    knowledge_cutoff_utc: datetime
+    calculated_at_utc: datetime
+
+
+@dataclass(frozen=True, slots=True)
 class SmartSizeRowV1(_Validated):
     side: int
     position: int
@@ -1216,6 +1253,38 @@ def create_book_depth_reader(
     *, admission: OwnerAdmissionV1, storage: SQLiteReadStorageV1,
 ) -> MeasurementBookDepthReadsV1:
     from ._book_depth import build_reader
+    return build_reader(admission, storage)
+
+
+class MeasurementBookSlopeReadsV1(Protocol):
+    def get_derived_occurrence(self, derived_occurrence_id: str
+                               ) -> BookSlopeOccurrenceV1 | None: ...
+    def list_derived_history(
+        self, *, derived_signal_id: str, subject_instrument: str,
+        effective_at_or_before_utc: datetime, knowledge_at_or_before_utc: datetime,
+        limit: int,
+    ) -> tuple[BookSlopeOccurrenceV1, ...]: ...
+
+
+class MeasurementBookSlopeOwnerV1(Protocol):
+    @property
+    def reads(self) -> MeasurementBookSlopeReadsV1: ...
+    def materialise(self, request: BookSlopeRequestV1) -> BookSlopeOccurrenceV1 | None: ...
+
+
+def create_book_slope_owner(
+    *, admission: OwnerAdmissionV1, raw_projection_reader: RawProjectionReaderV1,
+    predecessor_reader: MeasurementReadsV1,
+    storage: MemoryStorageV1 | SQLiteStorageV1, utc_now: Callable[[], datetime],
+) -> MeasurementBookSlopeOwnerV1:
+    from ._book_slope import build_owner
+    return build_owner(admission, raw_projection_reader, predecessor_reader, storage, utc_now)
+
+
+def create_book_slope_reader(
+    *, admission: OwnerAdmissionV1, storage: SQLiteReadStorageV1,
+) -> MeasurementBookSlopeReadsV1:
+    from ._book_slope import build_reader
     return build_reader(admission, storage)
 
 
