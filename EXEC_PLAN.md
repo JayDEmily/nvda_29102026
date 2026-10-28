@@ -98,12 +98,12 @@ Every leaf below ends with the checkpoint protocol in §6. A code/test-independe
 
 **Files:** create `handoff/downstream_reconciliation/L00/BASELINE_AND_IMPACT.md`; read the primary paths in §2. No product change in this leaf.
 
-- [ ] Read governing files and relevant source/authority in full where conclusions depend on them; record exact starting commit and full/partial coverage.
-- [ ] Re-derive I01–I08 from source, including the purpose and authority of each legacy synthetic convention. Distinguish an old limited proof from an invalid claim of native compatibility.
-- [ ] Enumerate affected callers, public protocols, codecs, owning tests/claims, predecessors and direct dependants. Record D136's D134/D135 dependence and D131's D087 dependence. Trace further dependants only where an affected output contract actually propagates; no blanket invalidation.
-- [ ] Classify unchanged evidence and precisely invalidated propositions. Record that the datetime fix already exists and that PostgreSQL's separate codec is a deferred backend issue, not an instruction to repair it here.
-- [ ] Account for shared proof-loader M00-extension validation as a governance/build prerequisite. Preserve valid admissions; propose G01 changes only if an actual control defect is identified.
-- [ ] Obtain independent documentary acceptance, commit and publish cumulative checkpoint.
+- [x] Read governing files and relevant source/authority in full where conclusions depend on them; record exact starting commit and full/partial coverage.
+- [x] Re-derive I01–I08 from source, including the purpose and authority of each legacy synthetic convention. Distinguish an old limited proof from an invalid claim of native compatibility.
+- [x] Enumerate affected callers, public protocols, codecs, owning tests/claims, predecessors and direct dependants. Record D136's D134/D135 dependence and D131's D087 dependence. Trace further dependants only where an affected output contract actually propagates; no blanket invalidation.
+- [x] Classify unchanged evidence and precisely invalidated propositions. Record that the datetime fix already exists and that PostgreSQL's separate codec is a deferred backend issue, not an instruction to repair it here.
+- [x] Account for shared proof-loader M00-extension validation as a governance/build prerequisite. Preserve valid admissions; propose G01 changes only if an actual control defect is identified.
+- [x] Obtain independent documentary acceptance, commit and publish cumulative checkpoint.
 
 **Acceptance:** exact affected/unaffected/unknown inventory and reusable evidence ledger exist; no tests are run merely to establish the inventory.
 
@@ -303,7 +303,7 @@ A first reviewed planning delivery is documentary only and is not L00 execution 
 - [ ] Independent documentary plan review, if commissioned, recorded with exact reviewed plan hash. No such approval is asserted by this draft.
 - [x] Owner accepted the plan and commissioned completion on 28 October 2026; exact conditional mathematical/time decisions remain subject to the accepted boundaries.
 
-Execution ledger: L00–L14 all NOT_ATTEMPTED. No tests or implementation have been run under this plan. Planning delivery location and hash are recorded by the accompanying saved-file receipt.
+Execution ledger: L00 independently accepted as documentary work; L01–L14 NOT_ATTEMPTED. No product tests or implementation have been run under this plan. Planning delivery location and hash are recorded by the accompanying saved-file receipt.
 
 Final status may become COMPLETED only when §4 and §6 acceptance conditions are supported. Partial source compatibility, documentary dispositions, preserved legacy PASS evidence, numerical coincidence and archive creation alone cannot close the mandatory implementation gates.
 
@@ -312,3 +312,5 @@ Final status may become COMPLETED only when §4 and §6 acceptance conditions ar
 Commission recorded at planning commit 2f93370. Ruling: correct mechanical historical-reference shifts introduced during leaf renumbering: the completed M00 anchor is L06, final review evidence/L06, outputs/L05_verified. Exact historical bytes and starting SHA remain unchanged. No product/proof change.
 
 Preflight: L02 receipt/control types feed every native-compatible book profile; L03 quote assembly feeds actual D087 used by L04; L05/L06 feed actual D136; L09 source handling feeds L10. Shared edits require exact per-leaf invalidation assessment. Current branch is a task-private clone; no extra worktree or broad baseline run.
+
+L00 ACCEPTED — documentary candidate c492bcba34ac8c9e3ece8631181e271f3fcd4736 independently passed spec/quality review d18a3a6de4daab3e6a9c913b35d7a43449972b41. I01–I08, source/profile versus regression distinction, exact callers/claims, shared-helper and proof-loader coupling, scoped descendant mapping and evidence reuse recorded in L00/BASELINE_AND_IMPACT.md. No tests/imports/runtime probes. Cumulative packaging/save/exposure receipt follows outside source commit.
