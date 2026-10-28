@@ -1,0 +1,20 @@
+{
+  "status": "documentary_proposed_not_run_not_approved_as_new_m02_profile",
+  "source": "Brief2 V3 20261027 and R2 leaf oracles; never calculated by M00",
+  "values": {
+    "D087_C1_call_midpoint": {"numerator": "1.20 + 1.40", "divisor": 2, "exact_decimal": "1.30"},
+    "D131_C1_depth_contracts": {"inclusive_price_band_usd": ["0.80", "1.80"], "selected_sizes": [5, 3], "excluded_size": 7, "exact_integer": 8},
+    "D134_A4_bid_shares": {"native_side": 1, "sizes": [5, 3], "exact_integer": 8},
+    "D135_A4_ask_shares": {"native_side": 0, "top_two_sizes": [2, 4], "top_two_exact_integer": 6, "top_one_exact_integer": 2},
+    "D136_imbalance": {"actual_predecessors": [8, 6], "exact_fraction": "1/7"},
+    "D138_bid_slope": {"exact_fraction": "7/2", "source_fixture": "requires separate authorised three-level profile"},
+    "D138_ask_slope": {"exact_fraction": "5/2", "source_fixture": "requires separate authorised three-level profile"},
+    "D139_count_rate_events_per_s": {"exact_fraction": "1/2", "bucket_s": 4},
+    "D139_size_rate_shares_per_s": {"exact_integer": 2, "bucket_s": 4},
+    "D140_count_rate_events_per_s": {"exact_fraction": "1/2", "bucket_s": 2},
+    "D140_size_rate_shares_per_s": {"exact_integer": 3, "bucket_s": 2},
+    "D143_C2_conditionally_full_four_row_group": {"mpid_totals": {"ALPHA": 6, "BETA": 2}, "shares": ["3/4", "1/4"], "exact_hhi": "5/8", "authority_status": "not approved as D143 scope"},
+    "D137_legacy_stock_microprice": {"exact_fraction": "201/2", "status": "old atomic stock profile only"},
+    "D137_option_microprice": {"status": "blocked_no_accepted_option_specific_oracle"}
+  }
+}

@@ -330,3 +330,10 @@ A cumulative incremental Git bundle is **not** a self-contained full repository:
 - Preserve L00 original independent documentary review; L01–L14 are not independently tested or accepted under this execution.
 - Testing is strictly deferred to final independent tester at L14, regardless of older historical AGENTS instructions.
 - The one-time baseline transfer to the tester remains unconfirmed until independently restored there.
+
+### R2 checkpoint intake and G1 disposition — 28 October 2026
+
+- R2 adopted on original independently reviewed L00 baseline `97f944d51ab9e403250fe76910e2754b50425c73`; its original review and preceding historical source commits unchanged.
+- L01 documentation drafted in `handoff/downstream_reconciliation/authority/`; its exact effective source/time/control, option quote age/skew, direct grouping and new proof/ingress approvals remain unresolved as A01–A04. **L01 status: BLOCKED ON AUTHORISATION**, not `AUTHORITY_READY` or `TESTED_ACCEPTED`. See `handoff/downstream_reconciliation/L01/STATUS.md`.
+- L02–L12 code and all scoped tests: `NOT_ATTEMPTED`; L13 documentary disposition: `NOT_ATTEMPTED`; L14 independent test/acceptance: `NOT_ATTEMPTED`. L00 retains its previously reviewed documentary standing.
+- One new cumulative additive bundle from the same L00 baseline will be exported for this partial G1 state. Successful source-side restore proves recoverability only when the tester has the exact same one-time L00 baseline.
