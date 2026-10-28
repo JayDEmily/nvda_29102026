@@ -1,0 +1,59 @@
+{
+  "reviewed_head": "d14cb0102bfdf405bc157c7e4fa3e0d1714fb41a",
+  "main_rows": 196,
+  "exact_oracle_equal": true,
+  "counts": {
+    "A1": {
+      "observation": 1,
+      "projection": 4
+    },
+    "A2": {
+      "observation": 4,
+      "projection": 4
+    },
+    "A3": {
+      "observation": 4,
+      "projection": 4
+    },
+    "A4": {
+      "observation": 4,
+      "projection": 20
+    },
+    "A5": {
+      "observation": 3,
+      "projection": 15
+    },
+    "A6": {
+      "observation": 2,
+      "projection": 10
+    },
+    "B": {
+      "observation": 7,
+      "projection": 35
+    },
+    "C1": {
+      "observation": 3,
+      "projection": 15
+    },
+    "C2": {
+      "observation": 4,
+      "projection": 24
+    },
+    "C3": {
+      "observation": 4,
+      "projection": 24
+    }
+  },
+  "all18_negative_outcomes_present": true,
+  "immutable_fixture_hashes": 29,
+  "four_dataset_hashes": {
+    "actual_m00_output_v1.jsonl": "70583a82602ebf30fa4d9c3f0731746fd4c99479902e33738bc45a6cdf37a281",
+    "actual_control_output_v1.jsonl": "5b808cd12cbe566aa26e41c11935cb3efce5f6258299925cb14ed97739267501",
+    "negative_outcomes_v1.json": "576cd3674da7ce0c576fc41d2b28139c4be85c17bbc3968c24ed2920b9e6e505",
+    "actual_absence_outcomes_v1.json": "bd0faf848a3f40eaa583b82838a639b8ad16e68d6b74bdabf07a15deb665f14c"
+  },
+  "core_unchanged_since_L04": true,
+  "proof_source_unchanged_since_L05_candidate": true,
+  "product_tests_rerun": false,
+  "portable_archive_sha256": "4ed3f4c6cae23ecb245b50ba301dafe03d24fc20d3833c865d79d4e71faadb86"
+}
