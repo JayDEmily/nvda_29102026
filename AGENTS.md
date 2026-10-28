@@ -1,3 +1,6 @@
+<!-- Current owner commission 29 October 2026 -->
+Owner now commissions all L14 testing and final acceptance here; earlier external/manual transfer requirement is superseded for this execution. Independent reviewer remains sole strict executor. Follow root L14 commission; no broad unrelated tests, no duplicate green, no weakening tests; D145 remains paused.
+
 <!-- Prospective owner execution amendment, 28 October 2026 -->
 For downstream reconciliation R2, the owner requires **all runtime/product/static tests deferred until L14** and **cumulative additive Git bundles from one fixed L00 baseline after each leaf**. Implementation L01–L13 is documentary or IMPLEMENTED_UNTESTED only, independent tester performs L14 proofs. This explicit newer owner direction supersedes prior per-leaf reviewer/test execution and full-history checkpoint instructions **for this reconciliation only**. Keep their prior evidence and all original tests/claims; D145 remains paused. Follow root EXEC_PLAN.md R2 and frozen GUARDRAILS.md.
 
