@@ -1,0 +1,37 @@
+B007 Loop control variable `receipt` not used within loop body
+   --> src/nvda_desk/market_measurement_truth/_native_source.py:448:9
+    |
+446 |     warmup_seen: list[str] = []
+447 |     warmup_complete = not warmup
+448 |     for receipt, scope, seq, oid, group, control in events:
+    |         ^^^^^^^
+449 |         if control is not None:
+450 |             if control.invalidates:
+    |
+help: Rename unused `receipt` to `_receipt`
+
+B007 Loop control variable `scope` not used within loop body
+   --> src/nvda_desk/market_measurement_truth/_native_source.py:448:18
+    |
+446 |     warmup_seen: list[str] = []
+447 |     warmup_complete = not warmup
+448 |     for receipt, scope, seq, oid, group, control in events:
+    |                  ^^^^^
+449 |         if control is not None:
+450 |             if control.invalidates:
+    |
+help: Rename unused `scope` to `_scope`
+
+B007 Loop control variable `seq` not used within loop body
+   --> src/nvda_desk/market_measurement_truth/_native_source.py:448:25
+    |
+446 |     warmup_seen: list[str] = []
+447 |     warmup_complete = not warmup
+448 |     for receipt, scope, seq, oid, group, control in events:
+    |                         ^^^
+449 |         if control is not None:
+450 |             if control.invalidates:
+    |
+help: Rename unused `seq` to `_seq`
+
+Found 3 errors.

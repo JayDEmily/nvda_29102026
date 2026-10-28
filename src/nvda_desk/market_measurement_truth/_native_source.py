@@ -445,7 +445,7 @@ def _replay(
     warmup = profile.warmup_observation_ids
     warmup_seen: list[str] = []
     warmup_complete = not warmup
-    for receipt, scope, seq, oid, group, control in events:
+    for _receipt, _scope, _seq, oid, group, control in events:
         if control is not None:
             if control.invalidates:
                 standing = {0: [], 1: []}
