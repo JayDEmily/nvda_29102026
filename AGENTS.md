@@ -1,3 +1,6 @@
+<!-- Prospective owner execution amendment, 28 October 2026 -->
+For downstream reconciliation R2, the owner requires **all runtime/product/static tests deferred until L14** and **cumulative additive Git bundles from one fixed L00 baseline after each leaf**. Implementation L01–L13 is documentary or IMPLEMENTED_UNTESTED only, independent tester performs L14 proofs. This explicit newer owner direction supersedes prior per-leaf reviewer/test execution and full-history checkpoint instructions **for this reconciliation only**. Keep their prior evidence and all original tests/claims; D145 remains paused. Follow root EXEC_PLAN.md R2 and frozen GUARDRAILS.md.
+
 <!-- Current owner commission, 28 October 2026 -->
 Owner accepted root downstream reconciliation ExecPlan and instructed completion. Execute its L00–L14 under per-leaf independent acceptance and cumulative downloadable checkpoint before advancement. Earlier planning-only restrictions apply to historical drafting turns. Scoped tests are authorised by the accepted plan; D145 implementation and unrelated holds stay paused. Frozen GUARDRAILS remains unchanged.
 
