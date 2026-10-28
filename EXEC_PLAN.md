@@ -1,184 +1,306 @@
-# M00 Brief 2 — native raw truth and verified synthetic output ExecPlan
+# M00 downstream contract reconciliation — ExecPlan
 
-Date: 27 October 2026, Australia/Melbourne. Plan ID `M00-BRIEF2-V3-PLAN-1`.
+Date: 28 October 2026, Australia/Melbourne. Plan ID `M00-DOWNSTREAM-RECONCILIATION-PLAN-1`.
 
-**Status: COMPLETED — independently verified synthetic SQLite scope, 28 October 2026.**
+**Status: PROPOSED — documentary planning only; execution NOT COMMISSIONED.**
 
-Current execution authority: owner instruction “Okay, execute the plan, and after each leaf make a downloadable checkpoint, but don't stop working until the plan is finished.” This supersedes the historical planning-only restrictions below; all semantic scope, independent review, leaf checkpoint and failure rules remain. Execution branch `work/m00-brief2-execution-20261027`; reviewed planning checkpoint `bc02a472eaa3a07c7f112dee48e5b1f6fa1764dc`. Historical planning commission (completed at bc02a472): the preceding turn commissioned pausing the previous plan, preparing only the attached M00 brief's plan, independent worker review, and a downloadable checkpoint; it authorised no implementation. The current execution commission above supersedes that completed turn boundary. Reviewer approval means documentary approval, not completed M00 work or an invented human execution commission.
+**Goal:** Reconcile the identified downstream source contracts, owning code and module-scoped tests with the completed M00 native-shaped synthetic output, while preserving prior controlled evidence and every unrelated hold.
 
-**Goal:** Verify and, only for demonstrated defects, minimally correct M00's synthetic native-callback admission → SQLite persistence → public projection/history → deterministic reusable actual-output pipeline for NVDA shares, selected CALL and PUT.
+**Architecture:** M00 owns immutable raw observations, projections and control discoverability. M02 owns neutral calculation input selection, book reconstruction, quote assembly, derived results and their durable lineage. Each module is proved within its own span against an explicit public input contract. There is no proposed M00→M01→M02 end-to-end test suite, automatic M01 activation or application composition.
 
-**Architecture:** Retain the current raw observation owner and v1 payload semantics. Versioned synthetic inputs and an independently authored expected oracle drive public command/read facets over real SQLite; controls use a separately classified public read model if required, never a fake R187 operation. Publication serialises actual public results, independently compares them with the expected oracle and retains provenance.
+**Tech stack:** Retain the accepted CPython 3.12.14 environment and pinned dependencies: pytest 9.0.3, mypy 1.20.1, Ruff 0.15.11, PyYAML 6.0.3; accepted prior SQLite evidence records 3.53.1. Execution must record its actual environment rather than infer it from this plan. Do not substitute Python 3.13 or install PostgreSQL.
 
-**Tech stack:** Existing Python `==3.12.14`, stdlib SQLite, current public M00 API, pinned pytest `9.0.3`, mypy `1.20.1`, Ruff `0.15.11`, PyYAML `6.0.3`; retain repository offline dependencies. Historical proof engine `SQLite 3.53.1` is recorded evidence, not an observation of this new execution environment. PostgreSQL runtime is deferred, not a prerequisite. Attached cp313 wheels cannot substitute for cp312.
+**Specification and authority:** Current owner request to write this plan, the preceding static impact review, frozen `GUARDRAILS.md`, applicable agent instructions, architecture ownership/dependency law, the preserved M00 Brief2 and existing accepted calculation authority. The static review identifies reconciliation work; it does not supply new mathematical definitions, numeric policies or implementation authority. Exact changes to source profiles, temporal bases, public carriers and acceptance cases must be resolved in G1 before their implementation.
 
-**Spec:** `handoff/planning/m00_brief2_20261027/BRIEF_2_M00_RECONCILED_V3_20261027_1622_AEDT.md`, raw SHA-256 `0d5ee211c1285b31834062ab2d871670ed2f318cbb955e7df95f80067d562007`. All its tables, literal values, native types, namespaces, identities, absences and gates are incorporated without alteration. Read it in full; this plan does not replace those tables.
+For future execution, follow the repository's established one-leaf / independent-review / strict-proof / cumulative-download method. Generic skill defaults do not override the owner's no-test instruction for this planning pass or the existing bounded per-signal method. Read the relevant execution skill only after execution is commissioned.
 
-## 1. Pause, authority and preserved state
+## 1. Starting state, preserved plans and commission boundary
 
-Starting Git anchor: `17d7553cf3ad92700f849f696134de67b64b0dfa`, from `NVDA_V2_D143_ACCEPTED_FULL_HISTORY_20261027(3).bundle`. Working branch `work/m00-brief2-plan-20261027`.
+Starting accepted M00 checkpoint: `9b400183f275c3147b568d21b995b4aebd2af3c3` (L07). Previous signal anchor: D143 `17d7553cf3ad92700f849f696134de67b64b0dfa`.
 
-The former root plan is **PAUSED, NOT CANCELLED**. Its exact bytes are preserved at `handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md`, SHA-256 `2d95d7c5e425ed1dd231f4685100f7c1db9c85ee1369fea54f91580aab6caa5a`, and in the starting commit. Its active scheduling role is `DO_NOT_CARRY_FORWARD` during this M00 interlude; its source, tests, immutable proof generations, reviews, holds and history remain. Its §26 records D143 independent acceptance on candidate `317720d0ca2d72146ee7f42e441bab39ec1f01c7`; next scheduled unit D145 is paused, not accepted or deferred here. Resumption needs explicit owner direction and freshly checked authority; never auto-resume it after M00.
+The completed M00 root plan is preserved byte-identically at `handoff/planning/m00_downstream_reconciliation_20261028/COMPLETED_M00_BRIEF2_EXEC_PLAN.md` and in the starting commit. Its completion and evidence are retained. The earlier next-twenty plan remains PAUSED at `handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md`; D145 is its outstanding scheduled signal. Neither plan automatically resumes.
 
-Root `EXEC_PLAN.md` is the single planning entry point. It records this user-directed pause and the M00 proposal; until documentary clearance and any subsequent execution authority are recorded, only planning/review/checkpoint work is active. No second competing active plan is created. The unchanged GUARDRAILS and scoped AGENTS apply subject to current explicit user instruction. The narrow new brief's express M00 commissioning supplies future defect-correction scope; the earlier request limited the completed planning turn; the current owner instruction commissions execution.
+Root `EXEC_PLAN.md` is the single proposed successor planning entry point. Its execution role begins only after explicit owner acceptance and commissioning. The completed plan's active scheduling role is `DO_NOT_CARRY_FORWARD`; its bytes, source, fixtures, evidence and full Git history are retained. Earlier AGENTS/test-map execution wording describes prior commissions and does not authorise new implementation in this planning pass.
 
-The historical next-twenty method of two physical cases per D signal is confined to that signal commission. It does not cap this M00 programme's ten positive scenarios and N01–N18. Its useful disciplines remain: proof before repair, independent judgement, immutable failure evidence, no repeated green without material cause, no unaffected broad regression, one semantic leaf at a time, verified cumulative checkpoint before advancing. This scope clarification does not rewrite old signal criteria.
+This pass may write and inspect documentary planning material and save it for download. It must not run tests, product replay, exporters, static analysers or runtime probes; change production/tests/proof admissions or immutable generations; install runtimes; or execute any future leaf. Documentary self-review and file/Git inspection are allowed. No future leaf is marked complete by preparing this plan.
 
-No frozen GUARDRAILS edit, destructive history operation, old-test weakening, catalogue reinterpretation, M01/M02 calculation change, live collector, deployed SQL or PostgreSQL installation. A new binding cannot borrow the old SQLite brief's acceptance reference. Before future implementation, bind the exact new brief to genuine current human authority under AK-INGRESS-001/002; M00 is an existing modify target. G01 may be proposed only for the bounded new proof admission/path accounting required by existing control law, with exact diff and independent admission first; no generic runner relaxation or unrelated control redesign. Any additional target or breaking v1 change stops the dependent change for owner disposition.
+D145 remains paused throughout this reconciliation plan. L13 produces an explicit source/time disposition and a bounded successor proposal, not a D145 implementation. Any implementation or changed mathematical/time policy needs its own accepted authority. All other holds, including D120–D122 and D141/D142/D144, remain in force.
 
-## 2. Inspection and limits of the planning checkpoint
+## 2. Evidence basis and scope of the identified impact
 
-Read in full: starting root `GUARDRAILS.md` (165 lines), root `AGENTS.md` (81), `tests/AGENTS.override.md` (13), previous root `EXEC_PLAN.md` (165), attached brief (282), `handoff/authority/IRB_ACCEPTED_IMPLEMENTATION_BRIEF.md` (all BC-001–016), `docs/architecture/IMPLEMENTATION_AUTHORITY_INGRESS.md`, `docs/architecture/OWNERSHIP_AND_COMPONENT_LAW.md`, SQLite implementation v3 and its SQLite proof-admission addendum, environment README, repository README/Makefile/pyproject, current SQLite binding and admission/generation 0003, D143 acceptance and strict log. Read calculation brief §9 in full, not the whole calculation document.
+The prior static pass compared D143 to L07 and inspected the relevant public contracts, consumer code, fixtures, paused plan and review records. The implementation delta in `src/` is confined to M00's `_native_codec.py` and `api.py`: additive UTC-datetime encoding and observation-history enumeration. M01/M02 production files and existing signal product tests were unchanged by Brief2. New M00 proof and shared proof-control support were also added.
 
-Inspected relevant portions of `raw_signal_occurrence_truth/api.py`: observation/mapping/projection/page types, admission/high-water, public reads and projection-history implementations; `_sqlite.py` schema and observation persistence/query paths; existing temporal/native tests, SQLite support/native/durability evidence and D139/D143 examples. These are partial source/test inspections, not full runtime validation. No new product test, PostgreSQL session, live IBKR call or M00 baseline freeze certification occurred. Exact original M00 freeze/admission lineage and complete relevant contract closure remain L00 work, rather than being inferred from D143's filename.
+The following are source-relative compatibility findings, not observed new runtime regressions. Existing synthetic profiles remain evidence only for their exact accepted inputs and scope. Neither numerical agreement nor an old PASS establishes compatibility with a differently scoped native-shaped source.
 
-Static observations at the anchor: receipt-only with non-null source timestamp is rejected by the observation validator; admission high-water rejects strictly decreasing sequence but allows equal sequence; projection history sorts `(receipt,scope,sequence,occurrence ID)` and excludes receipt-only under event cutoff. Mapping resolution requires exactly one matching provider/variant/R mapping; pass only a scenario's selected maps when variants are shared. Public reads inspected have known-ID observation lookup and R history; control-discovery compliance is **not established** without L04's direct public proof. These observations do not establish successful fixture execution or a product defect.
+| ID | Identified difference | Owning reconciliation and leaves |
+| --- | --- | --- |
+| I01 | Native depth preserves side 0 ASK / 1 BID; existing controlled SMART consumers and fixtures use 0 bid / 1 ask. | M02 versioned source interpretation; L01–L10. D136 inherits predecessor meaning. |
+| I02 | Native-shaped depth is receipt-only with absent source timestamp/timezone; current book readers request event filtering and require true-instant lineage. | M02 selection/time carriers and codecs; L01/L02 and L04–L11. D145 disposition L13. |
+| I03 | Errors 316/317, gap, reconnect and restart are separate controls; current consumers model reset through operation 317 and expose projection-only input protocols. | M02 control input/lifecycle contract using M00 public history; L01/L02 and L04–L11. |
+| I04 | Direct positions span each subscribed book side across MPIDs; D143 partitions position lists by venue/side and restarts position zero per venue. | M02 subscribed-book reconstruction then qualified grouping; L11. |
+| I05 | Options Level I is asynchronous and receipt-only; D087 uses an exact timestamped snapshot profile and D137 requires a single co-referenced occurrence. | M02 separately versioned assembly/selection; L03/L12. Retain lawful atomic stock path. |
+| I06 | D145's paused profile requires native event-time windows, absent from the verified depth source. | Documentary disposition before resumption; L13. No fabricated source time. |
+| I07 | SQLite datetime persistence now supports collector receipt carriers; retained PostgreSQL codec is separate and lacks that extension. | Reuse accepted M00 SQLite evidence; L00/L09/L10 and L14 record backend limits. PostgreSQL runtime/correction is excluded. |
+| I08 | Shared proof loading now validates the fixed M00 Brief2 extension alongside authorised claims. | G01 build/proof dependency accounting in L00/L01; no cross-module semantic tests or speculative runner rewrite. |
 
-Other attached historical archives remain available source evidence, not mandatory module prerequisites and not claimed fully inspected in this planning pass. If L00 needs an incorporated historical object, retrieve its exact bytes and verify the relevant chain; inability to retrieve a required authority blocks only its dependent claim. Provider links in brief §6 are navigation; recheck current official documentation before any provider-version claim. Synthetic specimens never establish an available or entitled direct option feed.
+Primary source navigation:
 
-## 3. Global constraints and proof allocation
+- `handoff/planning/m00_brief2_20261027/BRIEF_2_M00_RECONCILED_V3_20261027_1622_AEDT.md`, SHA256 `0d5ee211c1285b31834062ab2d871670ed2f318cbb955e7df95f80067d562007`.
+- `handoff/m00_brief2/FINAL_REPORT.md`, `evidence/L07/FINAL_REVIEW.md`, `outputs/L06_verified/` and its replay/schema/oracle/acceptance files.
+- `handoff/m00_brief2/authority/CONTROL_HISTORY_CONTRACT_V1.md`; inspect its implementation and independent approval rather than treating its preserved proposal header as current acceptance.
+- `src/nvda_desk/raw_signal_occurrence_truth/api.py`, `_native_codec.py`, `_sqlite.py`, `_postgres.py`.
+- `src/nvda_desk/market_measurement_truth/api.py`, `_selection.py`, `_book_depth.py`, `_smart_depth.py`, `_smart_ask.py`, `_smart_imbalance.py`, `_book_slope.py`, `_book_insert_rate.py`, `_book_delete_rate.py`, `_direct_venue.py`, `_option_scalars.py`, `_microprice.py`, `_evaluation.py`, `_record_store.py`.
+- `tests/product/market_measurement_d087/`, `market_measurement_d131/`, `market_measurement_d134/`, `market_measurement_d135/`, `market_measurement_d136/`, `market_measurement_d137/`, `market_measurement_d138/`, `market_measurement_d139/`, `market_measurement_d140/`, `market_measurement_d143/`; read each owning claim/authority/generation alongside its test.
+- `handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md`, its catalogue and the exact D138/D145 owner-approved overlay dated 16 October 2026; current per-signal construction briefs/bindings remain applicable.
+- `config/architecture/modules.yaml`, `docs/architecture/OWNERSHIP_AND_COMPONENT_LAW.md`, `DEPENDENCY_LAWS.md`, `IMPLEMENTATION_AUTHORITY_INGRESS.md`; `tools/product_proof_claims.py` and applicable `config/product_proof/` entries.
 
-- All A/B/C identities, exact values, dates, scope, source namespaces and immutable V1 inputs remain separate. C's family identity is V2; output envelope schema may independently start at v1.
-- Native side `0=ASK`, `1=BID`; operation `0=INSERT`, `1=UPDATE`, `2=DELETE`; native error codes 316/317 are separate callbacks. Preserve zero-based side-relative positions across MPIDs.
-- A1 is one true-instant atomic STK callback; A2/A3 are four independently identified receipt-only callbacks each. All depth is receipt-only with absent provider timestamp/timezone. Native time strings are not silently normalised.
-- Preserve exact types including Decimal lexical scale, int/Decimal distinction, typed UTC receipt, provenance and absence. Optional epoch nanoseconds are absent unless genuine evidence is supplied; never derive nanoseconds from microseconds to fill the field.
-- Source vendor/callback, synthetic provider namespace, collector metadata, requested exchange and MPID remain distinguishable. A versioned collector metadata subobject may carry selectors, never masquerading as callback arguments.
-- 36 positive occurrences and 155 base R projections are specification targets, not present outputs. Extra controls, N cases and optional R001 demonstrations are reported separately and do not inflate the base count.
-- M00 produces raw facts, not book standing-state calculations, midpoint, skew decisions, imbalance, microprice, concentration or D outputs. No production skew policy is commissioned.
-- Missing field means absent projection, not zero. Preserve other facts unless an applicable admitted control-quality contract rejects them. Missing initial book does not invalidate otherwise lawful raw admission or imply completeness.
-- SQLite is mandatory with fresh owner/read-only reopen. Retain PostgreSQL source compatibility statically where affected; runtime parity remains `POSTGRES_RUNTIME_DEFERRED` and live acquisition `LIVE_IBKR_UNVERIFIED`.
+Navigation is not a claim that all listed source files have been read in full in this planning pass. L00 must record fresh full/partial inspection boundaries. No exhaustive D001–D209 reacceptance is proposed.
 
-### Review focus
+## 3. Global constraints and review focus
 
-The owning leaf must test these risks directly: shared provider/variant mapping ambiguity (L01/L02); equal receipt/sequence without loss or invented causal order (L03); hidden controls despite known-ID read success (L04); MPID/exchange and STK/CALL/PUT source co-selection (L02/L03); deterministic export that accidentally treats numerically equal Decimal scales or null/absence as equal (L05). Reviewers derive at least one relevant public sequence independently of Worker convenience composition.
+1. Preserve M00 native facts, existing public v1 payload semantics, immutable fixture families A/B/C, actual outputs, proof generations, previous failures and complete history. A5's midpoint-100 market is isolated from coherent C1's 1.20/1.40 market.
+2. M00 performs no book reconstruction, quote assembly, derived calculation or consumer completeness certification. M02 consumes only lawful M00 public types/seams. M01 stays in its existing bootstrap/non-composable status; do not migrate its historical implementation into the active path.
+3. Native operations are 0 insert / 1 update / 2 delete. Error 316/317 is never an R187/R194 depth operation in a native-compatible profile. A legacy synthetic reset carrier cannot quietly represent provider-native error semantics.
+4. Preserve per-callback identity, Decimal lexical scale, exact integer/Decimal distinctions, source timestamp absence, receipt UTC, request, source, subject/right, generation, exchange, MPID and mapping versions. Do not fill absent fields or infer causal order from an occurrence-ID tie-break.
+5. Native enum values may be interpreted by an explicit owner-local mapping while original projected values stay unchanged. Do not globally flip legacy records or reuse an old identity/version for changed semantics.
+6. Each owning module's tests cover its own span. Consume the frozen M00 public-output contract as input evidence; do not rerun M00 production end-to-end for every M02 leaf or invent a chain-wide gate. Existing lawful public predecessor materialisation remains permitted where a signal's own contract requires it.
+7. Preserve valid existing tests. Classify each assertion as unchanged, materially invalidated, legacy-profile-only or requiring a new versioned profile. Never weaken assertions or discard evidence to obtain green.
+8. Carry forward the established exactly-two physical cases per D profile (one success, one reached refusal; six hard ceiling per identity). Preserve existing valid profiles/cases. If retained old cases plus a necessary new profile exceed this allowance, resolve exact allocation with owner authority in L01 before test authorship; no hidden loops, duplicate cases or self-authorised cap increase.
+9. Future product execution: one independent final semantic reviewer as sole strict executor per leaf; no routine RED, duplicate GREEN, broad suite or unaffected regression. A failed check repeats only after documented material repair; a successful check repeats only for precise material invalidation. Retain original output and immutable generations.
+10. Reuse accepted M00 37-case, original SQLite compatibility and reproducibility evidence only where its source/proposition remains unchanged. This is prior evidence, not a new run. Source edits require a scoped invalidation assessment before proceeding.
+11. Scoped static checks and strict product gates occur only after execution commissioning. Retain the pinned environment; no PostgreSQL server, live IBKR calls, production entitlement claims, catalogue-wide rewrite, A00 composition or unrelated module work.
+12. Stop dependent work at the first missing authority or failed invariant. A documentary blocker disposition is not an implemented capability or a completed mandatory runtime leaf.
 
-### File and interface map for later execution
+Review focus allocated to future proof: side inversion and asymmetric expected results (L05–L10); receipt-only exclusion under event filtering (L02–L11); hidden reset/restart and incomplete re-warm-up (L02–L11); subscribed-book position shifts across MPIDs (L11); asynchronous quote identity/skew/age and missing constituents (L03/L12). Ambiguous receipt/sequence ties and generation boundaries belong in the accepted source contract and must not be hidden by convenient fixtures.
 
-| Path | Responsibility / permitted change |
-| --- | --- |
-| `handoff/m00_brief2/authority/BASELINE_AND_SCOPE.md` | L00 source/freeze/authority/proof admission and exact changed-path decisions |
-| `handoff/m00_brief2/fixtures/{A,B,C}/synthetic_input_v*.jsonl` | Immutable literal positive inputs; A/B v1, C family v2 retained |
-| `handoff/m00_brief2/fixtures/{A,B,C}/expected_m00_output_v*.jsonl` | Independently specified projections and full envelope/selection metadata |
-| `handoff/m00_brief2/fixtures/controls/` and `negative/` | Separately versioned perturbations, controls, absences, expected rejections |
-| `handoff/m00_brief2/output_schema_v1.json`, `mapping_manifest_v1.json` | Explicit tagged serialisation, envelope/native path and exact mapping definitions |
-| `tests/product/raw_signal_sqlite/test_ibkr_native_projection.py` | Proposed new owned physical family: all ten positive scenarios, N01/02/03/06/07/11/12/14/17/18 |
-| `tests/product/raw_signal_sqlite/test_ibkr_history.py` | Proposed public history/order/isolation/reopen family: N04/05/10/13/16 |
-| `tests/product/raw_signal_sqlite/test_ibkr_controls.py` | Proposed public discontinuity discovery family: N08/09/15 |
-| `tools/export_m00_synthetic.py` | Reproducible public-seam replay/export and independent comparison; no private SQL access |
-| `handoff/m00_brief2/outputs/` | Actual output, manifests, hashes, mismatch/absence/control summaries, reproducibility results |
-| `handoff/m00_brief2/evidence/Lxx/` | Exact commands, outputs, failure/repair chain, independent reviews, leaf acceptance and checkpoint record |
-| `src/nvda_desk/raw_signal_occurrence_truth/api.py` | Only established contract-relative defects or reviewed additive public control history |
-| Same owner's `_sqlite.py`, `_native_codec.py`, `_postgres.py` | Minimal necessary persistence/codec compatibility only; no speculative rewrites |
-| Existing architecture/proof contract/binding/admission paths | L00 exact, independently reviewed scoped extension only; old generation bytes remain immutable |
+## 4. Gates, leaves and dependency order
 
-Existing public interfaces to use: `create_owner(..., durability_port=...)`, `commands.admit_raw_observation_occurrence(RawObservationOccurrenceV1)`, `reads.get_raw_observation_occurrence(id)`, `reads.project_raw_value(RawSignalCatalogueId, id, mappings=...)`, `reads.list_projected_raw_history(..., received_at_or_before_utc=..., event_at_or_before_utc=None, limit=..., cursor=...)`. Construct real persistence with existing owner-local `create_sqlite_persistence(absolute_path, create=True)`; reopen with `create=False` in a fresh process and public reads (no write commands). The port is technical composition, not a substitute reader or semantic owner.
+Retain the established G0–G5 gate structure. Leaves are independently reviewable semantic obligations; their count follows the affected owners/profiles. Leaf numbering here is local to this plan and does not replace M00 Brief2's completed L00–L06.
 
-Future control discovery is a **conditional proposed additive read**, not a claimed existing signature. L04 must fix the exact type/signature and independently approve its contract before implementation; do not invent one now without the missing baseline proof. Reuse stored immutable observations and private transaction enumeration where lawful inside the owner; consumers must never enumerate the store privately.
+| Gate | Acceptance boundary | Leaves |
+| --- | --- | --- |
+| G0 | Starting evidence, ownership and precise impact/invalidation inventory fixed | L00 |
+| G1 | Exact source profiles, public interfaces, oracle and proof allocation authorised before code | L01 |
+| G2 | Receipt/control input, durable lineage and compatible option quote selection reconciled | L02–L03 |
+| G3 | Affected SMART and direct-book calculations reconciled within M02 | L04–L11 |
+| G4 | Microprice quote domains reconciled and D145 timing conflict explicitly disposed | L12–L13 |
+| G5 | All required evidence reconciled; cumulative delivery and resumption boundary recorded | L14 |
 
-## 4. Gates, leaves, dependencies and acceptance
+Execution dependencies: L00 → L01 → L02 → L03. L04 requires L03's actual compatible D087; L05 → L06 → L07 covers bid/ask predecessors and imbalance. L08 requires actual compatible D011. L09 → L10 covers insertion/deletion source reuse. L11 requires L01/L02. L12 uses L03's approved quote assembly contract without adding D087 as a mathematical predecessor. L13 requires the resolved temporal/control contract. L14 requires all mandatory implementation leaves and the explicit L13 disposition.
 
-Sequence: `L00 → L01 → L02 → L03 → L04 → L05 → L06`. Follow one acceptance unit at a time. Brief Gates 0/1/2/3/4/5 map respectively to L00/L01/L02–04/conditional repairs inside L02–04/L05/L06. A required failed invariant stops dependent downstream work, preserves the witness and permits only bounded authorised diagnosis/repair; a blocked leaf is not accepted. Independent fixture/oracle work already proved may still be delivered with explicit status.
+Default sequential traversal after commissioning: L00 through L14 in numerical order. Work one leaf at a time. Any justified order adjustment must preserve these dependencies and be recorded before advancement; publication of the preceding accepted leaf's checkpoint remains mandatory.
 
-### G0 / L00 — exact authority, M00 baseline and proof readiness
+Every leaf below ends with the checkpoint protocol in §6. A code/test-independent documentary leaf may close through documentary evidence only; it does not require a token runtime test.
 
-- [x] Read all fresh governing files and attached brief in full. Trace the exact accepted M00 baseline through binding, catalogue/contract, admission, immutable generations and relevant predecessor source/reviews; record full/partial reads and hashes. Do not call D143 the original M00 freeze.
-- [x] Inspect relevant M00 contracts, full affected source and tests, public history and SQLite writer/read paths. Record unchanged v1 guarantees, static capability observations and unknowns. Determine whether any accepted raw contract additionally mandates direct PUT; if so prepare a separate versioned supplemental specimen, without altering ten-scenario totals.
-- [x] Resolve genuine execution authority, exact new brief-byte binding and proof-path ownership before tests or code. Propose the exact minimal M00/G01 metadata diff using existing schemas/validator/runner; distinguish existing baseline regression claim from new Brief-2 proof. No automatic reseal of existing generation0003. If no lawful bounded admission exists, stop dependent product execution and report exact authority need.
-- [x] Record actual CPython/pins/SQLite runtime and version compatibility before future proof. Reuse valid established environment evidence; reconstruct missing cp312 environment only when execution is commissioned. Do not install PostgreSQL or use cp313. Qualify only missing material prerequisites.
-- [x] Independent documentary/admission review of the exact execution contract and proof ownership; commit and checkpoint the accepted L00 evidence. **Acceptance:** exact authority/baseline/paths/runtime are established with no unresolved dependent conflict; no product correctness claimed.
+### G0 / L00 — freeze the impact boundary and evidence reuse
 
-### G1 / L01 — immutable inputs, independent oracle and mapping contract
+**Files:** create `handoff/downstream_reconciliation/L00/BASELINE_AND_IMPACT.md`; read the primary paths in §2. No product change in this leaf.
 
-- [x] Author literal inputs from brief §2 tables and expected outputs independently of production projector/exporter. Keep A5 isolated from A2/C1 and B's date/subjects/source namespace separate. Declare unspecified harness request/generation identifiers as synthetic choices in the mapping manifest, never as owner-specified callback fields.
-- [x] Use exact family/scenario/R-role mapping IDs and versions; select one complete mapping set per scenario/role to avoid same-provider/variant ambiguity. Carry exact requested subject, request, generation, scope, MPID/exchange and callback identity via documented fields/collector metadata.
-- [x] Fix output schema with tagged Decimal lexical strings, int, bool, aware UTC datetime, source-time null and explicit absence entries. Native source text remains exact. Define deterministic sort `(family,scenario,R ID,receipt,scope,sequence,occurrence ID)` for projection rows, and separately defined observation/control ordering.
-- [x] Derive/check each per-event expected value, type, native path, units, mapping, identity and temporal field. Independently verify the count table below, not only total arithmetic. Materialise N01–N18 independent perturbations and control fixtures in separate files; no positive fixture mutation.
-- [x] Independent oracle review from original tables, hash immutable files, commit/checkpoint. **Acceptance:** exact authorised independent oracle exists; status `EXPECTED_SYNTHETIC_OUTPUT_AUTHORISED`, actual outputs `NOT_ATTEMPTED`.
+- [ ] Read governing files and relevant source/authority in full where conclusions depend on them; record exact starting commit and full/partial coverage.
+- [ ] Re-derive I01–I08 from source, including the purpose and authority of each legacy synthetic convention. Distinguish an old limited proof from an invalid claim of native compatibility.
+- [ ] Enumerate affected callers, public protocols, codecs, owning tests/claims, predecessors and direct dependants. Record D136's D134/D135 dependence and D131's D087 dependence. Trace further dependants only where an affected output contract actually propagates; no blanket invalidation.
+- [ ] Classify unchanged evidence and precisely invalidated propositions. Record that the datetime fix already exists and that PostgreSQL's separate codec is a deferred backend issue, not an instruction to repair it here.
+- [ ] Account for shared proof-loader M00-extension validation as a governance/build prerequisite. Preserve valid admissions; propose G01 changes only if an actual control defect is identified.
+- [ ] Obtain independent documentary acceptance, commit and publish cumulative checkpoint.
 
-| Scenario | Observations | Base projections | Required distinction |
-| --- | ---: | ---: | --- |
-| A1 | 1 | 4 | all roles same native occurrence |
-| A2 | 4 | 4 | CALL asynchronous occurrences |
-| A3 | 4 | 4 | PUT asynchronous occurrences |
-| A4 | 4 | 20 | SMART STK five-role groups |
-| A5 | 3 | 15 | isolated legacy CALL |
-| A6 | 2 | 10 | SMART PUT one level per side |
-| B | 7 | 35 | seven literal IDs, 26 Oct, own namespace |
-| C1 | 3 | 15 | coherent CALL 1.20/1.40 context |
-| C2 | 4 | 24 | direct STK six-role MPID/source-exchange distinction |
-| C3 | 4 | 24 | direct CALL conditional capability specimen |
-| Total | 36 | 155 | controls/R001/supplements separate |
+**Acceptance:** exact affected/unaffected/unknown inventory and reusable evidence ledger exist; no tests are run merely to establish the inventory.
 
-### G2 / L02 — native callback admission and exact projections
+### G1 / L01 — approve consumer source contracts and proof allocation
 
-- [x] Author and independently inspect `test_ibkr_native_projection.py` before production correction. Ten explicitly identified scenario cases assert every authorised input and projected typed value, ID, native path, source, units and metadata, plus known-ID public original observation readback. Use real SQLite and a fresh read-only public owner for each scenario; no in-memory-only success.
-- [x] Exercise N01 side preservation; N02 valid receipt-only; N03 fabricated timestamp rejection; N06 missing role with other facts preserved; N07 insert/update/delete/zero size preserved without book reconstruction; N11 different option contract retained; N12 equal batch receipt retains distinct IDs; N14 absent initial snapshot/field gives no completeness assertion; N17 MPID separate from request exchange; N18 missing R001 carrier absent and valid collector-added carrier equals envelope receipt. Keep optional R001 tests outside base 155.
-- [x] Run admitted bounded baseline proof using current code, retain first failing witness. If failing, identify whether fixture/mapping/test or production violates authority before changing code. Make only minimal authorised repair, preserve failed output and unchanged valid tests, and run only materially affected proof. Never alter native values to make proof pass.
-- [x] Independent semantic review and authoritative strict proof under admitted claim. **Acceptance:** exact ten scenario values/identities and all assigned negatives pass on actual public SQLite paths, with no omitted mandatory cases; commit/checkpoint before L03.
+**Files:** create `handoff/downstream_reconciliation/authority/CONSUMER_SOURCE_CONTRACT_V1.md`, `PROFILE_AND_PROOF_ALLOCATION.md`, independently authored `fixtures/` and `expected/` under this handoff; proposed bindings/claim deltas remain documentary until authorised.
 
-### G2 / L03 — public history, ordering, isolation and durable truth
+- [ ] Specify exact per-profile provider/variant, subject/right, request/exchange, generation, mapping IDs/versions, units, side interpretation, receipt window, cutoff, completeness and identity eligibility. Treat M00's immutable A/B/C examples as separate source scenarios.
+- [ ] Specify an additive M02 raw/control reader contract using the existing public `list_projected_raw_history(...)` and `list_raw_observation_history(...)`. Copy exact signatures/types from M00 at the execution anchor; no imagined selector API or private database enumeration.
+- [ ] Specify ordered merging of projected mutations and separately discovered controls, G1 outgoing/G2 incoming restart discovery, invalidation policy for error/reset/gap/reconnect, explicit re-warm-up criteria, and refusal for unresolved causal ties. Control policy belongs to M02 and must identify its accepted authority.
+- [ ] Specify typed receipt/event basis in lineage and owner-local durable decoding. Preserve absent provider time and legacy carrier compatibility; do not weaken the original Decimal-only selector globally.
+- [ ] Specify direct positions per subscribed book side, source exchange distinct from MPID, and the exact grouping/depth scope for concentration. Specify asynchronous quote membership, selection time, skew/age bounds and lineage. The brief's 250 ms / 1000 ms examples are synthetic candidates, not approved production policy.
+- [ ] Publish independent numerical oracles and two-case allocations per affected D/profile. Resolve the six-case ceiling and legacy retention explicitly before implementation; retain the original top-one D135 incompatibility refusal for D136 unless an exact replacement is authorised.
+- [ ] Identify each semantic change needing owner acceptance: new temporal/source profiles, quote assembly policy/domain, direct grouping scope, public carrier/codec additions, new proof admission and any D145 time-basis revision. Obtain exact required approval and lawful ingress binding before dependent code.
+- [ ] Obtain independent contract/oracle documentary review, commit and checkpoint. If required authority is absent, publish the blocked contract proposal and stop its dependent leaves; never label G1 accepted by reviewer judgement alone.
 
-- [x] Author `test_ibkr_history.py` with page size 1 and full cursor exhaustion on representative multirow STK/CALL/PUT, SMART/direct and B scopes. Assert no duplicate/omitted row, correct per-R count, exact selectors/mapping versions and returned selection identity. Shared variants use exact map set and identity filtering, not an assumed nonexistent API keyword.
-- [x] N04: receipt-only rows visible with null event cutoff and excluded under non-null event cutoff. N05: two distinct IDs sharing receipt/scope/sequence remain preserved; deterministic ID tie-break is display order, not proof of provider causal ordering. Document ambiguity in versioned export/control metadata where required; never falsely require unique sequence or silently drop ties.
-- [x] N10: conflicting subject/right/request/generation/source selections cannot silently be co-selected in the published stream; consumer checks explicit selection identity when no built-in selector exists. N13 post-receipt-cutoff excluded but known-ID full observation read remains possible. N16 same-ID identical retry idempotent; changed native payload rejected with original preserved. Use independent fresh-process ordinary reads to prove persisted facts and projection history after closing writer.
-- [x] Preserve first failing witness and follow bounded repair rule. Inspect actual transaction read-only mode; private SQLite can support adapter diagnostics but cannot substitute for public proof. No new generic storage or schedule functionality.
-- [x] Independent review exercises at least one omission/order/cutoff sequence without Worker composite helper. **Acceptance:** complete deterministic public history and fresh read-only reopen equal independent expected typed facts, with ambiguity and selector limitations explicit; commit/checkpoint.
+**Acceptance:** no implementation-relevant source/policy/interface ambiguity remains for commissioned leaves; normative approval and independent review are separately identified.
 
-### G2–G3 / L04 — publicly discoverable controls and discontinuities
+### G2 / L02 — additive M02 receipt/control input and durable lineage
 
-- [x] Author `test_ibkr_controls.py`: separately admitted provider `error(317)` after depth; separate `error(316)`; collector-labelled reconnect, gap and restart controls. Fix synthetic control IDs, actual reqId-shaped native identity, receive clock, scope and old/new generation links in a versioned non-native control envelope. Never add request generation as a fictitious broker callback argument.
-- [x] N08/N09/N15: an independent consumer starting only with subject/request/generation and receipt cutoff must enumerate all applicable controls with stable order/pagination; known-ID reads alone fail the requirement. Controls must remain orderable relative to raw depth, including reset/restart cutoffs; preserve unknown causal order on ties. Assert no projected R187=316/317, and control generation/invalidity facts are not a reconstructed standing book or proof of complete re-warm-up.
-- [x] First evaluate existing sanctioned public seam. If inadequate, preserve a directly reached failure; specify the smallest additive versioned public read contract with exact filter, page, cursor and stable order types and control lifecycle meaning. Independently approve its compatibility and ownership before coding; preserve v1 record shape and existing caller behaviour. Prefer a read model over stored observations, no new semantic table without explicit authority. Stop any required breaking change/new owner for owner disposition.
-- [x] Implement only proved correction; inspect shared private protocol and retained `_postgres.py` statically if touched, with no PostgreSQL runtime claim. Prove fresh read-only SQLite public enumeration, cross-subject/source isolation and cutoff exclusion; controls counted in addition to 36/155.
-- [x] Independent reviewer performs depth → error → restart → history/cutoff directly, without known control IDs or a helper pre-satisfying discovery. **Acceptance:** every specified control publicly discoverable, native/control provenance distinct, no hidden discontinuity; commit/checkpoint. A blocked interface permits partial oracle handoff only, not programme completion.
+**Files:** proposed additive public types/protocols in `src/nvda_desk/market_measurement_truth/api.py`; focused owner-local source/control helper and codec support only if L01 requires them; exact proof files/claim fixed by L01. Preserve `_selection.py` legacy numeric behaviour.
 
-### G4 / L05 — deterministic actual outputs and reproducible handoff
+- [ ] Author the admitted module-local proof from L01 before production changes: separate control discovery, receipt-only input selection with null event cutoff, strict source isolation, deterministic pagination and typed durable lineage.
+- [ ] Implement the approved public input protocol and bounded M02 interpretation of controls. Merge events under declared order; refuse ambiguous required transitions and incomplete generation restart state.
+- [ ] Implement approved typed receipt basis without fabricating event datetimes. Preserve original projections in lineage and version changes; keep old persisted records readable under their original owner/profile.
+- [ ] Prove public owner and fresh ordinary read-only SQLite readback for the exact new carriers and refusal outcomes. Exercise an independent literal omission/order/control sequence under the declared case allocation.
+- [ ] Independent semantic review and only the admitted scoped strict proof; assess impacted existing claims; commit and checkpoint.
 
-- [x] Implement `tools/export_m00_synthetic.py` with CLI `--fixtures PATH --expected PATH --database ABSENT_ABSOLUTE_PATH --output NEW_PATH`. Inputs/oracle are immutable; schema/mapping versions are explicit. Replay via actual M00 commands, obtain observations and projections through public reads, exhaust cursors, close writer, obtain final output through fresh read-only owner. Exit nonzero on mismatch and retain structured first mismatch and all statuses; no expected-to-actual copying.
-- [x] Produce actual observation/projection/control rows plus absent/rejected-case records separately. Full record comparison includes type and Decimal representation; validate against schema and literal expected oracle, each scenario's 36/155 contributions, controls separately, and negative outcomes. Hash input, expected and actual individually; actual may differ in file framing but canonical semantic comparison must be exact and recorded.
-- [x] Reproduce from a clean checkout of the candidate in a second fresh SQLite file using the same pinned environment and deterministic fixture clock. This is the explicitly required reproducibility experiment, not a duplicate unrelated green run. Compare canonical actual-output hashes; keep nondeterministic execution timestamps in a separate evidence record outside the deterministic dataset.
-- [x] Manifest includes schema/fixture/mapping versions, source production SHA and clean source state, source/oracle/actual hashes, backend and observed environment, per-scenario counts/values/absence outcomes, control results, exact commands, reviewer disposition, first failed invariant and PostgreSQL/live limitations. Never place unconditional VERIFIED labels before proof/review.
-- [x] Independent semantic/export review; **acceptance:** real portable M00-produced output equals independent oracle and clean reproduction, `ACTUAL_M00_OUTPUT_VERIFIED` and `SQLITE_READBACK_VERIFIED` supported; commit/checkpoint.
+**Acceptance:** M02 has a lawful input/lineage capability for native-shaped receipt/control facts. No new M00 API or M00 proof run is presumed necessary. If common semantics require per-family carriers, keep them bounded and bind each dependent leaf explicitly.
 
-### G5 / L06 — independent final disposition and delivery
+### G2 / L03 — D087 asynchronous option quote selection
 
-- [x] Independent final reviewer checks brief §§0–7 coverage and every leaf's evidence, original failure/repair chain and relevant Git review lineage. Classify materially related repeated findings under AGENTS recurrence law; require class-level closure rather than a new isolated patch loop.
-- [x] Reuse unchanged accepted evidence. Run only still-required admitted final strict evidence not already valid, plus tests materially invalidated by subsequent changes; no fabricated full-suite or live certification. Source/code changes since an earlier leaf require explicit impact assessment and invalidated leaf reacceptance before final approval.
-- [x] Final report maps all ten scenarios and N01–N18 to exact assertion/evidence paths and results, all brief gates to `VERIFIED`, `FAILED`, `BLOCKED` or `NOT_ATTEMPTED`, identifies full/partial inspections and remaining unknowns. All mandatory criteria must pass for accepted completion; expected-only/blocked output is useful partial delivery and is labelled so.
-- [x] Commit final review/disposition and publish the cumulative full-history checkpoint, verified actual-output package, schema/oracle/manifest and replay instructions. Remain paused on D145 and all unrelated work. **Acceptance:** actual M00 proof and independent semantic disposition both support full brief completion, with SQLite verified and PostgreSQL/live exclusions retained.
+**Files:** `_option_scalars.py`, additive owner-local assembly/carriers/codec where L01 authorises them, `tests/product/market_measurement_d087/test_signal.py`, owning profile/claim.
 
-## 5. Checkpoint and continuation protocol — applies to every accepted leaf
+- [ ] Preserve the old timestamped synthetic snapshot profile. Introduce only the separately authorised receipt-based option profile with explicit membership, right, request, generation, age/skew and cutoff policy.
+- [ ] Select four-callback A2/A3 constituent identities as applicable without manufacturing a shared native occurrence. For coherent C1/A2 reference context, bid1.20 and ask1.40 give midpoint1.30 with both exact source lineages.
+- [ ] Publish exact approved selection/oracle/refusal before code; author the two-case profile using the agreed missing/stale/mismatched constituent refusal. No assumed production authority for example250ms/1000ms thresholds.
+- [ ] Preserve the full raw constituent identities and assembly policy/version in derived lineage and durable readback. Independently review/strict proof, commit/checkpoint; then unblock L04.
 
-1. Finish the current semantic obligation, preserve proof output and obtain independent reviewer disposition; documentary plan review is separate from future runtime acceptance. Commit exact accepted bytes plus status/evidence. No rewriting existing commits or immutable generations.
-2. Create cumulative `git bundle create <leaf-name>_FULL_HISTORY.bundle --all`, retaining every original input ref tip and new work. Verify `git bundle verify`, fresh clone, exact HEAD, `git fsck --full`, starting-anchor ancestry and all original tip objects. Record commands, outputs, SHA-256 and source commit outside the bundle (avoid self-hash/self-commit cycles).
-3. Package a per-leaf tarball with bundle, current root plan, original brief, leaf review/evidence, manifest and checksums. Save it durably and expose a working download link before beginning the next leaf. Preserve each earlier checkpoint. Packaging verification is Git/archive integrity, not repeat product proof.
-4. Continue to the next commissioned leaf without another routine permission question once the checkpoint has been exposed. Stop only for required missing authority/material blocker or explicit owner boundary. The previous turn stopped at the reviewed planning checkpoint; the current execution commission continues through L00–L06.
+**Acceptance:** actual public D087 can supply the newly approved coherent option profile without inventing an event timestamp or atomic callback. If quote-policy authority is absent, L03 and L04 remain BLOCKED.
 
-## 6. Progress, decision log and close-out
+### G3 / L04 — D131 option depth band, after compatible D087
 
-- [x] D143 anchor checked out; input full-history bundle verified and all original ref tips retained under `refs/archive/d143-input/`.
-- [x] Previous root plan read in full and preserved byte-identically; pause recorded under current user direction.
-- [x] Attached Brief 2 read in full and preserved byte-identically; M00-only successor candidate drafted.
-- [x] Independent documentary review approved; exact hash-specific disposition is in `handoff/planning/m00_brief2_20261027/INDEPENDENT_PLAN_REVIEW.md`. No blocking finding; no implementation acceptance claimed.
-- Planning checkpoint commit, full-history/fresh-clone verification, saving and download exposure are recorded in the enclosing delivery manifest and verification log after this source commit, avoiding a self-referential commit/hash claim.
-- [x] L00–L06 verified under the execution ledger below. Actual portable output and exact clean reproduction are published under outputs/L05_verified; final report and independent disposition are retained.
+**Files:** `_book_depth.py`, relevant M02 public types/codec, `tests/product/market_measurement_d131/test_signal.py`, exact owning authority/admission/generation.
 
-Decisions: (1) Preserve existing D definitions/evidence rather than rework them for native integration. (2) Incorporate literal brief tables rather than duplicate and risk diverging values. (3) Separate scalar/native proof, history/isolation proof and control discovery because each can fail independently and owns distinct repair evidence. (4) Keep control signature conditional on baseline evidence; independent contract review is a mandatory prerequisite, not a licence to default unknown meaning. (5) No automatic return to old plan.
+- [ ] After L03, materialise actual compatible public D087 for the selected coherent option profile; keep legacy midpoint100 separate from coherent midpoint1.30.
+- [ ] Author the approved success/refusal pair: coherent C1 has midpoint1.30, inclusive half-dollar band0.80–1.80, sizes5+3=8 contracts; outside bid0.70 size7 is excluded. Oracle is independently specified, not a hard-coded calculation substitute.
+- [ ] Reconcile side, receipt selection, separate controls and complete positional replay; refuse reset/discontinuity without required fresh warm-up. Preserve exact predecessor, raw and configuration lineage.
+- [ ] Preserve still-valid legacy proof as separately scoped evidence; independently review, run only warranted strict proof, commit and checkpoint.
 
-The planning checkpoint must include independent disposition, exact final plan hash, source anchor, changed-file list, original-brief/preserved-plan identity, verification log and bundle/archive hashes. It certifies planning and recoverability only.
+**Acceptance:** exact band depth and reached refusal supported by M02-local proof using actual compatible D087; no cross-scenario quote mixing or fabricated predecessor.
 
-## 7. Execution ledger
+### G3 / L05 — D134 native-compatible SMART bid depth
 
-L00 VERIFIED — independent L00 review PASS; exact ingress and one scoped architecture control canary verified, pinned environment established; product pointer remains null. Ruling: new proof families use sibling `tests/product/m00_brief2/` rather than sealed `raw_signal_sqlite/`, because existing _partition forbids overlapping claim roots. One fixed separate claim advances its exact contract and immutable generation as each family is authored/reviewed; no placeholder tests or original claim reseal. This changes physical proof placement only. Ruling: the private task clone and dedicated execution branch provide existing isolation; no nested worktree or broad baseline suite is needed. Current pinned environment reconstructed offline because dependencies were absent; no PostgreSQL server or cp313 substitution. Preflight: L01 oracle feeds L02/L03/L04/L05; L04 public control read contract feeds L05 export, so those dependencies remain sequential.
+**Files:** `_smart_depth.py`, relevant public types/codec, `tests/product/market_measurement_d134/test_signal.py`, owning profile/claim.
 
-L01 VERIFIED — independent literal/schema/oracle review PASS on fixture manifest `0628fb8a7196b44d0322ea438db7a180eb0f97b50f36cece0b2d0739dd0f4e04`; all36 events/155 expected projections,18 concrete negative specifications and5 separate controls. Initial permissive-schema/prose-negative findings and portable-pattern recurrence repairs retained; all29 file hashes/196 expected rows and malformed-schema rejection checks verified. No M00 runtime or actual output yet.
+- [ ] Author the approved two-case profile using native bid side1 and ask side0, receipt-only fields and explicit source/generation. A4 bid sizes5/3 yield8 shares.
+- [ ] Preserve four mandatory R roles; do not add price as a new mathematical dependency. Reconcile controls and positional warm-up through L02. Preserve/reach the missing-operation refusal with other fields visible.
+- [ ] Implement minimal owner changes; independently review the source interpretation and strict pair with durable readback; commit and checkpoint.
 
-L02 VERIFIED — independent semantic PASS at clean `3545f2349832ae98b4dd2679498f93b8f2bed859`. Baseline strict19/20 exposed N18 admitted UTCdatetime carrier failing SQLite encoding. Minimal16-line codec z-tag repair passed same immutable gen1 strict20/20, all36/155 literal projections and negative obligations. Independently composed public missing→valid→fresh-process R001 sequence passed. Materially impacted original SQLite aggregate initially failed23/30 due historical child import prerequisite, then passed30/30 after offline editable project install, no source/test change. Full failures/recovery/diagnosis retained. PostgreSQL separate legacy datetime codec gap remains static known limitation, runtime deferred. L03 next only after accepted cumulative checkpoint exposure.
+**Acceptance:** native bid selection and exact result8, plus reached refusal, retain full typed source/time/control lineage.
 
-L03 VERIFIED — independent semantic PASS on clean `d8708d09fe2fea3e9364d67703764ae43a0e3d92`, immutable gen2 `3140e761cbb220ad2532a370404181ed02cc81eb3a08b27d70d61529e94c15b1`. Strict aggregate35/35 passed, including ten history scenarios and N04/05/10/13/16. Complete typed independent histories, page1 cursor exhaustion, source/subject/request/generation/exchange isolation, ties preserved without causal-order claim, post-cutoff full observation retained, and identical/conflicting retry verified through fresh public SQLite reads. Independent literal tie/future/receipt-event-cutoff/fresh-child sequence passed with unchanged database bytes. No production change or other aggregate run. Recovery/reconstruction and relevant typed-fresh recurrence closure preserved honestly; lost uncommitted prior draft is not invented evidence. L04 begins only after cumulative checkpoint verification/save/exposure.
+### G3 / L06 — D135 native-compatible SMART ask profiles
 
-L04 VERIFIED — independent semantic PASS on clean `88eefd9f721ff74e364e7700b4d75e14ecc84c86`, immutable gen3 `d3b58bfeb1684138b73db35a9a21c4d5bf424aa3b7f9fc856ffe7966ef5dd504`. Baseline35passed/1failed proved known-ID controls persisted but public enumeration was absent. Exact additive read contract SHA `3ea7ec1be2fb7eb3422d0aed380a35fb68e17dfb77306582573338f874426708` was independently approved after the reached failure, before coding. API-only144 additive lines expose generic immutable-observation pages with exact subject/provider/variant/receipt/path selectors, stable page1 ordering and bounded huge-cursor parsing; original v1 records, public signatures/bodies and persistence protocol/adapters unchanged. Same admitted strict36/36 and materially warranted original SQLite30/30 passed. Full five-control oracle, prefixes, six excluded retained counterfacts and G2 incoming restart discovery verified; independent literal sequential depth→error→restart/publiccutoff/freshchild plus5000digitcursor passed, DBbytesunchanged. Original failure, documentary wording correction, static cursor concern and all reviews/logs retained. No new semantic table/control-policy/D calculation or PostgreSQL runtime claim. L05 begins only after accepted cumulative checkpoint verification/save/exposure.
+**Files:** `_smart_ask.py` and its lawful shared owner-local helper, public types/codec, `tests/product/market_measurement_d135/test_signal.py`, owning profiles/claim.
 
-L05 VERIFIED — independent semantic PASS on clean `63e68751107035d2747a1591700a45a83181ca11`, immutable gen5 `e03468aec24f9dec4d152c9ed44135d6f6cf26704f735b0cfeb0c706b8b1ded7`. Real public SQLite exporter produced196 exact independent-oracle rows (36 observations/155 projections/5 controls), all18 actual negative outcomes and supplementary absences. Clean checkout/second SQLite reproduced all four deterministic dataset hashes exactly; primary actual hash `70583a82602ebf30fa4d9c3f0731746fd4c99479902e33738bc45a6cdf37a281`. First gen4 strict36/1 failure was supplemental full-control DTO misuse of the narrower positive-observation schema; original schema/DTO/nulls retained and domain-correct separately versioned supplementary control records repaired after independent diagnosis/adequacy. Gen4/log/failed manifest/repro NOT_ATTEMPTED remain preserved. Gen5 strict37/37 passed and independent literal absence→Decimal1.20/fresh child/lexical1.2 mismatch sequence passed. Generated export manifest remains honestly review-pending provenance; separate acceptance_manifest records independent PASS and exact hashes/reproduction. Actual datasets, oracle/schema/mappings, portable_output_v1.tar.gz and replay instructions published under outputs/L05_verified. Core M00/oldproofs/fixtures unchanged since L04; no unaffected old aggregate repeated. L06 begins only after cumulative checkpoint verification/save/exposure.
+- [ ] Reconcile approved top-two and top-one profiles without overwriting old definition/parameter/selection identities. Native ask side0 sizes2/4 yield top-two6 and top-one2 shares.
+- [ ] Author the allocated success/refusal pair with a separate reset control after warm-up; no synthetic native operation317. Preserve any still-valid legacy cases within L01's approved count allocation.
+- [ ] Reuse L05's accepted shared semantics and re-prove only materially affected obligations; independent review/strict proof/readback; commit and checkpoint.
 
-L06 VERIFIED — independent final reviewer /root/l06_final PASS on d14cb0102bfdf405bc157c7e4fa3e0d1714fb41a. FINAL_REPORT.md maps all ten scenarios, eighteen negative obligations and brief gates0–5 to exact primary evidence. Artifact/Git checks verified196 complete oracle rows,29 fixture hashes,4 data hashes, actualnegativecases and unchanged tested production/proof bytes; valid37strict/30compatibility/clean-reproduction evidence reused without product rerun. Full failure/repair/recurrence lineage retained. Final cumulative bundle/archive integrity, exact source commit and saved file are recorded by enclosing delivery receipt. SQLite synthetic scope complete; PostgreSQL/live exclusions and D145 pause retained.
+**Acceptance:** both explicitly approved depth profiles preserve their exact meaning and reset refusal; shared-source changes do not silently invalidate L05.
+
+### G3 / L07 — D136 compatible actual bid/ask predecessors
+
+**Files:** `_smart_imbalance.py`, `tests/product/market_measurement_d136/test_signal.py`, owning profile/claim; code changes only if required by the revised predecessor contract.
+
+- [ ] Materialise actual public compatible L05/L06 predecessors: bid8 and ask6 yield exact1/7. Preserve both identities and matching source/generation/time/level context.
+- [ ] Preserve the reached refusal with actual top-one D135 ask2 against the unchanged common-top-two request. Do not fabricate a predecessor or change only the requested depth.
+- [ ] Amend lineage/version checks only where their contract materially changed; keep the imbalance equation unchanged. Independent semantic/strict proof and readback, commit/checkpoint.
+
+**Acceptance:** revised source meaning propagates correctly through actual predecessors; no stale inherited acceptance by numeric coincidence.
+
+### G3 / L08 — D138 side-specific book slopes
+
+**Files:** `_book_slope.py`, relevant public carriers/codec, `tests/product/market_measurement_d138/test_signal.py`, owning profile/claim and accepted D138 overlay.
+
+- [ ] Define the approved receipt-only three-level source fixture and actual compatible public D011 midpoint. Preserve K06, P_REGRESSION, units and equation; source reconciliation is not mathematical redefinition.
+- [ ] Use native side1 bids and side0 asks, correct ladders, complete pre-selection book and separate control invalidation. Independent oracle retains bid slope7/2 and ask slope5/2 for its explicitly bound controlled fixture.
+- [ ] Author the allocated success and reset-without-warm-up refusal; preserve all five projected roles and typed provenance, independently review/strict proof/readback; commit/checkpoint.
+
+**Acceptance:** bid/ask outputs cannot be silently swapped; actual midpoint and revised input/control semantics are proved.
+
+### G3 / L09 — D139 collector-receipt insertion rate
+
+**Files:** `_book_insert_rate.py`, relevant public request/lineage/codec, `tests/product/market_measurement_d139/test_signal.py`, owning profile/claim.
+
+- [ ] Keep the accepted four-second R001 receipt bucket and bid positions1–2 policy unless separately amended. Specify native bid side1 and genuine collector-added R001 equal to envelope receipt, with absent provider event time.
+- [ ] Author success: selected inserts sizes3/5 yield count1/2 events/s and size2 shares/s. Preserve the visible missing-operation refusal and exact pre-window warm-up.
+- [ ] Remove unsupported true-instant dependency only in the new approved profile; process separate controls through L02 and preserve the original raw metadata. Reuse M00's existing datetime persistence evidence rather than repairing its codec again.
+- [ ] Independently review/strict proof and typed durable readback; commit/checkpoint.
+
+**Acceptance:** rates depend on the declared receipt clock, never a fabricated source timestamp; original native and collector provenance remain distinct.
+
+### G3 / L10 — D140 collector-receipt deletion rate
+
+**Files:** `_book_delete_rate.py`, its lawful L09 source helper, public types/codec, `tests/product/market_measurement_d140/test_signal.py`, owning profile/claim.
+
+- [ ] Preserve the two-second receipt bucket, bid positions1–2 and actual pre-delete size semantics under the native-compatible side/source contract.
+- [ ] Author success: native deletion size0 removes actual standing size6, giving count1/2 events/s and removed size3 shares/s. The refusal addresses a nonexistent standing position; no invented zero removal.
+- [ ] Preserve warm-up, separate controls, typed R001 provenance and exact fresh SQLite readback; independent semantic/strict proof; commit/checkpoint.
+
+**Acceptance:** deletion consumes pre-delete standing state under the revised input contract, with no accidental reinterpretation of native zero size as removed quantity.
+
+### G3 / L11 — D143 subscribed direct book and qualified concentration
+
+**Files:** `_direct_venue.py`, direct request/row/lineage types in `api.py` and codec as required, `tests/product/market_measurement_d143/test_signal.py`, owning profile/claim.
+
+- [ ] Reconstruct one selected subscribed book per side, applying positions across MPIDs; retain requested exchange independently from MPID, native side and per-callback occurrence.
+- [ ] Group reconstructed rows only after positional replay, under L01's exact approved concentration scope. Do not treat MPID as an unqualified exchange or restart positions per MPID.
+- [ ] Define the approved success fixture using C2-compatible rows: ALPHA4+2 and BETA1+1 give grouped quantities6/2; if the accepted scope includes those complete rows, independent shares3/4,1/4 and HHI5/8 follow. This scope must be authorised before changing legacy per-venue-top-one semantics.
+- [ ] Preserve reached missing-MPID refusal with size still visible; include required cross-MPID position mutation evidence within the authorised pair rather than an unbounded scenario loop. C3 CALL remains a conditional source specimen, not a direct-feed entitlement or PUT coverage claim.
+- [ ] Reconcile receipt/control inputs, independently review scoped strict proof and durable readback, commit/checkpoint.
+
+**Acceptance:** subscribed-book addressing, qualified source identities and exact grouping scope are independently established; same HHI does not mask a different book model.
+
+### G4 / L12 — D137 coherent quote domains and assembly
+
+**Files:** `_microprice.py`, approved quote carriers/helper, `tests/product/market_measurement_d137/test_signal.py`, owning profile/claim.
+
+- [ ] Preserve lawful atomic shares co-reference and original stock microprice201/2. The existing single-occurrence rule remains meaningful for that exact profile.
+- [ ] For a separately authorised asynchronous option extension, use L03's approved assembly contract without adding D087 as a mathematical predecessor. Preserve four independent callback identities, receipt windows and complete lineage.
+- [ ] Bind exact independent option microprice oracle and reached refusal to the approved fixture/case allocation before implementation; retain denominator-zero law and refuse incomplete/mismatched assembly without fusing raw observations.
+- [ ] Independently review/strict proof and durable readback of authorised profiles; commit/checkpoint. If option-domain extension is not authorised, record its scoped blocker and retain atomic-only capability; do not claim the extension complete.
+
+**Acceptance:** each authorised quote domain has correct co-reference or explicit derived assembly, mathematical output and absence semantics. A retained atomic stock proof does not certify asynchronous option consumption.
+
+### G4 / L13 — D145 and held downstream work: documentary disposition
+
+**Files:** create `handoff/downstream_reconciliation/L13/D145_RESUMPTION_DISPOSITION.md` and an explicit proposed paused-plan amendment; inspect the D138/D145 overlay and dependency traceability. No D145 product code/test/claim is created here.
+
+- [ ] State the source conflict exactly: verified updateMktDepthL2 specimens lack provider event time; paused D145 requires an event-time one-second window with complete pre-window book and each intermediate transition.
+- [ ] Recommend retaining that event-time profile as BLOCKED on a lawfully timestamped source, unless the owner explicitly approves a separately versioned receipt-clock synthetic profile. Do not silently change K17, collapse equal-time transitions or fabricate source time.
+- [ ] Define the exact evidence and authority needed for any successor D145 plan: native sides, position-based mutations, control invalidation, warm-up, chosen clock/window and full intermediate best-book states. No automatic D145 implementation or old-plan resumption follows.
+- [ ] Trace actual affected downstream contracts without promoting historical graph counts into newly proved executable dependants. Keep D120–D122, D141/D142/D144 and other existing holds explicit; source fidelity alone does not resolve their missing policies/prerequisites.
+- [ ] Obtain independent documentary review and checkpoint. This leaf may be complete as a truthful disposition while D145 capability remains BLOCKED; do not describe the latter as accepted execution.
+
+**Acceptance:** precise resumption condition, owner decision boundary and retained holds are recorded. No arbitrary replacement clock or new deferral-by-convenience.
+
+### G5 / L14 — final independent disposition and cumulative handover
+
+**Files:** create `handoff/downstream_reconciliation/FINAL_REPORT.md`, per-leaf evidence index and independent final review; update only this root plan's actual ledger/status.
+
+- [ ] Map I01–I08 to exact source/profile/test deltas, accepted evidence, reviewed commits and checkpoint links. Distinguish full inspection, partial inspection, inference and unknown.
+- [ ] Reconcile every shared helper/public carrier change against earlier accepted leaves. Re-prove only propositions precisely invalidated by later changes, through their owning claims; no final chain-wide or broad-suite run.
+- [ ] Verify immutable M00 fixtures/outputs/history remain preserved and reuse their valid acceptance evidence. Record SQLite capability, PostgreSQL datetime gap/runtime deferral and live-provider exclusions separately.
+- [ ] Independent final semantic review checks coverage, ownership, failure/repair lineage, per-profile case allocation, all required leaf checkpoints and remaining blockers. A required implementation leaf BLOCKED means partial delivery, not full reconciliation completion.
+- [ ] Deliver final cumulative full-history checkpoint with reports, authority/profiles, schemas/oracles, code/tests, evidence and restore instructions. Keep D145/old schedule paused pending explicit subsequent commission.
+
+**Acceptance:** every mandatory authorised implementation leaf is independently accepted, every conditional exclusion/blocker explicitly scoped, and final delivery is recoverable. No test success, reviewer receipt or archive hash substitutes for semantic acceptance.
+
+## 5. Future execution and evidence discipline
+
+After owner acceptance/commission only, first complete L00/L01 and bind exact implementation authority. Use the repository's existing isolation method; do not create extra worktrees or install an environment solely because a generic skill suggests it.
+
+Each implementation leaf must identify its exact files, approved input/output interface, independent expected oracle, two physical cases, strict claim/immutable generation and affected predecessor contracts before coding. Do not infer claim names from directory names. Future strict command template:
+
+```bash
+PYTHONPATH=src "$NVDA_PROOF_PYTHON" tools/run_product_proof_gate.py --aggregate <exact-admitted-owning-claim>
+```
+
+The placeholder must be resolved to the actual approved claim in the leaf evidence before execution. Record the candidate SHA, command, environment, full output, collection count, exit status and independent semantic disposition. Existing signal profile proof expects exactly its admitted success/refusal pair, exit0 and no skips; a helper-only contract claim follows its separately approved explicit family allocation. Do not reseal or overwrite old immutable generations.
+
+Fresh reviewer judgement is independent of worker convenience fixtures. For ordering, omissions or transitions, the reviewer must inspect/decompose the relevant fixture and use the bounded authority-derived public sequence required by current AGENTS, within the approved case allocation. A new independent witness is not permission for unbounded extra product cases. Inspect relevant prior return/repair lineage; classify recurrent findings and close the common invariant. Missing class-level authority is a blocker, not an open-ended patch instruction.
+
+Before accepting a leaf, assess whether its shared edits materially invalidate any accepted leaf or unchanged M00 proposition. Stop dependent advancement until that exact obligation is reaccepted. Do not repeat unrelated green proof because of a new session, packaging or a checkpoint restore.
+
+## 6. Mandatory cumulative checkpoint after every accepted leaf
+
+The checkpoint is part of leaf completion, not an optional final-task export.
+
+1. Finish the semantic obligation, retain failures/repairs and obtain independent disposition. Commit exact source, tests, authority, evidence and actual plan progress. Do not rewrite/prune history or overwrite earlier proof generations.
+2. Create `NVDA_DOWNSTREAM_RECONCILIATION_<LEAF>_<YYYYMMDD>_FULL_HISTORY.bundle` with `git bundle create ... --all`. Retain all starting refs/tips and new work. The checkpoint is cumulative: it contains all accepted earlier leaves, all preserved history and the current accepted leaf.
+3. Verify bundle integrity, fresh-clone restoration, exact accepted HEAD, `git fsck --full`, L07/D143 ancestry and preservation of original ref-tip objects. This is packaging verification, not product testing. Record source SHA and verification outside the bundle to avoid self-reference.
+4. Package `NVDA_DOWNSTREAM_RECONCILIATION_<LEAF>_CHECKPOINT_<YYYYMMDD>.tar.gz` containing the bundle, root plan, preserved plans, exact authority/oracle/input references or bytes, leaf evidence, complete prior checkpoint index, checksums and restore instructions. Hash archive and bundle separately; never include transient lockfiles or an archive inside itself.
+5. Save the archive durably and expose its working downloadable link to the owner BEFORE beginning another leaf. A local scratch file or unsaved link alone does not satisfy this requirement. Record filename, accepted source SHA, hashes and returned durable file identity in the delivery ledger; include the receipt in the next cumulative checkpoint to avoid self-hash cycles.
+6. Keep every earlier checkpoint. Once execution is commissioned, continue after each successful checkpoint without routine reapproval. If packaging/saving fails, preserve the accepted source and stop advancement until a downloadable cumulative checkpoint exists.
+7. After sandbox loss, restore the latest durably saved checkpoint, verify its manifest/hash/HEAD/ancestry and resume at the first uncompleted obligation. Reuse valid proof; do not rerun tests solely to restore confidence after recovery.
+
+A first reviewed planning delivery is documentary only and is not L00 execution acceptance. Every future leaf receipt must state ACCEPTED / BLOCKED / FAILED / NOT_ATTEMPTED accurately. If interrupted mid-leaf, an additional clearly labelled UNACCEPTED recovery snapshot may be saved without advancing that leaf.
+
+## 7. Planning review, progress and completion ledger
+
+- [x] Owner's planning-only instruction and no-test boundary recorded.
+- [x] Completed M00 root plan preserved; D143 schedule and D145 pause retained.
+- [x] Identified impact mapped to G0–G5 and individually reviewable leaves; module-local proof and cumulative checkpoint protocol specified.
+- [x] Documentary self-review checked coverage, dependencies, authority boundaries, case allocation and absence of implicit execution approval.
+- [ ] Independent documentary plan review, if commissioned, recorded with exact reviewed plan hash. No such approval is asserted by this draft.
+- [ ] Owner accepts the plan, exact conditional semantic decisions and execution commission; only then may future leaves begin.
+
+Execution ledger: L00–L14 all NOT_ATTEMPTED. No tests or implementation have been run under this plan. Planning delivery location and hash are recorded by the accompanying saved-file receipt.
+
+Final status may become COMPLETED only when §4 and §6 acceptance conditions are supported. Partial source compatibility, documentary dispositions, preserved legacy PASS evidence, numerical coincidence and archive creation alone cannot close the mandatory implementation gates.
