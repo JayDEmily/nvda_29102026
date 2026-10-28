@@ -480,6 +480,19 @@ def create_native_smart_depth_reader(*, admission: OwnerAdmissionV1,
     return build_reader(admission, storage)
 
 
+def create_native_smart_ask_owner(*, admission: OwnerAdmissionV1,
+    raw_reader: NativeRawReaderV1, storage: MemoryStorageV1 | SQLiteStorageV1,
+    utc_now: Callable[[], datetime]) -> NativeMeasurementOwnerV1:
+    from ._native_smart_ask import build_owner
+    return build_owner(admission, raw_reader, storage, utc_now)
+
+
+def create_native_smart_ask_reader(*, admission: OwnerAdmissionV1,
+    storage: SQLiteReadStorageV1) -> NativeMeasurementReadsV1:
+    from ._native_smart_ask import build_reader
+    return build_reader(admission, storage)
+
+
 class RawProjectionReaderV1(Protocol):
     def list_projected_raw_history(
         self,
