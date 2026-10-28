@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_native_source",
+  "generation": 2,
+  "brief_sha256": "5b777c5842b091f6dc4bef148970c4cf81b68864bd24f5a1633d392f38d96ead",
+  "binding_sha256": "a9f74f1c83cd14ea5e3f99a1755cc4b9c3a21a5b00fb4e6fab0aa496b10ecf80",
+  "contract_sha256": "d663769e593117c333d74f9894bddcb4a1ecccec3cd5e9455170f40af5f20995",
+  "implementation_target_id": "M02",
+  "adequacy_review_ref": "L03/documentary-Mapping-selector-repair;L02-L03-shared-support-NOT_RUN",
+  "admission_authority_ref": "owner-chat/20261028/downstream-reconciliation/execute-entire-plan",
+  "family_files": [
+    {
+      "path": "tests/product/market_measurement_native_source/test_source.py",
+      "sha256": "1c61fa128ba91389a851c8a6ae4b80ca8875dc10b15e7d16081f0e682bed3caf"
+    }
+  ],
+  "support_files": [
+    {
+      "path": "tests/support/native_reconciliation.py",
+      "sha256": "9c76603866e725632e1ef2e10010f28829d18224bb675e410cf1c04bbbe54c33"
+    }
+  ],
+  "previous_generation": {
+    "path": "config/product_proof/market_measurement_native_source/generations/0001.json",
+    "sha256": "cd8d1cb3e518e2b070d590912f6eae0ab70a8645c17c4023abca7ffb19f34c1c"
+  }
+}

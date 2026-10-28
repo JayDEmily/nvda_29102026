@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_native_d087",
+  "generation": 1,
+  "brief_sha256": "0bb079166417c42d3ed2c5f8e363e771c88ba44934cda01184d43be2bc960a76",
+  "binding_sha256": "90c817bbbc8c993333f0e505029aad3c87d4969c7de852fd6cef693c81af16db",
+  "contract_sha256": "26137701ff2c7996d4fcd9d55c476d4048a597fdb631d98ef5b7f5af9a5a5315",
+  "implementation_target_id": "M02",
+  "adequacy_review_ref": "L01/owner-commissioned-documentary-contract;L03/worker-authored-NOT_RUN",
+  "admission_authority_ref": "owner-chat/20261028/downstream-reconciliation/execute-entire-plan",
+  "family_files": [
+    {
+      "path": "tests/product/market_measurement_native_d087/test_signal.py",
+      "sha256": "b3a70feab362bd3b6828135175ee578723330b329a78cdb3e1b749140e257a10"
+    }
+  ],
+  "support_files": [
+    {
+      "path": "tests/support/native_reconciliation.py",
+      "sha256": "9c76603866e725632e1ef2e10010f28829d18224bb675e410cf1c04bbbe54c33"
+    }
+  ],
+  "previous_generation": null
+}

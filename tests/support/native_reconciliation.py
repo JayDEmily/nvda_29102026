@@ -7,6 +7,7 @@ store. The pagination wrapper exposes the two already-public M00 methods.
 from __future__ import annotations
 
 import json
+from collections.abc import Mapping
 from datetime import datetime
 from decimal import Decimal
 from pathlib import Path
@@ -82,7 +83,7 @@ def projection(value: dict) -> raw.ProjectedRawValueV1:
 
 def at_path(value, path):
     for key in path:
-        if type(value) is not dict or key not in value:
+        if not isinstance(value, Mapping) or key not in value:
             return None
         value = value[key]
     return value
