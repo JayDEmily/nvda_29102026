@@ -62,7 +62,16 @@ class _Validated:
                 raise ValueError("finite Decimal required by the controlled calculation contract")
             if field.name in {"version", "history_page_size", "history_page_limit"} and value <= 0:
                 raise ValueError("version/page bound must be positive")
-            if type(value) is tuple and any(item in value[:i] for i, item in enumerate(value)):
+            # Distinct callbacks can share a receipt when ingestion sequence
+            # resolves their causal order. Only this new receipt-value tuple is
+            # exempt; constituent identities and all legacy tuples stay distinct.
+            repeated_receipts = (
+                type(self) is NativeQuoteAssemblyV1 and field.name == "constituent_receipts_utc"
+            )
+            if (
+                type(value) is tuple and not repeated_receipts
+                and any(item in value[:i] for i, item in enumerate(value))
+            ):
                 raise ValueError(f"{field.name} members must be distinct")
             if type(value) is tuple and any(type(item) is str and not item for item in value):
                 raise ValueError(f"{field.name} identities must be nonempty")
@@ -415,16 +424,21 @@ class NativeSourceOwnerV1(Protocol):
 
 
 class NativeMeasurementReadsV1(Protocol):
-    def get_derived_occurrence(self, derived_occurrence_id: str) -> NativeMeasurementOccurrenceV1 | None: ...
+    def get_derived_occurrence(
+        self, derived_occurrence_id: str
+    ) -> NativeMeasurementOccurrenceV1 | None: ...
     def list_derived_history(self, *, derived_signal_id: str,
         subject_instrument: str, effective_at_or_before_utc: datetime,
-        knowledge_at_or_before_utc: datetime, limit: int) -> tuple[NativeMeasurementOccurrenceV1, ...]: ...
+        knowledge_at_or_before_utc: datetime, limit: int
+    ) -> tuple[NativeMeasurementOccurrenceV1, ...]: ...
 
 
 class NativeMeasurementOwnerV1(Protocol):
     @property
     def reads(self) -> NativeMeasurementReadsV1: ...
-    def materialise(self, request: NativeCalculationRequestV1) -> NativeMeasurementOccurrenceV1 | None: ...
+    def materialise(
+        self, request: NativeCalculationRequestV1
+    ) -> NativeMeasurementOccurrenceV1 | None: ...
 
 
 def create_native_source_owner(*, admission: OwnerAdmissionV1,

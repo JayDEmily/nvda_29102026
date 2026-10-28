@@ -162,7 +162,8 @@ class RecordState:
                 (getattr(value, self.identity_field), payload, hashlib.sha256(payload).hexdigest()),
             )
             recovered = next(
-                v for v in self._load(c) if getattr(v, self.identity_field) == getattr(value, self.identity_field)
+                v for v in self._load(c)
+                if getattr(v, self.identity_field) == getattr(value, self.identity_field)
             )
             if self.encode(recovered) != payload:
                 raise f.PersistenceFailureV1("measurement readback mismatch")
@@ -192,7 +193,10 @@ class RecordState:
                     payload = self.encode(value)
                     c.execute(
                         "INSERT INTO mmt_record_v1 VALUES (?,?,?)",
-                        (getattr(value, self.identity_field), payload, hashlib.sha256(payload).hexdigest()),
+                        (
+                            getattr(value, self.identity_field), payload,
+                            hashlib.sha256(payload).hexdigest(),
+                        ),
                     )
             readback = {getattr(v, self.identity_field): v for v in self._load(c)}
             for value in resolved:

@@ -1,0 +1,958 @@
+{
+  "schema_version": 1,
+  "source_checkpoint": "ffdc1150cb472550d23952751f931c414fd5ee31",
+  "baseline": "97f944d51ab9e403250fe76910e2754b50425c73",
+  "inventory_kind": "byte-hash/documentary; not product/schema validation",
+  "claims": [
+    {
+      "leaf": "L02",
+      "claim_id": "neutral_market_measurement_truth_native_source",
+      "generation_path": "config/product_proof/market_measurement_native_source/generations/0004.json",
+      "generation_sha256": "4edbe501302dfc4f384be09315e8088071979ea9a6ee585dbec2349e1967e131",
+      "generation": 4,
+      "brief_path": "handoff/downstream_reconciliation/authority/briefs/NATIVE_SOURCE_BRIEF.md",
+      "brief_sha256": "5b777c5842b091f6dc4bef148970c4cf81b68864bd24f5a1633d392f38d96ead",
+      "binding_path": "implementation/authority/DOWNSTREAM_NATIVE_SOURCE_BINDING.yaml",
+      "binding_sha256": "a9f74f1c83cd14ea5e3f99a1755cc4b9c3a21a5b00fb4e6fab0aa496b10ecf80",
+      "contract_path": "handoff/downstream_reconciliation/proofs/source/PROOF_CONTRACT.json",
+      "contract_sha256": "d663769e593117c333d74f9894bddcb4a1ecccec3cd5e9455170f40af5f20995",
+      "families": [
+        {
+          "id": "mmt_native_source",
+          "path": "tests/product/market_measurement_native_source/test_source.py",
+          "proof_obligation_ids": [
+            "NATIVE-SOURCE-RECEIPT-CONTROL"
+          ],
+          "required_test_names": [
+            "test_native_source_success",
+            "test_native_source_refusal"
+          ],
+          "boundary": "Versioned actual-public-DTO receipt selection; separate controls, G1/G2 restart, strict source identity, ordered warm-up and typed SQLite read-only restore.",
+          "proof_levels": [
+            "CONTRACT",
+            "INTEGRATION",
+            "STATE"
+          ],
+          "authoritative_inputs": [
+            "Commissioned L01 source/public API/proof allocation and fixed selected M00 public output."
+          ],
+          "dependency_substitutions": [
+            "Frozen actual M00 public DTO output and module-local public reader; no M00 production replay."
+          ],
+          "case_coverage": {
+            "lawful_positive": {
+              "cases": [
+                "A4 warm-up; outgoing G1 and incoming G2 restart discovery; fresh two-row G2 warm-up, exact read-only SQLite reopen."
+              ]
+            },
+            "prohibited_false_positive": {
+              "cases": [
+                "Complete A4 then separate error317 without warm-up; same receipt/scope/sequence tied callbacks refuse without history."
+              ]
+            },
+            "missing_mandatory_authority": {
+              "cases": [
+                "Exact receipt-only source, control envelope, identity, warm-up and bounded fixed case allocation."
+              ]
+            },
+            "lawful_optional_absence": {
+              "cases": [
+                "Provider event timestamp and timezone absent; no fabricated source time."
+              ]
+            }
+          },
+          "expected_failure_signals": [
+            "Non-null event selector, missing control discovery, source mixing, ID tie-breaking, stale rows, lossy durable type."
+          ],
+          "limitations": [
+            "Two synthetic helper cases; no live source entitlement or D calculation."
+          ],
+          "adjacent_nonclaims": [
+            "D087-D143 mathematical owners and D145 paused event clock."
+          ],
+          "environment": "Pinned CPython3.12.14 SQLite3.53.1 and existing tools.",
+          "material_versions": [
+            "Exact native brief/binding/contract/generation and candidate evidence."
+          ],
+          "tier_treatment": "NOT_CLASSIFIED",
+          "command": "python -m pytest tests/product/market_measurement_native_source/test_source.py"
+        }
+      ],
+      "expected_collected": 2,
+      "collected": null,
+      "passed": null,
+      "skipped": null,
+      "exit_code": null,
+      "execution_status": "NOT_RUN",
+      "acceptance_status": "NOT_ATTEMPTED"
+    },
+    {
+      "leaf": "L03",
+      "claim_id": "neutral_market_measurement_truth_native_d087",
+      "generation_path": "config/product_proof/market_measurement_native_d087/generations/0003.json",
+      "generation_sha256": "9836bbf2592ef87b28293a9e67e3b8958f2ba6021f2e05100384b67a9ba50b65",
+      "generation": 3,
+      "brief_path": "handoff/downstream_reconciliation/authority/briefs/NATIVE_D087_BRIEF.md",
+      "brief_sha256": "0bb079166417c42d3ed2c5f8e363e771c88ba44934cda01184d43be2bc960a76",
+      "binding_path": "implementation/authority/DOWNSTREAM_NATIVE_D087_BINDING.yaml",
+      "binding_sha256": "90c817bbbc8c993333f0e505029aad3c87d4969c7de852fd6cef693c81af16db",
+      "contract_path": "handoff/downstream_reconciliation/proofs/d087/PROOF_CONTRACT.json",
+      "contract_sha256": "26137701ff2c7996d4fcd9d55c476d4048a597fdb631d98ef5b7f5af9a5a5315",
+      "families": [
+        {
+          "id": "mmt_native_d087",
+          "path": "tests/product/market_measurement_native_d087/test_signal.py",
+          "proof_obligation_ids": [
+            "NATIVE-D087-ASYNC-OPTION-QUOTE"
+          ],
+          "required_test_names": [
+            "test_native_success",
+            "test_native_refusal"
+          ],
+          "boundary": "Four distinct public M00 receipt callbacks assembled by exact option right, request, generation, cutoff, skew and latest age into D087 midpoint; typed SQLite read-only reopen and refusal without history.",
+          "proof_levels": [
+            "CONTRACT",
+            "INTEGRATION",
+            "STATE"
+          ],
+          "authoritative_inputs": [
+            "L01 commissioned fixed source/API/allocation, A2/A3 actual public output and literal independent oracles."
+          ],
+          "dependency_substitutions": [
+            "Frozen actual M00 public DTO output via declared module-local reader; no M00 production replay."
+          ],
+          "case_coverage": {
+            "lawful_positive": {
+              "cases": [
+                "Explicit A2 CALL midpoint1.30 and A3 PUT midpoint2.30, four role-order identities each, strict scope and typed read-only SQLite reopen."
+              ]
+            },
+            "prohibited_false_positive": {
+              "cases": [
+                "CALL missing R036 with remaining roles visible; separately complete CALL requested two seconds later refuses latest age, with no history or cross-right fallback."
+              ]
+            },
+            "missing_mandatory_authority": {
+              "cases": [
+                "Exact synthetic 250ms skew and 1000ms age, four-member assembly, versioned profile and case allocation."
+              ]
+            },
+            "lawful_optional_absence": {
+              "cases": [
+                "No provider event timestamp or timezone; receipt basis and four separate observations preserved."
+              ]
+            }
+          },
+          "expected_failure_signals": [
+            "Missing constituent accepted",
+            "stale quote accepted",
+            "cross-right or generation selection",
+            "lossy durable lineage",
+            "fabricated source timestamp"
+          ],
+          "limitations": [
+            "Synthetic receipt compatibility only; no live entitlement or production policy."
+          ],
+          "adjacent_nonclaims": [
+            "D131 compatible depth and D137 microprice are later owning leaves; legacy D087 remains separate."
+          ],
+          "environment": "Pinned CPython3.12.14 SQLite3.53.1 and existing tools.",
+          "material_versions": [
+            "Exact L01 native brief/binding/contract/generation and candidate source."
+          ],
+          "tier_treatment": "NOT_CLASSIFIED",
+          "command": "python -m pytest tests/product/market_measurement_native_d087/test_signal.py"
+        }
+      ],
+      "expected_collected": 2,
+      "collected": null,
+      "passed": null,
+      "skipped": null,
+      "exit_code": null,
+      "execution_status": "NOT_RUN",
+      "acceptance_status": "NOT_ATTEMPTED"
+    },
+    {
+      "leaf": "L04",
+      "claim_id": "neutral_market_measurement_truth_native_d131",
+      "generation_path": "config/product_proof/market_measurement_native_d131/generations/0002.json",
+      "generation_sha256": "bae0ea2e116f0c0115e690270e81f98b8e83b24d6eb242d02ba4fa1e0be71612",
+      "generation": 2,
+      "brief_path": "handoff/downstream_reconciliation/authority/briefs/NATIVE_D131_BRIEF.md",
+      "brief_sha256": "0ac16b9eb4859665807a86739293a196e63916062c3db7c522ab6303eabcfbe8",
+      "binding_path": "implementation/authority/DOWNSTREAM_NATIVE_D131_BINDING.yaml",
+      "binding_sha256": "d76fbe637e7de278ede007e37cde689318f6fecb28cebe805f60001ff081d031",
+      "contract_path": "handoff/downstream_reconciliation/proofs/d131/PROOF_CONTRACT.json",
+      "contract_sha256": "781e4e22611ed6f7e4bbd5bae0ef07606b545703cba8e6ffd57a4cc6b22b772a",
+      "families": [
+        {
+          "id": "mmt_native_d131",
+          "path": "tests/product/market_measurement_native_d131/test_signal.py",
+          "proof_obligation_ids": [
+            "NATIVE-D131-COHERENT-CALL-BAND"
+          ],
+          "required_test_names": [
+            "test_native_success",
+            "test_native_refusal"
+          ],
+          "boundary": "Actual public native D087 A2 predecessor relates to separate coherent C1 provider profile by the approved exact CALL context; positional native side book, inclusive half-dollar band, separate reset refusal and typed SQLite read-only reopen.",
+          "proof_levels": [
+            "CONTRACT",
+            "INTEGRATION",
+            "STATE"
+          ],
+          "authoritative_inputs": [
+            "L01 commissioned fixed cross-provider synthetic relation, C1 actual public M00 output and literal D131 oracle."
+          ],
+          "dependency_substitutions": [
+            "Frozen actual M00 public DTO output via declared module-local reader; native D087 materialised through its public owner and reopened public reader."
+          ],
+          "case_coverage": {
+            "lawful_positive": {
+              "cases": [
+                "Actual A2 D087 midpoint1.30, C1 standing 1.20 bid5, 0.70 bid7 and 1.40 ask3; inclusive 0.80\u20131.80 selects5+3=8 contracts, excludes bid7, exact source/predecessor identity and durable typed read-only reopen."
+              ]
+            },
+            "prohibited_false_positive": {
+              "cases": [
+                "Separate C1 error317 after full warm-up and matched actual D087 at .400Z; no fresh known-empty epoch/warm-up, so no D131 result or history."
+              ]
+            },
+            "missing_mandatory_authority": {
+              "cases": [
+                "Exact L01 A2/C1 compatible CALL reference, half-dollar band, native sides, positional warm-up, receipt clock and approved two-case allocation."
+              ]
+            },
+            "lawful_optional_absence": {
+              "cases": [
+                "No provider event timestamp; distinct source provider/request/generation on the two explicitly related profiles are preserved."
+              ]
+            }
+          },
+          "expected_failure_signals": [
+            "Numeric-only D087 predecessor acceptance",
+            "wrong provider or contract conflation",
+            "outside row counted",
+            "native side inverted",
+            "reset without fresh warm-up accepted",
+            "lossy durable lineage"
+          ],
+          "limitations": [
+            "Synthetic CALL compatibility only; no PUT depth or live provider entitlement."
+          ],
+          "adjacent_nonclaims": [
+            "Legacy D131 midpoint100 remains a separate preserved profile; other SMART owners follow in later leaves."
+          ],
+          "environment": "Pinned CPython3.12.14 SQLite3.53.1 and existing tools.",
+          "material_versions": [
+            "Exact L01 native brief/binding/contract/generation and candidate source."
+          ],
+          "tier_treatment": "NOT_CLASSIFIED",
+          "command": "python -m pytest tests/product/market_measurement_native_d131/test_signal.py"
+        }
+      ],
+      "expected_collected": 2,
+      "collected": null,
+      "passed": null,
+      "skipped": null,
+      "exit_code": null,
+      "execution_status": "NOT_RUN",
+      "acceptance_status": "NOT_ATTEMPTED"
+    },
+    {
+      "leaf": "L05",
+      "claim_id": "neutral_market_measurement_truth_native_d134",
+      "generation_path": "config/product_proof/market_measurement_native_d134/generations/0002.json",
+      "generation_sha256": "dc680c7be256e4f1485f2b18a954655743937bb2f26bd0419e12dd3d8764405f",
+      "generation": 2,
+      "brief_path": "handoff/downstream_reconciliation/authority/briefs/NATIVE_D134_BRIEF.md",
+      "brief_sha256": "73e03e0700902098ecc8a0c9c6e3ffffd94bbc74ab8f27576368ccc0dd19cce0",
+      "binding_path": "implementation/authority/DOWNSTREAM_NATIVE_D134_BINDING.yaml",
+      "binding_sha256": "ab362f8423a03ce5a729ac7bfb7b906217918c70eca6dd57667658f4f3a4f244",
+      "contract_path": "handoff/downstream_reconciliation/proofs/d134/PROOF_CONTRACT.json",
+      "contract_sha256": "e1b6f38043fae47c39a91da06ee372d70cd490acafe836359bb3c70e7f968352",
+      "families": [
+        {
+          "id": "mmt_native_d134",
+          "path": "tests/product/market_measurement_native_d134/test_signal.py",
+          "proof_obligation_ids": [
+            "NATIVE-D134-SMART-BID-TOP2"
+          ],
+          "required_test_names": [
+            "test_native_success",
+            "test_native_refusal"
+          ],
+          "boundary": "Four mandatory native A4 SMART roles, side1 bid top-two sum, separate control discovery, receipt-only warm-up and full typed SQLite read-only reopening; no price projection dependency.",
+          "proof_levels": [
+            "CONTRACT",
+            "INTEGRATION",
+            "STATE"
+          ],
+          "authoritative_inputs": [
+            "L01 commissioned A4 source/profile/API, exact four-role D134 obligation and literal independent bid8 oracle."
+          ],
+          "dependency_substitutions": [
+            "Frozen actual M00 public DTO output via declared module-local public history reader; no M00 production invocation."
+          ],
+          "case_coverage": {
+            "lawful_positive": {
+              "cases": [
+                "A4 native bid side1 sizes5/3 yield8 shares while ask side0 sizes2/4 retain asymmetric source context; all price projections omitted, exact source/definition/mapping/time lineage and read-only SQLite reopen."
+              ]
+            },
+            "prohibited_false_positive": {
+              "cases": [
+                "R187 omitted on final A4 callback with position1, ask side0 and size4 retained; no D134 result/history, including durable read-only reopening."
+              ]
+            },
+            "missing_mandatory_authority": {
+              "cases": [
+                "Four exact R185/R187/R188/R190 roles, bound complete A4 epoch, native side interpretation, versioned source/request/definition and approved pair allocation."
+              ]
+            },
+            "lawful_optional_absence": {
+              "cases": [
+                "Absent provider clock is retained; all R189 price projections omitted without creating a new mathematical dependency."
+              ]
+            }
+          },
+          "expected_failure_signals": [
+            "Native side inverted",
+            "Price projection incorrectly required",
+            "Missing operation ignored",
+            "Incomplete bound warm-up accepted",
+            "Source or generation conflation",
+            "Lossy durable lineage"
+          ],
+          "limitations": [
+            "Controlled synthetic A4 compatibility only; no live provider entitlement or source certification."
+          ],
+          "adjacent_nonclaims": [
+            "Legacy D134 source, proof and semantics preserved; D135 and D136 follow as separate leaves."
+          ],
+          "environment": "Pinned CPython3.12.14 SQLite3.53.1 and existing tools.",
+          "material_versions": [
+            "Exact L01 native brief/binding/contract/generation and candidate source."
+          ],
+          "tier_treatment": "NOT_CLASSIFIED",
+          "command": "python -m pytest tests/product/market_measurement_native_d134/test_signal.py"
+        }
+      ],
+      "expected_collected": 2,
+      "collected": null,
+      "passed": null,
+      "skipped": null,
+      "exit_code": null,
+      "execution_status": "NOT_RUN",
+      "acceptance_status": "NOT_ATTEMPTED"
+    },
+    {
+      "leaf": "L06",
+      "claim_id": "neutral_market_measurement_truth_native_d135",
+      "generation_path": "config/product_proof/market_measurement_native_d135/generations/0002.json",
+      "generation_sha256": "aef137a30e2e15a879d5507e8942a6a91f6ee6d78beb30664cb216a5994153b0",
+      "generation": 2,
+      "brief_path": "handoff/downstream_reconciliation/authority/briefs/NATIVE_D135_BRIEF.md",
+      "brief_sha256": "419afb2f5b0d27d72159587c9b9ad323afcb4dc49242257f9a83fa4317aa5653",
+      "binding_path": "implementation/authority/DOWNSTREAM_NATIVE_D135_BINDING.yaml",
+      "binding_sha256": "8eb8b3cee0c82e73ed097e56fb707bc458abac8cf6f9be4190d4fc8f7fce487b",
+      "contract_path": "handoff/downstream_reconciliation/proofs/d135/PROOF_CONTRACT.json",
+      "contract_sha256": "4d01331f10a30d75ff5b4de5b51f4136c260e873d7533b10d989639fd5a22722",
+      "families": [
+        {
+          "id": "mmt_native_d135",
+          "path": "tests/product/market_measurement_native_d135/test_signal.py",
+          "proof_obligation_ids": [
+            "NATIVE-D135-SMART-ASK-PROFILES"
+          ],
+          "required_test_names": [
+            "test_native_success",
+            "test_native_refusal"
+          ],
+          "boundary": "Native A4 side0 ask top-two and separately identified top-one requests, four mandatory roles, receipt-only full warm-up, separate error317 reset refusal and exact typed SQLite read-only reopening.",
+          "proof_levels": [
+            "CONTRACT",
+            "INTEGRATION",
+            "STATE"
+          ],
+          "authoritative_inputs": [
+            "L01 commissioned A4 source/profile/API, top-two/top-one closed requests and independent literal ask6/ask2 oracles."
+          ],
+          "dependency_substitutions": [
+            "Frozen actual M00 public DTO output via declared module-local public history reader; no M00 production invocation."
+          ],
+          "case_coverage": {
+            "lawful_positive": {
+              "cases": [
+                "Explicit public top-two ask request yields6 and top-one request yields2 with distinct definitions/requests/occurrence identities, full asymmetric native standing context, no price projections, exact durable typed readback of both."
+              ]
+            },
+            "prohibited_false_positive": {
+              "cases": [
+                "Full four-callback A4 prefix then separate receipt12:39:59.500Z error317, no new epoch/warm-up and no synthetic operation317: no D135 result/history."
+              ]
+            },
+            "missing_mandatory_authority": {
+              "cases": [
+                "Four exact R185/R187/R188/R190 roles, bound complete A4 epoch, native side0 ask, separate profile parameters and approved pair allocation."
+              ]
+            },
+            "lawful_optional_absence": {
+              "cases": [
+                "Absent provider clock and absent price projections retained without changing the four-role mathematical dependency."
+              ]
+            }
+          },
+          "expected_failure_signals": [
+            "Native side inverted",
+            "Top-one and top-two identities conflated",
+            "Separate reset ignored",
+            "Operation317 invented",
+            "Price projection incorrectly required",
+            "Lossy durable lineage"
+          ],
+          "limitations": [
+            "Controlled synthetic A4 compatibility only; no live provider entitlement or source certification."
+          ],
+          "adjacent_nonclaims": [
+            "Legacy D135 preserved; D136 actual public predecessor compatibility follows in L07."
+          ],
+          "environment": "Pinned CPython3.12.14 SQLite3.53.1 and existing tools.",
+          "material_versions": [
+            "Exact L01 native brief/binding/contract/generation and candidate source."
+          ],
+          "tier_treatment": "NOT_CLASSIFIED",
+          "command": "python -m pytest tests/product/market_measurement_native_d135/test_signal.py"
+        }
+      ],
+      "expected_collected": 2,
+      "collected": null,
+      "passed": null,
+      "skipped": null,
+      "exit_code": null,
+      "execution_status": "NOT_RUN",
+      "acceptance_status": "NOT_ATTEMPTED"
+    },
+    {
+      "leaf": "L07",
+      "claim_id": "neutral_market_measurement_truth_native_d136",
+      "generation_path": "config/product_proof/market_measurement_native_d136/generations/0002.json",
+      "generation_sha256": "1a02cece13f6590f90501e98bbccbe46e546153aade983b1115a297a1cf14b5a",
+      "generation": 2,
+      "brief_path": "handoff/downstream_reconciliation/authority/briefs/NATIVE_D136_BRIEF.md",
+      "brief_sha256": "8510a6e722300d06993ed8a66a8b1b808488913a48625f31183fd2ef9442c7ec",
+      "binding_path": "implementation/authority/DOWNSTREAM_NATIVE_D136_BINDING.yaml",
+      "binding_sha256": "a1bed1df91d9777e91396a808e21b5da2189eeedd7b5c6998e5a5183d028b766",
+      "contract_path": "handoff/downstream_reconciliation/proofs/d136/PROOF_CONTRACT.json",
+      "contract_sha256": "e698d66dcc4b270fc850afd991b6eed4c79b6f7b4ff83bf82af18b0651f9c69e",
+      "families": [
+        {
+          "id": "mmt_native_d136",
+          "path": "tests/product/market_measurement_native_d136/test_signal.py",
+          "proof_obligation_ids": [
+            "NATIVE-D136-ACTUAL-COMMON-TOP2-IMBALANCE"
+          ],
+          "required_test_names": [
+            "test_native_success",
+            "test_native_refusal"
+          ],
+          "boundary": "Exact rational imbalance from two actual native public D134/D135 top-two predecessors, exact full shared source/profile/time context, actual top-one ask incompatibility refusal and nested typed SQLite read-only reopening.",
+          "proof_levels": [
+            "CONTRACT",
+            "INTEGRATION",
+            "STATE"
+          ],
+          "authoritative_inputs": [
+            "L01 exact common-top-two profile and independent1/7 oracle; actual public native bid8 and ask6 owners, top-one ask2 refusal."
+          ],
+          "dependency_substitutions": [
+            "Frozen M00 public DTOs via declared reader only for actual public predecessor materialisation; D136 consumes two lawful public native read-only readers and no fabricated predecessor."
+          ],
+          "case_coverage": {
+            "lawful_positive": {
+              "cases": [
+                "Materialise native public bid8 and ask6 with exact A4 receipt-only source and native side1/side0, pass their two read-only readers to D136, assert literal exact1/7 and full nested typed durable reopening with all three SQLite files unchanged by reads."
+              ]
+            },
+            "prohibited_false_positive": {
+              "cases": [
+                "Materialise actual public top-one D1352 while bid stays actual top-two8; unchanged D136 common-top-two request refuses with no result/history."
+              ]
+            },
+            "missing_mandatory_authority": {
+              "cases": [
+                "Exact compatible predecessor definitions, briefs, source/profile/generation/request/contract/time/levels and the two fixed owning readers."
+              ]
+            },
+            "lawful_optional_absence": {
+              "cases": [
+                "No direct R dependency or source snapshot is fabricated for D136: complete source/control evidence is retained within actual predecessors."
+              ]
+            }
+          },
+          "expected_failure_signals": [
+            "Fabricated or numeric-only predecessor accepted",
+            "Top-one accepted against common-top-two request",
+            "Native side/source/profile mismatch accepted",
+            "Lossy nested durable lineage",
+            "Predecessor storage mutated"
+          ],
+          "limitations": [
+            "Synthetic A4 top-two pair only; no live provider capability."
+          ],
+          "adjacent_nonclaims": [
+            "Legacy D136 and predecessor profiles preserved; L05/L06 remain independently untested until L14."
+          ],
+          "environment": "Pinned CPython3.12.14 SQLite3.53.1 and existing tools.",
+          "material_versions": [
+            "Exact L01 native brief/binding/contract/generation and candidate source."
+          ],
+          "tier_treatment": "NOT_CLASSIFIED",
+          "command": "python -m pytest tests/product/market_measurement_native_d136/test_signal.py"
+        }
+      ],
+      "expected_collected": 2,
+      "collected": null,
+      "passed": null,
+      "skipped": null,
+      "exit_code": null,
+      "execution_status": "NOT_RUN",
+      "acceptance_status": "NOT_ATTEMPTED"
+    },
+    {
+      "leaf": "L08",
+      "claim_id": "neutral_market_measurement_truth_native_d138",
+      "generation_path": "config/product_proof/market_measurement_native_d138/generations/0002.json",
+      "generation_sha256": "f1282ba4c7d43f17df036466d63e491c4773e39d1a885dceee2a33c876a825f1",
+      "generation": 2,
+      "brief_path": "handoff/downstream_reconciliation/authority/briefs/NATIVE_D138_BRIEF.md",
+      "brief_sha256": "cd2519685a80a453b839ac10a34d8488f73b8b1b87ef01a10c346e1445f5130b",
+      "binding_path": "implementation/authority/DOWNSTREAM_NATIVE_D138_BINDING.yaml",
+      "binding_sha256": "61542816ad36b21a9b12148f632d9401f01407aa1788312041a3925e247a64da",
+      "contract_path": "handoff/downstream_reconciliation/proofs/d138/PROOF_CONTRACT.json",
+      "contract_sha256": "ca0a54fb42ad0111e812d41e89c9ed90f609aa4c4217ebe3151eb31cb156bb8b",
+      "families": [
+        {
+          "id": "mmt_native_d138",
+          "path": "tests/product/market_measurement_native_d138/test_signal.py",
+          "proof_obligation_ids": [
+            "NATIVE-D138-RECEIPT-THREE-LEVEL-OLS"
+          ],
+          "required_test_names": [
+            "test_native_success",
+            "test_native_refusal"
+          ],
+          "boundary": "Receipt-only five-role positional SMART source, native side1 bids/side0 asks, actual unchanged public D011 midpoint, K06/P_REGRESSION per-side exact OLS and typed SQLite read-only reopen.",
+          "proof_levels": [
+            "CONTRACT",
+            "INTEGRATION",
+            "STATE"
+          ],
+          "authoritative_inputs": [
+            "L01 closed synthetic slope recipe, independent bid7/2 ask5/2 oracle, exact native D138 brief and owner-approved D138 dependency overlay."
+          ],
+          "dependency_substitutions": [
+            "Module-local public M00 DTOs implement the commissioned synthetic slope recipe; unchanged public D011 is materialised through create_owner from explicit controlled quote public DTOs and reopened through its public reader. No M00 production replay or historical private fixture import."
+          ],
+          "case_coverage": {
+            "lawful_positive": {
+              "cases": [
+                "Complete bid99/98/97 sizes2/3/4 and ask101/102/103 sizes5/2/3, native sides, actual public D011100, exact slopes7/2 and5/2, complete typed source and predecessor readback with both SQLite files unchanged."
+              ]
+            },
+            "prohibited_false_positive": {
+              "cases": [
+                "Separate error317 after all six complete five-role callbacks without fresh epoch/warm-up refuses with no result/history; actual compatible D011 remains present."
+              ]
+            },
+            "missing_mandatory_authority": {
+              "cases": [
+                "All five required R roles, complete known-empty three-level warm-up, exact clock/source/profile, unchanged K06_REGRESSION_DEPENDENCE/P_REGRESSION/units and actual D011."
+              ]
+            },
+            "lawful_optional_absence": {
+              "cases": [
+                "Provider timestamp/timezone remain absent in receipt-only depth; D011 retains its unchanged true-instant public profile."
+              ]
+            }
+          },
+          "expected_failure_signals": [
+            "Native bid/ask slopes swapped",
+            "Partial/reset book accepted",
+            "Five-role dependency dropped",
+            "Fabricated or incompatible midpoint accepted",
+            "Lossy nested durable lineage"
+          ],
+          "limitations": [
+            "Commissioned synthetic SMART slope only; no native live certification."
+          ],
+          "adjacent_nonclaims": [
+            "Legacy D138 evidence and original D011 profile unchanged; D145 remains paused."
+          ],
+          "environment": "Pinned CPython3.12.14 SQLite3.53.1 and existing tools.",
+          "material_versions": [
+            "Exact L01 native brief/binding/contract/generation and candidate source."
+          ],
+          "tier_treatment": "NOT_CLASSIFIED",
+          "command": "python -m pytest tests/product/market_measurement_native_d138/test_signal.py"
+        }
+      ],
+      "expected_collected": 2,
+      "collected": null,
+      "passed": null,
+      "skipped": null,
+      "exit_code": null,
+      "execution_status": "NOT_RUN",
+      "acceptance_status": "NOT_ATTEMPTED"
+    },
+    {
+      "leaf": "L09",
+      "claim_id": "neutral_market_measurement_truth_native_d139",
+      "generation_path": "config/product_proof/market_measurement_native_d139/generations/0002.json",
+      "generation_sha256": "3b5bb662920a1c2402125800c1a56ba2f0b12e6cd1ec255ea2d546e9991964c4",
+      "generation": 2,
+      "brief_path": "handoff/downstream_reconciliation/authority/briefs/NATIVE_D139_BRIEF.md",
+      "brief_sha256": "6bf69e7b0283f5098b29c2182a736ffc7aa051af8fb7bbf8a100f2e531f50502",
+      "binding_path": "implementation/authority/DOWNSTREAM_NATIVE_D139_BINDING.yaml",
+      "binding_sha256": "8c19cf5117afc3293072443b32ce153d60b6133a335902945fe2fdfa1260e311",
+      "contract_path": "handoff/downstream_reconciliation/proofs/d139/PROOF_CONTRACT.json",
+      "contract_sha256": "a7f43eed2d7dc96886d9d5866ab07deee48147c1581fb29624ec97e34af8018a",
+      "families": [
+        {
+          "id": "mmt_native_d139",
+          "path": "tests/product/market_measurement_native_d139/test_signal.py",
+          "proof_obligation_ids": [
+            "NATIVE-D139-COLLECTOR-RECEIPT-INSERT-RATE"
+          ],
+          "required_test_names": [
+            "test_native_success",
+            "test_native_refusal"
+          ],
+          "boundary": "Typed collector-added R001 equals receipt envelope, native side1 positional four-second bid insertion bucket with complete pre-window warm-up, separate control source and exact SQLite readback.",
+          "proof_levels": [
+            "CONTRACT",
+            "INTEGRATION",
+            "STATE"
+          ],
+          "authoritative_inputs": [
+            "L01 fixed receipt-rate recipe/profile, independent count1/2 and size2 oracle and unchanged K08/P_RULE equation."
+          ],
+          "dependency_substitutions": [
+            "Module-local public M00 DTOs implement only the commissioned synthetic receipt-rate recipe. No M00 production or private old test fixture."
+          ],
+          "case_coverage": {
+            "lawful_positive": {
+              "cases": [
+                "Complete pre-window native bid3/ask1 prefix then bid position1 size3 and position2 size5 inserts within(T-4s,T]; exact count1/2 events/s and size2 shares/s with30 typed lineages and read-only SQLite bytes unchanged."
+              ]
+            },
+            "prohibited_false_positive": {
+              "cases": [
+                "Second selected insert omits only R187 while typed R001, position2, side1 and size5 remain; no result/history. No gap/reset substitute for omission."
+              ]
+            },
+            "missing_mandatory_authority": {
+              "cases": [
+                "Exact receipt clock/window/positions/native side/profile, mandatory R001/R185/R187/R188/R190, known-empty complete pre-window warm-up."
+              ]
+            },
+            "lawful_optional_absence": {
+              "cases": [
+                "Provider event timestamp/timezone remain absent; R001 remains actual collector metadata under time.receipt, never provider time."
+              ]
+            }
+          },
+          "expected_failure_signals": [
+            "Native side inverted",
+            "Receipt bucket replaced by source event clock",
+            "Missing operation accepted",
+            "Incomplete pre-window book accepted",
+            "Lossy datetime or Decimal lineage"
+          ],
+          "limitations": [
+            "Commissioned synthetic receipt rate only; no native source-event rate or live certification."
+          ],
+          "adjacent_nonclaims": [
+            "Legacy D139 unchanged; D140 follows only after checkpoint; M00 datetime persistence evidence is reused, not repaired or rerun."
+          ],
+          "environment": "Pinned CPython3.12.14 SQLite3.53.1 and existing tools.",
+          "material_versions": [
+            "Exact L01 native brief/binding/contract/generation and candidate source."
+          ],
+          "tier_treatment": "NOT_CLASSIFIED",
+          "command": "python -m pytest tests/product/market_measurement_native_d139/test_signal.py"
+        }
+      ],
+      "expected_collected": 2,
+      "collected": null,
+      "passed": null,
+      "skipped": null,
+      "exit_code": null,
+      "execution_status": "NOT_RUN",
+      "acceptance_status": "NOT_ATTEMPTED"
+    },
+    {
+      "leaf": "L10",
+      "claim_id": "neutral_market_measurement_truth_native_d140",
+      "generation_path": "config/product_proof/market_measurement_native_d140/generations/0002.json",
+      "generation_sha256": "23c241333101a6fb7c6ff8bd7f4f5d4de9768f0b84c9253fee61373f5b51ced5",
+      "generation": 2,
+      "brief_path": "handoff/downstream_reconciliation/authority/briefs/NATIVE_D140_BRIEF.md",
+      "brief_sha256": "91f680af16d74b589883d363242572de2dc95360f036db5ccfa5fb9b1ae269c2",
+      "binding_path": "implementation/authority/DOWNSTREAM_NATIVE_D140_BINDING.yaml",
+      "binding_sha256": "c8def9d6f9d003777278c918d5bd96b7d60162d76c9afc05807a0e683cab6cfe",
+      "contract_path": "handoff/downstream_reconciliation/proofs/d140/PROOF_CONTRACT.json",
+      "contract_sha256": "912eee5065407e97ba200e9851871a72e488619df242745d244570b1e8663ba0",
+      "families": [
+        {
+          "id": "mmt_native_d140",
+          "path": "tests/product/market_measurement_native_d140/test_signal.py",
+          "proof_obligation_ids": [
+            "NATIVE-D140-ACTUAL-PREDELETE-RECEIPT-RATE"
+          ],
+          "required_test_names": [
+            "test_native_success",
+            "test_native_refusal"
+          ],
+          "boundary": "Native zero-size deletion consumes actual pre-delete standing6 from complete bid3/ask1 prefix, typed R001 receipt two-second bid-position1-2 bucket and exact durable source/readback.",
+          "proof_levels": [
+            "CONTRACT",
+            "INTEGRATION",
+            "STATE"
+          ],
+          "authoritative_inputs": [
+            "L01 fixed delete recipe/profile with native side1, independent count1/2 and removed size3 oracle; unchanged K08/P_RULE."
+          ],
+          "dependency_substitutions": [
+            "Local public M00 DTOs from the commissioned recipe; public source prefix snapshot establishes prior standing state. No D139 mathematical predecessor, M00 production replay or private old test fixture."
+          ],
+          "case_coverage": {
+            "lawful_positive": {
+              "cases": [
+                "Observe actual public complete prefix with bid5/6/7 and ask2 before the window, then native position1 deletion size0 removes6 in(T-2s,T]; exact count1/2 and removed size3 with25 typed lineages, final bid5/7 and unchanged read-only SQLite bytes."
+              ]
+            },
+            "prohibited_false_positive": {
+              "cases": [
+                "Retain all five roles and complete warm-up but delete position9 with native size0; nonexistent standing position refuses without result/history."
+              ]
+            },
+            "missing_mandatory_authority": {
+              "cases": [
+                "Exact receipt clock/window/native side/positions, full known-empty prefix, actual pre-delete standing size and full positional replay; initial warm-up coverage is established at prefix completion, not a permanent final-row count."
+              ]
+            },
+            "lawful_optional_absence": {
+              "cases": [
+                "Provider timestamp/timezone remain absent; R001 is collector time equal envelope receipt; native deletion quantity0 is not the removed standing quantity."
+              ]
+            }
+          },
+          "expected_failure_signals": [
+            "Native zero interpreted as removed quantity",
+            "Nonexistent position accepted",
+            "Lawful delete erases completed warm-up",
+            "Native side/window mismatch",
+            "Lossy typed durable lineage"
+          ],
+          "limitations": [
+            "Commissioned synthetic receipt deletion only, no live native certification."
+          ],
+          "adjacent_nonclaims": [
+            "Legacy D140/D139 preserved; original M00 datetime persistence evidence reused; other held signals unchanged."
+          ],
+          "environment": "Pinned CPython3.12.14 SQLite3.53.1 and existing tools.",
+          "material_versions": [
+            "Exact L01 native brief/binding/contract/generation and candidate source."
+          ],
+          "tier_treatment": "NOT_CLASSIFIED",
+          "command": "python -m pytest tests/product/market_measurement_native_d140/test_signal.py"
+        }
+      ],
+      "expected_collected": 2,
+      "collected": null,
+      "passed": null,
+      "skipped": null,
+      "exit_code": null,
+      "execution_status": "NOT_RUN",
+      "acceptance_status": "NOT_ATTEMPTED"
+    },
+    {
+      "leaf": "L11",
+      "claim_id": "neutral_market_measurement_truth_native_d143",
+      "generation_path": "config/product_proof/market_measurement_native_d143/generations/0002.json",
+      "generation_sha256": "3e2a223f8010009e33e43c7985f1cc4bd26b44f673ed8e05abe71cc89e28ec6c",
+      "generation": 2,
+      "brief_path": "handoff/downstream_reconciliation/authority/briefs/NATIVE_D143_BRIEF.md",
+      "brief_sha256": "b69227f2fbb9cc29702a9bf43ea2b88168757948074675eb48e756c143a40886",
+      "binding_path": "implementation/authority/DOWNSTREAM_NATIVE_D143_BINDING.yaml",
+      "binding_sha256": "3e23c6053e6feacb8722ff8ca661b4ee4423173870e04df409a9c2d54bea6e3b",
+      "contract_path": "handoff/downstream_reconciliation/proofs/d143/PROOF_CONTRACT.json",
+      "contract_sha256": "d32410d79fade1d37e545bf65641dc91f6f15e968b6ea7398a434cb272ba80dd",
+      "families": [
+        {
+          "id": "mmt_native_d143",
+          "path": "tests/product/market_measurement_native_d143/test_signal.py",
+          "proof_obligation_ids": [
+            "NATIVE-D143-SUBSCRIBED-QUALIFIED-MPID-CONCENTRATION"
+          ],
+          "required_test_names": [
+            "test_native_success",
+            "test_native_refusal"
+          ],
+          "boundary": "Native direct subscribed-side position replay across MPIDs, public intermediate insertion snapshot, deletion restoring all four C2 rows, qualified all-row MPID grouping and exact typed durable readback.",
+          "proof_levels": [
+            "CONTRACT",
+            "INTEGRATION",
+            "STATE"
+          ],
+          "authoritative_inputs": [
+            "Exact L01 C2 source, commissioned cross-MPID insert/delete recipe, all-standing-row grouping scope and literal ALPHA6/BETA2, shares3/4 and1/4, HHI5/8."
+          ],
+          "dependency_substitutions": [
+            "Frozen actual M00 public C2 DTOs via declared module-local reader plus exact isolated synthetic insert/delete recipe; no M00 runtime, private source access or mathematical predecessor."
+          ],
+          "case_coverage": {
+            "lawful_positive": {
+              "cases": [
+                "C2 complete prefix, BETA subscribed bid-position0 insert shifts ALPHA4/BETA1 to positions1/2 in a public source snapshot; delete returns original four rows. Group every standing row on both sides: ALPHA6/BETA2, shares3/4 and1/4, HHI5/8, with36 typed raw lineages and unchanged SQLite read-only bytes."
+              ]
+            },
+            "prohibited_false_positive": {
+              "cases": [
+                "Omit only R193 from final C2 callback, retain R197 size1 and all other roles; no result/history."
+              ]
+            },
+            "missing_mandatory_authority": {
+              "cases": [
+                "Exact C2 provider/request/exchange/generation/contract, native side1bid/0ask, complete bound warm-up, subscribed-side cross-MPID positions and authorised all-standing-row grouping scope."
+              ]
+            },
+            "lawful_optional_absence": {
+              "cases": [
+                "Provider event time/timezone absent; requested exchange remains separate from MPID; no D087 or other mathematical predecessor."
+              ]
+            }
+          },
+          "expected_failure_signals": [
+            "Per-MPID positional replay",
+            "Hidden intermediate ALPHA shift",
+            "Truncated or swapped side grouping",
+            "Exchange/MPID conflation",
+            "Missing MPID accepted",
+            "Lossy durable source/config lineage"
+          ],
+          "limitations": [
+            "Commissioned C2 stock synthetic direct compatibility only; no entitlement, native live, C3 CALL or PUT-direct claim."
+          ],
+          "adjacent_nonclaims": [
+            "Original legacy per-MPID-top-one D143 evidence and source remain preserved; D145 and unrelated held work stay paused."
+          ],
+          "environment": "Pinned CPython3.12.14 SQLite3.53.1 and existing tools.",
+          "material_versions": [
+            "Exact L01 native brief/binding/contract/generation and candidate source."
+          ],
+          "tier_treatment": "NOT_CLASSIFIED",
+          "command": "python -m pytest tests/product/market_measurement_native_d143/test_signal.py"
+        }
+      ],
+      "expected_collected": 2,
+      "collected": null,
+      "passed": null,
+      "skipped": null,
+      "exit_code": null,
+      "execution_status": "NOT_RUN",
+      "acceptance_status": "NOT_ATTEMPTED"
+    },
+    {
+      "leaf": "L12",
+      "claim_id": "neutral_market_measurement_truth_native_d137",
+      "generation_path": "config/product_proof/market_measurement_native_d137/generations/0002.json",
+      "generation_sha256": "e772751269c05a5b4682d07c0d049b305ad3d1202a5fc7919bd8359836d6bdd0",
+      "generation": 2,
+      "brief_path": "handoff/downstream_reconciliation/authority/briefs/NATIVE_D137_BRIEF.md",
+      "brief_sha256": "e245fb52e9cdb2d09e88a5d4ad4b298049840e07a1a70288311ff6c651ff82a5",
+      "binding_path": "implementation/authority/DOWNSTREAM_NATIVE_D137_BINDING.yaml",
+      "binding_sha256": "e5744fd589d76e70750743d4bc7f2e32ecaebd749bc6350a01ce800e43e4614c",
+      "contract_path": "handoff/downstream_reconciliation/proofs/d137/PROOF_CONTRACT.json",
+      "contract_sha256": "2d66fabbdcfc3916915b473721403da6805b526c686b8bf04be41d7ea1a975ea",
+      "families": [
+        {
+          "id": "mmt_native_d137",
+          "path": "tests/product/market_measurement_native_d137/test_signal.py",
+          "proof_obligation_ids": [
+            "NATIVE-D137-ASYNC-OPTION-MICROPRICE"
+          ],
+          "required_test_names": [
+            "test_native_success",
+            "test_native_refusal"
+          ],
+          "boundary": "Four distinct public M00 option callbacks assembled under exact scope/skew/age into the D137 exact microprice; no D087 mathematical predecessor; complete typed SQLite read-only reopening and missing-R036 refusal without history.",
+          "proof_levels": [
+            "CONTRACT",
+            "INTEGRATION",
+            "STATE"
+          ],
+          "authoritative_inputs": [
+            "L01 commissioned fixed source/API/allocation, A2/A3 actual public output and literal independent oracles."
+          ],
+          "dependency_substitutions": [
+            "Frozen actual M00 public DTO output via declared module-local reader; no M00 production replay."
+          ],
+          "case_coverage": {
+            "lawful_positive": {
+              "cases": [
+                "Explicit A2 CALL59/45 and A3 PUT58/25 with four role-order identities, exact receipt-only source and independent literal oracle, full typed SQLite read-only reopening."
+              ]
+            },
+            "prohibited_false_positive": {
+              "cases": [
+                "Omit CALL R036 with other three members and PUT visible; no result/history through owner and ordinary read-only reader."
+              ]
+            },
+            "missing_mandatory_authority": {
+              "cases": [
+                "Exact synthetic 250ms skew and 1000ms age, four-member assembly, versioned profile and case allocation."
+              ]
+            },
+            "lawful_optional_absence": {
+              "cases": [
+                "No provider event timestamp or timezone; receipt basis and four separate observations preserved."
+              ]
+            }
+          },
+          "expected_failure_signals": [
+            "Missing constituent accepted",
+            "stale quote accepted",
+            "cross-right or generation selection",
+            "lossy durable lineage",
+            "fabricated source timestamp"
+          ],
+          "limitations": [
+            "Synthetic receipt compatibility only; no live entitlement or production policy."
+          ],
+          "adjacent_nonclaims": [
+            "Original atomic stock D137201/2 and its legacy two-case proof remain unchanged; no D087 predecessor or live option policy."
+          ],
+          "environment": "Pinned CPython3.12.14 SQLite3.53.1 and existing tools.",
+          "material_versions": [
+            "Exact L01 native brief/binding/contract/generation and candidate source."
+          ],
+          "tier_treatment": "NOT_CLASSIFIED",
+          "command": "python -m pytest tests/product/market_measurement_native_d137/test_signal.py"
+        }
+      ],
+      "expected_collected": 2,
+      "collected": null,
+      "passed": null,
+      "skipped": null,
+      "exit_code": null,
+      "execution_status": "NOT_RUN",
+      "acceptance_status": "NOT_ATTEMPTED"
+    }
+  ],
+  "repaired_from_candidate": "fea21228e5c6fc24e7c229291b760edb52c8b0e1",
+  "source_checkpoint_note": "source_checkpoint remains the historical implementation handoff; current repaired commit is identified by the external additive receipt and REPAIR_01.md",
+  "repair_record": "handoff/downstream_reconciliation/L14/REPAIR_01.md",
+  "admission_recovery_record": "handoff/downstream_reconciliation/L14/REPAIR_04.md"
+}

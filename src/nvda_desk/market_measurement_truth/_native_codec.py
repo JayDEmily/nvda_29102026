@@ -22,18 +22,34 @@ _IDENTITIES = {
     "delivery_artifact_ref": raw.delivery_artifact_ref,
     "provider_id": raw.provider_id,
 }
-_ID_TYPES = {type(factory("R001" if name == "RawSignalCatalogueId" else "id")): name
-             for name, factory in _IDENTITIES.items()}
+_ID_TYPES = {
+    type(factory("R001" if name == "RawSignalCatalogueId" else "id")): name
+    for name, factory in _IDENTITIES.items()
+}
 _CLASSES = {
-    cls.__name__: cls for cls in (
-        raw.RawObservationOccurrenceV1, raw.ProjectedRawValueV1,
-        raw.RawSelectionIdentityV1, raw.RawSignalProjectionMappingV1,
-        f.VersionRefV1, f.AuthorityArtifactRefV1, f.CalculationDefinitionV1,
-        f.NativeSourceProfileV1, f.NativeSourceRequestV1, f.NativeRawLineageV1,
-        f.NativeControlLineageV1, f.NativeBookRowV1, f.NativeSourceSnapshotV1,
-        f.NativeQuoteAssemblyV1, f.NativeCalculationRequestV1,
-        f.NativeMeasurementOccurrenceV1, f.DerivedSignalOccurrenceV1, f.RawInputLineageV1,
-        f.ExactRatioV1, f.BookSlopePairV1, f.BookRatePairV1,
+    cls.__name__: cls
+    for cls in (
+        raw.RawObservationOccurrenceV1,
+        raw.ProjectedRawValueV1,
+        raw.RawSelectionIdentityV1,
+        raw.RawSignalProjectionMappingV1,
+        f.VersionRefV1,
+        f.AuthorityArtifactRefV1,
+        f.CalculationDefinitionV1,
+        f.NativeSourceProfileV1,
+        f.NativeSourceRequestV1,
+        f.NativeRawLineageV1,
+        f.NativeControlLineageV1,
+        f.NativeBookRowV1,
+        f.NativeSourceSnapshotV1,
+        f.NativeQuoteAssemblyV1,
+        f.NativeCalculationRequestV1,
+        f.NativeMeasurementOccurrenceV1,
+        f.DerivedSignalOccurrenceV1,
+        f.RawInputLineageV1,
+        f.ExactRatioV1,
+        f.BookSlopePairV1,
+        f.BookRatePairV1,
         f.VenueConcentrationV1,
     )
 }
@@ -57,7 +73,10 @@ def _tag(value: Any) -> Any:
         f._utc(value)
         return {"t": "datetime", "v": value.isoformat()}
     if type(value) is timedelta:
-        return {"t": "duration", "v": (value.days * 86400 + value.seconds) * 1000000 + value.microseconds}
+        return {
+            "t": "duration",
+            "v": (value.days * 86400 + value.seconds) * 1000000 + value.microseconds,
+        }
     if type(value) is bytes:
         return {"t": "bytes", "v": value.hex()}
     if type(value) is float:
@@ -68,15 +87,23 @@ def _tag(value: Any) -> Any:
         if any(type(k) is not str for k in value):
             raise TypeError("native mappings require exact string keys")
         return {"t": "mapping", "v": {k: _tag(x) for k, x in value.items()}}
-    if is_dataclass(value) and type(value).__name__ in _CLASSES and _CLASSES[type(value).__name__] is type(value):
-        return {"t": "record", "n": type(value).__name__,
-                "v": {field.name: _tag(getattr(value, field.name)) for field in fields(value)}}
+    if (
+        is_dataclass(value)
+        and type(value).__name__ in _CLASSES
+        and _CLASSES[type(value).__name__] is type(value)
+    ):
+        return {
+            "t": "record",
+            "n": type(value).__name__,
+            "v": {field.name: _tag(getattr(value, field.name)) for field in fields(value)},
+        }
     raise TypeError("unadmitted native carrier")
 
 
 def canonical(value: Any) -> bytes:
-    return json.dumps(_tag(value), sort_keys=True, separators=(",", ":"), ensure_ascii=True,
-                      allow_nan=False).encode("utf-8")
+    return json.dumps(
+        _tag(value), sort_keys=True, separators=(",", ":"), ensure_ascii=True, allow_nan=False
+    ).encode("utf-8")
 
 
 def _read(value: Any) -> Any:
@@ -87,7 +114,10 @@ def _read(value: Any) -> Any:
         return None
     if kind == "identity" and set(value) == {"t", "n", "v"} and value["n"] in _IDENTITIES:
         return _IDENTITIES[value["n"]](value["v"])
-    if kind in ("bool", "int", "str", "datetime", "duration", "bytes", "float") and set(value) == {"t", "v"}:
+    if kind in ("bool", "int", "str", "datetime", "duration", "bytes", "float") and set(value) == {
+        "t",
+        "v",
+    }:
         raw_value = value["v"]
         if kind == "bool" and type(raw_value) is bool:
             return raw_value
@@ -108,12 +138,17 @@ def _read(value: Any) -> Any:
             return bytes.fromhex(raw_value)
         if kind == "float" and type(raw_value) is str:
             return float.fromhex(raw_value)
-    if kind == "decimal" and set(value) == {"t", "s", "d", "e"}:
-        if (type(value["s"]) is int and value["s"] in (0, 1)
-            and type(value["d"]) is list and value["d"]
-            and all(type(x) is int and 0 <= x <= 9 for x in value["d"])
-            and type(value["e"]) is int):
-            return Decimal((value["s"], tuple(value["d"]), value["e"]))
+    if (
+        kind == "decimal"
+        and set(value) == {"t", "s", "d", "e"}
+        and type(value["s"]) is int
+        and value["s"] in (0, 1)
+        and type(value["d"]) is list
+        and value["d"]
+        and all(type(x) is int and 0 <= x <= 9 for x in value["d"])
+        and type(value["e"]) is int
+    ):
+        return Decimal((value["s"], tuple(value["d"]), value["e"]))
     if kind in ("tuple", "list") and set(value) == {"t", "v"} and type(value["v"]) is list:
         items = [_read(x) for x in value["v"]]
         return tuple(items) if kind == "tuple" else items

@@ -1,14 +1,14 @@
 """L05 native D134 pair, authored before production and NOT_RUN until L14."""
 
+import sys
 from datetime import UTC, datetime, timedelta
 from decimal import Decimal
 from pathlib import Path
-import sys
 
 from nvda_desk.market_measurement_truth import api as f
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "support"))
-from native_reconciliation import PublicDtoReader, typed_tree  # noqa: E402
+from native_reconciliation import PublicDtoReader, typed_tree
 
 T = datetime(2026, 10, 20, 12, 40, tzinfo=UTC)
 CUTOFF = T + timedelta(seconds=1)
@@ -19,16 +19,16 @@ ROLES = {"R185", "R187", "R188", "R190"}
 
 
 def _request():
-    return f.NativeCalculationRequestV1(
-        "D134", PROFILE, T, CUTOFF, 2, None, None, 1, (), ())
+    return f.NativeCalculationRequestV1("D134", PROFILE, T, CUTOFF, 2, None, None, 1, (), ())
 
 
 def _four_roles():
     source = PublicDtoReader(scenarios=("A4", "C2"))
     # R189 is not a D134 mathematical dependency. Original native observations
     # still retain their price metadata; the calculation needs no price projection.
-    source.projections = [x for x in source.projections
-                          if x.raw_signal_catalogue_id.value != "R189"]
+    source.projections = [
+        x for x in source.projections if x.raw_signal_catalogue_id.value != "R189"
+    ]
     return source
 
 
@@ -36,9 +36,11 @@ def test_native_success(tmp_path):
     source = _four_roles()
     path = tmp_path / "native-d134.sqlite"
     owner = f.create_native_smart_depth_owner(
-        admission=f.OwnerAdmissionV1("M02", BRIEF), raw_reader=source,
+        admission=f.OwnerAdmissionV1("M02", BRIEF),
+        raw_reader=source,
         storage=f.SQLiteStorageV1(str(path), True),
-        utc_now=lambda: T + timedelta(seconds=2))
+        utc_now=lambda: T + timedelta(seconds=2),
+    )
     request = _request()
     result = owner.materialise(request)
     assert type(result) is f.NativeMeasurementOccurrenceV1
@@ -59,8 +61,10 @@ def test_native_success(tmp_path):
     assert snapshot.profile.source_context_ref == f.VersionRefV1("native-a4-stock-context", 1)
     assert snapshot.profile.warmup_observation_ids == IDS
     assert snapshot.controls == ()
-    assert tuple((r.side, r.position, r.price, r.size, r.requested_exchange,
-                  r.observation_occurrence_id) for r in snapshot.standing_rows) == (
+    assert tuple(
+        (r.side, r.position, r.price, r.size, r.requested_exchange, r.observation_occurrence_id)
+        for r in snapshot.standing_rows
+    ) == (
         (1, 0, None, Decimal("5"), "SMART", IDS[0]),
         (1, 1, None, Decimal("3"), "SMART", IDS[1]),
         (0, 0, None, Decimal("2"), "SMART", IDS[2]),
@@ -71,9 +75,12 @@ def test_native_success(tmp_path):
     assert {x.raw_signal_id for x in snapshot.raw_input_lineage} == ROLES
     assert {x.observation_occurrence_id for x in snapshot.raw_input_lineage} == set(IDS)
     for line in snapshot.raw_input_lineage:
-        item = next(x for x in source.projections
-                    if x.observation_occurrence_id.value == line.observation_occurrence_id
-                    and x.raw_signal_catalogue_id.value == line.raw_signal_id)
+        item = next(
+            x
+            for x in source.projections
+            if x.observation_occurrence_id.value == line.observation_occurrence_id
+            and x.raw_signal_catalogue_id.value == line.raw_signal_id
+        )
         assert typed_tree(line.projection) == typed_tree(item)
         assert type(line.canonical_value) is (Decimal if line.raw_signal_id == "R190" else int)
         assert typed_tree(line.canonical_value) == typed_tree(item.native_value)
@@ -87,50 +94,80 @@ def test_native_success(tmp_path):
     assert result.definition.derived_dependencies == ()
     assert result.units == "shares" and result.result_shape == "decimal"
     assert result.owner_object_id == "M02" and result.implementation_brief_sha256 == BRIEF
-    assert (result.effective_as_of_utc, result.knowledge_cutoff_utc,
-            result.calculated_at_utc) == (T, CUTOFF, T + timedelta(seconds=2))
+    assert (result.effective_as_of_utc, result.knowledge_cutoff_utc, result.calculated_at_utc) == (
+        T,
+        CUTOFF,
+        T + timedelta(seconds=2),
+    )
     assert source.control_queries > 0 and all(x is None for x in source.event_filters)
     before = path.read_bytes()
     reader = f.create_native_smart_depth_reader(
-        admission=f.OwnerAdmissionV1("M02", BRIEF),
-        storage=f.SQLiteReadStorageV1(str(path)))
+        admission=f.OwnerAdmissionV1("M02", BRIEF), storage=f.SQLiteReadStorageV1(str(path))
+    )
     reopened = reader.get_derived_occurrence(result.derived_occurrence_id)
     assert type(reopened) is f.NativeMeasurementOccurrenceV1
     assert typed_tree(reopened) == typed_tree(result)
     history = reader.list_derived_history(
-        derived_signal_id="D134", subject_instrument="NVDA-STK-CONTROL-1",
-        effective_at_or_before_utc=T, knowledge_at_or_before_utc=CUTOFF, limit=1)
+        derived_signal_id="D134",
+        subject_instrument="NVDA-STK-CONTROL-1",
+        effective_at_or_before_utc=T,
+        knowledge_at_or_before_utc=CUTOFF,
+        limit=1,
+    )
     assert len(history) == 1 and typed_tree(history[0]) == typed_tree(result)
     assert path.read_bytes() == before
 
 
 def test_native_refusal(tmp_path):
     source = _four_roles()
-    source.projections = [x for x in source.projections
-                          if not (x.raw_signal_catalogue_id.value == "R187"
-                                  and x.observation_occurrence_id.value == IDS[-1])]
-    final = tuple(x for x in source.projections
-                  if x.observation_occurrence_id.value == IDS[-1])
+    source.projections = [
+        x
+        for x in source.projections
+        if not (
+            x.raw_signal_catalogue_id.value == "R187"
+            and x.observation_occurrence_id.value == IDS[-1]
+        )
+    ]
+    final = tuple(x for x in source.projections if x.observation_occurrence_id.value == IDS[-1])
     assert len(final) == 3
     assert {x.raw_signal_catalogue_id.value for x in final} == {"R185", "R188", "R190"}
     assert tuple(x.native_value for x in final) == (1, 0, Decimal("4"))
-    assert {x.raw_signal_catalogue_id.value for x in source.projections
-            if x.observation_occurrence_id.value == IDS[0]} == ROLES
+    assert {
+        x.raw_signal_catalogue_id.value
+        for x in source.projections
+        if x.observation_occurrence_id.value == IDS[0]
+    } == ROLES
     path = tmp_path / "refused-native-d134.sqlite"
     owner = f.create_native_smart_depth_owner(
-        admission=f.OwnerAdmissionV1("M02", BRIEF), raw_reader=source,
+        admission=f.OwnerAdmissionV1("M02", BRIEF),
+        raw_reader=source,
         storage=f.SQLiteStorageV1(str(path), True),
-        utc_now=lambda: T + timedelta(seconds=2))
+        utc_now=lambda: T + timedelta(seconds=2),
+    )
     assert owner.materialise(_request()) is None
-    assert owner.reads.list_derived_history(
-        derived_signal_id="D134", subject_instrument="NVDA-STK-CONTROL-1",
-        effective_at_or_before_utc=T, knowledge_at_or_before_utc=CUTOFF, limit=10) == ()
+    assert (
+        owner.reads.list_derived_history(
+            derived_signal_id="D134",
+            subject_instrument="NVDA-STK-CONTROL-1",
+            effective_at_or_before_utc=T,
+            knowledge_at_or_before_utc=CUTOFF,
+            limit=10,
+        )
+        == ()
+    )
     before = path.read_bytes()
     reader = f.create_native_smart_depth_reader(
-        admission=f.OwnerAdmissionV1("M02", BRIEF),
-        storage=f.SQLiteReadStorageV1(str(path)))
-    assert reader.list_derived_history(
-        derived_signal_id="D134", subject_instrument="NVDA-STK-CONTROL-1",
-        effective_at_or_before_utc=T, knowledge_at_or_before_utc=CUTOFF, limit=10) == ()
+        admission=f.OwnerAdmissionV1("M02", BRIEF), storage=f.SQLiteReadStorageV1(str(path))
+    )
+    assert (
+        reader.list_derived_history(
+            derived_signal_id="D134",
+            subject_instrument="NVDA-STK-CONTROL-1",
+            effective_at_or_before_utc=T,
+            knowledge_at_or_before_utc=CUTOFF,
+            limit=10,
+        )
+        == ()
+    )
     assert path.read_bytes() == before
     assert source.control_queries > 0 and all(x is None for x in source.event_filters)
