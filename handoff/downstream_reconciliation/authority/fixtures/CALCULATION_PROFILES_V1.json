@@ -1,0 +1,224 @@
+{
+  "schema_version": 1,
+  "source_version": 1,
+  "status": "commissioned_closed_synthetic_requests_not_run",
+  "profiles": {
+    "D087": {
+      "source_profiles": [
+        "native-a2-call",
+        "native-a3-put"
+      ],
+      "as_of": [
+        "2026-10-20T12:40:00.300Z",
+        "2026-10-20T12:40:00.400Z"
+      ],
+      "cutoff": "2026-10-20T12:40:01Z",
+      "depth_levels": 0,
+      "band": null,
+      "window_seconds": null,
+      "side": null,
+      "positions": [],
+      "predecessors": [],
+      "definition": "D087-NATIVE-OPTION-MIDPOINT-1",
+      "units": "USD/underlying share premium",
+      "result_shape": "decimal"
+    },
+    "D131": {
+      "source_profiles": [
+        "native-c1-call"
+      ],
+      "as_of": [
+        "2026-10-20T12:40:00.300Z"
+      ],
+      "cutoff": "2026-10-20T12:40:01Z",
+      "depth_levels": 0,
+      "band": "0.50",
+      "window_seconds": null,
+      "side": null,
+      "positions": [],
+      "predecessors": [
+        "actual native D087 CALL in native-coherent-call-reference/1"
+      ],
+      "definition": "D131-NATIVE-CALL-BAND-1",
+      "units": "contracts",
+      "result_shape": "decimal"
+    },
+    "D134": {
+      "source_profiles": [
+        "native-a4-stock"
+      ],
+      "as_of": [
+        "2026-10-20T12:40:00Z"
+      ],
+      "cutoff": "2026-10-20T12:40:01Z",
+      "depth_levels": 2,
+      "band": null,
+      "window_seconds": null,
+      "side": 1,
+      "positions": [],
+      "predecessors": [],
+      "definition": "D134-NATIVE-BID-TOP2-1",
+      "units": "shares",
+      "result_shape": "decimal",
+      "required_roles": [
+        "R185",
+        "R187",
+        "R188",
+        "R190"
+      ]
+    },
+    "D135": {
+      "source_profiles": [
+        "native-a4-stock"
+      ],
+      "as_of": [
+        "2026-10-20T12:40:00Z"
+      ],
+      "cutoff": "2026-10-20T12:40:01Z",
+      "depth_levels": [
+        2,
+        1
+      ],
+      "band": null,
+      "window_seconds": null,
+      "side": 0,
+      "positions": [],
+      "predecessors": [],
+      "definition": [
+        "D135-NATIVE-ASK-TOP2-1",
+        "D135-NATIVE-ASK-TOP1-1"
+      ],
+      "units": "shares",
+      "result_shape": "decimal",
+      "required_roles": [
+        "R185",
+        "R187",
+        "R188",
+        "R190"
+      ]
+    },
+    "D136": {
+      "source_profiles": [
+        "native-a4-stock"
+      ],
+      "as_of": [
+        "2026-10-20T12:40:00Z"
+      ],
+      "cutoff": "2026-10-20T12:40:01Z",
+      "depth_levels": 2,
+      "band": null,
+      "window_seconds": null,
+      "side": null,
+      "positions": [],
+      "predecessors": [
+        "actual native D134 top2",
+        "actual native D135 top2"
+      ],
+      "definition": "D136-NATIVE-COMMON-TOP2-IMBALANCE-1",
+      "units": "-1_to_1",
+      "result_shape": "exact_ratio"
+    },
+    "D138": {
+      "source_profiles": [
+        "native-d138-slope"
+      ],
+      "as_of": [
+        "2026-10-16T01:00:00Z"
+      ],
+      "cutoff": "2026-10-16T01:00:01Z",
+      "depth_levels": 3,
+      "band": null,
+      "window_seconds": null,
+      "side": null,
+      "positions": [],
+      "predecessors": [
+        "actual unchanged public D011"
+      ],
+      "definition": "D138-NATIVE-THREE-LEVEL-OLS-1",
+      "units": "depth per price distance",
+      "result_shape": "book_slope_pair"
+    },
+    "D139": {
+      "source_profiles": [
+        "native-d139-insert"
+      ],
+      "as_of": [
+        "2026-10-20T12:40:00Z"
+      ],
+      "cutoff": "2026-10-20T12:40:01Z",
+      "depth_levels": 0,
+      "band": null,
+      "window_seconds": 4,
+      "side": 1,
+      "positions": [
+        1,
+        2
+      ],
+      "predecessors": [],
+      "definition": "D139-NATIVE-RECEIPT-INSERT-1",
+      "units": "events or size/time",
+      "result_shape": "book_rate_pair"
+    },
+    "D140": {
+      "source_profiles": [
+        "native-d140-delete"
+      ],
+      "as_of": [
+        "2026-10-20T12:40:00Z"
+      ],
+      "cutoff": "2026-10-20T12:40:01Z",
+      "depth_levels": 0,
+      "band": null,
+      "window_seconds": 2,
+      "side": 1,
+      "positions": [
+        1,
+        2
+      ],
+      "predecessors": [],
+      "definition": "D140-NATIVE-RECEIPT-DELETE-1",
+      "units": "events or size/time",
+      "result_shape": "book_rate_pair"
+    },
+    "D143": {
+      "source_profiles": [
+        "native-c2-stock"
+      ],
+      "as_of": [
+        "2026-10-20T12:40:00Z"
+      ],
+      "cutoff": "2026-10-20T12:40:01Z",
+      "depth_levels": 2,
+      "band": null,
+      "window_seconds": null,
+      "side": null,
+      "positions": [],
+      "predecessors": [],
+      "definition": "D143-NATIVE-SUBSCRIBED-ALL-ROWS-MPID-HHI-1",
+      "units": "normalised MPID concentration",
+      "result_shape": "venue_concentration",
+      "depth_scope": "All standing rows on both selected subscribed sides; depth_levels2 denotes initial C2 warmup coverage, not a per-MPID truncation. The public source helper intermediate snapshot may contain3 bid rows after insertion; final D143 input returns2bid/2ask."
+    },
+    "D137": {
+      "source_profiles": [
+        "native-a2-call",
+        "native-a3-put"
+      ],
+      "as_of": [
+        "2026-10-20T12:40:00.300Z",
+        "2026-10-20T12:40:00.400Z"
+      ],
+      "cutoff": "2026-10-20T12:40:01Z",
+      "depth_levels": 0,
+      "band": null,
+      "window_seconds": null,
+      "side": null,
+      "positions": [],
+      "predecessors": [],
+      "definition": "D137-NATIVE-OPTION-MICROPRICE-1",
+      "units": "USD/underlying share premium",
+      "result_shape": "exact_ratio"
+    }
+  },
+  "semantic_refusal_as_of_exception": "Control-after-warmup refusal can advance as_of through its stated separate control while keeping knowledge cutoff. Actual predecessors must be recomputed at matching advanced as_of; source identity and parameters stay exact. Explicit stale-quote request advances as_of and cutoff by2seconds. These are refusal-only requested contexts, never accepted alternate policies."
+}

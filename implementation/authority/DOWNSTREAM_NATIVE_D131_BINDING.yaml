@@ -1,0 +1,10 @@
+schema_version: "1.0"
+brief_sha256: 0ac16b9eb4859665807a86739293a196e63916062c3db7c522ab6303eabcfbe8
+acceptance:
+  status: ACCEPTED_FOR_IMPLEMENTATION
+  authority_ref: owner-chat/20261028/downstream-reconciliation/execute-entire-plan
+targets:
+  - action: modify
+    object_id: M02
+  - action: modify
+    object_id: G01

@@ -1,0 +1,342 @@
+{
+  "schema_version": 1,
+  "status": "commissioned_isolated_synthetic_input_specs_not_runtime_outputs",
+  "common": {
+    "provider": "foundation-controlled-native-reconciliation-v1",
+    "source_product_api": "TWS_SOCKET_API_SYNTHETIC_SPECIMEN",
+    "callback": "updateMktDepthL2",
+    "temporal_kind": "receipt_only",
+    "source_timestamp_raw": null,
+    "source_timezone_native": null,
+    "side_bid": 1,
+    "side_ask": 0,
+    "operations": {
+      "insert": 0,
+      "update": 1,
+      "delete": 2
+    },
+    "mapping_version": 1,
+    "identity_paths": {
+      "subject": [
+        "_collector",
+        "subject"
+      ],
+      "request": [
+        "_collector",
+        "request"
+      ],
+      "generation": [
+        "_collector",
+        "generation"
+      ],
+      "requested_exchange": [
+        "_collector",
+        "requested_exchange"
+      ],
+      "scenario_id": [
+        "_collector",
+        "scenario_id"
+      ]
+    },
+    "native_type_rules": {
+      "side": "int",
+      "position": "int",
+      "operation": "int",
+      "price": "Decimal",
+      "size": "Decimal",
+      "time.receipt": "UTC-aware datetime equal to received_ts_utc"
+    },
+    "all_values_synthetic": true
+  },
+  "slope": {
+    "profile_id": "native-d138-slope/1",
+    "variant": "ibkr-smart-depth/receipt-slope-v1",
+    "subject": "NVDA",
+    "security_type": "STK",
+    "right": null,
+    "request": "REC-SLOPE-R1",
+    "generation": "REC-SLOPE-G1",
+    "scope": "NVDA/REC-SLOPE/G1",
+    "requested_exchange": "SMART",
+    "as_of": "2026-10-16T01:00:00Z",
+    "cutoff": "2026-10-16T01:00:01Z",
+    "complete_from": "2026-10-16T00:59:50Z",
+    "warmup_side_levels": {
+      "1": 3,
+      "0": 3
+    },
+    "mapping_prefix": "mmt-native-d138",
+    "roles": [
+      "R185",
+      "R187",
+      "R188",
+      "R189",
+      "R190"
+    ],
+    "rows": [
+      [
+        "REC-SLOPE-B0",
+        "2026-10-16T00:59:51Z",
+        1,
+        0,
+        1,
+        0,
+        "99",
+        "2"
+      ],
+      [
+        "REC-SLOPE-B1",
+        "2026-10-16T00:59:52Z",
+        2,
+        0,
+        1,
+        1,
+        "98",
+        "3"
+      ],
+      [
+        "REC-SLOPE-B2",
+        "2026-10-16T00:59:53Z",
+        3,
+        0,
+        1,
+        2,
+        "97",
+        "4"
+      ],
+      [
+        "REC-SLOPE-A0",
+        "2026-10-16T00:59:54Z",
+        4,
+        0,
+        0,
+        0,
+        "101",
+        "5"
+      ],
+      [
+        "REC-SLOPE-A1",
+        "2026-10-16T00:59:55Z",
+        5,
+        0,
+        0,
+        1,
+        "102",
+        "2"
+      ],
+      [
+        "REC-SLOPE-A2",
+        "2026-10-16T00:59:56Z",
+        6,
+        0,
+        0,
+        2,
+        "103",
+        "3"
+      ]
+    ],
+    "row_columns": [
+      "id",
+      "receipt",
+      "sequence",
+      "operation",
+      "side",
+      "position",
+      "price",
+      "size"
+    ],
+    "actual_predecessor": "D011 public create_owner using its unchanged authorised controlled quote, result Decimal100; request subject NVDA and exact time above. Never hand-build DerivedSignalOccurrenceV1.",
+    "refusal_control": {
+      "id": "REC-SLOPE-RESET",
+      "receipt": "2026-10-16T00:59:59Z",
+      "sequence": 7,
+      "kind": "error317",
+      "invalidates": true,
+      "generation_before": "REC-SLOPE-G1",
+      "generation_after": "REC-SLOPE-G1"
+    }
+  },
+  "insert_rate": {
+    "profile_id": "native-d139-insert/1",
+    "variant": "ibkr-smart-depth/receipt-rate-v1",
+    "subject": "NVDA",
+    "security_type": "STK",
+    "right": null,
+    "request": "REC-RATE-R1",
+    "generation": "REC-RATE-G1",
+    "scope": "NVDA/REC-RATE/G1",
+    "requested_exchange": "SMART",
+    "as_of": "2026-10-20T12:40:00Z",
+    "cutoff": "2026-10-20T12:40:01Z",
+    "complete_from": "2026-10-20T12:39:50Z",
+    "warmup_side_levels": {
+      "1": 3,
+      "0": 1
+    },
+    "mapping_prefix": "mmt-native-rate",
+    "roles": [
+      "R001",
+      "R185",
+      "R187",
+      "R188",
+      "R190"
+    ],
+    "r001_native_path": [
+      "time",
+      "receipt"
+    ],
+    "window_seconds": 4,
+    "positions": [
+      1,
+      2
+    ],
+    "side": 1,
+    "warmup": [
+      [
+        "REC-RATE-B0",
+        "2026-10-20T12:39:51Z",
+        1,
+        0,
+        1,
+        0,
+        "5"
+      ],
+      [
+        "REC-RATE-B1",
+        "2026-10-20T12:39:52Z",
+        2,
+        0,
+        1,
+        1,
+        "6"
+      ],
+      [
+        "REC-RATE-B2",
+        "2026-10-20T12:39:53Z",
+        3,
+        0,
+        1,
+        2,
+        "7"
+      ],
+      [
+        "REC-RATE-A0",
+        "2026-10-20T12:39:54Z",
+        4,
+        0,
+        0,
+        0,
+        "2"
+      ]
+    ],
+    "selected_rows": [
+      [
+        "REC-RATE-I1",
+        "2026-10-20T12:39:57Z",
+        5,
+        0,
+        1,
+        1,
+        "3"
+      ],
+      [
+        "REC-RATE-I2",
+        "2026-10-20T12:39:59Z",
+        6,
+        0,
+        1,
+        2,
+        "5"
+      ]
+    ],
+    "row_columns": [
+      "id",
+      "receipt",
+      "sequence",
+      "operation",
+      "side",
+      "position",
+      "size"
+    ],
+    "refusal": "Omit R187 only from REC-RATE-I2 while R001/R185/R188/R190 remain. Refuse with no occurrence/history append."
+  },
+  "delete_rate": {
+    "profile_id": "native-d140-delete/1",
+    "uses_exact_insert_rate_source_profile": true,
+    "window_seconds": 2,
+    "positions": [
+      1,
+      2
+    ],
+    "side": 1,
+    "warmup_from": "insert_rate.warmup",
+    "selected_rows": [
+      [
+        "REC-RATE-D1",
+        "2026-10-20T12:39:59Z",
+        5,
+        2,
+        1,
+        1,
+        "0"
+      ]
+    ],
+    "removed_standing_size": "6",
+    "refusal": "Replace delete position1 with9, keep side1, operation2, R001 and native size0: no standing position, no occurrence/history append."
+  },
+  "helper": {
+    "profile_id": "native-receipt-controls/1",
+    "uses_frozen_source": "A4",
+    "success_sequence": [
+      "Read A4 prefix with no controls by receipt cutoff12:39:59.400Z, page size1, assert8bid/6ask and null event selector.",
+      "Discover outgoing restart G1-to-G2 at12:39:59.900Z through request/exchange/generation G1 query.",
+      "Discover same incoming boundary through control.generation_after G2 query, union by immutable ID.",
+      "Fresh synthetic G2 epoch STK-SMART-G2 at12:40:00Z, request STK-SMART-R1, same exact provider/variant/subject/exchange as A4. Replay fresh contiguous side1pos0size5 and side0pos0size2 receipts12:40:00.100Z/.200Z seq30/31. Explicit warmup IDs REC-HELPER-G2-B0/REC-HELPER-G2-A0. Snapshot accepts only these G2 rows, with incoming boundary lineage."
+    ],
+    "refusal_sequence": [
+      "A4 complete prefix then exact separate error317 at12:39:59.500Z: no new warmup means refusal.",
+      "Construct exactly two fresh same-generation relevant insert callbacks with same receipt12:40:00.100Z/scope/seq30, distinct IDs REC-TIE-A and REC-TIE-B; ID order cannot establish causality; refuse."
+    ],
+    "control_transport": "Existing m00-control-envelope/1 under _collector.control, nested collector fields are plain native values in public DTO; generation_before/after as declared. error316/error317/reconnect/gap/restart invalidates=true all invalidate."
+  },
+  "direct_mutation": {
+    "uses_frozen_source": "C2",
+    "extra_rows": [
+      [
+        "REC-DIRECT-I0",
+        "2026-10-20T12:39:58.900Z",
+        405,
+        0,
+        1,
+        0,
+        "99.10",
+        "9",
+        "BETA"
+      ],
+      [
+        "REC-DIRECT-D0",
+        "2026-10-20T12:39:58.950Z",
+        406,
+        2,
+        1,
+        0,
+        "99.10",
+        "0",
+        "BETA"
+      ]
+    ],
+    "row_columns": [
+      "id",
+      "receipt",
+      "sequence",
+      "operation",
+      "side",
+      "position",
+      "price",
+      "size",
+      "mpid"
+    ],
+    "meaning": "Insert at subscribed bid position0 shifts ALPHA4 and BETA1 to1/2 across MPIDs; delete position0 returns original C2 final book. Persist final result5/8 and assert exact intermediate replay rows from public snapshot so per-MPID replay cannot hide behind equal final HHI.",
+    "refusal": "Omit R193 only from the final C2 native callback while keeping R197 size1. No result/history."
+  }
+}

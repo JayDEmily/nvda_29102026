@@ -1,23 +1,40 @@
-# L01 implementation-readiness disposition — BLOCKED ON AUTHORISATION
+# L01 source-contract readiness — AUTHORITY_READY / NOT_RUN
 
-28 October 2026, Australia/Melbourne. **Not independently reviewed, not accepted, not tested.** This checkpoint contains the source-grounded candidate documents `authority/CONSUMER_SOURCE_CONTRACT_V1.md`, `authority/PROFILE_AND_PROOF_ALLOCATION.md` and `authority/expected/SYNTHETIC_REFERENCE_ORACLES_V1.json` only. No implementation source, old claim, immutable generation, evidence fixture, production test or proof-runner file was changed.
+28 October 2026. This is documentary implementation readiness under the current owner commission, not independent test acceptance. L02–L12 production/proofs remain NOT_ATTEMPTED at this L01 checkpoint; D145 remains PAUSED and L13 remains disposition-only.
 
-## Evidence observed
+## Authority assessment and correction of the inherited blocker
 
-- R2 owner-authorised workflow and completed L00 `97f944d51ab9e403250fe76910e2754b50425c73` intake.
-- Full M00 Brief2 V3 §0–§7, M00 public read-facet signatures, original observation history contract, generic architecture ownership/dependency/ingress laws, D138/D145 owner-approved raw-dependency overlay, L00 inventory/review, existing signal test parametrisation and owning claim identifiers.
-- The preserved M00 source profiles are synthetic. Native-side/operation/receipt facts and the numerical examples are source-supported; new M02 live quote policy, event/receipt causal eligibility, exact direct grouping scope and accepted claim/ingress are not established by them.
+The restored candidate at8846a45113b101af97b93799e6565162ddaaf945 recorded A01–A04 as missing fresh human approval. That assessment was overbroad. The current owner had already commissioned completion of the entire accepted plan and the bounded native receipt profile, synthetic250ms skew/1000ms latest-age candidates, C2 complete-row direct scope and native2+legacy2 allocation. These are concrete synthetic compatibility choices within that commission, not missing provider facts or new mathematics. The implementation can record their exact form without another routine approval. The previous blocked candidate remains recoverable from ordinary Git history.
 
-## First unmet invariant and blocked leaves
+- A01 is now concrete: versioned collector-receipt lineage, exact public source/control enumeration, causal tie refusal, known-empty synthetic epochs and exact warmup recipes.
+- A02 is now concrete: four-member CALL/PUT synthetic assembly, inclusive250ms skew/1000ms newest age, latest eligible selection, literal missing/stale refusal and exact membership/time/right identities.
+- A03 is now concrete: one subscribed direct book per side across MPIDs, all standing rows on both sides grouped by qualified MPID within exact C2 request/exchange/contract; cross-MPID insert/delete witness.
+- A04 is now concrete: additive exact typed API/codec contract, eleven fixed sibling claim plans, exact frozen native briefs/bindings, native2+legacy2 count, and immutable generations before first L14 strict execution.
+- A05/D145 remains a real separate policy boundary: no receipt-based K17 mathematical redefinition or implementation is authorised by this reconciliation.
 
-L01 requires exact approved versioned consumer time/control and source profiles, quote membership/age/skew, direct concentration scope, typed M02 transport/codec, and physical-case/proof-admission binding *before* implementation. The current sources do not establish all those decisions; they are identified as A01–A04 in the proposed contract. An accepted generic instruction to execute the plan does not create exact policy values or satisfy the external brief-byte/acceptance binding required by `docs/architecture/IMPLEMENTATION_AUTHORITY_INGRESS.md`.
+Higher authority reference: `owner-chat/20261028/downstream-reconciliation/execute-entire-plan`. The binding records this external commission; it does not manufacture acceptance. Source-specific provider/timestamp/right/operation facts and the accepted equations remain unchanged. Independent L14 can return a concrete authority/meaning defect and still owns all test-backed acceptance.
 
-**Disposition: L01 BLOCKED on A01–A04.** Consequently dependent L02–L12 product implementation and L14 test execution have **NOT** been attempted. D145 remains PAUSED; L13's separate documentary disposition has not been carried out, because it is downstream of the unresolved time/control contract. This is not an allegation that the existing M02 code or legacy tests are defective. It is an authority readiness blocker for the *new* native-compatible profiles only.
+## Concrete documentary outputs
 
-## Checkpoint and transfer
+- `authority/CONSUMER_SOURCE_CONTRACT_V1.md`: exact selection, control, order, lifecycle, synthetic completeness, quote, direct scope and per-owner meaning.
+- `authority/NATIVE_PUBLIC_API_V1.md`: exact additive public types and factories, D136's two actual readers, durable sibling codec constraints.
+- `authority/PROFILE_AND_PROOF_ALLOCATION.md`: exact two native physical cases per D plus retained legacy pair, separate helper pair, L14-only strict execution/invalidation.
+- `authority/fixtures/FROZEN_M00_PUBLIC_OUTPUT_V1.jsonl`, mappings/provenance/source profiles: selected actual completed M00 public DTO content and exact identities, without rerunning M00.
+- `authority/fixtures/SYNTHETIC_RECIPES_V1.json`: isolated new slope/rate/restart/tie/direct mutation fixtures; all new fields explicitly synthetic and receipt-only.
+- `authority/fixtures/CALCULATION_PROFILES_V1.json`: closed request/profile/version/time/units/definition parameters.
+- `authority/expected/SYNTHETIC_REFERENCE_ORACLES_V1.json`: independent literals, including C1 band0.50, D139 positions1–2 inserts3/5, native CALL59/45 and PUT58/25 microprice.
+- `authority/briefs/NATIVE_<ID>_BRIEF.md`, exact M02+G01 bindings, fixed native claim plan and component hash manifest.
 
-- Continue from the fixed full-history baseline L00 `97f944d51ab9e403250fe76910e2754b50425c73` and newest cumulative additive bundle, **not** intermediate bundles.
-- Bundle verification is limited to Git integrity and fresh restore. All code/static/product tests and independent semantic review remain `NOT_RUN` until L14.
-- Independent tester possession of identical L00 baseline is **not confirmed** by worker-side restore; require that one-time transfer before claiming end-to-end thread handover.
+## Documentary self-audit and remaining obligations
 
-No unilateral new policy approval, no fabricated source timestamp and no automatic change to D145 or other held signals is authorised by this checkpoint.
+Inspected root GUARDRAILS/AGENTS, tests override, current L01–L14 plan requirements; architecture ingress/ownership/dependency law; existing M00 public observation/projection/history DTO signatures and control transport; selected verified M00 output/mapping records; current M02 public carriers/factories and relevant book/imbalance/slope/rate/microprice source portions; existing immutable claim/generation/partition machinery. This is not an exhaustive source-file audit or an independent product review.
+
+Ruling: additive native sibling APIs/claims preserve every old V1 carrier/brief identity instead of widening an old selector or rebinding legacy evidence. Cost if wrong is bounded native implementation rework; no provider fact is silently altered.
+
+Ruling: A2→C1 D131 compatibility is an explicit synthetic reference relation, not provider equality or numeric coincidence. Both distinct immutable source profiles and same exact CALL contract/time context must be checked in the actual public predecessor path.
+
+Ruling: rateR001 is collector metadata equal to envelope receipt; receipt-only provider time stays absent. Pre-window warmup and missing-operation refusal remain exact accepted obligations.
+
+All new fixtures/oracles/contracts were authored as document data. **No pytest, strict proof gate, import/runtime probe, product replay, smoke/regression, mypy or Ruff was executed.** Native source/proof implementation begins only after this documentary checkpoint is committed and its verified cumulative additive bundle is saved/exposed. L14 independently inspects exact ingress/source adequacy, executes all applicable owning proofs and disposition, and may require bounded repair. `TESTED_ACCEPTED` is not asserted here.
+
+The fixed baseline is97f944d51ab9e403250fe76910e2754b50425c73. Receiver possession remains unconfirmed until the independent tester demonstrates that identical one-time baseline. Transfer metadata is in `L01/NEXT_EXPORT_MANIFEST.md`; controller records actual exported HEAD/hash separately after commit.

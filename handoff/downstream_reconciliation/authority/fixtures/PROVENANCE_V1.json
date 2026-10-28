@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "source_path": "handoff/m00_brief2/outputs/L05_verified/actual_m00_output_v1.jsonl",
+  "source_sha256": "70583a82602ebf30fa4d9c3f0731746fd4c99479902e33738bc45a6cdf37a281",
+  "frozen_public_output_sha256": "028c7b393d47caad1343ecebb0571c54ce4fd6c492ff6a8386a8ed8c04518fa4",
+  "selection_scenarios": [
+    "A1",
+    "A2",
+    "A3",
+    "A4",
+    "C1",
+    "C2"
+  ],
+  "selection_rule": "Copy each selected complete observation/projection record verbatim in semantic content. Source observations and projections are already real persisted M00 public outputs. No M00 runtime replay is required by M02 proofs.",
+  "frozen_rows": 91,
+  "mapping_source_path": "handoff/m00_brief2/mapping_manifest_v1.json",
+  "mapping_source_sha256": "1a864bd18de725a7f0ecc9cdf9dc1345348e1624b4d59836794017a417eb2124",
+  "warning": "Serialized native_type tags must construct exact public DTO primitive types; bool must never coerce to int; Decimal lexical scale and absent timestamp remain exact.",
+  "control_source_path": "handoff/m00_brief2/outputs/L05_verified/actual_control_output_v1.jsonl",
+  "control_source_sha256": "5b808cd12cbe566aa26e41c11935cb3efce5f6258299925cb14ed97739267501",
+  "control_copy": "FROZEN_M00_CONTROLS_V1.jsonl is a byte-identical copy of this existing actual public control output; public RawObservationOccurrenceV1 transport is specified in existing CONTROL_HISTORY_CONTRACT_V1.md."
+}

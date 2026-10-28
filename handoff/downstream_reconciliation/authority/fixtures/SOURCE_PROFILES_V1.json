@@ -1,0 +1,481 @@
+{
+  "schema_version": 1,
+  "status": "commissioned_synthetic_only_not_live_policy",
+  "profiles": {
+    "A1": {
+      "fixture_family": "A",
+      "fixture_id": "NVDA-IBKR-M00-SYNTHETIC-INPUT-V1",
+      "mapping_group": "A1-STK",
+      "provider": "foundation-controlled-ibkr-m00-v1",
+      "variant": "ibkr-bidask-atomic/native-v1",
+      "subject": "NVDA-STK-CONTROL-1",
+      "request": "STK-BIDASK-R1",
+      "generation": "STK-BIDASK-G1",
+      "requested_exchange": "SYNTH-L1",
+      "ingestion_scope": "STK1/BIDASK/G1",
+      "security_type": "STK",
+      "right": null,
+      "contract_spec": {
+        "currency": {
+          "native_type": "str",
+          "value": "USD"
+        },
+        "expiry": {
+          "native_type": "NoneType",
+          "value": null
+        },
+        "multiplier": {
+          "native_type": "int",
+          "value": "1"
+        },
+        "right": {
+          "native_type": "NoneType",
+          "value": null
+        },
+        "security_type": {
+          "native_type": "str",
+          "value": "STK"
+        },
+        "strike": {
+          "native_type": "NoneType",
+          "value": null
+        }
+      },
+      "temporal_kind": "true_instant",
+      "mapping_ids": {
+        "R033": "m00b2-a1-stk-r033",
+        "R034": "m00b2-a1-stk-r034",
+        "R035": "m00b2-a1-stk-r035",
+        "R036": "m00b2-a1-stk-r036"
+      },
+      "mapping_version": 1,
+      "initial_epoch": null,
+      "observation_ids": [
+        "SYN-L1-STK-ATOMIC-01"
+      ],
+      "receipts": [
+        "2026-10-20T12:40:00.080000Z"
+      ],
+      "profile_ref": {
+        "context_id": "native-a1-stock",
+        "version": 1
+      },
+      "contract_identity": "NVDA-STK-CONTROL-1|STK|None|USD|None|None|1",
+      "source_context_ref": {
+        "context_id": "native-a1-stock-context",
+        "version": 1
+      },
+      "complete_from_utc": "2026-10-20T12:40:00Z",
+      "warmup_side_levels": {},
+      "warmup_observation_ids": [],
+      "maximum_observations": 100,
+      "maximum_pages": 100,
+      "usage": "retained atomic true-instant evidence only; not an admitted new receipt profile"
+    },
+    "A2": {
+      "fixture_family": "A",
+      "fixture_id": "NVDA-IBKR-M00-SYNTHETIC-INPUT-V1",
+      "mapping_group": "A2-CALL",
+      "provider": "foundation-controlled-ibkr-m00-v1",
+      "variant": "ibkr-async-l1/native-v1",
+      "subject": "NVDA-OPT-C100-CONTROL-1",
+      "request": "OPT-C100-R1",
+      "generation": "OPT-L1-G1",
+      "requested_exchange": "SYNTH-L1",
+      "ingestion_scope": "OPT-C100/L1/G1",
+      "security_type": "OPT",
+      "right": "C",
+      "contract_spec": {
+        "currency": {
+          "native_type": "str",
+          "value": "USD"
+        },
+        "expiry": {
+          "native_type": "str",
+          "value": "2026-10-23"
+        },
+        "multiplier": {
+          "native_type": "int",
+          "value": "100"
+        },
+        "right": {
+          "native_type": "str",
+          "value": "C"
+        },
+        "security_type": {
+          "native_type": "str",
+          "value": "OPT"
+        },
+        "strike": {
+          "native_type": "str",
+          "value": "100"
+        }
+      },
+      "temporal_kind": "receipt_only",
+      "mapping_ids": {
+        "R033": "m00b2-a2-call-r033",
+        "R034": "m00b2-a2-call-r034",
+        "R035": "m00b2-a2-call-r035",
+        "R036": "m00b2-a2-call-r036"
+      },
+      "mapping_version": 1,
+      "initial_epoch": null,
+      "observation_ids": [
+        "NVDA-M00-A-V1-A2-SEQ11",
+        "NVDA-M00-A-V1-A2-SEQ12",
+        "NVDA-M00-A-V1-A2-SEQ13",
+        "NVDA-M00-A-V1-A2-SEQ14"
+      ],
+      "receipts": [
+        "2026-10-20T12:40:00.100000Z",
+        "2026-10-20T12:40:00.130000Z",
+        "2026-10-20T12:40:00.160000Z",
+        "2026-10-20T12:40:00.180000Z"
+      ],
+      "profile_ref": {
+        "context_id": "native-a2-call",
+        "version": 1
+      },
+      "contract_identity": "NVDA-OPT-C100-CONTROL-1|OPT|C|USD|2026-10-23|100|100",
+      "source_context_ref": {
+        "context_id": "native-coherent-call-reference",
+        "version": 1
+      },
+      "complete_from_utc": "2026-10-20T12:40:00Z",
+      "warmup_side_levels": {},
+      "warmup_observation_ids": [],
+      "maximum_observations": 100,
+      "maximum_pages": 100,
+      "usage": "admitted bounded synthetic receipt source"
+    },
+    "A3": {
+      "fixture_family": "A",
+      "fixture_id": "NVDA-IBKR-M00-SYNTHETIC-INPUT-V1",
+      "mapping_group": "A3-PUT",
+      "provider": "foundation-controlled-ibkr-m00-v1",
+      "variant": "ibkr-async-l1/native-v1",
+      "subject": "NVDA-OPT-P100-CONTROL-1",
+      "request": "OPT-P100-R1",
+      "generation": "OPT-P100-L1-G1",
+      "requested_exchange": "SYNTH-L1",
+      "ingestion_scope": "OPT-P100/L1/G1",
+      "security_type": "OPT",
+      "right": "P",
+      "contract_spec": {
+        "currency": {
+          "native_type": "str",
+          "value": "USD"
+        },
+        "expiry": {
+          "native_type": "str",
+          "value": "2026-10-23"
+        },
+        "multiplier": {
+          "native_type": "int",
+          "value": "100"
+        },
+        "right": {
+          "native_type": "str",
+          "value": "P"
+        },
+        "security_type": {
+          "native_type": "str",
+          "value": "OPT"
+        },
+        "strike": {
+          "native_type": "str",
+          "value": "100"
+        }
+      },
+      "temporal_kind": "receipt_only",
+      "mapping_ids": {
+        "R033": "m00b2-a3-put-r033",
+        "R034": "m00b2-a3-put-r034",
+        "R035": "m00b2-a3-put-r035",
+        "R036": "m00b2-a3-put-r036"
+      },
+      "mapping_version": 1,
+      "initial_epoch": null,
+      "observation_ids": [
+        "NVDA-M00-A-V1-A3-SEQ15",
+        "NVDA-M00-A-V1-A3-SEQ16",
+        "NVDA-M00-A-V1-A3-SEQ17",
+        "NVDA-M00-A-V1-A3-SEQ18"
+      ],
+      "receipts": [
+        "2026-10-20T12:40:00.200000Z",
+        "2026-10-20T12:40:00.220000Z",
+        "2026-10-20T12:40:00.250000Z",
+        "2026-10-20T12:40:00.270000Z"
+      ],
+      "profile_ref": {
+        "context_id": "native-a3-put",
+        "version": 1
+      },
+      "contract_identity": "NVDA-OPT-P100-CONTROL-1|OPT|P|USD|2026-10-23|100|100",
+      "source_context_ref": {
+        "context_id": "native-a3-put-context",
+        "version": 1
+      },
+      "complete_from_utc": "2026-10-20T12:40:00Z",
+      "warmup_side_levels": {},
+      "warmup_observation_ids": [],
+      "maximum_observations": 100,
+      "maximum_pages": 100,
+      "usage": "admitted bounded synthetic receipt source"
+    },
+    "A4": {
+      "fixture_family": "A",
+      "fixture_id": "NVDA-IBKR-M00-SYNTHETIC-INPUT-V1",
+      "mapping_group": "A4-STK",
+      "provider": "foundation-controlled-ibkr-m00-v1",
+      "variant": "ibkr-smart-depth/native-v1",
+      "subject": "NVDA-STK-CONTROL-1",
+      "request": "STK-SMART-R1",
+      "generation": "STK-SMART-G1",
+      "requested_exchange": "SMART",
+      "ingestion_scope": "STK1/SMART/G1",
+      "security_type": "STK",
+      "right": null,
+      "contract_spec": {
+        "currency": {
+          "native_type": "str",
+          "value": "USD"
+        },
+        "expiry": {
+          "native_type": "NoneType",
+          "value": null
+        },
+        "multiplier": {
+          "native_type": "int",
+          "value": "1"
+        },
+        "right": {
+          "native_type": "NoneType",
+          "value": null
+        },
+        "security_type": {
+          "native_type": "str",
+          "value": "STK"
+        },
+        "strike": {
+          "native_type": "NoneType",
+          "value": null
+        }
+      },
+      "temporal_kind": "receipt_only",
+      "mapping_ids": {
+        "R185": "m00b2-a4-stk-r185",
+        "R187": "m00b2-a4-stk-r187",
+        "R188": "m00b2-a4-stk-r188",
+        "R189": "m00b2-a4-stk-r189",
+        "R190": "m00b2-a4-stk-r190"
+      },
+      "mapping_version": 1,
+      "initial_epoch": "synthetic known-empty subscribed book before first declared callback",
+      "observation_ids": [
+        "NVDA-M00-A-V1-A4-SEQ21",
+        "NVDA-M00-A-V1-A4-SEQ22",
+        "NVDA-M00-A-V1-A4-SEQ23",
+        "NVDA-M00-A-V1-A4-SEQ24"
+      ],
+      "receipts": [
+        "2026-10-20T12:39:59.100000Z",
+        "2026-10-20T12:39:59.200000Z",
+        "2026-10-20T12:39:59.300000Z",
+        "2026-10-20T12:39:59.400000Z"
+      ],
+      "profile_ref": {
+        "context_id": "native-a4-stock",
+        "version": 1
+      },
+      "contract_identity": "NVDA-STK-CONTROL-1|STK|None|USD|None|None|1",
+      "source_context_ref": {
+        "context_id": "native-a4-stock-context",
+        "version": 1
+      },
+      "complete_from_utc": "2026-10-20T12:39:59Z",
+      "warmup_side_levels": {
+        "1": 2,
+        "0": 2
+      },
+      "warmup_observation_ids": [
+        "NVDA-M00-A-V1-A4-SEQ21",
+        "NVDA-M00-A-V1-A4-SEQ22",
+        "NVDA-M00-A-V1-A4-SEQ23",
+        "NVDA-M00-A-V1-A4-SEQ24"
+      ],
+      "maximum_observations": 100,
+      "maximum_pages": 100,
+      "usage": "admitted bounded synthetic receipt source"
+    },
+    "C1": {
+      "fixture_family": "C",
+      "fixture_id": "NVDA-M00-COHERENT-INTEGRATION-V2",
+      "mapping_group": "C1-CALL",
+      "provider": "foundation-controlled-ibkr-m00-coherent-v2",
+      "variant": "ibkr-smart-depth/native-v2",
+      "subject": "NVDA-OPT-C100-CONTROL-1",
+      "request": "COH-CALL-R1",
+      "generation": "OPT-C100-SMART-COHERENT-V2",
+      "requested_exchange": "SMART",
+      "ingestion_scope": "OPT-C100/SMART/COHERENT-V2",
+      "security_type": "OPT",
+      "right": "C",
+      "contract_spec": {
+        "currency": {
+          "native_type": "str",
+          "value": "USD"
+        },
+        "expiry": {
+          "native_type": "str",
+          "value": "2026-10-23"
+        },
+        "multiplier": {
+          "native_type": "int",
+          "value": "100"
+        },
+        "right": {
+          "native_type": "str",
+          "value": "C"
+        },
+        "security_type": {
+          "native_type": "str",
+          "value": "OPT"
+        },
+        "strike": {
+          "native_type": "str",
+          "value": "100"
+        }
+      },
+      "temporal_kind": "receipt_only",
+      "mapping_ids": {
+        "R185": "m00b2-c1-call-r185",
+        "R187": "m00b2-c1-call-r187",
+        "R188": "m00b2-c1-call-r188",
+        "R189": "m00b2-c1-call-r189",
+        "R190": "m00b2-c1-call-r190"
+      },
+      "mapping_version": 1,
+      "initial_epoch": "synthetic known-empty subscribed book before first declared callback",
+      "observation_ids": [
+        "COH-SMART-C01",
+        "COH-SMART-C02",
+        "COH-SMART-C03"
+      ],
+      "receipts": [
+        "2026-10-20T12:39:59.100000Z",
+        "2026-10-20T12:39:59.200000Z",
+        "2026-10-20T12:39:59.300000Z"
+      ],
+      "profile_ref": {
+        "context_id": "native-c1-call",
+        "version": 1
+      },
+      "contract_identity": "NVDA-OPT-C100-CONTROL-1|OPT|C|USD|2026-10-23|100|100",
+      "source_context_ref": {
+        "context_id": "native-coherent-call-reference",
+        "version": 1
+      },
+      "complete_from_utc": "2026-10-20T12:39:59Z",
+      "warmup_side_levels": {
+        "1": 2,
+        "0": 1
+      },
+      "warmup_observation_ids": [
+        "COH-SMART-C01",
+        "COH-SMART-C02",
+        "COH-SMART-C03"
+      ],
+      "maximum_observations": 100,
+      "maximum_pages": 100,
+      "usage": "admitted bounded synthetic receipt source"
+    },
+    "C2": {
+      "fixture_family": "C",
+      "fixture_id": "NVDA-M00-COHERENT-INTEGRATION-V2",
+      "mapping_group": "C2-STK",
+      "provider": "foundation-controlled-ibkr-m00-coherent-v2",
+      "variant": "ibkr-direct-depth/native-v2",
+      "subject": "NVDA-STK-CONTROL-1",
+      "request": "COH-DIRECT-STK-R1",
+      "generation": "COH-DIRECT-STK-GEN1",
+      "requested_exchange": "SYNTH-DIRECT-EXCHANGE-1",
+      "ingestion_scope": "STK1/DIRECT-EXCH1/GEN1",
+      "security_type": "STK",
+      "right": null,
+      "contract_spec": {
+        "currency": {
+          "native_type": "str",
+          "value": "USD"
+        },
+        "expiry": {
+          "native_type": "NoneType",
+          "value": null
+        },
+        "multiplier": {
+          "native_type": "int",
+          "value": "1"
+        },
+        "right": {
+          "native_type": "NoneType",
+          "value": null
+        },
+        "security_type": {
+          "native_type": "str",
+          "value": "STK"
+        },
+        "strike": {
+          "native_type": "NoneType",
+          "value": null
+        }
+      },
+      "temporal_kind": "receipt_only",
+      "mapping_ids": {
+        "R192": "m00b2-c2-stk-r192",
+        "R193": "m00b2-c2-stk-r193",
+        "R194": "m00b2-c2-stk-r194",
+        "R195": "m00b2-c2-stk-r195",
+        "R196": "m00b2-c2-stk-r196",
+        "R197": "m00b2-c2-stk-r197"
+      },
+      "mapping_version": 1,
+      "initial_epoch": "synthetic known-empty subscribed book before first declared callback",
+      "observation_ids": [
+        "COH-DIRECT-STK-01",
+        "COH-DIRECT-STK-02",
+        "COH-DIRECT-STK-03",
+        "COH-DIRECT-STK-04"
+      ],
+      "receipts": [
+        "2026-10-20T12:39:58.100000Z",
+        "2026-10-20T12:39:58.200000Z",
+        "2026-10-20T12:39:58.300000Z",
+        "2026-10-20T12:39:58.400000Z"
+      ],
+      "profile_ref": {
+        "context_id": "native-c2-stock",
+        "version": 1
+      },
+      "contract_identity": "NVDA-STK-CONTROL-1|STK|None|USD|None|None|1",
+      "source_context_ref": {
+        "context_id": "native-c2-stock-context",
+        "version": 1
+      },
+      "complete_from_utc": "2026-10-20T12:39:58Z",
+      "warmup_side_levels": {
+        "1": 2,
+        "0": 2
+      },
+      "warmup_observation_ids": [
+        "COH-DIRECT-STK-01",
+        "COH-DIRECT-STK-02",
+        "COH-DIRECT-STK-03",
+        "COH-DIRECT-STK-04"
+      ],
+      "maximum_observations": 100,
+      "maximum_pages": 100,
+      "usage": "admitted bounded synthetic receipt source"
+    }
+  }
+}

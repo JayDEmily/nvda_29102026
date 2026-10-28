@@ -1,83 +1,62 @@
-# L01 consumer source contract candidate — native-shaped M00 → M02
+# M02 native-shaped synthetic consumer contract v1
 
-**Status: PROPOSED / PARTIALLY GROUNDED; NOT AN ACCEPTED IMPLEMENTATION BRIEF.**
+Status: **AUTHORITY_READY for commissioned synthetic reconciliation; NOT_RUN**. This contract makes the owner's accepted receipt profile, synthetic 250 ms/1000 ms quote candidates, direct C2 scope and native/legacy case allocation concrete. Authority reference: `owner-chat/20261028/downstream-reconciliation/execute-entire-plan`. It does not attribute synthetic policy to a live provider. D145 remains PAUSED. The inherited A01–A04 blanket authorisation blocker was too broad: the current owner had already commissioned these bounded choices. Current user authority outranks the older candidate's self-imposed approval requirement. Mathematical definitions, native provider facts and unrelated holds are unchanged.
 
-The owner has commissioned R2, which requires exact accepted owner/normative profiles before dependent code. This document records source-grounded facts and isolates remaining policy decisions. Do not treat this draft, the earlier M00 proof or its numerical oracles as an admissible M02 code-authorisation on their own. No product proof has been executed in this tranche.
+## Ownership and authoritative inputs
 
-## Source authority and ownership
+M00 owns immutable observations, native projection and control discoverability. M02 owns input selection, lifecycle interpretation, positional replay, quote assembly and neutral calculation. Existing `OWNERSHIP_AND_COMPONENT_LAW.md`, `DEPENDENCY_LAWS.md` and `IMPLEMENTATION_AUTHORITY_INGRESS.md` remain governing. No private M00 implementation import or database query is authorised. M01 remains inactive/bootstrap. No chain-wide M00→M01→M02 replay is introduced.
 
-- Existing synthetic source and observations: `handoff/planning/m00_brief2_20261027/BRIEF_2_M00_RECONCILED_V3_20261027_1622_AEDT.md` §§1–3 and completed M00 L06 output `handoff/m00_brief2/FINAL_REPORT.md`. M00 is the immutable raw owner, not the native book/quote policy owner.
-- Original `handoff/m00_brief2/authority/CONTROL_HISTORY_CONTRACT_V1.md` defines the publicly available observation-history transport. The file's original `PROPOSAL` header is historical; consult completed L06 and independent review rather than inferring current approval from the header.
-- `docs/architecture/OWNERSHIP_AND_COMPONENT_LAW.md`, `DEPENDENCY_LAWS.md`, and `IMPLEMENTATION_AUTHORITY_INGRESS.md` govern owner, public seam and exact accepted brief identity. M02 owns reconstructing and interpreting, never writes new M00 facts.
-- `handoff/m01_completion/authority/D138_D145_L2_OWNER_APPROVED_DEPENDENCY_AMENDMENT_20261016.md` governs only the amended R dependencies, **not** invented provider event time or completeness.
-- L00 inspection and independent review: `handoff/downstream_reconciliation/L00/BASELINE_AND_IMPACT.md` and `L00/INDEPENDENT_REVIEW.md` at source baseline `97f944d51ab9e403250fe76910e2754b50425c73`.
+The exact M00 source is owner-commissioned Brief2 V3 (`handoff/planning/m00_brief2_20261027/BRIEF_2_M00_RECONCILED_V3_20261027_1622_AEDT.md`, SHA256 `0d5ee211c1285b31834062ab2d871670ed2f318cbb955e7df95f80067d562007`) and its existing completed SQLite output. `fixtures/FROZEN_M00_PUBLIC_OUTPUT_V1.jsonl` freezes selected actual public observation/projection rows from `handoff/m00_brief2/outputs/L05_verified/actual_m00_output_v1.jsonl`. `fixtures/PROVENANCE_V1.json` identifies source/selected-byte hashes. `fixtures/FROZEN_M00_MAPPINGS_V1.json` and `SOURCE_PROFILES_V1.json` fix exact provider/variant, request/generation, exchange, subject/right/contract, scopes, mapping IDs/versions and callback identities. These machine-readable files are part of this contract, not editable runtime configuration. A1/A2/A3/A4/C1/C2 remain distinct sources; A1 is retained true-instant atomic evidence only, not an admitted new receipt profile; A5 midpoint100 and fixture B remain separate preserved historical evidence.
 
-## Existing, directly inspected M00 public input interface
+A/C source facts: native depth side1 is BID and side0 ASK; operations0/1/2 are insert/update/delete. Depth has absent provider timestamp/timezone. C1 and C2 provider is **foundation-controlled-ibkr-m00-coherent-v2**, never the A-family provider. C1 generation is `OPT-C100-SMART-COHERENT-V2`; C2 generation `COH-DIRECT-STK-GEN1`. Exact profile JSON governs other identities. Units retain shares vs option contracts and premium USD per underlying share, with option multiplier100 retained independently. No entitlement/live/PUT-direct claim follows.
 
-`create_owner(...).reads.list_projected_raw_history` is currently:
+## Public transport, eligibility and times
 
-```python
-def list_projected_raw_history(
-    raw_signal_catalogue_id: RawSignalCatalogueId,
-    *,
-    mappings: Sequence[RawSignalProjectionMappingV1],
-    subject_instrument: str | None,
-    received_at_or_before_utc: datetime | None,
-    event_at_or_before_utc: datetime | None = None,
-    limit: int,
-    cursor: str | None,
-) -> ProjectedRawHistoryPageV1: ...
-```
+`NATIVE_PUBLIC_API_V1.md` fixes every additive typed carrier/factory and exact M00 public reader signatures. Both `list_projected_raw_history` and `list_raw_observation_history` are required on `NativeRawReaderV1`; these are already existing M00 methods. No new M00 API is required.
 
-`create_owner(...).reads.list_raw_observation_history` is currently:
+For receipt profiles, request projected histories with `event_at_or_before_utc=None` and inclusive receipt cutoff `min(as_of_utc, knowledge_cutoff_utc)`. Filter exact subject, provider, variant, native field/type/unit, mapping/version, ingestion scope, contract/right, request, exchange, generation and scenario identity. A None variant is exact absence, never wildcard. Contract/right may be verified from matching public observations' immutable `_collector.contract_spec`; projected roles alone must not silently supply missing native metadata. The public projection is retained unchanged in lineage. The complete history starts at the bound known-empty synthetic epoch `complete_from_utc`; do not reinterpret an arbitrary first visible row as an empty book.
 
-```python
-def list_raw_observation_history(
-    *,
-    subject_instrument: str,
-    source_provider: str,
-    source_variant: str | None,
-    received_at_or_before_utc: datetime,
-    native_identity_selectors: tuple[tuple[tuple[str, ...], str], ...] = (),
-    limit: int,
-    cursor: str | None,
-) -> RawObservationHistoryPageV1: ...
-```
+Every numeric role retains exact integer/Decimal type and lexical Decimal scale. `R001`, only in the new rate source, is an actual UTC datetime under collector-added `time.receipt`, equal to the observation envelope receipt. It is not a provider clock. Receipt lineage has `time_basis='collector_receipt'`, `event_time_utc=None` and original receipt separately. The existing old true-instant carriers and old `_selection.py` stay unchanged/readable. Native profiles may not fabricate source time to satisfy old validators.
 
-These signatures are copied from `src/nvda_desk/raw_signal_occurrence_truth/api.py` at the L00 baseline, lines 1142–1182. An additive M02 reader protocol can legally expose both methods without extending M00 or accessing raw persistence internals. Do **not** widen the existing `RawProjectionReaderV1` numeric selector to invent event timestamps.
+Fixed populations are exhausted page by page, bounded by profile maximum100 observations and100 pages of size100 (tests deliberately use page size1). Reject empty progress pages with next cursor, repeated cursors, duplicates with conflicting content and excess bounds. Equal duplicate IDs with identical complete immutable content are deduplicated only when unioning control discoveries; duplicate projected roles inside one selected occurrence are invalid. A query returns source facts, not a completeness certificate.
 
-## Grounded native/controlled profile facts
+## Separate controls, ordering and warm-up
 
-| Fact/profile | Source and identities | Preserved meaning and selection restrictions |
-| --- | --- | --- |
-| Native SMART stock A4 | provider `foundation-controlled-ibkr-m00-v1`, variant `ibkr-smart-depth/native-v1`, request `STK-SMART-R1`, generation `STK-SMART-G1`, scope `STK1/SMART/G1` | Side `1=BID`, `0=ASK`; operations `0/1/2` insert/update/delete; positions zero-based; receipt-only, provider time absent; 4 callbacks, 5 R roles each; share units. |
-| Native SMART CALL C1 | provider `foundation-controlled-ibkr-m00-coherent-v2`, variant `ibkr-smart-depth/native-v2`, scope `OPT-C100/SMART/COHERENT-V2`, generation `OPT-C100-SMART-COHERENT-V2` | CALL identity `NVDA-OPT-C100-CONTROL-1`; distinct from A5 legacy midpoint-100 source; option contract sizes, receipt-only; 3 callbacks and 15 R projections. |
-| Native direct shares C2 | same coherent-v2 provider, variant `ibkr-direct-depth/native-v2`; request exchange `SYNTH-DIRECT-EXCHANGE-1`, scope `STK1/DIRECT-EXCH1/GEN1` | One subscribed side book spans MPIDs `ALPHA`,`BETA`; native `marketMaker` is MPID, distinct from requested exchange; 4 callbacks, 6 R roles; no per-MPID position restart. |
-| Native direct CALL C3 | coherent-v2 provider, variant `ibkr-direct-depth/native-v2`; CALL, scope `OPT-C100/DIRECT-EXCH1/GEN1` | Same native addressing, option contract sizes. This synthetic specimen does **not** imply option direct-data entitlement or direct PUT coverage. |
-| Asynchronous options A2/A3 | provider `foundation-controlled-ibkr-m00-v1`, variant `ibkr-async-l1/native-v1`, distinct CALL `OPT-C100/L1/G1` and PUT `OPT-P100/L1/G1` | Four distinct callback identities each; one native field per callback; no fabricated common event or clock. A2: price bid 1.20, ask 1.40, size bid 10, ask 8; A3: bid 2.20, ask 2.40, sizes 6/4. |
-| Atomic shares A1 | provider `foundation-controlled-ibkr-m00-v1`, variant `ibkr-bidask-atomic/native-v1`, id `SYN-L1-STK-ATOMIC-01` | Four R roles from one genuine native tick-by-tick shares quote; its stock co-reference remains valid. |
-| Legacy synthetic profiles | old M02 D087/D131/D134–D140/D143 claims and original generation bytes | Retain original side conventions and event-based fields only for their exact **legacy controlled** provenance; do not silently reinterpret the same identity/version as native. |
+The original `handoff/m00_brief2/authority/CONTROL_HISTORY_CONTRACT_V1.md` describes the admitted M00 transport. Its historical PROPOSAL header does not undo the completed M00 L06 proof. M02 uses the existing `_collector.control` `m00-control-envelope/1`: exact kind/origin/request/generation_before/generation_after/boolean invalidates; provider error316/error317 and collector gap/reconnect/restart remain separate observations with no R187/R194 operation.
 
-Subject/right, provider, variant, contract, request, generation, requested exchange, source native callback kind, position, MPID and mapping IDs/versions must be exact AND filters in every native-compatible profile. `None` variant must not become a wildcard; source M00 selects only exact declared variants. All numeric outputs preserve `Decimal` and integer type, and source times remain null where missing. M00 projections remain byte-identical.
+Enumerate public observations by subject/provider/variant/cutoff and AND selectors `_collector.request`, `_collector.requested_exchange`, `_collector.generation`. For the chosen generation also enumerate incoming boundaries using request/exchange plus `_collector.control.generation_after=<generation>`. Union by immutable observation ID; follow `generation_before` when needed to retain outgoing context. Do not require the caller to know control IDs. Restrict controls to the selected request, exchange and before/after generation. Both outgoing G1 and incoming G2 discover the same restart boundary without relabelling it as a G2-native callback.
 
-## Proposed M02 input and control semantics — needs formal L01 authority
+Merge full callback groups and controls by receipt. Within one exact ingestion scope, strictly increasing ingestion sequence resolves equal receipts. Different scopes at equal receipt are causally unorderable for a shared required mutation; same receipt/scope/sequence with distinct relevant IDs is also ambiguous. ID lexicographic order is only deterministic display order. Refuse a required ambiguous transition; never pick an answer by ID. Do not discard tied facts. `invalidates=true` error316/error317/gap/reconnect resets standing state and completeness for the exact request/generation. Restart links old to new generation and invalidates old state. Unrecognised malformed relevant control envelopes refuse; they must not vanish as unrelated observations.
 
-1. M02 owns explicit `receipt_only` vs `true_instant` time-basis types in the new (versioned) lineage and durable record codec; event time is nullable only for the explicitly receipt-based profile. Keep legacy `BookRawLineageV1` and its persisted records readable, with no global relaxation of `_selection.py`.
-2. For a receipt-based source, select projected R histories with `event_at_or_before_utc=None`, **inclusive receipt cutoff**, exact subject and role mappings. Consume separately enumerated controls from `list_raw_observation_history` by the exact source and native `_collector` selector paths. Fully exhaust pages under a fixed committed population and deduplicate overlapping generation discovery by immutable observation ID.
-3. A control with declared `invalidates=true` invalidates standing state for its exact request/generation. A restart from G1 to G2 is discovered from both the outgoing G1 and incoming G2 boundary queries. Preserve control receipt/scope/sequence/ID. Require complete post-boundary book warm-up from a lawfully established start; presence of new rows does not by itself establish completeness.
-4. Sort for enumeration by receipt UTC, ingestion scope, ingestion sequence and ID as in M00 history contract. ID ties give deterministic display order, **not causal order**. If two relevant facts are causally unorderable and the calculation requires an ordered state, refuse; do not infer order from identifier spelling. Separately document what establishes completeness and ordering (see policy decisions below).
-5. For native SMART positional events, apply operation to the selected subscribed book side after complete starting state; only then derive bid, ask, slope or rate. For native direct depth, apply updates to one subscribed side book across MPIDs and group completed rows afterward; never treat MPID as the requested exchange.
-6. For asynchronous option R033–R036, M02 must hold four distinct constituent identities in derived assembly metadata, filter the correct request/contract/right/generation and enforce an **approved** as-of/cutoff/age/skew policy. Synthetic 250 ms skew and 1000 ms age examples in Brief2 are **not production-approved defaults**.
-7. M02 durable occurrence readback must preserve native source/projection identities, optional event time, collector receipt cutoff, control identities, quote members and exact profile/definition/mapping versions. A missing required role or discontinuity means refusal, not a zero result or silent history entry.
+Warm-up is explicit synthetic completeness authority, not an inferred provider fact: the profile identifies a known-empty epoch, the complete ordered warmup occurrence IDs, and required side/level coverage. Each warmup insert starts position0 and fills contiguous subscribed-side positions without gaps or updates to unknown rows. Every mandatory role is required for each occurrence. Coverage for A4 is bid2/ask2; C1 bid2/ask1; C2 bid2/ask2; slope bid3/ask3; rate pre-window bid3/ask1. Only after the complete bound warmup prefix may a profile calculate. A later reset/reconnect/gap must be followed by a separately explicit fresh known-empty epoch and complete warmup, never merely some new rows. Helper G2 explicitly binds the two new contiguous warmup callbacks and incoming boundary; missing one refuses. A native operation316/317 always refuses. Persist controls and exact warmup lineage in accepted snapshots.
 
-## Authority decisions not established by the inspected sources
+Apply insert/update/delete to one subscribed **side** book; zero-based insert may equal current length, update/delete require existing position, deletion native size0 removes prior standing quantity. Renumber shifted positions. Prices are required only by source profiles mathematically depending on them. D134/D135 retain their four mandatory R185/R187/R188/R190 roles; absence of R189 cannot become a new mathematical dependency. Public observations may retain original price metadata without requiring a new R189 projection.
 
-These cannot be created by this draft or replaced by worker judgement:
+## Quote assembly and the exact D131 predecessor relationship
 
-- **A01 — receipt/event clock and causality:** an authorised M02 versioned input/time-selection policy for receipt-only book mutation and control ordering, including ties, generation restart and the definition of sufficient warm-up. M00 only supplies immutable transport.
-- **A02 — option assembly:** an authorised synthetic M02 membership/as-of, skew, age and stale/missing/refusal policy for both CALL and PUT (without extrapolating to live market policy). `250/1000 ms` is available only as a controlled fixture proposal.
-- **A03 — direct concentration scope:** an authorised definition of which C2 reconstructed side rows/levels enter grouping and whether both sides contribute to D143 HHI; the example 6/2 and HHI 5/8 is conditional on grouping *all four* C2 rows and must not overwrite the old per-venue-top-one model.
-- **A04 — carrier and proof admission:** an accepted additive typed M02 carrier/codec shape, exact implementation-ready brief SHA/binding, and approved immutable claim/generation/case allocation for each changed source profile. Older accepted claims are not new-native admission.
-- **A05 — D145:** remains **PAUSED**. A differently based receipt-clock K17 model would need independent explicit new authority; it is not silently included in this G1 choice.
+Native quote policy `native-option-receipt-assembly/1` is synthetic only: independently select latest eligible callback per R033/R034/R035/R036 at or before as-of and knowledge cutoff, from one exact contract/right/request/generation. Four distinct option callbacks remain distinct, in role-order membership and full typed lineage. Require nonnegative finite prices/sizes, bid<=ask, four roles, receipt skew `max(receipts)-min(receipts) <= 250ms`, and latest-field age `as_of-max(receipts) <= 1000ms`, inclusive. Stale, missing, future, mixed-right/request/generation or ambiguous latest candidates refuse. No silent fallback across scopes. A2 CALL uses as-of `2026-10-20T12:40:00.300Z`; A3 PUT `.400Z`; knowledge cutoff `12:40:01Z`. A2 midpoint1.30 and A3 midpoint2.30 are separate materialisations in the one declared success case, with no hidden parametrisation. D087 midpoint math uses bid/ask; four-role assembly is input eligibility, not a change to its equation.
 
-**Disposition:** G1/L01 is a source-grounded candidate, not `AUTHORITY_READY`. Any L02–L12 code depending on A01–A04 is `BLOCKED` pending the exact approval/ingress required by root R2. No provider-source field or financial mathematics is invented to bypass these decisions.
+D131 uses **actual native public D087** from A2, not a hand-built result. The explicitly commissioned synthetic compatibility relation `native-coherent-call-reference/1` binds A2 Level I to C1 Level II: same exact CALL subject/expiry/strike/right/multiplier/currency and reference context, A2 quote as-of `.300Z`, C1 book as-of `.300Z`, common cutoff `12:40:01Z`. It expressly permits the distinct immutable provider/variant/request/generation identities listed in SOURCE_PROFILES; these are linked synthetic independent reference inputs described in Brief2 C1, not one invented provider trace. Both profile `source_context_ref` values identify this relation. The D131 validator must check this exact allowed profile pair and contract/time context, not numeric1.30 alone and not false provider-equality. A5 remains excluded. Inclusive band0.50 selects0.80–1.80, bid5+ask3=8 contracts; bid0.70size7 is excluded. D131 reset refusal appends a separate C1-scoped error317 at `.350Z` with no subsequent warm-up and as-of `.400Z`; build a matching actual D087 at `.400Z` so refusal reaches reset rather than unrelated predecessor time mismatch.
+
+## Owning calculations and fixed new synthetic recipes
+
+`fixtures/SYNTHETIC_RECIPES_V1.json` specifies isolated slope/rate/helper/direct mutations. These are commissioned synthetic M02 input fixtures, not regenerated M00 runtime evidence. Each constructs actual public M00 DTOs with explicit native temporal/provenance fields through the module-local reader. The source JSON and literal oracle must be authored before the dependent production implementation; no import of a private historical product fixture.
+
+- D134 A4 bid8; missing R187 from final row retains position/side/size and refuses.
+- D135 A4 ask top-two6/top-one2 are two explicit requests in one success case. Separate error317 at59.500 after full warmup causes reset refusal. Neither old definition/version is overwritten.
+- D136 actual native D1348 and D1356 under identical A4 source/cutoff/depth2 yield1/7. Its two readers materialise actual top-one D1352 for refusal against unchanged bid2/ask2 request. Verify exact profile, common source rows/controls, generation, contract, side interpretation, time and requested levels, not numeric coincidence.
+- D138 keeps K06/P_REGRESSION equation OLS(cumulative standing size, absolute distance from actual D011 midpoint) separately per side. Exact new synthetic prices99/98/97 with sizes2/3/4 yield cumulative2/5/9 and slope7/2; asks101/102/103 sizes5/2/3 yield5/7/10 and slope5/2. Use unchanged public D011 midpoint100 with exact subjectNVDA/time. The separate reset refusal has no new warmup.
+- D139 retains four-second `(as_of-4s,as_of]` R001 collector-receipt bucket, native bid side1, positions1–2 and exact pre-window warmup. Inserts3/5 give count1/2 and size2 per second. Its refusal omits operation only, never substitutes gap for the required missing-operation witness.
+- D140 retains two-second `(as_of-2s,as_of]` receipt bucket, side1 positions1–2; deletion native size0 removes prior6, producing count1/2 and size3 per second. Nonexistent position refuses.
+- D143 reconstructs full C2 subscribed-side books across MPIDs, then groups **all standing rows of both sides** by qualified MPID within the one requested exchange/source/contract/request/generation. Depth scope is complete four-row C2 coverage, not old per-MPID-top-one. ALPHA4+2=6, BETA1+1=2, shares3/4,1/4 and HHI5/8. The declared BETA insertion/deletion at subscribed bid position0 demonstrates shifting ALPHA across MPIDs; test public intermediate snapshot rows before returning final C2 composition. Missing R193 with size present refuses. MPID is never the subscribed exchange.
+- D137 retains exact equation `(ask_price*bid_size + bid_price*ask_size)/(bid_size+ask_size)` with nonzero denominator. Native CALL uses A2 four-member assembly, result59/45; PUT uses A3 result58/25. Legacy atomic stock201/2 and its old pair remain unchanged. No D087 mathematical predecessor is introduced.
+
+`expected/SYNTHETIC_REFERENCE_ORACLES_V1.json` contains independent literal expected values and identities. Computation inside production is never used to create expected output.
+
+## Ingress, proof and boundaries
+
+`PROFILE_AND_PROOF_ALLOCATION.md` and `NATIVE_CLAIM_PLAN_V1.json` fix native siblings and two physical cases per D, retaining each old two-case profile: four cases per D, under ceiling6. Helpers have their separate two physical cases, not extra D cases. `briefs/NATIVE_<ID>_BRIEF.md` and `implementation/authority/DOWNSTREAM_NATIVE_<ID>_BINDING.yaml` bind exact immutable owner-commissioned source/API/fixture/oracle bytes. G01 changes may only add these exact fixed sibling claims; preserve generic target/generation/partition/strict rules and M00 extension. Native physical roots do not overlap old roots. Author native generations/admission **before** first strict run; no proof-after-PASS workflow.
+
+All runtime/product/static execution is NOT_RUN until independent L14. Source inspection, metadata extraction and Git/hash transfer verification are permitted. Source-side documentary readiness is not independent acceptance or runtime correctness. Independent L14 may return exact bounded defects. Changing a bound shared helper requires source/claim invalidation assessment and a new immutable generation for materially affected native claims. Never mutate old generations or weaken valid tests.
+
+D145 receipt-window K17 mathematics is outside this compatibility authorisation and remains PAUSED; L13 is disposition only. PostgreSQL execution/parity, live IBKR, source entitlement, production quote defaults and catalogue-wide acceptance remain excluded.
