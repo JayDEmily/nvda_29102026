@@ -98,10 +98,19 @@ def _spec(profile: f.NativeSourceProfileV1) -> dict:
     )
 
 
-def _page_items(call: Callable[[str | None], object], *, cap: int, expected_page: type) -> tuple:
-    items = []
-    cursor = None
-    seen = set()
+type _HistoryPage = raw.RawObservationHistoryPageV1 | raw.ProjectedRawHistoryPageV1
+type _HistoryItem = raw.RawObservationOccurrenceV1 | raw.ProjectedRawValueV1
+
+
+def _page_items(
+    call: Callable[[str | None], _HistoryPage],
+    *,
+    cap: int,
+    expected_page: type[_HistoryPage],
+) -> tuple[_HistoryItem, ...]:
+    items: list[_HistoryItem] = []
+    cursor: str | None = None
+    seen: set[str] = set()
     for _ in range(100):
         page = call(cursor)
         if type(page) is not expected_page or type(page.items) is not tuple:
@@ -252,8 +261,11 @@ def _fetch_observations(
     )
     merged: dict[str, raw.RawObservationOccurrenceV1] = {}
     for selectors in variants:
-        records = _page_items(
-            lambda cursor, selectors=selectors: reader.list_raw_observation_history(
+        def observation_page(
+            cursor: str | None,
+            selectors: tuple[tuple[tuple[str, ...], str], ...] = selectors,
+        ) -> raw.RawObservationHistoryPageV1:
+            return reader.list_raw_observation_history(
                 subject_instrument=profile.subject_instrument,
                 source_provider=profile.provider,
                 source_variant=profile.variant,
@@ -261,7 +273,10 @@ def _fetch_observations(
                 native_identity_selectors=selectors,
                 limit=1,
                 cursor=cursor,
-            ),
+            )
+
+        records = _page_items(
+            observation_page,
             cap=profile.maximum_observations,
             expected_page=raw.RawObservationHistoryPageV1,
         )
@@ -288,8 +303,12 @@ def _fetch_lines(
     seen = set()
     for mapping in profile.projection_mappings:
         rid = mapping.raw_signal_catalogue_id.value
-        items = _page_items(
-            lambda cursor, mapping=mapping: reader.list_projected_raw_history(
+
+        def projection_page(
+            cursor: str | None,
+            mapping: raw.RawSignalProjectionMappingV1 = mapping,
+        ) -> raw.ProjectedRawHistoryPageV1:
+            return reader.list_projected_raw_history(
                 mapping.raw_signal_catalogue_id,
                 mappings=(mapping,),
                 subject_instrument=profile.subject_instrument,
@@ -297,7 +316,10 @@ def _fetch_lines(
                 event_at_or_before_utc=None,
                 limit=1,
                 cursor=cursor,
-            ),
+            )
+
+        items = _page_items(
+            projection_page,
             cap=profile.maximum_observations,
             expected_page=raw.ProjectedRawHistoryPageV1,
         )
@@ -378,6 +400,12 @@ def _fetch_lines(
     return tuple(lines)
 
 
+type _ReplayEvent = (
+    tuple[datetime, str, int, str, dict[str, f.NativeRawLineageV1], None]
+    | tuple[datetime, str, int, str, None, f.NativeControlLineageV1]
+)
+
+
 def _replay(
     profile: f.NativeSourceProfileV1,
     lines: tuple[f.NativeRawLineageV1, ...],
@@ -392,15 +420,15 @@ def _replay(
         raise ValueError("incoming G2 restart boundary absent")
     groups: dict[str, dict[str, f.NativeRawLineageV1]] = {}
     for line in lines:
-        group = groups.setdefault(line.observation_occurrence_id, {})
-        if line.raw_signal_id in group:
+        callback_group = groups.setdefault(line.observation_occurrence_id, {})
+        if line.raw_signal_id in callback_group:
             raise ValueError("duplicate source role")
-        group[line.raw_signal_id] = line
+        callback_group[line.raw_signal_id] = line
     if not groups:
         raise ValueError("no selected public observations")
-    events = []
-    for oid, group in groups.items():
-        first = next(iter(group.values())).projection
+    events: list[_ReplayEvent] = []
+    for oid, callback_group in groups.items():
+        first = next(iter(callback_group.values())).projection
         if any(
             (
                 line.projection.received_ts_utc != first.received_ts_utc
@@ -408,7 +436,7 @@ def _replay(
                 or line.projection.ingestion_sequence_scope != first.ingestion_sequence_scope
                 or line.projection.selection_identity != first.selection_identity
             )
-            for line in group.values()
+            for line in callback_group.values()
         ):
             raise ValueError("mixed callback group")
         events.append(
@@ -417,12 +445,12 @@ def _replay(
                 first.ingestion_sequence_scope.value,
                 first.ingestion_sequence,
                 oid,
-                group,
+                callback_group,
                 None,
             )
         )
-    for control in controls:
-        item = control.observation
+    for boundary in controls:
+        item = boundary.observation
         events.append(
             (
                 item.received_ts_utc,
@@ -430,7 +458,7 @@ def _replay(
                 item.ingestion_sequence,
                 item.observation_occurrence_id.value,
                 None,
-                control,
+                boundary,
             )
         )
     events.sort(key=lambda x: (x[0], x[1], x[2], x[3]))

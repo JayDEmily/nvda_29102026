@@ -448,3 +448,9 @@ Owner instruction: “So now we can do all the testing for L14 and the final acc
 - Scoped Ruff retry at `e347f6f3a0426ca8235e008b12b633a92efc1bc3` returned three B007 unused replay-coordinate bindings, exit1. Original raw output/metadata are preserved under `L14/evidence/return_02/`; downstream checks remain unattempted.
 - `L14/REPAIR_02.md` records RECURRENT_CLASS static-conformance closure: mark all three unused positional-loop coordinate bindings explicitly unused while preserving the complete causal preflight. Only one production line changes; family/support/current generations stay unchanged. No implementation-worker checks ran.
 - Root checkpoint delivery precedes independent retry. No native acceptance, resumed D145 or unrelated scope expansion is claimed.
+
+### L14 third independent return and bounded repair candidate — 29 October 2026
+
+- At `4b318102c0ea6671a742b81a1b1d69189a6c0576`, scoped Ruff passed, then the first scoped mypy run failed15diagnostics in native source typing. Original successful/failed output, command metadata and independent return are preserved in `L14/evidence/return_03/`; ingress/product checks remain unattempted.
+- `L14/REPAIR_03.md` records ISOLATED faithful public pagination/event-discriminant typing: exact two-page/item unions, typed per-iteration bound page functions and explicit callback/control tuple alternatives with distinct build variables. Runtime page/order/control/bound/refusal checks remain; no Any, ignored diagnostics or new casts. Only production source changes, so family/support/generations are unchanged.
+- After root repair checkpoint delivery, the sole independent executor must check materially changed Ruff scope and retry failed mypy before downstream checks. No implementation-worker checks ran or native acceptance is claimed.
