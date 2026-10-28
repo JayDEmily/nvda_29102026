@@ -32,7 +32,7 @@ _CLASSES = {
         f.NativeSourceProfileV1, f.NativeSourceRequestV1, f.NativeRawLineageV1,
         f.NativeControlLineageV1, f.NativeBookRowV1, f.NativeSourceSnapshotV1,
         f.NativeQuoteAssemblyV1, f.NativeCalculationRequestV1,
-        f.NativeMeasurementOccurrenceV1, f.DerivedSignalOccurrenceV1,
+        f.NativeMeasurementOccurrenceV1, f.DerivedSignalOccurrenceV1, f.RawInputLineageV1,
         f.ExactRatioV1, f.BookSlopePairV1, f.BookRatePairV1,
         f.VenueConcentrationV1,
     )
