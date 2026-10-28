@@ -318,6 +318,7 @@ def _replay(profile: f.NativeSourceProfileV1, lines: tuple[f.NativeRawLineageV1,
     standing: dict[int, list[f.NativeBookRowV1]] = {0: [], 1: []}
     warmup = profile.warmup_observation_ids
     warmup_seen: list[str] = []
+    warmup_complete = not warmup
     for receipt, scope, seq, oid, group, control in events:
         if prev is not None and (receipt == prev[0] and (scope != prev[1] or seq == prev[2])):
             raise ValueError("unresolved same-receipt causal order")
@@ -326,6 +327,7 @@ def _replay(profile: f.NativeSourceProfileV1, lines: tuple[f.NativeRawLineageV1,
             if control.invalidates:
                 standing = {0: [], 1: []}
                 warmup_seen = []
+                warmup_complete = False
             continue
         assert group is not None
         roles = {mapping.raw_signal_catalogue_id.value for mapping in profile.projection_mappings}
@@ -369,9 +371,15 @@ def _replay(profile: f.NativeSourceProfileV1, lines: tuple[f.NativeRawLineageV1,
                 raise ValueError("delete without standing position")
             del rows[pos]
         rows[:] = [replace(row, position=i) for i, row in enumerate(rows)]
-    if warmup and (tuple(warmup_seen) != warmup or any(
-        len(standing[side]) < levels for side, levels in profile.warmup_side_levels
-    )):
+        if warmup and not warmup_complete and tuple(warmup_seen) == warmup:
+            if any(len(standing[side]) < levels
+                   for side, levels in profile.warmup_side_levels):
+                raise ValueError("complete warm-up prefix lacks required side coverage")
+            warmup_complete = True
+    # Coverage is a fact proved at completion of the exact known-empty prefix.
+    # Lawful later deletes alter a known book; only a separate invalidation
+    # clears completeness and requires a newly authorised full warm-up epoch.
+    if warmup and (tuple(warmup_seen) != warmup or not warmup_complete):
         raise ValueError("book lacks complete post-control warm-up")
     return tuple((*standing[1], *standing[0]))
 
