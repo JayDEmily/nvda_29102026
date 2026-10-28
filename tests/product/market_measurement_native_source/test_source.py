@@ -10,7 +10,7 @@ from nvda_desk.market_measurement_truth import api as f
 from nvda_desk.raw_signal_occurrence_truth import api as raw
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "support"))
-from native_reconciliation import PublicDtoReader  # noqa: E402
+from native_reconciliation import PublicDtoReader, typed_tree  # noqa: E402
 
 BRIEF = "5b777c5842b091f6dc4bef148970c4cf81b68864bd24f5a1633d392f38d96ead"
 T = datetime(2026, 10, 20, 12, 40, tzinfo=UTC)
@@ -117,11 +117,16 @@ def test_native_source_success(tmp_path):
     before = path.read_bytes()
     reader = f.create_native_source_reader(admission=ADMISSION,
         storage=f.SQLiteReadStorageV1(str(path)))
-    assert reader.get_source_snapshot(prefix.source_snapshot_id) == prefix
-    assert reader.get_source_snapshot(new.source_snapshot_id) == new
-    assert reader.list_source_history(source_profile_ref=G2,
+    old_read = reader.get_source_snapshot(prefix.source_snapshot_id)
+    new_read = reader.get_source_snapshot(new.source_snapshot_id)
+    assert type(old_read) is f.NativeSourceSnapshotV1
+    assert type(new_read) is f.NativeSourceSnapshotV1
+    assert typed_tree(old_read) == typed_tree(prefix)
+    assert typed_tree(new_read) == typed_tree(new)
+    history = reader.list_source_history(source_profile_ref=G2,
         effective_at_or_before_utc=T+timedelta(milliseconds=300),
-        knowledge_at_or_before_utc=T+timedelta(seconds=1), limit=1) == (new,)
+        knowledge_at_or_before_utc=T+timedelta(seconds=1), limit=1)
+    assert len(history) == 1 and typed_tree(history[0]) == typed_tree(new)
     assert path.read_bytes() == before
 
 

@@ -8,7 +8,8 @@ from __future__ import annotations
 
 import json
 from collections.abc import Mapping
-from datetime import datetime
+from dataclasses import fields, is_dataclass
+from datetime import datetime, timedelta
 from decimal import Decimal
 from pathlib import Path
 
@@ -87,6 +88,32 @@ def at_path(value, path):
             return None
         value = value[key]
     return value
+
+
+def typed_tree(value):
+    """Independent exact-type comparison for public DTOs whose native record
+    is an alias-safe Mapping with identity equality after each reconstruction.
+    """
+    if is_dataclass(value):
+        return (type(value).__module__, type(value).__qualname__,
+                tuple((field.name, typed_tree(getattr(value, field.name)))
+                      for field in fields(value)))
+    if isinstance(value, Mapping):
+        return ("mapping", tuple(sorted((typed_tree(k), typed_tree(v))
+                                        for k, v in value.items())))
+    if type(value) in (tuple, list):
+        return (type(value).__name__, tuple(typed_tree(x) for x in value))
+    if type(value) is Decimal:
+        return ("Decimal", value.as_tuple())
+    if type(value) is datetime:
+        return ("datetime", value.isoformat())
+    if type(value) is timedelta:
+        return ("timedelta", value.days, value.seconds, value.microseconds)
+    if type(value) in (str, int, bool, float, bytes, type(None)):
+        return (type(value).__name__, value)
+    if type(getattr(value, "value", None)) is str:
+        return (type(value).__module__, type(value).__qualname__, value.value)
+    raise TypeError("unrecognised public DTO value type")
 
 
 class PublicDtoReader:

@@ -8,7 +8,7 @@ import sys
 from nvda_desk.market_measurement_truth import api as f
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "support"))
-from native_reconciliation import PublicDtoReader  # noqa: E402
+from native_reconciliation import PublicDtoReader, typed_tree  # noqa: E402
 
 T = datetime(2026, 10, 20, 12, 40, tzinfo=UTC)
 BRIEF = "0bb079166417c42d3ed2c5f8e363e771c88ba44934cda01184d43be2bc960a76"
@@ -74,12 +74,15 @@ def test_native_success(tmp_path):
     call_before = call_path.read_bytes()
     call_reader = f.create_native_option_midpoint_reader(
         admission=ADMISSION, storage=f.SQLiteReadStorageV1(str(call_path)))
-    assert call_reader.get_derived_occurrence(call.derived_occurrence_id) == call
-    assert call_reader.list_derived_history(
+    reopened_call = call_reader.get_derived_occurrence(call.derived_occurrence_id)
+    assert type(reopened_call) is f.NativeMeasurementOccurrenceV1
+    assert typed_tree(reopened_call) == typed_tree(call)
+    call_history = call_reader.list_derived_history(
         derived_signal_id="D087", subject_instrument="NVDA-OPT-C100-CONTROL-1",
         effective_at_or_before_utc=T + timedelta(milliseconds=300),
         knowledge_at_or_before_utc=T + timedelta(seconds=1), limit=1,
-    ) == (call,)
+    )
+    assert len(call_history) == 1 and typed_tree(call_history[0]) == typed_tree(call)
     assert call_path.read_bytes() == call_before
 
     put_path = tmp_path / "put.sqlite"
@@ -111,7 +114,9 @@ def test_native_success(tmp_path):
     put_before = put_path.read_bytes()
     put_reader = f.create_native_option_midpoint_reader(
         admission=ADMISSION, storage=f.SQLiteReadStorageV1(str(put_path)))
-    assert put_reader.get_derived_occurrence(put.derived_occurrence_id) == put
+    reopened_put = put_reader.get_derived_occurrence(put.derived_occurrence_id)
+    assert type(reopened_put) is f.NativeMeasurementOccurrenceV1
+    assert typed_tree(reopened_put) == typed_tree(put)
     assert put_path.read_bytes() == put_before
     assert call.derived_occurrence_id != put.derived_occurrence_id
 
