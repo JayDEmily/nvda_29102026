@@ -128,11 +128,13 @@ Default traversal is L00→L13 for documentary contracts and implementation, fol
 
 **Files:** proposed additive public types/protocols in `src/nvda_desk/market_measurement_truth/api.py`; focused owner-local source/control helper and codec support only if L01 requires them; exact proof files/claim fixed by L01. Preserve `_selection.py` legacy numeric behaviour.
 
-- [ ] Author the admitted module-local proof from L01 before production changes: separate control discovery, receipt-only input selection with null event cutoff, strict source isolation, deterministic pagination and typed durable lineage.
-- [ ] Implement the approved public input protocol and bounded M02 interpretation of controls. Merge events under declared order; refuse ambiguous required transitions and incomplete generation restart state.
-- [ ] Implement approved typed receipt basis without fabricating event datetimes. Preserve original projections in lineage and version changes; keep old persisted records readable under their original owner/profile.
-- [ ] Implement the public owner/readback path and author its ordinary read-only SQLite and independent literal omission/order/control checks under the declared case allocation; **do not execute** them before L14.
-- [ ] Document the affected claims and **NOT_RUN** proof obligations; commit as `IMPLEMENTED_UNTESTED` and publish the additive checkpoint. Independent semantic review and scoped strict proof occur at L14.
+- [x] Author the admitted module-local proof from L01 before production changes: separate control discovery, receipt-only input selection with null event cutoff, strict source isolation, deterministic pagination and typed durable lineage.
+- [x] Implement the approved public input protocol and bounded M02 interpretation of controls. Merge events under declared order; refuse ambiguous required transitions and incomplete generation restart state.
+- [x] Implement approved typed receipt basis without fabricating event datetimes. Preserve original projections in lineage and version changes; keep old persisted records readable under their original owner/profile.
+- [x] Implement the public owner/readback path and author its ordinary read-only SQLite and independent literal omission/order/control checks under the declared case allocation; **do not execute** them before L14.
+- [ ] Document the affected claims and **NOT_RUN** proof obligations; commit as `IMPLEMENTED_UNTESTED` and publish the additive checkpoint. Source/claim/ledger are prepared; controller commit/export/save/exposure remain pending at this working-tree revision. Independent semantic review and scoped strict proof occur at L14.
+
+**L02 implementation disposition: IMPLEMENTED_UNTESTED; all scoped source/static/runtime proofs NOT_RUN.** See `handoff/downstream_reconciliation/L02/STATUS.md` and next-export manifest. The export/save/exposure itself is controller-pending at this commit.
 
 **Required L14 proof (not established by implementation checkpoint):** M02 has a lawful input/lineage capability for native-shaped receipt/control facts. No new M00 API or M00 proof run is presumed necessary. If common semantics require per-family carriers, keep them bounded and bind each dependent leaf explicitly.
 
@@ -339,3 +341,9 @@ A cumulative incremental Git bundle is **not** a self-contained full repository:
 - L01 source/API/fixture/oracle/allocation and immutable native brief/bindings are concrete under the current owner commission: **AUTHORITY_READY / NOT_RUN**. The restored A01–A04 blanket fresh-approval blocker was overbroad; current commissioned synthetic choices resolve it without changing provider facts or accepted equations. See `handoff/downstream_reconciliation/L01/STATUS.md` for exact rulings and `authority/FIXTURE_AUTHORITY_MANIFEST_V1.json` for byte identity. Independent source/meaning audit remains L14; no product implementation or test acceptance is asserted at L01.
 - L02–L12 code and all scoped tests: `NOT_ATTEMPTED`; L13 documentary disposition: `NOT_ATTEMPTED`; L14 independent test/acceptance: `NOT_ATTEMPTED`. L00 retains its previously reviewed documentary standing.
 - L01 cumulative additive export uses the same L00 baseline; exact next-export contract is `handoff/downstream_reconciliation/L01/NEXT_EXPORT_MANIFEST.md`. Source-side fresh restore establishes mechanics; independent tester possession of the one-time baseline remains an explicit pending invariant.
+
+### R2 L02 candidate implementation — 28 October 2026
+
+- L02 native public source/control types, bounded M00 public reader, owner-local typed durable snapshots and exact two-case helper claim/generation are authored at `handoff/downstream_reconciliation/L02/STATUS.md`; status **IMPLEMENTED_UNTESTED**. No runtime/product/static test, import or replay has been run. This is a worker candidate, not independent acceptance.
+- The controller must commit, export, fresh-restore, save and expose the cumulative L02 additive bundle from the same fixed L00 baseline before L03 begins. The exact next-export declaration is `L02/NEXT_EXPORT_MANIFEST.md`; the resulting HEAD and bundle SHA256 are necessarily recorded outside the commit.
+- L03–L13 implementation remains `NOT_ATTEMPTED` at this candidate; L14 independent review/proof remains `NOT_ATTEMPTED`. The tester's baseline possession is still unconfirmed.

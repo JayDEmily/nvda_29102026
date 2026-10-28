@@ -93,8 +93,12 @@ class RecordState:
         storage: f.MemoryStorageV1 | f.SQLiteStorageV1 | f.SQLiteReadStorageV1,
         decode: Callable[[bytes], Any],
         validate: Callable[[Any], None],
+        *,
+        encode: Callable[[Any], bytes] = canonical,
+        identity_field: str = "derived_occurrence_id",
     ) -> None:
         self.decode, self.validate = decode, validate
+        self.encode, self.identity_field = encode, identity_field
         self.memory: dict[str, Any] = {}
         self.path = None if isinstance(storage, f.MemoryStorageV1) else _path(storage.database_path)
         if type(storage) is f.SQLiteStorageV1 and storage.create:
@@ -119,7 +123,7 @@ class RecordState:
                 raise f.PersistenceFailureV1("measurement record hash mismatch")
             value = self.decode(payload)
             self.validate(value)
-            if value.derived_occurrence_id != identity:
+            if getattr(value, self.identity_field) != identity:
                 raise f.PersistenceFailureV1("measurement row identity mismatch")
             result.append(value)
         return tuple(result)
@@ -132,8 +136,8 @@ class RecordState:
 
     def _existing(self, values: tuple[Any, ...], value: Any) -> Any:
         for old in values:
-            if old.derived_occurrence_id == value.derived_occurrence_id:
-                if canonical(old) != canonical(
+            if getattr(old, self.identity_field) == getattr(value, self.identity_field):
+                if self.encode(old) != self.encode(
                     replace(value, calculated_at_utc=old.calculated_at_utc)
                 ):
                     raise f.PersistenceFailureV1("immutable measurement identity conflict")
@@ -146,21 +150,21 @@ class RecordState:
             old = self._existing(self.all(), value)
             if old is not None:
                 return old
-            self.memory[value.derived_occurrence_id] = value
+            self.memory[getattr(value, self.identity_field)] = value
             return value
         with _transaction(self.path, write=True) as c:
             old = self._existing(self._load(c), value)
             if old is not None:
                 return old
-            payload = canonical(value)
+            payload = self.encode(value)
             c.execute(
                 "INSERT INTO mmt_record_v1 VALUES (?,?,?)",
-                (value.derived_occurrence_id, payload, hashlib.sha256(payload).hexdigest()),
+                (getattr(value, self.identity_field), payload, hashlib.sha256(payload).hexdigest()),
             )
             recovered = next(
-                v for v in self._load(c) if v.derived_occurrence_id == value.derived_occurrence_id
+                v for v in self._load(c) if getattr(v, self.identity_field) == getattr(value, self.identity_field)
             )
-            if canonical(recovered) != payload:
+            if self.encode(recovered) != payload:
                 raise f.PersistenceFailureV1("measurement readback mismatch")
             return recovered
 
@@ -168,7 +172,7 @@ class RecordState:
         """Admit a complete immutable occurrence batch in one storage transaction."""
         if type(values) is not tuple or not values:
             raise ValueError("nonempty exact occurrence batch required")
-        identities = tuple(v.derived_occurrence_id for v in values)
+        identities = tuple(getattr(v, self.identity_field) for v in values)
         if len(set(identities)) != len(identities):
             raise ValueError("duplicate identities in atomic occurrence batch")
         for value in values:
@@ -177,21 +181,21 @@ class RecordState:
             existing = self.all()
             resolved = tuple(self._existing(existing, value) or value for value in values)
             for value in resolved:
-                self.memory[value.derived_occurrence_id] = value
+                self.memory[getattr(value, self.identity_field)] = value
             return resolved
         with _transaction(self.path, write=True) as c:
             existing = self._load(c)
             resolved = tuple(self._existing(existing, value) or value for value in values)
             for value in resolved:
-                if not any(old.derived_occurrence_id == value.derived_occurrence_id
+                if not any(getattr(old, self.identity_field) == getattr(value, self.identity_field)
                            for old in existing):
-                    payload = canonical(value)
+                    payload = self.encode(value)
                     c.execute(
                         "INSERT INTO mmt_record_v1 VALUES (?,?,?)",
-                        (value.derived_occurrence_id, payload, hashlib.sha256(payload).hexdigest()),
+                        (getattr(value, self.identity_field), payload, hashlib.sha256(payload).hexdigest()),
                     )
-            readback = {v.derived_occurrence_id: v for v in self._load(c)}
+            readback = {getattr(v, self.identity_field): v for v in self._load(c)}
             for value in resolved:
-                if canonical(readback[value.derived_occurrence_id]) != canonical(value):
+                if self.encode(readback[getattr(value, self.identity_field)]) != self.encode(value):
                     raise f.PersistenceFailureV1("atomic batch readback mismatch")
             return tuple(readback[identity] for identity in identities)

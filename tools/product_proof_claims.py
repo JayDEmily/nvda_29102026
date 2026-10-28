@@ -789,6 +789,72 @@ def _m00_brief2_extension(root: Path) -> tuple[dict[str, Any], dict[str, Any], s
     return entry, contract, digest
 
 
+def _native_reconciliation_extensions(
+    root: Path,
+) -> tuple[tuple[dict[str, Any], dict[str, Any], str], ...]:
+    """The eleven exact L01 commissioned M02 siblings, admitted per owning leaf.
+
+    A missing descriptor remains unadmitted; native test Python without its
+    matching descriptor is refused. Original claim controls stay unchanged.
+    """
+    plan = read_json(safe_path(
+        root, "handoff/downstream_reconciliation/authority/NATIVE_CLAIM_PLAN_V1.json"))
+    if plan.get("schema_version") != 1 or len(plan.get("claims", ())) != 11:
+        raise ValueError("fixed native reconciliation claim inventory mismatch")
+    result = []
+    seen: set[str] = set()
+    for fixed in plan["claims"]:
+        identity = fixed["identity"]
+        if identity in seen or identity not in {
+            "SOURCE", "D087", "D131", "D134", "D135", "D136", "D137",
+            "D138", "D139", "D140", "D143",
+        }:
+            raise ValueError("unapproved native claim identity")
+        seen.add(identity)
+        expected = {name: fixed[name] for name in (
+            "schema_version", "claim_id", "brief_path", "binding_path",
+            "contract_path", "physical_root", "admission_path",
+        )}
+        descriptor = safe_path(root, fixed["descriptor_path"])
+        if not descriptor.exists():
+            physical = safe_path(root, fixed["physical_root"])
+            if physical.exists() and any(physical.rglob("*.py")):
+                raise ValueError("native source without fixed descriptor")
+            continue
+        if read_json(descriptor) != expected:
+            raise ValueError("native fixed descriptor mismatch")
+        brief = safe_path(root, fixed["brief_path"])
+        binding = safe_path(root, fixed["binding_path"])
+        if sha256(brief) != fixed["brief_sha256"] or sha256(binding) != fixed["binding_sha256"]:
+            raise ValueError("native frozen authority bytes mismatch")
+        validate_implementation_authority(root, binding, brief)
+        if yaml.safe_load(binding.read_text())["targets"] != [
+            {"action": "modify", "object_id": name} for name in ("M02", "G01")
+        ]:
+            raise ValueError("native owning target projection mismatch")
+        contract = read_json(safe_path(root, fixed["contract_path"]))
+        _schema(root, contract, "accepted_brief_product_proof.schema.json")
+        if (contract["claim_id"] != fixed["claim_id"]
+            or contract["semantic_brief_path"] != fixed["brief_path"]
+            or len(contract["families"]) != 1
+            or contract["families"][0]["path"] != fixed["family_path"]
+            or contract["families"][0]["required_test_names"] != fixed["test_names"]
+            or contract["target"] != {
+                "category": "M", "responsibility_name": "neutral_market_measurement_truth",
+                "package": "nvda_desk.market_measurement_truth",
+                "public_seam": "nvda_desk.market_measurement_truth.api",
+                "intent": "modify", "existing_object_id": "M02",
+            }
+            or any(v != "FAIL" for v in contract["execution_policy"].values())):
+            raise ValueError("native exact claim association mismatch")
+        entry = {k: v for k, v in expected.items() if k != "brief_path"}
+        entry["profile"] = "accepted_brief_v2"
+        target_id, _ = _target(root, contract["target"])
+        _generation(root, entry, contract, fixed["brief_sha256"], target_id)
+        result.append((entry, contract, fixed["brief_sha256"]))
+    return tuple(result)
+
+
 def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductProofClaim:
     root = repository_root.resolve()
     catalogue = read_json(root / "config/product_proof/claims.json")
@@ -1007,6 +1073,9 @@ def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductPro
     m00 = _m00_brief2_extension(root) if authority is not None else None
     if m00 is not None:
         extensions[m00[0]["claim_id"]] = m00
+    if authority is not None:
+        for native in _native_reconciliation_extensions(root):
+            extensions[native[0]["claim_id"]] = native
     if extensions:
         catalogue = {
             **catalogue,

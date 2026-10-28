@@ -260,6 +260,186 @@ class SQLiteReadStorageV1(_Validated):
     database_path: str
 
 
+class NativeRawReaderV1(Protocol):
+    def list_projected_raw_history(
+        self, raw_signal_catalogue_id: raw_api.RawSignalCatalogueId, *,
+        mappings: Sequence[raw_api.RawSignalProjectionMappingV1],
+        subject_instrument: str | None,
+        received_at_or_before_utc: datetime | None,
+        event_at_or_before_utc: datetime | None = None,
+        limit: int, cursor: str | None,
+    ) -> raw_api.ProjectedRawHistoryPageV1: ...
+
+    def list_raw_observation_history(
+        self, *, subject_instrument: str, source_provider: str,
+        source_variant: str | None, received_at_or_before_utc: datetime,
+        native_identity_selectors: tuple[tuple[tuple[str, ...], str], ...] = (),
+        limit: int, cursor: str | None,
+    ) -> raw_api.RawObservationHistoryPageV1: ...
+
+
+@dataclass(frozen=True, slots=True)
+class NativeSourceProfileV1(_Validated):
+    ref: VersionRefV1
+    provider: str
+    variant: str
+    subject_instrument: str
+    request: str
+    generation: str
+    ingestion_scope: str
+    requested_exchange: str
+    security_type: str
+    option_right: str | None
+    contract_identity: str
+    time_basis: str
+    complete_from_utc: datetime
+    warmup_observation_ids: tuple[str, ...]
+    warmup_side_levels: tuple[tuple[int, int], ...]
+    projection_mappings: tuple[raw_api.RawSignalProjectionMappingV1, ...]
+    maximum_observations: int
+    source_context_ref: VersionRefV1
+
+
+@dataclass(frozen=True, slots=True)
+class NativeSourceRequestV1(_Validated):
+    source_profile_ref: VersionRefV1
+    as_of_utc: datetime
+    knowledge_cutoff_utc: datetime
+
+
+@dataclass(frozen=True, slots=True)
+class NativeRawLineageV1(_Validated):
+    raw_signal_id: str
+    observation_occurrence_id: str
+    projection_mapping_ref: VersionRefV1
+    projection: raw_api.ProjectedRawValueV1
+    canonical_value: datetime | int | str | Decimal
+    time_basis: str
+    event_time_utc: datetime | None
+    received_ts_utc: datetime
+
+
+@dataclass(frozen=True, slots=True)
+class NativeControlLineageV1(_Validated):
+    observation: raw_api.RawObservationOccurrenceV1
+    kind: str
+    request: str
+    generation_before: str
+    generation_after: str
+    invalidates: bool
+
+
+@dataclass(frozen=True, slots=True)
+class NativeBookRowV1(_Validated):
+    side: int
+    position: int
+    price: Decimal | None
+    size: Decimal
+    mpid: str | None
+    requested_exchange: str
+    observation_occurrence_id: str
+
+
+@dataclass(frozen=True, slots=True)
+class NativeSourceSnapshotV1(_Validated):
+    owner_object_id: str
+    owner_namespace: str
+    implementation_brief_sha256: str
+    source_snapshot_id: str
+    request: NativeSourceRequestV1
+    profile: NativeSourceProfileV1
+    raw_input_lineage: tuple[NativeRawLineageV1, ...]
+    controls: tuple[NativeControlLineageV1, ...]
+    standing_rows: tuple[NativeBookRowV1, ...]
+    effective_as_of_utc: datetime
+    knowledge_cutoff_utc: datetime
+    calculated_at_utc: datetime
+
+
+@dataclass(frozen=True, slots=True)
+class NativeQuoteAssemblyV1(_Validated):
+    policy_ref: VersionRefV1
+    constituent_occurrence_ids: tuple[str, ...]
+    constituent_receipts_utc: tuple[datetime, ...]
+    maximum_skew: timedelta
+    maximum_latest_age: timedelta
+    source_context_ref: VersionRefV1
+
+
+@dataclass(frozen=True, slots=True)
+class NativeCalculationRequestV1(_Validated):
+    derived_signal_id: str
+    source_profile_ref: VersionRefV1
+    as_of_utc: datetime
+    knowledge_cutoff_utc: datetime
+    depth_levels: int
+    band: Decimal | None
+    window_seconds: int | None
+    side: int | None
+    positions: tuple[int, ...]
+    predecessor_occurrence_ids: tuple[str, ...]
+
+
+@dataclass(frozen=True, slots=True)
+class NativeMeasurementOccurrenceV1(_Validated):
+    owner_object_id: str
+    owner_namespace: str
+    implementation_brief_sha256: str
+    derived_signal_id: str
+    derived_occurrence_id: str
+    request: NativeCalculationRequestV1
+    definition: CalculationDefinitionV1
+    source: NativeSourceSnapshotV1 | None
+    quote_assembly: NativeQuoteAssemblyV1 | None
+    predecessors: tuple[NativeMeasurementOccurrenceV1 | DerivedSignalOccurrenceV1, ...]
+    selected_event_ids: tuple[str, ...]
+    result: Decimal | ExactRatioV1 | BookSlopePairV1 | BookRatePairV1 | VenueConcentrationV1
+    units: str
+    result_shape: str
+    effective_as_of_utc: datetime
+    knowledge_cutoff_utc: datetime
+    calculated_at_utc: datetime
+
+
+class NativeSourceReadsV1(Protocol):
+    def get_source_snapshot(self, source_snapshot_id: str) -> NativeSourceSnapshotV1 | None: ...
+    def list_source_history(self, *, source_profile_ref: VersionRefV1,
+        effective_at_or_before_utc: datetime, knowledge_at_or_before_utc: datetime,
+        limit: int) -> tuple[NativeSourceSnapshotV1, ...]: ...
+
+
+class NativeSourceOwnerV1(Protocol):
+    @property
+    def reads(self) -> NativeSourceReadsV1: ...
+    def materialise(self, request: NativeSourceRequestV1) -> NativeSourceSnapshotV1 | None: ...
+
+
+class NativeMeasurementReadsV1(Protocol):
+    def get_derived_occurrence(self, derived_occurrence_id: str) -> NativeMeasurementOccurrenceV1 | None: ...
+    def list_derived_history(self, *, derived_signal_id: str,
+        subject_instrument: str, effective_at_or_before_utc: datetime,
+        knowledge_at_or_before_utc: datetime, limit: int) -> tuple[NativeMeasurementOccurrenceV1, ...]: ...
+
+
+class NativeMeasurementOwnerV1(Protocol):
+    @property
+    def reads(self) -> NativeMeasurementReadsV1: ...
+    def materialise(self, request: NativeCalculationRequestV1) -> NativeMeasurementOccurrenceV1 | None: ...
+
+
+def create_native_source_owner(*, admission: OwnerAdmissionV1,
+    raw_reader: NativeRawReaderV1, storage: MemoryStorageV1 | SQLiteStorageV1,
+    utc_now: Callable[[], datetime]) -> NativeSourceOwnerV1:
+    from ._native_source import build_owner
+    return build_owner(admission, raw_reader, storage, utc_now)
+
+
+def create_native_source_reader(*, admission: OwnerAdmissionV1,
+    storage: SQLiteReadStorageV1) -> NativeSourceReadsV1:
+    from ._native_source import build_reader
+    return build_reader(admission, storage)
+
+
 class RawProjectionReaderV1(Protocol):
     def list_projected_raw_history(
         self,
