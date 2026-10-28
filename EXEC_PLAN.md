@@ -2,7 +2,9 @@
 
 Date: 28 October 2026, Australia/Melbourne. Plan ID `M00-DOWNSTREAM-RECONCILIATION-PLAN-1`.
 
-**Status: PROPOSED — documentary planning only; execution NOT COMMISSIONED.**
+**Status: OWNER ACCEPTED AND EXECUTION COMMISSIONED — 28 October 2026.**
+
+Current owner commission: “Okay, that's approved. Complete the plan.” This accepts the plan and commissions L00–L14 continuously under its independent review/checkpoint protocol. Earlier planning-only/no-test restrictions describe the completed drafting pass; they do not prohibit the explicitly planned scoped future proof. D145 implementation and unrelated holds remain excluded. This commission permits routine contract/profile choices needed to make the approved leaves concrete; it does not authorise silent mathematical changes or a fabricated source clock.
 
 **Goal:** Reconcile the identified downstream source contracts, owning code and module-scoped tests with the completed M00 native-shaped synthetic output, while preserving prior controlled evidence and every unrelated hold.
 
@@ -16,7 +18,7 @@ For future execution, follow the repository's established one-leaf / independent
 
 ## 1. Starting state, preserved plans and commission boundary
 
-Starting accepted M00 checkpoint: `9b400183f275c3147b568d21b995b4aebd2af3c3` (L07). Previous signal anchor: D143 `17d7553cf3ad92700f849f696134de67b64b0dfa`.
+Starting accepted M00 checkpoint: `9b400183f275c3147b568d21b995b4aebd2af3c3` (L06). Previous signal anchor: D143 `17d7553cf3ad92700f849f696134de67b64b0dfa`.
 
 The completed M00 root plan is preserved byte-identically at `handoff/planning/m00_downstream_reconciliation_20261028/COMPLETED_M00_BRIEF2_EXEC_PLAN.md` and in the starting commit. Its completion and evidence are retained. The earlier next-twenty plan remains PAUSED at `handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md`; D145 is its outstanding scheduled signal. Neither plan automatically resumes.
 
@@ -28,7 +30,7 @@ D145 remains paused throughout this reconciliation plan. L13 produces an explici
 
 ## 2. Evidence basis and scope of the identified impact
 
-The prior static pass compared D143 to L07 and inspected the relevant public contracts, consumer code, fixtures, paused plan and review records. The implementation delta in `src/` is confined to M00's `_native_codec.py` and `api.py`: additive UTC-datetime encoding and observation-history enumeration. M01/M02 production files and existing signal product tests were unchanged by Brief2. New M00 proof and shared proof-control support were also added.
+The prior static pass compared D143 to L06 and inspected the relevant public contracts, consumer code, fixtures, paused plan and review records. The implementation delta in `src/` is confined to M00's `_native_codec.py` and `api.py`: additive UTC-datetime encoding and observation-history enumeration. M01/M02 production files and existing signal product tests were unchanged by Brief2. New M00 proof and shared proof-control support were also added.
 
 The following are source-relative compatibility findings, not observed new runtime regressions. Existing synthetic profiles remain evidence only for their exact accepted inputs and scope. Neither numerical agreement nor an old PASS establishes compatibility with a differently scoped native-shaped source.
 
@@ -46,7 +48,7 @@ The following are source-relative compatibility findings, not observed new runti
 Primary source navigation:
 
 - `handoff/planning/m00_brief2_20261027/BRIEF_2_M00_RECONCILED_V3_20261027_1622_AEDT.md`, SHA256 `0d5ee211c1285b31834062ab2d871670ed2f318cbb955e7df95f80067d562007`.
-- `handoff/m00_brief2/FINAL_REPORT.md`, `evidence/L07/FINAL_REVIEW.md`, `outputs/L06_verified/` and its replay/schema/oracle/acceptance files.
+- `handoff/m00_brief2/FINAL_REPORT.md`, `evidence/L06/FINAL_REVIEW.md`, `outputs/L05_verified/` and its replay/schema/oracle/acceptance files.
 - `handoff/m00_brief2/authority/CONTROL_HISTORY_CONTRACT_V1.md`; inspect its implementation and independent approval rather than treating its preserved proposal header as current acceptance.
 - `src/nvda_desk/raw_signal_occurrence_truth/api.py`, `_native_codec.py`, `_sqlite.py`, `_postgres.py`.
 - `src/nvda_desk/market_measurement_truth/api.py`, `_selection.py`, `_book_depth.py`, `_smart_depth.py`, `_smart_ask.py`, `_smart_imbalance.py`, `_book_slope.py`, `_book_insert_rate.py`, `_book_delete_rate.py`, `_direct_venue.py`, `_option_scalars.py`, `_microprice.py`, `_evaluation.py`, `_record_store.py`.
@@ -284,7 +286,7 @@ The checkpoint is part of leaf completion, not an optional final-task export.
 
 1. Finish the semantic obligation, retain failures/repairs and obtain independent disposition. Commit exact source, tests, authority, evidence and actual plan progress. Do not rewrite/prune history or overwrite earlier proof generations.
 2. Create `NVDA_DOWNSTREAM_RECONCILIATION_<LEAF>_<YYYYMMDD>_FULL_HISTORY.bundle` with `git bundle create ... --all`. Retain all starting refs/tips and new work. The checkpoint is cumulative: it contains all accepted earlier leaves, all preserved history and the current accepted leaf.
-3. Verify bundle integrity, fresh-clone restoration, exact accepted HEAD, `git fsck --full`, L07/D143 ancestry and preservation of original ref-tip objects. This is packaging verification, not product testing. Record source SHA and verification outside the bundle to avoid self-reference.
+3. Verify bundle integrity, fresh-clone restoration, exact accepted HEAD, `git fsck --full`, L06/D143 ancestry and preservation of original ref-tip objects. This is packaging verification, not product testing. Record source SHA and verification outside the bundle to avoid self-reference.
 4. Package `NVDA_DOWNSTREAM_RECONCILIATION_<LEAF>_CHECKPOINT_<YYYYMMDD>.tar.gz` containing the bundle, root plan, preserved plans, exact authority/oracle/input references or bytes, leaf evidence, complete prior checkpoint index, checksums and restore instructions. Hash archive and bundle separately; never include transient lockfiles or an archive inside itself.
 5. Save the archive durably and expose its working downloadable link to the owner BEFORE beginning another leaf. A local scratch file or unsaved link alone does not satisfy this requirement. Record filename, accepted source SHA, hashes and returned durable file identity in the delivery ledger; include the receipt in the next cumulative checkpoint to avoid self-hash cycles.
 6. Keep every earlier checkpoint. Once execution is commissioned, continue after each successful checkpoint without routine reapproval. If packaging/saving fails, preserve the accepted source and stop advancement until a downloadable cumulative checkpoint exists.
@@ -299,8 +301,14 @@ A first reviewed planning delivery is documentary only and is not L00 execution 
 - [x] Identified impact mapped to G0–G5 and individually reviewable leaves; module-local proof and cumulative checkpoint protocol specified.
 - [x] Documentary self-review checked coverage, dependencies, authority boundaries, case allocation and absence of implicit execution approval.
 - [ ] Independent documentary plan review, if commissioned, recorded with exact reviewed plan hash. No such approval is asserted by this draft.
-- [ ] Owner accepts the plan, exact conditional semantic decisions and execution commission; only then may future leaves begin.
+- [x] Owner accepted the plan and commissioned completion on 28 October 2026; exact conditional mathematical/time decisions remain subject to the accepted boundaries.
 
 Execution ledger: L00–L14 all NOT_ATTEMPTED. No tests or implementation have been run under this plan. Planning delivery location and hash are recorded by the accompanying saved-file receipt.
 
 Final status may become COMPLETED only when §4 and §6 acceptance conditions are supported. Partial source compatibility, documentary dispositions, preserved legacy PASS evidence, numerical coincidence and archive creation alone cannot close the mandatory implementation gates.
+
+## 8. Live execution ledger
+
+Commission recorded at planning commit 2f93370. Ruling: correct mechanical historical-reference shifts introduced during leaf renumbering: the completed M00 anchor is L06, final review evidence/L06, outputs/L05_verified. Exact historical bytes and starting SHA remain unchanged. No product/proof change.
+
+Preflight: L02 receipt/control types feed every native-compatible book profile; L03 quote assembly feeds actual D087 used by L04; L05/L06 feed actual D136; L09 source handling feeds L10. Shared edits require exact per-leaf invalidation assessment. Current branch is a task-private clone; no extra worktree or broad baseline run.

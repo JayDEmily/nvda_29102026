@@ -1,3 +1,6 @@
+<!-- Current owner commission, 28 October 2026 -->
+Owner accepted root downstream reconciliation ExecPlan and instructed completion. Execute its L00–L14 under per-leaf independent acceptance and cumulative downloadable checkpoint before advancement. Earlier planning-only restrictions apply to historical drafting turns. Scoped tests are authorised by the accepted plan; D145 implementation and unrelated holds stay paused. Frozen GUARDRAILS remains unchanged.
+
 <!-- Current owner execution commission, 27 October 2026 -->
 The owner now explicitly accepts and commissions all root M00 Brief2 leaves continuously, with independently accepted cumulative downloadable checkpoints after each leaf. This supersedes planning-only restrictions below. D145 and other signal work remain paused; frozen guardrails and unchanged evidence remain. New Brief2 proof lives under tests/product/m00_brief2/ via separately admitted fixed claim, not the original raw SQLite claim.
 
