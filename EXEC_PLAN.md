@@ -460,3 +460,28 @@ Owner instruction: “So now we can do all the testing for L14 and the final acc
 - At `5ca757c256d764bd4848dc8f9c80f433a9c2863d`, scoped Ruff28, mypy16 and11 exact authority ingress checks passed. The first SOURCE strict invocation then failed preflight on original D137 generation0001's missing mandatory previous_generation; counts remain null and downstream claims unattempted. Original outputs/metadata/audit are retained under `L14/evidence/return_04/`.
 - RECURRENT_CLASS immutable-admission lineage follows historical D131 recovery. Root authorised new `work/reconciliation-l14-recovered` from pre-D137 `7f7a631`, first lawful D137 admission commit `89adfdd0414c8df1047a3f260a5330defbeace60`, then ordinary carry-forward of reviewed5ca bytes with correct linked D137 generations/pointer/index. Original failed oct29 branch stays at5ca; no ref/history rewrite or invalid-ancestry merge occurs. Malformed lineage is DO_NOT_CARRY_FORWARD to the active branch and remains fully recoverable on the retained branch.
 - `L14/REPAIR_04.md` and Git-blob equivalence inventory define exact metadata differences and unchanged production/test/tool/authority/proof bytes. Prior green static/ingress evidence may be reused only after independent assessment; no duplicate green by branch change. No worker checks ran. Root must deliver all-three-ref cumulative recovery additive before the sole independent executor retries unsuccessful SOURCE and continues pending claims. Native acceptance remains pending; D145 and other holds stay paused.
+
+
+## L14 independent retrospective acceptance — 29 October2026
+
+This verified ledger supersedes earlier chronological NOT_RUN/pending implementation entries for the exact obligations below; original entries/failures remain historical evidence. Sole independent executor `/root/l14_independent_executor`, tested candidate `f5cb9265a02ab463a0eef058fbbf3f3611eac95f`, tree `b7e1511ef23d0a62d947877257f8c96c2359f010`.
+
+| Leaf | Claim suffix | Generation | Collected / passed | Disposition |
+| --- | --- | --- | --- | --- |
+| L02 | source | 0004 | 2 / 2 | TESTED_ACCEPTED |
+| L03 | d087 | 0003 | 2 / 2 | TESTED_ACCEPTED |
+| L04 | d131 | 0002 | 2 / 2 | TESTED_ACCEPTED |
+| L05 | d134 | 0002 | 2 / 2 | TESTED_ACCEPTED |
+| L06 | d135 | 0002 | 2 / 2 | TESTED_ACCEPTED |
+| L07 | d136 | 0002 | 2 / 2 | TESTED_ACCEPTED |
+| L08 | d138 | 0002 | 2 / 2 | TESTED_ACCEPTED |
+| L09 | d139 | 0002 | 2 / 2 | TESTED_ACCEPTED |
+| L10 | d140 | 0002 | 2 / 2 | TESTED_ACCEPTED |
+| L11 | d143 | 0002 | 2 / 2 | TESTED_ACCEPTED |
+| L12 | d137 | 0002 | 2 / 2 | TESTED_ACCEPTED |
+
+L00/L01 documentary readiness and L13 disposition independently accepted. All11 owning strict claims observed22collected/22passed, no failures/skips/xfail/xpass. G2/G3/G4 accepted within fixed syntheticSQLite scope. Scoped Ruff28/mypy16/11ingress actualGREEN at5ca is reused after exact relevantblob equivalence; no duplicateGREEN. L14 executable/semantic obligations accepted; G5 finalhandover is PENDING controller external verifiedsavedexposed cumulativeadditive receipt under unchangedbaseline. Fullplan COMPLETED only once that finaltransfer condition is actually established.
+
+Exactcommands/counts/claim+generation+sourceidentity/rawhashes and priorfailure/repair evidence: L14/EXECUTION_INDEX.json, L14/TEST_EVIDENCE_LEDGER.json and L14/INDEPENDENT_SEMANTIC_REVIEW.md. Reconciled I01–I08/oldnativeprofiles/M00evidence/SQLite/PostgreSQLlimits/holds are in FINAL_REPORT.md and review. Sourcecausaltie unique-cause and equal-receipt source-only assurance limits remain explicit. D137cleanadmission recovery preserves rejected5ca branch and allimmutablehistory. UnknowninterruptedSOURCEattempt is not PASS/FAIL; authorised recoveredexecution supplies observedresult. No product/authority/test changes by reviewer, no oldunaffected suite/M00replay/barepytest run.
+
+D145 capability BLOCKED/PAUSED; D120–D122/D141/D142/D144 and allpriorholds unchanged, D151unassessed. No PostgreSQL/live/entitlements/M01/A00/catalogue-wide acceptance. Finalexport declaration L14/NEXT_EXPORT_MANIFEST.md; actual finalHEAD/tree/bundleSHA256 and Library exposure belong in controller externalreceipt, not circular in-Git claims.

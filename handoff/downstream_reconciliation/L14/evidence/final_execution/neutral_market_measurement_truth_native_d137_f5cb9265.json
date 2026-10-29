@@ -1,0 +1,59 @@
+{
+  "candidate": "f5cb9265a02ab463a0eef058fbbf3f3611eac95f",
+  "tree": "b7e1511ef23d0a62d947877257f8c96c2359f010",
+  "cwd": "/workspace/scratch/ad31885d756b/l14_restored_repo",
+  "command": [
+    "/workspace/scratch/ad31885d756b/l14_env_resumed/bin/python",
+    "tools/run_product_proof_gate.py",
+    "--aggregate",
+    "neutral_market_measurement_truth_native_d137"
+  ],
+  "PYTHONPATH": "src",
+  "exit_code": 0,
+  "log": "/workspace/scratch/ad31885d756b/l14_evidence_resumed/neutral_market_measurement_truth_native_d137_f5cb9265.log",
+  "sha256": "68ace705040e195b1099898786e1bd8cd99feaca1bb31d4830e83becbf79433e",
+  "stdout_sha256": "68ace705040e195b1099898786e1bd8cd99feaca1bb31d4830e83becbf79433e",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "seconds": 16.46686553955078,
+  "leaf": "L12",
+  "claim_id": "neutral_market_measurement_truth_native_d137",
+  "generation_path": "config/product_proof/market_measurement_native_d137/generations/0002.json",
+  "generation_sha256": "e772751269c05a5b4682d07c0d049b305ad3d1202a5fc7919bd8359836d6bdd0",
+  "generation_record": {
+    "schema_version": "1.0",
+    "claim_id": "neutral_market_measurement_truth_native_d137",
+    "generation": 2,
+    "brief_sha256": "e245fb52e9cdb2d09e88a5d4ad4b298049840e07a1a70288311ff6c651ff82a5",
+    "binding_sha256": "e5744fd589d76e70750743d4bc7f2e32ecaebd749bc6350a01ce800e43e4614c",
+    "contract_sha256": "2d66fabbdcfc3916915b473721403da6805b526c686b8bf04be41d7ea1a975ea",
+    "implementation_target_id": "M02",
+    "adequacy_review_ref": "L14/REPAIR_01.md; bounded returned-static/source-order repair; NOT_RUN",
+    "admission_authority_ref": "owner-chat/20261028/downstream-reconciliation/execute-entire-plan",
+    "family_files": [
+      {
+        "path": "tests/product/market_measurement_native_d137/test_signal.py",
+        "sha256": "b2ae79993c033f713a7d9c435bbe37369bbeebe91109998f1bd3baaca2db590a"
+      }
+    ],
+    "support_files": [
+      {
+        "path": "tests/support/native_reconciliation.py",
+        "sha256": "28ef03c2cde9eca028c2a6d7291a2a077a798c9e2e53bb1fd981d5095202904b"
+      }
+    ],
+    "previous_generation": {
+      "path": "config/product_proof/market_measurement_native_d137/generations/0001.json",
+      "sha256": "f1a0ec6b8ce248ae40c13ef31ab18fc6b088a8a781b2d42e2af230b975a0f29a"
+    }
+  },
+  "brief_path": "handoff/downstream_reconciliation/authority/briefs/NATIVE_D137_BRIEF.md",
+  "brief_sha256": "e245fb52e9cdb2d09e88a5d4ad4b298049840e07a1a70288311ff6c651ff82a5",
+  "binding_path": "implementation/authority/DOWNSTREAM_NATIVE_D137_BINDING.yaml",
+  "binding_sha256": "e5744fd589d76e70750743d4bc7f2e32ecaebd749bc6350a01ce800e43e4614c",
+  "collected": 2,
+  "passed": 2,
+  "failed": 0,
+  "skipped": 0,
+  "xfailed": 0,
+  "xpassed": 0
+}
