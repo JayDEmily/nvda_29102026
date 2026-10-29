@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "source_checkpoint": "f84430f275931aea56cf4f44931699ffaee3f542",
-  "scope": "L00 baseline with L01–L01 author documentary reassessments; independent downstream review pending",
+  "scope": "L00 baseline with L01–L02 author documentary reassessments; independent downstream review pending",
   "counts": {
     "foundation_target": 126,
     "recorded_controlled_acceptances": 98,
@@ -6483,19 +6483,54 @@
       "historical_controlled_status": "HELD_OR_PAUSED",
       "native_profile_status": "NOT_ESTABLISHED_BY_L00",
       "operational_status": "FULL_OPERATIONAL_OR_LIVE_READINESS_NOT_ESTABLISHED",
-      "source_readiness": "Controlled proof only where evidenced; native/provider/domain readiness not inferred",
+      "source_readiness": "CONTROLLED_OR_NARROW_PREDECESSOR_ONLY; MISSING_DOMAIN_OR_PROFILE_AS_DESCRIBED",
       "durable_backend_scope": "Owner-local SQLite for evidenced controlled profile; no PostgreSQL/live parity assertion",
       "owning_readiness_leaf": "L02",
-      "readiness": "UNKNOWN_PENDING_ASSIGNED_REASSESSMENT",
-      "current_hold": "Retained; detailed current prerequisites to be assessed in L02",
-      "first_unmet_prerequisite": "Current source/domain/policy/producer assessment pending",
-      "receiver": "M02/source/profile owner; documentary leaf L02",
-      "decision_required": "Assigned reassessment; no policy invented",
-      "evidence_certainty": "Historical evidence links are observations; new readiness UNKNOWN",
+      "readiness": "HELD_FOR_PREDECESSOR",
+      "current_hold": "PRESERVED; Actual compatible D079,D080,D081 occurrences tied to one immutable fit_id are absent.",
+      "first_unmet_prerequisite": "Actual compatible D079,D080,D081 occurrences tied to one immutable fit_id are absent.",
+      "receiver": "M02 neutral-statistics owner",
+      "decision_required": "Commission residual only after shared fitted predecessor is accepted.",
+      "evidence_certainty": "SOURCE_REVIEWED_WITH_EXPLICIT_GAPS; NOT_INDEPENDENTLY_VERIFIED",
       "accepted_definition_profile_identity": "UNKNOWN until original brief/contract exact identity below; no generic profile assumption",
       "implementation_evidence": [],
       "historical_proof": null,
-      "effective_semantic_authority_refs": []
+      "effective_semantic_authority_refs": [
+        "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
+        "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv"
+      ],
+      "documentary_assessment": {
+        "status": "HELD_FOR_PREDECESSOR",
+        "first_unmet_invariant": "Actual compatible D079,D080,D081 occurrences tied to one immutable fit_id are absent.",
+        "observed_distinction_and_other_barriers": "Residual also needs a correctly aligned current D075/D071/D076/D077 vector and the retained intercept plus all factors. Do not insert beta literals or independent separate fits.",
+        "proposed_next_action": "After joint fit and all three beta admissions, propose residual evaluation with common fit identity and refusal on mismatched fit/current sample.",
+        "receiver": "M02 neutral-statistics owner",
+        "decision_or_authority_needed": "Commission residual only after shared fitted predecessor is accepted.",
+        "catalogue_derived_dependencies": [
+          "D075",
+          "D071",
+          "D076",
+          "D077",
+          "D079",
+          "D080",
+          "D081"
+        ],
+        "documentary_sources": [
+          {
+            "path": "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
+            "sha256": "2d95d7c5e425ed1dd231f4685100f7c1db9c85ee1369fea54f91580aab6caa5a",
+            "git_blob": "71eeea1f267b12c4e8182dd9809cfe2e17258c15"
+          },
+          {
+            "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv",
+            "sha256": "67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549",
+            "git_blob": "a27d5e768ab7f1126cecd5a7bbe35bd05b82a442"
+          }
+        ],
+        "certainty": "Evidence-based documentary status; future source/profile acceptance and operational readiness not established",
+        "independent_review": "PENDING_OWNER_HANDOFF",
+        "product_tests_run_this_leaf": 0
+      }
     },
     {
       "derived_id": "D079",
@@ -6516,19 +6551,51 @@
       "historical_controlled_status": "HELD_OR_PAUSED",
       "native_profile_status": "NOT_ESTABLISHED_BY_L00",
       "operational_status": "FULL_OPERATIONAL_OR_LIVE_READINESS_NOT_ESTABLISHED",
-      "source_readiness": "Controlled proof only where evidenced; native/provider/domain readiness not inferred",
+      "source_readiness": "CONTROLLED_OR_NARROW_PREDECESSOR_ONLY; MISSING_DOMAIN_OR_PROFILE_AS_DESCRIBED",
       "durable_backend_scope": "Owner-local SQLite for evidenced controlled profile; no PostgreSQL/live parity assertion",
       "owning_readiness_leaf": "L02",
-      "readiness": "UNKNOWN_PENDING_ASSIGNED_REASSESSMENT",
-      "current_hold": "Retained; detailed current prerequisites to be assessed in L02",
-      "first_unmet_prerequisite": "Current source/domain/policy/producer assessment pending",
-      "receiver": "M02/source/profile owner; documentary leaf L02",
-      "decision_required": "Assigned reassessment; no policy invented",
-      "evidence_certainty": "Historical evidence links are observations; new readiness UNKNOWN",
+      "readiness": "HELD_FOR_DEFINITION_OR_POLICY",
+      "current_hold": "PRESERVED; No approved single full-rank aligned historical regression fit contract (training histories, intercept, conditioning, rank, current exclusion, sample identity).",
+      "first_unmet_prerequisite": "No approved single full-rank aligned historical regression fit contract (training histories, intercept, conditioning, rank, current exclusion, sample identity).",
+      "receiver": "M02 neutral-statistics and source-history owners",
+      "decision_required": "Approve conditioning, sample/window/return convention, rank/refusal and numeric/fit identity.",
+      "evidence_certainty": "SOURCE_REVIEWED_WITH_EXPLICIT_GAPS; NOT_INDEPENDENTLY_VERIFIED",
       "accepted_definition_profile_identity": "UNKNOWN until original brief/contract exact identity below; no generic profile assumption",
       "implementation_evidence": [],
       "historical_proof": null,
-      "effective_semantic_authority_refs": []
+      "effective_semantic_authority_refs": [
+        "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
+        "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv"
+      ],
+      "documentary_assessment": {
+        "status": "HELD_FOR_DEFINITION_OR_POLICY",
+        "first_unmet_invariant": "No approved single full-rank aligned historical regression fit contract (training histories, intercept, conditioning, rank, current exclusion, sample identity).",
+        "observed_distinction_and_other_barriers": "Controlled D071/D075/D076/D077 exist but are fixed-snapshot profiles, not general training-history producers. No public shared immutable fit_id established.",
+        "proposed_next_action": "Authorise neutral OLS fit and lawful public history producers; prove one immutable shared fit and typed beta lineage before D078.",
+        "receiver": "M02 neutral-statistics and source-history owners",
+        "decision_or_authority_needed": "Approve conditioning, sample/window/return convention, rank/refusal and numeric/fit identity.",
+        "catalogue_derived_dependencies": [
+          "D075",
+          "D071",
+          "D076",
+          "D077"
+        ],
+        "documentary_sources": [
+          {
+            "path": "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
+            "sha256": "2d95d7c5e425ed1dd231f4685100f7c1db9c85ee1369fea54f91580aab6caa5a",
+            "git_blob": "71eeea1f267b12c4e8182dd9809cfe2e17258c15"
+          },
+          {
+            "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv",
+            "sha256": "67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549",
+            "git_blob": "a27d5e768ab7f1126cecd5a7bbe35bd05b82a442"
+          }
+        ],
+        "certainty": "Evidence-based documentary status; future source/profile acceptance and operational readiness not established",
+        "independent_review": "PENDING_OWNER_HANDOFF",
+        "product_tests_run_this_leaf": 0
+      }
     },
     {
       "derived_id": "D080",
@@ -6549,19 +6616,51 @@
       "historical_controlled_status": "HELD_OR_PAUSED",
       "native_profile_status": "NOT_ESTABLISHED_BY_L00",
       "operational_status": "FULL_OPERATIONAL_OR_LIVE_READINESS_NOT_ESTABLISHED",
-      "source_readiness": "Controlled proof only where evidenced; native/provider/domain readiness not inferred",
+      "source_readiness": "CONTROLLED_OR_NARROW_PREDECESSOR_ONLY; MISSING_DOMAIN_OR_PROFILE_AS_DESCRIBED",
       "durable_backend_scope": "Owner-local SQLite for evidenced controlled profile; no PostgreSQL/live parity assertion",
       "owning_readiness_leaf": "L02",
-      "readiness": "UNKNOWN_PENDING_ASSIGNED_REASSESSMENT",
-      "current_hold": "Retained; detailed current prerequisites to be assessed in L02",
-      "first_unmet_prerequisite": "Current source/domain/policy/producer assessment pending",
-      "receiver": "M02/source/profile owner; documentary leaf L02",
-      "decision_required": "Assigned reassessment; no policy invented",
-      "evidence_certainty": "Historical evidence links are observations; new readiness UNKNOWN",
+      "readiness": "HELD_FOR_DEFINITION_OR_POLICY",
+      "current_hold": "PRESERVED; Same absent shared full-rank fit/feature-orthogonalisation policy as D079; QQQ controlled return presence does not provide a trained conditional technology factor.",
+      "first_unmet_prerequisite": "Same absent shared full-rank fit/feature-orthogonalisation policy as D079; QQQ controlled return presence does not provide a trained conditional technology factor.",
+      "receiver": "M02 neutral-statistics and source-history owners",
+      "decision_required": "Approve same joint immutable fit contract as D079, preserving factor ordering.",
+      "evidence_certainty": "SOURCE_REVIEWED_WITH_EXPLICIT_GAPS; NOT_INDEPENDENTLY_VERIFIED",
       "accepted_definition_profile_identity": "UNKNOWN until original brief/contract exact identity below; no generic profile assumption",
       "implementation_evidence": [],
       "historical_proof": null,
-      "effective_semantic_authority_refs": []
+      "effective_semantic_authority_refs": [
+        "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
+        "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv"
+      ],
+      "documentary_assessment": {
+        "status": "HELD_FOR_DEFINITION_OR_POLICY",
+        "first_unmet_invariant": "Same absent shared full-rank fit/feature-orthogonalisation policy as D079; QQQ controlled return presence does not provide a trained conditional technology factor.",
+        "observed_distinction_and_other_barriers": "Need aligned SPY/QQQ/semiconductor/NVDA historical sample and shared immutable fit provenance.",
+        "proposed_next_action": "Implement only after common fit authority; return QQQ/technology beta from that exact fit, not separately estimated beta.",
+        "receiver": "M02 neutral-statistics and source-history owners",
+        "decision_or_authority_needed": "Approve same joint immutable fit contract as D079, preserving factor ordering.",
+        "catalogue_derived_dependencies": [
+          "D075",
+          "D071",
+          "D076",
+          "D077"
+        ],
+        "documentary_sources": [
+          {
+            "path": "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
+            "sha256": "2d95d7c5e425ed1dd231f4685100f7c1db9c85ee1369fea54f91580aab6caa5a",
+            "git_blob": "71eeea1f267b12c4e8182dd9809cfe2e17258c15"
+          },
+          {
+            "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv",
+            "sha256": "67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549",
+            "git_blob": "a27d5e768ab7f1126cecd5a7bbe35bd05b82a442"
+          }
+        ],
+        "certainty": "Evidence-based documentary status; future source/profile acceptance and operational readiness not established",
+        "independent_review": "PENDING_OWNER_HANDOFF",
+        "product_tests_run_this_leaf": 0
+      }
     },
     {
       "derived_id": "D081",
@@ -6582,19 +6681,51 @@
       "historical_controlled_status": "HELD_OR_PAUSED",
       "native_profile_status": "NOT_ESTABLISHED_BY_L00",
       "operational_status": "FULL_OPERATIONAL_OR_LIVE_READINESS_NOT_ESTABLISHED",
-      "source_readiness": "Controlled proof only where evidenced; native/provider/domain readiness not inferred",
+      "source_readiness": "CONTROLLED_OR_NARROW_PREDECESSOR_ONLY; MISSING_DOMAIN_OR_PROFILE_AS_DESCRIBED",
       "durable_backend_scope": "Owner-local SQLite for evidenced controlled profile; no PostgreSQL/live parity assertion",
       "owning_readiness_leaf": "L02",
-      "readiness": "UNKNOWN_PENDING_ASSIGNED_REASSESSMENT",
-      "current_hold": "Retained; detailed current prerequisites to be assessed in L02",
-      "first_unmet_prerequisite": "Current source/domain/policy/producer assessment pending",
-      "receiver": "M02/source/profile owner; documentary leaf L02",
-      "decision_required": "Assigned reassessment; no policy invented",
-      "evidence_certainty": "Historical evidence links are observations; new readiness UNKNOWN",
+      "readiness": "HELD_FOR_DEFINITION_OR_POLICY",
+      "current_hold": "PRESERVED; Same absent shared full-rank fitted factor system as D079/D080 and exact semiconductor factor handling.",
+      "first_unmet_prerequisite": "Same absent shared full-rank fitted factor system as D079/D080 and exact semiconductor factor handling.",
+      "receiver": "M02 neutral-statistics and source-history owners",
+      "decision_required": "Accept same joint OLS fit, training/source completeness and numeric policy.",
+      "evidence_certainty": "SOURCE_REVIEWED_WITH_EXPLICIT_GAPS; NOT_INDEPENDENTLY_VERIFIED",
       "accepted_definition_profile_identity": "UNKNOWN until original brief/contract exact identity below; no generic profile assumption",
       "implementation_evidence": [],
       "historical_proof": null,
-      "effective_semantic_authority_refs": []
+      "effective_semantic_authority_refs": [
+        "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
+        "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv"
+      ],
+      "documentary_assessment": {
+        "status": "HELD_FOR_DEFINITION_OR_POLICY",
+        "first_unmet_invariant": "Same absent shared full-rank fitted factor system as D079/D080 and exact semiconductor factor handling.",
+        "observed_distinction_and_other_barriers": "Controlled D077 is a relative-return measurement, not complete semiconductor factor training history; equal numeric beta values cannot evidence common fit.",
+        "proposed_next_action": "Derive semiconductor beta from same immutable full-rank model_fit_id and aligned factor matrix.",
+        "receiver": "M02 neutral-statistics and source-history owners",
+        "decision_or_authority_needed": "Accept same joint OLS fit, training/source completeness and numeric policy.",
+        "catalogue_derived_dependencies": [
+          "D075",
+          "D071",
+          "D076",
+          "D077"
+        ],
+        "documentary_sources": [
+          {
+            "path": "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
+            "sha256": "2d95d7c5e425ed1dd231f4685100f7c1db9c85ee1369fea54f91580aab6caa5a",
+            "git_blob": "71eeea1f267b12c4e8182dd9809cfe2e17258c15"
+          },
+          {
+            "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv",
+            "sha256": "67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549",
+            "git_blob": "a27d5e768ab7f1126cecd5a7bbe35bd05b82a442"
+          }
+        ],
+        "certainty": "Evidence-based documentary status; future source/profile acceptance and operational readiness not established",
+        "independent_review": "PENDING_OWNER_HANDOFF",
+        "product_tests_run_this_leaf": 0
+      }
     },
     {
       "derived_id": "D082",
@@ -7665,19 +7796,46 @@
       "historical_controlled_status": "HELD_OR_PAUSED",
       "native_profile_status": "NOT_ESTABLISHED_BY_L00",
       "operational_status": "FULL_OPERATIONAL_OR_LIVE_READINESS_NOT_ESTABLISHED",
-      "source_readiness": "Controlled proof only where evidenced; native/provider/domain readiness not inferred",
+      "source_readiness": "CONTROLLED_OR_NARROW_PREDECESSOR_ONLY; MISSING_DOMAIN_OR_PROFILE_AS_DESCRIBED",
       "durable_backend_scope": "Owner-local SQLite for evidenced controlled profile; no PostgreSQL/live parity assertion",
       "owning_readiness_leaf": "L02",
-      "readiness": "UNKNOWN_PENDING_ASSIGNED_REASSESSMENT",
-      "current_hold": "Retained; detailed current prerequisites to be assessed in L02",
-      "first_unmet_prerequisite": "Current source/domain/policy/producer assessment pending",
-      "receiver": "M02/source/profile owner; documentary leaf L02",
-      "decision_required": "Assigned reassessment; no policy invented",
-      "evidence_certainty": "Historical evidence links are observations; new readiness UNKNOWN",
+      "readiness": "HELD_FOR_SOURCE",
+      "current_hold": "PRESERVED; No accepted precise computational role/comparability contract joining R111 model-IV and R183 historical option implied volatility across one official trading-session anchor.",
+      "first_unmet_prerequisite": "No accepted precise computational role/comparability contract joining R111 model-IV and R183 historical option implied volatility across one official trading-session anchor.",
+      "receiver": "M00 source/option-history + M02 IV owner",
+      "decision_required": "Decide R183 mandatory role, matching/roll and official prior-session convention.",
+      "evidence_certainty": "SOURCE_REVIEWED_WITH_EXPLICIT_GAPS; NOT_INDEPENDENTLY_VERIFIED",
       "accepted_definition_profile_identity": "UNKNOWN until original brief/contract exact identity below; no generic profile assumption",
       "implementation_evidence": [],
       "historical_proof": null,
-      "effective_semantic_authority_refs": []
+      "effective_semantic_authority_refs": [
+        "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
+        "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv"
+      ],
+      "documentary_assessment": {
+        "status": "HELD_FOR_SOURCE",
+        "first_unmet_invariant": "No accepted precise computational role/comparability contract joining R111 model-IV and R183 historical option implied volatility across one official trading-session anchor.",
+        "observed_distinction_and_other_barriers": "Calendar day in old fixture is not a trading day; exact expiry/roll/tenor/contract/variant and selection/revision are unresolved.",
+        "proposed_next_action": "Obtain source custodian R183 role + source model/units and official comparable-session calendar; then version historical IV selection, two-case proof.",
+        "receiver": "M00 source/option-history + M02 IV owner",
+        "decision_or_authority_needed": "Decide R183 mandatory role, matching/roll and official prior-session convention.",
+        "catalogue_derived_dependencies": [],
+        "documentary_sources": [
+          {
+            "path": "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
+            "sha256": "2d95d7c5e425ed1dd231f4685100f7c1db9c85ee1369fea54f91580aab6caa5a",
+            "git_blob": "71eeea1f267b12c4e8182dd9809cfe2e17258c15"
+          },
+          {
+            "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv",
+            "sha256": "67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549",
+            "git_blob": "a27d5e768ab7f1126cecd5a7bbe35bd05b82a442"
+          }
+        ],
+        "certainty": "Evidence-based documentary status; future source/profile acceptance and operational readiness not established",
+        "independent_review": "PENDING_OWNER_HANDOFF",
+        "product_tests_run_this_leaf": 0
+      }
     },
     {
       "derived_id": "D096",
@@ -7698,19 +7856,54 @@
       "historical_controlled_status": "HELD_OR_PAUSED",
       "native_profile_status": "NOT_ESTABLISHED_BY_L00",
       "operational_status": "FULL_OPERATIONAL_OR_LIVE_READINESS_NOT_ESTABLISHED",
-      "source_readiness": "Controlled proof only where evidenced; native/provider/domain readiness not inferred",
+      "source_readiness": "CONTROLLED_OR_NARROW_PREDECESSOR_ONLY; MISSING_DOMAIN_OR_PROFILE_AS_DESCRIBED",
       "durable_backend_scope": "Owner-local SQLite for evidenced controlled profile; no PostgreSQL/live parity assertion",
       "owning_readiness_leaf": "L02",
-      "readiness": "UNKNOWN_PENDING_ASSIGNED_REASSESSMENT",
-      "current_hold": "Retained; detailed current prerequisites to be assessed in L02",
-      "first_unmet_prerequisite": "Current source/domain/policy/producer assessment pending",
-      "receiver": "M02/source/profile owner; documentary leaf L02",
-      "decision_required": "Assigned reassessment; no policy invented",
-      "evidence_certainty": "Historical evidence links are observations; new readiness UNKNOWN",
+      "readiness": "HELD_FOR_PREDECESSOR",
+      "current_hold": "PRESERVED; Actual D085 option-expiry identity is not accepted in compatible domain.",
+      "first_unmet_prerequisite": "Actual D085 option-expiry identity is not accepted in compatible domain.",
+      "receiver": "M02 surface owner with option/calendar sources",
+      "decision_required": "Accept per-expiry option universe, 50D brackets, side coverage and output shape.",
+      "evidence_certainty": "SOURCE_REVIEWED_WITH_EXPLICIT_GAPS; NOT_INDEPENDENTLY_VERIFIED",
       "accepted_definition_profile_identity": "UNKNOWN until original brief/contract exact identity below; no generic profile assumption",
       "implementation_evidence": [],
       "historical_proof": null,
-      "effective_semantic_authority_refs": []
+      "effective_semantic_authority_refs": [
+        "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
+        "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv",
+        "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md"
+      ],
+      "documentary_assessment": {
+        "status": "HELD_FOR_PREDECESSOR",
+        "first_unmet_invariant": "Actual D085 option-expiry identity is not accepted in compatible domain.",
+        "observed_distinction_and_other_barriers": "Even after D085, R111/R112 per-right same-model/expiry 50-delta brackets, member universe, ties and interpolation/absent-side policy unresolved. K09 linear interpolation does not choose coverage.",
+        "proposed_next_action": "Close D085; authorise finite surface coverage selection and no-extrapolation policy; then produce typed per-expiry CALL/PUT ATM-IV component.",
+        "receiver": "M02 surface owner with option/calendar sources",
+        "decision_or_authority_needed": "Accept per-expiry option universe, 50D brackets, side coverage and output shape.",
+        "catalogue_derived_dependencies": [
+          "D085"
+        ],
+        "documentary_sources": [
+          {
+            "path": "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
+            "sha256": "2d95d7c5e425ed1dd231f4685100f7c1db9c85ee1369fea54f91580aab6caa5a",
+            "git_blob": "71eeea1f267b12c4e8182dd9809cfe2e17258c15"
+          },
+          {
+            "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv",
+            "sha256": "67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549",
+            "git_blob": "a27d5e768ab7f1126cecd5a7bbe35bd05b82a442"
+          },
+          {
+            "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md",
+            "sha256": "603b850802a418780109095e7ae69bcece449da79fb24140a6d50297605e927c",
+            "git_blob": "32930fc08eb648c2cc6347d32d910e3a45bdc07f"
+          }
+        ],
+        "certainty": "Evidence-based documentary status; future source/profile acceptance and operational readiness not established",
+        "independent_review": "PENDING_OWNER_HANDOFF",
+        "product_tests_run_this_leaf": 0
+      }
     },
     {
       "derived_id": "D097",
@@ -7731,19 +7924,48 @@
       "historical_controlled_status": "HELD_OR_PAUSED",
       "native_profile_status": "NOT_ESTABLISHED_BY_L00",
       "operational_status": "FULL_OPERATIONAL_OR_LIVE_READINESS_NOT_ESTABLISHED",
-      "source_readiness": "Controlled proof only where evidenced; native/provider/domain readiness not inferred",
+      "source_readiness": "CONTROLLED_OR_NARROW_PREDECESSOR_ONLY; MISSING_DOMAIN_OR_PROFILE_AS_DESCRIBED",
       "durable_backend_scope": "Owner-local SQLite for evidenced controlled profile; no PostgreSQL/live parity assertion",
       "owning_readiness_leaf": "L02",
-      "readiness": "UNKNOWN_PENDING_ASSIGNED_REASSESSMENT",
-      "current_hold": "Retained; detailed current prerequisites to be assessed in L02",
-      "first_unmet_prerequisite": "Current source/domain/policy/producer assessment pending",
-      "receiver": "M02/source/profile owner; documentary leaf L02",
-      "decision_required": "Assigned reassessment; no policy invented",
-      "evidence_certainty": "Historical evidence links are observations; new readiness UNKNOWN",
+      "readiness": "HELD_FOR_PREDECESSOR",
+      "current_hold": "PRESERVED; No actual admitted D096 typed ATM IV-by-expiry occurrence/ordered expiry-pair selection.",
+      "first_unmet_prerequisite": "No actual admitted D096 typed ATM IV-by-expiry occurrence/ordered expiry-pair selection.",
+      "receiver": "M02 IV-term surface owner",
+      "decision_required": "Approve expiry-pair selection and comparable component requirement.",
+      "evidence_certainty": "SOURCE_REVIEWED_WITH_EXPLICIT_GAPS; NOT_INDEPENDENTLY_VERIFIED",
       "accepted_definition_profile_identity": "UNKNOWN until original brief/contract exact identity below; no generic profile assumption",
       "implementation_evidence": [],
       "historical_proof": null,
-      "effective_semantic_authority_refs": []
+      "effective_semantic_authority_refs": [
+        "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
+        "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv"
+      ],
+      "documentary_assessment": {
+        "status": "HELD_FOR_PREDECESSOR",
+        "first_unmet_invariant": "No actual admitted D096 typed ATM IV-by-expiry occurrence/ordered expiry-pair selection.",
+        "observed_distinction_and_other_barriers": "Need two distinct maturities, matching CALL/PUT coverage/model/time and exact term-slope numeric convention.",
+        "proposed_next_action": "After D096, propose fixed expiry pairs, component extraction and first/second snapshot boundary refusal.",
+        "receiver": "M02 IV-term surface owner",
+        "decision_or_authority_needed": "Approve expiry-pair selection and comparable component requirement.",
+        "catalogue_derived_dependencies": [
+          "D096"
+        ],
+        "documentary_sources": [
+          {
+            "path": "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
+            "sha256": "2d95d7c5e425ed1dd231f4685100f7c1db9c85ee1369fea54f91580aab6caa5a",
+            "git_blob": "71eeea1f267b12c4e8182dd9809cfe2e17258c15"
+          },
+          {
+            "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv",
+            "sha256": "67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549",
+            "git_blob": "a27d5e768ab7f1126cecd5a7bbe35bd05b82a442"
+          }
+        ],
+        "certainty": "Evidence-based documentary status; future source/profile acceptance and operational readiness not established",
+        "independent_review": "PENDING_OWNER_HANDOFF",
+        "product_tests_run_this_leaf": 0
+      }
     },
     {
       "derived_id": "D098",
@@ -7764,19 +7986,48 @@
       "historical_controlled_status": "HELD_OR_PAUSED",
       "native_profile_status": "NOT_ESTABLISHED_BY_L00",
       "operational_status": "FULL_OPERATIONAL_OR_LIVE_READINESS_NOT_ESTABLISHED",
-      "source_readiness": "Controlled proof only where evidenced; native/provider/domain readiness not inferred",
+      "source_readiness": "CONTROLLED_OR_NARROW_PREDECESSOR_ONLY; MISSING_DOMAIN_OR_PROFILE_AS_DESCRIBED",
       "durable_backend_scope": "Owner-local SQLite for evidenced controlled profile; no PostgreSQL/live parity assertion",
       "owning_readiness_leaf": "L02",
-      "readiness": "UNKNOWN_PENDING_ASSIGNED_REASSESSMENT",
-      "current_hold": "Retained; detailed current prerequisites to be assessed in L02",
-      "first_unmet_prerequisite": "Current source/domain/policy/producer assessment pending",
-      "receiver": "M02/source/profile owner; documentary leaf L02",
-      "decision_required": "Assigned reassessment; no policy invented",
-      "evidence_certainty": "Historical evidence links are observations; new readiness UNKNOWN",
+      "readiness": "HELD_FOR_PREDECESSOR",
+      "current_hold": "PRESERVED; No actual admitted D096 typed ATM-IV per-expiry result with three distinct maturity nodes.",
+      "first_unmet_prerequisite": "No actual admitted D096 typed ATM-IV per-expiry result with three distinct maturity nodes.",
+      "receiver": "M02 IV-term surface owner",
+      "decision_required": "Approve three expiry identities, node selection and missing coverage refusal.",
+      "evidence_certainty": "SOURCE_REVIEWED_WITH_EXPLICIT_GAPS; NOT_INDEPENDENTLY_VERIFIED",
       "accepted_definition_profile_identity": "UNKNOWN until original brief/contract exact identity below; no generic profile assumption",
       "implementation_evidence": [],
       "historical_proof": null,
-      "effective_semantic_authority_refs": []
+      "effective_semantic_authority_refs": [
+        "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
+        "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv"
+      ],
+      "documentary_assessment": {
+        "status": "HELD_FOR_PREDECESSOR",
+        "first_unmet_invariant": "No actual admitted D096 typed ATM-IV per-expiry result with three distinct maturity nodes.",
+        "observed_distinction_and_other_barriers": "Nonuniform divided difference is prescribed, but expiry triple/ties/source/time/coverage selection not.",
+        "proposed_next_action": "After D096, accept exact three-term node selection and demonstrate correct unequal-spacing second divided difference.",
+        "receiver": "M02 IV-term surface owner",
+        "decision_or_authority_needed": "Approve three expiry identities, node selection and missing coverage refusal.",
+        "catalogue_derived_dependencies": [
+          "D096"
+        ],
+        "documentary_sources": [
+          {
+            "path": "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
+            "sha256": "2d95d7c5e425ed1dd231f4685100f7c1db9c85ee1369fea54f91580aab6caa5a",
+            "git_blob": "71eeea1f267b12c4e8182dd9809cfe2e17258c15"
+          },
+          {
+            "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv",
+            "sha256": "67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549",
+            "git_blob": "a27d5e768ab7f1126cecd5a7bbe35bd05b82a442"
+          }
+        ],
+        "certainty": "Evidence-based documentary status; future source/profile acceptance and operational readiness not established",
+        "independent_review": "PENDING_OWNER_HANDOFF",
+        "product_tests_run_this_leaf": 0
+      }
     },
     {
       "derived_id": "D099",
@@ -8073,19 +8324,54 @@
       "historical_controlled_status": "HELD_OR_PAUSED",
       "native_profile_status": "NOT_ESTABLISHED_BY_L00",
       "operational_status": "FULL_OPERATIONAL_OR_LIVE_READINESS_NOT_ESTABLISHED",
-      "source_readiness": "Controlled proof only where evidenced; native/provider/domain readiness not inferred",
+      "source_readiness": "CONTROLLED_OR_NARROW_PREDECESSOR_ONLY; MISSING_DOMAIN_OR_PROFILE_AS_DESCRIBED",
       "durable_backend_scope": "Owner-local SQLite for evidenced controlled profile; no PostgreSQL/live parity assertion",
       "owning_readiness_leaf": "L02",
-      "readiness": "UNKNOWN_PENDING_ASSIGNED_REASSESSMENT",
-      "current_hold": "Retained; detailed current prerequisites to be assessed in L02",
-      "first_unmet_prerequisite": "Current source/domain/policy/producer assessment pending",
-      "receiver": "M02/source/profile owner; documentary leaf L02",
-      "decision_required": "Assigned reassessment; no policy invented",
-      "evidence_certainty": "Historical evidence links are observations; new readiness UNKNOWN",
+      "readiness": "HELD_FOR_PREDECESSOR",
+      "current_hold": "PRESERVED; Actual maturity D086 missing, with no approved OptionRevaluationConventionVersion or full constrained surface-fit profile.",
+      "first_unmet_prerequisite": "Actual maturity D086 missing, with no approved OptionRevaluationConventionVersion or full constrained surface-fit profile.",
+      "receiver": "M02 surface fit owner; pricing convention owner",
+      "decision_required": "Accept model parameters, constraints, numeric/singularity policy and exact source grid after D086.",
+      "evidence_certainty": "SOURCE_REVIEWED_WITH_EXPLICIT_GAPS; NOT_INDEPENDENTLY_VERIFIED",
       "accepted_definition_profile_identity": "UNKNOWN until original brief/contract exact identity below; no generic profile assumption",
       "implementation_evidence": [],
       "historical_proof": null,
-      "effective_semantic_authority_refs": []
+      "effective_semantic_authority_refs": [
+        "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
+        "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv",
+        "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md"
+      ],
+      "documentary_assessment": {
+        "status": "HELD_FOR_PREDECESSOR",
+        "first_unmet_invariant": "Actual maturity D086 missing, with no approved OptionRevaluationConventionVersion or full constrained surface-fit profile.",
+        "observed_distinction_and_other_barriers": "R111/R084/R093/R014/R118 matched IV/quotes/strikes/spot and pricing/exercise/carry/dividend/borrow/knots/weights/no-arbitrage conditions remain unbound.",
+        "proposed_next_action": "Propose immutable revaluation convention and source grid, constrained total-variance cubic B-spline model, typed residual/quality output.",
+        "receiver": "M02 surface fit owner; pricing convention owner",
+        "decision_or_authority_needed": "Accept model parameters, constraints, numeric/singularity policy and exact source grid after D086.",
+        "catalogue_derived_dependencies": [
+          "D086"
+        ],
+        "documentary_sources": [
+          {
+            "path": "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
+            "sha256": "2d95d7c5e425ed1dd231f4685100f7c1db9c85ee1369fea54f91580aab6caa5a",
+            "git_blob": "71eeea1f267b12c4e8182dd9809cfe2e17258c15"
+          },
+          {
+            "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv",
+            "sha256": "67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549",
+            "git_blob": "a27d5e768ab7f1126cecd5a7bbe35bd05b82a442"
+          },
+          {
+            "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md",
+            "sha256": "603b850802a418780109095e7ae69bcece449da79fb24140a6d50297605e927c",
+            "git_blob": "32930fc08eb648c2cc6347d32d910e3a45bdc07f"
+          }
+        ],
+        "certainty": "Evidence-based documentary status; future source/profile acceptance and operational readiness not established",
+        "independent_review": "PENDING_OWNER_HANDOFF",
+        "product_tests_run_this_leaf": 0
+      }
     },
     {
       "derived_id": "D103",
@@ -8476,19 +8762,49 @@
       "historical_controlled_status": "HELD_OR_PAUSED",
       "native_profile_status": "NOT_ESTABLISHED_BY_L00",
       "operational_status": "FULL_OPERATIONAL_OR_LIVE_READINESS_NOT_ESTABLISHED",
-      "source_readiness": "Controlled proof only where evidenced; native/provider/domain readiness not inferred",
+      "source_readiness": "CONTROLLED_OR_NARROW_PREDECESSOR_ONLY; MISSING_DOMAIN_OR_PROFILE_AS_DESCRIBED",
       "durable_backend_scope": "Owner-local SQLite for evidenced controlled profile; no PostgreSQL/live parity assertion",
       "owning_readiness_leaf": "L02",
-      "readiness": "UNKNOWN_PENDING_ASSIGNED_REASSESSMENT",
-      "current_hold": "Retained; detailed current prerequisites to be assessed in L02",
-      "first_unmet_prerequisite": "Current source/domain/policy/producer assessment pending",
-      "receiver": "M02/source/profile owner; documentary leaf L02",
-      "decision_required": "Assigned reassessment; no policy invented",
-      "evidence_certainty": "Historical evidence links are observations; new readiness UNKNOWN",
+      "readiness": "HELD_FOR_PREDECESSOR",
+      "current_hold": "PRESERVED; No actual D096 specified-expiry ATM IV component aligned to accepted D035 5-day realised-volatility occurrence.",
+      "first_unmet_prerequisite": "No actual D096 specified-expiry ATM IV component aligned to accepted D035 5-day realised-volatility occurrence.",
+      "receiver": "M02 IV/RV owner",
+      "decision_required": "Approve expiry selection and annualisation/knowledge compatibility.",
+      "evidence_certainty": "SOURCE_REVIEWED_WITH_EXPLICIT_GAPS; NOT_INDEPENDENTLY_VERIFIED",
       "accepted_definition_profile_identity": "UNKNOWN until original brief/contract exact identity below; no generic profile assumption",
       "implementation_evidence": [],
       "historical_proof": null,
-      "effective_semantic_authority_refs": []
+      "effective_semantic_authority_refs": [
+        "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
+        "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv"
+      ],
+      "documentary_assessment": {
+        "status": "HELD_FOR_PREDECESSOR",
+        "first_unmet_invariant": "No actual D096 specified-expiry ATM IV component aligned to accepted D035 5-day realised-volatility occurrence.",
+        "observed_distinction_and_other_barriers": "D035 controlled output does not supply missing matched D096 component or same annualisation/cutoff/units.",
+        "proposed_next_action": "Bind D096 selected expiry and compatible D035 horizon, units and same information cutoff; propose exact spread oracle.",
+        "receiver": "M02 IV/RV owner",
+        "decision_or_authority_needed": "Approve expiry selection and annualisation/knowledge compatibility.",
+        "catalogue_derived_dependencies": [
+          "D096",
+          "D035"
+        ],
+        "documentary_sources": [
+          {
+            "path": "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
+            "sha256": "2d95d7c5e425ed1dd231f4685100f7c1db9c85ee1369fea54f91580aab6caa5a",
+            "git_blob": "71eeea1f267b12c4e8182dd9809cfe2e17258c15"
+          },
+          {
+            "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv",
+            "sha256": "67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549",
+            "git_blob": "a27d5e768ab7f1126cecd5a7bbe35bd05b82a442"
+          }
+        ],
+        "certainty": "Evidence-based documentary status; future source/profile acceptance and operational readiness not established",
+        "independent_review": "PENDING_OWNER_HANDOFF",
+        "product_tests_run_this_leaf": 0
+      }
     },
     {
       "derived_id": "D108",
@@ -8509,19 +8825,49 @@
       "historical_controlled_status": "HELD_OR_PAUSED",
       "native_profile_status": "NOT_ESTABLISHED_BY_L00",
       "operational_status": "FULL_OPERATIONAL_OR_LIVE_READINESS_NOT_ESTABLISHED",
-      "source_readiness": "Controlled proof only where evidenced; native/provider/domain readiness not inferred",
+      "source_readiness": "CONTROLLED_OR_NARROW_PREDECESSOR_ONLY; MISSING_DOMAIN_OR_PROFILE_AS_DESCRIBED",
       "durable_backend_scope": "Owner-local SQLite for evidenced controlled profile; no PostgreSQL/live parity assertion",
       "owning_readiness_leaf": "L02",
-      "readiness": "UNKNOWN_PENDING_ASSIGNED_REASSESSMENT",
-      "current_hold": "Retained; detailed current prerequisites to be assessed in L02",
-      "first_unmet_prerequisite": "Current source/domain/policy/producer assessment pending",
-      "receiver": "M02/source/profile owner; documentary leaf L02",
-      "decision_required": "Assigned reassessment; no policy invented",
-      "evidence_certainty": "Historical evidence links are observations; new readiness UNKNOWN",
+      "readiness": "HELD_FOR_PREDECESSOR",
+      "current_hold": "PRESERVED; No actual D096 specified-expiry ATM IV component aligned to accepted D036 10-day realised-volatility occurrence.",
+      "first_unmet_prerequisite": "No actual D096 specified-expiry ATM IV component aligned to accepted D036 10-day realised-volatility occurrence.",
+      "receiver": "M02 IV/RV owner",
+      "decision_required": "Approve selected expiry and measurement/knowledge match.",
+      "evidence_certainty": "SOURCE_REVIEWED_WITH_EXPLICIT_GAPS; NOT_INDEPENDENTLY_VERIFIED",
       "accepted_definition_profile_identity": "UNKNOWN until original brief/contract exact identity below; no generic profile assumption",
       "implementation_evidence": [],
       "historical_proof": null,
-      "effective_semantic_authority_refs": []
+      "effective_semantic_authority_refs": [
+        "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
+        "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv"
+      ],
+      "documentary_assessment": {
+        "status": "HELD_FOR_PREDECESSOR",
+        "first_unmet_invariant": "No actual D096 specified-expiry ATM IV component aligned to accepted D036 10-day realised-volatility occurrence.",
+        "observed_distinction_and_other_barriers": "D036 evidence is fixed controlled; do not relabel D035 as ten-day or extrapolate D096.",
+        "proposed_next_action": "Bind compatible D096 and D036 as-of/source/annualisation, then exact IV–RV output/refusal.",
+        "receiver": "M02 IV/RV owner",
+        "decision_or_authority_needed": "Approve selected expiry and measurement/knowledge match.",
+        "catalogue_derived_dependencies": [
+          "D096",
+          "D036"
+        ],
+        "documentary_sources": [
+          {
+            "path": "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
+            "sha256": "2d95d7c5e425ed1dd231f4685100f7c1db9c85ee1369fea54f91580aab6caa5a",
+            "git_blob": "71eeea1f267b12c4e8182dd9809cfe2e17258c15"
+          },
+          {
+            "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv",
+            "sha256": "67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549",
+            "git_blob": "a27d5e768ab7f1126cecd5a7bbe35bd05b82a442"
+          }
+        ],
+        "certainty": "Evidence-based documentary status; future source/profile acceptance and operational readiness not established",
+        "independent_review": "PENDING_OWNER_HANDOFF",
+        "product_tests_run_this_leaf": 0
+      }
     },
     {
       "derived_id": "D109",
@@ -8542,19 +8888,54 @@
       "historical_controlled_status": "HELD_OR_PAUSED",
       "native_profile_status": "NOT_ESTABLISHED_BY_L00",
       "operational_status": "FULL_OPERATIONAL_OR_LIVE_READINESS_NOT_ESTABLISHED",
-      "source_readiness": "Controlled proof only where evidenced; native/provider/domain readiness not inferred",
+      "source_readiness": "CONTROLLED_OR_NARROW_PREDECESSOR_ONLY; MISSING_DOMAIN_OR_PROFILE_AS_DESCRIBED",
       "durable_backend_scope": "Owner-local SQLite for evidenced controlled profile; no PostgreSQL/live parity assertion",
       "owning_readiness_leaf": "L02",
-      "readiness": "UNKNOWN_PENDING_ASSIGNED_REASSESSMENT",
-      "current_hold": "Retained; detailed current prerequisites to be assessed in L02",
-      "first_unmet_prerequisite": "Current source/domain/policy/producer assessment pending",
-      "receiver": "M02/source/profile owner; documentary leaf L02",
-      "decision_required": "Assigned reassessment; no policy invented",
-      "evidence_certainty": "Historical evidence links are observations; new readiness UNKNOWN",
+      "readiness": "HELD_FOR_PREDECESSOR",
+      "current_hold": "PRESERVED; No accepted D091 neutral ATM-delta classification and actual matching CALL/PUT D087 midpoint pair.",
+      "first_unmet_prerequisite": "No accepted D091 neutral ATM-delta classification and actual matching CALL/PUT D087 midpoint pair.",
+      "receiver": "M02 option-straddle owner",
+      "decision_required": "Approve ATM bucket selection, matching policy and composite currency/contract units.",
+      "evidence_certainty": "SOURCE_REVIEWED_WITH_EXPLICIT_GAPS; NOT_INDEPENDENTLY_VERIFIED",
       "accepted_definition_profile_identity": "UNKNOWN until original brief/contract exact identity below; no generic profile assumption",
       "implementation_evidence": [],
       "historical_proof": null,
-      "effective_semantic_authority_refs": []
+      "effective_semantic_authority_refs": [
+        "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
+        "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv"
+      ],
+      "documentary_assessment": {
+        "status": "HELD_FOR_PREDECESSOR",
+        "first_unmet_invariant": "No accepted D091 neutral ATM-delta classification and actual matching CALL/PUT D087 midpoint pair.",
+        "observed_distinction_and_other_barriers": "L14 D087 CALL receipt-compatible proof does not show full cross-right ATM pair or expiry/strike/source/session joins.",
+        "proposed_next_action": "Accept D091 first; select actual matching call and put D087 occurrences, retain two leg lineages and exact premium units.",
+        "receiver": "M02 option-straddle owner",
+        "decision_or_authority_needed": "Approve ATM bucket selection, matching policy and composite currency/contract units.",
+        "catalogue_derived_dependencies": [
+          "D087",
+          "D091"
+        ],
+        "documentary_sources": [
+          {
+            "path": "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
+            "sha256": "2d95d7c5e425ed1dd231f4685100f7c1db9c85ee1369fea54f91580aab6caa5a",
+            "git_blob": "71eeea1f267b12c4e8182dd9809cfe2e17258c15"
+          },
+          {
+            "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv",
+            "sha256": "67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549",
+            "git_blob": "a27d5e768ab7f1126cecd5a7bbe35bd05b82a442"
+          },
+          {
+            "path": "handoff/downstream_reconciliation/FINAL_REPORT.md",
+            "sha256": "8be0a591460cd29d8b613de64597ee7c89d71db05660998f01a8bf73a04a670f",
+            "git_blob": "ddb5ff00582ccac8967edb51d424363e43068ec0"
+          }
+        ],
+        "certainty": "Evidence-based documentary status; future source/profile acceptance and operational readiness not established",
+        "independent_review": "PENDING_OWNER_HANDOFF",
+        "product_tests_run_this_leaf": 0
+      }
     },
     {
       "derived_id": "D110",
@@ -8575,19 +8956,48 @@
       "historical_controlled_status": "HELD_OR_PAUSED",
       "native_profile_status": "NOT_ESTABLISHED_BY_L00",
       "operational_status": "FULL_OPERATIONAL_OR_LIVE_READINESS_NOT_ESTABLISHED",
-      "source_readiness": "Controlled proof only where evidenced; native/provider/domain readiness not inferred",
+      "source_readiness": "CONTROLLED_OR_NARROW_PREDECESSOR_ONLY; MISSING_DOMAIN_OR_PROFILE_AS_DESCRIBED",
       "durable_backend_scope": "Owner-local SQLite for evidenced controlled profile; no PostgreSQL/live parity assertion",
       "owning_readiness_leaf": "L02",
-      "readiness": "UNKNOWN_PENDING_ASSIGNED_REASSESSMENT",
-      "current_hold": "Retained; detailed current prerequisites to be assessed in L02",
-      "first_unmet_prerequisite": "Current source/domain/policy/producer assessment pending",
-      "receiver": "M02/source/profile owner; documentary leaf L02",
-      "decision_required": "Assigned reassessment; no policy invented",
-      "evidence_certainty": "Historical evidence links are observations; new readiness UNKNOWN",
+      "readiness": "HELD_FOR_PREDECESSOR",
+      "current_hold": "PRESERVED; No actual D109 ATM straddle price/multiplier occurrence.",
+      "first_unmet_prerequisite": "No actual D109 ATM straddle price/multiplier occurrence.",
+      "receiver": "M02 implied-move owner",
+      "decision_required": "Accept spot source and premium/multiplier interpretation.",
+      "evidence_certainty": "SOURCE_REVIEWED_WITH_EXPLICIT_GAPS; NOT_INDEPENDENTLY_VERIFIED",
       "accepted_definition_profile_identity": "UNKNOWN until original brief/contract exact identity below; no generic profile assumption",
       "implementation_evidence": [],
       "historical_proof": null,
-      "effective_semantic_authority_refs": []
+      "effective_semantic_authority_refs": [
+        "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
+        "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv"
+      ],
+      "documentary_assessment": {
+        "status": "HELD_FOR_PREDECESSOR",
+        "first_unmet_invariant": "No actual D109 ATM straddle price/multiplier occurrence.",
+        "observed_distinction_and_other_barriers": "Must also match positive R118 underlying spot and exact per-share/per-contract premium scale; cannot divide arbitrary independent controlled spot.",
+        "proposed_next_action": "After D109, specify R118 spot/basket match and ratio scale/refusal on missing/mismatched multipliers.",
+        "receiver": "M02 implied-move owner",
+        "decision_or_authority_needed": "Accept spot source and premium/multiplier interpretation.",
+        "catalogue_derived_dependencies": [
+          "D109"
+        ],
+        "documentary_sources": [
+          {
+            "path": "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
+            "sha256": "2d95d7c5e425ed1dd231f4685100f7c1db9c85ee1369fea54f91580aab6caa5a",
+            "git_blob": "71eeea1f267b12c4e8182dd9809cfe2e17258c15"
+          },
+          {
+            "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv",
+            "sha256": "67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549",
+            "git_blob": "a27d5e768ab7f1126cecd5a7bbe35bd05b82a442"
+          }
+        ],
+        "certainty": "Evidence-based documentary status; future source/profile acceptance and operational readiness not established",
+        "independent_review": "PENDING_OWNER_HANDOFF",
+        "product_tests_run_this_leaf": 0
+      }
     },
     {
       "derived_id": "D111",
@@ -8608,19 +9018,56 @@
       "historical_controlled_status": "HELD_OR_PAUSED",
       "native_profile_status": "NOT_ESTABLISHED_BY_L00",
       "operational_status": "FULL_OPERATIONAL_OR_LIVE_READINESS_NOT_ESTABLISHED",
-      "source_readiness": "Controlled proof only where evidenced; native/provider/domain readiness not inferred",
+      "source_readiness": "CONTROLLED_OR_NARROW_PREDECESSOR_ONLY; MISSING_DOMAIN_OR_PROFILE_AS_DESCRIBED",
       "durable_backend_scope": "Owner-local SQLite for evidenced controlled profile; no PostgreSQL/live parity assertion",
       "owning_readiness_leaf": "L02",
-      "readiness": "UNKNOWN_PENDING_ASSIGNED_REASSESSMENT",
-      "current_hold": "Retained; detailed current prerequisites to be assessed in L02",
-      "first_unmet_prerequisite": "Current source/domain/policy/producer assessment pending",
-      "receiver": "M02/source/profile owner; documentary leaf L02",
-      "decision_required": "Assigned reassessment; no policy invented",
-      "evidence_certainty": "Historical evidence links are observations; new readiness UNKNOWN",
+      "readiness": "HELD_FOR_PREDECESSOR",
+      "current_hold": "PRESERVED; Actual D086,D087,D102 compatible maturity, CALL quote and admissible quality/fitted curve are missing.",
+      "first_unmet_prerequisite": "Actual D086,D087,D102 compatible maturity, CALL quote and admissible quality/fitted curve are missing.",
+      "receiver": "M02 risk-neutral density owner",
+      "decision_required": "Accept fit tolerance, strike grid, boundary/integration and discount/exercise conventions.",
+      "evidence_certainty": "SOURCE_REVIEWED_WITH_EXPLICIT_GAPS; NOT_INDEPENDENTLY_VERIFIED",
       "accepted_definition_profile_identity": "UNKNOWN until original brief/contract exact identity below; no generic profile assumption",
       "implementation_evidence": [],
       "historical_proof": null,
-      "effective_semantic_authority_refs": []
+      "effective_semantic_authority_refs": [
+        "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
+        "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv",
+        "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md"
+      ],
+      "documentary_assessment": {
+        "status": "HELD_FOR_PREDECESSOR",
+        "first_unmet_invariant": "Actual D086,D087,D102 compatible maturity, CALL quote and admissible quality/fitted curve are missing.",
+        "observed_distinction_and_other_barriers": "Risk-neutral density needs a decreasing convex call-price curve; IV surface alone is not a normalised price density. Need exercise/carry/discount/strike boundary/integration.",
+        "proposed_next_action": "Approve legal price-curve/spline and boundary/mass conventions; derive nonnegative state-price density from actual source/fitted outputs.",
+        "receiver": "M02 risk-neutral density owner",
+        "decision_or_authority_needed": "Accept fit tolerance, strike grid, boundary/integration and discount/exercise conventions.",
+        "catalogue_derived_dependencies": [
+          "D086",
+          "D087",
+          "D102"
+        ],
+        "documentary_sources": [
+          {
+            "path": "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
+            "sha256": "2d95d7c5e425ed1dd231f4685100f7c1db9c85ee1369fea54f91580aab6caa5a",
+            "git_blob": "71eeea1f267b12c4e8182dd9809cfe2e17258c15"
+          },
+          {
+            "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv",
+            "sha256": "67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549",
+            "git_blob": "a27d5e768ab7f1126cecd5a7bbe35bd05b82a442"
+          },
+          {
+            "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md",
+            "sha256": "603b850802a418780109095e7ae69bcece449da79fb24140a6d50297605e927c",
+            "git_blob": "32930fc08eb648c2cc6347d32d910e3a45bdc07f"
+          }
+        ],
+        "certainty": "Evidence-based documentary status; future source/profile acceptance and operational readiness not established",
+        "independent_review": "PENDING_OWNER_HANDOFF",
+        "product_tests_run_this_leaf": 0
+      }
     },
     {
       "derived_id": "D112",
@@ -8641,19 +9088,48 @@
       "historical_controlled_status": "HELD_OR_PAUSED",
       "native_profile_status": "NOT_ESTABLISHED_BY_L00",
       "operational_status": "FULL_OPERATIONAL_OR_LIVE_READINESS_NOT_ESTABLISHED",
-      "source_readiness": "Controlled proof only where evidenced; native/provider/domain readiness not inferred",
+      "source_readiness": "CONTROLLED_OR_NARROW_PREDECESSOR_ONLY; MISSING_DOMAIN_OR_PROFILE_AS_DESCRIBED",
       "durable_backend_scope": "Owner-local SQLite for evidenced controlled profile; no PostgreSQL/live parity assertion",
       "owning_readiness_leaf": "L02",
-      "readiness": "UNKNOWN_PENDING_ASSIGNED_REASSESSMENT",
-      "current_hold": "Retained; detailed current prerequisites to be assessed in L02",
-      "first_unmet_prerequisite": "Current source/domain/policy/producer assessment pending",
-      "receiver": "M02/source/profile owner; documentary leaf L02",
-      "decision_required": "Assigned reassessment; no policy invented",
-      "evidence_certainty": "Historical evidence links are observations; new readiness UNKNOWN",
+      "readiness": "HELD_FOR_PREDECESSOR",
+      "current_hold": "PRESERVED; Actual normalised typed risk-neutral density D111 is absent.",
+      "first_unmet_prerequisite": "Actual normalised typed risk-neutral density D111 is absent.",
+      "receiver": "M02 risk-neutral tail owner",
+      "decision_required": "Accept threshold/source, out-of-grid policy, numeric integral and refusal.",
+      "evidence_certainty": "SOURCE_REVIEWED_WITH_EXPLICIT_GAPS; NOT_INDEPENDENTLY_VERIFIED",
       "accepted_definition_profile_identity": "UNKNOWN until original brief/contract exact identity below; no generic profile assumption",
       "implementation_evidence": [],
       "historical_proof": null,
-      "effective_semantic_authority_refs": []
+      "effective_semantic_authority_refs": [
+        "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
+        "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv"
+      ],
+      "documentary_assessment": {
+        "status": "HELD_FOR_PREDECESSOR",
+        "first_unmet_invariant": "Actual normalised typed risk-neutral density D111 is absent.",
+        "observed_distinction_and_other_barriers": "Probability below target needs target definition, grid coverage, interpolation/integration and mass/boundary policy; abstract trapezoids insufficient.",
+        "proposed_next_action": "After accepted D111, specify target threshold and integral on same explicit grid with no manufactured tails.",
+        "receiver": "M02 risk-neutral tail owner",
+        "decision_or_authority_needed": "Accept threshold/source, out-of-grid policy, numeric integral and refusal.",
+        "catalogue_derived_dependencies": [
+          "D111"
+        ],
+        "documentary_sources": [
+          {
+            "path": "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
+            "sha256": "2d95d7c5e425ed1dd231f4685100f7c1db9c85ee1369fea54f91580aab6caa5a",
+            "git_blob": "71eeea1f267b12c4e8182dd9809cfe2e17258c15"
+          },
+          {
+            "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv",
+            "sha256": "67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549",
+            "git_blob": "a27d5e768ab7f1126cecd5a7bbe35bd05b82a442"
+          }
+        ],
+        "certainty": "Evidence-based documentary status; future source/profile acceptance and operational readiness not established",
+        "independent_review": "PENDING_OWNER_HANDOFF",
+        "product_tests_run_this_leaf": 0
+      }
     },
     {
       "derived_id": "D113",
@@ -8674,19 +9150,48 @@
       "historical_controlled_status": "HELD_OR_PAUSED",
       "native_profile_status": "NOT_ESTABLISHED_BY_L00",
       "operational_status": "FULL_OPERATIONAL_OR_LIVE_READINESS_NOT_ESTABLISHED",
-      "source_readiness": "Controlled proof only where evidenced; native/provider/domain readiness not inferred",
+      "source_readiness": "CONTROLLED_OR_NARROW_PREDECESSOR_ONLY; MISSING_DOMAIN_OR_PROFILE_AS_DESCRIBED",
       "durable_backend_scope": "Owner-local SQLite for evidenced controlled profile; no PostgreSQL/live parity assertion",
       "owning_readiness_leaf": "L02",
-      "readiness": "UNKNOWN_PENDING_ASSIGNED_REASSESSMENT",
-      "current_hold": "Retained; detailed current prerequisites to be assessed in L02",
-      "first_unmet_prerequisite": "Current source/domain/policy/producer assessment pending",
-      "receiver": "M02/source/profile owner; documentary leaf L02",
-      "decision_required": "Assigned reassessment; no policy invented",
-      "evidence_certainty": "Historical evidence links are observations; new readiness UNKNOWN",
+      "readiness": "HELD_FOR_PREDECESSOR",
+      "current_hold": "PRESERVED; Actual normalised typed density D111 is absent.",
+      "first_unmet_prerequisite": "Actual normalised typed density D111 is absent.",
+      "receiver": "M02 risk-neutral tail owner",
+      "decision_required": "Accept tail bounds, grid/edge/coverage semantics and refusal.",
+      "evidence_certainty": "SOURCE_REVIEWED_WITH_EXPLICIT_GAPS; NOT_INDEPENDENTLY_VERIFIED",
       "accepted_definition_profile_identity": "UNKNOWN until original brief/contract exact identity below; no generic profile assumption",
       "implementation_evidence": [],
       "historical_proof": null,
-      "effective_semantic_authority_refs": []
+      "effective_semantic_authority_refs": [
+        "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
+        "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv"
+      ],
+      "documentary_assessment": {
+        "status": "HELD_FOR_PREDECESSOR",
+        "first_unmet_invariant": "Actual normalised typed density D111 is absent.",
+        "observed_distinction_and_other_barriers": "Tail-probability needs accepted tail bounds, grid coverage, normalisation and numeric integration; do not invent a triangular density.",
+        "proposed_next_action": "After D111, bind exact tail interval and source/coverage convention; proof uses actual persisted density.",
+        "receiver": "M02 risk-neutral tail owner",
+        "decision_or_authority_needed": "Accept tail bounds, grid/edge/coverage semantics and refusal.",
+        "catalogue_derived_dependencies": [
+          "D111"
+        ],
+        "documentary_sources": [
+          {
+            "path": "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
+            "sha256": "2d95d7c5e425ed1dd231f4685100f7c1db9c85ee1369fea54f91580aab6caa5a",
+            "git_blob": "71eeea1f267b12c4e8182dd9809cfe2e17258c15"
+          },
+          {
+            "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv",
+            "sha256": "67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549",
+            "git_blob": "a27d5e768ab7f1126cecd5a7bbe35bd05b82a442"
+          }
+        ],
+        "certainty": "Evidence-based documentary status; future source/profile acceptance and operational readiness not established",
+        "independent_review": "PENDING_OWNER_HANDOFF",
+        "product_tests_run_this_leaf": 0
+      }
     },
     {
       "derived_id": "D116",
