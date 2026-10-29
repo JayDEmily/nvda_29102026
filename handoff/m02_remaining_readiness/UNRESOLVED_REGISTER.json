@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "source_checkpoint": "f84430f275931aea56cf4f44931699ffaee3f542",
-  "status": "L01–L04 documentary assessments available; other rows remain L00 pending; independent reviewer deferred to final owner handoff",
+  "status": "ALL_28_AUTHOR_ASSESSED_INDEPENDENT_REVIEW_PENDING; NO_HOLDS_LIFTED",
   "rows": [
     {
       "derived_id": "D062",
@@ -1817,7 +1817,7 @@
       "current_hold": "PRESERVED; No demonstrated admitted, revision-/member-consistent public four-role source profile for full US monitored basket with R037 last, R043 session open, R137 VWAP, R042 official prior close.",
       "first_unmet_prerequisite": "No demonstrated admitted, revision-/member-consistent public four-role source profile for full US monitored basket with R037 last, R043 session open, R137 VWAP, R042 official prior close.",
       "receiver": "M02 basket measurement owner + M00 basket feed/source owner",
-      "decision_required": "Approve exact monitored basket, equal-count versus predetermined neutral weights, as-of/source session and per-component omission/zero-denominator policy.",
+      "decision_required": "Approve exact monitored basket, equal-count versus predetermined neutral weights, as-of/source session and per-component omission/zero-denominator policy. Resolve fraction-vs-percent carrier in light of K02 canonical percent law and F35 fractional witness.",
       "evidence_certainty": "SOURCE_REVIEWED_WITH_EXPLICIT_GAPS; NOT_INDEPENDENTLY_VERIFIED",
       "accepted_definition_profile_identity": "UNKNOWN until original brief/contract exact identity below; no generic profile assumption",
       "implementation_evidence": [],
@@ -1833,7 +1833,7 @@
         "observed_distinction_and_other_barriers": "K02 defines THREE separate fraction outputs with per-component eligible member denominators, not a single score. Current legacy M01 code/tests and F35 author audit are navigation, not M02 proof. Need immutable basket/membership, selection, zero-denominator refusal, weighting mode, typed three-part result, source readback.",
         "proposed_next_action": "Propose one neutral M02 basket-breadth controlled profile and exact per-component denominator/absence and readback cases, after legitimate member/source policy. No strategic weights or candidate state.",
         "receiver": "M02 basket measurement owner + M00 basket feed/source owner",
-        "decision_or_authority_needed": "Approve exact monitored basket, equal-count versus predetermined neutral weights, as-of/source session and per-component omission/zero-denominator policy.",
+        "decision_or_authority_needed": "Approve exact monitored basket, equal-count versus predetermined neutral weights, as-of/source session and per-component omission/zero-denominator policy. Resolve fraction-vs-percent carrier in light of K02 canonical percent law and F35 fractional witness.",
         "catalogue_derived_dependencies": [],
         "documentary_sources": [
           {
@@ -1859,7 +1859,8 @@
         ],
         "certainty": "Evidence-based documentary status; future source/profile acceptance and operational readiness not established",
         "independent_review": "PENDING_OWNER_HANDOFF",
-        "product_tests_run_this_leaf": 0
+        "product_tests_run_this_leaf": 0,
+        "representation_crosscheck": "Primary K02 universal unit law says percent outputs multiply the fractional result by 100, while D151 F35 controlled arithmetic gives 2/3,1/3,2/3 as fractions and catalogue labels units=percent. Before proof, bind exact typed component representation, percentage conversion and readback; do not silently relabel a fraction as percent."
       }
     }
   ]

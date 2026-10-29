@@ -378,7 +378,7 @@
         ],
         "runtime_execution_in_this_leaf": "NONE",
         "review_scope_in_this_leaf": "Documentary identity, existence, digest and original outcome linkage; no repeat mathematical or runtime acceptance audit",
-        "acceptance_locator": "First section: Final owner ACCEPT \u2014 controlled D011 only; e6d92ba01101eacff7a42ea54649e8142d5a3c1a",
+        "acceptance_locator": "First section: Final owner ACCEPT — controlled D011 only; e6d92ba01101eacff7a42ea54649e8142d5a3c1a",
         "review_limit": "Original independent RETURN and author repair verification separately attributed; no independent implementation re-review fabricated."
       },
       "current_governed_family_bytes_match_generation": true
@@ -4520,5 +4520,19 @@
       "new_runs_in_L00": 0
     }
   ],
-  "reuse_limit": "Historical exact original profile/proposition only. No conclusion about broad native, predictive, live or integrated readiness; shared mechanism changes need their own later invalidation analysis."
+  "reuse_limit": "Historical exact original profile/proposition only. No conclusion about broad native, predictive, live or integrated readiness; shared mechanism changes need their own later invalidation analysis.",
+  "L05_reconciliation": {
+    "status": "DOCUMENTARY_AUTHOR_CHECKED_INDEPENDENT_SEMANTIC_REVIEW_PENDING",
+    "historical_controlled_count": 98,
+    "historical_exact_scope_reusable": 98,
+    "historical_invalidations_demonstrated": 0,
+    "historical_new_product_tests": 0,
+    "l14_native_source_and_D_profiles": 11,
+    "l14_source_only_claims": 1,
+    "l14_existing_D_claims": 10,
+    "source_candidate": "f84430f275931aea56cf4f44931699ffaee3f542",
+    "unchanged_governed_product_bytes": "L00..L04 documentary-only commits; checked changed-path set; no assertion of broader native/operational compatibility",
+    "new_material_profile_implementation_requires": "separately authorised acceptance profile and independently executed module-local proof",
+    "full_evidence_audit": "handoff/m02_remaining_readiness/L05_PROOF_REUSE_AUDIT.json"
+  }
 }

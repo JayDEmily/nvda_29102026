@@ -28,3 +28,7 @@ Illustrative neutral arithmetic already in the historical F35 packet: last/open/
 ## Inspection and scope limit
 
 Read documentary authority / original hold text and relevant public controlled producer/source snippets; consulted historical evidence references in the L00 inventory. Only current documentary source/readiness conclusions were drawn. No test, runtime execution, M00 changes, proof admission, acceptance claim or downstream owner activation. Findings are ready for independent reviewer, not independently accepted.
+
+## L05 cross-check addendum — numeric carrier (review pending)
+
+Primary K02 universal unit law says percent outputs multiply the fractional result by 100, while D151 F35 controlled arithmetic gives 2/3,1/3,2/3 as fractions and catalogue labels units=percent. Before proof, bind exact typed component representation, percentage conversion and readback; do not silently relabel a fraction as percent.
