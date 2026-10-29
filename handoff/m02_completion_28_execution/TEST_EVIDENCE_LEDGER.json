@@ -4,8 +4,9 @@
   "ledger_status": "COMMISSIONED_CONTRACT_RELEASE_PENDING",
   "repository": {
     "baseline_commit": "8ff7d82377e9bf8f9fc75c1ecef70f0ab29a2ada",
-    "candidate_commit": "ab630971741f5f60f547475f016bb09eec91a222",
-    "plan_revision": "R1_RECOVERED"
+    "candidate_commit": "ae2baa9c",
+    "plan_revision": "R1_RECOVERED",
+    "candidate_binding": "Documentary L00 ingress candidate; each product proof will bind its own immutable future candidate, not this mutable file self-hash"
   },
   "execution_mode": {
     "mode": "WORK_DELEGATED",

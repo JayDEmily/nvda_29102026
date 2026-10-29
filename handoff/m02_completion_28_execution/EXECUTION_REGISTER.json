@@ -6,8 +6,9 @@
     "signals": [],
     "depends_on": [],
     "obligation": "After owner acceptance and explicit implementation commission, archive exact predecessor root, install this plan as the sole root authority and bind all source/profile decisions. Preserve GUARDRAILS and actual AGENTS bytes. Assign an available independent sole strict executor; confirm retained pinned runtime evidence without a qualification test. Freeze 126 identities, 98 historical profiles, 11 L14 claims, 28 current holds and seven external holds. Convert only actually approved prospective case allocations into the active ledger. Inventory checkpoint prerequisites and all required current refs.",
-    "status": "IN_PROGRESS",
-    "checkpoint_required": true
+    "status": "ACCEPT_DOCUMENTARY_CHECKPOINT_EXPOSURE_PENDING",
+    "checkpoint_required": true,
+    "review": "L00/REVIEW.md"
   },
   {
     "leaf": "L01a",

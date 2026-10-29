@@ -440,3 +440,7 @@ Initial R1 status: all 39 leaves proposed/not attempted except paused D145 imple
 ## 8. Commissioned execution ledger — 30 October 2026
 
 Latest-main baseline: `8ff7d82377e9bf8f9fc75c1ecef70f0ab29a2ada`. Execution branch: `execution/accepted-r1-20261030`. Exact predecessor is archived at `handoff/m02_completion_28_execution/L00/PREDECESSOR_EXEC_PLAN.md`. GUARDRAILS and actual AGENTS remain byte-identical. Independent documentary reviewer / sole strict executor: `/root/independent_executor`. L00 is IN_PROGRESS; no consumer released and no new product run. Current status lives in `handoff/m02_completion_28_execution/EXECUTION_REGISTER.json`; retained proposed packet remains immutable historical evidence.
+
+Companion-document resolution: inherited bare register, source inventory, proof allocation, schema and evidence-index filenames resolve to `handoff/planning/m02_foundation_completion_20261030/`. Active mutable execution register and evidence ledger resolve to `handoff/m02_completion_28_execution/`. Source/profile/claim bindings in the draft packet remain historical/unbound until their owning leaf releases them.
+
+L00 independent documentary result: ACCEPT_DOCUMENTARY following bounded candidate-provenance/navigation repair, recorded in `L00/REVIEW.md`. Initial independent fresh restoration verified all66 original refs and236 remote refs. Final committed additive export/push/readback/exposure must finish before consumer release; no product test or new identity acceptance.
