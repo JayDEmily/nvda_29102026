@@ -1,15 +1,15 @@
 {
   "plan_id": "M02-FOUNDATION-PREREQUISITE-RESOLUTION-1",
   "review_target": "d7fb9a54873739baba5520ee1061e7b3d306c077",
-  "status": "PARTIAL_DOCUMENTARY_REPAIR; R3_UNSATISFIED",
-  "rule": "No unapproved numerical values, boundaries, trading calendar or fitted samples may be invented to satisfy a versioned-profile deliverable. BLOCKED is a truthful terminal author disposition but NOT G4 acceptance.",
+  "status": "SYNTHETIC_V1_PROFILES_AUTHORED_FOR_TEST_DESIGN; PRODUCTION_R3_UNSATISFIED; INDEPENDENT_G4_PENDING",
+  "rule": "Synthetic-only policy candidates are now owner-authorised as placeholders for scenario/test design. Previously missing real-world inputs/owner production decisions are still missing; synthetic does not establish production source or implementation acceptance.",
   "records": [
     {
       "derived_id": "D079",
       "fixed_authority": "K06: same joint OLS-with-intercept D075~D071+D076+D077, shared fit_id",
-      "proposed_profile_version": null,
-      "proposal_status": "BLOCKED_REQUIRED_PREMISE",
-      "approval_status": "NOT_APPROVED",
+      "proposed_profile_version": "K06-SYNTHETIC-JOINT-OLS-V1",
+      "proposal_status": "SYNTHETIC_TEST_DESIGN_PROPOSAL_AUTHORED",
+      "approval_status": "OWNER_AUTHORISED_AS_SYNTHETIC_PLACEHOLDER_ONLY; PRODUCTION_NOT_APPROVED",
       "owner_decision_receiver": "M02 neutral-statistics owner + source-history custodian + programme owner",
       "required_field_level_choices": {
         "input_history_source_ids": null,
@@ -20,21 +20,66 @@
         "numeric_precision_and_output_codec": null,
         "immutable_common_fit_id": null
       },
-      "missing_primary_premise": "No admitted historically aligned four-vector public sample with observed full-rank/conditioning, matching time basis and a lawful selection window or state subset. Arbitrary window lengths or fabricated histories are prohibited.",
+      "missing_primary_premise": "PRODUCTION/LIVE BLOCKER REMAINS: No admitted historically aligned four-vector public sample with observed full-rank/conditioning, matching time basis and a lawful selection window or state subset. Arbitrary window lengths or fabricated histories are prohibited.",
       "future_refusal_contracts_to_bind_after_approval": [
         "missing one factor history",
         "rank deficient matrix",
         "mixed fit identity",
         "training leakage from current/future values"
       ],
-      "implementation_readiness": "NOT_ESTABLISHED"
+      "implementation_readiness": "NOT_ESTABLISHED",
+      "synthetic_test_profile_version": "K06-SYNTHETIC-JOINT-OLS-V1",
+      "synthetic_test_profile_reference": "handoff/m02_foundation_prerequisites_20261029/R3_TENTATIVE_SYNTHETIC_PROFILES_V1.json",
+      "synthetic_test_profile_status": "CONCRETE_TENTATIVE_SYNTHETIC_CANDIDATE",
+      "synthetic_values_or_rules": {
+        "applies_to": [
+          "D079",
+          "D080",
+          "D081"
+        ],
+        "synthetic_profile_id": "K06-SYNTHETIC-JOINT-OLS-V1",
+        "fixed_math": "D075 = alpha + beta_market*D071 + beta_tech*D076 + beta_semi*D077 + residual, jointly OLS with intercept, K06; one shared fit identity.",
+        "test_only_seed_coefficients": {
+          "alpha": "0.0002",
+          "beta_market": "1.50",
+          "beta_tech": "0.40",
+          "beta_semi": "0.70"
+        },
+        "fixture_file": "SYNTHETIC_K06_64ROW_FIXTURE.csv",
+        "fixture_rows": 64,
+        "fixture_generation": "i=0..63, D071=0.01*(+1 if bit0(i) else -1), D076=0.008*(+1 if bit1(i) else -1), D077=0.006*(+1 if bit2(i) else -1), D075=0.0002+1.5*D071+0.4*D076+0.7*D077; exact decimal fractions",
+        "training_selection_test_only": "64 complete aligned, equally spaced synthetic observation slots strictly before synthetic evaluation cutoff; never include current/future observation in training; no weekend/opening/regime inference.",
+        "identity_test_only": "SYNTH-FIT-K06-64-ORTHO-01 shared by all three outputs and D078 test-only downstream example",
+        "model_rank_requirement": "4 independent columns [intercept,D071,D076,D077]; refuse rank-deficient, sparse or misaligned samples",
+        "numeric_test_only": "input/expected values finite base-10 decimal fractions; independent exact rational oracle; no silent rounding before comparison; output codec still requires approval before production",
+        "expected_test_only": {
+          "D079": "1.50",
+          "D080": "0.40",
+          "D081": "0.70",
+          "alpha": "0.0002",
+          "D078_residual_on_held_out_same_equation": "0.0"
+        },
+        "refuse": [
+          "noncommon fit identity",
+          "missing/misaligned four-vector row",
+          "rank deficient design",
+          "current or future leakage",
+          "unapproved actual-source history"
+        ],
+        "unresolved_real_world": [
+          "public aligned history source",
+          "valid rolling/state selection",
+          "numeric output codec and conditioning threshold",
+          "effective owner classification given variable coefficients"
+        ]
+      }
     },
     {
       "derived_id": "D080",
       "fixed_authority": "K06: technology beta from SAME joint fit; no independent estimator",
-      "proposed_profile_version": null,
-      "proposal_status": "BLOCKED_REQUIRED_PREMISE",
-      "approval_status": "NOT_APPROVED",
+      "proposed_profile_version": "K06-SYNTHETIC-JOINT-OLS-V1",
+      "proposal_status": "SYNTHETIC_TEST_DESIGN_PROPOSAL_AUTHORED",
+      "approval_status": "OWNER_AUTHORISED_AS_SYNTHETIC_PLACEHOLDER_ONLY; PRODUCTION_NOT_APPROVED",
       "owner_decision_receiver": "M02 neutral-statistics owner + source-history custodian + programme owner",
       "required_field_level_choices": {
         "shared_D079_training_sample_id": null,
@@ -43,20 +88,65 @@
         "rank_and_conditioning": null,
         "numeric_convention": null
       },
-      "missing_primary_premise": "No admitted shared D079 fit provenance or complete compatible D076 history; must use the identical joint K06 fit rather than a stand-alone orthogonalised technology model.",
+      "missing_primary_premise": "PRODUCTION/LIVE BLOCKER REMAINS: No admitted shared D079 fit provenance or complete compatible D076 history; must use the identical joint K06 fit rather than a stand-alone orthogonalised technology model.",
       "future_refusal_contracts_to_bind_after_approval": [
         "mismatched fit provenance",
         "missing D076 aligned history",
         "rank deficiency"
       ],
-      "implementation_readiness": "NOT_ESTABLISHED"
+      "implementation_readiness": "NOT_ESTABLISHED",
+      "synthetic_test_profile_version": "K06-SYNTHETIC-JOINT-OLS-V1",
+      "synthetic_test_profile_reference": "handoff/m02_foundation_prerequisites_20261029/R3_TENTATIVE_SYNTHETIC_PROFILES_V1.json",
+      "synthetic_test_profile_status": "CONCRETE_TENTATIVE_SYNTHETIC_CANDIDATE",
+      "synthetic_values_or_rules": {
+        "applies_to": [
+          "D079",
+          "D080",
+          "D081"
+        ],
+        "synthetic_profile_id": "K06-SYNTHETIC-JOINT-OLS-V1",
+        "fixed_math": "D075 = alpha + beta_market*D071 + beta_tech*D076 + beta_semi*D077 + residual, jointly OLS with intercept, K06; one shared fit identity.",
+        "test_only_seed_coefficients": {
+          "alpha": "0.0002",
+          "beta_market": "1.50",
+          "beta_tech": "0.40",
+          "beta_semi": "0.70"
+        },
+        "fixture_file": "SYNTHETIC_K06_64ROW_FIXTURE.csv",
+        "fixture_rows": 64,
+        "fixture_generation": "i=0..63, D071=0.01*(+1 if bit0(i) else -1), D076=0.008*(+1 if bit1(i) else -1), D077=0.006*(+1 if bit2(i) else -1), D075=0.0002+1.5*D071+0.4*D076+0.7*D077; exact decimal fractions",
+        "training_selection_test_only": "64 complete aligned, equally spaced synthetic observation slots strictly before synthetic evaluation cutoff; never include current/future observation in training; no weekend/opening/regime inference.",
+        "identity_test_only": "SYNTH-FIT-K06-64-ORTHO-01 shared by all three outputs and D078 test-only downstream example",
+        "model_rank_requirement": "4 independent columns [intercept,D071,D076,D077]; refuse rank-deficient, sparse or misaligned samples",
+        "numeric_test_only": "input/expected values finite base-10 decimal fractions; independent exact rational oracle; no silent rounding before comparison; output codec still requires approval before production",
+        "expected_test_only": {
+          "D079": "1.50",
+          "D080": "0.40",
+          "D081": "0.70",
+          "alpha": "0.0002",
+          "D078_residual_on_held_out_same_equation": "0.0"
+        },
+        "refuse": [
+          "noncommon fit identity",
+          "missing/misaligned four-vector row",
+          "rank deficient design",
+          "current or future leakage",
+          "unapproved actual-source history"
+        ],
+        "unresolved_real_world": [
+          "public aligned history source",
+          "valid rolling/state selection",
+          "numeric output codec and conditioning threshold",
+          "effective owner classification given variable coefficients"
+        ]
+      }
     },
     {
       "derived_id": "D081",
       "fixed_authority": "K06: semiconductor beta from SAME joint fit; D077 fixed relative factor",
-      "proposed_profile_version": null,
-      "proposal_status": "BLOCKED_REQUIRED_PREMISE",
-      "approval_status": "NOT_APPROVED",
+      "proposed_profile_version": "K06-SYNTHETIC-JOINT-OLS-V1",
+      "proposal_status": "SYNTHETIC_TEST_DESIGN_PROPOSAL_AUTHORED",
+      "approval_status": "OWNER_AUTHORISED_AS_SYNTHETIC_PLACEHOLDER_ONLY; PRODUCTION_NOT_APPROVED",
       "owner_decision_receiver": "M02 neutral-statistics owner + source-history custodian + programme owner",
       "required_field_level_choices": {
         "shared_D079_D080_training_sample_id": null,
@@ -65,20 +155,65 @@
         "rank_and_conditioning": null,
         "numeric_convention": null
       },
-      "missing_primary_premise": "No admitted four-vector sample and same fit identity with lawful D077 semiconductor-relative history; no authority to substitute factor basis.",
+      "missing_primary_premise": "PRODUCTION/LIVE BLOCKER REMAINS: No admitted four-vector sample and same fit identity with lawful D077 semiconductor-relative history; no authority to substitute factor basis.",
       "future_refusal_contracts_to_bind_after_approval": [
         "mismatched fit provenance",
         "missing D077 aligned history",
         "rank deficiency"
       ],
-      "implementation_readiness": "NOT_ESTABLISHED"
+      "implementation_readiness": "NOT_ESTABLISHED",
+      "synthetic_test_profile_version": "K06-SYNTHETIC-JOINT-OLS-V1",
+      "synthetic_test_profile_reference": "handoff/m02_foundation_prerequisites_20261029/R3_TENTATIVE_SYNTHETIC_PROFILES_V1.json",
+      "synthetic_test_profile_status": "CONCRETE_TENTATIVE_SYNTHETIC_CANDIDATE",
+      "synthetic_values_or_rules": {
+        "applies_to": [
+          "D079",
+          "D080",
+          "D081"
+        ],
+        "synthetic_profile_id": "K06-SYNTHETIC-JOINT-OLS-V1",
+        "fixed_math": "D075 = alpha + beta_market*D071 + beta_tech*D076 + beta_semi*D077 + residual, jointly OLS with intercept, K06; one shared fit identity.",
+        "test_only_seed_coefficients": {
+          "alpha": "0.0002",
+          "beta_market": "1.50",
+          "beta_tech": "0.40",
+          "beta_semi": "0.70"
+        },
+        "fixture_file": "SYNTHETIC_K06_64ROW_FIXTURE.csv",
+        "fixture_rows": 64,
+        "fixture_generation": "i=0..63, D071=0.01*(+1 if bit0(i) else -1), D076=0.008*(+1 if bit1(i) else -1), D077=0.006*(+1 if bit2(i) else -1), D075=0.0002+1.5*D071+0.4*D076+0.7*D077; exact decimal fractions",
+        "training_selection_test_only": "64 complete aligned, equally spaced synthetic observation slots strictly before synthetic evaluation cutoff; never include current/future observation in training; no weekend/opening/regime inference.",
+        "identity_test_only": "SYNTH-FIT-K06-64-ORTHO-01 shared by all three outputs and D078 test-only downstream example",
+        "model_rank_requirement": "4 independent columns [intercept,D071,D076,D077]; refuse rank-deficient, sparse or misaligned samples",
+        "numeric_test_only": "input/expected values finite base-10 decimal fractions; independent exact rational oracle; no silent rounding before comparison; output codec still requires approval before production",
+        "expected_test_only": {
+          "D079": "1.50",
+          "D080": "0.40",
+          "D081": "0.70",
+          "alpha": "0.0002",
+          "D078_residual_on_held_out_same_equation": "0.0"
+        },
+        "refuse": [
+          "noncommon fit identity",
+          "missing/misaligned four-vector row",
+          "rank deficient design",
+          "current or future leakage",
+          "unapproved actual-source history"
+        ],
+        "unresolved_real_world": [
+          "public aligned history source",
+          "valid rolling/state selection",
+          "numeric output codec and conditioning threshold",
+          "effective owner classification given variable coefficients"
+        ]
+      }
     },
     {
       "derived_id": "D091",
       "fixed_authority": "K08: absolute delta non-overlapping versioned intervals and deterministic boundary inclusion",
-      "proposed_profile_version": null,
-      "proposal_status": "BLOCKED_REQUIRED_PREMISE",
-      "approval_status": "NOT_APPROVED",
+      "proposed_profile_version": "D091-SYNTHETIC-TENTATIVE-V1",
+      "proposal_status": "SYNTHETIC_TEST_DESIGN_PROPOSAL_AUTHORED",
+      "approval_status": "OWNER_AUTHORISED_AS_SYNTHETIC_PLACEHOLDER_ONLY; PRODUCTION_NOT_APPROVED",
       "owner_decision_receiver": "M02 neutral option-classification owner + programme owner",
       "required_field_level_choices": {
         "delta_input_role": "R112",
@@ -92,20 +227,82 @@
         "out_of_coverage_and_absence": null,
         "policy_version": null
       },
-      "missing_primary_premise": "K08 specifies structure but not interval count or exact boundaries. Neither a source-backed R112 variant/scale nor an owner-accepted neutral binning convention and downstream D121 grouping resolution is supplied. Inventing 0.25-width or other intervals would be arbitrary.",
+      "missing_primary_premise": "PRODUCTION/LIVE BLOCKER REMAINS: K08 specifies structure but not interval count or exact boundaries. Neither a source-backed R112 variant/scale nor an owner-accepted neutral binning convention and downstream D121 grouping resolution is supplied. Inventing 0.25-width or other intervals would be arbitrary.",
       "future_refusal_contracts_to_bind_after_approval": [
         "exact boundary value produces deterministic single bucket or refusal per approved rule",
         "gap/overlap/invalid input cannot generate arbitrary bucket",
         "out of range or absent delta is explicit"
       ],
-      "implementation_readiness": "NOT_ESTABLISHED"
+      "implementation_readiness": "NOT_ESTABLISHED",
+      "synthetic_test_profile_version": "D091-SYNTHETIC-TENTATIVE-V1",
+      "synthetic_test_profile_reference": "handoff/m02_foundation_prerequisites_20261029/R3_TENTATIVE_SYNTHETIC_PROFILES_V1.json",
+      "synthetic_test_profile_status": "CONCRETE_TENTATIVE_SYNTHETIC_CANDIDATE",
+      "synthetic_values_or_rules": {
+        "synthetic_profile_id": "D091-SYNTHETIC-TENTATIVE-V1",
+        "input": "synthetic R112 signed option delta, decimal fraction within [-1,1]; no assertion of live R112 scale or variant",
+        "transform": "absolute value of signed delta",
+        "bins": [
+          {
+            "name": "ABS_00_10",
+            "min": "0",
+            "max": "0.10",
+            "min_inclusive": true,
+            "max_inclusive": false
+          },
+          {
+            "name": "ABS_10_25",
+            "min": "0.10",
+            "max": "0.25",
+            "min_inclusive": true,
+            "max_inclusive": false
+          },
+          {
+            "name": "ABS_25_50",
+            "min": "0.25",
+            "max": "0.50",
+            "min_inclusive": true,
+            "max_inclusive": false
+          },
+          {
+            "name": "ABS_50_75",
+            "min": "0.50",
+            "max": "0.75",
+            "min_inclusive": true,
+            "max_inclusive": false
+          },
+          {
+            "name": "ABS_75_100",
+            "min": "0.75",
+            "max": "1.00",
+            "min_inclusive": true,
+            "max_inclusive": true
+          }
+        ],
+        "examples_test_only": {
+          "-0.10": "ABS_10_25",
+          "+0.25": "ABS_25_50",
+          "-0.50": "ABS_50_75",
+          "1.00": "ABS_75_100"
+        },
+        "refuse": [
+          "abs(delta)>1",
+          "nonfinite/absent delta",
+          "undeclared scale or option model variant",
+          "gap or overlap in the configured bins"
+        ],
+        "unresolved_real_world": [
+          "actual R112 scale/model quality and provenance",
+          "owner approval of production bucket boundaries",
+          "D121 grouping mapping"
+        ]
+      }
     },
     {
       "derived_id": "D142",
       "fixed_authority": "K08: first reconstructed state meeting BOTH selected depth AND spread recovery conditions",
-      "proposed_profile_version": null,
-      "proposal_status": "BLOCKED_REQUIRED_PREMISE",
-      "approval_status": "NOT_APPROVED",
+      "proposed_profile_version": "D142-SYNTHETIC-TENTATIVE-V1",
+      "proposal_status": "SYNTHETIC_TEST_DESIGN_PROPOSAL_AUTHORED",
+      "approval_status": "OWNER_AUTHORISED_AS_SYNTHETIC_PLACEHOLDER_ONLY; PRODUCTION_NOT_APPROVED",
       "owner_decision_receiver": "M02 neutral microstructure/policy owner + M00 book/quote source custodian + programme owner",
       "required_field_level_choices": {
         "subject_contract_and_source_scope": null,
@@ -119,21 +316,59 @@
         "recovery_tie_and_absence_handling": "no completed occurrence if BOTH not met in admitted window",
         "policy_version": null
       },
-      "missing_primary_premise": "No owner-accepted severity/depth/spread thresholds, observation time/window and eligible joint quote/book histories with a lawful clock. K08 fixes first joint recovery but cannot determine threshold values from current synthetic fixtures.",
+      "missing_primary_premise": "PRODUCTION/LIVE BLOCKER REMAINS: No owner-accepted severity/depth/spread thresholds, observation time/window and eligible joint quote/book histories with a lawful clock. K08 fixes first joint recovery but cannot determine threshold values from current synthetic fixtures.",
       "future_refusal_contracts_to_bind_after_approval": [
         "depth-only recovery cannot pass",
         "spread-only recovery cannot pass",
         "unrecovered within window emits no completed occurrence",
         "generation discontinuity refuses"
       ],
-      "implementation_readiness": "NOT_ESTABLISHED"
+      "implementation_readiness": "NOT_ESTABLISHED",
+      "synthetic_test_profile_version": "D142-SYNTHETIC-TENTATIVE-V1",
+      "synthetic_test_profile_reference": "handoff/m02_foundation_prerequisites_20261029/R3_TENTATIVE_SYNTHETIC_PROFILES_V1.json",
+      "synthetic_test_profile_status": "CONCRETE_TENTATIVE_SYNTHETIC_CANDIDATE",
+      "synthetic_values_or_rules": {
+        "synthetic_profile_id": "D142-SYNTHETIC-TENTATIVE-V1",
+        "domain": "separate STK or selected-option contract/generation, never mix shares/contracts",
+        "book_selection": "top two bid + top two ask standing levels from a complete synthetic SMART book",
+        "baseline": "last complete reconstructed state before shock; positive spread and positive selected displayed depth",
+        "shock_onset": "first ordered post-baseline state with selected depth <= 0.70*baseline_depth AND spread >= 1.25*baseline_spread",
+        "recovery": "first ordered state strictly after shock with selected depth >= 0.90*baseline_depth AND spread <= 1.10*baseline_spread",
+        "synthetic_window_seconds": "30",
+        "synthetic_clock": "UTC collector-receipt sequence for synthetic book+quote observations, not asserted as provider event clock; never substituted for D145 K17",
+        "tie_and_reset": "ordered receipt then scoped unique ingestion sequence; ambiguous equal keys refuse; 316/317/reset/gap/generation change refuse",
+        "example_test_only": {
+          "baseline_depth": "100",
+          "baseline_spread_USD": "0.10",
+          "shock_depth": "60",
+          "shock_spread_USD": "0.15",
+          "intermediate_depth": "92",
+          "intermediate_spread_USD": "0.13",
+          "recovered_depth": "95",
+          "recovered_spread_USD": "0.10",
+          "elapsed_seconds": "7"
+        },
+        "refuse": [
+          "no first qualifying joint shock",
+          "only one recovery condition met",
+          "outside 30s",
+          "incomplete book",
+          "nonpositive baseline spread or depth",
+          "cross-generation reset"
+        ],
+        "unresolved_real_world": [
+          "source provider/contract quote join and completeness",
+          "production shock thresholds and temporal basis",
+          "actual recovery observation window and venue coverage"
+        ]
+      }
     },
     {
       "derived_id": "D144",
       "fixed_authority": "K02: versioned, fully reconstructed SMART-minus-direct matched-book structured comparison",
-      "proposed_profile_version": null,
-      "proposal_status": "BLOCKED_REQUIRED_PREMISE",
-      "approval_status": "NOT_APPROVED",
+      "proposed_profile_version": "D144-SYNTHETIC-TENTATIVE-V1",
+      "proposal_status": "SYNTHETIC_TEST_DESIGN_PROPOSAL_AUTHORED",
+      "approval_status": "OWNER_AUTHORISED_AS_SYNTHETIC_PLACEHOLDER_ONLY; PRODUCTION_NOT_APPROVED",
       "owner_decision_receiver": "M02 neutral book-matcher owner + M00 depth source custodian + programme owner",
       "required_field_level_choices": {
         "eligible_contract_option_or_stock_domain": null,
@@ -147,14 +382,49 @@
         "numeric_units_and_difference_sign": "SMART-minus-direct per K02",
         "policy_version": null
       },
-      "missing_primary_premise": "No simultaneous provider-backed SMART/direct histories establishing timestamp co-reference, venue/MPID semantics or admissible skew, levels and unmatched-row handling; synthetic separate L14 sources do not justify a numeric skew.",
+      "missing_primary_premise": "PRODUCTION/LIVE BLOCKER REMAINS: No simultaneous provider-backed SMART/direct histories establishing timestamp co-reference, venue/MPID semantics or admissible skew, levels and unmatched-row handling; synthetic separate L14 sources do not justify a numeric skew.",
       "future_refusal_contracts_to_bind_after_approval": [
         "cross-contract/side/generation mismatch refuses",
         "excess skew refuses when bound admitted",
         "missing unmatched rule refuses, never invent counterpart",
         "incomplete reconstructed book refuses"
       ],
-      "implementation_readiness": "NOT_ESTABLISHED"
+      "implementation_readiness": "NOT_ESTABLISHED",
+      "synthetic_test_profile_version": "D144-SYNTHETIC-TENTATIVE-V1",
+      "synthetic_test_profile_reference": "handoff/m02_foundation_prerequisites_20261029/R3_TENTATIVE_SYNTHETIC_PROFILES_V1.json",
+      "synthetic_test_profile_status": "CONCRETE_TENTATIVE_SYNTHETIC_CANDIDATE",
+      "synthetic_values_or_rules": {
+        "synthetic_profile_id": "D144-SYNTHETIC-TENTATIVE-V1",
+        "domain": "one synthetic NVDA STK or selected option contract at a time; venue-specific direct book; SMART aggregate compared to direct selected venue, NOT claimed to be identical venues",
+        "matching": "same contract, side and reconstructed rank position 0 or 1; compare top two levels on both sides, preserving direct subscribed-exchange identity distinct from MPID",
+        "window": "both complete standing books at synthetic receipt cutoffs; max absolute inter-source receipt skew 0.250 seconds; exact sequence and versioned pair identity; no fabricated source-event time",
+        "metrics": "per pair: SMART price minus direct price USD per share/underlying; SMART displayed size minus direct displayed size in shares or contracts, typed by security; retain each book/venue/MPID lineage",
+        "unmatched": "if any required level missing, stale, skewed, incompatible, unentitled, or reset, no completed D144 comparison; never fill direct with zero",
+        "example_test_only": {
+          "smart_bid_rank0_price": "100.00",
+          "direct_bid_rank0_price": "99.99",
+          "price_gap_USD": "0.01",
+          "smart_bid_rank0_size": "10",
+          "direct_bid_rank0_size": "8",
+          "size_gap_shares": "2",
+          "receipt_skew_seconds": "0.100"
+        },
+        "refuse": [
+          "skew > 0.250 seconds",
+          "different contract/security right/expiry",
+          "different side/rank",
+          "incomplete book after reset",
+          "missing unmatched direct row"
+        ],
+        "unresolved_real_world": [
+          "actual simultaneous comparable SMART/direct source lineage",
+          "account depth permission and venue coverage",
+          "owner production skew, levels and matching semantics"
+        ]
+      }
     }
-  ]
+  ],
+  "prior_status_before_owner_override": "PARTIAL_DOCUMENTARY_REPAIR; R3_UNSATISFIED",
+  "new_owner_instruction": "Assign tentative synthetic values explicitly; do not describe them as measured inputs, live facts or approved production parameter policies.",
+  "synthetic_profile_reference": "handoff/m02_foundation_prerequisites_20261029/R3_TENTATIVE_SYNTHETIC_PROFILES_V1.json"
 }

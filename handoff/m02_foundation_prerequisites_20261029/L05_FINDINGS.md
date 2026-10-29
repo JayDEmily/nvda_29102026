@@ -39,3 +39,7 @@ Date: 29 October 2026. Plan `M02-FOUNDATION-PREREQUISITE-RESOLUTION-1`. Source c
 ## Source inspection and review boundary
 
 Current repository authority: `handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md` (K01/K02/K06/K08/K09/K17 as relevant); exact incorporated catalogue `handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv`; Annex B/C `handoff/foundation_implementation/authority/FOUNDATION_IMPLEMENTATION_BRIEF_PROPOSED.md`; current original `handoff/m02_remaining_readiness/UNRESOLVED_REGISTER.json`; last accepted G2 record. Relevant current production source file fingerprints are listed in `PRIMARY_SOURCE_INVENTORY.json`. The existing evidence demonstrates conditional holds but **does not** prove a missing account/provider capability or decide the programme owner’s domain conventions. No market-data sessions, product imports, tests or static analysis were executed.
+
+## Later owner direction — tentative synthetic profile V1
+
+The prior G4 returned findings and blocked production/source status above remain historically valid. The owner subsequently authorised tentative **synthetic-only** candidate numbers for design continuity. See `R3_TENTATIVE_SYNTHETIC_PROFILES_V1.json` and `R3_SYNTHETIC_OWNER_DIRECTION_20261029.md`. Six versioned test-scaffold candidates now exist; no production policy, real source history, genuine derivative occurrence, or independent G4 acceptance follows. All 28 canonical holds remain unchanged.

@@ -41,3 +41,7 @@ Current repository authority: `handoff/m01_completion/authority/NVDA_DERIVED_SIG
 ## G4 returned-profile obligation — explicit R3 blockers
 
 The three K06 estimates are **one shared** full-rank four-vector fit. Their training-profile proposal deliverables are **BLOCKED_REQUIRED_PREMISE** (not authorised versioned numerical/profile candidates): no admitted aligned source-history sample, selection window/state subset, current-exclusion policy, rank/conditioning convention or common fit-provenance carrier is established. See `NEUTRAL_POLICY_PROPOSAL_STATUS.json` (D079/D080/D081) for per-field nulls, named receivers and future reached-refusal requirements. This is not a request to redefine K06 OLS/intercept/factor basis. **R3 remains UNSATISFIED** and this leaf's policy-proposal obligation cannot be marked completed merely from its valid source analysis.
+
+## Later owner direction — tentative synthetic profile V1
+
+The prior G4 returned findings and blocked production/source status above remain historically valid. The owner subsequently authorised tentative **synthetic-only** candidate numbers for design continuity. See `R3_TENTATIVE_SYNTHETIC_PROFILES_V1.json` and `R3_SYNTHETIC_OWNER_DIRECTION_20261029.md`. Six versioned test-scaffold candidates now exist; no production policy, real source history, genuine derivative occurrence, or independent G4 acceptance follows. All 28 canonical holds remain unchanged.
