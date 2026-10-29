@@ -1,0 +1,969 @@
+{
+  "schema_version": "1.0.0",
+  "plan_id": "M02-FOUNDATION-PREREQUISITE-RESOLUTION-1-R0",
+  "ledger_status": "DRAFT",
+  "repository": {
+    "baseline_commit": "dbf08e6521bd16dcde593bb050a4c22beafd49d0",
+    "candidate_commit": "dbf08e6521bd16dcde593bb050a4c22beafd49d0",
+    "plan_revision": "R0-PROPOSED"
+  },
+  "execution_mode": {
+    "mode": "CHAT_MANUAL",
+    "capability_evidence": "Current assistant is an ordinary chat thread; no independent delegated worker/tester is verified. Owner manually transfers cumulative bundles to independent tester.",
+    "test_phase": "NO_PRODUCT_TESTS_IN_THIS_DOCUMENTARY_TRANCHE; FUTURE IMPLEMENTATION_PROOFS_FINAL_INDEPENDENT_GATE_ONLY_AFTER_NEW_OWNER_COMMISSION"
+  },
+  "proof_obligations": [
+    {
+      "proof_id": "PLANNING-HOLD-D062",
+      "module": "M02",
+      "claim": "D062 conditional neutral measurement; prerequisite resolution only, no implementation claimed",
+      "requirement_refs": [
+        "R2-D062",
+        "R3-CURRENT-HOLD"
+      ],
+      "source_identity": {
+        "commit": "dbf08e6521bd16dcde593bb050a4c22beafd49d0",
+        "contract_id": "CATALOGUE_SHA256_67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549_ROW_D062_OVERLAYS_RETAINED",
+        "profile_id": "NOT_YET_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "No new product proof is authorised; retained existing profiles are not invalidated by this planning proposal. The target-specific prerequisite remains open.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/UNRESOLVED_REGISTER.json",
+          "handoff/m02_remaining_readiness/DEPENDENCY_AND_NEXT_WORK.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "DOCUMENTARY_TRANCHE_ONLY_ZERO_PRODUCT_TESTS; FUTURE ALLOCATION REQUIRES SEPARATE_ACCEPTED_UNIT",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L01",
+        "reviewer": "Separate manually transferred independent tester thread after final documentary gate",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "PLANNING-HOLD-D078",
+      "module": "M02",
+      "claim": "D078 conditional neutral measurement; prerequisite resolution only, no implementation claimed",
+      "requirement_refs": [
+        "R2-D078",
+        "R3-CURRENT-HOLD"
+      ],
+      "source_identity": {
+        "commit": "dbf08e6521bd16dcde593bb050a4c22beafd49d0",
+        "contract_id": "CATALOGUE_SHA256_67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549_ROW_D078_OVERLAYS_RETAINED",
+        "profile_id": "NOT_YET_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "No new product proof is authorised; retained existing profiles are not invalidated by this planning proposal. The target-specific prerequisite remains open.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/UNRESOLVED_REGISTER.json",
+          "handoff/m02_remaining_readiness/DEPENDENCY_AND_NEXT_WORK.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "DOCUMENTARY_TRANCHE_ONLY_ZERO_PRODUCT_TESTS; FUTURE ALLOCATION REQUIRES SEPARATE_ACCEPTED_UNIT",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L06",
+        "reviewer": "Separate manually transferred independent tester thread after final documentary gate",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "PLANNING-HOLD-D079",
+      "module": "M02",
+      "claim": "D079 conditional neutral measurement; prerequisite resolution only, no implementation claimed",
+      "requirement_refs": [
+        "R2-D079",
+        "R3-CURRENT-HOLD"
+      ],
+      "source_identity": {
+        "commit": "dbf08e6521bd16dcde593bb050a4c22beafd49d0",
+        "contract_id": "CATALOGUE_SHA256_67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549_ROW_D079_OVERLAYS_RETAINED",
+        "profile_id": "NOT_YET_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "No new product proof is authorised; retained existing profiles are not invalidated by this planning proposal. The target-specific prerequisite remains open.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/UNRESOLVED_REGISTER.json",
+          "handoff/m02_remaining_readiness/DEPENDENCY_AND_NEXT_WORK.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "DOCUMENTARY_TRANCHE_ONLY_ZERO_PRODUCT_TESTS; FUTURE ALLOCATION REQUIRES SEPARATE_ACCEPTED_UNIT",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L04",
+        "reviewer": "Separate manually transferred independent tester thread after final documentary gate",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "PLANNING-HOLD-D080",
+      "module": "M02",
+      "claim": "D080 conditional neutral measurement; prerequisite resolution only, no implementation claimed",
+      "requirement_refs": [
+        "R2-D080",
+        "R3-CURRENT-HOLD"
+      ],
+      "source_identity": {
+        "commit": "dbf08e6521bd16dcde593bb050a4c22beafd49d0",
+        "contract_id": "CATALOGUE_SHA256_67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549_ROW_D080_OVERLAYS_RETAINED",
+        "profile_id": "NOT_YET_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "No new product proof is authorised; retained existing profiles are not invalidated by this planning proposal. The target-specific prerequisite remains open.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/UNRESOLVED_REGISTER.json",
+          "handoff/m02_remaining_readiness/DEPENDENCY_AND_NEXT_WORK.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "DOCUMENTARY_TRANCHE_ONLY_ZERO_PRODUCT_TESTS; FUTURE ALLOCATION REQUIRES SEPARATE_ACCEPTED_UNIT",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L04",
+        "reviewer": "Separate manually transferred independent tester thread after final documentary gate",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "PLANNING-HOLD-D081",
+      "module": "M02",
+      "claim": "D081 conditional neutral measurement; prerequisite resolution only, no implementation claimed",
+      "requirement_refs": [
+        "R2-D081",
+        "R3-CURRENT-HOLD"
+      ],
+      "source_identity": {
+        "commit": "dbf08e6521bd16dcde593bb050a4c22beafd49d0",
+        "contract_id": "CATALOGUE_SHA256_67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549_ROW_D081_OVERLAYS_RETAINED",
+        "profile_id": "NOT_YET_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "No new product proof is authorised; retained existing profiles are not invalidated by this planning proposal. The target-specific prerequisite remains open.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/UNRESOLVED_REGISTER.json",
+          "handoff/m02_remaining_readiness/DEPENDENCY_AND_NEXT_WORK.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "DOCUMENTARY_TRANCHE_ONLY_ZERO_PRODUCT_TESTS; FUTURE ALLOCATION REQUIRES SEPARATE_ACCEPTED_UNIT",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L04",
+        "reviewer": "Separate manually transferred independent tester thread after final documentary gate",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "PLANNING-HOLD-D085",
+      "module": "M02",
+      "claim": "D085 conditional neutral measurement; prerequisite resolution only, no implementation claimed",
+      "requirement_refs": [
+        "R2-D085",
+        "R3-CURRENT-HOLD"
+      ],
+      "source_identity": {
+        "commit": "dbf08e6521bd16dcde593bb050a4c22beafd49d0",
+        "contract_id": "CATALOGUE_SHA256_67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549_ROW_D085_OVERLAYS_RETAINED",
+        "profile_id": "NOT_YET_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "No new product proof is authorised; retained existing profiles are not invalidated by this planning proposal. The target-specific prerequisite remains open.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/UNRESOLVED_REGISTER.json",
+          "handoff/m02_remaining_readiness/DEPENDENCY_AND_NEXT_WORK.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "DOCUMENTARY_TRANCHE_ONLY_ZERO_PRODUCT_TESTS; FUTURE ALLOCATION REQUIRES SEPARATE_ACCEPTED_UNIT",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L01",
+        "reviewer": "Separate manually transferred independent tester thread after final documentary gate",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "PLANNING-HOLD-D086",
+      "module": "M02",
+      "claim": "D086 conditional neutral measurement; prerequisite resolution only, no implementation claimed",
+      "requirement_refs": [
+        "R2-D086",
+        "R3-CURRENT-HOLD"
+      ],
+      "source_identity": {
+        "commit": "dbf08e6521bd16dcde593bb050a4c22beafd49d0",
+        "contract_id": "CATALOGUE_SHA256_67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549_ROW_D086_OVERLAYS_RETAINED",
+        "profile_id": "NOT_YET_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "No new product proof is authorised; retained existing profiles are not invalidated by this planning proposal. The target-specific prerequisite remains open.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/UNRESOLVED_REGISTER.json",
+          "handoff/m02_remaining_readiness/DEPENDENCY_AND_NEXT_WORK.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "DOCUMENTARY_TRANCHE_ONLY_ZERO_PRODUCT_TESTS; FUTURE ALLOCATION REQUIRES SEPARATE_ACCEPTED_UNIT",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L01",
+        "reviewer": "Separate manually transferred independent tester thread after final documentary gate",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "PLANNING-HOLD-D091",
+      "module": "M02",
+      "claim": "D091 conditional neutral measurement; prerequisite resolution only, no implementation claimed",
+      "requirement_refs": [
+        "R2-D091",
+        "R3-CURRENT-HOLD"
+      ],
+      "source_identity": {
+        "commit": "dbf08e6521bd16dcde593bb050a4c22beafd49d0",
+        "contract_id": "CATALOGUE_SHA256_67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549_ROW_D091_OVERLAYS_RETAINED",
+        "profile_id": "NOT_YET_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "No new product proof is authorised; retained existing profiles are not invalidated by this planning proposal. The target-specific prerequisite remains open.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/UNRESOLVED_REGISTER.json",
+          "handoff/m02_remaining_readiness/DEPENDENCY_AND_NEXT_WORK.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "DOCUMENTARY_TRANCHE_ONLY_ZERO_PRODUCT_TESTS; FUTURE ALLOCATION REQUIRES SEPARATE_ACCEPTED_UNIT",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L05",
+        "reviewer": "Separate manually transferred independent tester thread after final documentary gate",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "PLANNING-HOLD-D095",
+      "module": "M02",
+      "claim": "D095 conditional neutral measurement; prerequisite resolution only, no implementation claimed",
+      "requirement_refs": [
+        "R2-D095",
+        "R3-CURRENT-HOLD"
+      ],
+      "source_identity": {
+        "commit": "dbf08e6521bd16dcde593bb050a4c22beafd49d0",
+        "contract_id": "CATALOGUE_SHA256_67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549_ROW_D095_OVERLAYS_RETAINED",
+        "profile_id": "NOT_YET_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "No new product proof is authorised; retained existing profiles are not invalidated by this planning proposal. The target-specific prerequisite remains open.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/UNRESOLVED_REGISTER.json",
+          "handoff/m02_remaining_readiness/DEPENDENCY_AND_NEXT_WORK.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "DOCUMENTARY_TRANCHE_ONLY_ZERO_PRODUCT_TESTS; FUTURE ALLOCATION REQUIRES SEPARATE_ACCEPTED_UNIT",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L01",
+        "reviewer": "Separate manually transferred independent tester thread after final documentary gate",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "PLANNING-HOLD-D096",
+      "module": "M02",
+      "claim": "D096 conditional neutral measurement; prerequisite resolution only, no implementation claimed",
+      "requirement_refs": [
+        "R2-D096",
+        "R3-CURRENT-HOLD"
+      ],
+      "source_identity": {
+        "commit": "dbf08e6521bd16dcde593bb050a4c22beafd49d0",
+        "contract_id": "CATALOGUE_SHA256_67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549_ROW_D096_OVERLAYS_RETAINED",
+        "profile_id": "NOT_YET_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "No new product proof is authorised; retained existing profiles are not invalidated by this planning proposal. The target-specific prerequisite remains open.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/UNRESOLVED_REGISTER.json",
+          "handoff/m02_remaining_readiness/DEPENDENCY_AND_NEXT_WORK.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "DOCUMENTARY_TRANCHE_ONLY_ZERO_PRODUCT_TESTS; FUTURE ALLOCATION REQUIRES SEPARATE_ACCEPTED_UNIT",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L06",
+        "reviewer": "Separate manually transferred independent tester thread after final documentary gate",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "PLANNING-HOLD-D097",
+      "module": "M02",
+      "claim": "D097 conditional neutral measurement; prerequisite resolution only, no implementation claimed",
+      "requirement_refs": [
+        "R2-D097",
+        "R3-CURRENT-HOLD"
+      ],
+      "source_identity": {
+        "commit": "dbf08e6521bd16dcde593bb050a4c22beafd49d0",
+        "contract_id": "CATALOGUE_SHA256_67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549_ROW_D097_OVERLAYS_RETAINED",
+        "profile_id": "NOT_YET_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "No new product proof is authorised; retained existing profiles are not invalidated by this planning proposal. The target-specific prerequisite remains open.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/UNRESOLVED_REGISTER.json",
+          "handoff/m02_remaining_readiness/DEPENDENCY_AND_NEXT_WORK.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "DOCUMENTARY_TRANCHE_ONLY_ZERO_PRODUCT_TESTS; FUTURE ALLOCATION REQUIRES SEPARATE_ACCEPTED_UNIT",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L06",
+        "reviewer": "Separate manually transferred independent tester thread after final documentary gate",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "PLANNING-HOLD-D098",
+      "module": "M02",
+      "claim": "D098 conditional neutral measurement; prerequisite resolution only, no implementation claimed",
+      "requirement_refs": [
+        "R2-D098",
+        "R3-CURRENT-HOLD"
+      ],
+      "source_identity": {
+        "commit": "dbf08e6521bd16dcde593bb050a4c22beafd49d0",
+        "contract_id": "CATALOGUE_SHA256_67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549_ROW_D098_OVERLAYS_RETAINED",
+        "profile_id": "NOT_YET_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "No new product proof is authorised; retained existing profiles are not invalidated by this planning proposal. The target-specific prerequisite remains open.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/UNRESOLVED_REGISTER.json",
+          "handoff/m02_remaining_readiness/DEPENDENCY_AND_NEXT_WORK.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "DOCUMENTARY_TRANCHE_ONLY_ZERO_PRODUCT_TESTS; FUTURE ALLOCATION REQUIRES SEPARATE_ACCEPTED_UNIT",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L06",
+        "reviewer": "Separate manually transferred independent tester thread after final documentary gate",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "PLANNING-HOLD-D102",
+      "module": "M02",
+      "claim": "D102 conditional neutral measurement; prerequisite resolution only, no implementation claimed",
+      "requirement_refs": [
+        "R2-D102",
+        "R3-CURRENT-HOLD"
+      ],
+      "source_identity": {
+        "commit": "dbf08e6521bd16dcde593bb050a4c22beafd49d0",
+        "contract_id": "CATALOGUE_SHA256_67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549_ROW_D102_OVERLAYS_RETAINED",
+        "profile_id": "NOT_YET_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "No new product proof is authorised; retained existing profiles are not invalidated by this planning proposal. The target-specific prerequisite remains open.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/UNRESOLVED_REGISTER.json",
+          "handoff/m02_remaining_readiness/DEPENDENCY_AND_NEXT_WORK.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "DOCUMENTARY_TRANCHE_ONLY_ZERO_PRODUCT_TESTS; FUTURE ALLOCATION REQUIRES SEPARATE_ACCEPTED_UNIT",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L06",
+        "reviewer": "Separate manually transferred independent tester thread after final documentary gate",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "PLANNING-HOLD-D107",
+      "module": "M02",
+      "claim": "D107 conditional neutral measurement; prerequisite resolution only, no implementation claimed",
+      "requirement_refs": [
+        "R2-D107",
+        "R3-CURRENT-HOLD"
+      ],
+      "source_identity": {
+        "commit": "dbf08e6521bd16dcde593bb050a4c22beafd49d0",
+        "contract_id": "CATALOGUE_SHA256_67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549_ROW_D107_OVERLAYS_RETAINED",
+        "profile_id": "NOT_YET_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "No new product proof is authorised; retained existing profiles are not invalidated by this planning proposal. The target-specific prerequisite remains open.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/UNRESOLVED_REGISTER.json",
+          "handoff/m02_remaining_readiness/DEPENDENCY_AND_NEXT_WORK.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "DOCUMENTARY_TRANCHE_ONLY_ZERO_PRODUCT_TESTS; FUTURE ALLOCATION REQUIRES SEPARATE_ACCEPTED_UNIT",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L06",
+        "reviewer": "Separate manually transferred independent tester thread after final documentary gate",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "PLANNING-HOLD-D108",
+      "module": "M02",
+      "claim": "D108 conditional neutral measurement; prerequisite resolution only, no implementation claimed",
+      "requirement_refs": [
+        "R2-D108",
+        "R3-CURRENT-HOLD"
+      ],
+      "source_identity": {
+        "commit": "dbf08e6521bd16dcde593bb050a4c22beafd49d0",
+        "contract_id": "CATALOGUE_SHA256_67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549_ROW_D108_OVERLAYS_RETAINED",
+        "profile_id": "NOT_YET_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "No new product proof is authorised; retained existing profiles are not invalidated by this planning proposal. The target-specific prerequisite remains open.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/UNRESOLVED_REGISTER.json",
+          "handoff/m02_remaining_readiness/DEPENDENCY_AND_NEXT_WORK.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "DOCUMENTARY_TRANCHE_ONLY_ZERO_PRODUCT_TESTS; FUTURE ALLOCATION REQUIRES SEPARATE_ACCEPTED_UNIT",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L06",
+        "reviewer": "Separate manually transferred independent tester thread after final documentary gate",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "PLANNING-HOLD-D109",
+      "module": "M02",
+      "claim": "D109 conditional neutral measurement; prerequisite resolution only, no implementation claimed",
+      "requirement_refs": [
+        "R2-D109",
+        "R3-CURRENT-HOLD"
+      ],
+      "source_identity": {
+        "commit": "dbf08e6521bd16dcde593bb050a4c22beafd49d0",
+        "contract_id": "CATALOGUE_SHA256_67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549_ROW_D109_OVERLAYS_RETAINED",
+        "profile_id": "NOT_YET_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "No new product proof is authorised; retained existing profiles are not invalidated by this planning proposal. The target-specific prerequisite remains open.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/UNRESOLVED_REGISTER.json",
+          "handoff/m02_remaining_readiness/DEPENDENCY_AND_NEXT_WORK.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "DOCUMENTARY_TRANCHE_ONLY_ZERO_PRODUCT_TESTS; FUTURE ALLOCATION REQUIRES SEPARATE_ACCEPTED_UNIT",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L06",
+        "reviewer": "Separate manually transferred independent tester thread after final documentary gate",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "PLANNING-HOLD-D110",
+      "module": "M02",
+      "claim": "D110 conditional neutral measurement; prerequisite resolution only, no implementation claimed",
+      "requirement_refs": [
+        "R2-D110",
+        "R3-CURRENT-HOLD"
+      ],
+      "source_identity": {
+        "commit": "dbf08e6521bd16dcde593bb050a4c22beafd49d0",
+        "contract_id": "CATALOGUE_SHA256_67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549_ROW_D110_OVERLAYS_RETAINED",
+        "profile_id": "NOT_YET_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "No new product proof is authorised; retained existing profiles are not invalidated by this planning proposal. The target-specific prerequisite remains open.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/UNRESOLVED_REGISTER.json",
+          "handoff/m02_remaining_readiness/DEPENDENCY_AND_NEXT_WORK.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "DOCUMENTARY_TRANCHE_ONLY_ZERO_PRODUCT_TESTS; FUTURE ALLOCATION REQUIRES SEPARATE_ACCEPTED_UNIT",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L06",
+        "reviewer": "Separate manually transferred independent tester thread after final documentary gate",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "PLANNING-HOLD-D111",
+      "module": "M02",
+      "claim": "D111 conditional neutral measurement; prerequisite resolution only, no implementation claimed",
+      "requirement_refs": [
+        "R2-D111",
+        "R3-CURRENT-HOLD"
+      ],
+      "source_identity": {
+        "commit": "dbf08e6521bd16dcde593bb050a4c22beafd49d0",
+        "contract_id": "CATALOGUE_SHA256_67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549_ROW_D111_OVERLAYS_RETAINED",
+        "profile_id": "NOT_YET_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "No new product proof is authorised; retained existing profiles are not invalidated by this planning proposal. The target-specific prerequisite remains open.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/UNRESOLVED_REGISTER.json",
+          "handoff/m02_remaining_readiness/DEPENDENCY_AND_NEXT_WORK.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "DOCUMENTARY_TRANCHE_ONLY_ZERO_PRODUCT_TESTS; FUTURE ALLOCATION REQUIRES SEPARATE_ACCEPTED_UNIT",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L06",
+        "reviewer": "Separate manually transferred independent tester thread after final documentary gate",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "PLANNING-HOLD-D112",
+      "module": "M02",
+      "claim": "D112 conditional neutral measurement; prerequisite resolution only, no implementation claimed",
+      "requirement_refs": [
+        "R2-D112",
+        "R3-CURRENT-HOLD"
+      ],
+      "source_identity": {
+        "commit": "dbf08e6521bd16dcde593bb050a4c22beafd49d0",
+        "contract_id": "CATALOGUE_SHA256_67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549_ROW_D112_OVERLAYS_RETAINED",
+        "profile_id": "NOT_YET_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "No new product proof is authorised; retained existing profiles are not invalidated by this planning proposal. The target-specific prerequisite remains open.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/UNRESOLVED_REGISTER.json",
+          "handoff/m02_remaining_readiness/DEPENDENCY_AND_NEXT_WORK.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "DOCUMENTARY_TRANCHE_ONLY_ZERO_PRODUCT_TESTS; FUTURE ALLOCATION REQUIRES SEPARATE_ACCEPTED_UNIT",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L06",
+        "reviewer": "Separate manually transferred independent tester thread after final documentary gate",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "PLANNING-HOLD-D113",
+      "module": "M02",
+      "claim": "D113 conditional neutral measurement; prerequisite resolution only, no implementation claimed",
+      "requirement_refs": [
+        "R2-D113",
+        "R3-CURRENT-HOLD"
+      ],
+      "source_identity": {
+        "commit": "dbf08e6521bd16dcde593bb050a4c22beafd49d0",
+        "contract_id": "CATALOGUE_SHA256_67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549_ROW_D113_OVERLAYS_RETAINED",
+        "profile_id": "NOT_YET_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "No new product proof is authorised; retained existing profiles are not invalidated by this planning proposal. The target-specific prerequisite remains open.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/UNRESOLVED_REGISTER.json",
+          "handoff/m02_remaining_readiness/DEPENDENCY_AND_NEXT_WORK.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "DOCUMENTARY_TRANCHE_ONLY_ZERO_PRODUCT_TESTS; FUTURE ALLOCATION REQUIRES SEPARATE_ACCEPTED_UNIT",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L06",
+        "reviewer": "Separate manually transferred independent tester thread after final documentary gate",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "PLANNING-HOLD-D120",
+      "module": "M02",
+      "claim": "D120 conditional neutral measurement; prerequisite resolution only, no implementation claimed",
+      "requirement_refs": [
+        "R2-D120",
+        "R3-CURRENT-HOLD"
+      ],
+      "source_identity": {
+        "commit": "dbf08e6521bd16dcde593bb050a4c22beafd49d0",
+        "contract_id": "CATALOGUE_SHA256_67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549_ROW_D120_OVERLAYS_RETAINED",
+        "profile_id": "NOT_YET_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "No new product proof is authorised; retained existing profiles are not invalidated by this planning proposal. The target-specific prerequisite remains open.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/UNRESOLVED_REGISTER.json",
+          "handoff/m02_remaining_readiness/DEPENDENCY_AND_NEXT_WORK.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "DOCUMENTARY_TRANCHE_ONLY_ZERO_PRODUCT_TESTS; FUTURE ALLOCATION REQUIRES SEPARATE_ACCEPTED_UNIT",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L02",
+        "reviewer": "Separate manually transferred independent tester thread after final documentary gate",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "PLANNING-HOLD-D121",
+      "module": "M02",
+      "claim": "D121 conditional neutral measurement; prerequisite resolution only, no implementation claimed",
+      "requirement_refs": [
+        "R2-D121",
+        "R3-CURRENT-HOLD"
+      ],
+      "source_identity": {
+        "commit": "dbf08e6521bd16dcde593bb050a4c22beafd49d0",
+        "contract_id": "CATALOGUE_SHA256_67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549_ROW_D121_OVERLAYS_RETAINED",
+        "profile_id": "NOT_YET_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "No new product proof is authorised; retained existing profiles are not invalidated by this planning proposal. The target-specific prerequisite remains open.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/UNRESOLVED_REGISTER.json",
+          "handoff/m02_remaining_readiness/DEPENDENCY_AND_NEXT_WORK.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "DOCUMENTARY_TRANCHE_ONLY_ZERO_PRODUCT_TESTS; FUTURE ALLOCATION REQUIRES SEPARATE_ACCEPTED_UNIT",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L06",
+        "reviewer": "Separate manually transferred independent tester thread after final documentary gate",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "PLANNING-HOLD-D122",
+      "module": "M02",
+      "claim": "D122 conditional neutral measurement; prerequisite resolution only, no implementation claimed",
+      "requirement_refs": [
+        "R2-D122",
+        "R3-CURRENT-HOLD"
+      ],
+      "source_identity": {
+        "commit": "dbf08e6521bd16dcde593bb050a4c22beafd49d0",
+        "contract_id": "CATALOGUE_SHA256_67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549_ROW_D122_OVERLAYS_RETAINED",
+        "profile_id": "NOT_YET_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "No new product proof is authorised; retained existing profiles are not invalidated by this planning proposal. The target-specific prerequisite remains open.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/UNRESOLVED_REGISTER.json",
+          "handoff/m02_remaining_readiness/DEPENDENCY_AND_NEXT_WORK.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "DOCUMENTARY_TRANCHE_ONLY_ZERO_PRODUCT_TESTS; FUTURE ALLOCATION REQUIRES SEPARATE_ACCEPTED_UNIT",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L06",
+        "reviewer": "Separate manually transferred independent tester thread after final documentary gate",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "PLANNING-HOLD-D141",
+      "module": "M02",
+      "claim": "D141 conditional neutral measurement; prerequisite resolution only, no implementation claimed",
+      "requirement_refs": [
+        "R2-D141",
+        "R3-CURRENT-HOLD"
+      ],
+      "source_identity": {
+        "commit": "dbf08e6521bd16dcde593bb050a4c22beafd49d0",
+        "contract_id": "CATALOGUE_SHA256_67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549_ROW_D141_OVERLAYS_RETAINED",
+        "profile_id": "NOT_YET_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "No new product proof is authorised; retained existing profiles are not invalidated by this planning proposal. The target-specific prerequisite remains open.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/UNRESOLVED_REGISTER.json",
+          "handoff/m02_remaining_readiness/DEPENDENCY_AND_NEXT_WORK.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "DOCUMENTARY_TRANCHE_ONLY_ZERO_PRODUCT_TESTS; FUTURE ALLOCATION REQUIRES SEPARATE_ACCEPTED_UNIT",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L03",
+        "reviewer": "Separate manually transferred independent tester thread after final documentary gate",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "PLANNING-HOLD-D142",
+      "module": "M02",
+      "claim": "D142 conditional neutral measurement; prerequisite resolution only, no implementation claimed",
+      "requirement_refs": [
+        "R2-D142",
+        "R3-CURRENT-HOLD"
+      ],
+      "source_identity": {
+        "commit": "dbf08e6521bd16dcde593bb050a4c22beafd49d0",
+        "contract_id": "CATALOGUE_SHA256_67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549_ROW_D142_OVERLAYS_RETAINED",
+        "profile_id": "NOT_YET_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "No new product proof is authorised; retained existing profiles are not invalidated by this planning proposal. The target-specific prerequisite remains open.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/UNRESOLVED_REGISTER.json",
+          "handoff/m02_remaining_readiness/DEPENDENCY_AND_NEXT_WORK.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "DOCUMENTARY_TRANCHE_ONLY_ZERO_PRODUCT_TESTS; FUTURE ALLOCATION REQUIRES SEPARATE_ACCEPTED_UNIT",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L05",
+        "reviewer": "Separate manually transferred independent tester thread after final documentary gate",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "PLANNING-HOLD-D144",
+      "module": "M02",
+      "claim": "D144 conditional neutral measurement; prerequisite resolution only, no implementation claimed",
+      "requirement_refs": [
+        "R2-D144",
+        "R3-CURRENT-HOLD"
+      ],
+      "source_identity": {
+        "commit": "dbf08e6521bd16dcde593bb050a4c22beafd49d0",
+        "contract_id": "CATALOGUE_SHA256_67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549_ROW_D144_OVERLAYS_RETAINED",
+        "profile_id": "NOT_YET_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "No new product proof is authorised; retained existing profiles are not invalidated by this planning proposal. The target-specific prerequisite remains open.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/UNRESOLVED_REGISTER.json",
+          "handoff/m02_remaining_readiness/DEPENDENCY_AND_NEXT_WORK.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "DOCUMENTARY_TRANCHE_ONLY_ZERO_PRODUCT_TESTS; FUTURE ALLOCATION REQUIRES SEPARATE_ACCEPTED_UNIT",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L05",
+        "reviewer": "Separate manually transferred independent tester thread after final documentary gate",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "PLANNING-HOLD-D145",
+      "module": "M02",
+      "claim": "D145 conditional neutral measurement; prerequisite resolution only, no implementation claimed",
+      "requirement_refs": [
+        "R2-D145",
+        "R3-CURRENT-HOLD"
+      ],
+      "source_identity": {
+        "commit": "dbf08e6521bd16dcde593bb050a4c22beafd49d0",
+        "contract_id": "CATALOGUE_SHA256_67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549_ROW_D145_OVERLAYS_RETAINED",
+        "profile_id": "NOT_YET_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "No new product proof is authorised; retained existing profiles are not invalidated by this planning proposal. The target-specific prerequisite remains open.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/UNRESOLVED_REGISTER.json",
+          "handoff/m02_remaining_readiness/DEPENDENCY_AND_NEXT_WORK.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "DOCUMENTARY_TRANCHE_ONLY_ZERO_PRODUCT_TESTS; FUTURE ALLOCATION REQUIRES SEPARATE_ACCEPTED_UNIT",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L03",
+        "reviewer": "Separate manually transferred independent tester thread after final documentary gate",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "PLANNING-HOLD-D151",
+      "module": "M02",
+      "claim": "D151 conditional neutral measurement; prerequisite resolution only, no implementation claimed",
+      "requirement_refs": [
+        "R2-D151",
+        "R3-CURRENT-HOLD"
+      ],
+      "source_identity": {
+        "commit": "dbf08e6521bd16dcde593bb050a4c22beafd49d0",
+        "contract_id": "CATALOGUE_SHA256_67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549_ROW_D151_OVERLAYS_RETAINED",
+        "profile_id": "NOT_YET_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "No new product proof is authorised; retained existing profiles are not invalidated by this planning proposal. The target-specific prerequisite remains open.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/UNRESOLVED_REGISTER.json",
+          "handoff/m02_remaining_readiness/DEPENDENCY_AND_NEXT_WORK.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "DOCUMENTARY_TRANCHE_ONLY_ZERO_PRODUCT_TESTS; FUTURE ALLOCATION REQUIRES SEPARATE_ACCEPTED_UNIT",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L02",
+        "reviewer": "Separate manually transferred independent tester thread after final documentary gate",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    }
+  ]
+}
