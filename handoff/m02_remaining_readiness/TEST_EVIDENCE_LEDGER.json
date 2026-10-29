@@ -28,7 +28,8 @@
         "decision": "NEW",
         "rationale": "New documentary assessment, no new runtime proposition; original product results remain in immutable source ledgers.",
         "evidence_refs": [
-          "handoff/downstream_reconciliation/L14/EXECUTION_INDEX.json"
+          "handoff/downstream_reconciliation/L14/EXECUTION_INDEX.json",
+          "handoff/m02_remaining_readiness/L00_INDEPENDENT_REVIEW.md"
         ]
       },
       "test_allocation": {
@@ -39,7 +40,7 @@
       },
       "execution": {
         "scheduled_leaf": "L00",
-        "reviewer": "UNASSIGNED",
+        "reviewer": "/root/l14_independent_executor",
         "semantic_status": "NOT_ATTEMPTED",
         "runs": []
       }

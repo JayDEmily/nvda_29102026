@@ -110,3 +110,8 @@ Documentary findings may recommend specificprofiles or ownership decisions, clea
 ## 7. Current execution ledger
 
 29 October 2026: accepted proposal installed from12118a8078554746df43ed6517f11f61069dbf5e; independent draft review retained. L00 IN_PROGRESS, L01–L05 NOT_ATTEMPTED. Product tests NONE. Per-leaf review and checkpoint pending. Earlier proposal-status language is historical drafting context superseded by this commission.
+
+
+### L00 documentary acceptance
+
+Independent review92db50fc21c5cac038b13b8a3131d39820341c17 accepts L00 at repairedcandidatee15b4f9; originalD135 finding andrepair preserved. Exact126/98/28/7membership and1642structured references verified within documented readscope. No productruns. L00 DOCUMENTARY_ACCEPTED; checkpoint externalreceipt pending before L01. L01–L05 NOT_ATTEMPTED. Review handoff/m02_remaining_readiness/L00_INDEPENDENT_REVIEW.md.
