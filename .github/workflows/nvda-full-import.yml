@@ -1,4 +1,4 @@
-name: NVDA historical reference transfer probe
+name: NVDA complete historical Git reference preservation
 on:
   push:
     branches: [nvda-migration-staging-20261029]
@@ -6,12 +6,12 @@ on:
 permissions:
   contents: write
 jobs:
-  historical-probe:
+  publish-and-verify:
     runs-on: ubuntu-24.04
-    timeout-minutes: 30
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
-      - name: Rebuild archive and attempt preserved commit and blob refs
+      - name: Publish 230 original reference identities, then independently fetch/verify
         shell: bash
         env:
           GIT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -30,13 +30,27 @@ jobs:
           git init --bare -q "$repo"
           git -C "$repo" fetch -q --no-tags "$tmp" '+refs/*:refs/*'
           git -C "$repo" fsck --full --no-reflogs
-          test "$(git -C "$repo" for-each-ref --format='%(refname)' | wc -l | tr -d ' ')" -eq 230
-          test "$(git -C "$repo" rev-parse refs/preservation/akr_sep11/heads/work/akr-7.6-final-reconciliation)" = '17263909abae9ca8cabb2440db282d12ff492ad6'
+          mapfile -t refs < <(git -C "$repo" for-each-ref --format='%(refname)')
+          test "${#refs[@]}" -eq 230
+          actual="$(git -C "$repo" cat-file --batch-all-objects --batch-check='%(objectname)' | LC_ALL=C sort -u | sha256sum | cut -d' ' -f1)"
+          test "$actual" = '02aacd9f03f138edae0698043315b289727781a60c2d3eef849104bf8de6f0da'
+          test "$(git -C "$repo" rev-parse refs/heads/october_m02_g4_latest)" = '9bd59acba13ead7252e52e32e1b5d862adecd99a'
+          for ref in "${refs[@]}"; do
+            sha="$(git -C "$repo" rev-parse "$ref")"
+            git -C "$repo" update-ref "refs/tags/nvda-union-20261029/${ref#refs/}" "$sha"
+          done
+          mapfile -t tags < <(git -C "$repo" for-each-ref --format='%(refname)' 'refs/tags/nvda-union-20261029/')
+          test "${#tags[@]}" -eq 230
           remote="https://x-access-token:${GIT_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-          set +e
-          git -C "$repo" push "$remote" 'refs/preservation/akr_sep11/heads/work/akr-7.6-final-reconciliation:refs/heads/nvda-preserved-akr7-probe'
-          commit_rc=$?
-          git -C "$repo" push "$remote" 'refs/preservation/g5oct19/source-unreachable/blob-22c12ffae969a1fe9d5221c0ea7dd566b4f9a331:refs/tags/nvda-preserved-blob-probe'
-          blob_rc=$?
-          set -e
-          echo "RESULT commit_rc=$commit_rc blob_rc=$blob_rc; main branch unchanged"
+          git -C "$repo" push --porcelain "$remote" "${tags[@]}"
+          git -C "$repo" for-each-ref --format='%(objectname) %(refname)' 'refs/tags/nvda-union-20261029/' | LC_ALL=C sort > "$RUNNER_TEMP/expected-refs.txt"
+          git ls-remote --refs "$remote" 'refs/tags/nvda-union-20261029/*' | awk '{print $1 " " $2}' | LC_ALL=C sort > "$RUNNER_TEMP/actual-refs.txt"
+          diff -u "$RUNNER_TEMP/expected-refs.txt" "$RUNNER_TEMP/actual-refs.txt"
+          check="$RUNNER_TEMP/nvda-remote-verified.git"
+          git init --bare -q "$check"
+          git -C "$check" fetch -q --no-tags "$remote" '+refs/tags/nvda-union-20261029/*:refs/tags/nvda-union-20261029/*'
+          git -C "$check" fsck --full --no-reflogs
+          test "$(git -C "$check" for-each-ref --format='%(refname)' | wc -l | tr -d ' ')" -eq 230
+          check_sha="$(git -C "$check" cat-file --batch-all-objects --batch-check='%(objectname)' | LC_ALL=C sort -u | sha256sum | cut -d' ' -f1)"
+          test "$check_sha" = '02aacd9f03f138edae0698043315b289727781a60c2d3eef849104bf8de6f0da'
+          echo "PASS: remote exact 230 original ref targets, 30176 Git object IDs, original G4 history, no main mutation"
