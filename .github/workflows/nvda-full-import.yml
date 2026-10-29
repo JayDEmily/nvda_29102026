@@ -1,0 +1,46 @@
+name: NVDA Git preservation import - integrity and typed-reference probe
+on:
+  push:
+    branches: [nvda-migration-staging-20261029]
+    paths: [.github/workflows/nvda-full-import.yml]
+permissions:
+  contents: write
+jobs:
+  inspect-and-import:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reassemble, verify, and restore full historical bundle
+        shell: bash
+        env:
+          GIT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          tmp="$RUNNER_TEMP/nvda-full.bundle"
+          repo="$RUNNER_TEMP/nvda-union.git"
+          count=0
+          for part in nvda-transfer/chunks/part-*.b64; do
+            base64 --decode "$part" >> "$tmp"
+            count=$((count+1))
+          done
+          test "$count" -eq 157
+          test "$(stat -c %s "$tmp")" -eq 82303405
+          printf '501be44c7422d7b99359d36ea0a44754698c1b0a667a093c737dd231e559e875  %s\n' "$tmp" | sha256sum -c -
+          git init --bare --quiet "$repo"
+          git -C "$repo" bundle verify "$tmp"
+          git -C "$repo" fetch --quiet --no-tags "$tmp" '+refs/*:refs/*'
+          git -C "$repo" fsck --full --no-reflogs
+          test "$(git -C "$repo" for-each-ref --format='%(refname)' | wc -l | tr -d ' ')" -eq 230
+          actual="$(git -C "$repo" cat-file --batch-all-objects --batch-check='%(objectname)' | LC_ALL=C sort -u | sha256sum | cut -d' ' -f1)"
+          test "$actual" = '02aacd9f03f138edae0698043315b289727781a60c2d3eef849104bf8de6f0da'
+          test "$(git -C "$repo" rev-parse refs/heads/october_m02_g4_latest)" = '9bd59acba13ead7252e52e32e1b5d862adecd99a'
+          test "$(git -C "$repo" rev-parse refs/heads/october_m02_g4_latest^{tree})" = '61e135fac03711cd593844528e718aa6967819ad'
+          git -C "$repo" merge-base --is-ancestor '8f61a75f728e4469ef9b0b4f5ec119248504d68f' '9bd59acba13ead7252e52e32e1b5d862adecd99a'
+          git -C "$repo" merge-base --is-ancestor '38d41fe08b94966572fe79175c9edf9e0bd8be36' '9bd59acba13ead7252e52e32e1b5d862adecd99a'
+          git -C "$repo" update-ref refs/tags/nvda-preservation-probe/blob 22c12ffae969a1fe9d5221c0ea7dd566b4f9a331
+          git -C "$repo" update-ref refs/tags/nvda-preservation-probe/tree 5a4f2728925ec6a0d4a557087b530bd0d05e1a7f
+          remote="https://x-access-token:${GIT_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git -C "$repo" push "$remote" 'refs/heads/october_m02_g4_latest:refs/heads/nvda-imported-g4-20261029'
+          git -C "$repo" push "$remote" 'refs/tags/nvda-preservation-probe/blob:refs/tags/nvda-preservation-probe/blob' 'refs/tags/nvda-preservation-probe/tree:refs/tags/nvda-preservation-probe/tree'
+          echo "VERIFIED: 157 chunks, 82303405 bytes, 230 refs, 30176 objects and current G4 HEAD. Imported current branch plus blob/tree preservation probes."
