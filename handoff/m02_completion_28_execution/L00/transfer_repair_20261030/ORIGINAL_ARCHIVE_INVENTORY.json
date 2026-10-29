@@ -1,0 +1,98 @@
+{
+  "archive_sha256": "4d02c82894513bff8d07af7a2af6a151cd3f5f14ece581ac0bf0d87ea9ed0430",
+  "archive_bytes": 42559431,
+  "source_url": "https://drive.google.com/file/d/1wihouZKUpeBj9dQjuxyf8PCWMSTm5Y0k/view",
+  "members": [
+    {
+      "path": "NVDA_DOWNSTREAM_RECONCILIATION_L00_CHECKPOINT_20261028/AGENTS.md",
+      "bytes": 11245,
+      "sha256": "e86262d3f0f27a820d2653c6eaa51b4ae3fde6c76a67730f6d4952d547a5ecb2"
+    },
+    {
+      "path": "NVDA_DOWNSTREAM_RECONCILIATION_L00_CHECKPOINT_20261028/EXEC_PLAN.md",
+      "bytes": 42303,
+      "sha256": "9dc70a878a3fa98f9c27b8b11b7cf2a93d8b38aa64f89c3b904a3632d4db5b25"
+    },
+    {
+      "path": "NVDA_DOWNSTREAM_RECONCILIATION_L00_CHECKPOINT_20261028/GUARDRAILS.md",
+      "bytes": 10259,
+      "sha256": "585dc9b1a95719a7b60929b0d3ea64696fd6d52cd19b2b4a463c5bb9d34947b6"
+    },
+    {
+      "path": "NVDA_DOWNSTREAM_RECONCILIATION_L00_CHECKPOINT_20261028/MANIFEST.json",
+      "bytes": 441,
+      "sha256": "34822a0810d7db9834f541c5eddef96426780b3cc897621479377c27342a492f"
+    },
+    {
+      "path": "NVDA_DOWNSTREAM_RECONCILIATION_L00_CHECKPOINT_20261028/NVDA_DOWNSTREAM_RECONCILIATION_L00_CHECKPOINT_20261028_FULL_HISTORY.bundle",
+      "bytes": 42608833,
+      "sha256": "91db4a1989bff366c1f547c5776ca886c276b6b1310027ae929aa1cd1efee4b9"
+    },
+    {
+      "path": "NVDA_DOWNSTREAM_RECONCILIATION_L00_CHECKPOINT_20261028/PACKAGING_SCRIPT.py",
+      "bytes": 3772,
+      "sha256": "38027aae76252899b08eaf0b377d915ee474bd09eb233392972b8197378e8107"
+    },
+    {
+      "path": "NVDA_DOWNSTREAM_RECONCILIATION_L00_CHECKPOINT_20261028/RESTORE.md",
+      "bytes": 515,
+      "sha256": "0818d3f801d86f100cc0c8e38544a0191bf8f2443d227ae7174f4cb4a51e7306"
+    },
+    {
+      "path": "NVDA_DOWNSTREAM_RECONCILIATION_L00_CHECKPOINT_20261028/VERIFICATION.json",
+      "bytes": 31318,
+      "sha256": "782d9723ef9f0d0ad41d97c0bc63d37bd8e52864ed4a04e6a19fe5179621d1fd"
+    },
+    {
+      "path": "NVDA_DOWNSTREAM_RECONCILIATION_L00_CHECKPOINT_20261028/downstream_reconciliation/L00/BASELINE_AND_IMPACT.md",
+      "bytes": 21103,
+      "sha256": "213b4fa015af075061a59ac7f07eabf00a4c1ad5c41025f0fe8685fd71a3e998"
+    },
+    {
+      "path": "NVDA_DOWNSTREAM_RECONCILIATION_L00_CHECKPOINT_20261028/downstream_reconciliation/L00/INDEPENDENT_REVIEW.md",
+      "bytes": 4386,
+      "sha256": "bff549d785a292631c0f1ff545f4f29aadd84bd453f8063165437362d40207b5"
+    },
+    {
+      "path": "NVDA_DOWNSTREAM_RECONCILIATION_L00_CHECKPOINT_20261028/m00_brief_and_paused_plan/BRIEF_2_M00_RECONCILED_V3_20261027_1622_AEDT.md",
+      "bytes": 39975,
+      "sha256": "0d5ee211c1285b31834062ab2d871670ed2f318cbb955e7df95f80067d562007"
+    },
+    {
+      "path": "NVDA_DOWNSTREAM_RECONCILIATION_L00_CHECKPOINT_20261028/m00_brief_and_paused_plan/INDEPENDENT_PLAN_REVIEW.md",
+      "bytes": 10155,
+      "sha256": "ef87547e0d285dc72351aa007ffb53d321cf6b80c02e6c7f9f63a680cc710b78"
+    },
+    {
+      "path": "NVDA_DOWNSTREAM_RECONCILIATION_L00_CHECKPOINT_20261028/m00_brief_and_paused_plan/INPUT_AND_GOVERNANCE_HASHES.json",
+      "bytes": 1149,
+      "sha256": "91f1f950eae2999d5d357d2018ff7bf427ab5acd7bd67e1a5536fdc556806c33"
+    },
+    {
+      "path": "NVDA_DOWNSTREAM_RECONCILIATION_L00_CHECKPOINT_20261028/m00_brief_and_paused_plan/OWNER_REQUEST.md",
+      "bytes": 1531,
+      "sha256": "a430864b297cd6cd6350aa38486bf2bd05b908f48a30756d17ad86b60f2669a6"
+    },
+    {
+      "path": "NVDA_DOWNSTREAM_RECONCILIATION_L00_CHECKPOINT_20261028/m00_brief_and_paused_plan/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
+      "bytes": 46225,
+      "sha256": "2d95d7c5e425ed1dd231f4685100f7c1db9c85ee1369fea54f91580aab6caa5a"
+    },
+    {
+      "path": "NVDA_DOWNSTREAM_RECONCILIATION_L00_CHECKPOINT_20261028/m00_brief_and_paused_plan/PLANNING_EVIDENCE.md",
+      "bytes": 3502,
+      "sha256": "f07de0b839f17dce3b9cf7f91a0d84728189a62ca4502f3bb3a8c3bce3cdb444"
+    },
+    {
+      "path": "NVDA_DOWNSTREAM_RECONCILIATION_L00_CHECKPOINT_20261028/preserved_completed_plan/COMPLETED_M00_BRIEF2_EXEC_PLAN.md",
+      "bytes": 37223,
+      "sha256": "dbdd1d02cf6bd8ad0a69a8a5cdf0df591b8cb2cca82b5d8604b4f16dbf0da547"
+    },
+    {
+      "path": "NVDA_DOWNSTREAM_RECONCILIATION_L00_CHECKPOINT_20261028/SHA256SUMS.txt",
+      "bytes": 1798,
+      "sha256": "621b3fae54fdf3122c84b029bcdf17d8a71209df2efbd603160fdcb9aa662585"
+    }
+  ],
+  "instructions_boundary": "Archived documents are historical evidence, not new instructions or replacement governance."
+}

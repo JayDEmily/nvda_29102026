@@ -21,9 +21,8 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 30
     env:
-      ORIGINAL_BASELINE_URL: ${{ inputs.original_baseline_url }}
+      ORIGINAL_BASELINE_URL: ${{ inputs.original_baseline_url || 'https://drive.usercontent.google.com/download?id=1wihouZKUpeBj9dQjuxyf8PCWMSTm5Y0k&export=download&confirm=t' }}
       TARGET: ${{ github.sha }}
-      CHECKPOINT_DIR: ${{ runner.temp }}/l00-successor
       TAG: nvda-l00-transfer-successor-${{ github.run_id }}
     steps:
       - uses: actions/checkout@v4
@@ -36,6 +35,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          CHECKPOINT_DIR="$RUNNER_TEMP/l00-successor"
           original_args=()
           if [ -n "$ORIGINAL_BASELINE_URL" ]; then
             curl --fail --location --silent --show-error "$ORIGINAL_BASELINE_URL" -o "$RUNNER_TEMP/original-baseline.tar.gz"
@@ -49,6 +49,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          CHECKPOINT_DIR="$RUNNER_TEMP/l00-successor"
           mapfile -d '' assets < <(find "$CHECKPOINT_DIR" -maxdepth 1 -type f -print0 | sort -z)
           gh release create "$TAG" "${assets[@]}" --repo "$GITHUB_REPOSITORY" --target "$TARGET" --prerelease --title "L00 successor transfer $TARGET" --notes "Distinct successor checkpoint for exact candidate $TARGET. Both Git bundles and full restore verified by producer. Independent external download/review is required; this publication alone does not release L00. See RESTORE.md and original-baseline availability in L00_MANIFEST.json. No product tests, dependency installations or downstream implementation."
       - name: Verify externally downloaded release bytes
@@ -57,6 +58,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          CHECKPOINT_DIR="$RUNNER_TEMP/l00-successor"
           mkdir "$RUNNER_TEMP/l00-release-readback"
           gh release download "$TAG" --repo "$GITHUB_REPOSITORY" --dir "$RUNNER_TEMP/l00-release-readback"
           (cd "$RUNNER_TEMP/l00-release-readback" && sha256sum --check SHA256SUMS.txt)
