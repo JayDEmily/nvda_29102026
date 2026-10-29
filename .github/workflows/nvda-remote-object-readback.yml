@@ -1,0 +1,41 @@
+name: NVDA preserved Git object set remote readback
+on:
+  push:
+    branches: [nvda-migration-staging-20261029]
+    paths: [.github/workflows/nvda-remote-object-readback.yml]
+permissions:
+  contents: read
+jobs:
+  compare:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compare remote native object set with original 30176-object bundle
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          src="$RUNNER_TEMP/full.bundle"
+          for f in nvda-transfer/chunks/part-[0-9][0-9][0-9][0-9].b64; do base64 -d "$f" >> "$src"; done
+          printf '501be44c7422d7b99359d36ea0a44754698c1b0a667a093c737dd231e559e875  %s\n' "$src" | sha256sum -c -
+          git init --bare -q "$RUNNER_TEMP/original.git"
+          git -C "$RUNNER_TEMP/original.git" fetch -q --no-tags "$src" '+refs/*:refs/*'
+          git -C "$RUNNER_TEMP/original.git" cat-file --batch-all-objects --batch-check='%(objectname)' | LC_ALL=C sort -u > "$RUNNER_TEMP/source-ids"
+          test "$(wc -l < "$RUNNER_TEMP/source-ids")" -eq 30176
+          remote="https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git init --bare -q "$RUNNER_TEMP/remote.git"
+          git -C "$RUNNER_TEMP/remote.git" fetch -q --no-tags "$remote" '+refs/tags/nvda-union-20261029/*:refs/tags/nvda-union-20261029/*' '+refs/heads/nvda-preservation/kernel_aug04/*:refs/heads/nvda-preservation/kernel_aug04/*'
+          git -C "$RUNNER_TEMP/remote.git" fsck --full --no-reflogs
+          refs="$(git -C "$RUNNER_TEMP/remote.git" for-each-ref --format='%(refname)' | wc -l | tr -d ' ')"
+          git -C "$RUNNER_TEMP/remote.git" cat-file --batch-all-objects --batch-check='%(objectname)' | LC_ALL=C sort -u > "$RUNNER_TEMP/remote-ids"
+          comm -23 "$RUNNER_TEMP/source-ids" "$RUNNER_TEMP/remote-ids" > "$RUNNER_TEMP/missing"
+          comm -13 "$RUNNER_TEMP/source-ids" "$RUNNER_TEMP/remote-ids" > "$RUNNER_TEMP/extra"
+          echo "Source objects=30176; remote refs=$refs; remote objects=$(wc -l < "$RUNNER_TEMP/remote-ids"); missing=$(wc -l < "$RUNNER_TEMP/missing"); extra=$(wc -l < "$RUNNER_TEMP/extra")"
+          echo 'Missing source IDs, if any:'
+          cat "$RUNNER_TEMP/missing"
+          echo 'Unexpected remote IDs, if any:'
+          cat "$RUNNER_TEMP/extra"
+          echo "SOURCE_OBJECT_SHA=$(sha256sum "$RUNNER_TEMP/source-ids" | cut -d' ' -f1)"
+          echo "REMOTE_OBJECT_SHA=$(sha256sum "$RUNNER_TEMP/remote-ids" | cut -d' ' -f1)"
