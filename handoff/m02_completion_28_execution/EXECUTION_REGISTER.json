@@ -6,9 +6,10 @@
     "signals": [],
     "depends_on": [],
     "obligation": "After owner acceptance and explicit implementation commission, archive exact predecessor root, install this plan as the sole root authority and bind all source/profile decisions. Preserve GUARDRAILS and actual AGENTS bytes. Assign an available independent sole strict executor; confirm retained pinned runtime evidence without a qualification test. Freeze 126 identities, 98 historical profiles, 11 L14 claims, 28 current holds and seven external holds. Convert only actually approved prospective case allocations into the active ledger. Inventory checkpoint prerequisites and all required current refs.",
-    "status": "ACCEPT_DOCUMENTARY_CHECKPOINT_EXPOSURE_PENDING",
+    "status": "BLOCKED_TRANSFER",
     "checkpoint_required": true,
-    "review": "L00/REVIEW.md"
+    "review": "L00/REVIEW.md",
+    "first_unmet_invariant": "Saved verified cumulative checkpoint has not been exposed as an actual download: designated output path not writable; GitHub release asset upload HTTP401."
   },
   {
     "leaf": "L01a",
@@ -19,7 +20,7 @@
       "L00"
     ],
     "obligation": "Bind actual public D071/D075/D076/D077 history producers, aligned sample/window/knowledge cutoffs, current exclusion, rank/conditioning and exact output codec. One fixed historical observation is insufficient for rolling history. Keep one OLS-with-intercept model, common immutable fit/intercept/sample identity and M02 neutral ownership. Prepare correlated full-rank exact synthetic success data which distinguish joint from separate univariate fits, an informative nonzero held-out residual, a concrete deficient-rank history and a per-coefficient mixed-fit refusal. Existing 64 orthogonal rows remain valid example arithmetic only. Admit/prove necessary history profiles separately; never inject expected D outputs as raw/configuration facts.",
-    "status": "NOT_ATTEMPTED",
+    "status": "NOT_ATTEMPTED_DEPENDS_ON_L00",
     "checkpoint_required": true
   },
   {
@@ -31,7 +32,7 @@
       "L00"
     ],
     "obligation": "Bind public R112 option model variant, signed fractional scale, contract/right/expiry and source lineage. Adopt V1 absolute bins only after owner acceptance for controlled implementation: [0,.10), [.10,.25), [.25,.50), [.50,.75), [.75,1], with exact labels and endpoint inclusivity. Bind missing/nonfinite/out-of-range refusal and signed boundary assertions within the approved pair. No scale inference from magnitude.",
-    "status": "NOT_ATTEMPTED",
+    "status": "NOT_ATTEMPTED_DEPENDS_ON_L00",
     "checkpoint_required": true
   },
   {
@@ -43,7 +44,7 @@
       "L00"
     ],
     "obligation": "Bind complete top-two SMART bid/ask event reconstruction plus matched quotes for BOTH stock and selected options, units, receipt order, reset/generation and completeness. Preserve AND shock onset, first joint recovery and continued search through intermediate one-condition states. Bind a shock-relative 30-second window with explicit endpoint inclusion and closing observation/watermark. Under an inclusive end, V2 shock at t=1 needs coverage through t=31 for a reached no-recovery refusal; recovery at t=7 gives elapsed 6. Aggregate depth/spread rows are oracles, not lawful event-stream inputs. No change to D145 clock.",
-    "status": "NOT_ATTEMPTED",
+    "status": "NOT_ATTEMPTED_DEPENDS_ON_L00",
     "checkpoint_required": true
   },
   {
@@ -55,7 +56,7 @@
       "L00"
     ],
     "obligation": "Bind two lawfully reconstructed complete SMART/direct streams for BOTH instrument classes, same contract/side/rank 0/1, receipt cutoffs and inclusive .250-second skew. Preserve distinct subscribed venue and MPID. Require identical explicitly declared quote units and stock-share versus option-contract sizes; option premium per underlying share differs from per-contract money, and any requested contract-money calculation needs an explicit multiplier. Author direct omission/skew sequences before matching. Existing stock pairs establish arithmetic only.",
-    "status": "NOT_ATTEMPTED",
+    "status": "NOT_ATTEMPTED_DEPENDS_ON_L00",
     "checkpoint_required": true
   },
   {
@@ -71,7 +72,7 @@
       "L01a"
     ],
     "obligation": "Fit D075=alpha+beta_market*D071+beta_tech*D076+beta_semi*D077+epsilon jointly by OLS with intercept. Publish three actual coefficient occurrences with common immutable sample, fit, intercept and numerical/profile lineage. Prove rank refusal after lawful history ingress. Correlated success data must discriminate the mandated joint fit. Six proposed cases total: one success/refusal pair per D identity; shared setup does not permit three inconsistent fits.",
-    "status": "NOT_ATTEMPTED",
+    "status": "NOT_ATTEMPTED_DEPENDS_ON_L00",
     "checkpoint_required": true
   },
   {
@@ -85,7 +86,7 @@
       "L02"
     ],
     "obligation": "Use actual compatible coefficient occurrences, common intercept and aligned current D075/D071/D076/D077. Subtract alpha and all three factor contributions. Independently calculate an informative nonzero residual. Refusal changes one coefficient fit lineage while retaining the other two; a coherent alternative complete fit is not invalid merely because its label differs.",
-    "status": "NOT_ATTEMPTED",
+    "status": "NOT_ATTEMPTED_DEPENDS_ON_L00",
     "checkpoint_required": true
   },
   {
@@ -99,7 +100,7 @@
       "L01b"
     ],
     "obligation": "Implement the exact approved complete non-overlapping V1 absolute-delta intervals and labels. Retain option identity, model/scale and rule version. Cover signed endpoints and valid interior values within the finite success case; use a reached invalid/absent input refusal. No inferred units or strategy-tuned category assignment.",
-    "status": "NOT_ATTEMPTED",
+    "status": "NOT_ATTEMPTED_DEPENDS_ON_L00",
     "checkpoint_required": true
   },
   {
@@ -113,7 +114,7 @@
       "L01c"
     ],
     "obligation": "Reconstruct lawful ordered books and quotes. V1 synthetic shock is depth<=.70 baseline AND spread>=1.25 baseline; recovery is the first strictly later state with depth>=.90 baseline AND spread<=1.10 baseline. Continue after depth-only or spread-only intermediate recovery. Preserve 30-second shock-relative closed-window policy and receipt-clock identity; reset/gaps invalidate separately. Stock and selected-option pairs are separate. Refusal reaches the terminal window without joint recovery, rather than merely pending. V2 t=1 to t=7 means 6 seconds; the older untimed 7-second example is separate.",
-    "status": "NOT_ATTEMPTED",
+    "status": "NOT_ATTEMPTED_DEPENDS_ON_L00",
     "checkpoint_required": true
   },
   {
@@ -127,7 +128,7 @@
       "L01d"
     ],
     "obligation": "Return all signed SMART-minus-direct price/depth components at admitted matched ranks from both reconstructed books, preserving each source/contract/time/venue/MPID/unit lineage. Enforce the approved inclusive .250-second maximum skew and exact required level set. Do not zero-fill unmatched levels. Cover stock shares and option contracts separately. Independent refusal omits or invalidates a counterpart through the declared public sequence; worker fixture composition must not pre-satisfy completeness.",
-    "status": "NOT_ATTEMPTED",
+    "status": "NOT_ATTEMPTED_DEPENDS_ON_L00",
     "checkpoint_required": true
   },
   {
@@ -139,7 +140,7 @@
       "L00"
     ],
     "obligation": "Bind R013 selected-option expiry date, R001 receipt, exchange IANA timezone, calendar version/session boundaries and lawful D004 US-option date profile. A synthetic calendar is explicitly controlled configuration, never evidence of official provider facts. Resolve concrete policy/source decisions before code. Independently prove a necessary D004 profile extension without rewriting its old accepted profile or counting its identity anew.",
-    "status": "NOT_ATTEMPTED",
+    "status": "NOT_ATTEMPTED_DEPENDS_ON_L00",
     "checkpoint_required": true
   },
   {
@@ -151,7 +152,7 @@
       "L00"
     ],
     "obligation": "Bind the exact option expiry instant and timezone/session convention separately from its date, with compatible true-instant D001. Never invent midnight or event time from date-only/receipt-only values. Bind exact year-fraction representation. Independently prove a necessary option-domain D001 extension; retain its original profile and zero new identity contribution.",
-    "status": "NOT_ATTEMPTED",
+    "status": "NOT_ATTEMPTED_DEPENDS_ON_L00",
     "checkpoint_required": true
   },
   {
@@ -165,7 +166,7 @@
       "L07a"
     ],
     "obligation": "Use actual R013/R001 and compatible exchange trading date D004 to compute whole calendar-day difference. Preserve contract/calendar/source identity. Refuse unsupported calendar/date coverage or negative live-contract DTE. This does not require converting a date into an invented instant.",
-    "status": "NOT_ATTEMPTED",
+    "status": "NOT_ATTEMPTED_DEPENDS_ON_L00",
     "checkpoint_required": true
   },
   {
@@ -179,7 +180,7 @@
       "L07b"
     ],
     "obligation": "Calculate ACT/365F from actual true-instant D001 to the versioned expiry instant, using exact elapsed duration and approved typed numeric representation. Preserve option/timezone/calendar conventions. Refuse date-only or receipt-only masquerading as source/expiry instants.",
-    "status": "NOT_ATTEMPTED",
+    "status": "NOT_ATTEMPTED_DEPENDS_ON_L00",
     "checkpoint_required": true
   },
   {
@@ -191,7 +192,7 @@
       "L00"
     ],
     "obligation": "Bind R111/R183 computational roles, exact model/native-unit comparability, contract or bucket roll, vintages and one official prior-trading-session reference for D095. Resolve concrete session convention before code; current quote assembly alone is not an IV history. Supply independently calculable change and wrong-reference refusal oracles.",
-    "status": "NOT_ATTEMPTED",
+    "status": "NOT_ATTEMPTED_DEPENDS_ON_L00",
     "checkpoint_required": true
   },
   {
@@ -203,7 +204,7 @@
       "L00"
     ],
     "obligation": "Bind actual R111/R112 per-expiry CALL/PUT universe, exact or nearest bracketing .50 absolute-delta interpolation, coverage/no-extrapolation mode and output shape. Fix selected two/three maturity nodes, comparable annualised decimal-vol units and lawful current D035/D036 predecessor profiles. Preserve side/member/time lineage; a historic green profile does not create a current occurrence. Prepare finite numerical and mismatch oracles.",
-    "status": "NOT_ATTEMPTED",
+    "status": "NOT_ATTEMPTED_DEPENDS_ON_L00",
     "checkpoint_required": true
   },
   {
@@ -215,7 +216,7 @@
       "L00"
     ],
     "obligation": "Bind actual same-expiry/strike-convention CALL+PUT D087, D091 ATM mapping, knowledge cutoffs, native quote units and positive R118 spot. Existing L14 D087 does not automatically supply arbitrary multi-contract/time coverage. D109 is currency per underlying share; D110=100*D109/spot, with no additional contract multiplier on a per-share premium.",
-    "status": "NOT_ATTEMPTED",
+    "status": "NOT_ATTEMPTED_DEPENDS_ON_L00",
     "checkpoint_required": true
   },
   {
@@ -229,7 +230,7 @@
       "L10a"
     ],
     "obligation": "Calculate 100*(IV_current-IV_reference) in volatility points, using comparable actual R111/R183 facts and accepted official one-trading-session reference. Preserve contract/bucket/roll and knowledge vintage. Refuse unmatched/stale/wrong-session references without calendar-day substitution.",
-    "status": "NOT_ATTEMPTED",
+    "status": "NOT_ATTEMPTED_DEPENDS_ON_L00",
     "checkpoint_required": true
   },
   {
@@ -244,7 +245,7 @@
       "L10b"
     ],
     "obligation": "For each expiry/side use exact absolute delta .50 or nearest valid bracketing linear interpolation. Average CALL and PUT estimates when both qualify; a single side is permitted only by an explicitly accepted labelled coverage mode. No undeclared extrapolation. Preserve actual D085, full eligible option universe, native IV/delta units and source identities.",
-    "status": "NOT_ATTEMPTED",
+    "status": "NOT_ATTEMPTED_DEPENDS_ON_L00",
     "checkpoint_required": true
   },
   {
@@ -258,7 +259,7 @@
       "L12"
     ],
     "obligation": "Use actual selected distinct ordered D096 expiry nodes: 100*(iv2-iv1)/(day2-day1), in volatility points/calendar day. Preserve compatible units, coverage and node identities. Equal or missing maturity nodes refuse.",
-    "status": "NOT_ATTEMPTED",
+    "status": "NOT_ATTEMPTED_DEPENDS_ON_L00",
     "checkpoint_required": true
   },
   {
@@ -272,7 +273,7 @@
       "L12"
     ],
     "obligation": "Use three actual ordered distinct D096 nodes: 2*(100*(iv3-iv2)/(d3-d2)-100*(iv2-iv1)/(d2-d1))/(d3-d1). Preserve volatility points/day squared and explicit node selection. Missing/duplicate nodes refuse; do not silently assume uniform spacing.",
-    "status": "NOT_ATTEMPTED",
+    "status": "NOT_ATTEMPTED_DEPENDS_ON_L00",
     "checkpoint_required": true
   },
   {
@@ -287,7 +288,7 @@
       "L10b"
     ],
     "obligation": "Compute 100*(selected D096-D035) after explicit compatible annualised decimal-vol conversion and subject/time/cutoff alignment. Require actual public D035 from its lawful profile, not a forged answer or a D036 replacement. Refuse incompatible annualisation/knowledge/domain.",
-    "status": "NOT_ATTEMPTED",
+    "status": "NOT_ATTEMPTED_DEPENDS_ON_L00",
     "checkpoint_required": true
   },
   {
@@ -302,7 +303,7 @@
       "L10b"
     ],
     "obligation": "Compute 100*(selected D096-D036) under explicit common annualised units and exact predecessor/as-of/cutoff identity. Refuse incompatible profile or wrong horizon; never substitute five-day volatility.",
-    "status": "NOT_ATTEMPTED",
+    "status": "NOT_ATTEMPTED_DEPENDS_ON_L00",
     "checkpoint_required": true
   },
   {
@@ -317,7 +318,7 @@
       "L10c"
     ],
     "obligation": "Select compatible actual CALL/PUT D087 using actual D091 and accepted ATM/expiry/strike selection. Return sum of midpoint premiums in currency per underlying share, retaining both source/selection identities. Refuse unmatched side/expiry/units or absent eligible bucket.",
-    "status": "NOT_ATTEMPTED",
+    "status": "NOT_ATTEMPTED_DEPENDS_ON_L00",
     "checkpoint_required": true
   },
   {
@@ -332,7 +333,7 @@
       "L10c"
     ],
     "obligation": "Compute 100*D109/positive aligned R118 spot in compatible currency-per-share units. Retain straddle and spot identity. Do not multiply per-share premium by an inferred 100-share contract multiplier. Refuse nonpositive spot, missing or incompatible units.",
-    "status": "NOT_ATTEMPTED",
+    "status": "NOT_ATTEMPTED_DEPENDS_ON_L00",
     "checkpoint_required": true
   },
   {
@@ -344,7 +345,7 @@
       "L00"
     ],
     "obligation": "Bind R120/R121 selected-option prints, contemporaneous R126/R127 quotes, R015 right and explicit R016 multiplier, plus an actual option-domain D015 quote-first/tick-test direction profile. Preserve defined unknown-sign handling. Stock-only D015 or assembled quotes alone do not prove option prints. Independently admit/prove only necessary new option-domain support; no provider integration, purchased feeds or fabricated timestamps.",
-    "status": "NOT_ATTEMPTED",
+    "status": "NOT_ATTEMPTED_DEPENDS_ON_L00",
     "checkpoint_required": true
   },
   {
@@ -358,7 +359,7 @@
       "L19"
     ],
     "obligation": "Return both signed_contracts=sum(sign*size) and signed_premium_notional=sum(sign*size*trade_price*multiplier) over the exact admitted window. Use actual compatible option D015 and retain all trade/quote/right/multiplier members and unknown direction treatment. Missing lawful sign/source/multiplier refuses.",
-    "status": "NOT_ATTEMPTED",
+    "status": "NOT_ATTEMPTED_DEPENDS_ON_L00",
     "checkpoint_required": true
   },
   {
@@ -373,7 +374,7 @@
       "L04"
     ],
     "obligation": "Group actual D120 flow by actual D091 bucket under immutable expiry/CALL-PUT/window/member rules. Preserve required contracts/notional components and exact members. Do not supply group answers as configuration or quietly turn missing classification into zero. Refuse incompatible grouping/coverage/time.",
-    "status": "NOT_ATTEMPTED",
+    "status": "NOT_ATTEMPTED_DEPENDS_ON_L00",
     "checkpoint_required": true
   },
   {
@@ -388,7 +389,7 @@
       "L08"
     ],
     "obligation": "Group actual D120 by compatible actual D085 expiry/DTE under immutable bucket/window/units and member rules. Preserve CALL/PUT identities and component notional. Refuse missing or incompatible expiry assignment/calendar rather than silently dropping required members.",
-    "status": "NOT_ATTEMPTED",
+    "status": "NOT_ATTEMPTED_DEPENDS_ON_L00",
     "checkpoint_required": true
   },
   {
@@ -402,7 +403,7 @@
       "L00"
     ],
     "obligation": "First resolve R284 public event identities, revisions/relevance and knowledge-cutoff selector plus compatible actual D001. Then select earliest relevant visible event strictly after as-of and return canonical seconds plus exact seconds/60 minutes. Preserve event/vintage selection and accepted no-event absence semantics. A timestamp alone does not constitute a scheduled-event source.",
-    "status": "NOT_ATTEMPTED",
+    "status": "NOT_ATTEMPTED_DEPENDS_ON_L00",
     "checkpoint_required": true
   },
   {
@@ -416,7 +417,7 @@
       "L10c"
     ],
     "obligation": "Bind every D102 raw role, (log(strike/spot),T) coordinates, cubic B-spline basis/knots/weights/constraints and numerical tolerance. Supply immutable OptionRevaluationConventionVersion with model/exercise/rates/dividends/carry/time/scheme/Greek scaling. Separately bind D111 decreasing convex call-price spline, D102 quality tolerance, strike grid/normalisation and tail thresholds/integration boundary rules. Inspect available pinned mechanisms without installing dependencies or choosing a new estimator. Unaccepted convention/numerical policy blocks affected descendants.",
-    "status": "NOT_ATTEMPTED",
+    "status": "NOT_ATTEMPTED_DEPENDS_ON_L00",
     "checkpoint_required": true
   },
   {
@@ -430,7 +431,7 @@
       "L24"
     ],
     "obligation": "Fit total variance IV^2*T on (log(strike/spot),T) by constrained cubic B-spline weighted least squares. Use inverse squared positive IV bid/ask width, otherwise equal weight. Enforce nonnegative variance, non-decreasing calendar variance and strike-slice call-price convexity under the actual revaluation convention. Return weighted RMS IV residual plus per-point residuals with declared units. Refuse missing convention/coordinate coverage or infeasibility; no generic polynomial substitute.",
-    "status": "NOT_ATTEMPTED",
+    "status": "NOT_ATTEMPTED_DEPENDS_ON_L00",
     "checkpoint_required": true
   },
   {
@@ -446,7 +447,7 @@
       "L10c"
     ],
     "obligation": "Use actual same-snapshot D102 quality acceptance, CALL D087 across strikes, D086 and all direct R034/R035/R014/R015 roles. Fit a decreasing convex cubic spline directly in call price versus strike. Obtain nonnegative second-derivative state-price density, then normalise grid mass to one. D102 fit residual is not a call-price curve. Preserve spline/grid/normalisation/convention lineage; refuse bad quality, infeasible density or zero mass.",
-    "status": "NOT_ATTEMPTED",
+    "status": "NOT_ATTEMPTED_DEPENDS_ON_L00",
     "checkpoint_required": true
   },
   {
@@ -460,7 +461,7 @@
       "L26"
     ],
     "obligation": "Trapezoidal integrate actual normalised D111 below immutable threshold with explicit grid/interpolation/boundary/out-of-grid rules. Retain probability, threshold and density identity. Refuse invalid density or unsupported threshold coverage; do not refit inside this child.",
-    "status": "NOT_ATTEMPTED",
+    "status": "NOT_ATTEMPTED_DEPENDS_ON_L00",
     "checkpoint_required": true
   },
   {
@@ -474,7 +475,7 @@
       "L26"
     ],
     "obligation": "Trapezoidal integrate actual normalised D111 above immutable threshold. Independently derive expected upper-tail mass under declared endpoints; do not assume one-minus-lower without matching threshold/boundary support. Preserve identity and refuse unsupported density/threshold coverage.",
-    "status": "NOT_ATTEMPTED",
+    "status": "NOT_ATTEMPTED_DEPENDS_ON_L00",
     "checkpoint_required": true
   },
   {
@@ -489,7 +490,7 @@
       "L19"
     ],
     "obligation": "Resolve full book/trade histories and execution-versus-cancellation attribution or separately owner-authorised named observable proxy; bind clock and delta_t_max before code. Keep K08 first qualifying same-subject/side/price restoration, one match per depletion and capped credit. Let denominator=sum(eligible depleted size)>0 and score=sum(credited replenishment)/denominator; a zero numerator/score is permitted. Stock and selected-option pairs are separate. Anonymous size decreases alone do not establish executions; missing source/proxy authority remains held.",
-    "status": "NOT_ATTEMPTED",
+    "status": "NOT_ATTEMPTED_DEPENDS_ON_L00",
     "checkpoint_required": true
   },
   {
@@ -503,7 +504,7 @@
       "L00"
     ],
     "obligation": "Resolve immutable full US monitored basket, neutral count/weight mode, R037/R043/R137/R042 source roles, session/as-of/vintage/member consistency and result carrier before code. Preserve three separate eligible denominators for positive vs session-open, above VWAP and above prior official close. K02 names fractional components while catalogue says percent: bind explicit typed fraction/100-times-percent representation under accepted unit version; never infer scale or collapse components. Prove full admitted basket with differential member eligibility and zero-denominator refusal.",
-    "status": "NOT_ATTEMPTED",
+    "status": "NOT_ATTEMPTED_DEPENDS_ON_L00",
     "checkpoint_required": true
   },
   {
@@ -566,7 +567,7 @@
       "L31"
     ],
     "obligation": "Reconcile all 27 mandatory implementation outputs, seven supporting profile obligations, each dual-instrument variant, all 28 dispositions and seven external holds. Reuse exact prior independent results without duplicate green. Audit source/profile/claim registration and durable public readback; inspect narrowly necessary registry/claim deltas without full126 operational activation. Publish exact FINAL_ACCEPTANCE.md, FINAL_CENSUS.json, remaining-work table and final cumulative checkpoint. If a mandatory output remains blocked/unaccepted, result is PARTIAL/BLOCKED even if the core20 milestone was reached. D145 pause is an explicit scope exception, never a completed implementation.",
-    "status": "NOT_ATTEMPTED",
+    "status": "NOT_ATTEMPTED_DEPENDS_ON_L00",
     "checkpoint_required": true
   }
 ]

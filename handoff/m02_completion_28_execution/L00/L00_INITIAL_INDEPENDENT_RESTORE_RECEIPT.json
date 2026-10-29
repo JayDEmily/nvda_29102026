@@ -1,0 +1,25 @@
+{
+  "reviewer": "/root/independent_executor",
+  "scope": "Initial L00 candidate transport integrity only; no product tests",
+  "candidate": "ae2baa9c0beafd556304489f9ca3ffe371f504d4",
+  "tree": "9b501978d433d7789e3c955fbec8576c2588647d",
+  "strategy": "FULL_HISTORY_RECOVERY_BASE + CUMULATIVE_ADDITIVE_FIXED_97f944d51ab9",
+  "original_named_refs_verified": 66,
+  "original_HEAD_preserved_as_baseline_binding": "97f944d51ab9e403250fe76910e2754b50425c73",
+  "current_remote_ref_tips_verified": 236,
+  "tracked_blob_listing_equal": true,
+  "bundle_verify_and_fsck": "PASS",
+  "bundles": [
+    {
+      "name": "NVDA_M02_RECOVERY_BASE_FULL_HISTORY.bundle",
+      "bytes": 165856376,
+      "sha256": "96746582ab4fd0896f6280ff10ea021ed392f4d0e080c2f7c21be00324c5a57c"
+    },
+    {
+      "name": "NVDA_M02_COMPLETION28_L00_ADDITIVE_FROM_97f944d51ab9.bundle",
+      "bytes": 124657327,
+      "sha256": "9d3db824f9d3fa75504fd7326bc360ffa376828cf4cf3289ed3d1c6496bb29b9"
+    }
+  ],
+  "limitations": "Original91db archival bytes not recovered. Final review/status commit must be exported and independently verified separately before leaf release."
+}
