@@ -1,0 +1,13 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/83dd7c79f14f/NVDA_V2_CLEAN_RECOVERED_REPO_20261022
+configfile: pyproject.toml
+collected 6 items
+
+tests/product/market_measurement_d015/test_trade_direction.py ......     [100%]
+
+============================== 6 passed in 0.64s ===============================
+product-proof aggregate: neutral_market_measurement_truth_d015 state=READY_FOR_PROOF
+authority=84baa16665db5f8543eba3b1770dafcfb36cc5e8064b2f1837beb924713acb0d generation=d495a09f834349b7817a28911a58afa372b635ed0d1d211efd4fc8a4f822e543
+candidate=ef4ff63f790987a2f54e2ba796038e1eae8ee8d6
+observed aggregate outcome: exit=0

@@ -1,0 +1,68 @@
+....FFFF.......                                                          [100%]
+=================================== FAILURES ===================================
+__________ test_rc16_incomplete_second_position_leg_must_refuse[D181] __________
+
+did = 'D181'
+
+    @pytest.mark.parametrize("did", tuple(GREEKS))
+    def test_rc16_incomplete_second_position_leg_must_refuse(did: str) -> None:
+        owner, req = _public(did, missing_on_second_leg=GREEKS[did][0])
+>       assert owner.materialise(req) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D181', derived_occurrence_id='d181-89c25c8cf9183defb78621d6c01f30d10bf505...efs=(VersionRefV1(context_id='rc16-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(derived_signal_id='D181', derived_occurrence_id='d181-89c25c8cf9183defb78621d6c01f30d10bf505...efs=(VersionRefV1(context_id='rc16-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D181', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 10, 4,...id='rc16-unit', version=1), subject_instrument='NVDA', selection_identity=None)), predecessor_selection_policy_refs=()))
+E        +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7fb5c08fd460>.materialise
+
+tests/product/derived_signal/test_m01_f4_rc16_position_public.py:114: AssertionError
+__________ test_rc16_incomplete_second_position_leg_must_refuse[D182] __________
+
+did = 'D182'
+
+    @pytest.mark.parametrize("did", tuple(GREEKS))
+    def test_rc16_incomplete_second_position_leg_must_refuse(did: str) -> None:
+        owner, req = _public(did, missing_on_second_leg=GREEKS[did][0])
+>       assert owner.materialise(req) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D182', derived_occurrence_id='d182-801e14a058808dea67a3d7628b8b49bc0121f8...efs=(VersionRefV1(context_id='rc16-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(derived_signal_id='D182', derived_occurrence_id='d182-801e14a058808dea67a3d7628b8b49bc0121f8...efs=(VersionRefV1(context_id='rc16-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D182', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 10, 4,...id='rc16-unit', version=1), subject_instrument='NVDA', selection_identity=None)), predecessor_selection_policy_refs=()))
+E        +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7fb5c08fe030>.materialise
+
+tests/product/derived_signal/test_m01_f4_rc16_position_public.py:114: AssertionError
+__________ test_rc16_incomplete_second_position_leg_must_refuse[D183] __________
+
+did = 'D183'
+
+    @pytest.mark.parametrize("did", tuple(GREEKS))
+    def test_rc16_incomplete_second_position_leg_must_refuse(did: str) -> None:
+        owner, req = _public(did, missing_on_second_leg=GREEKS[did][0])
+>       assert owner.materialise(req) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D183', derived_occurrence_id='d183-a14682fc4f63ae56f53e7f545d5072e11f7216...efs=(VersionRefV1(context_id='rc16-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(derived_signal_id='D183', derived_occurrence_id='d183-a14682fc4f63ae56f53e7f545d5072e11f7216...efs=(VersionRefV1(context_id='rc16-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D183', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 10, 4,...id='rc16-unit', version=1), subject_instrument='NVDA', selection_identity=None)), predecessor_selection_policy_refs=()))
+E        +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7fb5c08fe3b0>.materialise
+
+tests/product/derived_signal/test_m01_f4_rc16_position_public.py:114: AssertionError
+__________ test_rc16_incomplete_second_position_leg_must_refuse[D184] __________
+
+did = 'D184'
+
+    @pytest.mark.parametrize("did", tuple(GREEKS))
+    def test_rc16_incomplete_second_position_leg_must_refuse(did: str) -> None:
+        owner, req = _public(did, missing_on_second_leg=GREEKS[did][0])
+>       assert owner.materialise(req) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D184', derived_occurrence_id='d184-1f34ab6c146a916c2513bd4670a46fb1a81d7b...efs=(VersionRefV1(context_id='rc16-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(derived_signal_id='D184', derived_occurrence_id='d184-1f34ab6c146a916c2513bd4670a46fb1a81d7b...efs=(VersionRefV1(context_id='rc16-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D184', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 10, 4,...id='rc16-unit', version=1), subject_instrument='NVDA', selection_identity=None)), predecessor_selection_policy_refs=()))
+E        +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7fb5c08fe5e0>.materialise
+
+tests/product/derived_signal/test_m01_f4_rc16_position_public.py:114: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/derived_signal/test_m01_f4_rc16_position_public.py::test_rc16_incomplete_second_position_leg_must_refuse[D181] - AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D181', derived_occurrence_id='d181-89c25c8cf9183defb78621d6c01f30d10bf505...efs=(VersionRefV1(context_id='rc16-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) is None
+ +  where DerivedSignalOccurrenceV1(derived_signal_id='D181', derived_occurrence_id='d181-89c25c8cf9183defb78621d6c01f30d10bf505...efs=(VersionRefV1(context_id='rc16-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D181', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 10, 4,...id='rc16-unit', version=1), subject_instrument='NVDA', selection_identity=None)), predecessor_selection_policy_refs=()))
+ +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7fb5c08fd460>.materialise
+FAILED tests/product/derived_signal/test_m01_f4_rc16_position_public.py::test_rc16_incomplete_second_position_leg_must_refuse[D182] - AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D182', derived_occurrence_id='d182-801e14a058808dea67a3d7628b8b49bc0121f8...efs=(VersionRefV1(context_id='rc16-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) is None
+ +  where DerivedSignalOccurrenceV1(derived_signal_id='D182', derived_occurrence_id='d182-801e14a058808dea67a3d7628b8b49bc0121f8...efs=(VersionRefV1(context_id='rc16-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D182', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 10, 4,...id='rc16-unit', version=1), subject_instrument='NVDA', selection_identity=None)), predecessor_selection_policy_refs=()))
+ +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7fb5c08fe030>.materialise
+FAILED tests/product/derived_signal/test_m01_f4_rc16_position_public.py::test_rc16_incomplete_second_position_leg_must_refuse[D183] - AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D183', derived_occurrence_id='d183-a14682fc4f63ae56f53e7f545d5072e11f7216...efs=(VersionRefV1(context_id='rc16-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) is None
+ +  where DerivedSignalOccurrenceV1(derived_signal_id='D183', derived_occurrence_id='d183-a14682fc4f63ae56f53e7f545d5072e11f7216...efs=(VersionRefV1(context_id='rc16-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D183', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 10, 4,...id='rc16-unit', version=1), subject_instrument='NVDA', selection_identity=None)), predecessor_selection_policy_refs=()))
+ +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7fb5c08fe3b0>.materialise
+FAILED tests/product/derived_signal/test_m01_f4_rc16_position_public.py::test_rc16_incomplete_second_position_leg_must_refuse[D184] - AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D184', derived_occurrence_id='d184-1f34ab6c146a916c2513bd4670a46fb1a81d7b...efs=(VersionRefV1(context_id='rc16-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) is None
+ +  where DerivedSignalOccurrenceV1(derived_signal_id='D184', derived_occurrence_id='d184-1f34ab6c146a916c2513bd4670a46fb1a81d7b...efs=(VersionRefV1(context_id='rc16-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D184', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 10, 4,...id='rc16-unit', version=1), subject_instrument='NVDA', selection_identity=None)), predecessor_selection_policy_refs=()))
+ +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7fb5c08fe5e0>.materialise
+4 failed, 11 passed in 0.08s

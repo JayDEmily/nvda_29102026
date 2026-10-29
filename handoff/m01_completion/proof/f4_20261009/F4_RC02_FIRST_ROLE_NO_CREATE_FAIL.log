@@ -1,0 +1,53 @@
+........................................................................ [  9%]
+........................................................................ [ 18%]
+........................................................................ [ 28%]
+........................................................................ [ 37%]
+........................................................................ [ 46%]
+........................................................................ [ 56%]
+........................................................................ [ 65%]
+........................................................................ [ 75%]
+........................................................................ [ 84%]
+........................................................................ [ 93%]
+........F.......................................                         [100%]
+=================================== FAILURES ===================================
+____________ test_same_m00_writer_with_different_schema_is_refused _____________
+
+>   ???
+
+/mnt/data/m01_f4_takeover/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r02_persistence_boundary_refinement.py:118: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <psycopg.Connection [BAD] at 0x7fd3d5a16210>
+query = Composed([SQL('CREATE SCHEMA IF NOT EXISTS '), Identifier('f4_m00_writer_probe'), SQL(' AUTHORIZATION '), Identifier('f4_m00')])
+params = None
+
+    def execute(
+        self,
+        query: Query,
+        params: Params | None = None,
+        *,
+        prepare: bool | None = None,
+        binary: bool = False,
+    ) -> Cursor[Row]:
+        """Execute a query and return a cursor to read its results."""
+        try:
+            cur = self.cursor()
+            if binary:
+                cur.format = BINARY
+    
+            if isinstance(query, Template):
+                if params is not None:
+                    raise TypeError(
+                        "'execute()' with string template query doesn't support parameters"
+                    )
+                return cur.execute(query, prepare=prepare)
+            else:
+                return cur.execute(query, params, prepare=prepare)
+        except e._NO_TRACEBACK as ex:
+>           raise ex.with_traceback(None)
+E           psycopg.errors.InsufficientPrivilege: permission denied for database postgres
+
+/opt/pyvenv/lib/python3.13/site-packages/psycopg/connection.py:300: InsufficientPrivilege
+=========================== short test summary info ============================
+FAILED tests/implementation/derived_signal/test_ds_t01_r02_persistence_boundary_refinement.py::test_same_m00_writer_with_different_schema_is_refused - psycopg.errors.InsufficientPrivilege: permission denied for database postgres
+1 failed, 767 passed in 11.55s

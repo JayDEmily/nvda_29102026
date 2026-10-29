@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_d135",
+  "generation": 2,
+  "brief_sha256": "9abfefacb6af1da85f8c22780d604edbe94bfb9e8a572aece3ecbd1856979840",
+  "binding_sha256": "10ab3a83bfcfa3ba56f1e574aa93fbe9be27acae9cef9ace4ad391306e8c875e",
+  "contract_sha256": "7138685a3369fdce02873d527ab387a3b09b1e1d4ed5bba85979ce79ea50aa99",
+  "implementation_target_id": "M02",
+  "adequacy_review_ref": "handoff/foundation_implementation/authority/D135_IMPLEMENTATION_BRIEF.md-section1-source-case-inspection",
+  "admission_authority_ref": "owner-chat/20261027/explicit-D135-top-one-and-D136-refusal",
+  "family_files": [
+    {
+      "path": "tests/product/market_measurement_d135/test_signal.py",
+      "sha256": "533450f767b388cd16037b07b111664d3e16299b823cd25ec1c8a2bd68d0bf74"
+    }
+  ],
+  "support_files": [],
+  "previous_generation": {
+    "path": "config/product_proof/market_measurement_d135/generations/0001.json",
+    "sha256": "63656d0e779ce2ce7e5b51238df767a82c7f09d1c2617a8aaa5a0e63eaf5dee0"
+  }
+}

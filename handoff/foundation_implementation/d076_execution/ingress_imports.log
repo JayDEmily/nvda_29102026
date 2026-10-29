@@ -1,0 +1,3 @@
+D076 exact owner ingress validated; scope: ['nvda_desk/market_measurement_truth/_relative_market_return.py', 'nvda_desk/market_measurement_truth/_window.py']
+()
+Zero scoped import/dependency violations. Unchanged graph/infrastructure evidence reused.

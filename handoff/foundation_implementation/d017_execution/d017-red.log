@@ -1,0 +1,171 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/83dd7c79f14f/NVDA_V2_CLEAN_RECOVERED_REPO_20261022
+configfile: pyproject.toml
+collected 2 items
+
+tests/product/market_measurement_d017/test_session_vwap.py FF            [100%]
+
+=================================== FAILURES ===================================
+________________________ test_d017_session_vwap[False] _________________________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-5/test_d017_session_vwap_False_0')
+missing_size = False
+
+    @pytest.mark.parametrize("missing_size", [False, True])
+    def test_d017_session_vwap(tmp_path, missing_size):
+        raw = r.create_owner()
+        for identity, age, price, size, sequence in (
+            ("outside", -20, "100", "100", 1),
+            ("trade-a", 10, "6", "2", 2),
+            ("trade-b", 20, "4", "3", 3),
+        ):
+            event = START + timedelta(seconds=age)
+            include_size = not (missing_size and identity == "trade-b")
+            fields = {"price": Decimal(price)}
+            if include_size:
+                fields["size"] = Decimal(size)
+            raw.commands.admit_raw_observation_occurrence(
+                r.RawObservationOccurrenceV1(
+                    concept_id=r.concept_id("raw_signal.raw_observation_occurrence"),
+                    contract_id=r.contract_id("nvda.raw_signal.RawObservationOccurrence.v1"),
+                    observation_occurrence_id=r.observation_occurrence_id(identity),
+                    delivery_artifact_ref=r.delivery_artifact_ref("d017-controlled-delivery"),
+                    source_provider=r.provider_id("foundation-pilot-fixture"),
+                    native_record={"trade": fields},
+                    received_ts_utc=event,
+                    ingestion_sequence=sequence,
+                    ingestion_sequence_scope=r.ingestion_sequence_scope(
+                        "foundation-pilot-fixture/cash_quote_v1"
+                    ),
+                    source_temporal_kind="true_instant",
+                    raw_signal_catalogue_ids=tuple(
+                        r.RawSignalCatalogueId(x)
+                        for x in (("R120", "R121") if include_size else ("R120",))
+                    ),
+                    source_variant="cash_quote_v1",
+                    subject_instrument="NVDA",
+                    native_units=None,
+                    source_timestamp_raw=event.isoformat().replace("+00:00", "Z"),
+                    source_timezone_native="UTC",
+                )
+            )
+        # The decoy is actually present in both histories; exclusion must be by session.
+        for rid in ("R120", "R121"):
+            page = raw.reads.list_projected_raw_history(
+                r.RawSignalCatalogueId(rid),
+                mappings=(_mapping(rid),),
+                subject_instrument="NVDA",
+                received_at_or_before_utc=CUTOFF,
+                event_at_or_before_utc=ASOF,
+                limit=100,
+                cursor=None,
+            )
+            assert "outside" in {x.observation_occurrence_id.value for x in page.items}
+            assert page.next_cursor is None
+        second_price = raw.reads.project_raw_value(
+            r.RawSignalCatalogueId("R120"),
+            r.observation_occurrence_id("trade-b"),
+            mappings=(_mapping("R120"),),
+        )
+        second_size = raw.reads.project_raw_value(
+            r.RawSignalCatalogueId("R121"),
+            r.observation_occurrence_id("trade-b"),
+            mappings=(_mapping("R121"),),
+        )
+        assert second_price is not None and second_price.native_value == Decimal("4")
+        assert (second_size is None) == missing_size
+>       assert f.ExactRatioV1 in get_args(get_type_hints(f.WindowMeasurementOccurrenceV1)["result"]), (
+            "admitted exact window result capability is absent"
+        )
+E       AssertionError: admitted exact window result capability is absent
+E       assert <class 'nvda_desk.market_measurement_truth.api.ExactRatioV1'> in ()
+E        +  where <class 'nvda_desk.market_measurement_truth.api.ExactRatioV1'> = f.ExactRatioV1
+E        +  and   () = get_args(<class 'decimal.Decimal'>)
+
+tests/product/market_measurement_d017/test_session_vwap.py:106: AssertionError
+_________________________ test_d017_session_vwap[True] _________________________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-5/test_d017_session_vwap_True_0')
+missing_size = True
+
+    @pytest.mark.parametrize("missing_size", [False, True])
+    def test_d017_session_vwap(tmp_path, missing_size):
+        raw = r.create_owner()
+        for identity, age, price, size, sequence in (
+            ("outside", -20, "100", "100", 1),
+            ("trade-a", 10, "6", "2", 2),
+            ("trade-b", 20, "4", "3", 3),
+        ):
+            event = START + timedelta(seconds=age)
+            include_size = not (missing_size and identity == "trade-b")
+            fields = {"price": Decimal(price)}
+            if include_size:
+                fields["size"] = Decimal(size)
+            raw.commands.admit_raw_observation_occurrence(
+                r.RawObservationOccurrenceV1(
+                    concept_id=r.concept_id("raw_signal.raw_observation_occurrence"),
+                    contract_id=r.contract_id("nvda.raw_signal.RawObservationOccurrence.v1"),
+                    observation_occurrence_id=r.observation_occurrence_id(identity),
+                    delivery_artifact_ref=r.delivery_artifact_ref("d017-controlled-delivery"),
+                    source_provider=r.provider_id("foundation-pilot-fixture"),
+                    native_record={"trade": fields},
+                    received_ts_utc=event,
+                    ingestion_sequence=sequence,
+                    ingestion_sequence_scope=r.ingestion_sequence_scope(
+                        "foundation-pilot-fixture/cash_quote_v1"
+                    ),
+                    source_temporal_kind="true_instant",
+                    raw_signal_catalogue_ids=tuple(
+                        r.RawSignalCatalogueId(x)
+                        for x in (("R120", "R121") if include_size else ("R120",))
+                    ),
+                    source_variant="cash_quote_v1",
+                    subject_instrument="NVDA",
+                    native_units=None,
+                    source_timestamp_raw=event.isoformat().replace("+00:00", "Z"),
+                    source_timezone_native="UTC",
+                )
+            )
+        # The decoy is actually present in both histories; exclusion must be by session.
+        for rid in ("R120", "R121"):
+            page = raw.reads.list_projected_raw_history(
+                r.RawSignalCatalogueId(rid),
+                mappings=(_mapping(rid),),
+                subject_instrument="NVDA",
+                received_at_or_before_utc=CUTOFF,
+                event_at_or_before_utc=ASOF,
+                limit=100,
+                cursor=None,
+            )
+            assert "outside" in {x.observation_occurrence_id.value for x in page.items}
+            assert page.next_cursor is None
+        second_price = raw.reads.project_raw_value(
+            r.RawSignalCatalogueId("R120"),
+            r.observation_occurrence_id("trade-b"),
+            mappings=(_mapping("R120"),),
+        )
+        second_size = raw.reads.project_raw_value(
+            r.RawSignalCatalogueId("R121"),
+            r.observation_occurrence_id("trade-b"),
+            mappings=(_mapping("R121"),),
+        )
+        assert second_price is not None and second_price.native_value == Decimal("4")
+        assert (second_size is None) == missing_size
+>       assert f.ExactRatioV1 in get_args(get_type_hints(f.WindowMeasurementOccurrenceV1)["result"]), (
+            "admitted exact window result capability is absent"
+        )
+E       AssertionError: admitted exact window result capability is absent
+E       assert <class 'nvda_desk.market_measurement_truth.api.ExactRatioV1'> in ()
+E        +  where <class 'nvda_desk.market_measurement_truth.api.ExactRatioV1'> = f.ExactRatioV1
+E        +  and   () = get_args(<class 'decimal.Decimal'>)
+
+tests/product/market_measurement_d017/test_session_vwap.py:106: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/market_measurement_d017/test_session_vwap.py::test_d017_session_vwap[False]
+FAILED tests/product/market_measurement_d017/test_session_vwap.py::test_d017_session_vwap[True]
+============================== 2 failed in 0.09s ===============================
+product-proof aggregate: neutral_market_measurement_truth_d017 state=READY_FOR_PROOF
+authority=b3e7b29f882d4f8ae698c8450d92ada08b3625c2effa29359f59fd50f5a3cf28 generation=bd98484715df37fdb423497097557903f9a9391997625962c16d6b3928546613
+candidate=2b5b3aef1c217d6b7d243cf4524d65885f01b097
+observed aggregate outcome: exit=1

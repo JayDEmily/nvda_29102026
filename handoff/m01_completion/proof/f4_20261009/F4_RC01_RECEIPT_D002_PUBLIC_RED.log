@@ -1,0 +1,15 @@
+.....F.......                                                            [100%]
+=================================== FAILURES ===================================
+___ test_rc01_public_receipt_only_d002_age_without_fabricating_d001_instant ____
+
+    def test_rc01_public_receipt_only_d002_age_without_fabricating_d001_instant() -> None:
+        owner, bindings = public_temporal(source_kind="receipt_only")
+        assert owner.materialise(request("D001", bindings)) is None
+        age = owner.materialise(request("D002", bindings))
+>       assert age is not None
+E       assert None is not None
+
+tests/product/derived_signal/test_m01_f4_temporal_public.py:141: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/derived_signal/test_m01_f4_temporal_public.py::test_rc01_public_receipt_only_d002_age_without_fabricating_d001_instant - assert None is not None
+1 failed, 12 passed in 0.11s

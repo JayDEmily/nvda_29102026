@@ -1,0 +1,6 @@
+PASS: control validity only; this is not executed product proof
+claim: neutral_market_measurement_truth_d014 profile=accepted_brief_v2 state=READY_FOR_PROOF
+target: M02 status=active
+authority_sha256: c23ea315c94b478c568f105e94891a03af62393792a1478c33027a0371738bb8
+generation_sha256: f531b7216a3ce1e468015b40d6d3ca01742b56eb09587e49a972d41f33a47b23
+declared physical families: 1

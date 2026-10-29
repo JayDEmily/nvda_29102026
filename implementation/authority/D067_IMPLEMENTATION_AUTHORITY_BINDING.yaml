@@ -1,0 +1,10 @@
+schema_version: "1.0"
+brief_sha256: 41261784bfdcc5c4e94fa8f49d5b14b6dd0e01b60b1e122dd6c1240c78056a2f
+acceptance:
+  status: ACCEPTED_FOR_IMPLEMENTATION
+  authority_ref: owner-chat/20261024/D057-D076-accepted-plan-and-resolved-sequencing
+targets:
+  - action: modify
+    object_id: M02
+  - action: modify
+    object_id: G01

@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_d036",
+  "generation": 2,
+  "brief_sha256": "242dcd92d68784f9cd6f131e68f27bc120416a9749ad091653df9dd8f5bc5b94",
+  "binding_sha256": "436e2a4c57609fe5c760c2f1678007d05a2e931accfffb3ce2eb5800ed51517b",
+  "contract_sha256": "8a63f92f3c1e42a97a7e3abf3da188930d08aefc483f6e089c36f780fad20339",
+  "implementation_target_id": "M02",
+  "adequacy_review_ref": "handoff/foundation_implementation/authority/D036_IMPLEMENTATION_BRIEF.md-section2-worker-inspection-under-standing-delegation",
+  "admission_authority_ref": "owner-chat/20261023/D026-D036-execution-and-per-signal-checkpoints;standing-delegation",
+  "family_files": [
+    {
+      "path": "tests/product/market_measurement_d036/test_ten_day_realised_volatility.py",
+      "sha256": "b6b77664632fe8d47e14692639f4a81f737a7fbbd6adea7bd28062ccbf13fcd8"
+    }
+  ],
+  "support_files": [],
+  "previous_generation": {
+    "path": "config/product_proof/market_measurement_d036/generations/0001.json",
+    "sha256": "df9ff104bc1d0bb0fe2f2bcb6967b7d20fa15f0629cba177c1dddaae4fe9a826"
+  }
+}

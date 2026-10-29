@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "acceptance": {
+      "additionalProperties": false,
+      "properties": {
+        "authority_ref": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@#-]{0,255}$"
+        },
+        "status": {
+          "const": "ACCEPTED_FOR_IMPLEMENTATION"
+        }
+      },
+      "required": [
+        "status",
+        "authority_ref"
+      ],
+      "type": "object"
+    },
+    "brief_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "targets": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "enum": [
+              "create",
+              "modify"
+            ],
+            "type": "string"
+          },
+          "category": {
+            "pattern": "^[MPGAKS]$",
+            "type": "string"
+          },
+          "name": {
+            "pattern": "^[a-z][a-z0-9_]*$",
+            "type": "string"
+          },
+          "object_id": {
+            "pattern": "^[MPGAKS](?:0[0-9]|[1-9][0-9]+)$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "action"
+        ],
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "action": {
+                  "const": "create"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "category",
+                "name"
+              ],
+              "allOf": [
+                {
+                  "not": {
+                    "required": [
+                      "object_id"
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "action": {
+                  "const": "modify"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "object_id"
+              ],
+              "allOf": [
+                {
+                  "not": {
+                    "required": [
+                      "category"
+                    ]
+                  }
+                },
+                {
+                  "not": {
+                    "required": [
+                      "name"
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    }
+  },
+  "required": [
+    "schema_version",
+    "brief_sha256",
+    "acceptance",
+    "targets"
+  ],
+  "type": "object"
+}

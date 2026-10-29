@@ -1,0 +1,14 @@
+﻿Class_Code,Proposed_Calculation_Class,Definition,Exclusion
+C01,TEMPORAL_AND_DATA_INTEGRITY,"Derive timestamp, calendar/session, completeness, vintage or provenance-quality facts","Not directional market behaviour, candidate policy or weighted composite score"
+C02,MARKET_DETERMINISTIC_TRANSFORM,"Arithmetic, return, ratio, delta bucket, trade-flow or book-operation reduction of market signal values","No fitted distribution, predictive inference, candidate economics or decision policy"
+C03,DESCRIPTIVE_STATISTICAL_ESTIMATE,"Historical volatility, rank, z-score, historical regression, dependence, dispersion or empirical event-rate statistic",Not forward-looking scenario or fitted risk-neutral/physical probability distribution
+C04,MODEL_BASED_MARKET_INFERENCE,"Fitted IV surface, inferred probability, dealer exposure, latent scenario or conditional probabilistic regime",Not a simple observed signal transformation or historical descriptive estimator
+C05,CONFIGURED_COMPOSITE_SCORE,Multifeature weighted/parameterised scalar score reflecting state or suitability with nontrivial aggregation weights,Not an externally decided permissible limit/action or a raw arithmetic proxy
+C06,STRUCTURED_STATE_ASSEMBLY,Construct a validated typed multi-signal state vector without treating it as a scalar arithmetic result,Not a fitted probability model or configured trade decision
+C07,CANDIDATE_ECONOMIC_MEASUREMENT,"Prospective execution cost, candidate structure exposure, payoff, expected P&L or stress value","Not permissible risk limits, sizing selection, execution command or actual live holdings"
+C08,LIVE_PORTFOLIO_ECONOMIC_MEASUREMENT,"Current portfolio risk Greeks, current P&L, position continuation/modification or liquidation value","Not pre-trade candidate valuation, prescribed hedge/action, or realised fill measurement"
+C09,POLICY_AND_DECISION_RULE,"Output is a rule-governed gating, risk budget, size, order-price, exposure selection, hedge or other policy classification","Not merely measuring market facts, economic amounts, or a score used by a separate decision"
+C10,EXECUTION_OUTCOME_MEASUREMENT,"Measure completed order fill, completion or realised execution cost",Not forecast cost or a trading order decision
+C11,PNL_PATH_ATTRIBUTION,Attribute realised/marked P&L over an observed path to the defined risk component or residual,"Not live aggregate P&L fields, prospective P&L or forecast scoring"
+C12,RETROSPECTIVE_MODEL_DECISION_EVALUATION,"Evaluate locked forecasts, signal value, decision quality, counterfactuals, or model drift on evidence/outcomes","Not current market assessment, prospective strategy utility or order selection"
+C13,OPERATIONAL_RECALCULATION_SCHEDULING,Schedule the next observation/derived recalculation event,Not a trade execution action or current market feature

@@ -1,0 +1,6 @@
+- id: {{identifier}}
+  name: {{name}}
+  status: placeholder
+  description: {{description}}
+  predecessors: []
+  successors: []

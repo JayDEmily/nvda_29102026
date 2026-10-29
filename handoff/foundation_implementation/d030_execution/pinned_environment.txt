@@ -1,0 +1,2 @@
+Python3.12.14; SQLite3.53.1; pytest9.0.3; mypy1.20.1; Ruff0.15.11; PyYAML6.0.3.
+Installed once from committed vendor/wheels using requirements-cp312-dev.lock with --no-index --require-hashes. Environment command inspected each actual version. No provider/network or old tests run.

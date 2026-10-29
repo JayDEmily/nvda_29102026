@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/mnt/data/NVDA_V2_G01_WORKSPACE/repository/tools/check_public_seams.py", line 4, in <module>
+    from nvda_desk.architecture.dependencies import analyse_repository
+ModuleNotFoundError: No module named 'nvda_desk'

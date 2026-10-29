@@ -1,0 +1,54 @@
+{
+  "id": "D005",
+  "definition": "D005-ORDERED-SESSION-PHASE-1",
+  "kernel": "K01_TIME",
+  "provider": "foundation-controlled-temporal",
+  "variant": "clock_v1",
+  "subject": "NVDA",
+  "sample_id": "controlled-temporal-sample/1",
+  "as_of": "2026-10-09T14:00:00Z",
+  "cutoff": "2026-10-09T14:00:00Z",
+  "actual_predecessor": "D003-IANA-LOCAL-1",
+  "local_instant": "2026-10-10T00:59:50+11:00",
+  "raw": {
+    "R023": {
+      "mapping": "mmt-d004-r023",
+      "native": "overnight/1",
+      "role": "session_identity"
+    },
+    "R024": {
+      "mapping": "mmt-d004-r024",
+      "native": "controlled-overnight/1",
+      "role": "calendar_identity"
+    }
+  },
+  "calendar_policy": "controlled-overnight/1 complete Friday00\u2013Sunday00 coverage with Saturday overnight/day open and other intervals explicitly closed",
+  "phase_policy_success": {
+    "ref": "controlled-phases/1",
+    "intervals": [
+      [
+        "2026-10-10T00:00:00+11:00",
+        "2026-10-10T06:00:00+11:00",
+        "overnight"
+      ],
+      [
+        "2026-10-10T06:00:00+11:00",
+        "2026-10-10T16:00:00+11:00",
+        "day"
+      ]
+    ]
+  },
+  "phase_policy_refusal": {
+    "ref": "controlled-phases/2",
+    "intervals": [
+      [
+        "2026-10-10T06:00:00+11:00",
+        "2026-10-10T16:00:00+11:00",
+        "day"
+      ]
+    ],
+    "effect": "valid nonoverlapping schedule with no phase for 00:59:50"
+  },
+  "success": "overnight",
+  "refusal": "no phase/result/history; R023/R024 and actual D003 remain unchanged"
+}

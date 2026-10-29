@@ -1,0 +1,15 @@
+Command: /workspace/scratch/d549b6d808a9/g52-dev/bin/python -m ruff check tools/product_proof_claims.py tests/architecture/test_proof_control.py
+E501 Line too long (106 > 100)
+   --> tools/product_proof_claims.py:426:101
+    |
+424 |         "claim_id": f"neutral_market_measurement_truth_{name}",
+425 |         "brief_path": prefix + "IMPLEMENTATION_BRIEF_PROPOSED.md",
+426 |         "binding_path": f"implementation/authority/G6_1_{identity}_IMPLEMENTATION_AUTHORITY_BINDING.yaml",
+    |                                                                                                     ^^^^^^
+427 |         "contract_path": prefix + "PROOF_CONTRACT_PROPOSED.json",
+428 |         "physical_root": f"tests/product/market_measurement_{name}",
+    |
+
+Found 1 error.
+
+Exit: 1

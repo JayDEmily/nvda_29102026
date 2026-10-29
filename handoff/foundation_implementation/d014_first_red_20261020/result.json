@@ -1,0 +1,21 @@
+{
+  "candidate": "6543a5761861504745a1b13f9f1237aa2820bfbb",
+  "tree": "c18e8f63f1a9210e0c791e78929924f7bbd8d0d0",
+  "argv": [
+    "/tmp/nvda-g61-runtime-GBILkakx/dev/bin/python",
+    "tools/run_product_proof_gate.py",
+    "--aggregate",
+    "neutral_market_measurement_truth_d014"
+  ],
+  "cwd": "/workspace/scratch/d549b6d808a9/resume-20261020-ejayrse7/repository",
+  "generation_sha256": "f531b7216a3ce1e468015b40d6d3ca01742b56eb09587e49a972d41f33a47b23",
+  "completed": true,
+  "exit": 1,
+  "log_sha256": "741551ffd56befd00ca82b1728580db69bfa4caf737494d1b48e853de3ccb73e",
+  "guard_failures": 202,
+  "actual_collection_202": true,
+  "actual_failed_202": true,
+  "actual_strict_1": true,
+  "unchanged_head": true,
+  "clean_after": true
+}

@@ -1,0 +1,182 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.0.3, pluggy-1.7.0
+rootdir: /mnt/data/nvda_d029_state
+configfile: pyproject.toml
+collected 2 items
+
+tests/product/market_measurement_d033/test_thirty_minute_realised_volatility.py F [ 50%]
+F                                                                        [100%]
+
+=================================== FAILURES ===================================
+______________ test_d033_thirty_minute_realised_volatility[False] ______________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-7/test_d033_thirty_minute_realis0')
+refused = False
+
+    @pytest.mark.parametrize("refused",[False,True])
+    def test_d033_thirty_minute_realised_volatility(tmp_path,refused):
+        raw=r.create_owner()
+        missing=(tuple(range(25)))
+        for i,event in enumerate(SAMPLES):
+            if refused and i in missing:
+                continue
+            _admit(raw,"sample-"+str(i),event,"110" if i==len(SAMPLES)-1 else "100",i+1)
+        if refused and K == 32:
+            _admit(raw,"off-grid",datetime(2026,10,20,12,37,30,tzinfo=UTC),"999",999)
+        if refused and K == 34:
+            late=datetime(2026,10,20,13,1,tzinfo=UTC)
+            _admit(raw,"after-close",late,"110",999)
+            assert any(x.observation_occurrence_id.value == "after-close" for x in _page(raw,CUTOFF,late))
+        if refused and K == 35:
+            _admit(raw,"older",datetime(2026,10,14,13,tzinfo=UTC),"100",999)
+        projected=_page(raw,CUTOFF,T)
+        assert len(projected)==len(SAMPLES)-len(missing if refused else ()) + int(refused and K in (32,35))
+        admission=f.OwnerAdmissionV1("M02",BRIEF)
+        path=str(tmp_path/"m02.sqlite")
+        try:
+>           owner=f.create_window_owner(admission=admission,raw_projection_reader=raw.reads,
+                      storage=f.SQLiteStorageV1(path,True),utc_now=lambda:NOW)
+
+tests/product/market_measurement_d033/test_thirty_minute_realised_volatility.py:103: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/nvda_desk/market_measurement_truth/api.py:892: in create_window_owner
+    return build_owner(admission, raw_projection_reader, predecessor_reader, storage, utc_now)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/nvda_desk/market_measurement_truth/_window.py:504: in build_owner
+    _admission(admission)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+admission = OwnerAdmissionV1(object_id='M02', implementation_brief_sha256='1e5dbfd27a61e9bea69e850c2913d60026366465fff2b264d5678becc3dfd183')
+
+    def _admission(admission: f.OwnerAdmissionV1) -> None:
+        if type(admission) is not f.OwnerAdmissionV1:
+            raise TypeError("exact owner admission required")
+        if admission != f.OwnerAdmissionV1("M02", BRIEF):
+>           raise ValueError("exact D016 admission required")
+E           ValueError: exact D016 admission required
+
+src/nvda_desk/market_measurement_truth/_window.py:70: ValueError
+
+During handling of the above exception, another exception occurred:
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-7/test_d033_thirty_minute_realis0')
+refused = False
+
+    @pytest.mark.parametrize("refused",[False,True])
+    def test_d033_thirty_minute_realised_volatility(tmp_path,refused):
+        raw=r.create_owner()
+        missing=(tuple(range(25)))
+        for i,event in enumerate(SAMPLES):
+            if refused and i in missing:
+                continue
+            _admit(raw,"sample-"+str(i),event,"110" if i==len(SAMPLES)-1 else "100",i+1)
+        if refused and K == 32:
+            _admit(raw,"off-grid",datetime(2026,10,20,12,37,30,tzinfo=UTC),"999",999)
+        if refused and K == 34:
+            late=datetime(2026,10,20,13,1,tzinfo=UTC)
+            _admit(raw,"after-close",late,"110",999)
+            assert any(x.observation_occurrence_id.value == "after-close" for x in _page(raw,CUTOFF,late))
+        if refused and K == 35:
+            _admit(raw,"older",datetime(2026,10,14,13,tzinfo=UTC),"100",999)
+        projected=_page(raw,CUTOFF,T)
+        assert len(projected)==len(SAMPLES)-len(missing if refused else ()) + int(refused and K in (32,35))
+        admission=f.OwnerAdmissionV1("M02",BRIEF)
+        path=str(tmp_path/"m02.sqlite")
+        try:
+            owner=f.create_window_owner(admission=admission,raw_projection_reader=raw.reads,
+                      storage=f.SQLiteStorageV1(path,True),utc_now=lambda:NOW)
+        except ValueError as exc:
+>           pytest.fail(f"admitted {D} unsupported after lawful public R151 setup: {exc}")
+E           Failed: admitted D033 unsupported after lawful public R151 setup: exact D016 admission required
+
+tests/product/market_measurement_d033/test_thirty_minute_realised_volatility.py:106: Failed
+______________ test_d033_thirty_minute_realised_volatility[True] _______________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-7/test_d033_thirty_minute_realis1')
+refused = True
+
+    @pytest.mark.parametrize("refused",[False,True])
+    def test_d033_thirty_minute_realised_volatility(tmp_path,refused):
+        raw=r.create_owner()
+        missing=(tuple(range(25)))
+        for i,event in enumerate(SAMPLES):
+            if refused and i in missing:
+                continue
+            _admit(raw,"sample-"+str(i),event,"110" if i==len(SAMPLES)-1 else "100",i+1)
+        if refused and K == 32:
+            _admit(raw,"off-grid",datetime(2026,10,20,12,37,30,tzinfo=UTC),"999",999)
+        if refused and K == 34:
+            late=datetime(2026,10,20,13,1,tzinfo=UTC)
+            _admit(raw,"after-close",late,"110",999)
+            assert any(x.observation_occurrence_id.value == "after-close" for x in _page(raw,CUTOFF,late))
+        if refused and K == 35:
+            _admit(raw,"older",datetime(2026,10,14,13,tzinfo=UTC),"100",999)
+        projected=_page(raw,CUTOFF,T)
+        assert len(projected)==len(SAMPLES)-len(missing if refused else ()) + int(refused and K in (32,35))
+        admission=f.OwnerAdmissionV1("M02",BRIEF)
+        path=str(tmp_path/"m02.sqlite")
+        try:
+>           owner=f.create_window_owner(admission=admission,raw_projection_reader=raw.reads,
+                      storage=f.SQLiteStorageV1(path,True),utc_now=lambda:NOW)
+
+tests/product/market_measurement_d033/test_thirty_minute_realised_volatility.py:103: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/nvda_desk/market_measurement_truth/api.py:892: in create_window_owner
+    return build_owner(admission, raw_projection_reader, predecessor_reader, storage, utc_now)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/nvda_desk/market_measurement_truth/_window.py:504: in build_owner
+    _admission(admission)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+admission = OwnerAdmissionV1(object_id='M02', implementation_brief_sha256='1e5dbfd27a61e9bea69e850c2913d60026366465fff2b264d5678becc3dfd183')
+
+    def _admission(admission: f.OwnerAdmissionV1) -> None:
+        if type(admission) is not f.OwnerAdmissionV1:
+            raise TypeError("exact owner admission required")
+        if admission != f.OwnerAdmissionV1("M02", BRIEF):
+>           raise ValueError("exact D016 admission required")
+E           ValueError: exact D016 admission required
+
+src/nvda_desk/market_measurement_truth/_window.py:70: ValueError
+
+During handling of the above exception, another exception occurred:
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-7/test_d033_thirty_minute_realis1')
+refused = True
+
+    @pytest.mark.parametrize("refused",[False,True])
+    def test_d033_thirty_minute_realised_volatility(tmp_path,refused):
+        raw=r.create_owner()
+        missing=(tuple(range(25)))
+        for i,event in enumerate(SAMPLES):
+            if refused and i in missing:
+                continue
+            _admit(raw,"sample-"+str(i),event,"110" if i==len(SAMPLES)-1 else "100",i+1)
+        if refused and K == 32:
+            _admit(raw,"off-grid",datetime(2026,10,20,12,37,30,tzinfo=UTC),"999",999)
+        if refused and K == 34:
+            late=datetime(2026,10,20,13,1,tzinfo=UTC)
+            _admit(raw,"after-close",late,"110",999)
+            assert any(x.observation_occurrence_id.value == "after-close" for x in _page(raw,CUTOFF,late))
+        if refused and K == 35:
+            _admit(raw,"older",datetime(2026,10,14,13,tzinfo=UTC),"100",999)
+        projected=_page(raw,CUTOFF,T)
+        assert len(projected)==len(SAMPLES)-len(missing if refused else ()) + int(refused and K in (32,35))
+        admission=f.OwnerAdmissionV1("M02",BRIEF)
+        path=str(tmp_path/"m02.sqlite")
+        try:
+            owner=f.create_window_owner(admission=admission,raw_projection_reader=raw.reads,
+                      storage=f.SQLiteStorageV1(path,True),utc_now=lambda:NOW)
+        except ValueError as exc:
+>           pytest.fail(f"admitted {D} unsupported after lawful public R151 setup: {exc}")
+E           Failed: admitted D033 unsupported after lawful public R151 setup: exact D016 admission required
+
+tests/product/market_measurement_d033/test_thirty_minute_realised_volatility.py:106: Failed
+=========================== short test summary info ============================
+FAILED tests/product/market_measurement_d033/test_thirty_minute_realised_volatility.py::test_d033_thirty_minute_realised_volatility[False] - Failed: admitted D033 unsupported after lawful public R151 setup: exact D016 admission required
+FAILED tests/product/market_measurement_d033/test_thirty_minute_realised_volatility.py::test_d033_thirty_minute_realised_volatility[True] - Failed: admitted D033 unsupported after lawful public R151 setup: exact D016 admission required
+============================== 2 failed in 0.14s ===============================
+product-proof aggregate: neutral_market_measurement_truth_d033 state=READY_FOR_PROOF
+authority=1e5dbfd27a61e9bea69e850c2913d60026366465fff2b264d5678becc3dfd183 generation=0ab93ef9084f30f0a7b71ff1727051625c92777345c97d6b5bc4a551cb15db64
+candidate=eca704328a2478a01126ca70547e1d3abe18783a
+observed aggregate outcome: exit=1

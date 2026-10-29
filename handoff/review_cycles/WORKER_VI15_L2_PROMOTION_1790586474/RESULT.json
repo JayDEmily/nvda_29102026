@@ -1,0 +1,15 @@
+{
+  "review_cycle": "WORKER_VI15_L2_PROMOTION_1790586474",
+  "actor": "WORKER",
+  "leaf": "VI-15-L2-PROMOTION",
+  "status": "COMPLETE_PROMOTED",
+  "accepted_candidate": "332c1f95da032f841e8779ef21fe3c1fceb698a2",
+  "candidate_tree": "3abec93134d128978ad6bcedbd0dfa6cf4334ec6",
+  "tester_pass_commit": "eed5c5f6fa9eeda02886ed8fda0d6205177823e5",
+  "pre_promotion_main": "3b1671dc0c15e5ab9023bd20362c432b1fd7a05a",
+  "promotion_integration_identity": "eed5c5f6fa9eeda02886ed8fda0d6205177823e5",
+  "wheel_sha256": "d311960234c932c2507f7b1671c8d53bff3ec234692e65ca27b440293e37e127",
+  "sdist_sha256": "135e47f6ab531e8e650a2ee1adc9582965e1c81d97d08dfdc854757a790629fa",
+  "substantive_post_candidate_drift": false,
+  "next_leaf": "VI-16-L1"
+}

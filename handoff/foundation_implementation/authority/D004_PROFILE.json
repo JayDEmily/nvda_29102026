@@ -1,0 +1,73 @@
+{
+  "id": "D004",
+  "definition": "D004-OVERNIGHT-TRADING-DATE-1",
+  "kernel": "K01_TIME",
+  "provider": "foundation-controlled-temporal",
+  "variant": "clock_v1",
+  "subject": "NVDA",
+  "sample_id": "controlled-temporal-sample/1",
+  "as_of": "2026-10-09T14:00:00Z",
+  "cutoff": "2026-10-09T14:00:00Z",
+  "actual_predecessor": "D003-IANA-LOCAL-1",
+  "local_instant": "2026-10-10T00:59:50+11:00",
+  "raw": {
+    "R023": {
+      "mapping": "mmt-d004-r023",
+      "path": [
+        "calendar",
+        "session"
+      ],
+      "native": "overnight/1",
+      "units": "session_identity"
+    },
+    "R024": {
+      "mapping": "mmt-d004-r024",
+      "path": [
+        "calendar",
+        "identity"
+      ],
+      "native": "controlled-overnight/1 in success; controlled-overnight/2 in refusal",
+      "units": "calendar_identity"
+    }
+  },
+  "calendar": {
+    "iana": "Australia/Melbourne",
+    "coverage": [
+      "2026-10-09T00:00:00+11:00",
+      "2026-10-11T00:00:00+11:00"
+    ],
+    "success_version": 1,
+    "refusal_version": 2,
+    "intervals_success": [
+      [
+        "2026-10-09T00:00:00+11:00",
+        "2026-10-09T16:00:00+11:00",
+        "closed",
+        null
+      ],
+      [
+        "2026-10-09T16:00:00+11:00",
+        "2026-10-10T06:00:00+11:00",
+        "overnight/1",
+        "2026-10-09"
+      ],
+      [
+        "2026-10-10T06:00:00+11:00",
+        "2026-10-10T16:00:00+11:00",
+        "day/1",
+        "2026-10-10"
+      ],
+      [
+        "2026-10-10T16:00:00+11:00",
+        "2026-10-11T00:00:00+11:00",
+        "closed",
+        null
+      ]
+    ],
+    "intervals_refusal": "same ordered complete intervals except overnight/1 replaced by explicitly closed interval, no applicable session",
+    "boundary": "half-open, no gaps or overlaps",
+    "Saturday": "open for day and overnight under this synthetic policy"
+  },
+  "success_date": "2026-10-09",
+  "refusal": "R024 projects controlled-overnight/2 corresponding to version2 complete schedule with overnight explicitly closed; R023 and actual D003 unchanged; no result/history"
+}

@@ -1,0 +1,14 @@
+D134 independent final semantic review — candidate a8734c0e6eaf779b3337a6a7a9d18c0324494460
+Disposition: ACCEPT controlled D134 implementation/proof under active EXEC_PLAN.md §§2.2,3,5; native SMART provider certification remains unadmitted.
+
+Primary authority reviewed: full GUARDRAILS.md, AGENTS.md, tests/AGENTS.override.md, complete root plan, effective calculation brief K02/source/history and corrected catalogue D134, foundation brief and F33 documentary packet, D134 profile/contract/brief/binding, product code, two-case public proof and immutable claim/admission/generation. D134 semantic Git lineage has documentary 9e1b324 then clean candidate a8734c0, with no prior D134 reviewer failure or repair. Repository worktree clean at review.
+
+The success separately admits four native M00 occurrences, each projecting the mandatory four roles. Per-role projected native type is int for R185/R187/R188 and Decimal for R190, with exact versioned mapping, source/subject/generation/event ID, event timestamp, receipt/ingestion order and selection lineage. Complete two-side positional warm-up produces bid rows sizes5,3 and ask rows sizes2,4. The request fixes depth_levels2 and the owner sums only final standing bid sizes: 8 shares. The typed occurrence retains all sixteen projected fields and four standing rows, with definition/parameter/selection/units/as-of/cutoff and ordinary SQLite read-only reopen. No R189 price is injected into D134's four-field dependency.
+
+The refusal uses the same complete warm-up then separately admits a fifth public native occurrence for a selected update. Its R185, R188 and R190 are individually projected and the native R187 operation is absent. The book replay refuses that partial group; no D134 occurrence/history is present on read-only reopen. The fixture admits one native event per explicit call and the proof asserts the projected role set before materialisation, so its composition does not hide the missing operation. Insert, update, delete, positional shift and reset branches are also bounded in source by the declared enum, although this pair does not independently execute each branch. Synthetic completeness/enum mapping does not establish live feed truth.
+
+Sole strict aggregate command: PYTHONPATH=src NVDA_PROOF_PYTHON=/workspace/scratch/17246e12ecdd/nvda-runtime/bin/python /workspace/scratch/17246e12ecdd/nvda-runtime/bin/python tools/run_product_proof_gate.py --aggregate neutral_market_measurement_truth_d134
+Full output: /workspace/scratch/17246e12ecdd/d134-strict-original.log
+Observed exit0, Python3.12.14, exactly two collected/two passed, no skips, READY_FOR_PROOF, candidate a8734c0. No additional product run, affected historical regression, native probe or duplicate GREEN.
+
+D135–D145 require separate owner review and proof. Verify, save and expose cumulative accepted-state full-history checkpoint before D135.

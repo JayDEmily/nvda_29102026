@@ -1,0 +1,14 @@
+{
+  "argv": [
+    "/tmp/nvda-g61-runtime-GBILkakx/dev/bin/python",
+    "/tmp/nvda-d014-review-babm9GDf/invoke.py",
+    "path",
+    "tools/validate_implementation_authority.py",
+    "--binding",
+    "implementation/authority/G6_1_D014_IMPLEMENTATION_AUTHORITY_BINDING.yaml",
+    "--brief",
+    "handoff/foundation_implementation/authority/G6_1_D014_IMPLEMENTATION_BRIEF_PROPOSED.md"
+  ],
+  "cwd": "/tmp/nvda-d014-review-babm9GDf/candidate",
+  "invoke_sha256": "b5310f21ec59c799deb8cbe318209a3931188d097821ff97b4535073917ba588"
+}

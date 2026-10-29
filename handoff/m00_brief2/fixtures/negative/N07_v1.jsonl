@@ -1,0 +1,1 @@
+{"base_scenario":"A4","case_id":"N07","event_index":0,"expected":"EXACT_NATIVE_NOT_STANDING_STATE","mutation_events":[{"operation":0,"position":0,"size":"5"},{"operation":1,"position":0,"size":"0"},{"operation":2,"position":0,"size":"0"}]}

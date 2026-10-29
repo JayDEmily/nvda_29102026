@@ -1,0 +1,543 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/83dd7c79f14f/NVDA_V2_CLEAN_RECOVERED_REPO_20261022
+configfile: pyproject.toml
+collected 6 items
+
+tests/product/market_measurement_d015/test_trade_direction.py FFFFFF     [100%]
+
+=================================== FAILURES ===================================
+_________________ test_d015_trade_direction[above-101-None-1] __________________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-6/test_d015_trade_direction_abov0')
+mode = 'above', price = '101', prior = None, expected = 1
+
+    @pytest.mark.parametrize(
+        "mode,price,prior,expected",
+        [
+            ("above", "101", None, 1),
+            ("below", "99", None, -1),
+            ("tick_up", "100", "98", 1),
+            ("tick_down", "100", "102", -1),
+            ("unknown", "100", None, 0),
+            ("post_trade_only", "101", None, None),
+        ],
+    )
+    def test_d015_trade_direction(tmp_path, mode, price, prior, expected):
+        literals = _old_literals()
+        trade_time = literals.ASOF
+        cutoff = trade_time + timedelta(seconds=10)
+        clock = [cutoff + timedelta(seconds=1)]
+        raw = raw_api.create_owner()
+        late = mode == "post_trade_only"
+        bid_at = trade_time + timedelta(seconds=5) if late else trade_time - timedelta(seconds=2)
+        ask_at = trade_time + timedelta(seconds=5) if late else trade_time - timedelta(seconds=1)
+        bid_received = trade_time + timedelta(seconds=5) if late else trade_time - timedelta(seconds=1)
+        ask_received = trade_time + timedelta(seconds=5) if late else trade_time
+        # Unchanged public D011 records and configuration: no aliasing or new D011 map.
+        for side, value, event, receipt in (
+            ("bid", "99", bid_at, bid_received),
+            ("ask", "101", ask_at, ask_received),
+        ):
+            raw.commands.admit_raw_observation_occurrence(
+                literals.observation(side, value=Decimal(value), event=event, receipt=receipt)
+            )
+        config = literals.configuration(f, raw.reads, now=lambda: clock[0])
+        config["admission"] = f.OwnerAdmissionV1("M02", PREDECESSOR)
+        midpoint_owner = f.create_owner(**config)
+        midpoint_request = replace(
+            literals.request(f),
+            as_of_utc=trade_time + timedelta(seconds=5) if late else trade_time,
+            knowledge_cutoff_utc=cutoff,
+        )
+        midpoint = midpoint_owner.materialise(midpoint_request)
+        assert midpoint is not None and midpoint.result == Decimal("100")
+        assert tuple(x.raw_signal_id for x in midpoint.raw_input_lineage) == ("R034", "R035")
+        # These are separate controlled correspondence records, not native equivalence.
+        for rid, value, identity, at, received, seq in (
+            ("R120", price, "trade-current", trade_time, trade_time, 3),
+            ("R126", "99", "trade-quote-bid", bid_at, bid_received, 4),
+            ("R127", "101", "trade-quote-ask", ask_at, ask_received, 5),
+        ):
+            raw.commands.admit_raw_observation_occurrence(
+                _observation(rid, value, identity, at, received, seq)
+            )
+        if prior is not None:
+            # Beyond current-trade freshness: the admitted complete prior-price scan
+            # must not lose the last different price behind the immediately equal row.
+            for value, identity, age, seq in (
+                (prior, "trade-prior-different", 120, 6),
+                ("100", "trade-prior-equal", 1, 7),
+            ):
+                at = trade_time - timedelta(seconds=age)
+                raw.commands.admit_raw_observation_occurrence(
+                    _observation("R120", value, identity, at, at, seq)
+                )
+        if mode == "above":
+            at = trade_time + timedelta(seconds=5)
+            for rid, value, seq in (("R126", "199", 8), ("R127", "201", 9)):
+                raw.commands.admit_raw_observation_occurrence(
+                    _observation(rid, value, "post-trade-" + rid, at, at, seq)
+                )
+        current = raw.reads.project_raw_value(
+            raw_api.RawSignalCatalogueId("R120"),
+            raw_api.observation_occurrence_id("trade-current"),
+            mappings=(_mapping("R120"),),
+        )
+        assert current is not None and current.native_value.as_tuple() == Decimal(price).as_tuple()
+        # Missing new behaviour is the intended assertion after actual dependencies.
+>       assert hasattr(f, "create_trade_direction_owner"), (
+            "admitted additive D015 trade-direction seam is absent"
+        )
+E       AssertionError: admitted additive D015 trade-direction seam is absent
+E       assert False
+E        +  where False = hasattr(f, 'create_trade_direction_owner')
+
+tests/product/market_measurement_d015/test_trade_direction.py:144: AssertionError
+_________________ test_d015_trade_direction[below-99-None--1] __________________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-6/test_d015_trade_direction_belo0')
+mode = 'below', price = '99', prior = None, expected = -1
+
+    @pytest.mark.parametrize(
+        "mode,price,prior,expected",
+        [
+            ("above", "101", None, 1),
+            ("below", "99", None, -1),
+            ("tick_up", "100", "98", 1),
+            ("tick_down", "100", "102", -1),
+            ("unknown", "100", None, 0),
+            ("post_trade_only", "101", None, None),
+        ],
+    )
+    def test_d015_trade_direction(tmp_path, mode, price, prior, expected):
+        literals = _old_literals()
+        trade_time = literals.ASOF
+        cutoff = trade_time + timedelta(seconds=10)
+        clock = [cutoff + timedelta(seconds=1)]
+        raw = raw_api.create_owner()
+        late = mode == "post_trade_only"
+        bid_at = trade_time + timedelta(seconds=5) if late else trade_time - timedelta(seconds=2)
+        ask_at = trade_time + timedelta(seconds=5) if late else trade_time - timedelta(seconds=1)
+        bid_received = trade_time + timedelta(seconds=5) if late else trade_time - timedelta(seconds=1)
+        ask_received = trade_time + timedelta(seconds=5) if late else trade_time
+        # Unchanged public D011 records and configuration: no aliasing or new D011 map.
+        for side, value, event, receipt in (
+            ("bid", "99", bid_at, bid_received),
+            ("ask", "101", ask_at, ask_received),
+        ):
+            raw.commands.admit_raw_observation_occurrence(
+                literals.observation(side, value=Decimal(value), event=event, receipt=receipt)
+            )
+        config = literals.configuration(f, raw.reads, now=lambda: clock[0])
+        config["admission"] = f.OwnerAdmissionV1("M02", PREDECESSOR)
+        midpoint_owner = f.create_owner(**config)
+        midpoint_request = replace(
+            literals.request(f),
+            as_of_utc=trade_time + timedelta(seconds=5) if late else trade_time,
+            knowledge_cutoff_utc=cutoff,
+        )
+        midpoint = midpoint_owner.materialise(midpoint_request)
+        assert midpoint is not None and midpoint.result == Decimal("100")
+        assert tuple(x.raw_signal_id for x in midpoint.raw_input_lineage) == ("R034", "R035")
+        # These are separate controlled correspondence records, not native equivalence.
+        for rid, value, identity, at, received, seq in (
+            ("R120", price, "trade-current", trade_time, trade_time, 3),
+            ("R126", "99", "trade-quote-bid", bid_at, bid_received, 4),
+            ("R127", "101", "trade-quote-ask", ask_at, ask_received, 5),
+        ):
+            raw.commands.admit_raw_observation_occurrence(
+                _observation(rid, value, identity, at, received, seq)
+            )
+        if prior is not None:
+            # Beyond current-trade freshness: the admitted complete prior-price scan
+            # must not lose the last different price behind the immediately equal row.
+            for value, identity, age, seq in (
+                (prior, "trade-prior-different", 120, 6),
+                ("100", "trade-prior-equal", 1, 7),
+            ):
+                at = trade_time - timedelta(seconds=age)
+                raw.commands.admit_raw_observation_occurrence(
+                    _observation("R120", value, identity, at, at, seq)
+                )
+        if mode == "above":
+            at = trade_time + timedelta(seconds=5)
+            for rid, value, seq in (("R126", "199", 8), ("R127", "201", 9)):
+                raw.commands.admit_raw_observation_occurrence(
+                    _observation(rid, value, "post-trade-" + rid, at, at, seq)
+                )
+        current = raw.reads.project_raw_value(
+            raw_api.RawSignalCatalogueId("R120"),
+            raw_api.observation_occurrence_id("trade-current"),
+            mappings=(_mapping("R120"),),
+        )
+        assert current is not None and current.native_value.as_tuple() == Decimal(price).as_tuple()
+        # Missing new behaviour is the intended assertion after actual dependencies.
+>       assert hasattr(f, "create_trade_direction_owner"), (
+            "admitted additive D015 trade-direction seam is absent"
+        )
+E       AssertionError: admitted additive D015 trade-direction seam is absent
+E       assert False
+E        +  where False = hasattr(f, 'create_trade_direction_owner')
+
+tests/product/market_measurement_d015/test_trade_direction.py:144: AssertionError
+_________________ test_d015_trade_direction[tick_up-100-98-1] __________________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-6/test_d015_trade_direction_tick0')
+mode = 'tick_up', price = '100', prior = '98', expected = 1
+
+    @pytest.mark.parametrize(
+        "mode,price,prior,expected",
+        [
+            ("above", "101", None, 1),
+            ("below", "99", None, -1),
+            ("tick_up", "100", "98", 1),
+            ("tick_down", "100", "102", -1),
+            ("unknown", "100", None, 0),
+            ("post_trade_only", "101", None, None),
+        ],
+    )
+    def test_d015_trade_direction(tmp_path, mode, price, prior, expected):
+        literals = _old_literals()
+        trade_time = literals.ASOF
+        cutoff = trade_time + timedelta(seconds=10)
+        clock = [cutoff + timedelta(seconds=1)]
+        raw = raw_api.create_owner()
+        late = mode == "post_trade_only"
+        bid_at = trade_time + timedelta(seconds=5) if late else trade_time - timedelta(seconds=2)
+        ask_at = trade_time + timedelta(seconds=5) if late else trade_time - timedelta(seconds=1)
+        bid_received = trade_time + timedelta(seconds=5) if late else trade_time - timedelta(seconds=1)
+        ask_received = trade_time + timedelta(seconds=5) if late else trade_time
+        # Unchanged public D011 records and configuration: no aliasing or new D011 map.
+        for side, value, event, receipt in (
+            ("bid", "99", bid_at, bid_received),
+            ("ask", "101", ask_at, ask_received),
+        ):
+            raw.commands.admit_raw_observation_occurrence(
+                literals.observation(side, value=Decimal(value), event=event, receipt=receipt)
+            )
+        config = literals.configuration(f, raw.reads, now=lambda: clock[0])
+        config["admission"] = f.OwnerAdmissionV1("M02", PREDECESSOR)
+        midpoint_owner = f.create_owner(**config)
+        midpoint_request = replace(
+            literals.request(f),
+            as_of_utc=trade_time + timedelta(seconds=5) if late else trade_time,
+            knowledge_cutoff_utc=cutoff,
+        )
+        midpoint = midpoint_owner.materialise(midpoint_request)
+        assert midpoint is not None and midpoint.result == Decimal("100")
+        assert tuple(x.raw_signal_id for x in midpoint.raw_input_lineage) == ("R034", "R035")
+        # These are separate controlled correspondence records, not native equivalence.
+        for rid, value, identity, at, received, seq in (
+            ("R120", price, "trade-current", trade_time, trade_time, 3),
+            ("R126", "99", "trade-quote-bid", bid_at, bid_received, 4),
+            ("R127", "101", "trade-quote-ask", ask_at, ask_received, 5),
+        ):
+            raw.commands.admit_raw_observation_occurrence(
+                _observation(rid, value, identity, at, received, seq)
+            )
+        if prior is not None:
+            # Beyond current-trade freshness: the admitted complete prior-price scan
+            # must not lose the last different price behind the immediately equal row.
+            for value, identity, age, seq in (
+                (prior, "trade-prior-different", 120, 6),
+                ("100", "trade-prior-equal", 1, 7),
+            ):
+                at = trade_time - timedelta(seconds=age)
+                raw.commands.admit_raw_observation_occurrence(
+                    _observation("R120", value, identity, at, at, seq)
+                )
+        if mode == "above":
+            at = trade_time + timedelta(seconds=5)
+            for rid, value, seq in (("R126", "199", 8), ("R127", "201", 9)):
+                raw.commands.admit_raw_observation_occurrence(
+                    _observation(rid, value, "post-trade-" + rid, at, at, seq)
+                )
+        current = raw.reads.project_raw_value(
+            raw_api.RawSignalCatalogueId("R120"),
+            raw_api.observation_occurrence_id("trade-current"),
+            mappings=(_mapping("R120"),),
+        )
+        assert current is not None and current.native_value.as_tuple() == Decimal(price).as_tuple()
+        # Missing new behaviour is the intended assertion after actual dependencies.
+>       assert hasattr(f, "create_trade_direction_owner"), (
+            "admitted additive D015 trade-direction seam is absent"
+        )
+E       AssertionError: admitted additive D015 trade-direction seam is absent
+E       assert False
+E        +  where False = hasattr(f, 'create_trade_direction_owner')
+
+tests/product/market_measurement_d015/test_trade_direction.py:144: AssertionError
+_______________ test_d015_trade_direction[tick_down-100-102--1] ________________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-6/test_d015_trade_direction_tick1')
+mode = 'tick_down', price = '100', prior = '102', expected = -1
+
+    @pytest.mark.parametrize(
+        "mode,price,prior,expected",
+        [
+            ("above", "101", None, 1),
+            ("below", "99", None, -1),
+            ("tick_up", "100", "98", 1),
+            ("tick_down", "100", "102", -1),
+            ("unknown", "100", None, 0),
+            ("post_trade_only", "101", None, None),
+        ],
+    )
+    def test_d015_trade_direction(tmp_path, mode, price, prior, expected):
+        literals = _old_literals()
+        trade_time = literals.ASOF
+        cutoff = trade_time + timedelta(seconds=10)
+        clock = [cutoff + timedelta(seconds=1)]
+        raw = raw_api.create_owner()
+        late = mode == "post_trade_only"
+        bid_at = trade_time + timedelta(seconds=5) if late else trade_time - timedelta(seconds=2)
+        ask_at = trade_time + timedelta(seconds=5) if late else trade_time - timedelta(seconds=1)
+        bid_received = trade_time + timedelta(seconds=5) if late else trade_time - timedelta(seconds=1)
+        ask_received = trade_time + timedelta(seconds=5) if late else trade_time
+        # Unchanged public D011 records and configuration: no aliasing or new D011 map.
+        for side, value, event, receipt in (
+            ("bid", "99", bid_at, bid_received),
+            ("ask", "101", ask_at, ask_received),
+        ):
+            raw.commands.admit_raw_observation_occurrence(
+                literals.observation(side, value=Decimal(value), event=event, receipt=receipt)
+            )
+        config = literals.configuration(f, raw.reads, now=lambda: clock[0])
+        config["admission"] = f.OwnerAdmissionV1("M02", PREDECESSOR)
+        midpoint_owner = f.create_owner(**config)
+        midpoint_request = replace(
+            literals.request(f),
+            as_of_utc=trade_time + timedelta(seconds=5) if late else trade_time,
+            knowledge_cutoff_utc=cutoff,
+        )
+        midpoint = midpoint_owner.materialise(midpoint_request)
+        assert midpoint is not None and midpoint.result == Decimal("100")
+        assert tuple(x.raw_signal_id for x in midpoint.raw_input_lineage) == ("R034", "R035")
+        # These are separate controlled correspondence records, not native equivalence.
+        for rid, value, identity, at, received, seq in (
+            ("R120", price, "trade-current", trade_time, trade_time, 3),
+            ("R126", "99", "trade-quote-bid", bid_at, bid_received, 4),
+            ("R127", "101", "trade-quote-ask", ask_at, ask_received, 5),
+        ):
+            raw.commands.admit_raw_observation_occurrence(
+                _observation(rid, value, identity, at, received, seq)
+            )
+        if prior is not None:
+            # Beyond current-trade freshness: the admitted complete prior-price scan
+            # must not lose the last different price behind the immediately equal row.
+            for value, identity, age, seq in (
+                (prior, "trade-prior-different", 120, 6),
+                ("100", "trade-prior-equal", 1, 7),
+            ):
+                at = trade_time - timedelta(seconds=age)
+                raw.commands.admit_raw_observation_occurrence(
+                    _observation("R120", value, identity, at, at, seq)
+                )
+        if mode == "above":
+            at = trade_time + timedelta(seconds=5)
+            for rid, value, seq in (("R126", "199", 8), ("R127", "201", 9)):
+                raw.commands.admit_raw_observation_occurrence(
+                    _observation(rid, value, "post-trade-" + rid, at, at, seq)
+                )
+        current = raw.reads.project_raw_value(
+            raw_api.RawSignalCatalogueId("R120"),
+            raw_api.observation_occurrence_id("trade-current"),
+            mappings=(_mapping("R120"),),
+        )
+        assert current is not None and current.native_value.as_tuple() == Decimal(price).as_tuple()
+        # Missing new behaviour is the intended assertion after actual dependencies.
+>       assert hasattr(f, "create_trade_direction_owner"), (
+            "admitted additive D015 trade-direction seam is absent"
+        )
+E       AssertionError: admitted additive D015 trade-direction seam is absent
+E       assert False
+E        +  where False = hasattr(f, 'create_trade_direction_owner')
+
+tests/product/market_measurement_d015/test_trade_direction.py:144: AssertionError
+________________ test_d015_trade_direction[unknown-100-None-0] _________________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-6/test_d015_trade_direction_unkn0')
+mode = 'unknown', price = '100', prior = None, expected = 0
+
+    @pytest.mark.parametrize(
+        "mode,price,prior,expected",
+        [
+            ("above", "101", None, 1),
+            ("below", "99", None, -1),
+            ("tick_up", "100", "98", 1),
+            ("tick_down", "100", "102", -1),
+            ("unknown", "100", None, 0),
+            ("post_trade_only", "101", None, None),
+        ],
+    )
+    def test_d015_trade_direction(tmp_path, mode, price, prior, expected):
+        literals = _old_literals()
+        trade_time = literals.ASOF
+        cutoff = trade_time + timedelta(seconds=10)
+        clock = [cutoff + timedelta(seconds=1)]
+        raw = raw_api.create_owner()
+        late = mode == "post_trade_only"
+        bid_at = trade_time + timedelta(seconds=5) if late else trade_time - timedelta(seconds=2)
+        ask_at = trade_time + timedelta(seconds=5) if late else trade_time - timedelta(seconds=1)
+        bid_received = trade_time + timedelta(seconds=5) if late else trade_time - timedelta(seconds=1)
+        ask_received = trade_time + timedelta(seconds=5) if late else trade_time
+        # Unchanged public D011 records and configuration: no aliasing or new D011 map.
+        for side, value, event, receipt in (
+            ("bid", "99", bid_at, bid_received),
+            ("ask", "101", ask_at, ask_received),
+        ):
+            raw.commands.admit_raw_observation_occurrence(
+                literals.observation(side, value=Decimal(value), event=event, receipt=receipt)
+            )
+        config = literals.configuration(f, raw.reads, now=lambda: clock[0])
+        config["admission"] = f.OwnerAdmissionV1("M02", PREDECESSOR)
+        midpoint_owner = f.create_owner(**config)
+        midpoint_request = replace(
+            literals.request(f),
+            as_of_utc=trade_time + timedelta(seconds=5) if late else trade_time,
+            knowledge_cutoff_utc=cutoff,
+        )
+        midpoint = midpoint_owner.materialise(midpoint_request)
+        assert midpoint is not None and midpoint.result == Decimal("100")
+        assert tuple(x.raw_signal_id for x in midpoint.raw_input_lineage) == ("R034", "R035")
+        # These are separate controlled correspondence records, not native equivalence.
+        for rid, value, identity, at, received, seq in (
+            ("R120", price, "trade-current", trade_time, trade_time, 3),
+            ("R126", "99", "trade-quote-bid", bid_at, bid_received, 4),
+            ("R127", "101", "trade-quote-ask", ask_at, ask_received, 5),
+        ):
+            raw.commands.admit_raw_observation_occurrence(
+                _observation(rid, value, identity, at, received, seq)
+            )
+        if prior is not None:
+            # Beyond current-trade freshness: the admitted complete prior-price scan
+            # must not lose the last different price behind the immediately equal row.
+            for value, identity, age, seq in (
+                (prior, "trade-prior-different", 120, 6),
+                ("100", "trade-prior-equal", 1, 7),
+            ):
+                at = trade_time - timedelta(seconds=age)
+                raw.commands.admit_raw_observation_occurrence(
+                    _observation("R120", value, identity, at, at, seq)
+                )
+        if mode == "above":
+            at = trade_time + timedelta(seconds=5)
+            for rid, value, seq in (("R126", "199", 8), ("R127", "201", 9)):
+                raw.commands.admit_raw_observation_occurrence(
+                    _observation(rid, value, "post-trade-" + rid, at, at, seq)
+                )
+        current = raw.reads.project_raw_value(
+            raw_api.RawSignalCatalogueId("R120"),
+            raw_api.observation_occurrence_id("trade-current"),
+            mappings=(_mapping("R120"),),
+        )
+        assert current is not None and current.native_value.as_tuple() == Decimal(price).as_tuple()
+        # Missing new behaviour is the intended assertion after actual dependencies.
+>       assert hasattr(f, "create_trade_direction_owner"), (
+            "admitted additive D015 trade-direction seam is absent"
+        )
+E       AssertionError: admitted additive D015 trade-direction seam is absent
+E       assert False
+E        +  where False = hasattr(f, 'create_trade_direction_owner')
+
+tests/product/market_measurement_d015/test_trade_direction.py:144: AssertionError
+___________ test_d015_trade_direction[post_trade_only-101-None-None] ___________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-6/test_d015_trade_direction_post0')
+mode = 'post_trade_only', price = '101', prior = None, expected = None
+
+    @pytest.mark.parametrize(
+        "mode,price,prior,expected",
+        [
+            ("above", "101", None, 1),
+            ("below", "99", None, -1),
+            ("tick_up", "100", "98", 1),
+            ("tick_down", "100", "102", -1),
+            ("unknown", "100", None, 0),
+            ("post_trade_only", "101", None, None),
+        ],
+    )
+    def test_d015_trade_direction(tmp_path, mode, price, prior, expected):
+        literals = _old_literals()
+        trade_time = literals.ASOF
+        cutoff = trade_time + timedelta(seconds=10)
+        clock = [cutoff + timedelta(seconds=1)]
+        raw = raw_api.create_owner()
+        late = mode == "post_trade_only"
+        bid_at = trade_time + timedelta(seconds=5) if late else trade_time - timedelta(seconds=2)
+        ask_at = trade_time + timedelta(seconds=5) if late else trade_time - timedelta(seconds=1)
+        bid_received = trade_time + timedelta(seconds=5) if late else trade_time - timedelta(seconds=1)
+        ask_received = trade_time + timedelta(seconds=5) if late else trade_time
+        # Unchanged public D011 records and configuration: no aliasing or new D011 map.
+        for side, value, event, receipt in (
+            ("bid", "99", bid_at, bid_received),
+            ("ask", "101", ask_at, ask_received),
+        ):
+            raw.commands.admit_raw_observation_occurrence(
+                literals.observation(side, value=Decimal(value), event=event, receipt=receipt)
+            )
+        config = literals.configuration(f, raw.reads, now=lambda: clock[0])
+        config["admission"] = f.OwnerAdmissionV1("M02", PREDECESSOR)
+        midpoint_owner = f.create_owner(**config)
+        midpoint_request = replace(
+            literals.request(f),
+            as_of_utc=trade_time + timedelta(seconds=5) if late else trade_time,
+            knowledge_cutoff_utc=cutoff,
+        )
+        midpoint = midpoint_owner.materialise(midpoint_request)
+        assert midpoint is not None and midpoint.result == Decimal("100")
+        assert tuple(x.raw_signal_id for x in midpoint.raw_input_lineage) == ("R034", "R035")
+        # These are separate controlled correspondence records, not native equivalence.
+        for rid, value, identity, at, received, seq in (
+            ("R120", price, "trade-current", trade_time, trade_time, 3),
+            ("R126", "99", "trade-quote-bid", bid_at, bid_received, 4),
+            ("R127", "101", "trade-quote-ask", ask_at, ask_received, 5),
+        ):
+            raw.commands.admit_raw_observation_occurrence(
+                _observation(rid, value, identity, at, received, seq)
+            )
+        if prior is not None:
+            # Beyond current-trade freshness: the admitted complete prior-price scan
+            # must not lose the last different price behind the immediately equal row.
+            for value, identity, age, seq in (
+                (prior, "trade-prior-different", 120, 6),
+                ("100", "trade-prior-equal", 1, 7),
+            ):
+                at = trade_time - timedelta(seconds=age)
+                raw.commands.admit_raw_observation_occurrence(
+                    _observation("R120", value, identity, at, at, seq)
+                )
+        if mode == "above":
+            at = trade_time + timedelta(seconds=5)
+            for rid, value, seq in (("R126", "199", 8), ("R127", "201", 9)):
+                raw.commands.admit_raw_observation_occurrence(
+                    _observation(rid, value, "post-trade-" + rid, at, at, seq)
+                )
+        current = raw.reads.project_raw_value(
+            raw_api.RawSignalCatalogueId("R120"),
+            raw_api.observation_occurrence_id("trade-current"),
+            mappings=(_mapping("R120"),),
+        )
+        assert current is not None and current.native_value.as_tuple() == Decimal(price).as_tuple()
+        # Missing new behaviour is the intended assertion after actual dependencies.
+>       assert hasattr(f, "create_trade_direction_owner"), (
+            "admitted additive D015 trade-direction seam is absent"
+        )
+E       AssertionError: admitted additive D015 trade-direction seam is absent
+E       assert False
+E        +  where False = hasattr(f, 'create_trade_direction_owner')
+
+tests/product/market_measurement_d015/test_trade_direction.py:144: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/market_measurement_d015/test_trade_direction.py::test_d015_trade_direction[above-101-None-1]
+FAILED tests/product/market_measurement_d015/test_trade_direction.py::test_d015_trade_direction[below-99-None--1]
+FAILED tests/product/market_measurement_d015/test_trade_direction.py::test_d015_trade_direction[tick_up-100-98-1]
+FAILED tests/product/market_measurement_d015/test_trade_direction.py::test_d015_trade_direction[tick_down-100-102--1]
+FAILED tests/product/market_measurement_d015/test_trade_direction.py::test_d015_trade_direction[unknown-100-None-0]
+FAILED tests/product/market_measurement_d015/test_trade_direction.py::test_d015_trade_direction[post_trade_only-101-None-None]
+============================== 6 failed in 0.12s ===============================
+product-proof aggregate: neutral_market_measurement_truth_d015 state=READY_FOR_PROOF
+authority=84baa16665db5f8543eba3b1770dafcfb36cc5e8064b2f1837beb924713acb0d generation=d495a09f834349b7817a28911a58afa372b635ed0d1d211efd4fc8a4f822e543
+candidate=7b141bd71cc0f2a948df35e50b0ca1fb2963ffe3
+observed aggregate outcome: exit=1

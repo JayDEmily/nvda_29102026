@@ -1,0 +1,118 @@
+FFFFFF                                                                   [100%]
+=================================== FAILURES ===================================
+_ test_public_live_greek_retains_actual_position_sources_and_declared_units[D181] _
+
+identity = 'D181'
+
+    @pytest.mark.parametrize("identity", tuple(GREEKS))
+    def test_public_live_greek_retains_actual_position_sources_and_declared_units(identity):
+        owner, request = _public(identity)
+        occurrence = owner.materialise(request)
+        assert occurrence is not None
+        projected = owner._occurrence_kernel_value(occurrence)
+        metadata = dict(projected.metadata)
+>       assert metadata.get("position_source_refs") is not None
+E       AssertionError: assert None is not None
+E        +  where None = <built-in method get of dict object at 0x7fb84b332280>('position_source_refs')
+E        +    where <built-in method get of dict object at 0x7fb84b332280> = {'convention_refs': (VersionRefV1(context_id='rc16-unit', version=1),), 'parameter_context_refs': (VersionRefV1(contex...nit_convention_id='rc16-unit', unit_convention_version=1, native_units='canonical', canonical_units='canonical')), ...}.get
+
+tests/product/derived_signal/test_m01_f4_approved_retained_provenance.py:21: AssertionError
+_ test_public_live_greek_retains_actual_position_sources_and_declared_units[D182] _
+
+identity = 'D182'
+
+    @pytest.mark.parametrize("identity", tuple(GREEKS))
+    def test_public_live_greek_retains_actual_position_sources_and_declared_units(identity):
+        owner, request = _public(identity)
+        occurrence = owner.materialise(request)
+        assert occurrence is not None
+        projected = owner._occurrence_kernel_value(occurrence)
+        metadata = dict(projected.metadata)
+>       assert metadata.get("position_source_refs") is not None
+E       AssertionError: assert None is not None
+E        +  where None = <built-in method get of dict object at 0x7fb84b319440>('position_source_refs')
+E        +    where <built-in method get of dict object at 0x7fb84b319440> = {'convention_refs': (VersionRefV1(context_id='rc16-unit', version=1),), 'parameter_context_refs': (VersionRefV1(contex...nit_convention_id='rc16-unit', unit_convention_version=1, native_units='canonical', canonical_units='canonical')), ...}.get
+
+tests/product/derived_signal/test_m01_f4_approved_retained_provenance.py:21: AssertionError
+_ test_public_live_greek_retains_actual_position_sources_and_declared_units[D183] _
+
+identity = 'D183'
+
+    @pytest.mark.parametrize("identity", tuple(GREEKS))
+    def test_public_live_greek_retains_actual_position_sources_and_declared_units(identity):
+        owner, request = _public(identity)
+        occurrence = owner.materialise(request)
+        assert occurrence is not None
+        projected = owner._occurrence_kernel_value(occurrence)
+        metadata = dict(projected.metadata)
+>       assert metadata.get("position_source_refs") is not None
+E       AssertionError: assert None is not None
+E        +  where None = <built-in method get of dict object at 0x7fb84b33c400>('position_source_refs')
+E        +    where <built-in method get of dict object at 0x7fb84b33c400> = {'convention_refs': (VersionRefV1(context_id='rc16-unit', version=1),), 'parameter_context_refs': (VersionRefV1(contex...nit_convention_id='rc16-unit', unit_convention_version=1, native_units='canonical', canonical_units='canonical')), ...}.get
+
+tests/product/derived_signal/test_m01_f4_approved_retained_provenance.py:21: AssertionError
+_ test_public_live_greek_retains_actual_position_sources_and_declared_units[D184] _
+
+identity = 'D184'
+
+    @pytest.mark.parametrize("identity", tuple(GREEKS))
+    def test_public_live_greek_retains_actual_position_sources_and_declared_units(identity):
+        owner, request = _public(identity)
+        occurrence = owner.materialise(request)
+        assert occurrence is not None
+        projected = owner._occurrence_kernel_value(occurrence)
+        metadata = dict(projected.metadata)
+>       assert metadata.get("position_source_refs") is not None
+E       AssertionError: assert None is not None
+E        +  where None = <built-in method get of dict object at 0x7fb84b1b3ec0>('position_source_refs')
+E        +    where <built-in method get of dict object at 0x7fb84b1b3ec0> = {'convention_refs': (VersionRefV1(context_id='rc16-unit', version=1),), 'parameter_context_refs': (VersionRefV1(contex...nit_convention_id='rc16-unit', unit_convention_version=1, native_units='canonical', canonical_units='canonical')), ...}.get
+
+tests/product/derived_signal/test_m01_f4_approved_retained_provenance.py:21: AssertionError
+_ test_persisted_domain_comes_from_exact_producer_parameter_reference[D190-utility_domain-net_currency] _
+
+identity = 'D190', key = 'utility_domain', value = 'net_currency'
+
+    @pytest.mark.parametrize("identity,key,value", [("D190", "utility_domain", "net_currency"),
+                                                  ("D191", "currency", "USD")])
+    def test_persisted_domain_comes_from_exact_producer_parameter_reference(identity, key, value):
+        producer = api.CalculationParameterSetV1("producer", 2, "P_BASIC", ((key, value),))
+        owner = api.create_owner(raw_projection_reader=raw.create_owner().reads,
+            parameter_sets=(producer,), utc_now=lambda: NOW)
+        occurrence = api.DerivedSignalOccurrenceV1(
+            identity, "occurrence", "definition", (api.VersionRefV1("producer", 2),),
+            "NVDA", None, NOW, None, NOW, NOW, D(4), "utility/currency", "scalar", (), (), ())
+        metadata = dict(owner._occurrence_kernel_value(occurrence).metadata)
+>       assert metadata.get(key) == value
+E       AssertionError: assert None == 'net_currency'
+E        +  where None = <built-in method get of dict object at 0x7fb84b31a000>('utility_domain')
+E        +    where <built-in method get of dict object at 0x7fb84b31a000> = {'convention_refs': (), 'parameter_context_refs': (VersionRefV1(context_id='producer', version=2),), 'predecessor_occurrence_ids': (), 'raw_input_lineage': (), ...}.get
+
+tests/product/derived_signal/test_m01_f4_approved_retained_provenance.py:40: AssertionError
+_ test_persisted_domain_comes_from_exact_producer_parameter_reference[D191-currency-USD] _
+
+identity = 'D191', key = 'currency', value = 'USD'
+
+    @pytest.mark.parametrize("identity,key,value", [("D190", "utility_domain", "net_currency"),
+                                                  ("D191", "currency", "USD")])
+    def test_persisted_domain_comes_from_exact_producer_parameter_reference(identity, key, value):
+        producer = api.CalculationParameterSetV1("producer", 2, "P_BASIC", ((key, value),))
+        owner = api.create_owner(raw_projection_reader=raw.create_owner().reads,
+            parameter_sets=(producer,), utc_now=lambda: NOW)
+        occurrence = api.DerivedSignalOccurrenceV1(
+            identity, "occurrence", "definition", (api.VersionRefV1("producer", 2),),
+            "NVDA", None, NOW, None, NOW, NOW, D(4), "utility/currency", "scalar", (), (), ())
+        metadata = dict(owner._occurrence_kernel_value(occurrence).metadata)
+>       assert metadata.get(key) == value
+E       AssertionError: assert None == 'USD'
+E        +  where None = <built-in method get of dict object at 0x7fb84b1ac5c0>('currency')
+E        +    where <built-in method get of dict object at 0x7fb84b1ac5c0> = {'convention_refs': (), 'parameter_context_refs': (VersionRefV1(context_id='producer', version=2),), 'predecessor_occurrence_ids': (), 'raw_input_lineage': (), ...}.get
+
+tests/product/derived_signal/test_m01_f4_approved_retained_provenance.py:40: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/derived_signal/test_m01_f4_approved_retained_provenance.py::test_public_live_greek_retains_actual_position_sources_and_declared_units[D181]
+FAILED tests/product/derived_signal/test_m01_f4_approved_retained_provenance.py::test_public_live_greek_retains_actual_position_sources_and_declared_units[D182]
+FAILED tests/product/derived_signal/test_m01_f4_approved_retained_provenance.py::test_public_live_greek_retains_actual_position_sources_and_declared_units[D183]
+FAILED tests/product/derived_signal/test_m01_f4_approved_retained_provenance.py::test_public_live_greek_retains_actual_position_sources_and_declared_units[D184]
+FAILED tests/product/derived_signal/test_m01_f4_approved_retained_provenance.py::test_persisted_domain_comes_from_exact_producer_parameter_reference[D190-utility_domain-net_currency]
+FAILED tests/product/derived_signal/test_m01_f4_approved_retained_provenance.py::test_persisted_domain_comes_from_exact_producer_parameter_reference[D191-currency-USD]
+6 failed in 0.07s

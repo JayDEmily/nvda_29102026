@@ -1,0 +1,7 @@
+$ cd /tmp/d015-independent-control-3k3lpzs8/repo
+$ /workspace/scratch/83dd7c79f14f/d015-runtime-GUbvor/dev/bin/python -m mypy src tools/product_proof_claims.py tools/product_proof_outcomes.py tools/validate_product_proof.py tools/run_product_proof_gate.py
+src/nvda_desk/derived_signal_calculation_truth/_financial_policy.py:188: note: By default the bodies of untyped functions are not checked, consider using --check-untyped-defs  [annotation-unchecked]
+src/nvda_desk/derived_signal_calculation_truth/_financial_policy.py:201: note: By default the bodies of untyped functions are not checked, consider using --check-untyped-defs  [annotation-unchecked]
+Success: no issues found in 38 source files
+
+EXIT=0

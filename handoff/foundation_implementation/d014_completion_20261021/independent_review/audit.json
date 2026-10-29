@@ -1,0 +1,95 @@
+{
+  "candidate": "b0a61a7f960b1cff4f95605347db2773d1078c65",
+  "tree": "1b73d7dcfda91f79a11dfc064eee620eae88a6aa",
+  "clean": true,
+  "production_unchanged_since": "0d3600c",
+  "proof_authority_unchanged_since": "19c14ee",
+  "physical": {
+    "tests/product/market_measurement_d014/_support.py": "49c6149d1ff64e002154b275bc9c54793cf60623bb0c9878c0fd5539fbc058e6",
+    "tests/product/market_measurement_d014/test_raw_ratio.py": "7e26d16d59ac42ac456e631e2acb8a5bee204e937550d5667f6bc580ba99f836",
+    "tests/product/market_measurement_d014/typing/invalid_seam.py": "84b2806f0c8be162321c35f792f987550a3cf2ff428d37edd007042fcc699fc9",
+    "tests/product/market_measurement_d014/typing/valid_seam.py": "3d1e2ac2449fc13be7db8f0e26c2b505dee5e6810d591dd190d4044bf859dacc"
+  },
+  "logs": {
+    "scoped_ruff.stdout": {
+      "bytes": 19,
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    "scoped_ruff.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "native_d014.stdout": {
+      "bytes": 973,
+      "sha256": "71a05338b044fe51e3b48faf34b532c018ca1b79cb27a649c840815290420ab0"
+    },
+    "full_mypy.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "candidate.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "candidate.stdout": {
+      "bytes": 82,
+      "sha256": "f30ec562044cc63b96a597076bce3f736b83ac0105160632b9bf70790f0b0d68"
+    },
+    "full_mypy.stdout": {
+      "bytes": 442,
+      "sha256": "3b2e0aa58d181263c403615d42f62c3038c7cdd68eca49d7976f20dff63a5af5"
+    },
+    "python.stdout": {
+      "bytes": 61,
+      "sha256": "8e02cde82b00ba58a6d822655eae0de80fc0961a0f2ace70a7c5a859b6a92e5e"
+    },
+    "promotion.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "clean_after.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "mypy_harness_error.stderr": {
+      "bytes": 97,
+      "sha256": "e98cde11b988f20ab4e575155a4ea9d954b15b7622121d4d660406b5cbb299c5"
+    },
+    "python.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "mypy_harness_error.stdout": {
+      "bytes": 60,
+      "sha256": "dd1f4989475da497597afcaa5a825bf5979622498a6c5f2200bb6487eefe71f9"
+    },
+    "native_d014.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "clean_after.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "direct_reader.stdout": {
+      "bytes": 32273,
+      "sha256": "dfca7bc7701e35b49e08456a3fa884f92dae94eb6bb31efc71d3aa7f03662c79"
+    },
+    "direct_writer.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "promotion.stdout": {
+      "bytes": 2193,
+      "sha256": "6c3be23dc71222d2a4dbf9bf7b599476557c47af025de65739e61457c69b1d1c"
+    },
+    "direct_reader.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "direct_writer.stdout": {
+      "bytes": 27261,
+      "sha256": "ffe4131d46c09580a21424f7276b48baf7dabf422315eaa1bd437b9c00e93224"
+    }
+  }
+}

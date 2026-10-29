@@ -1,0 +1,16 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/d549b6d808a9/g51/repository
+configfile: pyproject.toml
+collected 30 items
+
+tests/product/raw_signal_sqlite/test_contract_native.py ...........      [ 36%]
+tests/product/raw_signal_sqlite/test_schedule_assessment.py ....         [ 50%]
+tests/product/raw_signal_sqlite/test_sqlite_durability.py ............   [ 90%]
+tests/product/raw_signal_sqlite/test_composition.py ...                  [100%]
+
+============================== 30 passed in 8.54s ==============================
+product-proof aggregate: raw_signal_occurrence_truth_sqlite state=READY_FOR_PROOF
+authority=3ad4cdc9ffba4cf91ff9a27edf1dd3b1a9824a421514bb4b5a2cc1b9c504f233 generation=51e87129c2a31c71599b7a01beb8ba39717ed5118a4d5c849bcb2015b6c80c6f
+candidate=4c9bdb8d36fc9f393cc90ac4c62e7adda83e71c0
+observed aggregate outcome: exit=0

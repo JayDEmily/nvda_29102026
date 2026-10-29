@@ -1,0 +1,52 @@
+{
+  "id": "D116",
+  "definition": "D116-OPTION-VOLUME-OI-1",
+  "kernel": "K02_ALGEBRA",
+  "parameter_profile": "P_BASIC",
+  "contracts": {
+    "CALL": "controlled-nvda-c110-20261023",
+    "PUT": "controlled-nvda-p110-20261023"
+  },
+  "raw": {
+    "CALL": [
+      "R041",
+      "R047"
+    ],
+    "PUT": [
+      "R041",
+      "R048"
+    ]
+  },
+  "provider": "foundation-controlled-option-activity",
+  "variant": "volume_oi_v1",
+  "unit": "mmt-option-contracts/1 contracts identity",
+  "context": "controlled-option-session/1",
+  "selection": "mmt-d116-selection/1",
+  "parameters": [
+    "mmt-d116-c1-controlled/1",
+    "mmt-d116-c2-controlled/1"
+  ],
+  "success": {
+    "volume": 30,
+    "latest_call_oi": 20,
+    "older_call_oi": 10,
+    "ratio": [
+      3,
+      2
+    ],
+    "opposite_right": "inapplicable"
+  },
+  "refusal": {
+    "volume": 30,
+    "latest_call_oi": 0,
+    "older_call_oi": 10,
+    "reason": "selected denominator zero, no fallback"
+  },
+  "time": "2026-10-20T12:40:00Z",
+  "cutoff": "T+1s",
+  "now": "T+2s",
+  "page": [
+    100,
+    1000
+  ]
+}

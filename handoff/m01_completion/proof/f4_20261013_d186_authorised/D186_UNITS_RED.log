@@ -1,0 +1,126 @@
+............FF............                                               [100%]
+=================================== FAILURES ===================================
+__ test_d186_refuses_incompatible_history[noncanonical_component_units_pair] ___
+
+scenario = 'noncanonical_component_units_pair'
+
+    @pytest.mark.parametrize(
+        "scenario",
+        [
+            "absent",
+            "duplicate",
+            "future_entry",
+            "later_receipt",
+            "different_subject",
+            "schema_missing",
+            "schema_unit",
+            "future_current",
+            "schema_type",
+            "outer_shape",
+            "noncanonical_component_units_pair",
+            "noncanonical_outer_units_pair",
+        ],
+    )
+    def test_d186_refuses_incompatible_history(scenario: str):
+        entry = _v("entry", 4, Decimal(10))
+        current = _v("current", 0, Decimal(12))
+        if scenario == "absent":
+            history = (current,)
+        elif scenario == "duplicate":
+            history = (entry, entry, current)
+        elif scenario == "future_entry":
+            history = (_v("entry", -1, Decimal(10)), current)
+        elif scenario == "later_receipt":
+            history = (_v("entry", 4, Decimal(10), received_age=-1), current)
+        elif scenario == "different_subject":
+            history = (_v("entry", 4, Decimal(10), subject="SPY"), current)
+        elif scenario == "schema_missing":
+            history = (entry, _v("current", 0, Decimal(12), missing_component="D132"))
+        elif scenario == "schema_unit":
+            history = (entry, _v("current", 0, Decimal(12), altered_unit="currency"))
+        elif scenario == "schema_type":
+            history = (entry, _v("current", 0, Decimal(12), changed_component_type=True))
+        elif scenario == "outer_shape":
+            history = (entry, _v("current", 0, Decimal(12), changed_outer_shape=True))
+        elif scenario == "noncanonical_component_units_pair":
+            history = (
+                _v("entry", 4, Decimal(10), wrong_component_units=True),
+                _v("current", 0, Decimal(12), wrong_component_units=True),
+            )
+        elif scenario == "noncanonical_outer_units_pair":
+            history = (
+                _v("entry", 4, Decimal(10), wrong_outer_units=True),
+                _v("current", 0, Decimal(12), wrong_outer_units=True),
+            )
+        else:
+            history = (entry, _v("current", -1, Decimal(12)))
+>       assert _eval(history, "entry") is None
+E       AssertionError: assert KernelResultV1(value=(('similarity', Decimal('0.6065306597126334236037995350')), ('distance_squared', Decimal('1')), (...al('1'))),))), units='similarity/feature deltas', result_shape='structured', input_occurrence_ids=('current', 'entry')) is None
+E        +  where KernelResultV1(value=(('similarity', Decimal('0.6065306597126334236037995350')), ('distance_squared', Decimal('1')), (...al('1'))),))), units='similarity/feature deltas', result_shape='structured', input_occurrence_ids=('current', 'entry')) = _eval((KernelValueV1(value=(('D150', Decimal('10'), 'entry-D150', (('units', 'wrong'),)), ('D152', Decimal('1'), 'entry-D152...poral_kind='derived', source_timestamp_raw=None, metadata=(('units', 'state vector'), ('result_shape', 'structured')))), 'entry')
+
+tests/product/derived_signal/test_m01_f4_cross_stage_d186_entry_anchor.py:181: AssertionError
+____ test_d186_refuses_incompatible_history[noncanonical_outer_units_pair] _____
+
+scenario = 'noncanonical_outer_units_pair'
+
+    @pytest.mark.parametrize(
+        "scenario",
+        [
+            "absent",
+            "duplicate",
+            "future_entry",
+            "later_receipt",
+            "different_subject",
+            "schema_missing",
+            "schema_unit",
+            "future_current",
+            "schema_type",
+            "outer_shape",
+            "noncanonical_component_units_pair",
+            "noncanonical_outer_units_pair",
+        ],
+    )
+    def test_d186_refuses_incompatible_history(scenario: str):
+        entry = _v("entry", 4, Decimal(10))
+        current = _v("current", 0, Decimal(12))
+        if scenario == "absent":
+            history = (current,)
+        elif scenario == "duplicate":
+            history = (entry, entry, current)
+        elif scenario == "future_entry":
+            history = (_v("entry", -1, Decimal(10)), current)
+        elif scenario == "later_receipt":
+            history = (_v("entry", 4, Decimal(10), received_age=-1), current)
+        elif scenario == "different_subject":
+            history = (_v("entry", 4, Decimal(10), subject="SPY"), current)
+        elif scenario == "schema_missing":
+            history = (entry, _v("current", 0, Decimal(12), missing_component="D132"))
+        elif scenario == "schema_unit":
+            history = (entry, _v("current", 0, Decimal(12), altered_unit="currency"))
+        elif scenario == "schema_type":
+            history = (entry, _v("current", 0, Decimal(12), changed_component_type=True))
+        elif scenario == "outer_shape":
+            history = (entry, _v("current", 0, Decimal(12), changed_outer_shape=True))
+        elif scenario == "noncanonical_component_units_pair":
+            history = (
+                _v("entry", 4, Decimal(10), wrong_component_units=True),
+                _v("current", 0, Decimal(12), wrong_component_units=True),
+            )
+        elif scenario == "noncanonical_outer_units_pair":
+            history = (
+                _v("entry", 4, Decimal(10), wrong_outer_units=True),
+                _v("current", 0, Decimal(12), wrong_outer_units=True),
+            )
+        else:
+            history = (entry, _v("current", -1, Decimal(12)))
+>       assert _eval(history, "entry") is None
+E       AssertionError: assert KernelResultV1(value=(('similarity', Decimal('0.6065306597126334236037995350')), ('distance_squared', Decimal('1')), (...al('1'))),))), units='similarity/feature deltas', result_shape='structured', input_occurrence_ids=('current', 'entry')) is None
+E        +  where KernelResultV1(value=(('similarity', Decimal('0.6065306597126334236037995350')), ('distance_squared', Decimal('1')), (...al('1'))),))), units='similarity/feature deltas', result_shape='structured', input_occurrence_ids=('current', 'entry')) = _eval((KernelValueV1(value=(('D150', Decimal('10'), 'entry-D150', (('units', 'score/vector'),)), ('D152', Decimal('1'), 'ent...rce_temporal_kind='derived', source_timestamp_raw=None, metadata=(('units', 'wrong'), ('result_shape', 'structured')))), 'entry')
+
+tests/product/derived_signal/test_m01_f4_cross_stage_d186_entry_anchor.py:181: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/derived_signal/test_m01_f4_cross_stage_d186_entry_anchor.py::test_d186_refuses_incompatible_history[noncanonical_component_units_pair] - AssertionError: assert KernelResultV1(value=(('similarity', Decimal('0.6065306597126334236037995350')), ('distance_squared', Decimal('1')), (...al('1'))),))), units='similarity/feature deltas', result_shape='structured', input_occurrence_ids=('current', 'entry')) is None
+ +  where KernelResultV1(value=(('similarity', Decimal('0.6065306597126334236037995350')), ('distance_squared', Decimal('1')), (...al('1'))),))), units='similarity/feature deltas', result_shape='structured', input_occurrence_ids=('current', 'entry')) = _eval((KernelValueV1(value=(('D150', Decimal('10'), 'entry-D150', (('units', 'wrong'),)), ('D152', Decimal('1'), 'entry-D152...poral_kind='derived', source_timestamp_raw=None, metadata=(('units', 'state vector'), ('result_shape', 'structured')))), 'entry')
+FAILED tests/product/derived_signal/test_m01_f4_cross_stage_d186_entry_anchor.py::test_d186_refuses_incompatible_history[noncanonical_outer_units_pair] - AssertionError: assert KernelResultV1(value=(('similarity', Decimal('0.6065306597126334236037995350')), ('distance_squared', Decimal('1')), (...al('1'))),))), units='similarity/feature deltas', result_shape='structured', input_occurrence_ids=('current', 'entry')) is None
+ +  where KernelResultV1(value=(('similarity', Decimal('0.6065306597126334236037995350')), ('distance_squared', Decimal('1')), (...al('1'))),))), units='similarity/feature deltas', result_shape='structured', input_occurrence_ids=('current', 'entry')) = _eval((KernelValueV1(value=(('D150', Decimal('10'), 'entry-D150', (('units', 'score/vector'),)), ('D152', Decimal('1'), 'ent...rce_temporal_kind='derived', source_timestamp_raw=None, metadata=(('units', 'wrong'), ('result_shape', 'structured')))), 'entry')
+2 failed, 24 passed in 0.11s

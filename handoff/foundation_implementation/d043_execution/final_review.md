@@ -1,0 +1,9 @@
+# D043 independent final review
+
+Observed sole run: process/aggregate exit0, exactly2 passed in0.13s on CPython3.12.14/pytest9.0.3; no retry.
+
+**ACCEPT**, controlled3m10y slope. Candidate `45c2d685fe036cc8638bb6e1525fff9ee1507152`, clean input tree `321041292820384031541401c4c516943e846173`.
+
+Read owning brief/contract/binding/admission/generation1, full two-case proof and fixed source declaration delta. Reused unchanged D042 arithmetic/selection/native identity and public SQLite mechanism inspection. D043 binds R246=DGS3MO and R249=DGS10, K02/P_BASIC;100×(.0430−.0410)=exact Decimal0.2 percentage points. No new shared algorithm or invented positivity restriction. Positive asserts exact Decimal tuple, full typed configuration, actual ordered raw lineage, identity/times and public read-only reopen. Negative actually admits/projects R246 with incompatible native series while preserving the lawful R249 state; source identity validation refuses with empty derived history. It discriminates label-only acceptance rather than merely missing fixture setup. Neither case pre-materialises derived state or uses production for its oracle. No unresolved owning source/case defect found; omitted runtime RED remains an explicit reduction in test-first evidence.
+
+Observed owning hashes match generation1/admission, generation `eec1d077039f1f4f46a9b87b3c64333093652d8b2375a10db4efc37e1b5f5a35`, brief `2662f4e41370209a8c3fbe6b92116bd679d12a907716337080cfd2ffcf6666b7`. Sole independent strict command: `PYTHONPATH=src /workspace/scratch/83dd7c79f14f/d037-runtime/bin/python tools/run_product_proof_gate.py --aggregate neutral_market_measurement_truth_d043`; full raw output in `final_green.log`. No extra probes/cases, old tests, static repeats or broad suites. Native-source certification and deferred integration/end-to-end obligations remain excluded.

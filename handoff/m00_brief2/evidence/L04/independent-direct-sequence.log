@@ -1,0 +1,1 @@
+DIRECT_SEQUENCE_PASS {"fresh_readonly_bytes_unchanged": true, "incoming_boundary_discovered": true, "known_control_ids_in_queries": false, "long_valid_cursor_digits": 5000, "long_valid_cursor_result": "EMPTY", "observation_count": 3, "provider_error": 317, "restart": "G1->G2"}

@@ -1,0 +1,19 @@
+{
+  "review_cycle": "TESTER_VI15_L2_1790584579",
+  "actor": "TESTER",
+  "status": "COMPLETE",
+  "leaf": "VI-15-L2",
+  "candidate_commit": "332c1f95da032f841e8779ef21fe3c1fceb698a2",
+  "candidate_tree": "3abec93134d128978ad6bcedbd0dfa6cf4334ec6",
+  "disposition": "PASS",
+  "findings": [],
+  "recurrence_classification": "NO_FINDING",
+  "product_axis": "479/479 PASS",
+  "architecture_bootstrap": "74/74 PASS",
+  "product_obligations": "13/13 COVERED",
+  "wheel_sha256": "d311960234c932c2507f7b1671c8d53bff3ec234692e65ca27b440293e37e127",
+  "sdist_sha256": "135e47f6ab531e8e650a2ee1adc9582965e1c81d97d08dfdc854757a790629fa",
+  "isolated_installed_distribution": "PASS",
+  "vi15_l2_promotion": "ACCEPTED_FOR_LAWFUL_PROMOTION",
+  "vi16": "PROHIBITED_UNTIL_VI15_L2_PROMOTION_CLOSEOUT"
+}

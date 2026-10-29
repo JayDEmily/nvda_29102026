@@ -1,0 +1,118 @@
+........................................................................ [  9%]
+........................................................................ [ 18%]
+...............FFFF..................................................... [ 27%]
+........................................................................ [ 37%]
+........................................................................ [ 46%]
+........................................................................ [ 55%]
+........................................................................ [ 65%]
+........................................................................ [ 74%]
+........................................................................ [ 83%]
+........................................................................ [ 93%]
+.....................................................                    [100%]
+=================================== FAILURES ===================================
+_ test_public_live_greek_retains_actual_position_sources_and_declared_units[D181] _
+
+identity = 'D181'
+
+    @pytest.mark.parametrize("identity", tuple(GREEKS))
+    def test_public_live_greek_retains_actual_position_sources_and_declared_units(identity):
+        owner, request = _public(identity)
+        occurrence = owner.materialise(request)
+        assert occurrence is not None
+        projected = owner._occurrence_kernel_value(occurrence)
+        metadata = dict(projected.metadata)
+        assert metadata.get("position_source_refs") is not None
+        assert set(metadata["position_source_refs"]) == {"pos-leg-a", "pos-leg-b"}
+        assert (
+>           metadata["canonical_risk_unit"]
+            == {
+                "D181": "shares",
+                "D182": "shares_per_currency",
+                "D183": "currency_per_volatility_point",
+                "D184": "currency_per_day",
+            }[identity]
+        )
+E       KeyError: 'canonical_risk_unit'
+
+tests/product/derived_signal/test_m01_f4_approved_retained_provenance.py:25: KeyError
+_ test_public_live_greek_retains_actual_position_sources_and_declared_units[D182] _
+
+identity = 'D182'
+
+    @pytest.mark.parametrize("identity", tuple(GREEKS))
+    def test_public_live_greek_retains_actual_position_sources_and_declared_units(identity):
+        owner, request = _public(identity)
+        occurrence = owner.materialise(request)
+        assert occurrence is not None
+        projected = owner._occurrence_kernel_value(occurrence)
+        metadata = dict(projected.metadata)
+        assert metadata.get("position_source_refs") is not None
+        assert set(metadata["position_source_refs"]) == {"pos-leg-a", "pos-leg-b"}
+        assert (
+>           metadata["canonical_risk_unit"]
+            == {
+                "D181": "shares",
+                "D182": "shares_per_currency",
+                "D183": "currency_per_volatility_point",
+                "D184": "currency_per_day",
+            }[identity]
+        )
+E       KeyError: 'canonical_risk_unit'
+
+tests/product/derived_signal/test_m01_f4_approved_retained_provenance.py:25: KeyError
+_ test_public_live_greek_retains_actual_position_sources_and_declared_units[D183] _
+
+identity = 'D183'
+
+    @pytest.mark.parametrize("identity", tuple(GREEKS))
+    def test_public_live_greek_retains_actual_position_sources_and_declared_units(identity):
+        owner, request = _public(identity)
+        occurrence = owner.materialise(request)
+        assert occurrence is not None
+        projected = owner._occurrence_kernel_value(occurrence)
+        metadata = dict(projected.metadata)
+        assert metadata.get("position_source_refs") is not None
+        assert set(metadata["position_source_refs"]) == {"pos-leg-a", "pos-leg-b"}
+        assert (
+>           metadata["canonical_risk_unit"]
+            == {
+                "D181": "shares",
+                "D182": "shares_per_currency",
+                "D183": "currency_per_volatility_point",
+                "D184": "currency_per_day",
+            }[identity]
+        )
+E       KeyError: 'canonical_risk_unit'
+
+tests/product/derived_signal/test_m01_f4_approved_retained_provenance.py:25: KeyError
+_ test_public_live_greek_retains_actual_position_sources_and_declared_units[D184] _
+
+identity = 'D184'
+
+    @pytest.mark.parametrize("identity", tuple(GREEKS))
+    def test_public_live_greek_retains_actual_position_sources_and_declared_units(identity):
+        owner, request = _public(identity)
+        occurrence = owner.materialise(request)
+        assert occurrence is not None
+        projected = owner._occurrence_kernel_value(occurrence)
+        metadata = dict(projected.metadata)
+        assert metadata.get("position_source_refs") is not None
+        assert set(metadata["position_source_refs"]) == {"pos-leg-a", "pos-leg-b"}
+        assert (
+>           metadata["canonical_risk_unit"]
+            == {
+                "D181": "shares",
+                "D182": "shares_per_currency",
+                "D183": "currency_per_volatility_point",
+                "D184": "currency_per_day",
+            }[identity]
+        )
+E       KeyError: 'canonical_risk_unit'
+
+tests/product/derived_signal/test_m01_f4_approved_retained_provenance.py:25: KeyError
+=========================== short test summary info ============================
+FAILED tests/product/derived_signal/test_m01_f4_approved_retained_provenance.py::test_public_live_greek_retains_actual_position_sources_and_declared_units[D181]
+FAILED tests/product/derived_signal/test_m01_f4_approved_retained_provenance.py::test_public_live_greek_retains_actual_position_sources_and_declared_units[D182]
+FAILED tests/product/derived_signal/test_m01_f4_approved_retained_provenance.py::test_public_live_greek_retains_actual_position_sources_and_declared_units[D183]
+FAILED tests/product/derived_signal/test_m01_f4_approved_retained_provenance.py::test_public_live_greek_retains_actual_position_sources_and_declared_units[D184]
+4 failed, 769 passed in 1.78s

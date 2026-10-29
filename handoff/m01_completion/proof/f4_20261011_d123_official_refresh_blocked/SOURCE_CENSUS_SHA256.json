@@ -1,0 +1,38 @@
+{
+  "GUARDRAILS.md": {
+    "sha256": "585dc9b1a95719a7b60929b0d3ea64696fd6d52cd19b2b4a463c5bb9d34947b6",
+    "bytes": 10259
+  },
+  "AGENTS.md": {
+    "sha256": "d431f1a0c139912606211474880d5ecf595549507eface0f4e5ae4b3f52b468d",
+    "bytes": 5623
+  },
+  "EXEC_PLAN.md": {
+    "sha256": "75997cbf3277026458f21d77d9d1c814929cb71f24a9c8b587af43834bc1baa6",
+    "bytes": 30496
+  },
+  "src/nvda_desk/raw_signal_occurrence_truth/api.py": {
+    "sha256": "3f6f01045a19acaa73c2626bc2139efbce88c2050e0fec36f9d4c6abb756191a",
+    "bytes": 84125
+  },
+  "src/nvda_desk/derived_signal_calculation_truth/api.py": {
+    "sha256": "da6ecfc5f9a16f86c53ce6ab34b6ab1dae42c7c14bd61a1b327806a16432292b",
+    "bytes": 112934
+  },
+  "src/nvda_desk/derived_signal_calculation_truth/_stage1.py": {
+    "sha256": "ed714be39ac73bf213eec84d56a6925c3506f8ccec99cf33d6e7fc3388677bc5",
+    "bytes": 144631
+  },
+  "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv": {
+    "sha256": "8045c8c0c4a62fbc3b88759a65b415efb1f0d549764ddbdcae2c5c911cd8a64a",
+    "bytes": 71826
+  },
+  "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md": {
+    "sha256": "603b850802a418780109095e7ae69bcece449da79fb24140a6d50297605e927c",
+    "bytes": 71998
+  },
+  "tests/product/derived_signal/test_m01_f4_d123_exact_contract_authority.py": {
+    "sha256": "523053645d17cb337e8946e15f395c5ea0ee9069ec094999d8f71319ba4d18b8",
+    "bytes": 4666
+  }
+}

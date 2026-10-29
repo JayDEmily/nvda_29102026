@@ -1,0 +1,62 @@
+{
+  "id": "D134",
+  "definition": "D134-SMART-TOP-TWO-BID-1",
+  "kernel": "K02_ALGEBRA",
+  "parameter_profile": "P_BASIC",
+  "subject": "NVDA",
+  "provider": "foundation-controlled-smart-book",
+  "variant": "positional_four_field_v1",
+  "generation": "controlled-smart-four-field-generation/1",
+  "raw_fields": {
+    "R185": "position int",
+    "R187": "operation int",
+    "R188": "side int",
+    "R190": "size Decimal"
+  },
+  "operation_mapping": {
+    "0": "insert/shift",
+    "1": "update existing",
+    "2": "delete standing/shift",
+    "317": "reset/invalidate"
+  },
+  "side_mapping": {
+    "0": "bid",
+    "1": "ask"
+  },
+  "top_levels": 2,
+  "as_of": "2026-10-20T12:40:00Z",
+  "cutoff": "2026-10-20T12:40:01Z",
+  "complete_warmup": [
+    {
+      "event": "bid0",
+      "position": 0,
+      "operation": 0,
+      "side": 0,
+      "size": "5"
+    },
+    {
+      "event": "bid1",
+      "position": 1,
+      "operation": 0,
+      "side": 0,
+      "size": "3"
+    },
+    {
+      "event": "ask0",
+      "position": 0,
+      "operation": 0,
+      "side": 1,
+      "size": "2"
+    },
+    {
+      "event": "ask1",
+      "position": 1,
+      "operation": 0,
+      "side": 1,
+      "size": "4"
+    }
+  ],
+  "success": "bid sizes5+3=8",
+  "refusal": "selected update lacks native R187 operation after complete warm-up; no result/history",
+  "boundary": "synthetic four-field profile, no native SMART certification"
+}

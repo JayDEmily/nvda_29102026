@@ -1,0 +1,557 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/d549b6d808a9/g52-recovery/repository
+configfile: pyproject.toml
+collected 91 items / 85 deselected / 6 selected
+
+tests/architecture/test_proof_control.py FFFFFF                          [100%]
+
+=================================== FAILURES ===================================
+_ test_d013_preservation_allows_lawful_generation_transitions[advance-raw_signal_occurrence_truth_sqlite-raw_signal_sqlite] _
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-46/test_d013_preservation_allows_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f031fd32c30>
+claim_id = 'raw_signal_occurrence_truth_sqlite', directory = 'raw_signal_sqlite'
+transition = 'advance'
+
+    @pytest.mark.parametrize(
+        "claim_id,directory",
+        [
+            ("raw_signal_occurrence_truth_sqlite", "raw_signal_sqlite"),
+            ("neutral_market_measurement_truth_pilot", "market_measurement"),
+            (D012_CLAIM, "market_measurement_d012"),
+        ],
+    )
+    @pytest.mark.parametrize("transition", ["advance", "revoke"])
+    def test_d013_preservation_allows_lawful_generation_transitions(
+        tmp_path, monkeypatch, claim_id, directory, transition
+    ):
+        # Copy actual current proof/target state, unlike the pre-admission canary
+        # helper. Mutations below never operate on the actual repository.
+        root = tmp_path / "current"
+        root.mkdir()
+        for name in ("config", "schemas", "docs", "tests", "implementation", "handoff", "src", "tools"):
+            shutil.copytree(ROOT / name, root / name, ignore=shutil.ignore_patterns("__pycache__"))
+        for name in ("pyproject.toml", "GUARDRAILS.md", "AGENTS.md", ".gitignore"):
+            shutil.copy2(ROOT / name, root / name)
+        api = _controls()
+        assert api.load_product_proof_claim(root, claim_id).state == "READY_FOR_PROOF"
+        pointer = root / "config/product_proof" / directory / "admission.json"
+        original = json.loads(pointer.read_text())["current_generation"]
+        old_generation = root / original["path"]
+        old_bytes = old_generation.read_bytes()
+        if transition == "advance":
+            generation = json.loads(old_bytes)
+            generation.update(
+                generation=generation["generation"] + 1,
+                previous_generation=original,
+                adequacy_review_ref="control-fixture/fresh-transition-review",
+                admission_authority_ref="control-fixture/fresh-transition-admission",
+            )
+            path = pointer.parent / "generations" / f"{generation['generation']:04d}.json"
+            assert not path.exists()
+            _json_write(path, generation)
+            _json_write(
+                pointer,
+                {
+                    "schema_version": "1.0",
+                    "current_generation": {
+                        "path": path.relative_to(root).as_posix(),
+                        "sha256": _sha(path),
+                    },
+                },
+            )
+            claim = api.load_product_proof_claim(root, claim_id)
+            assert claim.state == "READY_FOR_PROOF" and claim.generation_sha256 == _sha(path)
+        else:
+            _json_write(pointer, {"schema_version": "1.0", "current_generation": None})
+            assert api.load_product_proof_claim(root, claim_id).state == "INCOMPLETE_COVERAGE"
+        assert old_generation.read_bytes() == old_bytes
+        monkeypatch.setitem(globals(), "ROOT", root)
+        # The preservation proposition must still hold with either lawful state;
+        # one checkpoint's pointer/status is not permanent admission law.
+>       test_d013_actual_original_claim_generations_are_preserved()
+
+tests/architecture/test_proof_control.py:154: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def test_d013_actual_original_claim_generations_are_preserved():
+        api = _controls()
+        for claim_id, expected in (
+            (
+                "raw_signal_occurrence_truth_sqlite",
+                "51e87129c2a31c71599b7a01beb8ba39717ed5118a4d5c849bcb2015b6c80c6f",
+            ),
+            (
+                "neutral_market_measurement_truth_pilot",
+                "24a5af4054c277b01a140ec43481e86851e5e76263826644a80993c12c2495b7",
+            ),
+            (D012_CLAIM, "26d2b4e371c38b0960cb6081798cc618c9f308567d0df12b2aa40f3777dd2a25"),
+        ):
+            claim = api.load_product_proof_claim(ROOT, claim_id)
+>           assert claim.state == "READY_FOR_PROOF" and claim.generation_sha256 == expected
+E           AssertionError: assert ('READY_FOR_PROOF' == 'READY_FOR_PROOF'
+E             
+E               READY_FOR_PROOF and '249fd9816514...aec363f758844' == '51e87129c2a3...b2015b6c80c6f'
+E             
+E             - 51e87129c2a31c71599b7a01beb8ba39717ed5118a4d5c849bcb2015b6c80c6f
+E             + 249fd9816514de46073b7d67c12a2b8e39a00d98ba9ac230898aec363f758844)
+
+tests/architecture/test_proof_control.py:172: AssertionError
+_ test_d013_preservation_allows_lawful_generation_transitions[advance-neutral_market_measurement_truth_pilot-market_measurement] _
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-46/test_d013_preservation_allows_1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f031f8581a0>
+claim_id = 'neutral_market_measurement_truth_pilot'
+directory = 'market_measurement', transition = 'advance'
+
+    @pytest.mark.parametrize(
+        "claim_id,directory",
+        [
+            ("raw_signal_occurrence_truth_sqlite", "raw_signal_sqlite"),
+            ("neutral_market_measurement_truth_pilot", "market_measurement"),
+            (D012_CLAIM, "market_measurement_d012"),
+        ],
+    )
+    @pytest.mark.parametrize("transition", ["advance", "revoke"])
+    def test_d013_preservation_allows_lawful_generation_transitions(
+        tmp_path, monkeypatch, claim_id, directory, transition
+    ):
+        # Copy actual current proof/target state, unlike the pre-admission canary
+        # helper. Mutations below never operate on the actual repository.
+        root = tmp_path / "current"
+        root.mkdir()
+        for name in ("config", "schemas", "docs", "tests", "implementation", "handoff", "src", "tools"):
+            shutil.copytree(ROOT / name, root / name, ignore=shutil.ignore_patterns("__pycache__"))
+        for name in ("pyproject.toml", "GUARDRAILS.md", "AGENTS.md", ".gitignore"):
+            shutil.copy2(ROOT / name, root / name)
+        api = _controls()
+        assert api.load_product_proof_claim(root, claim_id).state == "READY_FOR_PROOF"
+        pointer = root / "config/product_proof" / directory / "admission.json"
+        original = json.loads(pointer.read_text())["current_generation"]
+        old_generation = root / original["path"]
+        old_bytes = old_generation.read_bytes()
+        if transition == "advance":
+            generation = json.loads(old_bytes)
+            generation.update(
+                generation=generation["generation"] + 1,
+                previous_generation=original,
+                adequacy_review_ref="control-fixture/fresh-transition-review",
+                admission_authority_ref="control-fixture/fresh-transition-admission",
+            )
+            path = pointer.parent / "generations" / f"{generation['generation']:04d}.json"
+            assert not path.exists()
+            _json_write(path, generation)
+            _json_write(
+                pointer,
+                {
+                    "schema_version": "1.0",
+                    "current_generation": {
+                        "path": path.relative_to(root).as_posix(),
+                        "sha256": _sha(path),
+                    },
+                },
+            )
+            claim = api.load_product_proof_claim(root, claim_id)
+            assert claim.state == "READY_FOR_PROOF" and claim.generation_sha256 == _sha(path)
+        else:
+            _json_write(pointer, {"schema_version": "1.0", "current_generation": None})
+            assert api.load_product_proof_claim(root, claim_id).state == "INCOMPLETE_COVERAGE"
+        assert old_generation.read_bytes() == old_bytes
+        monkeypatch.setitem(globals(), "ROOT", root)
+        # The preservation proposition must still hold with either lawful state;
+        # one checkpoint's pointer/status is not permanent admission law.
+>       test_d013_actual_original_claim_generations_are_preserved()
+
+tests/architecture/test_proof_control.py:154: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def test_d013_actual_original_claim_generations_are_preserved():
+        api = _controls()
+        for claim_id, expected in (
+            (
+                "raw_signal_occurrence_truth_sqlite",
+                "51e87129c2a31c71599b7a01beb8ba39717ed5118a4d5c849bcb2015b6c80c6f",
+            ),
+            (
+                "neutral_market_measurement_truth_pilot",
+                "24a5af4054c277b01a140ec43481e86851e5e76263826644a80993c12c2495b7",
+            ),
+            (D012_CLAIM, "26d2b4e371c38b0960cb6081798cc618c9f308567d0df12b2aa40f3777dd2a25"),
+        ):
+            claim = api.load_product_proof_claim(ROOT, claim_id)
+>           assert claim.state == "READY_FOR_PROOF" and claim.generation_sha256 == expected
+E           AssertionError: assert ('READY_FOR_PROOF' == 'READY_FOR_PROOF'
+E             
+E               READY_FOR_PROOF and '7be321c86ef3...e2c1b4d0008d9' == '24a5af4054c2...993c12c2495b7'
+E             
+E             - 24a5af4054c277b01a140ec43481e86851e5e76263826644a80993c12c2495b7
+E             + 7be321c86ef383231c1ac55800659a49747a5389caadb1834f1e2c1b4d0008d9)
+
+tests/architecture/test_proof_control.py:172: AssertionError
+_ test_d013_preservation_allows_lawful_generation_transitions[advance-neutral_market_measurement_truth_d012-market_measurement_d012] _
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-46/test_d013_preservation_allows_2')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f031f858a10>
+claim_id = 'neutral_market_measurement_truth_d012'
+directory = 'market_measurement_d012', transition = 'advance'
+
+    @pytest.mark.parametrize(
+        "claim_id,directory",
+        [
+            ("raw_signal_occurrence_truth_sqlite", "raw_signal_sqlite"),
+            ("neutral_market_measurement_truth_pilot", "market_measurement"),
+            (D012_CLAIM, "market_measurement_d012"),
+        ],
+    )
+    @pytest.mark.parametrize("transition", ["advance", "revoke"])
+    def test_d013_preservation_allows_lawful_generation_transitions(
+        tmp_path, monkeypatch, claim_id, directory, transition
+    ):
+        # Copy actual current proof/target state, unlike the pre-admission canary
+        # helper. Mutations below never operate on the actual repository.
+        root = tmp_path / "current"
+        root.mkdir()
+        for name in ("config", "schemas", "docs", "tests", "implementation", "handoff", "src", "tools"):
+            shutil.copytree(ROOT / name, root / name, ignore=shutil.ignore_patterns("__pycache__"))
+        for name in ("pyproject.toml", "GUARDRAILS.md", "AGENTS.md", ".gitignore"):
+            shutil.copy2(ROOT / name, root / name)
+        api = _controls()
+        assert api.load_product_proof_claim(root, claim_id).state == "READY_FOR_PROOF"
+        pointer = root / "config/product_proof" / directory / "admission.json"
+        original = json.loads(pointer.read_text())["current_generation"]
+        old_generation = root / original["path"]
+        old_bytes = old_generation.read_bytes()
+        if transition == "advance":
+            generation = json.loads(old_bytes)
+            generation.update(
+                generation=generation["generation"] + 1,
+                previous_generation=original,
+                adequacy_review_ref="control-fixture/fresh-transition-review",
+                admission_authority_ref="control-fixture/fresh-transition-admission",
+            )
+            path = pointer.parent / "generations" / f"{generation['generation']:04d}.json"
+            assert not path.exists()
+            _json_write(path, generation)
+            _json_write(
+                pointer,
+                {
+                    "schema_version": "1.0",
+                    "current_generation": {
+                        "path": path.relative_to(root).as_posix(),
+                        "sha256": _sha(path),
+                    },
+                },
+            )
+            claim = api.load_product_proof_claim(root, claim_id)
+            assert claim.state == "READY_FOR_PROOF" and claim.generation_sha256 == _sha(path)
+        else:
+            _json_write(pointer, {"schema_version": "1.0", "current_generation": None})
+            assert api.load_product_proof_claim(root, claim_id).state == "INCOMPLETE_COVERAGE"
+        assert old_generation.read_bytes() == old_bytes
+        monkeypatch.setitem(globals(), "ROOT", root)
+        # The preservation proposition must still hold with either lawful state;
+        # one checkpoint's pointer/status is not permanent admission law.
+>       test_d013_actual_original_claim_generations_are_preserved()
+
+tests/architecture/test_proof_control.py:154: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def test_d013_actual_original_claim_generations_are_preserved():
+        api = _controls()
+        for claim_id, expected in (
+            (
+                "raw_signal_occurrence_truth_sqlite",
+                "51e87129c2a31c71599b7a01beb8ba39717ed5118a4d5c849bcb2015b6c80c6f",
+            ),
+            (
+                "neutral_market_measurement_truth_pilot",
+                "24a5af4054c277b01a140ec43481e86851e5e76263826644a80993c12c2495b7",
+            ),
+            (D012_CLAIM, "26d2b4e371c38b0960cb6081798cc618c9f308567d0df12b2aa40f3777dd2a25"),
+        ):
+            claim = api.load_product_proof_claim(ROOT, claim_id)
+>           assert claim.state == "READY_FOR_PROOF" and claim.generation_sha256 == expected
+E           AssertionError: assert ('READY_FOR_PROOF' == 'READY_FOR_PROOF'
+E             
+E               READY_FOR_PROOF and '35f94319c813...73f872c948be7' == '26d2b4e371c3...40f3777dd2a25'
+E             
+E             - 26d2b4e371c38b0960cb6081798cc618c9f308567d0df12b2aa40f3777dd2a25
+E             + 35f94319c813451d1b415f7946fbad34397c3052cbef5af14fb73f872c948be7)
+
+tests/architecture/test_proof_control.py:172: AssertionError
+_ test_d013_preservation_allows_lawful_generation_transitions[revoke-raw_signal_occurrence_truth_sqlite-raw_signal_sqlite] _
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-46/test_d013_preservation_allows_3')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f031f96a810>
+claim_id = 'raw_signal_occurrence_truth_sqlite', directory = 'raw_signal_sqlite'
+transition = 'revoke'
+
+    @pytest.mark.parametrize(
+        "claim_id,directory",
+        [
+            ("raw_signal_occurrence_truth_sqlite", "raw_signal_sqlite"),
+            ("neutral_market_measurement_truth_pilot", "market_measurement"),
+            (D012_CLAIM, "market_measurement_d012"),
+        ],
+    )
+    @pytest.mark.parametrize("transition", ["advance", "revoke"])
+    def test_d013_preservation_allows_lawful_generation_transitions(
+        tmp_path, monkeypatch, claim_id, directory, transition
+    ):
+        # Copy actual current proof/target state, unlike the pre-admission canary
+        # helper. Mutations below never operate on the actual repository.
+        root = tmp_path / "current"
+        root.mkdir()
+        for name in ("config", "schemas", "docs", "tests", "implementation", "handoff", "src", "tools"):
+            shutil.copytree(ROOT / name, root / name, ignore=shutil.ignore_patterns("__pycache__"))
+        for name in ("pyproject.toml", "GUARDRAILS.md", "AGENTS.md", ".gitignore"):
+            shutil.copy2(ROOT / name, root / name)
+        api = _controls()
+        assert api.load_product_proof_claim(root, claim_id).state == "READY_FOR_PROOF"
+        pointer = root / "config/product_proof" / directory / "admission.json"
+        original = json.loads(pointer.read_text())["current_generation"]
+        old_generation = root / original["path"]
+        old_bytes = old_generation.read_bytes()
+        if transition == "advance":
+            generation = json.loads(old_bytes)
+            generation.update(
+                generation=generation["generation"] + 1,
+                previous_generation=original,
+                adequacy_review_ref="control-fixture/fresh-transition-review",
+                admission_authority_ref="control-fixture/fresh-transition-admission",
+            )
+            path = pointer.parent / "generations" / f"{generation['generation']:04d}.json"
+            assert not path.exists()
+            _json_write(path, generation)
+            _json_write(
+                pointer,
+                {
+                    "schema_version": "1.0",
+                    "current_generation": {
+                        "path": path.relative_to(root).as_posix(),
+                        "sha256": _sha(path),
+                    },
+                },
+            )
+            claim = api.load_product_proof_claim(root, claim_id)
+            assert claim.state == "READY_FOR_PROOF" and claim.generation_sha256 == _sha(path)
+        else:
+            _json_write(pointer, {"schema_version": "1.0", "current_generation": None})
+            assert api.load_product_proof_claim(root, claim_id).state == "INCOMPLETE_COVERAGE"
+        assert old_generation.read_bytes() == old_bytes
+        monkeypatch.setitem(globals(), "ROOT", root)
+        # The preservation proposition must still hold with either lawful state;
+        # one checkpoint's pointer/status is not permanent admission law.
+>       test_d013_actual_original_claim_generations_are_preserved()
+
+tests/architecture/test_proof_control.py:154: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def test_d013_actual_original_claim_generations_are_preserved():
+        api = _controls()
+        for claim_id, expected in (
+            (
+                "raw_signal_occurrence_truth_sqlite",
+                "51e87129c2a31c71599b7a01beb8ba39717ed5118a4d5c849bcb2015b6c80c6f",
+            ),
+            (
+                "neutral_market_measurement_truth_pilot",
+                "24a5af4054c277b01a140ec43481e86851e5e76263826644a80993c12c2495b7",
+            ),
+            (D012_CLAIM, "26d2b4e371c38b0960cb6081798cc618c9f308567d0df12b2aa40f3777dd2a25"),
+        ):
+            claim = api.load_product_proof_claim(ROOT, claim_id)
+>           assert claim.state == "READY_FOR_PROOF" and claim.generation_sha256 == expected
+E           AssertionError: assert ('INCOMPLETE_COVERAGE' == 'READY_FOR_PROOF'
+E             
+E             - READY_FOR_PROOF
+E             + INCOMPLETE_COVERAGE)
+
+tests/architecture/test_proof_control.py:172: AssertionError
+_ test_d013_preservation_allows_lawful_generation_transitions[revoke-neutral_market_measurement_truth_pilot-market_measurement] _
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-46/test_d013_preservation_allows_4')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f031f85b830>
+claim_id = 'neutral_market_measurement_truth_pilot'
+directory = 'market_measurement', transition = 'revoke'
+
+    @pytest.mark.parametrize(
+        "claim_id,directory",
+        [
+            ("raw_signal_occurrence_truth_sqlite", "raw_signal_sqlite"),
+            ("neutral_market_measurement_truth_pilot", "market_measurement"),
+            (D012_CLAIM, "market_measurement_d012"),
+        ],
+    )
+    @pytest.mark.parametrize("transition", ["advance", "revoke"])
+    def test_d013_preservation_allows_lawful_generation_transitions(
+        tmp_path, monkeypatch, claim_id, directory, transition
+    ):
+        # Copy actual current proof/target state, unlike the pre-admission canary
+        # helper. Mutations below never operate on the actual repository.
+        root = tmp_path / "current"
+        root.mkdir()
+        for name in ("config", "schemas", "docs", "tests", "implementation", "handoff", "src", "tools"):
+            shutil.copytree(ROOT / name, root / name, ignore=shutil.ignore_patterns("__pycache__"))
+        for name in ("pyproject.toml", "GUARDRAILS.md", "AGENTS.md", ".gitignore"):
+            shutil.copy2(ROOT / name, root / name)
+        api = _controls()
+        assert api.load_product_proof_claim(root, claim_id).state == "READY_FOR_PROOF"
+        pointer = root / "config/product_proof" / directory / "admission.json"
+        original = json.loads(pointer.read_text())["current_generation"]
+        old_generation = root / original["path"]
+        old_bytes = old_generation.read_bytes()
+        if transition == "advance":
+            generation = json.loads(old_bytes)
+            generation.update(
+                generation=generation["generation"] + 1,
+                previous_generation=original,
+                adequacy_review_ref="control-fixture/fresh-transition-review",
+                admission_authority_ref="control-fixture/fresh-transition-admission",
+            )
+            path = pointer.parent / "generations" / f"{generation['generation']:04d}.json"
+            assert not path.exists()
+            _json_write(path, generation)
+            _json_write(
+                pointer,
+                {
+                    "schema_version": "1.0",
+                    "current_generation": {
+                        "path": path.relative_to(root).as_posix(),
+                        "sha256": _sha(path),
+                    },
+                },
+            )
+            claim = api.load_product_proof_claim(root, claim_id)
+            assert claim.state == "READY_FOR_PROOF" and claim.generation_sha256 == _sha(path)
+        else:
+            _json_write(pointer, {"schema_version": "1.0", "current_generation": None})
+            assert api.load_product_proof_claim(root, claim_id).state == "INCOMPLETE_COVERAGE"
+        assert old_generation.read_bytes() == old_bytes
+        monkeypatch.setitem(globals(), "ROOT", root)
+        # The preservation proposition must still hold with either lawful state;
+        # one checkpoint's pointer/status is not permanent admission law.
+>       test_d013_actual_original_claim_generations_are_preserved()
+
+tests/architecture/test_proof_control.py:154: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def test_d013_actual_original_claim_generations_are_preserved():
+        api = _controls()
+        for claim_id, expected in (
+            (
+                "raw_signal_occurrence_truth_sqlite",
+                "51e87129c2a31c71599b7a01beb8ba39717ed5118a4d5c849bcb2015b6c80c6f",
+            ),
+            (
+                "neutral_market_measurement_truth_pilot",
+                "24a5af4054c277b01a140ec43481e86851e5e76263826644a80993c12c2495b7",
+            ),
+            (D012_CLAIM, "26d2b4e371c38b0960cb6081798cc618c9f308567d0df12b2aa40f3777dd2a25"),
+        ):
+            claim = api.load_product_proof_claim(ROOT, claim_id)
+>           assert claim.state == "READY_FOR_PROOF" and claim.generation_sha256 == expected
+E           AssertionError: assert ('INCOMPLETE_COVERAGE' == 'READY_FOR_PROOF'
+E             
+E             - READY_FOR_PROOF
+E             + INCOMPLETE_COVERAGE)
+
+tests/architecture/test_proof_control.py:172: AssertionError
+_ test_d013_preservation_allows_lawful_generation_transitions[revoke-neutral_market_measurement_truth_d012-market_measurement_d012] _
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-46/test_d013_preservation_allows_5')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f031f8519a0>
+claim_id = 'neutral_market_measurement_truth_d012'
+directory = 'market_measurement_d012', transition = 'revoke'
+
+    @pytest.mark.parametrize(
+        "claim_id,directory",
+        [
+            ("raw_signal_occurrence_truth_sqlite", "raw_signal_sqlite"),
+            ("neutral_market_measurement_truth_pilot", "market_measurement"),
+            (D012_CLAIM, "market_measurement_d012"),
+        ],
+    )
+    @pytest.mark.parametrize("transition", ["advance", "revoke"])
+    def test_d013_preservation_allows_lawful_generation_transitions(
+        tmp_path, monkeypatch, claim_id, directory, transition
+    ):
+        # Copy actual current proof/target state, unlike the pre-admission canary
+        # helper. Mutations below never operate on the actual repository.
+        root = tmp_path / "current"
+        root.mkdir()
+        for name in ("config", "schemas", "docs", "tests", "implementation", "handoff", "src", "tools"):
+            shutil.copytree(ROOT / name, root / name, ignore=shutil.ignore_patterns("__pycache__"))
+        for name in ("pyproject.toml", "GUARDRAILS.md", "AGENTS.md", ".gitignore"):
+            shutil.copy2(ROOT / name, root / name)
+        api = _controls()
+        assert api.load_product_proof_claim(root, claim_id).state == "READY_FOR_PROOF"
+        pointer = root / "config/product_proof" / directory / "admission.json"
+        original = json.loads(pointer.read_text())["current_generation"]
+        old_generation = root / original["path"]
+        old_bytes = old_generation.read_bytes()
+        if transition == "advance":
+            generation = json.loads(old_bytes)
+            generation.update(
+                generation=generation["generation"] + 1,
+                previous_generation=original,
+                adequacy_review_ref="control-fixture/fresh-transition-review",
+                admission_authority_ref="control-fixture/fresh-transition-admission",
+            )
+            path = pointer.parent / "generations" / f"{generation['generation']:04d}.json"
+            assert not path.exists()
+            _json_write(path, generation)
+            _json_write(
+                pointer,
+                {
+                    "schema_version": "1.0",
+                    "current_generation": {
+                        "path": path.relative_to(root).as_posix(),
+                        "sha256": _sha(path),
+                    },
+                },
+            )
+            claim = api.load_product_proof_claim(root, claim_id)
+            assert claim.state == "READY_FOR_PROOF" and claim.generation_sha256 == _sha(path)
+        else:
+            _json_write(pointer, {"schema_version": "1.0", "current_generation": None})
+            assert api.load_product_proof_claim(root, claim_id).state == "INCOMPLETE_COVERAGE"
+        assert old_generation.read_bytes() == old_bytes
+        monkeypatch.setitem(globals(), "ROOT", root)
+        # The preservation proposition must still hold with either lawful state;
+        # one checkpoint's pointer/status is not permanent admission law.
+>       test_d013_actual_original_claim_generations_are_preserved()
+
+tests/architecture/test_proof_control.py:154: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def test_d013_actual_original_claim_generations_are_preserved():
+        api = _controls()
+        for claim_id, expected in (
+            (
+                "raw_signal_occurrence_truth_sqlite",
+                "51e87129c2a31c71599b7a01beb8ba39717ed5118a4d5c849bcb2015b6c80c6f",
+            ),
+            (
+                "neutral_market_measurement_truth_pilot",
+                "24a5af4054c277b01a140ec43481e86851e5e76263826644a80993c12c2495b7",
+            ),
+            (D012_CLAIM, "26d2b4e371c38b0960cb6081798cc618c9f308567d0df12b2aa40f3777dd2a25"),
+        ):
+            claim = api.load_product_proof_claim(ROOT, claim_id)
+>           assert claim.state == "READY_FOR_PROOF" and claim.generation_sha256 == expected
+E           AssertionError: assert ('INCOMPLETE_COVERAGE' == 'READY_FOR_PROOF'
+E             
+E             - READY_FOR_PROOF
+E             + INCOMPLETE_COVERAGE)
+
+tests/architecture/test_proof_control.py:172: AssertionError
+=========================== short test summary info ============================
+FAILED tests/architecture/test_proof_control.py::test_d013_preservation_allows_lawful_generation_transitions[advance-raw_signal_occurrence_truth_sqlite-raw_signal_sqlite]
+FAILED tests/architecture/test_proof_control.py::test_d013_preservation_allows_lawful_generation_transitions[advance-neutral_market_measurement_truth_pilot-market_measurement]
+FAILED tests/architecture/test_proof_control.py::test_d013_preservation_allows_lawful_generation_transitions[advance-neutral_market_measurement_truth_d012-market_measurement_d012]
+FAILED tests/architecture/test_proof_control.py::test_d013_preservation_allows_lawful_generation_transitions[revoke-raw_signal_occurrence_truth_sqlite-raw_signal_sqlite]
+FAILED tests/architecture/test_proof_control.py::test_d013_preservation_allows_lawful_generation_transitions[revoke-neutral_market_measurement_truth_pilot-market_measurement]
+FAILED tests/architecture/test_proof_control.py::test_d013_preservation_allows_lawful_generation_transitions[revoke-neutral_market_measurement_truth_d012-market_measurement_d012]
+====================== 6 failed, 85 deselected in 10.66s =======================

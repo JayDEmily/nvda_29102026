@@ -1,0 +1,60 @@
+{
+  "id": "D104",
+  "definition": "D104-SKEW-ROTATION-5M-1",
+  "kernel": "K03_CHANGE_RETURN",
+  "parameter_profile": "P_WINDOW",
+  "subject": "NVDA_SKEW_E1",
+  "members": [
+    "controlled-skew-2026-10-23-C25",
+    "controlled-skew-2026-10-23-P25",
+    "controlled-skew-2026-10-23-C10",
+    "controlled-skew-2026-10-23-P10"
+  ],
+  "ordered_predecessors": [
+    "D099_prior",
+    "D100_prior",
+    "D099_current",
+    "D100_current"
+  ],
+  "producer_domains": "D099/D100 E1/E2 and A/T accepted at their own admission",
+  "anchors": [
+    "2026-10-20T12:35:00Z",
+    "2026-10-20T12:40:00Z"
+  ],
+  "cutoff": "2026-10-20T12:40:01Z",
+  "now": "2026-10-20T12:40:02Z",
+  "context": "controlled-option-session/1",
+  "parameter": "mmt-d104-controlled/1",
+  "selection": "mmt-d104-selection/1",
+  "provider": "foundation-controlled-options",
+  "variant": "option_snapshot_v1",
+  "result": "(D100_current-D099_current)-(D100_prior-D099_prior)",
+  "success": {
+    "D099_prior": [
+      8,
+      1
+    ],
+    "D100_prior": [
+      12,
+      1
+    ],
+    "D099_current": [
+      10,
+      1
+    ],
+    "D100_current": [
+      15,
+      1
+    ],
+    "result": [
+      1,
+      1
+    ]
+  },
+  "refusal": {
+    "D100_prior_expiry": "E2",
+    "other_three": "E1",
+    "all_predecessors": "actual lawful public occurrences",
+    "reason": "wrong expiry refuses despite legal E2 producer"
+  }
+}

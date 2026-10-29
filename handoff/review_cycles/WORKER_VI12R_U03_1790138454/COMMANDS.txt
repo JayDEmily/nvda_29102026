@@ -1,0 +1,45 @@
+Material Worker commands and observed results
+
+ROUTING / GOVERNANCE
+- read README.md, GUARDRAILS.md, AGENTS.md, complete current EXEC_PLAN.md,
+  tests/AGENTS.override.md, CURRENT_STATE.md and active WORKER REQUEST.md
+- read accepted IWO-U03, relevant IRB BC-005/006/009/010, complete U03 proof and production api.py
+
+SOURCE / U02 PROMOTION
+- sha256sum received Tester-024 TAR
+  -> 9270587eee6236fdf077887d67cf9cfd1a656b7931831910cc93425fb7fe6649
+- verified main=b806447eb440a016826728af075e714beee23d31 and exact accepted U02/reviewer trees
+- git checkout main && git merge --ff-only tester/vi13r-u02-r024
+  -> main=a78ae7b5515c2e482a2656cebeebae3fa5a6d584
+- git merge-base --is-ancestor 5c62ec5... main -> rc 0
+- git merge-base --is-ancestor df45c5e... main -> rc 0
+- git fsck --full --strict; clean-worktree check -> pass
+- git checkout -b work/vi12r-u03-observation-fidelity main
+
+U03 DEVELOPMENT / FREEZE
+- initial U01+U02+U03 run before pinned mypy restoration -> 364 passed / 2 environment-only mypy failures
+- restored exact pinned project tooling outside repository from preserved wheel artefacts
+  -> Python 3.13.5; pytest 9.0.3; mypy 1.20.1; Ruff 0.15.11
+- U01+U02+U03 after tooling restoration -> 366 passed
+- pre-freeze architecture controls green except promotion gate correctly refused dirty worktree
+- git commit -m 'feat: implement VI12R U03 observation fidelity'
+  -> 7cf8936f854fbed952a468ce06c2f2a0320d9291
+  -> tree b63aac7fb538ea6a38ce3dea5aab719fc7be0ee0
+  -> changed production path only src/nvda_desk/raw_signal_occurrence_truth/api.py
+
+EXACT COMMITTED CANDIDATE VALIDATION
+- python3 -m pytest -q U01 U02 U03 -> 366 passed
+- python3 -m mypy src --show-error-codes -> success, 15 source files
+- python3 -m ruff check src -> pass
+- PYTHONPATH=src python3 tools/validate_product_proof.py -> PASS; 6 families; 13/13 obligations
+- PYTHONPATH=src python3 tools/check_public_seams.py -> PASS
+- PYTHONPATH=src python3 tools/validate_architecture.py -> PASS; 0 dependency/public-seam violations
+- PYTHONPATH=src python3 -m pytest -q tests/architecture tests/bootstrap -> 74 passed
+- PYTHONPATH=src python3 tools/run_promotion_gate.py --set architecture_kernel -> 74 passed
+- git diff --check HEAD^ -> pass
+- git fsck --full --strict -> pass
+- git status --porcelain -> empty
+
+ENVIRONMENT NOTE
+- one architecture/bootstrap attempt without PYTHONPATH=src produced an environment-only subprocess
+  ModuleNotFoundError for nvda_desk; rerun with the repository-native PYTHONPATH=src passed 74/74.

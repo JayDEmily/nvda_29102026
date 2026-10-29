@@ -1,0 +1,32 @@
+{
+  "id": "D137",
+  "definition": "D137-COHERENT-TOP-BOOK-MICROPRICE-1",
+  "kernel": "K02_ALGEBRA",
+  "parameter_profile": "P_BASIC",
+  "subject": "NVDA",
+  "provider": "foundation-controlled-top-book",
+  "variant": "coherent_quote_v1",
+  "raw_fields": {
+    "R033": "quote.bid_size Decimal shares",
+    "R034": "quote.bid_price Decimal USD_per_share",
+    "R035": "quote.ask_price Decimal USD_per_share",
+    "R036": "quote.ask_size Decimal shares"
+  },
+  "coherence": "one exact M00 observation occurrence, subject/quote.id/event/receipt/ingestion, all four roles",
+  "as_of": "2026-10-20T12:40:00Z",
+  "cutoff": "2026-10-20T12:40:01Z",
+  "success": {
+    "bid_price": "99",
+    "ask_price": "101",
+    "bid_size": "3",
+    "ask_size": "1",
+    "microprice": "201/2 USD_per_share"
+  },
+  "refusal": {
+    "bid_size": "0",
+    "ask_size": "0",
+    "prices": "99/101 unchanged",
+    "reason": "zero denominator; no result/history"
+  },
+  "boundary": "synthetic coherent top-book quote, no native NBBO certification"
+}

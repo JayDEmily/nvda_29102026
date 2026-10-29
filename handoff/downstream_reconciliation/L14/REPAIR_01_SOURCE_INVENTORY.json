@@ -1,0 +1,119 @@
+{
+  "kind": "documentary byte inventory, not execution validation",
+  "repaired_from_candidate": "fea21228e5c6fc24e7c229291b760edb52c8b0e1",
+  "candidate_commit": "external checkpoint receipt identifies resulting commit",
+  "files": [
+    {
+      "path": "src/nvda_desk/market_measurement_truth/_native_book_delete_rate.py",
+      "sha256": "a1cf1c593437a14692efdb7f81f7ae8cd655e34d5665da773a0ce7de706fd88d"
+    },
+    {
+      "path": "src/nvda_desk/market_measurement_truth/_native_book_depth.py",
+      "sha256": "4e69c5ba72164b55fd8bfbfa9e2aa48c7320edd66f1ebc4141c42dd773693f30"
+    },
+    {
+      "path": "src/nvda_desk/market_measurement_truth/_native_book_insert_rate.py",
+      "sha256": "a785e2d0324da76f28dc308886797eb2475f15e6649b2d82021d772a43564fcb"
+    },
+    {
+      "path": "src/nvda_desk/market_measurement_truth/_native_book_slope.py",
+      "sha256": "5774cda2766789afacaab01cdf0db5374f2eeb3ebccc3df1125240e642f90175"
+    },
+    {
+      "path": "src/nvda_desk/market_measurement_truth/_native_codec.py",
+      "sha256": "1e3fbe792ac458d59409504849b1b8cb3259e6125bb2a2ba1a93f95f5c13fbb3"
+    },
+    {
+      "path": "src/nvda_desk/market_measurement_truth/_native_direct_venue.py",
+      "sha256": "b145e3726f19cd49b01e5d6cbc5e8d566f455d3bd654ff6183b2fc0adb080c31"
+    },
+    {
+      "path": "src/nvda_desk/market_measurement_truth/_native_microprice.py",
+      "sha256": "618785eceef16eafb231eb5a108f5cdee64a9a3184b722f7b852144a9dfcb3d7"
+    },
+    {
+      "path": "src/nvda_desk/market_measurement_truth/_native_option.py",
+      "sha256": "a5081f452c0485c435f94a014920c9d776d7f364b3d6a681097134d4768fe41a"
+    },
+    {
+      "path": "src/nvda_desk/market_measurement_truth/_native_profiles.py",
+      "sha256": "4161417279274afe02615e967747ae261f032bfd9d16d259a6c65f13cfc60d92"
+    },
+    {
+      "path": "src/nvda_desk/market_measurement_truth/_native_smart_ask.py",
+      "sha256": "97a2b0ddbe41876eab157f33c64a77242f7e6bbf2c184dd28b712351e1012a82"
+    },
+    {
+      "path": "src/nvda_desk/market_measurement_truth/_native_smart_depth.py",
+      "sha256": "5b4b18e087c4f2fd4cf7e1b680bf9709591d54c916d3ba005a8c00613f7e2e87"
+    },
+    {
+      "path": "src/nvda_desk/market_measurement_truth/_native_smart_imbalance.py",
+      "sha256": "0151f9d29196eb6974ea88a602e9e7913dae8fb419b2d4aa3325e4414380a2c2"
+    },
+    {
+      "path": "src/nvda_desk/market_measurement_truth/_native_source.py",
+      "sha256": "b3a9aee14d1d33e8068a722c3b404a87ad7f9d3dd6e3fe2e8792c8ff5cac53dd"
+    },
+    {
+      "path": "src/nvda_desk/market_measurement_truth/_record_store.py",
+      "sha256": "7fc3171bf685f4ac85f524c3ab9bb0d3e7a5bfa81c3518c49a6ee0ad9fb070d5"
+    },
+    {
+      "path": "src/nvda_desk/market_measurement_truth/api.py",
+      "sha256": "eb503b52f2e0398c60e9c8ba8b864ed1e7d1f27c4f918dae898b50a053359d0c"
+    },
+    {
+      "path": "tests/product/market_measurement_native_d087/test_signal.py",
+      "sha256": "137e54943216fa93111bf6453b525c44dd627772a658f9143fe17e284cca2b4c"
+    },
+    {
+      "path": "tests/product/market_measurement_native_d131/test_signal.py",
+      "sha256": "db223cb3fa4e845c52922795314f0c833771ff009914818edafea01ae2dcdb34"
+    },
+    {
+      "path": "tests/product/market_measurement_native_d134/test_signal.py",
+      "sha256": "9fe929b933d32d5aa0b84ed984b8347a493c05c754fdf3fa83fb58d3de27fa7b"
+    },
+    {
+      "path": "tests/product/market_measurement_native_d135/test_signal.py",
+      "sha256": "af6c5e32d21faa52bb541d5de4dd60c47ea84e5d427aa271388195c1a09cfbd6"
+    },
+    {
+      "path": "tests/product/market_measurement_native_d136/test_signal.py",
+      "sha256": "d6fd992a7f89fd6ce669b4d295f1637533cd7cf2fc4a0534ae22298f08ba124f"
+    },
+    {
+      "path": "tests/product/market_measurement_native_d137/test_signal.py",
+      "sha256": "b2ae79993c033f713a7d9c435bbe37369bbeebe91109998f1bd3baaca2db590a"
+    },
+    {
+      "path": "tests/product/market_measurement_native_d138/test_signal.py",
+      "sha256": "d963b1d33e94cc7e80ade3dba031731d5c93b53b7d7feda7443b5f9376471c3a"
+    },
+    {
+      "path": "tests/product/market_measurement_native_d139/test_signal.py",
+      "sha256": "db5dd9682ff731efeffc922887e8d54fb601f6d0a56c0b7c2d95f010942193f5"
+    },
+    {
+      "path": "tests/product/market_measurement_native_d140/test_signal.py",
+      "sha256": "32e3e2361e80955b4c4914b471a505e03eef0ee5b883162927e42fc551601172"
+    },
+    {
+      "path": "tests/product/market_measurement_native_d143/test_signal.py",
+      "sha256": "9d35fb6e0417128ab4ed798f3e6c0b97385d7f4220d24997152085ede4f5241f"
+    },
+    {
+      "path": "tests/product/market_measurement_native_source/test_source.py",
+      "sha256": "300454890d65cc9061f0d138174c38c07024375e90a46446f5970c839c1d7ea2"
+    },
+    {
+      "path": "tests/support/native_reconciliation.py",
+      "sha256": "28ef03c2cde9eca028c2a6d7291a2a077a798c9e2e53bb1fd981d5095202904b"
+    },
+    {
+      "path": "tools/product_proof_claims.py",
+      "sha256": "27b8d094a9d3d447ce89ce174671c288ca81bf35ccc1c8acca79c752923c2489"
+    }
+  ]
+}

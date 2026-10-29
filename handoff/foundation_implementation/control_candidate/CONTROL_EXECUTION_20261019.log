@@ -1,0 +1,1076 @@
+SOURCE_LOG: sqlite_control_red_20261019.log
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/8641b5bf92db/sqlite_control_candidate_20261019
+configfile: pyproject.toml
+collected 25 items
+
+tests/architecture/test_proof_control.py FFFFFFFFFFFFFFFFFFFFFF...       [100%]
+
+=================================== FAILURES ===================================
+______________________ test_legacy_m00_claim_is_preserved ______________________
+
+    def test_legacy_m00_claim_is_preserved():
+>       api = _controls()
+              ^^^^^^^^^^^
+
+tests/architecture/test_proof_control.py:84: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _controls():
+        # An attributable missing-capability assertion, after the interpreter and
+        # existing kernel imports are established. Never call import failure RED.
+>       assert (ROOT / "tools/product_proof_claims.py").is_file(), "claim resolver is not implemented"
+E       AssertionError: claim resolver is not implemented
+E       assert False
+E        +  where False = is_file()
+E        +    where is_file = (PosixPath('/workspace/scratch/8641b5bf92db/sqlite_control_candidate_20261019') / 'tools/product_proof_claims.py').is_file
+
+tests/architecture/test_proof_control.py:20: AssertionError
+______________________ test_foundation_claim_is_separate _______________________
+
+    def test_foundation_claim_is_separate():
+>       api = _controls()
+              ^^^^^^^^^^^
+
+tests/architecture/test_proof_control.py:92: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _controls():
+        # An attributable missing-capability assertion, after the interpreter and
+        # existing kernel imports are established. Never call import failure RED.
+>       assert (ROOT / "tools/product_proof_claims.py").is_file(), "claim resolver is not implemented"
+E       AssertionError: claim resolver is not implemented
+E       assert False
+E        +  where False = is_file()
+E        +    where is_file = (PosixPath('/workspace/scratch/8641b5bf92db/sqlite_control_candidate_20261019') / 'tools/product_proof_claims.py').is_file
+
+tests/architecture/test_proof_control.py:20: AssertionError
+____________ test_native_brief_and_companion_bytes_are_bound[brief] ____________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-2/test_native_brief_and_companio0')
+surface = 'brief'
+
+    @pytest.mark.parametrize("surface", ["brief", "contract", "binding", "catalogue", "admission"])
+    def test_native_brief_and_companion_bytes_are_bound(tmp_path, surface):
+>       api = _controls()
+              ^^^^^^^^^^^
+
+tests/architecture/test_proof_control.py:104: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _controls():
+        # An attributable missing-capability assertion, after the interpreter and
+        # existing kernel imports are established. Never call import failure RED.
+>       assert (ROOT / "tools/product_proof_claims.py").is_file(), "claim resolver is not implemented"
+E       AssertionError: claim resolver is not implemented
+E       assert False
+E        +  where False = is_file()
+E        +    where is_file = (PosixPath('/workspace/scratch/8641b5bf92db/sqlite_control_candidate_20261019') / 'tools/product_proof_claims.py').is_file
+
+tests/architecture/test_proof_control.py:20: AssertionError
+__________ test_native_brief_and_companion_bytes_are_bound[contract] ___________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-2/test_native_brief_and_companio1')
+surface = 'contract'
+
+    @pytest.mark.parametrize("surface", ["brief", "contract", "binding", "catalogue", "admission"])
+    def test_native_brief_and_companion_bytes_are_bound(tmp_path, surface):
+>       api = _controls()
+              ^^^^^^^^^^^
+
+tests/architecture/test_proof_control.py:104: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _controls():
+        # An attributable missing-capability assertion, after the interpreter and
+        # existing kernel imports are established. Never call import failure RED.
+>       assert (ROOT / "tools/product_proof_claims.py").is_file(), "claim resolver is not implemented"
+E       AssertionError: claim resolver is not implemented
+E       assert False
+E        +  where False = is_file()
+E        +    where is_file = (PosixPath('/workspace/scratch/8641b5bf92db/sqlite_control_candidate_20261019') / 'tools/product_proof_claims.py').is_file
+
+tests/architecture/test_proof_control.py:20: AssertionError
+___________ test_native_brief_and_companion_bytes_are_bound[binding] ___________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-2/test_native_brief_and_companio2')
+surface = 'binding'
+
+    @pytest.mark.parametrize("surface", ["brief", "contract", "binding", "catalogue", "admission"])
+    def test_native_brief_and_companion_bytes_are_bound(tmp_path, surface):
+>       api = _controls()
+              ^^^^^^^^^^^
+
+tests/architecture/test_proof_control.py:104: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _controls():
+        # An attributable missing-capability assertion, after the interpreter and
+        # existing kernel imports are established. Never call import failure RED.
+>       assert (ROOT / "tools/product_proof_claims.py").is_file(), "claim resolver is not implemented"
+E       AssertionError: claim resolver is not implemented
+E       assert False
+E        +  where False = is_file()
+E        +    where is_file = (PosixPath('/workspace/scratch/8641b5bf92db/sqlite_control_candidate_20261019') / 'tools/product_proof_claims.py').is_file
+
+tests/architecture/test_proof_control.py:20: AssertionError
+__________ test_native_brief_and_companion_bytes_are_bound[catalogue] __________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-2/test_native_brief_and_companio3')
+surface = 'catalogue'
+
+    @pytest.mark.parametrize("surface", ["brief", "contract", "binding", "catalogue", "admission"])
+    def test_native_brief_and_companion_bytes_are_bound(tmp_path, surface):
+>       api = _controls()
+              ^^^^^^^^^^^
+
+tests/architecture/test_proof_control.py:104: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _controls():
+        # An attributable missing-capability assertion, after the interpreter and
+        # existing kernel imports are established. Never call import failure RED.
+>       assert (ROOT / "tools/product_proof_claims.py").is_file(), "claim resolver is not implemented"
+E       AssertionError: claim resolver is not implemented
+E       assert False
+E        +  where False = is_file()
+E        +    where is_file = (PosixPath('/workspace/scratch/8641b5bf92db/sqlite_control_candidate_20261019') / 'tools/product_proof_claims.py').is_file
+
+tests/architecture/test_proof_control.py:20: AssertionError
+__________ test_native_brief_and_companion_bytes_are_bound[admission] __________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-2/test_native_brief_and_companio4')
+surface = 'admission'
+
+    @pytest.mark.parametrize("surface", ["brief", "contract", "binding", "catalogue", "admission"])
+    def test_native_brief_and_companion_bytes_are_bound(tmp_path, surface):
+>       api = _controls()
+              ^^^^^^^^^^^
+
+tests/architecture/test_proof_control.py:104: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _controls():
+        # An attributable missing-capability assertion, after the interpreter and
+        # existing kernel imports are established. Never call import failure RED.
+>       assert (ROOT / "tools/product_proof_claims.py").is_file(), "claim resolver is not implemented"
+E       AssertionError: claim resolver is not implemented
+E       assert False
+E        +  where False = is_file()
+E        +    where is_file = (PosixPath('/workspace/scratch/8641b5bf92db/sqlite_control_candidate_20261019') / 'tools/product_proof_claims.py').is_file
+
+tests/architecture/test_proof_control.py:20: AssertionError
+_________________ test_physical_product_partition_is_complete __________________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-2/test_physical_product_partitio0')
+
+    def test_physical_product_partition_is_complete(tmp_path):
+>       api = _controls()
+              ^^^^^^^^^^^
+
+tests/architecture/test_proof_control.py:123: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _controls():
+        # An attributable missing-capability assertion, after the interpreter and
+        # existing kernel imports are established. Never call import failure RED.
+>       assert (ROOT / "tools/product_proof_claims.py").is_file(), "claim resolver is not implemented"
+E       AssertionError: claim resolver is not implemented
+E       assert False
+E        +  where False = is_file()
+E        +    where is_file = (PosixPath('/workspace/scratch/8641b5bf92db/sqlite_control_candidate_20261019') / 'tools/product_proof_claims.py').is_file
+
+tests/architecture/test_proof_control.py:20: AssertionError
+________ test_pending_authority_target_and_empty_proof_are_not_success _________
+
+    def test_pending_authority_target_and_empty_proof_are_not_success():
+>       api = _controls()
+              ^^^^^^^^^^^
+
+tests/architecture/test_proof_control.py:134: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _controls():
+        # An attributable missing-capability assertion, after the interpreter and
+        # existing kernel imports are established. Never call import failure RED.
+>       assert (ROOT / "tools/product_proof_claims.py").is_file(), "claim resolver is not implemented"
+E       AssertionError: claim resolver is not implemented
+E       assert False
+E        +  where False = is_file()
+E        +    where is_file = (PosixPath('/workspace/scratch/8641b5bf92db/sqlite_control_candidate_20261019') / 'tools/product_proof_claims.py').is_file
+
+tests/architecture/test_proof_control.py:20: AssertionError
+________________ test_target_status_does_not_make_red_circular _________________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-2/test_target_status_does_not_ma0')
+
+    def test_target_status_does_not_make_red_circular(tmp_path):
+>       api = _controls()
+              ^^^^^^^^^^^
+
+tests/architecture/test_proof_control.py:144: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _controls():
+        # An attributable missing-capability assertion, after the interpreter and
+        # existing kernel imports are established. Never call import failure RED.
+>       assert (ROOT / "tools/product_proof_claims.py").is_file(), "claim resolver is not implemented"
+E       AssertionError: claim resolver is not implemented
+E       assert False
+E        +  where False = is_file()
+E        +    where is_file = (PosixPath('/workspace/scratch/8641b5bf92db/sqlite_control_candidate_20261019') / 'tools/product_proof_claims.py').is_file
+
+tests/architecture/test_proof_control.py:20: AssertionError
+_________________ test_proof_generation_hash_and_supersession __________________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-2/test_proof_generation_hash_and0')
+
+    def test_proof_generation_hash_and_supersession(tmp_path):
+>       api = _controls()
+              ^^^^^^^^^^^
+
+tests/architecture/test_proof_control.py:167: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _controls():
+        # An attributable missing-capability assertion, after the interpreter and
+        # existing kernel imports are established. Never call import failure RED.
+>       assert (ROOT / "tools/product_proof_claims.py").is_file(), "claim resolver is not implemented"
+E       AssertionError: claim resolver is not implemented
+E       assert False
+E        +  where False = is_file()
+E        +    where is_file = (PosixPath('/workspace/scratch/8641b5bf92db/sqlite_control_candidate_20261019') / 'tools/product_proof_claims.py').is_file
+
+tests/architecture/test_proof_control.py:20: AssertionError
+__________________ test_aggregate_collects_all_required_proof __________________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-2/test_aggregate_collects_all_re0')
+
+    def test_aggregate_collects_all_required_proof(tmp_path):
+>       _controls()
+
+tests/architecture/test_proof_control.py:190: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _controls():
+        # An attributable missing-capability assertion, after the interpreter and
+        # existing kernel imports are established. Never call import failure RED.
+>       assert (ROOT / "tools/product_proof_claims.py").is_file(), "claim resolver is not implemented"
+E       AssertionError: claim resolver is not implemented
+E       assert False
+E        +  where False = is_file()
+E        +    where is_file = (PosixPath('/workspace/scratch/8641b5bf92db/sqlite_control_candidate_20261019') / 'tools/product_proof_claims.py').is_file
+
+tests/architecture/test_proof_control.py:20: AssertionError
+_ test_skipped_xfailed_and_xpassed_proof_cannot_pass[__import__('pytest').skip('control canary')] _
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-2/test_skipped_xfailed_and_xpass0')
+body = "__import__('pytest').skip('control canary')"
+
+    @pytest.mark.parametrize("body", ["__import__('pytest').skip('control canary')",
+                                     "__import__('pytest').xfail('control canary')"])
+    def test_skipped_xfailed_and_xpassed_proof_cannot_pass(tmp_path, body):
+>       _controls()
+
+tests/architecture/test_proof_control.py:218: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _controls():
+        # An attributable missing-capability assertion, after the interpreter and
+        # existing kernel imports are established. Never call import failure RED.
+>       assert (ROOT / "tools/product_proof_claims.py").is_file(), "claim resolver is not implemented"
+E       AssertionError: claim resolver is not implemented
+E       assert False
+E        +  where False = is_file()
+E        +    where is_file = (PosixPath('/workspace/scratch/8641b5bf92db/sqlite_control_candidate_20261019') / 'tools/product_proof_claims.py').is_file
+
+tests/architecture/test_proof_control.py:20: AssertionError
+_ test_skipped_xfailed_and_xpassed_proof_cannot_pass[__import__('pytest').xfail('control canary')] _
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-2/test_skipped_xfailed_and_xpass1')
+body = "__import__('pytest').xfail('control canary')"
+
+    @pytest.mark.parametrize("body", ["__import__('pytest').skip('control canary')",
+                                     "__import__('pytest').xfail('control canary')"])
+    def test_skipped_xfailed_and_xpassed_proof_cannot_pass(tmp_path, body):
+>       _controls()
+
+tests/architecture/test_proof_control.py:218: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _controls():
+        # An attributable missing-capability assertion, after the interpreter and
+        # existing kernel imports are established. Never call import failure RED.
+>       assert (ROOT / "tools/product_proof_claims.py").is_file(), "claim resolver is not implemented"
+E       AssertionError: claim resolver is not implemented
+E       assert False
+E        +  where False = is_file()
+E        +    where is_file = (PosixPath('/workspace/scratch/8641b5bf92db/sqlite_control_candidate_20261019') / 'tools/product_proof_claims.py').is_file
+
+tests/architecture/test_proof_control.py:20: AssertionError
+____________________ test_outcome_report_is_fresh_and_exact ____________________
+
+    def test_outcome_report_is_fresh_and_exact():
+>       _controls()
+
+tests/architecture/test_proof_control.py:226: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _controls():
+        # An attributable missing-capability assertion, after the interpreter and
+        # existing kernel imports are established. Never call import failure RED.
+>       assert (ROOT / "tools/product_proof_claims.py").is_file(), "claim resolver is not implemented"
+E       AssertionError: claim resolver is not implemented
+E       assert False
+E        +  where False = is_file()
+E        +    where is_file = (PosixPath('/workspace/scratch/8641b5bf92db/sqlite_control_candidate_20261019') / 'tools/product_proof_claims.py').is_file
+
+tests/architecture/test_proof_control.py:20: AssertionError
+______________ test_governed_mutation_and_dirty_start_fail_closed ______________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-2/test_governed_mutation_and_dir0')
+
+    def test_governed_mutation_and_dirty_start_fail_closed(tmp_path):
+>       _controls()
+
+tests/architecture/test_proof_control.py:235: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _controls():
+        # An attributable missing-capability assertion, after the interpreter and
+        # existing kernel imports are established. Never call import failure RED.
+>       assert (ROOT / "tools/product_proof_claims.py").is_file(), "claim resolver is not implemented"
+E       AssertionError: claim resolver is not implemented
+E       assert False
+E        +  where False = is_file()
+E        +    where is_file = (PosixPath('/workspace/scratch/8641b5bf92db/sqlite_control_candidate_20261019') / 'tools/product_proof_claims.py').is_file
+
+tests/architecture/test_proof_control.py:20: AssertionError
+__________________ test_claim_membership_is_registry_derived ___________________
+
+    def test_claim_membership_is_registry_derived():
+>       api = _controls()
+              ^^^^^^^^^^^
+
+tests/architecture/test_proof_control.py:247: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _controls():
+        # An attributable missing-capability assertion, after the interpreter and
+        # existing kernel imports are established. Never call import failure RED.
+>       assert (ROOT / "tools/product_proof_claims.py").is_file(), "claim resolver is not implemented"
+E       AssertionError: claim resolver is not implemented
+E       assert False
+E        +  where False = is_file()
+E        +    where is_file = (PosixPath('/workspace/scratch/8641b5bf92db/sqlite_control_candidate_20261019') / 'tools/product_proof_claims.py').is_file
+
+tests/architecture/test_proof_control.py:20: AssertionError
+___________ test_historical_backend_is_accounted_but_not_executable ____________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-2/test_historical_backend_is_acc0')
+
+    def test_historical_backend_is_accounted_but_not_executable(tmp_path):
+>       api = _controls()
+              ^^^^^^^^^^^
+
+tests/architecture/test_proof_control.py:253: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _controls():
+        # An attributable missing-capability assertion, after the interpreter and
+        # existing kernel imports are established. Never call import failure RED.
+>       assert (ROOT / "tools/product_proof_claims.py").is_file(), "claim resolver is not implemented"
+E       AssertionError: claim resolver is not implemented
+E       assert False
+E        +  where False = is_file()
+E        +    where is_file = (PosixPath('/workspace/scratch/8641b5bf92db/sqlite_control_candidate_20261019') / 'tools/product_proof_claims.py').is_file
+
+tests/architecture/test_proof_control.py:20: AssertionError
+___________ test_sqlite_claim_target_uses_existing_m00_modify_intent ___________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-2/test_sqlite_claim_target_uses_0')
+
+    def test_sqlite_claim_target_uses_existing_m00_modify_intent(tmp_path):
+>       api = _controls()
+              ^^^^^^^^^^^
+
+tests/architecture/test_proof_control.py:259: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _controls():
+        # An attributable missing-capability assertion, after the interpreter and
+        # existing kernel imports are established. Never call import failure RED.
+>       assert (ROOT / "tools/product_proof_claims.py").is_file(), "claim resolver is not implemented"
+E       AssertionError: claim resolver is not implemented
+E       assert False
+E        +  where False = is_file()
+E        +    where is_file = (PosixPath('/workspace/scratch/8641b5bf92db/sqlite_control_candidate_20261019') / 'tools/product_proof_claims.py').is_file
+
+tests/architecture/test_proof_control.py:20: AssertionError
+______________ test_sqlite_claim_generations_do_not_cross_certify ______________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-2/test_sqlite_claim_generations_0')
+
+    def test_sqlite_claim_generations_do_not_cross_certify(tmp_path):
+>       api = _controls()
+              ^^^^^^^^^^^
+
+tests/architecture/test_proof_control.py:269: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _controls():
+        # An attributable missing-capability assertion, after the interpreter and
+        # existing kernel imports are established. Never call import failure RED.
+>       assert (ROOT / "tools/product_proof_claims.py").is_file(), "claim resolver is not implemented"
+E       AssertionError: claim resolver is not implemented
+E       assert False
+E        +  where False = is_file()
+E        +    where is_file = (PosixPath('/workspace/scratch/8641b5bf92db/sqlite_control_candidate_20261019') / 'tools/product_proof_claims.py').is_file
+
+tests/architecture/test_proof_control.py:20: AssertionError
+_____________ test_sqlite_default_and_m00_regression_are_explicit ______________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-2/test_sqlite_default_and_m00_re0')
+
+    def test_sqlite_default_and_m00_regression_are_explicit(tmp_path):
+>       _controls()
+
+tests/architecture/test_proof_control.py:283: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _controls():
+        # An attributable missing-capability assertion, after the interpreter and
+        # existing kernel imports are established. Never call import failure RED.
+>       assert (ROOT / "tools/product_proof_claims.py").is_file(), "claim resolver is not implemented"
+E       AssertionError: claim resolver is not implemented
+E       assert False
+E        +  where False = is_file()
+E        +    where is_file = (PosixPath('/workspace/scratch/8641b5bf92db/sqlite_control_candidate_20261019') / 'tools/product_proof_claims.py').is_file
+
+tests/architecture/test_proof_control.py:20: AssertionError
+__________ test_sqlite_current_and_historical_paths_partition_exactly __________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-2/test_sqlite_current_and_histor0')
+
+    def test_sqlite_current_and_historical_paths_partition_exactly(tmp_path):
+>       api = _controls()
+              ^^^^^^^^^^^
+
+tests/architecture/test_proof_control.py:292: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _controls():
+        # An attributable missing-capability assertion, after the interpreter and
+        # existing kernel imports are established. Never call import failure RED.
+>       assert (ROOT / "tools/product_proof_claims.py").is_file(), "claim resolver is not implemented"
+E       AssertionError: claim resolver is not implemented
+E       assert False
+E        +  where False = is_file()
+E        +    where is_file = (PosixPath('/workspace/scratch/8641b5bf92db/sqlite_control_candidate_20261019') / 'tools/product_proof_claims.py').is_file
+
+tests/architecture/test_proof_control.py:20: AssertionError
+=========================== short test summary info ============================
+FAILED tests/architecture/test_proof_control.py::test_legacy_m00_claim_is_preserved
+FAILED tests/architecture/test_proof_control.py::test_foundation_claim_is_separate
+FAILED tests/architecture/test_proof_control.py::test_native_brief_and_companion_bytes_are_bound[brief]
+FAILED tests/architecture/test_proof_control.py::test_native_brief_and_companion_bytes_are_bound[contract]
+FAILED tests/architecture/test_proof_control.py::test_native_brief_and_companion_bytes_are_bound[binding]
+FAILED tests/architecture/test_proof_control.py::test_native_brief_and_companion_bytes_are_bound[catalogue]
+FAILED tests/architecture/test_proof_control.py::test_native_brief_and_companion_bytes_are_bound[admission]
+FAILED tests/architecture/test_proof_control.py::test_physical_product_partition_is_complete
+FAILED tests/architecture/test_proof_control.py::test_pending_authority_target_and_empty_proof_are_not_success
+FAILED tests/architecture/test_proof_control.py::test_target_status_does_not_make_red_circular
+FAILED tests/architecture/test_proof_control.py::test_proof_generation_hash_and_supersession
+FAILED tests/architecture/test_proof_control.py::test_aggregate_collects_all_required_proof
+FAILED tests/architecture/test_proof_control.py::test_skipped_xfailed_and_xpassed_proof_cannot_pass[__import__('pytest').skip('control canary')]
+FAILED tests/architecture/test_proof_control.py::test_skipped_xfailed_and_xpassed_proof_cannot_pass[__import__('pytest').xfail('control canary')]
+FAILED tests/architecture/test_proof_control.py::test_outcome_report_is_fresh_and_exact
+FAILED tests/architecture/test_proof_control.py::test_governed_mutation_and_dirty_start_fail_closed
+FAILED tests/architecture/test_proof_control.py::test_claim_membership_is_registry_derived
+FAILED tests/architecture/test_proof_control.py::test_historical_backend_is_accounted_but_not_executable
+FAILED tests/architecture/test_proof_control.py::test_sqlite_claim_target_uses_existing_m00_modify_intent
+FAILED tests/architecture/test_proof_control.py::test_sqlite_claim_generations_do_not_cross_certify
+FAILED tests/architecture/test_proof_control.py::test_sqlite_default_and_m00_regression_are_explicit
+FAILED tests/architecture/test_proof_control.py::test_sqlite_current_and_historical_paths_partition_exactly
+========================= 22 failed, 3 passed in 0.26s =========================
+
+SOURCE_LOG: sqlite_control_first_green_attempt.log
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/8641b5bf92db/sqlite_control_candidate_20261019
+configfile: pyproject.toml
+collected 25 items
+
+tests/architecture/test_proof_control.py ...........FFF.F....F....       [100%]
+
+=================================== FAILURES ===================================
+__________________ test_aggregate_collects_all_required_proof __________________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-3/test_aggregate_collects_all_re0')
+
+    def test_aggregate_collects_all_required_proof(tmp_path):
+        _controls()
+        root = _copy_candidate(tmp_path)
+        _, contract, _, _ = _control_generation(root)
+        path = root / contract["families"][0]["path"]
+        path.write_text("def test_wrong_name(): assert True\n")
+        # Reseal only this deliberately constructed temporary control fixture.
+        # Production generations may never be edited this way.
+        _reseal_control_fixture(root, path)
+        result = _run_control_probe(root)
+>       assert result.returncode == 5, result.stdout + result.stderr
+E       AssertionError: FAIL: worktree is not clean before product-proof aggregate
+E         
+E       assert 2 == 5
+E        +  where 2 = CompletedProcess(args=['/workspace/scratch/8641b5bf92db/sqlite_env_20261019/legacy-checks/bin/python', '/tmp/pytest-of...roduct_proof_gate.py'], returncode=2, stdout='FAIL: worktree is not clean before product-proof aggregate\n', stderr='').returncode
+
+tests/architecture/test_proof_control.py:199: AssertionError
+_ test_skipped_xfailed_and_xpassed_proof_cannot_pass[__import__('pytest').skip('control canary')] _
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-3/test_skipped_xfailed_and_xpass0')
+body = "__import__('pytest').skip('control canary')"
+
+    @pytest.mark.parametrize("body", ["__import__('pytest').skip('control canary')",
+                                     "__import__('pytest').xfail('control canary')"])
+    def test_skipped_xfailed_and_xpassed_proof_cannot_pass(tmp_path, body):
+        _controls()
+        root = _copy_candidate(tmp_path)
+        _control_generation(root, body=body)
+        result = _run_control_probe(root)
+>       assert result.returncode == 1, result.stdout + result.stderr
+E       AssertionError: FAIL: worktree is not clean before product-proof aggregate
+E         
+E       assert 2 == 1
+E        +  where 2 = CompletedProcess(args=['/workspace/scratch/8641b5bf92db/sqlite_env_20261019/legacy-checks/bin/python', '/tmp/pytest-of...roduct_proof_gate.py'], returncode=2, stdout='FAIL: worktree is not clean before product-proof aggregate\n', stderr='').returncode
+
+tests/architecture/test_proof_control.py:222: AssertionError
+_ test_skipped_xfailed_and_xpassed_proof_cannot_pass[__import__('pytest').xfail('control canary')] _
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-3/test_skipped_xfailed_and_xpass1')
+body = "__import__('pytest').xfail('control canary')"
+
+    @pytest.mark.parametrize("body", ["__import__('pytest').skip('control canary')",
+                                     "__import__('pytest').xfail('control canary')"])
+    def test_skipped_xfailed_and_xpassed_proof_cannot_pass(tmp_path, body):
+        _controls()
+        root = _copy_candidate(tmp_path)
+        _control_generation(root, body=body)
+        result = _run_control_probe(root)
+>       assert result.returncode == 1, result.stdout + result.stderr
+E       AssertionError: FAIL: worktree is not clean before product-proof aggregate
+E         
+E       assert 2 == 1
+E        +  where 2 = CompletedProcess(args=['/workspace/scratch/8641b5bf92db/sqlite_env_20261019/legacy-checks/bin/python', '/tmp/pytest-of...roduct_proof_gate.py'], returncode=2, stdout='FAIL: worktree is not clean before product-proof aggregate\n', stderr='').returncode
+
+tests/architecture/test_proof_control.py:222: AssertionError
+______________ test_governed_mutation_and_dirty_start_fail_closed ______________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-3/test_governed_mutation_and_dir0')
+
+    def test_governed_mutation_and_dirty_start_fail_closed(tmp_path):
+        _controls()
+        root = _copy_candidate(tmp_path)
+        _control_generation(root)
+>       assert _run_control_probe(root).returncode == 0
+E       AssertionError: assert 6 == 0
+E        +  where 6 = CompletedProcess(args=['/workspace/scratch/8641b5bf92db/sqlite_env_20261019/legacy-checks/bin/python', '/tmp/pytest-of...e22a5\nFAIL: governed bytes or repository state changed during proof\nobserved aggregate outcome: exit=6\n', stderr='').returncode
+E        +    where CompletedProcess(args=['/workspace/scratch/8641b5bf92db/sqlite_env_20261019/legacy-checks/bin/python', '/tmp/pytest-of...e22a5\nFAIL: governed bytes or repository state changed during proof\nobserved aggregate outcome: exit=6\n', stderr='') = _run_control_probe(PosixPath('/tmp/pytest-of-root/pytest-3/test_governed_mutation_and_dir0'))
+
+tests/architecture/test_proof_control.py:238: AssertionError
+_____________ test_sqlite_default_and_m00_regression_are_explicit ______________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-3/test_sqlite_default_and_m00_re0')
+
+    def test_sqlite_default_and_m00_regression_are_explicit(tmp_path):
+        _controls()
+        root = _copy_candidate(tmp_path)
+        _control_generation(root)
+        result = _run_control_probe(root)
+>       assert result.returncode == 0, result.stdout + result.stderr
+E       AssertionError: ============================= test session starts ==============================
+E         platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+E         rootdir: /tmp/pytest-of-root/pytest-3/test_sqlite_default_and_m00_re0
+E         configfile: pyproject.toml
+E         collected 16 items
+E         
+E         tests/product/raw_signal_sqlite/test_contract_native.py ...              [ 18%]
+E         tests/product/raw_signal_sqlite/test_schedule_assessment.py ...          [ 37%]
+E         tests/product/raw_signal_sqlite/test_sqlite_durability.py .......        [ 81%]
+E         tests/product/raw_signal_sqlite/test_composition.py ...                  [100%]
+E         
+E         ============================== 16 passed in 0.03s ==============================
+E         product-proof aggregate: raw_signal_occurrence_truth_sqlite state=READY_FOR_PROOF
+E         authority=3ad4cdc9ffba4cf91ff9a27edf1dd3b1a9824a421514bb4b5a2cc1b9c504f233 generation=0beafc2e742c6acaf3923eec360e30f450dcf36ef1ec60a856bd7303aff9923c
+E         candidate=f32e4fde49d19633fad20d3497195079763b1537
+E         FAIL: governed bytes or repository state changed during proof
+E         observed aggregate outcome: exit=6
+E         
+E       assert 6 == 0
+E        +  where 6 = CompletedProcess(args=['/workspace/scratch/8641b5bf92db/sqlite_env_20261019/legacy-checks/bin/python', '/tmp/pytest-of...b1537\nFAIL: governed bytes or repository state changed during proof\nobserved aggregate outcome: exit=6\n', stderr='').returncode
+
+tests/architecture/test_proof_control.py:287: AssertionError
+=========================== short test summary info ============================
+FAILED tests/architecture/test_proof_control.py::test_aggregate_collects_all_required_proof
+FAILED tests/architecture/test_proof_control.py::test_skipped_xfailed_and_xpassed_proof_cannot_pass[__import__('pytest').skip('control canary')]
+FAILED tests/architecture/test_proof_control.py::test_skipped_xfailed_and_xpassed_proof_cannot_pass[__import__('pytest').xfail('control canary')]
+FAILED tests/architecture/test_proof_control.py::test_governed_mutation_and_dirty_start_fail_closed
+FAILED tests/architecture/test_proof_control.py::test_sqlite_default_and_m00_regression_are_explicit
+========================= 5 failed, 20 passed in 8.47s =========================
+
+SOURCE_LOG: sqlite_control_integrity_red.log
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/8641b5bf92db/sqlite_control_candidate_20261019
+configfile: pyproject.toml
+collected 38 items / 28 deselected / 10 selected
+
+tests/architecture/test_proof_control.py FFFF......                      [100%]
+
+=================================== FAILURES ===================================
+______________ test_sqlite_integrity_falsifiers[retained_config] _______________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-5/test_sqlite_integrity_falsifie0')
+mutation = 'retained_config'
+
+    @pytest.mark.parametrize("mutation", ["retained_config", "retained_test", "unowned_helper",
+                                         "generation_rollback"])
+    def test_sqlite_integrity_falsifiers(tmp_path, mutation):
+        api = _controls()
+        root = _copy_candidate(tmp_path)
+        api.load_product_proof_claim(root, "raw_signal_occurrence_truth_sqlite")
+        if mutation == "retained_config":
+            path = root / "config/product_proof/authority.yaml"
+            path.write_text(path.read_text() + "\n# changed preserved bytes\n")
+        elif mutation == "retained_test":
+            path = root / "tests/product/raw_signal/test_u01_contract_owner_boundary.py"
+            path.write_text(path.read_text() + "\n# changed preserved bytes\n")
+        elif mutation == "unowned_helper":
+            path = root / "tests/product/raw_signal_sqlite/hidden_helper.py"
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text("VALUE = 1\n")
+        else:
+            entry, _, generation, _ = _control_generation(root)
+            pointer = json.loads((root / entry["admission_path"]).read_text())
+            generation["generation"] = 2
+            generation["previous_generation"] = pointer["current_generation"]
+            _json_write(root / Path(entry["admission_path"]).parent / "generations/0002.json",
+                        generation)
+>       with pytest.raises(ValueError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/architecture/test_proof_control.py:384: Failed
+_______________ test_sqlite_integrity_falsifiers[retained_test] ________________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-5/test_sqlite_integrity_falsifie1')
+mutation = 'retained_test'
+
+    @pytest.mark.parametrize("mutation", ["retained_config", "retained_test", "unowned_helper",
+                                         "generation_rollback"])
+    def test_sqlite_integrity_falsifiers(tmp_path, mutation):
+        api = _controls()
+        root = _copy_candidate(tmp_path)
+        api.load_product_proof_claim(root, "raw_signal_occurrence_truth_sqlite")
+        if mutation == "retained_config":
+            path = root / "config/product_proof/authority.yaml"
+            path.write_text(path.read_text() + "\n# changed preserved bytes\n")
+        elif mutation == "retained_test":
+            path = root / "tests/product/raw_signal/test_u01_contract_owner_boundary.py"
+            path.write_text(path.read_text() + "\n# changed preserved bytes\n")
+        elif mutation == "unowned_helper":
+            path = root / "tests/product/raw_signal_sqlite/hidden_helper.py"
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text("VALUE = 1\n")
+        else:
+            entry, _, generation, _ = _control_generation(root)
+            pointer = json.loads((root / entry["admission_path"]).read_text())
+            generation["generation"] = 2
+            generation["previous_generation"] = pointer["current_generation"]
+            _json_write(root / Path(entry["admission_path"]).parent / "generations/0002.json",
+                        generation)
+>       with pytest.raises(ValueError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/architecture/test_proof_control.py:384: Failed
+_______________ test_sqlite_integrity_falsifiers[unowned_helper] _______________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-5/test_sqlite_integrity_falsifie2')
+mutation = 'unowned_helper'
+
+    @pytest.mark.parametrize("mutation", ["retained_config", "retained_test", "unowned_helper",
+                                         "generation_rollback"])
+    def test_sqlite_integrity_falsifiers(tmp_path, mutation):
+        api = _controls()
+        root = _copy_candidate(tmp_path)
+        api.load_product_proof_claim(root, "raw_signal_occurrence_truth_sqlite")
+        if mutation == "retained_config":
+            path = root / "config/product_proof/authority.yaml"
+            path.write_text(path.read_text() + "\n# changed preserved bytes\n")
+        elif mutation == "retained_test":
+            path = root / "tests/product/raw_signal/test_u01_contract_owner_boundary.py"
+            path.write_text(path.read_text() + "\n# changed preserved bytes\n")
+        elif mutation == "unowned_helper":
+            path = root / "tests/product/raw_signal_sqlite/hidden_helper.py"
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text("VALUE = 1\n")
+        else:
+            entry, _, generation, _ = _control_generation(root)
+            pointer = json.loads((root / entry["admission_path"]).read_text())
+            generation["generation"] = 2
+            generation["previous_generation"] = pointer["current_generation"]
+            _json_write(root / Path(entry["admission_path"]).parent / "generations/0002.json",
+                        generation)
+>       with pytest.raises(ValueError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/architecture/test_proof_control.py:384: Failed
+____________ test_sqlite_integrity_falsifiers[generation_rollback] _____________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-5/test_sqlite_integrity_falsifie3')
+mutation = 'generation_rollback'
+
+    @pytest.mark.parametrize("mutation", ["retained_config", "retained_test", "unowned_helper",
+                                         "generation_rollback"])
+    def test_sqlite_integrity_falsifiers(tmp_path, mutation):
+        api = _controls()
+        root = _copy_candidate(tmp_path)
+        api.load_product_proof_claim(root, "raw_signal_occurrence_truth_sqlite")
+        if mutation == "retained_config":
+            path = root / "config/product_proof/authority.yaml"
+            path.write_text(path.read_text() + "\n# changed preserved bytes\n")
+        elif mutation == "retained_test":
+            path = root / "tests/product/raw_signal/test_u01_contract_owner_boundary.py"
+            path.write_text(path.read_text() + "\n# changed preserved bytes\n")
+        elif mutation == "unowned_helper":
+            path = root / "tests/product/raw_signal_sqlite/hidden_helper.py"
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text("VALUE = 1\n")
+        else:
+            entry, _, generation, _ = _control_generation(root)
+            pointer = json.loads((root / entry["admission_path"]).read_text())
+            generation["generation"] = 2
+            generation["previous_generation"] = pointer["current_generation"]
+            _json_write(root / Path(entry["admission_path"]).parent / "generations/0002.json",
+                        generation)
+>       with pytest.raises(ValueError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/architecture/test_proof_control.py:384: Failed
+=========================== short test summary info ============================
+FAILED tests/architecture/test_proof_control.py::test_sqlite_integrity_falsifiers[retained_config]
+FAILED tests/architecture/test_proof_control.py::test_sqlite_integrity_falsifiers[retained_test]
+FAILED tests/architecture/test_proof_control.py::test_sqlite_integrity_falsifiers[unowned_helper]
+FAILED tests/architecture/test_proof_control.py::test_sqlite_integrity_falsifiers[generation_rollback]
+================== 4 failed, 6 passed, 28 deselected in 3.25s ==================
+
+SOURCE_LOG: sqlite_control_expanded_green.log
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/8641b5bf92db/sqlite_control_candidate_20261019
+configfile: pyproject.toml
+collected 38 items
+
+tests/architecture/test_proof_control.py ..............F................ [ 81%]
+.......                                                                  [100%]
+
+=================================== FAILURES ===================================
+__________ test_skipped_xfailed_and_xpassed_proof_cannot_pass[xpass] ___________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-6/test_skipped_xfailed_and_xpass2')
+body = 'xpass'
+
+    @pytest.mark.parametrize(
+        "body",
+        [
+            "__import__('pytest').skip('control canary')",
+            "__import__('pytest').xfail('control canary')",
+            "xpass",
+        ],
+    )
+    def test_skipped_xfailed_and_xpassed_proof_cannot_pass(tmp_path, body):
+        _controls()
+        root = _copy_candidate(tmp_path)
+        _, contract, _, _ = _control_generation(root, body="assert True" if body == "xpass" else body)
+        if body == "xpass":
+            for family in contract["families"]:
+                path = root / family["path"]
+                path.write_text(
+                    "import pytest\npytestmark = pytest.mark.xfail(strict=False)\n" + path.read_text()
+                )
+                _reseal_control_fixture(root, path)
+        result = _run_control_probe(root)
+>       assert result.returncode == 1, result.stdout + result.stderr
+E       AssertionError: ============================= test session starts ==============================
+E         platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+E         rootdir: /tmp/pytest-of-root/pytest-6/test_skipped_xfailed_and_xpass2
+E         configfile: pyproject.toml
+E         collected 16 items
+E         
+E         tests/product/raw_signal_sqlite/test_contract_native.py XXX              [ 18%]
+E         tests/product/raw_signal_sqlite/test_schedule_assessment.py XXX          [ 37%]
+E         tests/product/raw_signal_sqlite/test_sqlite_durability.py XXXXXXX        [ 81%]
+E         tests/product/raw_signal_sqlite/test_composition.py XXX                  [100%]
+E         
+E         =================================== XPASSES ====================================
+E         =========================== short test summary info ============================
+E         XPASS tests/product/raw_signal_sqlite/test_contract_native.py::test_sqlite_public_contracts_and_typed_identity_layers
+E         XPASS tests/product/raw_signal_sqlite/test_contract_native.py::test_sqlite_native_fidelity_and_temporal_absence
+E         XPASS tests/product/raw_signal_sqlite/test_contract_native.py::test_sqlite_retry_conflict_and_retransmission
+E         XPASS tests/product/raw_signal_sqlite/test_schedule_assessment.py::test_sqlite_owed_slot_and_policy_boundary_law
+E         XPASS tests/product/raw_signal_sqlite/test_schedule_assessment.py::test_sqlite_receipt_relation_and_assessment_chain
+E         XPASS tests/product/raw_signal_sqlite/test_schedule_assessment.py::test_sqlite_scope_high_water_and_restart_unknown
+E         XPASS tests/product/raw_signal_sqlite/test_sqlite_durability.py::test_sqlite_environment_and_only_configured_semantic_source
+E         XPASS tests/product/raw_signal_sqlite/test_sqlite_durability.py::test_sqlite_public_return_requires_native_commit
+E         XPASS tests/product/raw_signal_sqlite/test_sqlite_durability.py::test_sqlite_failed_write_and_killed_writer_nonfabrication
+E         XPASS tests/product/raw_signal_sqlite/test_sqlite_durability.py::test_sqlite_uncertain_commit_and_concurrent_identity
+E         XPASS tests/product/raw_signal_sqlite/test_sqlite_durability.py::test_sqlite_native_roundtrip_and_consistent_backup
+E         XPASS tests/product/raw_signal_sqlite/test_sqlite_durability.py::test_sqlite_port_is_nonsemantic_and_record_only
+E         XPASS tests/product/raw_signal_sqlite/test_sqlite_durability.py::test_sqlite_proof_rejects_surrogate_commit_and_payload
+E         XPASS tests/product/raw_signal_sqlite/test_composition.py::test_sqlite_a00_constructs_nonowning_store_and_public_owner
+E         XPASS tests/product/raw_signal_sqlite/test_composition.py::test_sqlite_a00_exact_order_arguments_and_results
+E         XPASS tests/product/raw_signal_sqlite/test_composition.py::test_sqlite_a00_has_no_domain_decisions_or_private_bypass
+E         ============================= 16 xpassed in 0.02s ==============================
+E         product-proof aggregate: raw_signal_occurrence_truth_sqlite state=READY_FOR_PROOF
+E         authority=3ad4cdc9ffba4cf91ff9a27edf1dd3b1a9824a421514bb4b5a2cc1b9c504f233 generation=3a068e0a3779fa537ee31ff0a8026d9561bed011db77a472003f92ecf26ed61e
+E         candidate=3758fbdc5d158ac3ba990f9376b47cee8d539eca
+E         observed aggregate outcome: exit=0
+E         
+E       assert 0 == 1
+E        +  where 0 = CompletedProcess(args=['/workspace/scratch/8641b5bf92db/sqlite_env_20261019/legacy-checks/bin/python', '/tmp/pytest-of...003f92ecf26ed61e\ncandidate=3758fbdc5d158ac3ba990f9376b47cee8d539eca\nobserved aggregate outcome: exit=0\n', stderr='').returncode
+
+tests/architecture/test_proof_control.py:273: AssertionError
+=========================== short test summary info ============================
+FAILED tests/architecture/test_proof_control.py::test_skipped_xfailed_and_xpassed_proof_cannot_pass[xpass]
+======================== 1 failed, 37 passed in 16.04s =========================
+
+SOURCE_LOG: sqlite_control_review_repair_red.log
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/8641b5bf92db/sqlite_control_candidate_20261019
+configfile: pyproject.toml
+collected 41 items / 38 deselected / 3 selected
+
+tests/architecture/test_proof_control.py FF.                             [100%]
+
+=================================== FAILURES ===================================
+___ test_revoked_generation_requires_fresh_admission[reinstate_uncommitted] ____
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-10/test_revoked_generation_requir0')
+mode = 'reinstate_uncommitted'
+
+    @pytest.mark.parametrize("mode", ["reinstate_uncommitted", "reinstate_committed", "new_generation"])
+    def test_revoked_generation_requires_fresh_admission(tmp_path, mode):
+        api = _controls()
+        root = _copy_candidate(tmp_path)
+        entry, _, record, _ = _control_generation(root)
+        assert _run_control_probe(root).returncode == 0
+        path = root / entry["admission_path"]
+        old_pointer = json.loads(path.read_text())
+        _json_write(path, {"schema_version": "1.0", "current_generation": None})
+        subprocess.run(["git", "add", "."], cwd=root, check=True)
+        commit = ["git", "-c", "user.name=Control fixture", "-c",
+                  "user.email=fixture@example.invalid", "commit", "-qm"]
+        subprocess.run([*commit, "revoke generation1"], cwd=root, check=True)
+        assert api.load_product_proof_claim(root, entry["claim_id"]).state == "INCOMPLETE_COVERAGE"
+        if mode == "new_generation":
+            record["generation"] = 2
+            record["previous_generation"] = old_pointer["current_generation"]
+            record["adequacy_review_ref"] = "control-fixture/new-review"
+            record["admission_authority_ref"] = "control-fixture/new-admission"
+            name = Path(entry["admission_path"]).parent / "generations/0002.json"
+            _json_write(root / name, record)
+            _json_write(path, {"schema_version": "1.0", "current_generation": {
+                "path": name.as_posix(), "sha256": _sha(root / name)}})
+            assert api.load_product_proof_claim(root, entry["claim_id"]).state == "READY_FOR_PROOF"
+        else:
+            _json_write(path, old_pointer)
+            if mode == "reinstate_committed":
+                subprocess.run(["git", "add", "."], cwd=root, check=True)
+                subprocess.run([*commit, "counterfeit old admission reinstatement"], cwd=root, check=True)
+>           with pytest.raises(ValueError, match="revoked|history|advance"):
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/architecture/test_proof_control.py:470: Failed
+____ test_revoked_generation_requires_fresh_admission[reinstate_committed] _____
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-10/test_revoked_generation_requir1')
+mode = 'reinstate_committed'
+
+    @pytest.mark.parametrize("mode", ["reinstate_uncommitted", "reinstate_committed", "new_generation"])
+    def test_revoked_generation_requires_fresh_admission(tmp_path, mode):
+        api = _controls()
+        root = _copy_candidate(tmp_path)
+        entry, _, record, _ = _control_generation(root)
+        assert _run_control_probe(root).returncode == 0
+        path = root / entry["admission_path"]
+        old_pointer = json.loads(path.read_text())
+        _json_write(path, {"schema_version": "1.0", "current_generation": None})
+        subprocess.run(["git", "add", "."], cwd=root, check=True)
+        commit = ["git", "-c", "user.name=Control fixture", "-c",
+                  "user.email=fixture@example.invalid", "commit", "-qm"]
+        subprocess.run([*commit, "revoke generation1"], cwd=root, check=True)
+        assert api.load_product_proof_claim(root, entry["claim_id"]).state == "INCOMPLETE_COVERAGE"
+        if mode == "new_generation":
+            record["generation"] = 2
+            record["previous_generation"] = old_pointer["current_generation"]
+            record["adequacy_review_ref"] = "control-fixture/new-review"
+            record["admission_authority_ref"] = "control-fixture/new-admission"
+            name = Path(entry["admission_path"]).parent / "generations/0002.json"
+            _json_write(root / name, record)
+            _json_write(path, {"schema_version": "1.0", "current_generation": {
+                "path": name.as_posix(), "sha256": _sha(root / name)}})
+            assert api.load_product_proof_claim(root, entry["claim_id"]).state == "READY_FOR_PROOF"
+        else:
+            _json_write(path, old_pointer)
+            if mode == "reinstate_committed":
+                subprocess.run(["git", "add", "."], cwd=root, check=True)
+                subprocess.run([*commit, "counterfeit old admission reinstatement"], cwd=root, check=True)
+>           with pytest.raises(ValueError, match="revoked|history|advance"):
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/architecture/test_proof_control.py:470: Failed
+=========================== short test summary info ============================
+FAILED tests/architecture/test_proof_control.py::test_revoked_generation_requires_fresh_admission[reinstate_uncommitted]
+FAILED tests/architecture/test_proof_control.py::test_revoked_generation_requires_fresh_admission[reinstate_committed]
+================== 2 failed, 1 passed, 38 deselected in 6.88s ==================
+
+SOURCE_LOG: sqlite_control_review_repair_green.log
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/8641b5bf92db/sqlite_control_candidate_20261019
+configfile: pyproject.toml
+collected 41 items / 38 deselected / 3 selected
+
+tests/architecture/test_proof_control.py ...                             [100%]
+
+======================= 3 passed, 38 deselected in 7.99s =======================
+
+SOURCE_LOG: sqlite_control_reason_red.log
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/8641b5bf92db/sqlite_control_candidate_20261019
+configfile: pyproject.toml
+collected 41 items / 40 deselected / 1 selected
+
+tests/architecture/test_proof_control.py F                               [100%]
+
+=================================== FAILURES ===================================
+___________ test_historical_backend_is_accounted_but_not_executable ____________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-12/test_historical_backend_is_acc0')
+
+    def test_historical_backend_is_accounted_but_not_executable(tmp_path):
+        api = _controls()
+        claim = api.load_product_proof_claim(ROOT, "raw_signal_occurrence_truth_product")
+        assert claim.state == "HISTORICAL_NOT_RUNNABLE" and len(claim.families) == 6
+        root = _copy_candidate(tmp_path)
+        assert _run_control_probe(root).returncode == 4
+        env = dict(os.environ, PYTHONPATH=str(root / "tools") + os.pathsep + str(root / "src"))
+        result = subprocess.run([sys.executable, str(root / "tools/run_product_proof_gate.py"),
+                                 "--aggregate", "raw_signal_occurrence_truth_product"],
+                                cwd=root, env=env, text=True, capture_output=True)
+        reason = json.loads((root / "config/product_proof/claims.json").read_text())["claims"][0]["reason"]
+        assert result.returncode == 4
+>       assert reason in result.stdout
+E       AssertionError: assert 'Preserved PostgreSQL-only authority and broad no-SQLite source assertions; no longer an executable regression claim for the SQLite candidate. Re-execution requires a separately compatible admitted legacy candidate.' in 'product-proof aggregate: raw_signal_occurrence_truth_product state=HISTORICAL_NOT_RUNNABLE\nFAIL: selected claim has no ready active admitted proof target\n'
+E        +  where 'product-proof aggregate: raw_signal_occurrence_truth_product state=HISTORICAL_NOT_RUNNABLE\nFAIL: selected claim has no ready active admitted proof target\n' = CompletedProcess(args=['/workspace/scratch/8641b5bf92db/sqlite_env_20261019/legacy-checks/bin/python', '/tmp/pytest-of...th_product state=HISTORICAL_NOT_RUNNABLE\nFAIL: selected claim has no ready active admitted proof target\n', stderr='').stdout
+
+tests/architecture/test_proof_control.py:325: AssertionError
+=========================== short test summary info ============================
+FAILED tests/architecture/test_proof_control.py::test_historical_backend_is_accounted_but_not_executable
+======================= 1 failed, 40 deselected in 2.25s =======================
+
+SOURCE_LOG: sqlite_control_repaired_full_suite.log
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/8641b5bf92db/sqlite_control_candidate_20261019
+configfile: pyproject.toml
+testpaths: tests/architecture, tests/bootstrap
+collected 112 items
+
+tests/architecture/test_activation_readiness.py ............             [ 10%]
+tests/architecture/test_dependency_direction.py ......                   [ 16%]
+tests/architecture/test_identifier_taxonomy.py .....................     [ 34%]
+tests/architecture/test_implementation_authority_ingress.py ............ [ 45%]
+...                                                                      [ 48%]
+tests/architecture/test_object_lifecycle.py ...                          [ 50%]
+tests/architecture/test_proof_control.py ............................... [ 78%]
+..........                                                               [ 87%]
+tests/architecture/test_public_seam_law.py .....                         [ 91%]
+tests/architecture/test_registry_schema.py .                             [ 92%]
+tests/architecture/test_static_typecheck.py ...                          [ 95%]
+tests/bootstrap/test_legacy_exclusion.py ...                             [ 98%]
+tests/bootstrap/test_minimal_imports.py ..                               [100%]
+
+============================= 112 passed in 42.80s =============================
+
+SOURCE_LOG: sqlite_control_final_promotion.log
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/8641b5bf92db/sqlite_control_candidate_20261019
+configfile: pyproject.toml
+collected 112 items
+
+tests/architecture/test_activation_readiness.py ............             [ 10%]
+tests/architecture/test_dependency_direction.py ......                   [ 16%]
+tests/architecture/test_identifier_taxonomy.py .....................     [ 34%]
+tests/architecture/test_implementation_authority_ingress.py ............ [ 45%]
+...                                                                      [ 48%]
+tests/architecture/test_object_lifecycle.py ...                          [ 50%]
+tests/architecture/test_proof_control.py ............................... [ 78%]
+..........                                                               [ 87%]
+tests/architecture/test_public_seam_law.py .....                         [ 91%]
+tests/architecture/test_registry_schema.py .                             [ 92%]
+tests/architecture/test_static_typecheck.py ...                          [ 95%]
+tests/bootstrap/test_legacy_exclusion.py ...                             [ 98%]
+tests/bootstrap/test_minimal_imports.py ..                               [100%]
+
+============================= 112 passed in 41.81s =============================
+architecture objects: 6
+active runtime modules: 1
+implementation allocations: 2
+admitted test families: 11
+promotion sets: 1
+dependency/public-seam violations: 0
+promotion set: architecture_kernel
+resolved test paths: 11
+  tests/architecture/test_activation_readiness.py
+  tests/architecture/test_dependency_direction.py
+  tests/architecture/test_identifier_taxonomy.py
+  tests/architecture/test_implementation_authority_ingress.py
+  tests/architecture/test_object_lifecycle.py
+  tests/architecture/test_proof_control.py
+  tests/architecture/test_public_seam_law.py
+  tests/architecture/test_registry_schema.py
+  tests/architecture/test_static_typecheck.py
+  tests/bootstrap/test_legacy_exclusion.py
+  tests/bootstrap/test_minimal_imports.py
+
+SOURCE_LOG: sqlite_control_whole_lint.log
+E501 Line too long (101 > 100)
+  --> src/nvda_desk/derived_signal_calculation_truth/_financial_policy.py:58:101
+   |
+58 | def producer_evidence(value, *, context_refs=(), convention_refs=(), predecessors=(), cutoff, as_of):
+   |                                                                                                     ^
+59 |     metadata = dict(value.metadata)
+60 |     contexts = metadata["parameter_context_refs"]
+   |
+
+E501 Line too long (104 > 100)
+    --> tests/product/derived_signal/test_m01_stage1_semantics.py:1932:101
+     |
+1930 |     # Preserve the original expected skew/refusal assertions while supplying
+1931 |     # each authoritative K02 dependency as an independent contract-matched
+1932 |     # occurrence. Delta truth belongs to R112, option right C/P to R015, IV to R111; strike is metadata.
+     |                                                                                                     ^^^^
+1933 |     def skew_raw(
+1934 |         *, mixed_expiry: bool = False, wrong_delta: bool = False
+     |
+
+Found 2 errors.

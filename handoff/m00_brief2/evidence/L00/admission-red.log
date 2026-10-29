@@ -1,0 +1,18 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_____________ test_m00_brief2_fixed_extension_and_exact_authority ______________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_m00_brief2_fixed_extensio0')
+
+    def test_m00_brief2_fixed_extension_and_exact_authority(tmp_path):
+        api = _controls()
+>       assert callable(getattr(api, "_m00_brief2_extension", None)), "missing fixed M00 Brief2 admission"
+E       AssertionError: missing fixed M00 Brief2 admission
+E       assert False
+E        +  where False = callable(None)
+E        +    where None = getattr(<module 'product_proof_claims' from '/workspace/scratch/ad31885d756b/repo/tools/product_proof_claims.py'>, '_m00_brief2_extension', None)
+
+tests/architecture/test_proof_control.py:1685: AssertionError
+=========================== short test summary info ============================
+FAILED tests/architecture/test_proof_control.py::test_m00_brief2_fixed_extension_and_exact_authority
+1 failed in 0.16s

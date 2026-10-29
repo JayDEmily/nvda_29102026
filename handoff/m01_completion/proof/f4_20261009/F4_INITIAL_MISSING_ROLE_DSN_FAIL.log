@@ -1,0 +1,747 @@
+........................................................................ [  9%]
+........................................................................ [ 19%]
+........................................................................ [ 29%]
+........................................................................ [ 39%]
+........................................................................ [ 49%]
+........................................................................ [ 59%]
+........................................................................ [ 69%]
+........................................................................ [ 79%]
+........................................................................ [ 89%]
+.................................F.FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF [ 99%]
+FFF..                                                                    [100%]
+=================================== FAILURES ===================================
+_ test_postgresql_proof_roles_and_schemas_are_separate_and_m01_has_no_m00_table_privilege _
+
+>   ???
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_persistence_isolation.py:42: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+>   ???
+E   Failed: DS-T01 PostgreSQL boundary proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_persistence_isolation.py:21: Failed
+_____ test_lawful_separate_m01_writer_and_schema_can_construct_persistence _____
+
+>   ???
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r02_persistence_boundary_refinement.py:83: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+>   ???
+E   Failed: DS-T01-R02 PostgreSQL boundary proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r02_persistence_boundary_refinement.py:17: Failed
+____ test_exact_m00_writer_schema_boundary_is_refused_before_table_creation ____
+
+>   ???
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r02_persistence_boundary_refinement.py:98: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+>   ???
+E   Failed: DS-T01-R02 PostgreSQL boundary proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r02_persistence_boundary_refinement.py:17: Failed
+____________ test_same_m00_writer_with_different_schema_is_refused _____________
+
+>   ???
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r02_persistence_boundary_refinement.py:110: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+>   ???
+E   Failed: DS-T01-R02 PostgreSQL boundary proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r02_persistence_boundary_refinement.py:17: Failed
+________________ test_different_writer_on_m00_schema_is_refused ________________
+
+>   ???
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r02_persistence_boundary_refinement.py:132: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+>   ???
+E   Failed: DS-T01-R02 PostgreSQL boundary proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r02_persistence_boundary_refinement.py:17: Failed
+_______ test_factory_refuses_effective_select_privilege_on_m00_relation ________
+
+>   ???
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r03_postgres_privilege_boundary_refinement.py:97: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r03_postgres_privilege_boundary_refinement.py:49: in _prepare_m00
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+>   ???
+E   Failed: DS-T01-R03 PostgreSQL privilege proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r03_postgres_privilege_boundary_refinement.py:17: Failed
+____ test_factory_refuses_effective_write_privilege_on_m00_relation[INSERT] ____
+
+privilege = 'INSERT'
+
+>   ???
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r03_postgres_privilege_boundary_refinement.py:112: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r03_postgres_privilege_boundary_refinement.py:49: in _prepare_m00
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+>   ???
+E   Failed: DS-T01-R03 PostgreSQL privilege proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r03_postgres_privilege_boundary_refinement.py:17: Failed
+____ test_factory_refuses_effective_write_privilege_on_m00_relation[UPDATE] ____
+
+privilege = 'UPDATE'
+
+>   ???
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r03_postgres_privilege_boundary_refinement.py:112: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r03_postgres_privilege_boundary_refinement.py:49: in _prepare_m00
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+>   ???
+E   Failed: DS-T01-R03 PostgreSQL privilege proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r03_postgres_privilege_boundary_refinement.py:17: Failed
+____ test_factory_refuses_effective_write_privilege_on_m00_relation[DELETE] ____
+
+privilege = 'DELETE'
+
+>   ???
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r03_postgres_privilege_boundary_refinement.py:112: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r03_postgres_privilege_boundary_refinement.py:49: in _prepare_m00
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+>   ???
+E   Failed: DS-T01-R03 PostgreSQL privilege proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r03_postgres_privilege_boundary_refinement.py:17: Failed
+_______ test_operation_refuses_privilege_drift_after_lawful_construction _______
+
+>   ???
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r03_postgres_privilege_boundary_refinement.py:128: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r03_postgres_privilege_boundary_refinement.py:49: in _prepare_m00
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+>   ???
+E   Failed: DS-T01-R03 PostgreSQL privilege proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r03_postgres_privilege_boundary_refinement.py:17: Failed
+_ test_factory_refuses_every_effective_table_privilege_on_m00_relation[SELECT] _
+
+privilege = 'SELECT'
+
+>   ???
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:153: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:61: in _prepare_m00
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+>   ???
+E   Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:29: Failed
+_ test_factory_refuses_every_effective_table_privilege_on_m00_relation[INSERT] _
+
+privilege = 'INSERT'
+
+>   ???
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:153: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:61: in _prepare_m00
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+>   ???
+E   Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:29: Failed
+_ test_factory_refuses_every_effective_table_privilege_on_m00_relation[UPDATE] _
+
+privilege = 'UPDATE'
+
+>   ???
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:153: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:61: in _prepare_m00
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+>   ???
+E   Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:29: Failed
+_ test_factory_refuses_every_effective_table_privilege_on_m00_relation[DELETE] _
+
+privilege = 'DELETE'
+
+>   ???
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:153: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:61: in _prepare_m00
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+>   ???
+E   Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:29: Failed
+_ test_factory_refuses_every_effective_table_privilege_on_m00_relation[TRUNCATE] _
+
+privilege = 'TRUNCATE'
+
+>   ???
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:153: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:61: in _prepare_m00
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+>   ???
+E   Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:29: Failed
+_ test_factory_refuses_every_effective_table_privilege_on_m00_relation[REFERENCES] _
+
+privilege = 'REFERENCES'
+
+>   ???
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:153: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:61: in _prepare_m00
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+>   ???
+E   Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:29: Failed
+_ test_factory_refuses_every_effective_table_privilege_on_m00_relation[TRIGGER] _
+
+privilege = 'TRIGGER'
+
+>   ???
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:153: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:61: in _prepare_m00
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+>   ???
+E   Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:29: Failed
+_ test_factory_refuses_every_effective_table_privilege_on_m00_relation[MAINTAIN] _
+
+privilege = 'MAINTAIN'
+
+>   ???
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:153: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:61: in _prepare_m00
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+>   ???
+E   Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:29: Failed
+_ test_factory_refuses_every_effective_column_privilege_on_m00_relation[SELECT] _
+
+privilege = 'SELECT'
+
+>   ???
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:174: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:61: in _prepare_m00
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+>   ???
+E   Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:29: Failed
+_ test_factory_refuses_every_effective_column_privilege_on_m00_relation[INSERT] _
+
+privilege = 'INSERT'
+
+>   ???
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:174: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:61: in _prepare_m00
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+>   ???
+E   Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:29: Failed
+_ test_factory_refuses_every_effective_column_privilege_on_m00_relation[UPDATE] _
+
+privilege = 'UPDATE'
+
+>   ???
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:174: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:61: in _prepare_m00
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+>   ???
+E   Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:29: Failed
+_ test_factory_refuses_every_effective_column_privilege_on_m00_relation[REFERENCES] _
+
+privilege = 'REFERENCES'
+
+>   ???
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:174: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:61: in _prepare_m00
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+>   ???
+E   Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:29: Failed
+___________ test_operation_refuses_destructive_table_privilege_drift ___________
+
+>   ???
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:193: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:61: in _prepare_m00
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+>   ???
+E   Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:29: Failed
+_____________ test_operation_refuses_column_select_privilege_drift _____________
+
+>   ???
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:212: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:61: in _prepare_m00
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+>   ???
+E   Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:29: Failed
+___________ test_factory_refuses_direct_set_role_path_to_m00_writer ____________
+
+>   ???
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:233: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:63: in _prepare_m00
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+>   ???
+E   Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:30: Failed
+_________ test_factory_refuses_transitive_set_role_path_to_m00_writer __________
+
+>   ???
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:259: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:63: in _prepare_m00
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+>   ???
+E   Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:30: Failed
+_____ test_factory_refuses_settable_role_with_m00_table_privilege[SELECT] ______
+
+privilege = 'SELECT'
+
+>   ???
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:303: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:63: in _prepare_m00
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+>   ???
+E   Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:30: Failed
+_____ test_factory_refuses_settable_role_with_m00_table_privilege[INSERT] ______
+
+privilege = 'INSERT'
+
+>   ???
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:303: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:63: in _prepare_m00
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+>   ???
+E   Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:30: Failed
+_____ test_factory_refuses_settable_role_with_m00_table_privilege[UPDATE] ______
+
+privilege = 'UPDATE'
+
+>   ???
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:303: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:63: in _prepare_m00
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+>   ???
+E   Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:30: Failed
+_____ test_factory_refuses_settable_role_with_m00_table_privilege[DELETE] ______
+
+privilege = 'DELETE'
+
+>   ???
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:303: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:63: in _prepare_m00
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+>   ???
+E   Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:30: Failed
+____ test_factory_refuses_settable_role_with_m00_table_privilege[TRUNCATE] _____
+
+privilege = 'TRUNCATE'
+
+>   ???
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:303: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:63: in _prepare_m00
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+>   ???
+E   Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:30: Failed
+___ test_factory_refuses_settable_role_with_m00_table_privilege[REFERENCES] ____
+
+privilege = 'REFERENCES'
+
+>   ???
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:303: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:63: in _prepare_m00
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+>   ???
+E   Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:30: Failed
+_____ test_factory_refuses_settable_role_with_m00_table_privilege[TRIGGER] _____
+
+privilege = 'TRIGGER'
+
+>   ???
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:303: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:63: in _prepare_m00
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+>   ???
+E   Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:30: Failed
+____ test_factory_refuses_settable_role_with_m00_table_privilege[MAINTAIN] _____
+
+privilege = 'MAINTAIN'
+
+>   ???
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:303: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:63: in _prepare_m00
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+>   ???
+E   Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:30: Failed
+_____ test_factory_refuses_settable_role_with_m00_column_privilege[SELECT] _____
+
+privilege = 'SELECT'
+
+>   ???
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:341: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:63: in _prepare_m00
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+>   ???
+E   Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:30: Failed
+_____ test_factory_refuses_settable_role_with_m00_column_privilege[INSERT] _____
+
+privilege = 'INSERT'
+
+>   ???
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:341: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:63: in _prepare_m00
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+>   ???
+E   Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:30: Failed
+_____ test_factory_refuses_settable_role_with_m00_column_privilege[UPDATE] _____
+
+privilege = 'UPDATE'
+
+>   ???
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:341: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:63: in _prepare_m00
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+>   ???
+E   Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:30: Failed
+___ test_factory_refuses_settable_role_with_m00_column_privilege[REFERENCES] ___
+
+privilege = 'REFERENCES'
+
+>   ???
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:341: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:63: in _prepare_m00
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+>   ???
+E   Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:30: Failed
+______ test_non_inherited_membership_without_set_authority_remains_lawful ______
+
+>   ???
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:379: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:63: in _prepare_m00
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+>   ???
+E   Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:30: Failed
+__ test_operation_refuses_set_role_authority_drift_after_lawful_construction ___
+
+>   ???
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:403: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:63: in _prepare_m00
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+>   ???
+E   Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:30: Failed
+_______ test_leaf1_postgres_roundtrip_preserves_exact_selection_identity _______
+
+>   ???
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_selection_lineage_persistence.py:46: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+>   ???
+E   Failed: Leaf 1 PostgreSQL durability proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+/mnt/data/m01_review_f2_20261009/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/implementation/derived_signal/test_ds_t01_selection_lineage_persistence.py:21: Failed
+=========================== short test summary info ============================
+FAILED tests/implementation/derived_signal/test_ds_t01_persistence_isolation.py::test_postgresql_proof_roles_and_schemas_are_separate_and_m01_has_no_m00_table_privilege - Failed: DS-T01 PostgreSQL boundary proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r02_persistence_boundary_refinement.py::test_lawful_separate_m01_writer_and_schema_can_construct_persistence - Failed: DS-T01-R02 PostgreSQL boundary proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r02_persistence_boundary_refinement.py::test_exact_m00_writer_schema_boundary_is_refused_before_table_creation - Failed: DS-T01-R02 PostgreSQL boundary proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r02_persistence_boundary_refinement.py::test_same_m00_writer_with_different_schema_is_refused - Failed: DS-T01-R02 PostgreSQL boundary proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r02_persistence_boundary_refinement.py::test_different_writer_on_m00_schema_is_refused - Failed: DS-T01-R02 PostgreSQL boundary proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r03_postgres_privilege_boundary_refinement.py::test_factory_refuses_effective_select_privilege_on_m00_relation - Failed: DS-T01-R03 PostgreSQL privilege proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r03_postgres_privilege_boundary_refinement.py::test_factory_refuses_effective_write_privilege_on_m00_relation[INSERT] - Failed: DS-T01-R03 PostgreSQL privilege proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r03_postgres_privilege_boundary_refinement.py::test_factory_refuses_effective_write_privilege_on_m00_relation[UPDATE] - Failed: DS-T01-R03 PostgreSQL privilege proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r03_postgres_privilege_boundary_refinement.py::test_factory_refuses_effective_write_privilege_on_m00_relation[DELETE] - Failed: DS-T01-R03 PostgreSQL privilege proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r03_postgres_privilege_boundary_refinement.py::test_operation_refuses_privilege_drift_after_lawful_construction - Failed: DS-T01-R03 PostgreSQL privilege proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py::test_factory_refuses_every_effective_table_privilege_on_m00_relation[SELECT] - Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py::test_factory_refuses_every_effective_table_privilege_on_m00_relation[INSERT] - Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py::test_factory_refuses_every_effective_table_privilege_on_m00_relation[UPDATE] - Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py::test_factory_refuses_every_effective_table_privilege_on_m00_relation[DELETE] - Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py::test_factory_refuses_every_effective_table_privilege_on_m00_relation[TRUNCATE] - Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py::test_factory_refuses_every_effective_table_privilege_on_m00_relation[REFERENCES] - Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py::test_factory_refuses_every_effective_table_privilege_on_m00_relation[TRIGGER] - Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py::test_factory_refuses_every_effective_table_privilege_on_m00_relation[MAINTAIN] - Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py::test_factory_refuses_every_effective_column_privilege_on_m00_relation[SELECT] - Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py::test_factory_refuses_every_effective_column_privilege_on_m00_relation[INSERT] - Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py::test_factory_refuses_every_effective_column_privilege_on_m00_relation[UPDATE] - Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py::test_factory_refuses_every_effective_column_privilege_on_m00_relation[REFERENCES] - Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py::test_operation_refuses_destructive_table_privilege_drift - Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py::test_operation_refuses_column_select_privilege_drift - Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py::test_factory_refuses_direct_set_role_path_to_m00_writer - Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py::test_factory_refuses_transitive_set_role_path_to_m00_writer - Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py::test_factory_refuses_settable_role_with_m00_table_privilege[SELECT] - Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py::test_factory_refuses_settable_role_with_m00_table_privilege[INSERT] - Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py::test_factory_refuses_settable_role_with_m00_table_privilege[UPDATE] - Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py::test_factory_refuses_settable_role_with_m00_table_privilege[DELETE] - Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py::test_factory_refuses_settable_role_with_m00_table_privilege[TRUNCATE] - Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py::test_factory_refuses_settable_role_with_m00_table_privilege[REFERENCES] - Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py::test_factory_refuses_settable_role_with_m00_table_privilege[TRIGGER] - Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py::test_factory_refuses_settable_role_with_m00_table_privilege[MAINTAIN] - Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py::test_factory_refuses_settable_role_with_m00_column_privilege[SELECT] - Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py::test_factory_refuses_settable_role_with_m00_column_privilege[INSERT] - Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py::test_factory_refuses_settable_role_with_m00_column_privilege[UPDATE] - Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py::test_factory_refuses_settable_role_with_m00_column_privilege[REFERENCES] - Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py::test_non_inherited_membership_without_set_authority_remains_lawful - Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py::test_operation_refuses_set_role_authority_drift_after_lawful_construction - Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_selection_lineage_persistence.py::test_leaf1_postgres_roundtrip_preserves_exact_selection_identity - Failed: Leaf 1 PostgreSQL durability proof requires NVDA_TEST_M00_POSTGRES_DSN
+41 failed, 684 passed in 9.36s

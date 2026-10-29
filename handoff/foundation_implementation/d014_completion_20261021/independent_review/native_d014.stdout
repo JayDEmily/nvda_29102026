@@ -1,0 +1,16 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/56b9974b28a0/d014-review-clone
+configfile: pyproject.toml
+collected 202 items
+
+tests/product/market_measurement_d014/test_raw_ratio.py ................ [  7%]
+........................................................................ [ 43%]
+........................................................................ [ 79%]
+..........................................                               [100%]
+
+======================== 202 passed in 79.46s (0:01:19) ========================
+product-proof aggregate: neutral_market_measurement_truth_d014 state=READY_FOR_PROOF
+authority=c23ea315c94b478c568f105e94891a03af62393792a1478c33027a0371738bb8 generation=903dc5a43b82cd91e1ab04e758549477dc386835ea7203e8d94e9d5d406fc3f8
+candidate=b0a61a7f960b1cff4f95605347db2773d1078c65
+observed aggregate outcome: exit=0

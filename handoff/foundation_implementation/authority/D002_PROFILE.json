@@ -1,0 +1,42 @@
+{
+  "id": "D002",
+  "definition": "D002-SOURCE-AGE-1",
+  "kernel": "K01_TIME",
+  "subject": "NVDA",
+  "provider": "foundation-controlled-temporal",
+  "variant": "clock_v1",
+  "sample_id": "controlled-temporal-sample/1",
+  "as_of": "2026-10-09T14:00:00Z",
+  "cutoff": "2026-10-09T14:00:00Z",
+  "now": "2026-10-09T14:00:01Z",
+  "raw": {
+    "R001": {
+      "mapping": "mmt-d002-r001",
+      "path": ["time", "receipt"],
+      "native": "2026-10-09T13:59:55Z",
+      "source_temporal_kind": "receipt_only",
+      "units": "UTC_datetime"
+    },
+    "R002": {
+      "mapping": "mmt-d001-r002",
+      "path": ["time", "value"],
+      "native": "2026-10-10T00:59:50+11:00",
+      "source_temporal_kind": "true_instant",
+      "units": "native_time"
+    }
+  },
+  "parameter": "mmt-d002-controlled/1",
+  "selection": "mmt-d002-selection/1",
+  "success": {
+    "actual_predecessor": "D001-TRUE-INSTANT-UTC-1",
+    "basis": "source_event",
+    "age_seconds": "10"
+  },
+  "refusal": {
+    "R002": "2026-10-10",
+    "source_temporal_kind": "date_only",
+    "R001": "unchanged",
+    "reason": "no seconds age and no fabricated D001"
+  },
+  "additional_declared_branch": "R002 receipt_only selects actual matching R001 received_ts_utc, yields basis collector_receipt and age_seconds 15 when R001 receipt is 13:59:45Z; no D001."
+}

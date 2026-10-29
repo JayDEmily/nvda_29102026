@@ -1,0 +1,12 @@
+E501 Line too long (102 > 100)
+    --> tests/architecture/test_proof_control.py:1685:101
+     |
+1683 | def test_m00_brief2_fixed_extension_and_exact_authority(tmp_path):
+1684 |     api = _controls()
+1685 |     assert callable(getattr(api, "_m00_brief2_extension", None)), "missing fixed M00 Brief2 admission"
+     |                                                                                                     ^^
+1686 |     result = api._m00_brief2_extension(ROOT)
+1687 |     assert result[0]["claim_id"] == "m00_brief2"
+     |
+
+Found 1 error.

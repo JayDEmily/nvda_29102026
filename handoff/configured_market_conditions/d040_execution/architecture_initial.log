@@ -1,0 +1,28 @@
+PYTHONPATH=src /workspace/scratch/83dd7c79f14f/d038-runtime/bin/python - <<'PY'
+from pathlib import Path
+import yaml, tempfile, shutil, hashlib
+from nvda_desk.architecture.registry import ArchitectureRegistry
+from nvda_desk.architecture.allocation import load_implementation_allocations
+from nvda_desk.architecture.dependencies import analyse_source_tree
+from nvda_desk.architecture.implementation_authority import validate_implementation_authority
+root=Path.cwd(); reg=ArchitectureRegistry.from_repository(root)
+print('M03 registration',reg.get('M03').name, reg.get('M03').permitted_dependencies)
+assert any(a.object_id=='M03' and a.name=='configured_market_conditions' for a in load_implementation_allocations(root))
+print('M03 durable allocation present')
+rules=yaml.safe_load((root/'config/architecture/dependency_rules.yaml').read_text())
+with tempfile.TemporaryDirectory(prefix='nvda-m03-static-') as directory:
+ scope=Path(directory)
+ target=scope/'nvda_desk/configured_market_conditions'
+ shutil.copytree(root/'src/nvda_desk/configured_market_conditions',target,ignore=shutil.ignore_patterns('__pycache__'))
+ for path in target.glob('*.py'):
+  assert path.read_bytes()==(root/'src/nvda_desk/configured_market_conditions'/path.name).read_bytes()
+ issues=analyse_source_tree(scope,reg,rules)
+assert not issues, issues
+print('PASS scoped M03 imports, public seams, category edges and declared module DAG')
+b=validate_implementation_authority(root,root/'implementation/authority/D040_IMPLEMENTATION_AUTHORITY_BINDING.yaml',root/'handoff/configured_market_conditions/authority/D040_IMPLEMENTATION_BRIEF.md')
+print('PASS current exact authority',b.brief_sha256)
+PY
+M03 registration configured_market_conditions ('M02', 'M00')
+M03 durable allocation present
+PASS scoped M03 imports, public seams, category edges and declared module DAG
+PASS current exact authority ce8a16e3f5c5f886b1847ce09be321477259577560e3543b4b18853b59ad3492

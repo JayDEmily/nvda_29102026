@@ -1,0 +1,21 @@
+COMMAND: /mnt/data/nvda_f4_env/venv/bin/python -m pytest -q tests/product/derived_signal/test_m01_f4_rc04_realised_risk_public.py
+EXIT: 1
+....................F                                                    [100%]
+=================================== FAILURES ===================================
+________ test_rc04_public_d039_gap_in_required_five_minute_bars_refuses ________
+
+    def test_rc04_public_d039_gap_in_required_five_minute_bars_refuses() -> None:
+        owner, req, _ = _public("D039", gap_at_index=2)
+        # Recorded closes are now 10 minutes apart in the final required
+        # predecessor step: three native closes do not form two 5-minute bars.
+>       assert owner.materialise(req) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D039', derived_occurrence_id='d039-c05f9032b1dec5826808c9e9a6a8f41b85fbe8...VersionRefV1(context_id='rc04-risk-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(derived_signal_id='D039', derived_occurrence_id='d039-c05f9032b1dec5826808c9e9a6a8f41b85fbe8...VersionRefV1(context_id='rc04-risk-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D039', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 10, 4,...c04-risk-unit', version=1), subject_instrument='NVDA', selection_identity=None)), predecessor_selection_policy_refs=()))
+E        +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7fb9d5ad5660>.materialise
+
+tests/product/derived_signal/test_m01_f4_rc04_realised_risk_public.py:323: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/derived_signal/test_m01_f4_rc04_realised_risk_public.py::test_rc04_public_d039_gap_in_required_five_minute_bars_refuses - AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D039', derived_occurrence_id='d039-c05f9032b1dec5826808c9e9a6a8f41b85fbe8...VersionRefV1(context_id='rc04-risk-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) is None
+ +  where DerivedSignalOccurrenceV1(derived_signal_id='D039', derived_occurrence_id='d039-c05f9032b1dec5826808c9e9a6a8f41b85fbe8...VersionRefV1(context_id='rc04-risk-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D039', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 10, 4,...c04-risk-unit', version=1), subject_instrument='NVDA', selection_identity=None)), predecessor_selection_policy_refs=()))
+ +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7fb9d5ad5660>.materialise
+1 failed, 20 passed in 0.10s

@@ -1,0 +1,12 @@
+{
+  "id": "D140",
+  "kernel": "K08_RULE_BUCKET_POLICY",
+  "parameter_profile": "P_RULE",
+  "units": "events or size/time",
+  "subject": "NVDA",
+  "source": "reuse unchanged accepted D139 five-R native mapping/units and receipt_rate_v1 one generation",
+  "selection": "R001 receipt bucket (T-2s,T], bid positions1-2, complete pre-window standing state",
+  "success": "standing bid size6 at position1 deleted with native delete size0; count1/2 events/s and removed size3 shares/s",
+  "refusal": "delete nonexistent standing position2 after otherwise valid warm-up",
+  "boundary": "synthetic receipt-clock deletion rate; no native event-time rate or SMART certification"
+}

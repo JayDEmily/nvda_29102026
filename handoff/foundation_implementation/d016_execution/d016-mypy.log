@@ -1,0 +1,2 @@
+src/nvda_desk/market_measurement_truth/_record_store.py:99: error: Item "MemoryStorageV1" of "MemoryStorageV1 | SQLiteStorageV1 | SQLiteReadStorageV1" has no attribute "database_path"  [union-attr]
+Found 1 error in 1 file (checked 14 source files)

@@ -1,0 +1,19 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/d549b6d808a9/g51/repository
+configfile: pyproject.toml
+collected 416 items
+
+tests/product/raw_signal/test_u01_contract_owner_boundary.py ........... [  2%]
+........................................................................ [ 19%]
+........................................................................ [ 37%]
+........................................................................ [ 54%]
+......................................................................   [ 71%]
+tests/product/raw_signal/test_u02_capture_schedule.py .................. [ 75%]
+.............                                                            [ 78%]
+tests/product/raw_signal/test_u03_observation_native_temporal.py ....... [ 80%]
+.................................................                        [ 92%]
+tests/product/raw_signal/test_u04_receipt_assessment.py ................ [ 96%]
+................                                                         [100%]
+
+============================= 416 passed in 0.75s ==============================

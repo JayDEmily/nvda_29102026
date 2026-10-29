@@ -1,0 +1,26 @@
+{
+  "review_cycle": "WORKER_VI15_L2_1790582161",
+  "actor": "WORKER",
+  "leaf": "VI-15-L2",
+  "status": "CANDIDATE_FROZEN_TESTER_REQUIRED",
+  "candidate_commit": "332c1f95da032f841e8779ef21fe3c1fceb698a2",
+  "candidate_tree": "3abec93134d128978ad6bcedbd0dfa6cf4334ec6",
+  "distribution_name": "nvda-architecture-kernel",
+  "distribution_version": "1.0.0",
+  "product_blocking_axis": "479/479 PASS; 6 families; 13/13 obligations",
+  "architecture_bootstrap_axis": "74/74 PASS; 11 families",
+  "wheel": {
+    "filename": "nvda_architecture_kernel-1.0.0-py3-none-any.whl",
+    "bytes": 37378,
+    "sha256": "d311960234c932c2507f7b1671c8d53bff3ec234692e65ca27b440293e37e127"
+  },
+  "sdist": {
+    "filename": "nvda_architecture_kernel-1.0.0.tar.gz",
+    "bytes": 161445,
+    "sha256": "135e47f6ab531e8e650a2ee1adc9582965e1c81d97d08dfdc854757a790629fa"
+  },
+  "isolated_installed_runtime_proof": "PASS",
+  "inactive_capability_package_check": "PASS",
+  "independent_tester_acceptance": "UNPROVED_REQUIRED",
+  "vi16_started": false
+}

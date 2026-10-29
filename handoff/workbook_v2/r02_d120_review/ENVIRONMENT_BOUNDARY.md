@@ -1,0 +1,7 @@
+# Available-runtime evidence boundary
+
+Host Python 3.12.14; required project Python 3.13.5 is not present in /usr, /opt or normal interpreter caches. The supplied U05 offline bootstrap explicitly requires an existing 3.13.5 interpreter and contains no interpreter. No supported-runtime PASS is claimed.
+
+Diagnostic venv uses supplied pytest9.0.3, ruff0.15.11 and pure psycopg3.3.4 wheels; PyYAML6.0.3 copied unchanged from primary runtime. Imported libpq170009 from provided portable PostgreSQL archive whose SHA256 matches U05 expected identity 59822410ac6855365c90765de5071182ab382e87d9e9a2622424e7787c4e5caf. PSYCOPG_IMPL=python; LD_LIBRARY_PATH points to extracted portable lib. No PostgreSQL server or live IBKR traffic was used.
+
+Initial default-suite collection failed on missing psycopg, then absent libpq. After recovering those exact dependencies, default suite ran: 72 passed, 2 failed because mypy was unavailable. The two failures are test_current_source_tree_passes_admitted_static_typecheck and test_incompatible_python_visible_public_seam_use_is_rejected. The attempted unchanged pure-Python files from supplied mypy1.20.1 cp313 wheel could not run because librt is also cp313-only. This recovery failed; there is no typecheck result and no weaker substitute is claimed. Required supported-runtime/typecheck acceptance is BLOCKED; bounded source repair and available-runtime semantic review are separate.

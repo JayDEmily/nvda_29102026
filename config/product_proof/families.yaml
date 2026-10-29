@@ -1,0 +1,407 @@
+schema_version: "1.0"
+families:
+  - id: rsot_u01_contract_owner
+    path: tests/product/raw_signal/test_u01_contract_owner_boundary.py
+    implementation_target_id: M00
+    boundary: exact five v1 contracts, typed identity separation and public production owner construction
+    proof_level: CONTRACT
+    proof_obligation_ids:
+      - IA17-PROD-001
+      - IA17-PROD-011
+      - IA17-PROD-012
+    authority_bindings:
+      - authority_id: IRB-BC001
+        proposition_ids: [BC-001]
+      - authority_id: IRB-BC002
+        proposition_ids: [BC-002]
+      - authority_id: IRB-BC012
+        proposition_ids: [BC-012]
+      - authority_id: IRB-BC013
+        proposition_ids: [BC-013]
+      - authority_id: AUTH-VG
+        proposition_ids: [VG-P01, VG-P02, VG-P03]
+      - authority_id: AUTH-N15
+        proposition_ids: [N15-P01, N15-P03, N15-P05]
+      - authority_id: AUTH-N18
+        proposition_ids: [N18-P01, N18-P03]
+    authoritative_inputs:
+      - accepted BC-002/010/012 field, identity, requiredness and compatibility law
+      - exact five v1 public contract symbols
+      - production public create_owner factory
+    dependency_substitutions:
+      - no semantic substitution; tests call the public production owner factory directly
+    case_coverage:
+      lawful_positive:
+        cases:
+          - all five v1 constructors preserve accepted requiredness and permit no new required field
+          - every v1 UTC/null/provenance/finite-discriminant dimension is physically discriminated, including aware non-UTC offsets
+          - v1 field set fails closed on every unproved addition; no optional addition is presumed compatible
+          - all active identity layers use runtime-distinct opaque types with same-payload substitution rejection
+          - production public create_owner exposes separate typed command/read facets
+          - mypy 1.20.1 proves every public command/read facet is non-Any on lawful calls and rejects cross-layer type substitutions across all eleven facets
+      prohibited_false_positive:
+        cases:
+          - requiredness, discriminant, allowed-value, time/null, identity or provenance law drifts
+          - string-prefix or otherwise runtime-collapsed identities stand in for opaque typed identities
+          - actual same-payload values from distinct identity layers are substituted across contract positions
+          - run/replay/packet/workbook/lineage/universal identities enter as unadmitted authority fields
+          - private test-only owner construction or packet/kernel/downstream capability appears
+          - any public command/read facet collapses accepted contract or identity inputs/outputs to Any
+      missing_mandatory_authority:
+        cases:
+          - required contract symbol, required field or public production owner factory is absent
+      lawful_optional_absence:
+        cases:
+          - accepted optional fields remain optional/absent without inferred meaning
+          - no unproved extra v1 field is admitted as compatible without separate semantic authority
+    expected_failure_signals:
+      - explicit pytest failure for missing public-seam symbol or construction facet
+      - TypeError/ValueError for contract violation or unadmitted authority field
+      - mypy failure for lawful seam specimen or missing expected static error for any cross-layer negative specimen
+    command: python -m pytest tests/product/raw_signal/test_u01_contract_owner_boundary.py
+    environment: Python 3.13.5; pytest 9.0.3; mypy 1.20.1; hermetic component/contract proof; no network
+    material_versions:
+      - BICP-CANDIDATE-005 sha256=5b99cead41fd8d3d372b5ed2ef4558065328b814e0a94c3680162fc6594df5ed
+      - IRB sha256=938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342
+    limitations:
+      - compatibility helper proves the accepted structural rule; no unadmitted v2 schema is invented
+      - does not prove PostgreSQL durability, A00 sequential composition, provider integration or downstream behaviour
+    adjacent_nonclaims:
+      - no P01/DMPV3/K01 activation
+      - no downstream business consumer
+    tier_treatment: NOT_CLASSIFIED
+
+  - id: rsot_u02_capture_schedule
+    path: tests/product/raw_signal/test_u02_capture_schedule.py
+    implementation_target_id: M00
+    boundary: immutable capture-scope policy and owed 30-second schedule truth
+    proof_level: COMPONENT_DETERMINISTIC
+    proof_obligation_ids:
+      - IA17-PROD-002
+      - IA17-PROD-008
+    authority_bindings:
+      - authority_id: IRB-BC003
+        proposition_ids: [BC-003]
+      - authority_id: IRB-BC004
+        proposition_ids: [BC-004]
+      - authority_id: IRB-BC010
+        proposition_ids: [BC-010]
+      - authority_id: AUTH-N04
+        proposition_ids: [N04-P02, N04-P03]
+      - authority_id: AUTH-N15
+        proposition_ids: [N15-P03, N15-P04, N15-P05]
+    authoritative_inputs:
+      - active policy boundary at 2026-09-20T12:00:00Z with exclusive deactivation at 12:02:00Z
+      - exact :00/:30 half-open 30-second slots
+    dependency_substitutions:
+      - proof-only opaque capture IDs supplied by the test
+    case_coverage:
+      lawful_positive:
+        cases:
+          - :00 and :30 slots inside active policy yield exactly 30-second half-open occurrences; activation/deactivation are aligned and strictly ordered
+          - v2 starts exactly at v1 exclusive deactivation boundary and preserves earlier facts
+          - a distinct scope_policy_id may follow only at a non-overlapping boundary
+          - identical stable slot retry preserves one opaque capture identity
+      prohibited_false_positive:
+        cases:
+          - slot before activation, at deactivation or any one-microsecond displacement from the exact :00/:30 grid is treated as owed
+          - two policy versions or two distinct scope_policy_id values overlap at any instant, or one policy claims another policy's activation-boundary slot
+          - the same immutable policy identity/version is re-registered with changed activation, deactivation or eligibility lineage; unaligned/ill-ordered policy validity is rejected
+          - scheduler wake time is treated as schedule truth
+          - conflicting content reuses one capture identity
+      missing_mandatory_authority:
+        cases:
+          - no registered policy/version authority exists for the requested slot
+      lawful_optional_absence:
+        cases:
+          - deactivation timestamp is absent without a perpetual-service claim
+    expected_failure_signals:
+      - TypeError/ValueError/KeyError for non-owed slot, conflicting identity or absent policy authority
+    command: python -m pytest tests/product/raw_signal/test_u02_capture_schedule.py
+    environment: Python 3.13.5; pytest 9.0.3; deterministic component proof; no network
+    material_versions:
+      - IRB BC-003/004/010 accepted v1 schedule law
+      - IWO-U02
+    limitations:
+      - does not claim clock accuracy, wake latency, bounded catch-up or provider eligibility contents
+    adjacent_nonclaims:
+      - no provider event-time semantics
+      - no perpetual-service claim
+    tier_treatment: NOT_CLASSIFIED
+
+  - id: rsot_u03_observation_native_temporal
+    path: tests/product/raw_signal/test_u03_observation_native_temporal.py
+    implementation_target_id: M00
+    boundary: raw-observation occurrence, native/delivery fidelity, temporal-kind and retry identity law
+    proof_level: CONTRACT
+    proof_obligation_ids:
+      - IA17-PROD-003
+      - IA17-PROD-004
+      - IA17-PROD-005
+      - IA17-PROD-008
+    authority_bindings:
+      - authority_id: IRB-BC005
+        proposition_ids: [BC-005]
+      - authority_id: IRB-BC006
+        proposition_ids: [BC-006]
+      - authority_id: IRB-BC009
+        proposition_ids: [BC-009]
+      - authority_id: IRB-BC010
+        proposition_ids: [BC-010]
+      - authority_id: AUTH-N04
+        proposition_ids: [N04-P01, N04-P02, N04-P03, N04-P04, N04-P05]
+      - authority_id: AUTH-N06
+        proposition_ids: [N06-P01, N06-G01, N06-G02, N06-G03]
+      - authority_id: AUTH-N15
+        proposition_ids: [N15-P03, N15-P04, N15-P05]
+    authoritative_inputs:
+      - provider logical records and delivery references fixed by BC-005/006
+      - true_instant/date_only/receipt_only specimen cases
+      - native record with provider-supplied null and exact field names/values
+    dependency_substitutions:
+      - proof supplies opaque observation IDs and local ingestion sequence values
+    case_coverage:
+      lawful_positive:
+        cases:
+          - two separable records in one delivery remain two observations sharing only delivery identity
+          - native record and units/provenance round-trip unchanged
+          - each optional provider metadata field round-trips exactly when present and remains absent when not applicable
+          - true_instant/date_only/receipt_only and genuine optional nanosecond receipt evidence remain distinct
+          - ingestion sequence high-water state is retained per typed scope across A/B/A interleaving while independent scopes remain lawful
+      prohibited_false_positive:
+        cases:
+          - date becomes midnight UTC, receipt time fills provider time/timezone, or raw event_ts_utc is fabricated
+          - equal native values/provider ID cause deduplication or retransmission identity reuse
+          - same-scope ingestion sequence regresses while a different scope is incorrectly forced into global ordering
+          - separate records coalesce or repository-created field occurrences split one record
+          - observation/delivery/provider/native/scope identity values substitute across command positions
+      missing_mandatory_authority:
+        cases:
+          - required receipt/order/provenance/temporal discriminant is absent or contradictory
+          - unproved `.v1` keyword material is supplied outside the accepted closed contract field set
+      lawful_optional_absence:
+        cases:
+          - no active capture scope exists and the raw observation remains valid with no capture relation
+          - optional provider metadata and timezone/session material remain absent
+    expected_failure_signals:
+      - TypeError/ValueError for invalid temporal or identity/content reuse
+      - explicit inequality of retransmission occurrence identities
+    command: python -m pytest tests/product/raw_signal/test_u03_observation_native_temporal.py
+    environment: Python 3.13.5; pytest 9.0.3; contract/component proof; no provider network
+    material_versions:
+      - IRB BC-005/006/009/010
+      - IWO-U03
+    limitations:
+      - provider mapping contents, duplicate equivalence and validation/quarantine remain Unknown/out of scope
+    adjacent_nonclaims:
+      - no D001/raw event UTC
+      - no exactly-once provider ingress
+    tier_treatment: NOT_CLASSIFIED
+
+  - id: rsot_u04_receipt_assessment
+    path: tests/product/raw_signal/test_u04_receipt_assessment.py
+    implementation_target_id: M00
+    boundary: receipt-presence evidence relation and append-only three-state assessment chain
+    proof_level: STATE
+    proof_obligation_ids:
+      - IA17-PROD-006
+      - IA17-PROD-007
+      - IA17-PROD-008
+    authority_bindings:
+      - authority_id: IRB-BC007
+        proposition_ids: [BC-007]
+      - authority_id: IRB-BC008
+        proposition_ids: [BC-008]
+      - authority_id: IRB-BC010
+        proposition_ids: [BC-010]
+      - authority_id: AUTH-N15
+        proposition_ids: [N15-P03, N15-P04, N15-P05, N15-P08]
+    authoritative_inputs:
+      - separately controlled eligible/ineligible decision
+      - capture and observation specimen references
+      - exact three assessment outcome literals
+    dependency_substitutions:
+      - eligibility resolver records the exact observation and stored effective policy presented by M00 and does not decide assessment outcome
+      - injected technical persistence port stores already-decided facts and exposes no Raw Signal decision capability
+    case_coverage:
+      lawful_positive:
+        cases:
+          - eligible in-slot receipt is decided against the exact stored effective policy and yields only evidences_receipt_presence_only relation; both start and end sides of [start,end) are discriminated
+          - zero_received is derived when no eligible committed receipt is visible at evidence_as_of
+          - one_or_more_received is derived when eligible committed receipt evidence is visible
+          - late eligible evidence appends one_or_more superseding but not overwriting prior zero
+          - all three exact outcome literals remain valid contract discriminants
+      prohibited_false_positive:
+        cases:
+          - caller or persistence mechanism supplies/derives assessment outcome instead of M00 deriving it only from eligible committed receipt evidence; ineligible/out-of-slot raw observations remain zero_received
+          - eligible evidence for capture A changes capture B assessment despite capture B having no eligible receipt relation
+          - relation eligibility is evaluated against a substituted or mismatched policy identity/lineage
+          - relation implies membership/count/validity/completeness/finality/ownership
+          - broken, self or non-immediate supersession is accepted
+          - unknown is treated as zero or one_or_more as exact count
+      missing_mandatory_authority:
+        cases:
+          - required typed-but-nonexistent observation/capture/predecessor or eligibility/policy authority is absent
+      lawful_optional_absence:
+        cases:
+          - ineligible or out-of-slot observation remains valid with no relation
+          - first assessment has no supersedes reference
+    expected_failure_signals:
+      - TypeError/ValueError/KeyError for broken supersession or missing authority
+      - relation is None for lawful no-relation state
+    command: python -m pytest tests/product/raw_signal/test_u04_receipt_assessment.py
+    environment: Python 3.13.5; pytest 9.0.3; state proof with controlled eligibility input; no network
+    material_versions:
+      - IRB BC-007/008/010
+      - IWO-U04
+    limitations:
+      - unknown_not_established runtime creation is proven by the authorised restart path in U05
+      - no exact membership/count/finality/health or provider-event-absence claim
+    adjacent_nonclaims:
+      - relation materialisation is not required
+      - no final assessment concept
+    tier_treatment: NOT_CLASSIFIED
+
+  - id: rsot_u05_postgresql_durability
+    path: tests/product/raw_signal/test_u05_postgresql_durability.py
+    implementation_target_id: M00
+    boundary: real PostgreSQL own-transaction durability, failure non-fabrication, restart reconciliation and referential readback
+    proof_level: STATE
+    proof_obligation_ids:
+      - IA17-PROD-007
+      - IA17-PROD-008
+      - IA22R01-PROD-009
+      - IA17-PROD-010
+    authority_bindings:
+      - authority_id: IRB-BC008
+        proposition_ids: [BC-008]
+      - authority_id: IRB-BC010
+        proposition_ids: [BC-010]
+      - authority_id: IRB-BC011
+        proposition_ids: [BC-011]
+      - authority_id: IRB-BC013
+        proposition_ids: [BC-013]
+      - authority_id: AUTH-N15
+        proposition_ids: [N15-P03, N15-P04, N15-P05, N15-P08]
+      - authority_id: AUTH-N19
+        proposition_ids: [N19-P01, N19-P02, N19-P03]
+    authoritative_inputs:
+      - NVDA_TEST_POSTGRES_DSN to real PostgreSQL 17.9 proof server
+      - psycopg 3.3.4
+      - explicitly requested owed schedule slot for restart reconciliation
+    dependency_substitutions:
+      - fail_before_commit and fail_after_occurrence_commit are proof-only fault injection around the public real-PostgreSQL owner path
+      - fresh subprocess driver calls the same public create_owner path and contains no product decisions
+      - subprocesses run in a chrooted private mount/network namespace whose only writable filesystems are tmpfs/proc and whose host interpreter/source/PostgreSQL socket mounts are read-only
+    case_coverage:
+      lawful_positive:
+        cases:
+          - exclusive chrooted writer/read processes expose only read-only host interpreter/source/PostgreSQL-socket mounts plus ephemeral tmpfs/proc, so no writable durable host path is reachable
+          - fresh readers receive only PostgreSQL DSN plus query identity and recover complete parent-held pre-write high-entropy policy/capture/observation facts; correlated PostgreSQL facts are directly observable and deleting them prevents exact reproduction
+          - a proof-owned profiler blocks at the exact Python public-command return event before caller-side result inspection; policy/capture/observation/assessment facts are already committed/readable and no writer transaction remains open at that boundary
+          - append-only zero then one-or-more assessment chain survives fresh process boundaries
+          - durable same-ID identical-content observation and assessment retry is idempotent across fresh processes while conflicting content is rejected
+          - per-scope ingestion high-water survives an A:high -> B:low -> A:lower/A:higher fresh-process sequence
+          - the injected PostgreSQL durability port exposes only the authorised transaction/query contract, remains unreachable from the ordinary public owner object graph, and preserves an already owner-decided counterfactual assessment outcome without re-deriving semantic meaning
+          - restart reconciliation commits the exact recovered capture before assessment, then persists unknown_not_established bound to that exact capture
+      prohibited_false_positive:
+        cases:
+          - same-process/module-global memory, SQLite or shared local filesystem state stands in for PostgreSQL semantic durability
+          - PostgreSQL merely gates/audits while another local/network persistence mechanism remains the semantic durable store or facts are reconstructed from IDs
+          - semantic read succeeds through a deliberately invalid PostgreSQL DSN
+          - failed scheduled-capture, raw-observation or assessment write leaves a durable fact or semantic fallback visible from a fresh process
+          - the technical PostgreSQL transaction layer receives semantic decision authority, becomes caller-reachable through the ordinary public owner graph, or re-derives/changes an already owner-decided semantic record
+          - restart absence is interpreted as zero_received
+          - cross-kind atomicity/replay/SLA/RTO/RPO/retention claim appears
+      missing_mandatory_authority:
+        cases:
+          - real PostgreSQL DSN, psycopg 3.3.4 or authorised persistence path is unavailable
+      lawful_optional_absence:
+        cases:
+          - no bounded recovery, catch-up deadline, RTO/RPO, replay-equivalence or retention guarantee is asserted
+    expected_failure_signals:
+      - explicit pytest failure when mandatory real PostgreSQL proof environment is absent/wrong
+      - fresh subprocess nonzero result for a deliberately invalid PostgreSQL DSN
+      - faulted transaction followed by fresh-process durable readback absence
+      - TypeError/ValueError for conflicting durable same-ID reuse
+    command: python -m pytest tests/product/raw_signal/test_u05_postgresql_durability.py
+    environment: Python 3.13.5; pytest 9.0.3; psycopg[binary]==3.3.4; real PostgreSQL 17.9 via NVDA_TEST_POSTGRES_DSN
+    material_versions:
+      - IRB BC-011/013
+      - IWO-U05
+      - PostgreSQL proof environment 17.9
+      - Psycopg 3.3.4
+    limitations:
+      - PostgreSQL 17.9 is proof environment only, not production-version authority
+      - no partitioning, pooling, performance indexes, retention or SLA proof
+    adjacent_nonclaims:
+      - no cross-kind atomicity
+      - no authoritative replay execution
+    tier_treatment: NOT_CLASSIFIED
+
+  - id: rsot_u06_a00_composition
+    path: tests/product/raw_signal/test_u06_a00_composition.py
+    implementation_target_id: M00
+    boundary: governed sequential A00 -> M00 construction, public-seam use and end-to-end bounded composition
+    proof_level: SEQUENTIAL_END_TO_END
+    proof_obligation_ids:
+      - IA17-PROD-011
+      - IA17-PROD-013
+    authority_bindings:
+      - authority_id: IRB-BC001
+        proposition_ids: [BC-001]
+      - authority_id: IRB-BC002
+        proposition_ids: [BC-002]
+      - authority_id: IRB-BC013
+        proposition_ids: [BC-013]
+      - authority_id: IRB-BC014
+        proposition_ids: [BC-014]
+      - authority_id: IRB-BC015
+        proposition_ids: [BC-015]
+      - authority_id: AUTH-N18
+        proposition_ids: [N18-P01, N18-P02, N18-P03, N18-P04, N18-P07]
+      - authority_id: AUTH-N15
+        proposition_ids: [N15-P03, N15-P04, N15-P05, N15-P07]
+      - authority_id: AUTH-N19
+        proposition_ids: [N19-P01, N19-P02, N19-P03, N19-P04, N19-P05]
+    authoritative_inputs:
+      - current architecture registry and declared A00 -> M00 edge
+      - exact M00 public semantic seam plus the separately authorised non-semantic PostgreSQL constructor exception
+      - one bounded proof specimen using accepted v1 facts only
+    dependency_substitutions:
+      - spy owner factory observes A00 delegation only; opaque sentinels make no Raw Signal decisions
+    case_coverage:
+      lawful_positive:
+        cases:
+          - production create_application constructs the non-owning PostgreSQL mechanism and M00; proof-only injection remains bounded to construction/delegation observation
+          - A00 call order covers policy, capture, observation, relation, assessment and referential readback
+          - every material downstream identity, policy reference, timestamp and supersession argument is wired from the exact authorised input or preceding M00 result, and caller policy reference must agree with registered policy identity/version
+          - A00 returns the exact opaque objects returned by M00 rather than recreating semantic results
+          - declared runtime edge remains exactly A00 -> M00
+      prohibited_false_positive:
+        cases:
+          - private semantic M00 seam, table/repository bypass, or technical import beyond the exact create_postgres_persistence exception appears
+          - A00 calculates assessment outcome or substitutes its own semantic result objects
+          - A00 preserves method order while wiring a wrong observation ID, capture ID, effective policy ref, assessment ID, evidence timestamp or supersession ref, or accepts a caller policy ref inconsistent with the registered policy
+          - M00 -> A00, P01/K01, packet or downstream-consumer path appears
+      missing_mandatory_authority:
+        cases:
+          - production create_application, lawful M00 seam or declared dependency is absent
+      lawful_optional_absence:
+        cases:
+          - no downstream consumer, packet carrier or K mechanism is composed
+    expected_failure_signals:
+      - explicit pytest failure for absent production A00 create_application path
+      - call-order/object-identity assertion failure for A00-owned semantics or bypass
+      - static import/dependency assertion failure for private/reverse/unadmitted composition
+    command: python -m pytest tests/product/raw_signal/test_u06_a00_composition.py
+    environment: Python 3.13.5; pytest 9.0.3; sequential composition proof; no live provider/network/downstream capability
+    material_versions:
+      - IRB BC-001/002/013/014/015
+      - IWO-U06
+      - current architecture M00/A00 admission
+    limitations:
+      - no downstream business behaviour, P01/K01, live provider or external-effect proof
+    adjacent_nonclaims:
+      - sequential proof does not claim broader NVDA completion or operational fitness
+    tier_treatment: NOT_CLASSIFIED

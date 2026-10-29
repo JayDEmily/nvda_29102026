@@ -1,0 +1,5 @@
+# D003 typed local result validator repair
+
+Source review after scoped static success found that the inherited `_Validated` enforces UTC for every datetime, which would reject the authorised IANA-local result before materialisation. The additive `TemporalLocalOccurrenceV1` result field is exempted from UTC-only checking, and its own validator requires an aware local datetime. All other datetime fields retain UTC-only validation. This materially changes the changed API source; repeat scoped mypy/Ruff after repair. The earlier static output remains retained. No product runtime has run.
+
+Further source review required the accepted IANA identity to survive SQLite decoding, rather than merely retaining an equal fixed offset. The record validator now requires a `ZoneInfo` result with the selected R004 key; the proof checks that key after ordinary public read-only reopen. Its generation is resealed to the final physical proof bytes. Recheck the affected scoped static sources before candidate commit.

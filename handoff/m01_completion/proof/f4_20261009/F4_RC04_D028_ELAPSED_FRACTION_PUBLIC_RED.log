@@ -1,0 +1,22 @@
+COMMAND: /mnt/data/nvda_f4_env/venv/bin/python -m pytest -q tests/product/derived_signal/test_m01_f4_rc04_baselines_public.py tests/product/derived_signal/test_m01_f4_rc04_elapsed_fraction_public.py
+.........F.                                                              [100%]
+=================================== FAILURES ===================================
+__ test_d028_public_requires_historical_baseline_at_current_session_fraction ___
+
+    def test_d028_public_requires_historical_baseline_at_current_session_fraction() -> None:
+        owner, request = _public(
+            (Decimal("0.25"), Decimal("0.75"), Decimal("0.5"))
+        )
+        # There are two earlier R041 values, but neither belongs to the
+        # current R044 elapsed-session-fraction bucket.  No valid baseline exists.
+>       assert owner.materialise(request) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D028', derived_occurrence_id='d028-445c192fe417669d0c4f0b713d8d4c34411130...=(VersionRefV1(context_id='elapsed-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(derived_signal_id='D028', derived_occurrence_id='d028-445c192fe417669d0c4f0b713d8d4c34411130...=(VersionRefV1(context_id='elapsed-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D028', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 10, 4,...'elapsed-unit', version=1), subject_instrument='NVDA', selection_identity=None)), predecessor_selection_policy_refs=()))
+E        +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7eff46496f90>.materialise
+
+tests/product/derived_signal/test_m01_f4_rc04_elapsed_fraction_public.py:99: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/derived_signal/test_m01_f4_rc04_elapsed_fraction_public.py::test_d028_public_requires_historical_baseline_at_current_session_fraction - AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D028', derived_occurrence_id='d028-445c192fe417669d0c4f0b713d8d4c34411130...=(VersionRefV1(context_id='elapsed-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) is None
+ +  where DerivedSignalOccurrenceV1(derived_signal_id='D028', derived_occurrence_id='d028-445c192fe417669d0c4f0b713d8d4c34411130...=(VersionRefV1(context_id='elapsed-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D028', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 10, 4,...'elapsed-unit', version=1), subject_instrument='NVDA', selection_identity=None)), predecessor_selection_policy_refs=()))
+ +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7eff46496f90>.materialise
+1 failed, 10 passed in 0.08s

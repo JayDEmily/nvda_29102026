@@ -1,0 +1,2 @@
+PASS: F1 488 authoritative edges; all 18 F2 IDs uniquely resolve and classes/status agree
+Scope: RC01, RC07, RC08, RC09, RC21; no assertion of whole-F1 class acceptance

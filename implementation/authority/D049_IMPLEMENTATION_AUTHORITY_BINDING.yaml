@@ -1,0 +1,11 @@
+schema_version: "1.0"
+brief_sha256: 4e59e7ca124be85ccdb6faa7de7062dda05641e8687fd22f487cf9b7e717eec0
+acceptance:
+  status: ACCEPTED_FOR_IMPLEMENTATION
+  authority_ref: owner-chat/20261023/D037-D056-final-plan-execution
+targets:
+  - action: modify
+    object_id: M02
+  - action: modify
+    object_id: G01
+

@@ -1,0 +1,171 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "control_authority",
+    "claims",
+    "transitional_dispositions"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "3.0"
+    },
+    "control_authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "brief_path",
+        "binding_path"
+      ],
+      "properties": {
+        "brief_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "binding_path": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "claim_id",
+          "profile",
+          "physical_root"
+        ],
+        "properties": {
+          "claim_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "profile": {
+            "enum": [
+              "historical_backend_v1",
+              "accepted_brief_v2"
+            ]
+          },
+          "physical_root": {
+            "type": "string",
+            "minLength": 1
+          },
+          "legacy_config_root": {
+            "type": "string",
+            "minLength": 1
+          },
+          "execution_state": {
+            "type": "string",
+            "minLength": 1
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          },
+          "contract_path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "binding_path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "admission_path": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "profile": {
+                  "const": "historical_backend_v1"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "legacy_config_root",
+                "execution_state",
+                "reason"
+              ],
+              "allOf": [
+                {
+                  "not": {
+                    "required": [
+                      "contract_path"
+                    ]
+                  }
+                },
+                {
+                  "not": {
+                    "required": [
+                      "binding_path"
+                    ]
+                  }
+                },
+                {
+                  "not": {
+                    "required": [
+                      "admission_path"
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "profile": {
+                  "const": "accepted_brief_v2"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "contract_path",
+                "binding_path",
+                "admission_path"
+              ],
+              "allOf": [
+                {
+                  "not": {
+                    "required": [
+                      "legacy_config_root"
+                    ]
+                  }
+                },
+                {
+                  "not": {
+                    "required": [
+                      "execution_state"
+                    ]
+                  }
+                },
+                {
+                  "not": {
+                    "required": [
+                      "reason"
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "transitional_dispositions": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

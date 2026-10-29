@@ -1,0 +1,22 @@
+..................................................................F..... [ 63%]
+.........................................                                [100%]
+=================================== FAILURES ===================================
+_____ test_actual_m00_generation_and_foundation_bootstrap_remain_distinct ______
+
+    def test_actual_m00_generation_and_foundation_bootstrap_remain_distinct():
+        api = _controls()
+        raw = api.load_product_proof_claim(ROOT, "raw_signal_occurrence_truth_sqlite")
+        foundation = api.load_product_proof_claim(ROOT, "neutral_market_measurement_truth_pilot")
+        assert raw.state == "READY_FOR_PROOF" and raw.target_id == "M00"
+        assert raw.target_status == "active" and raw.generation_sha256 is not None
+        assert foundation.target_status == "bootstrap"
+>       assert foundation.state == "INCOMPLETE_NO_PHYSICAL_FAMILIES"
+E       AssertionError: assert 'READY_FOR_PROOF' == 'INCOMPLETE_N...ICAL_FAMILIES'
+E         
+E         - INCOMPLETE_NO_PHYSICAL_FAMILIES
+E         + READY_FOR_PROOF
+
+tests/architecture/test_proof_control.py:202: AssertionError
+=========================== short test summary info ============================
+FAILED tests/architecture/test_proof_control.py::test_actual_m00_generation_and_foundation_bootstrap_remain_distinct
+1 failed, 112 passed in 37.69s

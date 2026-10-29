@@ -1,0 +1,94 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_d037",
+  "semantic_brief_path": "handoff/foundation_implementation/authority/D037_IMPLEMENTATION_BRIEF.md",
+  "target": {
+    "category": "M",
+    "responsibility_name": "neutral_market_measurement_truth",
+    "package": "nvda_desk.market_measurement_truth",
+    "public_seam": "nvda_desk.market_measurement_truth.api",
+    "intent": "modify",
+    "existing_object_id": "M02"
+  },
+  "proof_axis": "product",
+  "product_tier_treatment": "NOT_CLASSIFIED",
+  "architecture_proof_axis": "architecture_kernel",
+  "required_proof_ids": [
+    "D037-CALCULATION"
+  ],
+  "families": [
+    {
+      "id": "mmt_d037",
+      "path": "tests/product/market_measurement_d037/test_signal.py",
+      "proof_obligation_ids": [
+        "D037-CALCULATION"
+      ],
+      "required_test_names": [
+        "test_d037_signal"
+      ],
+      "boundary": "D037 = annualised sqrt(sum(rounded_log_return_i squared)/sum(measured trading-year fractions)). R151 bar.close with session.id/sample.kind/adjustment.basis, strictly positive unadjusted official closes at13:00Z on21 explicitly listed synthetic daily sessions30September–20October2026; each12:00–13:00Z, no breaks, controlled-risk-20d-calendar/1. Anchor30September;20 complete measured sessions1–20October, each intersection1/252 of declared252-hour trading year. No overnight charge, calendar inference, shortened horizon or D predecessors. Use definition D037-REALISED-VOL-1, mmt-d037-controlled/1 and mmt-d037-selection/1, R151 mmt-risk-close/1 and mmt-pilot-price/1; same controlled source as accepted D036. Current20October13:00Z, cutoff+1s, now+2s. Full21 closes twenty100 then110: exact canonical50digit half-even Decimal0.33831757671837337403929019188671516632423102188566. Reuse rounded50digit L from root5.1 as exact Fraction before square/root. Refusal: only final11 closes remain under unchanged21-point context, no ten-session substitute. Full native identity/lineage, exact context interval measures, typed public SQLite reopen and no refusal occurrence asserted.",
+      "proof_levels": [
+        "CONTRACT",
+        "INTEGRATION",
+        "STATE"
+      ],
+      "authoritative_inputs": [
+        "D037 = annualised sqrt(sum(rounded_log_return_i squared)/sum(measured trading-year fractions)). R151 bar.close with session.id/sample.kind/adjustment.basis, strictly positive unadjusted official closes at13:00Z on21 explicitly listed synthetic daily sessions30September–20October2026; each12:00–13:00Z, no breaks, controlled-risk-20d-calendar/1. Anchor30September;20 complete measured sessions1–20October, each intersection1/252 of declared252-hour trading year. No overnight charge, calendar inference, shortened horizon or D predecessors. Use definition D037-REALISED-VOL-1, mmt-d037-controlled/1 and mmt-d037-selection/1, R151 mmt-risk-close/1 and mmt-pilot-price/1; same controlled source as accepted D036. Current20October13:00Z, cutoff+1s, now+2s. Full21 closes twenty100 then110: exact canonical50digit half-even Decimal0.33831757671837337403929019188671516632423102188566. Reuse rounded50digit L from root5.1 as exact Fraction before square/root. Refusal: only final11 closes remain under unchanged21-point context, no ten-session substitute. Full native identity/lineage, exact context interval measures, typed public SQLite reopen and no refusal occurrence asserted.",
+        "EXEC_PLAN.md sections3-5 at commissioned 8bc212b; owning brief declares exact profile."
+      ],
+      "dependency_substitutions": [
+        "Controlled synthetic source/session/completeness only, not native certification.",
+        "Reuse accepted M00/common M02 mechanisms, existing window interface/record store, prior immutable evidence. Exact cases also qualify authorised shared prerequisite; no added suites."
+      ],
+      "case_coverage": {
+        "lawful_positive": {
+          "cases": [
+            "Exactly root manifest case1, independent fixed literal; complete typed metadata/source lineage/public durable reopen."
+          ]
+        },
+        "prohibited_false_positive": {
+          "cases": [
+            "Exactly root manifest case2; lawful raw preconditions reach its declared defect and persist no occurrence."
+          ]
+        },
+        "missing_mandatory_authority": {
+          "cases": [
+            "Exact bound controlled profile, admission and immutable generation required before runtime."
+          ]
+        },
+        "lawful_optional_absence": {
+          "cases": [
+            "No live provider/calendar integration or other signal required; unsupported prerequisites refuse by contract."
+          ]
+        }
+      },
+      "expected_failure_signals": [
+        "Incorrect arithmetic or selected raw lineage fails exact success assertions",
+        "Named missing/incompatible input must refuse without occurrence"
+      ],
+      "limitations": [
+        "Exactly two cases; no generic fault/boundary/numeric variant probes, broad suites or earlier claims."
+      ],
+      "adjacent_nonclaims": [
+        "No acceptance beyond this ID; no native-source certification or M00 mutation."
+      ],
+      "environment": "CPython3.12.14 SQLite3.53.1 and existing pinned offline tools.",
+      "material_versions": [
+        "Exact brief/binding/contract/generation and candidate/tree/runtime; old generations preserved."
+      ],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/market_measurement_d037/test_signal.py"
+    }
+  ],
+  "required_support_files": [],
+  "optional_support_files": [],
+  "execution_policy": {
+    "skipped_tests": "FAIL",
+    "xfailed_tests": "FAIL",
+    "xpassed_tests": "FAIL",
+    "collection_failed": "FAIL",
+    "no_tests_collected": "FAIL",
+    "unexpected_governed_mutation": "FAIL"
+  }
+}
+

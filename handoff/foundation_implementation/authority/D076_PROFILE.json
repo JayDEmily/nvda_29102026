@@ -1,0 +1,338 @@
+{
+  "id": "D076",
+  "definition": "D076-RELATIVE-RETURN-1",
+  "equation": "D072-D071",
+  "subject": "US_TECH_VS_BROAD",
+  "members": [
+    "QQQ",
+    "SPY"
+  ],
+  "predecessor_order": [
+    "D072",
+    "D071"
+  ],
+  "parents": {
+    "D072": {
+      "brief_sha256": "6a9ff0f10b2d1e507f75dd7d82456272b55eb02fe3a90f8911d0fe14f1ec7184",
+      "profile_sha256": "3d4dbd90a4574c09abef791b1899222fd7aff9f06ff83716c32e8164cb001720",
+      "profile": {
+        "id": "D072",
+        "raw_order": [
+          "R037",
+          "R042"
+        ],
+        "subject": "QQQ",
+        "series": "QQQ",
+        "as_of": "2026-10-20T12:40:00Z",
+        "reference": "2026-10-19T13:00:00Z",
+        "context_id": "controlled-underlying-session",
+        "context_start": "2026-10-19T12:00:00Z",
+        "context_end": "2026-10-20T13:00:00Z",
+        "records": [
+          [
+            0,
+            "QQQ",
+            "2026-10-20T12:40:00Z",
+            "2026-10-20T12:40:00Z",
+            {
+              "trade": {
+                "last": "90"
+              },
+              "instrument": {
+                "id": "QQQ"
+              },
+              "session": {
+                "id": "controlled-20oct12-13Z"
+              },
+              "adjustment": {
+                "basis": "controlled_unadjusted/1"
+              },
+              "price": {
+                "kind": "current_last"
+              }
+            }
+          ],
+          [
+            1,
+            "QQQ",
+            "2026-10-19T13:00:00Z",
+            "2026-10-19T13:00:00Z",
+            {
+              "official_close": {
+                "value": "100"
+              },
+              "instrument": {
+                "id": "QQQ"
+              },
+              "session": {
+                "id": "controlled-19oct12-13Z"
+              },
+              "adjustment": {
+                "basis": "controlled_unadjusted/1"
+              },
+              "price": {
+                "kind": "official_close"
+              }
+            }
+          ]
+        ],
+        "provider": "foundation-controlled-underlying",
+        "variant": "last_prior_close_v1",
+        "map_specs": [
+          [
+            "R037",
+            "mmt-r037-underlying",
+            [
+              "trade",
+              "last"
+            ],
+            "price",
+            [
+              [
+                "instrument.id",
+                [
+                  "instrument",
+                  "id"
+                ]
+              ],
+              [
+                "session.id",
+                [
+                  "session",
+                  "id"
+                ]
+              ],
+              [
+                "adjustment.basis",
+                [
+                  "adjustment",
+                  "basis"
+                ]
+              ],
+              [
+                "price.kind",
+                [
+                  "price",
+                  "kind"
+                ]
+              ]
+            ]
+          ],
+          [
+            "R042",
+            "mmt-r042-underlying",
+            [
+              "official_close",
+              "value"
+            ],
+            "price",
+            [
+              [
+                "instrument.id",
+                [
+                  "instrument",
+                  "id"
+                ]
+              ],
+              [
+                "session.id",
+                [
+                  "session",
+                  "id"
+                ]
+              ],
+              [
+                "adjustment.basis",
+                [
+                  "adjustment",
+                  "basis"
+                ]
+              ],
+              [
+                "price.kind",
+                [
+                  "price",
+                  "kind"
+                ]
+              ]
+            ]
+          ]
+        ],
+        "unit_id": "mmt-underlying-price",
+        "native_units": "price",
+        "parameter_id": "mmt-d072-controlled",
+        "selection_id": "mmt-d072-selection",
+        "definition": "D072-LOG-RETURN-1",
+        "policy": "exact two anchors, same subject/series/basis/close kind; cutoff T+1s (underlying also permits T+2s); now>=cutoff; bounded1day history100x1000 pages; no forwardfill/nearest/holiday inference; positive current/reference; source identity scale1/offset0",
+        "expected_50digit_half_even": "-0.10536051565782630122750098083931279830612037298327",
+        "refusal": "basis",
+        "manifest": "Only D072 own hash/subject registration in existing _underlying_returns.py; own profile/brief/contract/binding/claim/two-case proof/generation/evidence. Reuse unchanged routing, exact bounded log, RecordState and codec; no API/M00/runner change."
+      }
+    },
+    "D071": {
+      "brief_sha256": "83e3871a48ec3f9be3f019aeaa8e149bb0658930ca08b4f0158a7a3205c42710",
+      "profile_sha256": "c522c05b785e2bf4697683cce53da52d91bf50ccba92ec666a15ed246bcdf57a",
+      "profile": {
+        "id": "D071",
+        "raw_order": [
+          "R037",
+          "R042"
+        ],
+        "subject": "SPY",
+        "series": "SPY",
+        "as_of": "2026-10-20T12:40:00Z",
+        "reference": "2026-10-19T13:00:00Z",
+        "context_id": "controlled-underlying-session",
+        "context_start": "2026-10-19T12:00:00Z",
+        "context_end": "2026-10-20T13:00:00Z",
+        "records": [
+          [
+            0,
+            "SPY",
+            "2026-10-20T12:40:00Z",
+            "2026-10-20T12:40:00Z",
+            {
+              "trade": {
+                "last": "110"
+              },
+              "instrument": {
+                "id": "SPY"
+              },
+              "session": {
+                "id": "controlled-20oct12-13Z"
+              },
+              "adjustment": {
+                "basis": "controlled_unadjusted/1"
+              },
+              "price": {
+                "kind": "current_last"
+              }
+            }
+          ],
+          [
+            1,
+            "SPY",
+            "2026-10-19T13:00:00Z",
+            "2026-10-19T13:00:00Z",
+            {
+              "official_close": {
+                "value": "100"
+              },
+              "instrument": {
+                "id": "SPY"
+              },
+              "session": {
+                "id": "controlled-19oct12-13Z"
+              },
+              "adjustment": {
+                "basis": "controlled_unadjusted/1"
+              },
+              "price": {
+                "kind": "official_close"
+              }
+            }
+          ]
+        ],
+        "provider": "foundation-controlled-underlying",
+        "variant": "last_prior_close_v1",
+        "map_specs": [
+          [
+            "R037",
+            "mmt-r037-underlying",
+            [
+              "trade",
+              "last"
+            ],
+            "price",
+            [
+              [
+                "instrument.id",
+                [
+                  "instrument",
+                  "id"
+                ]
+              ],
+              [
+                "session.id",
+                [
+                  "session",
+                  "id"
+                ]
+              ],
+              [
+                "adjustment.basis",
+                [
+                  "adjustment",
+                  "basis"
+                ]
+              ],
+              [
+                "price.kind",
+                [
+                  "price",
+                  "kind"
+                ]
+              ]
+            ]
+          ],
+          [
+            "R042",
+            "mmt-r042-underlying",
+            [
+              "official_close",
+              "value"
+            ],
+            "price",
+            [
+              [
+                "instrument.id",
+                [
+                  "instrument",
+                  "id"
+                ]
+              ],
+              [
+                "session.id",
+                [
+                  "session",
+                  "id"
+                ]
+              ],
+              [
+                "adjustment.basis",
+                [
+                  "adjustment",
+                  "basis"
+                ]
+              ],
+              [
+                "price.kind",
+                [
+                  "price",
+                  "kind"
+                ]
+              ]
+            ]
+          ]
+        ],
+        "unit_id": "mmt-underlying-price",
+        "native_units": "price",
+        "parameter_id": "mmt-d071-controlled",
+        "selection_id": "mmt-d071-selection",
+        "definition": "D071-LOG-RETURN-1",
+        "policy": "exact two anchors, same subject/series/basis/close kind; cutoff T+1s (underlying also permits T+2s); now>=cutoff; bounded1day history100x1000 pages; no forwardfill/nearest/holiday inference; positive current/reference; source identity scale1/offset0",
+        "expected_50digit_half_even": "0.095310179804324860043952123280765092220605365308644",
+        "refusal": "subject",
+        "manifest": "new _underlying_returns.py and public _window.py routes for D071; later IDs only own hash/subject registry entry; owning profile/brief/contract/binding/test/generation/evidence. Reuse existing exact bounded _logarithm/RecordState/codec. No M00/API/runner change."
+      }
+    }
+  },
+  "expected_ratio": [
+    -100335347731075580635726552060038945263362869145957,
+    500000000000000000000000000000000000000000000000000
+  ],
+  "boundary": "D076 root \u00a74.5 K02_ALGEBRA/P_BASIC exact subtraction of actual persisted rounded D072 QQQ and D071 SPY return values, ordered D072,D071. Subject US_TECH_VS_BROAD, explicit members(QQQ,SPY). Definition D076-RELATIVE-RETURN-1, equation D072-D071; units return_spread, shape exact_ratio. Parameters mmt-d076-controlled/1; policy mmt-d076-selection/1, join keys(as_of_utc,knowledge_cutoff_utc,context,return_convention), staleness1day/skew0, true_instant, basket(QQQ,SPY), inherited foundation-controlled-underlying/last_prior_close_v1 source/scope, page100/1000 (no parent-history enumeration). Exact underlying context/anchors at root\u00a74.4; parent cutoff T+1s, nowT+3s, both actual parents fully validate under own immutable source profiles, identical context/as-of/cutoff/window85200/return convention and calculated_at<=now. No raw bindings/mappings/units/direct raw lineage at parent level; complete actual predecessors retain all ultimate raw lineage. Refuse mixed knowledge snapshot even when both lawful predecessors exist. No new ln, float, ambient Decimal subtraction, source invention, weights or peer.",
+  "manifest": "New _relative_market_return.py and _window.py public owner/read-only routing only; own authority/profile/contract/binding/claim/two-case proof/generation/evidence. Reuse existing public API, ExactRatioV1, RecordState/codec/identity and actual accepted underlying producer validators. No shared runner/M00/prerequisite change.",
+  "success": "Exact persisted M-L numerator -100335347731075580635726552060038945263362869145957, denominator 500000000000000000000000000000000000000000000000000; actual public D072/D071 producer setup, full parent metadata/nested raw lineage and ordinary read-only durable reopen.",
+  "refusal": "Both actual lawful D072/D071 producers exist; D072/parent cutoffT+1s but D071 cutoffT+2s with nowT+3s. Refuse mixed snapshots and persist no result/history."
+}

@@ -1,0 +1,3 @@
+# D140 independent final acceptance
+
+Clean candidate `6f5fbd3bfe51c66cbf8fdacdded0753656866313` accepted. Sole strict aggregate exit0, exactly two collected/two passed, no skips. Verbatim `strict-green.log` SHA256 `6658f45c99dabe4620d9a97bc35ed51e6a3a90877f59c3e3438407c54a547151`. Accepted D139 typed R001/mappings reused. Three pre-window inserts establish bid position0 size2, bid position1 size6 and ask position0 size1; native zero-size R187 delete of bid position1 in `(T−2s,T]` removes actual prior6, giving typed count1/2 and removed size3 per second. Moving only deletion to absent position2 refuses without history. All five native roles and SQLite read-only typed roundtrip were checked. No native SMART certification.

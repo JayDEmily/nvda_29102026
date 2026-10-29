@@ -1,0 +1,30 @@
+{
+  "schema_version": "VI06-IWO-REVIEW-1",
+  "leaf": "VI-06",
+  "review_id": "VI06-IWO-REVIEW-001",
+  "verdict": "BLOCKED",
+  "review_performed": false,
+  "blocker_class": "INDEPENDENT_REVIEW_EXECUTION_CAPABILITY_UNAVAILABLE",
+  "target": {
+    "iwo_markdown_path": "implementation/work_order/VI05_IMPLEMENTATION_WORK_ORDER_CANDIDATE_001.md",
+    "iwo_markdown_sha256": "b23fec7e83eace6353272f92b983160c2ab768043640d15d7ee1fb88f270ca0e",
+    "iwo_json_path": "implementation/work_order/VI05_IMPLEMENTATION_WORK_ORDER_CANDIDATE_001.json",
+    "iwo_json_sha256": "a673ff05bc58870fdfca49167482aabe4647889d7750fd1b49805c7064ef7eed",
+    "predecessor_commit": "c95e809cfd678870df8490920ca914e0c1cf7559",
+    "predecessor_tree": "0a481ab84c52361fba98a4fda0ee89d1a990487f"
+  },
+  "required_invariant": "fresh independent reviewer context isolated from VI-05 authoring context",
+  "observations": [
+    "Installed Superpowers review methodology requires dispatch of a fresh reviewer subagent.",
+    "No general-purpose subagent/model-review dispatch action is exposed in the current callable tool catalogue.",
+    "Current OpenAI connector actions expose API-key setup but no inference/reviewer execution endpoint.",
+    "No codex/openai/chatgpt/claude/gemini/aider reviewer CLI is present on PATH.",
+    "No credential environment variable suitable for an external OpenAI/Anthropic/Gemini model call was observed; only OPENAI_CLUSTER metadata was present.",
+    "Plugin discovery found no installed capability providing an equivalent independent semantic IWO review execution path."
+  ],
+  "substantive_review_dimensions_executed": [],
+  "findings": [],
+  "downstream_authorised": false,
+  "next_leaf_permitted": null,
+  "unblock_condition": "Provide and verify a genuinely independent reviewer execution mechanism, then review the unchanged fixed VI-05 candidate or a separately authorised successor candidate."
+}

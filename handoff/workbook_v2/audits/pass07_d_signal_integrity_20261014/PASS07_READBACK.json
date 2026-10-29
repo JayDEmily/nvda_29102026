@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "V1_sha256": "519ea9449297d564ae4a02afc1bf4e60e4471631c81a0842620f9fb60bb4f9ae",
+  "V2_sha256": "2a36468fd83d16379861f330f929994a5a6d0a366c4953dbc03511bc0ad7b64c",
+  "v1_unique": 209,
+  "v2_unique": 209,
+  "m01_1_rows": 114,
+  "m02_m31_rows": 95,
+  "m02_m31_index_rows": 95,
+  "row_pass": 209,
+  "row_fail": 0,
+  "original_derived_sheet_value_formula_match": true,
+  "missing": [],
+  "extra": [],
+  "problems": []
+}

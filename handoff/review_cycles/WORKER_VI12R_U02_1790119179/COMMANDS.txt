@@ -1,0 +1,42 @@
+Material Worker commands and observed results
+
+ROUTING / GOVERNANCE
+- read README.md, GUARDRAILS.md, AGENTS.md, complete current EXEC_PLAN.md,
+  tests/AGENTS.override.md, CURRENT_STATE.md and active WORKER REQUEST.md
+- read complete current IWO, accepted IRB, U02 proof and production api.py
+
+SOURCE / PROMOTION
+- sha256sum returned Tester-022 TAR
+  -> 58d5c862bf7ee6765c0e0dfa7942c2ea5c195654e179157d816b7c04e654fa81
+- initial guessed full-wrapper-SHA preflight -> stopped before mutation on mismatch
+- git rev-parse HEAD -> b806447eb440a016826728af075e714beee23d31
+- git merge-base --is-ancestor e8b659d... HEAD -> rc 0
+- git merge-base --is-ancestor 4db58e9... HEAD -> rc 0
+- git checkout main && git merge --ff-only b806447eb440a016826728af075e714beee23d31
+  -> main=b806447eb440a016826728af075e714beee23d31
+- git fsck --full --strict; clean-worktree check -> pass
+- git checkout -b work/vi12r-u02-capture-policy-owed-slot
+
+U02 DEVELOPMENT / FREEZE
+- exact U02 pytest -> 29 passed
+- U01+U02 during development -> 326 passed once pinned mypy was restored
+- Python exact project tooling restored outside repository from preserved wheel artefacts:
+  Python 3.13.5; pytest 9.0.3; mypy 1.20.1; Ruff 0.15.11
+- git commit -m 'feat: implement VI12R U02 capture schedule truth'
+  -> a77dc596b7cbc3f248097df94d8dd0bef4491bec
+  -> tree 1b8672a851f63c1bab8da02fb75de8357e4fad3c
+  -> changed path only src/nvda_desk/raw_signal_occurrence_truth/api.py
+
+EXACT COMMITTED CANDIDATE VALIDATION
+- python -m pytest -q tests/product/raw_signal/test_u01_contract_owner_boundary.py tests/product/raw_signal/test_u02_capture_schedule.py
+  -> 326 passed
+- python -m mypy src -> Success: no issues found in 15 source files
+- python -m ruff check src -> All checks passed
+- PYTHONPATH=src python tools/validate_product_proof.py -> PASS; 6 families; 13/13 obligations
+- PYTHONPATH=src python tools/check_public_seams.py -> PASS
+- PYTHONPATH=src python tools/validate_architecture.py -> PASS; 0 dependency/public-seam violations
+- PYTHONPATH=src python -m pytest -q tests/architecture tests/bootstrap -> 74 passed
+- PYTHONPATH=src python tools/run_promotion_gate.py --set architecture_kernel -> 74 passed
+- git diff --check -> pass
+- git fsck --full --strict -> pass
+- git status --porcelain -> empty

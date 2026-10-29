@@ -1,0 +1,22 @@
+{
+  "review_cycle": "TESTER_VI17_L1_1790601177",
+  "actor": "TESTER",
+  "status": "COMPLETE",
+  "leaf": "VI-17-L1",
+  "candidate_commit": "c07d5277512f600669b05a88cc2c174af3e3b046",
+  "candidate_tree": "5a156a0170bb31ab2253822a9cf3172bd610f5fe",
+  "disposition": "PASS",
+  "findings": [],
+  "recurrence_classification": "NO_FINDING",
+  "authority_hash_rebind": "PASS",
+  "vi06_review_status_preserved": "BLOCKED_NOT_PASS",
+  "thin_transport_boundary": "EXPLICIT_AND_ACCEPTABLE_FOR_BOUNDED_ACTIVE_LINEAGE",
+  "external_predecessor_local_object": "ABSENT_NOT_CLAIMED_AS_ANCESTRY",
+  "accepted_lineage_ancestry": "PASS",
+  "unauthorised_authority_mutation": "NOT_ESTABLISHED",
+  "post_package_substantive_drift": "NONE",
+  "package_source_binding": "16/16 RUNTIME PYTHON FILES MATCH",
+  "git_integrity": "PASS",
+  "vi17_l1_promotion": "ACCEPTED_FOR_LAWFUL_PROMOTION",
+  "vi17_l2": "PROHIBITED_UNTIL_VI17_L1_PROMOTION_CLOSEOUT"
+}

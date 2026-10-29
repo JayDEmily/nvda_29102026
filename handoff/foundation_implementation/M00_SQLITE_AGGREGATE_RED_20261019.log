@@ -1,0 +1,579 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/d549b6d808a9/g51/repository
+configfile: pyproject.toml
+collected 23 items
+
+tests/product/raw_signal_sqlite/test_contract_native.py FFFF             [ 17%]
+tests/product/raw_signal_sqlite/test_schedule_assessment.py FFFF         [ 34%]
+tests/product/raw_signal_sqlite/test_sqlite_durability.py FFFFFFFFFFFF   [ 86%]
+tests/product/raw_signal_sqlite/test_composition.py FFF                  [100%]
+
+=================================== FAILURES ===================================
+____________ test_sqlite_public_contracts_and_typed_identity_layers ____________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-2/test_sqlite_public_contracts_a0')
+
+    def test_sqlite_public_contracts_and_typed_identity_layers(tmp_path):
+>       o = owner(tmp_path / "raw.db", create=True)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/raw_signal_sqlite/test_contract_native.py:38: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal_sqlite/_support.py:24: in owner
+    port = mechanism().create_sqlite_persistence(str(path), create=create)
+           ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def mechanism():
+        name = "nvda_desk.raw_signal_occurrence_truth._sqlite"
+>       assert importlib.util.find_spec(name) is not None, "accepted M00 SQLite capability is missing"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: accepted M00 SQLite capability is missing
+
+tests/product/raw_signal_sqlite/_support.py:19: AssertionError
+_______________ test_sqlite_native_fidelity_and_temporal_absence _______________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-2/test_sqlite_native_fidelity_an0')
+
+    def test_sqlite_native_fidelity_and_temporal_absence(tmp_path):
+        path = tmp_path / "raw.db"
+>       o = owner(path, create=True)
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/raw_signal_sqlite/test_contract_native.py:145: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal_sqlite/_support.py:24: in owner
+    port = mechanism().create_sqlite_persistence(str(path), create=create)
+           ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def mechanism():
+        name = "nvda_desk.raw_signal_occurrence_truth._sqlite"
+>       assert importlib.util.find_spec(name) is not None, "accepted M00 SQLite capability is missing"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: accepted M00 SQLite capability is missing
+
+tests/product/raw_signal_sqlite/_support.py:19: AssertionError
+________________ test_sqlite_retry_conflict_and_retransmission _________________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-2/test_sqlite_retry_conflict_and0')
+
+    def test_sqlite_retry_conflict_and_retransmission(tmp_path):
+        path = tmp_path / "raw.db"
+>       o = owner(path, create=True)
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/raw_signal_sqlite/test_contract_native.py:203: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal_sqlite/_support.py:24: in owner
+    port = mechanism().create_sqlite_persistence(str(path), create=create)
+           ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def mechanism():
+        name = "nvda_desk.raw_signal_occurrence_truth._sqlite"
+>       assert importlib.util.find_spec(name) is not None, "accepted M00 SQLite capability is missing"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: accepted M00 SQLite capability is missing
+
+tests/product/raw_signal_sqlite/_support.py:19: AssertionError
+________ test_sqlite_requiredness_time_layers_and_static_public_facets _________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-2/test_sqlite_requiredness_time_0')
+
+    def test_sqlite_requiredness_time_layers_and_static_public_facets(tmp_path):
+>       o = owner(tmp_path / "raw.db", create=True)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/raw_signal_sqlite/test_contract_native.py:222: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal_sqlite/_support.py:24: in owner
+    port = mechanism().create_sqlite_persistence(str(path), create=create)
+           ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def mechanism():
+        name = "nvda_desk.raw_signal_occurrence_truth._sqlite"
+>       assert importlib.util.find_spec(name) is not None, "accepted M00 SQLite capability is missing"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: accepted M00 SQLite capability is missing
+
+tests/product/raw_signal_sqlite/_support.py:19: AssertionError
+________________ test_sqlite_owed_slot_and_policy_boundary_law _________________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-2/test_sqlite_owed_slot_and_poli0')
+
+    def test_sqlite_owed_slot_and_policy_boundary_law(tmp_path):
+>       o = owner(tmp_path / "raw.db", create=True)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/raw_signal_sqlite/test_schedule_assessment.py:14: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal_sqlite/_support.py:24: in owner
+    port = mechanism().create_sqlite_persistence(str(path), create=create)
+           ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def mechanism():
+        name = "nvda_desk.raw_signal_occurrence_truth._sqlite"
+>       assert importlib.util.find_spec(name) is not None, "accepted M00 SQLite capability is missing"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: accepted M00 SQLite capability is missing
+
+tests/product/raw_signal_sqlite/_support.py:19: AssertionError
+______________ test_sqlite_receipt_relation_and_assessment_chain _______________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-2/test_sqlite_receipt_relation_a0')
+
+    def test_sqlite_receipt_relation_and_assessment_chain(tmp_path):
+        path = tmp_path / "raw.db"
+>       o = owner(path, create=True)
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/raw_signal_sqlite/test_schedule_assessment.py:74: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal_sqlite/_support.py:24: in owner
+    port = mechanism().create_sqlite_persistence(str(path), create=create)
+           ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def mechanism():
+        name = "nvda_desk.raw_signal_occurrence_truth._sqlite"
+>       assert importlib.util.find_spec(name) is not None, "accepted M00 SQLite capability is missing"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: accepted M00 SQLite capability is missing
+
+tests/product/raw_signal_sqlite/_support.py:19: AssertionError
+_______________ test_sqlite_scope_high_water_and_restart_unknown _______________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-2/test_sqlite_scope_high_water_a0')
+
+    def test_sqlite_scope_high_water_and_restart_unknown(tmp_path):
+        path = tmp_path / "raw.db"
+>       o = owner(path, create=True)
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/raw_signal_sqlite/test_schedule_assessment.py:142: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal_sqlite/_support.py:24: in owner
+    port = mechanism().create_sqlite_persistence(str(path), create=create)
+           ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def mechanism():
+        name = "nvda_desk.raw_signal_occurrence_truth._sqlite"
+>       assert importlib.util.find_spec(name) is not None, "accepted M00 SQLite capability is missing"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: accepted M00 SQLite capability is missing
+
+tests/product/raw_signal_sqlite/_support.py:19: AssertionError
+_ test_sqlite_assessment_without_relation_capture_isolation_and_missing_authority _
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-2/test_sqlite_assessment_without0')
+
+    def test_sqlite_assessment_without_relation_capture_isolation_and_missing_authority(tmp_path):
+        path = tmp_path / "raw.db"
+>       o = owner(path, create=True)
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/raw_signal_sqlite/test_schedule_assessment.py:190: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal_sqlite/_support.py:24: in owner
+    port = mechanism().create_sqlite_persistence(str(path), create=create)
+           ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def mechanism():
+        name = "nvda_desk.raw_signal_occurrence_truth._sqlite"
+>       assert importlib.util.find_spec(name) is not None, "accepted M00 SQLite capability is missing"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: accepted M00 SQLite capability is missing
+
+tests/product/raw_signal_sqlite/_support.py:19: AssertionError
+_________ test_sqlite_environment_and_only_configured_semantic_source __________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-2/test_sqlite_environment_and_on0')
+
+    def test_sqlite_environment_and_only_configured_semantic_source(tmp_path):
+        assert sys.version_info[:3] == (3, 12, 14)
+        assert sqlite3.sqlite_version == "3.53.1"
+        path = tmp_path / "raw.db"
+>       o = owner(path, create=True)
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/raw_signal_sqlite/test_sqlite_durability.py:40: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal_sqlite/_support.py:24: in owner
+    port = mechanism().create_sqlite_persistence(str(path), create=create)
+           ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def mechanism():
+        name = "nvda_desk.raw_signal_occurrence_truth._sqlite"
+>       assert importlib.util.find_spec(name) is not None, "accepted M00 SQLite capability is missing"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: accepted M00 SQLite capability is missing
+
+tests/product/raw_signal_sqlite/_support.py:19: AssertionError
+___________ test_sqlite_public_return_requires_native_commit[policy] ___________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-2/test_sqlite_public_return_requ0')
+kind = 'policy'
+
+    @pytest.mark.parametrize("kind", ["policy", "capture", "observation", "assessment"])
+    def test_sqlite_public_return_requires_native_commit(tmp_path, kind):
+        path = tmp_path / "raw.db"
+>       o = owner(path, create=True)
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/raw_signal_sqlite/test_sqlite_durability.py:81: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal_sqlite/_support.py:24: in owner
+    port = mechanism().create_sqlite_persistence(str(path), create=create)
+           ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def mechanism():
+        name = "nvda_desk.raw_signal_occurrence_truth._sqlite"
+>       assert importlib.util.find_spec(name) is not None, "accepted M00 SQLite capability is missing"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: accepted M00 SQLite capability is missing
+
+tests/product/raw_signal_sqlite/_support.py:19: AssertionError
+__________ test_sqlite_public_return_requires_native_commit[capture] ___________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-2/test_sqlite_public_return_requ1')
+kind = 'capture'
+
+    @pytest.mark.parametrize("kind", ["policy", "capture", "observation", "assessment"])
+    def test_sqlite_public_return_requires_native_commit(tmp_path, kind):
+        path = tmp_path / "raw.db"
+>       o = owner(path, create=True)
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/raw_signal_sqlite/test_sqlite_durability.py:81: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal_sqlite/_support.py:24: in owner
+    port = mechanism().create_sqlite_persistence(str(path), create=create)
+           ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def mechanism():
+        name = "nvda_desk.raw_signal_occurrence_truth._sqlite"
+>       assert importlib.util.find_spec(name) is not None, "accepted M00 SQLite capability is missing"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: accepted M00 SQLite capability is missing
+
+tests/product/raw_signal_sqlite/_support.py:19: AssertionError
+________ test_sqlite_public_return_requires_native_commit[observation] _________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-2/test_sqlite_public_return_requ2')
+kind = 'observation'
+
+    @pytest.mark.parametrize("kind", ["policy", "capture", "observation", "assessment"])
+    def test_sqlite_public_return_requires_native_commit(tmp_path, kind):
+        path = tmp_path / "raw.db"
+>       o = owner(path, create=True)
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/raw_signal_sqlite/test_sqlite_durability.py:81: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal_sqlite/_support.py:24: in owner
+    port = mechanism().create_sqlite_persistence(str(path), create=create)
+           ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def mechanism():
+        name = "nvda_desk.raw_signal_occurrence_truth._sqlite"
+>       assert importlib.util.find_spec(name) is not None, "accepted M00 SQLite capability is missing"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: accepted M00 SQLite capability is missing
+
+tests/product/raw_signal_sqlite/_support.py:19: AssertionError
+_________ test_sqlite_public_return_requires_native_commit[assessment] _________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-2/test_sqlite_public_return_requ3')
+kind = 'assessment'
+
+    @pytest.mark.parametrize("kind", ["policy", "capture", "observation", "assessment"])
+    def test_sqlite_public_return_requires_native_commit(tmp_path, kind):
+        path = tmp_path / "raw.db"
+>       o = owner(path, create=True)
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/raw_signal_sqlite/test_sqlite_durability.py:81: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal_sqlite/_support.py:24: in owner
+    port = mechanism().create_sqlite_persistence(str(path), create=create)
+           ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def mechanism():
+        name = "nvda_desk.raw_signal_occurrence_truth._sqlite"
+>       assert importlib.util.find_spec(name) is not None, "accepted M00 SQLite capability is missing"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: accepted M00 SQLite capability is missing
+
+tests/product/raw_signal_sqlite/_support.py:19: AssertionError
+__________ test_sqlite_failed_write_and_killed_writer_nonfabrication ___________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-2/test_sqlite_failed_write_and_k0')
+
+    def test_sqlite_failed_write_and_killed_writer_nonfabrication(tmp_path):
+        path = tmp_path / "raw.db"
+>       owner(path, create=True)
+
+tests/product/raw_signal_sqlite/test_sqlite_durability.py:208: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal_sqlite/_support.py:24: in owner
+    port = mechanism().create_sqlite_persistence(str(path), create=create)
+           ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def mechanism():
+        name = "nvda_desk.raw_signal_occurrence_truth._sqlite"
+>       assert importlib.util.find_spec(name) is not None, "accepted M00 SQLite capability is missing"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: accepted M00 SQLite capability is missing
+
+tests/product/raw_signal_sqlite/_support.py:19: AssertionError
+_____________ test_sqlite_uncertain_commit_and_concurrent_identity _____________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-2/test_sqlite_uncertain_commit_a0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f4751f7b4a0>
+
+    def test_sqlite_uncertain_commit_and_concurrent_identity(tmp_path, monkeypatch):
+        path = tmp_path / "raw.db"
+>       o = owner(path, create=True)
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/raw_signal_sqlite/test_sqlite_durability.py:241: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal_sqlite/_support.py:24: in owner
+    port = mechanism().create_sqlite_persistence(str(path), create=create)
+           ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def mechanism():
+        name = "nvda_desk.raw_signal_occurrence_truth._sqlite"
+>       assert importlib.util.find_spec(name) is not None, "accepted M00 SQLite capability is missing"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: accepted M00 SQLite capability is missing
+
+tests/product/raw_signal_sqlite/_support.py:19: AssertionError
+______________ test_sqlite_native_roundtrip_and_consistent_backup ______________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-2/test_sqlite_native_roundtrip_a0')
+
+    def test_sqlite_native_roundtrip_and_consistent_backup(tmp_path):
+        path, clone = tmp_path / "raw.db", tmp_path / "clone.db"
+        raw = observation(native={"nonce": secrets.token_hex(32), "precision": Decimal("-0.000")})
+>       o = owner(path, create=True)
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/raw_signal_sqlite/test_sqlite_durability.py:297: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal_sqlite/_support.py:24: in owner
+    port = mechanism().create_sqlite_persistence(str(path), create=create)
+           ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def mechanism():
+        name = "nvda_desk.raw_signal_occurrence_truth._sqlite"
+>       assert importlib.util.find_spec(name) is not None, "accepted M00 SQLite capability is missing"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: accepted M00 SQLite capability is missing
+
+tests/product/raw_signal_sqlite/_support.py:19: AssertionError
+_______________ test_sqlite_port_is_nonsemantic_and_record_only ________________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-2/test_sqlite_port_is_nonsemanti0')
+
+    def test_sqlite_port_is_nonsemantic_and_record_only(tmp_path):
+        path = tmp_path / "raw.db"
+>       o = owner(path, create=True)
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/raw_signal_sqlite/test_sqlite_durability.py:317: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal_sqlite/_support.py:24: in owner
+    port = mechanism().create_sqlite_persistence(str(path), create=create)
+           ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def mechanism():
+        name = "nvda_desk.raw_signal_occurrence_truth._sqlite"
+>       assert importlib.util.find_spec(name) is not None, "accepted M00 SQLite capability is missing"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: accepted M00 SQLite capability is missing
+
+tests/product/raw_signal_sqlite/_support.py:19: AssertionError
+____________ test_sqlite_proof_rejects_surrogate_commit_and_payload ____________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-2/test_sqlite_proof_rejects_surr0')
+
+    def test_sqlite_proof_rejects_surrogate_commit_and_payload(tmp_path):
+        path = tmp_path / "raw.db"
+>       o = owner(path, create=True)
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/raw_signal_sqlite/test_sqlite_durability.py:350: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal_sqlite/_support.py:24: in owner
+    port = mechanism().create_sqlite_persistence(str(path), create=create)
+           ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def mechanism():
+        name = "nvda_desk.raw_signal_occurrence_truth._sqlite"
+>       assert importlib.util.find_spec(name) is not None, "accepted M00 SQLite capability is missing"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: accepted M00 SQLite capability is missing
+
+tests/product/raw_signal_sqlite/_support.py:19: AssertionError
+______ test_sqlite_schema_settings_canonical_payload_and_index_integrity _______
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-2/test_sqlite_schema_settings_ca0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f4751fb9d30>
+
+    def test_sqlite_schema_settings_canonical_payload_and_index_integrity(tmp_path, monkeypatch):
+        path = tmp_path / "raw.db"
+>       o = owner(path, create=True)
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/raw_signal_sqlite/test_sqlite_durability.py:395: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal_sqlite/_support.py:24: in owner
+    port = mechanism().create_sqlite_persistence(str(path), create=create)
+           ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def mechanism():
+        name = "nvda_desk.raw_signal_occurrence_truth._sqlite"
+>       assert importlib.util.find_spec(name) is not None, "accepted M00 SQLite capability is missing"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: accepted M00 SQLite capability is missing
+
+tests/product/raw_signal_sqlite/_support.py:19: AssertionError
+______ test_sqlite_competing_same_identity_converges_and_conflict_refuses ______
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-2/test_sqlite_competing_same_ide0')
+
+    def test_sqlite_competing_same_identity_converges_and_conflict_refuses(tmp_path):
+        path = tmp_path / "raw.db"
+>       owner(path, create=True)
+
+tests/product/raw_signal_sqlite/test_sqlite_durability.py:543: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal_sqlite/_support.py:24: in owner
+    port = mechanism().create_sqlite_persistence(str(path), create=create)
+           ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def mechanism():
+        name = "nvda_desk.raw_signal_occurrence_truth._sqlite"
+>       assert importlib.util.find_spec(name) is not None, "accepted M00 SQLite capability is missing"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: accepted M00 SQLite capability is missing
+
+tests/product/raw_signal_sqlite/_support.py:19: AssertionError
+_________ test_sqlite_a00_constructs_nonowning_store_and_public_owner __________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-2/test_sqlite_a00_constructs_non0')
+
+    def test_sqlite_a00_constructs_nonowning_store_and_public_owner(tmp_path):
+        path = tmp_path / "raw.db"
+>       owner(path, create=True)
+
+tests/product/raw_signal_sqlite/test_composition.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal_sqlite/_support.py:24: in owner
+    port = mechanism().create_sqlite_persistence(str(path), create=create)
+           ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def mechanism():
+        name = "nvda_desk.raw_signal_occurrence_truth._sqlite"
+>       assert importlib.util.find_spec(name) is not None, "accepted M00 SQLite capability is missing"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: accepted M00 SQLite capability is missing
+
+tests/product/raw_signal_sqlite/_support.py:19: AssertionError
+______________ test_sqlite_a00_exact_order_arguments_and_results _______________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-2/test_sqlite_a00_exact_order_ar0')
+
+    def test_sqlite_a00_exact_order_arguments_and_results(tmp_path):
+        path = tmp_path / "raw.db"
+>       actual = owner(path, create=True)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/raw_signal_sqlite/test_composition.py:71: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal_sqlite/_support.py:24: in owner
+    port = mechanism().create_sqlite_persistence(str(path), create=create)
+           ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def mechanism():
+        name = "nvda_desk.raw_signal_occurrence_truth._sqlite"
+>       assert importlib.util.find_spec(name) is not None, "accepted M00 SQLite capability is missing"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: accepted M00 SQLite capability is missing
+
+tests/product/raw_signal_sqlite/_support.py:19: AssertionError
+__________ test_sqlite_a00_has_no_domain_decisions_or_private_bypass ___________
+
+    def test_sqlite_a00_has_no_domain_decisions_or_private_bypass():
+        import nvda_desk.composition as composition
+    
+        tree = ast.parse(inspect.getsource(composition))
+        private = []
+        for node in ast.walk(tree):
+            if (
+                isinstance(node, ast.ImportFrom)
+                and node.module
+                and node.module.startswith("nvda_desk.raw_signal_occurrence_truth._")
+            ):
+                private.extend(node.module + "." + item.name for item in node.names)
+>       assert set(private) == {
+            "nvda_desk.raw_signal_occurrence_truth._sqlite.create_sqlite_persistence",
+            "nvda_desk.raw_signal_occurrence_truth._postgres.create_postgres_persistence",
+        }
+E       AssertionError: assert {'nvda_desk.r..._persistence'} == {'nvda_desk.r..._persistence'}
+E         
+E         Extra items in the right set:
+E         'nvda_desk.raw_signal_occurrence_truth._sqlite.create_sqlite_persistence'
+E         Use -v to get more diff
+
+tests/product/raw_signal_sqlite/test_composition.py:164: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/raw_signal_sqlite/test_contract_native.py::test_sqlite_public_contracts_and_typed_identity_layers
+FAILED tests/product/raw_signal_sqlite/test_contract_native.py::test_sqlite_native_fidelity_and_temporal_absence
+FAILED tests/product/raw_signal_sqlite/test_contract_native.py::test_sqlite_retry_conflict_and_retransmission
+FAILED tests/product/raw_signal_sqlite/test_contract_native.py::test_sqlite_requiredness_time_layers_and_static_public_facets
+FAILED tests/product/raw_signal_sqlite/test_schedule_assessment.py::test_sqlite_owed_slot_and_policy_boundary_law
+FAILED tests/product/raw_signal_sqlite/test_schedule_assessment.py::test_sqlite_receipt_relation_and_assessment_chain
+FAILED tests/product/raw_signal_sqlite/test_schedule_assessment.py::test_sqlite_scope_high_water_and_restart_unknown
+FAILED tests/product/raw_signal_sqlite/test_schedule_assessment.py::test_sqlite_assessment_without_relation_capture_isolation_and_missing_authority
+FAILED tests/product/raw_signal_sqlite/test_sqlite_durability.py::test_sqlite_environment_and_only_configured_semantic_source
+FAILED tests/product/raw_signal_sqlite/test_sqlite_durability.py::test_sqlite_public_return_requires_native_commit[policy]
+FAILED tests/product/raw_signal_sqlite/test_sqlite_durability.py::test_sqlite_public_return_requires_native_commit[capture]
+FAILED tests/product/raw_signal_sqlite/test_sqlite_durability.py::test_sqlite_public_return_requires_native_commit[observation]
+FAILED tests/product/raw_signal_sqlite/test_sqlite_durability.py::test_sqlite_public_return_requires_native_commit[assessment]
+FAILED tests/product/raw_signal_sqlite/test_sqlite_durability.py::test_sqlite_failed_write_and_killed_writer_nonfabrication
+FAILED tests/product/raw_signal_sqlite/test_sqlite_durability.py::test_sqlite_uncertain_commit_and_concurrent_identity
+FAILED tests/product/raw_signal_sqlite/test_sqlite_durability.py::test_sqlite_native_roundtrip_and_consistent_backup
+FAILED tests/product/raw_signal_sqlite/test_sqlite_durability.py::test_sqlite_port_is_nonsemantic_and_record_only
+FAILED tests/product/raw_signal_sqlite/test_sqlite_durability.py::test_sqlite_proof_rejects_surrogate_commit_and_payload
+FAILED tests/product/raw_signal_sqlite/test_sqlite_durability.py::test_sqlite_schema_settings_canonical_payload_and_index_integrity
+FAILED tests/product/raw_signal_sqlite/test_sqlite_durability.py::test_sqlite_competing_same_identity_converges_and_conflict_refuses
+FAILED tests/product/raw_signal_sqlite/test_composition.py::test_sqlite_a00_constructs_nonowning_store_and_public_owner
+FAILED tests/product/raw_signal_sqlite/test_composition.py::test_sqlite_a00_exact_order_arguments_and_results
+FAILED tests/product/raw_signal_sqlite/test_composition.py::test_sqlite_a00_has_no_domain_decisions_or_private_bypass
+============================== 23 failed in 0.35s ==============================
+product-proof aggregate: raw_signal_occurrence_truth_sqlite state=READY_FOR_PROOF
+authority=3ad4cdc9ffba4cf91ff9a27edf1dd3b1a9824a421514bb4b5a2cc1b9c504f233 generation=12a2092d4b358a8160c6f6a33b04595d1baf98813f80a3dbc5c65f3a3642ce35
+candidate=895d8f8b3a1f295f142d16865958e5a396fc0447
+observed aggregate outcome: exit=1

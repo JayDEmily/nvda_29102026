@@ -1,0 +1,49 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/d549b6d808a9/g52-recovery/repository
+configfile: pyproject.toml
+collected 62 items / 59 deselected / 3 selected
+
+tests/architecture/test_proof_control.py FF.                             [100%]
+
+=================================== FAILURES ===================================
+_____ test_d012_absent_descriptor_cannot_hide_unowned_python[_support.py] ______
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-22/test_d012_absent_descriptor_ca0')
+name = '_support.py'
+
+    @pytest.mark.parametrize("name", ["_support.py", "nested/helper.py", "test_orphan.py"])
+    def test_d012_absent_descriptor_cannot_hide_unowned_python(tmp_path, name):
+        api = _controls()
+        root = _copy_candidate(tmp_path)
+        api.load_product_proof_claim(root, "raw_signal_occurrence_truth_sqlite")
+        path = root / "tests/product/market_measurement_d012" / name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text("# Unowned extension source, no descriptor.\n")
+>       with pytest.raises(ValueError, match="unowned"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/architecture/test_proof_control.py:96: Failed
+___ test_d012_absent_descriptor_cannot_hide_unowned_python[nested/helper.py] ___
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-22/test_d012_absent_descriptor_ca1')
+name = 'nested/helper.py'
+
+    @pytest.mark.parametrize("name", ["_support.py", "nested/helper.py", "test_orphan.py"])
+    def test_d012_absent_descriptor_cannot_hide_unowned_python(tmp_path, name):
+        api = _controls()
+        root = _copy_candidate(tmp_path)
+        api.load_product_proof_claim(root, "raw_signal_occurrence_truth_sqlite")
+        path = root / "tests/product/market_measurement_d012" / name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text("# Unowned extension source, no descriptor.\n")
+>       with pytest.raises(ValueError, match="unowned"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/architecture/test_proof_control.py:96: Failed
+=========================== short test summary info ============================
+FAILED tests/architecture/test_proof_control.py::test_d012_absent_descriptor_cannot_hide_unowned_python[_support.py]
+FAILED tests/architecture/test_proof_control.py::test_d012_absent_descriptor_cannot_hide_unowned_python[nested/helper.py]
+================== 2 failed, 1 passed, 59 deselected in 2.00s ==================

@@ -1,0 +1,542 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/d549b6d808a9/g51/repository
+configfile: pyproject.toml
+testpaths: tests/architecture, tests/bootstrap
+collected 113 items
+
+tests/architecture/test_activation_readiness.py ..F.........             [ 10%]
+tests/architecture/test_dependency_direction.py ......                   [ 15%]
+tests/architecture/test_identifier_taxonomy.py .................FFFF     [ 34%]
+tests/architecture/test_implementation_authority_ingress.py F...F...FF.. [ 45%]
+FFF                                                                      [ 47%]
+tests/architecture/test_object_lifecycle.py ...                          [ 50%]
+tests/architecture/test_proof_control.py ............................... [ 77%]
+...........                                                              [ 87%]
+tests/architecture/test_public_seam_law.py .....                         [ 92%]
+tests/architecture/test_registry_schema.py F                             [ 92%]
+tests/architecture/test_static_typecheck.py F.F                          [ 95%]
+tests/bootstrap/test_legacy_exclusion.py ...                             [ 98%]
+tests/bootstrap/test_minimal_imports.py FF                               [100%]
+
+=================================== FAILURES ===================================
+____ test_aggregate_validator_accepts_lawful_protocol_and_kernel_activation ____
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-7/test_aggregate_validator_accep1')
+
+    def test_aggregate_validator_accepts_lawful_protocol_and_kernel_activation(
+        tmp_path: Path,
+    ) -> None:
+        repository = _copy_repository_surface(tmp_path, "p-k-activation", full=True)
+    
+        protocols_path = repository / "config/architecture/protocols.yaml"
+        protocols = yaml.safe_load(protocols_path.read_text(encoding="utf-8"))
+        protocols["protocols"].extend(
+            [
+                {
+                    "id": "P02",
+                    "name": "declarative_protocol",
+                    "status": "active",
+                    "description": "declarative protocol without runtime package",
+                    "predecessors": [],
+                    "successors": [],
+                },
+                {
+                    "id": "P03",
+                    "name": "python_protocol",
+                    "status": "active",
+                    "description": "Python-visible protocol fixture",
+                    "package": "nvda_desk.python_protocol",
+                    "public_seam": "nvda_desk.python_protocol.api",
+                    "predecessors": [],
+                    "successors": [],
+                },
+            ]
+        )
+        protocols_path.write_text(yaml.safe_dump(protocols, sort_keys=False), encoding="utf-8")
+    
+        kernels_path = repository / "config/architecture/kernels.yaml"
+        kernels = yaml.safe_load(kernels_path.read_text(encoding="utf-8"))
+        kernels["kernels"].append(
+            {
+                "id": "K02",
+                "name": "technical_kernel",
+                "status": "active",
+                "description": "Python-visible technical kernel fixture",
+                "package": "nvda_desk.technical_kernel",
+                "public_seam": "nvda_desk.technical_kernel.api",
+                "predecessors": [],
+                "successors": [],
+            }
+        )
+        kernels_path.write_text(yaml.safe_dump(kernels, sort_keys=False), encoding="utf-8")
+    
+        for package_name in ("python_protocol", "technical_kernel"):
+            package = repository / f"src/nvda_desk/{package_name}"
+            package.mkdir(parents=True, exist_ok=True)
+            (package / "__init__.py").write_text("", encoding="utf-8")
+            (package / "api.py").write_text('"""Fixture public seam."""\n', encoding="utf-8")
+    
+        result = validate_architecture(repository)
+    
+>       assert "architecture objects: 9" in result
+E       AssertionError: assert 'architecture objects: 9' in ['architecture objects: 10', 'active runtime modules: 1', 'implementation allocations: 3', 'admitted test families: 11', 'promotion sets: 1', 'dependency/public-seam violations: 0']
+
+tests/architecture/test_activation_readiness.py:166: AssertionError
+_______ test_current_post_reset_allocation_history_contains_admitted_m00 _______
+
+    def test_current_post_reset_allocation_history_contains_admitted_m00() -> None:
+        allocations = load_implementation_allocations(ROOT)
+>       assert [(item.object_id, item.name, item.implemented_on) for item in allocations] == [
+            ("M00", "raw_signal_occurrence_truth", "2026-09-19"),
+            ("M01", "derived_signal_calculation_truth", "2026-10-04"),
+        ]
+E       AssertionError: assert [('M02', 'neu...'2026-10-04')] == [('M00', 'raw...'2026-10-04')]
+E         
+E         At index 0 diff: ('M02', 'neutral_market_measurement_truth', '2026-10-19') != ('M00', 'raw_signal_occurrence_truth', '2026-09-19')
+E         Left contains one more item: ('M01', 'derived_signal_calculation_truth', '2026-10-04')
+E         Use -v to get more diff
+
+tests/architecture/test_identifier_taxonomy.py:34: AssertionError
+___ test_candidate_resolution_uses_current_post_reset_state_in_request_order ___
+
+    def test_candidate_resolution_uses_current_post_reset_state_in_request_order() -> None:
+>       assert resolve_candidate_identifiers(ROOT, ["M", "M", "A"]) == ("M02", "M03", "A01")
+E       AssertionError: assert ('M03', 'M04', 'A01') == ('M02', 'M03', 'A01')
+E         
+E         At index 0 diff: 'M03' != 'M02'
+E         Use -v to get more diff
+
+tests/architecture/test_identifier_taxonomy.py:41: AssertionError
+_________ test_candidate_resolution_does_not_mutate_allocation_history _________
+
+    def test_candidate_resolution_does_not_mutate_allocation_history() -> None:
+        allocation_path = ROOT / "config/architecture/implementation_allocations.yaml"
+        before = allocation_path.read_bytes()
+>       assert resolve_candidate_identifiers(ROOT, ["M"]) == ("M02",)
+E       AssertionError: assert ('M03',) == ('M02',)
+E         
+E         At index 0 diff: 'M03' != 'M02'
+E         Use -v to get more diff
+
+tests/architecture/test_identifier_taxonomy.py:47: AssertionError
+_____ test_candidate_resolution_honours_retired_and_durable_post_reset_ids _____
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-7/test_candidate_resolution_hono0')
+
+    def test_candidate_resolution_honours_retired_and_durable_post_reset_ids(tmp_path: Path) -> None:
+        repository = tmp_path / "repo"
+        shutil.copytree(ROOT / "config", repository / "config")
+        shutil.copytree(ROOT / "schemas", repository / "schemas")
+    
+        modules_path = repository / "config/architecture/modules.yaml"
+        modules = yaml.safe_load(modules_path.read_text(encoding="utf-8"))
+        modules["retired_ids"] = ["M02"]
+        modules_path.write_text(yaml.safe_dump(modules, sort_keys=False), encoding="utf-8")
+    
+        allocations_path = repository / "config/architecture/implementation_allocations.yaml"
+        allocations_path.write_text(
+            yaml.safe_dump(
+                {
+                    "schema_version": "1.0",
+                    "implementation_allocations": [
+                        {
+                            "object_id": "M03",
+                            "name": "previously_implemented",
+                            "implemented_on": "2026-09-10",
+                        }
+                    ],
+                },
+                sort_keys=False,
+            ),
+            encoding="utf-8",
+        )
+    
+>       assert resolve_candidate_identifiers(repository, ["M", "M"]) == ("M04", "M05")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/architecture/test_identifier_taxonomy.py:79: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/nvda_desk/architecture/allocation.py:64: in resolve_candidate_identifiers
+    consumed = consumed_identifiers(repository_root)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/nvda_desk/architecture/allocation.py:50: in consumed_identifiers
+    registry = ArchitectureRegistry.from_repository(repository_root)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/nvda_desk/architecture/registry.py:97: in from_repository
+    return cls(tuple(objects), frozenset(retired))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/nvda_desk/architecture/registry.py:56: in __init__
+    self.validate_integrity()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <nvda_desk.architecture.registry.ArchitectureRegistry object at 0x7ff949400a70>
+
+    def validate_integrity(self) -> None:
+        ids = [item.id for item in self.objects]
+        if len(ids) != len(set(ids)):
+            raise ValueError("active architecture identifiers are not unique")
+        overlap = set(ids) & self.retired_ids
+        if overlap:
+>           raise ValueError(f"retired identifiers were reused: {sorted(overlap)}")
+E           ValueError: retired identifiers were reused: ['M02']
+
+src/nvda_desk/architecture/registry.py:105: ValueError
+______________ test_exact_brief_bytes_bind_without_copying_brief _______________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-7/test_exact_brief_bytes_bind_wi0')
+
+    def test_exact_brief_bytes_bind_without_copying_brief(tmp_path: Path) -> None:
+        binding_path, brief_path = _write_binding(
+            tmp_path,
+            b"Implementation-ready instructions.\n",
+            targets=[
+                {"action": "create", "category": "M", "name": "example_responsibility"},
+                {"action": "modify", "object_id": "P01"},
+            ],
+        )
+    
+        binding = validate_implementation_authority(REPO_ROOT, binding_path, brief_path)
+    
+        assert binding.brief_sha256 == hashlib.sha256(brief_path.read_bytes()).hexdigest()
+        assert binding.acceptance_ref == "human-acceptance:test"
+>       assert [(item.object_id, item.action) for item in binding.targets] == [
+            ("M02", "create"),
+            ("P01", "modify"),
+        ]
+E       AssertionError: assert [('M03', 'cre...1', 'modify')] == [('M02', 'cre...1', 'modify')]
+E         
+E         At index 0 diff: ('M03', 'create') != ('M02', 'create')
+E         Use -v to get more diff
+
+tests/architecture/test_implementation_authority_ingress.py:65: AssertionError
+________ test_create_contract_resolves_identifier_without_caller_number ________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-7/test_create_contract_resolves_0')
+
+    def test_create_contract_resolves_identifier_without_caller_number(tmp_path: Path) -> None:
+        binding_path, brief_path = _write_binding(
+            tmp_path,
+            b"brief\n",
+            targets=[{"action": "create", "category": "M", "name": "new_owner"}],
+        )
+    
+        binding = validate_implementation_authority(REPO_ROOT, binding_path, brief_path)
+    
+>       assert [(item.action, item.name, item.object_id) for item in binding.targets] == [
+            ("create", "new_owner", "M02")
+        ]
+E       AssertionError: assert [('create', '...wner', 'M03')] == [('create', '...wner', 'M02')]
+E         
+E         At index 0 diff: ('create', 'new_owner', 'M03') != ('create', 'new_owner', 'M02')
+E         Use -v to get more diff
+
+tests/architecture/test_implementation_authority_ingress.py:107: AssertionError
+_________ test_multiple_same_category_creates_resolve_in_request_order _________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-7/test_multiple_same_category_cr0')
+
+    def test_multiple_same_category_creates_resolve_in_request_order(tmp_path: Path) -> None:
+        binding_path, brief_path = _write_binding(
+            tmp_path,
+            b"brief\n",
+            targets=[
+                {"action": "create", "category": "M", "name": "first_owner"},
+                {"action": "create", "category": "M", "name": "second_owner"},
+            ],
+        )
+    
+        binding = validate_implementation_authority(REPO_ROOT, binding_path, brief_path)
+    
+>       assert [(item.name, item.object_id) for item in binding.targets] == [
+            ("first_owner", "M02"),
+            ("second_owner", "M03"),
+        ]
+E       AssertionError: assert [('first_owne...wner', 'M04')] == [('first_owne...wner', 'M03')]
+E         
+E         At index 0 diff: ('first_owner', 'M03') != ('first_owner', 'M02')
+E         Use -v to get more diff
+
+tests/architecture/test_implementation_authority_ingress.py:177: AssertionError
+_______ test_create_resolution_honours_current_retired_and_durable_state _______
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-7/test_create_resolution_honours0')
+
+    def test_create_resolution_honours_current_retired_and_durable_state(tmp_path: Path) -> None:
+        repository = _copy_architecture_state(tmp_path, "state")
+    
+        modules_path = repository / "config/architecture/modules.yaml"
+        modules = yaml.safe_load(modules_path.read_text(encoding="utf-8"))
+        modules["retired_ids"] = ["M02"]
+        modules_path.write_text(yaml.safe_dump(modules, sort_keys=False), encoding="utf-8")
+    
+        allocations_path = repository / "config/architecture/implementation_allocations.yaml"
+        allocations_path.write_text(
+            yaml.safe_dump(
+                {
+                    "schema_version": "1.0",
+                    "implementation_allocations": [
+                        {
+                            "object_id": "M03",
+                            "name": "already_implemented",
+                            "implemented_on": "2026-09-10",
+                        }
+                    ],
+                },
+                sort_keys=False,
+            ),
+            encoding="utf-8",
+        )
+    
+        m_binding, m_brief = _write_binding(
+            tmp_path / "m-binding",
+            b"brief\n",
+            targets=[{"action": "create", "category": "M", "name": "next_module"}],
+        )
+        a_binding, a_brief = _write_binding(
+            tmp_path / "a-binding",
+            b"brief\n",
+            targets=[{"action": "create", "category": "A", "name": "second_shell"}],
+        )
+    
+>       m_result = validate_implementation_authority(repository, m_binding, m_brief)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/architecture/test_implementation_authority_ingress.py:220: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/nvda_desk/architecture/implementation_authority.py:144: in validate_implementation_authority
+    targets = _resolve_target_projection(repository_root, document["targets"])
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/nvda_desk/architecture/implementation_authority.py:76: in _resolve_target_projection
+    create_ids = iter(resolve_candidate_identifiers(repository_root, create_categories))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/nvda_desk/architecture/allocation.py:64: in resolve_candidate_identifiers
+    consumed = consumed_identifiers(repository_root)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/nvda_desk/architecture/allocation.py:50: in consumed_identifiers
+    registry = ArchitectureRegistry.from_repository(repository_root)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/nvda_desk/architecture/registry.py:97: in from_repository
+    return cls(tuple(objects), frozenset(retired))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/nvda_desk/architecture/registry.py:56: in __init__
+    self.validate_integrity()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <nvda_desk.architecture.registry.ArchitectureRegistry object at 0x7ff948da0800>
+
+    def validate_integrity(self) -> None:
+        ids = [item.id for item in self.objects]
+        if len(ids) != len(set(ids)):
+            raise ValueError("active architecture identifiers are not unique")
+        overlap = set(ids) & self.retired_ids
+        if overlap:
+>           raise ValueError(f"retired identifiers were reused: {sorted(overlap)}")
+E           ValueError: retired identifiers were reused: ['M02']
+
+src/nvda_desk/architecture/registry.py:105: ValueError
+____ test_rehearsal_is_non_mutating_and_candidate_resolution_is_non_durable ____
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-7/test_rehearsal_is_non_mutating0')
+
+    def test_rehearsal_is_non_mutating_and_candidate_resolution_is_non_durable(tmp_path: Path) -> None:
+        watched = [
+            REPO_ROOT / "config/architecture/modules.yaml",
+            REPO_ROOT / "config/architecture/surfaces.yaml",
+            REPO_ROOT / "config/architecture/implementation_allocations.yaml",
+        ]
+        before = {path: path.read_bytes() for path in watched}
+        binding_path, brief_path = _write_binding(
+            tmp_path,
+            b"brief\n",
+            targets=[
+                {"action": "create", "category": "M", "name": "new_owner"},
+                {"action": "modify", "object_id": "A00"},
+            ],
+        )
+    
+        first = validate_implementation_authority(REPO_ROOT, binding_path, brief_path)
+        second = validate_implementation_authority(REPO_ROOT, binding_path, brief_path)
+    
+>       assert [item.object_id for item in first.targets] == ["M02", "A00"]
+E       AssertionError: assert ['M03', 'A00'] == ['M02', 'A00']
+E         
+E         At index 0 diff: 'M03' != 'M02'
+E         Use -v to get more diff
+
+tests/architecture/test_implementation_authority_ingress.py:280: AssertionError
+_________ test_repository_binding_template_matches_executable_contract _________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-7/test_repository_binding_templa0')
+
+    def test_repository_binding_template_matches_executable_contract(tmp_path: Path) -> None:
+        brief = b"brief\n"
+        brief_path = tmp_path / "brief.md"
+        brief_path.write_bytes(brief)
+        rendered = (
+            (REPO_ROOT / "templates/implementation_authority/binding.yaml.template")
+            .read_text(encoding="utf-8")
+            .replace("{{brief_sha256}}", hashlib.sha256(brief).hexdigest())
+            .replace("{{acceptance_ref}}", "human-acceptance:template-test")
+            .replace("{{category}}", "M")
+            .replace("{{responsibility_name}}", "template_owner")
+            .replace("{{existing_object_id}}", "A00")
+        )
+        binding_path = tmp_path / "binding.yaml"
+        binding_path.write_text(rendered, encoding="utf-8")
+    
+        binding = validate_implementation_authority(REPO_ROOT, binding_path, brief_path)
+    
+>       assert [(item.action, item.name, item.object_id) for item in binding.targets] == [
+            ("create", "template_owner", "M02"),
+            ("modify", None, "A00"),
+        ]
+E       AssertionError: assert [('create', '... None, 'A00')] == [('create', '... None, 'A00')]
+E         
+E         At index 0 diff: ('create', 'template_owner', 'M03') != ('create', 'template_owner', 'M02')
+E         Use -v to get more diff
+
+tests/architecture/test_implementation_authority_ingress.py:303: AssertionError
+_____ test_repository_ingress_command_reports_non_durable_named_candidate ______
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-7/test_repository_ingress_comman0')
+
+    def test_repository_ingress_command_reports_non_durable_named_candidate(tmp_path: Path) -> None:
+        binding_path, brief_path = _write_binding(
+            tmp_path,
+            b"brief\n",
+            targets=[
+                {"action": "create", "category": "M", "name": "new_owner"},
+                {"action": "modify", "object_id": "A00"},
+            ],
+        )
+    
+        result = subprocess.run(
+            [
+                sys.executable,
+                str(REPO_ROOT / "tools/validate_implementation_authority.py"),
+                "--binding",
+                str(binding_path),
+                "--brief",
+                str(brief_path),
+            ],
+            cwd=REPO_ROOT,
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+    
+        assert result.returncode == 0, result.stdout + result.stderr
+>       assert "candidate_targets: create:new_owner->M02, modify:A00" in result.stdout
+E       AssertionError: assert 'candidate_targets: create:new_owner->M02, modify:A00' in 'PASS: implementation authority brief_sha256=13d68660d0fd520791f490f93d9449d34d51a061e70b0205f66c37ba8318f3ed\ncandidate_targets: create:new_owner->M03, modify:A00\n'
+E        +  where 'PASS: implementation authority brief_sha256=13d68660d0fd520791f490f93d9449d34d51a061e70b0205f66c37ba8318f3ed\ncandidate_targets: create:new_owner->M03, modify:A00\n' = CompletedProcess(args=['/workspace/scratch/d549b6d808a9/g51-dev/bin/python', '/workspace/scratch/d549b6d808a9/g51/repo...0791f490f93d9449d34d51a061e70b0205f66c37ba8318f3ed\ncandidate_targets: create:new_owner->M03, modify:A00\n', stderr='').stdout
+
+tests/architecture/test_implementation_authority_ingress.py:335: AssertionError
+________ test_all_architecture_registries_conform_to_committed_schemas _________
+
+    def test_all_architecture_registries_conform_to_committed_schemas() -> None:
+        registry = ArchitectureRegistry.from_repository(ROOT)
+>       assert [item.id for item in registry.objects] == ["M00", "M01", "P01", "G01", "A00", "K01"]
+E       AssertionError: assert ['M00', 'M01'...', 'A00', ...] == ['M00', 'M01'... 'A00', 'K01']
+E         
+E         At index 2 diff: 'M02' != 'P01'
+E         Left contains one more item: 'K01'
+E         Use -v to get more diff
+
+tests/architecture/test_registry_schema.py:17: AssertionError
+__________ test_current_source_tree_passes_admitted_static_typecheck ___________
+
+    def test_current_source_tree_passes_admitted_static_typecheck() -> None:
+        completed = _run_mypy("src")
+>       assert completed.returncode == 0, completed.stdout + completed.stderr
+E       AssertionError: error: INTERNAL ERROR -- Please try using mypy master on GitHub:
+E         https://mypy.readthedocs.io/en/stable/common_issues.html#using-a-development-mypy-build
+E         If this issue continues with mypy master, please report a bug at https://github.com/python/mypy/issues
+E         version: 1.20.1
+E         note: please use --show-traceback to print a traceback when reporting a bug
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/workspace/scratch/d549b6d808a9/g51-dev/bin/python', '-m', 'mypy', '--config-file', '/workspac...om/python/mypy/issues\nversion: 1.20.1\nnote: please use --show-traceback to print a traceback when reporting a bug\n').returncode
+
+tests/architecture/test_static_typecheck.py:32: AssertionError
+_________ test_incompatible_python_visible_public_seam_use_is_rejected _________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-7/test_incompatible_python_visib0')
+
+    def test_incompatible_python_visible_public_seam_use_is_rejected(tmp_path: Path) -> None:
+        source = tmp_path / "src"
+        producer = source / "nvda_desk/m02/api.py"
+        consumer = source / "nvda_desk/m01/impl.py"
+        package_markers = (
+            source / "nvda_desk/__init__.py",
+            producer.parent / "__init__.py",
+            consumer.parent / "__init__.py",
+        )
+        for path in package_markers:
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text("", encoding="utf-8")
+        producer.write_text(
+            "def normalize(value: int) -> int:\n    return value\n",
+            encoding="utf-8",
+        )
+        consumer.write_text(
+            'from nvda_desk.m02.api import normalize\nresult = normalize("wrong")\n',
+            encoding="utf-8",
+        )
+    
+        completed = _run_mypy("--explicit-package-bases", str(source))
+    
+>       assert completed.returncode == 1
+E       AssertionError: assert 2 == 1
+E        +  where 2 = CompletedProcess(args=['/workspace/scratch/d549b6d808a9/g51-dev/bin/python', '-m', 'mypy', '--config-file', '/workspac...om/python/mypy/issues\nversion: 1.20.1\nnote: please use --show-traceback to print a traceback when reporting a bug\n').returncode
+
+tests/architecture/test_static_typecheck.py:64: AssertionError
+________ test_package_imports_match_kernel_plus_admitted_owner_packages ________
+
+    def test_package_imports_match_kernel_plus_admitted_owner_packages() -> None:
+        assert nvda_desk.__version__ == "1.0.0"
+        discovered = {item.name for item in pkgutil.iter_modules(nvda_desk.__path__)}
+        expected = {"architecture", "composition"} | _admitted_top_level_packages()
+>       assert discovered == expected
+E       AssertionError: assert {'architectur...rrence_truth'} == {'architectur...rrence_truth'}
+E         
+E         Extra items in the right set:
+E         'market_measurement_truth'
+E         Use -v to get more diff
+
+tests/bootstrap/test_minimal_imports.py:23: AssertionError
+_____ test_active_source_tree_matches_kernel_plus_admitted_owner_packages ______
+
+    def test_active_source_tree_matches_kernel_plus_admitted_owner_packages() -> None:
+        package_root = ROOT / "src/nvda_desk"
+        directories = {
+            path.name for path in package_root.iterdir() if path.is_dir() and path.name != "__pycache__"
+        }
+        expected = {"architecture", "composition"} | _admitted_top_level_packages()
+>       assert directories == expected
+E       AssertionError: assert {'architectur...rrence_truth'} == {'architectur...rrence_truth'}
+E         
+E         Extra items in the right set:
+E         'market_measurement_truth'
+E         Use -v to get more diff
+
+tests/bootstrap/test_minimal_imports.py:32: AssertionError
+=========================== short test summary info ============================
+FAILED tests/architecture/test_activation_readiness.py::test_aggregate_validator_accepts_lawful_protocol_and_kernel_activation
+FAILED tests/architecture/test_identifier_taxonomy.py::test_current_post_reset_allocation_history_contains_admitted_m00
+FAILED tests/architecture/test_identifier_taxonomy.py::test_candidate_resolution_uses_current_post_reset_state_in_request_order
+FAILED tests/architecture/test_identifier_taxonomy.py::test_candidate_resolution_does_not_mutate_allocation_history
+FAILED tests/architecture/test_identifier_taxonomy.py::test_candidate_resolution_honours_retired_and_durable_post_reset_ids
+FAILED tests/architecture/test_implementation_authority_ingress.py::test_exact_brief_bytes_bind_without_copying_brief
+FAILED tests/architecture/test_implementation_authority_ingress.py::test_create_contract_resolves_identifier_without_caller_number
+FAILED tests/architecture/test_implementation_authority_ingress.py::test_multiple_same_category_creates_resolve_in_request_order
+FAILED tests/architecture/test_implementation_authority_ingress.py::test_create_resolution_honours_current_retired_and_durable_state
+FAILED tests/architecture/test_implementation_authority_ingress.py::test_rehearsal_is_non_mutating_and_candidate_resolution_is_non_durable
+FAILED tests/architecture/test_implementation_authority_ingress.py::test_repository_binding_template_matches_executable_contract
+FAILED tests/architecture/test_implementation_authority_ingress.py::test_repository_ingress_command_reports_non_durable_named_candidate
+FAILED tests/architecture/test_registry_schema.py::test_all_architecture_registries_conform_to_committed_schemas
+FAILED tests/architecture/test_static_typecheck.py::test_current_source_tree_passes_admitted_static_typecheck
+FAILED tests/architecture/test_static_typecheck.py::test_incompatible_python_visible_public_seam_use_is_rejected
+FAILED tests/bootstrap/test_minimal_imports.py::test_package_imports_match_kernel_plus_admitted_owner_packages
+FAILED tests/bootstrap/test_minimal_imports.py::test_active_source_tree_matches_kernel_plus_admitted_owner_packages
+======================== 17 failed, 96 passed in 32.96s ========================

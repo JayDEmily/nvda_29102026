@@ -1,0 +1,16 @@
+{
+  "status": "PASS_STATIC_WORKBOOK_DESIGN_CLARIFICATION",
+  "input": "handoff/workbook_v2/NVDA_SIGNALS_RESEARCH_WORKBOOK_V2_PASS06.xlsx",
+  "output": "handoff/workbook_v2/NVDA_SIGNALS_RESEARCH_WORKBOOK_V2_PASS08.xlsx",
+  "changed_cells": 40,
+  "allowed_exact_cell_differences": 40,
+  "sheet_count": 41,
+  "original_seven_cells_preserved": true,
+  "M01_1_unchanged": true,
+  "v1_source_sha256": "519ea9449297d564ae4a02afc1bf4e60e4471631c81a0842620f9fb60bb4f9ae",
+  "D_total": 209,
+  "M01_1_signals": 114,
+  "M02_M31_signals": 95,
+  "module_count": 30,
+  "runtime_module_independence_proven": false
+}

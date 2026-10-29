@@ -1,0 +1,32 @@
+{
+  "tester_iteration": 13,
+  "review_boundary": "VI-11R10 proof adequacy; namespace/filesystem caveat not a rejection basis",
+  "verdict": "FAIL / RETURN_TO_WORKER",
+  "vi12r_authorised_by_this_tester": false,
+  "source_packet_sha256": "f67ef9c88c9b6470f46200815f5ac4b29505f3ce309a6a3ca482eeb6832280b3",
+  "submitted_wrapper": {
+    "head": "2b17c3b545242475889b85aa158000f443f4ca65",
+    "tree": "1cc95061579ffb2aad4743490ac38f2eb10685cb"
+  },
+  "physical_proof": {
+    "commit": "548a61107fda52e643142542ddb60dee584bd46e",
+    "tree": "e4e0850990545b46d57bb8241596fa1e51c60451",
+    "parent": "36bba0d26b988881812d2333f7e1eb3e8e63786b"
+  },
+  "finding_counts": {
+    "critical": 2,
+    "important": 0,
+    "total": 2
+  },
+  "prior_finding_status": {
+    "T012-F001": "PARTIALLY_CLOSED",
+    "T012-F002": "PARTIALLY_CLOSED"
+  },
+  "new_unrelated_proof_categories": 0,
+  "namespace_filesystem": {
+    "rejection_basis": false,
+    "propositions": "UNPROVED",
+    "count": 9
+  },
+  "response_sha256": "69f2bf610d1e3ae66752c6b7a3a3b32bdbcb5528f8b74298dcf7ffa5becf2a68"
+}

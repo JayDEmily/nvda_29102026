@@ -1,0 +1,93 @@
+Reviewer 024 command record — commands materially bearing on disposition
+
+SOURCE / GOVERNANCE / GIT BINDING
+- sha256sum 'NVDA_G03_TESTER_VI13R_U02_R024_1790131803_FULL_GIT_20260923.tar(1).gz'
+  -> 75bd2c5aaacd96c792f65f27e4e6f42cf111a0ad5154da7f2fd72343f2bfb874
+- read README.md in full and followed its role/cycle routing
+- read GUARDRAILS.md in full before substantive review and repeatedly before project responses/actions
+- read root AGENTS.md, complete current EXEC_PLAN.md, tests/AGENTS.override.md,
+  handoff/control/CURRENT_STATE.md and active REQUEST.md
+- read Reviewer-023 disposition/commands, Worker repair evidence/request, applicable IRB/BICP/IWO
+  authority, complete repaired api.py and complete U02 product proof
+- transported repository HEAD before review:
+  549ed340c45daaf60366fb7d102b982a6b81c2a2 / tree c05e0ae6ab45b011f9d55b46b3653838f62faf49
+- git rev-parse 5c62ec5147da718297b251b5a287405ebf3b4755^{tree}
+  -> dc1293d2c3d7e234e53a8d663f25eac51f7086ab
+- forward main before U02 promotion
+  -> b806447eb440a016826728af075e714beee23d31
+- candidate..transport src/tests diff
+  -> no changes
+- rejected..repaired candidate src/tests changed exactly:
+  src/nvda_desk/raw_signal_occurrence_truth/api.py
+  tests/product/raw_signal/test_u02_capture_schedule.py
+- SHA-256 of rejected..repaired candidate binary src/tests diff
+  -> dc0ed8cbd9df3d6ce79ee77315eff80f43558842af811320e49642812329c651
+
+EXACT REVIEW TOOLCHAIN
+- Python 3.13.5
+- pytest 9.0.3
+- mypy 1.20.1 (compiled)
+- Ruff 0.15.11
+- exact pinned tools were provisioned outside the repository from preserved project artefacts;
+  candidate bytes were not changed
+
+EXACT CANDIDATE VALIDATION
+- pytest U01+U02
+  -> 328 passed; rc=0
+- concrete Reviewer-023 regressions
+  -> 2 passed; rc=0
+- first direct strict-mypy specimens without MYPYPATH
+  -> import-not-found environment result; not attributed to candidate
+- corrected strict positive mypy public-seam specimen with MYPYPATH=src
+  -> rc=0
+- corrected strict negative mypy public-seam specimen with MYPYPATH=src
+  -> rc=1 as intended; exactly all 15 STATIC_NEGATIVE sites diagnosed at
+     15,18,21,23,28,34,43,48,53,59,64,67,70,73,76
+- mypy src --show-error-codes
+  -> Success: no issues found in 15 source files; rc=0
+- Ruff src tests tools
+  -> All checks passed; rc=0
+- validate_product_proof.py
+  -> PASS; six product families; 13/13 obligations; rc=0
+- validate_architecture.py
+  -> PASS; dependency/public-seam violations: 0; rc=0
+- check_dependencies.py
+  -> PASS; rc=0
+- check_public_seams.py
+  -> PASS; rc=0
+- pytest tests/architecture tests/bootstrap
+  -> 74 passed; rc=0
+- run_promotion_gate.py --set architecture_kernel
+  -> 74 passed; rc=0
+- git diff --check b806447eb440a016826728af075e714beee23d31..5c62ec5147da718297b251b5a287405ebf3b4755
+  -> rc=0
+- git fsck --full --strict
+  -> rc=0
+
+IMPLEMENTATION-COUPLED ADVERSARIAL CHALLENGE — R023-U02-F001 AND BOUNDED U02 CONTRACT
+Using only public API construction/owner seams plus ordinary facet attribute/slot traversal:
+- register base policy through owner.commands -> success
+- owner.commands._state / owner.reads._state -> AttributeError
+- traverse ordinary facet __dict__/__slots__ while treating callables as capabilities rather than
+  introspecting their closures -> no mutable dict/list/set semantic state surfaced
+- register overlapping policy -> ValueError; rejected policy remains absent on public read
+- register adjacent successor at exact prior deactivation boundary -> success
+- realise exact :30 slot -> end exactly +30 seconds
+- same policy-ref/slot plus same capture ID -> same occurrence returned
+- same policy-ref/slot plus different capture ID -> ValueError
+- same capture ID reused for different slot -> ValueError
+- slot before activation and slot at prior policy deactivation -> ValueError
+- successor policy can realise the boundary slot at its activation -> success
+- direct assignment to frozen CaptureScopePolicyV1 field -> FrozenInstanceError
+- referential policy/capture rereads -> exact admitted values
+- challenge result -> R024_ADVERSARIAL_CHALLENGE=PASS
+
+BOUNDARY
+- no arbitrary function-closure introspection, eval/exec, monkey-patching or unrestricted
+  metaprogramming was used or required; active REQUEST.md expressly excludes those from this repair claim
+
+DISPOSITION
+- R023-U02-F001: CLOSED
+- new material U02 findings: none
+- final: PASS
+- U03 remains prohibited until lawful U02 promotion to forward main

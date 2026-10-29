@@ -1,0 +1,61 @@
+FFFFF.........                                                           [100%]
+=================================== FAILURES ===================================
+___________ test_already_net_edge_reference_and_typed_side[buy-5.45] ___________
+
+side = 'buy', expected = '5.45'
+
+    @pytest.mark.parametrize("side,expected", [("buy", "5.45"), ("sell", "4.55")])
+    def test_already_net_edge_reference_and_typed_side(side, expected):
+        result = evaluate(case(side))
+>       assert result is not None and result.value == D(expected)
+E       assert (None is not None)
+
+tests/product/derived_signal/test_m01_f4_approved_execution_edge.py:66: AssertionError
+__________ test_already_net_edge_reference_and_typed_side[sell-4.55] ___________
+
+side = 'sell', expected = '4.55'
+
+    @pytest.mark.parametrize("side,expected", [("buy", "5.45"), ("sell", "4.55")])
+    def test_already_net_edge_reference_and_typed_side(side, expected):
+        result = evaluate(case(side))
+>       assert result is not None and result.value == D(expected)
+E       assert (None is not None)
+
+tests/product/derived_signal/test_m01_f4_approved_execution_edge.py:66: AssertionError
+___ test_option_premium_conversion_uses_exact_size_and_multiplier[2-50-5.4] ____
+
+size = 2, multiplier = 50, expected = '5.4'
+
+    @pytest.mark.parametrize("size,multiplier,expected", [(2, 50, "5.4"), (4, 100, "5.475")])
+    def test_option_premium_conversion_uses_exact_size_and_multiplier(size, multiplier, expected):
+        result = evaluate(case(size=D(size), multiplier=D(multiplier)))
+>       assert result is not None and result.value == D(expected)
+E       assert (None is not None)
+
+tests/product/derived_signal/test_m01_f4_approved_execution_edge.py:72: AssertionError
+__ test_option_premium_conversion_uses_exact_size_and_multiplier[4-100-5.475] __
+
+size = 4, multiplier = 100, expected = '5.475'
+
+    @pytest.mark.parametrize("size,multiplier,expected", [(2, 50, "5.4"), (4, 100, "5.475")])
+    def test_option_premium_conversion_uses_exact_size_and_multiplier(size, multiplier, expected):
+        result = evaluate(case(size=D(size), multiplier=D(multiplier)))
+>       assert result is not None and result.value == D(expected)
+E       assert (None is not None)
+
+tests/product/derived_signal/test_m01_f4_approved_execution_edge.py:72: AssertionError
+___________ test_execution_cost_and_urgency_caps_bind_independently ____________
+
+    def test_execution_cost_and_urgency_caps_bind_independently():
+        c = case(edge=D(40)); result = evaluate(c)
+>       assert result is not None and result.value == D("5.5")
+E       assert (None is not None)
+
+tests/product/derived_signal/test_m01_f4_approved_execution_edge.py:77: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/derived_signal/test_m01_f4_approved_execution_edge.py::test_already_net_edge_reference_and_typed_side[buy-5.45]
+FAILED tests/product/derived_signal/test_m01_f4_approved_execution_edge.py::test_already_net_edge_reference_and_typed_side[sell-4.55]
+FAILED tests/product/derived_signal/test_m01_f4_approved_execution_edge.py::test_option_premium_conversion_uses_exact_size_and_multiplier[2-50-5.4]
+FAILED tests/product/derived_signal/test_m01_f4_approved_execution_edge.py::test_option_premium_conversion_uses_exact_size_and_multiplier[4-100-5.475]
+FAILED tests/product/derived_signal/test_m01_f4_approved_execution_edge.py::test_execution_cost_and_urgency_caps_bind_independently
+5 failed, 9 passed in 0.08s

@@ -1,0 +1,46 @@
+VI-17-L2 material command/evidence record
+
+Governance/readback:
+- full GUARDRAILS.md, AGENTS.md, tests/AGENTS.override.md and accepted EXEC_PLAN.md
+- current state and active VI-17-L2 Worker request
+- accepted VI-15-L2 Worker/Tester evidence
+- accepted VI-16 Worker/Tester evidence
+- accepted U05 PostgreSQL evidence
+- VI-17-L1 Worker/Tester/promotion evidence and active lineage
+
+Package identity/inventory:
+- sha256sum package artefacts; stat exact sizes
+- cd PACKAGE_ARTIFACTS && sha256sum -c SHA256SUMS -> both artefacts OK
+- Python zip/tar inspection -> wheel 21 files / 16 Python files; sdist 117 files
+- wheel METADATA readback -> nvda-architecture-kernel 1.0.0; Python ==3.13.5; pinned runtime deps
+- byte-compare all 16 wheel Python files against git show 332c1f95:<src path> -> 16/16, 0 mismatches
+- byte-compare all 116 repository-backed sdist members against 332c1f95 -> 116/116, 0 mismatches; PKG-INFO only generated member
+
+Environment/provenance:
+- sha256sum exact U05 proof-bootstrap archive and PostgreSQL 17.9 portable-runtime archive
+- extract each outside repository and execute internal SHA256SUMS
+  - proof bootstrap: 24/24 OK
+  - PostgreSQL runtime: 1,937/1,937 OK
+- direct extracted postgres/initdb/pg_ctl/pg_config --version -> PostgreSQL 17.9
+- read ENVIRONMENT_RECEIPT.md, requirements.lock, EXPECTED_POSTGRES_RUNTIME.sha256 and PostgreSQL BUILD_RECEIPT.md
+- inspect current sandbox versions to prevent substitution for accepted proof environment
+
+Current registration/inactive closure:
+- parse config/product_proof and config/architecture YAML
+- current aggregate READY_FOR_PROOF; 6 families; 13 obligations; 11 architecture families
+- M00 sole active runtime module; A00 bootstrap shell; P01/K01 placeholders; M00 only allocation; zero surfaces
+
+Git/lineage/drift:
+- git merge-base --is-ancestor for all accepted U01-U06 and VI14/15/16/17-L1 candidate/review/promotion identities -> all ancestors
+- git cat-file confirms active thin root 8133432... present/ancestor and external d095954... predecessor absent
+- git diff --name-only 332c1f95..HEAD -- src tests config pyproject.toml -> empty
+- same scoped no-drift check from accepted VI16 candidate and VI17-L1 candidate -> empty
+- git status --porcelain=v1 -> empty at routed baseline
+- git diff --check -> success
+- git fsck --full --no-dangling -> success
+- git fsck --full -> success; eight dangling blobs only
+
+Recovery/resumability:
+- sha256sum incoming full-Git/package source packet -> 688ba704...; 6,668,847 bytes
+- tar inventory confirms repository .git object/ref store, package artefacts, SHA256SUMS and handoff manifest
+- source packet predates local VI17-L1 promotion/VI17-L2 route and is not claimed as VI18 terminal recovery artefact

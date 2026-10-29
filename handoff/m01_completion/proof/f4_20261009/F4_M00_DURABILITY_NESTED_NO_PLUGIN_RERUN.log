@@ -1,0 +1,121 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+__ test_record_only_proxy_rewrite_rewrites_nested_public_storage_capabilities __
+
+    def test_record_only_proxy_rewrite_rewrites_nested_public_storage_capabilities() -> None:
+        """Prove admitted bound methods cannot retain a hidden concrete-adapter receiver."""
+    
+        class AdapterCanary:
+            def append_policy(self, value: Any) -> Any:
+                return value
+    
+            def get_policy(self, policy_id: Any, version: int) -> tuple[Any, int]:
+                return policy_id, version
+    
+            def append_capture(self, value: Any) -> Any:
+                return value
+    
+            def get_capture(self, capture_id: Any) -> Any:
+                return capture_id
+    
+        class OwnerCanary:
+            def __init__(self, adapter: AdapterCanary) -> None:
+                self._port = adapter
+                self._nested = [
+                    adapter.append_policy,
+                    {"reader": adapter.get_policy},
+                    (adapter.append_capture,),
+                    functools.partial(adapter.get_capture, "capture-id"),
+                ]
+    
+        adapter = AdapterCanary()
+        owner = OwnerCanary(adapter)
+        proxy = _RecordOnlyPersistenceProxy()
+>       replaced = _rewire_production_graph_reference(owner, adapter, proxy)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:2983: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/raw_signal/test_u05_postgresql_durability.py:2631: in _rewire_production_graph_reference
+    rewrite(root)
+tests/product/raw_signal/test_u05_postgresql_durability.py:2613: in rewrite
+    assert not contains_target_capability(type(value)), (
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/product/raw_signal/test_u05_postgresql_durability.py:2488: in contains_target_capability
+    return any(
+tests/product/raw_signal/test_u05_postgresql_durability.py:2489: in <genexpr>
+    contains_target_capability(child, local_seen)
+tests/product/raw_signal/test_u05_postgresql_durability.py:2476: in contains_target_capability
+    if name in value.__globals__ and contains_target_capability(
+tests/product/raw_signal/test_u05_postgresql_durability.py:2482: in contains_target_capability
+    return any(
+tests/product/raw_signal/test_u05_postgresql_durability.py:2483: in <genexpr>
+    contains_target_capability(child, local_seen)
+tests/product/raw_signal/test_u05_postgresql_durability.py:2494: in contains_target_capability
+    if contains_target_capability(type(value), local_seen):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/product/raw_signal/test_u05_postgresql_durability.py:2488: in contains_target_capability
+    return any(
+tests/product/raw_signal/test_u05_postgresql_durability.py:2489: in <genexpr>
+    contains_target_capability(child, local_seen)
+tests/product/raw_signal/test_u05_postgresql_durability.py:2476: in contains_target_capability
+    if name in value.__globals__ and contains_target_capability(
+tests/product/raw_signal/test_u05_postgresql_durability.py:2482: in contains_target_capability
+    return any(
+tests/product/raw_signal/test_u05_postgresql_durability.py:2483: in <genexpr>
+    contains_target_capability(child, local_seen)
+tests/product/raw_signal/test_u05_postgresql_durability.py:2453: in contains_target_capability
+    return any(
+tests/product/raw_signal/test_u05_postgresql_durability.py:2455: in <genexpr>
+    or contains_target_capability(child, local_seen)
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/product/raw_signal/test_u05_postgresql_durability.py:2494: in contains_target_capability
+    if contains_target_capability(type(value), local_seen):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/product/raw_signal/test_u05_postgresql_durability.py:2488: in contains_target_capability
+    return any(
+tests/product/raw_signal/test_u05_postgresql_durability.py:2489: in <genexpr>
+    contains_target_capability(child, local_seen)
+tests/product/raw_signal/test_u05_postgresql_durability.py:2476: in contains_target_capability
+    if name in value.__globals__ and contains_target_capability(
+tests/product/raw_signal/test_u05_postgresql_durability.py:2482: in contains_target_capability
+    return any(
+tests/product/raw_signal/test_u05_postgresql_durability.py:2483: in <genexpr>
+    contains_target_capability(child, local_seen)
+tests/product/raw_signal/test_u05_postgresql_durability.py:2453: in contains_target_capability
+    return any(
+tests/product/raw_signal/test_u05_postgresql_durability.py:2455: in <genexpr>
+    or contains_target_capability(child, local_seen)
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/product/raw_signal/test_u05_postgresql_durability.py:2482: in contains_target_capability
+    return any(
+tests/product/raw_signal/test_u05_postgresql_durability.py:2483: in <genexpr>
+    contains_target_capability(child, local_seen)
+tests/product/raw_signal/test_u05_postgresql_durability.py:2488: in contains_target_capability
+    return any(
+tests/product/raw_signal/test_u05_postgresql_durability.py:2489: in <genexpr>
+    contains_target_capability(child, local_seen)
+tests/product/raw_signal/test_u05_postgresql_durability.py:2497: in contains_target_capability
+    contains_target_capability(child, local_seen) for _, child in object_state_items(value)
+                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = <pydantic._internal._mock_val_ser.MockValSer object at 0x7fbf5ff522c0>
+
+    def object_state_items(value: Any) -> list[tuple[str, Any]]:
+        """Return instance dictionary and slot state without invoking descriptors."""
+    
+        items: dict[str, Any] = {}
+        with contextlib.suppress(TypeError):
+>           items.update(vars(value))
+                         ^^^^^^^^^^^
+E           pydantic.errors.PydanticUserError: Pydantic models should inherit from BaseModel, BaseModel cannot be instantiated directly
+E           
+E           For further information visit https://errors.pydantic.dev/2.13/u/base-model-instantiated
+
+tests/product/raw_signal/test_u05_postgresql_durability.py:2413: PydanticUserError
+=========================== short test summary info ============================
+FAILED tests/product/raw_signal/test_u05_postgresql_durability.py::test_record_only_proxy_rewrite_rewrites_nested_public_storage_capabilities - pydantic.errors.PydanticUserError: Pydantic models should inherit from BaseModel, BaseModel cannot be instantiated directly
+
+For further information visit https://errors.pydantic.dev/2.13/u/base-model-instantiated
+1 failed in 0.58s

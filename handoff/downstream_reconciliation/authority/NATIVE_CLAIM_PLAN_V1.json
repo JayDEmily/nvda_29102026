@@ -1,0 +1,315 @@
+{
+  "schema_version": 1,
+  "status": "commissioned_fixed_documentary_admission_plan_not_test_acceptance",
+  "loader_rule": "Exactly the eleven listed native sibling descriptors only; validate immutable brief SHA, binding, M02 target, exact one-family path, two required test names and normal generation/partition machinery. Missing descriptor with native Python source refuses. Do not discover arbitrary new claims.",
+  "claims": [
+    {
+      "identity": "SOURCE",
+      "leaf": "L02",
+      "schema_version": "1.0",
+      "claim_id": "neutral_market_measurement_truth_native_source",
+      "brief_path": "handoff/downstream_reconciliation/authority/briefs/NATIVE_SOURCE_BRIEF.md",
+      "brief_sha256": "5b777c5842b091f6dc4bef148970c4cf81b68864bd24f5a1633d392f38d96ead",
+      "binding_path": "implementation/authority/DOWNSTREAM_NATIVE_SOURCE_BINDING.yaml",
+      "binding_sha256": "a9f74f1c83cd14ea5e3f99a1755cc4b9c3a21a5b00fb4e6fab0aa496b10ecf80",
+      "contract_path": "handoff/downstream_reconciliation/proofs/source/PROOF_CONTRACT.json",
+      "physical_root": "tests/product/market_measurement_native_source",
+      "admission_path": "config/product_proof/market_measurement_native_source/admission.json",
+      "descriptor_path": "config/product_proof/market_measurement_native_source/claim.json",
+      "generation_directory": "config/product_proof/market_measurement_native_source/generations",
+      "family_path": "tests/product/market_measurement_native_source/test_source.py",
+      "test_names": [
+        "test_native_source_success",
+        "test_native_source_refusal"
+      ],
+      "physical_cases": 2,
+      "legacy_cases_preserved": 0,
+      "implementation_target_id": "M02",
+      "proof_state": "NOT_AUTHORED_NOT_RUN",
+      "required_target_projection": [
+        "M02",
+        "G01"
+      ]
+    },
+    {
+      "identity": "D087",
+      "leaf": "L03",
+      "schema_version": "1.0",
+      "claim_id": "neutral_market_measurement_truth_native_d087",
+      "brief_path": "handoff/downstream_reconciliation/authority/briefs/NATIVE_D087_BRIEF.md",
+      "brief_sha256": "0bb079166417c42d3ed2c5f8e363e771c88ba44934cda01184d43be2bc960a76",
+      "binding_path": "implementation/authority/DOWNSTREAM_NATIVE_D087_BINDING.yaml",
+      "binding_sha256": "90c817bbbc8c993333f0e505029aad3c87d4969c7de852fd6cef693c81af16db",
+      "contract_path": "handoff/downstream_reconciliation/proofs/d087/PROOF_CONTRACT.json",
+      "physical_root": "tests/product/market_measurement_native_d087",
+      "admission_path": "config/product_proof/market_measurement_native_d087/admission.json",
+      "descriptor_path": "config/product_proof/market_measurement_native_d087/claim.json",
+      "generation_directory": "config/product_proof/market_measurement_native_d087/generations",
+      "family_path": "tests/product/market_measurement_native_d087/test_signal.py",
+      "test_names": [
+        "test_native_success",
+        "test_native_refusal"
+      ],
+      "physical_cases": 2,
+      "legacy_cases_preserved": 2,
+      "implementation_target_id": "M02",
+      "proof_state": "NOT_AUTHORED_NOT_RUN",
+      "required_target_projection": [
+        "M02",
+        "G01"
+      ]
+    },
+    {
+      "identity": "D131",
+      "leaf": "L04",
+      "schema_version": "1.0",
+      "claim_id": "neutral_market_measurement_truth_native_d131",
+      "brief_path": "handoff/downstream_reconciliation/authority/briefs/NATIVE_D131_BRIEF.md",
+      "brief_sha256": "0ac16b9eb4859665807a86739293a196e63916062c3db7c522ab6303eabcfbe8",
+      "binding_path": "implementation/authority/DOWNSTREAM_NATIVE_D131_BINDING.yaml",
+      "binding_sha256": "d76fbe637e7de278ede007e37cde689318f6fecb28cebe805f60001ff081d031",
+      "contract_path": "handoff/downstream_reconciliation/proofs/d131/PROOF_CONTRACT.json",
+      "physical_root": "tests/product/market_measurement_native_d131",
+      "admission_path": "config/product_proof/market_measurement_native_d131/admission.json",
+      "descriptor_path": "config/product_proof/market_measurement_native_d131/claim.json",
+      "generation_directory": "config/product_proof/market_measurement_native_d131/generations",
+      "family_path": "tests/product/market_measurement_native_d131/test_signal.py",
+      "test_names": [
+        "test_native_success",
+        "test_native_refusal"
+      ],
+      "physical_cases": 2,
+      "legacy_cases_preserved": 2,
+      "implementation_target_id": "M02",
+      "proof_state": "NOT_AUTHORED_NOT_RUN",
+      "required_target_projection": [
+        "M02",
+        "G01"
+      ]
+    },
+    {
+      "identity": "D134",
+      "leaf": "L05",
+      "schema_version": "1.0",
+      "claim_id": "neutral_market_measurement_truth_native_d134",
+      "brief_path": "handoff/downstream_reconciliation/authority/briefs/NATIVE_D134_BRIEF.md",
+      "brief_sha256": "73e03e0700902098ecc8a0c9c6e3ffffd94bbc74ab8f27576368ccc0dd19cce0",
+      "binding_path": "implementation/authority/DOWNSTREAM_NATIVE_D134_BINDING.yaml",
+      "binding_sha256": "ab362f8423a03ce5a729ac7bfb7b906217918c70eca6dd57667658f4f3a4f244",
+      "contract_path": "handoff/downstream_reconciliation/proofs/d134/PROOF_CONTRACT.json",
+      "physical_root": "tests/product/market_measurement_native_d134",
+      "admission_path": "config/product_proof/market_measurement_native_d134/admission.json",
+      "descriptor_path": "config/product_proof/market_measurement_native_d134/claim.json",
+      "generation_directory": "config/product_proof/market_measurement_native_d134/generations",
+      "family_path": "tests/product/market_measurement_native_d134/test_signal.py",
+      "test_names": [
+        "test_native_success",
+        "test_native_refusal"
+      ],
+      "physical_cases": 2,
+      "legacy_cases_preserved": 2,
+      "implementation_target_id": "M02",
+      "proof_state": "NOT_AUTHORED_NOT_RUN",
+      "required_target_projection": [
+        "M02",
+        "G01"
+      ]
+    },
+    {
+      "identity": "D135",
+      "leaf": "L06",
+      "schema_version": "1.0",
+      "claim_id": "neutral_market_measurement_truth_native_d135",
+      "brief_path": "handoff/downstream_reconciliation/authority/briefs/NATIVE_D135_BRIEF.md",
+      "brief_sha256": "419afb2f5b0d27d72159587c9b9ad323afcb4dc49242257f9a83fa4317aa5653",
+      "binding_path": "implementation/authority/DOWNSTREAM_NATIVE_D135_BINDING.yaml",
+      "binding_sha256": "8eb8b3cee0c82e73ed097e56fb707bc458abac8cf6f9be4190d4fc8f7fce487b",
+      "contract_path": "handoff/downstream_reconciliation/proofs/d135/PROOF_CONTRACT.json",
+      "physical_root": "tests/product/market_measurement_native_d135",
+      "admission_path": "config/product_proof/market_measurement_native_d135/admission.json",
+      "descriptor_path": "config/product_proof/market_measurement_native_d135/claim.json",
+      "generation_directory": "config/product_proof/market_measurement_native_d135/generations",
+      "family_path": "tests/product/market_measurement_native_d135/test_signal.py",
+      "test_names": [
+        "test_native_success",
+        "test_native_refusal"
+      ],
+      "physical_cases": 2,
+      "legacy_cases_preserved": 2,
+      "implementation_target_id": "M02",
+      "proof_state": "NOT_AUTHORED_NOT_RUN",
+      "required_target_projection": [
+        "M02",
+        "G01"
+      ]
+    },
+    {
+      "identity": "D136",
+      "leaf": "L07",
+      "schema_version": "1.0",
+      "claim_id": "neutral_market_measurement_truth_native_d136",
+      "brief_path": "handoff/downstream_reconciliation/authority/briefs/NATIVE_D136_BRIEF.md",
+      "brief_sha256": "8510a6e722300d06993ed8a66a8b1b808488913a48625f31183fd2ef9442c7ec",
+      "binding_path": "implementation/authority/DOWNSTREAM_NATIVE_D136_BINDING.yaml",
+      "binding_sha256": "a1bed1df91d9777e91396a808e21b5da2189eeedd7b5c6998e5a5183d028b766",
+      "contract_path": "handoff/downstream_reconciliation/proofs/d136/PROOF_CONTRACT.json",
+      "physical_root": "tests/product/market_measurement_native_d136",
+      "admission_path": "config/product_proof/market_measurement_native_d136/admission.json",
+      "descriptor_path": "config/product_proof/market_measurement_native_d136/claim.json",
+      "generation_directory": "config/product_proof/market_measurement_native_d136/generations",
+      "family_path": "tests/product/market_measurement_native_d136/test_signal.py",
+      "test_names": [
+        "test_native_success",
+        "test_native_refusal"
+      ],
+      "physical_cases": 2,
+      "legacy_cases_preserved": 2,
+      "implementation_target_id": "M02",
+      "proof_state": "NOT_AUTHORED_NOT_RUN",
+      "required_target_projection": [
+        "M02",
+        "G01"
+      ]
+    },
+    {
+      "identity": "D138",
+      "leaf": "L08",
+      "schema_version": "1.0",
+      "claim_id": "neutral_market_measurement_truth_native_d138",
+      "brief_path": "handoff/downstream_reconciliation/authority/briefs/NATIVE_D138_BRIEF.md",
+      "brief_sha256": "cd2519685a80a453b839ac10a34d8488f73b8b1b87ef01a10c346e1445f5130b",
+      "binding_path": "implementation/authority/DOWNSTREAM_NATIVE_D138_BINDING.yaml",
+      "binding_sha256": "61542816ad36b21a9b12148f632d9401f01407aa1788312041a3925e247a64da",
+      "contract_path": "handoff/downstream_reconciliation/proofs/d138/PROOF_CONTRACT.json",
+      "physical_root": "tests/product/market_measurement_native_d138",
+      "admission_path": "config/product_proof/market_measurement_native_d138/admission.json",
+      "descriptor_path": "config/product_proof/market_measurement_native_d138/claim.json",
+      "generation_directory": "config/product_proof/market_measurement_native_d138/generations",
+      "family_path": "tests/product/market_measurement_native_d138/test_signal.py",
+      "test_names": [
+        "test_native_success",
+        "test_native_refusal"
+      ],
+      "physical_cases": 2,
+      "legacy_cases_preserved": 2,
+      "implementation_target_id": "M02",
+      "proof_state": "NOT_AUTHORED_NOT_RUN",
+      "required_target_projection": [
+        "M02",
+        "G01"
+      ]
+    },
+    {
+      "identity": "D139",
+      "leaf": "L09",
+      "schema_version": "1.0",
+      "claim_id": "neutral_market_measurement_truth_native_d139",
+      "brief_path": "handoff/downstream_reconciliation/authority/briefs/NATIVE_D139_BRIEF.md",
+      "brief_sha256": "6bf69e7b0283f5098b29c2182a736ffc7aa051af8fb7bbf8a100f2e531f50502",
+      "binding_path": "implementation/authority/DOWNSTREAM_NATIVE_D139_BINDING.yaml",
+      "binding_sha256": "8c19cf5117afc3293072443b32ce153d60b6133a335902945fe2fdfa1260e311",
+      "contract_path": "handoff/downstream_reconciliation/proofs/d139/PROOF_CONTRACT.json",
+      "physical_root": "tests/product/market_measurement_native_d139",
+      "admission_path": "config/product_proof/market_measurement_native_d139/admission.json",
+      "descriptor_path": "config/product_proof/market_measurement_native_d139/claim.json",
+      "generation_directory": "config/product_proof/market_measurement_native_d139/generations",
+      "family_path": "tests/product/market_measurement_native_d139/test_signal.py",
+      "test_names": [
+        "test_native_success",
+        "test_native_refusal"
+      ],
+      "physical_cases": 2,
+      "legacy_cases_preserved": 2,
+      "implementation_target_id": "M02",
+      "proof_state": "NOT_AUTHORED_NOT_RUN",
+      "required_target_projection": [
+        "M02",
+        "G01"
+      ]
+    },
+    {
+      "identity": "D140",
+      "leaf": "L10",
+      "schema_version": "1.0",
+      "claim_id": "neutral_market_measurement_truth_native_d140",
+      "brief_path": "handoff/downstream_reconciliation/authority/briefs/NATIVE_D140_BRIEF.md",
+      "brief_sha256": "91f680af16d74b589883d363242572de2dc95360f036db5ccfa5fb9b1ae269c2",
+      "binding_path": "implementation/authority/DOWNSTREAM_NATIVE_D140_BINDING.yaml",
+      "binding_sha256": "c8def9d6f9d003777278c918d5bd96b7d60162d76c9afc05807a0e683cab6cfe",
+      "contract_path": "handoff/downstream_reconciliation/proofs/d140/PROOF_CONTRACT.json",
+      "physical_root": "tests/product/market_measurement_native_d140",
+      "admission_path": "config/product_proof/market_measurement_native_d140/admission.json",
+      "descriptor_path": "config/product_proof/market_measurement_native_d140/claim.json",
+      "generation_directory": "config/product_proof/market_measurement_native_d140/generations",
+      "family_path": "tests/product/market_measurement_native_d140/test_signal.py",
+      "test_names": [
+        "test_native_success",
+        "test_native_refusal"
+      ],
+      "physical_cases": 2,
+      "legacy_cases_preserved": 2,
+      "implementation_target_id": "M02",
+      "proof_state": "NOT_AUTHORED_NOT_RUN",
+      "required_target_projection": [
+        "M02",
+        "G01"
+      ]
+    },
+    {
+      "identity": "D143",
+      "leaf": "L11",
+      "schema_version": "1.0",
+      "claim_id": "neutral_market_measurement_truth_native_d143",
+      "brief_path": "handoff/downstream_reconciliation/authority/briefs/NATIVE_D143_BRIEF.md",
+      "brief_sha256": "b69227f2fbb9cc29702a9bf43ea2b88168757948074675eb48e756c143a40886",
+      "binding_path": "implementation/authority/DOWNSTREAM_NATIVE_D143_BINDING.yaml",
+      "binding_sha256": "3e23c6053e6feacb8722ff8ca661b4ee4423173870e04df409a9c2d54bea6e3b",
+      "contract_path": "handoff/downstream_reconciliation/proofs/d143/PROOF_CONTRACT.json",
+      "physical_root": "tests/product/market_measurement_native_d143",
+      "admission_path": "config/product_proof/market_measurement_native_d143/admission.json",
+      "descriptor_path": "config/product_proof/market_measurement_native_d143/claim.json",
+      "generation_directory": "config/product_proof/market_measurement_native_d143/generations",
+      "family_path": "tests/product/market_measurement_native_d143/test_signal.py",
+      "test_names": [
+        "test_native_success",
+        "test_native_refusal"
+      ],
+      "physical_cases": 2,
+      "legacy_cases_preserved": 2,
+      "implementation_target_id": "M02",
+      "proof_state": "NOT_AUTHORED_NOT_RUN",
+      "required_target_projection": [
+        "M02",
+        "G01"
+      ]
+    },
+    {
+      "identity": "D137",
+      "leaf": "L12",
+      "schema_version": "1.0",
+      "claim_id": "neutral_market_measurement_truth_native_d137",
+      "brief_path": "handoff/downstream_reconciliation/authority/briefs/NATIVE_D137_BRIEF.md",
+      "brief_sha256": "e245fb52e9cdb2d09e88a5d4ad4b298049840e07a1a70288311ff6c651ff82a5",
+      "binding_path": "implementation/authority/DOWNSTREAM_NATIVE_D137_BINDING.yaml",
+      "binding_sha256": "e5744fd589d76e70750743d4bc7f2e32ecaebd749bc6350a01ce800e43e4614c",
+      "contract_path": "handoff/downstream_reconciliation/proofs/d137/PROOF_CONTRACT.json",
+      "physical_root": "tests/product/market_measurement_native_d137",
+      "admission_path": "config/product_proof/market_measurement_native_d137/admission.json",
+      "descriptor_path": "config/product_proof/market_measurement_native_d137/claim.json",
+      "generation_directory": "config/product_proof/market_measurement_native_d137/generations",
+      "family_path": "tests/product/market_measurement_native_d137/test_signal.py",
+      "test_names": [
+        "test_native_success",
+        "test_native_refusal"
+      ],
+      "physical_cases": 2,
+      "legacy_cases_preserved": 2,
+      "implementation_target_id": "M02",
+      "proof_state": "NOT_AUTHORED_NOT_RUN",
+      "required_target_projection": [
+        "M02",
+        "G01"
+      ]
+    }
+  ]
+}

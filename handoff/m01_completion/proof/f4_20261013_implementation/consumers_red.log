@@ -1,0 +1,38 @@
+................................F..............F                         [100%]
+=================================== FAILURES ===================================
+_____________ test_d176_sizes_against_canonical_currency_envelope ______________
+
+    def test_d176_sizes_against_canonical_currency_envelope():
+        f = fixture(); f["params"]["capital_fraction"] = D(".01")
+        value = budget(f)
+        f["raw"] = {}
+        f["derived"] = {"D175": (kv("D175", value),), "D165": (kv("D165", D(1)),),
+                        "D163": (kv("D163", D(1)),), "D132": (kv("D132", D(1)),)}
+        f["params"].update(risk_per_unit=D(5), uncertainty_multiplier=D(2), liquidity_multiplier=D(2),
+                           risk_per_unit_currency="USD", risk_per_unit_definition="GREEK_SHOCK_ENVELOPE_V1")
+        result = ev("D176", f)
+>       assert result is not None and result.value == 5
+E       assert (None is not None)
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:233: AssertionError
+______________ test_d164_consumes_retained_currency_slippage_once ______________
+
+    def test_d164_consumes_retained_currency_slippage_once():
+        c = case()
+        schedule = api.ExecutionCostScheduleVersionV1(
+            "schedule", 1, (("fixed", D(1)),), (("exchange", D(2)),), (("multi", D(3)),), "USD"
+        )
+        def calculate(cost):
+            return _stage1.evaluate_stage1_kernel(
+                "D164", raw_inputs={}, derived_inputs={"D133": (k("D133", cost),)},
+                parameter_set=api.CalculationParameterSetV1("fees", 1, "P_BASIC", (("rule", "fees"),)),
+                contexts=(schedule,), as_of_utc=NOW, knowledge_cutoff_utc=NOW)
+        result = calculate(c["cost"])
+>       assert result is not None and dict(result.value)["total"] == D(106)
+E       assert (None is not None)
+
+tests/product/derived_signal/test_m01_f4_approved_execution_edge.py:118: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py::test_d176_sizes_against_canonical_currency_envelope
+FAILED tests/product/derived_signal/test_m01_f4_approved_execution_edge.py::test_d164_consumes_retained_currency_slippage_once
+2 failed, 46 passed in 0.13s

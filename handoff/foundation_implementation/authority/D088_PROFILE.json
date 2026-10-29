@@ -1,0 +1,44 @@
+{
+  "id": "D088",
+  "definition": "D088-OPTION-SCALAR-1",
+  "equation": "100*(ask-bid)/actual_same_contract_D087_mid",
+  "subject": "controlled-nvda-c110-20261023",
+  "members": [
+    "controlled-nvda-c110-20261023"
+  ],
+  "raw_order": [
+    "R034",
+    "R035"
+  ],
+  "predecessor_order": [
+    "D087"
+  ],
+  "source_profile_ref": "D087_PROFILE.json controlled full contract source metadata and mapping, exact C1/C2 admitted domain",
+  "parameter_id": "mmt-d088-controlled",
+  "selection_id": "mmt-d088-selection",
+  "as_of": "2026-10-20T12:40:00Z",
+  "cutoff": "2026-10-20T12:40:01Z",
+  "now": "2026-10-20T12:40:02Z",
+  "success": {
+    "C1_bid": "2",
+    "C1_ask": "4",
+    "actual_C1_D087_mid": [
+      "3",
+      "1"
+    ],
+    "expected": [
+      "200",
+      "3"
+    ]
+  },
+  "refusal": {
+    "C1_bid": "2",
+    "C1_ask": "4",
+    "actual_C2_D087_mid": [
+      "3",
+      "1"
+    ],
+    "reason": "wrong contract even though lawful C2 predecessor and C1 raw quotes exist"
+  },
+  "no_parent_test_import": true
+}

@@ -1,0 +1,34 @@
+# D028 — owner-approved raw-volume baseline amendment
+
+Date: 17 October 2026 — Australia/Melbourne.
+
+**Decision: ACCEPT D028-RAW-VOLUME-BASELINE-20261017-01, all six clauses.**
+
+## 1. Exact owner decision and reviewed baseline
+
+The assistant asked: “Do you approve D028-RAW-VOLUME-BASELINE-20261017-01, its six clauses?” The programme owner answered **“Yes, I do.”** in this thread, 17 October 2026, 10:03 Australia/Melbourne. This records that explicit bounded acceptance, not a Gate 2 exit decision.
+
+- Delivered baseline: `5e59224d542b1a93a5f2cdff1730d05e842f0845`, tree `4a8056005972d52207831bdbc258121077365788`.
+- Independently reviewed proposal candidate: `b837380a326695c30d39a16263761b56c44c11d0`, tree `4d81783df16910ef4ca309ff75211fe16af70352`.
+- Exact proposal: `handoff/workbook_v2/gates_01_02/G2_D028_INPUT_ROLE_DECISION_PROPOSED_20261017.md`.
+- Proposal SHA-256: `7823c4d9cf78281f270d1fa47b3745d0be8c895f7b8576e1b6c833786caee78d`.
+- Receiving branch: `work/v2-g2-contract-decisions-accepted-20261017`.
+
+The proposal remains byte-unchanged as a pre-acceptance snapshot. This subsequent decision supersedes its PROPOSED/NOT ACCEPTED wording solely for the following six clauses. Their text is copied verbatim; conditional “if accepted” wording in that snapshot is now satisfied by this owner decision.
+
+## 2. Accepted clauses — verbatim from the reviewed proposal
+
+1. **Dependency correction for D028 only.** Change its effective direct raw list from `R041;R044` to `R041`, with no D predecessor. R041 supplies both the current cumulative/session-volume occurrence and the required historical cumulative/session-volume occurrences. Preserve D028 identity, dimensionless ratio, K04, P_BASELINE, one-minute evaluation cadence and time-of-day meaning. Do not substitute a daily-average denominator, linear intraday rescaling, z-score or forecast.
+2. **Bounded descriptive baseline family.** A complete immutable profile fixes one exact cash-equity instrument, share units, source/method/counter basis, market calendar/session definition and a finite integer N>=2 before input selection. The baseline is all N immediately preceding sessions in that calendar, excluding current. Require the same session type and total eligible trading duration as current for every session; an incompatible session in that required window causes refusal, not selective skipping. No strategy, portfolio, candidate, future return/P&L or event-response filter chooses the instrument, N or session membership. This is a proposed bounded first domain, not a claim that the old unspecified profile already contained these restrictions.
+3. **Exact same-fraction matching.** Use the unique latest eligible current R041 state at effective instant u<=as-of, with its source time kind, session identity and freshness bound explicitly fixed in the profile. The fraction is elapsed eligible trading time from that session's opening to u divided by total eligible trading duration, under the exact admitted calendar (excluding declared non-trading breaks). For each required prior session take the unique eligible cumulative R041 state at precisely that fraction. Equal session duration makes this the same elapsed eligible trading time. Session coordinates are typed calendar/selection metadata, never R044 values or a fabricated new R. No interpolation, scaling, nearest-bucket substitution or future observation supplies a missing fraction. Ambiguous or absent exact matches refuse.
+4. **Equation, causality and refusal.** For matched historical volumes V1...VN, emit current V / ((V1+...+VN)/N). All quantities must be finite and non-negative and the mean strictly positive. Each historical session/state is strictly prior to the current state and every selected observation/calendar revision is visible by the knowledge cutoff. Require compatible complete cumulative counters from session opening, units, adjustment method and reset/generation semantics; an unproved reset, missing input, insufficient history, future revision or ambiguous counter refuses. A zero current volume with positive denominator may yield zero. This ratio does not require the z-score's positive sample standard deviation. Exact N, freshness, calendar and source instances remain future CALC-PROFILE/SRC-VOLUME/SRC-CALENDAR bindings within this domain, not permission to leave these fields absent at runtime.
+5. **Preservation and future incorporation.** R044 retains its identity and 90-day Average Volume meaning; it is neither removed from the raw catalogue nor repurposed as a fraction. Record this decision as a semantic overlay only if accepted. Preserve both catalogue copies, workbooks, code/tests, schema, registry, guardrails, agents, frozen root plan and accepted main. Later separately authorised C–E work must synchronise the D028 catalogue/hash binding, prove calendar/source selection, replace the incorrect fraction mapping and derive tests from the accepted meaning. Preserve valid same-fraction/refusal propositions and Git history; no test deletion to manufacture green.
+6. **Acceptance boundary.** This decision resolves only D028's required source role and the stated baseline-family domain. It does not accept any concrete source/profile, actual availability, implementation, runtime/module admission, final ownership, Gate 2 or successor ExecPlan. If accepted, reassess D028 and the full register, obtain review and then request the separate owner Gate 2 exit decision.
+
+## 3. Effective authority and executable incorporation
+
+D028's effective direct and terminal R list is now **R041**, supplying current and required historical cumulative/session volume; there is no D predecessor. K04's same-fraction historical-mean ratio remains, within the accepted clauses2–4 cash-equity/share baseline domain. R044 remains90-dayAverageVolume in the raw source catalogue, with no elapsed-fraction role and no mandatory D028 edge. Session coordinate metadata comes from the exact admitted calendar/selection contract, not another fabricated raw identity.
+
+This semantic overlay overrides only D028's R044 dependency and supplies its stated baseline-family restrictions. It does not alter D117, D123, D138/D145, the accepted B/S/N package or another D/R definition. Both catalogue copies and their executable hash binding remain unchanged at SHA-256 `67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549`; they still contain the historical D028 R041;R044 edge. Later authorised C–E work must synchronise those surfaces and repair/prove the previously observed fraction misuse. Existing source/tests do not certify this amendment.
+
+Reassess D028 and the cumulative register under this authority, retain concrete source/calendar/profile and implementation holds, obtain review and present the separate Gate2 exit decision. No implementation, provider/API integration, source/module admission, main merge, retirement or successor-plan activation is authorised here.

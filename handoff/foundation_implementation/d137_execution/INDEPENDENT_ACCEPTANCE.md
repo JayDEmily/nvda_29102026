@@ -1,0 +1,3 @@
+# D137 independent final acceptance
+
+Candidate `0d9d5874a3a9be5a452be840a0e2536c706e852b` was clean. Independent reviewer accepted semantic proof and ran the sole strict aggregate `neutral_market_measurement_truth_d137` on pinned CPython 3.12.14: exit 0, exactly two collected/two passed, no skips. Verbatim `strict-green.log` SHA256 `5e4c680fe66325fd4812824cc87eee51a02ca3c1426707831cdb0c9cb778c8be`. One public M00 quote projects four Decimal roles; exact same occurrence/receipt/ingestion and four lineages give rational microprice 201/2 with ordinary SQLite read-only readback. Zero bid and ask size refuses without history. Synthetic controlled facts do not certify native NBBO.

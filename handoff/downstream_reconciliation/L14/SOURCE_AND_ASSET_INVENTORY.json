@@ -1,0 +1,666 @@
+{
+  "schema_version": 1,
+  "source_checkpoint": "ffdc1150cb472550d23952751f931c414fd5ee31",
+  "baseline": "97f944d51ab9e403250fe76910e2754b50425c73",
+  "source_tree": "e05d6eb5b80ee67378e74832bcaefb5f096283ed",
+  "changed_tracked_files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "5e14eae6e459f56b22f0a8dee3358586419c7f53fa25953198dc96464783fac2"
+    },
+    {
+      "path": "EXEC_PLAN.md",
+      "sha256": "4ad7873d4f61816965cf43af9b9d31c7629d75654af7f6c6981d63199452735c"
+    },
+    {
+      "path": "config/product_proof/market_measurement_native_d087/admission.json",
+      "sha256": "4f9ea06ced29e63be804a2316f98f91dd48e436f8ae116a5b1479d9d4fb71d46"
+    },
+    {
+      "path": "config/product_proof/market_measurement_native_d087/claim.json",
+      "sha256": "c35ddac2f8be03d9a044c8e3163b225558685889e9045fda2baffe651442a8c1"
+    },
+    {
+      "path": "config/product_proof/market_measurement_native_d087/generations/0001.json",
+      "sha256": "77f2ce5443f61c4083e738e67a766a0ef6c7ff1f2fa290a62626337f3dc225fd"
+    },
+    {
+      "path": "config/product_proof/market_measurement_native_d087/generations/0002.json",
+      "sha256": "85af300764c355d8837ce9a35ec83dd0e1a72c9ad99a21d1f547148eef8e35b8"
+    },
+    {
+      "path": "config/product_proof/market_measurement_native_d131/admission.json",
+      "sha256": "7e6c4454f1e218e3410fa4756687b3c91a62ee5644d4003879e075edc50866cc"
+    },
+    {
+      "path": "config/product_proof/market_measurement_native_d131/claim.json",
+      "sha256": "9273297090cb297e03b96d543e9d47e2d2308a17fbea40819d92b8398a00054a"
+    },
+    {
+      "path": "config/product_proof/market_measurement_native_d131/generations/0001.json",
+      "sha256": "bd8eebfd71882f4e438e8a4880257b376e567be01dbd8dc69d96433004406ba8"
+    },
+    {
+      "path": "config/product_proof/market_measurement_native_d134/admission.json",
+      "sha256": "7625005c0e775d6edba207f91700c4b2628e532e0bd00837a76871466621dc84"
+    },
+    {
+      "path": "config/product_proof/market_measurement_native_d134/claim.json",
+      "sha256": "904ff54e966f4a8f744dc8a6594359e0baedd28ba1bbbe9563a928120227aff8"
+    },
+    {
+      "path": "config/product_proof/market_measurement_native_d134/generations/0001.json",
+      "sha256": "3f8a4649e1a6f045ce71bdb484f40b820202a9a0c0c5c2dbd8f79cf2b886783c"
+    },
+    {
+      "path": "config/product_proof/market_measurement_native_d135/admission.json",
+      "sha256": "5d20a67bac0ff66d7c8e15d43270f87b43519c8f23782f6eb5b995c1d2dc90aa"
+    },
+    {
+      "path": "config/product_proof/market_measurement_native_d135/claim.json",
+      "sha256": "50b521a60e1110e66b1f5814b3b61008ff2db0f0b29dc58cb70fb7634d3c441a"
+    },
+    {
+      "path": "config/product_proof/market_measurement_native_d135/generations/0001.json",
+      "sha256": "e73846339ac2bdc2707e8121ba1c003042addbea855d269cbc49f8ccfdf1019e"
+    },
+    {
+      "path": "config/product_proof/market_measurement_native_d136/admission.json",
+      "sha256": "e94138e53460d90e2a14a5bb9155392e3fbefe88e7c46f744bfe23fac17cbd7e"
+    },
+    {
+      "path": "config/product_proof/market_measurement_native_d136/claim.json",
+      "sha256": "c9b4d896a6ffdecbb8af608fccb66d5df7f0114b0426f2ef967aab1816223871"
+    },
+    {
+      "path": "config/product_proof/market_measurement_native_d136/generations/0001.json",
+      "sha256": "cb16ebe0da374e500c0d5e11a57791ea6e419ba19493b15c9277f836c70a340b"
+    },
+    {
+      "path": "config/product_proof/market_measurement_native_d137/admission.json",
+      "sha256": "0870c609e72791eabd5cb6fd3cdf36aaf2cca492f3baade78c84de9a83679ee1"
+    },
+    {
+      "path": "config/product_proof/market_measurement_native_d137/claim.json",
+      "sha256": "a448b2fe2afbe4c7cefe95f8067c7d57f3c99c0b559a28f252a262ec98e93523"
+    },
+    {
+      "path": "config/product_proof/market_measurement_native_d137/generations/0001.json",
+      "sha256": "226180166c8af1135d7e3d7e43921eb8b2a81a64b7435429c14656c8de2774a6"
+    },
+    {
+      "path": "config/product_proof/market_measurement_native_d138/admission.json",
+      "sha256": "bd597bbedf395d6183ae47041876ebb7b1afb8c0428be568075085279dd658fc"
+    },
+    {
+      "path": "config/product_proof/market_measurement_native_d138/claim.json",
+      "sha256": "c861e898c9fd2f2945cd04d0f92df91f7f3569a4e13cffc7a050ab52e65c072b"
+    },
+    {
+      "path": "config/product_proof/market_measurement_native_d138/generations/0001.json",
+      "sha256": "6361384c6f1049065c9c4997813a182f98fe6c1477732b196620eec4280c66ea"
+    },
+    {
+      "path": "config/product_proof/market_measurement_native_d139/admission.json",
+      "sha256": "7f1cefca2751122e4644fe63e5c1bb2dd6d9ef962737da387f3e81ee259548eb"
+    },
+    {
+      "path": "config/product_proof/market_measurement_native_d139/claim.json",
+      "sha256": "ea31e4c46de2af1ad7a8582d3e4db66625daca131045fc54fe9ce99ff3263dbd"
+    },
+    {
+      "path": "config/product_proof/market_measurement_native_d139/generations/0001.json",
+      "sha256": "20ec05c51d0417e2c1f06f02ad9f1255dcc2bfad338e60a62992a5d54bd8d2c2"
+    },
+    {
+      "path": "config/product_proof/market_measurement_native_d140/admission.json",
+      "sha256": "636e36b6177fdb809d8df7ef05172306acf3dedf1d52db618adb2e64f66a3767"
+    },
+    {
+      "path": "config/product_proof/market_measurement_native_d140/claim.json",
+      "sha256": "dbe65ed57c7dc520b972918f9abf5076b0330562e1317324e8186de497d4c599"
+    },
+    {
+      "path": "config/product_proof/market_measurement_native_d140/generations/0001.json",
+      "sha256": "5b4ef48fc5221ed8c2aa6ee5850f8912e688dc72efb2935937702e5b114221bf"
+    },
+    {
+      "path": "config/product_proof/market_measurement_native_d143/admission.json",
+      "sha256": "f9dbbcdac7893ee3a5636ae74ee1534d24e51480ed3c6acce3ef5df7be67af64"
+    },
+    {
+      "path": "config/product_proof/market_measurement_native_d143/claim.json",
+      "sha256": "21434f6b2e792f339891fd39394e52e0b558aa48f1e9475605244f0768dca014"
+    },
+    {
+      "path": "config/product_proof/market_measurement_native_d143/generations/0001.json",
+      "sha256": "61600590b1821b80af53648362c6da4e5db065e4e2fd85e825036d1d16aed5e9"
+    },
+    {
+      "path": "config/product_proof/market_measurement_native_source/admission.json",
+      "sha256": "31307f128abb3d84ca46ba13c6d89145244f967672f340daee9613cdb62410e2"
+    },
+    {
+      "path": "config/product_proof/market_measurement_native_source/claim.json",
+      "sha256": "69624441f4554e88f8dd07e6c0ccb42c55329fb05879052c738f20b825869b42"
+    },
+    {
+      "path": "config/product_proof/market_measurement_native_source/generations/0001.json",
+      "sha256": "cd8d1cb3e518e2b070d590912f6eae0ab70a8645c17c4023abca7ffb19f34c1c"
+    },
+    {
+      "path": "config/product_proof/market_measurement_native_source/generations/0002.json",
+      "sha256": "5e895cbd501671f66b8f64160bda70150a2d1fabbc3eab8fc7ad31c58dd38b47"
+    },
+    {
+      "path": "config/product_proof/market_measurement_native_source/generations/0003.json",
+      "sha256": "6b54cc1f82c3399ba05a06ade89955cffcaad20b480a5d2677014fd6834785da"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/L01/NEXT_EXPORT_MANIFEST.md",
+      "sha256": "b119d7d4e6a96f4e8223b578662431d9029ee4cb4dca9c9972c1ec28c391272c"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/L01/STATUS.md",
+      "sha256": "8dc8374686ce83d63503e86c508d8a41babe7fa39e513ab790dc496bd7e04bf4"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/L02/NEXT_EXPORT_MANIFEST.md",
+      "sha256": "a21869832139e69ab18d7786ebc2489b810ec55da1cb7fa2d5735300df667a19"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/L02/STATUS.md",
+      "sha256": "f31f6a9d16985ac2cf49222ea7a7b1b5194844a9de55fbbc35ef1c0655f6aace"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/L03/NEXT_EXPORT_MANIFEST.md",
+      "sha256": "58e574ccdf0272756cbfa007e37f027017ba02e2fd937893b17a9873a4dd9176"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/L03/STATUS.md",
+      "sha256": "105afbc4ffab2c89554a7f533b59e04a42603f0b16a3686c0bb4d3fcba097d65"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/L04/NEXT_EXPORT_MANIFEST.md",
+      "sha256": "5a1593897244e37f839e4e8db0545a6d88d46e9d321cc6d6391c133428693897"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/L04/STATUS.md",
+      "sha256": "e46ed8343cca66eeab131cbd7bbdeca8b6185b31d8c25980a62b9bb8ebcac4fd"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/L05/NEXT_EXPORT_MANIFEST.md",
+      "sha256": "5e7ca286e865e5898222aa5fd2b3e3f28e6885c90c49be0d0d203e89a9b42c09"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/L05/STATUS.md",
+      "sha256": "3e96c7f550a14384fe748d9fa7eb79d5cb1694c5147a888644b09f0c4f2140a4"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/L06/NEXT_EXPORT_MANIFEST.md",
+      "sha256": "4db933282999c5da2fc4d86fa75f47282cf32fd763c334113a09bc43dbe6cb3a"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/L06/STATUS.md",
+      "sha256": "8e0a5f8be159f5b5869aa20416ce89d32967fedb46cac0ec5751c70c55e9e748"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/L07/NEXT_EXPORT_MANIFEST.md",
+      "sha256": "92095debf9173b5b54e38a747de168e77c66763a7deee2e617cf797df1c025f7"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/L07/STATUS.md",
+      "sha256": "8e1e53101d709f6908fcd2bda908f2782c4e965d4db44f400eb011a46af4fdb3"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/L08/NEXT_EXPORT_MANIFEST.md",
+      "sha256": "d25378eae2d93f9e720d9dd66fa0a6628fd8adfeee8cefdf9044dc535db26543"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/L08/STATUS.md",
+      "sha256": "968e068edab8587c1d309d6e0140fa3069358d39fd3342a84813581e62f7e82d"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/L09/NEXT_EXPORT_MANIFEST.md",
+      "sha256": "05af1d71b6633f5bfbfdfbdb5774fa1ca1099cd778a88a04d43075285a34c4fc"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/L09/STATUS.md",
+      "sha256": "72197a408c6b0e1a14cef4c0f7c2fc2ff9c75bb3557c3f0d47c4c242a07d1103"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/L10/NEXT_EXPORT_MANIFEST.md",
+      "sha256": "21d9894154dfdf269d6839adecee5ab77616a8918b2b3611fdab2eaf0fbbfdb9"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/L10/STATUS.md",
+      "sha256": "e8f4f233ca8aabf1477932f65623e9bf4b2ebc733c34e7ac968870816f3da97b"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/L11/NEXT_EXPORT_MANIFEST.md",
+      "sha256": "826e399aebe3093e6597a85a3932e0a93439c9f1b9e1509de766adb3353779a9"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/L11/STATUS.md",
+      "sha256": "26019469c3343a477a40518730bfc9aa4e99ca41f6d4c003466c413516242107"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/L12/NEXT_EXPORT_MANIFEST.md",
+      "sha256": "3a764ed8cb6f2e162aebc8172627d804eb45a0f7c6eccce08ed819b7d2eafb82"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/L12/STATUS.md",
+      "sha256": "b7fd1925b3ef2ea464fb74a910d5ad59059c6e0bf06df48fda73e4dba6ae2767"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/L13/D145_RESUMPTION_DISPOSITION.md",
+      "sha256": "1f540470a2096c90c88d9e0e85f441f67d4c360e301f3bf9d65494d08b6f72ad"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/L13/NEXT_EXPORT_MANIFEST.md",
+      "sha256": "b6f093c448bd97108dcc1522a7bbdc427409359f98fafcba48aa2c88e70d7622"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/L13/PROPOSED_PAUSED_PLAN_AMENDMENT.md",
+      "sha256": "43f1503810ead5fe11f3560063aba6caa92773bac212cc1c5cae4f69abc66544"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/L13/STATUS.md",
+      "sha256": "b3db4e16e09f6e9121a37a53bace71b7963e87d5626136b8b81953da2e1845e3"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/TRANSFER_BASELINE.md",
+      "sha256": "0111b3e5c06c4345ecb875129a05f3cb80c79486e220bf010ec27bc0e6a47a02"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/authority/CONSUMER_SOURCE_CONTRACT_V1.md",
+      "sha256": "e68e33d4e6992d3541f9f243233d047ad553657c806072c6ced16bdb1b2f9645"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/authority/FIXTURE_AUTHORITY_MANIFEST_V1.json",
+      "sha256": "0a4270d50cfa11a967fba75e033df1064f63c66d28944f4eef4b262401500d0a"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/authority/NATIVE_CLAIM_PLAN_V1.json",
+      "sha256": "2f6745c918d344a7b788cd3d5260290949d4a6c91a19a7d2035a2d3f6c1135e5"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/authority/NATIVE_PUBLIC_API_V1.md",
+      "sha256": "d4011188c91cd92bc43a3c71043542a0440b0d0b9ba2a05abec1d339ce7439d1"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/authority/PROFILE_AND_PROOF_ALLOCATION.md",
+      "sha256": "cd91dfc90cf44f4a137c768cc88004618ccd469987820da5759769116752a560"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/authority/briefs/NATIVE_D087_BRIEF.md",
+      "sha256": "0bb079166417c42d3ed2c5f8e363e771c88ba44934cda01184d43be2bc960a76"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/authority/briefs/NATIVE_D131_BRIEF.md",
+      "sha256": "0ac16b9eb4859665807a86739293a196e63916062c3db7c522ab6303eabcfbe8"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/authority/briefs/NATIVE_D134_BRIEF.md",
+      "sha256": "73e03e0700902098ecc8a0c9c6e3ffffd94bbc74ab8f27576368ccc0dd19cce0"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/authority/briefs/NATIVE_D135_BRIEF.md",
+      "sha256": "419afb2f5b0d27d72159587c9b9ad323afcb4dc49242257f9a83fa4317aa5653"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/authority/briefs/NATIVE_D136_BRIEF.md",
+      "sha256": "8510a6e722300d06993ed8a66a8b1b808488913a48625f31183fd2ef9442c7ec"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/authority/briefs/NATIVE_D137_BRIEF.md",
+      "sha256": "e245fb52e9cdb2d09e88a5d4ad4b298049840e07a1a70288311ff6c651ff82a5"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/authority/briefs/NATIVE_D138_BRIEF.md",
+      "sha256": "cd2519685a80a453b839ac10a34d8488f73b8b1b87ef01a10c346e1445f5130b"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/authority/briefs/NATIVE_D139_BRIEF.md",
+      "sha256": "6bf69e7b0283f5098b29c2182a736ffc7aa051af8fb7bbf8a100f2e531f50502"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/authority/briefs/NATIVE_D140_BRIEF.md",
+      "sha256": "91f680af16d74b589883d363242572de2dc95360f036db5ccfa5fb9b1ae269c2"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/authority/briefs/NATIVE_D143_BRIEF.md",
+      "sha256": "b69227f2fbb9cc29702a9bf43ea2b88168757948074675eb48e756c143a40886"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/authority/briefs/NATIVE_SOURCE_BRIEF.md",
+      "sha256": "5b777c5842b091f6dc4bef148970c4cf81b68864bd24f5a1633d392f38d96ead"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/authority/expected/SYNTHETIC_REFERENCE_ORACLES_V1.json",
+      "sha256": "263dec140dbfda57eb50bd8961a9180069176adf8433102e977cccbeaa87e8c3"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/authority/fixtures/CALCULATION_PROFILES_V1.json",
+      "sha256": "c57d3e8bf1d2c0cae27308c898e4974e78252e78aba960387da21c3cae687886"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/authority/fixtures/FROZEN_M00_CONTROLS_V1.jsonl",
+      "sha256": "5b808cd12cbe566aa26e41c11935cb3efce5f6258299925cb14ed97739267501"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/authority/fixtures/FROZEN_M00_MAPPINGS_V1.json",
+      "sha256": "edfa78c2c09c793a16878f9cf911e0e6beb028b15f0977dbd9ef69ce44220cb8"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/authority/fixtures/FROZEN_M00_PUBLIC_OUTPUT_V1.jsonl",
+      "sha256": "028c7b393d47caad1343ecebb0571c54ce4fd6c492ff6a8386a8ed8c04518fa4"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/authority/fixtures/PROVENANCE_V1.json",
+      "sha256": "0e7d0446eeb21b789aec9dab33c9ece34fbafd894d6d271531467e670f160d63"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/authority/fixtures/SOURCE_PROFILES_V1.json",
+      "sha256": "e8a1cce559da057e4e92c6d03ed9ba8ac4da7638b15129e118a268578c5cff31"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/authority/fixtures/SYNTHETIC_RECIPES_V1.json",
+      "sha256": "18aed11491ba57e4d0c4eeb1aa01f27002850c395d802b47b84106797971a83e"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/proofs/d087/PROOF_CONTRACT.json",
+      "sha256": "26137701ff2c7996d4fcd9d55c476d4048a597fdb631d98ef5b7f5af9a5a5315"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/proofs/d131/PROOF_CONTRACT.json",
+      "sha256": "781e4e22611ed6f7e4bbd5bae0ef07606b545703cba8e6ffd57a4cc6b22b772a"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/proofs/d134/PROOF_CONTRACT.json",
+      "sha256": "e1b6f38043fae47c39a91da06ee372d70cd490acafe836359bb3c70e7f968352"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/proofs/d135/PROOF_CONTRACT.json",
+      "sha256": "4d01331f10a30d75ff5b4de5b51f4136c260e873d7533b10d989639fd5a22722"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/proofs/d136/PROOF_CONTRACT.json",
+      "sha256": "e698d66dcc4b270fc850afd991b6eed4c79b6f7b4ff83bf82af18b0651f9c69e"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/proofs/d137/PROOF_CONTRACT.json",
+      "sha256": "2d66fabbdcfc3916915b473721403da6805b526c686b8bf04be41d7ea1a975ea"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/proofs/d138/PROOF_CONTRACT.json",
+      "sha256": "ca0a54fb42ad0111e812d41e89c9ed90f609aa4c4217ebe3151eb31cb156bb8b"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/proofs/d139/PROOF_CONTRACT.json",
+      "sha256": "a7f43eed2d7dc96886d9d5866ab07deee48147c1581fb29624ec97e34af8018a"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/proofs/d140/PROOF_CONTRACT.json",
+      "sha256": "912eee5065407e97ba200e9851871a72e488619df242745d244570b1e8663ba0"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/proofs/d143/PROOF_CONTRACT.json",
+      "sha256": "d32410d79fade1d37e545bf65641dc91f6f15e968b6ea7398a434cb272ba80dd"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/proofs/source/PROOF_CONTRACT.json",
+      "sha256": "d663769e593117c333d74f9894bddcb4a1ecccec3cd5e9455170f40af5f20995"
+    },
+    {
+      "path": "implementation/authority/DOWNSTREAM_NATIVE_D087_BINDING.yaml",
+      "sha256": "90c817bbbc8c993333f0e505029aad3c87d4969c7de852fd6cef693c81af16db"
+    },
+    {
+      "path": "implementation/authority/DOWNSTREAM_NATIVE_D131_BINDING.yaml",
+      "sha256": "d76fbe637e7de278ede007e37cde689318f6fecb28cebe805f60001ff081d031"
+    },
+    {
+      "path": "implementation/authority/DOWNSTREAM_NATIVE_D134_BINDING.yaml",
+      "sha256": "ab362f8423a03ce5a729ac7bfb7b906217918c70eca6dd57667658f4f3a4f244"
+    },
+    {
+      "path": "implementation/authority/DOWNSTREAM_NATIVE_D135_BINDING.yaml",
+      "sha256": "8eb8b3cee0c82e73ed097e56fb707bc458abac8cf6f9be4190d4fc8f7fce487b"
+    },
+    {
+      "path": "implementation/authority/DOWNSTREAM_NATIVE_D136_BINDING.yaml",
+      "sha256": "a1bed1df91d9777e91396a808e21b5da2189eeedd7b5c6998e5a5183d028b766"
+    },
+    {
+      "path": "implementation/authority/DOWNSTREAM_NATIVE_D137_BINDING.yaml",
+      "sha256": "e5744fd589d76e70750743d4bc7f2e32ecaebd749bc6350a01ce800e43e4614c"
+    },
+    {
+      "path": "implementation/authority/DOWNSTREAM_NATIVE_D138_BINDING.yaml",
+      "sha256": "61542816ad36b21a9b12148f632d9401f01407aa1788312041a3925e247a64da"
+    },
+    {
+      "path": "implementation/authority/DOWNSTREAM_NATIVE_D139_BINDING.yaml",
+      "sha256": "8c19cf5117afc3293072443b32ce153d60b6133a335902945fe2fdfa1260e311"
+    },
+    {
+      "path": "implementation/authority/DOWNSTREAM_NATIVE_D140_BINDING.yaml",
+      "sha256": "c8def9d6f9d003777278c918d5bd96b7d60162d76c9afc05807a0e683cab6cfe"
+    },
+    {
+      "path": "implementation/authority/DOWNSTREAM_NATIVE_D143_BINDING.yaml",
+      "sha256": "3e23c6053e6feacb8722ff8ca661b4ee4423173870e04df409a9c2d54bea6e3b"
+    },
+    {
+      "path": "implementation/authority/DOWNSTREAM_NATIVE_SOURCE_BINDING.yaml",
+      "sha256": "a9f74f1c83cd14ea5e3f99a1755cc4b9c3a21a5b00fb4e6fab0aa496b10ecf80"
+    },
+    {
+      "path": "src/nvda_desk/market_measurement_truth/_native_book_delete_rate.py",
+      "sha256": "3b957c2bfb7dac85300fd71c0133df3c303c4a6577858860ad51956dab832d4a"
+    },
+    {
+      "path": "src/nvda_desk/market_measurement_truth/_native_book_depth.py",
+      "sha256": "5ad1d815fa31e68027e48d3a76059b7bc3a80ad94f92f91216ff1b4724c00677"
+    },
+    {
+      "path": "src/nvda_desk/market_measurement_truth/_native_book_insert_rate.py",
+      "sha256": "97ae870b7ffd4507b189d0adbdad157841214a4e99417cee20ed08c2fcfd3a98"
+    },
+    {
+      "path": "src/nvda_desk/market_measurement_truth/_native_book_slope.py",
+      "sha256": "3967208a2186abf12e53965952ce3fe2f3513ca77cdb737aae0625ac839ad112"
+    },
+    {
+      "path": "src/nvda_desk/market_measurement_truth/_native_codec.py",
+      "sha256": "f5e2fd79ec6dad55d8d764fa87fb82bf3b5438e72fed2308339b8f81fb995e45"
+    },
+    {
+      "path": "src/nvda_desk/market_measurement_truth/_native_direct_venue.py",
+      "sha256": "305e85e7142e9cae151a7efa5179c07766b80e48d4e2690ae06e48afb18380e0"
+    },
+    {
+      "path": "src/nvda_desk/market_measurement_truth/_native_microprice.py",
+      "sha256": "32b92fcb655d01d569a193392ebc5d2c06faa02cb8a8b5b4691ca0bf915c4006"
+    },
+    {
+      "path": "src/nvda_desk/market_measurement_truth/_native_option.py",
+      "sha256": "ccbb8af30ca893c19590bcd15e3e8774903f5a9150755af71ec7ee4a300717fb"
+    },
+    {
+      "path": "src/nvda_desk/market_measurement_truth/_native_profiles.py",
+      "sha256": "ad8835b254102faabbeab71c3a7bebf20f86d7c562258bff7b987a84f854fe45"
+    },
+    {
+      "path": "src/nvda_desk/market_measurement_truth/_native_smart_ask.py",
+      "sha256": "ed943ff582b40e2043ae3a276ad311a55474f47491ef956f34a0fa87ee20af6b"
+    },
+    {
+      "path": "src/nvda_desk/market_measurement_truth/_native_smart_depth.py",
+      "sha256": "d1b8c6c2d4f714ef65aab93c091722a481ebc47243f896d1e20862541b1edef0"
+    },
+    {
+      "path": "src/nvda_desk/market_measurement_truth/_native_smart_imbalance.py",
+      "sha256": "b478181e4eb396073a3bd504b35c6171204cc1604394f2e90802e9c3a99e06e3"
+    },
+    {
+      "path": "src/nvda_desk/market_measurement_truth/_native_source.py",
+      "sha256": "fb93d808bb58ca0c0d01984d25ca09224be3d63d75b6bcc8af9537a9ef25f220"
+    },
+    {
+      "path": "src/nvda_desk/market_measurement_truth/_record_store.py",
+      "sha256": "a45037703d394defce43ff7f7fc219157c63b8fe291b48cd80ee25f5590d27d4"
+    },
+    {
+      "path": "src/nvda_desk/market_measurement_truth/api.py",
+      "sha256": "7fbb529bb91fe8c40def71bcd29b5e60ad5a3baea7f7716b21311dd8c36fa173"
+    },
+    {
+      "path": "tests/AGENTS.override.md",
+      "sha256": "f6691b2f6a3bc3ac808d7fad7019a729f552b5dda7e7b706795281e02a9302d1"
+    },
+    {
+      "path": "tests/product/market_measurement_native_d087/test_signal.py",
+      "sha256": "20485577e99e66b03dab2eb7083ffbc9e78f29c25c8d9d150949fbc27e9ba7b3"
+    },
+    {
+      "path": "tests/product/market_measurement_native_d131/test_signal.py",
+      "sha256": "516caeda7cfbbfd2f9bd05a38526f0fbec2d3b8b9eb02c6518422c2f64c13851"
+    },
+    {
+      "path": "tests/product/market_measurement_native_d134/test_signal.py",
+      "sha256": "27ae1eec2b8990c766785210e4416a16b306135d2e168a2aff8dd7e8abb5ef50"
+    },
+    {
+      "path": "tests/product/market_measurement_native_d135/test_signal.py",
+      "sha256": "d8b190b2568276b06a867138958352318d296bb589c0812c8fa71ade8a35b809"
+    },
+    {
+      "path": "tests/product/market_measurement_native_d136/test_signal.py",
+      "sha256": "526d8f6a6e210422d0b30eb8dfb967b9bb818c08682a1bb08f6462351e73fb30"
+    },
+    {
+      "path": "tests/product/market_measurement_native_d137/test_signal.py",
+      "sha256": "e171a1dd089a9de954037328fa39969b90ac4024e8b9bb4c3384ba7f70f0e4a9"
+    },
+    {
+      "path": "tests/product/market_measurement_native_d138/test_signal.py",
+      "sha256": "4bc479fc2560e97a1458a1497af6f2814af4fe28f21a2c29625f07688051dffa"
+    },
+    {
+      "path": "tests/product/market_measurement_native_d139/test_signal.py",
+      "sha256": "94580ae0b6342cf846585e8ce818c37a495d6d39a56496c44d22c07232a18750"
+    },
+    {
+      "path": "tests/product/market_measurement_native_d140/test_signal.py",
+      "sha256": "10af23462d0840de43e0f2b24fcc667ea4d30baac7db66c45f43853cf2a67e82"
+    },
+    {
+      "path": "tests/product/market_measurement_native_d143/test_signal.py",
+      "sha256": "0ae37a353b5e817c8c37ede42070f84d39cf33201e8afe2997855a431c9c14ad"
+    },
+    {
+      "path": "tests/product/market_measurement_native_source/test_source.py",
+      "sha256": "9cb972713ce969f5b16308bc1cc9463be6e85b60ac39a93555d3105cd09e9129"
+    },
+    {
+      "path": "tests/support/native_reconciliation.py",
+      "sha256": "6798be6d16bb01c8f38beddf39694ae6313b7a7e12dacc11d7219ebf46208757"
+    },
+    {
+      "path": "tools/product_proof_claims.py",
+      "sha256": "27b8d094a9d3d447ce89ce174671c288ca81bf35ccc1c8acca79c752923c2489"
+    }
+  ],
+  "tracked_wheelhouse": [
+    {
+      "path": "vendor/wheels/editables-0.6-py3-none-any.whl",
+      "sha256": "d70e4698078a1d033e7786d9c64e5be070d058a67c21417024d38a58ac20aa43"
+    },
+    {
+      "path": "vendor/wheels/hatchling-1.29.0-py3-none-any.whl",
+      "sha256": "50af9343281f34785fab12da82e445ed987a6efb34fd8c2fc0f6e6630dbcc1b0"
+    },
+    {
+      "path": "vendor/wheels/iniconfig-2.3.1-py3-none-any.whl",
+      "sha256": "9121e2c1fdb355232495be3194c8dfe87ccc2d5dee45947b78e68f499790d7a7"
+    },
+    {
+      "path": "vendor/wheels/librt-0.16.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+      "sha256": "36e53948e99bbe3ffea257124cfcae1cfb01831555c9a9c903c9f9a72db7fd07"
+    },
+    {
+      "path": "vendor/wheels/mypy-1.20.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+      "sha256": "ef3461b1ad5cd446e540016e90b5984657edda39f982f4cc45ca317b628f5a37"
+    },
+    {
+      "path": "vendor/wheels/mypy_extensions-1.1.0-py3-none-any.whl",
+      "sha256": "1be4cccdb0f2482337c4743e60421de3a356cd97508abadd57d47403e94f5505"
+    },
+    {
+      "path": "vendor/wheels/packaging-26.3-py3-none-any.whl",
+      "sha256": "d7193f7c8e4e93f444fde0262bf90af30e16fa0ad0ad44cb553c87339b23cd1c"
+    },
+    {
+      "path": "vendor/wheels/pathspec-1.1.1-py3-none-any.whl",
+      "sha256": "a00ce642f577bf7f473932318056212bc4f8bfdf53128c78bbd5af0b9b20b189"
+    },
+    {
+      "path": "vendor/wheels/pluggy-1.7.0-py3-none-any.whl",
+      "sha256": "7dd7b0d8832ba3cb632c306926ded123429211b83641b35dc5c41ad2d34f9bec"
+    },
+    {
+      "path": "vendor/wheels/psycopg-3.3.4-py3-none-any.whl",
+      "sha256": "b6bbc25ccf05c8fad3b061d9db2ef0909a555171b84b07f29458a447253d679a"
+    },
+    {
+      "path": "vendor/wheels/psycopg_binary-3.3.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+      "sha256": "e7510c37550f91a187e3660a8cc50d4b760f8c3b8b2f89ebc5698cd2c7f2c85d"
+    },
+    {
+      "path": "vendor/wheels/pygments-2.21.0-py3-none-any.whl",
+      "sha256": "2363c69b61c4a97c838da3b130dcd6468f4848992b21a82f2a63ec34377137d9"
+    },
+    {
+      "path": "vendor/wheels/pytest-9.0.3-py3-none-any.whl",
+      "sha256": "2c5efc453d45394fdd706ade797c0a81091eccd1d6e4bccfcd476e2b8e0ab5d9"
+    },
+    {
+      "path": "vendor/wheels/pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+      "sha256": "ba1cc08a7ccde2d2ec775841541641e4548226580ab850948cbfda66a1befcdc"
+    },
+    {
+      "path": "vendor/wheels/ruff-0.15.11-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+      "sha256": "1bef2cb556d509259f1fe440bb9cd33c756222cf0a7afe90d15edf0866702431"
+    },
+    {
+      "path": "vendor/wheels/trove_classifiers-2026.9.21.13-py3-none-any.whl",
+      "sha256": "8b1ff4f9c191b1040b71c37f1e445ab99732911e3cd91de52838453a854d7a17"
+    },
+    {
+      "path": "vendor/wheels/typing_extensions-4.16.0-py3-none-any.whl",
+      "sha256": "481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8"
+    }
+  ],
+  "external_required_assets": [
+    {
+      "name": "NVDA_DOWNSTREAM_RECONCILIATION_L00_CHECKPOINT_20261028.tar(1).gz",
+      "sha256": "4d02c82894513bff8d07af7a2af6a151cd3f5f14ece581ac0bf0d87ea9ed0430",
+      "requirement": "one-time original full-history baseline or identical contained Git bundle"
+    },
+    {
+      "name": "NVDA_DOWNSTREAM_RECONCILIATION_L00_CHECKPOINT_20261028_FULL_HISTORY.bundle",
+      "sha256": "91db4a1989bff366c1f547c5776ca886c276b6b1310027ae929aa1cd1efee4b9",
+      "size_bytes": 42608833,
+      "requirement": "exact baseline Git objects and 66 refs; not carried in additive payload"
+    },
+    {
+      "name": "CPython3.12.14 runtime with accepted SQLite toolchain",
+      "sha256": null,
+      "status": "NOT_QUALIFIED_IN_PRODUCER; independent tester must identify/hash its actual runtime and verify SQLite version before proof",
+      "requirement": "not embedded in git bundle; no Python3.13 substitute"
+    }
+  ],
+  "unrelated_external_archives": "Not required for these frozen module-local proofs; no sole-sandbox asset is assumed. Original workbook/provider PDFs are historical references, not fresh mandatory input; if tester identifies an actual required external asset, stop affected proof and obtain its exact bytes/hash before proceeding."
+}

@@ -1,0 +1,11 @@
+VI-14-L1 promotion / close-out command summary
+
+- read mandatory governance, accepted ExecPlan, current-state routing, Worker candidate evidence,
+  independent Tester disposition and active promotion request
+- verified old main -> candidate -> Tester PASS ancestry
+- verified candidate tree identity
+- verified no substantive src/tests/config/pyproject drift after candidate
+- checkout main
+- git merge --ff-only 79b1d9d1d9da1b921c8d8197d154937dd1a699e5
+- record VI-14-L1 promotion evidence and current-state advance
+- mark VI-14-L1 progress accepted/promoted in active ExecPlan

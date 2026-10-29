@@ -1,0 +1,2 @@
+Source/proof formatted before sealing final proof bytes. First scoped Ruff on new _true_range.py, changed _window.py and new D039 proof found only two _window import ordering defects. First output preserved; moved _true_range import alphabetically, affected _window Ruff passed. Scoped mypy on two changed production files passed and was not repeated for import-order-only repair. No product runtime/RED ran. Strict two cases ready for independent judgement.
+

@@ -1,0 +1,46 @@
+............FFF                                                          [100%]
+=================================== FAILURES ===================================
+__ test_embedded_reference_time_cannot_relabel_an_older_actual_producer[D174] __
+
+identity = 'D174'
+
+    @pytest.mark.parametrize("identity", ("D174", "D162"))
+    def test_embedded_reference_time_cannot_relabel_an_older_actual_producer(identity):
+        f = fixture()
+        f["derived"][identity] = (replace(f["derived"][identity][0],
+            effective_at_utc=NOW - timedelta(seconds=1)),)
+>       assert ev("D175", f) is None
+E       AssertionError: assert KernelResultV1(value=(('definition', 'REFERENCE_CALIBRATED_ENVELOPE_V1'), ('maximum_currency_exact', (1000, 1)), ('max...'currency / percent', result_shape='structured', input_occurrence_ids=('D162', 'D174', 'R205', 'R206', 'R208', 'R209')) is None
+E        +  where KernelResultV1(value=(('definition', 'REFERENCE_CALIBRATED_ENVELOPE_V1'), ('maximum_currency_exact', (1000, 1)), ('max...'currency / percent', result_shape='structured', input_occurrence_ids=('D162', 'D174', 'R205', 'R206', 'R208', 'R209')) = ev('D175', {'contexts': (CandidateStructureContextV1(context_id='candidate', version=1, candidate_identity='managed', leg_contrac... tzinfo=datetime.timezone.utc)), ('account_identity', 'account'), ('currency', 'USD'), ('canonical_units', 'USD'))),)}})
+
+tests/product/derived_signal/test_m01_f4_review_regressions.py:255: AssertionError
+__ test_embedded_reference_time_cannot_relabel_an_older_actual_producer[D162] __
+
+identity = 'D162'
+
+    @pytest.mark.parametrize("identity", ("D174", "D162"))
+    def test_embedded_reference_time_cannot_relabel_an_older_actual_producer(identity):
+        f = fixture()
+        f["derived"][identity] = (replace(f["derived"][identity][0],
+            effective_at_utc=NOW - timedelta(seconds=1)),)
+>       assert ev("D175", f) is None
+E       AssertionError: assert KernelResultV1(value=(('definition', 'REFERENCE_CALIBRATED_ENVELOPE_V1'), ('maximum_currency_exact', (1000, 1)), ('max...'currency / percent', result_shape='structured', input_occurrence_ids=('D162', 'D174', 'R205', 'R206', 'R208', 'R209')) is None
+E        +  where KernelResultV1(value=(('definition', 'REFERENCE_CALIBRATED_ENVELOPE_V1'), ('maximum_currency_exact', (1000, 1)), ('max...'currency / percent', result_shape='structured', input_occurrence_ids=('D162', 'D174', 'R205', 'R206', 'R208', 'R209')) = ev('D175', {'contexts': (CandidateStructureContextV1(context_id='candidate', version=1, candidate_identity='managed', leg_contrac... tzinfo=datetime.timezone.utc)), ('account_identity', 'account'), ('currency', 'USD'), ('canonical_units', 'USD'))),)}})
+
+tests/product/derived_signal/test_m01_f4_review_regressions.py:255: AssertionError
+_____ test_live_greek_from_another_effective_snapshot_requires_revaluation _____
+
+    def test_live_greek_from_another_effective_snapshot_requires_revaluation():
+        f = hedge_fixture(fixture())
+        f["derived"]["D183"] = (replace(f["derived"]["D183"][0],
+            effective_at_utc=NOW - timedelta(seconds=1)),)
+>       assert ev("D189", f) is None
+E       AssertionError: assert KernelResultV1(value=(('adjustment', (('delta', Decimal('-1000')), ('gamma', Decimal('0')), ('vega', Decimal('0')), ('...s='target Greek adjustments', result_shape='structured', input_occurrence_ids=('D175', 'D181', 'D182', 'D183', 'D184')) is None
+E        +  where KernelResultV1(value=(('adjustment', (('delta', Decimal('-1000')), ('gamma', Decimal('0')), ('vega', Decimal('0')), ('...s='target Greek adjustments', result_shape='structured', input_occurrence_ids=('D175', 'D181', 'D182', 'D183', 'D184')) = ev('D189', {'contexts': (CandidateStructureContextV1(context_id='candidate', version=1, candidate_identity='managed', leg_contrac...l_fraction': Decimal('0.10'), 'concentration_active': True, 'concentration_fraction': Decimal('0.20'), ...}, 'raw': {}})
+
+tests/product/derived_signal/test_m01_f4_review_regressions.py:262: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/derived_signal/test_m01_f4_review_regressions.py::test_embedded_reference_time_cannot_relabel_an_older_actual_producer[D174]
+FAILED tests/product/derived_signal/test_m01_f4_review_regressions.py::test_embedded_reference_time_cannot_relabel_an_older_actual_producer[D162]
+FAILED tests/product/derived_signal/test_m01_f4_review_regressions.py::test_live_greek_from_another_effective_snapshot_requires_revaluation
+3 failed, 12 passed in 0.15s

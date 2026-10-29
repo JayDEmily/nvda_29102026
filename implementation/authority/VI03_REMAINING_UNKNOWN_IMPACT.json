@@ -1,0 +1,112 @@
+{
+  "schema_version": "VI03-1",
+  "verdict": "AUTHORITY_CLOSED_FOR_CURRENT_REQUIRED_SET",
+  "not_required_for_this_tranche": [
+    "concrete_scope_contents_provider_eligibility_record_mappings",
+    "provider_revision_retransmission_equivalence",
+    "clock_accuracy_drift_leap_smear_wake_latency",
+    "finality_watermarks_exact_counts_member_queries",
+    "provider_duplicate_equivalence_exactly_once",
+    "precommit_raw_loss_bounded_recovery",
+    "availability_latency_throughput_rto_rpo",
+    "opaque_id_generation_collision_handling_cross_process_recovery",
+    "postgresql_indexes",
+    "postgresql_partitions",
+    "postgresql_connection_pooling",
+    "retention_deletion_deterministic_recomputation_p01",
+    "provider_adapters",
+    "validation_quarantine",
+    "d001_plus",
+    "downstream_consumers_behaviour",
+    "historical_m_reestablishment_detail",
+    "provider_collector_specific_ingestion_sequence_scope_overflow"
+  ],
+  "execution_capability": {
+    "status": "VERIFIED_AVAILABLE_FROM_PRESERVED_PROJECT_ARTEFACTS",
+    "postgresql_source_version": "17.9",
+    "psycopg_version": "3.3.4",
+    "fresh_cluster_started": true,
+    "durability_defaults_observed": {
+      "fsync": "on",
+      "synchronous_commit": "on",
+      "full_page_writes": "on"
+    },
+    "client_connection_succeeded": true,
+    "semantic_authority_note": "capability evidence does not itself define product semantics or production version policy"
+  },
+  "frozen_skeleton_recheck": {
+    "reset_base_commit": "d24f9626a23b526384668b3cb26ee811b235eb5c",
+    "historical_pyproject_dependencies": [
+      "asyncpg==0.31.0",
+      "psycopg[binary]==3.3.3",
+      "SQLAlchemy==2.0.48"
+    ],
+    "historical_architecture_disposition": "technical_direction_not_production_database_decision; durable_adapter_selected_later",
+    "current_distribution": "nvda-architecture-kernel==0.1.0",
+    "current_package_root": "src/nvda_desk",
+    "current_runtime_dependencies": [
+      "PyYAML==6.0.3"
+    ],
+    "conclusion": "narrows architecture/component form but does not resolve current physical PostgreSQL or final owner-package metadata Unknowns"
+  },
+  "vi04_authority_record": "implementation/authority/VI04_AUTHORITY_CLOSURE.md",
+  "blocking_unknowns_before_vi04": [
+    {
+      "unknown": "physical_postgresql_table_layout",
+      "first_required_leaf": "VI-10",
+      "authority": [
+        "IRB-BC011",
+        "IRB-BC013",
+        "IRB-BC016",
+        "IA-16"
+      ]
+    },
+    {
+      "unknown": "physical_postgresql_sql_database_types",
+      "first_required_leaf": "VI-10",
+      "authority": [
+        "IRB-BC011",
+        "IRB-BC013",
+        "IRB-BC016",
+        "IA-16"
+      ]
+    },
+    {
+      "unknown": "postgresql_driver_selection",
+      "first_required_leaf": "VI-10",
+      "authority": [
+        "IRB-BC013",
+        "IRB-BC016",
+        "IA-16"
+      ]
+    },
+    {
+      "unknown": "concrete_repository_store_form_dependent_on_physical_design",
+      "first_required_leaf": "VI-12R",
+      "authority": [
+        "IRB-BC013",
+        "IRB-BC016",
+        "IA-16"
+      ]
+    },
+    {
+      "unknown": "final_package_naming_version_metadata",
+      "first_required_leaf": "VI-10",
+      "authority": [
+        "IRB-BC016",
+        "BICP-CANDIDATE-005",
+        "AK-COMP-001",
+        "AK-PKG-001"
+      ]
+    }
+  ],
+  "current_blocking_unknowns": [],
+  "authorised_resolution": {
+    "owner_package": "nvda_desk.raw_signal_occurrence_truth",
+    "public_seam": "nvda_desk.raw_signal_occurrence_truth.api",
+    "postgresql_driver": "psycopg[binary]==3.3.4",
+    "physical_postgresql_realisation": "delegated_smallest_correctness_only_layout_types_and_dependent_direct_repository_adapter_form",
+    "postgresql_proof_environment": "17.9_non_production_requirement",
+    "deferred_distribution_version_metadata": "UNRESOLVED_UNTIL_VI15"
+  }
+}

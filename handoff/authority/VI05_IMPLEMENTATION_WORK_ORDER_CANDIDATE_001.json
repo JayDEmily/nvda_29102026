@@ -1,0 +1,167 @@
+{
+  "schema_version": "VI05-IWO-1",
+  "status": "CANDIDATE_FOR_VI06_REVIEW",
+  "candidate_id": "IWO-CANDIDATE-001",
+  "authority": {
+    "irb_sha256": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342",
+    "irb_bytes": 20559,
+    "implementation_authorisation_ref": "IA-AUTH-001",
+    "bicp_id": "BICP-CANDIDATE-005",
+    "bicp_json_sha256": "5b99cead41fd8d3d372b5ed2ef4558065328b814e0a94c3680162fc6594df5ed",
+    "vi04_authority_sha256": "4909bfb3561f4ad08d21d82005f2aa60ed9c18440067c91180f6ee65c85bc9ca",
+    "build001_commit": "17263909abae9ca8cabb2440db282d12ff492ad6",
+    "build001_tree": "26c421f7cbc75d61ea3e538d79091f4e01136585"
+  },
+  "target": {
+    "responsibility": "raw_signal_occurrence_truth",
+    "category": "M",
+    "numeric_identity": "RE_RESOLVE_AT_VI07",
+    "supporting_modify_target": "A00",
+    "runtime_edge": "A00 -> M",
+    "package": "nvda_desk.raw_signal_occurrence_truth",
+    "public_seam": "nvda_desk.raw_signal_occurrence_truth.api",
+    "postgres_driver": "psycopg[binary]==3.3.4",
+    "postgres_proof_environment": "17.9",
+    "postgres_production_version_requirement": null
+  },
+  "physical_postgresql_delegation": {
+    "scope": "smallest correctness-only relation layout, SQL types, and dependent direct repository/adapter form required by BC-011",
+    "relation_responsibilities": [
+      "capture_scope_policy_versions",
+      "scheduled_capture_occurrences",
+      "raw_observation_occurrences",
+      "receipt_presence_assessments"
+    ],
+    "receipt_evidence_relation_materialisation": "OPTIONAL_NOT_REQUIRED",
+    "forbidden": [
+      "partitioning",
+      "connection_pooling",
+      "performance_or_sla_index_policy",
+      "semantic_authority_from_sql_shape",
+      "cross_kind_atomicity_claim"
+    ]
+  },
+  "realisation_units": [
+    {
+      "id": "IWO-U01",
+      "name": "typed_contracts_identity_owner_boundary",
+      "depends_on": [],
+      "proof_obligations": [
+        "IA17-PROD-001",
+        "IA17-PROD-011",
+        "IA17-PROD-012",
+        "IA17-ARCH-003",
+        "IA17-ARCH-005"
+      ]
+    },
+    {
+      "id": "IWO-U02",
+      "name": "capture_policy_and_owed_slot_truth",
+      "depends_on": [
+        "IWO-U01"
+      ],
+      "proof_obligations": [
+        "IA17-PROD-002",
+        "IA17-PROD-008"
+      ]
+    },
+    {
+      "id": "IWO-U03",
+      "name": "raw_observation_native_temporal_identity",
+      "depends_on": [
+        "IWO-U01"
+      ],
+      "proof_obligations": [
+        "IA17-PROD-003",
+        "IA17-PROD-004",
+        "IA17-PROD-005",
+        "IA17-PROD-008"
+      ]
+    },
+    {
+      "id": "IWO-U04",
+      "name": "receipt_relation_and_assessment_state",
+      "depends_on": [
+        "IWO-U01",
+        "IWO-U02",
+        "IWO-U03"
+      ],
+      "proof_obligations": [
+        "IA17-PROD-006",
+        "IA17-PROD-007",
+        "IA17-PROD-008"
+      ]
+    },
+    {
+      "id": "IWO-U05",
+      "name": "postgresql_durability_restart_referential_read",
+      "depends_on": [
+        "IWO-U01",
+        "IWO-U02",
+        "IWO-U03",
+        "IWO-U04"
+      ],
+      "proof_obligations": [
+        "IA22R01-PROD-009",
+        "IA17-PROD-010",
+        "IA17-PROD-007",
+        "IA17-PROD-008",
+        "IA17-ARCH-003"
+      ]
+    },
+    {
+      "id": "IWO-U06",
+      "name": "a00_construction_and_sequential_composition",
+      "depends_on": [
+        "IWO-U01",
+        "IWO-U02",
+        "IWO-U03",
+        "IWO-U04",
+        "IWO-U05"
+      ],
+      "proof_obligations": [
+        "IA17-PROD-013",
+        "IA17-ARCH-004",
+        "IA17-ARCH-005",
+        "IA17-ARCH-006"
+      ]
+    }
+  ],
+  "proof_obligations_total": 19,
+  "proof_obligations": [
+    "IA17-PROD-001",
+    "IA17-PROD-002",
+    "IA17-PROD-003",
+    "IA17-PROD-004",
+    "IA17-PROD-005",
+    "IA17-PROD-006",
+    "IA17-PROD-007",
+    "IA17-PROD-008",
+    "IA22R01-PROD-009",
+    "IA17-PROD-010",
+    "IA17-PROD-011",
+    "IA17-PROD-012",
+    "IA17-PROD-013",
+    "IA17-ARCH-001",
+    "IA17-ARCH-002",
+    "IA17-ARCH-003",
+    "IA17-ARCH-004",
+    "IA17-ARCH-005",
+    "IA17-ARCH-006"
+  ],
+  "product_architecture_axes": "SEPARATE_NON_SUBSTITUTABLE",
+  "final_distribution_name_version": "UNRESOLVED_UNTIL_VI15",
+  "inactive_capabilities": [
+    "P01_DMPV3",
+    "K01",
+    "authoritative_replay",
+    "live_external_effects_accounts",
+    "downstream_business_consumers"
+  ],
+  "implementation_before_vi11": false,
+  "proof_identity_lineage": {
+    "accepted_current_persistence_proof_id": "IA22R01-PROD-009",
+    "predecessor_alias": "IA17-PROD-009",
+    "rule": "use accepted BICP identifier for current proof; predecessor name is lineage only"
+  }
+}

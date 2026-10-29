@@ -1,0 +1,3 @@
+src/nvda_desk/derived_signal_calculation_truth/_stage1.py:3519: error: Incompatible types in assignment (expression has type "tuple[KernelValueV1, KernelValueV1] | None", variable has type "tuple[str, tuple[KernelValueV1, KernelValueV1]] | None")  [assignment]
+src/nvda_desk/derived_signal_calculation_truth/_stage1.py:3524: error: Incompatible types in assignment (expression has type "tuple[str, tuple[KernelValueV1, KernelValueV1]]", target has type "tuple[KernelValueV1, ...]")  [assignment]
+Found 2 errors in 1 file (checked 2 source files)

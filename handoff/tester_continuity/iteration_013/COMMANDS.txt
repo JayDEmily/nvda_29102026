@@ -1,0 +1,24 @@
+# Tester Iteration 013 — Operations summary
+
+- SHA-256 hashed and extracted exact uploaded archive.
+- Read current GUARDRAILS.md, root AGENTS.md, tests/AGENTS.override.md and root EXEC_PLAN.md.
+- Rebound exact accepted IRB, BICP and current IWO.
+- Read Tester Iteration 012 disposition, VI-10R10 repair design/evidence and Reviewer 019 brief.
+- Verified clean submitted worktree, exact HEAD/tree, physical proof/tree/parent and one-path physical diff.
+- Ran git fsck --full --strict.
+- Built an offline clean Python 3.13.5 environment using preserved project dependency wheels.
+- Independently reproduced exact pytest 9.0.3, PyYAML 6.0.3, psycopg 3.3.4, mypy 1.20.1 and Ruff 0.15.11.
+- Verified portable PostgreSQL 17.9 package manifest and started a non-root PostgreSQL 17.9 cluster.
+- Ran 18 focused submitted transaction/graph canaries: 18 passed / 34 deselected.
+- Ran five selected submitted PostgreSQL canaries: 5 passed / 47 deselected.
+- Ran an independent live SyncRep + split-marker/surrogate semantic transaction canary; submitted predicate falsely accepted the audit XID.
+- Ran an independent injected-proxy concrete-capability canary; submitted checker reported no adapter while owner recovered and invoked the exact adapter.
+- Ran product-proof validator: PASS, 6 families / 13 of 13 obligations.
+- Independently collected 450 product tests.
+- Ran mypy 1.20.1 on src: PASS, 15 source files.
+- Ran architecture/bootstrap: 74 passed.
+- Ran architecture_kernel promotion: 74/74 passed.
+- Ran structural architecture, dependency and public-seam validators: PASS.
+- Ran Ruff 0.15.11 over src/tests/tools: PASS.
+- Preserved nine namespace/filesystem propositions as UNPROVED and did not use them as a rejection basis.
+- Disposition: FAIL / RETURN_TO_WORKER on T013-F001 and T013-F002 only.

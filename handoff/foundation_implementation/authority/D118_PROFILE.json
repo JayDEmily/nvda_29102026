@@ -1,0 +1,55 @@
+{
+  "id": "D118",
+  "definition": "D118-CALL-PUT-VOLUME-BASKET-1",
+  "kernel": "K02_ALGEBRA",
+  "parameter_profile": "P_BASIC",
+  "subject": "NVDA_ACTIVITY_E1",
+  "members": [
+    "controlled-skew-2026-10-23-C25",
+    "controlled-skew-2026-10-23-C10",
+    "controlled-skew-2026-10-23-P25",
+    "controlled-skew-2026-10-23-P10"
+  ],
+  "expiry": "2026-10-23",
+  "strike_region_inclusive": [
+    90,
+    130
+  ],
+  "provider": "foundation-controlled-option-activity",
+  "variant": "member_volume_v1",
+  "raw": "R049 per call, R050 per put",
+  "mappings": {
+    "R049": "mmt-r049-member-call-volume/1 activity.call_volume",
+    "R050": "mmt-r050-member-put-volume/1 activity.put_volume"
+  },
+  "unit": "mmt-option-contracts/1 contracts identity",
+  "context": "controlled-option-session/1",
+  "parameter": "mmt-d118-controlled/1",
+  "selection": "mmt-d118-selection/1",
+  "success": {
+    "call": [
+      7,
+      5
+    ],
+    "put": [
+      1,
+      3
+    ],
+    "ratio": [
+      3,
+      1
+    ]
+  },
+  "refusal": {
+    "missing_only": "P10 R050",
+    "other_members": 3,
+    "reason": "exact complete configured put membership required"
+  },
+  "time": "2026-10-20T12:40:00Z",
+  "cutoff": "T+1s",
+  "now": "T+2s",
+  "page": [
+    100,
+    1000
+  ]
+}

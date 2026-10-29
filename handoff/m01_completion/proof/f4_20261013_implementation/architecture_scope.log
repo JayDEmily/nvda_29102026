@@ -1,0 +1,22 @@
+.....................................................F.................. [ 97%]
+..                                                                       [100%]
+=================================== FAILURES ===================================
+_____ test_repository_ingress_command_reports_non_durable_named_candidate ______
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_repository_ingress_comman0')
+
+>   ???
+E   AssertionError: Traceback (most recent call last):
+E       File "/workspace/scratch/5eb867831d92/repository/tools/validate_implementation_authority.py", line 10, in <module>
+E         from nvda_desk.architecture.implementation_authority import (
+E         ...<3 lines>...
+E         )
+E     ModuleNotFoundError: No module named 'nvda_desk'
+E     
+E   assert 1 == 0
+E    +  where 1 = CompletedProcess(args=['/workspace/scratch/5eb867831d92/stage1_proof_env/venv/bin/python', '/workspace/scratch/5eb8678...e.implementation_authority import (\n    ...<3 lines>...\n    )\nModuleNotFoundError: No module named \'nvda_desk\'\n').returncode
+
+/mnt/data/rc06_work/repository/tests/architecture/test_implementation_authority_ingress.py:334: AssertionError
+=========================== short test summary info ============================
+FAILED tests/architecture/test_implementation_authority_ingress.py::test_repository_ingress_command_reports_non_durable_named_candidate
+1 failed, 73 passed in 5.97s

@@ -1,0 +1,14 @@
+{
+  "review_cycle": "WORKER_VI12R_U03_R028_REPAIR_1790207424",
+  "actor": "WORKER",
+  "predecessor_review_cycle": "TESTER_VI13R_U03_R028_1790205913",
+  "rejected_candidate_commit": "06735b3682d79387ebaa4da70002e6685d52740a",
+  "rejected_candidate_tree": "b73b6ba4486eba9ae3aa4c1facc626579c8b8ee5",
+  "status": "COMPLETE",
+  "repaired_candidate_commit": "d25aedeed5de65d0a241bdce6eae22671ef2ddf8",
+  "repaired_candidate_tree": "21eb6bd2ba53b29ea6d80f90c01af40668f56955",
+  "repair_targets": ["R028-U03-F001"],
+  "closed_predecessor_findings": ["R027-U03-F001"],
+  "u04_authority": "PROHIBITED_PENDING_U03_REVIEW_AND_PROMOTION",
+  "next_authorised_step": "Fresh VI-13R Reviewer 029 reviews repaired U03 only; U04 remains prohibited pending PASS and lawful promotion."
+}

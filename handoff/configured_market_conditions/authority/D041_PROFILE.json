@@ -1,0 +1,119 @@
+{
+  "signal": "D041",
+  "definition": "D041-REVERSION-CONDITIONS-1",
+  "profile_id": "p02-d041-controlled/1",
+  "kernel": "K07_WEIGHTED_SCORE",
+  "units": "score",
+  "output": "exact_ratio",
+  "intercept": [
+    2,
+    3
+  ],
+  "features": [
+    {
+      "signal": "D026",
+      "path": "percent_difference",
+      "units": "percent",
+      "transform": "bounded_ratio",
+      "scale": [
+        1,
+        1
+      ],
+      "clip": [
+        0,
+        1
+      ],
+      "orientation": 1,
+      "weight": [
+        1,
+        3
+      ]
+    },
+    {
+      "signal": "D026",
+      "path": "percent_difference",
+      "units": "percent",
+      "transform": "bounded_ratio",
+      "scale": [
+        1,
+        1
+      ],
+      "clip": [
+        -1,
+        0
+      ],
+      "orientation": -1,
+      "weight": [
+        1,
+        3
+      ]
+    },
+    {
+      "signal": "D040",
+      "path": "result",
+      "units": "score",
+      "transform": "identity",
+      "scale": [
+        1,
+        1
+      ],
+      "clip": [
+        0,
+        1
+      ],
+      "orientation": -1,
+      "weight": [
+        1,
+        3
+      ]
+    },
+    {
+      "signal": "D033",
+      "path": "result",
+      "units": "annualised_volatility",
+      "transform": "bounded_ratio",
+      "scale": [
+        1,
+        1
+      ],
+      "clip": [
+        0,
+        1
+      ],
+      "orientation": -1,
+      "weight": [
+        1,
+        3
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "signal": "D026",
+      "owner": "M02",
+      "brief": "a2f3fc76cd2cc846fd4885d4f3d3df7a1a3e5c7370700a613ecb0706c853412f",
+      "definition": "D026-VWAP-DEVIATION-1",
+      "parameter": "mmt-vwap-deviation/1",
+      "context": "controlled-price-session/1",
+      "window": 2400
+    },
+    {
+      "signal": "D040",
+      "owner": "M03",
+      "brief": "ce8a16e3f5c5f886b1847ce09be321477259577560e3543b4b18853b59ad3492",
+      "definition": "D040-TREND-INTENSITY-1",
+      "parameter": "p02-d040-controlled/1",
+      "context": "p02-d040-controlled/1",
+      "window": 1800
+    },
+    {
+      "signal": "D033",
+      "owner": "M02",
+      "brief": "302845c64e6c2b9098e7f6806b41356a269ce1e79f14c026cfb85760d70c18cd",
+      "definition": "D033-REALISED-VOL-1",
+      "parameter": "mmt-realised-vol-30m-50d/1",
+      "context": "controlled-risk-calendar/1",
+      "window": 1800
+    }
+  ]
+}

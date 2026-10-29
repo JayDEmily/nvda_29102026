@@ -1,0 +1,36 @@
+{
+  "authority_catalogue_sha256": "63bc1b776fc8fa8ba82eb3c9b16916f295c9ec3d480a5a068937c2f25146f5f5",
+  "boundary": "Bounded row proofs do not prove all 144 Stage-1-closed rows or 30 cross-stage rows; D134/D135 additionally need authoritative snapshot-versus-event reconstruction rule",
+  "confirmed_public_witness_failure": "D134 persisted zero with projected nonzero size and no undeclared R187 operation",
+  "cross_stage_rows": 30,
+  "depth_snapshot_vs_event_reconstruction_authority": "BLOCKED",
+  "f4_dispositions": {
+    "F2_ACCEPTED_SCOPED_EVIDENCE": 18,
+    "F3A_BOUNDED_PUBLIC_PROOF": 4,
+    "F3B_BOUNDED_PUBLIC_PROOF": 7,
+    "F4_BOUNDED_PUBLIC_ROW_PROOF": 35,
+    "F4_OUTSTANDING_RELATIONSHIP_PROOF": 317,
+    "F4_ZERO_EDGE_PUBLIC_PROOF": 1,
+    "STAGE2_BOUNDARY_DEFERRED": 107
+  },
+  "f4_new_bounded_public_rows": [
+    "D139",
+    "D140",
+    "D143",
+    "D144",
+    "D145",
+    "D151"
+  ],
+  "prior_f3_ledger_sha256": "67f354ca64946963e3ddd0acde632bc6a507a190f20547c5150d0698a128dd23",
+  "stage1_closed_rows": 144,
+  "stage1_f4_candidate_ready": false,
+  "stage1_independent_acceptance": false,
+  "stage1_rows": 174,
+  "total_dependency_edges": 488,
+  "unresolved_rc12_public_rows": [
+    "D134",
+    "D135",
+    "D136"
+  ],
+  "zero_edge_sentinels": 1
+}

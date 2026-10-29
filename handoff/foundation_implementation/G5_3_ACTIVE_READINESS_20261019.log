@@ -1,0 +1,6 @@
+PASS: control validity only; this is not executed product proof
+claim: neutral_market_measurement_truth_pilot profile=accepted_brief_v2 state=READY_FOR_PROOF
+target: M02 status=active
+authority_sha256: 3ad4cdc9ffba4cf91ff9a27edf1dd3b1a9824a421514bb4b5a2cc1b9c504f233
+generation_sha256: 24a5af4054c277b01a140ec43481e86851e5e76263826644a80993c12c2495b7
+declared physical families: 5

@@ -1,0 +1,30 @@
+"""Bounded classification of the first duplicate-consistency invariant failure."""
+exec(compile(open('/workspace/scratch/d549b6d808a9/g53-review/direct_review.py').read().split('with tempfile.TemporaryDirectory')[0], '<authority-derived-construction>', 'exec'))
+raw=r.create_owner()
+raw.commands.admit_raw_observation_occurrence(obs('bid','R034',1,'100'))
+raw.commands.admit_raw_observation_occurrence(obs('ask','R035',2,'102'))
+mutations={
+ 'wrong-returned-units':dict(native_units='shares'),
+ 'stale-returned-event':dict(source_timestamp_raw='2026-10-16T00:58:00Z'),
+ 'after-cutoff-receipt':dict(received_ts_utc=ASOF+timedelta(microseconds=1)),
+ 'nonfinite-native-value':dict(native_value=Decimal('NaN')),
+}
+count=0
+for name,change in mutations.items():
+ for reverse in (False,True):
+  for paged in (False,True):
+   class Reader:
+    def list_projected_raw_history(self,rid,**kwargs):
+     original=raw.reads.list_projected_raw_history(rid,**(kwargs|dict(cursor=None)))
+     if rid.value!='R034':return original
+     good=original.items[0]; bad=replace(good,**change)
+     items=(bad,good) if reverse else (good,bad)
+     if not paged:return r.ProjectedRawHistoryPageV1(items,None)
+     return r.ProjectedRawHistoryPageV1((items[0],),'1') if kwargs['cursor'] is None else r.ProjectedRawHistoryPageV1((items[1],),None)
+   owner=f.create_owner(raw_projection_reader=Reader(),storage=f.MemoryStorageV1(),**CONFIG)
+   result=owner.materialise(req())
+   assert result is not None and result.result==Decimal('101')
+   assert len(history(owner))==1
+   count+=1
+   print('CONFIRMED false valid occurrence',name,'ineligible-first='+str(reverse),'cross-page='+str(paged),flush=True)
+print('CLASSIFICATION: same mechanism confirmed in',count,'bounded variants; expected None and empty history',flush=True)

@@ -1,0 +1,84 @@
+Reviewer 022 command record — commands materially bearing on disposition
+
+SOURCE / GOVERNANCE / GIT BINDING
+- sha256sum 'NVDA_G03_TESTER_VI13R_U01_R022_1790117393_FULL_GIT_20260923.tar(1).gz'
+  -> 219b29c6204f795d0b075e4eee75bba47e86d122319299376050ed56cebd16b5
+- read README.md, GUARDRAILS.md, root AGENTS.md, complete EXEC_PLAN.md,
+  tests/AGENTS.override.md, CURRENT_STATE.md, active REQUEST.md, Reviewer-022 handoff,
+  accepted IRB, complete current IWO, Reviewer-021 disposition, Worker repair evidence,
+  complete current api.py, U01 proof/support module, and positive/negative mypy specimens
+- git rev-parse e8b659d7849d2f95b64ba32bed8090a8290358d4^{tree}
+  -> 62b074c0e94215a75fb64c5eb934af55be1ded3a
+- git diff --name-status e8b659d^ e8b659d
+  -> exactly three paths: api.py, U01 proof, positive static specimen
+- sha256sum complete Reviewer-021-to-repair diff
+  -> 542b3e3a907193774154f2a73bab1a3ebb9af488221e0393e77e6780369b8f6e
+
+EXACT REVIEW TOOLCHAIN
+- /mnt/data/reviewer022_venv/bin/python --version
+  -> Python 3.13.5
+- /mnt/data/reviewer022_venv/bin/python -m pytest --version
+  -> pytest 9.0.3
+- /mnt/data/reviewer022_venv/bin/python -m mypy --version
+  -> mypy 1.20.1 (compiled: yes)
+- /mnt/data/reviewer022_venv/bin/python -m ruff --version
+  -> ruff 0.15.11
+
+FOCUSED U01
+- python -m pytest -q tests/product/raw_signal/test_u01_contract_owner_boundary.py
+  -> 297 passed in 4.18s; rc=0
+
+INITIAL DIRECT VALIDATION ATTEMPT IN ISOLATED REVIEWER VENV
+- python -m mypy --strict --disallow-any-expr --show-error-codes --no-error-summary tests/product/raw_signal/typecheck/public_seam_positive.py
+  -> rc=1: reviewer environment lacked MYPYPATH to repository src
+- python -m mypy --strict --disallow-any-expr --show-error-codes --no-error-summary tests/product/raw_signal/typecheck/public_seam_negative.py
+  -> rc=1 with import/Any noise for same missing MYPYPATH
+- python -m mypy src --show-error-codes
+  -> rc=1: isolated reviewer venv lacked PyYAML typing/runtime dependency
+- python tools/validate_product_proof.py / validate_architecture.py / check_dependencies.py /
+  check_public_seams.py / run_promotion_gate.py --set architecture_kernel
+  -> environment-only import failures: missing PyYAML and/or PYTHONPATH
+- python -m ruff check src tests tools
+  -> All checks passed; rc=0
+- git diff --check
+  -> rc=0
+- git fsck --full --strict
+  -> rc=0
+
+CORRECTED DIRECT VALIDATION
+Reviewer environment was corrected only outside the repository by using the project src path and
+installing the exact project-pinned PyYAML wheel recovered from supplied project artefacts.
+- MYPYPATH=<candidate>/src python -m mypy --strict --disallow-any-expr --show-error-codes --no-error-summary tests/product/raw_signal/typecheck/public_seam_positive.py
+  -> rc=0
+- MYPYPATH=<candidate>/src python -m mypy --strict --disallow-any-expr --show-error-codes --no-error-summary tests/product/raw_signal/typecheck/public_seam_negative.py
+  -> rc=1 as intended; exactly all 15 marked negative sites diagnosed at
+     15,18,21,23,28,34,43,48,53,59,64,67,70,73,76
+- PYTHONPATH=<candidate>/src MYPYPATH=<candidate>/src python -m mypy src --show-error-codes
+  -> Success: no issues found in 15 source files; rc=0
+- PYTHONPATH=<candidate>/src python -m ruff check src tests tools
+  -> All checks passed; rc=0
+- PYTHONPATH=<candidate>/src python tools/validate_product_proof.py
+  -> PASS; six product families; 13/13 obligations; rc=0
+- PYTHONPATH=<candidate>/src python tools/validate_architecture.py
+  -> PASS; dependency/public-seam violations: 0; rc=0
+- PYTHONPATH=<candidate>/src python tools/check_dependencies.py
+  -> PASS; rc=0
+- PYTHONPATH=<candidate>/src python tools/check_public_seams.py
+  -> PASS; rc=0
+- PYTHONPATH=<candidate>/src python tools/run_promotion_gate.py --set architecture_kernel
+  -> 74 passed in 3.86s; rc=0
+
+INDEPENDENT FOCUSED RUNTIME CHALLENGE
+- constructed receipt_only observation through public identity factories with nested native_record;
+  mutated caller top-level mapping, caller nested list, returned nested list, and attempted direct
+  mapping assignment
+  -> stored value unchanged on all alias paths; direct assignment rejected; provider-native None
+     preserved
+- constructed receipt_only with non-absent source_timestamp_raw
+  -> ValueError: receipt_only must not fabricate a source timestamp
+- checked all new identity factories are in api.__all__ and return distinct identity-layer types
+  -> pass
+- exploratory arbitrary-value probe: native_record={'blob': memoryview(b'abc')}
+  -> TypeError: cannot pickle memoryview objects
+  -> not elevated to finding because no admitted provider mapping/current U01 authority makes this
+     value class part of the bounded provider-logical domain

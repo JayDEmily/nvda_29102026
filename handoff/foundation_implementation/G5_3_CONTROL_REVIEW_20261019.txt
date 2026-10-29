@@ -1,0 +1,71 @@
+"""Direct G5.3 PA02 controls on disposable exact-candidate clones only."""
+import subprocess, json, sys, hashlib, os
+from pathlib import Path
+ROOT=Path('/workspace/scratch/d549b6d808a9/g52-recovery/repository')
+OUT=Path('/workspace/scratch/d549b6d808a9/g53-review')
+CANDIDATE='9e605bd1bc191761d9534dd90d883507cff93f49'
+CLAIM='neutral_market_measurement_truth_pilot'
+sys.path.insert(0,str(ROOT/'tools'))
+from product_proof_claims import load_product_proof_claim
+from product_proof_outcomes import validate_outcomes
+
+def clone(name):
+ path=OUT/(name+'-v2')
+ subprocess.run(['git','clone','--quiet','--no-hardlinks',str(ROOT),str(path)],check=True)
+ subprocess.run(['git','checkout','--quiet','--detach',CANDIDATE],cwd=path,check=True)
+ return path
+def commit(path):
+ subprocess.run(['git','add','-A'],cwd=path,check=True)
+ subprocess.run(['git','-c','user.name=Independent G53 review','-c','user.email=review@example.invalid','commit','-qm','Disposable adversarial control'],cwd=path,check=True)
+def run(path):
+ env=dict(os.environ,PYTHONPATH=str(path/'tools')+os.pathsep+str(path/'src'))
+ p=subprocess.run([sys.executable,str(path/'tools/run_product_proof_gate.py'),'--aggregate',CLAIM],cwd=path,env=env,text=True,capture_output=True)
+ print(path.name,'exit',p.returncode,p.stdout.strip(),p.stderr.strip(),flush=True)
+ assert p.returncode!=0
+ return p
+base=clone('control-exact-baseline')
+claim=load_product_proof_claim(base,CLAIM)
+assert claim.state=='READY_FOR_PROOF' and claim.target_status=='bootstrap'
+assert run(base).returncode==4
+
+null=clone('control-null-pointer')
+pointer=null/'config/product_proof/market_measurement/admission.json'
+pointer.write_text(json.dumps({'schema_version':'1.0','current_generation':None})+'\n')
+commit(null)
+run(null)
+
+changed=clone('control-admitted-proof-change')
+claim=load_product_proof_claim(changed,CLAIM)
+assert claim.state=='READY_FOR_PROOF'
+proof=changed/claim.families[0].path
+proof.write_text(proof.read_text()+'\n# independent post-admission byte canary\n')
+commit(changed)
+p=run(changed)
+assert 'hash' in p.stdout.lower()
+
+cross=clone('control-cross-claim')
+pointer=cross/'config/product_proof/market_measurement/admission.json'
+doc=json.loads(pointer.read_text())
+old_reference=doc['current_generation'].copy()
+oldgen=cross/old_reference['path']
+record=json.loads(oldgen.read_text())
+gen=oldgen.with_name('0004.json')
+record['generation']=4
+record['previous_generation']=old_reference
+record['claim_id']='raw_signal_occurrence_truth_sqlite'
+gen.write_text(json.dumps(record,indent=2)+'\n')
+doc['current_generation']['path']=str(gen.relative_to(cross))
+doc['current_generation']['sha256']=hashlib.sha256(gen.read_bytes()).hexdigest()
+pointer.write_text(json.dumps(doc,indent=2)+'\n')
+commit(cross)
+p=run(cross)
+assert 'claim' in p.stdout.lower()
+
+node='test_canary.py::test_canary'
+report=dict(nonce='review-nonce',collected=[node],outcomes={node:[dict(when=phase,outcome='passed',wasxfail=False) for phase in ('setup','call','teardown')]},collection_errors=[],deselected=[],exitstatus=0)
+assert validate_outcomes(report,'review-nonce',{'test_canary.py':('test_canary',)},0)==0
+report['outcomes'][node][1]['outcome']='skipped'
+result=validate_outcomes(report,'review-nonce',{'test_canary.py':('test_canary',)},0)
+assert result!=0
+print('PASS success-exit report with skipped call rejected; outcome',result,flush=True)
+print('PASS four direct PA02 rejection controls',flush=True)

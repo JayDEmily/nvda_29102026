@@ -1,0 +1,267 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "claim_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "generation": {
+      "type": "integer"
+    },
+    "brief_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "binding_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "contract_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "implementation_target_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "adequacy_review_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "admission_authority_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "family_files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "sha256"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "support_files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "sha256"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "previous_generation": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "current_generation": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "not": {
+        "not": {
+          "required": [
+            "generation"
+          ]
+        },
+        "allOf": [
+          {
+            "not": {
+              "required": [
+                "current_generation"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "current_generation"
+        ]
+      },
+      "then": {
+        "allOf": [
+          {
+            "not": {
+              "required": [
+                "claim_id"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "generation"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "brief_sha256"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "binding_sha256"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "contract_sha256"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "implementation_target_id"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "adequacy_review_ref"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "admission_authority_ref"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "family_files"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "support_files"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "previous_generation"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "generation"
+        ]
+      },
+      "then": {
+        "required": [
+          "schema_version",
+          "claim_id",
+          "generation",
+          "brief_sha256",
+          "binding_sha256",
+          "contract_sha256",
+          "implementation_target_id",
+          "adequacy_review_ref",
+          "admission_authority_ref",
+          "family_files",
+          "support_files",
+          "previous_generation"
+        ],
+        "not": {
+          "required": [
+            "current_generation"
+          ]
+        }
+      }
+    }
+  ]
+}

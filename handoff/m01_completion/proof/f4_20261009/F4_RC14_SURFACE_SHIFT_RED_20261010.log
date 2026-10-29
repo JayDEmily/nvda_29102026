@@ -1,0 +1,95 @@
+.FFFFFFF                                                                 [100%]
+=================================== FAILURES ===================================
+_______ test_rc14_public_surface_shift_refuses_missing_prior_grid_point ________
+
+    def test_rc14_public_surface_shift_refuses_missing_prior_grid_point() -> None:
+        owner, req = _public(missing="prior-otm")
+>       assert owner.materialise(req) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D103', derived_occurrence_id='d103-c269296afce4f198ebf337ecf6f87845059f2b...on_identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),)), supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(derived_signal_id='D103', derived_occurrence_id='d103-c269296afce4f198ebf337ecf6f87845059f2b...on_identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),)), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D103', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 10, 4,..._identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),))),), predecessor_selection_policy_refs=()))
+E        +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7fca0ae138b0>.materialise
+
+tests/product/derived_signal/test_m01_f4_rc14_surface_shift_public.py:109: AssertionError
+______ test_rc14_public_surface_shift_refuses_missing_current_grid_point _______
+
+    def test_rc14_public_surface_shift_refuses_missing_current_grid_point() -> None:
+        owner, req = _public(missing="current-atm")
+>       assert owner.materialise(req) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D103', derived_occurrence_id='d103-85c0c8992b02103bc59da1026e5c5471054d88...on_identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),)), supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(derived_signal_id='D103', derived_occurrence_id='d103-85c0c8992b02103bc59da1026e5c5471054d88...on_identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),)), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D103', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 10, 4,..._identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),))),), predecessor_selection_policy_refs=()))
+E        +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7fca0ad1c890>.materialise
+
+tests/product/derived_signal/test_m01_f4_rc14_surface_shift_public.py:114: AssertionError
+_____________ test_rc14_public_surface_shift_refuses_future_member _____________
+
+    def test_rc14_public_surface_shift_refuses_future_member() -> None:
+        owner, req = _public(future="prior-otm")
+>       assert owner.materialise(req) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D103', derived_occurrence_id='d103-c269296afce4f198ebf337ecf6f87845059f2b...on_identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),)), supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(derived_signal_id='D103', derived_occurrence_id='d103-c269296afce4f198ebf337ecf6f87845059f2b...on_identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),)), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D103', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 10, 4,..._identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),))),), predecessor_selection_policy_refs=()))
+E        +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7fca0ad1cc10>.materialise
+
+tests/product/derived_signal/test_m01_f4_rc14_surface_shift_public.py:119: AssertionError
+_____ test_rc14_public_surface_shift_refuses_wrong_instrument_grid_member ______
+
+    def test_rc14_public_surface_shift_refuses_wrong_instrument_grid_member() -> None:
+        owner, req = _public(wrong_subject="prior-otm")
+>       assert owner.materialise(req) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D103', derived_occurrence_id='d103-c269296afce4f198ebf337ecf6f87845059f2b...on_identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),)), supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(derived_signal_id='D103', derived_occurrence_id='d103-c269296afce4f198ebf337ecf6f87845059f2b...on_identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),)), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D103', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 10, 4,..._identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),))),), predecessor_selection_policy_refs=()))
+E        +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7fca0ad1ce40>.materialise
+
+tests/product/derived_signal/test_m01_f4_rc14_surface_shift_public.py:124: AssertionError
+_______ test_rc14_public_surface_shift_refuses_ambiguous_duplicate_grid ________
+
+    def test_rc14_public_surface_shift_refuses_ambiguous_duplicate_grid() -> None:
+        owner, req = _public(duplicate=True)
+>       assert owner.materialise(req) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D103', derived_occurrence_id='d103-bfccd81c44c42279785204696e3c3005485309...on_identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),)), supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(derived_signal_id='D103', derived_occurrence_id='d103-bfccd81c44c42279785204696e3c3005485309...on_identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),)), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D103', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 10, 4,..._identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),))),), predecessor_selection_policy_refs=()))
+E        +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7fca0ad1ca50>.materialise
+
+tests/product/derived_signal/test_m01_f4_rc14_surface_shift_public.py:129: AssertionError
+_____ test_rc14_public_surface_shift_refuses_reversed_snapshot_chronology ______
+
+    def test_rc14_public_surface_shift_refuses_reversed_snapshot_chronology() -> None:
+        owner, req = _public(reverse=True)
+>       assert owner.materialise(req) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D103', derived_occurrence_id='d103-e4d08db253b901fded73583f674c4851824f24...on_identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),)), supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(derived_signal_id='D103', derived_occurrence_id='d103-e4d08db253b901fded73583f674c4851824f24...on_identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),)), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D103', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 10, 4,..._identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),))),), predecessor_selection_policy_refs=()))
+E        +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7fca0ad1ceb0>.materialise
+
+tests/product/derived_signal/test_m01_f4_rc14_surface_shift_public.py:134: AssertionError
+_________ test_rc14_public_surface_shift_refuses_unclassified_snapshot _________
+
+    def test_rc14_public_surface_shift_refuses_unclassified_snapshot() -> None:
+        owner, req = _public(malformed_label=True)
+>       assert owner.materialise(req) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D103', derived_occurrence_id='d103-e4d08db253b901fded73583f674c4851824f24...on_identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),)), supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(derived_signal_id='D103', derived_occurrence_id='d103-e4d08db253b901fded73583f674c4851824f24...on_identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),)), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D103', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 10, 4,..._identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),))),), predecessor_selection_policy_refs=()))
+E        +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7fca0ad1c9e0>.materialise
+
+tests/product/derived_signal/test_m01_f4_rc14_surface_shift_public.py:139: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/derived_signal/test_m01_f4_rc14_surface_shift_public.py::test_rc14_public_surface_shift_refuses_missing_prior_grid_point - AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D103', derived_occurrence_id='d103-c269296afce4f198ebf337ecf6f87845059f2b...on_identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),)), supersedes_derived_occurrence_id=None) is None
+ +  where DerivedSignalOccurrenceV1(derived_signal_id='D103', derived_occurrence_id='d103-c269296afce4f198ebf337ecf6f87845059f2b...on_identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),)), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D103', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 10, 4,..._identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),))),), predecessor_selection_policy_refs=()))
+ +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7fca0ae138b0>.materialise
+FAILED tests/product/derived_signal/test_m01_f4_rc14_surface_shift_public.py::test_rc14_public_surface_shift_refuses_missing_current_grid_point - AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D103', derived_occurrence_id='d103-85c0c8992b02103bc59da1026e5c5471054d88...on_identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),)), supersedes_derived_occurrence_id=None) is None
+ +  where DerivedSignalOccurrenceV1(derived_signal_id='D103', derived_occurrence_id='d103-85c0c8992b02103bc59da1026e5c5471054d88...on_identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),)), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D103', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 10, 4,..._identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),))),), predecessor_selection_policy_refs=()))
+ +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7fca0ad1c890>.materialise
+FAILED tests/product/derived_signal/test_m01_f4_rc14_surface_shift_public.py::test_rc14_public_surface_shift_refuses_future_member - AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D103', derived_occurrence_id='d103-c269296afce4f198ebf337ecf6f87845059f2b...on_identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),)), supersedes_derived_occurrence_id=None) is None
+ +  where DerivedSignalOccurrenceV1(derived_signal_id='D103', derived_occurrence_id='d103-c269296afce4f198ebf337ecf6f87845059f2b...on_identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),)), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D103', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 10, 4,..._identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),))),), predecessor_selection_policy_refs=()))
+ +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7fca0ad1cc10>.materialise
+FAILED tests/product/derived_signal/test_m01_f4_rc14_surface_shift_public.py::test_rc14_public_surface_shift_refuses_wrong_instrument_grid_member - AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D103', derived_occurrence_id='d103-c269296afce4f198ebf337ecf6f87845059f2b...on_identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),)), supersedes_derived_occurrence_id=None) is None
+ +  where DerivedSignalOccurrenceV1(derived_signal_id='D103', derived_occurrence_id='d103-c269296afce4f198ebf337ecf6f87845059f2b...on_identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),)), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D103', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 10, 4,..._identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),))),), predecessor_selection_policy_refs=()))
+ +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7fca0ad1ce40>.materialise
+FAILED tests/product/derived_signal/test_m01_f4_rc14_surface_shift_public.py::test_rc14_public_surface_shift_refuses_ambiguous_duplicate_grid - AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D103', derived_occurrence_id='d103-bfccd81c44c42279785204696e3c3005485309...on_identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),)), supersedes_derived_occurrence_id=None) is None
+ +  where DerivedSignalOccurrenceV1(derived_signal_id='D103', derived_occurrence_id='d103-bfccd81c44c42279785204696e3c3005485309...on_identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),)), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D103', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 10, 4,..._identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),))),), predecessor_selection_policy_refs=()))
+ +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7fca0ad1ca50>.materialise
+FAILED tests/product/derived_signal/test_m01_f4_rc14_surface_shift_public.py::test_rc14_public_surface_shift_refuses_reversed_snapshot_chronology - AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D103', derived_occurrence_id='d103-e4d08db253b901fded73583f674c4851824f24...on_identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),)), supersedes_derived_occurrence_id=None) is None
+ +  where DerivedSignalOccurrenceV1(derived_signal_id='D103', derived_occurrence_id='d103-e4d08db253b901fded73583f674c4851824f24...on_identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),)), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D103', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 10, 4,..._identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),))),), predecessor_selection_policy_refs=()))
+ +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7fca0ad1ceb0>.materialise
+FAILED tests/product/derived_signal/test_m01_f4_rc14_surface_shift_public.py::test_rc14_public_surface_shift_refuses_unclassified_snapshot - AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D103', derived_occurrence_id='d103-e4d08db253b901fded73583f674c4851824f24...on_identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),)), supersedes_derived_occurrence_id=None) is None
+ +  where DerivedSignalOccurrenceV1(derived_signal_id='D103', derived_occurrence_id='d103-e4d08db253b901fded73583f674c4851824f24...on_identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),)), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D103', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 10, 4,..._identity=RawSelectionIdentityV1(values=(('underlying_instrument', 'NVDA'),))),), predecessor_selection_policy_refs=()))
+ +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7fca0ad1c9e0>.materialise
+7 failed, 1 passed in 0.08s

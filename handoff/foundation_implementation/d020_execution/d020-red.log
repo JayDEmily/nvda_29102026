@@ -1,0 +1,301 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/83dd7c79f14f/NVDA_V2_CLEAN_RECOVERED_REPO_20261022
+configfile: pyproject.toml
+collected 2 items
+
+tests/product/market_measurement_d020/test_five_minute_log_return.py FF  [100%]
+
+=================================== FAILURES ===================================
+___________________ test_d020_five_minute_log_return[False] ____________________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-12/test_d020_five_minute_log_retu0')
+missing_reference = False
+
+    @pytest.mark.parametrize("missing_reference", [False, True])
+    def test_d020_five_minute_log_return(tmp_path, missing_reference):
+        raw = r.create_owner()
+        records = [("current", 0, "120"), ("post-anchor", 60, "110")]
+        if not missing_reference:
+            records.append(("reference", 300, "100"))
+        for sequence, (identity, age, price) in enumerate(records, 1):
+            event = ASOF - timedelta(seconds=age)
+            raw.commands.admit_raw_observation_occurrence(
+                r.RawObservationOccurrenceV1(
+                    concept_id=r.concept_id("raw_signal.raw_observation_occurrence"),
+                    contract_id=r.contract_id("nvda.raw_signal.RawObservationOccurrence.v1"),
+                    observation_occurrence_id=r.observation_occurrence_id(identity),
+                    delivery_artifact_ref=r.delivery_artifact_ref("controlled-close-delivery"),
+                    source_provider=r.provider_id("foundation-pilot-fixture"),
+                    native_record={"bar": {"close": Decimal(price)}},
+                    received_ts_utc=event,
+                    ingestion_sequence=sequence,
+                    ingestion_sequence_scope=r.ingestion_sequence_scope(
+                        "foundation-pilot-fixture/cash_quote_v1"
+                    ),
+                    source_temporal_kind="true_instant",
+                    raw_signal_catalogue_ids=(r.RawSignalCatalogueId("R143"),),
+                    source_variant="cash_quote_v1",
+                    subject_instrument="NVDA",
+                    native_units="price",
+                    source_timestamp_raw=event.isoformat().replace("+00:00", "Z"),
+                    source_timezone_native="UTC",
+                )
+            )
+        page = raw.reads.list_projected_raw_history(
+            r.RawSignalCatalogueId("R143"),
+            mappings=(_mapping(),),
+            subject_instrument="NVDA",
+            received_at_or_before_utc=CUTOFF,
+            event_at_or_before_utc=ASOF,
+            limit=100,
+            cursor=None,
+        )
+        ids = {item.observation_occurrence_id.value for item in page.items}
+        assert ids == (
+            {"current", "post-anchor"} if missing_reference else {"current", "post-anchor", "reference"}
+        )
+        assert page.next_cursor is None
+        admission = f.OwnerAdmissionV1("M02", BRIEF)
+        path = str(tmp_path / "return.sqlite")
+        try:
+>           owner = f.create_window_owner(
+                admission=admission,
+                raw_projection_reader=raw.reads,
+                storage=f.SQLiteStorageV1(path, True),
+                utc_now=lambda: NOW,
+            )
+
+tests/product/market_measurement_d020/test_five_minute_log_return.py:88: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/nvda_desk/market_measurement_truth/api.py:819: in create_window_owner
+    return build_owner(admission, raw_projection_reader, predecessor_reader, storage, utc_now)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/nvda_desk/market_measurement_truth/_window.py:456: in build_owner
+    _admission(admission)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+admission = OwnerAdmissionV1(object_id='M02', implementation_brief_sha256='811906fdfb073da9b5a7ba137563953d6ff977d50bfe99b8f43adb068f20e839')
+
+    def _admission(admission: f.OwnerAdmissionV1) -> None:
+        if type(admission) is not f.OwnerAdmissionV1:
+            raise TypeError("exact owner admission required")
+        if admission != f.OwnerAdmissionV1("M02", BRIEF):
+>           raise ValueError("exact D016 admission required")
+E           ValueError: exact D016 admission required
+
+src/nvda_desk/market_measurement_truth/_window.py:70: ValueError
+
+During handling of the above exception, another exception occurred:
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-12/test_d020_five_minute_log_retu0')
+missing_reference = False
+
+    @pytest.mark.parametrize("missing_reference", [False, True])
+    def test_d020_five_minute_log_return(tmp_path, missing_reference):
+        raw = r.create_owner()
+        records = [("current", 0, "120"), ("post-anchor", 60, "110")]
+        if not missing_reference:
+            records.append(("reference", 300, "100"))
+        for sequence, (identity, age, price) in enumerate(records, 1):
+            event = ASOF - timedelta(seconds=age)
+            raw.commands.admit_raw_observation_occurrence(
+                r.RawObservationOccurrenceV1(
+                    concept_id=r.concept_id("raw_signal.raw_observation_occurrence"),
+                    contract_id=r.contract_id("nvda.raw_signal.RawObservationOccurrence.v1"),
+                    observation_occurrence_id=r.observation_occurrence_id(identity),
+                    delivery_artifact_ref=r.delivery_artifact_ref("controlled-close-delivery"),
+                    source_provider=r.provider_id("foundation-pilot-fixture"),
+                    native_record={"bar": {"close": Decimal(price)}},
+                    received_ts_utc=event,
+                    ingestion_sequence=sequence,
+                    ingestion_sequence_scope=r.ingestion_sequence_scope(
+                        "foundation-pilot-fixture/cash_quote_v1"
+                    ),
+                    source_temporal_kind="true_instant",
+                    raw_signal_catalogue_ids=(r.RawSignalCatalogueId("R143"),),
+                    source_variant="cash_quote_v1",
+                    subject_instrument="NVDA",
+                    native_units="price",
+                    source_timestamp_raw=event.isoformat().replace("+00:00", "Z"),
+                    source_timezone_native="UTC",
+                )
+            )
+        page = raw.reads.list_projected_raw_history(
+            r.RawSignalCatalogueId("R143"),
+            mappings=(_mapping(),),
+            subject_instrument="NVDA",
+            received_at_or_before_utc=CUTOFF,
+            event_at_or_before_utc=ASOF,
+            limit=100,
+            cursor=None,
+        )
+        ids = {item.observation_occurrence_id.value for item in page.items}
+        assert ids == (
+            {"current", "post-anchor"} if missing_reference else {"current", "post-anchor", "reference"}
+        )
+        assert page.next_cursor is None
+        admission = f.OwnerAdmissionV1("M02", BRIEF)
+        path = str(tmp_path / "return.sqlite")
+        try:
+            owner = f.create_window_owner(
+                admission=admission,
+                raw_projection_reader=raw.reads,
+                storage=f.SQLiteStorageV1(path, True),
+                utc_now=lambda: NOW,
+            )
+        except ValueError as exc:
+>           pytest.fail(f"admitted D020 calculation is unsupported: {exc}")
+E           Failed: admitted D020 calculation is unsupported: exact D016 admission required
+
+tests/product/market_measurement_d020/test_five_minute_log_return.py:95: Failed
+____________________ test_d020_five_minute_log_return[True] ____________________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-12/test_d020_five_minute_log_retu1')
+missing_reference = True
+
+    @pytest.mark.parametrize("missing_reference", [False, True])
+    def test_d020_five_minute_log_return(tmp_path, missing_reference):
+        raw = r.create_owner()
+        records = [("current", 0, "120"), ("post-anchor", 60, "110")]
+        if not missing_reference:
+            records.append(("reference", 300, "100"))
+        for sequence, (identity, age, price) in enumerate(records, 1):
+            event = ASOF - timedelta(seconds=age)
+            raw.commands.admit_raw_observation_occurrence(
+                r.RawObservationOccurrenceV1(
+                    concept_id=r.concept_id("raw_signal.raw_observation_occurrence"),
+                    contract_id=r.contract_id("nvda.raw_signal.RawObservationOccurrence.v1"),
+                    observation_occurrence_id=r.observation_occurrence_id(identity),
+                    delivery_artifact_ref=r.delivery_artifact_ref("controlled-close-delivery"),
+                    source_provider=r.provider_id("foundation-pilot-fixture"),
+                    native_record={"bar": {"close": Decimal(price)}},
+                    received_ts_utc=event,
+                    ingestion_sequence=sequence,
+                    ingestion_sequence_scope=r.ingestion_sequence_scope(
+                        "foundation-pilot-fixture/cash_quote_v1"
+                    ),
+                    source_temporal_kind="true_instant",
+                    raw_signal_catalogue_ids=(r.RawSignalCatalogueId("R143"),),
+                    source_variant="cash_quote_v1",
+                    subject_instrument="NVDA",
+                    native_units="price",
+                    source_timestamp_raw=event.isoformat().replace("+00:00", "Z"),
+                    source_timezone_native="UTC",
+                )
+            )
+        page = raw.reads.list_projected_raw_history(
+            r.RawSignalCatalogueId("R143"),
+            mappings=(_mapping(),),
+            subject_instrument="NVDA",
+            received_at_or_before_utc=CUTOFF,
+            event_at_or_before_utc=ASOF,
+            limit=100,
+            cursor=None,
+        )
+        ids = {item.observation_occurrence_id.value for item in page.items}
+        assert ids == (
+            {"current", "post-anchor"} if missing_reference else {"current", "post-anchor", "reference"}
+        )
+        assert page.next_cursor is None
+        admission = f.OwnerAdmissionV1("M02", BRIEF)
+        path = str(tmp_path / "return.sqlite")
+        try:
+>           owner = f.create_window_owner(
+                admission=admission,
+                raw_projection_reader=raw.reads,
+                storage=f.SQLiteStorageV1(path, True),
+                utc_now=lambda: NOW,
+            )
+
+tests/product/market_measurement_d020/test_five_minute_log_return.py:88: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/nvda_desk/market_measurement_truth/api.py:819: in create_window_owner
+    return build_owner(admission, raw_projection_reader, predecessor_reader, storage, utc_now)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/nvda_desk/market_measurement_truth/_window.py:456: in build_owner
+    _admission(admission)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+admission = OwnerAdmissionV1(object_id='M02', implementation_brief_sha256='811906fdfb073da9b5a7ba137563953d6ff977d50bfe99b8f43adb068f20e839')
+
+    def _admission(admission: f.OwnerAdmissionV1) -> None:
+        if type(admission) is not f.OwnerAdmissionV1:
+            raise TypeError("exact owner admission required")
+        if admission != f.OwnerAdmissionV1("M02", BRIEF):
+>           raise ValueError("exact D016 admission required")
+E           ValueError: exact D016 admission required
+
+src/nvda_desk/market_measurement_truth/_window.py:70: ValueError
+
+During handling of the above exception, another exception occurred:
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-12/test_d020_five_minute_log_retu1')
+missing_reference = True
+
+    @pytest.mark.parametrize("missing_reference", [False, True])
+    def test_d020_five_minute_log_return(tmp_path, missing_reference):
+        raw = r.create_owner()
+        records = [("current", 0, "120"), ("post-anchor", 60, "110")]
+        if not missing_reference:
+            records.append(("reference", 300, "100"))
+        for sequence, (identity, age, price) in enumerate(records, 1):
+            event = ASOF - timedelta(seconds=age)
+            raw.commands.admit_raw_observation_occurrence(
+                r.RawObservationOccurrenceV1(
+                    concept_id=r.concept_id("raw_signal.raw_observation_occurrence"),
+                    contract_id=r.contract_id("nvda.raw_signal.RawObservationOccurrence.v1"),
+                    observation_occurrence_id=r.observation_occurrence_id(identity),
+                    delivery_artifact_ref=r.delivery_artifact_ref("controlled-close-delivery"),
+                    source_provider=r.provider_id("foundation-pilot-fixture"),
+                    native_record={"bar": {"close": Decimal(price)}},
+                    received_ts_utc=event,
+                    ingestion_sequence=sequence,
+                    ingestion_sequence_scope=r.ingestion_sequence_scope(
+                        "foundation-pilot-fixture/cash_quote_v1"
+                    ),
+                    source_temporal_kind="true_instant",
+                    raw_signal_catalogue_ids=(r.RawSignalCatalogueId("R143"),),
+                    source_variant="cash_quote_v1",
+                    subject_instrument="NVDA",
+                    native_units="price",
+                    source_timestamp_raw=event.isoformat().replace("+00:00", "Z"),
+                    source_timezone_native="UTC",
+                )
+            )
+        page = raw.reads.list_projected_raw_history(
+            r.RawSignalCatalogueId("R143"),
+            mappings=(_mapping(),),
+            subject_instrument="NVDA",
+            received_at_or_before_utc=CUTOFF,
+            event_at_or_before_utc=ASOF,
+            limit=100,
+            cursor=None,
+        )
+        ids = {item.observation_occurrence_id.value for item in page.items}
+        assert ids == (
+            {"current", "post-anchor"} if missing_reference else {"current", "post-anchor", "reference"}
+        )
+        assert page.next_cursor is None
+        admission = f.OwnerAdmissionV1("M02", BRIEF)
+        path = str(tmp_path / "return.sqlite")
+        try:
+            owner = f.create_window_owner(
+                admission=admission,
+                raw_projection_reader=raw.reads,
+                storage=f.SQLiteStorageV1(path, True),
+                utc_now=lambda: NOW,
+            )
+        except ValueError as exc:
+>           pytest.fail(f"admitted D020 calculation is unsupported: {exc}")
+E           Failed: admitted D020 calculation is unsupported: exact D016 admission required
+
+tests/product/market_measurement_d020/test_five_minute_log_return.py:95: Failed
+=========================== short test summary info ============================
+FAILED tests/product/market_measurement_d020/test_five_minute_log_return.py::test_d020_five_minute_log_return[False]
+FAILED tests/product/market_measurement_d020/test_five_minute_log_return.py::test_d020_five_minute_log_return[True]
+============================== 2 failed in 0.16s ===============================
+product-proof aggregate: neutral_market_measurement_truth_d020 state=READY_FOR_PROOF
+authority=811906fdfb073da9b5a7ba137563953d6ff977d50bfe99b8f43adb068f20e839 generation=2b7fb16bbae0977396525fc842bca44833b439f62a85250d049956156788a261
+candidate=036389f325c246b7b5de97a15cff651b48a1fd2a
+observed aggregate outcome: exit=1

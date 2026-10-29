@@ -1,0 +1,113 @@
+........................................................................ [ 17%]
+........................................................................ [ 34%]
+........................................................................ [ 51%]
+........................................................................ [ 69%]
+.....FF................................................................. [ 86%]
+....F...................................................                 [100%]
+=================================== FAILURES ===================================
+_____ test_public_command_and_read_facets_are_statically_typed_without_any _____
+
+    def test_public_command_and_read_facets_are_statically_typed_without_any() -> None:
+        result = _run_public_seam_mypy(TYPECHECK_POSITIVE)
+>       assert result.returncode == 0, result.stdout + result.stderr
+E       AssertionError: error: INTERNAL ERROR -- Please try using mypy master on GitHub:
+E         https://mypy.readthedocs.io/en/stable/common_issues.html#using-a-development-mypy-build
+E         If this issue continues with mypy master, please report a bug at https://github.com/python/mypy/issues
+E         version: 1.20.1
+E         note: please use --show-traceback to print a traceback when reporting a bug
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/workspace/scratch/d549b6d808a9/g51-dev/bin/python', '-m', 'mypy', '--strict', '--disallow-any...om/python/mypy/issues\nversion: 1.20.1\nnote: please use --show-traceback to print a traceback when reporting a bug\n').returncode
+
+tests/product/raw_signal/test_u01_contract_owner_boundary.py:899: AssertionError
+_____ test_every_public_facet_rejects_cross_layer_static_type_substitution _____
+
+    def test_every_public_facet_rejects_cross_layer_static_type_substitution() -> None:
+        source_lines = TYPECHECK_NEGATIVE.read_text(encoding="utf-8").splitlines()
+        expected_lines = {
+            number for number, line in enumerate(source_lines, start=1) if "STATIC_NEGATIVE" in line
+        }
+        assert len(expected_lines) == 15
+    
+        result = _run_public_seam_mypy(TYPECHECK_NEGATIVE)
+        assert result.returncode != 0, "negative static-type specimen unexpectedly type-checked"
+        reported_lines: set[int] = set()
+        root = Path(__file__).resolve().parents[3]
+        expected_path = TYPECHECK_NEGATIVE.resolve()
+        for line in (result.stdout + result.stderr).splitlines():
+            parts = line.split(":", 2)
+            if len(parts) < 3:
+                continue
+            reported_path = Path(parts[0])
+            if not reported_path.is_absolute():
+                reported_path = root / reported_path
+            if reported_path.resolve() != expected_path:
+                continue
+            try:
+                reported_lines.add(int(parts[1]))
+            except ValueError:
+                continue
+        missing = expected_lines - reported_lines
+>       assert not missing, (missing, result.stdout, result.stderr)
+E       AssertionError: ({15, 18, 21, 23, 28, 34, ...}, '', 'error: INTERNAL ERROR -- Please try using mypy master on GitHub:
+E         https://mypy.re...om/python/mypy/issues
+E         version: 1.20.1
+E         note: please use --show-traceback to print a traceback when reporting a bug
+E         ')
+E       assert not {15, 18, 21, 23, 28, 34, ...}
+
+tests/product/raw_signal/test_u01_contract_owner_boundary.py:928: AssertionError
+_____ test_public_static_native_value_v1_rejects_outside_carrier_specimens _____
+
+    def test_public_static_native_value_v1_rejects_outside_carrier_specimens() -> None:
+        specimen = Path(__file__).resolve().parent / "typecheck" / "native_value_negative.py"
+        source_lines = specimen.read_text(encoding="utf-8").splitlines()
+        expected_lines = {
+            number for number, line in enumerate(source_lines, start=1) if "NATIVE_NEGATIVE" in line
+        }
+        assert len(expected_lines) == 4
+        root = Path(__file__).resolve().parents[3]
+        env = os.environ.copy()
+        env["MYPYPATH"] = str(root / "src")
+        result = subprocess.run(
+            [
+                sys.executable,
+                "-m",
+                "mypy",
+                "--strict",
+                "--disallow-any-expr",
+                "--show-error-codes",
+                "--no-error-summary",
+                str(specimen),
+            ],
+            cwd=root,
+            env=env,
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+        assert result.returncode != 0, "outside-carrier static specimen unexpectedly type-checked"
+        reported_lines: set[int] = set()
+        for line in (result.stdout + result.stderr).splitlines():
+            parts = line.split(":", 2)
+            if len(parts) < 3:
+                continue
+            try:
+                reported_lines.add(int(parts[1]))
+            except ValueError:
+                continue
+>       assert not expected_lines - reported_lines, result.stdout + result.stderr
+E       AssertionError: error: INTERNAL ERROR -- Please try using mypy master on GitHub:
+E         https://mypy.readthedocs.io/en/stable/common_issues.html#using-a-development-mypy-build
+E         If this issue continues with mypy master, please report a bug at https://github.com/python/mypy/issues
+E         version: 1.20.1
+E         note: please use --show-traceback to print a traceback when reporting a bug
+E         
+E       assert not ({8, 9, 10, 11} - set())
+
+tests/product/raw_signal/test_u03_observation_native_temporal.py:390: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/raw_signal/test_u01_contract_owner_boundary.py::test_public_command_and_read_facets_are_statically_typed_without_any
+FAILED tests/product/raw_signal/test_u01_contract_owner_boundary.py::test_every_public_facet_rejects_cross_layer_static_type_substitution
+FAILED tests/product/raw_signal/test_u03_observation_native_temporal.py::test_public_static_native_value_v1_rejects_outside_carrier_specimens
+3 failed, 413 passed in 1.82s

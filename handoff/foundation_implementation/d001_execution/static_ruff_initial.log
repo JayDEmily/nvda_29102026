@@ -1,0 +1,70 @@
+E501 Line too long (102 > 100)
+   --> src/nvda_desk/market_measurement_truth/_temporal.py:255:101
+    |
+253 |                         cursor=cursor,
+254 |                     )
+255 |                     if type(page) is not r.ProjectedRawHistoryPageV1 or type(page.items) is not tuple:
+    |                                                                                                     ^^
+256 |                         raise ValueError("invalid temporal source page")
+257 |                     for item in page.items:
+    |
+
+E501 Line too long (101 > 100)
+   --> src/nvda_desk/market_measurement_truth/_temporal.py:273:101
+    |
+271 |                                    if item.selection_identity == r.RawSelectionIdentityV1((
+272 |                                        ("sample.id", "controlled-temporal-sample/1"),
+273 |                                        ("value.role", ("source_timestamp", "source_timezone")[role]),
+    |                                                                                                     ^
+274 |                                    )))
+275 |                 if not candidates:
+    |
+
+E731 Do not assign a `lambda` expression, use a `def`
+   --> src/nvda_desk/market_measurement_truth/_temporal.py:277:17
+    |
+275 |                 if not candidates:
+276 |                     raise ValueError("missing temporal source role")
+277 |                 rank = lambda item: (item.received_ts_utc, item.ingestion_sequence)
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+278 |                 selected = max(candidates, key=rank)
+279 |                 if sum(rank(item) == rank(selected) for item in candidates) != 1:
+    |
+help: Rewrite `rank` as a `def`
+
+RUF022 [*] `__all__` is not sorted
+    --> src/nvda_desk/market_measurement_truth/api.py:1055:12
+     |
+1055 |   __all__ += [
+     |  ____________^
+1056 | |     "BaselineWindowContextV1",
+1057 | |     "CorrelationMatrixV1",
+1058 | |     "IndexChangeV1",
+1059 | |     "MeasurementComparisonV1",
+1060 | |     "MeasurementWindowOwnerV1",
+1061 | |     "MeasurementWindowReadsV1",
+1062 | |     "OptionRightLineageV1",
+1063 | |     "OptionSkewV1",
+1064 | |     "ReturnAccelerationV1",
+1065 | |     "SessionFrameV1",
+1066 | |     "TermPairV1",
+1067 | |     "VwapDeviationV1",
+1068 | |     "VwapRateV1",
+1069 | |     "WindowCalculationRequestV1",
+1070 | |     "WindowContextV1",
+1071 | |     "WindowMeasurementOccurrenceV1",
+1072 | |     "TemporalRawLineageV1",
+1073 | |     "TemporalOccurrenceV1",
+1074 | |     "MeasurementTemporalReadsV1",
+1075 | |     "MeasurementTemporalOwnerV1",
+1076 | |     "create_temporal_owner",
+1077 | |     "create_temporal_reader",
+1078 | |     "create_window_owner",
+1079 | |     "create_window_reader",
+1080 | | ]
+     | |_^
+     |
+help: Apply an isort-style sorting to `__all__`
+
+Found 4 errors.
+[*] 1 fixable with the `--fix` option (1 hidden fix can be enabled with the `--unsafe-fixes` option).

@@ -1,0 +1,60 @@
+Worker U03 Reviewer-028 repair command record
+
+GOVERNANCE / ROUTING
+- read GUARDRAILS.md, AGENTS.md, README.md, complete current EXEC_PLAN.md,
+  tests/AGENTS.override.md, CURRENT_STATE.md and active Worker REQUEST.md
+- read Reviewer-028 response/result/disposition, accepted IRB BC-005/006/009/010,
+  IWO-U03, current comparator/proof paths and predecessor repair evidence
+- verified current actor/cycle/request route only to WORKER U03 Reviewer-028 repair
+- created fresh branch work/vi12r-u03-r028-repair from routed Reviewer-028 FAIL continuity
+
+SOURCE RECEIPT
+- sha256sum NVDA_G03_TESTER_VI13R_U03_R028_FAIL_FULL_GIT_20260924.tar(1).gz
+  -> 5c020b2e9eb7ccbd9badf7368d8b17e9d61b3825744d2ab04e826cb1edfeaf24
+
+REPAIR
+- array.array native retry equality now includes exact typecode and raw array bytes
+- range native retry equality now includes exact start/stop/step representation
+- retained exact runtime-type gate plus Decimal tuple, IEEE-754 float/complex,
+  recursive mapping/list/tuple/set/frozenset comparison
+- added only the two concrete Reviewer-028 regressions
+- U04 and later behaviour unchanged
+
+EXACT TOOLCHAIN
+- recovered preserved BUILD-001 offline wheelhouse from project artefact
+  NVDA_IMPLEMENTATION_ADMISSION_PM_HANDOVER_FULL_GIT_20260913.tar(1).gz
+- verified every wheel against preserved SHA256SUMS
+- provisioned tooling outside repository
+- Python 3.13.5
+- pytest 9.0.3
+- mypy 1.20.1 (compiled)
+- Ruff 0.15.11
+
+PRE-FREEZE DEVELOPMENT OBSERVATIONS
+- first implementation iterated array elements; strict --disallow-any-expr mypy proof rejected
+  typeshed array[Any] iteration. Replaced it with exact typecode+tobytes comparison.
+- first architecture/bootstrap invocation omitted exported PYTHONPATH for a subprocess and produced
+  one nvda_desk import failure; rerun with PYTHONPATH bound to repository src was 74/74.
+- neither development invocation is frozen-candidate evidence.
+
+FROZEN CANDIDATE
+- commit d25aedeed5de65d0a241bdce6eae22671ef2ddf8
+- tree 21eb6bd2ba53b29ea6d80f90c01af40668f56955
+- physical changed paths: api.py + U03 proof only
+- repair diff SHA-256 from rejected candidate over those two paths:
+  7f7ec1119976c668ac9a4a4ab77a78bc9341e376e57a625af2eb41c8f6e34bf6
+
+COMMITTED-CANDIDATE VALIDATION
+- focused Reviewer-028 regressions -> 2 passed
+- pytest U01+U02+U03 -> 375 passed
+- mypy src -> success, 15 source files
+- Ruff src tests tools -> pass
+- validate_product_proof.py -> PASS, six families, 13/13 obligations
+- validate_architecture.py -> PASS, zero dependency/public-seam violations
+- check_dependencies.py -> PASS
+- check_public_seams.py -> PASS
+- pytest tests/architecture tests/bootstrap -> 74 passed
+- run_promotion_gate.py --set architecture_kernel -> 74 passed
+- git diff HEAD^ HEAD --check -> pass
+- git fsck --full --strict -> pass
+- candidate worktree clean

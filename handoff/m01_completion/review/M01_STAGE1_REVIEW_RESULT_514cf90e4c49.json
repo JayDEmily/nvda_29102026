@@ -1,0 +1,73 @@
+{
+  "authority": {
+    "brief_sha256": "603b850802a418780109095e7ae69bcece449da79fb24140a6d50297605e927c",
+    "catalogue_sha256": "63bc1b776fc8fa8ba82eb3c9b16916f295c9ec3d480a5a068937c2f25146f5f5",
+    "plan": "root EXEC_PLAN.md, Stage 1 (174 kernel / 144 public closed / 30 cross-stage deferred)",
+    "rules": "Brief \u00a75 K08 D015,D016,D120; \u00a7\u00a77,8.1,13,17; ExecPlan Stage 1 Leaf 1 and Leaf 3"
+  },
+  "classification": "RECURRENT_CLASS",
+  "finding": "A valid D015 buyer-initiated trade result is not applied to the same raw trade when D016 or D120 is materialised through the public owner seam. The derived sign D015 is keyed by its own hashed derived-occurrence ID while D016/D120 look it up under the M00 trade observation occurrence ID, which is a distinct identity namespace. Both rows persist zero as a successful canonical result despite complete contemporaneous trade/quote inputs, instead of applying sign=+1 to size=2 and trade_price=6, multiplier=100. This violates Stage-1 signed-trade arithmetic and exact raw-to-derived lineage compatibility. It is a distinct concrete manifestation of the previously recurrent R/D graph-selection and lineage class.",
+  "first_failed_invariant": "A per-trade D015 classification must be correlated to the original trade observation(s) it classified, via provable raw lineage; no join may rely on equality between unrelated M00 and Dxxx occurrence-ID namespaces. When correlation cannot be established, fail closed rather than persisting a fabricated zero.",
+  "generated_at_utc": "2026-10-08T12:00:25.169629+00:00",
+  "independent_evidence": {
+    "adversarial_log": "handoff/m01_completion/review/proof/stage1_signed_flow_public_fail_20261008.log",
+    "adversarial_test": "handoff/m01_completion/review/proof/test_stage1_signed_flow_public.py",
+    "direct_observations": {
+      "D011_midpoint": "5",
+      "D015_trade_sign": "1",
+      "D016_actual": "0",
+      "D016_expected": "2",
+      "D120_actual": {
+        "signed_contracts": "0",
+        "signed_premium_notional": "0"
+      },
+      "D120_expected": {
+        "signed_contracts": "2",
+        "signed_premium_notional": "1200"
+      },
+      "raw_multiplier": "100",
+      "raw_trade_price": "6",
+      "raw_trade_size": "2"
+    },
+    "existing_regression_run": "194 passed (product/derived_signal + architecture + bootstrap); tests do not discriminate this defect",
+    "independent_adversarial_run": "2 failed (expected proof of candidate defect); public M01 materialise with one real raw-identifier trade and one exact contract",
+    "pinned_environment": {
+      "mypy": "1.20.1",
+      "psycopg": "3.3.4",
+      "pytest": "9.0.3",
+      "python": "3.13.5",
+      "ruff": "0.15.11"
+    },
+    "postgres": "Not independently rerun in this review. Worker 2026-10-08 PostgreSQL evidence was read but does not resolve this arithmetic defect.",
+    "public_seam_fixture": "handoff/m01_completion/review/proof/stage1_signed_flow_public_fixture.py",
+    "source_mechanism": [
+      "src/nvda_desk/derived_signal_calculation_truth/api.py:_occurrence_kernel_value (derived occurrence IDs)",
+      "src/nvda_desk/derived_signal_calculation_truth/_stage1.py:_eval_k08 D016/D120 (joins derived D015 ID to raw trade ID)"
+    ],
+    "static_checks": [
+      "mypy src: success on 21 files",
+      "ruff check src tests tools: all checks passed",
+      "tools/validate_architecture.py: PASS, zero dependency/public-seam violations"
+    ]
+  },
+  "kind": "independent_review_result",
+  "prior_review_lineage": [
+    "079135644212d7145a628bc5460cc0846587bd12",
+    "4aa01e8ee0fa405ed90bbbe06570e9ad1289fc02",
+    "8446b5944a029cc944530588a6dcfcb9cf08bbfc"
+  ],
+  "repair_proposition": "Close the recurring Stage-1 R/D identity and correlation class rather than applying a D016/D120-only result override. A derived sign, bucket, expiry or other per-observation fact may be applied to raw trades and other derived predecessors only through an explicit, reconstructable mapping to the same accepted raw observation/contract/time/version identity. Preserve distinct M00 source-occurrence and Dxxx calculated-occurrence namespaces and exact persisted lineage; no implicit zero when required correlation is absent. Author authority-derived positive/negative public-seam proofs before production changes for D015\u2192D016 and D015\u2192D120, including multiple signed trades, mismatched observations/contracts, missing sign, and deterministic lineage/retry. Audit other Stage-1 raw/derived joins for the same cross-namespace pattern, and independently prove the mandatory D120/D091\u2192D121 and D120/D085\u2192D122 grouping paths across multiple exact contracts without conflating parent and child selection. The latter D121/D122 paths are presently UNASSESSED by this reviewer due to the first failed prerequisite; they are not asserted to have failed an independent end-to-end test. Preserve existing D109/D170 repair, 144 public-closed/30 deferred boundary, M00 isolation, accepted catalogue, governance and version 1.0.0; no Stage 2 work. Rerun relevant proof, freeze a new exact Stage-1 candidate and return for independent review.",
+  "review": "M01_STAGE1_POST_PREDECESSOR_SCOPE_REPAIR",
+  "reviewed_branch": "work/m01-completion",
+  "reviewed_worker_head": "514cf90e4c49a3dc72d318796549a6da9dc38cc7",
+  "reviewed_worker_tree": "be8959b949cd094b76276cc66779535c9611f8f8",
+  "route": "RETURN_TO_WORKER_STAGE1",
+  "stage2_authorised": false,
+  "unassessed_or_deferred": [
+    "D121/D122 independent multi-contract graph materialisation unassessed after first failed D120 prerequisite",
+    "Database boundary PostgreSQL independently unassessed in this reviewer run; prior worker evidence retained",
+    "Stage-2 connections remain expressly deferred",
+    "Whole Stage-1 acceptance not reached because the first required signed-trade invariant failed"
+  ],
+  "verdict": "REPAIR"
+}

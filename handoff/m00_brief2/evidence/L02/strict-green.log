@@ -1,0 +1,14 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/ad31885d756b/repo
+configfile: pyproject.toml
+collected 20 items
+
+tests/product/m00_brief2/test_ibkr_native_projection.py ................ [ 80%]
+....                                                                     [100%]
+
+============================== 20 passed in 2.73s ==============================
+product-proof aggregate: m00_brief2 state=READY_FOR_PROOF
+authority=0d5ee211c1285b31834062ab2d871670ed2f318cbb955e7df95f80067d562007 generation=95eb840b1b660330bc5382b85d7de389965a6731bcb6829606540c5d7e82c913
+candidate=3545f2349832ae98b4dd2679498f93b8f2bed859
+observed aggregate outcome: exit=0

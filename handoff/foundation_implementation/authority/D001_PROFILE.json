@@ -1,0 +1,28 @@
+{
+  "id": "D001",
+  "definition": "D001-TRUE-INSTANT-UTC-1",
+  "kernel": "K01_TIME",
+  "provider": "foundation-controlled-temporal",
+  "variant": "clock_v1",
+  "subject": "NVDA",
+  "as_of": "2026-10-09T14:00:00Z",
+  "cutoff": "2026-10-09T14:00:00Z",
+  "now": "2026-10-09T14:00:01Z",
+  "source_event": "2026-10-10T00:59:50+11:00",
+  "source_event_utc": "2026-10-09T13:59:50Z",
+  "receipt": "2026-10-09T13:59:55Z",
+  "sample_id": "controlled-temporal-sample/1",
+  "raw": {
+    "R002": {"mapping": "mmt-d001-r002", "path": ["time", "value"], "units": "native_time", "native": "2026-10-10T00:59:50+11:00"},
+    "R003": {"mapping": "mmt-d001-r003", "path": ["time", "timezone"], "units": "native_timezone", "native": "+11:00"}
+  },
+  "parameter": "mmt-d001-controlled/1",
+  "selection": "mmt-d001-selection/1",
+  "unit_context": "mmt-d001-temporal/1",
+  "staleness_seconds": 60,
+  "skew_seconds": 0,
+  "page_size": 100,
+  "page_limit": 1000,
+  "success": "same true instant normalised to 2026-10-09T13:59:50Z",
+  "refusal": "R002 becomes date_only, native and source timestamp 2026-10-10; R003 remains present"
+}

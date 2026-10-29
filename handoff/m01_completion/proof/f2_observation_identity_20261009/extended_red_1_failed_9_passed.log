@@ -1,0 +1,25 @@
+......F...                                                               [100%]
+=================================== FAILURES ===================================
+_ test_d015_lineage_does_not_relabel_an_earlier_trade_when_latest_size_is_missing _
+
+    def test_d015_lineage_does_not_relabel_an_earlier_trade_when_latest_size_is_missing() -> None:
+        points = _two_trade_points()
+        points["R121"] = points["R121"][:1]
+        # New D015 knows latest trade B, but the only size belongs to trade A.
+        # Do not attach B's sign to A by overlapping historical lineage.
+        owner = _owner(points)
+        t2 = reviewer.NOW + timedelta(seconds=5)
+        assert owner.materialise(_request("D015", t2)) is not None
+>       assert owner.materialise(_request("D016", t2)) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D016', derived_occurrence_id='d016-33a9169dc7a3aa147fcca57b8098207213e6ba...'expiry', '2026-12-18'), ('strike', Decimal('100')), ('option_right', 'call'))), supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(derived_signal_id='D016', derived_occurrence_id='d016-33a9169dc7a3aa147fcca57b8098207213e6ba...'expiry', '2026-12-18'), ('strike', Decimal('100')), ('option_right', 'call'))), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D016', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 8, 3, ...expiry', '2026-12-18'), ('strike', Decimal('100')), ('option_right', 'call'))))), predecessor_selection_policy_refs=()))
+E        +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7f8acc5200b0>.materialise
+E        +    and   CalculationRequestV1(derived_signal_id='D016', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 8, 3, ...expiry', '2026-12-18'), ('strike', Decimal('100')), ('option_right', 'call'))))), predecessor_selection_policy_refs=()) = _request('D016', datetime.datetime(2026, 10, 8, 3, 0, 5, tzinfo=datetime.timezone.utc))
+
+tests/product/derived_signal/test_m01_f2_observation_identity.py:196: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/derived_signal/test_m01_f2_observation_identity.py::test_d015_lineage_does_not_relabel_an_earlier_trade_when_latest_size_is_missing - AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D016', derived_occurrence_id='d016-33a9169dc7a3aa147fcca57b8098207213e6ba...'expiry', '2026-12-18'), ('strike', Decimal('100')), ('option_right', 'call'))), supersedes_derived_occurrence_id=None) is None
+ +  where DerivedSignalOccurrenceV1(derived_signal_id='D016', derived_occurrence_id='d016-33a9169dc7a3aa147fcca57b8098207213e6ba...'expiry', '2026-12-18'), ('strike', Decimal('100')), ('option_right', 'call'))), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D016', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 8, 3, ...expiry', '2026-12-18'), ('strike', Decimal('100')), ('option_right', 'call'))))), predecessor_selection_policy_refs=()))
+ +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7f8acc5200b0>.materialise
+ +    and   CalculationRequestV1(derived_signal_id='D016', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 8, 3, ...expiry', '2026-12-18'), ('strike', Decimal('100')), ('option_right', 'call'))))), predecessor_selection_policy_refs=()) = _request('D016', datetime.datetime(2026, 10, 8, 3, 0, 5, tzinfo=datetime.timezone.utc))
+1 failed, 9 passed in 0.26s

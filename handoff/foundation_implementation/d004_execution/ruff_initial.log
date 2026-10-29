@@ -1,0 +1,70 @@
+E501 Line too long (102 > 100)
+   --> src/nvda_desk/market_measurement_truth/_temporal_date.py:210:101
+    |
+208 |         if type(derived_occurrence_id) is not str or not derived_occurrence_id:
+209 |             raise ValueError("nonempty derived identity required")
+210 |         return next((v for v in self.state.all() if v.derived_occurrence_id == derived_occurrence_id),
+    |                                                                                                     ^^
+211 |                     None)
+    |
+
+RUF022 [*] `__all__` is not sorted
+    --> src/nvda_desk/market_measurement_truth/api.py:1333:12
+     |
+1333 |   __all__ += [
+     |  ____________^
+1334 | |     "BaselineWindowContextV1",
+1335 | |     "CorrelationMatrixV1",
+1336 | |     "IndexChangeV1",
+1337 | |     "MeasurementComparisonV1",
+1338 | |     "MeasurementTemporalAgeOwnerV1",
+1339 | |     "MeasurementTemporalAgeReadsV1",
+1340 | |     "MeasurementTemporalDateOwnerV1",
+1341 | |     "MeasurementTemporalDateReadsV1",
+1342 | |     "MeasurementTemporalLocalOwnerV1",
+1343 | |     "MeasurementTemporalLocalReadsV1",
+1344 | |     "MeasurementTemporalOwnerV1",
+1345 | |     "MeasurementTemporalReadsV1",
+1346 | |     "MeasurementWindowOwnerV1",
+1347 | |     "MeasurementWindowReadsV1",
+1348 | |     "OptionRightLineageV1",
+1349 | |     "OptionSkewV1",
+1350 | |     "ReturnAccelerationV1",
+1351 | |     "SessionFrameV1",
+1352 | |     "TemporalAgeOccurrenceV1",
+1353 | |     "TemporalAgeRawLineageV1",
+1354 | |     "TemporalAgeRequestV1",
+1355 | |     "TemporalAgeV1",
+1356 | |     "TemporalCalendarRawLineageV1",
+1357 | |     "TemporalDateOccurrenceV1",
+1358 | |     "TemporalDateRequestV1",
+1359 | |     "CalendarIntervalV1",
+1360 | |     "CalendarPolicyV1",
+1361 | |     "TemporalLocalOccurrenceV1",
+1362 | |     "TemporalLocalRawLineageV1",
+1363 | |     "TemporalLocalRequestV1",
+1364 | |     "TemporalOccurrenceV1",
+1365 | |     "TemporalRawLineageV1",
+1366 | |     "TermPairV1",
+1367 | |     "VwapDeviationV1",
+1368 | |     "VwapRateV1",
+1369 | |     "WindowCalculationRequestV1",
+1370 | |     "WindowContextV1",
+1371 | |     "WindowMeasurementOccurrenceV1",
+1372 | |     "create_temporal_age_owner",
+1373 | |     "create_temporal_age_reader",
+1374 | |     "create_temporal_date_owner",
+1375 | |     "create_temporal_date_reader",
+1376 | |     "create_temporal_local_owner",
+1377 | |     "create_temporal_local_reader",
+1378 | |     "create_temporal_owner",
+1379 | |     "create_temporal_reader",
+1380 | |     "create_window_owner",
+1381 | |     "create_window_reader",
+1382 | | ]
+     | |_^
+     |
+help: Apply an isort-style sorting to `__all__`
+
+Found 2 errors.
+[*] 1 fixable with the `--fix` option.

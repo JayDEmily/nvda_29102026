@@ -1,0 +1,5 @@
+# D093 clean candidate before independent strict runtime
+
+Root §§4.4–4.5 and F22 govern. Own proof and two cases authored before production. Positive public C1 bidIV.20/askIV.30 event/receiptT yield exact ten volatility points, full source metadata/actual lineage and SQLite read-only reopen. Refusal independently admits/projects C1 bidT and C1 askT-1s, both within60s freshness and otherwise identical metadata/model/unit; public owner must refuse zero-skew join with no writer/reader history. Production source checks each selected role and event/receipt before explicitly requiring both eventsT. It appends a separate D093 owner with exact hash route; no D092 source semantics altered. No native certification or D094 historical change.
+
+Scoped changed Python Ruff exit0, changed production mypy exit0. Own exact authority, scoped source dependency and claim/generation ingress exit0. Pinned environment and common evidence reused. Worker did not run product tests. Independent reviewer is sole strict two-case executor.

@@ -1,0 +1,13 @@
+schema_version: "1.0"
+application_shells:
+  - id: A00
+    name: application_shell
+    status: bootstrap
+    description: Bootstrap composition shell; constructs and composes admitted objects without owning their domain decisions.
+    package: nvda_desk.composition
+    public_seam: nvda_desk.composition
+    permitted_dependencies:
+      - M00
+    predecessors: []
+    successors: []
+retired_ids: []

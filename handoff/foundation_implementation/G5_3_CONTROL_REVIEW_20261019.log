@@ -1,0 +1,8 @@
+control-exact-baseline-v2 exit 4 product-proof aggregate: neutral_market_measurement_truth_pilot state=READY_FOR_PROOF
+FAIL: selected claim has no ready active admitted proof target 
+control-null-pointer-v2 exit 4 product-proof aggregate: neutral_market_measurement_truth_pilot state=INCOMPLETE_COVERAGE
+FAIL: selected claim has no ready active admitted proof target 
+control-admitted-proof-change-v2 exit 1 FAIL: admitted family/support hash mismatch 
+control-cross-claim-v2 exit 1 FAIL: generation claim mismatch 
+PASS success-exit report with skipped call rejected; outcome 1
+PASS four direct PA02 rejection controls

@@ -1,0 +1,321 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.0.3, pluggy-1.7.0
+rootdir: /mnt/data/nvda_d029_state
+configfile: pyproject.toml
+collected 2 items
+
+tests/product/market_measurement_d031/test_volume_rate_zscore.py FF      [100%]
+
+=================================== FAILURES ===================================
+_____________________ test_d031_volume_rate_zscore[False] ______________________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-2/test_d031_volume_rate_zscore_F0')
+refused = False
+
+    @pytest.mark.parametrize("refused", [False, True])
+    def test_d031_volume_rate_zscore(tmp_path, refused):
+        raw = r.create_owner()
+        required = DATES[-N - 1 : -1]
+        rows = [("current", DATES[-1], T, "16", True, "minute-ending-1230/1", None)]
+        for i, start in enumerate(required):
+            event = start + timedelta(minutes=30)
+            value = "8" if i % 2 == 0 else "12"
+            complete = True
+            bucket = "minute-ending-1230/1"
+            receipt = CUTOFF + timedelta(seconds=1) if refused and i == 0 else None
+            rows.append(("prior-" + str(i), start, event, value, complete, bucket, receipt))
+        rows.extend(
+            (
+                (
+                    "wrong-bucket",
+                    DATES[-2],
+                    DATES[-2] + timedelta(minutes=31),
+                    "999",
+                    True,
+                    "minute-ending-1231/1",
+                    None,
+                ),
+                (
+                    "older",
+                    DATES[0],
+                    DATES[0] + timedelta(minutes=30),
+                    "8",
+                    True,
+                    "minute-ending-1230/1",
+                    None,
+                ),
+            )
+        )
+        for seq, (identity, start, event, value, _complete, bucket, receipt) in enumerate(rows, 1):
+            session = "controlled-volume-" + start.strftime("%Y%m%d") + "/1"
+            native = {
+                "session": {"id": session},
+                "bucket": {"id": bucket},
+                "activity": {"shares_per_minute": Decimal(value)},
+            }
+            _admit(raw, identity, event, native, ("R063",), "shares/minute", seq, receipt)
+        projected = _page(raw, MAPPING, CUTOFF, T)
+        assert len(projected) == len(rows) - (1 if refused else 0)
+        if refused:
+            # Direct public projection establishes the future-received original fact exists.
+            late_page = _page(raw, MAPPING, CUTOFF + timedelta(seconds=2), T)
+            assert any(p.observation_occurrence_id.value == "prior-0" for p in late_page)
+        assert all(p.selection_identity is not None for p in projected)
+        admission = f.OwnerAdmissionV1("M02", BRIEF)
+        path = str(tmp_path / "result.sqlite")
+        try:
+>           owner = f.create_window_owner(
+                admission=admission,
+                raw_projection_reader=raw.reads,
+                storage=f.SQLiteStorageV1(path, True),
+                utc_now=lambda: NOW,
+            )
+
+tests/product/market_measurement_d031/test_volume_rate_zscore.py:214: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/nvda_desk/market_measurement_truth/api.py:874: in create_window_owner
+    return build_owner(admission, raw_projection_reader, predecessor_reader, storage, utc_now)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/nvda_desk/market_measurement_truth/_window.py:496: in build_owner
+    _admission(admission)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+admission = OwnerAdmissionV1(object_id='M02', implementation_brief_sha256='e4f9757b9e16702ec6b276e2f7fc0de9c380e93fce8c8afc9bc7d702ea02a481')
+
+    def _admission(admission: f.OwnerAdmissionV1) -> None:
+        if type(admission) is not f.OwnerAdmissionV1:
+            raise TypeError("exact owner admission required")
+        if admission != f.OwnerAdmissionV1("M02", BRIEF):
+>           raise ValueError("exact D016 admission required")
+E           ValueError: exact D016 admission required
+
+src/nvda_desk/market_measurement_truth/_window.py:70: ValueError
+
+During handling of the above exception, another exception occurred:
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-2/test_d031_volume_rate_zscore_F0')
+refused = False
+
+    @pytest.mark.parametrize("refused", [False, True])
+    def test_d031_volume_rate_zscore(tmp_path, refused):
+        raw = r.create_owner()
+        required = DATES[-N - 1 : -1]
+        rows = [("current", DATES[-1], T, "16", True, "minute-ending-1230/1", None)]
+        for i, start in enumerate(required):
+            event = start + timedelta(minutes=30)
+            value = "8" if i % 2 == 0 else "12"
+            complete = True
+            bucket = "minute-ending-1230/1"
+            receipt = CUTOFF + timedelta(seconds=1) if refused and i == 0 else None
+            rows.append(("prior-" + str(i), start, event, value, complete, bucket, receipt))
+        rows.extend(
+            (
+                (
+                    "wrong-bucket",
+                    DATES[-2],
+                    DATES[-2] + timedelta(minutes=31),
+                    "999",
+                    True,
+                    "minute-ending-1231/1",
+                    None,
+                ),
+                (
+                    "older",
+                    DATES[0],
+                    DATES[0] + timedelta(minutes=30),
+                    "8",
+                    True,
+                    "minute-ending-1230/1",
+                    None,
+                ),
+            )
+        )
+        for seq, (identity, start, event, value, _complete, bucket, receipt) in enumerate(rows, 1):
+            session = "controlled-volume-" + start.strftime("%Y%m%d") + "/1"
+            native = {
+                "session": {"id": session},
+                "bucket": {"id": bucket},
+                "activity": {"shares_per_minute": Decimal(value)},
+            }
+            _admit(raw, identity, event, native, ("R063",), "shares/minute", seq, receipt)
+        projected = _page(raw, MAPPING, CUTOFF, T)
+        assert len(projected) == len(rows) - (1 if refused else 0)
+        if refused:
+            # Direct public projection establishes the future-received original fact exists.
+            late_page = _page(raw, MAPPING, CUTOFF + timedelta(seconds=2), T)
+            assert any(p.observation_occurrence_id.value == "prior-0" for p in late_page)
+        assert all(p.selection_identity is not None for p in projected)
+        admission = f.OwnerAdmissionV1("M02", BRIEF)
+        path = str(tmp_path / "result.sqlite")
+        try:
+            owner = f.create_window_owner(
+                admission=admission,
+                raw_projection_reader=raw.reads,
+                storage=f.SQLiteStorageV1(path, True),
+                utc_now=lambda: NOW,
+            )
+        except ValueError as exc:
+>           pytest.fail(f"admitted D031 unsupported after lawful public raw setup: {exc}")
+E           Failed: admitted D031 unsupported after lawful public raw setup: exact D016 admission required
+
+tests/product/market_measurement_d031/test_volume_rate_zscore.py:221: Failed
+______________________ test_d031_volume_rate_zscore[True] ______________________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-2/test_d031_volume_rate_zscore_T0')
+refused = True
+
+    @pytest.mark.parametrize("refused", [False, True])
+    def test_d031_volume_rate_zscore(tmp_path, refused):
+        raw = r.create_owner()
+        required = DATES[-N - 1 : -1]
+        rows = [("current", DATES[-1], T, "16", True, "minute-ending-1230/1", None)]
+        for i, start in enumerate(required):
+            event = start + timedelta(minutes=30)
+            value = "8" if i % 2 == 0 else "12"
+            complete = True
+            bucket = "minute-ending-1230/1"
+            receipt = CUTOFF + timedelta(seconds=1) if refused and i == 0 else None
+            rows.append(("prior-" + str(i), start, event, value, complete, bucket, receipt))
+        rows.extend(
+            (
+                (
+                    "wrong-bucket",
+                    DATES[-2],
+                    DATES[-2] + timedelta(minutes=31),
+                    "999",
+                    True,
+                    "minute-ending-1231/1",
+                    None,
+                ),
+                (
+                    "older",
+                    DATES[0],
+                    DATES[0] + timedelta(minutes=30),
+                    "8",
+                    True,
+                    "minute-ending-1230/1",
+                    None,
+                ),
+            )
+        )
+        for seq, (identity, start, event, value, _complete, bucket, receipt) in enumerate(rows, 1):
+            session = "controlled-volume-" + start.strftime("%Y%m%d") + "/1"
+            native = {
+                "session": {"id": session},
+                "bucket": {"id": bucket},
+                "activity": {"shares_per_minute": Decimal(value)},
+            }
+            _admit(raw, identity, event, native, ("R063",), "shares/minute", seq, receipt)
+        projected = _page(raw, MAPPING, CUTOFF, T)
+        assert len(projected) == len(rows) - (1 if refused else 0)
+        if refused:
+            # Direct public projection establishes the future-received original fact exists.
+            late_page = _page(raw, MAPPING, CUTOFF + timedelta(seconds=2), T)
+            assert any(p.observation_occurrence_id.value == "prior-0" for p in late_page)
+        assert all(p.selection_identity is not None for p in projected)
+        admission = f.OwnerAdmissionV1("M02", BRIEF)
+        path = str(tmp_path / "result.sqlite")
+        try:
+>           owner = f.create_window_owner(
+                admission=admission,
+                raw_projection_reader=raw.reads,
+                storage=f.SQLiteStorageV1(path, True),
+                utc_now=lambda: NOW,
+            )
+
+tests/product/market_measurement_d031/test_volume_rate_zscore.py:214: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/nvda_desk/market_measurement_truth/api.py:874: in create_window_owner
+    return build_owner(admission, raw_projection_reader, predecessor_reader, storage, utc_now)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/nvda_desk/market_measurement_truth/_window.py:496: in build_owner
+    _admission(admission)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+admission = OwnerAdmissionV1(object_id='M02', implementation_brief_sha256='e4f9757b9e16702ec6b276e2f7fc0de9c380e93fce8c8afc9bc7d702ea02a481')
+
+    def _admission(admission: f.OwnerAdmissionV1) -> None:
+        if type(admission) is not f.OwnerAdmissionV1:
+            raise TypeError("exact owner admission required")
+        if admission != f.OwnerAdmissionV1("M02", BRIEF):
+>           raise ValueError("exact D016 admission required")
+E           ValueError: exact D016 admission required
+
+src/nvda_desk/market_measurement_truth/_window.py:70: ValueError
+
+During handling of the above exception, another exception occurred:
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-2/test_d031_volume_rate_zscore_T0')
+refused = True
+
+    @pytest.mark.parametrize("refused", [False, True])
+    def test_d031_volume_rate_zscore(tmp_path, refused):
+        raw = r.create_owner()
+        required = DATES[-N - 1 : -1]
+        rows = [("current", DATES[-1], T, "16", True, "minute-ending-1230/1", None)]
+        for i, start in enumerate(required):
+            event = start + timedelta(minutes=30)
+            value = "8" if i % 2 == 0 else "12"
+            complete = True
+            bucket = "minute-ending-1230/1"
+            receipt = CUTOFF + timedelta(seconds=1) if refused and i == 0 else None
+            rows.append(("prior-" + str(i), start, event, value, complete, bucket, receipt))
+        rows.extend(
+            (
+                (
+                    "wrong-bucket",
+                    DATES[-2],
+                    DATES[-2] + timedelta(minutes=31),
+                    "999",
+                    True,
+                    "minute-ending-1231/1",
+                    None,
+                ),
+                (
+                    "older",
+                    DATES[0],
+                    DATES[0] + timedelta(minutes=30),
+                    "8",
+                    True,
+                    "minute-ending-1230/1",
+                    None,
+                ),
+            )
+        )
+        for seq, (identity, start, event, value, _complete, bucket, receipt) in enumerate(rows, 1):
+            session = "controlled-volume-" + start.strftime("%Y%m%d") + "/1"
+            native = {
+                "session": {"id": session},
+                "bucket": {"id": bucket},
+                "activity": {"shares_per_minute": Decimal(value)},
+            }
+            _admit(raw, identity, event, native, ("R063",), "shares/minute", seq, receipt)
+        projected = _page(raw, MAPPING, CUTOFF, T)
+        assert len(projected) == len(rows) - (1 if refused else 0)
+        if refused:
+            # Direct public projection establishes the future-received original fact exists.
+            late_page = _page(raw, MAPPING, CUTOFF + timedelta(seconds=2), T)
+            assert any(p.observation_occurrence_id.value == "prior-0" for p in late_page)
+        assert all(p.selection_identity is not None for p in projected)
+        admission = f.OwnerAdmissionV1("M02", BRIEF)
+        path = str(tmp_path / "result.sqlite")
+        try:
+            owner = f.create_window_owner(
+                admission=admission,
+                raw_projection_reader=raw.reads,
+                storage=f.SQLiteStorageV1(path, True),
+                utc_now=lambda: NOW,
+            )
+        except ValueError as exc:
+>           pytest.fail(f"admitted D031 unsupported after lawful public raw setup: {exc}")
+E           Failed: admitted D031 unsupported after lawful public raw setup: exact D016 admission required
+
+tests/product/market_measurement_d031/test_volume_rate_zscore.py:221: Failed
+=========================== short test summary info ============================
+FAILED tests/product/market_measurement_d031/test_volume_rate_zscore.py::test_d031_volume_rate_zscore[False] - Failed: admitted D031 unsupported after lawful public raw setup: exact D016 admission required
+FAILED tests/product/market_measurement_d031/test_volume_rate_zscore.py::test_d031_volume_rate_zscore[True] - Failed: admitted D031 unsupported after lawful public raw setup: exact D016 admission required
+============================== 2 failed in 0.14s ===============================
+product-proof aggregate: neutral_market_measurement_truth_d031 state=READY_FOR_PROOF
+authority=e4f9757b9e16702ec6b276e2f7fc0de9c380e93fce8c8afc9bc7d702ea02a481 generation=50b3fdf04d971b1ac00ed3db77dea18abfd0938e60e1b32c4555081d8745050d
+candidate=94409134691c49c289445731cb4570aa0b37a7b9
+observed aggregate outcome: exit=1

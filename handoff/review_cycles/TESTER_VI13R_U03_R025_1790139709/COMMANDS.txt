@@ -1,0 +1,75 @@
+Reviewer 025 command record — commands materially bearing on disposition
+
+SOURCE / GOVERNANCE / GIT BINDING
+- sha256sum 'NVDA_G03_TESTER_VI13R_U03_R025_1790139709_FULL_GIT_20260923.tar(1).gz'
+  -> 44e374883a61de4fff96a359d645241ee2c73ae9a02a4e3db287bab5527a8be2
+- read README.md in full and followed its role/cycle routing
+- read GUARDRAILS.md in full before substantive review and before project responses/actions
+- read root AGENTS.md, complete current EXEC_PLAN.md, tests/AGENTS.override.md,
+  handoff/control/CURRENT_STATE.md and active REQUEST.md
+- read accepted IRB, BICP Markdown, complete IWO, Worker U03 evidence, complete candidate api.py,
+  complete U03 product proof, relevant U01 support/public-contract material and Reviewer-024 disposition
+- transported repository HEAD before review:
+  c96cc8bb752317006ccaeebb6c97f6a82f9b9db6
+- exact U03 candidate/tree:
+  7cf8936f854fbed952a468ce06c2f2a0320d9291 / b63aac7fb538ea6a38ce3dea5aab719fc7be0ee0
+- accepted forward main parent:
+  a78ae7b5515c2e482a2656cebeebae3fa5a6d584
+- candidate production diff changed exactly:
+  src/nvda_desk/raw_signal_occurrence_truth/api.py
+- candidate-to-transport material diff over src/tests/config/tools/pyproject.toml -> none
+- SHA-256 of complete main..candidate production binary diff:
+  91f20c62a03884aae9a666c105a91a4477ad66257e1ad00ffc50cba9046fb8ff
+
+EXACT REVIEW TOOLCHAIN
+- Python 3.13.5
+- pytest 9.0.3
+- mypy 1.20.1 (compiled)
+- Ruff 0.15.11
+- exact project-pinned tooling provisioned outside repository from preserved local wheels
+
+EXACT CANDIDATE VALIDATION — detached candidate worktree
+- pytest U01+U02+U03 -> 366 passed; rc=0
+- strict positive mypy public-seam specimen -> rc=0
+- strict negative mypy public-seam specimen -> rc=1 as intended; all 15 STATIC_NEGATIVE sites diagnosed
+- mypy src --show-error-codes -> Success: no issues found in 15 source files; rc=0
+- Ruff src tests tools -> All checks passed; rc=0
+- validate_product_proof.py -> PASS; six product families; 13/13 obligations; rc=0
+- validate_architecture.py -> PASS; zero dependency/public-seam violations; rc=0
+- check_dependencies.py -> PASS; rc=0
+- check_public_seams.py -> PASS; rc=0
+- pytest tests/architecture tests/bootstrap -> 74 passed; rc=0
+- run_promotion_gate.py --set architecture_kernel -> 74 passed; rc=0
+- git diff --check -> rc=0
+- git fsck --full --strict -> rc=0
+- detached candidate worktree after validation -> clean
+- one earlier promotion invocation used incorrect positional syntax and returned rc=2; corrected command passed
+- one temporary challenge invocation omitted repository root from PYTHONPATH; corrected without repo mutation
+
+IMPLEMENTATION-COUPLED U03 CHALLENGE
+- owner.commands._state reachable -> False
+- owner.reads._state reachable -> False
+- two distinct observation IDs sharing one delivery -> preserved as distinct
+- separately reconstructed identical same-ID payload -> idempotent
+- same-scope sequence decrease -> rejected
+- lower sequence in independent scope -> accepted
+- no-scope observation -> referential readback exact
+- raw event_ts_utc -> absent
+
+R025-U03-F001 CONCRETE CANARIES
+1) same occurrence ID, native int 1 then native float 1.0
+   - runtime types differ: int vs float
+   - dataclass payload equality -> True
+   - second command admission -> ACCEPTED, not rejected
+   - returned/stored value remains first int 1
+2) same occurrence ID, Decimal('1.0') then Decimal('1.00')
+   - Decimal tuples differ: exponent -1 vs -2
+   - dataclass payload equality -> True
+   - second command admission -> ACCEPTED, not rejected
+   - returned/stored Decimal tuple remains first representation
+
+DISPOSITION
+- R025-U03-F001: OPEN / CRITICAL
+- final: FAIL / RETURN_TO_WORKER
+- U03 promotion prohibited
+- U04 remains prohibited

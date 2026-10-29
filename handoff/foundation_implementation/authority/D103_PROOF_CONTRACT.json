@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_d103",
+  "semantic_brief_path": "handoff/foundation_implementation/authority/D103_IMPLEMENTATION_BRIEF.md",
+  "target": {
+    "category": "M",
+    "responsibility_name": "neutral_market_measurement_truth",
+    "package": "nvda_desk.market_measurement_truth",
+    "public_seam": "nvda_desk.market_measurement_truth.api",
+    "intent": "modify",
+    "existing_object_id": "M02"
+  },
+  "proof_axis": "product",
+  "product_tier_treatment": "NOT_CLASSIFIED",
+  "architecture_proof_axis": "architecture_kernel",
+  "required_proof_ids": [
+    "D103-CALCULATION"
+  ],
+  "families": [
+    {
+      "id": "mmt_d103",
+      "path": "tests/product/market_measurement_d103/test_signal.py",
+      "proof_obligation_ids": [
+        "D103-CALCULATION"
+      ],
+      "required_test_names": [
+        "test_d103_signal"
+      ],
+      "boundary": "D103 exact two-contract two-anchor R111 complete surface IV grid, mean shift 25/2 volatility points and public SQLite reopen under root \u00a74.8.",
+      "proof_levels": [
+        "CONTRACT",
+        "INTEGRATION",
+        "STATE"
+      ],
+      "authoritative_inputs": [
+        "Owner accepted root \u00a74.8 K03/P_WINDOW and own D103_PROFILE.json."
+      ],
+      "dependency_substitutions": [
+        "Actual controlled M00 R111 E1 C25/P25 at T and A; no D099 predecessor or native certification."
+      ],
+      "case_coverage": {
+        "lawful_positive": {
+          "cases": [
+            "Four actual selected public R111 facts C25/P25 at current/prior, distinct changes .10/.15, exact mean shift25/2, full lineage and public durable reopen."
+          ]
+        },
+        "prohibited_false_positive": {
+          "cases": [
+            "Prior P25 alone absent after three lawful facts projected, refuse no partial C25-only average/history."
+          ]
+        },
+        "missing_mandatory_authority": {
+          "cases": [
+            "Own binding, profile and immutable generation before strict run."
+          ]
+        },
+        "lawful_optional_absence": {
+          "cases": [
+            "No D099/D100 predecessor; own direct R111 grid."
+          ]
+        }
+      },
+      "expected_failure_signals": [
+        "Missing prior P25 reduced mean, sum rather than mean, wrong anchor/contract fails pair."
+      ],
+      "limitations": [
+        "Exactly two cases, no native option source certification."
+      ],
+      "adjacent_nonclaims": [
+        "No D104 rotation or native history certification."
+      ],
+      "environment": "CPython3.12.14 SQLite3.53.1 and existing pinned offline tools.",
+      "material_versions": [
+        "Exact brief/binding/contract/generation and candidate/tree/runtime; old generations preserved."
+      ],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/market_measurement_d103/test_signal.py"
+    }
+  ],
+  "required_support_files": [],
+  "optional_support_files": [],
+  "execution_policy": {
+    "skipped_tests": "FAIL",
+    "xfailed_tests": "FAIL",
+    "xpassed_tests": "FAIL",
+    "collection_failed": "FAIL",
+    "no_tests_collected": "FAIL",
+    "unexpected_governed_mutation": "FAIL"
+  }
+}

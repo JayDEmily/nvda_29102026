@@ -1,0 +1,188 @@
+schema_version: "1.0"
+modules:
+  - id: M00
+    name: raw_signal_occurrence_truth
+    status: active
+    description: Bounded Raw Signal Occurrence Truth semantic owner admitted by the accepted BICP/IRB.
+    semantic_responsibility: Own Raw Signal Occurrence Truth meaning, including capture-scope and schedule occurrence truth, raw observation occurrence truth, receipt-evidence relation truth, receipt-presence assessment truth, and their semantic persistence/transaction-outcome truth.
+    inputs: []
+    outputs: []
+    permitted_dependencies: []
+    package: nvda_desk.raw_signal_occurrence_truth
+    public_seam: nvda_desk.raw_signal_occurrence_truth.api
+    exclusions:
+      - P01/DMPV3
+      - K01
+      - authoritative replay
+      - provider/network integration
+      - live external effects/accounts
+      - downstream consumers
+      - validation/quarantine
+      - D001+ semantics
+      - exact counts/membership/finality/SLA/performance/retention/recovery semantics
+      - preserved Remaining Unknowns
+    state_ownership: Capture-scope policy versions, scheduled capture occurrences, raw observation occurrences, receipt-evidence relation meaning, receipt-presence assessment meaning, and their semantic persistence state.
+    time_ownership: Configured schedule-slot truth, receipt-time meaning, source-temporal-kind preservation, and assessment system-knowledge time; no invented provider event time.
+    side_effects:
+      - Owner-authorised persistence through the M00 semantic persistence port only.
+    component_forms:
+      - contract
+      - schema
+      - service
+      - repository
+      - adapter
+    state_writer_boundary: M00-owned command/service boundary through the M00 persistence port.
+    state_reader_boundaries:
+      - M00 referential-read facet exposed to A00.
+      - Read-only typed raw-value/history public projection exposed to M02 neutral_market_measurement_truth for the admitted isolated controlled D011 pilot; this grants no A00 composition or native-source authority.
+      - Read-only typed raw-value/history projection exposed to M01 through the M00 public seam; it preserves exact Rxxx-to-native-field mapping/version, native value/units, source occurrence identity, temporal/receipt ordering and relevant subject/revision metadata and performs no Dxxx calculation, aggregation, interpolation or semantic rescaling.
+    persistence_mechanisms:
+      - Direct Psycopg 3.3.4 PostgreSQL adapter as a non-owning technical mechanism.
+      - Owner-local SQLite file and stdlib adapter under accepted version3 trusted-application profile; conforming public-seam separation, not hostile-code or database-role isolation.
+    prohibited_state_writers:
+      - A00
+      - PostgreSQL/SQL schema/driver/adapter as semantic owners
+      - P01
+      - K01
+      - downstream consumers
+    replay_obligations:
+      - Original durable facts remain referentially retrievable by domain identity; no authoritative replay/re-identification capability is activated.
+    predecessors: []
+    successors: []
+  - id: M01
+    name: derived_signal_calculation_truth
+    status: bootstrap
+    description: Bounded Derived Signal Calculation Truth semantic owner with an admitted foundation implementation shell; it remains non-composable and inactive pending later governed implementation/proof.
+    semantic_responsibility: Deterministically calculate and durably preserve canonical D001-D209 Derived Signal occurrences from lawfully projected M00 Raw Signal facts, compatible predecessor Derived Signal facts and exact immutable calculation/configuration/context versions, with complete lineage.
+    inputs:
+      - Read-only typed M00 raw-value/history projection through nvda_desk.raw_signal_occurrence_truth.api.
+      - Compatible predecessor Derived Signal occurrences owned by M01.
+      - Exact immutable calculation-definition, parameter, context, input-selection and unit-convention versions.
+    outputs:
+      - Canonical D001-D209 Derived Signal occurrences with exact lineage, typed result shape and absence semantics.
+    permitted_dependencies:
+      - M00
+    package: nvda_desk.derived_signal_calculation_truth
+    public_seam: nvda_desk.derived_signal_calculation_truth.api
+    exclusions:
+      - provider ingestion or Raw Signal truth ownership
+      - direct read/write access to M00-owned PostgreSQL relations
+      - provider-specific extraction fallback inside M01
+      - order/account mutation, provider/network effects or other external actions
+      - downstream authority to act on calculated values
+      - predictive-quality, profitability, SLA, RTO or RPO claims
+      - final distribution name/version authority
+    state_ownership: Durable Derived Signal occurrences, calculation-run lineage and calculation-owner parameter/context/version records required to reproduce those occurrences; no M00 raw-state ownership.
+    time_ownership: Calculation time, effective/as-of time, exact window and knowledge cutoff for derived occurrences while preserving M00 true-instant/date-only/receipt-only distinctions and never inventing absent event time.
+    side_effects:
+      - Owner-authorised durable persistence of Derived Signal occurrences and lineage through the M01 persistence boundary only; calculated action-like values remain facts and cause no external effect.
+    component_forms:
+      - contract
+      - schema
+      - service
+      - repository
+      - adapter
+      - configuration
+    state_writer_boundary: M01-owned calculation service/repository boundary to a calculation-owner PostgreSQL schema/write role separate from M00; no M01 database-role privilege over M00-owned relations.
+    state_reader_boundaries:
+      - M01 typed calculation/read public seam for materialise, occurrence lookup, bounded history and exact lineage/version retrieval; downstream readers receive no M01 write authority.
+      - M00 public seam typed raw-value/history projection is the sole raw-state ingress to M01.
+    persistence_mechanisms:
+      - PostgreSQL under a calculation-owner schema and write role separate from M00; a shared PostgreSQL deployment is permitted but direct M00-table privilege is prohibited.
+    prohibited_state_writers:
+      - M00
+      - A00
+      - downstream readers
+      - PostgreSQL/SQL schema/driver/adapter as semantic owners
+      - provider/network adapters
+    replay_obligations:
+      - Deterministic retries are idempotent for identical logical identity/inputs/versions/time; material input or version changes create append-only successor occurrences and historical Derived Signal truth is not overwritten.
+    predecessors: []
+    successors: []
+  - id: M02
+    name: neutral_market_measurement_truth
+    status: active
+    description: Bounded neutral measurement owner admitted for isolated controlled D011 and separately authorised D012/D013/D014 proof; application composition and full126 acceptance remain outside this admission.
+    semantic_responsibility: Own strategy-independent neutral market measurement meaning and immutable definition/configuration/result truth under exact accepted construction authority; original version3 enables D011 only, the D012 extension enables controlled D011/D012, and the separately accepted D013 facet enables only exact relative spread from their compatible public facts.
+    inputs:
+      - Existing typed M00 raw-value/history projection and exact immutable raw projection mappings through the M00 public seam only.
+      - Exact controlled D011 definition, parameter, selection and unit versions supplied by accepted version3, plus separately accepted D012 definition and construction authority using the same controlled inputs.
+      - Explicit compatible D011/D012 occurrence IDs and complete typed public predecessor/configuration snapshots for the separately admitted D013 exact-ratio facet; no recursive producer or direct predecessor SQL access.
+      - Ordered R033/R036 public raw projections and exact controlled size configurations for the separately admitted D014 direct-raw exact-ratio facet.
+    outputs:
+      - Controlled D011 midpoint and authority-enabled D012 signed spread scalar-Decimal occurrences with immutable complete lineage and exact typed readback through the admitted public seam.
+      - Separately typed controlled D013 exact rational relative-spread occurrences, complete immutable nested predecessor evidence and isolated durable readback; original Decimal facets remain unchanged.
+      - Separately typed controlled D014 direct-raw exact-ratio occurrences with complete raw/configuration lineage and isolated durable readback.
+    permitted_dependencies:
+      - M00
+    package: nvda_desk.market_measurement_truth
+    public_seam: nvda_desk.market_measurement_truth.api
+    exclusions:
+      - Application composition or consumer admission beyond isolated controlled D011/D012/D013/D014 proof; no A00 edge to this owner.
+      - Other122 foundation identities and all83 downstream outputs or peer/private strategy chains; original version3 construction remains D011-only, D012 authority remains D011/D012-only, predecessor exact-ratio facet permits only D013 and direct-raw exact-ratio facet permits only D014.
+      - Native IBKR mappings, acquisition, live providers, accounts, orders and external effects.
+      - M01 private imports, direct cross-owner SQL, migration, retirement, populated-state or full126 acceptance.
+      - Hostile-code/database-role isolation, replay/SLA/performance/retention/RTO/RPO guarantees.
+    state_ownership: Own immutable definitions, controlled configuration snapshots and authority-scoped complete occurrence truth; original D011/D012 Decimal state and new D013 exact-ratio state occupy separate owner-local files/namespaces, with full nested predecessor evidence and no migration. M00 remains raw semantic owner and M01 retains all original state/attribution.
+    time_ownership: Calculation time, effective as-of and knowledge cutoff for controlled results; preserve M00 source/receipt distinctions and invent no absent event time.
+    side_effects:
+      - Owner-authorised immutable registration and own-command append only after acknowledged own-store commit under admitted proof.
+    component_forms:
+      - contract
+      - schema
+      - service
+      - repository
+      - configuration
+      - adapter
+    state_writer_boundary: Existing typed MeasurementOwnerV1.materialise under exact version3/D012 authority, plus additive MeasurementRatioOwnerV1.materialise under exact D013 authority; each has atomic immutable registration and writes only its separate owner-local profile.
+    state_reader_boundaries:
+      - M03 may consume public MeasurementWindowReadsV1 for exact controlled D040 and later separately admitted D041; no private state or write permission.
+      - Typed MeasurementReadsV1 exact occurrence/history/definition/configuration facets; read-only storage exposes no writer/materialisation capability.
+      - Additive MeasurementRatioReadsV1 exact-ratio occurrence/history/definition/parameter facet; complete nested evidence is recoverable without a raw reader or live predecessor producer.
+      - Additive MeasurementRawRatioReadsV1 exact-ratio occurrence/history/definition/configuration facet; complete raw lineage is recoverable without a raw reader or re-registration.
+    persistence_mechanisms:
+      - Explicit SQLiteStorageV1 and SQLiteReadStorageV1 in a separate owner-local file; MemoryStorageV1 is component proof only and never fallback.
+      - Distinct D013 exact-ratio SQLite profile and file with unchanged original Decimal profile; a profile cannot open or rewrite the other's state.
+      - Distinct D014 direct-raw exact-ratio SQLite profile application_id 0x4E560004 with three immutable STRICT tables; original profiles and files remain separate.
+    prohibited_state_writers:
+      - A00, M00, M01, peers, readers and storage mechanisms as semantic owners.
+    replay_obligations:
+      - Logical retries preserve first committed identity/time; material inputs/versions append; exact immutable typed readback, with no authoritative replay or migration capability.
+    predecessors: []
+    successors: []
+  - id: M03
+    name: configured_market_conditions
+    status: active
+    description: P02 controlled configured composite owner for separately proved D040 and D041.
+    semantic_responsibility: Own exact versioned configured market-condition composite scores and complete immutable score provenance; controlled definitions only.
+    inputs:
+      - Exact typed public M02 measurement occurrences selected by immutable definition/profile/time.
+      - Exact owner-local profile and predecessor identity request.
+    outputs:
+      - D040 controlled unsigned trend-intensity exact-ratio score, with complete actual predecessor and per-feature lineage.
+      - D041 controlled unsigned reversion-conditions exact-ratio score from actual D026/D040/D033 with complete immutable lineage.
+    permitted_dependencies: [M02, M00]
+    package: nvda_desk.configured_market_conditions
+    public_seam: nvda_desk.configured_market_conditions.api
+    exclusions:
+      - Other P02 identities, generic strategy service and peer-to-peer imports.
+      - M00 raw reads/writes, M01 imports/migration/state retirement, provider/network/API acquisition.
+      - Native certification, predictive quality, profitability, A00 composition and external effects.
+    state_ownership: Own immutable controlled score profiles/results/evidence in a separate SQLite file; no predecessor state ownership.
+    time_ownership: Exact as-of/cutoff/calculation times and selected predecessor snapshot time compatibility.
+    side_effects:
+      - Own command appends immutable score only after acknowledged SQLite transaction/readback.
+    component_forms: [contract, schema, service, repository, configuration, adapter]
+    state_writer_boundary: ScoreOwnerV1.materialise writes only the admitted owner-local score file.
+    state_reader_boundaries:
+      - ScoreReadsV1 lookup and bounded history; durable reopen has no materialise operation.
+      - M02 MeasurementWindowReadsV1 public inputs; M00 public carrier import for decoding only, no raw-state access.
+    persistence_mechanisms:
+      - Separate immutable STRICT SQLite record file, application_id0x4E560030, hash/canonical/recomputation verification and read-only reopen.
+      - Memory storage is component-only and never durable fallback.
+    prohibited_state_writers: [M00, M01, M02, A00, peers, readers]
+    replay_obligations:
+      - Identical logical facts retain first committed result/time; changed versions/inputs append; no migration or authoritative replay claim.
+    predecessors: []
+    successors: []
+retired_ids: []

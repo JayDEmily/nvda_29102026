@@ -1,0 +1,27 @@
+{
+  "review_cycle": "TESTER_VI13R_U03_R029_1790214675",
+  "actor": "TESTER",
+  "candidate_commit": "d25aedeed5de65d0a241bdce6eae22671ef2ddf8",
+  "candidate_tree": "21eb6bd2ba53b29ea6d80f90c01af40668f56955",
+  "status": "COMPLETE",
+  "disposition": "FAIL / RETURN_TO_WORKER",
+  "reviewed_predecessor_findings": [
+    {
+      "finding_id": "R028-U03-F001",
+      "status": "CLOSED",
+      "note": "Both required array/range same-ID representation conflicts reject; complete U03 proof is 47/47 green."
+    }
+  ],
+  "findings": [
+    {
+      "finding_id": "R029-U03-F001",
+      "status": "OPEN",
+      "severity": "CRITICAL",
+      "title": "Generic native retry fallback collapses changed aware-datetime representation to ordinary instant equality",
+      "owning_layer": "U03 M-owner native retry comparator plus bounded implementation-coupled U03 proof"
+    }
+  ],
+  "u03_promotion": "PROHIBITED",
+  "u04_authority": "PROHIBITED_PENDING_U03_REPAIR_AND_FRESH_REVIEW",
+  "next_authorised_step": "WORKER executes only the bounded Reviewer-029 U03 native-datetime retry-comparator repair; U04 remains prohibited."
+}

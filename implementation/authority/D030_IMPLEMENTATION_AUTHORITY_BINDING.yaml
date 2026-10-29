@@ -1,0 +1,10 @@
+schema_version: "1.0"
+brief_sha256: 6a1acd3113fcb2bd19fb6e170543d98f3899407ff1090d9b4fc0b8bff6ca440f
+acceptance:
+  status: ACCEPTED_FOR_IMPLEMENTATION
+  authority_ref: owner-chat/20261023/D026-D036-execution-and-per-signal-checkpoints
+targets:
+  - action: modify
+    object_id: M02
+  - action: modify
+    object_id: G01

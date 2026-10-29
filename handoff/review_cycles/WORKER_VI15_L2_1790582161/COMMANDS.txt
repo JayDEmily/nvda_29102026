@@ -1,0 +1,57 @@
+VI-15-L2 Worker command/evidence summary
+
+Governance/authority:
+- read full GUARDRAILS.md, root AGENTS.md, applicable tests/AGENTS.override.md, complete accepted EXEC_PLAN.md,
+  CURRENT_STATE.md, active Worker request, VI-15-L1 promotion/authority/tester evidence, pyproject/build/proof
+  configuration, current architecture registries and AK-PKG-001/AK-PKG-002
+
+Exact candidate:
+- branch work/vi15-l2-aggregate-package-proof
+- candidate 332c1f95da032f841e8779ef21fe3c1fceb698a2
+- tree 3abec93134d128978ad6bcedbd0dfa6cf4334ec6
+- candidate is an empty boundary commit over clean routing state
+
+Blocking product axis:
+- PYTHONPATH=src:. <Python-3.13.5> tools/run_product_proof_gate.py --aggregate raw_signal_occurrence_truth_product
+- exact completed result: 479/479 passed; 6 families; 13/13 obligations; rc=0; clean before/after
+- one earlier unchanged invocation was interrupted by the execution wrapper during U05 with no test failure;
+  no proof process remained and PostgreSQL was responsive; the incomplete run was not counted
+
+Blocking architecture/bootstrap axis:
+- PYTHONPATH=src:. <Python-3.13.5> tools/run_promotion_gate.py --set architecture_kernel
+- exact result: 74/74 passed; 11 families; zero dependency/public-seam violations; rc=0; clean before/after
+
+Exact build:
+- /mnt/data/vi15_l2_build_env/bin/hatchling build -t wheel -d /mnt/data/vi15_l2_final_dist
+- /mnt/data/vi15_l2_build_env/bin/hatchling build -t sdist -d /mnt/data/vi15_l2_final_dist
+- wheel: 37378 bytes; sha256 d311960234c932c2507f7b1671c8d53bff3ec234692e65ca27b440293e37e127
+- sdist: 161445 bytes; sha256 135e47f6ab531e8e650a2ee1adc9582965e1c81d97d08dfdc854757a790629fa
+
+Inventory:
+- wheel 21 files / 16 Python files; source path and bytes exact to candidate
+- sdist 117 files; all repository-backed files byte-exact; generated non-repository member only PKG-INFO
+- exact metadata nvda-architecture-kernel==1.0.0 / Requires-Python ==3.13.5
+- production deps PyYAML==6.0.3 and psycopg[binary]==3.3.4
+- five entry points all nvda_desk.architecture.cli
+
+Isolated install/runtime:
+- fresh venv /mnt/data/vi15_l2_candidate_install_env
+- working directory /mnt/data/vi15_l2_candidate_outside
+- pip install --no-index --only-binary=:all: using preserved local wheelhouses and exact candidate wheel
+- direct_url archive hash equals exact wheel SHA-256
+- PYTHONPATH unset; repo absent from sys.path; imports only from isolated site-packages
+- top-level runtime packages exactly architecture, composition, raw_signal_occurrence_truth
+- direct installed A00->M00 PostgreSQL sequence: one_or_more_received; exact readback; counts (1,1,1,1)
+- fresh application exact retry equal; counts remain (1,1,1,1)
+
+Inactive capability check:
+- M00 sole active runtime allocation; A00 bootstrap; P01 and K01 placeholder/no package; surfaces empty
+- wheel runtime inventory contains only framework/A00/M00 roots; no inactive product/runtime package
+
+Integrity/provenance:
+- git diff --check HEAD^..HEAD -> clean
+- git fsck --full -> rc0; eight dangling blobs reported, no corruption/error
+- proof env Python 3.13.5 / pytest 9.0.3 / mypy 1.20.1 / Ruff 0.15.11 / Psycopg 3.3.4 / PyYAML 6.0.3
+- PostgreSQL 17.9; UTF8; fsync=on; synchronous_commit=on; full_page_writes=on; Unix socket only
+- build env Python 3.13.5 / hatchling 1.29.0 / packaging 26.2 / pathspec 1.1.1 / pluggy 1.6.0 /
+  trove-classifiers 2026.4.28.13

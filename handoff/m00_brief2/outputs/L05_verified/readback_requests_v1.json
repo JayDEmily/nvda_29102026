@@ -1,0 +1,1042 @@
+{
+  "absence_probes": {
+    "a4_observation_id": "NVDA-M00-A-V1-A4-SEQ21",
+    "a4_selection": {
+      "generation": "STK-SMART-G1",
+      "request": "STK-SMART-R1",
+      "requested_exchange": "SMART",
+      "scenario_id": "A4",
+      "subject": "NVDA-STK-CONTROL-1"
+    },
+    "control_ids": [
+      "M00B2-CONTROL-error317",
+      "M00B2-CONTROL-error316",
+      "M00B2-CONTROL-reconnect",
+      "M00B2-CONTROL-gap",
+      "M00B2-CONTROL-restart"
+    ]
+  },
+  "control_query": {
+    "native_identity_selectors": [
+      [
+        [
+          "_collector",
+          "request"
+        ],
+        "STK-SMART-R1"
+      ],
+      [
+        [
+          "_collector",
+          "requested_exchange"
+        ],
+        "SMART"
+      ],
+      [
+        [
+          "_collector",
+          "generation"
+        ],
+        "STK-SMART-G1"
+      ]
+    ],
+    "received_at_or_before_utc": "2026-10-20T12:40:01Z",
+    "source_provider": "foundation-controlled-ibkr-m00-v1",
+    "source_variant": "ibkr-smart-depth/native-v1",
+    "subject_instrument": "NVDA-STK-CONTROL-1"
+  },
+  "history_queries": [
+    {
+      "cutoff": "2026-10-20T12:40:01Z",
+      "group": "A1-STK",
+      "raw_id": "R033",
+      "selection": {
+        "generation": "STK-BIDASK-G1",
+        "request": "STK-BIDASK-R1",
+        "requested_exchange": "SYNTH-L1",
+        "scenario_id": "A1",
+        "subject": "NVDA-STK-CONTROL-1"
+      },
+      "subject": "NVDA-STK-CONTROL-1"
+    },
+    {
+      "cutoff": "2026-10-20T12:40:01Z",
+      "group": "A1-STK",
+      "raw_id": "R034",
+      "selection": {
+        "generation": "STK-BIDASK-G1",
+        "request": "STK-BIDASK-R1",
+        "requested_exchange": "SYNTH-L1",
+        "scenario_id": "A1",
+        "subject": "NVDA-STK-CONTROL-1"
+      },
+      "subject": "NVDA-STK-CONTROL-1"
+    },
+    {
+      "cutoff": "2026-10-20T12:40:01Z",
+      "group": "A1-STK",
+      "raw_id": "R035",
+      "selection": {
+        "generation": "STK-BIDASK-G1",
+        "request": "STK-BIDASK-R1",
+        "requested_exchange": "SYNTH-L1",
+        "scenario_id": "A1",
+        "subject": "NVDA-STK-CONTROL-1"
+      },
+      "subject": "NVDA-STK-CONTROL-1"
+    },
+    {
+      "cutoff": "2026-10-20T12:40:01Z",
+      "group": "A1-STK",
+      "raw_id": "R036",
+      "selection": {
+        "generation": "STK-BIDASK-G1",
+        "request": "STK-BIDASK-R1",
+        "requested_exchange": "SYNTH-L1",
+        "scenario_id": "A1",
+        "subject": "NVDA-STK-CONTROL-1"
+      },
+      "subject": "NVDA-STK-CONTROL-1"
+    },
+    {
+      "cutoff": "2026-10-20T12:40:01Z",
+      "group": "A2-CALL",
+      "raw_id": "R033",
+      "selection": {
+        "generation": "OPT-L1-G1",
+        "request": "OPT-C100-R1",
+        "requested_exchange": "SYNTH-L1",
+        "scenario_id": "A2",
+        "subject": "NVDA-OPT-C100-CONTROL-1"
+      },
+      "subject": "NVDA-OPT-C100-CONTROL-1"
+    },
+    {
+      "cutoff": "2026-10-20T12:40:01Z",
+      "group": "A2-CALL",
+      "raw_id": "R034",
+      "selection": {
+        "generation": "OPT-L1-G1",
+        "request": "OPT-C100-R1",
+        "requested_exchange": "SYNTH-L1",
+        "scenario_id": "A2",
+        "subject": "NVDA-OPT-C100-CONTROL-1"
+      },
+      "subject": "NVDA-OPT-C100-CONTROL-1"
+    },
+    {
+      "cutoff": "2026-10-20T12:40:01Z",
+      "group": "A2-CALL",
+      "raw_id": "R035",
+      "selection": {
+        "generation": "OPT-L1-G1",
+        "request": "OPT-C100-R1",
+        "requested_exchange": "SYNTH-L1",
+        "scenario_id": "A2",
+        "subject": "NVDA-OPT-C100-CONTROL-1"
+      },
+      "subject": "NVDA-OPT-C100-CONTROL-1"
+    },
+    {
+      "cutoff": "2026-10-20T12:40:01Z",
+      "group": "A2-CALL",
+      "raw_id": "R036",
+      "selection": {
+        "generation": "OPT-L1-G1",
+        "request": "OPT-C100-R1",
+        "requested_exchange": "SYNTH-L1",
+        "scenario_id": "A2",
+        "subject": "NVDA-OPT-C100-CONTROL-1"
+      },
+      "subject": "NVDA-OPT-C100-CONTROL-1"
+    },
+    {
+      "cutoff": "2026-10-20T12:40:01Z",
+      "group": "A3-PUT",
+      "raw_id": "R033",
+      "selection": {
+        "generation": "OPT-P100-L1-G1",
+        "request": "OPT-P100-R1",
+        "requested_exchange": "SYNTH-L1",
+        "scenario_id": "A3",
+        "subject": "NVDA-OPT-P100-CONTROL-1"
+      },
+      "subject": "NVDA-OPT-P100-CONTROL-1"
+    },
+    {
+      "cutoff": "2026-10-20T12:40:01Z",
+      "group": "A3-PUT",
+      "raw_id": "R034",
+      "selection": {
+        "generation": "OPT-P100-L1-G1",
+        "request": "OPT-P100-R1",
+        "requested_exchange": "SYNTH-L1",
+        "scenario_id": "A3",
+        "subject": "NVDA-OPT-P100-CONTROL-1"
+      },
+      "subject": "NVDA-OPT-P100-CONTROL-1"
+    },
+    {
+      "cutoff": "2026-10-20T12:40:01Z",
+      "group": "A3-PUT",
+      "raw_id": "R035",
+      "selection": {
+        "generation": "OPT-P100-L1-G1",
+        "request": "OPT-P100-R1",
+        "requested_exchange": "SYNTH-L1",
+        "scenario_id": "A3",
+        "subject": "NVDA-OPT-P100-CONTROL-1"
+      },
+      "subject": "NVDA-OPT-P100-CONTROL-1"
+    },
+    {
+      "cutoff": "2026-10-20T12:40:01Z",
+      "group": "A3-PUT",
+      "raw_id": "R036",
+      "selection": {
+        "generation": "OPT-P100-L1-G1",
+        "request": "OPT-P100-R1",
+        "requested_exchange": "SYNTH-L1",
+        "scenario_id": "A3",
+        "subject": "NVDA-OPT-P100-CONTROL-1"
+      },
+      "subject": "NVDA-OPT-P100-CONTROL-1"
+    },
+    {
+      "cutoff": "2026-10-20T12:40:01Z",
+      "group": "A4-STK",
+      "raw_id": "R185",
+      "selection": {
+        "generation": "STK-SMART-G1",
+        "request": "STK-SMART-R1",
+        "requested_exchange": "SMART",
+        "scenario_id": "A4",
+        "subject": "NVDA-STK-CONTROL-1"
+      },
+      "subject": "NVDA-STK-CONTROL-1"
+    },
+    {
+      "cutoff": "2026-10-20T12:40:01Z",
+      "group": "A4-STK",
+      "raw_id": "R187",
+      "selection": {
+        "generation": "STK-SMART-G1",
+        "request": "STK-SMART-R1",
+        "requested_exchange": "SMART",
+        "scenario_id": "A4",
+        "subject": "NVDA-STK-CONTROL-1"
+      },
+      "subject": "NVDA-STK-CONTROL-1"
+    },
+    {
+      "cutoff": "2026-10-20T12:40:01Z",
+      "group": "A4-STK",
+      "raw_id": "R188",
+      "selection": {
+        "generation": "STK-SMART-G1",
+        "request": "STK-SMART-R1",
+        "requested_exchange": "SMART",
+        "scenario_id": "A4",
+        "subject": "NVDA-STK-CONTROL-1"
+      },
+      "subject": "NVDA-STK-CONTROL-1"
+    },
+    {
+      "cutoff": "2026-10-20T12:40:01Z",
+      "group": "A4-STK",
+      "raw_id": "R189",
+      "selection": {
+        "generation": "STK-SMART-G1",
+        "request": "STK-SMART-R1",
+        "requested_exchange": "SMART",
+        "scenario_id": "A4",
+        "subject": "NVDA-STK-CONTROL-1"
+      },
+      "subject": "NVDA-STK-CONTROL-1"
+    },
+    {
+      "cutoff": "2026-10-20T12:40:01Z",
+      "group": "A4-STK",
+      "raw_id": "R190",
+      "selection": {
+        "generation": "STK-SMART-G1",
+        "request": "STK-SMART-R1",
+        "requested_exchange": "SMART",
+        "scenario_id": "A4",
+        "subject": "NVDA-STK-CONTROL-1"
+      },
+      "subject": "NVDA-STK-CONTROL-1"
+    },
+    {
+      "cutoff": "2026-10-20T12:40:01Z",
+      "group": "A5-CALL",
+      "raw_id": "R185",
+      "selection": {
+        "generation": "OPT-C100-LEGACY-G1",
+        "request": "OPT-C100-LEGACY-R1",
+        "requested_exchange": "SMART",
+        "scenario_id": "A5",
+        "subject": "NVDA-OPT-C100-CONTROL-1"
+      },
+      "subject": "NVDA-OPT-C100-CONTROL-1"
+    },
+    {
+      "cutoff": "2026-10-20T12:40:01Z",
+      "group": "A5-CALL",
+      "raw_id": "R187",
+      "selection": {
+        "generation": "OPT-C100-LEGACY-G1",
+        "request": "OPT-C100-LEGACY-R1",
+        "requested_exchange": "SMART",
+        "scenario_id": "A5",
+        "subject": "NVDA-OPT-C100-CONTROL-1"
+      },
+      "subject": "NVDA-OPT-C100-CONTROL-1"
+    },
+    {
+      "cutoff": "2026-10-20T12:40:01Z",
+      "group": "A5-CALL",
+      "raw_id": "R188",
+      "selection": {
+        "generation": "OPT-C100-LEGACY-G1",
+        "request": "OPT-C100-LEGACY-R1",
+        "requested_exchange": "SMART",
+        "scenario_id": "A5",
+        "subject": "NVDA-OPT-C100-CONTROL-1"
+      },
+      "subject": "NVDA-OPT-C100-CONTROL-1"
+    },
+    {
+      "cutoff": "2026-10-20T12:40:01Z",
+      "group": "A5-CALL",
+      "raw_id": "R189",
+      "selection": {
+        "generation": "OPT-C100-LEGACY-G1",
+        "request": "OPT-C100-LEGACY-R1",
+        "requested_exchange": "SMART",
+        "scenario_id": "A5",
+        "subject": "NVDA-OPT-C100-CONTROL-1"
+      },
+      "subject": "NVDA-OPT-C100-CONTROL-1"
+    },
+    {
+      "cutoff": "2026-10-20T12:40:01Z",
+      "group": "A5-CALL",
+      "raw_id": "R190",
+      "selection": {
+        "generation": "OPT-C100-LEGACY-G1",
+        "request": "OPT-C100-LEGACY-R1",
+        "requested_exchange": "SMART",
+        "scenario_id": "A5",
+        "subject": "NVDA-OPT-C100-CONTROL-1"
+      },
+      "subject": "NVDA-OPT-C100-CONTROL-1"
+    },
+    {
+      "cutoff": "2026-10-20T12:40:01Z",
+      "group": "A6-PUT",
+      "raw_id": "R185",
+      "selection": {
+        "generation": "OPT-P100-SMART-G1",
+        "request": "OPT-P100-SMART-R1",
+        "requested_exchange": "SMART",
+        "scenario_id": "A6",
+        "subject": "NVDA-OPT-P100-CONTROL-1"
+      },
+      "subject": "NVDA-OPT-P100-CONTROL-1"
+    },
+    {
+      "cutoff": "2026-10-20T12:40:01Z",
+      "group": "A6-PUT",
+      "raw_id": "R187",
+      "selection": {
+        "generation": "OPT-P100-SMART-G1",
+        "request": "OPT-P100-SMART-R1",
+        "requested_exchange": "SMART",
+        "scenario_id": "A6",
+        "subject": "NVDA-OPT-P100-CONTROL-1"
+      },
+      "subject": "NVDA-OPT-P100-CONTROL-1"
+    },
+    {
+      "cutoff": "2026-10-20T12:40:01Z",
+      "group": "A6-PUT",
+      "raw_id": "R188",
+      "selection": {
+        "generation": "OPT-P100-SMART-G1",
+        "request": "OPT-P100-SMART-R1",
+        "requested_exchange": "SMART",
+        "scenario_id": "A6",
+        "subject": "NVDA-OPT-P100-CONTROL-1"
+      },
+      "subject": "NVDA-OPT-P100-CONTROL-1"
+    },
+    {
+      "cutoff": "2026-10-20T12:40:01Z",
+      "group": "A6-PUT",
+      "raw_id": "R189",
+      "selection": {
+        "generation": "OPT-P100-SMART-G1",
+        "request": "OPT-P100-SMART-R1",
+        "requested_exchange": "SMART",
+        "scenario_id": "A6",
+        "subject": "NVDA-OPT-P100-CONTROL-1"
+      },
+      "subject": "NVDA-OPT-P100-CONTROL-1"
+    },
+    {
+      "cutoff": "2026-10-20T12:40:01Z",
+      "group": "A6-PUT",
+      "raw_id": "R190",
+      "selection": {
+        "generation": "OPT-P100-SMART-G1",
+        "request": "OPT-P100-SMART-R1",
+        "requested_exchange": "SMART",
+        "scenario_id": "A6",
+        "subject": "NVDA-OPT-P100-CONTROL-1"
+      },
+      "subject": "NVDA-OPT-P100-CONTROL-1"
+    },
+    {
+      "cutoff": "2026-10-26T14:00:10Z",
+      "group": "B-CALL",
+      "raw_id": "R185",
+      "selection": {
+        "generation": "GEN-OPT-01",
+        "request": "B-OPT-R1",
+        "requested_exchange": "SMART",
+        "scenario_id": "B",
+        "subject": "NVDA/OPT/20261030/100/C/100/USD/SMART/TEST-ONLY"
+      },
+      "subject": "NVDA/OPT/20261030/100/C/100/USD/SMART/TEST-ONLY"
+    },
+    {
+      "cutoff": "2026-10-26T14:00:10Z",
+      "group": "B-CALL",
+      "raw_id": "R187",
+      "selection": {
+        "generation": "GEN-OPT-01",
+        "request": "B-OPT-R1",
+        "requested_exchange": "SMART",
+        "scenario_id": "B",
+        "subject": "NVDA/OPT/20261030/100/C/100/USD/SMART/TEST-ONLY"
+      },
+      "subject": "NVDA/OPT/20261030/100/C/100/USD/SMART/TEST-ONLY"
+    },
+    {
+      "cutoff": "2026-10-26T14:00:10Z",
+      "group": "B-CALL",
+      "raw_id": "R188",
+      "selection": {
+        "generation": "GEN-OPT-01",
+        "request": "B-OPT-R1",
+        "requested_exchange": "SMART",
+        "scenario_id": "B",
+        "subject": "NVDA/OPT/20261030/100/C/100/USD/SMART/TEST-ONLY"
+      },
+      "subject": "NVDA/OPT/20261030/100/C/100/USD/SMART/TEST-ONLY"
+    },
+    {
+      "cutoff": "2026-10-26T14:00:10Z",
+      "group": "B-CALL",
+      "raw_id": "R189",
+      "selection": {
+        "generation": "GEN-OPT-01",
+        "request": "B-OPT-R1",
+        "requested_exchange": "SMART",
+        "scenario_id": "B",
+        "subject": "NVDA/OPT/20261030/100/C/100/USD/SMART/TEST-ONLY"
+      },
+      "subject": "NVDA/OPT/20261030/100/C/100/USD/SMART/TEST-ONLY"
+    },
+    {
+      "cutoff": "2026-10-26T14:00:10Z",
+      "group": "B-CALL",
+      "raw_id": "R190",
+      "selection": {
+        "generation": "GEN-OPT-01",
+        "request": "B-OPT-R1",
+        "requested_exchange": "SMART",
+        "scenario_id": "B",
+        "subject": "NVDA/OPT/20261030/100/C/100/USD/SMART/TEST-ONLY"
+      },
+      "subject": "NVDA/OPT/20261030/100/C/100/USD/SMART/TEST-ONLY"
+    },
+    {
+      "cutoff": "2026-10-26T14:00:10Z",
+      "group": "B-STK",
+      "raw_id": "R185",
+      "selection": {
+        "generation": "GEN-STK-01",
+        "request": "B-STK-R1",
+        "requested_exchange": "SMART",
+        "scenario_id": "B",
+        "subject": "NVDA/STK/USD/SMART/TEST-ONLY"
+      },
+      "subject": "NVDA/STK/USD/SMART/TEST-ONLY"
+    },
+    {
+      "cutoff": "2026-10-26T14:00:10Z",
+      "group": "B-STK",
+      "raw_id": "R187",
+      "selection": {
+        "generation": "GEN-STK-01",
+        "request": "B-STK-R1",
+        "requested_exchange": "SMART",
+        "scenario_id": "B",
+        "subject": "NVDA/STK/USD/SMART/TEST-ONLY"
+      },
+      "subject": "NVDA/STK/USD/SMART/TEST-ONLY"
+    },
+    {
+      "cutoff": "2026-10-26T14:00:10Z",
+      "group": "B-STK",
+      "raw_id": "R188",
+      "selection": {
+        "generation": "GEN-STK-01",
+        "request": "B-STK-R1",
+        "requested_exchange": "SMART",
+        "scenario_id": "B",
+        "subject": "NVDA/STK/USD/SMART/TEST-ONLY"
+      },
+      "subject": "NVDA/STK/USD/SMART/TEST-ONLY"
+    },
+    {
+      "cutoff": "2026-10-26T14:00:10Z",
+      "group": "B-STK",
+      "raw_id": "R189",
+      "selection": {
+        "generation": "GEN-STK-01",
+        "request": "B-STK-R1",
+        "requested_exchange": "SMART",
+        "scenario_id": "B",
+        "subject": "NVDA/STK/USD/SMART/TEST-ONLY"
+      },
+      "subject": "NVDA/STK/USD/SMART/TEST-ONLY"
+    },
+    {
+      "cutoff": "2026-10-26T14:00:10Z",
+      "group": "B-STK",
+      "raw_id": "R190",
+      "selection": {
+        "generation": "GEN-STK-01",
+        "request": "B-STK-R1",
+        "requested_exchange": "SMART",
+        "scenario_id": "B",
+        "subject": "NVDA/STK/USD/SMART/TEST-ONLY"
+      },
+      "subject": "NVDA/STK/USD/SMART/TEST-ONLY"
+    },
+    {
+      "cutoff": "2026-10-20T12:40:01Z",
+      "group": "C1-CALL",
+      "raw_id": "R185",
+      "selection": {
+        "generation": "OPT-C100-SMART-COHERENT-V2",
+        "request": "COH-CALL-R1",
+        "requested_exchange": "SMART",
+        "scenario_id": "C1",
+        "subject": "NVDA-OPT-C100-CONTROL-1"
+      },
+      "subject": "NVDA-OPT-C100-CONTROL-1"
+    },
+    {
+      "cutoff": "2026-10-20T12:40:01Z",
+      "group": "C1-CALL",
+      "raw_id": "R187",
+      "selection": {
+        "generation": "OPT-C100-SMART-COHERENT-V2",
+        "request": "COH-CALL-R1",
+        "requested_exchange": "SMART",
+        "scenario_id": "C1",
+        "subject": "NVDA-OPT-C100-CONTROL-1"
+      },
+      "subject": "NVDA-OPT-C100-CONTROL-1"
+    },
+    {
+      "cutoff": "2026-10-20T12:40:01Z",
+      "group": "C1-CALL",
+      "raw_id": "R188",
+      "selection": {
+        "generation": "OPT-C100-SMART-COHERENT-V2",
+        "request": "COH-CALL-R1",
+        "requested_exchange": "SMART",
+        "scenario_id": "C1",
+        "subject": "NVDA-OPT-C100-CONTROL-1"
+      },
+      "subject": "NVDA-OPT-C100-CONTROL-1"
+    },
+    {
+      "cutoff": "2026-10-20T12:40:01Z",
+      "group": "C1-CALL",
+      "raw_id": "R189",
+      "selection": {
+        "generation": "OPT-C100-SMART-COHERENT-V2",
+        "request": "COH-CALL-R1",
+        "requested_exchange": "SMART",
+        "scenario_id": "C1",
+        "subject": "NVDA-OPT-C100-CONTROL-1"
+      },
+      "subject": "NVDA-OPT-C100-CONTROL-1"
+    },
+    {
+      "cutoff": "2026-10-20T12:40:01Z",
+      "group": "C1-CALL",
+      "raw_id": "R190",
+      "selection": {
+        "generation": "OPT-C100-SMART-COHERENT-V2",
+        "request": "COH-CALL-R1",
+        "requested_exchange": "SMART",
+        "scenario_id": "C1",
+        "subject": "NVDA-OPT-C100-CONTROL-1"
+      },
+      "subject": "NVDA-OPT-C100-CONTROL-1"
+    },
+    {
+      "cutoff": "2026-10-20T12:40:01Z",
+      "group": "C2-STK",
+      "raw_id": "R192",
+      "selection": {
+        "generation": "COH-DIRECT-STK-GEN1",
+        "request": "COH-DIRECT-STK-R1",
+        "requested_exchange": "SYNTH-DIRECT-EXCHANGE-1",
+        "scenario_id": "C2",
+        "subject": "NVDA-STK-CONTROL-1"
+      },
+      "subject": "NVDA-STK-CONTROL-1"
+    },
+    {
+      "cutoff": "2026-10-20T12:40:01Z",
+      "group": "C2-STK",
+      "raw_id": "R193",
+      "selection": {
+        "generation": "COH-DIRECT-STK-GEN1",
+        "request": "COH-DIRECT-STK-R1",
+        "requested_exchange": "SYNTH-DIRECT-EXCHANGE-1",
+        "scenario_id": "C2",
+        "subject": "NVDA-STK-CONTROL-1"
+      },
+      "subject": "NVDA-STK-CONTROL-1"
+    },
+    {
+      "cutoff": "2026-10-20T12:40:01Z",
+      "group": "C2-STK",
+      "raw_id": "R194",
+      "selection": {
+        "generation": "COH-DIRECT-STK-GEN1",
+        "request": "COH-DIRECT-STK-R1",
+        "requested_exchange": "SYNTH-DIRECT-EXCHANGE-1",
+        "scenario_id": "C2",
+        "subject": "NVDA-STK-CONTROL-1"
+      },
+      "subject": "NVDA-STK-CONTROL-1"
+    },
+    {
+      "cutoff": "2026-10-20T12:40:01Z",
+      "group": "C2-STK",
+      "raw_id": "R195",
+      "selection": {
+        "generation": "COH-DIRECT-STK-GEN1",
+        "request": "COH-DIRECT-STK-R1",
+        "requested_exchange": "SYNTH-DIRECT-EXCHANGE-1",
+        "scenario_id": "C2",
+        "subject": "NVDA-STK-CONTROL-1"
+      },
+      "subject": "NVDA-STK-CONTROL-1"
+    },
+    {
+      "cutoff": "2026-10-20T12:40:01Z",
+      "group": "C2-STK",
+      "raw_id": "R196",
+      "selection": {
+        "generation": "COH-DIRECT-STK-GEN1",
+        "request": "COH-DIRECT-STK-R1",
+        "requested_exchange": "SYNTH-DIRECT-EXCHANGE-1",
+        "scenario_id": "C2",
+        "subject": "NVDA-STK-CONTROL-1"
+      },
+      "subject": "NVDA-STK-CONTROL-1"
+    },
+    {
+      "cutoff": "2026-10-20T12:40:01Z",
+      "group": "C2-STK",
+      "raw_id": "R197",
+      "selection": {
+        "generation": "COH-DIRECT-STK-GEN1",
+        "request": "COH-DIRECT-STK-R1",
+        "requested_exchange": "SYNTH-DIRECT-EXCHANGE-1",
+        "scenario_id": "C2",
+        "subject": "NVDA-STK-CONTROL-1"
+      },
+      "subject": "NVDA-STK-CONTROL-1"
+    },
+    {
+      "cutoff": "2026-10-20T12:40:01Z",
+      "group": "C3-CALL",
+      "raw_id": "R192",
+      "selection": {
+        "generation": "COH-DIRECT-CALL-GEN1",
+        "request": "COH-DIRECT-CALL-R1",
+        "requested_exchange": "SYNTH-DIRECT-OPT-EXCHANGE-1",
+        "scenario_id": "C3",
+        "subject": "NVDA-OPT-C100-CONTROL-1"
+      },
+      "subject": "NVDA-OPT-C100-CONTROL-1"
+    },
+    {
+      "cutoff": "2026-10-20T12:40:01Z",
+      "group": "C3-CALL",
+      "raw_id": "R193",
+      "selection": {
+        "generation": "COH-DIRECT-CALL-GEN1",
+        "request": "COH-DIRECT-CALL-R1",
+        "requested_exchange": "SYNTH-DIRECT-OPT-EXCHANGE-1",
+        "scenario_id": "C3",
+        "subject": "NVDA-OPT-C100-CONTROL-1"
+      },
+      "subject": "NVDA-OPT-C100-CONTROL-1"
+    },
+    {
+      "cutoff": "2026-10-20T12:40:01Z",
+      "group": "C3-CALL",
+      "raw_id": "R194",
+      "selection": {
+        "generation": "COH-DIRECT-CALL-GEN1",
+        "request": "COH-DIRECT-CALL-R1",
+        "requested_exchange": "SYNTH-DIRECT-OPT-EXCHANGE-1",
+        "scenario_id": "C3",
+        "subject": "NVDA-OPT-C100-CONTROL-1"
+      },
+      "subject": "NVDA-OPT-C100-CONTROL-1"
+    },
+    {
+      "cutoff": "2026-10-20T12:40:01Z",
+      "group": "C3-CALL",
+      "raw_id": "R195",
+      "selection": {
+        "generation": "COH-DIRECT-CALL-GEN1",
+        "request": "COH-DIRECT-CALL-R1",
+        "requested_exchange": "SYNTH-DIRECT-OPT-EXCHANGE-1",
+        "scenario_id": "C3",
+        "subject": "NVDA-OPT-C100-CONTROL-1"
+      },
+      "subject": "NVDA-OPT-C100-CONTROL-1"
+    },
+    {
+      "cutoff": "2026-10-20T12:40:01Z",
+      "group": "C3-CALL",
+      "raw_id": "R196",
+      "selection": {
+        "generation": "COH-DIRECT-CALL-GEN1",
+        "request": "COH-DIRECT-CALL-R1",
+        "requested_exchange": "SYNTH-DIRECT-OPT-EXCHANGE-1",
+        "scenario_id": "C3",
+        "subject": "NVDA-OPT-C100-CONTROL-1"
+      },
+      "subject": "NVDA-OPT-C100-CONTROL-1"
+    },
+    {
+      "cutoff": "2026-10-20T12:40:01Z",
+      "group": "C3-CALL",
+      "raw_id": "R197",
+      "selection": {
+        "generation": "COH-DIRECT-CALL-GEN1",
+        "request": "COH-DIRECT-CALL-R1",
+        "requested_exchange": "SYNTH-DIRECT-OPT-EXCHANGE-1",
+        "scenario_id": "C3",
+        "subject": "NVDA-OPT-C100-CONTROL-1"
+      },
+      "subject": "NVDA-OPT-C100-CONTROL-1"
+    }
+  ],
+  "observation_queries": [
+    {
+      "family": "A",
+      "fixture_id": "NVDA-IBKR-M00-SYNTHETIC-INPUT-V1",
+      "fixture_version": 1,
+      "id": "SYN-L1-STK-ATOMIC-01",
+      "mapping_group": "A1-STK",
+      "scenario_id": "A1"
+    },
+    {
+      "family": "A",
+      "fixture_id": "NVDA-IBKR-M00-SYNTHETIC-INPUT-V1",
+      "fixture_version": 1,
+      "id": "NVDA-M00-A-V1-A2-SEQ11",
+      "mapping_group": "A2-CALL",
+      "scenario_id": "A2"
+    },
+    {
+      "family": "A",
+      "fixture_id": "NVDA-IBKR-M00-SYNTHETIC-INPUT-V1",
+      "fixture_version": 1,
+      "id": "NVDA-M00-A-V1-A2-SEQ12",
+      "mapping_group": "A2-CALL",
+      "scenario_id": "A2"
+    },
+    {
+      "family": "A",
+      "fixture_id": "NVDA-IBKR-M00-SYNTHETIC-INPUT-V1",
+      "fixture_version": 1,
+      "id": "NVDA-M00-A-V1-A2-SEQ13",
+      "mapping_group": "A2-CALL",
+      "scenario_id": "A2"
+    },
+    {
+      "family": "A",
+      "fixture_id": "NVDA-IBKR-M00-SYNTHETIC-INPUT-V1",
+      "fixture_version": 1,
+      "id": "NVDA-M00-A-V1-A2-SEQ14",
+      "mapping_group": "A2-CALL",
+      "scenario_id": "A2"
+    },
+    {
+      "family": "A",
+      "fixture_id": "NVDA-IBKR-M00-SYNTHETIC-INPUT-V1",
+      "fixture_version": 1,
+      "id": "NVDA-M00-A-V1-A3-SEQ15",
+      "mapping_group": "A3-PUT",
+      "scenario_id": "A3"
+    },
+    {
+      "family": "A",
+      "fixture_id": "NVDA-IBKR-M00-SYNTHETIC-INPUT-V1",
+      "fixture_version": 1,
+      "id": "NVDA-M00-A-V1-A3-SEQ16",
+      "mapping_group": "A3-PUT",
+      "scenario_id": "A3"
+    },
+    {
+      "family": "A",
+      "fixture_id": "NVDA-IBKR-M00-SYNTHETIC-INPUT-V1",
+      "fixture_version": 1,
+      "id": "NVDA-M00-A-V1-A3-SEQ17",
+      "mapping_group": "A3-PUT",
+      "scenario_id": "A3"
+    },
+    {
+      "family": "A",
+      "fixture_id": "NVDA-IBKR-M00-SYNTHETIC-INPUT-V1",
+      "fixture_version": 1,
+      "id": "NVDA-M00-A-V1-A3-SEQ18",
+      "mapping_group": "A3-PUT",
+      "scenario_id": "A3"
+    },
+    {
+      "family": "A",
+      "fixture_id": "NVDA-IBKR-M00-SYNTHETIC-INPUT-V1",
+      "fixture_version": 1,
+      "id": "NVDA-M00-A-V1-A4-SEQ21",
+      "mapping_group": "A4-STK",
+      "scenario_id": "A4"
+    },
+    {
+      "family": "A",
+      "fixture_id": "NVDA-IBKR-M00-SYNTHETIC-INPUT-V1",
+      "fixture_version": 1,
+      "id": "NVDA-M00-A-V1-A4-SEQ22",
+      "mapping_group": "A4-STK",
+      "scenario_id": "A4"
+    },
+    {
+      "family": "A",
+      "fixture_id": "NVDA-IBKR-M00-SYNTHETIC-INPUT-V1",
+      "fixture_version": 1,
+      "id": "NVDA-M00-A-V1-A4-SEQ23",
+      "mapping_group": "A4-STK",
+      "scenario_id": "A4"
+    },
+    {
+      "family": "A",
+      "fixture_id": "NVDA-IBKR-M00-SYNTHETIC-INPUT-V1",
+      "fixture_version": 1,
+      "id": "NVDA-M00-A-V1-A4-SEQ24",
+      "mapping_group": "A4-STK",
+      "scenario_id": "A4"
+    },
+    {
+      "family": "A",
+      "fixture_id": "NVDA-IBKR-M00-SYNTHETIC-INPUT-V1",
+      "fixture_version": 1,
+      "id": "NVDA-M00-A-V1-A5-SEQ31",
+      "mapping_group": "A5-CALL",
+      "scenario_id": "A5"
+    },
+    {
+      "family": "A",
+      "fixture_id": "NVDA-IBKR-M00-SYNTHETIC-INPUT-V1",
+      "fixture_version": 1,
+      "id": "NVDA-M00-A-V1-A5-SEQ32",
+      "mapping_group": "A5-CALL",
+      "scenario_id": "A5"
+    },
+    {
+      "family": "A",
+      "fixture_id": "NVDA-IBKR-M00-SYNTHETIC-INPUT-V1",
+      "fixture_version": 1,
+      "id": "NVDA-M00-A-V1-A5-SEQ33",
+      "mapping_group": "A5-CALL",
+      "scenario_id": "A5"
+    },
+    {
+      "family": "A",
+      "fixture_id": "NVDA-IBKR-M00-SYNTHETIC-INPUT-V1",
+      "fixture_version": 1,
+      "id": "NVDA-M00-A-V1-A6-SEQ34",
+      "mapping_group": "A6-PUT",
+      "scenario_id": "A6"
+    },
+    {
+      "family": "A",
+      "fixture_id": "NVDA-IBKR-M00-SYNTHETIC-INPUT-V1",
+      "fixture_version": 1,
+      "id": "NVDA-M00-A-V1-A6-SEQ35",
+      "mapping_group": "A6-PUT",
+      "scenario_id": "A6"
+    },
+    {
+      "family": "B",
+      "fixture_id": "NVDA-CONTROLLED-IBKR-RECEIPT-BOOK-V1",
+      "fixture_version": 1,
+      "id": "SYNTH-IBKR-V1-S01",
+      "mapping_group": "B-STK",
+      "scenario_id": "B"
+    },
+    {
+      "family": "B",
+      "fixture_id": "NVDA-CONTROLLED-IBKR-RECEIPT-BOOK-V1",
+      "fixture_version": 1,
+      "id": "SYNTH-IBKR-V1-S02",
+      "mapping_group": "B-STK",
+      "scenario_id": "B"
+    },
+    {
+      "family": "B",
+      "fixture_id": "NVDA-CONTROLLED-IBKR-RECEIPT-BOOK-V1",
+      "fixture_version": 1,
+      "id": "SYNTH-IBKR-V1-S03",
+      "mapping_group": "B-STK",
+      "scenario_id": "B"
+    },
+    {
+      "family": "B",
+      "fixture_id": "NVDA-CONTROLLED-IBKR-RECEIPT-BOOK-V1",
+      "fixture_version": 1,
+      "id": "SYNTH-IBKR-V1-S04",
+      "mapping_group": "B-STK",
+      "scenario_id": "B"
+    },
+    {
+      "family": "B",
+      "fixture_id": "NVDA-CONTROLLED-IBKR-RECEIPT-BOOK-V1",
+      "fixture_version": 1,
+      "id": "SYNTH-IBKR-V1-O01",
+      "mapping_group": "B-CALL",
+      "scenario_id": "B"
+    },
+    {
+      "family": "B",
+      "fixture_id": "NVDA-CONTROLLED-IBKR-RECEIPT-BOOK-V1",
+      "fixture_version": 1,
+      "id": "SYNTH-IBKR-V1-O02",
+      "mapping_group": "B-CALL",
+      "scenario_id": "B"
+    },
+    {
+      "family": "B",
+      "fixture_id": "NVDA-CONTROLLED-IBKR-RECEIPT-BOOK-V1",
+      "fixture_version": 1,
+      "id": "SYNTH-IBKR-V1-O03",
+      "mapping_group": "B-CALL",
+      "scenario_id": "B"
+    },
+    {
+      "family": "C",
+      "fixture_id": "NVDA-M00-COHERENT-INTEGRATION-V2",
+      "fixture_version": 2,
+      "id": "COH-SMART-C01",
+      "mapping_group": "C1-CALL",
+      "scenario_id": "C1"
+    },
+    {
+      "family": "C",
+      "fixture_id": "NVDA-M00-COHERENT-INTEGRATION-V2",
+      "fixture_version": 2,
+      "id": "COH-SMART-C02",
+      "mapping_group": "C1-CALL",
+      "scenario_id": "C1"
+    },
+    {
+      "family": "C",
+      "fixture_id": "NVDA-M00-COHERENT-INTEGRATION-V2",
+      "fixture_version": 2,
+      "id": "COH-SMART-C03",
+      "mapping_group": "C1-CALL",
+      "scenario_id": "C1"
+    },
+    {
+      "family": "C",
+      "fixture_id": "NVDA-M00-COHERENT-INTEGRATION-V2",
+      "fixture_version": 2,
+      "id": "COH-DIRECT-STK-01",
+      "mapping_group": "C2-STK",
+      "scenario_id": "C2"
+    },
+    {
+      "family": "C",
+      "fixture_id": "NVDA-M00-COHERENT-INTEGRATION-V2",
+      "fixture_version": 2,
+      "id": "COH-DIRECT-STK-02",
+      "mapping_group": "C2-STK",
+      "scenario_id": "C2"
+    },
+    {
+      "family": "C",
+      "fixture_id": "NVDA-M00-COHERENT-INTEGRATION-V2",
+      "fixture_version": 2,
+      "id": "COH-DIRECT-STK-03",
+      "mapping_group": "C2-STK",
+      "scenario_id": "C2"
+    },
+    {
+      "family": "C",
+      "fixture_id": "NVDA-M00-COHERENT-INTEGRATION-V2",
+      "fixture_version": 2,
+      "id": "COH-DIRECT-STK-04",
+      "mapping_group": "C2-STK",
+      "scenario_id": "C2"
+    },
+    {
+      "family": "C",
+      "fixture_id": "NVDA-M00-COHERENT-INTEGRATION-V2",
+      "fixture_version": 2,
+      "id": "COH-DIRECT-CALL-01",
+      "mapping_group": "C3-CALL",
+      "scenario_id": "C3"
+    },
+    {
+      "family": "C",
+      "fixture_id": "NVDA-M00-COHERENT-INTEGRATION-V2",
+      "fixture_version": 2,
+      "id": "COH-DIRECT-CALL-02",
+      "mapping_group": "C3-CALL",
+      "scenario_id": "C3"
+    },
+    {
+      "family": "C",
+      "fixture_id": "NVDA-M00-COHERENT-INTEGRATION-V2",
+      "fixture_version": 2,
+      "id": "COH-DIRECT-CALL-03",
+      "mapping_group": "C3-CALL",
+      "scenario_id": "C3"
+    },
+    {
+      "family": "C",
+      "fixture_id": "NVDA-M00-COHERENT-INTEGRATION-V2",
+      "fixture_version": 2,
+      "id": "COH-DIRECT-CALL-04",
+      "mapping_group": "C3-CALL",
+      "scenario_id": "C3"
+    }
+  ]
+}

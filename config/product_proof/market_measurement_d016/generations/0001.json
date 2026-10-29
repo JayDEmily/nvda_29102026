@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_d016",
+  "generation": 1,
+  "brief_sha256": "bcf43f272179b7291a9851a5a1731efc7a90fb156d92de7108e41683045dae01",
+  "binding_sha256": "b0b0cce604bb1b05f2c3fa6d6c3c29aaeaebcd7d072b81c3d5aff928085027f9",
+  "contract_sha256": "f90126e6e5a07a3c1587533da25d5855ea1e4b9b5f7d6cb18e9000618392991b",
+  "implementation_target_id": "M02",
+  "adequacy_review_ref": "EXEC_PLAN.md;D016_IMPLEMENTATION_BRIEF.md-section3;worker-source-fixture-inspection-under-standing-delegation",
+  "admission_authority_ref": "owner-chat/20261022/D016-necessary-prerequisite-authorised;standing-delegated-proof-admission",
+  "family_files": [
+    {
+      "path": "tests/product/market_measurement_d016/test_signed_trade_volume.py",
+      "sha256": "3c20dd8b7b8708352e7e74f1613c3a995d56cc239a59a8576af1eb49f3018ce7"
+    }
+  ],
+  "support_files": [],
+  "previous_generation": null
+}

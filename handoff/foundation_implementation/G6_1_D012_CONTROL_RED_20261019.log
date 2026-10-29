@@ -1,0 +1,67 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/d549b6d808a9/g52-recovery/repository
+configfile: pyproject.toml
+collected 56 items / 42 deselected / 14 selected
+
+tests/architecture/test_proof_control.py F............F                  [100%]
+
+=================================== FAILURES ===================================
+________ test_d012_extension_resolves_without_resealing_original_claims ________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-19/test_d012_extension_resolves_w0')
+
+    def test_d012_extension_resolves_without_resealing_original_claims(tmp_path):
+        api = _controls()
+        root = _d012_control_candidate(tmp_path)
+>       claim = api.load_product_proof_claim(root, D012_CLAIM)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/architecture/test_proof_control.py:84: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+repository_root = PosixPath('/tmp/pytest-of-root/pytest-19/test_d012_extension_resolves_w0')
+claim_id = 'neutral_market_measurement_truth_d012'
+
+    def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductProofClaim:
+        root = repository_root.resolve()
+        catalogue = read_json(root / "config/product_proof/claims.json")
+        _schema(root, catalogue, "product_proof_claims.schema.json")
+        ids = [entry["claim_id"] for entry in catalogue["claims"]]
+        if len(ids) != len(set(ids)) or claim_id not in ids:
+>           raise ValueError(f"unknown/duplicate product claim: {claim_id}")
+E           ValueError: unknown/duplicate product claim: neutral_market_measurement_truth_d012
+
+tools/product_proof_claims.py:415: ValueError
+__________________ test_d012_missing_generation_is_not_ready ___________________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-19/test_d012_missing_generation_i0')
+
+    def test_d012_missing_generation_is_not_ready(tmp_path):
+        root = _d012_control_candidate(tmp_path)
+        _json_write(root / D012_ROOT / "admission.json", {
+            "schema_version": "1.0", "current_generation": None,
+        })
+>       assert _controls().load_product_proof_claim(root, D012_CLAIM).state == "INCOMPLETE_COVERAGE"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/architecture/test_proof_control.py:148: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+repository_root = PosixPath('/tmp/pytest-of-root/pytest-19/test_d012_missing_generation_i0')
+claim_id = 'neutral_market_measurement_truth_d012'
+
+    def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductProofClaim:
+        root = repository_root.resolve()
+        catalogue = read_json(root / "config/product_proof/claims.json")
+        _schema(root, catalogue, "product_proof_claims.schema.json")
+        ids = [entry["claim_id"] for entry in catalogue["claims"]]
+        if len(ids) != len(set(ids)) or claim_id not in ids:
+>           raise ValueError(f"unknown/duplicate product claim: {claim_id}")
+E           ValueError: unknown/duplicate product claim: neutral_market_measurement_truth_d012
+
+tools/product_proof_claims.py:415: ValueError
+=========================== short test summary info ============================
+FAILED tests/architecture/test_proof_control.py::test_d012_extension_resolves_without_resealing_original_claims
+FAILED tests/architecture/test_proof_control.py::test_d012_missing_generation_is_not_ready
+================= 2 failed, 12 passed, 42 deselected in 3.74s ==================

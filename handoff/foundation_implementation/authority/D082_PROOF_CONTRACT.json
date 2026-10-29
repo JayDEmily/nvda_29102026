@@ -1,0 +1,91 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_d082",
+  "semantic_brief_path": "handoff/foundation_implementation/authority/D082_IMPLEMENTATION_BRIEF.md",
+  "target": {
+    "category": "M",
+    "responsibility_name": "neutral_market_measurement_truth",
+    "package": "nvda_desk.market_measurement_truth",
+    "public_seam": "nvda_desk.market_measurement_truth.api",
+    "intent": "modify",
+    "existing_object_id": "M02"
+  },
+  "proof_axis": "product",
+  "product_tier_treatment": "NOT_CLASSIFIED",
+  "architecture_proof_axis": "architecture_kernel",
+  "required_proof_ids": [
+    "D082-CALCULATION"
+  ],
+  "families": [
+    {
+      "id": "mmt_d082",
+      "path": "tests/product/market_measurement_d082/test_signal.py",
+      "proof_obligation_ids": [
+        "D082-CALCULATION"
+      ],
+      "required_test_names": [
+        "test_d082_signal"
+      ],
+      "boundary": "Exact aligned three-member four-anchor R151 price histories, three rounded log returns per member, exact Fraction centred Pearson signed square root into new CorrelationMatrixV1. Full four-anchor matrix and source contract at accepted root \u00a74.2.",
+      "proof_levels": [
+        "CONTRACT",
+        "INTEGRATION",
+        "STATE"
+      ],
+      "authoritative_inputs": [
+        "Owner accepted root \u00a74.2, K06 correlation of aligned returns and D082_PROFILE.json."
+      ],
+      "dependency_substitutions": [
+        "Controlled R151 provider and exact synthetic minute/session profile; no regression model/beta.",
+        "Reuse bounded logarithm/root, public projection/storage and exact matrix type addition."
+      ],
+      "case_coverage": {
+        "lawful_positive": {
+          "cases": [
+            "12 genuine positive aligned closes NVDA(1,2,4,12), SPY(1,2,6,12), QQQ(1,3,9,18) yield symmetric matrix ((1,-.5,-1),(-.5,1,.5),(-1,.5,1)) and durable read-only reopen."
+          ]
+        },
+        "prohibited_false_positive": {
+          "cases": [
+            "Only SPY T-1m missing while other 11 genuine bars remain; refuse rather than pairwise intersection."
+          ]
+        },
+        "missing_mandatory_authority": {
+          "cases": [
+            "Exact immutable profile, brief, binding and generation before strict runtime."
+          ]
+        },
+        "lawful_optional_absence": {
+          "cases": [
+            "No extrapolation, incomplete row or beta prerequisite supported."
+          ]
+        }
+      },
+      "expected_failure_signals": [
+        "Wrong price correlation, centring, alignment, ordering or missing row must fail exact assertions."
+      ],
+      "limitations": [
+        "Two physical cases, no native market data certification."
+      ],
+      "adjacent_nonclaims": [
+        "No D078\u2013D081 regression admission."
+      ],
+      "environment": "CPython3.12.14 SQLite3.53.1 and existing pinned offline tools.",
+      "material_versions": [
+        "Exact brief/binding/contract/generation and candidate/tree/runtime; old generations preserved."
+      ],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/market_measurement_d082/test_signal.py"
+    }
+  ],
+  "required_support_files": [],
+  "optional_support_files": [],
+  "execution_policy": {
+    "skipped_tests": "FAIL",
+    "xfailed_tests": "FAIL",
+    "xpassed_tests": "FAIL",
+    "collection_failed": "FAIL",
+    "no_tests_collected": "FAIL",
+    "unexpected_governed_mutation": "FAIL"
+  }
+}

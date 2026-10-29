@@ -1,0 +1,41 @@
+{
+  "id": "D083",
+  "definition": "D083-CROSS-SECTION-DISPERSION-1",
+  "kernel": "K04_STANDARDISE_RANK",
+  "parameter_profile": "P_CROSS_SECTION",
+  "subject": "TECH_SEMI_DISPERSION",
+  "members": [
+    "NVDA",
+    "QQQ",
+    "SMH"
+  ],
+  "raw_order": [
+    "R037",
+    "R042"
+  ],
+  "current_prior": {
+    "NVDA": [
+      "110",
+      "100"
+    ],
+    "QQQ": [
+      "100",
+      "100"
+    ],
+    "SMH": [
+      "100",
+      "110"
+    ]
+  },
+  "as_of": "2026-10-20T12:40:00Z",
+  "prior": "2026-10-19T13:00:00Z",
+  "cutoff": "2026-10-20T12:40:01Z",
+  "now": "2026-10-20T12:40:02Z",
+  "provider": "foundation-controlled-underlying",
+  "variant": "last_prior_close_v1",
+  "context_id": "controlled-underlying-session",
+  "parameter_id": "mmt-d083-controlled",
+  "selection_id": "mmt-d083-selection",
+  "expected_50digit_half_even": "0.095310179804324860043952123280765092220605365308644",
+  "refusal": "SMH prior R042 absent while SMH current and four other roles remain; no member reduction."
+}

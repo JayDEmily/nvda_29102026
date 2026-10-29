@@ -1,0 +1,27 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/83dd7c79f14f/NVDA_V2_CLEAN_RECOVERED_REPO_20261022
+configfile: pyproject.toml
+collected 149 items / 148 deselected / 1 selected
+
+tests/architecture/test_proof_control.py F                               [100%]
+
+=================================== FAILURES ===================================
+_______ test_tranche_pre_admission_universe_resets_future_optional_roots _______
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-1/test_tranche_pre_admission_uni0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f24f2ba49b0>
+
+    def test_tranche_pre_admission_universe_resets_future_optional_roots(tmp_path, monkeypatch):
+        root, _ = _tranche_control_candidate(tmp_path / "source")
+        monkeypatch.setattr(__import__(__name__, fromlist=["ROOT"]), "ROOT", root)
+        copied = _copy_candidate(tmp_path / "copied")
+>       assert not (copied / "config/product_proof/market_measurement_d015").exists()
+E       AssertionError: assert not True
+E        +  where True = exists()
+E        +    where exists = (PosixPath('/tmp/pytest-of-root/pytest-1/test_tranche_pre_admission_uni0/copied') / 'config/product_proof/market_measurement_d015').exists
+
+tests/architecture/test_proof_control.py:1667: AssertionError
+=========================== short test summary info ============================
+FAILED tests/architecture/test_proof_control.py::test_tranche_pre_admission_universe_resets_future_optional_roots
+====================== 1 failed, 148 deselected in 0.38s =======================

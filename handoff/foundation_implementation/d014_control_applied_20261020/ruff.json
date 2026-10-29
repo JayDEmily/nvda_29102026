@@ -1,0 +1,20 @@
+{
+  "argv": [
+    "/tmp/nvda-g61-runtime-GBILkakx/dev/bin/python",
+    "-m",
+    "ruff",
+    "check",
+    "tools/product_proof_claims.py",
+    "tests/architecture/test_proof_control.py"
+  ],
+  "cwd": "/workspace/scratch/d549b6d808a9/resume-20261020-ejayrse7/repository",
+  "candidate": "6c37588947ce4d61d0794d0f99ebaf497c970309",
+  "expected_exit": 0,
+  "expected_marker": "All checks passed!",
+  "exit": 0,
+  "completed": true,
+  "log_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+  "marker_present": true,
+  "unchanged_head": true,
+  "clean_after": true
+}

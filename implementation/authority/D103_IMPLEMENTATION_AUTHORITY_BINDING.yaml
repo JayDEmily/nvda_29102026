@@ -1,0 +1,10 @@
+schema_version: "1.0"
+brief_sha256: 8fe8a0081907ca543c7bb94765cedac48cfcc2335d724384c3d9dfe77bbef45d
+acceptance:
+  status: ACCEPTED_FOR_IMPLEMENTATION
+  authority_ref: owner-chat/20261025/D077-D118-named-dispositions-and-execution
+targets:
+  - action: modify
+    object_id: M02
+  - action: modify
+    object_id: G01

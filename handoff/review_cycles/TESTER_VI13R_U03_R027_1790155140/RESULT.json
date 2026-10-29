@@ -1,0 +1,30 @@
+{
+  "review_cycle": "TESTER_VI13R_U03_R027_1790155140",
+  "actor": "TESTER",
+  "candidate_commit": "758060930b015c23bf63a5de4d71c4d318760393",
+  "candidate_tree": "b819ffa1795e97e40374a59cedd42834233d2225",
+  "status": "COMPLETE",
+  "disposition": "FAIL / RETURN_TO_WORKER",
+  "reviewed_predecessor_findings": [
+    {
+      "finding_id": "R026-U03-F001",
+      "status": "CLOSED"
+    },
+    {
+      "finding_id": "R026-U03-F002",
+      "status": "CLOSED"
+    }
+  ],
+  "findings": [
+    {
+      "finding_id": "R027-U03-F001",
+      "status": "OPEN",
+      "severity": "CRITICAL",
+      "title": "Generic native retry equality collapses distinct admitted runtime representations and nested mapping keys",
+      "owning_layer": "U03 M-owner native retry comparator plus bounded implementation-coupled U03 proof"
+    }
+  ],
+  "u03_promotion": "PROHIBITED",
+  "u04_authority": "PROHIBITED_PENDING_U03_REPAIR_AND_FRESH_REVIEW",
+  "next_authorised_step": "WORKER executes only the bounded Reviewer-027 U03 native-comparator repair; U04 remains prohibited."
+}

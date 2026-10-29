@@ -1,0 +1,12 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/d549b6d808a9/g52-recovery/repository
+configfile: pyproject.toml
+collected 179 items
+
+tests/product/market_measurement_d013/test_ratio.py .................... [ 11%]
+........................................................................ [ 51%]
+........................................................................ [ 91%]
+...............                                                          [100%]
+
+======================== 179 passed in 99.02s (0:01:39) ========================

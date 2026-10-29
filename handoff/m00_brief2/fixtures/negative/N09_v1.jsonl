@@ -1,0 +1,1 @@
+{"base_scenario":"A4","case_id":"N09","controls":["M00B2-CONTROL-error316","M00B2-CONTROL-reconnect","M00B2-CONTROL-gap","M00B2-CONTROL-restart"],"expected":"DISCOVERABLE_INVALIDITY_AND_GENERATION_LINKS"}

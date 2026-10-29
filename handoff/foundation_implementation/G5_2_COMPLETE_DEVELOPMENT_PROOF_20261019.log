@@ -1,0 +1,18 @@
+Separately authorised bootstrap development proof; no active-target aggregate
+candidate=01080afc938eefedd6f8c385330876d3e2cb57d7
+generation=55e2284c8ee790cf996c6af445a43b00b5e7b9706a2a5f10fbe53ed597f1d1e4
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/d549b6d808a9/g52-recovery/repository
+configfile: pyproject.toml
+collected 85 items
+
+tests/product/market_measurement/test_boundary_pilot.py ................ [ 18%]
+.......                                                                  [ 27%]
+tests/product/market_measurement/test_selection_history.py ............. [ 42%]
+...................                                                      [ 64%]
+tests/product/market_measurement/test_identity_readback.py ........      [ 74%]
+tests/product/market_measurement/test_public_types.py ..........         [ 85%]
+tests/product/market_measurement/test_sqlite_boundary.py ............    [100%]
+
+============================== 85 passed in 3.92s ==============================

@@ -1,0 +1,193 @@
+{
+  "schema_version": 1,
+  "status": "commissioned_literal_synthetic_oracles_not_run",
+  "values": {
+    "D087_CALL": {
+      "midpoint_decimal": "1.30",
+      "members": [
+        "NVDA-M00-A-V1-A2-SEQ11",
+        "NVDA-M00-A-V1-A2-SEQ12",
+        "NVDA-M00-A-V1-A2-SEQ13",
+        "NVDA-M00-A-V1-A2-SEQ14"
+      ],
+      "as_of": "2026-10-20T12:40:00.300Z",
+      "oldest_newest_skew_ms": 80,
+      "newest_age_ms": 120
+    },
+    "D087_PUT": {
+      "midpoint_decimal": "2.30",
+      "as_of": "2026-10-20T12:40:00.400Z",
+      "oldest_newest_skew_ms": 70,
+      "newest_age_ms": 130
+    },
+    "D131": {
+      "midpoint_decimal": "1.30",
+      "inclusive_band": [
+        "0.80",
+        "1.80"
+      ],
+      "sizes": [
+        "5",
+        "3"
+      ],
+      "excluded_bid_price": "0.70",
+      "excluded_bid_size": "7",
+      "result_decimal": "8"
+    },
+    "D134": {
+      "native_side": 1,
+      "sizes": [
+        "5",
+        "3"
+      ],
+      "result_decimal": "8"
+    },
+    "D135": {
+      "native_side": 0,
+      "top_two_decimal": "6",
+      "top_one_decimal": "2"
+    },
+    "D136": {
+      "bid_decimal": "8",
+      "ask_decimal": "6",
+      "exact_ratio": [
+        1,
+        7
+      ],
+      "refusal_actual_ask_top_one_decimal": "2"
+    },
+    "D138": {
+      "actual_D011_midpoint_decimal": "100",
+      "bid_distances": [
+        1,
+        2,
+        3
+      ],
+      "bid_cumulative_sizes": [
+        2,
+        5,
+        9
+      ],
+      "ask_distances": [
+        1,
+        2,
+        3
+      ],
+      "ask_cumulative_sizes": [
+        5,
+        7,
+        10
+      ],
+      "bid_slope": [
+        7,
+        2
+      ],
+      "ask_slope": [
+        5,
+        2
+      ]
+    },
+    "D139": {
+      "window_seconds": 4,
+      "positions": [
+        1,
+        2
+      ],
+      "selected_sizes": [
+        "3",
+        "5"
+      ],
+      "count_rate": [
+        1,
+        2
+      ],
+      "size_rate": [
+        2,
+        1
+      ],
+      "final_bid_sizes": [
+        "5",
+        "3",
+        "5",
+        "6",
+        "7"
+      ]
+    },
+    "D140": {
+      "window_seconds": 2,
+      "deleted_native_size": "0",
+      "removed_prior_size": "6",
+      "count_rate": [
+        1,
+        2
+      ],
+      "size_rate": [
+        3,
+        1
+      ],
+      "final_bid_sizes": [
+        "5",
+        "7"
+      ]
+    },
+    "D143": {
+      "all_sides_all_standing_rows": true,
+      "mpid_totals": {
+        "ALPHA": "6",
+        "BETA": "2"
+      },
+      "shares": {
+        "ALPHA": [
+          3,
+          4
+        ],
+        "BETA": [
+          1,
+          4
+        ]
+      },
+      "hhi": [
+        5,
+        8
+      ],
+      "intermediate_insert_bid_mpid_position_size": [
+        [
+          "BETA",
+          0,
+          "9"
+        ],
+        [
+          "ALPHA",
+          1,
+          "4"
+        ],
+        [
+          "BETA",
+          2,
+          "1"
+        ]
+      ]
+    },
+    "D137_CALL": {
+      "formula": "(1.40*10+1.20*8)/(10+8)",
+      "exact_ratio": [
+        59,
+        45
+      ]
+    },
+    "D137_PUT": {
+      "formula": "(2.40*6+2.20*4)/(6+4)",
+      "exact_ratio": [
+        58,
+        25
+      ]
+    },
+    "D137_atomic_stock_retained": {
+      "exact_ratio": [
+        201,
+        2
+      ],
+      "source": "unchanged legacy authorised stock pair"
+    }
+  }
+}

@@ -1,0 +1,134 @@
+E501 Line too long (102 > 100)
+    --> src/nvda_desk/derived_signal_calculation_truth/api.py:2342:101
+     |
+2340 |                 selected_surface[rid] = tuple(latest_by_contract.values())
+2341 |             raw_inputs = selected_surface
+2342 |             selected_ids = {point.occurrence_id for values in raw_inputs.values() for point in values}
+     |                                                                                                     ^^
+2343 |             direct_lineage = [
+2344 |                 entry for entry in direct_lineage
+     |
+
+E501 Line too long (106 > 100)
+    --> src/nvda_desk/derived_signal_calculation_truth/api.py:2667:101
+     |
+2665 |                     from ._stage1 import _history_anchor
+2666 |
+2667 |                     skew_kernel_history = tuple(self._occurrence_kernel_value(value) for value in history)
+     |                                                                                                     ^^^^^^
+2668 |                     skew_pair = _history_anchor(
+2669 |                         skew_kernel_history, as_of=request.as_of_utc, seconds=seconds
+     |
+
+E501 Line too long (110 > 100)
+    --> src/nvda_desk/derived_signal_calculation_truth/api.py:2674:101
+     |
+2672 |                         return None
+2673 |                     selected_ids = {point.occurrence_id for point in skew_pair}
+2674 |                     history = tuple(value for value in history if value.derived_occurrence_id in selected_ids)
+     |                                                                                                     ^^^^^^^^^^
+2675 |                     if len(history) != 2:
+2676 |                         return None
+     |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> tests/product/derived_signal/test_m01_f4_d104_owner_rule.py:5:1
+   |
+ 3 |   Source-derived mandatory pair/history and exact-lineage proof. No live-provider claims.
+ 4 |   """
+ 5 | / from __future__ import annotations
+ 6 | |
+ 7 | | from dataclasses import replace
+ 8 | | from datetime import UTC, datetime, timedelta
+ 9 | | from decimal import Decimal
+10 | |
+11 | | import pytest
+12 | | from nvda_desk.derived_signal_calculation_truth import _stage1, api
+13 | | from nvda_desk.raw_signal_occurrence_truth import api as raw
+   | |____________________________________________________________^
+14 |
+15 |   AT = datetime(2026, 10, 12, 4, tzinfo=UTC)
+   |
+help: Organize imports
+
+B905 `zip()` without an explicit `strict=` parameter
+  --> tests/product/derived_signal/test_m01_f4_d104_owner_rule.py:41:65
+   |
+39 | def _kernel(values99=(10, 20), values100=(30, 40), **override: object):
+40 |     history = {
+41 |         "D099": tuple(_kv("D099", val, stage) for stage, val in zip(("prior", "current"), values99)),
+   |                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+42 |         "D100": tuple(_kv("D100", val, stage) for stage, val in zip(("prior", "current"), values100)),
+43 |     }
+   |
+help: Add explicit value for parameter `strict=`
+
+E501 Line too long (101 > 100)
+  --> tests/product/derived_signal/test_m01_f4_d104_owner_rule.py:41:101
+   |
+39 | def _kernel(values99=(10, 20), values100=(30, 40), **override: object):
+40 |     history = {
+41 |         "D099": tuple(_kv("D099", val, stage) for stage, val in zip(("prior", "current"), values99)),
+   |                                                                                                     ^
+42 |         "D100": tuple(_kv("D100", val, stage) for stage, val in zip(("prior", "current"), values100)),
+43 |     }
+   |
+
+B905 `zip()` without an explicit `strict=` parameter
+  --> tests/product/derived_signal/test_m01_f4_d104_owner_rule.py:42:65
+   |
+40 |     history = {
+41 |         "D099": tuple(_kv("D099", val, stage) for stage, val in zip(("prior", "current"), values99)),
+42 |         "D100": tuple(_kv("D100", val, stage) for stage, val in zip(("prior", "current"), values100)),
+   |                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+43 |     }
+44 |     history.update(override)
+   |
+help: Add explicit value for parameter `strict=`
+
+E501 Line too long (102 > 100)
+  --> tests/product/derived_signal/test_m01_f4_d104_owner_rule.py:42:101
+   |
+40 |     history = {
+41 |         "D099": tuple(_kv("D099", val, stage) for stage, val in zip(("prior", "current"), values99)),
+42 |         "D100": tuple(_kv("D100", val, stage) for stage, val in zip(("prior", "current"), values100)),
+   |                                                                                                     ^^
+43 |     }
+44 |     history.update(override)
+   |
+
+E501 Line too long (108 > 100)
+   --> tests/product/derived_signal/test_m01_f4_d104_owner_rule.py:111:101
+    |
+109 |                     ingestion_sequence_scope=raw.ingestion_sequence_scope("f4:d104"),
+110 |                     source_temporal_kind="true_instant", source_timestamp_raw=moment.isoformat(),
+111 |                     source_timezone_native="UTC", raw_signal_catalogue_ids=(raw.RawSignalCatalogueId(rid),),
+    |                                                                                                     ^^^^^^^^
+112 |                     source_variant="surface-point", subject_instrument="NVDA", native_units="canonical",
+113 |                     revision_vintage_native="v1",
+    |
+
+E501 Line too long (104 > 100)
+   --> tests/product/derived_signal/test_m01_f4_d104_owner_rule.py:112:101
+    |
+110 |                     source_temporal_kind="true_instant", source_timestamp_raw=moment.isoformat(),
+111 |                     source_timezone_native="UTC", raw_signal_catalogue_ids=(raw.RawSignalCatalogueId(rid),),
+112 |                     source_variant="surface-point", subject_instrument="NVDA", native_units="canonical",
+    |                                                                                                     ^^^^
+113 |                     revision_vintage_native="v1",
+114 |                 ))
+    |
+
+E501 Line too long (105 > 100)
+   --> tests/product/derived_signal/test_m01_f4_d104_owner_rule.py:128:101
+    |
+126 |         ) for rid in ("R111", "R112", "R015")),
+127 |         parameter_sets=(
+128 |             api.CalculationParameterSetV1("d104-basic", 1, "P_BASIC", (("subject_instrument", "NVDA"),)),
+    |                                                                                                     ^^^^^
+129 |             api.CalculationParameterSetV1("d104-window", 1, "P_WINDOW", (("anchor_seconds", 60),)),
+130 |         ),
+    |
+
+Found 11 errors.
+[*] 1 fixable with the `--fix` option (2 hidden fixes can be enabled with the `--unsafe-fixes` option).

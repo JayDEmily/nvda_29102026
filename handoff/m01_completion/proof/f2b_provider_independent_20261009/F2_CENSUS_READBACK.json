@@ -1,0 +1,39 @@
+{
+  "authoritative_f1_edges": 488,
+  "f1_counts_by_class": {
+    "RC01": 35,
+    "RC02": 29,
+    "RC03": 29,
+    "RC04": 17,
+    "RC05": 20,
+    "RC06": 29,
+    "RC07": 4,
+    "RC08": 8,
+    "RC09": 2,
+    "RC10": 4,
+    "RC11": 9,
+    "RC12": 68,
+    "RC13": 21,
+    "RC14": 45,
+    "RC15": 42,
+    "RC16": 57,
+    "RC17": 26,
+    "RC18": 1,
+    "RC19": 5,
+    "RC20": 3,
+    "RC21": 35
+  },
+  "f2_counts_by_class": {
+    "RC01": 3,
+    "RC07": 4,
+    "RC08": 8,
+    "RC09": 2,
+    "RC21": 1
+  },
+  "f2_duplicate_ids": 0,
+  "f2_missing_in_f1": [],
+  "f2_scoped_edges": 18,
+  "f2_unresolved_edge_statuses": [],
+  "independent_acceptance": "PENDING",
+  "provider_source_verification": "UNVERIFIED; controlled M00 projection only"
+}

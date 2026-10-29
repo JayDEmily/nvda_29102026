@@ -1,0 +1,13 @@
+schema_version: "1.0"
+brief_sha256: {{brief_sha256}}
+acceptance:
+  status: ACCEPTED_FOR_IMPLEMENTATION
+  authority_ref: {{acceptance_ref}}
+targets:
+  # Keep the entries that apply. A create supplies category + responsibility name;
+  # the kernel resolves its numeric identifier. A modify supplies an existing ID.
+  - action: create
+    category: {{category}}
+    name: {{responsibility_name}}
+  - action: modify
+    object_id: {{existing_object_id}}

@@ -1,0 +1,50 @@
+Reviewer 030 material command/evidence record
+
+SOURCE / GOVERNANCE / LINEAGE
+- sha256sum received TAR
+  -> 88e54bf699fe53c9e23f4ab4da9a0abed0bae6a46924c88fbe1002d47ca6b9f8
+- read root README.md, GUARDRAILS.md, AGENTS.md, complete EXEC_PLAN.md, tests/AGENTS.override.md,
+  CURRENT_STATE.md and active Reviewer-030 REQUEST.md
+- read VI13R_U03_NATIVE_VALUE_DOMAIN_AUTHORITY.md, IRB BC-005/006/009/010/012, IWO-U03/U04,
+  Worker closure evidence/commands, exact candidate source/proof, Reviewer-025..029 lineage
+- candidate: 45ca4b8dcca6fdb5001e1754fd81bdba37ce05bf
+- candidate tree: 81ef8edc93c9b322b29cdec6b9ab76b731d8e9a5
+- candidate-to-handoff diff under src tests pyproject.toml -> empty
+
+STATIC AUTHORITY REPRESENTABILITY
+- inspected Python Typing Specification: https://typing.python.org/en/latest/spec/concepts.html
+  -> nominal class types include direct/indirect subclasses; subclass types are assignable to superclasses
+- recorded authority clarification VI13R_U03_NATIVE_VALUE_STATIC_TYPING_CLARIFICATION.md
+  -> static alias is finite nominal envelope; exact subclass exclusion remains runtime law
+
+INDEPENDENT EXACT-CANDIDATE EXECUTION
+- Python --version -> Python 3.13.5
+- python -m mypy availability probe through committed tests -> unavailable: No module named mypy
+- first U01+U02+U03 run with incomplete deselection -> 381 passed, 1 deselected, 2 failures;
+  both failures solely missing mypy module
+- corrected U01+U02+U03 run deselecting exactly three mypy-invoking test bodies
+  -> 381 passed, 3 deselected
+- public alias structure inspection with PYTHONPATH=src
+  -> R030_STATIC_ALIAS_STRUCTURE=PASS
+- independent runtime float/Decimal/subclass challenge with PYTHONPATH=src
+  -> R030_CLASS_LEVEL_RUNTIME_CHALLENGE=PASS
+- PYTHONPATH=src python tools/validate_product_proof.py -> PASS, 6 families, 13/13 obligations
+- PYTHONPATH=src python tools/validate_architecture.py -> PASS
+- PYTHONPATH=src python tools/check_dependencies.py -> PASS
+- PYTHONPATH=src python tools/check_public_seams.py -> PASS
+- git diff --check authority-parent..candidate -> rc 0
+- git fsck --full --strict -> rc 0; dangling blob 895775b2d27b6006f3f245b6742d5d021fed089b diagnostic
+
+WORKER-PRESERVED EXACT-PINNED EVIDENCE (NOT INDEPENDENTLY RE-EXECUTED)
+- U03 56/56
+- U01+U02+U03 384/384
+- mypy source + strict modified API green
+- Ruff green
+- architecture/bootstrap 74/74
+- architecture promotion 74/74
+
+DISPOSITION
+- recurrence classification: RECURRENT_CLASS, class-level mechanism reviewed
+- new authorised-carrier defects: none
+- final: PASS
+- U03 may be promoted; U04 only after lawful promotion

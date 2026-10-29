@@ -1,0 +1,110 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/17246e12ecdd/plan-d119-clean
+configfile: pyproject.toml
+collected 2 items
+
+tests/product/market_measurement_d010/test_signal.py F.                  [100%]
+
+=================================== FAILURES ===================================
+__________________________ test_d010_signal[success] ___________________________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_d010_signal_success_0')
+refused = False
+
+    @pytest.mark.parametrize("refused", (False, True), ids=("success", "refusal"))
+    def test_d010_signal(tmp_path, refused):
+        raw = r.create_owner()
+        natives = ("2026-10-10T00:59:50+11:00", "+11:00", "Australia/Melbourne",
+                   "overnight/1", "controlled-overnight/1", 1)
+        roles = ("source_timestamp", "source_timezone", "exchange_iana",
+                 "session_identity", "calendar_identity", "delivered_market_mode")
+        projected = []
+        for index, mapping in enumerate(MAPS):
+            if index < 3:
+                container, field = "time", ("value", "timezone", "iana")[index]
+            elif index < 5:
+                container, field = "calendar", ("session", "identity")[index - 3]
+            else:
+                container, field = "market", "delivered_mode"
+            native_record = {"sample": {"id": SAMPLE}, "value": {"role": roles[index]},
+                             container: {field: natives[index]}}
+            if index == 5:
+                native_record.update(requested={"mode": "live"},
+                                     generation={"id": "controlled-stream/1"})
+            raw.commands.admit_raw_observation_occurrence(r.RawObservationOccurrenceV1(
+                concept_id=r.concept_id("raw_signal.raw_observation_occurrence"),
+                contract_id=r.contract_id("nvda.raw_signal.RawObservationOccurrence.v1"),
+                observation_occurrence_id=r.observation_occurrence_id(f"d010-{index}"),
+                delivery_artifact_ref=r.delivery_artifact_ref("d010-controlled"),
+                source_provider=r.provider_id(PROVIDER), native_record=native_record,
+                received_ts_utc=RECEIPT, ingestion_sequence=index + 1,
+                ingestion_sequence_scope=r.ingestion_sequence_scope(PROVIDER + "/" + VARIANT),
+                source_temporal_kind="true_instant",
+                raw_signal_catalogue_ids=(mapping.raw_signal_catalogue_id,),
+                source_variant=VARIANT, subject_instrument="NVDA", native_units=mapping.native_units,
+                source_timestamp_raw=natives[0] if index == 0 else "2026-10-09T13:59:50Z",
+                source_timezone_native="+11:00" if index == 0 else "UTC",
+            ))
+            page = raw.reads.list_projected_raw_history(
+                mapping.raw_signal_catalogue_id, mappings=(mapping,), subject_instrument="NVDA",
+                received_at_or_before_utc=T, event_at_or_before_utc=None, limit=100, cursor=None,
+            )
+            assert page.next_cursor is None and len(page.items) == 1
+            item = page.items[0]
+            assert item.native_value == natives[index] and item.received_ts_utc == RECEIPT
+            assert item.observation_occurrence_id.value == f"d010-{index}"
+            assert item.selection_identity.value_for("sample.id") == SAMPLE
+            assert item.selection_identity.value_for("value.role") == roles[index]
+            if index == 5:
+                assert type(item.native_value) is int
+                assert item.selection_identity.value_for("requested.mode") == "live"
+                assert item.selection_identity.value_for("generation.id") == "controlled-stream/1"
+            projected.append(item)
+        d001 = f.create_temporal_owner(
+            admission=f.OwnerAdmissionV1("M02", D001_BRIEF), raw_projection_reader=raw.reads,
+            storage=f.MemoryStorageV1(), utc_now=lambda: NOW,
+        )
+        p001 = d001.materialise(d001_request())
+        assert type(p001) is f.TemporalOccurrenceV1 and p001.result == EVENT
+        assert tuple(line.projection for line in p001.raw_input_lineage) == tuple(projected[:2])
+        d003 = f.create_temporal_local_owner(
+            admission=f.OwnerAdmissionV1("M02", D003_BRIEF), raw_projection_reader=raw.reads,
+            predecessor_reader=d001.reads, storage=f.MemoryStorageV1(), utc_now=lambda: NOW,
+        )
+        p003 = d003.materialise(d003_request(p001.derived_occurrence_id))
+        assert type(p003) is f.TemporalLocalOccurrenceV1
+        assert p003.result.isoformat() == "2026-10-10T00:59:50+11:00"
+        assert p003.raw_input_lineage.projection == projected[2] and p003.predecessor == p001
+        request = d010_request(p003.derived_occurrence_id, refused)
+        admission = f.OwnerAdmissionV1("M02", BRIEF)
+        path = str(tmp_path / "d010.sqlite")
+        owner = f.create_market_open_owner(
+            admission=admission, raw_projection_reader=raw.reads,
+            predecessor_reader=d003.reads, storage=f.SQLiteStorageV1(path, True),
+            utc_now=lambda: NOW,
+        )
+        result = owner.materialise(request)
+        reader = f.create_market_open_reader(admission=admission, storage=f.SQLiteReadStorageV1(path))
+        history = dict(derived_signal_id="D010", subject_instrument="NVDA",
+                       effective_at_or_before_utc=T, knowledge_at_or_before_utc=T, limit=10)
+        if refused:
+            assert projected[5].native_value == 1 and projected[3].native_value == "overnight/1"
+            assert request.market_state_policy.open_dates == ()
+            assert result is None
+            assert owner.reads.list_derived_history(**history) == ()
+            assert reader.list_derived_history(**history) == ()
+            return
+>       assert type(result) is f.MarketOpenOccurrenceV1
+E       AssertionError: assert <class 'NoneType'> is <class 'nvda_desk.market_measurement_truth.api.MarketOpenOccurrenceV1'>
+E        +  where <class 'NoneType'> = type(None)
+E        +  and   <class 'nvda_desk.market_measurement_truth.api.MarketOpenOccurrenceV1'> = f.MarketOpenOccurrenceV1
+
+tests/product/market_measurement_d010/test_signal.py:266: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/market_measurement_d010/test_signal.py::test_d010_signal[success]
+========================= 1 failed, 1 passed in 0.20s ==========================
+product-proof aggregate: neutral_market_measurement_truth_d010 state=READY_FOR_PROOF
+authority=8eead9ba80813cd82244ce076af7a18fdef121474c0dd15a346aee814e892a98 generation=82fe33f0d47e999f48906569d44a1b0d9372322f2c3d45757d09129fea229867
+candidate=613fe9b4034e335b482660236ad42be8997eeda0
+observed aggregate outcome: exit=1

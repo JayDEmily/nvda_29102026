@@ -1,0 +1,38 @@
+schema_version: "1.0"
+claim_id: raw_signal_occurrence_truth_product
+bicp:
+  path: handoff/authority/BICP_CANDIDATE_005.json
+  sha256: 5b99cead41fd8d3d372b5ed2ef4558065328b814e0a94c3680162fc6594df5ed
+  packet_id: BICP-CANDIDATE-005
+irb:
+  path: handoff/authority/IRB_ACCEPTED_IMPLEMENTATION_BRIEF.md
+  sha256: 938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342
+implementation_target:
+  object_id: M00
+  package: nvda_desk.raw_signal_occurrence_truth
+  public_seam: nvda_desk.raw_signal_occurrence_truth.api
+routed_authority_ids:
+  - AUTH-N04
+  - AUTH-VG
+  - AUTH-N06
+  - AUTH-N18
+  - AUTH-N15
+  - AUTH-N19
+required_product_proof_ids:
+  - IA17-PROD-001
+  - IA17-PROD-002
+  - IA17-PROD-003
+  - IA17-PROD-004
+  - IA17-PROD-005
+  - IA17-PROD-006
+  - IA17-PROD-007
+  - IA17-PROD-008
+  - IA22R01-PROD-009
+  - IA17-PROD-010
+  - IA17-PROD-011
+  - IA17-PROD-012
+  - IA17-PROD-013
+forbidden_predecessor_proof_ids:
+  - IA17-PROD-009
+product_tier_treatment: NOT_CLASSIFIED
+architecture_proof_axis: architecture_kernel

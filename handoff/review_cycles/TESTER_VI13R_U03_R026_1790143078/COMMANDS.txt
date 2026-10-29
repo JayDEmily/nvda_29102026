@@ -1,0 +1,69 @@
+Reviewer 026 command record — commands materially bearing on disposition
+
+SOURCE / GOVERNANCE / GIT BINDING
+- sha256sum 'NVDA_G03_TESTER_VI13R_U03_R026_1790143078_FULL_GIT_20260923.tar(1).gz'
+  -> 8c8ea063fb11de9ca059b77b80e56f857a3f6edcbfebf9fe8350b6b713fc18b7
+- read README.md in full and followed its role/cycle routing
+- read GUARDRAILS.md in full before substantive review and repeatedly before project responses/actions
+- read root AGENTS.md, complete current EXEC_PLAN.md, tests/AGENTS.override.md,
+  handoff/control/CURRENT_STATE.md and active Reviewer-026 REQUEST.md
+- read accepted IRB, BICP Markdown, complete IWO, Reviewer-025 disposition/evidence,
+  Worker Reviewer-025 repair evidence, exact repair diff, complete candidate api.py,
+  complete U03 product proof and relevant public proof support
+- transported repository HEAD before review:
+  418fb198ab1884e382171346f8868494e928b449
+- exact repaired U03 candidate/tree:
+  6316735eb22bdbe243b02637f09376bf1200e43d / a9cc881f50b7a6adf021ce80fce52a330e9d203d
+- accepted forward main:
+  a78ae7b5515c2e482a2656cebeebae3fa5a6d584
+- candidate-to-transport material diff over src/tests/config/tools/pyproject.toml -> none
+- repair binary diff SHA-256 over api.py + U03 proof:
+  5af39d80702380726633d379b719d99093dc8b7af46224ff7de06a40a9134cad
+
+EXACT REVIEW TOOLCHAIN
+- initial preflight: Python 3.13.5; installed pytest 9.0.2; mypy module absent; Ruff executable absent
+- preserved local wheel search found pytest 9.0.3 and Ruff 0.15.11 in prior full-Git artefacts,
+  and mypy 1.20.1 plus librt/mypy_extensions/typing_extensions in the AKR5 dependency-ingress artefact
+- exact wheels provisioned outside repository
+- final exact versions: Python 3.13.5; pytest 9.0.3; mypy 1.20.1 (compiled); Ruff 0.15.11
+
+EXACT CANDIDATE VALIDATION — detached candidate worktree
+- first focused pytest command used non-existent guessed U01/U02 filenames -> rc=4; no repository mutation
+- corrected repository-current U01+U02+U03 pytest -> 368 passed; rc=0
+- strict positive mypy public-seam specimen -> rc=0
+- strict negative mypy public-seam specimen -> rc=1 as intended; 15 diagnostics
+- mypy src --show-error-codes -> Success: no issues found in 15 source files; rc=0
+- Ruff src tests tools -> All checks passed; rc=0
+- validate_product_proof.py -> PASS; six families; 13/13 obligations; rc=0
+- validate_architecture.py -> PASS; zero dependency/public-seam violations; rc=0
+- check_dependencies.py -> PASS; rc=0
+- check_public_seams.py -> PASS; rc=0
+- pytest tests/architecture tests/bootstrap -> 74 passed; rc=0
+- run_promotion_gate.py --set architecture_kernel -> 74 passed; rc=0
+- git diff --check -> rc=0
+- git fsck --full --strict -> rc=0
+- exact detached candidate worktree after validation -> clean
+
+REVIEWER-025 REQUIRED CLOSURE CANARIES
+- same ID native int 1 -> float 1.0: REJECTED; original readback remains int 1
+- same ID Decimal('1.0') -> Decimal('1.00'): REJECTED; original readback retains Decimal('1.0')
+- focused repaired proof includes separately reconstructed ordinary identical native payloads -> idempotent
+
+R026-U03-F001 CANARIES
+- same ID, separately reconstructed float('nan') -> REJECTED as conflicting; original remains stored
+- same ID, separately reconstructed Decimal('NaN') -> REJECTED as conflicting; original remains stored
+- observed cause in candidate source: _observations_exactly_equal first requires ordinary dataclass equality
+  before invoking the native fidelity comparator
+
+R026-U03-F002 CANARY
+- same ID native complex(-0.0, 0.0) -> complex(0.0, 0.0): ACCEPTED_SAME, not rejected
+- original stored readback remains (-0+0j)
+- observed cause in candidate source: complex is listed as numeric but falls back to ordinary ==
+
+DISPOSITION
+- R025-U03-F001: NOT FULLY CLOSED
+- R026-U03-F001: OPEN / CRITICAL
+- R026-U03-F002: OPEN / CRITICAL
+- final: FAIL / RETURN_TO_WORKER
+- U03 promotion prohibited
+- U04 remains prohibited

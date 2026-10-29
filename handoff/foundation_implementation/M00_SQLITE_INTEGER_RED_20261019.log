@@ -1,0 +1,358 @@
+FFFFFFF                                                                  [100%]
+=================================== FAILURES ===================================
+_ test_sqlite_integer_fidelity_beyond_runtime_decimal_conversion_limit[native--1] _
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-10/test_sqlite_integer_fidelity_b0')
+field = 'native', sign = -1
+
+    @pytest.mark.parametrize("sign", (-1, 1))
+    @pytest.mark.parametrize("field", ("native", "sequence", "epoch"))
+    def test_sqlite_integer_fidelity_beyond_runtime_decimal_conversion_limit(tmp_path, field, sign):
+        # Storage-contract boundary witness, NOT a claim about IBKR feed magnitudes.
+        huge = sign * 10**5000
+        path = tmp_path / "huge.db"
+        o = owner(path, create=True)
+        raw = observation(
+            native={"value": huge} if field == "native" else {"value": 1},
+            sequence=huge if field == "sequence" else 1,
+            received_epoch_ns=huge if field == "epoch" else None,
+        )
+>       assert o.commands.admit_raw_observation_occurrence(raw) is raw
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/raw_signal_sqlite/test_contract_native.py:237: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/nvda_desk/raw_signal_occurrence_truth/api.py:1007: in admit_raw_observation_occurrence
+    return self.__admit_observation(value)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/nvda_desk/raw_signal_occurrence_truth/api.py:1385: in admit_observation
+    transaction.append_observation(value)
+src/nvda_desk/raw_signal_occurrence_truth/_sqlite.py:413: in append_observation
+    self.__append(_OBSERVATION, value)
+src/nvda_desk/raw_signal_occurrence_truth/_sqlite.py:313: in __append
+    payload = _encode(value)
+              ^^^^^^^^^^^^^^
+src/nvda_desk/raw_signal_occurrence_truth/_sqlite.py:142: in _encode
+    _encode_native_record(value.native_record).hex()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/nvda_desk/raw_signal_occurrence_truth/_native_codec.py:145: in _encode_native_record
+    return _NATIVE_CODEC_PREFIX + _encode_native_value(cast(NativeValueV1, value))
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/nvda_desk/raw_signal_occurrence_truth/_native_codec.py:63: in _encode_native_value
+    _encode_native_value(item),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = <[ValueError('Exceeds the limit (4300 digits) for integer string conversion; use sys.set_int_max_str_digits() to increase the limit') raised in repr()] int object at 0xbd1e8b0>
+
+    def _encode_native_value(value: NativeValueV1) -> bytes:
+        if value is None:
+            return b"n"
+        if type(value) is bool:
+            return b"b\x01" if value else b"b\x00"
+        if type(value) is int:
+>           payload = str(value).encode("ascii")
+                      ^^^^^^^^^^
+E           ValueError: Exceeds the limit (4300 digits) for integer string conversion; use sys.set_int_max_str_digits() to increase the limit
+
+src/nvda_desk/raw_signal_occurrence_truth/_native_codec.py:25: ValueError
+_ test_sqlite_integer_fidelity_beyond_runtime_decimal_conversion_limit[native-1] _
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-10/test_sqlite_integer_fidelity_b1')
+field = 'native', sign = 1
+
+    @pytest.mark.parametrize("sign", (-1, 1))
+    @pytest.mark.parametrize("field", ("native", "sequence", "epoch"))
+    def test_sqlite_integer_fidelity_beyond_runtime_decimal_conversion_limit(tmp_path, field, sign):
+        # Storage-contract boundary witness, NOT a claim about IBKR feed magnitudes.
+        huge = sign * 10**5000
+        path = tmp_path / "huge.db"
+        o = owner(path, create=True)
+        raw = observation(
+            native={"value": huge} if field == "native" else {"value": 1},
+            sequence=huge if field == "sequence" else 1,
+            received_epoch_ns=huge if field == "epoch" else None,
+        )
+>       assert o.commands.admit_raw_observation_occurrence(raw) is raw
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/raw_signal_sqlite/test_contract_native.py:237: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/nvda_desk/raw_signal_occurrence_truth/api.py:1007: in admit_raw_observation_occurrence
+    return self.__admit_observation(value)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/nvda_desk/raw_signal_occurrence_truth/api.py:1385: in admit_observation
+    transaction.append_observation(value)
+src/nvda_desk/raw_signal_occurrence_truth/_sqlite.py:413: in append_observation
+    self.__append(_OBSERVATION, value)
+src/nvda_desk/raw_signal_occurrence_truth/_sqlite.py:313: in __append
+    payload = _encode(value)
+              ^^^^^^^^^^^^^^
+src/nvda_desk/raw_signal_occurrence_truth/_sqlite.py:142: in _encode
+    _encode_native_record(value.native_record).hex()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/nvda_desk/raw_signal_occurrence_truth/_native_codec.py:145: in _encode_native_record
+    return _NATIVE_CODEC_PREFIX + _encode_native_value(cast(NativeValueV1, value))
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/nvda_desk/raw_signal_occurrence_truth/_native_codec.py:63: in _encode_native_value
+    _encode_native_value(item),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = <[ValueError('Exceeds the limit (4300 digits) for integer string conversion; use sys.set_int_max_str_digits() to increase the limit') raised in repr()] int object at 0xbd13f20>
+
+    def _encode_native_value(value: NativeValueV1) -> bytes:
+        if value is None:
+            return b"n"
+        if type(value) is bool:
+            return b"b\x01" if value else b"b\x00"
+        if type(value) is int:
+>           payload = str(value).encode("ascii")
+                      ^^^^^^^^^^
+E           ValueError: Exceeds the limit (4300 digits) for integer string conversion; use sys.set_int_max_str_digits() to increase the limit
+
+src/nvda_desk/raw_signal_occurrence_truth/_native_codec.py:25: ValueError
+_ test_sqlite_integer_fidelity_beyond_runtime_decimal_conversion_limit[sequence--1] _
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-10/test_sqlite_integer_fidelity_b2')
+field = 'sequence', sign = -1
+
+    @pytest.mark.parametrize("sign", (-1, 1))
+    @pytest.mark.parametrize("field", ("native", "sequence", "epoch"))
+    def test_sqlite_integer_fidelity_beyond_runtime_decimal_conversion_limit(tmp_path, field, sign):
+        # Storage-contract boundary witness, NOT a claim about IBKR feed magnitudes.
+        huge = sign * 10**5000
+        path = tmp_path / "huge.db"
+        o = owner(path, create=True)
+        raw = observation(
+            native={"value": huge} if field == "native" else {"value": 1},
+            sequence=huge if field == "sequence" else 1,
+            received_epoch_ns=huge if field == "epoch" else None,
+        )
+>       assert o.commands.admit_raw_observation_occurrence(raw) is raw
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/raw_signal_sqlite/test_contract_native.py:237: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/nvda_desk/raw_signal_occurrence_truth/api.py:1007: in admit_raw_observation_occurrence
+    return self.__admit_observation(value)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/nvda_desk/raw_signal_occurrence_truth/api.py:1385: in admit_observation
+    transaction.append_observation(value)
+src/nvda_desk/raw_signal_occurrence_truth/_sqlite.py:413: in append_observation
+    self.__append(_OBSERVATION, value)
+src/nvda_desk/raw_signal_occurrence_truth/_sqlite.py:313: in __append
+    payload = _encode(value)
+              ^^^^^^^^^^^^^^
+src/nvda_desk/raw_signal_occurrence_truth/_sqlite.py:144: in _encode
+    else _metadata(getattr(value, f.name))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = <[ValueError('Exceeds the limit (4300 digits) for integer string conversion; use sys.set_int_max_str_digits() to increase the limit') raised in repr()] int object at 0xbcd3ed0>
+
+    def _metadata(value: Any) -> Any:
+        if value is None or type(value) is str:
+            return value
+        if type(value) is int:
+>           return {"kind": "integer", "value": str(value)}
+                                                ^^^^^^^^^^
+E           ValueError: Exceeds the limit (4300 digits) for integer string conversion; use sys.set_int_max_str_digits() to increase the limit
+
+src/nvda_desk/raw_signal_occurrence_truth/_sqlite.py:129: ValueError
+_ test_sqlite_integer_fidelity_beyond_runtime_decimal_conversion_limit[sequence-1] _
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-10/test_sqlite_integer_fidelity_b3')
+field = 'sequence', sign = 1
+
+    @pytest.mark.parametrize("sign", (-1, 1))
+    @pytest.mark.parametrize("field", ("native", "sequence", "epoch"))
+    def test_sqlite_integer_fidelity_beyond_runtime_decimal_conversion_limit(tmp_path, field, sign):
+        # Storage-contract boundary witness, NOT a claim about IBKR feed magnitudes.
+        huge = sign * 10**5000
+        path = tmp_path / "huge.db"
+        o = owner(path, create=True)
+        raw = observation(
+            native={"value": huge} if field == "native" else {"value": 1},
+            sequence=huge if field == "sequence" else 1,
+            received_epoch_ns=huge if field == "epoch" else None,
+        )
+>       assert o.commands.admit_raw_observation_occurrence(raw) is raw
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/raw_signal_sqlite/test_contract_native.py:237: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/nvda_desk/raw_signal_occurrence_truth/api.py:1007: in admit_raw_observation_occurrence
+    return self.__admit_observation(value)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/nvda_desk/raw_signal_occurrence_truth/api.py:1385: in admit_observation
+    transaction.append_observation(value)
+src/nvda_desk/raw_signal_occurrence_truth/_sqlite.py:413: in append_observation
+    self.__append(_OBSERVATION, value)
+src/nvda_desk/raw_signal_occurrence_truth/_sqlite.py:313: in __append
+    payload = _encode(value)
+              ^^^^^^^^^^^^^^
+src/nvda_desk/raw_signal_occurrence_truth/_sqlite.py:144: in _encode
+    else _metadata(getattr(value, f.name))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = <[ValueError('Exceeds the limit (4300 digits) for integer string conversion; use sys.set_int_max_str_digits() to increase the limit') raised in repr()] int object at 0xbe2c5e0>
+
+    def _metadata(value: Any) -> Any:
+        if value is None or type(value) is str:
+            return value
+        if type(value) is int:
+>           return {"kind": "integer", "value": str(value)}
+                                                ^^^^^^^^^^
+E           ValueError: Exceeds the limit (4300 digits) for integer string conversion; use sys.set_int_max_str_digits() to increase the limit
+
+src/nvda_desk/raw_signal_occurrence_truth/_sqlite.py:129: ValueError
+_ test_sqlite_integer_fidelity_beyond_runtime_decimal_conversion_limit[epoch--1] _
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-10/test_sqlite_integer_fidelity_b4')
+field = 'epoch', sign = -1
+
+    @pytest.mark.parametrize("sign", (-1, 1))
+    @pytest.mark.parametrize("field", ("native", "sequence", "epoch"))
+    def test_sqlite_integer_fidelity_beyond_runtime_decimal_conversion_limit(tmp_path, field, sign):
+        # Storage-contract boundary witness, NOT a claim about IBKR feed magnitudes.
+        huge = sign * 10**5000
+        path = tmp_path / "huge.db"
+        o = owner(path, create=True)
+        raw = observation(
+            native={"value": huge} if field == "native" else {"value": 1},
+            sequence=huge if field == "sequence" else 1,
+            received_epoch_ns=huge if field == "epoch" else None,
+        )
+>       assert o.commands.admit_raw_observation_occurrence(raw) is raw
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/raw_signal_sqlite/test_contract_native.py:237: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/nvda_desk/raw_signal_occurrence_truth/api.py:1007: in admit_raw_observation_occurrence
+    return self.__admit_observation(value)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/nvda_desk/raw_signal_occurrence_truth/api.py:1385: in admit_observation
+    transaction.append_observation(value)
+src/nvda_desk/raw_signal_occurrence_truth/_sqlite.py:413: in append_observation
+    self.__append(_OBSERVATION, value)
+src/nvda_desk/raw_signal_occurrence_truth/_sqlite.py:313: in __append
+    payload = _encode(value)
+              ^^^^^^^^^^^^^^
+src/nvda_desk/raw_signal_occurrence_truth/_sqlite.py:144: in _encode
+    else _metadata(getattr(value, f.name))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = <[ValueError('Exceeds the limit (4300 digits) for integer string conversion; use sys.set_int_max_str_digits() to increase the limit') raised in repr()] int object at 0xbcedf00>
+
+    def _metadata(value: Any) -> Any:
+        if value is None or type(value) is str:
+            return value
+        if type(value) is int:
+>           return {"kind": "integer", "value": str(value)}
+                                                ^^^^^^^^^^
+E           ValueError: Exceeds the limit (4300 digits) for integer string conversion; use sys.set_int_max_str_digits() to increase the limit
+
+src/nvda_desk/raw_signal_occurrence_truth/_sqlite.py:129: ValueError
+_ test_sqlite_integer_fidelity_beyond_runtime_decimal_conversion_limit[epoch-1] _
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-10/test_sqlite_integer_fidelity_b5')
+field = 'epoch', sign = 1
+
+    @pytest.mark.parametrize("sign", (-1, 1))
+    @pytest.mark.parametrize("field", ("native", "sequence", "epoch"))
+    def test_sqlite_integer_fidelity_beyond_runtime_decimal_conversion_limit(tmp_path, field, sign):
+        # Storage-contract boundary witness, NOT a claim about IBKR feed magnitudes.
+        huge = sign * 10**5000
+        path = tmp_path / "huge.db"
+        o = owner(path, create=True)
+        raw = observation(
+            native={"value": huge} if field == "native" else {"value": 1},
+            sequence=huge if field == "sequence" else 1,
+            received_epoch_ns=huge if field == "epoch" else None,
+        )
+>       assert o.commands.admit_raw_observation_occurrence(raw) is raw
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/raw_signal_sqlite/test_contract_native.py:237: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/nvda_desk/raw_signal_occurrence_truth/api.py:1007: in admit_raw_observation_occurrence
+    return self.__admit_observation(value)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/nvda_desk/raw_signal_occurrence_truth/api.py:1385: in admit_observation
+    transaction.append_observation(value)
+src/nvda_desk/raw_signal_occurrence_truth/_sqlite.py:413: in append_observation
+    self.__append(_OBSERVATION, value)
+src/nvda_desk/raw_signal_occurrence_truth/_sqlite.py:313: in __append
+    payload = _encode(value)
+              ^^^^^^^^^^^^^^
+src/nvda_desk/raw_signal_occurrence_truth/_sqlite.py:144: in _encode
+    else _metadata(getattr(value, f.name))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = <[ValueError('Exceeds the limit (4300 digits) for integer string conversion; use sys.set_int_max_str_digits() to increase the limit') raised in repr()] int object at 0xbcf6660>
+
+    def _metadata(value: Any) -> Any:
+        if value is None or type(value) is str:
+            return value
+        if type(value) is int:
+>           return {"kind": "integer", "value": str(value)}
+                                                ^^^^^^^^^^
+E           ValueError: Exceeds the limit (4300 digits) for integer string conversion; use sys.set_int_max_str_digits() to increase the limit
+
+src/nvda_desk/raw_signal_occurrence_truth/_sqlite.py:129: ValueError
+__________ test_sqlite_large_policy_version_remains_exact_through_a00 __________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-10/test_sqlite_large_policy_versi0')
+
+    def test_sqlite_large_policy_version_remains_exact_through_a00(tmp_path):
+        from nvda_desk.composition import create_application
+    
+        path = tmp_path / "policy.db"
+        owner(path, create=True)
+        version = 10**5000
+        p = policy(scope_policy_version=version)
+        ref = api.scope_policy_ref("policy@1" + "0" * 5000)
+        app = create_application(
+            sqlite_path=str(path), raw_signal_eligibility_resolver=lambda observation, policy: True
+        )
+>       result = app.run_raw_signal_proof_sequence(
+            capture_scope_policy=p, scope_policy_ref=ref, slot_start_utc=T0,
+            capture_occurrence_id=api.capture_occurrence_id("capture"),
+            raw_observation=observation(), assessment_occurrence_id=api.assessment_occurrence_id("a"),
+            assessment_evidence_as_of_ts_utc=T0, supersedes_assessment_ref=None,
+        )
+
+tests/product/raw_signal_sqlite/test_contract_native.py:277: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/nvda_desk/composition/__init__.py:79: in run_raw_signal_proof_sequence
+    registered_policy = commands.register_capture_scope_policy(capture_scope_policy)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/nvda_desk/raw_signal_occurrence_truth/api.py:992: in register_capture_scope_policy
+    return self.__register_policy(value)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/nvda_desk/raw_signal_occurrence_truth/api.py:1169: in register_policy
+    scope_ref = _scope_ref_for_policy(value)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = <[ValueError('Exceeds the limit (4300 digits) for integer string conversion; use sys.set_int_max_str_digits() to increase the limit') raised in repr()] CaptureScopePolicyV1 object at 0x7fae06644e20>
+
+    def _scope_ref_for_policy(value: CaptureScopePolicyV1) -> _ScopePolicyRef:
+>       return _ScopePolicyRef(f"{value.scope_policy_id.value}@{value.scope_policy_version}")
+                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       ValueError: Exceeds the limit (4300 digits) for integer string conversion; use sys.set_int_max_str_digits() to increase the limit
+
+src/nvda_desk/raw_signal_occurrence_truth/api.py:792: ValueError
+=========================== short test summary info ============================
+FAILED tests/product/raw_signal_sqlite/test_contract_native.py::test_sqlite_integer_fidelity_beyond_runtime_decimal_conversion_limit[native--1]
+FAILED tests/product/raw_signal_sqlite/test_contract_native.py::test_sqlite_integer_fidelity_beyond_runtime_decimal_conversion_limit[native-1]
+FAILED tests/product/raw_signal_sqlite/test_contract_native.py::test_sqlite_integer_fidelity_beyond_runtime_decimal_conversion_limit[sequence--1]
+FAILED tests/product/raw_signal_sqlite/test_contract_native.py::test_sqlite_integer_fidelity_beyond_runtime_decimal_conversion_limit[sequence-1]
+FAILED tests/product/raw_signal_sqlite/test_contract_native.py::test_sqlite_integer_fidelity_beyond_runtime_decimal_conversion_limit[epoch--1]
+FAILED tests/product/raw_signal_sqlite/test_contract_native.py::test_sqlite_integer_fidelity_beyond_runtime_decimal_conversion_limit[epoch-1]
+FAILED tests/product/raw_signal_sqlite/test_contract_native.py::test_sqlite_large_policy_version_remains_exact_through_a00
+7 failed, 4 deselected in 0.39s

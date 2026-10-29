@@ -1,0 +1,1198 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/d549b6d808a9/resume-20261020-ejayrse7/repository
+configfile: pyproject.toml
+collected 173 items
+
+tests/product/market_measurement_d014/test_raw_ratio.py ................ [  9%]
+................................................FF....FF................ [ 50%]
+........................................................................ [ 92%]
+.............                                                            [100%]
+
+=================================== FAILURES ===================================
+____________ test_d014_selection_and_refusal[repeated-cursor-False] ____________
+
+tmp_path = PosixPath('/tmp/nvda-d014-engineering-23styz2t/tmp/pytest-of-root/pytest-0/test_d014_selection_and_refusa62')
+populated = False, mode = 'repeated-cursor'
+
+    @pytest.mark.parametrize("populated", [False, True])
+    @pytest.mark.parametrize("mode", REFUSALS + POSITIVES + tuple(DUPLICATE_CASES))
+    def test_d014_selection_and_refusal(tmp_path, populated, mode):
+        raw = raw_source(tmp_path / "raw.sqlite")
+        for side in ("bid", "ask"):
+            raw.commands.admit_raw_observation_occurrence(observation(side))
+        if mode == "real-multipage":
+            for index in range(101):
+                raw.commands.admit_raw_observation_occurrence(
+                    observation(
+                        "bid",
+                        identity="older-" + str(index),
+                        sequence=index + 3,
+                        event=ASOF - timedelta(seconds=3),
+                        value=Decimal("99"),
+                    )
+                )
+        if mode in ("newer-invalid", "late-receipt"):
+            raw.commands.admit_raw_observation_occurrence(
+                observation(
+                    "bid",
+                    identity="newer-unavailable",
+                    sequence=200,
+                    event=ASOF,
+                    receipt=NOW if mode == "late-receipt" else ASOF,
+                    value=Decimal("99") if mode == "late-receipt" else 99.0,
+                )
+            )
+        seam()
+        active = [False]
+        calls = []
+    
+        class Reader:
+            def list_projected_raw_history(self, rid, **kwargs):
+                calls.append((rid.value, kwargs.get("cursor")))
+                page = raw.reads.list_projected_raw_history(rid, **kwargs)
+                if (
+                    active[0]
+                    and rid.value == "R033"
+                    and (mode in DUPLICATE_CASES or mode == "identical-cross-page")
+                ):
+                    first = raw.reads.project_raw_value(
+                        rid,
+                        raw_api.observation_occurrence_id("mmt-size-bid-001"),
+                        mappings=kwargs["mappings"],
+                    )
+                    if mode == "identical-cross-page":
+                        pair, cross_page = (first, first), True
+                    else:
+                        dimension, reverse, cross_page = DUPLICATE_CASES[mode]
+                        changed = replace(
+                            first,
+                            **{
+                                "provider": dict(source_provider="OTHER"),
+                                "representation": dict(native_value=Decimal("2.0")),
+                                "stale": dict(source_timestamp_raw="2026-10-16T00:58:59Z"),
+                                "receipt": dict(received_ts_utc=NOW),
+                            }[dimension],
+                        )
+                        pair = (changed, first) if reverse else (first, changed)
+                    if cross_page:
+                        start = kwargs.get("cursor") is None
+                        return replace(
+                            page, items=(pair[0 if start else 1],), next_cursor="1" if start else None
+                        )
+                    return replace(page, items=pair, next_cursor=None)
+                if active[0] and mode in ("inclusive-freshness", "inclusive-skew"):
+                    seconds = (
+                        (60 if rid.value == "R033" else 50)
+                        if mode == "inclusive-freshness"
+                        else (11 if rid.value == "R033" else 1)
+                    )
+                    return replace(
+                        page,
+                        items=tuple(
+                            replace(
+                                item,
+                                source_timestamp_raw=(ASOF - timedelta(seconds=seconds))
+                                .isoformat()
+                                .replace("+00:00", "Z"),
+                            )
+                            for item in page.items
+                        ),
+                    )
+                if not active[0] or rid.value != "R033":
+                    return page
+                first = page.items[0]
+                changes = {
+                    "provider": dict(source_provider="OTHER"),
+                    "variant": dict(source_variant="OTHER"),
+                    "subject": dict(subject_instrument="OTHER"),
+                    "units": dict(native_units="price"),
+                    "field": dict(native_field_path=("quote", "ask_size")),
+                    "mapping": dict(projection_mapping_id="OTHER"),
+                    "mapping-version": dict(projection_mapping_version=2),
+                    "rid": dict(raw_signal_catalogue_id=raw_api.RawSignalCatalogueId("R036")),
+                    "float": dict(native_value=2.0),
+                    "nonfinite": dict(native_value=Decimal("NaN")),
+                    "scope": dict(ingestion_sequence_scope=raw_api.ingestion_sequence_scope("OTHER")),
+                    "sequence-bool": dict(ingestion_sequence=True),
+                    "identity-type": dict(observation_occurrence_id="mmt-size-bid-001"),
+                    "selection-identity": dict(selection_identity="OTHER"),
+                    "revision": dict(revision_vintage_native="v2"),
+                    "temporal": dict(source_temporal_kind="date_only"),
+                    "timezone": dict(source_timezone_native="OTHER"),
+                    "timestamp-type": dict(source_timestamp_raw=123),
+                    "timestamp-format": dict(source_timestamp_raw="2026-10-16 00:59:58+00:00"),
+                    "future": dict(source_timestamp_raw=NOW.isoformat().replace("+00:00", "Z")),
+                    "receipt": dict(received_ts_utc=NOW),
+                    "event-after-receipt": dict(received_ts_utc=ASOF - timedelta(seconds=3)),
+                    "stale": dict(source_timestamp_raw="2026-10-16T00:58:59.999999Z"),
+                    "skew": dict(source_timestamp_raw="2026-10-16T00:59:48.999999Z"),
+                }.get(mode)
+                if changes is not None:
+                    return replace(page, items=(unsafe_copy(first, **changes),))
+                if mode == "missing":
+                    return replace(page, items=())
+                if mode == "wrong-page":
+                    return {"items": page.items}
+                if mode == "wrong-items":
+                    return unsafe_copy(page, items=list(page.items))
+                if mode == "wrong-type":
+                    return replace(page, items=({"value": Decimal("2")},))
+                if mode == "ambiguous":
+                    return replace(
+                        page,
+                        items=(
+                            first,
+                            replace(
+                                first,
+                                observation_occurrence_id=raw_api.observation_occurrence_id("tie"),
+                            ),
+                        ),
+                    )
+                if mode == "duplicate-content":
+                    # Invalid newer copy cannot be filtered before duplicate-content comparison.
+                    return replace(page, items=(first, replace(first, source_provider="OTHER")))
+                if mode == "duplicate-identical":
+                    return replace(page, items=(first, first))
+                if mode == "oversized-page":
+                    return replace(page, items=(first,) * 101)
+                if mode in ("cursor", "repeated-cursor", "empty-cursor", "page-cap"):
+                    cursor = kwargs.get("cursor")
+                    nxt = "bad" if mode == "cursor" else str(int(cursor or "0") + 1)
+                    if mode == "repeated-cursor":
+                        nxt = "1"
+                    return replace(
+                        page, items=() if mode == "empty-cursor" else (first,), next_cursor=nxt
+                    )
+                if mode == "storage-error":
+                    raise f.PersistenceFailureV1("upstream persistence failed")
+                return page
+    
+        owner = f.create_raw_ratio_owner(**configuration(Reader(), tmp_path / "ratio.sqlite"))
+        req = request()
+        before = ()
+        if populated:
+            first = owner.materialise(req)
+            assert_ratio(first, 1, 3)
+            before = (first,)
+        active[0] = True
+        if mode in POSITIVES:
+            calls.clear()
+            fact = owner.materialise(req)
+            assert_ratio(fact, 1, 3)
+            assert owner.reads.get_derived_occurrence(fact.derived_occurrence_id) == fact
+            if mode == "real-multipage":
+                assert any(rid == "R033" and cursor is not None for rid, cursor in calls)
+                assert fact.raw_input_lineage[0].observation_occurrence_id == "mmt-size-bid-001"
+            if mode in ("inclusive-freshness", "inclusive-skew"):
+                assert fact.raw_input_lineage[0].event_time_utc == ASOF - timedelta(
+                    seconds=60 if mode == "inclusive-freshness" else 11
+                )
+            observed = history(owner.reads)
+            assert len(observed) == len(before) + int(fact not in before)
+            assert fact in observed and all(item in observed for item in before)
+            return
+        if mode == "order":
+            req = replace(req, raw_input_bindings=tuple(reversed(req.raw_input_bindings)))
+        changes = {
+            "context": dict(context_refs=(f.VersionRefV1("strategy", 1),)),
+            "definition": dict(calculation_definition_version="absent"),
+            "profile": dict(parameter_set_ref=f.VersionRefV1("absent", 1)),
+            "selection": dict(input_selection_policy_ref=f.VersionRefV1("absent", 1)),
+            "request-subject": dict(subject_instrument="OTHER"),
+            "asof-after-cutoff": dict(as_of_utc=NOW),
+            "cutoff-after-clock": dict(knowledge_cutoff_utc=NOW + timedelta(microseconds=1)),
+        }.get(mode)
+        if changes:
+            req = replace(req, **changes)
+        binding_changes = {
+            "binding-rid": dict(raw_signal_id="R034"),
+            "binding-subject": dict(subject_instrument="OTHER"),
+            "binding-mapping": dict(projection_mapping_ref=f.VersionRefV1("mmt-size-ask", 1)),
+            "binding-unit": dict(unit_convention_ref=f.VersionRefV1("absent", 1)),
+            "binding-unit-incompatible": dict(unit_convention_ref=f.VersionRefV1("mmt-pilot-price", 1)),
+        }.get(mode)
+        if binding_changes:
+            req = replace(
+                req,
+                raw_input_bindings=(
+                    replace(req.raw_input_bindings[0], **binding_changes),
+                    req.raw_input_bindings[1],
+                ),
+            )
+        requests = [req]
+        if mode == "unsupported-all":
+            requests = [replace(req, derived_signal_id=f"D{i:03d}") for i in range(1, 210) if i != 14]
+            assert len(requests) == 208
+        for bad in requests:
+            calls.clear()  # Read-budget scope is this request, not all208 requests.
+            if mode == "storage-error":
+                with pytest.raises(f.PersistenceFailureV1):
+                    owner.materialise(bad)
+            else:
+>               assert owner.materialise(bad) is None, mode
+                       ^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/market_measurement_d014/test_raw_ratio.py:544: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/nvda_desk/market_measurement_truth/_raw_rational.py:410: in materialise
+    selected = select(self._reader, mapping, policy, request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/nvda_desk/market_measurement_truth/_selection.py:105: in select
+    page = reader.list_projected_raw_history(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <test_raw_ratio.test_d014_selection_and_refusal.<locals>.Reader object at 0x7f6f176a2240>
+rid = RawSignalCatalogueId(value='R033')
+kwargs = {'cursor': '1', 'event_at_or_before_utc': datetime.datetime(2026, 10, 16, 1, 0, tzinfo=datetime.timezone.utc), 'limit'...sh_size_v1', native_field_path=('quote', 'bid_size'), native_units='shares', selection_identity_field_paths=()),), ...}
+page = ProjectedRawHistoryPageV1(items=(), next_cursor=None)
+
+    def list_projected_raw_history(self, rid, **kwargs):
+        calls.append((rid.value, kwargs.get("cursor")))
+        page = raw.reads.list_projected_raw_history(rid, **kwargs)
+        if (
+            active[0]
+            and rid.value == "R033"
+            and (mode in DUPLICATE_CASES or mode == "identical-cross-page")
+        ):
+            first = raw.reads.project_raw_value(
+                rid,
+                raw_api.observation_occurrence_id("mmt-size-bid-001"),
+                mappings=kwargs["mappings"],
+            )
+            if mode == "identical-cross-page":
+                pair, cross_page = (first, first), True
+            else:
+                dimension, reverse, cross_page = DUPLICATE_CASES[mode]
+                changed = replace(
+                    first,
+                    **{
+                        "provider": dict(source_provider="OTHER"),
+                        "representation": dict(native_value=Decimal("2.0")),
+                        "stale": dict(source_timestamp_raw="2026-10-16T00:58:59Z"),
+                        "receipt": dict(received_ts_utc=NOW),
+                    }[dimension],
+                )
+                pair = (changed, first) if reverse else (first, changed)
+            if cross_page:
+                start = kwargs.get("cursor") is None
+                return replace(
+                    page, items=(pair[0 if start else 1],), next_cursor="1" if start else None
+                )
+            return replace(page, items=pair, next_cursor=None)
+        if active[0] and mode in ("inclusive-freshness", "inclusive-skew"):
+            seconds = (
+                (60 if rid.value == "R033" else 50)
+                if mode == "inclusive-freshness"
+                else (11 if rid.value == "R033" else 1)
+            )
+            return replace(
+                page,
+                items=tuple(
+                    replace(
+                        item,
+                        source_timestamp_raw=(ASOF - timedelta(seconds=seconds))
+                        .isoformat()
+                        .replace("+00:00", "Z"),
+                    )
+                    for item in page.items
+                ),
+            )
+        if not active[0] or rid.value != "R033":
+            return page
+>       first = page.items[0]
+                ^^^^^^^^^^^^^
+E       IndexError: tuple index out of range
+
+tests/product/market_measurement_d014/test_raw_ratio.py:415: IndexError
+____________ test_d014_selection_and_refusal[repeated-cursor-True] _____________
+
+tmp_path = PosixPath('/tmp/nvda-d014-engineering-23styz2t/tmp/pytest-of-root/pytest-0/test_d014_selection_and_refusa63')
+populated = True, mode = 'repeated-cursor'
+
+    @pytest.mark.parametrize("populated", [False, True])
+    @pytest.mark.parametrize("mode", REFUSALS + POSITIVES + tuple(DUPLICATE_CASES))
+    def test_d014_selection_and_refusal(tmp_path, populated, mode):
+        raw = raw_source(tmp_path / "raw.sqlite")
+        for side in ("bid", "ask"):
+            raw.commands.admit_raw_observation_occurrence(observation(side))
+        if mode == "real-multipage":
+            for index in range(101):
+                raw.commands.admit_raw_observation_occurrence(
+                    observation(
+                        "bid",
+                        identity="older-" + str(index),
+                        sequence=index + 3,
+                        event=ASOF - timedelta(seconds=3),
+                        value=Decimal("99"),
+                    )
+                )
+        if mode in ("newer-invalid", "late-receipt"):
+            raw.commands.admit_raw_observation_occurrence(
+                observation(
+                    "bid",
+                    identity="newer-unavailable",
+                    sequence=200,
+                    event=ASOF,
+                    receipt=NOW if mode == "late-receipt" else ASOF,
+                    value=Decimal("99") if mode == "late-receipt" else 99.0,
+                )
+            )
+        seam()
+        active = [False]
+        calls = []
+    
+        class Reader:
+            def list_projected_raw_history(self, rid, **kwargs):
+                calls.append((rid.value, kwargs.get("cursor")))
+                page = raw.reads.list_projected_raw_history(rid, **kwargs)
+                if (
+                    active[0]
+                    and rid.value == "R033"
+                    and (mode in DUPLICATE_CASES or mode == "identical-cross-page")
+                ):
+                    first = raw.reads.project_raw_value(
+                        rid,
+                        raw_api.observation_occurrence_id("mmt-size-bid-001"),
+                        mappings=kwargs["mappings"],
+                    )
+                    if mode == "identical-cross-page":
+                        pair, cross_page = (first, first), True
+                    else:
+                        dimension, reverse, cross_page = DUPLICATE_CASES[mode]
+                        changed = replace(
+                            first,
+                            **{
+                                "provider": dict(source_provider="OTHER"),
+                                "representation": dict(native_value=Decimal("2.0")),
+                                "stale": dict(source_timestamp_raw="2026-10-16T00:58:59Z"),
+                                "receipt": dict(received_ts_utc=NOW),
+                            }[dimension],
+                        )
+                        pair = (changed, first) if reverse else (first, changed)
+                    if cross_page:
+                        start = kwargs.get("cursor") is None
+                        return replace(
+                            page, items=(pair[0 if start else 1],), next_cursor="1" if start else None
+                        )
+                    return replace(page, items=pair, next_cursor=None)
+                if active[0] and mode in ("inclusive-freshness", "inclusive-skew"):
+                    seconds = (
+                        (60 if rid.value == "R033" else 50)
+                        if mode == "inclusive-freshness"
+                        else (11 if rid.value == "R033" else 1)
+                    )
+                    return replace(
+                        page,
+                        items=tuple(
+                            replace(
+                                item,
+                                source_timestamp_raw=(ASOF - timedelta(seconds=seconds))
+                                .isoformat()
+                                .replace("+00:00", "Z"),
+                            )
+                            for item in page.items
+                        ),
+                    )
+                if not active[0] or rid.value != "R033":
+                    return page
+                first = page.items[0]
+                changes = {
+                    "provider": dict(source_provider="OTHER"),
+                    "variant": dict(source_variant="OTHER"),
+                    "subject": dict(subject_instrument="OTHER"),
+                    "units": dict(native_units="price"),
+                    "field": dict(native_field_path=("quote", "ask_size")),
+                    "mapping": dict(projection_mapping_id="OTHER"),
+                    "mapping-version": dict(projection_mapping_version=2),
+                    "rid": dict(raw_signal_catalogue_id=raw_api.RawSignalCatalogueId("R036")),
+                    "float": dict(native_value=2.0),
+                    "nonfinite": dict(native_value=Decimal("NaN")),
+                    "scope": dict(ingestion_sequence_scope=raw_api.ingestion_sequence_scope("OTHER")),
+                    "sequence-bool": dict(ingestion_sequence=True),
+                    "identity-type": dict(observation_occurrence_id="mmt-size-bid-001"),
+                    "selection-identity": dict(selection_identity="OTHER"),
+                    "revision": dict(revision_vintage_native="v2"),
+                    "temporal": dict(source_temporal_kind="date_only"),
+                    "timezone": dict(source_timezone_native="OTHER"),
+                    "timestamp-type": dict(source_timestamp_raw=123),
+                    "timestamp-format": dict(source_timestamp_raw="2026-10-16 00:59:58+00:00"),
+                    "future": dict(source_timestamp_raw=NOW.isoformat().replace("+00:00", "Z")),
+                    "receipt": dict(received_ts_utc=NOW),
+                    "event-after-receipt": dict(received_ts_utc=ASOF - timedelta(seconds=3)),
+                    "stale": dict(source_timestamp_raw="2026-10-16T00:58:59.999999Z"),
+                    "skew": dict(source_timestamp_raw="2026-10-16T00:59:48.999999Z"),
+                }.get(mode)
+                if changes is not None:
+                    return replace(page, items=(unsafe_copy(first, **changes),))
+                if mode == "missing":
+                    return replace(page, items=())
+                if mode == "wrong-page":
+                    return {"items": page.items}
+                if mode == "wrong-items":
+                    return unsafe_copy(page, items=list(page.items))
+                if mode == "wrong-type":
+                    return replace(page, items=({"value": Decimal("2")},))
+                if mode == "ambiguous":
+                    return replace(
+                        page,
+                        items=(
+                            first,
+                            replace(
+                                first,
+                                observation_occurrence_id=raw_api.observation_occurrence_id("tie"),
+                            ),
+                        ),
+                    )
+                if mode == "duplicate-content":
+                    # Invalid newer copy cannot be filtered before duplicate-content comparison.
+                    return replace(page, items=(first, replace(first, source_provider="OTHER")))
+                if mode == "duplicate-identical":
+                    return replace(page, items=(first, first))
+                if mode == "oversized-page":
+                    return replace(page, items=(first,) * 101)
+                if mode in ("cursor", "repeated-cursor", "empty-cursor", "page-cap"):
+                    cursor = kwargs.get("cursor")
+                    nxt = "bad" if mode == "cursor" else str(int(cursor or "0") + 1)
+                    if mode == "repeated-cursor":
+                        nxt = "1"
+                    return replace(
+                        page, items=() if mode == "empty-cursor" else (first,), next_cursor=nxt
+                    )
+                if mode == "storage-error":
+                    raise f.PersistenceFailureV1("upstream persistence failed")
+                return page
+    
+        owner = f.create_raw_ratio_owner(**configuration(Reader(), tmp_path / "ratio.sqlite"))
+        req = request()
+        before = ()
+        if populated:
+            first = owner.materialise(req)
+            assert_ratio(first, 1, 3)
+            before = (first,)
+        active[0] = True
+        if mode in POSITIVES:
+            calls.clear()
+            fact = owner.materialise(req)
+            assert_ratio(fact, 1, 3)
+            assert owner.reads.get_derived_occurrence(fact.derived_occurrence_id) == fact
+            if mode == "real-multipage":
+                assert any(rid == "R033" and cursor is not None for rid, cursor in calls)
+                assert fact.raw_input_lineage[0].observation_occurrence_id == "mmt-size-bid-001"
+            if mode in ("inclusive-freshness", "inclusive-skew"):
+                assert fact.raw_input_lineage[0].event_time_utc == ASOF - timedelta(
+                    seconds=60 if mode == "inclusive-freshness" else 11
+                )
+            observed = history(owner.reads)
+            assert len(observed) == len(before) + int(fact not in before)
+            assert fact in observed and all(item in observed for item in before)
+            return
+        if mode == "order":
+            req = replace(req, raw_input_bindings=tuple(reversed(req.raw_input_bindings)))
+        changes = {
+            "context": dict(context_refs=(f.VersionRefV1("strategy", 1),)),
+            "definition": dict(calculation_definition_version="absent"),
+            "profile": dict(parameter_set_ref=f.VersionRefV1("absent", 1)),
+            "selection": dict(input_selection_policy_ref=f.VersionRefV1("absent", 1)),
+            "request-subject": dict(subject_instrument="OTHER"),
+            "asof-after-cutoff": dict(as_of_utc=NOW),
+            "cutoff-after-clock": dict(knowledge_cutoff_utc=NOW + timedelta(microseconds=1)),
+        }.get(mode)
+        if changes:
+            req = replace(req, **changes)
+        binding_changes = {
+            "binding-rid": dict(raw_signal_id="R034"),
+            "binding-subject": dict(subject_instrument="OTHER"),
+            "binding-mapping": dict(projection_mapping_ref=f.VersionRefV1("mmt-size-ask", 1)),
+            "binding-unit": dict(unit_convention_ref=f.VersionRefV1("absent", 1)),
+            "binding-unit-incompatible": dict(unit_convention_ref=f.VersionRefV1("mmt-pilot-price", 1)),
+        }.get(mode)
+        if binding_changes:
+            req = replace(
+                req,
+                raw_input_bindings=(
+                    replace(req.raw_input_bindings[0], **binding_changes),
+                    req.raw_input_bindings[1],
+                ),
+            )
+        requests = [req]
+        if mode == "unsupported-all":
+            requests = [replace(req, derived_signal_id=f"D{i:03d}") for i in range(1, 210) if i != 14]
+            assert len(requests) == 208
+        for bad in requests:
+            calls.clear()  # Read-budget scope is this request, not all208 requests.
+            if mode == "storage-error":
+                with pytest.raises(f.PersistenceFailureV1):
+                    owner.materialise(bad)
+            else:
+>               assert owner.materialise(bad) is None, mode
+                       ^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/market_measurement_d014/test_raw_ratio.py:544: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/nvda_desk/market_measurement_truth/_raw_rational.py:410: in materialise
+    selected = select(self._reader, mapping, policy, request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/nvda_desk/market_measurement_truth/_selection.py:105: in select
+    page = reader.list_projected_raw_history(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <test_raw_ratio.test_d014_selection_and_refusal.<locals>.Reader object at 0x7f6f174216d0>
+rid = RawSignalCatalogueId(value='R033')
+kwargs = {'cursor': '1', 'event_at_or_before_utc': datetime.datetime(2026, 10, 16, 1, 0, tzinfo=datetime.timezone.utc), 'limit'...sh_size_v1', native_field_path=('quote', 'bid_size'), native_units='shares', selection_identity_field_paths=()),), ...}
+page = ProjectedRawHistoryPageV1(items=(), next_cursor=None)
+
+    def list_projected_raw_history(self, rid, **kwargs):
+        calls.append((rid.value, kwargs.get("cursor")))
+        page = raw.reads.list_projected_raw_history(rid, **kwargs)
+        if (
+            active[0]
+            and rid.value == "R033"
+            and (mode in DUPLICATE_CASES or mode == "identical-cross-page")
+        ):
+            first = raw.reads.project_raw_value(
+                rid,
+                raw_api.observation_occurrence_id("mmt-size-bid-001"),
+                mappings=kwargs["mappings"],
+            )
+            if mode == "identical-cross-page":
+                pair, cross_page = (first, first), True
+            else:
+                dimension, reverse, cross_page = DUPLICATE_CASES[mode]
+                changed = replace(
+                    first,
+                    **{
+                        "provider": dict(source_provider="OTHER"),
+                        "representation": dict(native_value=Decimal("2.0")),
+                        "stale": dict(source_timestamp_raw="2026-10-16T00:58:59Z"),
+                        "receipt": dict(received_ts_utc=NOW),
+                    }[dimension],
+                )
+                pair = (changed, first) if reverse else (first, changed)
+            if cross_page:
+                start = kwargs.get("cursor") is None
+                return replace(
+                    page, items=(pair[0 if start else 1],), next_cursor="1" if start else None
+                )
+            return replace(page, items=pair, next_cursor=None)
+        if active[0] and mode in ("inclusive-freshness", "inclusive-skew"):
+            seconds = (
+                (60 if rid.value == "R033" else 50)
+                if mode == "inclusive-freshness"
+                else (11 if rid.value == "R033" else 1)
+            )
+            return replace(
+                page,
+                items=tuple(
+                    replace(
+                        item,
+                        source_timestamp_raw=(ASOF - timedelta(seconds=seconds))
+                        .isoformat()
+                        .replace("+00:00", "Z"),
+                    )
+                    for item in page.items
+                ),
+            )
+        if not active[0] or rid.value != "R033":
+            return page
+>       first = page.items[0]
+                ^^^^^^^^^^^^^
+E       IndexError: tuple index out of range
+
+tests/product/market_measurement_d014/test_raw_ratio.py:415: IndexError
+_______________ test_d014_selection_and_refusal[page-cap-False] ________________
+
+tmp_path = PosixPath('/tmp/nvda-d014-engineering-23styz2t/tmp/pytest-of-root/pytest-0/test_d014_selection_and_refusa68')
+populated = False, mode = 'page-cap'
+
+    @pytest.mark.parametrize("populated", [False, True])
+    @pytest.mark.parametrize("mode", REFUSALS + POSITIVES + tuple(DUPLICATE_CASES))
+    def test_d014_selection_and_refusal(tmp_path, populated, mode):
+        raw = raw_source(tmp_path / "raw.sqlite")
+        for side in ("bid", "ask"):
+            raw.commands.admit_raw_observation_occurrence(observation(side))
+        if mode == "real-multipage":
+            for index in range(101):
+                raw.commands.admit_raw_observation_occurrence(
+                    observation(
+                        "bid",
+                        identity="older-" + str(index),
+                        sequence=index + 3,
+                        event=ASOF - timedelta(seconds=3),
+                        value=Decimal("99"),
+                    )
+                )
+        if mode in ("newer-invalid", "late-receipt"):
+            raw.commands.admit_raw_observation_occurrence(
+                observation(
+                    "bid",
+                    identity="newer-unavailable",
+                    sequence=200,
+                    event=ASOF,
+                    receipt=NOW if mode == "late-receipt" else ASOF,
+                    value=Decimal("99") if mode == "late-receipt" else 99.0,
+                )
+            )
+        seam()
+        active = [False]
+        calls = []
+    
+        class Reader:
+            def list_projected_raw_history(self, rid, **kwargs):
+                calls.append((rid.value, kwargs.get("cursor")))
+                page = raw.reads.list_projected_raw_history(rid, **kwargs)
+                if (
+                    active[0]
+                    and rid.value == "R033"
+                    and (mode in DUPLICATE_CASES or mode == "identical-cross-page")
+                ):
+                    first = raw.reads.project_raw_value(
+                        rid,
+                        raw_api.observation_occurrence_id("mmt-size-bid-001"),
+                        mappings=kwargs["mappings"],
+                    )
+                    if mode == "identical-cross-page":
+                        pair, cross_page = (first, first), True
+                    else:
+                        dimension, reverse, cross_page = DUPLICATE_CASES[mode]
+                        changed = replace(
+                            first,
+                            **{
+                                "provider": dict(source_provider="OTHER"),
+                                "representation": dict(native_value=Decimal("2.0")),
+                                "stale": dict(source_timestamp_raw="2026-10-16T00:58:59Z"),
+                                "receipt": dict(received_ts_utc=NOW),
+                            }[dimension],
+                        )
+                        pair = (changed, first) if reverse else (first, changed)
+                    if cross_page:
+                        start = kwargs.get("cursor") is None
+                        return replace(
+                            page, items=(pair[0 if start else 1],), next_cursor="1" if start else None
+                        )
+                    return replace(page, items=pair, next_cursor=None)
+                if active[0] and mode in ("inclusive-freshness", "inclusive-skew"):
+                    seconds = (
+                        (60 if rid.value == "R033" else 50)
+                        if mode == "inclusive-freshness"
+                        else (11 if rid.value == "R033" else 1)
+                    )
+                    return replace(
+                        page,
+                        items=tuple(
+                            replace(
+                                item,
+                                source_timestamp_raw=(ASOF - timedelta(seconds=seconds))
+                                .isoformat()
+                                .replace("+00:00", "Z"),
+                            )
+                            for item in page.items
+                        ),
+                    )
+                if not active[0] or rid.value != "R033":
+                    return page
+                first = page.items[0]
+                changes = {
+                    "provider": dict(source_provider="OTHER"),
+                    "variant": dict(source_variant="OTHER"),
+                    "subject": dict(subject_instrument="OTHER"),
+                    "units": dict(native_units="price"),
+                    "field": dict(native_field_path=("quote", "ask_size")),
+                    "mapping": dict(projection_mapping_id="OTHER"),
+                    "mapping-version": dict(projection_mapping_version=2),
+                    "rid": dict(raw_signal_catalogue_id=raw_api.RawSignalCatalogueId("R036")),
+                    "float": dict(native_value=2.0),
+                    "nonfinite": dict(native_value=Decimal("NaN")),
+                    "scope": dict(ingestion_sequence_scope=raw_api.ingestion_sequence_scope("OTHER")),
+                    "sequence-bool": dict(ingestion_sequence=True),
+                    "identity-type": dict(observation_occurrence_id="mmt-size-bid-001"),
+                    "selection-identity": dict(selection_identity="OTHER"),
+                    "revision": dict(revision_vintage_native="v2"),
+                    "temporal": dict(source_temporal_kind="date_only"),
+                    "timezone": dict(source_timezone_native="OTHER"),
+                    "timestamp-type": dict(source_timestamp_raw=123),
+                    "timestamp-format": dict(source_timestamp_raw="2026-10-16 00:59:58+00:00"),
+                    "future": dict(source_timestamp_raw=NOW.isoformat().replace("+00:00", "Z")),
+                    "receipt": dict(received_ts_utc=NOW),
+                    "event-after-receipt": dict(received_ts_utc=ASOF - timedelta(seconds=3)),
+                    "stale": dict(source_timestamp_raw="2026-10-16T00:58:59.999999Z"),
+                    "skew": dict(source_timestamp_raw="2026-10-16T00:59:48.999999Z"),
+                }.get(mode)
+                if changes is not None:
+                    return replace(page, items=(unsafe_copy(first, **changes),))
+                if mode == "missing":
+                    return replace(page, items=())
+                if mode == "wrong-page":
+                    return {"items": page.items}
+                if mode == "wrong-items":
+                    return unsafe_copy(page, items=list(page.items))
+                if mode == "wrong-type":
+                    return replace(page, items=({"value": Decimal("2")},))
+                if mode == "ambiguous":
+                    return replace(
+                        page,
+                        items=(
+                            first,
+                            replace(
+                                first,
+                                observation_occurrence_id=raw_api.observation_occurrence_id("tie"),
+                            ),
+                        ),
+                    )
+                if mode == "duplicate-content":
+                    # Invalid newer copy cannot be filtered before duplicate-content comparison.
+                    return replace(page, items=(first, replace(first, source_provider="OTHER")))
+                if mode == "duplicate-identical":
+                    return replace(page, items=(first, first))
+                if mode == "oversized-page":
+                    return replace(page, items=(first,) * 101)
+                if mode in ("cursor", "repeated-cursor", "empty-cursor", "page-cap"):
+                    cursor = kwargs.get("cursor")
+                    nxt = "bad" if mode == "cursor" else str(int(cursor or "0") + 1)
+                    if mode == "repeated-cursor":
+                        nxt = "1"
+                    return replace(
+                        page, items=() if mode == "empty-cursor" else (first,), next_cursor=nxt
+                    )
+                if mode == "storage-error":
+                    raise f.PersistenceFailureV1("upstream persistence failed")
+                return page
+    
+        owner = f.create_raw_ratio_owner(**configuration(Reader(), tmp_path / "ratio.sqlite"))
+        req = request()
+        before = ()
+        if populated:
+            first = owner.materialise(req)
+            assert_ratio(first, 1, 3)
+            before = (first,)
+        active[0] = True
+        if mode in POSITIVES:
+            calls.clear()
+            fact = owner.materialise(req)
+            assert_ratio(fact, 1, 3)
+            assert owner.reads.get_derived_occurrence(fact.derived_occurrence_id) == fact
+            if mode == "real-multipage":
+                assert any(rid == "R033" and cursor is not None for rid, cursor in calls)
+                assert fact.raw_input_lineage[0].observation_occurrence_id == "mmt-size-bid-001"
+            if mode in ("inclusive-freshness", "inclusive-skew"):
+                assert fact.raw_input_lineage[0].event_time_utc == ASOF - timedelta(
+                    seconds=60 if mode == "inclusive-freshness" else 11
+                )
+            observed = history(owner.reads)
+            assert len(observed) == len(before) + int(fact not in before)
+            assert fact in observed and all(item in observed for item in before)
+            return
+        if mode == "order":
+            req = replace(req, raw_input_bindings=tuple(reversed(req.raw_input_bindings)))
+        changes = {
+            "context": dict(context_refs=(f.VersionRefV1("strategy", 1),)),
+            "definition": dict(calculation_definition_version="absent"),
+            "profile": dict(parameter_set_ref=f.VersionRefV1("absent", 1)),
+            "selection": dict(input_selection_policy_ref=f.VersionRefV1("absent", 1)),
+            "request-subject": dict(subject_instrument="OTHER"),
+            "asof-after-cutoff": dict(as_of_utc=NOW),
+            "cutoff-after-clock": dict(knowledge_cutoff_utc=NOW + timedelta(microseconds=1)),
+        }.get(mode)
+        if changes:
+            req = replace(req, **changes)
+        binding_changes = {
+            "binding-rid": dict(raw_signal_id="R034"),
+            "binding-subject": dict(subject_instrument="OTHER"),
+            "binding-mapping": dict(projection_mapping_ref=f.VersionRefV1("mmt-size-ask", 1)),
+            "binding-unit": dict(unit_convention_ref=f.VersionRefV1("absent", 1)),
+            "binding-unit-incompatible": dict(unit_convention_ref=f.VersionRefV1("mmt-pilot-price", 1)),
+        }.get(mode)
+        if binding_changes:
+            req = replace(
+                req,
+                raw_input_bindings=(
+                    replace(req.raw_input_bindings[0], **binding_changes),
+                    req.raw_input_bindings[1],
+                ),
+            )
+        requests = [req]
+        if mode == "unsupported-all":
+            requests = [replace(req, derived_signal_id=f"D{i:03d}") for i in range(1, 210) if i != 14]
+            assert len(requests) == 208
+        for bad in requests:
+            calls.clear()  # Read-budget scope is this request, not all208 requests.
+            if mode == "storage-error":
+                with pytest.raises(f.PersistenceFailureV1):
+                    owner.materialise(bad)
+            else:
+>               assert owner.materialise(bad) is None, mode
+                       ^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/market_measurement_d014/test_raw_ratio.py:544: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/nvda_desk/market_measurement_truth/_raw_rational.py:410: in materialise
+    selected = select(self._reader, mapping, policy, request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/nvda_desk/market_measurement_truth/_selection.py:105: in select
+    page = reader.list_projected_raw_history(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <test_raw_ratio.test_d014_selection_and_refusal.<locals>.Reader object at 0x7f6f175304d0>
+rid = RawSignalCatalogueId(value='R033')
+kwargs = {'cursor': '1', 'event_at_or_before_utc': datetime.datetime(2026, 10, 16, 1, 0, tzinfo=datetime.timezone.utc), 'limit'...sh_size_v1', native_field_path=('quote', 'bid_size'), native_units='shares', selection_identity_field_paths=()),), ...}
+page = ProjectedRawHistoryPageV1(items=(), next_cursor=None)
+
+    def list_projected_raw_history(self, rid, **kwargs):
+        calls.append((rid.value, kwargs.get("cursor")))
+        page = raw.reads.list_projected_raw_history(rid, **kwargs)
+        if (
+            active[0]
+            and rid.value == "R033"
+            and (mode in DUPLICATE_CASES or mode == "identical-cross-page")
+        ):
+            first = raw.reads.project_raw_value(
+                rid,
+                raw_api.observation_occurrence_id("mmt-size-bid-001"),
+                mappings=kwargs["mappings"],
+            )
+            if mode == "identical-cross-page":
+                pair, cross_page = (first, first), True
+            else:
+                dimension, reverse, cross_page = DUPLICATE_CASES[mode]
+                changed = replace(
+                    first,
+                    **{
+                        "provider": dict(source_provider="OTHER"),
+                        "representation": dict(native_value=Decimal("2.0")),
+                        "stale": dict(source_timestamp_raw="2026-10-16T00:58:59Z"),
+                        "receipt": dict(received_ts_utc=NOW),
+                    }[dimension],
+                )
+                pair = (changed, first) if reverse else (first, changed)
+            if cross_page:
+                start = kwargs.get("cursor") is None
+                return replace(
+                    page, items=(pair[0 if start else 1],), next_cursor="1" if start else None
+                )
+            return replace(page, items=pair, next_cursor=None)
+        if active[0] and mode in ("inclusive-freshness", "inclusive-skew"):
+            seconds = (
+                (60 if rid.value == "R033" else 50)
+                if mode == "inclusive-freshness"
+                else (11 if rid.value == "R033" else 1)
+            )
+            return replace(
+                page,
+                items=tuple(
+                    replace(
+                        item,
+                        source_timestamp_raw=(ASOF - timedelta(seconds=seconds))
+                        .isoformat()
+                        .replace("+00:00", "Z"),
+                    )
+                    for item in page.items
+                ),
+            )
+        if not active[0] or rid.value != "R033":
+            return page
+>       first = page.items[0]
+                ^^^^^^^^^^^^^
+E       IndexError: tuple index out of range
+
+tests/product/market_measurement_d014/test_raw_ratio.py:415: IndexError
+________________ test_d014_selection_and_refusal[page-cap-True] ________________
+
+tmp_path = PosixPath('/tmp/nvda-d014-engineering-23styz2t/tmp/pytest-of-root/pytest-0/test_d014_selection_and_refusa69')
+populated = True, mode = 'page-cap'
+
+    @pytest.mark.parametrize("populated", [False, True])
+    @pytest.mark.parametrize("mode", REFUSALS + POSITIVES + tuple(DUPLICATE_CASES))
+    def test_d014_selection_and_refusal(tmp_path, populated, mode):
+        raw = raw_source(tmp_path / "raw.sqlite")
+        for side in ("bid", "ask"):
+            raw.commands.admit_raw_observation_occurrence(observation(side))
+        if mode == "real-multipage":
+            for index in range(101):
+                raw.commands.admit_raw_observation_occurrence(
+                    observation(
+                        "bid",
+                        identity="older-" + str(index),
+                        sequence=index + 3,
+                        event=ASOF - timedelta(seconds=3),
+                        value=Decimal("99"),
+                    )
+                )
+        if mode in ("newer-invalid", "late-receipt"):
+            raw.commands.admit_raw_observation_occurrence(
+                observation(
+                    "bid",
+                    identity="newer-unavailable",
+                    sequence=200,
+                    event=ASOF,
+                    receipt=NOW if mode == "late-receipt" else ASOF,
+                    value=Decimal("99") if mode == "late-receipt" else 99.0,
+                )
+            )
+        seam()
+        active = [False]
+        calls = []
+    
+        class Reader:
+            def list_projected_raw_history(self, rid, **kwargs):
+                calls.append((rid.value, kwargs.get("cursor")))
+                page = raw.reads.list_projected_raw_history(rid, **kwargs)
+                if (
+                    active[0]
+                    and rid.value == "R033"
+                    and (mode in DUPLICATE_CASES or mode == "identical-cross-page")
+                ):
+                    first = raw.reads.project_raw_value(
+                        rid,
+                        raw_api.observation_occurrence_id("mmt-size-bid-001"),
+                        mappings=kwargs["mappings"],
+                    )
+                    if mode == "identical-cross-page":
+                        pair, cross_page = (first, first), True
+                    else:
+                        dimension, reverse, cross_page = DUPLICATE_CASES[mode]
+                        changed = replace(
+                            first,
+                            **{
+                                "provider": dict(source_provider="OTHER"),
+                                "representation": dict(native_value=Decimal("2.0")),
+                                "stale": dict(source_timestamp_raw="2026-10-16T00:58:59Z"),
+                                "receipt": dict(received_ts_utc=NOW),
+                            }[dimension],
+                        )
+                        pair = (changed, first) if reverse else (first, changed)
+                    if cross_page:
+                        start = kwargs.get("cursor") is None
+                        return replace(
+                            page, items=(pair[0 if start else 1],), next_cursor="1" if start else None
+                        )
+                    return replace(page, items=pair, next_cursor=None)
+                if active[0] and mode in ("inclusive-freshness", "inclusive-skew"):
+                    seconds = (
+                        (60 if rid.value == "R033" else 50)
+                        if mode == "inclusive-freshness"
+                        else (11 if rid.value == "R033" else 1)
+                    )
+                    return replace(
+                        page,
+                        items=tuple(
+                            replace(
+                                item,
+                                source_timestamp_raw=(ASOF - timedelta(seconds=seconds))
+                                .isoformat()
+                                .replace("+00:00", "Z"),
+                            )
+                            for item in page.items
+                        ),
+                    )
+                if not active[0] or rid.value != "R033":
+                    return page
+                first = page.items[0]
+                changes = {
+                    "provider": dict(source_provider="OTHER"),
+                    "variant": dict(source_variant="OTHER"),
+                    "subject": dict(subject_instrument="OTHER"),
+                    "units": dict(native_units="price"),
+                    "field": dict(native_field_path=("quote", "ask_size")),
+                    "mapping": dict(projection_mapping_id="OTHER"),
+                    "mapping-version": dict(projection_mapping_version=2),
+                    "rid": dict(raw_signal_catalogue_id=raw_api.RawSignalCatalogueId("R036")),
+                    "float": dict(native_value=2.0),
+                    "nonfinite": dict(native_value=Decimal("NaN")),
+                    "scope": dict(ingestion_sequence_scope=raw_api.ingestion_sequence_scope("OTHER")),
+                    "sequence-bool": dict(ingestion_sequence=True),
+                    "identity-type": dict(observation_occurrence_id="mmt-size-bid-001"),
+                    "selection-identity": dict(selection_identity="OTHER"),
+                    "revision": dict(revision_vintage_native="v2"),
+                    "temporal": dict(source_temporal_kind="date_only"),
+                    "timezone": dict(source_timezone_native="OTHER"),
+                    "timestamp-type": dict(source_timestamp_raw=123),
+                    "timestamp-format": dict(source_timestamp_raw="2026-10-16 00:59:58+00:00"),
+                    "future": dict(source_timestamp_raw=NOW.isoformat().replace("+00:00", "Z")),
+                    "receipt": dict(received_ts_utc=NOW),
+                    "event-after-receipt": dict(received_ts_utc=ASOF - timedelta(seconds=3)),
+                    "stale": dict(source_timestamp_raw="2026-10-16T00:58:59.999999Z"),
+                    "skew": dict(source_timestamp_raw="2026-10-16T00:59:48.999999Z"),
+                }.get(mode)
+                if changes is not None:
+                    return replace(page, items=(unsafe_copy(first, **changes),))
+                if mode == "missing":
+                    return replace(page, items=())
+                if mode == "wrong-page":
+                    return {"items": page.items}
+                if mode == "wrong-items":
+                    return unsafe_copy(page, items=list(page.items))
+                if mode == "wrong-type":
+                    return replace(page, items=({"value": Decimal("2")},))
+                if mode == "ambiguous":
+                    return replace(
+                        page,
+                        items=(
+                            first,
+                            replace(
+                                first,
+                                observation_occurrence_id=raw_api.observation_occurrence_id("tie"),
+                            ),
+                        ),
+                    )
+                if mode == "duplicate-content":
+                    # Invalid newer copy cannot be filtered before duplicate-content comparison.
+                    return replace(page, items=(first, replace(first, source_provider="OTHER")))
+                if mode == "duplicate-identical":
+                    return replace(page, items=(first, first))
+                if mode == "oversized-page":
+                    return replace(page, items=(first,) * 101)
+                if mode in ("cursor", "repeated-cursor", "empty-cursor", "page-cap"):
+                    cursor = kwargs.get("cursor")
+                    nxt = "bad" if mode == "cursor" else str(int(cursor or "0") + 1)
+                    if mode == "repeated-cursor":
+                        nxt = "1"
+                    return replace(
+                        page, items=() if mode == "empty-cursor" else (first,), next_cursor=nxt
+                    )
+                if mode == "storage-error":
+                    raise f.PersistenceFailureV1("upstream persistence failed")
+                return page
+    
+        owner = f.create_raw_ratio_owner(**configuration(Reader(), tmp_path / "ratio.sqlite"))
+        req = request()
+        before = ()
+        if populated:
+            first = owner.materialise(req)
+            assert_ratio(first, 1, 3)
+            before = (first,)
+        active[0] = True
+        if mode in POSITIVES:
+            calls.clear()
+            fact = owner.materialise(req)
+            assert_ratio(fact, 1, 3)
+            assert owner.reads.get_derived_occurrence(fact.derived_occurrence_id) == fact
+            if mode == "real-multipage":
+                assert any(rid == "R033" and cursor is not None for rid, cursor in calls)
+                assert fact.raw_input_lineage[0].observation_occurrence_id == "mmt-size-bid-001"
+            if mode in ("inclusive-freshness", "inclusive-skew"):
+                assert fact.raw_input_lineage[0].event_time_utc == ASOF - timedelta(
+                    seconds=60 if mode == "inclusive-freshness" else 11
+                )
+            observed = history(owner.reads)
+            assert len(observed) == len(before) + int(fact not in before)
+            assert fact in observed and all(item in observed for item in before)
+            return
+        if mode == "order":
+            req = replace(req, raw_input_bindings=tuple(reversed(req.raw_input_bindings)))
+        changes = {
+            "context": dict(context_refs=(f.VersionRefV1("strategy", 1),)),
+            "definition": dict(calculation_definition_version="absent"),
+            "profile": dict(parameter_set_ref=f.VersionRefV1("absent", 1)),
+            "selection": dict(input_selection_policy_ref=f.VersionRefV1("absent", 1)),
+            "request-subject": dict(subject_instrument="OTHER"),
+            "asof-after-cutoff": dict(as_of_utc=NOW),
+            "cutoff-after-clock": dict(knowledge_cutoff_utc=NOW + timedelta(microseconds=1)),
+        }.get(mode)
+        if changes:
+            req = replace(req, **changes)
+        binding_changes = {
+            "binding-rid": dict(raw_signal_id="R034"),
+            "binding-subject": dict(subject_instrument="OTHER"),
+            "binding-mapping": dict(projection_mapping_ref=f.VersionRefV1("mmt-size-ask", 1)),
+            "binding-unit": dict(unit_convention_ref=f.VersionRefV1("absent", 1)),
+            "binding-unit-incompatible": dict(unit_convention_ref=f.VersionRefV1("mmt-pilot-price", 1)),
+        }.get(mode)
+        if binding_changes:
+            req = replace(
+                req,
+                raw_input_bindings=(
+                    replace(req.raw_input_bindings[0], **binding_changes),
+                    req.raw_input_bindings[1],
+                ),
+            )
+        requests = [req]
+        if mode == "unsupported-all":
+            requests = [replace(req, derived_signal_id=f"D{i:03d}") for i in range(1, 210) if i != 14]
+            assert len(requests) == 208
+        for bad in requests:
+            calls.clear()  # Read-budget scope is this request, not all208 requests.
+            if mode == "storage-error":
+                with pytest.raises(f.PersistenceFailureV1):
+                    owner.materialise(bad)
+            else:
+>               assert owner.materialise(bad) is None, mode
+                       ^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/market_measurement_d014/test_raw_ratio.py:544: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/nvda_desk/market_measurement_truth/_raw_rational.py:410: in materialise
+    selected = select(self._reader, mapping, policy, request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/nvda_desk/market_measurement_truth/_selection.py:105: in select
+    page = reader.list_projected_raw_history(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <test_raw_ratio.test_d014_selection_and_refusal.<locals>.Reader object at 0x7f6f176a3890>
+rid = RawSignalCatalogueId(value='R033')
+kwargs = {'cursor': '1', 'event_at_or_before_utc': datetime.datetime(2026, 10, 16, 1, 0, tzinfo=datetime.timezone.utc), 'limit'...sh_size_v1', native_field_path=('quote', 'bid_size'), native_units='shares', selection_identity_field_paths=()),), ...}
+page = ProjectedRawHistoryPageV1(items=(), next_cursor=None)
+
+    def list_projected_raw_history(self, rid, **kwargs):
+        calls.append((rid.value, kwargs.get("cursor")))
+        page = raw.reads.list_projected_raw_history(rid, **kwargs)
+        if (
+            active[0]
+            and rid.value == "R033"
+            and (mode in DUPLICATE_CASES or mode == "identical-cross-page")
+        ):
+            first = raw.reads.project_raw_value(
+                rid,
+                raw_api.observation_occurrence_id("mmt-size-bid-001"),
+                mappings=kwargs["mappings"],
+            )
+            if mode == "identical-cross-page":
+                pair, cross_page = (first, first), True
+            else:
+                dimension, reverse, cross_page = DUPLICATE_CASES[mode]
+                changed = replace(
+                    first,
+                    **{
+                        "provider": dict(source_provider="OTHER"),
+                        "representation": dict(native_value=Decimal("2.0")),
+                        "stale": dict(source_timestamp_raw="2026-10-16T00:58:59Z"),
+                        "receipt": dict(received_ts_utc=NOW),
+                    }[dimension],
+                )
+                pair = (changed, first) if reverse else (first, changed)
+            if cross_page:
+                start = kwargs.get("cursor") is None
+                return replace(
+                    page, items=(pair[0 if start else 1],), next_cursor="1" if start else None
+                )
+            return replace(page, items=pair, next_cursor=None)
+        if active[0] and mode in ("inclusive-freshness", "inclusive-skew"):
+            seconds = (
+                (60 if rid.value == "R033" else 50)
+                if mode == "inclusive-freshness"
+                else (11 if rid.value == "R033" else 1)
+            )
+            return replace(
+                page,
+                items=tuple(
+                    replace(
+                        item,
+                        source_timestamp_raw=(ASOF - timedelta(seconds=seconds))
+                        .isoformat()
+                        .replace("+00:00", "Z"),
+                    )
+                    for item in page.items
+                ),
+            )
+        if not active[0] or rid.value != "R033":
+            return page
+>       first = page.items[0]
+                ^^^^^^^^^^^^^
+E       IndexError: tuple index out of range
+
+tests/product/market_measurement_d014/test_raw_ratio.py:415: IndexError
+=========================== short test summary info ============================
+FAILED tests/product/market_measurement_d014/test_raw_ratio.py::test_d014_selection_and_refusal[repeated-cursor-False]
+FAILED tests/product/market_measurement_d014/test_raw_ratio.py::test_d014_selection_and_refusal[repeated-cursor-True]
+FAILED tests/product/market_measurement_d014/test_raw_ratio.py::test_d014_selection_and_refusal[page-cap-False]
+FAILED tests/product/market_measurement_d014/test_raw_ratio.py::test_d014_selection_and_refusal[page-cap-True]
+======================== 4 failed, 169 passed in 33.11s ========================

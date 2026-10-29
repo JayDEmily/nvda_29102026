@@ -1,0 +1,16 @@
+{
+  "source_workbook_sha256": "519ea9449297d564ae4a02afc1bf4e60e4471631c81a0842620f9fb60bb4f9ae",
+  "incoming_pass01_sha256": "2209c5d6494fc2543df0c2571d0e3987d187f16149463a1d1083c0fcf7d17a90",
+  "pass02_sha256": "7b656fc5c53284f3c67c9c3d40641c56b33dde8534682595cde6d867ff16e036",
+  "original_worksheets_readback": "PASS_7_OF_7_CONTENT_AND_STRUCTURE",
+  "previous_pass01_guardrails_preserved": 35,
+  "new_classification_rules": 6,
+  "total_guardrails": 41,
+  "original_audit_rows_retained": 209,
+  "preview_rows": 209,
+  "family_column_V1_values_retained": 209,
+  "calculation_class_assignments_unassessed": 209,
+  "family_proposal_status": "REVIEW_NOT_ADOPTED",
+  "future_01_02_sheets_absent": true,
+  "report_present_in_committed_input_tree": true
+}

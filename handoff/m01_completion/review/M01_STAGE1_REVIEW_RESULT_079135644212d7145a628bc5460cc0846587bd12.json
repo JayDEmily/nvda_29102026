@@ -1,0 +1,48 @@
+{
+  "authority": {
+    "brief_sha256": "603b850802a418780109095e7ae69bcece449da79fb24140a6d50297605e927c",
+    "catalogue_sha256": "63bc1b776fc8fa8ba82eb3c9b16916f295c9ec3d480a5a068937c2f25146f5f5",
+    "rule": "Accepted brief clause 8.1 makes input selection semantic: option-contract calculations require matching underlying, expiry, strike, option right and contract identity wherever material; exact contract/expiry/delta/strike matching is required unless the row explicitly defines interpolation/bucketing. Clause 17 requires fail-closed behaviour on missing matching prerequisites."
+  },
+  "classification": "RECURRENT_CLASS",
+  "finding": "The prior mandatory single-instrument subject repair is effective, but the same input-selection class remains incomplete for option-contract joins. InputSelectionPolicyVersion.join_keys is accepted with contract_id, yet the Stage-1 owner does not enforce that join dimension. In an independent public-seam D087 probe, the bid input was designated as contract-C1 and the ask input as contract-C2, both under NVDA, while the selection policy declared join_keys=('contract_id',). The owner materialised D087=101 and retained both mismatched observations in raw lineage. The current RawInputBindingV1 and M00 ProjectedRawValueV1 surfaces expose no exact option-contract identity for this comparison, and implementation use of join_keys is absent beyond the now-unconditional subject special case.",
+  "generated_at_utc": "2026-10-07T11:37:05.898735+00:00",
+  "independent_evidence": {
+    "adverse_public_seam_probe": {
+      "ask_observation": "contract-C2-ask",
+      "bid_observation": "contract-C1-bid",
+      "both_projected_subjects": "NVDA",
+      "derived_signal_id": "D087",
+      "observed_materialised": true,
+      "observed_raw_lineage_occurrence_ids": [
+        "contract-C1-bid",
+        "contract-C2-ask"
+      ],
+      "observed_result": "101",
+      "request_subject": "NVDA",
+      "selection_join_keys": [
+        "contract_id"
+      ]
+    },
+    "architecture_validation": "PASS",
+    "dependency_validation": "PASS",
+    "full_derived_signal_tests": "79 passed",
+    "note": "Green tests do not establish the missing contract-join semantic. Review stopped at the first remaining failed Stage-1 invariant after confirming the prior recurrent subject repair.",
+    "prior_recurrent_subject_repair": {
+      "focused_stage1_tests": "34 passed",
+      "production_repair_commit": "0791356",
+      "proof_commit": "f3cae69",
+      "status": "the adverse join_keys-without-subject witness is now refused"
+    },
+    "public_seam_validation": "PASS"
+  },
+  "kind": "independent_review_result",
+  "repair_proposition": "Close the Stage-1 input-selection class at the accepted clause-8.1 boundary, not by another single witness patch. Mandatory join dimensions must be mechanically enforceable and fail closed for the rows where they are material, including exact option contract/underlying/expiry/strike/right matching and the already-required subject/time laws. A supplied InputSelectionPolicyVersion must not advertise a join key that the public selection path cannot actually evaluate. If the current admitted M00 projection lacks a required identity dimension, establish and evidence the smallest lawful seam extension under the current plan before production behaviour changes. Do not start Stage 2.",
+  "review": "M01_STAGE1",
+  "reviewed_branch": "work/m01-completion",
+  "reviewed_head": "079135644212d7145a628bc5460cc0846587bd12",
+  "reviewed_tree": "856b06ee41790682404029c319a32673b68f0eda",
+  "route": "RETURN_TO_WORKER_STAGE1",
+  "stage2_authorised": false,
+  "verdict": "REPAIR"
+}

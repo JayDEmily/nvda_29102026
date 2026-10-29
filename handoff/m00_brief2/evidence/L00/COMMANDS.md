@@ -1,0 +1,12 @@
+# L00 exact commands and results
+
+Executed in /workspace/scratch/ad31885d756b/repo unless absolute path supplied.
+
+1. `/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/uv venv --python /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3 /workspace/scratch/ad31885d756b/m00-env` exit0.
+2. Same uv `pip install --python /workspace/scratch/ad31885d756b/m00-env/bin/python --offline --no-index --find-links /workspace/scratch/ad31885d756b/repo/vendor/wheels --require-hashes -r /workspace/scratch/ad31885d756b/repo/handoff/foundation_implementation/environment/requirements-cp312-dev.lock` exit0,16 pinned packages. Base interpreter metadata query had confirmed pytest absent; no product import/test occurred in that query.
+3. `PYTHONPATH=src /workspace/scratch/ad31885d756b/m00-env/bin/python -m pytest tests/architecture/test_proof_control.py::test_m00_brief2_fixed_extension_and_exact_authority -q` failed at the expected attributable missing-hook assertion before implementation (admission-red.log). A preliminary mistyped relative authoring-script path failed before test authoring; it is not product RED.
+4. Implemented fixed explicit hook, then the same scoped architecture command passed1/1 (admission-green.log). No domain product test was executed. The canary asserts exact target/raw brief, rejects cross-root descriptor and changed original brief bytes.
+5. `/workspace/scratch/ad31885d756b/m00-env/bin/python -m ruff check tools/product_proof_claims.py tests/architecture/test_proof_control.py` initially found one102-character new test line. A line-wrap-only repair passed (static-initial.log/static-green.log). Product semantics and successful architecture behaviour were not rerun for formatting.
+6. `PYTHONPATH=src /workspace/scratch/ad31885d756b/m00-env/bin/python tools/validate_implementation_authority.py --binding implementation/authority/M00_BRIEF2_BINDING.yaml --brief handoff/planning/m00_brief2_20261027/BRIEF_2_M00_RECONCILED_V3_20261027_1622_AEDT.md` exit0, exact original brief and modifyM00/G01 (ingress.log).
+
+Product claim pointer remains null at L00: exact authority/path ownership is ready; physical native proof is intentionally not yet authored/admitted. No M00 production correction or product acceptance is claimed. Cumulative new claim generations must execute their required family population after material additions; unchanged old claim proof is reused until source changes invalidate it.

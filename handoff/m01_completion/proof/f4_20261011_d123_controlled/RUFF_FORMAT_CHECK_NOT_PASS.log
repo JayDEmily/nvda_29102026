@@ -1,0 +1,5 @@
+Would reformat: src/nvda_desk/derived_signal_calculation_truth/_stage1.py
+Would reformat: src/nvda_desk/derived_signal_calculation_truth/api.py
+Would reformat: tests/implementation/derived_signal/test_m01_f4_d123_controlled_postgresql.py
+Would reformat: tests/product/derived_signal/test_m01_f4_d123_controlled_public.py
+4 files would be reformatted

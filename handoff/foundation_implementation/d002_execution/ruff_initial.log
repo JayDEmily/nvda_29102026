@@ -1,0 +1,12 @@
+E501 Line too long (102 > 100)
+   --> src/nvda_desk/market_measurement_truth/_temporal_age.py:293:101
+    |
+291 |                         cursor=cursor,
+292 |                     )
+293 |                     if type(page) is not r.ProjectedRawHistoryPageV1 or type(page.items) is not tuple:
+    |                                                                                                     ^^
+294 |                         raise ValueError("invalid D002 source page")
+295 |                     for item in page.items:
+    |
+
+Found 1 error.

@@ -1,0 +1,89 @@
+FFFF.                                                                    [100%]
+=================================== FAILURES ===================================
+________ test_reviewer_canonical_trade_sign_volume_and_notional_public _________
+
+    def test_reviewer_canonical_trade_sign_volume_and_notional_public() -> None:
+        for did, expected in (
+            ("D011", Decimal("5")), ("D015", 1), ("D016", Decimal("2")),
+        ):
+            occurrence = reviewer.owner.materialise(reviewer.request(did))
+>           assert occurrence is not None and occurrence.result == expected
+E           AssertionError: assert (DerivedSignalOccurrenceV1(derived_signal_id='D016', derived_occurrence_id='d016-3f3054dde456c855e46300a900c9da8d39cd2d...'expiry', '2026-12-18'), ('strike', Decimal('100')), ('option_right', 'call'))), supersedes_derived_occurrence_id=None) is not None and Decimal('0') == Decimal('2'))
+E            +  where Decimal('0') = DerivedSignalOccurrenceV1(derived_signal_id='D016', derived_occurrence_id='d016-3f3054dde456c855e46300a900c9da8d39cd2d...'expiry', '2026-12-18'), ('strike', Decimal('100')), ('option_right', 'call'))), supersedes_derived_occurrence_id=None).result
+
+tests/product/derived_signal/test_m01_f2_observation_identity.py:89: AssertionError
+____ test_two_opposing_trades_have_distinct_exact_lineage_and_stable_retry _____
+
+    def test_two_opposing_trades_have_distinct_exact_lineage_and_stable_retry() -> None:
+        points = _two_trade_points()
+        owner = _owner(points)
+        t1, t2 = reviewer.NOW, reviewer.NOW + timedelta(seconds=5)
+        buy = owner.materialise(_request("D015", t1))
+        sell = owner.materialise(_request("D015", t2))
+        assert buy is not None and buy.result == 1
+        assert sell is not None and sell.result == -1
+        assert buy.derived_occurrence_id != sell.derived_occurrence_id
+        for did, expected in (
+            ("D016", Decimal("-1")),
+            ("D120", (("signed_contracts", Decimal("-1")), ("signed_premium_notional", Decimal("0")))),
+        ):
+            request = _request(did, t2)
+            result = owner.materialise(request)
+>           assert result is not None and result.result == expected
+E           AssertionError: assert (DerivedSignalOccurrenceV1(derived_signal_id='D016', derived_occurrence_id='d016-e909050c7cce596a50188fba8264fe3da41049...'expiry', '2026-12-18'), ('strike', Decimal('100')), ('option_right', 'call'))), supersedes_derived_occurrence_id=None) is not None and Decimal('0') == Decimal('-1'))
+E            +  where Decimal('0') = DerivedSignalOccurrenceV1(derived_signal_id='D016', derived_occurrence_id='d016-e909050c7cce596a50188fba8264fe3da41049...'expiry', '2026-12-18'), ('strike', Decimal('100')), ('option_right', 'call'))), supersedes_derived_occurrence_id=None).result
+
+tests/product/derived_signal/test_m01_f2_observation_identity.py:117: AssertionError
+_____ test_ambiguous_or_missing_trade_sign_must_refuse_not_look_like_zero ______
+
+    def test_ambiguous_or_missing_trade_sign_must_refuse_not_look_like_zero() -> None:
+        points = _two_trade_points(second_price=Decimal("5"))
+        owner = _owner(points)
+        t1, t2 = reviewer.NOW, reviewer.NOW + timedelta(seconds=5)
+        assert owner.materialise(_request("D015", t1)) is not None
+        at_midpoint = owner.materialise(_request("D015", t2))
+        assert at_midpoint is not None  # Tick test can be decisive; this is tested separately.
+        # An unmatched earlier trade has no prior D015 record; do not discard its size.
+        fresh = _owner(_two_trade_points())
+>       assert fresh.materialise(_request("D016", t2)) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D016', derived_occurrence_id='d016-e909050c7cce596a50188fba8264fe3da41049...'expiry', '2026-12-18'), ('strike', Decimal('100')), ('option_right', 'call'))), supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(derived_signal_id='D016', derived_occurrence_id='d016-e909050c7cce596a50188fba8264fe3da41049...'expiry', '2026-12-18'), ('strike', Decimal('100')), ('option_right', 'call'))), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D016', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 8, 3, ...expiry', '2026-12-18'), ('strike', Decimal('100')), ('option_right', 'call'))))), predecessor_selection_policy_refs=()))
+E        +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7f755cc652a0>.materialise
+E        +    and   CalculationRequestV1(derived_signal_id='D016', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 8, 3, ...expiry', '2026-12-18'), ('strike', Decimal('100')), ('option_right', 'call'))))), predecessor_selection_policy_refs=()) = _request('D016', datetime.datetime(2026, 10, 8, 3, 0, 5, tzinfo=datetime.timezone.utc))
+
+tests/product/derived_signal/test_m01_f2_observation_identity.py:138: AssertionError
+________ test_d017_only_pairs_trade_fields_from_same_m00_native_record _________
+
+    def test_d017_only_pairs_trade_fields_from_same_m00_native_record() -> None:
+        points = _two_trade_points(second_price=Decimal("4"), second_size=Decimal("3"))
+        owner = _owner(points)
+        t2 = reviewer.NOW + timedelta(seconds=5)
+        computed = owner.materialise(_request("D017", t2))
+        assert computed is not None
+        assert computed.result == Decimal("24") / Decimal("5")
+        assert _raw_ids(computed, "R120") == _raw_ids(computed, "R121")
+        broken = dict(points)
+        broken["R121"] = (points["R121"][0],)
+>       assert _owner(broken).materialise(_request("D017", t2)) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D017', derived_occurrence_id='d017-517766c601b487549f9519ffef3e94c8fe9d58...'expiry', '2026-12-18'), ('strike', Decimal('100')), ('option_right', 'call'))), supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(derived_signal_id='D017', derived_occurrence_id='d017-517766c601b487549f9519ffef3e94c8fe9d58...'expiry', '2026-12-18'), ('strike', Decimal('100')), ('option_right', 'call'))), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D017', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 8, 3, ...expiry', '2026-12-18'), ('strike', Decimal('100')), ('option_right', 'call'))))), predecessor_selection_policy_refs=()))
+E        +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7f755cc64b30>.materialise
+E        +      where <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7f755cc64b30> = _owner({'R015': (ProjectedRawValueV1(raw_signal_catalogue_id=RawSignalCatalogueId(value='R015'), observation_occurrence_id=_O...derlying_instrument', 'NVDA'), ('expiry', '2026-12-18'), ('strike', Decimal('100')), ('option_right', 'call'))))), ...})
+E        +    and   CalculationRequestV1(derived_signal_id='D017', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 8, 3, ...expiry', '2026-12-18'), ('strike', Decimal('100')), ('option_right', 'call'))))), predecessor_selection_policy_refs=()) = _request('D017', datetime.datetime(2026, 10, 8, 3, 0, 5, tzinfo=datetime.timezone.utc))
+
+tests/product/derived_signal/test_m01_f2_observation_identity.py:152: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/derived_signal/test_m01_f2_observation_identity.py::test_reviewer_canonical_trade_sign_volume_and_notional_public - AssertionError: assert (DerivedSignalOccurrenceV1(derived_signal_id='D016', derived_occurrence_id='d016-3f3054dde456c855e46300a900c9da8d39cd2d...'expiry', '2026-12-18'), ('strike', Decimal('100')), ('option_right', 'call'))), supersedes_derived_occurrence_id=None) is not None and Decimal('0') == Decimal('2'))
+ +  where Decimal('0') = DerivedSignalOccurrenceV1(derived_signal_id='D016', derived_occurrence_id='d016-3f3054dde456c855e46300a900c9da8d39cd2d...'expiry', '2026-12-18'), ('strike', Decimal('100')), ('option_right', 'call'))), supersedes_derived_occurrence_id=None).result
+FAILED tests/product/derived_signal/test_m01_f2_observation_identity.py::test_two_opposing_trades_have_distinct_exact_lineage_and_stable_retry - AssertionError: assert (DerivedSignalOccurrenceV1(derived_signal_id='D016', derived_occurrence_id='d016-e909050c7cce596a50188fba8264fe3da41049...'expiry', '2026-12-18'), ('strike', Decimal('100')), ('option_right', 'call'))), supersedes_derived_occurrence_id=None) is not None and Decimal('0') == Decimal('-1'))
+ +  where Decimal('0') = DerivedSignalOccurrenceV1(derived_signal_id='D016', derived_occurrence_id='d016-e909050c7cce596a50188fba8264fe3da41049...'expiry', '2026-12-18'), ('strike', Decimal('100')), ('option_right', 'call'))), supersedes_derived_occurrence_id=None).result
+FAILED tests/product/derived_signal/test_m01_f2_observation_identity.py::test_ambiguous_or_missing_trade_sign_must_refuse_not_look_like_zero - AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D016', derived_occurrence_id='d016-e909050c7cce596a50188fba8264fe3da41049...'expiry', '2026-12-18'), ('strike', Decimal('100')), ('option_right', 'call'))), supersedes_derived_occurrence_id=None) is None
+ +  where DerivedSignalOccurrenceV1(derived_signal_id='D016', derived_occurrence_id='d016-e909050c7cce596a50188fba8264fe3da41049...'expiry', '2026-12-18'), ('strike', Decimal('100')), ('option_right', 'call'))), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D016', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 8, 3, ...expiry', '2026-12-18'), ('strike', Decimal('100')), ('option_right', 'call'))))), predecessor_selection_policy_refs=()))
+ +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7f755cc652a0>.materialise
+ +    and   CalculationRequestV1(derived_signal_id='D016', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 8, 3, ...expiry', '2026-12-18'), ('strike', Decimal('100')), ('option_right', 'call'))))), predecessor_selection_policy_refs=()) = _request('D016', datetime.datetime(2026, 10, 8, 3, 0, 5, tzinfo=datetime.timezone.utc))
+FAILED tests/product/derived_signal/test_m01_f2_observation_identity.py::test_d017_only_pairs_trade_fields_from_same_m00_native_record - AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D017', derived_occurrence_id='d017-517766c601b487549f9519ffef3e94c8fe9d58...'expiry', '2026-12-18'), ('strike', Decimal('100')), ('option_right', 'call'))), supersedes_derived_occurrence_id=None) is None
+ +  where DerivedSignalOccurrenceV1(derived_signal_id='D017', derived_occurrence_id='d017-517766c601b487549f9519ffef3e94c8fe9d58...'expiry', '2026-12-18'), ('strike', Decimal('100')), ('option_right', 'call'))), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D017', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 8, 3, ...expiry', '2026-12-18'), ('strike', Decimal('100')), ('option_right', 'call'))))), predecessor_selection_policy_refs=()))
+ +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7f755cc64b30>.materialise
+ +      where <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7f755cc64b30> = _owner({'R015': (ProjectedRawValueV1(raw_signal_catalogue_id=RawSignalCatalogueId(value='R015'), observation_occurrence_id=_O...derlying_instrument', 'NVDA'), ('expiry', '2026-12-18'), ('strike', Decimal('100')), ('option_right', 'call'))))), ...})
+ +    and   CalculationRequestV1(derived_signal_id='D017', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 8, 3, ...expiry', '2026-12-18'), ('strike', Decimal('100')), ('option_right', 'call'))))), predecessor_selection_policy_refs=()) = _request('D017', datetime.datetime(2026, 10, 8, 3, 0, 5, tzinfo=datetime.timezone.utc))
+4 failed, 1 passed in 0.31s

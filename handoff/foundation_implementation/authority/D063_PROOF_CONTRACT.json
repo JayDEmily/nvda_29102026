@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_d063",
+  "semantic_brief_path": "handoff/foundation_implementation/authority/D063_IMPLEMENTATION_BRIEF.md",
+  "target": {
+    "category": "M",
+    "responsibility_name": "neutral_market_measurement_truth",
+    "package": "nvda_desk.market_measurement_truth",
+    "public_seam": "nvda_desk.market_measurement_truth.api",
+    "intent": "modify",
+    "existing_object_id": "M02"
+  },
+  "proof_axis": "product",
+  "product_tier_treatment": "NOT_CLASSIFIED",
+  "architecture_proof_axis": "architecture_kernel",
+  "required_proof_ids": [
+    "D063-CALCULATION"
+  ],
+  "families": [
+    {
+      "id": "mmt_d063",
+      "path": "tests/product/market_measurement_d063/test_signal.py",
+      "proof_obligation_ids": [
+        "D063-CALCULATION"
+      ],
+      "required_test_names": [
+        "test_d063_signal"
+      ],
+      "boundary": "D063 follows accepted root \u00a74.2 exactly. Canonical profile freezes the four manifest releases, timestamps, family, actual/forecast units and revisions. Raw request order R286,R285; selected lineage order July actual/consensus, August actual/consensus, September actual/consensus, October actual/consensus. Forecast event=known instant, actual event=scheduled instant and actual known=receipt; no future event invention. Only visible forecasts known strictly before own release and actuals visible by cutoff may pair; baseline releases/actuals strictly precede current. Select latest eligible version independently within exact release/family/kind; validate selected c1/a1 revisions, no missing member substitution/shortening. N=3 fixed, current excluded, sample variance denominator2. Exact rational z then certified final50digit half-even via signed existing sqrt_ratio_50, no rounded-SD intermediate. New request D063-MACRO-SURPRISE-1, mmt-d063-controlled/1, mmt-d063-selection/1, controlled-release-history/1; NVDA context, no predecessors; asof15Oct12:30Z, cutoff13:00Z, now>=cutoff. Window from earliest prior release15July12:30Z to current release. Provider foundation-controlled-events/release_snapshot_v1; mappings mmt-r286-release/1 at release.actual and mmt-r285-release/1 at release.consensus, both synthetic_pct_yoy; units mmt-release-units/1 identity scale. Projection identity release.id/family/scheduled_utc/kind/known_utc/revision. Policy100day bounded history, profile context starts14July12Z; exact metadata/unit/time matching before calculation. Manifest values are controlled synthetic facts, not native calendar certification.",
+      "proof_levels": [
+        "CONTRACT",
+        "INTEGRATION",
+        "STATE"
+      ],
+      "authoritative_inputs": [
+        "D063 follows accepted root \u00a74.2 exactly. Canonical profile freezes the four manifest releases, timestamps, family, actual/forecast units and revisions. Raw request order R286,R285; selected lineage order July actual/consensus, August actual/consensus, September actual/consensus, October actual/consensus. Forecast event=known instant, actual event=scheduled instant and actual known=receipt; no future event invention. Only visible forecasts known strictly before own release and actuals visible by cutoff may pair; baseline releases/actuals strictly precede current. Select latest eligible version independently within exact release/family/kind; validate selected c1/a1 revisions, no missing member substitution/shortening. N=3 fixed, current excluded, sample variance denominator2. Exact rational z then certified final50digit half-even via signed existing sqrt_ratio_50, no rounded-SD intermediate. New request D063-MACRO-SURPRISE-1, mmt-d063-controlled/1, mmt-d063-selection/1, controlled-release-history/1; NVDA context, no predecessors; asof15Oct12:30Z, cutoff13:00Z, now>=cutoff. Window from earliest prior release15July12:30Z to current release. Provider foundation-controlled-events/release_snapshot_v1; mappings mmt-r286-release/1 at release.actual and mmt-r285-release/1 at release.consensus, both synthetic_pct_yoy; units mmt-release-units/1 identity scale. Projection identity release.id/family/scheduled_utc/kind/known_utc/revision. Policy100day bounded history, profile context starts14July12Z; exact metadata/unit/time matching before calculation. Manifest values are controlled synthetic facts, not native calendar certification.",
+        "Accepted root EXEC_PLAN.md \u00a7\u00a74,6\u20139,14; exact owning profile and incorporated authority."
+      ],
+      "dependency_substitutions": [
+        "Controlled synthetic source/session/completeness only, not native certification.",
+        "Reuse accepted M00/common M02 mechanisms, existing window interface/record store, prior immutable evidence. Exact cases also qualify authorised shared prerequisite; no added suites."
+      ],
+      "case_coverage": {
+        "lawful_positive": {
+          "cases": [
+            "surprises[-.1,0,.1], current .2; mean0, sample variance .01, exact z=Decimal(\"2\") with full typed metadata/lineage/public durable readback"
+          ]
+        },
+        "prohibited_false_positive": {
+          "cases": [
+            "September historical actual absent; its consensus and all six other facts present; fixed N=3 must refuse and persist no result/history."
+          ]
+        },
+        "missing_mandatory_authority": {
+          "cases": [
+            "Exact bound controlled profile, admission and immutable generation required before runtime."
+          ]
+        },
+        "lawful_optional_absence": {
+          "cases": [
+            "No live provider/calendar integration or other signal required; unsupported prerequisites refuse by contract."
+          ]
+        }
+      },
+      "expected_failure_signals": [
+        "Incorrect arithmetic or selected raw lineage fails exact success assertions",
+        "Named missing/incompatible input must refuse without occurrence"
+      ],
+      "limitations": [
+        "Exactly two cases; no generic fault/boundary/numeric variant probes, broad suites or earlier claims."
+      ],
+      "adjacent_nonclaims": [
+        "No acceptance beyond this ID; no native-source certification or M00 mutation."
+      ],
+      "environment": "CPython3.12.14 SQLite3.53.1 and existing pinned offline tools.",
+      "material_versions": [
+        "Exact brief/binding/contract/generation and candidate/tree/runtime; old generations preserved."
+      ],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/market_measurement_d063/test_signal.py"
+    }
+  ],
+  "required_support_files": [],
+  "optional_support_files": [],
+  "execution_policy": {
+    "skipped_tests": "FAIL",
+    "xfailed_tests": "FAIL",
+    "xpassed_tests": "FAIL",
+    "collection_failed": "FAIL",
+    "no_tests_collected": "FAIL",
+    "unexpected_governed_mutation": "FAIL"
+  }
+}

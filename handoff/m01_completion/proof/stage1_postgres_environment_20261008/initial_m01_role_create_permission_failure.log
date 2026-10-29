@@ -1,0 +1,127 @@
+
+===== PRE-FLIGHT =====
+Python 3.13.5
+59822410ac6855365c90765de5071182ab382e87d9e9a2622424e7787c4e5caf  /mnt/data/NVDA_POSTGRESQL_17_9_PORTABLE_RUNTIME_20260921.tar(1).gz
+./ENVIRONMENT_RECEIPT.md: OK
+./EXPECTED_POSTGRES_RUNTIME.sha256: OK
+./README.md: OK
+./requirements.lock: OK
+./scripts/bootstrap_all.sh: OK
+./scripts/bootstrap_postgres.sh: OK
+./scripts/bootstrap_python.sh: OK
+./scripts/common.sh: OK
+./scripts/stop_postgres.sh: OK
+./scripts/verify_bundle.sh: OK
+./scripts/verify_env.sh: OK
+./wheelhouse/iniconfig-2.3.0-py3-none-any.whl: OK
+./wheelhouse/librt-0.9.0-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl: OK
+./wheelhouse/mypy-1.20.1-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl: OK
+./wheelhouse/mypy_extensions-1.1.0-py3-none-any.whl: OK
+./wheelhouse/packaging-26.2-py3-none-any.whl: OK
+./wheelhouse/pathspec-1.1.1-py3-none-any.whl: OK
+./wheelhouse/pluggy-1.6.0-py3-none-any.whl: OK
+./wheelhouse/psycopg-3.3.4-py3-none-any.whl: OK
+./wheelhouse/psycopg_binary-3.3.4-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl: OK
+./wheelhouse/pygments-2.20.0-py3-none-any.whl: OK
+./wheelhouse/pytest-9.0.3-py3-none-any.whl: OK
+./wheelhouse/ruff-0.15.11-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl: OK
+./wheelhouse/typing_extensions-4.15.0-py3-none-any.whl: OK
+Looking in links: /mnt/data/stage1_setup/NVDA_U05_PROOF_ENV_BOOTSTRAP_PY313_PG17_9_20260926/wheelhouse
+Processing /mnt/data/stage1_setup/NVDA_U05_PROOF_ENV_BOOTSTRAP_PY313_PG17_9_20260926/wheelhouse/pytest-9.0.3-py3-none-any.whl (from -r /mnt/data/stage1_setup/NVDA_U05_PROOF_ENV_BOOTSTRAP_PY313_PG17_9_20260926/requirements.lock (line 2))
+Processing /mnt/data/stage1_setup/NVDA_U05_PROOF_ENV_BOOTSTRAP_PY313_PG17_9_20260926/wheelhouse/mypy-1.20.1-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (from -r /mnt/data/stage1_setup/NVDA_U05_PROOF_ENV_BOOTSTRAP_PY313_PG17_9_20260926/requirements.lock (line 3))
+Processing /mnt/data/stage1_setup/NVDA_U05_PROOF_ENV_BOOTSTRAP_PY313_PG17_9_20260926/wheelhouse/ruff-0.15.11-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (from -r /mnt/data/stage1_setup/NVDA_U05_PROOF_ENV_BOOTSTRAP_PY313_PG17_9_20260926/requirements.lock (line 4))
+Processing /mnt/data/stage1_setup/NVDA_U05_PROOF_ENV_BOOTSTRAP_PY313_PG17_9_20260926/wheelhouse/psycopg-3.3.4-py3-none-any.whl (from psycopg[binary]==3.3.4->-r /mnt/data/stage1_setup/NVDA_U05_PROOF_ENV_BOOTSTRAP_PY313_PG17_9_20260926/requirements.lock (line 5))
+Processing /mnt/data/stage1_setup/NVDA_U05_PROOF_ENV_BOOTSTRAP_PY313_PG17_9_20260926/wheelhouse/iniconfig-2.3.0-py3-none-any.whl (from pytest==9.0.3->-r /mnt/data/stage1_setup/NVDA_U05_PROOF_ENV_BOOTSTRAP_PY313_PG17_9_20260926/requirements.lock (line 2))
+Processing /mnt/data/stage1_setup/NVDA_U05_PROOF_ENV_BOOTSTRAP_PY313_PG17_9_20260926/wheelhouse/packaging-26.2-py3-none-any.whl (from pytest==9.0.3->-r /mnt/data/stage1_setup/NVDA_U05_PROOF_ENV_BOOTSTRAP_PY313_PG17_9_20260926/requirements.lock (line 2))
+Processing /mnt/data/stage1_setup/NVDA_U05_PROOF_ENV_BOOTSTRAP_PY313_PG17_9_20260926/wheelhouse/pluggy-1.6.0-py3-none-any.whl (from pytest==9.0.3->-r /mnt/data/stage1_setup/NVDA_U05_PROOF_ENV_BOOTSTRAP_PY313_PG17_9_20260926/requirements.lock (line 2))
+Processing /mnt/data/stage1_setup/NVDA_U05_PROOF_ENV_BOOTSTRAP_PY313_PG17_9_20260926/wheelhouse/pygments-2.20.0-py3-none-any.whl (from pytest==9.0.3->-r /mnt/data/stage1_setup/NVDA_U05_PROOF_ENV_BOOTSTRAP_PY313_PG17_9_20260926/requirements.lock (line 2))
+Processing /mnt/data/stage1_setup/NVDA_U05_PROOF_ENV_BOOTSTRAP_PY313_PG17_9_20260926/wheelhouse/typing_extensions-4.15.0-py3-none-any.whl (from mypy==1.20.1->-r /mnt/data/stage1_setup/NVDA_U05_PROOF_ENV_BOOTSTRAP_PY313_PG17_9_20260926/requirements.lock (line 3))
+Processing /mnt/data/stage1_setup/NVDA_U05_PROOF_ENV_BOOTSTRAP_PY313_PG17_9_20260926/wheelhouse/mypy_extensions-1.1.0-py3-none-any.whl (from mypy==1.20.1->-r /mnt/data/stage1_setup/NVDA_U05_PROOF_ENV_BOOTSTRAP_PY313_PG17_9_20260926/requirements.lock (line 3))
+Processing /mnt/data/stage1_setup/NVDA_U05_PROOF_ENV_BOOTSTRAP_PY313_PG17_9_20260926/wheelhouse/pathspec-1.1.1-py3-none-any.whl (from mypy==1.20.1->-r /mnt/data/stage1_setup/NVDA_U05_PROOF_ENV_BOOTSTRAP_PY313_PG17_9_20260926/requirements.lock (line 3))
+Processing /mnt/data/stage1_setup/NVDA_U05_PROOF_ENV_BOOTSTRAP_PY313_PG17_9_20260926/wheelhouse/librt-0.9.0-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (from mypy==1.20.1->-r /mnt/data/stage1_setup/NVDA_U05_PROOF_ENV_BOOTSTRAP_PY313_PG17_9_20260926/requirements.lock (line 3))
+Processing /mnt/data/stage1_setup/NVDA_U05_PROOF_ENV_BOOTSTRAP_PY313_PG17_9_20260926/wheelhouse/psycopg_binary-3.3.4-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (from psycopg[binary]==3.3.4->-r /mnt/data/stage1_setup/NVDA_U05_PROOF_ENV_BOOTSTRAP_PY313_PG17_9_20260926/requirements.lock (line 5))
+Installing collected packages: typing_extensions, ruff, pygments, psycopg-binary, psycopg, pluggy, pathspec, packaging, mypy_extensions, librt, iniconfig, pytest, mypy
+
+Successfully installed iniconfig-2.3.0 librt-0.9.0 mypy-1.20.1 mypy_extensions-1.1.0 packaging-26.2 pathspec-1.1.1 pluggy-1.6.0 psycopg-3.3.4 psycopg-binary-3.3.4 pygments-2.20.0 pytest-9.0.3 ruff-0.15.11 typing_extensions-4.15.0
+python=3.13.5
+pytest=9.0.3
+mypy=1.20.1
+psycopg=3.3.4
+ruff 0.15.11
+postgres_user=oai uid=1000
+postgres_version=17.9
+server_encoding=UTF8
+fsync=on
+synchronous_commit=on
+full_page_writes=on
+listen_addresses=<empty>
+NVDA_TEST_POSTGRES_DSN=host=/mnt/data/stage1_pg_environment/pgsocket port=55432 dbname=postgres user=oai
+environment_file=/mnt/data/stage1_pg_environment/environment.env
+VERIFIED python=3.13.5 pytest=9.0.3 mypy=1.20.1 ruff=0.15.11 psycopg=3.3.4 postgresql=17.9 UTF8 fsync=on synchronous_commit=on full_page_writes=on unix_socket_only
+import_versions yaml= 6.0.3 pytest= 9.0.3 psycopg= 3.3.4
+
+===== DISTINCT DATABASE ROLES AND SCHEMAS =====
+CREATE ROLE
+CREATE ROLE
+CREATE SCHEMA
+CREATE SCHEMA
+nvda_m00_proof|nvda_m00_proof
+nvda_m01_proof|nvda_m01_proof
+
+===== M01 PostgreSQL PERSISTENCE / ISOLATION =====
+....F.....................................                               [100%]
+=================================== FAILURES ===================================
+____________ test_same_m00_writer_with_different_schema_is_refused _____________
+
+    def test_same_m00_writer_with_different_schema_is_refused() -> None:
+        m00_dsn = _dsn(M00_DSN_ENV)
+        _, factory = _private()
+        boundary = _boundary(m00_dsn)
+        m00_user, m00_schema = _identity(m00_dsn)
+        probe_schema = f"{m00_schema}_writer_probe"
+        psycopg = _psycopg()
+        sql = importlib.import_module("psycopg.sql")
+        with psycopg.connect(m00_dsn) as connection:
+>           connection.execute(
+                sql.SQL("CREATE SCHEMA IF NOT EXISTS {} AUTHORIZATION {}").format(
+                    sql.Identifier(probe_schema), sql.Identifier(m00_user)
+                )
+            )
+
+tests/implementation/derived_signal/test_ds_t01_r02_persistence_boundary_refinement.py:118: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <psycopg.Connection [BAD] at 0x7fbf5082da90>
+query = Composed([SQL('CREATE SCHEMA IF NOT EXISTS '), Identifier('nvda_m00_proof_writer_probe'), SQL(' AUTHORIZATION '), Identifier('nvda_m00_proof')])
+params = None
+
+    def execute(
+        self,
+        query: Query,
+        params: Params | None = None,
+        *,
+        prepare: bool | None = None,
+        binary: bool = False,
+    ) -> Cursor[Row]:
+        """Execute a query and return a cursor to read its results."""
+        try:
+            cur = self.cursor()
+            if binary:
+                cur.format = BINARY
+    
+            if isinstance(query, Template):
+                if params is not None:
+                    raise TypeError(
+                        "'execute()' with string template query doesn't support parameters"
+                    )
+                return cur.execute(query, prepare=prepare)
+            else:
+                return cur.execute(query, params, prepare=prepare)
+        except e._NO_TRACEBACK as ex:
+>           raise ex.with_traceback(None)
+E           psycopg.errors.InsufficientPrivilege: permission denied for database postgres
+
+../../stage1_pg_environment/venv/lib/python3.13/site-packages/psycopg/connection.py:300: InsufficientPrivilege
+=========================== short test summary info ============================
+FAILED tests/implementation/derived_signal/test_ds_t01_r02_persistence_boundary_refinement.py::test_same_m00_writer_with_different_schema_is_refused - psycopg.errors.InsufficientPrivilege: permission denied for database postgres
+1 failed, 41 passed in 1.34s

@@ -1,0 +1,26 @@
+{
+  "review_cycle": "WORKER_VI14_L1_1790568187",
+  "actor": "WORKER",
+  "leaf": "VI-14-L1",
+  "status": "COMPLETE_CANDIDATE_FROZEN",
+  "source_commit": "00ca26815bc217b7fd4bb98a73eb2089caf94919",
+  "source_tree": "cb5bf7a00b58ac25ce36be2957c7cf5069164ff0",
+  "candidate_commit": "076f1e979474babbb8985dc87d3b2d4d62ec0b4c",
+  "candidate_tree": "45aec5c01ae8a35fa8879fab978c6fb0f0082140",
+  "changed_paths": [
+    "implementation/proof/VI14_L1_INTEGRATED_REAL_BOUNDARY_CANDIDATE_EVIDENCE.md"
+  ],
+  "worker_validation": {
+    "integrated_real_boundary": "66 passed",
+    "architecture_bootstrap": "74 passed",
+    "product_proof_control": "PASS 6 families 13/13 obligations",
+    "architecture_dependency_public_seam": "PASS",
+    "mypy": "PASS 16 source files",
+    "ruff": "PASS",
+    "git_fsck": "PASS exit 0"
+  },
+  "production_repair": "NONE_REQUIRED_BY_CURRENT_EVIDENCE",
+  "vi14_acceptance": "PENDING_FRESH_TESTER",
+  "vi15_authority": "PROHIBITED_PENDING_VI14_PASS_AND_PROMOTION",
+  "next_authorised_step": "Fresh TESTER_VI14_L1 independently reviews exact candidate 076f1e979474babbb8985dc87d3b2d4d62ec0b4c."
+}

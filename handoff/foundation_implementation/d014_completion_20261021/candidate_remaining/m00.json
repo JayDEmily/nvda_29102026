@@ -1,0 +1,19 @@
+{
+  "candidate": "b0a61a7f960b1cff4f95605347db2773d1078c65",
+  "tree": "1b73d7dcfda91f79a11dfc064eee620eae88a6aa",
+  "argv": [
+    "/workspace/scratch/56b9974b28a0/d014-runtime/bin/python",
+    "tools/run_product_proof_gate.py",
+    "--aggregate",
+    "raw_signal_occurrence_truth_sqlite"
+  ],
+  "cwd": "/workspace/scratch/56b9974b28a0/implementation-recovery",
+  "reason": "incomplete D013 output recovery then unreached mandatory 7.3.4 checks; prior same-candidate D014 retained",
+  "started_utc": "2026-10-21T09:48:49Z",
+  "exit": 0,
+  "duration_seconds": 20.029040511999483,
+  "log_sha256": "5e4554e2c164397f3d1a0b52a7be76f8c039b6e1bd89f5ed78beeb15a2691fd6",
+  "marker_present": true,
+  "unchanged_head": true,
+  "clean_after": true
+}

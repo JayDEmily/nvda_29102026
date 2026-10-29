@@ -1,0 +1,283 @@
+VI-13R U01 Reviewer 021 command evidence
+
+ARCHIVE
+sha256 f81eda4d2b24c19dc9368906b9e4a7cb3c465c82840203e046bba047cd5c5f8f  NVDA_G03_VI13R_U01_REVIEWER_021_FULL_GIT_20260923.tar(1).gz
+
+GIT BINDING
+submitted HEAD 57f3e96e3df6fcf8fbbcc627b6de9eef245d2c6c
+submitted HEAD tree 6e0398dffee38efe725f83c78412dba251d15367
+branch work/vi12r-u01-contract-owner-boundary
+pre-U01 main 95c0aeabf3b76316bd32870ffe6c311be8ad1237
+candidate d14190cdfe845fdd60629ca9b1eed8d1d2704d44
+candidate tree 00f036fcd22a6e3ec6f79c5ddfeb9d210d1418b9
+candidate parent 95c0aeabf3b76316bd32870ffe6c311be8ad1237
+candidate production diff path: src/nvda_desk/raw_signal_occurrence_truth/api.py only
+git fsck --full --no-dangling: rc=0, no output
+
+AUTHORITY HASHES
+IRB 938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342
+BICP md 6b2906b92e11bf09fd7f8b188e8ed6555a0a5ae61636909f676f84827601d21f
+BICP json 5b99cead41fd8d3d372b5ed2ef4558065328b814e0a94c3680162fc6594df5ed
+production diff sha256 e1e4752df4fbca13a2e01ace57b0ace554f22fea9084c71736037f7bcf5f87e0
+
+MANDATORY COMMANDS ON DETACHED CANDIDATE
+===== python --version =====
+Python 3.13.5
+RC=0
+
+===== python -m pytest --version =====
+pytest 9.0.3
+RC=0
+
+===== python -m mypy --version =====
+mypy 1.20.1 (compiled: yes)
+RC=0
+
+===== python -m ruff --version =====
+ruff 0.15.11
+RC=0
+
+===== python -m pytest -q tests/product/raw_signal/test_u01_contract_owner_boundary.py =====
+........................................................................ [ 24%]
+...F.................................................................... [ 48%]
+........................................................................ [ 73%]
+........................................................................ [ 97%]
+....F..                                                                  [100%]
+=================================== FAILURES ===================================
+_ test_every_allowed_v1_discriminant_value_is_accepted[RawObservationOccurrenceV1-source_temporal_kind-receipt_only] _
+
+symbol = 'RawObservationOccurrenceV1', field = 'source_temporal_kind'
+expected = 'receipt_only'
+
+    @pytest.mark.parametrize(
+        ("symbol", "field", "expected"),
+        [
+            (symbol, field, expected)
+            for (symbol, field), values in LITERAL_LAW.items()
+            for expected in sorted(values)
+        ],
+    )
+    def test_every_allowed_v1_discriminant_value_is_accepted(
+        symbol: str, field: str, expected: str
+    ) -> None:
+>       assert str(getattr(_construct(symbol, field, expected), field)) == expected
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/raw_signal/test_u01_contract_owner_boundary.py:379:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests/product/raw_signal/test_u01_contract_owner_boundary.py:273: in _construct
+    return cls(**payload)
+           ^^^^^^^^^^^^^^
+<string>:29: in __init__
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = RawObservationOccurrenceV1(concept_id=_ConceptId(value='raw_signal.raw_observation_occurrence'), contract_id=_Contract...raw='2026-09-20T12:00:04.900000Z', source_timezone_native='UTC', market_timezone_iana=None, market_session_native=None)
+
+    def __post_init__(self) -> None:
+        _require_exact_identity_value(
+            self.concept_id, _ConceptId, _OBSERVATION_CONCEPT, "concept_id"
+        )
+        _require_exact_identity_value(
+            self.contract_id, _ContractId, _OBSERVATION_CONTRACT, "contract_id"
+        )
+        _require_exact_type(
+            self.observation_occurrence_id,
+            _ObservationOccurrenceId,
+            "observation_occurrence_id",
+        )
+        _require_exact_type(
+            self.delivery_artifact_ref, _DeliveryArtifactRef, "delivery_artifact_ref"
+        )
+        _require_exact_type(self.source_provider, _ProviderId, "source_provider")
+        if self.raw_signal_catalogue_ids is not None:
+            if type(self.raw_signal_catalogue_ids) is not tuple:
+                raise TypeError("raw_signal_catalogue_ids must be a tuple or absent")
+            if not self.raw_signal_catalogue_ids:
+                raise ValueError("raw_signal_catalogue_ids uses absence, not an empty tuple")
+            if any(
+                type(item) is not RawSignalCatalogueId
+                for item in self.raw_signal_catalogue_ids
+            ):
+                raise TypeError("raw_signal_catalogue_ids must contain RawSignalCatalogueId values")
+            if len(set(self.raw_signal_catalogue_ids)) != len(self.raw_signal_catalogue_ids):
+                raise ValueError("raw_signal_catalogue_ids must not contain duplicates")
+        if type(self.native_record) is not dict:
+            raise TypeError("native_record must be a provider-native mapping")
+        _require_utc(self.received_ts_utc, "received_ts_utc")
+        if self.received_epoch_ns is not None and type(self.received_epoch_ns) is not int:
+            raise TypeError("received_epoch_ns must be an integer or absent")
+        if type(self.ingestion_sequence) is not int:
+            raise TypeError("ingestion_sequence must be an integer")
+        _require_exact_type(
+            self.ingestion_sequence_scope,
+            _IngestionSequenceScope,
+            "ingestion_sequence_scope",
+        )
+        if self.source_temporal_kind not in ("true_instant", "date_only", "receipt_only"):
+            raise ValueError("source_temporal_kind is outside the v1 contract")
+        if self.source_temporal_kind == "receipt_only":
+            if self.source_timestamp_raw is not None:
+>               raise ValueError("receipt_only must not fabricate a source timestamp")
+E               ValueError: receipt_only must not fabricate a source timestamp
+
+src/nvda_desk/raw_signal_occurrence_truth/api.py:267: ValueError
+_____ test_every_public_facet_rejects_cross_layer_static_type_substitution _____
+
+    def test_every_public_facet_rejects_cross_layer_static_type_substitution() -> None:
+        source_lines = TYPECHECK_NEGATIVE.read_text(encoding="utf-8").splitlines()
+        expected_lines = {
+            number for number, line in enumerate(source_lines, start=1) if "STATIC_NEGATIVE" in line
+        }
+        assert len(expected_lines) == 15
+
+        result = _run_public_seam_mypy(TYPECHECK_NEGATIVE)
+        assert result.returncode != 0, "negative static-type specimen unexpectedly type-checked"
+        reported_lines: set[int] = set()
+        for line in (result.stdout + result.stderr).splitlines():
+            prefix = f"{TYPECHECK_NEGATIVE}:"
+            if not line.startswith(prefix):
+                continue
+            remainder = line[len(prefix) :]
+            try:
+                reported_lines.add(int(remainder.split(":", 1)[0]))
+            except ValueError:
+                continue
+        missing = expected_lines - reported_lines
+>       assert not missing, (missing, result.stdout, result.stderr)
+E       AssertionError: ({15, 18, 21, 23, 28, 34, ...}, 'tests/product/raw_signal/typecheck/public_seam_negative.py:15: error: Argument 1 to "...ts" of "_ReadsV1" has incompatible type "_ObservationOccurrenceId"; expected "_CaptureOccurrenceId"  [arg-type]
+E         ', '')
+E       assert not {15, 18, 21, 23, 28, 34, ...}
+
+tests/product/raw_signal/test_u01_contract_owner_boundary.py:832: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/raw_signal/test_u01_contract_owner_boundary.py::test_every_allowed_v1_discriminant_value_is_accepted[RawObservationOccurrenceV1-source_temporal_kind-receipt_only] - ValueError: receipt_only must not fabricate a source timestamp
+FAILED tests/product/raw_signal/test_u01_contract_owner_boundary.py::test_every_public_facet_rejects_cross_layer_static_type_substitution - AssertionError: ({15, 18, 21, 23, 28, 34, ...}, 'tests/product/raw_signal/typecheck/public_seam_negative.py:15: error: Argument 1 to "...ts" of "_ReadsV1" has incompatible type "_ObservationOccurrenceId"; expected "_CaptureOccurrenceId"  [arg-type]
+  ', '')
+assert not {15, 18, 21, 23, 28, 34, ...}
+2 failed, 293 passed in 3.42s
+RC=1
+
+===== python -m mypy --strict --disallow-any-expr --show-error-codes --no-error-summary tests/product/raw_signal/typecheck/public_seam_positive.py =====
+RC=0
+
+===== python -m mypy --strict --disallow-any-expr --show-error-codes --no-error-summary tests/product/raw_signal/typecheck/public_seam_negative.py =====
+tests/product/raw_signal/typecheck/public_seam_negative.py:15: error: Argument 1 to "register_capture_scope_policy" of "_CommandsV1" has incompatible type "RawObservationOccurrenceV1"; expected "CaptureScopePolicyV1"  [arg-type]
+tests/product/raw_signal/typecheck/public_seam_negative.py:18: error: Argument "capture_occurrence_id" to "realise_scheduled_capture_occurrence" of "_CommandsV1" has incompatible type "_ObservationOccurrenceId"; expected "_CaptureOccurrenceId"  [arg-type]
+tests/product/raw_signal/typecheck/public_seam_negative.py:21: error: Argument 1 to "admit_raw_observation_occurrence" of "_CommandsV1" has incompatible type "CaptureScopePolicyV1"; expected "RawObservationOccurrenceV1"  [arg-type]
+tests/product/raw_signal/typecheck/public_seam_negative.py:23: error: Argument "observation_occurrence_ref" to "derive_capture_receipt_evidence_relation" of "_CommandsV1" has incompatible type "_CaptureOccurrenceId"; expected "_ObservationOccurrenceId"  [arg-type]
+tests/product/raw_signal/typecheck/public_seam_negative.py:28: error: Argument "assessment_occurrence_id" to "append_capture_receipt_presence_assessment" of "_CommandsV1" has incompatible type "_ObservationOccurrenceId"; expected "_AssessmentOccurrenceId"  [arg-type]
+tests/product/raw_signal/typecheck/public_seam_negative.py:34: error: Argument "scope_policy_ref" to "reconcile_owed_slots" of "_CommandsV1" has incompatible type "_ObservationOccurrenceId"; expected "_ScopePolicyRef"  [arg-type]
+tests/product/raw_signal/typecheck/public_seam_negative.py:43: error: Argument "slot_start_utc" to "realise_scheduled_capture_occurrence" of "_CommandsV1" has incompatible type "int"; expected "datetime"  [arg-type]
+tests/product/raw_signal/typecheck/public_seam_negative.py:48: error: Argument "evidence_as_of_ts_utc" to "append_capture_receipt_presence_assessment" of "_CommandsV1" has incompatible type "str"; expected "datetime"  [arg-type]
+tests/product/raw_signal/typecheck/public_seam_negative.py:53: error: List item 0 has incompatible type "_CaptureOccurrenceId"; expected "datetime"  [list-item]
+tests/product/raw_signal/typecheck/public_seam_negative.py:59: error: Argument 1 to "get_capture_scope_policy" of "_ReadsV1" has incompatible type "_CaptureOccurrenceId"; expected "_ScopePolicyId"  [arg-type]
+tests/product/raw_signal/typecheck/public_seam_negative.py:64: error: Argument 2 to "get_capture_scope_policy" of "_ReadsV1" has incompatible type "datetime"; expected "int"  [arg-type]
+tests/product/raw_signal/typecheck/public_seam_negative.py:67: error: Argument 1 to "get_scheduled_capture_occurrence" of "_ReadsV1" has incompatible type "_ObservationOccurrenceId"; expected "_CaptureOccurrenceId"  [arg-type]
+tests/product/raw_signal/typecheck/public_seam_negative.py:70: error: Argument 1 to "get_raw_observation_occurrence" of "_ReadsV1" has incompatible type "_CaptureOccurrenceId"; expected "_ObservationOccurrenceId"  [arg-type]
+tests/product/raw_signal/typecheck/public_seam_negative.py:73: error: Argument 1 to "get_receipt_presence_assessment" of "_ReadsV1" has incompatible type "_ObservationOccurrenceId"; expected "_AssessmentOccurrenceId"  [arg-type]
+tests/product/raw_signal/typecheck/public_seam_negative.py:76: error: Argument 1 to "list_receipt_presence_assessments" of "_ReadsV1" has incompatible type "_ObservationOccurrenceId"; expected "_CaptureOccurrenceId"  [arg-type]
+RC=1
+
+===== python -m mypy src --show-error-codes =====
+Success: no issues found in 15 source files
+RC=0
+
+===== python -m ruff check src tests tools =====
+All checks passed!
+RC=0
+
+===== python tools/validate_product_proof.py =====
+PASS: product-proof control configuration is structurally and semantically bound
+BICP: BICP-CANDIDATE-005 sha256=5b99cead41fd8d3d372b5ed2ef4558065328b814e0a94c3680162fc6594df5ed
+implementation target: M00
+required product obligations: 13
+admitted physical product families: 6
+covered product obligations: 13/13
+aggregate: raw_signal_occurrence_truth_product state=READY_FOR_PROOF
+separate architecture proof axis: architecture_kernel
+RC=0
+
+===== python tools/validate_architecture.py =====
+architecture objects: 5
+active runtime modules: 1
+implementation allocations: 1
+admitted test families: 11
+promotion sets: 1
+dependency/public-seam violations: 0
+PASS: structural architecture validation
+RC=0
+
+===== python tools/check_dependencies.py =====
+PASS: dependency direction and cycle validation
+RC=0
+
+===== python tools/check_public_seams.py =====
+PASS: public-seam validation
+RC=0
+
+===== python tools/run_promotion_gate.py --set architecture_kernel =====
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.0.3, pluggy-1.6.0
+rootdir: /mnt/data/reviewer021_candidate
+configfile: pyproject.toml
+plugins: anyio-4.13.0, ddtrace-4.4.0, Faker-40.1.2, asyncio-1.3.0, cov-7.0.0, json-report-1.5.0, metadata-3.1.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 74 items
+
+tests/architecture/test_activation_readiness.py ............             [ 16%]
+tests/architecture/test_dependency_direction.py ......                   [ 24%]
+tests/architecture/test_identifier_taxonomy.py .....................     [ 52%]
+tests/architecture/test_implementation_authority_ingress.py ............ [ 68%]
+...                                                                      [ 72%]
+tests/architecture/test_object_lifecycle.py ...                          [ 77%]
+tests/architecture/test_proof_control.py ...                             [ 81%]
+tests/architecture/test_public_seam_law.py .....                         [ 87%]
+tests/architecture/test_registry_schema.py .                             [ 89%]
+tests/architecture/test_static_typecheck.py ...                          [ 93%]
+tests/bootstrap/test_legacy_exclusion.py ...                             [ 97%]
+tests/bootstrap/test_minimal_imports.py ..                               [100%]
+
+============================== 74 passed in 5.32s ==============================
+architecture objects: 5
+active runtime modules: 1
+implementation allocations: 1
+admitted test families: 11
+promotion sets: 1
+dependency/public-seam violations: 0
+promotion set: architecture_kernel
+resolved test paths: 11
+  tests/architecture/test_activation_readiness.py
+  tests/architecture/test_dependency_direction.py
+  tests/architecture/test_identifier_taxonomy.py
+  tests/architecture/test_implementation_authority_ingress.py
+  tests/architecture/test_object_lifecycle.py
+  tests/architecture/test_proof_control.py
+  tests/architecture/test_public_seam_law.py
+  tests/architecture/test_registry_schema.py
+  tests/architecture/test_static_typecheck.py
+  tests/bootstrap/test_legacy_exclusion.py
+  tests/bootstrap/test_minimal_imports.py
+RC=0
+
+===== git diff --check =====
+RC=0
+
+
+FOCUSED IMPLEMENTATION CHECKS
+PUBLIC_EXPORTS ['CaptureReceiptEvidenceRelationV1', 'CaptureReceiptPresenceAssessmentV1', 'CaptureScopePolicyV1', 'RawObservationOccurrenceV1', 'RawSignalCatalogueId', 'ScheduledCaptureOccurrenceV1', 'create_owner']
+CaptureScopePolicyV1 required identity types: _ConceptId, _ContractId, _ScopePolicyId, _EligibilityPolicyRef
+ScheduledCaptureOccurrenceV1 required identity types: _ConceptId, _ContractId, _CaptureOccurrenceId, _ScopePolicyRef
+RawObservationOccurrenceV1 required identity types: _ConceptId, _ContractId, _ObservationOccurrenceId, _DeliveryArtifactRef, _ProviderId, _IngestionSequenceScope
+CaptureReceiptPresenceAssessmentV1 required identity types: _ConceptId, _ContractId, _AssessmentOccurrenceId, _CaptureOccurrenceId and optional _AssessmentOccurrenceId
+PUBLIC_IDENTITY_EXPORTS ['RawSignalCatalogueId']
+PUBLIC_STRING_CONSTRUCTION TypeError concept_id must use the _ConceptId identity layer
+
+NATIVE_BEFORE {'Bid Price': '123.45', 'Provider Null': None}
+NATIVE_AFTER_SOURCE_MUTATION {'Bid Price': '999.99', 'Provider Null': None, 'Injected': 'later'}
+NATIVE_AFTER_PAYLOAD_MUTATION {'Bid Price': '888.88', 'Provider Null': None, 'Injected': 'later'}
+
+DISCREPANCY DISPOSITION
+W-U01-F001 reproduced by the U01 pytest run above. The generic discriminant test changes source_temporal_kind to receipt_only while retaining the default true_instant source_timestamp_raw. The candidate rejects this at api.py:267. The explicit temporal-law test separately requires receipt_only + non-absent timestamp to reject. This is a proof-harness contradiction; production semantics are correct.
+
+W-U01-F002 reproduced by the U01 pytest run above. Direct pinned mypy reports all 15 STATIC_NEGATIVE sites at lines 15,18,21,23,28,34,43,48,53,59,64,67,70,73,76. Pytest constructs an absolute Path prefix but mypy, run with repository cwd, emits relative paths. This is a proof-parser path-normalisation defect.

@@ -1,0 +1,1 @@
+{"base_scenario":"A4","case_id":"N15","consumer_knows_ids":false,"control_id":"M00B2-CONTROL-error317","expected":"PUBLIC_DISCOVERY_REQUIRED","known_id_lookup_first":true,"query":{"generation":"STK-SMART-G1","receipt_cutoff":"2026-10-20T12:40:01Z","request":"STK-SMART-R1"}}

@@ -1,0 +1,116 @@
+{
+  "python": "3.12.14",
+  "pytest": "9.0.3",
+  "yaml": "6.0.3",
+  "psycopg": "3.3.4",
+  "libpq": 170009,
+  "psycopg_impl": "python",
+  "supported_runtime_verified": false,
+  "required_python": "3.13.5",
+  "checks": {
+    "DERIVED_REGRESSION_FINAL_PY312": {
+      "command": [
+        "/workspace/scratch/5ae38fd70354/inspection/repository/../../runtime/diagnostic-venv/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "tests/product/derived_signal"
+      ],
+      "exit_code": 0,
+      "tail": [
+        "............                                                             [100%]",
+        "804 passed in 1.94s"
+      ]
+    },
+    "DEFAULT_SUITE_FINAL_PY312": {
+      "command": [
+        "/workspace/scratch/5ae38fd70354/inspection/repository/../../runtime/diagnostic-venv/bin/python",
+        "-m",
+        "pytest",
+        "-q"
+      ],
+      "exit_code": 1,
+      "tail": [
+        "FAILED tests/architecture/test_static_typecheck.py::test_incompatible_python_visible_public_seam_use_is_rejected",
+        "2 failed, 72 passed in 3.53s"
+      ]
+    },
+    "R01_PUBLIC_WITNESSES_PY312": {
+      "command": [
+        "/workspace/scratch/5ae38fd70354/inspection/repository/../../runtime/diagnostic-venv/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "handoff/workbook_v2/g01/proofs/test_g01_public_authority_witnesses.py"
+      ],
+      "exit_code": 0,
+      "tail": [
+        "...                                                                      [100%]",
+        "3 passed in 0.07s"
+      ]
+    },
+    "VALIDATE_ARCHITECTURE": {
+      "command": [
+        "/workspace/scratch/5ae38fd70354/inspection/repository/../../runtime/diagnostic-venv/bin/python",
+        "tools/validate_architecture.py"
+      ],
+      "exit_code": 0,
+      "tail": [
+        "dependency/public-seam violations: 0",
+        "PASS: structural architecture validation"
+      ]
+    },
+    "CHECK_DEPENDENCIES": {
+      "command": [
+        "/workspace/scratch/5ae38fd70354/inspection/repository/../../runtime/diagnostic-venv/bin/python",
+        "tools/check_dependencies.py"
+      ],
+      "exit_code": 0,
+      "tail": [
+        "PASS: dependency direction and cycle validation"
+      ]
+    },
+    "CHECK_PUBLIC_SEAMS": {
+      "command": [
+        "/workspace/scratch/5ae38fd70354/inspection/repository/../../runtime/diagnostic-venv/bin/python",
+        "tools/check_public_seams.py"
+      ],
+      "exit_code": 0,
+      "tail": [
+        "PASS: public-seam validation"
+      ]
+    },
+    "IMPLEMENTATION_AUTHORITY": {
+      "command": [
+        "/workspace/scratch/5ae38fd70354/inspection/repository/../../runtime/diagnostic-venv/bin/python",
+        "tools/validate_implementation_authority.py",
+        "--binding",
+        "handoff/workbook_v2/r01_contract_repair/IMPLEMENTATION_INGRESS.yaml",
+        "--brief",
+        "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md"
+      ],
+      "exit_code": 0,
+      "tail": [
+        "PASS: implementation authority brief_sha256=603b850802a418780109095e7ae69bcece449da79fb24140a6d50297605e927c",
+        "candidate_targets: modify:M01"
+      ]
+    },
+    "RUFF_CHANGED_FILES_FINAL": {
+      "command": [
+        "../../runtime/diagnostic-venv/bin/ruff",
+        "check",
+        "src/nvda_desk/derived_signal_calculation_truth/_stage1.py",
+        "src/nvda_desk/derived_signal_calculation_truth/api.py",
+        "tests/product/derived_signal/test_m01_d120_native_multiplier_public.py",
+        "tests/product/derived_signal/native_signed_flow_fixture.py",
+        "tests/product/derived_signal/test_m01_f2_observation_identity.py",
+        "tests/product/derived_signal/test_m01_f2a_temporal_quote_sign.py",
+        "tests/product/derived_signal/test_m01_f3_grouped_public.py"
+      ],
+      "exit_code": 0,
+      "tail": [
+        "All checks passed!"
+      ]
+    }
+  }
+}

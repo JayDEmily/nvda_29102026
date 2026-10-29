@@ -1,0 +1,573 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/83dd7c79f14f/NVDA_V2_CLEAN_RECOVERED_REPO_20261022
+configfile: pyproject.toml
+collected 148 items / 130 deselected / 18 selected
+
+tests/architecture/test_proof_control.py FFFFFFFFFFFFFFFFFF              [100%]
+
+=================================== FAILURES ===================================
+__ test_tranche_fixed_member_readiness_and_old_generation_preservation[D015] ___
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_tranche_fixed_member_read0')
+identity = 'D015'
+
+    @pytest.mark.parametrize("identity", _TRANCHE_IDS)
+    def test_tranche_fixed_member_readiness_and_old_generation_preservation(tmp_path, identity):
+        api = _controls()
+        root, entry = _tranche_control_candidate(tmp_path, identity)
+        protected = {path: path.read_bytes() for rid in (D012_ROOT, D013_ROOT, D014_ROOT)
+                     for path in (root / rid).rglob("*.json")}
+>       claim = api.load_product_proof_claim(root, entry["claim_id"])
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/architecture/test_proof_control.py:1609: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+repository_root = PosixPath('/tmp/pytest-of-root/pytest-0/test_tranche_fixed_member_read0')
+claim_id = 'neutral_market_measurement_truth_d015'
+
+    def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductProofClaim:
+        root = repository_root.resolve()
+        catalogue = read_json(root / "config/product_proof/claims.json")
+        _schema(root, catalogue, "product_proof_claims.schema.json")
+        authority = _authority(root, catalogue)
+        extensions: dict[str, tuple[dict[str, Any], dict[str, Any], str]] = {}
+        if authority is not None:
+            identities: tuple[Literal["D012", "D013", "D014"], ...] = ("D012", "D013", "D014")
+            for identity in identities:
+                extension = _scalar_extension(root, identity)
+                if extension is not None:
+                    extensions[extension[0]["claim_id"]] = extension
+        if extensions:
+            catalogue = {
+                **catalogue,
+                "claims": [*catalogue["claims"], *(item[0] for item in extensions.values())],
+            }
+        ids = [entry["claim_id"] for entry in catalogue["claims"]]
+        if len(ids) != len(set(ids)) or claim_id not in ids:
+>           raise ValueError(f"unknown/duplicate product claim: {claim_id}")
+E           ValueError: unknown/duplicate product claim: neutral_market_measurement_truth_d015
+
+tools/product_proof_claims.py:488: ValueError
+__ test_tranche_fixed_member_readiness_and_old_generation_preservation[D016] ___
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_tranche_fixed_member_read1')
+identity = 'D016'
+
+    @pytest.mark.parametrize("identity", _TRANCHE_IDS)
+    def test_tranche_fixed_member_readiness_and_old_generation_preservation(tmp_path, identity):
+        api = _controls()
+        root, entry = _tranche_control_candidate(tmp_path, identity)
+        protected = {path: path.read_bytes() for rid in (D012_ROOT, D013_ROOT, D014_ROOT)
+                     for path in (root / rid).rglob("*.json")}
+>       claim = api.load_product_proof_claim(root, entry["claim_id"])
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/architecture/test_proof_control.py:1609: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+repository_root = PosixPath('/tmp/pytest-of-root/pytest-0/test_tranche_fixed_member_read1')
+claim_id = 'neutral_market_measurement_truth_d016'
+
+    def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductProofClaim:
+        root = repository_root.resolve()
+        catalogue = read_json(root / "config/product_proof/claims.json")
+        _schema(root, catalogue, "product_proof_claims.schema.json")
+        authority = _authority(root, catalogue)
+        extensions: dict[str, tuple[dict[str, Any], dict[str, Any], str]] = {}
+        if authority is not None:
+            identities: tuple[Literal["D012", "D013", "D014"], ...] = ("D012", "D013", "D014")
+            for identity in identities:
+                extension = _scalar_extension(root, identity)
+                if extension is not None:
+                    extensions[extension[0]["claim_id"]] = extension
+        if extensions:
+            catalogue = {
+                **catalogue,
+                "claims": [*catalogue["claims"], *(item[0] for item in extensions.values())],
+            }
+        ids = [entry["claim_id"] for entry in catalogue["claims"]]
+        if len(ids) != len(set(ids)) or claim_id not in ids:
+>           raise ValueError(f"unknown/duplicate product claim: {claim_id}")
+E           ValueError: unknown/duplicate product claim: neutral_market_measurement_truth_d016
+
+tools/product_proof_claims.py:488: ValueError
+__ test_tranche_fixed_member_readiness_and_old_generation_preservation[D017] ___
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_tranche_fixed_member_read2')
+identity = 'D017'
+
+    @pytest.mark.parametrize("identity", _TRANCHE_IDS)
+    def test_tranche_fixed_member_readiness_and_old_generation_preservation(tmp_path, identity):
+        api = _controls()
+        root, entry = _tranche_control_candidate(tmp_path, identity)
+        protected = {path: path.read_bytes() for rid in (D012_ROOT, D013_ROOT, D014_ROOT)
+                     for path in (root / rid).rglob("*.json")}
+>       claim = api.load_product_proof_claim(root, entry["claim_id"])
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/architecture/test_proof_control.py:1609: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+repository_root = PosixPath('/tmp/pytest-of-root/pytest-0/test_tranche_fixed_member_read2')
+claim_id = 'neutral_market_measurement_truth_d017'
+
+    def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductProofClaim:
+        root = repository_root.resolve()
+        catalogue = read_json(root / "config/product_proof/claims.json")
+        _schema(root, catalogue, "product_proof_claims.schema.json")
+        authority = _authority(root, catalogue)
+        extensions: dict[str, tuple[dict[str, Any], dict[str, Any], str]] = {}
+        if authority is not None:
+            identities: tuple[Literal["D012", "D013", "D014"], ...] = ("D012", "D013", "D014")
+            for identity in identities:
+                extension = _scalar_extension(root, identity)
+                if extension is not None:
+                    extensions[extension[0]["claim_id"]] = extension
+        if extensions:
+            catalogue = {
+                **catalogue,
+                "claims": [*catalogue["claims"], *(item[0] for item in extensions.values())],
+            }
+        ids = [entry["claim_id"] for entry in catalogue["claims"]]
+        if len(ids) != len(set(ids)) or claim_id not in ids:
+>           raise ValueError(f"unknown/duplicate product claim: {claim_id}")
+E           ValueError: unknown/duplicate product claim: neutral_market_measurement_truth_d017
+
+tools/product_proof_claims.py:488: ValueError
+__ test_tranche_fixed_member_readiness_and_old_generation_preservation[D018] ___
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_tranche_fixed_member_read3')
+identity = 'D018'
+
+    @pytest.mark.parametrize("identity", _TRANCHE_IDS)
+    def test_tranche_fixed_member_readiness_and_old_generation_preservation(tmp_path, identity):
+        api = _controls()
+        root, entry = _tranche_control_candidate(tmp_path, identity)
+        protected = {path: path.read_bytes() for rid in (D012_ROOT, D013_ROOT, D014_ROOT)
+                     for path in (root / rid).rglob("*.json")}
+>       claim = api.load_product_proof_claim(root, entry["claim_id"])
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/architecture/test_proof_control.py:1609: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+repository_root = PosixPath('/tmp/pytest-of-root/pytest-0/test_tranche_fixed_member_read3')
+claim_id = 'neutral_market_measurement_truth_d018'
+
+    def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductProofClaim:
+        root = repository_root.resolve()
+        catalogue = read_json(root / "config/product_proof/claims.json")
+        _schema(root, catalogue, "product_proof_claims.schema.json")
+        authority = _authority(root, catalogue)
+        extensions: dict[str, tuple[dict[str, Any], dict[str, Any], str]] = {}
+        if authority is not None:
+            identities: tuple[Literal["D012", "D013", "D014"], ...] = ("D012", "D013", "D014")
+            for identity in identities:
+                extension = _scalar_extension(root, identity)
+                if extension is not None:
+                    extensions[extension[0]["claim_id"]] = extension
+        if extensions:
+            catalogue = {
+                **catalogue,
+                "claims": [*catalogue["claims"], *(item[0] for item in extensions.values())],
+            }
+        ids = [entry["claim_id"] for entry in catalogue["claims"]]
+        if len(ids) != len(set(ids)) or claim_id not in ids:
+>           raise ValueError(f"unknown/duplicate product claim: {claim_id}")
+E           ValueError: unknown/duplicate product claim: neutral_market_measurement_truth_d018
+
+tools/product_proof_claims.py:488: ValueError
+__ test_tranche_fixed_member_readiness_and_old_generation_preservation[D019] ___
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_tranche_fixed_member_read4')
+identity = 'D019'
+
+    @pytest.mark.parametrize("identity", _TRANCHE_IDS)
+    def test_tranche_fixed_member_readiness_and_old_generation_preservation(tmp_path, identity):
+        api = _controls()
+        root, entry = _tranche_control_candidate(tmp_path, identity)
+        protected = {path: path.read_bytes() for rid in (D012_ROOT, D013_ROOT, D014_ROOT)
+                     for path in (root / rid).rglob("*.json")}
+>       claim = api.load_product_proof_claim(root, entry["claim_id"])
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/architecture/test_proof_control.py:1609: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+repository_root = PosixPath('/tmp/pytest-of-root/pytest-0/test_tranche_fixed_member_read4')
+claim_id = 'neutral_market_measurement_truth_d019'
+
+    def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductProofClaim:
+        root = repository_root.resolve()
+        catalogue = read_json(root / "config/product_proof/claims.json")
+        _schema(root, catalogue, "product_proof_claims.schema.json")
+        authority = _authority(root, catalogue)
+        extensions: dict[str, tuple[dict[str, Any], dict[str, Any], str]] = {}
+        if authority is not None:
+            identities: tuple[Literal["D012", "D013", "D014"], ...] = ("D012", "D013", "D014")
+            for identity in identities:
+                extension = _scalar_extension(root, identity)
+                if extension is not None:
+                    extensions[extension[0]["claim_id"]] = extension
+        if extensions:
+            catalogue = {
+                **catalogue,
+                "claims": [*catalogue["claims"], *(item[0] for item in extensions.values())],
+            }
+        ids = [entry["claim_id"] for entry in catalogue["claims"]]
+        if len(ids) != len(set(ids)) or claim_id not in ids:
+>           raise ValueError(f"unknown/duplicate product claim: {claim_id}")
+E           ValueError: unknown/duplicate product claim: neutral_market_measurement_truth_d019
+
+tools/product_proof_claims.py:488: ValueError
+__ test_tranche_fixed_member_readiness_and_old_generation_preservation[D020] ___
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_tranche_fixed_member_read5')
+identity = 'D020'
+
+    @pytest.mark.parametrize("identity", _TRANCHE_IDS)
+    def test_tranche_fixed_member_readiness_and_old_generation_preservation(tmp_path, identity):
+        api = _controls()
+        root, entry = _tranche_control_candidate(tmp_path, identity)
+        protected = {path: path.read_bytes() for rid in (D012_ROOT, D013_ROOT, D014_ROOT)
+                     for path in (root / rid).rglob("*.json")}
+>       claim = api.load_product_proof_claim(root, entry["claim_id"])
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/architecture/test_proof_control.py:1609: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+repository_root = PosixPath('/tmp/pytest-of-root/pytest-0/test_tranche_fixed_member_read5')
+claim_id = 'neutral_market_measurement_truth_d020'
+
+    def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductProofClaim:
+        root = repository_root.resolve()
+        catalogue = read_json(root / "config/product_proof/claims.json")
+        _schema(root, catalogue, "product_proof_claims.schema.json")
+        authority = _authority(root, catalogue)
+        extensions: dict[str, tuple[dict[str, Any], dict[str, Any], str]] = {}
+        if authority is not None:
+            identities: tuple[Literal["D012", "D013", "D014"], ...] = ("D012", "D013", "D014")
+            for identity in identities:
+                extension = _scalar_extension(root, identity)
+                if extension is not None:
+                    extensions[extension[0]["claim_id"]] = extension
+        if extensions:
+            catalogue = {
+                **catalogue,
+                "claims": [*catalogue["claims"], *(item[0] for item in extensions.values())],
+            }
+        ids = [entry["claim_id"] for entry in catalogue["claims"]]
+        if len(ids) != len(set(ids)) or claim_id not in ids:
+>           raise ValueError(f"unknown/duplicate product claim: {claim_id}")
+E           ValueError: unknown/duplicate product claim: neutral_market_measurement_truth_d020
+
+tools/product_proof_claims.py:488: ValueError
+_________ test_tranche_absent_descriptor_rejects_unowned_support[D015] _________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_tranche_absent_descriptor0')
+identity = 'D015'
+
+    @pytest.mark.parametrize("identity", _TRANCHE_IDS)
+    def test_tranche_absent_descriptor_rejects_unowned_support(tmp_path, identity):
+        api = _controls()
+        root = _d014_control_candidate(tmp_path)
+        path = root / f"tests/product/market_measurement_{identity.lower()}/_support.py"
+        path.parent.mkdir(parents=True)
+        path.write_text("# deliberately unowned control canary\n")
+>       with pytest.raises(ValueError, match="unowned"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/architecture/test_proof_control.py:1624: Failed
+_________ test_tranche_absent_descriptor_rejects_unowned_support[D016] _________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_tranche_absent_descriptor1')
+identity = 'D016'
+
+    @pytest.mark.parametrize("identity", _TRANCHE_IDS)
+    def test_tranche_absent_descriptor_rejects_unowned_support(tmp_path, identity):
+        api = _controls()
+        root = _d014_control_candidate(tmp_path)
+        path = root / f"tests/product/market_measurement_{identity.lower()}/_support.py"
+        path.parent.mkdir(parents=True)
+        path.write_text("# deliberately unowned control canary\n")
+>       with pytest.raises(ValueError, match="unowned"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/architecture/test_proof_control.py:1624: Failed
+_________ test_tranche_absent_descriptor_rejects_unowned_support[D017] _________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_tranche_absent_descriptor2')
+identity = 'D017'
+
+    @pytest.mark.parametrize("identity", _TRANCHE_IDS)
+    def test_tranche_absent_descriptor_rejects_unowned_support(tmp_path, identity):
+        api = _controls()
+        root = _d014_control_candidate(tmp_path)
+        path = root / f"tests/product/market_measurement_{identity.lower()}/_support.py"
+        path.parent.mkdir(parents=True)
+        path.write_text("# deliberately unowned control canary\n")
+>       with pytest.raises(ValueError, match="unowned"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/architecture/test_proof_control.py:1624: Failed
+_________ test_tranche_absent_descriptor_rejects_unowned_support[D018] _________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_tranche_absent_descriptor3')
+identity = 'D018'
+
+    @pytest.mark.parametrize("identity", _TRANCHE_IDS)
+    def test_tranche_absent_descriptor_rejects_unowned_support(tmp_path, identity):
+        api = _controls()
+        root = _d014_control_candidate(tmp_path)
+        path = root / f"tests/product/market_measurement_{identity.lower()}/_support.py"
+        path.parent.mkdir(parents=True)
+        path.write_text("# deliberately unowned control canary\n")
+>       with pytest.raises(ValueError, match="unowned"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/architecture/test_proof_control.py:1624: Failed
+_________ test_tranche_absent_descriptor_rejects_unowned_support[D019] _________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_tranche_absent_descriptor4')
+identity = 'D019'
+
+    @pytest.mark.parametrize("identity", _TRANCHE_IDS)
+    def test_tranche_absent_descriptor_rejects_unowned_support(tmp_path, identity):
+        api = _controls()
+        root = _d014_control_candidate(tmp_path)
+        path = root / f"tests/product/market_measurement_{identity.lower()}/_support.py"
+        path.parent.mkdir(parents=True)
+        path.write_text("# deliberately unowned control canary\n")
+>       with pytest.raises(ValueError, match="unowned"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/architecture/test_proof_control.py:1624: Failed
+_________ test_tranche_absent_descriptor_rejects_unowned_support[D020] _________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_tranche_absent_descriptor5')
+identity = 'D020'
+
+    @pytest.mark.parametrize("identity", _TRANCHE_IDS)
+    def test_tranche_absent_descriptor_rejects_unowned_support(tmp_path, identity):
+        api = _controls()
+        root = _d014_control_candidate(tmp_path)
+        path = root / f"tests/product/market_measurement_{identity.lower()}/_support.py"
+        path.parent.mkdir(parents=True)
+        path.write_text("# deliberately unowned control canary\n")
+>       with pytest.raises(ValueError, match="unowned"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/architecture/test_proof_control.py:1624: Failed
+_______ test_tranche_shared_claim_association_and_incomplete_state[null] _______
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_tranche_shared_claim_asso0')
+mutation = 'null'
+
+    @pytest.mark.parametrize("mutation", ["null", "wrong_generation", "wrong_root"])
+    def test_tranche_shared_claim_association_and_incomplete_state(tmp_path, mutation):
+        api = _controls()
+        root, entry = _tranche_control_candidate(tmp_path)
+>       assert api.load_product_proof_claim(root, entry["claim_id"]).state == "READY_FOR_PROOF"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/architecture/test_proof_control.py:1632: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+repository_root = PosixPath('/tmp/pytest-of-root/pytest-0/test_tranche_shared_claim_asso0')
+claim_id = 'neutral_market_measurement_truth_d015'
+
+    def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductProofClaim:
+        root = repository_root.resolve()
+        catalogue = read_json(root / "config/product_proof/claims.json")
+        _schema(root, catalogue, "product_proof_claims.schema.json")
+        authority = _authority(root, catalogue)
+        extensions: dict[str, tuple[dict[str, Any], dict[str, Any], str]] = {}
+        if authority is not None:
+            identities: tuple[Literal["D012", "D013", "D014"], ...] = ("D012", "D013", "D014")
+            for identity in identities:
+                extension = _scalar_extension(root, identity)
+                if extension is not None:
+                    extensions[extension[0]["claim_id"]] = extension
+        if extensions:
+            catalogue = {
+                **catalogue,
+                "claims": [*catalogue["claims"], *(item[0] for item in extensions.values())],
+            }
+        ids = [entry["claim_id"] for entry in catalogue["claims"]]
+        if len(ids) != len(set(ids)) or claim_id not in ids:
+>           raise ValueError(f"unknown/duplicate product claim: {claim_id}")
+E           ValueError: unknown/duplicate product claim: neutral_market_measurement_truth_d015
+
+tools/product_proof_claims.py:488: ValueError
+_ test_tranche_shared_claim_association_and_incomplete_state[wrong_generation] _
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_tranche_shared_claim_asso1')
+mutation = 'wrong_generation'
+
+    @pytest.mark.parametrize("mutation", ["null", "wrong_generation", "wrong_root"])
+    def test_tranche_shared_claim_association_and_incomplete_state(tmp_path, mutation):
+        api = _controls()
+        root, entry = _tranche_control_candidate(tmp_path)
+>       assert api.load_product_proof_claim(root, entry["claim_id"]).state == "READY_FOR_PROOF"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/architecture/test_proof_control.py:1632: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+repository_root = PosixPath('/tmp/pytest-of-root/pytest-0/test_tranche_shared_claim_asso1')
+claim_id = 'neutral_market_measurement_truth_d015'
+
+    def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductProofClaim:
+        root = repository_root.resolve()
+        catalogue = read_json(root / "config/product_proof/claims.json")
+        _schema(root, catalogue, "product_proof_claims.schema.json")
+        authority = _authority(root, catalogue)
+        extensions: dict[str, tuple[dict[str, Any], dict[str, Any], str]] = {}
+        if authority is not None:
+            identities: tuple[Literal["D012", "D013", "D014"], ...] = ("D012", "D013", "D014")
+            for identity in identities:
+                extension = _scalar_extension(root, identity)
+                if extension is not None:
+                    extensions[extension[0]["claim_id"]] = extension
+        if extensions:
+            catalogue = {
+                **catalogue,
+                "claims": [*catalogue["claims"], *(item[0] for item in extensions.values())],
+            }
+        ids = [entry["claim_id"] for entry in catalogue["claims"]]
+        if len(ids) != len(set(ids)) or claim_id not in ids:
+>           raise ValueError(f"unknown/duplicate product claim: {claim_id}")
+E           ValueError: unknown/duplicate product claim: neutral_market_measurement_truth_d015
+
+tools/product_proof_claims.py:488: ValueError
+____ test_tranche_shared_claim_association_and_incomplete_state[wrong_root] ____
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_tranche_shared_claim_asso2')
+mutation = 'wrong_root'
+
+    @pytest.mark.parametrize("mutation", ["null", "wrong_generation", "wrong_root"])
+    def test_tranche_shared_claim_association_and_incomplete_state(tmp_path, mutation):
+        api = _controls()
+        root, entry = _tranche_control_candidate(tmp_path)
+>       assert api.load_product_proof_claim(root, entry["claim_id"]).state == "READY_FOR_PROOF"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/architecture/test_proof_control.py:1632: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+repository_root = PosixPath('/tmp/pytest-of-root/pytest-0/test_tranche_shared_claim_asso2')
+claim_id = 'neutral_market_measurement_truth_d015'
+
+    def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductProofClaim:
+        root = repository_root.resolve()
+        catalogue = read_json(root / "config/product_proof/claims.json")
+        _schema(root, catalogue, "product_proof_claims.schema.json")
+        authority = _authority(root, catalogue)
+        extensions: dict[str, tuple[dict[str, Any], dict[str, Any], str]] = {}
+        if authority is not None:
+            identities: tuple[Literal["D012", "D013", "D014"], ...] = ("D012", "D013", "D014")
+            for identity in identities:
+                extension = _scalar_extension(root, identity)
+                if extension is not None:
+                    extensions[extension[0]["claim_id"]] = extension
+        if extensions:
+            catalogue = {
+                **catalogue,
+                "claims": [*catalogue["claims"], *(item[0] for item in extensions.values())],
+            }
+        ids = [entry["claim_id"] for entry in catalogue["claims"]]
+        if len(ids) != len(set(ids)) or claim_id not in ids:
+>           raise ValueError(f"unknown/duplicate product claim: {claim_id}")
+E           ValueError: unknown/duplicate product claim: neutral_market_measurement_truth_d015
+
+tools/product_proof_claims.py:488: ValueError
+______________ test_tranche_shared_strict_outcomes[assert True-0] ______________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_tranche_shared_strict_out0')
+body = 'assert True', expected = 0
+
+    @pytest.mark.parametrize("body,expected", [
+        ("assert True", 0),
+        ("__import__('pytest').skip('control canary')", 1),
+        ("__import__('pathlib').Path('src/tranche_mutation.txt').write_text('x')", 6),
+    ])
+    def test_tranche_shared_strict_outcomes(tmp_path, body, expected):
+        root, entry = _tranche_control_candidate(tmp_path, body=body)
+        result = _run_control_probe(root, entry["claim_id"])
+>       assert result.returncode == expected, result.stdout + result.stderr
+E       AssertionError: FAIL: unknown/duplicate product claim: neutral_market_measurement_truth_d015
+E         
+E       assert 3 == 0
+E        +  where 3 = CompletedProcess(args=['/workspace/scratch/83dd7c79f14f/d015-runtime-GUbvor/dev/bin/python', '/tmp/pytest-of-root/pyte...15'], returncode=3, stdout='FAIL: unknown/duplicate product claim: neutral_market_measurement_truth_d015\n', stderr='').returncode
+
+tests/architecture/test_proof_control.py:1658: AssertionError
+_ test_tranche_shared_strict_outcomes[__import__('pytest').skip('control canary')-1] _
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_tranche_shared_strict_out1')
+body = "__import__('pytest').skip('control canary')", expected = 1
+
+    @pytest.mark.parametrize("body,expected", [
+        ("assert True", 0),
+        ("__import__('pytest').skip('control canary')", 1),
+        ("__import__('pathlib').Path('src/tranche_mutation.txt').write_text('x')", 6),
+    ])
+    def test_tranche_shared_strict_outcomes(tmp_path, body, expected):
+        root, entry = _tranche_control_candidate(tmp_path, body=body)
+        result = _run_control_probe(root, entry["claim_id"])
+>       assert result.returncode == expected, result.stdout + result.stderr
+E       AssertionError: FAIL: unknown/duplicate product claim: neutral_market_measurement_truth_d015
+E         
+E       assert 3 == 1
+E        +  where 3 = CompletedProcess(args=['/workspace/scratch/83dd7c79f14f/d015-runtime-GUbvor/dev/bin/python', '/tmp/pytest-of-root/pyte...15'], returncode=3, stdout='FAIL: unknown/duplicate product claim: neutral_market_measurement_truth_d015\n', stderr='').returncode
+
+tests/architecture/test_proof_control.py:1658: AssertionError
+_ test_tranche_shared_strict_outcomes[__import__('pathlib').Path('src/tranche_mutation.txt').write_text('x')-6] _
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_tranche_shared_strict_out2')
+body = "__import__('pathlib').Path('src/tranche_mutation.txt').write_text('x')"
+expected = 6
+
+    @pytest.mark.parametrize("body,expected", [
+        ("assert True", 0),
+        ("__import__('pytest').skip('control canary')", 1),
+        ("__import__('pathlib').Path('src/tranche_mutation.txt').write_text('x')", 6),
+    ])
+    def test_tranche_shared_strict_outcomes(tmp_path, body, expected):
+        root, entry = _tranche_control_candidate(tmp_path, body=body)
+        result = _run_control_probe(root, entry["claim_id"])
+>       assert result.returncode == expected, result.stdout + result.stderr
+E       AssertionError: FAIL: unknown/duplicate product claim: neutral_market_measurement_truth_d015
+E         
+E       assert 3 == 6
+E        +  where 3 = CompletedProcess(args=['/workspace/scratch/83dd7c79f14f/d015-runtime-GUbvor/dev/bin/python', '/tmp/pytest-of-root/pyte...15'], returncode=3, stdout='FAIL: unknown/duplicate product claim: neutral_market_measurement_truth_d015\n', stderr='').returncode
+
+tests/architecture/test_proof_control.py:1658: AssertionError
+=========================== short test summary info ============================
+FAILED tests/architecture/test_proof_control.py::test_tranche_fixed_member_readiness_and_old_generation_preservation[D015]
+FAILED tests/architecture/test_proof_control.py::test_tranche_fixed_member_readiness_and_old_generation_preservation[D016]
+FAILED tests/architecture/test_proof_control.py::test_tranche_fixed_member_readiness_and_old_generation_preservation[D017]
+FAILED tests/architecture/test_proof_control.py::test_tranche_fixed_member_readiness_and_old_generation_preservation[D018]
+FAILED tests/architecture/test_proof_control.py::test_tranche_fixed_member_readiness_and_old_generation_preservation[D019]
+FAILED tests/architecture/test_proof_control.py::test_tranche_fixed_member_readiness_and_old_generation_preservation[D020]
+FAILED tests/architecture/test_proof_control.py::test_tranche_absent_descriptor_rejects_unowned_support[D015]
+FAILED tests/architecture/test_proof_control.py::test_tranche_absent_descriptor_rejects_unowned_support[D016]
+FAILED tests/architecture/test_proof_control.py::test_tranche_absent_descriptor_rejects_unowned_support[D017]
+FAILED tests/architecture/test_proof_control.py::test_tranche_absent_descriptor_rejects_unowned_support[D018]
+FAILED tests/architecture/test_proof_control.py::test_tranche_absent_descriptor_rejects_unowned_support[D019]
+FAILED tests/architecture/test_proof_control.py::test_tranche_absent_descriptor_rejects_unowned_support[D020]
+FAILED tests/architecture/test_proof_control.py::test_tranche_shared_claim_association_and_incomplete_state[null]
+FAILED tests/architecture/test_proof_control.py::test_tranche_shared_claim_association_and_incomplete_state[wrong_generation]
+FAILED tests/architecture/test_proof_control.py::test_tranche_shared_claim_association_and_incomplete_state[wrong_root]
+FAILED tests/architecture/test_proof_control.py::test_tranche_shared_strict_outcomes[assert True-0]
+FAILED tests/architecture/test_proof_control.py::test_tranche_shared_strict_outcomes[__import__('pytest').skip('control canary')-1]
+FAILED tests/architecture/test_proof_control.py::test_tranche_shared_strict_outcomes[__import__('pathlib').Path('src/tranche_mutation.txt').write_text('x')-6]
+===================== 18 failed, 130 deselected in 12.70s ======================

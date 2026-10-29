@@ -1,0 +1,94 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_d027",
+  "semantic_brief_path": "handoff/foundation_implementation/authority/D027_IMPLEMENTATION_BRIEF.md",
+  "target": {
+    "category": "M",
+    "responsibility_name": "neutral_market_measurement_truth",
+    "package": "nvda_desk.market_measurement_truth",
+    "public_seam": "nvda_desk.market_measurement_truth.api",
+    "intent": "modify",
+    "existing_object_id": "M02"
+  },
+  "proof_axis": "product",
+  "product_tier_treatment": "NOT_CLASSIFIED",
+  "architecture_proof_axis": "architecture_kernel",
+  "required_proof_ids": [
+    "D027-CALCULATION"
+  ],
+  "families": [
+    {
+      "id": "mmt_d027",
+      "path": "tests/product/market_measurement_d027/test_vwap_rate.py",
+      "proof_obligation_ids": [
+        "D027-CALCULATION"
+      ],
+      "required_test_names": [
+        "test_d027_vwap_rate"
+      ],
+      "boundary": "VWAP change per exact elapsed minute, absolute and percentage; current120 atT and latest lawful reference100 atT−360s yield both10/3. Reference must be latest at/before T−300s within inclusive60s, same native session/basis; post-anchor observations cannot substitute. Missing eligible reference refuses.",
+      "proof_levels": [
+        "CONTRACT",
+        "INTEGRATION",
+        "STATE",
+        "SEQUENTIAL_END_TO_END"
+      ],
+      "authoritative_inputs": [
+        "VWAP change per exact elapsed minute, absolute and percentage; current120 atT and latest lawful reference100 atT−360s yield both10/3. Reference must be latest at/before T−300s within inclusive60s, same native session/basis; post-anchor observations cannot substitute. Missing eligible reference refuses.",
+        "### 4.1 Common raw/temporal law and D026/D027\n\nUse NVDA; synthetic provider `foundation-pilot-fixture`, variant `cash_quote_v1`, sequence scope `foundation-pilot-fixture/cash_quote_v1`; exact finite native Decimal numeric values; true_instant UTC ISO-Z time; event<=receipt<=knowledge cutoff. Set cutoff=T+1s and captured now=T+2s unless the named negative changes only receipt visibility. Quiescent bounded public M00 histories must be fully enumerated, with duplicate/rank/cursor protection reused where applicable. Do not strip native identities in stored projections; validate them before temporary numeric-eligibility checks.\n\nD026/D027: S=`controlled-price-session/1`, bounds20Oct2026 12:00–13:00Z, complete from12:00; T=12:40Z. Use unchanged WindowContextV1 and existing price unit `mmt-pilot-price/1`. Current freshness60s. Add `mmt-session-provider-vwap/1`: R137→vwap.value, native price, identity fields session→vwap.session, as_of→vwap.as_of, basis→vwap.basis. Require session=S, native as_of equal selected event, basis=`cumulative_session`. It is distinct from the accepted D018 mapping; do not amend D018 bytes. D026 also reuses `mmt-current-last/1` R037→trade.last with session→session.id. Both D026 inputs must be same subject/session/event/source basis.\n\nD027 current event=T; reference latest eligible event<=T−300s, at most60s before that anchor, same S/basis and receipt visibility. Reference gap60s is inclusive, admitting T−360s. Divide by exact positive (T−reference_event)/60 minutes. No log and no inferred five-minute divisor. A small role-aware selector may be added in the new VWAP module where the existing exact-event helper cannot express latest-at-before-anchor; reuse its paging/ranking law without changing accepted selectors.\n\n"
+      ],
+      "dependency_substitutions": [
+        "Controlled synthetic source/session/completeness only, not native certification.",
+        "Reuse accepted M00/common M02 mechanisms, existing window interface/record store, prior immutable evidence. Exact cases also qualify authorised shared prerequisite; no added suites."
+      ],
+      "case_coverage": {
+        "lawful_positive": {
+          "cases": [
+            "Exactly root manifest case1, independent fixed literal; complete typed metadata/source lineage/public durable reopen."
+          ]
+        },
+        "prohibited_false_positive": {
+          "cases": [
+            "Exactly root manifest case2; lawful raw preconditions reach its declared defect and persist no occurrence."
+          ]
+        },
+        "missing_mandatory_authority": {
+          "cases": [
+            "Exact bound controlled profile, admission and immutable generation required before runtime."
+          ]
+        },
+        "lawful_optional_absence": {
+          "cases": [
+            "No live provider/calendar integration or other signal required; unsupported prerequisites refuse by contract."
+          ]
+        }
+      },
+      "expected_failure_signals": [
+        "Explicit pytest assertion of missing admitted D027 calculation/context after real public M00 prerequisites; no import/collection failure counts as semantic RED.",
+        "Refusal returns None and retains empty public derived history."
+      ],
+      "limitations": [
+        "Exactly two cases; no generic fault/boundary/numeric variant probes, broad suites or earlier claims."
+      ],
+      "adjacent_nonclaims": [
+        "No acceptance beyond this ID; no native-source certification or M00 mutation."
+      ],
+      "environment": "CPython3.12.14 SQLite3.53.1 and existing pinned offline tools.",
+      "material_versions": [
+        "Exact brief/binding/contract/generation and candidate/tree/runtime; old generations preserved."
+      ],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/market_measurement_d027/test_vwap_rate.py"
+    }
+  ],
+  "required_support_files": [],
+  "optional_support_files": [],
+  "execution_policy": {
+    "skipped_tests": "FAIL",
+    "xfailed_tests": "FAIL",
+    "xpassed_tests": "FAIL",
+    "collection_failed": "FAIL",
+    "no_tests_collected": "FAIL",
+    "unexpected_governed_mutation": "FAIL"
+  }
+}

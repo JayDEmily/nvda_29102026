@@ -1,0 +1,84 @@
+VI-17-L2 Tester material command/evidence record
+
+SOURCE / GOVERNANCE / CANDIDATE
+- read full GUARDRAILS.md, root AGENTS.md, tests/AGENTS.override.md, accepted EXEC_PLAN.md,
+  CURRENT_STATE.md, active TESTER_VI17_L2_1790634143 REQUEST.md, root README.md and exact Worker evidence
+- exact candidate -> 57712201296c6da811e4e6838d0f3fb302239df4
+- exact candidate tree -> 1b017b6c01176fc61963a63bcf12d843aac8d0db
+- candidate reviewed from detached exact worktree; later routing tip was not candidate bytes
+- received handoff SHA-256 -> 1f79aa5a56b0b78b1d3d53fd9ca173aa1cd5b4c2113f17d8827c3cc0de3fffab
+
+RECENT WORKER/TESTER LINEAGE / LOOP CHECK
+- inspected recent graph, first-parent main history, parents, trees and stepwise diffs
+- verified monotonic ancestry:
+  5397a90 VI17-L1 Tester PASS -> d37e595 VI17-L1 promotion close-out ->
+  4daaa40 VI17-L2 Worker activation -> 98c3458 VI17-L2 audit packet ->
+  5771220 frozen candidate -> 8d1e73e Tester routing
+- no reset/backward promotion, duplicate current Tester cycle, reopened VI17-L1 or semantic branch loop found
+- routing-only branch 0477558 remains separate from main as expected; accepted PASS commit 5397a90 is in main ancestry
+
+PACKAGE / SOURCE BINDING
+- independently hashed supplied wheel/sdist -> exact accepted hashes
+- wheel metadata -> nvda-architecture-kernel==1.0.0; Python ==3.13.5; PyYAML==6.0.3; psycopg[binary]==3.3.4
+- wheel inventory -> 21 files / 16 runtime Python files
+- 16/16 wheel runtime Python files byte-equal to accepted package candidate 332c1f95 source bytes
+- sdist -> 117 file members; 116/116 repository-backed members byte-equal to package candidate; only PKG-INFO generated
+
+PRESERVED ENVIRONMENT / POSTGRESQL
+- proof bootstrap archive SHA-256 -> 01050287798e53e38f33794e201df53adbe6fcba03024a027ac36d3d9cea66b8
+- PostgreSQL runtime archive SHA-256 -> 59822410ac6855365c90765de5071182ab382e87d9e9a2622424e7787c4e5caf
+- bootstrap internal manifest -> 24/24 payload entries OK
+- PostgreSQL runtime internal manifest -> 1937/1937 payload entries OK
+- extracted postgres and pg_config -> PostgreSQL 17.9
+- fresh bootstrap -> Python 3.13.5 / pytest 9.0.3 / mypy 1.20.1 / Ruff 0.15.11 /
+  Psycopg 3.3.4 / PostgreSQL 17.9 / UTF8 / fsync=on / synchronous_commit=on /
+  full_page_writes=on / Unix-socket-only
+- bootstrap intentionally omits PyYAML; current host exact version 6.0.3 was independently observed,
+  but the binary/archive digest of the prior accepted PyYAML overlay remains UNKNOWN and is not upgraded to a reproducible-environment claim
+
+FINAL RESULT BINDING / DRIFT
+- accepted VI15-L2 result identities independently read back: product 479/479; six families / 13/13 product obligations;
+  architecture/bootstrap 74/74; mypy/Ruff PASS
+- accepted VI16 whole-BICP Tester identity independently read back with the same aggregate identities
+- exact scoped diffs package candidate 332c1f95 -> VI17-L2 candidate over src/** tests/** config/** pyproject.toml -> empty
+- exact scoped diffs VI16 candidate 9248f3b -> VI17-L2 candidate over the same paths -> empty
+- exact scoped diffs VI17-L1 candidate c07d527 -> VI17-L2 candidate over the same paths -> empty
+
+CURRENT REGISTRATION / STRUCTURAL CHECKS
+- architecture: M00 sole active runtime module; A00 bootstrap shell; one M00 implementation allocation; surfaces empty
+- product aggregate: READY_FOR_PROOF; six admitted families; 13 required/current product obligations; IA22R01-PROD-009 current; IA17-PROD-009 forbidden predecessor
+- validate_architecture.py -> PASS; one active runtime module / one allocation / zero dependency-public-seam violations
+- check_dependencies.py -> PASS
+- check_public_seams.py -> PASS
+- validate_product_proof.py -> PASS; 13/13 obligations / six families
+- initial validate_implementation_authority.py invocation omitted required arguments and exited usage-error; no candidate result counted
+- corrected invocation with the repository binding and accepted IRB -> PASS
+
+INDEPENDENT INSTALLED-DISTRIBUTION CHALLENGE
+- installed exact accepted wheel with --no-deps into fresh external Python 3.13.5 proof venv
+- PYTHONPATH contained only the current host PyYAML 6.0.3 overlay; repository path absent from sys.path
+- nvda_desk import origin -> external venv site-packages
+- direct_url.json bound installation to exact accepted wheel SHA-256
+- installed runtime subpackages exactly architecture, composition, raw_signal_occurrence_truth
+- P01/K01/provider/network/downstream_consumer/dmpv3_packet/replay runtime packages absent
+- live PostgreSQL settings independently read back as 17.9 / UTF8 / fsync on / synchronous_commit on /
+  full_page_writes on / listen_addresses empty
+- Tester-authored fixture-independent A00 -> PostgreSQL-backed M00 sequence -> one_or_more_received,
+  exact readback, durable row counts (1,1,1,1), fresh-application exact retry stable at (1,1,1,1)
+
+GIT / ANCESTRY / RECOVERY PREREQUISITES
+- exact candidate detached worktree clean
+- git diff --check -> PASS
+- git fsck --full --no-dangling -> PASS
+- git fsck --full -> eight dangling blobs only, no corruption/error
+- every listed accepted U01-U06 and VI14/VI15/VI16/VI17-L1 candidate/review/promotion identity exists and is an ancestor of exact candidate
+- thin root 8133432 exists and is an ancestor; external predecessor d095954 remains absent and is not claimed as local ancestry
+- current handoff archive extracted successfully with full .git store and package artefacts; preserved proof/PostgreSQL archives are separately hash-verifiable
+- prerequisites are sufficient for VI18 to create a new terminal recovery artefact after lawful VI17-L2 promotion; no VI18 artefact was created or accepted here
+
+DISPOSITION
+- PASS
+- findings -> none
+- recurrence classification -> NO_FINDING
+- exact VI17-L2 candidate accepted for lawful preserved-ancestry promotion/close-out only
+- VI18 remains prohibited until that promotion/close-out completes

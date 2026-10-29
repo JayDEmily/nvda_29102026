@@ -1,0 +1,189 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/d549b6d808a9/g51/repository
+configfile: pyproject.toml
+collected 23 items
+
+tests/product/raw_signal_sqlite/test_composition.py ...                  [ 13%]
+tests/product/raw_signal_sqlite/test_contract_native.py ...F             [ 30%]
+tests/product/raw_signal_sqlite/test_schedule_assessment.py ....         [ 47%]
+tests/product/raw_signal_sqlite/test_sqlite_durability.py ............   [100%]
+
+=================================== FAILURES ===================================
+________ test_sqlite_requiredness_time_layers_and_static_public_facets _________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-3/test_sqlite_requiredness_time_0')
+
+    def test_sqlite_requiredness_time_layers_and_static_public_facets(tmp_path):
+        o = owner(tmp_path / "raw.db", create=True)
+        p = policy(deactivation_ts_utc=T0 + timedelta(minutes=1))
+        c = api.ScheduledCaptureOccurrenceV1(
+            api.concept_id("raw_signal.scheduled_capture_occurrence"),
+            api.contract_id("nvda.raw_signal.ScheduledCaptureOccurrence.v1"),
+            "not_applicable",
+            api.capture_occurrence_id("c"),
+            api.scope_policy_ref("policy@1"),
+            T0,
+            T0 + timedelta(seconds=30),
+        )
+        r = api.CaptureReceiptEvidenceRelationV1(
+            api.concept_id("raw_signal.capture_receipt_evidence_relation"),
+            api.contract_id("nvda.raw_signal.CaptureReceiptEvidenceRelation.v1"),
+            "not_applicable",
+            api.observation_occurrence_id("obs"),
+            c.capture_occurrence_id,
+            c.scope_policy_ref,
+            T0,
+            "evidences_receipt_presence_only",
+        )
+        a = api.CaptureReceiptPresenceAssessmentV1(
+            api.concept_id("raw_signal.capture_receipt_presence_assessment"),
+            api.contract_id("nvda.raw_signal.CaptureReceiptPresenceAssessment.v1"),
+            "not_applicable",
+            api.assessment_occurrence_id("a"),
+            c.capture_occurrence_id,
+            "zero_received",
+            T0,
+        )
+        identities = [
+            f("same")
+            for f in (
+                api.concept_id,
+                api.contract_id,
+                api.scope_policy_id,
+                api.scope_policy_ref,
+                api.eligibility_policy_ref,
+                api.capture_occurrence_id,
+                api.observation_occurrence_id,
+                api.assessment_occurrence_id,
+                api.provider_id,
+                api.delivery_artifact_ref,
+                api.ingestion_sequence_scope,
+            )
+        ]
+        identities.append(api.RawSignalCatalogueId("R034"))
+        optional = {
+            api.CaptureScopePolicyV1: {"deactivation_ts_utc"},
+            api.ScheduledCaptureOccurrenceV1: set(),
+            api.CaptureReceiptEvidenceRelationV1: set(),
+            api.CaptureReceiptPresenceAssessmentV1: {"supersedes_assessment_ref"},
+            api.RawObservationOccurrenceV1: {
+                f.name
+                for f in fields(observation())
+                if f.name
+                not in {
+                    "concept_id",
+                    "contract_id",
+                    "observation_occurrence_id",
+                    "delivery_artifact_ref",
+                    "source_provider",
+                    "native_record",
+                    "received_ts_utc",
+                    "ingestion_sequence",
+                    "ingestion_sequence_scope",
+                    "source_temporal_kind",
+                }
+            },
+        }
+        for value in (p, c, r, a, observation()):
+            cls = type(value)
+            assert {f.name for f in fields(value) if f.default is not MISSING} == optional[cls]
+            for field in fields(value):
+                item = getattr(value, field.name)
+                if field.default is MISSING:
+                    args = {
+                        f.name: getattr(value, f.name) for f in fields(value) if f.name != field.name
+                    }
+                    with pytest.raises(TypeError):
+                        cls(**args)
+                if hasattr(item, "value"):
+                    for wrong in identities:
+                        if type(wrong) is not type(item):
+                            with pytest.raises((TypeError, ValueError)):
+                                replace(value, **{field.name: wrong})
+                if field.name.endswith("_utc"):
+                    with pytest.raises(ValueError):
+                        replace(value, **{field.name: T0.replace(tzinfo=None)})
+            if hasattr(value, "units"):
+                with pytest.raises(ValueError):
+                    replace(value, units="price")
+        for invalid in (None, "", "contains", "final", "two_received"):
+            with pytest.raises(ValueError):
+                replace(a, outcome=invalid)
+        with pytest.raises(ValueError):
+            replace(r, relation_role="contains")
+        # Two provider logical records in one delivery remain distinct original facts.
+        first, second = observation("first"), observation("second", 2)
+        o.commands.admit_raw_observation_occurrence(first)
+        o.commands.admit_raw_observation_occurrence(second)
+        assert fresh_record(tmp_path / "raw.db", "observation", "first") == first
+        assert fresh_record(tmp_path / "raw.db", "observation", "second") == second
+        assert first.delivery_artifact_ref == second.delivery_artifact_ref
+        # Actual pinned checker verifies command/read returns, not annotation spelling alone.
+        specimen = """
+    from typing import assert_type, reveal_type
+    from collections.abc import Sequence
+    from datetime import datetime
+    from nvda_desk.raw_signal_occurrence_truth import api
+    o = api.create_owner()
+    reveal_type(o.commands.register_capture_scope_policy)
+    reveal_type(o.commands.realise_scheduled_capture_occurrence)
+    reveal_type(o.commands.admit_raw_observation_occurrence)
+    reveal_type(o.commands.derive_capture_receipt_evidence_relation)
+    reveal_type(o.commands.append_capture_receipt_presence_assessment)
+    reveal_type(o.commands.reconcile_owed_slots)
+    reveal_type(o.reads.get_capture_scope_policy)
+    reveal_type(o.reads.get_scheduled_capture_occurrence)
+    reveal_type(o.reads.get_raw_observation_occurrence)
+    reveal_type(o.reads.get_receipt_presence_assessment)
+    reveal_type(o.reads.list_receipt_presence_assessments)
+    reveal_type(o.reads.project_raw_value)
+    reveal_type(o.reads.list_projected_raw_history)
+    assert_type(o.reads.get_raw_observation_occurrence(api.observation_occurrence_id("o")),
+                api.RawObservationOccurrenceV1 | None)
+    assert_type(o.reads.get_scheduled_capture_occurrence(api.capture_occurrence_id("c")),
+                api.ScheduledCaptureOccurrenceV1 | None)
+    assert_type(o.reads.get_capture_scope_policy(api.scope_policy_id("p"), 1),
+                api.CaptureScopePolicyV1 | None)
+    assert_type(o.reads.get_receipt_presence_assessment(api.assessment_occurrence_id("a")),
+                api.CaptureReceiptPresenceAssessmentV1 | None)
+    assert_type(o.reads.list_receipt_presence_assessments(api.capture_occurrence_id("c")),
+                Sequence[api.CaptureReceiptPresenceAssessmentV1])
+    def commands(p: api.CaptureScopePolicyV1, raw: api.RawObservationOccurrenceV1,
+                 when: datetime) -> None:
+        assert_type(o.commands.register_capture_scope_policy(p), api.CaptureScopePolicyV1)
+        assert_type(o.commands.admit_raw_observation_occurrence(raw), api.RawObservationOccurrenceV1)
+        assert_type(o.commands.realise_scheduled_capture_occurrence(
+            scope_policy_ref=api.scope_policy_ref("p@1"), slot_start_utc=when,
+            capture_occurrence_id=api.capture_occurrence_id("c")), api.ScheduledCaptureOccurrenceV1)
+        assert_type(o.commands.derive_capture_receipt_evidence_relation(
+            observation_occurrence_ref=raw.observation_occurrence_id,
+            capture_occurrence_ref=api.capture_occurrence_id("c"),
+            scope_policy_ref=api.scope_policy_ref("p@1")), api.CaptureReceiptEvidenceRelationV1 | None)
+        assert_type(o.commands.append_capture_receipt_presence_assessment(
+            assessment_occurrence_id=api.assessment_occurrence_id("a"),
+            capture_occurrence_ref=api.capture_occurrence_id("c"), evidence_as_of_ts_utc=when,
+            supersedes_assessment_ref=None), api.CaptureReceiptPresenceAssessmentV1)
+        assert_type(o.commands.reconcile_owed_slots(scope_policy_ref=api.scope_policy_ref("p@1"),
+            slot_starts_utc=(when,), capture_occurrence_ids=(api.capture_occurrence_id("c"),),
+            assessment_occurrence_ids=(api.assessment_occurrence_id("a"),)),
+            Sequence[api.CaptureReceiptPresenceAssessmentV1])
+    """
+        checked = subprocess.run(
+            [sys.executable, "-m", "mypy", "--strict", "--disallow-any-expr", "-c", specimen],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+>       assert checked.returncode == 0, checked.stdout + checked.stderr
+E       AssertionError: usage: mypy [-h] [-v] [-V] [more options; see below]
+E                     [-m MODULE] [-p PACKAGE] [-c PROGRAM_TEXT] [files ...]
+E         mypy: error: May only specify one of: module/package, files, or command.
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/workspace/scratch/d549b6d808a9/g51-dev/bin/python', '-m', 'mypy', '--strict', '--disallow-any...-p PACKAGE] [-c PROGRAM_TEXT] [files ...]\nmypy: error: May only specify one of: module/package, files, or command.\n').returncode
+
+tests/product/raw_signal_sqlite/test_contract_native.py:382: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/raw_signal_sqlite/test_contract_native.py::test_sqlite_requiredness_time_layers_and_static_public_facets
+========================= 1 failed, 22 passed in 2.93s =========================

@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "status": "L01_documentary_frozen_components_not_runtime_proof",
+  "files": [
+    {
+      "path": "handoff/downstream_reconciliation/authority/CONSUMER_SOURCE_CONTRACT_V1.md",
+      "sha256": "e68e33d4e6992d3541f9f243233d047ad553657c806072c6ced16bdb1b2f9645"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/authority/NATIVE_PUBLIC_API_V1.md",
+      "sha256": "d4011188c91cd92bc43a3c71043542a0440b0d0b9ba2a05abec1d339ce7439d1"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/authority/PROFILE_AND_PROOF_ALLOCATION.md",
+      "sha256": "cd91dfc90cf44f4a137c768cc88004618ccd469987820da5759769116752a560"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/authority/fixtures/SOURCE_PROFILES_V1.json",
+      "sha256": "e8a1cce559da057e4e92c6d03ed9ba8ac4da7638b15129e118a268578c5cff31"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/authority/fixtures/CALCULATION_PROFILES_V1.json",
+      "sha256": "c57d3e8bf1d2c0cae27308c898e4974e78252e78aba960387da21c3cae687886"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/authority/fixtures/SYNTHETIC_RECIPES_V1.json",
+      "sha256": "18aed11491ba57e4d0c4eeb1aa01f27002850c395d802b47b84106797971a83e"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/authority/fixtures/FROZEN_M00_PUBLIC_OUTPUT_V1.jsonl",
+      "sha256": "028c7b393d47caad1343ecebb0571c54ce4fd6c492ff6a8386a8ed8c04518fa4"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/authority/fixtures/FROZEN_M00_MAPPINGS_V1.json",
+      "sha256": "edfa78c2c09c793a16878f9cf911e0e6beb028b15f0977dbd9ef69ce44220cb8"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/authority/fixtures/FROZEN_M00_CONTROLS_V1.jsonl",
+      "sha256": "5b808cd12cbe566aa26e41c11935cb3efce5f6258299925cb14ed97739267501"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/authority/fixtures/PROVENANCE_V1.json",
+      "sha256": "0e7d0446eeb21b789aec9dab33c9ece34fbafd894d6d271531467e670f160d63"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/authority/expected/SYNTHETIC_REFERENCE_ORACLES_V1.json",
+      "sha256": "263dec140dbfda57eb50bd8961a9180069176adf8433102e977cccbeaa87e8c3"
+    }
+  ]
+}

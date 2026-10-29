@@ -1,0 +1,19 @@
+{
+  "candidate": "b0a61a7f960b1cff4f95605347db2773d1078c65",
+  "tree": "1b73d7dcfda91f79a11dfc064eee620eae88a6aa",
+  "argv": [
+    "/workspace/scratch/56b9974b28a0/d014-runtime/bin/python",
+    "tools/run_product_proof_gate.py",
+    "--aggregate",
+    "neutral_market_measurement_truth_d013"
+  ],
+  "cwd": "/workspace/scratch/56b9974b28a0/implementation-recovery",
+  "reason": "mandatory exact-candidate validation under root 7.3.4",
+  "started_utc": "2026-10-21T09:38:53Z",
+  "exit": 0,
+  "duration_seconds": 160.67082500299966,
+  "log_sha256": "96189046f52476f5b84953ce039567eb2d7c652cbca446295bd923037d3c417f",
+  "marker_present": false,
+  "unchanged_head": true,
+  "clean_after": true
+}

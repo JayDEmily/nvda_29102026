@@ -1,0 +1,41 @@
+I001 [*] Import block is un-sorted or un-formatted
+  --> tools/m00_negative_export.py:3:1
+   |
+ 1 |   """Actual isolated negative replays; no expected output row constructs actual facts."""
+ 2 |
+ 3 | / from __future__ import annotations
+ 4 | |
+ 5 | | import copy
+ 6 | | import hashlib
+ 7 | | import json
+ 8 | | import os
+ 9 | | import subprocess
+10 | | import sys
+11 | | from dataclasses import replace
+12 | | from decimal import Decimal
+13 | | from pathlib import Path
+14 | | from typing import Any
+15 | |
+16 | | from m00_fixture_io import (
+17 | |     ROOT,
+18 | |     control_observation,
+19 | |     decode,
+20 | |     dump_observation,
+21 | |     encode,
+22 | |     fresh_discovery,
+23 | |     fresh_history,
+24 | |     fresh_rows,
+25 | |     jsonl,
+26 | |     inputs,
+27 | |     observation,
+28 | |     owner,
+29 | |     queries,
+30 | |     utc,
+31 | | )
+32 | | from nvda_desk.raw_signal_occurrence_truth import api as r
+   | |__________________________________________________________^
+   |
+help: Organize imports
+
+Found 1 error.
+[*] 1 fixable with the `--fix` option.

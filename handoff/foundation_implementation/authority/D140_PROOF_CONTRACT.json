@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_d140",
+  "semantic_brief_path": "handoff/foundation_implementation/authority/D140_IMPLEMENTATION_BRIEF.md",
+  "target": {
+    "category": "M",
+    "responsibility_name": "neutral_market_measurement_truth",
+    "package": "nvda_desk.market_measurement_truth",
+    "public_seam": "nvda_desk.market_measurement_truth.api",
+    "intent": "modify",
+    "existing_object_id": "M02"
+  },
+  "proof_axis": "product",
+  "product_tier_treatment": "NOT_CLASSIFIED",
+  "architecture_proof_axis": "architecture_kernel",
+  "required_proof_ids": [
+    "D140-CALCULATION"
+  ],
+  "families": [
+    {
+      "id": "mmt_d140",
+      "path": "tests/product/market_measurement_d140/test_signal.py",
+      "proof_obligation_ids": [
+        "D140-CALCULATION"
+      ],
+      "required_test_names": [
+        "test_d140_signal"
+      ],
+      "boundary": "Standing pre-delete size versus native zero-size deletion and nonexistent-position refusal.",
+      "proof_levels": [
+        "CONTRACT",
+        "INTEGRATION",
+        "STATE"
+      ],
+      "authoritative_inputs": [
+        "Owner-accepted EXEC_PLAN.md \u00a7\u00a72.2,3,5; catalogue K08/P_RULE."
+      ],
+      "dependency_substitutions": [
+        "Reuse accepted D139 synthetic public M00 native five-R source mappings."
+      ],
+      "case_coverage": {
+        "lawful_positive": {
+          "cases": [
+            "Standing size6 deleted with native size0 in two-second receipt bucket -> 1/2 and 3 per second."
+          ]
+        },
+        "prohibited_false_positive": {
+          "cases": [
+            "Delete nonexistent standing bid position2."
+          ]
+        },
+        "missing_mandatory_authority": {
+          "cases": [
+            "Actual R001 collector receipt and pre-delete standing row."
+          ]
+        },
+        "lawful_optional_absence": {
+          "cases": [
+            "No D predecessor."
+          ]
+        }
+      },
+      "expected_failure_signals": [
+        "Native zero size substituted for removed standing size; nonexistent row accepted."
+      ],
+      "limitations": [
+        "Two controlled cases; no native SMART certification."
+      ],
+      "adjacent_nonclaims": [
+        "D143/D145 separate acceptance."
+      ],
+      "environment": "Pinned CPython3.12.14 SQLite3.53.1.",
+      "material_versions": [
+        "Exact brief/binding/contract/generation/candidate."
+      ],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/market_measurement_d140/test_signal.py"
+    }
+  ],
+  "required_support_files": [],
+  "optional_support_files": [],
+  "execution_policy": {
+    "skipped_tests": "FAIL",
+    "xfailed_tests": "FAIL",
+    "xpassed_tests": "FAIL",
+    "collection_failed": "FAIL",
+    "no_tests_collected": "FAIL",
+    "unexpected_governed_mutation": "FAIL"
+  }
+}

@@ -1,0 +1,9 @@
+ENV 3.12.14 3.53.1
+PASS direct materialise then later-clock retry; exact 2.00 and original time/ID
+PASS five direct refusal -> unchanged nonempty bounded history sequences
+PASS isolated definition/parameter/selection/bid-mapping/ask-mapping/one-unit/cutoff changes, old/new exact reads
+PASS original authority refuses registration/materialisation D012; original D011 exact read
+PASS fresh read-only process full typed occurrence/definition/all versioned configuration/history recovery
+PASS separate writer process exited, then fresh read-only process exact recovery
+PASS material raw change -> signed crossed -2.00; prior fact remains exact
+ALL DIRECT SEQUENCES PASS

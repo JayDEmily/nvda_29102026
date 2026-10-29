@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_d010",
+  "semantic_brief_path": "handoff/foundation_implementation/authority/D010_IMPLEMENTATION_BRIEF.md",
+  "target": {
+    "category": "M",
+    "responsibility_name": "neutral_market_measurement_truth",
+    "package": "nvda_desk.market_measurement_truth",
+    "public_seam": "nvda_desk.market_measurement_truth.api",
+    "intent": "modify",
+    "existing_object_id": "M02"
+  },
+  "proof_axis": "product",
+  "product_tier_treatment": "NOT_CLASSIFIED",
+  "architecture_proof_axis": "architecture_kernel",
+  "required_proof_ids": [
+    "D010-CALCULATION"
+  ],
+  "families": [
+    {
+      "id": "mmt_d010",
+      "path": "tests/product/market_measurement_d010/test_signal.py",
+      "proof_obligation_ids": [
+        "D010-CALCULATION"
+      ],
+      "required_test_names": [
+        "test_d010_signal"
+      ],
+      "boundary": "Projected R005 integer delivered-live eligibility plus R023/R024 and actual D003; complete calendar, explicit market state and liquid phase yield typed Boolean or refuse unknown state.",
+      "proof_levels": [
+        "CONTRACT",
+        "INTEGRATION",
+        "STATE"
+      ],
+      "authoritative_inputs": [
+        "Accepted root EXEC_PLAN.md \u00a7\u00a72.1,3,5; K01/P_TIME and D010_PROFILE.json."
+      ],
+      "dependency_substitutions": [
+        "Actual public M00 and D001/D003; synthetic complete calendar, explicit market state and phases; no native certification."
+      ],
+      "case_coverage": {
+        "lawful_positive": {
+          "cases": [
+            "Actual R005 delivered enum 1, open Saturday, overnight liquid yields Boolean true and SQLite read-only roundtrip."
+          ]
+        },
+        "prohibited_false_positive": {
+          "cases": [
+            "Same raw and actual predecessor but no applicable Saturday market state refuses with no Boolean/history."
+          ]
+        },
+        "missing_mandatory_authority": {
+          "cases": [
+            "Versioned delivered mode, market state, calendar, phase and immutable proof generation."
+          ]
+        },
+        "lawful_optional_absence": {
+          "cases": [
+            "Known closed state yields false; missing state yields no value."
+          ]
+        }
+      },
+      "expected_failure_signals": [
+        "Inferred live/open status, unknown market state guessed, incorrect lineage, or failed durable readback."
+      ],
+      "limitations": [
+        "Two controlled cases; known closed false declared branch; no native exchange certification."
+      ],
+      "adjacent_nonclaims": [
+        "D119 remains unaccepted."
+      ],
+      "environment": "Pinned CPython3.12.14 SQLite3.53.1 and existing tools.",
+      "material_versions": [
+        "Exact profile/brief/binding/contract/generation/candidate."
+      ],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/market_measurement_d010/test_signal.py"
+    }
+  ],
+  "required_support_files": [],
+  "optional_support_files": [],
+  "execution_policy": {
+    "skipped_tests": "FAIL",
+    "xfailed_tests": "FAIL",
+    "xpassed_tests": "FAIL",
+    "collection_failed": "FAIL",
+    "no_tests_collected": "FAIL",
+    "unexpected_governed_mutation": "FAIL"
+  }
+}

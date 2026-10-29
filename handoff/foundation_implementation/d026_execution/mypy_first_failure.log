@@ -1,0 +1,7 @@
+src/nvda_desk/market_measurement_truth/_vwap_returns.py:166: error: Argument 1 to "RawSelectionIdentityV1" has incompatible type "tuple[tuple[str, str]] | tuple[tuple[str, str], tuple[str, str | None], tuple[str, str]]"; expected "tuple[tuple[str, bool | int | float | Decimal | str | bytes], ...]"  [arg-type]
+src/nvda_desk/market_measurement_truth/_vwap_returns.py:252: error: Incompatible types in assignment (expression has type "WindowMeasurementOccurrenceV1", variable has type "RawInputLineageV1")  [assignment]
+src/nvda_desk/market_measurement_truth/_vwap_returns.py:274: error: Unexpected keyword argument "derived_occurrence_id" for "replace" of "RawInputLineageV1"  [call-arg]
+src/nvda_desk/market_measurement_truth/_vwap_returns.py:274: note: "replace" defined in "nvda_desk.market_measurement_truth.api"
+src/nvda_desk/market_measurement_truth/_vwap_returns.py:274: error: Incompatible return value type (got "RawInputLineageV1", expected "WindowMeasurementOccurrenceV1")  [return-value]
+src/nvda_desk/market_measurement_truth/_vwap_returns.py:274: error: Argument 1 to "_identity" has incompatible type "RawInputLineageV1"; expected "WindowMeasurementOccurrenceV1"  [arg-type]
+Found 5 errors in 1 file (checked 22 source files)

@@ -1,0 +1,12 @@
+# {{identifier}} — {{name}}
+
+Semantic responsibility: {{semantic_responsibility}}
+
+Inputs: {{inputs}}
+Outputs: {{outputs}}
+Exclusions: {{exclusions}}
+Permitted dependencies: {{permitted_dependencies}}
+Public seam: {{public_seam}}
+Status: proposed
+
+No implementation is admitted until its governing authority and proof obligations pass.

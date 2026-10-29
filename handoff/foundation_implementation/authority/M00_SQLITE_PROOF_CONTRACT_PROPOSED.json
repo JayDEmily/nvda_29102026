@@ -1,0 +1,331 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "raw_signal_occurrence_truth_sqlite",
+  "semantic_brief_path": "handoff/foundation_implementation/authority/SQLITE_IMPLEMENTATION_BRIEF_PROPOSED.md",
+  "target": {
+    "category": "M",
+    "responsibility_name": "raw_signal_occurrence_truth",
+    "package": "nvda_desk.raw_signal_occurrence_truth",
+    "public_seam": "nvda_desk.raw_signal_occurrence_truth.api",
+    "intent": "modify",
+    "existing_object_id": "M00"
+  },
+  "proof_axis": "product",
+  "product_tier_treatment": "NOT_CLASSIFIED",
+  "architecture_proof_axis": "architecture_kernel",
+  "required_proof_ids": [
+    "RSQL-P01",
+    "RSQL-P02",
+    "RSQL-P03",
+    "RSQL-P04",
+    "RSQL-P05",
+    "RSQL-P06",
+    "RSQL-P07",
+    "RSQL-P08",
+    "RSQL-P09",
+    "RSQL-P10",
+    "RSQL-P11",
+    "RSQL-P12",
+    "RSQL-P13"
+  ],
+  "families": [
+    {
+      "id": "rsql_contract_native",
+      "path": "tests/product/raw_signal_sqlite/test_contract_native.py",
+      "proof_obligation_ids": [
+        "RSQL-P01",
+        "RSQL-P03",
+        "RSQL-P04",
+        "RSQL-P05",
+        "RSQL-P08",
+        "RSQL-P12"
+      ],
+      "required_test_names": [
+        "test_sqlite_public_contracts_and_typed_identity_layers",
+        "test_sqlite_native_fidelity_and_temporal_absence",
+        "test_sqlite_retry_conflict_and_retransmission"
+      ],
+      "boundary": "All five existing v1 records and typed public M00 facets over actual SQLite, preserving native values, temporal categories and identity/retry meaning",
+      "proof_levels": [
+        "CONTRACT",
+        "STATE"
+      ],
+      "authoritative_inputs": [
+        "IRB BC-001/002/005/006/009/010/012/013; current public v1 constructor sets; independent native encoding expectations"
+      ],
+      "dependency_substitutions": [
+        "Controlled native records/eligibility and UTC clock; real public M00 owner using the specified SQLite port; no live provider certification"
+      ],
+      "case_coverage": {
+        "lawful_positive": {
+          "cases": [
+            "Exact existing v1 field/optional/null/UTC discriminant sets and distinct opaque factories; public command/read facets stay statically non-Any",
+            "Parent-held record contains bool/int, arbitrarily large signed integer, Decimal trailing zeros/signed zero/allowed nonfinite, float bit patterns, str/bytes/list/tuple/mapping and provider null; fresh reader preserves each independently checked representation",
+            "Date-only source text remains date-only; receipt-only has no provider timestamp; provider-native absent timezone/headers are not invented",
+            "Same occurrence ID/identical full content retries idempotently; changed content under same ID refuses; actual retransmission gets a different observation ID despite same native values"
+          ]
+        },
+        "prohibited_false_positive": {
+          "cases": [
+            "Source/receipt/schedule identities collapse; value numerically equal but representation/type changes; optional headers filled; UTC midnight/event time fabricated",
+            "Private test owner, packet/controller input or store-supplied semantic outcome replaces public M00 owner"
+          ]
+        },
+        "missing_mandatory_authority": {
+          "cases": [
+            "Missing accepted symbol/field/seam/version or same-payload cross-layer identity substitution fails; no unadmitted v1 extension"
+          ]
+        },
+        "lawful_optional_absence": {
+          "cases": [
+            "Observation without active capture scope remains valid; optional metadata stays absent; no receipt relation implies no validity conclusion"
+          ]
+        }
+      },
+      "expected_failure_signals": [
+        "Explicit assertions; accepted TypeError/ValueError/KeyError for malformed semantic inputs; PersistenceFailureV1 for storage failure, never synthetic data"
+      ],
+      "limitations": [
+        "New SQLite profile only; no inherited PostgreSQL execution result or hostile-code security claim"
+      ],
+      "adjacent_nonclaims": [
+        "No provider/network/trading/replay SLA/retention/migration or full foundation acceptance"
+      ],
+      "environment": "Candidate CPython 3.12.14; SQLite 3.53.1 proof engine; pytest 9.0.3; mypy 1.20.1; no provider network; exact environment must be proved",
+      "material_versions": [
+        "Exact accepted version-3 brief and SQLite admission contract",
+        "Exact admitted file hashes/generation/target M00",
+        "Actual candidate commit/tree; interpreter/dependency/SQLite build and settings"
+      ],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/raw_signal_sqlite/test_contract_native.py"
+    },
+    {
+      "id": "rsql_schedule_assessment",
+      "path": "tests/product/raw_signal_sqlite/test_schedule_assessment.py",
+      "proof_obligation_ids": [
+        "RSQL-P02",
+        "RSQL-P06",
+        "RSQL-P07",
+        "RSQL-P08",
+        "RSQL-P10"
+      ],
+      "required_test_names": [
+        "test_sqlite_owed_slot_and_policy_boundary_law",
+        "test_sqlite_receipt_relation_and_assessment_chain",
+        "test_sqlite_scope_high_water_and_restart_unknown"
+      ],
+      "boundary": "Public immutable policies/captures, receipt-only relation, three-state assessments and restart/order state on SQLite",
+      "proof_levels": [
+        "COMPONENT_DETERMINISTIC",
+        "STATE"
+      ],
+      "authoritative_inputs": [
+        "IRB BC-003/004/007/008/010/011/014; exact 30-second intervals; controlled opposing eligibility authorities"
+      ],
+      "dependency_substitutions": [
+        "Controlled native records/eligibility and UTC clock; real public M00 owner using the specified SQLite port; no live provider certification"
+      ],
+      "case_coverage": {
+        "lawful_positive": {
+          "cases": [
+            "Policy active at 2026-09-20T12:00:00Z, deactivation 12:02:00Z; exact :00/:30 half-open slots, next policy starts at exclusive boundary",
+            "Eligible receipt exactly at start relates; receipt exactly at end does not; ineligible/out-of-slot observation remains valid without relation",
+            "Zero then late eligible one-or-more forms exact immutable immediate-predecessor chain across process restart; capture A evidence cannot alter B",
+            "Fresh A:high -> B:low -> A:lower refusal/A:higher acceptance preserves per-scope high-water; use huge and signed boundary values permitted by existing owner contract",
+            "Restart explicitly owed missing capture commits before its separate unknown_not_established assessment; injected assessment failure leaves capture committed"
+          ]
+        },
+        "prohibited_false_positive": {
+          "cases": [
+            "Overlap, off-grid one-microsecond slot, changed immutable policy, wake time as schedule truth, regression hidden by scope interleaving",
+            "Relation implies membership/count/completeness; missing capture implies zero; broken/forked/non-immediate assessment chain or receipt eligibility delegated to storage"
+          ]
+        },
+        "missing_mandatory_authority": {
+          "cases": [
+            "Missing actual policy/capture/predecessor or eligibility authority refuses under accepted domain contract"
+          ]
+        },
+        "lawful_optional_absence": {
+          "cases": [
+            "No deactivation declaration is not perpetual service; first assessment has no predecessor; no exact-count/finality/health/replay guarantee"
+          ]
+        }
+      },
+      "expected_failure_signals": [
+        "Explicit assertions; accepted TypeError/ValueError/KeyError for malformed semantic inputs; PersistenceFailureV1 for storage failure, never synthetic data"
+      ],
+      "limitations": [
+        "New SQLite profile only; no inherited PostgreSQL execution result or hostile-code security claim"
+      ],
+      "adjacent_nonclaims": [
+        "No provider/network/trading/replay SLA/retention/migration or full foundation acceptance"
+      ],
+      "environment": "Candidate CPython 3.12.14; SQLite 3.53.1 proof engine; pytest 9.0.3; mypy 1.20.1; no provider network; exact environment must be proved",
+      "material_versions": [
+        "Exact accepted version-3 brief and SQLite admission contract",
+        "Exact admitted file hashes/generation/target M00",
+        "Actual candidate commit/tree; interpreter/dependency/SQLite build and settings"
+      ],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/raw_signal_sqlite/test_schedule_assessment.py"
+    },
+    {
+      "id": "rsql_sqlite_durability",
+      "path": "tests/product/raw_signal_sqlite/test_sqlite_durability.py",
+      "proof_obligation_ids": [
+        "RSQL-P04",
+        "RSQL-P07",
+        "RSQL-P08",
+        "RSQL-P09",
+        "RSQL-P10",
+        "RSQL-P11"
+      ],
+      "required_test_names": [
+        "test_sqlite_environment_and_only_configured_semantic_source",
+        "test_sqlite_public_return_requires_native_commit",
+        "test_sqlite_failed_write_and_killed_writer_nonfabrication",
+        "test_sqlite_uncertain_commit_and_concurrent_identity",
+        "test_sqlite_native_roundtrip_and_consistent_backup",
+        "test_sqlite_port_is_nonsemantic_and_record_only",
+        "test_sqlite_proof_rejects_surrogate_commit_and_payload"
+      ],
+      "boundary": "Real SQLite own-command commit truth, failure and independent-process readback; production ownership remains M00",
+      "proof_levels": [
+        "INTEGRATION",
+        "STATE"
+      ],
+      "authoritative_inputs": [
+        "IRB BC-005/008/010/011/013/015; version-3 sections2–5; independent prewrite facts and genuine SQLite commit instrumentation"
+      ],
+      "dependency_substitutions": [
+        "Controlled native records/eligibility and UTC clock; real public M00 owner using the specified SQLite port; no live provider certification"
+      ],
+      "case_coverage": {
+        "lawful_positive": {
+          "cases": [
+            "Exact engine/settings/schema/application ID and parameterised SQL validated; fresh process receives only path and query identity and recovers complete parent-held high-entropy facts",
+            "Hold an independent SQLite read transaction so DELETE-journal writer COMMIT cannot finish; public operation must not return a valid success before commit. Independently canary barrier first",
+            "At exact public success-return boundary, separate connection already sees complete fact; kill writer immediately after return, then fresh reader still recovers it",
+            "Fail before commit leaves no partial/valid fact in a new process; kill uncommitted writer and reopen via permitted writer for recovery then independent reader",
+            "Lost commit acknowledgement reports uncertain; same-identity read/retry resolves without duplicate, changed payload conflicts; serialized competing same-ID operations converge after explicit retry",
+            "SQLite backup clone supplies same complete facts while original path is unavailable in a disposable proof; missing/wrong/poisoned configured store never falls back",
+            "Record-only transaction port stores already owner-decided counterfactual assessment without recalculating it; opposing owner eligibility over same stored facts changes only owner-derived relation, not stored facts; no cached/private adapter decision capability",
+            "Independent canaries deliberately commit only marker/setup records or reconstruct a subset from IDs; the proof's complete-fact/commit correspondence checks reject each surrogate before they are trusted on the real owner."
+          ]
+        },
+        "prohibited_false_positive": {
+          "cases": [
+            "Same-process memory/cache or IDs reconstruct facts; second semantic file is authoritative; setup-only marker transaction masquerades as semantic commit",
+            "False rollback/absence after commit uncertainty; return before native commit; partial facts, fabricated zero, cross-kind atomicity or SLA claim",
+            "SQLite authoriser/private fields/permissions/ordinary root process separation advertised as database-role or hostile-code confinement"
+          ]
+        },
+        "missing_mandatory_authority": {
+          "cases": [
+            "Actual file-backed engine/foreign keys/journal/sync settings, admitted proof or required command is absent: fail explicitly, never skip or call this intended domain RED"
+          ]
+        },
+        "lawful_optional_absence": {
+          "cases": [
+            "No retention duration, recovery deadline, RTO/RPO, precommit raw-loss recovery or authoritative replay claim; reader may fail closed on needed journal recovery"
+          ]
+        }
+      },
+      "expected_failure_signals": [
+        "Explicit assertions; accepted TypeError/ValueError/KeyError for malformed semantic inputs; PersistenceFailureV1 for storage failure, never synthetic data"
+      ],
+      "limitations": [
+        "New SQLite profile only; no inherited PostgreSQL execution result or hostile-code security claim"
+      ],
+      "adjacent_nonclaims": [
+        "No provider/network/trading/replay SLA/retention/migration or full foundation acceptance"
+      ],
+      "environment": "Candidate CPython 3.12.14; SQLite 3.53.1 proof engine; pytest 9.0.3; mypy 1.20.1; no provider network; exact environment must be proved",
+      "material_versions": [
+        "Exact accepted version-3 brief and SQLite admission contract",
+        "Exact admitted file hashes/generation/target M00",
+        "Actual candidate commit/tree; interpreter/dependency/SQLite build and settings"
+      ],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/raw_signal_sqlite/test_sqlite_durability.py"
+    },
+    {
+      "id": "rsql_composition",
+      "path": "tests/product/raw_signal_sqlite/test_composition.py",
+      "proof_obligation_ids": [
+        "RSQL-P11",
+        "RSQL-P13"
+      ],
+      "required_test_names": [
+        "test_sqlite_a00_constructs_nonowning_store_and_public_owner",
+        "test_sqlite_a00_exact_order_arguments_and_results",
+        "test_sqlite_a00_has_no_domain_decisions_or_private_bypass"
+      ],
+      "boundary": "Actual A00 SQLite production constructor and exact public M00 delegation, without A00 semantic ownership",
+      "proof_levels": [
+        "SEQUENTIAL_END_TO_END"
+      ],
+      "authoritative_inputs": [
+        "IRB BC-001/002/013/014/015; version-3 A00 signature/projection; direct independent delegation sequences"
+      ],
+      "dependency_substitutions": [
+        "Controlled native records/eligibility and UTC clock; real public M00 owner using the specified SQLite port; no live provider certification"
+      ],
+      "case_coverage": {
+        "lawful_positive": {
+          "cases": [
+            "Exactly one backend path; SQLite uses real existing file and public owner with injected technical port; absent/both/factory-plus-store combinations refuse",
+            "Policy->capture->observation->relation->assessment->readback call order, exact opaque object identity and all semantic argument wiring; supplied policy ref must match accepted policy version",
+            "Production path works without importing Psycopg; only exact authorised technical exception plus public M00 seam; runtime dependency direction stays lawful"
+          ]
+        },
+        "prohibited_false_positive": {
+          "cases": [
+            "A00 computes outcomes, constructs replacement semantic objects, bypasses public owner, provisions missing store, imports broad private helpers or composes new unauthorised owner"
+          ]
+        },
+        "missing_mandatory_authority": {
+          "cases": [
+            "Missing production constructor, exact technical exception or actual public M00 owner fails"
+          ]
+        },
+        "lawful_optional_absence": {
+          "cases": [
+            "Factory-only proof branch remains separate; no other runtime owner/provider/trading composition is required"
+          ]
+        }
+      },
+      "expected_failure_signals": [
+        "Explicit assertions; accepted TypeError/ValueError/KeyError for malformed semantic inputs; PersistenceFailureV1 for storage failure, never synthetic data"
+      ],
+      "limitations": [
+        "New SQLite profile only; no inherited PostgreSQL execution result or hostile-code security claim"
+      ],
+      "adjacent_nonclaims": [
+        "No provider/network/trading/replay SLA/retention/migration or full foundation acceptance"
+      ],
+      "environment": "Candidate CPython 3.12.14; SQLite 3.53.1 proof engine; pytest 9.0.3; mypy 1.20.1; no provider network; exact environment must be proved",
+      "material_versions": [
+        "Exact accepted version-3 brief and SQLite admission contract",
+        "Exact admitted file hashes/generation/target M00",
+        "Actual candidate commit/tree; interpreter/dependency/SQLite build and settings"
+      ],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/raw_signal_sqlite/test_composition.py"
+    }
+  ],
+  "required_support_files": [
+    "tests/product/raw_signal_sqlite/_support.py"
+  ],
+  "optional_support_files": [],
+  "execution_policy": {
+    "skipped_tests": "FAIL",
+    "xfailed_tests": "FAIL",
+    "xpassed_tests": "FAIL",
+    "collection_failed": "FAIL",
+    "no_tests_collected": "FAIL",
+    "unexpected_governed_mutation": "FAIL"
+  }
+}

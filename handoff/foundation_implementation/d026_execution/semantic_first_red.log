@@ -1,0 +1,269 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/83dd7c79f14f/NVDA_V2_D021_D025_EXECUTION_20261023
+configfile: pyproject.toml
+collected 2 items
+
+tests/product/market_measurement_d026/test_vwap_deviation.py FF          [100%]
+
+=================================== FAILURES ===================================
+_______________________ test_d026_vwap_deviation[False] ________________________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-10/test_d026_vwap_deviation_False0')
+refused = False
+
+    @pytest.mark.parametrize("refused", [False, True])
+    def test_d026_vwap_deviation(tmp_path, refused):
+        raw = r.create_owner()
+        _admit(
+            raw,
+            "last",
+            T,
+            {"trade": {"last": Decimal("101")}, "session": {"id": S}},
+            ("R037",),
+            "price",
+            1,
+        )
+        _admit(
+            raw,
+            "vwap",
+            T,
+            {
+                "vwap": {
+                    "value": Decimal("0" if refused else "120"),
+                    "session": S,
+                    "as_of": T.isoformat().replace("+00:00", "Z"),
+                    "basis": "cumulative_session",
+                }
+            },
+            ("R137",),
+            "price",
+            2,
+        )
+        projected = (*_page(raw, LAST, CUTOFF, T), *_page(raw, VWAP, CUTOFF, T))
+        assert [p.native_value for p in projected] == [
+            Decimal("101"),
+            Decimal("0" if refused else "120"),
+        ]
+        selected_ids = ("last", "vwap")
+    
+        assert all(p.selection_identity is not None for p in projected)
+        admission = f.OwnerAdmissionV1("M02", BRIEF)
+        path = str(tmp_path / "result.sqlite")
+        try:
+>           owner = f.create_window_owner(
+                admission=admission,
+                raw_projection_reader=raw.reads,
+                storage=f.SQLiteStorageV1(path, True),
+                utc_now=lambda: NOW,
+            )
+
+tests/product/market_measurement_d026/test_vwap_deviation.py:215: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/nvda_desk/market_measurement_truth/api.py:828: in create_window_owner
+    return build_owner(admission, raw_projection_reader, predecessor_reader, storage, utc_now)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/nvda_desk/market_measurement_truth/_window.py:480: in build_owner
+    _admission(admission)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+admission = OwnerAdmissionV1(object_id='M02', implementation_brief_sha256='a2f3fc76cd2cc846fd4885d4f3d3df7a1a3e5c7370700a613ecb0706c853412f')
+
+    def _admission(admission: f.OwnerAdmissionV1) -> None:
+        if type(admission) is not f.OwnerAdmissionV1:
+            raise TypeError("exact owner admission required")
+        if admission != f.OwnerAdmissionV1("M02", BRIEF):
+>           raise ValueError("exact D016 admission required")
+E           ValueError: exact D016 admission required
+
+src/nvda_desk/market_measurement_truth/_window.py:70: ValueError
+
+During handling of the above exception, another exception occurred:
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-10/test_d026_vwap_deviation_False0')
+refused = False
+
+    @pytest.mark.parametrize("refused", [False, True])
+    def test_d026_vwap_deviation(tmp_path, refused):
+        raw = r.create_owner()
+        _admit(
+            raw,
+            "last",
+            T,
+            {"trade": {"last": Decimal("101")}, "session": {"id": S}},
+            ("R037",),
+            "price",
+            1,
+        )
+        _admit(
+            raw,
+            "vwap",
+            T,
+            {
+                "vwap": {
+                    "value": Decimal("0" if refused else "120"),
+                    "session": S,
+                    "as_of": T.isoformat().replace("+00:00", "Z"),
+                    "basis": "cumulative_session",
+                }
+            },
+            ("R137",),
+            "price",
+            2,
+        )
+        projected = (*_page(raw, LAST, CUTOFF, T), *_page(raw, VWAP, CUTOFF, T))
+        assert [p.native_value for p in projected] == [
+            Decimal("101"),
+            Decimal("0" if refused else "120"),
+        ]
+        selected_ids = ("last", "vwap")
+    
+        assert all(p.selection_identity is not None for p in projected)
+        admission = f.OwnerAdmissionV1("M02", BRIEF)
+        path = str(tmp_path / "result.sqlite")
+        try:
+            owner = f.create_window_owner(
+                admission=admission,
+                raw_projection_reader=raw.reads,
+                storage=f.SQLiteStorageV1(path, True),
+                utc_now=lambda: NOW,
+            )
+        except ValueError as exc:
+>           pytest.fail(f"admitted D026 unsupported after lawful public source setup: {exc}")
+E           Failed: admitted D026 unsupported after lawful public source setup: exact D016 admission required
+
+tests/product/market_measurement_d026/test_vwap_deviation.py:222: Failed
+________________________ test_d026_vwap_deviation[True] ________________________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-10/test_d026_vwap_deviation_True_0')
+refused = True
+
+    @pytest.mark.parametrize("refused", [False, True])
+    def test_d026_vwap_deviation(tmp_path, refused):
+        raw = r.create_owner()
+        _admit(
+            raw,
+            "last",
+            T,
+            {"trade": {"last": Decimal("101")}, "session": {"id": S}},
+            ("R037",),
+            "price",
+            1,
+        )
+        _admit(
+            raw,
+            "vwap",
+            T,
+            {
+                "vwap": {
+                    "value": Decimal("0" if refused else "120"),
+                    "session": S,
+                    "as_of": T.isoformat().replace("+00:00", "Z"),
+                    "basis": "cumulative_session",
+                }
+            },
+            ("R137",),
+            "price",
+            2,
+        )
+        projected = (*_page(raw, LAST, CUTOFF, T), *_page(raw, VWAP, CUTOFF, T))
+        assert [p.native_value for p in projected] == [
+            Decimal("101"),
+            Decimal("0" if refused else "120"),
+        ]
+        selected_ids = ("last", "vwap")
+    
+        assert all(p.selection_identity is not None for p in projected)
+        admission = f.OwnerAdmissionV1("M02", BRIEF)
+        path = str(tmp_path / "result.sqlite")
+        try:
+>           owner = f.create_window_owner(
+                admission=admission,
+                raw_projection_reader=raw.reads,
+                storage=f.SQLiteStorageV1(path, True),
+                utc_now=lambda: NOW,
+            )
+
+tests/product/market_measurement_d026/test_vwap_deviation.py:215: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/nvda_desk/market_measurement_truth/api.py:828: in create_window_owner
+    return build_owner(admission, raw_projection_reader, predecessor_reader, storage, utc_now)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/nvda_desk/market_measurement_truth/_window.py:480: in build_owner
+    _admission(admission)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+admission = OwnerAdmissionV1(object_id='M02', implementation_brief_sha256='a2f3fc76cd2cc846fd4885d4f3d3df7a1a3e5c7370700a613ecb0706c853412f')
+
+    def _admission(admission: f.OwnerAdmissionV1) -> None:
+        if type(admission) is not f.OwnerAdmissionV1:
+            raise TypeError("exact owner admission required")
+        if admission != f.OwnerAdmissionV1("M02", BRIEF):
+>           raise ValueError("exact D016 admission required")
+E           ValueError: exact D016 admission required
+
+src/nvda_desk/market_measurement_truth/_window.py:70: ValueError
+
+During handling of the above exception, another exception occurred:
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-10/test_d026_vwap_deviation_True_0')
+refused = True
+
+    @pytest.mark.parametrize("refused", [False, True])
+    def test_d026_vwap_deviation(tmp_path, refused):
+        raw = r.create_owner()
+        _admit(
+            raw,
+            "last",
+            T,
+            {"trade": {"last": Decimal("101")}, "session": {"id": S}},
+            ("R037",),
+            "price",
+            1,
+        )
+        _admit(
+            raw,
+            "vwap",
+            T,
+            {
+                "vwap": {
+                    "value": Decimal("0" if refused else "120"),
+                    "session": S,
+                    "as_of": T.isoformat().replace("+00:00", "Z"),
+                    "basis": "cumulative_session",
+                }
+            },
+            ("R137",),
+            "price",
+            2,
+        )
+        projected = (*_page(raw, LAST, CUTOFF, T), *_page(raw, VWAP, CUTOFF, T))
+        assert [p.native_value for p in projected] == [
+            Decimal("101"),
+            Decimal("0" if refused else "120"),
+        ]
+        selected_ids = ("last", "vwap")
+    
+        assert all(p.selection_identity is not None for p in projected)
+        admission = f.OwnerAdmissionV1("M02", BRIEF)
+        path = str(tmp_path / "result.sqlite")
+        try:
+            owner = f.create_window_owner(
+                admission=admission,
+                raw_projection_reader=raw.reads,
+                storage=f.SQLiteStorageV1(path, True),
+                utc_now=lambda: NOW,
+            )
+        except ValueError as exc:
+>           pytest.fail(f"admitted D026 unsupported after lawful public source setup: {exc}")
+E           Failed: admitted D026 unsupported after lawful public source setup: exact D016 admission required
+
+tests/product/market_measurement_d026/test_vwap_deviation.py:222: Failed
+=========================== short test summary info ============================
+FAILED tests/product/market_measurement_d026/test_vwap_deviation.py::test_d026_vwap_deviation[False]
+FAILED tests/product/market_measurement_d026/test_vwap_deviation.py::test_d026_vwap_deviation[True]
+============================== 2 failed in 0.45s ===============================
+product-proof aggregate: neutral_market_measurement_truth_d026 state=READY_FOR_PROOF
+authority=a2f3fc76cd2cc846fd4885d4f3d3df7a1a3e5c7370700a613ecb0706c853412f generation=60da27538ede2c67c0a947223a54f75701472904a1d75bee8346461e488161b9
+candidate=19eab388148a968fba2d9f3fb1ed03055a14d1a5
+observed aggregate outcome: exit=1

@@ -1,0 +1,172 @@
+FFFFFFFFF                                                                [100%]
+=================================== FAILURES ===================================
+_____ test_same_native_bucket_yields_exact_z_with_competing_bar[D029-R144] _____
+
+did = 'D029', rid = 'R144'
+
+    @pytest.mark.parametrize(("did", "rid"), ROWS)
+    def test_same_native_bucket_yields_exact_z_with_competing_bar(did: str, rid: str) -> None:
+        owner, request = _request(did, rid)
+        result = owner.materialise(request)
+        assert result is not None
+>       assert result.result == Decimal(6) / Decimal(8).sqrt()
+E       AssertionError: assert Decimal('-0.6770171309232901829369786444') == (Decimal('6') / Decimal('2.828427124746190097603377448'))
+E        +  where Decimal('-0.6770171309232901829369786444') = DerivedSignalOccurrenceV1(derived_signal_id='D029', derived_occurrence_id='d029-912d6de2ebe66f9f1d471578f8959cddc22c2c...refs=(VersionRefV1(context_id='tod-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None).result
+E        +  and   Decimal('6') = Decimal(6)
+E        +  and   Decimal('2.828427124746190097603377448') = <built-in method sqrt of decimal.Decimal object at 0x7f303b21f640>()
+E        +    where <built-in method sqrt of decimal.Decimal object at 0x7f303b21f640> = Decimal('8').sqrt
+E        +      where Decimal('8') = Decimal(8)
+
+tests/product/derived_signal/test_m01_f4_rc04_time_of_day_bucket_public.py:109: AssertionError
+_____ test_same_native_bucket_yields_exact_z_with_competing_bar[D030-R062] _____
+
+did = 'D030', rid = 'R062'
+
+    @pytest.mark.parametrize(("did", "rid"), ROWS)
+    def test_same_native_bucket_yields_exact_z_with_competing_bar(did: str, rid: str) -> None:
+        owner, request = _request(did, rid)
+        result = owner.materialise(request)
+        assert result is not None
+>       assert result.result == Decimal(6) / Decimal(8).sqrt()
+E       AssertionError: assert Decimal('-0.6770171309232901829369786444') == (Decimal('6') / Decimal('2.828427124746190097603377448'))
+E        +  where Decimal('-0.6770171309232901829369786444') = DerivedSignalOccurrenceV1(derived_signal_id='D030', derived_occurrence_id='d030-16a4013147e83ace3ccd75bd81ade1d7fb14c0...refs=(VersionRefV1(context_id='tod-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None).result
+E        +  and   Decimal('6') = Decimal(6)
+E        +  and   Decimal('2.828427124746190097603377448') = <built-in method sqrt of decimal.Decimal object at 0x7f303b22bbc0>()
+E        +    where <built-in method sqrt of decimal.Decimal object at 0x7f303b22bbc0> = Decimal('8').sqrt
+E        +      where Decimal('8') = Decimal(8)
+
+tests/product/derived_signal/test_m01_f4_rc04_time_of_day_bucket_public.py:109: AssertionError
+_____ test_same_native_bucket_yields_exact_z_with_competing_bar[D031-R063] _____
+
+did = 'D031', rid = 'R063'
+
+    @pytest.mark.parametrize(("did", "rid"), ROWS)
+    def test_same_native_bucket_yields_exact_z_with_competing_bar(did: str, rid: str) -> None:
+        owner, request = _request(did, rid)
+        result = owner.materialise(request)
+        assert result is not None
+>       assert result.result == Decimal(6) / Decimal(8).sqrt()
+E       AssertionError: assert Decimal('-0.6770171309232901829369786444') == (Decimal('6') / Decimal('2.828427124746190097603377448'))
+E        +  where Decimal('-0.6770171309232901829369786444') = DerivedSignalOccurrenceV1(derived_signal_id='D031', derived_occurrence_id='d031-fd422a21e5c33834d94cbe3f692a22cb5312ee...refs=(VersionRefV1(context_id='tod-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None).result
+E        +  and   Decimal('6') = Decimal(6)
+E        +  and   Decimal('2.828427124746190097603377448') = <built-in method sqrt of decimal.Decimal object at 0x7f303a97cac0>()
+E        +    where <built-in method sqrt of decimal.Decimal object at 0x7f303a97cac0> = Decimal('8').sqrt
+E        +      where Decimal('8') = Decimal(8)
+
+tests/product/derived_signal/test_m01_f4_rc04_time_of_day_bucket_public.py:109: AssertionError
+______________ test_no_same_bucket_history_must_refuse[D029-R144] ______________
+
+did = 'D029', rid = 'R144'
+
+    @pytest.mark.parametrize(("did", "rid"), ROWS)
+    def test_no_same_bucket_history_must_refuse(did: str, rid: str) -> None:
+        owner, request = _request(did, rid, mismatched_history=True)
+>       assert owner.materialise(request) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D029', derived_occurrence_id='d029-912d6de2ebe66f9f1d471578f8959cddc22c2c...refs=(VersionRefV1(context_id='tod-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(derived_signal_id='D029', derived_occurrence_id='d029-912d6de2ebe66f9f1d471578f8959cddc22c2c...refs=(VersionRefV1(context_id='tod-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D029', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 10, 14...id='tod-unit', version=1), subject_instrument='NVDA', selection_identity=None),), predecessor_selection_policy_refs=()))
+E        +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7f303b1cf530>.materialise
+
+tests/product/derived_signal/test_m01_f4_rc04_time_of_day_bucket_public.py:119: AssertionError
+______________ test_no_same_bucket_history_must_refuse[D030-R062] ______________
+
+did = 'D030', rid = 'R062'
+
+    @pytest.mark.parametrize(("did", "rid"), ROWS)
+    def test_no_same_bucket_history_must_refuse(did: str, rid: str) -> None:
+        owner, request = _request(did, rid, mismatched_history=True)
+>       assert owner.materialise(request) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D030', derived_occurrence_id='d030-16a4013147e83ace3ccd75bd81ade1d7fb14c0...refs=(VersionRefV1(context_id='tod-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(derived_signal_id='D030', derived_occurrence_id='d030-16a4013147e83ace3ccd75bd81ade1d7fb14c0...refs=(VersionRefV1(context_id='tod-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D030', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 10, 14...id='tod-unit', version=1), subject_instrument='NVDA', selection_identity=None),), predecessor_selection_policy_refs=()))
+E        +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7f303b1cfbc0>.materialise
+
+tests/product/derived_signal/test_m01_f4_rc04_time_of_day_bucket_public.py:119: AssertionError
+______________ test_no_same_bucket_history_must_refuse[D031-R063] ______________
+
+did = 'D031', rid = 'R063'
+
+    @pytest.mark.parametrize(("did", "rid"), ROWS)
+    def test_no_same_bucket_history_must_refuse(did: str, rid: str) -> None:
+        owner, request = _request(did, rid, mismatched_history=True)
+>       assert owner.materialise(request) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D031', derived_occurrence_id='d031-fd422a21e5c33834d94cbe3f692a22cb5312ee...refs=(VersionRefV1(context_id='tod-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(derived_signal_id='D031', derived_occurrence_id='d031-fd422a21e5c33834d94cbe3f692a22cb5312ee...refs=(VersionRefV1(context_id='tod-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D031', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 10, 14...id='tod-unit', version=1), subject_instrument='NVDA', selection_identity=None),), predecessor_selection_policy_refs=()))
+E        +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7f303b1cf840>.materialise
+
+tests/product/derived_signal/test_m01_f4_rc04_time_of_day_bucket_public.py:119: AssertionError
+______ test_missing_versioned_bucket_matching_rule_must_refuse[D029-R144] ______
+
+did = 'D029', rid = 'R144'
+
+    @pytest.mark.parametrize(("did", "rid"), ROWS)
+    def test_missing_versioned_bucket_matching_rule_must_refuse(did: str, rid: str) -> None:
+        owner, request = _request(did, rid, missing_matching_rule=True, contaminated=False)
+>       assert owner.materialise(request) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D029', derived_occurrence_id='d029-2fe196216ae115078c8f55956637d47b051ae3...refs=(VersionRefV1(context_id='tod-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(derived_signal_id='D029', derived_occurrence_id='d029-2fe196216ae115078c8f55956637d47b051ae3...refs=(VersionRefV1(context_id='tod-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D029', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 10, 14...id='tod-unit', version=1), subject_instrument='NVDA', selection_identity=None),), predecessor_selection_policy_refs=()))
+E        +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7f303b1cf140>.materialise
+
+tests/product/derived_signal/test_m01_f4_rc04_time_of_day_bucket_public.py:125: AssertionError
+______ test_missing_versioned_bucket_matching_rule_must_refuse[D030-R062] ______
+
+did = 'D030', rid = 'R062'
+
+    @pytest.mark.parametrize(("did", "rid"), ROWS)
+    def test_missing_versioned_bucket_matching_rule_must_refuse(did: str, rid: str) -> None:
+        owner, request = _request(did, rid, missing_matching_rule=True, contaminated=False)
+>       assert owner.materialise(request) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D030', derived_occurrence_id='d030-dd6d1e184e9114e85884b5f78a61c360b4b2ad...refs=(VersionRefV1(context_id='tod-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(derived_signal_id='D030', derived_occurrence_id='d030-dd6d1e184e9114e85884b5f78a61c360b4b2ad...refs=(VersionRefV1(context_id='tod-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D030', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 10, 14...id='tod-unit', version=1), subject_instrument='NVDA', selection_identity=None),), predecessor_selection_policy_refs=()))
+E        +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7f303b1cfa70>.materialise
+
+tests/product/derived_signal/test_m01_f4_rc04_time_of_day_bucket_public.py:125: AssertionError
+______ test_missing_versioned_bucket_matching_rule_must_refuse[D031-R063] ______
+
+did = 'D031', rid = 'R063'
+
+    @pytest.mark.parametrize(("did", "rid"), ROWS)
+    def test_missing_versioned_bucket_matching_rule_must_refuse(did: str, rid: str) -> None:
+        owner, request = _request(did, rid, missing_matching_rule=True, contaminated=False)
+>       assert owner.materialise(request) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D031', derived_occurrence_id='d031-d94106169bd4fec92db8384b46392d979ab302...refs=(VersionRefV1(context_id='tod-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(derived_signal_id='D031', derived_occurrence_id='d031-d94106169bd4fec92db8384b46392d979ab302...refs=(VersionRefV1(context_id='tod-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D031', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 10, 14...id='tod-unit', version=1), subject_instrument='NVDA', selection_identity=None),), predecessor_selection_policy_refs=()))
+E        +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7f303b1cfe60>.materialise
+
+tests/product/derived_signal/test_m01_f4_rc04_time_of_day_bucket_public.py:125: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/derived_signal/test_m01_f4_rc04_time_of_day_bucket_public.py::test_same_native_bucket_yields_exact_z_with_competing_bar[D029-R144] - AssertionError: assert Decimal('-0.6770171309232901829369786444') == (Decimal('6') / Decimal('2.828427124746190097603377448'))
+ +  where Decimal('-0.6770171309232901829369786444') = DerivedSignalOccurrenceV1(derived_signal_id='D029', derived_occurrence_id='d029-912d6de2ebe66f9f1d471578f8959cddc22c2c...refs=(VersionRefV1(context_id='tod-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None).result
+ +  and   Decimal('6') = Decimal(6)
+ +  and   Decimal('2.828427124746190097603377448') = <built-in method sqrt of decimal.Decimal object at 0x7f303b21f640>()
+ +    where <built-in method sqrt of decimal.Decimal object at 0x7f303b21f640> = Decimal('8').sqrt
+ +      where Decimal('8') = Decimal(8)
+FAILED tests/product/derived_signal/test_m01_f4_rc04_time_of_day_bucket_public.py::test_same_native_bucket_yields_exact_z_with_competing_bar[D030-R062] - AssertionError: assert Decimal('-0.6770171309232901829369786444') == (Decimal('6') / Decimal('2.828427124746190097603377448'))
+ +  where Decimal('-0.6770171309232901829369786444') = DerivedSignalOccurrenceV1(derived_signal_id='D030', derived_occurrence_id='d030-16a4013147e83ace3ccd75bd81ade1d7fb14c0...refs=(VersionRefV1(context_id='tod-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None).result
+ +  and   Decimal('6') = Decimal(6)
+ +  and   Decimal('2.828427124746190097603377448') = <built-in method sqrt of decimal.Decimal object at 0x7f303b22bbc0>()
+ +    where <built-in method sqrt of decimal.Decimal object at 0x7f303b22bbc0> = Decimal('8').sqrt
+ +      where Decimal('8') = Decimal(8)
+FAILED tests/product/derived_signal/test_m01_f4_rc04_time_of_day_bucket_public.py::test_same_native_bucket_yields_exact_z_with_competing_bar[D031-R063] - AssertionError: assert Decimal('-0.6770171309232901829369786444') == (Decimal('6') / Decimal('2.828427124746190097603377448'))
+ +  where Decimal('-0.6770171309232901829369786444') = DerivedSignalOccurrenceV1(derived_signal_id='D031', derived_occurrence_id='d031-fd422a21e5c33834d94cbe3f692a22cb5312ee...refs=(VersionRefV1(context_id='tod-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None).result
+ +  and   Decimal('6') = Decimal(6)
+ +  and   Decimal('2.828427124746190097603377448') = <built-in method sqrt of decimal.Decimal object at 0x7f303a97cac0>()
+ +    where <built-in method sqrt of decimal.Decimal object at 0x7f303a97cac0> = Decimal('8').sqrt
+ +      where Decimal('8') = Decimal(8)
+FAILED tests/product/derived_signal/test_m01_f4_rc04_time_of_day_bucket_public.py::test_no_same_bucket_history_must_refuse[D029-R144] - AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D029', derived_occurrence_id='d029-912d6de2ebe66f9f1d471578f8959cddc22c2c...refs=(VersionRefV1(context_id='tod-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) is None
+ +  where DerivedSignalOccurrenceV1(derived_signal_id='D029', derived_occurrence_id='d029-912d6de2ebe66f9f1d471578f8959cddc22c2c...refs=(VersionRefV1(context_id='tod-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D029', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 10, 14...id='tod-unit', version=1), subject_instrument='NVDA', selection_identity=None),), predecessor_selection_policy_refs=()))
+ +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7f303b1cf530>.materialise
+FAILED tests/product/derived_signal/test_m01_f4_rc04_time_of_day_bucket_public.py::test_no_same_bucket_history_must_refuse[D030-R062] - AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D030', derived_occurrence_id='d030-16a4013147e83ace3ccd75bd81ade1d7fb14c0...refs=(VersionRefV1(context_id='tod-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) is None
+ +  where DerivedSignalOccurrenceV1(derived_signal_id='D030', derived_occurrence_id='d030-16a4013147e83ace3ccd75bd81ade1d7fb14c0...refs=(VersionRefV1(context_id='tod-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D030', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 10, 14...id='tod-unit', version=1), subject_instrument='NVDA', selection_identity=None),), predecessor_selection_policy_refs=()))
+ +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7f303b1cfbc0>.materialise
+FAILED tests/product/derived_signal/test_m01_f4_rc04_time_of_day_bucket_public.py::test_no_same_bucket_history_must_refuse[D031-R063] - AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D031', derived_occurrence_id='d031-fd422a21e5c33834d94cbe3f692a22cb5312ee...refs=(VersionRefV1(context_id='tod-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) is None
+ +  where DerivedSignalOccurrenceV1(derived_signal_id='D031', derived_occurrence_id='d031-fd422a21e5c33834d94cbe3f692a22cb5312ee...refs=(VersionRefV1(context_id='tod-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D031', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 10, 14...id='tod-unit', version=1), subject_instrument='NVDA', selection_identity=None),), predecessor_selection_policy_refs=()))
+ +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7f303b1cf840>.materialise
+FAILED tests/product/derived_signal/test_m01_f4_rc04_time_of_day_bucket_public.py::test_missing_versioned_bucket_matching_rule_must_refuse[D029-R144] - AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D029', derived_occurrence_id='d029-2fe196216ae115078c8f55956637d47b051ae3...refs=(VersionRefV1(context_id='tod-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) is None
+ +  where DerivedSignalOccurrenceV1(derived_signal_id='D029', derived_occurrence_id='d029-2fe196216ae115078c8f55956637d47b051ae3...refs=(VersionRefV1(context_id='tod-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D029', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 10, 14...id='tod-unit', version=1), subject_instrument='NVDA', selection_identity=None),), predecessor_selection_policy_refs=()))
+ +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7f303b1cf140>.materialise
+FAILED tests/product/derived_signal/test_m01_f4_rc04_time_of_day_bucket_public.py::test_missing_versioned_bucket_matching_rule_must_refuse[D030-R062] - AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D030', derived_occurrence_id='d030-dd6d1e184e9114e85884b5f78a61c360b4b2ad...refs=(VersionRefV1(context_id='tod-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) is None
+ +  where DerivedSignalOccurrenceV1(derived_signal_id='D030', derived_occurrence_id='d030-dd6d1e184e9114e85884b5f78a61c360b4b2ad...refs=(VersionRefV1(context_id='tod-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D030', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 10, 14...id='tod-unit', version=1), subject_instrument='NVDA', selection_identity=None),), predecessor_selection_policy_refs=()))
+ +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7f303b1cfa70>.materialise
+FAILED tests/product/derived_signal/test_m01_f4_rc04_time_of_day_bucket_public.py::test_missing_versioned_bucket_matching_rule_must_refuse[D031-R063] - AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D031', derived_occurrence_id='d031-d94106169bd4fec92db8384b46392d979ab302...refs=(VersionRefV1(context_id='tod-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) is None
+ +  where DerivedSignalOccurrenceV1(derived_signal_id='D031', derived_occurrence_id='d031-d94106169bd4fec92db8384b46392d979ab302...refs=(VersionRefV1(context_id='tod-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D031', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 10, 14...id='tod-unit', version=1), subject_instrument='NVDA', selection_identity=None),), predecessor_selection_policy_refs=()))
+ +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7f303b1cfe60>.materialise
+9 failed in 0.08s

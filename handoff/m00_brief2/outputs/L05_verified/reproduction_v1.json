@@ -1,0 +1,12 @@
+{
+  "candidate": "63e68751107035d2747a1591700a45a83181ca11",
+  "source_clean": true,
+  "second_clean_checkout": true,
+  "deterministic_hashes": {
+    "actual_m00_output_v1.jsonl": "70583a82602ebf30fa4d9c3f0731746fd4c99479902e33738bc45a6cdf37a281",
+    "actual_control_output_v1.jsonl": "5b808cd12cbe566aa26e41c11935cb3efce5f6258299925cb14ed97739267501",
+    "negative_outcomes_v1.json": "576cd3674da7ce0c576fc41d2b28139c4be85c17bbc3968c24ed2920b9e6e505",
+    "actual_absence_outcomes_v1.json": "bd0faf848a3f40eaa583b82838a639b8ad16e68d6b74bdabf07a15deb665f14c"
+  },
+  "comparison": "EXACT_BYTE_HASH_EQUAL"
+}

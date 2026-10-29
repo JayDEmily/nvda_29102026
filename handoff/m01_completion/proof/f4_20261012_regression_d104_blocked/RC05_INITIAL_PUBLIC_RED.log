@@ -1,0 +1,52 @@
+FFF.                                                                     [100%]
+=================================== FAILURES ===================================
+___ test_regression_public_uses_entire_aligned_model_history[D079-expected0] ___
+
+did = 'D079', expected = Decimal('2')
+
+    @pytest.mark.parametrize("did,expected", tuple(EXPECTED.items()))
+    def test_regression_public_uses_entire_aligned_model_history(did: str, expected: Decimal):
+        owner, request = _data()
+        _seed_history(owner, request)
+        output = owner.materialise(replace(request, derived_signal_id=did))
+>       assert output is not None, f"{did} must have seven aligned source-derived samples"
+E       AssertionError: D079 must have seven aligned source-derived samples
+E       assert None is not None
+
+tests/product/derived_signal/test_m01_f4_reconstruction_regression_history_public.py:150: AssertionError
+___ test_regression_public_uses_entire_aligned_model_history[D080-expected1] ___
+
+did = 'D080', expected = Decimal('3')
+
+    @pytest.mark.parametrize("did,expected", tuple(EXPECTED.items()))
+    def test_regression_public_uses_entire_aligned_model_history(did: str, expected: Decimal):
+        owner, request = _data()
+        _seed_history(owner, request)
+        output = owner.materialise(replace(request, derived_signal_id=did))
+>       assert output is not None, f"{did} must have seven aligned source-derived samples"
+E       AssertionError: D080 must have seven aligned source-derived samples
+E       assert None is not None
+
+tests/product/derived_signal/test_m01_f4_reconstruction_regression_history_public.py:150: AssertionError
+___ test_regression_public_uses_entire_aligned_model_history[D081-expected2] ___
+
+did = 'D081', expected = Decimal('4')
+
+    @pytest.mark.parametrize("did,expected", tuple(EXPECTED.items()))
+    def test_regression_public_uses_entire_aligned_model_history(did: str, expected: Decimal):
+        owner, request = _data()
+        _seed_history(owner, request)
+        output = owner.materialise(replace(request, derived_signal_id=did))
+>       assert output is not None, f"{did} must have seven aligned source-derived samples"
+E       AssertionError: D081 must have seven aligned source-derived samples
+E       assert None is not None
+
+tests/product/derived_signal/test_m01_f4_reconstruction_regression_history_public.py:150: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/derived_signal/test_m01_f4_reconstruction_regression_history_public.py::test_regression_public_uses_entire_aligned_model_history[D079-expected0] - AssertionError: D079 must have seven aligned source-derived samples
+assert None is not None
+FAILED tests/product/derived_signal/test_m01_f4_reconstruction_regression_history_public.py::test_regression_public_uses_entire_aligned_model_history[D080-expected1] - AssertionError: D080 must have seven aligned source-derived samples
+assert None is not None
+FAILED tests/product/derived_signal/test_m01_f4_reconstruction_regression_history_public.py::test_regression_public_uses_entire_aligned_model_history[D081-expected2] - AssertionError: D081 must have seven aligned source-derived samples
+assert None is not None
+3 failed, 1 passed in 0.16s

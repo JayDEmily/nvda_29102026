@@ -1,0 +1,31 @@
+I001 [*] Import block is un-sorted or un-formatted
+  --> src/nvda_desk/market_measurement_truth/_international_returns.py:3:1
+   |
+ 1 |   """Per-index controlled exact daily anchors; no inferred exchange calendar."""
+ 2 |
+ 3 | / from __future__ import annotations
+ 4 | |
+ 5 | | from collections.abc import Callable
+ 6 | | from dataclasses import replace
+ 7 | | from datetime import UTC, datetime, timedelta
+ 8 | | from decimal import Decimal
+ 9 | | from typing import cast
+10 | |
+11 | | from nvda_desk.raw_signal_occurrence_truth import api as r
+12 | |
+13 | | from . import api as f
+14 | | from ._catalogue import _AUTHORITY
+15 | | from ._evaluation import canonical
+16 | | from ._log_return import _logarithm
+17 | | from ._record_store import RecordState
+18 | | from ._selection import eligible
+19 | | from ._vwap_returns import chosen, history
+20 | | from ._window import NAMESPACE, _Reads, _decode, _identity
+   | |__________________________________________________________^
+21 |
+22 |   BRIEFS = {"D066": "39e06e96fd6bc3c8415296995896710ec91964c7c7c5d9e8e49e77e59c866308"}
+   |
+help: Organize imports
+
+Found 1 error.
+[*] 1 fixable with the `--fix` option.

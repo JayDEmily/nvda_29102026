@@ -1,0 +1,68 @@
+Reviewer 028 command record — commands materially bearing on disposition
+
+SOURCE / GOVERNANCE / GIT BINDING
+- sha256sum 'NVDA_G03_WORKER_VI12R_U03_R027_REPAIR_R028_HANDOFF_FULL_GIT_20260924.tar(1).gz'
+  -> 5faa4e3b798e5dc1f893b4f7e3105f914f21516fb38fbf6d09442ba4cca1e7d5
+- read README.md in full and followed its actor/cycle routing
+- read GUARDRAILS.md in full before substantive review/actions and before project responses
+- read root AGENTS.md, complete current EXEC_PLAN.md, tests/AGENTS.override.md,
+  handoff/control/CURRENT_STATE.md and active Reviewer-028 REQUEST.md
+- read accepted IRB, complete IWO, Reviewer-027 disposition, Worker Reviewer-027 repair
+  request/evidence/commands/result, exact repair diff, candidate api.py, complete U03 proof and
+  public proof support
+- transported repository HEAD before review:
+  8ea8a3af3572d6a84859e00db91d15640ef6c0d6
+- exact repaired U03 candidate/tree:
+  06735b3682d79387ebaa4da70002e6685d52740a / b73b6ba4486eba9ae3aa4c1facc626579c8b8ee5
+- accepted forward main:
+  a78ae7b5515c2e482a2656cebeebae3fa5a6d584
+- verified accepted-main -> candidate, rejected-candidate -> candidate and Reviewer-027 disposition
+  -> candidate ancestry
+- candidate-to-transport material diff over src/tests/config/tools/pyproject.toml -> none
+- repair binary diff SHA-256 over api.py + U03 proof:
+  e1dbcf371f893f75decea7701bc43415a4cdd2488fefa74221531ad1fb5c6c4d
+
+EXACT REVIEW TOOLCHAIN
+- base preflight: Python 3.13.5; pytest 9.0.2; mypy unavailable
+- exact preserved project wheels provisioned outside repository
+- /mnt/data/nvda_r028_venv/bin/python --version -> Python 3.13.5
+- /mnt/data/nvda_r028_venv/bin/python -m pytest --version -> pytest 9.0.3
+- /mnt/data/nvda_r028_venv/bin/python -m mypy --version -> mypy 1.20.1 (compiled: yes)
+- /mnt/data/nvda_r028_venv/bin/ruff --version -> ruff 0.15.11
+
+EXACT CANDIDATE VALIDATION — detached worktree at 06735b3682d79387ebaa4da70002e6685d52740a
+- PYTHONPATH=src:. <venv>/python -m pytest -q tests/product/raw_signal/test_u03_observation_native_temporal.py -k 'bytes_to_bytearray or nested_mapping_key_type_change'
+  -> 2 passed
+- PYTHONPATH=src:. <venv>/python -m pytest -q tests/product/raw_signal/test_u01_contract_owner_boundary.py tests/product/raw_signal/test_u02_capture_schedule.py tests/product/raw_signal/test_u03_observation_native_temporal.py
+  -> 373 passed
+- <venv>/python -m mypy src --show-error-codes -> Success, 15 source files
+- <venv>/ruff check src tests tools -> All checks passed
+- PYTHONPATH=src:. <venv>/python tools/validate_product_proof.py -> PASS, six families, 13/13 obligations
+- PYTHONPATH=src:. <venv>/python tools/validate_architecture.py -> PASS, zero dependency/public-seam violations
+- PYTHONPATH=src:. <venv>/python tools/check_dependencies.py -> PASS
+- PYTHONPATH=src:. <venv>/python tools/check_public_seams.py -> PASS
+- PYTHONPATH=src:. <venv>/python -m pytest -q tests/architecture tests/bootstrap -> 74 passed
+- PYTHONPATH=src:. <venv>/python tools/run_promotion_gate.py --set architecture_kernel -> 74 passed
+- git diff HEAD^ HEAD --check -> pass
+- git fsck --full --strict -> pass
+- exact detached candidate worktree -> clean
+
+BOUNDED ADVERSARIAL CANARY — external review file, candidate repository unmodified
+- PYTHONPATH=src:. <venv>/python -m pytest -q /mnt/data/r028_u03_adversarial_canary.py
+  -> 2 failed because neither expected conflicting-content rejection occurred
+- witness A: same ID native array('b', [1]) -> array('B', [1]) -> ACCEPTED_SAME, not rejected
+- witness B: same ID native range(0, 3, 2) -> range(0, 4, 2) -> ACCEPTED_SAME, not rejected
+- both witness classes are collections.abc.Sequence instances and preserve runtime type across retry
+- ordinary Python equality reports each changed pair equal
+- in both cases original readback remains stored
+- candidate source inspection: api.py:215-222 recurses only list/tuple; api.py:236 generic fallback
+  remains ordinary left == right
+
+DISPOSITION
+- concrete Reviewer-027 bytes/bytearray regression: CLOSED
+- concrete Reviewer-027 nested int/float mapping-key regression: CLOSED
+- R027-U03-F001 overall: NOT FULLY CLOSED
+- R028-U03-F001: OPEN / CRITICAL
+- final: FAIL / RETURN_TO_WORKER
+- U03 promotion prohibited
+- U04 remains prohibited

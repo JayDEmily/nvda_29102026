@@ -1,0 +1,21 @@
+{
+  "review_cycle": "TESTER_VI13R_U04_R031_1790245281",
+  "actor": "TESTER",
+  "status": "COMPLETE",
+  "candidate_commit": "e7eb44119bdf7fb22abacae8291788619792c96a",
+  "candidate_tree": "ea104900fcaf8e2db4177df3909956f464d6a918",
+  "disposition": "FAIL / RETURN_TO_WORKER",
+  "recurrence_classification": "ISOLATED",
+  "findings": [
+    {
+      "finding_id": "R031-U04-F001",
+      "status": "OPEN",
+      "severity": "CRITICAL",
+      "title": "Assessment evidence visibility depends on optional relation materialisation and receipt-time proxy",
+      "owning_layer": "U04 M-owner assessment derivation plus bounded implementation-coupled U04 proof"
+    }
+  ],
+  "u04_promotion": "PROHIBITED",
+  "u05_authority": "PROHIBITED_PENDING_U04_REPAIR_AND_FRESH_REVIEW",
+  "next_authorised_step": "WORKER executes one bounded U04 repair closing R031-U04-F001; U05 remains prohibited."
+}

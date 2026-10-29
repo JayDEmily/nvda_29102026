@@ -1,0 +1,4 @@
+neutral_market_measurement_truth_d013 REJECT: unowned D013 extension Python source without descriptor
+neutral_market_measurement_truth_d012 REJECT: unowned D013 extension Python source without descriptor
+neutral_market_measurement_truth_pilot REJECT: unowned D013 extension Python source without descriptor
+raw_signal_occurrence_truth_sqlite REJECT: unowned D013 extension Python source without descriptor

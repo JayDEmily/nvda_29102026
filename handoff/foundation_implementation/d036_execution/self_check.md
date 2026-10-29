@@ -1,0 +1,5 @@
+# D036 controlled self-check; owner-waived independent review
+
+SELF-CHECK under owner's earlier waiver, not an independent review. Eleven exact official close instants10–20October, ten complete synthetic intervening daily trading sessions, each interval year fraction1/252. Positive ten closes100 and final110 yields V10d fixed50-digit Decimal; ordered actual M00 R151 lineage, typed context/version/times and durable SQLite reopen checked. Negative provides only last six closes (five returns) within unchanged ten-session context; no substitution by shorter D035 horizon and no derived output. Native exchange source/calendar certification not attempted.
+
+First semantic RED after lawful raw R151 in c7d10d6, bounded owner profile 60126ac; source scoped mypy24 and Ruff PASS. Sole strict final aggregate2/2 exit0, original output archived. No additional tests, unchanged old claims, or successful repeated product gates. Owner independent-review waiver documented, not mislabelled as independent acceptance.

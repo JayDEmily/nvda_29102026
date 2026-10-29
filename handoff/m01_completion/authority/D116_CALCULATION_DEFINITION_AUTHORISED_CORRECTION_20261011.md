@@ -1,0 +1,11 @@
+# D116 — accepted calculation-definition dependency correction
+
+**Authority:** Programme Owner instruction “M01 F4 — D116 Volume/Open-Interest Dependency Correction”, 11-10-2026; authorises this D116-only exception to the active ExecPlan normative-catalogue lock. D116 identity, K02 kernel, P_BASIC parameter profile, output ratio and calculation arithmetic remain unchanged.
+
+**Normative calculation:** `D116 = current_option_trading_volume / applicable_open_interest` for **one exact option contract**, preserving underlying, contract identifier, expiry, strike, option right, source, temporal/context and version compatibility. R041 supplies option trading volume; R047 supplies CALL open interest or R048 supplies PUT open interest. The opposite-right raw edge is conditionally inapplicable, not a mandatory conjunctive input. R075 is *Average Option Volume* and is not an alternative open-interest denominator. D117 continues its legitimate R075 dependency unchanged.
+
+**Applicability:** selected `CALL` contract requires R041 and R047; selected `PUT` contract requires R041 and R048. A missing applicable observation, zero, negative, non-finite, ambiguous or incompatible denominator must fail closed. A valid zero-volume numerator yields ratio zero. An eligible latest open-interest observation is sufficient; **do not import D123's two-official-period requirement**. Never mix two option contracts or infer provider-native reporting-period metadata; native IBKR/OCC integration is a separate unverified proposition.
+
+**Lineage:** persist exactly the selected raw volume and applicable open-interest observations with their mapping/unit versions and selection identity; preserve stable retry behaviour and accepted temporal cutoffs.
+
+**Provenance and history:** Before this correction the catalogue declared `R041;R075` and the RC14 controlled fixture reported `300/200=1.5`, conflating average option volume with outstanding open interest. That original witness and its result remain retrievable from Git ancestry (base `327b6b50c74b2b9942b6083852cb4bba373ac941`). Corrected catalogue dependency declaration is `R041;R047;R048`; that is the only amended canonical catalogue row. The red proof was committed separately at `e4f2963` before production correction. This document is D116-only normative synchronisation; not programme acceptance.

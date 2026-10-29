@@ -1,0 +1,31 @@
+Module_ID_Working,Pass05_Group_ID,Responsibility,D_IDs,D_Count,Status
+M02,P01,Data-quality scoring and completeness,D006;D007;D008;D158,4,WORKBOOK_DESIGN_ONLY
+M03,P02,Configured market-condition composites,D040;D041;D061;D070;D084;D132;D151,7,WORKBOOK_DESIGN_ONLY
+M04,P03,Scheduled event relevance and gating,D062;D064;D065,3,WORKBOOK_DESIGN_ONLY
+M05,P04,Delta bucket and market-flow grouping,D091;D121,2,WORKBOOK_DESIGN_ONLY
+M06,P05,ATM straddle implied-move proxy,D109;D110,2,WORKBOOK_DESIGN_ONLY
+M07,P06,Volatility-surface fit and risk-neutral tails,D102;D111;D112;D113,4,WORKBOOK_DESIGN_ONLY
+M08,P07,Physical-return forecast and probability comparison,D114;D115,2,WORKBOOK_DESIGN_ONLY
+M09,P08,Dealer positioning and hedge-pressure inference,D125;D126;D127;D128;D129;D130,6,WORKBOOK_DESIGN_ONLY
+M10,P09,Limit-order-book resilience assumptions,D141;D142,2,WORKBOOK_DESIGN_ONLY
+M11,P10,Macro latent factor construction,D146;D147;D148;D149;D150,5,WORKBOOK_DESIGN_ONLY
+M12,P11,Market and options regime probabilities,D152;D153;D154,3,WORKBOOK_DESIGN_ONLY
+M13,P12,State-vector assembly,D155,1,WORKBOOK_DESIGN_ONLY
+M14,P13,Cross-signal dependence and disagreement,D156;D157,2,WORKBOOK_DESIGN_ONLY
+M15,P14,State identifiability/tradeability scoring,D159,1,WORKBOOK_DESIGN_ONLY
+M16,P15,Conditional scenario generation,D160,1,WORKBOOK_DESIGN_ONLY
+M17,P16,"Candidate payoff, exposure and stress measurement",D161;D162;D168;D169;D170;D174,6,WORKBOOK_DESIGN_ONLY
+M18,P17,Prospective execution costs,D133;D164,2,WORKBOOK_DESIGN_ONLY
+M19,P18,Candidate utility and exposure decisions,D163;D165;D166;D167,4,WORKBOOK_DESIGN_ONLY
+M20,P19,"Expiry, strike and neighbour suitability",D171;D172;D173,3,WORKBOOK_DESIGN_ONLY
+M21,P20,Risk limits and position sizing,D175;D176,2,WORKBOOK_DESIGN_ONLY
+M22,P21,Pre-submission entry edge and order-pricing policy,D177;D178,2,WORKBOOK_DESIGN_ONLY
+M23,P22,Fill and realised transaction measurement,D179;D180;D193,3,WORKBOOK_DESIGN_ONLY
+M24,P23,Live portfolio Greeks and P&L state,D181;D182;D183;D184;D185,5,WORKBOOK_DESIGN_ONLY
+M25,P24,Live thesis continuity and invalidation,D186;D187,2,WORKBOOK_DESIGN_ONLY
+M26,P25,"Live continuation, modification and exit valuation",D188;D190;D191,3,WORKBOOK_DESIGN_ONLY
+M27,P26,Hedge adjustment and live action policy,D189;D192,2,WORKBOOK_DESIGN_ONLY
+M28,P27,Realised Greek/path P&L attribution,D194;D195;D196;D197;D198;D199,6,WORKBOOK_DESIGN_ONLY
+M29,P28,Decision process and counterfactual review,D200;D201,2,WORKBOOK_DESIGN_ONLY
+M30,P29,Forecast/model/signal evaluation and disposition,D202;D203;D204;D205;D206;D207;D208,7,WORKBOOK_DESIGN_ONLY
+M31,P30,Observation/recalculation scheduling,D209,1,WORKBOOK_DESIGN_ONLY

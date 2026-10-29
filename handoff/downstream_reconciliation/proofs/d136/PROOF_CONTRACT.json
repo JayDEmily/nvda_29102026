@@ -1,0 +1,97 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_native_d136",
+  "semantic_brief_path": "handoff/downstream_reconciliation/authority/briefs/NATIVE_D136_BRIEF.md",
+  "target": {
+    "category": "M",
+    "responsibility_name": "neutral_market_measurement_truth",
+    "package": "nvda_desk.market_measurement_truth",
+    "public_seam": "nvda_desk.market_measurement_truth.api",
+    "intent": "modify",
+    "existing_object_id": "M02"
+  },
+  "proof_axis": "product",
+  "product_tier_treatment": "NOT_CLASSIFIED",
+  "architecture_proof_axis": "architecture_kernel",
+  "required_proof_ids": [
+    "NATIVE-D136-ACTUAL-COMMON-TOP2-IMBALANCE"
+  ],
+  "families": [
+    {
+      "id": "mmt_native_d136",
+      "path": "tests/product/market_measurement_native_d136/test_signal.py",
+      "proof_obligation_ids": [
+        "NATIVE-D136-ACTUAL-COMMON-TOP2-IMBALANCE"
+      ],
+      "required_test_names": [
+        "test_native_success",
+        "test_native_refusal"
+      ],
+      "boundary": "Exact rational imbalance from two actual native public D134/D135 top-two predecessors, exact full shared source/profile/time context, actual top-one ask incompatibility refusal and nested typed SQLite read-only reopening.",
+      "proof_levels": [
+        "CONTRACT",
+        "INTEGRATION",
+        "STATE"
+      ],
+      "authoritative_inputs": [
+        "L01 exact common-top-two profile and independent1/7 oracle; actual public native bid8 and ask6 owners, top-one ask2 refusal."
+      ],
+      "dependency_substitutions": [
+        "Frozen M00 public DTOs via declared reader only for actual public predecessor materialisation; D136 consumes two lawful public native read-only readers and no fabricated predecessor."
+      ],
+      "case_coverage": {
+        "lawful_positive": {
+          "cases": [
+            "Materialise native public bid8 and ask6 with exact A4 receipt-only source and native side1/side0, pass their two read-only readers to D136, assert literal exact1/7 and full nested typed durable reopening with all three SQLite files unchanged by reads."
+          ]
+        },
+        "prohibited_false_positive": {
+          "cases": [
+            "Materialise actual public top-one D1352 while bid stays actual top-two8; unchanged D136 common-top-two request refuses with no result/history."
+          ]
+        },
+        "missing_mandatory_authority": {
+          "cases": [
+            "Exact compatible predecessor definitions, briefs, source/profile/generation/request/contract/time/levels and the two fixed owning readers."
+          ]
+        },
+        "lawful_optional_absence": {
+          "cases": [
+            "No direct R dependency or source snapshot is fabricated for D136: complete source/control evidence is retained within actual predecessors."
+          ]
+        }
+      },
+      "expected_failure_signals": [
+        "Fabricated or numeric-only predecessor accepted",
+        "Top-one accepted against common-top-two request",
+        "Native side/source/profile mismatch accepted",
+        "Lossy nested durable lineage",
+        "Predecessor storage mutated"
+      ],
+      "limitations": [
+        "Synthetic A4 top-two pair only; no live provider capability."
+      ],
+      "adjacent_nonclaims": [
+        "Legacy D136 and predecessor profiles preserved; L05/L06 remain independently untested until L14."
+      ],
+      "environment": "Pinned CPython3.12.14 SQLite3.53.1 and existing tools.",
+      "material_versions": [
+        "Exact L01 native brief/binding/contract/generation and candidate source."
+      ],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/market_measurement_native_d136/test_signal.py"
+    }
+  ],
+  "required_support_files": [
+    "tests/support/native_reconciliation.py"
+  ],
+  "optional_support_files": [],
+  "execution_policy": {
+    "skipped_tests": "FAIL",
+    "xfailed_tests": "FAIL",
+    "xpassed_tests": "FAIL",
+    "collection_failed": "FAIL",
+    "no_tests_collected": "FAIL",
+    "unexpected_governed_mutation": "FAIL"
+  }
+}

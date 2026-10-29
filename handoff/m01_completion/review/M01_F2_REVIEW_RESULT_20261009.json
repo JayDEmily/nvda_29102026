@@ -1,0 +1,29 @@
+{
+  "review": "M01_STAGE1_F2_INDEPENDENT",
+  "worker_head": "dcd2067bbd306e1cf1aeb5fc9665dce25a4c8684",
+  "worker_tree": "f3e320ed0b660622935a222063e8741ebf527ebb",
+  "disposition": "REPAIR_RECURRENCE",
+  "f2_accepted": false,
+  "f1_inventory_remains_accepted": true,
+  "stage1_accepted": false,
+  "f3_authorised": false,
+  "findings": [
+    {
+      "id": "F2-R1",
+      "classification": "RECURRENT_CLASS",
+      "evidence": "handoff/m01_completion/review/proof/test_f2_late_quote_sign_20261009.py",
+      "observed": "D015 trade2 -1 at T+5 changes to +1 after quote-only T+10 update; D016 and D120 become absent",
+      "required": "exact contemporaneous quote/trade identity and stable signed trade aggregation"
+    },
+    {
+      "id": "F2-U04",
+      "classification": "BLOCKED_PREREQUISITE",
+      "observed": "D064 raw-only K07 score not publicly established; D065 raw-event/derived-score ID join unproved",
+      "scope": "distinct from independently reproduced F2-R1; no verified public D065 numerical witness"
+    }
+  ],
+  "reviewer_focus_tests": {"passed": 12, "failed": 0},
+  "reviewer_late_quote_adversarial": {"passed": 0, "failed": 1},
+  "next_worker_unit": "F2A_TEMPORAL_SIGN_ONLY",
+  "production_modified_by_reviewer": false
+}

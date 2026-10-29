@@ -1,0 +1,398 @@
+{
+  "schema_version": "1.0",
+  "status": "PROPOSED_RECEIVER_INVENTORY_NOT_EXECUTION_OR_INDEPENDENT_SEMANTIC_REVIEW",
+  "source_path": "tests/product/raw_signal/test_u05_postgresql_durability.py",
+  "source_sha256": "a9065148c58856a439345a5b121b00f3457d6ccbcee9900c0e97520c5150fbe0",
+  "source_function_count": 37,
+  "scope_note": "All old U05 function declarations/bodies are hash-addressed for future review. Selected storage/ownership/composition bodies and the full governing IRB/registry inform this design; not every historical process/helper body was re-audited. Receivers require actual authority-derived assertions and independent adequacy review before admission. Backend-specific confinement/XID mechanisms are not claimed equivalent.",
+  "tests": [
+    {
+      "old_test_name": "test_tcp_probe_requires_explicit_degraded_opt_in",
+      "source_line": 258,
+      "source_body_sha256": "8aed4962088c399c9b9cbb87a50bd4c41e5dc39c54ddb25ea59482d78c9d4ee9",
+      "disposition": "SUPERSEDED_OS_CONFINEMENT_MECHANISM_NOT_CLAIMED",
+      "new_proof_ids": [
+        "RSQL-P09"
+      ],
+      "required_receiver_test": "test_sqlite_environment_and_only_configured_semantic_source"
+    },
+    {
+      "old_test_name": "test_tcp_probe_uses_direct_process_only_under_explicit_degraded_opt_in",
+      "source_line": 269,
+      "source_body_sha256": "f8e25ed12663c07ef92450c1336f939967973f43e98e22c569edab24f45fe21f",
+      "disposition": "SUPERSEDED_OS_CONFINEMENT_MECHANISM_NOT_CLAIMED",
+      "new_proof_ids": [
+        "RSQL-P09"
+      ],
+      "required_receiver_test": "test_sqlite_environment_and_only_configured_semantic_source"
+    },
+    {
+      "old_test_name": "test_degraded_tcp_pid_namespace_probe_is_explicitly_unproved",
+      "source_line": 277,
+      "source_body_sha256": "b6975502dd88a663622ce35494ce7cd69b7129e7aacd20568b892497eced0db9",
+      "disposition": "SUPERSEDED_OS_CONFINEMENT_MECHANISM_NOT_CLAIMED",
+      "new_proof_ids": [
+        "RSQL-P09"
+      ],
+      "required_receiver_test": "test_sqlite_environment_and_only_configured_semantic_source"
+    },
+    {
+      "old_test_name": "test_degraded_tcp_probe_uses_confined_work_directories",
+      "source_line": 294,
+      "source_body_sha256": "9073d8f5a371ec9c201bfcbd238f9abf2ba32c1625b11d2e13309bb108d0b126",
+      "disposition": "SUPERSEDED_OS_CONFINEMENT_MECHANISM_NOT_CLAIMED",
+      "new_proof_ids": [
+        "RSQL-P09"
+      ],
+      "required_receiver_test": "test_sqlite_environment_and_only_configured_semantic_source"
+    },
+    {
+      "old_test_name": "test_each_commit_ack_action_prepares_owner_before_ready_and_write",
+      "source_line": 308,
+      "source_body_sha256": "5a5f3fea01b2f903343c8451395311f9ae1623571da316d68b32fb5dd7de5ba5",
+      "disposition": "RETAIN_MEANING_REDERIVE_BACKEND_WITNESS",
+      "new_proof_ids": [
+        "RSQL-P09",
+        "RSQL-P10"
+      ],
+      "required_receiver_test": "test_sqlite_public_return_requires_native_commit"
+    },
+    {
+      "old_test_name": "test_proof_environment_is_real_postgresql_17_9",
+      "source_line": 1220,
+      "source_body_sha256": "738ce9da26c09815fbd180e563ea87fdb750f134ef641bca7b2fd5b566efcaf1",
+      "disposition": "REPLACE_ENGINE_PREFLIGHT_NOT_SEMANTIC_RED",
+      "new_proof_ids": [
+        "RSQL-P09"
+      ],
+      "required_receiver_test": "test_sqlite_environment_and_only_configured_semantic_source"
+    },
+    {
+      "old_test_name": "test_postgresql_sync_commit_barrier_itself_waits_for_server_acknowledgement",
+      "source_line": 1228,
+      "source_body_sha256": "7a4ec6caba7ef53acd5948cba6064190bf689bee3c8aef15d661e35430b8c4ce",
+      "disposition": "RETAIN_MEANING_REDERIVE_BACKEND_WITNESS",
+      "new_proof_ids": [
+        "RSQL-P09",
+        "RSQL-P10"
+      ],
+      "required_receiver_test": "test_sqlite_public_return_requires_native_commit"
+    },
+    {
+      "old_test_name": "test_semantic_write_handshake_excludes_owner_setup_transaction",
+      "source_line": 1311,
+      "source_body_sha256": "648d9c8726dcf9ed9a1b38ac84d5e2a13867f6e33cfaee7dc4bfbda2b8701a3b",
+      "disposition": "RETAIN_MEANING_REDERIVE_BACKEND_WITNESS",
+      "new_proof_ids": [
+        "RSQL-P09",
+        "RSQL-P10"
+      ],
+      "required_receiver_test": "test_sqlite_public_return_requires_native_commit"
+    },
+    {
+      "old_test_name": "test_semantic_write_trace_rejects_split_marker_surrogate_payload_in_postgresql",
+      "source_line": 1400,
+      "source_body_sha256": "530285b4759ea251ed011afdd7a53844afc6564dd5732826cc6ad4fc4925073e",
+      "disposition": "REPLACE_XID_MECHANISM_RETAIN_DISCRIMINATING_CANARY",
+      "new_proof_ids": [
+        "RSQL-P09"
+      ],
+      "required_receiver_test": "test_sqlite_proof_rejects_surrogate_commit_and_payload"
+    },
+    {
+      "old_test_name": "test_semantic_marker_xid_binding_rejects_setup_then_semantic_commits",
+      "source_line": 1494,
+      "source_body_sha256": "b651c8512d1e12d3310ca166e01b8631c2c0af6ea83a5c8e77a1cabfab39d7ee",
+      "disposition": "REPLACE_XID_MECHANISM_RETAIN_DISCRIMINATING_CANARY",
+      "new_proof_ids": [
+        "RSQL-P09"
+      ],
+      "required_receiver_test": "test_sqlite_proof_rejects_surrogate_commit_and_payload"
+    },
+    {
+      "old_test_name": "test_semantic_write_trace_rejects_split_marker_surrogate_payload_transactions",
+      "source_line": 1498,
+      "source_body_sha256": "36beb7c6f0594be0258720d433c1ddb652c6bef6c0b0052a7f0a8ba7c09d522c",
+      "disposition": "REPLACE_XID_MECHANISM_RETAIN_DISCRIMINATING_CANARY",
+      "new_proof_ids": [
+        "RSQL-P09"
+      ],
+      "required_receiver_test": "test_sqlite_proof_rejects_surrogate_commit_and_payload"
+    },
+    {
+      "old_test_name": "test_public_factory_uses_same_semantic_owner_type_with_and_without_postgresql",
+      "source_line": 1504,
+      "source_body_sha256": "a9fc1e8b82c5ff6f911d31769a56168eb13300b4ce80eb095c4a112851023d0b",
+      "disposition": "RETAIN_MEANING_REDERIVE_BACKEND_WITNESS",
+      "new_proof_ids": [
+        "RSQL-P01",
+        "RSQL-P11"
+      ],
+      "required_receiver_test": "test_sqlite_public_contracts_and_typed_identity_layers"
+    },
+    {
+      "old_test_name": "test_process_boundary_forbids_shared_local_file_persistence",
+      "source_line": 1508,
+      "source_body_sha256": "012e01fc07ae3dc0257253b8c598d793a6b2ef759d2e35e49fd6c9efadb7992e",
+      "disposition": "SUPERSEDED_OS_CONFINEMENT_MECHANISM_NOT_CLAIMED",
+      "new_proof_ids": [
+        "RSQL-P09"
+      ],
+      "required_receiver_test": "test_sqlite_environment_and_only_configured_semantic_source"
+    },
+    {
+      "old_test_name": "test_semantic_state_moves_with_postgresql_database_clone_and_not_original_process_state",
+      "source_line": 1531,
+      "source_body_sha256": "7c36ed1a5c5f5f998854353d239c4dff4710fb193907bb8156ab20ee8c1a3e25",
+      "disposition": "REPLACE_DATABASE_CLONE_MECHANISM_RETAIN_FACT_PROVENANCE",
+      "new_proof_ids": [
+        "RSQL-P09",
+        "RSQL-P10"
+      ],
+      "required_receiver_test": "test_sqlite_native_roundtrip_and_consistent_backup"
+    },
+    {
+      "old_test_name": "test_public_return_barrier_stops_separate_session_descendant_process",
+      "source_line": 1579,
+      "source_body_sha256": "b3b5c508949944fb1720e4be7947cfec99fc9505276a97b488f4e866d3b1e188",
+      "disposition": "RETAIN_MEANING_REDERIVE_BACKEND_WITNESS",
+      "new_proof_ids": [
+        "RSQL-P09",
+        "RSQL-P10"
+      ],
+      "required_receiver_test": "test_sqlite_public_return_requires_native_commit"
+    },
+    {
+      "old_test_name": "test_public_success_return_requires_postgresql_commit_acknowledgement",
+      "source_line": 1620,
+      "source_body_sha256": "4db7226d4dc566d269eb369ca01f80aa3a5045ca34e823198606c873dc0bedfd",
+      "disposition": "RETAIN_MEANING_REDERIVE_BACKEND_WITNESS",
+      "new_proof_ids": [
+        "RSQL-P09",
+        "RSQL-P10"
+      ],
+      "required_receiver_test": "test_sqlite_public_return_requires_native_commit"
+    },
+    {
+      "old_test_name": "test_command_return_is_durable_if_writer_is_killed_immediately_after_success",
+      "source_line": 1757,
+      "source_body_sha256": "1987cca6b2b09538cdfccebb21faee66c43c7a929256a6cf7918206b8166fb7f",
+      "disposition": "RETAIN_MEANING_REDERIVE_BACKEND_WITNESS",
+      "new_proof_ids": [
+        "RSQL-P09",
+        "RSQL-P10"
+      ],
+      "required_receiver_test": "test_sqlite_failed_write_and_killed_writer_nonfabrication"
+    },
+    {
+      "old_test_name": "test_each_command_is_visible_before_writer_shutdown_and_matches_prewrite_authority",
+      "source_line": 1819,
+      "source_body_sha256": "bc5b015a1fbdbe26c809c384dfdd2367f1e692c5e1f6707c99e43711d0ee32b0",
+      "disposition": "RETAIN_MEANING_REDERIVE_BACKEND_WITNESS",
+      "new_proof_ids": [
+        "RSQL-P09",
+        "RSQL-P10"
+      ],
+      "required_receiver_test": "test_sqlite_public_return_requires_native_commit"
+    },
+    {
+      "old_test_name": "test_postgresql_is_only_configured_cross_process_semantic_source_for_complete_facts",
+      "source_line": 1928,
+      "source_body_sha256": "ca85fa8bd0fb395e96734fe041be9732aafebf1ee99f408fe440de9966a3ad8b",
+      "disposition": "RETAIN_MEANING_REDERIVE_BACKEND_WITNESS",
+      "new_proof_ids": [
+        "RSQL-P09",
+        "RSQL-P10"
+      ],
+      "required_receiver_test": "test_sqlite_public_return_requires_native_commit"
+    },
+    {
+      "old_test_name": "test_postgresql_restart_preserves_catalogue_id_numeric_sign_precision_type_and_null",
+      "source_line": 1989,
+      "source_body_sha256": "c9df4f5f422fb793a6b34756c04b93d4c5174efba43974ed2192df65c972cdb6",
+      "disposition": "RETAIN_MEANING_REDERIVE_BACKEND_WITNESS",
+      "new_proof_ids": [
+        "RSQL-P04",
+        "RSQL-P05"
+      ],
+      "required_receiver_test": "test_sqlite_native_roundtrip_and_consistent_backup"
+    },
+    {
+      "old_test_name": "test_durable_retry_and_conflicting_reuse_cross_process_boundaries",
+      "source_line": 2029,
+      "source_body_sha256": "395aea7a5277a64d059b8870283177a85bcf6a79fab214b1eeab1ca9f5d4cd9d",
+      "disposition": "RETAIN_MEANING_REDERIVE_BACKEND_WITNESS",
+      "new_proof_ids": [
+        "RSQL-P08",
+        "RSQL-P09"
+      ],
+      "required_receiver_test": "test_sqlite_uncertain_commit_and_concurrent_identity"
+    },
+    {
+      "old_test_name": "test_append_only_assessment_chain_is_exact_across_fresh_processes",
+      "source_line": 2042,
+      "source_body_sha256": "e1bdb5a9df9685355971f2b125457b0732230b79946258187587aa231290643b",
+      "disposition": "RETAIN_MEANING_REDERIVE_BACKEND_WITNESS",
+      "new_proof_ids": [
+        "RSQL-P07",
+        "RSQL-P10"
+      ],
+      "required_receiver_test": "test_sqlite_receipt_relation_and_assessment_chain"
+    },
+    {
+      "old_test_name": "test_restart_preserves_policy_capture_assessment_and_scope_high_water_invariants",
+      "source_line": 2055,
+      "source_body_sha256": "bdc3b1718955619ed83f3d1b2a206551cda3a612ba3ac254f4dd8401653f1a10",
+      "disposition": "RETAIN_MEANING_REDERIVE_BACKEND_WITNESS",
+      "new_proof_ids": [
+        "RSQL-P08",
+        "RSQL-P10"
+      ],
+      "required_receiver_test": "test_sqlite_scope_high_water_and_restart_unknown"
+    },
+    {
+      "old_test_name": "test_restart_reconciliation_commits_capture_before_assessment_and_recovers_exact_facts",
+      "source_line": 2127,
+      "source_body_sha256": "cac94ef3658244f9b81ef46bf8b238e8711e164de65319caeb197ae574cf4da3",
+      "disposition": "RETAIN_MEANING_REDERIVE_BACKEND_WITNESS",
+      "new_proof_ids": [
+        "RSQL-P08",
+        "RSQL-P10"
+      ],
+      "required_receiver_test": "test_sqlite_scope_high_water_and_restart_unknown"
+    },
+    {
+      "old_test_name": "test_public_owner_accepts_explicit_technical_persistence_port_injection",
+      "source_line": 2165,
+      "source_body_sha256": "0f45207e71aa73e485dcfd1e2967d6d968b7ac102b53c40316d3bb90f075f4d4",
+      "disposition": "RETAIN_MEANING_REDERIVE_BACKEND_WITNESS",
+      "new_proof_ids": [
+        "RSQL-P09",
+        "RSQL-P10"
+      ],
+      "required_receiver_test": "test_sqlite_public_return_requires_native_commit"
+    },
+    {
+      "old_test_name": "test_record_only_proxy_rewrite_rejects_cached_private_adapter_capability",
+      "source_line": 2712,
+      "source_body_sha256": "74ad6ee2e5bf3a75de035895675caf1c20671746e5cda81ab94f24996ee89b7d",
+      "disposition": "RETAIN_MEANING_REDERIVE_BACKEND_WITNESS",
+      "new_proof_ids": [
+        "RSQL-P11"
+      ],
+      "required_receiver_test": "test_sqlite_port_is_nonsemantic_and_record_only"
+    },
+    {
+      "old_test_name": "test_record_only_proxy_rewrite_rejects_nested_private_adapter_capability",
+      "source_line": 2743,
+      "source_body_sha256": "abf0b75ef924aba7017c4b35ec02793fe2a6da44bb7ec3e7f7e0a0e4127d9724",
+      "disposition": "RETAIN_MEANING_REDERIVE_BACKEND_WITNESS",
+      "new_proof_ids": [
+        "RSQL-P11"
+      ],
+      "required_receiver_test": "test_sqlite_port_is_nonsemantic_and_record_only"
+    },
+    {
+      "old_test_name": "test_record_only_proxy_rewrite_rejects_external_private_adapter_capability",
+      "source_line": 2786,
+      "source_body_sha256": "8201e706d43cd06f660fd68ddc47eb8d0304233cec5f24cffccf286402b6f4d5",
+      "disposition": "RETAIN_MEANING_REDERIVE_BACKEND_WITNESS",
+      "new_proof_ids": [
+        "RSQL-P11"
+      ],
+      "required_receiver_test": "test_sqlite_port_is_nonsemantic_and_record_only"
+    },
+    {
+      "old_test_name": "test_record_only_proxy_rewrite_rejects_weak_adapter_capability",
+      "source_line": 2852,
+      "source_body_sha256": "ab86b3ab9c8a0ca07d33e96ad0aceff57933556d93c20501bf05b36cef50a6e0",
+      "disposition": "RETAIN_MEANING_REDERIVE_BACKEND_WITNESS",
+      "new_proof_ids": [
+        "RSQL-P11"
+      ],
+      "required_receiver_test": "test_sqlite_port_is_nonsemantic_and_record_only"
+    },
+    {
+      "old_test_name": "test_injected_record_only_port_rejects_private_adapter_recovery",
+      "source_line": 2884,
+      "source_body_sha256": "75fed9613400ece23620c63c0c26ad93b06b47ddbdda7ad9288b32c83d5fa14c",
+      "disposition": "RETAIN_MEANING_REDERIVE_BACKEND_WITNESS",
+      "new_proof_ids": [
+        "RSQL-P11"
+      ],
+      "required_receiver_test": "test_sqlite_port_is_nonsemantic_and_record_only"
+    },
+    {
+      "old_test_name": "test_graph_checker_does_not_treat_adapter_holding_record_proxy_as_opaque",
+      "source_line": 2933,
+      "source_body_sha256": "c1b76287cac3f806f979a0c2a261524221ed72a9e1146c80fadee7f26e91a355",
+      "disposition": "RETAIN_MEANING_REDERIVE_BACKEND_WITNESS",
+      "new_proof_ids": [
+        "RSQL-P11"
+      ],
+      "required_receiver_test": "test_sqlite_port_is_nonsemantic_and_record_only"
+    },
+    {
+      "old_test_name": "test_record_only_proxy_rewrite_rewrites_nested_public_storage_capabilities",
+      "source_line": 2954,
+      "source_body_sha256": "c0aabab6cb292d89283ed4d88e361bdef54d1856a9301d56ac1afe3a92cdbe28",
+      "disposition": "RETAIN_MEANING_REDERIVE_BACKEND_WITNESS",
+      "new_proof_ids": [
+        "RSQL-P11"
+      ],
+      "required_receiver_test": "test_sqlite_port_is_nonsemantic_and_record_only"
+    },
+    {
+      "old_test_name": "test_postgresql_durability_port_exposes_only_authorised_transaction_query_contract",
+      "source_line": 2995,
+      "source_body_sha256": "111e4e533b2b4e5138c1c3745668bf0641547f900d0beb3e95123729b8f7df4d",
+      "disposition": "RETAIN_MEANING_REDERIVE_BACKEND_WITNESS",
+      "new_proof_ids": [
+        "RSQL-P11"
+      ],
+      "required_receiver_test": "test_sqlite_port_is_nonsemantic_and_record_only"
+    },
+    {
+      "old_test_name": "test_postgresql_adapter_preserves_owner_decided_assessment_without_rederiving",
+      "source_line": 3016,
+      "source_body_sha256": "49ccfd050ca3f46842d1f9a0d33a7b6a1e9f5ab521c04b338fdf67ce07515f34",
+      "disposition": "RETAIN_MEANING_REDERIVE_BACKEND_WITNESS",
+      "new_proof_ids": [
+        "RSQL-P11"
+      ],
+      "required_receiver_test": "test_sqlite_port_is_nonsemantic_and_record_only"
+    },
+    {
+      "old_test_name": "test_postgresql_adapter_is_invariant_under_opposing_eligibility_authority",
+      "source_line": 3063,
+      "source_body_sha256": "6d144eafd43697af8b7445f381f41702e607c420b4a18d994acb3cc8b704b63c",
+      "disposition": "RETAIN_MEANING_REDERIVE_BACKEND_WITNESS",
+      "new_proof_ids": [
+        "RSQL-P11"
+      ],
+      "required_receiver_test": "test_sqlite_port_is_nonsemantic_and_record_only"
+    },
+    {
+      "old_test_name": "test_owner_package_has_no_alternate_durable_backend_or_external_semantic_service",
+      "source_line": 3132,
+      "source_body_sha256": "90f4ca4560ce5c0c7a7254cfaf1bb0ad0ae85cc9087162e90101695b37bb16f2",
+      "disposition": "REPLACE_POSTGRES_ONLY_SOURCE_BAN_WITH_SQLITE_PROFILE_ACCOUNTING",
+      "new_proof_ids": [
+        "RSQL-P09",
+        "RSQL-P11"
+      ],
+      "required_receiver_test": "test_sqlite_environment_and_only_configured_semantic_source"
+    },
+    {
+      "old_test_name": "test_persistence_proof_does_not_claim_cross_kind_atomicity_or_replay_sla",
+      "source_line": 3235,
+      "source_body_sha256": "fd05223bd3b15be8b32b164de592fc24ffc302ffc2e75118039cfb50b925d9c2",
+      "disposition": "RETAIN_MEANING_REDERIVE_BACKEND_WITNESS",
+      "new_proof_ids": [
+        "RSQL-P09",
+        "RSQL-P10"
+      ],
+      "required_receiver_test": "test_sqlite_public_return_requires_native_commit"
+    }
+  ]
+}

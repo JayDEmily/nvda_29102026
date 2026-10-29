@@ -1,0 +1,51 @@
+VI-15-L1 Tester material command/evidence record
+
+SOURCE / GOVERNANCE / LINEAGE
+- received packet SHA-256 -> 9536d3f5d5d08defe20caa208da680dab73f78ac858a509addcbacefe9f527a8
+- read full GUARDRAILS.md, AGENTS.md, tests/AGENTS.override.md, accepted EXEC_PLAN.md, CURRENT_STATE.md,
+  active TESTER_VI15_L1_1790577380 REQUEST.md, VI15 pre-authority inspection, final distribution authority,
+  Worker candidate evidence, candidate diff and relevant accepted VI14 evidence
+- exact candidate -> 466055a1cd5fe678a40049a00f0dc88158951d74
+- exact candidate tree -> 350568be5d5f790d71121fbac383349b9284d649
+- candidate tested from detached exact worktree; branch-tip handoff commits were not used as candidate bytes
+
+AUTHORITY / DIFF
+- Programme Owner authority verified from the current programme instruction: retain distribution name
+  nvda-architecture-kernel and bump final version to 1.0.0, followed by instruction to proceed
+- candidate changes exactly:
+  * add implementation/authority/VI15_L1_FINAL_DISTRIBUTION_AUTHORITY.md
+  * pyproject.toml version 0.1.0 -> 1.0.0
+  * src/nvda_desk/__init__.py __version__ 0.1.0 -> 1.0.0
+  * tests/bootstrap/test_minimal_imports.py expected version 0.1.0 -> 1.0.0
+- no distribution-name, dependency, module-topology, owner/public-seam, Raw Signal semantic or PostgreSQL config change
+
+PROOF ENVIRONMENT
+- fresh preserved offline bootstrap verified and reconstructed
+- Python 3.13.5 / pytest 9.0.3 / mypy 1.20.1 / Ruff 0.15.11 / Psycopg 3.3.4
+- PostgreSQL 17.9 / UTF8 / fsync=on / synchronous_commit=on / full_page_writes=on / Unix socket only
+- already-present PyYAML 6.0.3 exposed as the bootstrap's missing runtime dependency
+
+INDEPENDENT EXECUTION ON EXACT CANDIDATE
+- direct metadata/runtime check -> distribution_name=nvda-architecture-kernel,
+  distribution_version=1.0.0, nvda_desk.__version__=1.0.0
+- VI14 integrated proposition-bearing set -> 66/66 passed
+- architecture/bootstrap -> 74/74 passed
+- tools/validate_product_proof.py --repository . -> PASS, 6 admitted families / 13 of 13 obligations
+- tools/validate_architecture.py -> PASS
+- tools/check_dependencies.py -> PASS
+- tools/check_public_seams.py -> PASS
+- python -m mypy src -> Success: no issues found in 16 source files
+- ruff check src tests tools -> All checks passed
+- candidate git diff --check -> PASS
+- exact candidate worktree remained clean
+- git fsck --full -> rc 0; dangling blobs only, no integrity failure
+
+BOUNDARY
+- VI-15-L2 wheel/sdist build, inventory, isolated install and package hashes were not performed here because
+  the accepted ExecPlan assigns those propositions to VI-15-L2.
+
+DISPOSITION
+- PASS
+- findings -> none
+- recurrence classification -> NO_FINDING
+- exact candidate accepted for lawful VI-15-L1 promotion only; VI-15-L2 remains blocked until promotion/close-out

@@ -1,0 +1,16 @@
+3 files reformatted
+RUF059 Unpacked variable `days` is never used
+  --> src/nvda_desk/market_measurement_truth/_macro_changes.py:60:14
+   |
+58 |     if identity not in BRIEFS:
+59 |         raise ValueError("unadmitted macro profile")
+60 |     raw_ids, days, mode, label = PROFILES[identity]
+   |              ^^^^
+61 |     basic = mode in ("slope", "spread")
+62 |     profile = "P_BASIC" if basic else "P_WINDOW"
+   |
+help: Prefix it with an underscore or any other dummy variable pattern
+
+Found 1 error.
+No fixes available (1 hidden fix can be enabled with the `--unsafe-fixes` option).
+

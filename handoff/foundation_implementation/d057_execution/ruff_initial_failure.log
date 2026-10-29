@@ -1,0 +1,108 @@
+I001 [*] Import block is un-sorted or un-formatted
+  --> src/nvda_desk/market_measurement_truth/_volatility_terms.py:3:1
+   |
+ 1 |   """Admitted instantaneous volatility relationships over the public M00 projection."""
+ 2 |
+ 3 | / from __future__ import annotations
+ 4 | |
+ 5 | | from collections.abc import Callable
+ 6 | | from dataclasses import replace
+ 7 | | from datetime import datetime, timedelta
+ 8 | | from decimal import Decimal
+ 9 | | from fractions import Fraction
+10 | | from typing import cast
+11 | |
+12 | | from nvda_desk.raw_signal_occurrence_truth import api as r
+13 | |
+14 | | from . import api as f
+15 | | from ._catalogue import _AUTHORITY
+16 | | from ._evaluation import canonical
+17 | | from ._macro_changes import META, PROVIDER, SERIES, T, VARIANT, line
+18 | | from ._record_store import RecordState
+19 | | from ._vwap_returns import chosen, history
+20 | | from ._window import NAMESPACE, _decode, _identity, _Reads
+   | |__________________________________________________________^
+21 |
+22 |   BRIEFS = {
+   |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+   --> src/nvda_desk/market_measurement_truth/_window.py:432:5
+    |
+430 |       now: Callable[[], datetime],
+431 |   ) -> f.MeasurementWindowOwnerV1:
+432 | /     from . import (
+433 | |         _jump_variation,
+434 | |         _log_return,
+435 | |         _macro_changes,
+436 | |         _volatility_terms,
+437 | |         _realised_volatility,
+438 | |         _return_acceleration,
+439 | |         _session_range,
+440 | |         _session_returns,
+441 | |         _session_vwap,
+442 | |         _true_range,
+443 | |         _volume_baseline,
+444 | |         _vwap_comparison,
+445 | |         _vwap_returns,
+446 | |     )
+    | |_____^
+447 |
+448 |       if (
+    |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+   --> src/nvda_desk/market_measurement_truth/_window.py:550:5
+    |
+548 |       admission: f.OwnerAdmissionV1, storage: f.SQLiteReadStorageV1
+549 |   ) -> f.MeasurementWindowReadsV1:
+550 | /     from . import (
+551 | |         _jump_variation,
+552 | |         _log_return,
+553 | |         _macro_changes,
+554 | |         _volatility_terms,
+555 | |         _realised_volatility,
+556 | |         _return_acceleration,
+557 | |         _session_range,
+558 | |         _session_returns,
+559 | |         _session_vwap,
+560 | |         _true_range,
+561 | |         _volume_baseline,
+562 | |         _vwap_comparison,
+563 | |         _vwap_returns,
+564 | |     )
+    | |_____^
+565 |
+566 |       if (
+    |
+help: Organize imports
+
+RUF022 [*] `__all__` is not sorted
+   --> src/nvda_desk/market_measurement_truth/api.py:919:12
+    |
+919 |   __all__ += [
+    |  ____________^
+920 | |     "BaselineWindowContextV1",
+921 | |     "IndexChangeV1",
+922 | |     "TermPairV1",
+923 | |     "MeasurementComparisonV1",
+924 | |     "MeasurementWindowOwnerV1",
+925 | |     "MeasurementWindowReadsV1",
+926 | |     "ReturnAccelerationV1",
+927 | |     "SessionFrameV1",
+928 | |     "VwapDeviationV1",
+929 | |     "VwapRateV1",
+930 | |     "WindowCalculationRequestV1",
+931 | |     "WindowContextV1",
+932 | |     "WindowMeasurementOccurrenceV1",
+933 | |     "create_window_owner",
+934 | |     "create_window_reader",
+935 | | ]
+    | |_^
+    |
+help: Apply an isort-style sorting to `__all__`
+
+Found 4 errors.
+[*] 4 fixable with the `--fix` option.

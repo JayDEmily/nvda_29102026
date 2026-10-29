@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_d104",
+  "semantic_brief_path": "handoff/foundation_implementation/authority/D104_IMPLEMENTATION_BRIEF.md",
+  "target": {
+    "category": "M",
+    "responsibility_name": "neutral_market_measurement_truth",
+    "package": "nvda_desk.market_measurement_truth",
+    "public_seam": "nvda_desk.market_measurement_truth.api",
+    "intent": "modify",
+    "existing_object_id": "M02"
+  },
+  "proof_axis": "product",
+  "product_tier_treatment": "NOT_CLASSIFIED",
+  "architecture_proof_axis": "architecture_kernel",
+  "required_proof_ids": [
+    "D104-CALCULATION"
+  ],
+  "families": [
+    {
+      "id": "mmt_d104",
+      "path": "tests/product/market_measurement_d104/test_signal.py",
+      "proof_obligation_ids": [
+        "D104-CALCULATION"
+      ],
+      "required_test_names": [
+        "test_d104_signal"
+      ],
+      "boundary": "D104 exact D099/D100 current/prior actual public predecessor rotation and nested categorical SQLite reopen under root \u00a74.8 and normative clarification.",
+      "proof_levels": [
+        "CONTRACT",
+        "INTEGRATION",
+        "STATE"
+      ],
+      "authoritative_inputs": [
+        "Owner accepted root \u00a74.8 and D104_CALCULATION_DEFINITION_AUTHORISED_CLARIFICATION_20261012.md, own D104_PROFILE.json."
+      ],
+      "dependency_substitutions": [
+        "Four actual lawful D099/D100 public occurrences from genuine raw six-source producers; no fabricated skew carriers."
+      ],
+      "case_coverage": {
+        "lawful_positive": {
+          "cases": [
+            "Public D0998\u219210 and D10012\u219215 actual E1 predecessor facts, exact rotation1, four nested source/category lineages and durable read-only reopen."
+          ]
+        },
+        "prohibited_false_positive": {
+          "cases": [
+            "Four lawful predecessor facts exist, but D100_prior is genuine E2 while three others E1; refuse own D104 with no history."
+          ]
+        },
+        "missing_mandatory_authority": {
+          "cases": [
+            "Own binding, profile and immutable generation before strict run."
+          ]
+        },
+        "lawful_optional_absence": {
+          "cases": [
+            "No direct raw bindings; preserve actual nested raw source lineages in four predecessors."
+          ]
+        }
+      },
+      "expected_failure_signals": [
+        "Wrong-expiry D100 prior accepted, wrong predecessor order, extra factor100 or missing category fails pair."
+      ],
+      "limitations": [
+        "Exactly two cases, no native option source certification."
+      ],
+      "adjacent_nonclaims": [
+        "No native IBKR certification or deferred D096 acceptance."
+      ],
+      "environment": "CPython3.12.14 SQLite3.53.1 and existing pinned offline tools.",
+      "material_versions": [
+        "Exact brief/binding/contract/generation and candidate/tree/runtime; old generations preserved."
+      ],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/market_measurement_d104/test_signal.py"
+    }
+  ],
+  "required_support_files": [],
+  "optional_support_files": [],
+  "execution_policy": {
+    "skipped_tests": "FAIL",
+    "xfailed_tests": "FAIL",
+    "xpassed_tests": "FAIL",
+    "collection_failed": "FAIL",
+    "no_tests_collected": "FAIL",
+    "unexpected_governed_mutation": "FAIL"
+  }
+}

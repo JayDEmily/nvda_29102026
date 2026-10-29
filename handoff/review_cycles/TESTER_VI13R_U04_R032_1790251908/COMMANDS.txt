@@ -1,0 +1,63 @@
+Reviewer 032 material command/evidence record
+
+SOURCE / GOVERNANCE / LINEAGE
+- sha256sum received TAR
+  -> 1ee90b744042b9f1f51d42dfbc0fa33885955217c5052544192287e4e9f82a38
+- read root README.md, full GUARDRAILS.md, AGENTS.md, tests/AGENTS.override.md, complete EXEC_PLAN.md,
+  CURRENT_STATE.md and active Reviewer-032 REQUEST.md
+- read Reviewer-031 response/evidence/result/disposition, Worker repair response/evidence,
+  IRB BC-007/008/009/010, IWO-U04, admitted U04 proof family/physical proof and exact repaired diff
+- candidate: dc3b448191a2b2d3528ffb576b1ebc2c56839991
+- candidate tree: 3c7a42eb215d708a0f8d8db37727133ecc234275
+- verified promoted U03 main 63bbeee9cec14f38ed6da6260095ccf0d8e8e6ec is ancestor of candidate
+- candidate-to-review-governance diff under src tests config tools pyproject.toml -> empty
+- carried previously authorised Tester fixture-independence rule into current lineage at
+  6d90d86200a2139ed2a2d47511630d0c58edad6d; no candidate source/test bytes changed
+
+INDEPENDENT DIRECT PUBLIC-SEAM CHALLENGE
+- manually constructed policy/capture/observation/assessment commands through public API;
+  did not use Worker `_add_observation()` or other semantic convenience fixture
+- admit eligible in-slot observation -> omit optional receipt-relation command -> assess
+  -> one_or_more_received; eligibility resolver invoked
+- same sequence without eligibility authority
+  -> ValueError / fail closed
+- expanded direct sequence matrix
+  -> DIRECT_SEQUENCE_MATRIX PASS
+  -> zero/no evidence, ineligible and out-of-slot zero preserved
+  -> same-ID assessment retry stable
+  -> later eligible evidence supersedes prior zero by new immediate-predecessor assessment
+  -> prior zero unchanged
+  -> non-immediate predecessor rejected
+- as-of-before-receipt probe
+  -> one_or_more_received; recorded as observation, not defect, because no authorised historical
+     commit clock exists and receipt time is explicitly not the visibility proxy
+
+INDEPENDENT TEST / CONTROL EXECUTION
+- Python --version -> Python 3.13.5
+- U04 proof -> 32 passed
+- U01-U04 initial aggregate -> three failures solely from unavailable `python -m mypy`
+- corrected U01-U04 run deselecting exactly those three mypy-invoking test bodies
+  -> 413 passed, 3 deselected
+- architecture/bootstrap initial aggregate -> two failures solely from unavailable `python -m mypy`
+- corrected architecture/bootstrap run deselecting exactly those two bodies
+  -> 72 passed, 2 deselected
+- PYTHONPATH=src:. python tools/validate_product_proof.py -> PASS, 6 families / 13 obligations
+- PYTHONPATH=src:. python tools/validate_architecture.py -> PASS
+- PYTHONPATH=src:. python tools/check_dependencies.py -> PASS
+- PYTHONPATH=src:. python tools/check_public_seams.py -> PASS
+- git diff --check -> PASS
+- git fsck --full --strict -> rc 0; five pre-existing dangling blobs reported diagnostically
+
+WORKER-PRESERVED EXACT-PINNED EVIDENCE (NOT INDEPENDENTLY RE-EXECUTED)
+- U04 32/32
+- U01-U04 416/416
+- mypy source + strict modified API green
+- Ruff green
+- architecture/bootstrap + clean-state promotion 74/74
+
+DISPOSITION
+- R031-U04-F001: CLOSED
+- recurrence classification: ISOLATED_FINDING_CLOSED / NO_NEW_U04_FINDING
+- final: PASS
+- U04 candidate dc3b448... may be lawfully promoted
+- U05 only after preserved-ancestry promotion and fresh Worker routing

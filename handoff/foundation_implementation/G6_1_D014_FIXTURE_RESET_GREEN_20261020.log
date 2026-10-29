@@ -1,0 +1,9 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/d549b6d808a9/g52-recovery/repository
+configfile: pyproject.toml
+collected 130 items / 129 deselected / 1 selected
+
+tests/architecture/test_proof_control.py .                               [100%]
+
+====================== 1 passed, 129 deselected in 0.31s =======================

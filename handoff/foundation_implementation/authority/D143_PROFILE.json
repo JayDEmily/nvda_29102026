@@ -1,0 +1,22 @@
+{
+  "id": "D143",
+  "kernel": "K02_ALGEBRA",
+  "parameter_profile": "P_BASIC",
+  "units": "concentration index",
+  "subject": "NVDA",
+  "provider": "foundation-controlled-direct-book",
+  "variant": "direct_venue_v1",
+  "generation": "controlled-direct-generation/1",
+  "roles": {
+    "R192": "integer position",
+    "R193": "marketMaker/venue string",
+    "R194": "integer operation",
+    "R195": "integer side",
+    "R196": "Decimal price USD_per_share",
+    "R197": "Decimal size shares"
+  },
+  "selection": "one complete native occurrence per event, receipt/ingestion positional replay, top one bid and ask per each of two exact venues",
+  "success": "ALPHA bid2 ask1 depth3; BETA bid1/2 ask1/2 depth1; shares3/4,1/4 HHI5/8",
+  "refusal": "R193 venue absent on selected BETA ask event while R197 size remains projected",
+  "boundary": "synthetic direct book; no native venue certification"
+}

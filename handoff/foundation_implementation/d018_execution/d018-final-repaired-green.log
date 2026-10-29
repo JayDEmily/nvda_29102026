@@ -1,0 +1,13 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/83dd7c79f14f/NVDA_V2_CLEAN_RECOVERED_REPO_20261022
+configfile: pyproject.toml
+collected 2 items
+
+tests/product/market_measurement_d018/test_vwap_comparison.py ..         [100%]
+
+============================== 2 passed in 0.19s ===============================
+product-proof aggregate: neutral_market_measurement_truth_d018 state=READY_FOR_PROOF
+authority=1f65edb4e3050c89604c749accc5fdf39ff03e69e54eca43a50cfa496298e90e generation=ccf86dcce5b438d84fce42bfa7a8a1280f6982de3e129506186ba5a29761598e
+candidate=6c74c8a2f4f9dda9a9cc6d9a99d6d9537cddfcab
+observed aggregate outcome: exit=0

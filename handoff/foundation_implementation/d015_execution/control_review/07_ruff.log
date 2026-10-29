@@ -1,0 +1,5 @@
+$ cd /tmp/d015-independent-control-3k3lpzs8/repo
+$ /workspace/scratch/83dd7c79f14f/d015-runtime-GUbvor/dev/bin/ruff check tools/product_proof_claims.py tests/architecture/test_proof_control.py
+All checks passed!
+
+EXIT=0

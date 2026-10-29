@@ -1,0 +1,14 @@
+schema_version: "1.0"
+implementation_allocations:
+  - object_id: M02
+    name: neutral_market_measurement_truth
+    implemented_on: "2026-10-19"
+  - object_id: M00
+    name: raw_signal_occurrence_truth
+    implemented_on: "2026-09-19"
+  - object_id: M01
+    name: derived_signal_calculation_truth
+    implemented_on: "2026-10-04"
+  - object_id: M03
+    name: configured_market_conditions
+    implemented_on: "2026-10-24"

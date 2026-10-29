@@ -1,0 +1,1 @@
+{"base_scenarios":["A4","A5","A6","C2","C3"],"case_id":"N10","expected":"ONLY_EXACT_SELECTED_IDENTITY","perturbations":{"generation":"OTHER-GENERATION","request":"OTHER-REQUEST","subject":"OTHER-SUBJECT"},"selector_dimensions":["subject","request","generation","source_provider","source_variant","requested_exchange"]}

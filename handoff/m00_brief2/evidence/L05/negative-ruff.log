@@ -1,0 +1,56 @@
+E501 Line too long (102 > 100)
+   --> tools/m00_negative_export.py:126:101
+    |
+124 |             del raw
+125 |             q = dict(subject_instrument=first.subject_instrument,
+126 |                      source_provider=first.source_provider.value, source_variant=first.source_variant,
+    |                                                                                                     ^^
+127 |                      received_at_or_before_utc="2026-10-20T12:40:01Z",
+128 |                      native_identity_selectors=[[["_collector", "request"], "STK-SMART-R1"],
+    |
+
+E501 Line too long (101 > 100)
+   --> tools/m00_negative_export.py:170:101
+    |
+168 |                         row["observation"].update(spec["replace_envelope"])
+169 |                         row["observation"]["native_record"]["_collector"].update(
+170 |                             {key: encode(value) for key, value in spec["replace_collector"].items()})
+    |                                                                                                     ^
+171 |                     if case == "N12":
+172 |                         row["observation"].update(spec["replace_envelope"])
+    |
+
+E501 Line too long (103 > 100)
+   --> tools/m00_negative_export.py:207:101
+    |
+205 |                 native.update(decode(spec["conflicting_native"]))
+206 |                 try:
+207 |                     raw.commands.admit_raw_observation_occurrence(replace(first, native_record=native))
+    |                                                                                                     ^^^
+208 |                 except ValueError as exc:
+209 |                     require("different content" in str(exc), "conflict reason")
+    |
+
+E501 Line too long (103 > 100)
+   --> tools/m00_negative_export.py:243:101
+    |
+241 |                 result["causal_order"] = "UNKNOWN_TIED_RECEIPT_SCOPE_SEQUENCE"
+242 |             if case == "N11":
+243 |                 require(len(observations) == 4 and len({v["subject_instrument"] for v in observations})
+    |                                                                                                     ^^^
+244 |                         == 2, "asynchronous foreign contract")
+245 |             if case == "N12":
+    |
+
+E501 Line too long (103 > 100)
+   --> tools/m00_negative_export.py:254:101
+    |
+252 |                 result["standing_book_completeness"] = "NOT_ASSERTED"
+253 |             if case == "N17":
+254 |                 require(encode(values[0].native_record["marketMaker"]) == encode(spec["expected_mpid"])
+    |                                                                                                     ^^^
+255 |                         and values[0].native_record["_collector"]["requested_exchange"] ==
+256 |                         spec["expected_requested_exchange"], "MPID versus requested exchange")
+    |
+
+Found 6 errors (1 fixed, 5 remaining).

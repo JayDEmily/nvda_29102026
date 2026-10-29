@@ -1,0 +1,89 @@
+{
+  "id": "D063",
+  "release_family": "US-CPI-HEADLINE-YOY-SYNTHETIC",
+  "records": [
+    {
+      "release_id": "syn-release-jul",
+      "release_family": "US-CPI-HEADLINE-YOY-SYNTHETIC",
+      "release_scheduled_utc": "2026-07-15T12:30:00Z",
+      "r285_consensus": "2.5",
+      "r285_units": "synthetic_pct_yoy",
+      "r285_known_utc": "2026-07-14T12:00:00Z",
+      "r285_revision": "c1",
+      "r286_actual": "2.4",
+      "r286_units": "synthetic_pct_yoy",
+      "r286_received_utc": "2026-07-15T12:30:02Z",
+      "r286_revision": "a1",
+      "observation_effective_release_utc": "2026-07-15T12:30:00Z"
+    },
+    {
+      "release_id": "syn-release-aug",
+      "release_family": "US-CPI-HEADLINE-YOY-SYNTHETIC",
+      "release_scheduled_utc": "2026-08-14T12:30:00Z",
+      "r285_consensus": "2.5",
+      "r285_units": "synthetic_pct_yoy",
+      "r285_known_utc": "2026-08-13T12:00:00Z",
+      "r285_revision": "c1",
+      "r286_actual": "2.5",
+      "r286_units": "synthetic_pct_yoy",
+      "r286_received_utc": "2026-08-14T12:30:02Z",
+      "r286_revision": "a1",
+      "observation_effective_release_utc": "2026-08-14T12:30:00Z"
+    },
+    {
+      "release_id": "syn-release-sep",
+      "release_family": "US-CPI-HEADLINE-YOY-SYNTHETIC",
+      "release_scheduled_utc": "2026-09-15T12:30:00Z",
+      "r285_consensus": "2.5",
+      "r285_units": "synthetic_pct_yoy",
+      "r285_known_utc": "2026-09-14T12:00:00Z",
+      "r285_revision": "c1",
+      "r286_actual": "2.6",
+      "r286_units": "synthetic_pct_yoy",
+      "r286_received_utc": "2026-09-15T12:30:02Z",
+      "r286_revision": "a1",
+      "observation_effective_release_utc": "2026-09-15T12:30:00Z"
+    },
+    {
+      "release_id": "syn-release-oct",
+      "release_family": "US-CPI-HEADLINE-YOY-SYNTHETIC",
+      "release_scheduled_utc": "2026-10-15T12:30:00Z",
+      "r285_consensus": "2.5",
+      "r285_units": "synthetic_pct_yoy",
+      "r285_known_utc": "2026-10-14T12:00:00Z",
+      "r285_revision": "c1",
+      "r286_actual": "2.7",
+      "r286_units": "synthetic_pct_yoy",
+      "r286_received_utc": "2026-10-15T12:30:02Z",
+      "r286_revision": "a1",
+      "observation_effective_release_utc": "2026-10-15T12:30:00Z"
+    }
+  ],
+  "baseline_N": 3,
+  "current_excluded": true,
+  "sample_denominator": 2,
+  "as_of": "2026-10-15T12:30:00Z",
+  "cutoff": "2026-10-15T13:00:00Z",
+  "now": "2026-10-15T13:00:01Z",
+  "raw_order": [
+    "R286",
+    "R285"
+  ],
+  "source_provider": "foundation-controlled-events",
+  "source_variant": "release_snapshot_v1",
+  "units": "synthetic_pct_yoy",
+  "metadata": [
+    "id",
+    "family",
+    "scheduled_utc",
+    "kind",
+    "known_utc",
+    "revision"
+  ],
+  "context": "controlled-release-history/1; starts 2026-07-14T12:00:00Z, ends cutoff, complete from start",
+  "selection": "mmt-d063-selection/1; max age100days, zero skew unused for matched release pairs; bounded100x1000 pages; rank event/receipt/sequence within exact release/family/kind; forecast event=known strictly before release; actual event=release, known=receipt",
+  "definition": "D063-MACRO-SURPRISE-1; K04_STANDARDISE_RANK; P_BASELINE; z-score/scalar_decimal",
+  "parameters": "mmt-d063-controlled/1; NVDA context, fixed four selected releases, three strictly prior baseline pairs",
+  "numeric": "exact Fraction surprises, mean and N-1 variance; signed sqrt((current-mean)^2/variance) certified to50digit half-even via existing sqrt_ratio_50; zero variance refuses",
+  "manifest": "new _macro_surprise.py and _window.py public routes; finite G01 descriptors; owning D063 profile/brief/contract/binding/test/generation/evidence. No API/M00/storage/codec change."
+}

@@ -1,0 +1,1091 @@
+........................................................................ [  5%]
+........................................................................ [ 11%]
+........................................................................ [ 17%]
+........................................................................ [ 23%]
+........................................................................ [ 28%]
+........................................................................ [ 34%]
+........................................................................ [ 40%]
+........................................................................ [ 46%]
+........................................................................ [ 52%]
+........................................................................ [ 57%]
+........................................................................ [ 63%]
+........................................................................ [ 69%]
+........................................................................ [ 75%]
+........................................................................ [ 80%]
+........................................................................ [ 86%]
+........................................................................ [ 92%]
+.............F.FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF..FFF............ [ 98%]
+......................                                                   [100%]
+=================================== FAILURES ===================================
+_ test_postgresql_proof_roles_and_schemas_are_separate_and_m01_has_no_m00_table_privilege _
+
+    def test_postgresql_proof_roles_and_schemas_are_separate_and_m01_has_no_m00_table_privilege(
+    ) -> None:
+>       m00_dsn = _dsn(M00_DSN_ENV)
+                  ^^^^^^^^^^^^^^^^^
+
+tests/implementation/derived_signal/test_ds_t01_persistence_isolation.py:42: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+    def _dsn(name: str) -> str:
+        value = os.environ.get(name)
+        if not value:
+>           pytest.fail(f"DS-T01 PostgreSQL boundary proof requires {name}")
+E           Failed: DS-T01 PostgreSQL boundary proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+tests/implementation/derived_signal/test_ds_t01_persistence_isolation.py:21: Failed
+_____ test_lawful_separate_m01_writer_and_schema_can_construct_persistence _____
+
+    def test_lawful_separate_m01_writer_and_schema_can_construct_persistence() -> None:
+>       m00_dsn = _dsn(M00_DSN_ENV)
+                  ^^^^^^^^^^^^^^^^^
+
+tests/implementation/derived_signal/test_ds_t01_r02_persistence_boundary_refinement.py:83: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+    def _dsn(name: str) -> str:
+        value = os.environ.get(name)
+        if not value:
+>           pytest.fail(f"DS-T01-R02 PostgreSQL boundary proof requires {name}")
+E           Failed: DS-T01-R02 PostgreSQL boundary proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+tests/implementation/derived_signal/test_ds_t01_r02_persistence_boundary_refinement.py:17: Failed
+____ test_exact_m00_writer_schema_boundary_is_refused_before_table_creation ____
+
+    def test_exact_m00_writer_schema_boundary_is_refused_before_table_creation() -> None:
+>       m00_dsn = _dsn(M00_DSN_ENV)
+                  ^^^^^^^^^^^^^^^^^
+
+tests/implementation/derived_signal/test_ds_t01_r02_persistence_boundary_refinement.py:98: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+    def _dsn(name: str) -> str:
+        value = os.environ.get(name)
+        if not value:
+>           pytest.fail(f"DS-T01-R02 PostgreSQL boundary proof requires {name}")
+E           Failed: DS-T01-R02 PostgreSQL boundary proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+tests/implementation/derived_signal/test_ds_t01_r02_persistence_boundary_refinement.py:17: Failed
+____________ test_same_m00_writer_with_different_schema_is_refused _____________
+
+    def test_same_m00_writer_with_different_schema_is_refused() -> None:
+>       m00_dsn = _dsn(M00_DSN_ENV)
+                  ^^^^^^^^^^^^^^^^^
+
+tests/implementation/derived_signal/test_ds_t01_r02_persistence_boundary_refinement.py:110: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+    def _dsn(name: str) -> str:
+        value = os.environ.get(name)
+        if not value:
+>           pytest.fail(f"DS-T01-R02 PostgreSQL boundary proof requires {name}")
+E           Failed: DS-T01-R02 PostgreSQL boundary proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+tests/implementation/derived_signal/test_ds_t01_r02_persistence_boundary_refinement.py:17: Failed
+________________ test_different_writer_on_m00_schema_is_refused ________________
+
+    def test_different_writer_on_m00_schema_is_refused() -> None:
+>       m00_dsn = _dsn(M00_DSN_ENV)
+                  ^^^^^^^^^^^^^^^^^
+
+tests/implementation/derived_signal/test_ds_t01_r02_persistence_boundary_refinement.py:132: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+    def _dsn(name: str) -> str:
+        value = os.environ.get(name)
+        if not value:
+>           pytest.fail(f"DS-T01-R02 PostgreSQL boundary proof requires {name}")
+E           Failed: DS-T01-R02 PostgreSQL boundary proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+tests/implementation/derived_signal/test_ds_t01_r02_persistence_boundary_refinement.py:17: Failed
+_______ test_factory_refuses_effective_select_privilege_on_m00_relation ________
+
+    def test_factory_refuses_effective_select_privilege_on_m00_relation() -> None:
+>       m00_dsn, m01_dsn, m01_user, qualified, pair = _prepare_m00()
+                                                      ^^^^^^^^^^^^^^
+
+tests/implementation/derived_signal/test_ds_t01_r03_postgres_privilege_boundary_refinement.py:97: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/implementation/derived_signal/test_ds_t01_r03_postgres_privilege_boundary_refinement.py:49: in _prepare_m00
+    m00_dsn = _dsn(M00_DSN_ENV)
+              ^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+    def _dsn(name: str) -> str:
+        value = os.environ.get(name)
+        if not value:
+>           pytest.fail(f"DS-T01-R03 PostgreSQL privilege proof requires {name}")
+E           Failed: DS-T01-R03 PostgreSQL privilege proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+tests/implementation/derived_signal/test_ds_t01_r03_postgres_privilege_boundary_refinement.py:17: Failed
+____ test_factory_refuses_effective_write_privilege_on_m00_relation[INSERT] ____
+
+privilege = 'INSERT'
+
+    @pytest.mark.parametrize("privilege", ["INSERT", "UPDATE", "DELETE"])
+    def test_factory_refuses_effective_write_privilege_on_m00_relation(privilege: str) -> None:
+>       m00_dsn, m01_dsn, m01_user, qualified, pair = _prepare_m00()
+                                                      ^^^^^^^^^^^^^^
+
+tests/implementation/derived_signal/test_ds_t01_r03_postgres_privilege_boundary_refinement.py:112: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/implementation/derived_signal/test_ds_t01_r03_postgres_privilege_boundary_refinement.py:49: in _prepare_m00
+    m00_dsn = _dsn(M00_DSN_ENV)
+              ^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+    def _dsn(name: str) -> str:
+        value = os.environ.get(name)
+        if not value:
+>           pytest.fail(f"DS-T01-R03 PostgreSQL privilege proof requires {name}")
+E           Failed: DS-T01-R03 PostgreSQL privilege proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+tests/implementation/derived_signal/test_ds_t01_r03_postgres_privilege_boundary_refinement.py:17: Failed
+____ test_factory_refuses_effective_write_privilege_on_m00_relation[UPDATE] ____
+
+privilege = 'UPDATE'
+
+    @pytest.mark.parametrize("privilege", ["INSERT", "UPDATE", "DELETE"])
+    def test_factory_refuses_effective_write_privilege_on_m00_relation(privilege: str) -> None:
+>       m00_dsn, m01_dsn, m01_user, qualified, pair = _prepare_m00()
+                                                      ^^^^^^^^^^^^^^
+
+tests/implementation/derived_signal/test_ds_t01_r03_postgres_privilege_boundary_refinement.py:112: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/implementation/derived_signal/test_ds_t01_r03_postgres_privilege_boundary_refinement.py:49: in _prepare_m00
+    m00_dsn = _dsn(M00_DSN_ENV)
+              ^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+    def _dsn(name: str) -> str:
+        value = os.environ.get(name)
+        if not value:
+>           pytest.fail(f"DS-T01-R03 PostgreSQL privilege proof requires {name}")
+E           Failed: DS-T01-R03 PostgreSQL privilege proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+tests/implementation/derived_signal/test_ds_t01_r03_postgres_privilege_boundary_refinement.py:17: Failed
+____ test_factory_refuses_effective_write_privilege_on_m00_relation[DELETE] ____
+
+privilege = 'DELETE'
+
+    @pytest.mark.parametrize("privilege", ["INSERT", "UPDATE", "DELETE"])
+    def test_factory_refuses_effective_write_privilege_on_m00_relation(privilege: str) -> None:
+>       m00_dsn, m01_dsn, m01_user, qualified, pair = _prepare_m00()
+                                                      ^^^^^^^^^^^^^^
+
+tests/implementation/derived_signal/test_ds_t01_r03_postgres_privilege_boundary_refinement.py:112: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/implementation/derived_signal/test_ds_t01_r03_postgres_privilege_boundary_refinement.py:49: in _prepare_m00
+    m00_dsn = _dsn(M00_DSN_ENV)
+              ^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+    def _dsn(name: str) -> str:
+        value = os.environ.get(name)
+        if not value:
+>           pytest.fail(f"DS-T01-R03 PostgreSQL privilege proof requires {name}")
+E           Failed: DS-T01-R03 PostgreSQL privilege proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+tests/implementation/derived_signal/test_ds_t01_r03_postgres_privilege_boundary_refinement.py:17: Failed
+_______ test_operation_refuses_privilege_drift_after_lawful_construction _______
+
+    def test_operation_refuses_privilege_drift_after_lawful_construction() -> None:
+>       m00_dsn, m01_dsn, m01_user, qualified, pair = _prepare_m00()
+                                                      ^^^^^^^^^^^^^^
+
+tests/implementation/derived_signal/test_ds_t01_r03_postgres_privilege_boundary_refinement.py:128: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/implementation/derived_signal/test_ds_t01_r03_postgres_privilege_boundary_refinement.py:49: in _prepare_m00
+    m00_dsn = _dsn(M00_DSN_ENV)
+              ^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+    def _dsn(name: str) -> str:
+        value = os.environ.get(name)
+        if not value:
+>           pytest.fail(f"DS-T01-R03 PostgreSQL privilege proof requires {name}")
+E           Failed: DS-T01-R03 PostgreSQL privilege proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+tests/implementation/derived_signal/test_ds_t01_r03_postgres_privilege_boundary_refinement.py:17: Failed
+_ test_factory_refuses_every_effective_table_privilege_on_m00_relation[SELECT] _
+
+privilege = 'SELECT'
+
+    @pytest.mark.parametrize("privilege", TABLE_PRIVILEGES)
+    def test_factory_refuses_every_effective_table_privilege_on_m00_relation(
+        privilege: str,
+    ) -> None:
+>       m00_dsn, m01_dsn, m01_user, qualified, pair = _prepare_m00()
+                                                      ^^^^^^^^^^^^^^
+
+tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:153: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:61: in _prepare_m00
+    m00_dsn = _dsn(M00_DSN_ENV)
+              ^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+    def _dsn(name: str) -> str:
+        value = os.environ.get(name)
+        if not value:
+>           pytest.fail(f"DS-T01-R04 PostgreSQL privilege-surface proof requires {name}")
+E           Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:29: Failed
+_ test_factory_refuses_every_effective_table_privilege_on_m00_relation[INSERT] _
+
+privilege = 'INSERT'
+
+    @pytest.mark.parametrize("privilege", TABLE_PRIVILEGES)
+    def test_factory_refuses_every_effective_table_privilege_on_m00_relation(
+        privilege: str,
+    ) -> None:
+>       m00_dsn, m01_dsn, m01_user, qualified, pair = _prepare_m00()
+                                                      ^^^^^^^^^^^^^^
+
+tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:153: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:61: in _prepare_m00
+    m00_dsn = _dsn(M00_DSN_ENV)
+              ^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+    def _dsn(name: str) -> str:
+        value = os.environ.get(name)
+        if not value:
+>           pytest.fail(f"DS-T01-R04 PostgreSQL privilege-surface proof requires {name}")
+E           Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:29: Failed
+_ test_factory_refuses_every_effective_table_privilege_on_m00_relation[UPDATE] _
+
+privilege = 'UPDATE'
+
+    @pytest.mark.parametrize("privilege", TABLE_PRIVILEGES)
+    def test_factory_refuses_every_effective_table_privilege_on_m00_relation(
+        privilege: str,
+    ) -> None:
+>       m00_dsn, m01_dsn, m01_user, qualified, pair = _prepare_m00()
+                                                      ^^^^^^^^^^^^^^
+
+tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:153: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:61: in _prepare_m00
+    m00_dsn = _dsn(M00_DSN_ENV)
+              ^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+    def _dsn(name: str) -> str:
+        value = os.environ.get(name)
+        if not value:
+>           pytest.fail(f"DS-T01-R04 PostgreSQL privilege-surface proof requires {name}")
+E           Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:29: Failed
+_ test_factory_refuses_every_effective_table_privilege_on_m00_relation[DELETE] _
+
+privilege = 'DELETE'
+
+    @pytest.mark.parametrize("privilege", TABLE_PRIVILEGES)
+    def test_factory_refuses_every_effective_table_privilege_on_m00_relation(
+        privilege: str,
+    ) -> None:
+>       m00_dsn, m01_dsn, m01_user, qualified, pair = _prepare_m00()
+                                                      ^^^^^^^^^^^^^^
+
+tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:153: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:61: in _prepare_m00
+    m00_dsn = _dsn(M00_DSN_ENV)
+              ^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+    def _dsn(name: str) -> str:
+        value = os.environ.get(name)
+        if not value:
+>           pytest.fail(f"DS-T01-R04 PostgreSQL privilege-surface proof requires {name}")
+E           Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:29: Failed
+_ test_factory_refuses_every_effective_table_privilege_on_m00_relation[TRUNCATE] _
+
+privilege = 'TRUNCATE'
+
+    @pytest.mark.parametrize("privilege", TABLE_PRIVILEGES)
+    def test_factory_refuses_every_effective_table_privilege_on_m00_relation(
+        privilege: str,
+    ) -> None:
+>       m00_dsn, m01_dsn, m01_user, qualified, pair = _prepare_m00()
+                                                      ^^^^^^^^^^^^^^
+
+tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:153: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:61: in _prepare_m00
+    m00_dsn = _dsn(M00_DSN_ENV)
+              ^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+    def _dsn(name: str) -> str:
+        value = os.environ.get(name)
+        if not value:
+>           pytest.fail(f"DS-T01-R04 PostgreSQL privilege-surface proof requires {name}")
+E           Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:29: Failed
+_ test_factory_refuses_every_effective_table_privilege_on_m00_relation[REFERENCES] _
+
+privilege = 'REFERENCES'
+
+    @pytest.mark.parametrize("privilege", TABLE_PRIVILEGES)
+    def test_factory_refuses_every_effective_table_privilege_on_m00_relation(
+        privilege: str,
+    ) -> None:
+>       m00_dsn, m01_dsn, m01_user, qualified, pair = _prepare_m00()
+                                                      ^^^^^^^^^^^^^^
+
+tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:153: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:61: in _prepare_m00
+    m00_dsn = _dsn(M00_DSN_ENV)
+              ^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+    def _dsn(name: str) -> str:
+        value = os.environ.get(name)
+        if not value:
+>           pytest.fail(f"DS-T01-R04 PostgreSQL privilege-surface proof requires {name}")
+E           Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:29: Failed
+_ test_factory_refuses_every_effective_table_privilege_on_m00_relation[TRIGGER] _
+
+privilege = 'TRIGGER'
+
+    @pytest.mark.parametrize("privilege", TABLE_PRIVILEGES)
+    def test_factory_refuses_every_effective_table_privilege_on_m00_relation(
+        privilege: str,
+    ) -> None:
+>       m00_dsn, m01_dsn, m01_user, qualified, pair = _prepare_m00()
+                                                      ^^^^^^^^^^^^^^
+
+tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:153: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:61: in _prepare_m00
+    m00_dsn = _dsn(M00_DSN_ENV)
+              ^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+    def _dsn(name: str) -> str:
+        value = os.environ.get(name)
+        if not value:
+>           pytest.fail(f"DS-T01-R04 PostgreSQL privilege-surface proof requires {name}")
+E           Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:29: Failed
+_ test_factory_refuses_every_effective_table_privilege_on_m00_relation[MAINTAIN] _
+
+privilege = 'MAINTAIN'
+
+    @pytest.mark.parametrize("privilege", TABLE_PRIVILEGES)
+    def test_factory_refuses_every_effective_table_privilege_on_m00_relation(
+        privilege: str,
+    ) -> None:
+>       m00_dsn, m01_dsn, m01_user, qualified, pair = _prepare_m00()
+                                                      ^^^^^^^^^^^^^^
+
+tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:153: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:61: in _prepare_m00
+    m00_dsn = _dsn(M00_DSN_ENV)
+              ^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+    def _dsn(name: str) -> str:
+        value = os.environ.get(name)
+        if not value:
+>           pytest.fail(f"DS-T01-R04 PostgreSQL privilege-surface proof requires {name}")
+E           Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:29: Failed
+_ test_factory_refuses_every_effective_column_privilege_on_m00_relation[SELECT] _
+
+privilege = 'SELECT'
+
+    @pytest.mark.parametrize("privilege", COLUMN_PRIVILEGES)
+    def test_factory_refuses_every_effective_column_privilege_on_m00_relation(
+        privilege: str,
+    ) -> None:
+>       m00_dsn, m01_dsn, m01_user, qualified, pair = _prepare_m00()
+                                                      ^^^^^^^^^^^^^^
+
+tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:174: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:61: in _prepare_m00
+    m00_dsn = _dsn(M00_DSN_ENV)
+              ^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+    def _dsn(name: str) -> str:
+        value = os.environ.get(name)
+        if not value:
+>           pytest.fail(f"DS-T01-R04 PostgreSQL privilege-surface proof requires {name}")
+E           Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:29: Failed
+_ test_factory_refuses_every_effective_column_privilege_on_m00_relation[INSERT] _
+
+privilege = 'INSERT'
+
+    @pytest.mark.parametrize("privilege", COLUMN_PRIVILEGES)
+    def test_factory_refuses_every_effective_column_privilege_on_m00_relation(
+        privilege: str,
+    ) -> None:
+>       m00_dsn, m01_dsn, m01_user, qualified, pair = _prepare_m00()
+                                                      ^^^^^^^^^^^^^^
+
+tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:174: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:61: in _prepare_m00
+    m00_dsn = _dsn(M00_DSN_ENV)
+              ^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+    def _dsn(name: str) -> str:
+        value = os.environ.get(name)
+        if not value:
+>           pytest.fail(f"DS-T01-R04 PostgreSQL privilege-surface proof requires {name}")
+E           Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:29: Failed
+_ test_factory_refuses_every_effective_column_privilege_on_m00_relation[UPDATE] _
+
+privilege = 'UPDATE'
+
+    @pytest.mark.parametrize("privilege", COLUMN_PRIVILEGES)
+    def test_factory_refuses_every_effective_column_privilege_on_m00_relation(
+        privilege: str,
+    ) -> None:
+>       m00_dsn, m01_dsn, m01_user, qualified, pair = _prepare_m00()
+                                                      ^^^^^^^^^^^^^^
+
+tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:174: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:61: in _prepare_m00
+    m00_dsn = _dsn(M00_DSN_ENV)
+              ^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+    def _dsn(name: str) -> str:
+        value = os.environ.get(name)
+        if not value:
+>           pytest.fail(f"DS-T01-R04 PostgreSQL privilege-surface proof requires {name}")
+E           Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:29: Failed
+_ test_factory_refuses_every_effective_column_privilege_on_m00_relation[REFERENCES] _
+
+privilege = 'REFERENCES'
+
+    @pytest.mark.parametrize("privilege", COLUMN_PRIVILEGES)
+    def test_factory_refuses_every_effective_column_privilege_on_m00_relation(
+        privilege: str,
+    ) -> None:
+>       m00_dsn, m01_dsn, m01_user, qualified, pair = _prepare_m00()
+                                                      ^^^^^^^^^^^^^^
+
+tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:174: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:61: in _prepare_m00
+    m00_dsn = _dsn(M00_DSN_ENV)
+              ^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+    def _dsn(name: str) -> str:
+        value = os.environ.get(name)
+        if not value:
+>           pytest.fail(f"DS-T01-R04 PostgreSQL privilege-surface proof requires {name}")
+E           Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:29: Failed
+___________ test_operation_refuses_destructive_table_privilege_drift ___________
+
+    def test_operation_refuses_destructive_table_privilege_drift() -> None:
+>       m00_dsn, m01_dsn, m01_user, qualified, pair = _prepare_m00()
+                                                      ^^^^^^^^^^^^^^
+
+tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:193: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:61: in _prepare_m00
+    m00_dsn = _dsn(M00_DSN_ENV)
+              ^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+    def _dsn(name: str) -> str:
+        value = os.environ.get(name)
+        if not value:
+>           pytest.fail(f"DS-T01-R04 PostgreSQL privilege-surface proof requires {name}")
+E           Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:29: Failed
+_____________ test_operation_refuses_column_select_privilege_drift _____________
+
+    def test_operation_refuses_column_select_privilege_drift() -> None:
+>       m00_dsn, m01_dsn, m01_user, qualified, pair = _prepare_m00()
+                                                      ^^^^^^^^^^^^^^
+
+tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:212: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:61: in _prepare_m00
+    m00_dsn = _dsn(M00_DSN_ENV)
+              ^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+    def _dsn(name: str) -> str:
+        value = os.environ.get(name)
+        if not value:
+>           pytest.fail(f"DS-T01-R04 PostgreSQL privilege-surface proof requires {name}")
+E           Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py:29: Failed
+___________ test_factory_refuses_direct_set_role_path_to_m00_writer ____________
+
+    def test_factory_refuses_direct_set_role_path_to_m00_writer() -> None:
+>       admin_dsn, _m00_dsn, m01_dsn, m00_user, m01_user, prepared = _prepare_m00()
+                                                                     ^^^^^^^^^^^^^^
+
+tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:233: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:63: in _prepare_m00
+    m00_dsn = _dsn(M00_DSN_ENV)
+              ^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+    def _dsn(name: str) -> str:
+        value = os.environ.get(name)
+        if not value:
+>           pytest.fail(f"DS-T01-R05 PostgreSQL role-membership proof requires {name}")
+E           Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:30: Failed
+_________ test_factory_refuses_transitive_set_role_path_to_m00_writer __________
+
+    def test_factory_refuses_transitive_set_role_path_to_m00_writer() -> None:
+>       admin_dsn, _m00_dsn, m01_dsn, m00_user, m01_user, prepared = _prepare_m00()
+                                                                     ^^^^^^^^^^^^^^
+
+tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:259: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:63: in _prepare_m00
+    m00_dsn = _dsn(M00_DSN_ENV)
+              ^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+    def _dsn(name: str) -> str:
+        value = os.environ.get(name)
+        if not value:
+>           pytest.fail(f"DS-T01-R05 PostgreSQL role-membership proof requires {name}")
+E           Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:30: Failed
+_____ test_factory_refuses_settable_role_with_m00_table_privilege[SELECT] ______
+
+privilege = 'SELECT'
+
+    @pytest.mark.parametrize("privilege", TABLE_PRIVILEGES)
+    def test_factory_refuses_settable_role_with_m00_table_privilege(privilege: str) -> None:
+>       admin_dsn, m00_dsn, m01_dsn, _m00_user, m01_user, prepared = _prepare_m00()
+                                                                     ^^^^^^^^^^^^^^
+
+tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:303: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:63: in _prepare_m00
+    m00_dsn = _dsn(M00_DSN_ENV)
+              ^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+    def _dsn(name: str) -> str:
+        value = os.environ.get(name)
+        if not value:
+>           pytest.fail(f"DS-T01-R05 PostgreSQL role-membership proof requires {name}")
+E           Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:30: Failed
+_____ test_factory_refuses_settable_role_with_m00_table_privilege[INSERT] ______
+
+privilege = 'INSERT'
+
+    @pytest.mark.parametrize("privilege", TABLE_PRIVILEGES)
+    def test_factory_refuses_settable_role_with_m00_table_privilege(privilege: str) -> None:
+>       admin_dsn, m00_dsn, m01_dsn, _m00_user, m01_user, prepared = _prepare_m00()
+                                                                     ^^^^^^^^^^^^^^
+
+tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:303: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:63: in _prepare_m00
+    m00_dsn = _dsn(M00_DSN_ENV)
+              ^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+    def _dsn(name: str) -> str:
+        value = os.environ.get(name)
+        if not value:
+>           pytest.fail(f"DS-T01-R05 PostgreSQL role-membership proof requires {name}")
+E           Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:30: Failed
+_____ test_factory_refuses_settable_role_with_m00_table_privilege[UPDATE] ______
+
+privilege = 'UPDATE'
+
+    @pytest.mark.parametrize("privilege", TABLE_PRIVILEGES)
+    def test_factory_refuses_settable_role_with_m00_table_privilege(privilege: str) -> None:
+>       admin_dsn, m00_dsn, m01_dsn, _m00_user, m01_user, prepared = _prepare_m00()
+                                                                     ^^^^^^^^^^^^^^
+
+tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:303: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:63: in _prepare_m00
+    m00_dsn = _dsn(M00_DSN_ENV)
+              ^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+    def _dsn(name: str) -> str:
+        value = os.environ.get(name)
+        if not value:
+>           pytest.fail(f"DS-T01-R05 PostgreSQL role-membership proof requires {name}")
+E           Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:30: Failed
+_____ test_factory_refuses_settable_role_with_m00_table_privilege[DELETE] ______
+
+privilege = 'DELETE'
+
+    @pytest.mark.parametrize("privilege", TABLE_PRIVILEGES)
+    def test_factory_refuses_settable_role_with_m00_table_privilege(privilege: str) -> None:
+>       admin_dsn, m00_dsn, m01_dsn, _m00_user, m01_user, prepared = _prepare_m00()
+                                                                     ^^^^^^^^^^^^^^
+
+tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:303: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:63: in _prepare_m00
+    m00_dsn = _dsn(M00_DSN_ENV)
+              ^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+    def _dsn(name: str) -> str:
+        value = os.environ.get(name)
+        if not value:
+>           pytest.fail(f"DS-T01-R05 PostgreSQL role-membership proof requires {name}")
+E           Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:30: Failed
+____ test_factory_refuses_settable_role_with_m00_table_privilege[TRUNCATE] _____
+
+privilege = 'TRUNCATE'
+
+    @pytest.mark.parametrize("privilege", TABLE_PRIVILEGES)
+    def test_factory_refuses_settable_role_with_m00_table_privilege(privilege: str) -> None:
+>       admin_dsn, m00_dsn, m01_dsn, _m00_user, m01_user, prepared = _prepare_m00()
+                                                                     ^^^^^^^^^^^^^^
+
+tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:303: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:63: in _prepare_m00
+    m00_dsn = _dsn(M00_DSN_ENV)
+              ^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+    def _dsn(name: str) -> str:
+        value = os.environ.get(name)
+        if not value:
+>           pytest.fail(f"DS-T01-R05 PostgreSQL role-membership proof requires {name}")
+E           Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:30: Failed
+___ test_factory_refuses_settable_role_with_m00_table_privilege[REFERENCES] ____
+
+privilege = 'REFERENCES'
+
+    @pytest.mark.parametrize("privilege", TABLE_PRIVILEGES)
+    def test_factory_refuses_settable_role_with_m00_table_privilege(privilege: str) -> None:
+>       admin_dsn, m00_dsn, m01_dsn, _m00_user, m01_user, prepared = _prepare_m00()
+                                                                     ^^^^^^^^^^^^^^
+
+tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:303: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:63: in _prepare_m00
+    m00_dsn = _dsn(M00_DSN_ENV)
+              ^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+    def _dsn(name: str) -> str:
+        value = os.environ.get(name)
+        if not value:
+>           pytest.fail(f"DS-T01-R05 PostgreSQL role-membership proof requires {name}")
+E           Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:30: Failed
+_____ test_factory_refuses_settable_role_with_m00_table_privilege[TRIGGER] _____
+
+privilege = 'TRIGGER'
+
+    @pytest.mark.parametrize("privilege", TABLE_PRIVILEGES)
+    def test_factory_refuses_settable_role_with_m00_table_privilege(privilege: str) -> None:
+>       admin_dsn, m00_dsn, m01_dsn, _m00_user, m01_user, prepared = _prepare_m00()
+                                                                     ^^^^^^^^^^^^^^
+
+tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:303: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:63: in _prepare_m00
+    m00_dsn = _dsn(M00_DSN_ENV)
+              ^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+    def _dsn(name: str) -> str:
+        value = os.environ.get(name)
+        if not value:
+>           pytest.fail(f"DS-T01-R05 PostgreSQL role-membership proof requires {name}")
+E           Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:30: Failed
+____ test_factory_refuses_settable_role_with_m00_table_privilege[MAINTAIN] _____
+
+privilege = 'MAINTAIN'
+
+    @pytest.mark.parametrize("privilege", TABLE_PRIVILEGES)
+    def test_factory_refuses_settable_role_with_m00_table_privilege(privilege: str) -> None:
+>       admin_dsn, m00_dsn, m01_dsn, _m00_user, m01_user, prepared = _prepare_m00()
+                                                                     ^^^^^^^^^^^^^^
+
+tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:303: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:63: in _prepare_m00
+    m00_dsn = _dsn(M00_DSN_ENV)
+              ^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+    def _dsn(name: str) -> str:
+        value = os.environ.get(name)
+        if not value:
+>           pytest.fail(f"DS-T01-R05 PostgreSQL role-membership proof requires {name}")
+E           Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:30: Failed
+_____ test_factory_refuses_settable_role_with_m00_column_privilege[SELECT] _____
+
+privilege = 'SELECT'
+
+    @pytest.mark.parametrize("privilege", COLUMN_PRIVILEGES)
+    def test_factory_refuses_settable_role_with_m00_column_privilege(privilege: str) -> None:
+>       admin_dsn, m00_dsn, m01_dsn, _m00_user, m01_user, prepared = _prepare_m00()
+                                                                     ^^^^^^^^^^^^^^
+
+tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:341: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:63: in _prepare_m00
+    m00_dsn = _dsn(M00_DSN_ENV)
+              ^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+    def _dsn(name: str) -> str:
+        value = os.environ.get(name)
+        if not value:
+>           pytest.fail(f"DS-T01-R05 PostgreSQL role-membership proof requires {name}")
+E           Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:30: Failed
+_____ test_factory_refuses_settable_role_with_m00_column_privilege[INSERT] _____
+
+privilege = 'INSERT'
+
+    @pytest.mark.parametrize("privilege", COLUMN_PRIVILEGES)
+    def test_factory_refuses_settable_role_with_m00_column_privilege(privilege: str) -> None:
+>       admin_dsn, m00_dsn, m01_dsn, _m00_user, m01_user, prepared = _prepare_m00()
+                                                                     ^^^^^^^^^^^^^^
+
+tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:341: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:63: in _prepare_m00
+    m00_dsn = _dsn(M00_DSN_ENV)
+              ^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+    def _dsn(name: str) -> str:
+        value = os.environ.get(name)
+        if not value:
+>           pytest.fail(f"DS-T01-R05 PostgreSQL role-membership proof requires {name}")
+E           Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:30: Failed
+_____ test_factory_refuses_settable_role_with_m00_column_privilege[UPDATE] _____
+
+privilege = 'UPDATE'
+
+    @pytest.mark.parametrize("privilege", COLUMN_PRIVILEGES)
+    def test_factory_refuses_settable_role_with_m00_column_privilege(privilege: str) -> None:
+>       admin_dsn, m00_dsn, m01_dsn, _m00_user, m01_user, prepared = _prepare_m00()
+                                                                     ^^^^^^^^^^^^^^
+
+tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:341: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:63: in _prepare_m00
+    m00_dsn = _dsn(M00_DSN_ENV)
+              ^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+    def _dsn(name: str) -> str:
+        value = os.environ.get(name)
+        if not value:
+>           pytest.fail(f"DS-T01-R05 PostgreSQL role-membership proof requires {name}")
+E           Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:30: Failed
+___ test_factory_refuses_settable_role_with_m00_column_privilege[REFERENCES] ___
+
+privilege = 'REFERENCES'
+
+    @pytest.mark.parametrize("privilege", COLUMN_PRIVILEGES)
+    def test_factory_refuses_settable_role_with_m00_column_privilege(privilege: str) -> None:
+>       admin_dsn, m00_dsn, m01_dsn, _m00_user, m01_user, prepared = _prepare_m00()
+                                                                     ^^^^^^^^^^^^^^
+
+tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:341: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:63: in _prepare_m00
+    m00_dsn = _dsn(M00_DSN_ENV)
+              ^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+    def _dsn(name: str) -> str:
+        value = os.environ.get(name)
+        if not value:
+>           pytest.fail(f"DS-T01-R05 PostgreSQL role-membership proof requires {name}")
+E           Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:30: Failed
+______ test_non_inherited_membership_without_set_authority_remains_lawful ______
+
+    def test_non_inherited_membership_without_set_authority_remains_lawful() -> None:
+>       admin_dsn, _m00_dsn, m01_dsn, m00_user, m01_user, prepared = _prepare_m00()
+                                                                     ^^^^^^^^^^^^^^
+
+tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:379: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:63: in _prepare_m00
+    m00_dsn = _dsn(M00_DSN_ENV)
+              ^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+    def _dsn(name: str) -> str:
+        value = os.environ.get(name)
+        if not value:
+>           pytest.fail(f"DS-T01-R05 PostgreSQL role-membership proof requires {name}")
+E           Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:30: Failed
+__ test_operation_refuses_set_role_authority_drift_after_lawful_construction ___
+
+    def test_operation_refuses_set_role_authority_drift_after_lawful_construction() -> None:
+>       admin_dsn, _m00_dsn, m01_dsn, m00_user, m01_user, prepared = _prepare_m00()
+                                                                     ^^^^^^^^^^^^^^
+
+tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:403: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:63: in _prepare_m00
+    m00_dsn = _dsn(M00_DSN_ENV)
+              ^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+    def _dsn(name: str) -> str:
+        value = os.environ.get(name)
+        if not value:
+>           pytest.fail(f"DS-T01-R05 PostgreSQL role-membership proof requires {name}")
+E           Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py:30: Failed
+_______ test_leaf1_postgres_roundtrip_preserves_exact_selection_identity _______
+
+    def test_leaf1_postgres_roundtrip_preserves_exact_selection_identity() -> None:
+>       m00_dsn = _dsn(M00_DSN_ENV)
+                  ^^^^^^^^^^^^^^^^^
+
+tests/implementation/derived_signal/test_ds_t01_selection_lineage_persistence.py:46: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'NVDA_TEST_M00_POSTGRES_DSN'
+
+    def _dsn(name: str) -> str:
+        value = os.environ.get(name)
+        if not value:
+>           pytest.fail(f"Leaf 1 PostgreSQL durability proof requires {name}")
+E           Failed: Leaf 1 PostgreSQL durability proof requires NVDA_TEST_M00_POSTGRES_DSN
+
+tests/implementation/derived_signal/test_ds_t01_selection_lineage_persistence.py:21: Failed
+_ test_d116_exact_postgres_public_ratio_and_reconstructable_lineage[call-R047] _
+
+right = 'call', oi = 'R047'
+
+    @pytest.mark.parametrize("right,oi", (("call", "R047"), ("put", "R048")))
+    def test_d116_exact_postgres_public_ratio_and_reconstructable_lineage(
+        right: str,
+        oi: str,
+    ) -> None:
+        m00_dsn = os.environ.get("NVDA_TEST_M00_POSTGRES_DSN")
+        m01_dsn = os.environ.get("NVDA_TEST_M01_POSTGRES_DSN")
+        if not m00_dsn or not m01_dsn:
+>           pytest.fail("D116 durability proof requires distinct M00/M01 PostgreSQL role DSNs")
+E           Failed: D116 durability proof requires distinct M00/M01 PostgreSQL role DSNs
+
+tests/implementation/derived_signal/test_m01_f4_d116_authorised_postgresql.py:29: Failed
+_ test_d116_exact_postgres_public_ratio_and_reconstructable_lineage[put-R048] __
+
+right = 'put', oi = 'R048'
+
+    @pytest.mark.parametrize("right,oi", (("call", "R047"), ("put", "R048")))
+    def test_d116_exact_postgres_public_ratio_and_reconstructable_lineage(
+        right: str,
+        oi: str,
+    ) -> None:
+        m00_dsn = os.environ.get("NVDA_TEST_M00_POSTGRES_DSN")
+        m01_dsn = os.environ.get("NVDA_TEST_M01_POSTGRES_DSN")
+        if not m00_dsn or not m01_dsn:
+>           pytest.fail("D116 durability proof requires distinct M00/M01 PostgreSQL role DSNs")
+E           Failed: D116 durability proof requires distinct M00/M01 PostgreSQL role DSNs
+
+tests/implementation/derived_signal/test_m01_f4_d116_authorised_postgresql.py:29: Failed
+___ test_d123_controlled_public_result_persists_exact_postgresql_raw_lineage ___
+
+    def test_d123_controlled_public_result_persists_exact_postgresql_raw_lineage() -> None:
+        m00_dsn = os.environ.get("NVDA_TEST_M00_POSTGRES_DSN")
+        m01_dsn = os.environ.get("NVDA_TEST_M01_POSTGRES_DSN")
+        if not m00_dsn or not m01_dsn:
+>           pytest.fail("D123 durability proof requires distinct M00/M01 PostgreSQL role DSNs")
+E           Failed: D123 durability proof requires distinct M00/M01 PostgreSQL role DSNs
+
+tests/implementation/derived_signal/test_m01_f4_d123_controlled_postgresql.py:25: Failed
+=========================== short test summary info ============================
+FAILED tests/implementation/derived_signal/test_ds_t01_persistence_isolation.py::test_postgresql_proof_roles_and_schemas_are_separate_and_m01_has_no_m00_table_privilege - Failed: DS-T01 PostgreSQL boundary proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r02_persistence_boundary_refinement.py::test_lawful_separate_m01_writer_and_schema_can_construct_persistence - Failed: DS-T01-R02 PostgreSQL boundary proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r02_persistence_boundary_refinement.py::test_exact_m00_writer_schema_boundary_is_refused_before_table_creation - Failed: DS-T01-R02 PostgreSQL boundary proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r02_persistence_boundary_refinement.py::test_same_m00_writer_with_different_schema_is_refused - Failed: DS-T01-R02 PostgreSQL boundary proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r02_persistence_boundary_refinement.py::test_different_writer_on_m00_schema_is_refused - Failed: DS-T01-R02 PostgreSQL boundary proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r03_postgres_privilege_boundary_refinement.py::test_factory_refuses_effective_select_privilege_on_m00_relation - Failed: DS-T01-R03 PostgreSQL privilege proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r03_postgres_privilege_boundary_refinement.py::test_factory_refuses_effective_write_privilege_on_m00_relation[INSERT] - Failed: DS-T01-R03 PostgreSQL privilege proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r03_postgres_privilege_boundary_refinement.py::test_factory_refuses_effective_write_privilege_on_m00_relation[UPDATE] - Failed: DS-T01-R03 PostgreSQL privilege proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r03_postgres_privilege_boundary_refinement.py::test_factory_refuses_effective_write_privilege_on_m00_relation[DELETE] - Failed: DS-T01-R03 PostgreSQL privilege proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r03_postgres_privilege_boundary_refinement.py::test_operation_refuses_privilege_drift_after_lawful_construction - Failed: DS-T01-R03 PostgreSQL privilege proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py::test_factory_refuses_every_effective_table_privilege_on_m00_relation[SELECT] - Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py::test_factory_refuses_every_effective_table_privilege_on_m00_relation[INSERT] - Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py::test_factory_refuses_every_effective_table_privilege_on_m00_relation[UPDATE] - Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py::test_factory_refuses_every_effective_table_privilege_on_m00_relation[DELETE] - Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py::test_factory_refuses_every_effective_table_privilege_on_m00_relation[TRUNCATE] - Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py::test_factory_refuses_every_effective_table_privilege_on_m00_relation[REFERENCES] - Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py::test_factory_refuses_every_effective_table_privilege_on_m00_relation[TRIGGER] - Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py::test_factory_refuses_every_effective_table_privilege_on_m00_relation[MAINTAIN] - Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py::test_factory_refuses_every_effective_column_privilege_on_m00_relation[SELECT] - Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py::test_factory_refuses_every_effective_column_privilege_on_m00_relation[INSERT] - Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py::test_factory_refuses_every_effective_column_privilege_on_m00_relation[UPDATE] - Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py::test_factory_refuses_every_effective_column_privilege_on_m00_relation[REFERENCES] - Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py::test_operation_refuses_destructive_table_privilege_drift - Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r04_postgres_privilege_surface_refinement.py::test_operation_refuses_column_select_privilege_drift - Failed: DS-T01-R04 PostgreSQL privilege-surface proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py::test_factory_refuses_direct_set_role_path_to_m00_writer - Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py::test_factory_refuses_transitive_set_role_path_to_m00_writer - Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py::test_factory_refuses_settable_role_with_m00_table_privilege[SELECT] - Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py::test_factory_refuses_settable_role_with_m00_table_privilege[INSERT] - Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py::test_factory_refuses_settable_role_with_m00_table_privilege[UPDATE] - Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py::test_factory_refuses_settable_role_with_m00_table_privilege[DELETE] - Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py::test_factory_refuses_settable_role_with_m00_table_privilege[TRUNCATE] - Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py::test_factory_refuses_settable_role_with_m00_table_privilege[REFERENCES] - Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py::test_factory_refuses_settable_role_with_m00_table_privilege[TRIGGER] - Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py::test_factory_refuses_settable_role_with_m00_table_privilege[MAINTAIN] - Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py::test_factory_refuses_settable_role_with_m00_column_privilege[SELECT] - Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py::test_factory_refuses_settable_role_with_m00_column_privilege[INSERT] - Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py::test_factory_refuses_settable_role_with_m00_column_privilege[UPDATE] - Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py::test_factory_refuses_settable_role_with_m00_column_privilege[REFERENCES] - Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py::test_non_inherited_membership_without_set_authority_remains_lawful - Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_r05_postgres_role_membership_refinement.py::test_operation_refuses_set_role_authority_drift_after_lawful_construction - Failed: DS-T01-R05 PostgreSQL role-membership proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_ds_t01_selection_lineage_persistence.py::test_leaf1_postgres_roundtrip_preserves_exact_selection_identity - Failed: Leaf 1 PostgreSQL durability proof requires NVDA_TEST_M00_POSTGRES_DSN
+FAILED tests/implementation/derived_signal/test_m01_f4_d116_authorised_postgresql.py::test_d116_exact_postgres_public_ratio_and_reconstructable_lineage[call-R047] - Failed: D116 durability proof requires distinct M00/M01 PostgreSQL role DSNs
+FAILED tests/implementation/derived_signal/test_m01_f4_d116_authorised_postgresql.py::test_d116_exact_postgres_public_ratio_and_reconstructable_lineage[put-R048] - Failed: D116 durability proof requires distinct M00/M01 PostgreSQL role DSNs
+FAILED tests/implementation/derived_signal/test_m01_f4_d123_controlled_postgresql.py::test_d123_controlled_public_result_persists_exact_postgresql_raw_lineage - Failed: D123 durability proof requires distinct M00/M01 PostgreSQL role DSNs
+44 failed, 1202 passed in 7.61s

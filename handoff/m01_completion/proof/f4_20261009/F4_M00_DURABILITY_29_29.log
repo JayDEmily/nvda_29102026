@@ -1,0 +1,3 @@
+COMMAND: PYTHONPATH=.:src python -m pytest -q [collected nodes 29-29 of 55]
+.                                                                        [100%]
+1 passed in 15.16s

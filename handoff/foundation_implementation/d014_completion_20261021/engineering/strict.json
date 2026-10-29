@@ -1,0 +1,18 @@
+{
+  "candidate": "761ff9ca9eb21354e6ca333d50df18b12800c0aa",
+  "tree": "e8be63643268f2fe94b65e6cf8bb487112f141c1",
+  "argv": [
+    "/workspace/scratch/56b9974b28a0/d014-runtime/bin/python",
+    "tools/run_product_proof_gate.py",
+    "--aggregate",
+    "neutral_market_measurement_truth_d014"
+  ],
+  "cwd": "/workspace/scratch/56b9974b28a0/implementation-recovery",
+  "completed": true,
+  "exit": 0,
+  "expected_marker": "observed aggregate outcome: exit=0",
+  "marker_present": true,
+  "log_sha256": "98858bfd1e5a442f2b1387123f4e2453729e602e812e9b01e70350de771c6813",
+  "unchanged_head": true,
+  "clean_after": true
+}

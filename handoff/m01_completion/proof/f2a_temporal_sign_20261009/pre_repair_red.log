@@ -1,0 +1,65 @@
+FFFF                                                                     [100%]
+=================================== FAILURES ===================================
+___ test_quote_only_update_preserves_trade_sign_aggregates_and_quote_lineage ___
+
+    def test_quote_only_update_preserves_trade_sign_aggregates_and_quote_lineage():
+        events, t0, t5, t10 = _trades_and_quotes()
+        owner = _owner(events)
+        before_buy = _calc(owner, "D015", t0)
+        before_sell = _calc(owner, "D015", t5)
+        after = _calc(owner, "D015", t10)
+        assert before_buy is not None and before_buy.result == 1
+        assert before_sell is not None and before_sell.result == -1
+>       assert after is not None and after.result == -1
+E       AssertionError: assert (DerivedSignalOccurrenceV1(derived_signal_id='D015', derived_occurrence_id='d015-bcf5dcd4f68fd22161f3bf5d9b27efed4da4a8...', 'call'))), supersedes_derived_occurrence_id='d015-49c9900b4e1d667cf1801898201cca3e0397efde91a901dab2e360436ae76a01') is not None and 1 == -1)
+E        +  where 1 = DerivedSignalOccurrenceV1(derived_signal_id='D015', derived_occurrence_id='d015-bcf5dcd4f68fd22161f3bf5d9b27efed4da4a8...', 'call'))), supersedes_derived_occurrence_id='d015-49c9900b4e1d667cf1801898201cca3e0397efde91a901dab2e360436ae76a01').result
+
+tests/product/derived_signal/test_m01_f2a_temporal_quote_sign.py:91: AssertionError
+______ test_different_later_midpoint_cannot_override_trade_time_midpoint _______
+
+    def test_different_later_midpoint_cannot_override_trade_time_midpoint():
+        events, t0, t5, t10 = _trades_and_quotes(later_bid=Decimal("8"), later_ask=Decimal("10"))
+        owner = _owner(events)
+        assert _calc(owner, "D015", t5).result == -1
+        after = _calc(owner, "D015", t10)
+        assert after is not None and after.result == -1
+>       assert "quote-after" not in _ids(after, "R035")
+E       AssertionError: assert 'quote-after' not in {'quote-after', 'quote-before'}
+E        +  where {'quote-after', 'quote-before'} = _ids(DerivedSignalOccurrenceV1(derived_signal_id='D015', derived_occurrence_id='d015-bcf5dcd4f68fd22161f3bf5d9b27efed4da4a8...', 'call'))), supersedes_derived_occurrence_id='d015-49c9900b4e1d667cf1801898201cca3e0397efde91a901dab2e360436ae76a01'), 'R035')
+
+tests/product/derived_signal/test_m01_f2a_temporal_quote_sign.py:110: AssertionError
+____________ test_only_post_trade_quote_must_not_classify_old_trade ____________
+
+    def test_only_post_trade_quote_must_not_classify_old_trade():
+        events, t0, t5, t10 = _trades_and_quotes(first_quote_delay=7)
+        owner = _owner(events)
+        # A quote at t7 and one at t10 both postdate the trade at t5.
+        assert _calc(owner, "D015", t5, cutoff=t10) is None
+>       assert _calc(owner, "D015", t10) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D015', derived_occurrence_id='d015-bcf5dcd4f68fd22161f3bf5d9b27efed4da4a8...'expiry', '2026-12-18'), ('strike', Decimal('100')), ('option_right', 'call'))), supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(derived_signal_id='D015', derived_occurrence_id='d015-bcf5dcd4f68fd22161f3bf5d9b27efed4da4a8...'expiry', '2026-12-18'), ('strike', Decimal('100')), ('option_right', 'call'))), supersedes_derived_occurrence_id=None) = _calc(<nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7fb3341b3c30>, 'D015', datetime.datetime(2026, 10, 8, 3, 0, 10, tzinfo=datetime.timezone.utc))
+
+tests/product/derived_signal/test_m01_f2a_temporal_quote_sign.py:118: AssertionError
+____ test_later_quote_does_not_reclassify_earlier_sell_or_erase_signed_flow ____
+
+>   ???
+E   AssertionError: assert (DerivedSignalOccurrenceV1(derived_signal_id='D015', derived_occurrence_id='d015-5658acd5cd1557e0456fd29101d3a8027dcd86...', 'call'))), supersedes_derived_occurrence_id='d015-fa886d98e66531e679a43369400457564062e3d38cc3ecf3bbf773a20ee397fd') is None or 1 != 1)
+E    +  where 1 = DerivedSignalOccurrenceV1(derived_signal_id='D015', derived_occurrence_id='d015-5658acd5cd1557e0456fd29101d3a8027dcd86...', 'call'))), supersedes_derived_occurrence_id='d015-fa886d98e66531e679a43369400457564062e3d38cc3ecf3bbf773a20ee397fd').result
+
+/mnt/data/m01_f2_review/NVDA_DERIVED_SIGNAL_M01_STAGE1_GRAPH_SELECTION_IDENTITY_REPAIR_20261008/handoff/m01_completion/review/proof/test_f2_late_quote_sign_20261009.py:95: AssertionError
+----------------------------- Captured stdout call -----------------------------
+D015 at buy time: 1
+D015 at sell time: -1
+D015 after quote-only update: 1
+D016 after quote-only update: None
+D120 after quote-only update: None
+=========================== short test summary info ============================
+FAILED tests/product/derived_signal/test_m01_f2a_temporal_quote_sign.py::test_quote_only_update_preserves_trade_sign_aggregates_and_quote_lineage - AssertionError: assert (DerivedSignalOccurrenceV1(derived_signal_id='D015', derived_occurrence_id='d015-bcf5dcd4f68fd22161f3bf5d9b27efed4da4a8...', 'call'))), supersedes_derived_occurrence_id='d015-49c9900b4e1d667cf1801898201cca3e0397efde91a901dab2e360436ae76a01') is not None and 1 == -1)
+ +  where 1 = DerivedSignalOccurrenceV1(derived_signal_id='D015', derived_occurrence_id='d015-bcf5dcd4f68fd22161f3bf5d9b27efed4da4a8...', 'call'))), supersedes_derived_occurrence_id='d015-49c9900b4e1d667cf1801898201cca3e0397efde91a901dab2e360436ae76a01').result
+FAILED tests/product/derived_signal/test_m01_f2a_temporal_quote_sign.py::test_different_later_midpoint_cannot_override_trade_time_midpoint - AssertionError: assert 'quote-after' not in {'quote-after', 'quote-before'}
+ +  where {'quote-after', 'quote-before'} = _ids(DerivedSignalOccurrenceV1(derived_signal_id='D015', derived_occurrence_id='d015-bcf5dcd4f68fd22161f3bf5d9b27efed4da4a8...', 'call'))), supersedes_derived_occurrence_id='d015-49c9900b4e1d667cf1801898201cca3e0397efde91a901dab2e360436ae76a01'), 'R035')
+FAILED tests/product/derived_signal/test_m01_f2a_temporal_quote_sign.py::test_only_post_trade_quote_must_not_classify_old_trade - AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D015', derived_occurrence_id='d015-bcf5dcd4f68fd22161f3bf5d9b27efed4da4a8...'expiry', '2026-12-18'), ('strike', Decimal('100')), ('option_right', 'call'))), supersedes_derived_occurrence_id=None) is None
+ +  where DerivedSignalOccurrenceV1(derived_signal_id='D015', derived_occurrence_id='d015-bcf5dcd4f68fd22161f3bf5d9b27efed4da4a8...'expiry', '2026-12-18'), ('strike', Decimal('100')), ('option_right', 'call'))), supersedes_derived_occurrence_id=None) = _calc(<nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7fb3341b3c30>, 'D015', datetime.datetime(2026, 10, 8, 3, 0, 10, tzinfo=datetime.timezone.utc))
+FAILED handoff/m01_completion/review/proof/test_f2_late_quote_sign_20261009.py::test_later_quote_does_not_reclassify_earlier_sell_or_erase_signed_flow - AssertionError: assert (DerivedSignalOccurrenceV1(derived_signal_id='D015', derived_occurrence_id='d015-5658acd5cd1557e0456fd29101d3a8027dcd86...', 'call'))), supersedes_derived_occurrence_id='d015-fa886d98e66531e679a43369400457564062e3d38cc3ecf3bbf773a20ee397fd') is None or 1 != 1)
+ +  where 1 = DerivedSignalOccurrenceV1(derived_signal_id='D015', derived_occurrence_id='d015-5658acd5cd1557e0456fd29101d3a8027dcd86...', 'call'))), supersedes_derived_occurrence_id='d015-fa886d98e66531e679a43369400457564062e3d38cc3ecf3bbf773a20ee397fd').result
+4 failed in 0.32s

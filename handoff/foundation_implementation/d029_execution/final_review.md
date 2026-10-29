@@ -1,0 +1,15 @@
+# D029 independent final review
+
+TS: 23-10-26 10:58 Melbourne. Disposition: **ACCEPT**, bounded to the commissioned controlled D029 profile and two cases.
+
+Final candidate `01dd5fa2818a447defe60350777b8a4b13d1d7f6`; clean input tree `b6d41820e830e001032c4ee4b19c7ff858580143`. Brief SHA256 `8209530693ea66f600b7033ff9841c31878a6a2393959d3c8840ae1ed592af8e`; generation1 SHA256 `1f19be2dc7f3917a1f37b64fa54a465b7b64392f3b6a1705b6786921f1631905`.
+
+Inspected governance/root commission, exact brief/contract/admission/generation, affected primary K04 meaning/F06 preparation, physical public cases and source delta since accepted D028. The positive admits actual M00 R144 current16 and twenty distinct immediately prior sessions with alternating8/12 values. Its independently fixed literal derives from mean10 and exact sample variance80/19. The separate wrong-bucket999 and older matching8 remain present. The negative changes only mandatory30September to native bucket1229 with matching12:29 event; nineteen mandatory eligible members remain and older29September cannot substitute. Helpers admit/read raw observations and assert outputs only; none materialises beforehand or imports production arithmetic/configuration. Exact native field/unit/session/bucket, fixed calendar membership, current exclusion, receipt visibility and full bounded-history/rank protections are inspected.
+
+The implementation computes Fraction mean and N−1 sample variance, rejects nonpositive variance, and applies signed final50-significant-digit half-even root once. Root bounds use integer comparisons/isqrt and exact rational scaling; identical rounded endpoints establish the rounded interior. Exact rational square roots use a single50-digit division, resolving rational half-even midpoints without endless refinement; zero is explicit, and unresolved bounds refuse. No float or ambient Decimal precision affects the calculation. Existing D028 behavior remains an equivalent fixed relative-volume branch. Full typed result/configuration/context/units/ordered projection lineage/timestamps and ordinary public read-only SQLite reopen are asserted inside the positive case. No unresolved D029 defect found within scope.
+
+Reused saved scoped Ruff success and fresh-cache mypy success. Original mypy internal failure and diagnostic traceback establish malformed mypy cache SQLite, not product evidence; both are preserved, and no static check was repeated by this review.
+
+Sole final runtime command: `PYTHONPATH=src /workspace/scratch/83dd7c79f14f/d021-runtime/bin/python tools/run_product_proof_gate.py --aggregate neutral_market_measurement_truth_d029`. Exactly2 collected and2 passed in1.37s; strict aggregate exit0 on the candidate/brief/generation above. Complete raw output: `final_green.log`. No additional cases/probes, old claims, broad suites or duplicate GREEN.
+
+Acceptance establishes this synthetic profile only; native source/calendar certification and other signals remain outside this judgement. No broad requalification is claimed.

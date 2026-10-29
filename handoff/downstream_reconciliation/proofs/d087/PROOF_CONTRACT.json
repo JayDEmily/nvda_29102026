@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_native_d087",
+  "semantic_brief_path": "handoff/downstream_reconciliation/authority/briefs/NATIVE_D087_BRIEF.md",
+  "target": {
+    "category": "M",
+    "responsibility_name": "neutral_market_measurement_truth",
+    "package": "nvda_desk.market_measurement_truth",
+    "public_seam": "nvda_desk.market_measurement_truth.api",
+    "intent": "modify",
+    "existing_object_id": "M02"
+  },
+  "proof_axis": "product",
+  "product_tier_treatment": "NOT_CLASSIFIED",
+  "architecture_proof_axis": "architecture_kernel",
+  "required_proof_ids": ["NATIVE-D087-ASYNC-OPTION-QUOTE"],
+  "families": [
+    {
+      "id": "mmt_native_d087",
+      "path": "tests/product/market_measurement_native_d087/test_signal.py",
+      "proof_obligation_ids": ["NATIVE-D087-ASYNC-OPTION-QUOTE"],
+      "required_test_names": ["test_native_success", "test_native_refusal"],
+      "boundary": "Four distinct public M00 receipt callbacks assembled by exact option right, request, generation, cutoff, skew and latest age into D087 midpoint; typed SQLite read-only reopen and refusal without history.",
+      "proof_levels": ["CONTRACT", "INTEGRATION", "STATE"],
+      "authoritative_inputs": ["L01 commissioned fixed source/API/allocation, A2/A3 actual public output and literal independent oracles."],
+      "dependency_substitutions": ["Frozen actual M00 public DTO output via declared module-local reader; no M00 production replay."],
+      "case_coverage": {
+        "lawful_positive": {"cases": ["Explicit A2 CALL midpoint1.30 and A3 PUT midpoint2.30, four role-order identities each, strict scope and typed read-only SQLite reopen."]},
+        "prohibited_false_positive": {"cases": ["CALL missing R036 with remaining roles visible; separately complete CALL requested two seconds later refuses latest age, with no history or cross-right fallback."]},
+        "missing_mandatory_authority": {"cases": ["Exact synthetic 250ms skew and 1000ms age, four-member assembly, versioned profile and case allocation."]},
+        "lawful_optional_absence": {"cases": ["No provider event timestamp or timezone; receipt basis and four separate observations preserved."]}
+      },
+      "expected_failure_signals": ["Missing constituent accepted", "stale quote accepted", "cross-right or generation selection", "lossy durable lineage", "fabricated source timestamp"],
+      "limitations": ["Synthetic receipt compatibility only; no live entitlement or production policy."],
+      "adjacent_nonclaims": ["D131 compatible depth and D137 microprice are later owning leaves; legacy D087 remains separate."],
+      "environment": "Pinned CPython3.12.14 SQLite3.53.1 and existing tools.",
+      "material_versions": ["Exact L01 native brief/binding/contract/generation and candidate source."],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/market_measurement_native_d087/test_signal.py"
+    }
+  ],
+  "required_support_files": ["tests/support/native_reconciliation.py"],
+  "optional_support_files": [],
+  "execution_policy": {
+    "skipped_tests": "FAIL", "xfailed_tests": "FAIL", "xpassed_tests": "FAIL",
+    "collection_failed": "FAIL", "no_tests_collected": "FAIL",
+    "unexpected_governed_mutation": "FAIL"
+  }
+}

@@ -1,0 +1,3 @@
+D066 exact ingress validated; explicit acceptance resides in owner instruction/root plan.
+Scoped changed source imports: ['nvda_desk/market_measurement_truth/_international_returns.py', 'nvda_desk/market_measurement_truth/_window.py']
+Zero changed-file import/dependency violations; unchanged graph evidence reused.

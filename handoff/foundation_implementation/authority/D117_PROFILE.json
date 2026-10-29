@@ -1,0 +1,35 @@
+{
+  "id": "D117",
+  "definition": "D117-EXACT-CONTRACT-20SESSION-RECEIPT-1",
+  "kernel": "K04_STANDARDISE_RANK",
+  "parameter_profile": "P_BASELINE_D117_EXACT_CONTRACT_20SESSION_RECEIPT_V1",
+  "subject": "controlled-nvda-c110-20261023",
+  "raw": "R041-only",
+  "provider": "foundation-controlled-option-volume",
+  "variant": "retained_realtime_counter_v1",
+  "mapping": "mmt-r041-option-session-volume/1 at session.volume",
+  "unit": "mmt-option-contracts/1 contracts identity",
+  "calendar": "controlled-option-volume-calendar/1 Etc/UTC",
+  "sessions": "daily synthetic 2026-09-29..2026-10-20 12:00–13:00Z inclusive, prior 2026-09-30..2026-10-19",
+  "comparison_minute": 40,
+  "historical_receipt_interval": "(12:39:00Z,12:40:00Z] per required session",
+  "knowledge_cutoff": "2026-10-20T12:40:01Z",
+  "current": "2026-10-20T12:40:00Z",
+  "now": "2026-10-20T12:40:02Z",
+  "selection": "mmt-d117-selection/1",
+  "parameter": "mmt-d117-controlled/1",
+  "success": {
+    "current": 25,
+    "chronological_prior": "10,20 repeated ten times",
+    "older_29sep": 999,
+    "result": "1.9493588689617927813676826399799200598505167800675"
+  },
+  "refusal": {
+    "only_change": "30Sep receipt 12:39:59 -> 12:40:01, event remains 12:39:59",
+    "reason": "required historical receipt ineligible despite global visibility and older decoy"
+  },
+  "page": [
+    100,
+    1000
+  ]
+}

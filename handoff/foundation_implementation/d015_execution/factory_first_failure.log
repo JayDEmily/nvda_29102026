@@ -1,0 +1,9 @@
+$ cd /tmp/d015-implementation-review-g91a2oam/repo
+$ /workspace/scratch/83dd7c79f14f/d015-runtime-GUbvor/dev/bin/python /workspace/scratch/83dd7c79f14f/d015-implementation-review/factory_probe.py /tmp/d015-implementation-review-g91a2oam/repo
+OBSERVATION: public factory returned _Owner for two object() readers
+Traceback (most recent call last):
+  File "/workspace/scratch/83dd7c79f14f/d015-implementation-review/factory_probe.py", line 19, in <module>
+    raise AssertionError('D015 brief section3: wrong public reader types must raise TypeError')
+AssertionError: D015 brief section3: wrong public reader types must raise TypeError
+
+EXIT=1

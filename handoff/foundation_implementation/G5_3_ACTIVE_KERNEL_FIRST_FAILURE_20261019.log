@@ -1,0 +1,107 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/d549b6d808a9/g52-recovery/repository
+configfile: pyproject.toml
+collected 113 items
+
+tests/architecture/test_activation_readiness.py ..F.........             [ 10%]
+tests/architecture/test_dependency_direction.py ......                   [ 15%]
+tests/architecture/test_identifier_taxonomy.py .....................     [ 34%]
+tests/architecture/test_implementation_authority_ingress.py ............ [ 45%]
+...                                                                      [ 47%]
+tests/architecture/test_object_lifecycle.py ...                          [ 50%]
+tests/architecture/test_proof_control.py ............................... [ 77%]
+...........                                                              [ 87%]
+tests/architecture/test_public_seam_law.py .....                         [ 92%]
+tests/architecture/test_registry_schema.py .                             [ 92%]
+tests/architecture/test_static_typecheck.py ...                          [ 95%]
+tests/bootstrap/test_legacy_exclusion.py ...                             [ 98%]
+tests/bootstrap/test_minimal_imports.py ..                               [100%]
+
+=================================== FAILURES ===================================
+____ test_aggregate_validator_accepts_lawful_protocol_and_kernel_activation ____
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-11/test_aggregate_validator_accep1')
+
+    def test_aggregate_validator_accepts_lawful_protocol_and_kernel_activation(
+        tmp_path: Path,
+    ) -> None:
+        repository = _copy_repository_surface(tmp_path, "p-k-activation", full=True)
+    
+        protocols_path = repository / "config/architecture/protocols.yaml"
+        protocols = yaml.safe_load(protocols_path.read_text(encoding="utf-8"))
+        protocols["protocols"].extend(
+            [
+                {
+                    "id": "P02",
+                    "name": "declarative_protocol",
+                    "status": "active",
+                    "description": "declarative protocol without runtime package",
+                    "predecessors": [],
+                    "successors": [],
+                },
+                {
+                    "id": "P03",
+                    "name": "python_protocol",
+                    "status": "active",
+                    "description": "Python-visible protocol fixture",
+                    "package": "nvda_desk.python_protocol",
+                    "public_seam": "nvda_desk.python_protocol.api",
+                    "predecessors": [],
+                    "successors": [],
+                },
+            ]
+        )
+        protocols_path.write_text(yaml.safe_dump(protocols, sort_keys=False), encoding="utf-8")
+    
+        kernels_path = repository / "config/architecture/kernels.yaml"
+        kernels = yaml.safe_load(kernels_path.read_text(encoding="utf-8"))
+        kernels["kernels"].append(
+            {
+                "id": "K02",
+                "name": "technical_kernel",
+                "status": "active",
+                "description": "Python-visible technical kernel fixture",
+                "package": "nvda_desk.technical_kernel",
+                "public_seam": "nvda_desk.technical_kernel.api",
+                "predecessors": [],
+                "successors": [],
+            }
+        )
+        kernels_path.write_text(yaml.safe_dump(kernels, sort_keys=False), encoding="utf-8")
+    
+        for package_name in ("python_protocol", "technical_kernel"):
+            package = repository / f"src/nvda_desk/{package_name}"
+            package.mkdir(parents=True, exist_ok=True)
+            (package / "__init__.py").write_text("", encoding="utf-8")
+            (package / "api.py").write_text('"""Fixture public seam."""\n', encoding="utf-8")
+    
+        result = validate_architecture(repository)
+    
+        assert "architecture objects: 10" in result
+>       assert "active runtime modules: 1" in result
+E       AssertionError: assert 'active runtime modules: 1' in ['architecture objects: 10', 'active runtime modules: 2', 'implementation allocations: 3', 'admitted test families: 11', 'promotion sets: 1', 'dependency/public-seam violations: 0']
+
+tests/architecture/test_activation_readiness.py:167: AssertionError
+=========================== short test summary info ============================
+FAILED tests/architecture/test_activation_readiness.py::test_aggregate_validator_accepts_lawful_protocol_and_kernel_activation
+======================== 1 failed, 112 passed in 48.88s ========================
+architecture objects: 7
+active runtime modules: 2
+implementation allocations: 3
+admitted test families: 11
+promotion sets: 1
+dependency/public-seam violations: 0
+promotion set: architecture_kernel
+resolved test paths: 11
+  tests/architecture/test_activation_readiness.py
+  tests/architecture/test_dependency_direction.py
+  tests/architecture/test_identifier_taxonomy.py
+  tests/architecture/test_implementation_authority_ingress.py
+  tests/architecture/test_object_lifecycle.py
+  tests/architecture/test_proof_control.py
+  tests/architecture/test_public_seam_law.py
+  tests/architecture/test_registry_schema.py
+  tests/architecture/test_static_typecheck.py
+  tests/bootstrap/test_legacy_exclusion.py
+  tests/bootstrap/test_minimal_imports.py

@@ -1,0 +1,130 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/ad31885d756b/repo
+configfile: pyproject.toml
+collected 36 items
+
+tests/product/m00_brief2/test_ibkr_native_projection.py ................ [ 44%]
+....                                                                     [ 55%]
+tests/product/m00_brief2/test_ibkr_history.py ...............            [ 97%]
+tests/product/m00_brief2/test_ibkr_controls.py F                         [100%]
+
+=================================== FAILURES ===================================
+_________________________ test_control_discoverability _________________________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-1/test_control_discoverability0')
+
+    def test_control_discoverability(tmp_path):
+        depth = [item for item in inputs() if item["scenario_id"] == "A4"]
+        specs = jsonl(ART / "fixtures/controls/control_input_v1.jsonl")
+        control_oracle = [
+            item["value"]
+            for item in jsonl(ART / "fixtures/controls/expected_control_output_v1.jsonl")
+        ]
+        controls = [control_observation(spec) for spec in specs]
+        path = tmp_path / "controls.db"
+        raw = owner(path, create=True)
+        for item in depth:
+            raw.commands.admit_raw_observation_occurrence(observation(item))
+        for value in controls:
+            raw.commands.admit_raw_observation_occurrence(value)
+        # N15 first proves known-ID reads work; discovery below receives no IDs.
+        for value in controls:
+            assert dump_observation(
+                raw.reads.get_raw_observation_occurrence(value.observation_occurrence_id)
+            ) == dump_observation(value)
+            assert raw.reads.project_raw_value(
+                r.RawSignalCatalogueId("R187"),
+                value.observation_occurrence_id,
+                mappings=(mapping_group("A4-STK")["R187"],),
+            ) is None
+    
+        # Six separately retained counterfacts exercise exact public identity filters.
+        counterfacts = []
+        for index, dimension in enumerate(
+            ("subject", "source_provider", "source_variant", "request", "generation", "exchange")
+        ):
+            native = copy.deepcopy(dict(controls[0].native_record))
+            changes = {}
+            if dimension == "subject":
+                changes["subject_instrument"] = native["_collector"]["subject"] = "OTHER-SUBJECT"
+            elif dimension == "source_provider":
+                changes["source_provider"] = r.provider_id("OTHER-SOURCE")
+            elif dimension == "source_variant":
+                changes["source_variant"] = "OTHER-VARIANT"
+            elif dimension == "request":
+                native["_collector"]["request"] = "OTHER-REQUEST"
+                native["_collector"]["control"]["request"] = "OTHER-REQUEST"
+            elif dimension == "generation":
+                native["_collector"]["generation"] = "OTHER-GENERATION"
+                native["_collector"]["control"].update(
+                    generation_before="OTHER-GENERATION", generation_after="OTHER-GENERATION"
+                )
+            else:
+                native["_collector"]["requested_exchange"] = "OTHER-EXCHANGE"
+            value = replace(
+                controls[0],
+                **changes,
+                native_record=native,
+                observation_occurrence_id=r.observation_occurrence_id(f"M00B2-L04-{dimension}"),
+                ingestion_sequence=1000 + index,
+            )
+            raw.commands.admit_raw_observation_occurrence(value)
+            counterfacts.append(value)
+    
+        query = {
+            "subject_instrument": "NVDA-STK-CONTROL-1",
+            "source_provider": "foundation-controlled-ibkr-m00-v1",
+            "source_variant": "ibkr-smart-depth/native-v1",
+            "received_at_or_before_utc": "2026-10-20T12:40:01Z",
+            "native_identity_selectors": [
+                [["_collector", "request"], "STK-SMART-R1"],
+                [["_collector", "requested_exchange"], "SMART"],
+                [["_collector", "generation"], "STK-SMART-G1"],
+            ],
+        }
+        depth_oracle = [
+            item["value"]
+            for item in expected()
+            if item["scenario_id"] == "A4" and item["kind"] == "observation"
+        ]
+        wanted_observations = sorted(
+            [*depth_oracle, *(dump_observation(value) for value in controls)], key=_order
+        )
+        # This is the first required discovery call; baseline must fail if seam absent.
+>       actual = discovery_rows(raw, query)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/m00_brief2/test_ibkr_controls.py:123: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tools/m00_fixture_io.py:371: in discovery_rows
+    values = observation_history(raw, query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+raw = _OwnerV1(commands=<nvda_desk.raw_signal_occurrence_truth.api._CommandsV1 object at 0x7f4a60703ec0>, reads=<nvda_desk.raw_signal_occurrence_truth.api._ReadsV1 object at 0x7f4a607dd2a0>)
+query = {'native_identity_selectors': [[['_collector', 'request'], 'STK-SMART-R1'], [['_collector', 'requested_exchange'], 'SM...2:40:01Z', 'source_provider': 'foundation-controlled-ibkr-m00-v1', 'source_variant': 'ibkr-smart-depth/native-v1', ...}
+
+    def observation_history(raw, query: dict[str, Any]) -> list[r.RawObservationOccurrenceV1]:
+        """Public fixed-population page exhaustion; receives selectors, never known IDs."""
+        kwargs = dict(query)
+        kwargs["received_at_or_before_utc"] = utc(kwargs["received_at_or_before_utc"])
+        kwargs["native_identity_selectors"] = tuple(
+            (tuple(path), value) for path, value in kwargs.get("native_identity_selectors", ())
+        )
+        result = []
+        cursor = None
+        cursors = set()
+        for _ in range(1000):
+>           page = raw.reads.list_raw_observation_history(**kwargs, limit=1, cursor=cursor)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: '_ReadsV1' object has no attribute 'list_raw_observation_history'
+
+tools/m00_fixture_io.py:356: AttributeError
+=========================== short test summary info ============================
+FAILED tests/product/m00_brief2/test_ibkr_controls.py::test_control_discoverability
+=================== 1 failed, 35 passed in 86.04s (0:01:26) ====================
+product-proof aggregate: m00_brief2 state=READY_FOR_PROOF
+authority=0d5ee211c1285b31834062ab2d871670ed2f318cbb955e7df95f80067d562007 generation=d3b58bfeb1684138b73db35a9a21c4d5bf424aa3b7f9fc856ffe7966ef5dd504
+candidate=0617c7bf184f89353b78fe90210bc188099561af
+observed aggregate outcome: exit=1

@@ -1,0 +1,16 @@
+{
+  "review_cycle": "TESTER_VI13R_U03_R030_1790239551",
+  "actor": "TESTER",
+  "status": "COMPLETE",
+  "candidate_commit": "45ca4b8dcca6fdb5001e1754fd81bdba37ce05bf",
+  "candidate_tree": "81ef8edc93c9b322b29cdec6b9ab76b731d8e9a5",
+  "disposition": "PASS",
+  "recurrence_classification": "RECURRENT_CLASS_CLOSED_FOR_AUTHORISED_NATIVEVALUEV1_CARRIER",
+  "findings": [],
+  "authority_clarification": "implementation/authority/VI13R_U03_NATIVE_VALUE_STATIC_TYPING_CLARIFICATION.md",
+  "authority_clarification_commit": "c4caa78a2d13c5dc115c83fedcdf44648efe6d78",
+  "independent_mypy_execution": "UNAVAILABLE_IN_TESTER_SANDBOX",
+  "u03_authority": "ACCEPTED_FOR_LAWFUL_PROMOTION",
+  "u04_authority": "AUTHORISED_ONLY_AFTER_LAWFUL_U03_PROMOTION",
+  "next_cycle": "WORKER_VI12R_U04_1790241325"
+}

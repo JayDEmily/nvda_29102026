@@ -1,0 +1,27 @@
+{
+  "independent_review": "F1_STATIC_AUDIT",
+  "row_count": 174,
+  "raw_edges": 291,
+  "derived_edges": 197,
+  "zero_edge": 1,
+  "stage1_closed": 144,
+  "direct_stage2": 25,
+  "transitive_stage2_only": 5,
+  "classes": 21,
+  "mapped_records": 489,
+  "catalogue_digest": "63bc1b776fc8fa8ba82eb3c9b16916f295c9ec3d480a5a068937c2f25146f5f5",
+  "classification_unmapped": 0,
+  "edge_set_difference": 0,
+  "row_field_drift": 0,
+  "sampled_relationships": [
+    "D015/R120",
+    "D016/D015",
+    "D120/D015",
+    "D109/D087",
+    "D170/D087",
+    "D121/D120",
+    "D122/D085",
+    "D065/D064"
+  ],
+  "summary": "PASS_static_exhaustiveness_not_semantic_acceptance"
+}

@@ -1,0 +1,12 @@
+src/nvda_desk/derived_signal_calculation_truth/_financial_policy.py:188: note: By default the bodies of untyped functions are not checked, consider using --check-untyped-defs  [annotation-unchecked]
+src/nvda_desk/derived_signal_calculation_truth/_financial_policy.py:201: note: By default the bodies of untyped functions are not checked, consider using --check-untyped-defs  [annotation-unchecked]
+src/nvda_desk/market_measurement_truth/_evaluation.py:166: error: Unsupported operand types for - ("int" and "Literal['n']")  [operator]
+src/nvda_desk/market_measurement_truth/_evaluation.py:166: error: Unsupported operand types for - ("int" and "Literal['N']")  [operator]
+src/nvda_desk/market_measurement_truth/_evaluation.py:166: error: Unsupported operand types for - ("int" and "Literal['F']")  [operator]
+src/nvda_desk/market_measurement_truth/_evaluation.py:166: note: Right operand is of type "Literal['n', 'N', 'F'] | int"
+src/nvda_desk/market_measurement_truth/_evaluation.py:167: error: Unsupported operand types for - ("int" and "Literal['n']")  [operator]
+src/nvda_desk/market_measurement_truth/_evaluation.py:167: error: Unsupported operand types for - ("int" and "Literal['N']")  [operator]
+src/nvda_desk/market_measurement_truth/_evaluation.py:167: error: Unsupported operand types for - ("int" and "Literal['F']")  [operator]
+src/nvda_desk/market_measurement_truth/_evaluation.py:167: note: Right operand is of type "Literal['n', 'N', 'F'] | int"
+src/nvda_desk/market_measurement_truth/_evaluation.py:174: error: Argument 1 to "Decimal" has incompatible type "tuple[int, tuple[int, ...], Literal['n', 'N', 'F'] | int]"; expected "Decimal | float | str | tuple[int, Sequence[int], int]"  [arg-type]
+Found 7 errors in 1 file (checked 34 source files)

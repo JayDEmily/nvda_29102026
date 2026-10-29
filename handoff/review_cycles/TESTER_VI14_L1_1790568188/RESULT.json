@@ -1,0 +1,20 @@
+{
+  "review_cycle": "TESTER_VI14_L1_1790568188",
+  "actor": "TESTER",
+  "status": "COMPLETE",
+  "predecessor_worker_cycle": "WORKER_VI14_L1_1790568187",
+  "leaf": "VI-14-L1",
+  "candidate_commit": "076f1e979474babbb8985dc87d3b2d4d62ec0b4c",
+  "candidate_tree": "45aec5c01ae8a35fa8879fab978c6fb0f0082140",
+  "disposition": "PASS",
+  "findings": [],
+  "recurrence_classification": "NO_FINDING",
+  "fixture_independent_public_seam_challenge": "PASS",
+  "u05_postgresql_cases": "55/55 PASS",
+  "remaining_vi14_integration_cases": "11/11 PASS",
+  "vi14_integrated_total": "66/66 PASS",
+  "architecture_bootstrap": "74/74 PASS",
+  "product_obligations": "13/13 COVERED",
+  "vi14_promotion": "ACCEPTED_FOR_LAWFUL_PROMOTION",
+  "vi15_authority": "PROHIBITED_UNTIL_VI14_PROMOTION_CLOSEOUT"
+}

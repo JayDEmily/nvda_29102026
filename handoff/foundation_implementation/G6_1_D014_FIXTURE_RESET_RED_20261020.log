@@ -1,0 +1,38 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/d549b6d808a9/g52-recovery/repository
+configfile: pyproject.toml
+collected 130 items / 129 deselected / 1 selected
+
+tests/architecture/test_proof_control.py F                               [100%]
+
+=================================== FAILURES ===================================
+_________ test_d014_pre_admission_fixture_explicitly_resets_all_three __________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-71/test_d014_pre_admission_fixtur0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f34390c7680>
+
+    def test_d014_pre_admission_fixture_explicitly_resets_all_three(tmp_path, monkeypatch):
+        source = tmp_path / "source"
+        source.mkdir()
+        for name in ("config", "schemas", "docs", "tests", "implementation", "handoff", "src", "tools"):
+            shutil.copytree(ROOT / name, source / name, ignore=shutil.ignore_patterns("__pycache__"))
+        for name in ("pyproject.toml", "GUARDRAILS.md", "AGENTS.md", ".gitignore"):
+            shutil.copy2(ROOT / name, source / name)
+        _json_write(source / D014_ROOT / "claim.json", _d014_descriptor())
+        support = source / "tests/product/market_measurement_d014/_support.py"
+        support.parent.mkdir(parents=True, exist_ok=True)
+        support.write_text("# Disposable pre-admission universe witness, no domain proof.\n")
+        protected = (source / D014_ROOT / "claim.json").read_bytes()
+        monkeypatch.setitem(globals(), "ROOT", source)
+        target = _copy_candidate(tmp_path / "pre-admission")
+        for suffix in ("d012", "d013", "d014"):
+>           assert not (target / f"config/product_proof/market_measurement_{suffix}").exists()
+E           AssertionError: assert not True
+E            +  where True = exists()
+E            +    where exists = (PosixPath('/tmp/pytest-of-root/pytest-71/test_d014_pre_admission_fixtur0/pre-admission') / 'config/product_proof/market_measurement_d014').exists
+
+tests/architecture/test_proof_control.py:289: AssertionError
+=========================== short test summary info ============================
+FAILED tests/architecture/test_proof_control.py::test_d014_pre_admission_fixture_explicitly_resets_all_three
+====================== 1 failed, 129 deselected in 0.29s =======================

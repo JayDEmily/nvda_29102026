@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "raw_signal_occurrence_truth_sqlite",
+  "generation": 2,
+  "brief_sha256": "3ad4cdc9ffba4cf91ff9a27edf1dd3b1a9824a421514bb4b5a2cc1b9c504f233",
+  "binding_sha256": "7c7fa7df69e75825853bf7b355343d9b6f793beab247b37223bfa71737248b87",
+  "contract_sha256": "70a6a0e0d216ef3b6eb3b600b72880dc8dd159215ec761e391eeaf2c1148706f",
+  "implementation_target_id": "M00",
+  "adequacy_review_ref": "independent-review/g51-m00-sqlite/64b292e/gen2-driver/20261019",
+  "admission_authority_ref": "owner-chat/20261019T155833/G5.1-only;accepted-version3-section6;independent-review/g51-m00-sqlite/819b49f/20261019",
+  "family_files": [
+    {
+      "path": "tests/product/raw_signal_sqlite/test_contract_native.py",
+      "sha256": "254b649ba831316025e86ffdf0dbed01195dadcd1113ffaf1d1b639b556166f2"
+    },
+    {
+      "path": "tests/product/raw_signal_sqlite/test_schedule_assessment.py",
+      "sha256": "25298edc53ca3eed09e34af3d2324153a82c637185857b25dc670adfe6e0dcbd"
+    },
+    {
+      "path": "tests/product/raw_signal_sqlite/test_sqlite_durability.py",
+      "sha256": "543d7f35b24c47a4bbef838b345b10e19c4812580cd896d351d9f3c150676d34"
+    },
+    {
+      "path": "tests/product/raw_signal_sqlite/test_composition.py",
+      "sha256": "0865d9b2c99264d5aa7bd06e4962416045c1f7ce65fdb12b43129c4fe0987cd0"
+    }
+  ],
+  "support_files": [
+    {
+      "path": "tests/product/raw_signal_sqlite/_support.py",
+      "sha256": "8cf273b77dca4b1c5882b548aa13dda601283f118788918f772c47ce75eedf91"
+    }
+  ],
+  "previous_generation": {
+    "path": "config/product_proof/raw_signal_sqlite/generations/0001.json",
+    "sha256": "12a2092d4b358a8160c6f6a33b04595d1baf98813f80a3dbc5c65f3a3642ce35"
+  }
+}

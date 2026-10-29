@@ -1,0 +1,30 @@
+.FF..                                                                    [100%]
+=================================== FAILURES ===================================
+__________ test_rc21_macro_surprise_refuses_incomplete_latest_release __________
+
+    def test_rc21_macro_surprise_refuses_incomplete_latest_release() -> None:
+        owner, req = _public(missing_field=("current", "R285"))
+>       assert owner.materialise(req) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D063', derived_occurrence_id='d063-24479ac02e2e751510da9429112b0e226dd47a...lection_identity=RawSelectionIdentityV1(values=(('release_family', 'US-CPI'),)), supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(derived_signal_id='D063', derived_occurrence_id='d063-24479ac02e2e751510da9429112b0e226dd47a...lection_identity=RawSelectionIdentityV1(values=(('release_family', 'US-CPI'),)), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D063', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 10, 4,...ection_identity=RawSelectionIdentityV1(values=(('release_family', 'US-CPI'),)))), predecessor_selection_policy_refs=()))
+E        +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7fd7aa58cc80>.materialise
+
+tests/product/derived_signal/test_m01_f4_rc21_macro_surprise_public.py:100: AssertionError
+_____ test_rc21_macro_surprise_refuses_incomplete_selected_history_release _____
+
+    def test_rc21_macro_surprise_refuses_incomplete_selected_history_release() -> None:
+        owner, req = _public(missing_field=("prior-3", "R285"))
+>       assert owner.materialise(req) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D063', derived_occurrence_id='d063-24479ac02e2e751510da9429112b0e226dd47a...lection_identity=RawSelectionIdentityV1(values=(('release_family', 'US-CPI'),)), supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(derived_signal_id='D063', derived_occurrence_id='d063-24479ac02e2e751510da9429112b0e226dd47a...lection_identity=RawSelectionIdentityV1(values=(('release_family', 'US-CPI'),)), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D063', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 10, 4,...ection_identity=RawSelectionIdentityV1(values=(('release_family', 'US-CPI'),)))), predecessor_selection_policy_refs=()))
+E        +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7fd7aa635a80>.materialise
+
+tests/product/derived_signal/test_m01_f4_rc21_macro_surprise_public.py:105: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/derived_signal/test_m01_f4_rc21_macro_surprise_public.py::test_rc21_macro_surprise_refuses_incomplete_latest_release - AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D063', derived_occurrence_id='d063-24479ac02e2e751510da9429112b0e226dd47a...lection_identity=RawSelectionIdentityV1(values=(('release_family', 'US-CPI'),)), supersedes_derived_occurrence_id=None) is None
+ +  where DerivedSignalOccurrenceV1(derived_signal_id='D063', derived_occurrence_id='d063-24479ac02e2e751510da9429112b0e226dd47a...lection_identity=RawSelectionIdentityV1(values=(('release_family', 'US-CPI'),)), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D063', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 10, 4,...ection_identity=RawSelectionIdentityV1(values=(('release_family', 'US-CPI'),)))), predecessor_selection_policy_refs=()))
+ +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7fd7aa58cc80>.materialise
+FAILED tests/product/derived_signal/test_m01_f4_rc21_macro_surprise_public.py::test_rc21_macro_surprise_refuses_incomplete_selected_history_release - AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D063', derived_occurrence_id='d063-24479ac02e2e751510da9429112b0e226dd47a...lection_identity=RawSelectionIdentityV1(values=(('release_family', 'US-CPI'),)), supersedes_derived_occurrence_id=None) is None
+ +  where DerivedSignalOccurrenceV1(derived_signal_id='D063', derived_occurrence_id='d063-24479ac02e2e751510da9429112b0e226dd47a...lection_identity=RawSelectionIdentityV1(values=(('release_family', 'US-CPI'),)), supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D063', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 10, 4,...ection_identity=RawSelectionIdentityV1(values=(('release_family', 'US-CPI'),)))), predecessor_selection_policy_refs=()))
+ +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7fd7aa635a80>.materialise
+2 failed, 3 passed in 0.07s

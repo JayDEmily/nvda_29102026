@@ -1,0 +1,50 @@
+3 files reformatted
+I001 [*] Import block is un-sorted or un-formatted
+   --> src/nvda_desk/market_measurement_truth/_window.py:432:5
+    |
+430 |       now: Callable[[], datetime],
+431 |   ) -> f.MeasurementWindowOwnerV1:
+432 | /     from . import (
+433 | |         _log_return,
+434 | |         _realised_volatility,
+435 | |         _true_range,
+436 | |         _return_acceleration,
+437 | |         _session_range,
+438 | |         _session_returns,
+439 | |         _session_vwap,
+440 | |         _volume_baseline,
+441 | |         _vwap_comparison,
+442 | |         _vwap_returns,
+443 | |     )
+    | |_____^
+444 |
+445 |       if type(admission) is f.OwnerAdmissionV1 and admission == f.OwnerAdmissionV1(
+    |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+   --> src/nvda_desk/market_measurement_truth/_window.py:530:5
+    |
+528 |       admission: f.OwnerAdmissionV1, storage: f.SQLiteReadStorageV1
+529 |   ) -> f.MeasurementWindowReadsV1:
+530 | /     from . import (
+531 | |         _log_return,
+532 | |         _realised_volatility,
+533 | |         _true_range,
+534 | |         _return_acceleration,
+535 | |         _session_range,
+536 | |         _session_returns,
+537 | |         _session_vwap,
+538 | |         _volume_baseline,
+539 | |         _vwap_comparison,
+540 | |         _vwap_returns,
+541 | |     )
+    | |_____^
+542 |
+543 |       if type(admission) is f.OwnerAdmissionV1 and admission == f.OwnerAdmissionV1(
+    |
+help: Organize imports
+
+Found 2 errors.
+[*] 2 fixable with the `--fix` option.
+

@@ -1,0 +1,34 @@
+This reviewer sequential script was replaced by fresh independent copies per case; not used as candidate rejection.
+First attempt ended when retained synthetic raw generation made a subsequent other-claim positive precondition invalid (unreferenced retained generation).
+Second attempt's completed required assertions:
+BASELINE raw_signal_occurrence_truth_sqlite READY_FOR_PROOF 3ad4cdc9ffba4cf91ff9a27edf1dd3b1a9824a421514bb4b5a2cc1b9c504f233 51e87129c2a31c71599b7a01beb8ba39717ed5118a4d5c849bcb2015b6c80c6f
+ADVANCE_ACCEPTED_PRESERVATION_PASS raw_signal_occurrence_truth_sqlite 37a535f5a1ef3623f7a839e0e9ae8a1f522c539bce0d7c5a235e1d2c316f387e
+REVOCATION_ACCEPTED_PRESERVATION_PASS raw_signal_occurrence_truth_sqlite
+BASELINE neutral_market_measurement_truth_pilot READY_FOR_PROOF 3ad4cdc9ffba4cf91ff9a27edf1dd3b1a9824a421514bb4b5a2cc1b9c504f233 24a5af4054c277b01a140ec43481e86851e5e76263826644a80993c12c2495b7
+ADVANCE_ACCEPTED_PRESERVATION_PASS neutral_market_measurement_truth_pilot 7ccd51da3f3aa99cffcb4fa2ae69584a6d3b7226d978b9156956e6dd1c21b43a
+REVOCATION_ACCEPTED_PRESERVATION_PASS neutral_market_measurement_truth_pilot
+BASELINE neutral_market_measurement_truth_d012 READY_FOR_PROOF a31c482d2dc4822539ede99e955761319585af4badea93b9fc279638e1e1f393 26d2b4e371c38b0960cb6081798cc618c9f308567d0df12b2aa40f3777dd2a25
+ADVANCE_ACCEPTED_PRESERVATION_PASS neutral_market_measurement_truth_d012 3be0c2d7ad18f9a4bdf13046d8cbe60874e6246ff8ec1345d9bc902689dbe80f
+REVOCATION_ACCEPTED_PRESERVATION_PASS neutral_market_measurement_truth_d012
+ORPHAN_REJECTED _support.py raw_signal_occurrence_truth_sqlite unowned D013 extension Python source without descriptor
+ORPHAN_REJECTED _support.py neutral_market_measurement_truth_pilot unowned D013 extension Python source without descriptor
+ORPHAN_REJECTED _support.py neutral_market_measurement_truth_d012 unowned D013 extension Python source without descriptor
+ORPHAN_REJECTED nested/helper.py raw_signal_occurrence_truth_sqlite unowned D013 extension Python source without descriptor
+ORPHAN_REJECTED nested/helper.py neutral_market_measurement_truth_pilot unowned D013 extension Python source without descriptor
+ORPHAN_REJECTED nested/helper.py neutral_market_measurement_truth_d012 unowned D013 extension Python source without descriptor
+ORPHAN_REJECTED test_orphan.py raw_signal_occurrence_truth_sqlite unowned D013 extension Python source without descriptor
+ORPHAN_REJECTED test_orphan.py neutral_market_measurement_truth_pilot unowned D013 extension Python source without descriptor
+ORPHAN_REJECTED test_orphan.py neutral_market_measurement_truth_d012 unowned D013 extension Python source without descriptor
+ORPHAN_REJECTED dangling.py raw_signal_occurrence_truth_sqlite unowned D013 extension Python source without descriptor
+ORPHAN_REJECTED dangling.py neutral_market_measurement_truth_pilot unowned D013 extension Python source without descriptor
+ORPHAN_REJECTED dangling.py neutral_market_measurement_truth_d012 unowned D013 extension Python source without descriptor
+Traceback (most recent call last):
+  File "/workspace/scratch/d549b6d808a9/d013-v2-review-ONLCfC/direct_review.py", line 122, in <module>
+    assert load_product_proof_claim(ROOT, NEW).state == 'INCOMPLETE_NO_PHYSICAL_FAMILIES'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/d549b6d808a9/d013-v2-review-ONLCfC/direct-repository/tools/product_proof_claims.py", line 541, in load_product_proof_claim
+    _partition(root, catalogue, contracts)
+  File "/workspace/scratch/d549b6d808a9/d013-v2-review-ONLCfC/direct-repository/tools/product_proof_claims.py", line 200, in _partition
+    raise ValueError("unowned physical proof support file")
+ValueError: unowned physical proof support file
+

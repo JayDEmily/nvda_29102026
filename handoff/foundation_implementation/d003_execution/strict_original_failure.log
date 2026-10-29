@@ -1,0 +1,192 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/17246e12ecdd/plan-d119
+configfile: pyproject.toml
+collected 2 items
+
+tests/product/market_measurement_d003/test_signal.py F.                  [100%]
+
+=================================== FAILURES ===================================
+__________________________ test_d003_signal[success] ___________________________
+
+path = '/tmp/pytest-of-root/pytest-0/test_d003_signal_success_0/d003.sqlite'
+
+    @contextmanager
+    def _transaction(
+        path: str, *, write: bool, initialise: bool = False
+    ) -> Iterator[sqlite3.Connection]:
+        c = None
+        committing = False
+        try:
+            _path(path)
+            c = sqlite3.connect(
+                Path(path).as_uri() + ("?mode=rw" if write else "?mode=ro"),
+                uri=True,
+                isolation_level=None,
+                timeout=0,
+            )
+            c.execute("PRAGMA foreign_keys=ON")
+            c.execute("PRAGMA busy_timeout=0")
+            c.execute("PRAGMA synchronous=EXTRA" if write else "PRAGMA query_only=ON")
+            expected = {"foreign_keys": 1, "busy_timeout": 0, "journal_mode": "delete"}
+            expected["synchronous" if write else "query_only"] = 3 if write else 1
+            if any(c.execute("PRAGMA " + k).fetchone()[0] != v for k, v in expected.items()):
+                raise f.PersistenceFailureV1("measurement connection policy mismatch")
+            c.execute("BEGIN IMMEDIATE" if write else "BEGIN")
+            if not initialise:
+                _schema(c)
+>           yield c
+
+src/nvda_desk/market_measurement_truth/_record_store.py:65: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/nvda_desk/market_measurement_truth/_record_store.py:161: in append
+    v for v in self._load(c) if v.derived_occurrence_id == value.derived_occurrence_id
+               ^^^^^^^^^^^^^
+src/nvda_desk/market_measurement_truth/_record_store.py:121: in _load
+    self.validate(value)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = TemporalLocalOccurrenceV1(owner_object_id='M02', owner_namespace='neutral_market_measurement_truth/temporal-local/v1',...zinfo=datetime.timezone.utc), calculated_at_utc=datetime.datetime(2026, 10, 9, 14, 0, 1, tzinfo=datetime.timezone.utc))
+
+    def _validate(value: f.TemporalLocalOccurrenceV1) -> None:
+        if type(value) is not f.TemporalLocalOccurrenceV1:
+            raise TypeError("exact D003 record required")
+        f._Validated.__post_init__(value)
+        if (
+            not isinstance(value.result.tzinfo, ZoneInfo)
+            or value.result.tzinfo.key != value.raw_input_lineage.canonical_value
+        ):
+            raise ValueError("D003 result must retain the selected IANA zone")
+        if canonical(value) != canonical(_produce(
+            value.request, value.raw_input_lineage, value.predecessor, value.calculated_at_utc,
+        )):
+>           raise ValueError("D003 local result/lineage mismatch")
+E           ValueError: D003 local result/lineage mismatch
+
+src/nvda_desk/market_measurement_truth/_temporal_local.py:164: ValueError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_d003_signal_success_0')
+refused = False
+
+    @pytest.mark.parametrize("refused", (False, True), ids=("success", "refusal"))
+    def test_d003_signal(tmp_path, refused):
+        raw = r.create_owner()
+        natives = ("2026-10-10T00:59:50+11:00", "+11:00",
+                   "Unknown/Nowhere" if refused else "Australia/Melbourne")
+        projected = []
+        for index, mapping in enumerate(MAPS):
+            role = ("source_timestamp", "source_timezone", "exchange_iana")[index]
+            raw.commands.admit_raw_observation_occurrence(r.RawObservationOccurrenceV1(
+                concept_id=r.concept_id("raw_signal.raw_observation_occurrence"),
+                contract_id=r.contract_id("nvda.raw_signal.RawObservationOccurrence.v1"),
+                observation_occurrence_id=r.observation_occurrence_id(f"d003-{index}"),
+                delivery_artifact_ref=r.delivery_artifact_ref("d003-controlled"),
+                source_provider=r.provider_id(PROVIDER),
+                native_record={"sample": {"id": SAMPLE}, "value": {"role": role},
+                               "time": {("value", "timezone", "iana")[index]: natives[index]}},
+                received_ts_utc=RECEIPT, ingestion_sequence=index + 1,
+                ingestion_sequence_scope=r.ingestion_sequence_scope(PROVIDER + "/" + VARIANT),
+                source_temporal_kind="true_instant",
+                raw_signal_catalogue_ids=(mapping.raw_signal_catalogue_id,),
+                source_variant=VARIANT, subject_instrument="NVDA", native_units=mapping.native_units,
+                source_timestamp_raw=(natives[0], "2026-10-09T13:59:50Z",
+                                      "2026-10-09T13:59:50Z")[index],
+                source_timezone_native=("+11:00", "UTC", "UTC")[index],
+            ))
+            page = raw.reads.list_projected_raw_history(
+                mapping.raw_signal_catalogue_id, mappings=(mapping,), subject_instrument="NVDA",
+                received_at_or_before_utc=T, event_at_or_before_utc=None, limit=100, cursor=None,
+            )
+            assert page.next_cursor is None and len(page.items) == 1
+            item = page.items[0]
+            assert item.native_value == natives[index] and item.received_ts_utc == RECEIPT
+            assert item.observation_occurrence_id.value == f"d003-{index}"
+            assert item.selection_identity == r.RawSelectionIdentityV1((("sample.id", SAMPLE),
+                                                                        ("value.role", role)))
+            projected.append(item)
+        d001 = f.create_temporal_owner(
+            admission=f.OwnerAdmissionV1("M02", D001_BRIEF), raw_projection_reader=raw.reads,
+            storage=f.MemoryStorageV1(), utc_now=lambda: NOW,
+        )
+        predecessor = d001.materialise(d001_request())
+        assert type(predecessor) is f.TemporalOccurrenceV1
+        assert predecessor.result == EVENT
+        assert tuple(line.projection for line in predecessor.raw_input_lineage) == tuple(projected[:2])
+        request = d003_request(predecessor.derived_occurrence_id)
+        admission = f.OwnerAdmissionV1("M02", BRIEF)
+        path = str(tmp_path / "d003.sqlite")
+        owner = f.create_temporal_local_owner(
+            admission=admission, raw_projection_reader=raw.reads,
+            predecessor_reader=d001.reads, storage=f.SQLiteStorageV1(path, True),
+            utc_now=lambda: NOW,
+        )
+>       result = owner.materialise(request)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/market_measurement_d003/test_signal.py:142: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/nvda_desk/market_measurement_truth/_temporal_local.py:261: in materialise
+    return cast(f.TemporalLocalOccurrenceV1, self.state.append(value))
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^
+src/nvda_desk/market_measurement_truth/_record_store.py:151: in append
+    with _transaction(self.path, write=True) as c:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/contextlib.py:158: in __exit__
+    self.gen.throw(value)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = '/tmp/pytest-of-root/pytest-0/test_d003_signal_success_0/d003.sqlite'
+
+    @contextmanager
+    def _transaction(
+        path: str, *, write: bool, initialise: bool = False
+    ) -> Iterator[sqlite3.Connection]:
+        c = None
+        committing = False
+        try:
+            _path(path)
+            c = sqlite3.connect(
+                Path(path).as_uri() + ("?mode=rw" if write else "?mode=ro"),
+                uri=True,
+                isolation_level=None,
+                timeout=0,
+            )
+            c.execute("PRAGMA foreign_keys=ON")
+            c.execute("PRAGMA busy_timeout=0")
+            c.execute("PRAGMA synchronous=EXTRA" if write else "PRAGMA query_only=ON")
+            expected = {"foreign_keys": 1, "busy_timeout": 0, "journal_mode": "delete"}
+            expected["synchronous" if write else "query_only"] = 3 if write else 1
+            if any(c.execute("PRAGMA " + k).fetchone()[0] != v for k, v in expected.items()):
+                raise f.PersistenceFailureV1("measurement connection policy mismatch")
+            c.execute("BEGIN IMMEDIATE" if write else "BEGIN")
+            if not initialise:
+                _schema(c)
+            yield c
+            committing = True
+            c.execute("COMMIT")
+        except BaseException as exc:
+            uncertain = bool(committing and c is not None and not c.in_transaction)
+            if c is not None and c.in_transaction:
+                try:
+                    c.execute("ROLLBACK")
+                except sqlite3.Error:
+                    uncertain = True
+            if isinstance(
+                exc,
+                (sqlite3.Error, OSError, ValueError, TypeError, KeyError, ArithmeticError, MemoryError),
+            ):
+>               raise f.PersistenceFailureV1(
+                    "measurement record operation failed", outcome_uncertain=uncertain
+                ) from exc
+E               nvda_desk.market_measurement_truth.api.PersistenceFailureV1: measurement record operation failed
+
+src/nvda_desk/market_measurement_truth/_record_store.py:79: PersistenceFailureV1
+=========================== short test summary info ============================
+FAILED tests/product/market_measurement_d003/test_signal.py::test_d003_signal[success]
+========================= 1 failed, 1 passed in 0.29s ==========================
+product-proof aggregate: neutral_market_measurement_truth_d003 state=READY_FOR_PROOF
+authority=278623c1f97b5faacef1a95304672c92631a14010d5fde71efad4ff817207e1d generation=2aafbfd5a8c2ff865015b3b6a8092063dc05035648107783161eeefa054fb24b
+candidate=5a041a8a32ae2e69b10ce9e27240e212d08c9251
+observed aggregate outcome: exit=1

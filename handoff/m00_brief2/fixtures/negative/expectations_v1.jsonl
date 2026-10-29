@@ -1,0 +1,18 @@
+{"base_scenario":"A4","case_id":"N01","expectation":"preserve side values, no inversion","index_only":true,"specification":"N01_v1.jsonl"}
+{"base_scenario":"A4","case_id":"N02","expectation":"valid receipt-only and no source timestamp","index_only":true,"specification":"N02_v1.jsonl"}
+{"base_scenario":"A4","case_id":"N03","expectation":"reject receipt-only invented timestamp","index_only":true,"specification":"N03_v1.jsonl"}
+{"base_scenario":"B","case_id":"N04","expectation":"event cutoff excludes receipt-only","index_only":true,"specification":"N04_v1.jsonl"}
+{"base_scenario":"A4","case_id":"N05","expectation":"equal receipt/scope/sequence keeps both IDs; causal ambiguity explicit","index_only":true,"specification":"N05_v1.jsonl"}
+{"base_scenario":"C2","case_id":"N06","expectation":"remove each native operation/position/side/size/MPID, no corresponding R","index_only":true,"specification":"N06_v1.jsonl"}
+{"base_scenario":"A4","case_id":"N07","expectation":"preserve INSERT/UPDATE/DELETE/zero size","index_only":true,"specification":"N07_v1.jsonl"}
+{"base_scenario":"A4","case_id":"N08","expectation":"discover error317 after depth","index_only":true,"specification":"N08_v1.jsonl"}
+{"base_scenario":"A4","case_id":"N09","expectation":"discover316/reconnect/gap/restart and generation links","index_only":true,"specification":"N09_v1.jsonl"}
+{"base_scenario":null,"case_id":"N10","expectation":"isolate subject/right/source/request/generation","index_only":true,"specification":"N10_v1.jsonl"}
+{"base_scenario":"A2","case_id":"N11","expectation":"one asynchronous callback different contract stays different","index_only":true,"specification":"N11_v1.jsonl"}
+{"base_scenario":"A2","case_id":"N12","expectation":"duplicate batch receipt keeps callback IDs","index_only":true,"specification":"N12_v1.jsonl"}
+{"base_scenario":"A4","case_id":"N13","expectation":"strictly post-cutoff excluded from history only","index_only":true,"specification":"N13_v1.jsonl"}
+{"base_scenario":"A4","case_id":"N14","expectation":"no initial snapshot/field implies no fabricated completeness","index_only":true,"specification":"N14_v1.jsonl"}
+{"base_scenario":"A4","case_id":"N15","expectation":"known control ID retrieval cannot replace discovery","index_only":true,"specification":"N15_v1.jsonl"}
+{"base_scenario":"A4","case_id":"N16","expectation":"identical replay idempotent, changed same-ID payload refuses","index_only":true,"specification":"N16_v1.jsonl"}
+{"base_scenario":"C3","case_id":"N17","expectation":"direct MPID separate requested exchange","index_only":true,"specification":"N17_v1.jsonl"}
+{"base_scenario":"A4","case_id":"N18","expectation":"missing receipt carrier absent; valid carrier UTC equals envelope","index_only":true,"specification":"N18_v1.jsonl"}

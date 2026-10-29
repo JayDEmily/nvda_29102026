@@ -1,0 +1,3 @@
+New macro source with fixed D042-only admission and public window routing. Exact signed Fraction subtraction and terminating Decimal carrier; no native FRED unit conversion claim. First scoped Ruff failed only unused days local; renamed _days, affected source Ruff passed. Scoped mypy two changed source files passed, not repeated for unused-variable rename. Other unchanged shared selection/codec/storage reused.
+Exactly two new runtime cases remain unexecuted. Independent reviewer is sole final executor; no worker GREEN, RED or old suites. Immutable generation sealed after source/proof formatting.
+

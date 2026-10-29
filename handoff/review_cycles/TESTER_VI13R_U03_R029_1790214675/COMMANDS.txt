@@ -1,0 +1,71 @@
+# Reviewer 029 command record
+
+# Governance / routing reads
+cat README.md
+cat GUARDRAILS.md
+cat AGENTS.md
+cat tests/AGENTS.override.md
+cat EXEC_PLAN.md
+cat handoff/control/CURRENT_STATE.md
+cat handoff/review_cycles/TESTER_VI13R_U03_R029_1790214675/REQUEST.md
+# Accepted IRB and complete IWO were read in full before substantive review.
+
+# Source-packet / Git identity
+sha256sum '/mnt/data/NVDA_G03_WORKER_VI12R_U03_R028_REPAIR_R029_HANDOFF_FULL_GIT_20260924.tar(2).gz'
+# -> de9c6dcbe8cef3fcb31ab2c9141ed949f8bc0ba2349d794917085272ffc5739e
+git rev-parse HEAD
+# -> dd0188aa44c595e51c78f4019122d4a96f272982
+git rev-parse main
+# -> a78ae7b5515c2e482a2656cebeebae3fa5a6d584
+git rev-parse d25aedeed5de65d0a241bdce6eae22671ef2ddf8^{tree}
+# -> 21eb6bd2ba53b29ea6d80f90c01af40668f56955
+git merge-base --is-ancestor d6d58c0a45b439c262cc135b961e9c67b98ac0a8 d25aedeed5de65d0a241bdce6eae22671ef2ddf8
+# -> PASS
+git merge-base --is-ancestor d25aedeed5de65d0a241bdce6eae22671ef2ddf8 dd0188aa44c595e51c78f4019122d4a96f272982
+# -> PASS
+git diff --name-only d25aedeed5de65d0a241bdce6eae22671ef2ddf8..dd0188aa44c595e51c78f4019122d4a96f272982 -- src tests config tools pyproject.toml
+# -> no output
+
+# Frozen candidate worktree
+git worktree add --detach /mnt/data/reviewer029_candidate d25aedeed5de65d0a241bdce6eae22671ef2ddf8
+git -C /mnt/data/reviewer029_candidate rev-parse HEAD
+# -> d25aedeed5de65d0a241bdce6eae22671ef2ddf8
+git -C /mnt/data/reviewer029_candidate rev-parse HEAD^{tree}
+# -> 21eb6bd2ba53b29ea6d80f90c01af40668f56955
+git -C /mnt/data/reviewer029_candidate status --porcelain
+# -> no output
+
+# Exact pinned review environment provisioned outside repository from preserved wheel artefacts.
+python --version
+# -> Python 3.13.5
+pytest --version
+# -> pytest 9.0.3
+mypy --version
+# -> mypy 1.20.1 (compiled: yes)
+ruff --version
+# -> ruff 0.15.11
+
+# Reviewer-028 concrete closure
+pytest -q \
+  tests/product/raw_signal/test_u03_observation_native_temporal.py::test_same_observation_identity_rejects_array_typecode_change \
+  tests/product/raw_signal/test_u03_observation_native_temporal.py::test_same_observation_identity_rejects_range_bound_change
+# -> 2 passed in 0.02s
+
+# Complete U03 proof, including all earlier numeric/NaN/complex/bytes/mapping regressions
+pytest -q tests/product/raw_signal/test_u03_observation_native_temporal.py
+# -> 47 passed in 0.17s
+
+# Bounded Reviewer-029 external public-seam canary (not committed to candidate)
+pytest -q /mnt/data/r029_datetime_canary.py
+# -> FAIL: DID NOT RAISE <class 'ValueError'>
+# -> 1 failed in 0.02s; CANARY_EXIT=1
+
+# Integrity / cleanliness
+git fsck --full --strict
+# -> exit 0, no diagnostics
+git -C /mnt/data/reviewer029_candidate status --porcelain
+# -> no output
+
+# Failure-stop application
+# New material U03 invariant failed in the public-seam canary. No U04 work or downstream
+# acceptance/promotion execution was performed after that failure.

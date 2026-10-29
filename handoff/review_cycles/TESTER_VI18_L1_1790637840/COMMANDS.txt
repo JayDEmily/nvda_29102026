@@ -1,0 +1,65 @@
+VI-18-L1 Tester material command/evidence record
+
+GOVERNANCE / EXACT CANDIDATE
+- read root README.md, full GUARDRAILS.md, root AGENTS.md, tests/AGENTS.override.md, complete accepted EXEC_PLAN.md,
+  CURRENT_STATE.md, active TESTER_VI18_L1_1790637840 REQUEST.md and exact Worker evidence
+- exact candidate: 3113d10d1c3acb3d077c5c27547ea4caa5b01e7f
+- exact candidate tree: f43ed9ae73f1d44b763fbcb94250e5d31e18ce4a
+- review used detached exact-candidate worktree; later routing tip was not candidate bytes
+- received source packet SHA-256: 50935d9487de2a188385432e71566628223935b2f229080310e0445c9660e231
+
+PREREQUISITES / ANCESTRY
+- independently checked VI14-L1, VI15-L1, VI15-L2, VI16-L1, VI17-L1 and VI17-L2 candidate/Tester identities
+- all are present and ancestors of both VI18 routed baseline 4df802c... and exact candidate 3113d10...
+- VI17-L2 promotion close-out 88499cc... is also an ancestor
+
+AUTHORITY / PACKAGE / AGGREGATE BINDING
+- recomputed BICP JSON/MD, IRB, VI04, IWO JSON/MD and VI15 authority hashes -> exact accepted identities
+- package hashes -> exact accepted wheel/sdist identities
+- wheel metadata -> nvda-architecture-kernel==1.0.0
+- 16/16 wheel runtime Python files byte-equal to accepted package candidate 332c1f95 source bytes
+- accepted VI15-L2 aggregate evidence -> product 479/479; six families / 13/13 obligations; architecture/bootstrap 74/74
+- accepted VI16 whole-BICP review independently re-challenged those exact substantive bytes
+- scoped diffs 332c1f95 / 9248f3b / c07d527 / 5771220 -> VI18 candidate over src/** tests/** config/** pyproject.toml -> empty
+- VI18 aggregate rerun not required: terminal leaf contains no substantive byte drift
+
+REMAINING UNKNOWNS / INACTIVE CAPABILITIES
+- independently read IWO Remaining Unknown list and VI04/VI15 closures
+- all IWO Unknowns remain unresolved/out of scope except final distribution name/version lawfully closed at VI15
+- M00 sole active runtime module/allocation; A00 bootstrap depends only on M00
+- P01/DMPV3 and K01 remain placeholders
+- no runtime package for P01/K01/provider/network/downstream/replay classes in accepted wheel
+- terminal record makes no production/provider/downstream/full-reproducibility claim
+
+RECOVERY ARTEFACT
+- corrected artefact SHA-256 -> 156c0e720e69e1a31a307d8751582616f9187c6a3ee6947dfa22c413e840b251
+- corrected artefact bytes -> 5965855
+- fresh extraction HEAD/main -> 4df802c3ebe67409125c58655534814f24b9ae2b
+- readback tree -> 4a15cb1ba7877ee765a395c1d6cd1a986a72cb48
+- branch -> work/vi18-l1-final-freeze-recovery
+- readback status -> clean
+- git diff --check -> PASS
+- git fsck --full --no-dangling -> PASS
+- readback show-ref SHA-256 -> 2ea2adac6e8183ab8ee028c502741a8b28330787c321b75e4bdb7cd0cefd20a2
+- package SHA256SUMS inside recovery -> PASS
+- all required accepted VI14-VI17 objects present/ancestral to recovery baseline
+- thin root 8133432 present as sole reachable root; external predecessor d095954 absent as expected
+- superseded bad archive SHA-256 825228... is not accepted
+- recovery archive is explicitly baseline recovery; subsequent terminal promotion must preserve VI18 candidate/Tester ancestry
+
+PRESERVED PROVENANCE LIMITATION
+- PyYAML 6.0.3 version remains established
+- exact prior overlay binary/archive digest remains UNKNOWN
+- no arbitrary-host reproducible proof/build claim made
+
+CANDIDATE INTEGRITY
+- detached candidate status -> clean
+- git diff --check -> PASS
+- git fsck --full --no-dangling -> PASS
+- candidate changes from routed baseline are evidence/cycle records only
+
+DISPOSITION
+- PASS
+- findings: none
+- exact candidate accepted for terminal promotion/close-out Worker cycle only
+- Tester performs no terminal promotion

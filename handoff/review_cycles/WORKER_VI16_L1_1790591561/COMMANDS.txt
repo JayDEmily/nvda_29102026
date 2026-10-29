@@ -1,0 +1,32 @@
+VI-16-L1 Worker material command/evidence summary
+
+Governance/authority readback:
+- full GUARDRAILS.md; root AGENTS.md; tests/AGENTS.override.md; accepted EXEC_PLAN VI-16/branch/mutation/stop law
+- README.md, CURRENT_STATE.md, active Worker request
+- accepted BICP narrative/machine packet, IRB, IWO, VI-04 authority closure and VI-15-L1 distribution authority
+- accepted U01-U06 current-state/reviewer/promotion evidence as required to rebind lineage
+- VI-14 and VI-15 accepted Tester/promotion/package evidence
+- current architecture/product/architecture-proof configuration and final source paths
+
+Whole-system checks:
+- sha256sum of BICP/IRB/IWO exact current files
+- git merge-base --is-ancestor for accepted U01-U06, VI-14 and VI-15 identities
+- git diff --name-status 332c1f95da032f841e8779ef21fe3c1fceb698a2..HEAD -- src tests config pyproject.toml
+  => no paths
+- sha256sum -c /mnt/data/nvda_next_leaf/PACKAGE_ARTIFACTS/SHA256SUMS => wheel OK; sdist OK
+- Python zip inspection: 16 wheel Python files; all byte-equal to exact 332c1f95 candidate source; runtime roots
+  architecture/composition/raw_signal_occurrence_truth only
+- Python sdist inspection: 117 members; selected final semantic/config/source members byte-equal to exact 332c1f95
+  candidate
+- direct source trace: M00 api.py, private _postgres.py, A00 composition/__init__.py
+- production-source capability scan and architecture placeholder/allocation/dependency scan
+
+Review packet:
+- implementation/proof/VI16_L1_WHOLE_BICP_REVIEW_CANDIDATE_EVIDENCE.md
+- binds all 12 RSOT propositions, BC-001, all 19 proof obligations, final implementation paths, package identities,
+  VI-14/VI-15 accepted evidence, Remaining Unknown dispositions and inactive capabilities
+- Worker conclusion is NO_OBVIOUS_GAP_IDENTIFIED_BY_WORKER_TRACE, not VI-16 semantic acceptance
+
+Not rerun in VI-16 Worker:
+- accepted VI-15-L2 product 479/479 and architecture/bootstrap 74/74 aggregates; exact relevant bytes have no drift
+  from the independently accepted package candidate

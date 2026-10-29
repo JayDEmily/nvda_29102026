@@ -1,0 +1,37 @@
+................FF                                                       [100%]
+=================================== FAILURES ===================================
+______________ test_foreign_quote_contract_and_convention_refuse _______________
+
+    def test_foreign_quote_contract_and_convention_refuse():
+        c = case()
+        for changed in ({"contract_id": "foreign"}, {"currency": "EUR"},
+                        {"unit_convention_ref": ("premium", 2)}):
+            raw = {key: (k(key, value, **(dict(contract_id="option", currency="USD",
+                            unit_convention_ref=("premium", 1)) | changed)),)
+                   for key, value in c["raw"].items()}
+            result = _stage1.evaluate_stage1_kernel("D178", raw_inputs=raw,
+                derived_inputs={"D133": (k("D133", c["cost"]),), "D177": (k("D177", c["utility"]),)},
+                parameter_set=api.CalculationParameterSetV1("execution-rule", 1, "P_RULE", tuple(c["params"].items())),
+                contexts=c["contexts"], as_of_utc=NOW, knowledge_cutoff_utc=NOW)
+>           assert result is None
+E           AssertionError: assert KernelResultV1(value=Decimal('5.4500000000000000000000000000'), units='option premium', result_shape='scalar', input_occurrence_ids=('D133', 'D177', 'R034', 'R035', 'R189', 'R190')) is None
+
+tests/product/derived_signal/test_m01_f4_approved_execution_edge.py:209: AssertionError
+___ test_explicit_exit_currency_cannot_relabel_a_foreign_execution_reference ___
+
+    def test_explicit_exit_currency_cannot_relabel_a_foreign_execution_reference():
+        result = _stage1.evaluate_stage1_kernel("D191", raw_inputs={"R034": (k("R034", D(4)),),
+            "R035": (k("R035", D(6)),)}, derived_inputs={
+            "D133": (k("D133", named(expected_fill_price=D(5), currency="EUR")),),
+            "D164": (k("D164", named(commissions=D(3), fees=D(1), multi_leg_incremental_cost=D(2), currency="USD")),)},
+            parameter_set=api.CalculationParameterSetV1("exit", 1, "P_BASIC", (
+                ("liquidation_quantity", D(2)), ("multiplier", D(100)), ("currency", "USD"))),
+            contexts=(), as_of_utc=NOW, knowledge_cutoff_utc=NOW)
+>       assert result is None
+E       AssertionError: assert KernelResultV1(value=Decimal('994'), units='currency', result_shape='scalar', input_occurrence_ids=('D133', 'D164', 'R034', 'R035')) is None
+
+tests/product/derived_signal/test_m01_f4_approved_execution_edge.py:220: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/derived_signal/test_m01_f4_approved_execution_edge.py::test_foreign_quote_contract_and_convention_refuse
+FAILED tests/product/derived_signal/test_m01_f4_approved_execution_edge.py::test_explicit_exit_currency_cannot_relabel_a_foreign_execution_reference
+2 failed, 16 passed in 0.13s

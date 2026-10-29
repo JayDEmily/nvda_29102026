@@ -1,0 +1,80 @@
+FFF...........F                                                          [100%]
+=================================== FAILURES ===================================
+_______ test_d123_exact_right_and_only_two_persisted_sources[call-C150] ________
+
+right = 'call', contract = 'C150'
+
+    @pytest.mark.parametrize("right,contract", (("call", "C150"), ("put", "P150")))
+    def test_d123_exact_right_and_only_two_persisted_sources(right: str, contract: str) -> None:
+        records = tuple(replace(r, right=right, contract=contract) for r in BASE)
+        opposite = OI("opposite", "2026-10-10", 2, "first", 1, 999,
+                      right="put" if right == "call" else "call",
+                      contract="P150" if right == "call" else "C150")
+        decoy = OI("other-strike-contract", "2026-10-10", 2, "first", 1, 999,
+                   right=right, contract="C151" if right == "call" else "P151")
+        for included_opposite in (False, True):
+            owner, req = _public(records + (decoy,) + ((opposite,) if included_opposite else ()),
+                                 right=right, bind_opposite=included_opposite)
+            result = owner.materialise(req)
+>           assert result is not None and result.result == Decimal(25)
+E           assert (None is not None)
+
+tests/product/derived_signal/test_m01_f4_d123_controlled_public.py:137: AssertionError
+________ test_d123_exact_right_and_only_two_persisted_sources[put-P150] ________
+
+right = 'put', contract = 'P150'
+
+    @pytest.mark.parametrize("right,contract", (("call", "C150"), ("put", "P150")))
+    def test_d123_exact_right_and_only_two_persisted_sources(right: str, contract: str) -> None:
+        records = tuple(replace(r, right=right, contract=contract) for r in BASE)
+        opposite = OI("opposite", "2026-10-10", 2, "first", 1, 999,
+                      right="put" if right == "call" else "call",
+                      contract="P150" if right == "call" else "C150")
+        decoy = OI("other-strike-contract", "2026-10-10", 2, "first", 1, 999,
+                   right=right, contract="C151" if right == "call" else "P151")
+        for included_opposite in (False, True):
+            owner, req = _public(records + (decoy,) + ((opposite,) if included_opposite else ()),
+                                 right=right, bind_opposite=included_opposite)
+            result = owner.materialise(req)
+>           assert result is not None and result.result == Decimal(25)
+E           assert (None is not None)
+
+tests/product/derived_signal/test_m01_f4_d123_controlled_public.py:137: AssertionError
+____ test_d123_explicit_revision_precedence_out_of_arrival_order_and_cutoff ____
+
+    def test_d123_explicit_revision_precedence_out_of_arrival_order_and_cutoff() -> None:
+        # Prior period corrected later in *receipt order* than the newer reporting
+        # period: latest two ticks differ from latest two official periods.
+        correction = OI("revision", "2026-10-09", 1, "correction", 2, 110,
+                        event_days=2, receipt_seconds=5)
+        owner, req = _public(BASE + (correction,))
+        final = owner.materialise(req)
+>       assert final is not None and final.result == Decimal(15)
+E       assert (None is not None)
+
+tests/product/derived_signal/test_m01_f4_d123_controlled_public.py:155: AssertionError
+____ test_d123_refuses_future_knowledge_missing_applicable_and_wrong_right _____
+
+    def test_d123_refuses_future_knowledge_missing_applicable_and_wrong_right() -> None:
+        owner, req = _public(BASE, cutoff=NOW - timedelta(seconds=75))
+        assert owner.materialise(req) is None
+        wrong = tuple(replace(rec, right="put", contract="P150") for rec in BASE)
+        owner, req = _public(wrong, right="call")
+        assert owner.materialise(req) is None
+        owner, req = _public(BASE, mapping_version=2)
+        # Different mapping version is valid if consistently declared; a request
+        # pointing at an unregistered version must fail separately.
+>       assert owner.materialise(req) is not None
+E       AssertionError: assert None is not None
+E        +  where None = materialise(CalculationRequestV1(derived_signal_id='D123', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 11, 12...xpiry', '2026-12-18'), ('strike', Decimal('150')), ('option_right', 'call')))),), predecessor_selection_policy_refs=()))
+E        +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7f2d7b5cc580>.materialise
+
+tests/product/derived_signal/test_m01_f4_d123_controlled_public.py:195: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/derived_signal/test_m01_f4_d123_controlled_public.py::test_d123_exact_right_and_only_two_persisted_sources[call-C150] - assert (None is not None)
+FAILED tests/product/derived_signal/test_m01_f4_d123_controlled_public.py::test_d123_exact_right_and_only_two_persisted_sources[put-P150] - assert (None is not None)
+FAILED tests/product/derived_signal/test_m01_f4_d123_controlled_public.py::test_d123_explicit_revision_precedence_out_of_arrival_order_and_cutoff - assert (None is not None)
+FAILED tests/product/derived_signal/test_m01_f4_d123_controlled_public.py::test_d123_refuses_future_knowledge_missing_applicable_and_wrong_right - AssertionError: assert None is not None
+ +  where None = materialise(CalculationRequestV1(derived_signal_id='D123', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 11, 12...xpiry', '2026-12-18'), ('strike', Decimal('150')), ('option_right', 'call')))),), predecessor_selection_policy_refs=()))
+ +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7f2d7b5cc580>.materialise
+4 failed, 11 passed in 0.18s

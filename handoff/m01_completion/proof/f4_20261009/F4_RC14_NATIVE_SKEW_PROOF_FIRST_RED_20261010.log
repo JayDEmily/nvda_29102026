@@ -1,0 +1,49 @@
+FFF......                                                                [100%]
+=================================== FAILURES ===================================
+_ test_skew_uses_native_delta_strike_exact_expiry_and_lineage[D099-expected0] __
+
+did = 'D099', expected = Decimal('10')
+
+    @pytest.mark.parametrize("did,expected", (
+        ("D099", Decimal(10)), ("D100", Decimal(30)), ("D101", Decimal(4)),
+    ))
+    def test_skew_uses_native_delta_strike_exact_expiry_and_lineage(did: str, expected: Decimal) -> None:
+        owner, request = _public(did)
+        out = owner.materialise(request)
+>       assert out is not None and out.result == expected
+E       assert (None is not None)
+
+tests/product/derived_signal/test_m01_f4_rc14_skew_from_native_delta_public.py:105: AssertionError
+_ test_skew_uses_native_delta_strike_exact_expiry_and_lineage[D100-expected1] __
+
+did = 'D100', expected = Decimal('30')
+
+    @pytest.mark.parametrize("did,expected", (
+        ("D099", Decimal(10)), ("D100", Decimal(30)), ("D101", Decimal(4)),
+    ))
+    def test_skew_uses_native_delta_strike_exact_expiry_and_lineage(did: str, expected: Decimal) -> None:
+        owner, request = _public(did)
+        out = owner.materialise(request)
+>       assert out is not None and out.result == expected
+E       assert (None is not None)
+
+tests/product/derived_signal/test_m01_f4_rc14_skew_from_native_delta_public.py:105: AssertionError
+_ test_skew_uses_native_delta_strike_exact_expiry_and_lineage[D101-expected2] __
+
+did = 'D101', expected = Decimal('4')
+
+    @pytest.mark.parametrize("did,expected", (
+        ("D099", Decimal(10)), ("D100", Decimal(30)), ("D101", Decimal(4)),
+    ))
+    def test_skew_uses_native_delta_strike_exact_expiry_and_lineage(did: str, expected: Decimal) -> None:
+        owner, request = _public(did)
+        out = owner.materialise(request)
+>       assert out is not None and out.result == expected
+E       assert (None is not None)
+
+tests/product/derived_signal/test_m01_f4_rc14_skew_from_native_delta_public.py:105: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/derived_signal/test_m01_f4_rc14_skew_from_native_delta_public.py::test_skew_uses_native_delta_strike_exact_expiry_and_lineage[D099-expected0] - assert (None is not None)
+FAILED tests/product/derived_signal/test_m01_f4_rc14_skew_from_native_delta_public.py::test_skew_uses_native_delta_strike_exact_expiry_and_lineage[D100-expected1] - assert (None is not None)
+FAILED tests/product/derived_signal/test_m01_f4_rc14_skew_from_native_delta_public.py::test_skew_uses_native_delta_strike_exact_expiry_and_lineage[D101-expected2] - assert (None is not None)
+3 failed, 6 passed in 0.10s

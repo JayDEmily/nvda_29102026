@@ -1,0 +1,46 @@
+baseline all4 ready; loader /workspace/scratch/d549b6d808a9/d014-independent-fvguaHBj/sequence-diagnostic/tools/product_proof_claims.py b2670e26f51d4b6f4fc8c656c859b9e5d63ca9aadd84ff2f818ff06cd9bb118a
+PRE _support.py raw_signal_occurrence_truth_sqlite descriptor False witness True False allpaths ['_support.py']
+REJECT ValueError unowned D014 extension Python source without descriptor
+PRE _support.py neutral_market_measurement_truth_pilot descriptor False witness True False allpaths ['_support.py']
+REJECT ValueError unowned D014 extension Python source without descriptor
+PRE _support.py neutral_market_measurement_truth_d012 descriptor False witness True False allpaths ['_support.py']
+REJECT ValueError unowned D014 extension Python source without descriptor
+PRE _support.py neutral_market_measurement_truth_d013 descriptor False witness True False allpaths ['_support.py']
+REJECT ValueError unowned D014 extension Python source without descriptor
+PRE _support.py neutral_market_measurement_truth_d014 descriptor False witness True False allpaths ['_support.py']
+REJECT ValueError unowned D014 extension Python source without descriptor
+REMOVED _support.py
+PRE nested/helper.py raw_signal_occurrence_truth_sqlite descriptor False witness True False allpaths ['nested', 'nested/helper.py']
+REJECT ValueError unowned D014 extension Python source without descriptor
+PRE nested/helper.py neutral_market_measurement_truth_pilot descriptor False witness True False allpaths ['nested', 'nested/helper.py']
+REJECT ValueError unowned D014 extension Python source without descriptor
+PRE nested/helper.py neutral_market_measurement_truth_d012 descriptor False witness True False allpaths ['nested', 'nested/helper.py']
+REJECT ValueError unowned D014 extension Python source without descriptor
+PRE nested/helper.py neutral_market_measurement_truth_d013 descriptor False witness True False allpaths ['nested', 'nested/helper.py']
+REJECT ValueError unowned D014 extension Python source without descriptor
+PRE nested/helper.py neutral_market_measurement_truth_d014 descriptor False witness True False allpaths ['nested', 'nested/helper.py']
+REJECT ValueError unowned D014 extension Python source without descriptor
+REMOVED nested/helper.py
+PRE test_orphan.py raw_signal_occurrence_truth_sqlite descriptor False witness True False allpaths ['test_orphan.py', 'nested']
+REJECT ValueError unowned D014 extension Python source without descriptor
+PRE test_orphan.py neutral_market_measurement_truth_pilot descriptor False witness True False allpaths ['test_orphan.py', 'nested']
+REJECT ValueError unowned D014 extension Python source without descriptor
+PRE test_orphan.py neutral_market_measurement_truth_d012 descriptor False witness True False allpaths ['test_orphan.py', 'nested']
+REJECT ValueError unowned D014 extension Python source without descriptor
+PRE test_orphan.py neutral_market_measurement_truth_d013 descriptor False witness True False allpaths ['test_orphan.py', 'nested']
+REJECT ValueError unowned D014 extension Python source without descriptor
+PRE test_orphan.py neutral_market_measurement_truth_d014 descriptor False witness True False allpaths ['test_orphan.py', 'nested']
+REJECT ValueError unowned D014 extension Python source without descriptor
+REMOVED test_orphan.py
+PRE dangling.py raw_signal_occurrence_truth_sqlite descriptor False witness False True allpaths ['nested', 'dangling.py']
+REJECT ValueError unowned D014 extension Python source without descriptor
+PRE dangling.py neutral_market_measurement_truth_pilot descriptor False witness False True allpaths ['nested', 'dangling.py']
+REJECT ValueError unowned D014 extension Python source without descriptor
+PRE dangling.py neutral_market_measurement_truth_d012 descriptor False witness False True allpaths ['nested', 'dangling.py']
+REJECT ValueError unowned D014 extension Python source without descriptor
+PRE dangling.py neutral_market_measurement_truth_d013 descriptor False witness False True allpaths ['nested', 'dangling.py']
+REJECT ValueError unowned D014 extension Python source without descriptor
+PRE dangling.py neutral_market_measurement_truth_d014 descriptor False witness False True allpaths ['nested', 'dangling.py']
+REJECT ValueError unowned D014 extension Python source without descriptor
+REMOVED dangling.py
+SEQUENTIAL_DIAGNOSTIC_ALL_PASS

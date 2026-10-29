@@ -1,0 +1,3 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+TypeError: load_product_proof_claim() missing 1 required positional argument: 'claim_id'

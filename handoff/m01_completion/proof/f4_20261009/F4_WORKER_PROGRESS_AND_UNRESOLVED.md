@@ -1,0 +1,492 @@
+# M01 F4 — public relationship proof progress (not a review candidate)
+
+Date: 09-10-2026. Governing: `GUARDRAILS.md`, `AGENTS.md`, root `EXEC_PLAN.md`, F2 independent `F2_ACCEPTED` and F3 worker handoff. F3 base worktree `36105f05abaf4efd485594ac013078b606057b74` is preserved in ancestry. **This is an internal F4 recovery checkpoint; independent Stage-1 review is NOT requested or implied.**
+
+## Established F4 work
+
+1. **RC12 D145: four native book fields.** `test_m01_f4_book_ofi_public.py` builds controlled raw observations in the actual M00 owner and consumes them through M00's versioned public projection mapping. It computes the canonical OFI `+3` from two complete best-book state changes with native event source lineage. The negative witness removes R188 from one otherwise eligible event; the existing K17 path erroneously calculated a result by silently omitting that book mutation. The failing test and output were committed at `5534ddb` **before** the minimal `_stage1._eval_k17` repair at `cc8699e`. The repair rejects duplicate/missing required field-occurrence IDs rather than inventing a shortened event sequence; separate knowledge-cutoff and delayed-event proof remains. Red: `F4_RC12_D145_PUBLIC_RED.log`; focused green: `F4_RC12_D145_REPAIRED_FOCUSED.log`.
+2. **RC13 D151: exact basket component denominators.** `test_m01_f4_basket_breadth_public.py` uses controlled M00 projections from three distinct basket subjects; R137 is lawfully absent for one. Public D151 returns `(2/3,1/2,2/3)` for its three independent breadth components; missing a required *selected basket binding* is refused, and all contributing observation IDs remain in raw lineage. Committed at `4936048`. No D151 production change.
+3. **Conservative reconciliation.** `f4_progress_readback.py` checks the exact normative catalogue digest, 209 D rows, 174 Stage-1 rows, the 144 Stage-1-closed / 30 cross-stage partition, all 488 F1 edges plus D007 sentinel, and advances **only** the four D145 and four D151 raw edges. Output: `F4_RELATIONSHIP_PROOF_LEDGER.csv` and `F4_PROGRESS_READBACK.json`. Prior F2/F3 edge statuses are left untouched.
+
+## Verification executed on this F4 source tree
+
+- `725 passed`: `PYTHONPATH=.:src python -m pytest -q tests/product tests/architecture tests/bootstrap tests/implementation/derived_signal --ignore=tests/product/raw_signal/test_u05_postgresql_durability.py`, with pinned Python 3.13 proof environment and live PostgreSQL 17.9 local instance. **Both** `NVDA_TEST_M00_POSTGRES_DSN` and `NVDA_TEST_M01_POSTGRES_DSN` target separate established `f3_m00` and `f3_m01` roles/schemas; command readback is `F4_COMBINED_REGRESSION.log`.
+- The first combined attempt had **41 environment configuration failures**, because the restored shell exported only the administrator DSN; `F4_INITIAL_MISSING_ROLE_DSN_FAIL.log` is retained. Those are not counted as test passes. The role-specific DSNs were established and the same suite was rerun successfully; `F4_COMBINED_REGRESSION.log` supersedes the failed *invocation*, not its evidence.
+- Repository Ruff, source mypy (21 files), relevant formatter, structural architecture validation and F4 reconciliation readback pass. Exact logs present here.
+- The **55 M00 durability cases** previously passed during F3 in bounded runs. They were **not rerun** during this intermediate F4 checkpoint, and are not presented as fresh F4 results.
+- The F4 test harness uses controlled observations, not real provider-native event/book compatibility evidence. No M00 source code, accepted catalogue/brief, governing safeguards or package version was changed.
+
+## Unresolved Stage-1 acceptance proposition
+
+The F4 ledger contains **344 Stage-1-closed edges still not individually reconciled to a positive/adversarial public-seam witness**. This is an evidence gap, **not** a finding of 344 implementation failures. D145/D151 prove bounded rows only; they do not establish every other RC12/RC13 mechanism. The full 144 closed rows' production/public end-to-end reachability and 30 cross-stage rows' own-kernel and lawful refusal propositions have not been established. No Stage-1 acceptance or Stage-2 authority.
+
+**Next authorised action:** Continue F4 class/row-specific public and adversarial proof, including remaining RC12 book event mechanisms and other F1 matrix entries. Preserve proof-before-production Git order; reconcile every applicable relationship and the 144/30 population before producing the single independent Stage-1 F4 candidate. Do not return this internal checkpoint as a semantic acceptance candidate.
+
+
+## 09-10-2026 continuation — F4 red proof / authority stop (latest)
+
+F4 work after original `95ba585` checkpoint has implemented and proved bounded public mechanisms: D139/D140 SMART book-event side/level rates (incomplete-event refusal), D143 direct venue concentration and D144 SMART/direct divergence (incomplete-event refusal), and D007 versioned `RequiredFieldPolicy` completeness through M00 without mutating its zero-edge catalogue declaration. Their proof-first source commits and tests are preserved in the current Git ancestry, alongside prior D145 and D151 proofs. None is representative proof of an entire relationship class.
+
+The first unresolved authority invariant is **D134/D135 representation**: accepted raw dependencies R185/R188/R190 omit operation R187, whereas the current `_book_events` path unconditionally depends on R187. A controlled M00 public witness returns a persisted zero bid depth for a projected nonzero bid. The accepted brief expressly requires event operations for *event-driven* L2 books but does not specify how a three-field complete snapshot is identified as coherent. The witness remains **failing** rather than being weakened or bypassed. Detailed source, negative test, and one programme-owner decision: `F4_RC12_D134_D135_AUTHORITY_BLOCKER.md`.
+
+The conservative revised ledger accounts for **35 bounded F4 edges**, **317 still-unproved Stage-1-closed edges**, 18 accepted F2, 11 bounded F3, 107 Stage-2-deferred and the D007 zero-edge public sentinel, totalling the unchanged 488 normative dependencies plus the sentinel. The six D134/D135 raw edges remain **unproved**. Full public proof for 144 closed and kernel/refusal proof for 30 cross-stage remains open.
+
+Focused deliberately failing witness: `F4_RC12_D134_D135_PUBLIC_DEPTH_RED.log`. Combined test run excluding **that failing witness** and separate M00 durability suite: **734 passed** with separate M00/M01 PostgreSQL DSNs (`F4_CURRENT_GIVEN_UNRESOLVED_PUBLIC_TEST_EXCLUDED.log`). Ruff and 21-source-file mypy pass (`F4_CURRENT_RUFF.log`, `F4_CURRENT_MYPY.log`). **The failed witness was not made to pass.** No full-F4 review candidate is offered; stop at programme-owner authority decision.
+
+
+## 10-10-2026 internal RC02 continuation — current count/readback
+
+Programme Owner's 09-10-2026 R187 exception and book repair are now committed,
+resolving the previously documented D134/D135 authority blocker. After
+`db943a7`, independent public M00 tests at
+`tests/product/derived_signal/test_m01_f4_nbbo_algebra_public.py` establish:
+
+- D011 midpoint `(100+102)/2 = 101`, exact R034/R035 lineage;
+- D012 spread `102-100 = 2`, exact R034/R035 lineage;
+- D013 percentage spread `100*2/101 = 200/101`, exact D011/D012 predecessor occurrence
+  references with inherited R034/R035 lineage (no test-injected predecessor);
+- D014 size imbalance `(8-2)/(8+2) = 0.6`, exact R033/R036 lineage;
+- negative missing-field, future and other-subject observation exclusion; repeat
+  materialisation returns the same derived occurrence.
+
+Tests committed at `954889f` before reconciliation changes, with Ruff-only
+format hygiene at `566834e`. Focused: **11 passed**. Combined full non-durability:
+**768 passed**, command:
+`PYTHONPATH=.:src python -m pytest -q tests/product tests/architecture tests/bootstrap tests/implementation/derived_signal --ignore=tests/product/raw_signal/test_u05_postgresql_durability.py`,
+under Python 3.13.5, PostgreSQL 17.9 and distinct `f4_m00`/`f4_m01` writer roles
+with distinct same-named schemas. First run **767 passed, 1 failed** because
+`f4_m00` lacked database-level schema CREATE privilege for a test-created probe;
+this was corrected in the external **test environment**, not production, and the
+whole suite rerun green. See `F4_RC02_FIRST_ROLE_NO_CREATE_FAIL.log` and
+`F4_RC02_M00_M01_POSTGRESQL_COMBINED_REGRESSION.log`. `python -m ruff check
+src tests tools handoff/m01_completion/proof/f4_20261009/f4_progress_readback.py`
+passed; `python -m mypy src` passed (21 files). M00 durability suite not rerun.
+
+The amended effective catalogue digest is
+`8045c8c0c4a62fbc3b88759a65b415efb1f0d549764ddbdcae2c5c911cd8a64a`;
+490 normative edges + D007 zero-edge sentinel reconcile to **272**
+Stage-1-closed outstanding edges across **113** rows. All **30** cross-stage
+own-kernel/refusal obligations remain open. This is bounded RC02 proof only,
+not proof of every RC02 row or full Stage-1 acceptance. Continue F4 without
+new intermediate independent review; preserve single consolidated acceptance
+boundary. No Stage 2 implementation or authority change.
+
+
+## 10-10-2026 expanded RC02 public proof — supersedes 272-edge snapshot
+
+Proof-first commit `892ab71` adds
+`tests/product/derived_signal/test_m01_f4_rc02_scalar_algebra_public.py`
+with **25 passing tests** for D025 (0.5), D042 (1.25 percentage points),
+D043 (1 percentage point), D047 (10 bps), D057 (-2 points, ratio 0.9),
+D058 (1 point, ratio 20/19), D059 (-2 points, ratio 19/21), and D060
+(ratio 110/19). Inputs are separately owned native M00 observations, selected
+via exact public versioned projections. Each result is tested for canonical
+numerical result, full R lineage and deterministic retry. Missing, future and
+wrong-subject raw inputs are refused, as are zero denominators for D025/D060.
+No production repair was required for these eight rows.
+
+Complete applicable non-durability regression **793 passed** in live
+PostgreSQL 17.9 separate M00/M01 role environment; Ruff and mypy (21 source
+files) passed. Exact logs:
+`F4_RC02_EXPANDED_POSTGRESQL_COMBINED_REGRESSION.log`,
+`F4_RC02_EXPANDED_RUFF_PASS.log`, `F4_RC02_EXPANDED_MYPY_PASS.log`.
+The M00 55 durability tests have not been rerun in this pass.
+The reconciled F4 ledger now classifies **99 bounded F4 public edges**, 255
+outstanding Stage-1-closed edges across 105 rows, 107 deferred Stage-2
+edges, 18 accepted F2 scoped evidence, 11 bounded F3 edges, and one D007
+zero-edge sentinel. 30 cross-stage own-kernel/refusal obligations remain
+unproved. Stage 1 remains unaccepted; this is an internal proof checkpoint.
+
+
+## 10-10-2026 RC02 provider VWAP gap and RC01 temporal repair (internal)
+
+- `ff1bb57`: D018 public calculation with real M00 native trade-pair inputs,
+  D017 recursive VWAP 4.8, provider VWAP 5, D018 result difference 0.2 and
+  bps 10000*0.2/4.8; exact native/derived lineage and negative evidence.
+- `97857be`: RC01 native M00 public D001–D005 temporal tests committed **red**:
+  12 passed, receipt-only D002 failed because public graph demanded a
+  nonexistent D001 even though accepted K01 age rule permits receipt age.
+- `d5c34df`: bounded production graph repair passes all 13 RC01 temporal
+  tests, including true-instant D001 and D002, date-only refusal, receipt-only
+  D002 with collector basis and no invented D001, configured exchange date and
+  overnight session phase, missing/future refusal and exact raw lineage.
+  D002's **catalogue** D001 dependency was not removed.
+- Combined readback:
+  `F4_RC01_D002_D018_COMBINED_REGRESSION.log`: **809 passed** in separate
+  PostgreSQL 17.9 M00/M01 roles, excluding the separately scoped 55-case M00
+  durability suite. Ruff and 21-file source mypy passed:
+  `F4_RC01_D002_D018_RUFF.log`, `F4_RC01_D002_D018_MYPY.log`.
+- Current F4 reconciliation enumerates **490 authority edges** and the D007
+  sentinel; **240 Stage-1-closed relationship edges across 99 rows remain**
+  unproved, alongside **30 unproved cross-stage kernel/public-refusal rows**.
+  No row is accepted merely because class-level or per-edge accounting exists.
+  Do not submit Stage 1 for review yet. M00 provider/live compatibility and
+  Stage-2 functionality remain outside this proof.
+
+
+## 10-10-2026 current RC01 / RC14 native exact-contract evidence and durability
+
+Additional `daf8ab2` and `d4442fa` proof-first (test-only) commits establish:
+
+- D010 public configured open/closed market calendar, native raw and D003
+  predecessor evidence, missing-input refusal;
+- D085 public seven whole expiry days with exact option-contract identity and
+  D004 overnight trading-day predecessor, missing/past-expiry refusal;
+- D086 public ACT/365F from exact UTC D001 and provider expiry at configured
+  16:00 Australia/Melbourne with exact option-contract identity, missing/past
+  expiry refusal;
+- D087/D088 public exact-contract midpoint 100/spread 2 and D087 recursive
+  predecessor linkage, and D089/D090 strike 150/spot 120=1.25/log(1.25),
+  selecting the true contract over competing C2 and refusing missing, future,
+  and zero denominator. Each preserves bounded raw/derived lineage and retries.
+
+Whole applicable non-durability regression **832 passed** using Python 3.13.5,
+pinned pytest 9.0.3 and PostgreSQL 17.9 with independent M00/M01 roles.
+Ruff and mypy 21 files pass. Exact logs:
+`F4_RC01_RC14_832_PINNED_PYTEST_COMBINED_REGRESSION.log`,
+`F4_RC01_RC14_832_PINNED_RUFF.log`,
+`F4_RC01_RC14_832_PINNED_MYPY.log`.
+
+Separately scoped M00 durability proof: **55/55 passed in eight non-overlapping
+batches** under a clean Python 3.13.5 virtualenv with pinned pytest and
+psycopg 3.3.4. An unrelated Pydantic object graph exception prevented an
+initial **ambient** invocation (14 passed, 1 failed in the final 15-test
+batch); that failed run and negative diagnosis remain available. No M00 code
+or test was modified to obtain the passing isolated rerun. Details, exact
+collected test IDs and 8 passing logs in `F4_M00_DURABILITY_CLEAN_READBACK.md`.
+
+Current ledger: 490 authority dependencies + D007 sentinel, 132 newly
+bounded F4 public edges plus inherited 18 accepted F2 scoped, 11 bounded F3,
+107 deferred cross-stage edges; **222 outstanding Stage-1-closed edges across
+92 rows** and **all 30 cross-stage own-kernel/refusal row obligations** remain.
+This is not the consolidated F4/Stage-1 review candidate.
+
+
+## 10-10-2026 RC01 D062 + RC20 D009 complete-vintage proof and repair
+
+- `feeeb52` is proof-first public M00 D062 earliest eligible future event:
+  event in 120 seconds/2 minutes beats 300 seconds; exact native R284 and
+  D001 predecessor/raw R002/R003 lineage; historical/past-only, missing and
+  future-received input refusal; deterministic retry.
+- `b509b04` is a separately committed **red** RC20 public D009 macro-vintage
+  test (1 failed, 2 passed): a newer source-native revision with missing
+  required R282 was excluded from alignment, causing older complete revision
+  to masquerade as latest known vintage. Original red log preserved:
+  `F4_RC20_MACRO_INCOMPLETE_PUBLIC_RED.log`.
+- `a5ab688` is the bounded production completeness repair for native D009
+  macro revision fields R280/R281/R282. Focused D009/D062: 6 passed;
+  no changes to the normative catalogue or M00 source ownership.
+- The full applicable non-durability PostgreSQL 17.9 suite passes **838
+  tests**. Exact invocation after sourcing `/mnt/data/f4_pg_env/postgres.env`:
+  `PYTHONPATH=.:src python -m pytest -q tests/product tests/architecture tests/bootstrap tests/implementation/derived_signal --ignore=tests/product/raw_signal/test_u05_postgresql_durability.py`
+  with `NVDA_TEST_M00_POSTGRES_DSN` and `NVDA_TEST_M01_POSTGRES_DSN`
+  individually set to local PostgreSQL 17.9 `f4_m00` and `f4_m01` roles.
+  `python -m ruff check src tests tools handoff/m01_completion/proof/f4_20261009/f4_progress_readback.py`
+  and `python -m mypy src` both pass. Logs:
+  `F4_RC01_RC20_838_POSTGRESQL_COMBINED_REGRESSION.log`,
+  `F4_RC01_RC20_838_RUFF.log`, `F4_RC01_RC20_838_MYPY.log`.
+- Readback is conservatively reconciled to **137 newly bounded F4 public
+  relationship edges**, **217 still-unproved Stage-1-closed edges across 90
+  rows**, 18 inherited accepted F2 scoped edges, 11 bounded F3 edges, 107
+  deferred cross-stage edges, and the D007 zero-edge sentinel. All 30
+  cross-stage own-kernel/refusal obligations remain. Do not promote
+  bounded proof status into Stage-1 acceptance.
+- Separately scoped M00 durability 55/55 pass remains prior clean pinned
+  readback at `30c5e54`; it was **not rerun** for these two public rows.
+
+
+## 10-10-2026 RC03 public history/anchor class — post-838 continuation
+
+- Proof-first commit `3480116` adds independent M00 public-interface cases across
+  **all 24 RC03 Stage-1-closed rows**: D019–D024, D026–D027, D044–D046,
+  D048–D056 and D066–D069.  There are **29 matching RC03 relationship
+  edges** in the authoritative F1 inventory. The proof includes distinct
+  1m/5m/30m anchors and D024 predecessor graph, exact log returns, session
+  open/prior close/VWAP comparisons, configured yield/volatility/risk history,
+  price/percent/basis-point output, one-day anchors, and M00 raw/derived
+  lineage plus deterministic retry. Negative witnesses cover wrong subjects,
+  ineligible nearer observations, missing references and future-cutoff inputs.
+  No production change or catalogue mutation was necessary for this class.
+- The focused suite passes **29/29** cases
+  (`test_m01_f4_rc03_history_public.py`). The expanded live PostgreSQL 17.9
+  regression passes **867 tests** with separate writer roles and schemas;
+  exact log `F4_RC03_867_POSTGRESQL_COMBINED_REGRESSION.log`. Ruff and mypy
+  (21 files) pass in `F4_RC03_RUFF.log` and `F4_RC03_MYPY.log`.
+- Environmental attempts and diagnostics are preserved:
+  an initial collection failure for absent PyYAML 6.0.3 was observed and
+  summarised in `F4_RC03_ENVIRONMENT_DIAGNOSTIC.md`;
+  `F4_RC03_FULL_POSTGRESQL_COMBINED_REGRESSION.log` documents the interim
+  866-pass/1-fail run with inherited ANSI colour forced in mypy output.
+  The final pinned execution isolated colour configuration without editing
+  or bypassing any tests, and was green.
+- Effective normative catalogue remains the authorised R187-adjusted
+  SHA-256 `8045c8c0c4a62fbc3b88759a65b415efb1f0d549764ddbdcae2c5c911cd8a64a`
+  with **490 edges plus one D007 sentinel**. F4 ledger now records **166
+  bounded F4 public edges**, **188 outstanding Stage-1-closed edges across
+  66 rows**, 18 inherited F2 scoped edges, 11 F3 bounded edges, 107
+  deferred Stage-2 edges and one D007 zero-edge sentinel. **All 30
+  cross-stage own-kernel/refusal obligations remain open.** RC03 bounded
+  public edge evidence is not whole Stage-1 or independent acceptance.
+- The previous separate **55/55** pinned M00 PostgreSQL durability readback
+  is retained at `30c5e54`; this run did not independently rerun that suite.
+- A potential D123 exact-contract/open-interest history concern was
+  identified by static source inspection only; no positive defect claim or
+  F4 ledger credit is made without a public reproducer. Continue with
+  authority-derived unproved classes, not Stage 2.
+
+
+## 10-10-2026 RC01 data-quality and receipt trigger — post-RC03 continuation
+
+- Proof-first commit `1a8a0c6` adds public M00 witnesses for D006
+  staleness score, D008 structured alignment and D209 recalculation trigger.
+  Immutable declared P_SCORE features combine age, admitted provider type
+  code and cadence in D006 (exact result 2.75); D008 reports two true instants
+  of five-second skew, coverage 2/3, one receipt-only missing event instant,
+  and a versioned bounded sigmoid score. D209 persists the native receipt
+  timestamp and control fact with versioned schedule context, without actions.
+  Tests cover full raw/predecessor lineage, deterministic retry, incomplete
+  fields, wrong source and future/receipt-only refusal. 12 focused tests pass.
+- Full applicable isolated PostgreSQL 17.9 non-durability regression:
+  **879 passed** (`F4_RC01_879_POSTGRESQL_COMBINED_REGRESSION.log`).
+  Ruff and mypy pass (`F4_RC01_879_RUFF.log`, `F4_RC01_879_MYPY.log`).
+  The prior 55 passing M00 durability tests were not rerun this time.
+- The amended normative catalogue is unchanged at 490 dependency edges
+  (plus D007 zero-edge sentinel). RC01 now has zero unproved Stage-1-closed
+  relationships. F4 ledger stands at **174 newly bounded public edges**
+  and **180 still unproved Stage-1-closed edges across 63 rows**.
+  All 30 cross-stage own-kernel/public-refusal obligations remain open.
+  This is bounded evidence only, not full Stage-1 proof or acceptance.
+
+
+
+## 10-10-2026 RC04 D028 exact elapsed-session-fraction repair
+
+- Proof-first commit `d86b83b` includes accepted-brief §5 K04 public M00 evidence:
+  D028 R041/R044 per-native-occurrence pairing; prior source volume at
+  elapsed fractions 0.25 and 0.75 may not be compared with current 0.5.
+  Original public red output preserved in
+  `F4_RC04_D028_ELAPSED_FRACTION_PUBLIC_RED.log` (1 failed/10 passed).
+  Additional tests demonstrate D029–D031 sample N-1 z arithmetic and
+  insufficient/zero-SD refusal; these **do not** independently establish the
+  matching same-time-of-day/20–60-session horizon requirements, so those
+  rows receive **no F4 public proof ledger credit**.
+- Bounded production repair commit `fe293a0`: D028 now pairs R041/R044 using
+  the *same native M00 observation occurrence*, refuses missing/invalid
+  elapsed fractions, filters historical volumes to the exact current
+  fraction and never treats unmatched values as suitable baseline inputs.
+  The interleaved wrong-fraction volume=999 cannot change the correct
+  D028 result 16/mean(8,12)=1.6.  No normative catalogue mutation.
+- Final focused RC04 D028 + K04 arithmetic tests **13 passed**; combined
+  applicable non-durability PostgreSQL M00/M01 suite **892 passed**.
+  Ruff and mypy pass; see `F4_RC04_D028_892_POSTGRESQL_COMBINED_REGRESSION.log`,
+  `F4_RC04_892_RUFF.log`, `F4_RC04_892_MYPY.log`.
+- Exact F1/F4 reconciliation remains 490 normative edges plus D007
+  zero-edge sentinel. Only D028 R041/R044 (two edges) promoted to bounded
+  public proof, leaving **178 outstanding Stage-1-closed edges across
+  62 rows**; all 30 cross-stage own-kernel/public-refusal obligations
+  remain open.  D029–D031, remaining RC04 and other F4 classes remain
+  unproved beyond the explicitly stated partial arithmetic checks.
+- The separately scoped 55-test M00 durability suite has **not** been
+  rerun in this continuation; previous 55/55 checkpoint remains historical.
+  F4 and Stage 1 are not accepted. Stage 2 remains unauthorised.
+
+
+
+## 10-10-2026 RC04 D032-D039 bounded public risk/window proof and D039 repair
+
+- Proof-first Git `380f6d5`: all six annualised realised-volatility
+  horizons D032–D037 through M00: exact configured 5m/30m/intraday
+  grids and five/ten/twenty consecutive weekday trading-day intervals,
+  correct squared-log-return and trading-year-fraction law, missing
+  instant/calendar-window refusal, full raw lineage and idempotent retry.
+  D038 bipower variation with native R151/R149/R150 co-occurrence and
+  source lineage; D039 two full five-minute native bars, prior close,
+  high and low, exact numeric average.  Original D039 negative public
+  witness: an incomplete required bar is silently dropped and replaced
+  by an older complete bar (1 failed/19 passed in red log).
+- Production Git `defa123`: D039 now chooses the **actual latest** bar
+  window by its close series before checking complete high/low co-reference.
+  No missing bar may be substituted by an earlier bar.
+- Second proof-first Git `7b98d34`: a 10-minute gap in a required
+  rolling pair of five-minute bars must refuse (1 failed/20 passed
+  in red log). Production Git `fbd36b7` establishes actual contiguous
+  300-second native bar-close instants; gap now refuses without
+  silently promoting an incomplete series.
+- Focused D032–D039 M00 tests **21 passed**; whole applicable PostgreSQL
+  M00/M01 suite **913 passed**. Ruff and mypy pass, exact logs:
+  `F4_RC04_913_POSTGRESQL_COMBINED_REGRESSION.log`,
+  `F4_RC04_913_RUFF.log`, `F4_RC04_913_MYPY.log`.
+- F1 ledger reconciles 490 normative edges + D007 zero-edge sentinel.
+  12 D032–D039 dependency edges (eight rows) promoted to bounded
+  public proof: **166 outstanding Stage-1-closed edges across 54
+  rows**, plus **30 cross-stage kernel/refusal obligations** still open.
+  RC04 D029/D030/D031 same-time-of-day baseline matching remains
+  **unproved**, notwithstanding the earlier sample-SD arithmetic
+  witnesses. The separately scoped 55 M00 durability tests were
+  **not rerun** in this continuation. No Stage-1 acceptance.
+
+
+
+## 10-10-2026 RC13 exact instrument returns and contemporaneous basket
+
+- Git `9e1447d` proves M00-public D071–D075 independently against SPY,
+  QQQ, SMH, SOXX and NVDA requests, respectively: current 120/prior 100
+  yields ln(1.2) for the *requested* exact subject, excluding an AMD
+  decoy.  Missing/wrong-subject prior, future-received current, full
+  native raw lineage and deterministic retry are proved in 15 focused
+  tests. These five rows account for ten normative RC13 edges.
+- Git `9365cd0` adds three M00-public D083 proofs: immutable,
+  three-member NVDA/AMD/INTC basket selected by exact per-member bindings;
+  N-1 sample dispersion of three contemporaneous log returns; fail-closed
+  missing INTC prior and mismatch between basket membership in
+  parameter profile and input selection; full R037/R042 source lineage.
+  Two D083 edges receive bounded public credit.
+- Full applicable PostgreSQL M00/M01 non-durability regression **931
+  passed**; Ruff and mypy pass in exact logs
+  `F4_RC13_931_POSTGRESQL_COMBINED_REGRESSION.log`,
+  `F4_RC13_931_RUFF.log`, `F4_RC13_931_MYPY.log`.
+- Ledger still derives mechanically from **490 catalogue dependencies**
+  plus D007 sentinel. Twelve RC13 edges (six rows) added to bounded F4
+  public evidence; **154 still outstanding Stage-1-closed edges across
+  48 rows** and all **30** cross-stage kernel/refusal obligations.
+  D076/D077 predecessor-to-different-sector-subject mapping and all
+  other unproved RC13/RC05/RC06 relations remain explicitly **UNKNOWN /
+  unproved** until appropriate public and authority checks; no inference
+  of correct multi-subject recursion is made from the direct scalar tests.
+- The separate 55-case M00 PostgreSQL durability suite was **not
+  rerun** in this continuation. F4 and Stage 1 remain unaccepted.
+
+
+## 10-10-2026 RC06 multi-predecessor scores and RC14 option contract/IV proofs
+
+- Proof-first test Git `d4d7d66` adds M00 public-interface proofs for
+  D040 (four exact time-grid trend features), D061 (six precursor microstructure
+  scores), and D070 (seven constituent liquidity/momentum scores). Public
+  witnesses prove deterministic configured P_SCORE arithmetic, predecessor-D
+  and ultimate raw-R lineage, exact subject/time versioning, retry and
+  incomplete/mismatched prerequisite refusal. Eleven focused tests pass.
+  These three rows provide **17** independently bounded raw/predecessor edges.
+- Git `a74fcf9` adds exact-contract public option IV witnesses: D092
+  bid/ask IV midpoint, D093 IV spread, D094 five-minute IV change and
+  D095 prior-session/day IV change, with a competing contract,
+  snapshots as-of the historical anchor, eligibility/refusal, raw lineage
+  and repeat request. The authorised anchor is latest eligible observation
+  at or before the historical instant, **not** exact-timestamp equality.
+  Thirteen focused tests pass; these four rows provide **7** edges.
+  Initial transient uncommitted tests incorrectly asserted exact-time
+  staleness refusal and were corrected after inspection of the authority
+  and `_history_anchor`; no production defect is inferred.
+- Git `dbe2138` independently proves D116 native option contract
+  volume/open-interest ratio, competing contract exclusion, exact 1.5
+  result, missing/zero/future refusal and persisted R041/R075 lineage.
+  Five focused tests pass; **2** edges receive bounded public proof.
+- New F4 public proof totals **226** bounded edges; **128** Stage-1-closed
+  dependency edges remain outstanding across **40** rows. The complete
+  census continues to reconcile **490** authoritative dependency edges
+  plus D007 sentinel and **30** outstanding cross-stage own-kernel/public
+  fail-closed obligations. All catalogue mathematics and dependencies
+  remain unchanged since the prior authorised R187 correction.
+- PostgreSQL 17.9 separate-role whole applicable non-durability regression
+  **960 passed** (`F4_RC06_RC14_POSTGRESQL_COMBINED_REGRESSION.log`).
+  Ruff (`F4_RC06_RC14_RUFF.log`), mypy across 21 source files
+  (`F4_RC06_RC14_MYPY.log`) and the F1/F4 reconciler
+  (`F4_RC06_RC14_RECON.log`) all exit 0. This continuation has **not**
+  independently rerun the separately scoped 55-case M00 durability suite.
+- D076/D077 cross-subject predecessor selection, D041 parent trend P_SCORE
+  profile compatibility and the remaining F1 classes remain unproved
+  until separately exercised. No new production change was required in
+  this tranche. F4 and Stage 1 are not accepted; Stage 2 unauthorised.
+
+## 10-10-2026 RC16 native live-position and status proof checkpoint
+
+- Resumed from original checkpoint `9f25f96b08d8571e93c0dc498454f60b5b0a911b` without rewriting its history. Test-first commits `d20c7ae`, `241a162` and `3260c39` preserve the adversarial RC16 M00 public interface proof and correctly separate fixture invalidity from the substantive defect. The first 15-case test run failed during fixture construction because an immutable `P_BASIC` parameter tuple was empty; corrected before diagnosing production. With the valid fixture, four known-incomplete-second-leg tests failed and 11 passed (`F4_RC16_POSITION_INCOMPLETE_KNOWN_LEG_RED.log`). This evidence is preserved unweakened.
+- Production repair `389c8dd` establishes equal M00 native occurrence-ID membership for R212 position quantity, R016 multiplier and the applicable Greek before summing D181–D184. Previously `_align_occurrence_fields` intersected IDs and silently discarded known incomplete selected legs. The correction is confined to D181–D184's native-leg membership check and changes no catalogue law. A leg whose complete record is *entirely future* remains invisible at cutoff; its existence cannot be inferred from present facts.
+- The same public proof exercises D180 6/(6+4) = 0.6, zero-denominator refusal; D185 named realised 125/unrealised -45/total 80; and independent two-leg D181 delta=80, D182 gamma=7, D183 vega=190 and D184 theta=-30, exact M00 raw IDs, deterministic retries, absence and receipt-cutoff negative cases. `F4_RC16_POSITION_GREEN.log`: 15 passed. These are **bounded** controlled-M00 proofs, not proof of a live external provider's complete position census.
+- The F4 readback now accounts for **243 bounded F4 edges**, **111 remaining Stage-1-closed outstanding edges across 34 rows**, **490 catalogue dependency edges + D007 zero-edge sentinel** and **30 cross-stage rows still outstanding** (`F4_RC16_POSITION_RECON.log`). No cross-stage credit, no Stage-1 acceptance.
+- `F4_RC16_COMBINED_REGRESSION.log`: **975 passed**, command `PYTHONPATH=.:src /mnt/data/nvda_f4_env/venv/bin/python -m pytest -q tests/product tests/architecture tests/bootstrap tests/implementation/derived_signal --ignore=tests/product/raw_signal/test_u05_postgresql_durability.py` under pinned Python 3.13.5 and PostgreSQL 17.9. Test variables `NVDA_TEST_M00_POSTGRES_DSN` and `NVDA_TEST_M01_POSTGRES_DSN` were set to distinct existing local `f4_m00_role`/`f4_m01_role`, `f4_m00_schema`/`f4_m01_schema`, with `NVDA_TEST_POSTGRES_ADMIN_DSN` the local `oai` role, `NO_COLOR=1` and forced-colour overrides removed. The first combined attempt without the mandatory role DSNs failed 41 boundary cases (934 passed) and is not represented as successful. The suite was rerun unchanged with its prescribed role environment.
+- Ruff `python -m ruff check src tests tools handoff/m01_completion/proof/f4_20261009/f4_progress_readback.py` and mypy `python -m mypy src` passed (21 source files), logs `F4_RC16_RUFF.log`, `F4_RC16_MYPY.log`. Separate 55-case PostgreSQL durability was not independently rerun in this continuation; earlier passing proof is retained in Git.
+- RC16 D179 and D193 remain unproved. D076/D077 and all other outstanding relationship classes remain unproved; no changes to GUARDRAILS, AGENTS, ExecPlan, M00 ownership, package version, or unrelated normative catalogue. F4 and Stage 1 unaccepted; Stage 2 unauthorised.
+
+## 10-10-2026 RC14 exact-chain ratios and one-year IV baseline checkpoint
+
+- Independent M00 public-interface proof-first commits `c99716f`, `a2010f7` and `08195ab` exercise D118/D119 exact expiry/strike-region call-to-put volume/open-interest ratios and D105/D106 365-day ATM IV rank/percentile. The year-boundary witness was corrected to cover the full accepted trailing year before claiming baseline closure. No production changes were required for these four rows.
+- D118 uses native R049/R050 and D119 R047/R048, each yielding the exact ratio 2 for the selected native region; the witnesses include competing expiry/strike region exclusion, zero and absent denominator refusal, future-receipt cutoff refusal, persisted lineage and retry. `F4_RC14_CHAIN_RATIOS_FOCUSED.log`: 10 passed.
+- D105 rank and D106 percentile independently use a 365-day exact ATM30D historical baseline R183 with current 0.30 and previous 0.20/0.40, producing 50/50, as well as tie discrimination (rank 100, percentile 75), unrelated-point exclusion, missing history and temporal refusal, lineage and retry. `F4_RC14_IVBASE_FOCUSED.log`: 10 passed.
+- `F4_RC14_EXTENDED_RECON.log` reconciles 490 catalogue edges plus D007 zero-edge sentinel: 249 new F4 bounded public edges, 105 Stage-1-closed dependency edges outstanding across 30 rows, 30 separate cross-stage kernel/refusal obligations still unproved. The RC14 tranche adds six evidence edges beyond the prior RC16 checkpoint; no Stage-1 acceptance.
+- PostgreSQL 17.9 combined non-durability regression with separate M00/M01 native roles and prescribed test database admin DSN: **995 passed** (`F4_RC14_EXTENDED_COMBINED_REGRESSION.log`). Ruff `F4_RC14_EXTENDED_RUFF.log` and mypy `F4_RC14_EXTENDED_MYPY.log` pass (21 source files). The separate 55-case durability suite was not rerun in this tranche; its previous 55/55 results remain in Git and are not claimed as this checkpoint's own run.
+- D076/D077 cross-subject graphs, D123 historical OI contract identity, D179 signed-slippage predecessor/subject binding, D193 and all other open F1 relationships remain unproved. F4 and Stage 1 unaccepted; Stage 2 unauthorised.
+
+## 10-10-2026 RC21 macro surprise complete-release repair checkpoint
+
+- Proof-first commit `d4ff247` adds five M00 public tests for D063 release-specific standardised macro surprise. Native R286 actual and R285 consensus co-reference per print; prior surprises 10/20/40 and current 50 produce exact `(50-30)/sqrt(200)` under the selected most-recent-two historical baseline. The witness excludes a competing release family, checks both raw fields/occurrences, deterministic retry, zero historical SD and future cutoff.
+- `F4_RC21_MACRO_SURPRISE_RED.log` retains the observed **2 failed, 3 passed** proof before production: a newer release missing consensus and an incomplete selected historical release were both silently elided by the field-intersection helper; a stale release or an earlier baseline was substituted and the kernel returned a value. Both are separate manifestations of the admitted release-completeness law. This failure is not fixture construction error.
+- Bounded production correction `9a701de` in `src/nvda_desk/derived_signal_calculation_truth/_stage1.py` requires matching selected native actual/consensus occurrence membership and matching effective timestamps before D063 standardisation; it does not change arithmetic, data ownership, catalogue or M00 interface. `F4_RC21_MACRO_SURPRISE_GREEN.log`: **5 passed**. `F4_RC21_MACRO_SURPRISE_RUFF_FOCUSED.log` records the focused formatting validation, after two test-file line-wrap corrections without changed expectations.
+- `F4_RC21_MACRO_SURPRISE_RECON.log` accounts for the full 490 authoritative dependency edges plus D007 sentinel. D063's two edges receive bounded public proof, yielding **251** F4 bounded edges, **103** Stage-1-closed outstanding edges across **29** rows, **30** cross-stage own-kernel/refusal obligations still unproved. The F4 ledger is not Stage-1 acceptance.
+- PostgreSQL 17.9 role-separated combined non-durability run (`F4_RC21_MACRO_SURPRISE_COMBINED_REGRESSION.log`) **1000 passed**. Exact command: `PYTHONPATH=.:src /mnt/data/nvda_f4_env/venv/bin/python -m pytest -q tests/product tests/architecture tests/bootstrap tests/implementation/derived_signal --ignore=tests/product/raw_signal/test_u05_postgresql_durability.py`, with established separate M00/M01 DSNs and test admin DSN. Ruff `python -m ruff check src tests tools handoff/m01_completion/proof/f4_20261009/f4_progress_readback.py` and `python -m mypy src` pass (21 source files), recorded in `F4_RC21_MACRO_SURPRISE_RUFF.log` and `F4_RC21_MACRO_SURPRISE_MYPY.log`. Separate 55-case durability was not rerun this tranche; earlier passing evidence remains in history.
+- D117 baseline z-score, D076/D077 cross-subject graphs, D123 contract-specific historical OI, D179/D193 position fills and remaining Stage-1 closed/cross-stage rows remain open. Stage 1 and F4 are not accepted; Stage 2 remains unauthorised.
+
+## 10-10-2026 RC13 sector-relative predecessor identity continuation
+
+- Re-entry base: `62f0f3e`, preserved as an ancestor of isolated continuation checkout `319e1e7` (which already contained D082 proof-first `43c36cc`, production correction `1b7553f` and reconciliation `319e1e7`). This worker used a distinct copied checkout `work/m01-f4-continuation-20261010`; no source checkout/branch was force-modified.
+- The accepted brief §5 K02 fixes `D076=QQQ_return-SPY_return` and `D077=(SMH_return+SOXX_return)/2-QQQ_return` in ordinary two-proxy mode, and the catalogue declares their exact predecessor D identities. Prior graph implementation forwarded the parent's nominal subject and basket bindings to every child, causing different predecessor returns to be computed from the same latest market member.
+- Proof-first commit `e6b98e9` preserves seven M00 public tests. Before repair, **7 failed**: relative D076/D077 numerics returned zero; missing member, future receipt and competing SPY/SPX alias were not refused. Native R037/R042 identities, distinct instruments, independent D and raw lineage, stable retry, and an AMD decoy are exercised. Red log: `F4_RC13_RELATIVE_RED_20261010.log`.
+- Bounded implementation commit `0067dbc` scopes each admitted D076/D077 predecessor to the single authorised bound proxy instrument using explicit versioned child selection policy refs, refuses missing/duplicated aliases or child policies wider than the parent, and retains the parent's knowledge cutoff. It does not change accepted mathematics, catalogue, M00 ownership or package version. `F4_RC13_RELATIVE_GREEN_20261010.log` shows seven focused passes.
+- Consolidated regression after correction: **1037 passed** against the established PostgreSQL 17.9 test setup, using `PYTHONPATH=.:src pytest -q tests/product tests/architecture tests/bootstrap tests/implementation/derived_signal --ignore=tests/product/raw_signal/test_u05_postgresql_durability.py`, with separate existing `f4_m00_role`/`f4_m01_role` and `f4_m00_schema`/`f4_m01_schema` via DSNs and local `oai` admin DSN. `F4_RC13_RELATIVE_COMBINED_REGRESSION_20261010.log`. Ruff `ruff check src tests tools handoff/m01_completion/proof/f4_20261009/f4_progress_readback.py` and mypy `mypy src` both pass (21 source files).
+- Earlier attempts at the full suite without mandatory PostgreSQL role DSNs failed 41 boundary tests (environment configuration, not a product regression). The initial role-configured run failed one privilege-isolation test due to an observed transient `INSERT` privilege on M00 at factory construction; the unchanged isolated test passed on retry and the full suite subsequently passed unchanged (1037). Keep the observed failure distinct from its unproved cause. The separate 55-case durability suite was not rerun in this tranche; earlier successful evidence remains in history.
+- F1 relationship reconciliation now accounts for **490 accepted dependency edges** plus the intentional D007 zero-edge sentinel: D076 (2) and D077 (3) have bounded two-proxy public evidence, leaving **70 outstanding Stage-1-closed edges across 21 rows**. The 30 cross-stage row kernel/refusal obligations remain open. The optional parameterised D077 single-proxy mode was **not independently proved** by this tranche; do not infer its complete semantics from the two-proxy witness. Neither F4 nor Stage 1 is accepted; Stage 2 remains unauthorised.
+
+## 10-10-2026 RC14 D103 two-snapshot IV-grid completeness continuation
+
+- Authority: accepted §5 K03 and catalogue D103 R111; no normative changes. Native
+  snapshots must be matched by exact surface grid key with complete, strictly
+  ordered prior and current snapshot grids; silently averaging only their
+  intersection would misrepresent a partial surface as a full parallel shift.
+- Proof-first commit `9143a5e` adds eight M00 public cases in
+  `test_m01_f4_rc14_surface_shift_public.py`; red log
+  `F4_RC14_SURFACE_SHIFT_RED_20261010.log` shows **7 failed, 1 passed**.
+  Adversarial cases distinguish missing prior/current grid members, future
+  receipt, wrong instrument, duplicate grid, unclassified snapshot label, and
+  temporally reversed snapshot labels; the positive case has 0.30/0.40 prior
+  and 0.35/0.45 current IV, yielding exact five-vol-point parallel shift.
+- Bounded production commit `a48ded0` changes only D103 grid matching in
+  `_stage1.py`: it rejects duplicate/unclassified keys, unequal two-snapshot
+  grids and impossible snapshot chronology; it no longer shortens the grid by
+  taking its intersection. Focused M00 tests **8 passed**. A subsequent
+  typing-only local repair renamed shadowing `prior`/`current` dictionary
+  variables to `prior_grid`/`current_grid` (the pre-existing `prior` identifier
+  was previously Decimal in this function). The first 1045-case combined test
+  attempt failed only its architectural mypy check (1044 passed / 1 failed);
+  the same combined suite then passed **1045** unchanged after that typing
+  fix (`F4_RC14_SURFACE_SHIFT_COMBINED_20261010.log`). Ruff
+  (`F4_RC14_SURFACE_SHIFT_RUFF_20261010.log`) and mypy across 21 source files
+  (`F4_RC14_SURFACE_SHIFT_MYPY_20261010.log`) pass.
+- The F4 ledger credits only D103's **one** authoritative R111 dependency,
+  yielding **285 F4 bounded edges**, **69 outstanding closed-stage edges**
+  across the remaining **20** rows, plus **30** unproved cross-stage
+  own-kernel/public-refusal obligations. Catalogue census remains 490
+  normative edges plus D007 zero-edge sentinel; D077 optional single-proxy
+  mode and remaining F4 classes remain unproved. Separate 55-case M00
+  PostgreSQL durability not rerun for this tranche. F4/Stage 1 not accepted;
+  Stage 2 unauthorised.
+
+## 10-10-2026 RC04 D029–D031 native time-of-day baseline continuation
+
+- Resumed from full-Git `da0b9f0c883e24a4efc619649cdf6d791a51cc49`, preserving ancestry and all F2/F3/F4 evidence. Governance readback: `GUARDRAILS.md`, root `AGENTS.md`, `EXEC_PLAN.md`, test override, accepted brief §5 K04/Appendix A and current catalogue. No normative or M00 changes.
+- Proof-first Git commit `0a8bffab739fbfce3e21421c89076e7a7f32c223`: nine independent public M00 cases for D029/R144, D030/R062 and D031/R063, with source-native `time_of_day_bucket` projected via admitted `selection_identity_field_paths` and immutable `P_BASELINE` matching rule. The pre-repair focused test showed **9 failed**: an unrelated more-recent bar replaced one of the matching historical samples; missing matching history and a missing versioned matching rule incorrectly produced results (`F4_RC04_TOD_PROOF_FIRST_RED_20261010.log`).
+- Bounded production commit `bf48480` corrects only the D029–D031 K04 input selection. It requires explicit `matching_rule=source_native_time_of_day_bucket` and populated source-native bucket identities, matching the current bucket strictly prior to the current event; otherwise refuses. The mathematical sample-standard-deviation z-score is unchanged. Existing arithmetic/Leaf-2 tests were retained and supplied with the missing exact bucket identity/parameter rule, without weakening assertions. Focused public tests: **9 passed**.
+- The first full combined regression had **1053 passed, 1 failed** because a pre-existing Leaf-2 unit fixture omitted the now-required bucket metadata/rule; its original assertions were retained and the fixture was corrected (`F4_RC04_FIRST_COMBINED_FIXTURE_FAILURE_20261010.log`). The full unchanged-suite rerun then yielded **1054 passed** (`F4_RC04_TOD_COMBINED_POSTGRES_GREEN_20261010.log`) on a fresh pinned Python 3.13.5 / PostgreSQL 17.9 instance with separate M00 and M01 roles/schemas. Exact command: `PYTHONPATH=.:src python -m pytest -q tests/product tests/architecture tests/bootstrap tests/implementation/derived_signal --ignore=tests/product/raw_signal/test_u05_postgresql_durability.py`; `NVDA_TEST_M00_POSTGRES_DSN`, `NVDA_TEST_M01_POSTGRES_DSN` and admin DSN point to isolated PostgreSQL 17.9 proof roles on Unix-domain socket. Ruff across `src tests tools` and the ledger reader: **PASS**; mypy across 21 source files: **PASS**. The separate 55-case durability suite was not rerun in this continuation; historical 55/55 evidence remains in Git.
+- F1 catalogue census remains **490 dependencies** plus D007 zero-edge sentinel. D029–D031's three RC04 source edges are now covered by bounded evidence. F4 ledger: **288** F4 bounded edges, **66 outstanding Stage-1-closed edges across 17 rows**, and **30 Stage-1 cross-stage own-kernel/public-refusal obligations** remain unproved. Source-native bucket provenance is controlled-M00 proof, not independent live-provider certification. F4 and Stage 1 remain unaccepted; Stage 2 unauthorised.
+
+## 10-10-2026 RC14 D117 exact-option historical-volume z-score continuation
+
+- Authority: accepted K04 z-score from matching historical contract/delta bucket, source-native option identity and versioned P_BASELINE history_count/minimum_sample, fixed dependency R041/R075. Test-first Git commit `1ce93a9` added `test_m01_f4_rc14_option_volume_z_public.py`: six M00 controlled public-interface cases. Two prior exact-contract R041 values 8/12 and current 16 give `(16-10)/sqrt(8)`, while competing-contract volume 200 is excluded; R075 is present in exact recorded raw lineage. The other cases require refusal for insufficient exact-contract history, missing history, zero sample variance, future current receipt and missing R075. Six focused passes with no production repair.
+- Full PostgreSQL 17.9 combined non-durability regression `F4_RC14_D117_COMBINED_20261010.log`: **1060 passed**. Separate M00/M01 DSNs point to isolated role/schema pairs on the restored portable instance. Ruff (`F4_RC14_D117_RUFF_20261010.log`) and mypy (`F4_RC14_D117_MYPY_20261010.log`, 21 files) passed. The separate 55-case durability suite was not rerun here; earlier proof persists in Git.
+- Reconciled catalogue remains 490 dependency edges plus D007 zero-edge sentinel; two D117 edges now have bounded M00 public evidence. F4 ledger holds **290 bounded F4 edges**, **64 outstanding Stage-1-closed edges across 16 rows**, with 30 cross-stage own-kernel/public-refusal obligations unproved. This controlled M00 exact-contract witness does not establish provider-wide option matching. F4 and Stage 1 unaccepted; Stage 2 unauthorised.
+
+## 10-10-2026 RC14 D099–D101 native option-delta/strike co-reference repair
+
+- Accepted K02 D099 25-delta skew, D100 10-delta wing skew and D101 25-delta/ATM smile curvature require source-native R111 implied volatility, independent R112 option delta, and R015 strike for D099/D100 at an exact expiry. Their catalogue dependencies have not changed.
+- Proof-first commit `47d72e2` introduced nine actual M00 public-interface cases, with six independent exact-contract IV/delta/strike positions (call and put 25, 10 and 50 delta) and no copied delta metadata on R111. Red evidence `F4_RC14_NATIVE_SKEW_PROOF_FIRST_RED_20261010.log`: **3 failed, 6 passed**; all three valid D099/D100/D101 calculations returned no occurrence because the existing K02 kernel read delta only from IV metadata and ignored R112. The pre-repair negative cases were therefore not sufficient to claim safety.
+- Bounded production repair `12c1bb6` joins all declared native fields by exact contract ID, validates same provider/source and contract/expiry/right/strike metadata, enforces complete one-to-one contract membership, uses R112 numeric delta to select 25-/10-/50-delta points, and checks R015 numeric strike where declared. It preserves accepted mathematics and refuses missing, duplicate, mismatched or contradictory members; it does not change M00 ownership or the catalogue. An inherited direct-kernel fixture was supplied its authoritative R112/R015 fields and preserved its positive 5-vol-point result and cross-expiry/wrong-delta refusal expectations.
+- Focused public+unit regression **50 passed**; combined PostgreSQL 17.9 non-durability regression `F4_RC14_NATIVE_SKEW_COMBINED_20261010.log` **1069 passed**; Ruff and mypy passed (`F4_RC14_NATIVE_SKEW_RUFF_20261010.log`, `F4_RC14_NATIVE_SKEW_MYPY_20261010.log`). The previous M00 55-case durability result is retained but was not rerun for this tranche.
+- Bounded ledger credit now includes D099 3, D100 3 and D101 2 previously outstanding edges. Total fixed census **490 catalogue edges + D007 sentinel**, now **298 bounded F4 edges**, **56 outstanding Stage-1-closed edges across 13 calculations**, plus **30 cross-stage own-kernel/public-refusal obligations** unproved. Stage 1/F4 not accepted; Stage 2 unauthorised.

@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_d012",
+  "generation": 1,
+  "brief_sha256": "a31c482d2dc4822539ede99e955761319585af4badea93b9fc279638e1e1f393",
+  "binding_sha256": "f1eedec4aa2fcc543a66b709ecd925dd713d01ecabf19c776d5f1b07d3e15f8e",
+  "contract_sha256": "b8907ef6fba60ab18aadc1a1899997dde11f55735544fee6f2d13d21c7e2a02c",
+  "implementation_target_id": "M02",
+  "adequacy_review_ref": "independent-review/g61-d012-proof-v2/7eaddf9/20261019",
+  "admission_authority_ref": "owner-chat/20261019T222804/D012-and-standing-human-exceptions;accepted-D012-section9-root7.1;delegated-proof-admission",
+  "family_files": [
+    {
+      "path": "tests/product/market_measurement_d012/test_spread.py",
+      "sha256": "f2911a597f55ffd152d2089b722813e8e7d3800bf55f75b8c845d54cd93095bc"
+    }
+  ],
+  "support_files": [
+    {
+      "path": "tests/product/market_measurement_d012/_support.py",
+      "sha256": "82fec4e1b81332807a995a7bac595c3591140f3f009269d2e29d20d639ed02a8"
+    },
+    {
+      "path": "tests/product/market_measurement_d012/typing/valid_seam.py",
+      "sha256": "a6f6c363aab1803513c2dc34ac210d576355fb3f8d71c0022cd438c8752b380c"
+    },
+    {
+      "path": "tests/product/market_measurement_d012/typing/invalid_seam.py",
+      "sha256": "2f71233044d611e387ca41bbbf0a883c992081f3ae3d30d05051c39d0c0f8d50"
+    }
+  ],
+  "previous_generation": null
+}

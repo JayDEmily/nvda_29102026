@@ -1,0 +1,84 @@
+{
+  "id": "D009",
+  "definition": "D009-VINTAGE-STATUS-1",
+  "kernel": "K01_TIME",
+  "subject": "NVDA",
+  "series_id": "controlled-macro-series/1",
+  "reference_period": "2026-09",
+  "provider": "foundation-controlled-macro",
+  "variant": "vintage_v1",
+  "as_of": "2026-10-09T14:00:00Z",
+  "cutoff": "2026-10-09T14:00:00Z",
+  "raw_roles": {
+    "R280": {
+      "path": [
+        "macro",
+        "realtime_start"
+      ],
+      "native_kind": "date_only",
+      "units": "date"
+    },
+    "R281": {
+      "path": [
+        "macro",
+        "realtime_end"
+      ],
+      "native_kind": "date_only",
+      "units": "date"
+    },
+    "R282": {
+      "path": [
+        "macro",
+        "last_updated"
+      ],
+      "native_kind": "true_instant",
+      "units": "offset_datetime"
+    }
+  },
+  "publication_metadata_paths": {
+    "ordinal": [
+      "publication",
+      "ordinal"
+    ],
+    "timestamp": [
+      "publication",
+      "timestamp"
+    ]
+  },
+  "vintages": [
+    {
+      "id": "v1",
+      "ordinal": 1,
+      "publication": "2026-10-09T11:00:00Z",
+      "receipt": "2026-10-09T11:05:00Z",
+      "R280": "2026-10-01",
+      "R281": "2026-10-31",
+      "R282": "2026-10-09T10:50:00+00:00",
+      "status": "initial"
+    },
+    {
+      "id": "v2",
+      "ordinal": 2,
+      "publication": "2026-10-09T12:00:00Z",
+      "receipt": "2026-10-09T12:05:00Z",
+      "R280": "2026-10-02",
+      "R281": "2026-11-01",
+      "R282": "2026-10-09T11:50:00+00:00",
+      "status": "revised"
+    },
+    {
+      "id": "v3",
+      "ordinal": 3,
+      "publication": "2026-10-09T13:00:00Z",
+      "receipt": "2026-10-09T13:05:00Z",
+      "R280": "2026-10-03",
+      "R281": "2026-11-02",
+      "R282": "2026-10-09T12:50:00+00:00",
+      "status": "latest_known_at_cutoff"
+    }
+  ],
+  "success": "one atomic public call returns three separately identified/persisted/readable typed statuses v1,v2,v3",
+  "refusal": "v3 R282 absent while v3 R280/R281 visible; no tuple and no partial persistence",
+  "initial_only_cutoff": "2026-10-09T11:10:00Z yields only v1 initial; declared branch not third physical case",
+  "R282_rule": "last_updated is separate from publication timestamp and cannot supply publication ordering"
+}

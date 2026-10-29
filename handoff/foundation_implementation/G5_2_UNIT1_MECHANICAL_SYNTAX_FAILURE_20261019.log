@@ -1,0 +1,1554 @@
+FFFFFFFFFFFFFFFFFFFFFFF                                                  [100%]
+=================================== FAILURES ===================================
+___________________ test_d011_midpoint_public_exact_lineage ____________________
+
+    def test_d011_midpoint_public_exact_lineage():
+        raw = raw_api.create_owner()
+        for side in ("bid", "ask"):
+            raw.commands.admit_raw_observation_occurrence(observation(side))
+        # Establish actual public M00 dependencies before the attributable missing-seam assertion.
+        projected = raw.reads.project_raw_value(
+            raw_api.RawSignalCatalogueId("R034"),
+            raw_api.observation_occurrence_id("mmt-pilot-bid-001"),
+            mappings=(mapping("bid"),),
+        )
+        assert projected.native_value.as_tuple() == Decimal("100").as_tuple()
+>       f = foundation()
+            ^^^^^^^^^^^^
+
+tests/product/market_measurement/test_boundary_pilot.py:80: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/market_measurement/_support.py:38: in foundation
+    return importlib.import_module("nvda_desk.market_measurement_truth.api")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1331: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:935: in _load_unlocked
+    ???
+<frozen importlib._bootstrap_external>:995: in exec_module
+    ???
+<frozen importlib._bootstrap_external>:1133: in get_code
+    ???
+<frozen importlib._bootstrap_external>:1063: in source_to_code
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = <built-in function compile>
+args = (b'"""Exact controlled neutral-measurement public contract under accepted SQLite version 3."""\nfrom __future__ import...\n\n', '/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py', 'exec')
+kwds = {'dont_inherit': True, 'optimize': -1}
+
+>   ???
+E     File "/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py", line 255
+E       from ._catalogue import build_reader
+E       ^^^^
+E   IndentationError: expected an indented block after function definition on line 254
+
+<frozen importlib._bootstrap>:488: IndentationError
+________ test_d011_refuses_missing_or_incompatible_projection[change0] _________
+
+change = {'subject_instrument': 'OTHER'}
+
+    @pytest.mark.parametrize(
+        "change",
+        [
+            {"subject_instrument": "OTHER"},
+            {"source_variant": "other"},
+            {"native_units": "shares"},
+            {"source_provider": raw_api.provider_id("other")},
+            {"ingestion_sequence_scope": raw_api.ingestion_sequence_scope("other")},
+            {"source_timezone_native": "EST"},
+            {"source_timestamp_raw": "2026-10-16T00:59:58+00:00"},
+            {"revision_vintage_native": "vintage"},
+            {"value": float("nan")},
+            {"value": 100.0},
+            {"value": Decimal("Infinity")},
+            {"native_record": {"quote": {}}},
+            {"event": ASOF + timedelta(microseconds=1)},
+            {"receipt": ASOF + timedelta(microseconds=1)},
+            {"event": ASOF - timedelta(seconds=60, microseconds=1)},
+            {"event": ASOF - timedelta(seconds=11, microseconds=1)},
+            {"event": ASOF, "receipt": ASOF - timedelta(seconds=1)},
+            {"source_temporal_kind": "date_only", "source_timestamp_raw": "2026-10-16"},
+            {"source_temporal_kind": "receipt_only", "source_timestamp_raw": None},
+        ],
+    )
+    def test_d011_refuses_missing_or_incompatible_projection(change):
+        raw = raw_api.create_owner()
+        raw.commands.admit_raw_observation_occurrence(observation("bid", **change))
+        raw.commands.admit_raw_observation_occurrence(observation("ask"))
+>       f = foundation()
+            ^^^^^^^^^^^^
+
+tests/product/market_measurement/test_boundary_pilot.py:123: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/market_measurement/_support.py:38: in foundation
+    return importlib.import_module("nvda_desk.market_measurement_truth.api")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1331: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:935: in _load_unlocked
+    ???
+<frozen importlib._bootstrap_external>:995: in exec_module
+    ???
+<frozen importlib._bootstrap_external>:1133: in get_code
+    ???
+<frozen importlib._bootstrap_external>:1063: in source_to_code
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = <built-in function compile>
+args = (b'"""Exact controlled neutral-measurement public contract under accepted SQLite version 3."""\nfrom __future__ import...\n\n', '/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py', 'exec')
+kwds = {'dont_inherit': True, 'optimize': -1}
+
+>   ???
+E     File "/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py", line 255
+E       from ._catalogue import build_reader
+E       ^^^^
+E   IndentationError: expected an indented block after function definition on line 254
+
+<frozen importlib._bootstrap>:488: IndentationError
+________ test_d011_refuses_missing_or_incompatible_projection[change1] _________
+
+change = {'source_variant': 'other'}
+
+    @pytest.mark.parametrize(
+        "change",
+        [
+            {"subject_instrument": "OTHER"},
+            {"source_variant": "other"},
+            {"native_units": "shares"},
+            {"source_provider": raw_api.provider_id("other")},
+            {"ingestion_sequence_scope": raw_api.ingestion_sequence_scope("other")},
+            {"source_timezone_native": "EST"},
+            {"source_timestamp_raw": "2026-10-16T00:59:58+00:00"},
+            {"revision_vintage_native": "vintage"},
+            {"value": float("nan")},
+            {"value": 100.0},
+            {"value": Decimal("Infinity")},
+            {"native_record": {"quote": {}}},
+            {"event": ASOF + timedelta(microseconds=1)},
+            {"receipt": ASOF + timedelta(microseconds=1)},
+            {"event": ASOF - timedelta(seconds=60, microseconds=1)},
+            {"event": ASOF - timedelta(seconds=11, microseconds=1)},
+            {"event": ASOF, "receipt": ASOF - timedelta(seconds=1)},
+            {"source_temporal_kind": "date_only", "source_timestamp_raw": "2026-10-16"},
+            {"source_temporal_kind": "receipt_only", "source_timestamp_raw": None},
+        ],
+    )
+    def test_d011_refuses_missing_or_incompatible_projection(change):
+        raw = raw_api.create_owner()
+        raw.commands.admit_raw_observation_occurrence(observation("bid", **change))
+        raw.commands.admit_raw_observation_occurrence(observation("ask"))
+>       f = foundation()
+            ^^^^^^^^^^^^
+
+tests/product/market_measurement/test_boundary_pilot.py:123: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/market_measurement/_support.py:38: in foundation
+    return importlib.import_module("nvda_desk.market_measurement_truth.api")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1331: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:935: in _load_unlocked
+    ???
+<frozen importlib._bootstrap_external>:995: in exec_module
+    ???
+<frozen importlib._bootstrap_external>:1133: in get_code
+    ???
+<frozen importlib._bootstrap_external>:1063: in source_to_code
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = <built-in function compile>
+args = (b'"""Exact controlled neutral-measurement public contract under accepted SQLite version 3."""\nfrom __future__ import...\n\n', '/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py', 'exec')
+kwds = {'dont_inherit': True, 'optimize': -1}
+
+>   ???
+E     File "/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py", line 255
+E       from ._catalogue import build_reader
+E       ^^^^
+E   IndentationError: expected an indented block after function definition on line 254
+
+<frozen importlib._bootstrap>:488: IndentationError
+________ test_d011_refuses_missing_or_incompatible_projection[change2] _________
+
+change = {'native_units': 'shares'}
+
+    @pytest.mark.parametrize(
+        "change",
+        [
+            {"subject_instrument": "OTHER"},
+            {"source_variant": "other"},
+            {"native_units": "shares"},
+            {"source_provider": raw_api.provider_id("other")},
+            {"ingestion_sequence_scope": raw_api.ingestion_sequence_scope("other")},
+            {"source_timezone_native": "EST"},
+            {"source_timestamp_raw": "2026-10-16T00:59:58+00:00"},
+            {"revision_vintage_native": "vintage"},
+            {"value": float("nan")},
+            {"value": 100.0},
+            {"value": Decimal("Infinity")},
+            {"native_record": {"quote": {}}},
+            {"event": ASOF + timedelta(microseconds=1)},
+            {"receipt": ASOF + timedelta(microseconds=1)},
+            {"event": ASOF - timedelta(seconds=60, microseconds=1)},
+            {"event": ASOF - timedelta(seconds=11, microseconds=1)},
+            {"event": ASOF, "receipt": ASOF - timedelta(seconds=1)},
+            {"source_temporal_kind": "date_only", "source_timestamp_raw": "2026-10-16"},
+            {"source_temporal_kind": "receipt_only", "source_timestamp_raw": None},
+        ],
+    )
+    def test_d011_refuses_missing_or_incompatible_projection(change):
+        raw = raw_api.create_owner()
+        raw.commands.admit_raw_observation_occurrence(observation("bid", **change))
+        raw.commands.admit_raw_observation_occurrence(observation("ask"))
+>       f = foundation()
+            ^^^^^^^^^^^^
+
+tests/product/market_measurement/test_boundary_pilot.py:123: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/market_measurement/_support.py:38: in foundation
+    return importlib.import_module("nvda_desk.market_measurement_truth.api")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1331: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:935: in _load_unlocked
+    ???
+<frozen importlib._bootstrap_external>:995: in exec_module
+    ???
+<frozen importlib._bootstrap_external>:1133: in get_code
+    ???
+<frozen importlib._bootstrap_external>:1063: in source_to_code
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = <built-in function compile>
+args = (b'"""Exact controlled neutral-measurement public contract under accepted SQLite version 3."""\nfrom __future__ import...\n\n', '/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py', 'exec')
+kwds = {'dont_inherit': True, 'optimize': -1}
+
+>   ???
+E     File "/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py", line 255
+E       from ._catalogue import build_reader
+E       ^^^^
+E   IndentationError: expected an indented block after function definition on line 254
+
+<frozen importlib._bootstrap>:488: IndentationError
+________ test_d011_refuses_missing_or_incompatible_projection[change3] _________
+
+change = {'source_provider': _ProviderId(value='other')}
+
+    @pytest.mark.parametrize(
+        "change",
+        [
+            {"subject_instrument": "OTHER"},
+            {"source_variant": "other"},
+            {"native_units": "shares"},
+            {"source_provider": raw_api.provider_id("other")},
+            {"ingestion_sequence_scope": raw_api.ingestion_sequence_scope("other")},
+            {"source_timezone_native": "EST"},
+            {"source_timestamp_raw": "2026-10-16T00:59:58+00:00"},
+            {"revision_vintage_native": "vintage"},
+            {"value": float("nan")},
+            {"value": 100.0},
+            {"value": Decimal("Infinity")},
+            {"native_record": {"quote": {}}},
+            {"event": ASOF + timedelta(microseconds=1)},
+            {"receipt": ASOF + timedelta(microseconds=1)},
+            {"event": ASOF - timedelta(seconds=60, microseconds=1)},
+            {"event": ASOF - timedelta(seconds=11, microseconds=1)},
+            {"event": ASOF, "receipt": ASOF - timedelta(seconds=1)},
+            {"source_temporal_kind": "date_only", "source_timestamp_raw": "2026-10-16"},
+            {"source_temporal_kind": "receipt_only", "source_timestamp_raw": None},
+        ],
+    )
+    def test_d011_refuses_missing_or_incompatible_projection(change):
+        raw = raw_api.create_owner()
+        raw.commands.admit_raw_observation_occurrence(observation("bid", **change))
+        raw.commands.admit_raw_observation_occurrence(observation("ask"))
+>       f = foundation()
+            ^^^^^^^^^^^^
+
+tests/product/market_measurement/test_boundary_pilot.py:123: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/market_measurement/_support.py:38: in foundation
+    return importlib.import_module("nvda_desk.market_measurement_truth.api")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1331: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:935: in _load_unlocked
+    ???
+<frozen importlib._bootstrap_external>:995: in exec_module
+    ???
+<frozen importlib._bootstrap_external>:1133: in get_code
+    ???
+<frozen importlib._bootstrap_external>:1063: in source_to_code
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = <built-in function compile>
+args = (b'"""Exact controlled neutral-measurement public contract under accepted SQLite version 3."""\nfrom __future__ import...\n\n', '/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py', 'exec')
+kwds = {'dont_inherit': True, 'optimize': -1}
+
+>   ???
+E     File "/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py", line 255
+E       from ._catalogue import build_reader
+E       ^^^^
+E   IndentationError: expected an indented block after function definition on line 254
+
+<frozen importlib._bootstrap>:488: IndentationError
+________ test_d011_refuses_missing_or_incompatible_projection[change4] _________
+
+change = {'ingestion_sequence_scope': _IngestionSequenceScope(value='other')}
+
+    @pytest.mark.parametrize(
+        "change",
+        [
+            {"subject_instrument": "OTHER"},
+            {"source_variant": "other"},
+            {"native_units": "shares"},
+            {"source_provider": raw_api.provider_id("other")},
+            {"ingestion_sequence_scope": raw_api.ingestion_sequence_scope("other")},
+            {"source_timezone_native": "EST"},
+            {"source_timestamp_raw": "2026-10-16T00:59:58+00:00"},
+            {"revision_vintage_native": "vintage"},
+            {"value": float("nan")},
+            {"value": 100.0},
+            {"value": Decimal("Infinity")},
+            {"native_record": {"quote": {}}},
+            {"event": ASOF + timedelta(microseconds=1)},
+            {"receipt": ASOF + timedelta(microseconds=1)},
+            {"event": ASOF - timedelta(seconds=60, microseconds=1)},
+            {"event": ASOF - timedelta(seconds=11, microseconds=1)},
+            {"event": ASOF, "receipt": ASOF - timedelta(seconds=1)},
+            {"source_temporal_kind": "date_only", "source_timestamp_raw": "2026-10-16"},
+            {"source_temporal_kind": "receipt_only", "source_timestamp_raw": None},
+        ],
+    )
+    def test_d011_refuses_missing_or_incompatible_projection(change):
+        raw = raw_api.create_owner()
+        raw.commands.admit_raw_observation_occurrence(observation("bid", **change))
+        raw.commands.admit_raw_observation_occurrence(observation("ask"))
+>       f = foundation()
+            ^^^^^^^^^^^^
+
+tests/product/market_measurement/test_boundary_pilot.py:123: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/market_measurement/_support.py:38: in foundation
+    return importlib.import_module("nvda_desk.market_measurement_truth.api")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1331: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:935: in _load_unlocked
+    ???
+<frozen importlib._bootstrap_external>:995: in exec_module
+    ???
+<frozen importlib._bootstrap_external>:1133: in get_code
+    ???
+<frozen importlib._bootstrap_external>:1063: in source_to_code
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = <built-in function compile>
+args = (b'"""Exact controlled neutral-measurement public contract under accepted SQLite version 3."""\nfrom __future__ import...\n\n', '/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py', 'exec')
+kwds = {'dont_inherit': True, 'optimize': -1}
+
+>   ???
+E     File "/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py", line 255
+E       from ._catalogue import build_reader
+E       ^^^^
+E   IndentationError: expected an indented block after function definition on line 254
+
+<frozen importlib._bootstrap>:488: IndentationError
+________ test_d011_refuses_missing_or_incompatible_projection[change5] _________
+
+change = {'source_timezone_native': 'EST'}
+
+    @pytest.mark.parametrize(
+        "change",
+        [
+            {"subject_instrument": "OTHER"},
+            {"source_variant": "other"},
+            {"native_units": "shares"},
+            {"source_provider": raw_api.provider_id("other")},
+            {"ingestion_sequence_scope": raw_api.ingestion_sequence_scope("other")},
+            {"source_timezone_native": "EST"},
+            {"source_timestamp_raw": "2026-10-16T00:59:58+00:00"},
+            {"revision_vintage_native": "vintage"},
+            {"value": float("nan")},
+            {"value": 100.0},
+            {"value": Decimal("Infinity")},
+            {"native_record": {"quote": {}}},
+            {"event": ASOF + timedelta(microseconds=1)},
+            {"receipt": ASOF + timedelta(microseconds=1)},
+            {"event": ASOF - timedelta(seconds=60, microseconds=1)},
+            {"event": ASOF - timedelta(seconds=11, microseconds=1)},
+            {"event": ASOF, "receipt": ASOF - timedelta(seconds=1)},
+            {"source_temporal_kind": "date_only", "source_timestamp_raw": "2026-10-16"},
+            {"source_temporal_kind": "receipt_only", "source_timestamp_raw": None},
+        ],
+    )
+    def test_d011_refuses_missing_or_incompatible_projection(change):
+        raw = raw_api.create_owner()
+        raw.commands.admit_raw_observation_occurrence(observation("bid", **change))
+        raw.commands.admit_raw_observation_occurrence(observation("ask"))
+>       f = foundation()
+            ^^^^^^^^^^^^
+
+tests/product/market_measurement/test_boundary_pilot.py:123: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/market_measurement/_support.py:38: in foundation
+    return importlib.import_module("nvda_desk.market_measurement_truth.api")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1331: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:935: in _load_unlocked
+    ???
+<frozen importlib._bootstrap_external>:995: in exec_module
+    ???
+<frozen importlib._bootstrap_external>:1133: in get_code
+    ???
+<frozen importlib._bootstrap_external>:1063: in source_to_code
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = <built-in function compile>
+args = (b'"""Exact controlled neutral-measurement public contract under accepted SQLite version 3."""\nfrom __future__ import...\n\n', '/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py', 'exec')
+kwds = {'dont_inherit': True, 'optimize': -1}
+
+>   ???
+E     File "/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py", line 255
+E       from ._catalogue import build_reader
+E       ^^^^
+E   IndentationError: expected an indented block after function definition on line 254
+
+<frozen importlib._bootstrap>:488: IndentationError
+________ test_d011_refuses_missing_or_incompatible_projection[change6] _________
+
+change = {'source_timestamp_raw': '2026-10-16T00:59:58+00:00'}
+
+    @pytest.mark.parametrize(
+        "change",
+        [
+            {"subject_instrument": "OTHER"},
+            {"source_variant": "other"},
+            {"native_units": "shares"},
+            {"source_provider": raw_api.provider_id("other")},
+            {"ingestion_sequence_scope": raw_api.ingestion_sequence_scope("other")},
+            {"source_timezone_native": "EST"},
+            {"source_timestamp_raw": "2026-10-16T00:59:58+00:00"},
+            {"revision_vintage_native": "vintage"},
+            {"value": float("nan")},
+            {"value": 100.0},
+            {"value": Decimal("Infinity")},
+            {"native_record": {"quote": {}}},
+            {"event": ASOF + timedelta(microseconds=1)},
+            {"receipt": ASOF + timedelta(microseconds=1)},
+            {"event": ASOF - timedelta(seconds=60, microseconds=1)},
+            {"event": ASOF - timedelta(seconds=11, microseconds=1)},
+            {"event": ASOF, "receipt": ASOF - timedelta(seconds=1)},
+            {"source_temporal_kind": "date_only", "source_timestamp_raw": "2026-10-16"},
+            {"source_temporal_kind": "receipt_only", "source_timestamp_raw": None},
+        ],
+    )
+    def test_d011_refuses_missing_or_incompatible_projection(change):
+        raw = raw_api.create_owner()
+        raw.commands.admit_raw_observation_occurrence(observation("bid", **change))
+        raw.commands.admit_raw_observation_occurrence(observation("ask"))
+>       f = foundation()
+            ^^^^^^^^^^^^
+
+tests/product/market_measurement/test_boundary_pilot.py:123: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/market_measurement/_support.py:38: in foundation
+    return importlib.import_module("nvda_desk.market_measurement_truth.api")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1331: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:935: in _load_unlocked
+    ???
+<frozen importlib._bootstrap_external>:995: in exec_module
+    ???
+<frozen importlib._bootstrap_external>:1133: in get_code
+    ???
+<frozen importlib._bootstrap_external>:1063: in source_to_code
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = <built-in function compile>
+args = (b'"""Exact controlled neutral-measurement public contract under accepted SQLite version 3."""\nfrom __future__ import...\n\n', '/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py', 'exec')
+kwds = {'dont_inherit': True, 'optimize': -1}
+
+>   ???
+E     File "/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py", line 255
+E       from ._catalogue import build_reader
+E       ^^^^
+E   IndentationError: expected an indented block after function definition on line 254
+
+<frozen importlib._bootstrap>:488: IndentationError
+________ test_d011_refuses_missing_or_incompatible_projection[change7] _________
+
+change = {'revision_vintage_native': 'vintage'}
+
+    @pytest.mark.parametrize(
+        "change",
+        [
+            {"subject_instrument": "OTHER"},
+            {"source_variant": "other"},
+            {"native_units": "shares"},
+            {"source_provider": raw_api.provider_id("other")},
+            {"ingestion_sequence_scope": raw_api.ingestion_sequence_scope("other")},
+            {"source_timezone_native": "EST"},
+            {"source_timestamp_raw": "2026-10-16T00:59:58+00:00"},
+            {"revision_vintage_native": "vintage"},
+            {"value": float("nan")},
+            {"value": 100.0},
+            {"value": Decimal("Infinity")},
+            {"native_record": {"quote": {}}},
+            {"event": ASOF + timedelta(microseconds=1)},
+            {"receipt": ASOF + timedelta(microseconds=1)},
+            {"event": ASOF - timedelta(seconds=60, microseconds=1)},
+            {"event": ASOF - timedelta(seconds=11, microseconds=1)},
+            {"event": ASOF, "receipt": ASOF - timedelta(seconds=1)},
+            {"source_temporal_kind": "date_only", "source_timestamp_raw": "2026-10-16"},
+            {"source_temporal_kind": "receipt_only", "source_timestamp_raw": None},
+        ],
+    )
+    def test_d011_refuses_missing_or_incompatible_projection(change):
+        raw = raw_api.create_owner()
+        raw.commands.admit_raw_observation_occurrence(observation("bid", **change))
+        raw.commands.admit_raw_observation_occurrence(observation("ask"))
+>       f = foundation()
+            ^^^^^^^^^^^^
+
+tests/product/market_measurement/test_boundary_pilot.py:123: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/market_measurement/_support.py:38: in foundation
+    return importlib.import_module("nvda_desk.market_measurement_truth.api")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1331: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:935: in _load_unlocked
+    ???
+<frozen importlib._bootstrap_external>:995: in exec_module
+    ???
+<frozen importlib._bootstrap_external>:1133: in get_code
+    ???
+<frozen importlib._bootstrap_external>:1063: in source_to_code
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = <built-in function compile>
+args = (b'"""Exact controlled neutral-measurement public contract under accepted SQLite version 3."""\nfrom __future__ import...\n\n', '/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py', 'exec')
+kwds = {'dont_inherit': True, 'optimize': -1}
+
+>   ???
+E     File "/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py", line 255
+E       from ._catalogue import build_reader
+E       ^^^^
+E   IndentationError: expected an indented block after function definition on line 254
+
+<frozen importlib._bootstrap>:488: IndentationError
+________ test_d011_refuses_missing_or_incompatible_projection[change8] _________
+
+change = {'value': nan}
+
+    @pytest.mark.parametrize(
+        "change",
+        [
+            {"subject_instrument": "OTHER"},
+            {"source_variant": "other"},
+            {"native_units": "shares"},
+            {"source_provider": raw_api.provider_id("other")},
+            {"ingestion_sequence_scope": raw_api.ingestion_sequence_scope("other")},
+            {"source_timezone_native": "EST"},
+            {"source_timestamp_raw": "2026-10-16T00:59:58+00:00"},
+            {"revision_vintage_native": "vintage"},
+            {"value": float("nan")},
+            {"value": 100.0},
+            {"value": Decimal("Infinity")},
+            {"native_record": {"quote": {}}},
+            {"event": ASOF + timedelta(microseconds=1)},
+            {"receipt": ASOF + timedelta(microseconds=1)},
+            {"event": ASOF - timedelta(seconds=60, microseconds=1)},
+            {"event": ASOF - timedelta(seconds=11, microseconds=1)},
+            {"event": ASOF, "receipt": ASOF - timedelta(seconds=1)},
+            {"source_temporal_kind": "date_only", "source_timestamp_raw": "2026-10-16"},
+            {"source_temporal_kind": "receipt_only", "source_timestamp_raw": None},
+        ],
+    )
+    def test_d011_refuses_missing_or_incompatible_projection(change):
+        raw = raw_api.create_owner()
+        raw.commands.admit_raw_observation_occurrence(observation("bid", **change))
+        raw.commands.admit_raw_observation_occurrence(observation("ask"))
+>       f = foundation()
+            ^^^^^^^^^^^^
+
+tests/product/market_measurement/test_boundary_pilot.py:123: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/market_measurement/_support.py:38: in foundation
+    return importlib.import_module("nvda_desk.market_measurement_truth.api")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1331: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:935: in _load_unlocked
+    ???
+<frozen importlib._bootstrap_external>:995: in exec_module
+    ???
+<frozen importlib._bootstrap_external>:1133: in get_code
+    ???
+<frozen importlib._bootstrap_external>:1063: in source_to_code
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = <built-in function compile>
+args = (b'"""Exact controlled neutral-measurement public contract under accepted SQLite version 3."""\nfrom __future__ import...\n\n', '/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py', 'exec')
+kwds = {'dont_inherit': True, 'optimize': -1}
+
+>   ???
+E     File "/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py", line 255
+E       from ._catalogue import build_reader
+E       ^^^^
+E   IndentationError: expected an indented block after function definition on line 254
+
+<frozen importlib._bootstrap>:488: IndentationError
+________ test_d011_refuses_missing_or_incompatible_projection[change9] _________
+
+change = {'value': 100.0}
+
+    @pytest.mark.parametrize(
+        "change",
+        [
+            {"subject_instrument": "OTHER"},
+            {"source_variant": "other"},
+            {"native_units": "shares"},
+            {"source_provider": raw_api.provider_id("other")},
+            {"ingestion_sequence_scope": raw_api.ingestion_sequence_scope("other")},
+            {"source_timezone_native": "EST"},
+            {"source_timestamp_raw": "2026-10-16T00:59:58+00:00"},
+            {"revision_vintage_native": "vintage"},
+            {"value": float("nan")},
+            {"value": 100.0},
+            {"value": Decimal("Infinity")},
+            {"native_record": {"quote": {}}},
+            {"event": ASOF + timedelta(microseconds=1)},
+            {"receipt": ASOF + timedelta(microseconds=1)},
+            {"event": ASOF - timedelta(seconds=60, microseconds=1)},
+            {"event": ASOF - timedelta(seconds=11, microseconds=1)},
+            {"event": ASOF, "receipt": ASOF - timedelta(seconds=1)},
+            {"source_temporal_kind": "date_only", "source_timestamp_raw": "2026-10-16"},
+            {"source_temporal_kind": "receipt_only", "source_timestamp_raw": None},
+        ],
+    )
+    def test_d011_refuses_missing_or_incompatible_projection(change):
+        raw = raw_api.create_owner()
+        raw.commands.admit_raw_observation_occurrence(observation("bid", **change))
+        raw.commands.admit_raw_observation_occurrence(observation("ask"))
+>       f = foundation()
+            ^^^^^^^^^^^^
+
+tests/product/market_measurement/test_boundary_pilot.py:123: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/market_measurement/_support.py:38: in foundation
+    return importlib.import_module("nvda_desk.market_measurement_truth.api")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1331: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:935: in _load_unlocked
+    ???
+<frozen importlib._bootstrap_external>:995: in exec_module
+    ???
+<frozen importlib._bootstrap_external>:1133: in get_code
+    ???
+<frozen importlib._bootstrap_external>:1063: in source_to_code
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = <built-in function compile>
+args = (b'"""Exact controlled neutral-measurement public contract under accepted SQLite version 3."""\nfrom __future__ import...\n\n', '/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py', 'exec')
+kwds = {'dont_inherit': True, 'optimize': -1}
+
+>   ???
+E     File "/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py", line 255
+E       from ._catalogue import build_reader
+E       ^^^^
+E   IndentationError: expected an indented block after function definition on line 254
+
+<frozen importlib._bootstrap>:488: IndentationError
+________ test_d011_refuses_missing_or_incompatible_projection[change10] ________
+
+change = {'value': Decimal('Infinity')}
+
+    @pytest.mark.parametrize(
+        "change",
+        [
+            {"subject_instrument": "OTHER"},
+            {"source_variant": "other"},
+            {"native_units": "shares"},
+            {"source_provider": raw_api.provider_id("other")},
+            {"ingestion_sequence_scope": raw_api.ingestion_sequence_scope("other")},
+            {"source_timezone_native": "EST"},
+            {"source_timestamp_raw": "2026-10-16T00:59:58+00:00"},
+            {"revision_vintage_native": "vintage"},
+            {"value": float("nan")},
+            {"value": 100.0},
+            {"value": Decimal("Infinity")},
+            {"native_record": {"quote": {}}},
+            {"event": ASOF + timedelta(microseconds=1)},
+            {"receipt": ASOF + timedelta(microseconds=1)},
+            {"event": ASOF - timedelta(seconds=60, microseconds=1)},
+            {"event": ASOF - timedelta(seconds=11, microseconds=1)},
+            {"event": ASOF, "receipt": ASOF - timedelta(seconds=1)},
+            {"source_temporal_kind": "date_only", "source_timestamp_raw": "2026-10-16"},
+            {"source_temporal_kind": "receipt_only", "source_timestamp_raw": None},
+        ],
+    )
+    def test_d011_refuses_missing_or_incompatible_projection(change):
+        raw = raw_api.create_owner()
+        raw.commands.admit_raw_observation_occurrence(observation("bid", **change))
+        raw.commands.admit_raw_observation_occurrence(observation("ask"))
+>       f = foundation()
+            ^^^^^^^^^^^^
+
+tests/product/market_measurement/test_boundary_pilot.py:123: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/market_measurement/_support.py:38: in foundation
+    return importlib.import_module("nvda_desk.market_measurement_truth.api")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1331: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:935: in _load_unlocked
+    ???
+<frozen importlib._bootstrap_external>:995: in exec_module
+    ???
+<frozen importlib._bootstrap_external>:1133: in get_code
+    ???
+<frozen importlib._bootstrap_external>:1063: in source_to_code
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = <built-in function compile>
+args = (b'"""Exact controlled neutral-measurement public contract under accepted SQLite version 3."""\nfrom __future__ import...\n\n', '/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py', 'exec')
+kwds = {'dont_inherit': True, 'optimize': -1}
+
+>   ???
+E     File "/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py", line 255
+E       from ._catalogue import build_reader
+E       ^^^^
+E   IndentationError: expected an indented block after function definition on line 254
+
+<frozen importlib._bootstrap>:488: IndentationError
+________ test_d011_refuses_missing_or_incompatible_projection[change11] ________
+
+change = {'native_record': {'quote': {}}}
+
+    @pytest.mark.parametrize(
+        "change",
+        [
+            {"subject_instrument": "OTHER"},
+            {"source_variant": "other"},
+            {"native_units": "shares"},
+            {"source_provider": raw_api.provider_id("other")},
+            {"ingestion_sequence_scope": raw_api.ingestion_sequence_scope("other")},
+            {"source_timezone_native": "EST"},
+            {"source_timestamp_raw": "2026-10-16T00:59:58+00:00"},
+            {"revision_vintage_native": "vintage"},
+            {"value": float("nan")},
+            {"value": 100.0},
+            {"value": Decimal("Infinity")},
+            {"native_record": {"quote": {}}},
+            {"event": ASOF + timedelta(microseconds=1)},
+            {"receipt": ASOF + timedelta(microseconds=1)},
+            {"event": ASOF - timedelta(seconds=60, microseconds=1)},
+            {"event": ASOF - timedelta(seconds=11, microseconds=1)},
+            {"event": ASOF, "receipt": ASOF - timedelta(seconds=1)},
+            {"source_temporal_kind": "date_only", "source_timestamp_raw": "2026-10-16"},
+            {"source_temporal_kind": "receipt_only", "source_timestamp_raw": None},
+        ],
+    )
+    def test_d011_refuses_missing_or_incompatible_projection(change):
+        raw = raw_api.create_owner()
+        raw.commands.admit_raw_observation_occurrence(observation("bid", **change))
+        raw.commands.admit_raw_observation_occurrence(observation("ask"))
+>       f = foundation()
+            ^^^^^^^^^^^^
+
+tests/product/market_measurement/test_boundary_pilot.py:123: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/market_measurement/_support.py:38: in foundation
+    return importlib.import_module("nvda_desk.market_measurement_truth.api")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1331: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:935: in _load_unlocked
+    ???
+<frozen importlib._bootstrap_external>:995: in exec_module
+    ???
+<frozen importlib._bootstrap_external>:1133: in get_code
+    ???
+<frozen importlib._bootstrap_external>:1063: in source_to_code
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = <built-in function compile>
+args = (b'"""Exact controlled neutral-measurement public contract under accepted SQLite version 3."""\nfrom __future__ import...\n\n', '/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py', 'exec')
+kwds = {'dont_inherit': True, 'optimize': -1}
+
+>   ???
+E     File "/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py", line 255
+E       from ._catalogue import build_reader
+E       ^^^^
+E   IndentationError: expected an indented block after function definition on line 254
+
+<frozen importlib._bootstrap>:488: IndentationError
+________ test_d011_refuses_missing_or_incompatible_projection[change12] ________
+
+change = {'event': datetime.datetime(2026, 10, 16, 1, 0, 0, 1, tzinfo=datetime.timezone.utc)}
+
+    @pytest.mark.parametrize(
+        "change",
+        [
+            {"subject_instrument": "OTHER"},
+            {"source_variant": "other"},
+            {"native_units": "shares"},
+            {"source_provider": raw_api.provider_id("other")},
+            {"ingestion_sequence_scope": raw_api.ingestion_sequence_scope("other")},
+            {"source_timezone_native": "EST"},
+            {"source_timestamp_raw": "2026-10-16T00:59:58+00:00"},
+            {"revision_vintage_native": "vintage"},
+            {"value": float("nan")},
+            {"value": 100.0},
+            {"value": Decimal("Infinity")},
+            {"native_record": {"quote": {}}},
+            {"event": ASOF + timedelta(microseconds=1)},
+            {"receipt": ASOF + timedelta(microseconds=1)},
+            {"event": ASOF - timedelta(seconds=60, microseconds=1)},
+            {"event": ASOF - timedelta(seconds=11, microseconds=1)},
+            {"event": ASOF, "receipt": ASOF - timedelta(seconds=1)},
+            {"source_temporal_kind": "date_only", "source_timestamp_raw": "2026-10-16"},
+            {"source_temporal_kind": "receipt_only", "source_timestamp_raw": None},
+        ],
+    )
+    def test_d011_refuses_missing_or_incompatible_projection(change):
+        raw = raw_api.create_owner()
+        raw.commands.admit_raw_observation_occurrence(observation("bid", **change))
+        raw.commands.admit_raw_observation_occurrence(observation("ask"))
+>       f = foundation()
+            ^^^^^^^^^^^^
+
+tests/product/market_measurement/test_boundary_pilot.py:123: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/market_measurement/_support.py:38: in foundation
+    return importlib.import_module("nvda_desk.market_measurement_truth.api")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1331: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:935: in _load_unlocked
+    ???
+<frozen importlib._bootstrap_external>:995: in exec_module
+    ???
+<frozen importlib._bootstrap_external>:1133: in get_code
+    ???
+<frozen importlib._bootstrap_external>:1063: in source_to_code
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = <built-in function compile>
+args = (b'"""Exact controlled neutral-measurement public contract under accepted SQLite version 3."""\nfrom __future__ import...\n\n', '/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py', 'exec')
+kwds = {'dont_inherit': True, 'optimize': -1}
+
+>   ???
+E     File "/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py", line 255
+E       from ._catalogue import build_reader
+E       ^^^^
+E   IndentationError: expected an indented block after function definition on line 254
+
+<frozen importlib._bootstrap>:488: IndentationError
+________ test_d011_refuses_missing_or_incompatible_projection[change13] ________
+
+change = {'receipt': datetime.datetime(2026, 10, 16, 1, 0, 0, 1, tzinfo=datetime.timezone.utc)}
+
+    @pytest.mark.parametrize(
+        "change",
+        [
+            {"subject_instrument": "OTHER"},
+            {"source_variant": "other"},
+            {"native_units": "shares"},
+            {"source_provider": raw_api.provider_id("other")},
+            {"ingestion_sequence_scope": raw_api.ingestion_sequence_scope("other")},
+            {"source_timezone_native": "EST"},
+            {"source_timestamp_raw": "2026-10-16T00:59:58+00:00"},
+            {"revision_vintage_native": "vintage"},
+            {"value": float("nan")},
+            {"value": 100.0},
+            {"value": Decimal("Infinity")},
+            {"native_record": {"quote": {}}},
+            {"event": ASOF + timedelta(microseconds=1)},
+            {"receipt": ASOF + timedelta(microseconds=1)},
+            {"event": ASOF - timedelta(seconds=60, microseconds=1)},
+            {"event": ASOF - timedelta(seconds=11, microseconds=1)},
+            {"event": ASOF, "receipt": ASOF - timedelta(seconds=1)},
+            {"source_temporal_kind": "date_only", "source_timestamp_raw": "2026-10-16"},
+            {"source_temporal_kind": "receipt_only", "source_timestamp_raw": None},
+        ],
+    )
+    def test_d011_refuses_missing_or_incompatible_projection(change):
+        raw = raw_api.create_owner()
+        raw.commands.admit_raw_observation_occurrence(observation("bid", **change))
+        raw.commands.admit_raw_observation_occurrence(observation("ask"))
+>       f = foundation()
+            ^^^^^^^^^^^^
+
+tests/product/market_measurement/test_boundary_pilot.py:123: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/market_measurement/_support.py:38: in foundation
+    return importlib.import_module("nvda_desk.market_measurement_truth.api")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1331: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:935: in _load_unlocked
+    ???
+<frozen importlib._bootstrap_external>:995: in exec_module
+    ???
+<frozen importlib._bootstrap_external>:1133: in get_code
+    ???
+<frozen importlib._bootstrap_external>:1063: in source_to_code
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = <built-in function compile>
+args = (b'"""Exact controlled neutral-measurement public contract under accepted SQLite version 3."""\nfrom __future__ import...\n\n', '/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py', 'exec')
+kwds = {'dont_inherit': True, 'optimize': -1}
+
+>   ???
+E     File "/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py", line 255
+E       from ._catalogue import build_reader
+E       ^^^^
+E   IndentationError: expected an indented block after function definition on line 254
+
+<frozen importlib._bootstrap>:488: IndentationError
+________ test_d011_refuses_missing_or_incompatible_projection[change14] ________
+
+change = {'event': datetime.datetime(2026, 10, 16, 0, 58, 59, 999999, tzinfo=datetime.timezone.utc)}
+
+    @pytest.mark.parametrize(
+        "change",
+        [
+            {"subject_instrument": "OTHER"},
+            {"source_variant": "other"},
+            {"native_units": "shares"},
+            {"source_provider": raw_api.provider_id("other")},
+            {"ingestion_sequence_scope": raw_api.ingestion_sequence_scope("other")},
+            {"source_timezone_native": "EST"},
+            {"source_timestamp_raw": "2026-10-16T00:59:58+00:00"},
+            {"revision_vintage_native": "vintage"},
+            {"value": float("nan")},
+            {"value": 100.0},
+            {"value": Decimal("Infinity")},
+            {"native_record": {"quote": {}}},
+            {"event": ASOF + timedelta(microseconds=1)},
+            {"receipt": ASOF + timedelta(microseconds=1)},
+            {"event": ASOF - timedelta(seconds=60, microseconds=1)},
+            {"event": ASOF - timedelta(seconds=11, microseconds=1)},
+            {"event": ASOF, "receipt": ASOF - timedelta(seconds=1)},
+            {"source_temporal_kind": "date_only", "source_timestamp_raw": "2026-10-16"},
+            {"source_temporal_kind": "receipt_only", "source_timestamp_raw": None},
+        ],
+    )
+    def test_d011_refuses_missing_or_incompatible_projection(change):
+        raw = raw_api.create_owner()
+        raw.commands.admit_raw_observation_occurrence(observation("bid", **change))
+        raw.commands.admit_raw_observation_occurrence(observation("ask"))
+>       f = foundation()
+            ^^^^^^^^^^^^
+
+tests/product/market_measurement/test_boundary_pilot.py:123: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/market_measurement/_support.py:38: in foundation
+    return importlib.import_module("nvda_desk.market_measurement_truth.api")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1331: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:935: in _load_unlocked
+    ???
+<frozen importlib._bootstrap_external>:995: in exec_module
+    ???
+<frozen importlib._bootstrap_external>:1133: in get_code
+    ???
+<frozen importlib._bootstrap_external>:1063: in source_to_code
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = <built-in function compile>
+args = (b'"""Exact controlled neutral-measurement public contract under accepted SQLite version 3."""\nfrom __future__ import...\n\n', '/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py', 'exec')
+kwds = {'dont_inherit': True, 'optimize': -1}
+
+>   ???
+E     File "/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py", line 255
+E       from ._catalogue import build_reader
+E       ^^^^
+E   IndentationError: expected an indented block after function definition on line 254
+
+<frozen importlib._bootstrap>:488: IndentationError
+________ test_d011_refuses_missing_or_incompatible_projection[change15] ________
+
+change = {'event': datetime.datetime(2026, 10, 16, 0, 59, 48, 999999, tzinfo=datetime.timezone.utc)}
+
+    @pytest.mark.parametrize(
+        "change",
+        [
+            {"subject_instrument": "OTHER"},
+            {"source_variant": "other"},
+            {"native_units": "shares"},
+            {"source_provider": raw_api.provider_id("other")},
+            {"ingestion_sequence_scope": raw_api.ingestion_sequence_scope("other")},
+            {"source_timezone_native": "EST"},
+            {"source_timestamp_raw": "2026-10-16T00:59:58+00:00"},
+            {"revision_vintage_native": "vintage"},
+            {"value": float("nan")},
+            {"value": 100.0},
+            {"value": Decimal("Infinity")},
+            {"native_record": {"quote": {}}},
+            {"event": ASOF + timedelta(microseconds=1)},
+            {"receipt": ASOF + timedelta(microseconds=1)},
+            {"event": ASOF - timedelta(seconds=60, microseconds=1)},
+            {"event": ASOF - timedelta(seconds=11, microseconds=1)},
+            {"event": ASOF, "receipt": ASOF - timedelta(seconds=1)},
+            {"source_temporal_kind": "date_only", "source_timestamp_raw": "2026-10-16"},
+            {"source_temporal_kind": "receipt_only", "source_timestamp_raw": None},
+        ],
+    )
+    def test_d011_refuses_missing_or_incompatible_projection(change):
+        raw = raw_api.create_owner()
+        raw.commands.admit_raw_observation_occurrence(observation("bid", **change))
+        raw.commands.admit_raw_observation_occurrence(observation("ask"))
+>       f = foundation()
+            ^^^^^^^^^^^^
+
+tests/product/market_measurement/test_boundary_pilot.py:123: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/market_measurement/_support.py:38: in foundation
+    return importlib.import_module("nvda_desk.market_measurement_truth.api")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1331: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:935: in _load_unlocked
+    ???
+<frozen importlib._bootstrap_external>:995: in exec_module
+    ???
+<frozen importlib._bootstrap_external>:1133: in get_code
+    ???
+<frozen importlib._bootstrap_external>:1063: in source_to_code
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = <built-in function compile>
+args = (b'"""Exact controlled neutral-measurement public contract under accepted SQLite version 3."""\nfrom __future__ import...\n\n', '/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py', 'exec')
+kwds = {'dont_inherit': True, 'optimize': -1}
+
+>   ???
+E     File "/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py", line 255
+E       from ._catalogue import build_reader
+E       ^^^^
+E   IndentationError: expected an indented block after function definition on line 254
+
+<frozen importlib._bootstrap>:488: IndentationError
+________ test_d011_refuses_missing_or_incompatible_projection[change16] ________
+
+change = {'event': datetime.datetime(2026, 10, 16, 1, 0, tzinfo=datetime.timezone.utc), 'receipt': datetime.datetime(2026, 10, 16, 0, 59, 59, tzinfo=datetime.timezone.utc)}
+
+    @pytest.mark.parametrize(
+        "change",
+        [
+            {"subject_instrument": "OTHER"},
+            {"source_variant": "other"},
+            {"native_units": "shares"},
+            {"source_provider": raw_api.provider_id("other")},
+            {"ingestion_sequence_scope": raw_api.ingestion_sequence_scope("other")},
+            {"source_timezone_native": "EST"},
+            {"source_timestamp_raw": "2026-10-16T00:59:58+00:00"},
+            {"revision_vintage_native": "vintage"},
+            {"value": float("nan")},
+            {"value": 100.0},
+            {"value": Decimal("Infinity")},
+            {"native_record": {"quote": {}}},
+            {"event": ASOF + timedelta(microseconds=1)},
+            {"receipt": ASOF + timedelta(microseconds=1)},
+            {"event": ASOF - timedelta(seconds=60, microseconds=1)},
+            {"event": ASOF - timedelta(seconds=11, microseconds=1)},
+            {"event": ASOF, "receipt": ASOF - timedelta(seconds=1)},
+            {"source_temporal_kind": "date_only", "source_timestamp_raw": "2026-10-16"},
+            {"source_temporal_kind": "receipt_only", "source_timestamp_raw": None},
+        ],
+    )
+    def test_d011_refuses_missing_or_incompatible_projection(change):
+        raw = raw_api.create_owner()
+        raw.commands.admit_raw_observation_occurrence(observation("bid", **change))
+        raw.commands.admit_raw_observation_occurrence(observation("ask"))
+>       f = foundation()
+            ^^^^^^^^^^^^
+
+tests/product/market_measurement/test_boundary_pilot.py:123: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/market_measurement/_support.py:38: in foundation
+    return importlib.import_module("nvda_desk.market_measurement_truth.api")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1331: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:935: in _load_unlocked
+    ???
+<frozen importlib._bootstrap_external>:995: in exec_module
+    ???
+<frozen importlib._bootstrap_external>:1133: in get_code
+    ???
+<frozen importlib._bootstrap_external>:1063: in source_to_code
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = <built-in function compile>
+args = (b'"""Exact controlled neutral-measurement public contract under accepted SQLite version 3."""\nfrom __future__ import...\n\n', '/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py', 'exec')
+kwds = {'dont_inherit': True, 'optimize': -1}
+
+>   ???
+E     File "/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py", line 255
+E       from ._catalogue import build_reader
+E       ^^^^
+E   IndentationError: expected an indented block after function definition on line 254
+
+<frozen importlib._bootstrap>:488: IndentationError
+________ test_d011_refuses_missing_or_incompatible_projection[change17] ________
+
+change = {'source_temporal_kind': 'date_only', 'source_timestamp_raw': '2026-10-16'}
+
+    @pytest.mark.parametrize(
+        "change",
+        [
+            {"subject_instrument": "OTHER"},
+            {"source_variant": "other"},
+            {"native_units": "shares"},
+            {"source_provider": raw_api.provider_id("other")},
+            {"ingestion_sequence_scope": raw_api.ingestion_sequence_scope("other")},
+            {"source_timezone_native": "EST"},
+            {"source_timestamp_raw": "2026-10-16T00:59:58+00:00"},
+            {"revision_vintage_native": "vintage"},
+            {"value": float("nan")},
+            {"value": 100.0},
+            {"value": Decimal("Infinity")},
+            {"native_record": {"quote": {}}},
+            {"event": ASOF + timedelta(microseconds=1)},
+            {"receipt": ASOF + timedelta(microseconds=1)},
+            {"event": ASOF - timedelta(seconds=60, microseconds=1)},
+            {"event": ASOF - timedelta(seconds=11, microseconds=1)},
+            {"event": ASOF, "receipt": ASOF - timedelta(seconds=1)},
+            {"source_temporal_kind": "date_only", "source_timestamp_raw": "2026-10-16"},
+            {"source_temporal_kind": "receipt_only", "source_timestamp_raw": None},
+        ],
+    )
+    def test_d011_refuses_missing_or_incompatible_projection(change):
+        raw = raw_api.create_owner()
+        raw.commands.admit_raw_observation_occurrence(observation("bid", **change))
+        raw.commands.admit_raw_observation_occurrence(observation("ask"))
+>       f = foundation()
+            ^^^^^^^^^^^^
+
+tests/product/market_measurement/test_boundary_pilot.py:123: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/market_measurement/_support.py:38: in foundation
+    return importlib.import_module("nvda_desk.market_measurement_truth.api")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1331: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:935: in _load_unlocked
+    ???
+<frozen importlib._bootstrap_external>:995: in exec_module
+    ???
+<frozen importlib._bootstrap_external>:1133: in get_code
+    ???
+<frozen importlib._bootstrap_external>:1063: in source_to_code
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = <built-in function compile>
+args = (b'"""Exact controlled neutral-measurement public contract under accepted SQLite version 3."""\nfrom __future__ import...\n\n', '/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py', 'exec')
+kwds = {'dont_inherit': True, 'optimize': -1}
+
+>   ???
+E     File "/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py", line 255
+E       from ._catalogue import build_reader
+E       ^^^^
+E   IndentationError: expected an indented block after function definition on line 254
+
+<frozen importlib._bootstrap>:488: IndentationError
+________ test_d011_refuses_missing_or_incompatible_projection[change18] ________
+
+change = {'source_temporal_kind': 'receipt_only', 'source_timestamp_raw': None}
+
+    @pytest.mark.parametrize(
+        "change",
+        [
+            {"subject_instrument": "OTHER"},
+            {"source_variant": "other"},
+            {"native_units": "shares"},
+            {"source_provider": raw_api.provider_id("other")},
+            {"ingestion_sequence_scope": raw_api.ingestion_sequence_scope("other")},
+            {"source_timezone_native": "EST"},
+            {"source_timestamp_raw": "2026-10-16T00:59:58+00:00"},
+            {"revision_vintage_native": "vintage"},
+            {"value": float("nan")},
+            {"value": 100.0},
+            {"value": Decimal("Infinity")},
+            {"native_record": {"quote": {}}},
+            {"event": ASOF + timedelta(microseconds=1)},
+            {"receipt": ASOF + timedelta(microseconds=1)},
+            {"event": ASOF - timedelta(seconds=60, microseconds=1)},
+            {"event": ASOF - timedelta(seconds=11, microseconds=1)},
+            {"event": ASOF, "receipt": ASOF - timedelta(seconds=1)},
+            {"source_temporal_kind": "date_only", "source_timestamp_raw": "2026-10-16"},
+            {"source_temporal_kind": "receipt_only", "source_timestamp_raw": None},
+        ],
+    )
+    def test_d011_refuses_missing_or_incompatible_projection(change):
+        raw = raw_api.create_owner()
+        raw.commands.admit_raw_observation_occurrence(observation("bid", **change))
+        raw.commands.admit_raw_observation_occurrence(observation("ask"))
+>       f = foundation()
+            ^^^^^^^^^^^^
+
+tests/product/market_measurement/test_boundary_pilot.py:123: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/market_measurement/_support.py:38: in foundation
+    return importlib.import_module("nvda_desk.market_measurement_truth.api")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1331: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:935: in _load_unlocked
+    ???
+<frozen importlib._bootstrap_external>:995: in exec_module
+    ???
+<frozen importlib._bootstrap_external>:1133: in get_code
+    ???
+<frozen importlib._bootstrap_external>:1063: in source_to_code
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = <built-in function compile>
+args = (b'"""Exact controlled neutral-measurement public contract under accepted SQLite version 3."""\nfrom __future__ import...\n\n', '/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py', 'exec')
+kwds = {'dont_inherit': True, 'optimize': -1}
+
+>   ???
+E     File "/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py", line 255
+E       from ._catalogue import build_reader
+E       ^^^^
+E   IndentationError: expected an indented block after function definition on line 254
+
+<frozen importlib._bootstrap>:488: IndentationError
+_______________ test_exact_inclusive_temporal_boundaries[60-50] ________________
+
+event_seconds = 60, ask_seconds = 50
+
+    @pytest.mark.parametrize("event_seconds,ask_seconds", [(60, 50), (11, 1)])
+    def test_exact_inclusive_temporal_boundaries(event_seconds, ask_seconds):
+        raw = raw_api.create_owner()
+        raw.commands.admit_raw_observation_occurrence(
+            observation("bid", event=ASOF - timedelta(seconds=event_seconds))
+        )
+        raw.commands.admit_raw_observation_occurrence(
+            observation("ask", event=ASOF - timedelta(seconds=ask_seconds))
+        )
+>       f = foundation()
+            ^^^^^^^^^^^^
+
+tests/product/market_measurement/test_boundary_pilot.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/market_measurement/_support.py:38: in foundation
+    return importlib.import_module("nvda_desk.market_measurement_truth.api")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1331: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:935: in _load_unlocked
+    ???
+<frozen importlib._bootstrap_external>:995: in exec_module
+    ???
+<frozen importlib._bootstrap_external>:1133: in get_code
+    ???
+<frozen importlib._bootstrap_external>:1063: in source_to_code
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = <built-in function compile>
+args = (b'"""Exact controlled neutral-measurement public contract under accepted SQLite version 3."""\nfrom __future__ import...\n\n', '/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py', 'exec')
+kwds = {'dont_inherit': True, 'optimize': -1}
+
+>   ???
+E     File "/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py", line 255
+E       from ._catalogue import build_reader
+E       ^^^^
+E   IndentationError: expected an indented block after function definition on line 254
+
+<frozen importlib._bootstrap>:488: IndentationError
+________________ test_exact_inclusive_temporal_boundaries[11-1] ________________
+
+event_seconds = 11, ask_seconds = 1
+
+    @pytest.mark.parametrize("event_seconds,ask_seconds", [(60, 50), (11, 1)])
+    def test_exact_inclusive_temporal_boundaries(event_seconds, ask_seconds):
+        raw = raw_api.create_owner()
+        raw.commands.admit_raw_observation_occurrence(
+            observation("bid", event=ASOF - timedelta(seconds=event_seconds))
+        )
+        raw.commands.admit_raw_observation_occurrence(
+            observation("ask", event=ASOF - timedelta(seconds=ask_seconds))
+        )
+>       f = foundation()
+            ^^^^^^^^^^^^
+
+tests/product/market_measurement/test_boundary_pilot.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/market_measurement/_support.py:38: in foundation
+    return importlib.import_module("nvda_desk.market_measurement_truth.api")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1331: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:935: in _load_unlocked
+    ???
+<frozen importlib._bootstrap_external>:995: in exec_module
+    ???
+<frozen importlib._bootstrap_external>:1133: in get_code
+    ???
+<frozen importlib._bootstrap_external>:1063: in source_to_code
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = <built-in function compile>
+args = (b'"""Exact controlled neutral-measurement public contract under accepted SQLite version 3."""\nfrom __future__ import...\n\n', '/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py', 'exec')
+kwds = {'dont_inherit': True, 'optimize': -1}
+
+>   ???
+E     File "/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py", line 255
+E       from ._catalogue import build_reader
+E       ^^^^
+E   IndentationError: expected an indented block after function definition on line 254
+
+<frozen importlib._bootstrap>:488: IndentationError
+__________ test_foundation_rejects_downstream_and_unenabled_requests ___________
+
+    def test_foundation_rejects_downstream_and_unenabled_requests():
+        raw = raw_api.create_owner()
+        for side in ("bid", "ask"):
+            raw.commands.admit_raw_observation_occurrence(observation(side))
+>       f = foundation()
+            ^^^^^^^^^^^^
+
+tests/product/market_measurement/test_boundary_pilot.py:157: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/market_measurement/_support.py:38: in foundation
+    return importlib.import_module("nvda_desk.market_measurement_truth.api")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1331: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:935: in _load_unlocked
+    ???
+<frozen importlib._bootstrap_external>:995: in exec_module
+    ???
+<frozen importlib._bootstrap_external>:1133: in get_code
+    ???
+<frozen importlib._bootstrap_external>:1063: in source_to_code
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = <built-in function compile>
+args = (b'"""Exact controlled neutral-measurement public contract under accepted SQLite version 3."""\nfrom __future__ import...\n\n', '/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py', 'exec')
+kwds = {'dont_inherit': True, 'optimize': -1}
+
+>   ???
+E     File "/workspace/scratch/d549b6d808a9/g52-recovery/repository/src/nvda_desk/market_measurement_truth/api.py", line 255
+E       from ._catalogue import build_reader
+E       ^^^^
+E   IndentationError: expected an indented block after function definition on line 254
+
+<frozen importlib._bootstrap>:488: IndentationError
+=========================== short test summary info ============================
+FAILED tests/product/market_measurement/test_boundary_pilot.py::test_d011_midpoint_public_exact_lineage
+FAILED tests/product/market_measurement/test_boundary_pilot.py::test_d011_refuses_missing_or_incompatible_projection[change0]
+FAILED tests/product/market_measurement/test_boundary_pilot.py::test_d011_refuses_missing_or_incompatible_projection[change1]
+FAILED tests/product/market_measurement/test_boundary_pilot.py::test_d011_refuses_missing_or_incompatible_projection[change2]
+FAILED tests/product/market_measurement/test_boundary_pilot.py::test_d011_refuses_missing_or_incompatible_projection[change3]
+FAILED tests/product/market_measurement/test_boundary_pilot.py::test_d011_refuses_missing_or_incompatible_projection[change4]
+FAILED tests/product/market_measurement/test_boundary_pilot.py::test_d011_refuses_missing_or_incompatible_projection[change5]
+FAILED tests/product/market_measurement/test_boundary_pilot.py::test_d011_refuses_missing_or_incompatible_projection[change6]
+FAILED tests/product/market_measurement/test_boundary_pilot.py::test_d011_refuses_missing_or_incompatible_projection[change7]
+FAILED tests/product/market_measurement/test_boundary_pilot.py::test_d011_refuses_missing_or_incompatible_projection[change8]
+FAILED tests/product/market_measurement/test_boundary_pilot.py::test_d011_refuses_missing_or_incompatible_projection[change9]
+FAILED tests/product/market_measurement/test_boundary_pilot.py::test_d011_refuses_missing_or_incompatible_projection[change10]
+FAILED tests/product/market_measurement/test_boundary_pilot.py::test_d011_refuses_missing_or_incompatible_projection[change11]
+FAILED tests/product/market_measurement/test_boundary_pilot.py::test_d011_refuses_missing_or_incompatible_projection[change12]
+FAILED tests/product/market_measurement/test_boundary_pilot.py::test_d011_refuses_missing_or_incompatible_projection[change13]
+FAILED tests/product/market_measurement/test_boundary_pilot.py::test_d011_refuses_missing_or_incompatible_projection[change14]
+FAILED tests/product/market_measurement/test_boundary_pilot.py::test_d011_refuses_missing_or_incompatible_projection[change15]
+FAILED tests/product/market_measurement/test_boundary_pilot.py::test_d011_refuses_missing_or_incompatible_projection[change16]
+FAILED tests/product/market_measurement/test_boundary_pilot.py::test_d011_refuses_missing_or_incompatible_projection[change17]
+FAILED tests/product/market_measurement/test_boundary_pilot.py::test_d011_refuses_missing_or_incompatible_projection[change18]
+FAILED tests/product/market_measurement/test_boundary_pilot.py::test_exact_inclusive_temporal_boundaries[60-50]
+FAILED tests/product/market_measurement/test_boundary_pilot.py::test_exact_inclusive_temporal_boundaries[11-1]
+FAILED tests/product/market_measurement/test_boundary_pilot.py::test_foundation_rejects_downstream_and_unenabled_requests
+23 failed in 0.25s

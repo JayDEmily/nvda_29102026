@@ -1,0 +1,93 @@
+{
+  "id": "D082",
+  "definition": "D082-ALIGNED-RETURN-CORRELATION-1",
+  "kernel": "K06_REGRESSION_DEPENDENCE",
+  "parameters": "P_REGRESSION",
+  "subject": "US_CORRELATION_BASKET",
+  "members": [
+    "NVDA",
+    "SPY",
+    "QQQ"
+  ],
+  "as_of": "2026-10-20T12:40:00Z",
+  "cutoff": "2026-10-20T12:40:01Z",
+  "now": "2026-10-20T12:40:02Z",
+  "anchors": [
+    "2026-10-20T12:37:00Z",
+    "2026-10-20T12:38:00Z",
+    "2026-10-20T12:39:00Z",
+    "2026-10-20T12:40:00Z"
+  ],
+  "closes": {
+    "NVDA": [
+      "1",
+      "2",
+      "4",
+      "12"
+    ],
+    "SPY": [
+      "1",
+      "2",
+      "6",
+      "12"
+    ],
+    "QQQ": [
+      "1",
+      "3",
+      "9",
+      "18"
+    ]
+  },
+  "provider": "foundation-controlled-correlation",
+  "variant": "minute_close_v1",
+  "raw_signal": "R151",
+  "mapping_id": "mmt-r151-correlation",
+  "native_path": [
+    "bar",
+    "close"
+  ],
+  "unit_id": "mmt-correlation-price",
+  "native_units": "price",
+  "metadata": {
+    "instrument.id": [
+      "instrument",
+      "id"
+    ],
+    "bar.end_utc": [
+      "bar",
+      "end_utc"
+    ],
+    "bar.kind": [
+      "bar",
+      "kind"
+    ],
+    "adjustment.basis": [
+      "adjustment",
+      "basis"
+    ]
+  },
+  "context_id": "controlled-correlation-window",
+  "context_start": "2026-10-20T12:37:00Z",
+  "context_end": "2026-10-20T12:41:00Z",
+  "parameter_id": "mmt-d082-controlled",
+  "selection_id": "mmt-d082-selection",
+  "window_seconds": 180,
+  "expected_matrix": [
+    [
+      "1",
+      "-0.5",
+      "-1"
+    ],
+    [
+      "-0.5",
+      "1",
+      "0.5"
+    ],
+    [
+      "-1",
+      "0.5",
+      "1"
+    ]
+  ],
+  "refusal": "Remove SPY T-1min bar only; all eleven remaining positive exact-anchor closes stay lawful, no pairwise subset."
+}

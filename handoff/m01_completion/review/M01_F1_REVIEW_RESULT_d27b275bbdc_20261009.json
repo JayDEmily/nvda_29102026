@@ -1,0 +1,55 @@
+{
+  "authorities": {
+    "brief_sha256": "603b850802a418780109095e7ae69bcece449da79fb24140a6d50297605e927c",
+    "catalogue_sha256": "63bc1b776fc8fa8ba82eb3c9b16916f295c9ec3d480a5a068937c2f25146f5f5",
+    "plan": "EXEC_PLAN.md F1\u2013F4 Programme Owner amendment 2026-10-08"
+  },
+  "evidence": {
+    "counts": {
+      "closed": 144,
+      "direct_cross_stage": 25,
+      "direct_derived_edges": 197,
+      "direct_raw_edges": 291,
+      "relationship_classes": 21,
+      "stage1_rows": 174,
+      "transitive_cross_stage": 5,
+      "zero_dependency_rows": 1
+    },
+    "dangling_objects_warning_count": 16,
+    "edge_and_row_set_differences": 0,
+    "git_fsck_exit_code": 0,
+    "hash_mismatches": 0,
+    "independent_audit_file": "handoff/m01_completion/review/proof/F1_INDEPENDENT_AUDIT_20261009.json",
+    "independent_audit_sha256": "5abb6e20b4fb80ae1afd16e0247431f163c74d7d480d4c0d45bc7377a708e4e9",
+    "manifest_file_hashes_checked": 15,
+    "production_tests_governance_normative_changes_in_worker_candidate": 0
+  },
+  "f1_checkpoints": [
+    "ba11e27eca136aed9de60bb96e59e2afadfed3d3",
+    "c1b7dcd5afe0b95da259cc272b1d3e99b4ebe5b2",
+    "d27b275bbdc696fab561f20a9fd94dfd4a92de47"
+  ],
+  "f2_authorised": true,
+  "generated_at_utc": "2026-10-08T20:04:15.287127+00:00",
+  "kind": "independent_review_result",
+  "limits": [
+    "F1 inventory semantics are not production graph acceptance",
+    "D016/D120 signed arithmetic defect uncorrected",
+    "256 inventory cardinality UNKNOWN fields and 437 NOT_PER_EDGE_PROVED flags remain",
+    "Eight edge-level KNOWN_PUBLIC_FAILURE tags reflect two parent output failures, not eight separately isolated edge failures",
+    "D065 still unassessed",
+    "D121/D122 grouped public paths unassessed",
+    "No runtime or PostgreSQL tests rerun for evidence-only F1"
+  ],
+  "parent_handoff_head": "11790d8c16334da7f61c468f86c69c21e50ff85c",
+  "review": "M01_STAGE1_F1_FOUNDATIONAL_RELATIONSHIP_CENSUS",
+  "review_document": "handoff/m01_completion/review/M01_F1_INDEPENDENT_REVIEW_20261009.md",
+  "reviewed_branch": "work/m01-completion",
+  "reviewed_worker_head": "d27b275bbdc696fab561f20a9fd94dfd4a92de47",
+  "reviewed_worker_tree": "a6e46679d01a77d07ce749ab55ea8d7fd602527d",
+  "reviewer_disposition": "F1_INVENTORY_ACCEPTED",
+  "route": "RETURN_TO_WORKER_F2_ONLY",
+  "scope": "F1 authority-derived relationship census and implementation map only",
+  "stage1_accepted": false,
+  "stage2_authorised": false
+}

@@ -1,0 +1,9 @@
+src/nvda_desk/architecture/registry.py:9: error: Library stubs not installed for "yaml"  [import-untyped]
+src/nvda_desk/architecture/proof.py:9: error: Library stubs not installed for "yaml"  [import-untyped]
+src/nvda_desk/architecture/dependencies.py:10: error: Library stubs not installed for "yaml"  [import-untyped]
+src/nvda_desk/architecture/allocation.py:8: error: Library stubs not installed for "yaml"  [import-untyped]
+src/nvda_desk/architecture/allocation.py:8: note: Hint: "python3 -m pip install types-PyYAML"
+src/nvda_desk/architecture/allocation.py:8: note: (or run "mypy --install-types" to install all missing stub packages)
+src/nvda_desk/architecture/allocation.py:8: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports
+src/nvda_desk/architecture/implementation_authority.py:11: error: Library stubs not installed for "yaml"  [import-untyped]
+Found 5 errors in 5 files (checked 21 source files)

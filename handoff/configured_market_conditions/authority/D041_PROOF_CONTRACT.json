@@ -1,0 +1,94 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "configured_market_conditions_d041",
+  "semantic_brief_path": "handoff/configured_market_conditions/authority/D041_IMPLEMENTATION_BRIEF.md",
+  "target": {
+    "category": "M",
+    "responsibility_name": "configured_market_conditions",
+    "package": "nvda_desk.configured_market_conditions",
+    "public_seam": "nvda_desk.configured_market_conditions.api",
+    "intent": "modify",
+    "existing_object_id": "M03"
+  },
+  "proof_axis": "product",
+  "product_tier_treatment": "NOT_CLASSIFIED",
+  "architecture_proof_axis": "architecture_kernel",
+  "required_proof_ids": [
+    "D041-CALCULATION"
+  ],
+  "families": [
+    {
+      "id": "cmc_d041",
+      "path": "tests/product/configured_conditions_d041/test_signal.py",
+      "proof_obligation_ids": [
+        "D041-CALCULATION"
+      ],
+      "required_test_names": [
+        "test_d041_signal"
+      ],
+      "boundary": "Owning D041 reversion profile; exactly success and actual D040 cutoff mismatch refusal.",
+      "proof_levels": [
+        "CONTRACT",
+        "INTEGRATION",
+        "STATE"
+      ],
+      "authoritative_inputs": [
+        "handoff/configured_market_conditions/authority/D041_IMPLEMENTATION_BRIEF.md",
+        "handoff/configured_market_conditions/authority/D041_PROFILE.json",
+        "Root EXEC_PLAN.md sections11-13; K07/D041 catalogue and accepted D040."
+      ],
+      "dependency_substitutions": [
+        "Actual public M00 -> M02 producers; controlled sources/sessions, not native certification.",
+        "Owner-local copies of typed codec/SQLite infrastructure; no private cross-owner imports."
+      ],
+      "case_coverage": {
+        "lawful_positive": {
+          "cases": [
+            "Exactly root manifest case1, independent fixed literal; complete typed metadata/source lineage/public durable reopen."
+          ]
+        },
+        "prohibited_false_positive": {
+          "cases": [
+            "Exactly root manifest case2; lawful raw preconditions reach its declared defect and persist no occurrence."
+          ]
+        },
+        "missing_mandatory_authority": {
+          "cases": [
+            "Exact bound controlled profile, admission and immutable generation required before runtime."
+          ]
+        },
+        "lawful_optional_absence": {
+          "cases": [
+            "No live provider/calendar integration or other signal required; unsupported prerequisites refuse by contract."
+          ]
+        }
+      },
+      "expected_failure_signals": [
+        "Incorrect arithmetic or selected raw lineage fails exact success assertions",
+        "Named missing/incompatible input must refuse without occurrence"
+      ],
+      "limitations": [
+        "Exactly two cases; no generic fault/boundary/numeric variant probes, broad suites or earlier claims."
+      ],
+      "adjacent_nonclaims": [
+        "No acceptance beyond this ID; no native-source certification or M00 mutation."
+      ],
+      "environment": "CPython3.12.14 SQLite3.53.1 and existing pinned offline tools.",
+      "material_versions": [
+        "Exact brief/binding/contract/generation and candidate/tree/runtime; old generations preserved."
+      ],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/configured_conditions_d041/test_signal.py"
+    }
+  ],
+  "required_support_files": [],
+  "optional_support_files": [],
+  "execution_policy": {
+    "skipped_tests": "FAIL",
+    "xfailed_tests": "FAIL",
+    "xpassed_tests": "FAIL",
+    "collection_failed": "FAIL",
+    "no_tests_collected": "FAIL",
+    "unexpected_governed_mutation": "FAIL"
+  }
+}

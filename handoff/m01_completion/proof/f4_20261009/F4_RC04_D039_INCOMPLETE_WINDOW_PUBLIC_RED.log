@@ -1,0 +1,23 @@
+COMMAND: /mnt/data/nvda_f4_env/venv/bin/python -m pytest -q tests/product/derived_signal/test_m01_f4_rc04_realised_risk_public.py
+EXIT: 1
+..................F.                                                     [100%]
+=================================== FAILURES ===================================
+_____ test_rc04_public_d039_must_not_skip_incomplete_bar_in_latest_window ______
+
+    def test_rc04_public_d039_must_not_skip_incomplete_bar_in_latest_window() -> None:
+        owner, req, _ = _public(
+            "D039", extra_d039_bar=True, omit_bar_field=(2, "R141"),
+        )
+        # The last two bars are bar 2 and bar 3. Missing bar-2 high cannot
+        # be repaired by silently drawing older complete bar 1 into the window.
+>       assert owner.materialise(req) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D039', derived_occurrence_id='d039-61c3b8b5b0ad879591003aab3f8c340e7dda08...VersionRefV1(context_id='rc04-risk-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(derived_signal_id='D039', derived_occurrence_id='d039-61c3b8b5b0ad879591003aab3f8c340e7dda08...VersionRefV1(context_id='rc04-risk-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D039', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 10, 4,...c04-risk-unit', version=1), subject_instrument='NVDA', selection_identity=None)), predecessor_selection_policy_refs=()))
+E        +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7f7d1b4d33c0>.materialise
+
+tests/product/derived_signal/test_m01_f4_rc04_realised_risk_public.py:301: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/derived_signal/test_m01_f4_rc04_realised_risk_public.py::test_rc04_public_d039_must_not_skip_incomplete_bar_in_latest_window - AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D039', derived_occurrence_id='d039-61c3b8b5b0ad879591003aab3f8c340e7dda08...VersionRefV1(context_id='rc04-risk-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) is None
+ +  where DerivedSignalOccurrenceV1(derived_signal_id='D039', derived_occurrence_id='d039-61c3b8b5b0ad879591003aab3f8c340e7dda08...VersionRefV1(context_id='rc04-risk-unit', version=1),), selection_identity=None, supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D039', subject_instrument='NVDA', as_of_utc=datetime.datetime(2026, 10, 10, 4,...c04-risk-unit', version=1), subject_instrument='NVDA', selection_identity=None)), predecessor_selection_policy_refs=()))
+ +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7f7d1b4d33c0>.materialise
+1 failed, 19 passed in 0.10s

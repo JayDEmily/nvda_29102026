@@ -1,0 +1,14 @@
+{
+  "review_cycle": "TESTER_VI13R_U02_R024_1790131803",
+  "actor": "TESTER",
+  "candidate_commit": "5c62ec5147da718297b251b5a287405ebf3b4755",
+  "candidate_tree": "dc1293d2c3d7e234e53a8d663f25eac51f7086ab",
+  "status": "COMPLETE",
+  "disposition": "PASS",
+  "findings": [],
+  "reviewed_findings": {
+    "R023-U02-F001": "CLOSED"
+  },
+  "u03_authority": "AUTHORISED_ONLY_AFTER_LAWFUL_U02_PROMOTION",
+  "next_authorised_step": "WORKER promotes the accepted repaired U02 candidate together with the Reviewer-024 PASS/evidence to forward main with preserved ancestry; only after that promotion is complete may IWO-U03 begin on a fresh unit branch."
+}

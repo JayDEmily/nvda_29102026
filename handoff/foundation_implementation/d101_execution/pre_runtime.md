@@ -1,0 +1,5 @@
+# D101 candidate before independent strict runtime
+
+Owner-accepted root §4.7/F24 and own profile/brief/two-case proof were authored and inspected before production. The proof admits/projects eight actual M00 R111/R112 facts for C25/P25/C50/P50 on success, checking native signed deltas ±.25/±.50, full ten-field identity/lineage, exact two-sided ATM .24 and curvature 2/1, ordinary public SQLite read-only reopen. Refusal has P50 IV and six other lawful sources but deliberately no P50 R112; it checks seven independent projections and no output/history. No R015 or D096 predecessor is declared.
+
+A narrow _smile_curvature.py owner enforces the eight-role grid, exact T/E1 source snapshot, parsed UTC instant, selected source rank and complete numeric validation before exact rational arithmetic. Own brief hash routes public owner/reader, immutable generation0001 binds the proof. Scoped Ruff and changed production mypy exit0; own claim/authority/generation ingress READY_FOR_PROOF. Ruff initially found one import-format issue, repaired before candidate. No Worker product runtime. Sole independent final semantic review/strict aggregate pending.

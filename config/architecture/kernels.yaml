@@ -1,0 +1,9 @@
+schema_version: "1.0"
+kernels:
+  - id: K01
+    name: state_and_transaction
+    status: placeholder
+    description: Reserved technical-kernel identity for domain-neutral state and transaction mechanisms. No runtime mechanism implementation is currently admitted.
+    predecessors: []
+    successors: []
+retired_ids: []

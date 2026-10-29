@@ -1,0 +1,25 @@
+{
+  "scope": "Documentary recovery and internal bounded review; no product execution or external G4 acceptance",
+  "provided_checkpoint": {
+    "archive": "/workspace/scratch/ad31885d756b/upload/NVDA_M02_PREREQUISITES_G4_REPAIR_01_20261029_REVIEW_HANDOFF.tar(2).gz",
+    "source_head": "e4331e05e7ef677a3dd1617ad07df3025b4558f7",
+    "tree": "4e822eb9d3cd2efd340213520c025baa01feaac4",
+    "additive_sha256": "ee0702cbc11bff15a8c8ea52434843b587aecc716723b096f8c6a11a48a9f091",
+    "package_members_hash_verified": 33
+  },
+  "later_related_evidence": {
+    "library_file_id": "libfile_4fad866e34488191b830a29080a71cbb",
+    "archive": "NVDA_M02_R3_SYNTHETIC_TENTATIVE_V1_20261029_HANDOVER.tar.gz",
+    "archive_sha256": "374e06a57243644bd1db9a3e2d0fc18d4caa910117068653f1b6a2bec8b19174",
+    "source_head": "10a37c8b81c200b0f048e36a3585cdbaf2eeed08",
+    "additive_sha256": "e4364eb464fe4fc9c848cd194f5f97d5ae81a240a5c08da5e2b5c59dfd1f1ae7",
+    "package_members_hash_verified": 36,
+    "descendant_of_provided_head": true,
+    "authority_limit": "Owner-direction file is an attested source record; not new production approval or external G4 verdict."
+  },
+  "fixed_transfer_baseline": "97f944d51ab9e403250fe76910e2754b50425c73",
+  "original_baseline_ref_tips_verified": 66,
+  "recovery_head_tree_fsck_verified": true,
+  "repairs": "R3_DOCUMENTARY_CLARIFICATION_REPAIR_01.md",
+  "product_tests_run": 0
+}

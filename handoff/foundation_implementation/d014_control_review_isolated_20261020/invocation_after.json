@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "/tmp/nvda-g61-runtime-GBILkakx/dev/bin/python",
+    "/tmp/nvda-d014-review-babm9GDf/exact_sequence.py"
+  ],
+  "cwd": "/tmp/nvda-d014-review-babm9GDf",
+  "merged_stdout_stderr": "/tmp/nvda-d014-review-babm9GDf/exact_sequence.log",
+  "script_sha256_before": "53d879d947dfefb3f918fbbb6acf8163487c05a286d078eb6f5b3731fe9f117e",
+  "expected_source_head": "f01ad17c48f0eb21148cb7b2aa4e2b2f428c0f2b",
+  "expected_proposed_module_sha256": "b2670e26f51d4b6f4fc8c656c859b9e5d63ca9aadd84ff2f818ff06cd9bb118a",
+  "exit": 0,
+  "status": "EXECUTED",
+  "script_sha256_after": "53d879d947dfefb3f918fbbb6acf8163487c05a286d078eb6f5b3731fe9f117e",
+  "log_sha256": "38012bf12d4b402deb6a07ec8a670cc213269b016a0b644d02bd111063275958"
+}

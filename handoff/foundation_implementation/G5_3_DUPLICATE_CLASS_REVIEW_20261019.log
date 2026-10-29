@@ -1,0 +1,17 @@
+CONFIRMED false valid occurrence wrong-returned-units ineligible-first=False cross-page=False
+CONFIRMED false valid occurrence wrong-returned-units ineligible-first=False cross-page=True
+CONFIRMED false valid occurrence wrong-returned-units ineligible-first=True cross-page=False
+CONFIRMED false valid occurrence wrong-returned-units ineligible-first=True cross-page=True
+CONFIRMED false valid occurrence stale-returned-event ineligible-first=False cross-page=False
+CONFIRMED false valid occurrence stale-returned-event ineligible-first=False cross-page=True
+CONFIRMED false valid occurrence stale-returned-event ineligible-first=True cross-page=False
+CONFIRMED false valid occurrence stale-returned-event ineligible-first=True cross-page=True
+CONFIRMED false valid occurrence after-cutoff-receipt ineligible-first=False cross-page=False
+CONFIRMED false valid occurrence after-cutoff-receipt ineligible-first=False cross-page=True
+CONFIRMED false valid occurrence after-cutoff-receipt ineligible-first=True cross-page=False
+CONFIRMED false valid occurrence after-cutoff-receipt ineligible-first=True cross-page=True
+CONFIRMED false valid occurrence nonfinite-native-value ineligible-first=False cross-page=False
+CONFIRMED false valid occurrence nonfinite-native-value ineligible-first=False cross-page=True
+CONFIRMED false valid occurrence nonfinite-native-value ineligible-first=True cross-page=False
+CONFIRMED false valid occurrence nonfinite-native-value ineligible-first=True cross-page=True
+CLASSIFICATION: same mechanism confirmed in 16 bounded variants; expected None and empty history

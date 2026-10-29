@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_d067",
+  "generation": 1,
+  "brief_sha256": "41261784bfdcc5c4e94fa8f49d5b14b6dd0e01b60b1e122dd6c1240c78056a2f",
+  "binding_sha256": "5c1897901e32df7150163ead32ddc487722cb5bb44eec74d2e659544289368d9",
+  "contract_sha256": "c14942db700feb0dd82bb23dc6f74988862b1d0c5f2dfb1b88e5b101122f0fc3",
+  "implementation_target_id": "M02",
+  "adequacy_review_ref": "handoff/foundation_implementation/authority/D067_IMPLEMENTATION_BRIEF.md-section1-source-case-inspection",
+  "admission_authority_ref": "owner-chat/20261024/D057-D076-plan-acceptance-and-execution",
+  "family_files": [
+    {
+      "path": "tests/product/market_measurement_d067/test_signal.py",
+      "sha256": "b2f250c5dc3e299e85318658c956a3268822823799feb810fff2b26647fb634a"
+    }
+  ],
+  "support_files": [],
+  "previous_generation": null
+}

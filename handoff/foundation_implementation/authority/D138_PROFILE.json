@@ -1,0 +1,21 @@
+{
+  "id": "D138",
+  "definition": "D138-L2-CONTRACT-20261016-01",
+  "kernel": "K06_REGRESSION_DEPENDENCE",
+  "source": "foundation-controlled-smart-book/positional_slope_v1",
+  "subject": "NVDA",
+  "roles": {
+    "R185": "integer position",
+    "R187": "integer operation",
+    "R188": "integer side",
+    "R189": "Decimal price USD_per_share",
+    "R190": "Decimal size shares"
+  },
+  "predecessor": "actual accepted public D011 midpoint100",
+  "selection": "one generation and complete three standing levels per side; receipt/ingestion ordered position replay",
+  "success": "bid cumulative2,5,9 at distances1,2,3 slope7/2; ask1,3,6 slope5/2",
+  "refusal": "reset317 after warm-up without three-level re-warm-up",
+  "boundary": "controlled SMART profile, not native certification",
+  "parameter_profile": "P_REGRESSION",
+  "output_units": "depth per price distance"
+}

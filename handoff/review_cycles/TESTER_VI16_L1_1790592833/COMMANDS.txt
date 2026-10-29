@@ -1,0 +1,98 @@
+VI-16-L1 Tester material command/evidence record
+
+SOURCE / GOVERNANCE / AUTHORITY
+- received packet SHA-256 -> f1e4e0d8e8099f7f6b9dfd82481c8086c4d7132e08ebc0544caed8188c7c0abb
+- read full GUARDRAILS.md, root AGENTS.md, tests/AGENTS.override.md, accepted EXEC_PLAN.md,
+  CURRENT_STATE.md, active TESTER_VI16_L1_1790592833 REQUEST.md, root README.md,
+  exact BICP/IRB/IWO, VI-04 authority, VI-15 distribution authority, Worker VI-16 packet,
+  accepted U01-U06 review lineage, VI-14/VI-15 evidence, architecture/proof-control configuration,
+  final implementation paths and supplied package artefacts
+- exact candidate -> 9248f3b1788f8e99e59a0482c4cc393c27942715
+- exact candidate tree -> 5560c97ad83a05190603c323eb4fbfa0c21d983d
+- candidate tested from detached exact worktree; later review-routing commit was not candidate bytes
+- accepted package candidate -> 332c1f95da032f841e8779ef21fe3c1fceb698a2
+- git diff package candidate..VI16 candidate over src/** tests/** config/** pyproject.toml -> empty
+- all recorded accepted U01-U06 candidate/review/promotion identities, VI14 candidate and VI15 candidate/review/
+  promotion identities checked as ancestors of exact VI16 candidate -> PASS
+
+AUTHORITY / PACKAGE REBIND
+- BICP JSON SHA-256 -> 5b99cead41fd8d3d372b5ed2ef4558065328b814e0a94c3680162fc6594df5ed
+- BICP Markdown SHA-256 -> 6b2906b92e11bf09fd7f8b188e8ed6555a0a5ae61636909f676f84827601d21f
+- IRB SHA-256 -> 938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342
+- IWO JSON SHA-256 -> a673ff05bc58870fdfca49167482aabe4647889d7750fd1b49805c7064ef7eed
+- IWO Markdown SHA-256 -> b23fec7e83eace6353272f92b983160c2ab768043640d15d7ee1fb88f270ca0e
+- final distribution authority -> nvda-architecture-kernel==1.0.0
+- accepted wheel SHA-256 -> d311960234c932c2507f7b1671c8d53bff3ec234692e65ca27b440293e37e127
+- accepted sdist SHA-256 -> 135e47f6ab531e8e650a2ee1adc9582965e1c81d97d08dfdc854757a790629fa
+- wheel inventory -> 21 files / 16 runtime Python files; exact runtime Python set and bytes match candidate src/nvda_desk
+- wheel top-level runtime packages -> architecture, composition, raw_signal_occurrence_truth only
+
+PROOF ENVIRONMENT
+- preserved bootstrap archive SHA-256 -> 01050287798e53e38f33794e201df53adbe6fcba03024a027ac36d3d9cea66b8
+- PostgreSQL runtime archive SHA-256 -> 59822410ac6855365c90765de5071182ab382e87d9e9a2622424e7787c4e5caf
+- fresh environment -> Python 3.13.5 / pytest 9.0.3 / mypy 1.20.1 / Ruff 0.15.11 /
+  Psycopg 3.3.4 / PostgreSQL 17.9 / UTF8 / fsync=on / synchronous_commit=on /
+  full_page_writes=on / Unix socket only
+- bootstrap wheelhouse omitted PyYAML; exact locally available PyYAML 6.0.3 package was supplied to the
+  fresh proof/install environments without candidate mutation; candidate metadata already pins PyYAML==6.0.3
+
+INDEPENDENT CURRENT-CANDIDATE EXECUTION
+- five non-U05 admitted product families -> 424/424 PASS
+- U05 PostgreSQL durability family -> 55/55 PASS; one intermediate bounded batch exceeded command-wrapper
+  time before a terminal result and was not counted; all affected cases were rerun to explicit terminal PASS
+- complete independently established product population -> 479/479 PASS
+- tools/validate_product_proof.py -> PASS; six admitted families / 13 of 13 current product obligations /
+  repaired successor IA22R01-PROD-009 present and forbidden predecessor IA17-PROD-009 absent
+- tools/run_promotion_gate.py --set architecture_kernel -> 74/74 PASS across 11 current-blocking families
+- tools/validate_architecture.py -> PASS; one active runtime module / one implementation allocation /
+  zero dependency/public-seam violations
+- tools/check_dependencies.py -> PASS
+- tools/check_public_seams.py -> PASS
+- python -m mypy src -> PASS, 16 source files
+- ruff check src tests tools -> PASS
+- first validator invocation without PYTHONPATH=src failed import collection; corrected Tester harness only,
+  no candidate mutation and no result counted from failed invocation
+
+FRESH WHOLE-BICP SEMANTIC CHALLENGE
+- traced all M16-RSOT-001..012 from IRB/BICP through current proof obligations to source/package state -> PASS
+- challenged BC-001 composition/ownership: A00 constructs/translates/lifecycles; M00 owns Raw Signal meaning;
+  PostgreSQL/Psycopg/SQL remain technical non-owning mechanism; runtime owner direction A00 -> M00 only -> PASS
+- challenged all 19 current obligations: 13 product obligations plus IA17-ARCH-001..006 -> PASS
+- current product authority contains IA22R01-PROD-009 and explicitly forbids predecessor IA17-PROD-009 -> PASS
+- inspected Remaining Unknown boundary: no concrete provider mapping, provider duplicate rule, clock/finality/count,
+  production ID-generator, replay/retention, provider/network, validation/quarantine, D001+, downstream or
+  performance/SLA semantics were silently defaulted; VI-15 separately resolved package metadata only -> PASS
+- installed package has no importable p01, k01, provider, network, downstream_consumer, dmpv3_packet or replay module
+- assessment temporal challenge considered the previously reviewed case where evidence_as_of_ts_utc precedes
+  an already-visible observation receipt time. Current accepted law provides no historical query/commit clock and
+  explicitly forbids receipt time as a visibility surrogate; no new temporal rule was invented and no defect established.
+
+FIXTURE-INDEPENDENT INSTALLED-DISTRIBUTION CHALLENGE
+- fresh external Python 3.13.5 venv; exact accepted wheel installed; working directory outside repository;
+  PYTHONPATH unset; repository path absent from sys.path
+- installed nvda_desk loaded from external site-packages; top-level modules exactly architecture, composition,
+  raw_signal_occurrence_truth
+- Tester-authored direct A00 -> PostgreSQL-backed M00 sequence against fresh PostgreSQL 17.9 database -> PASS
+  * exact receipt-evidence role and one_or_more_received assessment
+  * native Decimal/null observation readback preserved
+  * fresh-application same-occurrence retry idempotent against durable state
+  * mismatched policy reference fails closed
+  * zero -> later one_or_more append-only immediate-predecessor supersession
+  * same observation ID exact retry succeeds; conflicting same-ID content fails; new retransmission identity remains distinct
+  * restart reconciliation creates unknown_not_established, never inferred zero
+  * in-slot observation without eligibility resolver fails closed
+  * receipt_only/date_only temporal law preserved; no event_ts_utc field fabricated
+  * runtime identity layers remain distinct and cross-layer substitution fails
+- resulting fresh database semantic row counts policy/capture/observation/assessment -> 4/4/6/4
+
+GIT / INTEGRITY
+- exact candidate worktree -> clean after proof
+- git diff --check -> PASS
+- git fsck --full --no-dangling -> PASS
+
+DISPOSITION
+- PASS
+- findings -> none
+- recurrence classification -> NO_FINDING
+- exact VI16 candidate accepted for lawful preserved-ancestry VI16 promotion/close-out only
+- VI17 remains prohibited until promotion/close-out succeeds and current state is advanced by the Worker

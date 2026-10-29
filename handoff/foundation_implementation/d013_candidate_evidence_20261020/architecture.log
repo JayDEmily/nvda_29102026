@@ -1,0 +1,40 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/d549b6d808a9/g52-recovery/repository
+configfile: pyproject.toml
+collected 163 items
+
+tests/architecture/test_activation_readiness.py ............             [  7%]
+tests/architecture/test_dependency_direction.py ......                   [ 11%]
+tests/architecture/test_identifier_taxonomy.py .....................     [ 23%]
+tests/architecture/test_implementation_authority_ingress.py ............ [ 31%]
+...                                                                      [ 33%]
+tests/architecture/test_object_lifecycle.py ...                          [ 34%]
+tests/architecture/test_proof_control.py ............................... [ 53%]
+.............................................................            [ 91%]
+tests/architecture/test_public_seam_law.py .....                         [ 94%]
+tests/architecture/test_registry_schema.py .                             [ 95%]
+tests/architecture/test_static_typecheck.py ...                          [ 96%]
+tests/bootstrap/test_legacy_exclusion.py ...                             [ 98%]
+tests/bootstrap/test_minimal_imports.py ..                               [100%]
+
+======================= 163 passed in 113.77s (0:01:53) ========================
+architecture objects: 7
+active runtime modules: 2
+implementation allocations: 3
+admitted test families: 11
+promotion sets: 1
+dependency/public-seam violations: 0
+promotion set: architecture_kernel
+resolved test paths: 11
+  tests/architecture/test_activation_readiness.py
+  tests/architecture/test_dependency_direction.py
+  tests/architecture/test_identifier_taxonomy.py
+  tests/architecture/test_implementation_authority_ingress.py
+  tests/architecture/test_object_lifecycle.py
+  tests/architecture/test_proof_control.py
+  tests/architecture/test_public_seam_law.py
+  tests/architecture/test_registry_schema.py
+  tests/architecture/test_static_typecheck.py
+  tests/bootstrap/test_legacy_exclusion.py
+  tests/bootstrap/test_minimal_imports.py

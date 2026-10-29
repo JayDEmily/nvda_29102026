@@ -1,0 +1,65 @@
+{
+  "full-control": {
+    "argv": [
+      "/tmp/nvda-g61-runtime-GBILkakx/dev/bin/python",
+      "/tmp/nvda-d014-review-babm9GDf/invoke.py",
+      "module",
+      "pytest",
+      "tests/architecture/test_proof_control.py",
+      "--basetemp",
+      "/tmp/nvda-d014-review-babm9GDf/pytest-temp"
+    ],
+    "cwd": "/tmp/nvda-d014-review-babm9GDf/candidate",
+    "invoke_sha256": "b5310f21ec59c799deb8cbe318209a3931188d097821ff97b4535073917ba588",
+    "exit": 0,
+    "log_sha256": "b9638c8b3d89950ba60968a026c845223dcb10eef01e7b9dbc27a48e7d719eb8"
+  },
+  "mypy": {
+    "argv": [
+      "/tmp/nvda-g61-runtime-GBILkakx/dev/bin/python",
+      "/tmp/nvda-d014-review-babm9GDf/invoke.py",
+      "module",
+      "mypy",
+      "src",
+      "tools/product_proof_claims.py",
+      "tools/product_proof_outcomes.py",
+      "tools/validate_product_proof.py",
+      "tools/run_product_proof_gate.py"
+    ],
+    "cwd": "/tmp/nvda-d014-review-babm9GDf/candidate",
+    "invoke_sha256": "b5310f21ec59c799deb8cbe318209a3931188d097821ff97b4535073917ba588",
+    "exit": 0,
+    "log_sha256": "b0e9c2a496ccac5b7d5653bce6fbd1ffe201706c2b02831e9826bdca467e88c9"
+  },
+  "ruff": {
+    "argv": [
+      "/tmp/nvda-g61-runtime-GBILkakx/dev/bin/python",
+      "/tmp/nvda-d014-review-babm9GDf/invoke.py",
+      "module",
+      "ruff",
+      "check",
+      "tools/product_proof_claims.py",
+      "tests/architecture/test_proof_control.py"
+    ],
+    "cwd": "/tmp/nvda-d014-review-babm9GDf/candidate",
+    "invoke_sha256": "b5310f21ec59c799deb8cbe318209a3931188d097821ff97b4535073917ba588",
+    "exit": 0,
+    "log_sha256": "b81bbd557e8fac2863def35e6fa4d475cf1f6d2025c3eb8f85579cf216c4a7ec"
+  },
+  "binding": {
+    "argv": [
+      "/tmp/nvda-g61-runtime-GBILkakx/dev/bin/python",
+      "/tmp/nvda-d014-review-babm9GDf/invoke.py",
+      "path",
+      "tools/validate_implementation_authority.py",
+      "--binding",
+      "implementation/authority/G6_1_D014_IMPLEMENTATION_AUTHORITY_BINDING.yaml",
+      "--brief",
+      "handoff/foundation_implementation/authority/G6_1_D014_IMPLEMENTATION_BRIEF_PROPOSED.md"
+    ],
+    "cwd": "/tmp/nvda-d014-review-babm9GDf/candidate",
+    "invoke_sha256": "b5310f21ec59c799deb8cbe318209a3931188d097821ff97b4535073917ba588",
+    "exit": 0,
+    "log_sha256": "108158eea65d4278ac6df63793d3e313b09d4579f9d40ae19521e56c76b8e858"
+  }
+}

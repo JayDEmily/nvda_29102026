@@ -1,0 +1,10 @@
+{
+  "command": [
+    "/workspace/scratch/56b9974b28a0/d014-runtime/bin/python",
+    "tools/run_promotion_gate.py",
+    "--set",
+    "architecture_kernel"
+  ],
+  "returncode": 0,
+  "stdout_sha256": "6c3be23dc71222d2a4dbf9bf7b599476557c47af025de65739e61457c69b1d1c"
+}

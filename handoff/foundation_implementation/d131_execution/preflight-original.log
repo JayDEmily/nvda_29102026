@@ -1,0 +1,12 @@
+D131 independent preflight — candidate e329b9d3912ce05e7d271462bd8d224443270d33
+Disposition: RETURN_TO_WORKER / ISOLATED, before product runtime. No strict aggregate executed.
+
+First unmet semantic invariant: deterministic positional replay must apply native mutations in stable receipt/ingestion order. Effective calculation brief §5 K02_ALGEBRA explicitly says this, and root EXEC_PLAN.md §2.2 fixes event and receipt/ingestion ordering for SMART book.
+
+Observed code: _book_depth.py:138-142 sorts first by event_time_utc and only then receipt and ingestion sequence; lines 150-153 check uniqueness in that same event-first order. For a later-arriving event bearing an earlier native source timestamp, this applies it before an already received positional mutation and can produce a different standing book. The proposed two-case test aligns native event, receipt, and ingestion order, so it cannot distinguish the incorrect precedence.
+
+Required class proposition: for each admitted generation, reconstruct positional state in the authority's stable receipt/ingestion order, retaining the separate parsed native event instant for as-of eligibility and lineage. Make the two-case public proof discriminate this ordering without adding physical cases or violating the exact controlled fixture. If the exact fixed fixture cannot vary order, establish this law through direct source/validator review and narrowly scoped proof under the plan's ceiling without changing the accepted success/refusal facts.
+
+Lineage inspection: git log --all -- _book_depth.py and D131 test has only this candidate; no earlier D131 reviewer findings or repairs. This is ISOLATED. D124 historical output-placement and provenance failures are different mechanisms.
+
+Other observed boundaries: public M00 projection, actual public D087, same-contract and same-cutoff checks, typed 15-field lineage, reset operation and read-only SQLite intent are present. Runtime correctness remains unverified because the preflight failure prevents strict execution.

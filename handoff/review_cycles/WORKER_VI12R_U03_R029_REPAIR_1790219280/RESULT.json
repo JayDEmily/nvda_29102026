@@ -1,0 +1,14 @@
+{
+  "review_cycle": "WORKER_VI12R_U03_R029_REPAIR_1790219280",
+  "actor": "WORKER",
+  "predecessor_review_cycle": "TESTER_VI13R_U03_R029_1790214675",
+  "rejected_candidate_commit": "d25aedeed5de65d0a241bdce6eae22671ef2ddf8",
+  "rejected_candidate_tree": "21eb6bd2ba53b29ea6d80f90c01af40668f56955",
+  "status": "SUPERSEDED_AUTHORITY_BLOCKED",
+  "worker_execution_in_this_ancestry": false,
+  "externally_reported_worker_commit": "85738686e5ee41d2e6f638c1ca890d15e555a0f0",
+  "externally_reported_worker_commit_verified_here": false,
+  "blocker": "U03_NATIVE_VALUE_DOMAIN_EXACT_CONTENT_AUTHORITY_GAP",
+  "u04_authority": "PROHIBITED",
+  "next_actor": "PROGRAMME_OWNER"
+}

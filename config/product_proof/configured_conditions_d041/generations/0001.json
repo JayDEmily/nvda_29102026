@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "configured_market_conditions_d041",
+  "generation": 1,
+  "brief_sha256": "b9699956358b59300cac8927a3b209e4c295828084273fe7cdb6b11e3016917a",
+  "binding_sha256": "29ccc0ce0af7bd3630279066c67bd38fc4aba017ef18a35781271d7e232a1784",
+  "contract_sha256": "9ff0224ec54801a90032ebaa451107f0f9029bb908b4e78300d107f5ce083086",
+  "implementation_target_id": "M03",
+  "adequacy_review_ref": "handoff/configured_market_conditions/authority/D041_IMPLEMENTATION_BRIEF.md-sections1-3",
+  "admission_authority_ref": "owner-chat/20261024/full-D040-D041-completion-delegation",
+  "family_files": [
+    {
+      "path": "tests/product/configured_conditions_d041/test_signal.py",
+      "sha256": "d7c2ce76e1af29449bcea9d8aec652fdf8eb01358023cca2c25bb11e4ead4086"
+    }
+  ],
+  "support_files": [],
+  "previous_generation": null
+}

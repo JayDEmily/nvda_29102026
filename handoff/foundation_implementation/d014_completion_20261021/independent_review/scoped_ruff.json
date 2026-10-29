@@ -1,0 +1,17 @@
+{
+  "command": [
+    "/workspace/scratch/56b9974b28a0/d014-runtime/bin/python",
+    "-m",
+    "ruff",
+    "check",
+    "src/nvda_desk/market_measurement_truth/api.py",
+    "src/nvda_desk/market_measurement_truth/_raw_rational.py",
+    "src/nvda_desk/market_measurement_truth/_raw_rational_sqlite.py",
+    "src/nvda_desk/market_measurement_truth/_rational.py",
+    "tests/product/market_measurement_d014",
+    "tools/product_proof_claims.py",
+    "tests/architecture/test_proof_control.py"
+  ],
+  "returncode": 0,
+  "stdout_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+}

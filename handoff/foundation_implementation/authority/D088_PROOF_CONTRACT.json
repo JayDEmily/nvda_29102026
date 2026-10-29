@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_d088",
+  "semantic_brief_path": "handoff/foundation_implementation/authority/D088_IMPLEMENTATION_BRIEF.md",
+  "target": {
+    "category": "M",
+    "responsibility_name": "neutral_market_measurement_truth",
+    "package": "nvda_desk.market_measurement_truth",
+    "public_seam": "nvda_desk.market_measurement_truth.api",
+    "intent": "modify",
+    "existing_object_id": "M02"
+  },
+  "proof_axis": "product",
+  "product_tier_treatment": "NOT_CLASSIFIED",
+  "architecture_proof_axis": "architecture_kernel",
+  "required_proof_ids": [
+    "D088-CALCULATION"
+  ],
+  "families": [
+    {
+      "id": "mmt_d088",
+      "path": "tests/product/market_measurement_d088/test_signal.py",
+      "proof_obligation_ids": [
+        "D088-CALCULATION"
+      ],
+      "required_test_names": [
+        "test_d088_signal"
+      ],
+      "boundary": "100*(same C1 ask-bid)/actual public D087 midpoint, exact source observation pair and full nested contract lineage, K02/P_BASIC under root \u00a74.5.",
+      "proof_levels": [
+        "CONTRACT",
+        "INTEGRATION",
+        "STATE"
+      ],
+      "authoritative_inputs": [
+        "Owner accepted root \u00a7\u00a74.4\u20134.5 and own D088_PROFILE.json; accepted D087 exact source/definition."
+      ],
+      "dependency_substitutions": [
+        "Genuine public D087 C1/C2 production from public raw quote setup; no prior acceptance test import."
+      ],
+      "case_coverage": {
+        "lawful_positive": {
+          "cases": [
+            "C1 bid2/ask4 and genuine actual C1 D087=3, exact result200/3 and full source/parent lineage with public SQLite reopen."
+          ]
+        },
+        "prohibited_false_positive": {
+          "cases": [
+            "C1 bid2/ask4 present but actual lawful D087 belongs to C2; refuse wrong contract without result/history."
+          ]
+        },
+        "missing_mandatory_authority": {
+          "cases": [
+            "Own immutable D088 authority/claim/generation required."
+          ]
+        },
+        "lawful_optional_absence": {
+          "cases": [
+            "Other contracts not required for C1 direct quote; C2 only refusal predecessor."
+          ]
+        }
+      },
+      "expected_failure_signals": [
+        "Wrong-contract parent or source-observation pair accepted, or wrong percent scale, fails pair."
+      ],
+      "limitations": [
+        "Exactly two cases, no live/native quote certification."
+      ],
+      "adjacent_nonclaims": [
+        "No D089 or other option scalar acceptance."
+      ],
+      "environment": "CPython3.12.14 SQLite3.53.1 and existing pinned offline tools.",
+      "material_versions": [
+        "Exact brief/binding/contract/generation and candidate/tree/runtime; old generations preserved."
+      ],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/market_measurement_d088/test_signal.py"
+    }
+  ],
+  "required_support_files": [],
+  "optional_support_files": [],
+  "execution_policy": {
+    "skipped_tests": "FAIL",
+    "xfailed_tests": "FAIL",
+    "xpassed_tests": "FAIL",
+    "collection_failed": "FAIL",
+    "no_tests_collected": "FAIL",
+    "unexpected_governed_mutation": "FAIL"
+  }
+}

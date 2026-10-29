@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_d087",
+  "semantic_brief_path": "handoff/foundation_implementation/authority/D087_IMPLEMENTATION_BRIEF.md",
+  "target": {
+    "category": "M",
+    "responsibility_name": "neutral_market_measurement_truth",
+    "package": "nvda_desk.market_measurement_truth",
+    "public_seam": "nvda_desk.market_measurement_truth.api",
+    "intent": "modify",
+    "existing_object_id": "M02"
+  },
+  "proof_axis": "product",
+  "product_tier_treatment": "NOT_CLASSIFIED",
+  "architecture_proof_axis": "architecture_kernel",
+  "required_proof_ids": [
+    "D087-CALCULATION"
+  ],
+  "families": [
+    {
+      "id": "mmt_d087",
+      "path": "tests/product/market_measurement_d087/test_signal.py",
+      "proof_obligation_ids": [
+        "D087-CALCULATION"
+      ],
+      "required_test_names": [
+        "test_d087_signal"
+      ],
+      "boundary": "Exact controlled C1/C2 full option contract quotes R034/R035, matched snapshot, nonnegative bid<=ask, exact midpoint ratio under accepted root \u00a74.4\u20134.5.",
+      "proof_levels": [
+        "CONTRACT",
+        "INTEGRATION",
+        "STATE"
+      ],
+      "authoritative_inputs": [
+        "Owner accepted root \u00a7\u00a74.4\u20134.5, K02/P_BASIC and own immutable D087_PROFILE.json."
+      ],
+      "dependency_substitutions": [
+        "Synthetic controlled option quote source only, full contract/right/expiry/strike/multiplier/model metadata; no native IBKR claim."
+      ],
+      "case_coverage": {
+        "lawful_positive": {
+          "cases": [
+            "C1 actual public bid2/ask4, exact midpoint3 and complete native source lineage, durable SQLite reopen."
+          ]
+        },
+        "prohibited_false_positive": {
+          "cases": [
+            "C1 bid4/ask2 both actual public facts present and projected, selected crossed quote must refuse without result/history."
+          ]
+        },
+        "missing_mandatory_authority": {
+          "cases": [
+            "Own binding, profile and immutable generation before strict run."
+          ]
+        },
+        "lawful_optional_absence": {
+          "cases": [
+            "Opposite C2 contract not required for a C1 request, but C2 remains admitted in frozen domain for D088."
+          ]
+        }
+      },
+      "expected_failure_signals": [
+        "Crossed quote accepted or incorrect midpoint/source identity fails pair."
+      ],
+      "limitations": [
+        "Exactly two cases, no native quote eligibility certification."
+      ],
+      "adjacent_nonclaims": [
+        "No D088 spread or future option scalar acceptance."
+      ],
+      "environment": "CPython3.12.14 SQLite3.53.1 and existing pinned offline tools.",
+      "material_versions": [
+        "Exact brief/binding/contract/generation and candidate/tree/runtime; old generations preserved."
+      ],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/market_measurement_d087/test_signal.py"
+    }
+  ],
+  "required_support_files": [],
+  "optional_support_files": [],
+  "execution_policy": {
+    "skipped_tests": "FAIL",
+    "xfailed_tests": "FAIL",
+    "xpassed_tests": "FAIL",
+    "collection_failed": "FAIL",
+    "no_tests_collected": "FAIL",
+    "unexpected_governed_mutation": "FAIL"
+  }
+}

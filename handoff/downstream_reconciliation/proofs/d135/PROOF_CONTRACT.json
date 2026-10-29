@@ -1,0 +1,98 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_native_d135",
+  "semantic_brief_path": "handoff/downstream_reconciliation/authority/briefs/NATIVE_D135_BRIEF.md",
+  "target": {
+    "category": "M",
+    "responsibility_name": "neutral_market_measurement_truth",
+    "package": "nvda_desk.market_measurement_truth",
+    "public_seam": "nvda_desk.market_measurement_truth.api",
+    "intent": "modify",
+    "existing_object_id": "M02"
+  },
+  "proof_axis": "product",
+  "product_tier_treatment": "NOT_CLASSIFIED",
+  "architecture_proof_axis": "architecture_kernel",
+  "required_proof_ids": [
+    "NATIVE-D135-SMART-ASK-PROFILES"
+  ],
+  "families": [
+    {
+      "id": "mmt_native_d135",
+      "path": "tests/product/market_measurement_native_d135/test_signal.py",
+      "proof_obligation_ids": [
+        "NATIVE-D135-SMART-ASK-PROFILES"
+      ],
+      "required_test_names": [
+        "test_native_success",
+        "test_native_refusal"
+      ],
+      "boundary": "Native A4 side0 ask top-two and separately identified top-one requests, four mandatory roles, receipt-only full warm-up, separate error317 reset refusal and exact typed SQLite read-only reopening.",
+      "proof_levels": [
+        "CONTRACT",
+        "INTEGRATION",
+        "STATE"
+      ],
+      "authoritative_inputs": [
+        "L01 commissioned A4 source/profile/API, top-two/top-one closed requests and independent literal ask6/ask2 oracles."
+      ],
+      "dependency_substitutions": [
+        "Frozen actual M00 public DTO output via declared module-local public history reader; no M00 production invocation."
+      ],
+      "case_coverage": {
+        "lawful_positive": {
+          "cases": [
+            "Explicit public top-two ask request yields6 and top-one request yields2 with distinct definitions/requests/occurrence identities, full asymmetric native standing context, no price projections, exact durable typed readback of both."
+          ]
+        },
+        "prohibited_false_positive": {
+          "cases": [
+            "Full four-callback A4 prefix then separate receipt12:39:59.500Z error317, no new epoch/warm-up and no synthetic operation317: no D135 result/history."
+          ]
+        },
+        "missing_mandatory_authority": {
+          "cases": [
+            "Four exact R185/R187/R188/R190 roles, bound complete A4 epoch, native side0 ask, separate profile parameters and approved pair allocation."
+          ]
+        },
+        "lawful_optional_absence": {
+          "cases": [
+            "Absent provider clock and absent price projections retained without changing the four-role mathematical dependency."
+          ]
+        }
+      },
+      "expected_failure_signals": [
+        "Native side inverted",
+        "Top-one and top-two identities conflated",
+        "Separate reset ignored",
+        "Operation317 invented",
+        "Price projection incorrectly required",
+        "Lossy durable lineage"
+      ],
+      "limitations": [
+        "Controlled synthetic A4 compatibility only; no live provider entitlement or source certification."
+      ],
+      "adjacent_nonclaims": [
+        "Legacy D135 preserved; D136 actual public predecessor compatibility follows in L07."
+      ],
+      "environment": "Pinned CPython3.12.14 SQLite3.53.1 and existing tools.",
+      "material_versions": [
+        "Exact L01 native brief/binding/contract/generation and candidate source."
+      ],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/market_measurement_native_d135/test_signal.py"
+    }
+  ],
+  "required_support_files": [
+    "tests/support/native_reconciliation.py"
+  ],
+  "optional_support_files": [],
+  "execution_policy": {
+    "skipped_tests": "FAIL",
+    "xfailed_tests": "FAIL",
+    "xpassed_tests": "FAIL",
+    "collection_failed": "FAIL",
+    "no_tests_collected": "FAIL",
+    "unexpected_governed_mutation": "FAIL"
+  }
+}

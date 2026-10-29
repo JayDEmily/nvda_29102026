@@ -1,0 +1,10 @@
+schema_version: "1.0"
+brief_sha256: 58ecb7858c5ecf1dd5d7c840f8f03a76ae259bcd9fdf93c6a58d3fb4f907c302
+acceptance:
+  status: ACCEPTED_FOR_IMPLEMENTATION
+  authority_ref: owner-chat/20261026/next20-plan-accepted-and-execution-commissioned
+targets:
+  - action: modify
+    object_id: M02
+  - action: modify
+    object_id: G01

@@ -1,0 +1,14 @@
+F....                                                                    [100%]
+=================================== FAILURES ===================================
+__ test_reconstructed_d084_three_independent_baskets_exact_score_and_lineage ___
+
+    def test_reconstructed_d084_three_independent_baskets_exact_score_and_lineage():
+        owner, req = _public()
+        out = owner.materialise(req)
+>       assert out is not None
+E       assert None is not None
+
+tests/product/derived_signal/test_m01_f4_reconstruction_d084_public.py:220: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/derived_signal/test_m01_f4_reconstruction_d084_public.py::test_reconstructed_d084_three_independent_baskets_exact_score_and_lineage - assert None is not None
+1 failed, 4 passed in 0.08s

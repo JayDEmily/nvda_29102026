@@ -1,0 +1,50 @@
+{
+  "authority": {
+    "brief_sha256": "603b850802a418780109095e7ae69bcece449da79fb24140a6d50297605e927c",
+    "catalogue_sha256": "63bc1b776fc8fa8ba82eb3c9b16916f295c9ec3d480a5a068937c2f25146f5f5",
+    "rule": "Accepted brief clause 8.1 makes input selection semantic. Option-contract calculations require matching underlying, expiry, strike, option right and contract identity wherever those dimensions are material; contract/expiry/delta/strike matching must be exact unless the row explicitly defines interpolation/bucketing. Clause 17 requires fail-closed behaviour when a material matching prerequisite is absent."
+  },
+  "classification": "RECURRENT_CLASS",
+  "finding": "The worker correctly made join dimensions mechanically enforceable when InputSelectionPolicyVersion.join_keys advertises them, and the prior mixed-contract witness is now refused under a full option-contract join policy. However, the runtime still treats the supplied policy as authority for whether mandatory option-contract dimensions are required at all. For D087 (Each option), an adverse policy with join_keys=('subject_instrument',) omits contract_id/underlying/expiry/strike/right. With R034 projected from contract C1 and R035 projected from contract C2, both NVDA, the public M01 seam materialised D087=101 and persisted lineage from both contracts. Thus a policy can disable a material accepted selection invariant by omission.",
+  "generated_at_utc": "2026-10-07T23:49:02.513601+00:00",
+  "independent_evidence": {
+    "adverse_public_seam_probe": {
+      "ask_contract": "C2",
+      "bid_contract": "C1",
+      "derived_signal_id": "D087",
+      "observed_materialised": true,
+      "observed_raw_lineage_occurrence_ids": [
+        "c1-bid",
+        "c2-ask"
+      ],
+      "observed_result": "101",
+      "request_subject": "NVDA",
+      "selection_join_keys": [
+        "subject_instrument"
+      ],
+      "shared_underlying": "NVDA"
+    },
+    "architecture_validation": "PASS",
+    "dependency_validation": "PASS",
+    "focused_stage1_tests": "35 passed",
+    "full_derived_signal_tests": "81 passed",
+    "m00_projection_tests": "5 passed",
+    "note": "Review stopped at the first remaining failed Stage-1 semantic invariant after confirming the previous advertised-join repair.",
+    "prior_contract_witness_status": "repaired when the policy explicitly advertises the option-contract join dimensions",
+    "public_seam_validation": "PASS",
+    "worker_repair_order": {
+      "production_repair_commit": "87689ef",
+      "proof_commit": "19d13ca",
+      "proof_precedes_production": true
+    }
+  },
+  "kind": "independent_review_result",
+  "repair_proposition": "Close the Stage-1 input-selection class at the row-authority boundary. Material join dimensions must be mandatory because the accepted row/brief requires them, not merely because a caller-supplied InputSelectionPolicyVersion happens to name them. For Stage-1 option-contract rows, an incomplete policy that omits a material exact-match dimension must fail closed (or otherwise be proven incompatible with that row) before calculation. Preserve the newly added typed M00 selection-identity seam and advertised-key enforcement where lawful. Add authority-derived proof before production repair. Do not start Stage 2.",
+  "review": "M01_STAGE1",
+  "reviewed_branch": "work/m01-completion",
+  "reviewed_head": "87689ef4457b953131d9130f9c0c40e31f2e1a3a",
+  "reviewed_tree": "d628d62c23d3aed4392fb76d89464eb3b52fe050",
+  "route": "RETURN_TO_WORKER_STAGE1",
+  "stage2_authorised": false,
+  "verdict": "REPAIR"
+}

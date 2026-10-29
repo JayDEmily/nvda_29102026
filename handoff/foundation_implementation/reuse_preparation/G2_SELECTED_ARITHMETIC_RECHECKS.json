@@ -1,0 +1,213 @@
+{
+  "scope": "independent offline arithmetic only; not M02 test/proof or native certification",
+  "arithmetic": "Python Decimal and Fraction of author-declared fixed literals, with fixed source equation references; no production source imports",
+  "records": [
+    {
+      "D_id": "D011",
+      "inputs": "R034=100, R035=102",
+      "expected": "101",
+      "unit": "price",
+      "value": "101",
+      "evidence_packet_ref": "FAMILY_F02_QUOTE_RATIOS_E11_E15.md:3,9,11,14,22,24,33,35,36,42,43,53",
+      "status": "MANUALLY_SPECIFIED_AND_INDEPENDENTLY_RECOMPUTED_CONTROLLED_WITNESS"
+    },
+    {
+      "D_id": "D012",
+      "inputs": "R034=100, R035=102",
+      "expected": "2",
+      "unit": "price",
+      "value": "2",
+      "evidence_packet_ref": "FAMILY_F02_QUOTE_RATIOS_E11_E15.md:3,10,11,14,23,24,34,35,36,42,43,53",
+      "status": "MANUALLY_SPECIFIED_AND_INDEPENDENTLY_RECOMPUTED_CONTROLLED_WITNESS"
+    },
+    {
+      "D_id": "D013",
+      "inputs": "D012=2, D011=101",
+      "expected": "200/101",
+      "unit": "exact ratio percent",
+      "value": "200/101",
+      "evidence_packet_ref": "FAMILY_F02_QUOTE_RATIOS_E11_E15.md:3,11,12,14,24,27,35,38,43,51,53,55",
+      "status": "MANUALLY_SPECIFIED_AND_INDEPENDENTLY_RECOMPUTED_CONTROLLED_WITNESS"
+    },
+    {
+      "D_id": "D014",
+      "inputs": "R033=2, R036=1",
+      "expected": "1/3",
+      "unit": "exact ratio",
+      "value": "1/3",
+      "evidence_packet_ref": "FAMILY_F02_QUOTE_RATIOS_E11_E15.md:3,12,14,25,27,36,38,44,46,51,53,55",
+      "status": "MANUALLY_SPECIFIED_AND_INDEPENDENTLY_RECOMPUTED_CONTROLLED_WITNESS"
+    },
+    {
+      "D_id": "D017",
+      "inputs": "paired prices 6,4 and sizes 2,3",
+      "expected": "24/5",
+      "unit": "price",
+      "value": "24/5",
+      "evidence_packet_ref": "FAMILY_F04_SESSION_VWAP_E11_E15.md:1,3,9,10,12,24,25,26,27,28,29,35",
+      "status": "MANUALLY_SPECIFIED_AND_INDEPENDENTLY_RECOMPUTED_CONTROLLED_WITNESS"
+    },
+    {
+      "D_id": "D028",
+      "inputs": "current R041=30, prior 10 and 20 at exact same fraction",
+      "expected": "2",
+      "unit": "multiple",
+      "value": "2",
+      "evidence_packet_ref": "FAMILY_F06_EXTENDED_E11_E15.md:14,18,26,64,68",
+      "status": "MANUALLY_SPECIFIED_AND_INDEPENDENTLY_RECOMPUTED_CONTROLLED_WITNESS"
+    },
+    {
+      "D_id": "D042",
+      "inputs": "R249=.0425, R247=.0390",
+      "expected": "0.35",
+      "unit": "percentage points",
+      "value": "0.3500",
+      "evidence_packet_ref": "FAMILY_RATE_SPREADS_P12_P22.md:1,7,19,20,21",
+      "status": "MANUALLY_SPECIFIED_AND_INDEPENDENTLY_RECOMPUTED_CONTROLLED_WITNESS"
+    },
+    {
+      "D_id": "D043",
+      "inputs": "R249=.0430, R246=.0410",
+      "expected": "0.20",
+      "unit": "percentage points",
+      "value": "0.2000",
+      "evidence_packet_ref": "FAMILY_RATE_SPREADS_P12_P22.md:1,7,22,23,24",
+      "status": "MANUALLY_SPECIFIED_AND_INDEPENDENTLY_RECOMPUTED_CONTROLLED_WITNESS"
+    },
+    {
+      "D_id": "D044",
+      "inputs": "R252 current .0425, reference .0410",
+      "expected": "15",
+      "unit": "basis points",
+      "value": "15.0000",
+      "evidence_packet_ref": "FAMILY_F10_EXTENDED_E11_E15.md:14,18,57",
+      "status": "MANUALLY_SPECIFIED_AND_INDEPENDENTLY_RECOMPUTED_CONTROLLED_WITNESS"
+    },
+    {
+      "D_id": "D045",
+      "inputs": "R249 current .0500, reference .0490",
+      "expected": "10",
+      "unit": "basis points",
+      "value": "10.0000",
+      "evidence_packet_ref": "FAMILY_F10_EXTENDED_E11_E15.md:29,57",
+      "status": "MANUALLY_SPECIFIED_AND_INDEPENDENTLY_RECOMPUTED_CONTROLLED_WITNESS"
+    },
+    {
+      "D_id": "D047",
+      "inputs": "R257=.0532, R256=.0530",
+      "expected": "2",
+      "unit": "basis points",
+      "value": "2.0000",
+      "evidence_packet_ref": "FAMILY_RATE_SPREADS_P12_P22.md:1,7,25,26,27",
+      "status": "MANUALLY_SPECIFIED_AND_INDEPENDENTLY_RECOMPUTED_CONTROLLED_WITNESS"
+    },
+    {
+      "D_id": "D048",
+      "inputs": "raw index current120, prior100",
+      "expected": "20",
+      "unit": "percent",
+      "value": "20.0",
+      "evidence_packet_ref": "FAMILY_F11_EXTENDED_E11_E15.md:14,18,64,68",
+      "status": "MANUALLY_SPECIFIED_AND_INDEPENDENTLY_RECOMPUTED_CONTROLLED_WITNESS"
+    },
+    {
+      "D_id": "D049",
+      "inputs": "JPY per USD current120, prior100",
+      "expected": "20",
+      "unit": "percent",
+      "value": "20.0",
+      "evidence_packet_ref": "FAMILY_F11_EXTENDED_E11_E15.md:14,29,68",
+      "status": "MANUALLY_SPECIFIED_AND_INDEPENDENTLY_RECOMPUTED_CONTROLLED_WITNESS"
+    },
+    {
+      "D_id": "D050",
+      "inputs": "HKD per USD current7.8, prior7.5",
+      "expected": "4",
+      "unit": "percent",
+      "value": "4.00",
+      "evidence_packet_ref": "FAMILY_F11_EXTENDED_E11_E15.md:14,40,68",
+      "status": "MANUALLY_SPECIFIED_AND_INDEPENDENTLY_RECOMPUTED_CONTROLLED_WITNESS"
+    },
+    {
+      "D_id": "D051",
+      "inputs": "CNY per USD current7.2, prior7.5",
+      "expected": "-4",
+      "unit": "percent",
+      "value": "-4.00",
+      "evidence_packet_ref": "FAMILY_F11_EXTENDED_E11_E15.md:14,51,68",
+      "status": "MANUALLY_SPECIFIED_AND_INDEPENDENTLY_RECOMPUTED_CONTROLLED_WITNESS"
+    },
+    {
+      "D_id": "D057",
+      "inputs": "R238=15, R239=20",
+      "expected": "15/20=3/4; difference -5",
+      "unit": "index-points and ratio",
+      "value": "3/4;-5",
+      "evidence_packet_ref": "FAMILY_F13_EXTENDED_E11_E15.md:3,16,17,71",
+      "status": "MANUALLY_SPECIFIED_AND_INDEPENDENTLY_RECOMPUTED_CONTROLLED_WITNESS"
+    },
+    {
+      "D_id": "D058",
+      "inputs": "R239=20, R236=25",
+      "expected": "20/25=4/5; difference -5",
+      "unit": "index-points and ratio",
+      "value": "4/5;-5",
+      "evidence_packet_ref": "FAMILY_F13_EXTENDED_E11_E15.md:3,27,28",
+      "status": "MANUALLY_SPECIFIED_AND_INDEPENDENTLY_RECOMPUTED_CONTROLLED_WITNESS"
+    },
+    {
+      "D_id": "D059",
+      "inputs": "R236=25, R240=30",
+      "expected": "25/30=5/6; difference -5",
+      "unit": "index-points and ratio",
+      "value": "5/6;-5",
+      "evidence_packet_ref": "FAMILY_F13_EXTENDED_E11_E15.md:3,38,39,71",
+      "status": "MANUALLY_SPECIFIED_AND_INDEPENDENTLY_RECOMPUTED_CONTROLLED_WITNESS"
+    },
+    {
+      "D_id": "D060",
+      "inputs": "R237=100, R236=25",
+      "expected": "4",
+      "unit": "ratio",
+      "value": "4",
+      "evidence_packet_ref": "FAMILY_F13_EXTENDED_E11_E15.md:3,49,50,65",
+      "status": "MANUALLY_SPECIFIED_AND_INDEPENDENTLY_RECOMPUTED_CONTROLLED_WITNESS"
+    },
+    {
+      "D_id": "D062",
+      "inputs": "as_of 12:00:00Z, next known 12:01:30Z",
+      "expected": "90 seconds",
+      "unit": "seconds",
+      "value": "90.0",
+      "evidence_packet_ref": "FAMILY_F14_EXTENDED_E11_E15.md:3,16,17,51,53",
+      "status": "MANUALLY_SPECIFIED_AND_INDEPENDENTLY_RECOMPUTED_CONTROLLED_WITNESS"
+    },
+    {
+      "D_id": "D063",
+      "inputs": "historical -1,0,+1; current difference2",
+      "expected": "2",
+      "unit": "z-score",
+      "value": "2",
+      "evidence_packet_ref": "FAMILY_F14_EXTENDED_E11_E15.md:3,27,28,43,52,53",
+      "status": "MANUALLY_SPECIFIED_AND_INDEPENDENTLY_RECOMPUTED_CONTROLLED_WITNESS"
+    },
+    {
+      "D_id": "D094",
+      "inputs": "IV current .53, prior .50",
+      "expected": "3",
+      "unit": "vol points",
+      "value": "3.00",
+      "evidence_packet_ref": "FAMILY_IV_HISTORY_D094_D095.md:1,3,7,14,16,17,24,25,26",
+      "status": "MANUALLY_SPECIFIED_AND_INDEPENDENTLY_RECOMPUTED_CONTROLLED_WITNESS"
+    },
+    {
+      "D_id": "D095",
+      "inputs": "IV current .53, prior .48",
+      "expected": "5",
+      "unit": "vol points",
+      "value": "5.00",
+      "evidence_packet_ref": "FAMILY_IV_HISTORY_D094_D095.md:1,3,7,15,17,27,28,29,39",
+      "status": "MANUALLY_SPECIFIED_AND_INDEPENDENTLY_RECOMPUTED_CONTROLLED_WITNESS"
+    }
+  ]
+}

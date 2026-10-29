@@ -1,0 +1,70 @@
+........................................................................ [  9%]
+........................................................................ [ 18%]
+........................................................................ [ 27%]
+................................F....................................... [ 36%]
+........................................................................ [ 46%]
+........................................................................ [ 55%]
+........................................................................ [ 64%]
+........................................................................ [ 73%]
+........................................................................ [ 83%]
+........................................................................ [ 92%]
+.......................................................F....             [100%]
+=================================== FAILURES ===================================
+___________ test_public_history_via_m00_then_persisted_exact_lineage ___________
+
+    def test_public_history_via_m00_then_persisted_exact_lineage():
+        owner, request = _controlled_public()
+        # Create prior published D099/D100 states through the same admitted M00
+        # projections. No manually inserted derived answer is permitted.
+        for family in ("D099", "D100"):
+            prior_request = replace(
+                request,
+                derived_signal_id=family,
+                as_of_utc=PRIOR,
+                knowledge_cutoff_utc=PRIOR,
+                parameter_set_id="d104-basic",
+                parameter_set_version=1,
+            )
+            prior = owner.materialise(prior_request)
+>           assert prior is not None, f"prior {family} not publicly materialised"
+E           AssertionError: prior D099 not publicly materialised
+E           assert None is not None
+
+tests/product/derived_signal/test_m01_f4_d104_owner_rule.py:243: AssertionError
+_ test_k02_per_expiry_skew_refuses_cross_expiry_points_and_requires_exact_delta _
+
+    def test_k02_per_expiry_skew_refuses_cross_expiry_points_and_requires_exact_delta() -> None:
+        # Preserve the original expected skew/refusal assertions while supplying
+        # each authoritative K02 dependency as an independent contract-matched
+        # occurrence. Delta truth belongs to R112, strike to R015, IV to R111.
+        def skew_raw(
+            *, mixed_expiry: bool = False, wrong_delta: bool = False
+        ) -> dict[str, tuple[Any, ...]]:
+            observations: dict[str, list[Any]] = {"R111": [], "R112": [], "R015": []}
+            for cid, right, expiry, strike, delta, iv in (
+                ("C25", "call", "2026-10-16", Decimal(155), Decimal("0.25"), Decimal("0.30")),
+                ("P25", "put", "2026-10-23" if mixed_expiry else "2026-10-16",
+                 Decimal(145), Decimal("-0.30") if wrong_delta else Decimal("-0.25"),
+                 Decimal("0.35")),
+            ):
+                metadata = (
+                    ("contract_id", cid), ("underlying_instrument", "NVDA"),
+                    ("expiry", expiry), ("strike", strike), ("right", right),
+                    ("source_provider", "controlled"),
+                )
+                for rid, value in (("R111", iv), ("R112", delta), ("R015", strike)):
+                    observations[rid].append(
+                        _kv(value, occurrence_id=f"{cid}-{rid}", metadata=metadata)
+                    )
+            return {rid: tuple(values) for rid, values in observations.items()}
+    
+        valid = _eval("D099", raw=skew_raw())
+>       assert valid is not None and valid.value == Decimal("5.00")
+E       assert (None is not None)
+
+tests/product/derived_signal/test_m01_stage1_semantics.py:1955: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/derived_signal/test_m01_f4_d104_owner_rule.py::test_public_history_via_m00_then_persisted_exact_lineage - AssertionError: prior D099 not publicly materialised
+assert None is not None
+FAILED tests/product/derived_signal/test_m01_stage1_semantics.py::test_k02_per_expiry_skew_refuses_cross_expiry_points_and_requires_exact_delta - assert (None is not None)
+2 failed, 778 passed in 2.65s

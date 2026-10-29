@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "/workspace/scratch/d549b6d808a9/g52-dev/bin/python",
+    "/workspace/scratch/d549b6d808a9/d014-followup-n3toOACB/exact_sequence.py"
+  ],
+  "cwd": "/workspace/scratch/d549b6d808a9/d014-followup-n3toOACB",
+  "merged_stdout_stderr": "/workspace/scratch/d549b6d808a9/d014-followup-n3toOACB/exact_sequence.log",
+  "script_sha256_before": "8cca9ad3b347d2ecaccea6c6b048e85a85e30d648b6aef88a3fba48a701a7274",
+  "expected_source_head": "641bdfd7993bde601c4ea2fa106c5335305a5f5d",
+  "expected_proposed_module_sha256": "b2670e26f51d4b6f4fc8c656c859b9e5d63ca9aadd84ff2f818ff06cd9bb118a",
+  "exit": 1,
+  "status": "EXECUTED",
+  "script_sha256_after": "8cca9ad3b347d2ecaccea6c6b048e85a85e30d648b6aef88a3fba48a701a7274",
+  "log_sha256": "0f9971370603da9a6dd6371e6121a59e330e34c0aa0d4afba56fdf328c073e80"
+}

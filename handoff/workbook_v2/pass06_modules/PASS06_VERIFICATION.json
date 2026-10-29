@@ -1,0 +1,18 @@
+{
+  "status": "PASS_STATIC_WORKBOOK_CLASSIFICATION_ONLY",
+  "base_git_commit": "8dd4a6b86b0158f7c0dba18acea44292e5638eaa",
+  "input_workbook_sha256": "397c44260f6378d19384c57fc07be8df4bffe193d80558ca3b4861c4f25b3fd0",
+  "output_workbook_sha256": "2a36468fd83d16379861f330f929994a5a6d0a366c4953dbc03511bc0ad7b64c",
+  "modules": 30,
+  "downstream_D_count": 95,
+  "unchanged_original_source_sheets": 7,
+  "unchanged_prior_M01_1_sheet": true,
+  "unchanged_prior_00_rule_cell_values": true,
+  "preexisting_00_rules_preserved": true,
+  "new_00_rules": 6,
+  "registered_proposed_module_sheets": 30,
+  "cross_module_direct_D_references": 107,
+  "cross_module_distinct_directed_pairs": 67,
+  "production_code_modified": false,
+  "production_allocation_status": "NOT_ADMITTED"
+}

@@ -1,0 +1,22 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_ test_d134_d135_and_d136_have_nonzero_lawful_public_depths_without_undeclared_operations _
+
+    def test_d134_d135_and_d136_have_nonzero_lawful_public_depths_without_undeclared_operations() -> (
+        None
+    ):
+        owner, request = _public_snapshot()
+        bid = owner.materialise(request)
+        ask = owner.materialise(replace(request, derived_signal_id="D135"))
+        ratio = owner.materialise(replace(request, derived_signal_id="D136"))
+>       assert bid is not None and bid.result == Decimal(10)
+E       AssertionError: assert (DerivedSignalOccurrenceV1(derived_signal_id='D134', derived_occurrence_id='d134-4de94da46347402e2bd85493a071b1ecfcd303...VersionRefV1(context_id='depth-unit-R185', version=1)), selection_identity=None, supersedes_derived_occurrence_id=None) is not None and Decimal('0') == Decimal('10'))
+E        +  where Decimal('0') = DerivedSignalOccurrenceV1(derived_signal_id='D134', derived_occurrence_id='d134-4de94da46347402e2bd85493a071b1ecfcd303...VersionRefV1(context_id='depth-unit-R185', version=1)), selection_identity=None, supersedes_derived_occurrence_id=None).result
+E        +  and   Decimal('10') = Decimal(10)
+
+tests/product/derived_signal/test_m01_f4_depth_snapshot_authority.py:123: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/derived_signal/test_m01_f4_depth_snapshot_authority.py::test_d134_d135_and_d136_have_nonzero_lawful_public_depths_without_undeclared_operations - AssertionError: assert (DerivedSignalOccurrenceV1(derived_signal_id='D134', derived_occurrence_id='d134-4de94da46347402e2bd85493a071b1ecfcd303...VersionRefV1(context_id='depth-unit-R185', version=1)), selection_identity=None, supersedes_derived_occurrence_id=None) is not None and Decimal('0') == Decimal('10'))
+ +  where Decimal('0') = DerivedSignalOccurrenceV1(derived_signal_id='D134', derived_occurrence_id='d134-4de94da46347402e2bd85493a071b1ecfcd303...VersionRefV1(context_id='depth-unit-R185', version=1)), selection_identity=None, supersedes_derived_occurrence_id=None).result
+ +  and   Decimal('10') = Decimal(10)
+1 failed in 0.08s

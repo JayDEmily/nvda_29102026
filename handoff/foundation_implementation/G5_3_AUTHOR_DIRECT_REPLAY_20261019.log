@@ -1,0 +1,10 @@
+PASS direct SQLite materialise -> later-clock retry
+PASS direct refused D006 -> bounded history unchanged
+PASS direct version change -> old/new exact reads
+PASS fresh-process read-only SQLite reopen -> complete typed facts/references
+duplicate-consistency identical MATERIALISED 101
+duplicate-consistency different-id-ineligible MATERIALISED 101
+duplicate-consistency same-id-eligible REFUSED
+duplicate-consistency same-id-ineligible REFUSED
+duplicate-consistency same-id-nonfinite REFUSED
+duplicate-consistency same-id-stale REFUSED

@@ -1,0 +1,13 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.0.3, pluggy-1.7.0
+rootdir: /mnt/data/nvda_d029_state
+configfile: pyproject.toml
+collected 2 items
+
+tests/product/market_measurement_d030/test_trade_rate_zscore.py ..       [100%]
+
+============================== 2 passed in 0.24s ===============================
+product-proof aggregate: neutral_market_measurement_truth_d030 state=READY_FOR_PROOF
+authority=5c7daf19305867f4d793cec5b41ad8fe2de02594a5dda7e52d37a8caeb3ed3bf generation=712ea324bc4e755ce78b40b2989c60a4fee3b2ab651b15b62f261ac547268975
+candidate=82174efe7b1da6ddf55f1bffa9693e96529cd3d6
+observed aggregate outcome: exit=0

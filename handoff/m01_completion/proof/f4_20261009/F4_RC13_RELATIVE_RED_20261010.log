@@ -1,0 +1,129 @@
+FFFFFFF                                                                  [100%]
+=================================== FAILURES ===================================
+___ test_rc13_relative_returns_use_exact_distinct_predecessor_subjects[D076] ___
+
+did = 'D076'
+
+    @pytest.mark.parametrize("did", ("D076", "D077"))
+    def test_rc13_relative_returns_use_exact_distinct_predecessor_subjects(did: str) -> None:
+        owner, request = _public(did)
+        out = owner.materialise(request)
+        assert out is not None
+        log = lambda symbol: RATIOS[symbol].ln()
+        expected = log("QQQ") - log("SPY") if did == "D076" else (
+            (log("SMH") + log("SOXX")) / 2 - log("QQQ")
+        )
+>       assert out.result == expected
+E       AssertionError: assert Decimal('0E-29') == Decimal('0.04652001563489285697857771906')
+E        +  where Decimal('0E-29') = DerivedSignalOccurrenceV1(derived_signal_id='D076', derived_occurrence_id='d076-6fe86831820953924ff6d57ba3aff45a840b49...59e082e4c462938df8cabe35d5022fca'), convention_refs=(), selection_identity=None, supersedes_derived_occurrence_id=None).result
+
+tests/product/derived_signal/test_m01_f4_rc13_relative_sector_public.py:136: AssertionError
+___ test_rc13_relative_returns_use_exact_distinct_predecessor_subjects[D077] ___
+
+did = 'D077'
+
+    @pytest.mark.parametrize("did", ("D076", "D077"))
+    def test_rc13_relative_returns_use_exact_distinct_predecessor_subjects(did: str) -> None:
+        owner, request = _public(did)
+        out = owner.materialise(request)
+        assert out is not None
+        log = lambda symbol: RATIOS[symbol].ln()
+        expected = log("QQQ") - log("SPY") if did == "D076" else (
+            (log("SMH") + log("SOXX")) / 2 - log("QQQ")
+        )
+>       assert out.result == expected
+E       AssertionError: assert Decimal('0E-28') == Decimal('0.1270327308263979790796548827')
+E        +  where Decimal('0E-28') = DerivedSignalOccurrenceV1(derived_signal_id='D077', derived_occurrence_id='d077-e9b98ef20233f85f0ad8110b4533fdb04d835e...228c456db5d8c19f7a90799e38cc2f97'), convention_refs=(), selection_identity=None, supersedes_derived_occurrence_id=None).result
+
+tests/product/derived_signal/test_m01_f4_rc13_relative_sector_public.py:136: AssertionError
+____ test_rc13_relative_returns_refuse_missing_exact_member[D076-missing0] _____
+
+did = 'D076', missing = ('SPY', 'prior')
+
+    @pytest.mark.parametrize("did,missing", (
+        ("D076", ("SPY", "prior")), ("D077", ("SOXX", "prior")),
+    ))
+    def test_rc13_relative_returns_refuse_missing_exact_member(did: str, missing: tuple[str, str]) -> None:
+        owner, request = _public(did, absent=missing)
+>       assert owner.materialise(request) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D076', derived_occurrence_id='d076-5b14e26d1637bbbb89f1abaed20c62ac9cdc46...dce431871c4b8e1e92ad8510da0c6bf3'), convention_refs=(), selection_identity=None, supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(derived_signal_id='D076', derived_occurrence_id='d076-5b14e26d1637bbbb89f1abaed20c62ac9cdc46...dce431871c4b8e1e92ad8510da0c6bf3'), convention_refs=(), selection_identity=None, supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D076', subject_instrument='US_TECH', as_of_utc=datetime.datetime(2026, 10, 10,...VersionRefV1(context_id='relative-child', version=1)), ('D071', VersionRefV1(context_id='relative-child', version=1)))))
+E        +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7f3e785a6e30>.materialise
+
+tests/product/derived_signal/test_m01_f4_rc13_relative_sector_public.py:153: AssertionError
+____ test_rc13_relative_returns_refuse_missing_exact_member[D077-missing1] _____
+
+did = 'D077', missing = ('SOXX', 'prior')
+
+    @pytest.mark.parametrize("did,missing", (
+        ("D076", ("SPY", "prior")), ("D077", ("SOXX", "prior")),
+    ))
+    def test_rc13_relative_returns_refuse_missing_exact_member(did: str, missing: tuple[str, str]) -> None:
+        owner, request = _public(did, absent=missing)
+>       assert owner.materialise(request) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D077', derived_occurrence_id='d077-8a5cf2c10084100ef54990bf6c9f98aea0960b...b98c90daae1ad28edc2faa2989ae667d'), convention_refs=(), selection_identity=None, supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(derived_signal_id='D077', derived_occurrence_id='d077-8a5cf2c10084100ef54990bf6c9f98aea0960b...b98c90daae1ad28edc2faa2989ae667d'), convention_refs=(), selection_identity=None, supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D077', subject_instrument='SEMIS', as_of_utc=datetime.datetime(2026, 10, 10, 4...VersionRefV1(context_id='relative-child', version=1)), ('D072', VersionRefV1(context_id='relative-child', version=1)))))
+E        +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7f3e785a6f10>.materialise
+
+tests/product/derived_signal/test_m01_f4_rc13_relative_sector_public.py:153: AssertionError
+_________ test_rc13_relative_returns_refuse_future_member[D076-late0] __________
+
+did = 'D076', late = ('QQQ', 'current')
+
+    @pytest.mark.parametrize("did,late", (
+        ("D076", ("QQQ", "current")), ("D077", ("SMH", "current")),
+    ))
+    def test_rc13_relative_returns_refuse_future_member(did: str, late: tuple[str, str]) -> None:
+        owner, request = _public(did, future=late)
+>       assert owner.materialise(request) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D076', derived_occurrence_id='d076-c609e7a4d4c2a16bfbc093e9be4d303125d71d...fd899b73ccd4338f375a4dc833e81379'), convention_refs=(), selection_identity=None, supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(derived_signal_id='D076', derived_occurrence_id='d076-c609e7a4d4c2a16bfbc093e9be4d303125d71d...fd899b73ccd4338f375a4dc833e81379'), convention_refs=(), selection_identity=None, supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D076', subject_instrument='US_TECH', as_of_utc=datetime.datetime(2026, 10, 10,...VersionRefV1(context_id='relative-child', version=1)), ('D071', VersionRefV1(context_id='relative-child', version=1)))))
+E        +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7f3e785a6b90>.materialise
+
+tests/product/derived_signal/test_m01_f4_rc13_relative_sector_public.py:161: AssertionError
+_________ test_rc13_relative_returns_refuse_future_member[D077-late1] __________
+
+did = 'D077', late = ('SMH', 'current')
+
+    @pytest.mark.parametrize("did,late", (
+        ("D076", ("QQQ", "current")), ("D077", ("SMH", "current")),
+    ))
+    def test_rc13_relative_returns_refuse_future_member(did: str, late: tuple[str, str]) -> None:
+        owner, request = _public(did, future=late)
+>       assert owner.materialise(request) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D077', derived_occurrence_id='d077-2e8718ed1f67382e9a07eb59e2f7b9dfb9fde9...078703910cbe021f66186a2d234af17f'), convention_refs=(), selection_identity=None, supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(derived_signal_id='D077', derived_occurrence_id='d077-2e8718ed1f67382e9a07eb59e2f7b9dfb9fde9...078703910cbe021f66186a2d234af17f'), convention_refs=(), selection_identity=None, supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D077', subject_instrument='SEMIS', as_of_utc=datetime.datetime(2026, 10, 10, 4...VersionRefV1(context_id='relative-child', version=1)), ('D072', VersionRefV1(context_id='relative-child', version=1)))))
+E        +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7f3e785a77d0>.materialise
+
+tests/product/derived_signal/test_m01_f4_rc13_relative_sector_public.py:161: AssertionError
+______________ test_rc13_relative_refuses_ambiguous_market_alias _______________
+
+    def test_rc13_relative_refuses_ambiguous_market_alias() -> None:
+        owner, request = _public("D076", alias_collision=True)
+>       assert owner.materialise(request) is None
+E       AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D076', derived_occurrence_id='d076-f3e8b6d60e35f6995013feead563580c85c7a4...d5354ef234f189b6ed9cb1e188995231'), convention_refs=(), selection_identity=None, supersedes_derived_occurrence_id=None) is None
+E        +  where DerivedSignalOccurrenceV1(derived_signal_id='D076', derived_occurrence_id='d076-f3e8b6d60e35f6995013feead563580c85c7a4...d5354ef234f189b6ed9cb1e188995231'), convention_refs=(), selection_identity=None, supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D076', subject_instrument='US_TECH', as_of_utc=datetime.datetime(2026, 10, 10,...VersionRefV1(context_id='relative-child', version=1)), ('D071', VersionRefV1(context_id='relative-child', version=1)))))
+E        +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7f3e785a7ae0>.materialise
+
+tests/product/derived_signal/test_m01_f4_rc13_relative_sector_public.py:166: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/derived_signal/test_m01_f4_rc13_relative_sector_public.py::test_rc13_relative_returns_use_exact_distinct_predecessor_subjects[D076] - AssertionError: assert Decimal('0E-29') == Decimal('0.04652001563489285697857771906')
+ +  where Decimal('0E-29') = DerivedSignalOccurrenceV1(derived_signal_id='D076', derived_occurrence_id='d076-6fe86831820953924ff6d57ba3aff45a840b49...59e082e4c462938df8cabe35d5022fca'), convention_refs=(), selection_identity=None, supersedes_derived_occurrence_id=None).result
+FAILED tests/product/derived_signal/test_m01_f4_rc13_relative_sector_public.py::test_rc13_relative_returns_use_exact_distinct_predecessor_subjects[D077] - AssertionError: assert Decimal('0E-28') == Decimal('0.1270327308263979790796548827')
+ +  where Decimal('0E-28') = DerivedSignalOccurrenceV1(derived_signal_id='D077', derived_occurrence_id='d077-e9b98ef20233f85f0ad8110b4533fdb04d835e...228c456db5d8c19f7a90799e38cc2f97'), convention_refs=(), selection_identity=None, supersedes_derived_occurrence_id=None).result
+FAILED tests/product/derived_signal/test_m01_f4_rc13_relative_sector_public.py::test_rc13_relative_returns_refuse_missing_exact_member[D076-missing0] - AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D076', derived_occurrence_id='d076-5b14e26d1637bbbb89f1abaed20c62ac9cdc46...dce431871c4b8e1e92ad8510da0c6bf3'), convention_refs=(), selection_identity=None, supersedes_derived_occurrence_id=None) is None
+ +  where DerivedSignalOccurrenceV1(derived_signal_id='D076', derived_occurrence_id='d076-5b14e26d1637bbbb89f1abaed20c62ac9cdc46...dce431871c4b8e1e92ad8510da0c6bf3'), convention_refs=(), selection_identity=None, supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D076', subject_instrument='US_TECH', as_of_utc=datetime.datetime(2026, 10, 10,...VersionRefV1(context_id='relative-child', version=1)), ('D071', VersionRefV1(context_id='relative-child', version=1)))))
+ +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7f3e785a6e30>.materialise
+FAILED tests/product/derived_signal/test_m01_f4_rc13_relative_sector_public.py::test_rc13_relative_returns_refuse_missing_exact_member[D077-missing1] - AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D077', derived_occurrence_id='d077-8a5cf2c10084100ef54990bf6c9f98aea0960b...b98c90daae1ad28edc2faa2989ae667d'), convention_refs=(), selection_identity=None, supersedes_derived_occurrence_id=None) is None
+ +  where DerivedSignalOccurrenceV1(derived_signal_id='D077', derived_occurrence_id='d077-8a5cf2c10084100ef54990bf6c9f98aea0960b...b98c90daae1ad28edc2faa2989ae667d'), convention_refs=(), selection_identity=None, supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D077', subject_instrument='SEMIS', as_of_utc=datetime.datetime(2026, 10, 10, 4...VersionRefV1(context_id='relative-child', version=1)), ('D072', VersionRefV1(context_id='relative-child', version=1)))))
+ +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7f3e785a6f10>.materialise
+FAILED tests/product/derived_signal/test_m01_f4_rc13_relative_sector_public.py::test_rc13_relative_returns_refuse_future_member[D076-late0] - AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D076', derived_occurrence_id='d076-c609e7a4d4c2a16bfbc093e9be4d303125d71d...fd899b73ccd4338f375a4dc833e81379'), convention_refs=(), selection_identity=None, supersedes_derived_occurrence_id=None) is None
+ +  where DerivedSignalOccurrenceV1(derived_signal_id='D076', derived_occurrence_id='d076-c609e7a4d4c2a16bfbc093e9be4d303125d71d...fd899b73ccd4338f375a4dc833e81379'), convention_refs=(), selection_identity=None, supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D076', subject_instrument='US_TECH', as_of_utc=datetime.datetime(2026, 10, 10,...VersionRefV1(context_id='relative-child', version=1)), ('D071', VersionRefV1(context_id='relative-child', version=1)))))
+ +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7f3e785a6b90>.materialise
+FAILED tests/product/derived_signal/test_m01_f4_rc13_relative_sector_public.py::test_rc13_relative_returns_refuse_future_member[D077-late1] - AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D077', derived_occurrence_id='d077-2e8718ed1f67382e9a07eb59e2f7b9dfb9fde9...078703910cbe021f66186a2d234af17f'), convention_refs=(), selection_identity=None, supersedes_derived_occurrence_id=None) is None
+ +  where DerivedSignalOccurrenceV1(derived_signal_id='D077', derived_occurrence_id='d077-2e8718ed1f67382e9a07eb59e2f7b9dfb9fde9...078703910cbe021f66186a2d234af17f'), convention_refs=(), selection_identity=None, supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D077', subject_instrument='SEMIS', as_of_utc=datetime.datetime(2026, 10, 10, 4...VersionRefV1(context_id='relative-child', version=1)), ('D072', VersionRefV1(context_id='relative-child', version=1)))))
+ +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7f3e785a77d0>.materialise
+FAILED tests/product/derived_signal/test_m01_f4_rc13_relative_sector_public.py::test_rc13_relative_refuses_ambiguous_market_alias - AssertionError: assert DerivedSignalOccurrenceV1(derived_signal_id='D076', derived_occurrence_id='d076-f3e8b6d60e35f6995013feead563580c85c7a4...d5354ef234f189b6ed9cb1e188995231'), convention_refs=(), selection_identity=None, supersedes_derived_occurrence_id=None) is None
+ +  where DerivedSignalOccurrenceV1(derived_signal_id='D076', derived_occurrence_id='d076-f3e8b6d60e35f6995013feead563580c85c7a4...d5354ef234f189b6ed9cb1e188995231'), convention_refs=(), selection_identity=None, supersedes_derived_occurrence_id=None) = materialise(CalculationRequestV1(derived_signal_id='D076', subject_instrument='US_TECH', as_of_utc=datetime.datetime(2026, 10, 10,...VersionRefV1(context_id='relative-child', version=1)), ('D071', VersionRefV1(context_id='relative-child', version=1)))))
+ +    where materialise = <nvda_desk.derived_signal_calculation_truth.api._OwnerV1 object at 0x7f3e785a7ae0>.materialise
+7 failed in 0.14s

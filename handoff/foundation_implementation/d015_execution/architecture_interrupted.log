@@ -1,0 +1,15 @@
+/workspace/scratch/83dd7c79f14f/d015-runtime-GUbvor/dev/bin/python tools/run_promotion_gate.py --set architecture_kernel
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/83dd7c79f14f/NVDA_V2_CLEAN_RECOVERED_REPO_20261022
+configfile: pyproject.toml
+collected 220 items
+
+tests/architecture/test_activation_readiness.py ............             [  5%]
+tests/architecture/test_dependency_direction.py ......                   [  8%]
+tests/architecture/test_identifier_taxonomy.py .....................     [ 17%]
+tests/architecture/test_implementation_authority_ingress.py ............ [ 23%]
+...                                                                      [ 24%]
+tests/architecture/test_object_lifecycle.py ...                          [ 25%]
+tests/architecture/test_proof_control.py ............................... [ 40%]
+...............................

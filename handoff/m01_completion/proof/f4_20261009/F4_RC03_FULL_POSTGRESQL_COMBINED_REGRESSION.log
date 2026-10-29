@@ -1,0 +1,32 @@
+COMMAND: /mnt/data/nvda_f4_env/venv/bin/python -m pytest -q tests/product tests/architecture tests/bootstrap tests/implementation/derived_signal --ignore=tests/product/raw_signal/test_u05_postgresql_durability.py
+ENV: isolated roles and PostgreSQL 17.9; pinned Python tools, PyYAML 6.0.3 from ambient pinned installation
+EXIT: 1
+
+........................................................................ [  8%]
+........................................................................ [ 16%]
+........................................................................ [ 24%]
+........................................................................ [ 33%]
+........................................................................ [ 41%]
+........................................................................ [ 49%]
+........................................................................ [ 58%]
+........................................................................ [ 66%]
+........................................................................ [ 74%]
+........................................................................ [ 83%]
+........................................................................ [ 91%]
+.........................F.............................................. [ 99%]
+...                                                                      [100%]
+=================================== FAILURES ===================================
+_________ test_incompatible_python_visible_public_seam_use_is_rejected _________
+
+tmp_path = PosixPath('/tmp/pytest-of-oai/pytest-0/test_incompatible_python_visib0')
+
+>   ???
+E   assert 'incompatible type "str"; expected "int"' in '/tmp/pytest-of-oai/pytest-0/test_incompatible_python_visib0/src/nvda_desk/m01/impl.py:2: \x1b[1m\x1b[31merror:\x1b[m ...1m"int"\x1b[m  \x1b[m\x1b[33m[arg-type]\x1b[m\n\x1b[1m\x1b[31mFound 1 error in 1 file (checked 5 source files)\x1b[m\n'
+E    +  where '/tmp/pytest-of-oai/pytest-0/test_incompatible_python_visib0/src/nvda_desk/m01/impl.py:2: \x1b[1m\x1b[31merror:\x1b[m ...1m"int"\x1b[m  \x1b[m\x1b[33m[arg-type]\x1b[m\n\x1b[1m\x1b[31mFound 1 error in 1 file (checked 5 source files)\x1b[m\n' = CompletedProcess(args=['/mnt/data/nvda_f4_env/venv/bin/python', '-m', 'mypy', '--config-file', '/mnt/data/nvda_f4_work...m  \x1b[m\x1b[33m[arg-type]\x1b[m\n\x1b[1m\x1b[31mFound 1 error in 1 file (checked 5 source files)\x1b[m\n', stderr='').stdout
+
+/mnt/data/f4_completion/NVDA_M01_F2_CONSOLIDATED_CANDIDATE_REVIEW_20261009/tests/architecture/test_static_typecheck.py:66: AssertionError
+=========================== short test summary info ============================
+FAILED tests/architecture/test_static_typecheck.py::test_incompatible_python_visible_public_seam_use_is_rejected - assert 'incompatible type "str"; expected "int"' in '/tmp/pytest-of-oai/pytest-0/test_incompatible_python_visib0/src/nvda_desk/m01/impl.py:2: \x1b[1m\x1b[31merror:\x1b[m ...1m"int"\x1b[m  \x1b[m\x1b[33m[arg-type]\x1b[m\n\x1b[1m\x1b[31mFound 1 error in 1 file (checked 5 source files)\x1b[m\n'
+ +  where '/tmp/pytest-of-oai/pytest-0/test_incompatible_python_visib0/src/nvda_desk/m01/impl.py:2: \x1b[1m\x1b[31merror:\x1b[m ...1m"int"\x1b[m  \x1b[m\x1b[33m[arg-type]\x1b[m\n\x1b[1m\x1b[31mFound 1 error in 1 file (checked 5 source files)\x1b[m\n' = CompletedProcess(args=['/mnt/data/nvda_f4_env/venv/bin/python', '-m', 'mypy', '--config-file', '/mnt/data/nvda_f4_work...m  \x1b[m\x1b[33m[arg-type]\x1b[m\n\x1b[1m\x1b[31mFound 1 error in 1 file (checked 5 source files)\x1b[m\n', stderr='').stdout
+1 failed, 866 passed in 8.76s
+

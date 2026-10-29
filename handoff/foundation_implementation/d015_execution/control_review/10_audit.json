@@ -1,0 +1,21 @@
+{
+  "candidate": "f4c4dbd274109f8c0d335eaef217d286e0c502dc",
+  "tree": "ea3a0b1164ddf61ae5f904d180aac8ca53fcc69f",
+  "active_status": "",
+  "private_status": " M tools/product_proof_claims.py\n",
+  "tracked_files_compared": 2076,
+  "different": [
+    "tools/product_proof_claims.py"
+  ],
+  "changed_ast_functions": [
+    "_scalar_extension",
+    "load_product_proof_claim"
+  ],
+  "python": "3.12.14",
+  "sqlite": "3.53.1",
+  "incorporated_hashes_verified": 7,
+  "brief_sha256": "84baa16665db5f8543eba3b1770dafcfb36cc5e8064b2f1837beb924713acb0d",
+  "test_sha256": "2d1dbaa642007f7e669f0936cc6f67fecb47a448c1e2ef3da7055b1fe7b4ca9f",
+  "active_loader_sha256": "b2670e26f51d4b6f4fc8c656c859b9e5d63ca9aadd84ff2f818ff06cd9bb118a",
+  "private_loader_sha256": "c08ab24b400b22043a9cefcc64883d4dca552c4c8937da3b9480683c2d87f330"
+}

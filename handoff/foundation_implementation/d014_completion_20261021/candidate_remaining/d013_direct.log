@@ -1,0 +1,16 @@
+product-proof aggregate: neutral_market_measurement_truth_d013 state=READY_FOR_PROOF
+authority=1f53d9c21c6eb4b90213137c4699a0688f994cd0ed55e54082268d8477abc148 generation=fb4095de4d5fe9da885f9e8e6574cfe495de1fdebbb8b37f3fcd31710f5bdf02
+candidate=b0a61a7f960b1cff4f95605347db2773d1078c65
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /workspace/scratch/56b9974b28a0/implementation-recovery
+configfile: pyproject.toml
+collected 179 items
+
+tests/product/market_measurement_d013/test_ratio.py .................... [ 11%]
+........................................................................ [ 51%]
+........................................................................ [ 91%]
+...............                                                          [100%]
+
+======================= 179 passed in 208.44s (0:03:28) ========================
+observed aggregate outcome: exit=0

@@ -1,0 +1,17 @@
+{
+  "classification": "INHERITED_SOURCE_DIAGNOSTIC_PY312_ONLY",
+  "cases": [
+    {
+      "case": "structured_zero_tail",
+      "observed": "0"
+    },
+    {
+      "case": "negative_available",
+      "observed": "50"
+    },
+    {
+      "case": "missing_three_raw_and_all_derived",
+      "observed": "100"
+    }
+  ]
+}

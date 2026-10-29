@@ -1,0 +1,35 @@
+Worker U02 Reviewer-023 repair command record
+
+GOVERNANCE / ROUTING
+- read README.md, GUARDRAILS.md, root AGENTS.md, complete current EXEC_PLAN.md,
+  tests/AGENTS.override.md, CURRENT_STATE.md and active Worker REQUEST.md
+- read Reviewer-023 RESPONSE/RESULT/EVIDENCE/COMMANDS, IRB BC-003/004/010,
+  IWO-U02, PUBLIC_SEAM_LAW.md, current api.py and complete bounded U02 proof
+- created fresh branch work/vi12r-u02-r023-repair from routed Reviewer-023 FAIL continuity
+
+REPAIR
+- removed direct _U02State storage from _CommandsV1 and _ReadsV1
+- retained validated command/read callables only on public facet objects
+- added bounded concrete bypass and ordinary direct mutable-state reachability regressions
+- U03 and later behaviour unchanged
+
+EXACT TOOLCHAIN
+- Python 3.13.5
+- pytest 9.0.3
+- mypy 1.20.1 (compiled)
+- Ruff 0.15.11
+
+COMMITTED-CANDIDATE VALIDATION
+- pytest U01+U02 -> 328 passed
+- two Reviewer-023 bypass regressions -> 2 passed
+- ruff check src tests tools -> pass
+- mypy src --show-error-codes -> success, 15 source files
+- validate_product_proof.py -> PASS, six families, 13/13 obligations
+- validate_architecture.py -> PASS, zero dependency/public-seam violations
+- check_dependencies.py -> PASS
+- check_public_seams.py -> PASS
+- pytest tests/architecture tests/bootstrap -> 74 passed
+- run_promotion_gate.py --set architecture_kernel -> 74 passed
+- git diff --check -> pass
+- git fsck --full --strict -> pass
+- worktree clean

@@ -1,0 +1,36 @@
+# Worker VI-17-L2 evidence summary
+
+- leaf: `VI-17-L2 — provenance, environment and repository-integrity audit`
+- routed baseline: `4daaa4050da594e8feb893bb60f171c6828687af` / tree `ee24b621e37d7d3689d77473b682b8535919c7a7`
+- accepted VI-17-L1 candidate: `c07d5277512f600669b05a88cc2c174af3e3b046`
+- VI-17-L1 Tester PASS: `5397a90dd2e245e17bd5e0eb526861396dae3082`
+- VI-17-L1 promotion close-out: `d37e5951560d1f1a2b2704888b2b2e15002288f5`
+- accepted package candidate: `332c1f95da032f841e8779ef21fe3c1fceb698a2`
+- distribution: `nvda-architecture-kernel==1.0.0`
+- wheel: 37,378 bytes / `d311960234c932c2507f7b1671c8d53bff3ec234692e65ca27b440293e37e127`
+- sdist: 161,445 bytes / `135e47f6ab531e8e650a2ee1adc9582965e1c81d97d08dfdc854757a790629fa`
+- package manifest check: both artefacts OK
+- wheel: 21 files / 16 Python runtime files / 16 of 16 byte-equal to package candidate
+- sdist: 117 files / 116 repository-backed members byte-equal / only generated `PKG-INFO`
+- accepted product result: 479/479; six families; 13/13 obligations
+- accepted architecture/bootstrap result: 74/74 across 11 current-blocking families
+- accepted proof environment: Python 3.13.5; pytest 9.0.3; mypy 1.20.1; Ruff 0.15.11; Psycopg 3.3.4; PyYAML 6.0.3; PostgreSQL 17.9
+- U05 proof-bootstrap archive: `01050287798e53e38f33794e201df53adbe6fcba03024a027ac36d3d9cea66b8`; internal 24/24 payload checks OK
+- PostgreSQL runtime archive: `59822410ac6855365c90765de5071182ab382e87d9e9a2622424e7787c4e5caf`; internal 1,937/1,937 payload checks OK; extracted binary readback 17.9
+- accepted PostgreSQL proof settings: UTF8; fsync=on; synchronous_commit=on; full_page_writes=on; Unix socket; listen_addresses empty
+- inactive closure: M00 sole active runtime module; A00 bootstrap; P01/K01 placeholders; M00 only allocation; zero surfaces; no inactive runtime package in accepted wheel/install
+- all listed accepted U01-U06 and VI14/15/16/17-L1 candidate/review/promotion identities are reachable ancestors
+- active thin root `8133432...` present; external predecessor `d095954...` absent by accepted transport boundary
+- post-package substantive drift in `src tests config pyproject.toml`: none
+- routed-baseline worktree clean; `git diff --check` success; `git fsck --full --no-dangling` success
+- full fsck success with eight dangling blobs only
+- incoming full-Git/package packet: 6,668,847 bytes / SHA-256 `688ba704...`; not the future VI-18 terminal artefact
+- broader reproducible-build claim: not made
+- exact prior PyYAML 6.0.3 overlay artefact digest: UNKNOWN from current inputs; version identity established
+- Worker conclusion: `NO_MATERIAL_PROVENANCE_ENVIRONMENT_OR_REPOSITORY_INTEGRITY_GAP_IDENTIFIED_BY_WORKER_AUDIT`
+- independent Tester acceptance: `UNPROVED / REQUIRED`
+
+- audit-packet preparation commit: `98c345809694883fe9493f588e87ed815b75996b` / tree `1b017b6c01176fc61963a63bcf12d843aac8d0db`
+- exact frozen VI-17-L2 Worker candidate: `57712201296c6da811e4e6838d0f3fb302239df4` / tree `1b017b6c01176fc61963a63bcf12d843aac8d0db`
+- candidate freeze is an empty boundary commit; candidate tree exactly equals the audited preparation tree
+- fresh independent Tester route: `TESTER_VI17_L2_1790634143`

@@ -1,0 +1,1 @@
+PASS: 196 expected rows validate; 29 file hashes;6 malformed schema witnesses rejected;18 concrete negative specifications;36/155 positive totals independently table-checked.

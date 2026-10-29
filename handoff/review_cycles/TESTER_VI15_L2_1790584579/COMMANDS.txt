@@ -1,0 +1,78 @@
+VI-15-L2 Tester material command/evidence record
+
+SOURCE / GOVERNANCE / LINEAGE
+- received packet SHA-256 -> b05ceb2b46c7b222ef397564587b7c0c4df77eceda8edc58f1727017ec0d57b9
+- read full GUARDRAILS.md, root AGENTS.md, tests/AGENTS.override.md, accepted EXEC_PLAN.md,
+  CURRENT_STATE.md, active TESTER_VI15_L2_1790584579 REQUEST.md, root README.md,
+  VI15-L2 Worker candidate evidence, pyproject.toml, Makefile, architecture package law,
+  current architecture/product-proof registries/configuration and exact candidate Git lineage/diff
+- exact candidate -> 332c1f95da032f841e8779ef21fe3c1fceb698a2
+- exact candidate tree -> 3abec93134d128978ad6bcedbd0dfa6cf4334ec6
+- accepted predecessor -> abccadf20d10daa29e739c6ba54a970fcff41614
+- candidate tested from detached exact worktree; branch-tip handoff/evidence commits were not candidate bytes
+- candidate is an empty boundary commit over parent 3b1671dc0c15e5ab9023bd20362c432b1fd7a05a
+
+PROOF ENVIRONMENT
+- preserved bootstrap archive SHA-256 -> 01050287798e53e38f33794e201df53adbe6fcba03024a027ac36d3d9cea66b8
+- PostgreSQL runtime archive SHA-256 -> 59822410ac6855365c90765de5071182ab382e87d9e9a2622424e7787c4e5caf
+- verify_env.sh -> Python 3.13.5 / pytest 9.0.3 / mypy 1.20.1 / Ruff 0.15.11 /
+  Psycopg 3.3.4 / PostgreSQL 17.9 / UTF8 / fsync=on / synchronous_commit=on /
+  full_page_writes=on / Unix socket only
+
+INDEPENDENT PRODUCT AXIS ON EXACT CANDIDATE
+- initial governed aggregate command collected 479 and progressed without assertion failure, but the command
+  wrapper timed out before a terminal pytest result; this incomplete run was NOT counted as PASS
+- five non-U05 admitted families -> 424/424 PASS in one explicit pytest execution
+- U05 PostgreSQL durability family -> 55/55 PASS in bounded groups: 12 + 11 + 12 + 12 + 8
+- complete independently established population -> 479/479 PASS
+- tools/validate_product_proof.py -> PASS; six admitted families / 13 of 13 obligations / aggregate READY_FOR_PROOF
+
+INDEPENDENT ARCHITECTURE / STATIC AXIS
+- tools/run_promotion_gate.py --set architecture_kernel -> 74/74 PASS across 11 current-blocking families
+- one active runtime module / one implementation allocation / zero dependency-public-seam violations
+- python -m mypy src -> Success: no issues found in 16 source files
+- ruff check src tests tools -> All checks passed
+
+PACKAGE REBUILD / INVENTORY
+- build toolchain independently verified: Python 3.13.5, Hatchling 1.29.0, packaging 26.2,
+  pathspec 1.1.1, pluggy 1.6.0, trove-classifiers 2026.4.28.13
+- rebuilt wheel from exact detached candidate -> 37,378 bytes,
+  sha256 d311960234c932c2507f7b1671c8d53bff3ec234692e65ca27b440293e37e127
+- rebuilt sdist from exact detached candidate -> 161,445 bytes,
+  sha256 135e47f6ab531e8e650a2ee1adc9582965e1c81d97d08dfdc854757a790629fa
+- both rebuilt artefacts are byte-for-byte identical to Worker-supplied artefacts
+- wheel -> 21 files / 16 Python files; all 16 runtime Python files byte-equal to tracked src/nvda_desk files;
+  no extra runtime Python file
+- wheel metadata -> nvda-architecture-kernel==1.0.0, Requires-Python ==3.13.5,
+  PyYAML==6.0.3, psycopg[binary]==3.3.4; five architecture console entry points
+- sdist -> 117 files; all repository-backed members byte-equal to exact candidate; only PKG-INFO generated
+
+ISOLATED INSTALLED-DISTRIBUTION CHALLENGE
+- fresh external Python 3.13.5 venv; offline install of rebuilt exact wheel and pinned dependencies
+- working directory outside repository; PYTHONPATH unset; repository path absent from sys.path
+- installed nvda_desk loaded only from external venv site-packages
+- installed direct_url.json binds wheel SHA-256 d311960234c932c2507f7b1671c8d53bff3ec234692e65ca27b440293e37e127
+- installed top-level runtime modules exactly: architecture, composition, raw_signal_occurrence_truth
+- no importable p01, k01, provider, network, downstream_consumer, dmpv3_packet or replay package
+- direct independently-authored A00 -> PostgreSQL-backed M00 public-seam sequence -> PASS
+  * assessment outcome one_or_more_received
+  * exact observation readback
+  * unique durable row counts policy/capture/observation/assessment -> (1,1,1,1)
+  * fresh-application exact retry remains idempotent
+  * mismatched policy reference fails closed and creates zero wrong-capture rows
+- first version of Tester direct script deliberately supplied an untyped capture ID and was rejected by the
+  installed public type boundary; this was a Tester harness error, corrected without candidate mutation
+
+GIT / INTEGRITY
+- accepted VI15-L1 close-out is ancestor of exact candidate
+- candidate and parent have identical tree 3abec93134d128978ad6bcedbd0dfa6cf4334ec6
+- git diff --check -> PASS
+- exact candidate worktree remained clean after proof/build
+- git fsck --full -> rc 0; eight dangling blobs only, no repository corruption/error
+
+DISPOSITION
+- PASS
+- findings -> none
+- recurrence classification -> NO_FINDING
+- exact candidate/package state accepted for lawful VI-15-L2 promotion/close-out only
+- VI-16 remains prohibited until accepted VI-15-L2 lineage is promoted to main

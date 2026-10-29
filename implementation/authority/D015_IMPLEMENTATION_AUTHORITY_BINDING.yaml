@@ -1,0 +1,10 @@
+schema_version: "1.0"
+brief_sha256: 84baa16665db5f8543eba3b1770dafcfb36cc5e8064b2f1837beb924713acb0d
+acceptance:
+  status: ACCEPTED_FOR_IMPLEMENTATION
+  authority_ref: owner-chat/20261019T222804/D012-and-standing-human-exceptions
+targets:
+  - action: modify
+    object_id: M02
+  - action: modify
+    object_id: G01

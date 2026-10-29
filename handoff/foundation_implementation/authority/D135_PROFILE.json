@@ -1,0 +1,63 @@
+{
+  "id": "D135",
+  "definition": "D135-SMART-TOP-TWO-ASK-1",
+  "kernel": "K02_ALGEBRA",
+  "parameter_profile": "P_BASIC",
+  "subject": "NVDA",
+  "provider": "foundation-controlled-smart-book",
+  "variant": "positional_four_field_v1",
+  "generation": "controlled-smart-four-field-generation/1",
+  "raw_fields": {
+    "R185": "position int",
+    "R187": "operation int",
+    "R188": "side int",
+    "R190": "size Decimal"
+  },
+  "shared_source_mapping": "D134 four-field SMART profile, same subject/generation/selection and complete event groups",
+  "top_levels": 2,
+  "as_of": "2026-10-20T12:40:00Z",
+  "cutoff": "2026-10-20T12:40:01Z",
+  "complete_warmup": [
+    {
+      "event": "bid0",
+      "position": 0,
+      "operation": 0,
+      "side": 0,
+      "size": "5"
+    },
+    {
+      "event": "bid1",
+      "position": 1,
+      "operation": 0,
+      "side": 0,
+      "size": "3"
+    },
+    {
+      "event": "ask0",
+      "position": 0,
+      "operation": 0,
+      "side": 1,
+      "size": "2"
+    },
+    {
+      "event": "ask1",
+      "position": 1,
+      "operation": 0,
+      "side": 1,
+      "size": "4"
+    }
+  ],
+  "success": "ask sizes2+4=6",
+  "refusal": "R187 reset317 after complete warm-up, without renewed complete state; no result/history",
+  "boundary": "synthetic four-field profile, no native SMART certification",
+  "top_one_extension": {
+    "owner_authority": "owner-chat/20261027/explicit-D135-top-one-and-D136-refusal",
+    "definition": "D135-SMART-TOP-ONE-ASK-1",
+    "selection": "mmt-d135-smart-top-one/1",
+    "parameter": "mmt-d135-top-one/1",
+    "top_levels": 1,
+    "same_four_event_groups": true,
+    "result": "ask position0 size2 shares",
+    "reset_refusal": "R187 reset317 invalidates top-one too"
+  }
+}

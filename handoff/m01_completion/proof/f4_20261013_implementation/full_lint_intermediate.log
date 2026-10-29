@@ -1,0 +1,17 @@
+tests/product/derived_signal/test_m01_f4_approved_account_projection.py:3:1: I001 [*] Import block is un-sorted or un-formatted
+tests/product/derived_signal/test_m01_f4_approved_retained_provenance.py:11:56: F401 [*] `.test_m01_f4_approved_monetary_policy.fixture` imported but unused
+tests/product/derived_signal/test_m01_f4_cross_stage_declared_predecessor_fail_closed.py:9:21: F401 [*] `decimal.Decimal` imported but unused
+tests/product/derived_signal/test_m01_f4_cross_stage_declared_predecessor_fail_closed.py:31:71: F401 [*] `.test_m01_f4_approved_monetary_policy.ev` imported but unused
+tests/product/derived_signal/test_m01_f4_cross_stage_declared_predecessor_fail_closed.py:34:101: E501 Line too long (154 > 100)
+tests/product/derived_signal/test_m01_f4_cross_stage_declared_predecessor_fail_closed.py:43:101: E501 Line too long (106 > 100)
+tests/product/derived_signal/test_m01_f4_cross_stage_rule_algebra_own_kernel.py:118:33: E702 Multiple statements on one line (semicolon)
+tests/product/derived_signal/test_m01_f4_cross_stage_rule_algebra_own_kernel.py:127:30: E702 Multiple statements on one line (semicolon)
+tests/product/derived_signal/test_m01_f4_cross_stage_rule_algebra_own_kernel.py:135:101: E501 Line too long (115 > 100)
+tests/product/derived_signal/test_m01_f4_cross_stage_rule_algebra_own_kernel.py:137:101: E501 Line too long (119 > 100)
+tests/product/derived_signal/test_m01_f4_cross_stage_rule_algebra_own_kernel.py:139:101: E501 Line too long (148 > 100)
+tests/product/derived_signal/test_m01_f4_cross_stage_rule_algebra_own_kernel.py:157:101: E501 Line too long (117 > 100)
+tests/product/derived_signal/test_m01_f4_cross_stage_rule_algebra_own_kernel.py:160:101: E501 Line too long (101 > 100)
+tests/product/derived_signal/test_m01_stage1_leaf3_catalogue_kernels.py:259:18: E702 Multiple statements on one line (semicolon)
+tests/product/derived_signal/test_m01_stage1_leaf3_catalogue_kernels.py:260:18: E702 Multiple statements on one line (semicolon)
+Found 15 errors.
+[*] 4 fixable with the `--fix` option.

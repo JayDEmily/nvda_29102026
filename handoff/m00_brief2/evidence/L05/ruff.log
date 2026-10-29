@@ -1,0 +1,25 @@
+RUF005 Consider iterable unpacking instead of concatenation
+  --> tests/product/m00_brief2/test_export.py:91:17
+   |
+89 |     evidence = Path(os.environ.get("M00_EXPORT_EVIDENCE", str(tmp_path / "retained")))
+90 |     evidence.mkdir(parents=True, exist_ok=False)
+91 |     for name in files + ["manifest_v1.json", "readback_requests_v1.json"]:
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+92 |         shutil.copy2(first / name, evidence / name)
+93 |     (evidence / "reproduction_v1.json").write_text(
+   |
+help: Replace with iterable unpacking
+
+E501 Line too long (167 > 100)
+   --> tools/export_m00_synthetic.py:266:101
+    |
+264 | …
+265 | …
+266 | …xtures <fixture-dir> --expected <oracle-dir> --database <ABSENT-ABSOLUTE-PATH> --output <NEW-DIR>",
+    |                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+267 | …
+268 | …
+    |
+
+Found 2 errors.
+No fixes available (1 hidden fix can be enabled with the `--unsafe-fixes` option).

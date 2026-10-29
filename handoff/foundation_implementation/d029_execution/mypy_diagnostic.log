@@ -1,0 +1,20 @@
+error: INTERNAL ERROR -- Please try using mypy master on GitHub:
+https://mypy.readthedocs.io/en/stable/common_issues.html#using-a-development-mypy-build
+Please report a bug at https://github.com/python/mypy/issues
+version: 1.20.1
+note: use --pdb to drop into pdb
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/workspace/scratch/83dd7c79f14f/d021-runtime/lib/python3.12/site-packages/mypy/__main__.py", line 15, in console_entry
+    main()
+  File "mypy/main.py", line 141, in main
+  File "mypy/main.py", line 225, in run_build
+  File "mypy/build.py", line 388, in build
+  File "mypy/build.py", line 462, in build_inner
+  File "mypy/build.py", line 888, in __init__
+  File "mypy/build.py", line 1442, in read_plugins_snapshot
+  File "mypy/build.py", line 1547, in _load_json_file
+  File "mypy/metastore.py", line 199, in read
+  File "mypy/metastore.py", line 186, in _query
+DatabaseError: database disk image is malformed

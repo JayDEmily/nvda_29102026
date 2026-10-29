@@ -1,0 +1,30 @@
+F.                                                                       [100%]
+=================================== FAILURES ===================================
+____ test_d078_public_residual_uses_prior_fitted_model_for_current_outlier _____
+
+    def test_d078_public_residual_uses_prior_fitted_model_for_current_outlier():
+        """§5 K06: fit seven prior observations and explain the eighth current return."""
+        owner, request = _data(current_outlier=True)
+        _seed_history(owner, request, factor_count=len(FACTORS) + 1)
+        prior_request = replace(
+            request,
+            as_of_utc=NOW - timedelta(minutes=2),
+            knowledge_cutoff_utc=NOW - timedelta(minutes=2),
+        )
+        coefficients = {
+            did: owner.materialise(replace(prior_request, derived_signal_id=did))
+            for did in ("D079", "D080", "D081")
+        }
+        assert all(value is not None for value in coefficients.values())
+        for did, expected in EXPECTED.items():
+            assert abs(coefficients[did].result - expected) < Decimal("0.000000000001")
+        out = owner.materialise(replace(request, derived_signal_id="D078"))
+>       assert out is not None, "D078 must consume the prior fitted coefficient identities"
+E       AssertionError: D078 must consume the prior fitted coefficient identities
+E       assert None is not None
+
+tests/product/derived_signal/test_m01_f4_reconstruction_regression_history_public.py:313: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/derived_signal/test_m01_f4_reconstruction_regression_history_public.py::test_d078_public_residual_uses_prior_fitted_model_for_current_outlier - AssertionError: D078 must consume the prior fitted coefficient identities
+assert None is not None
+1 failed, 1 passed, 8 deselected in 0.11s

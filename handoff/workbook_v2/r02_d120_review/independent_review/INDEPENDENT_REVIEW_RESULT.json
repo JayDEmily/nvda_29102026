@@ -1,0 +1,54 @@
+{
+  "kind": "independent_bounded_semantic_review",
+  "verdict": "PASS",
+  "supported_runtime_acceptance": "BLOCKED",
+  "typecheck_acceptance": "BLOCKED",
+  "reviewed_commit": "50cf2fe05bc5f3fb8e17c74ba31360dcbe63ea3a",
+  "reviewed_tree": "489a7ccbd734bef3184b7bddf8dd15c6f05e109c",
+  "review_base": "f7c81bb0d88d0b2cf1980af06e80c8834143c7d7",
+  "d120_parent": "204f5ec1cb02526a4d2895d3923652114f895f38",
+  "d120_red_proof": "1b0cca24c8ed8fac6377792cc2b21e6b2a3adf67",
+  "scope": [
+    "D025 native High/Low/Last mapping",
+    "D099/D100 native R015 C/P with exact R111/R112 contract joins",
+    "D120 owner-approved R016 dependency and native right/multiplier temporal selection"
+  ],
+  "independent_execution": {
+    "python": "3.12.14",
+    "pytest": "9.0.3",
+    "direct_public_witness_exit": 0,
+    "focused_regression_exit": 0,
+    "focused_regression_passed": 69,
+    "baseline_d025_exit": 1,
+    "baseline_skew_exit": 1,
+    "baseline_d120_exit": 1
+  },
+  "findings": [
+    {
+      "classification": "ISOLATED",
+      "kind": "navigational_artifact",
+      "finding": "AUTHORITY_INDEX relative link overshot handoff directory",
+      "status": "CORRECTED in reviewed candidate; target verified exists"
+    }
+  ],
+  "new_semantic_failures": [],
+  "historical_recurrence": "RECURRENT_CLASS raw/derived selection identity and temporal correlation failures traced through prior returns and repairs; no new instance reproduced on candidate in bounded witnesses.",
+  "acceptance_limits": [
+    "Python3.13.5 unavailable; Python3.12 diagnostics do not meet admitted runtime",
+    "mypy runtime unavailable; no typecheck PASS",
+    "No PostgreSQL durability execution",
+    "No real provider/live ingress validation",
+    "No G01, whole-M01, wider Stage1, ownership migration or main promotion acceptance"
+  ],
+  "catalogue_sha256": "67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549",
+  "evidence_sha256": {
+    "CANDIDATE_FOCUSED_REGRESSION_DIAGNOSTIC.log": "66be3913276c650e7bd3701c2bde755b28fa2eb6ec930f5bfb3f4027bc075a97",
+    "BASELINE_SKEW_DIRECT_RED.log": "3b024d6eb07576060afe6cfd2be4578216e23961eb4162cd991e0f976c92c488",
+    "BASELINE_D025_DIRECT_RED.log": "0d95998969a19bba0cff9a5842c20877143c1be17ecf4dd2865a07c160a92e37",
+    "REVIEW_LINEAGE_AND_METHOD.md": "3ed1d6f688a8f5de2977dc5bfa66dd5c65ac3b8702c2216255cd843f23112ee5",
+    "R01_DIRECT_PUBLIC_DIAGNOSTIC.log": "c9c28f3b26f5211d539d28467c7e16c76204cf3b75a07e710bc6ed186703dfea",
+    "direct_public_witness.py": "37eb7337fabb0db61236d3e5359c27a8e456f55f5e9f98d7e8667935d7afa7d9",
+    "CANDIDATE_DIRECT_PUBLIC_DIAGNOSTIC.log": "544f546fcc831478de9c86aa5d38a1c5f5e9158aa756165a2375c45ffc499aef",
+    "BASELINE_D120_DIRECT_RED.log": "72971c2a1db11e498203ee7106bce2fbc7a7f2def0871181b347daf9d0af94c9"
+  }
+}

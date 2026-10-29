@@ -1,0 +1,46 @@
+{
+  "authority": {
+    "brief_sha256": "603b850802a418780109095e7ae69bcece449da79fb24140a6d50297605e927c",
+    "catalogue_sha256": "63bc1b776fc8fa8ba82eb3c9b16916f295c9ec3d480a5a068937c2f25146f5f5",
+    "rule": "Accepted brief clause 8.1 makes input selection part of calculation meaning. Option-contract calculations require matching underlying, expiry, strike, option right and contract identity wherever those dimensions are material; cross-sectional calculations require the exact versioned member set; temporal/skew/exact-match prerequisites are likewise fail-closed."
+  },
+  "classification": "RECURRENT_CLASS",
+  "finding": "The worker correctly makes the full option-contract key set mandatory for rows whose catalogue applicable_universe is literally \"Each option\". That implementation is still a string-specific heuristic rather than a row-authority selection law. Stage-1 D137 has applicable_universe \"NVDA / selected options\" and is an order-book calculation that is contract-specific when evaluated for a selected option. Through the public M01 seam, a subject-only selection policy was accepted while R034/R035 bid/ask came from option contract C1 and R033/R036 sizes came from option contract C2. All inputs named NVDA, so subject matching passed; M01 materialised D137=100.5 despite the mixed exact option identities. Therefore mandatory option identity remains dependent on catalogue wording rather than whether the row materially requires an exact contract match.",
+  "generated_at_utc": "2026-10-08T02:05:58.915098+00:00",
+  "independent_evidence": {
+    "adverse_public_seam_probe": {
+      "R033_bid_size_contract": "C2",
+      "R034_bid_contract": "C1",
+      "R035_ask_contract": "C1",
+      "R036_ask_size_contract": "C2",
+      "catalogue_applicable_universe": "NVDA / selected options",
+      "derived_signal_id": "D137",
+      "observed_materialised": true,
+      "observed_result": "100.5",
+      "request_subject": "NVDA",
+      "selection_join_keys": [
+        "subject_instrument"
+      ]
+    },
+    "architecture_validation": "PASS",
+    "dependency_validation": "PASS",
+    "focused_stage1_tests": "36 passed",
+    "full_derived_signal_tests": "82 passed",
+    "note": "Review stopped at the first remaining Stage-1 semantic invariant after confirming the literal Each-option repair.",
+    "public_seam_validation": "PASS",
+    "worker_repair_order": {
+      "production_repair_commit": "9809197",
+      "proof_commit": "78009f1",
+      "proof_precedes_production": true
+    }
+  },
+  "kind": "independent_review_result",
+  "repair_proposition": "Close the recurrent Stage-1 selection class at the authority boundary. Derive/encode the mandatory selection dimensions for every Stage-1 row from the accepted row semantics and clause 8.1, not from exact applicable_universe string equality and not solely from caller-supplied join_keys. The proof must establish representative authority classes including per-option rows, selected-option/L2 rows, per-expiry/delta/strike matching where material, and versioned basket membership for cross-sectional rows. A caller policy may further constrain selection but may not omit or disable a mandatory row invariant. Make the smallest lawful Stage-1 repair after proof-first evidence and return the exact candidate. Do not start Stage 2.",
+  "review": "M01_STAGE1",
+  "reviewed_branch": "work/m01-completion",
+  "reviewed_head": "980919777a80a75fcce8febaf5afe3c009e58c52",
+  "reviewed_tree": "77a6abbbe1c23b198e91399ca907f0d5836a6dd7",
+  "route": "RETURN_TO_WORKER_STAGE1",
+  "stage2_authorised": false,
+  "verdict": "REPAIR"
+}

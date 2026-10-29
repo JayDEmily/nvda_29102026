@@ -1,0 +1,16 @@
+Tester command/evidence classes executed against exact candidate c07d5277512f600669b05a88cc2c174af3e3b046:
+
+- SHA-256 recomputation for BICP JSON/Markdown, IRB, VI-04, both fixed-IWO copies, VI-15 authority and source catalogue.
+- git rev-list --max-parents=0 and git cat-file checks for local root and absent external predecessor.
+- git log/path-history inspection for fixed and later authority records.
+- git merge-base --is-ancestor checks for U01-U06 and VI-14/VI-15/VI-16 candidate/review/promotion identities.
+- complete post-root substantive mutation log over src/** tests/** config/** pyproject.toml.
+- python tools/validate_architecture.py
+- python tools/check_dependencies.py
+- python tools/check_public_seams.py
+- python tools/validate_implementation_authority.py --binding implementation/authority/implementation_authority_binding.yaml --brief handoff/authority/IRB_ACCEPTED_IMPLEMENTATION_BRIEF.md
+- python tools/validate_product_proof.py
+- package SHA-256 recomputation and wheel metadata inspection.
+- byte-for-byte comparison of all 16 wheel runtime Python files with package candidate 332c1f95....
+- scoped git diff 332c1f95... -> c07d527... for src/** tests/** config/** pyproject.toml.
+- git diff --check; git fsck --full --no-dangling; exact detached-worktree cleanliness check.

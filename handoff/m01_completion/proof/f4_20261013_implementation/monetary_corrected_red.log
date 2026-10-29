@@ -1,0 +1,948 @@
+FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF                                         [100%]
+=================================== FAILURES ===================================
+__ test_each_native_limit_maps_into_one_exact_envelope[changed0-1000-capital] __
+
+changed = {}, expected = 1000, binding = 'capital'
+
+    @pytest.mark.parametrize("changed,expected,binding", [
+        ({}, 1000, "capital"), ({"tail_fraction": D(".01")}, 500, "tail"),
+        ({"stress_fraction": D(".02")}, 500, "stress"),
+        ({"concentration_fraction": D(".04")}, 400, "concentration"),
+        ({"liquidity_fraction": D(".1")}, 250, "liquidity"),
+        ({"capital_fraction": D(0)}, 0, "capital"),
+    ])
+    def test_each_native_limit_maps_into_one_exact_envelope(changed, expected, binding):
+        f = fixture(); f["params"].update(changed)
+>       b = dict(budget(f))
+                 ^^^^^^^^^
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:97: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = {'contexts': (CandidateStructureContextV1(context_id='candidate', version=1, candidate_identity='managed', leg_contrac...ce_timestamp_raw=None, metadata=(('account_identity', 'account'), ('currency', 'USD'), ('canonical_units', 'USD'))),)}}
+
+    def budget(f):
+        result = ev("D175", f)
+        assert result is not None, "approved reference-calibrated limit is absent"
+>       assert type(result.value) is tuple, "D175 still returns a shortcut scalar, not exact limits"
+E       AssertionError: D175 still returns a shortcut scalar, not exact limits
+E       assert <class 'decimal.Decimal'> is tuple
+E        +  where <class 'decimal.Decimal'> = type(Decimal('200'))
+E        +    where Decimal('200') = KernelResultV1(value=Decimal('200'), units='currency / percent', result_shape='scalar', input_occurrence_ids=('D162', 'D174', 'R205', 'R206', 'R208', 'R209')).value
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:84: AssertionError
+____ test_each_native_limit_maps_into_one_exact_envelope[changed1-500-tail] ____
+
+changed = {'tail_fraction': Decimal('0.01')}, expected = 500, binding = 'tail'
+
+    @pytest.mark.parametrize("changed,expected,binding", [
+        ({}, 1000, "capital"), ({"tail_fraction": D(".01")}, 500, "tail"),
+        ({"stress_fraction": D(".02")}, 500, "stress"),
+        ({"concentration_fraction": D(".04")}, 400, "concentration"),
+        ({"liquidity_fraction": D(".1")}, 250, "liquidity"),
+        ({"capital_fraction": D(0)}, 0, "capital"),
+    ])
+    def test_each_native_limit_maps_into_one_exact_envelope(changed, expected, binding):
+        f = fixture(); f["params"].update(changed)
+>       b = dict(budget(f))
+                 ^^^^^^^^^
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:97: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = {'contexts': (CandidateStructureContextV1(context_id='candidate', version=1, candidate_identity='managed', leg_contrac...ce_timestamp_raw=None, metadata=(('account_identity', 'account'), ('currency', 'USD'), ('canonical_units', 'USD'))),)}}
+
+    def budget(f):
+        result = ev("D175", f)
+        assert result is not None, "approved reference-calibrated limit is absent"
+>       assert type(result.value) is tuple, "D175 still returns a shortcut scalar, not exact limits"
+E       AssertionError: D175 still returns a shortcut scalar, not exact limits
+E       assert <class 'decimal.Decimal'> is tuple
+E        +  where <class 'decimal.Decimal'> = type(Decimal('200'))
+E        +    where Decimal('200') = KernelResultV1(value=Decimal('200'), units='currency / percent', result_shape='scalar', input_occurrence_ids=('D162', 'D174', 'R205', 'R206', 'R208', 'R209')).value
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:84: AssertionError
+___ test_each_native_limit_maps_into_one_exact_envelope[changed2-500-stress] ___
+
+changed = {'stress_fraction': Decimal('0.02')}, expected = 500
+binding = 'stress'
+
+    @pytest.mark.parametrize("changed,expected,binding", [
+        ({}, 1000, "capital"), ({"tail_fraction": D(".01")}, 500, "tail"),
+        ({"stress_fraction": D(".02")}, 500, "stress"),
+        ({"concentration_fraction": D(".04")}, 400, "concentration"),
+        ({"liquidity_fraction": D(".1")}, 250, "liquidity"),
+        ({"capital_fraction": D(0)}, 0, "capital"),
+    ])
+    def test_each_native_limit_maps_into_one_exact_envelope(changed, expected, binding):
+        f = fixture(); f["params"].update(changed)
+>       b = dict(budget(f))
+                 ^^^^^^^^^
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:97: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = {'contexts': (CandidateStructureContextV1(context_id='candidate', version=1, candidate_identity='managed', leg_contrac...ce_timestamp_raw=None, metadata=(('account_identity', 'account'), ('currency', 'USD'), ('canonical_units', 'USD'))),)}}
+
+    def budget(f):
+        result = ev("D175", f)
+        assert result is not None, "approved reference-calibrated limit is absent"
+>       assert type(result.value) is tuple, "D175 still returns a shortcut scalar, not exact limits"
+E       AssertionError: D175 still returns a shortcut scalar, not exact limits
+E       assert <class 'decimal.Decimal'> is tuple
+E        +  where <class 'decimal.Decimal'> = type(Decimal('200'))
+E        +    where Decimal('200') = KernelResultV1(value=Decimal('200'), units='currency / percent', result_shape='scalar', input_occurrence_ids=('D162', 'D174', 'R205', 'R206', 'R208', 'R209')).value
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:84: AssertionError
+_ test_each_native_limit_maps_into_one_exact_envelope[changed3-400-concentration] _
+
+changed = {'concentration_fraction': Decimal('0.04')}, expected = 400
+binding = 'concentration'
+
+    @pytest.mark.parametrize("changed,expected,binding", [
+        ({}, 1000, "capital"), ({"tail_fraction": D(".01")}, 500, "tail"),
+        ({"stress_fraction": D(".02")}, 500, "stress"),
+        ({"concentration_fraction": D(".04")}, 400, "concentration"),
+        ({"liquidity_fraction": D(".1")}, 250, "liquidity"),
+        ({"capital_fraction": D(0)}, 0, "capital"),
+    ])
+    def test_each_native_limit_maps_into_one_exact_envelope(changed, expected, binding):
+        f = fixture(); f["params"].update(changed)
+>       b = dict(budget(f))
+                 ^^^^^^^^^
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:97: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = {'contexts': (CandidateStructureContextV1(context_id='candidate', version=1, candidate_identity='managed', leg_contrac...ce_timestamp_raw=None, metadata=(('account_identity', 'account'), ('currency', 'USD'), ('canonical_units', 'USD'))),)}}
+
+    def budget(f):
+        result = ev("D175", f)
+        assert result is not None, "approved reference-calibrated limit is absent"
+>       assert type(result.value) is tuple, "D175 still returns a shortcut scalar, not exact limits"
+E       AssertionError: D175 still returns a shortcut scalar, not exact limits
+E       assert <class 'decimal.Decimal'> is tuple
+E        +  where <class 'decimal.Decimal'> = type(Decimal('200'))
+E        +    where Decimal('200') = KernelResultV1(value=Decimal('200'), units='currency / percent', result_shape='scalar', input_occurrence_ids=('D162', 'D174', 'R205', 'R206', 'R208', 'R209')).value
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:84: AssertionError
+_ test_each_native_limit_maps_into_one_exact_envelope[changed4-250-liquidity] __
+
+changed = {'liquidity_fraction': Decimal('0.1')}, expected = 250
+binding = 'liquidity'
+
+    @pytest.mark.parametrize("changed,expected,binding", [
+        ({}, 1000, "capital"), ({"tail_fraction": D(".01")}, 500, "tail"),
+        ({"stress_fraction": D(".02")}, 500, "stress"),
+        ({"concentration_fraction": D(".04")}, 400, "concentration"),
+        ({"liquidity_fraction": D(".1")}, 250, "liquidity"),
+        ({"capital_fraction": D(0)}, 0, "capital"),
+    ])
+    def test_each_native_limit_maps_into_one_exact_envelope(changed, expected, binding):
+        f = fixture(); f["params"].update(changed)
+>       b = dict(budget(f))
+                 ^^^^^^^^^
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:97: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = {'contexts': (CandidateStructureContextV1(context_id='candidate', version=1, candidate_identity='managed', leg_contrac...ce_timestamp_raw=None, metadata=(('account_identity', 'account'), ('currency', 'USD'), ('canonical_units', 'USD'))),)}}
+
+    def budget(f):
+        result = ev("D175", f)
+        assert result is not None, "approved reference-calibrated limit is absent"
+>       assert type(result.value) is tuple, "D175 still returns a shortcut scalar, not exact limits"
+E       AssertionError: D175 still returns a shortcut scalar, not exact limits
+E       assert <class 'decimal.Decimal'> is tuple
+E        +  where <class 'decimal.Decimal'> = type(Decimal('200'))
+E        +    where Decimal('200') = KernelResultV1(value=Decimal('200'), units='currency / percent', result_shape='scalar', input_occurrence_ids=('D162', 'D174', 'R205', 'R206', 'R208', 'R209')).value
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:84: AssertionError
+___ test_each_native_limit_maps_into_one_exact_envelope[changed5-0-capital] ____
+
+changed = {'capital_fraction': Decimal('0')}, expected = 0, binding = 'capital'
+
+    @pytest.mark.parametrize("changed,expected,binding", [
+        ({}, 1000, "capital"), ({"tail_fraction": D(".01")}, 500, "tail"),
+        ({"stress_fraction": D(".02")}, 500, "stress"),
+        ({"concentration_fraction": D(".04")}, 400, "concentration"),
+        ({"liquidity_fraction": D(".1")}, 250, "liquidity"),
+        ({"capital_fraction": D(0)}, 0, "capital"),
+    ])
+    def test_each_native_limit_maps_into_one_exact_envelope(changed, expected, binding):
+        f = fixture(); f["params"].update(changed)
+>       b = dict(budget(f))
+                 ^^^^^^^^^
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:97: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = {'contexts': (CandidateStructureContextV1(context_id='candidate', version=1, candidate_identity='managed', leg_contrac...ce_timestamp_raw=None, metadata=(('account_identity', 'account'), ('currency', 'USD'), ('canonical_units', 'USD'))),)}}
+
+    def budget(f):
+        result = ev("D175", f)
+        assert result is not None, "approved reference-calibrated limit is absent"
+>       assert type(result.value) is tuple, "D175 still returns a shortcut scalar, not exact limits"
+E       AssertionError: D175 still returns a shortcut scalar, not exact limits
+E       assert <class 'decimal.Decimal'> is tuple
+E        +  where <class 'decimal.Decimal'> = type(Decimal('200'))
+E        +    where Decimal('200') = KernelResultV1(value=Decimal('200'), units='currency / percent', result_shape='scalar', input_occurrence_ids=('D162', 'D174', 'R205', 'R206', 'R208', 'R209')).value
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:84: AssertionError
+_________ test_negative_capacity_is_zero_not_absolute_value[R206--10] __________
+
+identity = 'R206', value = -10
+
+    @pytest.mark.parametrize("identity,value", [("R206", -10), ("R209", -1), ("R208", 12000)])
+    def test_negative_capacity_is_zero_not_absolute_value(identity, value):
+        f = fixture(); old = f["raw"][identity][0]
+        f["raw"][identity] = (kv(identity, D(value), old.subject_instrument, **dict(old.metadata)),)
+>       assert dict(budget(f))["maximum_currency_exact"] == (0, 1)
+                    ^^^^^^^^^
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:107: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = {'contexts': (CandidateStructureContextV1(context_id='candidate', version=1, candidate_identity='managed', leg_contrac...ce_timestamp_raw=None, metadata=(('account_identity', 'account'), ('currency', 'USD'), ('canonical_units', 'USD'))),)}}
+
+    def budget(f):
+        result = ev("D175", f)
+        assert result is not None, "approved reference-calibrated limit is absent"
+>       assert type(result.value) is tuple, "D175 still returns a shortcut scalar, not exact limits"
+E       AssertionError: D175 still returns a shortcut scalar, not exact limits
+E       assert <class 'decimal.Decimal'> is tuple
+E        +  where <class 'decimal.Decimal'> = type(Decimal('10'))
+E        +    where Decimal('10') = KernelResultV1(value=Decimal('10'), units='currency / percent', result_shape='scalar', input_occurrence_ids=('D162', 'D174', 'R205', 'R206', 'R208', 'R209')).value
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:84: AssertionError
+__________ test_negative_capacity_is_zero_not_absolute_value[R209--1] __________
+
+identity = 'R209', value = -1
+
+    @pytest.mark.parametrize("identity,value", [("R206", -10), ("R209", -1), ("R208", 12000)])
+    def test_negative_capacity_is_zero_not_absolute_value(identity, value):
+        f = fixture(); old = f["raw"][identity][0]
+        f["raw"][identity] = (kv(identity, D(value), old.subject_instrument, **dict(old.metadata)),)
+>       assert dict(budget(f))["maximum_currency_exact"] == (0, 1)
+                    ^^^^^^^^^
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:107: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = {'contexts': (CandidateStructureContextV1(context_id='candidate', version=1, candidate_identity='managed', leg_contrac...ce_timestamp_raw=None, metadata=(('account_identity', 'account'), ('currency', 'USD'), ('canonical_units', 'USD'))),)}}
+
+    def budget(f):
+        result = ev("D175", f)
+        assert result is not None, "approved reference-calibrated limit is absent"
+>       assert type(result.value) is tuple, "D175 still returns a shortcut scalar, not exact limits"
+E       AssertionError: D175 still returns a shortcut scalar, not exact limits
+E       assert <class 'decimal.Decimal'> is tuple
+E        +  where <class 'decimal.Decimal'> = type(Decimal('1'))
+E        +    where Decimal('1') = KernelResultV1(value=Decimal('1'), units='currency / percent', result_shape='scalar', input_occurrence_ids=('D162', 'D174', 'R205', 'R206', 'R208', 'R209')).value
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:84: AssertionError
+________ test_negative_capacity_is_zero_not_absolute_value[R208-12000] _________
+
+identity = 'R208', value = 12000
+
+    @pytest.mark.parametrize("identity,value", [("R206", -10), ("R209", -1), ("R208", 12000)])
+    def test_negative_capacity_is_zero_not_absolute_value(identity, value):
+        f = fixture(); old = f["raw"][identity][0]
+        f["raw"][identity] = (kv(identity, D(value), old.subject_instrument, **dict(old.metadata)),)
+>       assert dict(budget(f))["maximum_currency_exact"] == (0, 1)
+                    ^^^^^^^^^
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:107: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = {'contexts': (CandidateStructureContextV1(context_id='candidate', version=1, candidate_identity='managed', leg_contrac...ce_timestamp_raw=None, metadata=(('account_identity', 'account'), ('currency', 'USD'), ('canonical_units', 'USD'))),)}}
+
+    def budget(f):
+        result = ev("D175", f)
+        assert result is not None, "approved reference-calibrated limit is absent"
+>       assert type(result.value) is tuple, "D175 still returns a shortcut scalar, not exact limits"
+E       AssertionError: D175 still returns a shortcut scalar, not exact limits
+E       assert <class 'decimal.Decimal'> is tuple
+E        +  where <class 'decimal.Decimal'> = type(Decimal('200'))
+E        +    where Decimal('200') = KernelResultV1(value=Decimal('200'), units='currency / percent', result_shape='scalar', input_occurrence_ids=('D162', 'D174', 'R205', 'R206', 'R208', 'R209')).value
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:84: AssertionError
+_______ test_zero_native_losses_are_nonbinding_and_inactive_is_distinct ________
+
+    def test_zero_native_losses_are_nonbinding_and_inactive_is_distinct():
+        f = fixture()
+        tail = dict(f["derived"]["D162"][0].value);tail["CVaR_currency"] = D(-20)
+        f["derived"]["D162"] = (kv("D162", tuple(tail.items())),)
+        matrix = dict(f["derived"]["D174"][0].value)
+        matrix["gross_scenario_PnL"] = (("down", D(0)), ("up", D(100)))
+        f["derived"]["D174"] = (kv("D174", tuple(matrix.items())),)
+>       b = dict(budget(f));records = dict(b["active_limit_records"])
+                 ^^^^^^^^^
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:117: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = {'contexts': (CandidateStructureContextV1(context_id='candidate', version=1, candidate_identity='managed', leg_contrac...ce_timestamp_raw=None, metadata=(('account_identity', 'account'), ('currency', 'USD'), ('canonical_units', 'USD'))),)}}
+
+    def budget(f):
+        result = ev("D175", f)
+        assert result is not None, "approved reference-calibrated limit is absent"
+>       assert type(result.value) is tuple, "D175 still returns a shortcut scalar, not exact limits"
+E       AssertionError: D175 still returns a shortcut scalar, not exact limits
+E       assert <class 'decimal.Decimal'> is tuple
+E        +  where <class 'decimal.Decimal'> = type(Decimal('20'))
+E        +    where Decimal('20') = KernelResultV1(value=Decimal('20'), units='currency / percent', result_shape='scalar', input_occurrence_ids=('D162', 'D174', 'R205', 'R206', 'R208', 'R209')).value
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:84: AssertionError
+_________________ test_policy_contract_refusals[missing_flag] __________________
+
+change = 'missing_flag'
+
+    @pytest.mark.parametrize("change", ["missing_flag", "bad_fraction", "wrong_account", "wrong_currency",
+        "wrong_matrix", "wrong_scenarios", "missing_predecessor", "incomplete_members", "zero_coordinate"])
+    def test_policy_contract_refusals(change):
+        f = fixture()
+        if change == "missing_flag": del f["params"]["tail_active"]
+        elif change == "bad_fraction": f["params"]["capital_fraction"] = D("1.01")
+        elif change in {"wrong_account", "wrong_currency"}:
+            metadata = dict(f["raw"]["R205"][0].metadata)
+            metadata["account_identity" if change == "wrong_account" else "currency"] = "wrong"
+            f["raw"]["R205"] = (kv("R205", D(10000), "account-subject", **metadata),)
+        elif change in {"wrong_matrix", "wrong_scenarios"}:
+            tail = dict(f["derived"]["D162"][0].value)
+            tail["d174_occurrence_id" if change == "wrong_matrix" else "scenario_ids"] = "wrong"
+            f["derived"]["D162"] = (kv("D162", tuple(tail.items())),)
+        elif change == "missing_predecessor": del f["derived"]["D162"]
+        elif change == "incomplete_members": f["contexts"] = f["contexts"][:-1]
+        elif change == "zero_coordinate": f = fixture((D(0),) * 4)
+>       assert ev("D175", f) is None
+E       AssertionError: assert KernelResultV1(value=Decimal('200'), units='currency / percent', result_shape='scalar', input_occurrence_ids=('D162', 'D174', 'R205', 'R206', 'R208', 'R209')) is None
+E        +  where KernelResultV1(value=Decimal('200'), units='currency / percent', result_shape='scalar', input_occurrence_ids=('D162', 'D174', 'R205', 'R206', 'R208', 'R209')) = ev('D175', {'contexts': (CandidateStructureContextV1(context_id='candidate', version=1, candidate_identity='managed', leg_contrac...ce_timestamp_raw=None, metadata=(('account_identity', 'account'), ('currency', 'USD'), ('canonical_units', 'USD'))),)}})
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:141: AssertionError
+_________________ test_policy_contract_refusals[bad_fraction] __________________
+
+change = 'bad_fraction'
+
+    @pytest.mark.parametrize("change", ["missing_flag", "bad_fraction", "wrong_account", "wrong_currency",
+        "wrong_matrix", "wrong_scenarios", "missing_predecessor", "incomplete_members", "zero_coordinate"])
+    def test_policy_contract_refusals(change):
+        f = fixture()
+        if change == "missing_flag": del f["params"]["tail_active"]
+        elif change == "bad_fraction": f["params"]["capital_fraction"] = D("1.01")
+        elif change in {"wrong_account", "wrong_currency"}:
+            metadata = dict(f["raw"]["R205"][0].metadata)
+            metadata["account_identity" if change == "wrong_account" else "currency"] = "wrong"
+            f["raw"]["R205"] = (kv("R205", D(10000), "account-subject", **metadata),)
+        elif change in {"wrong_matrix", "wrong_scenarios"}:
+            tail = dict(f["derived"]["D162"][0].value)
+            tail["d174_occurrence_id" if change == "wrong_matrix" else "scenario_ids"] = "wrong"
+            f["derived"]["D162"] = (kv("D162", tuple(tail.items())),)
+        elif change == "missing_predecessor": del f["derived"]["D162"]
+        elif change == "incomplete_members": f["contexts"] = f["contexts"][:-1]
+        elif change == "zero_coordinate": f = fixture((D(0),) * 4)
+>       assert ev("D175", f) is None
+E       AssertionError: assert KernelResultV1(value=Decimal('200'), units='currency / percent', result_shape='scalar', input_occurrence_ids=('D162', 'D174', 'R205', 'R206', 'R208', 'R209')) is None
+E        +  where KernelResultV1(value=Decimal('200'), units='currency / percent', result_shape='scalar', input_occurrence_ids=('D162', 'D174', 'R205', 'R206', 'R208', 'R209')) = ev('D175', {'contexts': (CandidateStructureContextV1(context_id='candidate', version=1, candidate_identity='managed', leg_contrac...ce_timestamp_raw=None, metadata=(('account_identity', 'account'), ('currency', 'USD'), ('canonical_units', 'USD'))),)}})
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:141: AssertionError
+_________________ test_policy_contract_refusals[wrong_account] _________________
+
+change = 'wrong_account'
+
+    @pytest.mark.parametrize("change", ["missing_flag", "bad_fraction", "wrong_account", "wrong_currency",
+        "wrong_matrix", "wrong_scenarios", "missing_predecessor", "incomplete_members", "zero_coordinate"])
+    def test_policy_contract_refusals(change):
+        f = fixture()
+        if change == "missing_flag": del f["params"]["tail_active"]
+        elif change == "bad_fraction": f["params"]["capital_fraction"] = D("1.01")
+        elif change in {"wrong_account", "wrong_currency"}:
+            metadata = dict(f["raw"]["R205"][0].metadata)
+            metadata["account_identity" if change == "wrong_account" else "currency"] = "wrong"
+            f["raw"]["R205"] = (kv("R205", D(10000), "account-subject", **metadata),)
+        elif change in {"wrong_matrix", "wrong_scenarios"}:
+            tail = dict(f["derived"]["D162"][0].value)
+            tail["d174_occurrence_id" if change == "wrong_matrix" else "scenario_ids"] = "wrong"
+            f["derived"]["D162"] = (kv("D162", tuple(tail.items())),)
+        elif change == "missing_predecessor": del f["derived"]["D162"]
+        elif change == "incomplete_members": f["contexts"] = f["contexts"][:-1]
+        elif change == "zero_coordinate": f = fixture((D(0),) * 4)
+>       assert ev("D175", f) is None
+E       AssertionError: assert KernelResultV1(value=Decimal('200'), units='currency / percent', result_shape='scalar', input_occurrence_ids=('D162', 'D174', 'R205', 'R206', 'R208', 'R209')) is None
+E        +  where KernelResultV1(value=Decimal('200'), units='currency / percent', result_shape='scalar', input_occurrence_ids=('D162', 'D174', 'R205', 'R206', 'R208', 'R209')) = ev('D175', {'contexts': (CandidateStructureContextV1(context_id='candidate', version=1, candidate_identity='managed', leg_contrac...ce_timestamp_raw=None, metadata=(('account_identity', 'account'), ('currency', 'USD'), ('canonical_units', 'USD'))),)}})
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:141: AssertionError
+________________ test_policy_contract_refusals[wrong_currency] _________________
+
+change = 'wrong_currency'
+
+    @pytest.mark.parametrize("change", ["missing_flag", "bad_fraction", "wrong_account", "wrong_currency",
+        "wrong_matrix", "wrong_scenarios", "missing_predecessor", "incomplete_members", "zero_coordinate"])
+    def test_policy_contract_refusals(change):
+        f = fixture()
+        if change == "missing_flag": del f["params"]["tail_active"]
+        elif change == "bad_fraction": f["params"]["capital_fraction"] = D("1.01")
+        elif change in {"wrong_account", "wrong_currency"}:
+            metadata = dict(f["raw"]["R205"][0].metadata)
+            metadata["account_identity" if change == "wrong_account" else "currency"] = "wrong"
+            f["raw"]["R205"] = (kv("R205", D(10000), "account-subject", **metadata),)
+        elif change in {"wrong_matrix", "wrong_scenarios"}:
+            tail = dict(f["derived"]["D162"][0].value)
+            tail["d174_occurrence_id" if change == "wrong_matrix" else "scenario_ids"] = "wrong"
+            f["derived"]["D162"] = (kv("D162", tuple(tail.items())),)
+        elif change == "missing_predecessor": del f["derived"]["D162"]
+        elif change == "incomplete_members": f["contexts"] = f["contexts"][:-1]
+        elif change == "zero_coordinate": f = fixture((D(0),) * 4)
+>       assert ev("D175", f) is None
+E       AssertionError: assert KernelResultV1(value=Decimal('200'), units='currency / percent', result_shape='scalar', input_occurrence_ids=('D162', 'D174', 'R205', 'R206', 'R208', 'R209')) is None
+E        +  where KernelResultV1(value=Decimal('200'), units='currency / percent', result_shape='scalar', input_occurrence_ids=('D162', 'D174', 'R205', 'R206', 'R208', 'R209')) = ev('D175', {'contexts': (CandidateStructureContextV1(context_id='candidate', version=1, candidate_identity='managed', leg_contrac...ce_timestamp_raw=None, metadata=(('account_identity', 'account'), ('currency', 'USD'), ('canonical_units', 'USD'))),)}})
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:141: AssertionError
+_________________ test_policy_contract_refusals[wrong_matrix] __________________
+
+change = 'wrong_matrix'
+
+    @pytest.mark.parametrize("change", ["missing_flag", "bad_fraction", "wrong_account", "wrong_currency",
+        "wrong_matrix", "wrong_scenarios", "missing_predecessor", "incomplete_members", "zero_coordinate"])
+    def test_policy_contract_refusals(change):
+        f = fixture()
+        if change == "missing_flag": del f["params"]["tail_active"]
+        elif change == "bad_fraction": f["params"]["capital_fraction"] = D("1.01")
+        elif change in {"wrong_account", "wrong_currency"}:
+            metadata = dict(f["raw"]["R205"][0].metadata)
+            metadata["account_identity" if change == "wrong_account" else "currency"] = "wrong"
+            f["raw"]["R205"] = (kv("R205", D(10000), "account-subject", **metadata),)
+        elif change in {"wrong_matrix", "wrong_scenarios"}:
+            tail = dict(f["derived"]["D162"][0].value)
+            tail["d174_occurrence_id" if change == "wrong_matrix" else "scenario_ids"] = "wrong"
+            f["derived"]["D162"] = (kv("D162", tuple(tail.items())),)
+        elif change == "missing_predecessor": del f["derived"]["D162"]
+        elif change == "incomplete_members": f["contexts"] = f["contexts"][:-1]
+        elif change == "zero_coordinate": f = fixture((D(0),) * 4)
+>       assert ev("D175", f) is None
+E       AssertionError: assert KernelResultV1(value=Decimal('200'), units='currency / percent', result_shape='scalar', input_occurrence_ids=('D162', 'D174', 'R205', 'R206', 'R208', 'R209')) is None
+E        +  where KernelResultV1(value=Decimal('200'), units='currency / percent', result_shape='scalar', input_occurrence_ids=('D162', 'D174', 'R205', 'R206', 'R208', 'R209')) = ev('D175', {'contexts': (CandidateStructureContextV1(context_id='candidate', version=1, candidate_identity='managed', leg_contrac...ce_timestamp_raw=None, metadata=(('account_identity', 'account'), ('currency', 'USD'), ('canonical_units', 'USD'))),)}})
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:141: AssertionError
+________________ test_policy_contract_refusals[wrong_scenarios] ________________
+
+change = 'wrong_scenarios'
+
+    @pytest.mark.parametrize("change", ["missing_flag", "bad_fraction", "wrong_account", "wrong_currency",
+        "wrong_matrix", "wrong_scenarios", "missing_predecessor", "incomplete_members", "zero_coordinate"])
+    def test_policy_contract_refusals(change):
+        f = fixture()
+        if change == "missing_flag": del f["params"]["tail_active"]
+        elif change == "bad_fraction": f["params"]["capital_fraction"] = D("1.01")
+        elif change in {"wrong_account", "wrong_currency"}:
+            metadata = dict(f["raw"]["R205"][0].metadata)
+            metadata["account_identity" if change == "wrong_account" else "currency"] = "wrong"
+            f["raw"]["R205"] = (kv("R205", D(10000), "account-subject", **metadata),)
+        elif change in {"wrong_matrix", "wrong_scenarios"}:
+            tail = dict(f["derived"]["D162"][0].value)
+            tail["d174_occurrence_id" if change == "wrong_matrix" else "scenario_ids"] = "wrong"
+            f["derived"]["D162"] = (kv("D162", tuple(tail.items())),)
+        elif change == "missing_predecessor": del f["derived"]["D162"]
+        elif change == "incomplete_members": f["contexts"] = f["contexts"][:-1]
+        elif change == "zero_coordinate": f = fixture((D(0),) * 4)
+>       assert ev("D175", f) is None
+E       AssertionError: assert KernelResultV1(value=Decimal('200'), units='currency / percent', result_shape='scalar', input_occurrence_ids=('D162', 'D174', 'R205', 'R206', 'R208', 'R209')) is None
+E        +  where KernelResultV1(value=Decimal('200'), units='currency / percent', result_shape='scalar', input_occurrence_ids=('D162', 'D174', 'R205', 'R206', 'R208', 'R209')) = ev('D175', {'contexts': (CandidateStructureContextV1(context_id='candidate', version=1, candidate_identity='managed', leg_contrac...ce_timestamp_raw=None, metadata=(('account_identity', 'account'), ('currency', 'USD'), ('canonical_units', 'USD'))),)}})
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:141: AssertionError
+______________ test_policy_contract_refusals[missing_predecessor] ______________
+
+change = 'missing_predecessor'
+
+    @pytest.mark.parametrize("change", ["missing_flag", "bad_fraction", "wrong_account", "wrong_currency",
+        "wrong_matrix", "wrong_scenarios", "missing_predecessor", "incomplete_members", "zero_coordinate"])
+    def test_policy_contract_refusals(change):
+        f = fixture()
+        if change == "missing_flag": del f["params"]["tail_active"]
+        elif change == "bad_fraction": f["params"]["capital_fraction"] = D("1.01")
+        elif change in {"wrong_account", "wrong_currency"}:
+            metadata = dict(f["raw"]["R205"][0].metadata)
+            metadata["account_identity" if change == "wrong_account" else "currency"] = "wrong"
+            f["raw"]["R205"] = (kv("R205", D(10000), "account-subject", **metadata),)
+        elif change in {"wrong_matrix", "wrong_scenarios"}:
+            tail = dict(f["derived"]["D162"][0].value)
+            tail["d174_occurrence_id" if change == "wrong_matrix" else "scenario_ids"] = "wrong"
+            f["derived"]["D162"] = (kv("D162", tuple(tail.items())),)
+        elif change == "missing_predecessor": del f["derived"]["D162"]
+        elif change == "incomplete_members": f["contexts"] = f["contexts"][:-1]
+        elif change == "zero_coordinate": f = fixture((D(0),) * 4)
+>       assert ev("D175", f) is None
+E       AssertionError: assert KernelResultV1(value=Decimal('1000'), units='currency / percent', result_shape='scalar', input_occurrence_ids=('D174', 'R205', 'R206', 'R208', 'R209')) is None
+E        +  where KernelResultV1(value=Decimal('1000'), units='currency / percent', result_shape='scalar', input_occurrence_ids=('D174', 'R205', 'R206', 'R208', 'R209')) = ev('D175', {'contexts': (CandidateStructureContextV1(context_id='candidate', version=1, candidate_identity='managed', leg_contrac...ce_timestamp_raw=None, metadata=(('account_identity', 'account'), ('currency', 'USD'), ('canonical_units', 'USD'))),)}})
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:141: AssertionError
+______________ test_policy_contract_refusals[incomplete_members] _______________
+
+change = 'incomplete_members'
+
+    @pytest.mark.parametrize("change", ["missing_flag", "bad_fraction", "wrong_account", "wrong_currency",
+        "wrong_matrix", "wrong_scenarios", "missing_predecessor", "incomplete_members", "zero_coordinate"])
+    def test_policy_contract_refusals(change):
+        f = fixture()
+        if change == "missing_flag": del f["params"]["tail_active"]
+        elif change == "bad_fraction": f["params"]["capital_fraction"] = D("1.01")
+        elif change in {"wrong_account", "wrong_currency"}:
+            metadata = dict(f["raw"]["R205"][0].metadata)
+            metadata["account_identity" if change == "wrong_account" else "currency"] = "wrong"
+            f["raw"]["R205"] = (kv("R205", D(10000), "account-subject", **metadata),)
+        elif change in {"wrong_matrix", "wrong_scenarios"}:
+            tail = dict(f["derived"]["D162"][0].value)
+            tail["d174_occurrence_id" if change == "wrong_matrix" else "scenario_ids"] = "wrong"
+            f["derived"]["D162"] = (kv("D162", tuple(tail.items())),)
+        elif change == "missing_predecessor": del f["derived"]["D162"]
+        elif change == "incomplete_members": f["contexts"] = f["contexts"][:-1]
+        elif change == "zero_coordinate": f = fixture((D(0),) * 4)
+>       assert ev("D175", f) is None
+E       AssertionError: assert KernelResultV1(value=Decimal('200'), units='currency / percent', result_shape='scalar', input_occurrence_ids=('D162', 'D174', 'R205', 'R206', 'R208', 'R209')) is None
+E        +  where KernelResultV1(value=Decimal('200'), units='currency / percent', result_shape='scalar', input_occurrence_ids=('D162', 'D174', 'R205', 'R206', 'R208', 'R209')) = ev('D175', {'contexts': (CandidateStructureContextV1(context_id='candidate', version=1, candidate_identity='managed', leg_contrac...ce_timestamp_raw=None, metadata=(('account_identity', 'account'), ('currency', 'USD'), ('canonical_units', 'USD'))),)}})
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:141: AssertionError
+________________ test_policy_contract_refusals[zero_coordinate] ________________
+
+change = 'zero_coordinate'
+
+    @pytest.mark.parametrize("change", ["missing_flag", "bad_fraction", "wrong_account", "wrong_currency",
+        "wrong_matrix", "wrong_scenarios", "missing_predecessor", "incomplete_members", "zero_coordinate"])
+    def test_policy_contract_refusals(change):
+        f = fixture()
+        if change == "missing_flag": del f["params"]["tail_active"]
+        elif change == "bad_fraction": f["params"]["capital_fraction"] = D("1.01")
+        elif change in {"wrong_account", "wrong_currency"}:
+            metadata = dict(f["raw"]["R205"][0].metadata)
+            metadata["account_identity" if change == "wrong_account" else "currency"] = "wrong"
+            f["raw"]["R205"] = (kv("R205", D(10000), "account-subject", **metadata),)
+        elif change in {"wrong_matrix", "wrong_scenarios"}:
+            tail = dict(f["derived"]["D162"][0].value)
+            tail["d174_occurrence_id" if change == "wrong_matrix" else "scenario_ids"] = "wrong"
+            f["derived"]["D162"] = (kv("D162", tuple(tail.items())),)
+        elif change == "missing_predecessor": del f["derived"]["D162"]
+        elif change == "incomplete_members": f["contexts"] = f["contexts"][:-1]
+        elif change == "zero_coordinate": f = fixture((D(0),) * 4)
+>       assert ev("D175", f) is None
+E       AssertionError: assert KernelResultV1(value=Decimal('200'), units='currency / percent', result_shape='scalar', input_occurrence_ids=('D162', 'D174', 'R205', 'R206', 'R208', 'R209')) is None
+E        +  where KernelResultV1(value=Decimal('200'), units='currency / percent', result_shape='scalar', input_occurrence_ids=('D162', 'D174', 'R205', 'R206', 'R208', 'R209')) = ev('D175', {'contexts': (CandidateStructureContextV1(context_id='candidate', version=1, candidate_identity='managed', leg_contrac...ce_timestamp_raw=None, metadata=(('account_identity', 'account'), ('currency', 'USD'), ('canonical_units', 'USD'))),)}})
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:141: AssertionError
+_______ test_four_greeks_share_one_budget_and_residual_does_not_increase _______
+
+    def test_four_greeks_share_one_budget_and_residual_does_not_increase():
+        f = fixture((D(600), D(200), D(200), D(100))); f["params"]["capital_fraction"] = D(".04")
+>       hf = hedge_fixture(f);result = ev("D189", hf)
+             ^^^^^^^^^^^^^^^^
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:157: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:145: in hedge_fixture
+    b = budget(f); ref = dict(b)["reference_greeks"]
+        ^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = {'contexts': (CandidateStructureContextV1(context_id='candidate', version=1, candidate_identity='managed', leg_contrac...ce_timestamp_raw=None, metadata=(('account_identity', 'account'), ('currency', 'USD'), ('canonical_units', 'USD'))),)}}
+
+    def budget(f):
+        result = ev("D175", f)
+        assert result is not None, "approved reference-calibrated limit is absent"
+>       assert type(result.value) is tuple, "D175 still returns a shortcut scalar, not exact limits"
+E       AssertionError: D175 still returns a shortcut scalar, not exact limits
+E       assert <class 'decimal.Decimal'> is tuple
+E        +  where <class 'decimal.Decimal'> = type(Decimal('200'))
+E        +    where Decimal('200') = KernelResultV1(value=Decimal('200'), units='currency / percent', result_shape='scalar', input_occurrence_ids=('D162', 'D174', 'R205', 'R206', 'R208', 'R209')).value
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:84: AssertionError
+_______________________ test_theta_only_and_zero_budget ________________________
+
+    def test_theta_only_and_zero_budget():
+        f = fixture((D(0), D(0), D(0), D(1000)))
+>       result = ev("D189", hedge_fixture(f));assert result is not None
+                            ^^^^^^^^^^^^^^^^
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:169: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:145: in hedge_fixture
+    b = budget(f); ref = dict(b)["reference_greeks"]
+        ^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = {'contexts': (CandidateStructureContextV1(context_id='candidate', version=1, candidate_identity='managed', leg_contrac...ce_timestamp_raw=None, metadata=(('account_identity', 'account'), ('currency', 'USD'), ('canonical_units', 'USD'))),)}}
+
+    def budget(f):
+        result = ev("D175", f)
+        assert result is not None, "approved reference-calibrated limit is absent"
+>       assert type(result.value) is tuple, "D175 still returns a shortcut scalar, not exact limits"
+E       AssertionError: D175 still returns a shortcut scalar, not exact limits
+E       assert <class 'decimal.Decimal'> is tuple
+E        +  where <class 'decimal.Decimal'> = type(Decimal('200'))
+E        +    where Decimal('200') = KernelResultV1(value=Decimal('200'), units='currency / percent', result_shape='scalar', input_occurrence_ids=('D162', 'D174', 'R205', 'R206', 'R208', 'R209')).value
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:84: AssertionError
+_____________ test_missing_duplicate_reversed_bands_refuse[bands0] _____________
+
+bands = ('delta|0|0',)
+
+    @pytest.mark.parametrize("bands", [("delta|0|0",), tuple(name + "|2|1" for name in NAMES),
+        ("delta|0|0", "delta|0|0", "vega|0|0", "theta|0|0")])
+    def test_missing_duplicate_reversed_bands_refuse(bands):
+>       f = hedge_fixture(fixture()); f["params"]["target_bands"] = bands
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:179: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:145: in hedge_fixture
+    b = budget(f); ref = dict(b)["reference_greeks"]
+        ^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = {'contexts': (CandidateStructureContextV1(context_id='candidate', version=1, candidate_identity='managed', leg_contrac...ce_timestamp_raw=None, metadata=(('account_identity', 'account'), ('currency', 'USD'), ('canonical_units', 'USD'))),)}}
+
+    def budget(f):
+        result = ev("D175", f)
+        assert result is not None, "approved reference-calibrated limit is absent"
+>       assert type(result.value) is tuple, "D175 still returns a shortcut scalar, not exact limits"
+E       AssertionError: D175 still returns a shortcut scalar, not exact limits
+E       assert <class 'decimal.Decimal'> is tuple
+E        +  where <class 'decimal.Decimal'> = type(Decimal('200'))
+E        +    where Decimal('200') = KernelResultV1(value=Decimal('200'), units='currency / percent', result_shape='scalar', input_occurrence_ids=('D162', 'D174', 'R205', 'R206', 'R208', 'R209')).value
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:84: AssertionError
+_____________ test_missing_duplicate_reversed_bands_refuse[bands1] _____________
+
+bands = ('delta|2|1', 'gamma|2|1', 'vega|2|1', 'theta|2|1')
+
+    @pytest.mark.parametrize("bands", [("delta|0|0",), tuple(name + "|2|1" for name in NAMES),
+        ("delta|0|0", "delta|0|0", "vega|0|0", "theta|0|0")])
+    def test_missing_duplicate_reversed_bands_refuse(bands):
+>       f = hedge_fixture(fixture()); f["params"]["target_bands"] = bands
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:179: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:145: in hedge_fixture
+    b = budget(f); ref = dict(b)["reference_greeks"]
+        ^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = {'contexts': (CandidateStructureContextV1(context_id='candidate', version=1, candidate_identity='managed', leg_contrac...ce_timestamp_raw=None, metadata=(('account_identity', 'account'), ('currency', 'USD'), ('canonical_units', 'USD'))),)}}
+
+    def budget(f):
+        result = ev("D175", f)
+        assert result is not None, "approved reference-calibrated limit is absent"
+>       assert type(result.value) is tuple, "D175 still returns a shortcut scalar, not exact limits"
+E       AssertionError: D175 still returns a shortcut scalar, not exact limits
+E       assert <class 'decimal.Decimal'> is tuple
+E        +  where <class 'decimal.Decimal'> = type(Decimal('200'))
+E        +    where Decimal('200') = KernelResultV1(value=Decimal('200'), units='currency / percent', result_shape='scalar', input_occurrence_ids=('D162', 'D174', 'R205', 'R206', 'R208', 'R209')).value
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:84: AssertionError
+_____________ test_missing_duplicate_reversed_bands_refuse[bands2] _____________
+
+bands = ('delta|0|0', 'delta|0|0', 'vega|0|0', 'theta|0|0')
+
+    @pytest.mark.parametrize("bands", [("delta|0|0",), tuple(name + "|2|1" for name in NAMES),
+        ("delta|0|0", "delta|0|0", "vega|0|0", "theta|0|0")])
+    def test_missing_duplicate_reversed_bands_refuse(bands):
+>       f = hedge_fixture(fixture()); f["params"]["target_bands"] = bands
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:179: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:145: in hedge_fixture
+    b = budget(f); ref = dict(b)["reference_greeks"]
+        ^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = {'contexts': (CandidateStructureContextV1(context_id='candidate', version=1, candidate_identity='managed', leg_contrac...ce_timestamp_raw=None, metadata=(('account_identity', 'account'), ('currency', 'USD'), ('canonical_units', 'USD'))),)}}
+
+    def budget(f):
+        result = ev("D175", f)
+        assert result is not None, "approved reference-calibrated limit is absent"
+>       assert type(result.value) is tuple, "D175 still returns a shortcut scalar, not exact limits"
+E       AssertionError: D175 still returns a shortcut scalar, not exact limits
+E       assert <class 'decimal.Decimal'> is tuple
+E        +  where <class 'decimal.Decimal'> = type(Decimal('200'))
+E        +    where Decimal('200') = KernelResultV1(value=Decimal('200'), units='currency / percent', result_shape='scalar', input_occurrence_ids=('D162', 'D174', 'R205', 'R206', 'R208', 'R209')).value
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:84: AssertionError
+_____________ test_nonzero_hedge_is_not_proof_of_breach[.04-hold] ______________
+
+fraction = '.04', expected = 'hold'
+
+    @pytest.mark.parametrize("fraction,expected", [(".04", "hold"), (".03", "hold"), (".01", "hedge")])
+    def test_nonzero_hedge_is_not_proof_of_breach(fraction, expected):
+>       f = action_fixture(D(fraction));result = ev("D192", f)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:200: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:185: in action_fixture
+    hf = hedge_fixture(f);hedge = ev("D189", hf);assert hedge is not None
+         ^^^^^^^^^^^^^^^^
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:145: in hedge_fixture
+    b = budget(f); ref = dict(b)["reference_greeks"]
+        ^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = {'contexts': (CandidateStructureContextV1(context_id='candidate', version=1, candidate_identity='managed', leg_contrac...ce_timestamp_raw=None, metadata=(('account_identity', 'account'), ('currency', 'USD'), ('canonical_units', 'USD'))),)}}
+
+    def budget(f):
+        result = ev("D175", f)
+        assert result is not None, "approved reference-calibrated limit is absent"
+>       assert type(result.value) is tuple, "D175 still returns a shortcut scalar, not exact limits"
+E       AssertionError: D175 still returns a shortcut scalar, not exact limits
+E       assert <class 'decimal.Decimal'> is tuple
+E        +  where <class 'decimal.Decimal'> = type(Decimal('200'))
+E        +    where Decimal('200') = KernelResultV1(value=Decimal('200'), units='currency / percent', result_shape='scalar', input_occurrence_ids=('D162', 'D174', 'R205', 'R206', 'R208', 'R209')).value
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:84: AssertionError
+_____________ test_nonzero_hedge_is_not_proof_of_breach[.03-hold] ______________
+
+fraction = '.03', expected = 'hold'
+
+    @pytest.mark.parametrize("fraction,expected", [(".04", "hold"), (".03", "hold"), (".01", "hedge")])
+    def test_nonzero_hedge_is_not_proof_of_breach(fraction, expected):
+>       f = action_fixture(D(fraction));result = ev("D192", f)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:200: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:185: in action_fixture
+    hf = hedge_fixture(f);hedge = ev("D189", hf);assert hedge is not None
+         ^^^^^^^^^^^^^^^^
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:145: in hedge_fixture
+    b = budget(f); ref = dict(b)["reference_greeks"]
+        ^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = {'contexts': (CandidateStructureContextV1(context_id='candidate', version=1, candidate_identity='managed', leg_contrac...ce_timestamp_raw=None, metadata=(('account_identity', 'account'), ('currency', 'USD'), ('canonical_units', 'USD'))),)}}
+
+    def budget(f):
+        result = ev("D175", f)
+        assert result is not None, "approved reference-calibrated limit is absent"
+>       assert type(result.value) is tuple, "D175 still returns a shortcut scalar, not exact limits"
+E       AssertionError: D175 still returns a shortcut scalar, not exact limits
+E       assert <class 'decimal.Decimal'> is tuple
+E        +  where <class 'decimal.Decimal'> = type(Decimal('200'))
+E        +    where Decimal('200') = KernelResultV1(value=Decimal('200'), units='currency / percent', result_shape='scalar', input_occurrence_ids=('D162', 'D174', 'R205', 'R206', 'R208', 'R209')).value
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:84: AssertionError
+_____________ test_nonzero_hedge_is_not_proof_of_breach[.01-hedge] _____________
+
+fraction = '.01', expected = 'hedge'
+
+    @pytest.mark.parametrize("fraction,expected", [(".04", "hold"), (".03", "hold"), (".01", "hedge")])
+    def test_nonzero_hedge_is_not_proof_of_breach(fraction, expected):
+>       f = action_fixture(D(fraction));result = ev("D192", f)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:200: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:185: in action_fixture
+    hf = hedge_fixture(f);hedge = ev("D189", hf);assert hedge is not None
+         ^^^^^^^^^^^^^^^^
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:145: in hedge_fixture
+    b = budget(f); ref = dict(b)["reference_greeks"]
+        ^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = {'contexts': (CandidateStructureContextV1(context_id='candidate', version=1, candidate_identity='managed', leg_contrac...ce_timestamp_raw=None, metadata=(('account_identity', 'account'), ('currency', 'USD'), ('canonical_units', 'USD'))),)}}
+
+    def budget(f):
+        result = ev("D175", f)
+        assert result is not None, "approved reference-calibrated limit is absent"
+>       assert type(result.value) is tuple, "D175 still returns a shortcut scalar, not exact limits"
+E       AssertionError: D175 still returns a shortcut scalar, not exact limits
+E       assert <class 'decimal.Decimal'> is tuple
+E        +  where <class 'decimal.Decimal'> = type(Decimal('200'))
+E        +    where Decimal('200') = KernelResultV1(value=Decimal('200'), units='currency / percent', result_shape='scalar', input_occurrence_ids=('D162', 'D174', 'R205', 'R206', 'R208', 'R209')).value
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:84: AssertionError
+____________ test_mandatory_exit_precedes_breach_hedge_and_utility _____________
+
+    def test_mandatory_exit_precedes_breach_hedge_and_utility():
+>       f = action_fixture(D(".01"));f["derived"]["D187"] = (kv("D187", D(".9"), units="score"),)
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:205: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:185: in action_fixture
+    hf = hedge_fixture(f);hedge = ev("D189", hf);assert hedge is not None
+         ^^^^^^^^^^^^^^^^
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:145: in hedge_fixture
+    b = budget(f); ref = dict(b)["reference_greeks"]
+        ^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = {'contexts': (CandidateStructureContextV1(context_id='candidate', version=1, candidate_identity='managed', leg_contrac...ce_timestamp_raw=None, metadata=(('account_identity', 'account'), ('currency', 'USD'), ('canonical_units', 'USD'))),)}}
+
+    def budget(f):
+        result = ev("D175", f)
+        assert result is not None, "approved reference-calibrated limit is absent"
+>       assert type(result.value) is tuple, "D175 still returns a shortcut scalar, not exact limits"
+E       AssertionError: D175 still returns a shortcut scalar, not exact limits
+E       assert <class 'decimal.Decimal'> is tuple
+E        +  where <class 'decimal.Decimal'> = type(Decimal('200'))
+E        +    where Decimal('200') = KernelResultV1(value=Decimal('200'), units='currency / percent', result_shape='scalar', input_occurrence_ids=('D162', 'D174', 'R205', 'R206', 'R208', 'R209')).value
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:84: AssertionError
+_____ test_tampered_or_incomparable_action_evidence_refuses[other_budget] ______
+
+mutation = 'other_budget'
+
+    @pytest.mark.parametrize("mutation", ["other_budget", "false_current", "missing_hold_currency", "utility_domain"])
+    def test_tampered_or_incomparable_action_evidence_refuses(mutation):
+>       f = action_fixture()
+            ^^^^^^^^^^^^^^^^
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:213: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:185: in action_fixture
+    hf = hedge_fixture(f);hedge = ev("D189", hf);assert hedge is not None
+         ^^^^^^^^^^^^^^^^
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:145: in hedge_fixture
+    b = budget(f); ref = dict(b)["reference_greeks"]
+        ^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = {'contexts': (CandidateStructureContextV1(context_id='candidate', version=1, candidate_identity='managed', leg_contrac...ce_timestamp_raw=None, metadata=(('account_identity', 'account'), ('currency', 'USD'), ('canonical_units', 'USD'))),)}}
+
+    def budget(f):
+        result = ev("D175", f)
+        assert result is not None, "approved reference-calibrated limit is absent"
+>       assert type(result.value) is tuple, "D175 still returns a shortcut scalar, not exact limits"
+E       AssertionError: D175 still returns a shortcut scalar, not exact limits
+E       assert <class 'decimal.Decimal'> is tuple
+E        +  where <class 'decimal.Decimal'> = type(Decimal('200'))
+E        +    where Decimal('200') = KernelResultV1(value=Decimal('200'), units='currency / percent', result_shape='scalar', input_occurrence_ids=('D162', 'D174', 'R205', 'R206', 'R208', 'R209')).value
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:84: AssertionError
+_____ test_tampered_or_incomparable_action_evidence_refuses[false_current] _____
+
+mutation = 'false_current'
+
+    @pytest.mark.parametrize("mutation", ["other_budget", "false_current", "missing_hold_currency", "utility_domain"])
+    def test_tampered_or_incomparable_action_evidence_refuses(mutation):
+>       f = action_fixture()
+            ^^^^^^^^^^^^^^^^
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:213: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:185: in action_fixture
+    hf = hedge_fixture(f);hedge = ev("D189", hf);assert hedge is not None
+         ^^^^^^^^^^^^^^^^
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:145: in hedge_fixture
+    b = budget(f); ref = dict(b)["reference_greeks"]
+        ^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = {'contexts': (CandidateStructureContextV1(context_id='candidate', version=1, candidate_identity='managed', leg_contrac...ce_timestamp_raw=None, metadata=(('account_identity', 'account'), ('currency', 'USD'), ('canonical_units', 'USD'))),)}}
+
+    def budget(f):
+        result = ev("D175", f)
+        assert result is not None, "approved reference-calibrated limit is absent"
+>       assert type(result.value) is tuple, "D175 still returns a shortcut scalar, not exact limits"
+E       AssertionError: D175 still returns a shortcut scalar, not exact limits
+E       assert <class 'decimal.Decimal'> is tuple
+E        +  where <class 'decimal.Decimal'> = type(Decimal('200'))
+E        +    where Decimal('200') = KernelResultV1(value=Decimal('200'), units='currency / percent', result_shape='scalar', input_occurrence_ids=('D162', 'D174', 'R205', 'R206', 'R208', 'R209')).value
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:84: AssertionError
+_ test_tampered_or_incomparable_action_evidence_refuses[missing_hold_currency] _
+
+mutation = 'missing_hold_currency'
+
+    @pytest.mark.parametrize("mutation", ["other_budget", "false_current", "missing_hold_currency", "utility_domain"])
+    def test_tampered_or_incomparable_action_evidence_refuses(mutation):
+>       f = action_fixture()
+            ^^^^^^^^^^^^^^^^
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:213: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:185: in action_fixture
+    hf = hedge_fixture(f);hedge = ev("D189", hf);assert hedge is not None
+         ^^^^^^^^^^^^^^^^
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:145: in hedge_fixture
+    b = budget(f); ref = dict(b)["reference_greeks"]
+        ^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = {'contexts': (CandidateStructureContextV1(context_id='candidate', version=1, candidate_identity='managed', leg_contrac...ce_timestamp_raw=None, metadata=(('account_identity', 'account'), ('currency', 'USD'), ('canonical_units', 'USD'))),)}}
+
+    def budget(f):
+        result = ev("D175", f)
+        assert result is not None, "approved reference-calibrated limit is absent"
+>       assert type(result.value) is tuple, "D175 still returns a shortcut scalar, not exact limits"
+E       AssertionError: D175 still returns a shortcut scalar, not exact limits
+E       assert <class 'decimal.Decimal'> is tuple
+E        +  where <class 'decimal.Decimal'> = type(Decimal('200'))
+E        +    where Decimal('200') = KernelResultV1(value=Decimal('200'), units='currency / percent', result_shape='scalar', input_occurrence_ids=('D162', 'D174', 'R205', 'R206', 'R208', 'R209')).value
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:84: AssertionError
+____ test_tampered_or_incomparable_action_evidence_refuses[utility_domain] _____
+
+mutation = 'utility_domain'
+
+    @pytest.mark.parametrize("mutation", ["other_budget", "false_current", "missing_hold_currency", "utility_domain"])
+    def test_tampered_or_incomparable_action_evidence_refuses(mutation):
+>       f = action_fixture()
+            ^^^^^^^^^^^^^^^^
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:213: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:185: in action_fixture
+    hf = hedge_fixture(f);hedge = ev("D189", hf);assert hedge is not None
+         ^^^^^^^^^^^^^^^^
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:145: in hedge_fixture
+    b = budget(f); ref = dict(b)["reference_greeks"]
+        ^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = {'contexts': (CandidateStructureContextV1(context_id='candidate', version=1, candidate_identity='managed', leg_contrac...ce_timestamp_raw=None, metadata=(('account_identity', 'account'), ('currency', 'USD'), ('canonical_units', 'USD'))),)}}
+
+    def budget(f):
+        result = ev("D175", f)
+        assert result is not None, "approved reference-calibrated limit is absent"
+>       assert type(result.value) is tuple, "D175 still returns a shortcut scalar, not exact limits"
+E       AssertionError: D175 still returns a shortcut scalar, not exact limits
+E       assert <class 'decimal.Decimal'> is tuple
+E        +  where <class 'decimal.Decimal'> = type(Decimal('200'))
+E        +    where Decimal('200') = KernelResultV1(value=Decimal('200'), units='currency / percent', result_shape='scalar', input_occurrence_ids=('D162', 'D174', 'R205', 'R206', 'R208', 'R209')).value
+
+tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py:84: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py::test_each_native_limit_maps_into_one_exact_envelope[changed0-1000-capital]
+FAILED tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py::test_each_native_limit_maps_into_one_exact_envelope[changed1-500-tail]
+FAILED tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py::test_each_native_limit_maps_into_one_exact_envelope[changed2-500-stress]
+FAILED tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py::test_each_native_limit_maps_into_one_exact_envelope[changed3-400-concentration]
+FAILED tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py::test_each_native_limit_maps_into_one_exact_envelope[changed4-250-liquidity]
+FAILED tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py::test_each_native_limit_maps_into_one_exact_envelope[changed5-0-capital]
+FAILED tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py::test_negative_capacity_is_zero_not_absolute_value[R206--10]
+FAILED tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py::test_negative_capacity_is_zero_not_absolute_value[R209--1]
+FAILED tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py::test_negative_capacity_is_zero_not_absolute_value[R208-12000]
+FAILED tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py::test_zero_native_losses_are_nonbinding_and_inactive_is_distinct
+FAILED tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py::test_policy_contract_refusals[missing_flag]
+FAILED tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py::test_policy_contract_refusals[bad_fraction]
+FAILED tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py::test_policy_contract_refusals[wrong_account]
+FAILED tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py::test_policy_contract_refusals[wrong_currency]
+FAILED tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py::test_policy_contract_refusals[wrong_matrix]
+FAILED tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py::test_policy_contract_refusals[wrong_scenarios]
+FAILED tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py::test_policy_contract_refusals[missing_predecessor]
+FAILED tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py::test_policy_contract_refusals[incomplete_members]
+FAILED tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py::test_policy_contract_refusals[zero_coordinate]
+FAILED tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py::test_four_greeks_share_one_budget_and_residual_does_not_increase
+FAILED tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py::test_theta_only_and_zero_budget
+FAILED tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py::test_missing_duplicate_reversed_bands_refuse[bands0]
+FAILED tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py::test_missing_duplicate_reversed_bands_refuse[bands1]
+FAILED tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py::test_missing_duplicate_reversed_bands_refuse[bands2]
+FAILED tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py::test_nonzero_hedge_is_not_proof_of_breach[.04-hold]
+FAILED tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py::test_nonzero_hedge_is_not_proof_of_breach[.03-hold]
+FAILED tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py::test_nonzero_hedge_is_not_proof_of_breach[.01-hedge]
+FAILED tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py::test_mandatory_exit_precedes_breach_hedge_and_utility
+FAILED tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py::test_tampered_or_incomparable_action_evidence_refuses[other_budget]
+FAILED tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py::test_tampered_or_incomparable_action_evidence_refuses[false_current]
+FAILED tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py::test_tampered_or_incomparable_action_evidence_refuses[missing_hold_currency]
+FAILED tests/product/derived_signal/test_m01_f4_approved_monetary_policy.py::test_tampered_or_incomparable_action_evidence_refuses[utility_domain]
+32 failed in 0.37s

@@ -1,0 +1,37 @@
+{
+  "checkpoint_date": "2026-10-11",
+  "admitted_scope": "D123 normative clarification and unresolved mandatory official OI source contract",
+  "source_start_head": "e84060a06dd56b02af1cf0117a29b66169eb671e",
+  "preproduction_proof_commit": "241069bd836dacfd51d3bc1be4e0ac7b6ac6b01a",
+  "validation": [
+    {
+      "command": "python -m pytest -q tests/product/derived_signal/test_m01_f4_d123_exact_contract_authority.py",
+      "result": "RED: 1 failed, expected +25 but returned None",
+      "log": "D123_ORIGINAL_PUBLIC_WITNESS_REPRODUCTION.log"
+    },
+    {
+      "command": "python -m pytest -q tests/product/derived_signal/test_m01_stage1_semantics.py -k open_interest_change",
+      "result": "PASS: 1 passed, 40 deselected; legacy direct kernel only",
+      "log": "D123_LEGACY_DIRECT_KERNEL_CONTROL.log"
+    },
+    {
+      "command": "python -m pytest -q tests/product/derived_signal/test_m01_f4_d123_official_reporting_identity_red.py",
+      "result": "RED: 1 failed as intended: kernel returned +25 without proven distinct official reporting periods",
+      "log": "D123_OFFICIAL_REPORTING_IDENTITY_PROOF_FIRST_RED.log"
+    }
+  ],
+  "checks_not_run": [
+    "full PostgreSQL regression",
+    "architecture suite",
+    "typecheck (mypy unavailable in active Python)",
+    "lint (ruff unavailable in active Python)",
+    "database/public-interface full integration after D123 repair"
+  ],
+  "normative_catalogue_mutated": false,
+  "production_mutated": false,
+  "f4_complete": false,
+  "stage1_accepted": false,
+  "remaining_closed_stage_edges_unproved_reported_precheckpoint": 56,
+  "remaining_cross_stage_kernel_and_refusal_rows_unproved_reported_precheckpoint": 30,
+  "blocker": "No authoritative provider-native official OI reporting period identity and revision precedence mapped into admitted M00 projection for R047/R048"
+}

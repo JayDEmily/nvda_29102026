@@ -1,0 +1,15 @@
+$ cd /tmp/d015-independent-control-3k3lpzs8/repo
+$ /workspace/scratch/83dd7c79f14f/d015-runtime-GUbvor/dev/bin/python -m pytest tests/architecture/test_proof_control.py -x
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.3, pluggy-1.7.0
+rootdir: /tmp/d015-independent-control-3k3lpzs8/repo
+configfile: pyproject.toml
+collected 149 items
+
+tests/architecture/test_proof_control.py ............................... [ 20%]
+........................................................................ [ 69%]
+..............................................                           [100%]
+
+======================= 149 passed in 270.76s (0:04:30) ========================
+
+EXIT=0

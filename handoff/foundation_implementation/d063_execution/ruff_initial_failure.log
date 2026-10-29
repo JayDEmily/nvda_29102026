@@ -1,0 +1,47 @@
+I001 [*] Import block is un-sorted or un-formatted
+  --> src/nvda_desk/market_measurement_truth/_macro_surprise.py:3:1
+   |
+ 1 |   """Fixed release-specific surprise over matched public actual/forecast observations."""
+ 2 |
+ 3 | / from __future__ import annotations
+ 4 | |
+ 5 | | from collections.abc import Callable
+ 6 | | from dataclasses import replace
+ 7 | | from datetime import UTC, datetime, timedelta
+ 8 | | from decimal import Decimal
+ 9 | | from fractions import Fraction
+10 | | from typing import cast
+11 | |
+12 | | from nvda_desk.raw_signal_occurrence_truth import api as r
+13 | | from . import api as f
+14 | | from ._catalogue import _AUTHORITY
+15 | | from ._evaluation import canonical
+16 | | from ._numeric_bounds import sqrt_ratio_50
+17 | | from ._record_store import RecordState
+18 | | from ._selection import eligible
+19 | | from ._vwap_returns import chosen, history
+20 | | from ._window import NAMESPACE, _Reads, _decode, _identity
+   | |__________________________________________________________^
+21 |
+22 |   BRIEFS = {"D063": "09d32004835d2cd8ac9b8aa3911a97f4b1f1f62b418564c9a0280ce65983185e"}
+   |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> tests/product/market_measurement_d063/test_signal.py:3:1
+  |
+1 |   """D063: one complete release-specific sample and one missing selected member."""
+2 |
+3 | / from datetime import datetime, timedelta
+4 | | from decimal import Decimal
+5 | | import pytest
+6 | | from nvda_desk.market_measurement_truth import api as f
+7 | | from nvda_desk.raw_signal_occurrence_truth import api as r
+  | |__________________________________________________________^
+8 |
+9 |   D, BRIEF = "D063", "09d32004835d2cd8ac9b8aa3911a97f4b1f1f62b418564c9a0280ce65983185e"
+  |
+help: Organize imports
+
+Found 2 errors.
+[*] 2 fixable with the `--fix` option.

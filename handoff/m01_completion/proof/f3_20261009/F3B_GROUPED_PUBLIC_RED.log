@@ -1,0 +1,30 @@
+FF.........                                                              [100%]
+=================================== FAILURES ===================================
+___ test_grouped_public_signed_notional_and_complete_identity_lineage[D121] ____
+
+target = 'D121'
+
+    @pytest.mark.parametrize("target",["D121","D122"])
+    def test_grouped_public_signed_notional_and_complete_identity_lineage(target: str) -> None:
+        owner, req = setup(target)
+        result = owner.materialise(req)
+>       assert result is not None
+E       assert None is not None
+
+tests/product/derived_signal/test_m01_f3_grouped_public.py:153: AssertionError
+___ test_grouped_public_signed_notional_and_complete_identity_lineage[D122] ____
+
+target = 'D122'
+
+    @pytest.mark.parametrize("target",["D121","D122"])
+    def test_grouped_public_signed_notional_and_complete_identity_lineage(target: str) -> None:
+        owner, req = setup(target)
+        result = owner.materialise(req)
+>       assert result is not None
+E       assert None is not None
+
+tests/product/derived_signal/test_m01_f3_grouped_public.py:153: AssertionError
+=========================== short test summary info ============================
+FAILED tests/product/derived_signal/test_m01_f3_grouped_public.py::test_grouped_public_signed_notional_and_complete_identity_lineage[D121] - assert None is not None
+FAILED tests/product/derived_signal/test_m01_f3_grouped_public.py::test_grouped_public_signed_notional_and_complete_identity_lineage[D122] - assert None is not None
+2 failed, 9 passed in 0.17s

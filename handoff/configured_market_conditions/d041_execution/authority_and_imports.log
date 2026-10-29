@@ -1,0 +1,21 @@
+PYTHONPATH=src /workspace/scratch/83dd7c79f14f/d038-runtime/bin/python - <<'PY'
+from pathlib import Path
+import tempfile,shutil,yaml
+from nvda_desk.architecture.registry import ArchitectureRegistry
+from nvda_desk.architecture.dependencies import analyse_source_tree
+from nvda_desk.architecture.implementation_authority import validate_implementation_authority
+root=Path.cwd();reg=ArchitectureRegistry.from_repository(root)
+rules=yaml.safe_load((root/'config/architecture/dependency_rules.yaml').read_text())
+with tempfile.TemporaryDirectory(prefix='nvda-d041-static-') as directory:
+ scope=Path(directory); target=scope/'nvda_desk/configured_market_conditions';target.mkdir(parents=True)
+ for name in ('api.py','_reversion.py'):
+  shutil.copyfile(root/'src/nvda_desk/configured_market_conditions'/name,target/name)
+  assert (target/name).read_bytes()==(root/'src/nvda_desk/configured_market_conditions'/name).read_bytes()
+ issues=analyse_source_tree(scope,reg,rules)
+assert not issues,issues
+print('PASS scoped new/changed D041 imports/public seams; unchanged owner/edges reused')
+b=validate_implementation_authority(root,root/'implementation/authority/D041_IMPLEMENTATION_AUTHORITY_BINDING.yaml',root/'handoff/configured_market_conditions/authority/D041_IMPLEMENTATION_BRIEF.md')
+print('PASS exact D041 modify authority',b.brief_sha256)
+PY
+PASS scoped new/changed D041 imports/public seams; unchanged owner/edges reused
+PASS exact D041 modify authority b9699956358b59300cac8927a3b209e4c295828084273fe7cdb6b11e3016917a

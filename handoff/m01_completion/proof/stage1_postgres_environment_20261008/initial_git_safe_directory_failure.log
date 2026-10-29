@@ -1,0 +1,93 @@
+........................................................................ [ 10%]
+........................................................................ [ 21%]
+........................................................................ [ 32%]
+........................................................................ [ 43%]
+........................................................................ [ 54%]
+........................................................................ [ 65%]
+........................................................................ [ 76%]
+........................................................................ [ 87%]
+.....................F.................................................. [ 97%]
+..............                                                           [100%]
+=================================== FAILURES ===================================
+_____ test_repository_ingress_command_reports_non_durable_named_candidate ______
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-9/test_repository_ingress_comman0')
+
+    def test_repository_ingress_command_reports_non_durable_named_candidate(tmp_path: Path) -> None:
+        binding_path, brief_path = _write_binding(
+            tmp_path,
+            b"brief\n",
+            targets=[
+                {"action": "create", "category": "M", "name": "new_owner"},
+                {"action": "modify", "object_id": "A00"},
+            ],
+        )
+    
+        result = subprocess.run(
+            [
+                sys.executable,
+                str(REPO_ROOT / "tools/validate_implementation_authority.py"),
+                "--binding",
+                str(binding_path),
+                "--brief",
+                str(brief_path),
+            ],
+            cwd=REPO_ROOT,
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+    
+>       assert result.returncode == 0, result.stdout + result.stderr
+E       AssertionError: fatal: detected dubious ownership in repository at '/mnt/data/repair_round/NVDA_DERIVED_SIGNAL_M01_STAGE1_GRAPH_SELECTION_IDENTITY_REPAIR_20261008'
+E         To add an exception for this directory, call:
+E         
+E         	git config --global --add safe.directory /mnt/data/repair_round/NVDA_DERIVED_SIGNAL_M01_STAGE1_GRAPH_SELECTION_IDENTITY_REPAIR_20261008
+E         Traceback (most recent call last):
+E           File "/mnt/data/repair_round/NVDA_DERIVED_SIGNAL_M01_STAGE1_GRAPH_SELECTION_IDENTITY_REPAIR_20261008/tools/validate_implementation_authority.py", line 44, in <module>
+E             raise SystemExit(main())
+E                              ~~~~^^
+E           File "/mnt/data/repair_round/NVDA_DERIVED_SIGNAL_M01_STAGE1_GRAPH_SELECTION_IDENTITY_REPAIR_20261008/tools/validate_implementation_authority.py", line 27, in main
+E             root = _repo_root()
+E           File "/mnt/data/repair_round/NVDA_DERIVED_SIGNAL_M01_STAGE1_GRAPH_SELECTION_IDENTITY_REPAIR_20261008/tools/validate_implementation_authority.py", line 18, in _repo_root
+E             out = subprocess.check_output(["git", "rev-parse", "--show-toplevel"], text=True)
+E           File "/usr/lib/python3.13/subprocess.py", line 472, in check_output
+E             return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+E                    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E                        **kwargs).stdout
+E                        ^^^^^^^^^
+E           File "/usr/lib/python3.13/subprocess.py", line 577, in run
+E             raise CalledProcessError(retcode, process.args,
+E                                      output=stdout, stderr=stderr)
+E         subprocess.CalledProcessError: Command '['git', 'rev-parse', '--show-toplevel']' returned non-zero exit status 128.
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['/mnt/data/stage1_pg_environment/venv/bin/python', '/mnt/data/repair_round/NVDA_DERIVED_SIGNAL_...ss.CalledProcessError: Command \'[\'git\', \'rev-parse\', \'--show-toplevel\']\' returned non-zero exit status 128.\n').returncode
+
+tests/architecture/test_implementation_authority_ingress.py:334: AssertionError
+=========================== short test summary info ============================
+FAILED tests/architecture/test_implementation_authority_ingress.py::test_repository_ingress_command_reports_non_durable_named_candidate - AssertionError: fatal: detected dubious ownership in repository at '/mnt/data/repair_round/NVDA_DERIVED_SIGNAL_M01_STAGE1_GRAPH_SELECTION_IDENTITY_REPAIR_20261008'
+  To add an exception for this directory, call:
+  
+  	git config --global --add safe.directory /mnt/data/repair_round/NVDA_DERIVED_SIGNAL_M01_STAGE1_GRAPH_SELECTION_IDENTITY_REPAIR_20261008
+  Traceback (most recent call last):
+    File "/mnt/data/repair_round/NVDA_DERIVED_SIGNAL_M01_STAGE1_GRAPH_SELECTION_IDENTITY_REPAIR_20261008/tools/validate_implementation_authority.py", line 44, in <module>
+      raise SystemExit(main())
+                       ~~~~^^
+    File "/mnt/data/repair_round/NVDA_DERIVED_SIGNAL_M01_STAGE1_GRAPH_SELECTION_IDENTITY_REPAIR_20261008/tools/validate_implementation_authority.py", line 27, in main
+      root = _repo_root()
+    File "/mnt/data/repair_round/NVDA_DERIVED_SIGNAL_M01_STAGE1_GRAPH_SELECTION_IDENTITY_REPAIR_20261008/tools/validate_implementation_authority.py", line 18, in _repo_root
+      out = subprocess.check_output(["git", "rev-parse", "--show-toplevel"], text=True)
+    File "/usr/lib/python3.13/subprocess.py", line 472, in check_output
+      return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+             ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                 **kwargs).stdout
+                 ^^^^^^^^^
+    File "/usr/lib/python3.13/subprocess.py", line 577, in run
+      raise CalledProcessError(retcode, process.args,
+                               output=stdout, stderr=stderr)
+  subprocess.CalledProcessError: Command '['git', 'rev-parse', '--show-toplevel']' returned non-zero exit status 128.
+  
+assert 1 == 0
+ +  where 1 = CompletedProcess(args=['/mnt/data/stage1_pg_environment/venv/bin/python', '/mnt/data/repair_round/NVDA_DERIVED_SIGNAL_...ss.CalledProcessError: Command \'[\'git\', \'rev-parse\', \'--show-toplevel\']\' returned non-zero exit status 128.\n').returncode
+1 failed, 661 passed in 8.41s

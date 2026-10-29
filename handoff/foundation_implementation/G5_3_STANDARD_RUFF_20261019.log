@@ -1,0 +1,21 @@
+E501 Line too long (101 > 100)
+  --> src/nvda_desk/derived_signal_calculation_truth/_financial_policy.py:58:101
+   |
+58 | def producer_evidence(value, *, context_refs=(), convention_refs=(), predecessors=(), cutoff, as_of):
+   |                                                                                                     ^
+59 |     metadata = dict(value.metadata)
+60 |     contexts = metadata["parameter_context_refs"]
+   |
+
+E501 Line too long (104 > 100)
+    --> tests/product/derived_signal/test_m01_stage1_semantics.py:1932:101
+     |
+1930 |     # Preserve the original expected skew/refusal assertions while supplying
+1931 |     # each authoritative K02 dependency as an independent contract-matched
+1932 |     # occurrence. Delta truth belongs to R112, option right C/P to R015, IV to R111; strike is metadata.
+     |                                                                                                     ^^^^
+1933 |     def skew_raw(
+1934 |         *, mixed_expiry: bool = False, wrong_delta: bool = False
+     |
+
+Found 2 errors.

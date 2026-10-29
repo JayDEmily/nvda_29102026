@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/workspace/scratch/d549b6d808a9/d013-independent-PPEeX5/control-canary/tools/product_proof_claims.py", line 478, in load_product_proof_claim
+    extension = _scalar_extension(root, identity)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/d549b6d808a9/d013-independent-PPEeX5/control-canary/tools/product_proof_claims.py", line 419, in _scalar_extension
+    raise ValueError(f"unowned {identity} extension Python source without descriptor")
+ValueError: unowned D013 extension Python source without descriptor
+neutral_market_measurement_truth_d013 READY_FOR_PROOF
+neutral_market_measurement_truth_d012 READY_FOR_PROOF

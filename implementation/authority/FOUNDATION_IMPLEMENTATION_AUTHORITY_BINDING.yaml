@@ -1,0 +1,15 @@
+schema_version: "1.0"
+brief_sha256: 3ad4cdc9ffba4cf91ff9a27edf1dd3b1a9824a421514bb4b5a2cc1b9c504f233
+acceptance:
+  status: ACCEPTED_FOR_IMPLEMENTATION
+  authority_ref: owner-chat/20261019T082855/SQLite-v3-G5.1-G5.2
+targets:
+  - action: create
+    category: M
+    name: neutral_market_measurement_truth
+  - action: modify
+    object_id: M00
+  - action: modify
+    object_id: G01
+  - action: modify
+    object_id: A00

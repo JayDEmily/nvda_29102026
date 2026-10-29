@@ -1,0 +1,16 @@
+{
+  "review_cycle": "WORKER_VI15_L1_1790570516",
+  "actor": "WORKER",
+  "leaf": "VI-15-L1",
+  "status": "BLOCKED_PROGRAMME_OWNER_METADATA_AUTHORITY",
+  "current_distribution_name": "nvda-architecture-kernel",
+  "current_distribution_version": "0.1.0",
+  "build_backend": "hatchling.build",
+  "owner_package": "nvda_desk.raw_signal_occurrence_truth",
+  "owner_public_seam": "nvda_desk.raw_signal_occurrence_truth.api",
+  "metadata_applied": false,
+  "required_programme_owner_decision": [
+    "final_distribution_name",
+    "final_distribution_version"
+  ]
+}

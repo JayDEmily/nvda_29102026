@@ -1,0 +1,4 @@
+PASS: installed production A00 SQLite sequence, reopened exact public M00 read, native types
+Python: 3.12.14 SQLite: 3.53.1
+Installed: [('PyYAML', '6.0.3'), ('nvda-architecture-kernel', '1.0.0')]
+Module: /workspace/scratch/d549b6d808a9/g51-runtime/lib/python3.12/site-packages/nvda_desk/composition/__init__.py
