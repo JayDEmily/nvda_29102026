@@ -3943,29 +3943,29 @@
       "derived_id": "D135",
       "proposition": "Original controlled-profile historical evidence, not prospective native/operational readiness",
       "decision": "REUSABLE",
-      "rationale": "This documentary leaf changes no relevant production/test/authority/proof bytes. Preserve exact original evidence and actual scope; no rerun on new plan/session. New profile dependencies must be separately assessed.",
+      "rationale": "Current controlled amendment evidence is4d0d755/gen0002; original613481/gen0001 is prior top-two-only scope. No production/test/authority change in documentary repair; no rerun.",
       "evidence": {
         "aggregate": "neutral_market_measurement_truth_d135",
         "review_ref": {
-          "path": "handoff/foundation_implementation/d135_execution/INDEPENDENT_REVIEW.md",
-          "sha256": "74153fbf51a150d510c034fbb0da671f868e38d2361d17a787090fccbe77e044",
-          "git_blob": "85460cf0cbf4fda52c1608fd8ba13c2be73a2547"
+          "path": "handoff/foundation_implementation/d135_top_one_execution/INDEPENDENT_REVIEW.md",
+          "sha256": "a2d57401c8dc6ac9972621ec5e9360b48c344632878cfbc77f71e9ff825fdfdb",
+          "git_blob": "dcc0e8831bc3343f152a023f258c18b1bd36ab26"
         },
         "acceptance_record": {
-          "path": "handoff/foundation_implementation/d135_execution/INDEPENDENT_REVIEW.md",
-          "sha256": "74153fbf51a150d510c034fbb0da671f868e38d2361d17a787090fccbe77e044",
-          "git_blob": "85460cf0cbf4fda52c1608fd8ba13c2be73a2547"
+          "path": "handoff/foundation_implementation/d135_top_one_execution/INDEPENDENT_REVIEW.md",
+          "sha256": "a2d57401c8dc6ac9972621ec5e9360b48c344632878cfbc77f71e9ff825fdfdb",
+          "git_blob": "dcc0e8831bc3343f152a023f258c18b1bd36ab26"
         },
         "raw_output": {
-          "path": "handoff/foundation_implementation/d135_execution/strict-original.log",
-          "sha256": "bcb0f754ed94c88374ab09494fd51cfb66c4a3c70a35dedfb4b8bd1c56655beb",
-          "git_blob": "ce1117762fd5b57f72ed0a91a73d145bc785ec35"
+          "path": "handoff/foundation_implementation/d135_top_one_execution/strict-original.log",
+          "sha256": "d4366eff7355d97d445fb12b247c639b4f608746d32629d3051adc0b9c5d0a78",
+          "git_blob": "84e92ce6e0877fd15783a05f5529ef0491f24400"
         },
-        "candidate": "613481bf9e8bf200b146964369ae78b2e8eeb17f",
+        "candidate": "4d0d755ccadd6330967f57c2f4460a8d2c0fac06",
         "observed_aggregate_exit": 0,
         "observed_collected_total": 2,
         "observed_passed_total": 2,
-        "observed_generation_sha256": "63656d0e779ce2ce7e5b51238df767a82c7f09d1c2617a8aaa5a0e63eaf5dee0",
+        "observed_generation_sha256": "bb56d3b1323f159372e3d1528cbdcd7227308ba7618697d3fc6f87a6201e28e0",
         "counts_scope": "Enclosing exact admitted aggregate output; early aggregate totals may include broader validation families and are not new or assumed owning physical case allocations.",
         "physical_case_allocation": "See exact original proof contract; not inferred from aggregate totals.",
         "family_and_support_hashes": [
@@ -3977,9 +3977,51 @@
           }
         ],
         "runtime_execution_in_this_leaf": "NONE",
-        "review_scope_in_this_leaf": "Documentary identity, existence, digest and original outcome linkage; no repeat mathematical or runtime acceptance audit"
+        "review_scope_in_this_leaf": "Documentary identity, existence, digest and original outcome linkage; no repeat mathematical or runtime acceptance audit",
+        "scope": "Owner-authorised amended controlled top-two/top-one D135 profiles, current immutable generation0002; two physical cases."
       },
-      "current_governed_family_bytes_match_generation": true
+      "current_governed_family_bytes_match_generation": true,
+      "prior_scope_history": [
+        {
+          "aggregate": "neutral_market_measurement_truth_d135",
+          "review_ref": {
+            "path": "handoff/foundation_implementation/d135_execution/INDEPENDENT_REVIEW.md",
+            "sha256": "74153fbf51a150d510c034fbb0da671f868e38d2361d17a787090fccbe77e044",
+            "git_blob": "85460cf0cbf4fda52c1608fd8ba13c2be73a2547"
+          },
+          "acceptance_record": {
+            "path": "handoff/foundation_implementation/d135_execution/INDEPENDENT_REVIEW.md",
+            "sha256": "74153fbf51a150d510c034fbb0da671f868e38d2361d17a787090fccbe77e044",
+            "git_blob": "85460cf0cbf4fda52c1608fd8ba13c2be73a2547"
+          },
+          "raw_output": {
+            "path": "handoff/foundation_implementation/d135_execution/strict-original.log",
+            "sha256": "bcb0f754ed94c88374ab09494fd51cfb66c4a3c70a35dedfb4b8bd1c56655beb",
+            "git_blob": "ce1117762fd5b57f72ed0a91a73d145bc785ec35"
+          },
+          "candidate": "613481bf9e8bf200b146964369ae78b2e8eeb17f",
+          "observed_aggregate_exit": 0,
+          "observed_collected_total": 2,
+          "observed_passed_total": 2,
+          "observed_generation_sha256": "63656d0e779ce2ce7e5b51238df767a82c7f09d1c2617a8aaa5a0e63eaf5dee0",
+          "counts_scope": "Enclosing exact admitted aggregate output; early aggregate totals may include broader validation families and are not new or assumed owning physical case allocations.",
+          "physical_case_allocation": "See exact original proof contract; not inferred from aggregate totals.",
+          "runtime_execution_in_this_leaf": "NONE",
+          "review_scope_in_this_leaf": "Documentary identity, existence, digest and original outcome linkage; no repeat mathematical or runtime acceptance audit",
+          "generation_record": {
+            "path": "config/product_proof/market_measurement_d135/generations/0001.json",
+            "sha256": "63656d0e779ce2ce7e5b51238df767a82c7f09d1c2617a8aaa5a0e63eaf5dee0",
+            "git_blob": "fac60f664b5508c52711d45d09a025a9b029ea53"
+          },
+          "historical_family_and_support_files": [
+            {
+              "path": "tests/product/market_measurement_d135/test_signal.py",
+              "sha256": "423c2e328dda5710a7cdab5afaa10649c086d9fe3f7268c1dd64f2bc466126d9"
+            }
+          ],
+          "scope": "Original controlled top-two profile, superseded for amended current authority/test bytes; preserved prior history only."
+        }
+      ]
     },
     {
       "derived_id": "D136",

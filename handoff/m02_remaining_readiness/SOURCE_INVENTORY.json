@@ -4122,6 +4122,21 @@
       "path": "handoff/foundation_implementation/G5_EXECUTION_RECORD.md",
       "sha256": "2bc0aef8f01488ea17721b35fa6f835612313285bb94ecb6757757a36b1424b8",
       "git_blob": "be64e8076d7b8fa903aa65becac24adda4a16b2f"
+    },
+    {
+      "path": "config/product_proof/market_measurement_d135/generations/0001.json",
+      "sha256": "63656d0e779ce2ce7e5b51238df767a82c7f09d1c2617a8aaa5a0e63eaf5dee0",
+      "git_blob": "fac60f664b5508c52711d45d09a025a9b029ea53"
+    },
+    {
+      "path": "handoff/foundation_implementation/d135_top_one_execution/strict-original.log",
+      "sha256": "d4366eff7355d97d445fb12b247c639b4f608746d32629d3051adc0b9c5d0a78",
+      "git_blob": "84e92ce6e0877fd15783a05f5529ef0491f24400"
+    },
+    {
+      "path": "handoff/foundation_implementation/d135_top_one_execution/INDEPENDENT_REVIEW.md",
+      "sha256": "a2d57401c8dc6ac9972621ec5e9360b48c344632878cfbc77f71e9ff825fdfdb",
+      "git_blob": "dcc0e8831bc3343f152a023f258c18b1bd36ab26"
     }
   ],
   "inspection_limit": "Hashes establish identity, not semantics. Catalogue/AnnexB/held records and selected early/late original acceptance reviews were read; all98 rows have actual individual original evidence links and raw outcomes inspected mechanically. No claim to reread every historical mathematical review in full or reaccept98 runtime capabilities.",
