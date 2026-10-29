@@ -115,3 +115,11 @@ Documentary findings may recommend specificprofiles or ownership decisions, clea
 ### L00 documentary acceptance
 
 Independent review92db50fc21c5cac038b13b8a3131d39820341c17 accepts L00 at repairedcandidatee15b4f9; originalD135 finding andrepair preserved. Exact126/98/28/7membership and1642structured references verified within documented readscope. No productruns. L00 DOCUMENTARY_ACCEPTED; checkpoint externalreceipt pending before L01. L01–L05 NOT_ATTEMPTED. Review handoff/m02_remaining_readiness/L00_INDEPENDENT_REVIEW.md.
+
+## 8. Current owner execution amendment — independent review at final handover
+
+29 October 2026: the owner supplied the completed L00 additive, expressly commissioned completion of the remaining documentary leaves and directed that **one separate thread independently verify the combined work after execution**. This higher-authority instruction supersedes the R1 per-leaf independent reviewer-before-advancement requirement solely as to reviewer timing. It does **not** waive documentary source checks, canonical register validation, integrity/restore checkpoints, or evidence limits; it does not authorise product tests or implementation. L01–L05 may be authored and advanced sequentially with technical/documentary checks and per-leaf downloadable checkpoints, recorded `AUTHOR_COMPLETED / INDEPENDENT_REVIEW_PENDING`. L05 cannot claim independently accepted or a closed G2 programme gate until separate independent review is documented; final delivery is a **candidate for external independent review**, not M02 acceptance. The original L00 independently reviewed state remains preserved. This does not revive any paused signal or alter GUARDRAILS/AGENTS.
+
+### L01 author completion (external independent review pending)
+
+Evidence and four readiness records: `handoff/m02_remaining_readiness/L01_FINDINGS.md` and `L01_SOURCE_BINDINGS.json`. Review deferred to the owner's separate thread; no product tests. L01 AUTHOR_COMPLETED / NOT_INDEPENDENTLY_ACCEPTED, L02–L05 not attempted.

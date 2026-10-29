@@ -4140,5 +4140,42 @@
     }
   ],
   "inspection_limit": "Hashes establish identity, not semantics. Catalogue/AnnexB/held records and selected early/late original acceptance reviews were read; all98 rows have actual individual original evidence links and raw outcomes inspected mechanically. No claim to reread every historical mathematical review in full or reaccept98 runtime capabilities.",
-  "unknowns": []
+  "unknowns": [],
+  "later_leaf_source_bindings": {
+    "L01": [
+      {
+        "path": "handoff/foundation_implementation/authority/FOUNDATION_IMPLEMENTATION_BRIEF_PROPOSED.md",
+        "sha256": "282f7d73c5e2fdf36ded43781665764eaf95d4a35f687f99990b87c59f744ed7",
+        "git_blob": "085c6663f41c214a680bafad7aafd587f2a38b5d"
+      },
+      {
+        "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md",
+        "sha256": "603b850802a418780109095e7ae69bcece449da79fb24140a6d50297605e927c",
+        "git_blob": "32930fc08eb648c2cc6347d32d910e3a45bdc07f"
+      },
+      {
+        "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv",
+        "sha256": "67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549",
+        "git_blob": "a27d5e768ab7f1126cecd5a7bbe35bd05b82a442"
+      },
+      {
+        "path": "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
+        "sha256": "2d95d7c5e425ed1dd231f4685100f7c1db9c85ee1369fea54f91580aab6caa5a",
+        "git_blob": "71eeea1f267b12c4e8182dd9809cfe2e17258c15"
+      },
+      {
+        "path": "src/nvda_desk/market_measurement_truth/_temporal.py",
+        "sha256": "3cd505cab724e90b60cf8248a0fc2c9b98f14d8509b48c13b53af34a8a35b727",
+        "git_blob": "ee0757bad08142c4903dbb1fe75c0becbf3c4e37"
+      },
+      {
+        "path": "src/nvda_desk/market_measurement_truth/_temporal_date.py",
+        "sha256": "fea27e3502251e9708fb262f4fd48719231a5e4ebfc4dae2a06a5637b80a38f8",
+        "git_blob": "97100d9a5aeb5b29077b19c0223c131a96e18e2c"
+      }
+    ]
+  },
+  "later_leaf_inspection_limits": {
+    "L01": "Current documentary owner assessment; independent semantic review PENDING; no product execution."
+  }
 }

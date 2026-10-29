@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "source_checkpoint": "f84430f275931aea56cf4f44931699ffaee3f542",
-  "status": "L00_BASELINE_ONLY; detailed L01\u2013L04 reassessment pending",
+  "status": "L01–L01 documentary assessments available; other rows remain L00 pending; independent reviewer deferred to final owner handoff",
   "rows": [
     {
       "derived_id": "D062",
@@ -22,19 +22,59 @@
       "historical_controlled_status": "HELD_OR_PAUSED",
       "native_profile_status": "NOT_ESTABLISHED_BY_L00",
       "operational_status": "FULL_OPERATIONAL_OR_LIVE_READINESS_NOT_ESTABLISHED",
-      "source_readiness": "Controlled proof only where evidenced; native/provider/domain readiness not inferred",
+      "source_readiness": "CONTROLLED_OR_NARROW_PREDECESSOR_ONLY; MISSING_DOMAIN_OR_PROFILE_AS_DESCRIBED",
       "durable_backend_scope": "Owner-local SQLite for evidenced controlled profile; no PostgreSQL/live parity assertion",
       "owning_readiness_leaf": "L01",
-      "readiness": "UNKNOWN_PENDING_ASSIGNED_REASSESSMENT",
-      "current_hold": "Retained; detailed current prerequisites to be assessed in L01",
-      "first_unmet_prerequisite": "Current source/domain/policy/producer assessment pending",
-      "receiver": "M02/source/profile owner; documentary leaf L01",
-      "decision_required": "Assigned reassessment; no policy invented",
-      "evidence_certainty": "Historical evidence links are observations; new readiness UNKNOWN",
+      "readiness": "HELD_FOR_SOURCE",
+      "current_hold": "PRESERVED; No declared public R284 scheduled-event temporal projection + revision/relevance/knowledge selector compatible with the admitted controlled D001 temporal occurrence.",
+      "first_unmet_prerequisite": "No declared public R284 scheduled-event temporal projection + revision/relevance/knowledge selector compatible with the admitted controlled D001 temporal occurrence.",
+      "receiver": "M00 source/calendar custodian + M02 temporal owner",
+      "decision_required": "Approve R284 carrier and relevance/revision contract; do not claim native event schedule from D001.",
+      "evidence_certainty": "SOURCE_REVIEWED_WITH_EXPLICIT_GAPS; NOT_INDEPENDENTLY_VERIFIED",
       "accepted_definition_profile_identity": "UNKNOWN until original brief/contract exact identity below; no generic profile assumption",
       "implementation_evidence": [],
       "historical_proof": null,
-      "effective_semantic_authority_refs": []
+      "effective_semantic_authority_refs": [
+        "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
+        "handoff/foundation_implementation/authority/FOUNDATION_IMPLEMENTATION_BRIEF_PROPOSED.md",
+        "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv"
+      ],
+      "documentary_assessment": {
+        "status": "HELD_FOR_SOURCE",
+        "first_unmet_invariant": "No declared public R284 scheduled-event temporal projection + revision/relevance/knowledge selector compatible with the admitted controlled D001 temporal occurrence.",
+        "observed_distinction_and_other_barriers": "D001 is NOW independently accepted for a fixed NVDA true-instant controlled profile; it is not a calendar/event producer. Require exact scheduled UTC, event identity, revision, relevance, cutoff, no-event and typed lineage.",
+        "proposed_next_action": "Specify and admit R284 temporal/native provenance and exact event selection, then bounded matching D001 profile and two-case future proof.",
+        "receiver": "M00 source/calendar custodian + M02 temporal owner",
+        "decision_or_authority_needed": "Approve R284 carrier and relevance/revision contract; do not claim native event schedule from D001.",
+        "catalogue_derived_dependencies": [
+          "D001"
+        ],
+        "documentary_sources": [
+          {
+            "path": "src/nvda_desk/market_measurement_truth/_temporal.py",
+            "sha256": "3cd505cab724e90b60cf8248a0fc2c9b98f14d8509b48c13b53af34a8a35b727",
+            "git_blob": "ee0757bad08142c4903dbb1fe75c0becbf3c4e37"
+          },
+          {
+            "path": "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
+            "sha256": "2d95d7c5e425ed1dd231f4685100f7c1db9c85ee1369fea54f91580aab6caa5a",
+            "git_blob": "71eeea1f267b12c4e8182dd9809cfe2e17258c15"
+          },
+          {
+            "path": "handoff/foundation_implementation/authority/FOUNDATION_IMPLEMENTATION_BRIEF_PROPOSED.md",
+            "sha256": "282f7d73c5e2fdf36ded43781665764eaf95d4a35f687f99990b87c59f744ed7",
+            "git_blob": "085c6663f41c214a680bafad7aafd587f2a38b5d"
+          },
+          {
+            "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv",
+            "sha256": "67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549",
+            "git_blob": "a27d5e768ab7f1126cecd5a7bbe35bd05b82a442"
+          }
+        ],
+        "certainty": "Evidence-based documentary status; future source/profile acceptance and operational readiness not established",
+        "independent_review": "PENDING_OWNER_HANDOFF",
+        "product_tests_run_this_leaf": 0
+      }
     },
     {
       "derived_id": "D078",
@@ -187,19 +227,53 @@
       "historical_controlled_status": "HELD_OR_PAUSED",
       "native_profile_status": "NOT_ESTABLISHED_BY_L00",
       "operational_status": "FULL_OPERATIONAL_OR_LIVE_READINESS_NOT_ESTABLISHED",
-      "source_readiness": "Controlled proof only where evidenced; native/provider/domain readiness not inferred",
+      "source_readiness": "CONTROLLED_OR_NARROW_PREDECESSOR_ONLY; MISSING_DOMAIN_OR_PROFILE_AS_DESCRIBED",
       "durable_backend_scope": "Owner-local SQLite for evidenced controlled profile; no PostgreSQL/live parity assertion",
       "owning_readiness_leaf": "L01",
-      "readiness": "UNKNOWN_PENDING_ASSIGNED_REASSESSMENT",
-      "current_hold": "Retained; detailed current prerequisites to be assessed in L01",
-      "first_unmet_prerequisite": "Current source/domain/policy/producer assessment pending",
-      "receiver": "M02/source/profile owner; documentary leaf L01",
-      "decision_required": "Assigned reassessment; no policy invented",
-      "evidence_certainty": "Historical evidence links are observations; new readiness UNKNOWN",
+      "readiness": "HELD_FOR_SOURCE",
+      "current_hold": "PRESERVED; No admitted option-contract expiry-date R013 + receipt R001 source/identity and US option calendar contract matching a lawful D004 option trading-date occurrence.",
+      "first_unmet_prerequisite": "No admitted option-contract expiry-date R013 + receipt R001 source/identity and US option calendar contract matching a lawful D004 option trading-date occurrence.",
+      "receiver": "M00 option source + exchange-calendar owner; M02 temporal owner",
+      "decision_required": "Accept option R013 type, expiry convention and exchange calendar/session/zone before a new profile.",
+      "evidence_certainty": "SOURCE_REVIEWED_WITH_EXPLICIT_GAPS; NOT_INDEPENDENTLY_VERIFIED",
       "accepted_definition_profile_identity": "UNKNOWN until original brief/contract exact identity below; no generic profile assumption",
       "implementation_evidence": [],
       "historical_proof": null,
-      "effective_semantic_authority_refs": []
+      "effective_semantic_authority_refs": [
+        "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
+        "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv"
+      ],
+      "documentary_assessment": {
+        "status": "HELD_FOR_SOURCE",
+        "first_unmet_invariant": "No admitted option-contract expiry-date R013 + receipt R001 source/identity and US option calendar contract matching a lawful D004 option trading-date occurrence.",
+        "observed_distinction_and_other_barriers": "D004 NOW has a controlled NVDA/Australia-Melbourne overnight-session result using R023/R024 and actual D003. This does NOT establish US option session/holiday/early-close or the option contract.",
+        "proposed_next_action": "Design option-key/date-only mapping and actual exchange calendar with per-expiry D004 source, then exact whole-day difference/refusal.",
+        "receiver": "M00 option source + exchange-calendar owner; M02 temporal owner",
+        "decision_or_authority_needed": "Accept option R013 type, expiry convention and exchange calendar/session/zone before a new profile.",
+        "catalogue_derived_dependencies": [
+          "D004"
+        ],
+        "documentary_sources": [
+          {
+            "path": "src/nvda_desk/market_measurement_truth/_temporal_date.py",
+            "sha256": "fea27e3502251e9708fb262f4fd48719231a5e4ebfc4dae2a06a5637b80a38f8",
+            "git_blob": "97100d9a5aeb5b29077b19c0223c131a96e18e2c"
+          },
+          {
+            "path": "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
+            "sha256": "2d95d7c5e425ed1dd231f4685100f7c1db9c85ee1369fea54f91580aab6caa5a",
+            "git_blob": "71eeea1f267b12c4e8182dd9809cfe2e17258c15"
+          },
+          {
+            "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv",
+            "sha256": "67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549",
+            "git_blob": "a27d5e768ab7f1126cecd5a7bbe35bd05b82a442"
+          }
+        ],
+        "certainty": "Evidence-based documentary status; future source/profile acceptance and operational readiness not established",
+        "independent_review": "PENDING_OWNER_HANDOFF",
+        "product_tests_run_this_leaf": 0
+      }
     },
     {
       "derived_id": "D086",
@@ -220,19 +294,53 @@
       "historical_controlled_status": "HELD_OR_PAUSED",
       "native_profile_status": "NOT_ESTABLISHED_BY_L00",
       "operational_status": "FULL_OPERATIONAL_OR_LIVE_READINESS_NOT_ESTABLISHED",
-      "source_readiness": "Controlled proof only where evidenced; native/provider/domain readiness not inferred",
+      "source_readiness": "CONTROLLED_OR_NARROW_PREDECESSOR_ONLY; MISSING_DOMAIN_OR_PROFILE_AS_DESCRIBED",
       "durable_backend_scope": "Owner-local SQLite for evidenced controlled profile; no PostgreSQL/live parity assertion",
       "owning_readiness_leaf": "L01",
-      "readiness": "UNKNOWN_PENDING_ASSIGNED_REASSESSMENT",
-      "current_hold": "Retained; detailed current prerequisites to be assessed in L01",
-      "first_unmet_prerequisite": "Current source/domain/policy/producer assessment pending",
-      "receiver": "M02/source/profile owner; documentary leaf L01",
-      "decision_required": "Assigned reassessment; no policy invented",
-      "evidence_certainty": "Historical evidence links are observations; new readiness UNKNOWN",
+      "readiness": "HELD_FOR_SOURCE",
+      "current_hold": "PRESERVED; No specified actual option expiry instant and native R013 contract/date-to-instant convention with a compatible D001 true-instant producer.",
+      "first_unmet_prerequisite": "No specified actual option expiry instant and native R013 contract/date-to-instant convention with a compatible D001 true-instant producer.",
+      "receiver": "M00 option source + M02 temporal/numeric owner",
+      "decision_required": "Approve expiry timestamp interpretation and numeric representation; not just a calendar date.",
+      "evidence_certainty": "SOURCE_REVIEWED_WITH_EXPLICIT_GAPS; NOT_INDEPENDENTLY_VERIFIED",
       "accepted_definition_profile_identity": "UNKNOWN until original brief/contract exact identity below; no generic profile assumption",
       "implementation_evidence": [],
       "historical_proof": null,
-      "effective_semantic_authority_refs": []
+      "effective_semantic_authority_refs": [
+        "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
+        "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv"
+      ],
+      "documentary_assessment": {
+        "status": "HELD_FOR_SOURCE",
+        "first_unmet_invariant": "No specified actual option expiry instant and native R013 contract/date-to-instant convention with a compatible D001 true-instant producer.",
+        "observed_distinction_and_other_barriers": "D001 is accepted for fixed NVDA true-instant sample, not an option contract maturity clock. ACT/365F and nonterminating 1/365 require exact rational or accepted precision policy.",
+        "proposed_next_action": "Supply option expiry instant/zone/day-count and lawful typed D001 matching contract; bind deterministic ACT/365F carrier/refusal.",
+        "receiver": "M00 option source + M02 temporal/numeric owner",
+        "decision_or_authority_needed": "Approve expiry timestamp interpretation and numeric representation; not just a calendar date.",
+        "catalogue_derived_dependencies": [
+          "D001"
+        ],
+        "documentary_sources": [
+          {
+            "path": "src/nvda_desk/market_measurement_truth/_temporal.py",
+            "sha256": "3cd505cab724e90b60cf8248a0fc2c9b98f14d8509b48c13b53af34a8a35b727",
+            "git_blob": "ee0757bad08142c4903dbb1fe75c0becbf3c4e37"
+          },
+          {
+            "path": "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
+            "sha256": "2d95d7c5e425ed1dd231f4685100f7c1db9c85ee1369fea54f91580aab6caa5a",
+            "git_blob": "71eeea1f267b12c4e8182dd9809cfe2e17258c15"
+          },
+          {
+            "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv",
+            "sha256": "67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549",
+            "git_blob": "a27d5e768ab7f1126cecd5a7bbe35bd05b82a442"
+          }
+        ],
+        "certainty": "Evidence-based documentary status; future source/profile acceptance and operational readiness not established",
+        "independent_review": "PENDING_OWNER_HANDOFF",
+        "product_tests_run_this_leaf": 0
+      }
     },
     {
       "derived_id": "D091",
@@ -253,19 +361,52 @@
       "historical_controlled_status": "HELD_OR_PAUSED",
       "native_profile_status": "NOT_ESTABLISHED_BY_L00",
       "operational_status": "FULL_OPERATIONAL_OR_LIVE_READINESS_NOT_ESTABLISHED",
-      "source_readiness": "Controlled proof only where evidenced; native/provider/domain readiness not inferred",
+      "source_readiness": "CONTROLLED_OR_NARROW_PREDECESSOR_ONLY; MISSING_DOMAIN_OR_PROFILE_AS_DESCRIBED",
       "durable_backend_scope": "Owner-local SQLite for evidenced controlled profile; no PostgreSQL/live parity assertion",
       "owning_readiness_leaf": "L01",
-      "readiness": "UNKNOWN_PENDING_ASSIGNED_REASSESSMENT",
-      "current_hold": "Retained; detailed current prerequisites to be assessed in L01",
-      "first_unmet_prerequisite": "Current source/domain/policy/producer assessment pending",
-      "receiver": "M02/source/profile owner; documentary leaf L01",
-      "decision_required": "Assigned reassessment; no policy invented",
-      "evidence_certainty": "Historical evidence links are observations; new readiness UNKNOWN",
+      "readiness": "HELD_FOR_DEFINITION_OR_POLICY",
+      "current_hold": "PRESERVED; No owner-accepted ordered, complete/nonoverlapping absolute-delta interval/label/boundary/out-of-coverage policy.",
+      "first_unmet_prerequisite": "No owner-accepted ordered, complete/nonoverlapping absolute-delta interval/label/boundary/out-of-coverage policy.",
+      "receiver": "M02 classification owner + programme owner",
+      "decision_required": "Accept exact interval boundaries/labels/inclusivity, absence, scale and model variant.",
+      "evidence_certainty": "SOURCE_REVIEWED_WITH_EXPLICIT_GAPS; NOT_INDEPENDENTLY_VERIFIED",
       "accepted_definition_profile_identity": "UNKNOWN until original brief/contract exact identity below; no generic profile assumption",
       "implementation_evidence": [],
       "historical_proof": null,
-      "effective_semantic_authority_refs": []
+      "effective_semantic_authority_refs": [
+        "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
+        "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv",
+        "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md"
+      ],
+      "documentary_assessment": {
+        "status": "HELD_FOR_DEFINITION_OR_POLICY",
+        "first_unmet_invariant": "No owner-accepted ordered, complete/nonoverlapping absolute-delta interval/label/boundary/out-of-coverage policy.",
+        "observed_distinction_and_other_barriers": "R112 model delta/right/contract/source variant and numeric scale must be bound; 10D/25D/50D examples are not accepted policy. Neutral classification remains M02.",
+        "proposed_next_action": "Propose versioned interval table and refusal examples with actual R112 option contract lineage; commission controlled proof separately.",
+        "receiver": "M02 classification owner + programme owner",
+        "decision_or_authority_needed": "Accept exact interval boundaries/labels/inclusivity, absence, scale and model variant.",
+        "catalogue_derived_dependencies": [],
+        "documentary_sources": [
+          {
+            "path": "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
+            "sha256": "2d95d7c5e425ed1dd231f4685100f7c1db9c85ee1369fea54f91580aab6caa5a",
+            "git_blob": "71eeea1f267b12c4e8182dd9809cfe2e17258c15"
+          },
+          {
+            "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv",
+            "sha256": "67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549",
+            "git_blob": "a27d5e768ab7f1126cecd5a7bbe35bd05b82a442"
+          },
+          {
+            "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md",
+            "sha256": "603b850802a418780109095e7ae69bcece449da79fb24140a6d50297605e927c",
+            "git_blob": "32930fc08eb648c2cc6347d32d910e3a45bdc07f"
+          }
+        ],
+        "certainty": "Evidence-based documentary status; future source/profile acceptance and operational readiness not established",
+        "independent_review": "PENDING_OWNER_HANDOFF",
+        "product_tests_run_this_leaf": 0
+      }
     },
     {
       "derived_id": "D095",
