@@ -1,0 +1,48 @@
+name: NVDA complete Git migration verification
+on:
+  push:
+    branches:
+      - nvda-migration-staging-20261029
+    paths:
+      - .github/workflows/nvda-import-full.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  import-original-history:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Decode, independently verify, import, and publish exact original Git history
+        shell: bash
+        env:
+          GIT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          BUNDLE="$RUNNER_TEMP/nvda-original-history.bundle"
+          : > "$BUNDLE"
+          for i in $(seq 0 156); do
+            printf -v n '%04d' "$i"
+            f="nvda-transfer/chunks/part-$n.b64"
+            test -f "$f"
+            base64 --decode "$f" >> "$BUNDLE"
+          done
+          echo '501be44c7422d7b99359d36ea0a44754698c1b0a667a093c737dd231e559e875  '"$BUNDLE" | sha256sum -c
+          test "$(wc -c < "$BUNDLE")" -eq 82303405
+          REPO="$RUNNER_TEMP/nvda-source.git"
+          git init --bare -q "$REPO"
+          git -C "$REPO" bundle verify "$BUNDLE" >/dev/null
+          git -C "$REPO" fetch --no-tags "$BUNDLE" '+refs/*:refs/*'
+          git -C "$REPO" fsck --full --no-reflogs
+          test "$(git -C "$REPO" for-each-ref --format='%(refname)' | wc -l)" -eq 230
+          test "$(git -C "$REPO" cat-file --batch-all-objects --batch-check='%(objectname)' | LC_ALL=C sort -u | sha256sum | cut -d' ' -f1)" = '02aacd9f03f138edae0698043315b289727781a60c2d3eef849104bf8de6f0da'
+          test "$(git -C "$REPO" rev-parse refs/heads/october_m02_g4_latest)" = '9bd59acba13ead7252e52e32e1b5d862adecd99a'
+          test "$(git -C "$REPO" rev-parse refs/heads/october_m02_g4_latest^{tree})" = '61e135fac03711cd593844528e718aa6967819ad'
+          echo 'PASS: bundle exact bytes, 230 refs, complete 30176-object fingerprint, M02 HEAD/tree'
+          git -C "$REPO" -c http.version=HTTP/1.1 push "https://x-access-token:${GIT_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" 'refs/heads/october_m02_g4_latest:refs/heads/nvda-m02-g4-imported'
+          remote="$(git ls-remote "https://x-access-token:${GIT_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" refs/heads/nvda-m02-g4-imported | cut -f1)"
+          test "$remote" = '9bd59acba13ead7252e52e32e1b5d862adecd99a'
+          echo 'PASS: original M02 commit exists on GitHub and remote branch readback matches exactly'
