@@ -1,0 +1,203 @@
+{
+  "schema_version": "1.0.0",
+  "plan_id": "M02-REMAINING-READINESS-1",
+  "ledger_status": "ACTIVE",
+  "repository": {
+    "baseline_commit": "f84430f275931aea56cf4f44931699ffaee3f542",
+    "candidate_commit": "f84430f275931aea56cf4f44931699ffaee3f542",
+    "plan_revision": "R1"
+  },
+  "execution_mode": {
+    "mode": "WORK_DELEGATED",
+    "capability_evidence": "Collaboration independent reviewer available and used for draft and preceding L14; confirmed through current tool calls.",
+    "test_phase": "NONE: documentary planning; no new product checks"
+  },
+  "proof_obligations": [
+    {
+      "proof_id": "DOC-L00",
+      "module": "M02 readiness documentary review",
+      "claim": "Documentary semantic obligation L00; not an admitted product aggregate",
+      "requirement_refs": [
+        "EXEC_PLAN_PROPOSED.md \u00a7\u00a72\u20133"
+      ],
+      "source_identity": {
+        "commit": "f84430f275931aea56cf4f44931699ffaee3f542",
+        "contract_id": "M02-REMAINING-READINESS-1"
+      },
+      "prior_evidence": {
+        "decision": "NEW",
+        "rationale": "New documentary assessment, no new runtime proposition; original product results remain in immutable source ledgers.",
+        "evidence_refs": [
+          "handoff/downstream_reconciliation/L14/EXECUTION_INDEX.json"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "Owner four-point documentary planning commission; EXEC_PLAN_PROPOSED.md \u00a74",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L00",
+        "reviewer": "UNASSIGNED",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "DOC-L01",
+      "module": "M02 readiness documentary review",
+      "claim": "Documentary semantic obligation L01; not an admitted product aggregate",
+      "requirement_refs": [
+        "EXEC_PLAN_PROPOSED.md \u00a7\u00a72\u20133"
+      ],
+      "source_identity": {
+        "commit": "f84430f275931aea56cf4f44931699ffaee3f542",
+        "contract_id": "M02-REMAINING-READINESS-1"
+      },
+      "prior_evidence": {
+        "decision": "NEW",
+        "rationale": "New documentary assessment, no new runtime proposition; original product results remain in immutable source ledgers.",
+        "evidence_refs": [
+          "handoff/downstream_reconciliation/L14/EXECUTION_INDEX.json"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "Owner four-point documentary planning commission; EXEC_PLAN_PROPOSED.md \u00a74",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L01",
+        "reviewer": "UNASSIGNED",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "DOC-L02",
+      "module": "M02 readiness documentary review",
+      "claim": "Documentary semantic obligation L02; not an admitted product aggregate",
+      "requirement_refs": [
+        "EXEC_PLAN_PROPOSED.md \u00a7\u00a72\u20133"
+      ],
+      "source_identity": {
+        "commit": "f84430f275931aea56cf4f44931699ffaee3f542",
+        "contract_id": "M02-REMAINING-READINESS-1"
+      },
+      "prior_evidence": {
+        "decision": "NEW",
+        "rationale": "New documentary assessment, no new runtime proposition; original product results remain in immutable source ledgers.",
+        "evidence_refs": [
+          "handoff/downstream_reconciliation/L14/EXECUTION_INDEX.json"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "Owner four-point documentary planning commission; EXEC_PLAN_PROPOSED.md \u00a74",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L02",
+        "reviewer": "UNASSIGNED",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "DOC-L03",
+      "module": "M02 readiness documentary review",
+      "claim": "Documentary semantic obligation L03; not an admitted product aggregate",
+      "requirement_refs": [
+        "EXEC_PLAN_PROPOSED.md \u00a7\u00a72\u20133"
+      ],
+      "source_identity": {
+        "commit": "f84430f275931aea56cf4f44931699ffaee3f542",
+        "contract_id": "M02-REMAINING-READINESS-1"
+      },
+      "prior_evidence": {
+        "decision": "NEW",
+        "rationale": "New documentary assessment, no new runtime proposition; original product results remain in immutable source ledgers.",
+        "evidence_refs": [
+          "handoff/downstream_reconciliation/L14/EXECUTION_INDEX.json"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "Owner four-point documentary planning commission; EXEC_PLAN_PROPOSED.md \u00a74",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L03",
+        "reviewer": "UNASSIGNED",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "DOC-L04",
+      "module": "M02 readiness documentary review",
+      "claim": "Documentary semantic obligation L04; not an admitted product aggregate",
+      "requirement_refs": [
+        "EXEC_PLAN_PROPOSED.md \u00a7\u00a72\u20133"
+      ],
+      "source_identity": {
+        "commit": "f84430f275931aea56cf4f44931699ffaee3f542",
+        "contract_id": "M02-REMAINING-READINESS-1"
+      },
+      "prior_evidence": {
+        "decision": "NEW",
+        "rationale": "New documentary assessment, no new runtime proposition; original product results remain in immutable source ledgers.",
+        "evidence_refs": [
+          "handoff/downstream_reconciliation/L14/EXECUTION_INDEX.json"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "Owner four-point documentary planning commission; EXEC_PLAN_PROPOSED.md \u00a74",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L04",
+        "reviewer": "UNASSIGNED",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "DOC-L05",
+      "module": "M02 readiness documentary review",
+      "claim": "Documentary semantic obligation L05; not an admitted product aggregate",
+      "requirement_refs": [
+        "EXEC_PLAN_PROPOSED.md \u00a7\u00a72\u20133"
+      ],
+      "source_identity": {
+        "commit": "f84430f275931aea56cf4f44931699ffaee3f542",
+        "contract_id": "M02-REMAINING-READINESS-1"
+      },
+      "prior_evidence": {
+        "decision": "NEW",
+        "rationale": "New documentary assessment, no new runtime proposition; original product results remain in immutable source ledgers.",
+        "evidence_refs": [
+          "handoff/downstream_reconciliation/L14/EXECUTION_INDEX.json"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "Owner four-point documentary planning commission; EXEC_PLAN_PROPOSED.md \u00a74",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L05",
+        "reviewer": "UNASSIGNED",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    }
+  ]
+}
