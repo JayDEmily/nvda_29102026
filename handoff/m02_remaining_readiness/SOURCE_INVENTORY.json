@@ -4227,11 +4227,34 @@
         "sha256": "031c8643cab2b00eea18e9fd349e31b384ec2d304d97b38004e84184a274acea",
         "git_blob": "af489dad05916b6470083c805f4ee164ec63378c"
       }
+    ],
+    "L04": [
+      {
+        "path": "handoff/foundation_implementation/authority/FOUNDATION_IMPLEMENTATION_BRIEF_PROPOSED.md",
+        "sha256": "282f7d73c5e2fdf36ded43781665764eaf95d4a35f687f99990b87c59f744ed7",
+        "git_blob": "085c6663f41c214a680bafad7aafd587f2a38b5d"
+      },
+      {
+        "path": "handoff/foundation_implementation/reuse_preparation/FAMILY_F35_EXTENDED_E11_E15.md",
+        "sha256": "dafd0285fc601093e73c1bb5398d08f4ff45288804ff44a5837a046a98fe5ab7",
+        "git_blob": "33c41c68406d8cf43a8ab4c5a84bab0efcfcac90"
+      },
+      {
+        "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md",
+        "sha256": "603b850802a418780109095e7ae69bcece449da79fb24140a6d50297605e927c",
+        "git_blob": "32930fc08eb648c2cc6347d32d910e3a45bdc07f"
+      },
+      {
+        "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv",
+        "sha256": "67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549",
+        "git_blob": "a27d5e768ab7f1126cecd5a7bbe35bd05b82a442"
+      }
     ]
   },
   "later_leaf_inspection_limits": {
     "L01": "Current documentary owner assessment; independent semantic review PENDING; no product execution.",
     "L02": "Current documentary owner assessment; independent semantic review PENDING; no product execution.",
-    "L03": "Current documentary owner assessment; independent semantic review PENDING; no product execution."
+    "L03": "Current documentary owner assessment; independent semantic review PENDING; no product execution.",
+    "L04": "Current documentary owner assessment; independent semantic review PENDING; no product execution."
   }
 }

@@ -131,3 +131,7 @@ Sixteen statistical, option-IV, surface and risk-neutral-density readiness recor
 ### L03 author completion (external independent review pending)
 
 Seven option-activity and microstructure holds independently distinguished from accepted L14 native source compatibility. Evidence: `handoff/m02_remaining_readiness/L03_FINDINGS.md` and `L03_SOURCE_BINDINGS.json`. D145 remains source-event-time paused; owner receipt-clock alternative remains proposal only. No product tests or newly authorised policies. L03 AUTHOR_COMPLETED / NOT_INDEPENDENTLY_ACCEPTED. L04–L05 not attempted at this checkpoint.
+
+### L04 author completion (external independent review pending)
+
+D151 assessed from primary `K02_ALGEBRA` and exact four catalogue roles: three component breadth fractions, distinct eligible denominators, neutral M02 boundary. Missing basket/source/weight-mode/readback authority recorded as a specific source/profile hold, not automatic numerical deferral or a strategic coefficient claim. See `handoff/m02_remaining_readiness/L04_FINDINGS.md` and `L04_SOURCE_BINDINGS.json`. L04 AUTHOR_COMPLETED / NOT_INDEPENDENTLY_ACCEPTED, L05 not attempted at this checkpoint.

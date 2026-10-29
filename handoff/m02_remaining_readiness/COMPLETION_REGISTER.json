@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "source_checkpoint": "f84430f275931aea56cf4f44931699ffaee3f542",
-  "scope": "L00 baseline with L01–L03 author documentary reassessments; independent downstream review pending",
+  "scope": "L00 baseline with L01–L04 author documentary reassessments; independent downstream review pending",
   "counts": {
     "foundation_target": 126,
     "recorded_controlled_acceptances": 98,
@@ -11323,19 +11323,57 @@
       "historical_controlled_status": "UNASSESSED",
       "native_profile_status": "NOT_ESTABLISHED_BY_L00",
       "operational_status": "FULL_OPERATIONAL_OR_LIVE_READINESS_NOT_ESTABLISHED",
-      "source_readiness": "Controlled proof only where evidenced; native/provider/domain readiness not inferred",
+      "source_readiness": "CONTROLLED_OR_NARROW_PREDECESSOR_ONLY; MISSING_DOMAIN_OR_PROFILE_AS_DESCRIBED",
       "durable_backend_scope": "Owner-local SQLite for evidenced controlled profile; no PostgreSQL/live parity assertion",
       "owning_readiness_leaf": "L04",
-      "readiness": "UNKNOWN_PENDING_ASSIGNED_REASSESSMENT",
-      "current_hold": "Retained; detailed current prerequisites to be assessed in L04",
-      "first_unmet_prerequisite": "Current source/domain/policy/producer assessment pending",
-      "receiver": "M02/source/profile owner; documentary leaf L04",
-      "decision_required": "Assigned reassessment; no policy invented",
-      "evidence_certainty": "Historical evidence links are observations; new readiness UNKNOWN",
+      "readiness": "HELD_FOR_SOURCE",
+      "current_hold": "PRESERVED; No demonstrated admitted, revision-/member-consistent public four-role source profile for full US monitored basket with R037 last, R043 session open, R137 VWAP, R042 official prior close.",
+      "first_unmet_prerequisite": "No demonstrated admitted, revision-/member-consistent public four-role source profile for full US monitored basket with R037 last, R043 session open, R137 VWAP, R042 official prior close.",
+      "receiver": "M02 basket measurement owner + M00 basket feed/source owner",
+      "decision_required": "Approve exact monitored basket, equal-count versus predetermined neutral weights, as-of/source session and per-component omission/zero-denominator policy.",
+      "evidence_certainty": "SOURCE_REVIEWED_WITH_EXPLICIT_GAPS; NOT_INDEPENDENTLY_VERIFIED",
       "accepted_definition_profile_identity": "UNKNOWN until original brief/contract exact identity below; no generic profile assumption",
       "implementation_evidence": [],
       "historical_proof": null,
-      "effective_semantic_authority_refs": []
+      "effective_semantic_authority_refs": [
+        "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md",
+        "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv",
+        "handoff/foundation_implementation/authority/FOUNDATION_IMPLEMENTATION_BRIEF_PROPOSED.md"
+      ],
+      "documentary_assessment": {
+        "status": "HELD_FOR_SOURCE",
+        "first_unmet_invariant": "No demonstrated admitted, revision-/member-consistent public four-role source profile for full US monitored basket with R037 last, R043 session open, R137 VWAP, R042 official prior close.",
+        "observed_distinction_and_other_barriers": "K02 defines THREE separate fraction outputs with per-component eligible member denominators, not a single score. Current legacy M01 code/tests and F35 author audit are navigation, not M02 proof. Need immutable basket/membership, selection, zero-denominator refusal, weighting mode, typed three-part result, source readback.",
+        "proposed_next_action": "Propose one neutral M02 basket-breadth controlled profile and exact per-component denominator/absence and readback cases, after legitimate member/source policy. No strategic weights or candidate state.",
+        "receiver": "M02 basket measurement owner + M00 basket feed/source owner",
+        "decision_or_authority_needed": "Approve exact monitored basket, equal-count versus predetermined neutral weights, as-of/source session and per-component omission/zero-denominator policy.",
+        "catalogue_derived_dependencies": [],
+        "documentary_sources": [
+          {
+            "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md",
+            "sha256": "603b850802a418780109095e7ae69bcece449da79fb24140a6d50297605e927c",
+            "git_blob": "32930fc08eb648c2cc6347d32d910e3a45bdc07f"
+          },
+          {
+            "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv",
+            "sha256": "67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549",
+            "git_blob": "a27d5e768ab7f1126cecd5a7bbe35bd05b82a442"
+          },
+          {
+            "path": "handoff/foundation_implementation/reuse_preparation/FAMILY_F35_EXTENDED_E11_E15.md",
+            "sha256": "dafd0285fc601093e73c1bb5398d08f4ff45288804ff44a5837a046a98fe5ab7",
+            "git_blob": "33c41c68406d8cf43a8ab4c5a84bab0efcfcac90"
+          },
+          {
+            "path": "handoff/foundation_implementation/authority/FOUNDATION_IMPLEMENTATION_BRIEF_PROPOSED.md",
+            "sha256": "282f7d73c5e2fdf36ded43781665764eaf95d4a35f687f99990b87c59f744ed7",
+            "git_blob": "085c6663f41c214a680bafad7aafd587f2a38b5d"
+          }
+        ],
+        "certainty": "Evidence-based documentary status; future source/profile acceptance and operational readiness not established",
+        "independent_review": "PENDING_OWNER_HANDOFF",
+        "product_tests_run_this_leaf": 0
+      }
     }
   ]
 }
