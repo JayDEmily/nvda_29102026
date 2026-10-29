@@ -80,9 +80,9 @@
       "unresolved_real_world": [
         "public aligned history source",
         "valid rolling/state selection",
-        "numeric output codec and conditioning threshold",
-        "effective owner classification given variable coefficients"
-      ]
+        "numeric output codec and conditioning threshold"
+      ],
+      "ownership_boundary": "Retained M02 neutral-statistics responsibility; variable fitted coefficients alone do not create a new ownership question. Actual history/profile/source admission remains unresolved."
     },
     "D091_delta_buckets": {
       "synthetic_profile_id": "D091-SYNTHETIC-TENTATIVE-V1",
@@ -166,7 +166,7 @@
       },
       "refuse": [
         "no first qualifying joint shock",
-        "only one recovery condition met",
+        "window ends without a state meeting BOTH recovery conditions; a one-condition intermediate state alone does not abort the search",
         "outside 30s",
         "incomplete book",
         "nonpositive baseline spread or depth",
@@ -176,14 +176,15 @@
         "source provider/contract quote join and completeness",
         "production shock thresholds and temporal basis",
         "actual recovery observation window and venue coverage"
-      ]
+      ],
+      "intermediate_state_rule": "A complete eligible state meeting only depth recovery or only spread recovery is not a completed recovery: continue examining later ordered states within the same observation window. Refuse a completed recovery occurrence only if no joint qualifying state occurs within the admitted window, or an independent invalidation applies."
     },
     "D144_smart_direct_matching": {
       "synthetic_profile_id": "D144-SYNTHETIC-TENTATIVE-V1",
       "domain": "one synthetic NVDA STK or selected option contract at a time; venue-specific direct book; SMART aggregate compared to direct selected venue, NOT claimed to be identical venues",
       "matching": "same contract, side and reconstructed rank position 0 or 1; compare top two levels on both sides, preserving direct subscribed-exchange identity distinct from MPID",
       "window": "both complete standing books at synthetic receipt cutoffs; max absolute inter-source receipt skew 0.250 seconds; exact sequence and versioned pair identity; no fabricated source-event time",
-      "metrics": "per pair: SMART price minus direct price USD per share/underlying; SMART displayed size minus direct displayed size in shares or contracts, typed by security; retain each book/venue/MPID lineage",
+      "metrics": "Per pair: SMART price minus direct price, with identical explicitly declared native quote units on both source books; SMART displayed size minus direct displayed size in shares for stock or contracts for options. Retain both source/unit/venue/MPID lineages. In this synthetic option scenario a premium price is USD per underlying share, not total USD per option contract; any separately requested contract premium requires the explicit configured contract multiplier. Never infer a multiplier or mix premium-per-share with premium-per-contract.",
       "unmatched": "if any required level missing, stale, skewed, incompatible, unentitled, or reset, no completed D144 comparison; never fill direct with zero",
       "example_test_only": {
         "smart_bid_rank0_price": "100.00",
@@ -205,7 +206,8 @@
         "actual simultaneous comparable SMART/direct source lineage",
         "account depth permission and venue coverage",
         "owner production skew, levels and matching semantics"
-      ]
+      ],
+      "unit_refusal": "Refuse absent, incompatible or undeclared native price/size units. If a per-contract monetary value is requested, refuse absent configured multiplier; this scaffold does not supply actual provider unit or multiplier evidence."
     }
   },
   "gate_boundary": {
