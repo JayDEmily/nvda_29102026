@@ -1,0 +1,63 @@
+name: M02 L00 transfer-only successor publication
+on:
+  push:
+    branches: [execution/accepted-r1-20261030]
+    paths:
+      - .github/workflows/m02-l00-transfer-repair.yml
+      - handoff/m02_completion_28_execution/L00/transfer_repair_20261030/**
+  workflow_dispatch:
+    inputs:
+      original_baseline_url:
+        description: Optional downloadable original4d02 baseline archive URL, verified before use
+        required: false
+        type: string
+permissions:
+  contents: write
+concurrency:
+  group: m02-l00-transfer-only
+  cancel-in-progress: false
+jobs:
+  checkpoint:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      ORIGINAL_BASELINE_URL: ${{ inputs.original_baseline_url }}
+      TARGET: ${{ github.sha }}
+      CHECKPOINT_DIR: ${{ runner.temp }}/l00-successor
+      TAG: nvda-l00-transfer-successor-${{ github.run_id }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+      - name: Capture all preserved remote refs without changing branches
+        run: git fetch --no-recurse-submodules origin '+refs/heads/*:refs/remotes/origin/*' '+refs/tags/*:refs/tags/*'
+      - name: Build and freshly restore transfer artifacts only
+        shell: bash
+        run: |
+          set -euo pipefail
+          original_args=()
+          if [ -n "$ORIGINAL_BASELINE_URL" ]; then
+            curl --fail --location --silent --show-error "$ORIGINAL_BASELINE_URL" -o "$RUNNER_TEMP/original-baseline.tar.gz"
+            original_args=(--original-archive "$RUNNER_TEMP/original-baseline.tar.gz")
+          fi
+          python3 handoff/m02_completion_28_execution/L00/transfer_repair_20261030/build_checkpoint.py --target "$TARGET" --output "$CHECKPOINT_DIR" "${original_args[@]}"
+          (cd "$CHECKPOINT_DIR" && sha256sum --check SHA256SUMS.txt)
+      - name: Publish immutable transfer-only Release assets
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mapfile -d '' assets < <(find "$CHECKPOINT_DIR" -maxdepth 1 -type f -print0 | sort -z)
+          gh release create "$TAG" "${assets[@]}" --repo "$GITHUB_REPOSITORY" --target "$TARGET" --prerelease --title "L00 successor transfer $TARGET" --notes "Distinct successor checkpoint for exact candidate $TARGET. Both Git bundles and full restore verified by producer. Independent external download/review is required; this publication alone does not release L00. See RESTORE.md and original-baseline availability in L00_MANIFEST.json. No product tests, dependency installations or downstream implementation."
+      - name: Verify externally downloaded release bytes
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir "$RUNNER_TEMP/l00-release-readback"
+          gh release download "$TAG" --repo "$GITHUB_REPOSITORY" --dir "$RUNNER_TEMP/l00-release-readback"
+          (cd "$RUNNER_TEMP/l00-release-readback" && sha256sum --check SHA256SUMS.txt)
+          gh release view "$TAG" --repo "$GITHUB_REPOSITORY" --json tagName,url,assets
