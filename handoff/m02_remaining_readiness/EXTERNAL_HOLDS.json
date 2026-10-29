@@ -32,10 +32,10 @@
     {
       "derived_id": "D070",
       "canonical_name": "International overnight risk score",
-      "owner": "Own score/horizon/FX profile; effective owner requires separate authority check",
+      "owner": "P02 / existing M03",
       "historical_status": "OWNER_DEFERRED_OR_HELD; NOT IMPLEMENTED/ACCEPTED BY THIS LEAF",
-      "hold_authority": "7b343c56:EXEC_PLAN.md \u00a75/\u00a7\u00a713\u201315",
-      "current_disposition": "Retain exact historical conditions; no automatic promotion or reassignment",
+      "hold_authority": "handoff/foundation_implementation/authority/FOUNDATION_IMPLEMENTATION_BRIEF_PROPOSED.md#Annex-C(P02); 7b343c56:EXEC_PLAN.md \u00a73/\u00a75.5; config/architecture/modules.yaml#M03",
+      "current_disposition": "P02 / existing M03 remains the owner; exact K07 seven-input score, horizon/FX profiles and D049/D050 1-day versus D051 5-day compatibility unresolved; no implementation/acceptance or M02 transfer",
       "counted_in_126": false
     },
     {

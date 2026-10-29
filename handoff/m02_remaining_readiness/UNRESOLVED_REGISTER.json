@@ -167,25 +167,26 @@
       "durable_backend_scope": "Owner-local SQLite for evidenced controlled profile; no PostgreSQL/live parity assertion",
       "owning_readiness_leaf": "L02",
       "readiness": "HELD_FOR_DEFINITION_OR_POLICY",
-      "current_hold": "PRESERVED; No approved single full-rank aligned historical regression fit contract (training histories, intercept, conditioning, rank, current exclusion, sample identity).",
-      "first_unmet_prerequisite": "No approved single full-rank aligned historical regression fit contract (training histories, intercept, conditioning, rank, current exclusion, sample identity).",
+      "current_hold": "PRESERVED; No admitted aligned historical training source/window/state selection and full-rank shared fit provenance under the already-fixed K06 OLS-with-intercept four-vector model.",
+      "first_unmet_prerequisite": "No admitted aligned historical training source/window/state selection and full-rank shared fit provenance under the already-fixed K06 OLS-with-intercept four-vector model.",
       "receiver": "M02 neutral-statistics and source-history owners",
-      "decision_required": "Approve conditioning, sample/window/return convention, rank/refusal and numeric/fit identity.",
+      "decision_required": "Approve lawful aligned histories, selected window/state sample, full-rank/absence policy, current exclusion, numeric representation and common fit provenance; K06 OLS/intercept/factor basis already fixed.",
       "evidence_certainty": "SOURCE_REVIEWED_WITH_EXPLICIT_GAPS; NOT_INDEPENDENTLY_VERIFIED",
       "accepted_definition_profile_identity": "UNKNOWN until original brief/contract exact identity below; no generic profile assumption",
       "implementation_evidence": [],
       "historical_proof": null,
       "effective_semantic_authority_refs": [
+        "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md",
         "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
         "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv"
       ],
       "documentary_assessment": {
         "status": "HELD_FOR_DEFINITION_OR_POLICY",
-        "first_unmet_invariant": "No approved single full-rank aligned historical regression fit contract (training histories, intercept, conditioning, rank, current exclusion, sample identity).",
+        "first_unmet_invariant": "No admitted aligned historical training source/window/state selection and full-rank shared fit provenance under the already-fixed K06 OLS-with-intercept four-vector model.",
         "observed_distinction_and_other_barriers": "Controlled D071/D075/D076/D077 exist but are fixed-snapshot profiles, not general training-history producers. No public shared immutable fit_id established.",
-        "proposed_next_action": "Authorise neutral OLS fit and lawful public history producers; prove one immutable shared fit and typed beta lineage before D078.",
+        "proposed_next_action": "Obtain admitted aligned historical source and versioned sample/window/state/rank/numeric and fit identity; demonstrate the existing K06 joint OLS model and typed coefficient lineage, without changing equation or basis.",
         "receiver": "M02 neutral-statistics and source-history owners",
-        "decision_or_authority_needed": "Approve conditioning, sample/window/return convention, rank/refusal and numeric/fit identity.",
+        "decision_or_authority_needed": "Approve lawful aligned histories, selected window/state sample, full-rank/absence policy, current exclusion, numeric representation and common fit provenance; K06 OLS/intercept/factor basis already fixed.",
         "catalogue_derived_dependencies": [
           "D075",
           "D071",
@@ -193,6 +194,11 @@
           "D077"
         ],
         "documentary_sources": [
+          {
+            "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md",
+            "sha256": "603b850802a418780109095e7ae69bcece449da79fb24140a6d50297605e927c",
+            "git_blob": "32930fc08eb648c2cc6347d32d910e3a45bdc07f"
+          },
           {
             "path": "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
             "sha256": "2d95d7c5e425ed1dd231f4685100f7c1db9c85ee1369fea54f91580aab6caa5a",
@@ -206,8 +212,13 @@
         ],
         "certainty": "Evidence-based documentary status; future source/profile acceptance and operational readiness not established",
         "independent_review": "PENDING_OWNER_HANDOFF",
-        "product_tests_run_this_leaf": 0
-      }
+        "product_tests_run_this_leaf": 0,
+        "fixed_K06_calculation_definition": "K06_REGRESSION_DEPENDENCE: existing OLS with intercept on aligned D075 dependent return and D071/D076/D077 factors (market, technology-relative, semiconductor-relative); D079/D080/D081 are beta coefficients of ONE immutable model fit; no new regression/basis selection authority.",
+        "remaining_source_and_profile_decisions": "Admitted aligned histories, training window/state selection, complete/finiteness/full rank, current-observation exclusion, numeric representation and immutable fit/source provenance. No feature orthogonalisation or new OLS equation is requested."
+      },
+      "fixed_K06_model_authority": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md#K06 (lines 218–224)",
+      "fixed_K06_model_equation": "D075 = α + β_market*D071 + β_tech*D076 + β_semi*D077 + ε; OLS with intercept; shared fit identity.",
+      "remaining_unaccepted_fit_conditions": "Admitted aligned histories, training window/state selection, complete/finiteness/full rank, current-observation exclusion, numeric representation and immutable fit/source provenance. No feature orthogonalisation or new OLS equation is requested."
     },
     {
       "derived_id": "D080",
@@ -232,25 +243,26 @@
       "durable_backend_scope": "Owner-local SQLite for evidenced controlled profile; no PostgreSQL/live parity assertion",
       "owning_readiness_leaf": "L02",
       "readiness": "HELD_FOR_DEFINITION_OR_POLICY",
-      "current_hold": "PRESERVED; Same absent shared full-rank fit/feature-orthogonalisation policy as D079; QQQ controlled return presence does not provide a trained conditional technology factor.",
-      "first_unmet_prerequisite": "Same absent shared full-rank fit/feature-orthogonalisation policy as D079; QQQ controlled return presence does not provide a trained conditional technology factor.",
+      "current_hold": "PRESERVED; Same missing aligned historical training source, full-rank sample selection and immutable common K06 OLS fit as D079; controlled D076 is not a trained common fit.",
+      "first_unmet_prerequisite": "Same missing aligned historical training source, full-rank sample selection and immutable common K06 OLS fit as D079; controlled D076 is not a trained common fit.",
       "receiver": "M02 neutral-statistics and source-history owners",
-      "decision_required": "Approve same joint immutable fit contract as D079, preserving factor ordering.",
+      "decision_required": "Approve lawful aligned histories, selected window/state sample, full-rank/absence policy, current exclusion, numeric representation and common fit provenance; K06 OLS/intercept/factor basis already fixed.",
       "evidence_certainty": "SOURCE_REVIEWED_WITH_EXPLICIT_GAPS; NOT_INDEPENDENTLY_VERIFIED",
       "accepted_definition_profile_identity": "UNKNOWN until original brief/contract exact identity below; no generic profile assumption",
       "implementation_evidence": [],
       "historical_proof": null,
       "effective_semantic_authority_refs": [
+        "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md",
         "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
         "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv"
       ],
       "documentary_assessment": {
         "status": "HELD_FOR_DEFINITION_OR_POLICY",
-        "first_unmet_invariant": "Same absent shared full-rank fit/feature-orthogonalisation policy as D079; QQQ controlled return presence does not provide a trained conditional technology factor.",
+        "first_unmet_invariant": "Same missing aligned historical training source, full-rank sample selection and immutable common K06 OLS fit as D079; controlled D076 is not a trained common fit.",
         "observed_distinction_and_other_barriers": "Need aligned SPY/QQQ/semiconductor/NVDA historical sample and shared immutable fit provenance.",
-        "proposed_next_action": "Implement only after common fit authority; return QQQ/technology beta from that exact fit, not separately estimated beta.",
+        "proposed_next_action": "Obtain admitted aligned historical source and versioned sample/window/state/rank/numeric and fit identity; demonstrate the existing K06 joint OLS model and typed coefficient lineage, without changing equation or basis.",
         "receiver": "M02 neutral-statistics and source-history owners",
-        "decision_or_authority_needed": "Approve same joint immutable fit contract as D079, preserving factor ordering.",
+        "decision_or_authority_needed": "Approve lawful aligned histories, selected window/state sample, full-rank/absence policy, current exclusion, numeric representation and common fit provenance; K06 OLS/intercept/factor basis already fixed.",
         "catalogue_derived_dependencies": [
           "D075",
           "D071",
@@ -258,6 +270,11 @@
           "D077"
         ],
         "documentary_sources": [
+          {
+            "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md",
+            "sha256": "603b850802a418780109095e7ae69bcece449da79fb24140a6d50297605e927c",
+            "git_blob": "32930fc08eb648c2cc6347d32d910e3a45bdc07f"
+          },
           {
             "path": "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
             "sha256": "2d95d7c5e425ed1dd231f4685100f7c1db9c85ee1369fea54f91580aab6caa5a",
@@ -271,8 +288,13 @@
         ],
         "certainty": "Evidence-based documentary status; future source/profile acceptance and operational readiness not established",
         "independent_review": "PENDING_OWNER_HANDOFF",
-        "product_tests_run_this_leaf": 0
-      }
+        "product_tests_run_this_leaf": 0,
+        "fixed_K06_calculation_definition": "K06_REGRESSION_DEPENDENCE: existing OLS with intercept on aligned D075 dependent return and D071/D076/D077 factors (market, technology-relative, semiconductor-relative); D079/D080/D081 are beta coefficients of ONE immutable model fit; no new regression/basis selection authority.",
+        "remaining_source_and_profile_decisions": "Admitted aligned histories, training window/state selection, complete/finiteness/full rank, current-observation exclusion, numeric representation and immutable fit/source provenance. No feature orthogonalisation or new OLS equation is requested."
+      },
+      "fixed_K06_model_authority": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md#K06 (lines 218–224)",
+      "fixed_K06_model_equation": "D075 = α + β_market*D071 + β_tech*D076 + β_semi*D077 + ε; OLS with intercept; shared fit identity.",
+      "remaining_unaccepted_fit_conditions": "Admitted aligned histories, training window/state selection, complete/finiteness/full rank, current-observation exclusion, numeric representation and immutable fit/source provenance. No feature orthogonalisation or new OLS equation is requested."
     },
     {
       "derived_id": "D081",
@@ -297,25 +319,26 @@
       "durable_backend_scope": "Owner-local SQLite for evidenced controlled profile; no PostgreSQL/live parity assertion",
       "owning_readiness_leaf": "L02",
       "readiness": "HELD_FOR_DEFINITION_OR_POLICY",
-      "current_hold": "PRESERVED; Same absent shared full-rank fitted factor system as D079/D080 and exact semiconductor factor handling.",
-      "first_unmet_prerequisite": "Same absent shared full-rank fitted factor system as D079/D080 and exact semiconductor factor handling.",
+      "current_hold": "PRESERVED; Same missing aligned historical training source, full-rank sample selection and immutable common K06 OLS fit as D079/D080; D077 is the already-fixed semiconductor-relative factor.",
+      "first_unmet_prerequisite": "Same missing aligned historical training source, full-rank sample selection and immutable common K06 OLS fit as D079/D080; D077 is the already-fixed semiconductor-relative factor.",
       "receiver": "M02 neutral-statistics and source-history owners",
-      "decision_required": "Accept same joint OLS fit, training/source completeness and numeric policy.",
+      "decision_required": "Approve lawful aligned histories, selected window/state sample, full-rank/absence policy, current exclusion, numeric representation and common fit provenance; K06 OLS/intercept/factor basis already fixed.",
       "evidence_certainty": "SOURCE_REVIEWED_WITH_EXPLICIT_GAPS; NOT_INDEPENDENTLY_VERIFIED",
       "accepted_definition_profile_identity": "UNKNOWN until original brief/contract exact identity below; no generic profile assumption",
       "implementation_evidence": [],
       "historical_proof": null,
       "effective_semantic_authority_refs": [
+        "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md",
         "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
         "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv"
       ],
       "documentary_assessment": {
         "status": "HELD_FOR_DEFINITION_OR_POLICY",
-        "first_unmet_invariant": "Same absent shared full-rank fitted factor system as D079/D080 and exact semiconductor factor handling.",
+        "first_unmet_invariant": "Same missing aligned historical training source, full-rank sample selection and immutable common K06 OLS fit as D079/D080; D077 is the already-fixed semiconductor-relative factor.",
         "observed_distinction_and_other_barriers": "Controlled D077 is a relative-return measurement, not complete semiconductor factor training history; equal numeric beta values cannot evidence common fit.",
-        "proposed_next_action": "Derive semiconductor beta from same immutable full-rank model_fit_id and aligned factor matrix.",
+        "proposed_next_action": "Obtain admitted aligned historical source and versioned sample/window/state/rank/numeric and fit identity; demonstrate the existing K06 joint OLS model and typed coefficient lineage, without changing equation or basis.",
         "receiver": "M02 neutral-statistics and source-history owners",
-        "decision_or_authority_needed": "Accept same joint OLS fit, training/source completeness and numeric policy.",
+        "decision_or_authority_needed": "Approve lawful aligned histories, selected window/state sample, full-rank/absence policy, current exclusion, numeric representation and common fit provenance; K06 OLS/intercept/factor basis already fixed.",
         "catalogue_derived_dependencies": [
           "D075",
           "D071",
@@ -323,6 +346,11 @@
           "D077"
         ],
         "documentary_sources": [
+          {
+            "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md",
+            "sha256": "603b850802a418780109095e7ae69bcece449da79fb24140a6d50297605e927c",
+            "git_blob": "32930fc08eb648c2cc6347d32d910e3a45bdc07f"
+          },
           {
             "path": "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
             "sha256": "2d95d7c5e425ed1dd231f4685100f7c1db9c85ee1369fea54f91580aab6caa5a",
@@ -336,8 +364,13 @@
         ],
         "certainty": "Evidence-based documentary status; future source/profile acceptance and operational readiness not established",
         "independent_review": "PENDING_OWNER_HANDOFF",
-        "product_tests_run_this_leaf": 0
-      }
+        "product_tests_run_this_leaf": 0,
+        "fixed_K06_calculation_definition": "K06_REGRESSION_DEPENDENCE: existing OLS with intercept on aligned D075 dependent return and D071/D076/D077 factors (market, technology-relative, semiconductor-relative); D079/D080/D081 are beta coefficients of ONE immutable model fit; no new regression/basis selection authority.",
+        "remaining_source_and_profile_decisions": "Admitted aligned histories, training window/state selection, complete/finiteness/full rank, current-observation exclusion, numeric representation and immutable fit/source provenance. No feature orthogonalisation or new OLS equation is requested."
+      },
+      "fixed_K06_model_authority": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md#K06 (lines 218–224)",
+      "fixed_K06_model_equation": "D075 = α + β_market*D071 + β_tech*D076 + β_semi*D077 + ε; OLS with intercept; shared fit identity.",
+      "remaining_unaccepted_fit_conditions": "Admitted aligned histories, training window/state selection, complete/finiteness/full rank, current-observation exclusion, numeric representation and immutable fit/source provenance. No feature orthogonalisation or new OLS equation is requested."
     },
     {
       "derived_id": "D085",
@@ -1527,12 +1560,13 @@
       "current_hold": "PRESERVED; No demonstrated matched execution versus cancellation/depletion source law and lawful complete ordered stock/option book+trade coverage.",
       "first_unmet_prerequisite": "No demonstrated matched execution versus cancellation/depletion source law and lawful complete ordered stock/option book+trade coverage.",
       "receiver": "M00 trade/book source and M02 microstructure owner",
-      "decision_required": "Accept measurable proxy/attribution limits, restoration interval and thresholds.",
+      "decision_required": "Approve source/proxy attribution, complete clock and Δt_max policy; do not reopen the fixed K08 score/matching.",
       "evidence_certainty": "SOURCE_REVIEWED_WITH_EXPLICIT_GAPS; NOT_INDEPENDENTLY_VERIFIED",
       "accepted_definition_profile_identity": "UNKNOWN until original brief/contract exact identity below; no generic profile assumption",
       "implementation_evidence": [],
       "historical_proof": null,
       "effective_semantic_authority_refs": [
+        "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md",
         "handoff/downstream_reconciliation/L13/D145_RESUMPTION_DISPOSITION.md",
         "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
         "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv"
@@ -1541,11 +1575,16 @@
         "status": "HELD_FOR_SOURCE",
         "first_unmet_invariant": "No demonstrated matched execution versus cancellation/depletion source law and lawful complete ordered stock/option book+trade coverage.",
         "observed_distinction_and_other_barriers": "L14 native book/control handling does not identify executions from anonymous size changes. Restoration timeout, recurrence/price and clock semantics additionally need policy.",
-        "proposed_next_action": "Define observable replenishment proxy versus proved execution/cancel; require source pairing and reset-safe full history, then exact bounded score.",
+        "proposed_next_action": "Establish actual execution/cancellation attribution or a separately accepted observable proxy, complete ordered book/trade source and versioned Δt_max/clock; then apply unchanged K08 earliest one-to-one same-subject/side/price restoration, per-event cap and denominator-positive weighted ratio in a bounded future proof.",
         "receiver": "M00 trade/book source and M02 microstructure owner",
-        "decision_or_authority_needed": "Accept measurable proxy/attribution limits, restoration interval and thresholds.",
+        "decision_or_authority_needed": "Approve source/proxy attribution, complete clock and Δt_max policy only; K08 earliest restoration, one-match cap and weighted ratio are already fixed.",
         "catalogue_derived_dependencies": [],
         "documentary_sources": [
+          {
+            "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md",
+            "sha256": "603b850802a418780109095e7ae69bcece449da79fb24140a6d50297605e927c",
+            "git_blob": "32930fc08eb648c2cc6347d32d910e3a45bdc07f"
+          },
           {
             "path": "handoff/downstream_reconciliation/FINAL_REPORT.md",
             "sha256": "8be0a591460cd29d8b613de64597ee7c89d71db05660998f01a8bf73a04a670f",
@@ -1569,8 +1608,13 @@
         ],
         "certainty": "Evidence-based documentary status; future source/profile acceptance and operational readiness not established",
         "independent_review": "PENDING_OWNER_HANDOFF",
-        "product_tests_run_this_leaf": 0
-      }
+        "product_tests_run_this_leaf": 0,
+        "fixed_K08_mathematical_obligation": "Same subject/side/price depletion followed by first qualifying restoration within Δt_max; each depletion matched at most once; credited replenishment per event capped at depleted size; score = sum(credited_replenished_size)/sum(depleted_size) over matched/eligible events; positive denominator required.",
+        "genuinely_open_source_clock_and_interval": "Actual execution versus cancellation/depletion attribution or explicitly authorised observable proxy, adequate continuous/reset-safe book+trade source, source/clock selection and Δt_max numeric interval. Do not reopen K08 matching or score formula."
+      },
+      "fixed_matching_score_authority": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md#K08:D141 (line 283)",
+      "fixed_matching_score_invariants": "Same subject/side/price depletion followed by first qualifying restoration within Δt_max; each depletion matched at most once; credited replenishment per event capped at depleted size; score = sum(credited_replenished_size)/sum(depleted_size) over matched/eligible events; positive denominator required.",
+      "remaining_unaccepted_conditions": "Actual execution versus cancellation/depletion attribution or explicitly authorised observable proxy, adequate continuous/reset-safe book+trade source, source/clock selection and Δt_max numeric interval. Do not reopen K08 matching or score formula."
     },
     {
       "derived_id": "D142",
@@ -1752,6 +1796,7 @@
       "implementation_evidence": [],
       "historical_proof": null,
       "effective_semantic_authority_refs": [
+        "handoff/m01_completion/authority/D138_D145_L2_OWNER_APPROVED_DEPENDENCY_AMENDMENT_20261016.md",
         "handoff/downstream_reconciliation/L13/D145_RESUMPTION_DISPOSITION.md",
         "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
         "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv"
@@ -1765,6 +1810,11 @@
         "decision_or_authority_needed": "Explicit source-event provenance or new owner-approved receipt-clock definition/identity/test allocation; no silent clock swap.",
         "catalogue_derived_dependencies": [],
         "documentary_sources": [
+          {
+            "path": "handoff/m01_completion/authority/D138_D145_L2_OWNER_APPROVED_DEPENDENCY_AMENDMENT_20261016.md",
+            "sha256": "9973c3699b5135be503611f4a5582118c4f80a0145bde473720c32434a3963e2",
+            "git_blob": "13805165e6f2d7651ce275be24edbf94ed403d52"
+          },
           {
             "path": "handoff/downstream_reconciliation/L13/D145_RESUMPTION_DISPOSITION.md",
             "sha256": "1f540470a2096c90c88d9e0e85f441f67d4c360e301f3bf9d65494d08b6f72ad",
@@ -1788,8 +1838,13 @@
         ],
         "certainty": "Evidence-based documentary status; future source/profile acceptance and operational readiness not established",
         "independent_review": "PENDING_OWNER_HANDOFF",
-        "product_tests_run_this_leaf": 0
-      }
+        "product_tests_run_this_leaf": 0,
+        "fixed_effective_source_contract": "D145-L2-CONTRACT-20261016-01: co-referenced R185 position, R187 operation, R188 side, R189 price, R190 size; pre-window ordered book warm-up and reset/refusal. Historical catalogue R list preserved. K17 source-event clock remains paused."
+      },
+      "effective_raw_dependencies": "R185;R187;R188;R189;R190",
+      "effective_definition_revision": "D145-L2-CONTRACT-20261016-01",
+      "effective_raw_dependency_authority": "handoff/m01_completion/authority/D138_D145_L2_OWNER_APPROVED_DEPENDENCY_AMENDMENT_20261016.md#§1–§3 (owner-approved 16 October 2026)",
+      "effective_raw_dependency_limit": "Catalogue raw_dependencies remains the untouched legacy column; overlay adds R185 position to native event-order reconstruction without changing K17, source-event clock or requiring a receipt-clock reinterpretation."
     },
     {
       "derived_id": "D151",

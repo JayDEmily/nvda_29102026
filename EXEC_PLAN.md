@@ -143,3 +143,7 @@ L00 was independently accepted in the supplied checkpoint. L01–L04 have now be
 ### L05 documentary status repair 01
 
 The first L05 candidate left prior proposal-phase `NOT_ATTEMPTED` labels in the `TEST_EVIDENCE_LEDGER.json` individual execution-status fields. `handoff/m02_remaining_readiness/L05_REPAIR_01.md` records the bounded correction: L00 independently accepted original; L01–L05 AUTHOR_COMPLETED / EXTERNAL_INDEPENDENT_REVIEW_PENDING; zero product runs. Original candidate/history, product source/proofs and prior delivered L05 bundle are preserved. This is an author-status correction, not independent acceptance.
+
+### Independent review RETURN and bounded documentary repair 02 — 29 October 2026
+
+The owner's independent reviewer returned `38d41fe08b94966572fe79175c9edf9e0bd8be36` (**G2 NOT ACCEPTED**) with four evidence-based documentary findings: F1 D070 owner, F2 D145 effective owner-approved raw dependency overlay, F3 D141 fixed K08 matching/score invariants, F4 D079–D081 fixed K06 regression equation/basis wording. Bounded author corrections and source readback are recorded in `handoff/m02_remaining_readiness/L05_INDEPENDENT_RETURN_REPAIR_02.md` and the corrected canonical registers/findings. The original independent L00 acceptance, 98 historical controlled proof acceptances, 11 L14 scoped claims and all hold decisions are preserved. **Repaired L01–L05 remain AUTHOR_COMPLETED / INDEPENDENT RE-REVIEW PENDING; G2 remains NOT INDEPENDENTLY ACCEPTED.** This is not authority to run product tests or resume D145.

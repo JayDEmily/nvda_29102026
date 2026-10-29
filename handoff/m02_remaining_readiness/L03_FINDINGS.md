@@ -53,11 +53,11 @@ No product implementation or product/static/runtime tests were authorised or per
 
 **First unmet invariant:** No demonstrated matched execution versus cancellation/depletion source law and lawful complete ordered stock/option book+trade coverage.
 
-**Observed distinction:** L14 native book/control handling does not identify executions from anonymous size changes. Restoration timeout, recurrence/price and clock semantics additionally need policy.
+**Observed distinction:** L14 native book/control handling does not identify executions from anonymous size changes. **K08 already fixes** same-subject/side/price replenishment, earliest qualifying one-to-one restoration for each depletion, capped credited size and the weighted positive-denominator ratio. Source attribution, clock and numeric Δt_max remain open; not the matching or score formula.
 
-**Proposed next action:** Define observable replenishment proxy versus proved execution/cancel; require source pairing and reset-safe full history, then exact bounded score.
+**Proposed next action:** Establish lawful execution-versus-cancellation attribution or separately authorised observable proxy and reset-safe ordered source. Future acceptance must select the first qualifying same-subject/side/price restoration within versioned Δt_max, match each depletion once, cap credited replenishment at the depleted size and compute Σ credited_replenished_size / Σ depleted_size across eligible matched events with denominator > 0 (K08 D141); refuse otherwise.
 
-**Decision/receiver:** M00 trade/book source and M02 microstructure owner. Accept measurable proxy/attribution limits, restoration interval and thresholds.
+**Decision/receiver:** M00 trade/book source and M02 microstructure owner. Resolve source/proxy attribution, clock and Δt_max; **do not seek new authority for already-fixed K08 earliest matching, cap or score definition**.
 
 **Evidence inspected:** `handoff/downstream_reconciliation/FINAL_REPORT.md` (SHA256 8be0a591460cd29d…); `handoff/downstream_reconciliation/L13/D145_RESUMPTION_DISPOSITION.md` (SHA256 1f540470a2096c90…); `handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md` (SHA256 2d95d7c5e425ed1d…); `handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv` (SHA256 67bacbcf77afa766…).
 
@@ -95,13 +95,15 @@ No product implementation or product/static/runtime tests were authorised or per
 
 **First unmet invariant:** Paused event-clock K17 requires actual source-event timestamps, but accepted native depth specimens are receipt-only with null provider event time.
 
-**Observed distinction:** L13 preserves +(3+1)=+4 source-event example and separate 317 resets. L14 source/quote/replay does not grant a D145 clock substitution.
+**Observed distinction:** The effective owner-approved dependency overlay `D145-L2-CONTRACT-20261016-01` requires co-referenced `R185;R187;R188;R189;R190` (position, operation, side, price, size), replacing only the old catalogue dependency declaration `R187;R188;R189;R190`; the historical catalogue bytes stay unchanged. L13 preserves +(3+1)=+4 source-event example and separate 317 resets. L14 does not grant a clock substitution or D145 implementation.
 
-**Proposed next action:** Keep event-time version paused; request lawful true-instant source or separately commission new explicitly versioned receipt-clock profile preserving K17 and exact source/review rules.
+**Proposed next action:** Keep the K17 event-time profile paused. Any proposed resumption must trace native ordered book mutation and warm-up via `R185;R187;R188;R189;R190` under `D145-L2-CONTRACT-20261016-01`, plus lawful true-instant event time; an alternative receipt-clock profile requires separate owner-approved identity/definition/proof and cannot silently replace event time.
 
 **Decision/receiver:** M00 depth-source custodian + M02 OFI owner + programme owner. Explicit source-event provenance or new owner-approved receipt-clock definition/identity/test allocation; no silent clock swap.
 
 **Evidence inspected:** `handoff/downstream_reconciliation/L13/D145_RESUMPTION_DISPOSITION.md` (SHA256 1f540470a2096c90…); `handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md` (SHA256 2d95d7c5e425ed1d…); `handoff/downstream_reconciliation/FINAL_REPORT.md` (SHA256 8be0a591460cd29d…); `handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv` (SHA256 67bacbcf77afa766…).
+
+**Direct governing source references:** D141 matching/score: `handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md` K08 D141 (line 283). D145 raw roles: `handoff/m01_completion/authority/D138_D145_L2_OWNER_APPROVED_DEPENDENCY_AMENDMENT_20261016.md` §§1–3 (lines 7–27), original `handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md` §2.2.
 
 ## Source versus policy boundary
 

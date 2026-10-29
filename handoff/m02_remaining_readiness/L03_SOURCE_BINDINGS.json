@@ -12,6 +12,11 @@
   ],
   "sources": [
     {
+      "path": "handoff/m01_completion/authority/D138_D145_L2_OWNER_APPROVED_DEPENDENCY_AMENDMENT_20261016.md",
+      "sha256": "9973c3699b5135be503611f4a5582118c4f80a0145bde473720c32434a3963e2",
+      "git_blob": "13805165e6f2d7651ce275be24edbf94ed403d52"
+    },
+    {
       "path": "handoff/downstream_reconciliation/FINAL_REPORT.md",
       "sha256": "8be0a591460cd29d8b613de64597ee7c89d71db05660998f01a8bf73a04a670f",
       "git_blob": "ddb5ff00582ccac8967edb51d424363e43068ec0"

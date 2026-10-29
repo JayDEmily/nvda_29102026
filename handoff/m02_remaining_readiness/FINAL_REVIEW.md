@@ -41,3 +41,7 @@ Read current GUARDRAILS/AGENTS/root plan and every L00–L05 finding; independen
 - Owner or delegated independent reviewer has not approved readiness classifications, any missing parameter convention or D151 numeric representation.
 - Product source/fee/live/market-data availability has not been newly researched in this documentary-only commission.
 - L05 is a final author-generated checkpoint; gate G2 and overall M02 foundation remain NOT independently accepted / NOT complete.
+
+## Independent reviewer return and bounded author repair (29 October 2026)
+
+Independent reviewer **RETURN FOR BOUNDED DOCUMENTARY REPAIR** at source HEAD `38d41fe08b94966572fe79175c9edf9e0bd8be36`; structural/log evidence supported for unchanged 126/98/28/7 and historical proof links, while G2 was **NOT ACCEPTED**. Four source-relative findings: F1 D070 owner (Annex C P02/M03); F2 D145 effective owner-approved fifth R185 role; F3 D141 unchanged K08 earliest-match/one-to-one/cap/positive-denominator score; F4 D079–D081 unchanged K06 OLS/intercept/four-vector model versus still-open fit history/selection. Refer to `L05_INDEPENDENT_RETURN_REPAIR_02.md` for corrected contract evidence and new author-only readback. This note does **not** claim independent acceptance of the repaired candidate. No product tests were run.

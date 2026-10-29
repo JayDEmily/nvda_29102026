@@ -23,13 +23,13 @@ No product implementation or product/static/runtime tests were authorised or per
 
 **Readiness:** `HELD_FOR_DEFINITION_OR_POLICY`. **Owner:** retained conditional M02 foundation scope.
 
-**First unmet invariant:** No approved single full-rank aligned historical regression fit contract (training histories, intercept, conditioning, rank, current exclusion, sample identity).
+**First unmet invariant:** No admitted aligned historical training source/window/state selection, full-rank sample and shared immutable fit provenance for the **already-fixed K06 OLS-with-intercept** model.
 
 **Observed distinction:** Controlled D071/D075/D076/D077 exist but are fixed-snapshot profiles, not general training-history producers. No public shared immutable fit_id established.
 
-**Proposed next action:** Authorise neutral OLS fit and lawful public history producers; prove one immutable shared fit and typed beta lineage before D078.
+**Proposed next action:** Establish lawful aligned public histories and selected training window/state, full-rank/current-exclusion/numeric and immutable fit identity, then prove the **existing** K06 joint OLS-with-intercept four-vector factor model and typed beta lineage before D078; no new regression equation or orthogonalised basis is requested.
 
-**Decision/receiver:** M02 neutral-statistics and source-history owners. Approve conditioning, sample/window/return convention, rank/refusal and numeric/fit identity.
+**Decision/receiver:** M02 neutral-statistics and source-history owners. Approve aligned source histories, sample/window/state selection, rank/refusal, current exclusion, numeric representation and shared fit provenance; the OLS equation/intercept/factor basis are already fixed by K06.
 
 **Evidence inspected:** `handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md` (SHA256 2d95d7c5e425ed1d…); `handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv` (SHA256 67bacbcf77afa766…).
 
@@ -37,13 +37,13 @@ No product implementation or product/static/runtime tests were authorised or per
 
 **Readiness:** `HELD_FOR_DEFINITION_OR_POLICY`. **Owner:** retained conditional M02 foundation scope.
 
-**First unmet invariant:** Same absent shared full-rank fit/feature-orthogonalisation policy as D079; QQQ controlled return presence does not provide a trained conditional technology factor.
+**First unmet invariant:** Same missing aligned full-rank training-history selection and immutable shared K06 fit as D079; D076 controlled return is not a trained joint-model coefficient. No feature-orthogonalisation policy is required.
 
 **Observed distinction:** Need aligned SPY/QQQ/semiconductor/NVDA historical sample and shared immutable fit provenance.
 
 **Proposed next action:** Implement only after common fit authority; return QQQ/technology beta from that exact fit, not separately estimated beta.
 
-**Decision/receiver:** M02 neutral-statistics and source-history owners. Approve same joint immutable fit contract as D079, preserving factor ordering.
+**Decision/receiver:** M02 neutral-statistics and source-history owners. Approve admissible historical input/window, full-rank/current exclusion, numeric/fit provenance; preserve K06 four-vector model and factor order unchanged.
 
 **Evidence inspected:** `handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md` (SHA256 2d95d7c5e425ed1d…); `handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv` (SHA256 67bacbcf77afa766…).
 
@@ -51,13 +51,13 @@ No product implementation or product/static/runtime tests were authorised or per
 
 **Readiness:** `HELD_FOR_DEFINITION_OR_POLICY`. **Owner:** retained conditional M02 foundation scope.
 
-**First unmet invariant:** Same absent shared full-rank fitted factor system as D079/D080 and exact semiconductor factor handling.
+**First unmet invariant:** Same missing lawful aligned full-rank training-history selection and immutable shared K06 fit as D079/D080; D077 is the already-defined semiconductor-relative factor.
 
 **Observed distinction:** Controlled D077 is a relative-return measurement, not complete semiconductor factor training history; equal numeric beta values cannot evidence common fit.
 
 **Proposed next action:** Derive semiconductor beta from same immutable full-rank model_fit_id and aligned factor matrix.
 
-**Decision/receiver:** M02 neutral-statistics and source-history owners. Accept same joint OLS fit, training/source completeness and numeric policy.
+**Decision/receiver:** M02 neutral-statistics and source-history owners. Accept source histories, selected window/state sample, rank/current-exclusion/numeric and fit identity; K06 OLS/intercept and semiconductor-relative D077 basis are already prescribed.
 
 **Evidence inspected:** `handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md` (SHA256 2d95d7c5e425ed1d…); `handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv` (SHA256 67bacbcf77afa766…).
 

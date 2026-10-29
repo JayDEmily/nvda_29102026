@@ -10,3 +10,8 @@ Read current GUARDRAILS/AGENTS/root plan and every L00–L05 finding; independen
 - Product source/fee/live/market-data availability has not been newly researched in this documentary-only commission.
 - L05 is a final author-generated checkpoint; gate G2 and overall M02 foundation remain NOT independently accepted / NOT complete.
 
+
+
+### Bounded independent re-review after return
+
+The initial independent review returned four documentary defects F1–F4; the corrected candidate requires a **new independent readback** against Annex C P02/M03, owner-approved D145 overlay, K08 D141 and K06 D079–D081. Do not treat the initial read-only review as approval of corrections. See `L05_INDEPENDENT_RETURN_REPAIR_02.md`. Product proofs remain unchanged and no new runs are authorised.
