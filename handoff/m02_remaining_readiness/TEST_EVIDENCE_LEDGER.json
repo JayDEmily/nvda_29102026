@@ -18,7 +18,7 @@
       "module": "M02 readiness documentary review",
       "claim": "Documentary semantic obligation L00; not an admitted product aggregate",
       "requirement_refs": [
-        "EXEC_PLAN_PROPOSED.md §§2–3"
+        "EXEC_PLAN_PROPOSED.md \u00a7\u00a72\u20133"
       ],
       "source_identity": {
         "commit": "f84430f275931aea56cf4f44931699ffaee3f542",
@@ -33,16 +33,17 @@
         ]
       },
       "test_allocation": {
-        "authority_ref": "Owner four-point documentary planning commission; EXEC_PLAN_PROPOSED.md §4",
+        "authority_ref": "Owner four-point documentary planning commission; EXEC_PLAN_PROPOSED.md \u00a74",
         "authorised_case_count": 0,
         "hard_ceiling": 0,
         "cases": []
       },
       "execution": {
         "scheduled_leaf": "L00",
-        "reviewer": "/root/l14_independent_executor",
-        "semantic_status": "NOT_ATTEMPTED",
-        "runs": []
+        "reviewer": "handoff/m02_remaining_readiness/L00_INDEPENDENT_REVIEW.md",
+        "semantic_status": "ORIGINAL_L00_DOCUMENTARY_INDEPENDENTLY_ACCEPTED",
+        "runs": [],
+        "author_execution_status": "L00_COMPLETED_IN_SUPPLIED_CHECKPOINT"
       },
       "external_review_status": "ORIGINAL_L00_INDEPENDENT_ACCEPTANCE_RETAINED",
       "product_tests_new": "NONE"
@@ -52,7 +53,7 @@
       "module": "M02 readiness documentary review",
       "claim": "Documentary semantic obligation L01; not an admitted product aggregate",
       "requirement_refs": [
-        "EXEC_PLAN_PROPOSED.md §§2–3"
+        "EXEC_PLAN_PROPOSED.md \u00a7\u00a72\u20133"
       ],
       "source_identity": {
         "commit": "f84430f275931aea56cf4f44931699ffaee3f542",
@@ -66,16 +67,17 @@
         ]
       },
       "test_allocation": {
-        "authority_ref": "Owner four-point documentary planning commission; EXEC_PLAN_PROPOSED.md §4",
+        "authority_ref": "Owner four-point documentary planning commission; EXEC_PLAN_PROPOSED.md \u00a74",
         "authorised_case_count": 0,
         "hard_ceiling": 0,
         "cases": []
       },
       "execution": {
         "scheduled_leaf": "L01",
-        "reviewer": "UNASSIGNED",
-        "semantic_status": "NOT_ATTEMPTED",
-        "runs": []
+        "reviewer": "OWNER_SEPARATE_THREAD_PENDING",
+        "semantic_status": "AUTHOR_COMPLETED_INDEPENDENT_SEMANTIC_REVIEW_PENDING",
+        "runs": [],
+        "author_execution_status": "AUTHOR_COMPLETED"
       },
       "external_review_status": "PENDING_OWNER_SEPARATE_THREAD",
       "product_tests_new": "NONE"
@@ -85,7 +87,7 @@
       "module": "M02 readiness documentary review",
       "claim": "Documentary semantic obligation L02; not an admitted product aggregate",
       "requirement_refs": [
-        "EXEC_PLAN_PROPOSED.md §§2–3"
+        "EXEC_PLAN_PROPOSED.md \u00a7\u00a72\u20133"
       ],
       "source_identity": {
         "commit": "f84430f275931aea56cf4f44931699ffaee3f542",
@@ -99,16 +101,17 @@
         ]
       },
       "test_allocation": {
-        "authority_ref": "Owner four-point documentary planning commission; EXEC_PLAN_PROPOSED.md §4",
+        "authority_ref": "Owner four-point documentary planning commission; EXEC_PLAN_PROPOSED.md \u00a74",
         "authorised_case_count": 0,
         "hard_ceiling": 0,
         "cases": []
       },
       "execution": {
         "scheduled_leaf": "L02",
-        "reviewer": "UNASSIGNED",
-        "semantic_status": "NOT_ATTEMPTED",
-        "runs": []
+        "reviewer": "OWNER_SEPARATE_THREAD_PENDING",
+        "semantic_status": "AUTHOR_COMPLETED_INDEPENDENT_SEMANTIC_REVIEW_PENDING",
+        "runs": [],
+        "author_execution_status": "AUTHOR_COMPLETED"
       },
       "external_review_status": "PENDING_OWNER_SEPARATE_THREAD",
       "product_tests_new": "NONE"
@@ -118,7 +121,7 @@
       "module": "M02 readiness documentary review",
       "claim": "Documentary semantic obligation L03; not an admitted product aggregate",
       "requirement_refs": [
-        "EXEC_PLAN_PROPOSED.md §§2–3"
+        "EXEC_PLAN_PROPOSED.md \u00a7\u00a72\u20133"
       ],
       "source_identity": {
         "commit": "f84430f275931aea56cf4f44931699ffaee3f542",
@@ -132,16 +135,17 @@
         ]
       },
       "test_allocation": {
-        "authority_ref": "Owner four-point documentary planning commission; EXEC_PLAN_PROPOSED.md §4",
+        "authority_ref": "Owner four-point documentary planning commission; EXEC_PLAN_PROPOSED.md \u00a74",
         "authorised_case_count": 0,
         "hard_ceiling": 0,
         "cases": []
       },
       "execution": {
         "scheduled_leaf": "L03",
-        "reviewer": "UNASSIGNED",
-        "semantic_status": "NOT_ATTEMPTED",
-        "runs": []
+        "reviewer": "OWNER_SEPARATE_THREAD_PENDING",
+        "semantic_status": "AUTHOR_COMPLETED_INDEPENDENT_SEMANTIC_REVIEW_PENDING",
+        "runs": [],
+        "author_execution_status": "AUTHOR_COMPLETED"
       },
       "external_review_status": "PENDING_OWNER_SEPARATE_THREAD",
       "product_tests_new": "NONE"
@@ -151,7 +155,7 @@
       "module": "M02 readiness documentary review",
       "claim": "Documentary semantic obligation L04; not an admitted product aggregate",
       "requirement_refs": [
-        "EXEC_PLAN_PROPOSED.md §§2–3"
+        "EXEC_PLAN_PROPOSED.md \u00a7\u00a72\u20133"
       ],
       "source_identity": {
         "commit": "f84430f275931aea56cf4f44931699ffaee3f542",
@@ -165,16 +169,17 @@
         ]
       },
       "test_allocation": {
-        "authority_ref": "Owner four-point documentary planning commission; EXEC_PLAN_PROPOSED.md §4",
+        "authority_ref": "Owner four-point documentary planning commission; EXEC_PLAN_PROPOSED.md \u00a74",
         "authorised_case_count": 0,
         "hard_ceiling": 0,
         "cases": []
       },
       "execution": {
         "scheduled_leaf": "L04",
-        "reviewer": "UNASSIGNED",
-        "semantic_status": "NOT_ATTEMPTED",
-        "runs": []
+        "reviewer": "OWNER_SEPARATE_THREAD_PENDING",
+        "semantic_status": "AUTHOR_COMPLETED_INDEPENDENT_SEMANTIC_REVIEW_PENDING",
+        "runs": [],
+        "author_execution_status": "AUTHOR_COMPLETED"
       },
       "external_review_status": "PENDING_OWNER_SEPARATE_THREAD",
       "product_tests_new": "NONE"
@@ -184,7 +189,7 @@
       "module": "M02 readiness documentary review",
       "claim": "Documentary semantic obligation L05; not an admitted product aggregate",
       "requirement_refs": [
-        "EXEC_PLAN_PROPOSED.md §§2–3"
+        "EXEC_PLAN_PROPOSED.md \u00a7\u00a72\u20133"
       ],
       "source_identity": {
         "commit": "f84430f275931aea56cf4f44931699ffaee3f542",
@@ -198,16 +203,17 @@
         ]
       },
       "test_allocation": {
-        "authority_ref": "Owner four-point documentary planning commission; EXEC_PLAN_PROPOSED.md §4",
+        "authority_ref": "Owner four-point documentary planning commission; EXEC_PLAN_PROPOSED.md \u00a74",
         "authorised_case_count": 0,
         "hard_ceiling": 0,
         "cases": []
       },
       "execution": {
         "scheduled_leaf": "L05",
-        "reviewer": "UNASSIGNED",
-        "semantic_status": "NOT_ATTEMPTED",
-        "runs": []
+        "reviewer": "OWNER_SEPARATE_THREAD_PENDING",
+        "semantic_status": "AUTHOR_COMPLETED_INDEPENDENT_SEMANTIC_REVIEW_PENDING",
+        "runs": [],
+        "author_execution_status": "AUTHOR_COMPLETED"
       },
       "external_review_status": "PENDING_OWNER_SEPARATE_THREAD",
       "product_tests_new": "NONE"

@@ -1,0 +1,5 @@
+# L05 repair 01 — retrospective ledger-status consistency
+
+29 October 2026. The initial L05 candidate left original proposal-phase `proof_obligations[*].execution.semantic_status=NOT_ATTEMPTED` in TEST_EVIDENCE_LEDGER.json, although root EXEC_PLAN.md and final review recorded L00 original acceptance and L01–L05 author documentary completion. That ledger field would be misleading as an execution-status summary.
+
+Corrected **documentary status fields only**: L00 retains its original independent documentary acceptance reference, with no product runs; L01–L05 explicitly show AUTHOR_COMPLETED / INDEPENDENT_SEMANTIC_REVIEW_PENDING and still record zero product runs. Source/proof evidence, accepted mathematical authority, existing product tests, frozen GUARDRAILS/AGENTS and all 126/28/7 rows are unchanged. This is a documentary status consistency repair, not an independent acceptance or re-execution. The first L05 candidate remains in ordinary Git history and its earlier bundle remains separately downloadable.
