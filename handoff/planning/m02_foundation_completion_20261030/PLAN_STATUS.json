@@ -1,13 +1,13 @@
 {
   "plan_id": "M02-FOUNDATION-COMPLETION-28",
   "revision": "R1_RECOVERED",
-  "status": "INDEPENDENTLY_CLEARED_PROPOSAL",
+  "status": "OWNER_ACCEPTED_AWAITING_CODEX_EXECUTION",
   "independent_verdict": "ACCEPT_PLAN_PROPOSAL",
   "reviewed_candidate": "c63770bca1737365fd8d4bbfcb113ce7b9620ae9",
   "reviewed_tree": "526493f5280c904ca8a4f726319732ad63405f26",
   "reviewer": "/root/completion28_plan_review",
-  "owner_plan_acceptance": "PENDING",
-  "implementation_commission": "NOT_GIVEN",
+  "owner_plan_acceptance": "EXPLICIT_OWNER_ACCEPTANCE_20261030",
+  "implementation_commission": "TO_RECEIVING_CODEX_WORKER_VIA_OWNER_START_MESSAGE; NOT_STARTED_HERE",
   "publication_commission": "EXPLICIT_OWNER_REQUEST_20261030",
   "root_plan_changed": false,
   "coverage": 28,
@@ -22,5 +22,6 @@
   "prospective_support_cases_up_to": 14,
   "actual_product_runs": 0,
   "original_R0_bytes_recovered": false,
-  "R1_freshly_reviewed": true
+  "R1_freshly_reviewed": true,
+  "owner_acceptance_record": "OWNER_ACCEPTANCE_20261030.md"
 }
