@@ -1,0 +1,260 @@
+{
+  "source_revision_start": "dbf08e6521bd16dcde593bb050a4c22beafd49d0",
+  "observations": [
+    {
+      "key": "D001-controlled",
+      "path": "src/nvda_desk/market_measurement_truth/_temporal.py",
+      "sha256": "3cd505cab724e90b60cf8248a0fc2c9b98f14d8509b48c13b53af34a8a35b727",
+      "git_blob": "ee0757bad08142c4903dbb1fe75c0becbf3c4e37",
+      "inspected_line_ranges": [
+        [
+          1,
+          1
+        ],
+        [
+          45,
+          55
+        ],
+        [
+          112,
+          123
+        ]
+      ],
+      "line_excerpts": [
+        {
+          "range": "1-1",
+          "text": "1: \"\"\"D001 controlled true-instant normalisation, with its own typed source path.\"\"\""
+        },
+        {
+          "range": "45-55",
+          "text": "45:     \"D001\", \"D001-TRUE-INSTANT-UTC-1\", \"K01_TIME\",\n46:     \"same true instant converted to aware UTC\", (\"R002\", \"R003\"), (),\n47:     \"P_TIME\", \"UTC_datetime\", \"aware_utc_datetime\",\n48:     tuple(f.AuthorityArtifactRefV1(*ref) for ref in _AUTHORITY),\n49: )\n50: PARAMETER = f.CalculationParameterSetV1(\n51:     \"mmt-d001-controlled\", 1, \"P_TIME\", \"NVDA\", (\"NVDA\",),\n52: )\n53: POLICY = f.InputSelectionPolicyVersionV1(\n54:     \"mmt-d001-selection\", 1, (\"subject_instrument\", \"sample.id\"),\n55:     timedelta(seconds=60), timedelta(0), (\"true_instant\",), (\"NVDA\",),"
+        },
+        {
+          "range": "112-123",
+          "text": "112:         raise ValueError(\"unadmitted exact temporal source/role\")\n113:     f._utc(item.received_ts_utc)\n114:     if item.source_temporal_kind != \"true_instant\":\n115:         raise ValueError(\"D001 cannot manufacture a date-only/receipt-only instant\")\n116:     if role == 0:\n117:         if item.source_timestamp_raw != item.native_value:\n118:             raise ValueError(\"native source timestamp and raw timestamp disagree\")\n119:         event = _stamp(item.native_value)\n120:     else:\n121:         if item.source_timezone_native != \"UTC\":\n122:             raise ValueError(\"R003 event timestamp must have declared UTC source\")\n123:         event = _stamp(str(item.source_timestamp_raw))"
+        }
+      ]
+    },
+    {
+      "key": "D004-controlled",
+      "path": "src/nvda_desk/market_measurement_truth/_temporal_date.py",
+      "sha256": "fea27e3502251e9708fb262f4fd48719231a5e4ebfc4dae2a06a5637b80a38f8",
+      "git_blob": "97100d9a5aeb5b29077b19c0223c131a96e18e2c",
+      "inspected_line_ranges": [
+        [
+          1,
+          1
+        ],
+        [
+          45,
+          67
+        ]
+      ],
+      "line_excerpts": [
+        {
+          "range": "1-1",
+          "text": "1: \"\"\"D004 controlled complete overnight trading-date assignment.\"\"\""
+        },
+        {
+          "range": "45-67",
+          "text": "45:     \"D004\", \"D004-OVERNIGHT-TRADING-DATE-1\", \"K01_TIME\",\n46:     \"configured session trading date, including overnight attribution\",\n47:     (\"R023\", \"R024\"), (\"D003\",), \"P_TIME\", \"date\", \"exchange_trading_date\",\n48:     tuple(f.AuthorityArtifactRefV1(*ref) for ref in _AUTHORITY),\n49: )\n50: PARAMETER = f.CalculationParameterSetV1(\"mmt-d004-controlled\", 1, \"P_TIME\", \"NVDA\", (\"NVDA\",))\n51: POLICY = f.InputSelectionPolicyVersionV1(\n52:     \"mmt-d004-selection\", 1, (\"subject_instrument\", \"sample.id\"),\n53:     timedelta(seconds=60), timedelta(0), (\"true_instant\",), (\"NVDA\",),\n54:     PROVIDER, VARIANT, PROVIDER + \"/\" + VARIANT, 100, 1000,\n55: )\n56: \n57: \n58: def _calendar(refused: bool) -> f.CalendarPolicyV1:\n59:     boundaries = tuple(datetime.fromisoformat(s).astimezone(UTC) for s in (\n60:         \"2026-10-09T00:00:00+11:00\", \"2026-10-09T16:00:00+11:00\",\n61:         \"2026-10-10T06:00:00+11:00\", \"2026-10-10T16:00:00+11:00\",\n62:         \"2026-10-11T00:00:00+11:00\",\n63:     ))\n64:     return f.CalendarPolicyV1(\n65:         f.VersionRefV1(\"controlled-overnight\", 2 if refused else 1),\n66:         \"Australia/Melbourne\", boundaries[0], boundaries[-1],\n67:         (f.CalendarIntervalV1(boundaries[0], boundaries[1], \"closed\", None),"
+        }
+      ]
+    },
+    {
+      "key": "D015-controlled",
+      "path": "src/nvda_desk/market_measurement_truth/_trade_direction.py",
+      "sha256": "031c8643cab2b00eea18e9fd349e31b384ec2d304d97b38004e84184a274acea",
+      "git_blob": "af489dad05916b6470083c805f4ee164ec63378c",
+      "inspected_line_ranges": [
+        [
+          1,
+          1
+        ],
+        [
+          23,
+          48
+        ]
+      ],
+      "line_excerpts": [
+        {
+          "range": "1-1",
+          "text": "1: \"\"\"Fixed controlled D015; unchanged public M00 and actual D011 evidence.\"\"\""
+        },
+        {
+          "range": "23-48",
+          "text": "23: DEFINITION = f.CalculationDefinitionV1(\n24:     \"D015\",\n25:     \"D015-TRADE-DIRECTION-1\",\n26:     \"K08_RULE_BUCKET_POLICY\",\n27:     \"quote_first_then_last_different_trade_else_0\",\n28:     (\"R120\", \"R126\", \"R127\"),\n29:     (\"D011\",),\n30:     \"P_RULE\",\n31:     \"sign\",\n32:     \"enum_trade_sign\",\n33:     tuple(f.AuthorityArtifactRefV1(*r) for r in _AUTHORITY),\n34: )\n35: PARAMETER = f.CalculationParameterSetV1(\"mmt-trade-rule\", 1, \"P_RULE\", \"NVDA\", (\"NVDA\",))\n36: POLICY = f.InputSelectionPolicyVersionV1(\n37:     \"mmt-pilot-selection\",\n38:     1,\n39:     (\"subject_instrument\",),\n40:     timedelta(seconds=60),\n41:     timedelta(seconds=10),\n42:     (\"true_instant\",),\n43:     (),\n44:     \"foundation-pilot-fixture\",\n45:     \"cash_quote_v1\",\n46:     \"foundation-pilot-fixture/cash_quote_v1\",\n47:     100,\n48:     1000,"
+        }
+      ]
+    },
+    {
+      "key": "D137-controlled",
+      "path": "src/nvda_desk/market_measurement_truth/_microprice.py",
+      "sha256": "6b7090ceef49b1648ce98b0bf1846229b6bd9ea180d489d4c600a74e1cc2c3bb",
+      "git_blob": "87da4629ff5d69bb5e6d43fd3bd8cfa419f50726",
+      "inspected_line_ranges": [
+        [
+          1,
+          1
+        ],
+        [
+          24,
+          45
+        ]
+      ],
+      "line_excerpts": [
+        {
+          "range": "1-1",
+          "text": "1: \"\"\"D137 exact coherent top-book microprice over four public M00 projections.\"\"\""
+        },
+        {
+          "range": "24-45",
+          "text": "24: SUBJECT, PROVIDER, VARIANT = \"NVDA\", \"foundation-controlled-top-book\", \"coherent_quote_v1\"\n25: ROLES = (\n26:     (\"R033\", \"bid_size\", \"shares\"), (\"R034\", \"bid_price\", \"USD_per_share\"),\n27:     (\"R035\", \"ask_price\", \"USD_per_share\"), (\"R036\", \"ask_size\", \"shares\"),\n28: )\n29: IDENTITY = ((\"quote.id\", (\"quote\", \"id\")), (\"subject.id\", (\"subject\", \"id\")))\n30: MAPS = tuple(r.RawSignalProjectionMappingV1(\n31:     \"mmt-d137-\" + raw.lower(), 1, r.RawSignalCatalogueId(raw), PROVIDER,\n32:     VARIANT, (\"quote\", field), unit, IDENTITY,\n33: ) for raw, field, unit in ROLES)\n34: UNITS = tuple(f.UnitConventionVersionV1(\n35:     \"mmt-d137-\" + raw.lower() + \"-unit\", 1, unit, unit, Decimal(1), Decimal(0),\n36: ) for raw, _, unit in ROLES)\n37: DEFINITION = f.CalculationDefinitionV1(\n38:     \"D137\", \"D137-COHERENT-TOP-BOOK-MICROPRICE-1\", \"K02_ALGEBRA\",\n39:     \"(ask_price*bid_size+bid_price*ask_size)/(bid_size+ask_size)\",\n40:     tuple(raw for raw, _, _ in ROLES), (), \"P_BASIC\", \"USD_per_share\", \"exact_ratio\",\n41:     tuple(f.AuthorityArtifactRefV1(*ref) for ref in _AUTHORITY),\n42: )\n43: PARAMETER = f.CalculationParameterSetV1(\n44:     \"mmt-d137-nvda-top-book\", 1, \"P_BASIC\", SUBJECT, (SUBJECT,),\n45: )"
+        }
+      ]
+    },
+    {
+      "key": "D145-overlay",
+      "path": "handoff/m01_completion/authority/D138_D145_L2_OWNER_APPROVED_DEPENDENCY_AMENDMENT_20261016.md",
+      "sha256": "9973c3699b5135be503611f4a5582118c4f80a0145bde473720c32434a3963e2",
+      "git_blob": "13805165e6f2d7651ce275be24edbf94ed403d52",
+      "inspected_line_ranges": [
+        [
+          1,
+          20
+        ],
+        [
+          26,
+          34
+        ]
+      ],
+      "line_excerpts": [
+        {
+          "range": "1-20",
+          "text": "1: # D138 and D145 — owner-approved Level-II raw-dependency amendments\n2: \n3: **Approval:** 16 October 2026 (Australia/Melbourne). The programme owner answered **“Yes, I do”** to the explicit question requesting approval of *both* exact D138/D145 R-dependency corrections with unchanged mathematical definitions and preserved source-completeness/refusal requirements, immediately following the source-contract proposal in `handoff/workbook_v2/gates_01_02/G2_L2_NATIVE_CONTRACT_EVIDENCE_AND_APPROVAL_CANDIDATES_20261016.md` §4.\n4: \n5: **Authority scope:** This records an explicit, narrow programme-owner mathematical/source-contract exception to the former effective D catalogue's two **raw_dependencies** declarations. It grants **no** provider-instance, M00 source/projection, implementation, runtime, test, independent-review, module ownership or Gate 2 acceptance authority. `GUARDRAILS.md`, `AGENTS.md`, the accepted Gate 1 main and frozen `EXEC_PLAN.md` remain unchanged.\n6: \n7: ## 1. Two independently approved definition revisions\n8: \n9: | Definition revision | D identity | Before — direct R | After — authoritative direct R | Unchanged |\n10: |---|---|---|---|---|\n11: | `D138-L2-CONTRACT-20261016-01` | D138 | `R189;R190;R188` | `R185;R187;R188;R189;R190` | D011 predecessor; K06 per-side OLS of cumulative standing depth versus absolute distance from D011; bid/ask slope structure, parameter profile, output units and other fields |\n12: | `D145-L2-CONTRACT-20261016-01` | D145 | `R187;R188;R189;R190` | `R185;R187;R188;R189;R190` | no D predecessor; K17 four-term consecutive best-book OFI equation, selected 1s/5s/1m windows, parameter profile, output units and other fields |\n13: \n14: `R185` retains its established raw identity as native book-row **position**. `R187` retains its established raw identity as provider **operation**. `R188`/`R189`/`R190` retain side/price/size meanings. These dependencies are required to reconstruct position-indexed, operation-ordered book state; **none authorises** supplying unordered incremental events as independent standing depth or treating the new price as the key of a prior positional row.\n15: \n16: ## 2. Effective meaning, precedence and currently frozen catalogue bytes\n17: \n18: The programme-owner-approved revisions above are the **specific effective semantic exceptions** for the two listed D identities; the earlier hash-bound catalogue remains the source of all other fields and all other D identities. The original Markdown brief and its incorporated historical CSV binding are not silently rewritten. Source crosswalk: `handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv` SHA-256 `67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549`, **unchanged in this Gate 2 decision-only work**. The source-package copy under `src/nvda_desk/derived_signal_calculation_truth/` and the runtime loader hash remain unchanged as well. As with earlier owner-approved exceptions, an approved overlay takes semantic precedence for its *named* field only; it does not demonstrate that the current runtime package has incorporated that revision.\n19: \n20: **Do not claim runtime catalogue synchronisation or executable admission.** Subsequent C–E implementation/change control must synchronise both catalogue copies and the hash-bound loader, and perform the applicable independent acceptance/proof, under its own authority. This Gate 2 pass deliberately leaves production source/configuration untouched. The old source-bound direct R lists remain visible as historical/readback facts in the G2.1–G2.5 fields. The separate G2.6 effective-overlay fields express the *new owner decision* and its propagated R closure."
+        },
+        {
+          "range": "26-34",
+          "text": "26: - **D145:** require at least the necessary prior/current best states; replay position-addressed operations through pre-window warm-up before the first included OFI transition. Preserve the provider event sequence, source/subject alignment, window boundaries and refusal when complete valid predecessor/book state is absent.\n27: - On IBKR **error 317** reset, clear the affected reconstructed depth book; refuse required dependent states until a valid reinitialisation is proven. Fail closed on an absent/conflicted field mapping, incorrect native variant, missing book operations/sequence, insufficient warm-up, temporal ambiguity or broken source completeness. No inferred defaults, fabricated snapshots or silently substituted `Rxxx` identity.\n28: - None of these conditions proves a particular source instance exists. The provider documentation establishes native API semantics, not that a repo-specific M00 projection or live series is admitted.\n29: \n30: ## 4. Gate 2 disposition and propagation\n31: \n32: The mathematical **approval question** of `G2I-015` (D138) and `G2I-018` (D145) is answered `APPROVED`; both distinct **native source-contract/admission questions** remain `BLOCKED`. D138 adds terminal R185/R187 to its D011-derived closure. D145 adds terminal R185 and has **32 existing transitive descendants** in the original D graph; **30** already reach R185 through other predecessor paths, so only **D152 and D153** gain it as a new terminal R. This is static dependency propagation, not 32 independent definition changes or proof of wrong downstream calculations; established downstream disqualifiers stay in force.\n33: \n34: `D001_D209_TRACEABILITY.csv` retains the original documented source-readback columns, and separately gives each row's post-approval direct R, terminal R and effect/status. The two issue records and their per-D links separately record owner approval and source-custodian blockers. The 35 unknown classifications, the five historically empty groups and definitive future downstream module count remain unresolved until required evidence and decisions are obtained. **Gate 2 remains BLOCKED**; C–E work remains outside the present authorisation."
+        }
+      ]
+    },
+    {
+      "key": "K01",
+      "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md",
+      "sha256": "603b850802a418780109095e7ae69bcece449da79fb24140a6d50297605e927c",
+      "git_blob": "32930fc08eb648c2cc6347d32d910e3a45bdc07f",
+      "inspected_line_ranges": [
+        [
+          92,
+          110
+        ]
+      ],
+      "line_excerpts": [
+        {
+          "range": "92-110",
+          "text": "92: - `D003`: convert D001 to the configured exchange IANA timezone without changing the instant.\n93: - `D004`: obtain exchange-local trading date from the configured session calendar, including overnight/session boundary rules.\n94: - `D005`: classify the local instant into an ordered, non-overlapping versioned session-phase schedule. A phase is absent if no configured phase contains the instant.\n95: - `D009`: classify each visible macro vintage into one mutually exclusive category at the calculation knowledge cutoff: `initial` when it is the first published vintage; `latest_known_at_cutoff` when it is the newest visible non-initial vintage; otherwise `revised`. If only the initial vintage is visible, it remains `initial`. The occurrence also preserves the applicable vintage/realtime period and cutoff; `latest` is never a timeless claim.\n96: - `D010`: true only when the configured market calendar says the instrument is open and the observation lies in the configured liquid/RTH phase; otherwise false when the state is knowable.\n97: - `D062`: for the earliest relevant scheduled event strictly after the calculation as-of instant, return `{seconds=next_event_ts-as_of_ts, minutes=seconds/60}`; seconds is the canonical stored duration and minutes is an exact representation derived from it.\n98: - `D085`: whole calendar-day difference between option expiry date and exchange-local trading date; negative values are invalid for a live contract calculation.\n99: - `D086`: ACT/365F year fraction from D001 to the configured expiry instant. Expiry instant/session convention is versioned by instrument/calendar policy.\n100: \n101: ### K02_ALGEBRA — exact algebra, aggregation and deterministic transforms\n102: \n103: Use the algebra stated by the row description, with these universal conventions:\n104: \n105: - all numeric inputs first pass the explicit raw-value/unit projection law in clause 9; no kernel infers scale from magnitude;\n106: - canonical rates/yields and volatilities are decimal fractions for arithmetic (for example `0.0525` means 5.25% and `0.30` means 30-vol);\n107: - addition/subtraction preserves compatible units;\n108: - ratios require a strictly non-zero denominator; otherwise no occurrence;\n109: - percentage outputs are multiplied by `100`; basis-point outputs by `10,000`; volatility-point outputs are decimal-volatility differences multiplied by `100`;\n110: - weighted sums retain the exact member set and weights in lineage;"
+        }
+      ]
+    },
+    {
+      "key": "K02",
+      "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md",
+      "sha256": "603b850802a418780109095e7ae69bcece449da79fb24140a6d50297605e927c",
+      "git_blob": "32930fc08eb648c2cc6347d32d910e3a45bdc07f",
+      "inspected_line_ranges": [
+        [
+          101,
+          120
+        ],
+        [
+          148,
+          156
+        ]
+      ],
+      "line_excerpts": [
+        {
+          "range": "101-120",
+          "text": "101: ### K02_ALGEBRA — exact algebra, aggregation and deterministic transforms\n102: \n103: Use the algebra stated by the row description, with these universal conventions:\n104: \n105: - all numeric inputs first pass the explicit raw-value/unit projection law in clause 9; no kernel infers scale from magnitude;\n106: - canonical rates/yields and volatilities are decimal fractions for arithmetic (for example `0.0525` means 5.25% and `0.30` means 30-vol);\n107: - addition/subtraction preserves compatible units;\n108: - ratios require a strictly non-zero denominator; otherwise no occurrence;\n109: - percentage outputs are multiplied by `100`; basis-point outputs by `10,000`; volatility-point outputs are decimal-volatility differences multiplied by `100`;\n110: - weighted sums retain the exact member set and weights in lineage;\n111: - when a row's legacy units list more than one representation, the canonical output is a typed structure containing each named representation rather than an implementation-selected one;\n112: - concentration shares are decimal fractions in `[0,1]` that sum to 1 before HHI is calculated; `HHI = Σ share_i²` is therefore on a canonical `0–1` scale;\n113: - an expected/pre-trade cost calculation may consume an immutable fee schedule and intended order/candidate context, but it must not consume a post-trade execution-cost fact that does not yet exist at the decision cutoff.\n114: \n115: Fixed examples that remove material ambiguity:\n116: \n117: - `D011 = (bid + ask) / 2`.\n118: - `D012 = ask - bid`.\n119: - `D013 = 100 * D012 / D011`.\n120: - `D014 = (bid_size - ask_size) / (bid_size + ask_size)`."
+        },
+        {
+          "range": "148-156",
+          "text": "148: - `D131`, `D134`, `D135` are exact sums of displayed size inside the configured depth selection after deterministic book reconstruction. For event-driven L2 books, state is reconstructed by subject/source and side in stable receipt/ingestion order using the provider operation and row-position semantics; insert/update/delete events are applied before the selected depth sum is taken.\n149: - `D136 = (bid_depth - ask_depth) / (bid_depth + ask_depth)`.\n150: - `D137 = (ask_price * bid_size + bid_price * ask_size) / (bid_size + ask_size)`.\n151: - `D143` is Herfindahl concentration `Σ share_i²` of displayed direct depth by venue/market maker using **absolute displayed-size shares** on the canonical `0–1` HHI scale. The direct book is reconstructed from position, operation, side, price, size and venue/market-maker fields before concentration is calculated.\n152: - `D144` is a structured matched-book difference containing SMART-minus-direct price and depth differences at the admitted matched levels. Both books are reconstructed from their full position/operation/side/price/size event streams; matching uses the versioned subject, side, price/level and maximum-skew rules rather than query order.\n153: - `D151` returns three separately preserved breadth fractions over the exact monitored basket: `positive_return_fraction` uses current/last versus the current session open, `above_vwap_fraction` uses current/last versus current session VWAP, and `above_prior_close_fraction` uses current/last versus prior official close. Each denominator is the count (or configured weight sum) of members with all inputs required for that component; missing members are not silently treated as false.\n154: - `D164` is the **pre-trade** sum of D133 expected spread/slippage cost plus deterministic commissions/fees and declared multi-leg incremental costs from the exact immutable `ExecutionCostScheduleVersion` and intended order/candidate context. Realised post-trade commission R233 is not an input to D164. Each expected-cost component is retained.\n155: - `D168` is the quantity- and multiplier-weighted sum of leg delta, gamma, vega and theta, returned as a Greek vector.\n156: - `D170` returns every real terminal underlying-price root where total structure payoff net of premium equals zero."
+        }
+      ]
+    },
+    {
+      "key": "K06",
+      "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md",
+      "sha256": "603b850802a418780109095e7ae69bcece449da79fb24140a6d50297605e927c",
+      "git_blob": "32930fc08eb648c2cc6347d32d910e3a45bdc07f",
+      "inspected_line_ranges": [
+        [
+          218,
+          224
+        ]
+      ],
+      "line_excerpts": [
+        {
+          "range": "218-224",
+          "text": "218: ### K06_REGRESSION_DEPENDENCE — beta, residual, slope and dependence matrices\n219: \n220: Use ordinary least squares with intercept unless the row-specific parameter set explicitly declares a different accepted calculation-definition version. The default regression definition is not silently switchable to robust, ridge, lasso or machine-learning regression.\n221: \n222: - `D078`–`D081` share one coherent aligned factor model rather than coefficients from three incompatible regressions. Over the parameter-selected history/state subset fit `D075 = α + β_market*D071 + β_tech*D076 + β_semi*D077 + ε`, where D075 is the dependent NVDA return, D076 is technology relative to broad market and D077 is semiconductor relative to technology. D079, D080 and D081 therefore each require D075 as well as D071/D076/D077 to identify the same fitted model.\n223: - `D079 = β_market`, `D080 = β_tech`, and `D081 = β_semi`; the common model intercept, sample definition and fit identity are retained in each occurrence lineage.\n224: - `D078 = D075 - (α + D079*D071 + D080*D076 + D081*D077)` using coefficient occurrences from that same fitted-model identity and aligned current factor observations. Mixing coefficients from different model fits is invalid."
+        }
+      ]
+    },
+    {
+      "key": "K08",
+      "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md",
+      "sha256": "603b850802a418780109095e7ae69bcece449da79fb24140a6d50297605e927c",
+      "git_blob": "32930fc08eb648c2cc6347d32d910e3a45bdc07f",
+      "inspected_line_ranges": [
+        [
+          268,
+          285
+        ]
+      ],
+      "line_excerpts": [
+        {
+          "range": "268-285",
+          "text": "268: ### K08_RULE_BUCKET_POLICY — deterministic rule sets, grouping and constrained selection\n269: \n270: Rules, thresholds, bands and tie-break order are immutable versioned parameter-set content.\n271: \n272: - `D007 = satisfied_required_count / required_count`, `required_count > 0`; each policy requirement contributes at most one.\n273: - `D015`: quote test first (`trade > midpoint` buyer, `< midpoint` seller); at exact midpoint apply signed tick test against the last different trade price; if still ambiguous emit `0/unknown`, never guess.\n274: - `D016 = Σ trade_sign_i * trade_size_i` over the selected window.\n275: - `D065`: for an event-centred window `[event_ts-pre_window, event_ts+post_window]`, select the relevant scheduled event from visible R284 events whose timestamp lies in the equivalent as-of interval `[as_of-post_window, as_of+pre_window]`. If more than one qualifies, choose the smallest absolute time distance from `as_of`, breaking an exact tie toward the earlier event. Return true only when that selected event's D064 meets the configured applicability threshold. D062 may supply the pre-event countdown but is never the sole source for post-event activity.\n276: - `D091`: bucket by absolute delta using non-overlapping versioned bucket boundaries and deterministic boundary inclusion.\n277: - `D120`: return both `signed_contracts = Σ sign*size` and `signed_premium_notional = Σ sign*size*trade_price*multiplier`.\n278: - `D121`, `D122`: exact grouped sums of D120 by parameter-defined delta and expiry/DTE buckets.\n279: - `D124`: return each strike/expiry share of total relevant OI as a decimal fraction plus HHI `Σ share_i²` on the canonical `0–1` scale. Total relevant OI must be positive.\n280: - `D128`: use **absolute** gamma-exposure magnitude for concentration. For configured spot-distance bands, `share_b = Σ|gamma_exposure_i|_b / Σ|gamma_exposure_i|`; return the shares plus HHI `Σ share_b²` on the canonical `0–1` scale. Signed net gamma remains available from D125/D130 but is not used as a concentration weight.\n281: - `D139`: after deterministic SMART-book reconstruction, return insert-event count rate and inserted-size rate by side and configured level bucket over the exact window. Inserted size is the event's admitted displayed size.\n282: - `D140`: after the same reconstruction, return delete/cancel-event count rate and removed-size rate by side and configured level bucket. Removed size is the immediately pre-delete displayed size at that book row, not an assumed value from a delete event whose native size may be zero.\n283: - `D141`: a replenishment candidate is a depletion/execution at one subject/side/price followed within `Δt_max` by restored displayed size at that same subject/side/price. Each depletion is matched once to the first qualifying restoration. Per event, credited replenishment is capped at the depleted size. The window score is `Σ credited_replenished_size / Σ depleted_size` across matched/eligible depletion events; denominator must be positive.\n284: - `D142`: capture the pre-shock selected-depth total and spread, then after the configured depletion/spread-shock event identify the first reconstructed-book state at which **both** depth is at least the configured fraction of pre-shock depth and spread is no greater than the configured multiple/fraction of pre-shock spread. Report elapsed seconds plus recovered depth/spread state. If the joint condition is not met within the observation window, no completed-resilience occurrence is emitted.\n285: - `D166`: true only when D159 and D165 satisfy both configured minimum thresholds."
+        }
+      ]
+    },
+    {
+      "key": "K09",
+      "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md",
+      "sha256": "603b850802a418780109095e7ae69bcece449da79fb24140a6d50297605e927c",
+      "git_blob": "32930fc08eb648c2cc6347d32d910e3a45bdc07f",
+      "inspected_line_ranges": [
+        [
+          296,
+          302
+        ]
+      ],
+      "line_excerpts": [
+        {
+          "range": "296-302",
+          "text": "296: ### K09_SURFACE_DENSITY — interpolation, arbitrage-aware surface fitting and risk-neutral density\n297: \n298: - `D096`: for each expiry and option side separately, linearly interpolate IV in absolute delta around `0.50` using the nearest valid observations bracketing 0.50. If an exact 0.50 observation exists use it. When both call and put 50-delta estimates exist, the canonical ATM IV is their arithmetic mean; when only one side is valid, that side may be used only if the parameter profile explicitly admits single-side coverage and the coverage state is preserved. If 0.50 is not bracketed, no interpolation occurs unless a separately versioned extrapolation mode exists.\n299: - `D102`: for each admitted IV point use `k = ln(strike / spot_ref)` with strike from R014, `spot_ref` from the aligned R118 model-underlying observation, and `T` from aligned D086. Fit total implied variance `w = IV²*T` on `(k,T)` with a constrained cubic B-spline weighted least-squares surface. Weights are inverse squared IV bid/ask width where positive, otherwise equal weight. Enforce non-negative total variance, non-decreasing calendar total variance at matched `k`, and strike-slice call-price convexity using the exact `OptionRevaluationConventionVersion`; the implementation may not choose a pricing convention. Return weighted RMS IV residual plus per-point residuals. If the coordinate inputs, revaluation convention or constraints are unavailable/infeasible, no fitted-surface occurrence is emitted.\n300: - `D111`: for one expiry, take the valid call-option D087 mid-price observations across strike and fit a decreasing convex cubic spline directly in call price versus strike; D102 must satisfy its accepted surface-quality tolerance for the same snapshot but is not treated as a call-price object. Compute non-negative state-price density from the fitted call-price curve using the Breeden–Litzenberger second strike derivative on the versioned strike grid, then normalise numerical mass to 1 to obtain the risk-neutral terminal probability density. Grid/interpolation identities are lineage.\n301: - `D112`, `D113`: numerical trapezoidal integration of D111 below/above the parameter-selected terminal-price thresholds.\n302: - `D115`: use one aligned R118 `spot_ref > 0` and convert each D111 terminal-price grid point `S_T` to log return `r = ln(S_T/spot_ref)`. Evaluate D111 and D114 on the same versioned log-return grid and return CDF difference by grid point plus differences in mean, variance and configured tail probabilities. The exact `spot_ref` occurrence and return grid are lineage; no implicit price-to-return anchor is allowed."
+        }
+      ]
+    },
+    {
+      "key": "K17",
+      "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md",
+      "sha256": "603b850802a418780109095e7ae69bcece449da79fb24140a6d50297605e927c",
+      "git_blob": "32930fc08eb648c2cc6347d32d910e3a45bdc07f",
+      "inspected_line_ranges": [
+        [
+          366,
+          373
+        ]
+      ],
+      "line_excerpts": [
+        {
+          "range": "366-373",
+          "text": "366: ### K17_ORDER_FLOW_IMBALANCE — top-of-book OFI\n367: \n368: For consecutive best-book states `n-1` and `n`:\n369: \n370: `e_n = I(Pb_n >= Pb_{n-1})*Qb_n - I(Pb_n <= Pb_{n-1})*Qb_{n-1} - I(Pa_n <= Pa_{n-1})*Qa_n + I(Pa_n >= Pa_{n-1})*Qa_{n-1}`.\n371: \n372: `D145` is `Σ e_n` over the selected 1s/5s/1m window. Preserve event sequence and window boundaries in lineage.\n373: "
+        }
+      ]
+    }
+  ],
+  "sufficiency_limit": "These source snippets establish exact accepted profile restrictions and K/overlay law, not proof of absence of a different live provider or new authorised profile."
+}

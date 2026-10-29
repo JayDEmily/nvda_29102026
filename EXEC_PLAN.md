@@ -118,3 +118,7 @@ AUTHOR_COMPLETED; EXTERNAL_INDEPENDENT_REVIEW_PENDING. Evidence: `handoff/m02_fo
 ### L07 — G4 author result
 
 AUTHOR_COMPLETED; EXTERNAL_INDEPENDENT_REVIEW_PENDING. Evidence: `handoff/m02_foundation_prerequisites_20261029/L07_FINDINGS.md`; original 98 controlled and L14 claims preserved; no product tests. Checkpoint bundle/receipt recorded externally (avoids self-hash). No missing source or numerical policy is deemed accepted solely from documentary review.
+
+### L07 supplementary primary-source readback
+
+Additional direct file/line/source-hash witnesses in `handoff/m02_foundation_prerequisites_20261029/L07_CURRENT_SOURCE_ADDENDUM.md` and `CURRENT_SOURCE_CONTRACT_WITNESSES.json`. No change to 28 readiness classifications or author-completion status; no product tests.
