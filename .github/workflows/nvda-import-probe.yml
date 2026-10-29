@@ -1,0 +1,27 @@
+name: NVDA Git bundle transport smoke test
+on:
+  push:
+    branches:
+      - nvda-migration-staging-20261029
+    paths:
+      - .github/workflows/nvda-import-probe.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  verify-and-push:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Restore and verify the two-commit probe history
+        shell: bash
+        env:
+          GIT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          base64 --decode nvda-transfer/probe.bundle.b64 > "$RUNNER_TEMP/probe.bundle"
+          printf 'e1bb7bae4f33539bc4f13128ae60c8efb9caa693acbdda39df36290e1b2cb97a  %s\n' "$RUNNER_TEMP/probe.bundle" | sha256sum --check
+          git clone --bare "$RUNNER_TEMP/probe.bundle" "$RUNNER_TEMP/probe.git"
+          git --git-dir="$RUNNER_TEMP/probe.git" fsck --full
+          git --git-dir="$RUNNER_TEMP/probe.git" cat-file -e 742017daf7e0a42d21114ff51a6107448973d160^{commit}
+          git --git-dir="$RUNNER_TEMP/probe.git" push "https://x-access-token:${GIT_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" 742017daf7e0a42d21114ff51a6107448973d160:refs/heads/nvda-transport-probe
