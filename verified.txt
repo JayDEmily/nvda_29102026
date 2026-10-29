@@ -1,1 +1,2 @@
 NVDA controlled Git bundle transfer probe
+Git commit history must survive unchanged
