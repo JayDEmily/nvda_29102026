@@ -1,6 +1,6 @@
 # L07 final consolidated handover — author decision
 
-**Status:** AUTHOR_COMPLETED; independent acceptance of G4 PENDING. No product tests, source implementation or approval of new quantitative conventions.
+**Status:** SOURCE/HOLD ANALYSIS AUTHOR_COMPLETED; R3 POLICY PROPOSALS BLOCKED; G4 RETURNED / NOT INDEPENDENTLY ACCEPTED. No product tests, source implementation or approval of new quantitative conventions.
 
 **The outcome is a decision-ready hold map, not newly implementation-ready code.** 28/28 unresolved identities have precise first conditions and proposed receivers; all 28 remain held because no new external market-data authority, calendar policy, regression-fit sample, option trade tape, threshold/window approval or native event-time source was admitted in this documentary execution. This is an evidence boundary, not a blanket recommendation to indefinitely defer M02.
 
@@ -58,3 +58,9 @@
 ## Explicit limits
 
 This is author documentary close-out only. G4 independent semantic acceptance PENDING. M02 full foundation, native/live/data capture, PostgreSQL, M01 activation and operational integration NOT established. No arbitrary decisions supplied by planning.
+
+## G4 independent-return addendum — not full L07 acceptance
+
+G4-F1: exact independent G2 report restored, 9,094 bytes and SHA256 `59748a9e88b787007bacff43a2d9721000ed9e6f5c22864ed804a168f6cf1a61`; former condensed record retained as `G2_ACCEPTANCE_SUMMARY.md` and is not primary review evidence.
+
+G4-F2: six mandatory profile proposals are `BLOCKED_REQUIRED_PREMISE` in `NEUTRAL_POLICY_PROPOSAL_STATUS.json`. This includes D079–D081's shared K06 training profile and D091/D142/D144 versioned neutral rules. No defensible actual numerical candidates can be selected from currently admitted facts without fabricating owner decisions or source observations. **R3 is explicitly UNSATISFIED, L05's proposed-profile deliverable BLOCKED and L07/G4 cannot claim completion/acceptance.** Remaining classification 8 source / 14 predecessor / 6 policy unchanged; all 28 remain held; no product testing. See `G4_RETURN_REPAIR_01.md`.

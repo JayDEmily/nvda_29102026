@@ -1,0 +1,160 @@
+{
+  "plan_id": "M02-FOUNDATION-PREREQUISITE-RESOLUTION-1",
+  "review_target": "d7fb9a54873739baba5520ee1061e7b3d306c077",
+  "status": "PARTIAL_DOCUMENTARY_REPAIR; R3_UNSATISFIED",
+  "rule": "No unapproved numerical values, boundaries, trading calendar or fitted samples may be invented to satisfy a versioned-profile deliverable. BLOCKED is a truthful terminal author disposition but NOT G4 acceptance.",
+  "records": [
+    {
+      "derived_id": "D079",
+      "fixed_authority": "K06: same joint OLS-with-intercept D075~D071+D076+D077, shared fit_id",
+      "proposed_profile_version": null,
+      "proposal_status": "BLOCKED_REQUIRED_PREMISE",
+      "approval_status": "NOT_APPROVED",
+      "owner_decision_receiver": "M02 neutral-statistics owner + source-history custodian + programme owner",
+      "required_field_level_choices": {
+        "input_history_source_ids": null,
+        "history_temporal_join_and_completeness": null,
+        "window_or_state_subset_selection": null,
+        "full_rank_and_conditioning_rule": null,
+        "exclude_current_observation": null,
+        "numeric_precision_and_output_codec": null,
+        "immutable_common_fit_id": null
+      },
+      "missing_primary_premise": "No admitted historically aligned four-vector public sample with observed full-rank/conditioning, matching time basis and a lawful selection window or state subset. Arbitrary window lengths or fabricated histories are prohibited.",
+      "future_refusal_contracts_to_bind_after_approval": [
+        "missing one factor history",
+        "rank deficient matrix",
+        "mixed fit identity",
+        "training leakage from current/future values"
+      ],
+      "implementation_readiness": "NOT_ESTABLISHED"
+    },
+    {
+      "derived_id": "D080",
+      "fixed_authority": "K06: technology beta from SAME joint fit; no independent estimator",
+      "proposed_profile_version": null,
+      "proposal_status": "BLOCKED_REQUIRED_PREMISE",
+      "approval_status": "NOT_APPROVED",
+      "owner_decision_receiver": "M02 neutral-statistics owner + source-history custodian + programme owner",
+      "required_field_level_choices": {
+        "shared_D079_training_sample_id": null,
+        "D076_history_scope": null,
+        "fit_id_source": null,
+        "rank_and_conditioning": null,
+        "numeric_convention": null
+      },
+      "missing_primary_premise": "No admitted shared D079 fit provenance or complete compatible D076 history; must use the identical joint K06 fit rather than a stand-alone orthogonalised technology model.",
+      "future_refusal_contracts_to_bind_after_approval": [
+        "mismatched fit provenance",
+        "missing D076 aligned history",
+        "rank deficiency"
+      ],
+      "implementation_readiness": "NOT_ESTABLISHED"
+    },
+    {
+      "derived_id": "D081",
+      "fixed_authority": "K06: semiconductor beta from SAME joint fit; D077 fixed relative factor",
+      "proposed_profile_version": null,
+      "proposal_status": "BLOCKED_REQUIRED_PREMISE",
+      "approval_status": "NOT_APPROVED",
+      "owner_decision_receiver": "M02 neutral-statistics owner + source-history custodian + programme owner",
+      "required_field_level_choices": {
+        "shared_D079_D080_training_sample_id": null,
+        "D077_history_scope": null,
+        "fit_id_source": null,
+        "rank_and_conditioning": null,
+        "numeric_convention": null
+      },
+      "missing_primary_premise": "No admitted four-vector sample and same fit identity with lawful D077 semiconductor-relative history; no authority to substitute factor basis.",
+      "future_refusal_contracts_to_bind_after_approval": [
+        "mismatched fit provenance",
+        "missing D077 aligned history",
+        "rank deficiency"
+      ],
+      "implementation_readiness": "NOT_ESTABLISHED"
+    },
+    {
+      "derived_id": "D091",
+      "fixed_authority": "K08: absolute delta non-overlapping versioned intervals and deterministic boundary inclusion",
+      "proposed_profile_version": null,
+      "proposal_status": "BLOCKED_REQUIRED_PREMISE",
+      "approval_status": "NOT_APPROVED",
+      "owner_decision_receiver": "M02 neutral option-classification owner + programme owner",
+      "required_field_level_choices": {
+        "delta_input_role": "R112",
+        "eligible_delta_model_variant": null,
+        "absolute_scale": null,
+        "bucket_count": null,
+        "ordered_numeric_boundaries": null,
+        "bucket_labels": null,
+        "left_right_boundary_inclusion": null,
+        "exact_edge_tie_handling": null,
+        "out_of_coverage_and_absence": null,
+        "policy_version": null
+      },
+      "missing_primary_premise": "K08 specifies structure but not interval count or exact boundaries. Neither a source-backed R112 variant/scale nor an owner-accepted neutral binning convention and downstream D121 grouping resolution is supplied. Inventing 0.25-width or other intervals would be arbitrary.",
+      "future_refusal_contracts_to_bind_after_approval": [
+        "exact boundary value produces deterministic single bucket or refusal per approved rule",
+        "gap/overlap/invalid input cannot generate arbitrary bucket",
+        "out of range or absent delta is explicit"
+      ],
+      "implementation_readiness": "NOT_ESTABLISHED"
+    },
+    {
+      "derived_id": "D142",
+      "fixed_authority": "K08: first reconstructed state meeting BOTH selected depth AND spread recovery conditions",
+      "proposed_profile_version": null,
+      "proposal_status": "BLOCKED_REQUIRED_PREMISE",
+      "approval_status": "NOT_APPROVED",
+      "owner_decision_receiver": "M02 neutral microstructure/policy owner + M00 book/quote source custodian + programme owner",
+      "required_field_level_choices": {
+        "subject_contract_and_source_scope": null,
+        "pre_shock_selected_depth_levels": null,
+        "shock_onset_and_severity_rule": null,
+        "minimum_depth_fraction_of_pre_shock": null,
+        "maximum_spread_factor_of_pre_shock": null,
+        "observation_window_seconds": null,
+        "source_or_receipt_clock_policy": null,
+        "generation_gap_and_reset_handling": null,
+        "recovery_tie_and_absence_handling": "no completed occurrence if BOTH not met in admitted window",
+        "policy_version": null
+      },
+      "missing_primary_premise": "No owner-accepted severity/depth/spread thresholds, observation time/window and eligible joint quote/book histories with a lawful clock. K08 fixes first joint recovery but cannot determine threshold values from current synthetic fixtures.",
+      "future_refusal_contracts_to_bind_after_approval": [
+        "depth-only recovery cannot pass",
+        "spread-only recovery cannot pass",
+        "unrecovered within window emits no completed occurrence",
+        "generation discontinuity refuses"
+      ],
+      "implementation_readiness": "NOT_ESTABLISHED"
+    },
+    {
+      "derived_id": "D144",
+      "fixed_authority": "K02: versioned, fully reconstructed SMART-minus-direct matched-book structured comparison",
+      "proposed_profile_version": null,
+      "proposal_status": "BLOCKED_REQUIRED_PREMISE",
+      "approval_status": "NOT_APPROVED",
+      "owner_decision_receiver": "M02 neutral book-matcher owner + M00 depth source custodian + programme owner",
+      "required_field_level_choices": {
+        "eligible_contract_option_or_stock_domain": null,
+        "SMART_direct_requested_venue_and_MPID_identity": null,
+        "matching_subject_generation_side_scope": null,
+        "price_or_position_matching_semantics": null,
+        "matched_level_set": null,
+        "max_source_or_receipt_time_skew": null,
+        "timestamp_and_knowledge_cutoff_basis": null,
+        "unmatched_row_and_partial_book_treatment": null,
+        "numeric_units_and_difference_sign": "SMART-minus-direct per K02",
+        "policy_version": null
+      },
+      "missing_primary_premise": "No simultaneous provider-backed SMART/direct histories establishing timestamp co-reference, venue/MPID semantics or admissible skew, levels and unmatched-row handling; synthetic separate L14 sources do not justify a numeric skew.",
+      "future_refusal_contracts_to_bind_after_approval": [
+        "cross-contract/side/generation mismatch refuses",
+        "excess skew refuses when bound admitted",
+        "missing unmatched rule refuses, never invent counterpart",
+        "incomplete reconstructed book refuses"
+      ],
+      "implementation_readiness": "NOT_ESTABLISHED"
+    }
+  ]
+}

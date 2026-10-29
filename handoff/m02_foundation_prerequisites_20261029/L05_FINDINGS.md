@@ -1,6 +1,6 @@
 # L05 — M02 prerequisite documentary assessment
 
-Date: 29 October 2026. Plan `M02-FOUNDATION-PREREQUISITE-RESOLUTION-1`. Source checkpoint `dbf08e6521bd16dcde593bb050a4c22beafd49d0`. Status **AUTHOR_COMPLETED; INDEPENDENT_DOCUMENTARY_REVIEW_PENDING**. Product tests/implementation: **NONE**.
+Date: 29 October 2026. Plan `M02-FOUNDATION-PREREQUISITE-RESOLUTION-1`. Source checkpoint `dbf08e6521bd16dcde593bb050a4c22beafd49d0`. Status **ANALYSIS_AUTHOR_COMPLETED; VERSIONED_POLICY_PROPOSALS_BLOCKED; G4_RETURNED**. Product tests/implementation: **NONE**.
 
 ### D091 — Delta bucket
 
@@ -31,6 +31,8 @@ Date: 29 October 2026. Plan `M02-FOUNDATION-PREREQUISITE-RESOLUTION-1`. Source c
 **Existing owner/receiver:** M02 neutral book matcher + M00 depth custodian. **Required action:** Accept eligible contract/venue, level, timestamp skew and unmatched-row treatment, require joint coverage.
 
 **Controlling meaning:** K02 D144. **Historical raw/derived dependencies:** `R185;R187;R188;R189;R190;R192;R193;R194;R195;R196;R197` / ``. **No new product proof**; independent semantic review pending.
+
+**G4-F2 mandatory candidate status:** D091, D142 and D144 each lack a defensible versioned numeric/source-policy candidate. They are **BLOCKED_REQUIRED_PREMISE**, not completed proposed profiles. The explicit missing fields, source premises, named receivers and conditional refusal contracts are in `NEUTRAL_POLICY_PROPOSAL_STATUS.json`; no arbitrary values are selected. L05 proposed-profile obligation **UNSATISFIED**, R3 **UNSATISFIED**, G4 **NOT ACCEPTED**. These statuses persist even though the first-unmet classifications are justified.
 
 **Already-fixed K08 controls:** D142 requires the first state satisfying BOTH admitted depth and spread recovery thresholds; D144 is an explicit matched SMART–direct comparison, not a D143 concentration reuse. Their threshold/version choices remain owner decisions; the author has selected no arbitrary numeric values.
 

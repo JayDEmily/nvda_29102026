@@ -1,7 +1,7 @@
 {
   "plan_id": "M02-FOUNDATION-PREREQUISITE-RESOLUTION-1",
   "starting_commit": "dbf08e6521bd16dcde593bb050a4c22beafd49d0",
-  "status": "AUTHOR_COMPLETE_ALL_28; INDEPENDENT_REVIEW_PENDING",
+  "status": "AUTHOR_SOURCE_REVIEW_RETAINED; R3_POLICY_PROFILES_BLOCKED; G4_RETURNED",
   "rows": [
     {
       "derived_id": "D062",
@@ -63,7 +63,12 @@
       "reassessment_witness": "Single full-rank aligned historical four-vector training sample and provenance not admitted; coefficient is from FIXED joint OLS-with-intercept, not a new regression family.",
       "proposed_receiver": "M02 neutral-statistics owner + source-history custodian",
       "required_owner_action": "Approve lawful training window, complete aligned sample, rank/conditioning, current exclusion, numeric/fit metadata.",
-      "governing_law": "K06 D075~D071+D076+D077, shared fit_id"
+      "governing_law": "K06 D075~D071+D076+D077, shared fit_id",
+      "proposed_profile_status": "BLOCKED_REQUIRED_PREMISE",
+      "proposed_profile_version": null,
+      "profile_missing_premise": "No admitted historically aligned four-vector public sample with observed full-rank/conditioning, matching time basis and a lawful selection window or state subset. Arbitrary window lengths or fabricated histories are prohibited.",
+      "profile_approval_receiver": "M02 neutral-statistics owner + source-history custodian + programme owner",
+      "R3_gate_satisfied": false
     },
     {
       "derived_id": "D080",
@@ -83,7 +88,12 @@
       "reassessment_witness": "Same missing common immutable fit; existing D076 controlled return is not separately fitted beta.",
       "proposed_receiver": "M02 neutral-statistics owner + source-history custodian",
       "required_owner_action": "Supply same sample/version and shared OLS fit identity; no alternative orthogonalisation.",
-      "governing_law": "K06 D080 beta_tech"
+      "governing_law": "K06 D080 beta_tech",
+      "proposed_profile_status": "BLOCKED_REQUIRED_PREMISE",
+      "proposed_profile_version": null,
+      "profile_missing_premise": "No admitted shared D079 fit provenance or complete compatible D076 history; must use the identical joint K06 fit rather than a stand-alone orthogonalised technology model.",
+      "profile_approval_receiver": "M02 neutral-statistics owner + source-history custodian + programme owner",
+      "R3_gate_satisfied": false
     },
     {
       "derived_id": "D081",
@@ -103,7 +113,12 @@
       "reassessment_witness": "Same missing common immutable fit; existing D077 basis already fixed in K06.",
       "proposed_receiver": "M02 neutral-statistics owner + source-history custodian",
       "required_owner_action": "Supply D077 full history and matching OLS provenance, rank and exclusion.",
-      "governing_law": "K06 D081 beta_semi"
+      "governing_law": "K06 D081 beta_semi",
+      "proposed_profile_status": "BLOCKED_REQUIRED_PREMISE",
+      "proposed_profile_version": null,
+      "profile_missing_premise": "No admitted four-vector sample and same fit identity with lawful D077 semiconductor-relative history; no authority to substitute factor basis.",
+      "profile_approval_receiver": "M02 neutral-statistics owner + source-history custodian + programme owner",
+      "R3_gate_satisfied": false
     },
     {
       "derived_id": "D085",
@@ -163,7 +178,12 @@
       "reassessment_witness": "Absolute delta bucket cannot be admitted without a complete non-overlapping versioned interval table and clear boundary/absence/tie rules.",
       "proposed_receiver": "M02 neutral classification owner + programme owner",
       "required_owner_action": "Accept exact intervals/labels/scale and eligible R112 option model variant.",
-      "governing_law": "K08 D091"
+      "governing_law": "K08 D091",
+      "proposed_profile_status": "BLOCKED_REQUIRED_PREMISE",
+      "proposed_profile_version": null,
+      "profile_missing_premise": "K08 specifies structure but not interval count or exact boundaries. Neither a source-backed R112 variant/scale nor an owner-accepted neutral binning convention and downstream D121 grouping resolution is supplied. Inventing 0.25-width or other intervals would be arbitrary.",
+      "profile_approval_receiver": "M02 neutral option-classification owner + programme owner",
+      "R3_gate_satisfied": false
     },
     {
       "derived_id": "D095",
@@ -510,7 +530,12 @@
       "reassessment_witness": "K08 fixes first book state satisfying *both* depth and spread recovery but not shock onset, severity thresholds, clock/window or gap treatment.",
       "proposed_receiver": "M02 neutral microstructure policy + M00 book/quote custodian",
       "required_owner_action": "Approve initial shock/depth/spread/window/clock and gaps/first-recovery policy, not a different estimator.",
-      "governing_law": "K08 D142"
+      "governing_law": "K08 D142",
+      "proposed_profile_status": "BLOCKED_REQUIRED_PREMISE",
+      "proposed_profile_version": null,
+      "profile_missing_premise": "No owner-accepted severity/depth/spread thresholds, observation time/window and eligible joint quote/book histories with a lawful clock. K08 fixes first joint recovery but cannot determine threshold values from current synthetic fixtures.",
+      "profile_approval_receiver": "M02 neutral microstructure/policy owner + M00 book/quote source custodian + programme owner",
+      "R3_gate_satisfied": false
     },
     {
       "derived_id": "D144",
@@ -530,7 +555,12 @@
       "reassessment_witness": "SMART and direct depth are available in accepted synthetic L14 source profiles but no admitted simultaneous matched venue/level/skew/unmatched policy.",
       "proposed_receiver": "M02 neutral book matcher + M00 depth custodian",
       "required_owner_action": "Accept eligible contract/venue, level, timestamp skew and unmatched-row treatment, require joint coverage.",
-      "governing_law": "K02 D144"
+      "governing_law": "K02 D144",
+      "proposed_profile_status": "BLOCKED_REQUIRED_PREMISE",
+      "proposed_profile_version": null,
+      "profile_missing_premise": "No simultaneous provider-backed SMART/direct histories establishing timestamp co-reference, venue/MPID semantics or admissible skew, levels and unmatched-row handling; synthetic separate L14 sources do not justify a numeric skew.",
+      "profile_approval_receiver": "M02 neutral book-matcher owner + M00 depth source custodian + programme owner",
+      "R3_gate_satisfied": false
     },
     {
       "derived_id": "D145",
