@@ -1,0 +1,101 @@
+name: NVDA L00 verified recovery checkpoint
+on:
+  push:
+    branches: [nvda-migration-staging-20261029]
+    paths: [.github/workflows/nvda-l00-recovery-release.yml]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build-verify-publish:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    env:
+      TARGET: 3b0aa1b775f660d57aa5c7f14fef3e69b8c5b6b4
+      REVIEWED: e19c2df9b21777ae467b628c2fa1d36e137a1072
+      TAG: nvda-m02-l00-recovery-20261030
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 3b0aa1b775f660d57aa5c7f14fef3e69b8c5b6b4
+          fetch-depth: 0
+      - name: Generate and verify portable checkpoint from remote Git history
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-recurse-submodules origin '+refs/heads/*:refs/remotes/origin/*' '+refs/tags/*:refs/tags/*'
+          test "$(git rev-parse HEAD)" = "$TARGET"
+          test "$(git rev-parse HEAD^{tree})" = 154133dd7b57efcc5603a7b0e026b861ad3add2c
+          test "$(git rev-parse "$REVIEWED^{tree}")" = 8deaee7ea4bd60773829d8464bdc4422c1c11438
+          git merge-base --is-ancestor "$REVIEWED" "$TARGET"
+          git cat-file -e 97f944d51ab9e403250fe76910e2754b50425c73^{commit}
+          git cat-file -e 9bd59acba13ead7252e52e32e1b5d862adecd99a^{commit}
+          git fsck --full --no-reflogs
+          BASE="$RUNNER_TEMP/NVDA_M02_COMPLETION28_L00_RECOVERY_20261030"
+          mkdir -p "$BASE"
+          git bundle create "$BASE/NVDA_M02_L00_FULL_HISTORY.bundle" --all
+          git bundle verify "$BASE/NVDA_M02_L00_FULL_HISTORY.bundle"
+          git show-ref | LC_ALL=C sort > "$BASE/ALL_EXPORTED_REFS.txt"
+          mkdir -p "$BASE/repository-evidence"
+          for f in GUARDRAILS.md AGENTS.md EXEC_PLAN.md; do cp "$f" "$BASE/repository-evidence/$f"; done
+          mkdir -p "$BASE/handoff/m02_completion_28_execution"
+          cp -a handoff/m02_completion_28_execution/L00 "$BASE/handoff/m02_completion_28_execution/"
+          cp handoff/m02_completion_28_execution/EXECUTION_REGISTER.json "$BASE/handoff/m02_completion_28_execution/"
+          cp handoff/m02_completion_28_execution/TEST_EVIDENCE_LEDGER.json "$BASE/handoff/m02_completion_28_execution/"
+          cat > "$BASE/README_FIRST.md" <<EOF
+          # NVDA M02 L00 — independently reconstructed Git checkpoint
+
+          Generated from JayDEmily/nvda_29102026, exact latest L00 blocker commit:
+          $TARGET
+          Reviewed L00 candidate (ancestor): $REVIEWED
+
+          NEW full-history recovery export; NOT the original unpublished L00 tarball.
+          The original L00_MANIFEST.json and worker receipts describe another unpublished
+          binary. Their archive SHA values do NOT identify this archive.
+          This is transport evidence, NOT acceptance or product release of successor leaves.
+          Python runtimes and external packages are excluded.
+
+          Restore in a directory containing NVDA_M02_L00_FULL_HISTORY.bundle:
+            git clone --mirror NVDA_M02_L00_FULL_HISTORY.bundle restored.git
+            git --git-dir=restored.git fsck --full
+            git --git-dir=restored.git cat-file -e $TARGET^{commit}
+            git --git-dir=restored.git cat-file -e $REVIEWED^{commit}
+          Expected latest tree: 154133dd7b57efcc5603a7b0e026b861ad3add2c
+          The historic 66 original baseline ref tips have names mapped to GitHub
+          preservation tags; do not confuse them with the current branch names.
+          EOF
+          (cd "$BASE"; find . -type f ! -name SHA256SUMS.txt -print0 | LC_ALL=C sort -z | xargs -0 sha256sum > SHA256SUMS.txt)
+          VERIFY="$RUNNER_TEMP/independent-restore.git"
+          git init -q --bare "$VERIFY"
+          git -C "$VERIFY" fetch "$BASE/NVDA_M02_L00_FULL_HISTORY.bundle" '+refs/*:refs/*'
+          git -C "$VERIFY" fsck --full --no-reflogs
+          test "$(git -C "$VERIFY" rev-parse "$TARGET^{tree}")" = 154133dd7b57efcc5603a7b0e026b861ad3add2c
+          test "$(git -C "$VERIFY" rev-parse "$REVIEWED^{tree}")" = 8deaee7ea4bd60773829d8464bdc4422c1c11438
+          (cd "$BASE"; sha256sum --check SHA256SUMS.txt)
+          tar -C "$RUNNER_TEMP" -czf "$RUNNER_TEMP/NVDA_M02_COMPLETION28_L00_RECOVERY_20261030.tar.gz" "NVDA_M02_COMPLETION28_L00_RECOVERY_20261030"
+          sha256sum "$RUNNER_TEMP/NVDA_M02_COMPLETION28_L00_RECOVERY_20261030.tar.gz" | tee "$RUNNER_TEMP/ARCHIVE_SHA256.txt"
+          mkdir -p "$RUNNER_TEMP/reopen"
+          tar -xzf "$RUNNER_TEMP/NVDA_M02_COMPLETION28_L00_RECOVERY_20261030.tar.gz" -C "$RUNNER_TEMP/reopen"
+          (cd "$RUNNER_TEMP/reopen/NVDA_M02_COMPLETION28_L00_RECOVERY_20261030"; sha256sum --check SHA256SUMS.txt)
+          echo 'PASS: archive reopen, all hashes, fresh Git-bundle restore and fsck, HEAD and L00 review commit.'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NVDA_M02_COMPLETION28_L00_RECOVERY_20261030
+          path: |
+            ${{ runner.temp }}/NVDA_M02_COMPLETION28_L00_RECOVERY_20261030.tar.gz
+            ${{ runner.temp }}/ARCHIVE_SHA256.txt
+          retention-days: 90
+      - name: Publish durable GitHub release asset
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          gh release create "$TAG" \
+            "$RUNNER_TEMP/NVDA_M02_COMPLETION28_L00_RECOVERY_20261030.tar.gz" \
+            "$RUNNER_TEMP/ARCHIVE_SHA256.txt" \
+            --repo "$GITHUB_REPOSITORY" \
+            --target "$TARGET" \
+            --title "NVDA M02 L00 reconstructed recovery checkpoint (not programme acceptance)" \
+            --notes "Portable Git checkpoint from L00 execution $TARGET; preserves original reviewed L00 $REVIEWED and full history. This is a new recovery export, not the original worker archive or semantic acceptance." \
+            --prerelease
+          gh release view "$TAG" --repo "$GITHUB_REPOSITORY" --json assets,tagName,url
