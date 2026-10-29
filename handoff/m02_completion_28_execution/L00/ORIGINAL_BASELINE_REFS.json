@@ -1,0 +1,332 @@
+[
+  {
+    "ref": "refs/heads/work/downstream-reconciliation-20261028",
+    "tip": "97f944d51ab9e403250fe76910e2754b50425c73",
+    "object_available": true
+  },
+  {
+    "ref": "refs/heads/work/m00-brief2-execution-20261027",
+    "tip": "2f933701978b8318c21d5df5a119836ad4a83ecc",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/draft/archive/l04-checkpoint/checkpoint-recovered/archive/d143-input/heads/work/v2-d131-clean-lineage-20261026",
+    "tip": "fa709f645ac5ac21b861836db74ab23da9f8e17a",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/draft/archive/l04-checkpoint/checkpoint-recovered/archive/d143-input/heads/work/v2-d135-topone-amendment-20261027",
+    "tip": "17d7553cf3ad92700f849f696134de67b64b0dfa",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/draft/archive/l04-checkpoint/checkpoint-recovered/archive/d143-input/heads/work/v2-d136-rejected-refusal-20261026",
+    "tip": "fa709f645ac5ac21b861836db74ab23da9f8e17a",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/draft/archive/l04-checkpoint/checkpoint-recovered/archive/d143-input/remotes/origin/HEAD",
+    "tip": "fa709f645ac5ac21b861836db74ab23da9f8e17a",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/draft/archive/l04-checkpoint/checkpoint-recovered/archive/d143-input/remotes/origin/work/v2-d131-clean-lineage-20261026",
+    "tip": "fa709f645ac5ac21b861836db74ab23da9f8e17a",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/draft/archive/l04-checkpoint/checkpoint-recovered/archive/d143-input/remotes/origin/work/v2-next20-d010-clean-lineage-20261026",
+    "tip": "77471e5a851ec04e73c6dc63988868064de930f8",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/draft/archive/l04-checkpoint/checkpoint-recovered/archive/d143-input/remotes/origin/work/v2-next20-execution-20261026",
+    "tip": "8e0c89b2cdf4ef504931fea894d89b2f85b2ce2e",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/draft/archive/l04-checkpoint/checkpoint-recovered/archive/d143-input/tags/checkpoint/d014-controlled-accepted-20261022",
+    "tip": "d5706537d03801cca9caa9078952496c59fbf41d",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/draft/archive/l04-checkpoint/checkpoint-recovered/archive/d143-input/tags/checkpoint/g4-research-20261021",
+    "tip": "f0190af646378441b5eabfc3616c26b3fc46c252",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/draft/archive/l04-checkpoint/checkpoint-recovered/heads/work/m00-brief2-execution-20261027",
+    "tip": "5219004223e33291f1b831382e8427742e00427f",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/draft/archive/l04-checkpoint/checkpoint-recovered/heads/work/m00-brief2-plan-20261027",
+    "tip": "bc02a472eaa3a07c7f112dee48e5b1f6fa1764dc",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/draft/archive/l04-checkpoint/checkpoint-recovered/heads/work/v2-d135-topone-amendment-20261027",
+    "tip": "17d7553cf3ad92700f849f696134de67b64b0dfa",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/draft/archive/l04-checkpoint/checkpoint-recovered/remotes/origin/HEAD",
+    "tip": "17d7553cf3ad92700f849f696134de67b64b0dfa",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/draft/archive/l04-checkpoint/checkpoint-recovered/remotes/origin/work/v2-d131-clean-lineage-20261026",
+    "tip": "fa709f645ac5ac21b861836db74ab23da9f8e17a",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/draft/archive/l04-checkpoint/checkpoint-recovered/remotes/origin/work/v2-d135-topone-amendment-20261027",
+    "tip": "17d7553cf3ad92700f849f696134de67b64b0dfa",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/draft/archive/l04-checkpoint/checkpoint-recovered/remotes/origin/work/v2-d136-rejected-refusal-20261026",
+    "tip": "fa709f645ac5ac21b861836db74ab23da9f8e17a",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/draft/archive/l04-checkpoint/checkpoint-recovered/tags/checkpoint/d014-controlled-accepted-20261022",
+    "tip": "d5706537d03801cca9caa9078952496c59fbf41d",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/draft/archive/l04-checkpoint/checkpoint-recovered/tags/checkpoint/g4-research-20261021",
+    "tip": "f0190af646378441b5eabfc3616c26b3fc46c252",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/draft/archive/l04-checkpoint/heads/work/m00-brief2-execution-20261027",
+    "tip": "b05577a3a87b3bc23279075ef052125b9cab8ab1",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/draft/archive/l04-checkpoint/remotes/origin/HEAD",
+    "tip": "5219004223e33291f1b831382e8427742e00427f",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/draft/archive/l04-checkpoint/remotes/origin/work/m00-brief2-execution-20261027",
+    "tip": "5219004223e33291f1b831382e8427742e00427f",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/draft/archive/l04-checkpoint/remotes/origin/work/m00-brief2-plan-20261027",
+    "tip": "bc02a472eaa3a07c7f112dee48e5b1f6fa1764dc",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/draft/archive/l04-checkpoint/remotes/origin/work/v2-d135-topone-amendment-20261027",
+    "tip": "17d7553cf3ad92700f849f696134de67b64b0dfa",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/draft/archive/l04-checkpoint/tags/checkpoint/d014-controlled-accepted-20261022",
+    "tip": "d5706537d03801cca9caa9078952496c59fbf41d",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/draft/archive/l04-checkpoint/tags/checkpoint/g4-research-20261021",
+    "tip": "f0190af646378441b5eabfc3616c26b3fc46c252",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/draft/heads/work/m00-brief2-execution-20261027",
+    "tip": "0c86b187a23e750d39ce04f772f7d52c1bd578b0",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/draft/remotes/origin/HEAD",
+    "tip": "b05577a3a87b3bc23279075ef052125b9cab8ab1",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/draft/remotes/origin/work/m00-brief2-execution-20261027",
+    "tip": "b05577a3a87b3bc23279075ef052125b9cab8ab1",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/draft/tags/checkpoint/d014-controlled-accepted-20261022",
+    "tip": "d5706537d03801cca9caa9078952496c59fbf41d",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/draft/tags/checkpoint/g4-research-20261021",
+    "tip": "f0190af646378441b5eabfc3616c26b3fc46c252",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/heads/work/m00-brief2-execution-20261027",
+    "tip": "d14cb0102bfdf405bc157c7e4fa3e0d1714fb41a",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/recovered/checkpoint-recovered/archive/d143-input/heads/work/v2-d131-clean-lineage-20261026",
+    "tip": "fa709f645ac5ac21b861836db74ab23da9f8e17a",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/recovered/checkpoint-recovered/archive/d143-input/heads/work/v2-d135-topone-amendment-20261027",
+    "tip": "17d7553cf3ad92700f849f696134de67b64b0dfa",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/recovered/checkpoint-recovered/archive/d143-input/heads/work/v2-d136-rejected-refusal-20261026",
+    "tip": "fa709f645ac5ac21b861836db74ab23da9f8e17a",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/recovered/checkpoint-recovered/archive/d143-input/remotes/origin/HEAD",
+    "tip": "fa709f645ac5ac21b861836db74ab23da9f8e17a",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/recovered/checkpoint-recovered/archive/d143-input/remotes/origin/work/v2-d131-clean-lineage-20261026",
+    "tip": "fa709f645ac5ac21b861836db74ab23da9f8e17a",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/recovered/checkpoint-recovered/archive/d143-input/remotes/origin/work/v2-next20-d010-clean-lineage-20261026",
+    "tip": "77471e5a851ec04e73c6dc63988868064de930f8",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/recovered/checkpoint-recovered/archive/d143-input/remotes/origin/work/v2-next20-execution-20261026",
+    "tip": "8e0c89b2cdf4ef504931fea894d89b2f85b2ce2e",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/recovered/checkpoint-recovered/archive/d143-input/tags/checkpoint/d014-controlled-accepted-20261022",
+    "tip": "d5706537d03801cca9caa9078952496c59fbf41d",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/recovered/checkpoint-recovered/archive/d143-input/tags/checkpoint/g4-research-20261021",
+    "tip": "f0190af646378441b5eabfc3616c26b3fc46c252",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/recovered/checkpoint-recovered/heads/work/m00-brief2-execution-20261027",
+    "tip": "5219004223e33291f1b831382e8427742e00427f",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/recovered/checkpoint-recovered/heads/work/m00-brief2-plan-20261027",
+    "tip": "bc02a472eaa3a07c7f112dee48e5b1f6fa1764dc",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/recovered/checkpoint-recovered/heads/work/v2-d135-topone-amendment-20261027",
+    "tip": "17d7553cf3ad92700f849f696134de67b64b0dfa",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/recovered/checkpoint-recovered/remotes/origin/HEAD",
+    "tip": "17d7553cf3ad92700f849f696134de67b64b0dfa",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/recovered/checkpoint-recovered/remotes/origin/work/v2-d131-clean-lineage-20261026",
+    "tip": "fa709f645ac5ac21b861836db74ab23da9f8e17a",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/recovered/checkpoint-recovered/remotes/origin/work/v2-d135-topone-amendment-20261027",
+    "tip": "17d7553cf3ad92700f849f696134de67b64b0dfa",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/recovered/checkpoint-recovered/remotes/origin/work/v2-d136-rejected-refusal-20261026",
+    "tip": "fa709f645ac5ac21b861836db74ab23da9f8e17a",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/recovered/checkpoint-recovered/tags/checkpoint/d014-controlled-accepted-20261022",
+    "tip": "d5706537d03801cca9caa9078952496c59fbf41d",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/recovered/checkpoint-recovered/tags/checkpoint/g4-research-20261021",
+    "tip": "f0190af646378441b5eabfc3616c26b3fc46c252",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/recovered/heads/work/m00-brief2-execution-20261027",
+    "tip": "b05577a3a87b3bc23279075ef052125b9cab8ab1",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/recovered/remotes/origin/HEAD",
+    "tip": "5219004223e33291f1b831382e8427742e00427f",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/recovered/remotes/origin/work/m00-brief2-execution-20261027",
+    "tip": "5219004223e33291f1b831382e8427742e00427f",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/recovered/remotes/origin/work/m00-brief2-plan-20261027",
+    "tip": "bc02a472eaa3a07c7f112dee48e5b1f6fa1764dc",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/recovered/remotes/origin/work/v2-d135-topone-amendment-20261027",
+    "tip": "17d7553cf3ad92700f849f696134de67b64b0dfa",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/recovered/tags/checkpoint/d014-controlled-accepted-20261022",
+    "tip": "d5706537d03801cca9caa9078952496c59fbf41d",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/recovered/tags/checkpoint/g4-research-20261021",
+    "tip": "f0190af646378441b5eabfc3616c26b3fc46c252",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/remotes/origin/HEAD",
+    "tip": "b05577a3a87b3bc23279075ef052125b9cab8ab1",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/remotes/origin/work/m00-brief2-execution-20261027",
+    "tip": "b05577a3a87b3bc23279075ef052125b9cab8ab1",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/tags/checkpoint/d014-controlled-accepted-20261022",
+    "tip": "d5706537d03801cca9caa9078952496c59fbf41d",
+    "object_available": true
+  },
+  {
+    "ref": "refs/recovered/tags/checkpoint/g4-research-20261021",
+    "tip": "f0190af646378441b5eabfc3616c26b3fc46c252",
+    "object_available": true
+  },
+  {
+    "ref": "refs/remotes/origin/HEAD",
+    "tip": "d14cb0102bfdf405bc157c7e4fa3e0d1714fb41a",
+    "object_available": true
+  },
+  {
+    "ref": "refs/remotes/origin/work/m00-brief2-execution-20261027",
+    "tip": "d14cb0102bfdf405bc157c7e4fa3e0d1714fb41a",
+    "object_available": true
+  },
+  {
+    "ref": "refs/tags/checkpoint/d014-controlled-accepted-20261022",
+    "tip": "d5706537d03801cca9caa9078952496c59fbf41d",
+    "object_available": true
+  },
+  {
+    "ref": "refs/tags/checkpoint/g4-research-20261021",
+    "tip": "f0190af646378441b5eabfc3616c26b3fc46c252",
+    "object_available": true
+  }
+]
