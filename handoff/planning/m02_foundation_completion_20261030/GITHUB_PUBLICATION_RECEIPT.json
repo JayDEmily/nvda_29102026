@@ -1,0 +1,153 @@
+{
+  "repository": "JayDEmily/nvda_29102026",
+  "base_commit": "ab630971741f5f60f547475f016bb09eec91a222",
+  "published_commit": "457c66a99f0747237ac39e34e64adf195d61634b",
+  "published_tree": "5ecea8c90ca2bd52c96b2e89768b572de77bdb6c",
+  "publication_status": "VERIFIED_REMOTE_TREE_AND_ALL_BLOBS",
+  "preserved_preexisting_file_count": 3963,
+  "uploaded_files": [
+    {
+      "path": "EXEC_PLAN_NEXT.md",
+      "sha": "1997e7e4e914e75b43fd93f9ec947775600b137d"
+    },
+    {
+      "path": "handoff/m02_oracle_v2_review_20261029/INDEPENDENT_REVIEW.md",
+      "sha": "ecf0d402de0860f1027a0807ae110c71f77e563d"
+    },
+    {
+      "path": "handoff/m02_oracle_v2_review_20261029/INTAKE.json",
+      "sha": "ca7b7b76372f274a1973ef4247bd9ad36e798f00"
+    },
+    {
+      "path": "handoff/m02_oracle_v2_review_20261029/LOOSE_VS_GIT_MISMATCH.json",
+      "sha": "8498906f080b3c4fe90b5602cf38b43662141306"
+    },
+    {
+      "path": "handoff/m02_oracle_v2_review_20261029/ORIGINAL_PACKET_MANIFEST.json",
+      "sha": "84db632f8e9d052f3753bd2036669189593ee347"
+    },
+    {
+      "path": "handoff/m02_oracle_v2_review_20261029/REUSE_ASSESSMENT.md",
+      "sha": "a3d4d2533cfd0d19f044e181170dddf7cb70f38a"
+    },
+    {
+      "path": "handoff/m02_oracle_v2_review_20261029/TRANSFER_AND_LINEAGE_CHECK.json",
+      "sha": "f07853b14be5abfbb2a863450c50c2dc7ce40e1a"
+    },
+    {
+      "path": "handoff/m02_oracle_v2_review_20261029/untrusted_v2_original/R3_SYNTHETIC_ORACLE_CASES_V2.json",
+      "sha": "890799fee8507f15663207da7b6c84abb7efdb6a"
+    },
+    {
+      "path": "handoff/m02_oracle_v2_review_20261029/untrusted_v2_original/R3_SYNTHETIC_ORACLE_HANDOFF_V2.md",
+      "sha": "b58aaca4468d1fdb1e795fc2bf4ea05bd474e3ac"
+    },
+    {
+      "path": "handoff/m02_oracle_v2_review_20261029/untrusted_v2_original/R3_SYNTHETIC_ORACLE_READBACK_V2.json",
+      "sha": "dd5ea00fec238bdd0ca5409a2178a9f795ce7b9a"
+    },
+    {
+      "path": "handoff/m02_oracle_v2_review_20261029/untrusted_v2_original/SYNTHETIC_D091_BOUNDARIES_V2.csv",
+      "sha": "2717bb0cba1e5b343041f9c72c0fb3ca6115b05e"
+    },
+    {
+      "path": "handoff/m02_oracle_v2_review_20261029/untrusted_v2_original/SYNTHETIC_D142_STATE_TIMELINE_V2.csv",
+      "sha": "cd1a3cc263f8e6ff2726d29467d05bbcb8da1d9d"
+    },
+    {
+      "path": "handoff/m02_oracle_v2_review_20261029/untrusted_v2_original/SYNTHETIC_D144_MATCHED_LEVELS_V2.csv",
+      "sha": "7ed7e490909a564ba35b34446147a44abf1e173f"
+    },
+    {
+      "path": "handoff/m02_oracle_v2_review_20261029/untrusted_v2_original/SYNTHETIC_K06_HELDOUT_AND_REFUSAL_V2.csv",
+      "sha": "ebc30dd637e4ed85405f69263e38fa2bde922108"
+    },
+    {
+      "path": "handoff/planning/m02_foundation_completion_20261030/EVIDENCE_REUSE_INDEX.json",
+      "sha": "8865ffa2b9a5587a7e3d3abe4645fdadded3c75c"
+    },
+    {
+      "path": "handoff/planning/m02_foundation_completion_20261030/EXEC_PLAN_PROPOSED.md",
+      "sha": "ece70d6667d84a7e9c2363276be8db41c4224dd6"
+    },
+    {
+      "path": "handoff/planning/m02_foundation_completion_20261030/GITHUB_REFERENCE_AUDIT.json",
+      "sha": "76a2e49614ddc82c140011df5c6cd0bfd3062d26"
+    },
+    {
+      "path": "handoff/planning/m02_foundation_completion_20261030/INDEPENDENT_DOCUMENTARY_CHECKS.json",
+      "sha": "88342a5c0daa5d3561df951ec274ffedda911c80"
+    },
+    {
+      "path": "handoff/planning/m02_foundation_completion_20261030/INDEPENDENT_PLAN_REVIEW.md",
+      "sha": "ef3563e01d6064168f8fa097996976d5d1e48ea8"
+    },
+    {
+      "path": "handoff/planning/m02_foundation_completion_20261030/LEAF_REGISTER.json",
+      "sha": "358adaf38d761d6d83e7da0982b93b9b59f39caf"
+    },
+    {
+      "path": "handoff/planning/m02_foundation_completion_20261030/PLAN_STATUS.json",
+      "sha": "dac06f8274248f8dc5c36e7419ee96208735218b"
+    },
+    {
+      "path": "handoff/planning/m02_foundation_completion_20261030/PREDECESSOR_EXEC_PLAN_AT_G4.md",
+      "sha": "e35f11bf1fcde2be53b0c44f4818889e72509a39"
+    },
+    {
+      "path": "handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json",
+      "sha": "e9efecefa64140e2e120f5efc62280bbb4814d1d"
+    },
+    {
+      "path": "handoff/planning/m02_foundation_completion_20261030/READ_ME_FIRST.md",
+      "sha": "79c512205791cf64de70b7bd8bf1a1281c85929b"
+    },
+    {
+      "path": "handoff/planning/m02_foundation_completion_20261030/RECONSTRUCTED_PRIOR_REVIEW.md",
+      "sha": "5645e2b58bfa85b1fcf8f2b8a1dd4c288f49da25"
+    },
+    {
+      "path": "handoff/planning/m02_foundation_completion_20261030/RECOVERY_RECORD.json",
+      "sha": "1ad1ca1ec8fe4f65c4b96b853178b813d3dbf30b"
+    },
+    {
+      "path": "handoff/planning/m02_foundation_completion_20261030/SIGNAL_COVERAGE_MATRIX.csv",
+      "sha": "a6acc480ada65a4d2279a9f00e3ff48a68ed949c"
+    },
+    {
+      "path": "handoff/planning/m02_foundation_completion_20261030/SIGNAL_COVERAGE_REGISTER.json",
+      "sha": "fd6814abce2fcd7314c133ff040709659f6cfa23"
+    },
+    {
+      "path": "handoff/planning/m02_foundation_completion_20261030/SOURCE_INVENTORY.json",
+      "sha": "40c969787ab341e9336bcdbfb483f97091dbf284"
+    },
+    {
+      "path": "handoff/planning/m02_foundation_completion_20261030/TEST_EVIDENCE_LEDGER.json",
+      "sha": "36789db49a7383374511082ff6d58a4345293fc2"
+    },
+    {
+      "path": "handoff/planning/m02_foundation_completion_20261030/TEST_EVIDENCE_LEDGER.schema.json",
+      "sha": "4ee6833042c488ae90c8b76ccacac82273bfe772"
+    }
+  ],
+  "uploaded_file_count": 31,
+  "final_blob_count": 3994,
+  "all_preexisting_blob_ids_and_modes_preserved": true,
+  "all_uploaded_blob_ids_match_local_Git": true,
+  "remote_tree_truncated": false,
+  "required_direct_source_hashes_verified": 20,
+  "proof_hash_mentions_verified": 311,
+  "unique_proof_paths": 212,
+  "distinct_evidence_candidates_retained_as_ancestors_of_imported_G4": 99,
+  "missing_saved_V2_files_added": 13,
+  "packages_dependencies_uploaded": 0,
+  "source_test_config_or_frozen_governance_changes": 0,
+  "product_tests_run": 0,
+  "root_active_plan_replaced": false,
+  "successor_status": "INDEPENDENTLY_CLEARED_PROPOSAL_AWAITING_OWNER_ACCEPTANCE_AND_IMPLEMENTATION_COMMISSION",
+  "reviewed_candidate": "c63770bca1737365fd8d4bbfcb113ce7b9620ae9",
+  "original_R0_bytes_recovered": false,
+  "reviewed_R1_reconstruction": true,
+  "receipt_commit_is_separate": "This receipt identifies the already verified publication commit; it does not claim its own future commit SHA."
+}
