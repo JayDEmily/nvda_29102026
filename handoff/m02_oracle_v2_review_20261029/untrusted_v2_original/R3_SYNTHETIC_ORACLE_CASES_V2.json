@@ -1,0 +1,183 @@
+{
+  "document_type": "INDEPENDENT_SYNTHETIC_ORACLE_CASES_V2",
+  "version": "M02-R3-SYNTHETIC-ORACLES-V2-20261029",
+  "scope": "SYNTHETIC_ONLY_NO_PRODUCT_EXECUTION",
+  "commission": "owner direction: continue bounded synthetic engineering design; frozen normative equations unchanged",
+  "parent_profile": "R3_TENTATIVE_SYNTHETIC_PROFILES_V1.json",
+  "production_profile_approved": false,
+  "independent_review": "PENDING",
+  "source_observations_admitted": false,
+  "coverage": {
+    "direct_signals": [
+      "D079",
+      "D080",
+      "D081",
+      "D091",
+      "D142",
+      "D144"
+    ],
+    "illustrative_dependent_oracles": [
+      "D078"
+    ],
+    "other_held_signals_unmodified": true
+  },
+  "cases": [
+    {
+      "id": "K06-POS-64",
+      "ids": [
+        "D079",
+        "D080",
+        "D081"
+      ],
+      "input": "SYNTHETIC_K06_64ROW_FIXTURE.csv",
+      "expected": {
+        "intercept": "0.0002",
+        "D079": "1.50",
+        "D080": "0.40",
+        "D081": "0.70",
+        "fit_id": "SYNTH-FIT-K06-64-ORTHO-01"
+      },
+      "condition": "64 aligned distinct pre-cutoff rows, full-rank 4-column design; shared one-fit identity",
+      "status": "REFERENCE_ORACLE_ONLY"
+    },
+    {
+      "id": "K06-REFUSE-RANK",
+      "ids": [
+        "D079",
+        "D080",
+        "D081"
+      ],
+      "input": "mock factor history where D077=D076 for every training row",
+      "expected": "NO_FIT_OCCURRENCE",
+      "reason": "rank deficient four-column design"
+    },
+    {
+      "id": "K06-D078-POS-HELDOUT",
+      "ids": [
+        "D078"
+      ],
+      "input": "SYNTHETIC_K06_HELDOUT_AND_REFUSAL_V2.csv / K06-HELDOUT-01",
+      "expected": {
+        "predicted_D075": "0.0208",
+        "D078_residual": "0"
+      },
+      "status": "DEPENDENT_DESIGN_ONLY_NOT_ADMITTED"
+    },
+    {
+      "id": "K06-D078-REFUSE-FIT-ID",
+      "ids": [
+        "D078"
+      ],
+      "input": "SYNTHETIC_K06_HELDOUT_AND_REFUSAL_V2.csv / K06-REFUSE-FIT-ID",
+      "expected": "NO_OCCURRENCE",
+      "reason": "one coefficient references a different fit_id"
+    },
+    {
+      "id": "D091-POS-EDGES",
+      "ids": [
+        "D091"
+      ],
+      "input": "SYNTHETIC_D091_BOUNDARIES_V2.csv accepted cases",
+      "expected": "exact half-open category selected with final 1.00 included",
+      "status": "REFERENCE_ORACLE_ONLY"
+    },
+    {
+      "id": "D091-REFUSE-OUT_OF_RANGE",
+      "ids": [
+        "D091"
+      ],
+      "input": "1.01, missing, nonfinite delta",
+      "expected": "NO_OCCURRENCE",
+      "reason": "outside test-only assumed [-1,1] domain"
+    },
+    {
+      "id": "D142-POS-FIRST-JOINT",
+      "ids": [
+        "D142"
+      ],
+      "input": "SYNTHETIC_D142_STATE_TIMELINE_V2.csv",
+      "expected": {
+        "first_shock_state": "SHOCK",
+        "first_joint_recovery_state": "FIRST_BOTH",
+        "elapsed_seconds": "6",
+        "recovery_depth": "95",
+        "recovery_spread_USD": "0.10"
+      },
+      "reason": "shock t=1, first BOTH recovery t=7; t=3 depth only",
+      "status": "REFERENCE_ORACLE_ONLY"
+    },
+    {
+      "id": "D142-REFUSE-SPREAD",
+      "ids": [
+        "D142"
+      ],
+      "input": "same baseline/shock; recovery book remains depth=95, spread=0.13 through t=30",
+      "expected": "NO_COMPLETED_RESILIENCE_OCCURRENCE",
+      "reason": "one of two joint recovery conditions unsatisfied"
+    },
+    {
+      "id": "D142-REFUSE-RESET",
+      "ids": [
+        "D142"
+      ],
+      "input": "generation switches G1\u2192G2 at t=4",
+      "expected": "NO_CROSS_GENERATION_RECOVERY",
+      "reason": "scope/reset continuity broken"
+    },
+    {
+      "id": "D144-POS-4LEVEL",
+      "ids": [
+        "D144"
+      ],
+      "input": "SYNTHETIC_D144_MATCHED_LEVELS_V2.csv",
+      "expected": {
+        "bid_rank0_price_difference": "0.01",
+        "bid_rank0_depth_difference": "2",
+        "four_pairs": 4,
+        "skew_seconds": "0.100"
+      },
+      "status": "REFERENCE_ORACLE_ONLY"
+    },
+    {
+      "id": "D144-REFUSE-SKEW",
+      "ids": [
+        "D144"
+      ],
+      "input": "same four levels but direct receipt skew 0.251s",
+      "expected": "NO_COMPLETED_COMPARISON",
+      "reason": "exceeds inclusive 0.250-second test-only policy"
+    },
+    {
+      "id": "D144-REFUSE-MISSING",
+      "ids": [
+        "D144"
+      ],
+      "input": "omit one required direct ASK rank1 level",
+      "expected": "NO_COMPLETED_COMPARISON",
+      "reason": "incomplete required level set"
+    }
+  ],
+  "approved_product_test_allocation": "NONE_BY_THIS_DOCUMENT",
+  "replay_contract": "these are independent expected-value data for prospective separately commissioned public-seam cases, not a substitute for M00 projections, producer lineage, SQLite readback or strict independent tester",
+  "explicit_holds": [
+    "D062",
+    "D085",
+    "D086",
+    "D095",
+    "D120",
+    "D141",
+    "D145",
+    "D151",
+    "D079",
+    "D080",
+    "D081",
+    "D091",
+    "D142",
+    "D144"
+  ],
+  "source_contract_refs": [
+    "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md:218-226",
+    "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md:151-154",
+    "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md:275-285"
+  ]
+}

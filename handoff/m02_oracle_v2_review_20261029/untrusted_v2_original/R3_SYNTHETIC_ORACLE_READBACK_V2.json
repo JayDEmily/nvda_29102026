@@ -1,0 +1,40 @@
+{
+  "documentary_validation": "PASSED_LOCAL_EXACT_RATIONAL_CALCULATIONS",
+  "not_product_tests": true,
+  "verified_values": {
+    "K06_fit_intercept_beta_market_beta_tech_beta_semi": [
+      "0.0002",
+      "1.5",
+      "0.4",
+      "0.7"
+    ],
+    "K06_gram_diagonal": [
+      "64",
+      "0.0064",
+      "0.004096",
+      "0.002304"
+    ],
+    "K06_gram_off_diagonal_zero": true,
+    "K06_heldout_predicted_D075": "0.0208",
+    "D091_cases": 9,
+    "D091_no_ambiguous_boundaries": true,
+    "D142_first_joint_recovery_at_t": "7",
+    "D142_elapsed_from_shock_t1": "6",
+    "D144_four_pairs": 4,
+    "D144_bid_rank0_gaps": [
+      "0.01",
+      "2"
+    ]
+  },
+  "source_inputs": {
+    "R3_TENTATIVE_SYNTHETIC_PROFILES_V1.json": "b4e9951aeb79844adbbab11db32243e511f84f7e9d45ac2014660c21124e8577",
+    "SYNTHETIC_K06_64ROW_FIXTURE.csv": "addb2051a69373bb3a88dfb9a69c115449d52d3fbe393a190b5eaaf654d556fe",
+    "R3_SYNTHETIC_ORACLE_CASES_V2.json": "da6cfdc561177601318f0ecdbf40c306b2fee4ebfeb1cc2b8ae7d87cd9f284ce",
+    "SYNTHETIC_K06_HELDOUT_AND_REFUSAL_V2.csv": "d60dbdcda96eec1dca1a3387d37dc800c9a211c8effdef27cc79efc05ea57875",
+    "SYNTHETIC_D091_BOUNDARIES_V2.csv": "8cf2989f99bd7c4190746466a7b1440ed2884aa298714d1d1f9b01adbfb034b4",
+    "SYNTHETIC_D142_STATE_TIMELINE_V2.csv": "9125caae2385a4dad9da73a815a0b3f20df47aae6ae09ab033d393f0b5f70589",
+    "SYNTHETIC_D144_MATCHED_LEVELS_V2.csv": "88fb74912bce9a67b96b8c92df59f4b5bdb2143f6b7b903a188a9a8b16346924"
+  },
+  "product_code_or_test_runner_called": false,
+  "gate_acceptance": "NOT_INDEPENDENTLY_ACCEPTED"
+}
