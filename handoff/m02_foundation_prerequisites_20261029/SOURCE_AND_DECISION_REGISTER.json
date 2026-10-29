@@ -1,7 +1,7 @@
 {
   "plan_id": "M02-FOUNDATION-PREREQUISITE-RESOLUTION-1",
   "starting_commit": "dbf08e6521bd16dcde593bb050a4c22beafd49d0",
-  "status": "AUTHOR_WORK_IN_PROGRESS_INDEPENDENT_REVIEW_PENDING",
+  "status": "AUTHOR_COMPLETE_ALL_28; INDEPENDENT_REVIEW_PENDING",
   "rows": [
     {
       "derived_id": "D062",

@@ -5,7 +5,7 @@
   "repository": {
     "baseline_commit": "dbf08e6521bd16dcde593bb050a4c22beafd49d0",
     "candidate_commit": "dbf08e6521bd16dcde593bb050a4c22beafd49d0",
-    "plan_revision": "R0-PROPOSED"
+    "plan_revision": "R0-OWNER_COMMISSIONED_DOCUMENTARY_AUTHOR_COMPLETED"
   },
   "execution_mode": {
     "mode": "CHAT_MANUAL",

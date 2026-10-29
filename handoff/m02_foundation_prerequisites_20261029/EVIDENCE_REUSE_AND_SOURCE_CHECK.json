@@ -1,0 +1,12 @@
+{
+  "source_checkpoint": "dbf08e6521bd16dcde593bb050a4c22beafd49d0",
+  "recorded_source_files_sha256_compared": 826,
+  "missing_files": [],
+  "digest_mismatch_files": [],
+  "accepted_original_proof_rows_preserved": 98,
+  "original_evidence_reuse": "REUSABLE_FOR_PRIOR_PROFILE_ONLY",
+  "native_l14_claims": 11,
+  "new_invalidation_demonstrated": 0,
+  "new_product_runtime_proofs": 0,
+  "source_profile_readiness": "NOT_UPGRADED"
+}
