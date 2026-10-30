@@ -1,8 +1,8 @@
-# M02 foundation completion — proposed ExecPlan
+# M02 foundation completion — R2 CHAT_MANUAL transition proposal
 
-**Plan ID:** M02-FOUNDATION-COMPLETION-28. **Revision:** R1_RECOVERED. **Date:** 30 October 2026, Melbourne.
+**Plan ID:** M02-FOUNDATION-COMPLETION-28. **Revision:** R2_CHAT_MANUAL_PROPOSED. **Date:** 30 October 2026, Melbourne.
 
-**Status: OWNER_ACCEPTED_AND_COMMISSIONED, L00 IN PROGRESS.** Owner accepted R1 on 30 October 2026 and commissioned complete execution in the current Codex start message. Historical drafting restrictions below describe the proposal pass and do not revoke this commission. The accepted substantive leaf obligations, proof budgets and decision gates are unchanged.
+**Status: PROPOSED — NOT INSTALLED AS ACTIVE EXECUTION AUTHORITY.** This branch proposes a CHAT_MANUAL transition of the already commissioned R1; R1 retains its historical commission and status on the original execution branch. Owner approval of the exact R2 changes, independent documentary review, ledger/configuration reconciliation and verified checkpoint prerequisites are necessary before activation. No product implementation, tests, or signal acceptance is commissioned by this proposal alone. The 39 existing leaves, 27 mandatory identities, core20, seven extensions, prior evidence and D145 pause are retained.
 
 ## 0. Recovery, authority and intended output
 
@@ -64,9 +64,9 @@ Seven external holds remain outside this 28 and the conditional foundation 126: 
 | G4 | Events, surfaces, density/tails, replenishment, breadth; paused OFI disposition | L23–L31 | 7, excluding D145 |
 | G5 | Exact final acceptance, remaining holds and durable handover | L32 | No double counting |
 
-There are **39 named leaves** in LEAF_REGISTER.json. Independently releasable source contracts have separate names: L01a/b/c/d, L07a/b, L10a/b/c. Each needs its own independent acceptance and saved downloadable checkpoint before a listed consumer advances. Never release a child from an implicitly partially completed grouped leaf or mark its entire gate accepted from one component. Full gate acceptance waits for every mandatory member. Gate numbering does not impose a blanket serial barrier: independent L07/L10/L19 or G4 units can proceed once their actual listed dependencies are accepted. Work one semantic unit at a time; no overlapping mutations unless genuine independence is separately established.
+There are **39 named leaves** in LEAF_REGISTER.json; this proposal changes no leaf IDs or output identities. Independently releasable source/definition contracts remain L01a/b/c/d, L07a/b, L10a/b/c and require documentary authority clearance before dependent work. Under CHAT_MANUAL, an implementation may provisionally feed another implementation only when its required contract, source profile and committed interface are explicitly ready; its product result remains IMPLEMENTED_UNTESTED, and it cannot independently release TESTED_ACCEPTED or a final gate. Missing source/authority decisions still block descendants. Formal dependency-ordered product acceptance is deferred to L32, where the independent tester must prove parent before dependent. Gate numbering does not impose unrelated barriers; do not overlap mutations without demonstrated independence.
 
-After each leaf, obtain documentary review for decisions/contracts or independent product execution plus semantic review for implementation, commit exact evidence, create/verify/save/expose a cumulative downloadable checkpoint, then continue. A block stops dependent descendants; continue unrelated ready work without routine reapproval. A blocked leaf receives a truthful checkpoint and owner/receiver, but its implementation output remains open. No arbitrary stop at seven or twenty signals, or at a context boundary.
+Under the proposed CHAT_MANUAL schedule, review authority/contract decisions at the owning leaf; the Worker authors its allocated tests before implementation, commits the exact leaf and records IMPLEMENTED_UNTESTED without running product proofs. A separate manual Tester chat performs all necessary independent product executions, semantic review and acceptance in L32, following dependencies; no leaf claims TESTED_ACCEPTED early. A blocked authority or transfer invariant still stops its descendants. Each leaf needs a durable, retrievable checkpoint and precise source/ref identity; section 5 defines a proposed reduced-size transfer model that must be proven before replacing the commissioned cumulative bundle requirement. No arbitrary stop at seven or twenty signals.
 
 ## 3. Leaf contracts and finite deliverables
 
@@ -74,7 +74,7 @@ Each leaf has its owner, IDs, direct source obligations in the coverage register
 
 Before edits, write the leaf's exact implementation brief and changed paths, accepted authority/profile/selection/unit/clock bindings, independently derived oracles and allowed cases. Each leaf emits named contract/policy or implementation files, REVIEW.md, exact candidate/tree/source/claim bindings, updated execution/evidence registers and a checkpoint under `handoff/m02_completion_28_execution/<leaf>/`. Actual required domain decisions precede code; a reviewer cannot invent programme policy. Generic legacy M01 code presence is not M02 admission. No expected D answer is disguised as source/configuration.
 
-For an implementation leaf, acceptance requires actual lawful public source/predecessor ingress, intended result/shape/units/lineage, a refusal that reaches its own invariant, append-only persistence and ordinary read-only reopen without live predecessor producers. Include logical retry/idempotency behaviour in the existing case scope where required by the owning contract. No direct cross-owner SQL or private test helper imports.
+For an implementation leaf, eventual TESTED_ACCEPTED requires actual lawful public source/predecessor ingress, intended result/shape/units/lineage, a refusal that reaches its own invariant, append-only persistence and ordinary read-only reopen without live predecessor producers. During implementation these are authored proof obligations, not purported results; record IMPLEMENTED_UNTESTED. Include retry/idempotency behaviour within its accepted cases where required. No direct cross-owner SQL or private test helper imports.
 
 ### L00 — Authority, scope and execution ingress
 
@@ -82,7 +82,7 @@ For an implementation leaf, acceptance requires actual lawful public source/pred
 
 After owner acceptance and explicit implementation commission, archive exact predecessor root, install this plan as the sole root authority and bind all source/profile decisions. Preserve GUARDRAILS and actual AGENTS bytes. Assign an available independent sole strict executor; confirm retained pinned runtime evidence without a qualification test. Freeze 126 identities, 98 historical profiles, 11 L14 claims, 28 current holds and seven external holds. Convert only actually approved prospective case allocations into the active ledger. Inventory checkpoint prerequisites and all required current refs.
 
-**Leaf acceptance and checkpoint:** Independently review every stated obligation. Execute only the exact authorised module-local proof when new product capability is claimed. Bind raw result and public durable readback to the candidate. Commit, freshly restore, save and expose the cumulative checkpoint before consumer release. On failure preserve the first unmet invariant and stop only its descendants.
+**Proposed CHAT_MANUAL leaf rule:** Independently review and release necessary source/definition authority at this boundary. Worker commits scoped code and unexecuted proof to GitHub and records IMPLEMENTED_UNTESTED where implementation is involved. No product TESTED_ACCEPTED or gate acceptance until separate L32 Tester execution and semantic review. Bind exact candidate and deliverable to a recoverable per-leaf checkpoint under section 5; if checkpoint capability or authority is unproved, record BLOCKED and halt dependent work. Preserve the first unmet invariant.
 
 ### L01a — Aligned history and joint-fit contract
 
@@ -90,7 +90,7 @@ After owner acceptance and explicit implementation commission, archive exact pre
 
 Bind actual public D071/D075/D076/D077 history producers, aligned sample/window/knowledge cutoffs, current exclusion, rank/conditioning and exact output codec. One fixed historical observation is insufficient for rolling history. Keep one OLS-with-intercept model, common immutable fit/intercept/sample identity and M02 neutral ownership. Prepare correlated full-rank exact synthetic success data which distinguish joint from separate univariate fits, an informative nonzero held-out residual, a concrete deficient-rank history and a per-coefficient mixed-fit refusal. Existing 64 orthogonal rows remain valid example arithmetic only. Admit/prove necessary history profiles separately; never inject expected D outputs as raw/configuration facts.
 
-**Leaf acceptance and checkpoint:** Independently review every stated obligation. Execute only the exact authorised module-local proof when new product capability is claimed. Bind raw result and public durable readback to the candidate. Commit, freshly restore, save and expose the cumulative checkpoint before consumer release. On failure preserve the first unmet invariant and stop only its descendants.
+**Proposed CHAT_MANUAL leaf rule:** Independently review and release necessary source/definition authority at this boundary. Worker commits scoped code and unexecuted proof to GitHub and records IMPLEMENTED_UNTESTED where implementation is involved. No product TESTED_ACCEPTED or gate acceptance until separate L32 Tester execution and semantic review. Bind exact candidate and deliverable to a recoverable per-leaf checkpoint under section 5; if checkpoint capability or authority is unproved, record BLOCKED and halt dependent work. Preserve the first unmet invariant.
 
 ### L01b — Option delta source and rule contract
 
@@ -98,7 +98,7 @@ Bind actual public D071/D075/D076/D077 history producers, aligned sample/window/
 
 Bind public R112 option model variant, signed fractional scale, contract/right/expiry and source lineage. Adopt V1 absolute bins only after owner acceptance for controlled implementation: [0,.10), [.10,.25), [.25,.50), [.50,.75), [.75,1], with exact labels and endpoint inclusivity. Bind missing/nonfinite/out-of-range refusal and signed boundary assertions within the approved pair. No scale inference from magnitude.
 
-**Leaf acceptance and checkpoint:** Independently review every stated obligation. Execute only the exact authorised module-local proof when new product capability is claimed. Bind raw result and public durable readback to the candidate. Commit, freshly restore, save and expose the cumulative checkpoint before consumer release. On failure preserve the first unmet invariant and stop only its descendants.
+**Proposed CHAT_MANUAL leaf rule:** Independently review and release necessary source/definition authority at this boundary. Worker commits scoped code and unexecuted proof to GitHub and records IMPLEMENTED_UNTESTED where implementation is involved. No product TESTED_ACCEPTED or gate acceptance until separate L32 Tester execution and semantic review. Bind exact candidate and deliverable to a recoverable per-leaf checkpoint under section 5; if checkpoint capability or authority is unproved, record BLOCKED and halt dependent work. Preserve the first unmet invariant.
 
 ### L01c — Stock and option resilience input contract
 
@@ -106,7 +106,7 @@ Bind public R112 option model variant, signed fractional scale, contract/right/e
 
 Bind complete top-two SMART bid/ask event reconstruction plus matched quotes for BOTH stock and selected options, units, receipt order, reset/generation and completeness. Preserve AND shock onset, first joint recovery and continued search through intermediate one-condition states. Bind a shock-relative 30-second window with explicit endpoint inclusion and closing observation/watermark. Under an inclusive end, V2 shock at t=1 needs coverage through t=31 for a reached no-recovery refusal; recovery at t=7 gives elapsed 6. Aggregate depth/spread rows are oracles, not lawful event-stream inputs. No change to D145 clock.
 
-**Leaf acceptance and checkpoint:** Independently review every stated obligation. Execute only the exact authorised module-local proof when new product capability is claimed. Bind raw result and public durable readback to the candidate. Commit, freshly restore, save and expose the cumulative checkpoint before consumer release. On failure preserve the first unmet invariant and stop only its descendants.
+**Proposed CHAT_MANUAL leaf rule:** Independently review and release necessary source/definition authority at this boundary. Worker commits scoped code and unexecuted proof to GitHub and records IMPLEMENTED_UNTESTED where implementation is involved. No product TESTED_ACCEPTED or gate acceptance until separate L32 Tester execution and semantic review. Bind exact candidate and deliverable to a recoverable per-leaf checkpoint under section 5; if checkpoint capability or authority is unproved, record BLOCKED and halt dependent work. Preserve the first unmet invariant.
 
 ### L01d — Stock and option matched-book contract
 
@@ -114,7 +114,7 @@ Bind complete top-two SMART bid/ask event reconstruction plus matched quotes for
 
 Bind two lawfully reconstructed complete SMART/direct streams for BOTH instrument classes, same contract/side/rank 0/1, receipt cutoffs and inclusive .250-second skew. Preserve distinct subscribed venue and MPID. Require identical explicitly declared quote units and stock-share versus option-contract sizes; option premium per underlying share differs from per-contract money, and any requested contract-money calculation needs an explicit multiplier. Author direct omission/skew sequences before matching. Existing stock pairs establish arithmetic only.
 
-**Leaf acceptance and checkpoint:** Independently review every stated obligation. Execute only the exact authorised module-local proof when new product capability is claimed. Bind raw result and public durable readback to the candidate. Commit, freshly restore, save and expose the cumulative checkpoint before consumer release. On failure preserve the first unmet invariant and stop only its descendants.
+**Proposed CHAT_MANUAL leaf rule:** Independently review and release necessary source/definition authority at this boundary. Worker commits scoped code and unexecuted proof to GitHub and records IMPLEMENTED_UNTESTED where implementation is involved. No product TESTED_ACCEPTED or gate acceptance until separate L32 Tester execution and semantic review. Bind exact candidate and deliverable to a recoverable per-leaf checkpoint under section 5; if checkpoint capability or authority is unproved, record BLOCKED and halt dependent work. Preserve the first unmet invariant.
 
 ### L02 — Shared joint fit and three beta outputs
 
@@ -122,7 +122,7 @@ Bind two lawfully reconstructed complete SMART/direct streams for BOTH instrumen
 
 Fit D075=alpha+beta_market*D071+beta_tech*D076+beta_semi*D077+epsilon jointly by OLS with intercept. Publish three actual coefficient occurrences with common immutable sample, fit, intercept and numerical/profile lineage. Prove rank refusal after lawful history ingress. Correlated success data must discriminate the mandated joint fit. Six proposed cases total: one success/refusal pair per D identity; shared setup does not permit three inconsistent fits.
 
-**Leaf acceptance and checkpoint:** Independently review every stated obligation. Execute only the exact authorised module-local proof when new product capability is claimed. Bind raw result and public durable readback to the candidate. Commit, freshly restore, save and expose the cumulative checkpoint before consumer release. On failure preserve the first unmet invariant and stop only its descendants.
+**Proposed CHAT_MANUAL leaf rule:** Independently review and release necessary source/definition authority at this boundary. Worker commits scoped code and unexecuted proof to GitHub and records IMPLEMENTED_UNTESTED where implementation is involved. No product TESTED_ACCEPTED or gate acceptance until separate L32 Tester execution and semantic review. Bind exact candidate and deliverable to a recoverable per-leaf checkpoint under section 5; if checkpoint capability or authority is unproved, record BLOCKED and halt dependent work. Preserve the first unmet invariant.
 
 ### L03 — Same-fit residual
 
@@ -130,7 +130,7 @@ Fit D075=alpha+beta_market*D071+beta_tech*D076+beta_semi*D077+epsilon jointly by
 
 Use actual compatible coefficient occurrences, common intercept and aligned current D075/D071/D076/D077. Subtract alpha and all three factor contributions. Independently calculate an informative nonzero residual. Refusal changes one coefficient fit lineage while retaining the other two; a coherent alternative complete fit is not invalid merely because its label differs.
 
-**Leaf acceptance and checkpoint:** Independently review every stated obligation. Execute only the exact authorised module-local proof when new product capability is claimed. Bind raw result and public durable readback to the candidate. Commit, freshly restore, save and expose the cumulative checkpoint before consumer release. On failure preserve the first unmet invariant and stop only its descendants.
+**Proposed CHAT_MANUAL leaf rule:** Independently review and release necessary source/definition authority at this boundary. Worker commits scoped code and unexecuted proof to GitHub and records IMPLEMENTED_UNTESTED where implementation is involved. No product TESTED_ACCEPTED or gate acceptance until separate L32 Tester execution and semantic review. Bind exact candidate and deliverable to a recoverable per-leaf checkpoint under section 5; if checkpoint capability or authority is unproved, record BLOCKED and halt dependent work. Preserve the first unmet invariant.
 
 ### L04 — Absolute delta bucket
 
@@ -138,7 +138,7 @@ Use actual compatible coefficient occurrences, common intercept and aligned curr
 
 Implement the exact approved complete non-overlapping V1 absolute-delta intervals and labels. Retain option identity, model/scale and rule version. Cover signed endpoints and valid interior values within the finite success case; use a reached invalid/absent input refusal. No inferred units or strategy-tuned category assignment.
 
-**Leaf acceptance and checkpoint:** Independently review every stated obligation. Execute only the exact authorised module-local proof when new product capability is claimed. Bind raw result and public durable readback to the candidate. Commit, freshly restore, save and expose the cumulative checkpoint before consumer release. On failure preserve the first unmet invariant and stop only its descendants.
+**Proposed CHAT_MANUAL leaf rule:** Independently review and release necessary source/definition authority at this boundary. Worker commits scoped code and unexecuted proof to GitHub and records IMPLEMENTED_UNTESTED where implementation is involved. No product TESTED_ACCEPTED or gate acceptance until separate L32 Tester execution and semantic review. Bind exact candidate and deliverable to a recoverable per-leaf checkpoint under section 5; if checkpoint capability or authority is unproved, record BLOCKED and halt dependent work. Preserve the first unmet invariant.
 
 ### L05 — First joint recovery for both instruments
 
@@ -146,7 +146,7 @@ Implement the exact approved complete non-overlapping V1 absolute-delta interval
 
 Reconstruct lawful ordered books and quotes. V1 synthetic shock is depth<=.70 baseline AND spread>=1.25 baseline; recovery is the first strictly later state with depth>=.90 baseline AND spread<=1.10 baseline. Continue after depth-only or spread-only intermediate recovery. Preserve 30-second shock-relative closed-window policy and receipt-clock identity; reset/gaps invalidate separately. Stock and selected-option pairs are separate. Refusal reaches the terminal window without joint recovery, rather than merely pending. V2 t=1 to t=7 means 6 seconds; the older untimed 7-second example is separate.
 
-**Leaf acceptance and checkpoint:** Independently review every stated obligation. Execute only the exact authorised module-local proof when new product capability is claimed. Bind raw result and public durable readback to the candidate. Commit, freshly restore, save and expose the cumulative checkpoint before consumer release. On failure preserve the first unmet invariant and stop only its descendants.
+**Proposed CHAT_MANUAL leaf rule:** Independently review and release necessary source/definition authority at this boundary. Worker commits scoped code and unexecuted proof to GitHub and records IMPLEMENTED_UNTESTED where implementation is involved. No product TESTED_ACCEPTED or gate acceptance until separate L32 Tester execution and semantic review. Bind exact candidate and deliverable to a recoverable per-leaf checkpoint under section 5; if checkpoint capability or authority is unproved, record BLOCKED and halt dependent work. Preserve the first unmet invariant.
 
 ### L06 — Matched SMART/direct difference for both instruments
 
@@ -154,7 +154,7 @@ Reconstruct lawful ordered books and quotes. V1 synthetic shock is depth<=.70 ba
 
 Return all signed SMART-minus-direct price/depth components at admitted matched ranks from both reconstructed books, preserving each source/contract/time/venue/MPID/unit lineage. Enforce the approved inclusive .250-second maximum skew and exact required level set. Do not zero-fill unmatched levels. Cover stock shares and option contracts separately. Independent refusal omits or invalidates a counterpart through the declared public sequence; worker fixture composition must not pre-satisfy completeness.
 
-**Leaf acceptance and checkpoint:** Independently review every stated obligation. Execute only the exact authorised module-local proof when new product capability is claimed. Bind raw result and public durable readback to the candidate. Commit, freshly restore, save and expose the cumulative checkpoint before consumer release. On failure preserve the first unmet invariant and stop only its descendants.
+**Proposed CHAT_MANUAL leaf rule:** Independently review and release necessary source/definition authority at this boundary. Worker commits scoped code and unexecuted proof to GitHub and records IMPLEMENTED_UNTESTED where implementation is involved. No product TESTED_ACCEPTED or gate acceptance until separate L32 Tester execution and semantic review. Bind exact candidate and deliverable to a recoverable per-leaf checkpoint under section 5; if checkpoint capability or authority is unproved, record BLOCKED and halt dependent work. Preserve the first unmet invariant.
 
 ### L07a — Expiry date and US-session calendar profile
 
@@ -162,7 +162,7 @@ Return all signed SMART-minus-direct price/depth components at admitted matched 
 
 Bind R013 selected-option expiry date, R001 receipt, exchange IANA timezone, calendar version/session boundaries and lawful D004 US-option date profile. A synthetic calendar is explicitly controlled configuration, never evidence of official provider facts. Resolve concrete policy/source decisions before code. Independently prove a necessary D004 profile extension without rewriting its old accepted profile or counting its identity anew.
 
-**Leaf acceptance and checkpoint:** Independently review every stated obligation. Execute only the exact authorised module-local proof when new product capability is claimed. Bind raw result and public durable readback to the candidate. Commit, freshly restore, save and expose the cumulative checkpoint before consumer release. On failure preserve the first unmet invariant and stop only its descendants.
+**Proposed CHAT_MANUAL leaf rule:** Independently review and release necessary source/definition authority at this boundary. Worker commits scoped code and unexecuted proof to GitHub and records IMPLEMENTED_UNTESTED where implementation is involved. No product TESTED_ACCEPTED or gate acceptance until separate L32 Tester execution and semantic review. Bind exact candidate and deliverable to a recoverable per-leaf checkpoint under section 5; if checkpoint capability or authority is unproved, record BLOCKED and halt dependent work. Preserve the first unmet invariant.
 
 ### L07b — Expiry instant and true-instant profile
 
@@ -170,7 +170,7 @@ Bind R013 selected-option expiry date, R001 receipt, exchange IANA timezone, cal
 
 Bind the exact option expiry instant and timezone/session convention separately from its date, with compatible true-instant D001. Never invent midnight or event time from date-only/receipt-only values. Bind exact year-fraction representation. Independently prove a necessary option-domain D001 extension; retain its original profile and zero new identity contribution.
 
-**Leaf acceptance and checkpoint:** Independently review every stated obligation. Execute only the exact authorised module-local proof when new product capability is claimed. Bind raw result and public durable readback to the candidate. Commit, freshly restore, save and expose the cumulative checkpoint before consumer release. On failure preserve the first unmet invariant and stop only its descendants.
+**Proposed CHAT_MANUAL leaf rule:** Independently review and release necessary source/definition authority at this boundary. Worker commits scoped code and unexecuted proof to GitHub and records IMPLEMENTED_UNTESTED where implementation is involved. No product TESTED_ACCEPTED or gate acceptance until separate L32 Tester execution and semantic review. Bind exact candidate and deliverable to a recoverable per-leaf checkpoint under section 5; if checkpoint capability or authority is unproved, record BLOCKED and halt dependent work. Preserve the first unmet invariant.
 
 ### L08 — Whole calendar days to expiry
 
@@ -178,7 +178,7 @@ Bind the exact option expiry instant and timezone/session convention separately 
 
 Use actual R013/R001 and compatible exchange trading date D004 to compute whole calendar-day difference. Preserve contract/calendar/source identity. Refuse unsupported calendar/date coverage or negative live-contract DTE. This does not require converting a date into an invented instant.
 
-**Leaf acceptance and checkpoint:** Independently review every stated obligation. Execute only the exact authorised module-local proof when new product capability is claimed. Bind raw result and public durable readback to the candidate. Commit, freshly restore, save and expose the cumulative checkpoint before consumer release. On failure preserve the first unmet invariant and stop only its descendants.
+**Proposed CHAT_MANUAL leaf rule:** Independently review and release necessary source/definition authority at this boundary. Worker commits scoped code and unexecuted proof to GitHub and records IMPLEMENTED_UNTESTED where implementation is involved. No product TESTED_ACCEPTED or gate acceptance until separate L32 Tester execution and semantic review. Bind exact candidate and deliverable to a recoverable per-leaf checkpoint under section 5; if checkpoint capability or authority is unproved, record BLOCKED and halt dependent work. Preserve the first unmet invariant.
 
 ### L09 — ACT/365F time to expiry
 
@@ -186,7 +186,7 @@ Use actual R013/R001 and compatible exchange trading date D004 to compute whole 
 
 Calculate ACT/365F from actual true-instant D001 to the versioned expiry instant, using exact elapsed duration and approved typed numeric representation. Preserve option/timezone/calendar conventions. Refuse date-only or receipt-only masquerading as source/expiry instants.
 
-**Leaf acceptance and checkpoint:** Independently review every stated obligation. Execute only the exact authorised module-local proof when new product capability is claimed. Bind raw result and public durable readback to the candidate. Commit, freshly restore, save and expose the cumulative checkpoint before consumer release. On failure preserve the first unmet invariant and stop only its descendants.
+**Proposed CHAT_MANUAL leaf rule:** Independently review and release necessary source/definition authority at this boundary. Worker commits scoped code and unexecuted proof to GitHub and records IMPLEMENTED_UNTESTED where implementation is involved. No product TESTED_ACCEPTED or gate acceptance until separate L32 Tester execution and semantic review. Bind exact candidate and deliverable to a recoverable per-leaf checkpoint under section 5; if checkpoint capability or authority is unproved, record BLOCKED and halt dependent work. Preserve the first unmet invariant.
 
 ### L10a — Official-session IV history contract
 
@@ -194,7 +194,7 @@ Calculate ACT/365F from actual true-instant D001 to the versioned expiry instant
 
 Bind R111/R183 computational roles, exact model/native-unit comparability, contract or bucket roll, vintages and one official prior-trading-session reference for D095. Resolve concrete session convention before code; current quote assembly alone is not an IV history. Supply independently calculable change and wrong-reference refusal oracles.
 
-**Leaf acceptance and checkpoint:** Independently review every stated obligation. Execute only the exact authorised module-local proof when new product capability is claimed. Bind raw result and public durable readback to the candidate. Commit, freshly restore, save and expose the cumulative checkpoint before consumer release. On failure preserve the first unmet invariant and stop only its descendants.
+**Proposed CHAT_MANUAL leaf rule:** Independently review and release necessary source/definition authority at this boundary. Worker commits scoped code and unexecuted proof to GitHub and records IMPLEMENTED_UNTESTED where implementation is involved. No product TESTED_ACCEPTED or gate acceptance until separate L32 Tester execution and semantic review. Bind exact candidate and deliverable to a recoverable per-leaf checkpoint under section 5; if checkpoint capability or authority is unproved, record BLOCKED and halt dependent work. Preserve the first unmet invariant.
 
 ### L10b — ATM, term nodes and IV/RV contracts
 
@@ -202,7 +202,7 @@ Bind R111/R183 computational roles, exact model/native-unit comparability, contr
 
 Bind actual R111/R112 per-expiry CALL/PUT universe, exact or nearest bracketing .50 absolute-delta interpolation, coverage/no-extrapolation mode and output shape. Fix selected two/three maturity nodes, comparable annualised decimal-vol units and lawful current D035/D036 predecessor profiles. Preserve side/member/time lineage; a historic green profile does not create a current occurrence. Prepare finite numerical and mismatch oracles.
 
-**Leaf acceptance and checkpoint:** Independently review every stated obligation. Execute only the exact authorised module-local proof when new product capability is claimed. Bind raw result and public durable readback to the candidate. Commit, freshly restore, save and expose the cumulative checkpoint before consumer release. On failure preserve the first unmet invariant and stop only its descendants.
+**Proposed CHAT_MANUAL leaf rule:** Independently review and release necessary source/definition authority at this boundary. Worker commits scoped code and unexecuted proof to GitHub and records IMPLEMENTED_UNTESTED where implementation is involved. No product TESTED_ACCEPTED or gate acceptance until separate L32 Tester execution and semantic review. Bind exact candidate and deliverable to a recoverable per-leaf checkpoint under section 5; if checkpoint capability or authority is unproved, record BLOCKED and halt dependent work. Preserve the first unmet invariant.
 
 ### L10c — Straddle, quote and spot contracts
 
@@ -210,7 +210,7 @@ Bind actual R111/R112 per-expiry CALL/PUT universe, exact or nearest bracketing 
 
 Bind actual same-expiry/strike-convention CALL+PUT D087, D091 ATM mapping, knowledge cutoffs, native quote units and positive R118 spot. Existing L14 D087 does not automatically supply arbitrary multi-contract/time coverage. D109 is currency per underlying share; D110=100*D109/spot, with no additional contract multiplier on a per-share premium.
 
-**Leaf acceptance and checkpoint:** Independently review every stated obligation. Execute only the exact authorised module-local proof when new product capability is claimed. Bind raw result and public durable readback to the candidate. Commit, freshly restore, save and expose the cumulative checkpoint before consumer release. On failure preserve the first unmet invariant and stop only its descendants.
+**Proposed CHAT_MANUAL leaf rule:** Independently review and release necessary source/definition authority at this boundary. Worker commits scoped code and unexecuted proof to GitHub and records IMPLEMENTED_UNTESTED where implementation is involved. No product TESTED_ACCEPTED or gate acceptance until separate L32 Tester execution and semantic review. Bind exact candidate and deliverable to a recoverable per-leaf checkpoint under section 5; if checkpoint capability or authority is unproved, record BLOCKED and halt dependent work. Preserve the first unmet invariant.
 
 ### L11 — One-trading-session IV change
 
@@ -218,7 +218,7 @@ Bind actual same-expiry/strike-convention CALL+PUT D087, D091 ATM mapping, knowl
 
 Calculate 100*(IV_current-IV_reference) in volatility points, using comparable actual R111/R183 facts and accepted official one-trading-session reference. Preserve contract/bucket/roll and knowledge vintage. Refuse unmatched/stale/wrong-session references without calendar-day substitution.
 
-**Leaf acceptance and checkpoint:** Independently review every stated obligation. Execute only the exact authorised module-local proof when new product capability is claimed. Bind raw result and public durable readback to the candidate. Commit, freshly restore, save and expose the cumulative checkpoint before consumer release. On failure preserve the first unmet invariant and stop only its descendants.
+**Proposed CHAT_MANUAL leaf rule:** Independently review and release necessary source/definition authority at this boundary. Worker commits scoped code and unexecuted proof to GitHub and records IMPLEMENTED_UNTESTED where implementation is involved. No product TESTED_ACCEPTED or gate acceptance until separate L32 Tester execution and semantic review. Bind exact candidate and deliverable to a recoverable per-leaf checkpoint under section 5; if checkpoint capability or authority is unproved, record BLOCKED and halt dependent work. Preserve the first unmet invariant.
 
 ### L12 — ATM IV per expiry
 
@@ -226,7 +226,7 @@ Calculate 100*(IV_current-IV_reference) in volatility points, using comparable a
 
 For each expiry/side use exact absolute delta .50 or nearest valid bracketing linear interpolation. Average CALL and PUT estimates when both qualify; a single side is permitted only by an explicitly accepted labelled coverage mode. No undeclared extrapolation. Preserve actual D085, full eligible option universe, native IV/delta units and source identities.
 
-**Leaf acceptance and checkpoint:** Independently review every stated obligation. Execute only the exact authorised module-local proof when new product capability is claimed. Bind raw result and public durable readback to the candidate. Commit, freshly restore, save and expose the cumulative checkpoint before consumer release. On failure preserve the first unmet invariant and stop only its descendants.
+**Proposed CHAT_MANUAL leaf rule:** Independently review and release necessary source/definition authority at this boundary. Worker commits scoped code and unexecuted proof to GitHub and records IMPLEMENTED_UNTESTED where implementation is involved. No product TESTED_ACCEPTED or gate acceptance until separate L32 Tester execution and semantic review. Bind exact candidate and deliverable to a recoverable per-leaf checkpoint under section 5; if checkpoint capability or authority is unproved, record BLOCKED and halt dependent work. Preserve the first unmet invariant.
 
 ### L13 — Two-node IV term slope
 
@@ -234,7 +234,7 @@ For each expiry/side use exact absolute delta .50 or nearest valid bracketing li
 
 Use actual selected distinct ordered D096 expiry nodes: 100*(iv2-iv1)/(day2-day1), in volatility points/calendar day. Preserve compatible units, coverage and node identities. Equal or missing maturity nodes refuse.
 
-**Leaf acceptance and checkpoint:** Independently review every stated obligation. Execute only the exact authorised module-local proof when new product capability is claimed. Bind raw result and public durable readback to the candidate. Commit, freshly restore, save and expose the cumulative checkpoint before consumer release. On failure preserve the first unmet invariant and stop only its descendants.
+**Proposed CHAT_MANUAL leaf rule:** Independently review and release necessary source/definition authority at this boundary. Worker commits scoped code and unexecuted proof to GitHub and records IMPLEMENTED_UNTESTED where implementation is involved. No product TESTED_ACCEPTED or gate acceptance until separate L32 Tester execution and semantic review. Bind exact candidate and deliverable to a recoverable per-leaf checkpoint under section 5; if checkpoint capability or authority is unproved, record BLOCKED and halt dependent work. Preserve the first unmet invariant.
 
 ### L14 — Nonuniform IV term curvature
 
@@ -242,7 +242,7 @@ Use actual selected distinct ordered D096 expiry nodes: 100*(iv2-iv1)/(day2-day1
 
 Use three actual ordered distinct D096 nodes: 2*(100*(iv3-iv2)/(d3-d2)-100*(iv2-iv1)/(d2-d1))/(d3-d1). Preserve volatility points/day squared and explicit node selection. Missing/duplicate nodes refuse; do not silently assume uniform spacing.
 
-**Leaf acceptance and checkpoint:** Independently review every stated obligation. Execute only the exact authorised module-local proof when new product capability is claimed. Bind raw result and public durable readback to the candidate. Commit, freshly restore, save and expose the cumulative checkpoint before consumer release. On failure preserve the first unmet invariant and stop only its descendants.
+**Proposed CHAT_MANUAL leaf rule:** Independently review and release necessary source/definition authority at this boundary. Worker commits scoped code and unexecuted proof to GitHub and records IMPLEMENTED_UNTESTED where implementation is involved. No product TESTED_ACCEPTED or gate acceptance until separate L32 Tester execution and semantic review. Bind exact candidate and deliverable to a recoverable per-leaf checkpoint under section 5; if checkpoint capability or authority is unproved, record BLOCKED and halt dependent work. Preserve the first unmet invariant.
 
 ### L15 — IV less five-day realised volatility
 
@@ -250,7 +250,7 @@ Use three actual ordered distinct D096 nodes: 2*(100*(iv3-iv2)/(d3-d2)-100*(iv2-
 
 Compute 100*(selected D096-D035) after explicit compatible annualised decimal-vol conversion and subject/time/cutoff alignment. Require actual public D035 from its lawful profile, not a forged answer or a D036 replacement. Refuse incompatible annualisation/knowledge/domain.
 
-**Leaf acceptance and checkpoint:** Independently review every stated obligation. Execute only the exact authorised module-local proof when new product capability is claimed. Bind raw result and public durable readback to the candidate. Commit, freshly restore, save and expose the cumulative checkpoint before consumer release. On failure preserve the first unmet invariant and stop only its descendants.
+**Proposed CHAT_MANUAL leaf rule:** Independently review and release necessary source/definition authority at this boundary. Worker commits scoped code and unexecuted proof to GitHub and records IMPLEMENTED_UNTESTED where implementation is involved. No product TESTED_ACCEPTED or gate acceptance until separate L32 Tester execution and semantic review. Bind exact candidate and deliverable to a recoverable per-leaf checkpoint under section 5; if checkpoint capability or authority is unproved, record BLOCKED and halt dependent work. Preserve the first unmet invariant.
 
 ### L16 — IV less ten-day realised volatility
 
@@ -258,7 +258,7 @@ Compute 100*(selected D096-D035) after explicit compatible annualised decimal-vo
 
 Compute 100*(selected D096-D036) under explicit common annualised units and exact predecessor/as-of/cutoff identity. Refuse incompatible profile or wrong horizon; never substitute five-day volatility.
 
-**Leaf acceptance and checkpoint:** Independently review every stated obligation. Execute only the exact authorised module-local proof when new product capability is claimed. Bind raw result and public durable readback to the candidate. Commit, freshly restore, save and expose the cumulative checkpoint before consumer release. On failure preserve the first unmet invariant and stop only its descendants.
+**Proposed CHAT_MANUAL leaf rule:** Independently review and release necessary source/definition authority at this boundary. Worker commits scoped code and unexecuted proof to GitHub and records IMPLEMENTED_UNTESTED where implementation is involved. No product TESTED_ACCEPTED or gate acceptance until separate L32 Tester execution and semantic review. Bind exact candidate and deliverable to a recoverable per-leaf checkpoint under section 5; if checkpoint capability or authority is unproved, record BLOCKED and halt dependent work. Preserve the first unmet invariant.
 
 ### L17 — ATM straddle midpoint premium
 
@@ -266,7 +266,7 @@ Compute 100*(selected D096-D036) under explicit common annualised units and exac
 
 Select compatible actual CALL/PUT D087 using actual D091 and accepted ATM/expiry/strike selection. Return sum of midpoint premiums in currency per underlying share, retaining both source/selection identities. Refuse unmatched side/expiry/units or absent eligible bucket.
 
-**Leaf acceptance and checkpoint:** Independently review every stated obligation. Execute only the exact authorised module-local proof when new product capability is claimed. Bind raw result and public durable readback to the candidate. Commit, freshly restore, save and expose the cumulative checkpoint before consumer release. On failure preserve the first unmet invariant and stop only its descendants.
+**Proposed CHAT_MANUAL leaf rule:** Independently review and release necessary source/definition authority at this boundary. Worker commits scoped code and unexecuted proof to GitHub and records IMPLEMENTED_UNTESTED where implementation is involved. No product TESTED_ACCEPTED or gate acceptance until separate L32 Tester execution and semantic review. Bind exact candidate and deliverable to a recoverable per-leaf checkpoint under section 5; if checkpoint capability or authority is unproved, record BLOCKED and halt dependent work. Preserve the first unmet invariant.
 
 ### L18 — Straddle implied move percentage
 
@@ -274,7 +274,7 @@ Select compatible actual CALL/PUT D087 using actual D091 and accepted ATM/expiry
 
 Compute 100*D109/positive aligned R118 spot in compatible currency-per-share units. Retain straddle and spot identity. Do not multiply per-share premium by an inferred 100-share contract multiplier. Refuse nonpositive spot, missing or incompatible units.
 
-**Leaf acceptance and checkpoint:** Independently review every stated obligation. Execute only the exact authorised module-local proof when new product capability is claimed. Bind raw result and public durable readback to the candidate. Commit, freshly restore, save and expose the cumulative checkpoint before consumer release. On failure preserve the first unmet invariant and stop only its descendants.
+**Proposed CHAT_MANUAL leaf rule:** Independently review and release necessary source/definition authority at this boundary. Worker commits scoped code and unexecuted proof to GitHub and records IMPLEMENTED_UNTESTED where implementation is involved. No product TESTED_ACCEPTED or gate acceptance until separate L32 Tester execution and semantic review. Bind exact candidate and deliverable to a recoverable per-leaf checkpoint under section 5; if checkpoint capability or authority is unproved, record BLOCKED and halt dependent work. Preserve the first unmet invariant.
 
 ### L19 — Option trade, quote and D015 profile
 
@@ -282,7 +282,7 @@ Compute 100*D109/positive aligned R118 spot in compatible currency-per-share uni
 
 Bind R120/R121 selected-option prints, contemporaneous R126/R127 quotes, R015 right and explicit R016 multiplier, plus an actual option-domain D015 quote-first/tick-test direction profile. Preserve defined unknown-sign handling. Stock-only D015 or assembled quotes alone do not prove option prints. Independently admit/prove only necessary new option-domain support; no provider integration, purchased feeds or fabricated timestamps.
 
-**Leaf acceptance and checkpoint:** Independently review every stated obligation. Execute only the exact authorised module-local proof when new product capability is claimed. Bind raw result and public durable readback to the candidate. Commit, freshly restore, save and expose the cumulative checkpoint before consumer release. On failure preserve the first unmet invariant and stop only its descendants.
+**Proposed CHAT_MANUAL leaf rule:** Independently review and release necessary source/definition authority at this boundary. Worker commits scoped code and unexecuted proof to GitHub and records IMPLEMENTED_UNTESTED where implementation is involved. No product TESTED_ACCEPTED or gate acceptance until separate L32 Tester execution and semantic review. Bind exact candidate and deliverable to a recoverable per-leaf checkpoint under section 5; if checkpoint capability or authority is unproved, record BLOCKED and halt dependent work. Preserve the first unmet invariant.
 
 ### L20 — Signed option flow
 
@@ -290,7 +290,7 @@ Bind R120/R121 selected-option prints, contemporaneous R126/R127 quotes, R015 ri
 
 Return both signed_contracts=sum(sign*size) and signed_premium_notional=sum(sign*size*trade_price*multiplier) over the exact admitted window. Use actual compatible option D015 and retain all trade/quote/right/multiplier members and unknown direction treatment. Missing lawful sign/source/multiplier refuses.
 
-**Leaf acceptance and checkpoint:** Independently review every stated obligation. Execute only the exact authorised module-local proof when new product capability is claimed. Bind raw result and public durable readback to the candidate. Commit, freshly restore, save and expose the cumulative checkpoint before consumer release. On failure preserve the first unmet invariant and stop only its descendants.
+**Proposed CHAT_MANUAL leaf rule:** Independently review and release necessary source/definition authority at this boundary. Worker commits scoped code and unexecuted proof to GitHub and records IMPLEMENTED_UNTESTED where implementation is involved. No product TESTED_ACCEPTED or gate acceptance until separate L32 Tester execution and semantic review. Bind exact candidate and deliverable to a recoverable per-leaf checkpoint under section 5; if checkpoint capability or authority is unproved, record BLOCKED and halt dependent work. Preserve the first unmet invariant.
 
 ### L21 — Flow by delta bucket
 
@@ -298,7 +298,7 @@ Return both signed_contracts=sum(sign*size) and signed_premium_notional=sum(sign
 
 Group actual D120 flow by actual D091 bucket under immutable expiry/CALL-PUT/window/member rules. Preserve required contracts/notional components and exact members. Do not supply group answers as configuration or quietly turn missing classification into zero. Refuse incompatible grouping/coverage/time.
 
-**Leaf acceptance and checkpoint:** Independently review every stated obligation. Execute only the exact authorised module-local proof when new product capability is claimed. Bind raw result and public durable readback to the candidate. Commit, freshly restore, save and expose the cumulative checkpoint before consumer release. On failure preserve the first unmet invariant and stop only its descendants.
+**Proposed CHAT_MANUAL leaf rule:** Independently review and release necessary source/definition authority at this boundary. Worker commits scoped code and unexecuted proof to GitHub and records IMPLEMENTED_UNTESTED where implementation is involved. No product TESTED_ACCEPTED or gate acceptance until separate L32 Tester execution and semantic review. Bind exact candidate and deliverable to a recoverable per-leaf checkpoint under section 5; if checkpoint capability or authority is unproved, record BLOCKED and halt dependent work. Preserve the first unmet invariant.
 
 ### L22 — Flow by expiry
 
@@ -306,7 +306,7 @@ Group actual D120 flow by actual D091 bucket under immutable expiry/CALL-PUT/win
 
 Group actual D120 by compatible actual D085 expiry/DTE under immutable bucket/window/units and member rules. Preserve CALL/PUT identities and component notional. Refuse missing or incompatible expiry assignment/calendar rather than silently dropping required members.
 
-**Leaf acceptance and checkpoint:** Independently review every stated obligation. Execute only the exact authorised module-local proof when new product capability is claimed. Bind raw result and public durable readback to the candidate. Commit, freshly restore, save and expose the cumulative checkpoint before consumer release. On failure preserve the first unmet invariant and stop only its descendants.
+**Proposed CHAT_MANUAL leaf rule:** Independently review and release necessary source/definition authority at this boundary. Worker commits scoped code and unexecuted proof to GitHub and records IMPLEMENTED_UNTESTED where implementation is involved. No product TESTED_ACCEPTED or gate acceptance until separate L32 Tester execution and semantic review. Bind exact candidate and deliverable to a recoverable per-leaf checkpoint under section 5; if checkpoint capability or authority is unproved, record BLOCKED and halt dependent work. Preserve the first unmet invariant.
 
 ### L23 — Relevant next scheduled event
 
@@ -314,7 +314,7 @@ Group actual D120 by compatible actual D085 expiry/DTE under immutable bucket/wi
 
 First resolve R284 public event identities, revisions/relevance and knowledge-cutoff selector plus compatible actual D001. Then select earliest relevant visible event strictly after as-of and return canonical seconds plus exact seconds/60 minutes. Preserve event/vintage selection and accepted no-event absence semantics. A timestamp alone does not constitute a scheduled-event source.
 
-**Leaf acceptance and checkpoint:** Independently review every stated obligation. Execute only the exact authorised module-local proof when new product capability is claimed. Bind raw result and public durable readback to the candidate. Commit, freshly restore, save and expose the cumulative checkpoint before consumer release. On failure preserve the first unmet invariant and stop only its descendants.
+**Proposed CHAT_MANUAL leaf rule:** Independently review and release necessary source/definition authority at this boundary. Worker commits scoped code and unexecuted proof to GitHub and records IMPLEMENTED_UNTESTED where implementation is involved. No product TESTED_ACCEPTED or gate acceptance until separate L32 Tester execution and semantic review. Bind exact candidate and deliverable to a recoverable per-leaf checkpoint under section 5; if checkpoint capability or authority is unproved, record BLOCKED and halt dependent work. Preserve the first unmet invariant.
 
 ### L24 — Surface and density calculation conventions
 
@@ -322,7 +322,7 @@ First resolve R284 public event identities, revisions/relevance and knowledge-cu
 
 Bind every D102 raw role, (log(strike/spot),T) coordinates, cubic B-spline basis/knots/weights/constraints and numerical tolerance. Supply immutable OptionRevaluationConventionVersion with model/exercise/rates/dividends/carry/time/scheme/Greek scaling. Separately bind D111 decreasing convex call-price spline, D102 quality tolerance, strike grid/normalisation and tail thresholds/integration boundary rules. Inspect available pinned mechanisms without installing dependencies or choosing a new estimator. Unaccepted convention/numerical policy blocks affected descendants.
 
-**Leaf acceptance and checkpoint:** Independently review every stated obligation. Execute only the exact authorised module-local proof when new product capability is claimed. Bind raw result and public durable readback to the candidate. Commit, freshly restore, save and expose the cumulative checkpoint before consumer release. On failure preserve the first unmet invariant and stop only its descendants.
+**Proposed CHAT_MANUAL leaf rule:** Independently review and release necessary source/definition authority at this boundary. Worker commits scoped code and unexecuted proof to GitHub and records IMPLEMENTED_UNTESTED where implementation is involved. No product TESTED_ACCEPTED or gate acceptance until separate L32 Tester execution and semantic review. Bind exact candidate and deliverable to a recoverable per-leaf checkpoint under section 5; if checkpoint capability or authority is unproved, record BLOCKED and halt dependent work. Preserve the first unmet invariant.
 
 ### L25 — Constrained IV surface residual
 
@@ -330,7 +330,7 @@ Bind every D102 raw role, (log(strike/spot),T) coordinates, cubic B-spline basis
 
 Fit total variance IV^2*T on (log(strike/spot),T) by constrained cubic B-spline weighted least squares. Use inverse squared positive IV bid/ask width, otherwise equal weight. Enforce nonnegative variance, non-decreasing calendar variance and strike-slice call-price convexity under the actual revaluation convention. Return weighted RMS IV residual plus per-point residuals with declared units. Refuse missing convention/coordinate coverage or infeasibility; no generic polynomial substitute.
 
-**Leaf acceptance and checkpoint:** Independently review every stated obligation. Execute only the exact authorised module-local proof when new product capability is claimed. Bind raw result and public durable readback to the candidate. Commit, freshly restore, save and expose the cumulative checkpoint before consumer release. On failure preserve the first unmet invariant and stop only its descendants.
+**Proposed CHAT_MANUAL leaf rule:** Independently review and release necessary source/definition authority at this boundary. Worker commits scoped code and unexecuted proof to GitHub and records IMPLEMENTED_UNTESTED where implementation is involved. No product TESTED_ACCEPTED or gate acceptance until separate L32 Tester execution and semantic review. Bind exact candidate and deliverable to a recoverable per-leaf checkpoint under section 5; if checkpoint capability or authority is unproved, record BLOCKED and halt dependent work. Preserve the first unmet invariant.
 
 ### L26 — Risk-neutral terminal density
 
@@ -338,7 +338,7 @@ Fit total variance IV^2*T on (log(strike/spot),T) by constrained cubic B-spline 
 
 Use actual same-snapshot D102 quality acceptance, CALL D087 across strikes, D086 and all direct R034/R035/R014/R015 roles. Fit a decreasing convex cubic spline directly in call price versus strike. Obtain nonnegative second-derivative state-price density, then normalise grid mass to one. D102 fit residual is not a call-price curve. Preserve spline/grid/normalisation/convention lineage; refuse bad quality, infeasible density or zero mass.
 
-**Leaf acceptance and checkpoint:** Independently review every stated obligation. Execute only the exact authorised module-local proof when new product capability is claimed. Bind raw result and public durable readback to the candidate. Commit, freshly restore, save and expose the cumulative checkpoint before consumer release. On failure preserve the first unmet invariant and stop only its descendants.
+**Proposed CHAT_MANUAL leaf rule:** Independently review and release necessary source/definition authority at this boundary. Worker commits scoped code and unexecuted proof to GitHub and records IMPLEMENTED_UNTESTED where implementation is involved. No product TESTED_ACCEPTED or gate acceptance until separate L32 Tester execution and semantic review. Bind exact candidate and deliverable to a recoverable per-leaf checkpoint under section 5; if checkpoint capability or authority is unproved, record BLOCKED and halt dependent work. Preserve the first unmet invariant.
 
 ### L27 — Lower risk-neutral tail
 
@@ -346,7 +346,7 @@ Use actual same-snapshot D102 quality acceptance, CALL D087 across strikes, D086
 
 Trapezoidal integrate actual normalised D111 below immutable threshold with explicit grid/interpolation/boundary/out-of-grid rules. Retain probability, threshold and density identity. Refuse invalid density or unsupported threshold coverage; do not refit inside this child.
 
-**Leaf acceptance and checkpoint:** Independently review every stated obligation. Execute only the exact authorised module-local proof when new product capability is claimed. Bind raw result and public durable readback to the candidate. Commit, freshly restore, save and expose the cumulative checkpoint before consumer release. On failure preserve the first unmet invariant and stop only its descendants.
+**Proposed CHAT_MANUAL leaf rule:** Independently review and release necessary source/definition authority at this boundary. Worker commits scoped code and unexecuted proof to GitHub and records IMPLEMENTED_UNTESTED where implementation is involved. No product TESTED_ACCEPTED or gate acceptance until separate L32 Tester execution and semantic review. Bind exact candidate and deliverable to a recoverable per-leaf checkpoint under section 5; if checkpoint capability or authority is unproved, record BLOCKED and halt dependent work. Preserve the first unmet invariant.
 
 ### L28 — Upper risk-neutral tail
 
@@ -354,7 +354,7 @@ Trapezoidal integrate actual normalised D111 below immutable threshold with expl
 
 Trapezoidal integrate actual normalised D111 above immutable threshold. Independently derive expected upper-tail mass under declared endpoints; do not assume one-minus-lower without matching threshold/boundary support. Preserve identity and refuse unsupported density/threshold coverage.
 
-**Leaf acceptance and checkpoint:** Independently review every stated obligation. Execute only the exact authorised module-local proof when new product capability is claimed. Bind raw result and public durable readback to the candidate. Commit, freshly restore, save and expose the cumulative checkpoint before consumer release. On failure preserve the first unmet invariant and stop only its descendants.
+**Proposed CHAT_MANUAL leaf rule:** Independently review and release necessary source/definition authority at this boundary. Worker commits scoped code and unexecuted proof to GitHub and records IMPLEMENTED_UNTESTED where implementation is involved. No product TESTED_ACCEPTED or gate acceptance until separate L32 Tester execution and semantic review. Bind exact candidate and deliverable to a recoverable per-leaf checkpoint under section 5; if checkpoint capability or authority is unproved, record BLOCKED and halt dependent work. Preserve the first unmet invariant.
 
 ### L29 — Attributed replenishment for both instruments
 
@@ -362,7 +362,7 @@ Trapezoidal integrate actual normalised D111 above immutable threshold. Independ
 
 Resolve full book/trade histories and execution-versus-cancellation attribution or separately owner-authorised named observable proxy; bind clock and delta_t_max before code. Keep K08 first qualifying same-subject/side/price restoration, one match per depletion and capped credit. Let denominator=sum(eligible depleted size)>0 and score=sum(credited replenishment)/denominator; a zero numerator/score is permitted. Stock and selected-option pairs are separate. Anonymous size decreases alone do not establish executions; missing source/proxy authority remains held.
 
-**Leaf acceptance and checkpoint:** Independently review every stated obligation. Execute only the exact authorised module-local proof when new product capability is claimed. Bind raw result and public durable readback to the candidate. Commit, freshly restore, save and expose the cumulative checkpoint before consumer release. On failure preserve the first unmet invariant and stop only its descendants.
+**Proposed CHAT_MANUAL leaf rule:** Independently review and release necessary source/definition authority at this boundary. Worker commits scoped code and unexecuted proof to GitHub and records IMPLEMENTED_UNTESTED where implementation is involved. No product TESTED_ACCEPTED or gate acceptance until separate L32 Tester execution and semantic review. Bind exact candidate and deliverable to a recoverable per-leaf checkpoint under section 5; if checkpoint capability or authority is unproved, record BLOCKED and halt dependent work. Preserve the first unmet invariant.
 
 ### L30 — Three-component monitored-basket breadth
 
@@ -370,7 +370,7 @@ Resolve full book/trade histories and execution-versus-cancellation attribution 
 
 Resolve immutable full US monitored basket, neutral count/weight mode, R037/R043/R137/R042 source roles, session/as-of/vintage/member consistency and result carrier before code. Preserve three separate eligible denominators for positive vs session-open, above VWAP and above prior official close. K02 names fractional components while catalogue says percent: bind explicit typed fraction/100-times-percent representation under accepted unit version; never infer scale or collapse components. Prove full admitted basket with differential member eligibility and zero-denominator refusal.
 
-**Leaf acceptance and checkpoint:** Independently review every stated obligation. Execute only the exact authorised module-local proof when new product capability is claimed. Bind raw result and public durable readback to the candidate. Commit, freshly restore, save and expose the cumulative checkpoint before consumer release. On failure preserve the first unmet invariant and stop only its descendants.
+**Proposed CHAT_MANUAL leaf rule:** Independently review and release necessary source/definition authority at this boundary. Worker commits scoped code and unexecuted proof to GitHub and records IMPLEMENTED_UNTESTED where implementation is involved. No product TESTED_ACCEPTED or gate acceptance until separate L32 Tester execution and semantic review. Bind exact candidate and deliverable to a recoverable per-leaf checkpoint under section 5; if checkpoint capability or authority is unproved, record BLOCKED and halt dependent work. Preserve the first unmet invariant.
 
 ### L31 — Paused OFI decision only
 
@@ -378,29 +378,29 @@ Resolve immutable full US monitored basket, neutral count/weight mode, R037/R043
 
 D145 remains PAUSED: no implementation, product cases or acceptance-count contribution. Preserve effective roles R185/R187/R188/R189/R190 under the 16 October approved overlay and original source-event-time K17 hold. Prepare the actual event-time source path and, as proposal only, a separately versioned receipt-clock alternative. Reactivation requires explicit owner decision, lawful meaning/source contract, finite implementation leaf and separately approved proof allocation through a plan amendment. The request for 20 or 30 outputs does not lift this pause.
 
-**Leaf acceptance and checkpoint:** Independently review every stated obligation. Execute only the exact authorised module-local proof when new product capability is claimed. Bind raw result and public durable readback to the candidate. Commit, freshly restore, save and expose the cumulative checkpoint before consumer release. On failure preserve the first unmet invariant and stop only its descendants.
+**Proposed CHAT_MANUAL leaf rule:** Independently review and release necessary source/definition authority at this boundary. Worker commits scoped code and unexecuted proof to GitHub and records IMPLEMENTED_UNTESTED where implementation is involved. No product TESTED_ACCEPTED or gate acceptance until separate L32 Tester execution and semantic review. Bind exact candidate and deliverable to a recoverable per-leaf checkpoint under section 5; if checkpoint capability or authority is unproved, record BLOCKED and halt dependent work. Preserve the first unmet invariant.
 
 ### L32 — Final acceptance and durable close-out
 
 **Gate:** G5. **IDs:** Supporting obligation; zero new identity count. **Prerequisites:** L00, L01a, L01b, L01c, L01d, L02, L03, L04, L05, L06, L07a, L07b, L08, L09, L10a, L10b, L10c, L11, L12, L13, L14, L15, L16, L17, L18, L19, L20, L21, L22, L23, L24, L25, L26, L27, L28, L29, L30, L31. **Initial status:** PROPOSED_NOT_ATTEMPTED.
 
-Reconcile all 27 mandatory implementation outputs, seven supporting profile obligations, each dual-instrument variant, all 28 dispositions and seven external holds. Reuse exact prior independent results without duplicate green. Audit source/profile/claim registration and durable public readback; inspect narrowly necessary registry/claim deltas without full126 operational activation. Publish exact FINAL_ACCEPTANCE.md, FINAL_CENSUS.json, remaining-work table and final cumulative checkpoint. If a mandatory output remains blocked/unaccepted, result is PARTIAL/BLOCKED even if the core20 milestone was reached. D145 pause is an explicit scope exception, never a completed implementation.
+**Final independent TESTER boundary for CHAT_MANUAL:** Reconcile all 27 mandatory implementation outputs, seven supporting profile obligations, each dual-instrument variant, all 28 dispositions and seven external holds. The separate Tester chat is the sole strict product-test executor. It executes only newly allocated/non-reusable proofs in dependency order, verifies independent oracles and durable public readback, repairs via returned Worker handoff when necessary and individually issues TESTED_ACCEPTED or BLOCKED determinations with exact run records. Reuse earlier exact uninvalidated evidence without duplicate green. Only after all necessary proofs and reviews may this leaf perform final G5 census, source/profile/claim audit and close-out; publish FINAL_ACCEPTANCE.md, FINAL_CENSUS.json, remaining-work table and independently verified checkpoint. Any mandatory blocked/unaccepted item means PARTIAL/BLOCKED; D145 remains an explicit paused exception.
 
-**Leaf acceptance and checkpoint:** Independently review every stated obligation. Execute only the exact authorised module-local proof when new product capability is claimed. Bind raw result and public durable readback to the candidate. Commit, freshly restore, save and expose the cumulative checkpoint before consumer release. On failure preserve the first unmet invariant and stop only its descendants.
+**Proposed CHAT_MANUAL leaf rule:** Independently review and release necessary source/definition authority at this boundary. Worker commits scoped code and unexecuted proof to GitHub and records IMPLEMENTED_UNTESTED where implementation is involved. No product TESTED_ACCEPTED or gate acceptance until separate L32 Tester execution and semantic review. Bind exact candidate and deliverable to a recoverable per-leaf checkpoint under section 5; if checkpoint capability or authority is unproved, record BLOCKED and halt dependent work. Preserve the first unmet invariant.
 
 ## 4. Proof and review law
 
-**Proposed mode: WORK_DELEGATED.** Independent sub-agent documentary reviews actually occurred in this session. At L00 designate a genuinely available independent final reviewer/sole strict executor for each unit. The implementer authors proof before production edits but does not run product tests, routine RED or speculative probes. Proposed successor schedule is independent testing per implementation leaf or meaningful dependency gate, so parents are accepted before child proof. The old downstream-reconciliation-only L14 timing is not silently applied to this successor. Owner acceptance must approve this proposed schedule; a final-only alternative requires an explicit schedule/dependency amendment, not weaker coverage.
+**Proposed mode: CHAT_MANUAL; independent final tester at L32.** Worker and Tester are distinct ordinary ChatGPT chats with manual checkpoints; no delegated sub-agent is assumed. The Worker establishes contracts and proof oracles before implementation, records each output IMPLEMENTED_UNTESTED and does not run product tests or speculative RED. L32's separate independent Tester is the sole strict executor for authorised new product cases, dependency-ordered; documentary reviewers may clear source/meaning earlier without claiming product acceptance. The deferred schedule accepts increased risk of later upstream defect discovery but does not defer source authority, proof design, original tests, durable checkpoints or final coverage. The historical independent Work reviewer remains attributed evidence for R1, not a newly designated chat tester.
 
 **Prospective allocations:** standard two physical cases per new identity, SUCCESS and REACHED_REFUSAL; explicit four-case exception for D141/D142/D144, one pair for stock and another for selected options. All retain a six-case hard ceiling, not a target. This is 60 prospective signal cases: 44 core and 16 extension. D079/D080/D081 have six cases total, two per identity; shared setup must still prove each coefficient against one joint fit. CSV rows and prose refusal ideas do not silently add physical cases or conceal parameterised scenarios.
 
 Seven separately named supporting profile pairs are proposed, up to 14 cases: history-compatible D071/D075/D076/D077, option true-instant D001, US-option D004, option trade-direction D015. They count as zero new identities. Reuse any genuinely exact already supported profile instead of executing budgeted cases unnecessarily. Additional changed D035/D036/D087 profiles or M00 projections are **not** assumed tested or granted a zero-case waiver: identify the finite changed proposition, material invalidation and separate approved allocation before editing/executing it. No unbounded support budget.
 
-TEST_EVIDENCE_LEDGER.json is DRAFT: actual authorised count zero, no runs/cases. PROOF_ALLOCATION_PROPOSED.json supplies the 74 named prospective case IDs, paths and limits. Only after owner acceptance/commission and contract release may L00/owning leaf populate approved active allocations. This planning/recovery pass has no product execution authority. D145 has no executable allocation while paused.
+At observed R1 execution HEAD 363923d4, the live TEST_EVIDENCE_LEDGER.json contains 35 proof obligations in WORK_DELEGATED mode and retains the 74 named prospective case IDs in PROOF_ALLOCATION_PROPOSED.json; no new product run is claimed here. R2 proposes changing only the execution mode, assigned separate chat reviewer and scheduled test phase to L32; preserve exact original case IDs, numerical budgets, source identities and statuses pending evidence-based release. Migrate by explicit validated ledger delta after owner approval, not by fabricating results or changing physical case counts. D145 has no executable allocation while paused.
 
 Expected values come from accepted meaning and independent calculations, not worker helper outputs. A refusal returning before the intended invariant is not reached proof. For ordering, reset, omission or absence, the independent reviewer uses at least one authority-derived public sequence which a bundled helper cannot pre-satisfy, within the approved cases. K06 correlated data must distinguish joint OLS; D078 must encode actual per-coefficient mixed lineage; D142 must reach the terminal window; D144 must reconstruct the full required pair set. Do not weaken validators, rename/skip valid tests, or fabricate facts to obtain green.
 
-Preserve the pinned CPython 3.12.14 / SQLite 3.53.1 and tool evidence. The owner excludes package/dependency uploads because cloud supplies them; do not install, substitute CPython 3.13, rerun runtime qualification or assume parity without evidence. If a required mechanism is absent, stop only dependent execution and record the exact limitation. Choose the existing governed strict runner/claim/generation only after real admission; record the literal command before running. No invented runnable command or claim now. The sole executor may perform narrowly warranted changed-Python Ruff/mypy/ingress checks once at the owning boundary. No blanket pytest, whole-project lint/typecheck, global M00→M01→M02 E2E suite or unaffected old regression.
+**Proposed runtime target: CPython 3.13.5** per current owner instruction. The old CPython 3.12.14 / SQLite 3.53.1 tool and test records remain immutable historical evidence, not proof of equivalence. The currently observed chat interpreter is CPython 3.13.5 with SQLite 3.46.1; project pyproject.toml and .python-version still pin 3.12.14 and the vendor wheels include cp312-specific binaries. Before any product proof, separately reconcile project Python constraints, lint/type versions, dependency ABI/wheel supply, SQLite feature compatibility and an accepted runner. Do not assert runtime parity without evidence, silently install/substitute packages, or rerun unaffected old proofs just because the interpreter changed. Changed-Python validation is narrowly scoped and logged with command and backend. No blanket pytest, whole-project lint/typecheck, global M00→M01→M02 E2E suite or unaffected regression.
 
 Preserve original failures, findings, repairs and results. Rerun failed cases only after a documented relevant material repair. Rerun a successful proof only after exact material invalidation; checkpoint/session/packaging changes are not invalidation. Classify recurrent findings by the shared mechanism, not endless witness-specific patches.
 
@@ -410,21 +410,21 @@ Reuse EVIDENCE_REUSE_INDEX.json and the immutable original `handoff/m02_remainin
 
 Keep the historical fixed transfer baseline `97f944d51ab9e403250fe76910e2754b50425c73`. Original full-history baseline archive is `NVDA_DOWNSTREAM_RECONCILIATION_L00_CHECKPOINT_20261028.tar(2).gz`; embedded bundle is `NVDA_DOWNSTREAM_RECONCILIATION_L00_CHECKPOINT_20261028_FULL_HISTORY.bundle`, SHA256 `91db4a1989bff366c1f547c5776ca886c276b6b1310027ae929aa1cd1efee4b9`. The durable recovery uses the saved oracle-review checkpoint at 0bc2e067. GitHub main at intake is a separate current publication baseline, not a substitute for the old transfer prerequisite. L00 must verify recipient access to original baseline and its required refs before claiming additive portability. Package/dependency archives are excluded from this upload.
 
-For every completed leaf, create `NVDA_M02_COMPLETION28_<leaf>_<YYYYMMDD_HHMMZ>_ADDITIVE_FROM_97f944d51ab9.bundle` plus a handover archive containing non-Git evidence/assets, ledger, exact source/ref manifest and restore instructions. Include current programme refs and required historical/evidence refs without overwriting GitHub main or untrusted branch tips. Preserve all original 66 baseline ref tips and the recovered evidence branch union as inventoried; preserve current GitHub branches too. Do not rewrite, reset or prune history. A branch pointing to the untrusted V2 candidate preserves evidence, not active authority.
+**Proposed CHAT_MANUAL checkpoint revision — owner review required.** Preserve the full historical fixed baseline and all 66 original ref tips, existing evidence ref union, current GitHub refs and non-Git asset hashes without rewriting or pruning history. To avoid the redundant 124.58 MB per-chat delivery, investigate a verified shared-GitHub **PINNED_REMOTE_CHECKPOINT**: Worker pushes exact immutable commit and necessary refs; independent Tester fetches into a fresh repository, checks commit/tree/blob listing, source/claim manifests, ancestral ref closure and full fsck, and records an independently readable evidence link. This alternative has **not** been end-to-end verified in this chat environment; it is NOT equivalent to the accepted bundle contract until the owner approves a recorded strategy change and the receiver proves actual access and full ref coverage. If it fails, retain CUMULATIVE_ADDITIVE or FULL_HISTORY bundle delivery at a working shared baseline; no source-only snapshot masquerades as a complete checkpoint.
 
-Before continuation: commit exact leaf work; export all cumulative post-baseline history and required refs; compute SHA256 outside the identified commit; independently restore into an empty repository from original base plus latest additive; verify prerequisites, original ref tips, every declared current tip, exact HEAD/tree/full tracked blob listing, ancestry, `git bundle verify` and `git fsck --full`; compare loose handed-over files with committed bytes. Inventory non-Git assets separately by hash/durable prerequisite. Save and expose an actual downloadable checkpoint. Git integrity is transport evidence, not product acceptance. A bundle cannot contain its own final checksum in the commit it identifies.
+**Required integrity at every committed handoff:** record exact commit/tree, full tracked blob listing, provenance/ledger, unchanged and newly added refs, non-Git assets and immutable hashes. With a verified full-history Git remote strategy, the independent receiver must freshly restore/clone and check ancestry, every declared ref tip, tree/blob listing and `git fsck --full`; with a bundle strategy, also verify bundle prerequisites, `git bundle verify` and cumulative SHA-256. Never claim equivalence from a GitHub connector's individual text-file read or a successful Actions publication alone. Provide the actual retrievable checkpoint before dependent work; if no receiver can complete fresh verification, report BLOCKED_TRANSFER. Transport proof is not product correctness.
 
-If a receiver lacks the original baseline or required assets, report BLOCKED_TRANSFER. Supply a verified full-history alternative only under an explicitly recorded strategy change; never claim a partial working snapshot is equivalent. At a blocked semantic leaf checkpoint the last accepted state and first unmet invariant; its output remains unaccepted. GitHub commits make work durable but do not remove the commissioned per-leaf downloadable checkpoint obligation.
+If a receiver lacks a prerequisite, a verified full-history alternative or reliable GitHub access, report BLOCKED_TRANSFER. This review branch proposes rather than assumes a change from mandatory downloadable per-leaf bundles. Until independent restoration and exact owner strategy approval, the old commissioned checkpoint law controls. At a blocked leaf preserve the last proved state and first unmet invariant; no blocked output becomes accepted by changing distribution media.
 
 ## 6. Counting and final acceptance
 
-One D identity counts once only after its **new exact controlled profile** has independent TESTED_ACCEPTED evidence, all required instrument variants, immutable source/claim/version bindings, durable public readback and a saved/restored/downloadable leaf checkpoint. Old identities, supporting profile variants, L14 reuse, documents, holds and test-function counts do not count as new output.
+One D identity counts once only after its **new exact controlled profile** has independent TESTED_ACCEPTED evidence at L32, all required instrument variants, immutable source/claim/version bindings, durable public readback and an independently restorable checkpoint under the approved strategy. Intermediate IMPLEMENTED_UNTESTED is not a new accepted identity. Old identities, supporting variants, L14 reuse, documents, holds and test-function counts do not count as new outputs.
 
 The named core20 milestone requires all twenty specified identities, not an arbitrary mixture of held or reused signals. Full programme completion requires all 27 mandatory implementations, necessary support proofs, final G5 handover and explicit paused-D145 disposition. Core20 achieved with further mandatory work open is progress, not COMPLETED. If unresolved source/policy prerequisites prevent the target, close PARTIAL/BLOCKED with exact identities and owners; no automatic scope reduction because of complexity or quota pressure. Only the owner may approve a bounded rescope.
 
 A maximum 27 new identity acceptances can extend historical controlled accounting from 98 to 125; this does not establish full 126 native/production/operational readiness. D145 remains unresolved unless separately reactivated and proved. Track controlled implementation acceptance, native/source readiness and production-policy approval as separate fields.
 
-States: PROPOSED → AUTHORITY/CONTRACT_READY → IMPLEMENTED_UNTESTED → independently TESTED_ACCEPTED. RETURNED/BLOCKED stay explicit. An untested parent cannot release a dependent acceptance. Final census reports exact new accepted identities/variants, reusable old evidence, supporting profile results, remaining source/domain decisions and whether core20/full27 were actually achieved.
+States: PROPOSED → AUTHORITY/CONTRACT_READY → IMPLEMENTED_UNTESTED → independently TESTED_ACCEPTED. RETURNED/BLOCKED stay explicit. A documentary-ready contract and stable committed interface may support **provisional** child implementation, but an untested parent cannot release dependent acceptance, a gate or final count. L32 independent testing resolves dependencies in order and returns defects to Worker for bounded repair before any relevant child is accepted. Final census reports exact new accepted identities/variants, reusable old evidence, supporting profile results, remaining decisions and whether core20/full27 were achieved.
 
 ## 7. Required decisions and publication boundary
 
@@ -446,3 +446,18 @@ Companion-document resolution: inherited bare register, source inventory, proof 
 L00 independent documentary result: ACCEPT_DOCUMENTARY following bounded candidate-provenance/navigation repair, recorded in `L00/REVIEW.md`. Initial independent fresh restoration verified all66 original refs and236 remote refs. Final committed additive export/push/readback/exposure must finish before consumer release; no product test or new identity acceptance.
 
 L00 transfer stop: `BLOCKED_TRANSFER`. Final e19c2df9 checkpoint independently restored successfully, but actual downloadable exposure failed (designated output path Permission denied; GitHub release upload HTTP401 Bad credentials). No leaf is fully completed/released; all38 other leaves transitively depend on L00. Product work/test runs remain zero and D145 paused. See `handoff/m02_completion_28_execution/L00/TRANSFER_BLOCKER.md` and retained independent receipts. No acceptance requirement or distribution policy has been weakened.
+
+## 9. Proposed R2 CHAT_MANUAL transition control — NOT ACTIVE
+
+### Scope and status
+
+This owner-requested review branch proposes a schedule and handover change, not new domain law. Preserve the original commissioned R1 plan at `execution/accepted-r1-20261030` commit `363923d47b81fca50e64036bef3c8601501e3c16`, all historical source/evidence/holds and full 39-leaf/27 mandatory output census. Preserve D145 PAUSED; stock and selected-option coverage stays mandatory for D141/D142/D144. The exact approved Guardrails remain frozen. The replacement 112-word AGENTS on this proposal branch has one independently reviewable mode-neutral wording change relative to the plugin's stable draft; it is not installed in the existing execution branch.
+
+### Acceptance requirements before activation
+
+1. Owner reviews and explicitly accepts the proposed entire AGENTS wording, test-local AGENTS override changes, exact R2 ExecPlan, new test schedule, runtime and checkpoint strategy. Historical approval of a 112-word reference is not approval of altered bytes.
+2. Independent documentary review confirms no omitted identities, leaf/gate dependencies, unallocated tests, weakened proof or evidence reclassification; checks the current GitHub/Codex chronology and original R1/accepted L00 status; the successful GitHub Actions L00 release is only producer transport evidence until independent recipient readback.
+3. Reconcile source/ledger files against the accepted R2 scheduling model, preserving 35 proof obligations and original test cases; record explicit policy on dependency-based provisional implementation, strictly no premature TESTED_ACCEPTED.
+4. Demonstrate the precise Python 3.13.5 dependency/runtime/SQLite pathway, distinguish already proved historical CPython 3.12.14 from new evidence, and do not run product tests during documentary planning.
+5. Prove proposed GitHub pinned-commit checkpoint receiver path end-to-end with all ref and blob closure or retain the earlier bundle method; do not require the rejected 124.58 MB archive merely to inspect source. Mark BLOCKED_TRANSFER if a full independent handover cannot be demonstrated.
+6. Amend the active ledger and root documents only after review/approval, commit exact evidence and confirm branch and readback. If any requirement is unresolved, preserve original R1 as active; do not start L01 or claim L00 complete.
