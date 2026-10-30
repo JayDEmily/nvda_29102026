@@ -25,7 +25,15 @@ Judge whether the Worker has correctly prepared and documented **G0/L00**: owner
 
 ## Runtime and history distinctions
 
-1. Source SHA3-256 must match SQLite's official [release download](https://www.sqlite.org/download.html) and [3.54.1 release notes](https://www.sqlite.org/changes.html), and Python `sqlite_source_id()` must show the 16 October 2026 3.54.1 identity. Compilation uses a separately inventoried, non-Git shared library loaded by `NVDA_SQLITE_LIBDIR` and the tracked `tools/with_pinned_sqlite.sh`. Environment qualification is reproducible from that exact source file and flags; no PostgreSQL requirement.
+1. Source SHA3-256 must match SQLite's official [release download](https://www.sqlite.org/download.html) and [3.54.1 release notes](https://www.sqlite.org/changes.html), and Python `sqlite_source_id()` must show the 16 October 2026 3.54.1 identity. The compiled `libsqlite3.so.0` is a separately inventoried, **non-Git** shared library. The only tracked SQLite runtime preflight is `tools/check_sqlite_runtime.py`. Earlier revisions incorrectly identified `tools/with_pinned_sqlite.sh` as tracked; it is absent from the exact reviewed Git tree. No such helper is required or claimed as an executable checkpoint dependency. From the repository root, after obtaining/building the separately inventoried library, run the following **direct shell invocation**, replacing the absolute directory with the actual directory containing `libsqlite3.so.0`:
+
+   ```bash
+   export NVDA_SQLITE_LIBDIR=/absolute/path/to/sqlite-3.54.1/lib
+   test -f "$NVDA_SQLITE_LIBDIR/libsqlite3.so.0"
+   LD_LIBRARY_PATH="$NVDA_SQLITE_LIBDIR${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}" python tools/check_sqlite_runtime.py
+   ```
+
+   The prior runtime manifest `R2_SQLITE_3541_RUNTIME_VERIFIED.json` records the exact source hashes, compilation command and historical binary hash. The later F02 follow-up reproduces this direct invocation against a rebuild with matching binary SHA-256, records the observed version/source ID and exit status in its **external post-commit receipt**, and does not claim that an untracked helper was included in Git. This is a scoped non-product preflight, not general SQLite equivalence or PostgreSQL qualification.
 2. Non-product `sqlite3` feature probe covers the nine explicitly listed storage features; it is **not** a general across-all-data equivalence or an M02 product test. Non-product probe code and logs are not rewritten as accepted product proofs.
 3. Original GitHub R2 **tree**, not the missing original GitHub 61-commit lineage, is reconstructed in local Git. The original 66 historical refs remain; exact local additive checkpoint is verified by a fresh baseline-plus-bundle receiver, not GitHub.
 4. G1–G4 source/provider/calculation holds remain under downstream leaves; no new domain decisions, case allocations, D145 implementation or policy is being approved by this G0 review.
