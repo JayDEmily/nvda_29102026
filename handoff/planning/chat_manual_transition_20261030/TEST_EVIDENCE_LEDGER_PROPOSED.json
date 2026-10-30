@@ -1,0 +1,1207 @@
+{
+  "schema_version": "1.0.0",
+  "plan_id": "M02-FOUNDATION-COMPLETION-28",
+  "ledger_status": "DRAFT",
+  "repository": {
+    "baseline_commit": "8ff7d82377e9bf8f9fc75c1ecef70f0ab29a2ada",
+    "candidate_commit": "ae2baa9c",
+    "plan_revision": "R2_CHAT_MANUAL_PROPOSED"
+  },
+  "execution_mode": {
+    "mode": "CHAT_MANUAL",
+    "capability_evidence": "Owner-selected two independent manually managed chats; actual separate Tester and environment unverified at proposal stage.",
+    "test_phase": "FINAL_INDEPENDENT_MODULE_PROOFS_AT_L32"
+  },
+  "proof_obligations": [
+    {
+      "proof_id": "M02-C28-D062",
+      "module": "M02",
+      "claim": "D062 new controlled profile only; not live or production admission",
+      "requirement_refs": [
+        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D062",
+        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
+      ],
+      "source_identity": {
+        "commit": "ab630971741f5f60f547475f016bb09eec91a222",
+        "contract_id": "UNRESOLVED_BIND_AT_L23",
+        "profile_id": "PROPOSED_NOT_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "Existing held/profile distinction retained; accepted old claims separately reused unchanged.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/EVIDENCE_REUSE.json",
+          "handoff/m02_foundation_prerequisites_20261029/G4_DELEGATED_INDEPENDENT_REVIEW.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "M02-C28-D078",
+      "module": "M02",
+      "claim": "D078 new controlled profile only; not live or production admission",
+      "requirement_refs": [
+        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D078",
+        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
+      ],
+      "source_identity": {
+        "commit": "ab630971741f5f60f547475f016bb09eec91a222",
+        "contract_id": "UNRESOLVED_BIND_AT_L03",
+        "profile_id": "PROPOSED_NOT_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "Existing held/profile distinction retained; accepted old claims separately reused unchanged.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/EVIDENCE_REUSE.json",
+          "handoff/m02_foundation_prerequisites_20261029/G4_DELEGATED_INDEPENDENT_REVIEW.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "M02-C28-D079",
+      "module": "M02",
+      "claim": "D079 new controlled profile only; not live or production admission",
+      "requirement_refs": [
+        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D079",
+        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
+      ],
+      "source_identity": {
+        "commit": "ab630971741f5f60f547475f016bb09eec91a222",
+        "contract_id": "UNRESOLVED_BIND_AT_L02",
+        "profile_id": "PROPOSED_NOT_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "Existing held/profile distinction retained; accepted old claims separately reused unchanged.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/EVIDENCE_REUSE.json",
+          "handoff/m02_foundation_prerequisites_20261029/G4_DELEGATED_INDEPENDENT_REVIEW.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "M02-C28-D080",
+      "module": "M02",
+      "claim": "D080 new controlled profile only; not live or production admission",
+      "requirement_refs": [
+        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D080",
+        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
+      ],
+      "source_identity": {
+        "commit": "ab630971741f5f60f547475f016bb09eec91a222",
+        "contract_id": "UNRESOLVED_BIND_AT_L02",
+        "profile_id": "PROPOSED_NOT_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "Existing held/profile distinction retained; accepted old claims separately reused unchanged.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/EVIDENCE_REUSE.json",
+          "handoff/m02_foundation_prerequisites_20261029/G4_DELEGATED_INDEPENDENT_REVIEW.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "M02-C28-D081",
+      "module": "M02",
+      "claim": "D081 new controlled profile only; not live or production admission",
+      "requirement_refs": [
+        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D081",
+        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
+      ],
+      "source_identity": {
+        "commit": "ab630971741f5f60f547475f016bb09eec91a222",
+        "contract_id": "UNRESOLVED_BIND_AT_L02",
+        "profile_id": "PROPOSED_NOT_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "Existing held/profile distinction retained; accepted old claims separately reused unchanged.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/EVIDENCE_REUSE.json",
+          "handoff/m02_foundation_prerequisites_20261029/G4_DELEGATED_INDEPENDENT_REVIEW.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "M02-C28-D085",
+      "module": "M02",
+      "claim": "D085 new controlled profile only; not live or production admission",
+      "requirement_refs": [
+        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D085",
+        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
+      ],
+      "source_identity": {
+        "commit": "ab630971741f5f60f547475f016bb09eec91a222",
+        "contract_id": "UNRESOLVED_BIND_AT_L08",
+        "profile_id": "PROPOSED_NOT_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "Existing held/profile distinction retained; accepted old claims separately reused unchanged.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/EVIDENCE_REUSE.json",
+          "handoff/m02_foundation_prerequisites_20261029/G4_DELEGATED_INDEPENDENT_REVIEW.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "M02-C28-D086",
+      "module": "M02",
+      "claim": "D086 new controlled profile only; not live or production admission",
+      "requirement_refs": [
+        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D086",
+        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
+      ],
+      "source_identity": {
+        "commit": "ab630971741f5f60f547475f016bb09eec91a222",
+        "contract_id": "UNRESOLVED_BIND_AT_L09",
+        "profile_id": "PROPOSED_NOT_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "Existing held/profile distinction retained; accepted old claims separately reused unchanged.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/EVIDENCE_REUSE.json",
+          "handoff/m02_foundation_prerequisites_20261029/G4_DELEGATED_INDEPENDENT_REVIEW.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "M02-C28-D091",
+      "module": "M02",
+      "claim": "D091 new controlled profile only; not live or production admission",
+      "requirement_refs": [
+        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D091",
+        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
+      ],
+      "source_identity": {
+        "commit": "ab630971741f5f60f547475f016bb09eec91a222",
+        "contract_id": "UNRESOLVED_BIND_AT_L04",
+        "profile_id": "PROPOSED_NOT_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "Existing held/profile distinction retained; accepted old claims separately reused unchanged.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/EVIDENCE_REUSE.json",
+          "handoff/m02_foundation_prerequisites_20261029/G4_DELEGATED_INDEPENDENT_REVIEW.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "M02-C28-D095",
+      "module": "M02",
+      "claim": "D095 new controlled profile only; not live or production admission",
+      "requirement_refs": [
+        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D095",
+        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
+      ],
+      "source_identity": {
+        "commit": "ab630971741f5f60f547475f016bb09eec91a222",
+        "contract_id": "UNRESOLVED_BIND_AT_L11",
+        "profile_id": "PROPOSED_NOT_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "Existing held/profile distinction retained; accepted old claims separately reused unchanged.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/EVIDENCE_REUSE.json",
+          "handoff/m02_foundation_prerequisites_20261029/G4_DELEGATED_INDEPENDENT_REVIEW.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "M02-C28-D096",
+      "module": "M02",
+      "claim": "D096 new controlled profile only; not live or production admission",
+      "requirement_refs": [
+        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D096",
+        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
+      ],
+      "source_identity": {
+        "commit": "ab630971741f5f60f547475f016bb09eec91a222",
+        "contract_id": "UNRESOLVED_BIND_AT_L12",
+        "profile_id": "PROPOSED_NOT_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "Existing held/profile distinction retained; accepted old claims separately reused unchanged.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/EVIDENCE_REUSE.json",
+          "handoff/m02_foundation_prerequisites_20261029/G4_DELEGATED_INDEPENDENT_REVIEW.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "M02-C28-D097",
+      "module": "M02",
+      "claim": "D097 new controlled profile only; not live or production admission",
+      "requirement_refs": [
+        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D097",
+        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
+      ],
+      "source_identity": {
+        "commit": "ab630971741f5f60f547475f016bb09eec91a222",
+        "contract_id": "UNRESOLVED_BIND_AT_L13",
+        "profile_id": "PROPOSED_NOT_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "Existing held/profile distinction retained; accepted old claims separately reused unchanged.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/EVIDENCE_REUSE.json",
+          "handoff/m02_foundation_prerequisites_20261029/G4_DELEGATED_INDEPENDENT_REVIEW.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "M02-C28-D098",
+      "module": "M02",
+      "claim": "D098 new controlled profile only; not live or production admission",
+      "requirement_refs": [
+        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D098",
+        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
+      ],
+      "source_identity": {
+        "commit": "ab630971741f5f60f547475f016bb09eec91a222",
+        "contract_id": "UNRESOLVED_BIND_AT_L14",
+        "profile_id": "PROPOSED_NOT_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "Existing held/profile distinction retained; accepted old claims separately reused unchanged.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/EVIDENCE_REUSE.json",
+          "handoff/m02_foundation_prerequisites_20261029/G4_DELEGATED_INDEPENDENT_REVIEW.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "M02-C28-D102",
+      "module": "M02",
+      "claim": "D102 new controlled profile only; not live or production admission",
+      "requirement_refs": [
+        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D102",
+        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
+      ],
+      "source_identity": {
+        "commit": "ab630971741f5f60f547475f016bb09eec91a222",
+        "contract_id": "UNRESOLVED_BIND_AT_L25",
+        "profile_id": "PROPOSED_NOT_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "Existing held/profile distinction retained; accepted old claims separately reused unchanged.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/EVIDENCE_REUSE.json",
+          "handoff/m02_foundation_prerequisites_20261029/G4_DELEGATED_INDEPENDENT_REVIEW.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "M02-C28-D107",
+      "module": "M02",
+      "claim": "D107 new controlled profile only; not live or production admission",
+      "requirement_refs": [
+        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D107",
+        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
+      ],
+      "source_identity": {
+        "commit": "ab630971741f5f60f547475f016bb09eec91a222",
+        "contract_id": "UNRESOLVED_BIND_AT_L15",
+        "profile_id": "PROPOSED_NOT_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "Existing held/profile distinction retained; accepted old claims separately reused unchanged.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/EVIDENCE_REUSE.json",
+          "handoff/m02_foundation_prerequisites_20261029/G4_DELEGATED_INDEPENDENT_REVIEW.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "M02-C28-D108",
+      "module": "M02",
+      "claim": "D108 new controlled profile only; not live or production admission",
+      "requirement_refs": [
+        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D108",
+        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
+      ],
+      "source_identity": {
+        "commit": "ab630971741f5f60f547475f016bb09eec91a222",
+        "contract_id": "UNRESOLVED_BIND_AT_L16",
+        "profile_id": "PROPOSED_NOT_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "Existing held/profile distinction retained; accepted old claims separately reused unchanged.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/EVIDENCE_REUSE.json",
+          "handoff/m02_foundation_prerequisites_20261029/G4_DELEGATED_INDEPENDENT_REVIEW.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "M02-C28-D109",
+      "module": "M02",
+      "claim": "D109 new controlled profile only; not live or production admission",
+      "requirement_refs": [
+        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D109",
+        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
+      ],
+      "source_identity": {
+        "commit": "ab630971741f5f60f547475f016bb09eec91a222",
+        "contract_id": "UNRESOLVED_BIND_AT_L17",
+        "profile_id": "PROPOSED_NOT_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "Existing held/profile distinction retained; accepted old claims separately reused unchanged.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/EVIDENCE_REUSE.json",
+          "handoff/m02_foundation_prerequisites_20261029/G4_DELEGATED_INDEPENDENT_REVIEW.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "M02-C28-D110",
+      "module": "M02",
+      "claim": "D110 new controlled profile only; not live or production admission",
+      "requirement_refs": [
+        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D110",
+        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
+      ],
+      "source_identity": {
+        "commit": "ab630971741f5f60f547475f016bb09eec91a222",
+        "contract_id": "UNRESOLVED_BIND_AT_L18",
+        "profile_id": "PROPOSED_NOT_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "Existing held/profile distinction retained; accepted old claims separately reused unchanged.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/EVIDENCE_REUSE.json",
+          "handoff/m02_foundation_prerequisites_20261029/G4_DELEGATED_INDEPENDENT_REVIEW.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "M02-C28-D111",
+      "module": "M02",
+      "claim": "D111 new controlled profile only; not live or production admission",
+      "requirement_refs": [
+        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D111",
+        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
+      ],
+      "source_identity": {
+        "commit": "ab630971741f5f60f547475f016bb09eec91a222",
+        "contract_id": "UNRESOLVED_BIND_AT_L26",
+        "profile_id": "PROPOSED_NOT_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "Existing held/profile distinction retained; accepted old claims separately reused unchanged.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/EVIDENCE_REUSE.json",
+          "handoff/m02_foundation_prerequisites_20261029/G4_DELEGATED_INDEPENDENT_REVIEW.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "M02-C28-D112",
+      "module": "M02",
+      "claim": "D112 new controlled profile only; not live or production admission",
+      "requirement_refs": [
+        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D112",
+        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
+      ],
+      "source_identity": {
+        "commit": "ab630971741f5f60f547475f016bb09eec91a222",
+        "contract_id": "UNRESOLVED_BIND_AT_L27",
+        "profile_id": "PROPOSED_NOT_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "Existing held/profile distinction retained; accepted old claims separately reused unchanged.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/EVIDENCE_REUSE.json",
+          "handoff/m02_foundation_prerequisites_20261029/G4_DELEGATED_INDEPENDENT_REVIEW.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "M02-C28-D113",
+      "module": "M02",
+      "claim": "D113 new controlled profile only; not live or production admission",
+      "requirement_refs": [
+        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D113",
+        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
+      ],
+      "source_identity": {
+        "commit": "ab630971741f5f60f547475f016bb09eec91a222",
+        "contract_id": "UNRESOLVED_BIND_AT_L28",
+        "profile_id": "PROPOSED_NOT_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "Existing held/profile distinction retained; accepted old claims separately reused unchanged.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/EVIDENCE_REUSE.json",
+          "handoff/m02_foundation_prerequisites_20261029/G4_DELEGATED_INDEPENDENT_REVIEW.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "M02-C28-D120",
+      "module": "M02",
+      "claim": "D120 new controlled profile only; not live or production admission",
+      "requirement_refs": [
+        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D120",
+        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
+      ],
+      "source_identity": {
+        "commit": "ab630971741f5f60f547475f016bb09eec91a222",
+        "contract_id": "UNRESOLVED_BIND_AT_L20",
+        "profile_id": "PROPOSED_NOT_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "Existing held/profile distinction retained; accepted old claims separately reused unchanged.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/EVIDENCE_REUSE.json",
+          "handoff/m02_foundation_prerequisites_20261029/G4_DELEGATED_INDEPENDENT_REVIEW.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "M02-C28-D121",
+      "module": "M02",
+      "claim": "D121 new controlled profile only; not live or production admission",
+      "requirement_refs": [
+        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D121",
+        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
+      ],
+      "source_identity": {
+        "commit": "ab630971741f5f60f547475f016bb09eec91a222",
+        "contract_id": "UNRESOLVED_BIND_AT_L21",
+        "profile_id": "PROPOSED_NOT_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "Existing held/profile distinction retained; accepted old claims separately reused unchanged.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/EVIDENCE_REUSE.json",
+          "handoff/m02_foundation_prerequisites_20261029/G4_DELEGATED_INDEPENDENT_REVIEW.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "M02-C28-D122",
+      "module": "M02",
+      "claim": "D122 new controlled profile only; not live or production admission",
+      "requirement_refs": [
+        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D122",
+        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
+      ],
+      "source_identity": {
+        "commit": "ab630971741f5f60f547475f016bb09eec91a222",
+        "contract_id": "UNRESOLVED_BIND_AT_L22",
+        "profile_id": "PROPOSED_NOT_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "Existing held/profile distinction retained; accepted old claims separately reused unchanged.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/EVIDENCE_REUSE.json",
+          "handoff/m02_foundation_prerequisites_20261029/G4_DELEGATED_INDEPENDENT_REVIEW.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "M02-C28-D141",
+      "module": "M02",
+      "claim": "D141 new controlled profile only; not live or production admission",
+      "requirement_refs": [
+        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D141",
+        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
+      ],
+      "source_identity": {
+        "commit": "ab630971741f5f60f547475f016bb09eec91a222",
+        "contract_id": "UNRESOLVED_BIND_AT_L29",
+        "profile_id": "PROPOSED_NOT_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "Existing held/profile distinction retained; accepted old claims separately reused unchanged.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/EVIDENCE_REUSE.json",
+          "handoff/m02_foundation_prerequisites_20261029/G4_DELEGATED_INDEPENDENT_REVIEW.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "M02-C28-D142",
+      "module": "M02",
+      "claim": "D142 new controlled profile only; not live or production admission",
+      "requirement_refs": [
+        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D142",
+        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
+      ],
+      "source_identity": {
+        "commit": "ab630971741f5f60f547475f016bb09eec91a222",
+        "contract_id": "UNRESOLVED_BIND_AT_L05",
+        "profile_id": "PROPOSED_NOT_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "Existing held/profile distinction retained; accepted old claims separately reused unchanged.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/EVIDENCE_REUSE.json",
+          "handoff/m02_foundation_prerequisites_20261029/G4_DELEGATED_INDEPENDENT_REVIEW.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "M02-C28-D144",
+      "module": "M02",
+      "claim": "D144 new controlled profile only; not live or production admission",
+      "requirement_refs": [
+        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D144",
+        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
+      ],
+      "source_identity": {
+        "commit": "ab630971741f5f60f547475f016bb09eec91a222",
+        "contract_id": "UNRESOLVED_BIND_AT_L06",
+        "profile_id": "PROPOSED_NOT_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "Existing held/profile distinction retained; accepted old claims separately reused unchanged.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/EVIDENCE_REUSE.json",
+          "handoff/m02_foundation_prerequisites_20261029/G4_DELEGATED_INDEPENDENT_REVIEW.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "M02-C28-D145",
+      "module": "M02",
+      "claim": "D145 new controlled profile only; not live or production admission",
+      "requirement_refs": [
+        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D145",
+        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
+      ],
+      "source_identity": {
+        "commit": "ab630971741f5f60f547475f016bb09eec91a222",
+        "contract_id": "UNRESOLVED_BIND_AT_L31",
+        "profile_id": "PROPOSED_NOT_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "Existing held/profile distinction retained; accepted old claims separately reused unchanged.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/EVIDENCE_REUSE.json",
+          "handoff/m02_foundation_prerequisites_20261029/G4_DELEGATED_INDEPENDENT_REVIEW.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
+        "semantic_status": "BLOCKED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "M02-C28-D151",
+      "module": "M02",
+      "claim": "D151 new controlled profile only; not live or production admission",
+      "requirement_refs": [
+        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D151",
+        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
+      ],
+      "source_identity": {
+        "commit": "ab630971741f5f60f547475f016bb09eec91a222",
+        "contract_id": "UNRESOLVED_BIND_AT_L30",
+        "profile_id": "PROPOSED_NOT_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "Existing held/profile distinction retained; accepted old claims separately reused unchanged.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/EVIDENCE_REUSE.json",
+          "handoff/m02_foundation_prerequisites_20261029/G4_DELEGATED_INDEPENDENT_REVIEW.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "SUP-D071-HISTORY",
+      "module": "M02",
+      "claim": "SUP-D071-HISTORY new controlled profile only; not live or production admission",
+      "requirement_refs": [
+        "PROOF_ALLOCATION_PROPOSED.json#SUP-D071-HISTORY",
+        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
+      ],
+      "source_identity": {
+        "commit": "ab630971741f5f60f547475f016bb09eec91a222",
+        "contract_id": "UNRESOLVED_BIND_AT_L01a",
+        "profile_id": "PROPOSED_NOT_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "Existing held/profile distinction retained; accepted old claims separately reused unchanged.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/EVIDENCE_REUSE.json",
+          "handoff/m02_foundation_prerequisites_20261029/G4_DELEGATED_INDEPENDENT_REVIEW.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "SUP-D075-HISTORY",
+      "module": "M02",
+      "claim": "SUP-D075-HISTORY new controlled profile only; not live or production admission",
+      "requirement_refs": [
+        "PROOF_ALLOCATION_PROPOSED.json#SUP-D075-HISTORY",
+        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
+      ],
+      "source_identity": {
+        "commit": "ab630971741f5f60f547475f016bb09eec91a222",
+        "contract_id": "UNRESOLVED_BIND_AT_L01a",
+        "profile_id": "PROPOSED_NOT_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "Existing held/profile distinction retained; accepted old claims separately reused unchanged.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/EVIDENCE_REUSE.json",
+          "handoff/m02_foundation_prerequisites_20261029/G4_DELEGATED_INDEPENDENT_REVIEW.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "SUP-D076-HISTORY",
+      "module": "M02",
+      "claim": "SUP-D076-HISTORY new controlled profile only; not live or production admission",
+      "requirement_refs": [
+        "PROOF_ALLOCATION_PROPOSED.json#SUP-D076-HISTORY",
+        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
+      ],
+      "source_identity": {
+        "commit": "ab630971741f5f60f547475f016bb09eec91a222",
+        "contract_id": "UNRESOLVED_BIND_AT_L01a",
+        "profile_id": "PROPOSED_NOT_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "Existing held/profile distinction retained; accepted old claims separately reused unchanged.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/EVIDENCE_REUSE.json",
+          "handoff/m02_foundation_prerequisites_20261029/G4_DELEGATED_INDEPENDENT_REVIEW.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "SUP-D077-HISTORY",
+      "module": "M02",
+      "claim": "SUP-D077-HISTORY new controlled profile only; not live or production admission",
+      "requirement_refs": [
+        "PROOF_ALLOCATION_PROPOSED.json#SUP-D077-HISTORY",
+        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
+      ],
+      "source_identity": {
+        "commit": "ab630971741f5f60f547475f016bb09eec91a222",
+        "contract_id": "UNRESOLVED_BIND_AT_L01a",
+        "profile_id": "PROPOSED_NOT_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "Existing held/profile distinction retained; accepted old claims separately reused unchanged.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/EVIDENCE_REUSE.json",
+          "handoff/m02_foundation_prerequisites_20261029/G4_DELEGATED_INDEPENDENT_REVIEW.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "SUP-D001-OPTION",
+      "module": "M02",
+      "claim": "SUP-D001-OPTION new controlled profile only; not live or production admission",
+      "requirement_refs": [
+        "PROOF_ALLOCATION_PROPOSED.json#SUP-D001-OPTION",
+        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
+      ],
+      "source_identity": {
+        "commit": "ab630971741f5f60f547475f016bb09eec91a222",
+        "contract_id": "UNRESOLVED_BIND_AT_L07b",
+        "profile_id": "PROPOSED_NOT_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "Existing held/profile distinction retained; accepted old claims separately reused unchanged.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/EVIDENCE_REUSE.json",
+          "handoff/m02_foundation_prerequisites_20261029/G4_DELEGATED_INDEPENDENT_REVIEW.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "SUP-D004-USOPTION",
+      "module": "M02",
+      "claim": "SUP-D004-USOPTION new controlled profile only; not live or production admission",
+      "requirement_refs": [
+        "PROOF_ALLOCATION_PROPOSED.json#SUP-D004-USOPTION",
+        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
+      ],
+      "source_identity": {
+        "commit": "ab630971741f5f60f547475f016bb09eec91a222",
+        "contract_id": "UNRESOLVED_BIND_AT_L07a",
+        "profile_id": "PROPOSED_NOT_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "Existing held/profile distinction retained; accepted old claims separately reused unchanged.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/EVIDENCE_REUSE.json",
+          "handoff/m02_foundation_prerequisites_20261029/G4_DELEGATED_INDEPENDENT_REVIEW.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    },
+    {
+      "proof_id": "SUP-D015-OPTION",
+      "module": "M02",
+      "claim": "SUP-D015-OPTION new controlled profile only; not live or production admission",
+      "requirement_refs": [
+        "PROOF_ALLOCATION_PROPOSED.json#SUP-D015-OPTION",
+        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
+      ],
+      "source_identity": {
+        "commit": "ab630971741f5f60f547475f016bb09eec91a222",
+        "contract_id": "UNRESOLVED_BIND_AT_L19",
+        "profile_id": "PROPOSED_NOT_ADMITTED"
+      },
+      "prior_evidence": {
+        "decision": "UNRESOLVED",
+        "rationale": "Existing held/profile distinction retained; accepted old claims separately reused unchanged.",
+        "evidence_refs": [
+          "handoff/m02_remaining_readiness/EVIDENCE_REUSE.json",
+          "handoff/m02_foundation_prerequisites_20261029/G4_DELEGATED_INDEPENDENT_REVIEW.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
+        "authorised_case_count": 0,
+        "hard_ceiling": 0,
+        "cases": []
+      },
+      "execution": {
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
+        "semantic_status": "NOT_ATTEMPTED",
+        "runs": []
+      }
+    }
+  ]
+}
