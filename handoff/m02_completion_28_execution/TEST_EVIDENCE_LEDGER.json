@@ -4,14 +4,13 @@
   "ledger_status": "COMMISSIONED_CONTRACT_RELEASE_PENDING",
   "repository": {
     "baseline_commit": "8ff7d82377e9bf8f9fc75c1ecef70f0ab29a2ada",
-    "candidate_commit": "ae2baa9c",
-    "plan_revision": "R1_RECOVERED",
-    "candidate_binding": "Documentary L00 ingress candidate; each product proof will bind its own immutable future candidate, not this mutable file self-hash"
+    "candidate_commit": "4559694b0c5bd53e98cd88936b80091adbc3b275",
+    "plan_revision": "R2_CHAT_MANUAL_LOCAL_OWNER_APPROVED"
   },
   "execution_mode": {
-    "mode": "WORK_DELEGATED",
-    "capability_evidence": "Current commissioned independent subagent /root/independent_executor; sole strict executor; no test runs at L00",
-    "test_phase": "INDEPENDENT_PER_IMPLEMENTATION_LEAF_AFTER_CONTRACT_RELEASE"
+    "mode": "CHAT_MANUAL",
+    "capability_evidence": "Owner selected independent manually transferred Worker/Tester chats; Worker checkout locally bootstrapped, separate Tester not yet operationally designated; zero product tests.",
+    "test_phase": "FINAL_INDEPENDENT_MODULE_PROOFS_AT_L32"
   },
   "proof_obligations": [
     {
@@ -42,8 +41,8 @@
         "cases": []
       },
       "execution": {
-        "scheduled_leaf": "L23",
-        "reviewer": "/root/independent_executor",
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
         "semantic_status": "NOT_ATTEMPTED",
         "runs": []
       }
@@ -76,8 +75,8 @@
         "cases": []
       },
       "execution": {
-        "scheduled_leaf": "L03",
-        "reviewer": "/root/independent_executor",
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
         "semantic_status": "NOT_ATTEMPTED",
         "runs": []
       }
@@ -110,8 +109,8 @@
         "cases": []
       },
       "execution": {
-        "scheduled_leaf": "L02",
-        "reviewer": "/root/independent_executor",
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
         "semantic_status": "NOT_ATTEMPTED",
         "runs": []
       }
@@ -144,8 +143,8 @@
         "cases": []
       },
       "execution": {
-        "scheduled_leaf": "L02",
-        "reviewer": "/root/independent_executor",
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
         "semantic_status": "NOT_ATTEMPTED",
         "runs": []
       }
@@ -178,8 +177,8 @@
         "cases": []
       },
       "execution": {
-        "scheduled_leaf": "L02",
-        "reviewer": "/root/independent_executor",
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
         "semantic_status": "NOT_ATTEMPTED",
         "runs": []
       }
@@ -212,8 +211,8 @@
         "cases": []
       },
       "execution": {
-        "scheduled_leaf": "L08",
-        "reviewer": "/root/independent_executor",
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
         "semantic_status": "NOT_ATTEMPTED",
         "runs": []
       }
@@ -246,8 +245,8 @@
         "cases": []
       },
       "execution": {
-        "scheduled_leaf": "L09",
-        "reviewer": "/root/independent_executor",
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
         "semantic_status": "NOT_ATTEMPTED",
         "runs": []
       }
@@ -280,8 +279,8 @@
         "cases": []
       },
       "execution": {
-        "scheduled_leaf": "L04",
-        "reviewer": "/root/independent_executor",
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
         "semantic_status": "NOT_ATTEMPTED",
         "runs": []
       }
@@ -314,8 +313,8 @@
         "cases": []
       },
       "execution": {
-        "scheduled_leaf": "L11",
-        "reviewer": "/root/independent_executor",
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
         "semantic_status": "NOT_ATTEMPTED",
         "runs": []
       }
@@ -348,8 +347,8 @@
         "cases": []
       },
       "execution": {
-        "scheduled_leaf": "L12",
-        "reviewer": "/root/independent_executor",
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
         "semantic_status": "NOT_ATTEMPTED",
         "runs": []
       }
@@ -382,8 +381,8 @@
         "cases": []
       },
       "execution": {
-        "scheduled_leaf": "L13",
-        "reviewer": "/root/independent_executor",
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
         "semantic_status": "NOT_ATTEMPTED",
         "runs": []
       }
@@ -416,8 +415,8 @@
         "cases": []
       },
       "execution": {
-        "scheduled_leaf": "L14",
-        "reviewer": "/root/independent_executor",
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
         "semantic_status": "NOT_ATTEMPTED",
         "runs": []
       }
@@ -450,8 +449,8 @@
         "cases": []
       },
       "execution": {
-        "scheduled_leaf": "L25",
-        "reviewer": "/root/independent_executor",
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
         "semantic_status": "NOT_ATTEMPTED",
         "runs": []
       }
@@ -484,8 +483,8 @@
         "cases": []
       },
       "execution": {
-        "scheduled_leaf": "L15",
-        "reviewer": "/root/independent_executor",
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
         "semantic_status": "NOT_ATTEMPTED",
         "runs": []
       }
@@ -518,8 +517,8 @@
         "cases": []
       },
       "execution": {
-        "scheduled_leaf": "L16",
-        "reviewer": "/root/independent_executor",
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
         "semantic_status": "NOT_ATTEMPTED",
         "runs": []
       }
@@ -552,8 +551,8 @@
         "cases": []
       },
       "execution": {
-        "scheduled_leaf": "L17",
-        "reviewer": "/root/independent_executor",
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
         "semantic_status": "NOT_ATTEMPTED",
         "runs": []
       }
@@ -586,8 +585,8 @@
         "cases": []
       },
       "execution": {
-        "scheduled_leaf": "L18",
-        "reviewer": "/root/independent_executor",
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
         "semantic_status": "NOT_ATTEMPTED",
         "runs": []
       }
@@ -620,8 +619,8 @@
         "cases": []
       },
       "execution": {
-        "scheduled_leaf": "L26",
-        "reviewer": "/root/independent_executor",
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
         "semantic_status": "NOT_ATTEMPTED",
         "runs": []
       }
@@ -654,8 +653,8 @@
         "cases": []
       },
       "execution": {
-        "scheduled_leaf": "L27",
-        "reviewer": "/root/independent_executor",
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
         "semantic_status": "NOT_ATTEMPTED",
         "runs": []
       }
@@ -688,8 +687,8 @@
         "cases": []
       },
       "execution": {
-        "scheduled_leaf": "L28",
-        "reviewer": "/root/independent_executor",
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
         "semantic_status": "NOT_ATTEMPTED",
         "runs": []
       }
@@ -722,8 +721,8 @@
         "cases": []
       },
       "execution": {
-        "scheduled_leaf": "L20",
-        "reviewer": "/root/independent_executor",
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
         "semantic_status": "NOT_ATTEMPTED",
         "runs": []
       }
@@ -756,8 +755,8 @@
         "cases": []
       },
       "execution": {
-        "scheduled_leaf": "L21",
-        "reviewer": "/root/independent_executor",
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
         "semantic_status": "NOT_ATTEMPTED",
         "runs": []
       }
@@ -790,8 +789,8 @@
         "cases": []
       },
       "execution": {
-        "scheduled_leaf": "L22",
-        "reviewer": "/root/independent_executor",
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
         "semantic_status": "NOT_ATTEMPTED",
         "runs": []
       }
@@ -824,8 +823,8 @@
         "cases": []
       },
       "execution": {
-        "scheduled_leaf": "L29",
-        "reviewer": "/root/independent_executor",
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
         "semantic_status": "NOT_ATTEMPTED",
         "runs": []
       }
@@ -858,8 +857,8 @@
         "cases": []
       },
       "execution": {
-        "scheduled_leaf": "L05",
-        "reviewer": "/root/independent_executor",
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
         "semantic_status": "NOT_ATTEMPTED",
         "runs": []
       }
@@ -892,8 +891,8 @@
         "cases": []
       },
       "execution": {
-        "scheduled_leaf": "L06",
-        "reviewer": "/root/independent_executor",
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
         "semantic_status": "NOT_ATTEMPTED",
         "runs": []
       }
@@ -927,7 +926,7 @@
       },
       "execution": {
         "scheduled_leaf": "L31",
-        "reviewer": "/root/independent_executor",
+        "reviewer": "NOT_APPLICABLE_D145_PAUSED",
         "semantic_status": "BLOCKED",
         "runs": []
       }
@@ -960,8 +959,8 @@
         "cases": []
       },
       "execution": {
-        "scheduled_leaf": "L30",
-        "reviewer": "/root/independent_executor",
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
         "semantic_status": "NOT_ATTEMPTED",
         "runs": []
       }
@@ -994,8 +993,8 @@
         "cases": []
       },
       "execution": {
-        "scheduled_leaf": "L01a",
-        "reviewer": "/root/independent_executor",
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
         "semantic_status": "NOT_ATTEMPTED",
         "runs": []
       }
@@ -1028,8 +1027,8 @@
         "cases": []
       },
       "execution": {
-        "scheduled_leaf": "L01a",
-        "reviewer": "/root/independent_executor",
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
         "semantic_status": "NOT_ATTEMPTED",
         "runs": []
       }
@@ -1062,8 +1061,8 @@
         "cases": []
       },
       "execution": {
-        "scheduled_leaf": "L01a",
-        "reviewer": "/root/independent_executor",
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
         "semantic_status": "NOT_ATTEMPTED",
         "runs": []
       }
@@ -1096,8 +1095,8 @@
         "cases": []
       },
       "execution": {
-        "scheduled_leaf": "L01a",
-        "reviewer": "/root/independent_executor",
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
         "semantic_status": "NOT_ATTEMPTED",
         "runs": []
       }
@@ -1130,8 +1129,8 @@
         "cases": []
       },
       "execution": {
-        "scheduled_leaf": "L07b",
-        "reviewer": "/root/independent_executor",
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
         "semantic_status": "NOT_ATTEMPTED",
         "runs": []
       }
@@ -1164,8 +1163,8 @@
         "cases": []
       },
       "execution": {
-        "scheduled_leaf": "L07a",
-        "reviewer": "/root/independent_executor",
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
         "semantic_status": "NOT_ATTEMPTED",
         "runs": []
       }
@@ -1198,8 +1197,8 @@
         "cases": []
       },
       "execution": {
-        "scheduled_leaf": "L19",
-        "reviewer": "/root/independent_executor",
+        "scheduled_leaf": "L32",
+        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
         "semantic_status": "NOT_ATTEMPTED",
         "runs": []
       }

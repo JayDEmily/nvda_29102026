@@ -12,7 +12,7 @@ Direct current user instructions outrank repository instructions.
 
 Follow the gates, leaves, dependencies and acceptance criteria in `EXEC_PLAN.md`.
 
-Upon completion of each leaf, commit the work to GitHub.
+Upon completion of each leaf, commit locally and export a verified Git bundle.
 
 Rerun or expand tests only when new changes, failures, or unresolved concerns justify doing so.
 
