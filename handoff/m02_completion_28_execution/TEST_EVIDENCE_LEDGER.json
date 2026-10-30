@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "plan_id": "M02-FOUNDATION-COMPLETION-28",
-  "ledger_status": "COMMISSIONED_CONTRACT_RELEASE_PENDING",
+  "ledger_status": "ACTIVE",
   "repository": {
     "baseline_commit": "8ff7d82377e9bf8f9fc75c1ecef70f0ab29a2ada",
     "candidate_commit": "4559694b0c5bd53e98cd88936b80091adbc3b275",

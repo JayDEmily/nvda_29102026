@@ -72,6 +72,11 @@ show_error_codes = true
 warn_unused_configs = true
 follow_untyped_imports = true
 
+# SQLite is linked by the selected CPython runtime, not installed by pip.
+# An explicit non-product preflight verifies this exact upstream C-engine pin.
+[tool.nvda.runtime]
+sqlite3_version = "3.54.1"
+
 [tool.uv]
 no-index = true
 find-links = ["vendor/wheels"]
