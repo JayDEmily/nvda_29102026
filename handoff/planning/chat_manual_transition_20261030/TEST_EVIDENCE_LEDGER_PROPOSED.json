@@ -925,8 +925,8 @@
         "cases": []
       },
       "execution": {
-        "scheduled_leaf": "L32",
-        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
+        "scheduled_leaf": "L31",
+        "reviewer": "NOT_APPLICABLE_D145_PAUSED",
         "semantic_status": "BLOCKED",
         "runs": []
       }
