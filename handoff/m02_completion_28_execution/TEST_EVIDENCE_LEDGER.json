@@ -4,12 +4,12 @@
   "ledger_status": "ACTIVE",
   "repository": {
     "baseline_commit": "8ff7d82377e9bf8f9fc75c1ecef70f0ab29a2ada",
-    "candidate_commit": "4559694b0c5bd53e98cd88936b80091adbc3b275",
+    "candidate_commit": "22a2f13189fa3f1a55b2fef265f93a6696c0155f",
     "plan_revision": "R2_CHAT_MANUAL_LOCAL_OWNER_APPROVED"
   },
   "execution_mode": {
     "mode": "CHAT_MANUAL",
-    "capability_evidence": "Owner selected independent manually transferred Worker/Tester chats; Worker checkout locally bootstrapped, separate Tester not yet operationally designated; zero product tests.",
+    "capability_evidence": "Owner selected independent manually transferred Worker/Tester chats; Worker checkout locally bootstrapped, separate Tester not yet operationally designated; zero product tests. Candidate provenance: the former repository.candidate_commit 4559694b0c5bd53e98cd88936b80091adbc3b275 is the HISTORICAL R2 SOURCE-TREE SNAPSHOT, not the currently reviewed G0 state. Current repository.candidate_commit 22a2f13189fa3f1a55b2fef265f93a6696c0155f denotes the verified local PRE-REPAIR parent. The external NVDA_R2_G0_SQLITE_FINAL_CANDIDATE_RECEIPT.json identifies the earlier reviewed f9a6de2400b22f361678ffd545d7e38666b8bae5, whose Git object was unavailable in this restoration. The NEW current review candidate SHA/tree/bundle are bound only in external R2_G0_L00_METADATA_REPAIR_FINAL_RECEIPT.json issued AFTER committing. See L00/R2_CANDIDATE_PROVENANCE_BINDING.md. No implied f9a6 ancestor relationship or product-test acceptance.",
     "test_phase": "FINAL_INDEPENDENT_MODULE_PROOFS_AT_L32"
   },
   "proof_obligations": [

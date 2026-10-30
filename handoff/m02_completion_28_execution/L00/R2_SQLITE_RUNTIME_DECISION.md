@@ -1,12 +1,21 @@
 # R2 SQLite runtime decision — 30 October 2026
 
-**Disposition: TARGET_PINNED / RUNTIME_NOT_YET_AVAILABLE / PRODUCT_COMPATIBILITY_NOT_ACCEPTED.**
+**Current disposition: EXACT_SQLITE_3541_RUNTIME_AVAILABLE / PIN_CHECK_PASS / NINE_NON_PRODUCT_STORAGE_FEATURES_PASS / INDEPENDENT_G0_REVIEW_PENDING.**
 
-## Current user authority and project scope
+**Update following owner-supplied SQLite archive (30 October 2026).** The initial unavailable-runtime findings below remain retained as the earlier observation, *now superseded by the verified installation*. The official autoconf archive SHA3-256 `b6ced585c750916b1052667239a12c25a7ff34e7f06e1e6e01ecb0427657d9c4` matches the uploaded file; the bundled `sqlite3.c` SHA3-256 `e2b869d3003b33c942b7dd7063604fbc53553e1b66609570df39b9b7b558ee81` matches SQLite's 3.54.1 release. The archive was extracted with safe member validation and built as a Linux shared object with recorded flags. Exact binary SHA-256 is in `R2_SQLITE_3541_RUNTIME_VERIFIED.json`.
+
+CPython **3.13.5**, launched via `tools/with_pinned_sqlite.sh` with `NVDA_SQLITE_LIBDIR=/mnt/data/nvda_local_work/sqlite3541_build/prefix/lib`, resolves `_sqlite3` to the built `libsqlite3.so.0` and reports **SQLite 3.54.1**, official `sqlite_source_id()` `2026-10-16 14:45:20 555e07ef33f69a0957d24d8e555b702464a131d6f1607f4c3c1e4551e8e6ca76`. The exact project `tools/check_sqlite_runtime.py` preflight returned exit **0**; the nine existing non-product source-storage mechanics checks independently passed on the actual pinned engine, with only temporary files and no NVDA application imports or product suite. PostgreSQL is outside this G0 qualification.
+
+**Scope:** This closes the missing-runtime and specifically identified SQLite-feature blockers for G0 preparation. It does not claim exhaustive SQLite 3.53.1/3.54.1 equivalence, or independent test acceptance of later M02 product implementations. All previous failing preflight and 3.46.1 logs remain identified historical evidence. The reviewer now needs only to judge these documentary and non-product runtime records. See the standalone document-only review packet and the committed runtime manifest.
+
+
+## Historical pre-upload observations (retained verbatim below; superseded where inconsistent with current disposition)
+
+### Current user authority and project scope
 
 The owner commissions G0/L00 documentary reconciliation and the SQLite compatibility decision *before* G1–G4 product implementation; PostgreSQL is not a commissioned backend. Frozen root `GUARDRAILS.md`, local owner-approved root `AGENTS.md`, and current `EXEC_PLAN.md` are unchanged by this activity. The M00 completed-brief ExecPlan (`handoff/planning/m00_downstream_reconciliation_20261028/COMPLETED_M00_BRIEF2_EXEC_PLAN.md`, §3) explicitly makes SQLite mandatory and PostgreSQL runtime deferred.
 
-## Target choice and binding method
+### Target choice and binding method
 
 - The most recent SQLite release on the official SQLite chronology as checked on 30 October 2026 is **3.54.1, released 16 October 2026**, ahead of the recorded 3.53.1 and current local 3.46.1. Primary-source chronology: https://sqlite.org/chronology.html ; release notes: https://sqlite.org/changes.html .
 - `pyproject.toml [tool.nvda.runtime].sqlite3_version = "3.54.1"` records the **exact owner-requested target pin**. SQLite is a C library linked into Python's standard-library `_sqlite3` extension; a plain `dependencies = ["sqlite3==3.54.1"]` entry would not install or constrain that C library. The exact runtime preflight is `python tools/check_sqlite_runtime.py` and intentionally exits `2` on a mismatch. This is an enforceable check when invoked, not a replacement for a qualified deployment/bootstrap step.
@@ -15,6 +24,6 @@ The owner commissions G0/L00 documentary reconciliation and the SQLite compatibi
 - A bounded **non-product** isolated-file probe of the currently loaded 3.46.1 engine passed nine assertions; see `R2_SQLITE_3461_FEATURE_PROBE.json`. The initial probe incorrectly expected writer-only `synchronous=EXTRA` to persist as a read-connection setting; the corrected probe checks it on the write connection. No NVDA source, product tests, proof engines, real database files or old evidence were modified or executed.
 - SQLite's documented WAL-reset bug affects historical versions including 3.46.1 only for WAL mode under specific concurrent writers/checkpointers, and is fixed in 3.51.3+: https://sqlite.org/wal.html . Seven inspected NVDA storage modules explicitly require rollback journal `DELETE`; this does not justify treating the entire application's runtime as safe from all SQLite changes. A patched exact pin is preferred. The target 3.54.1's compatibility has not been established by running it in this sandbox.
 
-## Next executable qualification boundary
+### Previous qualification request (fulfilled by the current installation above; independent review remains pending)
 
 Obtain or make accessible the official SQLite 3.54.1 C library/source for Linux x86-64 and bind it to the selected CPython 3.13.5 process through a **documented, independently verified** mechanism; record archive/source SHA3-256, compiler/build flags and C-library file SHA-256 where built, exact process `sqlite_source_id()` and Python `_sqlite3` dynamic-link resolution. Re-run the non-product runtime pin and appropriately scoped SQLite feature validation on the **actual pinned engine**, and obtain separate independent documentary review. Do not presume an upstream release alone is a compatible installed runtime; do not run or rewrite old successful product proofs simply because of a runtime change. Until this check passes, dependent execution stays BLOCKED_RUNTIME. Historical PostgreSQL optional extras are not a current requirement.
