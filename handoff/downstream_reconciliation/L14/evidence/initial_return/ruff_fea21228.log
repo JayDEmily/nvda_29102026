@@ -1,0 +1,1535 @@
+E501 Line too long (109 > 100)
+  --> src/nvda_desk/market_measurement_truth/_native_book_delete_rate.py:26:101
+   |
+24 | DEFINITION = f.CalculationDefinitionV1(
+25 |     "D140", "D140-NATIVE-RECEIPT-DELETE-1", "K08_RULE_BUCKET_POLICY",
+26 |     "count and actual pre-delete standing size of native bid positions1-2 in two-second R001 receipt bucket",
+   |                                                                                                     ^^^^^^^^^
+27 |     ROLES, (), "P_RULE", "events or size/time", "book_rate_pair",
+28 |     tuple(f.AuthorityArtifactRefV1(*value) for value in _AUTHORITY))
+   |
+
+E501 Line too long (107 > 100)
+   --> src/nvda_desk/market_measurement_truth/_native_book_delete_rate.py:130:101
+    |
+128 |         self.state = state
+129 |
+130 |     def get_derived_occurrence(self, derived_occurrence_id: str) -> f.NativeMeasurementOccurrenceV1 | None:
+    |                                                                                                     ^^^^^^^
+131 |         if type(derived_occurrence_id) is not str or not derived_occurrence_id:
+132 |             raise ValueError("nonempty D140 identity required")
+    |
+
+E501 Line too long (108 > 100)
+   --> src/nvda_desk/market_measurement_truth/_native_book_delete_rate.py:133:101
+    |
+131 |         if type(derived_occurrence_id) is not str or not derived_occurrence_id:
+132 |             raise ValueError("nonempty D140 identity required")
+133 |         return next((v for v in self.state.all() if v.derived_occurrence_id == derived_occurrence_id), None)
+    |                                                                                                     ^^^^^^^^
+134 |
+135 |     def list_derived_history(self, *, derived_signal_id: str, subject_instrument: str,
+    |
+
+E501 Line too long (107 > 100)
+   --> src/nvda_desk/market_measurement_truth/_native_book_delete_rate.py:157:101
+    |
+155 |         self.reads = _Reads(state)
+156 |
+157 |     def materialise(self, request: f.NativeCalculationRequestV1) -> f.NativeMeasurementOccurrenceV1 | None:
+    |                                                                                                     ^^^^^^^
+158 |         _request_check(request)
+159 |         now = self.utc_now()
+    |
+
+E501 Line too long (103 > 100)
+   --> src/nvda_desk/market_measurement_truth/_native_book_delete_rate.py:176:101
+    |
+175 | def _state(storage: f.MemoryStorageV1 | f.SQLiteStorageV1 | f.SQLiteReadStorageV1) -> RecordState:
+176 |     return RecordState(storage, lambda payload: codec.decode(payload, f.NativeMeasurementOccurrenceV1),
+    |                                                                                                     ^^^
+177 |                        _validate, encode=codec.canonical)
+    |
+
+E501 Line too long (105 > 100)
+   --> src/nvda_desk/market_measurement_truth/_native_book_delete_rate.py:195:101
+    |
+193 |                  storage: f.SQLiteReadStorageV1) -> f.NativeMeasurementReadsV1:
+194 |     if (type(admission) is not f.OwnerAdmissionV1 or admission.object_id != "M02"
+195 |         or admission.implementation_brief_sha256 != BRIEF or type(storage) is not f.SQLiteReadStorageV1):
+    |                                                                                                     ^^^^^
+196 |         raise ValueError("native D140 read-only admission mismatch")
+197 |     return _Reads(_state(storage))
+    |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> src/nvda_desk/market_measurement_truth/_native_book_depth.py:3:1
+   |
+ 1 |   """D131 coherent CALL depth band over the actual native D087 public predecessor."""
+ 2 |
+ 3 | / from __future__ import annotations
+ 4 | |
+ 5 | | import hashlib
+ 6 | | from collections.abc import Callable
+ 7 | | from dataclasses import fields, replace
+ 8 | | from datetime import datetime
+ 9 | | from decimal import Decimal
+10 | | from typing import cast
+11 | |
+12 | | from . import api as f
+13 | | from . import _native_codec as codec
+14 | | from . import _native_option as option
+15 | | from . import _native_source as source_module
+16 | | from ._catalogue import _AUTHORITY
+17 | | from ._record_store import RecordState
+   | |______________________________________^
+18 |
+19 |   BRIEF = "0ac16b9eb4859665807a86739293a196e63916062c3db7c522ab6303eabcfbe8"
+   |
+help: Organize imports
+
+E501 Line too long (101 > 100)
+  --> src/nvda_desk/market_measurement_truth/_native_book_insert_rate.py:27:101
+   |
+25 | DEFINITION = f.CalculationDefinitionV1(
+26 |     "D139", "D139-NATIVE-RECEIPT-INSERT-1", "K08_RULE_BUCKET_POLICY",
+27 |     "count and inserted standing size of native bid positions1-2 in four-second R001 receipt bucket",
+   |                                                                                                     ^
+28 |     ROLES, (), "P_RULE", "events or size/time", "book_rate_pair",
+29 |     tuple(f.AuthorityArtifactRefV1(*value) for value in _AUTHORITY))
+   |
+
+E501 Line too long (101 > 100)
+  --> src/nvda_desk/market_measurement_truth/_native_book_insert_rate.py:70:101
+   |
+68 |                 raise ValueError("receipt role or native clock provenance mismatch")
+69 |     return tuple(sorted(groups.values(), key=lambda group: (
+70 |         cast(datetime, group["R001"].canonical_value), group["R001"].projection.ingestion_sequence)))
+   |                                                                                                     ^
+   |
+
+E501 Line too long (103 > 100)
+  --> src/nvda_desk/market_measurement_truth/_native_book_insert_rate.py:78:101
+   |
+76 |     by_id = {group["R001"].observation_occurrence_id: group for group in groups}
+77 |     warmup = source.profile.warmup_observation_ids
+78 |     if not warmup or any(oid not in by_id or cast(datetime, by_id[oid]["R001"].canonical_value) > start
+   |                                                                                                     ^^^
+79 |                          for oid in warmup):
+80 |         raise ValueError("complete bound warm-up must precede the receipt window")
+   |
+
+E501 Line too long (107 > 100)
+   --> src/nvda_desk/market_measurement_truth/_native_book_insert_rate.py:144:101
+    |
+142 |         self.state = state
+143 |
+144 |     def get_derived_occurrence(self, derived_occurrence_id: str) -> f.NativeMeasurementOccurrenceV1 | None:
+    |                                                                                                     ^^^^^^^
+145 |         if type(derived_occurrence_id) is not str or not derived_occurrence_id:
+146 |             raise ValueError("nonempty D139 identity required")
+    |
+
+E501 Line too long (108 > 100)
+   --> src/nvda_desk/market_measurement_truth/_native_book_insert_rate.py:147:101
+    |
+145 |         if type(derived_occurrence_id) is not str or not derived_occurrence_id:
+146 |             raise ValueError("nonempty D139 identity required")
+147 |         return next((v for v in self.state.all() if v.derived_occurrence_id == derived_occurrence_id), None)
+    |                                                                                                     ^^^^^^^^
+148 |
+149 |     def list_derived_history(self, *, derived_signal_id: str, subject_instrument: str,
+    |
+
+E501 Line too long (107 > 100)
+   --> src/nvda_desk/market_measurement_truth/_native_book_insert_rate.py:171:101
+    |
+169 |         self.reads = _Reads(state)
+170 |
+171 |     def materialise(self, request: f.NativeCalculationRequestV1) -> f.NativeMeasurementOccurrenceV1 | None:
+    |                                                                                                     ^^^^^^^
+172 |         _request_check(request)
+173 |         now = self.utc_now()
+    |
+
+E501 Line too long (103 > 100)
+   --> src/nvda_desk/market_measurement_truth/_native_book_insert_rate.py:190:101
+    |
+189 | def _state(storage: f.MemoryStorageV1 | f.SQLiteStorageV1 | f.SQLiteReadStorageV1) -> RecordState:
+190 |     return RecordState(storage, lambda payload: codec.decode(payload, f.NativeMeasurementOccurrenceV1),
+    |                                                                                                     ^^^
+191 |                        _validate, encode=codec.canonical)
+    |
+
+E501 Line too long (105 > 100)
+   --> src/nvda_desk/market_measurement_truth/_native_book_insert_rate.py:209:101
+    |
+207 |                  storage: f.SQLiteReadStorageV1) -> f.NativeMeasurementReadsV1:
+208 |     if (type(admission) is not f.OwnerAdmissionV1 or admission.object_id != "M02"
+209 |         or admission.implementation_brief_sha256 != BRIEF or type(storage) is not f.SQLiteReadStorageV1):
+    |                                                                                                     ^^^^^
+210 |         raise ValueError("native D139 read-only admission mismatch")
+211 |     return _Reads(_state(storage))
+    |
+
+E501 Line too long (107 > 100)
+  --> src/nvda_desk/market_measurement_truth/_native_book_slope.py:87:101
+   |
+85 |         or parent.calculation_definition_version != "D011-MIDPOINT-1"
+86 |         or parent.definition_content_sha256 != digest(_PARENT_DEFINITION)
+87 |         or parent.parameter_context_refs != (request.parameter_set_ref, request.input_selection_policy_ref)
+   |                                                                                                     ^^^^^^^
+88 |         or parent.subject_instrument != "NVDA" or parent.universe is not None
+89 |         or parent.effective_as_of_utc != T or parent.knowledge_cutoff_utc != CUTOFF
+   |
+
+E501 Line too long (103 > 100)
+   --> src/nvda_desk/market_measurement_truth/_native_book_slope.py:105:101
+    |
+103 |             or line.unit_convention_ref != binding.unit_convention_ref
+104 |             or eligible(line.projection, mapping, _POLICY, request) != line.event_time_utc
+105 |             or codec.canonical(line.canonical_value) != codec.canonical(line.projection.native_value)):
+    |                                                                                                     ^^^
+106 |             raise ValueError("D011 exact public lineage mismatch")
+107 |     first, second = parent.raw_input_lineage
+    |
+
+E501 Line too long (108 > 100)
+   --> src/nvda_desk/market_measurement_truth/_native_book_slope.py:109:101
+    |
+107 |     first, second = parent.raw_input_lineage
+108 |     if (abs(first.event_time_utc-second.event_time_utc) > _POLICY.maximum_skew
+109 |         or (Fraction(first.canonical_value)+Fraction(second.canonical_value))/2 != Fraction(parent.result)):
+    |                                                                                                     ^^^^^^^^
+110 |         raise ValueError("D011 midpoint or source skew mismatch")
+111 |     payload = dict(owner_object_id="M02", owner_namespace=parent.owner_namespace,
+    |
+
+E501 Line too long (106 > 100)
+   --> src/nvda_desk/market_measurement_truth/_native_book_slope.py:163:101
+    |
+161 |     source_module._validate(source)
+162 |     if (source.request != f.NativeSourceRequestV1(PROFILE, T, CUTOFF)
+163 |         or source.profile.ref != PROFILE or source.profile.subject_instrument != parent.subject_instrument
+    |                                                                                                     ^^^^^^
+164 |         or source.calculated_at_utc > now or len(source.standing_rows) != 6):
+165 |         raise ValueError("D138 exact native source context mismatch")
+    |
+
+E501 Line too long (107 > 100)
+   --> src/nvda_desk/market_measurement_truth/_native_book_slope.py:195:101
+    |
+193 |         self.state = state
+194 |
+195 |     def get_derived_occurrence(self, derived_occurrence_id: str) -> f.NativeMeasurementOccurrenceV1 | None:
+    |                                                                                                     ^^^^^^^
+196 |         if type(derived_occurrence_id) is not str or not derived_occurrence_id:
+197 |             raise ValueError("nonempty D138 identity required")
+    |
+
+E501 Line too long (108 > 100)
+   --> src/nvda_desk/market_measurement_truth/_native_book_slope.py:198:101
+    |
+196 |         if type(derived_occurrence_id) is not str or not derived_occurrence_id:
+197 |             raise ValueError("nonempty D138 identity required")
+198 |         return next((v for v in self.state.all() if v.derived_occurrence_id == derived_occurrence_id), None)
+    |                                                                                                     ^^^^^^^^
+199 |
+200 |     def list_derived_history(self, *, derived_signal_id: str, subject_instrument: str,
+    |
+
+E501 Line too long (107 > 100)
+   --> src/nvda_desk/market_measurement_truth/_native_book_slope.py:223:101
+    |
+221 |         self.reads = _Reads(state)
+222 |
+223 |     def materialise(self, request: f.NativeCalculationRequestV1) -> f.NativeMeasurementOccurrenceV1 | None:
+    |                                                                                                     ^^^^^^^
+224 |         _request_check(request)
+225 |         now = self.utc_now()
+    |
+
+E501 Line too long (102 > 100)
+   --> src/nvda_desk/market_measurement_truth/_native_book_slope.py:229:101
+    |
+227 |         if now < CUTOFF:
+228 |             raise ValueError("calculation precedes knowledge cutoff")
+229 |         parent = self.predecessor_reader.get_derived_occurrence(request.predecessor_occurrence_ids[0])
+    |                                                                                                     ^^
+230 |         if type(parent) is not f.DerivedSignalOccurrenceV1:
+231 |             return None
+    |
+
+E501 Line too long (103 > 100)
+   --> src/nvda_desk/market_measurement_truth/_native_book_slope.py:245:101
+    |
+244 | def _state(storage: f.MemoryStorageV1 | f.SQLiteStorageV1 | f.SQLiteReadStorageV1) -> RecordState:
+245 |     return RecordState(storage, lambda payload: codec.decode(payload, f.NativeMeasurementOccurrenceV1),
+    |                                                                                                     ^^^
+246 |                        _validate, encode=codec.canonical)
+    |
+
+E501 Line too long (105 > 100)
+   --> src/nvda_desk/market_measurement_truth/_native_book_slope.py:250:101
+    |
+249 | def build_owner(admission: f.OwnerAdmissionV1, raw_reader: f.NativeRawReaderV1,
+250 |                 predecessor_reader: f.MeasurementReadsV1, storage: f.MemoryStorageV1 | f.SQLiteStorageV1,
+    |                                                                                                     ^^^^^
+251 |                 utc_now: Callable[[], datetime]) -> f.NativeMeasurementOwnerV1:
+252 |     if (type(admission) is not f.OwnerAdmissionV1 or admission.object_id != "M02"
+    |
+
+E501 Line too long (105 > 100)
+   --> src/nvda_desk/market_measurement_truth/_native_book_slope.py:265:101
+    |
+263 |                  storage: f.SQLiteReadStorageV1) -> f.NativeMeasurementReadsV1:
+264 |     if (type(admission) is not f.OwnerAdmissionV1 or admission.object_id != "M02"
+265 |         or admission.implementation_brief_sha256 != BRIEF or type(storage) is not f.SQLiteReadStorageV1):
+    |                                                                                                     ^^^^^
+266 |         raise ValueError("native D138 read-only admission mismatch")
+267 |     return _Reads(_state(storage))
+    |
+
+E501 Line too long (106 > 100)
+  --> src/nvda_desk/market_measurement_truth/_native_codec.py:60:101
+   |
+58 |         return {"t": "datetime", "v": value.isoformat()}
+59 |     if type(value) is timedelta:
+60 |         return {"t": "duration", "v": (value.days * 86400 + value.seconds) * 1000000 + value.microseconds}
+   |                                                                                                     ^^^^^^
+61 |     if type(value) is bytes:
+62 |         return {"t": "bytes", "v": value.hex()}
+   |
+
+E501 Line too long (114 > 100)
+  --> src/nvda_desk/market_measurement_truth/_native_codec.py:71:101
+   |
+69 |             raise TypeError("native mappings require exact string keys")
+70 |         return {"t": "mapping", "v": {k: _tag(x) for k, x in value.items()}}
+71 |     if is_dataclass(value) and type(value).__name__ in _CLASSES and _CLASSES[type(value).__name__] is type(value):
+   |                                                                                                     ^^^^^^^^^^^^^^
+72 |         return {"t": "record", "n": type(value).__name__,
+73 |                 "v": {field.name: _tag(getattr(value, field.name)) for field in fields(value)}}
+   |
+
+E501 Line too long (109 > 100)
+  --> src/nvda_desk/market_measurement_truth/_native_codec.py:90:101
+   |
+88 |     if kind == "identity" and set(value) == {"t", "n", "v"} and value["n"] in _IDENTITIES:
+89 |         return _IDENTITIES[value["n"]](value["v"])
+90 |     if kind in ("bool", "int", "str", "datetime", "duration", "bytes", "float") and set(value) == {"t", "v"}:
+   |                                                                                                     ^^^^^^^^^
+91 |         raw_value = value["v"]
+92 |         if kind == "bool" and type(raw_value) is bool:
+   |
+
+SIM102 Use a single `if` statement instead of nested `if` statements
+   --> src/nvda_desk/market_measurement_truth/_native_codec.py:111:5
+    |
+109 |           if kind == "float" and type(raw_value) is str:
+110 |               return float.fromhex(raw_value)
+111 | /     if kind == "decimal" and set(value) == {"t", "s", "d", "e"}:
+112 | |         if (type(value["s"]) is int and value["s"] in (0, 1)
+113 | |             and type(value["d"]) is list and value["d"]
+114 | |             and all(type(x) is int and 0 <= x <= 9 for x in value["d"])
+115 | |             and type(value["e"]) is int):
+    | |_________________________________________^
+116 |               return Decimal((value["s"], tuple(value["d"]), value["e"]))
+117 |       if kind in ("tuple", "list") and set(value) == {"t", "v"} and type(value["v"]) is list:
+    |
+help: Combine `if` statements using `and`
+
+E501 Line too long (106 > 100)
+  --> src/nvda_desk/market_measurement_truth/_native_direct_venue.py:26:101
+   |
+24 | DEFINITION = f.CalculationDefinitionV1(
+25 |     "D143", "D143-NATIVE-SUBSCRIBED-ALL-ROWS-MPID-HHI-1", "K02_ALGEBRA",
+26 |     "group all standing rows of both native subscribed sides by qualified MPID; sum squared depth shares",
+   |                                                                                                     ^^^^^^
+27 |     ("R192", "R193", "R194", "R195", "R196", "R197"), (), "P_BASIC",
+28 |     "normalised MPID concentration", "venue_concentration",
+   |
+
+E501 Line too long (107 > 100)
+   --> src/nvda_desk/market_measurement_truth/_native_direct_venue.py:105:101
+    |
+103 |         self.state = state
+104 |
+105 |     def get_derived_occurrence(self, derived_occurrence_id: str) -> f.NativeMeasurementOccurrenceV1 | None:
+    |                                                                                                     ^^^^^^^
+106 |         if type(derived_occurrence_id) is not str or not derived_occurrence_id:
+107 |             raise ValueError("nonempty native D143 occurrence identity required")
+    |
+
+E501 Line too long (101 > 100)
+   --> src/nvda_desk/market_measurement_truth/_native_direct_venue.py:124:101
+    |
+122 |                 and value.knowledge_cutoff_utc <= knowledge_at_or_before_utc)
+123 |         return tuple(sorted(rows, key=lambda value: (value.effective_as_of_utc,
+124 |                      value.knowledge_cutoff_utc, value.derived_occurrence_id), reverse=True))[:limit]
+    |                                                                                                     ^
+    |
+
+E501 Line too long (107 > 100)
+   --> src/nvda_desk/market_measurement_truth/_native_direct_venue.py:133:101
+    |
+131 |         self.reads = _Reads(state)
+132 |
+133 |     def materialise(self, request: f.NativeCalculationRequestV1) -> f.NativeMeasurementOccurrenceV1 | None:
+    |                                                                                                     ^^^^^^^
+134 |         _request_check(request)
+135 |         now = self.utc_now()
+    |
+
+E501 Line too long (103 > 100)
+   --> src/nvda_desk/market_measurement_truth/_native_direct_venue.py:152:101
+    |
+151 | def _state(storage: f.MemoryStorageV1 | f.SQLiteStorageV1 | f.SQLiteReadStorageV1) -> RecordState:
+152 |     return RecordState(storage, lambda payload: codec.decode(payload, f.NativeMeasurementOccurrenceV1),
+    |                                                                                                     ^^^
+153 |                        _validate, encode=codec.canonical)
+    |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> src/nvda_desk/market_measurement_truth/_native_microprice.py:3:1
+   |
+ 1 |   """D137 exact microprice over the commissioned four-callback option assembly."""
+ 2 |
+ 3 | / from __future__ import annotations
+ 4 | |
+ 5 | | import hashlib
+ 6 | | from collections.abc import Callable
+ 7 | | from dataclasses import fields, replace
+ 8 | | from datetime import datetime
+ 9 | | from decimal import Decimal
+10 | | from fractions import Fraction
+11 | | from typing import cast
+12 | |
+13 | | from . import api as f
+14 | | from . import _native_codec as codec
+15 | | from . import _native_source as source_module
+16 | | from ._catalogue import _AUTHORITY
+17 | | from ._native_option import _assemble
+18 | | from ._record_store import RecordState
+   | |______________________________________^
+19 |
+20 |   BRIEF = "e245fb52e9cdb2d09e88a5d4ad4b298049840e07a1a70288311ff6c651ff82a5"
+   |
+help: Organize imports
+
+E501 Line too long (103 > 100)
+   --> src/nvda_desk/market_measurement_truth/_native_microprice.py:144:101
+    |
+142 | def _state(storage: f.MemoryStorageV1 | f.SQLiteStorageV1 | f.SQLiteReadStorageV1
+143 |            ) -> RecordState:
+144 |     return RecordState(storage, lambda payload: codec.decode(payload, f.NativeMeasurementOccurrenceV1),
+    |                                                                                                     ^^^
+145 |                        _validate, encode=codec.canonical)
+    |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> src/nvda_desk/market_measurement_truth/_native_option.py:3:1
+   |
+ 1 |   """D087: four asynchronous receipt-only option callbacks under the L01 profile."""
+ 2 |
+ 3 | / from __future__ import annotations
+ 4 | |
+ 5 | | import hashlib
+ 6 | | from collections.abc import Callable
+ 7 | | from dataclasses import fields, replace
+ 8 | | from datetime import datetime, timedelta
+ 9 | | from decimal import Decimal
+10 | | from typing import cast
+11 | |
+12 | | from . import api as f
+13 | | from . import _native_codec as codec
+14 | | from . import _native_source as source_module
+15 | | from ._catalogue import _AUTHORITY
+16 | | from ._record_store import RecordState
+   | |______________________________________^
+17 |
+18 |   BRIEF = "0bb079166417c42d3ed2c5f8e363e771c88ba44934cda01184d43be2bc960a76"
+   |
+help: Organize imports
+
+E501 Line too long (103 > 100)
+   --> src/nvda_desk/market_measurement_truth/_native_option.py:177:101
+    |
+175 | def _state(storage: f.MemoryStorageV1 | f.SQLiteStorageV1 | f.SQLiteReadStorageV1
+176 |            ) -> RecordState:
+177 |     return RecordState(storage, lambda payload: codec.decode(payload, f.NativeMeasurementOccurrenceV1),
+    |                                                                                                     ^^^
+178 |                        _validate, encode=codec.canonical)
+    |
+
+E501 Line too long (17808 > 100)
+ --> src/nvda_desk/market_measurement_truth/_native_profiles.py:9:101
+  |
+7 | …
+8 | …
+9 | …-OPT-C100-CONTROL-1|OPT|C|USD|2026-10-23|100|100","contract_spec":{"currency":{"native_type":"str","value":"USD"},"expiry":{"native_type":"str","value":"2026-10-23"},"multiplier":{"native_type":"int","value":"100"},"right":{"native_type":"str","value":"C"},"security_type":{"native_type":"str","value":"OPT"},"strike":{"native_type":"str","value":"100"}},"fixture_id":"NVDA-IBKR-M00-SYNTHETIC-INPUT-V1","generation":"OPT-L1-G1","ingestion_scope":"OPT-C100/L1/G1","mappings":{"R033":{"mapping_id":"m00b2-a2-call-r033","native_field_path":["size"],"native_units":"contracts","selection_identity_field_paths":[["generation",["_collector","generation"]],["request",["_collector","request"]],["requested_exchange",["_collector","requested_exchange"]],["scenario_id",["_collector","scenario_id"]],["subject",["_collector","subject"]]],"source_provider":"foundation-controlled-ibkr-m00-v1","source_variant":"ibkr-async-l1/native-v1","version":1},"R034":{"mapping_id":"m00b2-a2-call-r034","native_field_path":["price"],"native_units":"USD/underlying-share-premium","selection_identity_field_paths":[["generation",["_collector","generation"]],["request",["_collector","request"]],["requested_exchange",["_collector","requested_exchange"]],["scenario_id",["_collector","scenario_id"]],["subject",["_collector","subject"]]],"source_provider":"foundation-controlled-ibkr-m00-v1","source_variant":"ibkr-async-l1/native-v1","version":1},"R035":{"mapping_id":"m00b2-a2-call-r035","native_field_path":["price"],"native_units":"USD/underlying-share-premium","selection_identity_field_paths":[["generation",["_collector","generation"]],["request",["_collector","request"]],["requested_exchange",["_collector","requested_exchange"]],["scenario_id",["_collector","scenario_id"]],["subject",["_collector","subject"]]],"source_provider":"foundation-controlled-ibkr-m00-v1","source_variant":"ibkr-async-l1/native-v1","version":1},"R036":{"mapping_id":"m00b2-a2-call-r036","native_field_path":["size"],"native_units":"contracts","selection_identity_field_paths":[["generation",["_collector","generation"]],["request",["_collector","request"]],["requested_exchange",["_collector","requested_exchange"]],["scenario_id",["_collector","scenario_id"]],["subject",["_collector","subject"]]],"source_provider":"foundation-controlled-ibkr-m00-v1","source_variant":"ibkr-async-l1/native-v1","version":1}},"maximum_observations":100,"profile_ref":{"context_id":"native-a2-call","version":1},"provider":"foundation-controlled-ibkr-m00-v1","request":"OPT-C100-R1","requested_exchange":"SYNTH-L1","right":"C","scenario_id":"A2","security_type":"OPT","source_context_ref":{"context_id":"native-coherent-call-reference","version":1},"subject":"NVDA-OPT-C100-CONTROL-1","variant":"ibkr-async-l1/native-v1","warmup_observation_ids":[],"warmup_side_levels":{}},"A3":{"complete_from_utc":"2026-10-20T12:40:00Z","contract_identity":"NVDA-OPT-P100-CONTROL-1|OPT|P|USD|2026-10-23|100|100","contract_spec":{"currency":{"native_type":"str","value":"USD"},"expiry":{"native_type":"str","value":"2026-10-23"},"multiplier":{"native_type":"int","value":"100"},"right":{"native_type":"str","value":"P"},"security_type":{"native_type":"str","value":"OPT"},"strike":{"native_type":"str","value":"100"}},"fixture_id":"NVDA-IBKR-M00-SYNTHETIC-INPUT-V1","generation":"OPT-P100-L1-G1","ingestion_scope":"OPT-P100/L1/G1","mappings":{"R033":{"mapping_id":"m00b2-a3-put-r033","native_field_path":["size"],"native_units":"contracts","selection_identity_field_paths":[["generation",["_collector","generation"]],["request",["_collector","request"]],["requested_exchange",["_collector","requested_exchange"]],["scenario_id",["_collector","scenario_id"]],["subject",["_collector","subject"]]],"source_provider":"foundation-controlled-ibkr-m00-v1","source_variant":"ibkr-async-l1/native-v1","version":1},"R034":{"mapping_id":"m00b2-a3-put-r034","native_field_path":["price"],"native_units":"USD/underlying-share-premium","selection_identity_field_paths":[["generation",["_collector","generation"]],["request",["_collector","request"]],["requested_exchange",["_collector","requested_exchange"]],["scenario_id",["_collector","scenario_id"]],["subject",["_collector","subject"]]],"source_provider":"foundation-controlled-ibkr-m00-v1","source_variant":"ibkr-async-l1/native-v1","version":1},"R035":{"mapping_id":"m00b2-a3-put-r035","native_field_path":["price"],"native_units":"USD/underlying-share-premium","selection_identity_field_paths":[["generation",["_collector","generation"]],["request",["_collector","request"]],["requested_exchange",["_collector","requested_exchange"]],["scenario_id",["_collector","scenario_id"]],["subject",["_collector","subject"]]],"source_provider":"foundation-controlled-ibkr-m00-v1","source_variant":"ibkr-async-l1/native-v1","version":1},"R036":{"mapping_id":"m00b2-a3-put-r036","native_field_path":["size"],"native_units":"contracts","selection_identity_field_paths":[["generation",["_collector","generation"]],["request",["_collector","request"]],["requested_exchange",["_collector","requested_exchange"]],["scenario_id",["_collector","scenario_id"]],["subject",["_collector","subject"]]],"source_provider":"foundation-controlled-ibkr-m00-v1","source_variant":"ibkr-async-l1/native-v1","version":1}},"maximum_observations":100,"profile_ref":{"context_id":"native-a3-put","version":1},"provider":"foundation-controlled-ibkr-m00-v1","request":"OPT-P100-R1","requested_exchange":"SYNTH-L1","right":"P","scenario_id":"A3","security_type":"OPT","source_context_ref":{"context_id":"native-a3-put-context","version":1},"subject":"NVDA-OPT-P100-CONTROL-1","variant":"ibkr-async-l1/native-v1","warmup_observation_ids":[],"warmup_side_levels":{}},"A4":{"complete_from_utc":"2026-10-20T12:39:59Z","contract_identity":"NVDA-STK-CONTROL-1|STK|None|USD|None|None|1","contract_spec":{"currency":{"native_type":"str","value":"USD"},"expiry":{"native_type":"NoneType","value":null},"multiplier":{"native_type":"int","value":"1"},"right":{"native_type":"NoneType","value":null},"security_type":{"native_type":"str","value":"STK"},"strike":{"native_type":"NoneType","value":null}},"fixture_id":"NVDA-IBKR-M00-SYNTHETIC-INPUT-V1","generation":"STK-SMART-G1","ingestion_scope":"STK1/SMART/G1","mappings":{"R185":{"mapping_id":"m00b2-a4-stk-r185","native_field_path":["position"],"native_units":"book-position","selection_identity_field_paths":[["generation",["_collector","generation"]],["isSmartDepth",["isSmartDepth"]],["marketMaker",["marketMaker"]],["request",["_collector","request"]],["requested_exchange",["_collector","requested_exchange"]],["scenario_id",["_collector","scenario_id"]],["subject",["_collector","subject"]]],"source_provider":"foundation-controlled-ibkr-m00-v1","source_variant":"ibkr-smart-depth/native-v1","version":1},"R187":{"mapping_id":"m00b2-a4-stk-r187","native_field_path":["operation"],"native_units":"operation-code","selection_identity_field_paths":[["generation",["_collector","generation"]],["isSmartDepth",["isSmartDepth"]],["marketMaker",["marketMaker"]],["request",["_collector","request"]],["requested_exchange",["_collector","requested_exchange"]],["scenario_id",["_collector","scenario_id"]],["subject",["_collector","subject"]]],"source_provider":"foundation-controlled-ibkr-m00-v1","source_variant":"ibkr-smart-depth/native-v1","version":1},"R188":{"mapping_id":"m00b2-a4-stk-r188","native_field_path":["side"],"native_units":"side-code","selection_identity_field_paths":[["generation",["_collector","generation"]],["isSmartDepth",["isSmartDepth"]],["marketMaker",["marketMaker"]],["request",["_collector","request"]],["requested_exchange",["_collector","requested_exchange"]],["scenario_id",["_collector","scenario_id"]],["subject",["_collector","subject"]]],"source_provider":"foundation-controlled-ibkr-m00-v1","source_variant":"ibkr-smart-depth/native-v1","version":1},"R189":{"mapping_id":"m00b2-a4-stk-r189","native_field_path":["price"],"native_units":"USD/share","selection_identity_field_paths":[["generation",["_collector","generation"]],["isSmartDepth",["isSmartDepth"]],["marketMaker",["marketMaker"]],["request",["_collector","request"]],["requested_exchange",["_collector","requested_exchange"]],["scenario_id",["_collector","scenario_id"]],["subject",["_collector","subject"]]],"source_provider":"foundation-controlled-ibkr-m00-v1","source_variant":"ibkr-smart-depth/native-v1","version":1},"R190":{"mapping_id":"m00b2-a4-stk-r190","native_field_path":["size"],"native_units":"shares","selection_identity_field_paths":[["generation",["_collector","generation"]],["isSmartDepth",["isSmartDepth"]],["marketMaker",["marketMaker"]],["request",["_collector","request"]],["requested_exchange",["_collector","requested_exchange"]],["scenario_id",["_collector","scenario_id"]],["subject",["_collector","subject"]]],"source_provider":"foundation-controlled-ibkr-m00-v1","source_variant":"ibkr-smart-depth/native-v1","version":1}},"maximum_observations":100,"profile_ref":{"context_id":"native-a4-stock","version":1},"provider":"foundation-controlled-ibkr-m00-v1","request":"STK-SMART-R1","requested_exchange":"SMART","right":null,"scenario_id":"A4","security_type":"STK","source_context_ref":{"context_id":"native-a4-stock-context","version":1},"subject":"NVDA-STK-CONTROL-1","variant":"ibkr-smart-depth/native-v1","warmup_observation_ids":["NVDA-M00-A-V1-A4-SEQ21","NVDA-M00-A-V1-A4-SEQ22","NVDA-M00-A-V1-A4-SEQ23","NVDA-M00-A-V1-A4-SEQ24"],"warmup_side_levels":{"0":2,"1":2}},"C1":{"complete_from_utc":"2026-10-20T12:39:59Z","contract_identity":"NVDA-OPT-C100-CONTROL-1|OPT|C|USD|2026-10-23|100|100","contract_spec":{"currency":{"native_type":"str","value":"USD"},"expiry":{"native_type":"str","value":"2026-10-23"},"multiplier":{"native_type":"int","value":"100"},"right":{"native_type":"str","value":"C"},"security_type":{"native_type":"str","value":"OPT"},"strike":{"native_type":"str","value":"100"}},"fixture_id":"NVDA-M00-COHERENT-INTEGRATION-V2","generation":"OPT-C100-SMART-COHERENT-V2","ingestion_scope":"OPT-C100/SMART/COHERENT-V2","mappings":{"R185":{"mapping_id":"m00b2-c1-call-r185","native_field_path":["position"],"native_units":"book-position","selection_identity_field_paths":[["generation",["_collector","generation"]],["isSmartDepth",["isSmartDepth"]],["marketMaker",["marketMaker"]],["request",["_collector","request"]],["requested_exchange",["_collector","requested_exchange"]],["scenario_id",["_collector","scenario_id"]],["subject",["_collector","subject"]]],"source_provider":"foundation-controlled-ibkr-m00-coherent-v2","source_variant":"ibkr-smart-depth/native-v2","version":1},"R187":{"mapping_id":"m00b2-c1-call-r187","native_field_path":["operation"],"native_units":"operation-code","selection_identity_field_paths":[["generation",["_collector","generation"]],["isSmartDepth",["isSmartDepth"]],["marketMaker",["marketMaker"]],["request",["_collector","request"]],["requested_exchange",["_collector","requested_exchange"]],["scenario_id",["_collector","scenario_id"]],["subject",["_collector","subject"]]],"source_provider":"foundation-controlled-ibkr-m00-coherent-v2","source_variant":"ibkr-smart-depth/native-v2","version":1},"R188":{"mapping_id":"m00b2-c1-call-r188","native_field_path":["side"],"native_units":"side-code","selection_identity_field_paths":[["generation",["_collector","generation"]],["isSmartDepth",["isSmartDepth"]],["marketMaker",["marketMaker"]],["request",["_collector","request"]],["requested_exchange",["_collector","requested_exchange"]],["scenario_id",["_collector","scenario_id"]],["subject",["_collector","subject"]]],"source_provider":"foundation-controlled-ibkr-m00-coherent-v2","source_variant":"ibkr-smart-depth/native-v2","version":1},"R189":{"mapping_id":"m00b2-c1-call-r189","native_field_path":["price"],"native_units":"USD/underlying-share-premium","selection_identity_field_paths":[["generation",["_collector","generation"]],["isSmartDepth",["isSmartDepth"]],["marketMaker",["marketMaker"]],["request",["_collector","request"]],["requested_exchange",["_collector","requested_exchange"]],["scenario_id",["_collector","scenario_id"]],["subject",["_collector","subject"]]],"source_provider":"foundation-controlled-ibkr-m00-coherent-v2","source_variant":"ibkr-smart-depth/native-v2","version":1},"R190":{"mapping_id":"m00b2-c1-call-r190","native_field_path":["size"],"native_units":"contracts","selection_identity_field_paths":[["generation",["_collector","generation"]],["isSmartDepth",["isSmartDepth"]],["marketMaker",["marketMaker"]],["request",["_collector","request"]],["requested_exchange",["_collector","requested_exchange"]],["scenario_id",["_collector","scenario_id"]],["subject",["_collector","subject"]]],"source_provider":"foundation-controlled-ibkr-m00-coherent-v2","source_variant":"ibkr-smart-depth/native-v2","version":1}},"maximum_observations":100,"profile_ref":{"context_id":"native-c1-call","version":1},"provider":"foundation-controlled-ibkr-m00-coherent-v2","request":"COH-CALL-R1","requested_exchange":"SMART","right":"C","scenario_id":"C1","security_type":"OPT","source_context_ref":{"context_id":"native-coherent-call-reference","version":1},"subject":"NVDA-OPT-C100-CONTROL-1","variant":"ibkr-smart-depth/native-v2","warmup_observation_ids":["COH-SMART-C01","COH-SMART-C02","COH-SMART-C03"],"warmup_side_levels":{"0":1,"1":2}},"C2":{"complete_from_utc":"2026-10-20T12:39:58Z","contract_identity":"NVDA-STK-CONTROL-1|STK|None|USD|None|None|1","contract_spec":{"currency":{"native_type":"str","value":"USD"},"expiry":{"native_type":"NoneType","value":null},"multiplier":{"native_type":"int","value":"1"},"right":{"native_type":"NoneType","value":null},"security_type":{"native_type":"str","value":"STK"},"strike":{"native_type":"NoneType","value":null}},"fixture_id":"NVDA-M00-COHERENT-INTEGRATION-V2","generation":"COH-DIRECT-STK-GEN1","ingestion_scope":"STK1/DIRECT-EXCH1/GEN1","mappings":{"R192":{"mapping_id":"m00b2-c2-stk-r192","native_field_path":["position"],"native_units":"book-position","selection_identity_field_paths":[["generation",["_collector","generation"]],["isSmartDepth",["isSmartDepth"]],["marketMaker",["marketMaker"]],["request",["_collector","request"]],["requested_exchange",["_collector","requested_exchange"]],["scenario_id",["_collector","scenario_id"]],["subject",["_collector","subject"]]],"source_provider":"foundation-controlled-ibkr-m00-coherent-v2","source_variant":"ibkr-direct-depth/native-v2","version":1},"R193":{"mapping_id":"m00b2-c2-stk-r193","native_field_path":["marketMaker"],"native_units":"MPID","selection_identity_field_paths":[["generation",["_collector","generation"]],["isSmartDepth",["isSmartDepth"]],["marketMaker",["marketMaker"]],["request",["_collector","request"]],["requested_exchange",["_collector","requested_exchange"]],["scenario_id",["_collector","scenario_id"]],["subject",["_collector","subject"]]],"source_provider":"foundation-controlled-ibkr-m00-coherent-v2","source_variant":"ibkr-direct-depth/native-v2","version":1},"R194":{"mapping_id":"m00b2-c2-stk-r194","native_field_path":["operation"],"native_units":"operation-code","selection_identity_field_paths":[["generation",["_collector","generation"]],["isSmartDepth",["isSmartDepth"]],["marketMaker",["marketMaker"]],["request",["_collector","request"]],["requested_exchange",["_collector","requested_exchange"]],["scenario_id",["_collector","scenario_id"]],["subject",["_collector","subject"]]],"source_provider":"foundation-controlled-ibkr-m00-coherent-v2","source_variant":"ibkr-direct-depth/native-v2","version":1},"R195":{"mapping_id":"m00b2-c2-stk-r195","native_field_path":["side"],"native_units":"side-code","selection_identity_field_paths":[["generation",["_collector","generation"]],["isSmartDepth",["isSmartDepth"]],["marketMaker",["marketMaker"]],["request",["_collector","request"]],["requested_exchange",["_collector","requested_exchange"]],["scenario_id",["_collector","scenario_id"]],["subject",["_collector","subject"]]],"source_provider":"foundation-controlled-ibkr-m00-coherent-v2","source_variant":"ibkr-direct-depth/native-v2","version":1},"R196":{"mapping_id":"m00b2-c2-stk-r196","native_field_path":["price"],"native_units":"USD/share","selection_identity_field_paths":[["generation",["_collector","generation"]],["isSmartDepth",["isSmartDepth"]],["marketMaker",["marketMaker"]],["request",["_collector","request"]],["requested_exchange",["_collector","requested_exchange"]],["scenario_id",["_collector","scenario_id"]],["subject",["_collector","subject"]]],"source_provider":"foundation-controlled-ibkr-m00-coherent-v2","source_variant":"ibkr-direct-depth/native-v2","version":1},"R197":{"mapping_id":"m00b2-c2-stk-r197","native_field_path":["size"],"native_units":"shares","selection_identity_field_paths":[["generation",["_collector","generation"]],["isSmartDepth",["isSmartDepth"]],["marketMaker",["marketMaker"]],["request",["_collector","request"]],["requested_exchange",["_collector","requested_exchange"]],["scenario_id",["_collector","scenario_id"]],["subject",["_collector","subject"]]],"source_provider":"foundation-controlled-ibkr-m00-coherent-v2","source_variant":"ibkr-direct-depth/native-v2","version":1}},"maximum_observations":100,"profile_ref":{"context_id":"native-c2-stock","version":1},"provider":"foundation-controlled-ibkr-m00-coherent-v2","request":"COH-DIRECT-STK-R1","requested_exchange":"SYNTH-DIRECT-EXCHANGE-1","right":null,"scenario_id":"C2","security_type":"STK","source_context_ref":{"context_id":"native-c2-stock-context","version":1},"subject":"NVDA-STK-CONTROL-1","variant":"ibkr-direct-depth/native-v2","warmup_observation_ids":["COH-DIRECT-STK-01","COH-DIRECT-STK-02","COH-DIRECT-STK-03","COH-DIRECT-STK-04"],"warmup_side_levels":{"0":2,"1":2}}}')
+  |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |
+
+E501 Line too long (3383 > 100)
+  --> src/nvda_desk/market_measurement_truth/_native_profiles.py:13:101
+   |
+12 | …
+13 | …vider":"foundation-controlled-native-reconciliation-v1","variant":"ibkr-smart-depth/receipt-slope-v1","subject":"NVDA","request":"REC-SLOPE-R1","generation":"REC-SLOPE-G1","ingestion_scope":"NVDA/REC-SLOPE/G1","requested_exchange":"SMART","security_type":"STK","right":null,"contract_identity":"NVDA|STK|None|USD|None|None|1","contract_spec":{"security_type":"STK","right":null,"currency":"USD","expiry":null,"strike":null,"multiplier":1},"scenario_id":"REC-SLOPE","fixture_id":"NVDA-M02-NATIVE-RECONCILIATION-V1","complete_from_utc":"2026-10-16T00:59:50Z","warmup_observation_ids":["REC-SLOPE-B0","REC-SLOPE-B1","REC-SLOPE-B2","REC-SLOPE-A0","REC-SLOPE-A1","REC-SLOPE-A2"],"warmup_side_levels":{"1":3,"0":3},"maximum_observations":100,"source_context_ref":{"context_id":"native-d138-slope-context","version":1},"mappings":{"R185":{"mapping_id":"mmt-native-d138-r185","version":1,"source_provider":"foundation-controlled-native-reconciliation-v1","source_variant":"ibkr-smart-depth/receipt-slope-v1","native_field_path":["position"],"native_units":"book-position","selection_identity_field_paths":[["subject",["_collector","subject"]],["request",["_collector","request"]],["generation",["_collector","generation"]],["requested_exchange",["_collector","requested_exchange"]],["scenario_id",["_collector","scenario_id"]]]},"R187":{"mapping_id":"mmt-native-d138-r187","version":1,"source_provider":"foundation-controlled-native-reconciliation-v1","source_variant":"ibkr-smart-depth/receipt-slope-v1","native_field_path":["operation"],"native_units":"operation-code","selection_identity_field_paths":[["subject",["_collector","subject"]],["request",["_collector","request"]],["generation",["_collector","generation"]],["requested_exchange",["_collector","requested_exchange"]],["scenario_id",["_collector","scenario_id"]]]},"R188":{"mapping_id":"mmt-native-d138-r188","version":1,"source_provider":"foundation-controlled-native-reconciliation-v1","source_variant":"ibkr-smart-depth/receipt-slope-v1","native_field_path":["side"],"native_units":"side-code","selection_identity_field_paths":[["subject",["_collector","subject"]],["request",["_collector","request"]],["generation",["_collector","generation"]],["requested_exchange",["_collector","requested_exchange"]],["scenario_id",["_collector","scenario_id"]]]},"R189":{"mapping_id":"mmt-native-d138-r189","version":1,"source_provider":"foundation-controlled-native-reconciliation-v1","source_variant":"ibkr-smart-depth/receipt-slope-v1","native_field_path":["price"],"native_units":"USD/share","selection_identity_field_paths":[["subject",["_collector","subject"]],["request",["_collector","request"]],["generation",["_collector","generation"]],["requested_exchange",["_collector","requested_exchange"]],["scenario_id",["_collector","scenario_id"]]]},"R190":{"mapping_id":"mmt-native-d138-r190","version":1,"source_provider":"foundation-controlled-native-reconciliation-v1","source_variant":"ibkr-smart-depth/receipt-slope-v1","native_field_path":["size"],"native_units":"shares","selection_identity_field_paths":[["subject",["_collector","subject"]],["request",["_collector","request"]],["generation",["_collector","generation"]],["requested_exchange",["_collector","requested_exchange"]],["scenario_id",["_collector","scenario_id"]]]}}}')
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+
+E501 Line too long (3360 > 100)
+  --> src/nvda_desk/market_measurement_truth/_native_profiles.py:17:101
+   |
+16 | …
+17 | …1},"provider":"foundation-controlled-native-reconciliation-v1","variant":"ibkr-smart-depth/receipt-rate-v1","subject":"NVDA","request":"REC-RATE-R1","generation":"REC-RATE-G1","ingestion_scope":"NVDA/REC-RATE/G1","requested_exchange":"SMART","security_type":"STK","right":null,"contract_identity":"NVDA|STK|None|USD|None|None|1","contract_spec":{"security_type":"STK","right":null,"currency":"USD","expiry":null,"strike":null,"multiplier":1},"scenario_id":"REC-RATE","fixture_id":"NVDA-M02-NATIVE-RECONCILIATION-V1","complete_from_utc":"2026-10-20T12:39:50Z","warmup_observation_ids":["REC-RATE-B0","REC-RATE-B1","REC-RATE-B2","REC-RATE-A0"],"warmup_side_levels":{"1":3,"0":1},"maximum_observations":100,"source_context_ref":{"context_id":"native-receipt-rate-context","version":1},"mappings":{"R001":{"mapping_id":"mmt-native-rate-r001","version":1,"source_provider":"foundation-controlled-native-reconciliation-v1","source_variant":"ibkr-smart-depth/receipt-rate-v1","native_field_path":["time","receipt"],"native_units":"UTC_datetime","selection_identity_field_paths":[["subject",["_collector","subject"]],["request",["_collector","request"]],["generation",["_collector","generation"]],["requested_exchange",["_collector","requested_exchange"]],["scenario_id",["_collector","scenario_id"]]]},"R185":{"mapping_id":"mmt-native-rate-r185","version":1,"source_provider":"foundation-controlled-native-reconciliation-v1","source_variant":"ibkr-smart-depth/receipt-rate-v1","native_field_path":["position"],"native_units":"book-position","selection_identity_field_paths":[["subject",["_collector","subject"]],["request",["_collector","request"]],["generation",["_collector","generation"]],["requested_exchange",["_collector","requested_exchange"]],["scenario_id",["_collector","scenario_id"]]]},"R187":{"mapping_id":"mmt-native-rate-r187","version":1,"source_provider":"foundation-controlled-native-reconciliation-v1","source_variant":"ibkr-smart-depth/receipt-rate-v1","native_field_path":["operation"],"native_units":"operation-code","selection_identity_field_paths":[["subject",["_collector","subject"]],["request",["_collector","request"]],["generation",["_collector","generation"]],["requested_exchange",["_collector","requested_exchange"]],["scenario_id",["_collector","scenario_id"]]]},"R188":{"mapping_id":"mmt-native-rate-r188","version":1,"source_provider":"foundation-controlled-native-reconciliation-v1","source_variant":"ibkr-smart-depth/receipt-rate-v1","native_field_path":["side"],"native_units":"side-code","selection_identity_field_paths":[["subject",["_collector","subject"]],["request",["_collector","request"]],["generation",["_collector","generation"]],["requested_exchange",["_collector","requested_exchange"]],["scenario_id",["_collector","scenario_id"]]]},"R190":{"mapping_id":"mmt-native-rate-r190","version":1,"source_provider":"foundation-controlled-native-reconciliation-v1","source_variant":"ibkr-smart-depth/receipt-rate-v1","native_field_path":["size"],"native_units":"shares","selection_identity_field_paths":[["subject",["_collector","subject"]],["request",["_collector","request"]],["generation",["_collector","generation"]],["requested_exchange",["_collector","requested_exchange"]],["scenario_id",["_collector","scenario_id"]]]}}}')
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+
+E501 Line too long (3360 > 100)
+  --> src/nvda_desk/market_measurement_truth/_native_profiles.py:21:101
+   |
+20 | …
+21 | …1},"provider":"foundation-controlled-native-reconciliation-v1","variant":"ibkr-smart-depth/receipt-rate-v1","subject":"NVDA","request":"REC-RATE-R1","generation":"REC-RATE-G1","ingestion_scope":"NVDA/REC-RATE/G1","requested_exchange":"SMART","security_type":"STK","right":null,"contract_identity":"NVDA|STK|None|USD|None|None|1","contract_spec":{"security_type":"STK","right":null,"currency":"USD","expiry":null,"strike":null,"multiplier":1},"scenario_id":"REC-RATE","fixture_id":"NVDA-M02-NATIVE-RECONCILIATION-V1","complete_from_utc":"2026-10-20T12:39:50Z","warmup_observation_ids":["REC-RATE-B0","REC-RATE-B1","REC-RATE-B2","REC-RATE-A0"],"warmup_side_levels":{"1":3,"0":1},"maximum_observations":100,"source_context_ref":{"context_id":"native-receipt-rate-context","version":1},"mappings":{"R001":{"mapping_id":"mmt-native-rate-r001","version":1,"source_provider":"foundation-controlled-native-reconciliation-v1","source_variant":"ibkr-smart-depth/receipt-rate-v1","native_field_path":["time","receipt"],"native_units":"UTC_datetime","selection_identity_field_paths":[["subject",["_collector","subject"]],["request",["_collector","request"]],["generation",["_collector","generation"]],["requested_exchange",["_collector","requested_exchange"]],["scenario_id",["_collector","scenario_id"]]]},"R185":{"mapping_id":"mmt-native-rate-r185","version":1,"source_provider":"foundation-controlled-native-reconciliation-v1","source_variant":"ibkr-smart-depth/receipt-rate-v1","native_field_path":["position"],"native_units":"book-position","selection_identity_field_paths":[["subject",["_collector","subject"]],["request",["_collector","request"]],["generation",["_collector","generation"]],["requested_exchange",["_collector","requested_exchange"]],["scenario_id",["_collector","scenario_id"]]]},"R187":{"mapping_id":"mmt-native-rate-r187","version":1,"source_provider":"foundation-controlled-native-reconciliation-v1","source_variant":"ibkr-smart-depth/receipt-rate-v1","native_field_path":["operation"],"native_units":"operation-code","selection_identity_field_paths":[["subject",["_collector","subject"]],["request",["_collector","request"]],["generation",["_collector","generation"]],["requested_exchange",["_collector","requested_exchange"]],["scenario_id",["_collector","scenario_id"]]]},"R188":{"mapping_id":"mmt-native-rate-r188","version":1,"source_provider":"foundation-controlled-native-reconciliation-v1","source_variant":"ibkr-smart-depth/receipt-rate-v1","native_field_path":["side"],"native_units":"side-code","selection_identity_field_paths":[["subject",["_collector","subject"]],["request",["_collector","request"]],["generation",["_collector","generation"]],["requested_exchange",["_collector","requested_exchange"]],["scenario_id",["_collector","scenario_id"]]]},"R190":{"mapping_id":"mmt-native-rate-r190","version":1,"source_provider":"foundation-controlled-native-reconciliation-v1","source_variant":"ibkr-smart-depth/receipt-rate-v1","native_field_path":["size"],"native_units":"shares","selection_identity_field_paths":[["subject",["_collector","subject"]],["request",["_collector","request"]],["generation",["_collector","generation"]],["requested_exchange",["_collector","requested_exchange"]],["scenario_id",["_collector","scenario_id"]]]}}}')
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> src/nvda_desk/market_measurement_truth/_native_smart_ask.py:3:1
+   |
+ 1 |   """D135 native side0 SMART ask top-two/top-one depth, preserving the legacy profile."""
+ 2 |
+ 3 | / from __future__ import annotations
+ 4 | |
+ 5 | | import hashlib
+ 6 | | from collections.abc import Callable
+ 7 | | from dataclasses import fields, replace
+ 8 | | from datetime import datetime, timedelta
+ 9 | | from decimal import Decimal
+10 | | from typing import cast
+11 | |
+12 | | from . import api as f
+13 | | from . import _native_codec as codec
+14 | | from . import _native_source as source_module
+15 | | from ._catalogue import _AUTHORITY
+16 | | from ._record_store import RecordState
+   | |______________________________________^
+17 |
+18 |   BRIEF = "419afb2f5b0d27d72159587c9b9ad323afcb4dc49242257f9a83fa4317aa5653"
+   |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> src/nvda_desk/market_measurement_truth/_native_smart_depth.py:3:1
+   |
+ 1 |   """D134 native side1 SMART top-two bid depth, preserving the legacy profile."""
+ 2 |
+ 3 | / from __future__ import annotations
+ 4 | |
+ 5 | | import hashlib
+ 6 | | from collections.abc import Callable
+ 7 | | from dataclasses import fields, replace
+ 8 | | from datetime import datetime, timedelta
+ 9 | | from decimal import Decimal
+10 | | from typing import cast
+11 | |
+12 | | from . import api as f
+13 | | from . import _native_codec as codec
+14 | | from . import _native_source as source_module
+15 | | from ._catalogue import _AUTHORITY
+16 | | from ._record_store import RecordState
+   | |______________________________________^
+17 |
+18 |   BRIEF = "73e03e0700902098ecc8a0c9c6e3ffffd94bbc74ab8f27576368ccc0dd19cce0"
+   |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> src/nvda_desk/market_measurement_truth/_native_smart_imbalance.py:3:1
+   |
+ 1 |   """D136 exact imbalance from actual compatible native D134/D135 public facts."""
+ 2 |
+ 3 | / from __future__ import annotations
+ 4 | |
+ 5 | | import hashlib
+ 6 | | from collections.abc import Callable
+ 7 | | from dataclasses import fields, replace
+ 8 | | from datetime import datetime, timedelta
+ 9 | | from decimal import Decimal
+10 | | from fractions import Fraction
+11 | | from typing import cast
+12 | |
+13 | | from . import api as f
+14 | | from . import _native_codec as codec
+15 | | from . import _native_smart_depth as bid_module
+16 | | from . import _native_smart_ask as ask_module
+17 | | from ._catalogue import _AUTHORITY
+18 | | from ._record_store import RecordState
+   | |______________________________________^
+19 |
+20 |   BRIEF = "8510a6e722300d06993ed8a66a8b1b808488913a48625f31183fd2ef9442c7ec"
+   |
+help: Organize imports
+
+E501 Line too long (112 > 100)
+   --> src/nvda_desk/market_measurement_truth/_native_smart_imbalance.py:169:101
+    |
+167 |         bid = self.bid_reader.get_derived_occurrence(request.predecessor_occurrence_ids[0])
+168 |         ask = self.ask_reader.get_derived_occurrence(request.predecessor_occurrence_ids[1])
+169 |         if type(bid) is not f.NativeMeasurementOccurrenceV1 or type(ask) is not f.NativeMeasurementOccurrenceV1:
+    |                                                                                                     ^^^^^^^^^^^^
+170 |             return None
+171 |         try:
+    |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> src/nvda_desk/market_measurement_truth/_native_source.py:7:1
+   |
+ 5 |   """
+ 6 |
+ 7 | / from __future__ import annotations
+ 8 | |
+ 9 | | import hashlib
+10 | | from copy import deepcopy
+11 | | from collections.abc import Callable, Mapping
+12 | | from dataclasses import fields, replace
+13 | | from datetime import datetime, timedelta
+14 | | from decimal import Decimal
+15 | | from typing import cast
+16 | |
+17 | | from nvda_desk.raw_signal_occurrence_truth import api as raw
+18 | |
+19 | | from . import api as f
+20 | | from . import _native_codec as codec
+21 | | from ._native_profiles import SPECS
+22 | | from ._record_store import RecordState
+   | |______________________________________^
+23 |
+24 |   BRIEF = "5b777c5842b091f6dc4bef148970c4cf81b68864bd24f5a1633d392f38d96ead"
+   |
+help: Organize imports
+
+F401 [*] `datetime.timedelta` imported but unused
+  --> src/nvda_desk/market_measurement_truth/_native_source.py:13:32
+   |
+11 | from collections.abc import Callable, Mapping
+12 | from dataclasses import fields, replace
+13 | from datetime import datetime, timedelta
+   |                                ^^^^^^^^^
+14 | from decimal import Decimal
+15 | from typing import cast
+   |
+help: Remove unused import: `datetime.timedelta`
+
+E501 Line too long (112 > 100)
+   --> src/nvda_desk/market_measurement_truth/_native_source.py:142:101
+    |
+140 |         and item.ingestion_sequence_scope.value == profile.ingestion_scope
+141 |         and _native_path(item.native_record, ("_collector", "request")) == profile.request
+142 |         and _native_path(item.native_record, ("_collector", "requested_exchange")) == profile.requested_exchange
+    |                                                                                                     ^^^^^^^^^^^^
+143 |         and _native_path(item.native_record, ("_collector", "generation")) == profile.generation
+144 |         and _native_path(item.native_record, ("_collector", "scenario_id")) == spec["scenario_id"]
+    |
+
+E501 Line too long (120 > 100)
+   --> src/nvda_desk/market_measurement_truth/_native_source.py:145:101
+    |
+143 |         and _native_path(item.native_record, ("_collector", "generation")) == profile.generation
+144 |         and _native_path(item.native_record, ("_collector", "scenario_id")) == spec["scenario_id"]
+145 |         and _native_path(item.native_record, ("_collector", "contract_spec")) == _contract_native(spec["contract_spec"])
+    |                                                                                                     ^^^^^^^^^^^^^^^^^^^^
+146 |         and item.native_identifier == profile.subject_instrument
+147 |     )
+    |
+
+RUF021 [*] Parenthesize `a and b` expressions when chaining `and` and `or` together, to make the precedence clear
+   --> src/nvda_desk/market_measurement_truth/_native_source.py:180:16
+    |
+178 |               or type(native["generation_before"]) is not str
+179 |               or type(native["generation_after"]) is not str
+180 |               or native["generation_before"] != profile.generation
+    |  ________________^
+181 | |                and native["generation_after"] != profile.generation):
+    | |___________________________________________________________________^
+182 |               raise ValueError("unadmitted control semantics")
+183 |           if item.observation_occurrence_id.value in ids:
+    |
+help: Parenthesize the `and` subexpression
+
+E501 Line too long (123 > 100)
+   --> src/nvda_desk/market_measurement_truth/_native_source.py:195:101
+    |
+193 | def _fetch_observations(reader: f.NativeRawReaderV1, profile: f.NativeSourceProfileV1,
+194 |                         cutoff: datetime) -> tuple[raw.RawObservationOccurrenceV1, ...]:
+195 |     base = (("_collector", "request"), profile.request), (("_collector", "requested_exchange"), profile.requested_exchange)
+    |                                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^
+196 |     variants = (
+197 |         (*base, (("_collector", "generation"), profile.generation)),
+    |
+
+B023 Function definition does not bind loop variable `selectors`
+   --> src/nvda_desk/market_measurement_truth/_native_source.py:205:39
+    |
+203 |             subject_instrument=profile.subject_instrument, source_provider=profile.provider,
+204 |             source_variant=profile.variant, received_at_or_before_utc=cutoff,
+205 |             native_identity_selectors=selectors, limit=1, cursor=cursor,
+    |                                       ^^^^^^^^^
+206 |         ), cap=profile.maximum_observations, expected_page=raw.RawObservationHistoryPageV1)
+207 |         for item in records:
+    |
+
+B023 Function definition does not bind loop variable `mapping`
+   --> src/nvda_desk/market_measurement_truth/_native_source.py:228:13
+    |
+226 |         rid = mapping.raw_signal_catalogue_id.value
+227 |         items = _page_items(lambda cursor: reader.list_projected_raw_history(
+228 |             mapping.raw_signal_catalogue_id, mappings=(mapping,),
+    |             ^^^^^^^
+229 |             subject_instrument=profile.subject_instrument,
+230 |             received_at_or_before_utc=cutoff, event_at_or_before_utc=None,
+    |
+
+B023 Function definition does not bind loop variable `mapping`
+   --> src/nvda_desk/market_measurement_truth/_native_source.py:228:56
+    |
+226 |         rid = mapping.raw_signal_catalogue_id.value
+227 |         items = _page_items(lambda cursor: reader.list_projected_raw_history(
+228 |             mapping.raw_signal_catalogue_id, mappings=(mapping,),
+    |                                                        ^^^^^^^
+229 |             subject_instrument=profile.subject_instrument,
+230 |             received_at_or_before_utc=cutoff, event_at_or_before_utc=None,
+    |
+
+E501 Line too long (101 > 100)
+   --> src/nvda_desk/market_measurement_truth/_native_source.py:254:101
+    |
+252 |                 or item.native_field_path != mapping.native_field_path
+253 |                 or item.native_units != mapping.native_units
+254 |                 or item.source_provider != profile.provider or item.source_variant != profile.variant
+    |                                                                                                     ^
+255 |                 or item.subject_instrument != profile.subject_instrument
+256 |                 or item.source_temporal_kind != "receipt_only"
+    |
+
+E501 Line too long (102 > 100)
+   --> src/nvda_desk/market_measurement_truth/_native_source.py:271:101
+    |
+269 |             expected_type = (int if rid in {"R185", "R187", "R188", "R192", "R194", "R195"}
+270 |                              else str if rid == "R193" else datetime if rid == "R001" else Decimal)
+271 |             if type(value) is not expected_type or (type(value) is Decimal and not value.is_finite()):
+    |                                                                                                     ^^
+272 |                 raise ValueError("projected native value has wrong exact type")
+273 |             if rid == "R001" and value != item.received_ts_utc:
+    |
+
+E501 Line too long (101 > 100)
+   --> src/nvda_desk/market_measurement_truth/_native_source.py:315:101
+    |
+313 |         item = control.observation
+314 |         events.append((item.received_ts_utc, item.ingestion_sequence_scope.value,
+315 |                        item.ingestion_sequence, item.observation_occurrence_id.value, None, control))
+    |                                                                                                     ^
+316 |     events.sort(key=lambda x: (x[0], x[1], x[2], x[3]))
+317 |     prev = None
+    |
+
+E501 Line too long (142 > 100)
+   --> src/nvda_desk/market_measurement_truth/_native_source.py:346:101
+    |
+344 | …188"].canonical_value)
+345 | …e "R190"].canonical_value)
+346 | …rect else "R189"].canonical_value) if ("R196" if direct else "R189") in group else None
+    |                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+347 | … if direct else None
+348 | … is not int or op not in (0, 1, 2)
+    |
+
+RUF021 [*] Parenthesize `a and b` expressions when chaining `and` and `or` together, to make the precedence clear
+   --> src/nvda_desk/market_measurement_truth/_native_source.py:350:16
+    |
+348 |         if (type(pos) is not int or pos < 0 or type(op) is not int or op not in (0, 1, 2)
+349 |             or type(side) is not int or side not in (0, 1) or size < 0
+350 |             or price is not None and price < 0):
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+351 |             raise ValueError("invalid native positional mutation")
+352 |         if warmup and len(warmup_seen) < len(warmup):
+    |
+help: Parenthesize the `and` subexpression
+
+RUF021 [*] Parenthesize `a and b` expressions when chaining `and` and `or` together, to make the precedence clear
+   --> src/nvda_desk/market_measurement_truth/_native_source.py:358:48
+    |
+356 |         rows = standing[side]
+357 |         if op == 0:
+358 |             if pos > len(rows) or size <= 0 or price is not None and price <= 0:
+    |                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+359 |                 raise ValueError("invalid insert")
+360 |             rows.insert(pos, f.NativeBookRowV1(side, pos, price, size, mpid,
+    |
+help: Parenthesize the `and` subexpression
+
+RUF021 [*] Parenthesize `a and b` expressions when chaining `and` and `or` together, to make the precedence clear
+   --> src/nvda_desk/market_measurement_truth/_native_source.py:363:49
+    |
+361 |                         profile.requested_exchange, oid))
+362 |         elif op == 1:
+363 |             if pos >= len(rows) or size <= 0 or price is not None and price <= 0:
+    |                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+364 |                 raise ValueError("update without standing row")
+365 |             if direct and mpid != rows[pos].mpid:
+    |
+help: Parenthesize the `and` subexpression
+
+E501 Line too long (101 > 100)
+   --> src/nvda_desk/market_measurement_truth/_native_source.py:367:101
+    |
+365 |             if direct and mpid != rows[pos].mpid:
+366 |                 raise ValueError("direct MPID update changed identity")
+367 |             rows[pos] = f.NativeBookRowV1(side, pos, price if price is not None else rows[pos].price,
+    |                                                                                                     ^
+368 |                                           size, mpid, profile.requested_exchange, oid)
+369 |         else:
+    |
+
+RUF021 [*] Parenthesize `a and b` expressions when chaining `and` and `or` together, to make the precedence clear
+   --> src/nvda_desk/market_measurement_truth/_native_source.py:370:49
+    |
+368 |                                           size, mpid, profile.requested_exchange, oid)
+369 |         else:
+370 |             if pos >= len(rows) or size != 0 or direct and mpid != rows[pos].mpid:
+    |                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+371 |                 raise ValueError("delete without standing position")
+372 |             del rows[pos]
+    |
+help: Parenthesize the `and` subexpression
+
+E501 Line too long (107 > 100)
+   --> src/nvda_desk/market_measurement_truth/_native_source.py:401:101
+    |
+399 |         projection = line.projection
+400 |         mapping = mappings.get(line.raw_signal_id)
+401 |         if (mapping is None or line.observation_occurrence_id != projection.observation_occurrence_id.value
+    |                                                                                                     ^^^^^^^
+402 |             or line.projection_mapping_ref != f.VersionRefV1(mapping.mapping_id, mapping.version)
+403 |             or projection.projection_mapping_id != mapping.mapping_id
+    |
+
+E501 Line too long (101 > 100)
+   --> src/nvda_desk/market_measurement_truth/_native_source.py:413:101
+    |
+411 |             raise ValueError("typed public projection lineage mismatch")
+412 |     if _controls(tuple(c.observation for c in value.controls), value.profile,
+413 |                  min(value.request.as_of_utc, value.request.knowledge_cutoff_utc)) != value.controls:
+    |                                                                                                     ^
+414 |         raise ValueError("control lineage differs from public observations")
+415 |     if (value.owner_object_id != "M02" or value.owner_namespace != NAMESPACE
+    |
+
+E501 Line too long (102 > 100)
+   --> src/nvda_desk/market_measurement_truth/_native_source.py:433:101
+    |
+431 |         if type(source_snapshot_id) is not str or not source_snapshot_id:
+432 |             raise ValueError("source snapshot ID required")
+433 |         return next((v for v in self.state.all() if v.source_snapshot_id == source_snapshot_id), None)
+    |                                                                                                     ^^
+434 |
+435 |     def list_source_history(self, *, source_profile_ref: f.VersionRefV1,
+    |
+
+E501 Line too long (102 > 100)
+   --> src/nvda_desk/market_measurement_truth/_native_source.py:456:101
+    |
+455 |     def materialise(self, request: f.NativeSourceRequestV1) -> f.NativeSourceSnapshotV1 | None:
+456 |         if type(request) is not f.NativeSourceRequestV1 or request.source_profile_ref not in PROFILES:
+    |                                                                                                     ^^
+457 |             raise ValueError("unadmitted native source request")
+458 |         profile = PROFILES[request.source_profile_ref]
+    |
+
+E501 Line too long (114 > 100)
+   --> src/nvda_desk/market_measurement_truth/_record_store.py:165:101
+    |
+163 |             )
+164 |             recovered = next(
+165 |                 v for v in self._load(c) if getattr(v, self.identity_field) == getattr(value, self.identity_field)
+    |                                                                                                     ^^^^^^^^^^^^^^
+166 |             )
+167 |             if self.encode(recovered) != payload:
+    |
+
+E501 Line too long (108 > 100)
+   --> src/nvda_desk/market_measurement_truth/_record_store.py:195:101
+    |
+193 |                     c.execute(
+194 |                         "INSERT INTO mmt_record_v1 VALUES (?,?,?)",
+195 |                         (getattr(value, self.identity_field), payload, hashlib.sha256(payload).hexdigest()),
+    |                                                                                                     ^^^^^^^^
+196 |                     )
+197 |             readback = {getattr(v, self.identity_field): v for v in self._load(c)}
+    |
+
+E501 Line too long (109 > 100)
+   --> src/nvda_desk/market_measurement_truth/api.py:418:101
+    |
+417 | class NativeMeasurementReadsV1(Protocol):
+418 |     def get_derived_occurrence(self, derived_occurrence_id: str) -> NativeMeasurementOccurrenceV1 | None: ...
+    |                                                                                                     ^^^^^^^^^
+419 |     def list_derived_history(self, *, derived_signal_id: str,
+420 |         subject_instrument: str, effective_at_or_before_utc: datetime,
+    |
+
+E501 Line too long (107 > 100)
+   --> src/nvda_desk/market_measurement_truth/api.py:421:101
+    |
+419 |     def list_derived_history(self, *, derived_signal_id: str,
+420 |         subject_instrument: str, effective_at_or_before_utc: datetime,
+421 |         knowledge_at_or_before_utc: datetime, limit: int) -> tuple[NativeMeasurementOccurrenceV1, ...]: ...
+    |                                                                                                     ^^^^^^^
+    |
+
+E501 Line too long (107 > 100)
+   --> src/nvda_desk/market_measurement_truth/api.py:427:101
+    |
+425 |     @property
+426 |     def reads(self) -> NativeMeasurementReadsV1: ...
+427 |     def materialise(self, request: NativeCalculationRequestV1) -> NativeMeasurementOccurrenceV1 | None: ...
+    |                                                                                                     ^^^^^^^
+    |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> tests/product/market_measurement_native_d087/test_signal.py:3:1
+   |
+ 1 |   """L03 fixed native D087 pair; prepared, NOT_RUN until independent L14."""
+ 2 |
+ 3 | / from datetime import UTC, datetime, timedelta
+ 4 | | from decimal import Decimal
+ 5 | | from pathlib import Path
+ 6 | | import sys
+ 7 | |
+ 8 | | from nvda_desk.market_measurement_truth import api as f
+   | |_______________________________________________________^
+ 9 |
+10 |   sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "support"))
+   |
+help: Organize imports
+
+RUF100 [*] Unused `noqa` directive (unused: `E402`)
+  --> tests/product/market_measurement_native_d087/test_signal.py:11:64
+   |
+10 | sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "support"))
+11 | from native_reconciliation import PublicDtoReader, typed_tree  # noqa: E402
+   |                                                                ^^^^^^^^^^^^
+12 |
+13 | T = datetime(2026, 10, 20, 12, 40, tzinfo=UTC)
+   |
+help: Remove unused `noqa` directive
+
+E501 Line too long (103 > 100)
+   --> tests/product/market_measurement_native_d087/test_signal.py:159:101
+    |
+157 |     ) == ()
+158 |     # Available PUT observations cannot complete either missing or stale CALL.
+159 |     assert all(event_filter is None for event_filter in missing.event_filters + complete.event_filters)
+    |                                                                                                     ^^^
+    |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> tests/product/market_measurement_native_d131/test_signal.py:3:1
+   |
+ 1 |   """L04 native D131 pair, prepared for independent L14 execution only."""
+ 2 |
+ 3 | / from dataclasses import replace
+ 4 | | from datetime import UTC, datetime, timedelta
+ 5 | | from decimal import Decimal
+ 6 | | from pathlib import Path
+ 7 | | import sys
+ 8 | |
+ 9 | | from nvda_desk.market_measurement_truth import api as f
+10 | | from nvda_desk.raw_signal_occurrence_truth import api as raw
+   | |____________________________________________________________^
+11 |
+12 |   sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "support"))
+   |
+help: Organize imports
+
+RUF100 [*] Unused `noqa` directive (unused: `E402`)
+  --> tests/product/market_measurement_native_d131/test_signal.py:13:64
+   |
+12 | sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "support"))
+13 | from native_reconciliation import PublicDtoReader, typed_tree  # noqa: E402
+   |                                                                ^^^^^^^^^^^^
+14 |
+15 | T = datetime(2026, 10, 20, 12, 40, tzinfo=UTC)
+   |
+help: Remove unused `noqa` directive
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> tests/product/market_measurement_native_d134/test_signal.py:3:1
+   |
+ 1 |   """L05 native D134 pair, authored before production and NOT_RUN until L14."""
+ 2 |
+ 3 | / from datetime import UTC, datetime, timedelta
+ 4 | | from decimal import Decimal
+ 5 | | from pathlib import Path
+ 6 | | import sys
+ 7 | |
+ 8 | | from nvda_desk.market_measurement_truth import api as f
+   | |_______________________________________________________^
+ 9 |
+10 |   sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "support"))
+   |
+help: Organize imports
+
+RUF100 [*] Unused `noqa` directive (unused: `E402`)
+  --> tests/product/market_measurement_native_d134/test_signal.py:11:64
+   |
+10 | sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "support"))
+11 | from native_reconciliation import PublicDtoReader, typed_tree  # noqa: E402
+   |                                                                ^^^^^^^^^^^^
+12 |
+13 | T = datetime(2026, 10, 20, 12, 40, tzinfo=UTC)
+   |
+help: Remove unused `noqa` directive
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> tests/product/market_measurement_native_d135/test_signal.py:3:1
+   |
+ 1 |   """L06 native D135 pair, authored before production and NOT_RUN until L14."""
+ 2 |
+ 3 | / from dataclasses import replace
+ 4 | | from datetime import UTC, datetime, timedelta
+ 5 | | from decimal import Decimal
+ 6 | | from pathlib import Path
+ 7 | | import sys
+ 8 | |
+ 9 | | from nvda_desk.market_measurement_truth import api as f
+10 | | from nvda_desk.raw_signal_occurrence_truth import api as raw
+   | |____________________________________________________________^
+11 |
+12 |   sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "support"))
+   |
+help: Organize imports
+
+RUF100 [*] Unused `noqa` directive (unused: `E402`)
+  --> tests/product/market_measurement_native_d135/test_signal.py:13:64
+   |
+12 | sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "support"))
+13 | from native_reconciliation import PublicDtoReader, typed_tree  # noqa: E402
+   |                                                                ^^^^^^^^^^^^
+14 |
+15 | T = datetime(2026, 10, 20, 12, 40, tzinfo=UTC)
+   |
+help: Remove unused `noqa` directive
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> tests/product/market_measurement_native_d136/test_signal.py:3:1
+   |
+ 1 |   """L07 actual public native bid/ask predecessor pair; NOT_RUN until L14."""
+ 2 |
+ 3 | / from datetime import UTC, datetime, timedelta
+ 4 | | from decimal import Decimal
+ 5 | | from pathlib import Path
+ 6 | | import sys
+ 7 | |
+ 8 | | from nvda_desk.market_measurement_truth import api as f
+   | |_______________________________________________________^
+ 9 |
+10 |   sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "support"))
+   |
+help: Organize imports
+
+RUF100 [*] Unused `noqa` directive (unused: `E402`)
+  --> tests/product/market_measurement_native_d136/test_signal.py:11:64
+   |
+10 | sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "support"))
+11 | from native_reconciliation import PublicDtoReader, typed_tree  # noqa: E402
+   |                                                                ^^^^^^^^^^^^
+12 |
+13 | T = datetime(2026, 10, 20, 12, 40, tzinfo=UTC)
+   |
+help: Remove unused `noqa` directive
+
+E501 Line too long (102 > 100)
+  --> tests/product/market_measurement_native_d136/test_signal.py:89:101
+   |
+87 |         admission=f.OwnerAdmissionV1("M02", ASK_BRIEF),
+88 |         storage=f.SQLiteReadStorageV1(str(ask_path)))
+89 |     assert typed_tree(bid_reader.get_derived_occurrence(bid.derived_occurrence_id)) == typed_tree(bid)
+   |                                                                                                     ^^
+90 |     assert typed_tree(ask_reader.get_derived_occurrence(ask.derived_occurrence_id)) == typed_tree(ask)
+91 |     return bid, ask, bid_reader, ask_reader, bid_path, ask_path
+   |
+
+E501 Line too long (102 > 100)
+  --> tests/product/market_measurement_native_d136/test_signal.py:90:101
+   |
+88 |         storage=f.SQLiteReadStorageV1(str(ask_path)))
+89 |     assert typed_tree(bid_reader.get_derived_occurrence(bid.derived_occurrence_id)) == typed_tree(bid)
+90 |     assert typed_tree(ask_reader.get_derived_occurrence(ask.derived_occurrence_id)) == typed_tree(ask)
+   |                                                                                                     ^^
+91 |     return bid, ask, bid_reader, ask_reader, bid_path, ask_path
+   |
+
+E501 Line too long (104 > 100)
+   --> tests/product/market_measurement_native_d136/test_signal.py:124:101
+    |
+122 |         admission=f.OwnerAdmissionV1("M02", BRIEF),
+123 |         storage=f.SQLiteReadStorageV1(str(path)))
+124 |     assert typed_tree(reader.get_derived_occurrence(result.derived_occurrence_id)) == typed_tree(result)
+    |                                                                                                     ^^^^
+125 |     history = reader.list_derived_history(
+126 |         derived_signal_id="D136", subject_instrument="NVDA-STK-CONTROL-1",
+    |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> tests/product/market_measurement_native_d137/test_signal.py:3:1
+   |
+ 1 |   """L12 fixed native D137 pair; prepared, NOT_RUN until independent L14."""
+ 2 |
+ 3 | / from datetime import UTC, datetime, timedelta
+ 4 | | from decimal import Decimal
+ 5 | | from pathlib import Path
+ 6 | | import sys
+ 7 | |
+ 8 | | from nvda_desk.market_measurement_truth import api as f
+   | |_______________________________________________________^
+ 9 |
+10 |   sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "support"))
+   |
+help: Organize imports
+
+RUF100 [*] Unused `noqa` directive (unused: `E402`)
+  --> tests/product/market_measurement_native_d137/test_signal.py:11:64
+   |
+10 | sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "support"))
+11 | from native_reconciliation import PublicDtoReader, typed_tree  # noqa: E402
+   |                                                                ^^^^^^^^^^^^
+12 |
+13 | T = datetime(2026, 10, 20, 12, 40, tzinfo=UTC)
+   |
+help: Remove unused `noqa` directive
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> tests/product/market_measurement_native_d138/test_signal.py:3:1
+   |
+ 1 |   """L08 native D138 pair, authored before production; NOT_RUN until L14."""
+ 2 |
+ 3 | / from dataclasses import replace
+ 4 | | from datetime import UTC, datetime, timedelta
+ 5 | | from decimal import Decimal
+ 6 | | from pathlib import Path
+ 7 | | import sys
+ 8 | |
+ 9 | | from nvda_desk.market_measurement_truth import api as f
+10 | | from nvda_desk.raw_signal_occurrence_truth import api as r
+   | |__________________________________________________________^
+11 |
+12 |   sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "support"))
+   |
+help: Organize imports
+
+RUF100 [*] Unused `noqa` directive (unused: `E402`)
+  --> tests/product/market_measurement_native_d138/test_signal.py:13:64
+   |
+12 | sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "support"))
+13 | from native_reconciliation import PublicDtoReader, typed_tree  # noqa: E402
+   |                                                                ^^^^^^^^^^^^
+14 |
+15 | T = datetime(2026, 10, 16, 1, tzinfo=UTC)
+   |
+help: Remove unused `noqa` directive
+
+E501 Line too long (101 > 100)
+   --> tests/product/market_measurement_native_d138/test_signal.py:105:101
+    |
+103 |         receipt = T-timedelta(seconds=2-i)
+104 |         source.projections.append(r.ProjectedRawValueV1(
+105 |             mapping.raw_signal_catalogue_id, r.observation_occurrence_id("native-d138-d011-"+str(i)),
+    |                                                                                                     ^
+106 |             mapping.mapping_id, 1, mapping.source_provider, mapping.source_variant,
+107 |             mapping.native_field_path, value, "price", "NVDA", "true_instant",
+    |
+
+E501 Line too long (104 > 100)
+   --> tests/product/market_measurement_native_d138/test_signal.py:139:101
+    |
+137 |     reader = f.create_reader(admission=f.OwnerAdmissionV1("M02", D011_BRIEF),
+138 |                              storage=f.SQLiteReadStorageV1(str(path)))
+139 |     assert typed_tree(reader.get_derived_occurrence(parent.derived_occurrence_id)) == typed_tree(parent)
+    |                                                                                                     ^^^^
+140 |     assert path.read_bytes() == before
+141 |     return reader, parent, path, before
+    |
+
+E501 Line too long (101 > 100)
+   --> tests/product/market_measurement_native_d138/test_signal.py:165:101
+    |
+163 |     snapshot = result.source
+164 |     assert snapshot.profile.ref == PROFILE
+165 |     assert (snapshot.profile.provider, snapshot.profile.variant, snapshot.profile.subject_instrument,
+    |                                                                                                     ^
+166 |             snapshot.profile.request, snapshot.profile.generation, snapshot.profile.ingestion_scope,
+167 |             snapshot.profile.requested_exchange) == (
+    |
+
+E501 Line too long (105 > 100)
+   --> tests/product/market_measurement_native_d138/test_signal.py:187:101
+    |
+185 |         assert typed_tree(line.projection) == typed_tree(projection)
+186 |         assert typed_tree(line.canonical_value) == typed_tree(projection.native_value)
+187 |         assert type(line.canonical_value) is (Decimal if line.raw_signal_id in ("R189", "R190") else int)
+    |                                                                                                     ^^^^^
+188 |         assert line.time_basis == "collector_receipt" and line.event_time_utc is None
+189 |         assert projection.source_timestamp_raw is None and projection.source_timezone_native is None
+    |
+
+E501 Line too long (104 > 100)
+   --> tests/product/market_measurement_native_d138/test_signal.py:204:101
+    |
+202 |     reader = f.create_native_book_slope_reader(admission=f.OwnerAdmissionV1("M02", BRIEF),
+203 |                                               storage=f.SQLiteReadStorageV1(str(path)))
+204 |     assert typed_tree(reader.get_derived_occurrence(result.derived_occurrence_id)) == typed_tree(result)
+    |                                                                                                     ^^^^
+205 |     history = reader.list_derived_history(derived_signal_id="D138", subject_instrument="NVDA",
+206 |         effective_at_or_before_utc=T, knowledge_at_or_before_utc=CUTOFF, limit=10)
+    |
+
+E501 Line too long (103 > 100)
+   --> tests/product/market_measurement_native_d138/test_signal.py:220:101
+    |
+218 |     assert source.observations[-1].native_record["errorCode"] == 317
+219 |     assert source.observations[-1].received_ts_utc == T-timedelta(seconds=1)
+220 |     assert all(x.received_ts_utc < source.observations[-1].received_ts_utc for x in source.projections)
+    |                                                                                                     ^^^
+221 |     path = tmp_path / "refused-native-d138.sqlite"
+222 |     owner = f.create_native_book_slope_owner(
+    |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> tests/product/market_measurement_native_d139/test_signal.py:3:1
+   |
+ 1 |   """L09 native receipt-clock insertion pair; authored before code, NOT_RUN until L14."""
+ 2 |
+ 3 | / from datetime import UTC, datetime, timedelta
+ 4 | | from decimal import Decimal
+ 5 | | from pathlib import Path
+ 6 | | import sys
+ 7 | |
+ 8 | | from nvda_desk.market_measurement_truth import api as f
+ 9 | | from nvda_desk.raw_signal_occurrence_truth import api as r
+   | |__________________________________________________________^
+10 |
+11 |   sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "support"))
+   |
+help: Organize imports
+
+RUF100 [*] Unused `noqa` directive (unused: `E402`)
+  --> tests/product/market_measurement_native_d139/test_signal.py:12:64
+   |
+11 | sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "support"))
+12 | from native_reconciliation import PublicDtoReader, typed_tree  # noqa: E402
+   |                                                                ^^^^^^^^^^^^
+13 |
+14 | T = datetime(2026, 10, 20, 12, 40, tzinfo=UTC)
+   |
+help: Remove unused `noqa` directive
+
+E501 Line too long (101 > 100)
+  --> tests/product/market_measurement_native_d139/test_signal.py:91:101
+   |
+89 |     snapshot = value.source
+90 |     assert snapshot.profile.ref == PROFILE
+91 |     assert (snapshot.profile.provider, snapshot.profile.variant, snapshot.profile.subject_instrument,
+   |                                                                                                     ^
+92 |             snapshot.profile.request, snapshot.profile.generation, snapshot.profile.ingestion_scope,
+93 |             snapshot.profile.requested_exchange) == (
+   |
+
+E501 Line too long (107 > 100)
+   --> tests/product/market_measurement_native_d139/test_signal.py:113:101
+    |
+111 |         assert typed_tree(line.canonical_value) == typed_tree(original.native_value)
+112 |         assert type(line.canonical_value) is (
+113 |             datetime if line.raw_signal_id == "R001" else Decimal if line.raw_signal_id == "R190" else int)
+    |                                                                                                     ^^^^^^^
+114 |         assert line.time_basis == "collector_receipt" and line.event_time_utc is None
+115 |         assert original.source_temporal_kind == "receipt_only"
+    |
+
+E501 Line too long (102 > 100)
+   --> tests/product/market_measurement_native_d139/test_signal.py:121:101
+    |
+119 |         if line.raw_signal_id == "R001":
+120 |             observation = next(x for x in source.observations
+121 |                                if x.observation_occurrence_id.value == line.observation_occurrence_id)
+    |                                                                                                     ^^
+122 |             assert original.native_field_path == ("time", "receipt")
+123 |             assert line.canonical_value == observation.received_ts_utc
+    |
+
+E501 Line too long (102 > 100)
+   --> tests/product/market_measurement_native_d139/test_signal.py:139:101
+    |
+137 |     reader = f.create_native_book_insert_rate_reader(admission=f.OwnerAdmissionV1("M02", BRIEF),
+138 |                                                     storage=f.SQLiteReadStorageV1(str(path)))
+139 |     assert typed_tree(reader.get_derived_occurrence(value.derived_occurrence_id)) == typed_tree(value)
+    |                                                                                                     ^^
+140 |     history = reader.list_derived_history(derived_signal_id="D139", subject_instrument="NVDA",
+141 |         effective_at_or_before_utc=T, knowledge_at_or_before_utc=CUTOFF, limit=10)
+    |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> tests/product/market_measurement_native_d140/test_signal.py:3:1
+   |
+ 1 |   """L10 native deletion pair; authored before production, NOT_RUN until L14."""
+ 2 |
+ 3 | / from datetime import UTC, datetime, timedelta
+ 4 | | from decimal import Decimal
+ 5 | | from pathlib import Path
+ 6 | | import sys
+ 7 | |
+ 8 | | from nvda_desk.market_measurement_truth import api as f
+ 9 | | from nvda_desk.raw_signal_occurrence_truth import api as r
+   | |__________________________________________________________^
+10 |
+11 |   sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "support"))
+   |
+help: Organize imports
+
+RUF100 [*] Unused `noqa` directive (unused: `E402`)
+  --> tests/product/market_measurement_native_d140/test_signal.py:12:64
+   |
+11 | sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "support"))
+12 | from native_reconciliation import PublicDtoReader, typed_tree  # noqa: E402
+   |                                                                ^^^^^^^^^^^^
+13 |
+14 | T = datetime(2026, 10, 20, 12, 40, tzinfo=UTC)
+   |
+help: Remove unused `noqa` directive
+
+E501 Line too long (103 > 100)
+  --> tests/product/market_measurement_native_d140/test_signal.py:81:101
+   |
+79 |         admission=f.OwnerAdmissionV1("M02", SOURCE_BRIEF), raw_reader=source,
+80 |         storage=f.MemoryStorageV1(), utc_now=lambda: NOW)
+81 |     prefix = prefix_owner.materialise(f.NativeSourceRequestV1(PROFILE, T-timedelta(seconds=2), CUTOFF))
+   |                                                                                                     ^^^
+82 |     assert type(prefix) is f.NativeSourceSnapshotV1
+83 |     assert tuple((x.side, x.position, x.size) for x in prefix.standing_rows) == (
+   |
+
+E501 Line too long (101 > 100)
+   --> tests/product/market_measurement_native_d140/test_signal.py:104:101
+    |
+102 |     snapshot = value.source
+103 |     assert snapshot.profile.ref == PROFILE
+104 |     assert (snapshot.profile.provider, snapshot.profile.variant, snapshot.profile.subject_instrument,
+    |                                                                                                     ^
+105 |             snapshot.profile.request, snapshot.profile.generation, snapshot.profile.ingestion_scope,
+106 |             snapshot.profile.requested_exchange) == (
+    |
+
+E501 Line too long (108 > 100)
+   --> tests/product/market_measurement_native_d140/test_signal.py:118:101
+    |
+116 |     assert len(snapshot.raw_input_lineage) == 25
+117 |     assert {x.raw_signal_id for x in snapshot.raw_input_lineage} == {x[0] for x in ROLES}
+118 |     assert {x.observation_occurrence_id for x in snapshot.raw_input_lineage} == {*WARMUP_IDS, "REC-RATE-D1"}
+    |                                                                                                     ^^^^^^^^
+119 |     for line in snapshot.raw_input_lineage:
+120 |         original = next(x for x in source.projections
+    |
+
+E501 Line too long (107 > 100)
+   --> tests/product/market_measurement_native_d140/test_signal.py:126:101
+    |
+124 |         assert typed_tree(line.canonical_value) == typed_tree(original.native_value)
+125 |         assert type(line.canonical_value) is (
+126 |             datetime if line.raw_signal_id == "R001" else Decimal if line.raw_signal_id == "R190" else int)
+    |                                                                                                     ^^^^^^^
+127 |         assert line.time_basis == "collector_receipt" and line.event_time_utc is None
+128 |         assert original.source_temporal_kind == "receipt_only"
+    |
+
+E501 Line too long (102 > 100)
+   --> tests/product/market_measurement_native_d140/test_signal.py:134:101
+    |
+132 |         if line.raw_signal_id == "R001":
+133 |             observation = next(x for x in source.observations
+134 |                                if x.observation_occurrence_id.value == line.observation_occurrence_id)
+    |                                                                                                     ^^
+135 |             assert original.native_field_path == ("time", "receipt")
+136 |             assert line.canonical_value == observation.received_ts_utc
+    |
+
+E501 Line too long (102 > 100)
+   --> tests/product/market_measurement_native_d140/test_signal.py:150:101
+    |
+148 |     reader = f.create_native_book_delete_rate_reader(admission=f.OwnerAdmissionV1("M02", BRIEF),
+149 |                                                     storage=f.SQLiteReadStorageV1(str(path)))
+150 |     assert typed_tree(reader.get_derived_occurrence(value.derived_occurrence_id)) == typed_tree(value)
+    |                                                                                                     ^^
+151 |     history = reader.list_derived_history(derived_signal_id="D140", subject_instrument="NVDA",
+152 |         effective_at_or_before_utc=T, knowledge_at_or_before_utc=CUTOFF, limit=10)
+    |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> tests/product/market_measurement_native_d143/test_signal.py:3:1
+   |
+ 1 |   """L11 native subscribed-side MPID pair, authored before production; NOT_RUN."""
+ 2 |
+ 3 | / from dataclasses import replace
+ 4 | | from datetime import UTC, datetime, timedelta
+ 5 | | from decimal import Decimal
+ 6 | | from pathlib import Path
+ 7 | | import sys
+ 8 | |
+ 9 | | from nvda_desk.market_measurement_truth import api as f
+10 | | from nvda_desk.raw_signal_occurrence_truth import api as r
+   | |__________________________________________________________^
+11 |
+12 |   sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "support"))
+   |
+help: Organize imports
+
+RUF100 [*] Unused `noqa` directive (unused: `E402`)
+  --> tests/product/market_measurement_native_d143/test_signal.py:13:64
+   |
+12 | sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "support"))
+13 | from native_reconciliation import PublicDtoReader, typed_tree  # noqa: E402
+   |                                                                ^^^^^^^^^^^^
+14 |
+15 | T = datetime(2026, 10, 20, 12, 40, tzinfo=UTC)
+   |
+help: Remove unused `noqa` directive
+
+E501 Line too long (101 > 100)
+  --> tests/product/market_measurement_native_d143/test_signal.py:87:101
+   |
+85 |     snapshot = value.source
+86 |     assert snapshot.profile.ref == PROFILE
+87 |     assert (snapshot.profile.provider, snapshot.profile.variant, snapshot.profile.subject_instrument,
+   |                                                                                                     ^
+88 |             snapshot.profile.request, snapshot.profile.generation, snapshot.profile.ingestion_scope,
+89 |             snapshot.profile.requested_exchange) == (
+   |
+
+E501 Line too long (106 > 100)
+   --> tests/product/market_measurement_native_d143/test_signal.py:131:101
+    |
+129 |         assert original.selection_identity.value_for("marketMaker") in ("ALPHA", "BETA")
+130 |         assert original.selection_identity.value_for("isSmartDepth") is False
+131 |     assert value.definition.calculation_definition_version == "D143-NATIVE-SUBSCRIBED-ALL-ROWS-MPID-HHI-1"
+    |                                                                                                     ^^^^^^
+132 |     assert value.definition.kernel_id == "K02_ALGEBRA"
+133 |     assert value.definition.parameter_profile == "P_BASIC"
+    |
+
+E501 Line too long (101 > 100)
+   --> tests/product/market_measurement_native_d143/test_signal.py:134:101
+    |
+132 |     assert value.definition.kernel_id == "K02_ALGEBRA"
+133 |     assert value.definition.parameter_profile == "P_BASIC"
+134 |     assert value.definition.raw_dependencies == ROLES and value.definition.derived_dependencies == ()
+    |                                                                                                     ^
+135 |     assert value.units == "normalised MPID concentration" and value.result_shape == "venue_concentration"
+136 |     assert (value.effective_as_of_utc, value.knowledge_cutoff_utc, value.calculated_at_utc) == (
+    |
+
+E501 Line too long (105 > 100)
+   --> tests/product/market_measurement_native_d143/test_signal.py:135:101
+    |
+133 |     assert value.definition.parameter_profile == "P_BASIC"
+134 |     assert value.definition.raw_dependencies == ROLES and value.definition.derived_dependencies == ()
+135 |     assert value.units == "normalised MPID concentration" and value.result_shape == "venue_concentration"
+    |                                                                                                     ^^^^^
+136 |     assert (value.effective_as_of_utc, value.knowledge_cutoff_utc, value.calculated_at_utc) == (
+137 |         T, CUTOFF, NOW)
+    |
+
+E501 Line too long (102 > 100)
+   --> tests/product/market_measurement_native_d143/test_signal.py:142:101
+    |
+140 |     reader = f.create_native_direct_venue_reader(admission=f.OwnerAdmissionV1("M02", BRIEF),
+141 |                                                storage=f.SQLiteReadStorageV1(str(path)))
+142 |     assert typed_tree(reader.get_derived_occurrence(value.derived_occurrence_id)) == typed_tree(value)
+    |                                                                                                     ^^
+143 |     history = reader.list_derived_history(derived_signal_id="D143",
+144 |         subject_instrument="NVDA-STK-CONTROL-1", effective_at_or_before_utc=T,
+    |
+
+E501 Line too long (107 > 100)
+   --> tests/product/market_measurement_native_d143/test_signal.py:160:101
+    |
+158 |     assert len(final) == 5
+159 |     assert {x.raw_signal_catalogue_id.value for x in final} == set(ROLES) - {"R193"}
+160 |     assert next(x.native_value for x in final if x.raw_signal_catalogue_id.value == "R197") == Decimal("1")
+    |                                                                                                     ^^^^^^^
+161 |     assert all({x.raw_signal_catalogue_id.value for x in source.projections
+162 |                 if x.observation_occurrence_id.value == oid} == set(ROLES) for oid in IDS[:-1])
+    |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> tests/product/market_measurement_native_source/test_source.py:3:1
+   |
+ 1 |   """L02 fixed source/control pair; authored for independent L14 execution only."""
+ 2 |
+ 3 | / from dataclasses import replace
+ 4 | | from datetime import UTC, datetime, timedelta
+ 5 | | from decimal import Decimal
+ 6 | | from pathlib import Path
+ 7 | | import sys
+ 8 | |
+ 9 | | from nvda_desk.market_measurement_truth import api as f
+10 | | from nvda_desk.raw_signal_occurrence_truth import api as raw
+   | |____________________________________________________________^
+11 |
+12 |   sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "support"))
+   |
+help: Organize imports
+
+RUF100 [*] Unused `noqa` directive (unused: `E402`)
+  --> tests/product/market_measurement_native_source/test_source.py:13:64
+   |
+12 | sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "support"))
+13 | from native_reconciliation import PublicDtoReader, typed_tree  # noqa: E402
+   |                                                                ^^^^^^^^^^^^
+14 |
+15 | BRIEF = "5b777c5842b091f6dc4bef148970c4cf81b68864bd24f5a1633d392f38d96ead"
+   |
+help: Remove unused `noqa` directive
+
+E501 Line too long (104 > 100)
+  --> tests/support/native_reconciliation.py:19:101
+   |
+18 | ROOT = Path(__file__).resolve().parents[2]
+19 | OUTPUT = ROOT / "handoff/downstream_reconciliation/authority/fixtures/FROZEN_M00_PUBLIC_OUTPUT_V1.jsonl"
+   |                                                                                                     ^^^^
+   |
+
+E501 Line too long (104 > 100)
+  --> tests/support/native_reconciliation.py:73:101
+   |
+71 |     data = dict(value)
+72 |     data["raw_signal_catalogue_id"] = raw.RawSignalCatalogueId(data["raw_signal_catalogue_id"])
+73 |     data["observation_occurrence_id"] = raw.observation_occurrence_id(data["observation_occurrence_id"])
+   |                                                                                                     ^^^^
+74 |     data["native_field_path"] = tuple(data["native_field_path"])
+75 |     data["native_value"] = native(data["native_value"])
+   |
+
+E501 Line too long (101 > 100)
+  --> tests/support/native_reconciliation.py:77:101
+   |
+75 |     data["native_value"] = native(data["native_value"])
+76 |     data["received_ts_utc"] = instant(data["received_ts_utc"])
+77 |     data["ingestion_sequence_scope"] = raw.ingestion_sequence_scope(data["ingestion_sequence_scope"])
+   |                                                                                                     ^
+78 |     if data["selection_identity"] is not None:
+79 |         data["selection_identity"] = raw.RawSelectionIdentityV1(tuple(
+   |
+
+Found 125 errors.
+[*] 35 fixable with the `--fix` option.

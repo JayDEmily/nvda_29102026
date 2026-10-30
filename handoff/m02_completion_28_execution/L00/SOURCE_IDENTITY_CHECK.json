@@ -1,0 +1,82 @@
+[
+  {
+    "path": "GUARDRAILS.md",
+    "match": true
+  },
+  {
+    "path": "AGENTS.md",
+    "match": true
+  },
+  {
+    "path": "tests/AGENTS.override.md",
+    "match": true
+  },
+  {
+    "path": "EXEC_PLAN.md",
+    "match": true
+  },
+  {
+    "path": "config/architecture/modules.yaml",
+    "match": true
+  },
+  {
+    "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md",
+    "match": true
+  },
+  {
+    "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv",
+    "match": true
+  },
+  {
+    "path": "handoff/m01_completion/authority/D138_D145_L2_OWNER_APPROVED_DEPENDENCY_AMENDMENT_20261016.md",
+    "match": true
+  },
+  {
+    "path": "handoff/foundation_implementation/authority/FOUNDATION_IMPLEMENTATION_BRIEF_PROPOSED.md",
+    "match": true
+  },
+  {
+    "path": "handoff/m02_remaining_readiness/COMPLETION_REGISTER.json",
+    "match": true
+  },
+  {
+    "path": "handoff/m02_remaining_readiness/UNRESOLVED_REGISTER.json",
+    "match": true
+  },
+  {
+    "path": "handoff/m02_remaining_readiness/EVIDENCE_REUSE.json",
+    "match": true
+  },
+  {
+    "path": "handoff/m02_remaining_readiness/EXTERNAL_HOLDS.json",
+    "match": true
+  },
+  {
+    "path": "handoff/m02_remaining_readiness/DEPENDENCY_AND_NEXT_WORK.md",
+    "match": true
+  },
+  {
+    "path": "handoff/m02_foundation_prerequisites_20261029/SOURCE_AND_DECISION_REGISTER.json",
+    "match": true
+  },
+  {
+    "path": "handoff/m02_foundation_prerequisites_20261029/R3_TENTATIVE_SYNTHETIC_PROFILES_V1.json",
+    "match": true
+  },
+  {
+    "path": "handoff/m02_foundation_prerequisites_20261029/NEUTRAL_POLICY_PROPOSAL_STATUS.json",
+    "match": true
+  },
+  {
+    "path": "handoff/m02_foundation_prerequisites_20261029/G4_DELEGATED_INDEPENDENT_REVIEW.md",
+    "match": true
+  },
+  {
+    "path": "handoff/m02_oracle_v2_review_20261029/REUSE_ASSESSMENT.md",
+    "match": true
+  },
+  {
+    "path": "handoff/m02_oracle_v2_review_20261029/INDEPENDENT_REVIEW.md",
+    "match": true
+  }
+]

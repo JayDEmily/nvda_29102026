@@ -1,0 +1,321 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:nvda-planning:v1:test-evidence-ledger",
+  "title": "NVDA test allocation and evidence reuse ledger",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "plan_id",
+    "ledger_status",
+    "repository",
+    "execution_mode",
+    "proof_obligations"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "plan_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "ledger_status": {
+      "enum": [
+        "DRAFT",
+        "ACTIVE",
+        "FINAL"
+      ]
+    },
+    "repository": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "baseline_commit",
+        "candidate_commit"
+      ],
+      "properties": {
+        "baseline_commit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "candidate_commit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "plan_revision": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "execution_mode": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "capability_evidence",
+        "test_phase"
+      ],
+      "properties": {
+        "mode": {
+          "enum": [
+            "WORK_DELEGATED",
+            "CHAT_MANUAL",
+            "UNVERIFIED"
+          ]
+        },
+        "capability_evidence": {
+          "type": "string"
+        },
+        "test_phase": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "proof_obligations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "proof_id",
+          "module",
+          "claim",
+          "requirement_refs",
+          "source_identity",
+          "prior_evidence",
+          "test_allocation",
+          "execution"
+        ],
+        "properties": {
+          "proof_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "module": {
+            "type": "string",
+            "minLength": 1
+          },
+          "claim": {
+            "type": "string",
+            "minLength": 1
+          },
+          "requirement_refs": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "source_identity": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "commit",
+              "contract_id"
+            ],
+            "properties": {
+              "commit": {
+                "type": "string",
+                "minLength": 1
+              },
+              "contract_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "profile_id": {
+                "type": "string"
+              }
+            }
+          },
+          "prior_evidence": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "decision",
+              "rationale",
+              "evidence_refs"
+            ],
+            "properties": {
+              "decision": {
+                "enum": [
+                  "REUSABLE",
+                  "INVALIDATED",
+                  "NEW",
+                  "UNRESOLVED"
+                ]
+              },
+              "rationale": {
+                "type": "string",
+                "minLength": 1
+              },
+              "evidence_refs": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              },
+              "original_proof_revision": {
+                "type": "string"
+              }
+            }
+          },
+          "test_allocation": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "authority_ref",
+              "authorised_case_count",
+              "hard_ceiling",
+              "cases"
+            ],
+            "properties": {
+              "authority_ref": {
+                "type": "string",
+                "minLength": 1
+              },
+              "authorised_case_count": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "hard_ceiling": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "cases": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "case_id",
+                    "kind",
+                    "proof_path",
+                    "status"
+                  ],
+                  "properties": {
+                    "case_id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "kind": {
+                      "enum": [
+                        "SUCCESS",
+                        "REACHED_REFUSAL",
+                        "OTHER_AUTHORISED"
+                      ]
+                    },
+                    "proof_path": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "status": {
+                      "enum": [
+                        "NOT_RUN",
+                        "PASSED",
+                        "FAILED",
+                        "BLOCKED",
+                        "INVALIDATED"
+                      ]
+                    },
+                    "evidence_refs": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "uniqueItems": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "execution": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "scheduled_leaf",
+              "reviewer",
+              "semantic_status",
+              "runs"
+            ],
+            "properties": {
+              "scheduled_leaf": {
+                "type": "string",
+                "minLength": 1
+              },
+              "reviewer": {
+                "type": "string"
+              },
+              "semantic_status": {
+                "enum": [
+                  "NOT_ATTEMPTED",
+                  "IMPLEMENTED_UNTESTED",
+                  "RETURNED_FOR_REPAIR",
+                  "BLOCKED",
+                  "TESTED_ACCEPTED"
+                ]
+              },
+              "runs": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "case_id",
+                    "candidate_commit",
+                    "command",
+                    "exit_code",
+                    "result",
+                    "evidence_ref",
+                    "reviewer_disposition"
+                  ],
+                  "properties": {
+                    "case_id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "candidate_commit": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "command": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "exit_code": {
+                      "type": "integer"
+                    },
+                    "result": {
+                      "enum": [
+                        "PASSED",
+                        "FAILED",
+                        "BLOCKED"
+                      ]
+                    },
+                    "evidence_ref": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "reviewer_disposition": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

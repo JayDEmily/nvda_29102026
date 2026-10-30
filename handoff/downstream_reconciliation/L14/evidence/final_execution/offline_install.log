@@ -1,0 +1,20 @@
+Using Python 3.12.14 environment at: /workspace/scratch/ad31885d756b/l14_env_resumed
+Resolved 16 packages in 9ms
+Prepared 16 packages in 175ms
+Installed 16 packages in 25ms
+ + editables==0.6
+ + hatchling==1.29.0
+ + iniconfig==2.3.1
+ + librt==0.16.0
+ + mypy==1.20.1
+ + mypy-extensions==1.1.0
+ + packaging==26.3
+ + pathspec==1.1.1
+ + pluggy==1.7.0
+ + psycopg==3.3.4
+ + pygments==2.21.0
+ + pytest==9.0.3
+ + pyyaml==6.0.3
+ + ruff==0.15.11
+ + trove-classifiers==2026.9.21.13
+ + typing-extensions==4.16.0

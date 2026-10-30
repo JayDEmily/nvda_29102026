@@ -1,0 +1,5 @@
+# L13 status — DOCUMENTARY_DISPOSITION
+
+29 October 2026 UTC. D145 event-clock input conflict, precise resumption conditions, unchanged K17/dependency overlay, bounded direct D152/D153 trace, six named holds and historical holds are recorded in D145_RESUMPTION_DISPOSITION.md. PROPOSED_PAUSED_PLAN_AMENDMENT.md is an unapplied successor proposal. D145 capability remains BLOCKED/PAUSED; no source/test/claim/generation is created or old plan resumed. L14 independent documentary review and all new product/static/runtime proof remain NOT_ATTEMPTED/NOT_RUN. No D145 tests are authorised in L14.
+
+L12 was saved and exposed before L13 per controller acknowledgement: HEAD81e86b5e70138558526dbe335657919f5cf5b4cf; bundle SHA256f4d9fb23f0f9f3992545b1f9f413a50f8a54c914f6bdcea60d762f302d304866; saved filelibfile_0e92e2c10e608191afe6efb363625d16. Baseline97f944d51ab9e403250fe76910e2754b50425c73 is unchanged; independent tester possession is unconfirmed. L13 export/save/exposure is pending at this committed-manifest candidate. Final tester handoff preparation follows checkpoint exposure; no internal proof executor substitutes for the manual independent thread required by R2.

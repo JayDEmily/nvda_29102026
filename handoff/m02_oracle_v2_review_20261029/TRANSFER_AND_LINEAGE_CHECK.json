@@ -1,0 +1,27 @@
+{
+  "scope": "V2 attachment integrity; not semantic acceptance",
+  "manifest_members_verified": 42,
+  "head": "46fc04a20312d5687a36cdbf308e9c1070bdb2ef",
+  "tree": "d80c95be7493325e8ac0d5ddda452326aed98560",
+  "original_refs_preserved": 66,
+  "restored_ref_count": 69,
+  "fresh_Git_restore_bundle_verify_fsck_and_tracked_blob_equality": true,
+  "all_loose_files_byte_equal_to_Git": false,
+  "loose_vs_Git_exception": "COVERAGE_MATRIX.csv loose8783/Git8754;29CRLF-versus-LF line endings only; parsed content unchanged; see LOOSE_VS_GIT_MISMATCH.json",
+  "seven_new_V2_files_loose_equal_to_Git": true,
+  "bundle_sha256": "4012459dc7bd7d605409ecbef5db2b624a32988d17713bd07e54346f431295a6",
+  "accepted_current_head": "9bd59acba13ead7252e52e32e1b5d862adecd99a",
+  "merge_base_with_current": "10a37c8b81c200b0f048e36a3585cdbaf2eeed08",
+  "new_files_since_common_ancestor": [
+    "handoff/m02_foundation_prerequisites_20261029/R3_SYNTHETIC_ORACLE_CASES_V2.json",
+    "handoff/m02_foundation_prerequisites_20261029/R3_SYNTHETIC_ORACLE_HANDOFF_V2.md",
+    "handoff/m02_foundation_prerequisites_20261029/R3_SYNTHETIC_ORACLE_READBACK_V2.json",
+    "handoff/m02_foundation_prerequisites_20261029/SYNTHETIC_D091_BOUNDARIES_V2.csv",
+    "handoff/m02_foundation_prerequisites_20261029/SYNTHETIC_D142_STATE_TIMELINE_V2.csv",
+    "handoff/m02_foundation_prerequisites_20261029/SYNTHETIC_D144_MATCHED_LEVELS_V2.csv",
+    "handoff/m02_foundation_prerequisites_20261029/SYNTHETIC_K06_HELDOUT_AND_REFUSAL_V2.csv"
+  ],
+  "product_config_test_diff_to_current": [],
+  "readiness_register_diff_to_current": [],
+  "product_tests_run": 0
+}

@@ -1,0 +1,25 @@
+{
+  "candidate": "5ca757c256d764bd4848dc8f9c80f433a9c2863d",
+  "tree": "746f02b25410dbfa23fc2a3421e4d0373d35663c",
+  "command": [
+    "/workspace/scratch/ad31885d756b/l14_env/bin/python",
+    "tools/validate_implementation_authority.py",
+    "--binding",
+    "implementation/authority/DOWNSTREAM_NATIVE_D135_BINDING.yaml",
+    "--brief",
+    "handoff/downstream_reconciliation/authority/briefs/NATIVE_D135_BRIEF.md"
+  ],
+  "PYTHONPATH": "src",
+  "exit_code": 0,
+  "log": "/workspace/scratch/ad31885d756b/l14_evidence/ingress_L06_5ca757c2.log",
+  "sha256": "bd2034aa5436a347f04f2277b192599141c3043b3d990cfe89e882d2323ce38f",
+  "stdout_sha256": "bd2034aa5436a347f04f2277b192599141c3043b3d990cfe89e882d2323ce38f",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "seconds": 0.14840269088745117,
+  "collected": null,
+  "passed": null,
+  "failed": null,
+  "skipped": null,
+  "xfailed": null,
+  "xpassed": null
+}

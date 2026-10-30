@@ -1,0 +1,45 @@
+{
+  "leaf": "L02",
+  "status": "AUTHOR_DOCUMENTARY_CANDIDATE_INDEPENDENT_REVIEW_PENDING",
+  "ids": [
+    "D078",
+    "D079",
+    "D080",
+    "D081",
+    "D095",
+    "D096",
+    "D097",
+    "D098",
+    "D102",
+    "D107",
+    "D108",
+    "D109",
+    "D110",
+    "D111",
+    "D112",
+    "D113"
+  ],
+  "sources": [
+    {
+      "path": "handoff/downstream_reconciliation/FINAL_REPORT.md",
+      "sha256": "8be0a591460cd29d8b613de64597ee7c89d71db05660998f01a8bf73a04a670f",
+      "git_blob": "ddb5ff00582ccac8967edb51d424363e43068ec0"
+    },
+    {
+      "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md",
+      "sha256": "603b850802a418780109095e7ae69bcece449da79fb24140a6d50297605e927c",
+      "git_blob": "32930fc08eb648c2cc6347d32d910e3a45bdc07f"
+    },
+    {
+      "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv",
+      "sha256": "67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549",
+      "git_blob": "a27d5e768ab7f1126cecd5a7bbe35bd05b82a442"
+    },
+    {
+      "path": "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
+      "sha256": "2d95d7c5e425ed1dd231f4685100f7c1db9c85ee1369fea54f91580aab6caa5a",
+      "git_blob": "71eeea1f267b12c4e8182dd9809cfe2e17258c15"
+    }
+  ],
+  "no_product_tests": true
+}

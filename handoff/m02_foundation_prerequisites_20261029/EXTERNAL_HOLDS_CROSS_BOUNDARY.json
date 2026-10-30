@@ -1,0 +1,69 @@
+{
+  "status": "PRESERVED_NOT_IN_126",
+  "source": "/mnt/data/m02_readiness_work/repo/handoff/m02_remaining_readiness/EXTERNAL_HOLDS.json",
+  "rows": [
+    {
+      "derived_id": "D061",
+      "canonical_name": "Composite US volatility regime score",
+      "owner": "P02 / existing M03",
+      "historical_status": "OWNER_DEFERRED_OR_HELD; NOT IMPLEMENTED/ACCEPTED BY THIS LEAF",
+      "hold_authority": "7b343c56:EXEC_PLAN.md \u00a75/\u00a7\u00a713\u201315",
+      "current_disposition": "Retain exact historical conditions; no automatic promotion or reassignment",
+      "counted_in_126": false
+    },
+    {
+      "derived_id": "D064",
+      "canonical_name": "Event importance score",
+      "owner": "P03 unallocated / exact source-policy jurisdiction unresolved",
+      "historical_status": "OWNER_DEFERRED_OR_HELD; NOT IMPLEMENTED/ACCEPTED BY THIS LEAF",
+      "hold_authority": "7b343c56:EXEC_PLAN.md \u00a75/\u00a7\u00a713\u201315",
+      "current_disposition": "Retain exact historical conditions; no automatic promotion or reassignment",
+      "counted_in_126": false
+    },
+    {
+      "derived_id": "D065",
+      "canonical_name": "Active event-window flag",
+      "owner": "P03 unallocated / exact source-policy jurisdiction unresolved",
+      "historical_status": "OWNER_DEFERRED_OR_HELD; NOT IMPLEMENTED/ACCEPTED BY THIS LEAF",
+      "hold_authority": "7b343c56:EXEC_PLAN.md \u00a75/\u00a7\u00a713\u201315",
+      "current_disposition": "Retain exact historical conditions; no automatic promotion or reassignment",
+      "counted_in_126": false
+    },
+    {
+      "derived_id": "D070",
+      "canonical_name": "International overnight risk score",
+      "owner": "P02 / existing M03",
+      "historical_status": "OWNER_DEFERRED_OR_HELD; NOT IMPLEMENTED/ACCEPTED BY THIS LEAF",
+      "hold_authority": "handoff/foundation_implementation/authority/FOUNDATION_IMPLEMENTATION_BRIEF_PROPOSED.md#Annex-C(P02); 7b343c56:EXEC_PLAN.md \u00a73/\u00a75.5; config/architecture/modules.yaml#M03",
+      "current_disposition": "P02 / existing M03 remains the owner; exact K07 seven-input score, horizon/FX profiles and D049/D050 1-day versus D051 5-day compatibility unresolved; no implementation/acceptance or M02 transfer",
+      "counted_in_126": false
+    },
+    {
+      "derived_id": "D084",
+      "canonical_name": "Sector rotation score",
+      "owner": "P02 / existing M03",
+      "historical_status": "OWNER_DEFERRED_OR_HELD; NOT IMPLEMENTED/ACCEPTED BY THIS LEAF",
+      "hold_authority": "f790c9ea:EXEC_PLAN.md \u00a73",
+      "current_disposition": "Retain exact historical conditions; no automatic promotion or reassignment",
+      "counted_in_126": false
+    },
+    {
+      "derived_id": "D114",
+      "canonical_name": "Estimated physical/real-world return distribution",
+      "owner": "P07 (numeric module allocation not made)",
+      "historical_status": "OWNER_DEFERRED_OR_HELD; NOT IMPLEMENTED/ACCEPTED BY THIS LEAF",
+      "hold_authority": "f790c9ea:EXEC_PLAN.md \u00a73",
+      "current_disposition": "Retain exact historical conditions; no automatic promotion or reassignment",
+      "counted_in_126": false
+    },
+    {
+      "derived_id": "D115",
+      "canonical_name": "Risk-neutral versus physical distribution gap",
+      "owner": "P07 (numeric module allocation not made)",
+      "historical_status": "OWNER_DEFERRED_OR_HELD; NOT IMPLEMENTED/ACCEPTED BY THIS LEAF",
+      "hold_authority": "f790c9ea:EXEC_PLAN.md \u00a73",
+      "current_disposition": "Retain exact historical conditions; no automatic promotion or reassignment",
+      "counted_in_126": false
+    }
+  ]
+}

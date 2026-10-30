@@ -1,0 +1,98 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_native_d143",
+  "semantic_brief_path": "handoff/downstream_reconciliation/authority/briefs/NATIVE_D143_BRIEF.md",
+  "target": {
+    "category": "M",
+    "responsibility_name": "neutral_market_measurement_truth",
+    "package": "nvda_desk.market_measurement_truth",
+    "public_seam": "nvda_desk.market_measurement_truth.api",
+    "intent": "modify",
+    "existing_object_id": "M02"
+  },
+  "proof_axis": "product",
+  "product_tier_treatment": "NOT_CLASSIFIED",
+  "architecture_proof_axis": "architecture_kernel",
+  "required_proof_ids": [
+    "NATIVE-D143-SUBSCRIBED-QUALIFIED-MPID-CONCENTRATION"
+  ],
+  "families": [
+    {
+      "id": "mmt_native_d143",
+      "path": "tests/product/market_measurement_native_d143/test_signal.py",
+      "proof_obligation_ids": [
+        "NATIVE-D143-SUBSCRIBED-QUALIFIED-MPID-CONCENTRATION"
+      ],
+      "required_test_names": [
+        "test_native_success",
+        "test_native_refusal"
+      ],
+      "boundary": "Native direct subscribed-side position replay across MPIDs, public intermediate insertion snapshot, deletion restoring all four C2 rows, qualified all-row MPID grouping and exact typed durable readback.",
+      "proof_levels": [
+        "CONTRACT",
+        "INTEGRATION",
+        "STATE"
+      ],
+      "authoritative_inputs": [
+        "Exact L01 C2 source, commissioned cross-MPID insert/delete recipe, all-standing-row grouping scope and literal ALPHA6/BETA2, shares3/4 and1/4, HHI5/8."
+      ],
+      "dependency_substitutions": [
+        "Frozen actual M00 public C2 DTOs via declared module-local reader plus exact isolated synthetic insert/delete recipe; no M00 runtime, private source access or mathematical predecessor."
+      ],
+      "case_coverage": {
+        "lawful_positive": {
+          "cases": [
+            "C2 complete prefix, BETA subscribed bid-position0 insert shifts ALPHA4/BETA1 to positions1/2 in a public source snapshot; delete returns original four rows. Group every standing row on both sides: ALPHA6/BETA2, shares3/4 and1/4, HHI5/8, with36 typed raw lineages and unchanged SQLite read-only bytes."
+          ]
+        },
+        "prohibited_false_positive": {
+          "cases": [
+            "Omit only R193 from final C2 callback, retain R197 size1 and all other roles; no result/history."
+          ]
+        },
+        "missing_mandatory_authority": {
+          "cases": [
+            "Exact C2 provider/request/exchange/generation/contract, native side1bid/0ask, complete bound warm-up, subscribed-side cross-MPID positions and authorised all-standing-row grouping scope."
+          ]
+        },
+        "lawful_optional_absence": {
+          "cases": [
+            "Provider event time/timezone absent; requested exchange remains separate from MPID; no D087 or other mathematical predecessor."
+          ]
+        }
+      },
+      "expected_failure_signals": [
+        "Per-MPID positional replay",
+        "Hidden intermediate ALPHA shift",
+        "Truncated or swapped side grouping",
+        "Exchange/MPID conflation",
+        "Missing MPID accepted",
+        "Lossy durable source/config lineage"
+      ],
+      "limitations": [
+        "Commissioned C2 stock synthetic direct compatibility only; no entitlement, native live, C3 CALL or PUT-direct claim."
+      ],
+      "adjacent_nonclaims": [
+        "Original legacy per-MPID-top-one D143 evidence and source remain preserved; D145 and unrelated held work stay paused."
+      ],
+      "environment": "Pinned CPython3.12.14 SQLite3.53.1 and existing tools.",
+      "material_versions": [
+        "Exact L01 native brief/binding/contract/generation and candidate source."
+      ],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/market_measurement_native_d143/test_signal.py"
+    }
+  ],
+  "required_support_files": [
+    "tests/support/native_reconciliation.py"
+  ],
+  "optional_support_files": [],
+  "execution_policy": {
+    "skipped_tests": "FAIL",
+    "xfailed_tests": "FAIL",
+    "xpassed_tests": "FAIL",
+    "collection_failed": "FAIL",
+    "no_tests_collected": "FAIL",
+    "unexpected_governed_mutation": "FAIL"
+  }
+}

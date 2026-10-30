@@ -1,0 +1,10 @@
+{
+  "source_attachment": "NVDA_M02_R3_SYNTHETIC_ORACLES_V2_20261029_REVIEW_HANDOFF.tar(1).gz",
+  "attachment_sha256": "6d35318ead3e5de37dc899b1bbc4a8927bb37b3004125a3c8ab7892e14c06815",
+  "accepted_review_base": "9bd59acba13ead7252e52e32e1b5d862adecd99a",
+  "untrusted_candidate": "46fc04a20312d5687a36cdbf308e9c1070bdb2ef",
+  "candidate_preservation_ref": "refs/heads/evidence/oracle-v2-untrusted-20261029",
+  "original_files_are_evidence_only": true,
+  "active_plan_transition": false,
+  "product_tests_run": 0
+}

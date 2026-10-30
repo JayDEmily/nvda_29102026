@@ -1,0 +1,820 @@
+{
+  "schema_version": "1.0.0",
+  "plan_id": "M00-DOWNSTREAM-RECONCILIATION-PLAN-1",
+  "ledger_status": "FINAL",
+  "repository": {
+    "baseline_commit": "97f944d51ab9e403250fe76910e2754b50425c73",
+    "candidate_commit": "f5cb9265a02ab463a0eef058fbbf3f3611eac95f",
+    "plan_revision": "R2-DEFERRED-TESTING-ADDITIVE-BUNDLES"
+  },
+  "execution_mode": {
+    "mode": "WORK_DELEGATED",
+    "capability_evidence": "Owner currentcommission supersedes manual/externalthread scheduling; independent soleexecutor actual29commandrecords inEXECUTION_INDEX",
+    "test_phase": "L14 only; implementationL02-L13 deferred"
+  },
+  "proof_obligations": [
+    {
+      "proof_id": "L02",
+      "module": "M02",
+      "claim": "neutral_market_measurement_truth_native_source",
+      "requirement_refs": [
+        "EXEC_PLAN.md#G5-L14",
+        "handoff/downstream_reconciliation/authority/PROFILE_AND_PROOF_ALLOCATION.md",
+        "handoff/downstream_reconciliation/authority/briefs/NATIVE_SOURCE_BRIEF.md"
+      ],
+      "source_identity": {
+        "commit": "f5cb9265a02ab463a0eef058fbbf3f3611eac95f",
+        "contract_id": "handoff/downstream_reconciliation/proofs/source/PROOF_CONTRACT.json",
+        "profile_id": "config/product_proof/market_measurement_native_source/generations/0004.json"
+      },
+      "prior_evidence": {
+        "decision": "NEW",
+        "rationale": "New native sibling; legacy unchangedpropositions reused separately. Preserved preflightfailure closed by lawfuladmissionrecovery, originalunknowninterruption unclassified aspass/fail.",
+        "evidence_refs": [
+          "handoff/downstream_reconciliation/L14/EXECUTION_INDEX.json",
+          "handoff/downstream_reconciliation/L14/REPAIR_04.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "handoff/downstream_reconciliation/authority/PROFILE_AND_PROOF_ALLOCATION.md",
+        "authorised_case_count": 2,
+        "hard_ceiling": 2,
+        "cases": [
+          {
+            "case_id": "test_native_source_success",
+            "kind": "SUCCESS",
+            "proof_path": "tests/product/market_measurement_native_source/test_source.py",
+            "status": "PASSED",
+            "evidence_refs": [
+              "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_source_f5cb9265.log"
+            ]
+          },
+          {
+            "case_id": "test_native_source_refusal",
+            "kind": "REACHED_REFUSAL",
+            "proof_path": "tests/product/market_measurement_native_source/test_source.py",
+            "status": "PASSED",
+            "evidence_refs": [
+              "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_source_f5cb9265.log"
+            ]
+          }
+        ]
+      },
+      "execution": {
+        "scheduled_leaf": "L14",
+        "reviewer": "/root/l14_independent_executor",
+        "semantic_status": "TESTED_ACCEPTED",
+        "runs": [
+          {
+            "case_id": "test_native_source_success",
+            "candidate_commit": "f5cb9265a02ab463a0eef058fbbf3f3611eac95f",
+            "command": "PYTHONPATH=src /workspace/scratch/ad31885d756b/l14_env_resumed/bin/python tools/run_product_proof_gate.py --aggregate neutral_market_measurement_truth_native_source",
+            "exit_code": 0,
+            "result": "PASSED",
+            "evidence_ref": "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_source_f5cb9265.log",
+            "reviewer_disposition": "TESTED_ACCEPTED exact native owning scope; see independent review and prooflimits"
+          },
+          {
+            "case_id": "test_native_source_refusal",
+            "candidate_commit": "f5cb9265a02ab463a0eef058fbbf3f3611eac95f",
+            "command": "PYTHONPATH=src /workspace/scratch/ad31885d756b/l14_env_resumed/bin/python tools/run_product_proof_gate.py --aggregate neutral_market_measurement_truth_native_source",
+            "exit_code": 0,
+            "result": "PASSED",
+            "evidence_ref": "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_source_f5cb9265.log",
+            "reviewer_disposition": "TESTED_ACCEPTED exact native owning scope; see independent review and prooflimits"
+          }
+        ]
+      }
+    },
+    {
+      "proof_id": "L03",
+      "module": "M02",
+      "claim": "neutral_market_measurement_truth_native_d087",
+      "requirement_refs": [
+        "EXEC_PLAN.md#G5-L14",
+        "handoff/downstream_reconciliation/authority/PROFILE_AND_PROOF_ALLOCATION.md",
+        "handoff/downstream_reconciliation/authority/briefs/NATIVE_D087_BRIEF.md"
+      ],
+      "source_identity": {
+        "commit": "f5cb9265a02ab463a0eef058fbbf3f3611eac95f",
+        "contract_id": "handoff/downstream_reconciliation/proofs/d087/PROOF_CONTRACT.json",
+        "profile_id": "config/product_proof/market_measurement_native_d087/generations/0003.json"
+      },
+      "prior_evidence": {
+        "decision": "NEW",
+        "rationale": "New native sibling; legacy unchangedpropositions reused separately. Preserved preflightfailure closed by lawfuladmissionrecovery, originalunknowninterruption unclassified aspass/fail.",
+        "evidence_refs": [
+          "handoff/downstream_reconciliation/L14/EXECUTION_INDEX.json",
+          "handoff/downstream_reconciliation/L14/REPAIR_04.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "handoff/downstream_reconciliation/authority/PROFILE_AND_PROOF_ALLOCATION.md",
+        "authorised_case_count": 2,
+        "hard_ceiling": 6,
+        "cases": [
+          {
+            "case_id": "test_native_success",
+            "kind": "SUCCESS",
+            "proof_path": "tests/product/market_measurement_native_d087/test_signal.py",
+            "status": "PASSED",
+            "evidence_refs": [
+              "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_d087_f5cb9265.log"
+            ]
+          },
+          {
+            "case_id": "test_native_refusal",
+            "kind": "REACHED_REFUSAL",
+            "proof_path": "tests/product/market_measurement_native_d087/test_signal.py",
+            "status": "PASSED",
+            "evidence_refs": [
+              "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_d087_f5cb9265.log"
+            ]
+          }
+        ]
+      },
+      "execution": {
+        "scheduled_leaf": "L14",
+        "reviewer": "/root/l14_independent_executor",
+        "semantic_status": "TESTED_ACCEPTED",
+        "runs": [
+          {
+            "case_id": "test_native_success",
+            "candidate_commit": "f5cb9265a02ab463a0eef058fbbf3f3611eac95f",
+            "command": "PYTHONPATH=src /workspace/scratch/ad31885d756b/l14_env_resumed/bin/python tools/run_product_proof_gate.py --aggregate neutral_market_measurement_truth_native_d087",
+            "exit_code": 0,
+            "result": "PASSED",
+            "evidence_ref": "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_d087_f5cb9265.log",
+            "reviewer_disposition": "TESTED_ACCEPTED exact native owning scope; see independent review and prooflimits"
+          },
+          {
+            "case_id": "test_native_refusal",
+            "candidate_commit": "f5cb9265a02ab463a0eef058fbbf3f3611eac95f",
+            "command": "PYTHONPATH=src /workspace/scratch/ad31885d756b/l14_env_resumed/bin/python tools/run_product_proof_gate.py --aggregate neutral_market_measurement_truth_native_d087",
+            "exit_code": 0,
+            "result": "PASSED",
+            "evidence_ref": "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_d087_f5cb9265.log",
+            "reviewer_disposition": "TESTED_ACCEPTED exact native owning scope; see independent review and prooflimits"
+          }
+        ]
+      }
+    },
+    {
+      "proof_id": "L04",
+      "module": "M02",
+      "claim": "neutral_market_measurement_truth_native_d131",
+      "requirement_refs": [
+        "EXEC_PLAN.md#G5-L14",
+        "handoff/downstream_reconciliation/authority/PROFILE_AND_PROOF_ALLOCATION.md",
+        "handoff/downstream_reconciliation/authority/briefs/NATIVE_D131_BRIEF.md"
+      ],
+      "source_identity": {
+        "commit": "f5cb9265a02ab463a0eef058fbbf3f3611eac95f",
+        "contract_id": "handoff/downstream_reconciliation/proofs/d131/PROOF_CONTRACT.json",
+        "profile_id": "config/product_proof/market_measurement_native_d131/generations/0002.json"
+      },
+      "prior_evidence": {
+        "decision": "NEW",
+        "rationale": "New native sibling; legacy unchangedpropositions reused separately. Preserved preflightfailure closed by lawfuladmissionrecovery, originalunknowninterruption unclassified aspass/fail.",
+        "evidence_refs": [
+          "handoff/downstream_reconciliation/L14/EXECUTION_INDEX.json",
+          "handoff/downstream_reconciliation/L14/REPAIR_04.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "handoff/downstream_reconciliation/authority/PROFILE_AND_PROOF_ALLOCATION.md",
+        "authorised_case_count": 2,
+        "hard_ceiling": 6,
+        "cases": [
+          {
+            "case_id": "test_native_success",
+            "kind": "SUCCESS",
+            "proof_path": "tests/product/market_measurement_native_d131/test_signal.py",
+            "status": "PASSED",
+            "evidence_refs": [
+              "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_d131_f5cb9265.log"
+            ]
+          },
+          {
+            "case_id": "test_native_refusal",
+            "kind": "REACHED_REFUSAL",
+            "proof_path": "tests/product/market_measurement_native_d131/test_signal.py",
+            "status": "PASSED",
+            "evidence_refs": [
+              "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_d131_f5cb9265.log"
+            ]
+          }
+        ]
+      },
+      "execution": {
+        "scheduled_leaf": "L14",
+        "reviewer": "/root/l14_independent_executor",
+        "semantic_status": "TESTED_ACCEPTED",
+        "runs": [
+          {
+            "case_id": "test_native_success",
+            "candidate_commit": "f5cb9265a02ab463a0eef058fbbf3f3611eac95f",
+            "command": "PYTHONPATH=src /workspace/scratch/ad31885d756b/l14_env_resumed/bin/python tools/run_product_proof_gate.py --aggregate neutral_market_measurement_truth_native_d131",
+            "exit_code": 0,
+            "result": "PASSED",
+            "evidence_ref": "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_d131_f5cb9265.log",
+            "reviewer_disposition": "TESTED_ACCEPTED exact native owning scope; see independent review and prooflimits"
+          },
+          {
+            "case_id": "test_native_refusal",
+            "candidate_commit": "f5cb9265a02ab463a0eef058fbbf3f3611eac95f",
+            "command": "PYTHONPATH=src /workspace/scratch/ad31885d756b/l14_env_resumed/bin/python tools/run_product_proof_gate.py --aggregate neutral_market_measurement_truth_native_d131",
+            "exit_code": 0,
+            "result": "PASSED",
+            "evidence_ref": "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_d131_f5cb9265.log",
+            "reviewer_disposition": "TESTED_ACCEPTED exact native owning scope; see independent review and prooflimits"
+          }
+        ]
+      }
+    },
+    {
+      "proof_id": "L05",
+      "module": "M02",
+      "claim": "neutral_market_measurement_truth_native_d134",
+      "requirement_refs": [
+        "EXEC_PLAN.md#G5-L14",
+        "handoff/downstream_reconciliation/authority/PROFILE_AND_PROOF_ALLOCATION.md",
+        "handoff/downstream_reconciliation/authority/briefs/NATIVE_D134_BRIEF.md"
+      ],
+      "source_identity": {
+        "commit": "f5cb9265a02ab463a0eef058fbbf3f3611eac95f",
+        "contract_id": "handoff/downstream_reconciliation/proofs/d134/PROOF_CONTRACT.json",
+        "profile_id": "config/product_proof/market_measurement_native_d134/generations/0002.json"
+      },
+      "prior_evidence": {
+        "decision": "NEW",
+        "rationale": "New native sibling; legacy unchangedpropositions reused separately. Preserved preflightfailure closed by lawfuladmissionrecovery, originalunknowninterruption unclassified aspass/fail.",
+        "evidence_refs": [
+          "handoff/downstream_reconciliation/L14/EXECUTION_INDEX.json",
+          "handoff/downstream_reconciliation/L14/REPAIR_04.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "handoff/downstream_reconciliation/authority/PROFILE_AND_PROOF_ALLOCATION.md",
+        "authorised_case_count": 2,
+        "hard_ceiling": 6,
+        "cases": [
+          {
+            "case_id": "test_native_success",
+            "kind": "SUCCESS",
+            "proof_path": "tests/product/market_measurement_native_d134/test_signal.py",
+            "status": "PASSED",
+            "evidence_refs": [
+              "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_d134_f5cb9265.log"
+            ]
+          },
+          {
+            "case_id": "test_native_refusal",
+            "kind": "REACHED_REFUSAL",
+            "proof_path": "tests/product/market_measurement_native_d134/test_signal.py",
+            "status": "PASSED",
+            "evidence_refs": [
+              "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_d134_f5cb9265.log"
+            ]
+          }
+        ]
+      },
+      "execution": {
+        "scheduled_leaf": "L14",
+        "reviewer": "/root/l14_independent_executor",
+        "semantic_status": "TESTED_ACCEPTED",
+        "runs": [
+          {
+            "case_id": "test_native_success",
+            "candidate_commit": "f5cb9265a02ab463a0eef058fbbf3f3611eac95f",
+            "command": "PYTHONPATH=src /workspace/scratch/ad31885d756b/l14_env_resumed/bin/python tools/run_product_proof_gate.py --aggregate neutral_market_measurement_truth_native_d134",
+            "exit_code": 0,
+            "result": "PASSED",
+            "evidence_ref": "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_d134_f5cb9265.log",
+            "reviewer_disposition": "TESTED_ACCEPTED exact native owning scope; see independent review and prooflimits"
+          },
+          {
+            "case_id": "test_native_refusal",
+            "candidate_commit": "f5cb9265a02ab463a0eef058fbbf3f3611eac95f",
+            "command": "PYTHONPATH=src /workspace/scratch/ad31885d756b/l14_env_resumed/bin/python tools/run_product_proof_gate.py --aggregate neutral_market_measurement_truth_native_d134",
+            "exit_code": 0,
+            "result": "PASSED",
+            "evidence_ref": "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_d134_f5cb9265.log",
+            "reviewer_disposition": "TESTED_ACCEPTED exact native owning scope; see independent review and prooflimits"
+          }
+        ]
+      }
+    },
+    {
+      "proof_id": "L06",
+      "module": "M02",
+      "claim": "neutral_market_measurement_truth_native_d135",
+      "requirement_refs": [
+        "EXEC_PLAN.md#G5-L14",
+        "handoff/downstream_reconciliation/authority/PROFILE_AND_PROOF_ALLOCATION.md",
+        "handoff/downstream_reconciliation/authority/briefs/NATIVE_D135_BRIEF.md"
+      ],
+      "source_identity": {
+        "commit": "f5cb9265a02ab463a0eef058fbbf3f3611eac95f",
+        "contract_id": "handoff/downstream_reconciliation/proofs/d135/PROOF_CONTRACT.json",
+        "profile_id": "config/product_proof/market_measurement_native_d135/generations/0002.json"
+      },
+      "prior_evidence": {
+        "decision": "NEW",
+        "rationale": "New native sibling; legacy unchangedpropositions reused separately. Preserved preflightfailure closed by lawfuladmissionrecovery, originalunknowninterruption unclassified aspass/fail.",
+        "evidence_refs": [
+          "handoff/downstream_reconciliation/L14/EXECUTION_INDEX.json",
+          "handoff/downstream_reconciliation/L14/REPAIR_04.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "handoff/downstream_reconciliation/authority/PROFILE_AND_PROOF_ALLOCATION.md",
+        "authorised_case_count": 2,
+        "hard_ceiling": 6,
+        "cases": [
+          {
+            "case_id": "test_native_success",
+            "kind": "SUCCESS",
+            "proof_path": "tests/product/market_measurement_native_d135/test_signal.py",
+            "status": "PASSED",
+            "evidence_refs": [
+              "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_d135_f5cb9265.log"
+            ]
+          },
+          {
+            "case_id": "test_native_refusal",
+            "kind": "REACHED_REFUSAL",
+            "proof_path": "tests/product/market_measurement_native_d135/test_signal.py",
+            "status": "PASSED",
+            "evidence_refs": [
+              "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_d135_f5cb9265.log"
+            ]
+          }
+        ]
+      },
+      "execution": {
+        "scheduled_leaf": "L14",
+        "reviewer": "/root/l14_independent_executor",
+        "semantic_status": "TESTED_ACCEPTED",
+        "runs": [
+          {
+            "case_id": "test_native_success",
+            "candidate_commit": "f5cb9265a02ab463a0eef058fbbf3f3611eac95f",
+            "command": "PYTHONPATH=src /workspace/scratch/ad31885d756b/l14_env_resumed/bin/python tools/run_product_proof_gate.py --aggregate neutral_market_measurement_truth_native_d135",
+            "exit_code": 0,
+            "result": "PASSED",
+            "evidence_ref": "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_d135_f5cb9265.log",
+            "reviewer_disposition": "TESTED_ACCEPTED exact native owning scope; see independent review and prooflimits"
+          },
+          {
+            "case_id": "test_native_refusal",
+            "candidate_commit": "f5cb9265a02ab463a0eef058fbbf3f3611eac95f",
+            "command": "PYTHONPATH=src /workspace/scratch/ad31885d756b/l14_env_resumed/bin/python tools/run_product_proof_gate.py --aggregate neutral_market_measurement_truth_native_d135",
+            "exit_code": 0,
+            "result": "PASSED",
+            "evidence_ref": "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_d135_f5cb9265.log",
+            "reviewer_disposition": "TESTED_ACCEPTED exact native owning scope; see independent review and prooflimits"
+          }
+        ]
+      }
+    },
+    {
+      "proof_id": "L07",
+      "module": "M02",
+      "claim": "neutral_market_measurement_truth_native_d136",
+      "requirement_refs": [
+        "EXEC_PLAN.md#G5-L14",
+        "handoff/downstream_reconciliation/authority/PROFILE_AND_PROOF_ALLOCATION.md",
+        "handoff/downstream_reconciliation/authority/briefs/NATIVE_D136_BRIEF.md"
+      ],
+      "source_identity": {
+        "commit": "f5cb9265a02ab463a0eef058fbbf3f3611eac95f",
+        "contract_id": "handoff/downstream_reconciliation/proofs/d136/PROOF_CONTRACT.json",
+        "profile_id": "config/product_proof/market_measurement_native_d136/generations/0002.json"
+      },
+      "prior_evidence": {
+        "decision": "NEW",
+        "rationale": "New native sibling; legacy unchangedpropositions reused separately. Preserved preflightfailure closed by lawfuladmissionrecovery, originalunknowninterruption unclassified aspass/fail.",
+        "evidence_refs": [
+          "handoff/downstream_reconciliation/L14/EXECUTION_INDEX.json",
+          "handoff/downstream_reconciliation/L14/REPAIR_04.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "handoff/downstream_reconciliation/authority/PROFILE_AND_PROOF_ALLOCATION.md",
+        "authorised_case_count": 2,
+        "hard_ceiling": 6,
+        "cases": [
+          {
+            "case_id": "test_native_success",
+            "kind": "SUCCESS",
+            "proof_path": "tests/product/market_measurement_native_d136/test_signal.py",
+            "status": "PASSED",
+            "evidence_refs": [
+              "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_d136_f5cb9265.log"
+            ]
+          },
+          {
+            "case_id": "test_native_refusal",
+            "kind": "REACHED_REFUSAL",
+            "proof_path": "tests/product/market_measurement_native_d136/test_signal.py",
+            "status": "PASSED",
+            "evidence_refs": [
+              "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_d136_f5cb9265.log"
+            ]
+          }
+        ]
+      },
+      "execution": {
+        "scheduled_leaf": "L14",
+        "reviewer": "/root/l14_independent_executor",
+        "semantic_status": "TESTED_ACCEPTED",
+        "runs": [
+          {
+            "case_id": "test_native_success",
+            "candidate_commit": "f5cb9265a02ab463a0eef058fbbf3f3611eac95f",
+            "command": "PYTHONPATH=src /workspace/scratch/ad31885d756b/l14_env_resumed/bin/python tools/run_product_proof_gate.py --aggregate neutral_market_measurement_truth_native_d136",
+            "exit_code": 0,
+            "result": "PASSED",
+            "evidence_ref": "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_d136_f5cb9265.log",
+            "reviewer_disposition": "TESTED_ACCEPTED exact native owning scope; see independent review and prooflimits"
+          },
+          {
+            "case_id": "test_native_refusal",
+            "candidate_commit": "f5cb9265a02ab463a0eef058fbbf3f3611eac95f",
+            "command": "PYTHONPATH=src /workspace/scratch/ad31885d756b/l14_env_resumed/bin/python tools/run_product_proof_gate.py --aggregate neutral_market_measurement_truth_native_d136",
+            "exit_code": 0,
+            "result": "PASSED",
+            "evidence_ref": "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_d136_f5cb9265.log",
+            "reviewer_disposition": "TESTED_ACCEPTED exact native owning scope; see independent review and prooflimits"
+          }
+        ]
+      }
+    },
+    {
+      "proof_id": "L08",
+      "module": "M02",
+      "claim": "neutral_market_measurement_truth_native_d138",
+      "requirement_refs": [
+        "EXEC_PLAN.md#G5-L14",
+        "handoff/downstream_reconciliation/authority/PROFILE_AND_PROOF_ALLOCATION.md",
+        "handoff/downstream_reconciliation/authority/briefs/NATIVE_D138_BRIEF.md"
+      ],
+      "source_identity": {
+        "commit": "f5cb9265a02ab463a0eef058fbbf3f3611eac95f",
+        "contract_id": "handoff/downstream_reconciliation/proofs/d138/PROOF_CONTRACT.json",
+        "profile_id": "config/product_proof/market_measurement_native_d138/generations/0002.json"
+      },
+      "prior_evidence": {
+        "decision": "NEW",
+        "rationale": "New native sibling; legacy unchangedpropositions reused separately. Preserved preflightfailure closed by lawfuladmissionrecovery, originalunknowninterruption unclassified aspass/fail.",
+        "evidence_refs": [
+          "handoff/downstream_reconciliation/L14/EXECUTION_INDEX.json",
+          "handoff/downstream_reconciliation/L14/REPAIR_04.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "handoff/downstream_reconciliation/authority/PROFILE_AND_PROOF_ALLOCATION.md",
+        "authorised_case_count": 2,
+        "hard_ceiling": 6,
+        "cases": [
+          {
+            "case_id": "test_native_success",
+            "kind": "SUCCESS",
+            "proof_path": "tests/product/market_measurement_native_d138/test_signal.py",
+            "status": "PASSED",
+            "evidence_refs": [
+              "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_d138_f5cb9265.log"
+            ]
+          },
+          {
+            "case_id": "test_native_refusal",
+            "kind": "REACHED_REFUSAL",
+            "proof_path": "tests/product/market_measurement_native_d138/test_signal.py",
+            "status": "PASSED",
+            "evidence_refs": [
+              "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_d138_f5cb9265.log"
+            ]
+          }
+        ]
+      },
+      "execution": {
+        "scheduled_leaf": "L14",
+        "reviewer": "/root/l14_independent_executor",
+        "semantic_status": "TESTED_ACCEPTED",
+        "runs": [
+          {
+            "case_id": "test_native_success",
+            "candidate_commit": "f5cb9265a02ab463a0eef058fbbf3f3611eac95f",
+            "command": "PYTHONPATH=src /workspace/scratch/ad31885d756b/l14_env_resumed/bin/python tools/run_product_proof_gate.py --aggregate neutral_market_measurement_truth_native_d138",
+            "exit_code": 0,
+            "result": "PASSED",
+            "evidence_ref": "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_d138_f5cb9265.log",
+            "reviewer_disposition": "TESTED_ACCEPTED exact native owning scope; see independent review and prooflimits"
+          },
+          {
+            "case_id": "test_native_refusal",
+            "candidate_commit": "f5cb9265a02ab463a0eef058fbbf3f3611eac95f",
+            "command": "PYTHONPATH=src /workspace/scratch/ad31885d756b/l14_env_resumed/bin/python tools/run_product_proof_gate.py --aggregate neutral_market_measurement_truth_native_d138",
+            "exit_code": 0,
+            "result": "PASSED",
+            "evidence_ref": "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_d138_f5cb9265.log",
+            "reviewer_disposition": "TESTED_ACCEPTED exact native owning scope; see independent review and prooflimits"
+          }
+        ]
+      }
+    },
+    {
+      "proof_id": "L09",
+      "module": "M02",
+      "claim": "neutral_market_measurement_truth_native_d139",
+      "requirement_refs": [
+        "EXEC_PLAN.md#G5-L14",
+        "handoff/downstream_reconciliation/authority/PROFILE_AND_PROOF_ALLOCATION.md",
+        "handoff/downstream_reconciliation/authority/briefs/NATIVE_D139_BRIEF.md"
+      ],
+      "source_identity": {
+        "commit": "f5cb9265a02ab463a0eef058fbbf3f3611eac95f",
+        "contract_id": "handoff/downstream_reconciliation/proofs/d139/PROOF_CONTRACT.json",
+        "profile_id": "config/product_proof/market_measurement_native_d139/generations/0002.json"
+      },
+      "prior_evidence": {
+        "decision": "NEW",
+        "rationale": "New native sibling; legacy unchangedpropositions reused separately. Preserved preflightfailure closed by lawfuladmissionrecovery, originalunknowninterruption unclassified aspass/fail.",
+        "evidence_refs": [
+          "handoff/downstream_reconciliation/L14/EXECUTION_INDEX.json",
+          "handoff/downstream_reconciliation/L14/REPAIR_04.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "handoff/downstream_reconciliation/authority/PROFILE_AND_PROOF_ALLOCATION.md",
+        "authorised_case_count": 2,
+        "hard_ceiling": 6,
+        "cases": [
+          {
+            "case_id": "test_native_success",
+            "kind": "SUCCESS",
+            "proof_path": "tests/product/market_measurement_native_d139/test_signal.py",
+            "status": "PASSED",
+            "evidence_refs": [
+              "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_d139_f5cb9265.log"
+            ]
+          },
+          {
+            "case_id": "test_native_refusal",
+            "kind": "REACHED_REFUSAL",
+            "proof_path": "tests/product/market_measurement_native_d139/test_signal.py",
+            "status": "PASSED",
+            "evidence_refs": [
+              "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_d139_f5cb9265.log"
+            ]
+          }
+        ]
+      },
+      "execution": {
+        "scheduled_leaf": "L14",
+        "reviewer": "/root/l14_independent_executor",
+        "semantic_status": "TESTED_ACCEPTED",
+        "runs": [
+          {
+            "case_id": "test_native_success",
+            "candidate_commit": "f5cb9265a02ab463a0eef058fbbf3f3611eac95f",
+            "command": "PYTHONPATH=src /workspace/scratch/ad31885d756b/l14_env_resumed/bin/python tools/run_product_proof_gate.py --aggregate neutral_market_measurement_truth_native_d139",
+            "exit_code": 0,
+            "result": "PASSED",
+            "evidence_ref": "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_d139_f5cb9265.log",
+            "reviewer_disposition": "TESTED_ACCEPTED exact native owning scope; see independent review and prooflimits"
+          },
+          {
+            "case_id": "test_native_refusal",
+            "candidate_commit": "f5cb9265a02ab463a0eef058fbbf3f3611eac95f",
+            "command": "PYTHONPATH=src /workspace/scratch/ad31885d756b/l14_env_resumed/bin/python tools/run_product_proof_gate.py --aggregate neutral_market_measurement_truth_native_d139",
+            "exit_code": 0,
+            "result": "PASSED",
+            "evidence_ref": "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_d139_f5cb9265.log",
+            "reviewer_disposition": "TESTED_ACCEPTED exact native owning scope; see independent review and prooflimits"
+          }
+        ]
+      }
+    },
+    {
+      "proof_id": "L10",
+      "module": "M02",
+      "claim": "neutral_market_measurement_truth_native_d140",
+      "requirement_refs": [
+        "EXEC_PLAN.md#G5-L14",
+        "handoff/downstream_reconciliation/authority/PROFILE_AND_PROOF_ALLOCATION.md",
+        "handoff/downstream_reconciliation/authority/briefs/NATIVE_D140_BRIEF.md"
+      ],
+      "source_identity": {
+        "commit": "f5cb9265a02ab463a0eef058fbbf3f3611eac95f",
+        "contract_id": "handoff/downstream_reconciliation/proofs/d140/PROOF_CONTRACT.json",
+        "profile_id": "config/product_proof/market_measurement_native_d140/generations/0002.json"
+      },
+      "prior_evidence": {
+        "decision": "NEW",
+        "rationale": "New native sibling; legacy unchangedpropositions reused separately. Preserved preflightfailure closed by lawfuladmissionrecovery, originalunknowninterruption unclassified aspass/fail.",
+        "evidence_refs": [
+          "handoff/downstream_reconciliation/L14/EXECUTION_INDEX.json",
+          "handoff/downstream_reconciliation/L14/REPAIR_04.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "handoff/downstream_reconciliation/authority/PROFILE_AND_PROOF_ALLOCATION.md",
+        "authorised_case_count": 2,
+        "hard_ceiling": 6,
+        "cases": [
+          {
+            "case_id": "test_native_success",
+            "kind": "SUCCESS",
+            "proof_path": "tests/product/market_measurement_native_d140/test_signal.py",
+            "status": "PASSED",
+            "evidence_refs": [
+              "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_d140_f5cb9265.log"
+            ]
+          },
+          {
+            "case_id": "test_native_refusal",
+            "kind": "REACHED_REFUSAL",
+            "proof_path": "tests/product/market_measurement_native_d140/test_signal.py",
+            "status": "PASSED",
+            "evidence_refs": [
+              "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_d140_f5cb9265.log"
+            ]
+          }
+        ]
+      },
+      "execution": {
+        "scheduled_leaf": "L14",
+        "reviewer": "/root/l14_independent_executor",
+        "semantic_status": "TESTED_ACCEPTED",
+        "runs": [
+          {
+            "case_id": "test_native_success",
+            "candidate_commit": "f5cb9265a02ab463a0eef058fbbf3f3611eac95f",
+            "command": "PYTHONPATH=src /workspace/scratch/ad31885d756b/l14_env_resumed/bin/python tools/run_product_proof_gate.py --aggregate neutral_market_measurement_truth_native_d140",
+            "exit_code": 0,
+            "result": "PASSED",
+            "evidence_ref": "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_d140_f5cb9265.log",
+            "reviewer_disposition": "TESTED_ACCEPTED exact native owning scope; see independent review and prooflimits"
+          },
+          {
+            "case_id": "test_native_refusal",
+            "candidate_commit": "f5cb9265a02ab463a0eef058fbbf3f3611eac95f",
+            "command": "PYTHONPATH=src /workspace/scratch/ad31885d756b/l14_env_resumed/bin/python tools/run_product_proof_gate.py --aggregate neutral_market_measurement_truth_native_d140",
+            "exit_code": 0,
+            "result": "PASSED",
+            "evidence_ref": "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_d140_f5cb9265.log",
+            "reviewer_disposition": "TESTED_ACCEPTED exact native owning scope; see independent review and prooflimits"
+          }
+        ]
+      }
+    },
+    {
+      "proof_id": "L11",
+      "module": "M02",
+      "claim": "neutral_market_measurement_truth_native_d143",
+      "requirement_refs": [
+        "EXEC_PLAN.md#G5-L14",
+        "handoff/downstream_reconciliation/authority/PROFILE_AND_PROOF_ALLOCATION.md",
+        "handoff/downstream_reconciliation/authority/briefs/NATIVE_D143_BRIEF.md"
+      ],
+      "source_identity": {
+        "commit": "f5cb9265a02ab463a0eef058fbbf3f3611eac95f",
+        "contract_id": "handoff/downstream_reconciliation/proofs/d143/PROOF_CONTRACT.json",
+        "profile_id": "config/product_proof/market_measurement_native_d143/generations/0002.json"
+      },
+      "prior_evidence": {
+        "decision": "NEW",
+        "rationale": "New native sibling; legacy unchangedpropositions reused separately. Preserved preflightfailure closed by lawfuladmissionrecovery, originalunknowninterruption unclassified aspass/fail.",
+        "evidence_refs": [
+          "handoff/downstream_reconciliation/L14/EXECUTION_INDEX.json",
+          "handoff/downstream_reconciliation/L14/REPAIR_04.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "handoff/downstream_reconciliation/authority/PROFILE_AND_PROOF_ALLOCATION.md",
+        "authorised_case_count": 2,
+        "hard_ceiling": 6,
+        "cases": [
+          {
+            "case_id": "test_native_success",
+            "kind": "SUCCESS",
+            "proof_path": "tests/product/market_measurement_native_d143/test_signal.py",
+            "status": "PASSED",
+            "evidence_refs": [
+              "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_d143_f5cb9265.log"
+            ]
+          },
+          {
+            "case_id": "test_native_refusal",
+            "kind": "REACHED_REFUSAL",
+            "proof_path": "tests/product/market_measurement_native_d143/test_signal.py",
+            "status": "PASSED",
+            "evidence_refs": [
+              "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_d143_f5cb9265.log"
+            ]
+          }
+        ]
+      },
+      "execution": {
+        "scheduled_leaf": "L14",
+        "reviewer": "/root/l14_independent_executor",
+        "semantic_status": "TESTED_ACCEPTED",
+        "runs": [
+          {
+            "case_id": "test_native_success",
+            "candidate_commit": "f5cb9265a02ab463a0eef058fbbf3f3611eac95f",
+            "command": "PYTHONPATH=src /workspace/scratch/ad31885d756b/l14_env_resumed/bin/python tools/run_product_proof_gate.py --aggregate neutral_market_measurement_truth_native_d143",
+            "exit_code": 0,
+            "result": "PASSED",
+            "evidence_ref": "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_d143_f5cb9265.log",
+            "reviewer_disposition": "TESTED_ACCEPTED exact native owning scope; see independent review and prooflimits"
+          },
+          {
+            "case_id": "test_native_refusal",
+            "candidate_commit": "f5cb9265a02ab463a0eef058fbbf3f3611eac95f",
+            "command": "PYTHONPATH=src /workspace/scratch/ad31885d756b/l14_env_resumed/bin/python tools/run_product_proof_gate.py --aggregate neutral_market_measurement_truth_native_d143",
+            "exit_code": 0,
+            "result": "PASSED",
+            "evidence_ref": "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_d143_f5cb9265.log",
+            "reviewer_disposition": "TESTED_ACCEPTED exact native owning scope; see independent review and prooflimits"
+          }
+        ]
+      }
+    },
+    {
+      "proof_id": "L12",
+      "module": "M02",
+      "claim": "neutral_market_measurement_truth_native_d137",
+      "requirement_refs": [
+        "EXEC_PLAN.md#G5-L14",
+        "handoff/downstream_reconciliation/authority/PROFILE_AND_PROOF_ALLOCATION.md",
+        "handoff/downstream_reconciliation/authority/briefs/NATIVE_D137_BRIEF.md"
+      ],
+      "source_identity": {
+        "commit": "f5cb9265a02ab463a0eef058fbbf3f3611eac95f",
+        "contract_id": "handoff/downstream_reconciliation/proofs/d137/PROOF_CONTRACT.json",
+        "profile_id": "config/product_proof/market_measurement_native_d137/generations/0002.json"
+      },
+      "prior_evidence": {
+        "decision": "NEW",
+        "rationale": "New native sibling; legacy unchangedpropositions reused separately. Preserved preflightfailure closed by lawfuladmissionrecovery, originalunknowninterruption unclassified aspass/fail.",
+        "evidence_refs": [
+          "handoff/downstream_reconciliation/L14/EXECUTION_INDEX.json",
+          "handoff/downstream_reconciliation/L14/REPAIR_04.md"
+        ]
+      },
+      "test_allocation": {
+        "authority_ref": "handoff/downstream_reconciliation/authority/PROFILE_AND_PROOF_ALLOCATION.md",
+        "authorised_case_count": 2,
+        "hard_ceiling": 6,
+        "cases": [
+          {
+            "case_id": "test_native_success",
+            "kind": "SUCCESS",
+            "proof_path": "tests/product/market_measurement_native_d137/test_signal.py",
+            "status": "PASSED",
+            "evidence_refs": [
+              "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_d137_f5cb9265.log"
+            ]
+          },
+          {
+            "case_id": "test_native_refusal",
+            "kind": "REACHED_REFUSAL",
+            "proof_path": "tests/product/market_measurement_native_d137/test_signal.py",
+            "status": "PASSED",
+            "evidence_refs": [
+              "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_d137_f5cb9265.log"
+            ]
+          }
+        ]
+      },
+      "execution": {
+        "scheduled_leaf": "L14",
+        "reviewer": "/root/l14_independent_executor",
+        "semantic_status": "TESTED_ACCEPTED",
+        "runs": [
+          {
+            "case_id": "test_native_success",
+            "candidate_commit": "f5cb9265a02ab463a0eef058fbbf3f3611eac95f",
+            "command": "PYTHONPATH=src /workspace/scratch/ad31885d756b/l14_env_resumed/bin/python tools/run_product_proof_gate.py --aggregate neutral_market_measurement_truth_native_d137",
+            "exit_code": 0,
+            "result": "PASSED",
+            "evidence_ref": "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_d137_f5cb9265.log",
+            "reviewer_disposition": "TESTED_ACCEPTED exact native owning scope; see independent review and prooflimits"
+          },
+          {
+            "case_id": "test_native_refusal",
+            "candidate_commit": "f5cb9265a02ab463a0eef058fbbf3f3611eac95f",
+            "command": "PYTHONPATH=src /workspace/scratch/ad31885d756b/l14_env_resumed/bin/python tools/run_product_proof_gate.py --aggregate neutral_market_measurement_truth_native_d137",
+            "exit_code": 0,
+            "result": "PASSED",
+            "evidence_ref": "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_d137_f5cb9265.log",
+            "reviewer_disposition": "TESTED_ACCEPTED exact native owning scope; see independent review and prooflimits"
+          }
+        ]
+      }
+    }
+  ]
+}

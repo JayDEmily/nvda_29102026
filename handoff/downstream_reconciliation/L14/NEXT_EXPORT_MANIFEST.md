@@ -1,0 +1,11 @@
+# L14 final acceptance — next cumulative export
+
+Status: independent executable/semantic acceptance recorded; finalG5transfer pending actual externalcontroller receipt. This is a pre-export declaration, not a claim that a bundle already exists.
+
+Fixedbaseline `97f944d51ab9e403250fe76910e2754b50425c73`. Tested productcandidate `f5cb9265a02ab463a0eef058fbbf3f3611eac95f`, tree `b7e1511ef23d0a62d947877257f8c96c2359f010`. Commit this documentary evidence on thatcandidate without modifying production/test/authority bytes. Actual resulting evidenceHEAD/tree and resulting bundleSHA256 are necessarily external to this file.
+
+Export complete postbaseline reachableclosure for HEAD and exactly required namedbranches: active `refs/heads/work/reconciliation-l14-recovered` at final evidencecommit; preserved `refs/heads/work/reconciliation-oct29` at5ca757c256d764bd4848dc8f9c80f433a9c2863d; preserved `refs/heads/work/reconciliation-resumed` at2efb2f6031d7d86f79d1a8dbd56b466f9d4facc0. Include HEAD plus allthree namedrefs explicitly; exclude only fixedbaseline ancestry. Original66baseline refs/tips must remain exact atreceiver. Never merge malformedD137ancestry into activebranch or rewrite/prune oldhistory.
+
+Expectedfilename `NVDA_DOWNSTREAM_RECONCILIATION_L14_ACCEPTED_20261029_ADDITIVE_FROM_97f944d51ab9.bundle`. Restore exactoriginal baselinebundle(SHA25691db4a1989bff366c1f547c5776ca886c276b6b1310027ae929aa1cd1efee4b9) then latestadditive; verify additiveSHA externally, prerequisite/base, namedrefs/HEAD, ancestry, tree/everytrackedblob and gitfsck --full, cleancheckout. Save and expose one finalcumulative additive plus external exactchecksum/head/ref/statusreceipt. No product rerun for documentarypackaging.
+
+Mandatorycontents: actual EXECUTION_INDEX/TEST_EVIDENCE_LEDGER, independentsemanticreview, all11rawstrict records22passes, alloriginalfailures/corrections/repair/reused5castatic+ingress outputs, runtimequalification and interruptionunknown record, FINAL_REPORT androotretrospectiveledger. D145andallholds/SQLite-only limits retained. G5transfer/overallCOMPLETED becomes true only when actual finalrestoration/save/exposure succeeds; packaging never substitutes for owningproofacceptance.

@@ -1,0 +1,97 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_native_d138",
+  "semantic_brief_path": "handoff/downstream_reconciliation/authority/briefs/NATIVE_D138_BRIEF.md",
+  "target": {
+    "category": "M",
+    "responsibility_name": "neutral_market_measurement_truth",
+    "package": "nvda_desk.market_measurement_truth",
+    "public_seam": "nvda_desk.market_measurement_truth.api",
+    "intent": "modify",
+    "existing_object_id": "M02"
+  },
+  "proof_axis": "product",
+  "product_tier_treatment": "NOT_CLASSIFIED",
+  "architecture_proof_axis": "architecture_kernel",
+  "required_proof_ids": [
+    "NATIVE-D138-RECEIPT-THREE-LEVEL-OLS"
+  ],
+  "families": [
+    {
+      "id": "mmt_native_d138",
+      "path": "tests/product/market_measurement_native_d138/test_signal.py",
+      "proof_obligation_ids": [
+        "NATIVE-D138-RECEIPT-THREE-LEVEL-OLS"
+      ],
+      "required_test_names": [
+        "test_native_success",
+        "test_native_refusal"
+      ],
+      "boundary": "Receipt-only five-role positional SMART source, native side1 bids/side0 asks, actual unchanged public D011 midpoint, K06/P_REGRESSION per-side exact OLS and typed SQLite read-only reopen.",
+      "proof_levels": [
+        "CONTRACT",
+        "INTEGRATION",
+        "STATE"
+      ],
+      "authoritative_inputs": [
+        "L01 closed synthetic slope recipe, independent bid7/2 ask5/2 oracle, exact native D138 brief and owner-approved D138 dependency overlay."
+      ],
+      "dependency_substitutions": [
+        "Module-local public M00 DTOs implement the commissioned synthetic slope recipe; unchanged public D011 is materialised through create_owner from explicit controlled quote public DTOs and reopened through its public reader. No M00 production replay or historical private fixture import."
+      ],
+      "case_coverage": {
+        "lawful_positive": {
+          "cases": [
+            "Complete bid99/98/97 sizes2/3/4 and ask101/102/103 sizes5/2/3, native sides, actual public D011100, exact slopes7/2 and5/2, complete typed source and predecessor readback with both SQLite files unchanged."
+          ]
+        },
+        "prohibited_false_positive": {
+          "cases": [
+            "Separate error317 after all six complete five-role callbacks without fresh epoch/warm-up refuses with no result/history; actual compatible D011 remains present."
+          ]
+        },
+        "missing_mandatory_authority": {
+          "cases": [
+            "All five required R roles, complete known-empty three-level warm-up, exact clock/source/profile, unchanged K06_REGRESSION_DEPENDENCE/P_REGRESSION/units and actual D011."
+          ]
+        },
+        "lawful_optional_absence": {
+          "cases": [
+            "Provider timestamp/timezone remain absent in receipt-only depth; D011 retains its unchanged true-instant public profile."
+          ]
+        }
+      },
+      "expected_failure_signals": [
+        "Native bid/ask slopes swapped",
+        "Partial/reset book accepted",
+        "Five-role dependency dropped",
+        "Fabricated or incompatible midpoint accepted",
+        "Lossy nested durable lineage"
+      ],
+      "limitations": [
+        "Commissioned synthetic SMART slope only; no native live certification."
+      ],
+      "adjacent_nonclaims": [
+        "Legacy D138 evidence and original D011 profile unchanged; D145 remains paused."
+      ],
+      "environment": "Pinned CPython3.12.14 SQLite3.53.1 and existing tools.",
+      "material_versions": [
+        "Exact L01 native brief/binding/contract/generation and candidate source."
+      ],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/market_measurement_native_d138/test_signal.py"
+    }
+  ],
+  "required_support_files": [
+    "tests/support/native_reconciliation.py"
+  ],
+  "optional_support_files": [],
+  "execution_policy": {
+    "skipped_tests": "FAIL",
+    "xfailed_tests": "FAIL",
+    "xpassed_tests": "FAIL",
+    "collection_failed": "FAIL",
+    "no_tests_collected": "FAIL",
+    "unexpected_governed_mutation": "FAIL"
+  }
+}

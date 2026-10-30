@@ -1,0 +1,23 @@
+{
+  "reviewed_candidate": "c63770bca1737365fd8d4bbfcb113ce7b9620ae9",
+  "tree": "526493f5280c904ca8a4f726319732ad63405f26",
+  "identities": 28,
+  "core": 20,
+  "extension": 7,
+  "paused": 1,
+  "leaves": 39,
+  "prospective_signal_cases": 60,
+  "prospective_support_cases": 14,
+  "actual_runs": 0,
+  "schema_assertion_check": "bounded recursive all supplied assertion keywords; not general engine",
+  "source_refs": 20,
+  "remote_intake_blobs": 3963,
+  "remote_shared_nonpackage_equal": 3943,
+  "remote_missing_recovered_V2_files": 13,
+  "proof_mentions": 311,
+  "proof_unique_paths": 212,
+  "proof_current_exact": 310,
+  "proof_historical_exact": 1,
+  "publication_pending": true,
+  "no_product_execution": true
+}

@@ -1,0 +1,152 @@
+[
+  {
+    "commit": "ae2eda56aebafa1d9c2002e4eb07dcbb9f2e08e3",
+    "path": "config/product_proof/market_measurement_native_d087/generations/0001.json",
+    "generation": 1,
+    "has_previous_generation": true
+  },
+  {
+    "commit": "2efb2f6031d7d86f79d1a8dbd56b466f9d4facc0",
+    "path": "config/product_proof/market_measurement_native_d087/generations/0002.json",
+    "generation": 2,
+    "has_previous_generation": true
+  },
+  {
+    "commit": "e347f6f3a0426ca8235e008b12b633a92efc1bc3",
+    "path": "config/product_proof/market_measurement_native_d087/generations/0003.json",
+    "generation": 3,
+    "has_previous_generation": true
+  },
+  {
+    "commit": "81e86b5e70138558526dbe335657919f5cf5b4cf",
+    "path": "config/product_proof/market_measurement_native_d137/generations/0001.json",
+    "generation": 1,
+    "has_previous_generation": false
+  },
+  {
+    "commit": "e347f6f3a0426ca8235e008b12b633a92efc1bc3",
+    "path": "config/product_proof/market_measurement_native_d137/generations/0002.json",
+    "generation": 2,
+    "has_previous_generation": true
+  },
+  {
+    "commit": "b46bcb681abc24746d1ce4260df39ce0f865d32a",
+    "path": "config/product_proof/market_measurement_native_d139/generations/0001.json",
+    "generation": 1,
+    "has_previous_generation": true
+  },
+  {
+    "commit": "e347f6f3a0426ca8235e008b12b633a92efc1bc3",
+    "path": "config/product_proof/market_measurement_native_d139/generations/0002.json",
+    "generation": 2,
+    "has_previous_generation": true
+  },
+  {
+    "commit": "7f7a6311230a42b91398b70841dd6129989421e7",
+    "path": "config/product_proof/market_measurement_native_d143/generations/0001.json",
+    "generation": 1,
+    "has_previous_generation": true
+  },
+  {
+    "commit": "e347f6f3a0426ca8235e008b12b633a92efc1bc3",
+    "path": "config/product_proof/market_measurement_native_d143/generations/0002.json",
+    "generation": 2,
+    "has_previous_generation": true
+  },
+  {
+    "commit": "a62149fef5adf742f8f53c7666e972c021e1af32",
+    "path": "config/product_proof/market_measurement_native_source/generations/0001.json",
+    "generation": 1,
+    "has_previous_generation": true
+  },
+  {
+    "commit": "ae2eda56aebafa1d9c2002e4eb07dcbb9f2e08e3",
+    "path": "config/product_proof/market_measurement_native_source/generations/0002.json",
+    "generation": 2,
+    "has_previous_generation": true
+  },
+  {
+    "commit": "2efb2f6031d7d86f79d1a8dbd56b466f9d4facc0",
+    "path": "config/product_proof/market_measurement_native_source/generations/0003.json",
+    "generation": 3,
+    "has_previous_generation": true
+  },
+  {
+    "commit": "e347f6f3a0426ca8235e008b12b633a92efc1bc3",
+    "path": "config/product_proof/market_measurement_native_source/generations/0004.json",
+    "generation": 4,
+    "has_previous_generation": true
+  },
+  {
+    "commit": "bffaa05a25c8c5444935a5256ef322c4c226c2f3",
+    "path": "config/product_proof/market_measurement_native_d136/generations/0001.json",
+    "generation": 1,
+    "has_previous_generation": true
+  },
+  {
+    "commit": "e347f6f3a0426ca8235e008b12b633a92efc1bc3",
+    "path": "config/product_proof/market_measurement_native_d136/generations/0002.json",
+    "generation": 2,
+    "has_previous_generation": true
+  },
+  {
+    "commit": "2efb2f6031d7d86f79d1a8dbd56b466f9d4facc0",
+    "path": "config/product_proof/market_measurement_native_d131/generations/0001.json",
+    "generation": 1,
+    "has_previous_generation": true
+  },
+  {
+    "commit": "e347f6f3a0426ca8235e008b12b633a92efc1bc3",
+    "path": "config/product_proof/market_measurement_native_d131/generations/0002.json",
+    "generation": 2,
+    "has_previous_generation": true
+  },
+  {
+    "commit": "f09ba355a406f59412e7ee54810db500afa51919",
+    "path": "config/product_proof/market_measurement_native_d134/generations/0001.json",
+    "generation": 1,
+    "has_previous_generation": true
+  },
+  {
+    "commit": "e347f6f3a0426ca8235e008b12b633a92efc1bc3",
+    "path": "config/product_proof/market_measurement_native_d134/generations/0002.json",
+    "generation": 2,
+    "has_previous_generation": true
+  },
+  {
+    "commit": "5a5f642c1749b5ebcaddea83c0d99345f3cd9ff0",
+    "path": "config/product_proof/market_measurement_native_d138/generations/0001.json",
+    "generation": 1,
+    "has_previous_generation": true
+  },
+  {
+    "commit": "e347f6f3a0426ca8235e008b12b633a92efc1bc3",
+    "path": "config/product_proof/market_measurement_native_d138/generations/0002.json",
+    "generation": 2,
+    "has_previous_generation": true
+  },
+  {
+    "commit": "80d439be556f9bcba7c4c11873c136e5d413d6c8",
+    "path": "config/product_proof/market_measurement_native_d140/generations/0001.json",
+    "generation": 1,
+    "has_previous_generation": true
+  },
+  {
+    "commit": "e347f6f3a0426ca8235e008b12b633a92efc1bc3",
+    "path": "config/product_proof/market_measurement_native_d140/generations/0002.json",
+    "generation": 2,
+    "has_previous_generation": true
+  },
+  {
+    "commit": "7c9526ed6ee9b318ecbefe92e2fae8f090fda678",
+    "path": "config/product_proof/market_measurement_native_d135/generations/0001.json",
+    "generation": 1,
+    "has_previous_generation": true
+  },
+  {
+    "commit": "e347f6f3a0426ca8235e008b12b633a92efc1bc3",
+    "path": "config/product_proof/market_measurement_native_d135/generations/0002.json",
+    "generation": 2,
+    "has_previous_generation": true
+  }
+]

@@ -1,0 +1,80 @@
+{
+  "source_commit": "dbf08e6521bd16dcde593bb050a4c22beafd49d0",
+  "inspected_sources": [
+    {
+      "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md",
+      "status": "INSPECTED_STATIC_DOCUMENTARY",
+      "sha256": "603b850802a418780109095e7ae69bcece449da79fb24140a6d50297605e927c",
+      "git_blob": "32930fc08eb648c2cc6347d32d910e3a45bdc07f"
+    },
+    {
+      "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv",
+      "status": "INSPECTED_STATIC_DOCUMENTARY",
+      "sha256": "67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549",
+      "git_blob": "a27d5e768ab7f1126cecd5a7bbe35bd05b82a442"
+    },
+    {
+      "path": "handoff/foundation_implementation/authority/FOUNDATION_IMPLEMENTATION_BRIEF_PROPOSED.md",
+      "status": "INSPECTED_STATIC_DOCUMENTARY",
+      "sha256": "282f7d73c5e2fdf36ded43781665764eaf95d4a35f687f99990b87c59f744ed7",
+      "git_blob": "085c6663f41c214a680bafad7aafd587f2a38b5d"
+    },
+    {
+      "path": "handoff/m02_remaining_readiness/UNRESOLVED_REGISTER.json",
+      "status": "INSPECTED_STATIC_DOCUMENTARY",
+      "sha256": "4aad7f11186d91ecaca62346d5fd1f6e50dedd82004813cf5d9ff1c275f2a9b3",
+      "git_blob": "108174940f729d000ad1efa84514c92f205e5dfd"
+    },
+    {
+      "path": "handoff/m02_remaining_readiness/DEPENDENCY_AND_NEXT_WORK.md",
+      "status": "INSPECTED_STATIC_DOCUMENTARY",
+      "sha256": "2cc8f8944640507801e35f63ea903f194282a5d6027bc39ee213b7cacb889717",
+      "git_blob": "b215f1c80e09afc03deb1c794f31a50b5665cf18"
+    },
+    {
+      "path": "src/nvda_desk/market_measurement_truth/_temporal.py",
+      "status": "INSPECTED_STATIC_DOCUMENTARY",
+      "sha256": "3cd505cab724e90b60cf8248a0fc2c9b98f14d8509b48c13b53af34a8a35b727",
+      "git_blob": "ee0757bad08142c4903dbb1fe75c0becbf3c4e37"
+    },
+    {
+      "path": "src/nvda_desk/market_measurement_truth/_temporal_date.py",
+      "status": "INSPECTED_STATIC_DOCUMENTARY",
+      "sha256": "fea27e3502251e9708fb262f4fd48719231a5e4ebfc4dae2a06a5637b80a38f8",
+      "git_blob": "97100d9a5aeb5b29077b19c0223c131a96e18e2c"
+    },
+    {
+      "path": "src/nvda_desk/market_measurement_truth/_trade_direction.py",
+      "status": "INSPECTED_STATIC_DOCUMENTARY",
+      "sha256": "031c8643cab2b00eea18e9fd349e31b384ec2d304d97b38004e84184a274acea",
+      "git_blob": "af489dad05916b6470083c805f4ee164ec63378c"
+    },
+    {
+      "path": "src/nvda_desk/market_measurement_truth/_book_depth.py",
+      "status": "INSPECTED_STATIC_DOCUMENTARY",
+      "sha256": "2b0c4938d23d7a00306770eb9c11e2992e7d324de890e737c1fa6574b195b3d1",
+      "git_blob": "a55385107f160bd80bfb8dcd798a66a4612a695b"
+    },
+    {
+      "path": "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
+      "status": "INSPECTED_STATIC_DOCUMENTARY",
+      "sha256": "2d95d7c5e425ed1dd231f4685100f7c1db9c85ee1369fea54f91580aab6caa5a",
+      "git_blob": "71eeea1f267b12c4e8182dd9809cfe2e17258c15"
+    },
+    {
+      "path": "handoff/m01_completion/authority/D138_D145_L2_OWNER_APPROVED_DEPENDENCY_AMENDMENT_20261016.md",
+      "status": "INSPECTED_STATIC_DOCUMENTARY",
+      "sha256": "9973c3699b5135be503611f4a5582118c4f80a0145bde473720c32434a3963e2",
+      "git_blob": "13805165e6f2d7651ce275be24edbf94ed403d52"
+    },
+    {
+      "path": "config/architecture/modules.yaml",
+      "status": "INSPECTED_STATIC_DOCUMENTARY",
+      "sha256": "ffe0d61f16840b1019913b971cff3349afca83318a0724c6985b2879cdb882e7",
+      "git_blob": "19fd553161e3788688ba8a7fc58b3b319a39f84e"
+    }
+  ],
+  "prior_original_source_inventory": "handoff/m02_remaining_readiness/UNRESOLVED_REGISTER.json",
+  "method": "Git read-only source/document inspection, no product runtime or provider session",
+  "live_vendor_account_checks": "NOT_PERFORMED"
+}

@@ -1,0 +1,17 @@
+{
+  "foundation_total": 126,
+  "historically_accepted": 98,
+  "unresolved": 28,
+  "external_holds": 7,
+  "classification": {
+    "HELD_FOR_DEFINITION_OR_POLICY": 6,
+    "HELD_FOR_PREDECESSOR": 14,
+    "HELD_FOR_SOURCE": 8
+  },
+  "all_ids_unique": true,
+  "external_overlap": 0,
+  "l14_claims": 11,
+  "reused_historical_scope": "ORIGINAL_PROFILES_ONLY",
+  "new_product_tests": 0,
+  "independent_documentary_acceptance": "PENDING"
+}

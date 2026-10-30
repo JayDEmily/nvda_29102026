@@ -1,0 +1,13 @@
+{
+  "reconstruction_revision": "R1_RECOVERED",
+  "byte_identical_R0": false,
+  "last_durable_checkpoint": "libfile_b8f0568a84a48191bee5ce80ac2eb711",
+  "restored_git_head": "0bc2e06776748f9a27059f977acef5e4825fbe89",
+  "original_unpublished_candidate": "cb8fd5badbe1e106753109c251e99fc97d784424",
+  "original_candidate_local": "MISSING",
+  "original_candidate_remote": "GitHub404 no commit found for ref",
+  "prior_review_record": "RECONSTRUCTED_PRIOR_REVIEW.md; not original bytes or new acceptance",
+  "current_remote_main": "ab630971741f5f60f547475f016bb09eec91a222",
+  "source_test_config_changes": false,
+  "product_runs": 0
+}

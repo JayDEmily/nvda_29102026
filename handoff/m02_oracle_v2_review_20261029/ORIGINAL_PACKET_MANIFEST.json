@@ -1,0 +1,220 @@
+{
+  "source_head": "46fc04a20312d5687a36cdbf308e9c1070bdb2ef",
+  "source_tree": "d80c95be7493325e8ac0d5ddda452326aed98560",
+  "documentation_only": true,
+  "G4_acceptance": "NOT_GRANTED",
+  "requires_external_original_baseline": true,
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "bytes": 12268,
+      "sha256": "2e5be0ef46f94b8f4b7ea34571d9854946010edcf2f09449d8ea85560012f3dc"
+    },
+    {
+      "path": "EXEC_PLAN.md",
+      "bytes": 24802,
+      "sha256": "e2a4253dc7e9a109f0067d87589e9c48e9634846c31fb78359a5731a1f6c67a2"
+    },
+    {
+      "path": "GUARDRAILS.md",
+      "bytes": 10259,
+      "sha256": "585dc9b1a95719a7b60929b0d3ea64696fd6d52cd19b2b4a463c5bb9d34947b6"
+    },
+    {
+      "path": "NVDA_M02_R3_SYNTHETIC_ORACLES_V2_20261029_ADDITIVE_FROM_97f944d51ab9.bundle",
+      "bytes": 942531,
+      "sha256": "4012459dc7bd7d605409ecbef5db2b624a32988d17713bd07e54346f431295a6"
+    },
+    {
+      "path": "NVDA_M02_R3_SYNTHETIC_ORACLES_V2_20261029_CHECKPOINT_RECEIPT.json",
+      "bytes": 1667,
+      "sha256": "99644010138ef54a0eb192c30b4408bea617bd7a119bf020c4a9159bc511677f"
+    },
+    {
+      "path": "RESTORE_AND_REVIEW.md",
+      "bytes": 2356,
+      "sha256": "4d6fba86bf54fc049fdf90c93523819b31bccf2aff4ebbc98dfd76c69825034e"
+    },
+    {
+      "path": "handoff/m02_foundation_prerequisites_20261029/ARCHIVED_PREDECESSOR_EXEC_PLAN.md",
+      "bytes": 24882,
+      "sha256": "5da3e8804d6823f27f031bb9267175ec2e0ec53223c5603219c9af95b654a56f"
+    },
+    {
+      "path": "handoff/m02_foundation_prerequisites_20261029/COVERAGE_MATRIX.csv",
+      "bytes": 8783,
+      "sha256": "05e5e0e76c001cdab5ee3a241adb009fde69b36e854cfaa2603ba9ac7cd77e1d"
+    },
+    {
+      "path": "handoff/m02_foundation_prerequisites_20261029/CURRENT_SOURCE_CONTRACT_WITNESSES.json",
+      "bytes": 31744,
+      "sha256": "fe881cb4577a111c70882babda4d601e985568df7d4dde3601efc4f39124a011"
+    },
+    {
+      "path": "handoff/m02_foundation_prerequisites_20261029/EVIDENCE_REUSE_AND_SOURCE_CHECK.json",
+      "bytes": 430,
+      "sha256": "096603fd898ac53fb8f2708369a705e8522fcdbd0fb65c63505fcedf98295800"
+    },
+    {
+      "path": "handoff/m02_foundation_prerequisites_20261029/EXTERNAL_HOLDS_CROSS_BOUNDARY.json",
+      "bytes": 3600,
+      "sha256": "37a5fced9850d6001def9e61bfe3da6b9c3b68d3eed399edcc072aebe924a7b0"
+    },
+    {
+      "path": "handoff/m02_foundation_prerequisites_20261029/FINAL_CENSUS.json",
+      "bytes": 431,
+      "sha256": "ee07a105222cfded314c2b9989f91a4ba5537b0e63124fde369e3a5c3d27dee8"
+    },
+    {
+      "path": "handoff/m02_foundation_prerequisites_20261029/G2_ACCEPTANCE_SUMMARY.md",
+      "bytes": 3268,
+      "sha256": "5d9a32c3bc5fb066565d75dd6078f64b65099825ef934812c56978ee2a4297b2"
+    },
+    {
+      "path": "handoff/m02_foundation_prerequisites_20261029/G2_INDEPENDENT_ACCEPTANCE_EXTERNAL.md",
+      "bytes": 9094,
+      "sha256": "59748a9e88b787007bacff43a2d9721000ed9e6f5c22864ed804a168f6cf1a61"
+    },
+    {
+      "path": "handoff/m02_foundation_prerequisites_20261029/G4_RETURN_REPAIR_01.md",
+      "bytes": 3694,
+      "sha256": "3af814f9196516f003d23354ef743fbef8b0f1eb99627cb55f50242edf103761"
+    },
+    {
+      "path": "handoff/m02_foundation_prerequisites_20261029/INDEPENDENT_REVIEW_BRIEF.md",
+      "bytes": 866,
+      "sha256": "05d3e3973f51159b2c40deda61015c84b92d0f6bc53f8f77e2023605e0f390ff"
+    },
+    {
+      "path": "handoff/m02_foundation_prerequisites_20261029/L00_FINDINGS.md",
+      "bytes": 2801,
+      "sha256": "35337ba3a92981b4d5cdc1a222fb65fc12bd2c6f90fd7707434c768c4a5a0648"
+    },
+    {
+      "path": "handoff/m02_foundation_prerequisites_20261029/L01_FINDINGS.md",
+      "bytes": 4463,
+      "sha256": "387e12634292ab69cf5802fb4786d38e17f32dbe19c35fb8cd8288f14f74cbf8"
+    },
+    {
+      "path": "handoff/m02_foundation_prerequisites_20261029/L02_FINDINGS.md",
+      "bytes": 3233,
+      "sha256": "22ef8985ee436e01ddbadf1c82b200c8f5b2d6f4e7a9705dd16221bb648ef9fd"
+    },
+    {
+      "path": "handoff/m02_foundation_prerequisites_20261029/L03_FINDINGS.md",
+      "bytes": 3310,
+      "sha256": "1c4daa273306bc35cc21255753f4fe2321c12adcb202944ae6e05c0ff2f89e21"
+    },
+    {
+      "path": "handoff/m02_foundation_prerequisites_20261029/L04_FINDINGS.md",
+      "bytes": 5316,
+      "sha256": "8463799b9f199585d4d2a3ed8f43884d11417d1dcf768efa1faf0d44026a5adb"
+    },
+    {
+      "path": "handoff/m02_foundation_prerequisites_20261029/L05_FINDINGS.md",
+      "bytes": 4989,
+      "sha256": "ca21e09b4e0f659347ef40d296deac736cfa9fd2071c2c74e44d6ff6ea3785c2"
+    },
+    {
+      "path": "handoff/m02_foundation_prerequisites_20261029/L06_FINDINGS.md",
+      "bytes": 9117,
+      "sha256": "6e1a80725ed0d6cce2c154edd51d731feaefa89cf44cec56355949e7fed3e015"
+    },
+    {
+      "path": "handoff/m02_foundation_prerequisites_20261029/L07_CURRENT_SOURCE_ADDENDUM.md",
+      "bytes": 3670,
+      "sha256": "8ec55adc3828ebc8f29db73cd84fb34a7570344fe71868fa1fa0a513ac9dc960"
+    },
+    {
+      "path": "handoff/m02_foundation_prerequisites_20261029/L07_FINAL_HANDOVER.md",
+      "bytes": 9530,
+      "sha256": "3c125ff3ccf391151d9f68faa303fece221cc8c56958d7bf37d76b398c37ac68"
+    },
+    {
+      "path": "handoff/m02_foundation_prerequisites_20261029/L07_FINDINGS.md",
+      "bytes": 9530,
+      "sha256": "3c125ff3ccf391151d9f68faa303fece221cc8c56958d7bf37d76b398c37ac68"
+    },
+    {
+      "path": "handoff/m02_foundation_prerequisites_20261029/NEUTRAL_POLICY_PROPOSAL_STATUS.json",
+      "bytes": 23868,
+      "sha256": "0f8b3a3f32d0bb4493af858857886c401de539421a5889568d91db7e8a0ce7a0"
+    },
+    {
+      "path": "handoff/m02_foundation_prerequisites_20261029/PRIMARY_SOURCE_INVENTORY.json",
+      "bytes": 3792,
+      "sha256": "79593dc0120b238a6b0fbc36c4b817d510454acccae1f58cba1aa36f02dd018c"
+    },
+    {
+      "path": "handoff/m02_foundation_prerequisites_20261029/PROPOSED_EXEC_PLAN_R0.md",
+      "bytes": 17851,
+      "sha256": "25410323ca98cd1f53ecdf67df551cde9015a54fdf5f0800de32de6bf1eb2cfb"
+    },
+    {
+      "path": "handoff/m02_foundation_prerequisites_20261029/R3_SYNTHETIC_ORACLE_CASES_V2.json",
+      "bytes": 5260,
+      "sha256": "da6cfdc561177601318f0ecdbf40c306b2fee4ebfeb1cc2b8ae7d87cd9f284ce"
+    },
+    {
+      "path": "handoff/m02_foundation_prerequisites_20261029/R3_SYNTHETIC_ORACLE_HANDOFF_V2.md",
+      "bytes": 3411,
+      "sha256": "8c171fcd6ae5d5cc715d265fc000a5baf29cbf8e01d937bd07e6f1efe3b39366"
+    },
+    {
+      "path": "handoff/m02_foundation_prerequisites_20261029/R3_SYNTHETIC_ORACLE_READBACK_V2.json",
+      "bytes": 1565,
+      "sha256": "e3ab1e1529708b385a81444726cfb1056223d782571849cc33f8a9cbad077a54"
+    },
+    {
+      "path": "handoff/m02_foundation_prerequisites_20261029/R3_SYNTHETIC_OWNER_DIRECTION_20261029.md",
+      "bytes": 3629,
+      "sha256": "388dabe1916b497159cafe2849829af37d84d7e3b5463cca634f4d854497d5ca"
+    },
+    {
+      "path": "handoff/m02_foundation_prerequisites_20261029/R3_TENTATIVE_SYNTHETIC_PROFILES_V1.json",
+      "bytes": 9402,
+      "sha256": "b4e9951aeb79844adbbab11db32243e511f84f7e9d45ac2014660c21124e8577"
+    },
+    {
+      "path": "handoff/m02_foundation_prerequisites_20261029/SOURCE_AND_DECISION_REGISTER.json",
+      "bytes": 40477,
+      "sha256": "3ce18fcc1d73cdb37d46f65c93f586090658cc83724f9b206b9c2bf351bcf401"
+    },
+    {
+      "path": "handoff/m02_foundation_prerequisites_20261029/SYNTHETIC_D091_BOUNDARIES_V2.csv",
+      "bytes": 472,
+      "sha256": "8cf2989f99bd7c4190746466a7b1440ed2884aa298714d1d1f9b01adbfb034b4"
+    },
+    {
+      "path": "handoff/m02_foundation_prerequisites_20261029/SYNTHETIC_D142_STATE_TIMELINE_V2.csv",
+      "bytes": 435,
+      "sha256": "9125caae2385a4dad9da73a815a0b3f20df47aae6ae09ab033d393f0b5f70589"
+    },
+    {
+      "path": "handoff/m02_foundation_prerequisites_20261029/SYNTHETIC_D144_MATCHED_LEVELS_V2.csv",
+      "bytes": 727,
+      "sha256": "88fb74912bce9a67b96b8c92df59f4b5bdb2143f6b7b903a188a9a8b16346924"
+    },
+    {
+      "path": "handoff/m02_foundation_prerequisites_20261029/SYNTHETIC_K06_64ROW_FIXTURE.csv",
+      "bytes": 3869,
+      "sha256": "addb2051a69373bb3a88dfb9a69c115449d52d3fbe393a190b5eaaf654d556fe"
+    },
+    {
+      "path": "handoff/m02_foundation_prerequisites_20261029/SYNTHETIC_K06_HELDOUT_AND_REFUSAL_V2.csv",
+      "bytes": 253,
+      "sha256": "d60dbdcda96eec1dca1a3387d37dc800c9a211c8effdef27cc79efc05ea57875"
+    },
+    {
+      "path": "handoff/m02_foundation_prerequisites_20261029/TEST_EVIDENCE_LEDGER.json",
+      "bytes": 41324,
+      "sha256": "6922f3447376df610577ac33067f8461c9669f154bf76b5a2b6c015afda26b2c"
+    },
+    {
+      "path": "handoff/m02_foundation_prerequisites_20261029/TEST_EVIDENCE_LEDGER.schema.json",
+      "bytes": 8530,
+      "sha256": "d88524535be4c3e31692e373fae1377bcfe2c994355b256044324395155a83c5"
+    }
+  ],
+  "count": 42
+}

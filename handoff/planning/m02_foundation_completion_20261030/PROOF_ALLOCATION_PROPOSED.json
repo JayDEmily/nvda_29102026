@@ -1,0 +1,912 @@
+{
+  "plan_id": "M02-FOUNDATION-COMPLETION-28",
+  "revision": "R1_RECOVERED",
+  "status": "PROPOSAL_NOT_AUTHORISED",
+  "signal_cases": 60,
+  "support_cases_up_to": 14,
+  "additional_M00_or_changed_D035_D036_D087_profile_cases": "UNALLOCATED; concrete bounded allocation and authority required before changes/execution",
+  "allocations": [
+    {
+      "proof_id": "M02-C28-D062",
+      "module": "M02",
+      "derived_id": "D062",
+      "leaf": "L23",
+      "proposed_case_count": 2,
+      "proposed_hard_ceiling": 6,
+      "status": "PROPOSED_CONDITIONAL",
+      "cases": [
+        {
+          "case_id": "D062-CONTROLLED-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d062/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D062-CONTROLLED-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d062/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ]
+    },
+    {
+      "proof_id": "M02-C28-D078",
+      "module": "M02",
+      "derived_id": "D078",
+      "leaf": "L03",
+      "proposed_case_count": 2,
+      "proposed_hard_ceiling": 6,
+      "status": "PROPOSED_CONDITIONAL",
+      "cases": [
+        {
+          "case_id": "D078-CONTROLLED-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d078/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D078-CONTROLLED-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d078/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ]
+    },
+    {
+      "proof_id": "M02-C28-D079",
+      "module": "M02",
+      "derived_id": "D079",
+      "leaf": "L02",
+      "proposed_case_count": 2,
+      "proposed_hard_ceiling": 6,
+      "status": "PROPOSED_CONDITIONAL",
+      "cases": [
+        {
+          "case_id": "D079-CONTROLLED-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d079/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D079-CONTROLLED-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d079/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ]
+    },
+    {
+      "proof_id": "M02-C28-D080",
+      "module": "M02",
+      "derived_id": "D080",
+      "leaf": "L02",
+      "proposed_case_count": 2,
+      "proposed_hard_ceiling": 6,
+      "status": "PROPOSED_CONDITIONAL",
+      "cases": [
+        {
+          "case_id": "D080-CONTROLLED-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d080/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D080-CONTROLLED-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d080/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ]
+    },
+    {
+      "proof_id": "M02-C28-D081",
+      "module": "M02",
+      "derived_id": "D081",
+      "leaf": "L02",
+      "proposed_case_count": 2,
+      "proposed_hard_ceiling": 6,
+      "status": "PROPOSED_CONDITIONAL",
+      "cases": [
+        {
+          "case_id": "D081-CONTROLLED-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d081/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D081-CONTROLLED-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d081/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ]
+    },
+    {
+      "proof_id": "M02-C28-D085",
+      "module": "M02",
+      "derived_id": "D085",
+      "leaf": "L08",
+      "proposed_case_count": 2,
+      "proposed_hard_ceiling": 6,
+      "status": "PROPOSED_CONDITIONAL",
+      "cases": [
+        {
+          "case_id": "D085-CONTROLLED-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d085/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D085-CONTROLLED-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d085/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ]
+    },
+    {
+      "proof_id": "M02-C28-D086",
+      "module": "M02",
+      "derived_id": "D086",
+      "leaf": "L09",
+      "proposed_case_count": 2,
+      "proposed_hard_ceiling": 6,
+      "status": "PROPOSED_CONDITIONAL",
+      "cases": [
+        {
+          "case_id": "D086-CONTROLLED-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d086/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D086-CONTROLLED-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d086/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ]
+    },
+    {
+      "proof_id": "M02-C28-D091",
+      "module": "M02",
+      "derived_id": "D091",
+      "leaf": "L04",
+      "proposed_case_count": 2,
+      "proposed_hard_ceiling": 6,
+      "status": "PROPOSED_CONDITIONAL",
+      "cases": [
+        {
+          "case_id": "D091-CONTROLLED-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d091/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D091-CONTROLLED-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d091/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ]
+    },
+    {
+      "proof_id": "M02-C28-D095",
+      "module": "M02",
+      "derived_id": "D095",
+      "leaf": "L11",
+      "proposed_case_count": 2,
+      "proposed_hard_ceiling": 6,
+      "status": "PROPOSED_CONDITIONAL",
+      "cases": [
+        {
+          "case_id": "D095-CONTROLLED-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d095/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D095-CONTROLLED-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d095/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ]
+    },
+    {
+      "proof_id": "M02-C28-D096",
+      "module": "M02",
+      "derived_id": "D096",
+      "leaf": "L12",
+      "proposed_case_count": 2,
+      "proposed_hard_ceiling": 6,
+      "status": "PROPOSED_CONDITIONAL",
+      "cases": [
+        {
+          "case_id": "D096-CONTROLLED-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d096/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D096-CONTROLLED-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d096/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ]
+    },
+    {
+      "proof_id": "M02-C28-D097",
+      "module": "M02",
+      "derived_id": "D097",
+      "leaf": "L13",
+      "proposed_case_count": 2,
+      "proposed_hard_ceiling": 6,
+      "status": "PROPOSED_CONDITIONAL",
+      "cases": [
+        {
+          "case_id": "D097-CONTROLLED-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d097/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D097-CONTROLLED-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d097/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ]
+    },
+    {
+      "proof_id": "M02-C28-D098",
+      "module": "M02",
+      "derived_id": "D098",
+      "leaf": "L14",
+      "proposed_case_count": 2,
+      "proposed_hard_ceiling": 6,
+      "status": "PROPOSED_CONDITIONAL",
+      "cases": [
+        {
+          "case_id": "D098-CONTROLLED-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d098/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D098-CONTROLLED-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d098/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ]
+    },
+    {
+      "proof_id": "M02-C28-D102",
+      "module": "M02",
+      "derived_id": "D102",
+      "leaf": "L25",
+      "proposed_case_count": 2,
+      "proposed_hard_ceiling": 6,
+      "status": "PROPOSED_CONDITIONAL",
+      "cases": [
+        {
+          "case_id": "D102-CONTROLLED-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d102/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D102-CONTROLLED-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d102/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ]
+    },
+    {
+      "proof_id": "M02-C28-D107",
+      "module": "M02",
+      "derived_id": "D107",
+      "leaf": "L15",
+      "proposed_case_count": 2,
+      "proposed_hard_ceiling": 6,
+      "status": "PROPOSED_CONDITIONAL",
+      "cases": [
+        {
+          "case_id": "D107-CONTROLLED-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d107/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D107-CONTROLLED-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d107/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ]
+    },
+    {
+      "proof_id": "M02-C28-D108",
+      "module": "M02",
+      "derived_id": "D108",
+      "leaf": "L16",
+      "proposed_case_count": 2,
+      "proposed_hard_ceiling": 6,
+      "status": "PROPOSED_CONDITIONAL",
+      "cases": [
+        {
+          "case_id": "D108-CONTROLLED-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d108/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D108-CONTROLLED-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d108/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ]
+    },
+    {
+      "proof_id": "M02-C28-D109",
+      "module": "M02",
+      "derived_id": "D109",
+      "leaf": "L17",
+      "proposed_case_count": 2,
+      "proposed_hard_ceiling": 6,
+      "status": "PROPOSED_CONDITIONAL",
+      "cases": [
+        {
+          "case_id": "D109-CONTROLLED-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d109/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D109-CONTROLLED-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d109/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ]
+    },
+    {
+      "proof_id": "M02-C28-D110",
+      "module": "M02",
+      "derived_id": "D110",
+      "leaf": "L18",
+      "proposed_case_count": 2,
+      "proposed_hard_ceiling": 6,
+      "status": "PROPOSED_CONDITIONAL",
+      "cases": [
+        {
+          "case_id": "D110-CONTROLLED-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d110/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D110-CONTROLLED-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d110/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ]
+    },
+    {
+      "proof_id": "M02-C28-D111",
+      "module": "M02",
+      "derived_id": "D111",
+      "leaf": "L26",
+      "proposed_case_count": 2,
+      "proposed_hard_ceiling": 6,
+      "status": "PROPOSED_CONDITIONAL",
+      "cases": [
+        {
+          "case_id": "D111-CONTROLLED-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d111/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D111-CONTROLLED-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d111/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ]
+    },
+    {
+      "proof_id": "M02-C28-D112",
+      "module": "M02",
+      "derived_id": "D112",
+      "leaf": "L27",
+      "proposed_case_count": 2,
+      "proposed_hard_ceiling": 6,
+      "status": "PROPOSED_CONDITIONAL",
+      "cases": [
+        {
+          "case_id": "D112-CONTROLLED-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d112/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D112-CONTROLLED-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d112/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ]
+    },
+    {
+      "proof_id": "M02-C28-D113",
+      "module": "M02",
+      "derived_id": "D113",
+      "leaf": "L28",
+      "proposed_case_count": 2,
+      "proposed_hard_ceiling": 6,
+      "status": "PROPOSED_CONDITIONAL",
+      "cases": [
+        {
+          "case_id": "D113-CONTROLLED-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d113/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D113-CONTROLLED-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d113/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ]
+    },
+    {
+      "proof_id": "M02-C28-D120",
+      "module": "M02",
+      "derived_id": "D120",
+      "leaf": "L20",
+      "proposed_case_count": 2,
+      "proposed_hard_ceiling": 6,
+      "status": "PROPOSED_CONDITIONAL",
+      "cases": [
+        {
+          "case_id": "D120-CONTROLLED-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d120/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D120-CONTROLLED-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d120/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ]
+    },
+    {
+      "proof_id": "M02-C28-D121",
+      "module": "M02",
+      "derived_id": "D121",
+      "leaf": "L21",
+      "proposed_case_count": 2,
+      "proposed_hard_ceiling": 6,
+      "status": "PROPOSED_CONDITIONAL",
+      "cases": [
+        {
+          "case_id": "D121-CONTROLLED-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d121/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D121-CONTROLLED-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d121/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ]
+    },
+    {
+      "proof_id": "M02-C28-D122",
+      "module": "M02",
+      "derived_id": "D122",
+      "leaf": "L22",
+      "proposed_case_count": 2,
+      "proposed_hard_ceiling": 6,
+      "status": "PROPOSED_CONDITIONAL",
+      "cases": [
+        {
+          "case_id": "D122-CONTROLLED-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d122/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D122-CONTROLLED-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d122/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ]
+    },
+    {
+      "proof_id": "M02-C28-D141",
+      "module": "M02",
+      "derived_id": "D141",
+      "leaf": "L29",
+      "proposed_case_count": 4,
+      "proposed_hard_ceiling": 6,
+      "status": "PROPOSED_CONDITIONAL",
+      "cases": [
+        {
+          "case_id": "D141-STK-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "STK",
+          "proof_path": "tests/product/m02_completion_28/d141/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D141-STK-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "STK",
+          "proof_path": "tests/product/m02_completion_28/d141/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D141-OPT-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "OPT",
+          "proof_path": "tests/product/m02_completion_28/d141/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D141-OPT-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "OPT",
+          "proof_path": "tests/product/m02_completion_28/d141/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ]
+    },
+    {
+      "proof_id": "M02-C28-D142",
+      "module": "M02",
+      "derived_id": "D142",
+      "leaf": "L05",
+      "proposed_case_count": 4,
+      "proposed_hard_ceiling": 6,
+      "status": "PROPOSED_CONDITIONAL",
+      "cases": [
+        {
+          "case_id": "D142-STK-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "STK",
+          "proof_path": "tests/product/m02_completion_28/d142/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D142-STK-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "STK",
+          "proof_path": "tests/product/m02_completion_28/d142/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D142-OPT-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "OPT",
+          "proof_path": "tests/product/m02_completion_28/d142/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D142-OPT-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "OPT",
+          "proof_path": "tests/product/m02_completion_28/d142/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ]
+    },
+    {
+      "proof_id": "M02-C28-D144",
+      "module": "M02",
+      "derived_id": "D144",
+      "leaf": "L06",
+      "proposed_case_count": 4,
+      "proposed_hard_ceiling": 6,
+      "status": "PROPOSED_CONDITIONAL",
+      "cases": [
+        {
+          "case_id": "D144-STK-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "STK",
+          "proof_path": "tests/product/m02_completion_28/d144/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D144-STK-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "STK",
+          "proof_path": "tests/product/m02_completion_28/d144/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D144-OPT-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "OPT",
+          "proof_path": "tests/product/m02_completion_28/d144/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D144-OPT-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "OPT",
+          "proof_path": "tests/product/m02_completion_28/d144/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ]
+    },
+    {
+      "proof_id": "M02-C28-D145",
+      "module": "M02",
+      "derived_id": "D145",
+      "leaf": "L31",
+      "proposed_case_count": 0,
+      "proposed_hard_ceiling": 0,
+      "status": "PROPOSED_PAUSED",
+      "cases": []
+    },
+    {
+      "proof_id": "M02-C28-D151",
+      "module": "M02",
+      "derived_id": "D151",
+      "leaf": "L30",
+      "proposed_case_count": 2,
+      "proposed_hard_ceiling": 6,
+      "status": "PROPOSED_CONDITIONAL",
+      "cases": [
+        {
+          "case_id": "D151-CONTROLLED-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d151/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D151-CONTROLLED-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d151/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ]
+    },
+    {
+      "proof_id": "SUP-D071-HISTORY",
+      "module": "M02",
+      "derived_id": null,
+      "leaf": "L01a",
+      "proposed_case_count": 2,
+      "proposed_hard_ceiling": 6,
+      "status": "PROPOSED_ONLY_IF_NEW_PROFILE_REQUIRED",
+      "cases": [
+        {
+          "case_id": "SUP-D071-HISTORY-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "EXACT_NEW_PROFILE",
+          "proof_path": "tests/product/m02_completion_28/support/d071-history/test_profile.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "SUP-D071-HISTORY-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "EXACT_NEW_PROFILE",
+          "proof_path": "tests/product/m02_completion_28/support/d071-history/test_profile.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ]
+    },
+    {
+      "proof_id": "SUP-D075-HISTORY",
+      "module": "M02",
+      "derived_id": null,
+      "leaf": "L01a",
+      "proposed_case_count": 2,
+      "proposed_hard_ceiling": 6,
+      "status": "PROPOSED_ONLY_IF_NEW_PROFILE_REQUIRED",
+      "cases": [
+        {
+          "case_id": "SUP-D075-HISTORY-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "EXACT_NEW_PROFILE",
+          "proof_path": "tests/product/m02_completion_28/support/d075-history/test_profile.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "SUP-D075-HISTORY-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "EXACT_NEW_PROFILE",
+          "proof_path": "tests/product/m02_completion_28/support/d075-history/test_profile.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ]
+    },
+    {
+      "proof_id": "SUP-D076-HISTORY",
+      "module": "M02",
+      "derived_id": null,
+      "leaf": "L01a",
+      "proposed_case_count": 2,
+      "proposed_hard_ceiling": 6,
+      "status": "PROPOSED_ONLY_IF_NEW_PROFILE_REQUIRED",
+      "cases": [
+        {
+          "case_id": "SUP-D076-HISTORY-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "EXACT_NEW_PROFILE",
+          "proof_path": "tests/product/m02_completion_28/support/d076-history/test_profile.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "SUP-D076-HISTORY-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "EXACT_NEW_PROFILE",
+          "proof_path": "tests/product/m02_completion_28/support/d076-history/test_profile.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ]
+    },
+    {
+      "proof_id": "SUP-D077-HISTORY",
+      "module": "M02",
+      "derived_id": null,
+      "leaf": "L01a",
+      "proposed_case_count": 2,
+      "proposed_hard_ceiling": 6,
+      "status": "PROPOSED_ONLY_IF_NEW_PROFILE_REQUIRED",
+      "cases": [
+        {
+          "case_id": "SUP-D077-HISTORY-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "EXACT_NEW_PROFILE",
+          "proof_path": "tests/product/m02_completion_28/support/d077-history/test_profile.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "SUP-D077-HISTORY-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "EXACT_NEW_PROFILE",
+          "proof_path": "tests/product/m02_completion_28/support/d077-history/test_profile.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ]
+    },
+    {
+      "proof_id": "SUP-D001-OPTION",
+      "module": "M02",
+      "derived_id": null,
+      "leaf": "L07b",
+      "proposed_case_count": 2,
+      "proposed_hard_ceiling": 6,
+      "status": "PROPOSED_ONLY_IF_NEW_PROFILE_REQUIRED",
+      "cases": [
+        {
+          "case_id": "SUP-D001-OPTION-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "EXACT_NEW_PROFILE",
+          "proof_path": "tests/product/m02_completion_28/support/d001-option/test_profile.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "SUP-D001-OPTION-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "EXACT_NEW_PROFILE",
+          "proof_path": "tests/product/m02_completion_28/support/d001-option/test_profile.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ]
+    },
+    {
+      "proof_id": "SUP-D004-USOPTION",
+      "module": "M02",
+      "derived_id": null,
+      "leaf": "L07a",
+      "proposed_case_count": 2,
+      "proposed_hard_ceiling": 6,
+      "status": "PROPOSED_ONLY_IF_NEW_PROFILE_REQUIRED",
+      "cases": [
+        {
+          "case_id": "SUP-D004-USOPTION-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "EXACT_NEW_PROFILE",
+          "proof_path": "tests/product/m02_completion_28/support/d004-usoption/test_profile.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "SUP-D004-USOPTION-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "EXACT_NEW_PROFILE",
+          "proof_path": "tests/product/m02_completion_28/support/d004-usoption/test_profile.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ]
+    },
+    {
+      "proof_id": "SUP-D015-OPTION",
+      "module": "M02",
+      "derived_id": null,
+      "leaf": "L19",
+      "proposed_case_count": 2,
+      "proposed_hard_ceiling": 6,
+      "status": "PROPOSED_ONLY_IF_NEW_PROFILE_REQUIRED",
+      "cases": [
+        {
+          "case_id": "SUP-D015-OPTION-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "EXACT_NEW_PROFILE",
+          "proof_path": "tests/product/m02_completion_28/support/d015-option/test_profile.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "SUP-D015-OPTION-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "EXACT_NEW_PROFILE",
+          "proof_path": "tests/product/m02_completion_28/support/d015-option/test_profile.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ]
+    }
+  ]
+}

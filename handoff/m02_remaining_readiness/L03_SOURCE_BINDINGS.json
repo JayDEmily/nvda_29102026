@@ -1,0 +1,51 @@
+{
+  "leaf": "L03",
+  "status": "AUTHOR_DOCUMENTARY_CANDIDATE_INDEPENDENT_REVIEW_PENDING",
+  "ids": [
+    "D120",
+    "D121",
+    "D122",
+    "D141",
+    "D142",
+    "D144",
+    "D145"
+  ],
+  "sources": [
+    {
+      "path": "handoff/m01_completion/authority/D138_D145_L2_OWNER_APPROVED_DEPENDENCY_AMENDMENT_20261016.md",
+      "sha256": "9973c3699b5135be503611f4a5582118c4f80a0145bde473720c32434a3963e2",
+      "git_blob": "13805165e6f2d7651ce275be24edbf94ed403d52"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/FINAL_REPORT.md",
+      "sha256": "8be0a591460cd29d8b613de64597ee7c89d71db05660998f01a8bf73a04a670f",
+      "git_blob": "ddb5ff00582ccac8967edb51d424363e43068ec0"
+    },
+    {
+      "path": "handoff/downstream_reconciliation/L13/D145_RESUMPTION_DISPOSITION.md",
+      "sha256": "1f540470a2096c90c88d9e0e85f441f67d4c360e301f3bf9d65494d08b6f72ad",
+      "git_blob": "c03f22ec2840d7d006e408177bc8ff19db768541"
+    },
+    {
+      "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md",
+      "sha256": "603b850802a418780109095e7ae69bcece449da79fb24140a6d50297605e927c",
+      "git_blob": "32930fc08eb648c2cc6347d32d910e3a45bdc07f"
+    },
+    {
+      "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv",
+      "sha256": "67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549",
+      "git_blob": "a27d5e768ab7f1126cecd5a7bbe35bd05b82a442"
+    },
+    {
+      "path": "handoff/planning/m00_brief2_20261027/PAUSED_NEXT20_EXEC_PLAN_AT_D143.md",
+      "sha256": "2d95d7c5e425ed1dd231f4685100f7c1db9c85ee1369fea54f91580aab6caa5a",
+      "git_blob": "71eeea1f267b12c4e8182dd9809cfe2e17258c15"
+    },
+    {
+      "path": "src/nvda_desk/market_measurement_truth/_trade_direction.py",
+      "sha256": "031c8643cab2b00eea18e9fd349e31b384ec2d304d97b38004e84184a274acea",
+      "git_blob": "af489dad05916b6470083c805f4ee164ec63378c"
+    }
+  ],
+  "no_product_tests": true
+}

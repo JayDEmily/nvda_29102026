@@ -1,0 +1,2616 @@
+{
+  "status": "DOCUMENTARY_RECHECK_COMPLETE_SEMANTIC_REVIEW_PENDING",
+  "source_checkpoint": "f84430f275931aea56cf4f44931699ffaee3f542",
+  "historical_identity_count": 98,
+  "native_profile_claim_count": 11,
+  "historical_evidence": [
+    {
+      "id": "D001",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "a2b1c6dd24e8219f6059b36634de8a10ea49e8ec",
+      "aggregate": "neutral_market_measurement_truth_d001",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d001_execution/final_green.log",
+        "sha256": "5489827ecaacc103c96a0f4e4e1bd442c4d07f694da6182d10e228d886a57af7",
+        "git_blob": "d9761a133e8f3babe59dec321324cd7c0fb45474"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d001_execution/final_review.md",
+        "sha256": "150495599b50ba2572a9ea79b1a4d67f55453481e529e0ec1a0375273c18b251",
+        "git_blob": "6b1df4edef21c57358de25381a104faf94cbb652"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D002",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "30ba5907693405758b7f2c46eb2e05023ab991cf",
+      "aggregate": "neutral_market_measurement_truth_d002",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d002_execution/final_green.log",
+        "sha256": "d6b583cec2d35d035bf3fc45c10b53a0dffae1fe8742e6e51c1e434bef681ddf",
+        "git_blob": "7ec973bd4d4fce017dc29a7053c7ed8cd27bdca4"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d002_execution/final_review.md",
+        "sha256": "283d428753f3c6356de645f6c780103ecc737be56328e7612c20233f0a47e2bc",
+        "git_blob": "a84750b2b86152f2c14057c4533ed3290ca3491e"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D003",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "f7aebc77ebe886fbd83516b761f96fc9bfc86b81",
+      "aggregate": "neutral_market_measurement_truth_d003",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d003_execution/final_green.log",
+        "sha256": "e26a54fdd3a7496dcf11f6ef0d406b05f3b6153c330eff793f6456a199493c53",
+        "git_blob": "0c7f3d9b16e67a0152bac8899b81579d339acc4e"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d003_execution/final_review.md",
+        "sha256": "3dc92f46c44f8d452fc0e0f9bd5819d52ee7a8e521c5a87b95290aac183f4885",
+        "git_blob": "c21cb38b5a0683fca1abd5ce92d7f32f6b2e42b1"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D004",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "3701542aaa772d439598141fad002956e99b06f8",
+      "aggregate": "neutral_market_measurement_truth_d004",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d004_execution/final_green.log",
+        "sha256": "805018582c586f8dcd4f28d06d40b415c28ea6307069d1fa97d8c653f2278787",
+        "git_blob": "b6e908c15e3750409b338d031e18981dd748e4d2"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d004_execution/final_review.md",
+        "sha256": "b15b921ee0b14b8744a4614f4bf4ae2e41f1df14386fd0e103c9a338ae56714f",
+        "git_blob": "982593e5b52981e669bd568bee2560201de5b896"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D005",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "f33530bca3f2fa7ce8ed530f653c939b584cb581",
+      "aggregate": "neutral_market_measurement_truth_d005",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d005_execution/final_green.log",
+        "sha256": "8d3b938127682003facb82838ac98aae083812dba4b9e0b5955b2a8792e62ba5",
+        "git_blob": "22f8dbbdc0e49c697692a3d1a2bb1c1630faa33d"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d005_execution/final_review.md",
+        "sha256": "1c9de48359c63f4c3c3b68172b6bb958c4a246e12d3d19a302a2a8d9a106c9c8",
+        "git_blob": "f7bca182855d141fb9fee377c374dbe159db0955"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D009",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "83543c5a7244cd654703268626044f07b1c9fc0e",
+      "aggregate": "neutral_market_measurement_truth_d009",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d009_execution/final_green.log",
+        "sha256": "9cff7180cbf4acba3074f1ff892834f93203fa61abbfeb17e440d1818c863734",
+        "git_blob": "a2878f66c0566cf8ffc29837245d287de9736123"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d009_execution/final_review.md",
+        "sha256": "4b7ea20f1c5d1db72e4e2106cb16ad863d1fb4a0191f173f0514ec3ca838b795",
+        "git_blob": "6c0d88735cca09cb6ebd936512290eaac90fdc27"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D010",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "0ba52a8ca3fb11b8ae63a0f80857b1fc6f34808e",
+      "aggregate": "neutral_market_measurement_truth_d010",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d010_execution/strict-source-repair.log",
+        "sha256": "577d533de124a511c83fddae5c91ca433b4fbc4779bfebdcec60988ebf72a808",
+        "git_blob": "f21f086fce54d6336b58b1bf345b9231e3ba7982"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d010_execution/INDEPENDENT_REVIEW.md",
+        "sha256": "8d709e6dac732f1b7011cbde7b4e47fc468a8129f5ff456b3d84d7e4f06c5b28",
+        "git_blob": "bffff4f0796e5edee8d8b42d14fb53f6d7b93a0b"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D011",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "b83a1a071153d3bdff7f0aa1b6b49bcd3c90ceb2",
+      "aggregate": "neutral_market_measurement_truth_pilot",
+      "observed_exit": 0,
+      "observed_passed_total": 113,
+      "observed_collected_total": 113,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/G5_3_FINAL_FOUNDATION_AGGREGATE_20261019.log",
+        "sha256": "5b24d7768712aca3d4a614d059dc17505c4c1faba342c97083a34c83521a1ebb",
+        "git_blob": "6a8ffcc318cf67dd82eabf764ced97868254345a"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/G5_3_INDEPENDENT_REVIEW_20261019.md",
+        "sha256": "48b63ae4627c33b3b5443834842f63594e81f286b4d1605f59ad83ec92cf2eaf",
+        "git_blob": "99f273fada076a73c0016d531500b25eacd6a9e4"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D012",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "6b737fa1b7bd540e857f91c211f7898bfd4e1e83",
+      "aggregate": "neutral_market_measurement_truth_d012",
+      "observed_exit": 0,
+      "observed_passed_total": 80,
+      "observed_collected_total": 80,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d012_implementation_review_20261019/strict_d012.log",
+        "sha256": "9e27a3f6fdbf1fac452071c227bae287123071202d16e7a8a22ce832503d88ab",
+        "git_blob": "8955bfffc18b9720dd1b29ed21ebea6d7be64a58"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d012_implementation_review_20261019/REVIEW.md",
+        "sha256": "b6e6051d9776189603e9c02bd4dea47bffd237c23180e2cb059b3af3de9ddd50",
+        "git_blob": "0a94b78b06e3afbaf738a0a843820e4fdfbf5fe1"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D013",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "8bed3b95d3af17b75aab372702c9a9d4f3b964c4",
+      "aggregate": "neutral_market_measurement_truth_d013",
+      "observed_exit": 0,
+      "observed_passed_total": 179,
+      "observed_collected_total": 179,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d013_implementation_review_20261020/strict_d013.log",
+        "sha256": "be82177148c4a672e9e18b5fa5b61c6c589006804e5c86c5a61a646618d5c884",
+        "git_blob": "746f3c3db390834f5d1b7837c1d7ae59e7bbef6b"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d013_implementation_review_20261020/REVIEW.md",
+        "sha256": "d2bab9c179b13c54f052991deabd85b79a26ff81b0277ef76bf7d23d85c44215",
+        "git_blob": "c7830c38a8271f381f4a3d8c366337d3fe38e68b"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D014",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "b0a61a7f960b1cff4f95605347db2773d1078c65",
+      "aggregate": "neutral_market_measurement_truth_d014",
+      "observed_exit": 0,
+      "observed_passed_total": 202,
+      "observed_collected_total": 202,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d014_completion_20261021/candidate_initial/d014.log",
+        "sha256": "10e836d54a2863044f85e51a338156ff86887becbe6968b966d0bce7ba342d3e",
+        "git_blob": "795449949b55d61afee5bf7a0e1d74c4d7378f46"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d014_completion_20261021/independent_review/REVIEW.md",
+        "sha256": "ca26bbcbed2234758f4785f65e6a0bc6d5cd317dc27783aecf38750e3a617afe",
+        "git_blob": "78f93f025066474eb2463f0cd7c46ef14d8deecc"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D015",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "ef4ff63f790987a2f54e2ba796038e1eae8ee8d6",
+      "aggregate": "neutral_market_measurement_truth_d015",
+      "observed_exit": 0,
+      "observed_passed_total": 6,
+      "observed_collected_total": 6,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d015_execution/strict_green.log",
+        "sha256": "b371dd035d834fd388be098c51a2d850b394f82372a7978cc5344e47f1f25d50",
+        "git_blob": "bf5cee510b9bce014742349996f9ecd8b1d61754"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d015_execution/implementation_review_v2/REVIEW.md",
+        "sha256": "97e93a7e41fa3b67f0071f89921826b151f4043fed4c310cf02a1e3096540e84",
+        "git_blob": "b7d1bdb354eedf1d5355b96c4cf53982b79b7eca"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D016",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "124e2b21804a37124fdb3002d5e6a3a1fe623290",
+      "aggregate": "neutral_market_measurement_truth_d016",
+      "observed_exit": 0,
+      "observed_passed_total": 5,
+      "observed_collected_total": 5,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d016_execution/d016-final-green.log",
+        "sha256": "fcbff9ef75ad682903c8663c1fa154c8329057feedba63f60236bb4b6b7c5a40",
+        "git_blob": "f7f9353d73a26261ae91ddbf8f4d2ebf68e41a54"
+      },
+      "original_review_ref": {
+        "git_object": "c57016955fd10beacc1fca955cc9449888192da5:EXEC_PLAN.md",
+        "git_blob": "5262d4f4e240e8e455496e98a457c9bc67cdd99b",
+        "locator": "D016 execution/acceptance ledger",
+        "kind": "CONTEMPORANEOUS_ROOT_LEDGER; not relabelled independent report"
+      },
+      "digest_sources": {
+        "CURRENT": 1
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D017",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "6eb82cab248d0ee570b85786be0ca6a5c1bd556f",
+      "aggregate": "neutral_market_measurement_truth_d017",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d017_execution/d017-final-green.log",
+        "sha256": "c6e5cc4304ad76a4ce5265ec0ab53b0796a7cc043e74064b52b6ce304933b962",
+        "git_blob": "cf4ad16f37fbdd6159fbeab06ac67bc6801cfde1"
+      },
+      "original_review_ref": {
+        "git_object": "612405a20168fe4675a28da900e2c396e4b63301:EXEC_PLAN.md",
+        "git_blob": "b209ec9d34d65ab829b0d77f84db9cb22c210049",
+        "locator": "D017 execution/acceptance ledger",
+        "kind": "CONTEMPORANEOUS_ROOT_LEDGER; not relabelled independent report"
+      },
+      "digest_sources": {
+        "CURRENT": 1
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D018",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "6c74c8a2f4f9dda9a9cc6d9a99d6d9537cddfcab",
+      "aggregate": "neutral_market_measurement_truth_d018",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d018_execution/d018-final-repaired-green.log",
+        "sha256": "7b63a75293946e8aea64263f61a1803ccb3d2d747e0f2564a879e638559c87c1",
+        "git_blob": "7097773811e66b67488cef7b23105aa309984b0a"
+      },
+      "original_review_ref": {
+        "git_object": "e84bd317f586a46d698ea73b93160c57e58fcdc0:EXEC_PLAN.md",
+        "git_blob": "6526f6893c446542ad588b8c97c751c0439b3814",
+        "locator": "D018 execution/acceptance ledger",
+        "kind": "CONTEMPORANEOUS_ROOT_LEDGER; not relabelled independent report"
+      },
+      "digest_sources": {
+        "CURRENT": 1
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D019",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "2a03a1f931d46d92f1d6febdb4b622ac0da5cfc4",
+      "aggregate": "neutral_market_measurement_truth_d019",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d019_execution/d019-final-green.log",
+        "sha256": "4b5f8ad6497d4fc394657ee8beb56afa0ab1a9e1108b3620bae80e9b14e0f6a3",
+        "git_blob": "3f3c999a51c606f0847a7acd358a13c09c5482ef"
+      },
+      "original_review_ref": {
+        "git_object": "c3930021f4de8340cc53bea9cfa17cbcc0d6b006:EXEC_PLAN.md",
+        "git_blob": "0bd20369602c8e26a4b213d4449de02637e45377",
+        "locator": "D019 execution/acceptance ledger",
+        "kind": "CONTEMPORANEOUS_ROOT_LEDGER; not relabelled independent report"
+      },
+      "digest_sources": {
+        "CURRENT": 1
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D020",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "55fc356729d0253e4c6c03a43357ad95b8c383ca",
+      "aggregate": "neutral_market_measurement_truth_d020",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d020_execution/d020-final-green.log",
+        "sha256": "6b4168695d3916113658d6c600672f2033ba33df530223520d59a2e121db225b",
+        "git_blob": "cbbc4d10ddf885ab472a6de2caed2ef7fc77ea04"
+      },
+      "original_review_ref": {
+        "git_object": "4885e144c7d214831f8e781ee939b2cf0f4a0cfb:EXEC_PLAN.md",
+        "git_blob": "7391ffb525ecb8d63d5b71b888fb9d5866b8ba7d",
+        "locator": "D020 execution/acceptance ledger",
+        "kind": "CONTEMPORANEOUS_ROOT_LEDGER; not relabelled independent report"
+      },
+      "digest_sources": {
+        "CURRENT": 1
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D021",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "b96b79091c55395c1011875849b93f1f3f255ce9",
+      "aggregate": "neutral_market_measurement_truth_d021",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d021_execution/final_green.log",
+        "sha256": "837df2b2725216c23333f606bdea91616df46916a04f6dd38c4a5ee478ceb0cc",
+        "git_blob": "4e417d9b234e6fa7600bcf5da38194582d467cce"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d021_execution/final_review.md",
+        "sha256": "a5ee82e64cc9836bc7b3e14b8956cf8f882f5cf4a237e608f2006786364596b8",
+        "git_blob": "9646b8a51009b170706ead84e72f16427860e570"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D022",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "87c5c8124cb4592c170ec8d65fa4ed827192889e",
+      "aggregate": "neutral_market_measurement_truth_d022",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d022_execution/final_green.log",
+        "sha256": "1f08c8328ca39ce5638a84ea64812c9913251bc94a0c111a8ca6fdcbad0dada1",
+        "git_blob": "618abfdd0c261fdcd77a4e38191248d236a86bb2"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d022_execution/final_review.md",
+        "sha256": "38cd5a816b77aa71a72e810bfc6553eb3e4ebfaf1e70e5d303c2c9360ba0c36e",
+        "git_blob": "0622687d99d23e1f3fd1d11c291530e4d01fc69c"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D023",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "267adf1c47f7bdff912fbc720aa3ffc7b9b13b5c",
+      "aggregate": "neutral_market_measurement_truth_d023",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d023_execution/final_green.log",
+        "sha256": "eb83704467f2ace5b771b878727eb441bd5928f0eb7291eee6e2dd44b6818407",
+        "git_blob": "a4105a47b0692c6c9a7cce43eb3e93f3922ffab0"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d023_execution/final_review.md",
+        "sha256": "bc1e7a94f1b68ea3e57a42b84a54081caa92f09c26529a0e80db6429276edf25",
+        "git_blob": "13ce1f099717e090b59dda119d475dba0f00dc59"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D024",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "c1a2a1966403809502540245bddae3bfaaae2102",
+      "aggregate": "neutral_market_measurement_truth_d024",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d024_execution/final_green.log",
+        "sha256": "5e99e6806ca6a5a251b46c9f8627973cb2827e2178cc56dc4334b2c01f3b81f3",
+        "git_blob": "288002d3fbd19351bd08fabb340aed93b845690a"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d024_execution/final_review.md",
+        "sha256": "47947cb2e4594f5ab98f01cf1a50263d723cecbf275ae97155d0cdb040996729",
+        "git_blob": "8aec0f2bfcf81be8c53271f155b8047f3f7e6161"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D025",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "dcf6b29e84258fc9339105b37f020c1678f9cbff",
+      "aggregate": "neutral_market_measurement_truth_d025",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d025_execution/final_green.log",
+        "sha256": "1d1f5ef522219600263cdd47af007a22fb79980f4d4abc9570c5e5cb4b741b8a",
+        "git_blob": "28860e889c10a6f0df2c04740759d1841388d24a"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d025_execution/final_review.md",
+        "sha256": "b22658878367040b99e1af0ed4a1baaff98361b90f8db601951f90a173c105b8",
+        "git_blob": "8b81395d58c928b1044f7da533d549fdfbf01ac1"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D026",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "8861608bc071937c3f40167af7c49f54524b7672",
+      "aggregate": "neutral_market_measurement_truth_d026",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d026_execution/final_green.log",
+        "sha256": "2b9057f628fcd11a32b08819f074a43b43ce9841bf04d5e66e67d6c26731c876",
+        "git_blob": "462efb1f24171f2d0387da7bb88b2ee95a721b66"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d026_execution/final_review.md",
+        "sha256": "16b340f3ee1358901080ad9ea4a4e00013cb924c5785f9c803e0bee3314c81c9",
+        "git_blob": "de58c26eb85eb308bbfa838e1c854b529fe99cd9"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D027",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "6a76ae9de7b4698d4aaea1758de972dbbc513948",
+      "aggregate": "neutral_market_measurement_truth_d027",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d027_execution/final_green.log",
+        "sha256": "47a22748b165641d7292f0810fb5d02b5b34f2de22824969e6e742f2a924a38d",
+        "git_blob": "5be2a16f66b8344ec2ef692946f68d7f8b2e5f3f"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d027_execution/final_review.md",
+        "sha256": "5cbd903a00124a7f8c393ef9693317f3ce29e77682953ff03c3e97fc478674d7",
+        "git_blob": "2339587bddf8b612c081a639b82a843b49435002"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D028",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "bef3b1b261af6eec0425bd5ef5ddd310f1226024",
+      "aggregate": "neutral_market_measurement_truth_d028",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d028_execution/final_green.log",
+        "sha256": "e14feb58eff6cc3bc77be563371f04fae2c8a5345c2d5f12db80fa3607c563ae",
+        "git_blob": "3597b6f6900ffdc659eaf57b955f454c51346b31"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d028_execution/final_review.md",
+        "sha256": "813631791324fcd461e19978f265044362b3a92059bf912292efa5d83112b709",
+        "git_blob": "4d998f69e4f52d3ad4db169ae2ba713cb8d653de"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D029",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "01dd5fa2818a447defe60350777b8a4b13d1d7f6",
+      "aggregate": "neutral_market_measurement_truth_d029",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d029_execution/final_green.log",
+        "sha256": "83fa291e976ffdd6725e70cb2b85dd9bbf0441def3324509edf855584c50d44e",
+        "git_blob": "a0ce294989bef5872299b134b9d3e5b97c6e6f2a"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d029_execution/final_review.md",
+        "sha256": "1e0b57f979f2d9cc0546d733cf35117e5cdbcc720913b410fe6516fbd2fb7885",
+        "git_blob": "9552706356508cf157b06ef7d4699814db008ea5"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D030",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "bfffe01d2095c4e67cba6db0542ad00522f2f7a4",
+      "aggregate": "neutral_market_measurement_truth_d030",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d030_execution/pinned_final_green.log",
+        "sha256": "de954b50a00b451cf8971962f0072e2c5141685b0120bb1de0fd4ea51b882e8c",
+        "git_blob": "caf2dff65a8d8a2276638fd10290e6632da61855"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d030_execution/final_review.md",
+        "sha256": "e5286629b80e0b4e06f8f91358df478377581e0249c7500d6b78e43675c52569",
+        "git_blob": "395010ca9c84bf07dee0d5a4747e43755c876f61"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D031",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "ac412d5a39a42cd98dbf0ac08c4ac7abec6674cf",
+      "aggregate": "neutral_market_measurement_truth_d031",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d031_execution/pinned_final_green.log",
+        "sha256": "5d150add75e9a4bb15a1065f6321a69090340172f2d442d46e7cb7c7ede014bb",
+        "git_blob": "5b235cb274f7408d5adc9d70bf089f23cfc27c84"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d031_execution/final_review.md",
+        "sha256": "af4a4633d7d04b06c9550cdbcfacf52c5be5fb772ee207c867ec67b0876ef651",
+        "git_blob": "c6650cac6dd139537cc0327b806b87922bceb8b5"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D032",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "fdb2245907dddd86c400abcb5839bc764103c859",
+      "aggregate": "neutral_market_measurement_truth_d032",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d032_execution/pinned_final_green.log",
+        "sha256": "cc6d513179623393ca2adf2696273f95db468cc46bb269ebbf0f8e85aec1124c",
+        "git_blob": "6ba72a95de285156a60af9e6783b46ea70e6e44b"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d032_execution/final_review.md",
+        "sha256": "ca52dfd8de3552496b982e94ff09906334a5ffaa24eacd3c44fa52bb453bc9fe",
+        "git_blob": "ad8a854e7d71edf4f7578ad682b009918c8e4dc7"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D033",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "1a7367268498296e39a4b6eb794299a43ca7a2ea",
+      "aggregate": "neutral_market_measurement_truth_d033",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d033_execution/pinned_final_green.log",
+        "sha256": "a9569a900e78aae11d1032fbef4994a26db09d6e9f21f0c52c3caeeac14b35a5",
+        "git_blob": "c418677facd57afc6741fd5e0ef0085e73118e7b"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d033_execution/final_review.md",
+        "sha256": "f3b59a9ab67ae09565e75e7a2a5315836cde6293d8aa2f2a34f211ec07c4c7d4",
+        "git_blob": "31980d1718db96e29c9d2b91968bcd932c693425"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D034",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "1819925fa258fb9fdfa9283871ffa6cf539fa712",
+      "aggregate": "neutral_market_measurement_truth_d034",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d034_execution/pinned_final_green.log",
+        "sha256": "3f47aa16dfa72f7c38657d94e74bf9db3c0ea08cafda8ea3cab03bb43f697e8e",
+        "git_blob": "3bca50b50ce38b9ff653e946eeb939de534d6645"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d034_execution/final_review.md",
+        "sha256": "66fb5b5abd08cefb28326463014ff4184aeab1d2f46092557afaf412f656640d",
+        "git_blob": "06dbec8373cc14a26cbbdb5b8efda12503a45168"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D035",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "8434c095817977c6da3457e859281cc942ce4a79",
+      "aggregate": "neutral_market_measurement_truth_d035",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d035_execution/pinned_final_green.log",
+        "sha256": "b1ae71336363f7322426d729b8f540cecca245304497feca044689f349f363f2",
+        "git_blob": "dc6a3c49104daada9b9c019fd59e760eeaf34ba9"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d035_execution/final_review.md",
+        "sha256": "2b3fff67fd6543f9ab92ee8de2d1771b9b28a1e3c21d97a55dfd93654f4b3187",
+        "git_blob": "f38d60995df92976c9a86df61d921bf96e55280a"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D036",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "571d3716bc33527ade6d08b884844bac5d4a8e0e",
+      "aggregate": "neutral_market_measurement_truth_d036",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d036_execution/pinned_final_green.log",
+        "sha256": "61e22ae80ec58bec4853247e9e1313bab2c1cb83c10401f4d920cb880a582d63",
+        "git_blob": "145c8053cd85adcc9d0fb6ddc7d5e6e1b5949b41"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d036_execution/final_review.md",
+        "sha256": "45801a05f8a2ff8298859f368171bf8800482261bcbc7f083cb3adda707045a2",
+        "git_blob": "3eada3c580230242262cb467a027b7aeacfa873a"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D037",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "f5bc8e98076960a02bcf99d66da959f2ab77e98e",
+      "aggregate": "neutral_market_measurement_truth_d037",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d037_execution/final_green.log",
+        "sha256": "d501751bed33e2c0520803e8b56f3611d497aa5e439f5d0ba629f7e943f61c5f",
+        "git_blob": "28c6ec34678c4d6c9eba025203af013fd0d48c5a"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d037_execution/final_review.md",
+        "sha256": "899cd57fdf91d42c1e7c2b882a4be4fddd4503ee5b06a4e8df13920523673c3c",
+        "git_blob": "5c3b481ac6aa04b38556d7725f42d496b9d6aae4"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D038",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "0931e4b7d83b7cf81b02c6443e2848edda896a2d",
+      "aggregate": "neutral_market_measurement_truth_d038",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d038_execution/final_green.log",
+        "sha256": "080ee7c4c8d5d7201a2c2aa14c1bdedb37a4dc810a2c5f5873a70978d363cc8e",
+        "git_blob": "5865f97577c9997e7f36d0f0bfe0ca61462b845e"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d038_execution/final_review.md",
+        "sha256": "2a7c9ef59f5e5f708534d838c8b3698450306e1d37d5dd20b79cd5753be9e762",
+        "git_blob": "eedaf3fac148a887fa9bc8bdd6e050694e3bbe86"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D039",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "4fc850ff743880196d103dfd906bd3b9a5ead43c",
+      "aggregate": "neutral_market_measurement_truth_d039",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d039_execution/final_green.log",
+        "sha256": "4f6d7a779eb9e614642197148d91852e37502be283ceadfeac7d814a63557b01",
+        "git_blob": "10cc2c7011afa485c7cd80cdd7343a3a0044c315"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d039_execution/final_review.md",
+        "sha256": "03b18841c5871944fc135d8518a5e3ab88dbda3e4d7353ff22d3c9bef5e266b5",
+        "git_blob": "7679772eaf43f61b10f57f52d86c8d9d84cca5ee"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D042",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "06cc9837496809d984de4c1b0679b0c6051e35e6",
+      "aggregate": "neutral_market_measurement_truth_d042",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d042_execution/final_green.log",
+        "sha256": "32a06881abd5fabb6ab74c6dda9bf18dd3d5d59dd8bddd393fcd231bb26922c2",
+        "git_blob": "a371897b313da965e3df6e68a2267537423e3002"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d042_execution/final_review.md",
+        "sha256": "4ec25c67cf8c6868f5b75d0b9cf0a9698bf9e57bde4a7ef789ead07fffd1b5cf",
+        "git_blob": "3abd9b9e50d14818e845fbe377fb17765a0f1c91"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D043",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "45c2d685fe036cc8638bb6e1525fff9ee1507152",
+      "aggregate": "neutral_market_measurement_truth_d043",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d043_execution/final_green.log",
+        "sha256": "12daf27be5c37128c83f929c448d413553c0c4effb898011cdd4ff49ce9926ee",
+        "git_blob": "9747e52f603d8116af0501008a79619102dad85b"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d043_execution/final_review.md",
+        "sha256": "792ae37e53be6ef72a87c311426353caf51ae3a680ee787fe93bd08c2dee0723",
+        "git_blob": "0ff4934c466b4f3de4cb3978b5c8c9f4f43ac9ee"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D044",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "25cd39058b21d7905a53a16b415f1223e2a4da2e",
+      "aggregate": "neutral_market_measurement_truth_d044",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d044_execution/final_green.log",
+        "sha256": "2c3363fb61adccf2ed054f5d084daa6661b98ef0446e69ca8e513e8863b371c5",
+        "git_blob": "142b469b0b15981f34da715570add8b5b5823782"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d044_execution/final_review.md",
+        "sha256": "4ea433d10592b6a3774ee0387d56526d2e307d48a4ad59c75c4f733bb76c188a",
+        "git_blob": "ab71859151b35482c47be0491b3015369196f6c8"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D045",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "e47de6778210213a004af97be67d0fec21f0ac7f",
+      "aggregate": "neutral_market_measurement_truth_d045",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d045_execution/final_green.log",
+        "sha256": "7900c5cc24aaf87700c2517c5dd9f4c805cfc3b54f4bfc002b9cacb8647bbcc4",
+        "git_blob": "ec6a7acdca9a978bfd8dca48e9e399213e05b1f9"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d045_execution/final_review.md",
+        "sha256": "a5968bbc9b8dc5fcfe2fba0a724832a43801de6023d59c0df291d6da3030f222",
+        "git_blob": "0f0534aa0cca255667b8bc04a0da1550e8eb2e2c"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D046",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "133014647fd38ee8bdca7cebe51b47fc47065df8",
+      "aggregate": "neutral_market_measurement_truth_d046",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d046_execution/final_green.log",
+        "sha256": "2a4b9f45e31cf37943b362cf0d135278be3b0a88518c063541b2737961022596",
+        "git_blob": "9a226ea36a97f7fbfbf34ff29b09dcb8c79f4efe"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d046_execution/final_review.md",
+        "sha256": "d1e2cf477b44629edbcba32934c13964f345658eb4e1fea9e35ed2afa6ce7d3a",
+        "git_blob": "285901de39d52244deaf44ab510f2d4da1586785"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D047",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "68af620a18850e0312ebc6e19a828fa4aff4c193",
+      "aggregate": "neutral_market_measurement_truth_d047",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d047_execution/final_green.log",
+        "sha256": "43917c629f2453e9da499fe995519611379f6115332fe5ec874cd4dd6b893999",
+        "git_blob": "824ef0e5a61bda536da7ce12f30494bee97646f6"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d047_execution/final_review.md",
+        "sha256": "a53485e1eccdd5d1b21d2bf73a1d78a4e03ee7fba3402860ef9e2b17c328e2e1",
+        "git_blob": "2aa5c97d9e939b512a9b29bbcb2e2190be520c20"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D048",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "2f7e4f2c6526c6e1fbe88f38a4e454dc0c6f761c",
+      "aggregate": "neutral_market_measurement_truth_d048",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d048_execution/final_green.log",
+        "sha256": "5d3d022fcc7cd019da5eb66e75a4347b65ab47a73e70b0c10a523d7c18d227d7",
+        "git_blob": "161ac43ef068ff347320a5be02b07c821ca4a5f1"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d048_execution/final_review.md",
+        "sha256": "46dde9403c4c72ec06d17b5b692c6817bd8d616ba3b1e12100b36c2cb81ac5b6",
+        "git_blob": "680b5b4a462a8bdfaa00ee996ed8b5e973b7c1f2"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D049",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "0fd04da44e1bffa87635b7db67244bc4e6cbddb9",
+      "aggregate": "neutral_market_measurement_truth_d049",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d049_execution/final_green.log",
+        "sha256": "9952aa2b56e4055e311f0d360c81036e525971dd20c1b4367831263fe5bbd4f8",
+        "git_blob": "438ca1cb8fd0bc649f54041d04e86a496dc279ea"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d049_execution/final_review.md",
+        "sha256": "c756eac616444607ec1a5ff748f27236b39c047d0ece6656e4ca951d2979c2ff",
+        "git_blob": "d7b574a513caabb041998ce45e00b198eba54a66"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D050",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "b297add2fff1aa43e850dc3b6eb31c0a59b00b89",
+      "aggregate": "neutral_market_measurement_truth_d050",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d050_execution/final_green.log",
+        "sha256": "10fc313dafde936c5cfd0994ee59aa71f4012f24ab5fafd122e4f83ac496f407",
+        "git_blob": "0b38f0196019aa6c1a0f4218c4c7f95cddaa72bd"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d050_execution/final_review.md",
+        "sha256": "fb1617d8daed7f9dd0de4eb8f8373947a5cfa1ac1806a0c95536401422517016",
+        "git_blob": "dda5ca01c370a3a5c8cecca258ff4c4491799f79"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D051",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "1efdd4cffc539fd1238ca3a201379bc4cffcd5c7",
+      "aggregate": "neutral_market_measurement_truth_d051",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d051_execution/final_green.log",
+        "sha256": "259baccb081b2c73cb6124c2a29bf78de4d90bcce74aee0d924f742021bc34ac",
+        "git_blob": "e079e5f86fc0208106562d576eb741ce72c971c0"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d051_execution/final_review.md",
+        "sha256": "b2f391eb4780cf3541537b562323a599d1e07ef29af61249035a8c31a7a52a94",
+        "git_blob": "6800d04106d35bf6914c4d37695bdca1e6b7b819"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D052",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "a772237bbe019eb334fb39a7f98a9b08c9acf786",
+      "aggregate": "neutral_market_measurement_truth_d052",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d052_execution/final_green.log",
+        "sha256": "c594a6003b9793d65b7c0cc22e775b13dfec6949c80abd6d921149ee484ac70c",
+        "git_blob": "f0891dc845f4a908508dfb600bcbe9ed72b63b1b"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d052_execution/final_review.md",
+        "sha256": "8996606a1a056085c3e4ceccd45c733a4c003b3410f46fb66969b32b101e230c",
+        "git_blob": "d3c60e7638bc74e2afbe42fe877a0a392e631812"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D053",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "50a806380c24c1ef242666c78a91ea5e239c4cdc",
+      "aggregate": "neutral_market_measurement_truth_d053",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d053_execution/final_green.log",
+        "sha256": "da2725723bfc74e50aab67e78228d5081719ccf69f8fe4de43eff1061fa5bef3",
+        "git_blob": "621dad4513204a4fd2badf64c22f9bcc855daa2a"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d053_execution/final_review.md",
+        "sha256": "f5e223c4c9094ed8d0c88f7bda4fa774a6891dbd48e4ff8fa317abbae21e98e7",
+        "git_blob": "ebf6ab79e16ea940ef6cb89131ce8292b0b16746"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D054",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "772f86ff9549195b548af9f50a1f4f74bbf373ea",
+      "aggregate": "neutral_market_measurement_truth_d054",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d054_execution/final_green.log",
+        "sha256": "be14493c7753bbbf85cde06fd0de16902e03d18528ae7b135caba0888042757c",
+        "git_blob": "3c2784929550ae078e3db880411d538847f199f4"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d054_execution/final_review.md",
+        "sha256": "abd71745d9d6b271da527f47b5f4216dd53d9b0eb954e038ba733e4722488204",
+        "git_blob": "82de1cb3be47117fdd05723f520ec89814bc8a26"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D055",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "64f63382a42bd00ced97538379e6f581398a2fa4",
+      "aggregate": "neutral_market_measurement_truth_d055",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d055_execution/final_green.log",
+        "sha256": "22dccc50f519937a02e00b2c9d377b6fe778bce398e07de36abff574a771c178",
+        "git_blob": "d5f366e3f3a6ffed6051878fa3428a6dc5810d49"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d055_execution/final_review.md",
+        "sha256": "8053d3d9c83a81be8f7b2913bf8d1ec0d76fbf51382ffa190f0d7d30d6d3231e",
+        "git_blob": "f68b55bca6979e715b3c6c8fa6198e69aaa57fbd"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D056",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "141ba0917fd5a2a9937fad8591f87f3e5045145d",
+      "aggregate": "neutral_market_measurement_truth_d056",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d056_execution/final_green.log",
+        "sha256": "df872d427b502465cf214341efea4885b520481c08919e7d222750f3bebab429",
+        "git_blob": "a2d6e192757bd54c91e90e4d74f00657dd9d6c9b"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d056_execution/final_review.md",
+        "sha256": "702cea0ae7cd9ad39031a86d2112f9c13f3c23c070eb2749b4777bf7c83a4f0d",
+        "git_blob": "6bf6c4274b6cac5c9e86bc791128536471195246"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D057",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "d14431deb9ef53cd1994bbc3470a0f64f7bad216",
+      "aggregate": "neutral_market_measurement_truth_d057",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d057_execution/final_green.log",
+        "sha256": "54c2c9eed06ed9c91686b54a1be4cda34c70cc11101a78eab9fb1452956cc08b",
+        "git_blob": "c4f076c87732e334e667f0889320c88a8d7c1f9e"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d057_execution/final_review.md",
+        "sha256": "9543f65739f706cefca7ddcec352e51d1b492b7c4f782a41f391cb4abd6d3928",
+        "git_blob": "8618170c50e84edf5c95062818a5bce7ad740b8a"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D058",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "c9d0c6162958ffd7192c2dbd99af539d36e13ea1",
+      "aggregate": "neutral_market_measurement_truth_d058",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d058_execution/final_green.log",
+        "sha256": "65f2b8a0c574d07d8d53279050829c2bb02892d433115f8431bb05c976f0300a",
+        "git_blob": "8863df880ede40ef34fc67ec51fe01c4277e8560"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d058_execution/final_review.md",
+        "sha256": "8508e704b30e72d3931666d7090f1e7f778bacb5c76eb01aa82bcded299352f2",
+        "git_blob": "1a370a460be0545dbc20cfbe0136ca1fc04fc00c"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D059",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "f27e44e83324b711bfb2d45032dc9436b11d73cf",
+      "aggregate": "neutral_market_measurement_truth_d059",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d059_execution/final_green.log",
+        "sha256": "e408d7784f775063bec40c11c7ae1c17015499d42a153725bce86afc5d059496",
+        "git_blob": "e0fe5ce27ff2ee834bfb7b60fabcb534bcdd6640"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d059_execution/final_review.md",
+        "sha256": "cc22c81c53f6404408b3bb06a44f9698c7591329c4547ecb764532e78928d7cf",
+        "git_blob": "6f137dd90fb18574cf1fc6e8a65262634b203faa"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D060",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "f99471d39fdc9ee39e40df1923144e7bb34e6d2d",
+      "aggregate": "neutral_market_measurement_truth_d060",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d060_execution/final_green.log",
+        "sha256": "1e48d6a9202678c9bfbea5e4c5539f98e2728fb1c67676e889095039509a13cb",
+        "git_blob": "23789d9a1ddf38c57546aab6bdcda05f3367bd1f"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d060_execution/final_review.md",
+        "sha256": "838d244ea8b5417ac29ce10e1a7e055a6b231cf0b2d65a2085c87df6224d84b1",
+        "git_blob": "1296347882625c7bc23400538fbb04897e362db4"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D063",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "31182f9464bb08dcca231a641615410392e10663",
+      "aggregate": "neutral_market_measurement_truth_d063",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d063_execution/final_green.log",
+        "sha256": "f849905a43f05e3992b9ef0a62f4af9290d06655dd778138e5dd99ccc42ac6eb",
+        "git_blob": "b091a54f1cfabec8c24e3df8bd184bfa4d0c605f"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d063_execution/final_review.md",
+        "sha256": "ceb3453ce1313f94d6dbaf55b2dcab34d99c22646282f01e252bc086f870d089",
+        "git_blob": "38fff6edb27e001fddcbe0e23799cdb0e090e67e"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D066",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "e5d18b2414b071b36496c0bf815e3f95453ae2d6",
+      "aggregate": "neutral_market_measurement_truth_d066",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d066_execution/final_green.log",
+        "sha256": "968b64a958082ebfbb612618493423990313c778bfef0b16230e898ab333f888",
+        "git_blob": "eb6a8dc00174268ddb0a3dcfc95b14ddb53be14f"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d066_execution/final_review.md",
+        "sha256": "26a8bc5e4a912c62faf44e27e5bf55efdbb2db7d1fcd74da6a777082b116d7b2",
+        "git_blob": "9e9c4430aaf298071aa71019b40e716ac52ac179"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D067",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "bf3b10ecc3bd6d09adabde2a4b21ef1cd03a9a90",
+      "aggregate": "neutral_market_measurement_truth_d067",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d067_execution/final_green.log",
+        "sha256": "1c57420d893ffa1417fb6834c846af102ebebeb02deff35ce8b0bf0b9497f778",
+        "git_blob": "0ea04f793e74ab48e0031fcc51705fa3fd94f985"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d067_execution/final_review.md",
+        "sha256": "7fb1fc1b5038d1a722ac7ed484f58724956c925095127649f5d23a24941114d9",
+        "git_blob": "74c5f2e9c9d64ea37079560cff82dea186e56873"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D068",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "fd686f2106c896f73437c2e8e9a6a9f0eb452666",
+      "aggregate": "neutral_market_measurement_truth_d068",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d068_execution/final_green.log",
+        "sha256": "d52746326284014f078ae984b4dad3ebf439cb1762967a0b58c8ef0c8f0c0d0e",
+        "git_blob": "7055f40dd23383fe316672bc9b95cc38db61742e"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d068_execution/final_review.md",
+        "sha256": "9e818a35edc4231b29694eb256fef4b349e0f45f8ce7724731825621c007507d",
+        "git_blob": "52e660da5061a35e3f0364509fa237a6c4a55296"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D069",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "f2852c577475bc945c08120ee42459efaf648217",
+      "aggregate": "neutral_market_measurement_truth_d069",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d069_execution/final_green.log",
+        "sha256": "daab156b23c152cfaab76951689c3c1aa6904adb255635182112b44793dc352d",
+        "git_blob": "666465a9dc180fc88e9e052df669b843b77cc099"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d069_execution/final_review.md",
+        "sha256": "72d17ae205f23f2ef6b998aa2a8130a5b50487f48e2f766d404465fdcb4f47d0",
+        "git_blob": "a1be217874473d3f766278a9930d6804ed63f887"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D071",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "3b6d991b7f9d0f1a5c7b7190dc1b7fe13ee7a65c",
+      "aggregate": "neutral_market_measurement_truth_d071",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d071_execution/final_green.log",
+        "sha256": "4defe0817014292288359f0ed889d94c2aed97df364d6ac1a5e912553f723cef",
+        "git_blob": "837c32a74c29183b37b633210248b1d3d51fbdee"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d071_execution/final_review.md",
+        "sha256": "65e6db67f1acbf5512af647417af4f592e8bf7ec7464d917eb600c6ae1eace07",
+        "git_blob": "08a388d6935975bf4ab329abd6a4fc2aad54a6a2"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D072",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "2f001691fb5638c8a5b28a35ee68d6198ff7f2f1",
+      "aggregate": "neutral_market_measurement_truth_d072",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d072_execution/final_green.log",
+        "sha256": "c99ea43ab449000b9c6778119b8472afcd1ad7b5a3558dadd1e7e71dc2b578e9",
+        "git_blob": "9b9b0cbbc86b07ad4e99f3bbd9f9839209831d73"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d072_execution/final_review.md",
+        "sha256": "e52364497b852da2bd009a0933ec6d96605648bea6d50b17a8f42c9f78bcc391",
+        "git_blob": "26f5aabde752fe30c86f4256a5113a7b65ed8e6a"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D073",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "98c2f8cd5386820538ba26aa255bc33ec5661cb6",
+      "aggregate": "neutral_market_measurement_truth_d073",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d073_execution/final_green.log",
+        "sha256": "296bccb8a478fc98cedf6ae421677599b9679108f274f601673ab950d36e6406",
+        "git_blob": "62843641df00a43bd78fe3cf25692b8523309efc"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d073_execution/final_review.md",
+        "sha256": "271d1f325ed7ac120b391d9e27d2798a0ade93cada31f10aee5256746e2abf6e",
+        "git_blob": "d5b9dd5c06a103ef78f70cef926f01aac0059b4b"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D074",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "f13f1ae980aa4b30f5b559cd19954d2405cb7260",
+      "aggregate": "neutral_market_measurement_truth_d074",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d074_execution/final_green.log",
+        "sha256": "30975d53977c0d5421b078f683ca87368367ca4e4a0bd38fc3ae216d2b8b3e4c",
+        "git_blob": "978f4cf996855151f438c17d806fdf3fdf23f8df"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d074_execution/final_review.md",
+        "sha256": "62f8f8355e4a750d9a55a7a6f9a4daf08d7f5436151b6b6f74f301b288c6f9f4",
+        "git_blob": "62d987a2ce7b93b8501fb00d67e7a418b09ee679"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D075",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "bedf06bc429c938ec52fc77bb93bbbad6c296a53",
+      "aggregate": "neutral_market_measurement_truth_d075",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d075_execution/final_green.log",
+        "sha256": "3227f428375a971df7d23a78cfa1d3e0a1da6f9e93243a279a359d0ffa9ddca7",
+        "git_blob": "e20d956a5d295fac2e43eb06f834513a0e022929"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d075_execution/final_review.md",
+        "sha256": "40db78d41f57f56a7ccaaa9d86670277d9867d50c4a089f0c9c099169c8fd05b",
+        "git_blob": "88a5f5606e2799785bef153eb0a73891636b9768"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D076",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "57f310b2c79189801b4c445c83981b000e8b64b5",
+      "aggregate": "neutral_market_measurement_truth_d076",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d076_execution/final_green.log",
+        "sha256": "7c1a1f1c6e538df1ea7095077460e9aa8bfb3899eb3ce5b622b9b694e1265d86",
+        "git_blob": "5f102f82cbcb522a5d08483ac4a80bcc6b59bf16"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d076_execution/final_review.md",
+        "sha256": "2fdac7daa5bbe00944fc095ca6466d626fbdcc27e7afc77c856d6d8766662675",
+        "git_blob": "b43bd89a140c302e626ff6a084270eaae7a87efb"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D077",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "95aa455c661b8e568377a77a1c998a0b7fd835cf",
+      "aggregate": "neutral_market_measurement_truth_d077",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d077_execution/final_green.log",
+        "sha256": "57911e787ffa38da8a124a59386b76e5f67ef037dc40fd3a83a7770e84fef4df",
+        "git_blob": "dc559baba3874b9cf9a83d2844cabcb6453f737f"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d077_execution/final_review.md",
+        "sha256": "7fb5b53c024e81ffcd1a8e47eaea0f0c386a516f429e5a52229b70f3f53cd741",
+        "git_blob": "86bf64c8ad0f5558518a4472390203f9caad1725"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D082",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "f98c7d89d366065b8ff0da957e1a9560c0dfb4e7",
+      "aggregate": "neutral_market_measurement_truth_d082",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d082_execution/final_green.log",
+        "sha256": "b2fe86bfd14f9f3e49b7bcc67d960d7ffa914431b87b63c2c7490830255b3099",
+        "git_blob": "784a9ca374854fe5b09f97cc49d50ff53dcd6114"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d082_execution/final_review.md",
+        "sha256": "df6db11bd66ca5ea48f8a40433bf59f13d004fe2805932b17357eb81ca3d6851",
+        "git_blob": "fecb19dceed3ff3308271e2ab07c4eea1ccd87ca"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D083",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "09a643c9ffbfbe52e7906d611f2bf766c9742975",
+      "aggregate": "neutral_market_measurement_truth_d083",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d083_execution/final_green.log",
+        "sha256": "24e0d8f954870f0a50c903caac2fb68c884f8b960d253cd529031a22f3856ba4",
+        "git_blob": "a5a05709ee1cdade659dd739375f92df1adc9680"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d083_execution/final_review.md",
+        "sha256": "72a61af67fc6c9bc3e8869340171be744b7a361b15619bb2d6c407705c5d5178",
+        "git_blob": "111f03c826cb577a0d88e050bc8352995ec780f8"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D087",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "9e951d6c4777f8eb53ad44b2cb488407be974bcd",
+      "aggregate": "neutral_market_measurement_truth_d087",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d087_execution/final_green.log",
+        "sha256": "d61e725075d7608814fa54f01ccfb5071f2c792b31dcdf5baf4a6cc0b3e3a8b1",
+        "git_blob": "0822bde0992755fbc1fe942a3ad3bd377b6a686c"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d087_execution/final_review.md",
+        "sha256": "9ae01b6d8d1ea7ac3482f50dd4e2b43c67608033d8c137f9068274aa71ca0fac",
+        "git_blob": "f8ceba904959063a6a92eac84d7d7feaa7c80756"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D088",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "156208819279df806527427c0d6f28b755f527fe",
+      "aggregate": "neutral_market_measurement_truth_d088",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d088_execution/final_green.log",
+        "sha256": "5236ff036d45ffdba7f4ca5d8e83a0465d5dd0509d66520270e0fa2042ebbe3e",
+        "git_blob": "2379f9ce3546408e3650a429b23cb73ab9997572"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d088_execution/final_review.md",
+        "sha256": "2f30aba2866ea8573293f82b67ae9afc5791c5fa5e1d94d2a06abce908ec6d09",
+        "git_blob": "a7305eac5492c28212cacb727ba25cd2f66d1752"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D089",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "231d01abb4edcaf6899ab89c21b7cfb2ca37647e",
+      "aggregate": "neutral_market_measurement_truth_d089",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d089_execution/final_green.log",
+        "sha256": "f0b940e50ffe5cf23e06afdc070f9ba2844e4aec0155bdc024b4624e4ea0aa31",
+        "git_blob": "ae84e8a40f156a567654f70983489d5b9bc95755"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d089_execution/final_review.md",
+        "sha256": "b992762541c00df4232b81e2d3422d2b7a30635b706c88de9b55d923bfdc6b6b",
+        "git_blob": "76b9fa515ee650b6792750903c82fa12be84870d"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D090",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "cb55ab2cacd5d0110dd7753d7e52377f5751a1a5",
+      "aggregate": "neutral_market_measurement_truth_d090",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d090_execution/final_green.log",
+        "sha256": "3be28ef24d856fcc831d80a66aba51a85676776d79a3e037a0f453192a3aba7c",
+        "git_blob": "66893d298163a0e2c6a3be20aca36e8e2e6f8811"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d090_execution/final_review.md",
+        "sha256": "02e5eb4be2d041e4293e35f6b8da755432d15dd0a6cc86bf289b2f376de9c49f",
+        "git_blob": "9cfaa5b24f8742023ec38ca3d0a7f147384da3c0"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D092",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "424182eeed1e7393cf772feb3a3bafaab75a4373",
+      "aggregate": "neutral_market_measurement_truth_d092",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d092_execution/final_green.log",
+        "sha256": "ca81c7773fcf06252650fd8ca12f580003cbcc0f41964565882a8ea980eb4803",
+        "git_blob": "350c7ede900abcfe55eb57cc63d8c6ace56f02b9"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d092_execution/final_review.md",
+        "sha256": "96ec94d950c47cd4db2da6350200c0dc5570ab7ec306e516c84bb81080295959",
+        "git_blob": "acd6bfb5f3256b42707571c50a05321c57f6e8de"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D093",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "36efcc6d909c58791529cef2a033a21b73bd5053",
+      "aggregate": "neutral_market_measurement_truth_d093",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d093_execution/final_green.log",
+        "sha256": "9b6cb7d1a947d4b0b2bec2fba93a73b97fe1e7d0180387f28ae88a654fbb2ecd",
+        "git_blob": "d852438399171644f47fd602f1b5e851cc178ea6"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d093_execution/final_review.md",
+        "sha256": "cdb5df015f99c89a86a257f71748a37e568ce7fc721af2cba6c7f2658e1fcaa2",
+        "git_blob": "70e741abb7fc46115cffd30c7a3cf6d76ac78aba"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D094",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "7456ae73d8036ee041371d38b4f26a2afa0220bf",
+      "aggregate": "neutral_market_measurement_truth_d094",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d094_execution/final_green.log",
+        "sha256": "1ee7ea7fbe8275aec87f6d4fafc09536b2056008fa8a5188b52a380f60559e17",
+        "git_blob": "b39886a65bb19988c62ea4ad90644d96feaebf61"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d094_execution/final_review.md",
+        "sha256": "0cb416b3d9a9387f757cbfaa73bbc36d297d2d701af9f8b80239779022946890",
+        "git_blob": "406affd363e37271fcecb7c3eb483a3453157823"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D099",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "c497b606b4d211e3f0b73907458be2bea996eedb",
+      "aggregate": "neutral_market_measurement_truth_d099",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d099_execution/final_green.log",
+        "sha256": "5937d56ffab0309f3fa8370c72cab7f87f2bdf7ada67ac502a6317bbf7ba0d01",
+        "git_blob": "573bb5ae0d45982c938940e8d9e59c5764524f52"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d099_execution/final_review.md",
+        "sha256": "d80fa951962c31cab9694514585a580b912da321669015add144560691888c48",
+        "git_blob": "6d6e6df35ff4c15a748646e2ddc63a95bd674644"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D100",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "7006e639c2cea6b8768d41a196ad4a3e35d91ac2",
+      "aggregate": "neutral_market_measurement_truth_d100",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d100_execution/final_green.log",
+        "sha256": "f277f0baf6706a659f53412e59352a2eddf7a17348a83b1b7e1c2191fb3cf87e",
+        "git_blob": "f8bcc7beaa575594e810f61cbfa10dfc5a58c13d"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d100_execution/final_review.md",
+        "sha256": "ecf0b98060df1a88b81a7758a6b1db48db698be71001e325dd1bd0706e40ca59",
+        "git_blob": "535398c568fbafaa62163ab1b86eb75ed21f09da"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D101",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "4195badfa420ce5fe58a9c1a8a5e5d8a7eb8982d",
+      "aggregate": "neutral_market_measurement_truth_d101",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d101_execution/final_green.log",
+        "sha256": "df5b13a6162e255aed621fe36beaeb478543a3ae5a9f301cd60d17ea17e3407c",
+        "git_blob": "57b47cd2e6c99931d09688b0609326961ea3c504"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d101_execution/final_review.md",
+        "sha256": "3e5f851c3dda2ca1699ce2e7996cc37f946b7603d0bb49e0a3d29e5389bcd104",
+        "git_blob": "9194d4352b44668609f6cf17a7727104599c8c82"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D103",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "6a9a967f6f033a2db8d4389508ecd4de2e0ce6bf",
+      "aggregate": "neutral_market_measurement_truth_d103",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d103_execution/final_green.log",
+        "sha256": "be9f0a48de6fcc42957a0026e085c68a837dfc590e04313b02ad65adfab2b165",
+        "git_blob": "4d58881c5679b7857102876814bee184c986d34b"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d103_execution/final_review.md",
+        "sha256": "adfc746c55c7200b98c7f63fd335f608d36f67d974d5a5dad3475944ae6c58e5",
+        "git_blob": "1349390760782211260165c9987d1012c938c204"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D104",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "ce7eab89a368f478de632c714ae3524a8d580150",
+      "aggregate": "neutral_market_measurement_truth_d104",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d104_execution/final_green.log",
+        "sha256": "03c65dc5a3f74c9640448263bb8f9adfe218182650e43d08ff2a734fd8921f40",
+        "git_blob": "3d02fe13fca6dc3e51dd45b433962b70b8e2e29c"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d104_execution/final_review.md",
+        "sha256": "2a54d4b88ab8b011b97c7fb3e533dbb752055827fba1995491cac28ee3a77f26",
+        "git_blob": "b080733900218bb1f4398959d5962b1cf6eacadd"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D105",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "33d3bf792ed808a1a94c5bda0a98064bd8367a01",
+      "aggregate": "neutral_market_measurement_truth_d105",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d105_execution/final_green.log",
+        "sha256": "3f9639c735a123d7dc4d05fa686e296a4fc8ee30726166731e2233cd43912eb7",
+        "git_blob": "f36fb68b8bb11fd1349ef22114742885f071abe1"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d105_execution/final_review.md",
+        "sha256": "ac84297b878a1fceebabff7e92eade3b305532b2eb460de4e785f46ece3f6f9d",
+        "git_blob": "f0ac770bef91a7bc16b039cfc9728bfbc298ccc4"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D106",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "e4a0610ab54793b34ab3d5901246ad0502443866",
+      "aggregate": "neutral_market_measurement_truth_d106",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d106_execution/final_green.log",
+        "sha256": "333fbd79a4f682427d600808f57722b3b9345a99a187abbf5204a79c720461fe",
+        "git_blob": "0b8b64b536ec8eaab7d60af78732f2d21ce0bc5b"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d106_execution/final_review.md",
+        "sha256": "74b9414aa39c66bd6b05b22cbad83ae6336508ab14c8e08c50793807bba456d1",
+        "git_blob": "d5af79bbac615cba8d66cdce67c0241c65f1b3b7"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D116",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "e6d6df09c18dfc93f94fa874c37ce10160709953",
+      "aggregate": "neutral_market_measurement_truth_d116",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d116_execution/final_green.log",
+        "sha256": "d4f95d7c1e87f2917fc631a96c75ff57163997a5ca1272111a7acdd470b6c7d9",
+        "git_blob": "c53f6df15a5822d32cfd56f5e95e164d282f2a57"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d116_execution/final_review.md",
+        "sha256": "d437e48a35c1dc3dda0eb9123f3ff44251a9a4573f2b1a3509b35b06b094e2ac",
+        "git_blob": "568176bd34c7655b2710e8e2deca4d09030868c6"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D117",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "aadcd542e88fa99458f8cbeda2c4261d16e69200",
+      "aggregate": "neutral_market_measurement_truth_d117",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d117_execution/final_green.log",
+        "sha256": "a0c1ced967a4007abf80eda62b14f096248be3459b80ad1e542ea8cba2f37bca",
+        "git_blob": "de8b1d5566dc409a2c844566c1fc7d45569e912c"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d117_execution/final_review.md",
+        "sha256": "e12e5528982e610dc61b76587f1ddd4a9b22abc208feb19664ba28d4c1a34cea",
+        "git_blob": "4869bd5f9da48c8194736d2860defec0f89a5fad"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D118",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "544cbffd1cd615da016c87b5182561ca4c529e34",
+      "aggregate": "neutral_market_measurement_truth_d118",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d118_execution/final_green.log",
+        "sha256": "424bdfad8a8a776f81215296ba85972787b6eb5599c4d6de32278474f0b9bd9b",
+        "git_blob": "8df9922cb0675b45e838222b0fda9429747151e1"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d118_execution/final_review.md",
+        "sha256": "ac611555384b89ac62a62edcbbf44cdef9f97675eebdd2999be0c5a5657f71ef",
+        "git_blob": "bbce1db6ec464594700f2d38aec428104f22d80d"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D119",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "1eea99f0a4fd90daeb13b8873d09a248e3e26f39",
+      "aggregate": "neutral_market_measurement_truth_d119",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d119_execution/strict-original.log",
+        "sha256": "2c7dc5a9a2073c95a5aeaa75e308df2e80d4519d85134ba229df3160a9a4e679",
+        "git_blob": "da82098d30b9124b44d8a0d4dd7d9458a954a677"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d119_execution/INDEPENDENT_REVIEW.md",
+        "sha256": "3688edc032d29884e4c2978923949f58f3422577aabf4974f0ec7a21844cb034",
+        "git_blob": "bea29b2f804851741657e2a007587f62e5e73fe6"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D123",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "91dfe74ac0db939ccee8561e98f3d79e1d26bac6",
+      "aggregate": "neutral_market_measurement_truth_d123",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d123_execution/strict-original.log",
+        "sha256": "aa4be9be708b965080d88ed90830985333003879643036cf8b48879aafb1572f",
+        "git_blob": "00c7c86b2d2a5a889cd6eab2d47b0b13762be4a6"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d123_execution/INDEPENDENT_REVIEW.md",
+        "sha256": "77611f66c0f2f0ead255a3ceeca9a6f8ccbd70ff3b61cdbba35edfe515eb54ad",
+        "git_blob": "5bed502a8d3ec6a569f76223bccfd50e7294e4e0"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D124",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "b854c0e68d7541fcb4696169c3d19be48b443d48",
+      "aggregate": "neutral_market_measurement_truth_d124",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d124_execution/strict-original.log",
+        "sha256": "dcef0e405b4f6a50bc07c4649a4d11b70424df8e816df6be26ba278918a092a7",
+        "git_blob": "937786f6713ed3f44a85cd7f6d00aa6fb1f3d7f2"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d124_execution/INDEPENDENT_REVIEW.md",
+        "sha256": "bfca1673bb94cf1fb1691fc9744fec653a755c997fa856ebf4c3e1c0188b22d5",
+        "git_blob": "39e3e02dee2adac36711027819d0a685351a865d"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D131",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "0519913e091978074dac612f5ded5bcf2c154182",
+      "aggregate": "neutral_market_measurement_truth_d131",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d131_execution/strict-recovery.log",
+        "sha256": "beb1c25291dd4234c00edd9856fe1522b01fa73c00b1d27d15044d1069590920",
+        "git_blob": "0090632f9253201b7a5397b78179c336fc145ada"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d131_execution/INDEPENDENT_REVIEW.md",
+        "sha256": "c731b16d63dc06aed8a11da0d72457a9fc0ddd441ff0380c7ccebfd153194c27",
+        "git_blob": "f269d425f29541598077f7ad8433600278d5abce"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D134",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "a8734c0e6eaf779b3337a6a7a9d18c0324494460",
+      "aggregate": "neutral_market_measurement_truth_d134",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d134_execution/strict-original.log",
+        "sha256": "798db614c17cad32bf4fdb6bfe9c653536bb477f642dbfab4a94d26b3f059d7c",
+        "git_blob": "5c93e447260d14bcd464ae9353688e2e4132aa2a"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d134_execution/INDEPENDENT_REVIEW.md",
+        "sha256": "e0560cd19296b245f0f6ba618682ae5c9a62ede7caeb0688cbf10b8fa4fb5ded",
+        "git_blob": "ac8f250ed98ae35f179c818faf5139a8bb0cb435"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D135",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "4d0d755ccadd6330967f57c2f4460a8d2c0fac06",
+      "aggregate": "neutral_market_measurement_truth_d135",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d135_top_one_execution/strict-original.log",
+        "sha256": "d4366eff7355d97d445fb12b247c639b4f608746d32629d3051adc0b9c5d0a78",
+        "git_blob": "84e92ce6e0877fd15783a05f5529ef0491f24400"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d135_top_one_execution/INDEPENDENT_REVIEW.md",
+        "sha256": "a2d57401c8dc6ac9972621ec5e9360b48c344632878cfbc77f71e9ff825fdfdb",
+        "git_blob": "dcc0e8831bc3343f152a023f258c18b1bd36ab26"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D136",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "b2f1b4c29b234c6a11ece9188266741d678c10a6",
+      "aggregate": "neutral_market_measurement_truth_d136",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d136_execution/strict-recovery-green.log",
+        "sha256": "008f2cb69a24d52631ab9bf0bffd9817e9e1cc05c6eaf9bc3bd1425515145534",
+        "git_blob": "df4fdab206c63aa6328c90610fcad072dd4d3f56"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d136_execution/INDEPENDENT_ACCEPTANCE.md",
+        "sha256": "0225d89461d18005fb59e255761640a5b0405b9ca263da54630617af8a57012f",
+        "git_blob": "a3cb2dd78ddc58676a119d9e15db9926a87904c1"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D137",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "0d9d5874a3a9be5a452be840a0e2536c706e852b",
+      "aggregate": "neutral_market_measurement_truth_d137",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d137_execution/strict-green.log",
+        "sha256": "5e4c680fe66325fd4812824cc87eee51a02ca3c1426707831cdb0c9cb778c8be",
+        "git_blob": "b2d47537fc4853233dac34dfc4cb2b114e015575"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d137_execution/INDEPENDENT_ACCEPTANCE.md",
+        "sha256": "e2f46b6fd7cc8ac3c71a2d1d7029a810487ba5a734e35da162f7c9559d18b138",
+        "git_blob": "24dcec75c17516df4d90f0325f16062d066fcd99"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D138",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "89c1ddc40abc259e65a99021b4ef6ee6f594604e",
+      "aggregate": "neutral_market_measurement_truth_d138",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d138_execution/strict-recovery-green.log",
+        "sha256": "44c0b66c92e9ec187e1e9b6ec5dc828a833926aff3321c0df9a53940966cf5f5",
+        "git_blob": "9f51122bbb8f77be231e9d9f9199d5c19a20d062"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d138_execution/INDEPENDENT_ACCEPTANCE.md",
+        "sha256": "cc9c2187e20b9170c3ae3041e286703c0494582119534fa6671a7f40d88e40f7",
+        "git_blob": "2e238204e693c26b756f6ef338872d9da99baab5"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D139",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "6d6654e8c53f3a323a3b4887439259cbc7affde5",
+      "aggregate": "neutral_market_measurement_truth_d139",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d139_execution/strict-green.log",
+        "sha256": "5ec4b3bf981863bd2372c7620b8ed1d03d18503fb18644db4c82b7dd2985d4b2",
+        "git_blob": "fddad69c6c6723a1e2cfa98bb519f5b0dea0068d"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d139_execution/INDEPENDENT_ACCEPTANCE.md",
+        "sha256": "0fe7c202f09bfdcf7b5e685085ad84f0a43dc1d092ae1e68ef1eaac8623ac66c",
+        "git_blob": "2bacfb881ca41064eaf9f520985c8d710a65451f"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D140",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "6f5fbd3bfe51c66cbf8fdacdded0753656866313",
+      "aggregate": "neutral_market_measurement_truth_d140",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d140_execution/strict-green.log",
+        "sha256": "6658f45c99dabe4620d9a97bc35ed51e6a3a90877f59c3e3438407c54a547151",
+        "git_blob": "045f9ec574f1643a8f15e377d7e92ebb2e235904"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d140_execution/INDEPENDENT_ACCEPTANCE.md",
+        "sha256": "6160c12f197f7d0cdade66f7922430a620492a0b47687d0391aeb9d1f1df071e",
+        "git_blob": "cb6a69be5294535abab2e4ea624e0d9ebd568e29"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    },
+    {
+      "id": "D143",
+      "exact_scope": "HISTORICAL_CONTROLLED_ONLY",
+      "decision": "REUSABLE",
+      "observed_candidate": "317720d0ca2d72146ee7f42e441bab39ec1f01c7",
+      "aggregate": "neutral_market_measurement_truth_d143",
+      "observed_exit": 0,
+      "observed_passed_total": 2,
+      "observed_collected_total": 2,
+      "raw_log_ref": {
+        "path": "handoff/foundation_implementation/d143_execution/strict-green.log",
+        "sha256": "21266a0ac4bd66708402309bd7792c65a621189b2c79b3a5eb8f327a4a70ff37",
+        "git_blob": "8d63978353576690b9621e519c03820844a66a23"
+      },
+      "original_review_ref": {
+        "path": "handoff/foundation_implementation/d143_execution/INDEPENDENT_ACCEPTANCE.md",
+        "sha256": "1c2e0d6dabb9c0e32095d36ecc866c782a60c1304471e2cbe98227f3e9f11a47",
+        "git_blob": "f3b2cbd8d413c2b02cb24b3ae664fdf8971ddf18"
+      },
+      "digest_sources": {
+        "CURRENT": 3
+      },
+      "reason": "Documentation-only diff since accepted L00; no changed production/test/immutable claim bytes. Does NOT assert native/current backend/operational readiness."
+    }
+  ],
+  "scoped_native_profiles": [
+    {
+      "claim_id": "neutral_market_measurement_truth_native_source",
+      "derived_id": null,
+      "tested_candidate": "f5cb9265a02ab463a0eef058fbbf3f3611eac95f",
+      "generation": 4,
+      "generation_path": "config/product_proof/market_measurement_native_source/generations/0004.json",
+      "generation_sha256": "4edbe501302dfc4f384be09315e8088071979ea9a6ee585dbec2349e1967e131",
+      "actual_exit": 0,
+      "raw_output": {
+        "path": "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_source_f5cb9265.log",
+        "sha256": "909d37d08ecf51aa5ab48872f8c52659bdb4580c5a615383cb15b9e16bf6a62c",
+        "git_blob": "312a042f27b4284446ab7c52b9ac2514f578eba6"
+      },
+      "review": {
+        "path": "handoff/downstream_reconciliation/L14/INDEPENDENT_SEMANTIC_REVIEW.md",
+        "sha256": "e90a6b65260b44d6aa0542db143fd47c81cbe52466044d5a6aee64b28149f362",
+        "git_blob": "238a45cda066366efca17c35350cddbba0d37fa2"
+      },
+      "scope": "Commissioned synthetic receipt/control/native-shaped SQLite profile only; no live/provider/full operational acceptance",
+      "decision": "REUSABLE",
+      "new_runs_in_L00": 0
+    },
+    {
+      "claim_id": "neutral_market_measurement_truth_native_d087",
+      "derived_id": "D087",
+      "tested_candidate": "f5cb9265a02ab463a0eef058fbbf3f3611eac95f",
+      "generation": 3,
+      "generation_path": "config/product_proof/market_measurement_native_d087/generations/0003.json",
+      "generation_sha256": "9836bbf2592ef87b28293a9e67e3b8958f2ba6021f2e05100384b67a9ba50b65",
+      "actual_exit": 0,
+      "raw_output": {
+        "path": "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_d087_f5cb9265.log",
+        "sha256": "01434925e4a7c1fe3c646e08a41d0e91f088841c178c3c27914358f1a63ed580",
+        "git_blob": "1f4a167be5210f7724aa7623f91d2a4d46df0700"
+      },
+      "review": {
+        "path": "handoff/downstream_reconciliation/L14/INDEPENDENT_SEMANTIC_REVIEW.md",
+        "sha256": "e90a6b65260b44d6aa0542db143fd47c81cbe52466044d5a6aee64b28149f362",
+        "git_blob": "238a45cda066366efca17c35350cddbba0d37fa2"
+      },
+      "scope": "Commissioned synthetic receipt/control/native-shaped SQLite profile only; no live/provider/full operational acceptance",
+      "decision": "REUSABLE",
+      "new_runs_in_L00": 0
+    },
+    {
+      "claim_id": "neutral_market_measurement_truth_native_d131",
+      "derived_id": "D131",
+      "tested_candidate": "f5cb9265a02ab463a0eef058fbbf3f3611eac95f",
+      "generation": 2,
+      "generation_path": "config/product_proof/market_measurement_native_d131/generations/0002.json",
+      "generation_sha256": "bae0ea2e116f0c0115e690270e81f98b8e83b24d6eb242d02ba4fa1e0be71612",
+      "actual_exit": 0,
+      "raw_output": {
+        "path": "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_d131_f5cb9265.log",
+        "sha256": "30dd5f978a50a1f67b00b3efc28f222ad59333350837e52e53b3fb26d12f92c2",
+        "git_blob": "4fc0eb13930fec14325d12f5340f92a1ca449ae5"
+      },
+      "review": {
+        "path": "handoff/downstream_reconciliation/L14/INDEPENDENT_SEMANTIC_REVIEW.md",
+        "sha256": "e90a6b65260b44d6aa0542db143fd47c81cbe52466044d5a6aee64b28149f362",
+        "git_blob": "238a45cda066366efca17c35350cddbba0d37fa2"
+      },
+      "scope": "Commissioned synthetic receipt/control/native-shaped SQLite profile only; no live/provider/full operational acceptance",
+      "decision": "REUSABLE",
+      "new_runs_in_L00": 0
+    },
+    {
+      "claim_id": "neutral_market_measurement_truth_native_d134",
+      "derived_id": "D134",
+      "tested_candidate": "f5cb9265a02ab463a0eef058fbbf3f3611eac95f",
+      "generation": 2,
+      "generation_path": "config/product_proof/market_measurement_native_d134/generations/0002.json",
+      "generation_sha256": "dc680c7be256e4f1485f2b18a954655743937bb2f26bd0419e12dd3d8764405f",
+      "actual_exit": 0,
+      "raw_output": {
+        "path": "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_d134_f5cb9265.log",
+        "sha256": "110b50cfb1b57dba774d8571f72bcdd05e7df5e809c4c682ecb046d1b7752fa4",
+        "git_blob": "a7dec85ef46ef0937815d282224b6807e7194228"
+      },
+      "review": {
+        "path": "handoff/downstream_reconciliation/L14/INDEPENDENT_SEMANTIC_REVIEW.md",
+        "sha256": "e90a6b65260b44d6aa0542db143fd47c81cbe52466044d5a6aee64b28149f362",
+        "git_blob": "238a45cda066366efca17c35350cddbba0d37fa2"
+      },
+      "scope": "Commissioned synthetic receipt/control/native-shaped SQLite profile only; no live/provider/full operational acceptance",
+      "decision": "REUSABLE",
+      "new_runs_in_L00": 0
+    },
+    {
+      "claim_id": "neutral_market_measurement_truth_native_d135",
+      "derived_id": "D135",
+      "tested_candidate": "f5cb9265a02ab463a0eef058fbbf3f3611eac95f",
+      "generation": 2,
+      "generation_path": "config/product_proof/market_measurement_native_d135/generations/0002.json",
+      "generation_sha256": "aef137a30e2e15a879d5507e8942a6a91f6ee6d78beb30664cb216a5994153b0",
+      "actual_exit": 0,
+      "raw_output": {
+        "path": "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_d135_f5cb9265.log",
+        "sha256": "3d038e57f51df884b0635c7702d4717f9de065cf4fae3e876e7fd3ab88d94e0b",
+        "git_blob": "9adef7f3ad9eddee8ba7f4b6b3ca6d6923e3f6f6"
+      },
+      "review": {
+        "path": "handoff/downstream_reconciliation/L14/INDEPENDENT_SEMANTIC_REVIEW.md",
+        "sha256": "e90a6b65260b44d6aa0542db143fd47c81cbe52466044d5a6aee64b28149f362",
+        "git_blob": "238a45cda066366efca17c35350cddbba0d37fa2"
+      },
+      "scope": "Commissioned synthetic receipt/control/native-shaped SQLite profile only; no live/provider/full operational acceptance",
+      "decision": "REUSABLE",
+      "new_runs_in_L00": 0
+    },
+    {
+      "claim_id": "neutral_market_measurement_truth_native_d136",
+      "derived_id": "D136",
+      "tested_candidate": "f5cb9265a02ab463a0eef058fbbf3f3611eac95f",
+      "generation": 2,
+      "generation_path": "config/product_proof/market_measurement_native_d136/generations/0002.json",
+      "generation_sha256": "1a02cece13f6590f90501e98bbccbe46e546153aade983b1115a297a1cf14b5a",
+      "actual_exit": 0,
+      "raw_output": {
+        "path": "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_d136_f5cb9265.log",
+        "sha256": "1eee85d732ecb7cf8c209b8e3bf375d1c41c377241e78004f7ffa45ceb555d13",
+        "git_blob": "1e5e99f3c49dff0023bffe4093ad42042ca27ceb"
+      },
+      "review": {
+        "path": "handoff/downstream_reconciliation/L14/INDEPENDENT_SEMANTIC_REVIEW.md",
+        "sha256": "e90a6b65260b44d6aa0542db143fd47c81cbe52466044d5a6aee64b28149f362",
+        "git_blob": "238a45cda066366efca17c35350cddbba0d37fa2"
+      },
+      "scope": "Commissioned synthetic receipt/control/native-shaped SQLite profile only; no live/provider/full operational acceptance",
+      "decision": "REUSABLE",
+      "new_runs_in_L00": 0
+    },
+    {
+      "claim_id": "neutral_market_measurement_truth_native_d138",
+      "derived_id": "D138",
+      "tested_candidate": "f5cb9265a02ab463a0eef058fbbf3f3611eac95f",
+      "generation": 2,
+      "generation_path": "config/product_proof/market_measurement_native_d138/generations/0002.json",
+      "generation_sha256": "f1282ba4c7d43f17df036466d63e491c4773e39d1a885dceee2a33c876a825f1",
+      "actual_exit": 0,
+      "raw_output": {
+        "path": "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_d138_f5cb9265.log",
+        "sha256": "34625f8a2025325feace730e80a2d5d4151000d0208bcde908e6a23d369e7d8d",
+        "git_blob": "59d0fc1b332d4321b899ad1930f60de1e34fb2ad"
+      },
+      "review": {
+        "path": "handoff/downstream_reconciliation/L14/INDEPENDENT_SEMANTIC_REVIEW.md",
+        "sha256": "e90a6b65260b44d6aa0542db143fd47c81cbe52466044d5a6aee64b28149f362",
+        "git_blob": "238a45cda066366efca17c35350cddbba0d37fa2"
+      },
+      "scope": "Commissioned synthetic receipt/control/native-shaped SQLite profile only; no live/provider/full operational acceptance",
+      "decision": "REUSABLE",
+      "new_runs_in_L00": 0
+    },
+    {
+      "claim_id": "neutral_market_measurement_truth_native_d139",
+      "derived_id": "D139",
+      "tested_candidate": "f5cb9265a02ab463a0eef058fbbf3f3611eac95f",
+      "generation": 2,
+      "generation_path": "config/product_proof/market_measurement_native_d139/generations/0002.json",
+      "generation_sha256": "3b5bb662920a1c2402125800c1a56ba2f0b12e6cd1ec255ea2d546e9991964c4",
+      "actual_exit": 0,
+      "raw_output": {
+        "path": "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_d139_f5cb9265.log",
+        "sha256": "6152067a940bd34ae8c25da59166443fbe1ad0c38f8b79632eff8f0e2e5b65fd",
+        "git_blob": "7516201b9b3428c9ca3a3a93360b18254666f9d0"
+      },
+      "review": {
+        "path": "handoff/downstream_reconciliation/L14/INDEPENDENT_SEMANTIC_REVIEW.md",
+        "sha256": "e90a6b65260b44d6aa0542db143fd47c81cbe52466044d5a6aee64b28149f362",
+        "git_blob": "238a45cda066366efca17c35350cddbba0d37fa2"
+      },
+      "scope": "Commissioned synthetic receipt/control/native-shaped SQLite profile only; no live/provider/full operational acceptance",
+      "decision": "REUSABLE",
+      "new_runs_in_L00": 0
+    },
+    {
+      "claim_id": "neutral_market_measurement_truth_native_d140",
+      "derived_id": "D140",
+      "tested_candidate": "f5cb9265a02ab463a0eef058fbbf3f3611eac95f",
+      "generation": 2,
+      "generation_path": "config/product_proof/market_measurement_native_d140/generations/0002.json",
+      "generation_sha256": "23c241333101a6fb7c6ff8bd7f4f5d4de9768f0b84c9253fee61373f5b51ced5",
+      "actual_exit": 0,
+      "raw_output": {
+        "path": "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_d140_f5cb9265.log",
+        "sha256": "3b52d0f91a54f1cc519edd28feca7ea7aa8b84327cfc7bc088a291306753d71c",
+        "git_blob": "e8ddd6db0ab36d75e0bc0fa88e5c4e7cd3c11f97"
+      },
+      "review": {
+        "path": "handoff/downstream_reconciliation/L14/INDEPENDENT_SEMANTIC_REVIEW.md",
+        "sha256": "e90a6b65260b44d6aa0542db143fd47c81cbe52466044d5a6aee64b28149f362",
+        "git_blob": "238a45cda066366efca17c35350cddbba0d37fa2"
+      },
+      "scope": "Commissioned synthetic receipt/control/native-shaped SQLite profile only; no live/provider/full operational acceptance",
+      "decision": "REUSABLE",
+      "new_runs_in_L00": 0
+    },
+    {
+      "claim_id": "neutral_market_measurement_truth_native_d143",
+      "derived_id": "D143",
+      "tested_candidate": "f5cb9265a02ab463a0eef058fbbf3f3611eac95f",
+      "generation": 2,
+      "generation_path": "config/product_proof/market_measurement_native_d143/generations/0002.json",
+      "generation_sha256": "3e2a223f8010009e33e43c7985f1cc4bd26b44f673ed8e05abe71cc89e28ec6c",
+      "actual_exit": 0,
+      "raw_output": {
+        "path": "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_d143_f5cb9265.log",
+        "sha256": "346e2137ab11141c010306e94438f2216626ea567b9a7c618f28d2cf08a6d181",
+        "git_blob": "5fe368da635ef2891c72a399e32f41f7c5df4efc"
+      },
+      "review": {
+        "path": "handoff/downstream_reconciliation/L14/INDEPENDENT_SEMANTIC_REVIEW.md",
+        "sha256": "e90a6b65260b44d6aa0542db143fd47c81cbe52466044d5a6aee64b28149f362",
+        "git_blob": "238a45cda066366efca17c35350cddbba0d37fa2"
+      },
+      "scope": "Commissioned synthetic receipt/control/native-shaped SQLite profile only; no live/provider/full operational acceptance",
+      "decision": "REUSABLE",
+      "new_runs_in_L00": 0
+    },
+    {
+      "claim_id": "neutral_market_measurement_truth_native_d137",
+      "derived_id": "D137",
+      "tested_candidate": "f5cb9265a02ab463a0eef058fbbf3f3611eac95f",
+      "generation": 2,
+      "generation_path": "config/product_proof/market_measurement_native_d137/generations/0002.json",
+      "generation_sha256": "e772751269c05a5b4682d07c0d049b305ad3d1202a5fc7919bd8359836d6bdd0",
+      "actual_exit": 0,
+      "raw_output": {
+        "path": "handoff/downstream_reconciliation/L14/evidence/final_execution/neutral_market_measurement_truth_native_d137_f5cb9265.log",
+        "sha256": "68ace705040e195b1099898786e1bd8cd99feaca1bb31d4830e83becbf79433e",
+        "git_blob": "c4bbf007566ece3867aa3c3d279f02b68af890b8"
+      },
+      "review": {
+        "path": "handoff/downstream_reconciliation/L14/INDEPENDENT_SEMANTIC_REVIEW.md",
+        "sha256": "e90a6b65260b44d6aa0542db143fd47c81cbe52466044d5a6aee64b28149f362",
+        "git_blob": "238a45cda066366efca17c35350cddbba0d37fa2"
+      },
+      "scope": "Commissioned synthetic receipt/control/native-shaped SQLite profile only; no live/provider/full operational acceptance",
+      "decision": "REUSABLE",
+      "new_runs_in_L00": 0
+    }
+  ],
+  "source_digests_checked": {
+    "CURRENT": 306
+  },
+  "product_tests_run": 0,
+  "material_invalidation_demonstrated": 0,
+  "reusable_evidence_conclusion": "98 historical exact controlled claims and 11 distinct L14 scoped claims; no broadened capability acceptance",
+  "independent_semantic_review": "PENDING_OWNER_HANDOFF"
+}

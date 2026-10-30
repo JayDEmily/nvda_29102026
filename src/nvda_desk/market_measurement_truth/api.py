@@ -62,7 +62,16 @@ class _Validated:
                 raise ValueError("finite Decimal required by the controlled calculation contract")
             if field.name in {"version", "history_page_size", "history_page_limit"} and value <= 0:
                 raise ValueError("version/page bound must be positive")
-            if type(value) is tuple and any(item in value[:i] for i, item in enumerate(value)):
+            # Distinct callbacks can share a receipt when ingestion sequence
+            # resolves their causal order. Only this new receipt-value tuple is
+            # exempt; constituent identities and all legacy tuples stay distinct.
+            repeated_receipts = (
+                type(self) is NativeQuoteAssemblyV1 and field.name == "constituent_receipts_utc"
+            )
+            if (
+                type(value) is tuple and not repeated_receipts
+                and any(item in value[:i] for i, item in enumerate(value))
+            ):
                 raise ValueError(f"{field.name} members must be distinct")
             if type(value) is tuple and any(type(item) is str and not item for item in value):
                 raise ValueError(f"{field.name} identities must be nonempty")
@@ -415,16 +424,21 @@ class NativeSourceOwnerV1(Protocol):
 
 
 class NativeMeasurementReadsV1(Protocol):
-    def get_derived_occurrence(self, derived_occurrence_id: str) -> NativeMeasurementOccurrenceV1 | None: ...
+    def get_derived_occurrence(
+        self, derived_occurrence_id: str
+    ) -> NativeMeasurementOccurrenceV1 | None: ...
     def list_derived_history(self, *, derived_signal_id: str,
         subject_instrument: str, effective_at_or_before_utc: datetime,
-        knowledge_at_or_before_utc: datetime, limit: int) -> tuple[NativeMeasurementOccurrenceV1, ...]: ...
+        knowledge_at_or_before_utc: datetime, limit: int
+    ) -> tuple[NativeMeasurementOccurrenceV1, ...]: ...
 
 
 class NativeMeasurementOwnerV1(Protocol):
     @property
     def reads(self) -> NativeMeasurementReadsV1: ...
-    def materialise(self, request: NativeCalculationRequestV1) -> NativeMeasurementOccurrenceV1 | None: ...
+    def materialise(
+        self, request: NativeCalculationRequestV1
+    ) -> NativeMeasurementOccurrenceV1 | None: ...
 
 
 def create_native_source_owner(*, admission: OwnerAdmissionV1,
@@ -450,6 +464,126 @@ def create_native_option_midpoint_owner(*, admission: OwnerAdmissionV1,
 def create_native_option_midpoint_reader(*, admission: OwnerAdmissionV1,
     storage: SQLiteReadStorageV1) -> NativeMeasurementReadsV1:
     from ._native_option import build_reader
+    return build_reader(admission, storage)
+
+
+def create_native_book_depth_owner(*, admission: OwnerAdmissionV1,
+    raw_reader: NativeRawReaderV1, predecessor_reader: NativeMeasurementReadsV1,
+    storage: MemoryStorageV1 | SQLiteStorageV1,
+    utc_now: Callable[[], datetime]) -> NativeMeasurementOwnerV1:
+    from ._native_book_depth import build_owner
+    return build_owner(admission, raw_reader, predecessor_reader, storage, utc_now)
+
+
+def create_native_book_depth_reader(*, admission: OwnerAdmissionV1,
+    storage: SQLiteReadStorageV1) -> NativeMeasurementReadsV1:
+    from ._native_book_depth import build_reader
+    return build_reader(admission, storage)
+
+
+def create_native_smart_depth_owner(*, admission: OwnerAdmissionV1,
+    raw_reader: NativeRawReaderV1, storage: MemoryStorageV1 | SQLiteStorageV1,
+    utc_now: Callable[[], datetime]) -> NativeMeasurementOwnerV1:
+    from ._native_smart_depth import build_owner
+    return build_owner(admission, raw_reader, storage, utc_now)
+
+
+def create_native_smart_depth_reader(*, admission: OwnerAdmissionV1,
+    storage: SQLiteReadStorageV1) -> NativeMeasurementReadsV1:
+    from ._native_smart_depth import build_reader
+    return build_reader(admission, storage)
+
+
+def create_native_smart_ask_owner(*, admission: OwnerAdmissionV1,
+    raw_reader: NativeRawReaderV1, storage: MemoryStorageV1 | SQLiteStorageV1,
+    utc_now: Callable[[], datetime]) -> NativeMeasurementOwnerV1:
+    from ._native_smart_ask import build_owner
+    return build_owner(admission, raw_reader, storage, utc_now)
+
+
+def create_native_smart_ask_reader(*, admission: OwnerAdmissionV1,
+    storage: SQLiteReadStorageV1) -> NativeMeasurementReadsV1:
+    from ._native_smart_ask import build_reader
+    return build_reader(admission, storage)
+
+
+def create_native_smart_imbalance_owner(*, admission: OwnerAdmissionV1,
+    bid_reader: NativeMeasurementReadsV1, ask_reader: NativeMeasurementReadsV1,
+    storage: MemoryStorageV1 | SQLiteStorageV1,
+    utc_now: Callable[[], datetime]) -> NativeMeasurementOwnerV1:
+    from ._native_smart_imbalance import build_owner
+    return build_owner(admission, bid_reader, ask_reader, storage, utc_now)
+
+
+def create_native_smart_imbalance_reader(*, admission: OwnerAdmissionV1,
+    storage: SQLiteReadStorageV1) -> NativeMeasurementReadsV1:
+    from ._native_smart_imbalance import build_reader
+    return build_reader(admission, storage)
+
+
+def create_native_book_slope_owner(*, admission: OwnerAdmissionV1,
+    raw_reader: NativeRawReaderV1, predecessor_reader: MeasurementReadsV1,
+    storage: MemoryStorageV1 | SQLiteStorageV1,
+    utc_now: Callable[[], datetime]) -> NativeMeasurementOwnerV1:
+    from ._native_book_slope import build_owner
+    return build_owner(admission, raw_reader, predecessor_reader, storage, utc_now)
+
+
+def create_native_book_slope_reader(*, admission: OwnerAdmissionV1,
+    storage: SQLiteReadStorageV1) -> NativeMeasurementReadsV1:
+    from ._native_book_slope import build_reader
+    return build_reader(admission, storage)
+
+
+def create_native_book_insert_rate_owner(*, admission: OwnerAdmissionV1,
+    raw_reader: NativeRawReaderV1, storage: MemoryStorageV1 | SQLiteStorageV1,
+    utc_now: Callable[[], datetime]) -> NativeMeasurementOwnerV1:
+    from ._native_book_insert_rate import build_owner
+    return build_owner(admission, raw_reader, storage, utc_now)
+
+
+def create_native_book_insert_rate_reader(*, admission: OwnerAdmissionV1,
+    storage: SQLiteReadStorageV1) -> NativeMeasurementReadsV1:
+    from ._native_book_insert_rate import build_reader
+    return build_reader(admission, storage)
+
+
+def create_native_book_delete_rate_owner(*, admission: OwnerAdmissionV1,
+    raw_reader: NativeRawReaderV1, storage: MemoryStorageV1 | SQLiteStorageV1,
+    utc_now: Callable[[], datetime]) -> NativeMeasurementOwnerV1:
+    from ._native_book_delete_rate import build_owner
+    return build_owner(admission, raw_reader, storage, utc_now)
+
+
+def create_native_book_delete_rate_reader(*, admission: OwnerAdmissionV1,
+    storage: SQLiteReadStorageV1) -> NativeMeasurementReadsV1:
+    from ._native_book_delete_rate import build_reader
+    return build_reader(admission, storage)
+
+
+def create_native_direct_venue_owner(*, admission: OwnerAdmissionV1,
+    raw_reader: NativeRawReaderV1, storage: MemoryStorageV1 | SQLiteStorageV1,
+    utc_now: Callable[[], datetime]) -> NativeMeasurementOwnerV1:
+    from ._native_direct_venue import build_owner
+    return build_owner(admission, raw_reader, storage, utc_now)
+
+
+def create_native_direct_venue_reader(*, admission: OwnerAdmissionV1,
+    storage: SQLiteReadStorageV1) -> NativeMeasurementReadsV1:
+    from ._native_direct_venue import build_reader
+    return build_reader(admission, storage)
+
+
+def create_native_microprice_owner(*, admission: OwnerAdmissionV1,
+    raw_reader: NativeRawReaderV1, storage: MemoryStorageV1 | SQLiteStorageV1,
+    utc_now: Callable[[], datetime]) -> NativeMeasurementOwnerV1:
+    from ._native_microprice import build_owner
+    return build_owner(admission, raw_reader, storage, utc_now)
+
+
+def create_native_microprice_reader(*, admission: OwnerAdmissionV1,
+    storage: SQLiteReadStorageV1) -> NativeMeasurementReadsV1:
+    from ._native_microprice import build_reader
     return build_reader(admission, storage)
 
 
