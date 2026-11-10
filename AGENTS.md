@@ -23,6 +23,7 @@ Before substantive work in this repository:
 3. read any applicable nested `AGENTS.md` or `AGENTS.override.md` for the files in scope;
 4. read the explicitly accepted current `EXEC_PLAN.md` when the task is plan-governed;
 5. read the normative, architecture and evidence material required by that task.
+6. before any authorised ChatGPT-to-GitHub cross-thread handover, read `docs/automation/CHATGPT_GITHUB_HANDOVER_UIA_20261110.md` for the verified Windows UI Automation procedure, failure analysis and evidence limits.
 
 Direct current user instruction outranks repository instructions. `GUARDRAILS.md` is the highest repository-level guardrail authority. More-specific nested agent instructions apply only within their scope and may not contradict higher authority.
 
