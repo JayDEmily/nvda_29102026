@@ -75,7 +75,29 @@ foreach ($w in $windows) {
 }
 ~~~
 
-**Stage C — focus, type and read back.** Require **one uniquely identified**, enabled, non-offscreen project editor, with value empty except for its placeholder. Bring that window to the foreground with a Windows `user32.dll` `SetForegroundWindow(IntPtr)` P/Invoke, call `editor.SetFocus()`, and confirm `GetForegroundWindow()` returns that window's **current** handle. Only then:
+**Stage C — focus, type and read back.** Require **one uniquely identified**, enabled, non-offscreen project editor, with value empty except for its placeholder. Bring that window to the foreground with a Windows `user32.dll` `SetForegroundWindow(IntPtr)` P/Invoke, call `editor.SetFocus()`, and confirm `GetForegroundWindow()` returns that window's **current** handle.
+
+The precise focus primitive used in the passing calls was:
+
+~~~powershell
+Add-Type -TypeDefinition @'
+using System;
+using System.Runtime.InteropServices;
+public class ChatWindowFocus {
+  [DllImport("user32.dll")] public static extern bool SetForegroundWindow(IntPtr hWnd);
+  [DllImport("user32.dll")] public static extern IntPtr GetForegroundWindow();
+}
+'@
+# $targetWindow and $editor are freshly selected from the current UIA tree.
+$hwnd = [IntPtr]$targetWindow.Current.NativeWindowHandle
+[void][ChatWindowFocus]::SetForegroundWindow($hwnd)
+$editor.SetFocus()
+if ([ChatWindowFocus]::GetForegroundWindow() -ne $hwnd) {
+  throw 'Wrong foreground window: do not type.'
+}
+~~~
+
+Only then:
 
 ~~~powershell
 Add-Type -AssemblyName System.Windows.Forms
@@ -87,7 +109,20 @@ if ($actual -cne $prompt) { throw 'Readback mismatch: do not submit.' }
 
 The Windows `$editor` variable above is the **live element found in Stage B**; the actual test executed stages as separate, inspectable PowerShell calls, re-enumerating the editor rather than assuming variables persist between Remote Desktop calls. **This snippet is explanatory, not a separately executed one-shot script.** In the proven call, the readback equalled the exact short prompt.
 
-Before submission, re-enumerate descendants and require exactly **one** enabled, visible `ControlType.Button` named `Send`. Confirm the intended Chrome HWND remains foreground. Submit **one** Enter:
+Before submission, re-enumerate descendants and require exactly **one** enabled, visible `ControlType.Button` named `Send`:
+
+~~~powershell
+$els = $targetWindow.FindAll([System.Windows.Automation.TreeScope]::Descendants,[System.Windows.Automation.Condition]::TrueCondition)
+$send = @($els | Where-Object {
+  $_.Current.ControlType -eq [System.Windows.Automation.ControlType]::Button -and
+  $_.Current.Name -eq 'Send' -and $_.Current.IsEnabled -and
+  -not $_.Current.IsOffscreen
+})
+if ($send.Count -ne 1) { throw 'No unique enabled Send control; do not submit.' }
+if ([ChatWindowFocus]::GetForegroundWindow() -ne $hwnd) { throw 'Focus changed; do not submit.' }
+~~~
+
+Submit **one** Enter:
 
 ~~~powershell
 [System.Windows.Forms.SendKeys]::SendWait('{ENTER}')
