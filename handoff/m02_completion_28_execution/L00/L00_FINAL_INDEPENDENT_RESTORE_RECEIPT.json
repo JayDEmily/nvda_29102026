@@ -1,0 +1,102 @@
+{
+  "reviewer": "/root/independent_executor",
+  "scope": "Final committed L00 transport and documentary repair readback; no product tests",
+  "candidate": "e19c2df9b21777ae467b628c2fa1d36e137a1072",
+  "tree": "8deaee7ea4bd60773829d8464bdc4422c1c11438",
+  "original_named_refs_verified": 66,
+  "current_manifest_refs_verified": 237,
+  "tracked_blob_listing_equal": true,
+  "baseline_ancestry": true,
+  "bundle_verify_and_fsck": "PASS",
+  "archive": {
+    "name": "NVDA_M02_COMPLETION28_L00_HANDOVER.tar.gz",
+    "sha256": "96483d5a7d2334c0726c591f12d5319093a866d777b71e13c0362e85d29e89e7",
+    "bytes": 124422670,
+    "members": [
+      {
+        "path": "NVDA_M02_COMPLETION28_L00_ADDITIVE_FROM_97f944d51ab9.bundle",
+        "sha256": "589524d6a47885bb30d9e1c9a5c35f4a59388dfa9ac749046a5036b09f973aec",
+        "bytes": 124661535,
+        "binding": "EXTERNAL_CHECKPOINT_BYTES"
+      },
+      {
+        "path": "L00_MANIFEST.json",
+        "sha256": "5597892c4b30613714a03c0c3a52720687c98038b870c9dcaf864f0386e82255",
+        "bytes": 38532,
+        "binding": "EXTERNAL_CHECKPOINT_BYTES"
+      },
+      {
+        "path": "L00_TRACKED_BLOBS.txt",
+        "sha256": "be218943d9b00b9b9a4850c4125b8841576eee9d4fa5fdacf15a7d7bdf9fd188",
+        "bytes": 491439,
+        "binding": "EXTERNAL_CHECKPOINT_BYTES"
+      },
+      {
+        "path": "RESTORE.md",
+        "sha256": "61602cd0782aadc68bed4df4aedc7b47c6d34104e262f63ba9322549a7138b34",
+        "bytes": 755,
+        "binding": "EXTERNAL_CHECKPOINT_BYTES"
+      },
+      {
+        "path": "handoff/m02_completion_28_execution/TEST_EVIDENCE_LEDGER.json",
+        "sha256": "af63ecb99d1136542e3e3b31ea3aabf8d7f93de741cbddd1a1342517e7024603",
+        "bytes": 48229,
+        "binding": "COMMITTED_BYTES"
+      },
+      {
+        "path": "handoff/m02_completion_28_execution/EXECUTION_REGISTER.json",
+        "sha256": "2aefe5e0fdb3500842118ed425c8863bd89fc50f5ae6dedb515774405a9f925a",
+        "bytes": 26467,
+        "binding": "COMMITTED_BYTES"
+      },
+      {
+        "path": "handoff/m02_completion_28_execution/L00/REVIEW.md",
+        "sha256": "980f124ae7446f2a990e60d9bd4a05a4f9999dc422b2d3a2604b3ecb0ac89539",
+        "bytes": 5981,
+        "binding": "COMMITTED_BYTES"
+      },
+      {
+        "path": "handoff/m02_completion_28_execution/L00/BRIEF.md",
+        "sha256": "c01bdea2263cdc619aa67818d2aaf8535075eae09d6a7bea9ea059147e839cc0",
+        "bytes": 2514,
+        "binding": "COMMITTED_BYTES"
+      },
+      {
+        "path": "handoff/m02_completion_28_execution/L00/SOURCE_IDENTITY_CHECK.json",
+        "sha256": "1b87c83c41d6ab81fc36c0d7d69d2d3bf77f579dc686c1bbd11f2aec41a3af31",
+        "bytes": 1998,
+        "binding": "COMMITTED_BYTES"
+      },
+      {
+        "path": "handoff/m02_completion_28_execution/L00/ORIGINAL_BASELINE_REFS.json",
+        "sha256": "7cb2abfd6e5a4828c6a1e61a1e960d5649c4ab59449423d9189256ee425d3606",
+        "bytes": 12902,
+        "binding": "COMMITTED_BYTES"
+      },
+      {
+        "path": "handoff/m02_completion_28_execution/L00/PREDECESSOR_EXEC_PLAN.md",
+        "sha256": "461e7c26572e2d96e7e2bd5b370815e75d75b0d053fae445843b95654f1e8605",
+        "bytes": 27619,
+        "binding": "COMMITTED_BYTES"
+      },
+      {
+        "path": "handoff/m02_completion_28_execution/L00/CURRENT_REFS.txt",
+        "sha256": "88737c5780f8fadc2723b7ff35c2a07b28463f21513493501231f5260cfa5ccc",
+        "bytes": 35512,
+        "binding": "COMMITTED_BYTES"
+      }
+    ]
+  },
+  "assets": {
+    "NVDA_M02_COMPLETION28_L00_ADDITIVE_FROM_97f944d51ab9.bundle": {
+      "sha256": "589524d6a47885bb30d9e1c9a5c35f4a59388dfa9ac749046a5036b09f973aec",
+      "bytes": 124661535
+    },
+    "NVDA_M02_RECOVERY_BASE_FULL_HISTORY.bundle": {
+      "sha256": "96746582ab4fd0896f6280ff10ea021ed392f4d0e080c2f7c21be00324c5a57c",
+      "bytes": 165856376
+    }
+  },
+  "verdict": "VERIFIED_TRANSFER_CONTENTS; controller download exposure remains separately required",
+  "original_baseline_binary_recovered": false
+}

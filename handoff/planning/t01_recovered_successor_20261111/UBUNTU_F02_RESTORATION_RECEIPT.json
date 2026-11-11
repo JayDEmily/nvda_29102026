@@ -1,0 +1,23 @@
+{
+  "additive_bundle_sha256": "b95f05ceba8d873603a5c79894011d2b0babbfc43df674e54175a55b0f11ad2b",
+  "baseline_archive_sha256": "4d02c82894513bff8d07af7a2af6a151cd3f5f14ece581ac0bf0d87ea9ed0430",
+  "baseline_bundle_sha256": "91db4a1989bff366c1f547c5776ca886c276b6b1310027ae929aa1cd1efee4b9",
+  "candidate_commit": "16b7cc67f5d24336d3768e2da006819474a8c792",
+  "candidate_tree": "2b2bd7c1b7342f22909339a99150e2a395039e06",
+  "changed_paths": [
+    "handoff/m02_completion_28_execution/L00/R2_G0_SQLITE_INDEPENDENT_REVIEW_REQUEST.md",
+    "handoff/m02_completion_28_execution/L00/R2_SQLITE_RUNTIME_DECISION.md"
+  ],
+  "git_fsck_full_no_reflogs": "PASS",
+  "host": "DESKTOP-I188O30/WSL Ubuntu",
+  "input_zip_sha256": "987aef326d301775e313cdc32556924bef52c446e68ac4ff1c18508aae43767a",
+  "leaf_count": 39,
+  "new_product_test_runs": 0,
+  "original_refs": 66,
+  "parent": "9a4f1e827accdd7cfe3d7a14d5575573589b1acd",
+  "proof_obligations": 35,
+  "status": "VERIFIED_F02_RAW_RESTORATION_NOT_PRODUCT_ACCEPTANCE",
+  "total_refs": 67,
+  "tracked_paths": 4024,
+  "tree_inventory_sha256": "6e24293d7908a3bce9e950bfd16cfa967c06c907a4f72bf54b8de0172dbdd432"
+}

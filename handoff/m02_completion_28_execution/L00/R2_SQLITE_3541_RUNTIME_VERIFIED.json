@@ -1,0 +1,47 @@
+{
+  "build_status": "EXACT_PIN_LOADS_AND_NON_PRODUCT_PROBE_PASSED",
+  "compile_command": "gcc -O0 -g0 -fPIC -shared -Wl,-soname,libsqlite3.so.0 -DSQLITE_THREADSAFE=1 -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_ENABLE_PERCENTILE -DSQLITE_ENABLE_FTS5 -DSQLITE_ENABLE_FTS4 -DSQLITE_ENABLE_RTREE -DSQLITE_ENABLE_COLUMN_METADATA -DSQLITE_ENABLE_DBSTAT_VTAB -o libsqlite3.so.0 sqlite3.c -ldl -lpthread -lm",
+  "compiled_library_path": "/mnt/data/nvda_local_work/sqlite3541_build/prefix/lib/libsqlite3.so.0",
+  "compiled_library_sha256": "c53706980906943301153b630aeddba1b4aab6fe5eeda5752d8293952707db4e",
+  "compiled_library_size_bytes": 1859280,
+  "non_product_feature_probe": {
+    "all": true,
+    "checks": {
+      "busy_timeout_zero": true,
+      "foreign_key_refusal": true,
+      "foreign_keys_on": true,
+      "integrity": true,
+      "read_only_reopen": true,
+      "rollback_journal": true,
+      "strict_tables": true,
+      "trigger_refusal": true,
+      "write_synchronous_extra": true
+    },
+    "first_probe_correction": "The initial smoke attempt incorrectly expected write-connection synchronous=EXTRA to persist as a connection setting on a fresh read-only connection; this corrected probe checks the writer connection.",
+    "python": "3.13.5",
+    "scope": "temporary non-product probe",
+    "source_id": "2026-10-16 14:45:20 555e07ef33f69a0957d24d8e555b702464a131d6f1607f4c3c1e4551e8e6ca76",
+    "sqlite": "3.54.1"
+  },
+  "official_archive_sha3_256": "b6ced585c750916b1052667239a12c25a7ff34e7f06e1e6e01ecb0427657d9c4",
+  "official_sqlite3_c_sha3_256": "e2b869d3003b33c942b7dd7063604fbc53553e1b66609570df39b9b7b558ee81",
+  "preflight": {
+    "check": "NVDA_RUNTIME_SQLITE_PIN",
+    "pass": true,
+    "python_actual": "3.13.5",
+    "python_expected": "3.13.5",
+    "scope": "non-product, runtime pin only",
+    "sqlite_actual": "3.54.1",
+    "sqlite_expected": "3.54.1",
+    "sqlite_source_id": "2026-10-16 14:45:20 555e07ef33f69a0957d24d8e555b702464a131d6f1607f4c3c1e4551e8e6ca76"
+  },
+  "python_version": "3.13.5",
+  "scope": "G0 environment and SQLite mechanism, not product runtime acceptance or general 3.53.1 parity",
+  "source_archive_basename": "sqlite-autoconf-3540100.tar.gz",
+  "source_archive_bytes": 3332984,
+  "source_archive_sha256": "926ef8d3eab93fbf6e06011901273eec076b25594a4e1cdadd50c987f4f6d64e",
+  "source_archive_sha3_256": "b6ced585c750916b1052667239a12c25a7ff34e7f06e1e6e01ecb0427657d9c4",
+  "source_id": "2026-10-16 14:45:20 555e07ef33f69a0957d24d8e555b702464a131d6f1607f4c3c1e4551e8e6ca76",
+  "sqlite3_c_sha3_256": "e2b869d3003b33c942b7dd7063604fbc53553e1b66609570df39b9b7b558ee81",
+  "sqlite_version": "3.54.1"
+}
