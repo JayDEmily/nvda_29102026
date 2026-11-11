@@ -71,3 +71,11 @@ GitHub official guidance: https://docs.github.com/en/get-started/using-github/gi
 **Not performed:** merging or writing `main`, changing default branch/rulesets, deleting refs, migrating archives, accepting a successor plan, product implementation/testing, or changing the frozen `GUARDRAILS.md`.
 
 This inventory is a branch-management decision record, not a new ExecPlan or authority to advance NVIDIA product gates.
+
+## Verified non-destructive consolidation performed after the inventory
+
+- 12 November 2026: carried the two-line approved automation-runbook pointer from the later `planning/t01-recovered-successor-20261111` root `AGENTS.md` into the designated work branch. Commit `4b92b1f5dbcd6b532ee812665a2bf71ed24e30f8`.
+- Committed this 26-ref inventory at `0a01ebe5d0326cca3b6fa44569500d84b05d9377`.
+- GitHub PR [#1](https://github.com/JayDEmily/nvda_29102026/pull/1) merged **only** `handoff/review/t01_successor_independent_20261111/INDEPENDENT_REVIEW.md` into the active work branch through merge commit `0d18b17500c6b52b9fc7582397bb069efaf98a80`. Verified Git commit tree `66523147ca38fbab8913c767a643acbbcf68f4fb`, first parent `0a01ebe5d0326cca3b6fa44569500d84b05d9377`, second parent original reviewer commit `c7777881e28927e5e4957f8630028425d5004755`. Report blob is unchanged `5ac5e9c72fe7e37ed1bafcf4877d75fb469a15f0`.
+- GitHub readback after merge: `main` remains `7e2601a5e050d76202b1b6d3f69fc167a04c91f7`; branch count remains 26. Root `GUARDRAILS.md` blob `54a4407609941f63f6b902076688ff102a3d5ba2`, root `EXEC_PLAN.md` blob `95aa1090e02585673f81f16e9a72c150353c0120` and active evidence ledger blob `3bca28fae4ac0e1d743a981e4157487312b10c13` all remain unchanged.
+- No `main` promotion, historical-ref deletion, product execution or successor acceptance was performed. The reviewer’s original pinned judgement is preserved as evidence, not extended to the amended proposal.
