@@ -20,6 +20,8 @@ Rerun or expand tests only when new changes, failures, or unresolved concerns ju
 
 Use independent testing arrangements specified in the `EXEC_PLAN.md`.
 
+Before an authorised ChatGPT-to-GitHub cross-thread handover, read `docs/automation/CHATGPT_GITHUB_HANDOVER_UIA_20261110.md`.
+
 ## Blockers
 
 If a requirement is unresolved, a necessary capability is unavailable, or an owner decision is required, report `BLOCKED`.
