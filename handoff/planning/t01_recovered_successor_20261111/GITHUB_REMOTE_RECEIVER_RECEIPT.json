@@ -1,0 +1,21 @@
+{
+  "fetched_remote_branches": {
+    "recovery/legacy-d010-20261111": "77471e5a851ec04e73c6dc63988868064de930f8",
+    "recovery/legacy-d131-20261111": "fa709f645ac5ac21b861836db74ab23da9f8e17a",
+    "recovery/legacy-m00-brief2-20261111": "0c86b187a23e750d39ce04f772f7d52c1bd578b0",
+    "recovery/legacy-next20-20261111": "8e0c89b2cdf4ef504931fea894d89b2f85b2ce2e",
+    "recovery/r2-g0-f02-20261111": "16b7cc67f5d24336d3768e2da006819474a8c792"
+  },
+  "git_fsck_full_no_reflogs": "PASS",
+  "head": "16b7cc67f5d24336d3768e2da006819474a8c792",
+  "independent_chat_tester": "NOT_YET_EXECUTED",
+  "non_git_sqlite_binary_qualification": "NOT_TESTED",
+  "note": "Original 66 ref names are restored in this receiver from the verified manifest after fetching all necessary Git object tips from five isolated remote branches. GitHub itself hosts those tips under five recovery branches, not under all 66 original ref names.",
+  "original_named_refs_recreated": 66,
+  "program_acceptance": "NOT_GRANTED",
+  "source_git_remote": "https://github.com/JayDEmily/nvda_29102026.git",
+  "status": "GITHUB_REMOTE_FRESH_RECEIVER_FULL_GIT_INTEGRITY_PASS",
+  "tracked_blob_inventory_count": 4024,
+  "tracked_inventory_sha256": "6e24293d7908a3bce9e950bfd16cfa967c06c907a4f72bf54b8de0172dbdd432",
+  "tree": "2b2bd7c1b7342f22909339a99150e2a395039e06"
+}

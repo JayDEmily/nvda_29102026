@@ -1,0 +1,11 @@
+# R2 G0/L00 Worker reconciliation — review-ready update, 30 October 2026
+
+**Disposition: WORKER_DOCUMENTARY_CHECKS_AND_PINNED_SQLITE_READY_FOR_INDEPENDENT_REVIEW.** No outstanding **Worker-side** G0/SQLite installation, preflight, bookkeeping, or local checkpoint transfer defect is reported. This is *not* an independent G0 acceptance or a product pass.
+
+The preceding Worker record was `BLOCKED_PENDING_INDEPENDENT_DOCUMENTARY_REVIEW_AND_SQLITE_RUNTIME`; the owner subsequently supplied the official SQLite 3.54.1 release, and its SHA3-256, compiled library, Python dynamic loader, exact-version preflight and nine identified non-product SQLite features have been verified. The earlier 3.46.1 result remains historical. SQLite source/binary details and command outputs are in `R2_SQLITE_3541_RUNTIME_VERIFIED.json` and `R2_SQLITE_RUNTIME_DECISION.md`.
+
+The owner-approved and frozen root `GUARDRAILS.md`, local `AGENTS.md`, scoped `tests/AGENTS.override.md` and R2 `EXEC_PLAN.md` are unchanged. G0 counts remain 126 = 98 + 28; 20 core, seven extensions, one paused D145; seven external holds; 39 leaves; 35 ledger obligations, zero released cases and zero new product runs. Original 66 named history refs and original L00 baseline are preserved. The missing intermediate original GitHub history remains explicitly *not claimed recovered*; the exact approved R2 Git **tree** was verified and recorded as a synthetic local snapshot in Git history. No product-code change or rerun is made here.
+
+The local cumulative Git bundle is the permitted handover mechanism; fresh repository restoration with exact original L00 baseline, ref-tip checks, blob/tree equality and `git fsck` is required for the final committed candidate. The external documentary reviewer, rather than the Worker, determines `ACCEPT_DOCUMENTARY` or a specific finding. This independent decision is the normal review step, **not a missing technical setup condition**. Held source/domain decisions on G1–G4 leaves remain in their original ownership and are not G0 defects.
+
+The receipt and reviewer packet are explicitly linked by Git candidate SHA; all current source and evidence paths and exact checks are listed in `R2_G0_SQLITE_INDEPENDENT_REVIEW_REQUEST.md`.
