@@ -1,0 +1,40 @@
+{
+  "schema": "nvda-t01-main-reconciliation-candidate/v1",
+  "status": "PROPOSED_NOT_ACTIVE_INDEPENDENT_REVIEW_PENDING",
+  "main_base_commit": "ded4b98e1e5999d1ddf2f067e660b691917bcd71",
+  "main_base_tree": "22877aaa55efda8636aca41b2d8f2ba56b619449",
+  "source_work_tip": "67f5a6c855bfcf8c6002e7f6c2d97ba714b6644f",
+  "source_original_manifest_blob": "162b242eee672bbaa1b4a1e30d63bb2d71657fe3",
+  "source_proposal_blobs": {
+    "PROPOSED_EXEC_PLAN.md": "b150079f726af04fdcc988a8d7f0d71583a79f99",
+    "PROPOSED_AGENTS.md": "4ee615805153f04a5e7edc933c14f4f2a3457256",
+    "PROPOSED_TESTS_AGENTS.override.md": "5eadfc83c2abd3814c2e0138f35b7008735045ad",
+    "PROPOSED_TEST_EVIDENCE_LEDGER.json": "c2387b3aa5478d828b133cb8813646448e2fec25",
+    "ADR_20261112_ASTRA_NVDA_METHOD_AND_FORWARD_ARCHITECTURE_REVIEWS.md": "cba694ce3bd5afad2192d8d36d64bdb5c213d29a"
+  },
+  "candidate_governance_blobs": {
+    "handoff/planning/t01_main_reconciliation_20261112/PROPOSED_EXEC_PLAN.md": "f29d415fbb98909339d759807c26f1bc550213a2",
+    "handoff/planning/t01_main_reconciliation_20261112/PROPOSED_AGENTS.md": "121d61432b751b2918855d1738980f3a98972d8b",
+    "handoff/planning/t01_main_reconciliation_20261112/PROPOSED_TESTS_AGENTS.override.md": "d69c44451d330fba24eca299f4739c22092d2779"
+  },
+  "verbatim_astra_review_blob": "cba694ce3bd5afad2192d8d36d64bdb5c213d29a",
+  "original_named_ref_count": 66,
+  "unique_original_tip_count": 13,
+  "original_named_recovery_refs_inherited_as_manifest_only": true,
+  "published_five_recovery_heads_untouched": true,
+  "main_root_governance_files_untouched": true,
+  "working_root_governance_files_untouched": true,
+  "leaf_count": 39,
+  "leaf_heading_sequence_unchanged": true,
+  "duplicate_common_leaf_rules_replaced_with_one": 39,
+  "source_ledger_blob": "c2387b3aa5478d828b133cb8813646448e2fec25",
+  "ledger_proof_obligations": 35,
+  "authorised_product_cases": 0,
+  "product_runs": 0,
+  "scheduled_l32": 34,
+  "d145_scheduled_l31_paused": 1,
+  "early_testing_windows": "NOT_APPROVED_UNCHANGED_FINAL_ONLY_L32",
+  "runtime_transition": "NOT_APPROVED",
+  "main_promotion": "WAIT_INDEPENDENT_REVIEW_AND_OWNER_ADOPTION",
+  "astra_second_review": "REFERENCE_ONLY_NOT_PRODUCT_AUTHORITY"
+}

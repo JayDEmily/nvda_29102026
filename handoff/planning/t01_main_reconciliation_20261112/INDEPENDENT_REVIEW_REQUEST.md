@@ -1,0 +1,13 @@
+# Independent documentary review commission — T01 main-reconciliation candidate
+
+**Date:** 12 November 2026, Melbourne. **Reviewer:** a *distinct* ChatGPT review conversation, not this author. **Scope:** documentary/semantic reconciliation only. **Candidate branch:** `work/t01-main-reconciliation-20261112`; pin its exact HEAD and tree from GitHub at review start. **Base:** `main` at `ded4b98e1e5999d1ddf2f067e660b691917bcd71`. **Historic work:** `67f5a6c855bfcf8c6002e7f6c2d97ba714b6644f`. **Disposition:** reviewer must give ACCEPT_DOCUMENTARY_DELTA, RETURN, PARTIAL or BLOCKED with primary evidence; acceptance does not itself install root authority.
+
+Read in full `GUARDRAILS.md`, current main `AGENTS.md`, `EXEC_PLAN.md`, `tests/AGENTS.override.md`, the complete three proposed successor files in this directory, and source T01 proposals under `handoff/planning/t01_recovered_successor_20261111/`. Inspect Astra response 1 in the ADR (response 2 only to check that no future product architecture has been adopted).
+
+Verify the exact `CANDIDATE_SOURCE_MANIFEST.json` blob identities, baseline main/work SHA, **39 exact leaf headings and substantive contracts**, one shared GitHub rule substituting only 39 identical repeated clauses, ledger's **35 original obligations / zero runs / 34 L32 schedules / D145 L31 paused**, reviewer recurrence and fixture independence, rerun/admission restrictions, and old-to-new checkpoint/communication wording. Reconcile the eight-path disposition, preserved 66-name historical map, published five recovery heads, two G4 aliases and remaining additional Git ref/non-Git asset unknowns.
+
+Use a **pinned endpoint tree comparison** for actual changed paths and separately inspect Git merge ancestry; three-dot PR diff is not endpoint final-tree equivalence. Inspect relevant active CI and protection evidence to determine mandatory checks, reporting any inaccessible settings as UNKNOWN rather than passing.
+
+The review output is a new, pinned documentary finding on a separate review ref or exact PR review, followed by an auditable readback. This author cannot self-certify the candidate. Do not run product cases, add source/features, change frozen GUARDRAILS, install Python/SQLite/PostgreSQL, activate D145, perform broker activity, force-rewrite historical branches, delete refs, or merge the governing candidate into main.
+
+If the review passes, one *exact* owner adoption and promotion decision is still needed for the proposed root/plan/schedule and any reserved checkpoint-method change; no per-leaf reapproval thereafter within an accepted commission.
