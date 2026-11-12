@@ -127,7 +127,9 @@ MAPPING = r.RawSignalProjectionMappingV1(
     "trades/minute",
     (("session.id", ("session", "id")), ("bucket.id", ("bucket", "id"))),
 )
-UNIT = f.UnitConventionVersionV1("mmt-trades-per-minute", 1, "trades/minute", "trades/minute", Decimal("1"), Decimal("0"))
+UNIT = f.UnitConventionVersionV1(
+    "mmt-trades-per-minute", 1, "trades/minute", "trades/minute", Decimal("1"), Decimal("0")
+)
 POLICY = f.InputSelectionPolicyVersionV1(
     "mmt-trade-rate-zscore-20sessions-selection",
     1,
