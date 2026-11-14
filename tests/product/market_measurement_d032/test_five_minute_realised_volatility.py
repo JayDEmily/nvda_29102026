@@ -2,29 +2,53 @@
 
 from datetime import UTC, datetime, timedelta
 from decimal import Decimal
+from itertools import pairwise
+
 import pytest
+
 from nvda_desk.market_measurement_truth import api as f
 from nvda_desk.raw_signal_occurrence_truth import api as r
 
 BRIEF = "20d8b241f4939487e83b8348c053d770f8565d83702c709f0ee71e46deaa91e0"
 AUTHORITY = (
-    ("handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md", "603b850802a418780109095e7ae69bcece449da79fb24140a6d50297605e927c"),
-    ("handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv", "67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549"),
+    (
+        "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md",
+        "603b850802a418780109095e7ae69bcece449da79fb24140a6d50297605e927c",
+    ),
+    (
+        "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv",
+        "67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549",
+    ),
 )
 D = "D032"
 K = 32
 STEM = "5m"
-SAMPLES = tuple(datetime.fromisoformat(x) for x in ('2026-10-20T12:35:00+00:00', '2026-10-20T12:36:00+00:00', '2026-10-20T12:37:00+00:00', '2026-10-20T12:38:00+00:00', '2026-10-20T12:39:00+00:00', '2026-10-20T12:40:00+00:00'))
+SAMPLES = tuple(
+    datetime.fromisoformat(x)
+    for x in (
+        "2026-10-20T12:35:00+00:00",
+        "2026-10-20T12:36:00+00:00",
+        "2026-10-20T12:37:00+00:00",
+        "2026-10-20T12:38:00+00:00",
+        "2026-10-20T12:39:00+00:00",
+        "2026-10-20T12:40:00+00:00",
+    )
+)
 T = SAMPLES[-1]
 CUTOFF = T + timedelta(seconds=1)
 NOW = CUTOFF + timedelta(seconds=1)
 SESSIONS = tuple(
     f.SessionFrameV1(
-        f.VersionRefV1("controlled-risk-" + (datetime(2026, 10, 10, 12, tzinfo=UTC)+timedelta(days=i)).strftime("%Y%m%d"),1),
+        f.VersionRefV1(
+            "controlled-risk-"
+            + (datetime(2026, 10, 10, 12, tzinfo=UTC) + timedelta(days=i)).strftime("%Y%m%d"),
+            1,
+        ),
         "controlled_cash",
-        datetime(2026, 10, 10, 12, tzinfo=UTC)+timedelta(days=i),
-        datetime(2026, 10, 10, 13, tzinfo=UTC)+timedelta(days=i),
-    ) for i in range(11)
+        datetime(2026, 10, 10, 12, tzinfo=UTC) + timedelta(days=i),
+        datetime(2026, 10, 10, 13, tzinfo=UTC) + timedelta(days=i),
+    )
+    for i in range(11)
 )
 MAPPING = r.RawSignalProjectionMappingV1(
     "mmt-risk-close",1,r.RawSignalCatalogueId("R151"),"foundation-pilot-fixture","cash_quote_v1",
@@ -37,7 +61,9 @@ POLICY = f.InputSelectionPolicyVersionV1(
     timedelta(days=30),timedelta(0),("true_instant",),(),"foundation-pilot-fixture","cash_quote_v1",
     "foundation-pilot-fixture/cash_quote_v1",100,1000,
 )
-PARAMETER = f.CalculationParameterSetV1("mmt-realised-vol-"+STEM+"-50d",1,"P_VOL_WINDOW","NVDA",("NVDA",))
+PARAMETER = f.CalculationParameterSetV1(
+    "mmt-realised-vol-" + STEM + "-50d", 1, "P_VOL_WINDOW", "NVDA", ("NVDA",)
+)
 DEFINITION = f.CalculationDefinitionV1(
     D,D+"-REALISED-VOL-1","K05_REALIZED_RISK",
     "sqrt(sum(ln(close_i/close_(i-1))^2)/sum(trading_year_fraction_i))",("R151",),(),
@@ -45,14 +71,21 @@ DEFINITION = f.CalculationDefinitionV1(
     tuple(f.AuthorityArtifactRefV1(*ref) for ref in AUTHORITY),
 )
 FRAC = f.ExactRatioV1(1,15120) if K <= 34 else f.ExactRatioV1(1,252)
-INTERVALS = tuple(f.TradingReturnIntervalV1(a,b,FRAC) for a,b in zip(SAMPLES,SAMPLES[1:]))
+INTERVALS = tuple(f.TradingReturnIntervalV1(a,b,FRAC) for a,b in pairwise(SAMPLES))
 CONTEXT = f.RealisedRiskWindowContextV1(
     f.VersionRefV1("controlled-risk-calendar",1),SAMPLES[0],SAMPLES[-1],SESSIONS[0].start_utc,
     SESSIONS,SAMPLES,INTERVALS,
 )
 
 def _kind(event):
-    return "official_close" if event.hour == 13 else "session_open" if event.hour == 12 and event.minute == 0 else "minute_close"
+    return (
+        "official_close"
+        if event.hour == 13
+        else "session_open"
+        if event.hour == 12 and event.minute == 0
+        else "minute_close"
+    )
+
 
 def _admit(raw,identity,event,value,seq):
     native={"session":{"id":"controlled-risk-"+event.strftime("%Y%m%d")+"/1"},
@@ -92,11 +125,15 @@ def test_d032_five_minute_realised_volatility(tmp_path,refused):
     if refused and K == 34:
         late=datetime(2026,10,20,13,1,tzinfo=UTC)
         _admit(raw,"after-close",late,"110",999)
-        assert any(x.observation_occurrence_id.value == "after-close" for x in _page(raw,CUTOFF,late))
+        assert any(
+            x.observation_occurrence_id.value == "after-close" for x in _page(raw, CUTOFF, late)
+        )
     if refused and K == 35:
         _admit(raw,"older",datetime(2026,10,14,13,tzinfo=UTC),"100",999)
     projected=_page(raw,CUTOFF,T)
-    assert len(projected)==len(SAMPLES)-len(missing if refused else ()) + int(refused and K in (32,35))
+    assert len(projected) == len(SAMPLES) - len(missing if refused else ()) + int(
+        refused and K in (32, 35)
+    )
     admission=f.OwnerAdmissionV1("M02",BRIEF)
     path=str(tmp_path/"m02.sqlite")
     try:
@@ -120,7 +157,10 @@ def test_d032_five_minute_realised_volatility(tmp_path,refused):
     assert type(result) is f.WindowMeasurementOccurrenceV1
     expected=Decimal("5.2411933614380407513132873039695738036883343009577")
     assert type(result.result) is Decimal and result.result.as_tuple()==expected.as_tuple()
-    assert result.owner_object_id=="M02" and result.owner_namespace=="neutral_market_measurement_truth/window/v1"
+    assert (
+        result.owner_object_id == "M02"
+        and result.owner_namespace == "neutral_market_measurement_truth/window/v1"
+    )
     assert result.implementation_brief_sha256==BRIEF and result.derived_signal_id==D
     assert result.derived_occurrence_id.startswith("mmtwindow1:")
     assert result.request==request and result.definition==DEFINITION

@@ -4,7 +4,6 @@ from datetime import datetime
 from typing import assert_type
 
 from nvda_desk.market_measurement_truth import api as f
-
 from nvda_desk.raw_signal_occurrence_truth import api as raw_api
 
 
