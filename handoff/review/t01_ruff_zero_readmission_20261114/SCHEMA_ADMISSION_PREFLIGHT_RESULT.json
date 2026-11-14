@@ -1,0 +1,66 @@
+{
+  "audit": "SCHEMA_ONLY_NON_ADMISSION_PREFLIGHT",
+  "claims_verified": 7,
+  "status": "PASS_PRE_ADMISSION_SHAPE_ONLY",
+  "actual_owner_admission_authority": "UNVERIFIED_PENDING",
+  "proof_executed": false,
+  "new_generation_written": false,
+  "results": [
+    {
+      "claim_id": "neutral_market_measurement_truth_pilot",
+      "active_pointer_schema_valid": true,
+      "missing_authority_rejected": true,
+      "hypothetical_nonempty_references_shape_valid": true,
+      "new_generation_written": false,
+      "review_or_admission_authority_conferred": false
+    },
+    {
+      "claim_id": "neutral_market_measurement_truth_d030",
+      "active_pointer_schema_valid": true,
+      "missing_authority_rejected": true,
+      "hypothetical_nonempty_references_shape_valid": true,
+      "new_generation_written": false,
+      "review_or_admission_authority_conferred": false
+    },
+    {
+      "claim_id": "neutral_market_measurement_truth_d031",
+      "active_pointer_schema_valid": true,
+      "missing_authority_rejected": true,
+      "hypothetical_nonempty_references_shape_valid": true,
+      "new_generation_written": false,
+      "review_or_admission_authority_conferred": false
+    },
+    {
+      "claim_id": "neutral_market_measurement_truth_d032",
+      "active_pointer_schema_valid": true,
+      "missing_authority_rejected": true,
+      "hypothetical_nonempty_references_shape_valid": true,
+      "new_generation_written": false,
+      "review_or_admission_authority_conferred": false
+    },
+    {
+      "claim_id": "neutral_market_measurement_truth_d033",
+      "active_pointer_schema_valid": true,
+      "missing_authority_rejected": true,
+      "hypothetical_nonempty_references_shape_valid": true,
+      "new_generation_written": false,
+      "review_or_admission_authority_conferred": false
+    },
+    {
+      "claim_id": "neutral_market_measurement_truth_d035",
+      "active_pointer_schema_valid": true,
+      "missing_authority_rejected": true,
+      "hypothetical_nonempty_references_shape_valid": true,
+      "new_generation_written": false,
+      "review_or_admission_authority_conferred": false
+    },
+    {
+      "claim_id": "neutral_market_measurement_truth_d036",
+      "active_pointer_schema_valid": true,
+      "missing_authority_rejected": true,
+      "hypothetical_nonempty_references_shape_valid": true,
+      "new_generation_written": false,
+      "review_or_admission_authority_conferred": false
+    }
+  ]
+}
