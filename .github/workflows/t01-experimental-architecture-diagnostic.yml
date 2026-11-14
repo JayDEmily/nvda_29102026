@@ -1,0 +1,32 @@
+name: T01 experimental architecture diagnostic (NOT promotion)
+
+# This is deliberately separate from the unchanged mandatory architecture-kernel
+# workflow. A green diagnostic is NOT acceptance of any lint-policy change.
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  diagnostic-only:
+    name: Proposal-only SHA-bound lint plus architecture diagnostic
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout complete proof-admission history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Prepare pinned uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.10.0"
+      - name: Verify locked offline Python 3.13.5 environment
+        run: uv sync --locked --extra dev
+      - name: NON-PROMOTING exact historical Ruff baseline PROPOSAL check
+        run: uv run python tools/proposed_admitted_ruff_baseline.py
+      - name: Diagnostic only — complete existing architecture Tier A promotion runner
+        run: uv run python tools/run_promotion_gate.py --set architecture_kernel
+      - name: Git whitespace validation
+        run: git diff --check
