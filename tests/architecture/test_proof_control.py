@@ -904,15 +904,22 @@ def _controls():
     return importlib.import_module("product_proof_claims")
 
 
-def _copy_candidate(tmp_path):
+def _copy_current_candidate(tmp_path):
+    # Current-admission controls must retain the current descriptors and
+    # generations. This copy is strictly disposable and separate from ROOT.
+    assert tmp_path.resolve() != ROOT.resolve() and not (tmp_path / ".git").exists()
     for name in ("config", "schemas", "docs", "tests", "implementation", "handoff", "src"):
         shutil.copytree(ROOT / name, tmp_path / name)
     shutil.copytree(ROOT / "tools", tmp_path / "tools")
     for name in ("pyproject.toml", "GUARDRAILS.md", "AGENTS.md", ".gitignore"):
         shutil.copy2(ROOT / name, tmp_path / name)
-    # Control canaries require an explicit pre-admission universe, independently of
-    # the real checkout's evolving product generations. Never rewrite actual history.
-    assert tmp_path.resolve() != ROOT.resolve() and not (tmp_path / ".git").exists()
+    return tmp_path
+
+
+def _copy_candidate(tmp_path):
+    _copy_current_candidate(tmp_path)
+    # Historical control canaries require the explicit 18 October pre-admission
+    # universe, not the current M00 Brief2 admission. Never rewrite ROOT.
     # The 18 October 2026 control fixture was a 93-test pre-admission universe.
     # Reconstruct its exact product/config membership in a disposable copy:
     # later admitted proof generations and test families must remain intact
@@ -1736,7 +1743,10 @@ def test_m00_brief2_fixed_extension_and_exact_authority(tmp_path):
     assert result[0]["claim_id"] == "m00_brief2"
     assert result[2] == "0d5ee211c1285b31834062ab2d871670ed2f318cbb955e7df95f80067d562007"
     assert api.load_product_proof_claim(ROOT, "m00_brief2").target_id == "M00"
-    candidate = _copy_candidate(tmp_path)
+    candidate = _copy_current_candidate(tmp_path)
+    # This control checks a current admitted extension; verify its positive
+    # baseline before testing the two independent falsifiers below.
+    assert api._m00_brief2_extension(candidate)[0]["claim_id"] == "m00_brief2"
     descriptor = candidate / "config/product_proof/m00_brief2/claim.json"
     original = descriptor.read_text()
     changed = json.loads(original)
