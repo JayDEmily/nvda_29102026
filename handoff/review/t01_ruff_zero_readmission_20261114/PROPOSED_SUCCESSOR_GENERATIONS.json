@@ -1,0 +1,390 @@
+{
+  "schema_version": "REVIEW-ONLY-1.0",
+  "status": "UNADMITTED_CANDIDATE_REQUIRES_FRESH_ADEQUACY_AND_ADMISSION",
+  "not_an_active_generation": true,
+  "comparison_base_commit": "b67f3e92470fe4e3281546fbc6fc62e347d5f0ee",
+  "compliant_source_commit": "28baa81fb02f7aad34b0b652b5477788998bb48f",
+  "active_admission_pointers_modified": false,
+  "candidate_source_paths": [
+    "tests/product/market_measurement/typing/valid_seam.py",
+    "tests/product/market_measurement_d030/test_trade_rate_zscore.py",
+    "tests/product/market_measurement_d031/test_volume_rate_zscore.py",
+    "tests/product/market_measurement_d032/test_five_minute_realised_volatility.py",
+    "tests/product/market_measurement_d033/test_thirty_minute_realised_volatility.py",
+    "tests/product/market_measurement_d035/test_five_day_realised_volatility.py",
+    "tests/product/market_measurement_d036/test_ten_day_realised_volatility.py"
+  ],
+  "claims": [
+    {
+      "claim_id": "neutral_market_measurement_truth_pilot",
+      "admission_path": "config/product_proof/market_measurement/admission.json",
+      "predecessor_pointer": {
+        "path": "config/product_proof/market_measurement/generations/0004.json",
+        "sha256": "24a5af4054c277b01a140ec43481e86851e5e76263826644a80993c12c2495b7"
+      },
+      "predecessor_generation_number": 4,
+      "proposed_generation_path": "config/product_proof/market_measurement/generations/0005.json",
+      "proposed_generation_record_REVIEW_ONLY_INCOMPLETE_AUTHORITY": {
+        "schema_version": "1.0",
+        "claim_id": "neutral_market_measurement_truth_pilot",
+        "generation": 5,
+        "brief_sha256": "3ad4cdc9ffba4cf91ff9a27edf1dd3b1a9824a421514bb4b5a2cc1b9c504f233",
+        "binding_sha256": "7c7fa7df69e75825853bf7b355343d9b6f793beab247b37223bfa71737248b87",
+        "contract_sha256": "6f93441993e57e12ab4111fe8b98d08ad227c174a706aeab2c2eb14d4494501a",
+        "implementation_target_id": "M02",
+        "adequacy_review_ref": null,
+        "admission_authority_ref": null,
+        "family_files": [
+          {
+            "path": "tests/product/market_measurement/test_boundary_pilot.py",
+            "sha256": "023b97b21b8fb4299cbd1d5f53377783d86c978b4f09103860eec3498317836a"
+          },
+          {
+            "path": "tests/product/market_measurement/test_selection_history.py",
+            "sha256": "7406dd993063b65e6d273fcfa0141981046750e2ee1e4d41b73e5ffb05de17d6"
+          },
+          {
+            "path": "tests/product/market_measurement/test_identity_readback.py",
+            "sha256": "1c9c32a67c7145d8ef0cf405bf3f631e988ceb315d63bb4e88f49b3fe923edf3"
+          },
+          {
+            "path": "tests/product/market_measurement/test_public_types.py",
+            "sha256": "0074846ec826bdd3112807880219f9890ba7fb726c2d142054974de19b108bd2"
+          },
+          {
+            "path": "tests/product/market_measurement/test_sqlite_boundary.py",
+            "sha256": "bd7781b22d02d2d1110431d6324628254a8695d525ee47ecf60a969c98a2ebf7"
+          }
+        ],
+        "support_files": [
+          {
+            "path": "tests/product/market_measurement/typing/valid_seam.py",
+            "sha256": "ec484daf55cc282714916f8258554a56642eb50baddbdc21f945b7ab685e1893"
+          },
+          {
+            "path": "tests/product/market_measurement/typing/invalid_seam.py",
+            "sha256": "b79860407ad084b073627ec8a3ac33a2ca0de4bd4e804e3e9176f3a81a01264b"
+          },
+          {
+            "path": "tests/product/market_measurement/_support.py",
+            "sha256": "7346630a41da3decbe7218df4534b8b83d19c9ec005484c2509faed89ed0b2ea"
+          }
+        ],
+        "previous_generation": {
+          "path": "config/product_proof/market_measurement/generations/0004.json",
+          "sha256": "24a5af4054c277b01a140ec43481e86851e5e76263826644a80993c12c2495b7"
+        }
+      },
+      "changed_hash_paths": [
+        "tests/product/market_measurement/typing/valid_seam.py"
+      ],
+      "admitted_family_paths": [
+        "tests/product/market_measurement/test_boundary_pilot.py",
+        "tests/product/market_measurement/test_selection_history.py",
+        "tests/product/market_measurement/test_identity_readback.py",
+        "tests/product/market_measurement/test_public_types.py",
+        "tests/product/market_measurement/test_sqlite_boundary.py"
+      ],
+      "required_test_names_by_family": {
+        "tests/product/market_measurement/test_boundary_pilot.py": [
+          "test_d011_midpoint_public_exact_lineage",
+          "test_d011_refuses_missing_or_incompatible_projection",
+          "test_foundation_rejects_downstream_and_unenabled_requests"
+        ],
+        "tests/product/market_measurement/test_selection_history.py": [
+          "test_latest_eligible_history_and_ambiguity"
+        ],
+        "tests/product/market_measurement/test_identity_readback.py": [
+          "test_retry_recalculation_and_definition_readback"
+        ],
+        "tests/product/market_measurement/test_public_types.py": [
+          "test_public_seam_static_compatibility"
+        ],
+        "tests/product/market_measurement/test_sqlite_boundary.py": [
+          "test_d011_sqlite_commit_and_fresh_readback",
+          "test_sqlite_immutable_concurrency_rollback_and_uncertain_commit",
+          "test_sqlite_read_facet_and_owner_file_binding"
+        ]
+      },
+      "pending_independent_adequacy_review_ref": null,
+      "pending_owner_admission_authority_ref": null,
+      "strict_aggregate_command_AFTER_ADMISSION": ".venv/bin/python tools/run_product_proof_gate.py --aggregate neutral_market_measurement_truth_pilot"
+    },
+    {
+      "claim_id": "neutral_market_measurement_truth_d030",
+      "admission_path": "config/product_proof/market_measurement_d030/admission.json",
+      "predecessor_pointer": {
+        "path": "config/product_proof/market_measurement_d030/generations/0002.json",
+        "sha256": "2a75291e12374a1dfae789b0235182179df866cf299bbe69873cc8f19bde6768"
+      },
+      "predecessor_generation_number": 2,
+      "proposed_generation_path": "config/product_proof/market_measurement_d030/generations/0003.json",
+      "proposed_generation_record_REVIEW_ONLY_INCOMPLETE_AUTHORITY": {
+        "schema_version": "1.0",
+        "claim_id": "neutral_market_measurement_truth_d030",
+        "generation": 3,
+        "brief_sha256": "6a1acd3113fcb2bd19fb6e170543d98f3899407ff1090d9b4fc0b8bff6ca440f",
+        "binding_sha256": "2aca4a91ea00b4d1bf4cbb67aa04f4cdd174228e3727e00f5fa6a86976f662b5",
+        "contract_sha256": "cb5fa4b1ed588b2bb6251ada71617571783853c4565630b046667120e73c0032",
+        "implementation_target_id": "M02",
+        "adequacy_review_ref": null,
+        "admission_authority_ref": null,
+        "family_files": [
+          {
+            "path": "tests/product/market_measurement_d030/test_trade_rate_zscore.py",
+            "sha256": "e360132f8c742703bf1671987e7ce3a7fbebd62de6b935d3705cd292cf42973d"
+          }
+        ],
+        "support_files": [],
+        "previous_generation": {
+          "path": "config/product_proof/market_measurement_d030/generations/0002.json",
+          "sha256": "2a75291e12374a1dfae789b0235182179df866cf299bbe69873cc8f19bde6768"
+        }
+      },
+      "changed_hash_paths": [
+        "tests/product/market_measurement_d030/test_trade_rate_zscore.py"
+      ],
+      "admitted_family_paths": [
+        "tests/product/market_measurement_d030/test_trade_rate_zscore.py"
+      ],
+      "required_test_names_by_family": {
+        "tests/product/market_measurement_d030/test_trade_rate_zscore.py": [
+          "test_d030_trade_rate_zscore"
+        ]
+      },
+      "pending_independent_adequacy_review_ref": null,
+      "pending_owner_admission_authority_ref": null,
+      "strict_aggregate_command_AFTER_ADMISSION": ".venv/bin/python tools/run_product_proof_gate.py --aggregate neutral_market_measurement_truth_d030"
+    },
+    {
+      "claim_id": "neutral_market_measurement_truth_d031",
+      "admission_path": "config/product_proof/market_measurement_d031/admission.json",
+      "predecessor_pointer": {
+        "path": "config/product_proof/market_measurement_d031/generations/0002.json",
+        "sha256": "fedcbc5ea17bd1e9f1bd4a6bce8970d57793f51ad5a063a2f7e9f037148fefb3"
+      },
+      "predecessor_generation_number": 2,
+      "proposed_generation_path": "config/product_proof/market_measurement_d031/generations/0003.json",
+      "proposed_generation_record_REVIEW_ONLY_INCOMPLETE_AUTHORITY": {
+        "schema_version": "1.0",
+        "claim_id": "neutral_market_measurement_truth_d031",
+        "generation": 3,
+        "brief_sha256": "70bea1ec2b3520f832ed204abb6575274035198670d7f2e5b4757b208be8bcbd",
+        "binding_sha256": "185286b10e4877416939ae8fff30eadd4adc63094acd7e646d6a4a5f3dda178a",
+        "contract_sha256": "23a215c3b6f941c7a4db2ef55ec34a54d47fea395b039489e85503c5f645df44",
+        "implementation_target_id": "M02",
+        "adequacy_review_ref": null,
+        "admission_authority_ref": null,
+        "family_files": [
+          {
+            "path": "tests/product/market_measurement_d031/test_volume_rate_zscore.py",
+            "sha256": "e7193d36d7ac5131efc9d4941223c49545e8351177a55ddab6f3f7514dfb043b"
+          }
+        ],
+        "support_files": [],
+        "previous_generation": {
+          "path": "config/product_proof/market_measurement_d031/generations/0002.json",
+          "sha256": "fedcbc5ea17bd1e9f1bd4a6bce8970d57793f51ad5a063a2f7e9f037148fefb3"
+        }
+      },
+      "changed_hash_paths": [
+        "tests/product/market_measurement_d031/test_volume_rate_zscore.py"
+      ],
+      "admitted_family_paths": [
+        "tests/product/market_measurement_d031/test_volume_rate_zscore.py"
+      ],
+      "required_test_names_by_family": {
+        "tests/product/market_measurement_d031/test_volume_rate_zscore.py": [
+          "test_d031_volume_rate_zscore"
+        ]
+      },
+      "pending_independent_adequacy_review_ref": null,
+      "pending_owner_admission_authority_ref": null,
+      "strict_aggregate_command_AFTER_ADMISSION": ".venv/bin/python tools/run_product_proof_gate.py --aggregate neutral_market_measurement_truth_d031"
+    },
+    {
+      "claim_id": "neutral_market_measurement_truth_d032",
+      "admission_path": "config/product_proof/market_measurement_d032/admission.json",
+      "predecessor_pointer": {
+        "path": "config/product_proof/market_measurement_d032/generations/0002.json",
+        "sha256": "5c48ddd91ebe333cacda2f4bd72d26252a09d075dd1feec04d802fee093300c2"
+      },
+      "predecessor_generation_number": 2,
+      "proposed_generation_path": "config/product_proof/market_measurement_d032/generations/0003.json",
+      "proposed_generation_record_REVIEW_ONLY_INCOMPLETE_AUTHORITY": {
+        "schema_version": "1.0",
+        "claim_id": "neutral_market_measurement_truth_d032",
+        "generation": 3,
+        "brief_sha256": "20d8b241f4939487e83b8348c053d770f8565d83702c709f0ee71e46deaa91e0",
+        "binding_sha256": "4918d9ac2146e5aefbc0fb40c864f68410a05fcfcf2266a89526644961bdbed3",
+        "contract_sha256": "d088600e510dc3dcc2b840e2d5ed76b1f32efb66b9d7fdd80a4a452e9ecf5eca",
+        "implementation_target_id": "M02",
+        "adequacy_review_ref": null,
+        "admission_authority_ref": null,
+        "family_files": [
+          {
+            "path": "tests/product/market_measurement_d032/test_five_minute_realised_volatility.py",
+            "sha256": "2b38991c8822e5aa807c1726034d32940474a56fe8547068246b3cbe1a201226"
+          }
+        ],
+        "support_files": [],
+        "previous_generation": {
+          "path": "config/product_proof/market_measurement_d032/generations/0002.json",
+          "sha256": "5c48ddd91ebe333cacda2f4bd72d26252a09d075dd1feec04d802fee093300c2"
+        }
+      },
+      "changed_hash_paths": [
+        "tests/product/market_measurement_d032/test_five_minute_realised_volatility.py"
+      ],
+      "admitted_family_paths": [
+        "tests/product/market_measurement_d032/test_five_minute_realised_volatility.py"
+      ],
+      "required_test_names_by_family": {
+        "tests/product/market_measurement_d032/test_five_minute_realised_volatility.py": [
+          "test_d032_five_minute_realised_volatility"
+        ]
+      },
+      "pending_independent_adequacy_review_ref": null,
+      "pending_owner_admission_authority_ref": null,
+      "strict_aggregate_command_AFTER_ADMISSION": ".venv/bin/python tools/run_product_proof_gate.py --aggregate neutral_market_measurement_truth_d032"
+    },
+    {
+      "claim_id": "neutral_market_measurement_truth_d033",
+      "admission_path": "config/product_proof/market_measurement_d033/admission.json",
+      "predecessor_pointer": {
+        "path": "config/product_proof/market_measurement_d033/generations/0002.json",
+        "sha256": "93052edf80fb6e985f5082731804277ac67a323a0021756cbc7c499f7f5f74cb"
+      },
+      "predecessor_generation_number": 2,
+      "proposed_generation_path": "config/product_proof/market_measurement_d033/generations/0003.json",
+      "proposed_generation_record_REVIEW_ONLY_INCOMPLETE_AUTHORITY": {
+        "schema_version": "1.0",
+        "claim_id": "neutral_market_measurement_truth_d033",
+        "generation": 3,
+        "brief_sha256": "302845c64e6c2b9098e7f6806b41356a269ce1e79f14c026cfb85760d70c18cd",
+        "binding_sha256": "f5c6ed17135f1dabea454140ac35a314f3b87692825d7d008875078293678498",
+        "contract_sha256": "f8ae51383bd22453c753093584b31f884d1a43b307d66ba9923571bc97beb7f7",
+        "implementation_target_id": "M02",
+        "adequacy_review_ref": null,
+        "admission_authority_ref": null,
+        "family_files": [
+          {
+            "path": "tests/product/market_measurement_d033/test_thirty_minute_realised_volatility.py",
+            "sha256": "f8c76f005e666d924535b4ce89799216387b61726ecec43ca0f48aa2c58f7539"
+          }
+        ],
+        "support_files": [],
+        "previous_generation": {
+          "path": "config/product_proof/market_measurement_d033/generations/0002.json",
+          "sha256": "93052edf80fb6e985f5082731804277ac67a323a0021756cbc7c499f7f5f74cb"
+        }
+      },
+      "changed_hash_paths": [
+        "tests/product/market_measurement_d033/test_thirty_minute_realised_volatility.py"
+      ],
+      "admitted_family_paths": [
+        "tests/product/market_measurement_d033/test_thirty_minute_realised_volatility.py"
+      ],
+      "required_test_names_by_family": {
+        "tests/product/market_measurement_d033/test_thirty_minute_realised_volatility.py": [
+          "test_d033_thirty_minute_realised_volatility"
+        ]
+      },
+      "pending_independent_adequacy_review_ref": null,
+      "pending_owner_admission_authority_ref": null,
+      "strict_aggregate_command_AFTER_ADMISSION": ".venv/bin/python tools/run_product_proof_gate.py --aggregate neutral_market_measurement_truth_d033"
+    },
+    {
+      "claim_id": "neutral_market_measurement_truth_d035",
+      "admission_path": "config/product_proof/market_measurement_d035/admission.json",
+      "predecessor_pointer": {
+        "path": "config/product_proof/market_measurement_d035/generations/0002.json",
+        "sha256": "a372ac82f4880b045c5e0eb9c29bb07ed64a9d307a65bc34f8c0b8f10476f556"
+      },
+      "predecessor_generation_number": 2,
+      "proposed_generation_path": "config/product_proof/market_measurement_d035/generations/0003.json",
+      "proposed_generation_record_REVIEW_ONLY_INCOMPLETE_AUTHORITY": {
+        "schema_version": "1.0",
+        "claim_id": "neutral_market_measurement_truth_d035",
+        "generation": 3,
+        "brief_sha256": "5ed40abda6283704d04fb14936bf7f045724ade852091335e64099bf7060b856",
+        "binding_sha256": "fda503760d26ac8f87382f64c09363514d7bfe4f08ced88c9922af7fc44a9f6d",
+        "contract_sha256": "3a50fd4645e148eb557499c970e31ebb3114f02dfe562269b086261ac6631181",
+        "implementation_target_id": "M02",
+        "adequacy_review_ref": null,
+        "admission_authority_ref": null,
+        "family_files": [
+          {
+            "path": "tests/product/market_measurement_d035/test_five_day_realised_volatility.py",
+            "sha256": "d2593ecd66da81d43c09f13b989905be563f6dbdcab4a4744b914a11a53c3e99"
+          }
+        ],
+        "support_files": [],
+        "previous_generation": {
+          "path": "config/product_proof/market_measurement_d035/generations/0002.json",
+          "sha256": "a372ac82f4880b045c5e0eb9c29bb07ed64a9d307a65bc34f8c0b8f10476f556"
+        }
+      },
+      "changed_hash_paths": [
+        "tests/product/market_measurement_d035/test_five_day_realised_volatility.py"
+      ],
+      "admitted_family_paths": [
+        "tests/product/market_measurement_d035/test_five_day_realised_volatility.py"
+      ],
+      "required_test_names_by_family": {
+        "tests/product/market_measurement_d035/test_five_day_realised_volatility.py": [
+          "test_d035_five_day_realised_volatility"
+        ]
+      },
+      "pending_independent_adequacy_review_ref": null,
+      "pending_owner_admission_authority_ref": null,
+      "strict_aggregate_command_AFTER_ADMISSION": ".venv/bin/python tools/run_product_proof_gate.py --aggregate neutral_market_measurement_truth_d035"
+    },
+    {
+      "claim_id": "neutral_market_measurement_truth_d036",
+      "admission_path": "config/product_proof/market_measurement_d036/admission.json",
+      "predecessor_pointer": {
+        "path": "config/product_proof/market_measurement_d036/generations/0002.json",
+        "sha256": "a6b9227fe2481efe8ad5acefd08092a1977e6bd4548ae95d4d7853872393ecc5"
+      },
+      "predecessor_generation_number": 2,
+      "proposed_generation_path": "config/product_proof/market_measurement_d036/generations/0003.json",
+      "proposed_generation_record_REVIEW_ONLY_INCOMPLETE_AUTHORITY": {
+        "schema_version": "1.0",
+        "claim_id": "neutral_market_measurement_truth_d036",
+        "generation": 3,
+        "brief_sha256": "242dcd92d68784f9cd6f131e68f27bc120416a9749ad091653df9dd8f5bc5b94",
+        "binding_sha256": "436e2a4c57609fe5c760c2f1678007d05a2e931accfffb3ce2eb5800ed51517b",
+        "contract_sha256": "8a63f92f3c1e42a97a7e3abf3da188930d08aefc483f6e089c36f780fad20339",
+        "implementation_target_id": "M02",
+        "adequacy_review_ref": null,
+        "admission_authority_ref": null,
+        "family_files": [
+          {
+            "path": "tests/product/market_measurement_d036/test_ten_day_realised_volatility.py",
+            "sha256": "e4d9e912a0eacea157d00253d23559507760f3f335d8b4ead05b850ca0426d5a"
+          }
+        ],
+        "support_files": [],
+        "previous_generation": {
+          "path": "config/product_proof/market_measurement_d036/generations/0002.json",
+          "sha256": "a6b9227fe2481efe8ad5acefd08092a1977e6bd4548ae95d4d7853872393ecc5"
+        }
+      },
+      "changed_hash_paths": [
+        "tests/product/market_measurement_d036/test_ten_day_realised_volatility.py"
+      ],
+      "admitted_family_paths": [
+        "tests/product/market_measurement_d036/test_ten_day_realised_volatility.py"
+      ],
+      "required_test_names_by_family": {
+        "tests/product/market_measurement_d036/test_ten_day_realised_volatility.py": [
+          "test_d036_ten_day_realised_volatility"
+        ]
+      },
+      "pending_independent_adequacy_review_ref": null,
+      "pending_owner_admission_authority_ref": null,
+      "strict_aggregate_command_AFTER_ADMISSION": ".venv/bin/python tools/run_product_proof_gate.py --aggregate neutral_market_measurement_truth_d036"
+    }
+  ]
+}
