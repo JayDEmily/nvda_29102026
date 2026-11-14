@@ -1929,7 +1929,8 @@ def test_each_option_rows_require_complete_contract_selection_policy_before_calc
 def test_k02_per_expiry_skew_refuses_cross_expiry_points_and_requires_exact_delta() -> None:
     # Preserve the original expected skew/refusal assertions while supplying
     # each authoritative K02 dependency as an independent contract-matched
-    # occurrence. Delta truth belongs to R112, option right C/P to R015, IV to R111; strike is metadata.
+    # occurrence. Delta truth belongs to R112, option right C/P to R015,
+    # IV to R111; strike is metadata.
     def skew_raw(
         *, mixed_expiry: bool = False, wrong_delta: bool = False
     ) -> dict[str, tuple[Any, ...]]:
