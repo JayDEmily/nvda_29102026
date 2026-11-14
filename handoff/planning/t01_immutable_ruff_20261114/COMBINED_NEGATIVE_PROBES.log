@@ -1,0 +1,8 @@
+CONTROL_BASELINE: rc=0; PROPOSED_BASELINE_EXACT_MATCH: 51 immutable historical diagnostics; 08ae839b0596c31ecb73a4667845f0d19dfe0c4503c52079434dd98e835a2a8f
+NOT AN ACCEPTED LINT POLICY OR CI/PROMOTION PASS
+FROZEN_SOURCE_CHANGE: rc=1; PROPOSED_BASELINE_REJECTED: admitted source bytes changed: tests/product/market_measurement/typing/valid_seam.py
+ADMISSION_POINTER_CHANGE: rc=1; PROPOSED_BASELINE_REJECTED: generation bytes or pointer changed for tests/product/market_measurement/typing/valid_seam.py
+MANIFEST_CHANGE: rc=1; PROPOSED_BASELINE_REJECTED: baseline manifest byte identity changed
+UNEXPECTED_NEW_RUFF_DIAGNOSTIC: rc=1; PROPOSED_BASELINE_REJECTED: Ruff findings changed by path: observed=Counter({'tests/product/market_measurement_d032/test_five_minute_realised_volatility.py': 12, 'tests/product/market_measurement_d033/test_thirty_minute_realised_volatility.py': 12, 'tests/product/market_measurement_d035/test_five_day_realised_volatility.py': 12, 'tests/product/market_measurement_d036/test_ten_day_realised_volatility.py': 12, 'src/nvda_desk/_negative_ruff_probe_20261114.py': 1, 'tests/product/market_measurement/t
+CONTROL_AFTER_ALL_RESTORED: rc=0; PROPOSED_BASELINE_EXACT_MATCH: 51 immutable historical diagnostics; 08ae839b0596c31ecb73a4667845f0d19dfe0c4503c52079434dd98e835a2a8f
+NOT AN ACCEPTED LINT POLICY OR CI/PROMOTION PASS
