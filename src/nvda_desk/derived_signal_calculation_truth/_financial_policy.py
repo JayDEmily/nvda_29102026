@@ -55,7 +55,9 @@ def finite_decimal(value: Fraction) -> Decimal:
         return Decimal(scaled).scaleb(-places)
 
 
-def producer_evidence(value, *, context_refs=(), convention_refs=(), predecessors=(), cutoff, as_of):
+def producer_evidence(
+    value, *, context_refs=(), convention_refs=(), predecessors=(), cutoff, as_of
+):
     metadata = dict(value.metadata)
     contexts = metadata["parameter_context_refs"]
     conventions = metadata["convention_refs"]
