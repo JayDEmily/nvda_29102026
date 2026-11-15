@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "status": "PROPOSED_NOT_ACCEPTED",
+  "status": "OWNER_ADOPTED_PENDING_MAIN_INTEGRATION",
   "ruff_version": "ruff 0.15.11",
   "diagnostic_count": 51,
   "diagnostic_set_sha256": "08ae839b0596c31ecb73a4667845f0d19dfe0c4503c52079434dd98e835a2a8f",
@@ -75,5 +75,6 @@
       "generation_path": "config/product_proof/market_measurement_d036/generations/0002.json",
       "generation_sha256": "a6b9227fe2481efe8ad5acefd08092a1977e6bd4548ae95d4d7853872393ecc5"
     }
-  ]
+  ],
+  "authority_scope": "Owner's 15 November 2026 instruction agreeing to the previously specified 51-diagnostic, seven-SHA-bound-file policy and preparation of a new current-main-derived candidate; this candidate is not installed on main."
 }

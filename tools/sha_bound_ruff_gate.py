@@ -1,6 +1,6 @@
-"""PROPOSAL ONLY: exact Ruff baseline verifier for immutable admitted proof bytes.
+"""Owner-adopted candidate: exact Ruff baseline for immutable admitted proof bytes.
 
-Not wired into CI. Use only after independent review and owner acceptance.
+Awaiting independently reviewed main installation; no product proof is executed here.
 """
 from __future__ import annotations
 
@@ -13,8 +13,8 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-MANIFEST = ROOT / "config/lint/PROPOSED_SHA_BOUND_RUFF_BASELINE.json"
-EXPECTED_MANIFEST_SHA256 = "d38367ce1f63a1731c0cd9b69e12af021a291d71b0206f83ba17f3b69dbfc97c"
+MANIFEST = ROOT / "config/lint/SHA_BOUND_RUFF_BASELINE.json"
+EXPECTED_MANIFEST_SHA256 = "7ae5ed8df7fcf775adb9aa9d6462c4dc1dcf4aafe778a007934abdbf00a307c2"
 
 
 def sha256_bytes(data: bytes) -> str:
@@ -91,8 +91,8 @@ def verify_admission(root: Path, entry: dict) -> None:
 def verify(root: Path, manifest: dict, ruff: Path) -> tuple[int, str]:
     if manifest.get("schema_version") != "1.0":
         raise ValueError("unsupported proposal schema")
-    if manifest.get("status") != "PROPOSED_NOT_ACCEPTED":
-        raise ValueError("proposal status changed without independent authority")
+    if manifest.get("status") != "OWNER_ADOPTED_PENDING_MAIN_INTEGRATION":
+        raise ValueError("adoption status changed from reviewed owner decision")
     declared = manifest.get("files")
     if not isinstance(declared, list) or len(declared) != 7:
         raise ValueError("expected exactly seven documented immutable paths")
@@ -144,10 +144,13 @@ def main() -> int:
             raise ValueError("baseline manifest byte identity changed")
         count, digest = verify(ROOT, read_json(MANIFEST), ruff)
     except (OSError, KeyError, ValueError, TypeError, json.JSONDecodeError) as exc:
-        print(f"PROPOSED_BASELINE_REJECTED: {exc}", file=sys.stderr)
+        print(f"SHA_BOUND_RUFF_REJECTED: {exc}", file=sys.stderr)
         return 1
-    print(f"PROPOSED_BASELINE_EXACT_MATCH: {count} immutable historical diagnostics; {digest}")
-    print("NOT AN ACCEPTED LINT POLICY OR CI/PROMOTION PASS")
+    print(f"SHA_BOUND_RUFF_EXACT_MATCH: {count} immutable historical diagnostics; {digest}")
+    print(
+        "OWNER-ADOPTED LINT POLICY CANDIDATE ONLY; "
+        "PRODUCT PROOF AND FINAL MAIN INTEGRATION NOT ESTABLISHED"
+    )
     return 0
 
 

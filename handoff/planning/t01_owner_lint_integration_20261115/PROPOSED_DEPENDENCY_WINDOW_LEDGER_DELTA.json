@@ -1,0 +1,332 @@
+{
+  "status": "COORDINATED_SCHEDULE_AMENDMENT_PROPOSAL_NOT_ADOPTED",
+  "reference_ledger_blob_sha256": "ff374f6208159a759684188c62c9e2494ffaf3daba19ca2e0c1217f4c7b200c3",
+  "counts": {
+    "G1_AFTER_L06": 11,
+    "G2_AFTER_L18": 12,
+    "G3_AFTER_L22": 4,
+    "G4_AFTER_L30": 7,
+    "PAUSED_L31_NO_TEST": 1
+  },
+  "obligation_count": 35,
+  "unreleased_case_count": 35,
+  "new_case_authority_created": false,
+  "deployment_requires": "Owner adoption and concurrent specific changes to exact root EXEC_PLAN.md, tests/AGENTS.override.md, active ledger, independent tester contract",
+  "rows": [
+    {
+      "proof_id": "M02-C28-D062",
+      "owning_contract_binding": "UNRESOLVED_BIND_AT_L23",
+      "current_sched": "L32",
+      "proposed_window": "G4_AFTER_L30",
+      "test_release": "NOT_RELEASED",
+      "prior_authorised_case_count": 0,
+      "proposed_new_case_count": 0
+    },
+    {
+      "proof_id": "M02-C28-D078",
+      "owning_contract_binding": "UNRESOLVED_BIND_AT_L03",
+      "current_sched": "L32",
+      "proposed_window": "G1_AFTER_L06",
+      "test_release": "NOT_RELEASED",
+      "prior_authorised_case_count": 0,
+      "proposed_new_case_count": 0
+    },
+    {
+      "proof_id": "M02-C28-D079",
+      "owning_contract_binding": "UNRESOLVED_BIND_AT_L02",
+      "current_sched": "L32",
+      "proposed_window": "G1_AFTER_L06",
+      "test_release": "NOT_RELEASED",
+      "prior_authorised_case_count": 0,
+      "proposed_new_case_count": 0
+    },
+    {
+      "proof_id": "M02-C28-D080",
+      "owning_contract_binding": "UNRESOLVED_BIND_AT_L02",
+      "current_sched": "L32",
+      "proposed_window": "G1_AFTER_L06",
+      "test_release": "NOT_RELEASED",
+      "prior_authorised_case_count": 0,
+      "proposed_new_case_count": 0
+    },
+    {
+      "proof_id": "M02-C28-D081",
+      "owning_contract_binding": "UNRESOLVED_BIND_AT_L02",
+      "current_sched": "L32",
+      "proposed_window": "G1_AFTER_L06",
+      "test_release": "NOT_RELEASED",
+      "prior_authorised_case_count": 0,
+      "proposed_new_case_count": 0
+    },
+    {
+      "proof_id": "M02-C28-D085",
+      "owning_contract_binding": "UNRESOLVED_BIND_AT_L08",
+      "current_sched": "L32",
+      "proposed_window": "G2_AFTER_L18",
+      "test_release": "NOT_RELEASED",
+      "prior_authorised_case_count": 0,
+      "proposed_new_case_count": 0
+    },
+    {
+      "proof_id": "M02-C28-D086",
+      "owning_contract_binding": "UNRESOLVED_BIND_AT_L09",
+      "current_sched": "L32",
+      "proposed_window": "G2_AFTER_L18",
+      "test_release": "NOT_RELEASED",
+      "prior_authorised_case_count": 0,
+      "proposed_new_case_count": 0
+    },
+    {
+      "proof_id": "M02-C28-D091",
+      "owning_contract_binding": "UNRESOLVED_BIND_AT_L04",
+      "current_sched": "L32",
+      "proposed_window": "G1_AFTER_L06",
+      "test_release": "NOT_RELEASED",
+      "prior_authorised_case_count": 0,
+      "proposed_new_case_count": 0
+    },
+    {
+      "proof_id": "M02-C28-D095",
+      "owning_contract_binding": "UNRESOLVED_BIND_AT_L11",
+      "current_sched": "L32",
+      "proposed_window": "G2_AFTER_L18",
+      "test_release": "NOT_RELEASED",
+      "prior_authorised_case_count": 0,
+      "proposed_new_case_count": 0
+    },
+    {
+      "proof_id": "M02-C28-D096",
+      "owning_contract_binding": "UNRESOLVED_BIND_AT_L12",
+      "current_sched": "L32",
+      "proposed_window": "G2_AFTER_L18",
+      "test_release": "NOT_RELEASED",
+      "prior_authorised_case_count": 0,
+      "proposed_new_case_count": 0
+    },
+    {
+      "proof_id": "M02-C28-D097",
+      "owning_contract_binding": "UNRESOLVED_BIND_AT_L13",
+      "current_sched": "L32",
+      "proposed_window": "G2_AFTER_L18",
+      "test_release": "NOT_RELEASED",
+      "prior_authorised_case_count": 0,
+      "proposed_new_case_count": 0
+    },
+    {
+      "proof_id": "M02-C28-D098",
+      "owning_contract_binding": "UNRESOLVED_BIND_AT_L14",
+      "current_sched": "L32",
+      "proposed_window": "G2_AFTER_L18",
+      "test_release": "NOT_RELEASED",
+      "prior_authorised_case_count": 0,
+      "proposed_new_case_count": 0
+    },
+    {
+      "proof_id": "M02-C28-D102",
+      "owning_contract_binding": "UNRESOLVED_BIND_AT_L25",
+      "current_sched": "L32",
+      "proposed_window": "G4_AFTER_L30",
+      "test_release": "NOT_RELEASED",
+      "prior_authorised_case_count": 0,
+      "proposed_new_case_count": 0
+    },
+    {
+      "proof_id": "M02-C28-D107",
+      "owning_contract_binding": "UNRESOLVED_BIND_AT_L15",
+      "current_sched": "L32",
+      "proposed_window": "G2_AFTER_L18",
+      "test_release": "NOT_RELEASED",
+      "prior_authorised_case_count": 0,
+      "proposed_new_case_count": 0
+    },
+    {
+      "proof_id": "M02-C28-D108",
+      "owning_contract_binding": "UNRESOLVED_BIND_AT_L16",
+      "current_sched": "L32",
+      "proposed_window": "G2_AFTER_L18",
+      "test_release": "NOT_RELEASED",
+      "prior_authorised_case_count": 0,
+      "proposed_new_case_count": 0
+    },
+    {
+      "proof_id": "M02-C28-D109",
+      "owning_contract_binding": "UNRESOLVED_BIND_AT_L17",
+      "current_sched": "L32",
+      "proposed_window": "G2_AFTER_L18",
+      "test_release": "NOT_RELEASED",
+      "prior_authorised_case_count": 0,
+      "proposed_new_case_count": 0
+    },
+    {
+      "proof_id": "M02-C28-D110",
+      "owning_contract_binding": "UNRESOLVED_BIND_AT_L18",
+      "current_sched": "L32",
+      "proposed_window": "G2_AFTER_L18",
+      "test_release": "NOT_RELEASED",
+      "prior_authorised_case_count": 0,
+      "proposed_new_case_count": 0
+    },
+    {
+      "proof_id": "M02-C28-D111",
+      "owning_contract_binding": "UNRESOLVED_BIND_AT_L26",
+      "current_sched": "L32",
+      "proposed_window": "G4_AFTER_L30",
+      "test_release": "NOT_RELEASED",
+      "prior_authorised_case_count": 0,
+      "proposed_new_case_count": 0
+    },
+    {
+      "proof_id": "M02-C28-D112",
+      "owning_contract_binding": "UNRESOLVED_BIND_AT_L27",
+      "current_sched": "L32",
+      "proposed_window": "G4_AFTER_L30",
+      "test_release": "NOT_RELEASED",
+      "prior_authorised_case_count": 0,
+      "proposed_new_case_count": 0
+    },
+    {
+      "proof_id": "M02-C28-D113",
+      "owning_contract_binding": "UNRESOLVED_BIND_AT_L28",
+      "current_sched": "L32",
+      "proposed_window": "G4_AFTER_L30",
+      "test_release": "NOT_RELEASED",
+      "prior_authorised_case_count": 0,
+      "proposed_new_case_count": 0
+    },
+    {
+      "proof_id": "M02-C28-D120",
+      "owning_contract_binding": "UNRESOLVED_BIND_AT_L20",
+      "current_sched": "L32",
+      "proposed_window": "G3_AFTER_L22",
+      "test_release": "NOT_RELEASED",
+      "prior_authorised_case_count": 0,
+      "proposed_new_case_count": 0
+    },
+    {
+      "proof_id": "M02-C28-D121",
+      "owning_contract_binding": "UNRESOLVED_BIND_AT_L21",
+      "current_sched": "L32",
+      "proposed_window": "G3_AFTER_L22",
+      "test_release": "NOT_RELEASED",
+      "prior_authorised_case_count": 0,
+      "proposed_new_case_count": 0
+    },
+    {
+      "proof_id": "M02-C28-D122",
+      "owning_contract_binding": "UNRESOLVED_BIND_AT_L22",
+      "current_sched": "L32",
+      "proposed_window": "G3_AFTER_L22",
+      "test_release": "NOT_RELEASED",
+      "prior_authorised_case_count": 0,
+      "proposed_new_case_count": 0
+    },
+    {
+      "proof_id": "M02-C28-D141",
+      "owning_contract_binding": "UNRESOLVED_BIND_AT_L29",
+      "current_sched": "L32",
+      "proposed_window": "G4_AFTER_L30",
+      "test_release": "NOT_RELEASED",
+      "prior_authorised_case_count": 0,
+      "proposed_new_case_count": 0
+    },
+    {
+      "proof_id": "M02-C28-D142",
+      "owning_contract_binding": "UNRESOLVED_BIND_AT_L05",
+      "current_sched": "L32",
+      "proposed_window": "G1_AFTER_L06",
+      "test_release": "NOT_RELEASED",
+      "prior_authorised_case_count": 0,
+      "proposed_new_case_count": 0
+    },
+    {
+      "proof_id": "M02-C28-D144",
+      "owning_contract_binding": "UNRESOLVED_BIND_AT_L06",
+      "current_sched": "L32",
+      "proposed_window": "G1_AFTER_L06",
+      "test_release": "NOT_RELEASED",
+      "prior_authorised_case_count": 0,
+      "proposed_new_case_count": 0
+    },
+    {
+      "proof_id": "M02-C28-D145",
+      "owning_contract_binding": "UNRESOLVED_BIND_AT_L31",
+      "current_sched": "L31",
+      "proposed_window": "PAUSED_L31_NO_TEST",
+      "test_release": "NOT_RELEASED",
+      "prior_authorised_case_count": 0,
+      "proposed_new_case_count": 0
+    },
+    {
+      "proof_id": "M02-C28-D151",
+      "owning_contract_binding": "UNRESOLVED_BIND_AT_L30",
+      "current_sched": "L32",
+      "proposed_window": "G4_AFTER_L30",
+      "test_release": "NOT_RELEASED",
+      "prior_authorised_case_count": 0,
+      "proposed_new_case_count": 0
+    },
+    {
+      "proof_id": "SUP-D071-HISTORY",
+      "owning_contract_binding": "UNRESOLVED_BIND_AT_L01a",
+      "current_sched": "L32",
+      "proposed_window": "G1_AFTER_L06",
+      "test_release": "NOT_RELEASED",
+      "prior_authorised_case_count": 0,
+      "proposed_new_case_count": 0
+    },
+    {
+      "proof_id": "SUP-D075-HISTORY",
+      "owning_contract_binding": "UNRESOLVED_BIND_AT_L01a",
+      "current_sched": "L32",
+      "proposed_window": "G1_AFTER_L06",
+      "test_release": "NOT_RELEASED",
+      "prior_authorised_case_count": 0,
+      "proposed_new_case_count": 0
+    },
+    {
+      "proof_id": "SUP-D076-HISTORY",
+      "owning_contract_binding": "UNRESOLVED_BIND_AT_L01a",
+      "current_sched": "L32",
+      "proposed_window": "G1_AFTER_L06",
+      "test_release": "NOT_RELEASED",
+      "prior_authorised_case_count": 0,
+      "proposed_new_case_count": 0
+    },
+    {
+      "proof_id": "SUP-D077-HISTORY",
+      "owning_contract_binding": "UNRESOLVED_BIND_AT_L01a",
+      "current_sched": "L32",
+      "proposed_window": "G1_AFTER_L06",
+      "test_release": "NOT_RELEASED",
+      "prior_authorised_case_count": 0,
+      "proposed_new_case_count": 0
+    },
+    {
+      "proof_id": "SUP-D001-OPTION",
+      "owning_contract_binding": "UNRESOLVED_BIND_AT_L07b",
+      "current_sched": "L32",
+      "proposed_window": "G2_AFTER_L18",
+      "test_release": "NOT_RELEASED",
+      "prior_authorised_case_count": 0,
+      "proposed_new_case_count": 0
+    },
+    {
+      "proof_id": "SUP-D004-USOPTION",
+      "owning_contract_binding": "UNRESOLVED_BIND_AT_L07a",
+      "current_sched": "L32",
+      "proposed_window": "G2_AFTER_L18",
+      "test_release": "NOT_RELEASED",
+      "prior_authorised_case_count": 0,
+      "proposed_new_case_count": 0
+    },
+    {
+      "proof_id": "SUP-D015-OPTION",
+      "owning_contract_binding": "UNRESOLVED_BIND_AT_L19",
+      "current_sched": "L32",
+      "proposed_window": "G3_AFTER_L22",
+      "test_release": "NOT_RELEASED",
+      "prior_authorised_case_count": 0,
+      "proposed_new_case_count": 0
+    }
+  ]
+}
