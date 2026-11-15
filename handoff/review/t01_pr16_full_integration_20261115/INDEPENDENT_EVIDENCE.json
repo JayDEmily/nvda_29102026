@@ -1,0 +1,226 @@
+{
+  "schema_version": "1.0",
+  "evidence_date": "2026-11-15",
+  "scope": "INDEPENDENT_CUMULATIVE_INTEGRATION_REVIEW_NO_PRODUCT_TESTS",
+  "verdict": "ACCEPT_INTEGRATION_CANDIDATE",
+  "candidate": {
+    "repository": "JayDEmily/nvda_29102026",
+    "pr": 16,
+    "draft": true,
+    "merged": false,
+    "head": "ef0f6876f2b5673a91946eeaaaac964b40e1efe7",
+    "head_tree": "bad45045e04604cdcb0e7ce8d3d62820558cacb4",
+    "base_main": "a73349834fe4aa1422c194da0492315044b32b98",
+    "historical_pr14": "831471d69afd092779a6810ee570285182be88a8",
+    "integration_merge": "35f01b0dbcd4fdd5703b00afa582bac134f78985",
+    "policy_implementation": "c8d4346a9f56a1e38aa3bc48e4f4e891ceb2551d",
+    "diff_path_count": 36,
+    "additions": 3263,
+    "deletions": 29,
+    "main_remote_sha_verified": "a73349834fe4aa1422c194da0492315044b32b98"
+  },
+  "history": {
+    "verified_ancestors": [
+      "a73349834fe4aa1422c194da0492315044b32b98",
+      "831471d69afd092779a6810ee570285182be88a8",
+      "35f01b0dbcd4fdd5703b00afa582bac134f78985",
+      "c8d4346a9f56a1e38aa3bc48e4f4e891ceb2551d"
+    ],
+    "pr14_still_open_draft_at": "831471d69afd092779a6810ee570285182be88a8",
+    "pr3_still_open_draft_at": "3d8f1fae68cdba41c7a1e96df6cb59d1ee35afd9",
+    "no_main_path_deletions": true,
+    "uncopied_full_66_ref_receiver_closure": "OUTSIDE_SCOPE_NOT_VERIFIED"
+  },
+  "root_preservation": {
+    "diff_main_vs_candidate_paths": [
+      "GUARDRAILS.md",
+      "AGENTS.md",
+      "EXEC_PLAN.md",
+      "tests/AGENTS.override.md",
+      "config/product_proof"
+    ],
+    "result": "BYTE_IDENTICAL",
+    "seven_admitted_product_sources_unchanged": true,
+    "admission_descriptors_unchanged": true,
+    "selected_generations_unchanged": true,
+    "AGENTS_git_blob": "725f520eeb45f0febabf3ae813ce6bb09c54ee44"
+  },
+  "lint": {
+    "manifest_path": "config/lint/SHA_BOUND_RUFF_BASELINE.json",
+    "manifest_sha256": "7ae5ed8df7fcf775adb9aa9d6462c4dc1dcf4aafe778a007934abdbf00a307c2",
+    "manifest_status": "OWNER_ADOPTED_PENDING_MAIN_INTEGRATION",
+    "ruff_version": "ruff 0.15.11",
+    "diagnostics": 51,
+    "diagnostics_by_code": {
+      "E501": 38,
+      "I001": 5,
+      "B905": 4,
+      "RUF007": 4
+    },
+    "canonical_diagnostics_sha256": "08ae839b0596c31ecb73a4667845f0d19dfe0c4503c52079434dd98e835a2a8f",
+    "traversal": [
+      "src",
+      "tests",
+      "tools"
+    ],
+    "proof_path_count": 7,
+    "whole_admission_descriptor_bytes_independently_equal_main": true,
+    "full_admission_descriptor_hash_enforced_in_lint_script": false
+  },
+  "independent_local": {
+    "environment": "Remote Desktop Commander to Ubuntu WSL; fresh git clone --local --no-hardlinks with pinned detached PR head",
+    "clone_removed_after": true,
+    "python": "3.13.5",
+    "ruff": "0.15.11",
+    "positive_verifier": {
+      "command": "/home/jds/nvda_uv3135_20261112/.venv/bin/python tools/sha_bound_ruff_gate.py",
+      "exit": 0,
+      "digest": "08ae839b0596c31ecb73a4667845f0d19dfe0c4503c52079434dd98e835a2a8f"
+    },
+    "positive_make": {
+      "command": "make lint PYTHON=/home/jds/nvda_uv3135_20261112/.venv/bin/python",
+      "exit": 0,
+      "same_verifier": true,
+      "same_digest": true
+    },
+    "negative": {
+      "mutated_file": "tools/validate_architecture.py",
+      "mutation": "append unexecuted function referencing __independent_review_F821_unbound__ in temporary clone",
+      "command": "/home/jds/nvda_uv3135_20261112/.venv/bin/python tools/sha_bound_ruff_gate.py",
+      "exit": 1,
+      "refusal": "SHA_BOUND_RUFF_REJECTED: Ruff findings changed by path",
+      "unrelated_clean_source": true,
+      "product_proof_run": false
+    },
+    "restore": {
+      "verifier_exit": 0,
+      "baseline_output_identical": true,
+      "git_status_porcelain_empty": true
+    },
+    "uv_cli_local_available": false,
+    "local_locked_uv_sync_run": false,
+    "worker_negative_five_reproduced_independently": false
+  },
+  "fixture": {
+    "historical_source_commit": "86b23f1ef5bf4a1510e93333fa4b2cfc869c3b71",
+    "original_python_path_count": 101,
+    "original_test_file_count": 93,
+    "fixture_membership_matches_historical_tree": true,
+    "actual_product_source_changed": false,
+    "AST_equivalent": [
+      "src/nvda_desk/derived_signal_calculation_truth/_financial_policy.py",
+      "tests/product/derived_signal/test_m01_stage1_semantics.py"
+    ]
+  },
+  "wheels": [
+    {
+      "name": "librt-0.16.0-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+      "sha256": "17bac7f7a16b328fff77e440287693eb017abde913595b5827ebccbc21ecd8a6",
+      "RECORD_entries_checked": 20
+    },
+    {
+      "name": "mypy-1.20.1-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+      "sha256": "f37b6cd0fe2ad3a20f05ace48ca3523fc52ff86940e34937b439613b6854472e",
+      "RECORD_entries_checked": 1419
+    },
+    {
+      "name": "psycopg_binary-3.3.4-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+      "sha256": "c677c4ad433cb7150c8cd304a0769ae3bcfbe5ea0676eb53faa7b1443b16d0d3",
+      "RECORD_entries_checked": 30
+    },
+    {
+      "name": "pyyaml-6.0.3-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+      "sha256": "0f29edc409a6392443abf94b9cf89ce99889a1dd5376d94316ae5145dfedd5d6",
+      "RECORD_entries_checked": 23
+    }
+  ],
+  "wheel_assessment": {
+    "all_crc_pass": true,
+    "all_record_hashes_pass": true,
+    "uv_lock_source": "vendor/wheels",
+    "uv_lock_content_hashes": false,
+    "git_tree_content_identity_verified": true,
+    "publisher_provenance_verified": false,
+    "locked_github_ci_install_success": true,
+    "product_runtime_equivalence_verified": false
+  },
+  "github_actions": {
+    "run": 43668257053,
+    "job": 132672363788,
+    "run_status": "completed",
+    "conclusion": "success",
+    "all_job_steps_success": true,
+    "step_count": 10,
+    "failed_steps": [],
+    "checkout_ref": "refs/remotes/pull/16/merge",
+    "checked_out_synthetic_merge_sha": "146304dd5d1279946937132fa6ca01ffd50433d3",
+    "merge_ref_tree": "bad45045e04604cdcb0e7ce8d3d62820558cacb4",
+    "merge_tree_equals_head_tree": true,
+    "fetch_depth": 0,
+    "setup_uv": "0.10.0",
+    "locked_extra_dev_install_success": true,
+    "sha_bound_gate_pass": true,
+    "architecture_promotion_set": "architecture_kernel",
+    "architecture_passed": 221,
+    "architecture_duration_seconds": 1726.81,
+    "admitted_test_families": 11,
+    "diff_check_pass": true,
+    "product_tests_claimed": false,
+    "url": "https://github.com/JayDEmily/nvda_29102026/actions/runs/43668257053"
+  },
+  "governance": {
+    "source_pr3_commit": "3d8f1fae68cdba41c7a1e96df6cb59d1ee35afd9",
+    "four_source_hashes_verified": true,
+    "three_proposed_files_byte_identical": true,
+    "proposed_AGENTS_exact_owner_first_line_plus_source_body": true,
+    "original_leaf_count": 39,
+    "leaf_statuses": {
+      "PROPOSED_NOT_ATTEMPTED": 38,
+      "PAUSED_IMPLEMENTATION": 1
+    },
+    "unique_original_obligation_count": 35,
+    "current_scheduling": {
+      "L32": 34,
+      "L31_D145_BLOCKED": 1
+    },
+    "authorised_case_count_total": 0,
+    "proposed_windows": {
+      "G1_AFTER_L06": 11,
+      "G2_AFTER_L18": 12,
+      "G3_AFTER_L22": 4,
+      "G4_AFTER_L30": 7,
+      "PAUSED_L31_NO_TEST": 1
+    },
+    "all_nominal_gate_matches": true,
+    "all_34_owning_leaf_status": "PROPOSED_NOT_ATTEMPTED",
+    "proposed_window_approved": false,
+    "root_governance_installed": false,
+    "source_output_ledger_sha256": "ff374f6208159a759684188c62c9e2494ffaf3daba19ca2e0c1217f4c7b200c3"
+  },
+  "findings": [
+    {
+      "id": "GOV-DOC-01",
+      "classification": "ISOLATED",
+      "severity": "NONBLOCKING_FOR_ACTIVE_LINT_INTEGRATION; MUST_FIX_BEFORE_FUTURE_GOVERNANCE_INSTALL",
+      "path": "handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_TESTS_AGENTS.override.md",
+      "line": 3,
+      "issue": "references nonexistent candidate path handoff/planning/t01_main_reconciliation_20261112/ for proposed AGENTS/ExecPlan",
+      "actual_candidate_path": "handoff/planning/t01_owner_lint_integration_20261115/",
+      "fix_requires_new_source_output_hashes_and_independent_governance_review": true
+    }
+  ],
+  "prohibited_actions_performed": {
+    "merged_PR": false,
+    "altered_candidate": false,
+    "proof_admissions": false,
+    "product_tests": false,
+    "D145_reactivated": false,
+    "model_API_jobs": false,
+    "installed_runtime_or_database": false
+  },
+  "owner_decisions_remaining": [
+    "explicit final decision for exact PR16 SHA to merge to main",
+    "separate owner decision for corrected T01 root governance/tester/transfer package",
+    "future source/profile/case admission and runtime qualification only under separate authority"
+  ]
+}
