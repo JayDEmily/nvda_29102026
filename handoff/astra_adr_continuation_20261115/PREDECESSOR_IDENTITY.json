@@ -1,0 +1,32 @@
+[
+  {
+    "target": "AGENTS.md",
+    "archived": "handoff/astra_adr_continuation_20261115/predecessor/AGENTS.md",
+    "sha256": "5277acccb95f5027589a35bc2144423dc4d2262ea71eb1f832fc581587846f59",
+    "blob": "725f520eeb45f0febabf3ae813ce6bb09c54ee44"
+  },
+  {
+    "target": "EXEC_PLAN.md",
+    "archived": "handoff/astra_adr_continuation_20261115/predecessor/EXEC_PLAN.md",
+    "sha256": "461e7c26572e2d96e7e2bd5b370815e75d75b0d053fae445843b95654f1e8605",
+    "blob": "e35f11bf1fcde2be53b0c44f4818889e72509a39"
+  },
+  {
+    "target": "tests/AGENTS.override.md",
+    "archived": "handoff/astra_adr_continuation_20261115/predecessor/tests__AGENTS.override.md",
+    "sha256": "28692718ff95c14007014397942868e70ca96ad44591fbe0ce6a7f5f7634beb7",
+    "blob": "280b50c5c028b2460b7e5c8920259dfaba5cb180"
+  },
+  {
+    "target": "handoff/m02_completion_28_execution/EXECUTION_REGISTER.json",
+    "archived": "handoff/astra_adr_continuation_20261115/predecessor/handoff__m02_completion_28_execution__EXECUTION_REGISTER.json",
+    "sha256": "557b39e27024d49bd0f141ac8e5d167097e4c9e07cdc0a2b7776ca6d02c0ac60",
+    "blob": "cd3f1f82119b62d6ddc596db91e2e1851cfe8829"
+  },
+  {
+    "target": "handoff/m02_completion_28_execution/TEST_EVIDENCE_LEDGER.json",
+    "archived": "handoff/astra_adr_continuation_20261115/predecessor/handoff__m02_completion_28_execution__TEST_EVIDENCE_LEDGER.json",
+    "sha256": "fd621f50e8c370ddd33f33eaa0332f2b96d54eaa66b8da6be1fde9268912aa04",
+    "blob": "3bca28fae4ac0e1d743a981e4157487312b10c13"
+  }
+]

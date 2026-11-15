@@ -1,0 +1,43 @@
+{
+  "source": "a28702cde241b3f833b51071aac8cb41591b37dd",
+  "status": "VERIFIED_EXACT_INSTALLATION",
+  "files": [
+    {
+      "target": "AGENTS.md",
+      "source": "a28702cde241b3f833b51071aac8cb41591b37dd:handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_AGENTS.md",
+      "sha256": "329c95bc2d9034cee4eca3de86d59e7029e6ad8c062ebb4885af9b74d83a6bce",
+      "bytes": 6388
+    },
+    {
+      "target": "EXEC_PLAN.md",
+      "source": "a28702cde241b3f833b51071aac8cb41591b37dd:handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_EXEC_PLAN.md",
+      "sha256": "db6d8ae6ad7b43402290c07d3d23d9ba018dd187c73ba3f186ac218e56b2d32b",
+      "bytes": 61453
+    },
+    {
+      "target": "tests/AGENTS.override.md",
+      "source": "a28702cde241b3f833b51071aac8cb41591b37dd:handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_TESTS_AGENTS.override.md",
+      "sha256": "3e906d6cad67f4c8f3137928124493ef7d2877c2c92da90e7a44ad9141c7424f",
+      "bytes": 4147
+    },
+    {
+      "target": "handoff/m02_completion_28_execution/EXECUTION_REGISTER.json",
+      "source": "a28702cde241b3f833b51071aac8cb41591b37dd:handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_EXECUTION_REGISTER.json",
+      "sha256": "fd05fe9d211c19427acb51794849decf79e33071855c914dbc30ec222a9862cf",
+      "bytes": 35777
+    },
+    {
+      "target": "handoff/m02_completion_28_execution/TEST_EVIDENCE_LEDGER.json",
+      "source": "a28702cde241b3f833b51071aac8cb41591b37dd:handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_TEST_EVIDENCE_LEDGER.json",
+      "sha256": "d15b6b5f27cee55ab9bd37d302c8b98b3207854a4b49de026140cad6215a8c21",
+      "bytes": 53978
+    }
+  ],
+  "frozen_guardrails_unchanged": true,
+  "product_paths_unchanged": true,
+  "leaves": 39,
+  "proof_obligations": 35,
+  "released_cases": 0,
+  "new_product_runs": 0,
+  "D145": "PAUSED"
+}
