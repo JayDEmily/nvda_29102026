@@ -1,0 +1,28 @@
+{
+  "status": "OBSERVED_NON_PRODUCT_ONLY_NOT_QUALIFIED_D091_RUNNER",
+  "observed_at": "2026-11-15_Melbourne",
+  "branch": "work/t01-d091-boundary-admission-20261115",
+  "base_commit": "3ec136d149eb0e5b1d089f861998416361cd2088",
+  "selected_observation_interpreter": "/home/jds/nvda_uv3135_20261112/.venv/bin/python",
+  "actual_python_version": "3.13.5",
+  "interpreter_resolved_path": "/home/jds/nvda_uv3135_20261112/.uvpython/cpython-3.13.5-linux-x86_64-gnu/bin/python3.13",
+  "interpreter_binary_sha256": "0eba26d5f04a3673ee264ca406ef286d5025da098c1a24987a8118c23d69153c",
+  "local_sqlite_version": "3.49.1",
+  "local_sqlite_source_id": "2025-02-18 13:38:58 873d4e274b4988d260ba8354a9718324a1c26187a4ab4c1cc0227c03d0f10e70",
+  "sqlite_python_extension": "built-in (not a separately linked _sqlite3 extension in this local Python)",
+  "ld_library_path": null,
+  "package_versions": {
+    "pytest": "9.0.3",
+    "ruff": "0.15.11",
+    "mypy": "1.20.1",
+    "PyYAML": "6.0.3",
+    "psycopg": "3.3.4",
+    "hatchling": null
+  },
+  "comparison_historical_isolated_sqlite": "3.54.1 (handoff/astra_adr_continuation_20261115/SQLITE_3541_BUILD_AND_PROBE.json; recorded different /workspace interpreter and C library)",
+  "comparison_historical_isolated_library_sha256": "c53706980906943301153b630aeddba1b4aab6fe5eeda5752d8293952707db4e",
+  "evaluation": "The exact current observed Python binary is not a D091 product runner; its built-in SQLite 3.49.1 cannot be relabelled as the historical isolated 3.54.1. A separate compatibility/runner acceptance and proof-control binding is required before strict product execution.",
+  "no_product_tests": true,
+  "no_dependency_install": true,
+  "no_system_change": true
+}
