@@ -904,15 +904,58 @@ def _controls():
     return importlib.import_module("product_proof_claims")
 
 
-def _copy_candidate(tmp_path):
+def _copy_current_candidate(tmp_path):
+    # Current-admission controls must retain the current descriptors and
+    # generations. This copy is strictly disposable and separate from ROOT.
+    assert tmp_path.resolve() != ROOT.resolve() and not (tmp_path / ".git").exists()
     for name in ("config", "schemas", "docs", "tests", "implementation", "handoff", "src"):
         shutil.copytree(ROOT / name, tmp_path / name)
     shutil.copytree(ROOT / "tools", tmp_path / "tools")
     for name in ("pyproject.toml", "GUARDRAILS.md", "AGENTS.md", ".gitignore"):
         shutil.copy2(ROOT / name, tmp_path / name)
-    # Control canaries require an explicit pre-admission universe, independently of
-    # the real checkout's evolving product generations. Never rewrite actual history.
-    assert tmp_path.resolve() != ROOT.resolve() and not (tmp_path / ".git").exists()
+    return tmp_path
+
+
+def _copy_candidate(tmp_path):
+    _copy_current_candidate(tmp_path)
+    # Historical control canaries require the explicit 18 October pre-admission
+    # universe, not the current M00 Brief2 admission. Never rewrite ROOT.
+    # The 18 October 2026 control fixture was a 93-test pre-admission universe.
+    # Reconstruct its exact product/config membership in a disposable copy:
+    # later admitted proof generations and test families must remain intact
+    # in ROOT, but must not leak into this historical pre-admission control.
+    original_manifest = (
+        ROOT / "tests/architecture/fixtures/pre_admission_20261018_inventory.json"
+    )
+    original_bytes = original_manifest.read_bytes()
+    assert hashlib.sha256(original_bytes).hexdigest() == (
+        "3840d197d6b570cd7912aea606ce859d529ffc14c1ff93ce0378f767ebfc54b9"
+    )
+    original = json.loads(original_bytes)
+    assert original["status"] == "HISTORICAL_DISPOSABLE_FIXTURE_ONLY"
+    assert original["historical_source_commit"] == (
+        "86b23f1ef5bf4a1510e93333fa4b2cfc869c3b71"
+    )
+    permitted_python = set(original["product_python_paths"])
+    assert len(
+        [path for path in permitted_python if path.split("/")[-1].startswith("test_")]
+    ) == original["original_test_count"] == 93
+    permitted_config = set(original["proof_config_paths"])
+    for path in (tmp_path / "tests/product").rglob("*.py"):
+        if path.relative_to(tmp_path).as_posix() not in permitted_python:
+            path.unlink()
+    for path in (tmp_path / "config/product_proof").rglob("*"):
+        if path.is_file() and path.relative_to(tmp_path).as_posix() not in permitted_config:
+            path.unlink()
+    assert {
+        path.relative_to(tmp_path).as_posix()
+        for path in (tmp_path / "tests/product").rglob("*.py")
+    } == permitted_python
+    assert {
+        path.relative_to(tmp_path).as_posix()
+        for path in (tmp_path / "config/product_proof").rglob("*")
+        if path.is_file()
+    } == permitted_config
     # This fixture owns the original pre-admission universe, even after lawful
     # optional extensions exist in the real checkout. Actual claims stay intact.
     for relative in (
@@ -958,6 +1001,17 @@ def _copy_candidate(tmp_path):
     removed = {
         item["id"] for item in doc["modules"] if item["name"] == "neutral_market_measurement_truth"
     }
+    # The later admitted M03 depends on M02; the historical M02-absent
+    # control must not accidentally retain a successor with a broken edge.
+    while True:
+        new = {
+            item["id"]
+            for item in doc["modules"]
+            if set(item["permitted_dependencies"]) & removed
+        } - removed
+        if not new:
+            break
+        removed.update(new)
     doc["modules"] = [item for item in doc["modules"] if item["id"] not in removed]
     path.write_text(yaml.safe_dump(doc))
     path = tmp_path / "config/architecture/implementation_allocations.yaml"
@@ -1689,7 +1743,10 @@ def test_m00_brief2_fixed_extension_and_exact_authority(tmp_path):
     assert result[0]["claim_id"] == "m00_brief2"
     assert result[2] == "0d5ee211c1285b31834062ab2d871670ed2f318cbb955e7df95f80067d562007"
     assert api.load_product_proof_claim(ROOT, "m00_brief2").target_id == "M00"
-    candidate = _copy_candidate(tmp_path)
+    candidate = _copy_current_candidate(tmp_path)
+    # This control checks a current admitted extension; verify its positive
+    # baseline before testing the two independent falsifiers below.
+    assert api._m00_brief2_extension(candidate)[0]["claim_id"] == "m00_brief2"
     descriptor = candidate / "config/product_proof/m00_brief2/claim.json"
     original = descriptor.read_text()
     changed = json.loads(original)

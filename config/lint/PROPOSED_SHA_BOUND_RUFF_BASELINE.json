@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0",
+  "status": "PROPOSED_NOT_ACCEPTED",
+  "ruff_version": "ruff 0.15.11",
+  "diagnostic_count": 51,
+  "diagnostic_set_sha256": "08ae839b0596c31ecb73a4667845f0d19dfe0c4503c52079434dd98e835a2a8f",
+  "files": [
+    {
+      "path": "tests/product/market_measurement/typing/valid_seam.py",
+      "sha256": "cf7bc548a2ea3483ff2f2db98965dafdb7ecc3154fbd5a0b4ae089f2825451e0",
+      "diagnostic_count": 1,
+      "claim_id": "neutral_market_measurement_truth_pilot",
+      "admission_kind": "support_files",
+      "admission_path": "config/product_proof/market_measurement/admission.json",
+      "generation_path": "config/product_proof/market_measurement/generations/0004.json",
+      "generation_sha256": "24a5af4054c277b01a140ec43481e86851e5e76263826644a80993c12c2495b7"
+    },
+    {
+      "path": "tests/product/market_measurement_d030/test_trade_rate_zscore.py",
+      "sha256": "aeb71639ca9d1e6b4c89ec374bd92d162ecb18da1177618bf8aef159e06dbd35",
+      "diagnostic_count": 1,
+      "claim_id": "neutral_market_measurement_truth_d030",
+      "admission_kind": "family_files",
+      "admission_path": "config/product_proof/market_measurement_d030/admission.json",
+      "generation_path": "config/product_proof/market_measurement_d030/generations/0002.json",
+      "generation_sha256": "2a75291e12374a1dfae789b0235182179df866cf299bbe69873cc8f19bde6768"
+    },
+    {
+      "path": "tests/product/market_measurement_d031/test_volume_rate_zscore.py",
+      "sha256": "1cc9262e0252c9a23c30e93c3e3d5fc91fad0b595940ba9657d87103a6f5b61a",
+      "diagnostic_count": 1,
+      "claim_id": "neutral_market_measurement_truth_d031",
+      "admission_kind": "family_files",
+      "admission_path": "config/product_proof/market_measurement_d031/admission.json",
+      "generation_path": "config/product_proof/market_measurement_d031/generations/0002.json",
+      "generation_sha256": "fedcbc5ea17bd1e9f1bd4a6bce8970d57793f51ad5a063a2f7e9f037148fefb3"
+    },
+    {
+      "path": "tests/product/market_measurement_d032/test_five_minute_realised_volatility.py",
+      "sha256": "1606076379c92acedd6048cd0be6aa266e1a098847219698cf61cb3098e416a1",
+      "diagnostic_count": 12,
+      "claim_id": "neutral_market_measurement_truth_d032",
+      "admission_kind": "family_files",
+      "admission_path": "config/product_proof/market_measurement_d032/admission.json",
+      "generation_path": "config/product_proof/market_measurement_d032/generations/0002.json",
+      "generation_sha256": "5c48ddd91ebe333cacda2f4bd72d26252a09d075dd1feec04d802fee093300c2"
+    },
+    {
+      "path": "tests/product/market_measurement_d033/test_thirty_minute_realised_volatility.py",
+      "sha256": "28810ac5827282bee3fb611fddc6781357843693600992b5da62355a1cf1c197",
+      "diagnostic_count": 12,
+      "claim_id": "neutral_market_measurement_truth_d033",
+      "admission_kind": "family_files",
+      "admission_path": "config/product_proof/market_measurement_d033/admission.json",
+      "generation_path": "config/product_proof/market_measurement_d033/generations/0002.json",
+      "generation_sha256": "93052edf80fb6e985f5082731804277ac67a323a0021756cbc7c499f7f5f74cb"
+    },
+    {
+      "path": "tests/product/market_measurement_d035/test_five_day_realised_volatility.py",
+      "sha256": "f46b49ca4671431a0abf98f1c3148bc9095d724fe966652a64696275b4e57c00",
+      "diagnostic_count": 12,
+      "claim_id": "neutral_market_measurement_truth_d035",
+      "admission_kind": "family_files",
+      "admission_path": "config/product_proof/market_measurement_d035/admission.json",
+      "generation_path": "config/product_proof/market_measurement_d035/generations/0002.json",
+      "generation_sha256": "a372ac82f4880b045c5e0eb9c29bb07ed64a9d307a65bc34f8c0b8f10476f556"
+    },
+    {
+      "path": "tests/product/market_measurement_d036/test_ten_day_realised_volatility.py",
+      "sha256": "b6b77664632fe8d47e14692639f4a81f737a7fbbd6adea7bd28062ccbf13fcd8",
+      "diagnostic_count": 12,
+      "claim_id": "neutral_market_measurement_truth_d036",
+      "admission_kind": "family_files",
+      "admission_path": "config/product_proof/market_measurement_d036/admission.json",
+      "generation_path": "config/product_proof/market_measurement_d036/generations/0002.json",
+      "generation_sha256": "a6b9227fe2481efe8ad5acefd08092a1977e6bd4548ae95d4d7853872393ecc5"
+    }
+  ]
+}
