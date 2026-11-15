@@ -1,0 +1,94 @@
+[
+  {
+    "expected_location": "NVDA_M02_COMPLETION28_L00_HANDOVER.tar.gz",
+    "expected_sha256": "96483d5a7d2334c0726c591f12d5319093a866d777b71e13c0362e85d29e89e7",
+    "inventory": "handoff/m02_completion_28_execution/L00/L00_FINAL_INDEPENDENT_RESTORE_RECEIPT.json",
+    "expected_bytes": 124422670,
+    "available_bytes": null,
+    "actual_sha256": null,
+    "status": "BLOCKED",
+    "missing_prerequisite": "Exact original bytes at expected location or independently verified original archive member required"
+  },
+  {
+    "expected_location": "NVDA_M02_COMPLETION28_L00_ADDITIVE_FROM_97f944d51ab9.bundle",
+    "expected_sha256": "589524d6a47885bb30d9e1c9a5c35f4a59388dfa9ac749046a5036b09f973aec",
+    "inventory": "handoff/m02_completion_28_execution/L00/L00_FINAL_INDEPENDENT_RESTORE_RECEIPT.json",
+    "expected_bytes": 124661535,
+    "available_bytes": 124824686,
+    "actual_sha256": "1b685c791d52aca6a9acd49d7d126d801758f74b6ce9a102f1ded2f42442d506",
+    "status": "BLOCKED",
+    "missing_prerequisite": "Exact original bytes at expected location or independently verified original archive member required"
+  },
+  {
+    "expected_location": "L00_TRACKED_BLOBS.txt",
+    "expected_sha256": "be218943d9b00b9b9a4850c4125b8841576eee9d4fa5fdacf15a7d7bdf9fd188",
+    "inventory": "handoff/m02_completion_28_execution/L00/L00_FINAL_INDEPENDENT_RESTORE_RECEIPT.json",
+    "expected_bytes": 491439,
+    "available_bytes": 492452,
+    "actual_sha256": "92b65988e20406ce161733136e41b93c501e670c9b69b92f891900893a2b6501",
+    "status": "BLOCKED",
+    "missing_prerequisite": "Exact original bytes at expected location or independently verified original archive member required"
+  },
+  {
+    "expected_location": "RESTORE.md",
+    "expected_sha256": "61602cd0782aadc68bed4df4aedc7b47c6d34104e262f63ba9322549a7138b34",
+    "inventory": "handoff/m02_completion_28_execution/L00/L00_FINAL_INDEPENDENT_RESTORE_RECEIPT.json",
+    "expected_bytes": 755,
+    "available_bytes": 2355,
+    "actual_sha256": "f24b6f2e301b7a72c9756f2414b95a61bfe1e37a2db8849c8ea3024716bece3a",
+    "status": "BLOCKED",
+    "missing_prerequisite": "Exact original bytes at expected location or independently verified original archive member required"
+  },
+  {
+    "expected_location": "NVDA_M02_COMPLETION28_L00_ADDITIVE_FROM_97f944d51ab9.bundle",
+    "expected_sha256": "589524d6a47885bb30d9e1c9a5c35f4a59388dfa9ac749046a5036b09f973aec",
+    "inventory": "handoff/m02_completion_28_execution/L00/L00_FINAL_INDEPENDENT_RESTORE_RECEIPT.json",
+    "expected_bytes": 124661535,
+    "available_bytes": 124824686,
+    "actual_sha256": "1b685c791d52aca6a9acd49d7d126d801758f74b6ce9a102f1ded2f42442d506",
+    "status": "BLOCKED",
+    "missing_prerequisite": "Exact original bytes at expected location or independently verified original archive member required"
+  },
+  {
+    "expected_location": "NVDA_M02_RECOVERY_BASE_FULL_HISTORY.bundle",
+    "expected_sha256": "96746582ab4fd0896f6280ff10ea021ed392f4d0e080c2f7c21be00324c5a57c",
+    "inventory": "handoff/m02_completion_28_execution/L00/L00_FINAL_INDEPENDENT_RESTORE_RECEIPT.json",
+    "expected_bytes": 165856376,
+    "available_bytes": null,
+    "actual_sha256": null,
+    "status": "BLOCKED",
+    "missing_prerequisite": "Exact original bytes at expected location or independently verified original archive member required"
+  },
+  {
+    "expected_location": "sqlite-autoconf-3540100.tar.gz",
+    "expected_sha256": "926ef8d3eab93fbf6e06011901273eec076b25594a4e1cdadd50c987f4f6d64e",
+    "inventory": "handoff/m02_completion_28_execution/L00/R2_SQLITE_3541_RUNTIME_VERIFIED.json",
+    "expected_bytes": 3332984,
+    "available_bytes": null,
+    "actual_sha256": null,
+    "status": "BLOCKED",
+    "missing_prerequisite": "Exact original bytes at expected location or independently verified original archive member required"
+  },
+  {
+    "expected_location": "/mnt/data/nvda_local_work/sqlite3541_build/prefix/lib/libsqlite3.so.0",
+    "expected_sha256": "c53706980906943301153b630aeddba1b4aab6fe5eeda5752d8293952707db4e",
+    "inventory": "handoff/m02_completion_28_execution/L00/R2_SQLITE_3541_RUNTIME_VERIFIED.json",
+    "expected_bytes": 1859280,
+    "available_bytes": null,
+    "actual_sha256": null,
+    "status": "BLOCKED",
+    "missing_prerequisite": "Exact original bytes at expected location or independently verified original archive member required"
+  },
+  {
+    "inventory": "handoff/downstream_reconciliation/L14/SOURCE_AND_ASSET_INVENTORY.json",
+    "expected_location": "CPython3.12.14 runtime with accepted SQLite toolchain",
+    "expected_sha256": null,
+    "expected_bytes": null,
+    "available_bytes": null,
+    "actual_sha256": null,
+    "recovered_location": null,
+    "status": "UNKNOWN",
+    "missing_prerequisite": "Historical CPython 3.12.14 / SQLite toolchain exact binary identity not established by available manifest; qualification is profile-specific",
+    "requirement": "not embedded in git bundle; no Python3.13 substitute"
+  }
+]

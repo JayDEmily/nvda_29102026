@@ -1,0 +1,93 @@
+[
+  {
+    "path": "GUARDRAILS.md",
+    "bytes": 10259,
+    "sha256": "585dc9b1a95719a7b60929b0d3ea64696fd6d52cd19b2b4a463c5bb9d34947b6",
+    "git_blob": "54a4407609941f63f6b902076688ff102a3d5ba2",
+    "role": "installed authority"
+  },
+  {
+    "path": "AGENTS.md",
+    "bytes": 13372,
+    "sha256": "5277acccb95f5027589a35bc2144423dc4d2262ea71eb1f832fc581587846f59",
+    "git_blob": "725f520eeb45f0febabf3ae813ce6bb09c54ee44",
+    "role": "installed authority"
+  },
+  {
+    "path": "EXEC_PLAN.md",
+    "bytes": 27619,
+    "sha256": "461e7c26572e2d96e7e2bd5b370815e75d75b0d053fae445843b95654f1e8605",
+    "git_blob": "e35f11bf1fcde2be53b0c44f4818889e72509a39",
+    "role": "installed authority"
+  },
+  {
+    "path": "tests/AGENTS.override.md",
+    "bytes": 5479,
+    "sha256": "28692718ff95c14007014397942868e70ca96ad44591fbe0ce6a7f5f7634beb7",
+    "git_blob": "280b50c5c028b2460b7e5c8920259dfaba5cb180",
+    "role": "installed authority"
+  },
+  {
+    "path": ".python-version",
+    "bytes": 7,
+    "sha256": "e72b03ed5b70312f2782f2b05055c55b24670e126d50e24c4f2c559bf288f810",
+    "git_blob": "86f8c02eb210e162e13395323abd0d02e8d7d223",
+    "role": "source evidence"
+  },
+  {
+    "path": "pyproject.toml",
+    "bytes": 1914,
+    "sha256": "c62bb0b0cbc96707de3444037a2e628c95cac75ebf8b44ebb0a5ebc9e5296225",
+    "git_blob": "07a9b4f844bf415624d22fd3e0f40cbe0156d64c",
+    "role": "source evidence"
+  },
+  {
+    "path": "uv.lock",
+    "bytes": 3982,
+    "sha256": "65800a98bc9f14fd7df23aac7206fe90d9d3c73c9b221bfbe7e90a4092c3290d",
+    "git_blob": "5ac5e33e7d40524d882bb2287aced7e0bd1470d0",
+    "role": "source evidence"
+  },
+  {
+    "path": "docs/architecture/TEST_AND_PROMOTION_KERNEL.md",
+    "bytes": 2292,
+    "sha256": "7dddfc33f405301c45c78c43c15092bf952657189f89d3fe474bdd28ada2beee",
+    "git_blob": "f30a9cec974c25d1e45cd5564fc4b72bd57733aa",
+    "role": "source evidence"
+  },
+  {
+    "path": "handoff/planning/m02_foundation_completion_20261030/LEAF_REGISTER.json",
+    "bytes": 26745,
+    "sha256": "987c458431fbe75ab3d9ea9a699f6a34a1d1328ac205a20058ab5e4e1369a7c4",
+    "git_blob": "358adaf38d761d6d83e7da0982b93b9b59f39caf",
+    "role": "source evidence"
+  },
+  {
+    "path": "handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json",
+    "bytes": 28529,
+    "sha256": "c5713badfdbf9203c390ca18b72a4463c43aa129724e48b19ba763537e457135",
+    "git_blob": "e9efecefa64140e2e120f5efc62280bbb4814d1d",
+    "role": "source evidence"
+  },
+  {
+    "path": "handoff/m02_completion_28_execution/L00/L00_MANIFEST.json",
+    "bytes": 38532,
+    "sha256": "5597892c4b30613714a03c0c3a52720687c98038b870c9dcaf864f0386e82255",
+    "git_blob": "86c2a27ccf316740b7f5bf4803eb8d618afb2985",
+    "role": "source evidence"
+  },
+  {
+    "path": "handoff/m02_completion_28_execution/L00/CURRENT_REFS.txt",
+    "bytes": 35512,
+    "sha256": "88737c5780f8fadc2723b7ff35c2a07b28463f21513493501231f5260cfa5ccc",
+    "git_blob": "aadb2facff402f70d22672f3c6112b5e8f49c699",
+    "role": "source evidence"
+  },
+  {
+    "path": "handoff/planning/t01_recovered_successor_20261111/ORIGINAL_66_REFS.json",
+    "bytes": 12902,
+    "sha256": "7cb2abfd6e5a4828c6a1e61a1e960d5649c4ab59449423d9189256ee425d3606",
+    "git_blob": "162b242eee672bbaa1b4a1e30d63bb2d71657fe3",
+    "role": "source evidence"
+  }
+]

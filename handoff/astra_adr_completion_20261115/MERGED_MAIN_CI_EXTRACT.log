@@ -1,0 +1,8 @@
+validate	Run uv sync --locked --extra dev	2026-11-15T04:31:30.5674755Z Downloading cpython-3.13.5-linux-x86_64-gnu (download) (33.8MiB)
+validate	Run uv sync --locked --extra dev	2026-11-15T04:31:31.2903601Z  Downloaded cpython-3.13.5-linux-x86_64-gnu (download)
+validate	Run uv sync --locked --extra dev	2026-11-15T04:31:31.4400639Z Using CPython 3.13.5
+validate	Run uv sync --locked --extra dev	2026-11-15T04:31:31.4423811Z Resolved 15 packages in 1ms
+validate	Run uv sync --locked --extra dev	2026-11-15T04:31:32.0409937Z Installed 14 packages in 13ms
+validate	SHA-bound historical Ruff lint gate	2026-11-15T04:31:32.2372232Z SHA_BOUND_RUFF_EXACT_MATCH: 51 immutable historical diagnostics; 08ae839b0596c31ecb73a4667845f0d19dfe0c4503c52079434dd98e835a2a8f
+validate	Run uv run python tools/run_promotion_gate.py --set architecture_kernel	2026-11-15T04:31:33.7648568Z platform linux -- Python 3.13.5, pytest-9.0.3, pluggy-1.7.0
+validate	Run uv run python tools/run_promotion_gate.py --set architecture_kernel	2026-11-15T04:52:33.3588347Z ======================= 221 passed in 1259.74s (0:20:59) =======================

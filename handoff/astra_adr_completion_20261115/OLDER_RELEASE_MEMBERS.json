@@ -1,0 +1,116 @@
+[
+  {
+    "archive": "NVDA_M02_COMPLETION28_L00_RECOVERY_20261030.tar.gz",
+    "path": "NVDA_M02_COMPLETION28_L00_RECOVERY_20261030/handoff/m02_completion_28_execution/EXECUTION_REGISTER.json",
+    "bytes": 27179,
+    "sha256": "20464a6569a449190935e18256634d849376a73cc8252783fa108dd0d1c37609"
+  },
+  {
+    "archive": "NVDA_M02_COMPLETION28_L00_RECOVERY_20261030.tar.gz",
+    "path": "NVDA_M02_COMPLETION28_L00_RECOVERY_20261030/handoff/m02_completion_28_execution/TEST_EVIDENCE_LEDGER.json",
+    "bytes": 48229,
+    "sha256": "af63ecb99d1136542e3e3b31ea3aabf8d7f93de741cbddd1a1342517e7024603"
+  },
+  {
+    "archive": "NVDA_M02_COMPLETION28_L00_RECOVERY_20261030.tar.gz",
+    "path": "NVDA_M02_COMPLETION28_L00_RECOVERY_20261030/handoff/m02_completion_28_execution/L00/REVIEW.md",
+    "bytes": 5981,
+    "sha256": "980f124ae7446f2a990e60d9bd4a05a4f9999dc422b2d3a2604b3ecb0ac89539"
+  },
+  {
+    "archive": "NVDA_M02_COMPLETION28_L00_RECOVERY_20261030.tar.gz",
+    "path": "NVDA_M02_COMPLETION28_L00_RECOVERY_20261030/handoff/m02_completion_28_execution/L00/BRIEF.md",
+    "bytes": 2514,
+    "sha256": "c01bdea2263cdc619aa67818d2aaf8535075eae09d6a7bea9ea059147e839cc0"
+  },
+  {
+    "archive": "NVDA_M02_COMPLETION28_L00_RECOVERY_20261030.tar.gz",
+    "path": "NVDA_M02_COMPLETION28_L00_RECOVERY_20261030/handoff/m02_completion_28_execution/L00/L00_INITIAL_INDEPENDENT_RESTORE_RECEIPT.json",
+    "bytes": 1138,
+    "sha256": "9701174f75b88019f36be993a2be85e6f9d2d0e60d74dfa123d5620f566c9080"
+  },
+  {
+    "archive": "NVDA_M02_COMPLETION28_L00_RECOVERY_20261030.tar.gz",
+    "path": "NVDA_M02_COMPLETION28_L00_RECOVERY_20261030/handoff/m02_completion_28_execution/L00/PREDECESSOR_EXEC_PLAN.md",
+    "bytes": 27619,
+    "sha256": "461e7c26572e2d96e7e2bd5b370815e75d75b0d053fae445843b95654f1e8605"
+  },
+  {
+    "archive": "NVDA_M02_COMPLETION28_L00_RECOVERY_20261030.tar.gz",
+    "path": "NVDA_M02_COMPLETION28_L00_RECOVERY_20261030/handoff/m02_completion_28_execution/L00/L00_FINAL_INDEPENDENT_RESTORE_RECEIPT.json",
+    "bytes": 3985,
+    "sha256": "564a70efeda7f983f98fee4368fade94b7a8359e98df7609d68f77307e5004b4"
+  },
+  {
+    "archive": "NVDA_M02_COMPLETION28_L00_RECOVERY_20261030.tar.gz",
+    "path": "NVDA_M02_COMPLETION28_L00_RECOVERY_20261030/handoff/m02_completion_28_execution/L00/CURRENT_REFS.txt",
+    "bytes": 35512,
+    "sha256": "88737c5780f8fadc2723b7ff35c2a07b28463f21513493501231f5260cfa5ccc"
+  },
+  {
+    "archive": "NVDA_M02_COMPLETION28_L00_RECOVERY_20261030.tar.gz",
+    "path": "NVDA_M02_COMPLETION28_L00_RECOVERY_20261030/handoff/m02_completion_28_execution/L00/TRANSFER_BLOCKER.md",
+    "bytes": 3304,
+    "sha256": "e905714e80c50890ea38a5b74f875eaa8eb88556e3e83698ba370a37fa3441e4"
+  },
+  {
+    "archive": "NVDA_M02_COMPLETION28_L00_RECOVERY_20261030.tar.gz",
+    "path": "NVDA_M02_COMPLETION28_L00_RECOVERY_20261030/handoff/m02_completion_28_execution/L00/SOURCE_IDENTITY_CHECK.json",
+    "bytes": 1998,
+    "sha256": "1b87c83c41d6ab81fc36c0d7d69d2d3bf77f579dc686c1bbd11f2aec41a3af31"
+  },
+  {
+    "archive": "NVDA_M02_COMPLETION28_L00_RECOVERY_20261030.tar.gz",
+    "path": "NVDA_M02_COMPLETION28_L00_RECOVERY_20261030/handoff/m02_completion_28_execution/L00/L00_MANIFEST.json",
+    "bytes": 38532,
+    "sha256": "5597892c4b30613714a03c0c3a52720687c98038b870c9dcaf864f0386e82255"
+  },
+  {
+    "archive": "NVDA_M02_COMPLETION28_L00_RECOVERY_20261030.tar.gz",
+    "path": "NVDA_M02_COMPLETION28_L00_RECOVERY_20261030/handoff/m02_completion_28_execution/L00/ORIGINAL_BASELINE_REFS.json",
+    "bytes": 12902,
+    "sha256": "7cb2abfd6e5a4828c6a1e61a1e960d5649c4ab59449423d9189256ee425d3606"
+  },
+  {
+    "archive": "NVDA_M02_COMPLETION28_L00_RECOVERY_20261030.tar.gz",
+    "path": "NVDA_M02_COMPLETION28_L00_RECOVERY_20261030/SHA256SUMS.txt",
+    "bytes": 2156,
+    "sha256": "1f9024eac175453e4beff05e255e3301a22ce823216f3c935e5352f2c2089827"
+  },
+  {
+    "archive": "NVDA_M02_COMPLETION28_L00_RECOVERY_20261030.tar.gz",
+    "path": "NVDA_M02_COMPLETION28_L00_RECOVERY_20261030/NVDA_M02_L00_FULL_HISTORY.bundle",
+    "bytes": 166753833,
+    "sha256": "d3c97c6e227b24017166f9ffb1a02c1b44cc021f5e1350a5d3c37477a97313ed"
+  },
+  {
+    "archive": "NVDA_M02_COMPLETION28_L00_RECOVERY_20261030.tar.gz",
+    "path": "NVDA_M02_COMPLETION28_L00_RECOVERY_20261030/repository-evidence/EXEC_PLAN.md",
+    "bytes": 60485,
+    "sha256": "6a3e64a0e33a0411684703afdb4123e35b03daf668d6e96a3e914a71ca00ab35"
+  },
+  {
+    "archive": "NVDA_M02_COMPLETION28_L00_RECOVERY_20261030.tar.gz",
+    "path": "NVDA_M02_COMPLETION28_L00_RECOVERY_20261030/repository-evidence/AGENTS.md",
+    "bytes": 12268,
+    "sha256": "2e5be0ef46f94b8f4b7ea34571d9854946010edcf2f09449d8ea85560012f3dc"
+  },
+  {
+    "archive": "NVDA_M02_COMPLETION28_L00_RECOVERY_20261030.tar.gz",
+    "path": "NVDA_M02_COMPLETION28_L00_RECOVERY_20261030/repository-evidence/GUARDRAILS.md",
+    "bytes": 10259,
+    "sha256": "585dc9b1a95719a7b60929b0d3ea64696fd6d52cd19b2b4a463c5bb9d34947b6"
+  },
+  {
+    "archive": "NVDA_M02_COMPLETION28_L00_RECOVERY_20261030.tar.gz",
+    "path": "NVDA_M02_COMPLETION28_L00_RECOVERY_20261030/README_FIRST.md",
+    "bytes": 1171,
+    "sha256": "a422f6bff4ccfd460542c2ad8f0d4a9902311f7512435a8bb770dd3cc530cc47"
+  },
+  {
+    "archive": "NVDA_M02_COMPLETION28_L00_RECOVERY_20261030.tar.gz",
+    "path": "NVDA_M02_COMPLETION28_L00_RECOVERY_20261030/ALL_EXPORTED_REFS.txt",
+    "bytes": 35464,
+    "sha256": "be6e1ca64c07b124187ed4ae14fb5e08e3832c850c91576acf08d6dddf3e3574"
+  }
+]
