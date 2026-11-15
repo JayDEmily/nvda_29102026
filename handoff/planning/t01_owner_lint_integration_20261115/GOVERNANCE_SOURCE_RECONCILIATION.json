@@ -15,7 +15,7 @@
       "output": "PROPOSED_EXEC_PLAN.md",
       "source": "3d8f1fae68cdba41c7a1e96df6cb59d1ee35afd9:handoff/planning/t01_main_reconciliation_20261112/PROPOSED_EXEC_PLAN.md",
       "source_sha256": "7180fe504449458a2284a3f234e5bc13d8526d6dca2cfbaa08ee2201497505df",
-      "output_sha256": "cd25d243bb94edb489c47cb7fcde195fd7ca02336b6730748bbe0f8bda11b188",
+      "output_sha256": "db6d8ae6ad7b43402290c07d3d23d9ba018dd187c73ba3f186ac218e56b2d32b",
       "change": "2026-11-15 coordinated amendment; original source identity unchanged; compare base Git bytes",
       "previous_output_sha256": "7180fe504449458a2284a3f234e5bc13d8526d6dca2cfbaa08ee2201497505df"
     },
@@ -23,7 +23,7 @@
       "output": "PROPOSED_TESTS_AGENTS.override.md",
       "source": "3d8f1fae68cdba41c7a1e96df6cb59d1ee35afd9:handoff/planning/t01_main_reconciliation_20261112/PROPOSED_TESTS_AGENTS.override.md",
       "source_sha256": "cebb8f042751b41a6458b3ea875513a445d3bb163eb4b049b25a5bc665a278e9",
-      "output_sha256": "cc56df4abc0c640595d900b70862cd9c356e7a93a97e997bda6bf7260f7d6f9b",
+      "output_sha256": "3e906d6cad67f4c8f3137928124493ef7d2877c2c92da90e7a44ad9141c7424f",
       "change": "2026-11-15 coordinated amendment; original source identity unchanged; compare base Git bytes",
       "previous_output_sha256": "cebb8f042751b41a6458b3ea875513a445d3bb163eb4b049b25a5bc665a278e9"
     },
