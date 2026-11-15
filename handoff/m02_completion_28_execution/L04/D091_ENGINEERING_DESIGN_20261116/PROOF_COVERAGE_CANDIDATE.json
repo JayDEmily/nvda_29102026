@@ -1,0 +1,93 @@
+{
+  "schema": "D091_EXACT_TWO_CASE_COVERAGE_CANDIDATE_V1",
+  "status": "FINITE_MAPPING_PROPOSED_NOT_ADMITTED",
+  "source_contract_sha256": "31c811e77468f44c2e412893326bc6d5f9ea037cdbf28712ce8e213652fdfc63",
+  "raw_batch_sha256": "1f4c46c5c247c78e3e18bb2de02c172f775379f664bad8e056ef6867a39d03dc",
+  "documentary_oracles_sha256": "28bca489fc35faaef7b3a673e5c242b3463b125aa9038ee8d9c3a8c8192c5947",
+  "proof_id": "M02-C28-D091",
+  "original_proposed_case_count": 2,
+  "original_hard_ceiling": 6,
+  "currently_admitted_case_count": 0,
+  "currently_executed_case_count": 0,
+  "physical_case_nodes": [
+    {
+      "id": "D091-CONTROLLED-SUCCESS",
+      "proposed_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_success",
+      "status": "UNADMITTED_PROPOSAL",
+      "concrete_externally_derived_oracles": 12,
+      "source_member_requests": 12,
+      "required_validation": "Public M00 15 raw cohort admitted and sealed, successive exact request times, full history when >8 projections, 12 exact independent categories, exact lineage, idempotent durable category output and standalone fresh read-only reopen. One fixed node, explicit no-parameterization; independent reviewer must judge internal assertion count."
+    },
+    {
+      "id": "D091-CONTROLLED-REACHED_REFUSAL",
+      "proposed_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_reached_refusal",
+      "status": "UNADMITTED_PROPOSAL",
+      "source_member": "out_of_range",
+      "requirement": "Exact typed original raw Decimal 1.01, same lawful provider/model/contract/unit/time/sequence and completed sealed history; verified arrival at range refusal; no category and no persisted result. Refusal reason observability remains design-review-open."
+    }
+  ],
+  "coverage": [
+    {
+      "invariant": "12 signed endpoints/interior and five category labels",
+      "proposed_case": "D091-CONTROLLED-SUCCESS",
+      "status": "PROPOSED_DIRECT_ORACLE_NOT_ADMITTED"
+    },
+    {
+      "invariant": "full multi-page cursor exhaustion under stable sealed input",
+      "proposed_case": "D091-CONTROLLED-SUCCESS",
+      "status": "PROPOSED_MULTI_PAGE_WITNESS_NOT_ADMITTED"
+    },
+    {
+      "invariant": "write attempted after seal cannot change source",
+      "proposed_case": null,
+      "status": "UNMAPPED_REQUIRES_EXPLICIT_FINITE_PROOF_OR_ACCEPTED_REUSE",
+      "note": "Only the coordinator's eligible writer path is blocked by the isolated in-memory design; attempt to bypass bundled fixture"
+    },
+    {
+      "invariant": "raw Decimal 1.01 reaches range refusal",
+      "proposed_case": "D091-CONTROLLED-REACHED_REFUSAL",
+      "status": "PROPOSED_DIRECT_ORACLE_NOT_ADMITTED"
+    },
+    {
+      "invariant": "NaN and absent model.delta source refuses without zero fill",
+      "proposed_case": null,
+      "status": "UNMAPPED_REQUIRES_EXPLICIT_FINITE_PROOF_OR_ACCEPTED_REUSE"
+    },
+    {
+      "invariant": "original observation units/provider/model/11-field identity and generation mismatch",
+      "proposed_case": null,
+      "status": "UNMAPPED_REQUIRES_EXPLICIT_FINITE_PROOF_OR_ACCEPTED_REUSE"
+    },
+    {
+      "invariant": "receipt/as-of/cutoff and sequence-scope violation",
+      "proposed_case": null,
+      "status": "UNMAPPED_REQUIRES_EXPLICIT_FINITE_PROOF_OR_ACCEPTED_REUSE"
+    },
+    {
+      "invariant": "over-bound history, cursor nonprogress/conflict, top-rank tie",
+      "proposed_case": null,
+      "status": "UNMAPPED_REQUIRES_EXPLICIT_FINITE_PROOF_OR_ACCEPTED_REUSE",
+      "note": "Original exact 15-member source roster does not contain a distinct equal-top-rank collision; another finite fixture would require explicit source/case admission or unchanged reusable evidence."
+    },
+    {
+      "invariant": "typed category codec and immutable origin/definition/rule/result version",
+      "proposed_case": "D091-CONTROLLED-SUCCESS",
+      "status": "PROPOSED_DURABLE_READBACK_NOT_ADMITTED"
+    },
+    {
+      "invariant": "fresh SQLite read-only reopening and content/idempotency/conflict",
+      "proposed_case": "D091-CONTROLLED-SUCCESS",
+      "status": "PROPOSED_POSITIVE_REOPEN_ONLY_CONFLICT_STILL_UNMAPPED"
+    },
+    {
+      "invariant": "failure/uncertain database commit never counts as success",
+      "proposed_case": null,
+      "status": "UNMAPPED_REQUIRES_EXPLICIT_FINITE_PROOF_OR_ACCEPTED_REUSE"
+    }
+  ],
+  "rule": "The six-case ceiling is not permission to expand; do not conceal extra physical runs as parameterized oracles. Independence may accept a bounded explicit multi-assertion node only after inspecting collection and source-meaning equivalence. No product test has been run here.",
+  "tester": "NOT_DESIGNATED",
+  "runner": "NOT_PRODUCT_QUALIFIED",
+  "l00": "NOT_QUALIFIED",
+  "d145": "PAUSED"
+}
