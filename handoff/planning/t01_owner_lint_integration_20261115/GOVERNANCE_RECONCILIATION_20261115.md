@@ -34,3 +34,7 @@ This is a **design suggestion** derived from each obligation's current `UNRESOLV
 Review actual new-prefix governing order, preserving historical owner directives and conflicts with current root, source/meaning holds, exact 39/35 identities, 34 planned tests and paused D145, 27 mandatory identities, Tester's sole strict executor role, Git receiver's 66-ref and non-Git asset closure, CPython/SQLite qualification, and all proposed window dependencies. Confirm no unauthorized product-test release or automatic adoption of Astra's supplementary second architecture review.
 
 Accepting the independently reviewed lint-policy *candidate* is not accepting any uninstalled successor programme text.
+
+## Current 15 November completion amendment
+
+The byte-identical-copy and L32-only descriptions above record the PR #16 preparation state. They do not describe this amended proposal. GOV-DOC-01 is corrected in the test override. The coordinated amendment now supplies complete proposed texts, proposed execution register and dependency-window ledger; see DEPENDENCY_WINDOWS.md and handoff/astra_adr_completion_20261115/OWNER_DECISION_PACKAGE.md (repository path: handoff/astra_adr_completion_20261115/OWNER_DECISION_PACKAGE.md). Original PR #3 source hashes remain intact; output hashes identify new bytes. All 39 leaves, 35 obligations, historical evidence and paused D145 remain; zero cases are released. Independent acceptance and owner installation are pending.

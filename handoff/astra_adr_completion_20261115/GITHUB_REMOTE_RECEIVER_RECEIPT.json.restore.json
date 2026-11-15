@@ -1,0 +1,6 @@
+{
+  "ref_equality": true,
+  "fsck_exit": 0,
+  "bundle_sha256": "3df7a770ba0b5ff28bd9450003fe589dea31d909d937b65c233173829b179368",
+  "scope": "New full Git transport; not original historical bundle, independent Tester signoff or non-Git recovery"
+}

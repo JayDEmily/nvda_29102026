@@ -1,6 +1,6 @@
 {
-  "status": "COORDINATED_SCHEDULE_AMENDMENT_PROPOSAL_NOT_ADOPTED",
-  "reference_ledger_blob_sha256": "ff374f6208159a759684188c62c9e2494ffaf3daba19ca2e0c1217f4c7b200c3",
+  "status": "COORDINATED_DEPENDENCY_AMENDMENT_PROPOSED_NOT_INSTALLED",
+  "reference_ledger_blob_sha256": "d15b6b5f27cee55ab9bd37d302c8b98b3207854a4b49de026140cad6215a8c21",
   "counts": {
     "G1_AFTER_L06": 11,
     "G2_AFTER_L18": 12,
@@ -9,7 +9,7 @@
     "PAUSED_L31_NO_TEST": 1
   },
   "obligation_count": 35,
-  "unreleased_case_count": 35,
+  "unreleased_case_count": 0,
   "new_case_authority_created": false,
   "deployment_requires": "Owner adoption and concurrent specific changes to exact root EXEC_PLAN.md, tests/AGENTS.override.md, active ledger, independent tester contract",
   "rows": [
@@ -20,7 +20,30 @@
       "proposed_window": "G4_AFTER_L30",
       "test_release": "NOT_RELEASED",
       "prior_authorised_case_count": 0,
-      "proposed_new_case_count": 0
+      "proposed_new_case_count": 0,
+      "owning_leaf": "L23",
+      "source_contract_leaf_dependencies": [],
+      "parent_proof_ids": [],
+      "finite_candidate_cases": [
+        {
+          "case_id": "D062-CONTROLLED-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d062/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D062-CONTROLLED-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d062/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ],
+      "source_binding_status": "UNBOUND",
+      "environment_status": "NOT_PRODUCT_QUALIFIED",
+      "release_status": "BLOCKED_UNBOUND_INPUTS",
+      "execution_order": "Accept listed parents before this proof, including within the same window"
     },
     {
       "proof_id": "M02-C28-D078",
@@ -29,7 +52,41 @@
       "proposed_window": "G1_AFTER_L06",
       "test_release": "NOT_RELEASED",
       "prior_authorised_case_count": 0,
-      "proposed_new_case_count": 0
+      "proposed_new_case_count": 0,
+      "owning_leaf": "L03",
+      "source_contract_leaf_dependencies": [
+        "L01a",
+        "L02"
+      ],
+      "parent_proof_ids": [
+        "SUP-D071-HISTORY",
+        "SUP-D075-HISTORY",
+        "SUP-D076-HISTORY",
+        "SUP-D077-HISTORY",
+        "M02-C28-D079",
+        "M02-C28-D080",
+        "M02-C28-D081"
+      ],
+      "finite_candidate_cases": [
+        {
+          "case_id": "D078-CONTROLLED-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d078/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D078-CONTROLLED-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d078/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ],
+      "source_binding_status": "UNBOUND",
+      "environment_status": "NOT_PRODUCT_QUALIFIED",
+      "release_status": "BLOCKED_UNBOUND_INPUTS",
+      "execution_order": "Accept listed parents before this proof, including within the same window"
     },
     {
       "proof_id": "M02-C28-D079",
@@ -38,7 +95,37 @@
       "proposed_window": "G1_AFTER_L06",
       "test_release": "NOT_RELEASED",
       "prior_authorised_case_count": 0,
-      "proposed_new_case_count": 0
+      "proposed_new_case_count": 0,
+      "owning_leaf": "L02",
+      "source_contract_leaf_dependencies": [
+        "L01a"
+      ],
+      "parent_proof_ids": [
+        "SUP-D071-HISTORY",
+        "SUP-D075-HISTORY",
+        "SUP-D076-HISTORY",
+        "SUP-D077-HISTORY"
+      ],
+      "finite_candidate_cases": [
+        {
+          "case_id": "D079-CONTROLLED-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d079/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D079-CONTROLLED-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d079/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ],
+      "source_binding_status": "UNBOUND",
+      "environment_status": "NOT_PRODUCT_QUALIFIED",
+      "release_status": "BLOCKED_UNBOUND_INPUTS",
+      "execution_order": "Accept listed parents before this proof, including within the same window"
     },
     {
       "proof_id": "M02-C28-D080",
@@ -47,7 +134,37 @@
       "proposed_window": "G1_AFTER_L06",
       "test_release": "NOT_RELEASED",
       "prior_authorised_case_count": 0,
-      "proposed_new_case_count": 0
+      "proposed_new_case_count": 0,
+      "owning_leaf": "L02",
+      "source_contract_leaf_dependencies": [
+        "L01a"
+      ],
+      "parent_proof_ids": [
+        "SUP-D071-HISTORY",
+        "SUP-D075-HISTORY",
+        "SUP-D076-HISTORY",
+        "SUP-D077-HISTORY"
+      ],
+      "finite_candidate_cases": [
+        {
+          "case_id": "D080-CONTROLLED-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d080/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D080-CONTROLLED-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d080/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ],
+      "source_binding_status": "UNBOUND",
+      "environment_status": "NOT_PRODUCT_QUALIFIED",
+      "release_status": "BLOCKED_UNBOUND_INPUTS",
+      "execution_order": "Accept listed parents before this proof, including within the same window"
     },
     {
       "proof_id": "M02-C28-D081",
@@ -56,7 +173,37 @@
       "proposed_window": "G1_AFTER_L06",
       "test_release": "NOT_RELEASED",
       "prior_authorised_case_count": 0,
-      "proposed_new_case_count": 0
+      "proposed_new_case_count": 0,
+      "owning_leaf": "L02",
+      "source_contract_leaf_dependencies": [
+        "L01a"
+      ],
+      "parent_proof_ids": [
+        "SUP-D071-HISTORY",
+        "SUP-D075-HISTORY",
+        "SUP-D076-HISTORY",
+        "SUP-D077-HISTORY"
+      ],
+      "finite_candidate_cases": [
+        {
+          "case_id": "D081-CONTROLLED-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d081/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D081-CONTROLLED-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d081/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ],
+      "source_binding_status": "UNBOUND",
+      "environment_status": "NOT_PRODUCT_QUALIFIED",
+      "release_status": "BLOCKED_UNBOUND_INPUTS",
+      "execution_order": "Accept listed parents before this proof, including within the same window"
     },
     {
       "proof_id": "M02-C28-D085",
@@ -65,7 +212,34 @@
       "proposed_window": "G2_AFTER_L18",
       "test_release": "NOT_RELEASED",
       "prior_authorised_case_count": 0,
-      "proposed_new_case_count": 0
+      "proposed_new_case_count": 0,
+      "owning_leaf": "L08",
+      "source_contract_leaf_dependencies": [
+        "L07a"
+      ],
+      "parent_proof_ids": [
+        "SUP-D004-USOPTION"
+      ],
+      "finite_candidate_cases": [
+        {
+          "case_id": "D085-CONTROLLED-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d085/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D085-CONTROLLED-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d085/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ],
+      "source_binding_status": "UNBOUND",
+      "environment_status": "NOT_PRODUCT_QUALIFIED",
+      "release_status": "BLOCKED_UNBOUND_INPUTS",
+      "execution_order": "Accept listed parents before this proof, including within the same window"
     },
     {
       "proof_id": "M02-C28-D086",
@@ -74,7 +248,34 @@
       "proposed_window": "G2_AFTER_L18",
       "test_release": "NOT_RELEASED",
       "prior_authorised_case_count": 0,
-      "proposed_new_case_count": 0
+      "proposed_new_case_count": 0,
+      "owning_leaf": "L09",
+      "source_contract_leaf_dependencies": [
+        "L07b"
+      ],
+      "parent_proof_ids": [
+        "SUP-D001-OPTION"
+      ],
+      "finite_candidate_cases": [
+        {
+          "case_id": "D086-CONTROLLED-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d086/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D086-CONTROLLED-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d086/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ],
+      "source_binding_status": "UNBOUND",
+      "environment_status": "NOT_PRODUCT_QUALIFIED",
+      "release_status": "BLOCKED_UNBOUND_INPUTS",
+      "execution_order": "Accept listed parents before this proof, including within the same window"
     },
     {
       "proof_id": "M02-C28-D091",
@@ -83,7 +284,32 @@
       "proposed_window": "G1_AFTER_L06",
       "test_release": "NOT_RELEASED",
       "prior_authorised_case_count": 0,
-      "proposed_new_case_count": 0
+      "proposed_new_case_count": 0,
+      "owning_leaf": "L04",
+      "source_contract_leaf_dependencies": [
+        "L01b"
+      ],
+      "parent_proof_ids": [],
+      "finite_candidate_cases": [
+        {
+          "case_id": "D091-CONTROLLED-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d091/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D091-CONTROLLED-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d091/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ],
+      "source_binding_status": "UNBOUND",
+      "environment_status": "NOT_PRODUCT_QUALIFIED",
+      "release_status": "BLOCKED_UNBOUND_INPUTS",
+      "execution_order": "Accept listed parents before this proof, including within the same window"
     },
     {
       "proof_id": "M02-C28-D095",
@@ -92,7 +318,32 @@
       "proposed_window": "G2_AFTER_L18",
       "test_release": "NOT_RELEASED",
       "prior_authorised_case_count": 0,
-      "proposed_new_case_count": 0
+      "proposed_new_case_count": 0,
+      "owning_leaf": "L11",
+      "source_contract_leaf_dependencies": [
+        "L10a"
+      ],
+      "parent_proof_ids": [],
+      "finite_candidate_cases": [
+        {
+          "case_id": "D095-CONTROLLED-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d095/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D095-CONTROLLED-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d095/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ],
+      "source_binding_status": "UNBOUND",
+      "environment_status": "NOT_PRODUCT_QUALIFIED",
+      "release_status": "BLOCKED_UNBOUND_INPUTS",
+      "execution_order": "Accept listed parents before this proof, including within the same window"
     },
     {
       "proof_id": "M02-C28-D096",
@@ -101,7 +352,37 @@
       "proposed_window": "G2_AFTER_L18",
       "test_release": "NOT_RELEASED",
       "prior_authorised_case_count": 0,
-      "proposed_new_case_count": 0
+      "proposed_new_case_count": 0,
+      "owning_leaf": "L12",
+      "source_contract_leaf_dependencies": [
+        "L07a",
+        "L08",
+        "L10b"
+      ],
+      "parent_proof_ids": [
+        "SUP-D004-USOPTION",
+        "M02-C28-D085"
+      ],
+      "finite_candidate_cases": [
+        {
+          "case_id": "D096-CONTROLLED-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d096/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D096-CONTROLLED-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d096/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ],
+      "source_binding_status": "UNBOUND",
+      "environment_status": "NOT_PRODUCT_QUALIFIED",
+      "release_status": "BLOCKED_UNBOUND_INPUTS",
+      "execution_order": "Accept listed parents before this proof, including within the same window"
     },
     {
       "proof_id": "M02-C28-D097",
@@ -110,7 +391,39 @@
       "proposed_window": "G2_AFTER_L18",
       "test_release": "NOT_RELEASED",
       "prior_authorised_case_count": 0,
-      "proposed_new_case_count": 0
+      "proposed_new_case_count": 0,
+      "owning_leaf": "L13",
+      "source_contract_leaf_dependencies": [
+        "L07a",
+        "L08",
+        "L10b",
+        "L12"
+      ],
+      "parent_proof_ids": [
+        "SUP-D004-USOPTION",
+        "M02-C28-D085",
+        "M02-C28-D096"
+      ],
+      "finite_candidate_cases": [
+        {
+          "case_id": "D097-CONTROLLED-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d097/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D097-CONTROLLED-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d097/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ],
+      "source_binding_status": "UNBOUND",
+      "environment_status": "NOT_PRODUCT_QUALIFIED",
+      "release_status": "BLOCKED_UNBOUND_INPUTS",
+      "execution_order": "Accept listed parents before this proof, including within the same window"
     },
     {
       "proof_id": "M02-C28-D098",
@@ -119,7 +432,39 @@
       "proposed_window": "G2_AFTER_L18",
       "test_release": "NOT_RELEASED",
       "prior_authorised_case_count": 0,
-      "proposed_new_case_count": 0
+      "proposed_new_case_count": 0,
+      "owning_leaf": "L14",
+      "source_contract_leaf_dependencies": [
+        "L07a",
+        "L08",
+        "L10b",
+        "L12"
+      ],
+      "parent_proof_ids": [
+        "SUP-D004-USOPTION",
+        "M02-C28-D085",
+        "M02-C28-D096"
+      ],
+      "finite_candidate_cases": [
+        {
+          "case_id": "D098-CONTROLLED-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d098/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D098-CONTROLLED-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d098/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ],
+      "source_binding_status": "UNBOUND",
+      "environment_status": "NOT_PRODUCT_QUALIFIED",
+      "release_status": "BLOCKED_UNBOUND_INPUTS",
+      "execution_order": "Accept listed parents before this proof, including within the same window"
     },
     {
       "proof_id": "M02-C28-D102",
@@ -128,7 +473,39 @@
       "proposed_window": "G4_AFTER_L30",
       "test_release": "NOT_RELEASED",
       "prior_authorised_case_count": 0,
-      "proposed_new_case_count": 0
+      "proposed_new_case_count": 0,
+      "owning_leaf": "L25",
+      "source_contract_leaf_dependencies": [
+        "L07b",
+        "L09",
+        "L10b",
+        "L10c",
+        "L24"
+      ],
+      "parent_proof_ids": [
+        "SUP-D001-OPTION",
+        "M02-C28-D086"
+      ],
+      "finite_candidate_cases": [
+        {
+          "case_id": "D102-CONTROLLED-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d102/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D102-CONTROLLED-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d102/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ],
+      "source_binding_status": "UNBOUND",
+      "environment_status": "NOT_PRODUCT_QUALIFIED",
+      "release_status": "BLOCKED_UNBOUND_INPUTS",
+      "execution_order": "Accept listed parents before this proof, including within the same window"
     },
     {
       "proof_id": "M02-C28-D107",
@@ -137,7 +514,39 @@
       "proposed_window": "G2_AFTER_L18",
       "test_release": "NOT_RELEASED",
       "prior_authorised_case_count": 0,
-      "proposed_new_case_count": 0
+      "proposed_new_case_count": 0,
+      "owning_leaf": "L15",
+      "source_contract_leaf_dependencies": [
+        "L07a",
+        "L08",
+        "L10b",
+        "L12"
+      ],
+      "parent_proof_ids": [
+        "SUP-D004-USOPTION",
+        "M02-C28-D085",
+        "M02-C28-D096"
+      ],
+      "finite_candidate_cases": [
+        {
+          "case_id": "D107-CONTROLLED-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d107/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D107-CONTROLLED-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d107/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ],
+      "source_binding_status": "UNBOUND",
+      "environment_status": "NOT_PRODUCT_QUALIFIED",
+      "release_status": "BLOCKED_UNBOUND_INPUTS",
+      "execution_order": "Accept listed parents before this proof, including within the same window"
     },
     {
       "proof_id": "M02-C28-D108",
@@ -146,7 +555,39 @@
       "proposed_window": "G2_AFTER_L18",
       "test_release": "NOT_RELEASED",
       "prior_authorised_case_count": 0,
-      "proposed_new_case_count": 0
+      "proposed_new_case_count": 0,
+      "owning_leaf": "L16",
+      "source_contract_leaf_dependencies": [
+        "L07a",
+        "L08",
+        "L10b",
+        "L12"
+      ],
+      "parent_proof_ids": [
+        "SUP-D004-USOPTION",
+        "M02-C28-D085",
+        "M02-C28-D096"
+      ],
+      "finite_candidate_cases": [
+        {
+          "case_id": "D108-CONTROLLED-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d108/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D108-CONTROLLED-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d108/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ],
+      "source_binding_status": "UNBOUND",
+      "environment_status": "NOT_PRODUCT_QUALIFIED",
+      "release_status": "BLOCKED_UNBOUND_INPUTS",
+      "execution_order": "Accept listed parents before this proof, including within the same window"
     },
     {
       "proof_id": "M02-C28-D109",
@@ -155,7 +596,36 @@
       "proposed_window": "G2_AFTER_L18",
       "test_release": "NOT_RELEASED",
       "prior_authorised_case_count": 0,
-      "proposed_new_case_count": 0
+      "proposed_new_case_count": 0,
+      "owning_leaf": "L17",
+      "source_contract_leaf_dependencies": [
+        "L01b",
+        "L04",
+        "L10c"
+      ],
+      "parent_proof_ids": [
+        "M02-C28-D091"
+      ],
+      "finite_candidate_cases": [
+        {
+          "case_id": "D109-CONTROLLED-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d109/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D109-CONTROLLED-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d109/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ],
+      "source_binding_status": "UNBOUND",
+      "environment_status": "NOT_PRODUCT_QUALIFIED",
+      "release_status": "BLOCKED_UNBOUND_INPUTS",
+      "execution_order": "Accept listed parents before this proof, including within the same window"
     },
     {
       "proof_id": "M02-C28-D110",
@@ -164,7 +634,38 @@
       "proposed_window": "G2_AFTER_L18",
       "test_release": "NOT_RELEASED",
       "prior_authorised_case_count": 0,
-      "proposed_new_case_count": 0
+      "proposed_new_case_count": 0,
+      "owning_leaf": "L18",
+      "source_contract_leaf_dependencies": [
+        "L01b",
+        "L04",
+        "L10c",
+        "L17"
+      ],
+      "parent_proof_ids": [
+        "M02-C28-D091",
+        "M02-C28-D109"
+      ],
+      "finite_candidate_cases": [
+        {
+          "case_id": "D110-CONTROLLED-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d110/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D110-CONTROLLED-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d110/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ],
+      "source_binding_status": "UNBOUND",
+      "environment_status": "NOT_PRODUCT_QUALIFIED",
+      "release_status": "BLOCKED_UNBOUND_INPUTS",
+      "execution_order": "Accept listed parents before this proof, including within the same window"
     },
     {
       "proof_id": "M02-C28-D111",
@@ -173,7 +674,41 @@
       "proposed_window": "G4_AFTER_L30",
       "test_release": "NOT_RELEASED",
       "prior_authorised_case_count": 0,
-      "proposed_new_case_count": 0
+      "proposed_new_case_count": 0,
+      "owning_leaf": "L26",
+      "source_contract_leaf_dependencies": [
+        "L07b",
+        "L09",
+        "L10b",
+        "L10c",
+        "L24",
+        "L25"
+      ],
+      "parent_proof_ids": [
+        "SUP-D001-OPTION",
+        "M02-C28-D086",
+        "M02-C28-D102"
+      ],
+      "finite_candidate_cases": [
+        {
+          "case_id": "D111-CONTROLLED-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d111/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D111-CONTROLLED-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d111/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ],
+      "source_binding_status": "UNBOUND",
+      "environment_status": "NOT_PRODUCT_QUALIFIED",
+      "release_status": "BLOCKED_UNBOUND_INPUTS",
+      "execution_order": "Accept listed parents before this proof, including within the same window"
     },
     {
       "proof_id": "M02-C28-D112",
@@ -182,7 +717,43 @@
       "proposed_window": "G4_AFTER_L30",
       "test_release": "NOT_RELEASED",
       "prior_authorised_case_count": 0,
-      "proposed_new_case_count": 0
+      "proposed_new_case_count": 0,
+      "owning_leaf": "L27",
+      "source_contract_leaf_dependencies": [
+        "L07b",
+        "L09",
+        "L10b",
+        "L10c",
+        "L24",
+        "L25",
+        "L26"
+      ],
+      "parent_proof_ids": [
+        "SUP-D001-OPTION",
+        "M02-C28-D086",
+        "M02-C28-D102",
+        "M02-C28-D111"
+      ],
+      "finite_candidate_cases": [
+        {
+          "case_id": "D112-CONTROLLED-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d112/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D112-CONTROLLED-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d112/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ],
+      "source_binding_status": "UNBOUND",
+      "environment_status": "NOT_PRODUCT_QUALIFIED",
+      "release_status": "BLOCKED_UNBOUND_INPUTS",
+      "execution_order": "Accept listed parents before this proof, including within the same window"
     },
     {
       "proof_id": "M02-C28-D113",
@@ -191,7 +762,43 @@
       "proposed_window": "G4_AFTER_L30",
       "test_release": "NOT_RELEASED",
       "prior_authorised_case_count": 0,
-      "proposed_new_case_count": 0
+      "proposed_new_case_count": 0,
+      "owning_leaf": "L28",
+      "source_contract_leaf_dependencies": [
+        "L07b",
+        "L09",
+        "L10b",
+        "L10c",
+        "L24",
+        "L25",
+        "L26"
+      ],
+      "parent_proof_ids": [
+        "SUP-D001-OPTION",
+        "M02-C28-D086",
+        "M02-C28-D102",
+        "M02-C28-D111"
+      ],
+      "finite_candidate_cases": [
+        {
+          "case_id": "D113-CONTROLLED-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d113/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D113-CONTROLLED-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d113/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ],
+      "source_binding_status": "UNBOUND",
+      "environment_status": "NOT_PRODUCT_QUALIFIED",
+      "release_status": "BLOCKED_UNBOUND_INPUTS",
+      "execution_order": "Accept listed parents before this proof, including within the same window"
     },
     {
       "proof_id": "M02-C28-D120",
@@ -200,7 +807,34 @@
       "proposed_window": "G3_AFTER_L22",
       "test_release": "NOT_RELEASED",
       "prior_authorised_case_count": 0,
-      "proposed_new_case_count": 0
+      "proposed_new_case_count": 0,
+      "owning_leaf": "L20",
+      "source_contract_leaf_dependencies": [
+        "L19"
+      ],
+      "parent_proof_ids": [
+        "SUP-D015-OPTION"
+      ],
+      "finite_candidate_cases": [
+        {
+          "case_id": "D120-CONTROLLED-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d120/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D120-CONTROLLED-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d120/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ],
+      "source_binding_status": "UNBOUND",
+      "environment_status": "NOT_PRODUCT_QUALIFIED",
+      "release_status": "BLOCKED_UNBOUND_INPUTS",
+      "execution_order": "Accept listed parents before this proof, including within the same window"
     },
     {
       "proof_id": "M02-C28-D121",
@@ -209,7 +843,39 @@
       "proposed_window": "G3_AFTER_L22",
       "test_release": "NOT_RELEASED",
       "prior_authorised_case_count": 0,
-      "proposed_new_case_count": 0
+      "proposed_new_case_count": 0,
+      "owning_leaf": "L21",
+      "source_contract_leaf_dependencies": [
+        "L01b",
+        "L04",
+        "L19",
+        "L20"
+      ],
+      "parent_proof_ids": [
+        "M02-C28-D091",
+        "SUP-D015-OPTION",
+        "M02-C28-D120"
+      ],
+      "finite_candidate_cases": [
+        {
+          "case_id": "D121-CONTROLLED-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d121/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D121-CONTROLLED-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d121/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ],
+      "source_binding_status": "UNBOUND",
+      "environment_status": "NOT_PRODUCT_QUALIFIED",
+      "release_status": "BLOCKED_UNBOUND_INPUTS",
+      "execution_order": "Accept listed parents before this proof, including within the same window"
     },
     {
       "proof_id": "M02-C28-D122",
@@ -218,7 +884,40 @@
       "proposed_window": "G3_AFTER_L22",
       "test_release": "NOT_RELEASED",
       "prior_authorised_case_count": 0,
-      "proposed_new_case_count": 0
+      "proposed_new_case_count": 0,
+      "owning_leaf": "L22",
+      "source_contract_leaf_dependencies": [
+        "L07a",
+        "L08",
+        "L19",
+        "L20"
+      ],
+      "parent_proof_ids": [
+        "SUP-D004-USOPTION",
+        "M02-C28-D085",
+        "SUP-D015-OPTION",
+        "M02-C28-D120"
+      ],
+      "finite_candidate_cases": [
+        {
+          "case_id": "D122-CONTROLLED-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d122/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D122-CONTROLLED-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d122/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ],
+      "source_binding_status": "UNBOUND",
+      "environment_status": "NOT_PRODUCT_QUALIFIED",
+      "release_status": "BLOCKED_UNBOUND_INPUTS",
+      "execution_order": "Accept listed parents before this proof, including within the same window"
     },
     {
       "proof_id": "M02-C28-D141",
@@ -227,7 +926,48 @@
       "proposed_window": "G4_AFTER_L30",
       "test_release": "NOT_RELEASED",
       "prior_authorised_case_count": 0,
-      "proposed_new_case_count": 0
+      "proposed_new_case_count": 0,
+      "owning_leaf": "L29",
+      "source_contract_leaf_dependencies": [
+        "L19"
+      ],
+      "parent_proof_ids": [
+        "SUP-D015-OPTION"
+      ],
+      "finite_candidate_cases": [
+        {
+          "case_id": "D141-STK-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "STK",
+          "proof_path": "tests/product/m02_completion_28/d141/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D141-STK-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "STK",
+          "proof_path": "tests/product/m02_completion_28/d141/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D141-OPT-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "OPT",
+          "proof_path": "tests/product/m02_completion_28/d141/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D141-OPT-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "OPT",
+          "proof_path": "tests/product/m02_completion_28/d141/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ],
+      "source_binding_status": "UNBOUND",
+      "environment_status": "NOT_PRODUCT_QUALIFIED",
+      "release_status": "BLOCKED_UNBOUND_INPUTS",
+      "execution_order": "Accept listed parents before this proof, including within the same window"
     },
     {
       "proof_id": "M02-C28-D142",
@@ -236,7 +976,46 @@
       "proposed_window": "G1_AFTER_L06",
       "test_release": "NOT_RELEASED",
       "prior_authorised_case_count": 0,
-      "proposed_new_case_count": 0
+      "proposed_new_case_count": 0,
+      "owning_leaf": "L05",
+      "source_contract_leaf_dependencies": [
+        "L01c"
+      ],
+      "parent_proof_ids": [],
+      "finite_candidate_cases": [
+        {
+          "case_id": "D142-STK-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "STK",
+          "proof_path": "tests/product/m02_completion_28/d142/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D142-STK-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "STK",
+          "proof_path": "tests/product/m02_completion_28/d142/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D142-OPT-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "OPT",
+          "proof_path": "tests/product/m02_completion_28/d142/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D142-OPT-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "OPT",
+          "proof_path": "tests/product/m02_completion_28/d142/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ],
+      "source_binding_status": "UNBOUND",
+      "environment_status": "NOT_PRODUCT_QUALIFIED",
+      "release_status": "BLOCKED_UNBOUND_INPUTS",
+      "execution_order": "Accept listed parents before this proof, including within the same window"
     },
     {
       "proof_id": "M02-C28-D144",
@@ -245,7 +1024,46 @@
       "proposed_window": "G1_AFTER_L06",
       "test_release": "NOT_RELEASED",
       "prior_authorised_case_count": 0,
-      "proposed_new_case_count": 0
+      "proposed_new_case_count": 0,
+      "owning_leaf": "L06",
+      "source_contract_leaf_dependencies": [
+        "L01d"
+      ],
+      "parent_proof_ids": [],
+      "finite_candidate_cases": [
+        {
+          "case_id": "D144-STK-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "STK",
+          "proof_path": "tests/product/m02_completion_28/d144/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D144-STK-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "STK",
+          "proof_path": "tests/product/m02_completion_28/d144/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D144-OPT-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "OPT",
+          "proof_path": "tests/product/m02_completion_28/d144/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D144-OPT-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "OPT",
+          "proof_path": "tests/product/m02_completion_28/d144/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ],
+      "source_binding_status": "UNBOUND",
+      "environment_status": "NOT_PRODUCT_QUALIFIED",
+      "release_status": "BLOCKED_UNBOUND_INPUTS",
+      "execution_order": "Accept listed parents before this proof, including within the same window"
     },
     {
       "proof_id": "M02-C28-D145",
@@ -254,7 +1072,15 @@
       "proposed_window": "PAUSED_L31_NO_TEST",
       "test_release": "NOT_RELEASED",
       "prior_authorised_case_count": 0,
-      "proposed_new_case_count": 0
+      "proposed_new_case_count": 0,
+      "owning_leaf": "L31",
+      "source_contract_leaf_dependencies": [],
+      "parent_proof_ids": [],
+      "finite_candidate_cases": [],
+      "source_binding_status": "UNBOUND",
+      "environment_status": "NOT_PRODUCT_QUALIFIED",
+      "release_status": "PAUSED",
+      "execution_order": "Accept listed parents before this proof, including within the same window"
     },
     {
       "proof_id": "M02-C28-D151",
@@ -263,7 +1089,30 @@
       "proposed_window": "G4_AFTER_L30",
       "test_release": "NOT_RELEASED",
       "prior_authorised_case_count": 0,
-      "proposed_new_case_count": 0
+      "proposed_new_case_count": 0,
+      "owning_leaf": "L30",
+      "source_contract_leaf_dependencies": [],
+      "parent_proof_ids": [],
+      "finite_candidate_cases": [
+        {
+          "case_id": "D151-CONTROLLED-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d151/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "D151-CONTROLLED-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "CONTROLLED",
+          "proof_path": "tests/product/m02_completion_28/d151/test_signal.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ],
+      "source_binding_status": "UNBOUND",
+      "environment_status": "NOT_PRODUCT_QUALIFIED",
+      "release_status": "BLOCKED_UNBOUND_INPUTS",
+      "execution_order": "Accept listed parents before this proof, including within the same window"
     },
     {
       "proof_id": "SUP-D071-HISTORY",
@@ -272,7 +1121,30 @@
       "proposed_window": "G1_AFTER_L06",
       "test_release": "NOT_RELEASED",
       "prior_authorised_case_count": 0,
-      "proposed_new_case_count": 0
+      "proposed_new_case_count": 0,
+      "owning_leaf": "L01a",
+      "source_contract_leaf_dependencies": [],
+      "parent_proof_ids": [],
+      "finite_candidate_cases": [
+        {
+          "case_id": "SUP-D071-HISTORY-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "EXACT_NEW_PROFILE",
+          "proof_path": "tests/product/m02_completion_28/support/d071-history/test_profile.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "SUP-D071-HISTORY-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "EXACT_NEW_PROFILE",
+          "proof_path": "tests/product/m02_completion_28/support/d071-history/test_profile.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ],
+      "source_binding_status": "UNBOUND",
+      "environment_status": "NOT_PRODUCT_QUALIFIED",
+      "release_status": "BLOCKED_UNBOUND_INPUTS",
+      "execution_order": "Accept listed parents before this proof, including within the same window"
     },
     {
       "proof_id": "SUP-D075-HISTORY",
@@ -281,7 +1153,30 @@
       "proposed_window": "G1_AFTER_L06",
       "test_release": "NOT_RELEASED",
       "prior_authorised_case_count": 0,
-      "proposed_new_case_count": 0
+      "proposed_new_case_count": 0,
+      "owning_leaf": "L01a",
+      "source_contract_leaf_dependencies": [],
+      "parent_proof_ids": [],
+      "finite_candidate_cases": [
+        {
+          "case_id": "SUP-D075-HISTORY-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "EXACT_NEW_PROFILE",
+          "proof_path": "tests/product/m02_completion_28/support/d075-history/test_profile.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "SUP-D075-HISTORY-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "EXACT_NEW_PROFILE",
+          "proof_path": "tests/product/m02_completion_28/support/d075-history/test_profile.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ],
+      "source_binding_status": "UNBOUND",
+      "environment_status": "NOT_PRODUCT_QUALIFIED",
+      "release_status": "BLOCKED_UNBOUND_INPUTS",
+      "execution_order": "Accept listed parents before this proof, including within the same window"
     },
     {
       "proof_id": "SUP-D076-HISTORY",
@@ -290,7 +1185,30 @@
       "proposed_window": "G1_AFTER_L06",
       "test_release": "NOT_RELEASED",
       "prior_authorised_case_count": 0,
-      "proposed_new_case_count": 0
+      "proposed_new_case_count": 0,
+      "owning_leaf": "L01a",
+      "source_contract_leaf_dependencies": [],
+      "parent_proof_ids": [],
+      "finite_candidate_cases": [
+        {
+          "case_id": "SUP-D076-HISTORY-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "EXACT_NEW_PROFILE",
+          "proof_path": "tests/product/m02_completion_28/support/d076-history/test_profile.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "SUP-D076-HISTORY-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "EXACT_NEW_PROFILE",
+          "proof_path": "tests/product/m02_completion_28/support/d076-history/test_profile.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ],
+      "source_binding_status": "UNBOUND",
+      "environment_status": "NOT_PRODUCT_QUALIFIED",
+      "release_status": "BLOCKED_UNBOUND_INPUTS",
+      "execution_order": "Accept listed parents before this proof, including within the same window"
     },
     {
       "proof_id": "SUP-D077-HISTORY",
@@ -299,7 +1217,30 @@
       "proposed_window": "G1_AFTER_L06",
       "test_release": "NOT_RELEASED",
       "prior_authorised_case_count": 0,
-      "proposed_new_case_count": 0
+      "proposed_new_case_count": 0,
+      "owning_leaf": "L01a",
+      "source_contract_leaf_dependencies": [],
+      "parent_proof_ids": [],
+      "finite_candidate_cases": [
+        {
+          "case_id": "SUP-D077-HISTORY-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "EXACT_NEW_PROFILE",
+          "proof_path": "tests/product/m02_completion_28/support/d077-history/test_profile.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "SUP-D077-HISTORY-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "EXACT_NEW_PROFILE",
+          "proof_path": "tests/product/m02_completion_28/support/d077-history/test_profile.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ],
+      "source_binding_status": "UNBOUND",
+      "environment_status": "NOT_PRODUCT_QUALIFIED",
+      "release_status": "BLOCKED_UNBOUND_INPUTS",
+      "execution_order": "Accept listed parents before this proof, including within the same window"
     },
     {
       "proof_id": "SUP-D001-OPTION",
@@ -308,7 +1249,30 @@
       "proposed_window": "G2_AFTER_L18",
       "test_release": "NOT_RELEASED",
       "prior_authorised_case_count": 0,
-      "proposed_new_case_count": 0
+      "proposed_new_case_count": 0,
+      "owning_leaf": "L07b",
+      "source_contract_leaf_dependencies": [],
+      "parent_proof_ids": [],
+      "finite_candidate_cases": [
+        {
+          "case_id": "SUP-D001-OPTION-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "EXACT_NEW_PROFILE",
+          "proof_path": "tests/product/m02_completion_28/support/d001-option/test_profile.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "SUP-D001-OPTION-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "EXACT_NEW_PROFILE",
+          "proof_path": "tests/product/m02_completion_28/support/d001-option/test_profile.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ],
+      "source_binding_status": "UNBOUND",
+      "environment_status": "NOT_PRODUCT_QUALIFIED",
+      "release_status": "BLOCKED_UNBOUND_INPUTS",
+      "execution_order": "Accept listed parents before this proof, including within the same window"
     },
     {
       "proof_id": "SUP-D004-USOPTION",
@@ -317,7 +1281,30 @@
       "proposed_window": "G2_AFTER_L18",
       "test_release": "NOT_RELEASED",
       "prior_authorised_case_count": 0,
-      "proposed_new_case_count": 0
+      "proposed_new_case_count": 0,
+      "owning_leaf": "L07a",
+      "source_contract_leaf_dependencies": [],
+      "parent_proof_ids": [],
+      "finite_candidate_cases": [
+        {
+          "case_id": "SUP-D004-USOPTION-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "EXACT_NEW_PROFILE",
+          "proof_path": "tests/product/m02_completion_28/support/d004-usoption/test_profile.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "SUP-D004-USOPTION-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "EXACT_NEW_PROFILE",
+          "proof_path": "tests/product/m02_completion_28/support/d004-usoption/test_profile.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ],
+      "source_binding_status": "UNBOUND",
+      "environment_status": "NOT_PRODUCT_QUALIFIED",
+      "release_status": "BLOCKED_UNBOUND_INPUTS",
+      "execution_order": "Accept listed parents before this proof, including within the same window"
     },
     {
       "proof_id": "SUP-D015-OPTION",
@@ -326,7 +1313,32 @@
       "proposed_window": "G3_AFTER_L22",
       "test_release": "NOT_RELEASED",
       "prior_authorised_case_count": 0,
-      "proposed_new_case_count": 0
+      "proposed_new_case_count": 0,
+      "owning_leaf": "L19",
+      "source_contract_leaf_dependencies": [],
+      "parent_proof_ids": [],
+      "finite_candidate_cases": [
+        {
+          "case_id": "SUP-D015-OPTION-SUCCESS",
+          "kind": "SUCCESS",
+          "variant": "EXACT_NEW_PROFILE",
+          "proof_path": "tests/product/m02_completion_28/support/d015-option/test_profile.py",
+          "status": "PROPOSED_NOT_RUN"
+        },
+        {
+          "case_id": "SUP-D015-OPTION-REACHED_REFUSAL",
+          "kind": "REACHED_REFUSAL",
+          "variant": "EXACT_NEW_PROFILE",
+          "proof_path": "tests/product/m02_completion_28/support/d015-option/test_profile.py",
+          "status": "PROPOSED_NOT_RUN"
+        }
+      ],
+      "source_binding_status": "UNBOUND",
+      "environment_status": "NOT_PRODUCT_QUALIFIED",
+      "release_status": "BLOCKED_UNBOUND_INPUTS",
+      "execution_order": "Accept listed parents before this proof, including within the same window"
     }
-  ]
+  ],
+  "unreleased_obligation_count": 35,
+  "release_contract": "DEPENDENCY_WINDOWS.md in this directory; exact bindings and accepted admission required per proof; counts never release cases"
 }

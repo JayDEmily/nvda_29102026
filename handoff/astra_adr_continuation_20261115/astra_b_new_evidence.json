@@ -1,0 +1,20 @@
+{
+  "source_sha256": "926ef8d3eab93fbf6e06011901273eec076b25594a4e1cdadd50c987f4f6d64e",
+  "source_sha3": "b6ced585c750916b1052667239a12c25a7ff34e7f06e1e6e01ecb0427657d9c4",
+  "sqlite3_c_sha3": "e2b869d3003b33c942b7dd7063604fbc53553e1b66609570df39b9b7b558ee81",
+  "lib_bytes": 1859280,
+  "lib_sha256": "c53706980906943301153b630aeddba1b4aab6fe5eeda5752d8293952707db4e",
+  "sqlite_version": "3.54.1",
+  "source_id": "2026-10-16 14:45:20 555e07ef33f69a0957d24d8e555b702464a131d6f1607f4c3c1e4551e8e6ca76",
+  "actual_process_maps": [
+    "7fa11df00000-7fa11df11000 r--p 00000000 00:1b 282759                     /workspace/sqlite3541-qualified-build/libsqlite3.so.0",
+    "7fa11df11000-7fa11e059000 r-xp 00011000 00:1b 282759                     /workspace/sqlite3541-qualified-build/libsqlite3.so.0",
+    "7fa11e059000-7fa11e091000 r--p 00159000 00:1b 282759                     /workspace/sqlite3541-qualified-build/libsqlite3.so.0",
+    "7fa11e091000-7fa11e094000 r--p 00191000 00:1b 282759                     /workspace/sqlite3541-qualified-build/libsqlite3.so.0",
+    "7fa11e094000-7fa11e09b000 rw-p 00194000 00:1b 282759                     /workspace/sqlite3541-qualified-build/libsqlite3.so.0"
+  ],
+  "old_listing": {
+    "bytes": 491439,
+    "sha256": "be218943d9b00b9b9a4850c4125b8841576eee9d4fa5fdacf15a7d7bdf9fd188"
+  }
+}

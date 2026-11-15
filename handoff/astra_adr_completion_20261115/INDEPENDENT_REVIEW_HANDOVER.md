@@ -1,0 +1,15 @@
+# Independent reviewer handover
+
+Repository JayDEmily/nvda_29102026; branch work/astra-adr-governance-recovery-20261115; base 02a19ae02678824908568d8db08f0e1d015cb861. Review the final PR head pinned in its body, not a moving historical branch. Output a scoped verdict on a separate review branch; do not install governance, merge main, run product tests or alter source/proof records.
+
+Read GUARDRAILS fully first, applicable AGENTS/overrides and root EXEC_PLAN, then original Astra methodology at 67f5a6c855bfcf8c6002e7f6c2d97ba714b6644f:handoff/planning/t01_recovered_successor_20261111/ADR_20261112_ASTRA_NVDA_METHOD_AND_FORWARD_ARCHITECTURE_REVIEWS.md, particularly response 1 sections 4 and 6. Review PR #3 reconciliation and e4473ce95db6fc80c34619702f2cff10b778ad8b:handoff/review/t01_pr16_full_integration_20261115/INDEPENDENT_VERDICT.md. These reviews are evidence, not installation authority.
+
+Acceptance criteria:
+
+1. Exact base/head/tree and full changed-path inventory agree with GitHub; no active governing, product source/test/admission/generation, runtime configuration or D145 mutation.
+2. All 39 semantic leaves and dependency edges, 35 proof IDs/claims/source-origin/prior-evidence and historical obligations preserved; zero admitted/released/runs; D145 BLOCKED/paused. GOV-DOC-01 actual current proposal path exists; original source hashes remain immutable and new output hashes match.
+3. Complete coordinated plan/AGENTS/test override/register/ledger amendment is uninstalled. Proposed window parent/source/environment/admission law is executable only after actual bindings and approval; nominal G counts are never releases. Separate Tester remains sole product executor. L32 does not routinely repeat accepted unchanged cases.
+4. Every original literal ref/tip and every additional governing inventory row has an evidence-backed VERIFIED/UNKNOWN/BLOCKED result. Reproduce fresh restoration and bundle checks where bytes available; preserve differing checkpoint tips in isolated namespaces, including the documented work/work/* collision. Test object closure, not merely main cloning. Distinguish historical receiver result, Worker reproduction and independent review.
+5. Non-Git inventory covers original archive members, release assets, external proof/source inputs and SQLite runtime files with expected versus actual identity. Any gap blocks only dependent recovery/qualification. New bundle bytes never masquerade as original archive bytes.
+6. Runtime observations identify exact interpreter, loaded SQLite binary/source/options, packages and wheel hashes. Mechanism probes do not assert historical parity or product acceptance. Successful merged architecture CI has its exact checkout identity and scope. Historical exporter remains protected. PostgreSQL is separate.
+7. Commands/results and preservation checks are reproducible; final owner package states exact residual blockers. Return ACCEPT_DOCUMENTARY_PACKAGE / PARTIAL / RETURN / BLOCKED with precise scope and evidence; never award product or installation acceptance.

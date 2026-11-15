@@ -1,148 +1,428 @@
-# Proposed successor ExecPlan — M02 foundation prerequisite resolution
+# M02 foundation completion — R2 CHAT_MANUAL Ubuntu/GitHub successor (RECONCILED REVIEW CANDIDATE)
 
-**Date:** 29 October 2026 (Australia/Sydney).  **Plan ID:** `M02-FOUNDATION-PREREQUISITE-RESOLUTION-1`. **Revision:** `R0`.
+**Plan ID:** M02-FOUNDATION-COMPLETION-28. **Revision:** T01_R2_UBUNTU_GITHUB_RECONCILIATION_CANDIDATE_20261112. **Source:** exact recovered F02 16b7cc67f5d24336d3768e2da006819474a8c792. **Date:** 11 November 2026, Melbourne.
 
-**Status:** `OWNER_ACCEPTED_AND_COMMISSIONED_DOCUMENTARY_EXECUTION`; independent acceptance of this tranche PENDING. **Operation:** `TRANSITION + EXECUTE_DOCUMENTARY` under owner instruction on 29 October 2026. Root transition is commissioned; former proposal wording elsewhere is historical planning context.
+**Status: RECONCILED_MAIN_BASED_CANDIDATE / INDEPENDENT_REVIEW_PENDING / OWNER_ADOPTION_PENDING / NOT_ACTIVE.** This successor is a complete proposed root-plan text derived from the independently reviewed and newly republished F02 candidate 16b7cc67f5d24336d3768e2da006819474a8c792. The prior owner-approved R2 local-only setup remains historical authority for its period; the newer owner direction selects separate ChatGPT Worker/Tester threads, Ubuntu and GitHub, with PostgreSQL additional to SQLite. Nothing here installs a root plan, authorises product tests, admits a backend or changes original accepted evidence. All 39 R2 leaves, 35 proof obligations, 27 mandatory new D identities and D145 PAUSED remain. Exact acceptance and installation are separate subsequent acts.
 
-## 0. Exact starting evidence, accepted state and authority
+## 0. Recovery, authority and intended output
 
-- Inspected live repository `HEAD=dbf08e6521bd16dcde593bb050a4c22beafd49d0`, tree `15f490b0706bffe7957401d71e5c39c91e5f4253`, branch `work/reconciliation-l14-recovered`; clean worktree at the time of drafting. This exact source state is the L05 Repair 02 candidate.
-- **G2 independent original:** `handoff/m02_foundation_prerequisites_20261029/G2_INDEPENDENT_ACCEPTANCE_EXTERNAL.md`, **9,094 bytes / SHA256 `59748a9e88b787007bacff43a2d9721000ed9e6f5c22864ed804a168f6cf1a61`**, independently reviewing `dbf08e6521bd16dcde593bb050a4c22beafd49d0`. The earlier external `G2_ACCEPTANCE_EXTERNAL.md` / SHA256 `5d9a32c3bc5fb066565d75dd6078f64b65099825ef934812c56978ee2a4297b2` is a **condensed summary**, retained separately as `G2_ACCEPTANCE_SUMMARY.md`, NOT the original. G2 acceptance is for documentary scope only; no later G4 acceptance is implied.
-- Frozen `GUARDRAILS.md` SHA256 `585dc9b1a95719a7b60929b0d3ea64696fd6d52cd19b2b4a463c5bb9d34947b6` matches the plugin approved reference hash. The **live** `AGENTS.md` SHA256 `2e5be0ef46f94b8f4b7ea34571d9854946010edcf2f09449d8ea85560012f3dc` **differs** from the plugin approved draft and does **not** contain `## Active execution reference — MUTABLE`. No prefix/tail navigation update is authorised or safe by assumption; installing the approved reference AGENTS draft requires separate explicit owner governance authorisation and comparison. Existing live AGENTS remains controlling within its jurisdiction.
-- `GUARDRAILS.md` (165 lines), root `AGENTS.md` (97 lines), nested `tests/AGENTS.override.md` (31 lines), root `EXEC_PLAN.md` (149 lines), mathematical K01–K17 and Annex B/C allocations were inspected. Preserve all operative restrictions and historical Git; tool reference copies are not repository authority.
-- G2 register: 126 conditional M02 foundation identities = **98 preserved historically accepted controlled profiles + 28 unresolved**. `8` first-source, `6` first-definition/policy and `14` first-predecessor holds; none has an admitted newly implementation-ready source/profile yet. Seven external programme holds are outside the 126 and inside the broader 83 downstream allocation. L14 `SOURCE+10 existing D` does not add 11 D identities.
-- **Corrected interpretation:** `83` means *canonical downstream peer allocation*, **not evidence that all 83 are implemented**, require tuning, or share one generic strategy codebase. Eligibility depends on actual approved meaning and owner; mathematical coefficients/windows may exist in neutral calculations if the deterministic measurement definition and versioned policy fix them.
-- Retain original G2 F1–F4 repairs: D070 belongs P02/M03; D145 effective R185/R187–R190 under 16 Oct overlay and retains source-event-time hold; D141 K08 score/matching is already fixed; D079–D081 K06 joint OLS-with-intercept basis is already fixed. No reopening without new authority.
+This is a substantive reconstruction of the lost unpublished R0 proposal, not a byte-identical restoration or a continuation under an unavailable commit. The last saved checkpoint restored at `0bc2e06776748f9a27059f977acef5e4825fbe89`. GitHub main at intake is `ab630971741f5f60f547475f016bb09eec91a222`, containing the accepted G4 state imported at `9bd59acba13ead7252e52e32e1b5d862adecd99a`. The original plan object `cb8fd5badbe1e106753109c251e99fc97d784424` is absent from the local recovered Git and GitHub returned no commit for that ref. A reconstructed prior review is preserved as historical evidence; this R1 requires fresh independent review before clearance. No previous acceptance is silently transferred to new bytes.
 
-**Direct source controls:** `handoff/m02_remaining_readiness/COMPLETION_REGISTER.json`, `UNRESOLVED_REGISTER.json`, `EXTERNAL_HOLDS.json`, `DEPENDENCY_AND_NEXT_WORK.md`; `handoff/foundation_implementation/authority/FOUNDATION_IMPLEMENTATION_BRIEF_PROPOSED.md` Annex B/C as subsequently bound; `handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md` effective K laws + hash-bound catalogue/overlays; module registry/accepted owner contracts. Original source files and immutable proof records outrank this proposal.
+The programme targets **27 new independently accepted controlled D identities**: **20 named core outputs**, **seven mandatory further implementations**, and **one separately covered paused identity, D145**, with no implementation count. All 28 currently unresolved foundation identities are covered. Thirty new M02 foundation identities cannot be promised from a remaining pool of 28. No identity is newly ready merely by being listed. Source, policy, predecessor and execution holds remain until individually satisfied.
 
-## 1. Outcome, boundary and authorisation
+The 20 core identities are D078, D079, D080, D081, D085, D086, D091, D095, D096, D097, D098, D107, D108, D109, D110, D120, D121, D122, D142, D144. The seven further outputs are D062, D102, D111, D112, D113, D141, D151. All seven are mandatory within this proposed programme; reaching the core milestone alone is not final completion.
 
-**Outcome sought:** resolve actual first prerequisites and their owners for **all 28** held neutral M02 identities, produce accepted source/temporal/measurement decisions where authorised, and identify a genuinely executable next product implementation frontier. No arbitrary count of implementation tasks, no recommendation that all 28 can be coded now. The complete 126 target and all 83 downstream peer identities remain visible.
+Acceptance is scoped to **controlled synthetic/public-seam implementation**, with actual in-programme calculation, lawful public inputs/predecessors, immutable source/profile/convention lineage, reached refusal and durable public readback. It is not production policy approval, live provider certification, profitability, trading readiness, application composition or full 126 activation. Both NVDA stock and selected NVDA options are mandatory for D141/D142/D144. Fixed coefficients or fitted neutral statistics do not by themselves create downstream strategy ownership.
 
-**This proposed tranche is documentary/authority preparation only.** Do not run pytest/product gates, static analysers, or synthetic/live market-data sessions; do not implement product code, admit claims/generations, purchase IBKR entitlements, install runtimes, activate M01/A00, migrate state or revise frozen guardrails. It may inspect public technical source documentation and repository code statically once separately commissioned; external live/capacity/cost-dependent proof requires its own owner approval. Where source feasibility cannot be demonstrated without live access, mark `BLOCKED_LIVE_SOURCE` with required account/capability, not `READY`.
+**Current authority at candidate preparation (12 November 2026):** `main` at `ded4b98e1e5999d1ddf2f067e660b691917bcd71` retains the accepted 29 October documentary prerequisite plan as root `EXEC_PLAN.md`; retained historical work tip `67f5a6c855bfcf8c6002e7f6c2d97ba714b6644f` carries the separate owner-approved local R2 root. Neither root installs this proposed Ubuntu/GitHub successor. The 11 November independent review accepted an earlier proposal pinned at `aa8dc23608bb6d655aebd74e390a8b3d341735c7`, not this amended candidate. Existing `EXEC_PLAN_NEXT.md` navigation refers to historical planning and is not a T01 successor installation. Original root plans, programme law, source/coverage inventories and frozen GUARDRAILS remain at their pinned original revisions. No existing source/profile/case or policy hold is released by this candidate.
 
-All substantive mathematical, source-profile, owner or unit decisions stay `PROPOSED` pending actual programme-owner acceptance. Do not invent option expiry timestamps, OFI provider event time, calendar closures, delta bucket bounds, OLS fit histories, option-flow sign, matched book tolerances, numerical surface policies or incomplete breadth basket constituents.
+## 1. Exhaustive coverage and prerequisites
 
-## 2. Scope, dependencies, exact coverage
+SIGNAL_COVERAGE_REGISTER.json and SIGNAL_COVERAGE_MATRIX.csv contain exactly 28 unique identities, each with current hold, first unmet invariant, direct raw/derived dependencies, all required typed contexts, effective overlay, units, decision receiver and owning leaf/gate. The catalogue remains the dependency authority; leaf dependencies are execution-release conditions, not replacements for direct R/D edges. Historical source/controlled acceptances do not create new current-time or different-domain predecessor occurrences.
 
-The attached `COVERAGE_MATRIX.csv` contains **exactly 28 unique** signal names, current holds, first blockers and proposed owning leaves. `EXTERNAL_HOLDS_CROSS_BOUNDARY.json` retains the seven non-foundation holds without adding them to the 28.
+Seven external holds remain outside this 28 and the conditional foundation 126: D061, D064, D065, D070, D084, D114, D115. D061/D070/D084 retain P02/existing M03; D114/D115 retain P07; P03 remains unallocated. Do not add downstream peers to inflate output. The target accounting is 126 = 98 historical controlled profiles + 28 unresolved. L14 SOURCE plus ten existing D claims is eleven scoped claims, not eleven additional identities.
 
-| Gate | Leaf | IDs / obligation | Evidence needed before independent documentary acceptance |
+| Identity | Tier | Leaf | Current prerequisite disposition |
 |---|---|---|---|
-| G0 | L00 | Accept prior G2 record, freeze scope & authority | Exact external independent report; accepted SHA, old root preserved in Git/history; decide AGENTS installation separately; no fabricated in-Git G2 verdict |
-| G1 | L01 | D062, D085, D086, D095 | R284 relevance/revision, option R013/R001 and exchange calendar/session/expiry, R111/R183 official IV-session roles; source paths and exact missing data |
-| G1 | L02 | D120, D151 | Selected-option trade/quote/right/multiplier sign/joins separately from Level-I quote assembly; basket R037/R043/R137/R042 and D151 fraction/percentage/unit/denominator authority |
-| G1 | L03 | D141, D145 | Book and trade coverage, execution/cancellation discrimination, accepted K08 score, clock/Δt; D145 five effective native roles and exact true-event vs receipt-only alternatives and explicit pending owner decision |
-| G2 | L04 | D079, D080, D081 | Fixed K06 four-vector OLS with intercept; **actual** training-history producer, aligned rank, selection, shared immutable fit identity; no renegotiation of the fixed equation |
-| G2 | L05 | D091, D142, D144 | D091 explicit neutral delta-band version; D142 shock/recovery settings; D144 SMART/direct identity/level/skew/unmatched rules and sources, each separately proposed and owned |
-| G3 | L06 | D078, D096, D097, D098, D102, D107, D108, D109, D110, D111, D112, D113, D121, D122 | Exact surviving parent edges, which parent profile is accepted, lineage/scope/units, blocked chain vs ready subunit; no claimed readiness from a proposed parent |
-| G4 | L07 | All 28 + 98 + 7 + 11 L14 | Reconciled completion/holds/evidence ledger, owner decision pack, implementation sequence limited to actually eligible units, complete manual tester handover |
+| D062 | EXTENSION_7 | L23 | HELD_FOR_SOURCE |
+| D078 | CORE_20 | L03 | HELD_FOR_PREDECESSOR |
+| D079 | CORE_20 | L02 | HELD_FOR_DEFINITION_OR_POLICY |
+| D080 | CORE_20 | L02 | HELD_FOR_DEFINITION_OR_POLICY |
+| D081 | CORE_20 | L02 | HELD_FOR_DEFINITION_OR_POLICY |
+| D085 | CORE_20 | L08 | HELD_FOR_SOURCE |
+| D086 | CORE_20 | L09 | HELD_FOR_SOURCE |
+| D091 | CORE_20 | L04 | HELD_FOR_DEFINITION_OR_POLICY |
+| D095 | CORE_20 | L11 | HELD_FOR_SOURCE |
+| D096 | CORE_20 | L12 | HELD_FOR_PREDECESSOR |
+| D097 | CORE_20 | L13 | HELD_FOR_PREDECESSOR |
+| D098 | CORE_20 | L14 | HELD_FOR_PREDECESSOR |
+| D102 | EXTENSION_7 | L25 | HELD_FOR_PREDECESSOR |
+| D107 | CORE_20 | L15 | HELD_FOR_PREDECESSOR |
+| D108 | CORE_20 | L16 | HELD_FOR_PREDECESSOR |
+| D109 | CORE_20 | L17 | HELD_FOR_PREDECESSOR |
+| D110 | CORE_20 | L18 | HELD_FOR_PREDECESSOR |
+| D111 | EXTENSION_7 | L26 | HELD_FOR_PREDECESSOR |
+| D112 | EXTENSION_7 | L27 | HELD_FOR_PREDECESSOR |
+| D113 | EXTENSION_7 | L28 | HELD_FOR_PREDECESSOR |
+| D120 | CORE_20 | L20 | HELD_FOR_SOURCE |
+| D121 | CORE_20 | L21 | HELD_FOR_PREDECESSOR |
+| D122 | CORE_20 | L22 | HELD_FOR_PREDECESSOR |
+| D141 | EXTENSION_7 | L29 | HELD_FOR_SOURCE |
+| D142 | CORE_20 | L05 | HELD_FOR_DEFINITION_OR_POLICY |
+| D144 | CORE_20 | L06 | HELD_FOR_DEFINITION_OR_POLICY |
+| D145 | PAUSED_1 | L31 | HELD_FOR_SOURCE |
+| D151 | EXTENSION_7 | L30 | HELD_FOR_SOURCE |
 
-**L00:** Record externally accepted G2 decision as a documentary citation at the exact accepted commit, preserving predecessor root plan in tracked history. If transition/installation is commissioned, install **one** successor root ExecPlan and preserve the old root via Git; do not change live AGENTS while its plugin-approved draft is not installed. Independently review this governance discrepancy before any other navigation change. No product tests. Required output: `G2_ACCEPTANCE_INGRESS.md`, authority comparison and root plan transition ledger.
+## 2. Gates and continuous execution rhythm
 
-**L01 (four source/temporal contracts):** Inspect relevant current public M00 projections, current D001/D004 admission scopes and actual native event/calendar authorities. For D062 demonstrate R284 relevance+revision with knowledge cutoff; for D085/086 distinguish expiry-date R013 and an accepted real expiry instant, US calendar/timezone and ACT/365F conventions; for D095 resolve exact IV inputs R111/R183 and official session anchor. Output one typed-contract decision/hold per ID, with a concrete representative source witness or `UNKNOWN`/provider blocker.
+| Gate | Semantic boundary | Leaves | Potential new identities |
+|---|---|---|---:|
+| G0 | Scope, authority, supported execution and evidence frozen | L00 | 0 |
+| G1 | Shared fit, residual, delta and both-instrument microstructure | L01a–L06 | 7 |
+| G2 | Option temporal, IV, ATM, term, IV/RV and straddle chain | L07a–L18 | 10 |
+| G3 | Actual option trade direction, signed flow and grouping | L19–L22 | 3 |
+| G4 | Events, surfaces, density/tails, replenishment, breadth; paused OFI disposition | L23–L31 | 7, excluding D145 |
+| G5 | Exact final acceptance, remaining holds and durable handover | L32 | No double counting |
 
-**L02 (option trade and US breadth):** D120 must not re-use D015's shares-only sign as selected-option proof; demonstrate option trades matched to co-referenced quote, right and multiplier or retain source hold. D151 must preserve K02's **three separately eligible denominators** and exact basket + weight mode; resolve catalogue percent vs fraction output carrier with a versioned source/unit choice, not a guessed conversion. Required outputs: source-identity matrix and acceptance questions per ID.
+There are **39 named leaves** in LEAF_REGISTER.json; this proposal changes no leaf IDs or output identities. Independently releasable source/definition contracts remain L01a/b/c/d, L07a/b, L10a/b/c and require documentary authority clearance before dependent work. Under CHAT_MANUAL, an implementation may provisionally feed another implementation only when its required contract, source profile and committed interface are explicitly ready; its product result remains IMPLEMENTED_UNTESTED, and it cannot independently release TESTED_ACCEPTED or a final gate. Missing source/authority decisions still block descendants. Formal dependency-ordered product acceptance is deferred to L32, where the independent tester must prove parent before dependent. Gate numbering does not impose unrelated barriers; do not overlap mutations without demonstrated independence.
 
-**L03 (replenishment/OFI):** Preserve D141 K08 **first qualifying same-subject/side/price restoration**, one-to-one depletion matching, credited size capped by depletion and positive-denominator ratio; separately specify verifiable execution-vs-cancellation attribution, complete book/trade source and `Δt_max`. D145 remains paused under K17 source-event-time unless a truthful source provides that event time. If owner instead selects receipt-clock semantics, require new versioned calculation definition, explicit clock-policy authority, independent oracles and proof allocation; no silent replacement of D145 controlled historical math. Output source/policy split and exact alternatives.
+Under the proposed CHAT_MANUAL schedule, review authority/contract decisions at the owning leaf; the Worker authors its allocated tests before implementation, commits the exact leaf and records IMPLEMENTED_UNTESTED without running product proofs. A separate manual Tester chat performs all necessary independent product executions, semantic review and acceptance in L32, following dependencies; no leaf claims TESTED_ACCEPTED early. A blocked authority or transfer invariant still stops its descendants. Each leaf needs a durable, retrievable checkpoint and precise source/ref identity; section 5 defines a proposed reduced-size transfer model that must be proven before replacing the commissioned cumulative bundle requirement. No arbitrary stop at seven or twenty signals.
 
-**L04 (three fitted neutral betas):** Preserve fixed K06 shared OLS-with-intercept model `D075 ~ D071 + D076 + D077` and one shared immutable fit ID for D079–D081. Inspect lawful historical subject/temporal alignment, observation history completeness, model rank, current exclusion, numeric representation and fit reuse. Do not authorise regression family or factor orthogonalisation anew. D078 remains dependent until all three parent coefficients are lawful.
+**Standing continuous-execution commission (proposed).** Once the owner accepts, installs and commissions this exact successor, that commission authorises continuous completion of every already in-scope and prerequisite-released leaf, review, handover, ordinary GitHub commit/checkpoint and bounded repair. It does not expire at a leaf, gate preparation, reviewer result or transfer milestone; no separate 'continue' or per-leaf owner approval is required. The Worker continues other independent eligible tasks when one dependency is blocked and records the first unmet invariant. The separate Tester independently executes only duly admitted L32 cases, without routine reapproval of each case. A genuinely unresolved owner-reserved source/measurement policy, unapproved case expansion, D145 reactivation, material rescope or external/irreversible act remains a distinct authority boundary; do not manufacture permission or a semantic PASS. At an external session/token/tool cutoff, checkpoint the exact work and resume from that state in a subsequent authorised turn; no background execution is implied.
 
-**L05 (neutral profile decisions):** D091 delta interval/scale/boundary/absence/tie handling; D142 first shock+joint depth-and-spread recovery profile and clock; D144 matched SMART/direct scope, side/level/price/skew/unmatched treatment. Report versioned *proposed* choices and independent refusal contracts but do not declare them accepted from this draft.
+**Single common GitHub checkpoint/leaf rule — PROPOSED, NOT ACTIVE (applies to all 39 L00–L32 leaves, subject to each leaf's stricter requirements):** Independently review and release necessary source/definition authority at this boundary. Worker commits scoped code and unexecuted proof to the authorised GitHub work branch, publishes and independently verifies the exact pinned Git checkpoint under the separately approved transport contract, and records IMPLEMENTED_UNTESTED where implementation is involved. No product TESTED_ACCEPTED or G1–G4 product-gate acceptance until separate L32 Tester execution and semantic review; documentary L00/source-contract release remains possible after its independent non-product checks. Bind exact candidate and deliverable to a recoverable per-leaf checkpoint under section 5; if checkpoint capability or authority is unproved, record BLOCKED and halt dependent work. Preserve the first unmet invariant.
 
-**L06 (14 dependent identities):** Reconcile chains: `D079–D081 → D078`; `D085 → D096 → D097,D098,D107,D108`; `D086 + accepted option-revaluation convention → D102 → D111 → D112,D113` (D111 also needs compatible D087); `D091 + option D087 → D109 → D110`; `D120 + D091 → D121`; `D120 + D085 → D122`. Explicitly inspect each remaining child-specific dependency beyond these summaries (for example D096 ATM option universe and D102 numerical surface/revaluation). Mark only those individually evidenced as `READY_FOR_SEPARATELY_PROPOSED_IMPLEMENTATION`; otherwise retain exact first unmet invariant and owner receiver. Do not create fake predecessor occurrences or add all 14 to a default coding queue.
+## 3. Leaf contracts and finite deliverables
 
-**L07 (completeness and handover):** Reconcile all 126, 28, 98, seven external holds and 11 distinct L14 scoped claims by exact identity. For each prior acceptance retain original SHA/generation/raw log and mark `REUSABLE` for **the exact unchanged proposition**, not live/native admission. Record specific material invalidation only with a demonstrable dependency/contract change. Produce owner decision register, dependency-ordered eligible next implementation tranche, explicit persistent blocks, all required source authority/lineage links, final review/limitations and a separate independent reviewer brief.
+Each leaf has its owner, IDs, direct source obligations in the coverage register, execution dependencies below, finite changed-file declaration and acceptance record. Implementing leaves affect only the admitted public M02 API and owner code under `src/nvda_desk/market_measurement_truth/`, and necessary typed raw projections under `src/nvda_desk/raw_signal_occurrence_truth/` if separately admitted. Use existing foundation authority/configuration/proof-generation mechanisms. Candidate new proof paths are in PROOF_ALLOCATION_PROPOSED.json, not existing admitted claims.
 
-## 3. Review, testing law and CHAT_MANUAL scheduling
+Before edits, write the leaf's exact implementation brief and changed paths, accepted authority/profile/selection/unit/clock bindings, independently derived oracles and allowed cases. Each leaf emits named contract/policy or implementation files, REVIEW.md, exact candidate/tree/source/claim bindings, updated execution/evidence registers and a checkpoint under `handoff/m02_completion_28_execution/<leaf>/`. Actual required domain decisions precede code; a reviewer cannot invent programme policy. Generic legacy M01 code presence is not M02 admission. No expected D answer is disguised as source/configuration.
 
-**Execution mode:** `CHAT_MANUAL` — no verified independent sub-agent or Work delegation in the present chat. The owner transfers a final cumulative handover to a different tester thread. Author validation of documentary identity/hashes/authority and all per-leaf Git restore checks is still mandatory. **Independent semantic acceptance of G4 is only after that external review.** It cannot be self-accepted. This differs from full Work delegation and avoids repetitive manual worker→tester transfer.
+For an implementation leaf, eventual TESTED_ACCEPTED requires actual lawful public source/predecessor ingress, intended result/shape/units/lineage, a refusal that reaches its own invariant, append-only persistence and ordinary read-only reopen without live predecessor producers. During implementation these are authored proof obligations, not purported results; record IMPLEMENTED_UNTESTED. Include retry/idempotency behaviour within its accepted cases where required. No direct cross-owner SQL or private test helper imports.
 
-**Documentary tranche new physical product cases:** **ZERO.** The supplied schema-valid `TEST_EVIDENCE_LEDGER.json` has 28 `UNRESOLVED` future obligations with zero **presently authorised** cases; `0` means not allocated/commissioned, not 'zero tests required' for subsequent code. Source/owner decisions and proof design must precede coding.
+### L00 — Authority, scope and execution ingress
 
-**Future implementation tranche, if separately accepted:** for each new admitted unit, document precise meaning, physical case identities and actual valid budget. Preserve existing original per-D success/reached-refusal and six-ceiling law **where still applicable**, rather than imposing it on ungoverned units. In CHAT_MANUAL mode, plan and author proofs together with each implementation leaf; keep states `IMPLEMENTED_UNTESTED` until **one final independent testing/review gate**, unless a materially risky dependency or the owner requires earlier testing. The final tester must be sole strict executor when mandated; no routine duplicate GREEN or broad uncommissioned E2E suite. Only material changes invalidate prior evidence. Manual testing at final gate delays defect discovery; model this explicitly and check source contracts and Git checkpoints at every leaf.
+**Gate:** G0. **IDs:** Supporting obligation; zero new identity count. **Prerequisites:** Current owner authority. **Initial status:** PROPOSED_NOT_ATTEMPTED.
 
-**Unchanged evidence:** 98 historic controlled proof acceptances and 11 L14 claims are reused only for their specific immutable source/profile/candidate/generation/backend; not automatically upgraded. `REUSABLE` does not grant selected-option source, live market-data or full 126 activation. New source variants/profile versions require new separately admitted proofs and technical acceptance.
+Historical owner-approved local R2 setup and the later 10 November independent F02 documentary acceptance are preserved. A successor is not active until the exact revised authority is approved. The ZIP tree is preserved by the local snapshot commit and exact original files remain in its Git parent tree; do not conflate this with the missing intermediate GitHub commits. Preserve frozen GUARDRAILS and approved local AGENTS; register exact source/profile decisions and remaining holds before any consumer release. Independent manual Tester at L32 is not yet appointed; historical runtime evidence is not CPython 3.13.5/SQLite proof. Freeze 126 identities, 98 historical profiles, 11 L14 claims, 28 current holds and seven external holds. Convert only actually approved prospective case allocations into the active ledger. Inventory checkpoint prerequisites and all required current refs.
 
-## 4. Checkpoints, restore and stop rules
+### L01a — Aligned history and joint-fit contract
 
-**Strategy:** `CUMULATIVE_ADDITIVE`, same fixed accepted predecessor baseline as the existing handover, provided both worker and tester have the archived original full-history baseline. Required original base commit: `97f944d51ab9e403250fe76910e2754b50425c73`; baseline archive `NVDA_DOWNSTREAM_RECONCILIATION_L00_CHECKPOINT_20261028.tar(2).gz`; original baseline bundle SHA256 `91db4a1989bff366c1f547c5776ca886c276b6b1310027ae929aa1cd1efee4b9` (reported in accepted predecessor). Current accepted Repair 02 `HEAD=dbf08e6521bd16dcde593bb050a4c22beafd49d0`; additive and source hashes to be inventoried at each export.
+**Gate:** G1. **IDs:** Supporting obligation; zero new identity count. **Prerequisites:** L00. **Initial status:** PROPOSED_NOT_ATTEMPTED.
 
-Before use, receiver **independently** verifies baseline archive contents and bytes, original 66 ref tips, that final cumulative additive declares all required current named refs, actual post-baseline ancestry, fresh restore, exact HEAD/tree/full tracked blob list, `git bundle verify` and `git fsck --full`. Check original repaired/returned ancestry preservation and no history rewriting; packaging integrity is not semantic proof. If original baseline or full ref coverage is unavailable to a receiving thread, `BLOCKED_TRANSFER`; supply a fully restorable archive before claiming a checkpoint.
+Bind actual public D071/D075/D076/D077 history producers, aligned sample/window/knowledge cutoffs, current exclusion, rank/conditioning and exact output codec. One fixed historical observation is insufficient for rolling history. Keep one OLS-with-intercept model, common immutable fit/intercept/sample identity and M02 neutral ownership. Prepare correlated full-rank exact synthetic success data which distinguish joint from separate univariate fits, an informative nonzero held-out residual, a concrete deficient-rank history and a per-coefficient mixed-fit refusal. Existing 64 orthogonal rows remain valid example arithmetic only. Admit/prove necessary history profiles separately; never inject expected D outputs as raw/configuration facts.
 
-At each leaf: commit the exact scoped documentary deliverables, export a cumulative additive from unchanged fixed baseline, calculate SHA-256 outside the Git tree, freshly restore from base+latest additive, read back object/ref/tree/contents and run Git integrity; expose the downloadable bundle and receipt **before advancing**. Keep prior checkpoints. Uncommitted plan files and a local Git object alone are insufficient for durable transfer. Non-Git external acceptances, account source reports and other assets must have separate hashes/inventory and be included in handover unless already durably available to reviewer.
+### L01b — Option delta source and rule contract
 
-**Stop dependent work** if current authority lacks a required source/semantic law, if checksum/restore/acceptance input fails, if live entitlement or credential is required, or if the proposed AGENTS governance transition has no approval. Preserve independent unaffected investigations, partial findings and exact blocked receiver. No automatic D145, option trade, M01 or M03 activation.
+**Gate:** G1. **IDs:** Supporting obligation; zero new identity count. **Prerequisites:** L00. **Initial status:** PROPOSED_NOT_ATTEMPTED.
 
-## 5. Closure, status and owner decisions
+Bind public R112 option model variant, signed fractional scale, contract/right/expiry and source lineage. Adopt V1 absolute bins only after owner acceptance for controlled implementation: [0,.10), [.10,.25), [.25,.50), [.50,.75), [.75,1], with exact labels and endpoint inclusivity. Bind missing/nonfinite/out-of-range refusal and signed boundary assertions within the approved pair. No scale inference from magnitude.
 
-**R1:** acceptance decision from previous independent G2 report recorded; no rewrite of that reviewer judgement. **R2:** all eight source-first holds receive current source/provenance resolution or exact material blocker. **R3:** six neutral-policy holds receive actual proposed profiles and named approvals; a proposal is not approval. **R4:** all 14 dependent identities have exact lawful parent disposition and next proof/hold. **R5:** evidence reuse ledger conserves 98 historical proofs and 11 L14 claims. **R6:** seven downstream holds stay outside the 126. **R7:** final separately independent documentary reviewer decision and verified transferable handover; any disputed or unapproved policy remains explicitly held.
+### L01c — Stock and option resilience input contract
 
-Required owner decisions: (a) approve any specific neutral calendar/time/date-basis or model/profile policies surfaced; (b) approve materially new provider acquisition, IBKR subscriptions or option source funding if required; (c) choose an authorised D145 clock path if source-event-time cannot be supplied; (d) separately authorise replacement/installation of the approved AGENTS draft if desired; (e) accept/commission a later, strictly scoped implementation plan only after individual readiness/proof is established. None of these decisions is presumed.
+**Gate:** G1. **IDs:** Supporting obligation; zero new identity count. **Prerequisites:** L00. **Initial status:** PROPOSED_NOT_ATTEMPTED.
 
-**Progress ledger (at installation):** L00–L07 `NOT_ATTEMPTED`; G0–G4 `NOT_INDEPENDENTLY_ACCEPTED`. This is the active root plan under owner commission; no product implementation or product tests are authorised. Leaf progress below supersedes proposal-stage labels.
+Bind complete top-two SMART bid/ask event reconstruction plus matched quotes for BOTH stock and selected options, units, receipt order, reset/generation and completeness. Preserve AND shock onset, first joint recovery and continued search through intermediate one-condition states. Bind a shock-relative 30-second window with explicit endpoint inclusion and closing observation/watermark. Under an inclusive end, V2 shock at t=1 needs coverage through t=31 for a reached no-recovery refusal; recovery at t=7 gives elapsed 6. Aggregate depth/spread rows are oracles, not lawful event-stream inputs. No change to D145 clock.
 
-## 6. Current commissioned execution status (append-only)
+### L01d — Stock and option matched-book contract
 
-Owner instruction: “I approved the plan. Go ahead and finish it.” This is authority for documentary L00–L07, not for new source/mathematical law, product code/testing, AGENTS replacement or independent self-acceptance. All subsequent status entries are author-produced pending manual independent review.
+**Gate:** G1. **IDs:** Supporting obligation; zero new identity count. **Prerequisites:** L00. **Initial status:** PROPOSED_NOT_ATTEMPTED.
 
-### L00 — G0 author result
+Bind two lawfully reconstructed complete SMART/direct streams for BOTH instrument classes, same contract/side/rank 0/1, receipt cutoffs and inclusive .250-second skew. Preserve distinct subscribed venue and MPID. Require identical explicitly declared quote units and stock-share versus option-contract sizes; option premium per underlying share differs from per-contract money, and any requested contract-money calculation needs an explicit multiplier. Author direct omission/skew sequences before matching. Existing stock pairs establish arithmetic only.
 
-AUTHOR_COMPLETED; EXTERNAL_INDEPENDENT_REVIEW_PENDING. Evidence: `handoff/m02_foundation_prerequisites_20261029/L00_FINDINGS.md`; original 98 controlled and L14 claims preserved; no product tests. Checkpoint bundle/receipt recorded externally (avoids self-hash). No missing source or numerical policy is deemed accepted solely from documentary review.
+### L02 — Shared joint fit and three beta outputs
 
-### L01 — G1 author result
+**Gate:** G1. **IDs:** D079, D080, D081. **Prerequisites:** L01a. **Initial status:** PROPOSED_NOT_ATTEMPTED.
 
-AUTHOR_COMPLETED; EXTERNAL_INDEPENDENT_REVIEW_PENDING. Evidence: `handoff/m02_foundation_prerequisites_20261029/L01_FINDINGS.md`; original 98 controlled and L14 claims preserved; no product tests. Checkpoint bundle/receipt recorded externally (avoids self-hash). No missing source or numerical policy is deemed accepted solely from documentary review.
+Fit D075=alpha+beta_market*D071+beta_tech*D076+beta_semi*D077+epsilon jointly by OLS with intercept. Publish three actual coefficient occurrences with common immutable sample, fit, intercept and numerical/profile lineage. Prove rank refusal after lawful history ingress. Correlated success data must discriminate the mandated joint fit. Six proposed cases total: one success/refusal pair per D identity; shared setup does not permit three inconsistent fits.
 
-### L02 — G1 author result
+### L03 — Same-fit residual
 
-AUTHOR_COMPLETED; EXTERNAL_INDEPENDENT_REVIEW_PENDING. Evidence: `handoff/m02_foundation_prerequisites_20261029/L02_FINDINGS.md`; original 98 controlled and L14 claims preserved; no product tests. Checkpoint bundle/receipt recorded externally (avoids self-hash). No missing source or numerical policy is deemed accepted solely from documentary review.
+**Gate:** G1. **IDs:** D078. **Prerequisites:** L02. **Initial status:** PROPOSED_NOT_ATTEMPTED.
 
-### L03 — G1 author result
+Use actual compatible coefficient occurrences, common intercept and aligned current D075/D071/D076/D077. Subtract alpha and all three factor contributions. Independently calculate an informative nonzero residual. Refusal changes one coefficient fit lineage while retaining the other two; a coherent alternative complete fit is not invalid merely because its label differs.
 
-AUTHOR_COMPLETED; EXTERNAL_INDEPENDENT_REVIEW_PENDING. Evidence: `handoff/m02_foundation_prerequisites_20261029/L03_FINDINGS.md`; original 98 controlled and L14 claims preserved; no product tests. Checkpoint bundle/receipt recorded externally (avoids self-hash). No missing source or numerical policy is deemed accepted solely from documentary review.
+### L04 — Absolute delta bucket
 
-### L04 — G2 author result
+**Gate:** G1. **IDs:** D091. **Prerequisites:** L01b. **Initial status:** PROPOSED_NOT_ATTEMPTED.
 
-AUTHOR_COMPLETED; EXTERNAL_INDEPENDENT_REVIEW_PENDING. Evidence: `handoff/m02_foundation_prerequisites_20261029/L04_FINDINGS.md`; original 98 controlled and L14 claims preserved; no product tests. Checkpoint bundle/receipt recorded externally (avoids self-hash). No missing source or numerical policy is deemed accepted solely from documentary review.
+Implement the exact approved complete non-overlapping V1 absolute-delta intervals and labels. Retain option identity, model/scale and rule version. Cover signed endpoints and valid interior values within the finite success case; use a reached invalid/absent input refusal. No inferred units or strategy-tuned category assignment.
 
-### L05 — G2 author result
+### L05 — First joint recovery for both instruments
 
-AUTHOR_COMPLETED; EXTERNAL_INDEPENDENT_REVIEW_PENDING. Evidence: `handoff/m02_foundation_prerequisites_20261029/L05_FINDINGS.md`; original 98 controlled and L14 claims preserved; no product tests. Checkpoint bundle/receipt recorded externally (avoids self-hash). No missing source or numerical policy is deemed accepted solely from documentary review.
+**Gate:** G1. **IDs:** D142. **Prerequisites:** L01c. **Initial status:** PROPOSED_NOT_ATTEMPTED.
 
-### L06 — G3 author result
+Reconstruct lawful ordered books and quotes. V1 synthetic shock is depth<=.70 baseline AND spread>=1.25 baseline; recovery is the first strictly later state with depth>=.90 baseline AND spread<=1.10 baseline. Continue after depth-only or spread-only intermediate recovery. Preserve 30-second shock-relative closed-window policy and receipt-clock identity; reset/gaps invalidate separately. Stock and selected-option pairs are separate. Refusal reaches the terminal window without joint recovery, rather than merely pending. V2 t=1 to t=7 means 6 seconds; the older untimed 7-second example is separate.
 
-AUTHOR_COMPLETED; EXTERNAL_INDEPENDENT_REVIEW_PENDING. Evidence: `handoff/m02_foundation_prerequisites_20261029/L06_FINDINGS.md`; original 98 controlled and L14 claims preserved; no product tests. Checkpoint bundle/receipt recorded externally (avoids self-hash). No missing source or numerical policy is deemed accepted solely from documentary review.
+### L06 — Matched SMART/direct difference for both instruments
 
-### L07 — G4 author result
+**Gate:** G1. **IDs:** D144. **Prerequisites:** L01d. **Initial status:** PROPOSED_NOT_ATTEMPTED.
 
-AUTHOR_COMPLETED; EXTERNAL_INDEPENDENT_REVIEW_PENDING. Evidence: `handoff/m02_foundation_prerequisites_20261029/L07_FINDINGS.md`; original 98 controlled and L14 claims preserved; no product tests. Checkpoint bundle/receipt recorded externally (avoids self-hash). No missing source or numerical policy is deemed accepted solely from documentary review.
+Return all signed SMART-minus-direct price/depth components at admitted matched ranks from both reconstructed books, preserving each source/contract/time/venue/MPID/unit lineage. Enforce the approved inclusive .250-second maximum skew and exact required level set. Do not zero-fill unmatched levels. Cover stock shares and option contracts separately. Independent refusal omits or invalidates a counterpart through the declared public sequence; worker fixture composition must not pre-satisfy completeness.
 
-### L07 supplementary primary-source readback
+### L07a — Expiry date and US-session calendar profile
 
-Additional direct file/line/source-hash witnesses in `handoff/m02_foundation_prerequisites_20261029/L07_CURRENT_SOURCE_ADDENDUM.md` and `CURRENT_SOURCE_CONTRACT_WITNESSES.json`. No change to 28 readiness classifications or author-completion status; no product tests.
+**Gate:** G2. **IDs:** Supporting obligation; zero new identity count. **Prerequisites:** L00. **Initial status:** PROPOSED_NOT_ATTEMPTED.
 
-### G4 independent return — bounded documentary correction, 29 October 2026
+Bind R013 selected-option expiry date, R001 receipt, exchange IANA timezone, calendar version/session boundaries and lawful D004 US-option date profile. A synthetic calendar is explicitly controlled configuration, never evidence of official provider facts. Resolve concrete policy/source decisions before code. Independently prove a necessary D004 profile extension without rewriting its old accepted profile or counting its identity anew.
 
-At source HEAD `d7fb9a54873739baba5520ee1061e7b3d306c077`, an external independent G4 reviewer returned two material findings: G4-F1 original G2 byte-provenance not preserved, and G4-F2 no real versioned neutral-policy proposals for six held identities. G4-N1 noted documentary whitespace only. This repair preserves the byte-identical 9,094-byte original G2 report at `handoff/m02_foundation_prerequisites_20261029/G2_INDEPENDENT_ACCEPTANCE_EXTERNAL.md` and retains the previous shortened text as `G2_ACCEPTANCE_SUMMARY.md`. Their separately verified SHA-256 values are recorded in `G4_RETURN_REPAIR_01.md`.
+### L07b — Expiry instant and true-instant profile
 
-**L04/L05/R3 status correction:** The original source/hold analyses were author-produced, but the additional obligation to supply an actual versioned candidate profile is `BLOCKED_REQUIRED_PREMISE` for each of D079/D080/D081/D091/D142/D144 as itemised in `NEUTRAL_POLICY_PROPOSAL_STATUS.json`. No law or source currently admits missing numerical boundaries/thresholds, aligned regression sample history, book matching and clocks. Those missing decisions must be made by the named owner/receiver, not by a documentary worker. Therefore **R3 remains UNSATISFIED, G4 remains RETURNED / NOT ACCEPTED, and L05 and its downstream L07 programme-close-out are not complete** despite retained valid analysis. This is the explicit review-authorised blocked alternative; it does not silently lower the R3 acceptance requirement. No product tests or implementation are authorised by this repair.
+**Gate:** G2. **IDs:** Supporting obligation; zero new identity count. **Prerequisites:** L00. **Initial status:** PROPOSED_NOT_ATTEMPTED.
 
-Re-review must independently check the corrected original-report byte identity and the candid per-ID blockers/status readback; later R3 completion requires new owner-authorised exact policies or justified concrete versioned proposals. All 28 remain held and the unchanged 98/11 scoped historical evidence is retained.
+Bind the exact option expiry instant and timezone/session convention separately from its date, with compatible true-instant D001. Never invent midnight or event time from date-only/receipt-only values. Bind exact year-fraction representation. Independently prove a necessary option-domain D001 extension; retain its original profile and zero new identity contribution.
 
-### Owner-directed synthetic-only policy scaffold — 29 October 2026
+### L08 — Whole calendar days to expiry
 
-The owner explicitly authorised **tentative synthetic numeric choices** to avoid further planning stalls. This permits documentary/test-scenario mock values for D079–D081, D091, D142 and D144; it does **not** authorise real-market training assumptions, fitted production beta substitution, source-callback fabrication, module code/tests or promotion of blocked signals. Their six synthetic V1 proposals and independently calculable mock scenario are at `handoff/m02_foundation_prerequisites_20261029/R3_TENTATIVE_SYNTHETIC_PROFILES_V1.json` and `SYNTHETIC_K06_64ROW_FIXTURE.csv`. The prior G4-F2 block on **production-authorised** policies and all R3 independent acceptance obligations remains; G4 NOT ACCEPTED. Current output is a new author-supplied synthetic-design proposal, not retrospective proof or changed original G2/G4 decisions. No original 98 or L14 evidence invalidated by documentary-only changes.
+**Gate:** G2. **IDs:** D085. **Prerequisites:** L07a. **Initial status:** PROPOSED_NOT_ATTEMPTED.
+
+Use actual R013/R001 and compatible exchange trading date D004 to compute whole calendar-day difference. Preserve contract/calendar/source identity. Refuse unsupported calendar/date coverage or negative live-contract DTE. This does not require converting a date into an invented instant.
+
+### L09 — ACT/365F time to expiry
+
+**Gate:** G2. **IDs:** D086. **Prerequisites:** L07b. **Initial status:** PROPOSED_NOT_ATTEMPTED.
+
+Calculate ACT/365F from actual true-instant D001 to the versioned expiry instant, using exact elapsed duration and approved typed numeric representation. Preserve option/timezone/calendar conventions. Refuse date-only or receipt-only masquerading as source/expiry instants.
+
+### L10a — Official-session IV history contract
+
+**Gate:** G2. **IDs:** Supporting obligation; zero new identity count. **Prerequisites:** L00. **Initial status:** PROPOSED_NOT_ATTEMPTED.
+
+Bind R111/R183 computational roles, exact model/native-unit comparability, contract or bucket roll, vintages and one official prior-trading-session reference for D095. Resolve concrete session convention before code; current quote assembly alone is not an IV history. Supply independently calculable change and wrong-reference refusal oracles.
+
+### L10b — ATM, term nodes and IV/RV contracts
+
+**Gate:** G2. **IDs:** Supporting obligation; zero new identity count. **Prerequisites:** L00. **Initial status:** PROPOSED_NOT_ATTEMPTED.
+
+Bind actual R111/R112 per-expiry CALL/PUT universe, exact or nearest bracketing .50 absolute-delta interpolation, coverage/no-extrapolation mode and output shape. Fix selected two/three maturity nodes, comparable annualised decimal-vol units and lawful current D035/D036 predecessor profiles. Preserve side/member/time lineage; a historic green profile does not create a current occurrence. Prepare finite numerical and mismatch oracles.
+
+### L10c — Straddle, quote and spot contracts
+
+**Gate:** G2. **IDs:** Supporting obligation; zero new identity count. **Prerequisites:** L00. **Initial status:** PROPOSED_NOT_ATTEMPTED.
+
+Bind actual same-expiry/strike-convention CALL+PUT D087, D091 ATM mapping, knowledge cutoffs, native quote units and positive R118 spot. Existing L14 D087 does not automatically supply arbitrary multi-contract/time coverage. D109 is currency per underlying share; D110=100*D109/spot, with no additional contract multiplier on a per-share premium.
+
+### L11 — One-trading-session IV change
+
+**Gate:** G2. **IDs:** D095. **Prerequisites:** L10a. **Initial status:** PROPOSED_NOT_ATTEMPTED.
+
+Calculate 100*(IV_current-IV_reference) in volatility points, using comparable actual R111/R183 facts and accepted official one-trading-session reference. Preserve contract/bucket/roll and knowledge vintage. Refuse unmatched/stale/wrong-session references without calendar-day substitution.
+
+### L12 — ATM IV per expiry
+
+**Gate:** G2. **IDs:** D096. **Prerequisites:** L08, L10b. **Initial status:** PROPOSED_NOT_ATTEMPTED.
+
+For each expiry/side use exact absolute delta .50 or nearest valid bracketing linear interpolation. Average CALL and PUT estimates when both qualify; a single side is permitted only by an explicitly accepted labelled coverage mode. No undeclared extrapolation. Preserve actual D085, full eligible option universe, native IV/delta units and source identities.
+
+### L13 — Two-node IV term slope
+
+**Gate:** G2. **IDs:** D097. **Prerequisites:** L12. **Initial status:** PROPOSED_NOT_ATTEMPTED.
+
+Use actual selected distinct ordered D096 expiry nodes: 100*(iv2-iv1)/(day2-day1), in volatility points/calendar day. Preserve compatible units, coverage and node identities. Equal or missing maturity nodes refuse.
+
+### L14 — Nonuniform IV term curvature
+
+**Gate:** G2. **IDs:** D098. **Prerequisites:** L12. **Initial status:** PROPOSED_NOT_ATTEMPTED.
+
+Use three actual ordered distinct D096 nodes: 2*(100*(iv3-iv2)/(d3-d2)-100*(iv2-iv1)/(d2-d1))/(d3-d1). Preserve volatility points/day squared and explicit node selection. Missing/duplicate nodes refuse; do not silently assume uniform spacing.
+
+### L15 — IV less five-day realised volatility
+
+**Gate:** G2. **IDs:** D107. **Prerequisites:** L12, L10b. **Initial status:** PROPOSED_NOT_ATTEMPTED.
+
+Compute 100*(selected D096-D035) after explicit compatible annualised decimal-vol conversion and subject/time/cutoff alignment. Require actual public D035 from its lawful profile, not a forged answer or a D036 replacement. Refuse incompatible annualisation/knowledge/domain.
+
+### L16 — IV less ten-day realised volatility
+
+**Gate:** G2. **IDs:** D108. **Prerequisites:** L12, L10b. **Initial status:** PROPOSED_NOT_ATTEMPTED.
+
+Compute 100*(selected D096-D036) under explicit common annualised units and exact predecessor/as-of/cutoff identity. Refuse incompatible profile or wrong horizon; never substitute five-day volatility.
+
+### L17 — ATM straddle midpoint premium
+
+**Gate:** G2. **IDs:** D109. **Prerequisites:** L04, L10c. **Initial status:** PROPOSED_NOT_ATTEMPTED.
+
+Select compatible actual CALL/PUT D087 using actual D091 and accepted ATM/expiry/strike selection. Return sum of midpoint premiums in currency per underlying share, retaining both source/selection identities. Refuse unmatched side/expiry/units or absent eligible bucket.
+
+### L18 — Straddle implied move percentage
+
+**Gate:** G2. **IDs:** D110. **Prerequisites:** L17, L10c. **Initial status:** PROPOSED_NOT_ATTEMPTED.
+
+Compute 100*D109/positive aligned R118 spot in compatible currency-per-share units. Retain straddle and spot identity. Do not multiply per-share premium by an inferred 100-share contract multiplier. Refuse nonpositive spot, missing or incompatible units.
+
+### L19 — Option trade, quote and D015 profile
+
+**Gate:** G3. **IDs:** Supporting obligation; zero new identity count. **Prerequisites:** L00. **Initial status:** PROPOSED_NOT_ATTEMPTED.
+
+Bind R120/R121 selected-option prints, contemporaneous R126/R127 quotes, R015 right and explicit R016 multiplier, plus an actual option-domain D015 quote-first/tick-test direction profile. Preserve defined unknown-sign handling. Stock-only D015 or assembled quotes alone do not prove option prints. Independently admit/prove only necessary new option-domain support; no provider integration, purchased feeds or fabricated timestamps.
+
+### L20 — Signed option flow
+
+**Gate:** G3. **IDs:** D120. **Prerequisites:** L19. **Initial status:** PROPOSED_NOT_ATTEMPTED.
+
+Return both signed_contracts=sum(sign*size) and signed_premium_notional=sum(sign*size*trade_price*multiplier) over the exact admitted window. Use actual compatible option D015 and retain all trade/quote/right/multiplier members and unknown direction treatment. Missing lawful sign/source/multiplier refuses.
+
+### L21 — Flow by delta bucket
+
+**Gate:** G3. **IDs:** D121. **Prerequisites:** L20, L04. **Initial status:** PROPOSED_NOT_ATTEMPTED.
+
+Group actual D120 flow by actual D091 bucket under immutable expiry/CALL-PUT/window/member rules. Preserve required contracts/notional components and exact members. Do not supply group answers as configuration or quietly turn missing classification into zero. Refuse incompatible grouping/coverage/time.
+
+### L22 — Flow by expiry
+
+**Gate:** G3. **IDs:** D122. **Prerequisites:** L20, L08. **Initial status:** PROPOSED_NOT_ATTEMPTED.
+
+Group actual D120 by compatible actual D085 expiry/DTE under immutable bucket/window/units and member rules. Preserve CALL/PUT identities and component notional. Refuse missing or incompatible expiry assignment/calendar rather than silently dropping required members.
+
+### L23 — Relevant next scheduled event
+
+**Gate:** G4. **IDs:** D062. **Prerequisites:** L00. **Initial status:** PROPOSED_NOT_ATTEMPTED.
+
+First resolve R284 public event identities, revisions/relevance and knowledge-cutoff selector plus compatible actual D001. Then select earliest relevant visible event strictly after as-of and return canonical seconds plus exact seconds/60 minutes. Preserve event/vintage selection and accepted no-event absence semantics. A timestamp alone does not constitute a scheduled-event source.
+
+### L24 — Surface and density calculation conventions
+
+**Gate:** G4. **IDs:** Supporting obligation; zero new identity count. **Prerequisites:** L09, L10b, L10c. **Initial status:** PROPOSED_NOT_ATTEMPTED.
+
+Bind every D102 raw role, (log(strike/spot),T) coordinates, cubic B-spline basis/knots/weights/constraints and numerical tolerance. Supply immutable OptionRevaluationConventionVersion with model/exercise/rates/dividends/carry/time/scheme/Greek scaling. Separately bind D111 decreasing convex call-price spline, D102 quality tolerance, strike grid/normalisation and tail thresholds/integration boundary rules. Inspect available pinned mechanisms without installing dependencies or choosing a new estimator. Unaccepted convention/numerical policy blocks affected descendants.
+
+### L25 — Constrained IV surface residual
+
+**Gate:** G4. **IDs:** D102. **Prerequisites:** L24. **Initial status:** PROPOSED_NOT_ATTEMPTED.
+
+Fit total variance IV^2*T on (log(strike/spot),T) by constrained cubic B-spline weighted least squares. Use inverse squared positive IV bid/ask width, otherwise equal weight. Enforce nonnegative variance, non-decreasing calendar variance and strike-slice call-price convexity under the actual revaluation convention. Return weighted RMS IV residual plus per-point residuals with declared units. Refuse missing convention/coordinate coverage or infeasibility; no generic polynomial substitute.
+
+### L26 — Risk-neutral terminal density
+
+**Gate:** G4. **IDs:** D111. **Prerequisites:** L25, L09, L10c. **Initial status:** PROPOSED_NOT_ATTEMPTED.
+
+Use actual same-snapshot D102 quality acceptance, CALL D087 across strikes, D086 and all direct R034/R035/R014/R015 roles. Fit a decreasing convex cubic spline directly in call price versus strike. Obtain nonnegative second-derivative state-price density, then normalise grid mass to one. D102 fit residual is not a call-price curve. Preserve spline/grid/normalisation/convention lineage; refuse bad quality, infeasible density or zero mass.
+
+### L27 — Lower risk-neutral tail
+
+**Gate:** G4. **IDs:** D112. **Prerequisites:** L26. **Initial status:** PROPOSED_NOT_ATTEMPTED.
+
+Trapezoidal integrate actual normalised D111 below immutable threshold with explicit grid/interpolation/boundary/out-of-grid rules. Retain probability, threshold and density identity. Refuse invalid density or unsupported threshold coverage; do not refit inside this child.
+
+### L28 — Upper risk-neutral tail
+
+**Gate:** G4. **IDs:** D113. **Prerequisites:** L26. **Initial status:** PROPOSED_NOT_ATTEMPTED.
+
+Trapezoidal integrate actual normalised D111 above immutable threshold. Independently derive expected upper-tail mass under declared endpoints; do not assume one-minus-lower without matching threshold/boundary support. Preserve identity and refuse unsupported density/threshold coverage.
+
+### L29 — Attributed replenishment for both instruments
+
+**Gate:** G4. **IDs:** D141. **Prerequisites:** L00, L19. **Initial status:** PROPOSED_NOT_ATTEMPTED.
+
+Resolve full book/trade histories and execution-versus-cancellation attribution or separately owner-authorised named observable proxy; bind clock and delta_t_max before code. Keep K08 first qualifying same-subject/side/price restoration, one match per depletion and capped credit. Let denominator=sum(eligible depleted size)>0 and score=sum(credited replenishment)/denominator; a zero numerator/score is permitted. Stock and selected-option pairs are separate. Anonymous size decreases alone do not establish executions; missing source/proxy authority remains held.
+
+### L30 — Three-component monitored-basket breadth
+
+**Gate:** G4. **IDs:** D151. **Prerequisites:** L00. **Initial status:** PROPOSED_NOT_ATTEMPTED.
+
+Resolve immutable full US monitored basket, neutral count/weight mode, R037/R043/R137/R042 source roles, session/as-of/vintage/member consistency and result carrier before code. Preserve three separate eligible denominators for positive vs session-open, above VWAP and above prior official close. K02 names fractional components while catalogue says percent: bind explicit typed fraction/100-times-percent representation under accepted unit version; never infer scale or collapse components. Prove full admitted basket with differential member eligibility and zero-denominator refusal.
+
+### L31 — Paused OFI decision only
+
+**Gate:** G4. **IDs:** D145. **Prerequisites:** L00. **Initial status:** PAUSED_IMPLEMENTATION.
+
+D145 remains PAUSED: no implementation, product cases or acceptance-count contribution. Preserve effective roles R185/R187/R188/R189/R190 under the 16 October approved overlay and original source-event-time K17 hold. Prepare the actual event-time source path and, as proposal only, a separately versioned receipt-clock alternative. Reactivation requires explicit owner decision, lawful meaning/source contract, finite implementation leaf and separately approved proof allocation through a plan amendment. The request for 20 or 30 outputs does not lift this pause.
+
+### L32 — Final acceptance and durable close-out
+
+**Gate:** G5. **IDs:** Supporting obligation; zero new identity count. **Prerequisites:** L00, L01a, L01b, L01c, L01d, L02, L03, L04, L05, L06, L07a, L07b, L08, L09, L10a, L10b, L10c, L11, L12, L13, L14, L15, L16, L17, L18, L19, L20, L21, L22, L23, L24, L25, L26, L27, L28, L29, L30, L31. **Initial status:** PROPOSED_NOT_ATTEMPTED.
+
+**Final independent TESTER boundary for CHAT_MANUAL:** L32 entry requires all non-blocked predecessors to have cleared their necessary source/contract obligations and supplied committed IMPLEMENTED_UNTESTED outputs, NOT prior product TESTED_ACCEPTED. Blocked dependencies remain explicit and prevent false final completion. Reconcile all 27 mandatory implementation outputs, seven supporting profile obligations, each dual-instrument variant, all 28 dispositions and seven external holds. The separate Tester chat is the sole strict product-test executor. It executes only newly allocated/non-reusable proofs in dependency order, verifies independent oracles and durable public readback, repairs via returned Worker handoff when necessary and individually issues TESTED_ACCEPTED or BLOCKED determinations with exact run records. Reuse earlier exact uninvalidated evidence without duplicate green. Only after all necessary proofs and reviews may this leaf perform final G5 census, source/profile/claim audit and close-out; publish FINAL_ACCEPTANCE.md, FINAL_CENSUS.json, remaining-work table and independently verified checkpoint. Any mandatory blocked/unaccepted item means PARTIAL/BLOCKED; D145 remains an explicit paused exception.
+
+## 4. Proof and review law
+
+**Owner-approved mode: CHAT_MANUAL; independent final tester at L32.** Worker and Tester are distinct ordinary ChatGPT chats with manual checkpoints; no delegated sub-agent is assumed. The Worker establishes contracts and proof oracles before implementation, records each output IMPLEMENTED_UNTESTED and does not run product tests or speculative RED. L32's separate independent Tester is the sole strict executor for authorised new product cases, dependency-ordered; documentary reviewers may clear source/meaning earlier without claiming product acceptance. The deferred schedule accepts increased risk of later upstream defect discovery but does not defer source authority, proof design, original tests, durable checkpoints or final coverage. The historical independent Work reviewer remains attributed evidence for R1, not a newly designated chat tester.
+
+**Prospective allocations:** standard two physical cases per new identity, SUCCESS and REACHED_REFUSAL; explicit four-case exception for D141/D142/D144, one pair for stock and another for selected options. All retain a six-case hard ceiling, not a target. This is 60 prospective signal cases: 44 core and 16 extension. D079/D080/D081 have six cases total, two per identity; shared setup must still prove each coefficient against one joint fit. CSV rows and prose refusal ideas do not silently add physical cases or conceal parameterised scenarios.
+
+Seven separately named supporting profile pairs are proposed, up to 14 cases: history-compatible D071/D075/D076/D077, option true-instant D001, US-option D004, option trade-direction D015. They count as zero new identities. Reuse any genuinely exact already supported profile instead of executing budgeted cases unnecessarily. Additional changed D035/D036/D087 profiles or M00 projections are **not** assumed tested or granted a zero-case waiver: identify the finite changed proposition, material invalidation and separate approved allocation before editing/executing it. No unbounded support budget.
+
+The owner-approved R2 active evidence ledger retains all 35 original proof obligations and unchanged source/evidence classifications, with independent manual product testing scheduled at L32; its scheduled cases remain unreleased until the owning source contract clears. The prior R1 WORK_DELEGATED ledger is preserved in the parent Git snapshot. The 74 prospective named case IDs and budgets in PROOF_ALLOCATION_PROPOSED.json remain unchanged; no product run is claimed here. D145 has no executable allocation while paused.
+
+Expected values come from accepted meaning and independent calculations, not worker helper outputs. A refusal returning before the intended invariant is not reached proof. For ordering, reset, omission or absence, the independent reviewer uses at least one authority-derived public sequence which a bundled helper cannot pre-satisfy, within the approved cases. K06 correlated data must distinguish joint OLS; D078 must encode actual per-coefficient mixed lineage; D142 must reach the terminal window; D144 must reconstruct the full required pair set. Do not weaken validators, rename/skip valid tests, or fabricate facts to obtain green.
+
+**Owner-approved runtime target: CPython 3.13.5.** Earlier CPython 3.12.14 / SQLite 3.53.1 test records remain immutable historical evidence, not proof of runtime equivalence. At the original 30 October local setup, pyproject.toml, .python-version, Ruff and mypy configuration targeted Python 3.13(.5), and an isolated venv has PyYAML, pytest, mypy, Ruff, hatchling and pure psycopg from the separate CPython-3.13 wheelhouse. The optional psycopg-binary wheel is not present. That earlier local Python sqlite3 module reported SQLite 3.46.1; the later F02 receipt separately reports 3.54.1 in its original environment, without independently qualifying the current Ubuntu host. Required SQLite and optional backend compatibility remain UNRESOLVED until actual governed evidence is obtained. Before any product proof, establish the versioned SQLite feature requirement, compatibility and accepted runner. Do not assert runtime parity without evidence, silently install/substitute packages, or rerun unaffected old proofs just because the interpreter changed. Changed-Python validation is narrowly scoped and logged with command and backend. No blanket pytest, whole-project lint/typecheck, global M00→M01→M02 E2E suite or unaffected regression.
+
+Preserve original failures, findings, repairs and results. Rerun failed cases only after a documented relevant material repair. Rerun a successful proof only after exact material invalidation; checkpoint/session/packaging changes are not invalidation. Classify recurrent findings by the shared mechanism, not endless witness-specific patches.
+
+Reuse EVIDENCE_REUSE_INDEX.json and the immutable original `handoff/m02_remaining_readiness/EVIDENCE_REUSE.json` for their 98 historical and 11 L14 exact propositions, including original candidate, profile, generation, backend, hashes, reviews and raw logs. This reuse is not a new endorsement of old mathematics or a promotion to current provider/operational readiness.
+
+## 5. Checkpoint and transfer contract
+
+Keep the historical fixed transfer baseline `97f944d51ab9e403250fe76910e2754b50425c73`. Original full-history baseline archive is `NVDA_DOWNSTREAM_RECONCILIATION_L00_CHECKPOINT_20261028.tar(2).gz`; embedded bundle is `NVDA_DOWNSTREAM_RECONCILIATION_L00_CHECKPOINT_20261028_FULL_HISTORY.bundle`, SHA256 `91db4a1989bff366c1f547c5776ca886c276b6b1310027ae929aa1cd1efee4b9`. The durable recovery uses the saved oracle-review checkpoint at 0bc2e067. GitHub main at intake is a separate current publication baseline, not a substitute for the old transfer prerequisite. L00 must verify recipient access to original baseline and its required refs before claiming additive portability. Package/dependency archives are excluded from this upload.
+
+**PROPOSED GITHUB-PINNED CHECKPOINT CONTRACT — NOT ACTIVE UNTIL REVIEWED/APPROVED.**
+The owner has since directed GitHub/Ubuntu handovers and separate Worker and Tester chats. The F02 candidate is independently restored and published under `recovery/r2-g0-f02-20261111` at immutable commit `16b7cc67f5d24336d3768e2da006819474a8c792`; four separately named archival refs preserve nonancestor original tips. The independent Ubuntu fresh remote receiver recreated all 66 original ref names from their verified source manifest, matched 4,024 tracked paths/tree SHA and passed full `git fsck`. This was a same-thread technical verification and is **not** the distinct Tester-chat confirmation or backend product proof.
+
+For each future leaf the Worker proposes a separately committed scoped GitHub source candidate with target SHA, tree, complete contract/source/proof ledger, original-ref mapping, non-Git asset hashes, exclusions, and a self-contained independent-review handover. The Tester must use a genuinely fresh receiver and independently confirm exact published refs, all 66 source names/tips (including legacy tips not ancestral to the candidate), all additional declared historic/evidence refs, Git object closure, tree/blob inventory, full `git fsck --full`, non-Git evidence provenance and required product test authority. A successful push or arithmetic round trip proves no product semantics. Any necessary historical full GitHub ref aliases not present in the local F02 bundle remain explicitly unverified; no synthetic snapshot is presented as their original commit chain.
+
+Until the owner expressly adopts a recorded **PINNED_REMOTE_CHECKPOINT** strategy based on independent receipt, the previous local-only cumulative additive/bundle contract remains the historical fallback for work it governs; it must not be silently equated with the new remote method. No force push, history rewrite, promotion to main or automatic product acceptance is authorised.
+
+**Proposed integrity at every GitHub handoff:** preserve exact commit/tree and tracked blob listing, previous and newly added refs, source/ledger identity, non-Git assets and SHA-256 separately. In a fresh recipient repository fetch the pinned remote candidate and all necessary archival refs, recreate/verify every declared original name/tip from an immutable manifest, check target HEAD/tree/full tracked blob inventory, ancestry and `git fsck --full`. If using the historical fallback bundle, additionally verify bundle prerequisites and `git bundle verify`. Independently inspect loose supplied files. Publish a retrievable, independently verified remote checkpoint before dependent work; if the receiver or required non-Git assets cannot be restored, report BLOCKED_TRANSFER. Git transfer integrity is not semantic or product acceptance.
+
+If a receiver lacks any declared historical ref or non-Git prerequisite, report BLOCKED_TRANSFER. A source ZIP or matching synthetic tree is not original Git-history closure. At any blocked semantic leaf preserve the last proved state and first unmet invariant; no blocked output becomes accepted by transport success.
+
+## 6. Counting and final acceptance
+
+One D identity counts once only after its **new exact controlled profile** has independent TESTED_ACCEPTED evidence at L32, all required instrument variants, immutable source/claim/version bindings, durable public readback and an independently restorable checkpoint under the approved strategy. Intermediate IMPLEMENTED_UNTESTED is not a new accepted identity. Old identities, supporting variants, L14 reuse, documents, holds and test-function counts do not count as new outputs.
+
+The named core20 milestone requires all twenty specified identities, not an arbitrary mixture of held or reused signals. Full programme completion requires all 27 mandatory implementations, necessary support proofs, final G5 handover and explicit paused-D145 disposition. Core20 achieved with further mandatory work open is progress, not COMPLETED. If unresolved source/policy prerequisites prevent the target, close PARTIAL/BLOCKED with exact identities and owners; no automatic scope reduction because of complexity or quota pressure. Only the owner may approve a bounded rescope.
+
+A maximum 27 new identity acceptances can extend historical controlled accounting from 98 to 125; this does not establish full 126 native/production/operational readiness. D145 remains unresolved unless separately reactivated and proved. Track controlled implementation acceptance, native/source readiness and production-policy approval as separate fields.
+
+States: PROPOSED → AUTHORITY/CONTRACT_READY → IMPLEMENTED_UNTESTED → independently TESTED_ACCEPTED. RETURNED/BLOCKED stay explicit. A documentary-ready contract and stable committed interface may support **provisional** child implementation, but an untested parent cannot release dependent acceptance, a gate or final count. L32 independent testing resolves dependencies in order and returns defects to Worker for bounded repair before any relevant child is accepted. Final census reports exact new accepted identities/variants, reusable old evidence, supporting profile results, remaining decisions and whether core20/full27 were achieved.
+
+## 7. Required decisions and publication boundary
+
+Owner acceptance of this plan would adopt the listed already specified V1 numerical choices **for controlled synthetic implementation only**: the joint OLS test-design profile, D091 bins, D142 thresholds/receipt-clock window, D144 ranks/skew/units, with concrete repaired oracle bindings accepted before use. This does not retrospectively turn original test-design permission into product execution or approve production settings. Undefined calendar/provider facts, pricing/revaluation conventions, numerical tolerances, additional proof allocations and D145 reactivation remain concrete decision gates before dependent coding.
+
+Decision leaves prepare finite proposed values/versions, primary source evidence, units/clock/scope, downstream effects and exact receiver before escalating a **genuinely unresolved owner-reserved** decision. Investigate available repository and authoritative sources first; do not request reapproval of an already commissioned step, wait for an owner 'continue' at an ordinary leaf, or suspend unrelated independently executable work. A new decision remains necessary only when applicable authority truly reserves the substantive choice to the owner. Synthetic configuration must be labelled; no invented official provider fact. No account purchase, live provider session, order action, unapproved external communication or provider integration is commissioned. The specifically authorised GitHub repository/checkpoint publication and independent reviewer handovers are exceptions within the accepted documentary scope; they remain subject to their own authority and verification.
+
+Historical R1 publication and subsequent R2 local-only restriction are preserved as their original decisions. Later owner instruction of 10–11 November 2026 supersedes the local-only prohibition **for this proposed successor**: GitHub/Ubuntu pinned branch transport and distinct ChatGPT Worker/Tester conversations are the new direction, subject to exact acceptance. Frozen GUARDRAILS, original planning evidence and preserved Git ancestry remain untouched; no new product-test authority follows merely from plan installation.
+
+Initial R1 status: all 39 leaves proposed/not attempted except paused D145 implementation; all current holds retained; new product runs zero; fresh independent R1 review pending. The final independent report and publication receipt supply later review/transport status without pretending owner acceptance or implementation commission.
 
 
-### Current owner clarification — delegated independent G4 review, 29 October 2026
+## 8. Commissioned execution ledger — 30 October 2026
 
-The owner clarified: “But you can spawn, as you always do, an external, like a sub-agent to be the external tester. I don't understand what the issue is.” The separate independent sub-agent is commissioned to perform G4 documentary acceptance here. This overrides the earlier CHAT_MANUAL requirement for another manually transferred conversation for this review; independence, substantive scope, retained requirements and truthful findings remain mandatory. The reviewer must assess the full commissioned G4 documentary obligations, original G2 provenance, all28 dispositions and retained98/11 proof scopes, plus tentative synthetic R3 profiles and bounded clarification repair. A prior internal consistency review alone is not a full G4 verdict. No product test/code/runtime/source acquisition or production-policy approval is authorised by this clarification. Record a scoped ACCEPT/PARTIAL/RETURN/BLOCKED verdict from primary evidence, preserving any unmet R3 programme requirement explicitly. Do not manufacture full acceptance by equating synthetic profile authorship with production readiness.
+Latest-main baseline: `8ff7d82377e9bf8f9fc75c1ecef70f0ab29a2ada`. Execution branch: `execution/accepted-r1-20261030`. Exact predecessor is archived at `handoff/m02_completion_28_execution/L00/PREDECESSOR_EXEC_PLAN.md`. GUARDRAILS and actual AGENTS remain byte-identical. Independent documentary reviewer / sole strict executor: `/root/independent_executor`. L00 is IN_PROGRESS; no consumer released and no new product run. Current status lives in `handoff/m02_completion_28_execution/EXECUTION_REGISTER.json`; retained proposed packet remains immutable historical evidence.
+
+Companion-document resolution: inherited bare register, source inventory, proof allocation, schema and evidence-index filenames resolve to `handoff/planning/m02_foundation_completion_20261030/`. Active mutable execution register and evidence ledger resolve to `handoff/m02_completion_28_execution/`. Source/profile/claim bindings in the draft packet remain historical/unbound until their owning leaf releases them.
+
+L00 independent documentary result: ACCEPT_DOCUMENTARY following bounded candidate-provenance/navigation repair, recorded in `L00/REVIEW.md`. Initial independent fresh restoration verified all66 original refs and236 remote refs. Final committed additive export/push/readback/exposure must finish before consumer release; no product test or new identity acceptance.
+
+Historical R1 L00 transfer stop: `BLOCKED_TRANSFER` at its old publication boundary. The local R2 setup has a different, owner-approved bundle-only transfer strategy; its own fresh restoration result is recorded separately under `handoff/planning/chat_manual_transition_20261030/`. No signal leaf acceptance is inferred from resolving physical transfer. D145 remains paused and there have been no new product tests.
+
+## 9. Owner-approved local R2 transition and unclosed acceptance boundaries
+
+### Scope and status
+
+The owner approved R2 CHAT_MANUAL and a local-only Git-bundle handover. This local worktree contains an independently Git-tree-verified snapshot of approved R2 source. The original R1 remote execution branch `363923d47b81fca50e64036bef3c8601501e3c16` is unaffected. GitHub source commit `6feb50bf...` is NOT locally present as a historical commit; the matching tree is preserved under an explicitly synthetic local commit atop the available older historical L03 parent. Preserve the full 39-leaf/27-output scope, all holds, D145 PAUSED, dual-instrument obligations, approved AGENTS and frozen GUARDRAILS.
+
+### Remaining G0/L00 and product execution conditions
+
+1. This R2 owner-authorised local governance installation is not independent G0 acceptance. Preserve the historical L00 register and review; record the local transport verification separately without overwriting old results.
+2. Verify each new product source contract and required decision independently before its dependent implementation; the Worker authors tests but does not execute them.
+3. Only the distinct manual Tester chat executes authorised new product cases at L32 in dependency order; current product run count remains zero.
+4. The historical local R2 plan required owner-approved local Git bundles and independent fresh restores; adoption of the proposed §5 remote checkpoint is a separate future owner decision. Retain original L00 baseline and historical refs; missing original GitHub intermediate objects are explicitly not certified.
+5. Runtime target is Python 3.13.5. SQLite 3.46.1 parity with historically relied-upon 3.53.1 is not established; the optional psycopg-binary wheel is unavailable in the inspected wheelhouse. These limitations remain explicit where materially relevant.
+6. The historical local R2 plan forbade GitHub writes. The proposed successor would authorise scoped GitHub commits only under an accepted remote checkpoint contract. Additional owner decisions for missing mathematical/domain/provider policies remain governed by the unchanged original leaf contracts.
 
 
-### G4 delegated independent documentary acceptance — 29 October 2026
+## 10. Proposed Ubuntu/GitHub transition and PostgreSQL preparation — NOT ADDITIONAL R2 LEAVES
 
-Fresh independent reviewer /root/independent_g4_acceptance issued ACCEPT_DOCUMENTARY in handoff/m02_foundation_prerequisites_20261029/G4_DELEGATED_INDEPENDENT_REVIEW.md (review commit1526de4) for candidate9974df6638d920746df8e2bde70a4ff38013462d/treeee1877c9776b7ef7cfe29ccfed7881b8fca82407. Current commissioned L00–L07 prerequisite-disposition packet and the later tentative synthetic profile deliverables qualify for documentary acceptance. Original G4 returns and old R3-unsatisfied labels remain historical; the original real-world policy approval/readiness is still unresolved. Proposed profiles and named receivers satisfy the later synthetic proposal scope without granting production approval. All28 implementation holds,98 historical controlled profiles,11 scoped L14 claims and7 external holds are preserved. No product tests or implementation were performed.
+These bounded stages supplement but **do not renumber, replace or augment the 39 existing R2 leaves** and do not create a second concurrently active root ExecPlan. The November owner-endorsed PostgreSQL ADR is a scoped *additional* M00 backend; M02 remains SQLite, M01 remains bootstrap, existing SQLite evidence and exact provenance remain protected.
 
-The fresh reviewer returned an active embedded-profile propagation defect, preserved in G4_DELEGATED_RETURN_REPAIR_01.md and materially repaired by9974df6; exact equality of all six embedded and canonical profile objects is independently verified. No open material documentary finding remains within this commission. R7 independent semantic review is satisfied; its final cumulative export/fresh-restore/save/exposure remains conditional on the external controller receipt for this committed handover. No self-referential bundle checksum is asserted here. Once that receipt succeeds, documentary handover is complete; M02 implementation or production/source readiness is not.
+| Stage | Required output and evidence | Status at successor proposal |
+|---|---|---|
+| T00 — Exact F02 raw recovery | Original ZIP and baseline SHA-256, restored F02 HEAD/tree/parent, 66 named refs, 4,024 inventory and full Git fsck; independent documentary F01/F02 acceptance retained without runtime-product conflation | Independently observed locally and on Ubuntu; no product execution |
+| T01 — Successor authority | This complete proposed root text, root AGENTS/test override and ledger, exact source and current owner decision reconciliation, separate independent review and explicit owner approval | PROPOSED, NOT APPROVED |
+| T02 — Separate GitHub Tester receiver | Distinct ChatGPT Tester fetches pinned actual GitHub commit/archival refs into a fresh checkout; validates named original 66-tip map, required extra historical/evidence refs, full object closure/fsck, tree/blob inventory, non-Git assets and returns a committed receipt | Planner mechanically verified a fresh remote receiver; genuinely separate Tester sign-off outstanding |
+| T03 — Ubuntu Python/SQLite qualification | Bind exact CPython 3.13.5, dependency/wheel/runner source and actual `libsqlite3.so.0` 3.54.1 loaded into selected interpreter; preserve historical 3.12.14/SQLite 3.53.1 evidence | UNKNOWN, runtime test not performed |
+| T04 — Additional M00 PostgreSQL contract | Review existing M00 PostgreSQL adapter and A00 constructor, exact PG18.6 installed server, Psycopg3.3.4 ABI, isolation/privilege role/schema and finite *separately admitted* PG persistence/concurrency/rollback proofs | OWNER-ENDORSED DIRECTION, CONTRACT NOT ADMITTED |
+| T05 — PG source implementation only if needed | Independently justified minimal M00 code delta, tests authored before code, fixed candidate and `IMPLEMENTED_UNTESTED` | NOT COMMISSIONED |
+| T06 — Independent product tests | Only admitted changed/new propositions, at the accepted separate Tester L32 boundary and on the exact pinned candidate; show real PostgreSQL transactions, durable readback, reached refusal, roles and receipt | NOT COMMISSIONED |
+| T07 — Final acceptance/census | Exact old/new proof and leaf dispositions, unresolved holds/D145, final Git checkpoint, independent review and owner promotion | NOT COMMISSIONED |
+
+**Release law:** T01 acceptance of exact root files, AGENTS/test override, ledger and documented transport strategy precedes resumed G1–G5 implementation. Real backend test or configuration cannot occur from this proposal alone. A declaration that a fresh Git receiver can fetch objects is neither approval of an exact new root nor independent product proof.
+
+# Proposed coordinated amendment
+
+Status: PROPOSAL ONLY, not installed, not a case release. This section supersedes conflicting prospective final-only L32 instructions in the preceding proposal if and only if the owner adopts the exact complete package after independent acceptance. Sections 8–9 are preserved historical narrative, not current leaf status or installation authority. The proposed current register is handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_EXECUTION_REGISTER.json here; its 39 obligations and dependencies are retained. The root October documentary plan remains active today.
+
+The current accepted technical baseline is main 02a19ae02678824908568d8db08f0e1d015cb861. Python 3.13.5 configuration, the SHA-bound 51-diagnostic Ruff policy, Makefile/Actions parity and architecture fixtures are already integrated. Do not repeat that integration absent an evidenced defect. Architecture CI is not product runtime qualification.
+
+Adopt dependency-focused independent testing under handoff/planning/t01_owner_lint_integration_20261115/DEPENDENCY_WINDOWS.md and handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_DEPENDENCY_WINDOW_LEDGER_DELTA.json here. G1/G2/G3/G4 are candidate windows, not batches automatically released after L06/L18/L22/L30. Permit the designated separate Tester to prove an admitted support or parent before substantial dependent work, even inside a nominal gate. Keep all 39 leaves; no added product obligation or case authority. L32 consolidates accepted unchanged results and executes only remaining admitted cases in prerequisite order; no routine duplicate GREEN. Parent IMPLEMENTED_UNTESTED may support provisional coding only on an independently cleared stable contract; it never releases child acceptance.
+
+The proposed ledger at `handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_TEST_EVIDENCE_LEDGER.json` is the proposed replacement for handoff/m02_completion_28_execution/TEST_EVIDENCE_LEDGER.json, and the proposed register at `handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_EXECUTION_REGISTER.json` is its proposed companion replacement. All inherited bare coverage/allocation/source filenames resolve to handoff/planning/m02_foundation_completion_20261030/ as stated in section 8. Do not overwrite historical reviews, receipts, original proposal files in other directories, or old acceptance statements. Source identity commits in the ledger record historical origin, not a qualified candidate binding. Every execution requires a new exact admission record.
+
+Proposed checkpoint strategy: PINNED_REMOTE_CHECKPOINT, contingent on independent receiver acceptance of the exact ref/asset contract. Publish a scoped commit per leaf to the commissioned main-derived branch; preserve the historical fixed 97f944d51ab9e403250fe76910e2754b50425c73 baseline and every required ref/name. Bind candidate/tree/full blob inventory and non-Git asset hashes. Receiver fetches required refs into isolation, verifies object closure, names/tips and assets before dependent acceptance. Missing inputs mean BLOCKED_TRANSFER. Historical cumulative bundle fallback remains conditional on original baseline bytes and fresh restore; a newly generated full bundle is not the original archive. Do not force-push or overwrite main. Ordinary verified checkpoints need no routine continuation approval.
+
+Worker owns proposals, scoped implementation and repairs; documentary reviewer owns independent authority clearance; separate Tester alone owns strict product execution, oracle adequacy and semantic verdict. Owner adopts exact governance, transport and schedule, designates Tester and retains missing source/domain policy, finite admission expansion, runtime/product qualification and main merge decisions. Independent review of this proposal is still pending. No environment probe grants product acceptance. PostgreSQL stages remain separate from SQLite and uncommissioned here. D145 remains paused with zero cases.
+
+Current dependency availability correction: the earlier optional-binary-wheel statement describes its October environment. Accepted main now vendors the cp313 Psycopg binary wheel alongside cp313 mypy/librt/PyYAML. `--extra dev` installs pure psycopg, not the postgres extra; this does not require PostgreSQL work on the SQLite path. Historical export_m00_synthetic.py retains its exact 3.12.14 refusal and is not a 3.13-qualified runner. No modification or rerun of that exporter is commissioned here.

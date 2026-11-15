@@ -1,0 +1,547 @@
+{
+  "main_base": "02a19ae02678824908568d8db08f0e1d015cb861",
+  "prior_candidate": "a28702cde241b3f833b51071aac8cb41591b37dd",
+  "count": 90,
+  "paths": [
+    {
+      "path": "AGENTS.md",
+      "class": "owner-authorised exact governing installation",
+      "relative_to_prior_candidate": "NEW_OR_CHANGED",
+      "sha256": "329c95bc2d9034cee4eca3de86d59e7029e6ad8c062ebb4885af9b74d83a6bce"
+    },
+    {
+      "path": "EXEC_PLAN.md",
+      "class": "owner-authorised exact governing installation",
+      "relative_to_prior_candidate": "NEW_OR_CHANGED",
+      "sha256": "db6d8ae6ad7b43402290c07d3d23d9ba018dd187c73ba3f186ac218e56b2d32b"
+    },
+    {
+      "path": "handoff/astra_adr_completion_20261115/ADDITIVE_HEADER_COMPLETION.json.restore.json",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "89e0c52317cd481c160c69aa37064d9a00dab6ff7048a11f48ddebdb4dbccb59"
+    },
+    {
+      "path": "handoff/astra_adr_completion_20261115/CHANGED_PATHS.json",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "SELF_INVENTORY_NO_SELF_HASH"
+    },
+    {
+      "path": "handoff/astra_adr_completion_20261115/COMMANDS_AND_OUTCOMES.md",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "edd7f03834c1792168ba6f2d9ff7bf4ccd3fedca038053b93a6ffb2a00056493"
+    },
+    {
+      "path": "handoff/astra_adr_completion_20261115/CURRENT_REFS.txt.restore.json",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "a50a94b43cb75f55c7a6770c39305035ada3e749b8900ecc2418ed140630fa6c"
+    },
+    {
+      "path": "handoff/astra_adr_completion_20261115/CURRENT_REF_MANIFEST.json.restore.json",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "d561fc3a3b32cda294c1c6e0a53823a057f8b5221660d755587a131dacb1ccce"
+    },
+    {
+      "path": "handoff/astra_adr_completion_20261115/F02_CURRENT_READBACK.json",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "0f80c075ed978080c52f0d61ae8add18dbc90776d4ca37183e144b3295dce69c"
+    },
+    {
+      "path": "handoff/astra_adr_completion_20261115/GITHUB_REMOTE_RECEIVER_RECEIPT.json.restore.json",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "b4f4af407a805889e33dba3bdd233e4352b32797358bd85c4dab23aa9e8f0805"
+    },
+    {
+      "path": "handoff/astra_adr_completion_20261115/GOVERNANCE_COVERAGE.json",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "c19412d7bb8c7d54c148d511a2215a0d3b39c6fdc6d7cc85aed795ebd0777529"
+    },
+    {
+      "path": "handoff/astra_adr_completion_20261115/INDEPENDENT_GOVERNANCE_REVIEW.md",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "83c2fce9cff69bea26b37b846f655a318b83dad3296d598d7b38d8d2b000f86e"
+    },
+    {
+      "path": "handoff/astra_adr_completion_20261115/INDEPENDENT_REVIEW_HANDOVER.md",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "34b3a35b8ff86b2e96578e8e67fabba244377437b47c6927d560be8d2db54322"
+    },
+    {
+      "path": "handoff/astra_adr_completion_20261115/INPUT_PROVENANCE.json",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "1d143fb6ba5e338ef2cdc8f7d9dd810ce5a9c90a8983445b4d37ef0b1b56c79f"
+    },
+    {
+      "path": "handoff/astra_adr_completion_20261115/L00_MANIFEST.json.restore.json",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "e8a2cfa5d5efdf3dd0acb9dcd4e637e381fbde5062873443ab543c5f17bfad92"
+    },
+    {
+      "path": "handoff/astra_adr_completion_20261115/LINT_READBACK.log",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "59f6754fb62542d57a9b177b0e7fa8b9ccaf5427824981a06b804f54f9b7242a"
+    },
+    {
+      "path": "handoff/astra_adr_completion_20261115/MERGED_MAIN_CI.json",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "aaca1e01754e226b389ab11404d1c4ff5cd0293051fd8b68d429d77a1d09791f"
+    },
+    {
+      "path": "handoff/astra_adr_completion_20261115/MERGED_MAIN_CI_EXTRACT.log",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "6e070310b7ae05f369fd1285529d81c7d484d6ec04a0cae8b360f4d639e71cd5"
+    },
+    {
+      "path": "handoff/astra_adr_completion_20261115/NON_GIT_ASSET_RESULTS.json",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "8900807dd9c06ae838b42bf6c66c4428f11a77d876bc97062bae0bdfa9952688"
+    },
+    {
+      "path": "handoff/astra_adr_completion_20261115/OLDER_RELEASE_MEMBERS.json",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "bf82c973c69f83e58a9f9e93bc2525d1232659237ee832296e9ee103ab29b472"
+    },
+    {
+      "path": "handoff/astra_adr_completion_20261115/ORIGINAL_66_REFS.json.restore.json",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "2df4714b04e13aa29064ef2e3f85987a339dd2cd81bbb451cf9af8ee69a3fb59"
+    },
+    {
+      "path": "handoff/astra_adr_completion_20261115/ORIGINAL_BUNDLE_RESTORE.json",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "5a1f6a4a225f82f996c79a31d2fe00c251769a1a09d5f1a7599a7af4f65599a8"
+    },
+    {
+      "path": "handoff/astra_adr_completion_20261115/OUTSTANDING_ASSETS.json",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "d8a22a9ce6a5ecbebb3b687ac3f0076ad7545f6807feb4707d941f471fa8fa90"
+    },
+    {
+      "path": "handoff/astra_adr_completion_20261115/OWNER_DECISION_PACKAGE.md",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "122e2b28bc3adcb2fe42cb4b9971d6de0797b215c8f7466cb79438ba90c86712"
+    },
+    {
+      "path": "handoff/astra_adr_completion_20261115/PROPOSED_AGENTS.md.diff",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "26a595777c622884a6a4f4eff0575f1d2270fa0f9bf28be5e516ce4aeb2db4d3"
+    },
+    {
+      "path": "handoff/astra_adr_completion_20261115/PROPOSED_EXECUTION_REGISTER.json.diff",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "8bd68e036fca98313911a818f72f3704b8b98ed02693bec5ce61cb1f0a7d3c5a"
+    },
+    {
+      "path": "handoff/astra_adr_completion_20261115/PROPOSED_EXEC_PLAN.md.diff",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "a3f7009ab6152975abb58224740e471e6f96508e2175acddbdcc1b23cfffd9f8"
+    },
+    {
+      "path": "handoff/astra_adr_completion_20261115/PROPOSED_TESTS_AGENTS.override.md.diff",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "da300ec5b11ee2bc669056ec6f5c678e304d62886d3785d85650b414c0b29b99"
+    },
+    {
+      "path": "handoff/astra_adr_completion_20261115/PROPOSED_TEST_EVIDENCE_LEDGER.json.diff",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "fbef2c4f88a5debb9076e21806bbee8d1347bc8597faec1f560c89b3f4a5c8be"
+    },
+    {
+      "path": "handoff/astra_adr_completion_20261115/RECOVERED_ARCHIVE_MEMBERS.json",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "b62e62b4cac0702e1467cf7a2d42aa258ec77b87b2ed2811c380fe39587bacb6"
+    },
+    {
+      "path": "handoff/astra_adr_completion_20261115/RECOVERY_AND_ENVIRONMENT.md",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "04ecdd965fed84e1b264f33dfa22d328c1bf5350eed87a881263d983d83fa517"
+    },
+    {
+      "path": "handoff/astra_adr_completion_20261115/RECOVERY_COMMANDS.json.gz",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "a08e209edfb8a23280793cc3d5845500c25efb0431ca4193af7202c475ff562a"
+    },
+    {
+      "path": "handoff/astra_adr_completion_20261115/RECOVERY_COMMAND_INDEX.json",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "1df3f15eff0d55a09711702124e81f660df64915262a8b5c7c893d14c06965ac"
+    },
+    {
+      "path": "handoff/astra_adr_completion_20261115/RECOVERY_SUMMARY.json",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "6b667e2863fdf88f00dc224255953c685d6721733cac4bc70def6e76346abe3a"
+    },
+    {
+      "path": "handoff/astra_adr_completion_20261115/REMOTE_REFS.json",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "b980c026af7a914a8c036b4d52b76080e66d7c645d0c2359e0780d7beb5c9623"
+    },
+    {
+      "path": "handoff/astra_adr_completion_20261115/REQUIRED_REF_RESULTS.json",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "22d5a267e0a2f43e67363f18681529753f5955924751c7d219e17ebf59d49e2e"
+    },
+    {
+      "path": "handoff/astra_adr_completion_20261115/RUNTIME_OBSERVATION.json",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "2be26d7926ac1c4c2886641461ac1f4e2bad72afa398410f9f7fe34494217194"
+    },
+    {
+      "path": "handoff/astra_adr_completion_20261115/VALIDATION_RESULT.json",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "7081df779bae8d6fa259cb40812fc5ee305c705b9af1bad97bc6215a7aaf3f38"
+    },
+    {
+      "path": "handoff/astra_adr_completion_20261115/WHEEL_VERIFICATION.json",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "3a0438364882c17012461a1def25f74c2b530db455c8a64aff43cbec3a801cfe"
+    },
+    {
+      "path": "handoff/astra_adr_completion_20261115/procedures/asset_addendum.py",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "7428cad7b17ba2040e5c0037827cc979fa79500fbf67079f641ac0ce61126267"
+    },
+    {
+      "path": "handoff/astra_adr_completion_20261115/procedures/assets.py",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "10a870de2e3f153b903a81632ccca34da2981d80bd6738a2a0db8fc4654433e7"
+    },
+    {
+      "path": "handoff/astra_adr_completion_20261115/procedures/older_assets.py",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "384bc90c4132aafb2e59f2069d2bb712d20f49bfad0038cd77d0de08d2dc8ff3"
+    },
+    {
+      "path": "handoff/astra_adr_completion_20261115/procedures/original_restore.py",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "04c7147a2424f65b8567c566a2449c2817b24c9bf8a8d3261d4885a89688aff8"
+    },
+    {
+      "path": "handoff/astra_adr_completion_20261115/procedures/recovery.py",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "3bb48109e20fcc70b99e9c46d323a50c37bba0bbd51bc03ad810f03e8b38110e"
+    },
+    {
+      "path": "handoff/astra_adr_completion_20261115/procedures/runtime_probe.py",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "e9569cead9149f251aa28e5ac477cbd911c3e6147380dec87d5034fac0b60c5c"
+    },
+    {
+      "path": "handoff/astra_adr_completion_20261115/procedures/verify_package.py",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "d14ffa623ea183d5e9933b2fc9771c3319b2e9226d00bdeab37bcb5151cf0313"
+    },
+    {
+      "path": "handoff/astra_adr_continuation_20261115/CHANGED_PATHS.json",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "NEW_OR_CHANGED",
+      "sha256": "SELF_INVENTORY_NO_SELF_HASH"
+    },
+    {
+      "path": "handoff/astra_adr_continuation_20261115/CONTINUATION_COMMANDS.md",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "NEW_OR_CHANGED",
+      "sha256": "a4975347bf7cebfba102d4e8398f4afb8b4551baa2bd9e59d95e2e16951a01aa"
+    },
+    {
+      "path": "handoff/astra_adr_continuation_20261115/HISTORICAL_LISTING_RECONSTRUCTION.json",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "NEW_OR_CHANGED",
+      "sha256": "cc279c8c18676d343664f1472d350d602f69c6aa080d9b0397076962df5c02c0"
+    },
+    {
+      "path": "handoff/astra_adr_continuation_20261115/INDEPENDENT_INSTALLATION_REVIEW.md",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "NEW_OR_CHANGED",
+      "sha256": "73e678265597015cea04e3cf43de2eb7d5b5ec27f33f224e88b639b0ec84ef95"
+    },
+    {
+      "path": "handoff/astra_adr_continuation_20261115/INDEPENDENT_RECOVERY_ENVIRONMENT_REVIEW.md",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "NEW_OR_CHANGED",
+      "sha256": "15cd2382bd46df57943d04c6a428a787146e6d778aa5d374dfde59bd81819986"
+    },
+    {
+      "path": "handoff/astra_adr_continuation_20261115/INSTALLATION_RECEIPT.md",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "NEW_OR_CHANGED",
+      "sha256": "1b27dc87933e21b3c227437a74ad556199212288dd66aa6b0f101d9a5abfb7b9"
+    },
+    {
+      "path": "handoff/astra_adr_continuation_20261115/INSTALLATION_VERIFICATION.json",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "NEW_OR_CHANGED",
+      "sha256": "d52881ac12a74a80aff431cb05fabc08188408059e3d860767b79d23a136493d"
+    },
+    {
+      "path": "handoff/astra_adr_continuation_20261115/NEXT_WORK_AND_HOLDS.md",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "NEW_OR_CHANGED",
+      "sha256": "47a8f8abf13b9403331e31ae3ece9dcb6ffed89bdfbcc1469cfb95af6e6cd391"
+    },
+    {
+      "path": "handoff/astra_adr_continuation_20261115/NON_GIT_ASSET_RESULTS_CURRENT.json",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "NEW_OR_CHANGED",
+      "sha256": "531a6fb30f56521df3f51a74189439b6fc7335427f6a655e4e4a0060e5094224"
+    },
+    {
+      "path": "handoff/astra_adr_continuation_20261115/OUTSTANDING_ASSETS_CURRENT.json",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "NEW_OR_CHANGED",
+      "sha256": "15ddc209a06aa00e0a56c083c5a48ac35675c8f5d20c8f135c47e1cd0e5122e5"
+    },
+    {
+      "path": "handoff/astra_adr_continuation_20261115/OWNER_INSTALLATION_AUTHORITY.md",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "NEW_OR_CHANGED",
+      "sha256": "99cd7dea97a6a0764a1740d19b2d1f959c18049bbe35d7c3d4d74eac6855ada7"
+    },
+    {
+      "path": "handoff/astra_adr_continuation_20261115/PR17_CI.json",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "NEW_OR_CHANGED",
+      "sha256": "a1914cd8102e9ef67c4a47325240215ea4be1dc366ff85755392f4d0e8835de9"
+    },
+    {
+      "path": "handoff/astra_adr_continuation_20261115/PR17_CI_EXTRACT.log",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "NEW_OR_CHANGED",
+      "sha256": "0a204fca434d03d7fa89fedabbc50be726ba31ddbca200d250538a413b6d2779"
+    },
+    {
+      "path": "handoff/astra_adr_continuation_20261115/PREDECESSOR_IDENTITY.json",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "NEW_OR_CHANGED",
+      "sha256": "789d6dd81c2de01bcf8533108d1f9f4e903f13c732a06134212df17a6c2d5c56"
+    },
+    {
+      "path": "handoff/astra_adr_continuation_20261115/RECOVERY_CONTEXT_CORRECTION.md",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "NEW_OR_CHANGED",
+      "sha256": "bd73ec8b436c4d6dd2def5829ebce5ed4f7d31a4e25965312b5592c1ea3bfcc0"
+    },
+    {
+      "path": "handoff/astra_adr_continuation_20261115/REQUIRED_REF_RESULTS_CURRENT.json",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "NEW_OR_CHANGED",
+      "sha256": "90028c00efbdadbaa4c76812994fb4650723f3ea3bbfb7fc6f3437f6ba17f380"
+    },
+    {
+      "path": "handoff/astra_adr_continuation_20261115/RUNTIME_QUALIFICATION.md",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "NEW_OR_CHANGED",
+      "sha256": "66ac299d14bea97a3e08572372882916e78a031137f3e6bcc9d82d91d3b5059d"
+    },
+    {
+      "path": "handoff/astra_adr_continuation_20261115/SNAPSHOT_CONTEXT_COMMANDS.json.gz",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "NEW_OR_CHANGED",
+      "sha256": "263b6b8f29f6c2a5a087b0f9a006e1799d6e84c14f015eefb46137a238f7e3db"
+    },
+    {
+      "path": "handoff/astra_adr_continuation_20261115/SNAPSHOT_CONTEXT_RESTORE.json",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "NEW_OR_CHANGED",
+      "sha256": "9ee57f83dee5eb16290f7ed0f091c0737855b9f1c8998f3975af3156381a42bb"
+    },
+    {
+      "path": "handoff/astra_adr_continuation_20261115/SQLITE_3541_BUILD_AND_PROBE.json",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "NEW_OR_CHANGED",
+      "sha256": "4f32ef6b0aedd0d6ac08c8224dbd9d10b62dbef91a745c072d15ea08761ed36b"
+    },
+    {
+      "path": "handoff/astra_adr_continuation_20261115/astra_b_checks.json",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "NEW_OR_CHANGED",
+      "sha256": "d89545c30bad9275b06120f5c06c960479d2e819665890a6a1ddca323db236f8"
+    },
+    {
+      "path": "handoff/astra_adr_continuation_20261115/astra_b_context_check.json",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "NEW_OR_CHANGED",
+      "sha256": "f1a3e64d48e8ff600418bbb14d020013c0ed621a56b78882feeb2e0ad888c00e"
+    },
+    {
+      "path": "handoff/astra_adr_continuation_20261115/astra_b_final_delta.json",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "NEW_OR_CHANGED",
+      "sha256": "e3b0271a1868a4c99434167dd38061d447785456bdcd72b566c83b963fc8f7ec"
+    },
+    {
+      "path": "handoff/astra_adr_continuation_20261115/astra_b_new_evidence.json",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "NEW_OR_CHANGED",
+      "sha256": "b391555a31b3f167db060012b8160dc4d4e5fa4058d52ba672c0c60d8fdf4a21"
+    },
+    {
+      "path": "handoff/astra_adr_continuation_20261115/astra_install_checks.json",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "NEW_OR_CHANGED",
+      "sha256": "98b3fbb0ef5f852aa4abcc3fda2e880c6b6010bd454006ce711fb9a5efd4a1e9"
+    },
+    {
+      "path": "handoff/astra_adr_continuation_20261115/predecessor/AGENTS.md.gz",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "NEW_OR_CHANGED",
+      "sha256": "6fd7e60b9f906cb19a142170551b46a913893b1cd350a5f5c4af4032b9af9a8b"
+    },
+    {
+      "path": "handoff/astra_adr_continuation_20261115/predecessor/EXEC_PLAN.md",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "NEW_OR_CHANGED",
+      "sha256": "461e7c26572e2d96e7e2bd5b370815e75d75b0d053fae445843b95654f1e8605"
+    },
+    {
+      "path": "handoff/astra_adr_continuation_20261115/predecessor/handoff__m02_completion_28_execution__EXECUTION_REGISTER.json",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "NEW_OR_CHANGED",
+      "sha256": "557b39e27024d49bd0f141ac8e5d167097e4c9e07cdc0a2b7776ca6d02c0ac60"
+    },
+    {
+      "path": "handoff/astra_adr_continuation_20261115/predecessor/handoff__m02_completion_28_execution__TEST_EVIDENCE_LEDGER.json",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "NEW_OR_CHANGED",
+      "sha256": "fd621f50e8c370ddd33f33eaa0332f2b96d54eaa66b8da6be1fde9268912aa04"
+    },
+    {
+      "path": "handoff/astra_adr_continuation_20261115/predecessor/tests__AGENTS.override.md",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "NEW_OR_CHANGED",
+      "sha256": "28692718ff95c14007014397942868e70ca96ad44591fbe0ce6a7f5f7634beb7"
+    },
+    {
+      "path": "handoff/astra_adr_continuation_20261115/qualify_sqlite.py",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "NEW_OR_CHANGED",
+      "sha256": "eab99e74dccda5287d6bcfc9b41c54584531cc18823d62e2ae2e89cd51065bd7"
+    },
+    {
+      "path": "handoff/astra_adr_continuation_20261115/restore_snapshot_contexts.py",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "NEW_OR_CHANGED",
+      "sha256": "494dcfa6eae49fc5949156945dcbdf2b71bded6c19503a1a3b2183ff356d5389"
+    },
+    {
+      "path": "handoff/astra_adr_continuation_20261115/verify_installation.py",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "NEW_OR_CHANGED",
+      "sha256": "7745582f01b0a0fd74c0b6768743dace4c9dac9690f026c0f707ac8cb9bf7f47"
+    },
+    {
+      "path": "handoff/m02_completion_28_execution/EXECUTION_REGISTER.json",
+      "class": "owner-authorised exact governing installation",
+      "relative_to_prior_candidate": "NEW_OR_CHANGED",
+      "sha256": "fd05fe9d211c19427acb51794849decf79e33071855c914dbc30ec222a9862cf"
+    },
+    {
+      "path": "handoff/m02_completion_28_execution/TEST_EVIDENCE_LEDGER.json",
+      "class": "owner-authorised exact governing installation",
+      "relative_to_prior_candidate": "NEW_OR_CHANGED",
+      "sha256": "d15b6b5f27cee55ab9bd37d302c8b98b3207854a4b49de026140cad6215a8c21"
+    },
+    {
+      "path": "handoff/planning/t01_owner_lint_integration_20261115/DEPENDENCY_WINDOWS.md",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "8b2e1815f8a8067f8cc6a7296bcf46788016b4efca5a03f022c1e161184c0031"
+    },
+    {
+      "path": "handoff/planning/t01_owner_lint_integration_20261115/GOVERNANCE_RECONCILIATION_20261115.md",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "66e11c745dfce4f3f44e6aa227e4635ff0d93cafac569cac4d0aa1d779f13329"
+    },
+    {
+      "path": "handoff/planning/t01_owner_lint_integration_20261115/GOVERNANCE_SOURCE_RECONCILIATION.json",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "1b39f1eda3c94c107c71b58d1786b58fa1a1679ec1b517bf04c48c20dff71026"
+    },
+    {
+      "path": "handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_AGENTS.md",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "329c95bc2d9034cee4eca3de86d59e7029e6ad8c062ebb4885af9b74d83a6bce"
+    },
+    {
+      "path": "handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_DEPENDENCY_WINDOW_LEDGER_DELTA.json",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "580193ab62c435bb6d428eeb9530235acfc3f9d129e2e70c83a2a7efb5d0f843"
+    },
+    {
+      "path": "handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_EXECUTION_REGISTER.json",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "fd05fe9d211c19427acb51794849decf79e33071855c914dbc30ec222a9862cf"
+    },
+    {
+      "path": "handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_EXEC_PLAN.md",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "db6d8ae6ad7b43402290c07d3d23d9ba018dd187c73ba3f186ac218e56b2d32b"
+    },
+    {
+      "path": "handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_TESTS_AGENTS.override.md",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "3e906d6cad67f4c8f3137928124493ef7d2877c2c92da90e7a44ad9141c7424f"
+    },
+    {
+      "path": "handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_TEST_EVIDENCE_LEDGER.json",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "RETAINED_PRIOR_CANDIDATE",
+      "sha256": "d15b6b5f27cee55ab9bd37d302c8b98b3207854a4b49de026140cad6215a8c21"
+    },
+    {
+      "path": "tests/AGENTS.override.md",
+      "class": "owner-authorised exact governing installation",
+      "relative_to_prior_candidate": "NEW_OR_CHANGED",
+      "sha256": "3e906d6cad67f4c8f3137928124493ef7d2877c2c92da90e7a44ad9141c7424f"
+    }
+  ]
+}
