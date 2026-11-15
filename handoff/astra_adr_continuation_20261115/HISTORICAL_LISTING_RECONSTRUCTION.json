@@ -1,0 +1,14 @@
+{
+  "candidate": "e19c2df9b21777ae467b628c2fa1d36e137a1072",
+  "command": [
+    "git",
+    "ls-tree",
+    "-r",
+    "--full-tree",
+    "e19c2df9b21777ae467b628c2fa1d36e137a1072"
+  ],
+  "bytes": 491439,
+  "sha256": "be218943d9b00b9b9a4850c4125b8841576eee9d4fa5fdacf15a7d7bdf9fd188",
+  "expected_sha256": "be218943d9b00b9b9a4850c4125b8841576eee9d4fa5fdacf15a7d7bdf9fd188",
+  "status": "VERIFIED"
+}

@@ -1,0 +1,15 @@
+# SQLite prerequisite recovery and current environment qualification
+
+This report adds new current evidence to the preserved PR #17 inventory; it does not rewrite its observed state.
+
+The official source at https://sqlite.org/2026/sqlite-autoconf-3540100.tar.gz was retrieved with curl --fail --location --max-time30. SHA-256 926ef8d3eab93fbf6e06011901273eec076b25594a4e1cdadd50c987f4f6d64e, archive SHA3-256 and sqlite3.c SHA3-256 match the original R2_SQLITE_3541_RUNTIME_VERIFIED.json. Safe extraction used Python tarfile's data filter. No system library was installed or changed.
+
+The exact original gcc flags compiled an isolated /workspace/sqlite3541-qualified-build/libsqlite3.so.0. Its 1,859,280-byte output has the EXACT historical SHA-256 c53706980906943301153b630aeddba1b4aab6fe5eeda5752d8293952707db4e. This closes the prior unavailable original source/library byte identities by independent download and reproduction, rather than claiming another system library is equivalent.
+
+With LD_LIBRARY_PATH pointing to that directory, the existing non-product disposable probe loaded this exact library under CPython3.13.5. sqlite_version=3.54.1; sqlite_source_id matches the original. All nine storage assertions passed, using BEGIN IMMEDIATE and ordinary read-only durable reopen. Compiler identity, full command, return codes, interpreter/library/package hashes and source/options are in SQLITE_3541_BUILD_AND_PROBE.json. qualify_sqlite.py preserves the executed procedure and its exact external paths; adjust only workspace paths when reproducing in an empty receiver. Retrieve and verify the source first, use the repository's existing locked dev environment, and invoke the probe with explicit LD_LIBRARY_PATH for each process. No absent wrapper is presumed.
+
+The original L00_TRACKED_BLOBS.txt was also reproduced with git ls-tree -r --full-tree e19c2df9b21777ae467b628c2fa1d36e137a1072: exact491439 bytes and be218943d9b00b9b9a4850c4125b8841576eee9d4fa5fdacf15a7d7bdf9fd188. Reconstruction is labelled by command; it is not a fabricated historical receiver run.
+
+The complete current asset inventory is now72 rows:66 VERIFIED,5 BLOCKED,1 UNKNOWN. The five blocked rows cover four distinct earlier checkpoint inputs: old original handover archive, old additive (two inventory entries), old RESTORE.md, and old recovery-base bundle. The published successor transport remains separately verified. A targeted current search under original /home/jds and Downloads found the F02 ZIP but no files bearing the missing exact old archive/base or SQLite names. This bounded search is not a global absence claim. Historical CPython3.12.14/SQLite3.53.1 runtime file identity remains UNKNOWN; no historical product proof was rerun.
+
+Qualification boundary: exact current3.13.5/3.54.1 executable/linkage and these finite non-product mechanisms are established. General3.53.1/3.54.1 behavioral equivalence, product runner pin enforcement, accepted source/profile/claim/generation/node IDs and separate product Tester designation remain unresolved product execution conditions. No PostgreSQL dependency or operation was introduced.
