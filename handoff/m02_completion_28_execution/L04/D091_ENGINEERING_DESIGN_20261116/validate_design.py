@@ -60,7 +60,19 @@ def main() -> None:
     assert source["selection"]["history_page_size"] == 8
     assert source["selection"]["maximum_projected_members"] == 64
     assert source["source_provider"] == "t01-controlled-option-delta"
-    assert source["source_temporal_kind"] if "source_temporal_kind" in source else True
+    assert source["selection"]["temporal_kind"] == "receipt_only"
+    assert all(
+        m["observation"]["source_temporal_kind"] == "receipt_only"
+        and m["observation"]["source_timestamp_raw"] is None
+        and m["observation"]["source_timezone_native"] is None
+        and m["observation"]["native_units"] == "signed_decimal_fraction"
+        and m["observation"]["source_provider"] == source["source_provider"]
+        and m["observation"]["source_variant"] == source["source_variant"]
+        and m["observation"]["ingestion_sequence_scope"] == source["selection"]["ingestion_sequence_scope"]
+        and m["calculation_request_proposed"]["as_of_utc"] == m["observation"]["received_ts_utc"]
+        and m["calculation_request_proposed"]["knowledge_cutoff_utc"] == m["observation"]["received_ts_utc"]
+        for m in raw["members"]
+    )
     assert proof["source_contract_sha256"] == changed.get("source_sha256", SHA_SOURCE) == SHA_SOURCE
     check_sha("handoff/m02_completion_28_execution/L01b/R112_SOURCE_CONTRACT_PROPOSED.json", SHA_SOURCE)
     check_sha("handoff/m02_completion_28_execution/L01b/CONTROLLED_BATCH_INPUTS.json", SHA_BATCH)
