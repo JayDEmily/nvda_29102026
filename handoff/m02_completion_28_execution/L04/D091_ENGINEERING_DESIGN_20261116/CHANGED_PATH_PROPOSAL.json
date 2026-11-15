@@ -1,0 +1,71 @@
+{
+  "schema": "D091_CHANGED_PATH_PROPOSAL_V1",
+  "status": "PROPOSAL_NOT_IMPLEMENTATION_ADMISSION",
+  "base_candidate": "8c289ffcc2e373edf239eddfd5bbeabf1aae7e2d",
+  "independent_source_review": "37fab2c81e1ed98b227f75f600d3e0c12347d7d5",
+  "scope": "L01b controlled R112 and L04 D091 only",
+  "paths": [
+    {
+      "path": "src/nvda_desk/market_measurement_truth/api.py",
+      "operation": "MODIFY_IF_APPROVED",
+      "reason": "Add exact D091 request/category/occurrence DTO, narrow raw original-getter read protocol and public owner/reader factories. Do not relax numeric result variants."
+    },
+    {
+      "path": "src/nvda_desk/market_measurement_truth/_controlled_r112.py",
+      "operation": "ADD_IF_APPROVED",
+      "reason": "Private isolated in-memory M00 coordinator: exclusive writer ownership, exact 15-member ingress, final seal, read-only gate, public original getter, full cursor traversal, refusal stage."
+    },
+    {
+      "path": "src/nvda_desk/market_measurement_truth/_native_d091.py",
+      "operation": "ADD_IF_APPROVED",
+      "reason": "R112 request evaluation, absolute bins, exact typed D091 category occurrence/immutable owner, read-only SQLite category record."
+    },
+    {
+      "path": "src/nvda_desk/market_measurement_truth/_native_codec.py",
+      "operation": "MODIFY_IF_APPROVED",
+      "reason": "Narrow exact D091 DTO allowlist and lossless round trip; no generic string result admission."
+    },
+    {
+      "path": "tests/product/m02_completion_28/d091/test_signal.py",
+      "operation": "ADD_ONLY_AFTER_CASE_ADMISSION",
+      "reason": "Two original physical node IDs only after an independently accepted finite case allocation; tests authored before implementation, not run by Worker."
+    },
+    {
+      "path": "config/product_proof/m02_d091/claim.json",
+      "operation": "CONDITIONAL_AFTER_CLAIM_AUTHORITY",
+      "reason": "New D091 claim path/generation only if owner/reviewer establishes approved proof controls; actual path is provisional, not an admitted registry."
+    },
+    {
+      "path": "config/product_proof/m02_d091/admission.json",
+      "operation": "CONDITIONAL_AFTER_CLAIM_AUTHORITY",
+      "reason": "Bind the exact admitted case IDs and generation; do not change historical proof claims."
+    },
+    {
+      "path": "config/product_proof/m02_d091/generations/0001.json",
+      "operation": "CONDITIONAL_AFTER_CLAIM_AUTHORITY",
+      "reason": "Immutable accepted physical-case inventory and exact candidate/runner after admission; file number is proposed, not a claimed current generation."
+    },
+    {
+      "path": "handoff/m02_completion_28_execution/L04/",
+      "operation": "ADD_BOUNDARY_RECORD_ONLY_AFTER_RELEASE",
+      "reason": "Exact accepted implementation brief, proof/oracle refs, review, checkpoint; preserve predecessor source/ledger."
+    }
+  ],
+  "explicit_exclusions": [
+    "GUARDRAILS.md",
+    "AGENTS.md",
+    "EXEC_PLAN.md",
+    "tests/AGENTS.override.md",
+    "src/nvda_desk/raw_signal_occurrence_truth/api.py",
+    "src/nvda_desk/raw_signal_occurrence_truth/_sqlite.py",
+    "any PostgreSQL source/config",
+    "existing product proof generations and pointers",
+    "D145 code/tests"
+  ],
+  "conditional_M00_change": "Only if independent design review proves isolated in-memory M00 cannot meet approved controlled source meaning. Not pre-authorised by this proposal.",
+  "admitted_changes_now": [
+    "handoff/m02_completion_28_execution/L04/D091_ENGINEERING_DESIGN_20261116/"
+  ],
+  "no_product_implementation": true,
+  "no_product_cases": true
+}
