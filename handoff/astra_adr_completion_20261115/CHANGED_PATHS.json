@@ -16,7 +16,7 @@
     {
       "path": "handoff/astra_adr_completion_20261115/COMMANDS_AND_OUTCOMES.md",
       "class": "review evidence/procedure",
-      "sha256": "b1213fe97ddf564a0a59ecfd488acef1c809c59817dbf794195ab6d10c656456",
+      "sha256": "edd7f03834c1792168ba6f2d9ff7bf4ccd3fedca038053b93a6ffb2a00056493",
       "installed_authority": false
     },
     {
@@ -130,7 +130,7 @@
     {
       "path": "handoff/astra_adr_completion_20261115/PROPOSED_AGENTS.md.diff",
       "class": "review evidence/procedure",
-      "sha256": "50a1443c642768fe790a89e5b54cff8954130d0da44d98ad47a8115cd0bf2833",
+      "sha256": "26a595777c622884a6a4f4eff0575f1d2270fa0f9bf28be5e516ce4aeb2db4d3",
       "installed_authority": false
     },
     {
@@ -142,19 +142,19 @@
     {
       "path": "handoff/astra_adr_completion_20261115/PROPOSED_EXEC_PLAN.md.diff",
       "class": "review evidence/procedure",
-      "sha256": "0cac90038fcf8c92d9b0592a77a139e6abbb28c4710379704c36071e5127d490",
+      "sha256": "a3f7009ab6152975abb58224740e471e6f96508e2175acddbdcc1b23cfffd9f8",
       "installed_authority": false
     },
     {
       "path": "handoff/astra_adr_completion_20261115/PROPOSED_TESTS_AGENTS.override.md.diff",
       "class": "review evidence/procedure",
-      "sha256": "09aa5290daf51ae5c95295ba15cb9483ec491a17dd8ccfe3674d68cde8d1cd30",
+      "sha256": "da300ec5b11ee2bc669056ec6f5c678e304d62886d3785d85650b414c0b29b99",
       "installed_authority": false
     },
     {
       "path": "handoff/astra_adr_completion_20261115/PROPOSED_TEST_EVIDENCE_LEDGER.json.diff",
       "class": "review evidence/procedure",
-      "sha256": "d350a1fc372303605d45f44b550132cfa97184ec340e4a644fdb95e58751a3f3",
+      "sha256": "fbef2c4f88a5debb9076e21806bbee8d1347bc8597faec1f560c89b3f4a5c8be",
       "installed_authority": false
     },
     {
@@ -203,6 +203,12 @@
       "path": "handoff/astra_adr_completion_20261115/RUNTIME_OBSERVATION.json",
       "class": "review evidence/procedure",
       "sha256": "2be26d7926ac1c4c2886641461ac1f4e2bad72afa398410f9f7fe34494217194",
+      "installed_authority": false
+    },
+    {
+      "path": "handoff/astra_adr_completion_20261115/VALIDATION_RESULT.json",
+      "class": "review evidence/procedure",
+      "sha256": "7081df779bae8d6fa259cb40812fc5ee305c705b9af1bad97bc6215a7aaf3f38",
       "installed_authority": false
     },
     {
@@ -308,5 +314,5 @@
       "installed_authority": false
     }
   ],
-  "count": 51
+  "count": 52
 }

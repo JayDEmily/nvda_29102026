@@ -38,3 +38,5 @@ Remote Desktop Commander read-only processes used Windows PowerShell/WSL. An ini
 ## Publication
 
 Commits use a purpose-specific branch, ordinary push and draft PR; no main mutation or force push. Publication receipt is in the PR body and final handoff, with exact final SHA. File-by-file GitHub readback is compared by Git blob SHA after push. GitHub Actions on this new PR are reported independently of the already successful merged-main run.
+
+Final endpoint whitespace check initially reported patch-context blank lines (single spaces) inside the authored .diff artifacts. Regenerated all five redlines with `git diff --no-index --unified=0` to preserve exact differences without context-space lines; apply these with `git apply --unidiff-zero`. No proposed or installed governing text changed in this repair. The earlier uncommitted `git diff --check` did not cover then-untracked redlines; the complete endpoint check is the final authority.

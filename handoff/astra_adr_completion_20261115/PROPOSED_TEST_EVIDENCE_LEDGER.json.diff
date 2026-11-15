@@ -2,1032 +2,468 @@ diff --git a/handoff/m02_completion_28_execution/TEST_EVIDENCE_LEDGER.json b/han
 index 3bca28fa..c9c56400 100644
 --- a/handoff/m02_completion_28_execution/TEST_EVIDENCE_LEDGER.json
 +++ b/handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_TEST_EVIDENCE_LEDGER.json
-@@ -1,16 +1,16 @@
- {
-   "schema_version": "1.0.0",
-   "plan_id": "M02-FOUNDATION-COMPLETION-28",
+@@ -4 +4 @@
 -  "ledger_status": "ACTIVE",
 +  "ledger_status": "DRAFT",
-   "repository": {
+@@ -6,3 +6,3 @@
 -    "baseline_commit": "8ff7d82377e9bf8f9fc75c1ecef70f0ab29a2ada",
 -    "candidate_commit": "22a2f13189fa3f1a55b2fef265f93a6696c0155f",
 -    "plan_revision": "R2_CHAT_MANUAL_LOCAL_OWNER_APPROVED"
 +    "baseline_commit": "02a19ae02678824908568d8db08f0e1d015cb861",
 +    "candidate_commit": "UNBOUND_FUTURE_PRODUCT_CANDIDATE",
 +    "plan_revision": "T01_COORDINATED_DEPENDENCY_WINDOWS_PROPOSAL_20261115"
-   },
-   "execution_mode": {
-     "mode": "CHAT_MANUAL",
+@@ -12,2 +12,2 @@
 -    "capability_evidence": "Owner selected independent manually transferred Worker/Tester chats; Worker checkout locally bootstrapped, separate Tester not yet operationally designated; zero product tests. Candidate provenance: the former repository.candidate_commit 4559694b0c5bd53e98cd88936b80091adbc3b275 is the HISTORICAL R2 SOURCE-TREE SNAPSHOT, not the currently reviewed G0 state. Current repository.candidate_commit 22a2f13189fa3f1a55b2fef265f93a6696c0155f denotes the verified local PRE-REPAIR parent. The external NVDA_R2_G0_SQLITE_FINAL_CANDIDATE_RECEIPT.json identifies the earlier reviewed f9a6de2400b22f361678ffd545d7e38666b8bae5, whose Git object was unavailable in this restoration. The NEW current review candidate SHA/tree/bundle are bound only in external R2_G0_L00_METADATA_REPAIR_FINAL_RECEIPT.json issued AFTER committing. See L00/R2_CANDIDATE_PROVENANCE_BINDING.md. No implied f9a6 ancestor relationship or product-test acceptance.",
 -    "test_phase": "FINAL_INDEPENDENT_MODULE_PROOFS_AT_L32"
 +    "capability_evidence": "Owner-selected separate ChatGPT Worker/Tester and GitHub; arithmetic transport committed, full remote Git receiver mechanically passed by planner; separate Tester Git closure and product tests not yet executed.",
 +    "test_phase": "DEPENDENCY_WINDOWS_THEN_L32_RECONCILIATION_PROPOSED_NOT_RELEASED"
-   },
-   "proof_obligations": [
-     {
-@@ -18,8 +18,8 @@
-       "module": "M02",
-       "claim": "D062 new controlled profile only; not live or production admission",
-       "requirement_refs": [
+@@ -21,2 +21,2 @@
 -        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D062",
 -        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
 +        "handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json#M02-C28-D062",
 +        "handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_EXEC_PLAN.md#proposed-coordinated-amendment"
-       ],
-       "source_identity": {
-         "commit": "ab630971741f5f60f547475f016bb09eec91a222",
-@@ -35,14 +35,14 @@
-         ]
-       },
-       "test_allocation": {
+@@ -38 +38 @@
 -        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
 +        "authority_ref": "PROPOSAL ONLY: finite candidate allocation retained from handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json; zero cases admitted or released here",
-         "authorised_case_count": 0,
-         "hard_ceiling": 0,
-         "cases": []
-       },
-       "execution": {
+@@ -44,2 +44,2 @@
 -        "scheduled_leaf": "L32",
 -        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
 +        "scheduled_leaf": "G4_AFTER_L30",
 +        "reviewer": "SEPARATE_INDEPENDENT_TESTER_NOT_YET_DESIGNATED",
-         "semantic_status": "NOT_ATTEMPTED",
-         "runs": []
-       }
-@@ -52,8 +52,8 @@
-       "module": "M02",
-       "claim": "D078 new controlled profile only; not live or production admission",
-       "requirement_refs": [
+@@ -55,2 +55,2 @@
 -        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D078",
 -        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
 +        "handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json#M02-C28-D078",
 +        "handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_EXEC_PLAN.md#proposed-coordinated-amendment"
-       ],
-       "source_identity": {
-         "commit": "ab630971741f5f60f547475f016bb09eec91a222",
-@@ -69,14 +69,14 @@
-         ]
-       },
-       "test_allocation": {
+@@ -72 +72 @@
 -        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
 +        "authority_ref": "PROPOSAL ONLY: finite candidate allocation retained from handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json; zero cases admitted or released here",
-         "authorised_case_count": 0,
-         "hard_ceiling": 0,
-         "cases": []
-       },
-       "execution": {
+@@ -78,2 +78,2 @@
 -        "scheduled_leaf": "L32",
 -        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
 +        "scheduled_leaf": "G1_AFTER_L06",
 +        "reviewer": "SEPARATE_INDEPENDENT_TESTER_NOT_YET_DESIGNATED",
-         "semantic_status": "NOT_ATTEMPTED",
-         "runs": []
-       }
-@@ -86,8 +86,8 @@
-       "module": "M02",
-       "claim": "D079 new controlled profile only; not live or production admission",
-       "requirement_refs": [
+@@ -89,2 +89,2 @@
 -        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D079",
 -        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
 +        "handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json#M02-C28-D079",
 +        "handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_EXEC_PLAN.md#proposed-coordinated-amendment"
-       ],
-       "source_identity": {
-         "commit": "ab630971741f5f60f547475f016bb09eec91a222",
-@@ -103,14 +103,14 @@
-         ]
-       },
-       "test_allocation": {
+@@ -106 +106 @@
 -        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
 +        "authority_ref": "PROPOSAL ONLY: finite candidate allocation retained from handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json; zero cases admitted or released here",
-         "authorised_case_count": 0,
-         "hard_ceiling": 0,
-         "cases": []
-       },
-       "execution": {
+@@ -112,2 +112,2 @@
 -        "scheduled_leaf": "L32",
 -        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
 +        "scheduled_leaf": "G1_AFTER_L06",
 +        "reviewer": "SEPARATE_INDEPENDENT_TESTER_NOT_YET_DESIGNATED",
-         "semantic_status": "NOT_ATTEMPTED",
-         "runs": []
-       }
-@@ -120,8 +120,8 @@
-       "module": "M02",
-       "claim": "D080 new controlled profile only; not live or production admission",
-       "requirement_refs": [
+@@ -123,2 +123,2 @@
 -        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D080",
 -        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
 +        "handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json#M02-C28-D080",
 +        "handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_EXEC_PLAN.md#proposed-coordinated-amendment"
-       ],
-       "source_identity": {
-         "commit": "ab630971741f5f60f547475f016bb09eec91a222",
-@@ -137,14 +137,14 @@
-         ]
-       },
-       "test_allocation": {
+@@ -140 +140 @@
 -        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
 +        "authority_ref": "PROPOSAL ONLY: finite candidate allocation retained from handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json; zero cases admitted or released here",
-         "authorised_case_count": 0,
-         "hard_ceiling": 0,
-         "cases": []
-       },
-       "execution": {
+@@ -146,2 +146,2 @@
 -        "scheduled_leaf": "L32",
 -        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
 +        "scheduled_leaf": "G1_AFTER_L06",
 +        "reviewer": "SEPARATE_INDEPENDENT_TESTER_NOT_YET_DESIGNATED",
-         "semantic_status": "NOT_ATTEMPTED",
-         "runs": []
-       }
-@@ -154,8 +154,8 @@
-       "module": "M02",
-       "claim": "D081 new controlled profile only; not live or production admission",
-       "requirement_refs": [
+@@ -157,2 +157,2 @@
 -        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D081",
 -        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
 +        "handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json#M02-C28-D081",
 +        "handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_EXEC_PLAN.md#proposed-coordinated-amendment"
-       ],
-       "source_identity": {
-         "commit": "ab630971741f5f60f547475f016bb09eec91a222",
-@@ -171,14 +171,14 @@
-         ]
-       },
-       "test_allocation": {
+@@ -174 +174 @@
 -        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
 +        "authority_ref": "PROPOSAL ONLY: finite candidate allocation retained from handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json; zero cases admitted or released here",
-         "authorised_case_count": 0,
-         "hard_ceiling": 0,
-         "cases": []
-       },
-       "execution": {
+@@ -180,2 +180,2 @@
 -        "scheduled_leaf": "L32",
 -        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
 +        "scheduled_leaf": "G1_AFTER_L06",
 +        "reviewer": "SEPARATE_INDEPENDENT_TESTER_NOT_YET_DESIGNATED",
-         "semantic_status": "NOT_ATTEMPTED",
-         "runs": []
-       }
-@@ -188,8 +188,8 @@
-       "module": "M02",
-       "claim": "D085 new controlled profile only; not live or production admission",
-       "requirement_refs": [
+@@ -191,2 +191,2 @@
 -        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D085",
 -        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
 +        "handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json#M02-C28-D085",
 +        "handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_EXEC_PLAN.md#proposed-coordinated-amendment"
-       ],
-       "source_identity": {
-         "commit": "ab630971741f5f60f547475f016bb09eec91a222",
-@@ -205,14 +205,14 @@
-         ]
-       },
-       "test_allocation": {
+@@ -208 +208 @@
 -        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
 +        "authority_ref": "PROPOSAL ONLY: finite candidate allocation retained from handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json; zero cases admitted or released here",
-         "authorised_case_count": 0,
-         "hard_ceiling": 0,
-         "cases": []
-       },
-       "execution": {
+@@ -214,2 +214,2 @@
 -        "scheduled_leaf": "L32",
 -        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
 +        "scheduled_leaf": "G2_AFTER_L18",
 +        "reviewer": "SEPARATE_INDEPENDENT_TESTER_NOT_YET_DESIGNATED",
-         "semantic_status": "NOT_ATTEMPTED",
-         "runs": []
-       }
-@@ -222,8 +222,8 @@
-       "module": "M02",
-       "claim": "D086 new controlled profile only; not live or production admission",
-       "requirement_refs": [
+@@ -225,2 +225,2 @@
 -        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D086",
 -        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
 +        "handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json#M02-C28-D086",
 +        "handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_EXEC_PLAN.md#proposed-coordinated-amendment"
-       ],
-       "source_identity": {
-         "commit": "ab630971741f5f60f547475f016bb09eec91a222",
-@@ -239,14 +239,14 @@
-         ]
-       },
-       "test_allocation": {
+@@ -242 +242 @@
 -        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
 +        "authority_ref": "PROPOSAL ONLY: finite candidate allocation retained from handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json; zero cases admitted or released here",
-         "authorised_case_count": 0,
-         "hard_ceiling": 0,
-         "cases": []
-       },
-       "execution": {
+@@ -248,2 +248,2 @@
 -        "scheduled_leaf": "L32",
 -        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
 +        "scheduled_leaf": "G2_AFTER_L18",
 +        "reviewer": "SEPARATE_INDEPENDENT_TESTER_NOT_YET_DESIGNATED",
-         "semantic_status": "NOT_ATTEMPTED",
-         "runs": []
-       }
-@@ -256,8 +256,8 @@
-       "module": "M02",
-       "claim": "D091 new controlled profile only; not live or production admission",
-       "requirement_refs": [
+@@ -259,2 +259,2 @@
 -        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D091",
 -        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
 +        "handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json#M02-C28-D091",
 +        "handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_EXEC_PLAN.md#proposed-coordinated-amendment"
-       ],
-       "source_identity": {
-         "commit": "ab630971741f5f60f547475f016bb09eec91a222",
-@@ -273,14 +273,14 @@
-         ]
-       },
-       "test_allocation": {
+@@ -276 +276 @@
 -        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
 +        "authority_ref": "PROPOSAL ONLY: finite candidate allocation retained from handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json; zero cases admitted or released here",
-         "authorised_case_count": 0,
-         "hard_ceiling": 0,
-         "cases": []
-       },
-       "execution": {
+@@ -282,2 +282,2 @@
 -        "scheduled_leaf": "L32",
 -        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
 +        "scheduled_leaf": "G1_AFTER_L06",
 +        "reviewer": "SEPARATE_INDEPENDENT_TESTER_NOT_YET_DESIGNATED",
-         "semantic_status": "NOT_ATTEMPTED",
-         "runs": []
-       }
-@@ -290,8 +290,8 @@
-       "module": "M02",
-       "claim": "D095 new controlled profile only; not live or production admission",
-       "requirement_refs": [
+@@ -293,2 +293,2 @@
 -        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D095",
 -        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
 +        "handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json#M02-C28-D095",
 +        "handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_EXEC_PLAN.md#proposed-coordinated-amendment"
-       ],
-       "source_identity": {
-         "commit": "ab630971741f5f60f547475f016bb09eec91a222",
-@@ -307,14 +307,14 @@
-         ]
-       },
-       "test_allocation": {
+@@ -310 +310 @@
 -        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
 +        "authority_ref": "PROPOSAL ONLY: finite candidate allocation retained from handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json; zero cases admitted or released here",
-         "authorised_case_count": 0,
-         "hard_ceiling": 0,
-         "cases": []
-       },
-       "execution": {
+@@ -316,2 +316,2 @@
 -        "scheduled_leaf": "L32",
 -        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
 +        "scheduled_leaf": "G2_AFTER_L18",
 +        "reviewer": "SEPARATE_INDEPENDENT_TESTER_NOT_YET_DESIGNATED",
-         "semantic_status": "NOT_ATTEMPTED",
-         "runs": []
-       }
-@@ -324,8 +324,8 @@
-       "module": "M02",
-       "claim": "D096 new controlled profile only; not live or production admission",
-       "requirement_refs": [
+@@ -327,2 +327,2 @@
 -        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D096",
 -        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
 +        "handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json#M02-C28-D096",
 +        "handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_EXEC_PLAN.md#proposed-coordinated-amendment"
-       ],
-       "source_identity": {
-         "commit": "ab630971741f5f60f547475f016bb09eec91a222",
-@@ -341,14 +341,14 @@
-         ]
-       },
-       "test_allocation": {
+@@ -344 +344 @@
 -        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
 +        "authority_ref": "PROPOSAL ONLY: finite candidate allocation retained from handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json; zero cases admitted or released here",
-         "authorised_case_count": 0,
-         "hard_ceiling": 0,
-         "cases": []
-       },
-       "execution": {
+@@ -350,2 +350,2 @@
 -        "scheduled_leaf": "L32",
 -        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
 +        "scheduled_leaf": "G2_AFTER_L18",
 +        "reviewer": "SEPARATE_INDEPENDENT_TESTER_NOT_YET_DESIGNATED",
-         "semantic_status": "NOT_ATTEMPTED",
-         "runs": []
-       }
-@@ -358,8 +358,8 @@
-       "module": "M02",
-       "claim": "D097 new controlled profile only; not live or production admission",
-       "requirement_refs": [
+@@ -361,2 +361,2 @@
 -        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D097",
 -        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
 +        "handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json#M02-C28-D097",
 +        "handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_EXEC_PLAN.md#proposed-coordinated-amendment"
-       ],
-       "source_identity": {
-         "commit": "ab630971741f5f60f547475f016bb09eec91a222",
-@@ -375,14 +375,14 @@
-         ]
-       },
-       "test_allocation": {
+@@ -378 +378 @@
 -        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
 +        "authority_ref": "PROPOSAL ONLY: finite candidate allocation retained from handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json; zero cases admitted or released here",
-         "authorised_case_count": 0,
-         "hard_ceiling": 0,
-         "cases": []
-       },
-       "execution": {
+@@ -384,2 +384,2 @@
 -        "scheduled_leaf": "L32",
 -        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
 +        "scheduled_leaf": "G2_AFTER_L18",
 +        "reviewer": "SEPARATE_INDEPENDENT_TESTER_NOT_YET_DESIGNATED",
-         "semantic_status": "NOT_ATTEMPTED",
-         "runs": []
-       }
-@@ -392,8 +392,8 @@
-       "module": "M02",
-       "claim": "D098 new controlled profile only; not live or production admission",
-       "requirement_refs": [
+@@ -395,2 +395,2 @@
 -        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D098",
 -        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
 +        "handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json#M02-C28-D098",
 +        "handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_EXEC_PLAN.md#proposed-coordinated-amendment"
-       ],
-       "source_identity": {
-         "commit": "ab630971741f5f60f547475f016bb09eec91a222",
-@@ -409,14 +409,14 @@
-         ]
-       },
-       "test_allocation": {
+@@ -412 +412 @@
 -        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
 +        "authority_ref": "PROPOSAL ONLY: finite candidate allocation retained from handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json; zero cases admitted or released here",
-         "authorised_case_count": 0,
-         "hard_ceiling": 0,
-         "cases": []
-       },
-       "execution": {
+@@ -418,2 +418,2 @@
 -        "scheduled_leaf": "L32",
 -        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
 +        "scheduled_leaf": "G2_AFTER_L18",
 +        "reviewer": "SEPARATE_INDEPENDENT_TESTER_NOT_YET_DESIGNATED",
-         "semantic_status": "NOT_ATTEMPTED",
-         "runs": []
-       }
-@@ -426,8 +426,8 @@
-       "module": "M02",
-       "claim": "D102 new controlled profile only; not live or production admission",
-       "requirement_refs": [
+@@ -429,2 +429,2 @@
 -        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D102",
 -        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
 +        "handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json#M02-C28-D102",
 +        "handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_EXEC_PLAN.md#proposed-coordinated-amendment"
-       ],
-       "source_identity": {
-         "commit": "ab630971741f5f60f547475f016bb09eec91a222",
-@@ -443,14 +443,14 @@
-         ]
-       },
-       "test_allocation": {
+@@ -446 +446 @@
 -        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
 +        "authority_ref": "PROPOSAL ONLY: finite candidate allocation retained from handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json; zero cases admitted or released here",
-         "authorised_case_count": 0,
-         "hard_ceiling": 0,
-         "cases": []
-       },
-       "execution": {
+@@ -452,2 +452,2 @@
 -        "scheduled_leaf": "L32",
 -        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
 +        "scheduled_leaf": "G4_AFTER_L30",
 +        "reviewer": "SEPARATE_INDEPENDENT_TESTER_NOT_YET_DESIGNATED",
-         "semantic_status": "NOT_ATTEMPTED",
-         "runs": []
-       }
-@@ -460,8 +460,8 @@
-       "module": "M02",
-       "claim": "D107 new controlled profile only; not live or production admission",
-       "requirement_refs": [
+@@ -463,2 +463,2 @@
 -        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D107",
 -        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
 +        "handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json#M02-C28-D107",
 +        "handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_EXEC_PLAN.md#proposed-coordinated-amendment"
-       ],
-       "source_identity": {
-         "commit": "ab630971741f5f60f547475f016bb09eec91a222",
-@@ -477,14 +477,14 @@
-         ]
-       },
-       "test_allocation": {
+@@ -480 +480 @@
 -        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
 +        "authority_ref": "PROPOSAL ONLY: finite candidate allocation retained from handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json; zero cases admitted or released here",
-         "authorised_case_count": 0,
-         "hard_ceiling": 0,
-         "cases": []
-       },
-       "execution": {
+@@ -486,2 +486,2 @@
 -        "scheduled_leaf": "L32",
 -        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
 +        "scheduled_leaf": "G2_AFTER_L18",
 +        "reviewer": "SEPARATE_INDEPENDENT_TESTER_NOT_YET_DESIGNATED",
-         "semantic_status": "NOT_ATTEMPTED",
-         "runs": []
-       }
-@@ -494,8 +494,8 @@
-       "module": "M02",
-       "claim": "D108 new controlled profile only; not live or production admission",
-       "requirement_refs": [
+@@ -497,2 +497,2 @@
 -        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D108",
 -        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
 +        "handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json#M02-C28-D108",
 +        "handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_EXEC_PLAN.md#proposed-coordinated-amendment"
-       ],
-       "source_identity": {
-         "commit": "ab630971741f5f60f547475f016bb09eec91a222",
-@@ -511,14 +511,14 @@
-         ]
-       },
-       "test_allocation": {
+@@ -514 +514 @@
 -        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
 +        "authority_ref": "PROPOSAL ONLY: finite candidate allocation retained from handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json; zero cases admitted or released here",
-         "authorised_case_count": 0,
-         "hard_ceiling": 0,
-         "cases": []
-       },
-       "execution": {
+@@ -520,2 +520,2 @@
 -        "scheduled_leaf": "L32",
 -        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
 +        "scheduled_leaf": "G2_AFTER_L18",
 +        "reviewer": "SEPARATE_INDEPENDENT_TESTER_NOT_YET_DESIGNATED",
-         "semantic_status": "NOT_ATTEMPTED",
-         "runs": []
-       }
-@@ -528,8 +528,8 @@
-       "module": "M02",
-       "claim": "D109 new controlled profile only; not live or production admission",
-       "requirement_refs": [
+@@ -531,2 +531,2 @@
 -        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D109",
 -        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
 +        "handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json#M02-C28-D109",
 +        "handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_EXEC_PLAN.md#proposed-coordinated-amendment"
-       ],
-       "source_identity": {
-         "commit": "ab630971741f5f60f547475f016bb09eec91a222",
-@@ -545,14 +545,14 @@
-         ]
-       },
-       "test_allocation": {
+@@ -548 +548 @@
 -        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
 +        "authority_ref": "PROPOSAL ONLY: finite candidate allocation retained from handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json; zero cases admitted or released here",
-         "authorised_case_count": 0,
-         "hard_ceiling": 0,
-         "cases": []
-       },
-       "execution": {
+@@ -554,2 +554,2 @@
 -        "scheduled_leaf": "L32",
 -        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
 +        "scheduled_leaf": "G2_AFTER_L18",
 +        "reviewer": "SEPARATE_INDEPENDENT_TESTER_NOT_YET_DESIGNATED",
-         "semantic_status": "NOT_ATTEMPTED",
-         "runs": []
-       }
-@@ -562,8 +562,8 @@
-       "module": "M02",
-       "claim": "D110 new controlled profile only; not live or production admission",
-       "requirement_refs": [
+@@ -565,2 +565,2 @@
 -        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D110",
 -        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
 +        "handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json#M02-C28-D110",
 +        "handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_EXEC_PLAN.md#proposed-coordinated-amendment"
-       ],
-       "source_identity": {
-         "commit": "ab630971741f5f60f547475f016bb09eec91a222",
-@@ -579,14 +579,14 @@
-         ]
-       },
-       "test_allocation": {
+@@ -582 +582 @@
 -        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
 +        "authority_ref": "PROPOSAL ONLY: finite candidate allocation retained from handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json; zero cases admitted or released here",
-         "authorised_case_count": 0,
-         "hard_ceiling": 0,
-         "cases": []
-       },
-       "execution": {
+@@ -588,2 +588,2 @@
 -        "scheduled_leaf": "L32",
 -        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
 +        "scheduled_leaf": "G2_AFTER_L18",
 +        "reviewer": "SEPARATE_INDEPENDENT_TESTER_NOT_YET_DESIGNATED",
-         "semantic_status": "NOT_ATTEMPTED",
-         "runs": []
-       }
-@@ -596,8 +596,8 @@
-       "module": "M02",
-       "claim": "D111 new controlled profile only; not live or production admission",
-       "requirement_refs": [
+@@ -599,2 +599,2 @@
 -        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D111",
 -        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
 +        "handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json#M02-C28-D111",
 +        "handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_EXEC_PLAN.md#proposed-coordinated-amendment"
-       ],
-       "source_identity": {
-         "commit": "ab630971741f5f60f547475f016bb09eec91a222",
-@@ -613,14 +613,14 @@
-         ]
-       },
-       "test_allocation": {
+@@ -616 +616 @@
 -        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
 +        "authority_ref": "PROPOSAL ONLY: finite candidate allocation retained from handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json; zero cases admitted or released here",
-         "authorised_case_count": 0,
-         "hard_ceiling": 0,
-         "cases": []
-       },
-       "execution": {
+@@ -622,2 +622,2 @@
 -        "scheduled_leaf": "L32",
 -        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
 +        "scheduled_leaf": "G4_AFTER_L30",
 +        "reviewer": "SEPARATE_INDEPENDENT_TESTER_NOT_YET_DESIGNATED",
-         "semantic_status": "NOT_ATTEMPTED",
-         "runs": []
-       }
-@@ -630,8 +630,8 @@
-       "module": "M02",
-       "claim": "D112 new controlled profile only; not live or production admission",
-       "requirement_refs": [
+@@ -633,2 +633,2 @@
 -        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D112",
 -        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
 +        "handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json#M02-C28-D112",
 +        "handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_EXEC_PLAN.md#proposed-coordinated-amendment"
-       ],
-       "source_identity": {
-         "commit": "ab630971741f5f60f547475f016bb09eec91a222",
-@@ -647,14 +647,14 @@
-         ]
-       },
-       "test_allocation": {
+@@ -650 +650 @@
 -        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
 +        "authority_ref": "PROPOSAL ONLY: finite candidate allocation retained from handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json; zero cases admitted or released here",
-         "authorised_case_count": 0,
-         "hard_ceiling": 0,
-         "cases": []
-       },
-       "execution": {
+@@ -656,2 +656,2 @@
 -        "scheduled_leaf": "L32",
 -        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
 +        "scheduled_leaf": "G4_AFTER_L30",
 +        "reviewer": "SEPARATE_INDEPENDENT_TESTER_NOT_YET_DESIGNATED",
-         "semantic_status": "NOT_ATTEMPTED",
-         "runs": []
-       }
-@@ -664,8 +664,8 @@
-       "module": "M02",
-       "claim": "D113 new controlled profile only; not live or production admission",
-       "requirement_refs": [
+@@ -667,2 +667,2 @@
 -        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D113",
 -        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
 +        "handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json#M02-C28-D113",
 +        "handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_EXEC_PLAN.md#proposed-coordinated-amendment"
-       ],
-       "source_identity": {
-         "commit": "ab630971741f5f60f547475f016bb09eec91a222",
-@@ -681,14 +681,14 @@
-         ]
-       },
-       "test_allocation": {
+@@ -684 +684 @@
 -        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
 +        "authority_ref": "PROPOSAL ONLY: finite candidate allocation retained from handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json; zero cases admitted or released here",
-         "authorised_case_count": 0,
-         "hard_ceiling": 0,
-         "cases": []
-       },
-       "execution": {
+@@ -690,2 +690,2 @@
 -        "scheduled_leaf": "L32",
 -        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
 +        "scheduled_leaf": "G4_AFTER_L30",
 +        "reviewer": "SEPARATE_INDEPENDENT_TESTER_NOT_YET_DESIGNATED",
-         "semantic_status": "NOT_ATTEMPTED",
-         "runs": []
-       }
-@@ -698,8 +698,8 @@
-       "module": "M02",
-       "claim": "D120 new controlled profile only; not live or production admission",
-       "requirement_refs": [
+@@ -701,2 +701,2 @@
 -        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D120",
 -        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
 +        "handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json#M02-C28-D120",
 +        "handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_EXEC_PLAN.md#proposed-coordinated-amendment"
-       ],
-       "source_identity": {
-         "commit": "ab630971741f5f60f547475f016bb09eec91a222",
-@@ -715,14 +715,14 @@
-         ]
-       },
-       "test_allocation": {
+@@ -718 +718 @@
 -        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
 +        "authority_ref": "PROPOSAL ONLY: finite candidate allocation retained from handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json; zero cases admitted or released here",
-         "authorised_case_count": 0,
-         "hard_ceiling": 0,
-         "cases": []
-       },
-       "execution": {
+@@ -724,2 +724,2 @@
 -        "scheduled_leaf": "L32",
 -        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
 +        "scheduled_leaf": "G3_AFTER_L22",
 +        "reviewer": "SEPARATE_INDEPENDENT_TESTER_NOT_YET_DESIGNATED",
-         "semantic_status": "NOT_ATTEMPTED",
-         "runs": []
-       }
-@@ -732,8 +732,8 @@
-       "module": "M02",
-       "claim": "D121 new controlled profile only; not live or production admission",
-       "requirement_refs": [
+@@ -735,2 +735,2 @@
 -        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D121",
 -        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
 +        "handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json#M02-C28-D121",
 +        "handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_EXEC_PLAN.md#proposed-coordinated-amendment"
-       ],
-       "source_identity": {
-         "commit": "ab630971741f5f60f547475f016bb09eec91a222",
-@@ -749,14 +749,14 @@
-         ]
-       },
-       "test_allocation": {
+@@ -752 +752 @@
 -        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
 +        "authority_ref": "PROPOSAL ONLY: finite candidate allocation retained from handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json; zero cases admitted or released here",
-         "authorised_case_count": 0,
-         "hard_ceiling": 0,
-         "cases": []
-       },
-       "execution": {
+@@ -758,2 +758,2 @@
 -        "scheduled_leaf": "L32",
 -        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
 +        "scheduled_leaf": "G3_AFTER_L22",
 +        "reviewer": "SEPARATE_INDEPENDENT_TESTER_NOT_YET_DESIGNATED",
-         "semantic_status": "NOT_ATTEMPTED",
-         "runs": []
-       }
-@@ -766,8 +766,8 @@
-       "module": "M02",
-       "claim": "D122 new controlled profile only; not live or production admission",
-       "requirement_refs": [
+@@ -769,2 +769,2 @@
 -        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D122",
 -        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
 +        "handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json#M02-C28-D122",
 +        "handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_EXEC_PLAN.md#proposed-coordinated-amendment"
-       ],
-       "source_identity": {
-         "commit": "ab630971741f5f60f547475f016bb09eec91a222",
-@@ -783,14 +783,14 @@
-         ]
-       },
-       "test_allocation": {
+@@ -786 +786 @@
 -        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
 +        "authority_ref": "PROPOSAL ONLY: finite candidate allocation retained from handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json; zero cases admitted or released here",
-         "authorised_case_count": 0,
-         "hard_ceiling": 0,
-         "cases": []
-       },
-       "execution": {
+@@ -792,2 +792,2 @@
 -        "scheduled_leaf": "L32",
 -        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
 +        "scheduled_leaf": "G3_AFTER_L22",
 +        "reviewer": "SEPARATE_INDEPENDENT_TESTER_NOT_YET_DESIGNATED",
-         "semantic_status": "NOT_ATTEMPTED",
-         "runs": []
-       }
-@@ -800,8 +800,8 @@
-       "module": "M02",
-       "claim": "D141 new controlled profile only; not live or production admission",
-       "requirement_refs": [
+@@ -803,2 +803,2 @@
 -        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D141",
 -        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
 +        "handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json#M02-C28-D141",
 +        "handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_EXEC_PLAN.md#proposed-coordinated-amendment"
-       ],
-       "source_identity": {
-         "commit": "ab630971741f5f60f547475f016bb09eec91a222",
-@@ -817,14 +817,14 @@
-         ]
-       },
-       "test_allocation": {
+@@ -820 +820 @@
 -        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
 +        "authority_ref": "PROPOSAL ONLY: finite candidate allocation retained from handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json; zero cases admitted or released here",
-         "authorised_case_count": 0,
-         "hard_ceiling": 0,
-         "cases": []
-       },
-       "execution": {
+@@ -826,2 +826,2 @@
 -        "scheduled_leaf": "L32",
 -        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
 +        "scheduled_leaf": "G4_AFTER_L30",
 +        "reviewer": "SEPARATE_INDEPENDENT_TESTER_NOT_YET_DESIGNATED",
-         "semantic_status": "NOT_ATTEMPTED",
-         "runs": []
-       }
-@@ -834,8 +834,8 @@
-       "module": "M02",
-       "claim": "D142 new controlled profile only; not live or production admission",
-       "requirement_refs": [
+@@ -837,2 +837,2 @@
 -        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D142",
 -        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
 +        "handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json#M02-C28-D142",
 +        "handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_EXEC_PLAN.md#proposed-coordinated-amendment"
-       ],
-       "source_identity": {
-         "commit": "ab630971741f5f60f547475f016bb09eec91a222",
-@@ -851,14 +851,14 @@
-         ]
-       },
-       "test_allocation": {
+@@ -854 +854 @@
 -        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
 +        "authority_ref": "PROPOSAL ONLY: finite candidate allocation retained from handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json; zero cases admitted or released here",
-         "authorised_case_count": 0,
-         "hard_ceiling": 0,
-         "cases": []
-       },
-       "execution": {
+@@ -860,2 +860,2 @@
 -        "scheduled_leaf": "L32",
 -        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
 +        "scheduled_leaf": "G1_AFTER_L06",
 +        "reviewer": "SEPARATE_INDEPENDENT_TESTER_NOT_YET_DESIGNATED",
-         "semantic_status": "NOT_ATTEMPTED",
-         "runs": []
-       }
-@@ -868,8 +868,8 @@
-       "module": "M02",
-       "claim": "D144 new controlled profile only; not live or production admission",
-       "requirement_refs": [
+@@ -871,2 +871,2 @@
 -        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D144",
 -        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
 +        "handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json#M02-C28-D144",
 +        "handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_EXEC_PLAN.md#proposed-coordinated-amendment"
-       ],
-       "source_identity": {
-         "commit": "ab630971741f5f60f547475f016bb09eec91a222",
-@@ -885,14 +885,14 @@
-         ]
-       },
-       "test_allocation": {
+@@ -888 +888 @@
 -        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
 +        "authority_ref": "PROPOSAL ONLY: finite candidate allocation retained from handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json; zero cases admitted or released here",
-         "authorised_case_count": 0,
-         "hard_ceiling": 0,
-         "cases": []
-       },
-       "execution": {
+@@ -894,2 +894,2 @@
 -        "scheduled_leaf": "L32",
 -        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
 +        "scheduled_leaf": "G1_AFTER_L06",
 +        "reviewer": "SEPARATE_INDEPENDENT_TESTER_NOT_YET_DESIGNATED",
-         "semantic_status": "NOT_ATTEMPTED",
-         "runs": []
-       }
-@@ -902,8 +902,8 @@
-       "module": "M02",
-       "claim": "D145 new controlled profile only; not live or production admission",
-       "requirement_refs": [
+@@ -905,2 +905,2 @@
 -        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D145",
 -        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
 +        "handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json#M02-C28-D145",
 +        "handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_EXEC_PLAN.md#proposed-coordinated-amendment"
-       ],
-       "source_identity": {
-         "commit": "ab630971741f5f60f547475f016bb09eec91a222",
-@@ -919,7 +919,7 @@
-         ]
-       },
-       "test_allocation": {
+@@ -922 +922 @@
 -        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
 +        "authority_ref": "PROPOSAL ONLY: finite candidate allocation retained from handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json; zero cases admitted or released here",
-         "authorised_case_count": 0,
-         "hard_ceiling": 0,
-         "cases": []
-@@ -936,8 +936,8 @@
-       "module": "M02",
-       "claim": "D151 new controlled profile only; not live or production admission",
-       "requirement_refs": [
+@@ -939,2 +939,2 @@
 -        "PROOF_ALLOCATION_PROPOSED.json#M02-C28-D151",
 -        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
 +        "handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json#M02-C28-D151",
 +        "handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_EXEC_PLAN.md#proposed-coordinated-amendment"
-       ],
-       "source_identity": {
-         "commit": "ab630971741f5f60f547475f016bb09eec91a222",
-@@ -953,14 +953,14 @@
-         ]
-       },
-       "test_allocation": {
+@@ -956 +956 @@
 -        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
 +        "authority_ref": "PROPOSAL ONLY: finite candidate allocation retained from handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json; zero cases admitted or released here",
-         "authorised_case_count": 0,
-         "hard_ceiling": 0,
-         "cases": []
-       },
-       "execution": {
+@@ -962,2 +962,2 @@
 -        "scheduled_leaf": "L32",
 -        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
 +        "scheduled_leaf": "G4_AFTER_L30",
 +        "reviewer": "SEPARATE_INDEPENDENT_TESTER_NOT_YET_DESIGNATED",
-         "semantic_status": "NOT_ATTEMPTED",
-         "runs": []
-       }
-@@ -970,8 +970,8 @@
-       "module": "M02",
-       "claim": "SUP-D071-HISTORY new controlled profile only; not live or production admission",
-       "requirement_refs": [
+@@ -973,2 +973,2 @@
 -        "PROOF_ALLOCATION_PROPOSED.json#SUP-D071-HISTORY",
 -        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
 +        "handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json#SUP-D071-HISTORY",
 +        "handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_EXEC_PLAN.md#proposed-coordinated-amendment"
-       ],
-       "source_identity": {
-         "commit": "ab630971741f5f60f547475f016bb09eec91a222",
-@@ -987,14 +987,14 @@
-         ]
-       },
-       "test_allocation": {
+@@ -990 +990 @@
 -        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
 +        "authority_ref": "PROPOSAL ONLY: finite candidate allocation retained from handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json; zero cases admitted or released here",
-         "authorised_case_count": 0,
-         "hard_ceiling": 0,
-         "cases": []
-       },
-       "execution": {
+@@ -996,2 +996,2 @@
 -        "scheduled_leaf": "L32",
 -        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
 +        "scheduled_leaf": "G1_AFTER_L06",
 +        "reviewer": "SEPARATE_INDEPENDENT_TESTER_NOT_YET_DESIGNATED",
-         "semantic_status": "NOT_ATTEMPTED",
-         "runs": []
-       }
-@@ -1004,8 +1004,8 @@
-       "module": "M02",
-       "claim": "SUP-D075-HISTORY new controlled profile only; not live or production admission",
-       "requirement_refs": [
+@@ -1007,2 +1007,2 @@
 -        "PROOF_ALLOCATION_PROPOSED.json#SUP-D075-HISTORY",
 -        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
 +        "handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json#SUP-D075-HISTORY",
 +        "handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_EXEC_PLAN.md#proposed-coordinated-amendment"
-       ],
-       "source_identity": {
-         "commit": "ab630971741f5f60f547475f016bb09eec91a222",
-@@ -1021,14 +1021,14 @@
-         ]
-       },
-       "test_allocation": {
+@@ -1024 +1024 @@
 -        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
 +        "authority_ref": "PROPOSAL ONLY: finite candidate allocation retained from handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json; zero cases admitted or released here",
-         "authorised_case_count": 0,
-         "hard_ceiling": 0,
-         "cases": []
-       },
-       "execution": {
+@@ -1030,2 +1030,2 @@
 -        "scheduled_leaf": "L32",
 -        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
 +        "scheduled_leaf": "G1_AFTER_L06",
 +        "reviewer": "SEPARATE_INDEPENDENT_TESTER_NOT_YET_DESIGNATED",
-         "semantic_status": "NOT_ATTEMPTED",
-         "runs": []
-       }
-@@ -1038,8 +1038,8 @@
-       "module": "M02",
-       "claim": "SUP-D076-HISTORY new controlled profile only; not live or production admission",
-       "requirement_refs": [
+@@ -1041,2 +1041,2 @@
 -        "PROOF_ALLOCATION_PROPOSED.json#SUP-D076-HISTORY",
 -        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
 +        "handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json#SUP-D076-HISTORY",
 +        "handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_EXEC_PLAN.md#proposed-coordinated-amendment"
-       ],
-       "source_identity": {
-         "commit": "ab630971741f5f60f547475f016bb09eec91a222",
-@@ -1055,14 +1055,14 @@
-         ]
-       },
-       "test_allocation": {
+@@ -1058 +1058 @@
 -        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
 +        "authority_ref": "PROPOSAL ONLY: finite candidate allocation retained from handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json; zero cases admitted or released here",
-         "authorised_case_count": 0,
-         "hard_ceiling": 0,
-         "cases": []
-       },
-       "execution": {
+@@ -1064,2 +1064,2 @@
 -        "scheduled_leaf": "L32",
 -        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
 +        "scheduled_leaf": "G1_AFTER_L06",
 +        "reviewer": "SEPARATE_INDEPENDENT_TESTER_NOT_YET_DESIGNATED",
-         "semantic_status": "NOT_ATTEMPTED",
-         "runs": []
-       }
-@@ -1072,8 +1072,8 @@
-       "module": "M02",
-       "claim": "SUP-D077-HISTORY new controlled profile only; not live or production admission",
-       "requirement_refs": [
+@@ -1075,2 +1075,2 @@
 -        "PROOF_ALLOCATION_PROPOSED.json#SUP-D077-HISTORY",
 -        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
 +        "handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json#SUP-D077-HISTORY",
 +        "handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_EXEC_PLAN.md#proposed-coordinated-amendment"
-       ],
-       "source_identity": {
-         "commit": "ab630971741f5f60f547475f016bb09eec91a222",
-@@ -1089,14 +1089,14 @@
-         ]
-       },
-       "test_allocation": {
+@@ -1092 +1092 @@
 -        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
 +        "authority_ref": "PROPOSAL ONLY: finite candidate allocation retained from handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json; zero cases admitted or released here",
-         "authorised_case_count": 0,
-         "hard_ceiling": 0,
-         "cases": []
-       },
-       "execution": {
+@@ -1098,2 +1098,2 @@
 -        "scheduled_leaf": "L32",
 -        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
 +        "scheduled_leaf": "G1_AFTER_L06",
 +        "reviewer": "SEPARATE_INDEPENDENT_TESTER_NOT_YET_DESIGNATED",
-         "semantic_status": "NOT_ATTEMPTED",
-         "runs": []
-       }
-@@ -1106,8 +1106,8 @@
-       "module": "M02",
-       "claim": "SUP-D001-OPTION new controlled profile only; not live or production admission",
-       "requirement_refs": [
+@@ -1109,2 +1109,2 @@
 -        "PROOF_ALLOCATION_PROPOSED.json#SUP-D001-OPTION",
 -        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
 +        "handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json#SUP-D001-OPTION",
 +        "handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_EXEC_PLAN.md#proposed-coordinated-amendment"
-       ],
-       "source_identity": {
-         "commit": "ab630971741f5f60f547475f016bb09eec91a222",
-@@ -1123,14 +1123,14 @@
-         ]
-       },
-       "test_allocation": {
+@@ -1126 +1126 @@
 -        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
 +        "authority_ref": "PROPOSAL ONLY: finite candidate allocation retained from handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json; zero cases admitted or released here",
-         "authorised_case_count": 0,
-         "hard_ceiling": 0,
-         "cases": []
-       },
-       "execution": {
+@@ -1132,2 +1132,2 @@
 -        "scheduled_leaf": "L32",
 -        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
 +        "scheduled_leaf": "G2_AFTER_L18",
 +        "reviewer": "SEPARATE_INDEPENDENT_TESTER_NOT_YET_DESIGNATED",
-         "semantic_status": "NOT_ATTEMPTED",
-         "runs": []
-       }
-@@ -1140,8 +1140,8 @@
-       "module": "M02",
-       "claim": "SUP-D004-USOPTION new controlled profile only; not live or production admission",
-       "requirement_refs": [
+@@ -1143,2 +1143,2 @@
 -        "PROOF_ALLOCATION_PROPOSED.json#SUP-D004-USOPTION",
 -        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
 +        "handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json#SUP-D004-USOPTION",
 +        "handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_EXEC_PLAN.md#proposed-coordinated-amendment"
-       ],
-       "source_identity": {
-         "commit": "ab630971741f5f60f547475f016bb09eec91a222",
-@@ -1157,14 +1157,14 @@
-         ]
-       },
-       "test_allocation": {
+@@ -1160 +1160 @@
 -        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
 +        "authority_ref": "PROPOSAL ONLY: finite candidate allocation retained from handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json; zero cases admitted or released here",
-         "authorised_case_count": 0,
-         "hard_ceiling": 0,
-         "cases": []
-       },
-       "execution": {
+@@ -1166,2 +1166,2 @@
 -        "scheduled_leaf": "L32",
 -        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
 +        "scheduled_leaf": "G2_AFTER_L18",
 +        "reviewer": "SEPARATE_INDEPENDENT_TESTER_NOT_YET_DESIGNATED",
-         "semantic_status": "NOT_ATTEMPTED",
-         "runs": []
-       }
-@@ -1174,8 +1174,8 @@
-       "module": "M02",
-       "claim": "SUP-D015-OPTION new controlled profile only; not live or production admission",
-       "requirement_refs": [
+@@ -1177,2 +1177,2 @@
 -        "PROOF_ALLOCATION_PROPOSED.json#SUP-D015-OPTION",
 -        "EXEC_PLAN_PROPOSED.md#4-proof-and-review-law"
 +        "handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json#SUP-D015-OPTION",
 +        "handoff/planning/t01_owner_lint_integration_20261115/PROPOSED_EXEC_PLAN.md#proposed-coordinated-amendment"
-       ],
-       "source_identity": {
-         "commit": "ab630971741f5f60f547475f016bb09eec91a222",
-@@ -1191,14 +1191,14 @@
-         ]
-       },
-       "test_allocation": {
+@@ -1194 +1194 @@
 -        "authority_ref": "Owner accepted R1 and commissioned all39 leaves; budgets accepted prospectively; physical case release remains conditional on owning contract acceptance.",
 +        "authority_ref": "PROPOSAL ONLY: finite candidate allocation retained from handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json; zero cases admitted or released here",
-         "authorised_case_count": 0,
-         "hard_ceiling": 0,
-         "cases": []
-       },
-       "execution": {
+@@ -1200,2 +1200,2 @@
 -        "scheduled_leaf": "L32",
 -        "reviewer": "SEPARATE_MANUAL_CHAT_TESTER_NOT_YET_DESIGNATED",
 +        "scheduled_leaf": "G3_AFTER_L22",
 +        "reviewer": "SEPARATE_INDEPENDENT_TESTER_NOT_YET_DESIGNATED",
-         "semantic_status": "NOT_ATTEMPTED",
-         "runs": []
-       }
