@@ -1,0 +1,43 @@
+{
+  "all_checked_mechanisms_observed": true,
+  "feature_compile_options": [
+    "ENABLE_DBSTAT_VTAB",
+    "ENABLE_FTS3",
+    "ENABLE_FTS3_PARENTHESIS",
+    "ENABLE_FTS3_TOKENIZER",
+    "ENABLE_FTS4",
+    "ENABLE_FTS5",
+    "ENABLE_MATH_FUNCTIONS",
+    "ENABLE_RTREE",
+    "THREADSAFE=1"
+  ],
+  "feature_count": 9,
+  "features": {
+    "busy_timeout_zero": true,
+    "fk_reached_refusal": true,
+    "foreign_keys_on": true,
+    "immutable_trigger_refusal": true,
+    "integrity_check": true,
+    "journal_delete": true,
+    "readonly_durable_reopen": true,
+    "strict_tables": true,
+    "synchronous_extra": true
+  },
+  "git_base": "5be8ee22609e27e765f46437017b1e7cce6c6f2e",
+  "limits": [
+    "No NVIDIA product source import or product case executed",
+    "No durable D091 category or R112 source tested",
+    "No ABI, version-wide or 3.54.1 equivalence established",
+    "No source/profile/generation/runner admission",
+    "No system library installed or substituted"
+  ],
+  "not_d091_test": true,
+  "not_equivalence_proof": true,
+  "product_cases_executed": 0,
+  "python": "3.13.5",
+  "python_path": "/home/jds/nvda_uv3135_20261112/.uvpython/cpython-3.13.5-linux-x86_64-gnu/bin/python3.13",
+  "python_sha256": "0eba26d5f04a3673ee264ca406ef286d5025da098c1a24987a8118c23d69153c",
+  "scope": "NON_PRODUCT_SQLITE_MECHANISM_COMPATIBILITY_OBSERVATION_ONLY",
+  "sqlite_source_id": "2025-02-18 13:38:58 873d4e274b4988d260ba8354a9718324a1c26187a4ab4c1cc0227c03d0f10e70",
+  "sqlite_version": "3.49.1"
+}

@@ -1,0 +1,43 @@
+{
+  "schema": "R112_OPERATIVE_SOURCE_DECISION_CANDIDATE_V1",
+  "status": "PREPARED_OWNER_DECISION_PENDING",
+  "upstream_candidate_commit": "5be8ee22609e27e765f46437017b1e7cce6c6f2e",
+  "upstream_review_commit": "d6fb895e54ba0a4dae5fffff172fc91014fb51e8",
+  "source_contract_path": "handoff/m02_completion_28_execution/L01b/R112_SOURCE_CONTRACT_PROPOSED.json",
+  "source_contract_sha256": "31c811e77468f44c2e412893326bc6d5f9ea037cdbf28712ce8e213652fdfc63",
+  "source_fixture_path": "handoff/m02_completion_28_execution/L01b/CONTROLLED_BATCH_INPUTS.json",
+  "source_fixture_sha256": "1f4c46c5c247c78e3e18bb2de02c172f775379f664bad8e056ef6867a39d03dc",
+  "documentary_oracle_sha256": "28bca489fc35faaef7b3a673e5c242b3463b125aa9038ee8d9c3a8c8192c5947",
+  "proposed_owner_action": "Approve operative use of this exact synthetic-only R112 source contract including zero-age receipt and exclusive closed-batch precondition for L01b to L04 D091 only",
+  "already_adopted": "Five V1 D091 synthetic numerical bins established in installed ExecPlan; no repeat decision requested",
+  "proposed_scope": {
+    "source_provider": "t01-controlled-option-delta",
+    "source_variant": "controlled-option-model-delta/fraction-v1",
+    "model_variant": "CONTROLLED_SIGNED_DELTA_V1",
+    "profile_id": "T01-R112-CONTROLLED-FRACTION-1",
+    "native_path": [
+      "model",
+      "delta"
+    ],
+    "units": "signed_decimal_fraction",
+    "raw_signal": "R112",
+    "selection_policy": "T01-R112-EXACT-RECEIPT-1",
+    "max_members": 64,
+    "page_size": 8,
+    "exclusive_batch": true,
+    "receipt_equals_as_of": true,
+    "source_timestamp_present": false,
+    "live_source": false,
+    "production_policy": false
+  },
+  "owner_approval_ref": null,
+  "independent_operative_clearance_ref": null,
+  "source_admitted": false,
+  "l00_product_released": false,
+  "d091_implementation_released": false,
+  "tester_designated": false,
+  "physical_case_count_proposed": 2,
+  "physical_case_count_admitted": 0,
+  "product_runs": 0,
+  "d145": "PAUSED"
+}
