@@ -1,6 +1,6 @@
 # Test-local AGENTS.override.md — R2 Ubuntu/GitHub successor (RECONCILED REVIEW CANDIDATE; NOT INSTALLED)
 
-This file applies only beneath `tests/`. The owner approved R2 CHAT_MANUAL; the local-only Git-bundle handover is historical, and a GitHub pinned-checkpoint successor is proposed subject to independent proof and owner acceptance. For documentary review, read frozen root `GUARDRAILS.md` and the complete reconciled proposed `AGENTS.md` and `EXEC_PLAN.md` texts in `handoff/planning/t01_main_reconciliation_20261112/`; actual testing follows only separately accepted and installed authority. Product tests remain assigned to the independent manual Tester at L32; this setup does not execute them.
+This file applies only beneath `tests/`. The owner approved R2 CHAT_MANUAL; the local-only Git-bundle handover is historical, and a GitHub pinned-checkpoint successor is proposed subject to independent proof and owner acceptance. For documentary review, read frozen root `GUARDRAILS.md` and the complete reconciled proposed `AGENTS.md` and `EXEC_PLAN.md` texts in `handoff/planning/t01_owner_lint_integration_20261115/`; actual testing follows only separately accepted and installed authority. Product tests remain assigned to the independent manual Tester at L32; this setup does not execute them.
 
 - Preserve every valid historical case, strict validator, proof, generation, claim and failed/repaired result. Never rewrite expected outputs or lower proof standards to make tests pass.
 - The Worker may author or update only the allocated scope-specific tests and independent oracles before product implementation; mark implementation `IMPLEMENTED_UNTESTED`. Do not execute product tests, routine RED, speculative probes, broad regressions or unrelated cross-module E2E suites.
@@ -11,3 +11,7 @@ This file applies only beneath `tests/`. The owner approved R2 CHAT_MANUAL; the 
 - Preserve prior findings and repairs; independent review must assess recurrence classes and bypass helper composition that conceals critical negative sequences.
 
 Frozen GUARDRAILS remains unchanged. This proposed successor gives no independent product-test commission to the Worker. The distinct Tester must verify its actual GitHub receiver and follow the finally accepted L32 test authority.
+
+## Proposed coordinated amendment — supersedes prospective final-only wording upon exact adoption
+
+The separate independent Tester may execute only duly admitted dependency-window cases under `DEPENDENCY_WINDOWS.md` and the matching proposed ledger/delta in this directory. G1/G2/G3/G4 labels never release cases. Prove support and parents before accepting children, including within one window. L32 reconciles unchanged accepted evidence and runs only remaining admitted proofs. All presently authorised case counts stay zero. This amendment, plan, register and ledger require joint independent acceptance and explicit owner adoption before installation or execution. Original final-only directions above remain historical until that decision. Worker does not execute product cases.

@@ -1,5 +1,5 @@
 {
-  "status": "DOCUMENTARY_RECONCILIATION_ONLY_NOT_INSTALLED",
+  "status": "CORRECTED_COORDINATED_PROPOSAL_NOT_INSTALLED",
   "source_pr3_sha": "3d8f1fae68cdba41c7a1e96df6cb59d1ee35afd9",
   "active_main_sha_at_preparation": "a73349834fe4aa1422c194da0492315044b32b98",
   "files": [
@@ -7,33 +7,37 @@
       "output": "PROPOSED_AGENTS.md",
       "source": "3d8f1fae68cdba41c7a1e96df6cb59d1ee35afd9:handoff/planning/t01_main_reconciliation_20261112/PROPOSED_AGENTS.md",
       "source_sha256": "c48521e55d5914a6b3d36022b5d6c75124b8f994fb5e6e8e66049d24ccc2657c",
-      "output_sha256": "ef54c74e9023b4ef252f70dbeacf98a0080085b555c063a86011ac8834dd7109",
-      "change": "Prepend exact current main owner continuous-execution first line; retain original proposal body unchanged"
+      "output_sha256": "329c95bc2d9034cee4eca3de86d59e7029e6ad8c062ebb4885af9b74d83a6bce",
+      "change": "2026-11-15 coordinated amendment; original source identity unchanged; compare base Git bytes",
+      "previous_output_sha256": "ef54c74e9023b4ef252f70dbeacf98a0080085b555c063a86011ac8834dd7109"
     },
     {
       "output": "PROPOSED_EXEC_PLAN.md",
       "source": "3d8f1fae68cdba41c7a1e96df6cb59d1ee35afd9:handoff/planning/t01_main_reconciliation_20261112/PROPOSED_EXEC_PLAN.md",
       "source_sha256": "7180fe504449458a2284a3f234e5bc13d8526d6dca2cfbaa08ee2201497505df",
-      "output_sha256": "7180fe504449458a2284a3f234e5bc13d8526d6dca2cfbaa08ee2201497505df",
-      "change": "NONE; historical reviewed draft copied byte-identically"
+      "output_sha256": "cd25d243bb94edb489c47cb7fcde195fd7ca02336b6730748bbe0f8bda11b188",
+      "change": "2026-11-15 coordinated amendment; original source identity unchanged; compare base Git bytes",
+      "previous_output_sha256": "7180fe504449458a2284a3f234e5bc13d8526d6dca2cfbaa08ee2201497505df"
     },
     {
       "output": "PROPOSED_TESTS_AGENTS.override.md",
       "source": "3d8f1fae68cdba41c7a1e96df6cb59d1ee35afd9:handoff/planning/t01_main_reconciliation_20261112/PROPOSED_TESTS_AGENTS.override.md",
       "source_sha256": "cebb8f042751b41a6458b3ea875513a445d3bb163eb4b049b25a5bc665a278e9",
-      "output_sha256": "cebb8f042751b41a6458b3ea875513a445d3bb163eb4b049b25a5bc665a278e9",
-      "change": "NONE; historical reviewed draft copied byte-identically"
+      "output_sha256": "cc56df4abc0c640595d900b70862cd9c356e7a93a97e997bda6bf7260f7d6f9b",
+      "change": "2026-11-15 coordinated amendment; original source identity unchanged; compare base Git bytes",
+      "previous_output_sha256": "cebb8f042751b41a6458b3ea875513a445d3bb163eb4b049b25a5bc665a278e9"
     },
     {
       "output": "PROPOSED_TEST_EVIDENCE_LEDGER.json",
       "source": "3d8f1fae68cdba41c7a1e96df6cb59d1ee35afd9:handoff/planning/t01_recovered_successor_20261111/PROPOSED_TEST_EVIDENCE_LEDGER.json",
       "source_sha256": "ff374f6208159a759684188c62c9e2494ffaf3daba19ca2e0c1217f4c7b200c3",
-      "output_sha256": "ff374f6208159a759684188c62c9e2494ffaf3daba19ca2e0c1217f4c7b200c3",
-      "change": "NONE; 35 obligations and original final-only scheduling unchanged"
+      "output_sha256": "d15b6b5f27cee55ab9bd37d302c8b98b3207854a4b49de026140cad6215a8c21",
+      "change": "2026-11-15 coordinated amendment; original source identity unchanged; compare base Git bytes",
+      "previous_output_sha256": "ff374f6208159a759684188c62c9e2494ffaf3daba19ca2e0c1217f4c7b200c3"
     }
   ],
   "proof_obligations": 35,
-  "current_l32_count": 34,
+  "current_l32_count": 0,
   "paused_d145_count": 1,
   "proposed_window_counts": {
     "G1_AFTER_L06": 11,
@@ -43,5 +47,6 @@
     "PAUSED_L31_NO_TEST": 1
   },
   "root_governance_modified": false,
-  "product_tests_executed": false
+  "product_tests_executed": false,
+  "pre_amendment_baseline": "02a19ae02678824908568d8db08f0e1d015cb861"
 }
