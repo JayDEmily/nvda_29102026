@@ -1,9 +1,11 @@
 [
   {
     "target": "AGENTS.md",
-    "archived": "handoff/astra_adr_continuation_20261115/predecessor/AGENTS.md",
+    "archived": "handoff/astra_adr_continuation_20261115/predecessor/AGENTS.md.gz",
     "sha256": "5277acccb95f5027589a35bc2144423dc4d2262ea71eb1f832fc581587846f59",
-    "blob": "725f520eeb45f0febabf3ae813ce6bb09c54ee44"
+    "blob": "725f520eeb45f0febabf3ae813ce6bb09c54ee44",
+    "encoding": "gzip; sha256 refers to original decompressed bytes",
+    "archive_sha256": "6fd7e60b9f906cb19a142170551b46a913893b1cd350a5f5c4af4032b9af9a8b"
   },
   {
     "target": "EXEC_PLAN.md",
