@@ -1,0 +1,68 @@
+{
+  "status": "VERIFIED_SNAPSHOT_SCOPED_TRANSPORT_AND_FINAL_READBACK",
+  "rows": 2281,
+  "contexts": [
+    {
+      "source": "handoff/planning/t01_recovered_successor_20261111/ORIGINAL_66_REFS.json",
+      "context": "$",
+      "id": "4d907f0badf2",
+      "ref_count": 66
+    },
+    {
+      "source": "handoff/m02_completion_28_execution/L00/L00_MANIFEST.json",
+      "context": "$.refs",
+      "id": "708a71aea015",
+      "ref_count": 237
+    },
+    {
+      "source": "handoff/m02_completion_28_execution/L00/CURRENT_REFS.txt",
+      "context": "$",
+      "id": "56e10f23bc57",
+      "ref_count": 238
+    },
+    {
+      "source": "handoff/planning/t01_recovered_successor_20261111/GITHUB_REMOTE_RECEIVER_RECEIPT.json",
+      "context": "$.fetched_remote_branches",
+      "id": "e6affe8f7e8d",
+      "ref_count": 5
+    },
+    {
+      "source": "CURRENT_REF_MANIFEST.json",
+      "context": "$.exported_refs",
+      "id": "5b724bec0fa9",
+      "ref_count": 779
+    },
+    {
+      "source": "CURRENT_REF_MANIFEST.json",
+      "context": "$.original66",
+      "id": "dae4084b06e8",
+      "ref_count": 66
+    },
+    {
+      "source": "CURRENT_REF_MANIFEST.json",
+      "context": "$.remote_snapshot",
+      "id": "a7e68a47b7f1",
+      "ref_count": 238
+    },
+    {
+      "source": "CURRENT_REF_MANIFEST.json",
+      "context": "$.retained_worker_e19_snapshot",
+      "id": "e21979ef9063",
+      "ref_count": 237
+    },
+    {
+      "source": "ADDITIVE_HEADER_COMPLETION.json",
+      "context": "$.added_base_satisfied_refs",
+      "id": "3aa78a4cb862",
+      "ref_count": 415
+    }
+  ],
+  "unique_ref_tip_pairs": 797,
+  "bundle_path": "/workspace/recovery-assets/ASTRA_REQUIRED_CONTEXTS_FULL_HISTORY.bundle",
+  "bundle_sha256": "72d1101a21b091d65e19a3fc95b2b9ac207c0bedb189a0f7824565f15ea532a0",
+  "bundle_bytes": 165646032,
+  "fresh_object_store": "/workspace/astra-context-fresh.git",
+  "fresh_store_alternates": false,
+  "context_views_shared_object_store": "/workspace/astra-context-fresh.git/objects",
+  "contract": "Literal names checked after complete snapshot installation in each view. All snapshots transported together under explicit context namespaces. The single documented work/work/* alias is preserved."
+}
