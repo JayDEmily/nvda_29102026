@@ -1,0 +1,72 @@
+{
+  "kind": "READ_ONLY_RUFF_SUCCESSOR_RUNTIME_PREFLIGHT",
+  "candidate": "c616dc5da96af2c2901f2c93e05bbf69f489a725",
+  "interpreter_executed": "/home/jds/nvda_uv3135_20261112/.venv/bin/python",
+  "interpreter_version": "3.13.5",
+  "sqlite3_loaded_version": "3.49.1",
+  "project_requires_python": "==3.13.5",
+  "project_python_version_file": "3.13.5",
+  "python3_12_in_current_PATH": null,
+  "contracts": [
+    {
+      "claim_id": "neutral_market_measurement_truth_pilot",
+      "family_path": "tests/product/market_measurement/test_boundary_pilot.py",
+      "contract_environment": "Candidate CPython 3.12.14; SQLite 3.53.1 proof engine; pytest 9.0.3; mypy 1.20.1; no provider network; exact environment must be proved"
+    },
+    {
+      "claim_id": "neutral_market_measurement_truth_pilot",
+      "family_path": "tests/product/market_measurement/test_selection_history.py",
+      "contract_environment": "Candidate CPython 3.12.14; SQLite 3.53.1 proof engine; pytest 9.0.3; mypy 1.20.1; no provider network; exact environment must be proved"
+    },
+    {
+      "claim_id": "neutral_market_measurement_truth_pilot",
+      "family_path": "tests/product/market_measurement/test_identity_readback.py",
+      "contract_environment": "Candidate CPython 3.12.14; SQLite 3.53.1 proof engine; pytest 9.0.3; mypy 1.20.1; no provider network; exact environment must be proved"
+    },
+    {
+      "claim_id": "neutral_market_measurement_truth_pilot",
+      "family_path": "tests/product/market_measurement/test_public_types.py",
+      "contract_environment": "Candidate CPython 3.12.14; SQLite 3.53.1 proof engine; pytest 9.0.3; mypy 1.20.1; no provider network; exact environment must be proved"
+    },
+    {
+      "claim_id": "neutral_market_measurement_truth_pilot",
+      "family_path": "tests/product/market_measurement/test_sqlite_boundary.py",
+      "contract_environment": "Candidate CPython 3.12.14; SQLite 3.53.1 proof engine; pytest 9.0.3; mypy 1.20.1; no provider network; exact environment must be proved"
+    },
+    {
+      "claim_id": "neutral_market_measurement_truth_d030",
+      "family_path": "tests/product/market_measurement_d030/test_trade_rate_zscore.py",
+      "contract_environment": "CPython3.12.14 SQLite3.53.1 and existing pinned offline tools."
+    },
+    {
+      "claim_id": "neutral_market_measurement_truth_d031",
+      "family_path": "tests/product/market_measurement_d031/test_volume_rate_zscore.py",
+      "contract_environment": "CPython3.12.14 SQLite3.53.1 and existing pinned offline tools."
+    },
+    {
+      "claim_id": "neutral_market_measurement_truth_d032",
+      "family_path": "tests/product/market_measurement_d032/test_five_minute_realised_volatility.py",
+      "contract_environment": "CPython3.12.14 SQLite3.53.1 and existing pinned offline tools."
+    },
+    {
+      "claim_id": "neutral_market_measurement_truth_d033",
+      "family_path": "tests/product/market_measurement_d033/test_thirty_minute_realised_volatility.py",
+      "contract_environment": "CPython3.12.14 SQLite3.53.1 and existing pinned offline tools."
+    },
+    {
+      "claim_id": "neutral_market_measurement_truth_d035",
+      "family_path": "tests/product/market_measurement_d035/test_five_day_realised_volatility.py",
+      "contract_environment": "CPython3.12.14 SQLite3.53.1 and existing pinned offline tools."
+    },
+    {
+      "claim_id": "neutral_market_measurement_truth_d036",
+      "family_path": "tests/product/market_measurement_d036/test_ten_day_realised_volatility.py",
+      "contract_environment": "CPython3.12.14 SQLite3.53.1 and existing pinned offline tools."
+    }
+  ],
+  "contract_count": 7,
+  "contract_family_count": 11,
+  "claim_of_runtime_equivalence": false,
+  "product_tests_executed": false,
+  "proof_admissions_executed": false
+}
