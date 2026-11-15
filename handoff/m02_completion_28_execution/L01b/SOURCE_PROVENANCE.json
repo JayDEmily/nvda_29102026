@@ -1,0 +1,119 @@
+{
+  "base_commit": "37101554bda7c94fd4cd791074c9d63c13e97ee8",
+  "sources": [
+    {
+      "path": "GUARDRAILS.md",
+      "sha256": "585dc9b1a95719a7b60929b0d3ea64696fd6d52cd19b2b4a463c5bb9d34947b6",
+      "bytes": 10259,
+      "blob": "54a4407609941f63f6b902076688ff102a3d5ba2"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "329c95bc2d9034cee4eca3de86d59e7029e6ad8c062ebb4885af9b74d83a6bce",
+      "bytes": 6388,
+      "blob": "b5b8f73bfef62cf34643aef419e6931599ad08b1"
+    },
+    {
+      "path": "EXEC_PLAN.md",
+      "sha256": "db6d8ae6ad7b43402290c07d3d23d9ba018dd187c73ba3f186ac218e56b2d32b",
+      "bytes": 61453,
+      "blob": "76e8dd7af85cee33e306c351206e69fc049129fb"
+    },
+    {
+      "path": "tests/AGENTS.override.md",
+      "sha256": "3e906d6cad67f4c8f3137928124493ef7d2877c2c92da90e7a44ad9141c7424f",
+      "bytes": 4147,
+      "blob": "66666cc012889e585ef4da80049d5ee2a0244c53"
+    },
+    {
+      "path": "implementation/authority/FOUNDATION_IMPLEMENTATION_AUTHORITY_BINDING.yaml",
+      "sha256": "7c7fa7df69e75825853bf7b355343d9b6f793beab247b37223bfa71737248b87",
+      "bytes": 416,
+      "blob": "9f8cae8d9abe263f10bbe3a6fae1b19e4aad3fe1"
+    },
+    {
+      "path": "handoff/foundation_implementation/authority/SQLITE_IMPLEMENTATION_BRIEF_PROPOSED.md",
+      "sha256": "3ad4cdc9ffba4cf91ff9a27edf1dd3b1a9824a421514bb4b5a2cc1b9c504f233",
+      "bytes": 25636,
+      "blob": "ad2a7629c33de88cdc4d83c90c1ff4ba52388848"
+    },
+    {
+      "path": "handoff/foundation_implementation/authority/FOUNDATION_IMPLEMENTATION_BRIEF_PROPOSED.md",
+      "sha256": "282f7d73c5e2fdf36ded43781665764eaf95d4a35f687f99990b87c59f744ed7",
+      "bytes": 74555,
+      "blob": "085c6663f41c214a680bafad7aafd587f2a38b5d"
+    },
+    {
+      "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md",
+      "sha256": "603b850802a418780109095e7ae69bcece449da79fb24140a6d50297605e927c",
+      "bytes": 71998,
+      "blob": "32930fc08eb648c2cc6347d32d910e3a45bdc07f"
+    },
+    {
+      "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv",
+      "sha256": "67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549",
+      "bytes": 71989,
+      "blob": "a27d5e768ab7f1126cecd5a7bbe35bd05b82a442"
+    },
+    {
+      "path": "handoff/m01_completion/authority/D138_D145_L2_OWNER_APPROVED_DEPENDENCY_AMENDMENT_20261016.md",
+      "sha256": "9973c3699b5135be503611f4a5582118c4f80a0145bde473720c32434a3963e2",
+      "bytes": 6751,
+      "blob": "13805165e6f2d7651ce275be24edbf94ed403d52"
+    },
+    {
+      "path": "handoff/m02_foundation_prerequisites_20261029/R3_TENTATIVE_SYNTHETIC_PROFILES_V1.json",
+      "sha256": "af9580f6e10e773fbdb008ad543931171ac824f8f86b2cf1af021f0e7ce0a15b",
+      "bytes": 10611,
+      "blob": "78669bbb34d120e1998998d4cb81e9f600b7fea5"
+    },
+    {
+      "path": "handoff/m02_oracle_v2_review_20261029/REUSE_ASSESSMENT.md",
+      "sha256": "b32ddc694e7ff68983dbbd4b82251642be0a32283df78d4e465d53a28b8f8e3d",
+      "bytes": 8276,
+      "blob": "a3d4d2533cfd0d19f044e181170dddf7cb70f38a"
+    },
+    {
+      "path": "handoff/m02_oracle_v2_review_20261029/untrusted_v2_original/SYNTHETIC_D091_BOUNDARIES_V2.csv",
+      "sha256": "8cf2989f99bd7c4190746466a7b1440ed2884aa298714d1d1f9b01adbfb034b4",
+      "bytes": 472,
+      "blob": "2717bb0cba1e5b343041f9c72c0fb3ca6115b05e"
+    },
+    {
+      "path": "src/nvda_desk/raw_signal_occurrence_truth/api.py",
+      "sha256": "cda0dfe957ce6a51a486cbacb78f3f1b50ec9abac4458f8e69b659bf43b0f01d",
+      "bytes": 91027,
+      "blob": "8e04ef0d8d411b760e43d36205004b8255af65ff"
+    },
+    {
+      "path": "src/nvda_desk/market_measurement_truth/_selection.py",
+      "sha256": "2311098711ea0738da43caa60171a8722fd86c7dc56aa6847e3db00ca70f0b50",
+      "bytes": 6207,
+      "blob": "ac4cc2ee003f4c915e06bd04ce27ea8c4e718242"
+    },
+    {
+      "path": "src/nvda_desk/market_measurement_truth/_native_profiles.py",
+      "sha256": "4161417279274afe02615e967747ae261f032bfd9d16d259a6c65f13cfc60d92",
+      "bytes": 31270,
+      "blob": "20d8d9b2df159d3817f4a38cb1ad44bcc781df1e"
+    },
+    {
+      "path": "src/nvda_desk/market_measurement_truth/_native_source.py",
+      "sha256": "4370f0ff6a93d5c814a143bf29d6a7644ca98095891383106f92ce6e69c21388",
+      "bytes": 30292,
+      "blob": "3031ba8964dbbb84f968b72429751be007da8c1d"
+    },
+    {
+      "path": "src/nvda_desk/market_measurement_truth/_catalogue.py",
+      "sha256": "ef42e4838e3f26dbdf2068e63539ebdc23c4a7849f11a77295a9e0092a5fa8ba",
+      "bytes": 16951,
+      "blob": "ec3cccc51bb379f9197b1049b9aabf8ad0bb959b"
+    },
+    {
+      "path": "handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json",
+      "sha256": "c5713badfdbf9203c390ca18b72a4463c43aa129724e48b19ba763537e457135",
+      "bytes": 28529,
+      "blob": "e9efecefa64140e2e120f5efc62280bbb4814d1d"
+    }
+  ]
+}

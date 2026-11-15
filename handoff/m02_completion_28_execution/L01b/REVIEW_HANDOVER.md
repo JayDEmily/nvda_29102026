@@ -1,0 +1,7 @@
+# Independent documentary review — L01b proposal
+
+Review the exact published branch/head against base37101554bda7c94fd4cd791074c9d63c13e97ee8. Read frozen GUARDRAILS, installed AGENTS/test override/root EXEC_PLAN and current owner installation/merge receipts. Scope is the new L01b source-contract packet only. Do not edit governing/source/proof files, run product tests, admit cases, execute raw/M02 probes, merge main or reactivate D145.
+
+Verify: exact catalogue/authority lineage; source literal does not contain a D answer; mapping/public API signatures and exact units/metadata contract; both receipt/knowledge and within-scope ordering; no claim that D087/fixed native profiles or old pilot selector already admits R112; category/codec/admission change boundary explicit; V1 bins exact; added documentary witnesses not mislabelled old proof; exact original two case objects and zero admissions/runs; unresolved finite coverage and L00 conditions remain visible; all original roots/proofs/runtime configuration remain byte-identical to base.
+
+Return ACCEPT_DOCUMENTARY_CONTRACT_PROPOSAL / RETURN / BLOCKED with exact scope, source references and all material findings. Acceptance means the proposal is concrete and truthful for later source/admission decision, not L01b implementation release, product correctness or execution authority. Preserve independent lineages/recurrence classification. Reviewer report may be placed under this new L01b handoff path on a review branch or handed to Worker for an evidence-only commit.

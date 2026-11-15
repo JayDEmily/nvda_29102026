@@ -1,0 +1,753 @@
+{
+  "status": "PROPOSED_LITERAL_CONTROLLED_SOURCE_BATCH_NOT_ADMITTED",
+  "artifact_identity": "T01-R112-CLOSED-BATCH-V1",
+  "membership": "Exactly these15raw input records; no D091 result/bucket in native records",
+  "source_cutoff_barrier": "Future controlled coordinator finishes all admissions before first read; no writer/actor appends until traversal/calculation batch completes; no M00 seal or snapshot API asserted",
+  "members": [
+    {
+      "member_id": "zero",
+      "purpose": "positive",
+      "observation": {
+        "observation_occurrence_id": "T01-R112-BATCH-00",
+        "source_provider": "t01-controlled-option-delta",
+        "source_variant": "controlled-option-model-delta/fraction-v1",
+        "subject_instrument": "SYNTH-NVDA-OPT-C100-20261120",
+        "native_units": "signed_decimal_fraction",
+        "source_temporal_kind": "receipt_only",
+        "source_timestamp_raw": null,
+        "source_timezone_native": null,
+        "received_ts_utc": "2026-11-15T12:00:00Z",
+        "ingestion_sequence": 1,
+        "ingestion_sequence_scope": "T01-R112-CONTROL/G1",
+        "raw_signal_catalogue_ids": [
+          "R112"
+        ],
+        "native_record": {
+          "identity": {
+            "contract_id": "SYNTH-NVDA-OPT-C100-20261120",
+            "underlying": "NVDA",
+            "security_type": "OPT",
+            "right": "C",
+            "expiry_date": "2026-11-20",
+            "strike": "100",
+            "currency": "USD",
+            "model_variant": "CONTROLLED_SIGNED_DELTA_V1",
+            "scale": "signed_decimal_fraction",
+            "generation": "T01-R112-CONTROL-G1",
+            "request_id": "T01-R112-BOUNDARIES-1"
+          },
+          "model": {
+            "delta": {
+              "native_type": "Decimal",
+              "text": "0"
+            }
+          }
+        }
+      },
+      "calculation_request_proposed": {
+        "derived_signal_id": "D091",
+        "source_profile_id": "T01-R112-CONTROLLED-FRACTION-1",
+        "subject_instrument": "SYNTH-NVDA-OPT-C100-20261120",
+        "as_of_utc": "2026-11-15T12:00:00Z",
+        "knowledge_cutoff_utc": "2026-11-15T12:00:00Z",
+        "calculated_at_utc": "2026-11-15T12:01:00Z"
+      },
+      "source_specimen_encoding": "Use public M00 opaque-ID factories and exact Decimal construction; delivery_artifact_ref applied from external profile binding"
+    },
+    {
+      "member_id": "negative_tenth",
+      "purpose": "positive",
+      "observation": {
+        "observation_occurrence_id": "T01-R112-BATCH-01",
+        "source_provider": "t01-controlled-option-delta",
+        "source_variant": "controlled-option-model-delta/fraction-v1",
+        "subject_instrument": "SYNTH-NVDA-OPT-C100-20261120",
+        "native_units": "signed_decimal_fraction",
+        "source_temporal_kind": "receipt_only",
+        "source_timestamp_raw": null,
+        "source_timezone_native": null,
+        "received_ts_utc": "2026-11-15T12:00:01Z",
+        "ingestion_sequence": 2,
+        "ingestion_sequence_scope": "T01-R112-CONTROL/G1",
+        "raw_signal_catalogue_ids": [
+          "R112"
+        ],
+        "native_record": {
+          "identity": {
+            "contract_id": "SYNTH-NVDA-OPT-C100-20261120",
+            "underlying": "NVDA",
+            "security_type": "OPT",
+            "right": "C",
+            "expiry_date": "2026-11-20",
+            "strike": "100",
+            "currency": "USD",
+            "model_variant": "CONTROLLED_SIGNED_DELTA_V1",
+            "scale": "signed_decimal_fraction",
+            "generation": "T01-R112-CONTROL-G1",
+            "request_id": "T01-R112-BOUNDARIES-1"
+          },
+          "model": {
+            "delta": {
+              "native_type": "Decimal",
+              "text": "-0.10"
+            }
+          }
+        }
+      },
+      "calculation_request_proposed": {
+        "derived_signal_id": "D091",
+        "source_profile_id": "T01-R112-CONTROLLED-FRACTION-1",
+        "subject_instrument": "SYNTH-NVDA-OPT-C100-20261120",
+        "as_of_utc": "2026-11-15T12:00:01Z",
+        "knowledge_cutoff_utc": "2026-11-15T12:00:01Z",
+        "calculated_at_utc": "2026-11-15T12:01:00Z"
+      },
+      "source_specimen_encoding": "Use public M00 opaque-ID factories and exact Decimal construction; delivery_artifact_ref applied from external profile binding"
+    },
+    {
+      "member_id": "positive_tenth",
+      "purpose": "positive",
+      "observation": {
+        "observation_occurrence_id": "T01-R112-BATCH-02",
+        "source_provider": "t01-controlled-option-delta",
+        "source_variant": "controlled-option-model-delta/fraction-v1",
+        "subject_instrument": "SYNTH-NVDA-OPT-C100-20261120",
+        "native_units": "signed_decimal_fraction",
+        "source_temporal_kind": "receipt_only",
+        "source_timestamp_raw": null,
+        "source_timezone_native": null,
+        "received_ts_utc": "2026-11-15T12:00:02Z",
+        "ingestion_sequence": 3,
+        "ingestion_sequence_scope": "T01-R112-CONTROL/G1",
+        "raw_signal_catalogue_ids": [
+          "R112"
+        ],
+        "native_record": {
+          "identity": {
+            "contract_id": "SYNTH-NVDA-OPT-C100-20261120",
+            "underlying": "NVDA",
+            "security_type": "OPT",
+            "right": "C",
+            "expiry_date": "2026-11-20",
+            "strike": "100",
+            "currency": "USD",
+            "model_variant": "CONTROLLED_SIGNED_DELTA_V1",
+            "scale": "signed_decimal_fraction",
+            "generation": "T01-R112-CONTROL-G1",
+            "request_id": "T01-R112-BOUNDARIES-1"
+          },
+          "model": {
+            "delta": {
+              "native_type": "Decimal",
+              "text": "0.10"
+            }
+          }
+        }
+      },
+      "calculation_request_proposed": {
+        "derived_signal_id": "D091",
+        "source_profile_id": "T01-R112-CONTROLLED-FRACTION-1",
+        "subject_instrument": "SYNTH-NVDA-OPT-C100-20261120",
+        "as_of_utc": "2026-11-15T12:00:02Z",
+        "knowledge_cutoff_utc": "2026-11-15T12:00:02Z",
+        "calculated_at_utc": "2026-11-15T12:01:00Z"
+      },
+      "source_specimen_encoding": "Use public M00 opaque-ID factories and exact Decimal construction; delivery_artifact_ref applied from external profile binding"
+    },
+    {
+      "member_id": "negative_quarter",
+      "purpose": "positive",
+      "observation": {
+        "observation_occurrence_id": "T01-R112-BATCH-03",
+        "source_provider": "t01-controlled-option-delta",
+        "source_variant": "controlled-option-model-delta/fraction-v1",
+        "subject_instrument": "SYNTH-NVDA-OPT-C100-20261120",
+        "native_units": "signed_decimal_fraction",
+        "source_temporal_kind": "receipt_only",
+        "source_timestamp_raw": null,
+        "source_timezone_native": null,
+        "received_ts_utc": "2026-11-15T12:00:03Z",
+        "ingestion_sequence": 4,
+        "ingestion_sequence_scope": "T01-R112-CONTROL/G1",
+        "raw_signal_catalogue_ids": [
+          "R112"
+        ],
+        "native_record": {
+          "identity": {
+            "contract_id": "SYNTH-NVDA-OPT-C100-20261120",
+            "underlying": "NVDA",
+            "security_type": "OPT",
+            "right": "C",
+            "expiry_date": "2026-11-20",
+            "strike": "100",
+            "currency": "USD",
+            "model_variant": "CONTROLLED_SIGNED_DELTA_V1",
+            "scale": "signed_decimal_fraction",
+            "generation": "T01-R112-CONTROL-G1",
+            "request_id": "T01-R112-BOUNDARIES-1"
+          },
+          "model": {
+            "delta": {
+              "native_type": "Decimal",
+              "text": "-0.25"
+            }
+          }
+        }
+      },
+      "calculation_request_proposed": {
+        "derived_signal_id": "D091",
+        "source_profile_id": "T01-R112-CONTROLLED-FRACTION-1",
+        "subject_instrument": "SYNTH-NVDA-OPT-C100-20261120",
+        "as_of_utc": "2026-11-15T12:00:03Z",
+        "knowledge_cutoff_utc": "2026-11-15T12:00:03Z",
+        "calculated_at_utc": "2026-11-15T12:01:00Z"
+      },
+      "source_specimen_encoding": "Use public M00 opaque-ID factories and exact Decimal construction; delivery_artifact_ref applied from external profile binding"
+    },
+    {
+      "member_id": "positive_quarter",
+      "purpose": "positive",
+      "observation": {
+        "observation_occurrence_id": "T01-R112-BATCH-04",
+        "source_provider": "t01-controlled-option-delta",
+        "source_variant": "controlled-option-model-delta/fraction-v1",
+        "subject_instrument": "SYNTH-NVDA-OPT-C100-20261120",
+        "native_units": "signed_decimal_fraction",
+        "source_temporal_kind": "receipt_only",
+        "source_timestamp_raw": null,
+        "source_timezone_native": null,
+        "received_ts_utc": "2026-11-15T12:00:04Z",
+        "ingestion_sequence": 5,
+        "ingestion_sequence_scope": "T01-R112-CONTROL/G1",
+        "raw_signal_catalogue_ids": [
+          "R112"
+        ],
+        "native_record": {
+          "identity": {
+            "contract_id": "SYNTH-NVDA-OPT-C100-20261120",
+            "underlying": "NVDA",
+            "security_type": "OPT",
+            "right": "C",
+            "expiry_date": "2026-11-20",
+            "strike": "100",
+            "currency": "USD",
+            "model_variant": "CONTROLLED_SIGNED_DELTA_V1",
+            "scale": "signed_decimal_fraction",
+            "generation": "T01-R112-CONTROL-G1",
+            "request_id": "T01-R112-BOUNDARIES-1"
+          },
+          "model": {
+            "delta": {
+              "native_type": "Decimal",
+              "text": "0.25"
+            }
+          }
+        }
+      },
+      "calculation_request_proposed": {
+        "derived_signal_id": "D091",
+        "source_profile_id": "T01-R112-CONTROLLED-FRACTION-1",
+        "subject_instrument": "SYNTH-NVDA-OPT-C100-20261120",
+        "as_of_utc": "2026-11-15T12:00:04Z",
+        "knowledge_cutoff_utc": "2026-11-15T12:00:04Z",
+        "calculated_at_utc": "2026-11-15T12:01:00Z"
+      },
+      "source_specimen_encoding": "Use public M00 opaque-ID factories and exact Decimal construction; delivery_artifact_ref applied from external profile binding"
+    },
+    {
+      "member_id": "negative_half",
+      "purpose": "positive",
+      "observation": {
+        "observation_occurrence_id": "T01-R112-BATCH-05",
+        "source_provider": "t01-controlled-option-delta",
+        "source_variant": "controlled-option-model-delta/fraction-v1",
+        "subject_instrument": "SYNTH-NVDA-OPT-C100-20261120",
+        "native_units": "signed_decimal_fraction",
+        "source_temporal_kind": "receipt_only",
+        "source_timestamp_raw": null,
+        "source_timezone_native": null,
+        "received_ts_utc": "2026-11-15T12:00:05Z",
+        "ingestion_sequence": 6,
+        "ingestion_sequence_scope": "T01-R112-CONTROL/G1",
+        "raw_signal_catalogue_ids": [
+          "R112"
+        ],
+        "native_record": {
+          "identity": {
+            "contract_id": "SYNTH-NVDA-OPT-C100-20261120",
+            "underlying": "NVDA",
+            "security_type": "OPT",
+            "right": "C",
+            "expiry_date": "2026-11-20",
+            "strike": "100",
+            "currency": "USD",
+            "model_variant": "CONTROLLED_SIGNED_DELTA_V1",
+            "scale": "signed_decimal_fraction",
+            "generation": "T01-R112-CONTROL-G1",
+            "request_id": "T01-R112-BOUNDARIES-1"
+          },
+          "model": {
+            "delta": {
+              "native_type": "Decimal",
+              "text": "-0.50"
+            }
+          }
+        }
+      },
+      "calculation_request_proposed": {
+        "derived_signal_id": "D091",
+        "source_profile_id": "T01-R112-CONTROLLED-FRACTION-1",
+        "subject_instrument": "SYNTH-NVDA-OPT-C100-20261120",
+        "as_of_utc": "2026-11-15T12:00:05Z",
+        "knowledge_cutoff_utc": "2026-11-15T12:00:05Z",
+        "calculated_at_utc": "2026-11-15T12:01:00Z"
+      },
+      "source_specimen_encoding": "Use public M00 opaque-ID factories and exact Decimal construction; delivery_artifact_ref applied from external profile binding"
+    },
+    {
+      "member_id": "positive_half",
+      "purpose": "positive",
+      "observation": {
+        "observation_occurrence_id": "T01-R112-BATCH-06",
+        "source_provider": "t01-controlled-option-delta",
+        "source_variant": "controlled-option-model-delta/fraction-v1",
+        "subject_instrument": "SYNTH-NVDA-OPT-C100-20261120",
+        "native_units": "signed_decimal_fraction",
+        "source_temporal_kind": "receipt_only",
+        "source_timestamp_raw": null,
+        "source_timezone_native": null,
+        "received_ts_utc": "2026-11-15T12:00:06Z",
+        "ingestion_sequence": 7,
+        "ingestion_sequence_scope": "T01-R112-CONTROL/G1",
+        "raw_signal_catalogue_ids": [
+          "R112"
+        ],
+        "native_record": {
+          "identity": {
+            "contract_id": "SYNTH-NVDA-OPT-C100-20261120",
+            "underlying": "NVDA",
+            "security_type": "OPT",
+            "right": "C",
+            "expiry_date": "2026-11-20",
+            "strike": "100",
+            "currency": "USD",
+            "model_variant": "CONTROLLED_SIGNED_DELTA_V1",
+            "scale": "signed_decimal_fraction",
+            "generation": "T01-R112-CONTROL-G1",
+            "request_id": "T01-R112-BOUNDARIES-1"
+          },
+          "model": {
+            "delta": {
+              "native_type": "Decimal",
+              "text": "0.50"
+            }
+          }
+        }
+      },
+      "calculation_request_proposed": {
+        "derived_signal_id": "D091",
+        "source_profile_id": "T01-R112-CONTROLLED-FRACTION-1",
+        "subject_instrument": "SYNTH-NVDA-OPT-C100-20261120",
+        "as_of_utc": "2026-11-15T12:00:06Z",
+        "knowledge_cutoff_utc": "2026-11-15T12:00:06Z",
+        "calculated_at_utc": "2026-11-15T12:01:00Z"
+      },
+      "source_specimen_encoding": "Use public M00 opaque-ID factories and exact Decimal construction; delivery_artifact_ref applied from external profile binding"
+    },
+    {
+      "member_id": "negative_three_quarters",
+      "purpose": "positive",
+      "observation": {
+        "observation_occurrence_id": "T01-R112-BATCH-07",
+        "source_provider": "t01-controlled-option-delta",
+        "source_variant": "controlled-option-model-delta/fraction-v1",
+        "subject_instrument": "SYNTH-NVDA-OPT-C100-20261120",
+        "native_units": "signed_decimal_fraction",
+        "source_temporal_kind": "receipt_only",
+        "source_timestamp_raw": null,
+        "source_timezone_native": null,
+        "received_ts_utc": "2026-11-15T12:00:07Z",
+        "ingestion_sequence": 8,
+        "ingestion_sequence_scope": "T01-R112-CONTROL/G1",
+        "raw_signal_catalogue_ids": [
+          "R112"
+        ],
+        "native_record": {
+          "identity": {
+            "contract_id": "SYNTH-NVDA-OPT-C100-20261120",
+            "underlying": "NVDA",
+            "security_type": "OPT",
+            "right": "C",
+            "expiry_date": "2026-11-20",
+            "strike": "100",
+            "currency": "USD",
+            "model_variant": "CONTROLLED_SIGNED_DELTA_V1",
+            "scale": "signed_decimal_fraction",
+            "generation": "T01-R112-CONTROL-G1",
+            "request_id": "T01-R112-BOUNDARIES-1"
+          },
+          "model": {
+            "delta": {
+              "native_type": "Decimal",
+              "text": "-0.75"
+            }
+          }
+        }
+      },
+      "calculation_request_proposed": {
+        "derived_signal_id": "D091",
+        "source_profile_id": "T01-R112-CONTROLLED-FRACTION-1",
+        "subject_instrument": "SYNTH-NVDA-OPT-C100-20261120",
+        "as_of_utc": "2026-11-15T12:00:07Z",
+        "knowledge_cutoff_utc": "2026-11-15T12:00:07Z",
+        "calculated_at_utc": "2026-11-15T12:01:00Z"
+      },
+      "source_specimen_encoding": "Use public M00 opaque-ID factories and exact Decimal construction; delivery_artifact_ref applied from external profile binding"
+    },
+    {
+      "member_id": "positive_three_quarters",
+      "purpose": "positive",
+      "observation": {
+        "observation_occurrence_id": "T01-R112-BATCH-08",
+        "source_provider": "t01-controlled-option-delta",
+        "source_variant": "controlled-option-model-delta/fraction-v1",
+        "subject_instrument": "SYNTH-NVDA-OPT-C100-20261120",
+        "native_units": "signed_decimal_fraction",
+        "source_temporal_kind": "receipt_only",
+        "source_timestamp_raw": null,
+        "source_timezone_native": null,
+        "received_ts_utc": "2026-11-15T12:00:08Z",
+        "ingestion_sequence": 9,
+        "ingestion_sequence_scope": "T01-R112-CONTROL/G1",
+        "raw_signal_catalogue_ids": [
+          "R112"
+        ],
+        "native_record": {
+          "identity": {
+            "contract_id": "SYNTH-NVDA-OPT-C100-20261120",
+            "underlying": "NVDA",
+            "security_type": "OPT",
+            "right": "C",
+            "expiry_date": "2026-11-20",
+            "strike": "100",
+            "currency": "USD",
+            "model_variant": "CONTROLLED_SIGNED_DELTA_V1",
+            "scale": "signed_decimal_fraction",
+            "generation": "T01-R112-CONTROL-G1",
+            "request_id": "T01-R112-BOUNDARIES-1"
+          },
+          "model": {
+            "delta": {
+              "native_type": "Decimal",
+              "text": "0.75"
+            }
+          }
+        }
+      },
+      "calculation_request_proposed": {
+        "derived_signal_id": "D091",
+        "source_profile_id": "T01-R112-CONTROLLED-FRACTION-1",
+        "subject_instrument": "SYNTH-NVDA-OPT-C100-20261120",
+        "as_of_utc": "2026-11-15T12:00:08Z",
+        "knowledge_cutoff_utc": "2026-11-15T12:00:08Z",
+        "calculated_at_utc": "2026-11-15T12:01:00Z"
+      },
+      "source_specimen_encoding": "Use public M00 opaque-ID factories and exact Decimal construction; delivery_artifact_ref applied from external profile binding"
+    },
+    {
+      "member_id": "negative_one",
+      "purpose": "positive",
+      "observation": {
+        "observation_occurrence_id": "T01-R112-BATCH-09",
+        "source_provider": "t01-controlled-option-delta",
+        "source_variant": "controlled-option-model-delta/fraction-v1",
+        "subject_instrument": "SYNTH-NVDA-OPT-C100-20261120",
+        "native_units": "signed_decimal_fraction",
+        "source_temporal_kind": "receipt_only",
+        "source_timestamp_raw": null,
+        "source_timezone_native": null,
+        "received_ts_utc": "2026-11-15T12:00:09Z",
+        "ingestion_sequence": 10,
+        "ingestion_sequence_scope": "T01-R112-CONTROL/G1",
+        "raw_signal_catalogue_ids": [
+          "R112"
+        ],
+        "native_record": {
+          "identity": {
+            "contract_id": "SYNTH-NVDA-OPT-C100-20261120",
+            "underlying": "NVDA",
+            "security_type": "OPT",
+            "right": "C",
+            "expiry_date": "2026-11-20",
+            "strike": "100",
+            "currency": "USD",
+            "model_variant": "CONTROLLED_SIGNED_DELTA_V1",
+            "scale": "signed_decimal_fraction",
+            "generation": "T01-R112-CONTROL-G1",
+            "request_id": "T01-R112-BOUNDARIES-1"
+          },
+          "model": {
+            "delta": {
+              "native_type": "Decimal",
+              "text": "-1.00"
+            }
+          }
+        }
+      },
+      "calculation_request_proposed": {
+        "derived_signal_id": "D091",
+        "source_profile_id": "T01-R112-CONTROLLED-FRACTION-1",
+        "subject_instrument": "SYNTH-NVDA-OPT-C100-20261120",
+        "as_of_utc": "2026-11-15T12:00:09Z",
+        "knowledge_cutoff_utc": "2026-11-15T12:00:09Z",
+        "calculated_at_utc": "2026-11-15T12:01:00Z"
+      },
+      "source_specimen_encoding": "Use public M00 opaque-ID factories and exact Decimal construction; delivery_artifact_ref applied from external profile binding"
+    },
+    {
+      "member_id": "positive_one",
+      "purpose": "positive",
+      "observation": {
+        "observation_occurrence_id": "T01-R112-BATCH-10",
+        "source_provider": "t01-controlled-option-delta",
+        "source_variant": "controlled-option-model-delta/fraction-v1",
+        "subject_instrument": "SYNTH-NVDA-OPT-C100-20261120",
+        "native_units": "signed_decimal_fraction",
+        "source_temporal_kind": "receipt_only",
+        "source_timestamp_raw": null,
+        "source_timezone_native": null,
+        "received_ts_utc": "2026-11-15T12:00:10Z",
+        "ingestion_sequence": 11,
+        "ingestion_sequence_scope": "T01-R112-CONTROL/G1",
+        "raw_signal_catalogue_ids": [
+          "R112"
+        ],
+        "native_record": {
+          "identity": {
+            "contract_id": "SYNTH-NVDA-OPT-C100-20261120",
+            "underlying": "NVDA",
+            "security_type": "OPT",
+            "right": "C",
+            "expiry_date": "2026-11-20",
+            "strike": "100",
+            "currency": "USD",
+            "model_variant": "CONTROLLED_SIGNED_DELTA_V1",
+            "scale": "signed_decimal_fraction",
+            "generation": "T01-R112-CONTROL-G1",
+            "request_id": "T01-R112-BOUNDARIES-1"
+          },
+          "model": {
+            "delta": {
+              "native_type": "Decimal",
+              "text": "1.00"
+            }
+          }
+        }
+      },
+      "calculation_request_proposed": {
+        "derived_signal_id": "D091",
+        "source_profile_id": "T01-R112-CONTROLLED-FRACTION-1",
+        "subject_instrument": "SYNTH-NVDA-OPT-C100-20261120",
+        "as_of_utc": "2026-11-15T12:00:10Z",
+        "knowledge_cutoff_utc": "2026-11-15T12:00:10Z",
+        "calculated_at_utc": "2026-11-15T12:01:00Z"
+      },
+      "source_specimen_encoding": "Use public M00 opaque-ID factories and exact Decimal construction; delivery_artifact_ref applied from external profile binding"
+    },
+    {
+      "member_id": "interior",
+      "purpose": "positive",
+      "observation": {
+        "observation_occurrence_id": "T01-R112-BATCH-11",
+        "source_provider": "t01-controlled-option-delta",
+        "source_variant": "controlled-option-model-delta/fraction-v1",
+        "subject_instrument": "SYNTH-NVDA-OPT-C100-20261120",
+        "native_units": "signed_decimal_fraction",
+        "source_temporal_kind": "receipt_only",
+        "source_timestamp_raw": null,
+        "source_timezone_native": null,
+        "received_ts_utc": "2026-11-15T12:00:11Z",
+        "ingestion_sequence": 12,
+        "ingestion_sequence_scope": "T01-R112-CONTROL/G1",
+        "raw_signal_catalogue_ids": [
+          "R112"
+        ],
+        "native_record": {
+          "identity": {
+            "contract_id": "SYNTH-NVDA-OPT-C100-20261120",
+            "underlying": "NVDA",
+            "security_type": "OPT",
+            "right": "C",
+            "expiry_date": "2026-11-20",
+            "strike": "100",
+            "currency": "USD",
+            "model_variant": "CONTROLLED_SIGNED_DELTA_V1",
+            "scale": "signed_decimal_fraction",
+            "generation": "T01-R112-CONTROL-G1",
+            "request_id": "T01-R112-BOUNDARIES-1"
+          },
+          "model": {
+            "delta": {
+              "native_type": "Decimal",
+              "text": "0.499"
+            }
+          }
+        }
+      },
+      "calculation_request_proposed": {
+        "derived_signal_id": "D091",
+        "source_profile_id": "T01-R112-CONTROLLED-FRACTION-1",
+        "subject_instrument": "SYNTH-NVDA-OPT-C100-20261120",
+        "as_of_utc": "2026-11-15T12:00:11Z",
+        "knowledge_cutoff_utc": "2026-11-15T12:00:11Z",
+        "calculated_at_utc": "2026-11-15T12:01:00Z"
+      },
+      "source_specimen_encoding": "Use public M00 opaque-ID factories and exact Decimal construction; delivery_artifact_ref applied from external profile binding"
+    },
+    {
+      "member_id": "out_of_range",
+      "purpose": "refusal",
+      "observation": {
+        "observation_occurrence_id": "T01-R112-BATCH-12",
+        "source_provider": "t01-controlled-option-delta",
+        "source_variant": "controlled-option-model-delta/fraction-v1",
+        "subject_instrument": "SYNTH-NVDA-OPT-C100-20261120",
+        "native_units": "signed_decimal_fraction",
+        "source_temporal_kind": "receipt_only",
+        "source_timestamp_raw": null,
+        "source_timezone_native": null,
+        "received_ts_utc": "2026-11-15T12:00:12Z",
+        "ingestion_sequence": 13,
+        "ingestion_sequence_scope": "T01-R112-CONTROL/G1",
+        "raw_signal_catalogue_ids": [
+          "R112"
+        ],
+        "native_record": {
+          "identity": {
+            "contract_id": "SYNTH-NVDA-OPT-C100-20261120",
+            "underlying": "NVDA",
+            "security_type": "OPT",
+            "right": "C",
+            "expiry_date": "2026-11-20",
+            "strike": "100",
+            "currency": "USD",
+            "model_variant": "CONTROLLED_SIGNED_DELTA_V1",
+            "scale": "signed_decimal_fraction",
+            "generation": "T01-R112-CONTROL-G1",
+            "request_id": "T01-R112-BOUNDARIES-1"
+          },
+          "model": {
+            "delta": {
+              "native_type": "Decimal",
+              "text": "1.01"
+            }
+          }
+        }
+      },
+      "calculation_request_proposed": {
+        "derived_signal_id": "D091",
+        "source_profile_id": "T01-R112-CONTROLLED-FRACTION-1",
+        "subject_instrument": "SYNTH-NVDA-OPT-C100-20261120",
+        "as_of_utc": "2026-11-15T12:00:12Z",
+        "knowledge_cutoff_utc": "2026-11-15T12:00:12Z",
+        "calculated_at_utc": "2026-11-15T12:01:00Z"
+      },
+      "source_specimen_encoding": "Use public M00 opaque-ID factories and exact Decimal construction; delivery_artifact_ref applied from external profile binding"
+    },
+    {
+      "member_id": "nonfinite",
+      "purpose": "refusal",
+      "observation": {
+        "observation_occurrence_id": "T01-R112-BATCH-13",
+        "source_provider": "t01-controlled-option-delta",
+        "source_variant": "controlled-option-model-delta/fraction-v1",
+        "subject_instrument": "SYNTH-NVDA-OPT-C100-20261120",
+        "native_units": "signed_decimal_fraction",
+        "source_temporal_kind": "receipt_only",
+        "source_timestamp_raw": null,
+        "source_timezone_native": null,
+        "received_ts_utc": "2026-11-15T12:00:13Z",
+        "ingestion_sequence": 14,
+        "ingestion_sequence_scope": "T01-R112-CONTROL/G1",
+        "raw_signal_catalogue_ids": [
+          "R112"
+        ],
+        "native_record": {
+          "identity": {
+            "contract_id": "SYNTH-NVDA-OPT-C100-20261120",
+            "underlying": "NVDA",
+            "security_type": "OPT",
+            "right": "C",
+            "expiry_date": "2026-11-20",
+            "strike": "100",
+            "currency": "USD",
+            "model_variant": "CONTROLLED_SIGNED_DELTA_V1",
+            "scale": "signed_decimal_fraction",
+            "generation": "T01-R112-CONTROL-G1",
+            "request_id": "T01-R112-BOUNDARIES-1"
+          },
+          "model": {
+            "delta": {
+              "native_type": "Decimal",
+              "text": "NaN"
+            }
+          }
+        }
+      },
+      "calculation_request_proposed": {
+        "derived_signal_id": "D091",
+        "source_profile_id": "T01-R112-CONTROLLED-FRACTION-1",
+        "subject_instrument": "SYNTH-NVDA-OPT-C100-20261120",
+        "as_of_utc": "2026-11-15T12:00:13Z",
+        "knowledge_cutoff_utc": "2026-11-15T12:00:13Z",
+        "calculated_at_utc": "2026-11-15T12:01:00Z"
+      },
+      "source_specimen_encoding": "Use public M00 opaque-ID factories and exact Decimal construction; delivery_artifact_ref applied from external profile binding"
+    },
+    {
+      "member_id": "absent",
+      "purpose": "refusal",
+      "observation": {
+        "observation_occurrence_id": "T01-R112-BATCH-14",
+        "source_provider": "t01-controlled-option-delta",
+        "source_variant": "controlled-option-model-delta/fraction-v1",
+        "subject_instrument": "SYNTH-NVDA-OPT-C100-20261120",
+        "native_units": "signed_decimal_fraction",
+        "source_temporal_kind": "receipt_only",
+        "source_timestamp_raw": null,
+        "source_timezone_native": null,
+        "received_ts_utc": "2026-11-15T12:00:14Z",
+        "ingestion_sequence": 15,
+        "ingestion_sequence_scope": "T01-R112-CONTROL/G1",
+        "raw_signal_catalogue_ids": [
+          "R112"
+        ],
+        "native_record": {
+          "identity": {
+            "contract_id": "SYNTH-NVDA-OPT-C100-20261120",
+            "underlying": "NVDA",
+            "security_type": "OPT",
+            "right": "C",
+            "expiry_date": "2026-11-20",
+            "strike": "100",
+            "currency": "USD",
+            "model_variant": "CONTROLLED_SIGNED_DELTA_V1",
+            "scale": "signed_decimal_fraction",
+            "generation": "T01-R112-CONTROL-G1",
+            "request_id": "T01-R112-BOUNDARIES-1"
+          },
+          "model": {}
+        }
+      },
+      "calculation_request_proposed": {
+        "derived_signal_id": "D091",
+        "source_profile_id": "T01-R112-CONTROLLED-FRACTION-1",
+        "subject_instrument": "SYNTH-NVDA-OPT-C100-20261120",
+        "as_of_utc": "2026-11-15T12:00:14Z",
+        "knowledge_cutoff_utc": "2026-11-15T12:00:14Z",
+        "calculated_at_utc": "2026-11-15T12:01:00Z"
+      },
+      "source_specimen_encoding": "Use public M00 opaque-ID factories and exact Decimal construction; delivery_artifact_ref applied from external profile binding"
+    }
+  ]
+}

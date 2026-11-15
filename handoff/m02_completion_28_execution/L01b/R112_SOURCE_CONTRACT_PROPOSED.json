@@ -1,0 +1,276 @@
+{
+  "status": "DOCUMENTARY_SOURCE_CONTRACT_PROPOSAL_NOT_ADMITTED",
+  "source_commit": "37101554bda7c94fd4cd791074c9d63c13e97ee8",
+  "leaf": "L01b",
+  "consumer_leaf": "L04",
+  "derived_id": "D091",
+  "raw_dependencies": [
+    "R112"
+  ],
+  "derived_dependencies": [],
+  "owner": "M02 neutral classification; M00 preserves/projects raw input",
+  "profile_id": "T01-R112-CONTROLLED-FRACTION-1",
+  "profile_version": 1,
+  "synthetic_only": true,
+  "live_provider_claim": false,
+  "source_provider": "t01-controlled-option-delta",
+  "source_variant": "controlled-option-model-delta/fraction-v1",
+  "native_units": "signed_decimal_fraction",
+  "native_value_type": "Decimal exact finite, excluding float/int/bool/str coercion",
+  "model_variant": "CONTROLLED_SIGNED_DELTA_V1",
+  "domain": {
+    "min": "-1",
+    "max": "1",
+    "inclusive": true
+  },
+  "conversion": {
+    "unit_convention_id": "T01-R112-FRACTION-IDENTITY",
+    "version": 1,
+    "operation": "identity; no rescaling/rounding/clipping or magnitude inference"
+  },
+  "contract_identity_fields": [
+    "contract_id",
+    "underlying",
+    "security_type",
+    "right",
+    "expiry_date",
+    "strike",
+    "currency",
+    "model_variant",
+    "scale",
+    "generation",
+    "request_id"
+  ],
+  "specimen_contract": {
+    "contract_id": "SYNTH-NVDA-OPT-C100-20261120",
+    "underlying": "NVDA",
+    "security_type": "OPT",
+    "right": "C",
+    "expiry_date": "2026-11-20",
+    "strike": "100",
+    "currency": "USD",
+    "model_variant": "CONTROLLED_SIGNED_DELTA_V1",
+    "scale": "signed_decimal_fraction",
+    "generation": "T01-R112-CONTROL-G1",
+    "request_id": "T01-R112-BOUNDARIES-1"
+  },
+  "mapping": {
+    "mapping_id": "t01-controlled-r112-delta",
+    "version": 1,
+    "raw_signal_catalogue_id": "R112",
+    "source_provider": "t01-controlled-option-delta",
+    "source_variant": "controlled-option-model-delta/fraction-v1",
+    "native_field_path": [
+      "model",
+      "delta"
+    ],
+    "native_units": "signed_decimal_fraction",
+    "selection_identity_field_paths": [
+      [
+        "contract_id",
+        [
+          "identity",
+          "contract_id"
+        ]
+      ],
+      [
+        "underlying",
+        [
+          "identity",
+          "underlying"
+        ]
+      ],
+      [
+        "security_type",
+        [
+          "identity",
+          "security_type"
+        ]
+      ],
+      [
+        "right",
+        [
+          "identity",
+          "right"
+        ]
+      ],
+      [
+        "expiry_date",
+        [
+          "identity",
+          "expiry_date"
+        ]
+      ],
+      [
+        "strike",
+        [
+          "identity",
+          "strike"
+        ]
+      ],
+      [
+        "currency",
+        [
+          "identity",
+          "currency"
+        ]
+      ],
+      [
+        "model_variant",
+        [
+          "identity",
+          "model_variant"
+        ]
+      ],
+      [
+        "scale",
+        [
+          "identity",
+          "scale"
+        ]
+      ],
+      [
+        "generation",
+        [
+          "identity",
+          "generation"
+        ]
+      ],
+      [
+        "request_id",
+        [
+          "identity",
+          "request_id"
+        ]
+      ]
+    ]
+  },
+  "selection": {
+    "policy_id": "T01-R112-EXACT-RECEIPT-1",
+    "version": 1,
+    "temporal_kind": "receipt_only",
+    "source_timestamp_raw": null,
+    "source_timezone_native": null,
+    "clock": "collector_receipt",
+    "maximum_receipt_age_seconds": "0",
+    "reason": "Proposed exact synthetic observation-time scope; no live freshness assertion",
+    "receipt_law": "received_ts_utc == as_of_utc <= knowledge_cutoff_utc; calculation_time >= knowledge_cutoff_utc",
+    "ingestion_sequence_scope": "T01-R112-CONTROL/G1",
+    "ordering": "Within one exact scope only; select greatest eligible receipt/sequence; different distinct observations tied at final rank refuse; duplicate occurrence IDs must preserve identical content",
+    "history_page_size": 8,
+    "maximum_projected_members": 64,
+    "page_contract": "Consume only returned cursors to exhaustion; current M00 cursor is numeric offset, not a snapshot token. Requires exclusive closed-batch precondition below; refuse nonprogress, conflicts or exceeded bound.",
+    "contract_join": "All identity fields and projected subject exactly equal requested versioned contract; selection metadata is identity/configuration, not additional raw dependencies",
+    "closed_batch_precondition": "Controlled caller completes all exact source-artifact admissions and excludes all further admissions for the full multi-page read/calculation batch. Current M00 supplies no snapshot/seal API; this is a future controlled-fixture coordination obligation, not an observed runtime guarantee. If closure/exclusivity cannot be established, this profile is not eligible."
+  },
+  "rule_profile": {
+    "profile_id": "D091-SYNTHETIC-TENTATIVE-V1",
+    "version": 1,
+    "transform": "absolute value",
+    "bins": [
+      {
+        "name": "ABS_00_10",
+        "min": "0",
+        "max": "0.10",
+        "min_inclusive": true,
+        "max_inclusive": false
+      },
+      {
+        "name": "ABS_10_25",
+        "min": "0.10",
+        "max": "0.25",
+        "min_inclusive": true,
+        "max_inclusive": false
+      },
+      {
+        "name": "ABS_25_50",
+        "min": "0.25",
+        "max": "0.50",
+        "min_inclusive": true,
+        "max_inclusive": false
+      },
+      {
+        "name": "ABS_50_75",
+        "min": "0.50",
+        "max": "0.75",
+        "min_inclusive": true,
+        "max_inclusive": false
+      },
+      {
+        "name": "ABS_75_100",
+        "min": "0.75",
+        "max": "1.00",
+        "min_inclusive": true,
+        "max_inclusive": true
+      }
+    ],
+    "result_type": "category string with immutable label plus rule/profile/source lineage"
+  },
+  "source_specimen": {
+    "concept_id": "raw_signal.raw_observation_occurrence",
+    "contract_id": "nvda.raw_signal.RawObservationOccurrence.v1",
+    "observation_occurrence_id": "T01-R112-BATCH-01",
+    "source_provider": "t01-controlled-option-delta",
+    "source_variant": "controlled-option-model-delta/fraction-v1",
+    "subject_instrument": "SYNTH-NVDA-OPT-C100-20261120",
+    "native_units": "signed_decimal_fraction",
+    "source_temporal_kind": "receipt_only",
+    "source_timestamp_raw": null,
+    "received_ts_utc": "2026-11-15T12:00:01Z",
+    "ingestion_sequence": 2,
+    "ingestion_sequence_scope": "T01-R112-CONTROL/G1",
+    "raw_signal_catalogue_ids": [
+      "R112"
+    ],
+    "native_record": {
+      "identity": {
+        "contract_id": "SYNTH-NVDA-OPT-C100-20261120",
+        "underlying": "NVDA",
+        "security_type": "OPT",
+        "right": "C",
+        "expiry_date": "2026-11-20",
+        "strike": "100",
+        "currency": "USD",
+        "model_variant": "CONTROLLED_SIGNED_DELTA_V1",
+        "scale": "signed_decimal_fraction",
+        "generation": "T01-R112-CONTROL-G1",
+        "request_id": "T01-R112-BOUNDARIES-1"
+      },
+      "model": {
+        "delta": {
+          "native_type": "Decimal",
+          "text": "-0.10"
+        }
+      }
+    },
+    "literal_encoding_note": "Construct public opaque IDs with M00 factories; decode native_type Decimal text to exact Decimal. No expected D answer is present in this raw record.",
+    "source_timezone_native": null,
+    "delivery_artifact_ref": "T01-R112-CLOSED-BATCH-V1"
+  },
+  "fail_closed": [
+    "missing or ambiguous mapping",
+    "provider/variant/unit/model/contract/generation mismatch",
+    "missing identity component or native field",
+    "wrong type, nonfinite or outside[-1,1]",
+    "future receipt or receipt older than exact as_of",
+    "incomplete/nonprogress/over-bound history",
+    "unresolved conflicting final rank",
+    "missing accepted definition/profile/claim/runner or durable write"
+  ],
+  "execution_release": "NONE; active ledger unchanged; product Tester not designated by this proposal",
+  "existing_paths_reusable_without_new_admission": false,
+  "production_policy_approval": "NOT_APPROVED",
+  "public_source_protocol": {
+    "ingress": "M00 owner.commands.admit_raw_observation_occurrence(RawObservationOccurrenceV1)",
+    "projected_history": "M00 owner.reads.list_projected_raw_history(R112, mappings=(exact_mapping,), subject_instrument=exact_contract_id, received_at_or_before_utc=knowledge_cutoff, event_at_or_before_utc=None, limit=8, cursor=returned_cursor)",
+    "source_readback": "M00 owner.reads.get_raw_observation_occurrence(exact_projected_occurrence_id)",
+    "original_metadata_check": "Compare actual source observation provider/variant/subject/native_units/temporal metadata/receipt/scope plus projected selection identity against exact profile; mapping.native_units is an explicit declaration, not evidence that differing original metadata has been validated",
+    "consumer_protocol_delta": "Existing raw M00 read facet provides these functions. Any new M02 reader Protocol/owner dispatch/category codec needs its own exact admitted implementation brief; no current M02 selector is claimed reusable."
+  },
+  "delivery_artifact_binding": {
+    "delivery_artifact_ref": "T01-R112-CLOSED-BATCH-V1",
+    "path": "handoff/m02_completion_28_execution/L01b/CONTROLLED_BATCH_INPUTS.json",
+    "sha256": "1f4c46c5c247c78e3e18bb2de02c172f775379f664bad8e056ef6867a39d03dc",
+    "meaning": "Exact retrievable proposed literal artifact bytes; not a historical capture or actual raw admission receipt"
+  }
+}

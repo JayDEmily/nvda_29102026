@@ -1,0 +1,89 @@
+{
+  "status": "PROPOSED_LITERAL_ORACLES_NOT_EXECUTED_PRODUCT_PROOFS",
+  "positive_members": [
+    {
+      "witness": "zero",
+      "signed_delta": "0",
+      "expected_label": "ABS_00_10"
+    },
+    {
+      "witness": "negative_tenth",
+      "signed_delta": "-0.10",
+      "expected_label": "ABS_10_25"
+    },
+    {
+      "witness": "positive_tenth",
+      "signed_delta": "0.10",
+      "expected_label": "ABS_10_25"
+    },
+    {
+      "witness": "negative_quarter",
+      "signed_delta": "-0.25",
+      "expected_label": "ABS_25_50"
+    },
+    {
+      "witness": "positive_quarter",
+      "signed_delta": "0.25",
+      "expected_label": "ABS_25_50"
+    },
+    {
+      "witness": "negative_half",
+      "signed_delta": "-0.50",
+      "expected_label": "ABS_50_75"
+    },
+    {
+      "witness": "positive_half",
+      "signed_delta": "0.50",
+      "expected_label": "ABS_50_75"
+    },
+    {
+      "witness": "negative_three_quarters",
+      "signed_delta": "-0.75",
+      "expected_label": "ABS_75_100"
+    },
+    {
+      "witness": "positive_three_quarters",
+      "signed_delta": "0.75",
+      "expected_label": "ABS_75_100"
+    },
+    {
+      "witness": "negative_one",
+      "signed_delta": "-1.00",
+      "expected_label": "ABS_75_100"
+    },
+    {
+      "witness": "positive_one",
+      "signed_delta": "1.00",
+      "expected_label": "ABS_75_100"
+    },
+    {
+      "witness": "interior",
+      "signed_delta": "0.499",
+      "expected_label": "ABS_25_50"
+    }
+  ],
+  "refusal_members": [
+    {
+      "witness": "out_of_range",
+      "native_type": "Decimal",
+      "value": "1.01",
+      "expected": "NO_OCCURRENCE",
+      "reached_invariant": "range after exact lawful public raw projection"
+    },
+    {
+      "witness": "nonfinite",
+      "native_type": "Decimal",
+      "value": "NaN",
+      "expected": "NO_OCCURRENCE",
+      "reached_invariant": "finite domain after exact native raw carriage"
+    },
+    {
+      "witness": "absent",
+      "value": null,
+      "expected": "NO_OCCURRENCE",
+      "reached_invariant": "absent raw projection, not silently zero"
+    }
+  ],
+  "physical_execution_authority": 0,
+  "warning": "Literal rows are documentary witnesses, not case admissions or test executions. Final witness-to-physical-node mapping needs independent finite admission before implementation proof."
+}
