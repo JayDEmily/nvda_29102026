@@ -1,15 +1,21 @@
 {
-  "status": "WORKER_PREPARATION_NOT_INDEPENDENT_REVIEWED",
   "base_commit": "3ec136d149eb0e5b1d089f861998416361cd2088",
   "base_tree": "791eeace5fc7ece326d75d24ca993c78d2893823",
   "branch": "work/t01-d091-boundary-admission-20261115",
   "files": [
     "BOUNDARY_ASSESSMENT.md",
+    "COMMANDS_AND_STATUS.md",
     "IMPLEMENTATION_BOUNDARY.md",
     "INDEPENDENT_RELEASE_HANDOVER.md",
+    "PACKET_MANIFEST.json",
     "PROPOSED_CASE_ADMISSION.json",
-    "RUNTIME_OBSERVATION.json"
+    "RUNTIME_CANDIDATE_INVENTORY.json",
+    "RUNTIME_OBSERVATION.json",
+    "VALIDATION_RESULT.json",
+    "validate_packet.py"
   ],
+  "manifest_scope": "COMPLETE_CURRENT_TRACKED_PACKET_FILE_ROSTER_INCLUDING_SELF",
+  "message": "Work product is a finite source/proof admission candidate; this does not implement D091 or release cases.",
   "prohibited_changes": [
     "GUARDRAILS.md",
     "AGENTS.md",
@@ -23,5 +29,5 @@
     "handoff/m02_completion_28_execution/TEST_EVIDENCE_LEDGER.json",
     "handoff/m02_completion_28_execution/EXECUTION_REGISTER.json"
   ],
-  "message": "Work product is a finite source/proof admission candidate; this does not implement D091 or release cases."
+  "status": "WORKER_PREPARATION_NOT_INDEPENDENT_REVIEWED"
 }

@@ -28,3 +28,7 @@ Stage/commit only the files in this directory on the named worker branch; verify
 ## Staged-diff correction
 
 The initial staged Git diff check found six trailing-space Markdown header lines in the new packet. Those six lines were trimmed, then restaged and rechecked. This is only formatting; it does not change source authority or product files.
+
+## Additional bounded runtime survey
+
+Inspected 50 top-level /home/jds virtual environment Python executables, resolving to three distinct binaries. Both local Python 3.13.5 binaries reported SQLite 3.49.1; Python 3.14.4 reported SQLite 3.46.1. No SQLite 3.54.1 Python was found in this **bounded** inventory; this does not establish global absence or product runner equivalence. See RUNTIME_CANDIDATE_INVENTORY.json.

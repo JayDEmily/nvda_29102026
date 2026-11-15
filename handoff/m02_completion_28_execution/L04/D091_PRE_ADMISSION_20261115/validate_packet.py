@@ -58,6 +58,7 @@ def main() -> None:
     assert runtime["actual_python_version"] == "3.13.5"
     assert runtime["no_product_tests"] and runtime["no_system_change"]
     assert not (REPO / alloc["cases"][0]["proof_path"]).exists()
+    assert set(manifest["files"]) == {x.name for x in THIS.parent.iterdir() if x.is_file()}
     changes = git("diff", "--name-only", BASE, "HEAD").splitlines()
     assert all(x.startswith(PREFIX) for x in changes), changes
     print(json.dumps({
