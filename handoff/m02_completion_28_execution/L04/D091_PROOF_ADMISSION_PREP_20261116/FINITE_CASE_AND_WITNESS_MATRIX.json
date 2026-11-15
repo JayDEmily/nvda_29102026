@@ -1,0 +1,235 @@
+{
+  "schema": "D091_PHYSICAL_CASE_AND_WITNESS_ADMISSION_PROPOSAL_V1",
+  "status": "PROPOSED_NOT_APPROVED_NOT_ADMITTED",
+  "authority": "Root EXEC_PLAN L04 and review 05f6b4b7; exact provenance and source contract",
+  "upstream_design_candidate": "07f8140fd9306e51b05f241b02341a2b14579bc2",
+  "independent_design_review": "05f6b4b707c6231dc9b4d54a4a6cb626711808de",
+  "raw_source_contract_sha256": "31c811e77468f44c2e412893326bc6d5f9ea037cdbf28712ce8e213652fdfc63",
+  "source_fixture_sha256": "1f4c46c5c247c78e3e18bb2de02c172f775379f664bad8e056ef6867a39d03dc",
+  "documentary_oracles_sha256": "28bca489fc35faaef7b3a673e5c242b3463b125aa9038ee8d9c3a8c8192c5947",
+  "proof_id": "M02-C28-D091",
+  "leaf": "L04",
+  "original_physical_case_count": 2,
+  "proposed_additional_physical_cases": 4,
+  "proposed_total_physical_cases": 6,
+  "historical_prospective_ceiling": 6,
+  "active_authorised_case_count": 0,
+  "active_hard_ceiling": 0,
+  "actual_product_cases_admitted": 0,
+  "actual_product_cases_executed": 0,
+  "missing_owner_approval": true,
+  "strict_tester": "NOT_DESIGNATED",
+  "qualified_runner": "NOT_QUALIFIED",
+  "physical_case_nodes": [
+    {
+      "case_id": "D091-CONTROLLED-SUCCESS",
+      "node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_success",
+      "kind": "ORIGINAL_PROPOSED",
+      "status": "PROPOSED_UNADMITTED",
+      "source_mode": "EXACT_ACCEPTED_15_MEMBER_COHORT",
+      "witness_ids": [
+        "P01_ZERO",
+        "P02_NEGATIVE_TENTH",
+        "P03_POSITIVE_TENTH",
+        "P04_NEGATIVE_QUARTER",
+        "P05_POSITIVE_QUARTER",
+        "P06_NEGATIVE_HALF",
+        "P07_POSITIVE_HALF",
+        "P08_NEGATIVE_THREE_QUARTERS",
+        "P09_POSITIVE_THREE_QUARTERS",
+        "P10_NEGATIVE_ONE",
+        "P11_POSITIVE_ONE",
+        "P12_INTERIOR",
+        "P13_TWO_PAGE_HISTORY",
+        "P14_DURABLE_PUBLIC_REOPEN",
+        "P15_RETRY_FIRST_TIMESTAMP"
+      ],
+      "purpose": "12 distinct exact receipt/as-of calculations, five labels and boundaries; >8 projected history true returned next cursor; original M00 identities, source/rule lineage, standalone SQLite read-only reopen, idempotent retry preserves first timestamp. Fixed, explicitly enumerated assertions; no pytest parameterisation or helper-produced expected results.",
+      "requires_new_source_fixture": false
+    },
+    {
+      "case_id": "D091-CONTROLLED-REACHED_REFUSAL",
+      "node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_reached_refusal",
+      "kind": "ORIGINAL_PROPOSED",
+      "status": "PROPOSED_UNADMITTED",
+      "source_mode": "EXACT_ACCEPTED_15_MEMBER_COHORT",
+      "witness_ids": [
+        "R01_EXACT_ONE_POINT_ZERO_ONE_RANGE"
+      ],
+      "purpose": "Public M00 lawful Decimal('1.01') from T01-R112-BATCH-12 must pass all original-unit, identity, receipt and full-history checks then produce one typed RANGE event with the true source ID, None result and no D091 row.",
+      "requires_new_source_fixture": false
+    },
+    {
+      "case_id": "D091-CONTROLLED-SEAL-REFUSAL",
+      "node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_seal_refusal",
+      "kind": "ADDITIONAL_REQUIRES_OWNER_APPROVAL",
+      "status": "PROPOSED_UNADMITTED",
+      "source_mode": "BASE_COHORT_PLUS_DIRECT_POSTSEAL_INGRESS_ATTEMPT",
+      "witness_ids": [
+        "S01_PRESEAL_PUBLIC_15_ADMISSIONS",
+        "S02_IMMUTABLE_SEAL",
+        "S03_DIRECT_POSTSEAL_LAWFUL_ADMISSION_REFUSED",
+        "S04_NO_COMMAND_ALIAS_ESCAPE",
+        "S05_UNCHANGED_IDS_BEFORE_AFTER_PAGINATION"
+      ],
+      "purpose": "Separate direct public coordinator ingress and attempted extra lawful admission; prove no writer alias, no state mutation, seal remains permanent across all pages/calculation. Test must not rely exclusively on helper that seals automatically.",
+      "requires_new_source_fixture": false
+    },
+    {
+      "case_id": "D091-CONTROLLED-ORIGIN-REFUSAL",
+      "node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_origin_refusal",
+      "kind": "ADDITIONAL_REQUIRES_OWNER_APPROVAL",
+      "status": "PROPOSED_UNADMITTED",
+      "source_mode": "BASE_NAN_ABSENT_AND_SEPARATE_EXPLICIT_ORIGIN_MUTATIONS",
+      "witness_ids": [
+        "O01_NAN_NONFINITE",
+        "O02_ABSENT_MODEL_DELTA",
+        "O03_WRONG_ORIGINAL_NATIVE_UNITS",
+        "O04_WRONG_PROVIDER_VARIANT",
+        "O05_WRONG_CONTRACT_OR_MODEL_IDENTITY",
+        "O06_WRONG_GENERATION_OR_REQUEST"
+      ],
+      "purpose": "Distinct direct original M00 raw readback negative witnesses; nonfinite, absent, original units/provider/variant and all 11 identity keys must be represented by explicit finite table rather than helper rejection alone. Exact mutated-cohort profiles not source-admitted.",
+      "requires_new_source_fixture": true
+    },
+    {
+      "case_id": "D091-CONTROLLED-HISTORY-REFUSAL",
+      "node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_history_refusal",
+      "kind": "ADDITIONAL_REQUIRES_OWNER_APPROVAL",
+      "status": "PROPOSED_UNADMITTED",
+      "source_mode": "EXPLICIT_ISOLATED_CLOCK_SCOPE_AND_HISTORY_FAULT_COHORTS",
+      "witness_ids": [
+        "H01_RECEIPT_NOT_EQUAL_ASOF",
+        "H02_KNOWLEDGE_CUTOFF_ORDER",
+        "H03_WRONG_SEQUENCE_SCOPE",
+        "H04_TWO_DISTINCT_TOP_RANK_TIE",
+        "H05_PROJECTED_MORE_THAN_64",
+        "H06_RETURNED_CURSOR_CYCLE_NONPROGRESS",
+        "H07_DUPLICATE_ID_CONFLICT"
+      ],
+      "purpose": "Multiple distinct selector-layer negative sequences; only exact clock, rank and history semantics. Must use independent public-seam read sequence and controlled input perturbation; 15-member original does not witness tie or >64. Whether this many distinct scenarios can lawfully be in one node requires independent finite-admission decision.",
+      "requires_new_source_fixture": true
+    },
+    {
+      "case_id": "D091-CONTROLLED-DURABILITY-REFUSAL",
+      "node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_durability_refusal",
+      "kind": "ADDITIONAL_REQUIRES_OWNER_APPROVAL",
+      "status": "PROPOSED_UNADMITTED",
+      "source_mode": "EXPLICIT_DISPOSABLE_SQLITE_FAULT_AND_RETRY_SCENARIOS",
+      "witness_ids": [
+        "D01_PRECOMMIT_SQLITE_FAILURE",
+        "D02_UNCERTAIN_COMMIT_RESULT",
+        "D03_SAME_DERIVED_ID_DIFFERENT_CONTENT_REFUSAL",
+        "D04_FIRST_TIMESTAMP_PRESERVED",
+        "D05_NO_SUCCESSFUL_READBACK_AFTER_FAILED_COMMIT"
+      ],
+      "purpose": "Existing typed immutable RecordState and ordinary SQLite error propagation; demonstrate failure not converted to None or false success; same ID conflict and repeat idempotency. Requires exact selected runner/SQLite provenance, no test currently admitted.",
+      "requires_new_source_fixture": false
+    }
+  ],
+  "evidence_units": [
+    {
+      "id": "E01",
+      "name": "SIGNED_BINS_AND_PUBLIC_SUCCESS",
+      "node_ids": [
+        "D091-CONTROLLED-SUCCESS"
+      ],
+      "witnesses": [
+        "P01_ZERO",
+        "P02_NEGATIVE_TENTH",
+        "P03_POSITIVE_TENTH",
+        "P04_NEGATIVE_QUARTER",
+        "P05_POSITIVE_QUARTER",
+        "P06_NEGATIVE_HALF",
+        "P07_POSITIVE_HALF",
+        "P08_NEGATIVE_THREE_QUARTERS",
+        "P09_POSITIVE_THREE_QUARTERS",
+        "P10_NEGATIVE_ONE",
+        "P11_POSITIVE_ONE",
+        "P12_INTERIOR"
+      ]
+    },
+    {
+      "id": "E02",
+      "name": "TWO_PAGE_EXHAUSTION_AND_POSITIVE_DURABILITY",
+      "node_ids": [
+        "D091-CONTROLLED-SUCCESS"
+      ],
+      "witnesses": [
+        "P13_TWO_PAGE_HISTORY",
+        "P14_DURABLE_PUBLIC_REOPEN",
+        "P15_RETRY_FIRST_TIMESTAMP"
+      ]
+    },
+    {
+      "id": "E03",
+      "name": "RANGE_REACHED_REFUSAL",
+      "node_ids": [
+        "D091-CONTROLLED-REACHED_REFUSAL"
+      ],
+      "witnesses": [
+        "R01_EXACT_ONE_POINT_ZERO_ONE_RANGE"
+      ]
+    },
+    {
+      "id": "E04",
+      "name": "EXCLUSIVE_SOURCE_BARRIER",
+      "node_ids": [
+        "D091-CONTROLLED-SEAL-REFUSAL"
+      ],
+      "witnesses": [
+        "S01_PRESEAL_PUBLIC_15_ADMISSIONS",
+        "S02_IMMUTABLE_SEAL",
+        "S03_DIRECT_POSTSEAL_LAWFUL_ADMISSION_REFUSED",
+        "S04_NO_COMMAND_ALIAS_ESCAPE",
+        "S05_UNCHANGED_IDS_BEFORE_AFTER_PAGINATION"
+      ]
+    },
+    {
+      "id": "E05",
+      "name": "NONFINITE_ABSENT_ORIGINAL_IDENTITY",
+      "node_ids": [
+        "D091-CONTROLLED-ORIGIN-REFUSAL"
+      ],
+      "witnesses": [
+        "O01_NAN_NONFINITE",
+        "O02_ABSENT_MODEL_DELTA",
+        "O03_WRONG_ORIGINAL_NATIVE_UNITS",
+        "O04_WRONG_PROVIDER_VARIANT",
+        "O05_WRONG_CONTRACT_OR_MODEL_IDENTITY",
+        "O06_WRONG_GENERATION_OR_REQUEST"
+      ]
+    },
+    {
+      "id": "E06",
+      "name": "TEMPORAL_AND_HISTORY_FAILURE",
+      "node_ids": [
+        "D091-CONTROLLED-HISTORY-REFUSAL"
+      ],
+      "witnesses": [
+        "H01_RECEIPT_NOT_EQUAL_ASOF",
+        "H02_KNOWLEDGE_CUTOFF_ORDER",
+        "H03_WRONG_SEQUENCE_SCOPE",
+        "H04_TWO_DISTINCT_TOP_RANK_TIE",
+        "H05_PROJECTED_MORE_THAN_64",
+        "H06_RETURNED_CURSOR_CYCLE_NONPROGRESS",
+        "H07_DUPLICATE_ID_CONFLICT"
+      ]
+    },
+    {
+      "id": "E07",
+      "name": "PERSISTENCE_FAILURE_IDEMPOTENCY",
+      "node_ids": [
+        "D091-CONTROLLED-DURABILITY-REFUSAL"
+      ],
+      "witnesses": [
+        "D01_PRECOMMIT_SQLITE_FAILURE",
+        "D02_UNCERTAIN_COMMIT_RESULT",
+        "D03_SAME_DERIVED_ID_DIFFERENT_CONTENT_REFUSAL",
+        "D04_FIRST_TIMESTAMP_PRESERVED",
+        "D05_NO_SUCCESSFUL_READBACK_AFTER_FAILED_COMMIT"
+      ]
+    }
+  ],
+  "reviewer_warning": "The E05/E06/E07 nodes contain multiple separately meaningful subwitnesses; independent reviewer must affirm physical-node grouping or RETURN for exact additional allocation. A prospective 6-case ceiling is not admission. No code/tests/fixture mutation based on this candidate."
+}

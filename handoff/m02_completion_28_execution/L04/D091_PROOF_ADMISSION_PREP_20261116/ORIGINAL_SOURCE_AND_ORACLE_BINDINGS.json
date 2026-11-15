@@ -1,0 +1,151 @@
+{
+  "members": [
+    {
+      "as_of_utc": "2026-11-15T12:00:00Z",
+      "observation_id": "T01-R112-BATCH-00",
+      "oracle_expected_category": "ABS_00_10",
+      "receipt_utc": "2026-11-15T12:00:00Z",
+      "source_member_id": "zero",
+      "source_value_exact_decimal_text": "0",
+      "status": "DOCUMENTARY_ONLY_NOT_EXECUTED"
+    },
+    {
+      "as_of_utc": "2026-11-15T12:00:01Z",
+      "observation_id": "T01-R112-BATCH-01",
+      "oracle_expected_category": "ABS_10_25",
+      "receipt_utc": "2026-11-15T12:00:01Z",
+      "source_member_id": "negative_tenth",
+      "source_value_exact_decimal_text": "-0.10",
+      "status": "DOCUMENTARY_ONLY_NOT_EXECUTED"
+    },
+    {
+      "as_of_utc": "2026-11-15T12:00:02Z",
+      "observation_id": "T01-R112-BATCH-02",
+      "oracle_expected_category": "ABS_10_25",
+      "receipt_utc": "2026-11-15T12:00:02Z",
+      "source_member_id": "positive_tenth",
+      "source_value_exact_decimal_text": "0.10",
+      "status": "DOCUMENTARY_ONLY_NOT_EXECUTED"
+    },
+    {
+      "as_of_utc": "2026-11-15T12:00:03Z",
+      "observation_id": "T01-R112-BATCH-03",
+      "oracle_expected_category": "ABS_25_50",
+      "receipt_utc": "2026-11-15T12:00:03Z",
+      "source_member_id": "negative_quarter",
+      "source_value_exact_decimal_text": "-0.25",
+      "status": "DOCUMENTARY_ONLY_NOT_EXECUTED"
+    },
+    {
+      "as_of_utc": "2026-11-15T12:00:04Z",
+      "observation_id": "T01-R112-BATCH-04",
+      "oracle_expected_category": "ABS_25_50",
+      "receipt_utc": "2026-11-15T12:00:04Z",
+      "source_member_id": "positive_quarter",
+      "source_value_exact_decimal_text": "0.25",
+      "status": "DOCUMENTARY_ONLY_NOT_EXECUTED"
+    },
+    {
+      "as_of_utc": "2026-11-15T12:00:05Z",
+      "observation_id": "T01-R112-BATCH-05",
+      "oracle_expected_category": "ABS_50_75",
+      "receipt_utc": "2026-11-15T12:00:05Z",
+      "source_member_id": "negative_half",
+      "source_value_exact_decimal_text": "-0.50",
+      "status": "DOCUMENTARY_ONLY_NOT_EXECUTED"
+    },
+    {
+      "as_of_utc": "2026-11-15T12:00:06Z",
+      "observation_id": "T01-R112-BATCH-06",
+      "oracle_expected_category": "ABS_50_75",
+      "receipt_utc": "2026-11-15T12:00:06Z",
+      "source_member_id": "positive_half",
+      "source_value_exact_decimal_text": "0.50",
+      "status": "DOCUMENTARY_ONLY_NOT_EXECUTED"
+    },
+    {
+      "as_of_utc": "2026-11-15T12:00:07Z",
+      "observation_id": "T01-R112-BATCH-07",
+      "oracle_expected_category": "ABS_75_100",
+      "receipt_utc": "2026-11-15T12:00:07Z",
+      "source_member_id": "negative_three_quarters",
+      "source_value_exact_decimal_text": "-0.75",
+      "status": "DOCUMENTARY_ONLY_NOT_EXECUTED"
+    },
+    {
+      "as_of_utc": "2026-11-15T12:00:08Z",
+      "observation_id": "T01-R112-BATCH-08",
+      "oracle_expected_category": "ABS_75_100",
+      "receipt_utc": "2026-11-15T12:00:08Z",
+      "source_member_id": "positive_three_quarters",
+      "source_value_exact_decimal_text": "0.75",
+      "status": "DOCUMENTARY_ONLY_NOT_EXECUTED"
+    },
+    {
+      "as_of_utc": "2026-11-15T12:00:09Z",
+      "observation_id": "T01-R112-BATCH-09",
+      "oracle_expected_category": "ABS_75_100",
+      "receipt_utc": "2026-11-15T12:00:09Z",
+      "source_member_id": "negative_one",
+      "source_value_exact_decimal_text": "-1.00",
+      "status": "DOCUMENTARY_ONLY_NOT_EXECUTED"
+    },
+    {
+      "as_of_utc": "2026-11-15T12:00:10Z",
+      "observation_id": "T01-R112-BATCH-10",
+      "oracle_expected_category": "ABS_75_100",
+      "receipt_utc": "2026-11-15T12:00:10Z",
+      "source_member_id": "positive_one",
+      "source_value_exact_decimal_text": "1.00",
+      "status": "DOCUMENTARY_ONLY_NOT_EXECUTED"
+    },
+    {
+      "as_of_utc": "2026-11-15T12:00:11Z",
+      "observation_id": "T01-R112-BATCH-11",
+      "oracle_expected_category": "ABS_25_50",
+      "receipt_utc": "2026-11-15T12:00:11Z",
+      "source_member_id": "interior",
+      "source_value_exact_decimal_text": "0.499",
+      "status": "DOCUMENTARY_ONLY_NOT_EXECUTED"
+    },
+    {
+      "as_of_utc": "2026-11-15T12:00:12Z",
+      "observation_id": "T01-R112-BATCH-12",
+      "oracle_expected_refusal": "NO_OCCURRENCE",
+      "reached_invariant_proposed": "range after exact lawful public raw projection",
+      "receipt_utc": "2026-11-15T12:00:12Z",
+      "source_member_id": "out_of_range",
+      "source_value": {
+        "native_type": "Decimal",
+        "text": "1.01"
+      },
+      "status": "DOCUMENTARY_ONLY_NOT_EXECUTED"
+    },
+    {
+      "as_of_utc": "2026-11-15T12:00:13Z",
+      "observation_id": "T01-R112-BATCH-13",
+      "oracle_expected_refusal": "NO_OCCURRENCE",
+      "reached_invariant_proposed": "finite domain after exact native raw carriage",
+      "receipt_utc": "2026-11-15T12:00:13Z",
+      "source_member_id": "nonfinite",
+      "source_value": {
+        "native_type": "Decimal",
+        "text": "NaN"
+      },
+      "status": "DOCUMENTARY_ONLY_NOT_EXECUTED"
+    },
+    {
+      "as_of_utc": "2026-11-15T12:00:14Z",
+      "observation_id": "T01-R112-BATCH-14",
+      "oracle_expected_refusal": "NO_OCCURRENCE",
+      "reached_invariant_proposed": "absent raw projection, not silently zero",
+      "receipt_utc": "2026-11-15T12:00:14Z",
+      "source_member_id": "absent",
+      "source_value": null,
+      "status": "DOCUMENTARY_ONLY_NOT_EXECUTED"
+    }
+  ],
+  "oracle_sha256": "28bca489fc35faaef7b3a673e5c242b3463b125aa9038ee8d9c3a8c8192c5947",
+  "source_sha256": "1f4c46c5c247c78e3e18bb2de02c172f775379f664bad8e056ef6867a39d03dc",
+  "status": "DERIVED_STATIC_INSPECTION_NO_PRODUCT_SOURCE_ADMISSION"
+}
