@@ -1,0 +1,29 @@
+{
+  "_sqlite3_builtin": false,
+  "_sqlite3_extension_file": "/usr/lib/python3.14/lib-dynload/_sqlite3.cpython-314-x86_64-linux-gnu.so",
+  "_sqlite3_module_origin": "/usr/lib/python3.14/lib-dynload/_sqlite3.cpython-314-x86_64-linux-gnu.so",
+  "audit": "READ_ONLY_SQLITE_LINKAGE",
+  "ld_library_path": null,
+  "ldd_extension": [
+    "linux-vdso.so.1",
+    "libsqlite3.so.0 => /usr/lib/x86_64-linux-gnu/libsqlite3.so.0",
+    "libc.so.6 => /usr/lib/x86_64-linux-gnu/libc.so.6",
+    "libm.so.6 => /usr/lib/x86_64-linux-gnu/libm.so.6",
+    "/lib64/ld-linux-x86-64.so.2"
+  ],
+  "ldd_python": [
+    "linux-vdso.so.1",
+    "libm.so.6 => /usr/lib/x86_64-linux-gnu/libm.so.6",
+    "libz.so.1 => /usr/lib/x86_64-linux-gnu/libz.so.1",
+    "libexpat.so.1 => /usr/lib/x86_64-linux-gnu/libexpat.so.1",
+    "libc.so.6 => /usr/lib/x86_64-linux-gnu/libc.so.6",
+    "/lib64/ld-linux-x86-64.so.2"
+  ],
+  "product_proof_executed": false,
+  "python_executable": "/usr/bin/python3",
+  "python_version": "3.14.4",
+  "runtime_modified": false,
+  "selected_python_sqlite_version": "3.46.1",
+  "system_shared_sqlite_resolution": "/usr/lib/x86_64-linux-gnu/libsqlite3.so.0",
+  "system_shared_sqlite_version": "3.46.1"
+}

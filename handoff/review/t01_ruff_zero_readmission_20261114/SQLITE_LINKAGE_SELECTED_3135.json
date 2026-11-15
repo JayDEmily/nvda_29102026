@@ -1,0 +1,25 @@
+{
+  "_sqlite3_builtin": true,
+  "_sqlite3_extension_file": null,
+  "_sqlite3_module_origin": "built-in",
+  "audit": "READ_ONLY_SQLITE_LINKAGE",
+  "ld_library_path": null,
+  "ldd_extension": null,
+  "ldd_python": [
+    "linux-vdso.so.1",
+    "libpthread.so.0 => /usr/lib/x86_64-linux-gnu/libpthread.so.0",
+    "libdl.so.2 => /usr/lib/x86_64-linux-gnu/libdl.so.2",
+    "libutil.so.1 => /usr/lib/x86_64-linux-gnu/libutil.so.1",
+    "libm.so.6 => /usr/lib/x86_64-linux-gnu/libm.so.6",
+    "librt.so.1 => /usr/lib/x86_64-linux-gnu/librt.so.1",
+    "libc.so.6 => /usr/lib/x86_64-linux-gnu/libc.so.6",
+    "/lib64/ld-linux-x86-64.so.2"
+  ],
+  "product_proof_executed": false,
+  "python_executable": "/home/jds/nvda_uv3135_20261112/.venv/bin/python",
+  "python_version": "3.13.5",
+  "runtime_modified": false,
+  "selected_python_sqlite_version": "3.49.1",
+  "system_shared_sqlite_resolution": "/usr/lib/x86_64-linux-gnu/libsqlite3.so.0",
+  "system_shared_sqlite_version": "3.46.1"
+}
