@@ -1,7 +1,7 @@
 {
   "main_base": "02a19ae02678824908568d8db08f0e1d015cb861",
   "prior_candidate": "a28702cde241b3f833b51071aac8cb41591b37dd",
-  "count": 89,
+  "count": 90,
   "paths": [
     {
       "path": "AGENTS.md",
@@ -416,6 +416,12 @@
       "class": "documentary source/evidence/procedure",
       "relative_to_prior_candidate": "NEW_OR_CHANGED",
       "sha256": "b391555a31b3f167db060012b8160dc4d4e5fa4058d52ba672c0c60d8fdf4a21"
+    },
+    {
+      "path": "handoff/astra_adr_continuation_20261115/astra_install_checks.json",
+      "class": "documentary source/evidence/procedure",
+      "relative_to_prior_candidate": "NEW_OR_CHANGED",
+      "sha256": "98b3fbb0ef5f852aa4abcc3fda2e880c6b6010bd454006ce711fb9a5efd4a1e9"
     },
     {
       "path": "handoff/astra_adr_continuation_20261115/predecessor/AGENTS.md.gz",
