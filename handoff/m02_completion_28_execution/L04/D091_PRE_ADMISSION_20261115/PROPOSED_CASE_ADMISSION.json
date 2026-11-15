@@ -1,0 +1,84 @@
+{
+  "schema": "D091_PRE_ADMISSION_CANDIDATE_V1",
+  "status": "PROPOSAL_ONLY_NO_CASES_ADMITTED",
+  "baseline_main_commit": "3ec136d149eb0e5b1d089f861998416361cd2088",
+  "source_contract": "handoff/m02_completion_28_execution/L01b/R112_SOURCE_CONTRACT_PROPOSED.json",
+  "source_artifact": "handoff/m02_completion_28_execution/L01b/CONTROLLED_BATCH_INPUTS.json",
+  "source_artifact_sha256": "1f4c46c5c247c78e3e18bb2de02c172f775379f664bad8e056ef6867a39d03dc",
+  "proof_id": "M02-C28-D091",
+  "owner": "M02",
+  "leaf": "L04",
+  "proposed_case_count": 2,
+  "admitted_case_count": 0,
+  "executed_case_count": 0,
+  "original_hard_ceiling": 6,
+  "cases": [
+    {
+      "case_id": "D091-CONTROLLED-SUCCESS",
+      "kind": "SUCCESS",
+      "variant": "CONTROLLED",
+      "proof_path": "tests/product/m02_completion_28/d091/test_signal.py",
+      "proposed_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_success",
+      "status": "NOT_AUTHORISED_FOR_COLLECTION_OR_EXECUTION",
+      "proposed_witnesses": "Explicit 12 positive members in DOCUMENTARY_ORACLES and source closed-batch roster; one fixed physical pytest node only after admission"
+    },
+    {
+      "case_id": "D091-CONTROLLED-REACHED_REFUSAL",
+      "kind": "REACHED_REFUSAL",
+      "variant": "CONTROLLED",
+      "proof_path": "tests/product/m02_completion_28/d091/test_signal.py",
+      "proposed_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_reached_refusal",
+      "status": "NOT_AUTHORISED_FOR_COLLECTION_OR_EXECUTION",
+      "proposed_witnesses": "Exact Decimal 1.01 lawful public ingress and context, reached D091 native-domain range refusal"
+    }
+  ],
+  "coverage_open": [
+    {
+      "invariant": "signed endpoints and interior across all five bins",
+      "proposal": "12 fixed raw-member requests in success node",
+      "independent_disposition": "PENDING"
+    },
+    {
+      "invariant": "out-of-range native Decimal",
+      "proposal": "positive-path mapping to reached refusal node",
+      "independent_disposition": "PENDING"
+    },
+    {
+      "invariant": "nonfinite raw Decimal",
+      "proposal": "reuse proof or finite admitted mapping, no automatic third case",
+      "independent_disposition": "UNRESOLVED"
+    },
+    {
+      "invariant": "absent raw",
+      "proposal": "reuse proof or finite admitted mapping",
+      "independent_disposition": "UNRESOLVED"
+    },
+    {
+      "invariant": "wrong provider, model, contract, right, units, generation",
+      "proposal": "admitted wrong-identity/refusal evidence required",
+      "independent_disposition": "UNRESOLVED"
+    },
+    {
+      "invariant": "receipt/knowledge cutoff and exact sequence scope",
+      "proposal": "admitted temporal/history-selection evidence required",
+      "independent_disposition": "UNRESOLVED"
+    },
+    {
+      "invariant": "exclusive closed input and pagination complete",
+      "proposal": "controlled fixture barrier and evidence independent of worker helper",
+      "independent_disposition": "UNRESOLVED"
+    },
+    {
+      "invariant": "category record/codec, append-only and durable public read-only reopen",
+      "proposal": "actual post-implementation native owner path and strict Tester evidence",
+      "independent_disposition": "UNRESOLVED"
+    }
+  ],
+  "no_new_physical_cases": true,
+  "no_material_changes_to_existing_claims": true,
+  "tester": "NOT_DESIGNATED",
+  "source_profile": "PROPOSED_NOT_ADMITTED",
+  "implementation_status": "NOT_STARTED",
+  "execution_release": "NONE",
+  "d145": "PAUSED"
+}

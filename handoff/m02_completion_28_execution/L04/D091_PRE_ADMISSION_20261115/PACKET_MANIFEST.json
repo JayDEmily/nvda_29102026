@@ -1,0 +1,27 @@
+{
+  "status": "WORKER_PREPARATION_NOT_INDEPENDENT_REVIEWED",
+  "base_commit": "3ec136d149eb0e5b1d089f861998416361cd2088",
+  "base_tree": "791eeace5fc7ece326d75d24ca993c78d2893823",
+  "branch": "work/t01-d091-boundary-admission-20261115",
+  "files": [
+    "BOUNDARY_ASSESSMENT.md",
+    "IMPLEMENTATION_BOUNDARY.md",
+    "INDEPENDENT_RELEASE_HANDOVER.md",
+    "PROPOSED_CASE_ADMISSION.json",
+    "RUNTIME_OBSERVATION.json"
+  ],
+  "prohibited_changes": [
+    "GUARDRAILS.md",
+    "AGENTS.md",
+    "EXEC_PLAN.md",
+    "tests/AGENTS.override.md",
+    "src/",
+    "tests/product/",
+    "config/",
+    "implementation/",
+    "tools/",
+    "handoff/m02_completion_28_execution/TEST_EVIDENCE_LEDGER.json",
+    "handoff/m02_completion_28_execution/EXECUTION_REGISTER.json"
+  ],
+  "message": "Work product is a finite source/proof admission candidate; this does not implement D091 or release cases."
+}

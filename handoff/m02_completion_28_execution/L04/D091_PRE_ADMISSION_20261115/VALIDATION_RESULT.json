@@ -1,0 +1,30 @@
+{
+  "authorised_product_cases": 0,
+  "base_commit": "3ec136d149eb0e5b1d089f861998416361cd2088",
+  "base_tree": "791eeace5fc7ece326d75d24ca993c78d2893823",
+  "case_nodes_proposed_not_collected": 2,
+  "check": "pure file/json/Decimal/Git inspection; no product import, source mutation or product test",
+  "data_files_written": [
+    "BOUNDARY_ASSESSMENT.md",
+    "IMPLEMENTATION_BOUNDARY.md",
+    "INDEPENDENT_RELEASE_HANDOVER.md",
+    "PACKET_MANIFEST.json",
+    "PROPOSED_CASE_ADMISSION.json",
+    "RUNTIME_OBSERVATION.json"
+  ],
+  "existing_product_test_path_present": false,
+  "implementation_performed": false,
+  "negative_documentary_witnesses": 3,
+  "physical_case_identities_preserved": 2,
+  "positive_documentary_oracles": 12,
+  "product_runs": 0,
+  "proof_obligations": 35,
+  "register_leaves": 39,
+  "scope": "L00/L01b/L04 D091 bounded pre-admission documentary only",
+  "source_artifact_sha256": "1f4c46c5c247c78e3e18bb2de02c172f775379f664bad8e056ef6867a39d03dc",
+  "source_fixture_records": 15,
+  "status": "DOCUMENTARY_PACKET_CONSISTENT_NOT_SOURCE_ADMISSION",
+  "synthetic_source_admitted": false,
+  "tester_designated": false,
+  "untracked_within_packet_only": true
+}
