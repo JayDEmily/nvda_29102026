@@ -157,10 +157,11 @@
     "receipt_law": "received_ts_utc == as_of_utc <= knowledge_cutoff_utc; calculation_time >= knowledge_cutoff_utc",
     "ingestion_sequence_scope": "T01-R112-CONTROL/G1",
     "ordering": "Within one exact scope only; select greatest eligible receipt/sequence; different distinct observations tied at final rank refuse; duplicate occurrence IDs must preserve identical content",
-    "history_page_size": 32,
+    "history_page_size": 8,
     "maximum_projected_members": 64,
-    "page_contract": "Follow stable opaque returned cursor to exhaustion; refuse nonprogress, conflicts or exceeded bound; never truncate and claim latest",
-    "contract_join": "All identity fields and projected subject exactly equal requested versioned contract; selection metadata is identity/configuration, not additional raw dependencies"
+    "page_contract": "Consume only returned cursors to exhaustion; current M00 cursor is numeric offset, not a snapshot token. Requires exclusive closed-batch precondition below; refuse nonprogress, conflicts or exceeded bound.",
+    "contract_join": "All identity fields and projected subject exactly equal requested versioned contract; selection metadata is identity/configuration, not additional raw dependencies",
+    "closed_batch_precondition": "Controlled caller completes all exact source-artifact admissions and excludes all further admissions for the full multi-page read/calculation batch. Current M00 supplies no snapshot/seal API; this is a future controlled-fixture coordination obligation, not an observed runtime guarantee. If closure/exclusivity cannot be established, this profile is not eligible."
   },
   "rule_profile": {
     "profile_id": "D091-SYNTHETIC-TENTATIVE-V1",
@@ -208,15 +209,15 @@
   "source_specimen": {
     "concept_id": "raw_signal.raw_observation_occurrence",
     "contract_id": "nvda.raw_signal.RawObservationOccurrence.v1",
-    "observation_occurrence_id": "T01-R112-INPUT-NEGATIVE-TENTH",
+    "observation_occurrence_id": "T01-R112-BATCH-01",
     "source_provider": "t01-controlled-option-delta",
     "source_variant": "controlled-option-model-delta/fraction-v1",
     "subject_instrument": "SYNTH-NVDA-OPT-C100-20261120",
     "native_units": "signed_decimal_fraction",
     "source_temporal_kind": "receipt_only",
     "source_timestamp_raw": null,
-    "received_ts_utc": "2026-11-15T12:00:00Z",
-    "ingestion_sequence": 1,
+    "received_ts_utc": "2026-11-15T12:00:01Z",
+    "ingestion_sequence": 2,
     "ingestion_sequence_scope": "T01-R112-CONTROL/G1",
     "raw_signal_catalogue_ids": [
       "R112"
@@ -242,7 +243,9 @@
         }
       }
     },
-    "literal_encoding_note": "JSON native_type/text denotes future construction of an exact Decimal, not a payload schema change; real M00 native_record contains Decimal(-0.10), never an expected D091 answer"
+    "literal_encoding_note": "Construct public opaque IDs with M00 factories; decode native_type Decimal text to exact Decimal. No expected D answer is present in this raw record.",
+    "source_timezone_native": null,
+    "delivery_artifact_ref": "T01-R112-CLOSED-BATCH-V1"
   },
   "fail_closed": [
     "missing or ambiguous mapping",
@@ -259,9 +262,15 @@
   "production_policy_approval": "NOT_APPROVED",
   "public_source_protocol": {
     "ingress": "M00 owner.commands.admit_raw_observation_occurrence(RawObservationOccurrenceV1)",
-    "projected_history": "M00 owner.reads.list_projected_raw_history(R112, mappings=(exact_mapping,), subject_instrument=exact_contract_id, received_at_or_before_utc=knowledge_cutoff, event_at_or_before_utc=None, limit=32, cursor=returned_cursor)",
+    "projected_history": "M00 owner.reads.list_projected_raw_history(R112, mappings=(exact_mapping,), subject_instrument=exact_contract_id, received_at_or_before_utc=knowledge_cutoff, event_at_or_before_utc=None, limit=8, cursor=returned_cursor)",
     "source_readback": "M00 owner.reads.get_raw_observation_occurrence(exact_projected_occurrence_id)",
     "original_metadata_check": "Compare actual source observation provider/variant/subject/native_units/temporal metadata/receipt/scope plus projected selection identity against exact profile; mapping.native_units is an explicit declaration, not evidence that differing original metadata has been validated",
     "consumer_protocol_delta": "Existing raw M00 read facet provides these functions. Any new M02 reader Protocol/owner dispatch/category codec needs its own exact admitted implementation brief; no current M02 selector is claimed reusable."
+  },
+  "delivery_artifact_binding": {
+    "delivery_artifact_ref": "T01-R112-CLOSED-BATCH-V1",
+    "path": "handoff/m02_completion_28_execution/L01b/CONTROLLED_BATCH_INPUTS.json",
+    "sha256": "1f4c46c5c247c78e3e18bb2de02c172f775379f664bad8e056ef6867a39d03dc",
+    "meaning": "Exact retrievable proposed literal artifact bytes; not a historical capture or actual raw admission receipt"
   }
 }

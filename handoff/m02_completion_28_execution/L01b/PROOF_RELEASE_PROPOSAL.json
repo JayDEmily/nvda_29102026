@@ -28,7 +28,7 @@
   "new_case_ids": [],
   "admitted_cases": [],
   "executed_runs": [],
-  "proposed_success_composition": "One explicitly enumerated bounded source batch matching all12positive documentary members; no pytest parameterization or hidden repeat. Final physical collection and witness mapping require independent admission.",
+  "proposed_success_composition": "One explicitly enumerated closed source batch with12positive requests in CONTROLLED_BATCH_INPUTS.json, each at its own exact receipt/as_of/knowledge cutoff; zero-age selection admits only that member. No parameterization, hidden repeat or extra physical case. Physical collection/witness mapping still requires independent finite admission.",
   "proposed_refusal_anchor": "Exactly lawful same-contract model delta1.01 reaches range refusal; absent/nonfinite witnesses remain separate documented coverage obligations until finite mapping is accepted",
   "coverage_not_yet_accepted": [
     "How absent/nonfinite and identity/time/history refusals are covered by exact reusable evidence or the finite admitted pair, without hidden added cases",
@@ -36,5 +36,11 @@
     "Actual sole strict Tester and finite exact collected node IDs",
     "Actual implementation commission/source-profile admission and L00 release"
   ],
-  "execution_release": "NOT_RELEASED"
+  "execution_release": "NOT_RELEASED",
+  "source_artifact": {
+    "delivery_artifact_ref": "T01-R112-CLOSED-BATCH-V1",
+    "path": "handoff/m02_completion_28_execution/L01b/CONTROLLED_BATCH_INPUTS.json",
+    "sha256": "1f4c46c5c247c78e3e18bb2de02c172f775379f664bad8e056ef6867a39d03dc",
+    "meaning": "Exact retrievable proposed literal artifact bytes; not a historical capture or actual raw admission receipt"
+  }
 }
