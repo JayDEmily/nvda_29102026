@@ -1,0 +1,26 @@
+{
+  "candidate": "831471d69afd092779a6810ee570285182be88a8",
+  "observation": "EXPECTED_DIFFERENT_LINT_ENTRYPOINT",
+  "command": "make lint",
+  "exit_code": 2,
+  "found_errors": 51,
+  "strict_make_lint_pass": false,
+  "sha_bound_workflow_ci_pass_separate": true,
+  "worktree_clean_after": true,
+  "product_tests_executed": false,
+  "output_tail": [
+    "    |",
+    "121 |     expected=Decimal(\"0.47845330538432369294227349314595528724804013793782\")",
+    "122 |     assert type(result.result) is Decimal and result.result.as_tuple()==expected.as_tuple()",
+    "123 |     assert result.owner_object_id==\"M02\" and result.owner_namespace==\"neutral_market_measurement_truth/window/v1\"",
+    "    |                                                                                                     ^^^^^^^^^^^^^",
+    "124 |     assert result.implementation_brief_sha256==BRIEF and result.derived_signal_id==D",
+    "125 |     assert result.derived_occurrence_id.startswith(\"mmtwindow1:\")",
+    "    |",
+    "",
+    "Found 51 errors.",
+    "[*] 5 fixable with the `--fix` option (8 hidden fixes can be enabled with the `--unsafe-fixes` option).",
+    "",
+    "make: *** [Makefile:23: lint] Error 1"
+  ]
+}
