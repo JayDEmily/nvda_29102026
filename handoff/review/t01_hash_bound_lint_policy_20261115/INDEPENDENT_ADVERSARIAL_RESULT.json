@@ -1,0 +1,50 @@
+{
+  "status": "PASS_ADVERSARIAL_VERIFIER_REFUSALS",
+  "disposable_head": "831471d69afd092779a6810ee570285182be88a8",
+  "independent_negative_cases": 5,
+  "product_proof_executed": false,
+  "permanent_source_changes": false,
+  "worktree_clean_after": true,
+  "results": [
+    {
+      "case": "untampered_baseline",
+      "exit": 0,
+      "accepted": true
+    },
+    {
+      "case": "changed_admitted_proof_file",
+      "exit": 1,
+      "accepted": false,
+      "observed_refusal": "admitted source bytes changed"
+    },
+    {
+      "case": "changed_current_admission_pointer",
+      "exit": 1,
+      "accepted": false,
+      "observed_refusal": "selected generation changed"
+    },
+    {
+      "case": "changed_immutable_generation_bytes",
+      "exit": 1,
+      "accepted": false,
+      "observed_refusal": "generation bytes or pointer changed"
+    },
+    {
+      "case": "changed_policy_manifest_bytes",
+      "exit": 1,
+      "accepted": false,
+      "observed_refusal": "baseline manifest byte identity changed"
+    },
+    {
+      "case": "new_F821_in_other_source",
+      "exit": 1,
+      "accepted": false,
+      "observed_refusal": "Ruff findings changed by path"
+    },
+    {
+      "case": "restored_clean_baseline",
+      "exit": 0,
+      "accepted": true
+    }
+  ]
+}

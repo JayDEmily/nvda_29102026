@@ -1,0 +1,51 @@
+{
+  "status": "PASS_ARCHIVE_AND_RECORD_INTEGRITY",
+  "candidate": "831471d69afd092779a6810ee570285182be88a8",
+  "changed_wheels": 4,
+  "lock_registry": "vendor/wheels",
+  "uv_lock_contains_individual_wheel_sha256": false,
+  "third_party_publisher_provenance_verified": false,
+  "product_tests_executed": false,
+  "wheels": [
+    {
+      "path": "vendor/wheels/librt-0.16.0-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+      "sha256": "17bac7f7a16b328fff77e440287693eb017abde913595b5827ebccbc21ecd8a6",
+      "size_bytes": 531689,
+      "distribution": "librt",
+      "version": "0.16.0",
+      "sha256_record_verified": 20,
+      "unhashed_record_rows": 1,
+      "archive_crc_pass": true
+    },
+    {
+      "path": "vendor/wheels/mypy-1.20.1-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+      "sha256": "f37b6cd0fe2ad3a20f05ace48ca3523fc52ff86940e34937b439613b6854472e",
+      "size_bytes": 14696420,
+      "distribution": "mypy",
+      "version": "1.20.1",
+      "sha256_record_verified": 1419,
+      "unhashed_record_rows": 1,
+      "archive_crc_pass": true
+    },
+    {
+      "path": "vendor/wheels/psycopg_binary-3.3.4-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+      "sha256": "c677c4ad433cb7150c8cd304a0769ae3bcfbe5ea0676eb53faa7b1443b16d0d3",
+      "size_bytes": 5151137,
+      "distribution": "psycopg-binary",
+      "version": "3.3.4",
+      "sha256_record_verified": 30,
+      "unhashed_record_rows": 1,
+      "archive_crc_pass": true
+    },
+    {
+      "path": "vendor/wheels/pyyaml-6.0.3-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+      "sha256": "0f29edc409a6392443abf94b9cf89ce99889a1dd5376d94316ae5145dfedd5d6",
+      "size_bytes": 801626,
+      "distribution": "PyYAML",
+      "version": "6.0.3",
+      "sha256_record_verified": 23,
+      "unhashed_record_rows": 1,
+      "archive_crc_pass": true
+    }
+  ]
+}

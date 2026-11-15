@@ -1,0 +1,85 @@
+{
+  "actual_ruff_diagnostics": 51,
+  "candidate": "831471d69afd092779a6810ee570285182be88a8",
+  "current_main": "a73349834fe4aa1422c194da0492315044b32b98",
+  "current_main_additional_path": "AGENTS.md",
+  "current_main_difference_count": 24,
+  "governance_and_proof_admission_not_modified_on_candidate": true,
+  "historical_base": "ded4b98e1e5999d1ddf2f067e660b691917bcd71",
+  "historical_cumulative_count": 23,
+  "historical_cumulative_paths": [
+    ".github/workflows/architecture-kernel.yml",
+    ".python-version",
+    "config/lint/PROPOSED_SHA_BOUND_RUFF_BASELINE.json",
+    "handoff/planning/t01_immutable_ruff_20261114/PROPOSAL.md",
+    "handoff/review/t01_ci_proof_preserving_20261114/INDEPENDENT_REVIEW_REQUEST.md",
+    "handoff/review/t01_fixture_state_split_20261114/WORKER_EVIDENCE.md",
+    "handoff/review/t01_fixture_state_split_20261114/architecture_fixture_split_61_cases_pytest.log",
+    "handoff/review/t01_hash_bound_lint_ci_20261114/INDEPENDENT_REVIEW_REQUEST.md",
+    "handoff/review/t01_pre_admission_fixture_20261114/REVIEW_REQUEST.md",
+    "pyproject.toml",
+    "src/nvda_desk/derived_signal_calculation_truth/_financial_policy.py",
+    "tests/architecture/fixtures/pre_admission_20261018_inventory.json",
+    "tests/architecture/test_identifier_taxonomy.py",
+    "tests/architecture/test_implementation_authority_ingress.py",
+    "tests/architecture/test_proof_control.py",
+    "tests/architecture/test_registry_schema.py",
+    "tests/product/derived_signal/test_m01_stage1_semantics.py",
+    "tools/proposed_admitted_ruff_baseline.py",
+    "uv.lock",
+    "vendor/wheels/librt-0.16.0-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+    "vendor/wheels/mypy-1.20.1-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+    "vendor/wheels/psycopg_binary-3.3.4-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+    "vendor/wheels/pyyaml-6.0.3-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl"
+  ],
+  "historical_fixture_exact_path_membership": true,
+  "history_manifest_test_count": 93,
+  "policy_accepted_by_owner": false,
+  "product_proof_executed": false,
+  "proof_sources_preserved": [
+    {
+      "claim": "neutral_market_measurement_truth_pilot",
+      "sha256": "cf7bc548a2ea3483ff2f2db98965dafdb7ecc3154fbd5a0b4ae089f2825451e0",
+      "source": "tests/product/market_measurement/typing/valid_seam.py"
+    },
+    {
+      "claim": "neutral_market_measurement_truth_d030",
+      "sha256": "aeb71639ca9d1e6b4c89ec374bd92d162ecb18da1177618bf8aef159e06dbd35",
+      "source": "tests/product/market_measurement_d030/test_trade_rate_zscore.py"
+    },
+    {
+      "claim": "neutral_market_measurement_truth_d031",
+      "sha256": "1cc9262e0252c9a23c30e93c3e3d5fc91fad0b595940ba9657d87103a6f5b61a",
+      "source": "tests/product/market_measurement_d031/test_volume_rate_zscore.py"
+    },
+    {
+      "claim": "neutral_market_measurement_truth_d032",
+      "sha256": "1606076379c92acedd6048cd0be6aa266e1a098847219698cf61cb3098e416a1",
+      "source": "tests/product/market_measurement_d032/test_five_minute_realised_volatility.py"
+    },
+    {
+      "claim": "neutral_market_measurement_truth_d033",
+      "sha256": "28810ac5827282bee3fb611fddc6781357843693600992b5da62355a1cf1c197",
+      "source": "tests/product/market_measurement_d033/test_thirty_minute_realised_volatility.py"
+    },
+    {
+      "claim": "neutral_market_measurement_truth_d035",
+      "sha256": "f46b49ca4671431a0abf98f1c3148bc9095d724fe966652a64696275b4e57c00",
+      "source": "tests/product/market_measurement_d035/test_five_day_realised_volatility.py"
+    },
+    {
+      "claim": "neutral_market_measurement_truth_d036",
+      "sha256": "b6b77664632fe8d47e14692639f4a81f737a7fbbd6adea7bd28062ccbf13fcd8",
+      "source": "tests/product/market_measurement_d036/test_ten_day_realised_volatility.py"
+    }
+  ],
+  "result": "PASS_INDEPENDENT_READ_ONLY_PR14_CUMULATIVE",
+  "ruff_codes": {
+    "B905": 4,
+    "E501": 38,
+    "I001": 5,
+    "RUF007": 4
+  },
+  "ruff_exact_digest_sha256": "08ae839b0596c31ecb73a4667845f0d19dfe0c4503c52079434dd98e835a2a8f",
+  "two_other_python_files_ast_unchanged": true
+}
