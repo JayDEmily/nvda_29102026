@@ -7,5 +7,7 @@
     "ee1f7b793732a3f6a0db71ff75c724204d9d7aac"
   ],
   "tree": "14fe88347535aa8039a4c2a98ab297dbb098895f",
-  "scope": "Exact authorised ordinary merge; no force/history rewrite; post-merge Actions separate from earlier PR CI"
+  "scope": "Exact authorised ordinary merge; no force/history rewrite; post-merge Actions separate from earlier PR CI",
+  "tree_equals_approved_candidate": true,
+  "github_readback": "37101554bda7c94fd4cd791074c9d63c13e97ee8"
 }

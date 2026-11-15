@@ -1,0 +1,70 @@
+{
+  "base_commit": "37101554bda7c94fd4cd791074c9d63c13e97ee8",
+  "status": "INDEPENDENTLY_REVIEWED_DOCUMENTARY_PROPOSAL_NOT_ADMITTED",
+  "semantic_review_candidate": "2f0d4bc87b764890cae308b58f55ddcfe79590a9",
+  "files": [
+    {
+      "path": "handoff/m02_completion_28_execution/L01b/COMMANDS_AND_STATUS.md",
+      "bytes": 3632,
+      "sha256": "7273a263b0146298c7450b8259b39f75df12daae1abf3abb3bc277077ea8f898"
+    },
+    {
+      "path": "handoff/m02_completion_28_execution/L01b/CONTROLLED_BATCH_INPUTS.json",
+      "bytes": 29537,
+      "sha256": "1f4c46c5c247c78e3e18bb2de02c172f775379f664bad8e056ef6867a39d03dc"
+    },
+    {
+      "path": "handoff/m02_completion_28_execution/L01b/DOCUMENTARY_ORACLES.json",
+      "bytes": 2322,
+      "sha256": "28bca489fc35faaef7b3a673e5c242b3463b125aa9038ee8d9c3a8c8192c5947"
+    },
+    {
+      "path": "handoff/m02_completion_28_execution/L01b/DOCUMENTARY_VALIDATION.json",
+      "bytes": 317,
+      "sha256": "806851ad489c1336e48b1b96bf9045951f2d4ffb0aea9f8d87416fcad23b0fc2"
+    },
+    {
+      "path": "handoff/m02_completion_28_execution/L01b/INDEPENDENT_DOCUMENTARY_REVIEW.md",
+      "bytes": 11790,
+      "sha256": "759bcfc9953e72bae0fe9f71076c1191d105e16d02f3cf5801f13f90bb4ec15e"
+    },
+    {
+      "path": "handoff/m02_completion_28_execution/L01b/MERGE_PR18_RECEIPT.json",
+      "bytes": 583,
+      "sha256": "4823d05978da8bd2da4ebd725062a4ae0a81ab3ac73fe2b3f60aa83615d63522"
+    },
+    {
+      "path": "handoff/m02_completion_28_execution/L01b/PROOF_RELEASE_PROPOSAL.json",
+      "bytes": 2274,
+      "sha256": "63f03ddbe851b274bcae11d312032003eed2198321838a19e107747e8bccc36e"
+    },
+    {
+      "path": "handoff/m02_completion_28_execution/L01b/R112_SOURCE_CONTRACT_PROPOSED.json",
+      "bytes": 9444,
+      "sha256": "31c811e77468f44c2e412893326bc6d5f9ea037cdbf28712ce8e213652fdfc63"
+    },
+    {
+      "path": "handoff/m02_completion_28_execution/L01b/REVIEW_HANDOVER.md",
+      "bytes": 1533,
+      "sha256": "1626a72cc7d4991043a39e41293cb7b6ee532a5c913f6bcd200effe72ea3b0c7"
+    },
+    {
+      "path": "handoff/m02_completion_28_execution/L01b/SOURCE_CONTRACT_ANALYSIS.md",
+      "bytes": 9675,
+      "sha256": "bcf00ce511719a2cfac4a83787bb51bf98b60a995b269510c99926c25df8f5a2"
+    },
+    {
+      "path": "handoff/m02_completion_28_execution/L01b/SOURCE_PROVENANCE.json",
+      "bytes": 4887,
+      "sha256": "6726c3618bcc864f163101c46642b20a87c28fb961736ec5ef8c5fb4725efbbd"
+    },
+    {
+      "path": "handoff/m02_completion_28_execution/L01b/validate_documentary_packet.py",
+      "bytes": 3873,
+      "sha256": "b81986f63c7f64b0d4380ec62a569cd01567f89c4b3b45dd7b335af872fdcc23"
+    }
+  ],
+  "manifest_self_hash": "Not embedded; exact committed Git blob identifies this inventory",
+  "product_source_changed": false,
+  "new_product_tests_executed": 0
+}
