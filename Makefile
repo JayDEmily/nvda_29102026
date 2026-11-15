@@ -20,4 +20,4 @@ typecheck:
 	$(PYTHON) -m mypy src
 
 lint:
-	ruff check src tests tools
+	$(PYTHON) tools/sha_bound_ruff_gate.py

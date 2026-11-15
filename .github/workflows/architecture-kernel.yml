@@ -10,10 +10,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Proof-admission history validates every retained Git generation.
+          fetch-depth: 0
       - uses: astral-sh/setup-uv@v6
         with:
           version: "0.10.0"
       - run: uv sync --locked --extra dev
-      - run: uv run ruff check src tests tools
+      # Owner-adopted historical Ruff policy candidate: only the exact 51
+      # diagnostics from seven unchanged SHA-bound proof files may remain.
+      # Main integration and product proof require separate independent gates.
+      - name: SHA-bound historical Ruff lint gate
+        run: uv run python tools/sha_bound_ruff_gate.py
       - run: uv run python tools/run_promotion_gate.py --set architecture_kernel
       - run: git diff --check

@@ -18,6 +18,7 @@ def test_all_architecture_registries_conform_to_committed_schemas() -> None:
         "M00",
         "M01",
         "M02",
+        "M03",
         "P01",
         "G01",
         "A00",
