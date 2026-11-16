@@ -1,0 +1,79 @@
+{
+  "schema": "R112_TEST_ONLY_NEGATIVE_SOURCE_AND_D091_FAULT_POLICY_OWNER_ADOPTION_V1",
+  "state": "OWNER_ADOPTED_TEST_ONLY_POLICY_NO_PRODUCT_RELEASE",
+  "decision_kind": "DIRECT_OWNER_APPROVAL_IN_CURRENT_CHAT",
+  "owner_approval_date_local": "2026-11-16",
+  "owner_approval_local_minute": "2026-11-16T11:52+11:00",
+  "timezone": "Australia/Melbourne",
+  "question_quoted_verbatim": "Do you approve scopes A–E on PR #26 at the exact commit above, strictly as test-only policy permissions? The physical-case budgets and execution prerequisites would remain separate decisions.",
+  "reply_quoted_verbatim": "Yep, I approve.",
+  "source_of_quoted_reply": "Immediate owner reply in this conversation; worker-authored record, not independently cryptographically authenticated or a GitHub owner comment",
+  "repository": "JayDEmily/nvda_29102026",
+  "target_pr": 26,
+  "pinned_exact_request_candidate": "230395c88d6724f7e1689ae47c5164d180096c34",
+  "request_path": "handoff/m02_completion_28_execution/L01b/R112_NEGATIVE_FAULT_POLICY_DECISION_20261116/PROPOSED_NEGATIVE_SOURCE_AND_FAULT_POLICY.json",
+  "request_path_git_blob_sha1": "a9781b08937a25f21b1436bc716cdac13329f7a5",
+  "reviewed_previous_getter_commit": "14127e0e444781b1868eb51dc74b37eaf9efc327",
+  "approved_scope_ids": [
+    "A_L01B_MALFORMED_ORIGINAL_NEGATIVE_ONLY",
+    "B_ALTERNATIVE_COHORT_EXCEPTION",
+    "C_PAGINATED_READ_FAULT_PORT",
+    "D_D091_ORIGINAL_GETTER_READONLY_FAULT_PORT",
+    "E_SQLITE_FAILURE_SEAM"
+  ],
+  "approved_test_only_groups": {
+    "A_L01B_MALFORMED_ORIGINAL_NEGATIVE_ONLY": {
+      "count": 15,
+      "status": "OWNER_ADOPTED_TEST_ONLY_POLICY",
+      "meaning": "Negative-only malformed original L01b raw-ingress variants; fail-closed tests, never lawful successful R112 members or D091 reached stage."
+    },
+    "B_ALTERNATIVE_COHORT_EXCEPTION": {
+      "count": 2,
+      "status": "OWNER_ADOPTED_TEST_ONLY_POLICY",
+      "meaning": "Private separately identified 2-member tied-rank and 65-member over-limit negative cohorts only; each separately sealed; do not alter positive 15-member R112 source."
+    },
+    "C_PAGINATED_READ_FAULT_PORT": {
+      "count": 2,
+      "status": "OWNER_ADOPTED_TEST_ONLY_POLICY",
+      "meaning": "Read-only D091 test adapter H06 repeated cursor and H07 contradictory duplicated-ID page, after genuine source seal; no claim ordinary M00 generates corrupted pages."
+    },
+    "D_D091_ORIGINAL_GETTER_READONLY_FAULT_PORT": {
+      "count": 3,
+      "status": "OWNER_ADOPTED_TEST_ONLY_POLICY",
+      "meaning": "Selector-only read adapter G01 missing original, G02 units contradiction, G03 model-generation contradiction; trusted original getter/manifest and real history stay unmodified."
+    },
+    "E_SQLITE_FAILURE_SEAM": {
+      "count": 3,
+      "status": "OWNER_ADOPTED_TEST_ONLY_POLICY",
+      "meaning": "Isolated test SQLite D01 precommit rollback, D02 uncertain acknowledgement, D03 same-ID content conflict; validate actual fresh durable readback and uncertainty."
+    }
+  },
+  "approved_negative_specimens_total": 25,
+  "no_new_source_policy_needed_group": {
+    "scope": "F_ALREADY_FIXED_REQUEST_NEGATIVE_NO_NEW_SOURCE",
+    "specimens": 2,
+    "decision": "NOT_REQUESTED_OR_ADOPTED_AS_NEW_SOURCE_POLICY"
+  },
+  "source_positive_contract_sha256": "31c811e77468f44c2e412893326bc6d5f9ea037cdbf28712ce8e213652fdfc63",
+  "source_positive_fifteen_member_sha256": "1f4c46c5c247c78e3e18bb2de02c172f775379f664bad8e056ef6867a39d03dc",
+  "existing_24_negative_bundle_sha256": "e433359c0b0cfdf4c6ed5c1dbe95ee7b7159d524f97917c3b7bfbc81d1867080",
+  "getter_three_negative_bundle_sha256": "c76e3189dce4c2ebed6ccd76afad38b0d56e3b20e1e30859cd8eb00dc8e9c8cd",
+  "unchanged_source_positive_members": true,
+  "production_or_live_source_approved": false,
+  "policy_adoption_for_test_only_meaning": true,
+  "specific_test_port_code_implemented": false,
+  "specific_test_case_authorisation": false,
+  "new_case_budget_approved": false,
+  "d091_proposed_cases_not_admitted": 17,
+  "l01b_proposed_cases_not_admitted": 15,
+  "d091_active_authorised_cases": 0,
+  "d091_active_hard_ceiling": 0,
+  "product_test_executions": 0,
+  "claim_or_generation_modified": false,
+  "l00_receiver_accepted": false,
+  "runner_sqlite_qualified": false,
+  "strict_tester_designated": false,
+  "pr_merge_authorised": false,
+  "d145": "PAUSED",
+  "next_step": "INDEPENDENT_POST_OWNER_POLICY_ADOPTION_REVIEW_BEFORE_OPERATIVE_TEST_PORT_OR_CASE_ADMISSION"
+}
