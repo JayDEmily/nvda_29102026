@@ -13,7 +13,7 @@ from __future__ import annotations
 
 import copy
 from collections.abc import Mapping
-from dataclasses import fields, replace
+from dataclasses import fields, is_dataclass, replace
 import hashlib
 import json
 from datetime import datetime, timedelta
@@ -174,6 +174,11 @@ def _coordinator(*, negative_cohort: str | None = None) -> object:
 
 
 def _native_content(value: object) -> object:
+    if is_dataclass(value) and not isinstance(value, type):
+        return (type(value).__name__, tuple(
+            (field.name, _native_content(getattr(value, field.name)))
+            for field in fields(value)
+        ))
     if isinstance(value, Mapping):
         return ("mapping", tuple(sorted((key, _native_content(item))
                                         for key, item in value.items())))
@@ -309,7 +314,7 @@ class _SelectorReadAdapter:
     read capability; private trusted manifest validation still uses original M00.
     """
     def __init__(self, genuine: object, fault: str) -> None:
-        assert fault in {"H06", "H07", "G01", "G02", "G03"}
+        assert fault in {"H06", "H07", "G01", "G02", "G03", "TRACE"}
         self._genuine = genuine
         self._fault = fault
         self.page_calls = 0
@@ -371,11 +376,17 @@ def _faulting_owner(source: object, db: Path, adapter: _SelectorReadAdapter, eve
     )
 
 
-def _bounded_fault_owner(source: object, db: Path, mode: str) -> m02.D091BucketOwnerV1:
+def _bounded_fault_owner(
+    source: object, db: Path, mode: str,
+    selector: _SelectorReadAdapter | None = None,
+) -> m02.D091BucketOwnerV1:
     assert mode in {"D01", "D02", "D03"}
     return implementation._build_test_only_owner_from_fixed_policy(
         admission=m02.OwnerAdmissionV1("M02", implementation.BRIEF),
-        controlled_source_read_capability=source.read_only_capability(),
+        controlled_source_read_capability=(
+            source.read_only_capability() if selector is None
+            else source.test_only_selector_capability(selector)
+        ),
         storage=m02.SQLiteStorageV1(str(db), True),
         utc_now=lambda: CLOCK,
         test_fault_id=mode,
@@ -417,14 +428,17 @@ def test_d091_controlled_success(tmp_path: Path) -> None:
         assert outcome.calculated_at_utc == clock[0]
         assert outcome.derived_occurrence_id.startswith("d091-occurrence-v1:")
         assert outcome.cohort_content_digest
-        assert _reader(db).get_derived_occurrence(outcome.derived_occurrence_id) == outcome
+        assert _native_content(
+            _reader(db).get_derived_occurrence(outcome.derived_occurrence_id)
+        ) == _native_content(outcome)
         stored.append(outcome)
     first = stored[11]
     clock[0] = CLOCK + timedelta(seconds=7)
     repeated = owner.materialise(_request(members[11]))
-    assert repeated == first and repeated.calculated_at_utc == first.calculated_at_utc
+    assert _native_content(repeated) == _native_content(first)
+    assert repeated.calculated_at_utc == first.calculated_at_utc
     assert len(set(o.derived_occurrence_id for o in stored)) == 12
-    assert _rows(db) == tuple(stored)
+    assert [_native_content(x) for x in _rows(db)] == [_native_content(x) for x in stored]
     assert events == []
     _assert_clean_source(source, members)
 
@@ -600,19 +614,54 @@ def test_d091_controlled_same_id_content_conflict(tmp_path: Path) -> None:
     members = _load_source()
     source = _admit_and_seal(members)
     db = tmp_path / "sameid.sqlite3"
-    owner = _bounded_fault_owner(source, db, "D03")
+    # A read-only selector traces actual C/D M00 calls but never alters them.
+    # The private Stage B original getter remains the genuine sealed M00 owner.
+    selector = _SelectorReadAdapter(source.read_only_capability(), "TRACE")
+    owner = _bounded_fault_owner(source, db, "D03", selector=selector)
     request = _request(members[11])
     initial = owner.materialise(request)
     assert type(initial) is m02.D091BucketOccurrenceV1
     assert initial.signed_delta == Decimal("0.499")
     assert initial.result.label == "ABS_25_50"
+    assert selector.injected == 0
+    assert (selector.page_calls, selector.getter_calls) == (2, 12)
     first = _reader(db).get_derived_occurrence(initial.derived_occurrence_id)
-    assert first == initial
+    assert _native_content(first) == _native_content(initial)
     with pytest.raises(m02.PersistenceFailureV1) as caught:
         owner.materialise(request)
     assert caught.value.outcome_uncertain is False
     assert "immutable measurement identity conflict" in str(caught.value)
-    assert _reader(db).get_derived_occurrence(initial.derived_occurrence_id) == first
+    # The second public materialise independently traversed genuine 8+4
+    # pages and read all 12 originals again before the storage conflict.
+    assert (selector.page_calls, selector.getter_calls) == (4, 24)
+    assert selector.injected == 0
+    # Do not accept a fabricated PersistenceFailureV1 with the same text.
+    # Inspect the REAL unmodified RecordState._existing traceback and its
+    # own immutable candidate argument at the reached comparison site.
+    frames = []
+    frame = caught.value.__traceback__
+    while frame is not None:
+        if frame.tb_frame.f_code.co_name == "_existing":
+            frames.append(frame.tb_frame)
+        frame = frame.tb_next
+    assert len(frames) == 1
+    actual_store_frame = frames[0]
+    assert actual_store_frame.f_code.co_filename.endswith(
+        "nvda_desk/market_measurement_truth/_record_store.py"
+    )
+    second = actual_store_frame.f_locals["value"]
+    old = actual_store_frame.f_locals["old"]
+    assert type(second) is m02.D091BucketOccurrenceV1
+    assert type(old) is m02.D091BucketOccurrenceV1
+    assert second.signed_delta == Decimal("0.498")
+    assert second.selected_projection.native_value == Decimal("0.498")
+    assert second.original_observation.native_record["model"]["delta"] == Decimal("0.498")
+    assert second.result.label == old.result.label == "ABS_25_50"
+    assert second.derived_occurrence_id == old.derived_occurrence_id == initial.derived_occurrence_id
+    assert old.signed_delta == Decimal("0.499")
+    assert old.calculated_at_utc == initial.calculated_at_utc
+    reopened = _reader(db).get_derived_occurrence(initial.derived_occurrence_id)
+    assert _native_content(reopened) == _native_content(first)
     assert len(_rows(db)) == 1
     assert source.read_only_capability().get_raw_observation_occurrence(
         raw.observation_occurrence_id("T01-R112-BATCH-11")
