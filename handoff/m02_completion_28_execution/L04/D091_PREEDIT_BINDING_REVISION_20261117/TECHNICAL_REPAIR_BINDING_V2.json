@@ -1,0 +1,459 @@
+{
+  "schema": "D091_L01B_PREEDIT_TECHNICAL_CORRECTION_V2",
+  "status": "PROPOSAL_DOCUMENTARY_ONLY_NOT_PRODUCT_RELEASE",
+  "supersedes_original_sections": [
+    "IMPLEMENTATION_BRIEF.md §3 public DTO request/clock/identity/wire",
+    "IMPLEMENTATION_BRIEF.md §5 D01-D03 storage fault route",
+    "IMPLEMENTATION_BRIEF.md §6 proof registry path"
+  ],
+  "independent_return_ref": "review/d091-l01b-pr27-preedit-binding-independent-20261117-gpt6",
+  "independent_return_commit": "031fd15b76baa228c352ef97dbe7f833c8071a02",
+  "independent_return_blob_sha1": "c90e2970ef4d40f3ee62fa914927c232662e35d0",
+  "unchanged_source_contract_sha256": "31c811e77468f44c2e412893326bc6d5f9ea037cdbf28712ce8e213652fdfc63",
+  "unchanged_positive_source_sha256": "1f4c46c5c247c78e3e18bb2de02c172f775379f664bad8e056ef6867a39d03dc",
+  "admitted_jurisdictions": {
+    "D091": 18,
+    "L01b": 15,
+    "physical_case_ids": [
+      "D091-CONTROLLED-SUCCESS",
+      "D091-CONTROLLED-REACHED_REFUSAL",
+      "D091-CONTROLLED-SEAL-REFUSAL",
+      "D091-CONTROLLED-NONFINITE-REFUSAL",
+      "D091-CONTROLLED-ABSENT-REFUSAL",
+      "D091-CONTROLLED-RECEIPT-ASOF-REFUSAL",
+      "D091-CONTROLLED-CUTOFF-ORDER-REFUSAL",
+      "D091-CONTROLLED-TOP-RANK-TIE-REFUSAL",
+      "D091-CONTROLLED-OVER-64-REFUSAL",
+      "D091-CONTROLLED-CURSOR-NONPROGRESS-REFUSAL",
+      "D091-CONTROLLED-DUPLICATE-ID-CONFLICT-REFUSAL",
+      "D091-CONTROLLED-PRECOMMIT-SQLITE-FAILURE",
+      "D091-CONTROLLED-UNCERTAIN-COMMIT-FAILURE",
+      "D091-CONTROLLED-SAME-ID-CONTENT-CONFLICT",
+      "D091-CONTROLLED-ORIGINAL-GETTER-MISSING",
+      "D091-CONTROLLED-ORIGINAL-GETTER-UNITS-MISMATCH",
+      "D091-CONTROLLED-ORIGINAL-GETTER-GENERATION-MISMATCH",
+      "D091-CONTROLLED-UNSEALED-REFUSAL",
+      "L01B-R112-CONTROLLED-NATIVE-UNITS-REFUSAL",
+      "L01B-R112-CONTROLLED-SOURCE-PROVIDER-REFUSAL",
+      "L01B-R112-CONTROLLED-SOURCE-VARIANT-REFUSAL",
+      "L01B-R112-CONTROLLED-CONTRACT-ID-REFUSAL",
+      "L01B-R112-CONTROLLED-UNDERLYING-REFUSAL",
+      "L01B-R112-CONTROLLED-SECURITY-TYPE-REFUSAL",
+      "L01B-R112-CONTROLLED-RIGHT-REFUSAL",
+      "L01B-R112-CONTROLLED-EXPIRY-DATE-REFUSAL",
+      "L01B-R112-CONTROLLED-STRIKE-REFUSAL",
+      "L01B-R112-CONTROLLED-CURRENCY-REFUSAL",
+      "L01B-R112-CONTROLLED-MODEL-VARIANT-REFUSAL",
+      "L01B-R112-CONTROLLED-SCALE-REFUSAL",
+      "L01B-R112-CONTROLLED-GENERATION-REFUSAL",
+      "L01B-R112-CONTROLLED-REQUEST-ID-REFUSAL",
+      "L01B-R112-CONTROLLED-SEQUENCE-SCOPE-REFUSAL"
+    ],
+    "execution_release": false
+  },
+  "bound_request": {
+    "kind": "frozen_slots_dataclass",
+    "class": "D091BucketRequestV1",
+    "all_fields_required": true,
+    "fields": [
+      [
+        "derived_signal_id",
+        "str",
+        "D091"
+      ],
+      [
+        "subject_instrument",
+        "str",
+        "SYNTH-NVDA-OPT-C100-20261120"
+      ],
+      [
+        "as_of_utc",
+        "datetime",
+        "UTC"
+      ],
+      [
+        "knowledge_cutoff_utc",
+        "datetime",
+        "UTC"
+      ],
+      [
+        "calculation_definition_version",
+        "str",
+        "T01-D091-ABS-DELTA-DEF-V1"
+      ],
+      [
+        "source_profile_ref",
+        "VersionRefV1",
+        "T01-R112-CONTROLLED-FRACTION-1@1"
+      ],
+      [
+        "selection_policy_ref",
+        "VersionRefV1",
+        "T01-R112-EXACT-RECEIPT-1@1"
+      ],
+      [
+        "projection_mapping_ref",
+        "VersionRefV1",
+        "t01-controlled-r112-delta@1"
+      ],
+      [
+        "unit_convention_ref",
+        "VersionRefV1",
+        "T01-R112-FRACTION-IDENTITY@1"
+      ],
+      [
+        "rule_profile_ref",
+        "VersionRefV1",
+        "D091-SYNTHETIC-TENTATIVE-V1@1"
+      ],
+      [
+        "contract_id",
+        "str",
+        "SYNTH-NVDA-OPT-C100-20261120"
+      ],
+      [
+        "underlying",
+        "str",
+        "NVDA"
+      ],
+      [
+        "security_type",
+        "str",
+        "OPT"
+      ],
+      [
+        "right",
+        "str",
+        "C"
+      ],
+      [
+        "expiry_date",
+        "str",
+        "2026-11-20"
+      ],
+      [
+        "strike",
+        "str",
+        "100"
+      ],
+      [
+        "currency",
+        "str",
+        "USD"
+      ],
+      [
+        "model_variant",
+        "str",
+        "CONTROLLED_SIGNED_DELTA_V1"
+      ],
+      [
+        "scale",
+        "str",
+        "signed_decimal_fraction"
+      ],
+      [
+        "generation",
+        "str",
+        "T01-R112-CONTROL-G1"
+      ],
+      [
+        "request_id",
+        "str",
+        "T01-R112-BOUNDARIES-1"
+      ]
+    ],
+    "computed_readonly_property": "request_identity",
+    "computed_input_exclusions": [
+      "request_identity",
+      "calculated_at_utc",
+      "seal"
+    ],
+    "digest_algorithm": "d091-request-v1: + sha256(_native_codec.canonical(dict(21 exact init fields)))",
+    "clock_source": "single owner.utc_now() per materialise, never request field",
+    "utc_clock_order": "as_of<=knowledge_cutoff<=now",
+    "byte_roundtrip": "existing dataclass _CLASSES record encoder/decoder, no init=False field"
+  },
+  "bound_category": {
+    "class": "D091CategoryV1",
+    "kind": "frozen_slots_exact_dataclass",
+    "fields": [
+      [
+        "label",
+        "str",
+        "one-of-exact-five"
+      ]
+    ],
+    "labels": [
+      "ABS_00_10",
+      "ABS_10_25",
+      "ABS_25_50",
+      "ABS_50_75",
+      "ABS_75_100"
+    ],
+    "codec_tag_shape": {
+      "t": "record",
+      "n": "D091CategoryV1",
+      "v": {
+        "label": {
+          "t": "str",
+          "v": "ABS_25_50"
+        }
+      }
+    },
+    "codec_requirement": "add three D091 exact dataclasses to _CLASSES, no enum/default str accept"
+  },
+  "bound_occurrence": {
+    "class": "D091BucketOccurrenceV1",
+    "kind": "frozen_slots_exact_dataclass",
+    "fields": [
+      [
+        "owner_object_id",
+        "str"
+      ],
+      [
+        "owner_namespace",
+        "str"
+      ],
+      [
+        "implementation_brief_sha256",
+        "str"
+      ],
+      [
+        "derived_signal_id",
+        "str"
+      ],
+      [
+        "derived_occurrence_id",
+        "str"
+      ],
+      [
+        "request",
+        "D091BucketRequestV1"
+      ],
+      [
+        "definition",
+        "CalculationDefinitionV1"
+      ],
+      [
+        "source_contract_sha256",
+        "str"
+      ],
+      [
+        "source_artifact_sha256",
+        "str"
+      ],
+      [
+        "cohort_content_digest",
+        "str"
+      ],
+      [
+        "original_observation",
+        "raw.RawObservationOccurrenceV1"
+      ],
+      [
+        "selected_projection",
+        "raw.ProjectedRawValueV1"
+      ],
+      [
+        "signed_delta",
+        "Decimal"
+      ],
+      [
+        "result",
+        "D091CategoryV1"
+      ],
+      [
+        "units",
+        "str"
+      ],
+      [
+        "result_shape",
+        "str"
+      ],
+      [
+        "effective_as_of_utc",
+        "datetime"
+      ],
+      [
+        "knowledge_cutoff_utc",
+        "datetime"
+      ],
+      [
+        "calculated_at_utc",
+        "datetime"
+      ]
+    ],
+    "namespace": "neutral_market_measurement_truth/d091/v1",
+    "id_prefix": "d091-occurrence-v1:",
+    "logical_id_inputs": [
+      "owner_namespace",
+      "implementation_brief_sha256",
+      "request_identity",
+      "calculation_definition_version",
+      "source_contract_sha256",
+      "source_artifact_sha256",
+      "cohort_content_digest",
+      "selected_original_observation_id",
+      "selected_receipt_ts_utc",
+      "selected_ingestion_sequence",
+      "rule_profile_ref",
+      "result_label"
+    ],
+    "logical_id_noninputs": [
+      "derived_occurrence_id",
+      "calculated_at_utc",
+      "original_observation.native_record.model.delta payload bytes"
+    ],
+    "canonical_algorithm": "sha256(_native_codec.canonical(dict(id_inputs)))",
+    "persisted_bytes": "_native_codec.canonical(D091BucketOccurrenceV1)",
+    "first_retry_timestamp": "RecordState._existing replaces only calculated_at_utc with first value",
+    "validate_against": "exact fields and embedded source/projection consistency; original source membership checked by real M00 only during owner.materialise; standalone reader cannot claim live re-attestation",
+    "readonly_reader_no_live_source": true
+  },
+  "public_protocol": {
+    "factory": "create_d091_bucket_owner(*,admission,controlled_source_read_capability,storage,utc_now,diagnostic_observer=None)",
+    "reader": "create_d091_bucket_reader(*,admission,storage)",
+    "owner_method": "materialise(request:D091BucketRequestV1)->D091BucketOccurrenceV1|None",
+    "reader_methods": [
+      "get_derived_occurrence(derived_occurrence_id:str)->D091BucketOccurrenceV1|None",
+      "list_derived_history(*,derived_signal_id:str,subject_instrument:str,effective_at_or_before_utc:datetime,knowledge_at_or_before_utc:datetime,limit:int)->tuple[D091BucketOccurrenceV1,...]"
+    ],
+    "observer_event_fields": [
+      "request_identity",
+      "source_observation_occurrence_id",
+      "stage",
+      "source_profile_ref",
+      "rule_profile_ref"
+    ],
+    "observer_output_only": true,
+    "diagnostic_stages": [
+      "UNSEALED",
+      "ORIGIN_OR_IDENTITY",
+      "CLOCK_OR_SCOPE",
+      "HISTORY_OR_AMBIGUOUS_RANK",
+      "ABSENT",
+      "NONFINITE",
+      "RANGE"
+    ]
+  },
+  "fault_path": {
+    "prior_allowed_files": [
+      "src/nvda_desk/market_measurement_truth/api.py",
+      "src/nvda_desk/market_measurement_truth/_controlled_r112.py",
+      "src/nvda_desk/market_measurement_truth/_native_d091.py",
+      "src/nvda_desk/market_measurement_truth/_native_codec.py"
+    ],
+    "required_conditional_seventh_source": "src/nvda_desk/market_measurement_truth/_record_store.py",
+    "default_production_transaction_fault": "NONE",
+    "new_private_one_shot_fault_ids": [
+      "D01_AFTER_INSERT_BEFORE_COMMIT",
+      "D02_AFTER_COMMIT_BEFORE_ACK"
+    ],
+    "D01": {
+      "real_event_order": [
+        "BEGIN IMMEDIATE",
+        "schema check",
+        "RecordState.validate",
+        "INSERT succeeds",
+        "test-only OperationalError before COMMIT",
+        "ROLLBACK",
+        "outcome_uncertain=False",
+        "fresh reader no row"
+      ],
+      "hook": "RecordState.append immediately after successful INSERT, before _transaction context exits"
+    },
+    "D02": {
+      "real_event_order": [
+        "BEGIN IMMEDIATE",
+        "INSERT succeeds",
+        "actual COMMIT once",
+        "test-only OperationalError before acknowledgement",
+        "c.in_transaction=False",
+        "outcome_uncertain=True",
+        "fresh reader determines row state"
+      ],
+      "hook": "_transaction after c.execute(COMMIT) before context return"
+    },
+    "D03": {
+      "real_materialise_calls": 2,
+      "unchanged_private_M00": true,
+      "source_target": "T01-R112-BATCH-11",
+      "baseline_signed_decimal": "0.499",
+      "test_corrupted_candidate_decimal": "0.498",
+      "category": "ABS_25_50",
+      "changed_embedded_fields": [
+        "original_observation.native_record.model.delta",
+        "selected_projection.native_value",
+        "signed_delta"
+      ],
+      "kept_stable": [
+        "derived_occurrence_id",
+        "request_identity",
+        "original_observation.observation_occurrence_id",
+        "cohort_content_digest",
+        "category",
+        "source_identity_11_fields"
+      ],
+      "mutation_boundary": "second owner.materialise after full verified M00 evaluation and before RecordState.append",
+      "validation": "RecordState.validate passes internal consistency (does not independently read live M00), _existing refuses changed canonical bytes with same ID",
+      "required_error": "PersistenceFailureV1 immutable measurement identity conflict",
+      "verify_first_row": "fresh SQLiteReadStorageV1 reader, exact 0.499 signed original and original calculated_at"
+    },
+    "no_global_monkeypatch": true,
+    "no_direct_state_append_as_test": true,
+    "test_helper_private_only": "_native_d091._build_test_only_owner_from_fixed_policy",
+    "conditional_new_source_path_approval_required": true
+  },
+  "proof_registry": {
+    "claim_id": "neutral_market_measurement_truth_d091",
+    "parent_physical_root": "tests/product/m02_completion_28",
+    "families": [
+      {
+        "jurisdiction": "D091",
+        "path": "tests/product/m02_completion_28/d091/test_signal.py",
+        "count": 18,
+        "proof_id": "M02-C28-D091"
+      },
+      {
+        "jurisdiction": "L01b",
+        "path": "tests/product/m02_completion_28/l01b_r112/test_source.py",
+        "count": 15,
+        "proof_id": "M02-C28-L01B-R112-SOURCE-SUPPORT"
+      }
+    ],
+    "extension_function_candidate": "_d091_l01b_extension(root)",
+    "extension_registration": "tools/product_proof_claims.py load_product_proof_claim add exact extension and validate all standard schema/generation/physical partition requirements",
+    "conditional_eighth_path": "tools/product_proof_claims.py",
+    "claim_path_candidate": "config/product_proof/m02_d091/claim.json",
+    "generation_path_candidate": "config/product_proof/m02_d091/generations/0001.json",
+    "admission_path_candidate": "config/product_proof/m02_d091/admission.json",
+    "authority_binding_path_candidate": "implementation/authority/D091_IMPLEMENTATION_AUTHORITY_BINDING.yaml",
+    "future_contract_proposal_path": "handoff/m02_completion_28_execution/L04/D091_PREEDIT_BINDING_REVISION_20261117/PRODUCT_PROOF_REGISTRATION_PROPOSAL.json",
+    "generation": null,
+    "registry_installed": false,
+    "loader_recognises_claim_now": false,
+    "execution_held": true,
+    "conditional_extra_changed_path_owner_approval_required": true
+  },
+  "change_authority": {
+    "new_conditional_sources": [
+      "src/nvda_desk/market_measurement_truth/_record_store.py",
+      "tools/product_proof_claims.py"
+    ],
+    "additional_documentary_or_claim_files": [
+      "implementation/authority/D091_IMPLEMENTATION_AUTHORITY_BINDING.yaml",
+      "config/product_proof/m02_d091/claim.json",
+      "config/product_proof/m02_d091/admission.json",
+      "config/product_proof/m02_d091/generations/0001.json"
+    ],
+    "status": "NOT_EDITED_REQUEST_INDEPENDENT_TECHNICAL_ASSESSMENT_THEN_EXPLICIT_BOUNDED_CHANGE_RELEASE"
+  },
+  "review": {
+    "R1": "PROPOSED_TECHNICAL_REPAIR_NOT_TESTED",
+    "R2": "PROPOSED_REGISTRY_BINDING_NOT_INSTALLED",
+    "R3": "PROPOSED_EXACT_CONSTRUCTOR_CODEC_UNTESTED",
+    "next": "independent revised pre-edit review",
+    "product_tests": 0,
+    "D145": "PAUSED"
+  }
+}
