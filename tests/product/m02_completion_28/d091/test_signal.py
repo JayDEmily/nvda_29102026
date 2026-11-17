@@ -12,9 +12,10 @@ R112 source policy; no direct RecordState.append/SQL or monkeypatch counts.
 from __future__ import annotations
 
 import copy
+from collections.abc import Mapping
+from dataclasses import fields, replace
 import hashlib
 import json
-from dataclasses import fields, replace
 from datetime import datetime, timedelta
 from decimal import Decimal
 from pathlib import Path
@@ -172,13 +173,31 @@ def _coordinator(*, negative_cohort: str | None = None) -> object:
     return controlled._create_negative_only_coordinator(negative_cohort)
 
 
+def _native_content(value: object) -> object:
+    if isinstance(value, Mapping):
+        return ("mapping", tuple(sorted((key, _native_content(item))
+                                        for key, item in value.items())))
+    if type(value) in (list, tuple):
+        return (type(value).__name__, tuple(_native_content(x) for x in value))
+    if type(value) is Decimal:
+        return ("decimal_tuple", value.as_tuple())
+    return (type(value).__name__, value)
+
+
+def _assert_real_original_content(actual: object, expected: raw.RawObservationOccurrenceV1) -> None:
+    assert type(actual) is raw.RawObservationOccurrenceV1
+    for field in fields(raw.RawObservationOccurrenceV1):
+        assert _native_content(getattr(actual, field.name)) == _native_content(
+            getattr(expected, field.name)
+        ), f"M00 actual original content differs: {field.name}"
+
+
 def _admit_and_seal(members: tuple[dict, ...], *, negative_cohort: str | None = None) -> object:
     source = _coordinator(negative_cohort=negative_cohort)
     for member in members:
         observation = _raw_member(member)
         admitted = source.checked_admit(observation)
-        assert type(admitted) is raw.RawObservationOccurrenceV1
-        assert admitted.observation_occurrence_id == observation.observation_occurrence_id
+        _assert_real_original_content(admitted, observation)
     receipt = source.seal()
     assert receipt is not None
     reads = source.read_only_capability()
@@ -186,8 +205,7 @@ def _admit_and_seal(members: tuple[dict, ...], *, negative_cohort: str | None = 
     for member in members:
         observation_id = raw.observation_occurrence_id(member["observation"]["observation_occurrence_id"])
         real = reads.get_raw_observation_occurrence(observation_id)
-        assert type(real) is raw.RawObservationOccurrenceV1
-        assert real.observation_occurrence_id == observation_id
+        _assert_real_original_content(real, _raw_member(member))
     return source
 
 
@@ -272,8 +290,7 @@ def _assert_clean_source(source: object, members: tuple[dict, ...]) -> None:
     for member in members:
         oid = raw.observation_occurrence_id(member["observation"]["observation_occurrence_id"])
         existing = reads.get_raw_observation_occurrence(oid)
-        assert type(existing) is raw.RawObservationOccurrenceV1
-        assert existing.observation_occurrence_id == oid
+        _assert_real_original_content(existing, _raw_member(member))
 
 
 def _fault_fixture(name: str, source_sha256: str) -> dict:
