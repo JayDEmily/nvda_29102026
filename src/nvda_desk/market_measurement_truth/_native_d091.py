@@ -121,6 +121,18 @@ def _original_value(observation: raw.RawObservationOccurrenceV1) -> object:
     return model.get("delta") if isinstance(model, Mapping) else None
 
 
+def _same_native_decimal(left: object, right: object) -> bool:
+    """Exact native Decimal representation, including NaN and signed zero.
+
+    Domain finiteness/range belongs only to the selected target at Stage F.
+    """
+    return (
+        type(left) is Decimal
+        and type(right) is Decimal
+        and left.as_tuple() == right.as_tuple()
+    )
+
+
 def _real_identity(
     original: raw.RawObservationOccurrenceV1,
     projected: raw.ProjectedRawValueV1 | None = None,
@@ -163,7 +175,7 @@ def _real_identity(
         and projected.ingestion_sequence == original.ingestion_sequence
         and projected.ingestion_sequence_scope == original.ingestion_sequence_scope
         and type(projected.native_value) is Decimal
-        and _original_value(original) == projected.native_value
+        and _same_native_decimal(_original_value(original), projected.native_value)
         and projected.selection_identity is not None
         and all(projected.selection_identity.value_for(k) == val for k, val in _IDENTITY)
     )
@@ -208,7 +220,7 @@ def _validate(value: f.D091BucketOccurrenceV1) -> None:
         or value.calculated_at_utc < value.knowledge_cutoff_utc
         or value.original_observation.received_ts_utc != value.effective_as_of_utc
         or not _real_identity(value.original_observation, value.selected_projection)
-        or value.signed_delta != _original_value(value.original_observation)
+        or not _same_native_decimal(value.signed_delta, _original_value(value.original_observation))
         or value.result != _category(value.signed_delta)
         or value.derived_occurrence_id != _logical_id(
             value.request, value.original_observation, value.selected_projection,
@@ -218,12 +230,16 @@ def _validate(value: f.D091BucketOccurrenceV1) -> None:
         raise ValueError("D091 categorical record/lineage/identity mismatch")
 
 
-def _store(storage: f.SQLiteStorageV1 | f.SQLiteReadStorageV1) -> RecordState:
+def _store(
+    storage: f.SQLiteStorageV1 | f.SQLiteReadStorageV1,
+    *, _d091_test_fault: str | None = None,
+) -> RecordState:
     return RecordState(
         storage,
         lambda payload: codec.decode(payload, f.D091BucketOccurrenceV1),
         _validate,
         encode=codec.canonical,
+        _d091_test_fault=_d091_test_fault,
     )
 
 
@@ -259,7 +275,7 @@ class _Reads:
                 item.effective_as_of_utc,
                 item.knowledge_cutoff_utc,
                 item.derived_occurrence_id,
-            ), reverse=True,
+            ),
         ))[:limit]
 
 
@@ -422,7 +438,10 @@ class _Owner:
             return self._state.append(value)
 
 
-def build_owner(admission, source, storage, utc_now, observer=None):
+def build_owner(
+    admission, source, storage, utc_now, observer=None,
+    *, _d091_test_fault: str | None = None,
+):
     if (type(admission) is not f.OwnerAdmissionV1
             or admission.object_id != "M02"
             or admission.implementation_brief_sha256 != BRIEF
@@ -431,7 +450,7 @@ def build_owner(admission, source, storage, utc_now, observer=None):
             or not callable(utc_now)
             or (observer is not None and not callable(observer))):
         raise ValueError("unadmitted D091 owner/source/storage/clock")
-    return _Owner(source, _store(storage), utc_now, observer)
+    return _Owner(source, _store(storage, _d091_test_fault=_d091_test_fault), utc_now, observer)
 
 
 def build_reader(admission, storage):
@@ -449,12 +468,16 @@ def _build_test_only_owner_from_fixed_policy(
 ):
     if test_fault_id not in ("D01", "D02", "D03"):
         raise ValueError("unadmitted persistence fault mode")
+    # Exact private construction-only E fault modes; no public factory
+    # receives a test flag, arbitrary callback, or writable M00 capability.
     if test_fault_id in ("D01", "D02"):
-        # The real COMMIT-boundary test facility requires a separate owner
-        # changed-path approval for _record_store.py. Do not fake a successful
-        # or precommit failure through a mock store or invented error.
-        raise NotImplementedError(
-            "D01/D02 held: approved _record_store.py transaction hook not yet released"
+        fault = (
+            "D01_AFTER_INSERT_BEFORE_COMMIT" if test_fault_id == "D01"
+            else "D02_AFTER_COMMIT_BEFORE_ACK"
+        )
+        return build_owner(
+            admission, controlled_source_read_capability, storage, utc_now,
+            _d091_test_fault=fault,
         )
     owner = build_owner(
         admission, controlled_source_read_capability, storage, utc_now
