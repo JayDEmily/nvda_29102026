@@ -12,6 +12,8 @@ skipped test, xfail or parameterised expansion of the 15 physical tests.
 from __future__ import annotations
 
 import copy
+from collections.abc import Mapping
+from dataclasses import fields
 import hashlib
 import json
 from datetime import datetime
@@ -139,14 +141,34 @@ def _assert_one_bad_field_only(original: dict, negative: dict, field: str) -> No
     assert negative == expected
 
 
+def _canonical_native_value(value: object) -> object:
+    # Compare complete provider-native payloads by exact content, not
+    # Mapping object's identity or Decimal('NaN') == Decimal('NaN').
+    if isinstance(value, Mapping):
+        return ("mapping", tuple(sorted((key, _canonical_native_value(item))
+                                        for key, item in value.items())))
+    if type(value) in (tuple, list):
+        return (type(value).__name__, tuple(_canonical_native_value(x) for x in value))
+    if type(value) is Decimal:
+        return ("decimal_as_tuple", value.as_tuple())
+    return (type(value).__name__, value)
+
+
+def _assert_exact_original(actual: object, expected: raw.RawObservationOccurrenceV1) -> None:
+    assert type(actual) is raw.RawObservationOccurrenceV1
+    for f in fields(raw.RawObservationOccurrenceV1):
+        assert _canonical_native_value(getattr(actual, f.name)) == _canonical_native_value(
+            getattr(expected, f.name)
+        ), f"original raw field mutated: {f.name}"
+
+
 def _post_refusal_original_seal(coordinator: object, members: tuple[dict, ...]) -> None:
     # Fifteen actual checked-ingress calls after the refusal, not a
     # convenience fixture constructing a pre-populated M00 owner.
     for member in members:
         expected = _observation(member, delivery_ref=SOURCE_DELIVERY)
         admitted = coordinator.checked_admit(expected)
-        assert type(admitted) is raw.RawObservationOccurrenceV1
-        assert admitted.observation_occurrence_id == expected.observation_occurrence_id
+        _assert_exact_original(admitted, expected)
     receipt = coordinator.seal()
     assert receipt is not None
     reads = coordinator.read_only_capability()
@@ -154,8 +176,7 @@ def _post_refusal_original_seal(coordinator: object, members: tuple[dict, ...]) 
     for member in members:
         raw_id = raw.observation_occurrence_id(member["observation"]["observation_occurrence_id"])
         original = reads.get_raw_observation_occurrence(raw_id)
-        assert type(original) is raw.RawObservationOccurrenceV1
-        assert original.observation_occurrence_id == raw_id
+        _assert_exact_original(original, _observation(member, delivery_ref=SOURCE_DELIVERY))
     # A rejected negative may not poison the subsequent exact original roster.
     assert reads.get_raw_observation_occurrence(
         raw.observation_occurrence_id("T01-R112-BATCH-14")
