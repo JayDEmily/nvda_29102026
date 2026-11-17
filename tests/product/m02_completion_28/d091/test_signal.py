@@ -454,6 +454,9 @@ def test_d091_controlled_absent_refusal(tmp_path: Path) -> None:
 
 
 def test_d091_controlled_receipt_asof_refusal(tmp_path: Path) -> None:
+    stimulus = _fault_fixture("receipt_asof_refusal", "cf079a54252dd708201d09c3e76c216221bc3f7b6b07beb1914888674a37d706")
+    assert stimulus["input_identity"] == "H01"
+    assert stimulus["input"]["request"]["as_of_utc"] == "2026-11-15T12:00:00.500000Z"
     members = _load_source()
     source = _admit_and_seal(members)
     requested = _utc("2026-11-15T12:00:00.500000Z")
@@ -464,6 +467,8 @@ def test_d091_controlled_receipt_asof_refusal(tmp_path: Path) -> None:
 
 
 def test_d091_controlled_cutoff_order_refusal(tmp_path: Path) -> None:
+    stimulus = _fault_fixture("cutoff_order_refusal", "53c9a8d7c7eaf38a4544584ceea518881c49469f976a206be6f7c4010ba548b7")
+    assert stimulus["input_identity"] == "H02"
     members = _load_source()
     source = _admit_and_seal(members)
     events = []
