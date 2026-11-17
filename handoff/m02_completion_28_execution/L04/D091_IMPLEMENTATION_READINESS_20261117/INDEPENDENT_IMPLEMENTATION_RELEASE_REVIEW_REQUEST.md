@@ -38,3 +38,21 @@ Inspect the actual M00 `api.py` and M02 `api.py`, `_record_store.py`, `_native_c
 Commit the verdict on a **new, separate independent review branch based on the exact preparation Worker candidate**, not the Worker branch. Return `ACCEPT_IMPLEMENTATION_RELEASE_PREPARATION_ONLY`, `RETURN` or `BLOCKED`; explain all material outstanding gates, separate prior accepted budgets, evidence and exact proposed next implementation/qualification step. Verify remote commit/tree/file readback.
 
 **Never modify** existing product code, product tests, active ledger, authority, accepted source or fixture bytes, or another worker branch. **Never execute** a product case, certify the run environment from the failed preflight, approve an additional physical budget, merge a PR or reactivate D145. Documentary review must not self-certify product acceptance.
+
+## Post-publication runtime qualification — supersedes only the prior *runtime failure as current state*
+
+After the original handoff, the owner expressly authorised an isolated Ubuntu runtime build and non-product qualification. The Worker built the exact CPython 3.13.5 source from Python.org against the independently verified official SQLite 3.54.1 C source, with dynamically linked `_sqlite3`, and published a complete success/recovery record under this same preparation directory.
+
+**Read the later exact evidence before adjudicating runtime:**
+
+- `UBUNTU_NATIVE_RUNTIME_QUALIFICATION_RESULT_20261117.md`
+- `UBUNTU_NATIVE_CPYTHON_BUILD_RECEIPT_20261117.json`
+- `UBUNTU_NATIVE_CPYTHON_QUALIFICATION_RECEIPT_20261117.json`
+- The four actually executed staged build/recovery/probe scripts named `UBUNTU_NATIVE_PYTHON_*.py`
+
+**Current directly verified, not historical:** Python3.13.5 executable SHA256 `d114ec20c65fb65c77608f7b8b7110d0ff95e3b3c814f65580dad17fb56e012c`; SQLite3.54.1 source ID `2026-10-16 14:45:20 555e07ef33f69a0957d24d8e555b702464a131d6f1607f4c3c1e4551e8e6ca76`; `ldd` on actual Python `_sqlite3` resolves the private user-owned `libsqlite3.so.0` SHA256 `44a469c2ed17ee19dca5f0c949f97b98b7ad0f1260bdb41fc153a4530324fb2f`. OpenSSL import works and the **unmodified original repository `runtime_probe.py` exited 0 with all nine checks true**, including durable read-only reopen. The old failed original probe and historical GCC14 library-hash mismatch remain preserved and must not be denied, but are not evidence that the *new* interpreter still fails.
+
+Reviewer must decide which **local runtime mechanism** prerequisites this direct evidence clears, and which later **product runner/claim/recipient/strict Tester** authority remains held. In particular the historical exact library hash must not be silently substituted for accepted source-ID/feature evidence; nor may the new feature PASS silently be substituted for product acceptance. Do not demand another runtime build solely because the previous probe failed if the new exact evidence answers that failure.
+
+Case budget and source policy unchanged: D091 18 and L01b 15 separate exact admitted ceiling/allocation, zero product executions, no product code/test modifications, no claim generation released and D145 PAUSED. This new runtime record does **not** resolve the independent implementation-release verdict. Publish the review on a separate review branch using the **updated PR #27 HEAD** and independently verify your report.
+
