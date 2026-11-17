@@ -174,6 +174,17 @@ class _ReadOnly:
                 raise ValueError("trusted actual M00 digest diverged")
             return actual
 
+    def source_id_for_receipt(self, receipt: datetime) -> str | None:
+        # Read-only original-member lookup, including the legitimate preseal
+        # diagnostic. Never enumerates pages or provides M00 command access.
+        with self._lock:
+            for expected in self._expected:
+                if expected.received_ts_utc == receipt and self._actual_get(
+                    expected.observation_occurrence_id
+                ) is not None:
+                    return expected.observation_occurrence_id.value
+            return None
+
     def get_raw_observation_occurrence(self, occurrence_id):
         with self._lock:
             if self._selector is None:
