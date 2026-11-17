@@ -1,0 +1,36 @@
+# D091/L01b finite physical test authoring — unexecuted Worker checkpoint (18 November 2026)
+
+**Status: 33 physical test functions AUTHORED_UNEXECUTED / documentary static checks PASS. This is NOT product proof, implementation acceptance, independent semantic test adequacy, claim/generation admission or product execution release.**
+
+## Governing pre-edit release and limits
+
+- Exact independent revised pre-edit review: `5ed971f5d78f8ef34cbf3e62cec97b2e3798c838`, tree `4bf5d4f469c0a7a0057b99336f0cf06fc9347244`, report `handoff/m02_completion_28_execution/L04/D091_PREEDIT_REVISION_INDEPENDENT_REVIEW_20261117/INDEPENDENT_PREEDIT_REVISION_VERDICT.md`. Its §6 permits **two named test files authored first without executing**, while separately holding two changed-path approvals and the product runner/strict Tester/claim.
+- Draft PR #27 Worker branch `work/t01-d091-finite-adequacy-20261116`; exact test-code candidate `ea987fba1d89a40c0cadf6582a82c16f38039b2a`; earlier pre-authoring head `7bd9cb62e71aad5c4589cd5c6fd2aadcf39375f8`.
+- The only **new product paths** are:
+  - `tests/product/m02_completion_28/d091/test_signal.py`, SHA256 `3606c7f97c1c6f089191c71dd00340ff2de5a9b32fed4e38db563bce332adf9c`; exactly **18** separate named functions; all from original approved `REVISED_CASE_INVENTORY.json`.
+  - `tests/product/m02_completion_28/l01b_r112/test_source.py`, SHA256 `1d964a8e65cfa50966994de2f9aa39ec74ca0faad239a8a91bd1a7bc2e7b1241`; exactly **15** independent source-field names; all from original approved `FIELD_DISCRIMINATION_MATRIX.json`. These **do not** count as 15 successful D091 categories.
+- Original successful R112 source unchanged: `L01b/R112_SOURCE_CONTRACT_PROPOSED.json` SHA256 `31c811e77468f44c2e412893326bc6d5f9ea037cdbf28712ce8e213652fdfc63`, `L01b/CONTROLLED_BATCH_INPUTS.json` SHA256 `1f4c46c5c247c78e3e18bb2de02c172f775379f664bad8e056ef6867a39d03dc`. Negative A–E specimens SHA-pinned inside test code. Two separately admitted B-only M00 source manifests are never successful-source alternatives.
+- The exact future M02 categorical request/occurrence/codec and private transactional fault-test seams are proposed in `L04/D091_PREEDIT_BINDING_REVISION_20261117/TECHNICAL_REPAIR_BINDING_V2.json`, independently **accepted for preparation only**, not implemented.
+- `_record_store.py` and `tools/product_proof_claims.py` are **outside the original authorised six product code/test paths** and still require **explicit separate owner changed-path approval** before any editing. Actual source implementation, claim/admission/generation and product runs are not asserted here.
+
+## Static authoring audit — not a pytest collection or execution
+
+Locally inspected original AST/source bytes under WSL Ubuntu:
+
+`/usr/bin/python3 /mnt/c/Users/james/AppData/Local/Temp/nvda_d091_33_test_authoring_static_20261118.py`
+
+on commit `ea987fba1d89a40c0cadf6582a82c16f38039b2a`. Receipt `STATIC_AUTHORING_RECEIPT_20261118.json` was copied verbatim from `/tmp/nvda_d091_33_test_authoring_static_20261118.json` and committed after original capture. **29 of 29 non-product static checks PASS**, including AST parse/compile *without executing the compiled object*, exact case/node lists, nonparametrised one-physical-function-per-admission, original15 SHA and identities, each negative-field fixture's independent byte SHA, positive/fault fixture SHA references, absence of skip/xfail and no direct SQLite insert/store append in the test source. Tool ran system Python 3.14 with `ast`; **it did not import or execute product source or invoke pytest**. This is not CPython3.13.5 product-runner qualification.
+
+The first draft static auditor returned FAIL for `every_D091_fixture_pinned` because H01/H02 SHA references had not yet been inserted into new test source; those exact two references were added to the D091 file and the audit rerun PASS. The initially failing local audit receipt was overwritten, but this diagnostic is preserved here without presenting the failed check as a product proof.
+
+## Independent proof and implementation review focus
+
+1. Independently inspect **all 33** physical functions and verify exact names/finite case IDs against direct owner decision and active ledger; **no extra tests**. Review their actual assert sequences, not only the static count or Worker helper composition.
+2. L01b cases: exact one-field mutation vs independently SHA-identified original t00, **new off-roster IDs must reach field-first refusal**, no real M00 admission on negative, then **original 15 real checked admissions and genuine seal**. The first native-units case intentionally spells out the direct sequence rather than depending solely on a helper.
+3. D091 success: exactly original 12 signed boundary/interior assertions in one physical positive case, with fixed independent category oracles; genuine 15 M00 admissions, real cursor pages 8+4 by t11, signed Decimal/option metadata, typed categorical immutable result, first calculated timestamp preserved on retry, fresh reader reopening SQLite without M00.
+4. D091 negatives: t12 RANGE, t13 NONFINITE, t14 ABSENT; genuine preseal UNSEALED before history and postseal 16th-ingress refusal; as-of/cutoff CLOCK_OR_SCOPE; B tie and 65-member genuine separately sealed negative-only M00 history; **H06 nonprogress on second page** and H07 contradictory duplicate via read-only C fault adapter; G01/G02/G03 source getter-only read-port contradiction after real Stage B/C; D01 real precommit rollback, D02 postcommit uncertain acknowledgement/fresh reader, D03 two public materialise calls with the exact intentional second persistence-candidate conflict and first immutable row intact.
+5. Test-side future construction names `controlled.create_controlled_coordinator`, `controlled._create_negative_only_coordinator`, `source.test_only_selector_capability`, `implementation._build_test_only_owner_from_fixed_policy` are **proposed unimplemented private interfaces** inside originally authorised source paths. The future code must implement an independently accepted compatible, non-writer-leaking protocol. Test-only fault adapter must never be passed to private trusted Stage B getter or presented as ordinary M00 corruption.
+6. The D091 cutoff-order test explicitly expects **the accepted business diagnostic CLOCK_OR_SCOPE from `owner.materialise`**, rather than generic DTO construction failure; independent reviewer should assess consistency with the V2 request constructor's early-validation rule, and request a bounded technical repair if contradictory. Do not silently weaken either semantic obligation to make a later test green.
+7. This static test authoring does not establish the code works. Future strict Tester must execute only after real source, claim, admitted product runner, selected evidence/receiver and distinct independent test authority. **Zero product runs; D145 PAUSED; no main merge.**
+
+**Authoring next step:** independent technical/adequacy review of this frozen test-file candidate. If accepted for authoring, source implementation may proceed only within the **four originally scoped source paths** after the tests-first boundary; the two additional code paths and future proof-registry/claim admission remain separately held. No source code was changed in this Worker test-authoring checkpoint.
