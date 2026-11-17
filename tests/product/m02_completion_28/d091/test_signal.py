@@ -304,10 +304,13 @@ class _SelectorReadAdapter:
         page = self._genuine.list_projected_raw_history(*args, **kwargs)
         assert type(page) is raw.ProjectedRawHistoryPageV1
         self.page_calls += 1
-        if self._fault == "H06" and self.page_calls == 1:
+        if self._fault == "H06" and self.page_calls == 2:
+            # The second genuine page is returned, but a test-only read
+            # adapter fails to ADVANCE the already returned "8" cursor.
             self.injected += 1
-            assert page.next_cursor is not None
-            return replace(page, next_cursor="0")
+            previous_cursor = kwargs["cursor"]
+            assert previous_cursor == "8" and page.next_cursor is None
+            return replace(page, next_cursor=previous_cursor)
         if self._fault == "H07" and self.page_calls == 2:
             assert self._first_page and page.items
             self.injected += 1
@@ -333,9 +336,9 @@ class _SelectorReadAdapter:
         if self._fault == "G03":
             assert type(original) is raw.RawObservationOccurrenceV1
             self.injected += 1
-            native = copy.deepcopy(dict(original.native_record))
+            native = copy.deepcopy(_load_source()[11]["observation"]["native_record"])
             native["identity"]["generation"] = "T01-R112-CONTROL-G2"
-            return replace(original, native_record=native)
+            return replace(original, native_record=_native(native))
         return original
 
 
@@ -522,7 +525,7 @@ def test_d091_controlled_cursor_nonprogress_refusal(tmp_path: Path) -> None:
     db = tmp_path / "cursor.sqlite3"
     owner = _faulting_owner(source, db, adapter, events)
     assert owner.materialise(_request(members[11])) is None
-    assert adapter.injected == 1 and adapter.page_calls >= 1
+    assert adapter.injected == 1 and adapter.page_calls >= 2
     assert len(events) == 1
     _observe(events[0], stage="HISTORY_OR_AMBIGUOUS_RANK")
     assert _rows(db) == ()
