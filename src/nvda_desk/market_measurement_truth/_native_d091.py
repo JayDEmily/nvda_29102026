@@ -388,10 +388,13 @@ class _Owner:
                 return self._refuse(request, "HISTORY_OR_AMBIGUOUS_RANK", target_id)
             # G: only lawful category flows into the real immutable SQLite store.
             digest = self._source.cohort_digest
+            occurrence_id = _logical_id(
+                request, target, projection, category, digest,
+            )
             value = f.D091BucketOccurrenceV1(
                 owner_object_id="M02", owner_namespace=NAMESPACE,
                 implementation_brief_sha256=BRIEF,
-                derived_signal_id="D091", derived_occurrence_id="pending",
+                derived_signal_id="D091", derived_occurrence_id=occurrence_id,
                 request=request, definition=DEFINITION,
                 source_contract_sha256=SOURCE_CONTRACT_SHA,
                 source_artifact_sha256=SOURCE_ARTIFACT_SHA,
@@ -403,9 +406,6 @@ class _Owner:
                 knowledge_cutoff_utc=request.knowledge_cutoff_utc,
                 calculated_at_utc=now,
             )
-            value = replace(value, derived_occurrence_id=_logical_id(
-                request, target, projection, category, digest,
-            ))
             if self._test_fault == "D03" and self._materialise_count == 2:
                 if target_id != "T01-R112-BATCH-11" or signed != Decimal("0.499"):
                     raise ValueError("D03 only admitted on exact t11 original")
