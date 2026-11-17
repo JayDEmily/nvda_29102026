@@ -1,0 +1,397 @@
+{
+  "schema": "NVDA_V2_OWNER_FINITE_PHYSICAL_CASE_ADMISSION_V1",
+  "decision_status": "OWNER_APPROVED_EXACT_LISTS_AND_CEILINGS_FOR_FINITE_ADMISSION_EXECUTION_NOT_AUTHORISED",
+  "decision_kind": "DIRECT_OWNER_APPROVAL_IN_CURRENT_CHAT",
+  "owner_approval_date_local": "2026-11-17",
+  "owner_approval_local_minute": "2026-11-17T15:35+11:00",
+  "timezone": "Australia/Melbourne",
+  "question_quoted_verbatim": "Do you authorise those two exact case lists and ceilings for finite admission, without authorising execution?",
+  "reply_quoted_verbatim": "Yes, I do.",
+  "attribution": "Recorded from direct ChatGPT owner reply; this GitHub document is a worker-authored transcription, not a cryptographic owner signature or independently authenticated GitHub comment.",
+  "repository": "JayDEmily/nvda_29102026",
+  "pr_number": 27,
+  "worker_candidate_exact": "aa01fc29544147f0ab22686af12579eecd5bf5f7",
+  "worker_candidate_tree": "05ca3bce9655810c5fcd4cfe1926ffe1924cb988",
+  "independent_review_commit": "5f47fdce8064d7cfcb452621323cbcca57af167d",
+  "independent_review_verdict": "ACCEPT_FINITE_ADEQUACY_PREPARATION_ONLY",
+  "independent_review_report": "handoff/m02_completion_28_execution/L04/D091_INDEPENDENT_FINITE_ADEQUACY_REVISION_REVIEW_20261117/INDEPENDENT_PR27_REVISION_FINITE_ADEQUACY_VERDICT.md",
+  "reviewed_exact_inventory_path": "handoff/m02_completion_28_execution/L04/D091_FINITE_ADEQUACY_REVISION_20261117/REVISED_CASE_INVENTORY.json",
+  "reviewed_exact_inventory_git_blob_sha1": "6fe3b8afe5aa2bd9c36e3c937d806ce552673b8f",
+  "before_ledger_git_blob_sha1": "c9c5640057de27a1daa5099ad7ff9d5342c68d69",
+  "approved_separate_jurisdictions": {
+    "L04_D091": {
+      "authorised_case_count": 18,
+      "hard_ceiling": 18,
+      "case_status": "ADMITTED_OWNER_FINITE_NO_EXECUTION_RELEASE",
+      "cases": [
+        {
+          "case_id": "D091-CONTROLLED-SUCCESS",
+          "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_success",
+          "expected_stage": "CATEGORY_DURABLE_REOPEN_AND_IDEMPOTENT_RETRY",
+          "fixture_path": null,
+          "fixture_sha256": null,
+          "predecessor_witness_ids": [
+            "P01_ZERO",
+            "P02_NEGATIVE_TENTH",
+            "P03_POSITIVE_TENTH",
+            "P04_NEGATIVE_QUARTER",
+            "P05_POSITIVE_QUARTER",
+            "P06_NEGATIVE_HALF",
+            "P07_POSITIVE_HALF",
+            "P08_NEGATIVE_THREE_QUARTERS",
+            "P09_POSITIVE_THREE_QUARTERS",
+            "P10_NEGATIVE_ONE",
+            "P11_POSITIVE_ONE",
+            "P12_INTERIOR",
+            "P13_TWO_PAGE_HISTORY",
+            "P14_DURABLE_PUBLIC_REOPEN",
+            "P15_RETRY_FIRST_TIMESTAMP",
+            "D04_FIRST_TIMESTAMP_PRESERVED"
+          ]
+        },
+        {
+          "case_id": "D091-CONTROLLED-REACHED_REFUSAL",
+          "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_reached_refusal",
+          "expected_stage": "RANGE",
+          "fixture_path": null,
+          "fixture_sha256": null,
+          "predecessor_witness_ids": [
+            "R01_EXACT_ONE_POINT_ZERO_ONE_RANGE"
+          ]
+        },
+        {
+          "case_id": "D091-CONTROLLED-SEAL-REFUSAL",
+          "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_seal_refusal",
+          "expected_stage": "COORDINATOR_POSTSEAL_INGRESS_REFUSAL",
+          "fixture_path": null,
+          "fixture_sha256": null,
+          "predecessor_witness_ids": [
+            "S01_PRESEAL_PUBLIC_15_ADMISSIONS",
+            "S02_IMMUTABLE_SEAL",
+            "S03_DIRECT_POSTSEAL_LAWFUL_ADMISSION_REFUSED",
+            "S04_NO_COMMAND_ALIAS_ESCAPE",
+            "S05_UNCHANGED_IDS_BEFORE_AFTER_PAGINATION"
+          ]
+        },
+        {
+          "case_id": "D091-CONTROLLED-NONFINITE-REFUSAL",
+          "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_nonfinite_refusal",
+          "expected_stage": "NONFINITE",
+          "fixture_path": null,
+          "fixture_sha256": null,
+          "predecessor_witness_ids": [
+            "O01_NAN_NONFINITE"
+          ]
+        },
+        {
+          "case_id": "D091-CONTROLLED-ABSENT-REFUSAL",
+          "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_absent_refusal",
+          "expected_stage": "ABSENT",
+          "fixture_path": null,
+          "fixture_sha256": null,
+          "predecessor_witness_ids": [
+            "O02_ABSENT_MODEL_DELTA"
+          ]
+        },
+        {
+          "case_id": "D091-CONTROLLED-RECEIPT-ASOF-REFUSAL",
+          "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_receipt_asof_refusal",
+          "expected_stage": "CLOCK_OR_SCOPE",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/d091_controlled_receipt_asof_refusal.json",
+          "fixture_sha256": "cf079a54252dd708201d09c3e76c216221bc3f7b6b07beb1914888674a37d706",
+          "predecessor_witness_ids": [
+            "H01_RECEIPT_NOT_EQUAL_ASOF"
+          ]
+        },
+        {
+          "case_id": "D091-CONTROLLED-CUTOFF-ORDER-REFUSAL",
+          "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_cutoff_order_refusal",
+          "expected_stage": "CLOCK_OR_SCOPE",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/d091_controlled_cutoff_order_refusal.json",
+          "fixture_sha256": "53c9a8d7c7eaf38a4544584ceea518881c49469f976a206be6f7c4010ba548b7",
+          "predecessor_witness_ids": [
+            "H02_KNOWLEDGE_CUTOFF_ORDER"
+          ]
+        },
+        {
+          "case_id": "D091-CONTROLLED-TOP-RANK-TIE-REFUSAL",
+          "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_top_rank_tie_refusal",
+          "expected_stage": "HISTORY_OR_AMBIGUOUS_RANK",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/d091_controlled_top_rank_tie_refusal.json",
+          "fixture_sha256": "0d34b51e309db8799bd6426f1e183a80e1d9244354cda2867af2b1e7271ef0fc",
+          "predecessor_witness_ids": [
+            "H04_TWO_DISTINCT_TOP_RANK_TIE"
+          ]
+        },
+        {
+          "case_id": "D091-CONTROLLED-OVER-64-REFUSAL",
+          "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_over_64_refusal",
+          "expected_stage": "HISTORY_OR_AMBIGUOUS_RANK",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/d091_controlled_over_64_refusal.json",
+          "fixture_sha256": "ba7129a821d9e6434be9fc5fcc454d8ebd78f043c090255f0c1c2cfde630caf7",
+          "predecessor_witness_ids": [
+            "H05_PROJECTED_MORE_THAN_64"
+          ]
+        },
+        {
+          "case_id": "D091-CONTROLLED-CURSOR-NONPROGRESS-REFUSAL",
+          "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_cursor_nonprogress_refusal",
+          "expected_stage": "HISTORY_OR_AMBIGUOUS_RANK",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/d091_controlled_cursor_nonprogress_refusal.json",
+          "fixture_sha256": "4031f4640a1373c377a623f442a0f2ec859a176ac725906c48cc6b2b1e5d2fcf",
+          "predecessor_witness_ids": [
+            "H06_RETURNED_CURSOR_CYCLE_NONPROGRESS"
+          ]
+        },
+        {
+          "case_id": "D091-CONTROLLED-DUPLICATE-ID-CONFLICT-REFUSAL",
+          "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_duplicate_id_conflict_refusal",
+          "expected_stage": "HISTORY_OR_AMBIGUOUS_RANK",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/d091_controlled_duplicate_id_conflict_refusal.json",
+          "fixture_sha256": "c9fbf5aa427b87d287f05e4b5cfe2daadb50e3236d1529654fd6450db6896c98",
+          "predecessor_witness_ids": [
+            "H07_DUPLICATE_ID_CONFLICT"
+          ]
+        },
+        {
+          "case_id": "D091-CONTROLLED-PRECOMMIT-SQLITE-FAILURE",
+          "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_precommit_sqlite_failure",
+          "expected_stage": "PERSISTENCE_PRECOMMIT_CERTAIN_FAILURE",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/d091_controlled_precommit_sqlite_failure.json",
+          "fixture_sha256": "0f954fc8d7a132091576cb7af92072d7eabc839c47373189658130437cc4e20b",
+          "predecessor_witness_ids": [
+            "D01_PRECOMMIT_SQLITE_FAILURE",
+            "D05_NO_SUCCESSFUL_READBACK_AFTER_FAILED_COMMIT"
+          ]
+        },
+        {
+          "case_id": "D091-CONTROLLED-UNCERTAIN-COMMIT-FAILURE",
+          "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_uncertain_commit_failure",
+          "expected_stage": "PERSISTENCE_UNCERTAIN_POSTCOMMIT",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/d091_controlled_uncertain_commit_failure.json",
+          "fixture_sha256": "15b15b769d92258731c6cd72cc6ca322a331401249d42be74443f0166cd135e3",
+          "predecessor_witness_ids": [
+            "D02_UNCERTAIN_COMMIT_RESULT"
+          ]
+        },
+        {
+          "case_id": "D091-CONTROLLED-SAME-ID-CONTENT-CONFLICT",
+          "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_same_id_content_conflict",
+          "expected_stage": "PERSISTENCE_IMMUTABLE_CONFLICT",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/d091_controlled_same_id_content_conflict.json",
+          "fixture_sha256": "93154f6bf3d26c09b1b74718112016d1002ef39efcaf084c189f1b4a1af06408",
+          "predecessor_witness_ids": [
+            "D03_SAME_DERIVED_ID_DIFFERENT_CONTENT_REFUSAL"
+          ]
+        },
+        {
+          "case_id": "D091-CONTROLLED-ORIGINAL-GETTER-MISSING",
+          "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_original_getter_missing",
+          "expected_stage": "ORIGIN_OR_IDENTITY",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_ORIGINAL_GETTER_FAULT_PREP_20261116/NEGATIVE_FIXTURES/d091_controlled_original_getter_missing.json",
+          "fixture_sha256": "ac1b985e87cb2f4ca0dfed0fd1dc3bb4c0fac8d5794ff4831cda2014a68810b3",
+          "predecessor_witness_ids": []
+        },
+        {
+          "case_id": "D091-CONTROLLED-ORIGINAL-GETTER-UNITS-MISMATCH",
+          "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_original_getter_units_mismatch",
+          "expected_stage": "ORIGIN_OR_IDENTITY",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_ORIGINAL_GETTER_FAULT_PREP_20261116/NEGATIVE_FIXTURES/d091_controlled_original_getter_units_mismatch.json",
+          "fixture_sha256": "a80a39c150eafb970089f40f7d8ba60c82ae43cb248abb5e472497f2edd49608",
+          "predecessor_witness_ids": []
+        },
+        {
+          "case_id": "D091-CONTROLLED-ORIGINAL-GETTER-GENERATION-MISMATCH",
+          "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_original_getter_generation_mismatch",
+          "expected_stage": "ORIGIN_OR_IDENTITY",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_ORIGINAL_GETTER_FAULT_PREP_20261116/NEGATIVE_FIXTURES/d091_controlled_original_getter_generation_mismatch.json",
+          "fixture_sha256": "e3b11ca22017e465fc63f11b102bbc6d696d2fe40436b6bc5a501e0da4078352",
+          "predecessor_witness_ids": []
+        },
+        {
+          "case_id": "D091-CONTROLLED-UNSEALED-REFUSAL",
+          "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_unsealed_refusal",
+          "expected_stage": "UNSEALED",
+          "fixture_path": null,
+          "fixture_sha256": null,
+          "predecessor_witness_ids": []
+        }
+      ]
+    },
+    "L01b_R112_SOURCE_SUPPORT_NOT_D091": {
+      "authorised_case_count": 15,
+      "hard_ceiling": 15,
+      "case_status": "ADMITTED_OWNER_FINITE_NO_EXECUTION_RELEASE",
+      "cases": [
+        {
+          "case_id": "L01B-R112-CONTROLLED-NATIVE-UNITS-REFUSAL",
+          "proposed_test_node": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_native_units_refusal",
+          "expected_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_native_units_refusal.json",
+          "fixture_sha256": "b337bb83a61b02fd470f5fa06cbeeb6c9bc4c22327cfb080bd1e3d0a8e594b33",
+          "predecessor_witness_ids": [
+            "O03_WRONG_ORIGINAL_NATIVE_UNITS"
+          ]
+        },
+        {
+          "case_id": "L01B-R112-CONTROLLED-SOURCE-PROVIDER-REFUSAL",
+          "proposed_test_node": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_source_provider_refusal",
+          "expected_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_source_provider_refusal.json",
+          "fixture_sha256": "311449aecf4aa3cf92dcedb6cf50d5d04c70af10531d2a119e032f0c2755679d",
+          "predecessor_witness_ids": [
+            "O04_WRONG_PROVIDER_VARIANT"
+          ]
+        },
+        {
+          "case_id": "L01B-R112-CONTROLLED-SOURCE-VARIANT-REFUSAL",
+          "proposed_test_node": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_source_variant_refusal",
+          "expected_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_source_variant_refusal.json",
+          "fixture_sha256": "633d5c5a648fb6e9af5835cfde545f753e9d7b9570a7475ec5e6214582a4a12b",
+          "predecessor_witness_ids": [
+            "O04_WRONG_PROVIDER_VARIANT"
+          ]
+        },
+        {
+          "case_id": "L01B-R112-CONTROLLED-CONTRACT-ID-REFUSAL",
+          "proposed_test_node": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_contract_id_refusal",
+          "expected_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_contract_id_refusal.json",
+          "fixture_sha256": "5707a23b542a5e6117fca02c926ffb50e8d9687bd48252696728b7bd71d75aae",
+          "predecessor_witness_ids": [
+            "O05_WRONG_CONTRACT_OR_MODEL_IDENTITY"
+          ]
+        },
+        {
+          "case_id": "L01B-R112-CONTROLLED-UNDERLYING-REFUSAL",
+          "proposed_test_node": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_underlying_refusal",
+          "expected_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_underlying_refusal.json",
+          "fixture_sha256": "8f56be39fe73c6f9d33eca45a90d8ce4e638000583f5517aa989e7a5adca1c41",
+          "predecessor_witness_ids": [
+            "O05_WRONG_CONTRACT_OR_MODEL_IDENTITY"
+          ]
+        },
+        {
+          "case_id": "L01B-R112-CONTROLLED-SECURITY-TYPE-REFUSAL",
+          "proposed_test_node": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_security_type_refusal",
+          "expected_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_security_type_refusal.json",
+          "fixture_sha256": "3a62d4f6aeabedf87000c2c5fe1aae7957c6da2d42f78a6eecf594878182193d",
+          "predecessor_witness_ids": [
+            "O05_WRONG_CONTRACT_OR_MODEL_IDENTITY"
+          ]
+        },
+        {
+          "case_id": "L01B-R112-CONTROLLED-RIGHT-REFUSAL",
+          "proposed_test_node": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_right_refusal",
+          "expected_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_right_refusal.json",
+          "fixture_sha256": "cf6d3be90a5cc04ba142673e82b57b38511be1003b3548712fc3e2eda1dc122d",
+          "predecessor_witness_ids": [
+            "O05_WRONG_CONTRACT_OR_MODEL_IDENTITY"
+          ]
+        },
+        {
+          "case_id": "L01B-R112-CONTROLLED-EXPIRY-DATE-REFUSAL",
+          "proposed_test_node": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_expiry_date_refusal",
+          "expected_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_expiry_date_refusal.json",
+          "fixture_sha256": "ff9736a906aebf132d97a7b04c8a14018f704a41371361f3abc3eef3c401acd6",
+          "predecessor_witness_ids": [
+            "O05_WRONG_CONTRACT_OR_MODEL_IDENTITY"
+          ]
+        },
+        {
+          "case_id": "L01B-R112-CONTROLLED-STRIKE-REFUSAL",
+          "proposed_test_node": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_strike_refusal",
+          "expected_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_strike_refusal.json",
+          "fixture_sha256": "a4c3634f248289bff0c427dc6a66360f087a42c60efdf79048338c5b4223feaf",
+          "predecessor_witness_ids": [
+            "O05_WRONG_CONTRACT_OR_MODEL_IDENTITY"
+          ]
+        },
+        {
+          "case_id": "L01B-R112-CONTROLLED-CURRENCY-REFUSAL",
+          "proposed_test_node": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_currency_refusal",
+          "expected_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_currency_refusal.json",
+          "fixture_sha256": "2fc2210a4fe21ca42a0964dd5d1cbeee11e8c98c5b08cfc838564bed4bf53fe3",
+          "predecessor_witness_ids": [
+            "O05_WRONG_CONTRACT_OR_MODEL_IDENTITY"
+          ]
+        },
+        {
+          "case_id": "L01B-R112-CONTROLLED-MODEL-VARIANT-REFUSAL",
+          "proposed_test_node": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_model_variant_refusal",
+          "expected_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_model_variant_refusal.json",
+          "fixture_sha256": "696f8c8141d90f598850d4325ffa0d5a137290b104e28d20b49af36d97f18c62",
+          "predecessor_witness_ids": [
+            "O05_WRONG_CONTRACT_OR_MODEL_IDENTITY"
+          ]
+        },
+        {
+          "case_id": "L01B-R112-CONTROLLED-SCALE-REFUSAL",
+          "proposed_test_node": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_scale_refusal",
+          "expected_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_scale_refusal.json",
+          "fixture_sha256": "ecaf3846158cf5da5075051350b4e2af8d50e01a7a6f5c80cdf61e75243c6e2d",
+          "predecessor_witness_ids": [
+            "O05_WRONG_CONTRACT_OR_MODEL_IDENTITY"
+          ]
+        },
+        {
+          "case_id": "L01B-R112-CONTROLLED-GENERATION-REFUSAL",
+          "proposed_test_node": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_generation_refusal",
+          "expected_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_generation_refusal.json",
+          "fixture_sha256": "cd1fbb5e284ba83b9219aaae4d413f9ee7c07e4b161e7d8658c96387e27d56d4",
+          "predecessor_witness_ids": [
+            "O06_WRONG_GENERATION_OR_REQUEST"
+          ]
+        },
+        {
+          "case_id": "L01B-R112-CONTROLLED-REQUEST-ID-REFUSAL",
+          "proposed_test_node": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_request_id_refusal",
+          "expected_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_request_id_refusal.json",
+          "fixture_sha256": "d1c56064e3c5c94cd9457024ba993b85e694d58056ea449b762fc966b3f5539f",
+          "predecessor_witness_ids": [
+            "O06_WRONG_GENERATION_OR_REQUEST"
+          ]
+        },
+        {
+          "case_id": "L01B-R112-CONTROLLED-SEQUENCE-SCOPE-REFUSAL",
+          "proposed_test_node": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_sequence_scope_refusal",
+          "expected_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_sequence_scope_refusal.json",
+          "fixture_sha256": "0604d7e5c15d6de8c651cdcc3233c8d56334b97e394487b7810e5d977bc6d39e",
+          "predecessor_witness_ids": [
+            "H03_WRONG_SEQUENCE_SCOPE"
+          ]
+        }
+      ]
+    }
+  },
+  "originals_unchanged": {
+    "successful_source_sha256": "1f4c46c5c247c78e3e18bb2de02c172f775379f664bad8e056ef6867a39d03dc",
+    "source_contract_sha256": "31c811e77468f44c2e412893326bc6d5f9ea037cdbf28712ce8e213652fdfc63",
+    "original_27_negative_fixtures_unmodified": true
+  },
+  "prior_39_witnesses_unchanged": true,
+  "reserved_prerequisites": {
+    "product_test_execution_authorised": false,
+    "physical_test_implementation_and_public_seams_verified": false,
+    "exact_claim_generation_and_product_candidate_bindings": "UNRESOLVED",
+    "independent_tester_designated": false,
+    "required_L00_receiver_and_asset_receipt": "UNRESOLVED",
+    "CPython_3135_and_actual_SQLite_runtime_qualified": "UNRESOLVED",
+    "product_case_execution_runs": 0,
+    "D145": "PAUSED",
+    "main_merge_authorised": false,
+    "other_identity_case_allocations_unchanged": true
+  }
+}
