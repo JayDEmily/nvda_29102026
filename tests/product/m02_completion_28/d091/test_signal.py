@@ -509,7 +509,7 @@ def test_d091_controlled_over_64_refusal(tmp_path: Path) -> None:
 
 
 def test_d091_controlled_cursor_nonprogress_refusal(tmp_path: Path) -> None:
-    _fault_fixture("cursor_nonprogress_refusal", "n/a")  # replaced by pinned fixture check below
+    _fault_fixture("cursor_nonprogress_refusal", "4031f4640a1373c377a623f442a0f2ec859a176ac725906c48cc6b2b1e5d2fcf")
     members = _load_source()
     source = _admit_and_seal(members)
     adapter = _SelectorReadAdapter(source.read_only_capability(), "H06")
@@ -525,6 +525,7 @@ def test_d091_controlled_cursor_nonprogress_refusal(tmp_path: Path) -> None:
 
 
 def test_d091_controlled_duplicate_id_conflict_refusal(tmp_path: Path) -> None:
+    _fault_fixture("duplicate_id_conflict_refusal", "c9fbf5aa427b87d287f05e4b5cfe2daadb50e3236d1529654fd6450db6896c98")
     members = _load_source()
     source = _admit_and_seal(members)
     adapter = _SelectorReadAdapter(source.read_only_capability(), "H07")
@@ -540,7 +541,7 @@ def test_d091_controlled_duplicate_id_conflict_refusal(tmp_path: Path) -> None:
 
 
 def test_d091_controlled_precommit_sqlite_failure(tmp_path: Path) -> None:
-    _fault_fixture("precommit_sqlite_failure", "n/a")  # replaced by pinned fixture check below
+    _fault_fixture("precommit_sqlite_failure", "0f954fc8d7a132091576cb7af92072d7eabc839c47373189658130437cc4e20b")
     members = _load_source()
     source = _admit_and_seal(members)
     db = tmp_path / "precommit.sqlite3"
@@ -553,7 +554,7 @@ def test_d091_controlled_precommit_sqlite_failure(tmp_path: Path) -> None:
 
 
 def test_d091_controlled_uncertain_commit_failure(tmp_path: Path) -> None:
-    _fault_fixture("uncertain_commit_failure", "n/a")  # replaced by pinned fixture check below
+    _fault_fixture("uncertain_commit_failure", "15b15b769d92258731c6cd72cc6ca322a331401249d42be74443f0166cd135e3")
     members = _load_source()
     source = _admit_and_seal(members)
     db = tmp_path / "postcommit.sqlite3"
@@ -570,7 +571,7 @@ def test_d091_controlled_uncertain_commit_failure(tmp_path: Path) -> None:
 
 
 def test_d091_controlled_same_id_content_conflict(tmp_path: Path) -> None:
-    _fault_fixture("same_id_content_conflict", "n/a")  # replaced by pinned fixture check below
+    _fault_fixture("same_id_content_conflict", "93154f6bf3d26c09b1b74718112016d1002ef39efcaf084c189f1b4a1af06408")
     members = _load_source()
     source = _admit_and_seal(members)
     db = tmp_path / "sameid.sqlite3"
@@ -595,15 +596,15 @@ def test_d091_controlled_same_id_content_conflict(tmp_path: Path) -> None:
 
 
 def test_d091_controlled_original_getter_missing(tmp_path: Path) -> None:
-    _exercise_getter_fault(tmp_path, "G01", "original_getter_missing", "n/a")
+    _exercise_getter_fault(tmp_path, "G01", "original_getter_missing", "ac1b985e87cb2f4ca0dfed0fd1dc3bb4c0fac8d5794ff4831cda2014a68810b3")
 
 
 def test_d091_controlled_original_getter_units_mismatch(tmp_path: Path) -> None:
-    _exercise_getter_fault(tmp_path, "G02", "original_getter_units_mismatch", "n/a")
+    _exercise_getter_fault(tmp_path, "G02", "original_getter_units_mismatch", "a80a39c150eafb970089f40f7d8ba60c82ae43cb248abb5e472497f2edd49608")
 
 
 def test_d091_controlled_original_getter_generation_mismatch(tmp_path: Path) -> None:
-    _exercise_getter_fault(tmp_path, "G03", "original_getter_generation_mismatch", "n/a")
+    _exercise_getter_fault(tmp_path, "G03", "original_getter_generation_mismatch", "e3b11ca22017e465fc63f11b102bbc6d696d2fe40436b6bc5a501e0da4078352")
 
 
 def test_d091_controlled_unsealed_refusal(tmp_path: Path) -> None:
