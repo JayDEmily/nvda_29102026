@@ -1,0 +1,189 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_d091",
+  "semantic_brief_path": "handoff/m02_completion_28_execution/L04/D091_PREEDIT_BINDING_REVISION_20261117/EXACT_RETURN_REPAIR_R1_R3.md",
+  "target": {
+    "category": "M",
+    "responsibility_name": "neutral_market_measurement_truth",
+    "package": "nvda_desk.market_measurement_truth",
+    "public_seam": "nvda_desk.market_measurement_truth.api",
+    "intent": "modify",
+    "existing_object_id": "M02"
+  },
+  "proof_axis": "product",
+  "product_tier_treatment": "NOT_CLASSIFIED",
+  "architecture_proof_axis": "architecture_kernel",
+  "required_proof_ids": [
+    "M02-C28-D091",
+    "M02-C28-L01B-R112-SOURCE-SUPPORT"
+  ],
+  "families": [
+    {
+      "id": "m02_d091_categorical_l04",
+      "path": "tests/product/m02_completion_28/d091/test_signal.py",
+      "proof_obligation_ids": [
+        "M02-C28-D091"
+      ],
+      "required_test_names": [
+        "test_d091_controlled_success",
+        "test_d091_controlled_reached_refusal",
+        "test_d091_controlled_seal_refusal",
+        "test_d091_controlled_nonfinite_refusal",
+        "test_d091_controlled_absent_refusal",
+        "test_d091_controlled_receipt_asof_refusal",
+        "test_d091_controlled_cutoff_order_refusal",
+        "test_d091_controlled_top_rank_tie_refusal",
+        "test_d091_controlled_over_64_refusal",
+        "test_d091_controlled_cursor_nonprogress_refusal",
+        "test_d091_controlled_duplicate_id_conflict_refusal",
+        "test_d091_controlled_precommit_sqlite_failure",
+        "test_d091_controlled_uncertain_commit_failure",
+        "test_d091_controlled_same_id_content_conflict",
+        "test_d091_controlled_original_getter_missing",
+        "test_d091_controlled_original_getter_units_mismatch",
+        "test_d091_controlled_original_getter_generation_mismatch",
+        "test_d091_controlled_unsealed_refusal"
+      ],
+      "boundary": "Owner admitted 18 exact categorical D091 physical cases: real sealed original M00 ingress, returned cursor history, reached seven-stage refusals and durable typed SQLite readback with strict D01-D03 exceptions; source unchanged.",
+      "proof_levels": [
+        "CONTRACT",
+        "INTEGRATION",
+        "STATE"
+      ],
+      "authoritative_inputs": [
+        "Accepted R112 synthetic source SHA256 31c811e77468f44c2e412893326bc6d5f9ea037cdbf28712ce8e213652fdfc63; accepted 15-member bytes SHA256 1f4c46c5c247c78e3e18bb2de02c172f775379f664bad8e056ef6867a39d03dc; 17 November direct 18-case owner allocation.",
+        "Independent finite adequacy and corrected pre-edit technical revision; exact claim/generation separate."
+      ],
+      "dependency_substitutions": [
+        "Fresh private in-memory M00 controlled synthetic only, no native IBKR source or live-provider certification.",
+        "B_TIE_2 and B_OVER64_65 separately admitted negative-only M00 manifests; only original 15 lawful success."
+      ],
+      "case_coverage": {
+        "lawful_positive": {
+          "cases": [
+            "Original 15-member M00 public admissions, complete cursor history, 12 signed endpoint/interior witnesses, exact five categorical labels, retry idempotency, first timestamp and durable fresh read-only reopen."
+          ]
+        },
+        "prohibited_false_positive": {
+          "cases": [
+            "RANGE/NONFINITE/ABSENT target requests, unsealed/postseal admission, receipt/clock/cursor/tie/source-original faults, D01 definite rollback, D02 uncertain acknowledgement and D03 immutable content conflict; all required cases are independently named and counted in 18 exact physical nodes."
+          ]
+        },
+        "missing_mandatory_authority": {
+          "cases": [
+            "Exact accepted product definition, approved claim/generation, appropriate runner and distinct strict Tester must exist before physical execution; no active pointer is claimed by this proposal."
+          ]
+        },
+        "lawful_optional_absence": {
+          "not_applicable_reason": "Controlled successful D091 profile has one mandatory selected R112 delta; no optional source absence beyond the separately negative-tested missing field."
+        }
+      },
+      "expected_failure_signals": [
+        "Wrong category or loss of signed original/option lineage; unexpected success on reached refusal.",
+        "Cursor not exhausted; 65th projected member ignored; postseal or preseal access leaks; old invalid historical value masks requested target.",
+        "SQLite commit uncertainty misreported, conflicting repeat accepted, first timestamp lost or reader depends on live M00."
+      ],
+      "limitations": [
+        "Two test-only B cohorts are negative-only; no additional successful source.",
+        "Claim/runner registration remains future technical work and product test execution held."
+      ],
+      "adjacent_nonclaims": [
+        "No live IBKR model/scale certification.",
+        "No D109/D121/D145 acceptance.",
+        "L01b negative ingress cases retain separate source-support obligation."
+      ],
+      "environment": "Exact separately qualified CPython 3.13.5 and SQLite 3.54.1 runtime; strict product runner and independent receiver still require explicit release.",
+      "material_versions": [
+        "T01-R112-CONTROLLED-FRACTION-1 v1; T01-R112-EXACT-RECEIPT-1 v1; D091-SYNTHETIC-TENTATIVE-V1 v1.",
+        "D091 pre-edit technical V2 accepted only after fresh independent review.",
+        "Exact source artifact, accepted brief/binding/contract and generation SHA256 pinned on future claim admission."
+      ],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/m02_completion_28/d091/test_signal.py"
+    },
+    {
+      "id": "m02_l01b_r112_negative_source_support",
+      "path": "tests/product/m02_completion_28/l01b_r112/test_source.py",
+      "proof_obligation_ids": [
+        "M02-C28-L01B-R112-SOURCE-SUPPORT"
+      ],
+      "required_test_names": [
+        "test_l01b_r112_controlled_native_units_refusal",
+        "test_l01b_r112_controlled_source_provider_refusal",
+        "test_l01b_r112_controlled_source_variant_refusal",
+        "test_l01b_r112_controlled_contract_id_refusal",
+        "test_l01b_r112_controlled_underlying_refusal",
+        "test_l01b_r112_controlled_security_type_refusal",
+        "test_l01b_r112_controlled_right_refusal",
+        "test_l01b_r112_controlled_expiry_date_refusal",
+        "test_l01b_r112_controlled_strike_refusal",
+        "test_l01b_r112_controlled_currency_refusal",
+        "test_l01b_r112_controlled_model_variant_refusal",
+        "test_l01b_r112_controlled_scale_refusal",
+        "test_l01b_r112_controlled_generation_refusal",
+        "test_l01b_r112_controlled_request_id_refusal",
+        "test_l01b_r112_controlled_sequence_scope_refusal"
+      ],
+      "boundary": "Separate 15 admitted owner test-only L01b A-field mismatches: each direct checked-ingress path rejects at exact source field before roster and before genuine M00 write, then original success cohort can seal; NOT 15 D091 classifications.",
+      "proof_levels": [
+        "CONTRACT",
+        "INTEGRATION",
+        "STATE"
+      ],
+      "authoritative_inputs": [
+        "Adopted R112 positive source remains unmodified (SHA256 1f4c46c5c247c78e3e18bb2de02c172f775379f664bad8e056ef6867a39d03dc).",
+        "16 November A–E test-only owner policy; 17 November separate L01b 15 physical case admission and field-discrimination matrix."
+      ],
+      "dependency_substitutions": [
+        "Fresh private SUCCESS_15 M00 owner for each negative-only source ingress; no second positive source cohort."
+      ],
+      "case_coverage": {
+        "lawful_positive": {
+          "not_applicable_reason": "Negative-only source support jurisdiction; after refused negative, original 15-member cohort sealing is a state-preservation postcondition within each already counted physical case, not an additional authorised source success case."
+        },
+        "prohibited_false_positive": {
+          "cases": [
+            "Exactly fifteen distinct malformed provider/variant/native-unit/eleven-identity/sequence-scope inputs must produce their own field-specific refusal before roster and must never reach genuine M00 admission."
+          ]
+        },
+        "missing_mandatory_authority": {
+          "cases": [
+            "Each negative source fixture and original positive SHA are pinned; strict independent Tester still must independently verify candidate/test/generation before executing."
+          ]
+        },
+        "lawful_optional_absence": {
+          "not_applicable_reason": "A-field mutations are mandatory exact field mismatches and do not assert an optional-success profile or absent D091 input."
+        }
+      },
+      "expected_failure_signals": [
+        "Generic off-roster refusal rather than reached bad field.",
+        "M00 admitted malformed ID, source assertion relies on injected expected-stage rather than checked ingress.",
+        "Original 15-member seal poisoned after negative case."
+      ],
+      "limitations": [
+        "Only 15 owner-admitted source-support negatives; no new positive R112 and no D091 business-result acceptance."
+      ],
+      "adjacent_nonclaims": [
+        "No source provider policy change.",
+        "No other raw signal or downstream product case admission."
+      ],
+      "environment": "Selected strict product Tester runner to be separately qualified CPython 3.13.5/SQLite 3.54.1.",
+      "material_versions": [
+        "Owner-adopted R112 source contract exact SHA256, A-scope negative fixture hashes.",
+        "Separate L01b hard ceiling 15, no release of executions."
+      ],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/m02_completion_28/l01b_r112/test_source.py"
+    }
+  ],
+  "required_support_files": [],
+  "optional_support_files": [],
+  "execution_policy": {
+    "skipped_tests": "FAIL",
+    "xfailed_tests": "FAIL",
+    "xpassed_tests": "FAIL",
+    "collection_failed": "FAIL",
+    "no_tests_collected": "FAIL",
+    "unexpected_governed_mutation": "FAIL"
+  }
+}
