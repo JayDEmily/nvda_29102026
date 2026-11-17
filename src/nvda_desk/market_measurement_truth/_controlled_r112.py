@@ -168,7 +168,7 @@ class _ReadOnly:
             if not self.sealed:
                 raise CoordinatorSealRefusal("trusted roster not yet sealed")
             actual = tuple(self._actual_get(x.observation_occurrence_id) for x in self._expected)
-            if actual != self._expected:
+            if codec.canonical(actual) != codec.canonical(self._expected):
                 raise ValueError("trusted M00 original getter diverged")
             if hashlib.sha256(codec.canonical(actual)).hexdigest() != self._digest["sha256"]:
                 raise ValueError("trusted actual M00 digest diverged")
@@ -222,12 +222,12 @@ class _Coordinator:
             expected = self._roster.get(observation.observation_occurrence_id)
             if expected is None:
                 raise CoordinatorSourceFieldRefusal("observation.observation_occurrence_id")
-            if observation != expected:
+            if codec.canonical(observation) != codec.canonical(expected):
                 raise CoordinatorSourceFieldRefusal("observation.original_roster_content")
             if observation.observation_occurrence_id in self._state["admitted"]:
                 raise CoordinatorSourceFieldRefusal("observation.duplicate_roster_id")
             admitted = self._writer(observation)
-            if admitted != observation:
+            if codec.canonical(admitted) != codec.canonical(observation):
                 raise ValueError("M00 public admission returned a different member")
             self._state["admitted"].add(observation.observation_occurrence_id)
             self._state["phase"] = "ADMITTING"
@@ -241,7 +241,7 @@ class _Coordinator:
                 raise CoordinatorSealRefusal("incomplete exact original roster")
             actual = tuple(self._reads.get_raw_observation_occurrence(x.observation_occurrence_id)
                            for x in self._expected)
-            if actual != self._expected:
+            if codec.canonical(actual) != codec.canonical(self._expected):
                 raise CoordinatorSealRefusal("M00 trusted original readback mismatched")
             self._digest["sha256"] = hashlib.sha256(codec.canonical(actual)).hexdigest()
             self._state["phase"] = "SEALED"
