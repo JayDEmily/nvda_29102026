@@ -51,6 +51,9 @@ _CLASSES = {
         f.BookSlopePairV1,
         f.BookRatePairV1,
         f.VenueConcentrationV1,
+        f.D091CategoryV1,
+        f.D091BucketRequestV1,
+        f.D091BucketOccurrenceV1,
     )
 }
 
