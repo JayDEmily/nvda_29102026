@@ -132,17 +132,27 @@ def _validate_first(value: raw.RawObservationOccurrenceV1) -> None:
 
 
 class _ReadOnly:
-    """Public read-only wrapper: no commands, writable M00 or mutable roster."""
+    """Read-only selector facade; neither M00 commands nor coordinator state escape."""
 
-    __slots__ = ("_lock", "_actual_get", "_actual_pages", "_state", "_expected",
-                 "_digest", "_kind", "_selector")
+    __slots__ = (
+        "_lock", "_actual_get", "_actual_pages", "_is_sealed",
+        "_read_digest", "_read_originals", "_read_source_id",
+        "_kind", "_selector",
+    )
 
-    def __init__(self, lock, reads, state, expected, digest, kind, selector=None):
+    def __init__(
+        self, lock, reads, is_sealed, read_digest, read_originals,
+        read_source_id, kind, selector=None,
+    ):
         self._lock = lock
         self._actual_get = reads.get_raw_observation_occurrence
         self._actual_pages = reads.list_projected_raw_history
-        self._state, self._expected = state, expected
-        self._digest, self._kind, self._selector = digest, kind, selector
+        self._is_sealed = is_sealed
+        self._read_digest = read_digest
+        self._read_originals = read_originals
+        self._read_source_id = read_source_id
+        self._kind = kind
+        self._selector = selector
 
     def locked(self):
         return self._lock
@@ -150,7 +160,7 @@ class _ReadOnly:
     @property
     def sealed(self) -> bool:
         with self._lock:
-            return self._state["phase"] == "SEALED"
+            return self._is_sealed()
 
     @property
     def cohort_kind(self) -> str:
@@ -159,31 +169,15 @@ class _ReadOnly:
     @property
     def cohort_digest(self) -> str:
         with self._lock:
-            if not self.sealed:
-                raise CoordinatorSealRefusal("unsealed has no identity")
-            return self._digest["sha256"]
+            return self._read_digest()
 
     def trusted_originals(self) -> tuple[raw.RawObservationOccurrenceV1, ...]:
         with self._lock:
-            if not self.sealed:
-                raise CoordinatorSealRefusal("trusted roster not yet sealed")
-            actual = tuple(self._actual_get(x.observation_occurrence_id) for x in self._expected)
-            if codec.canonical(actual) != codec.canonical(self._expected):
-                raise ValueError("trusted M00 original getter diverged")
-            if hashlib.sha256(codec.canonical(actual)).hexdigest() != self._digest["sha256"]:
-                raise ValueError("trusted actual M00 digest diverged")
-            return actual
+            return self._read_originals()
 
     def source_id_for_receipt(self, receipt: datetime) -> str | None:
-        # Read-only original-member lookup, including the legitimate preseal
-        # diagnostic. Never enumerates pages or provides M00 command access.
         with self._lock:
-            for expected in self._expected:
-                if expected.received_ts_utc == receipt and self._actual_get(
-                    expected.observation_occurrence_id
-                ) is not None:
-                    return expected.observation_occurrence_id.value
-            return None
+            return self._read_source_id(receipt)
 
     def get_raw_observation_occurrence(self, occurrence_id):
         with self._lock:
@@ -198,81 +192,195 @@ class _ReadOnly:
             return self._selector.list_projected_raw_history(*args, **kwargs)
 
 
-class _Coordinator:
-    __slots__ = ("_lock", "_writer", "_reads", "_state", "_expected", "_roster", "_digest", "_kind")
+def _build_closed_coordinator(members: tuple[dict, ...], kind: str):
+    """Private source ownership; the returned facade has no writer/owner slot.
 
-    def __init__(self, members: tuple[dict, ...], kind: str) -> None:
-        owner = raw.create_owner()
-        self._lock = threading.RLock()
-        self._writer = owner.commands.admit_raw_observation_occurrence
-        self._reads = owner.reads
-        self._state = {"phase": "NEW", "admitted": set()}
-        self._expected = tuple(_expected(x) for x in members)
-        self._roster = {x.observation_occurrence_id: x for x in self._expected}
-        if len(self._roster) != len(self._expected):
-            raise ValueError("duplicate controlled source members")
-        self._digest = {"sha256": None}
-        self._kind = kind
+    The only M00 command is held lexically in this factory. All lawful source
+    ingress passes through checked_admit under the same lock as seal and D091
+    reads. No raw command object is returned or attached to any facade.
+    """
+    owner = raw.create_owner()
+    write_original = owner.commands.admit_raw_observation_occurrence
+    reads = owner.reads
+    lock = threading.RLock()
+    phase = "NEW"
+    admitted: set[object] = set()
+    expected = tuple(_expected(item) for item in members)
+    roster = {item.observation_occurrence_id: item for item in expected}
+    if len(roster) != len(expected):
+        raise ValueError("duplicate controlled original roster member")
+    digest: str | None = None
 
-    def checked_admit(self, observation: raw.RawObservationOccurrenceV1):
-        with self._lock:
-            if self._state["phase"] == "SEALED":
+    def actual_originals() -> tuple[raw.RawObservationOccurrenceV1, ...]:
+        return tuple(
+            reads.get_raw_observation_occurrence(item.observation_occurrence_id)
+            for item in expected
+        )
+
+    def checked_admit(observation: raw.RawObservationOccurrenceV1):
+        nonlocal phase
+        with lock:
+            if phase == "SEALED":
                 raise CoordinatorSealRefusal("postseal source ingress refused")
             _validate_first(observation)
-            expected = self._roster.get(observation.observation_occurrence_id)
-            if expected is None:
+            original = roster.get(observation.observation_occurrence_id)
+            if original is None:
                 raise CoordinatorSourceFieldRefusal("observation.observation_occurrence_id")
-            if codec.canonical(observation) != codec.canonical(expected):
+            if codec.canonical(observation) != codec.canonical(original):
                 raise CoordinatorSourceFieldRefusal("observation.original_roster_content")
-            if observation.observation_occurrence_id in self._state["admitted"]:
+            if observation.observation_occurrence_id in admitted:
                 raise CoordinatorSourceFieldRefusal("observation.duplicate_roster_id")
-            admitted = self._writer(observation)
-            if codec.canonical(admitted) != codec.canonical(observation):
-                raise ValueError("M00 public admission returned a different member")
-            self._state["admitted"].add(observation.observation_occurrence_id)
-            self._state["phase"] = "ADMITTING"
-            return admitted
+            result = write_original(observation)
+            if codec.canonical(result) != codec.canonical(original):
+                raise ValueError("actual M00 admission changed the original")
+            admitted.add(observation.observation_occurrence_id)
+            phase = "ADMITTING"
+            return result
 
-    def seal(self) -> str:
-        with self._lock:
-            if self._state["phase"] != "ADMITTING":
-                raise CoordinatorSealRefusal("source is not admitting")
-            if self._state["admitted"] != set(self._roster):
-                raise CoordinatorSealRefusal("incomplete exact original roster")
-            actual = tuple(self._reads.get_raw_observation_occurrence(x.observation_occurrence_id)
-                           for x in self._expected)
-            if codec.canonical(actual) != codec.canonical(self._expected):
-                raise CoordinatorSealRefusal("M00 trusted original readback mismatched")
-            self._digest["sha256"] = hashlib.sha256(codec.canonical(actual)).hexdigest()
-            self._state["phase"] = "SEALED"
-            return self._digest["sha256"]
+    def whole_source_history() -> tuple[raw.RawObservationOccurrenceV1, ...]:
+        """Genuine raw M00 history includes original t14 lacking a projection.
 
-    def read_only_capability(self) -> _ReadOnly:
-        with self._lock:
-            return _ReadOnly(self._lock, self._reads, self._state, self._expected,
-                             self._digest, self._kind)
+        The actual M00 public read API is scoped by source and subject. That
+        scope is exhaustive for this coordinator because its sole admissible
+        writer path enforces these exact identities before M00 invocation.
+        """
+        from datetime import UTC, timedelta
 
-    def test_only_selector_capability(self, adapter) -> _ReadOnly:
-        if (not callable(getattr(adapter, "get_raw_observation_occurrence", None))
-                or not callable(getattr(adapter, "list_projected_raw_history", None))):
-            raise TypeError("test selector must have read-only M00 port")
-        with self._lock:
-            return _ReadOnly(self._lock, self._reads, self._state, self._expected,
-                             self._digest, self._kind, selector=adapter)
+        cursor: str | None = None
+        seen_cursors: set[str] = set()
+        found: list[raw.RawObservationOccurrenceV1] = []
+        while True:
+            page = reads.list_raw_observation_history(
+                subject_instrument=_SUBJECT,
+                source_provider=_PROVIDER,
+                source_variant=_VARIANT,
+                received_at_or_before_utc=(
+                    datetime.max.replace(tzinfo=UTC) - timedelta(microseconds=1)
+                ),
+                native_identity_selectors=(),
+                limit=8,
+                cursor=cursor,
+            )
+            if (
+                type(page) is not raw.RawObservationHistoryPageV1
+                or type(page.items) is not tuple
+                or not 1 <= len(page.items) <= 8
+            ):
+                raise CoordinatorSealRefusal("incomplete actual M00 source page")
+            found.extend(page.items)
+            if len(found) > len(expected):
+                raise CoordinatorSealRefusal("unlisted actual M00 source observation")
+            next_cursor = page.next_cursor
+            if next_cursor is None:
+                break
+            if (
+                type(next_cursor) is not str
+                or next_cursor == cursor
+                or next_cursor in seen_cursors
+            ):
+                raise CoordinatorSealRefusal("nonprogress actual M00 source cursor")
+            seen_cursors.add(next_cursor)
+            cursor = next_cursor
+        return tuple(found)
+
+    def seal() -> str:
+        nonlocal phase, digest
+        with lock:
+            if phase != "ADMITTING" or admitted != set(roster):
+                raise CoordinatorSealRefusal("incomplete original admissions")
+            actual = actual_originals()
+            if codec.canonical(actual) != codec.canonical(expected):
+                raise CoordinatorSealRefusal("actual original getter content mismatch")
+            all_actual = whole_source_history()
+            by_id = {item.observation_occurrence_id: item for item in all_actual}
+            if (
+                len(all_actual) != len(expected)
+                or set(by_id) != set(roster)
+                or any(
+                    codec.canonical(by_id[identity]) != codec.canonical(original)
+                    for identity, original in roster.items()
+                )
+            ):
+                raise CoordinatorSealRefusal("unlisted or altered actual M00 cohort")
+            digest = hashlib.sha256(codec.canonical(actual)).hexdigest()
+            phase = "SEALED"
+            return digest
+
+    def is_sealed() -> bool:
+        return phase == "SEALED"
+
+    def read_digest() -> str:
+        if phase != "SEALED" or digest is None:
+            raise CoordinatorSealRefusal("unsealed cohort has no digest")
+        return digest
+
+    def trusted_originals() -> tuple[raw.RawObservationOccurrenceV1, ...]:
+        if phase != "SEALED" or digest is None:
+            raise CoordinatorSealRefusal("trusted source not sealed")
+        actual = actual_originals()
+        if (
+            codec.canonical(actual) != codec.canonical(expected)
+            or hashlib.sha256(codec.canonical(actual)).hexdigest() != digest
+        ):
+            raise ValueError("actual sealed M00 original getter diverged")
+        return actual
+
+    def source_id_for_receipt(receipt: datetime) -> str | None:
+        # Before sealing this only observes actually admitted original M00 IDs.
+        for item in expected:
+            if (
+                item.received_ts_utc == receipt
+                and reads.get_raw_observation_occurrence(
+                    item.observation_occurrence_id
+                ) is not None
+            ):
+                return item.observation_occurrence_id.value
+        return None
+
+    def read_only_capability(selector=None) -> _ReadOnly:
+        with lock:
+            return _ReadOnly(
+                lock, reads, is_sealed, read_digest, trusted_originals,
+                source_id_for_receipt, kind, selector=selector,
+            )
+
+    class _Coordinator:
+        """Non-mutable facade: no M00 writer, owner or mutable seal-state field."""
+
+        __slots__ = ()
+
+        def checked_admit(self, observation: raw.RawObservationOccurrenceV1):
+            return checked_admit(observation)
+
+        def seal(self) -> str:
+            return seal()
+
+        def read_only_capability(self) -> _ReadOnly:
+            return read_only_capability()
+
+        def test_only_selector_capability(self, adapter) -> _ReadOnly:
+            if (
+                not callable(getattr(adapter, "get_raw_observation_occurrence", None))
+                or not callable(getattr(adapter, "list_projected_raw_history", None))
+            ):
+                raise TypeError("selector adapter requires exact read methods")
+            return read_only_capability(selector=adapter)
+
+    return _Coordinator()
 
 
-def create_controlled_coordinator() -> _Coordinator:
+def create_controlled_coordinator():
     members = _read_members(_POSITIVE, _POSITIVE_SHA, False)
     if len(members) != 15:
-        raise ValueError("only original 15-source successful R112 cohort supported")
-    return _Coordinator(members, "SUCCESS_15")
+        raise ValueError("only the exact 15-member R112 positive source is admitted")
+    return _build_closed_coordinator(members, "SUCCESS_15")
 
 
-def _create_negative_only_coordinator(mode: str) -> _Coordinator:
+def _create_negative_only_coordinator(mode: str):
     if mode not in _B_FIXTURES:
-        raise ValueError("unadmitted negative-only B cohort")
-    path, checksum, count = _B_FIXTURES[mode]
-    members = _read_members(_BASE / path, checksum, True)
+        raise ValueError("unadmitted B negative-only source")
+    relative, checksum, count = _B_FIXTURES[mode]
+    members = _read_members(_BASE / relative, checksum, True)
     if len(members) != count:
-        raise ValueError("negative-only cohort count mismatch")
-    return _Coordinator(members, mode)
+        raise ValueError("negative-only raw source count mismatch")
+    return _build_closed_coordinator(members, mode)
