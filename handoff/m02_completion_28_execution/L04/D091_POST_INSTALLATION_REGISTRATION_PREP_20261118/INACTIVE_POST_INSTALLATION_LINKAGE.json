@@ -1,0 +1,102 @@
+{
+  "schema": "NVDA_V2_D091_POST_INSTALLATION_INACTIVE_LINKAGE_V1",
+  "status": "DOCUMENTARY_ONLY_NOT_CLAIM_GENERATION_ADMISSION_OR_TEST_RELEASE",
+  "intake": {
+    "repository": "JayDEmily/nvda_29102026",
+    "pr": 27,
+    "branch": "work/t01-d091-finite-adequacy-20261116",
+    "commit": "788eb11a8c496fe033b0d9e051c670d6d36551eb",
+    "tree": "5e1ad7f6c033dbcda419cb0223d9c63a72dd7878"
+  },
+  "independent_reviews": {
+    "installation": {
+      "commit": "2451d87c234b5caead951b340a09ae223a4a0c61",
+      "reviewed_candidate": "60e18ee8e745565a1297608fa15cc974137233f5",
+      "verdict": "ACCEPT_EXACT_BINDING_INSTALLATION_ONLY"
+    },
+    "historical_inactive": {
+      "commit": "46a6346b80b3e09573bb86a891b1daa28662fc6e",
+      "reviewed_candidate": "23038cfceb2a196ab665f1cbd780ff5c3459e1dc",
+      "verdict": "ACCEPT_INACTIVE_REGISTRATION_PREPARATION_ONLY"
+    }
+  },
+  "verified_inputs": {
+    "live_binding": {
+      "path": "implementation/authority/D091_IMPLEMENTATION_AUTHORITY_BINDING.yaml",
+      "git_blob": "fa5a0c7af3465f0266bbed97ec79811739eacd3a",
+      "sha256": "328827d6549909a59812d9560c38ba71bb5c4202a5774a5d60da6f8b1d06fbe9",
+      "acceptance": "ACCEPTED_FOR_IMPLEMENTATION",
+      "targets": [
+        {
+          "action": "modify",
+          "object_id": "M02"
+        },
+        {
+          "action": "modify",
+          "object_id": "G01"
+        }
+      ]
+    },
+    "brief": {
+      "path": "handoff/m02_completion_28_execution/L04/D091_PREEDIT_BINDING_REVISION_20261117/EXACT_RETURN_REPAIR_R1_R3.md",
+      "sha256": "d00849a98b0773a802d392f6418f051439e86686bca3885f98b14f9410133c17"
+    },
+    "contract": {
+      "path": "handoff/m02_completion_28_execution/L04/D091_PREEDIT_BINDING_REVISION_20261117/PRODUCT_PROOF_REGISTRATION_PROPOSAL.json",
+      "sha256": "f5550570dccdef5714595370fb2eb7a71c9fe5646d0ec419939fd4490b3b1bd7",
+      "status": "EXISTING_INACTIVE_PROPOSAL"
+    },
+    "family_files": [
+      {
+        "proof_id": "M02-C28-D091",
+        "case_count": 18,
+        "path": "tests/product/m02_completion_28/d091/test_signal.py",
+        "sha256": "d1eab7802786344ecf9ab4d4e2f46b802aba6d2fea0c72d14ad149492504b86f"
+      },
+      {
+        "proof_id": "M02-C28-L01B-R112-SOURCE-SUPPORT",
+        "case_count": 15,
+        "path": "tests/product/m02_completion_28/l01b_r112/test_source.py",
+        "sha256": "1f648998ca4c64829a3655057598e5ae5687b6568bb7e9eebf7ca2f17caa56f5"
+      }
+    ],
+    "ledger": {
+      "path": "handoff/m02_completion_28_execution/TEST_EVIDENCE_LEDGER.json",
+      "git_blob": "387eb533c436dc598d5dd75ca74322d2af60d00b",
+      "cases_d091": 18,
+      "cases_l01b": 15,
+      "execution_authorised": false,
+      "recorded_product_runs_for_these_cases": 0
+    }
+  },
+  "uninstalled_target_paths": [
+    "config/product_proof/m02_d091/claim.json",
+    "config/product_proof/m02_d091/admission.json",
+    "config/product_proof/m02_d091/generations/0001.json"
+  ],
+  "future_generation_input_disposition": {
+    "brief_sha256": "VERIFIED",
+    "binding_sha256": "VERIFIED",
+    "contract_sha256": "VERIFIED",
+    "family_file_sha256": "VERIFIED",
+    "adequacy_review_ref": "NOT_YET_ADJUDICATED_FOR_GENERATION",
+    "admission_authority_ref": "NOT_GRANTED_FOR_GENERATION_ACTIVATION",
+    "selected_tester_and_runner": "UNRELEASED",
+    "pointer_path_and_hash": "NOT_CREATED"
+  },
+  "owner_attribution_limit": "LIVE_BINDING_CONVERSATION_URL_NOT_AUTHENTICATED_ORIGINAL_MESSAGE_PERMALINK",
+  "strict_exclusions": {
+    "product_test_import_collection_execution": true,
+    "claim_generation_pointer_installation": true,
+    "tester_designation": true,
+    "merge": true,
+    "D145_reactivation": true
+  },
+  "releases": {
+    "implementation_binding_installation_only": true,
+    "proof_claim": false,
+    "generation": false,
+    "case_execution": false,
+    "G1_semantic_acceptance": false
+  }
+}
