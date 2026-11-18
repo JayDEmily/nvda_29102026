@@ -1,0 +1,23 @@
+{
+  "checks": {
+    "AST_COMPILATION_NO_EXECUTION": true,
+    "EMPTY_FACADE_SLOTS": true,
+    "NO_EXPOSED_OWNER_OR_STATE": true,
+    "NO_NEW_SOURCE_FIXTURES": true,
+    "NO_PRODUCT_TEST_DELTA": true,
+    "ONLY_CHECKED_WRITES": true,
+    "ONLY_GUARDED_PUBLIC_METHODS": true,
+    "SEAL_ALL_IDS_AND_BYTES": true,
+    "SEAL_PAGES_ACTUAL_M00_RAW": true,
+    "SEAL_PHASE_AFTER_AUDIT": true,
+    "WRITER_OWNED_ONLY_IN_FACTORY": true
+  },
+  "head": "cdab629bed0d9766d3bb54bd8abf481ae505bd01",
+  "limitation": "AST evidence only; Python reflective closure introspection is not an OS/process security boundary; strict product proof held",
+  "product_modules_imported": false,
+  "product_tests_collected": 0,
+  "product_tests_executed": 0,
+  "sha256": "ff826871db0d5c4b7ee2ab50b0fef90da1b1f3136937b840ccdc320477615f23",
+  "source_path": "src/nvda_desk/market_measurement_truth/_controlled_r112.py",
+  "status": "STATIC_PASS"
+}
