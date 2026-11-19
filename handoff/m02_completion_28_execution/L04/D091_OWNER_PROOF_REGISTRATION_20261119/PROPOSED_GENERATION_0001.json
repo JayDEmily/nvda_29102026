@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_d091",
+  "generation": 1,
+  "brief_sha256": "d00849a98b0773a802d392f6418f051439e86686bca3885f98b14f9410133c17",
+  "binding_sha256": "328827d6549909a59812d9560c38ba71bb5c4202a5774a5d60da6f8b1d06fbe9",
+  "contract_sha256": "f5550570dccdef5714595370fb2eb7a71c9fe5646d0ec419939fd4490b3b1bd7",
+  "implementation_target_id": "M02",
+  "adequacy_review_ref": "github-independent-review/38d4b44c9bceca883ed0a676e7b9b36d684ad54e/exact-two-family-adequacy;github-independent-review/76fe3adba5f6a0f3e003997e03f87a2e56614b71/conditional-reference-applicability",
+  "admission_authority_ref": "owner-instruction/20261119/exact-D091-L01b-product-proof-registration;github-record/e64cc5b69279a088cc11c9c74d146a0fecb30517",
+  "family_files": [
+    {
+      "path": "tests/product/m02_completion_28/d091/test_signal.py",
+      "sha256": "d1eab7802786344ecf9ab4d4e2f46b802aba6d2fea0c72d14ad149492504b86f"
+    },
+    {
+      "path": "tests/product/m02_completion_28/l01b_r112/test_source.py",
+      "sha256": "1f648998ca4c64829a3655057598e5ae5687b6568bb7e9eebf7ca2f17caa56f5"
+    }
+  ],
+  "support_files": [],
+  "previous_generation": null
+}
