@@ -1534,7 +1534,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/l01b_r112/test_source.py",
             "proposed_test_node": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_native_units_refusal",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_L01B_FIRST_TRANCHE",
+            "status": "INDEPENDENT_TESTED_ACCEPTED_L01B_PARENT15_SOURCE_SUPPORT",
             "expected_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
             "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_native_units_refusal.json",
             "fixture_sha256": "b337bb83a61b02fd470f5fa06cbeeb6c9bc4c22327cfb080bd1e3d0a8e594b33",
@@ -1550,7 +1550,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/l01b_r112/test_source.py",
             "proposed_test_node": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_source_provider_refusal",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_L01B_FIRST_TRANCHE",
+            "status": "INDEPENDENT_TESTED_ACCEPTED_L01B_PARENT15_SOURCE_SUPPORT",
             "expected_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
             "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_source_provider_refusal.json",
             "fixture_sha256": "311449aecf4aa3cf92dcedb6cf50d5d04c70af10531d2a119e032f0c2755679d",
@@ -1566,7 +1566,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/l01b_r112/test_source.py",
             "proposed_test_node": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_source_variant_refusal",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_L01B_FIRST_TRANCHE",
+            "status": "INDEPENDENT_TESTED_ACCEPTED_L01B_PARENT15_SOURCE_SUPPORT",
             "expected_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
             "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_source_variant_refusal.json",
             "fixture_sha256": "633d5c5a648fb6e9af5835cfde545f753e9d7b9570a7475ec5e6214582a4a12b",
@@ -1582,7 +1582,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/l01b_r112/test_source.py",
             "proposed_test_node": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_contract_id_refusal",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_L01B_FIRST_TRANCHE",
+            "status": "INDEPENDENT_TESTED_ACCEPTED_L01B_PARENT15_SOURCE_SUPPORT",
             "expected_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
             "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_contract_id_refusal.json",
             "fixture_sha256": "5707a23b542a5e6117fca02c926ffb50e8d9687bd48252696728b7bd71d75aae",
@@ -1598,7 +1598,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/l01b_r112/test_source.py",
             "proposed_test_node": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_underlying_refusal",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_L01B_FIRST_TRANCHE",
+            "status": "INDEPENDENT_TESTED_ACCEPTED_L01B_PARENT15_SOURCE_SUPPORT",
             "expected_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
             "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_underlying_refusal.json",
             "fixture_sha256": "8f56be39fe73c6f9d33eca45a90d8ce4e638000583f5517aa989e7a5adca1c41",
@@ -1614,7 +1614,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/l01b_r112/test_source.py",
             "proposed_test_node": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_security_type_refusal",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_L01B_FIRST_TRANCHE",
+            "status": "INDEPENDENT_TESTED_ACCEPTED_L01B_PARENT15_SOURCE_SUPPORT",
             "expected_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
             "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_security_type_refusal.json",
             "fixture_sha256": "3a62d4f6aeabedf87000c2c5fe1aae7957c6da2d42f78a6eecf594878182193d",
@@ -1630,7 +1630,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/l01b_r112/test_source.py",
             "proposed_test_node": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_right_refusal",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_L01B_FIRST_TRANCHE",
+            "status": "INDEPENDENT_TESTED_ACCEPTED_L01B_PARENT15_SOURCE_SUPPORT",
             "expected_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
             "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_right_refusal.json",
             "fixture_sha256": "cf6d3be90a5cc04ba142673e82b57b38511be1003b3548712fc3e2eda1dc122d",
@@ -1646,7 +1646,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/l01b_r112/test_source.py",
             "proposed_test_node": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_expiry_date_refusal",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_L01B_FIRST_TRANCHE",
+            "status": "INDEPENDENT_TESTED_ACCEPTED_L01B_PARENT15_SOURCE_SUPPORT",
             "expected_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
             "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_expiry_date_refusal.json",
             "fixture_sha256": "ff9736a906aebf132d97a7b04c8a14018f704a41371361f3abc3eef3c401acd6",
@@ -1662,7 +1662,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/l01b_r112/test_source.py",
             "proposed_test_node": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_strike_refusal",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_L01B_FIRST_TRANCHE",
+            "status": "INDEPENDENT_TESTED_ACCEPTED_L01B_PARENT15_SOURCE_SUPPORT",
             "expected_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
             "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_strike_refusal.json",
             "fixture_sha256": "a4c3634f248289bff0c427dc6a66360f087a42c60efdf79048338c5b4223feaf",
@@ -1678,7 +1678,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/l01b_r112/test_source.py",
             "proposed_test_node": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_currency_refusal",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_L01B_FIRST_TRANCHE",
+            "status": "INDEPENDENT_TESTED_ACCEPTED_L01B_PARENT15_SOURCE_SUPPORT",
             "expected_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
             "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_currency_refusal.json",
             "fixture_sha256": "2fc2210a4fe21ca42a0964dd5d1cbeee11e8c98c5b08cfc838564bed4bf53fe3",
@@ -1694,7 +1694,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/l01b_r112/test_source.py",
             "proposed_test_node": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_model_variant_refusal",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_L01B_FIRST_TRANCHE",
+            "status": "INDEPENDENT_TESTED_ACCEPTED_L01B_PARENT15_SOURCE_SUPPORT",
             "expected_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
             "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_model_variant_refusal.json",
             "fixture_sha256": "696f8c8141d90f598850d4325ffa0d5a137290b104e28d20b49af36d97f18c62",
@@ -1710,7 +1710,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/l01b_r112/test_source.py",
             "proposed_test_node": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_scale_refusal",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_L01B_FIRST_TRANCHE",
+            "status": "INDEPENDENT_TESTED_ACCEPTED_L01B_PARENT15_SOURCE_SUPPORT",
             "expected_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
             "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_scale_refusal.json",
             "fixture_sha256": "ecaf3846158cf5da5075051350b4e2af8d50e01a7a6f5c80cdf61e75243c6e2d",
@@ -1726,7 +1726,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/l01b_r112/test_source.py",
             "proposed_test_node": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_generation_refusal",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_L01B_FIRST_TRANCHE",
+            "status": "INDEPENDENT_TESTED_ACCEPTED_L01B_PARENT15_SOURCE_SUPPORT",
             "expected_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
             "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_generation_refusal.json",
             "fixture_sha256": "cd1fbb5e284ba83b9219aaae4d413f9ee7c07e4b161e7d8658c96387e27d56d4",
@@ -1742,7 +1742,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/l01b_r112/test_source.py",
             "proposed_test_node": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_request_id_refusal",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_L01B_FIRST_TRANCHE",
+            "status": "INDEPENDENT_TESTED_ACCEPTED_L01B_PARENT15_SOURCE_SUPPORT",
             "expected_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
             "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_request_id_refusal.json",
             "fixture_sha256": "d1c56064e3c5c94cd9457024ba993b85e694d58056ea449b762fc966b3f5539f",
@@ -1758,7 +1758,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/l01b_r112/test_source.py",
             "proposed_test_node": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_sequence_scope_refusal",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_L01B_FIRST_TRANCHE",
+            "status": "INDEPENDENT_TESTED_ACCEPTED_L01B_PARENT15_SOURCE_SUPPORT",
             "expected_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
             "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_sequence_scope_refusal.json",
             "fixture_sha256": "0604d7e5c15d6de8c651cdcc3233c8d56334b97e394487b7810e5d977bc6d39e",
@@ -1779,8 +1779,145 @@
       "execution": {
         "scheduled_leaf": "L01B_SOURCE_SUPPORT_FIRST_TRANCHE_BEFORE_D091_L04",
         "reviewer": "https://chatgpt.com/g/g-p-6ad546f307e88191b64b94d0851da624-nvda-6-1/c/6aff8bbe-5c5c-83ec-99eb-6988bcf8aba7",
-        "semantic_status": "NOT_ATTEMPTED",
-        "runs": []
+        "semantic_status": "TESTED_ACCEPTED_L01B_SOURCE_SUPPORT_PARENT15_ONLY",
+        "runs": [
+          {
+            "run_id": "L01B-R112-PARENT15-STRICT-TESTER-20261120-001",
+            "outcome": "TESTED_ACCEPTED_L01B_SOURCE_SUPPORT_PARENT15_ONLY",
+            "product_source_commit": "b7d044a4f84b7f70703322c250cbd82cee6f4589",
+            "source_tree": "0704cd4ebe09801e7116ed517cceda756f5e1dbf",
+            "execution_release_ledger_commit": "1f5c8aadab71b6b64b1586a9461dc214e7eefa24",
+            "execution_release_ledger_blob_sha1": "05309c870a7929c19c2a22da38afd2ee16daebab",
+            "separate_strict_tester_conversation": "https://chatgpt.com/g/g-p-6ad546f307e88191b64b94d0851da624-nvda-6-1/c/6aff8bbe-5c5c-83ec-99eb-6988bcf8aba7",
+            "independent_report_commit": "f0aba1a87bf889e91dcf154f2c04e5517b4a2901",
+            "independent_report_tree": "b9a11c0338d9c2adcec2d34926db1d8182e881c5",
+            "independent_report_git_blob_sha1": "25ecd1a6f4274b3dd0157d35cf207d971739225b",
+            "independent_report_path": "handoff/m02_completion_28_execution/L01B_R112_STRICT_TESTER_PARENT15_20261120/INDEPENDENT_L01B_PARENT15_PRODUCT_PROOF_REPORT.md",
+            "independent_verdict": "TESTED_ACCEPTED_L01B_SOURCE_SUPPORT_PARENT15_ONLY",
+            "first_product_run_utc": "2026-11-20T02:32:33Z",
+            "selected_runner": "/home/jds/nvda_d091_worker_proof_runner_venv_20261119/bin/python",
+            "command": "/home/jds/nvda_d091_worker_proof_runner_venv_20261119/bin/python -m pytest -p product_proof_outcomes -p no:cacheprovider -vv tests/product/m02_completion_28/l01b_r112/test_source.py",
+            "exitstatus": 0,
+            "execution_nonce": "70dea65b65af6714b526f084158db51bfbcedd70b7ef0e23539f514734e48b5b",
+            "collected_exact_original_node_ids": true,
+            "physical_case_count": 15,
+            "all_15_setup_call_teardown_pass": true,
+            "independent_reached_stage_semantics": "COORDINATOR_SOURCE_FIELD_REFUSAL checked ingress before off-roster refusal; 15 original positive M00 admissions and readback preserve original cohort",
+            "raw_observer_json_sha256": "747f0bd67dda31aac22987bb10b9fb84e765d215acefbe3ebe03f80f79edb70e",
+            "stdout_sha256": "e0e457a600e3da0c6bd3ff23db125b24ecb38ad628e9adead756d759778a4e36",
+            "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "independent_case_audit_sha256": "127b0ad2aa44a27890eb130a2ad6ddf652e5f1dedbb0d3277004ee40599c22e5",
+            "raw_evidence_directory": "/home/jds/nvda_l01b_parent15_20261120_E7IZOYj1",
+            "observed_witnesses": [
+              {
+                "case_id": "L01B-R112-CONTROLLED-NATIVE-UNITS-REFUSAL",
+                "node_id": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_native_units_refusal",
+                "refusal_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
+                "field": "observation.native_units",
+                "result": "PASSED_EXACT_THREE_PHASES_WITH_SOURCE_FIELD_REFUSAL_ASSERTED"
+              },
+              {
+                "case_id": "L01B-R112-CONTROLLED-SOURCE-PROVIDER-REFUSAL",
+                "node_id": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_source_provider_refusal",
+                "refusal_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
+                "field": "observation.source_provider",
+                "result": "PASSED_EXACT_THREE_PHASES_WITH_SOURCE_FIELD_REFUSAL_ASSERTED"
+              },
+              {
+                "case_id": "L01B-R112-CONTROLLED-SOURCE-VARIANT-REFUSAL",
+                "node_id": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_source_variant_refusal",
+                "refusal_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
+                "field": "observation.source_variant",
+                "result": "PASSED_EXACT_THREE_PHASES_WITH_SOURCE_FIELD_REFUSAL_ASSERTED"
+              },
+              {
+                "case_id": "L01B-R112-CONTROLLED-CONTRACT-ID-REFUSAL",
+                "node_id": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_contract_id_refusal",
+                "refusal_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
+                "field": "observation.native_record.identity.contract_id",
+                "result": "PASSED_EXACT_THREE_PHASES_WITH_SOURCE_FIELD_REFUSAL_ASSERTED"
+              },
+              {
+                "case_id": "L01B-R112-CONTROLLED-UNDERLYING-REFUSAL",
+                "node_id": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_underlying_refusal",
+                "refusal_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
+                "field": "observation.native_record.identity.underlying",
+                "result": "PASSED_EXACT_THREE_PHASES_WITH_SOURCE_FIELD_REFUSAL_ASSERTED"
+              },
+              {
+                "case_id": "L01B-R112-CONTROLLED-SECURITY-TYPE-REFUSAL",
+                "node_id": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_security_type_refusal",
+                "refusal_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
+                "field": "observation.native_record.identity.security_type",
+                "result": "PASSED_EXACT_THREE_PHASES_WITH_SOURCE_FIELD_REFUSAL_ASSERTED"
+              },
+              {
+                "case_id": "L01B-R112-CONTROLLED-RIGHT-REFUSAL",
+                "node_id": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_right_refusal",
+                "refusal_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
+                "field": "observation.native_record.identity.right",
+                "result": "PASSED_EXACT_THREE_PHASES_WITH_SOURCE_FIELD_REFUSAL_ASSERTED"
+              },
+              {
+                "case_id": "L01B-R112-CONTROLLED-EXPIRY-DATE-REFUSAL",
+                "node_id": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_expiry_date_refusal",
+                "refusal_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
+                "field": "observation.native_record.identity.expiry_date",
+                "result": "PASSED_EXACT_THREE_PHASES_WITH_SOURCE_FIELD_REFUSAL_ASSERTED"
+              },
+              {
+                "case_id": "L01B-R112-CONTROLLED-STRIKE-REFUSAL",
+                "node_id": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_strike_refusal",
+                "refusal_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
+                "field": "observation.native_record.identity.strike",
+                "result": "PASSED_EXACT_THREE_PHASES_WITH_SOURCE_FIELD_REFUSAL_ASSERTED"
+              },
+              {
+                "case_id": "L01B-R112-CONTROLLED-CURRENCY-REFUSAL",
+                "node_id": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_currency_refusal",
+                "refusal_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
+                "field": "observation.native_record.identity.currency",
+                "result": "PASSED_EXACT_THREE_PHASES_WITH_SOURCE_FIELD_REFUSAL_ASSERTED"
+              },
+              {
+                "case_id": "L01B-R112-CONTROLLED-MODEL-VARIANT-REFUSAL",
+                "node_id": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_model_variant_refusal",
+                "refusal_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
+                "field": "observation.native_record.identity.model_variant",
+                "result": "PASSED_EXACT_THREE_PHASES_WITH_SOURCE_FIELD_REFUSAL_ASSERTED"
+              },
+              {
+                "case_id": "L01B-R112-CONTROLLED-SCALE-REFUSAL",
+                "node_id": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_scale_refusal",
+                "refusal_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
+                "field": "observation.native_record.identity.scale",
+                "result": "PASSED_EXACT_THREE_PHASES_WITH_SOURCE_FIELD_REFUSAL_ASSERTED"
+              },
+              {
+                "case_id": "L01B-R112-CONTROLLED-GENERATION-REFUSAL",
+                "node_id": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_generation_refusal",
+                "refusal_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
+                "field": "observation.native_record.identity.generation",
+                "result": "PASSED_EXACT_THREE_PHASES_WITH_SOURCE_FIELD_REFUSAL_ASSERTED"
+              },
+              {
+                "case_id": "L01B-R112-CONTROLLED-REQUEST-ID-REFUSAL",
+                "node_id": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_request_id_refusal",
+                "refusal_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
+                "field": "observation.native_record.identity.request_id",
+                "result": "PASSED_EXACT_THREE_PHASES_WITH_SOURCE_FIELD_REFUSAL_ASSERTED"
+              },
+              {
+                "case_id": "L01B-R112-CONTROLLED-SEQUENCE-SCOPE-REFUSAL",
+                "node_id": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_sequence_scope_refusal",
+                "refusal_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
+                "field": "observation.ingestion_sequence_scope",
+                "result": "PASSED_EXACT_THREE_PHASES_WITH_SOURCE_FIELD_REFUSAL_ASSERTED"
+              }
+            ],
+            "dependent_D091_child_execution_authorised": false
+          }
+        ]
       }
     }
   ]
