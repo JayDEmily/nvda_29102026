@@ -283,7 +283,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/d091/test_signal.py",
             "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_success",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_D091_SECOND_TRANCHE",
+            "status": "INDEPENDENT_TESTED_ACCEPTED_D091_L04_EXACT18",
             "expected_stage": "CATEGORY_DURABLE_REOPEN_AND_IDEMPOTENT_RETRY",
             "fixture_path": null,
             "fixture_sha256": null,
@@ -314,7 +314,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/d091/test_signal.py",
             "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_reached_refusal",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_D091_SECOND_TRANCHE",
+            "status": "INDEPENDENT_TESTED_ACCEPTED_D091_L04_EXACT18",
             "expected_stage": "RANGE",
             "fixture_path": null,
             "fixture_sha256": null,
@@ -330,7 +330,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/d091/test_signal.py",
             "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_seal_refusal",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_D091_SECOND_TRANCHE",
+            "status": "INDEPENDENT_TESTED_ACCEPTED_D091_L04_EXACT18",
             "expected_stage": "COORDINATOR_POSTSEAL_INGRESS_REFUSAL",
             "fixture_path": null,
             "fixture_sha256": null,
@@ -350,7 +350,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/d091/test_signal.py",
             "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_nonfinite_refusal",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_D091_SECOND_TRANCHE",
+            "status": "INDEPENDENT_TESTED_ACCEPTED_D091_L04_EXACT18",
             "expected_stage": "NONFINITE",
             "fixture_path": null,
             "fixture_sha256": null,
@@ -366,7 +366,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/d091/test_signal.py",
             "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_absent_refusal",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_D091_SECOND_TRANCHE",
+            "status": "INDEPENDENT_TESTED_ACCEPTED_D091_L04_EXACT18",
             "expected_stage": "ABSENT",
             "fixture_path": null,
             "fixture_sha256": null,
@@ -382,7 +382,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/d091/test_signal.py",
             "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_receipt_asof_refusal",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_D091_SECOND_TRANCHE",
+            "status": "INDEPENDENT_TESTED_ACCEPTED_D091_L04_EXACT18",
             "expected_stage": "CLOCK_OR_SCOPE",
             "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/d091_controlled_receipt_asof_refusal.json",
             "fixture_sha256": "cf079a54252dd708201d09c3e76c216221bc3f7b6b07beb1914888674a37d706",
@@ -398,7 +398,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/d091/test_signal.py",
             "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_cutoff_order_refusal",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_D091_SECOND_TRANCHE",
+            "status": "INDEPENDENT_TESTED_ACCEPTED_D091_L04_EXACT18",
             "expected_stage": "CLOCK_OR_SCOPE",
             "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/d091_controlled_cutoff_order_refusal.json",
             "fixture_sha256": "53c9a8d7c7eaf38a4544584ceea518881c49469f976a206be6f7c4010ba548b7",
@@ -414,7 +414,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/d091/test_signal.py",
             "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_top_rank_tie_refusal",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_D091_SECOND_TRANCHE",
+            "status": "INDEPENDENT_TESTED_ACCEPTED_D091_L04_EXACT18",
             "expected_stage": "HISTORY_OR_AMBIGUOUS_RANK",
             "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/d091_controlled_top_rank_tie_refusal.json",
             "fixture_sha256": "0d34b51e309db8799bd6426f1e183a80e1d9244354cda2867af2b1e7271ef0fc",
@@ -430,7 +430,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/d091/test_signal.py",
             "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_over_64_refusal",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_D091_SECOND_TRANCHE",
+            "status": "INDEPENDENT_TESTED_ACCEPTED_D091_L04_EXACT18",
             "expected_stage": "HISTORY_OR_AMBIGUOUS_RANK",
             "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/d091_controlled_over_64_refusal.json",
             "fixture_sha256": "ba7129a821d9e6434be9fc5fcc454d8ebd78f043c090255f0c1c2cfde630caf7",
@@ -446,7 +446,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/d091/test_signal.py",
             "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_cursor_nonprogress_refusal",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_D091_SECOND_TRANCHE",
+            "status": "INDEPENDENT_TESTED_ACCEPTED_D091_L04_EXACT18",
             "expected_stage": "HISTORY_OR_AMBIGUOUS_RANK",
             "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/d091_controlled_cursor_nonprogress_refusal.json",
             "fixture_sha256": "4031f4640a1373c377a623f442a0f2ec859a176ac725906c48cc6b2b1e5d2fcf",
@@ -462,7 +462,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/d091/test_signal.py",
             "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_duplicate_id_conflict_refusal",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_D091_SECOND_TRANCHE",
+            "status": "INDEPENDENT_TESTED_ACCEPTED_D091_L04_EXACT18",
             "expected_stage": "HISTORY_OR_AMBIGUOUS_RANK",
             "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/d091_controlled_duplicate_id_conflict_refusal.json",
             "fixture_sha256": "c9fbf5aa427b87d287f05e4b5cfe2daadb50e3236d1529654fd6450db6896c98",
@@ -478,7 +478,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/d091/test_signal.py",
             "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_precommit_sqlite_failure",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_D091_SECOND_TRANCHE",
+            "status": "INDEPENDENT_TESTED_ACCEPTED_D091_L04_EXACT18",
             "expected_stage": "PERSISTENCE_PRECOMMIT_CERTAIN_FAILURE",
             "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/d091_controlled_precommit_sqlite_failure.json",
             "fixture_sha256": "0f954fc8d7a132091576cb7af92072d7eabc839c47373189658130437cc4e20b",
@@ -495,7 +495,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/d091/test_signal.py",
             "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_uncertain_commit_failure",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_D091_SECOND_TRANCHE",
+            "status": "INDEPENDENT_TESTED_ACCEPTED_D091_L04_EXACT18",
             "expected_stage": "PERSISTENCE_UNCERTAIN_POSTCOMMIT",
             "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/d091_controlled_uncertain_commit_failure.json",
             "fixture_sha256": "15b15b769d92258731c6cd72cc6ca322a331401249d42be74443f0166cd135e3",
@@ -511,7 +511,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/d091/test_signal.py",
             "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_same_id_content_conflict",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_D091_SECOND_TRANCHE",
+            "status": "INDEPENDENT_TESTED_ACCEPTED_D091_L04_EXACT18",
             "expected_stage": "PERSISTENCE_IMMUTABLE_CONFLICT",
             "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/d091_controlled_same_id_content_conflict.json",
             "fixture_sha256": "93154f6bf3d26c09b1b74718112016d1002ef39efcaf084c189f1b4a1af06408",
@@ -527,7 +527,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/d091/test_signal.py",
             "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_original_getter_missing",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_D091_SECOND_TRANCHE",
+            "status": "INDEPENDENT_TESTED_ACCEPTED_D091_L04_EXACT18",
             "expected_stage": "ORIGIN_OR_IDENTITY",
             "fixture_path": "handoff/m02_completion_28_execution/L04/D091_ORIGINAL_GETTER_FAULT_PREP_20261116/NEGATIVE_FIXTURES/d091_controlled_original_getter_missing.json",
             "fixture_sha256": "ac1b985e87cb2f4ca0dfed0fd1dc3bb4c0fac8d5794ff4831cda2014a68810b3",
@@ -541,7 +541,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/d091/test_signal.py",
             "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_original_getter_units_mismatch",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_D091_SECOND_TRANCHE",
+            "status": "INDEPENDENT_TESTED_ACCEPTED_D091_L04_EXACT18",
             "expected_stage": "ORIGIN_OR_IDENTITY",
             "fixture_path": "handoff/m02_completion_28_execution/L04/D091_ORIGINAL_GETTER_FAULT_PREP_20261116/NEGATIVE_FIXTURES/d091_controlled_original_getter_units_mismatch.json",
             "fixture_sha256": "a80a39c150eafb970089f40f7d8ba60c82ae43cb248abb5e472497f2edd49608",
@@ -555,7 +555,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/d091/test_signal.py",
             "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_original_getter_generation_mismatch",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_D091_SECOND_TRANCHE",
+            "status": "INDEPENDENT_TESTED_ACCEPTED_D091_L04_EXACT18",
             "expected_stage": "ORIGIN_OR_IDENTITY",
             "fixture_path": "handoff/m02_completion_28_execution/L04/D091_ORIGINAL_GETTER_FAULT_PREP_20261116/NEGATIVE_FIXTURES/d091_controlled_original_getter_generation_mismatch.json",
             "fixture_sha256": "e3b11ca22017e465fc63f11b102bbc6d696d2fe40436b6bc5a501e0da4078352",
@@ -569,7 +569,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/d091/test_signal.py",
             "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_unsealed_refusal",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_D091_SECOND_TRANCHE",
+            "status": "INDEPENDENT_TESTED_ACCEPTED_D091_L04_EXACT18",
             "expected_stage": "UNSEALED",
             "fixture_path": null,
             "fixture_sha256": null,
@@ -588,8 +588,178 @@
       "execution": {
         "scheduled_leaf": "L04_D091_AFTER_INDEPENDENT_TESTED_ACCEPTED_L01B_PARENT15",
         "reviewer": "https://chatgpt.com/g/g-p-6ad546f307e88191b64b94d0851da624-nvda-6-1/c/6aff8bbe-5c5c-83ec-99eb-6988bcf8aba7",
-        "semantic_status": "NOT_ATTEMPTED",
-        "runs": []
+        "semantic_status": "TESTED_ACCEPTED_D091_L04_EXACT18_ONLY",
+        "runs": [
+          {
+            "run_id": "D091-L04-CHILD18-STRICT-TESTER-20261120-001",
+            "outcome": "TESTED_ACCEPTED_D091_L04_EXACT18_ONLY",
+            "product_source_commit": "b7d044a4f84b7f70703322c250cbd82cee6f4589",
+            "source_tree": "0704cd4ebe09801e7116ed517cceda756f5e1dbf",
+            "execution_release_ledger_commit": "cd7676149f3ff903e557e6b083f91c97c1508e5c",
+            "execution_release_ledger_blob_sha1": "6c7516f1f7e69aa28ccca5a361baa58e812715af",
+            "separate_strict_tester_conversation": "https://chatgpt.com/g/g-p-6ad546f307e88191b64b94d0851da624-nvda-6-1/c/6aff8bbe-5c5c-83ec-99eb-6988bcf8aba7",
+            "independent_report_commit": "7322441997d5ab75fa412676e3ae42aba03dcb79",
+            "independent_report_tree": "b5b0b5045c30a12bc03a8a489c76b0e7672c930f",
+            "independent_report_git_blob_sha1": "b1cca2af3d493f84a48c457e00b724d095f2566d",
+            "independent_report_path": "handoff/m02_completion_28_execution/L04/D091_STRICT_TESTER_CHILD18_20261120/INDEPENDENT_D091_CHILD18_PRODUCT_PROOF_REPORT.md",
+            "independent_verdict": "TESTED_ACCEPTED_D091_L04_EXACT18_ONLY",
+            "first_product_run_utc": "2026-11-20T03:08:54Z",
+            "selected_runner": "/home/jds/nvda_d091_worker_proof_runner_venv_20261119/bin/python",
+            "command": "/home/jds/nvda_d091_worker_proof_runner_venv_20261119/bin/python -m pytest -p product_proof_outcomes -p no:cacheprovider -vv tests/product/m02_completion_28/d091/test_signal.py",
+            "exitstatus": 0,
+            "execution_nonce": "83e93efe78506b1ab852bcadffdc51f36500c0d8cf0012d1b5acfffc82097330",
+            "collected_exact_original_node_ids": true,
+            "physical_case_count": 18,
+            "all_18_setup_call_teardown_pass": true,
+            "separate_l01b_parent_reexecuted": false,
+            "accepted_parent_report_commit": "f0aba1a87bf889e91dcf154f2c04e5517b4a2901",
+            "accepted_parent_raw_observer_sha256": "747f0bd67dda31aac22987bb10b9fb84e765d215acefbe3ebe03f80f79edb70e",
+            "raw_observer_json_sha256": "d53c605210b77bda5822daf1df8de7b28610a73a981eb1cfff74e7237e6cea58",
+            "stdout_sha256": "35e4990ff4d8fe8d8d6c5ccc6eea2e9f3064d2e63df123acc61bbbcf3c8f74e9",
+            "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "independent_case_audit_sha256": "a759631b0605c8e9fe85add22c397d698a8fea45b8f4c4c9786b4d3dd14cb6dd",
+            "independent_readonly_sqlite_forensic_sha256": "587613fd00d173bf4d5e67e92c69d72fb01abf50815787d8e86bf2edb2088eb4",
+            "independent_forensic_database_count": 18,
+            "independent_forensic_durable_row_count": 15,
+            "read_only_disk_reopen_counts": {
+              "d091_success.sqlite3": 12,
+              "postcommit.sqlite3": 1,
+              "postseal.sqlite3": 1,
+              "precommit.sqlite3": 0,
+              "sameid.sqlite3": 1
+            },
+            "raw_evidence_directory": "/home/jds/nvda_d091_child18_20261120_UGbs9Ccd",
+            "observed_witnesses": [
+              {
+                "case_id": "D091-CONTROLLED-SUCCESS",
+                "node_id": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_success",
+                "expected_stage": "CATEGORY_DURABLE_REOPEN_AND_IDEMPOTENT_RETRY",
+                "observed_phases": "PASSED_SETUP_CALL_TEARDOWN",
+                "semantic_verdict": "TESTED_ACCEPTED_IN_EXACT_D091_FAMILY"
+              },
+              {
+                "case_id": "D091-CONTROLLED-REACHED_REFUSAL",
+                "node_id": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_reached_refusal",
+                "expected_stage": "RANGE",
+                "observed_phases": "PASSED_SETUP_CALL_TEARDOWN",
+                "semantic_verdict": "TESTED_ACCEPTED_IN_EXACT_D091_FAMILY"
+              },
+              {
+                "case_id": "D091-CONTROLLED-SEAL-REFUSAL",
+                "node_id": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_seal_refusal",
+                "expected_stage": "COORDINATOR_POSTSEAL_INGRESS_REFUSAL",
+                "observed_phases": "PASSED_SETUP_CALL_TEARDOWN",
+                "semantic_verdict": "TESTED_ACCEPTED_IN_EXACT_D091_FAMILY"
+              },
+              {
+                "case_id": "D091-CONTROLLED-NONFINITE-REFUSAL",
+                "node_id": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_nonfinite_refusal",
+                "expected_stage": "NONFINITE",
+                "observed_phases": "PASSED_SETUP_CALL_TEARDOWN",
+                "semantic_verdict": "TESTED_ACCEPTED_IN_EXACT_D091_FAMILY"
+              },
+              {
+                "case_id": "D091-CONTROLLED-ABSENT-REFUSAL",
+                "node_id": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_absent_refusal",
+                "expected_stage": "ABSENT",
+                "observed_phases": "PASSED_SETUP_CALL_TEARDOWN",
+                "semantic_verdict": "TESTED_ACCEPTED_IN_EXACT_D091_FAMILY"
+              },
+              {
+                "case_id": "D091-CONTROLLED-RECEIPT-ASOF-REFUSAL",
+                "node_id": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_receipt_asof_refusal",
+                "expected_stage": "CLOCK_OR_SCOPE",
+                "observed_phases": "PASSED_SETUP_CALL_TEARDOWN",
+                "semantic_verdict": "TESTED_ACCEPTED_IN_EXACT_D091_FAMILY"
+              },
+              {
+                "case_id": "D091-CONTROLLED-CUTOFF-ORDER-REFUSAL",
+                "node_id": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_cutoff_order_refusal",
+                "expected_stage": "CLOCK_OR_SCOPE",
+                "observed_phases": "PASSED_SETUP_CALL_TEARDOWN",
+                "semantic_verdict": "TESTED_ACCEPTED_IN_EXACT_D091_FAMILY"
+              },
+              {
+                "case_id": "D091-CONTROLLED-TOP-RANK-TIE-REFUSAL",
+                "node_id": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_top_rank_tie_refusal",
+                "expected_stage": "HISTORY_OR_AMBIGUOUS_RANK",
+                "observed_phases": "PASSED_SETUP_CALL_TEARDOWN",
+                "semantic_verdict": "TESTED_ACCEPTED_IN_EXACT_D091_FAMILY"
+              },
+              {
+                "case_id": "D091-CONTROLLED-OVER-64-REFUSAL",
+                "node_id": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_over_64_refusal",
+                "expected_stage": "HISTORY_OR_AMBIGUOUS_RANK",
+                "observed_phases": "PASSED_SETUP_CALL_TEARDOWN",
+                "semantic_verdict": "TESTED_ACCEPTED_IN_EXACT_D091_FAMILY"
+              },
+              {
+                "case_id": "D091-CONTROLLED-CURSOR-NONPROGRESS-REFUSAL",
+                "node_id": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_cursor_nonprogress_refusal",
+                "expected_stage": "HISTORY_OR_AMBIGUOUS_RANK",
+                "observed_phases": "PASSED_SETUP_CALL_TEARDOWN",
+                "semantic_verdict": "TESTED_ACCEPTED_IN_EXACT_D091_FAMILY"
+              },
+              {
+                "case_id": "D091-CONTROLLED-DUPLICATE-ID-CONFLICT-REFUSAL",
+                "node_id": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_duplicate_id_conflict_refusal",
+                "expected_stage": "HISTORY_OR_AMBIGUOUS_RANK",
+                "observed_phases": "PASSED_SETUP_CALL_TEARDOWN",
+                "semantic_verdict": "TESTED_ACCEPTED_IN_EXACT_D091_FAMILY"
+              },
+              {
+                "case_id": "D091-CONTROLLED-PRECOMMIT-SQLITE-FAILURE",
+                "node_id": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_precommit_sqlite_failure",
+                "expected_stage": "PERSISTENCE_PRECOMMIT_CERTAIN_FAILURE",
+                "observed_phases": "PASSED_SETUP_CALL_TEARDOWN",
+                "semantic_verdict": "TESTED_ACCEPTED_IN_EXACT_D091_FAMILY"
+              },
+              {
+                "case_id": "D091-CONTROLLED-UNCERTAIN-COMMIT-FAILURE",
+                "node_id": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_uncertain_commit_failure",
+                "expected_stage": "PERSISTENCE_UNCERTAIN_POSTCOMMIT",
+                "observed_phases": "PASSED_SETUP_CALL_TEARDOWN",
+                "semantic_verdict": "TESTED_ACCEPTED_IN_EXACT_D091_FAMILY"
+              },
+              {
+                "case_id": "D091-CONTROLLED-SAME-ID-CONTENT-CONFLICT",
+                "node_id": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_same_id_content_conflict",
+                "expected_stage": "PERSISTENCE_IMMUTABLE_CONFLICT",
+                "observed_phases": "PASSED_SETUP_CALL_TEARDOWN",
+                "semantic_verdict": "TESTED_ACCEPTED_IN_EXACT_D091_FAMILY"
+              },
+              {
+                "case_id": "D091-CONTROLLED-ORIGINAL-GETTER-MISSING",
+                "node_id": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_original_getter_missing",
+                "expected_stage": "ORIGIN_OR_IDENTITY",
+                "observed_phases": "PASSED_SETUP_CALL_TEARDOWN",
+                "semantic_verdict": "TESTED_ACCEPTED_IN_EXACT_D091_FAMILY"
+              },
+              {
+                "case_id": "D091-CONTROLLED-ORIGINAL-GETTER-UNITS-MISMATCH",
+                "node_id": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_original_getter_units_mismatch",
+                "expected_stage": "ORIGIN_OR_IDENTITY",
+                "observed_phases": "PASSED_SETUP_CALL_TEARDOWN",
+                "semantic_verdict": "TESTED_ACCEPTED_IN_EXACT_D091_FAMILY"
+              },
+              {
+                "case_id": "D091-CONTROLLED-ORIGINAL-GETTER-GENERATION-MISMATCH",
+                "node_id": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_original_getter_generation_mismatch",
+                "expected_stage": "ORIGIN_OR_IDENTITY",
+                "observed_phases": "PASSED_SETUP_CALL_TEARDOWN",
+                "semantic_verdict": "TESTED_ACCEPTED_IN_EXACT_D091_FAMILY"
+              },
+              {
+                "case_id": "D091-CONTROLLED-UNSEALED-REFUSAL",
+                "node_id": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_unsealed_refusal",
+                "expected_stage": "UNSEALED",
+                "observed_phases": "PASSED_SETUP_CALL_TEARDOWN",
+                "semantic_verdict": "TESTED_ACCEPTED_IN_EXACT_D091_FAMILY"
+              }
+            ],
+            "scope": "Exact 18 D091 controlled synthetic cases only; NOT G1/G5, live-provider or production acceptance"
+          }
+        ]
       }
     },
     {
