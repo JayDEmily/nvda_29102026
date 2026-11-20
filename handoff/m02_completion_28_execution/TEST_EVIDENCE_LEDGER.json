@@ -283,7 +283,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/d091/test_signal.py",
             "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_success",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_HELD",
+            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_D091_SECOND_TRANCHE",
             "expected_stage": "CATEGORY_DURABLE_REOPEN_AND_IDEMPOTENT_RETRY",
             "fixture_path": null,
             "fixture_sha256": null,
@@ -305,8 +305,8 @@
               "P15_RETRY_FIRST_TIMESTAMP",
               "D04_FIRST_TIMESTAMP_PRESERVED"
             ],
-            "claim_generation_binding": "UNBOUND_FUTURE_PRODUCT_CANDIDATE",
-            "execution_authorised": false
+            "claim_generation_binding": "candidate:b7d044a4f84b7f70703322c250cbd82cee6f4589|M02_claim:neutral_market_measurement_truth_d091|generation:0001@sha256:429df0e6b732ed019f9bc62d67f36bc295b556f89f7da670e8d76fcce4581097|pointer_sha256:31cba6801940c2abfe0b9bcbb11bf9101cfe8e8bada1525218a4cf77300218af",
+            "execution_authorised": true
           },
           {
             "case_id": "D091-CONTROLLED-REACHED_REFUSAL",
@@ -314,15 +314,15 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/d091/test_signal.py",
             "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_reached_refusal",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_HELD",
+            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_D091_SECOND_TRANCHE",
             "expected_stage": "RANGE",
             "fixture_path": null,
             "fixture_sha256": null,
             "predecessor_witness_ids": [
               "R01_EXACT_ONE_POINT_ZERO_ONE_RANGE"
             ],
-            "claim_generation_binding": "UNBOUND_FUTURE_PRODUCT_CANDIDATE",
-            "execution_authorised": false
+            "claim_generation_binding": "candidate:b7d044a4f84b7f70703322c250cbd82cee6f4589|M02_claim:neutral_market_measurement_truth_d091|generation:0001@sha256:429df0e6b732ed019f9bc62d67f36bc295b556f89f7da670e8d76fcce4581097|pointer_sha256:31cba6801940c2abfe0b9bcbb11bf9101cfe8e8bada1525218a4cf77300218af",
+            "execution_authorised": true
           },
           {
             "case_id": "D091-CONTROLLED-SEAL-REFUSAL",
@@ -330,7 +330,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/d091/test_signal.py",
             "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_seal_refusal",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_HELD",
+            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_D091_SECOND_TRANCHE",
             "expected_stage": "COORDINATOR_POSTSEAL_INGRESS_REFUSAL",
             "fixture_path": null,
             "fixture_sha256": null,
@@ -341,8 +341,8 @@
               "S04_NO_COMMAND_ALIAS_ESCAPE",
               "S05_UNCHANGED_IDS_BEFORE_AFTER_PAGINATION"
             ],
-            "claim_generation_binding": "UNBOUND_FUTURE_PRODUCT_CANDIDATE",
-            "execution_authorised": false
+            "claim_generation_binding": "candidate:b7d044a4f84b7f70703322c250cbd82cee6f4589|M02_claim:neutral_market_measurement_truth_d091|generation:0001@sha256:429df0e6b732ed019f9bc62d67f36bc295b556f89f7da670e8d76fcce4581097|pointer_sha256:31cba6801940c2abfe0b9bcbb11bf9101cfe8e8bada1525218a4cf77300218af",
+            "execution_authorised": true
           },
           {
             "case_id": "D091-CONTROLLED-NONFINITE-REFUSAL",
@@ -350,15 +350,15 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/d091/test_signal.py",
             "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_nonfinite_refusal",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_HELD",
+            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_D091_SECOND_TRANCHE",
             "expected_stage": "NONFINITE",
             "fixture_path": null,
             "fixture_sha256": null,
             "predecessor_witness_ids": [
               "O01_NAN_NONFINITE"
             ],
-            "claim_generation_binding": "UNBOUND_FUTURE_PRODUCT_CANDIDATE",
-            "execution_authorised": false
+            "claim_generation_binding": "candidate:b7d044a4f84b7f70703322c250cbd82cee6f4589|M02_claim:neutral_market_measurement_truth_d091|generation:0001@sha256:429df0e6b732ed019f9bc62d67f36bc295b556f89f7da670e8d76fcce4581097|pointer_sha256:31cba6801940c2abfe0b9bcbb11bf9101cfe8e8bada1525218a4cf77300218af",
+            "execution_authorised": true
           },
           {
             "case_id": "D091-CONTROLLED-ABSENT-REFUSAL",
@@ -366,15 +366,15 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/d091/test_signal.py",
             "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_absent_refusal",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_HELD",
+            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_D091_SECOND_TRANCHE",
             "expected_stage": "ABSENT",
             "fixture_path": null,
             "fixture_sha256": null,
             "predecessor_witness_ids": [
               "O02_ABSENT_MODEL_DELTA"
             ],
-            "claim_generation_binding": "UNBOUND_FUTURE_PRODUCT_CANDIDATE",
-            "execution_authorised": false
+            "claim_generation_binding": "candidate:b7d044a4f84b7f70703322c250cbd82cee6f4589|M02_claim:neutral_market_measurement_truth_d091|generation:0001@sha256:429df0e6b732ed019f9bc62d67f36bc295b556f89f7da670e8d76fcce4581097|pointer_sha256:31cba6801940c2abfe0b9bcbb11bf9101cfe8e8bada1525218a4cf77300218af",
+            "execution_authorised": true
           },
           {
             "case_id": "D091-CONTROLLED-RECEIPT-ASOF-REFUSAL",
@@ -382,15 +382,15 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/d091/test_signal.py",
             "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_receipt_asof_refusal",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_HELD",
+            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_D091_SECOND_TRANCHE",
             "expected_stage": "CLOCK_OR_SCOPE",
             "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/d091_controlled_receipt_asof_refusal.json",
             "fixture_sha256": "cf079a54252dd708201d09c3e76c216221bc3f7b6b07beb1914888674a37d706",
             "predecessor_witness_ids": [
               "H01_RECEIPT_NOT_EQUAL_ASOF"
             ],
-            "claim_generation_binding": "UNBOUND_FUTURE_PRODUCT_CANDIDATE",
-            "execution_authorised": false
+            "claim_generation_binding": "candidate:b7d044a4f84b7f70703322c250cbd82cee6f4589|M02_claim:neutral_market_measurement_truth_d091|generation:0001@sha256:429df0e6b732ed019f9bc62d67f36bc295b556f89f7da670e8d76fcce4581097|pointer_sha256:31cba6801940c2abfe0b9bcbb11bf9101cfe8e8bada1525218a4cf77300218af",
+            "execution_authorised": true
           },
           {
             "case_id": "D091-CONTROLLED-CUTOFF-ORDER-REFUSAL",
@@ -398,15 +398,15 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/d091/test_signal.py",
             "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_cutoff_order_refusal",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_HELD",
+            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_D091_SECOND_TRANCHE",
             "expected_stage": "CLOCK_OR_SCOPE",
             "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/d091_controlled_cutoff_order_refusal.json",
             "fixture_sha256": "53c9a8d7c7eaf38a4544584ceea518881c49469f976a206be6f7c4010ba548b7",
             "predecessor_witness_ids": [
               "H02_KNOWLEDGE_CUTOFF_ORDER"
             ],
-            "claim_generation_binding": "UNBOUND_FUTURE_PRODUCT_CANDIDATE",
-            "execution_authorised": false
+            "claim_generation_binding": "candidate:b7d044a4f84b7f70703322c250cbd82cee6f4589|M02_claim:neutral_market_measurement_truth_d091|generation:0001@sha256:429df0e6b732ed019f9bc62d67f36bc295b556f89f7da670e8d76fcce4581097|pointer_sha256:31cba6801940c2abfe0b9bcbb11bf9101cfe8e8bada1525218a4cf77300218af",
+            "execution_authorised": true
           },
           {
             "case_id": "D091-CONTROLLED-TOP-RANK-TIE-REFUSAL",
@@ -414,15 +414,15 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/d091/test_signal.py",
             "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_top_rank_tie_refusal",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_HELD",
+            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_D091_SECOND_TRANCHE",
             "expected_stage": "HISTORY_OR_AMBIGUOUS_RANK",
             "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/d091_controlled_top_rank_tie_refusal.json",
             "fixture_sha256": "0d34b51e309db8799bd6426f1e183a80e1d9244354cda2867af2b1e7271ef0fc",
             "predecessor_witness_ids": [
               "H04_TWO_DISTINCT_TOP_RANK_TIE"
             ],
-            "claim_generation_binding": "UNBOUND_FUTURE_PRODUCT_CANDIDATE",
-            "execution_authorised": false
+            "claim_generation_binding": "candidate:b7d044a4f84b7f70703322c250cbd82cee6f4589|M02_claim:neutral_market_measurement_truth_d091|generation:0001@sha256:429df0e6b732ed019f9bc62d67f36bc295b556f89f7da670e8d76fcce4581097|pointer_sha256:31cba6801940c2abfe0b9bcbb11bf9101cfe8e8bada1525218a4cf77300218af",
+            "execution_authorised": true
           },
           {
             "case_id": "D091-CONTROLLED-OVER-64-REFUSAL",
@@ -430,15 +430,15 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/d091/test_signal.py",
             "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_over_64_refusal",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_HELD",
+            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_D091_SECOND_TRANCHE",
             "expected_stage": "HISTORY_OR_AMBIGUOUS_RANK",
             "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/d091_controlled_over_64_refusal.json",
             "fixture_sha256": "ba7129a821d9e6434be9fc5fcc454d8ebd78f043c090255f0c1c2cfde630caf7",
             "predecessor_witness_ids": [
               "H05_PROJECTED_MORE_THAN_64"
             ],
-            "claim_generation_binding": "UNBOUND_FUTURE_PRODUCT_CANDIDATE",
-            "execution_authorised": false
+            "claim_generation_binding": "candidate:b7d044a4f84b7f70703322c250cbd82cee6f4589|M02_claim:neutral_market_measurement_truth_d091|generation:0001@sha256:429df0e6b732ed019f9bc62d67f36bc295b556f89f7da670e8d76fcce4581097|pointer_sha256:31cba6801940c2abfe0b9bcbb11bf9101cfe8e8bada1525218a4cf77300218af",
+            "execution_authorised": true
           },
           {
             "case_id": "D091-CONTROLLED-CURSOR-NONPROGRESS-REFUSAL",
@@ -446,15 +446,15 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/d091/test_signal.py",
             "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_cursor_nonprogress_refusal",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_HELD",
+            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_D091_SECOND_TRANCHE",
             "expected_stage": "HISTORY_OR_AMBIGUOUS_RANK",
             "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/d091_controlled_cursor_nonprogress_refusal.json",
             "fixture_sha256": "4031f4640a1373c377a623f442a0f2ec859a176ac725906c48cc6b2b1e5d2fcf",
             "predecessor_witness_ids": [
               "H06_RETURNED_CURSOR_CYCLE_NONPROGRESS"
             ],
-            "claim_generation_binding": "UNBOUND_FUTURE_PRODUCT_CANDIDATE",
-            "execution_authorised": false
+            "claim_generation_binding": "candidate:b7d044a4f84b7f70703322c250cbd82cee6f4589|M02_claim:neutral_market_measurement_truth_d091|generation:0001@sha256:429df0e6b732ed019f9bc62d67f36bc295b556f89f7da670e8d76fcce4581097|pointer_sha256:31cba6801940c2abfe0b9bcbb11bf9101cfe8e8bada1525218a4cf77300218af",
+            "execution_authorised": true
           },
           {
             "case_id": "D091-CONTROLLED-DUPLICATE-ID-CONFLICT-REFUSAL",
@@ -462,15 +462,15 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/d091/test_signal.py",
             "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_duplicate_id_conflict_refusal",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_HELD",
+            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_D091_SECOND_TRANCHE",
             "expected_stage": "HISTORY_OR_AMBIGUOUS_RANK",
             "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/d091_controlled_duplicate_id_conflict_refusal.json",
             "fixture_sha256": "c9fbf5aa427b87d287f05e4b5cfe2daadb50e3236d1529654fd6450db6896c98",
             "predecessor_witness_ids": [
               "H07_DUPLICATE_ID_CONFLICT"
             ],
-            "claim_generation_binding": "UNBOUND_FUTURE_PRODUCT_CANDIDATE",
-            "execution_authorised": false
+            "claim_generation_binding": "candidate:b7d044a4f84b7f70703322c250cbd82cee6f4589|M02_claim:neutral_market_measurement_truth_d091|generation:0001@sha256:429df0e6b732ed019f9bc62d67f36bc295b556f89f7da670e8d76fcce4581097|pointer_sha256:31cba6801940c2abfe0b9bcbb11bf9101cfe8e8bada1525218a4cf77300218af",
+            "execution_authorised": true
           },
           {
             "case_id": "D091-CONTROLLED-PRECOMMIT-SQLITE-FAILURE",
@@ -478,7 +478,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/d091/test_signal.py",
             "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_precommit_sqlite_failure",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_HELD",
+            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_D091_SECOND_TRANCHE",
             "expected_stage": "PERSISTENCE_PRECOMMIT_CERTAIN_FAILURE",
             "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/d091_controlled_precommit_sqlite_failure.json",
             "fixture_sha256": "0f954fc8d7a132091576cb7af92072d7eabc839c47373189658130437cc4e20b",
@@ -486,8 +486,8 @@
               "D01_PRECOMMIT_SQLITE_FAILURE",
               "D05_NO_SUCCESSFUL_READBACK_AFTER_FAILED_COMMIT"
             ],
-            "claim_generation_binding": "UNBOUND_FUTURE_PRODUCT_CANDIDATE",
-            "execution_authorised": false
+            "claim_generation_binding": "candidate:b7d044a4f84b7f70703322c250cbd82cee6f4589|M02_claim:neutral_market_measurement_truth_d091|generation:0001@sha256:429df0e6b732ed019f9bc62d67f36bc295b556f89f7da670e8d76fcce4581097|pointer_sha256:31cba6801940c2abfe0b9bcbb11bf9101cfe8e8bada1525218a4cf77300218af",
+            "execution_authorised": true
           },
           {
             "case_id": "D091-CONTROLLED-UNCERTAIN-COMMIT-FAILURE",
@@ -495,15 +495,15 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/d091/test_signal.py",
             "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_uncertain_commit_failure",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_HELD",
+            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_D091_SECOND_TRANCHE",
             "expected_stage": "PERSISTENCE_UNCERTAIN_POSTCOMMIT",
             "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/d091_controlled_uncertain_commit_failure.json",
             "fixture_sha256": "15b15b769d92258731c6cd72cc6ca322a331401249d42be74443f0166cd135e3",
             "predecessor_witness_ids": [
               "D02_UNCERTAIN_COMMIT_RESULT"
             ],
-            "claim_generation_binding": "UNBOUND_FUTURE_PRODUCT_CANDIDATE",
-            "execution_authorised": false
+            "claim_generation_binding": "candidate:b7d044a4f84b7f70703322c250cbd82cee6f4589|M02_claim:neutral_market_measurement_truth_d091|generation:0001@sha256:429df0e6b732ed019f9bc62d67f36bc295b556f89f7da670e8d76fcce4581097|pointer_sha256:31cba6801940c2abfe0b9bcbb11bf9101cfe8e8bada1525218a4cf77300218af",
+            "execution_authorised": true
           },
           {
             "case_id": "D091-CONTROLLED-SAME-ID-CONTENT-CONFLICT",
@@ -511,15 +511,15 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/d091/test_signal.py",
             "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_same_id_content_conflict",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_HELD",
+            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_D091_SECOND_TRANCHE",
             "expected_stage": "PERSISTENCE_IMMUTABLE_CONFLICT",
             "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/d091_controlled_same_id_content_conflict.json",
             "fixture_sha256": "93154f6bf3d26c09b1b74718112016d1002ef39efcaf084c189f1b4a1af06408",
             "predecessor_witness_ids": [
               "D03_SAME_DERIVED_ID_DIFFERENT_CONTENT_REFUSAL"
             ],
-            "claim_generation_binding": "UNBOUND_FUTURE_PRODUCT_CANDIDATE",
-            "execution_authorised": false
+            "claim_generation_binding": "candidate:b7d044a4f84b7f70703322c250cbd82cee6f4589|M02_claim:neutral_market_measurement_truth_d091|generation:0001@sha256:429df0e6b732ed019f9bc62d67f36bc295b556f89f7da670e8d76fcce4581097|pointer_sha256:31cba6801940c2abfe0b9bcbb11bf9101cfe8e8bada1525218a4cf77300218af",
+            "execution_authorised": true
           },
           {
             "case_id": "D091-CONTROLLED-ORIGINAL-GETTER-MISSING",
@@ -527,13 +527,13 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/d091/test_signal.py",
             "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_original_getter_missing",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_HELD",
+            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_D091_SECOND_TRANCHE",
             "expected_stage": "ORIGIN_OR_IDENTITY",
             "fixture_path": "handoff/m02_completion_28_execution/L04/D091_ORIGINAL_GETTER_FAULT_PREP_20261116/NEGATIVE_FIXTURES/d091_controlled_original_getter_missing.json",
             "fixture_sha256": "ac1b985e87cb2f4ca0dfed0fd1dc3bb4c0fac8d5794ff4831cda2014a68810b3",
             "predecessor_witness_ids": [],
-            "claim_generation_binding": "UNBOUND_FUTURE_PRODUCT_CANDIDATE",
-            "execution_authorised": false
+            "claim_generation_binding": "candidate:b7d044a4f84b7f70703322c250cbd82cee6f4589|M02_claim:neutral_market_measurement_truth_d091|generation:0001@sha256:429df0e6b732ed019f9bc62d67f36bc295b556f89f7da670e8d76fcce4581097|pointer_sha256:31cba6801940c2abfe0b9bcbb11bf9101cfe8e8bada1525218a4cf77300218af",
+            "execution_authorised": true
           },
           {
             "case_id": "D091-CONTROLLED-ORIGINAL-GETTER-UNITS-MISMATCH",
@@ -541,13 +541,13 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/d091/test_signal.py",
             "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_original_getter_units_mismatch",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_HELD",
+            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_D091_SECOND_TRANCHE",
             "expected_stage": "ORIGIN_OR_IDENTITY",
             "fixture_path": "handoff/m02_completion_28_execution/L04/D091_ORIGINAL_GETTER_FAULT_PREP_20261116/NEGATIVE_FIXTURES/d091_controlled_original_getter_units_mismatch.json",
             "fixture_sha256": "a80a39c150eafb970089f40f7d8ba60c82ae43cb248abb5e472497f2edd49608",
             "predecessor_witness_ids": [],
-            "claim_generation_binding": "UNBOUND_FUTURE_PRODUCT_CANDIDATE",
-            "execution_authorised": false
+            "claim_generation_binding": "candidate:b7d044a4f84b7f70703322c250cbd82cee6f4589|M02_claim:neutral_market_measurement_truth_d091|generation:0001@sha256:429df0e6b732ed019f9bc62d67f36bc295b556f89f7da670e8d76fcce4581097|pointer_sha256:31cba6801940c2abfe0b9bcbb11bf9101cfe8e8bada1525218a4cf77300218af",
+            "execution_authorised": true
           },
           {
             "case_id": "D091-CONTROLLED-ORIGINAL-GETTER-GENERATION-MISMATCH",
@@ -555,13 +555,13 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/d091/test_signal.py",
             "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_original_getter_generation_mismatch",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_HELD",
+            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_D091_SECOND_TRANCHE",
             "expected_stage": "ORIGIN_OR_IDENTITY",
             "fixture_path": "handoff/m02_completion_28_execution/L04/D091_ORIGINAL_GETTER_FAULT_PREP_20261116/NEGATIVE_FIXTURES/d091_controlled_original_getter_generation_mismatch.json",
             "fixture_sha256": "e3b11ca22017e465fc63f11b102bbc6d696d2fe40436b6bc5a501e0da4078352",
             "predecessor_witness_ids": [],
-            "claim_generation_binding": "UNBOUND_FUTURE_PRODUCT_CANDIDATE",
-            "execution_authorised": false
+            "claim_generation_binding": "candidate:b7d044a4f84b7f70703322c250cbd82cee6f4589|M02_claim:neutral_market_measurement_truth_d091|generation:0001@sha256:429df0e6b732ed019f9bc62d67f36bc295b556f89f7da670e8d76fcce4581097|pointer_sha256:31cba6801940c2abfe0b9bcbb11bf9101cfe8e8bada1525218a4cf77300218af",
+            "execution_authorised": true
           },
           {
             "case_id": "D091-CONTROLLED-UNSEALED-REFUSAL",
@@ -569,24 +569,24 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_completion_28/d091/test_signal.py",
             "proposed_test_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_unsealed_refusal",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_HELD",
+            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_D091_SECOND_TRANCHE",
             "expected_stage": "UNSEALED",
             "fixture_path": null,
             "fixture_sha256": null,
             "predecessor_witness_ids": [],
-            "claim_generation_binding": "UNBOUND_FUTURE_PRODUCT_CANDIDATE",
-            "execution_authorised": false
+            "claim_generation_binding": "candidate:b7d044a4f84b7f70703322c250cbd82cee6f4589|M02_claim:neutral_market_measurement_truth_d091|generation:0001@sha256:429df0e6b732ed019f9bc62d67f36bc295b556f89f7da670e8d76fcce4581097|pointer_sha256:31cba6801940c2abfe0b9bcbb11bf9101cfe8e8bada1525218a4cf77300218af",
+            "execution_authorised": true
           }
         ],
-        "admission_status": "OWNER_APPROVED_EXACT_FINITE_CASES_EXECUTION_HELD",
-        "execution_release": false,
+        "admission_status": "OWNER_APPROVED_EXACT_FINITE_CASES_RELEASED_SECOND_D091_TRANCHE_AFTER_INDEPENDENT_ACCEPTED_PARENT15",
+        "execution_release": true,
         "owner_decision_path": "handoff/m02_completion_28_execution/OWNER_D091_L01B_FINITE_CASE_ADMISSION_20261117/OWNER_FINITE_CASE_ADMISSION_20261117.json",
         "owner_decision_blob_sha1": "abb09419a425ee5eb2b19ed911fb32ecba41fd81",
         "inventory_git_blob_sha1": "6fe3b8afe5aa2bd9c36e3c937d806ce552673b8f",
-        "source_claim_generation_bindings": "UNRESOLVED_NOT_EXECUTION_READY"
+        "source_claim_generation_bindings": "candidate:b7d044a4f84b7f70703322c250cbd82cee6f4589|M02_claim:neutral_market_measurement_truth_d091|generation:0001@sha256:429df0e6b732ed019f9bc62d67f36bc295b556f89f7da670e8d76fcce4581097|pointer_sha256:31cba6801940c2abfe0b9bcbb11bf9101cfe8e8bada1525218a4cf77300218af|R112_source_profile:T01-R112-CONTROLLED-FRACTION-1:v1|R112_source_contract_sha256:31c811e77468f44c2e412893326bc6d5f9ea037cdbf28712ce8e213652fdfc63|R112_successful_batch_sha256:1f4c46c5c247c78e3e18bb2de02c172f775379f664bad8e056ef6867a39d03dc|independent_accepted_parent_proof_commit:f0aba1a87bf889e91dcf154f2c04e5517b4a2901|independent_accepted_parent_proof_blob_sha1:25ecd1a6f4274b3dd0157d35cf207d971739225b|independent_accepted_parent_run_nonce:70dea65b65af6714b526f084158db51bfbcedd70b7ef0e23539f514734e48b5b|independent_accepted_parent_raw_outcome_sha256:747f0bd67dda31aac22987bb10b9fb84e765d215acefbe3ebe03f80f79edb70e|parent_ledger_accepted_commit:4fe8d1ab259eef0cd13dc354abc9a672835852f5|strict_tester:https://chatgpt.com/g/g-p-6ad546f307e88191b64b94d0851da624-nvda-6-1/c/6aff8bbe-5c5c-83ec-99eb-6988bcf8aba7|selected_python_sha256:d114ec20c65fb65c77608f7b8b7110d0ff95e3b3c814f65580dad17fb56e012c|loaded_sqlite_sha256:44a469c2ed17ee19dca5f0c949f97b98b7ad0f1260bdb41fc153a4530324fb2f|source_d091_test_sha256:d1eab7802786344ecf9ab4d4e2f46b802aba6d2fea0c72d14ad149492504b86f|observer_sha256:1aafb2d33395d20e2a41ce7cc78e0c2dd2e934149f727ba888832559865a2273"
       },
       "execution": {
-        "scheduled_leaf": "G1_AFTER_L06",
+        "scheduled_leaf": "L04_D091_AFTER_INDEPENDENT_TESTED_ACCEPTED_L01B_PARENT15",
         "reviewer": "https://chatgpt.com/g/g-p-6ad546f307e88191b64b94d0851da624-nvda-6-1/c/6aff8bbe-5c5c-83ec-99eb-6988bcf8aba7",
         "semantic_status": "NOT_ATTEMPTED",
         "runs": []
