@@ -1,0 +1,64 @@
+{
+  "checks": {
+    "AST:src/nvda_desk/market_measurement_truth/_controlled_r112.py": true,
+    "AST:src/nvda_desk/market_measurement_truth/_native_codec.py": true,
+    "AST:src/nvda_desk/market_measurement_truth/_native_d091.py": true,
+    "AST:src/nvda_desk/market_measurement_truth/_record_store.py": true,
+    "AST:src/nvda_desk/market_measurement_truth/api.py": true,
+    "AST:tests/product/m02_completion_28/d091/test_signal.py": true,
+    "AST:tests/product/m02_completion_28/l01b_r112/test_source.py": true,
+    "AST:tools/product_proof_claims.py": true,
+    "BRIEF_SHA": true,
+    "d01_precommit_actual_insert": true,
+    "d02_post_actual_commit": true,
+    "exact_15_L01b": true,
+    "exact_18_D091": true,
+    "loader_exact_staged_hashes": true,
+    "loader_no_new_pointer_created": true,
+    "nan_content_tuple_preserved": true,
+    "negative_fixture_bytes": true,
+    "no_d01_d02_unimplemented": true,
+    "no_public_d091_fault_factory": true,
+    "original_positive15_SHA": true,
+    "original_source_contract_SHA": true,
+    "three_approved_changes_since_prior_head": true
+  },
+  "files": {
+    "src/nvda_desk/market_measurement_truth/_controlled_r112.py": {
+      "bytes": 12885,
+      "sha256": "0fcec581bd040e6c1e8cfb6adde080a789659e8314a4ddeecbf8981a7eb0b1ee"
+    },
+    "src/nvda_desk/market_measurement_truth/_native_codec.py": {
+      "bytes": 6432,
+      "sha256": "b3d247b4396073d5059e674b9392c03e1b9ce3e418b9a9f1df56417255847759"
+    },
+    "src/nvda_desk/market_measurement_truth/_native_d091.py": {
+      "bytes": 22599,
+      "sha256": "171846acf03486e7f7b074ef2d8c43b5af540ef903003e1a6fe247ca50ae9e96"
+    },
+    "src/nvda_desk/market_measurement_truth/_record_store.py": {
+      "bytes": 10964,
+      "sha256": "882a61238b74ba5aa2ffacf95d0587633392722d2336a3954681c6ac0a86f0ef"
+    },
+    "src/nvda_desk/market_measurement_truth/api.py": {
+      "bytes": 97346,
+      "sha256": "144d3de0c3c59d9a503fd86351c9305f893b02d66b84bfd17e7dbd910f1307e2"
+    },
+    "tests/product/m02_completion_28/d091/test_signal.py": {
+      "bytes": 34669,
+      "sha256": "d1eab7802786344ecf9ab4d4e2f46b802aba6d2fea0c72d14ad149492504b86f"
+    },
+    "tests/product/m02_completion_28/l01b_r112/test_source.py": {
+      "bytes": 13365,
+      "sha256": "1f648998ca4c64829a3655057598e5ae5687b6568bb7e9eebf7ca2f17caa56f5"
+    },
+    "tools/product_proof_claims.py": {
+      "bytes": 50308,
+      "sha256": "59b9a6037142f7d553aa731f7b1926b81dadd6fcca23bf0a267121dfa94a5bae"
+    }
+  },
+  "head": "e8557095c8b7e555e6bfdc0df215aaa7036674d5",
+  "product_modules_imported": false,
+  "product_tests_executed": 0,
+  "status": "STATIC_IMPLEMENTATION_PASS"
+}

@@ -9,7 +9,7 @@ from collections.abc import Callable, Iterator
 from contextlib import contextmanager
 from dataclasses import replace
 from pathlib import Path
-from typing import Any
+from typing import Any, Literal
 
 from . import api as f
 from ._evaluation import canonical
@@ -40,7 +40,8 @@ def _schema(c: sqlite3.Connection) -> None:
 
 @contextmanager
 def _transaction(
-    path: str, *, write: bool, initialise: bool = False
+    path: str, *, write: bool, initialise: bool = False,
+    _d091_after_commit: Callable[[], None] | None = None,
 ) -> Iterator[sqlite3.Connection]:
     c = None
     committing = False
@@ -65,6 +66,11 @@ def _transaction(
         yield c
         committing = True
         c.execute("COMMIT")
+        # Only a construction-bound D091 test facility uses this hook.
+        # The transaction is already durably COMMITTED before the simulated
+        # lost acknowledgement; the normal production path has no callback.
+        if _d091_after_commit is not None:
+            _d091_after_commit()
     except BaseException as exc:
         uncertain = bool(committing and c is not None and not c.in_transaction)
         if c is not None and c.in_transaction:
@@ -96,10 +102,19 @@ class RecordState:
         *,
         encode: Callable[[Any], bytes] = canonical,
         identity_field: str = "derived_occurrence_id",
+        _d091_test_fault: Literal[
+            "D01_AFTER_INSERT_BEFORE_COMMIT", "D02_AFTER_COMMIT_BEFORE_ACK"
+        ] | None = None,
     ) -> None:
         self.decode, self.validate = decode, validate
         self.encode, self.identity_field = encode, identity_field
         self.memory: dict[str, Any] = {}
+        if _d091_test_fault not in (
+            None, "D01_AFTER_INSERT_BEFORE_COMMIT", "D02_AFTER_COMMIT_BEFORE_ACK",
+        ) or (_d091_test_fault is not None and type(storage) is not f.SQLiteStorageV1):
+            raise ValueError("D091 transaction fault requires exact writable SQLite storage")
+        self._d091_test_fault = _d091_test_fault
+        self._d091_fault_consumed = False
         self.path = None if isinstance(storage, f.MemoryStorageV1) else _path(storage.database_path)
         if type(storage) is f.SQLiteStorageV1 and storage.create:
             assert self.path is not None
@@ -144,15 +159,34 @@ class RecordState:
                 return old
         return None
 
+    def _d091_after_commit_fault(self) -> None:
+        if (
+            self._d091_test_fault != "D02_AFTER_COMMIT_BEFORE_ACK"
+            or self._d091_fault_consumed
+        ):
+            raise RuntimeError("D091 post-COMMIT test hook was not eligible")
+        self._d091_fault_consumed = True
+        raise sqlite3.OperationalError("D091 test-only lost acknowledgement after actual COMMIT")
+
     def append(self, value: Any) -> Any:
         self.validate(value)
+        if self._d091_test_fault is not None and type(value) is not f.D091BucketOccurrenceV1:
+            raise ValueError("D091 test-only transaction hook received a non-D091 occurrence")
         if self.path is None:
             old = self._existing(self.all(), value)
             if old is not None:
                 return old
             self.memory[getattr(value, self.identity_field)] = value
             return value
-        with _transaction(self.path, write=True) as c:
+        after_commit = (
+            self._d091_after_commit_fault
+            if self._d091_test_fault == "D02_AFTER_COMMIT_BEFORE_ACK"
+            and not self._d091_fault_consumed
+            else None
+        )
+        with _transaction(
+            self.path, write=True, _d091_after_commit=after_commit
+        ) as c:
             old = self._existing(self._load(c), value)
             if old is not None:
                 return old
@@ -161,6 +195,16 @@ class RecordState:
                 "INSERT INTO mmt_record_v1 VALUES (?,?,?)",
                 (getattr(value, self.identity_field), payload, hashlib.sha256(payload).hexdigest()),
             )
+            if (
+                self._d091_test_fault == "D01_AFTER_INSERT_BEFORE_COMMIT"
+                and not self._d091_fault_consumed
+            ):
+                self._d091_fault_consumed = True
+                # A real INSERT succeeded; the active BEGIN IMMEDIATE is
+                # rolled back by _transaction, so uncertainty remains false.
+                raise sqlite3.OperationalError(
+                    "D091 test-only failure after INSERT before COMMIT"
+                )
             recovered = next(
                 v for v in self._load(c)
                 if getattr(v, self.identity_field) == getattr(value, self.identity_field)

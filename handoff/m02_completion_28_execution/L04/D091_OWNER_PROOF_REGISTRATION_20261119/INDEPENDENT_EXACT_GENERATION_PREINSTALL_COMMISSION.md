@@ -1,0 +1,39 @@
+# Independent NVIDIA V2 D091/L01b exact generation-1 pre-installation clearance commission
+
+**Date:** 19 November 2026. **Role:** genuinely separate independent non-executing *generation-specific proof-registration adequacy/authority reviewer*, not Worker, strict product Tester or owner. **Hard gate:** no live proof activation unless an evidence-backed independent ACCEPT covers the exact three frozen staged bytes. No product import, `pytest` collection/runs, claim/generation/pointer installation, branch merge, D145 or further policy changes.
+
+## 1. Pinned reviewer input — not moving PR HEAD
+
+- Repository `JayDEmily/nvda_29102026`, Worker PR #27 `work/t01-d091-finite-adequacy-20261116`.
+- **ONLY assessed Worker candidate:** `1881eec87ea7c79dd4cd1348f535d077b037da76`, Git tree **`90c930995e931b1712bc3679c4d21238c9712a18`**, sole direct parent `abff33f6bbcb984975aa179acf8300cb2c92cdd4`.
+- Read full `handoff/m02_completion_28_execution/L04/D091_OWNER_PROOF_REGISTRATION_20261119/EXACT_GENERATION_PREINSTALL_PACKAGE.md` on that exact candidate. It identifies all intended destinations, exact pinset, raw sha256, owner instruction, caveats, and prerequisites. Read **all three staged files in full** at `.../D091_OWNER_PROOF_REGISTRATION_20261119/`:
+  - `PROPOSED_CLAIM.json` Git blob `bdc4fef729a343684822e3a66cbb51a1d12dc517` SHA-256 `bcb6a09cabe9ab4fe34dbbcb4d598c79a646ddf581e53187dda373a08181fea5`;
+  - `PROPOSED_GENERATION_0001.json` Git blob `66bf5f718fa4462fafec8a7437caf6e20bc7c96f` SHA-256 `429df0e6b732ed019f9bc62d67f36bc295b556f89f7da670e8d76fcce4581097`;
+  - `PROPOSED_ADMISSION.json` Git blob `839a79ced66356d4e9c5a6c96754a99c12b918b2` SHA-256 `31cba6801940c2abfe0b9bcbb11bf9101cfe8e8bada1525218a4cf77300218af`.
+- **This commission is a subsequent Worker commit and is NOT the review candidate.** Never substitute the moving Worker branch or install submitted files on the reviewer branch.
+
+## 2. Exact material and authority to inspect independently
+
+1. Read the full frozen current `GUARDRAILS.md`, root `AGENTS.md`, all applicable override `tests/AGENTS.override.md`, full `EXEC_PLAN.md` in sections, `handoff/astra_adr_continuation_20261115/OWNER_INSTALLATION_AUTHORITY.md` and `INSTALLATION_RECEIPT.md`, owner-accepted three-step `OWNER_ACCEPTED_NEXT_SEQUENCE.md` and current owner-registration authority below. Resolve inherited drafted status with actual installed owner authority; maintain strict independent Tester and product-case holds.
+2. **Current new human grant:** `handoff/m02_completion_28_execution/L04/D091_OWNER_PROOF_REGISTRATION_20261119/OWNER_EXACT_D091_L01B_PROOF_REGISTRATION_AUTHORITY.md`, direct source Git commit `e64cc5b69279a088cc11c9c74d146a0fecb30517`, blob `ca9f8fe86a30688022cbbcca76d774e1137a9697`. It records the latest human reply **“Yep, I give you authorization. Proceed.”** to the expressly bounded single M02 D091 claim, 18+15 physical families, three active paths, **independent review before installation** question. Critically evaluate this precise scope and documentary-attribution qualifier; do not fabricate original message UUID/URL or treat old implementation/case-ceiling approval as the new registration grant.
+3. Read original independent 33-case design report `38d4b44c9bceca883ed0a676e7b9b36d684ad54e` (report blob `60153de2701789d045133f167bed20dfc43fb8ca`) and independent narrow ref-applicability verdict `76fe3adba5f6a0f3e003997e03f87a2e56614b71` (report blob `3f40b5281de770172f97c40f2687e6eb9bc8c5b8`). Earlier reviewer explicitly said a **completed immutable generation needs its own narrow independent applicability decision**, without rerunning unchanged 33 case designs.
+4. Inspect the exact staged `adequacy_review_ref` and `admission_authority_ref` strings in generation; verify they truthfully identify competent scope-specific reference and human permission. Do not infer semantic authority merely because two strings are non-empty. **Independently determine whether the existing chosen refs plus this subsequent generation-specific adjudication provide an adequate basis for registration**; if not, RETURN/BLOCKED the stated mismatch. No meaningless placeholder or circular future uncommitted review reference is permitted.
+5. Inspect `schemas/product_proof_admission.schema.json`, `schemas/accepted_brief_product_proof.schema.json`, exact owner `implementation/authority/D091_IMPLEMENTATION_AUTHORITY_BINDING.yaml`, approved brief, contract, code `tools/product_proof_claims.py` especially `_d091_l01b_extension`, `_generation` and immutable pointer/history checks. Independently verify the three exact staged files are structurally compatible **when copied** to the stated real paths; `generation=1`, `previous_generation=null`, target M02, **only two** families, no extra support files and a pointer matching exact generation SHA-256, and no active config exists yet.
+6. Independently cross-check brief/binding/contract/two-family SHA256 and 18+15 owner case list, correct original R112 positive source, 27 negative fixtures, owner case admission and current `TEST_EVIDENCE_LEDGER.json` execution-held status. **Reuse** previous adequate design and fixture hash evidence when exact blob identities and material meaning are unchanged. Do not repeat 33-case individual oracle review unless a real material change invalidates that prior finding.
+7. Inspect complete recursive pinned Git tree to confirm absence of `config/product_proof/m02_d091/` and no stage-file mutation to tests, product code, schemas, live bindings, governance, ledger or existing proof descriptors. Verify candidate commit, tree, parent and all staging blobs/hashes from original GitHub. Static/non-executing verification only: **no source/tests import, test collection, product probes or runtime product claims**.
+
+## 3. Disposition and publication boundary
+
+**Exactly one verdict:**
+
+- `ACCEPT_EXACT_GENERATION_REGISTRATION_FOR_INSTALLATION` only if actual proposed generation/descriptor/pointer bytes and the chosen adequacy and owner authority references are coherent, genuine and sufficient under the governing contract to release **those three active registration files only**, with no case execution or semantic acceptance.
+- `RETURN` if identified bytes/authority/references or compatibility fail a demonstrated exact requirement; cite fields/files/lines and finite repair, classify recurrent mechanism if material.
+- `BLOCKED` for a genuinely missing necessary authority/evidence/capability that prevents a verdict; show supported partial findings and first blocked predicate.
+
+If ACCEPT, identify exact staged Git blobs and SHA-256 and state no material change can occur on installation; a different value or path requires fresh relevant adjudication. Reviewer must **not install anything**.
+
+**Separate reviewer branch:** `review/d091-l01b-gen1-registration-20261119-gpt6`, created directly from **`1881eec87ea7c79dd4cd1348f535d077b037da76`**, not the subsequent commission commit or moving Worker.
+
+**Exactly one verdict report:** `handoff/m02_completion_28_execution/L04/D091_OWNER_PROOF_REGISTRATION_INDEPENDENT_REVIEW_20261119/INDEPENDENT_EXACT_GEN1_REGISTRATION_VERDICT.md`. Commit only this new report on independent reviewer branch. Independently verify GitHub commit/tree/direct parent is **`1881eec87ea7c79dd4cd1348f535d077b037da76`**, exact one-report diff, full report blob/readback, reviewer remote head, unchanged Worker branch and PR #27 draft/unmerged. No authoring changes in Worker branch.
+
+**Exclusions:** no product tests/imports/collection/probes, actual product proof/gate acceptance, Tester designation, extra cases, source/ledger/schema/binding edits, live claim/generation/pointer creation, owner approval manufacture, merge, D145, PostgreSQL, IBKR feeds. An owner-approved **proof metadata registration** is distinct from product proof execution. Reviewer may ACCEPT metadata installation only.

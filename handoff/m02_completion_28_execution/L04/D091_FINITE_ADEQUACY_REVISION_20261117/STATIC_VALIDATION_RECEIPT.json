@@ -1,0 +1,38 @@
+{
+  "status": "D091_L01B_REVISION_DOCUMENTARY_STATIC_PASS",
+  "reviewed_candidate": "0a549c11feef999ec985c90f4c7fd0599037eb06",
+  "return_review_commit": "ff18a84c14bf7b9a21b608933be177d538176ed6",
+  "source_sha256": "1f4c46c5c247c78e3e18bb2de02c172f775379f664bad8e056ef6867a39d03dc",
+  "contract_sha256": "31c811e77468f44c2e412893326bc6d5f9ea037cdbf28712ce8e213652fdfc63",
+  "original_cases_checked": 32,
+  "proposed_D091": 18,
+  "proposed_L01b": 15,
+  "proposed_combined": 33,
+  "predecessor_witnesses_checked": 39,
+  "negative_fixture_hashes_verified": 27,
+  "L01b_single_source_field_mutations": 15,
+  "negative_B_raw_cohorts": [
+    2,
+    65
+  ],
+  "expected_B_history_pages": {
+    "B_TIE": [
+      2
+    ],
+    "B_OVER64": [
+      8,
+      8,
+      8,
+      8,
+      8,
+      8,
+      8,
+      8,
+      1
+    ]
+  },
+  "reusable_exact_new_product_cases_proven": 0,
+  "admitted_cases": 0,
+  "product_test_runs": 0,
+  "limitations": "Documentary fixture/authority consistency only. Does not execute M00/M02, check genuine future seam or approve case budgets."
+}

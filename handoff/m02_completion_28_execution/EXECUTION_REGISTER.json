@@ -1,5 +1,5 @@
 {
-  "status": "PROPOSED_NOT_INSTALLED",
+  "status": "OWNER_INSTALLED_WORKING_BRANCH_PARTIAL_ACCEPTANCES",
   "baseline": "02a19ae02678824908568d8db08f0e1d015cb861",
   "historical_register": "handoff/m02_completion_28_execution/EXECUTION_REGISTER.json",
   "leaves": [
@@ -43,10 +43,20 @@
         "L00"
       ],
       "obligation": "Bind public R112 option model variant, signed fractional scale, contract/right/expiry and source lineage. Adopt V1 absolute bins only after owner acceptance for controlled implementation: [0,.10), [.10,.25), [.25,.50), [.50,.75), [.75,1], with exact labels and endpoint inclusivity. Bind missing/nonfinite/out-of-range refusal and signed boundary assertions within the approved pair. No scale inference from magnitude.",
-      "status": "PROPOSED_NOT_ATTEMPTED",
+      "status": "R112_CONTROLLED_SOURCE_CONTRACT_ACCEPTED_AND_15_SUPPORT_CASES_TESTED_ACCEPTED",
       "checkpoint_required": true,
       "proposed_testing_windows": [],
-      "acceptance": "Independent documentary source clearance; product acceptance requires admitted cases and accepted parent proofs"
+      "acceptance": "Independent documentary source clearance; product acceptance requires admitted cases and accepted parent proofs",
+      "acceptance_evidence": {
+        "scope": "L01b/R112 controlled synthetic source support only, no added D identities or production policy",
+        "source_profile": "T01-R112-CONTROLLED-FRACTION-1:v1",
+        "source_contract_sha256": "31c811e77468f44c2e412893326bc6d5f9ea037cdbf28712ce8e213652fdfc63",
+        "operative_source_review": "37fab2c81e1ed98b227f75f600d3e0c12347d7d5",
+        "source_parent15_report": "f0aba1a87bf889e91dcf154f2c04e5517b4a2901",
+        "raw_outcome_sha256": "747f0bd67dda31aac22987bb10b9fb84e765d215acefbe3ebe03f80f79edb70e",
+        "physical_cases": 15,
+        "accepted_ledger": "4fe8d1ab259eef0cd13dc354abc9a672835852f5"
+      }
     },
     {
       "leaf": "L01c",
@@ -127,12 +137,28 @@
         "L01b"
       ],
       "obligation": "Implement the exact approved complete non-overlapping V1 absolute-delta intervals and labels. Retain option identity, model/scale and rule version. Cover signed endpoints and valid interior values within the finite success case; use a reached invalid/absent input refusal. No inferred units or strategy-tuned category assignment.",
-      "status": "PROPOSED_NOT_ATTEMPTED",
+      "status": "TESTED_ACCEPTED_D091_CONTROLLED_SYNTHETIC_PROFILE_ONLY",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G1_AFTER_L06"
       ],
-      "acceptance": "Independent documentary source clearance; product acceptance requires admitted cases and accepted parent proofs"
+      "acceptance": "Independent documentary source clearance; product acceptance requires admitted cases and accepted parent proofs",
+      "acceptance_evidence": {
+        "scope": "L04 D091 controlled synthetic profile only, not G1/G5 or live NVDA provider acceptance",
+        "product_source_commit": "b7d044a4f84b7f70703322c250cbd82cee6f4589",
+        "rule_profile": "D091-SYNTHETIC-TENTATIVE-V1:v1",
+        "one_m02_claim": "neutral_market_measurement_truth_d091",
+        "generation1_sha256": "429df0e6b732ed019f9bc62d67f36bc295b556f89f7da670e8d76fcce4581097",
+        "source_support_parent15_report": "f0aba1a87bf889e91dcf154f2c04e5517b4a2901",
+        "d091_child18_independent_report": "7322441997d5ab75fa412676e3ae42aba03dcb79",
+        "d091_observer_sha256": "d53c605210b77bda5822daf1df8de7b28610a73a981eb1cfff74e7237e6cea58",
+        "d091_independent_audit_sha256": "a759631b0605c8e9fe85add22c397d698a8fea45b8f4c4c9786b4d3dd14cb6dd",
+        "d091_readonly_sqlite_audit_sha256": "587613fd00d173bf4d5e67e92c69d72fb01abf50815787d8e86bf2edb2088eb4",
+        "physical_cases": 18,
+        "exact_raw_node_equality": true,
+        "accepted_ledger": "d897efbc0aa00d198d17cb6c78e3c4bcb73db98f",
+        "independent_semantic_verdict": "TESTED_ACCEPTED_D091_L04_EXACT18_ONLY"
+      }
     },
     {
       "leaf": "L05",
@@ -715,5 +741,10 @@
       "proposed_testing_windows": [],
       "acceptance": "Independent documentary source clearance; product acceptance requires admitted cases and accepted parent proofs"
     }
-  ]
+  ],
+  "installation_authority": {
+    "receipt": "handoff/astra_adr_continuation_20261115/INSTALLATION_RECEIPT.md",
+    "historical_status": "PROPOSED_NOT_INSTALLED",
+    "scope": "Worker branch; not main; no G1/G5 completion"
+  }
 }

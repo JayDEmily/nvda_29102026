@@ -1,0 +1,44 @@
+{
+  "schema": "NVDA_V2_CURRENT_UBUNTU_SQLITE_BINDING_INSPECTION_V1",
+  "status": "OBSERVATION_ONLY_NOT_PRODUCT_QUALIFICATION",
+  "datetime_local_date": "2026-11-17",
+  "scope": "same-host Python/SQLite binary-source inspection, non-product; no package install or source/test execution",
+  "baseline_commit": "e776a9e16aa1362006ae743a0819bb40c37687b5",
+  "device": "DESKTOP-I188O30 WSL Ubuntu",
+  "python": {
+    "version": "3.13.5",
+    "build": "3.13.5 (main, Jul 23 2025, 00:37:22) [Clang 20.1.4 ]",
+    "executable": "/home/jds/.local/bin/python3.13",
+    "sqlite_version": "3.49.1",
+    "sqlite_source_id": "2025-02-18 13:38:58 873d4e274b4988d260ba8354a9718324a1c26187a4ab4c1cc0227c03d0f10e70",
+    "_sqlite3_file": null,
+    "_sqlite3_spec_origin": "built-in"
+  },
+  "isolated_sqlite_library": {
+    "path": "/home/jds/nvda_d091_runtime_20261117/libsqlite3.so.0",
+    "source_archive_sha256": "926ef8d3eab93fbf6e06011901273eec076b25594a4e1cdadd50c987f4f6d64e",
+    "library_sha256": "44a469c2ed17ee19dca5f0c949f97b98b7ad0f1260bdb41fc153a4530324fb2f",
+    "sqlite_version_by_ctypes": "3.54.1",
+    "sqlite_source_id_by_ctypes": "2026-10-16 14:45:20 555e07ef33f69a0957d24d8e555b702464a131d6f1607f4c3c1e4551e8e6ca76",
+    "historical_gcc14_library_sha256": "c53706980906943301153b630aeddba1b4aab6fe5eeda5752d8293952707db4e",
+    "gcc_current": "gcc (Ubuntu 15.2.0-16ubuntu1) 15.2.0",
+    "gcc_historical": "gcc (Debian 14.2.0-19) 14.2.0"
+  },
+  "method": "Read _sqlite3.__spec__.origin and optional __file__, sqlite3.sqlite_version and SELECT sqlite_source_id() on in-memory DB; use ctypes.CDLL with sqlite3_libversion/sqlite3_sourceid on the isolated compiled lib. No SQLite database file created.",
+  "script_path_windows": "C:/Users/james/AppData/Local/Temp/nvda_sqlite_binding_diagnostic_20261117.py",
+  "interpretation": {
+    "python_uses_isolated_new_library": false,
+    "isolated_library_built_and_reports_correct_source": true,
+    "failed_original_probe_explained_by_builtin_module_missing_file": true,
+    "binary_mismatch_is_version_error": false,
+    "exact_historical_binary_match": false,
+    "product_runtime_qualified": false
+  },
+  "authority": "Installed ExecPlan and owner source policy unchanged; approved D091=18 and L01b=15 case lists/ceilings remain execution-held.",
+  "upstream_primary_sources": [
+    "https://github.com/astral-sh/python-build-standalone/blob/main/docs/technotes.rst",
+    "https://docs.python.org/3.13/using/configure.html",
+    "https://www.python.org/downloads/release/python-3135/",
+    "https://www.sqlite.org/howtocompile.html"
+  ]
+}

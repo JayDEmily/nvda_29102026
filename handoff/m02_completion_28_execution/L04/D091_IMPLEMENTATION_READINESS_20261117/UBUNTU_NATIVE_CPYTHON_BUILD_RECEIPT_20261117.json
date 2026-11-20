@@ -1,0 +1,153 @@
+
+{
+  "apt_downloaded_not_system_installed": [
+    {
+      "bytes": 2936724,
+      "deb": "libssl-dev_3.5.5-1ubuntu3.7_amd64.deb",
+      "name": "libssl-dev",
+      "sha256": "d1cf6cafb141490b7020e392964b1f901835d60cb88c3a68ef0f95ef5e930de4"
+    },
+    {
+      "bytes": 66458,
+      "deb": "libffi-dev_3.5.2-4_amd64.deb",
+      "name": "libffi-dev",
+      "sha256": "6f594146dc6f5d77694811c38c6743a99424e5bdd2e955afa82fcd19883f42cc"
+    },
+    {
+      "bytes": 36182,
+      "deb": "libbz2-dev_1.0.8-6ubuntu0.1_amd64.deb",
+      "name": "libbz2-dev",
+      "sha256": "a983927bd8f7952d742814b53cef35c21b1836c920fa2e5002e48f2e6f46905e"
+    },
+    {
+      "bytes": 178788,
+      "deb": "liblzma-dev_5.8.3-1ubuntu0.1_amd64.deb",
+      "name": "liblzma-dev",
+      "sha256": "b00302651654508be52052cd454851f7e1828f9d7ea8bb4cd4f1758084d66e1d"
+    },
+    {
+      "bytes": 180250,
+      "deb": "libreadline-dev_8.3-4_amd64.deb",
+      "name": "libreadline-dev",
+      "sha256": "c50cba7fef41f571eacf1147de0c9ca7303e7429f6299c208b1838e993931329"
+    },
+    {
+      "bytes": 389294,
+      "deb": "libncurses-dev_6.6+20251231-1_amd64.deb",
+      "name": "libncurses-dev",
+      "sha256": "cb56b906b248df7aa5d55952480aadd5f3dae173bfbc6c71fadd12429af447f4"
+    }
+  ],
+  "attempt1": {
+    "log_path": "/home/jds/nvda_python3135_sqlite3541_20261117/make.log",
+    "make_exit_code": 2,
+    "mechanism": "private dev libbz2.so symlink resolves to absent local .so.1.0; linker falls back to non-PIC static libbz2.a",
+    "status": "FAILED"
+  },
+  "attempt2_install_exit": 0,
+  "attempt2_make_exit": 0,
+  "attempt3_openssl_env": {
+    "OPENSSL_INCLUDES": "-I/home/jds/nvda_python3135_sqlite3541_20261117/deps/usr/include",
+    "OPENSSL_LDFLAGS": "-L/home/jds/nvda_python3135_sqlite3541_20261117/deps/usr/lib/x86_64-linux-gnu -Wl,-rpath,/home/jds/nvda_python3135_sqlite3541_20261117/deps/usr/lib/x86_64-linux-gnu",
+    "OPENSSL_LIBS": "-lssl -lcrypto"
+  },
+  "build_complete": true,
+  "configure_command": [
+    "./configure",
+    "--prefix=/home/jds/nvda_python3135_sqlite3541_20261117/python",
+    "--with-ensurepip=install",
+    "--without-static-libpython"
+  ],
+  "configure_env": {
+    "CPPFLAGS": "-I/home/jds/nvda_python3135_sqlite3541_20261117/deps/usr/include -I/home/jds/nvda_python3135_sqlite3541_20261117/deps/usr/include/x86_64-linux-gnu",
+    "LDFLAGS": "-L/home/jds/nvda_python3135_sqlite3541_20261117/deps/usr/lib/x86_64-linux-gnu -Wl,-rpath,/home/jds/nvda_python3135_sqlite3541_20261117/deps/usr/lib/x86_64-linux-gnu",
+    "LIBSQLITE3_CFLAGS": "-I/home/jds/nvda_python3135_sqlite3541_20261117/sqlite/include",
+    "LIBSQLITE3_LIBS": "-L/home/jds/nvda_python3135_sqlite3541_20261117/sqlite/lib -Wl,-rpath,/home/jds/nvda_python3135_sqlite3541_20261117/sqlite/lib -lsqlite3"
+  },
+  "configure_exit_code": 0,
+  "configure_openssl_exit": 0,
+  "install_openssl_exit": 0,
+  "installed_python_path": "/home/jds/nvda_python3135_sqlite3541_20261117/python/bin/python3.13",
+  "installed_python_sha256": "d114ec20c65fb65c77608f7b8b7110d0ff95e3b3c814f65580dad17fb56e012c",
+  "kind": "ISOLATED_NON_PRODUCT_CPYTHON3135_SQLITE3541_UBUNTU_BUILD",
+  "make_exit_code": 2,
+  "make_openssl_exit": 0,
+  "openss_l_reconfigured": true,
+  "private_runtime_linker_aliases": [
+    {
+      "link": "/home/jds/nvda_python3135_sqlite3541_20261117/deps/usr/lib/x86_64-linux-gnu/libtinfo.so",
+      "system_existing_target": "/usr/lib/x86_64-linux-gnu/libtinfo.so.6",
+      "target": "libtinfo.so.6",
+      "user_created_reference": "/home/jds/nvda_python3135_sqlite3541_20261117/deps/usr/lib/x86_64-linux-gnu/libtinfo.so.6"
+    },
+    {
+      "link": "/home/jds/nvda_python3135_sqlite3541_20261117/deps/usr/lib/x86_64-linux-gnu/libhistory.so",
+      "system_existing_target": "/usr/lib/x86_64-linux-gnu/libhistory.so.8",
+      "target": "libhistory.so.8",
+      "user_created_reference": "/home/jds/nvda_python3135_sqlite3541_20261117/deps/usr/lib/x86_64-linux-gnu/libhistory.so.8"
+    },
+    {
+      "link": "/home/jds/nvda_python3135_sqlite3541_20261117/deps/usr/lib/x86_64-linux-gnu/libtic.so",
+      "system_existing_target": "/usr/lib/x86_64-linux-gnu/libtic.so.6",
+      "target": "libtic.so.6",
+      "user_created_reference": "/home/jds/nvda_python3135_sqlite3541_20261117/deps/usr/lib/x86_64-linux-gnu/libtic.so.6"
+    },
+    {
+      "link": "/home/jds/nvda_python3135_sqlite3541_20261117/deps/usr/lib/x86_64-linux-gnu/libreadline.so",
+      "system_existing_target": "/usr/lib/x86_64-linux-gnu/libreadline.so.8",
+      "target": "libreadline.so.8",
+      "user_created_reference": "/home/jds/nvda_python3135_sqlite3541_20261117/deps/usr/lib/x86_64-linux-gnu/libreadline.so.8"
+    },
+    {
+      "link": "/home/jds/nvda_python3135_sqlite3541_20261117/deps/usr/lib/x86_64-linux-gnu/libffi.so",
+      "system_existing_target": "/usr/lib/x86_64-linux-gnu/libffi.so.8.2.0",
+      "target": "libffi.so.8.2.0",
+      "user_created_reference": "/home/jds/nvda_python3135_sqlite3541_20261117/deps/usr/lib/x86_64-linux-gnu/libffi.so.8.2.0"
+    },
+    {
+      "link": "/home/jds/nvda_python3135_sqlite3541_20261117/deps/usr/lib/x86_64-linux-gnu/libmenuw.so",
+      "system_existing_target": "/usr/lib/x86_64-linux-gnu/libmenuw.so.6",
+      "target": "libmenuw.so.6",
+      "user_created_reference": "/home/jds/nvda_python3135_sqlite3541_20261117/deps/usr/lib/x86_64-linux-gnu/libmenuw.so.6"
+    },
+    {
+      "link": "/home/jds/nvda_python3135_sqlite3541_20261117/deps/usr/lib/x86_64-linux-gnu/libformw.so",
+      "system_existing_target": "/usr/lib/x86_64-linux-gnu/libformw.so.6",
+      "target": "libformw.so.6",
+      "user_created_reference": "/home/jds/nvda_python3135_sqlite3541_20261117/deps/usr/lib/x86_64-linux-gnu/libformw.so.6"
+    },
+    {
+      "link": "/home/jds/nvda_python3135_sqlite3541_20261117/deps/usr/lib/x86_64-linux-gnu/libpanelw.so",
+      "system_existing_target": "/usr/lib/x86_64-linux-gnu/libpanelw.so.6",
+      "target": "libpanelw.so.6",
+      "user_created_reference": "/home/jds/nvda_python3135_sqlite3541_20261117/deps/usr/lib/x86_64-linux-gnu/libpanelw.so.6"
+    },
+    {
+      "link": "/home/jds/nvda_python3135_sqlite3541_20261117/deps/usr/lib/x86_64-linux-gnu/liblzma.so",
+      "system_existing_target": "/usr/lib/x86_64-linux-gnu/liblzma.so.5.8.3",
+      "target": "liblzma.so.5.8.3",
+      "user_created_reference": "/home/jds/nvda_python3135_sqlite3541_20261117/deps/usr/lib/x86_64-linux-gnu/liblzma.so.5.8.3"
+    },
+    {
+      "link": "/home/jds/nvda_python3135_sqlite3541_20261117/deps/usr/lib/x86_64-linux-gnu/libbz2.so",
+      "system_existing_target": "/usr/lib/x86_64-linux-gnu/libbz2.so.1.0",
+      "target": "libbz2.so.1.0",
+      "user_created_reference": "/home/jds/nvda_python3135_sqlite3541_20261117/deps/usr/lib/x86_64-linux-gnu/libbz2.so.1.0"
+    }
+  ],
+  "python_archive_bytes": 22856016,
+  "python_archive_sha256": "93e583f243454e6e9e4588ca2c2662206ad961659863277afcdb96801647d640",
+  "python_source_version_header": "",
+  "python_url": "https://www.python.org/ftp/python/3.13.5/Python-3.13.5.tar.xz",
+  "repository_head": "b62f9f55e277cdaf22a952a38aad8e1bf835f7d2",
+  "scope": "no system package install; no product tests",
+  "sqlite3_header_sha256": "d6c84557261893439b341d2e6c35187ae3ea24fbfd843ad94616f72d89242b8c",
+  "sqlite_library_sha256": "44a469c2ed17ee19dca5f0c949f97b98b7ad0f1260bdb41fc153a4530324fb2f",
+  "sqlite_library_source_archive_sha256": "926ef8d3eab93fbf6e06011901273eec076b25594a4e1cdadd50c987f4f6d64e",
+  "sqlite_official_sha256_expected": "926ef8d3eab93fbf6e06011901273eec076b25594a4e1cdadd50c987f4f6d64e",
+  "sqlite_source_id_expected": "2026-10-16 14:45:20 555e07ef33f69a0957d24d8e555b702464a131d6f1607f4c3c1e4551e8e6ca76",
+  "steps": [
+    "sqlite source archive SHA256, source sqlite3.c SHA3 and private library copied",
+    "unprivileged Ubuntu .deb downloads and user-owned extraction of dev headers"
+  ]
+}

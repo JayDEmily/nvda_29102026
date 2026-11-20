@@ -1,0 +1,1018 @@
+{
+  "schema": "D091_L01B_VERSIONED_PREEDIT_BINDING_PROPOSAL_V1",
+  "status": "WORKER_PREEDIT_PROPOSAL_REQUIRES_SEPARATE_INDEPENDENT_CLEARANCE_NOT_PRODUCT_RELEASE",
+  "binding_id": "T01-D091-L01B-PREEDIT-BINDING-V1",
+  "repository": "JayDEmily/nvda_29102026",
+  "base_pr": 27,
+  "pinned_preparation_base": "11969c8a51f8446f0b731d502270036326489bbd",
+  "base_tree": "961947e57821b391769b5d5edc15cea3cdcb277e",
+  "technical_brief": {
+    "path": "handoff/m02_completion_28_execution/L04/D091_PREEDIT_IMPLEMENTATION_BINDING_20261117/IMPLEMENTATION_BRIEF.md",
+    "git_blob_sha1": "f98cc5e3563ecfa5740e14a9b9111693020cb2b1",
+    "raw_utf8_sha256": "a79dff57f7ceedfc8ffa47a9b312ad1d22d164c57d6fc43d2d38d2db8c51caf5",
+    "independent_review_status": "NOT_YET_REVIEWED"
+  },
+  "governing_evidence": {
+    "current_guardrails_blob": "54a4407609941f63f6b902076688ff102a3d5ba2",
+    "exec_plan_blob": "76e8dd7af85cee33e306c351206e69fc049129fb",
+    "reviewed_implementation_release_verdict_blob": "7dfa973f141c5aca9355366e8c5f849c258d3226",
+    "owner_finite_decision_path": "handoff/m02_completion_28_execution/OWNER_D091_L01B_FINITE_CASE_ADMISSION_20261117/OWNER_FINITE_CASE_ADMISSION_20261117.json",
+    "owner_finite_decision_blob_sha1": "abb09419a425ee5eb2b19ed911fb32ecba41fd81",
+    "active_ledger_path": "handoff/m02_completion_28_execution/TEST_EVIDENCE_LEDGER.json",
+    "active_ledger_blob_sha1": "387eb533c436dc598d5dd75ca74322d2af60d00b"
+  },
+  "raw_source": {
+    "role": "R112",
+    "contract_path": "handoff/m02_completion_28_execution/L01b/R112_SOURCE_CONTRACT_PROPOSED.json",
+    "contract_git_blob_sha1": "bad8b3b2e536f2c0326cf1de995dc38793fd9936",
+    "contract_utf8_sha256": "31c811e77468f44c2e412893326bc6d5f9ea037cdbf28712ce8e213652fdfc63",
+    "positive_path": "handoff/m02_completion_28_execution/L01b/CONTROLLED_BATCH_INPUTS.json",
+    "positive_sha256": "1f4c46c5c247c78e3e18bb2de02c172f775379f664bad8e056ef6867a39d03dc",
+    "positive_members": 15,
+    "positive_observation_ids": [
+      "T01-R112-BATCH-00",
+      "T01-R112-BATCH-01",
+      "T01-R112-BATCH-02",
+      "T01-R112-BATCH-03",
+      "T01-R112-BATCH-04",
+      "T01-R112-BATCH-05",
+      "T01-R112-BATCH-06",
+      "T01-R112-BATCH-07",
+      "T01-R112-BATCH-08",
+      "T01-R112-BATCH-09",
+      "T01-R112-BATCH-10",
+      "T01-R112-BATCH-11",
+      "T01-R112-BATCH-12",
+      "T01-R112-BATCH-13",
+      "T01-R112-BATCH-14"
+    ],
+    "source_generation": "T01-R112-CONTROL-G1",
+    "source_profile": {
+      "id": "T01-R112-CONTROLLED-FRACTION-1",
+      "version": 1
+    },
+    "provider": "t01-controlled-option-delta",
+    "variant": "controlled-option-model-delta/fraction-v1",
+    "subject": "SYNTH-NVDA-OPT-C100-20261120",
+    "model_variant": "CONTROLLED_SIGNED_DELTA_V1",
+    "native_units": "signed_decimal_fraction",
+    "conversion": {
+      "unit_convention_id": "T01-R112-FRACTION-IDENTITY",
+      "version": 1,
+      "operation": "identity; no rescaling/rounding/clipping or magnitude inference"
+    },
+    "eleven_identity_fields": [
+      "contract_id",
+      "underlying",
+      "security_type",
+      "right",
+      "expiry_date",
+      "strike",
+      "currency",
+      "model_variant",
+      "scale",
+      "generation",
+      "request_id"
+    ],
+    "eleven_identity_values": {
+      "contract_id": "SYNTH-NVDA-OPT-C100-20261120",
+      "underlying": "NVDA",
+      "security_type": "OPT",
+      "right": "C",
+      "expiry_date": "2026-11-20",
+      "strike": "100",
+      "currency": "USD",
+      "model_variant": "CONTROLLED_SIGNED_DELTA_V1",
+      "scale": "signed_decimal_fraction",
+      "generation": "T01-R112-CONTROL-G1",
+      "request_id": "T01-R112-BOUNDARIES-1"
+    },
+    "sequence_scope": "T01-R112-CONTROL/G1",
+    "temporal_kind": "receipt_only",
+    "source_timestamp_raw": null,
+    "source_timezone_native": null,
+    "delivery_artifact_ref": "T01-R112-CLOSED-BATCH-V1",
+    "mapping": {
+      "mapping_id": "t01-controlled-r112-delta",
+      "version": 1,
+      "raw_signal_catalogue_id": "R112",
+      "source_provider": "t01-controlled-option-delta",
+      "source_variant": "controlled-option-model-delta/fraction-v1",
+      "native_field_path": [
+        "model",
+        "delta"
+      ],
+      "native_units": "signed_decimal_fraction",
+      "selection_identity_field_paths": [
+        [
+          "contract_id",
+          [
+            "identity",
+            "contract_id"
+          ]
+        ],
+        [
+          "underlying",
+          [
+            "identity",
+            "underlying"
+          ]
+        ],
+        [
+          "security_type",
+          [
+            "identity",
+            "security_type"
+          ]
+        ],
+        [
+          "right",
+          [
+            "identity",
+            "right"
+          ]
+        ],
+        [
+          "expiry_date",
+          [
+            "identity",
+            "expiry_date"
+          ]
+        ],
+        [
+          "strike",
+          [
+            "identity",
+            "strike"
+          ]
+        ],
+        [
+          "currency",
+          [
+            "identity",
+            "currency"
+          ]
+        ],
+        [
+          "model_variant",
+          [
+            "identity",
+            "model_variant"
+          ]
+        ],
+        [
+          "scale",
+          [
+            "identity",
+            "scale"
+          ]
+        ],
+        [
+          "generation",
+          [
+            "identity",
+            "generation"
+          ]
+        ],
+        [
+          "request_id",
+          [
+            "identity",
+            "request_id"
+          ]
+        ]
+      ]
+    },
+    "selection": {
+      "policy_id": "T01-R112-EXACT-RECEIPT-1",
+      "version": 1,
+      "temporal_kind": "receipt_only",
+      "source_timestamp_raw": null,
+      "source_timezone_native": null,
+      "clock": "collector_receipt",
+      "maximum_receipt_age_seconds": "0",
+      "reason": "Proposed exact synthetic observation-time scope; no live freshness assertion",
+      "receipt_law": "received_ts_utc == as_of_utc <= knowledge_cutoff_utc; calculation_time >= knowledge_cutoff_utc",
+      "ingestion_sequence_scope": "T01-R112-CONTROL/G1",
+      "ordering": "Within one exact scope only; select greatest eligible receipt/sequence; different distinct observations tied at final rank refuse; duplicate occurrence IDs must preserve identical content",
+      "history_page_size": 8,
+      "maximum_projected_members": 64,
+      "page_contract": "Consume only returned cursors to exhaustion; current M00 cursor is numeric offset, not a snapshot token. Requires exclusive closed-batch precondition below; refuse nonprogress, conflicts or exceeded bound.",
+      "contract_join": "All identity fields and projected subject exactly equal requested versioned contract; selection metadata is identity/configuration, not additional raw dependencies",
+      "closed_batch_precondition": "Controlled caller completes all exact source-artifact admissions and excludes all further admissions for the full multi-page read/calculation batch. Current M00 supplies no snapshot/seal API; this is a future controlled-fixture coordination obligation, not an observed runtime guarantee. If closure/exclusivity cannot be established, this profile is not eligible."
+    },
+    "source_policy_unchanged": true
+  },
+  "categorical_result": {
+    "rule_profile": {
+      "profile_id": "D091-SYNTHETIC-TENTATIVE-V1",
+      "version": 1,
+      "transform": "absolute value",
+      "bins": [
+        {
+          "name": "ABS_00_10",
+          "min": "0",
+          "max": "0.10",
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        {
+          "name": "ABS_10_25",
+          "min": "0.10",
+          "max": "0.25",
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        {
+          "name": "ABS_25_50",
+          "min": "0.25",
+          "max": "0.50",
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        {
+          "name": "ABS_50_75",
+          "min": "0.50",
+          "max": "0.75",
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        {
+          "name": "ABS_75_100",
+          "min": "0.75",
+          "max": "1.00",
+          "min_inclusive": true,
+          "max_inclusive": true
+        }
+      ],
+      "result_type": "category string with immutable label plus rule/profile/source lineage"
+    },
+    "derived_signal_id": "D091",
+    "kernel_id": "K08_RULE_BUCKET_POLICY",
+    "parameter_profile": "P_RULE",
+    "result_shape": "category",
+    "units": "category",
+    "signed_fraction_type": "Decimal exact",
+    "domain": {
+      "min": "-1",
+      "max": "1",
+      "inclusive": true
+    },
+    "calculation_definition_version_candidate": "T01-D091-ABS-DELTA-DEF-V1",
+    "calculation_definition_acceptance": "PENDING_INDEPENDENT_REVIEW_NOT_ACTIVE",
+    "raw_dependencies": [
+      "R112"
+    ],
+    "derived_dependencies": [],
+    "original_signed_decimal_retained": true,
+    "absolute_value_classification_only": true
+  },
+  "owner_admission_candidate": {
+    "public_type": "OwnerAdmissionV1",
+    "object_id": "M02",
+    "implementation_brief_sha256": "a79dff57f7ceedfc8ffa47a9b312ad1d22d164c57d6fc43d2d38d2db8c51caf5",
+    "status": "PROPOSED_DIGEST_BOUND_NOT_ADMITTED"
+  },
+  "dto_and_public_interface_proposal": {
+    "public_module": "src/nvda_desk/market_measurement_truth/api.py",
+    "requested_new_types": [
+      "D091RefusalStageV1",
+      "D091DiagnosticEventV1",
+      "D091DiagnosticObserverV1",
+      "D091RawReadPortV1",
+      "D091CategoryV1",
+      "D091BucketRequestV1",
+      "D091BucketOccurrenceV1",
+      "D091BucketReadsV1",
+      "D091BucketOwnerV1"
+    ],
+    "exact_diagnostic_stage_allowlist": [
+      "UNSEALED",
+      "ORIGIN_OR_IDENTITY",
+      "CLOCK_OR_SCOPE",
+      "HISTORY_OR_AMBIGUOUS_RANK",
+      "ABSENT",
+      "NONFINITE",
+      "RANGE"
+    ],
+    "diagnostic_exact_five_field_order": [
+      "request_identity",
+      "source_observation_occurrence_id",
+      "stage",
+      "source_profile_ref",
+      "rule_profile_ref"
+    ],
+    "diagnostic_mutability": "frozen_slots_exact_type_output_only",
+    "diagnostic_persistence": false,
+    "diagnostic_events_per_business_refusal": 1,
+    "diagnostic_events_per_success": 0,
+    "request_required_fields": [
+      "derived_signal_id",
+      "subject_instrument",
+      "as_of_utc",
+      "knowledge_cutoff_utc",
+      "calculation_definition_version",
+      "source_profile_ref",
+      "selection_policy_ref",
+      "rule_profile_ref",
+      "unit_convention_ref",
+      "projection_mapping_ref",
+      "source_identity_11_fields",
+      "request_identity"
+    ],
+    "occurrence_required_fields": [
+      "owner_object_id",
+      "owner_namespace",
+      "implementation_brief_sha256",
+      "derived_signal_id",
+      "derived_occurrence_id",
+      "definition_content_sha256",
+      "source_contract_sha256",
+      "original_source_artifact_sha256",
+      "actual_sealed_cohort_digest",
+      "original_M00_observation_snapshot",
+      "original_observation_occurrence_id",
+      "selected_projected_R112_value",
+      "exact_signed_delta_decimal",
+      "native_units",
+      "D091CategoryV1",
+      "effective_as_of_utc",
+      "knowledge_cutoff_utc",
+      "calculated_at_utc",
+      "all_source_mapping_rule_unit_selection_refs",
+      "no_D_predecessors"
+    ],
+    "source_read_port": [
+      "list_projected_raw_history",
+      "get_raw_observation_occurrence"
+    ],
+    "source_write_port_never_exported": true,
+    "owner_factory": "create_d091_bucket_owner(*,admission,controlled_source_read_capability,storage,utc_now,diagnostic_observer=None)",
+    "reader_factory": "create_d091_bucket_reader(*,admission,storage)",
+    "reader_methods": [
+      "get_derived_occurrence",
+      "list_derived_history"
+    ],
+    "materialise_result": "D091BucketOccurrenceV1 | None",
+    "persistence_errors": "PersistenceFailureV1, outcome_uncertain preserved",
+    "independent_signature_review_required": true
+  },
+  "coordinator": {
+    "new_module": "src/nvda_desk/market_measurement_truth/_controlled_r112.py",
+    "private_fresh_in_memory_M00_create_owner": true,
+    "sole_writer_ref_private": true,
+    "source_methods": [
+      "checked_admit",
+      "seal",
+      "read_only_capability"
+    ],
+    "lock_scope": "all ingress, seal, full page traversal and calculation",
+    "sealed_unreopenable": true,
+    "positive_mode": "SUCCESS_15",
+    "test_only_negative_modes": [
+      "B_TIE_2",
+      "B_OVER64_65"
+    ],
+    "trusted_manifest_uses_actual_M00_original_getter": true,
+    "source_field_refusal_before_roster": true,
+    "negative_manifest_fixtures": {
+      "B_TIE_2": {
+        "path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/d091_controlled_top_rank_tie_refusal.json",
+        "sha256": "0d34b51e309db8799bd6426f1e183a80e1d9244354cda2867af2b1e7271ef0fc",
+        "member_ids": [
+          "NEG-R112-TIE-A",
+          "NEG-R112-TIE-B"
+        ],
+        "member_count": 2,
+        "history_expected_pages": [
+          2
+        ],
+        "derived_result": "NO_SUCCESS"
+      },
+      "B_OVER64_65": {
+        "path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/d091_controlled_over_64_refusal.json",
+        "sha256": "ba7129a821d9e6434be9fc5fcc454d8ebd78f043c090255f0c1c2cfde630caf7",
+        "member_ids": [
+          "NEG-R112-OVER64-000",
+          "NEG-R112-OVER64-001",
+          "NEG-R112-OVER64-002",
+          "NEG-R112-OVER64-003",
+          "NEG-R112-OVER64-004",
+          "NEG-R112-OVER64-005",
+          "NEG-R112-OVER64-006",
+          "NEG-R112-OVER64-007",
+          "NEG-R112-OVER64-008",
+          "NEG-R112-OVER64-009",
+          "NEG-R112-OVER64-010",
+          "NEG-R112-OVER64-011",
+          "NEG-R112-OVER64-012",
+          "NEG-R112-OVER64-013",
+          "NEG-R112-OVER64-014",
+          "NEG-R112-OVER64-015",
+          "NEG-R112-OVER64-016",
+          "NEG-R112-OVER64-017",
+          "NEG-R112-OVER64-018",
+          "NEG-R112-OVER64-019",
+          "NEG-R112-OVER64-020",
+          "NEG-R112-OVER64-021",
+          "NEG-R112-OVER64-022",
+          "NEG-R112-OVER64-023",
+          "NEG-R112-OVER64-024",
+          "NEG-R112-OVER64-025",
+          "NEG-R112-OVER64-026",
+          "NEG-R112-OVER64-027",
+          "NEG-R112-OVER64-028",
+          "NEG-R112-OVER64-029",
+          "NEG-R112-OVER64-030",
+          "NEG-R112-OVER64-031",
+          "NEG-R112-OVER64-032",
+          "NEG-R112-OVER64-033",
+          "NEG-R112-OVER64-034",
+          "NEG-R112-OVER64-035",
+          "NEG-R112-OVER64-036",
+          "NEG-R112-OVER64-037",
+          "NEG-R112-OVER64-038",
+          "NEG-R112-OVER64-039",
+          "NEG-R112-OVER64-040",
+          "NEG-R112-OVER64-041",
+          "NEG-R112-OVER64-042",
+          "NEG-R112-OVER64-043",
+          "NEG-R112-OVER64-044",
+          "NEG-R112-OVER64-045",
+          "NEG-R112-OVER64-046",
+          "NEG-R112-OVER64-047",
+          "NEG-R112-OVER64-048",
+          "NEG-R112-OVER64-049",
+          "NEG-R112-OVER64-050",
+          "NEG-R112-OVER64-051",
+          "NEG-R112-OVER64-052",
+          "NEG-R112-OVER64-053",
+          "NEG-R112-OVER64-054",
+          "NEG-R112-OVER64-055",
+          "NEG-R112-OVER64-056",
+          "NEG-R112-OVER64-057",
+          "NEG-R112-OVER64-058",
+          "NEG-R112-OVER64-059",
+          "NEG-R112-OVER64-060",
+          "NEG-R112-OVER64-061",
+          "NEG-R112-OVER64-062",
+          "NEG-R112-OVER64-063",
+          "NEG-R112-OVER64-064"
+        ],
+        "member_count": 65,
+        "history_expected_pages": [
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          1
+        ],
+        "derived_result": "NO_SUCCESS"
+      }
+    }
+  },
+  "evaluator": {
+    "private_module": "src/nvda_desk/market_measurement_truth/_native_d091.py",
+    "stage_order": [
+      "A_REQUEST_CLOCK_AND_TRUE_SEAL",
+      "B_TRUSTED_ACTUAL_ORIGINAL_MANIFEST",
+      "C_ALL_REAL_M00_PROJECTED_PAGES",
+      "D_ORIGINAL_GETTER_VS_PROJECTED_GLOBAL_PROVENANCE",
+      "E_EXACT_RECEIPT_TARGET_AND_MISSING_ORIGINAL_FIELD",
+      "F_TARGET_ONLY_NUMERIC_VALIDATION_AND_BUCKET",
+      "G_REAL_SQLITE_APPEND_AND_STANDALONE_READBACK"
+    ],
+    "page_size": 8,
+    "projected_limit": 64,
+    "negative_overflow_detection": "on actual projected 65th member after 8x8+1 pages",
+    "tie_rank": "max(receipt,sequence) with distinct-equal-max refusal",
+    "missing_t14": "from trusted private original getter because M00 does not project absent model.delta",
+    "target_relative_business_validation": true,
+    "certain_sqlite_precommit_failure": "outcome_uncertain=False",
+    "uncertain_postcommit": "outcome_uncertain=True and new reader determines committed/absent",
+    "same_id_different_content": "test-only storage candidate mutation after lawful public materialise, original M00/source unchanged; requires independent validation for D03 real persistence refusal",
+    "read_only_reopen_without_live_source": true
+  },
+  "bounded_faults": {
+    "read_page_C": [
+      "H06_CURSOR_NONPROGRESS",
+      "H07_SAME_ID_CONTRADICTORY_DUPLICATE"
+    ],
+    "getter_D": [
+      "G01_MISSING",
+      "G02_UNITS",
+      "G03_GENERATION"
+    ],
+    "sqlite_E": [
+      "D01_PRECOMMIT",
+      "D02_POSTCOMMIT_UNCERTAIN",
+      "D03_SAME_ID_CONTENT"
+    ],
+    "source_A_15": [
+      {
+        "case_id": "L01B-R112-CONTROLLED-NATIVE-UNITS-REFUSAL",
+        "path": "observation.native_units",
+        "expected_valid": "signed_decimal_fraction",
+        "malformed": "decimal_percent",
+        "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_native_units_refusal.json",
+        "fixture_sha256": "b337bb83a61b02fd470f5fa06cbeeb6c9bc4c22327cfb080bd1e3d0a8e594b33",
+        "negative_id": "NEG-R112-UNITS-00"
+      },
+      {
+        "case_id": "L01B-R112-CONTROLLED-SOURCE-PROVIDER-REFUSAL",
+        "path": "observation.source_provider",
+        "expected_valid": "t01-controlled-option-delta",
+        "malformed": "t01-other-provider",
+        "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_source_provider_refusal.json",
+        "fixture_sha256": "311449aecf4aa3cf92dcedb6cf50d5d04c70af10531d2a119e032f0c2755679d",
+        "negative_id": "NEG-R112-SOURCE-PROVIDER"
+      },
+      {
+        "case_id": "L01B-R112-CONTROLLED-SOURCE-VARIANT-REFUSAL",
+        "path": "observation.source_variant",
+        "expected_valid": "controlled-option-model-delta/fraction-v1",
+        "malformed": "other-variant/fraction-v1",
+        "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_source_variant_refusal.json",
+        "fixture_sha256": "633d5c5a648fb6e9af5835cfde545f753e9d7b9570a7475ec5e6214582a4a12b",
+        "negative_id": "NEG-R112-SOURCE-VARIANT"
+      },
+      {
+        "case_id": "L01B-R112-CONTROLLED-CONTRACT-ID-REFUSAL",
+        "path": "observation.native_record.identity.contract_id",
+        "expected_valid": "SYNTH-NVDA-OPT-C100-20261120",
+        "malformed": "SYNTH-NVDA-OPT-C101-20261120",
+        "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_contract_id_refusal.json",
+        "fixture_sha256": "5707a23b542a5e6117fca02c926ffb50e8d9687bd48252696728b7bd71d75aae",
+        "negative_id": "NEG-R112-ID-CONTRACT-ID-01"
+      },
+      {
+        "case_id": "L01B-R112-CONTROLLED-UNDERLYING-REFUSAL",
+        "path": "observation.native_record.identity.underlying",
+        "expected_valid": "NVDA",
+        "malformed": "OTHER",
+        "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_underlying_refusal.json",
+        "fixture_sha256": "8f56be39fe73c6f9d33eca45a90d8ce4e638000583f5517aa989e7a5adca1c41",
+        "negative_id": "NEG-R112-ID-UNDERLYING-02"
+      },
+      {
+        "case_id": "L01B-R112-CONTROLLED-SECURITY-TYPE-REFUSAL",
+        "path": "observation.native_record.identity.security_type",
+        "expected_valid": "OPT",
+        "malformed": "STK",
+        "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_security_type_refusal.json",
+        "fixture_sha256": "3a62d4f6aeabedf87000c2c5fe1aae7957c6da2d42f78a6eecf594878182193d",
+        "negative_id": "NEG-R112-ID-SECURITY-TYPE-03"
+      },
+      {
+        "case_id": "L01B-R112-CONTROLLED-RIGHT-REFUSAL",
+        "path": "observation.native_record.identity.right",
+        "expected_valid": "C",
+        "malformed": "P",
+        "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_right_refusal.json",
+        "fixture_sha256": "cf6d3be90a5cc04ba142673e82b57b38511be1003b3548712fc3e2eda1dc122d",
+        "negative_id": "NEG-R112-ID-RIGHT-04"
+      },
+      {
+        "case_id": "L01B-R112-CONTROLLED-EXPIRY-DATE-REFUSAL",
+        "path": "observation.native_record.identity.expiry_date",
+        "expected_valid": "2026-11-20",
+        "malformed": "2026-11-27",
+        "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_expiry_date_refusal.json",
+        "fixture_sha256": "ff9736a906aebf132d97a7b04c8a14018f704a41371361f3abc3eef3c401acd6",
+        "negative_id": "NEG-R112-ID-EXPIRY-DATE-05"
+      },
+      {
+        "case_id": "L01B-R112-CONTROLLED-STRIKE-REFUSAL",
+        "path": "observation.native_record.identity.strike",
+        "expected_valid": "100",
+        "malformed": "105",
+        "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_strike_refusal.json",
+        "fixture_sha256": "a4c3634f248289bff0c427dc6a66360f087a42c60efdf79048338c5b4223feaf",
+        "negative_id": "NEG-R112-ID-STRIKE-06"
+      },
+      {
+        "case_id": "L01B-R112-CONTROLLED-CURRENCY-REFUSAL",
+        "path": "observation.native_record.identity.currency",
+        "expected_valid": "USD",
+        "malformed": "EUR",
+        "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_currency_refusal.json",
+        "fixture_sha256": "2fc2210a4fe21ca42a0964dd5d1cbeee11e8c98c5b08cfc838564bed4bf53fe3",
+        "negative_id": "NEG-R112-ID-CURRENCY-07"
+      },
+      {
+        "case_id": "L01B-R112-CONTROLLED-MODEL-VARIANT-REFUSAL",
+        "path": "observation.native_record.identity.model_variant",
+        "expected_valid": "CONTROLLED_SIGNED_DELTA_V1",
+        "malformed": "CONTROLLED_SIGNED_DELTA_V2",
+        "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_model_variant_refusal.json",
+        "fixture_sha256": "696f8c8141d90f598850d4325ffa0d5a137290b104e28d20b49af36d97f18c62",
+        "negative_id": "NEG-R112-ID-MODEL-VARIANT-08"
+      },
+      {
+        "case_id": "L01B-R112-CONTROLLED-SCALE-REFUSAL",
+        "path": "observation.native_record.identity.scale",
+        "expected_valid": "signed_decimal_fraction",
+        "malformed": "decimal_percent",
+        "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_scale_refusal.json",
+        "fixture_sha256": "ecaf3846158cf5da5075051350b4e2af8d50e01a7a6f5c80cdf61e75243c6e2d",
+        "negative_id": "NEG-R112-ID-SCALE-09"
+      },
+      {
+        "case_id": "L01B-R112-CONTROLLED-GENERATION-REFUSAL",
+        "path": "observation.native_record.identity.generation",
+        "expected_valid": "T01-R112-CONTROL-G1",
+        "malformed": "T01-R112-CONTROL-G2",
+        "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_generation_refusal.json",
+        "fixture_sha256": "cd1fbb5e284ba83b9219aaae4d413f9ee7c07e4b161e7d8658c96387e27d56d4",
+        "negative_id": "NEG-R112-ID-GENERATION-10"
+      },
+      {
+        "case_id": "L01B-R112-CONTROLLED-REQUEST-ID-REFUSAL",
+        "path": "observation.native_record.identity.request_id",
+        "expected_valid": "T01-R112-BOUNDARIES-1",
+        "malformed": "T01-R112-OTHER-REQUEST",
+        "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_request_id_refusal.json",
+        "fixture_sha256": "d1c56064e3c5c94cd9457024ba993b85e694d58056ea449b762fc966b3f5539f",
+        "negative_id": "NEG-R112-ID-REQUEST-ID-11"
+      },
+      {
+        "case_id": "L01B-R112-CONTROLLED-SEQUENCE-SCOPE-REFUSAL",
+        "path": "observation.ingestion_sequence_scope",
+        "expected_valid": "T01-R112-CONTROL/G1",
+        "malformed": "T01-R112-CONTROL/G2",
+        "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_sequence_scope_refusal.json",
+        "fixture_sha256": "0604d7e5c15d6de8c651cdcc3233c8d56334b97e394487b7810e5d977bc6d39e",
+        "negative_id": "NEG-R112-WRONG-SCOPE-00"
+      }
+    ],
+    "source_field_failure_semantics": "COORDINATOR_SOURCE_FIELD_REFUSAL(path), before roster, before public M00 admit, not a D091 stage",
+    "f_request_only_2": "H01/H02 existing request negatives, no new source permission",
+    "all_injection_test_only": true
+  },
+  "owner_approved_case_allocations": {
+    "D091_L04": {
+      "count": 18,
+      "hard_ceiling": 18,
+      "active_ledger_proof_id": "M02-C28-D091",
+      "physical_cases": [
+        {
+          "case_id": "D091-CONTROLLED-SUCCESS",
+          "expected_stage": "CATEGORY_DURABLE_REOPEN_AND_IDEMPOTENT_RETRY",
+          "proposed_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_success",
+          "fixture_path": null,
+          "fixture_sha256": null,
+          "independent_oracle": "SEE_ORIGINAL_COUPLED_COHORT_CONTRACT",
+          "execution_released": false
+        },
+        {
+          "case_id": "D091-CONTROLLED-REACHED_REFUSAL",
+          "expected_stage": "RANGE",
+          "proposed_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_reached_refusal",
+          "fixture_path": null,
+          "fixture_sha256": null,
+          "independent_oracle": "SEE_ORIGINAL_COUPLED_COHORT_CONTRACT",
+          "execution_released": false
+        },
+        {
+          "case_id": "D091-CONTROLLED-SEAL-REFUSAL",
+          "expected_stage": "COORDINATOR_POSTSEAL_INGRESS_REFUSAL",
+          "proposed_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_seal_refusal",
+          "fixture_path": null,
+          "fixture_sha256": null,
+          "independent_oracle": "SEE_ORIGINAL_COUPLED_COHORT_CONTRACT",
+          "execution_released": false
+        },
+        {
+          "case_id": "D091-CONTROLLED-NONFINITE-REFUSAL",
+          "expected_stage": "NONFINITE",
+          "proposed_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_nonfinite_refusal",
+          "fixture_path": null,
+          "fixture_sha256": null,
+          "independent_oracle": "SEE_ORIGINAL_COUPLED_COHORT_CONTRACT",
+          "execution_released": false
+        },
+        {
+          "case_id": "D091-CONTROLLED-ABSENT-REFUSAL",
+          "expected_stage": "ABSENT",
+          "proposed_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_absent_refusal",
+          "fixture_path": null,
+          "fixture_sha256": null,
+          "independent_oracle": "SEE_ORIGINAL_COUPLED_COHORT_CONTRACT",
+          "execution_released": false
+        },
+        {
+          "case_id": "D091-CONTROLLED-RECEIPT-ASOF-REFUSAL",
+          "expected_stage": "CLOCK_OR_SCOPE",
+          "proposed_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_receipt_asof_refusal",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/d091_controlled_receipt_asof_refusal.json",
+          "fixture_sha256": "cf079a54252dd708201d09c3e76c216221bc3f7b6b07beb1914888674a37d706",
+          "independent_oracle": "CLOCK_OR_SCOPE: nonzero age when most-recent earlier raw has no exact target at requested instant; distinguish no-source ABSENT",
+          "execution_released": false
+        },
+        {
+          "case_id": "D091-CONTROLLED-CUTOFF-ORDER-REFUSAL",
+          "expected_stage": "CLOCK_OR_SCOPE",
+          "proposed_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_cutoff_order_refusal",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/d091_controlled_cutoff_order_refusal.json",
+          "fixture_sha256": "53c9a8d7c7eaf38a4544584ceea518881c49469f976a206be6f7c4010ba548b7",
+          "independent_oracle": "CLOCK_OR_SCOPE: knowledge_cutoff before as_of; before source pagination",
+          "execution_released": false
+        },
+        {
+          "case_id": "D091-CONTROLLED-TOP-RANK-TIE-REFUSAL",
+          "expected_stage": "HISTORY_OR_AMBIGUOUS_RANK",
+          "proposed_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_top_rank_tie_refusal",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/d091_controlled_top_rank_tie_refusal.json",
+          "fixture_sha256": "0d34b51e309db8799bd6426f1e183a80e1d9244354cda2867af2b1e7271ef0fc",
+          "independent_oracle": "two true M00 originals, genuine sealed B_TIE, complete public page, D091 tied max refusal and no occurrence",
+          "execution_released": false
+        },
+        {
+          "case_id": "D091-CONTROLLED-OVER-64-REFUSAL",
+          "expected_stage": "HISTORY_OR_AMBIGUOUS_RANK",
+          "proposed_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_over_64_refusal",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/d091_controlled_over_64_refusal.json",
+          "fixture_sha256": "ba7129a821d9e6434be9fc5fcc454d8ebd78f043c090255f0c1c2cfde630caf7",
+          "independent_oracle": "exact 65 original M00 readbacks; page sizes 8x8+1; typed history overflow at 65 without early manifest mismatch",
+          "execution_released": false
+        },
+        {
+          "case_id": "D091-CONTROLLED-CURSOR-NONPROGRESS-REFUSAL",
+          "expected_stage": "HISTORY_OR_AMBIGUOUS_RANK",
+          "proposed_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_cursor_nonprogress_refusal",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/d091_controlled_cursor_nonprogress_refusal.json",
+          "fixture_sha256": "4031f4640a1373c377a623f442a0f2ec859a176ac725906c48cc6b2b1e5d2fcf",
+          "independent_oracle": "HISTORY_OR_AMBIGUOUS_RANK: read-port fault only; not a claim normal M00 emits repeating cursor",
+          "execution_released": false
+        },
+        {
+          "case_id": "D091-CONTROLLED-DUPLICATE-ID-CONFLICT-REFUSAL",
+          "expected_stage": "HISTORY_OR_AMBIGUOUS_RANK",
+          "proposed_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_duplicate_id_conflict_refusal",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/d091_controlled_duplicate_id_conflict_refusal.json",
+          "fixture_sha256": "c9fbf5aa427b87d287f05e4b5cfe2daadb50e3236d1529654fd6450db6896c98",
+          "independent_oracle": "HISTORY_OR_AMBIGUOUS_RANK: repeated identical occurrence ID with conflicting native value is discovered during complete history page consistency, before original-getter comparison; test-only returned-page fault, never claimed as normal M00 output",
+          "execution_released": false
+        },
+        {
+          "case_id": "D091-CONTROLLED-PRECOMMIT-SQLITE-FAILURE",
+          "expected_stage": "PERSISTENCE_PRECOMMIT_CERTAIN_FAILURE",
+          "proposed_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_precommit_sqlite_failure",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/d091_controlled_precommit_sqlite_failure.json",
+          "fixture_sha256": "0f954fc8d7a132091576cb7af92072d7eabc839c47373189658130437cc4e20b",
+          "independent_oracle": "EXPECTED: PersistenceFailureV1(outcome_uncertain=False), no successful record on fresh independent reader",
+          "execution_released": false
+        },
+        {
+          "case_id": "D091-CONTROLLED-UNCERTAIN-COMMIT-FAILURE",
+          "expected_stage": "PERSISTENCE_UNCERTAIN_POSTCOMMIT",
+          "proposed_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_uncertain_commit_failure",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/d091_controlled_uncertain_commit_failure.json",
+          "fixture_sha256": "15b15b769d92258731c6cd72cc6ca322a331401249d42be74443f0166cd135e3",
+          "independent_oracle": "EXPECTED: PersistenceFailureV1(outcome_uncertain=True); fresh reader must report actual present/absent state; absence not assumed",
+          "execution_released": false
+        },
+        {
+          "case_id": "D091-CONTROLLED-SAME-ID-CONTENT-CONFLICT",
+          "expected_stage": "PERSISTENCE_IMMUTABLE_CONFLICT",
+          "proposed_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_same_id_content_conflict",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/d091_controlled_same_id_content_conflict.json",
+          "fixture_sha256": "93154f6bf3d26c09b1b74718112016d1002ef39efcaf084c189f1b4a1af06408",
+          "independent_oracle": "EXPECTED: Content conflict refusal, previous row remains unchanged, not new successful category",
+          "execution_released": false
+        },
+        {
+          "case_id": "D091-CONTROLLED-ORIGINAL-GETTER-MISSING",
+          "expected_stage": "ORIGIN_OR_IDENTITY",
+          "proposed_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_original_getter_missing",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_ORIGINAL_GETTER_FAULT_PREP_20261116/NEGATIVE_FIXTURES/d091_controlled_original_getter_missing.json",
+          "fixture_sha256": "ac1b985e87cb2f4ca0dfed0fd1dc3bb4c0fac8d5794ff4831cda2014a68810b3",
+          "independent_oracle": "ORIGIN_OR_IDENTITY, no D091 row and unchanged real M00",
+          "execution_released": false
+        },
+        {
+          "case_id": "D091-CONTROLLED-ORIGINAL-GETTER-UNITS-MISMATCH",
+          "expected_stage": "ORIGIN_OR_IDENTITY",
+          "proposed_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_original_getter_units_mismatch",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_ORIGINAL_GETTER_FAULT_PREP_20261116/NEGATIVE_FIXTURES/d091_controlled_original_getter_units_mismatch.json",
+          "fixture_sha256": "a80a39c150eafb970089f40f7d8ba60c82ae43cb248abb5e472497f2edd49608",
+          "independent_oracle": "ORIGIN_OR_IDENTITY, no D091 row and unchanged real M00",
+          "execution_released": false
+        },
+        {
+          "case_id": "D091-CONTROLLED-ORIGINAL-GETTER-GENERATION-MISMATCH",
+          "expected_stage": "ORIGIN_OR_IDENTITY",
+          "proposed_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_original_getter_generation_mismatch",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_ORIGINAL_GETTER_FAULT_PREP_20261116/NEGATIVE_FIXTURES/d091_controlled_original_getter_generation_mismatch.json",
+          "fixture_sha256": "e3b11ca22017e465fc63f11b102bbc6d696d2fe40436b6bc5a501e0da4078352",
+          "independent_oracle": "ORIGIN_OR_IDENTITY, no D091 row and unchanged real M00",
+          "execution_released": false
+        },
+        {
+          "case_id": "D091-CONTROLLED-UNSEALED-REFUSAL",
+          "expected_stage": "UNSEALED",
+          "proposed_node": "tests/product/m02_completion_28/d091/test_signal.py::test_d091_controlled_unsealed_refusal",
+          "fixture_path": null,
+          "fixture_sha256": null,
+          "independent_oracle": "after genuinely admitting t00 only, lawful t00 materialise emits one immutable UNSEALED diagnostic, zero M00 history page calls, no D091 occurrence or SQLite row, coordinator remains ADMITTING",
+          "execution_released": false
+        }
+      ]
+    },
+    "L01b_R112": {
+      "count": 15,
+      "hard_ceiling": 15,
+      "active_ledger_proof_id": "M02-C28-L01B-R112-SOURCE-SUPPORT",
+      "physical_cases": [
+        {
+          "case_id": "L01B-R112-CONTROLLED-NATIVE-UNITS-REFUSAL",
+          "expected_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
+          "proposed_node": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_native_units_refusal",
+          "refusal_field_path": "observation.native_units",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_native_units_refusal.json",
+          "fixture_sha256": "b337bb83a61b02fd470f5fa06cbeeb6c9bc4c22327cfb080bd1e3d0a8e594b33",
+          "execution_released": false
+        },
+        {
+          "case_id": "L01B-R112-CONTROLLED-SOURCE-PROVIDER-REFUSAL",
+          "expected_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
+          "proposed_node": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_source_provider_refusal",
+          "refusal_field_path": "observation.source_provider",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_source_provider_refusal.json",
+          "fixture_sha256": "311449aecf4aa3cf92dcedb6cf50d5d04c70af10531d2a119e032f0c2755679d",
+          "execution_released": false
+        },
+        {
+          "case_id": "L01B-R112-CONTROLLED-SOURCE-VARIANT-REFUSAL",
+          "expected_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
+          "proposed_node": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_source_variant_refusal",
+          "refusal_field_path": "observation.source_variant",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_source_variant_refusal.json",
+          "fixture_sha256": "633d5c5a648fb6e9af5835cfde545f753e9d7b9570a7475ec5e6214582a4a12b",
+          "execution_released": false
+        },
+        {
+          "case_id": "L01B-R112-CONTROLLED-CONTRACT-ID-REFUSAL",
+          "expected_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
+          "proposed_node": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_contract_id_refusal",
+          "refusal_field_path": "observation.native_record.identity.contract_id",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_contract_id_refusal.json",
+          "fixture_sha256": "5707a23b542a5e6117fca02c926ffb50e8d9687bd48252696728b7bd71d75aae",
+          "execution_released": false
+        },
+        {
+          "case_id": "L01B-R112-CONTROLLED-UNDERLYING-REFUSAL",
+          "expected_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
+          "proposed_node": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_underlying_refusal",
+          "refusal_field_path": "observation.native_record.identity.underlying",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_underlying_refusal.json",
+          "fixture_sha256": "8f56be39fe73c6f9d33eca45a90d8ce4e638000583f5517aa989e7a5adca1c41",
+          "execution_released": false
+        },
+        {
+          "case_id": "L01B-R112-CONTROLLED-SECURITY-TYPE-REFUSAL",
+          "expected_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
+          "proposed_node": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_security_type_refusal",
+          "refusal_field_path": "observation.native_record.identity.security_type",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_security_type_refusal.json",
+          "fixture_sha256": "3a62d4f6aeabedf87000c2c5fe1aae7957c6da2d42f78a6eecf594878182193d",
+          "execution_released": false
+        },
+        {
+          "case_id": "L01B-R112-CONTROLLED-RIGHT-REFUSAL",
+          "expected_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
+          "proposed_node": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_right_refusal",
+          "refusal_field_path": "observation.native_record.identity.right",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_right_refusal.json",
+          "fixture_sha256": "cf6d3be90a5cc04ba142673e82b57b38511be1003b3548712fc3e2eda1dc122d",
+          "execution_released": false
+        },
+        {
+          "case_id": "L01B-R112-CONTROLLED-EXPIRY-DATE-REFUSAL",
+          "expected_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
+          "proposed_node": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_expiry_date_refusal",
+          "refusal_field_path": "observation.native_record.identity.expiry_date",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_expiry_date_refusal.json",
+          "fixture_sha256": "ff9736a906aebf132d97a7b04c8a14018f704a41371361f3abc3eef3c401acd6",
+          "execution_released": false
+        },
+        {
+          "case_id": "L01B-R112-CONTROLLED-STRIKE-REFUSAL",
+          "expected_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
+          "proposed_node": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_strike_refusal",
+          "refusal_field_path": "observation.native_record.identity.strike",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_strike_refusal.json",
+          "fixture_sha256": "a4c3634f248289bff0c427dc6a66360f087a42c60efdf79048338c5b4223feaf",
+          "execution_released": false
+        },
+        {
+          "case_id": "L01B-R112-CONTROLLED-CURRENCY-REFUSAL",
+          "expected_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
+          "proposed_node": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_currency_refusal",
+          "refusal_field_path": "observation.native_record.identity.currency",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_currency_refusal.json",
+          "fixture_sha256": "2fc2210a4fe21ca42a0964dd5d1cbeee11e8c98c5b08cfc838564bed4bf53fe3",
+          "execution_released": false
+        },
+        {
+          "case_id": "L01B-R112-CONTROLLED-MODEL-VARIANT-REFUSAL",
+          "expected_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
+          "proposed_node": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_model_variant_refusal",
+          "refusal_field_path": "observation.native_record.identity.model_variant",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_model_variant_refusal.json",
+          "fixture_sha256": "696f8c8141d90f598850d4325ffa0d5a137290b104e28d20b49af36d97f18c62",
+          "execution_released": false
+        },
+        {
+          "case_id": "L01B-R112-CONTROLLED-SCALE-REFUSAL",
+          "expected_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
+          "proposed_node": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_scale_refusal",
+          "refusal_field_path": "observation.native_record.identity.scale",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_scale_refusal.json",
+          "fixture_sha256": "ecaf3846158cf5da5075051350b4e2af8d50e01a7a6f5c80cdf61e75243c6e2d",
+          "execution_released": false
+        },
+        {
+          "case_id": "L01B-R112-CONTROLLED-GENERATION-REFUSAL",
+          "expected_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
+          "proposed_node": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_generation_refusal",
+          "refusal_field_path": "observation.native_record.identity.generation",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_generation_refusal.json",
+          "fixture_sha256": "cd1fbb5e284ba83b9219aaae4d413f9ee7c07e4b161e7d8658c96387e27d56d4",
+          "execution_released": false
+        },
+        {
+          "case_id": "L01B-R112-CONTROLLED-REQUEST-ID-REFUSAL",
+          "expected_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
+          "proposed_node": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_request_id_refusal",
+          "refusal_field_path": "observation.native_record.identity.request_id",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_request_id_refusal.json",
+          "fixture_sha256": "d1c56064e3c5c94cd9457024ba993b85e694d58056ea449b762fc966b3f5539f",
+          "execution_released": false
+        },
+        {
+          "case_id": "L01B-R112-CONTROLLED-SEQUENCE-SCOPE-REFUSAL",
+          "expected_stage": "COORDINATOR_SOURCE_FIELD_REFUSAL",
+          "proposed_node": "tests/product/m02_completion_28/l01b_r112/test_source.py::test_l01b_r112_controlled_sequence_scope_refusal",
+          "refusal_field_path": "observation.ingestion_sequence_scope",
+          "fixture_path": "handoff/m02_completion_28_execution/L04/D091_PROOF_ADMISSION_REVISION_20261116/NEGATIVE_FIXTURES/l01b_r112_controlled_sequence_scope_refusal.json",
+          "fixture_sha256": "0604d7e5c15d6de8c651cdcc3233c8d56334b97e394487b7810e5d977bc6d39e",
+          "execution_released": false
+        }
+      ]
+    }
+  },
+  "proposed_claim_registry": {
+    "status": "NOT_CREATED_NOT_ADMITTED",
+    "claim_id_candidate": "neutral_market_measurement_truth_d091",
+    "claim_path_candidate": "config/product_proof/m02_d091/claim.json",
+    "admission_path_candidate": "config/product_proof/m02_d091/admission.json",
+    "generation_path_candidate": "config/product_proof/m02_d091/generations/0001.json",
+    "future_binding_path_candidate": "implementation/authority/D091_IMPLEMENTATION_AUTHORITY_BINDING.yaml",
+    "generation_actual": null,
+    "generation_sha256": null,
+    "actual_implementation_target": null,
+    "source_claim_generation_conflation_prohibited": true,
+    "first_original_analogue": "config/product_proof/market_measurement_d090/claim.json",
+    "registry_convention_independent_review_required": true
+  },
+  "proposed_changed_paths": {
+    "test_files_before_source": [
+      "tests/product/m02_completion_28/d091/test_signal.py",
+      "tests/product/m02_completion_28/l01b_r112/test_source.py"
+    ],
+    "source_files_after_test_authoring": [
+      "src/nvda_desk/market_measurement_truth/api.py",
+      "src/nvda_desk/market_measurement_truth/_controlled_r112.py",
+      "src/nvda_desk/market_measurement_truth/_native_d091.py",
+      "src/nvda_desk/market_measurement_truth/_native_codec.py"
+    ],
+    "excluded": [
+      "src/nvda_desk/raw_signal_occurrence_truth/api.py",
+      "GUARDRAILS.md",
+      "AGENTS.md",
+      "EXEC_PLAN.md",
+      "tests/AGENTS.override.md",
+      "PostgreSQL",
+      "D145",
+      "existing_claims_and_generations"
+    ]
+  },
+  "release_gates": {
+    "preedit_independent_review": "PENDING",
+    "author_tests": "HELD",
+    "author_code": "HELD",
+    "actual_claim_generation": "UNBOUND",
+    "selected_product_runner": "NOT_DESIGNATED",
+    "fresh_independent_receiver": "NOT_VERIFIED",
+    "strict_tester": "NOT_DESIGNATED",
+    "product_case_execution": "HELD",
+    "product_executions": 0,
+    "D145": "PAUSED",
+    "main_merge": "NOT_AUTHORISED"
+  }
+}

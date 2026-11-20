@@ -171,6 +171,32 @@ def governed_snapshot(root: Path) -> tuple[tuple[str, str], ...]:
     )
 
 
+# These two exact files have independent TEST-AUTHORING acceptance only.
+# They are not runnable proof families until a separately governed descriptor,
+# authority binding, claim contract and immutable generation are admitted.
+_D091_STAGED_AUTHORING = {
+    "tests/product/m02_completion_28/d091/test_signal.py":
+        "d1eab7802786344ecf9ab4d4e2f46b802aba6d2fea0c72d14ad149492504b86f",
+    "tests/product/m02_completion_28/l01b_r112/test_source.py":
+        "1f648998ca4c64829a3655057598e5ae5687b6568bb7e9eebf7ca2f17caa56f5",
+}
+
+
+def _d091_staged_authoring_paths(root: Path) -> set[str]:
+    """Permit exact unadmitted files without manufacturing a proof claim.
+
+    Any bytes changed after the independent authoring verdict require a new
+    explicit binding/review: they cannot be silently excused as staged code.
+    """
+    if (root / "config/product_proof/m02_d091/claim.json").exists():
+        return set()
+    for name, expected_sha in _D091_STAGED_AUTHORING.items():
+        file = safe_path(root, name)
+        if not file.is_file() or sha256(file) != expected_sha:
+            raise ValueError("unadmitted D091/L01b test source differs from accepted authoring")
+    return set(_D091_STAGED_AUTHORING)
+
+
 def _partition(root: Path, catalogue: dict[str, Any], contracts: dict[str, Any]) -> None:
     disposition = read_json(safe_path(root, catalogue["transitional_dispositions"]))
     owned: dict[str, str] = {}
@@ -212,12 +238,13 @@ def _partition(root: Path, catalogue: dict[str, Any], contracts: dict[str, Any])
     for row in disposition["legacy_current_claim_paths"]:
         if sha256(safe_path(root, row["path"])) != row["baseline_sha256"]:
             raise ValueError("preserved legacy physical proof hash mismatch")
+    staged_authoring = _d091_staged_authoring_paths(root)
     for path in (root / "tests/product").rglob("*"):
         if path.is_symlink():
             raise ValueError("symlink in product proof jurisdiction")
         if path.is_file() and path.name.startswith("test_") and path.suffix == ".py":
             name = path.relative_to(root).as_posix()
-            if name not in owned:
+            if name not in owned and name not in staged_authoring:
                 raise ValueError(f"unowned physical product path: {name}")
     for name, owner in owned.items():
         if (
@@ -789,6 +816,92 @@ def _m00_brief2_extension(root: Path) -> tuple[dict[str, Any], dict[str, Any], s
     return entry, contract, digest
 
 
+def _d091_l01b_extension(
+    root: Path,
+) -> tuple[dict[str, Any], dict[str, Any], str] | None:
+    """Register one exact two-jurisdiction D091 claim ONLY after a descriptor.
+
+    The original positive R112 source and both finite test jurisdictions are
+    fixed. This routine does not install an admission pointer or generation.
+    """
+    descriptor_path = "config/product_proof/m02_d091/claim.json"
+    descriptor = safe_path(root, descriptor_path)
+    if not descriptor.exists():
+        return None
+    expected = {
+        "schema_version": "1.0",
+        "claim_id": "neutral_market_measurement_truth_d091",
+        "brief_path": "handoff/m02_completion_28_execution/L04/"
+        "D091_PREEDIT_BINDING_REVISION_20261117/EXACT_RETURN_REPAIR_R1_R3.md",
+        "binding_path": "implementation/authority/"
+        "D091_IMPLEMENTATION_AUTHORITY_BINDING.yaml",
+        "contract_path": "handoff/m02_completion_28_execution/L04/"
+        "D091_PREEDIT_BINDING_REVISION_20261117/PRODUCT_PROOF_REGISTRATION_PROPOSAL.json",
+        "physical_root": "tests/product/m02_completion_28",
+        "admission_path": "config/product_proof/m02_d091/admission.json",
+    }
+    if read_json(descriptor) != expected:
+        raise ValueError("D091 claim descriptor differs from fixed proposed authority")
+    brief = safe_path(root, expected["brief_path"])
+    binding = safe_path(root, expected["binding_path"])
+    validate_implementation_authority(root, binding, brief)
+    if yaml.safe_load(binding.read_text(encoding="utf-8"))["targets"] != [
+        {"action": "modify", "object_id": name} for name in ("M02", "G01")
+    ]:
+        raise ValueError("D091 owning architecture projection mismatch")
+    contract = read_json(safe_path(root, expected["contract_path"]))
+    _schema(root, contract, "accepted_brief_product_proof.schema.json")
+    exact_families = (
+        ("tests/product/m02_completion_28/d091/test_signal.py", 18, "M02-C28-D091"),
+        ("tests/product/m02_completion_28/l01b_r112/test_source.py", 15,
+         "M02-C28-L01B-R112-SOURCE-SUPPORT"),
+    )
+    admitted = read_json(safe_path(
+        root, "handoff/m02_completion_28_execution/L04/"
+              "D091_FINITE_ADEQUACY_REVISION_20261117/REVISED_CASE_INVENTORY.json"
+    ))["physical_cases"]
+    if len(admitted) != 33:
+        raise ValueError("D091/L01b owner-admitted finite case count mismatch")
+    if (
+        contract["claim_id"] != expected["claim_id"]
+        or contract["semantic_brief_path"] != expected["brief_path"]
+        or contract["target"] != {
+            "category": "M", "responsibility_name": "neutral_market_measurement_truth",
+            "package": "nvda_desk.market_measurement_truth",
+            "public_seam": "nvda_desk.market_measurement_truth.api",
+            "intent": "modify", "existing_object_id": "M02",
+        }
+        or len(contract["families"]) != 2
+        or set(contract["required_proof_ids"]) != {row[2] for row in exact_families}
+        or any(v != "FAIL" for v in contract["execution_policy"].values())
+    ):
+        raise ValueError("D091 proof contract/owner association mismatch")
+    for family, (name, count, proof_id) in zip(
+        contract["families"], exact_families, strict=True
+    ):
+        names = [
+            row["proposed_test_node"].split("::", 1)[1]
+            for row in admitted
+            if row["proposed_test_node"].split("::", 1)[0] == name
+        ]
+        if (
+            family["path"] != name
+            or family["proof_obligation_ids"] != [proof_id]
+            or len(names) != count
+            or family["required_test_names"] != names
+            or family["command"] != "python -m pytest " + name
+        ):
+            raise ValueError("D091 and L01b physical case identity/jurisdiction mismatch")
+    entry = {key: value for key, value in expected.items() if key != "brief_path"}
+    entry["profile"] = "accepted_brief_v2"
+    target_id, _ = _target(root, contract["target"])
+    # No pointer exists or is installed by this extension. Existing strict
+    # generation verification governs if a future owner-approved pointer
+    # becomes present.
+    _generation(root, entry, contract, sha256(brief), target_id)
+    return entry, contract, sha256(brief)
+
+
 def _native_reconciliation_extensions(
     root: Path,
 ) -> tuple[tuple[dict[str, Any], dict[str, Any], str], ...]:
@@ -1076,6 +1189,9 @@ def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductPro
     if authority is not None:
         for native in _native_reconciliation_extensions(root):
             extensions[native[0]["claim_id"]] = native
+        d091 = _d091_l01b_extension(root)
+        if d091 is not None:
+            extensions[d091[0]["claim_id"]] = d091
     if extensions:
         catalogue = {
             **catalogue,

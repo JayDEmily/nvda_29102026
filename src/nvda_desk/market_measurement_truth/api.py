@@ -2586,3 +2586,239 @@ __all__ += [
     "create_window_owner",
     "create_window_reader",
 ]
+
+
+# D091/L01b controlled synthetic categorical public contract.  This is a
+# distinct M02 occurrence family: do not coerce its result into the numeric
+# DerivedSignalOccurrenceV1 or NativeMeasurementOccurrenceV1 contracts.
+from typing import Literal
+
+D091RefusalStageV1 = Literal[
+    "UNSEALED",
+    "ORIGIN_OR_IDENTITY",
+    "CLOCK_OR_SCOPE",
+    "HISTORY_OR_AMBIGUOUS_RANK",
+    "ABSENT",
+    "NONFINITE",
+    "RANGE",
+]
+
+_D091_LABELS = frozenset(
+    ("ABS_00_10", "ABS_10_25", "ABS_25_50", "ABS_50_75", "ABS_75_100")
+)
+_D091_STAGES = frozenset(
+    (
+        "UNSEALED", "ORIGIN_OR_IDENTITY", "CLOCK_OR_SCOPE",
+        "HISTORY_OR_AMBIGUOUS_RANK", "ABSENT", "NONFINITE", "RANGE",
+    )
+)
+
+
+@dataclass(frozen=True, slots=True)
+class D091CategoryV1(_Validated):
+    """One exact categorical D091 result; not an untyped str or enum wire."""
+
+    label: str
+
+    def __post_init__(self) -> None:
+        _Validated.__post_init__(self)
+        if self.label not in _D091_LABELS:
+            raise ValueError("unadmitted D091 rule label")
+
+
+@dataclass(frozen=True, slots=True)
+class D091BucketRequestV1(_Validated):
+    """Twenty-one immutable input fields; request_identity is derived only."""
+
+    derived_signal_id: str
+    subject_instrument: str
+    as_of_utc: datetime
+    knowledge_cutoff_utc: datetime
+    calculation_definition_version: str
+    source_profile_ref: VersionRefV1
+    selection_policy_ref: VersionRefV1
+    projection_mapping_ref: VersionRefV1
+    unit_convention_ref: VersionRefV1
+    rule_profile_ref: VersionRefV1
+    contract_id: str
+    underlying: str
+    security_type: str
+    right: str
+    expiry_date: str
+    strike: str
+    currency: str
+    model_variant: str
+    scale: str
+    generation: str
+    request_id: str
+
+    def __post_init__(self) -> None:
+        _Validated.__post_init__(self)
+        if self.derived_signal_id != "D091":
+            raise ValueError("D091 request signal identity mismatch")
+        # Intentionally do NOT reject as_of > knowledge_cutoff at this DTO
+        # constructor: the admitted H02 public materialise call must emit its
+        # actual CLOCK_OR_SCOPE business refusal before M00 pagination.
+        # Both instants are independently checked as genuine UTC by _Validated.
+
+    @property
+    def request_identity(self) -> str:
+        import hashlib
+        from . import _native_codec as codec
+
+        content = {field.name: getattr(self, field.name) for field in fields(self)}
+        return "d091-request-v1:" + hashlib.sha256(codec.canonical(content)).hexdigest()
+
+
+@dataclass(frozen=True, slots=True)
+class D091BucketOccurrenceV1(_Validated):
+    """Self-contained immutable categorical occurrence for SQLite readback."""
+
+    owner_object_id: str
+    owner_namespace: str
+    implementation_brief_sha256: str
+    derived_signal_id: str
+    derived_occurrence_id: str
+    request: D091BucketRequestV1
+    definition: CalculationDefinitionV1
+    source_contract_sha256: str
+    source_artifact_sha256: str
+    cohort_content_digest: str
+    original_observation: raw_api.RawObservationOccurrenceV1
+    selected_projection: raw_api.ProjectedRawValueV1
+    signed_delta: Decimal
+    result: D091CategoryV1
+    units: str
+    result_shape: str
+    effective_as_of_utc: datetime
+    knowledge_cutoff_utc: datetime
+    calculated_at_utc: datetime
+
+    def __post_init__(self) -> None:
+        _Validated.__post_init__(self)
+        if (
+            self.owner_object_id != "M02"
+            or self.owner_namespace != "neutral_market_measurement_truth/d091/v1"
+            or self.derived_signal_id != "D091"
+            or self.request.derived_signal_id != "D091"
+            or self.units != "category"
+            or self.result_shape != "category"
+        ):
+            raise ValueError("D091 categorical occurrence owner/shape mismatch")
+        if (
+            self.definition.derived_signal_id != "D091"
+            or self.definition.raw_dependencies != ("R112",)
+            or self.definition.derived_dependencies != ()
+            or self.definition.result_shape != "category"
+        ):
+            raise ValueError("D091 categorical definition lineage mismatch")
+        if (
+            self.effective_as_of_utc != self.request.as_of_utc
+            or self.knowledge_cutoff_utc != self.request.knowledge_cutoff_utc
+            or self.calculated_at_utc < self.knowledge_cutoff_utc
+            or self.original_observation.observation_occurrence_id
+            != self.selected_projection.observation_occurrence_id
+            or type(self.selected_projection.native_value) is not Decimal
+            or self.selected_projection.native_value != self.signed_delta
+        ):
+            raise ValueError("D091 original/projection/clock internal inconsistency")
+        if not self.derived_occurrence_id.startswith("d091-occurrence-v1:"):
+            raise ValueError("D091 logical occurrence identity required")
+        for digest in (self.source_contract_sha256, self.source_artifact_sha256, self.cohort_content_digest):
+            if re.fullmatch(r"[0-9a-f]{64}", digest) is None:
+                raise ValueError("D091 immutable source/cohort SHA256 required")
+
+
+@dataclass(frozen=True, slots=True)
+class D091DiagnosticEventV1:
+    """Exactly five output-only fields. No technical persistence stage."""
+
+    request_identity: str
+    source_observation_occurrence_id: str | None
+    stage: D091RefusalStageV1
+    source_profile_ref: VersionRefV1
+    rule_profile_ref: VersionRefV1
+
+    def __post_init__(self) -> None:
+        if (
+            type(self.request_identity) is not str or not self.request_identity
+            or (self.source_observation_occurrence_id is not None
+                and (type(self.source_observation_occurrence_id) is not str
+                     or not self.source_observation_occurrence_id))
+            or type(self.stage) is not str or self.stage not in _D091_STAGES
+            or type(self.source_profile_ref) is not VersionRefV1
+            or type(self.rule_profile_ref) is not VersionRefV1
+        ):
+            raise ValueError("invalid exact five-field D091 business diagnostic")
+
+
+class D091DiagnosticObserverV1(Protocol):
+    def __call__(self, event: D091DiagnosticEventV1) -> None: ...
+
+
+class D091RawReadPortV1(Protocol):
+    """Selector-facing original M00 read and cursor-page interfaces only."""
+
+    def get_raw_observation_occurrence(
+        self, observation_occurrence_id: object,
+    ) -> raw_api.RawObservationOccurrenceV1 | None: ...
+
+    def list_projected_raw_history(
+        self, raw_signal_catalogue_id: raw_api.RawSignalCatalogueId, *,
+        mappings: Sequence[raw_api.RawSignalProjectionMappingV1],
+        subject_instrument: str | None,
+        received_at_or_before_utc: datetime | None,
+        event_at_or_before_utc: datetime | None,
+        limit: int, cursor: str | None,
+    ) -> raw_api.ProjectedRawHistoryPageV1: ...
+
+
+class D091BucketReadsV1(Protocol):
+    def get_derived_occurrence(
+        self, derived_occurrence_id: str,
+    ) -> D091BucketOccurrenceV1 | None: ...
+
+    def list_derived_history(
+        self, *, derived_signal_id: str, subject_instrument: str,
+        effective_at_or_before_utc: datetime,
+        knowledge_at_or_before_utc: datetime, limit: int,
+    ) -> tuple[D091BucketOccurrenceV1, ...]: ...
+
+
+class D091BucketOwnerV1(Protocol):
+    @property
+    def reads(self) -> D091BucketReadsV1: ...
+
+    def materialise(
+        self, request: D091BucketRequestV1,
+    ) -> D091BucketOccurrenceV1 | None: ...
+
+
+def create_d091_bucket_owner(
+    *, admission: OwnerAdmissionV1,
+    controlled_source_read_capability: D091RawReadPortV1,
+    storage: SQLiteStorageV1, utc_now: Callable[[], datetime],
+    diagnostic_observer: D091DiagnosticObserverV1 | None = None,
+) -> D091BucketOwnerV1:
+    from ._native_d091 import build_owner
+
+    return build_owner(
+        admission, controlled_source_read_capability, storage,
+        utc_now, diagnostic_observer,
+    )
+
+
+def create_d091_bucket_reader(
+    *, admission: OwnerAdmissionV1, storage: SQLiteReadStorageV1,
+) -> D091BucketReadsV1:
+    from ._native_d091 import build_reader
+
+    return build_reader(admission, storage)
+
+
+__all__ += [
+    "D091BucketOccurrenceV1", "D091BucketOwnerV1", "D091BucketReadsV1",
+    "D091BucketRequestV1", "D091CategoryV1", "D091DiagnosticEventV1",
+    "D091DiagnosticObserverV1", "D091RawReadPortV1", "D091RefusalStageV1",
+    "create_d091_bucket_owner", "create_d091_bucket_reader",
+]

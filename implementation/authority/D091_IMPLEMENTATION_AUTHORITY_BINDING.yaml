@@ -1,0 +1,10 @@
+schema_version: "1.0"
+brief_sha256: d00849a98b0773a802d392f6418f051439e86686bca3885f98b14f9410133c17
+acceptance:
+  status: ACCEPTED_FOR_IMPLEMENTATION
+  authority_ref: https://chatgpt.com/g/g-p-6ad546f307e88191b64b94d0851da624-nvda-6-1/c/6afd1172-5bd8-83ec-8c0c-196e51525e13
+targets:
+  - action: modify
+    object_id: M02
+  - action: modify
+    object_id: G01
