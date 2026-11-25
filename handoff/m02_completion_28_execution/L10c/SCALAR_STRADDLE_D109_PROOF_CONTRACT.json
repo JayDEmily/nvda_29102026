@@ -1,0 +1,119 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_d109",
+  "semantic_brief_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_PREEDIT_DESIGN_AND_REVIEW_20261125.md",
+  "target": {
+    "category": "M",
+    "responsibility_name": "neutral_market_measurement_truth",
+    "package": "nvda_desk.market_measurement_truth",
+    "public_seam": "nvda_desk.market_measurement_truth.api",
+    "intent": "modify",
+    "existing_object_id": "M02"
+  },
+  "proof_axis": "product",
+  "product_tier_treatment": "NOT_CLASSIFIED",
+  "architecture_proof_axis": "architecture_kernel",
+  "required_proof_ids": [
+    "M02-C28-D109"
+  ],
+  "families": [
+    {
+      "id": "m02_l17_scalar_straddle_d109",
+      "path": "tests/product/m02_scalar_straddle_d109/test_signal.py",
+      "proof_obligation_ids": [
+        "M02-C28-D109"
+      ],
+      "required_test_names": [
+        "test_d109_controlled_success",
+        "test_d109_call_same_bin_non_atm",
+        "test_d109_put_same_bin_non_atm",
+        "test_d109_missing_parent",
+        "test_d109_duplicate_parent",
+        "test_d109_wrong_slot",
+        "test_d109_wrong_core",
+        "test_d109_wrong_quote_lineage"
+      ],
+      "boundary": "Exactly eight owner-admitted L17 D109 controlled synthetic cases. Actual fixed C1/C2 D087 and new scalar D091 parents through ordinary readers; exact signed ATM and both original quote roles for both slots, exact ratio USD_per_share, ordinary durable reopen and retry. No spot arithmetic or broader strike-grid authority.",
+      "proof_levels": [
+        "CONTRACT",
+        "INTEGRATION",
+        "STATE"
+      ],
+      "authoritative_inputs": [
+        "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_SOURCE_POLICY_PROPOSED_20261125.json SHA256 279f1cd166ad0c11585c9776dc4a45b5d949946a513717c39f1dcc9a816e8561",
+        "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_FINITE_SPECIMENS_PROPOSED_20261125.json SHA256 5e341ef9289f185d4ae9da53eaca9852735af632b17400a89a10508a114dd760",
+        "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_FINITE_CASES_PROPOSED_20261125.json SHA256 d8fd00cb7352d11fcd364b98a533b894b45c864d2cd6311b8db5cb70eaf57480",
+        "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_PREEDIT_DESIGN_AND_REVIEW_20261125.md SHA256 04697219c5d5057ac3884aceb09d754dc391a66f6ed4a425459c938c684b1d8d",
+        "handoff/m02_completion_28_execution/L10c/OWNER_SCALAR_STRADDLE_CONDITIONAL_EXECUTION_GRANT_20261125.json SHA256 a7fb45cc876e1450f59678c6599113d86b7b59db9a855e0481edd64f717dc375",
+        "implementation/authority/SCALAR_STRADDLE_IMPLEMENTATION_AUTHORITY_BINDING.yaml SHA256 5a9397b702faaf05abf667d4d289677b88bb580ca1d5f23fa227e2282c2eb9b9",
+        "Exact independently accepted L04 D091 report 7322441997d5ab75fa412676e3ae42aba03dcb79 (original controlled profile only).",
+        "Exact L10c support16 independent report c07ab2881be128a577eb07460722500a58869e0c SHA256 19291e4991e84b38347b1e8c46e2867cc4ce5410908f49790979cf627952ee0f, source dce2b6dd4e4d69cb84e4d7114dd970ffc00d547e; Worker receipt handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_SUPPORT16_ACCEPTANCE_RECONCILIATION_20261126.md SHA256 c145ee1ea35c28927dda6401980664b8c0f42cabe85eb9b146017ac9d1d7f34a.",
+        "R1 section 2A exact shared per-slot/per-quote original binding in live materialisation and ordinary reopen, including foreign equal-price C1 ask witness."
+      ],
+      "dependency_substitutions": [
+        "None for actual product parents. Fresh exact controlled synthetic M00 source is the admitted scope; genuine existing public D087 and scalar D091 parent owners, ordinary SQLite readers, and one exact separately admitted parent-only quote specimen; no mock, injected reader or fabricated predecessor."
+      ],
+      "case_coverage": {
+        "lawful_positive": {
+          "cases": [
+            "D109-CONTROLLED-SUCCESS"
+          ]
+        },
+        "prohibited_false_positive": {
+          "cases": [
+            "D109-CONTROLLED-REACHED_REFUSAL",
+            "D109-PUT-SAME-BIN-NON-ATM",
+            "D109-MISSING-PARENT",
+            "D109-DUPLICATE-PARENT",
+            "D109-WRONG-SLOT",
+            "D109-WRONG-CORE",
+            "D109-WRONG-QUOTE-LINEAGE"
+          ]
+        },
+        "missing_mandatory_authority": {
+          "cases": [
+            "D109-MISSING-PARENT: all actual lawful parents exist, selected nonexistent D091 ID; no substitute."
+          ]
+        },
+        "lawful_optional_absence": {
+          "cases": [
+            "No R118 dependency in D109 request, occurrence or arithmetic; original optional metadata remains exact. No additional spot-negative D109 case is admitted."
+          ]
+        }
+      },
+      "expected_failure_signals": [
+        "Actual parent lookup, uniqueness, named-slot, exact core alignment or exact signed CALL/PUT ATM predicate not enforced; generic ABS_50_75 bin is insufficient.",
+        "Either role in either slot fails exact original-quote join or equal-price foreign ask is accepted/fallback selected; reader must enforce same complete predicate.",
+        "Wrong exact ratio/units, missing typed parents or original quotes, R118/full-specimen dependency introduced, incorrect request/frame/provenance or durable reopen/idempotent first timestamp; refusal leaves any D109 history."
+      ],
+      "limitations": [
+        "Fixed exact synthetic same-expiry/strike scalar pair, not generic ATM, live, external provider or hostile-process provenance.",
+        "Seven refusal scenarios are single discriminators after genuine actual predecessor setup; no additional corrupt-store or fault campaign.",
+        "Source authored inertly; independent authoring review and implementation/registration/Tester qualification and case-specific release required."
+      ],
+      "adjacent_nonclaims": [
+        "No D110 or R118 denominator proof; no D089 arithmetic or contract multiplier.",
+        "No new D identity or change to accepted support16, old D09118/parent15, D087, previous claims, governance or proof controls.",
+        "No additional physical case or repeated accepted family."
+      ],
+      "environment": "Strict separate Tester to independently qualify actual candidate receiver, selected CPython 3.13.5/SQLite 3.54.1 and dependencies, exact runner and retained observer before execution.",
+      "material_versions": [
+        "T01-L10C-SCALAR-STRADDLE-PAIR/1; T01-L10C-R112-SCALAR-PAIR-V1/1; D091-SYNTHETIC-TENTATIVE-V1/1; T01-D109-SCALAR-PAIR-DEF-V1.",
+        "D087-OPTION-SCALAR-1 existing public profile and accepted exact scalar support actual evidence.",
+        "Exact immutable R1/owner/manifest/contract/active binding, future implementation and generation; candidate-specific reuse and strict Tester release separately required."
+      ],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/m02_scalar_straddle_d109/test_signal.py"
+    }
+  ],
+  "required_support_files": [],
+  "optional_support_files": [],
+  "execution_policy": {
+    "skipped_tests": "FAIL",
+    "xfailed_tests": "FAIL",
+    "xpassed_tests": "FAIL",
+    "collection_failed": "FAIL",
+    "no_tests_collected": "FAIL",
+    "unexpected_governed_mutation": "FAIL"
+  }
+}

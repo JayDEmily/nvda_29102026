@@ -857,7 +857,7 @@
         "L10c"
       ],
       "obligation": "Select compatible actual CALL/PUT D087 using actual D091 and accepted ATM/expiry/strike selection. Return sum of midpoint premiums in currency per underlying share, retaining both source/selection identities. Refuse unmatched side/expiry/units or absent eligible bucket.",
-      "status": "OWNER_FINITE_ADMITTED_PARENT_PROOFS_ACCEPTED_D109_AUTHORING_READY_EXECUTION_HELD",
+      "status": "D109_EXACT8_AUTHORED_INERT_INDEPENDENT_AUTHORING_REVIEW_HELD",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G2_AFTER_L18"
@@ -869,13 +869,28 @@
         "independent_R1_verdict_commit": "58a21fd7e5f8aa800eac28340d62d483211086cd",
         "admitted_case_count": 8,
         "execution_release": false,
-        "first_dependency_hold": "Exact D109 authoring, independent clearance, implementation, registration, candidate-specific strict Tester qualification and separate release; accepted L04 and L10c prerequisite proofs now available.",
+        "first_dependency_hold": "Independent exact D109 authoring verdict before implementation. D109 and D110 execution remain held.",
         "parent_proof_refs": {
           "L04": "7322441997d5ab75fa412676e3ae42aba03dcb79",
           "L10c": "c07ab2881be128a577eb07460722500a58869e0c",
           "L10c_source_candidate": "dce2b6dd4e4d69cb84e4d7114dd970ffc00d547e",
           "L10c_observer_sha256": "52a07078a1590c1ff11c508b1fb5aec65b091ec2d2b23d83f21d21e493a2d1a6",
           "L10c_acceptance_receipt": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_SUPPORT16_ACCEPTANCE_RECONCILIATION_20261126.md"
+        },
+        "d109_authoring": {
+          "source_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_D109_TEST_SOURCE.py",
+          "source_sha256": "cd02b16b818601998e604094e05f96241c55f9dfb8a83deed4e64da7ba02df25",
+          "intended_physical_path": "tests/product/m02_scalar_straddle_d109/test_signal.py",
+          "contract_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_D109_PROOF_CONTRACT.json",
+          "contract_sha256": "208e355a0741f6056f1463c583f26df3b7c9cfba5dcf724e6793349ede188e76",
+          "inactive_descriptor_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_D109_CLAIM_CANDIDATE.json",
+          "inactive_descriptor_sha256": "6cae8e0e14b6c1056765d90c0baf2f0bd53c9e2d7b15a92a53aee68366335b83",
+          "commission_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_D109_AUTHORING_AND_REVIEW_20261126.md",
+          "commission_sha256": "cba02c796c3ffd7abcf515a77f9dede67265ffa5343a9b1bb649bf488601e158",
+          "review_branch": "review/pm-l17-d109-scalar-authoring-20261126",
+          "exact_cases": 8,
+          "status": "INERT_NO_IMPLEMENTATION_NO_REGISTRATION_NO_EXECUTION",
+          "static_validation": "Python3.13 AST exact 8 ordered nodes; contract schema; prospective-path Ruff exit0; seven line-wrap corrections AST unchanged."
         }
       }
     },
