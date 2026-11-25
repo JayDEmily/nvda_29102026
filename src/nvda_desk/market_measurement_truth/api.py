@@ -2988,3 +2988,92 @@ __all__ += [
     "ScalarD091RequestV1", "ScalarStraddleSourceRefusalV1", "ScalarStraddleSourceV1",
     "create_scalar_d091_owner", "create_scalar_d091_reader", "create_scalar_straddle_source",
 ]
+
+
+@dataclass(frozen=True, slots=True)
+class D109ScalarRequestV1(_Validated):
+    """Four explicit parent occurrence IDs in the fixed synthetic scalar pair."""
+
+    derived_signal_id: str
+    subject_instrument: str
+    as_of_utc: datetime
+    knowledge_cutoff_utc: datetime
+    calculation_definition_version: str
+    core_manifest_sha256: str
+    call_mid: str
+    put_mid: str
+    call_delta: str
+    put_delta: str
+
+
+@dataclass(frozen=True, slots=True)
+class D109ScalarOccurrenceV1(_Validated):
+    """Exact immutable straddle result with both actual typed parent pairs."""
+
+    owner_object_id: str
+    owner_namespace: str
+    implementation_brief_sha256: str
+    derived_signal_id: str
+    derived_occurrence_id: str
+    request: D109ScalarRequestV1
+    definition: CalculationDefinitionV1
+    source_policy_sha256: str
+    core_manifest_sha256: str
+    call_mid: WindowMeasurementOccurrenceV1
+    put_mid: WindowMeasurementOccurrenceV1
+    call_delta: ScalarD091OccurrenceV1
+    put_delta: ScalarD091OccurrenceV1
+    original_quotes: tuple[
+        raw_api.RawObservationOccurrenceV1, raw_api.RawObservationOccurrenceV1,
+        raw_api.RawObservationOccurrenceV1, raw_api.RawObservationOccurrenceV1,
+    ]
+    result: ExactRatioV1
+    units: str
+    result_shape: str
+    effective_as_of_utc: datetime
+    knowledge_cutoff_utc: datetime
+    calculated_at_utc: datetime
+
+
+class D109ScalarReadsV1(Protocol):
+    def get_derived_occurrence(
+        self, derived_occurrence_id: str,
+    ) -> D109ScalarOccurrenceV1 | None: ...
+
+    def list_derived_history(
+        self, *, derived_signal_id: str, subject_instrument: str,
+        effective_at_or_before_utc: datetime, knowledge_at_or_before_utc: datetime, limit: int,
+    ) -> tuple[D109ScalarOccurrenceV1, ...]: ...
+
+
+class D109ScalarOwnerV1(Protocol):
+    @property
+    def reads(self) -> D109ScalarReadsV1: ...
+
+    def materialise(self, request: D109ScalarRequestV1) -> D109ScalarOccurrenceV1 | None: ...
+
+
+def create_d109_scalar_owner(
+    *, admission: OwnerAdmissionV1, source: ScalarStraddleSourceV1,
+    midpoint_read_storage: SQLiteReadStorageV1, delta_read_storage: SQLiteReadStorageV1,
+    storage: SQLiteStorageV1, utc_now: Callable[[], datetime],
+) -> D109ScalarOwnerV1:
+    from ._scalar_straddle_d109 import build_owner
+
+    return build_owner(
+        admission, source, midpoint_read_storage, delta_read_storage, storage, utc_now,
+    )
+
+
+def create_d109_scalar_reader(
+    *, admission: OwnerAdmissionV1, storage: SQLiteReadStorageV1,
+) -> D109ScalarReadsV1:
+    from ._scalar_straddle_d109 import build_reader
+
+    return build_reader(admission, storage)
+
+
+__all__ += [
+    "D109ScalarOccurrenceV1", "D109ScalarOwnerV1", "D109ScalarReadsV1",
+    "D109ScalarRequestV1", "create_d109_scalar_owner", "create_d109_scalar_reader",
+]

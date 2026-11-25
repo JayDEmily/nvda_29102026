@@ -79,3 +79,82 @@ def identity_d091(value: f.ScalarD091OccurrenceV1) -> str:
     return "mmtd091scalar1:" + hashlib.sha256(
         native.canonical(_envelope(content)),
     ).hexdigest()
+
+
+_D109_TAG = "D109ScalarOccurrenceV1"
+_D109_REQUEST_KEYS = (
+    "derived_signal_id", "subject_instrument", "as_of_utc", "knowledge_cutoff_utc",
+    "calculation_definition_version", "core_manifest_sha256",
+    "call_mid", "put_mid", "call_delta", "put_delta",
+)
+_D109_OCCURRENCE_KEYS = (
+    "owner_object_id", "owner_namespace", "implementation_brief_sha256",
+    "derived_signal_id", "derived_occurrence_id", "request", "definition",
+    "source_policy_sha256", "core_manifest_sha256", "call_mid", "put_mid",
+    "call_delta", "put_delta", "original_quotes", "result", "units", "result_shape",
+    "effective_as_of_utc", "knowledge_cutoff_utc", "calculated_at_utc",
+)
+
+
+def _content_d109(value: f.D109ScalarOccurrenceV1) -> dict[str, Any]:
+    from . import _evaluation as window
+
+    if (
+        type(value) is not f.D109ScalarOccurrenceV1
+        or type(value.request) is not f.D109ScalarRequestV1
+    ):
+        raise TypeError("exact D109 scalar occurrence and request required")
+    result = {key: getattr(value, key) for key in _D109_OCCURRENCE_KEYS}
+    result["request"] = {key: getattr(value.request, key) for key in _D109_REQUEST_KEYS}
+    # The existing D087 codec stays exact and unchanged. Compose its actual
+    # typed occurrence bytes, not a reconstructed numerical parent.
+    for key in ("call_mid", "put_mid"):
+        if type(result[key]) is not f.WindowMeasurementOccurrenceV1:
+            raise TypeError("exact D087 parent carrier required")
+        result[key] = window.canonical(result[key])
+    for key in ("call_delta", "put_delta"):
+        result[key] = encode_d091(result[key])
+    return result
+
+
+def _envelope_d109(content: dict[str, Any]) -> dict[str, Any]:
+    return {"record": _D109_TAG, "version": 1, "content": content}
+
+
+def encode_d109(value: f.D109ScalarOccurrenceV1) -> bytes:
+    return native.canonical(_envelope_d109(_content_d109(value)))
+
+
+def decode_d109(payload: bytes) -> f.D109ScalarOccurrenceV1:
+    from . import _evaluation as window
+
+    envelope = _mapping(native.decode(payload, dict), ("record", "version", "content"))
+    if (
+        type(envelope["record"]) is not str or envelope["record"] != _D109_TAG
+        or type(envelope["version"]) is not int or envelope["version"] != 1
+    ):
+        raise ValueError("D109 scalar envelope identity/version mismatch")
+    content = dict(_mapping(envelope["content"], _D109_OCCURRENCE_KEYS))
+    content["request"] = f.D109ScalarRequestV1(
+        **_mapping(content["request"], _D109_REQUEST_KEYS),
+    )
+    for key in ("call_mid", "put_mid", "call_delta", "put_delta"):
+        if type(content[key]) is not bytes:
+            raise TypeError("exact nested scalar parent envelope bytes required")
+    for key in ("call_mid", "put_mid"):
+        content[key] = window.decode(content[key], f.WindowMeasurementOccurrenceV1)
+    for key in ("call_delta", "put_delta"):
+        content[key] = decode_d091(content[key])
+    value = f.D109ScalarOccurrenceV1(**content)
+    if encode_d109(value) != payload:
+        raise ValueError("D109 scalar exact reconstructed bytes mismatch")
+    return value
+
+
+def identity_d109(value: f.D109ScalarOccurrenceV1) -> str:
+    content = _content_d109(value)
+    del content["derived_occurrence_id"]
+    del content["calculated_at_utc"]
+    return "mmtd109scalar1:" + hashlib.sha256(
+        native.canonical(_envelope_d109(content)),
+    ).hexdigest()
