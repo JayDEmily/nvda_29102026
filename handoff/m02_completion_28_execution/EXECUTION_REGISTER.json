@@ -323,7 +323,7 @@
         "L00"
       ],
       "obligation": "Bind actual same-expiry/strike-convention CALL+PUT D087, D091 ATM mapping, knowledge cutoffs, native quote units and positive R118 spot. Existing L14 D087 does not automatically supply arbitrary multi-contract/time coverage. D109 is currency per underlying share; D110=100*D109/spot, with no additional contract multiplier on a per-share premium.",
-      "status": "OWNER_FINITE_ADMITTED_EXECUTION_HELD_BINDING_REVIEW_PENDING",
+      "status": "OWNER_ADMITTED_EXACT_IMPLEMENTATION_BINDING_INSTALLED_SUPPORT_AUTHORING_PENDING",
       "checkpoint_required": true,
       "proposed_testing_windows": [],
       "acceptance": "Independent documentary source clearance; product acceptance requires admitted cases and accepted parent proofs",
@@ -351,7 +351,7 @@
           "disposition": "ACCEPT_SCALAR_STRADDLE_POLICY_PROPOSAL_FOR_EXACT_OWNER_ADOPTION",
           "accepted_proposal_sha256": "279f1cd166ad0c11585c9776dc4a45b5d949946a513717c39f1dcc9a816e8561"
         },
-        "next_owner_decision": "None routine for this exact scope. Owner conditional grant approved; first unmet invariant independently verified exact implementation-authority binding and admission reconciliation. No source/claim or runtime release, no Tester appointment yet.",
+        "next_owner_decision": "None within exact grant. Support test authoring and independent review next; implementation and claim/runtime/receiver/Tester release separately gated.",
         "owner_adoption": {
           "path": "handoff/m02_completion_28_execution/L10c/OWNER_SCALAR_STRADDLE_SOURCE_POLICY_ADOPTION_20261125.md",
           "sha256": "fc8012c38199591ca845012370c18a03893a354b9633840f140d512671a41aaa",
@@ -506,6 +506,22 @@
           "intended_active_path": "implementation/authority/SCALAR_STRADDLE_IMPLEMENTATION_AUTHORITY_BINDING.yaml",
           "status": "INACTIVE_OWNER_APPROVED_SCOPE_INDEPENDENT_VERIFICATION_REQUIRED",
           "review_branch": "review/pm-l10c-scalar-authority-20261125"
+        },
+        "independent_authority_review": {
+          "commit": "5db30e464e7200c81180919c839d3a61104d2687",
+          "tree": "5e1fe7318f755830ea96cc2e82d91e869c77a23f",
+          "branch": "review/pm-l10c-scalar-authority-20261125",
+          "path": "handoff/m02_completion_28_execution/L10c/INDEPENDENT_SCALAR_STRADDLE_BINDING_AND_FINITE_ADMISSION_VERDICT_20261125.md",
+          "sha256": "c35e0c554dfeb4f70cd0d6aaec94eb029f21f1c61ea5238a8e7e24fe299b1996",
+          "disposition": "ACCEPT_EXACT_OWNER_FINITE_ADMISSION_AND_INACTIVE_BINDING_FOR_INSTALLATION"
+        },
+        "implementation_binding_installation": {
+          "path": "implementation/authority/SCALAR_STRADDLE_IMPLEMENTATION_AUTHORITY_BINDING.yaml",
+          "sha256": "5a9397b702faaf05abf667d4d289677b88bb580ca1d5f23fa227e2282c2eb9b9",
+          "candidate_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_IMPLEMENTATION_AUTHORITY_BINDING_CANDIDATE.yaml",
+          "receipt_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_IMPLEMENTATION_BINDING_INSTALLATION_RECEIPT_20261125.md",
+          "receipt_sha256": "0f103605cabb887d80dd605f6b1d74f569b1d2b773c8c27ee757ea109afc20bf",
+          "status": "INSTALLED_EXACT_INDEPENDENTLY_CLEARED_BYTES"
         }
       }
     },
