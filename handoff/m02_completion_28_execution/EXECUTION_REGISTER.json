@@ -1074,7 +1074,7 @@
         "L10c"
       ],
       "obligation": "Compute 100*D109/positive aligned R118 spot in compatible currency-per-share units. Retain straddle and spot identity. Do not multiply per-share premium by an inferred 100-share contract multiplier. Refuse nonpositive spot, missing or incompatible units.",
-      "status": "D110_IMPLEMENTED_UNTESTED_INDEPENDENT_IMPLEMENTATION_REVIEW_PENDING",
+      "status": "D110_IMPLEMENTED_UNTESTED_INERT_GENERATION_REVIEW_PENDING",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G2_AFTER_L18"
@@ -1086,7 +1086,7 @@
         "independent_R1_verdict_commit": "58a21fd7e5f8aa800eac28340d62d483211086cd",
         "admitted_case_count": 10,
         "execution_release": false,
-        "first_dependency_hold": "Exact independent D110 implementation verdict, then generation-specific review/installation, strict Tester candidate-specific intake and separate conditional exact ten-case release.",
+        "first_dependency_hold": "Independent exact generation-specific registration review; no active installation before affirmative verdict; then sole strict Tester intake and exact ten-case conditional release.",
         "parent_proof_refs": {
           "L17": "02e62a1a31bafe6f465eb3e1a513ffb41dd09ff8",
           "L17_source_candidate": "6d5a1260846649f2566513609d8c0c5a54f05d94",
@@ -1129,6 +1129,53 @@
           "commission_sha256": "cd93bc7923464ea8a08912c4fe4514d9d22044ef4db656ef8dc3de2df30e9fe0",
           "review_branch": "review/pm-l18-d110-scalar-implementation-20261126",
           "static_validation": "Selected Python3.13 AST exact API/codec/test keys, shared live/durable predicates and ordering, Ruff codec/private exit0; API exact three inherited diagnostics unchanged. No product import or execution."
+        },
+        "d110_implementation_verdict": {
+          "commit": "a1f41fca027dc86ce1193fb035167bf3673a0d5e",
+          "tree": "5addf83c304e1fc584d9bc2cab97f810440b5112",
+          "parent": "52e55d067a49b761502290dedb0c8dc959c51053",
+          "branch": "review/pm-l18-d110-scalar-implementation-20261126",
+          "path": "handoff/m02_completion_28_execution/L10c/INDEPENDENT_SCALAR_STRADDLE_D110_IMPLEMENTATION_VERDICT_20261126.md",
+          "git_blob": "0eaf8a6faa41674e81b039a331bd792d95acef74",
+          "sha256": "a8e919d6e84800305e17b159349f1ca393e2237a9ed5ab0e832506e35489a239",
+          "disposition": "ACCEPT_EXACT_D110_IMPLEMENTATION_FOR_GENERATION_PREPARATION"
+        },
+        "d110_generation_1_candidate": {
+          "status": "INERT_GENERATION_REGISTRATION_REVIEW_PENDING",
+          "claim_id": "neutral_market_measurement_truth_d110",
+          "generation": 1,
+          "exact_cases": 10,
+          "copies": [
+            {
+              "inert_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_D110_TEST_SOURCE.py",
+              "active_path": "tests/product/m02_scalar_straddle_d110/test_signal.py",
+              "sha256": "e15aaba1e3d8e67fa17ccf97f87da26380617c6f37fa29d30c62dc38738dabf4",
+              "git_blob": "ae206ca82927ee66b6b973b7e4b3bed4bb4d7956"
+            },
+            {
+              "inert_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_D110_CLAIM_CANDIDATE.json",
+              "active_path": "config/product_proof/m02_scalar_straddle_d110/claim.json",
+              "sha256": "1dbb9d9ce3254db440de7f99f7247572f98da332ac50085b3222e51663993935",
+              "git_blob": "54b06d8a38154df743c7932250772b84c312e6e6"
+            },
+            {
+              "inert_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_D110_GENERATION_0001_CANDIDATE.json",
+              "active_path": "config/product_proof/m02_scalar_straddle_d110/generations/0001.json",
+              "sha256": "7c4a7c9c14ec6ccf29226fafc5816cf27edd842cfbea22f932bed57c9af281b6",
+              "git_blob": "27103fc869d05c8f2f7a3eb046a1ae5bbbfe653f"
+            },
+            {
+              "inert_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_D110_ADMISSION_CANDIDATE.json",
+              "active_path": "config/product_proof/m02_scalar_straddle_d110/admission.json",
+              "sha256": "fdd87f3b15e8f8c99422d258ed6f0f1d3b1a1aeaa943b458c1821c4aa20aa191",
+              "git_blob": "baef49f7b7be7d7848d1feeb1cd4055d81ff7151"
+            }
+          ],
+          "adequacy_review_ref": "github-independent-review/c53619c74f6902954f189cef34d1ed304adc68b3/exact-d110-authoring;github-independent-review/a1f41fca027dc86ce1193fb035167bf3673a0d5e/exact-d110-implementation-for-generation-preparation",
+          "admission_authority_ref": "owner-instruction/20261125/exact-conditional-scalar-straddle-claim-registration;github-record/4d2dc9262027f149c3be2105db309bba4da5d229",
+          "review_branch": "review/pm-l18-d110-scalar-generation-20261126",
+          "execution_release": false,
+          "runs": 0
         }
       }
     },
