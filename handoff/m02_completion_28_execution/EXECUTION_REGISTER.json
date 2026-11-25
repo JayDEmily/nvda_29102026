@@ -857,7 +857,7 @@
         "L10c"
       ],
       "obligation": "Select compatible actual CALL/PUT D087 using actual D091 and accepted ATM/expiry/strike selection. Return sum of midpoint premiums in currency per underlying share, retaining both source/selection identities. Refuse unmatched side/expiry/units or absent eligible bucket.",
-      "status": "D109_GENERATION_1_STAGED_INERT_INDEPENDENT_REGISTRATION_REVIEW_PENDING",
+      "status": "D109_REGISTERED_IMPLEMENTED_UNTESTED_STRICT_TESTER_INTAKE_PENDING",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G2_AFTER_L18"
@@ -869,7 +869,7 @@
         "independent_R1_verdict_commit": "58a21fd7e5f8aa800eac28340d62d483211086cd",
         "admitted_case_count": 8,
         "execution_release": false,
-        "first_dependency_hold": "Independent exact generation-specific registration review before four-file installation; same strict Tester candidate qualification and eight-case release thereafter; D110 held.",
+        "first_dependency_hold": "Same strict Tester independently qualifies installed D109 candidate, actual runtime/receiver/runner, prior proof reuse, exact guard applicability. Separate eight-case release still required. D110 held.",
         "parent_proof_refs": {
           "L04": "7322441997d5ab75fa412676e3ae42aba03dcb79",
           "L10c": "c07ab2881be128a577eb07460722500a58869e0c",
@@ -929,7 +929,7 @@
           "disposition": "ACCEPT_EXACT_D109_IMPLEMENTATION_FOR_GENERATION_PREPARATION"
         },
         "d109_generation_1_candidate": {
-          "status": "INERT_NOT_INSTALLED_NOT_RELEASED",
+          "status": "INDEPENDENT_ACCEPTED_EXACT_GENERATION_FOR_INSTALLATION",
           "claim_id": "neutral_market_measurement_truth_d109",
           "generation": 1,
           "exact_cases": 8,
@@ -964,6 +964,62 @@
           "review_branch": "review/pm-l17-d109-scalar-generation-20261126",
           "execution_release": false,
           "runs": 0
+        },
+        "d109_generation_verdict": {
+          "commit": "9d8ac30a70e5bcbec55aadda66ecc514b8471363",
+          "tree": "76cd5fee926fbd2b66c7271414149c820891e576",
+          "parent": "6fbd59bb76c0642b6804e3bf8dadd29efaa7a226",
+          "branch": "review/pm-l17-d109-scalar-generation-20261126",
+          "path": "handoff/m02_completion_28_execution/L10c/INDEPENDENT_SCALAR_STRADDLE_D109_GENERATION_VERDICT_20261126.md",
+          "git_blob": "1451e1865451e11a288d4c8509cebef8a63295fe",
+          "sha256": "702dbfbcfd431228b8a1e69e5cd77e26d20a5e61bb60fe573421f7decd7f8b34",
+          "disposition": "ACCEPT_EXACT_D109_GENERATION_REGISTRATION_FOR_INSTALLATION"
+        },
+        "d109_registered_candidate": {
+          "commit": "6d5a1260846649f2566513609d8c0c5a54f05d94",
+          "tree": "92f033ec15652d27cc9c531ea73d5e25db06b19d",
+          "parent": "6fbd59bb76c0642b6804e3bf8dadd29efaa7a226",
+          "tracked_paths": 4400,
+          "ls_tree_sha256": "bae00ffadde8245ed5ea02d06c6a0d5419d131a14c44c822e94e6868cc33a3e9",
+          "copy_map": [
+            {
+              "inert_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_D109_TEST_SOURCE.py",
+              "active_path": "tests/product/m02_scalar_straddle_d109/test_signal.py",
+              "sha256": "cd02b16b818601998e604094e05f96241c55f9dfb8a83deed4e64da7ba02df25",
+              "git_blob": "beac729ac8e9c7cb99bd240b97192803f197e284"
+            },
+            {
+              "inert_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_D109_CLAIM_CANDIDATE.json",
+              "active_path": "config/product_proof/m02_scalar_straddle_d109/claim.json",
+              "sha256": "6cae8e0e14b6c1056765d90c0baf2f0bd53c9e2d7b15a92a53aee68366335b83",
+              "git_blob": "1866bafa6b0c181bd079b3af79d81c2ab4f72970"
+            },
+            {
+              "inert_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_D109_GENERATION_0001_CANDIDATE.json",
+              "active_path": "config/product_proof/m02_scalar_straddle_d109/generations/0001.json",
+              "sha256": "4564d32013555c1e85c128885699aad554f80e5343f0338bf7e789dccde25f40",
+              "git_blob": "0dba0ac63c5d411d6af60fc39d62cf21b092d5fd"
+            },
+            {
+              "inert_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_D109_ADMISSION_CANDIDATE.json",
+              "active_path": "config/product_proof/m02_scalar_straddle_d109/admission.json",
+              "sha256": "25857e3093eab825fecfe9c609deeb86300e3b3d250e6352afdcdbca3f60c2c9",
+              "git_blob": "9bc1020f95b330724d8995c5f5c2aec647d1aa8d"
+            }
+          ],
+          "mechanical_state": "READY_FOR_PROOF_M02_ACTIVE_NOT_PRODUCT_PROOF",
+          "registration_receipt_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_D109_REGISTRATION_INSTALLATION_RECEIPT_20261126.md",
+          "registration_receipt_sha256": "222dbf1a4f3e4324115bb64121fa51429ab6f28b0796a31df15acaf0b06ff05e",
+          "execution_release": false,
+          "runs": 0
+        },
+        "d109_strict_tester_intake": {
+          "status": "CANDIDATE_SPECIFIC_QUALIFICATION_COMMISSIONED_NO_EXECUTION",
+          "tester_conversation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
+          "existing_identity_commit": "5cdc7ca5b8f0f9df720268e92c28f2f637d1b71d",
+          "commission_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_D109_STRICT_TESTER_INTAKE_COMMISSION_20261126.md",
+          "report_branch": "review/pm-l17-d109-scalar-strict-tester-intake-20261126",
+          "report_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_D109_STRICT_TESTER_INTAKE_REPORT_20261126.md"
         }
       }
     },
