@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_d109",
+  "generation": 1,
+  "brief_sha256": "04697219c5d5057ac3884aceb09d754dc391a66f6ed4a425459c938c684b1d8d",
+  "binding_sha256": "5a9397b702faaf05abf667d4d289677b88bb580ca1d5f23fa227e2282c2eb9b9",
+  "contract_sha256": "208e355a0741f6056f1463c583f26df3b7c9cfba5dcf724e6793349ede188e76",
+  "implementation_target_id": "M02",
+  "adequacy_review_ref": "github-independent-review/c5e991571a5fa28661ccca9ca9f97433fc6bd730/exact-d109-authoring;github-independent-review/c82963fb2bcec5c19440cf6b3440d72280a85437/exact-d109-implementation-for-generation-preparation",
+  "admission_authority_ref": "owner-instruction/20261125/exact-conditional-scalar-straddle-claim-registration;github-record/4d2dc9262027f149c3be2105db309bba4da5d229",
+  "family_files": [
+    {
+      "path": "tests/product/m02_scalar_straddle_d109/test_signal.py",
+      "sha256": "cd02b16b818601998e604094e05f96241c55f9dfb8a83deed4e64da7ba02df25"
+    }
+  ],
+  "support_files": [],
+  "previous_generation": null
+}
