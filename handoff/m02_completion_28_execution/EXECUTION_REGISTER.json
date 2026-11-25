@@ -323,7 +323,7 @@
         "L00"
       ],
       "obligation": "Bind actual same-expiry/strike-convention CALL+PUT D087, D091 ATM mapping, knowledge cutoffs, native quote units and positive R118 spot. Existing L14 D087 does not automatically supply arbitrary multi-contract/time coverage. D109 is currency per underlying share; D110=100*D109/spot, with no additional contract multiplier on a per-share premium.",
-      "status": "OWNER_ADOPTED_SCALAR_POLICY_EXACT_PREEDIT_FINITE_PROPOSAL_REVIEW_HELD",
+      "status": "OWNER_ADOPTED_SCALAR_POLICY_R1_QUOTE_LINEAGE_PREEDIT_REVIEW_HELD",
       "checkpoint_required": true,
       "proposed_testing_windows": [],
       "acceptance": "Independent documentary source clearance; product acceptance requires admitted cases and accepted parent proofs",
@@ -334,7 +334,7 @@
         "return_disposition": "RETURN_FOR_BOUNDED_SOURCE_CONTRACT_RECONCILIATION; PRODUCT_HELD",
         "F01": "CLOSED_DOCUMENTARY_CORRECTION by independent verdict; scalar route selected as proposed bounded policy, not source admission.",
         "F02": "OWNER_ADOPTED_EXACT_POLICY. Direct user reply: Yes, I agree. Proceed. Operative implementation contract, source admission and independent finite proof release remain held.",
-        "F03": "Concrete pre-edit source/consumer and finite proposal now prepared. Same-bin +/-0.60 witnesses, distinct spot-only variants independent of six-member core, nonoverlapping claim roots, 16+7+10 proposed physical cases; independent adequacy review pending. No new finite case allocation or product implementation/test release.",
+        "F03": "RETURN_BOUNDED/RECURRENT_CLASS confirmed by exact independent report 1602f7c; R1 strengthens actual per-slot/per-role D087 quote-original join in producer and durable reader, adds one genuine equal-price foreign C1 ask parent witness, preserves all 23 full specimens and prior 33 proposed cases. 16+8+10 proposed; independent class-level review pending, no new case allocation or implementation/test release.",
         "proposal_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_SOURCE_POLICY_PROPOSED_20261125.json",
         "proposal_sha256": "279f1cd166ad0c11585c9776dc4a45b5d949946a513717c39f1dcc9a816e8561",
         "analysis_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_RECONCILIATION_AND_REVIEW_20261125.md",
@@ -351,7 +351,7 @@
           "disposition": "ACCEPT_SCALAR_STRADDLE_POLICY_PROPOSAL_FOR_EXACT_OWNER_ADOPTION",
           "accepted_proposal_sha256": "279f1cd166ad0c11585c9776dc4a45b5d949946a513717c39f1dcc9a816e8561"
         },
-        "next_owner_decision": "After independent review: exact nonfungible new finite case budget and appropriate separate strict Tester designation; existing source policy already adopted.",
+        "next_owner_decision": "After independent R1 class-level clearance: exact nonfungible new finite case budget and suitable separate strict Tester designation. Existing adopted source policy unchanged; no repeat policy decision.",
         "owner_adoption": {
           "path": "handoff/m02_completion_28_execution/L10c/OWNER_SCALAR_STRADDLE_SOURCE_POLICY_ADOPTION_20261125.md",
           "sha256": "fc8012c38199591ca845012370c18a03893a354b9633840f140d512671a41aaa",
@@ -361,19 +361,47 @@
           "scope": "bounded synthetic L10c/L17/L18 and necessary new scalar D091 support preparation only"
         },
         "preedit_proposal": {
+          "revision": "R1",
           "brief_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_PREEDIT_DESIGN_AND_REVIEW_20261125.md",
-          "brief_sha256": "19113a57243f4e9662e0407c8ff7176860915ef00c8df65258b5ba30a2888f03",
+          "brief_sha256": "04697219c5d5057ac3884aceb09d754dc391a66f6ed4a425459c938c684b1d8d",
           "specimen_manifest_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_FINITE_SPECIMENS_PROPOSED_20261125.json",
-          "specimen_manifest_sha256": "959ed0c8716d66181933d5fe350d1391a0a45cc26808fb9d77b40a03fd5aebba",
+          "specimen_manifest_sha256": "5e341ef9289f185d4ae9da53eaca9852735af632b17400a89a10508a114dd760",
           "finite_cases_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_FINITE_CASES_PROPOSED_20261125.json",
-          "finite_cases_sha256": "c557b81b3653eff361d7b9e2f0010bb2c13dc0f11575f544e35040b866dc719a",
+          "finite_cases_sha256": "d8fd00cb7352d11fcd364b98a533b894b45c864d2cd6311b8db5cb70eaf57480",
+          "parent_only_specimen_sha256": "e9643453cc84dc3c97cb6cab021f4cf5a773f8c61981d2d2ca4f7b65b81b8b53",
           "proposed_counts": {
             "SUPPORT": 16,
-            "D109": 7,
+            "D109": 8,
             "D110": 10
           },
-          "review_branch": "review/pm-l10c-scalar-preedit-20261125",
+          "review_branch": "review/pm-l10c-scalar-preedit-r1-20261125",
           "admitted_new_cases": 0
+        },
+        "prior_preedit_review": {
+          "commit": "1602f7c306fadf06f2f2cbb35650dc15c4b7da74",
+          "branch": "review/pm-l10c-scalar-preedit-20261125",
+          "tree": "578a1cb0e160c924abaa015513545a06a2112f40",
+          "path": "handoff/m02_completion_28_execution/L10c/INDEPENDENT_SCALAR_STRADDLE_PREEDIT_VERDICT_20261125.md",
+          "sha256": "9bba8332025132dea5482e3cd573903e93020b85fbf3a113b18baa756929383b",
+          "disposition": "RETURN_BOUNDED",
+          "classification": "RECURRENT_CLASS_F03",
+          "first_unmet_invariant": "Exact D087 per-slot original quote lineage; valid same-slot/frame/equal-midpoint foreign parent can otherwise bypass sealed-source linkage.",
+          "reviewed_proposal_commit": "977c566e275566fb1ce310208877fb4d8d46c31d",
+          "reviewed_proposal": {
+            "brief_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_PREEDIT_DESIGN_AND_REVIEW_20261125.md",
+            "brief_sha256": "19113a57243f4e9662e0407c8ff7176860915ef00c8df65258b5ba30a2888f03",
+            "specimen_manifest_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_FINITE_SPECIMENS_PROPOSED_20261125.json",
+            "specimen_manifest_sha256": "959ed0c8716d66181933d5fe350d1391a0a45cc26808fb9d77b40a03fd5aebba",
+            "finite_cases_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_FINITE_CASES_PROPOSED_20261125.json",
+            "finite_cases_sha256": "c557b81b3653eff361d7b9e2f0010bb2c13dc0f11575f544e35040b866dc719a",
+            "proposed_counts": {
+              "SUPPORT": 16,
+              "D109": 7,
+              "D110": 10
+            },
+            "review_branch": "review/pm-l10c-scalar-preedit-20261125",
+            "admitted_new_cases": 0
+          }
         }
       }
     },

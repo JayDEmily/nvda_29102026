@@ -4,7 +4,7 @@
   "policy_sha256": "279f1cd166ad0c11585c9776dc4a45b5d949946a513717c39f1dcc9a816e8561",
   "specimen_manifest": {
     "path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_FINITE_SPECIMENS_PROPOSED_20261125.json",
-    "sha256": "959ed0c8716d66181933d5fe350d1391a0a45cc26808fb9d77b40a03fd5aebba"
+    "sha256": "5e341ef9289f185d4ae9da53eaca9852735af632b17400a89a10508a114dd760"
   },
   "claims": [
     {
@@ -26,8 +26,8 @@
       "descriptor_directory": "config/product_proof/m02_scalar_straddle_d109",
       "physical_root": "tests/product/m02_scalar_straddle_d109",
       "family_path": "tests/product/m02_scalar_straddle_d109/test_signal.py",
-      "proposed_case_count": 7,
-      "proposed_nonfungible_ceiling": 7,
+      "proposed_case_count": 8,
+      "proposed_nonfungible_ceiling": 8,
       "authorised_case_count": 0,
       "release": false
     },
@@ -49,7 +49,7 @@
     "D109",
     "D110"
   ],
-  "authority_boundary": "Separate proposed support allocation and existing D109/D110 obligations; no additional D identity or leaf. Original prospective two cases and ceilings six for each D are not authority. 7 and 10 exceed those ceilings and require exact new owner decision. New 16+7+10 proposal is not fungible with prior accepted 15+18. No pytest import/collection/run. Independent review may reduce cases; exact final allocation needs owner admission.",
+  "authority_boundary": "Separate proposed support allocation and existing D109/D110 obligations; no additional D identity or leaf. Original prospective two cases and ceilings six for each D are not authority. 8 and 10 exceed those ceilings and require exact new owner decision. New 16+8+10 proposal is not fungible with prior accepted 15+18. Added one D109 quote-lineage witness after independent bounded F03 return; no existing witness removed or altered. No pytest import/collection/run. Independent review may reduce cases; exact final allocation needs owner admission.",
   "physical_cases": [
     {
       "family": "SUPPORT",
@@ -330,6 +330,20 @@
       "alternate_specimen_sha256": "26077105077381800fc66994ace01557120e68c4e6039e1d2cc69b00cd237115"
     },
     {
+      "family": "D109",
+      "proof_id": "M02-C28-D109",
+      "case_id": "D109-WRONG-QUOTE-LINEAGE",
+      "node": "tests/product/m02_scalar_straddle_d109/test_signal.py::test_d109_wrong_quote_lineage",
+      "specimen": "BASE",
+      "specimen_sha256": "9486f9a4cd45756c167837b67a0626b8e232403d55fa07ac42cae3671b969358",
+      "core_sha256": "477028e777fbcb43c46c3752c14176a1b524f90084635106e45f56d0540929ce",
+      "reached_stage": "PARENT_QUOTE_ORIGINAL_LINEAGE",
+      "oracle": "Use genuine sealed BASE, actual BASE D087 C1/C2 and both exact ATM BASE D091. Admit parent-only C1 bid and distinct equal-price ask via a separate genuine M00; verify both original getters and projections, use unchanged public D087 admission/owner on same SQLite midpoint store reopened writable create=False, then ordinary read-only reader. Foreign actual C1 midpoint is 3/1 with same profile, right, clock, request, native values and matching bid; distinct ask observation ID/artifact and distinct D087 occurrence ID. Select foreign C1 midpoint ID, retain other three actual BASE IDs. Independently establish all four lookups and other join predicates; only R035 quote-original linkage fails. D109 must refuse (no fallback to available correct C1, no recomputation or relabelling) and writer and fresh ordinary reader histories remain empty. No historical test run, private SQL or fabricated predecessor.",
+      "status": "PROPOSED_NOT_ADMITTED_NOT_RUN",
+      "alternate_parent_only_specimen": "D087_PARENT_ONLY_FOREIGN_C1_ASK_V1",
+      "alternate_parent_only_member_sha256": "e9643453cc84dc3c97cb6cab021f4cf5a773f8c61981d2d2ca4f7b65b81b8b53"
+    },
+    {
       "family": "D110",
       "proof_id": "M02-C28-D110",
       "case_id": "D110-CONTROLLED-SUCCESS",
@@ -451,5 +465,11 @@
       "alternate_actual_parent_specimen": "BASE",
       "alternate_specimen_sha256": "9486f9a4cd45756c167837b67a0626b8e232403d55fa07ac42cae3671b969358"
     }
-  ]
+  ],
+  "revision": "R1_BOUNDED_F03_QUOTE_PARENT_PROVENANCE",
+  "prior_proposal": {
+    "commit": "977c566e275566fb1ce310208877fb4d8d46c31d",
+    "path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_FINITE_CASES_PROPOSED_20261125.json",
+    "sha256": "c557b81b3653eff361d7b9e2f0010bb2c13dc0f11575f544e35040b866dc719a"
+  }
 }

@@ -1525,5 +1525,141 @@
       "expanded_member_sha256": "a286d269efd84cddda2142a34fd04d02b9b5317f37566eb7adb2980c4600213c",
       "core_member_sha256": "477028e777fbcb43c46c3752c14176a1b524f90084635106e45f56d0540929ce"
     }
+  ],
+  "revision": "R1_BOUNDED_F03_QUOTE_PARENT_PROVENANCE",
+  "prior_proposal": {
+    "commit": "977c566e275566fb1ce310208877fb4d8d46c31d",
+    "path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_FINITE_SPECIMENS_PROPOSED_20261125.json",
+    "sha256": "959ed0c8716d66181933d5fe350d1391a0a45cc26808fb9d77b40a03fd5aebba"
+  },
+  "parent_only_specimens": [
+    {
+      "specimen_id": "D087_PARENT_ONLY_FOREIGN_C1_ASK_V1",
+      "version": 1,
+      "purpose": "D109_WRONG_QUOTE_LINEAGE_REFUSAL_ONLY",
+      "jurisdiction": "EXISTING_D087_PUBLIC_PARENT_SETUP_ONLY",
+      "allowed_case_id": "D109-WRONG-QUOTE-LINEAGE",
+      "member_count": 2,
+      "literal_members": [
+        {
+          "member_id": "C1-bid",
+          "observation": {
+            "concept_id": "raw_signal.raw_observation_occurrence",
+            "contract_id": "nvda.raw_signal.RawObservationOccurrence.v1",
+            "observation_occurrence_id": "T01-L10C-SCALAR-V1-01",
+            "delivery_artifact_ref": "T01-L10C-SCALAR-STRADDLE-COHORT-V1",
+            "source_provider": "foundation-controlled-options",
+            "source_variant": "option_snapshot_v1",
+            "subject_instrument": "controlled-nvda-c110-20261023",
+            "native_units": "USD_per_share",
+            "source_temporal_kind": "true_instant",
+            "source_timestamp_raw": "2026-10-20T12:40:00Z",
+            "source_timezone_native": "UTC",
+            "received_ts_utc": "2026-10-20T12:40:00Z",
+            "ingestion_sequence": 1,
+            "ingestion_sequence_scope": "foundation-controlled-options/option_snapshot_v1",
+            "raw_signal_catalogue_ids": [
+              "R034"
+            ],
+            "native_record": {
+              "contract": {
+                "id": "controlled-nvda-c110-20261023",
+                "multiplier": "100"
+              },
+              "underlying": {
+                "id": "NVDA"
+              },
+              "expiry": {
+                "date": "2026-10-23"
+              },
+              "strike": {
+                "key": "110"
+              },
+              "option": {
+                "right": "C"
+              },
+              "currency": {
+                "code": "USD"
+              },
+              "instrument": {
+                "kind": "option"
+              },
+              "model": {
+                "convention": "controlled-model/1"
+              },
+              "value": {
+                "role": "option_bid"
+              },
+              "quote": {
+                "bid": {
+                  "native_type": "Decimal",
+                  "text": "2"
+                }
+              }
+            }
+          }
+        },
+        {
+          "member_id": "C1-ask",
+          "observation": {
+            "concept_id": "raw_signal.raw_observation_occurrence",
+            "contract_id": "nvda.raw_signal.RawObservationOccurrence.v1",
+            "observation_occurrence_id": "T01-L10C-SCALAR-V1-FOREIGN-C1-ASK-02",
+            "delivery_artifact_ref": "T01-L10C-SCALAR-D087-FOREIGN-C1-ASK-V1",
+            "source_provider": "foundation-controlled-options",
+            "source_variant": "option_snapshot_v1",
+            "subject_instrument": "controlled-nvda-c110-20261023",
+            "native_units": "USD_per_share",
+            "source_temporal_kind": "true_instant",
+            "source_timestamp_raw": "2026-10-20T12:40:00Z",
+            "source_timezone_native": "UTC",
+            "received_ts_utc": "2026-10-20T12:40:00Z",
+            "ingestion_sequence": 2,
+            "ingestion_sequence_scope": "foundation-controlled-options/option_snapshot_v1",
+            "raw_signal_catalogue_ids": [
+              "R035"
+            ],
+            "native_record": {
+              "contract": {
+                "id": "controlled-nvda-c110-20261023",
+                "multiplier": "100"
+              },
+              "underlying": {
+                "id": "NVDA"
+              },
+              "expiry": {
+                "date": "2026-10-23"
+              },
+              "strike": {
+                "key": "110"
+              },
+              "option": {
+                "right": "C"
+              },
+              "currency": {
+                "code": "USD"
+              },
+              "instrument": {
+                "kind": "option"
+              },
+              "model": {
+                "convention": "controlled-model/1"
+              },
+              "value": {
+                "role": "option_ask"
+              },
+              "quote": {
+                "ask": {
+                  "native_type": "Decimal",
+                  "text": "4"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "member_sha256": "e9643453cc84dc3c97cb6cab021f4cf5a773f8c61981d2d2ca4f7b65b81b8b53",
+      "authority_boundary": "Proposal only. Exactly two lawful C1 quotes in a fresh genuine M00 source through existing public commands and getters. BASE bid is unchanged; only ask identity and delivery artifact differ, equal price and all other fields. Not a seventh/eighth core role or an admitted full L10c specimen; do not pass to create_scalar_straddle_source, generate scalar D091, or use for successful D109. Do not execute historical D087 tests or modify their fixtures. Use exclusively inside the proposed one named D109 witness, after independent review and owner finite admission. No additional physical support case."
+    }
   ]
 }
