@@ -323,7 +323,7 @@
         "L00"
       ],
       "obligation": "Bind actual same-expiry/strike-convention CALL+PUT D087, D091 ATM mapping, knowledge cutoffs, native quote units and positive R118 spot. Existing L14 D087 does not automatically supply arbitrary multi-contract/time coverage. D109 is currency per underlying share; D110=100*D109/spot, with no additional contract multiplier on a per-share premium.",
-      "status": "SUPPORT_REGISTERED_IMPLEMENTED_UNTESTED_STRICT_TESTER_PHASE_A_IN_PROGRESS",
+      "status": "SUPPORT16_CONDITIONAL_EXECUTION_RELEASED_STRICT_TESTER_ONLY",
       "checkpoint_required": true,
       "proposed_testing_windows": [],
       "acceptance": "Independent documentary source clearance; product acceptance requires admitted cases and accepted parent proofs",
@@ -351,7 +351,7 @@
           "disposition": "ACCEPT_SCALAR_STRADDLE_POLICY_PROPOSAL_FOR_EXACT_OWNER_ADOPTION",
           "accepted_proposal_sha256": "279f1cd166ad0c11585c9776dc4a45b5d949946a513717c39f1dcc9a816e8561"
         },
-        "next_owner_decision": "None routine. Obtain actual independent strict Tester Phase A report; verify candidate-specific release predicates; exact conditional release and collection gate before case calls.",
+        "next_owner_decision": "None routine. Same sole strict Tester verifies external pre-call guard and exact candidate release; runs only 16 exact support cases, publishes raw evidence/semantic verdict. D109/D110 held.",
         "owner_adoption": {
           "path": "handoff/m02_completion_28_execution/L10c/OWNER_SCALAR_STRADDLE_SOURCE_POLICY_ADOPTION_20261125.md",
           "sha256": "fc8012c38199591ca845012370c18a03893a354b9633840f140d512671a41aaa",
@@ -675,10 +675,41 @@
             "D109": 8,
             "D110": 10
           },
-          "status": "DISTINCT_TESTER_IDENTIFIED_PHASE_A_ONLY_EXECUTION_HELD",
+          "status": "PHASE_A_INTAKE_VERIFIED_READY_FOR_CASE_RELEASE",
           "identity_record_sha256": "a0c1319a916e34a674be610c0678bbc8dd60d43da43dff370117e21a27b183c9",
           "tester_conversation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
-          "commission_commit": "f9354dc7826944af7fe81f95c4834bd437d3a61f"
+          "commission_commit": "f9354dc7826944af7fe81f95c4834bd437d3a61f",
+          "phase_a_report": {
+            "commit": "7460af983241f01d713c1acf7ac2c3c83a44dc21",
+            "tree": "012f12b99762856624f20bd72715423c2574a735",
+            "parent": "dce2b6dd4e4d69cb84e4d7114dd970ffc00d547e",
+            "branch": "review/pm-l10c-scalar-strict-tester-intake-20261126",
+            "path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_STRICT_TESTER_PHASE_A_INTAKE_REPORT_20261126.md",
+            "sha256": "1fe7e4684cf1871121d3e600647a547b3f9ca7bab453b2f720697345641ca7ba",
+            "blob": "93591bcfdd3607dde165ead47ddd3219bfc8ddad",
+            "disposition": "PHASE_A_INTAKE_VERIFIED_READY_FOR_CASE_RELEASE",
+            "receiver": "/home/jds/nvda_scalar_straddle_strict_tester_intake_20261126",
+            "scope": "Exact support C only; no product acceptance. Worker separately verified actual 66 ref tips, 9 source scripts, 7 named log hashes, actual 17 native SQL mechanism observations, actual historical observer/stdio/audit hashes, ordered old 33 three-phase evidence."
+          }
+        },
+        "support16_release": {
+          "status": "RELEASED_CONDITIONAL_INDEPENDENT_PRECALL_GATE",
+          "exact_cases": 16,
+          "execution_release": true,
+          "candidate_commit": "dce2b6dd4e4d69cb84e4d7114dd970ffc00d547e",
+          "candidate_tree": "799d7535a0feedca1a182de39a9014f11c4d8ee7",
+          "phase_a": "7460af983241f01d713c1acf7ac2c3c83a44dc21",
+          "tester_conversation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
+          "commission_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_SUPPORT16_EXACT_CASE_RELEASE_20261126.md",
+          "gate_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_SUPPORT16_COLLECTION_GUARD_20261126.py",
+          "gate_sha256": "930752309edb0f30dec1e6774e2c0eca090c8589e20b74195b49ec9b01b58412",
+          "exact_nodes_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_SUPPORT16_EXACT_ORDERED_NODES_20261126.json",
+          "exact_nodes_sha256": "d512cc7208af58e72cbb1a6d2a719b95909bf0a15d46e54f09e369ef7a8a12d4",
+          "nonproduct_guard_qualification_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_SUPPORT16_NONPRODUCT_GUARD_QUALIFICATION_20261126.json",
+          "nonproduct_guard_qualification_sha256": "60de74e920b13f35240685a059e1de45840ad1432b9aca3c5e1852de59eb670a",
+          "report_branch": "review/pm-l10c-scalar-support16-product-proof-20261126",
+          "report_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_SUPPORT16_PRODUCT_PROOF_REPORT_20261126.md",
+          "product_run_count": 0
         }
       }
     },
