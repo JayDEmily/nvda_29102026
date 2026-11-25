@@ -10,12 +10,12 @@
       "signals": [],
       "depends_on": [],
       "obligation": "After owner acceptance and explicit implementation commission, archive exact predecessor root, install this plan as the sole root authority and bind all source/profile decisions. Preserve GUARDRAILS and actual AGENTS bytes. Assign an available independent sole strict executor; confirm retained pinned runtime evidence without a qualification test. Freeze 126 identities, 98 historical profiles, 11 L14 claims, 28 current holds and seven external holds. Convert only actually approved prospective case allocations into the active ledger. Inventory checkpoint prerequisites and all required current refs.",
-      "status": "PARTIAL_DOCUMENTARY_INSTALLATION_ACCEPTED_SCOPED_EXECUTION_INGRESS_ESTABLISHED",
+      "status": "ACCEPT_COMMON_DOCUMENTARY_ROOT_FOR_SOURCE_CONTRACT_PREPARATION",
       "checkpoint_required": true,
       "proposed_testing_windows": [],
       "acceptance": "Independent documentary source clearance; product acceptance requires admitted cases and accepted parent proofs",
       "acceptance_evidence": {
-        "scope": "Current working-branch documentary installation and exact D091/L01b execution ingress only. Not an independent verdict of full L00/G0 closure or blanket release of other leaves.",
+        "scope": "Independent common documentary root accepted for authorised source-contract preparation; existing exact D091/L01b execution ingress preserved. Not full historical G0 closure, universal runtime qualification, or new case release.",
         "historical_l00_review": "handoff/m02_completion_28_execution/L00/REVIEW.md",
         "owner_installation_authority": "handoff/astra_adr_continuation_20261115/OWNER_INSTALLATION_AUTHORITY.md",
         "installation_receipt": "handoff/astra_adr_continuation_20261115/INSTALLATION_RECEIPT.md",
@@ -27,8 +27,14 @@
         "d091_child_report_commit": "7322441997d5ab75fa412676e3ae42aba03dcb79",
         "scoped_closeout_commit": "8b2659e54a0da5fc69ef5d64c2a5cefd3a3e951a",
         "historical_asset_holds": "handoff/astra_adr_continuation_20261115/OUTSTANDING_ASSETS_CURRENT.json",
-        "remaining_boundary": "Full current L00/G0 disposition has not been independently established here. Preserve exact historical asset gaps and unknown historical runtime identity; apply actual required receiver, source, runtime and case-release predicates to each subsequent commissioned scope. Do not infer new release or rerun accepted proof from this reconciliation.",
-        "methodology_reference": "67f5a6c855bfcf8c6002e7f6c2d97ba714b6644f:handoff/planning/t01_recovered_successor_20261111/ADR_20261112_ASTRA_NVDA_METHOD_AND_FORWARD_ARCHITECTURE_REVIEWS.md (response 1 sections 2.1, 2.4-2.6, 6.1-6.2; recommendations as adopted by exact T01 installation and standing grant)"
+        "remaining_boundary": "Scope-specific missing original assets, unknown historical runtime identity, actual candidate-specific receiver/runtime, source/parent/claim and finite case-release predicates remain. No new product execution is released.",
+        "methodology_reference": "67f5a6c855bfcf8c6002e7f6c2d97ba714b6644f:handoff/planning/t01_recovered_successor_20261111/ADR_20261112_ASTRA_NVDA_METHOD_AND_FORWARD_ARCHITECTURE_REVIEWS.md (response 1 sections 2.1, 2.4-2.6, 6.1-6.2; recommendations as adopted by exact T01 installation and standing grant)",
+        "independent_common_root_review": {
+          "commit": "757ba8f3b33c55b3f9284e529c46c410be54baac",
+          "branch": "review/pm-l00-l10c-20261125",
+          "path": "handoff/m02_completion_28_execution/L10c/INDEPENDENT_L00_L10C_REVIEW_20261125.md",
+          "sha256": "2154139af77249f2391ab5e354bf0bfdb32463cdce22ad3cba799c62acf5c7b6"
+        }
       }
     },
     {
@@ -317,10 +323,26 @@
         "L00"
       ],
       "obligation": "Bind actual same-expiry/strike-convention CALL+PUT D087, D091 ATM mapping, knowledge cutoffs, native quote units and positive R118 spot. Existing L14 D087 does not automatically supply arbitrary multi-contract/time coverage. D109 is currency per underlying share; D110=100*D109/spot, with no additional contract multiplier on a per-share premium.",
-      "status": "PROPOSED_NOT_ATTEMPTED",
+      "status": "RETURNED_F01_SCALAR_ROUTE_PROPOSAL_PREPARED_OWNER_POLICY_AND_REVIEW_HELD",
       "checkpoint_required": true,
       "proposed_testing_windows": [],
-      "acceptance": "Independent documentary source clearance; product acceptance requires admitted cases and accepted parent proofs"
+      "acceptance": "Independent documentary source clearance; product acceptance requires admitted cases and accepted parent proofs",
+      "acceptance_evidence": {
+        "review_commit": "757ba8f3b33c55b3f9284e529c46c410be54baac",
+        "review_path": "handoff/m02_completion_28_execution/L10c/INDEPENDENT_L00_L10C_REVIEW_20261125.md",
+        "review_sha256": "2154139af77249f2391ab5e354bf0bfdb32463cdce22ad3cba799c62acf5c7b6",
+        "return_disposition": "RETURN_FOR_BOUNDED_SOURCE_CONTRACT_RECONCILIATION; PRODUCT_HELD",
+        "F01": "Scalar comparison corrected in Worker proposal; independent re-review pending.",
+        "F02": "Owner-reserved scalar source/ATM/R118 policy decision pending exact independently reviewed proposal.",
+        "F03": "Finite adequacy and admission held; no case release.",
+        "proposal_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_SOURCE_POLICY_PROPOSED_20261125.json",
+        "proposal_sha256": "279f1cd166ad0c11585c9776dc4a45b5d949946a513717c39f1dcc9a816e8561",
+        "analysis_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_RECONCILIATION_AND_REVIEW_20261125.md",
+        "dependent_leaves": [
+          "L17",
+          "L18"
+        ]
+      }
     },
     {
       "leaf": "L11",
