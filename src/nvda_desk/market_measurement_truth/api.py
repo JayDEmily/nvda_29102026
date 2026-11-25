@@ -2822,3 +2822,169 @@ __all__ += [
     "D091DiagnosticObserverV1", "D091RawReadPortV1", "D091RefusalStageV1",
     "create_d091_bucket_owner", "create_d091_bucket_reader",
 ]
+
+
+class ScalarStraddleSourceRefusalV1(ValueError):
+    """Output-only evidence of a refused, exact finite source specimen."""
+
+    def __init__(
+        self, stage: str, field: str, manifest_id: str, digest: str,
+        observed_originals: tuple[raw_api.RawObservationOccurrenceV1, ...],
+    ) -> None:
+        super().__init__(f"{stage}: {field}")
+        self.stage = stage
+        self.field = field
+        self.manifest_id = manifest_id
+        self.digest = digest
+        self.observed_originals = observed_originals
+
+
+class ScalarStraddleSourceV1:
+    """Construction-sealed read facet; not an arbitrary external-reader adapter."""
+
+    __slots__ = ("__core", "__full", "__get", "__history", "__specimen")
+
+    def __init__(self) -> None:
+        raise TypeError("use create_scalar_straddle_source with an exact admitted specimen")
+
+    def __setattr__(self, name: str, value: object) -> None:
+        raise AttributeError("sealed scalar source is immutable")
+
+    def __delattr__(self, name: str) -> None:
+        raise AttributeError("sealed scalar source is immutable")
+
+    @classmethod
+    def _from_sealed(
+        cls, *, specimen_id: str, full: str, core: str,
+        getter: Callable[..., raw_api.RawObservationOccurrenceV1 | None],
+        history: Callable[..., raw_api.ProjectedRawHistoryPageV1],
+    ) -> ScalarStraddleSourceV1:
+        # Private construction boundary, called only after actual M00 seal.
+        value = object.__new__(cls)
+        object.__setattr__(value, "_ScalarStraddleSourceV1__specimen", specimen_id)
+        object.__setattr__(value, "_ScalarStraddleSourceV1__full", full)
+        object.__setattr__(value, "_ScalarStraddleSourceV1__core", core)
+        object.__setattr__(value, "_ScalarStraddleSourceV1__get", getter)
+        object.__setattr__(value, "_ScalarStraddleSourceV1__history", history)
+        return value
+
+    @property
+    def specimen_id(self) -> str:
+        return self.__specimen
+
+    @property
+    def full_specimen_sha256(self) -> str:
+        return self.__full
+
+    @property
+    def core_manifest_sha256(self) -> str:
+        return self.__core
+
+    def get_raw_observation_occurrence(
+        self, observation_occurrence_id: object,
+    ) -> raw_api.RawObservationOccurrenceV1 | None:
+        return self.__get(observation_occurrence_id)
+
+    def list_projected_raw_history(
+        self, raw_signal_catalogue_id: raw_api.RawSignalCatalogueId, *,
+        mappings: Sequence[raw_api.RawSignalProjectionMappingV1],
+        subject_instrument: str | None,
+        received_at_or_before_utc: datetime | None,
+        event_at_or_before_utc: datetime | None = None,
+        limit: int, cursor: str | None,
+    ) -> raw_api.ProjectedRawHistoryPageV1:
+        return self.__history(
+            raw_signal_catalogue_id, mappings=mappings, subject_instrument=subject_instrument,
+            received_at_or_before_utc=received_at_or_before_utc,
+            event_at_or_before_utc=event_at_or_before_utc, limit=limit, cursor=cursor,
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class ScalarD091RequestV1(_Validated):
+    """Additional exact scalar pair profile, separate from D091BucketRequestV1."""
+
+    derived_signal_id: str
+    subject_instrument: str
+    as_of_utc: datetime
+    knowledge_cutoff_utc: datetime
+    calculation_definition_version: str
+    source_profile_ref: VersionRefV1
+    rule_profile_ref: VersionRefV1
+    projection_mapping_ref: VersionRefV1
+    unit_convention_ref: VersionRefV1
+    core_manifest_sha256: str
+
+
+@dataclass(frozen=True, slots=True)
+class ScalarD091OccurrenceV1(_Validated):
+    """Durable signed delta and category with exact original and projection."""
+
+    owner_object_id: str
+    owner_namespace: str
+    implementation_brief_sha256: str
+    derived_signal_id: str
+    derived_occurrence_id: str
+    request: ScalarD091RequestV1
+    definition: CalculationDefinitionV1
+    source_policy_sha256: str
+    core_manifest_sha256: str
+    original_observation: raw_api.RawObservationOccurrenceV1
+    selected_projection: raw_api.ProjectedRawValueV1
+    signed_delta: Decimal
+    result: D091CategoryV1
+    units: str
+    result_shape: str
+    effective_as_of_utc: datetime
+    knowledge_cutoff_utc: datetime
+    calculated_at_utc: datetime
+
+
+class ScalarD091ReadsV1(Protocol):
+    def get_derived_occurrence(
+        self, derived_occurrence_id: str,
+    ) -> ScalarD091OccurrenceV1 | None: ...
+
+    def list_derived_history(
+        self, *, derived_signal_id: str, subject_instrument: str,
+        effective_at_or_before_utc: datetime, knowledge_at_or_before_utc: datetime, limit: int,
+    ) -> tuple[ScalarD091OccurrenceV1, ...]: ...
+
+
+class ScalarD091OwnerV1(Protocol):
+    @property
+    def reads(self) -> ScalarD091ReadsV1: ...
+
+    def materialise(self, request: ScalarD091RequestV1) -> ScalarD091OccurrenceV1 | None: ...
+
+
+def create_scalar_straddle_source(
+    *, admission: OwnerAdmissionV1, specimen_id: str,
+) -> ScalarStraddleSourceV1:
+    from ._scalar_straddle_source import build_source
+
+    return build_source(admission, specimen_id)
+
+
+def create_scalar_d091_owner(
+    *, admission: OwnerAdmissionV1, source: ScalarStraddleSourceV1,
+    storage: SQLiteStorageV1, utc_now: Callable[[], datetime],
+) -> ScalarD091OwnerV1:
+    from ._scalar_straddle_d091 import build_owner
+
+    return build_owner(admission, source, storage, utc_now)
+
+
+def create_scalar_d091_reader(
+    *, admission: OwnerAdmissionV1, storage: SQLiteReadStorageV1,
+) -> ScalarD091ReadsV1:
+    from ._scalar_straddle_d091 import build_reader
+
+    return build_reader(admission, storage)
+
+
+__all__ += [
+    "ScalarD091OccurrenceV1", "ScalarD091OwnerV1", "ScalarD091ReadsV1",
+    "ScalarD091RequestV1", "ScalarStraddleSourceRefusalV1", "ScalarStraddleSourceV1",
+    "create_scalar_d091_owner", "create_scalar_d091_reader", "create_scalar_straddle_source",
+]
