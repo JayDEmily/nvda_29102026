@@ -323,7 +323,7 @@
         "L00"
       ],
       "obligation": "Bind actual same-expiry/strike-convention CALL+PUT D087, D091 ATM mapping, knowledge cutoffs, native quote units and positive R118 spot. Existing L14 D087 does not automatically supply arbitrary multi-contract/time coverage. D109 is currency per underlying share; D110=100*D109/spot, with no additional contract multiplier on a per-share premium.",
-      "status": "OWNER_ADOPTED_SCALAR_POLICY_R1_QUOTE_LINEAGE_PREEDIT_REVIEW_HELD",
+      "status": "ACCEPT_PREEDIT_AND_FINITE_PROPOSAL_FOR_EXACT_OWNER_ADMISSION",
       "checkpoint_required": true,
       "proposed_testing_windows": [],
       "acceptance": "Independent documentary source clearance; product acceptance requires admitted cases and accepted parent proofs",
@@ -334,7 +334,7 @@
         "return_disposition": "RETURN_FOR_BOUNDED_SOURCE_CONTRACT_RECONCILIATION; PRODUCT_HELD",
         "F01": "CLOSED_DOCUMENTARY_CORRECTION by independent verdict; scalar route selected as proposed bounded policy, not source admission.",
         "F02": "OWNER_ADOPTED_EXACT_POLICY. Direct user reply: Yes, I agree. Proceed. Operative implementation contract, source admission and independent finite proof release remain held.",
-        "F03": "RETURN_BOUNDED/RECURRENT_CLASS confirmed by exact independent report 1602f7c; R1 strengthens actual per-slot/per-role D087 quote-original join in producer and durable reader, adds one genuine equal-price foreign C1 ask parent witness, preserves all 23 full specimens and prior 33 proposed cases. 16+8+10 proposed; independent class-level review pending, no new case allocation or implementation/test release.",
+        "F03": "CLOSED_DOCUMENTARY_RECURRENCE_CLASS for the exact R1 proposal only, independent verdict 58a21fd. Actual implementation, finite owner admission, binding/registration, candidate/runtime/receiver qualification and separate strict Tester release/acceptance remain outstanding. No product result established.",
         "proposal_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_SOURCE_POLICY_PROPOSED_20261125.json",
         "proposal_sha256": "279f1cd166ad0c11585c9776dc4a45b5d949946a513717c39f1dcc9a816e8561",
         "analysis_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_RECONCILIATION_AND_REVIEW_20261125.md",
@@ -351,7 +351,7 @@
           "disposition": "ACCEPT_SCALAR_STRADDLE_POLICY_PROPOSAL_FOR_EXACT_OWNER_ADOPTION",
           "accepted_proposal_sha256": "279f1cd166ad0c11585c9776dc4a45b5d949946a513717c39f1dcc9a816e8561"
         },
-        "next_owner_decision": "After independent R1 class-level clearance: exact nonfungible new finite case budget and suitable separate strict Tester designation. Existing adopted source policy unchanged; no repeat policy decision.",
+        "next_owner_decision": "One proposed bounded conditional grant below; not yet approved. No renewed F02 approval. Previous 20 November standing grant covers only original D091/L01b 15+18, not this new allocation. No new cases are admitted or released at this checkpoint.",
         "owner_adoption": {
           "path": "handoff/m02_completion_28_execution/L10c/OWNER_SCALAR_STRADDLE_SOURCE_POLICY_ADOPTION_20261125.md",
           "sha256": "fc8012c38199591ca845012370c18a03893a354b9633840f140d512671a41aaa",
@@ -402,6 +402,87 @@
             "review_branch": "review/pm-l10c-scalar-preedit-20261125",
             "admitted_new_cases": 0
           }
+        },
+        "independent_preedit_r1_verdict": {
+          "commit": "58a21fd7e5f8aa800eac28340d62d483211086cd",
+          "tree": "283f98a4bc4eec634bd88fb6c577da356117cf67",
+          "branch": "review/pm-l10c-scalar-preedit-r1-20261125",
+          "path": "handoff/m02_completion_28_execution/L10c/INDEPENDENT_SCALAR_STRADDLE_PREEDIT_R1_VERDICT_20261125.md",
+          "sha256": "a4a7015943b4bf2c6d54d8bf7cfde042e8bbb807ac0c26afe5999d98519372ff",
+          "disposition": "ACCEPT_PREEDIT_AND_FINITE_PROPOSAL_FOR_EXACT_OWNER_ADMISSION",
+          "reviewed_commit": "bcbbe735ece409585a9ba034edbdff48fafb2958",
+          "reviewed_tree": "b24a827b5b4a477242188cbe067cd45d9eec2532",
+          "scope": "exact R1 documentary pre-edit and finite adequacy, not implementation/admission/release"
+        },
+        "proposed_owner_grant": {
+          "status": "PROPOSED_AWAITING_DIRECT_OWNER_DECISION_NOT_AUTHORITY",
+          "exact_reviewed_commit": "bcbbe735ece409585a9ba034edbdff48fafb2958",
+          "independent_verdict_commit": "58a21fd7e5f8aa800eac28340d62d483211086cd",
+          "brief": {
+            "path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_PREEDIT_DESIGN_AND_REVIEW_20261125.md",
+            "sha256": "04697219c5d5057ac3884aceb09d754dc391a66f6ed4a425459c938c684b1d8d"
+          },
+          "specimen_manifest": {
+            "path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_FINITE_SPECIMENS_PROPOSED_20261125.json",
+            "sha256": "5e341ef9289f185d4ae9da53eaca9852735af632b17400a89a10508a114dd760"
+          },
+          "finite_inventory": {
+            "path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_FINITE_CASES_PROPOSED_20261125.json",
+            "sha256": "d8fd00cb7352d11fcd364b98a533b894b45c864d2cd6311b8db5cb70eaf57480",
+            "physical_cases": 34
+          },
+          "proposed_exact_nonfungible_ceilings": {
+            "SUPPORT": 16,
+            "D109": 8,
+            "D110": 10
+          },
+          "proposed_implementation_authority": {
+            "status_if_approved": "ACCEPTED_FOR_IMPLEMENTATION",
+            "ordered_targets": [
+              {
+                "action": "modify",
+                "object_id": "M02"
+              },
+              {
+                "action": "modify",
+                "object_id": "G01"
+              }
+            ],
+            "binding_path": "implementation/authority/SCALAR_STRADDLE_IMPLEMENTATION_AUTHORITY_BINDING.yaml",
+            "scope": "Exact reviewed R1 brief only; bounded source-support/D109/D110 implementation and exact test authoring, additive fixed claim extension and no validator weakening. Bind actual attributable owner approval and obtain independent verification of actual binding before installation."
+          },
+          "proposed_conditional_registration": {
+            "claims": [
+              {
+                "claim_id": "neutral_market_measurement_truth_l10c_scalar_pair_support",
+                "proof_id": "M02-C28-L10C-SCALAR-PAIR-SUPPORT",
+                "descriptor_directory": "config/product_proof/m02_scalar_straddle_support",
+                "physical_root": "tests/product/m02_scalar_straddle_support",
+                "family_path": "tests/product/m02_scalar_straddle_support/test_source.py",
+                "exact_case_count": 16
+              },
+              {
+                "claim_id": "neutral_market_measurement_truth_d109",
+                "proof_id": "M02-C28-D109",
+                "descriptor_directory": "config/product_proof/m02_scalar_straddle_d109",
+                "physical_root": "tests/product/m02_scalar_straddle_d109",
+                "family_path": "tests/product/m02_scalar_straddle_d109/test_signal.py",
+                "exact_case_count": 8
+              },
+              {
+                "claim_id": "neutral_market_measurement_truth_d110",
+                "proof_id": "M02-C28-D110",
+                "descriptor_directory": "config/product_proof/m02_scalar_straddle_d110",
+                "physical_root": "tests/product/m02_scalar_straddle_d110",
+                "family_path": "tests/product/m02_scalar_straddle_d110/test_signal.py",
+                "exact_case_count": 10
+              }
+            ],
+            "condition": "Prepare exact contracts/descriptors/generation-1/pointers from actual reviewed implementation/test bytes, actual owner binding and admission authority; independently verify specific completed bytes, reference applicability, schemas and exact node hashes before installing/activating each claim. No generic claim discovery, old claim or generation mutation."
+          },
+          "proposed_conditional_execution_and_tester": "Designate the first newly commissioned genuinely distinct ChatGPT conversation, recorded by actual identity in Git, as sole strict product Tester for these exact 34 cases only, not the continuing Worker or documentary reviewer. Permit case-specific execution release only after every applicable accepted source/meaning/profile/fixture/public ingress, exact implementation and claim/generation/pointer, parent proof/dependency window, clean independently restorable candidate/refs/assets, selected interpreter/library/dependency/runtime/runner and exact node predicate is independently verified. Staged SUPPORT 16 then D109 8 then D110 10, accepted parent before child. Retain exact raw outcomes, reached refusal, durable readback and independent semantic adjudication. No Worker product runs. Documentary clearance alone is not a release.",
+          "proposed_continuation": "Continue already approved scoped work, bounded independently reviewed repairs, exact checkpoints, same-claim successor generation only on material repair within identical meaning and case scope. Failed rerun only after material repair; successful rerun only after precise invalidation. No further routine owner permission under this conditional grant.",
+          "exclusions": "No added or substituted case, increased ceiling, broad regression, schedule change beyond existing adopted dependency windows, new source/domain policy, wider architecture, live/broker/provider, PostgreSQL, main/PR27 promotion, destructive Git, checkpoint strategy change or D145 reactivation. Preserve all historical proof and original 33 accepted cases. No unconditional product execution or acceptance."
         }
       }
     },
