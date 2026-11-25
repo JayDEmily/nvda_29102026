@@ -323,7 +323,7 @@
         "L00"
       ],
       "obligation": "Bind actual same-expiry/strike-convention CALL+PUT D087, D091 ATM mapping, knowledge cutoffs, native quote units and positive R118 spot. Existing L14 D087 does not automatically supply arbitrary multi-contract/time coverage. D109 is currency per underlying share; D110=100*D109/spot, with no additional contract multiplier on a per-share premium.",
-      "status": "SUPPORT_REGISTERED_IMPLEMENTED_UNTESTED_STRICT_TESTER_INTAKE_HELD",
+      "status": "SUPPORT_REGISTERED_IMPLEMENTED_UNTESTED_STRICT_TESTER_PHASE_A_IN_PROGRESS",
       "checkpoint_required": true,
       "proposed_testing_windows": [],
       "acceptance": "Independent documentary source clearance; product acceptance requires admitted cases and accepted parent proofs",
@@ -351,7 +351,7 @@
           "disposition": "ACCEPT_SCALAR_STRADDLE_POLICY_PROPOSAL_FOR_EXACT_OWNER_ADOPTION",
           "accepted_proposal_sha256": "279f1cd166ad0c11585c9776dc4a45b5d949946a513717c39f1dcc9a816e8561"
         },
-        "next_owner_decision": "None routine. Designate distinct strict Tester; Phase A independent actual candidate/receiver/runtime/runner/parent/asset release predicate intake, exact later case release only. D109/D110 held.",
+        "next_owner_decision": "None routine. Obtain actual independent strict Tester Phase A report; verify candidate-specific release predicates; exact conditional release and collection gate before case calls.",
         "owner_adoption": {
           "path": "handoff/m02_completion_28_execution/L10c/OWNER_SCALAR_STRADDLE_SOURCE_POLICY_ADOPTION_20261125.md",
           "sha256": "fc8012c38199591ca845012370c18a03893a354b9633840f140d512671a41aaa",
@@ -675,7 +675,10 @@
             "D109": 8,
             "D110": 10
           },
-          "status": "PHASE_A_COMMISSION_PREPARED_IDENTITY_NOT_YET_RECORDED_EXECUTION_HELD"
+          "status": "DISTINCT_TESTER_IDENTIFIED_PHASE_A_ONLY_EXECUTION_HELD",
+          "identity_record_sha256": "a0c1319a916e34a674be610c0678bbc8dd60d43da43dff370117e21a27b183c9",
+          "tester_conversation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
+          "commission_commit": "f9354dc7826944af7fe81f95c4834bd437d3a61f"
         }
       }
     },

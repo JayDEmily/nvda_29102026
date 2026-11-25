@@ -1179,7 +1179,7 @@
       },
       "execution": {
         "scheduled_leaf": "G2_AFTER_L18",
-        "reviewer": "SEPARATE_INDEPENDENT_TESTER_NOT_YET_DESIGNATED",
+        "reviewer": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
         "semantic_status": "NOT_ATTEMPTED",
         "runs": [],
         "dependency_window_release": "AFTER_INDEPENDENTLY_ACCEPTED_L10C_SCALAR_PAIR_SUPPORT_AND_L04"
@@ -1396,7 +1396,7 @@
       },
       "execution": {
         "scheduled_leaf": "G2_AFTER_L18",
-        "reviewer": "SEPARATE_INDEPENDENT_TESTER_NOT_YET_DESIGNATED",
+        "reviewer": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
         "semantic_status": "NOT_ATTEMPTED",
         "runs": [],
         "dependency_window_release": "AFTER_INDEPENDENTLY_ACCEPTED_D109_AND_L10C"
@@ -2727,7 +2727,7 @@
       },
       "execution": {
         "scheduled_leaf": "L10C_SCALAR_PAIR_SUPPORT_BEFORE_L17",
-        "reviewer": "SEPARATE_INDEPENDENT_TESTER_NOT_YET_DESIGNATED",
+        "reviewer": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
         "semantic_status": "NOT_ATTEMPTED",
         "runs": []
       }
