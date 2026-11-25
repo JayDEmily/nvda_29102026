@@ -158,3 +158,69 @@ def identity_d109(value: f.D109ScalarOccurrenceV1) -> str:
     return "mmtd109scalar1:" + hashlib.sha256(
         native.canonical(_envelope_d109(content)),
     ).hexdigest()
+
+
+_D110_TAG = "D110ScalarOccurrenceV1"
+_D110_REQUEST_KEYS = (
+    "derived_signal_id", "subject_instrument", "as_of_utc", "knowledge_cutoff_utc",
+    "calculation_definition_version", "core_manifest_sha256", "full_specimen_sha256",
+    "straddle",
+)
+_D110_OCCURRENCE_KEYS = (
+    "owner_object_id", "owner_namespace", "implementation_brief_sha256",
+    "derived_signal_id", "derived_occurrence_id", "request", "definition",
+    "source_policy_sha256", "core_manifest_sha256", "full_specimen_sha256",
+    "straddle", "original_observation", "selected_projection", "result", "units",
+    "result_shape", "effective_as_of_utc", "knowledge_cutoff_utc", "calculated_at_utc",
+)
+
+
+def _content_d110(value: f.D110ScalarOccurrenceV1) -> dict[str, Any]:
+    if (
+        type(value) is not f.D110ScalarOccurrenceV1
+        or type(value.request) is not f.D110ScalarRequestV1
+    ):
+        raise TypeError("exact D110 scalar occurrence and request required")
+    result = {key: getattr(value, key) for key in _D110_OCCURRENCE_KEYS}
+    result["request"] = {key: getattr(value.request, key) for key in _D110_REQUEST_KEYS}
+    # Compose the existing complete typed D109 envelope, never a replacement
+    # numerical parent. Its independent identity and all nested facts survive.
+    result["straddle"] = encode_d109(value.straddle)
+    return result
+
+
+def _envelope_d110(content: dict[str, Any]) -> dict[str, Any]:
+    return {"record": _D110_TAG, "version": 1, "content": content}
+
+
+def encode_d110(value: f.D110ScalarOccurrenceV1) -> bytes:
+    return native.canonical(_envelope_d110(_content_d110(value)))
+
+
+def decode_d110(payload: bytes) -> f.D110ScalarOccurrenceV1:
+    envelope = _mapping(native.decode(payload, dict), ("record", "version", "content"))
+    if (
+        type(envelope["record"]) is not str or envelope["record"] != _D110_TAG
+        or type(envelope["version"]) is not int or envelope["version"] != 1
+    ):
+        raise ValueError("D110 scalar envelope identity/version mismatch")
+    content = dict(_mapping(envelope["content"], _D110_OCCURRENCE_KEYS))
+    content["request"] = f.D110ScalarRequestV1(
+        **_mapping(content["request"], _D110_REQUEST_KEYS),
+    )
+    if type(content["straddle"]) is not bytes:
+        raise TypeError("exact nested D109 envelope bytes required")
+    content["straddle"] = decode_d109(content["straddle"])
+    value = f.D110ScalarOccurrenceV1(**content)
+    if encode_d110(value) != payload:
+        raise ValueError("D110 scalar exact reconstructed bytes mismatch")
+    return value
+
+
+def identity_d110(value: f.D110ScalarOccurrenceV1) -> str:
+    content = _content_d110(value)
+    del content["derived_occurrence_id"]
+    del content["calculated_at_utc"]
+    return "mmtd110scalar1:" + hashlib.sha256(
+        native.canonical(_envelope_d110(content)),
+    ).hexdigest()
