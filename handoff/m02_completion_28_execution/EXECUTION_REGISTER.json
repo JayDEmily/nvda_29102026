@@ -323,7 +323,7 @@
         "L00"
       ],
       "obligation": "Bind actual same-expiry/strike-convention CALL+PUT D087, D091 ATM mapping, knowledge cutoffs, native quote units and positive R118 spot. Existing L14 D087 does not automatically supply arbitrary multi-contract/time coverage. D109 is currency per underlying share; D110=100*D109/spot, with no additional contract multiplier on a per-share premium.",
-      "status": "SUPPORT_EXACT16_AUTHORED_UNEXECUTED_INDEPENDENT_REVIEW_HELD",
+      "status": "SUPPORT_IMPLEMENTED_UNTESTED_INDEPENDENT_IMPLEMENTATION_REVIEW_HELD",
       "checkpoint_required": true,
       "proposed_testing_windows": [],
       "acceptance": "Independent documentary source clearance; product acceptance requires admitted cases and accepted parent proofs",
@@ -351,7 +351,7 @@
           "disposition": "ACCEPT_SCALAR_STRADDLE_POLICY_PROPOSAL_FOR_EXACT_OWNER_ADOPTION",
           "accepted_proposal_sha256": "279f1cd166ad0c11585c9776dc4a45b5d949946a513717c39f1dcc9a816e8561"
         },
-        "next_owner_decision": "None routine. Independently clear exact support authoring before implementation; hold actual claim registration and all product execution until required candidate/receiver/runtime/Tester predicates.",
+        "next_owner_decision": "None routine. Independent implementation review, exact inactive generation registration review, separate strict Tester and actual receiver/runtime/runner/node release; support parent acceptance before D109.",
         "owner_adoption": {
           "path": "handoff/m02_completion_28_execution/L10c/OWNER_SCALAR_STRADDLE_SOURCE_POLICY_ADOPTION_20261125.md",
           "sha256": "fc8012c38199591ca845012370c18a03893a354b9633840f140d512671a41aaa",
@@ -540,6 +540,35 @@
           "commission_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_SUPPORT_AUTHORING_AND_REVIEW_20261125.md",
           "commission_sha256": "ffa439c6b0216a4fa3357aed3e5e5953cd6142f5c83dbd4e4855823d3f90ef08",
           "review_branch": "review/pm-l10c-scalar-support-authoring-20261125"
+        },
+        "independent_support_authoring_verdict": {
+          "commit": "ac71ff0bb9aeb431297ed8385b7ee8eb016bc5a8",
+          "tree": "1925c76a2b22e15c666989231ee1599a068a2660",
+          "branch": "review/pm-l10c-scalar-support-authoring-20261125",
+          "path": "handoff/m02_completion_28_execution/L10c/INDEPENDENT_SCALAR_STRADDLE_SUPPORT_AUTHORING_VERDICT_20261125.md",
+          "sha256": "41eb0891fb95aa37f6a021108bb265a95c37314c069c7de6f48c878663e95c39",
+          "disposition": "ACCEPT_EXACT_SUPPORT_AUTHORING_FOR_IMPLEMENTATION",
+          "scope": "documentary authoring only"
+        },
+        "support_implementation_candidate": {
+          "commit": "235ec9f1be4bd3fd81dc4291b7571ee97ecbf731",
+          "tree": "2148f7bff5f485deb499bf57e77ffb6b48adb914",
+          "parent": "6bf425454d724d3248bb9374985f18339e19a411",
+          "paths_sha256": {
+            "src/nvda_desk/market_measurement_truth/api.py": "2c0e14ae167a2c95fe3c32380fae69443099627b3dbc3d22857e766c91971e64",
+            "src/nvda_desk/market_measurement_truth/_scalar_straddle_source.py": "67252936a70718bf6c0a0de430e139816699293a4793a0d8fbee83200b1ecec5",
+            "src/nvda_desk/market_measurement_truth/_scalar_straddle_codec.py": "3844434d1103e83e0a411ed124f554f97c283d0b2e9c86286dbdd61bb41e8a93",
+            "src/nvda_desk/market_measurement_truth/_scalar_straddle_d091.py": "d29fc2965152ed0fdffe918006d69de6db6e944b1dbfd8fdad2aa7a5248998d2",
+            "tools/product_proof_claims.py": "5d5eef99045e3e58f8390fc8c48cf1d7b274e9c9bc2334f6f67d355d64db6df9"
+          },
+          "status": "IMPLEMENTED_UNTESTED",
+          "physical_family_installed": false,
+          "claim_registered": false,
+          "released": false,
+          "runs": 0,
+          "commission_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_SUPPORT_IMPLEMENTATION_AND_REVIEW_20261125.md",
+          "commission_sha256": "4ffeffbd9da6f3038ca3599d4db71775b7ccbd46bb83209ef6eb2aa070a5821a",
+          "review_branch": "review/pm-l10c-scalar-support-implementation-20261125"
         }
       }
     },
