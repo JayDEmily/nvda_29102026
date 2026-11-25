@@ -857,7 +857,7 @@
         "L10c"
       ],
       "obligation": "Select compatible actual CALL/PUT D087 using actual D091 and accepted ATM/expiry/strike selection. Return sum of midpoint premiums in currency per underlying share, retaining both source/selection identities. Refuse unmatched side/expiry/units or absent eligible bucket.",
-      "status": "D109_REGISTERED_IMPLEMENTED_UNTESTED_STRICT_TESTER_INTAKE_PENDING",
+      "status": "D109_EXACT8_CONDITIONAL_EXECUTION_RELEASED_STRICT_TESTER_ONLY",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G2_AFTER_L18"
@@ -868,8 +868,8 @@
         "owner_authority_sha256": "a7fb45cc876e1450f59678c6599113d86b7b59db9a855e0481edd64f717dc375",
         "independent_R1_verdict_commit": "58a21fd7e5f8aa800eac28340d62d483211086cd",
         "admitted_case_count": 8,
-        "execution_release": false,
-        "first_dependency_hold": "Same strict Tester independently qualifies installed D109 candidate, actual runtime/receiver/runner, prior proof reuse, exact guard applicability. Separate eight-case release still required. D110 held.",
+        "execution_release": true,
+        "first_dependency_hold": "Same sole strict Tester actual guarded exact eight-case execution and independent semantic product report. D110 held until accepted D109; no old proof rerun.",
         "parent_proof_refs": {
           "L04": "7322441997d5ab75fa412676e3ae42aba03dcb79",
           "L10c": "c07ab2881be128a577eb07460722500a58869e0c",
@@ -1014,12 +1014,36 @@
           "runs": 0
         },
         "d109_strict_tester_intake": {
-          "status": "CANDIDATE_SPECIFIC_QUALIFICATION_COMMISSIONED_NO_EXECUTION",
+          "status": "INDEPENDENT_CANDIDATE_QUALIFIED_READY_FOR_CASE_RELEASE",
           "tester_conversation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
           "existing_identity_commit": "5cdc7ca5b8f0f9df720268e92c28f2f637d1b71d",
           "commission_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_D109_STRICT_TESTER_INTAKE_COMMISSION_20261126.md",
           "report_branch": "review/pm-l17-d109-scalar-strict-tester-intake-20261126",
-          "report_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_D109_STRICT_TESTER_INTAKE_REPORT_20261126.md"
+          "report_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_D109_STRICT_TESTER_INTAKE_REPORT_20261126.md",
+          "report_commit": "aef153765fdb5c1f92946eff25f6782c50d26df9",
+          "report_tree": "ee6655e94b44f62586401a85b57737fa636e6be1",
+          "report_parent": "6d5a1260846649f2566513609d8c0c5a54f05d94",
+          "report_blob": "5d175d511faec8c24c8e942067c898caf6afabda",
+          "report_sha256": "bb32993607f6590a7d44616ef586f0389e796d2d071021bd0a7b86fc882b1fd3",
+          "disposition": "D109_CANDIDATE_INTAKE_VERIFIED_READY_FOR_CASE_RELEASE",
+          "worker_reconciliation": "Six independent helper/log pairs, embedded raw log renderings; 66 receiver literal refs, 25 remote refs; old 49/147 actual outcomes, five support DBs/ten payloads, prior nine Worker/two independent guard evidence, runtime and exact seven-path endpoint reconciled at 02:09-02:29. No new product run."
+        },
+        "d109_exact8_release": {
+          "status": "CONDITIONAL_ON_ACTUAL_PRECALL_EXACT_COLLECTION_GATE",
+          "commission_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_D109_EXACT_CASE_RELEASE_20261126.md",
+          "source_candidate": "6d5a1260846649f2566513609d8c0c5a54f05d94",
+          "intake_commit": "aef153765fdb5c1f92946eff25f6782c50d26df9",
+          "exact_nodes_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_D109_EXACT_ORDERED_NODES_20261126.json",
+          "exact_nodes_sha256": "bd45510bde1fa17d21191b250b9071dfd43c89ce3c08c89379a5185b3c2601a0",
+          "external_guard_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_SUPPORT16_COLLECTION_GUARD_20261126.py",
+          "external_guard_sha256": "930752309edb0f30dec1e6774e2c0eca090c8589e20b74195b49ec9b01b58412",
+          "product_report_branch": "review/pm-l17-d109-scalar-product-proof-20261126",
+          "product_report_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_D109_PRODUCT_PROOF_REPORT_20261126.md",
+          "held_ledger_parent": "99ebeff55e78e8db1bd34bcfe55b9a54396093f9",
+          "release_ledger_sha256": "29fb872a54c1bddd2416f82d086713ed8cc5165293776902d4cf9a628e51a3b1",
+          "physical_case_count": 8,
+          "product_run_count": 0,
+          "tester_conversation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382"
         }
       }
     },

@@ -1,0 +1,10 @@
+[
+  "tests/product/m02_scalar_straddle_d109/test_signal.py::test_d109_controlled_success",
+  "tests/product/m02_scalar_straddle_d109/test_signal.py::test_d109_call_same_bin_non_atm",
+  "tests/product/m02_scalar_straddle_d109/test_signal.py::test_d109_put_same_bin_non_atm",
+  "tests/product/m02_scalar_straddle_d109/test_signal.py::test_d109_missing_parent",
+  "tests/product/m02_scalar_straddle_d109/test_signal.py::test_d109_duplicate_parent",
+  "tests/product/m02_scalar_straddle_d109/test_signal.py::test_d109_wrong_slot",
+  "tests/product/m02_scalar_straddle_d109/test_signal.py::test_d109_wrong_core",
+  "tests/product/m02_scalar_straddle_d109/test_signal.py::test_d109_wrong_quote_lineage"
+]
