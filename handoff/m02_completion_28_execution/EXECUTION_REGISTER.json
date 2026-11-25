@@ -857,7 +857,7 @@
         "L10c"
       ],
       "obligation": "Select compatible actual CALL/PUT D087 using actual D091 and accepted ATM/expiry/strike selection. Return sum of midpoint premiums in currency per underlying share, retaining both source/selection identities. Refuse unmatched side/expiry/units or absent eligible bucket.",
-      "status": "D109_EXACT8_AUTHORED_INERT_INDEPENDENT_AUTHORING_REVIEW_HELD",
+      "status": "D109_IMPLEMENTED_UNTESTED_INDEPENDENT_IMPLEMENTATION_REVIEW_HELD",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G2_AFTER_L18"
@@ -869,7 +869,7 @@
         "independent_R1_verdict_commit": "58a21fd7e5f8aa800eac28340d62d483211086cd",
         "admitted_case_count": 8,
         "execution_release": false,
-        "first_dependency_hold": "Independent exact D109 authoring verdict before implementation. D109 and D110 execution remain held.",
+        "first_dependency_hold": "Independent exact implementation verdict before generation preparation; no active D109 registration or execution; D110 held.",
         "parent_proof_refs": {
           "L04": "7322441997d5ab75fa412676e3ae42aba03dcb79",
           "L10c": "c07ab2881be128a577eb07460722500a58869e0c",
@@ -889,8 +889,34 @@
           "commission_sha256": "cba02c796c3ffd7abcf515a77f9dede67265ffa5343a9b1bb649bf488601e158",
           "review_branch": "review/pm-l17-d109-scalar-authoring-20261126",
           "exact_cases": 8,
-          "status": "INERT_NO_IMPLEMENTATION_NO_REGISTRATION_NO_EXECUTION",
+          "status": "INDEPENDENT_ACCEPTED_EXACT_AUTHORING_FOR_IMPLEMENTATION",
           "static_validation": "Python3.13 AST exact 8 ordered nodes; contract schema; prospective-path Ruff exit0; seven line-wrap corrections AST unchanged."
+        },
+        "d109_authoring_verdict": {
+          "commit": "c5e991571a5fa28661ccca9ca9f97433fc6bd730",
+          "tree": "95aaac3278bb81e63a9ff2aae9c06970879d2315",
+          "parent": "7a6775395371cafbed31a5cc5465ccd57a9742eb",
+          "branch": "review/pm-l17-d109-scalar-authoring-20261126",
+          "path": "handoff/m02_completion_28_execution/L10c/INDEPENDENT_SCALAR_STRADDLE_D109_AUTHORING_VERDICT_20261126.md",
+          "git_blob": "b4704ba70eee5e03437c3d747016617e5669d839",
+          "sha256": "7af535b2d8e7926fc77a9b6637706c198aeb42b91db5e73853f78618f896ba69",
+          "disposition": "ACCEPT_EXACT_D109_AUTHORING_FOR_IMPLEMENTATION"
+        },
+        "d109_implementation": {
+          "status": "IMPLEMENTED_UNTESTED_INDEPENDENT_REVIEW_HELD",
+          "commit": "2e0add2c23889cf65d9c4295d52f51db5dcfc969",
+          "tree": "d66102a1a0d560f6dad973625271cf963e8f0876",
+          "parent": "7a6775395371cafbed31a5cc5465ccd57a9742eb",
+          "files_sha256": {
+            "src/nvda_desk/market_measurement_truth/api.py": "cae596ef9847999e7664be069b957b7b1144147d7906190a82fb8e3bfdce1cf4",
+            "src/nvda_desk/market_measurement_truth/_scalar_straddle_codec.py": "7b6638f414f235f2e4d2a683129c7f8746055fce3fe892602facd438b7e28062",
+            "src/nvda_desk/market_measurement_truth/_scalar_straddle_d109.py": "e72d8c42c02b392fff20b3df5634b237f064b74fea49c021a7a74604d96f5e64"
+          },
+          "commission_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_D109_IMPLEMENTATION_AND_REVIEW_20261126.md",
+          "commission_sha256": "19de1897fe16d9750dd85d46a752df3a36b5cc265a4d0f6520e5caba3ff915ab",
+          "review_branch": "review/pm-l17-d109-scalar-implementation-20261126",
+          "scope": "Exact M02 D109 API/private implementation/explicit codec append only. No G01 change, product execution, registration or D110.",
+          "static_validation": "Python3.13 AST/DTO/codec/request/role call sites; private and codec Ruff exit0; API same exact three inherited unwaived findings; no full CI."
         }
       }
     },
