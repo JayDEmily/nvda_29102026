@@ -323,7 +323,7 @@
         "L00"
       ],
       "obligation": "Bind actual same-expiry/strike-convention CALL+PUT D087, D091 ATM mapping, knowledge cutoffs, native quote units and positive R118 spot. Existing L14 D087 does not automatically supply arbitrary multi-contract/time coverage. D109 is currency per underlying share; D110=100*D109/spot, with no additional contract multiplier on a per-share premium.",
-      "status": "SUPPORT_IMPLEMENTED_UNTESTED_INDEPENDENT_IMPLEMENTATION_REVIEW_HELD",
+      "status": "SUPPORT_GENERATION_1_STAGED_INERT_INDEPENDENT_REGISTRATION_REVIEW_PENDING",
       "checkpoint_required": true,
       "proposed_testing_windows": [],
       "acceptance": "Independent documentary source clearance; product acceptance requires admitted cases and accepted parent proofs",
@@ -351,7 +351,7 @@
           "disposition": "ACCEPT_SCALAR_STRADDLE_POLICY_PROPOSAL_FOR_EXACT_OWNER_ADOPTION",
           "accepted_proposal_sha256": "279f1cd166ad0c11585c9776dc4a45b5d949946a513717c39f1dcc9a816e8561"
         },
-        "next_owner_decision": "None routine. Independent implementation review, exact inactive generation registration review, separate strict Tester and actual receiver/runtime/runner/node release; support parent acceptance before D109.",
+        "next_owner_decision": "None routine. Separate independent generation-specific review of completed bytes; then exact installation, distinct Tester designation and release qualification. D109/D110 held.",
         "owner_adoption": {
           "path": "handoff/m02_completion_28_execution/L10c/OWNER_SCALAR_STRADDLE_SOURCE_POLICY_ADOPTION_20261125.md",
           "sha256": "fc8012c38199591ca845012370c18a03893a354b9633840f140d512671a41aaa",
@@ -569,6 +569,53 @@
           "commission_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_SUPPORT_IMPLEMENTATION_AND_REVIEW_20261125.md",
           "commission_sha256": "4ffeffbd9da6f3038ca3599d4db71775b7ccbd46bb83209ef6eb2aa070a5821a",
           "review_branch": "review/pm-l10c-scalar-support-implementation-20261125"
+        },
+        "independent_support_implementation_verdict": {
+          "commit": "1b1b743990e9fbd47b915bd3d1f3602680bfece8",
+          "tree": "8398c74175a1faa96f7dfa3c8c4a3b46686b0a92",
+          "branch": "review/pm-l10c-scalar-support-implementation-20261125",
+          "parent": "673e1a44bd205d5eac4929fa04b1976b3aa3aaee",
+          "path": "handoff/m02_completion_28_execution/L10c/INDEPENDENT_SCALAR_STRADDLE_SUPPORT_IMPLEMENTATION_VERDICT_20261125.md",
+          "sha256": "b727b5838477b0135742477643187bbaf85e048554b47f2a4f1dfd394e5417be",
+          "disposition": "ACCEPT_EXACT_SUPPORT_IMPLEMENTATION_FOR_GENERATION_PREPARATION",
+          "scope": "Documentary implementation only; no product proof or generation installation. Existing 33 historical results preserved; final candidate-specific reuse/qualification pending."
+        },
+        "support_generation_1_candidate": {
+          "status": "INERT_NOT_INSTALLED_NOT_RELEASED",
+          "claim_id": "neutral_market_measurement_truth_l10c_scalar_pair_support",
+          "generation": 1,
+          "exact_cases": 16,
+          "copies": [
+            {
+              "inert_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_SUPPORT_TEST_SOURCE.py",
+              "active_path": "tests/product/m02_scalar_straddle_support/test_source.py",
+              "sha256": "4f6c43b40e37f8222a69cdf6048a266619b5c5bddbf4bd9d404895f447f4c2eb",
+              "git_blob": "185804f596883f8363ee491b3a952d884e14719d"
+            },
+            {
+              "inert_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_SUPPORT_CLAIM_CANDIDATE.json",
+              "active_path": "config/product_proof/m02_scalar_straddle_support/claim.json",
+              "sha256": "b48189462909c02d31f0e2cd63fbe2533b683fe269ae644d2dddef078ea1a534",
+              "git_blob": "88caf1e6a4dda12d0b0c083c76a8afb6472b8781"
+            },
+            {
+              "inert_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_SUPPORT_GENERATION_0001_CANDIDATE.json",
+              "active_path": "config/product_proof/m02_scalar_straddle_support/generations/0001.json",
+              "sha256": "2c30756b5947241db0965860b29854e52fa9c54b20166dd5a085046129c1997d",
+              "git_blob": "9ca77a6046942d1d624abc10169285865e2d0e2b"
+            },
+            {
+              "inert_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_SUPPORT_ADMISSION_CANDIDATE.json",
+              "active_path": "config/product_proof/m02_scalar_straddle_support/admission.json",
+              "sha256": "7814e4d987f6bf62c7613b7b35ec1393dca396f8bbc56a9f3bb643bc8a0489ba",
+              "git_blob": "2f1305ca0d1746aeeef40adbecfda887fe2aa2f5"
+            }
+          ],
+          "adequacy_review_ref": "github-independent-review/ac71ff0bb9aeb431297ed8385b7ee8eb016bc5a8/exact-support-authoring;github-independent-review/1b1b743990e9fbd47b915bd3d1f3602680bfece8/exact-support-implementation-for-generation-preparation",
+          "admission_authority_ref": "owner-instruction/20261125/exact-conditional-scalar-straddle-claim-registration;github-record/4d2dc9262027f149c3be2105db309bba4da5d229",
+          "review_branch": "review/pm-l10c-scalar-support-generation-20261126",
+          "execution_release": false,
+          "runs": 0
         }
       }
     },
