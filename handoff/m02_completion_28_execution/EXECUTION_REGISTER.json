@@ -323,7 +323,7 @@
         "L00"
       ],
       "obligation": "Bind actual same-expiry/strike-convention CALL+PUT D087, D091 ATM mapping, knowledge cutoffs, native quote units and positive R118 spot. Existing L14 D087 does not automatically supply arbitrary multi-contract/time coverage. D109 is currency per underlying share; D110=100*D109/spot, with no additional contract multiplier on a per-share premium.",
-      "status": "SUPPORT16_CONDITIONAL_EXECUTION_RELEASED_STRICT_TESTER_ONLY",
+      "status": "TESTED_ACCEPTED_L10C_SCALAR_PAIR_SUPPORT_CONTROLLED_SCOPE_ONLY",
       "checkpoint_required": true,
       "proposed_testing_windows": [],
       "acceptance": "Independent documentary source clearance; product acceptance requires admitted cases and accepted parent proofs",
@@ -351,7 +351,7 @@
           "disposition": "ACCEPT_SCALAR_STRADDLE_POLICY_PROPOSAL_FOR_EXACT_OWNER_ADOPTION",
           "accepted_proposal_sha256": "279f1cd166ad0c11585c9776dc4a45b5d949946a513717c39f1dcc9a816e8561"
         },
-        "next_owner_decision": "None routine. Same sole strict Tester verifies external pre-call guard and exact candidate release; runs only 16 exact support cases, publishes raw evidence/semantic verdict. D109/D110 held.",
+        "next_owner_decision": "None routine. L17 D109 authoring may proceed within exact R1/owner admission using accepted L04 and L10c support. D109 eight cases still execution-held; D110 held behind D109. No successful repeat absent material invalidation.",
         "owner_adoption": {
           "path": "handoff/m02_completion_28_execution/L10c/OWNER_SCALAR_STRADDLE_SOURCE_POLICY_ADOPTION_20261125.md",
           "sha256": "fc8012c38199591ca845012370c18a03893a354b9633840f140d512671a41aaa",
@@ -693,7 +693,7 @@
           }
         },
         "support16_release": {
-          "status": "RELEASED_CONDITIONAL_INDEPENDENT_PRECALL_GATE",
+          "status": "EXECUTED_ONCE_INDEPENDENT_TESTED_ACCEPTED_EXACT16",
           "exact_cases": 16,
           "execution_release": true,
           "candidate_commit": "dce2b6dd4e4d69cb84e4d7114dd970ffc00d547e",
@@ -709,7 +709,28 @@
           "nonproduct_guard_qualification_sha256": "60de74e920b13f35240685a059e1de45840ad1432b9aca3c5e1852de59eb670a",
           "report_branch": "review/pm-l10c-scalar-support16-product-proof-20261126",
           "report_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_SUPPORT16_PRODUCT_PROOF_REPORT_20261126.md",
-          "product_run_count": 0
+          "product_run_count": 1
+        },
+        "support16_independent_acceptance": {
+          "commit": "c07ab2881be128a577eb07460722500a58869e0c",
+          "tree": "64fda59e31e9ae98fbff4a8ac030f1f48e191391",
+          "parent": "dce2b6dd4e4d69cb84e4d7114dd970ffc00d547e",
+          "branch": "review/pm-l10c-scalar-support16-product-proof-20261126",
+          "path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_SUPPORT16_PRODUCT_PROOF_REPORT_20261126.md",
+          "sha256": "19291e4991e84b38347b1e8c46e2867cc4ce5410908f49790979cf627952ee0f",
+          "git_blob": "ed1b99759209c6283c538e1a247c5a547c01a051",
+          "disposition": "TESTED_ACCEPTED_L10C_SCALAR_SUPPORT_EXACT16_ONLY",
+          "source_candidate": "dce2b6dd4e4d69cb84e4d7114dd970ffc00d547e",
+          "run_id": "L10C-SCALAR-SUPPORT16-STRICT-TESTER-20261126-001",
+          "physical_case_count": 16,
+          "actual_passed_phase_count": 48,
+          "observer_sha256": "52a07078a1590c1ff11c508b1fb5aec65b091ec2d2b23d83f21d21e493a2d1a6",
+          "precall_gate_sha256": "4ff36cdf0587fa4cf0618526b042a44766d005857568b120f7c0f519fd5619d8",
+          "independent_case_audit_sha256": "782c8d69b6ca5262fa602ef9f47fffa84d79286096f8b1d7ab7d7d1f9257c29d",
+          "readonly_sqlite_forensics_sha256": "24342862df9392494d62622743c29d204a82195f27d0d3e5ca7456a264324cbc",
+          "accepted_ledger_sha256": "7ff8ff92bbb8a65740e64301ad9b74e2d135cfb663e2d305e6c1efa720015292",
+          "receipt_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_SUPPORT16_ACCEPTANCE_RECONCILIATION_20261126.md",
+          "scope": "Exact 16 synthetic scalar support cases only, no new D identity or D109/D110/G2/G5/live acceptance; prior 33 not repeated"
         }
       }
     },
@@ -836,7 +857,7 @@
         "L10c"
       ],
       "obligation": "Select compatible actual CALL/PUT D087 using actual D091 and accepted ATM/expiry/strike selection. Return sum of midpoint premiums in currency per underlying share, retaining both source/selection identities. Refuse unmatched side/expiry/units or absent eligible bucket.",
-      "status": "OWNER_FINITE_ADMITTED_EXECUTION_HELD_PARENT_AND_BINDING_PENDING",
+      "status": "OWNER_FINITE_ADMITTED_PARENT_PROOFS_ACCEPTED_D109_AUTHORING_READY_EXECUTION_HELD",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G2_AFTER_L18"
@@ -848,7 +869,14 @@
         "independent_R1_verdict_commit": "58a21fd7e5f8aa800eac28340d62d483211086cd",
         "admitted_case_count": 8,
         "execution_release": false,
-        "first_dependency_hold": "L10c scalar support and exact implementation binding"
+        "first_dependency_hold": "Exact D109 authoring, independent clearance, implementation, registration, candidate-specific strict Tester qualification and separate release; accepted L04 and L10c prerequisite proofs now available.",
+        "parent_proof_refs": {
+          "L04": "7322441997d5ab75fa412676e3ae42aba03dcb79",
+          "L10c": "c07ab2881be128a577eb07460722500a58869e0c",
+          "L10c_source_candidate": "dce2b6dd4e4d69cb84e4d7114dd970ffc00d547e",
+          "L10c_observer_sha256": "52a07078a1590c1ff11c508b1fb5aec65b091ec2d2b23d83f21d21e493a2d1a6",
+          "L10c_acceptance_receipt": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_SUPPORT16_ACCEPTANCE_RECONCILIATION_20261126.md"
+        }
       }
     },
     {
