@@ -1074,7 +1074,7 @@
         "L10c"
       ],
       "obligation": "Compute 100*D109/positive aligned R118 spot in compatible currency-per-share units. Retain straddle and spot identity. Do not multiply per-share premium by an inferred 100-share contract multiplier. Refuse nonpositive spot, missing or incompatible units.",
-      "status": "D109_PARENT_ACCEPTED_D110_AUTHORING_ELIGIBLE_EXECUTION_HELD",
+      "status": "D110_AUTHORED_INERT_INDEPENDENT_AUTHORING_REVIEW_PENDING",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G2_AFTER_L18"
@@ -1086,13 +1086,28 @@
         "independent_R1_verdict_commit": "58a21fd7e5f8aa800eac28340d62d483211086cd",
         "admitted_case_count": 10,
         "execution_release": false,
-        "first_dependency_hold": "Exact D110 test authoring and independent review, then implementation, registration, candidate-specific Tester qualification and exact conditional release.",
+        "first_dependency_hold": "Distinct independent exact D110 documentary authoring verdict; no implementation/registration/execution before applicable approvals.",
         "parent_proof_refs": {
           "L17": "02e62a1a31bafe6f465eb3e1a513ffb41dd09ff8",
           "L17_source_candidate": "6d5a1260846649f2566513609d8c0c5a54f05d94",
           "L17_observer_sha256": "b7fe72d1503067952cc28d2d29c4da5c92f9519c91ba64f4107840651e205368",
           "L17_acceptance_receipt": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_D109_ACCEPTANCE_RECONCILIATION_20261126.md",
           "L10c": "c07ab2881be128a577eb07460722500a58869e0c"
+        },
+        "d110_authoring": {
+          "source_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_D110_TEST_SOURCE.py",
+          "source_sha256": "e15aaba1e3d8e67fa17ccf97f87da26380617c6f37fa29d30c62dc38738dabf4",
+          "intended_physical_path": "tests/product/m02_scalar_straddle_d110/test_signal.py",
+          "contract_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_D110_PROOF_CONTRACT.json",
+          "contract_sha256": "950c6054d3ccbbe45f510a670d0e94b8fd875ea4368c01f35154c02b8e292556",
+          "inactive_descriptor_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_D110_CLAIM_CANDIDATE.json",
+          "inactive_descriptor_sha256": "1dbb9d9ce3254db440de7f99f7247572f98da332ac50085b3222e51663993935",
+          "commission_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_D110_AUTHORING_AND_REVIEW_20261126.md",
+          "commission_sha256": "c70de4bcbfa6b5dfdd3609b863afea84a587eef3ddf43ccb6f2dc1c0cd81277d",
+          "review_branch": "review/pm-l18-d110-scalar-authoring-20261126",
+          "exact_cases": 10,
+          "status": "INERT_INDEPENDENT_AUTHORING_REVIEW_PENDING",
+          "static_validation": "Selected Python3.13 AST exact ten ordered nodes and direct producer/reader calls; existing contract schema valid; Ruff prospective path exit0 after two RUF005 style fixes. No product imports or execution."
         }
       }
     },
