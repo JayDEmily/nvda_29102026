@@ -10,10 +10,26 @@
       "signals": [],
       "depends_on": [],
       "obligation": "After owner acceptance and explicit implementation commission, archive exact predecessor root, install this plan as the sole root authority and bind all source/profile decisions. Preserve GUARDRAILS and actual AGENTS bytes. Assign an available independent sole strict executor; confirm retained pinned runtime evidence without a qualification test. Freeze 126 identities, 98 historical profiles, 11 L14 claims, 28 current holds and seven external holds. Convert only actually approved prospective case allocations into the active ledger. Inventory checkpoint prerequisites and all required current refs.",
-      "status": "PROPOSED_NOT_ATTEMPTED",
+      "status": "PARTIAL_DOCUMENTARY_INSTALLATION_ACCEPTED_SCOPED_EXECUTION_INGRESS_ESTABLISHED",
       "checkpoint_required": true,
       "proposed_testing_windows": [],
-      "acceptance": "Independent documentary source clearance; product acceptance requires admitted cases and accepted parent proofs"
+      "acceptance": "Independent documentary source clearance; product acceptance requires admitted cases and accepted parent proofs",
+      "acceptance_evidence": {
+        "scope": "Current working-branch documentary installation and exact D091/L01b execution ingress only. Not an independent verdict of full L00/G0 closure or blanket release of other leaves.",
+        "historical_l00_review": "handoff/m02_completion_28_execution/L00/REVIEW.md",
+        "owner_installation_authority": "handoff/astra_adr_continuation_20261115/OWNER_INSTALLATION_AUTHORITY.md",
+        "installation_receipt": "handoff/astra_adr_continuation_20261115/INSTALLATION_RECEIPT.md",
+        "independent_installation_review": "handoff/astra_adr_continuation_20261115/INDEPENDENT_INSTALLATION_REVIEW.md",
+        "independent_recovery_environment_review": "handoff/astra_adr_continuation_20261115/INDEPENDENT_RECOVERY_ENVIRONMENT_REVIEW.md",
+        "standing_conditional_grant": "handoff/m02_completion_28_execution/L04/D091_STANDING_CONDITIONAL_AUTHORITY_20261120/OWNER_STANDING_CONDITIONAL_EXECUTION_GRANT.md",
+        "strict_tester_receiver_report_commit": "d1361399a9b74f6ba1e6d5b6ed84e8705eeb5770",
+        "source_support_parent_report_commit": "f0aba1a87bf889e91dcf154f2c04e5517b4a2901",
+        "d091_child_report_commit": "7322441997d5ab75fa412676e3ae42aba03dcb79",
+        "scoped_closeout_commit": "8b2659e54a0da5fc69ef5d64c2a5cefd3a3e951a",
+        "historical_asset_holds": "handoff/astra_adr_continuation_20261115/OUTSTANDING_ASSETS_CURRENT.json",
+        "remaining_boundary": "Full current L00/G0 disposition has not been independently established here. Preserve exact historical asset gaps and unknown historical runtime identity; apply actual required receiver, source, runtime and case-release predicates to each subsequent commissioned scope. Do not infer new release or rerun accepted proof from this reconciliation.",
+        "methodology_reference": "67f5a6c855bfcf8c6002e7f6c2d97ba714b6644f:handoff/planning/t01_recovered_successor_20261111/ADR_20261112_ASTRA_NVDA_METHOD_AND_FORWARD_ARCHITECTURE_REVIEWS.md (response 1 sections 2.1, 2.4-2.6, 6.1-6.2; recommendations as adopted by exact T01 installation and standing grant)"
+      }
     },
     {
       "leaf": "L01a",

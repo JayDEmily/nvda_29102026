@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "plan_id": "M02-FOUNDATION-COMPLETION-28",
-  "ledger_status": "DRAFT",
+  "ledger_status": "ACTIVE",
   "repository": {
     "baseline_commit": "02a19ae02678824908568d8db08f0e1d015cb861",
     "candidate_commit": "b7d044a4f84b7f70703322c250cbd82cee6f4589",
@@ -9,8 +9,8 @@
   },
   "execution_mode": {
     "mode": "CHAT_MANUAL",
-    "capability_evidence": "Owner-selected separate ChatGPT Worker/Tester and GitHub; arithmetic transport committed, full remote Git receiver mechanically passed by planner; separate Tester Git closure and product tests not yet executed.",
-    "test_phase": "DEPENDENCY_WINDOWS_THEN_L32_RECONCILIATION_PROPOSED_NOT_RELEASED"
+    "capability_evidence": "Owner-installed T01 CHAT_MANUAL governance and PINNED_REMOTE_CHECKPOINT strategy (15 November installation receipt); distinct strict Tester receiver verified for pinned D091/L01b source b7d044a4f84b7f70703322c250cbd82cee6f4589 (Phase A d1361399a9b74f6ba1e6d5b6ed84e8705eeb5770); independent parent15 f0aba1a87bf889e91dcf154f2c04e5517b4a2901 and child18 7322441997d5ab75fa412676e3ae42aba03dcb79 accepted and recorded. Scope is exact controlled synthetic families only; other execution requires its own applicable predicates and finite release.",
+    "test_phase": "OWNER_INSTALLED_DEPENDENCY_WINDOWS_THEN_L32_RECONCILIATION_CASE_SPECIFIC_RELEASE_ONLY"
   },
   "proof_obligations": [
     {
