@@ -323,7 +323,7 @@
         "L00"
       ],
       "obligation": "Bind actual same-expiry/strike-convention CALL+PUT D087, D091 ATM mapping, knowledge cutoffs, native quote units and positive R118 spot. Existing L14 D087 does not automatically supply arbitrary multi-contract/time coverage. D109 is currency per underlying share; D110=100*D109/spot, with no additional contract multiplier on a per-share premium.",
-      "status": "ACCEPT_SCALAR_STRADDLE_POLICY_PROPOSAL_FOR_EXACT_OWNER_ADOPTION",
+      "status": "OWNER_ADOPTED_EXACT_SCALAR_SOURCE_POLICY_OPERATIVE_PREEDIT_REVIEW_HELD",
       "checkpoint_required": true,
       "proposed_testing_windows": [],
       "acceptance": "Independent documentary source clearance; product acceptance requires admitted cases and accepted parent proofs",
@@ -333,7 +333,7 @@
         "review_sha256": "2154139af77249f2391ab5e354bf0bfdb32463cdce22ad3cba799c62acf5c7b6",
         "return_disposition": "RETURN_FOR_BOUNDED_SOURCE_CONTRACT_RECONCILIATION; PRODUCT_HELD",
         "F01": "CLOSED_DOCUMENTARY_CORRECTION by independent verdict; scalar route selected as proposed bounded policy, not source admission.",
-        "F02": "HELD_OWNER_ADOPTION. Exact independently accepted proposal bytes await distinct owner adoption; continuation instruction is not exact policy adoption.",
+        "F02": "OWNER_ADOPTED_EXACT_POLICY. Direct user reply: Yes, I agree. Proceed. Operative implementation contract, source admission and independent finite proof release remain held.",
         "F03": "HELD_FINITE_ADEQUACY. Independent finding is an isolated new proof-design omission, not an executed failure. Correct candidate D109 reached refusal to valid C1 +0.60 delta (ABS_50_75, same bin as +0.50) with both actual quotes and lawful C2 -0.50 D091. Use actual D091 signed lineage; distinguish right-specific, missing/wrong/duplicate parent and source refusal mechanisms. D109 must not require R118: separately manifested missing/nonpositive spot scenarios must permit actual D109 before D110 refusal. D110 zero and negative finite spot, absent/wrong/misaligned spot, source closure and durable lineage/readback remain explicit finite-design obligations. These are proposed witness corrections, not admitted cases. No count, allocation, product edit, test release or reviewer dispatch.",
         "proposal_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_SOURCE_POLICY_PROPOSED_20261125.json",
         "proposal_sha256": "279f1cd166ad0c11585c9776dc4a45b5d949946a513717c39f1dcc9a816e8561",
@@ -351,7 +351,15 @@
           "disposition": "ACCEPT_SCALAR_STRADDLE_POLICY_PROPOSAL_FOR_EXACT_OWNER_ADOPTION",
           "accepted_proposal_sha256": "279f1cd166ad0c11585c9776dc4a45b5d949946a513717c39f1dcc9a816e8561"
         },
-        "next_owner_decision": "Adopt exact proposal SHA256 279f1cd166ad0c11585c9776dc4a45b5d949946a513717c39f1dcc9a816e8561 for bounded synthetic L10c/L17/D109/L18/D110 and necessary new scalar D091 source-support preparation only; no source admission, implementation approval, case budget, runtime release, live provider, wider strike-grid, main, PostgreSQL or D145 authority."
+        "next_owner_decision": "No repeated policy approval. Prepare independently reviewed finite pre-edit support and consumer contract; additional physical case budget and separate strict Tester designation remain genuinely reserved.",
+        "owner_adoption": {
+          "path": "handoff/m02_completion_28_execution/L10c/OWNER_SCALAR_STRADDLE_SOURCE_POLICY_ADOPTION_20261125.md",
+          "sha256": "fc8012c38199591ca845012370c18a03893a354b9633840f140d512671a41aaa",
+          "adopted_policy_commit": "79a88bfff548c62c95bf530cc59a7a946a723b5e",
+          "adopted_policy_sha256": "279f1cd166ad0c11585c9776dc4a45b5d949946a513717c39f1dcc9a816e8561",
+          "independent_review_commit": "2dffe48e3ac6347039655fa5fd0794eaa673775b",
+          "scope": "bounded synthetic L10c/L17/L18 and necessary new scalar D091 support preparation only"
+        }
       }
     },
     {
