@@ -323,7 +323,7 @@
         "L00"
       ],
       "obligation": "Bind actual same-expiry/strike-convention CALL+PUT D087, D091 ATM mapping, knowledge cutoffs, native quote units and positive R118 spot. Existing L14 D087 does not automatically supply arbitrary multi-contract/time coverage. D109 is currency per underlying share; D110=100*D109/spot, with no additional contract multiplier on a per-share premium.",
-      "status": "ACCEPT_PREEDIT_AND_FINITE_PROPOSAL_FOR_EXACT_OWNER_ADMISSION",
+      "status": "OWNER_FINITE_ADMITTED_EXECUTION_HELD_BINDING_REVIEW_PENDING",
       "checkpoint_required": true,
       "proposed_testing_windows": [],
       "acceptance": "Independent documentary source clearance; product acceptance requires admitted cases and accepted parent proofs",
@@ -351,7 +351,7 @@
           "disposition": "ACCEPT_SCALAR_STRADDLE_POLICY_PROPOSAL_FOR_EXACT_OWNER_ADOPTION",
           "accepted_proposal_sha256": "279f1cd166ad0c11585c9776dc4a45b5d949946a513717c39f1dcc9a816e8561"
         },
-        "next_owner_decision": "One proposed bounded conditional grant below; not yet approved. No renewed F02 approval. Previous 20 November standing grant covers only original D091/L01b 15+18, not this new allocation. No new cases are admitted or released at this checkpoint.",
+        "next_owner_decision": "None routine for this exact scope. Owner conditional grant approved; first unmet invariant independently verified exact implementation-authority binding and admission reconciliation. No source/claim or runtime release, no Tester appointment yet.",
         "owner_adoption": {
           "path": "handoff/m02_completion_28_execution/L10c/OWNER_SCALAR_STRADDLE_SOURCE_POLICY_ADOPTION_20261125.md",
           "sha256": "fc8012c38199591ca845012370c18a03893a354b9633840f140d512671a41aaa",
@@ -483,6 +483,29 @@
           "proposed_conditional_execution_and_tester": "Designate the first newly commissioned genuinely distinct ChatGPT conversation, recorded by actual identity in Git, as sole strict product Tester for these exact 34 cases only, not the continuing Worker or documentary reviewer. Permit case-specific execution release only after every applicable accepted source/meaning/profile/fixture/public ingress, exact implementation and claim/generation/pointer, parent proof/dependency window, clean independently restorable candidate/refs/assets, selected interpreter/library/dependency/runtime/runner and exact node predicate is independently verified. Staged SUPPORT 16 then D109 8 then D110 10, accepted parent before child. Retain exact raw outcomes, reached refusal, durable readback and independent semantic adjudication. No Worker product runs. Documentary clearance alone is not a release.",
           "proposed_continuation": "Continue already approved scoped work, bounded independently reviewed repairs, exact checkpoints, same-claim successor generation only on material repair within identical meaning and case scope. Failed rerun only after material repair; successful rerun only after precise invalidation. No further routine owner permission under this conditional grant.",
           "exclusions": "No added or substituted case, increased ceiling, broad regression, schedule change beyond existing adopted dependency windows, new source/domain policy, wider architecture, live/broker/provider, PostgreSQL, main/PR27 promotion, destructive Git, checkpoint strategy change or D145 reactivation. Preserve all historical proof and original 33 accepted cases. No unconditional product execution or acceptance."
+        },
+        "owner_conditional_execution_authority": {
+          "path": "handoff/m02_completion_28_execution/L10c/OWNER_SCALAR_STRADDLE_CONDITIONAL_EXECUTION_GRANT_20261125.json",
+          "sha256": "a7fb45cc876e1450f59678c6599113d86b7b59db9a855e0481edd64f717dc375",
+          "git_blob": "83b33b38ea375a951f3d3301992754de9270185d",
+          "exact_reviewed_commit": "bcbbe735ece409585a9ba034edbdff48fafb2958",
+          "decision_proposal_commit": "3a71d5e4bbac96f22145f413e6db8492742ef6f3",
+          "independent_verdict_commit": "58a21fd7e5f8aa800eac28340d62d483211086cd",
+          "direct_reply": "Yes, I do.",
+          "admitted_nonfungible_counts": {
+            "SUPPORT": 16,
+            "D109": 8,
+            "D110": 10
+          },
+          "execution_release": false,
+          "tester_designated": false
+        },
+        "implementation_binding_candidate": {
+          "path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_IMPLEMENTATION_AUTHORITY_BINDING_CANDIDATE.yaml",
+          "sha256": "5a9397b702faaf05abf667d4d289677b88bb580ca1d5f23fa227e2282c2eb9b9",
+          "intended_active_path": "implementation/authority/SCALAR_STRADDLE_IMPLEMENTATION_AUTHORITY_BINDING.yaml",
+          "status": "INACTIVE_OWNER_APPROVED_SCOPE_INDEPENDENT_VERIFICATION_REQUIRED",
+          "review_branch": "review/pm-l10c-scalar-authority-20261125"
         }
       }
     },
@@ -609,12 +632,20 @@
         "L10c"
       ],
       "obligation": "Select compatible actual CALL/PUT D087 using actual D091 and accepted ATM/expiry/strike selection. Return sum of midpoint premiums in currency per underlying share, retaining both source/selection identities. Refuse unmatched side/expiry/units or absent eligible bucket.",
-      "status": "PROPOSED_NOT_ATTEMPTED",
+      "status": "OWNER_FINITE_ADMITTED_EXECUTION_HELD_PARENT_AND_BINDING_PENDING",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G2_AFTER_L18"
       ],
-      "acceptance": "Independent documentary source clearance; product acceptance requires admitted cases and accepted parent proofs"
+      "acceptance": "Independent documentary source clearance; product acceptance requires admitted cases and accepted parent proofs",
+      "acceptance_evidence": {
+        "owner_authority_path": "handoff/m02_completion_28_execution/L10c/OWNER_SCALAR_STRADDLE_CONDITIONAL_EXECUTION_GRANT_20261125.json",
+        "owner_authority_sha256": "a7fb45cc876e1450f59678c6599113d86b7b59db9a855e0481edd64f717dc375",
+        "independent_R1_verdict_commit": "58a21fd7e5f8aa800eac28340d62d483211086cd",
+        "admitted_case_count": 8,
+        "execution_release": false,
+        "first_dependency_hold": "L10c scalar support and exact implementation binding"
+      }
     },
     {
       "leaf": "L18",
@@ -628,12 +659,20 @@
         "L10c"
       ],
       "obligation": "Compute 100*D109/positive aligned R118 spot in compatible currency-per-share units. Retain straddle and spot identity. Do not multiply per-share premium by an inferred 100-share contract multiplier. Refuse nonpositive spot, missing or incompatible units.",
-      "status": "PROPOSED_NOT_ATTEMPTED",
+      "status": "OWNER_FINITE_ADMITTED_EXECUTION_HELD_PARENT_AND_BINDING_PENDING",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G2_AFTER_L18"
       ],
-      "acceptance": "Independent documentary source clearance; product acceptance requires admitted cases and accepted parent proofs"
+      "acceptance": "Independent documentary source clearance; product acceptance requires admitted cases and accepted parent proofs",
+      "acceptance_evidence": {
+        "owner_authority_path": "handoff/m02_completion_28_execution/L10c/OWNER_SCALAR_STRADDLE_CONDITIONAL_EXECUTION_GRANT_20261125.json",
+        "owner_authority_sha256": "a7fb45cc876e1450f59678c6599113d86b7b59db9a855e0481edd64f717dc375",
+        "independent_R1_verdict_commit": "58a21fd7e5f8aa800eac28340d62d483211086cd",
+        "admitted_case_count": 10,
+        "execution_release": false,
+        "first_dependency_hold": "L17 D109 accepted parent and exact implementation binding"
+      }
     },
     {
       "leaf": "L19",
