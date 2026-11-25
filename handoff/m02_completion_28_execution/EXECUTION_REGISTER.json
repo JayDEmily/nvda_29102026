@@ -323,7 +323,7 @@
         "L00"
       ],
       "obligation": "Bind actual same-expiry/strike-convention CALL+PUT D087, D091 ATM mapping, knowledge cutoffs, native quote units and positive R118 spot. Existing L14 D087 does not automatically supply arbitrary multi-contract/time coverage. D109 is currency per underlying share; D110=100*D109/spot, with no additional contract multiplier on a per-share premium.",
-      "status": "OWNER_ADMITTED_EXACT_IMPLEMENTATION_BINDING_INSTALLED_SUPPORT_AUTHORING_PENDING",
+      "status": "SUPPORT_EXACT16_AUTHORED_UNEXECUTED_INDEPENDENT_REVIEW_HELD",
       "checkpoint_required": true,
       "proposed_testing_windows": [],
       "acceptance": "Independent documentary source clearance; product acceptance requires admitted cases and accepted parent proofs",
@@ -351,7 +351,7 @@
           "disposition": "ACCEPT_SCALAR_STRADDLE_POLICY_PROPOSAL_FOR_EXACT_OWNER_ADOPTION",
           "accepted_proposal_sha256": "279f1cd166ad0c11585c9776dc4a45b5d949946a513717c39f1dcc9a816e8561"
         },
-        "next_owner_decision": "None within exact grant. Support test authoring and independent review next; implementation and claim/runtime/receiver/Tester release separately gated.",
+        "next_owner_decision": "None routine. Independently clear exact support authoring before implementation; hold actual claim registration and all product execution until required candidate/receiver/runtime/Tester predicates.",
         "owner_adoption": {
           "path": "handoff/m02_completion_28_execution/L10c/OWNER_SCALAR_STRADDLE_SOURCE_POLICY_ADOPTION_20261125.md",
           "sha256": "fc8012c38199591ca845012370c18a03893a354b9633840f140d512671a41aaa",
@@ -522,6 +522,24 @@
           "receipt_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_IMPLEMENTATION_BINDING_INSTALLATION_RECEIPT_20261125.md",
           "receipt_sha256": "0f103605cabb887d80dd605f6b1d74f569b1d2b773c8c27ee757ea109afc20bf",
           "status": "INSTALLED_EXACT_INDEPENDENTLY_CLEARED_BYTES"
+        },
+        "support_authoring": {
+          "path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_SUPPORT_TEST_SOURCE.py",
+          "sha256": "4f6c43b40e37f8222a69cdf6048a266619b5c5bddbf4bd9d404895f447f4c2eb",
+          "intended_physical_path": "tests/product/m02_scalar_straddle_support/test_source.py",
+          "contract_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_SUPPORT_PROOF_CONTRACT.json",
+          "contract_sha256": "71a9da7dad37ae816020265154deafe7dd0006e1d92f62d6550ff561713b2194",
+          "inactive_descriptor_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_SUPPORT_CLAIM_CANDIDATE.json",
+          "inactive_descriptor_sha256": "b48189462909c02d31f0e2cd63fbe2533b683fe269ae644d2dddef078ea1a534",
+          "intended_descriptor_path": "config/product_proof/m02_scalar_straddle_support/claim.json",
+          "case_count": 16,
+          "admitted": true,
+          "released": false,
+          "runs": 0,
+          "static_checks": "Python 3.13 AST exact case/node/order/hash/stage; Ruff 0.15.11 exit 0 at intended path; contract schema; no product imports or collection",
+          "commission_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_SUPPORT_AUTHORING_AND_REVIEW_20261125.md",
+          "commission_sha256": "ffa439c6b0216a4fa3357aed3e5e5953cd6142f5c83dbd4e4855823d3f90ef08",
+          "review_branch": "review/pm-l10c-scalar-support-authoring-20261125"
         }
       }
     },
