@@ -857,7 +857,7 @@
         "L10c"
       ],
       "obligation": "Select compatible actual CALL/PUT D087 using actual D091 and accepted ATM/expiry/strike selection. Return sum of midpoint premiums in currency per underlying share, retaining both source/selection identities. Refuse unmatched side/expiry/units or absent eligible bucket.",
-      "status": "D109_EXACT8_CONDITIONAL_EXECUTION_RELEASED_STRICT_TESTER_ONLY",
+      "status": "TESTED_ACCEPTED_D109_L17_CONTROLLED_SCOPE_ONLY",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G2_AFTER_L18"
@@ -869,7 +869,7 @@
         "independent_R1_verdict_commit": "58a21fd7e5f8aa800eac28340d62d483211086cd",
         "admitted_case_count": 8,
         "execution_release": true,
-        "first_dependency_hold": "Same sole strict Tester actual guarded exact eight-case execution and independent semantic product report. D110 held until accepted D109; no old proof rerun.",
+        "first_dependency_hold": "Exact controlled D109 acceptance recorded; no broader live or G2 closure.",
         "parent_proof_refs": {
           "L04": "7322441997d5ab75fa412676e3ae42aba03dcb79",
           "L10c": "c07ab2881be128a577eb07460722500a58869e0c",
@@ -1042,8 +1042,23 @@
           "held_ledger_parent": "99ebeff55e78e8db1bd34bcfe55b9a54396093f9",
           "release_ledger_sha256": "29fb872a54c1bddd2416f82d086713ed8cc5165293776902d4cf9a628e51a3b1",
           "physical_case_count": 8,
-          "product_run_count": 0,
+          "product_run_count": 1,
           "tester_conversation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382"
+        },
+        "d109_acceptance": {
+          "status": "TESTED_ACCEPTED_D109_L17_EXACT8_ONLY",
+          "source_commit": "6d5a1260846649f2566513609d8c0c5a54f05d94",
+          "report_commit": "02e62a1a31bafe6f465eb3e1a513ffb41dd09ff8",
+          "report_tree": "c9264db9c5b30f28f38b924904639a0aaef0c120",
+          "report_sha256": "b05b7722a721d71e517d32528a873ab5d529c886d121bec9f8f1af9aa1ef9f66",
+          "report_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_D109_PRODUCT_PROOF_REPORT_20261126.md",
+          "receipt_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_D109_ACCEPTANCE_RECONCILIATION_20261126.md",
+          "observer_sha256": "b7fe72d1503067952cc28d2d29c4da5c92f9519c91ba64f4107840651e205368",
+          "gate_sha256": "8814e2b2f3d1bffec796b15645d7ce76a96464d7ae666f3ea2e13bf7280c3102",
+          "case_count": 8,
+          "phase_count": 24,
+          "actual_d109_id": "mmtd109scalar1:78ceaa4d2084967b17facca8638204816762c557a5c49a5564cd5b796482523b",
+          "actual_result": "5/1 USD_per_share"
         }
       }
     },
@@ -1059,7 +1074,7 @@
         "L10c"
       ],
       "obligation": "Compute 100*D109/positive aligned R118 spot in compatible currency-per-share units. Retain straddle and spot identity. Do not multiply per-share premium by an inferred 100-share contract multiplier. Refuse nonpositive spot, missing or incompatible units.",
-      "status": "OWNER_FINITE_ADMITTED_EXECUTION_HELD_PARENT_AND_BINDING_PENDING",
+      "status": "D109_PARENT_ACCEPTED_D110_AUTHORING_ELIGIBLE_EXECUTION_HELD",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G2_AFTER_L18"
@@ -1071,7 +1086,14 @@
         "independent_R1_verdict_commit": "58a21fd7e5f8aa800eac28340d62d483211086cd",
         "admitted_case_count": 10,
         "execution_release": false,
-        "first_dependency_hold": "L17 D109 accepted parent and exact implementation binding"
+        "first_dependency_hold": "Exact D110 test authoring and independent review, then implementation, registration, candidate-specific Tester qualification and exact conditional release.",
+        "parent_proof_refs": {
+          "L17": "02e62a1a31bafe6f465eb3e1a513ffb41dd09ff8",
+          "L17_source_candidate": "6d5a1260846649f2566513609d8c0c5a54f05d94",
+          "L17_observer_sha256": "b7fe72d1503067952cc28d2d29c4da5c92f9519c91ba64f4107840651e205368",
+          "L17_acceptance_receipt": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_D109_ACCEPTANCE_RECONCILIATION_20261126.md",
+          "L10c": "c07ab2881be128a577eb07460722500a58869e0c"
+        }
       }
     },
     {
