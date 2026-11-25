@@ -1074,7 +1074,7 @@
         "L10c"
       ],
       "obligation": "Compute 100*D109/positive aligned R118 spot in compatible currency-per-share units. Retain straddle and spot identity. Do not multiply per-share premium by an inferred 100-share contract multiplier. Refuse nonpositive spot, missing or incompatible units.",
-      "status": "D110_AUTHORED_INERT_INDEPENDENT_AUTHORING_REVIEW_PENDING",
+      "status": "D110_IMPLEMENTED_UNTESTED_INDEPENDENT_IMPLEMENTATION_REVIEW_PENDING",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G2_AFTER_L18"
@@ -1086,7 +1086,7 @@
         "independent_R1_verdict_commit": "58a21fd7e5f8aa800eac28340d62d483211086cd",
         "admitted_case_count": 10,
         "execution_release": false,
-        "first_dependency_hold": "Distinct independent exact D110 documentary authoring verdict; no implementation/registration/execution before applicable approvals.",
+        "first_dependency_hold": "Exact independent D110 implementation verdict, then generation-specific review/installation, strict Tester candidate-specific intake and separate conditional exact ten-case release.",
         "parent_proof_refs": {
           "L17": "02e62a1a31bafe6f465eb3e1a513ffb41dd09ff8",
           "L17_source_candidate": "6d5a1260846649f2566513609d8c0c5a54f05d94",
@@ -1108,6 +1108,27 @@
           "exact_cases": 10,
           "status": "INERT_INDEPENDENT_AUTHORING_REVIEW_PENDING",
           "static_validation": "Selected Python3.13 AST exact ten ordered nodes and direct producer/reader calls; existing contract schema valid; Ruff prospective path exit0 after two RUF005 style fixes. No product imports or execution."
+        },
+        "d110_authoring_verdict": {
+          "status": "ACCEPT_EXACT_D110_AUTHORING_FOR_IMPLEMENTATION",
+          "report_commit": "c53619c74f6902954f189cef34d1ed304adc68b3",
+          "report_tree": "f1da2ebb79066ac308af89af1b745629e81734b0",
+          "report_sha256": "c8f3cedab98b3e8b284c82ff9bbd5a5533c5987eea0fd76168e1e3c2f58ef797",
+          "report_path": "handoff/m02_completion_28_execution/L10c/INDEPENDENT_SCALAR_STRADDLE_D110_AUTHORING_VERDICT_20261126.md"
+        },
+        "d110_implementation": {
+          "status": "IMPLEMENTED_UNTESTED_INDEPENDENT_IMPLEMENTATION_REVIEW_PENDING",
+          "candidate_commit": "ac6c138173b7e1e1dbe0131d32da1110482df0a6",
+          "candidate_tree": "7b8a7b0375525aa6681e057a56745c763c77b701",
+          "source_sha256": {
+            "src/nvda_desk/market_measurement_truth/api.py": "ca0f1ab967163d146d6d278acaba3633f2ff8476138af019d3060d6c8841a1d4",
+            "src/nvda_desk/market_measurement_truth/_scalar_straddle_codec.py": "4d9f6f49cb8824fcf61daf4f1098f7e0a5dda9eb7c748e54e51f93312ff4c819",
+            "src/nvda_desk/market_measurement_truth/_scalar_straddle_d110.py": "7e4503213327c185620d9d025c9e2559aa597c14898df78b1664683a6e21106f"
+          },
+          "commission_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_D110_IMPLEMENTATION_AND_REVIEW_20261126.md",
+          "commission_sha256": "cd93bc7923464ea8a08912c4fe4514d9d22044ef4db656ef8dc3de2df30e9fe0",
+          "review_branch": "review/pm-l18-d110-scalar-implementation-20261126",
+          "static_validation": "Selected Python3.13 AST exact API/codec/test keys, shared live/durable predicates and ordering, Ruff codec/private exit0; API exact three inherited diagnostics unchanged. No product import or execution."
         }
       }
     },
