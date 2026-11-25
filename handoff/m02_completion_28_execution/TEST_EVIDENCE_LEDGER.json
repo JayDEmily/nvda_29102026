@@ -2448,7 +2448,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_scalar_straddle_support/test_source.py",
             "proposed_test_node": "tests/product/m02_scalar_straddle_support/test_source.py::test_l10c_scalar_pair",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_HELD",
+            "status": "OWNER_FINITE_ADMITTED_REGISTERED_EXECUTION_HELD",
             "expected_stage": "PAIR_DURABLE",
             "fixture_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_FINITE_SPECIMENS_PROPOSED_20261125.json",
             "fixture_sha256": "5e341ef9289f185d4ae9da53eaca9852735af632b17400a89a10508a114dd760",
@@ -2456,7 +2456,7 @@
             "specimen_sha256": "9486f9a4cd45756c167837b67a0626b8e232403d55fa07ac42cae3671b969358",
             "core_sha256": "477028e777fbcb43c46c3752c14176a1b524f90084635106e45f56d0540929ce",
             "oracle": "Actual seven M00 originals/projections; actual C1/C2 D087 3/1 and 2/1, actual distinct signed D091 +.50/-.50 ABS_50_75; ordinary independent SQLite read-only reopen, original metadata and Decimal tuple preserved; repeat returns first occurrence/timestamp. R118 readback is source evidence only.",
-            "claim_generation_binding": "UNBOUND_FUTURE_PRODUCT_CANDIDATE",
+            "claim_generation_binding": "candidate:dce2b6dd4e4d69cb84e4d7114dd970ffc00d547e|M02_claim:neutral_market_measurement_truth_l10c_scalar_pair_support|generation:0001@sha256:2c30756b5947241db0965860b29854e52fa9c54b20166dd5a085046129c1997d|pointer_sha256:7814e4d987f6bf62c7613b7b35ec1393dca396f8bbc56a9f3bb643bc8a0489ba",
             "execution_authorised": false
           },
           {
@@ -2465,7 +2465,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_scalar_straddle_support/test_source.py",
             "proposed_test_node": "tests/product/m02_scalar_straddle_support/test_source.py::test_l10c_scalar_call_non_atm",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_HELD",
+            "status": "OWNER_FINITE_ADMITTED_REGISTERED_EXECUTION_HELD",
             "expected_stage": "D091_DURABLE",
             "fixture_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_FINITE_SPECIMENS_PROPOSED_20261125.json",
             "fixture_sha256": "5e341ef9289f185d4ae9da53eaca9852735af632b17400a89a10508a114dd760",
@@ -2473,7 +2473,7 @@
             "specimen_sha256": "26077105077381800fc66994ace01557120e68c4e6039e1d2cc69b00cd237115",
             "core_sha256": "34e648cd4b3b1ea8c210c5578060badcb49fc0e373fedc52f460dcc56e28ba32",
             "oracle": "Actual C1 +.60 and C2 -.50 both ABS_50_75, valid and read back with exact signed values and alternate core binding.",
-            "claim_generation_binding": "UNBOUND_FUTURE_PRODUCT_CANDIDATE",
+            "claim_generation_binding": "candidate:dce2b6dd4e4d69cb84e4d7114dd970ffc00d547e|M02_claim:neutral_market_measurement_truth_l10c_scalar_pair_support|generation:0001@sha256:2c30756b5947241db0965860b29854e52fa9c54b20166dd5a085046129c1997d|pointer_sha256:7814e4d987f6bf62c7613b7b35ec1393dca396f8bbc56a9f3bb643bc8a0489ba",
             "execution_authorised": false
           },
           {
@@ -2482,7 +2482,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_scalar_straddle_support/test_source.py",
             "proposed_test_node": "tests/product/m02_scalar_straddle_support/test_source.py::test_l10c_scalar_put_non_atm",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_HELD",
+            "status": "OWNER_FINITE_ADMITTED_REGISTERED_EXECUTION_HELD",
             "expected_stage": "D091_DURABLE",
             "fixture_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_FINITE_SPECIMENS_PROPOSED_20261125.json",
             "fixture_sha256": "5e341ef9289f185d4ae9da53eaca9852735af632b17400a89a10508a114dd760",
@@ -2490,7 +2490,7 @@
             "specimen_sha256": "494f1ac740e700aa3dcd998a76b1a8cdfb4c7d77dc6cf002c2990321b3866d3f",
             "core_sha256": "1e0e91f847f8cebf69c084ad7aa9b1e583d1e8a3fda51c2bb23e26e39ee2db3c",
             "oracle": "Actual C1 +.50 and C2 -.60 both ABS_50_75; valid and read back, not pre-rejected as ATM.",
-            "claim_generation_binding": "UNBOUND_FUTURE_PRODUCT_CANDIDATE",
+            "claim_generation_binding": "candidate:dce2b6dd4e4d69cb84e4d7114dd970ffc00d547e|M02_claim:neutral_market_measurement_truth_l10c_scalar_pair_support|generation:0001@sha256:2c30756b5947241db0965860b29854e52fa9c54b20166dd5a085046129c1997d|pointer_sha256:7814e4d987f6bf62c7613b7b35ec1393dca396f8bbc56a9f3bb643bc8a0489ba",
             "execution_authorised": false
           },
           {
@@ -2499,7 +2499,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_scalar_straddle_support/test_source.py",
             "proposed_test_node": "tests/product/m02_scalar_straddle_support/test_source.py::test_l10c_scalar_zero_pair",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_HELD",
+            "status": "OWNER_FINITE_ADMITTED_REGISTERED_EXECUTION_HELD",
             "expected_stage": "D091_DURABLE",
             "fixture_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_FINITE_SPECIMENS_PROPOSED_20261125.json",
             "fixture_sha256": "5e341ef9289f185d4ae9da53eaca9852735af632b17400a89a10508a114dd760",
@@ -2507,7 +2507,7 @@
             "specimen_sha256": "4149473bc2079961425993f2304e26bfea3697b334e5bb79c3783516adfc98f0",
             "core_sha256": "3a75798c092ac312280a4b793e386a5f16e7d454dcbb9009e72693ce4ae59ba8",
             "oracle": "Actual C1 +0.00 and C2 -0.00 both ABS_00_10; signed Decimal tuples preserved.",
-            "claim_generation_binding": "UNBOUND_FUTURE_PRODUCT_CANDIDATE",
+            "claim_generation_binding": "candidate:dce2b6dd4e4d69cb84e4d7114dd970ffc00d547e|M02_claim:neutral_market_measurement_truth_l10c_scalar_pair_support|generation:0001@sha256:2c30756b5947241db0965860b29854e52fa9c54b20166dd5a085046129c1997d|pointer_sha256:7814e4d987f6bf62c7613b7b35ec1393dca396f8bbc56a9f3bb643bc8a0489ba",
             "execution_authorised": false
           },
           {
@@ -2516,7 +2516,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_scalar_straddle_support/test_source.py",
             "proposed_test_node": "tests/product/m02_scalar_straddle_support/test_source.py::test_l10c_scalar_call_sign",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_HELD",
+            "status": "OWNER_FINITE_ADMITTED_REGISTERED_EXECUTION_HELD",
             "expected_stage": "CORE_DOMAIN_RIGHT_SIGN",
             "fixture_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_FINITE_SPECIMENS_PROPOSED_20261125.json",
             "fixture_sha256": "5e341ef9289f185d4ae9da53eaca9852735af632b17400a89a10508a114dd760",
@@ -2524,7 +2524,7 @@
             "specimen_sha256": "4f862e0fdc1ed0631d2bb4bf63cbddd9bf8d3a49901b18be5e348754eaed5090",
             "core_sha256": "75976e66803d975f2b95d22e98a18ccfe71c7fece984b0fd60655b38c21efa70",
             "oracle": "Finite in-range -.50 CALL original present; sign refusal, no sealed capability.",
-            "claim_generation_binding": "UNBOUND_FUTURE_PRODUCT_CANDIDATE",
+            "claim_generation_binding": "candidate:dce2b6dd4e4d69cb84e4d7114dd970ffc00d547e|M02_claim:neutral_market_measurement_truth_l10c_scalar_pair_support|generation:0001@sha256:2c30756b5947241db0965860b29854e52fa9c54b20166dd5a085046129c1997d|pointer_sha256:7814e4d987f6bf62c7613b7b35ec1393dca396f8bbc56a9f3bb643bc8a0489ba",
             "execution_authorised": false
           },
           {
@@ -2533,7 +2533,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_scalar_straddle_support/test_source.py",
             "proposed_test_node": "tests/product/m02_scalar_straddle_support/test_source.py::test_l10c_scalar_put_sign",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_HELD",
+            "status": "OWNER_FINITE_ADMITTED_REGISTERED_EXECUTION_HELD",
             "expected_stage": "CORE_DOMAIN_RIGHT_SIGN",
             "fixture_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_FINITE_SPECIMENS_PROPOSED_20261125.json",
             "fixture_sha256": "5e341ef9289f185d4ae9da53eaca9852735af632b17400a89a10508a114dd760",
@@ -2541,7 +2541,7 @@
             "specimen_sha256": "c688b0a9a3345dc75086785e47fdb0f42e8473dc11b1aa5dcadb9db18518766e",
             "core_sha256": "2f63a2688364c449d14165b0ae4987c89a798e7710da30cbf3ad9855b92feeb0",
             "oracle": "Finite in-range +.50 PUT original present; sign refusal, no seal.",
-            "claim_generation_binding": "UNBOUND_FUTURE_PRODUCT_CANDIDATE",
+            "claim_generation_binding": "candidate:dce2b6dd4e4d69cb84e4d7114dd970ffc00d547e|M02_claim:neutral_market_measurement_truth_l10c_scalar_pair_support|generation:0001@sha256:2c30756b5947241db0965860b29854e52fa9c54b20166dd5a085046129c1997d|pointer_sha256:7814e4d987f6bf62c7613b7b35ec1393dca396f8bbc56a9f3bb643bc8a0489ba",
             "execution_authorised": false
           },
           {
@@ -2550,7 +2550,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_scalar_straddle_support/test_source.py",
             "proposed_test_node": "tests/product/m02_scalar_straddle_support/test_source.py::test_l10c_scalar_delta_range",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_HELD",
+            "status": "OWNER_FINITE_ADMITTED_REGISTERED_EXECUTION_HELD",
             "expected_stage": "CORE_DOMAIN_RANGE",
             "fixture_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_FINITE_SPECIMENS_PROPOSED_20261125.json",
             "fixture_sha256": "5e341ef9289f185d4ae9da53eaca9852735af632b17400a89a10508a114dd760",
@@ -2558,7 +2558,7 @@
             "specimen_sha256": "fa94d017169ff3a13e2dd29ebd5bea2011db447f4ec1e97962c917c21aa08a4a",
             "core_sha256": "3910479a1ce667edf450349ee3ca555ee6f9c7e5797cfa249e0d7782b271af21",
             "oracle": "Actual finite -1.01 PUT, correct sign but abs>1; range refusal, no seal.",
-            "claim_generation_binding": "UNBOUND_FUTURE_PRODUCT_CANDIDATE",
+            "claim_generation_binding": "candidate:dce2b6dd4e4d69cb84e4d7114dd970ffc00d547e|M02_claim:neutral_market_measurement_truth_l10c_scalar_pair_support|generation:0001@sha256:2c30756b5947241db0965860b29854e52fa9c54b20166dd5a085046129c1997d|pointer_sha256:7814e4d987f6bf62c7613b7b35ec1393dca396f8bbc56a9f3bb643bc8a0489ba",
             "execution_authorised": false
           },
           {
@@ -2567,7 +2567,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_scalar_straddle_support/test_source.py",
             "proposed_test_node": "tests/product/m02_scalar_straddle_support/test_source.py::test_l10c_scalar_delta_nonfinite",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_HELD",
+            "status": "OWNER_FINITE_ADMITTED_REGISTERED_EXECUTION_HELD",
             "expected_stage": "CORE_DOMAIN_FINITE",
             "fixture_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_FINITE_SPECIMENS_PROPOSED_20261125.json",
             "fixture_sha256": "5e341ef9289f185d4ae9da53eaca9852735af632b17400a89a10508a114dd760",
@@ -2575,7 +2575,7 @@
             "specimen_sha256": "f0dd31f5a4c3ba23bbd6b528557fbe82f9dfe183d2d28bb0ad4ac4446d7ecebd",
             "core_sha256": "412b2454de642e879efcf6fb1158e0ee04508c3a56c8f50336eb68c0db7015e7",
             "oracle": "Genuine raw Decimal NaN preserved by M00 carrier and exact original getter; finite guard refuses before arithmetic.",
-            "claim_generation_binding": "UNBOUND_FUTURE_PRODUCT_CANDIDATE",
+            "claim_generation_binding": "candidate:dce2b6dd4e4d69cb84e4d7114dd970ffc00d547e|M02_claim:neutral_market_measurement_truth_l10c_scalar_pair_support|generation:0001@sha256:2c30756b5947241db0965860b29854e52fa9c54b20166dd5a085046129c1997d|pointer_sha256:7814e4d987f6bf62c7613b7b35ec1393dca396f8bbc56a9f3bb643bc8a0489ba",
             "execution_authorised": false
           },
           {
@@ -2584,7 +2584,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_scalar_straddle_support/test_source.py",
             "proposed_test_node": "tests/product/m02_scalar_straddle_support/test_source.py::test_l10c_scalar_delta_type",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_HELD",
+            "status": "OWNER_FINITE_ADMITTED_REGISTERED_EXECUTION_HELD",
             "expected_stage": "CORE_DOMAIN_TYPE",
             "fixture_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_FINITE_SPECIMENS_PROPOSED_20261125.json",
             "fixture_sha256": "5e341ef9289f185d4ae9da53eaca9852735af632b17400a89a10508a114dd760",
@@ -2592,7 +2592,7 @@
             "specimen_sha256": "3923fe5c1802fb8966b9b023ad45e14359790bff336c12edd9d539f005c58048",
             "core_sha256": "3db6cc44628bc81dc9c1c6a0beac1c271d2c75d33c13d098763b868a6f7e3626",
             "oracle": "Actual string 0.50, not Decimal; exact type refusal, no coercion.",
-            "claim_generation_binding": "UNBOUND_FUTURE_PRODUCT_CANDIDATE",
+            "claim_generation_binding": "candidate:dce2b6dd4e4d69cb84e4d7114dd970ffc00d547e|M02_claim:neutral_market_measurement_truth_l10c_scalar_pair_support|generation:0001@sha256:2c30756b5947241db0965860b29854e52fa9c54b20166dd5a085046129c1997d|pointer_sha256:7814e4d987f6bf62c7613b7b35ec1393dca396f8bbc56a9f3bb643bc8a0489ba",
             "execution_authorised": false
           },
           {
@@ -2601,7 +2601,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_scalar_straddle_support/test_source.py",
             "proposed_test_node": "tests/product/m02_scalar_straddle_support/test_source.py::test_l10c_scalar_quote_units",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_HELD",
+            "status": "OWNER_FINITE_ADMITTED_REGISTERED_EXECUTION_HELD",
             "expected_stage": "CORE_ORIGINAL_METADATA",
             "fixture_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_FINITE_SPECIMENS_PROPOSED_20261125.json",
             "fixture_sha256": "5e341ef9289f185d4ae9da53eaca9852735af632b17400a89a10508a114dd760",
@@ -2609,7 +2609,7 @@
             "specimen_sha256": "7c50ccc44a7f9cc4407d892fa63490d7ec73a87d891db0f4dc189cc41a95cf39",
             "core_sha256": "cbd0585c9cccbf5e9083976a222aa5c5abc01ceda164031945421dac4a104620",
             "oracle": "Actual C1 R034 original native USD_per_contract; mapping declaration USD_per_share must not rescue it.",
-            "claim_generation_binding": "UNBOUND_FUTURE_PRODUCT_CANDIDATE",
+            "claim_generation_binding": "candidate:dce2b6dd4e4d69cb84e4d7114dd970ffc00d547e|M02_claim:neutral_market_measurement_truth_l10c_scalar_pair_support|generation:0001@sha256:2c30756b5947241db0965860b29854e52fa9c54b20166dd5a085046129c1997d|pointer_sha256:7814e4d987f6bf62c7613b7b35ec1393dca396f8bbc56a9f3bb643bc8a0489ba",
             "execution_authorised": false
           },
           {
@@ -2618,7 +2618,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_scalar_straddle_support/test_source.py",
             "proposed_test_node": "tests/product/m02_scalar_straddle_support/test_source.py::test_l10c_scalar_delta_units",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_HELD",
+            "status": "OWNER_FINITE_ADMITTED_REGISTERED_EXECUTION_HELD",
             "expected_stage": "CORE_ORIGINAL_METADATA",
             "fixture_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_FINITE_SPECIMENS_PROPOSED_20261125.json",
             "fixture_sha256": "5e341ef9289f185d4ae9da53eaca9852735af632b17400a89a10508a114dd760",
@@ -2626,7 +2626,7 @@
             "specimen_sha256": "fd460141fb51b04c29415b651da562eab6f51456397ab44192c56c8c6788e426",
             "core_sha256": "cf6c7cff980177c936ad9a1c6fa6b95c4d1b4ebe5154ab6fdaad786cd387aee7",
             "oracle": "Actual C1 R112 original percent; mapping delta_fraction cannot rescue it.",
-            "claim_generation_binding": "UNBOUND_FUTURE_PRODUCT_CANDIDATE",
+            "claim_generation_binding": "candidate:dce2b6dd4e4d69cb84e4d7114dd970ffc00d547e|M02_claim:neutral_market_measurement_truth_l10c_scalar_pair_support|generation:0001@sha256:2c30756b5947241db0965860b29854e52fa9c54b20166dd5a085046129c1997d|pointer_sha256:7814e4d987f6bf62c7613b7b35ec1393dca396f8bbc56a9f3bb643bc8a0489ba",
             "execution_authorised": false
           },
           {
@@ -2635,7 +2635,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_scalar_straddle_support/test_source.py",
             "proposed_test_node": "tests/product/m02_scalar_straddle_support/test_source.py::test_l10c_scalar_delta_event",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_HELD",
+            "status": "OWNER_FINITE_ADMITTED_REGISTERED_EXECUTION_HELD",
             "expected_stage": "CORE_ORIGINAL_CLOCK",
             "fixture_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_FINITE_SPECIMENS_PROPOSED_20261125.json",
             "fixture_sha256": "5e341ef9289f185d4ae9da53eaca9852735af632b17400a89a10508a114dd760",
@@ -2643,7 +2643,7 @@
             "specimen_sha256": "a16b3462191802db3146e9ae36c02dd1a0afe1a7d48980e773dce94bce2109d7",
             "core_sha256": "7b5b6360a50aa73277771b61e61bf66308f4d0d281354199ed624fc67d38d6eb",
             "oracle": "Actual R112 event T-1, receipt T; visible before cutoff but not exact required event T.",
-            "claim_generation_binding": "UNBOUND_FUTURE_PRODUCT_CANDIDATE",
+            "claim_generation_binding": "candidate:dce2b6dd4e4d69cb84e4d7114dd970ffc00d547e|M02_claim:neutral_market_measurement_truth_l10c_scalar_pair_support|generation:0001@sha256:2c30756b5947241db0965860b29854e52fa9c54b20166dd5a085046129c1997d|pointer_sha256:7814e4d987f6bf62c7613b7b35ec1393dca396f8bbc56a9f3bb643bc8a0489ba",
             "execution_authorised": false
           },
           {
@@ -2652,7 +2652,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_scalar_straddle_support/test_source.py",
             "proposed_test_node": "tests/product/m02_scalar_straddle_support/test_source.py::test_l10c_scalar_delta_role",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_HELD",
+            "status": "OWNER_FINITE_ADMITTED_REGISTERED_EXECUTION_HELD",
             "expected_stage": "CORE_ORIGINAL_IDENTITY",
             "fixture_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_FINITE_SPECIMENS_PROPOSED_20261125.json",
             "fixture_sha256": "5e341ef9289f185d4ae9da53eaca9852735af632b17400a89a10508a114dd760",
@@ -2660,7 +2660,7 @@
             "specimen_sha256": "fef7cbf7d6217f6d7cd95d2fc39fdf986366318b1ff0cd1f1afa6083ae29ea82",
             "core_sha256": "ee257b68f8d3a51d1b3b016973e7f90652f07aa29e472ea396e562b560499d12",
             "oracle": "Actual R112 model.delta present, original value.role model_iv instead of model_delta; refuse, same shared exact metadata predicate covers fixed identity dimensions.",
-            "claim_generation_binding": "UNBOUND_FUTURE_PRODUCT_CANDIDATE",
+            "claim_generation_binding": "candidate:dce2b6dd4e4d69cb84e4d7114dd970ffc00d547e|M02_claim:neutral_market_measurement_truth_l10c_scalar_pair_support|generation:0001@sha256:2c30756b5947241db0965860b29854e52fa9c54b20166dd5a085046129c1997d|pointer_sha256:7814e4d987f6bf62c7613b7b35ec1393dca396f8bbc56a9f3bb643bc8a0489ba",
             "execution_authorised": false
           },
           {
@@ -2669,7 +2669,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_scalar_straddle_support/test_source.py",
             "proposed_test_node": "tests/product/m02_scalar_straddle_support/test_source.py::test_l10c_scalar_missing_core",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_HELD",
+            "status": "OWNER_FINITE_ADMITTED_REGISTERED_EXECUTION_HELD",
             "expected_stage": "CORE_ROLE_CARDINALITY",
             "fixture_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_FINITE_SPECIMENS_PROPOSED_20261125.json",
             "fixture_sha256": "5e341ef9289f185d4ae9da53eaca9852735af632b17400a89a10508a114dd760",
@@ -2677,7 +2677,7 @@
             "specimen_sha256": "2ea27b1dd3d376641c5870127287ce37e8451863ae1e447e0dd64a303d128013",
             "core_sha256": "bffc10b4e3b4109691388056a0641e8955b65b20a42b2bd8fe72aa16c7edf0ac",
             "oracle": "All other actual manifested raw members, C2 R112 absent; no seal.",
-            "claim_generation_binding": "UNBOUND_FUTURE_PRODUCT_CANDIDATE",
+            "claim_generation_binding": "candidate:dce2b6dd4e4d69cb84e4d7114dd970ffc00d547e|M02_claim:neutral_market_measurement_truth_l10c_scalar_pair_support|generation:0001@sha256:2c30756b5947241db0965860b29854e52fa9c54b20166dd5a085046129c1997d|pointer_sha256:7814e4d987f6bf62c7613b7b35ec1393dca396f8bbc56a9f3bb643bc8a0489ba",
             "execution_authorised": false
           },
           {
@@ -2686,7 +2686,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_scalar_straddle_support/test_source.py",
             "proposed_test_node": "tests/product/m02_scalar_straddle_support/test_source.py::test_l10c_scalar_extra_core",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_HELD",
+            "status": "OWNER_FINITE_ADMITTED_REGISTERED_EXECUTION_HELD",
             "expected_stage": "CORE_ROLE_CARDINALITY",
             "fixture_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_FINITE_SPECIMENS_PROPOSED_20261125.json",
             "fixture_sha256": "5e341ef9289f185d4ae9da53eaca9852735af632b17400a89a10508a114dd760",
@@ -2694,7 +2694,7 @@
             "specimen_sha256": "99c09e303931507d1a19f7e30c041d7eeaa2213e06b3189c5ee33a82f7eb518a",
             "core_sha256": "b232ed9329a9f60948cd869394b4d47d51b4134964e84f12fefc3ed89af263ed",
             "oracle": "Two distinct actual C1 R112 originals; no latest ranking, no seal.",
-            "claim_generation_binding": "UNBOUND_FUTURE_PRODUCT_CANDIDATE",
+            "claim_generation_binding": "candidate:dce2b6dd4e4d69cb84e4d7114dd970ffc00d547e|M02_claim:neutral_market_measurement_truth_l10c_scalar_pair_support|generation:0001@sha256:2c30756b5947241db0965860b29854e52fa9c54b20166dd5a085046129c1997d|pointer_sha256:7814e4d987f6bf62c7613b7b35ec1393dca396f8bbc56a9f3bb643bc8a0489ba",
             "execution_authorised": false
           },
           {
@@ -2703,7 +2703,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_scalar_straddle_support/test_source.py",
             "proposed_test_node": "tests/product/m02_scalar_straddle_support/test_source.py::test_l10c_scalar_duplicate_id",
-            "status": "OWNER_FINITE_ADMITTED_EXECUTION_HELD",
+            "status": "OWNER_FINITE_ADMITTED_REGISTERED_EXECUTION_HELD",
             "expected_stage": "MANIFEST_ID_UNIQUENESS",
             "fixture_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_FINITE_SPECIMENS_PROPOSED_20261125.json",
             "fixture_sha256": "5e341ef9289f185d4ae9da53eaca9852735af632b17400a89a10508a114dd760",
@@ -2711,16 +2711,16 @@
             "specimen_sha256": "2235250a655d528ff56331d30a4e387e5f945bfdf5c9e80d9f40885a258f9264",
             "core_sha256": "d07dec004650810d5fc66194e6586289542aef512503fb8c61db2745375e5053",
             "oracle": "Repeated identical original ID refuses before any M00 insertion could collapse it.",
-            "claim_generation_binding": "UNBOUND_FUTURE_PRODUCT_CANDIDATE",
+            "claim_generation_binding": "candidate:dce2b6dd4e4d69cb84e4d7114dd970ffc00d547e|M02_claim:neutral_market_measurement_truth_l10c_scalar_pair_support|generation:0001@sha256:2c30756b5947241db0965860b29854e52fa9c54b20166dd5a085046129c1997d|pointer_sha256:7814e4d987f6bf62c7613b7b35ec1393dca396f8bbc56a9f3bb643bc8a0489ba",
             "execution_authorised": false
           }
         ],
-        "admission_status": "OWNER_APPROVED_EXACT_FINITE_CASES_EXECUTION_HELD",
+        "admission_status": "OWNER_APPROVED_EXACT_FINITE_CASES_REGISTERED_EXECUTION_HELD",
         "execution_release": false,
         "owner_decision_path": "handoff/m02_completion_28_execution/L10c/OWNER_SCALAR_STRADDLE_CONDITIONAL_EXECUTION_GRANT_20261125.json",
         "owner_decision_blob_sha1": "83b33b38ea375a951f3d3301992754de9270185d",
         "inventory_git_blob_sha1": "4f2afd147d97f00a540bc477f0005af4ce67c6a8",
-        "source_claim_generation_bindings": "UNRESOLVED_NOT_EXECUTION_READY",
+        "source_claim_generation_bindings": "candidate:dce2b6dd4e4d69cb84e4d7114dd970ffc00d547e|M02_claim:neutral_market_measurement_truth_l10c_scalar_pair_support|generation:0001@sha256:2c30756b5947241db0965860b29854e52fa9c54b20166dd5a085046129c1997d|pointer_sha256:7814e4d987f6bf62c7613b7b35ec1393dca396f8bbc56a9f3bb643bc8a0489ba|source_policy_sha256:279f1cd166ad0c11585c9776dc4a45b5d949946a513717c39f1dcc9a816e8561|specimen_manifest_sha256:5e341ef9289f185d4ae9da53eaca9852735af632b17400a89a10508a114dd760|source_test_sha256:4f6c43b40e37f8222a69cdf6048a266619b5c5bddbf4bd9d404895f447f4c2eb|REGISTRATION_VERIFIED_EXECUTION_HELD_PENDING_TESTER_AND_RELEASE",
         "reviewed_claim_id": "neutral_market_measurement_truth_l10c_scalar_pair_support",
         "reviewed_specimen_manifest_sha256": "5e341ef9289f185d4ae9da53eaca9852735af632b17400a89a10508a114dd760",
         "reviewed_brief_sha256": "04697219c5d5057ac3884aceb09d754dc391a66f6ed4a425459c938c684b1d8d"
