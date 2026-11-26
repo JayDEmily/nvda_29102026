@@ -1,0 +1,9 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_d110",
+  "brief_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_PREEDIT_DESIGN_AND_REVIEW_20261125.md",
+  "binding_path": "implementation/authority/SCALAR_STRADDLE_IMPLEMENTATION_AUTHORITY_BINDING.yaml",
+  "contract_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_D110_PROOF_CONTRACT.json",
+  "physical_root": "tests/product/m02_scalar_straddle_d110",
+  "admission_path": "config/product_proof/m02_scalar_straddle_d110/admission.json"
+}
