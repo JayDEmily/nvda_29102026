@@ -4,7 +4,7 @@
   "input_checkpoint": "bb3f390a194e03a46d362468f2db43ec2b870422",
   "policy": {
     "path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_SOURCE_POLICY_PROPOSED_20261126.json",
-    "sha256": "3434c76fbf7e4563e411b95d73ded54678c4913238f5d4e9d17c6df83c7f1238"
+    "sha256": "9ba56098c273007980c893db39931ac86e7a3185bbb665f8c3f1e14f99b72af1"
   },
   "specimen_manifest": {
     "path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_FINITE_SPECIMENS_PROPOSED_20261126.json",
@@ -193,8 +193,8 @@
       "own_brief_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D077_IMPLEMENTATION_BRIEF.md",
       "own_binding_path": "implementation/authority/T01_ALIGNED_HISTORY_D077_AUTHORITY_BINDING.yaml",
       "future_contract_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D077_PROOF_CONTRACT.json",
-      "proposed_case_count": 2,
-      "proposed_nonfungible_ceiling": 2,
+      "proposed_case_count": 3,
+      "proposed_nonfungible_ceiling": 3,
       "authorised_case_count": 0,
       "execution_release": false,
       "original_prospective_case_ids": [
@@ -203,11 +203,13 @@
       ],
       "ordered_case_ids": [
         "SUP-D077-HISTORY-SUCCESS",
-        "SUP-D077-HISTORY-REACHED_REFUSAL"
+        "SUP-D077-HISTORY-REACHED_REFUSAL",
+        "SUP-D077-HISTORY-MIXED-ORIGINAL-ROSTER"
       ],
       "ordered_nodes": [
         "tests/product/m02_completion_28/support/d077-history/test_profile.py::test_d077_history_success",
-        "tests/product/m02_completion_28/support/d077-history/test_profile.py::test_d077_missing_soxx_parent"
+        "tests/product/m02_completion_28/support/d077-history/test_profile.py::test_d077_missing_soxx_parent",
+        "tests/product/m02_completion_28/support/d077-history/test_profile.py::test_d077_mixed_original_roster"
       ]
     },
     {
@@ -223,8 +225,8 @@
       "own_brief_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D079_IMPLEMENTATION_BRIEF.md",
       "own_binding_path": "implementation/authority/T01_ALIGNED_HISTORY_D079_AUTHORITY_BINDING.yaml",
       "future_contract_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D079_PROOF_CONTRACT.json",
-      "proposed_case_count": 5,
-      "proposed_nonfungible_ceiling": 5,
+      "proposed_case_count": 6,
+      "proposed_nonfungible_ceiling": 6,
       "authorised_case_count": 0,
       "execution_release": false,
       "original_prospective_case_ids": [
@@ -236,14 +238,16 @@
         "D079-CONTROLLED-REACHED_REFUSAL",
         "D079-MISSING-MEMBER",
         "D079-DUPLICATE-MEMBER",
-        "D079-PARENT-NOT-KNOWN-AT-FIT-CUTOFF"
+        "D079-PARENT-NOT-KNOWN-AT-FIT-CUTOFF",
+        "D079-MIXED-SOURCE-CORPUS"
       ],
       "ordered_nodes": [
         "tests/product/m02_completion_28/d079/test_signal.py::test_d079_joint_success",
         "tests/product/m02_completion_28/d079/test_signal.py::test_d079_rank_deficient",
         "tests/product/m02_completion_28/d079/test_signal.py::test_d079_missing_member",
         "tests/product/m02_completion_28/d079/test_signal.py::test_d079_duplicate_member",
-        "tests/product/m02_completion_28/d079/test_signal.py::test_d079_parent_unavailable_at_cutoff"
+        "tests/product/m02_completion_28/d079/test_signal.py::test_d079_parent_unavailable_at_cutoff",
+        "tests/product/m02_completion_28/d079/test_signal.py::test_d079_mixed_source_corpus"
       ]
     },
     {
@@ -259,8 +263,8 @@
       "own_brief_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D080_IMPLEMENTATION_BRIEF.md",
       "own_binding_path": "implementation/authority/T01_ALIGNED_HISTORY_D080_AUTHORITY_BINDING.yaml",
       "future_contract_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D080_PROOF_CONTRACT.json",
-      "proposed_case_count": 3,
-      "proposed_nonfungible_ceiling": 3,
+      "proposed_case_count": 5,
+      "proposed_nonfungible_ceiling": 5,
       "authorised_case_count": 0,
       "execution_release": false,
       "original_prospective_case_ids": [
@@ -270,12 +274,16 @@
       "ordered_case_ids": [
         "D080-CONTROLLED-SUCCESS",
         "D080-CONTROLLED-REACHED_REFUSAL",
-        "D080-CONDITIONING-REFUSAL"
+        "D080-CONDITIONING-REFUSAL",
+        "D080-CONDITION-INCLUSIVE-BOUNDARY",
+        "D080-FIT-ROW-MISALIGNMENT"
       ],
       "ordered_nodes": [
         "tests/product/m02_completion_28/d080/test_signal.py::test_d080_joint_success",
         "tests/product/m02_completion_28/d080/test_signal.py::test_d080_rank_deficient",
-        "tests/product/m02_completion_28/d080/test_signal.py::test_d080_outside_conditioning_domain"
+        "tests/product/m02_completion_28/d080/test_signal.py::test_d080_outside_conditioning_domain",
+        "tests/product/m02_completion_28/d080/test_signal.py::test_d080_condition_inclusive_boundary",
+        "tests/product/m02_completion_28/d080/test_signal.py::test_d080_fit_row_misalignment"
       ]
     },
     {
@@ -291,8 +299,8 @@
       "own_brief_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D081_IMPLEMENTATION_BRIEF.md",
       "own_binding_path": "implementation/authority/T01_ALIGNED_HISTORY_D081_AUTHORITY_BINDING.yaml",
       "future_contract_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D081_PROOF_CONTRACT.json",
-      "proposed_case_count": 2,
-      "proposed_nonfungible_ceiling": 2,
+      "proposed_case_count": 3,
+      "proposed_nonfungible_ceiling": 3,
       "authorised_case_count": 0,
       "execution_release": false,
       "original_prospective_case_ids": [
@@ -301,11 +309,13 @@
       ],
       "ordered_case_ids": [
         "D081-CONTROLLED-SUCCESS",
-        "D081-CONTROLLED-REACHED_REFUSAL"
+        "D081-CONTROLLED-REACHED_REFUSAL",
+        "D081-SHARED-PARENT-PAYLOAD-MISMATCH"
       ],
       "ordered_nodes": [
         "tests/product/m02_completion_28/d081/test_signal.py::test_d081_joint_success",
-        "tests/product/m02_completion_28/d081/test_signal.py::test_d081_rank_deficient"
+        "tests/product/m02_completion_28/d081/test_signal.py::test_d081_rank_deficient",
+        "tests/product/m02_completion_28/d081/test_signal.py::test_d081_shared_parent_payload_mismatch"
       ]
     },
     {
@@ -321,8 +331,8 @@
       "own_brief_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D078_IMPLEMENTATION_BRIEF.md",
       "own_binding_path": "implementation/authority/T01_ALIGNED_HISTORY_D078_AUTHORITY_BINDING.yaml",
       "future_contract_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D078_PROOF_CONTRACT.json",
-      "proposed_case_count": 4,
-      "proposed_nonfungible_ceiling": 4,
+      "proposed_case_count": 5,
+      "proposed_nonfungible_ceiling": 5,
       "authorised_case_count": 0,
       "execution_release": false,
       "original_prospective_case_ids": [
@@ -333,13 +343,15 @@
         "D078-CONTROLLED-SUCCESS",
         "D078-CONTROLLED-REACHED_REFUSAL",
         "D078-CURRENT-ROW-MISALIGNMENT",
-        "D078-NONPRIOR-FIT"
+        "D078-NONPRIOR-FIT",
+        "D078-COEFFICIENT-NOT-KNOWN-AT-RESIDUAL-CUTOFF"
       ],
       "ordered_nodes": [
         "tests/product/m02_completion_28/d078/test_signal.py::test_d078_same_fit_residual",
         "tests/product/m02_completion_28/d078/test_signal.py::test_d078_mixed_fit",
         "tests/product/m02_completion_28/d078/test_signal.py::test_d078_wrong_current_row",
-        "tests/product/m02_completion_28/d078/test_signal.py::test_d078_nonprior_fit"
+        "tests/product/m02_completion_28/d078/test_signal.py::test_d078_nonprior_fit",
+        "tests/product/m02_completion_28/d078/test_signal.py::test_d078_coefficient_unavailable_at_cutoff"
       ]
     }
   ],
@@ -350,13 +362,13 @@
     "D074": 2,
     "D075": 2,
     "D076": 2,
-    "D077": 2,
-    "D079": 5,
-    "D080": 3,
-    "D081": 2,
-    "D078": 4
+    "D077": 3,
+    "D079": 6,
+    "D080": 5,
+    "D081": 3,
+    "D078": 5
   },
-  "total_proposed_physical_cases": 28,
+  "total_proposed_physical_cases": 34,
   "active_authorised_cases": 0,
   "active_released_cases": 0,
   "execution_order": [
@@ -378,7 +390,7 @@
         "D076",
         "D077"
       ],
-      "exact_count": 4,
+      "exact_count": 5,
       "predicate": "After accepted actual new history parents D071/D072 and D072/D073/D074 respectively; same required independent review/intake/release. L01a acceptance only after all seven histories and source/contract scope established."
     },
     {
@@ -388,7 +400,7 @@
         "D080",
         "D081"
       ],
-      "exact_count": 10,
+      "exact_count": 14,
       "predicate": "After independently accepted L01a and actual four source histories incl their transitive parents; shared mandatory fit law plus separate component jurisdictions, pre-edit/implementation/registration/intake/release."
     },
     {
@@ -396,12 +408,12 @@
       "families": [
         "D078"
       ],
-      "exact_count": 4,
+      "exact_count": 5,
       "predicate": "After all three actual accepted coefficient profiles and aligned current history; exact independent pre-edit/implementation/registration/intake/release."
     }
   ],
   "ledger_boundary": "Keep canonical 39 leaves and 35 proof obligations. D072-D074 are three distinct additional source_support_test_allocations (support only, no new D identity). Existing four SUP and four D obligations remain in proof_obligations; preserve prior two source-support allocations and all 67 accepted cases. No ledger mutation/admission now.",
-  "physical_case_law": "One exact unparametrised node per case. Repeated calls only for listed finite actual history slots, genuine predecessors/triplets required by one proposition, ordinary readback and explicitly declared same-request retry; no loop over distinct cases, extra independent outcome invocation, or old test function import/rerun. For parent setup use actual public producers and readers, not prefilled D facts. No product execution before exact admission and independent case-specific release. Common shared fixture helper may be proposed only with exact source path/hash, family generation linkage and independent fixture-independence review; no unrestricted support file. Reached negative stage evidenced by actual lawful preconditions, exact one targeted mutation, assertions and inspected guard order, not assumed exception telemetry. Explicit per-case role/slot/clock exceptions override default chronology and positive setup. No materialisation of an omitted parent, and no on-time initial materialisation of the designated delayed parent.",
+  "physical_case_law": "One exact unparametrised node per case. Repeated calls only for listed finite actual history slots, genuine predecessors/triplets required by one proposition, ordinary readback and explicitly declared same-request retry; no loop over distinct cases, extra independent outcome invocation, or old test function import/rerun. For parent setup use actual public producers and readers, not prefilled D facts. No product execution before exact admission and independent case-specific release. Common shared fixture helper may be proposed only with exact source path/hash, family generation linkage and independent fixture-independence review; no unrestricted support file. Reached negative stage evidenced by actual lawful preconditions, exact one targeted mutation, assertions and inspected guard order, not assumed exception telemetry. Explicit per-case role/slot/clock exceptions override default chronology and positive setup. No materialisation of an omitted parent, and no on-time initial materialisation of the designated delayed parent. R1 preserves all 28 original case objects exactly; six added distinct witnesses only. Each new case has literal actual store/role/slot/clock binding. Common guard routing is mandatory as stated in R1 policy; each independent reached case must prove all earlier stages, actual concrete parents and exact selected bytes. No extra product calls to document variants or general permutations.",
   "physical_cases": [
     {
       "family": "D071",
@@ -1760,6 +1772,115 @@
         "actual_history_rows": 7,
         "absent_slot": "S3",
         "reached_stage_boundary": "Establish reached by actual upstream facts, lawful request shape, independent assertions plus inspected exact guard order; no claim of internal stage telemetry unless actual evidence exists."
+      },
+      "execution_authorised": false,
+      "status": "PROPOSED_NOT_RUN"
+    },
+    {
+      "family": "D077",
+      "proof_id": "SUP-D077-HISTORY",
+      "leaf": "L01a",
+      "case_id": "SUP-D077-HISTORY-MIXED-ORIGINAL-ROSTER",
+      "kind": "REACHED_REFUSAL",
+      "node": "tests/product/m02_completion_28/support/d077-history/test_profile.py::test_d077_mixed_original_roster",
+      "specimens": [
+        {
+          "id": "RANK",
+          "expanded_sha256": "5f2d17af42851921c294d2367a13f3c7fabf3e87e0b2dc03b5ebbd4e7797240e"
+        },
+        {
+          "id": "COND",
+          "expanded_sha256": "9b9c2dc6ba723e3d0fec8322375ba1f073e4a2fc278d705a834abed6e33d183d"
+        },
+        {
+          "id": "A",
+          "expanded_sha256": "ca87adff2e2aa7a509c2f1d584eda019665fd7f38b3966b8be901fbddbcb22d1"
+        }
+      ],
+      "expected_stage": "RELATIVE_COMPLETE_ACTUAL_SOURCE_ROSTER",
+      "setup_and_reached_preconditions": {
+        "source": "Three separate actual sealed lawful sources RANK,COND,A; original getter and public projections as literal manifest, no mixed raw source construction.",
+        "actual_parent_producers": [
+          {
+            "signal": "D073",
+            "specimen": "RANK",
+            "slots": [
+              "S6"
+            ],
+            "first_calculated_at": "2026-10-19T12:40:02Z",
+            "store": "RANK_D073"
+          },
+          {
+            "signal": "D074",
+            "specimen": "COND",
+            "slots": [
+              "S6"
+            ],
+            "first_calculated_at": "2026-10-19T12:40:02Z",
+            "store": "COND_D074"
+          },
+          {
+            "signal": "D072",
+            "specimen": "A",
+            "slots": [
+              "S6"
+            ],
+            "first_calculated_at": "2026-10-19T12:40:02Z",
+            "store": "A_D072"
+          }
+        ],
+        "target_producer_slots": [
+          "S6"
+        ],
+        "target_preconditions": "Each actual original/projection/underlying history is lawful independently and obtained by actual ordinary read-only parent reader. Ordered D073,D074,D072 roles, exact same S6 frame/cutoff/context and +2 timestamps, available to D077 now+3, three distinct actual IDs. RANK S6 SMH and COND S6 SOXX both native 10100/10100, QQQ also unity; RANK and COND both lawful separate complete source corpora with zero semiconductor return, but changed original identities differ. No allowed frame-local corpus contains this mixed six-original set. All actual requested facts present and lawful; no fabricated or mislabelled fact. No additional D077 success invocation."
+      },
+      "request_and_exact_variation": {
+        "target": "S6",
+        "derived_signal_id": "D077",
+        "as_of": "2026-10-19T12:40:00Z",
+        "cutoff": "2026-10-19T12:40:01Z",
+        "now": "2026-10-19T12:40:03Z",
+        "parent_ids_order": [
+          {
+            "signal": "D073",
+            "slot": "S6",
+            "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+            "actual_source_specimen": "RANK",
+            "actual_read_store": "RANK_D073"
+          },
+          {
+            "signal": "D074",
+            "slot": "S6",
+            "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+            "actual_source_specimen": "COND",
+            "actual_read_store": "COND_D074"
+          },
+          {
+            "signal": "D072",
+            "slot": "S6",
+            "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+            "actual_source_specimen": "A",
+            "actual_read_store": "A_D072"
+          }
+        ]
+      },
+      "independent_oracle": {
+        "actual_required_original_ids": [
+          "T01-L01A-HISTORY-V1-COND-S6-SOXX-R037",
+          "T01-L01A-HISTORY-V1-RANK-S6-SMH-R037",
+          "T01-L01A-HISTORY-V1-S6-QQQ-R037",
+          "T01-L01A-HISTORY-V1-S6-QQQ-R042",
+          "T01-L01A-HISTORY-V1-S6-SMH-R042",
+          "T01-L01A-HISTORY-V1-S6-SOXX-R042"
+        ],
+        "legal_corpus_intersection": [],
+        "each_underlying_canonical_decimal": "0",
+        "would_be_relative_ratio": [
+          0,
+          1
+        ],
+        "expected": "Refuse actual equal-valued incompatible original roster, not wrong frame, lookup, value, role, cutoff or rank. D077 None, empty writer and ordinary read-only target store; actual all three individually lawful parent payloads unchanged.",
+        "actual_history_rows": 0
       },
       "execution_authorised": false,
       "status": "PROPOSED_NOT_RUN"
@@ -3135,6 +3256,641 @@
       "status": "PROPOSED_NOT_RUN"
     },
     {
+      "family": "D079",
+      "proof_id": "M02-C28-D079",
+      "leaf": "L02",
+      "case_id": "D079-MIXED-SOURCE-CORPUS",
+      "kind": "REACHED_REFUSAL",
+      "node": "tests/product/m02_completion_28/d079/test_signal.py::test_d079_mixed_source_corpus",
+      "specimens": [
+        {
+          "id": "B",
+          "expanded_sha256": "76eb52b30f57e00a07381b53f80312c946b81b94cacc977d89e061ed8b6733ed"
+        },
+        {
+          "id": "C_NONPRIOR",
+          "expanded_sha256": "3ec6d0f754c65a07afa5f0c3716c4a1ef43cf0b6f1ed2287f737cff2ff3dd96f"
+        }
+      ],
+      "expected_stage": "COMPLETE_ACTUAL_SOURCE_ROSTER",
+      "setup_and_reached_preconditions": {
+        "source": "Two fresh independently sealed literal B and C_NONPRIOR. No mixed raw store or injected history; separate actual ordinary readers by role.",
+        "order": "Each prior frame chronological: actual B NVDA and C SPY/QQQ/SMH/SOXX at +2, C D076/D077 at +3 using exactly those same actual C parent stores. Actual D071 direct from C also nested D076, actual C D072 shared both relative roles. Reopen separate B D075 and C D071/D076/D077 readers; no B other producers or C NVDA producer.",
+        "fit_origin": "S6",
+        "requested_training_slots": [
+          "S1",
+          "S2",
+          "S3",
+          "S4",
+          "S5",
+          "S6"
+        ],
+        "fit_row_roles": [
+          "D075",
+          "D071",
+          "D076",
+          "D077"
+        ],
+        "fit_now": "2026-10-19T12:40:05Z",
+        "history_producer_slots_by_specimen": {
+          "B": {
+            "D075": [
+              "S0",
+              "S1",
+              "S2",
+              "S3",
+              "S4",
+              "S5",
+              "S6"
+            ]
+          },
+          "C_NONPRIOR": {
+            "D071": [
+              "S0",
+              "S1",
+              "S2",
+              "S3",
+              "S4",
+              "S5",
+              "S6"
+            ],
+            "D072": [
+              "S0",
+              "S1",
+              "S2",
+              "S3",
+              "S4",
+              "S5",
+              "S6"
+            ],
+            "D073": [
+              "S0",
+              "S1",
+              "S2",
+              "S3",
+              "S4",
+              "S5",
+              "S6"
+            ],
+            "D074": [
+              "S0",
+              "S1",
+              "S2",
+              "S3",
+              "S4",
+              "S5",
+              "S6"
+            ],
+            "D076": [
+              "S0",
+              "S1",
+              "S2",
+              "S3",
+              "S4",
+              "S5",
+              "S6"
+            ],
+            "D077": [
+              "S0",
+              "S1",
+              "S2",
+              "S3",
+              "S4",
+              "S5",
+              "S6"
+            ]
+          }
+        },
+        "reached": "Actual exact 24 distinct IDs selected from fixed four real ordinary stores D075=B, D071/D076/D077=C_NONPRIOR. All six rows separately lawful, actual nested D071/D072 bytes equal, exact aligned roles/clock/cutoff and all available at S6+4. Actual original set row S1 only B, S5 only C, others compatible; full actual sixty-original union has empty legal-corpus intersection. Numeric determinant 27, condition exactly50, so no rank or condition failure if provenance omitted. Actual selected full original payload content, not seal labels, establishes predicate."
+      },
+      "request_and_exact_variation": {
+        "derived_signal_id": "D079",
+        "origin": "S6",
+        "as_of": "2026-10-19T12:40:00Z",
+        "cutoff": "2026-10-19T12:40:04Z",
+        "ordered_rows": [
+          {
+            "slot": "S1",
+            "member_ids": [
+              {
+                "signal": "D075",
+                "slot": "S1",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "B",
+                "actual_read_store": "B_D075"
+              },
+              {
+                "signal": "D071",
+                "slot": "S1",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "C_NONPRIOR",
+                "actual_read_store": "C_NONPRIOR_D071"
+              },
+              {
+                "signal": "D076",
+                "slot": "S1",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "C_NONPRIOR",
+                "actual_read_store": "C_NONPRIOR_D076"
+              },
+              {
+                "signal": "D077",
+                "slot": "S1",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "C_NONPRIOR",
+                "actual_read_store": "C_NONPRIOR_D077"
+              }
+            ]
+          },
+          {
+            "slot": "S2",
+            "member_ids": [
+              {
+                "signal": "D075",
+                "slot": "S2",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "B",
+                "actual_read_store": "B_D075"
+              },
+              {
+                "signal": "D071",
+                "slot": "S2",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "C_NONPRIOR",
+                "actual_read_store": "C_NONPRIOR_D071"
+              },
+              {
+                "signal": "D076",
+                "slot": "S2",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "C_NONPRIOR",
+                "actual_read_store": "C_NONPRIOR_D076"
+              },
+              {
+                "signal": "D077",
+                "slot": "S2",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "C_NONPRIOR",
+                "actual_read_store": "C_NONPRIOR_D077"
+              }
+            ]
+          },
+          {
+            "slot": "S3",
+            "member_ids": [
+              {
+                "signal": "D075",
+                "slot": "S3",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "B",
+                "actual_read_store": "B_D075"
+              },
+              {
+                "signal": "D071",
+                "slot": "S3",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "C_NONPRIOR",
+                "actual_read_store": "C_NONPRIOR_D071"
+              },
+              {
+                "signal": "D076",
+                "slot": "S3",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "C_NONPRIOR",
+                "actual_read_store": "C_NONPRIOR_D076"
+              },
+              {
+                "signal": "D077",
+                "slot": "S3",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "C_NONPRIOR",
+                "actual_read_store": "C_NONPRIOR_D077"
+              }
+            ]
+          },
+          {
+            "slot": "S4",
+            "member_ids": [
+              {
+                "signal": "D075",
+                "slot": "S4",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "B",
+                "actual_read_store": "B_D075"
+              },
+              {
+                "signal": "D071",
+                "slot": "S4",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "C_NONPRIOR",
+                "actual_read_store": "C_NONPRIOR_D071"
+              },
+              {
+                "signal": "D076",
+                "slot": "S4",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "C_NONPRIOR",
+                "actual_read_store": "C_NONPRIOR_D076"
+              },
+              {
+                "signal": "D077",
+                "slot": "S4",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "C_NONPRIOR",
+                "actual_read_store": "C_NONPRIOR_D077"
+              }
+            ]
+          },
+          {
+            "slot": "S5",
+            "member_ids": [
+              {
+                "signal": "D075",
+                "slot": "S5",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "B",
+                "actual_read_store": "B_D075"
+              },
+              {
+                "signal": "D071",
+                "slot": "S5",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "C_NONPRIOR",
+                "actual_read_store": "C_NONPRIOR_D071"
+              },
+              {
+                "signal": "D076",
+                "slot": "S5",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "C_NONPRIOR",
+                "actual_read_store": "C_NONPRIOR_D076"
+              },
+              {
+                "signal": "D077",
+                "slot": "S5",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "C_NONPRIOR",
+                "actual_read_store": "C_NONPRIOR_D077"
+              }
+            ]
+          },
+          {
+            "slot": "S6",
+            "member_ids": [
+              {
+                "signal": "D075",
+                "slot": "S6",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "B",
+                "actual_read_store": "B_D075"
+              },
+              {
+                "signal": "D071",
+                "slot": "S6",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "C_NONPRIOR",
+                "actual_read_store": "C_NONPRIOR_D071"
+              },
+              {
+                "signal": "D076",
+                "slot": "S6",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "C_NONPRIOR",
+                "actual_read_store": "C_NONPRIOR_D076"
+              },
+              {
+                "signal": "D077",
+                "slot": "S6",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "C_NONPRIOR",
+                "actual_read_store": "C_NONPRIOR_D077"
+              }
+            ]
+          }
+        ]
+      },
+      "independent_oracle": {
+        "actual_component_rows": 0,
+        "expected": "None at common complete selected-corpus predicate; each actual row independently compatible and actual arithmetic would be eligible at inclusive boundary. No per-row-only acceptance, injected source label or estimator fallback.",
+        "durability": "Actual all lawful parent stores retained with exact prior payloads; target coefficient returns None, writer and ordinary reopened component history empty; no result or correction/fallback. No additional target calls.",
+        "actual_per_row_legal_corpora": {
+          "S1": [
+            "B"
+          ],
+          "S2": [
+            "A",
+            "B",
+            "C_NONPRIOR"
+          ],
+          "S3": [
+            "A",
+            "B",
+            "C_NONPRIOR"
+          ],
+          "S4": [
+            "A",
+            "B",
+            "C_NONPRIOR"
+          ],
+          "S5": [
+            "C_NONPRIOR"
+          ],
+          "S6": [
+            "A",
+            "B",
+            "C_NONPRIOR"
+          ]
+        },
+        "actual_complete_corpus_intersection": [],
+        "counterfactual_numeric_oracle_only_not_input": {
+          "ordered_slots": [
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            "S6"
+          ],
+          "design_normalized": [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                -1,
+                1
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            [
+              [
+                1,
+                1
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                -1,
+                2
+              ]
+            ],
+            [
+              [
+                1,
+                1
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                -1,
+                1
+              ]
+            ],
+            [
+              [
+                1,
+                1
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                -1,
+                1
+              ],
+              [
+                -1,
+                2
+              ]
+            ],
+            [
+              [
+                1,
+                1
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                -1,
+                1
+              ],
+              [
+                0,
+                1
+              ]
+            ],
+            [
+              [
+                1,
+                1
+              ],
+              [
+                -1,
+                1
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                1,
+                1
+              ]
+            ]
+          ],
+          "target_normalized": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              -1,
+              1
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "gram_normalized": [
+            [
+              [
+                6,
+                1
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                -1,
+                2
+              ]
+            ],
+            [
+              [
+                0,
+                1
+              ],
+              [
+                4,
+                1
+              ],
+              [
+                -2,
+                1
+              ],
+              [
+                -3,
+                1
+              ]
+            ],
+            [
+              [
+                0,
+                1
+              ],
+              [
+                -2,
+                1
+              ],
+              [
+                4,
+                1
+              ],
+              [
+                1,
+                1
+              ]
+            ],
+            [
+              [
+                -1,
+                2
+              ],
+              [
+                -3,
+                1
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                11,
+                4
+              ]
+            ]
+          ],
+          "rhs_normalized": [
+            [
+              2,
+              1
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              -1,
+              2
+            ]
+          ],
+          "determinant": [
+            27,
+            1
+          ],
+          "condition_ratio": [
+            50,
+            1
+          ],
+          "normalized_intercept_and_slopes": [
+            [
+              8,
+              27
+            ],
+            [
+              -11,
+              54
+            ],
+            [
+              7,
+              27
+            ],
+            [
+              -4,
+              9
+            ]
+          ],
+          "actual_intercept_and_vector": [
+            [
+              24875827132920207120538393860651854221699024850147,
+              8437500000000000000000000000000000000000000000000000
+            ],
+            [
+              -11,
+              54
+            ],
+            [
+              7,
+              27
+            ],
+            [
+              -4,
+              9
+            ]
+          ]
+        },
+        "selected_actual_parent_count": 24,
+        "selected_actual_original_count": 60
+      },
+      "execution_authorised": false,
+      "status": "PROPOSED_NOT_RUN"
+    },
+    {
       "family": "D080",
       "proof_id": "M02-C28-D080",
       "leaf": "L02",
@@ -3978,6 +4734,954 @@
       "status": "PROPOSED_NOT_RUN"
     },
     {
+      "family": "D080",
+      "proof_id": "M02-C28-D080",
+      "leaf": "L02",
+      "case_id": "D080-CONDITION-INCLUSIVE-BOUNDARY",
+      "kind": "SUCCESS",
+      "node": "tests/product/m02_completion_28/d080/test_signal.py::test_d080_condition_inclusive_boundary",
+      "specimens": [
+        {
+          "id": "C_NONPRIOR",
+          "expanded_sha256": "3ec6d0f754c65a07afa5f0c3716c4a1ef43cf0b6f1ed2287f737cff2ff3dd96f"
+        }
+      ],
+      "expected_stage": "CONDITION_INCLUSIVE_BOUNDARY_AND_DURABLE_REOPEN",
+      "setup_and_reached_preconditions": {
+        "source": "Fresh actual sealed C_NONPRIOR, complete actual prior histories, all normal exact clocks. Label does not restrict legal S6 window. All parent roles same legal C corpus.",
+        "history_producer_slots": {
+          "D071": [
+            "S0",
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            "S6"
+          ],
+          "D072": [
+            "S0",
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            "S6"
+          ],
+          "D073": [
+            "S0",
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            "S6"
+          ],
+          "D074": [
+            "S0",
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            "S6"
+          ],
+          "D075": [
+            "S0",
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            "S6"
+          ],
+          "D076": [
+            "S0",
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            "S6"
+          ],
+          "D077": [
+            "S0",
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            "S6"
+          ]
+        },
+        "order": "Chronological each slot: five actual underlying public owners at +2, then actual D076/D077 public owners at +3, each relative actual correct parents via ordinary read-only public readers. All actual histories reopened for fit. No product test function reuse.",
+        "fit_origin": "S6",
+        "requested_training_slots": [
+          "S1",
+          "S2",
+          "S3",
+          "S4",
+          "S5",
+          "S6"
+        ],
+        "fit_row_roles": [
+          "D075",
+          "D071",
+          "D076",
+          "D077"
+        ],
+        "fit_now": "2026-10-19T12:40:05Z",
+        "after_first_fit": "Produce all seven actual S7 history facts at literal normal times, reopen and later retry unchanged original S6 fit request at 2026-10-20T12:40:06Z. The fit cutoff remains S6+4. No S7 or S0 membership.",
+        "reached": "Actual S6 fit S1..S6 full rank and exact condition equals 50, not merely below. All required actual rows and original membership legal, no use of expected numerical input. Inclusive boundary must emit."
+      },
+      "request_and_exact_variation": {
+        "derived_signal_id": "D080",
+        "origin": "S6",
+        "as_of": "2026-10-19T12:40:00Z",
+        "cutoff": "2026-10-19T12:40:04Z",
+        "ordered_rows": [
+          {
+            "slot": "S1",
+            "member_ids": [
+              {
+                "signal": "D075",
+                "slot": "S1",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "C_NONPRIOR",
+                "actual_read_store": "C_NONPRIOR_D075"
+              },
+              {
+                "signal": "D071",
+                "slot": "S1",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "C_NONPRIOR",
+                "actual_read_store": "C_NONPRIOR_D071"
+              },
+              {
+                "signal": "D076",
+                "slot": "S1",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "C_NONPRIOR",
+                "actual_read_store": "C_NONPRIOR_D076"
+              },
+              {
+                "signal": "D077",
+                "slot": "S1",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "C_NONPRIOR",
+                "actual_read_store": "C_NONPRIOR_D077"
+              }
+            ]
+          },
+          {
+            "slot": "S2",
+            "member_ids": [
+              {
+                "signal": "D075",
+                "slot": "S2",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "C_NONPRIOR",
+                "actual_read_store": "C_NONPRIOR_D075"
+              },
+              {
+                "signal": "D071",
+                "slot": "S2",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "C_NONPRIOR",
+                "actual_read_store": "C_NONPRIOR_D071"
+              },
+              {
+                "signal": "D076",
+                "slot": "S2",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "C_NONPRIOR",
+                "actual_read_store": "C_NONPRIOR_D076"
+              },
+              {
+                "signal": "D077",
+                "slot": "S2",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "C_NONPRIOR",
+                "actual_read_store": "C_NONPRIOR_D077"
+              }
+            ]
+          },
+          {
+            "slot": "S3",
+            "member_ids": [
+              {
+                "signal": "D075",
+                "slot": "S3",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "C_NONPRIOR",
+                "actual_read_store": "C_NONPRIOR_D075"
+              },
+              {
+                "signal": "D071",
+                "slot": "S3",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "C_NONPRIOR",
+                "actual_read_store": "C_NONPRIOR_D071"
+              },
+              {
+                "signal": "D076",
+                "slot": "S3",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "C_NONPRIOR",
+                "actual_read_store": "C_NONPRIOR_D076"
+              },
+              {
+                "signal": "D077",
+                "slot": "S3",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "C_NONPRIOR",
+                "actual_read_store": "C_NONPRIOR_D077"
+              }
+            ]
+          },
+          {
+            "slot": "S4",
+            "member_ids": [
+              {
+                "signal": "D075",
+                "slot": "S4",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "C_NONPRIOR",
+                "actual_read_store": "C_NONPRIOR_D075"
+              },
+              {
+                "signal": "D071",
+                "slot": "S4",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "C_NONPRIOR",
+                "actual_read_store": "C_NONPRIOR_D071"
+              },
+              {
+                "signal": "D076",
+                "slot": "S4",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "C_NONPRIOR",
+                "actual_read_store": "C_NONPRIOR_D076"
+              },
+              {
+                "signal": "D077",
+                "slot": "S4",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "C_NONPRIOR",
+                "actual_read_store": "C_NONPRIOR_D077"
+              }
+            ]
+          },
+          {
+            "slot": "S5",
+            "member_ids": [
+              {
+                "signal": "D075",
+                "slot": "S5",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "C_NONPRIOR",
+                "actual_read_store": "C_NONPRIOR_D075"
+              },
+              {
+                "signal": "D071",
+                "slot": "S5",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "C_NONPRIOR",
+                "actual_read_store": "C_NONPRIOR_D071"
+              },
+              {
+                "signal": "D076",
+                "slot": "S5",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "C_NONPRIOR",
+                "actual_read_store": "C_NONPRIOR_D076"
+              },
+              {
+                "signal": "D077",
+                "slot": "S5",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "C_NONPRIOR",
+                "actual_read_store": "C_NONPRIOR_D077"
+              }
+            ]
+          },
+          {
+            "slot": "S6",
+            "member_ids": [
+              {
+                "signal": "D075",
+                "slot": "S6",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "C_NONPRIOR",
+                "actual_read_store": "C_NONPRIOR_D075"
+              },
+              {
+                "signal": "D071",
+                "slot": "S6",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "C_NONPRIOR",
+                "actual_read_store": "C_NONPRIOR_D071"
+              },
+              {
+                "signal": "D076",
+                "slot": "S6",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "C_NONPRIOR",
+                "actual_read_store": "C_NONPRIOR_D076"
+              },
+              {
+                "signal": "D077",
+                "slot": "S6",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "C_NONPRIOR",
+                "actual_read_store": "C_NONPRIOR_D077"
+              }
+            ]
+          }
+        ],
+        "later_replay_now": "2026-10-20T12:40:06Z"
+      },
+      "independent_oracle": {
+        "exact_boundary_fit_oracle_only_not_input": {
+          "ordered_slots": [
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            "S6"
+          ],
+          "design_normalized": [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                -1,
+                1
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            [
+              [
+                1,
+                1
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                -1,
+                2
+              ]
+            ],
+            [
+              [
+                1,
+                1
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                -1,
+                1
+              ]
+            ],
+            [
+              [
+                1,
+                1
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                -1,
+                1
+              ],
+              [
+                -1,
+                2
+              ]
+            ],
+            [
+              [
+                1,
+                1
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                -1,
+                1
+              ],
+              [
+                0,
+                1
+              ]
+            ],
+            [
+              [
+                1,
+                1
+              ],
+              [
+                -1,
+                1
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                1,
+                1
+              ]
+            ]
+          ],
+          "target_normalized": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              -1,
+              1
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "gram_normalized": [
+            [
+              [
+                6,
+                1
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                -1,
+                2
+              ]
+            ],
+            [
+              [
+                0,
+                1
+              ],
+              [
+                4,
+                1
+              ],
+              [
+                -2,
+                1
+              ],
+              [
+                -3,
+                1
+              ]
+            ],
+            [
+              [
+                0,
+                1
+              ],
+              [
+                -2,
+                1
+              ],
+              [
+                4,
+                1
+              ],
+              [
+                1,
+                1
+              ]
+            ],
+            [
+              [
+                -1,
+                2
+              ],
+              [
+                -3,
+                1
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                11,
+                4
+              ]
+            ]
+          ],
+          "rhs_normalized": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              -1,
+              1
+            ]
+          ],
+          "determinant": [
+            27,
+            1
+          ],
+          "condition_ratio": [
+            50,
+            1
+          ],
+          "normalized_intercept_and_slopes": [
+            [
+              5,
+              27
+            ],
+            [
+              37,
+              54
+            ],
+            [
+              29,
+              54
+            ],
+            [
+              2,
+              9
+            ]
+          ],
+          "actual_intercept_and_vector": [
+            [
+              24875827132920207120538393860651854221699024850147,
+              13500000000000000000000000000000000000000000000000000
+            ],
+            [
+              37,
+              54
+            ],
+            [
+              29,
+              54
+            ],
+            [
+              2,
+              9
+            ]
+          ]
+        },
+        "actual_component_ratio": [
+          29,
+          54
+        ],
+        "actual_intercept_and_vector": [
+          [
+            24875827132920207120538393860651854221699024850147,
+            13500000000000000000000000000000000000000000000000000
+          ],
+          [
+            37,
+            54
+          ],
+          [
+            29,
+            54
+          ],
+          [
+            2,
+            9
+          ]
+        ],
+        "condition_ratio": [
+          50,
+          1
+        ],
+        "actual_parent_members": 24,
+        "actual_selected_underlying_members": 30,
+        "actual_selected_original_facts": 60,
+        "excluded_slots": [
+          "S0",
+          "S7"
+        ],
+        "actual_component_rows": 1,
+        "durability": "Actual D080 exact beta 29/54, complete exact fit intercept and vector, actual common identity/manifests and original lineage. Ordinary reopened reader returns first actual bytes; later same-request replay after actual S7 histories normal returns first timestamp and exactly one row. No other coefficient or residual target call."
+      },
+      "execution_authorised": false,
+      "status": "PROPOSED_NOT_RUN"
+    },
+    {
+      "family": "D080",
+      "proof_id": "M02-C28-D080",
+      "leaf": "L02",
+      "case_id": "D080-FIT-ROW-MISALIGNMENT",
+      "kind": "REACHED_REFUSAL",
+      "node": "tests/product/m02_completion_28/d080/test_signal.py::test_d080_fit_row_misalignment",
+      "specimens": [
+        {
+          "id": "A",
+          "expanded_sha256": "ca87adff2e2aa7a509c2f1d584eda019665fd7f38b3966b8be901fbddbcb22d1"
+        }
+      ],
+      "expected_stage": "PARENT_ROW_ALIGNMENT",
+      "setup_and_reached_preconditions": {
+        "source": "Fresh actual sealed A, actual complete literal original and projection records.",
+        "history_producer_slots": {
+          "D071": [
+            "S0",
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            "S6"
+          ],
+          "D072": [
+            "S0",
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            "S6"
+          ],
+          "D073": [
+            "S0",
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            "S6"
+          ],
+          "D074": [
+            "S0",
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            "S6"
+          ],
+          "D075": [
+            "S0",
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            "S6"
+          ],
+          "D076": [
+            "S0",
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            "S6"
+          ],
+          "D077": [
+            "S0",
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            "S6"
+          ]
+        },
+        "order": "Chronological each slot: five actual underlying public owners at +2, then actual D076/D077 public owners at +3, each relative actual correct parents via ordinary read-only public readers. All actual histories reopened for fit. No product test function reuse.",
+        "fit_origin": "S6",
+        "requested_training_slots": [
+          "S1",
+          "S2",
+          "S3",
+          "S4",
+          "S5",
+          "S6"
+        ],
+        "fit_row_roles": [
+          "D075",
+          "D071",
+          "D076",
+          "D077"
+        ],
+        "fit_now": "2026-10-19T12:40:05Z",
+        "reached": "Actual all seven prior S0..S6 complete A histories. Original S3 D077 exists. Substitute only actual distinct, present, lawful and fit-cutoff-available D077 S0 in requested S3 row; D077 S0 is otherwise excluded and not duplicated in training. Exact six row slots/four IDs each, 24 distinct IDs, role and profile correct. Wrong frame only, must reach fit alignment before shared-payload/corpus/numeric checks."
+      },
+      "request_and_exact_variation": {
+        "derived_signal_id": "D080",
+        "origin": "S6",
+        "as_of": "2026-10-19T12:40:00Z",
+        "cutoff": "2026-10-19T12:40:04Z",
+        "ordered_rows": [
+          {
+            "slot": "S1",
+            "member_ids": [
+              {
+                "signal": "D075",
+                "slot": "S1",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "A",
+                "actual_read_store": "A_D075"
+              },
+              {
+                "signal": "D071",
+                "slot": "S1",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "A",
+                "actual_read_store": "A_D071"
+              },
+              {
+                "signal": "D076",
+                "slot": "S1",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "A",
+                "actual_read_store": "A_D076"
+              },
+              {
+                "signal": "D077",
+                "slot": "S1",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "A",
+                "actual_read_store": "A_D077"
+              }
+            ]
+          },
+          {
+            "slot": "S2",
+            "member_ids": [
+              {
+                "signal": "D075",
+                "slot": "S2",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "A",
+                "actual_read_store": "A_D075"
+              },
+              {
+                "signal": "D071",
+                "slot": "S2",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "A",
+                "actual_read_store": "A_D071"
+              },
+              {
+                "signal": "D076",
+                "slot": "S2",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "A",
+                "actual_read_store": "A_D076"
+              },
+              {
+                "signal": "D077",
+                "slot": "S2",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "A",
+                "actual_read_store": "A_D077"
+              }
+            ]
+          },
+          {
+            "slot": "S3",
+            "member_ids": [
+              {
+                "signal": "D075",
+                "slot": "S3",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "A",
+                "actual_read_store": "A_D075"
+              },
+              {
+                "signal": "D071",
+                "slot": "S3",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "A",
+                "actual_read_store": "A_D071"
+              },
+              {
+                "signal": "D076",
+                "slot": "S3",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "A",
+                "actual_read_store": "A_D076"
+              },
+              {
+                "signal": "D077",
+                "slot": "S0",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "A",
+                "actual_read_store": "A_D077"
+              }
+            ]
+          },
+          {
+            "slot": "S4",
+            "member_ids": [
+              {
+                "signal": "D075",
+                "slot": "S4",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "A",
+                "actual_read_store": "A_D075"
+              },
+              {
+                "signal": "D071",
+                "slot": "S4",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "A",
+                "actual_read_store": "A_D071"
+              },
+              {
+                "signal": "D076",
+                "slot": "S4",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "A",
+                "actual_read_store": "A_D076"
+              },
+              {
+                "signal": "D077",
+                "slot": "S4",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "A",
+                "actual_read_store": "A_D077"
+              }
+            ]
+          },
+          {
+            "slot": "S5",
+            "member_ids": [
+              {
+                "signal": "D075",
+                "slot": "S5",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "A",
+                "actual_read_store": "A_D075"
+              },
+              {
+                "signal": "D071",
+                "slot": "S5",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "A",
+                "actual_read_store": "A_D071"
+              },
+              {
+                "signal": "D076",
+                "slot": "S5",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "A",
+                "actual_read_store": "A_D076"
+              },
+              {
+                "signal": "D077",
+                "slot": "S5",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "A",
+                "actual_read_store": "A_D077"
+              }
+            ]
+          },
+          {
+            "slot": "S6",
+            "member_ids": [
+              {
+                "signal": "D075",
+                "slot": "S6",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "A",
+                "actual_read_store": "A_D075"
+              },
+              {
+                "signal": "D071",
+                "slot": "S6",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "A",
+                "actual_read_store": "A_D071"
+              },
+              {
+                "signal": "D076",
+                "slot": "S6",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "A",
+                "actual_read_store": "A_D076"
+              },
+              {
+                "signal": "D077",
+                "slot": "S6",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "A",
+                "actual_read_store": "A_D077"
+              }
+            ]
+          }
+        ]
+      },
+      "independent_oracle": {
+        "actual_component_rows": 0,
+        "expected": "None after actual four-role fit row alignment; no duplicate/missing pre-refusal, infer latest, re-fit subset, or source correction.",
+        "durability": "Actual all lawful parent stores retained with exact prior payloads; target coefficient returns None, writer and ordinary reopened component history empty; no result or correction/fallback. No additional target calls.",
+        "requested_slot": "S3",
+        "actual_D077_slot": "S0",
+        "actual_unique_member_ids": 24,
+        "all_requested_parent_ids_present": true
+      },
+      "execution_authorised": false,
+      "status": "PROPOSED_NOT_RUN"
+    },
+    {
       "family": "D081",
       "proof_id": "M02-C28-D081",
       "leaf": "L02",
@@ -4543,6 +6247,346 @@
         ],
         "expected": "None, exact complete actual lawful six-row source roster reached rank; no coefficient row in writer/reopened store. No fallback estimator. Actual parent histories unchanged.",
         "actual_component_rows": 0
+      },
+      "execution_authorised": false,
+      "status": "PROPOSED_NOT_RUN"
+    },
+    {
+      "family": "D081",
+      "proof_id": "M02-C28-D081",
+      "leaf": "L02",
+      "case_id": "D081-SHARED-PARENT-PAYLOAD-MISMATCH",
+      "kind": "REACHED_REFUSAL",
+      "node": "tests/product/m02_completion_28/d081/test_signal.py::test_d081_shared_parent_payload_mismatch",
+      "specimens": [
+        {
+          "id": "A",
+          "expanded_sha256": "ca87adff2e2aa7a509c2f1d584eda019665fd7f38b3966b8be901fbddbcb22d1"
+        }
+      ],
+      "expected_stage": "SHARED_PARENT_PAYLOAD_IDENTITY",
+      "setup_and_reached_preconditions": {
+        "source": "Fresh actual sealed A shared original literal facts; two separate exclusive actual D071 stores, not a mutation or replay of same store.",
+        "history_producer_slots": {
+          "D071": [
+            "S0",
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            "S6"
+          ],
+          "D072": [
+            "S0",
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            "S6"
+          ],
+          "D073": [
+            "S0",
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            "S6"
+          ],
+          "D074": [
+            "S0",
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            "S6"
+          ],
+          "D075": [
+            "S0",
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            "S6"
+          ],
+          "D076": [
+            "S0",
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            "S6"
+          ],
+          "D077": [
+            "S0",
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            "S6"
+          ]
+        },
+        "order": "Chronological prior slots: normal A underlying +2 and alternate direct D071 +2 except S3 alternate first +3; normal A D076 always reads original A_D071, and D076/D077 +3 from normal actual parent stores. At S3 both normal D076 and alternate direct D071 first +3 (order within same instant immaterial). No earlier alternate S3 call. Reopen both actual D071 stores and all others, choose alternate direct D071 for all requested rows. All other direct D071 payloads identical across stores.",
+        "fit_origin": "S6",
+        "requested_training_slots": [
+          "S1",
+          "S2",
+          "S3",
+          "S4",
+          "S5",
+          "S6"
+        ],
+        "fit_row_roles": [
+          "D075",
+          "D071",
+          "D076",
+          "D077"
+        ],
+        "fit_now": "2026-10-19T12:40:05Z",
+        "additional_history_producer": {
+          "signal": "D071",
+          "source": "A",
+          "store": "A_D071_ALTERNATE_DIRECT",
+          "slots": [
+            "S0",
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            "S6"
+          ],
+          "normal_first_times_except": {
+            "S3": "2026-10-16T12:40:03Z"
+          },
+          "normal_parent_store": "A_D071",
+          "normal_parent_S3_first": "2026-10-16T12:40:02Z"
+        },
+        "reached": "At S3 normal D071 inside actual D076 first +2, alternate direct actual D071 first +3; same logical derived ID, same source/originals/projection/request/result/metadata, different exact canonical stored bytes ONLY calculated_at. All local validators, correct row and fit cutoffs, actual 24 distinct top IDs, coherent original roster, all actual parents available by S6+4. Same-ID comparison alone would wrongly accept. Shared mandatory full-payload comparator required for both D071 and D072 groups; only D071 group differs in this case."
+      },
+      "request_and_exact_variation": {
+        "derived_signal_id": "D081",
+        "origin": "S6",
+        "as_of": "2026-10-19T12:40:00Z",
+        "cutoff": "2026-10-19T12:40:04Z",
+        "ordered_rows": [
+          {
+            "slot": "S1",
+            "member_ids": [
+              {
+                "signal": "D075",
+                "slot": "S1",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "A",
+                "actual_read_store": "A_D075"
+              },
+              {
+                "signal": "D071",
+                "slot": "S1",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "A",
+                "actual_read_store": "A_D071_ALTERNATE_DIRECT"
+              },
+              {
+                "signal": "D076",
+                "slot": "S1",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "A",
+                "actual_read_store": "A_D076"
+              },
+              {
+                "signal": "D077",
+                "slot": "S1",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "A",
+                "actual_read_store": "A_D077"
+              }
+            ]
+          },
+          {
+            "slot": "S2",
+            "member_ids": [
+              {
+                "signal": "D075",
+                "slot": "S2",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "A",
+                "actual_read_store": "A_D075"
+              },
+              {
+                "signal": "D071",
+                "slot": "S2",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "A",
+                "actual_read_store": "A_D071_ALTERNATE_DIRECT"
+              },
+              {
+                "signal": "D076",
+                "slot": "S2",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "A",
+                "actual_read_store": "A_D076"
+              },
+              {
+                "signal": "D077",
+                "slot": "S2",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "A",
+                "actual_read_store": "A_D077"
+              }
+            ]
+          },
+          {
+            "slot": "S3",
+            "member_ids": [
+              {
+                "signal": "D075",
+                "slot": "S3",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "A",
+                "actual_read_store": "A_D075"
+              },
+              {
+                "signal": "D071",
+                "slot": "S3",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "A",
+                "actual_read_store": "A_D071_ALTERNATE_DIRECT"
+              },
+              {
+                "signal": "D076",
+                "slot": "S3",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "A",
+                "actual_read_store": "A_D076"
+              },
+              {
+                "signal": "D077",
+                "slot": "S3",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "A",
+                "actual_read_store": "A_D077"
+              }
+            ]
+          },
+          {
+            "slot": "S4",
+            "member_ids": [
+              {
+                "signal": "D075",
+                "slot": "S4",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "A",
+                "actual_read_store": "A_D075"
+              },
+              {
+                "signal": "D071",
+                "slot": "S4",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "A",
+                "actual_read_store": "A_D071_ALTERNATE_DIRECT"
+              },
+              {
+                "signal": "D076",
+                "slot": "S4",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "A",
+                "actual_read_store": "A_D076"
+              },
+              {
+                "signal": "D077",
+                "slot": "S4",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "A",
+                "actual_read_store": "A_D077"
+              }
+            ]
+          },
+          {
+            "slot": "S5",
+            "member_ids": [
+              {
+                "signal": "D075",
+                "slot": "S5",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "A",
+                "actual_read_store": "A_D075"
+              },
+              {
+                "signal": "D071",
+                "slot": "S5",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "A",
+                "actual_read_store": "A_D071_ALTERNATE_DIRECT"
+              },
+              {
+                "signal": "D076",
+                "slot": "S5",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "A",
+                "actual_read_store": "A_D076"
+              },
+              {
+                "signal": "D077",
+                "slot": "S5",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "A",
+                "actual_read_store": "A_D077"
+              }
+            ]
+          },
+          {
+            "slot": "S6",
+            "member_ids": [
+              {
+                "signal": "D075",
+                "slot": "S6",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "A",
+                "actual_read_store": "A_D075"
+              },
+              {
+                "signal": "D071",
+                "slot": "S6",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "A",
+                "actual_read_store": "A_D071_ALTERNATE_DIRECT"
+              },
+              {
+                "signal": "D076",
+                "slot": "S6",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "A",
+                "actual_read_store": "A_D076"
+              },
+              {
+                "signal": "D077",
+                "slot": "S6",
+                "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD",
+                "actual_source_specimen": "A",
+                "actual_read_store": "A_D077"
+              }
+            ]
+          }
+        ]
+      },
+      "independent_oracle": {
+        "actual_component_rows": 0,
+        "expected": "None at exact shared-parent full-payload group equality. Not a wrong ID, role, original source, frame, time-cutoff or arithmetic refusal; all actual nested and direct history parents independently valid. No same-owner immutability rewrite.",
+        "durability": "Actual all lawful parent stores retained with exact prior payloads; target coefficient returns None, writer and ordinary reopened component history empty; no result or correction/fallback. No additional target calls.",
+        "actual_S3_direct_first": "2026-10-16T12:40:03Z",
+        "actual_S3_nested_first": "2026-10-16T12:40:02Z",
+        "expected_same_logical_id": true,
+        "expected_distinct_complete_typed_payload": true,
+        "expected_only_different_field": "calculated_at_utc",
+        "all_other_required_shared_groups_exact": true,
+        "otherwise_actual_fit_oracle": "oracle_only_not_inputs.fit_oracles.A"
       },
       "execution_authorised": false,
       "status": "PROPOSED_NOT_RUN"
@@ -7714,6 +9758,674 @@
       },
       "execution_authorised": false,
       "status": "PROPOSED_NOT_RUN"
+    },
+    {
+      "family": "D078",
+      "proof_id": "M02-C28-D078",
+      "leaf": "L03",
+      "case_id": "D078-COEFFICIENT-NOT-KNOWN-AT-RESIDUAL-CUTOFF",
+      "kind": "REACHED_REFUSAL",
+      "node": "tests/product/m02_completion_28/d078/test_signal.py::test_d078_coefficient_unavailable_at_cutoff",
+      "specimens": [
+        {
+          "id": "A",
+          "expanded_sha256": "ca87adff2e2aa7a509c2f1d584eda019665fd7f38b3966b8be901fbddbcb22d1"
+        }
+      ],
+      "expected_stage": "COEFFICIENT_AVAILABILITY",
+      "setup_and_reached_preconditions": {
+        "source": "Fresh actual sealed A, actual complete literal original and projection records.",
+        "history_producer_slots": {
+          "D071": [
+            "S0",
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            "S6"
+          ],
+          "D072": [
+            "S0",
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            "S6"
+          ],
+          "D073": [
+            "S0",
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            "S6"
+          ],
+          "D074": [
+            "S0",
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            "S6"
+          ],
+          "D075": [
+            "S0",
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            "S6"
+          ],
+          "D076": [
+            "S0",
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            "S6"
+          ],
+          "D077": [
+            "S0",
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            "S6"
+          ]
+        },
+        "order": "Chronological each slot: five actual underlying public owners at +2, then actual D076/D077 public owners at +3, each relative actual correct parents via ordinary read-only public readers. All actual histories reopened for fit. No product test function reuse.",
+        "fit_origin": "S6",
+        "requested_training_slots": [
+          "S1",
+          "S2",
+          "S3",
+          "S4",
+          "S5",
+          "S6"
+        ],
+        "fit_row_roles": [
+          "D075",
+          "D071",
+          "D076",
+          "D077"
+        ],
+        "fit_now": "2026-10-19T12:40:05Z",
+        "actual_coefficient_producers": {
+          "D079": {
+            "origin": "S6",
+            "request": {
+              "derived_signal_id": "D079",
+              "origin": "S6",
+              "as_of": "2026-10-19T12:40:00Z",
+              "cutoff": "2026-10-19T12:40:04Z",
+              "ordered_rows": [
+                {
+                  "slot": "S1",
+                  "member_ids": [
+                    {
+                      "signal": "D075",
+                      "slot": "S1",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D071",
+                      "slot": "S1",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D076",
+                      "slot": "S1",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D077",
+                      "slot": "S1",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    }
+                  ]
+                },
+                {
+                  "slot": "S2",
+                  "member_ids": [
+                    {
+                      "signal": "D075",
+                      "slot": "S2",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D071",
+                      "slot": "S2",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D076",
+                      "slot": "S2",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D077",
+                      "slot": "S2",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    }
+                  ]
+                },
+                {
+                  "slot": "S3",
+                  "member_ids": [
+                    {
+                      "signal": "D075",
+                      "slot": "S3",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D071",
+                      "slot": "S3",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D076",
+                      "slot": "S3",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D077",
+                      "slot": "S3",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    }
+                  ]
+                },
+                {
+                  "slot": "S4",
+                  "member_ids": [
+                    {
+                      "signal": "D075",
+                      "slot": "S4",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D071",
+                      "slot": "S4",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D076",
+                      "slot": "S4",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D077",
+                      "slot": "S4",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    }
+                  ]
+                },
+                {
+                  "slot": "S5",
+                  "member_ids": [
+                    {
+                      "signal": "D075",
+                      "slot": "S5",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D071",
+                      "slot": "S5",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D076",
+                      "slot": "S5",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D077",
+                      "slot": "S5",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    }
+                  ]
+                },
+                {
+                  "slot": "S6",
+                  "member_ids": [
+                    {
+                      "signal": "D075",
+                      "slot": "S6",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D071",
+                      "slot": "S6",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D076",
+                      "slot": "S6",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D077",
+                      "slot": "S6",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    }
+                  ]
+                }
+              ]
+            },
+            "first_calculated_at": "2026-10-19T12:40:05Z"
+          },
+          "D080": {
+            "origin": "S6",
+            "request": {
+              "derived_signal_id": "D080",
+              "origin": "S6",
+              "as_of": "2026-10-19T12:40:00Z",
+              "cutoff": "2026-10-19T12:40:04Z",
+              "ordered_rows": [
+                {
+                  "slot": "S1",
+                  "member_ids": [
+                    {
+                      "signal": "D075",
+                      "slot": "S1",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D071",
+                      "slot": "S1",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D076",
+                      "slot": "S1",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D077",
+                      "slot": "S1",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    }
+                  ]
+                },
+                {
+                  "slot": "S2",
+                  "member_ids": [
+                    {
+                      "signal": "D075",
+                      "slot": "S2",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D071",
+                      "slot": "S2",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D076",
+                      "slot": "S2",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D077",
+                      "slot": "S2",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    }
+                  ]
+                },
+                {
+                  "slot": "S3",
+                  "member_ids": [
+                    {
+                      "signal": "D075",
+                      "slot": "S3",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D071",
+                      "slot": "S3",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D076",
+                      "slot": "S3",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D077",
+                      "slot": "S3",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    }
+                  ]
+                },
+                {
+                  "slot": "S4",
+                  "member_ids": [
+                    {
+                      "signal": "D075",
+                      "slot": "S4",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D071",
+                      "slot": "S4",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D076",
+                      "slot": "S4",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D077",
+                      "slot": "S4",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    }
+                  ]
+                },
+                {
+                  "slot": "S5",
+                  "member_ids": [
+                    {
+                      "signal": "D075",
+                      "slot": "S5",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D071",
+                      "slot": "S5",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D076",
+                      "slot": "S5",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D077",
+                      "slot": "S5",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    }
+                  ]
+                },
+                {
+                  "slot": "S6",
+                  "member_ids": [
+                    {
+                      "signal": "D075",
+                      "slot": "S6",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D071",
+                      "slot": "S6",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D076",
+                      "slot": "S6",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D077",
+                      "slot": "S6",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    }
+                  ]
+                }
+              ]
+            },
+            "first_calculated_at": "2026-10-19T12:40:05Z"
+          },
+          "D081": {
+            "origin": "S6",
+            "request": {
+              "derived_signal_id": "D081",
+              "origin": "S6",
+              "as_of": "2026-10-19T12:40:00Z",
+              "cutoff": "2026-10-19T12:40:04Z",
+              "ordered_rows": [
+                {
+                  "slot": "S1",
+                  "member_ids": [
+                    {
+                      "signal": "D075",
+                      "slot": "S1",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D071",
+                      "slot": "S1",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D076",
+                      "slot": "S1",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D077",
+                      "slot": "S1",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    }
+                  ]
+                },
+                {
+                  "slot": "S2",
+                  "member_ids": [
+                    {
+                      "signal": "D075",
+                      "slot": "S2",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D071",
+                      "slot": "S2",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D076",
+                      "slot": "S2",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D077",
+                      "slot": "S2",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    }
+                  ]
+                },
+                {
+                  "slot": "S3",
+                  "member_ids": [
+                    {
+                      "signal": "D075",
+                      "slot": "S3",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D071",
+                      "slot": "S3",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D076",
+                      "slot": "S3",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D077",
+                      "slot": "S3",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    }
+                  ]
+                },
+                {
+                  "slot": "S4",
+                  "member_ids": [
+                    {
+                      "signal": "D075",
+                      "slot": "S4",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D071",
+                      "slot": "S4",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D076",
+                      "slot": "S4",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D077",
+                      "slot": "S4",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    }
+                  ]
+                },
+                {
+                  "slot": "S5",
+                  "member_ids": [
+                    {
+                      "signal": "D075",
+                      "slot": "S5",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D071",
+                      "slot": "S5",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D076",
+                      "slot": "S5",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D077",
+                      "slot": "S5",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    }
+                  ]
+                },
+                {
+                  "slot": "S6",
+                  "member_ids": [
+                    {
+                      "signal": "D075",
+                      "slot": "S6",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D071",
+                      "slot": "S6",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D076",
+                      "slot": "S6",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    },
+                    {
+                      "signal": "D077",
+                      "slot": "S6",
+                      "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+                    }
+                  ]
+                }
+              ]
+            },
+            "first_calculated_at": "2026-10-20T12:40:05Z"
+          }
+        },
+        "after_fit": "After actual D079/D080 at S6+5, produce all seven actual S7 histories at normal +2/+3 and reopen current parents. Only then first materialise actual D081 with identical original prior S6 request, S6+4 cutoff, at S7+5. No earlier D081 materialisation. Reopen all actual coefficient stores before D078 call at S7+5.",
+        "coefficient_readback": "Use actual separate real SQLite coefficient stores, ordinary public readers; verify every local validity, exact common manifest, intercept/vector, actual provenance and timestamps; no injected DTO or numeric value.",
+        "reached": "All three actual coefficient occurrences are valid, exact same common A fit manifest and fit origin S6 strictly prior to S7. D079/D080 actual first S6+5 visible; actual D081 first S7+5 is reader-visible at actual residual now but not S7+4 residual cutoff. All actual current four parents aligned and cutoff-visible. Only D081 actual first calculated_at fails; no mixed/nonprior/current row mismatch or wrong coefficient. Same common fit identity omits component own calculated_at."
+      },
+      "request_and_exact_variation": {
+        "derived_signal_id": "D078",
+        "current_slot": "S7",
+        "as_of": "2026-10-20T12:40:00Z",
+        "knowledge_cutoff": "2026-10-20T12:40:04Z",
+        "now": "2026-10-20T12:40:05Z",
+        "current_ids": [
+          {
+            "signal": "D075",
+            "slot": "S7",
+            "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+          },
+          {
+            "signal": "D071",
+            "slot": "S7",
+            "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+          },
+          {
+            "signal": "D076",
+            "slot": "S7",
+            "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+          },
+          {
+            "signal": "D077",
+            "slot": "S7",
+            "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+          }
+        ],
+        "coefficient_ids": [
+          {
+            "signal": "D079",
+            "actual_fit_specimen": "A",
+            "fit_origin": "S6",
+            "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+          },
+          {
+            "signal": "D080",
+            "actual_fit_specimen": "A",
+            "fit_origin": "S6",
+            "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+          },
+          {
+            "signal": "D081",
+            "actual_fit_specimen": "A",
+            "fit_origin": "S6",
+            "identity": "ACTUAL_PUBLIC_GETTER_ID_AND_CANONICAL_PAYLOAD"
+          }
+        ]
+      },
+      "independent_oracle": {
+        "actual_rows": 0,
+        "actual_late_component": "D081",
+        "actual_component_first_calculated_at": "2026-10-20T12:40:05Z",
+        "actual_residual_cutoff": "2026-10-20T12:40:04Z",
+        "expected": "None at actual coefficient cutoff visibility after same-fit and strictly prior origin. All actual lawful coefficients and current history preserved, empty writer and ordinary reopened residual store. No use of later actual now, substitution or refit."
+      },
+      "execution_authorised": false,
+      "status": "PROPOSED_NOT_RUN"
     }
-  ]
+  ],
+  "revision": {
+    "revision": "R1",
+    "prior_proposal_commit": "1d87672dadb3eb28cfd60af93b1fa3dc2ad4a0e9",
+    "prior_inventory_sha256": "cd48eccdca52968b0f73d238e013838c7bb73033cf9a88f52780f3b167b019fa",
+    "independent_return_commit": "4fbbb4bd58513568761f0c3c8feee1b67f31c5e5",
+    "independent_return_sha256": "8191f902d450a0ef7117394bebfd505a472fd29ebf039cec4b90adefd43161ac",
+    "prior_28_case_objects_exactly_preserved": true,
+    "additional_case_ids": [
+      "SUP-D077-HISTORY-MIXED-ORIGINAL-ROSTER",
+      "D079-MIXED-SOURCE-CORPUS",
+      "D080-CONDITION-INCLUSIVE-BOUNDARY",
+      "D080-FIT-ROW-MISALIGNMENT",
+      "D081-SHARED-PARENT-PAYLOAD-MISMATCH",
+      "D078-COEFFICIENT-NOT-KNOWN-AT-RESIDUAL-CUTOFF"
+    ],
+    "unchanged_literal_specimen_manifest_sha256": "bb03481de75e1820c7aff61777a4a3aa4f676440ec03e373a05c032a0417c76d",
+    "additional_raw_specimens": 0,
+    "all_new_cases_unadmitted": true
+  }
 }
