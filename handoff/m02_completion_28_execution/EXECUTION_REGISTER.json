@@ -1074,7 +1074,7 @@
         "L10c"
       ],
       "obligation": "Compute 100*D109/positive aligned R118 spot in compatible currency-per-share units. Retain straddle and spot identity. Do not multiply per-share premium by an inferred 100-share contract multiplier. Refuse nonpositive spot, missing or incompatible units.",
-      "status": "D110_REGISTERED_IMPLEMENTED_UNTESTED_STRICT_TESTER_INTAKE_PENDING",
+      "status": "D110_EXACT10_CONDITIONAL_EXECUTION_RELEASED_STRICT_TESTER_ONLY",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G2_AFTER_L18"
@@ -1085,8 +1085,8 @@
         "owner_authority_sha256": "a7fb45cc876e1450f59678c6599113d86b7b59db9a855e0481edd64f717dc375",
         "independent_R1_verdict_commit": "58a21fd7e5f8aa800eac28340d62d483211086cd",
         "admitted_case_count": 10,
-        "execution_release": false,
-        "first_dependency_hold": "Same sole strict Tester candidate-specific qualification and independent report, then Worker reconciliation and separate exact conditional ten-case release.",
+        "execution_release": true,
+        "first_dependency_hold": "Actual same sole strict Tester pre-call exact ten-node gate, one exact run and independent semantic report; no wider release or acceptance.",
         "parent_proof_refs": {
           "L17": "02e62a1a31bafe6f465eb3e1a513ffb41dd09ff8",
           "L17_source_candidate": "6d5a1260846649f2566513609d8c0c5a54f05d94",
@@ -1226,12 +1226,36 @@
           "runs": 0
         },
         "d110_strict_tester_intake": {
-          "status": "INDEPENDENT_CANDIDATE_QUALIFICATION_PENDING",
+          "status": "INDEPENDENT_CANDIDATE_QUALIFIED_READY_FOR_CASE_RELEASE",
           "tester_conversation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
           "existing_identity_commit": "5cdc7ca5b8f0f9df720268e92c28f2f637d1b71d",
           "commission_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_D110_STRICT_TESTER_INTAKE_COMMISSION_20261126.md",
           "report_branch": "review/pm-l18-d110-scalar-strict-tester-intake-20261126",
-          "report_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_D110_STRICT_TESTER_INTAKE_REPORT_20261126.md"
+          "report_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_D110_STRICT_TESTER_INTAKE_REPORT_20261126.md",
+          "report_commit": "6516c5bca9d46baf04aa5f0fd624545e6c3d42f4",
+          "report_tree": "44301ce3d206b08c4aeeaf7d6735005667d013c0",
+          "report_parent": "0ab01d67caa175f5d3c880b6388fba0e233612eb",
+          "report_blob": "78eaaaa001d6338bd3a6e6fc22fe33220d4976d4",
+          "report_sha256": "1ad0a6a54d2cd670514c0cceb9d9811ee1f65aaaa58cd58f4838e2a5fb0857ce",
+          "disposition": "D110_CANDIDATE_INTAKE_VERIFIED_READY_FOR_CASE_RELEASE",
+          "worker_reconciliation": "Ten actual retained helper/log pairs length/hash, full helper renderings and ordered selected log lines; same clean receiver at V, actual 66 literal and 29 required remote tips; prior 57/171 raw outcomes and both exact gates; all 29 support/D109 original database hashes, exact guard and current interpreter/hook hashes; independent corrected mechanical logs, no product run. Initial scope/oracle/module/log diagnostics retained and resolved."
+        },
+        "d110_exact10_release": {
+          "status": "CONDITIONAL_ON_ACTUAL_PRECALL_EXACT_COLLECTION_GATE",
+          "commission_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_D110_EXACT_CASE_RELEASE_20261126.md",
+          "source_candidate": "0ab01d67caa175f5d3c880b6388fba0e233612eb",
+          "intake_commit": "6516c5bca9d46baf04aa5f0fd624545e6c3d42f4",
+          "exact_nodes_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_D110_EXACT_ORDERED_NODES_20261126.json",
+          "exact_nodes_sha256": "76c4fee777a365050b5ae441037e0c1153b970eaea0595960f8fa88157afe3ea",
+          "external_guard_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_SUPPORT16_COLLECTION_GUARD_20261126.py",
+          "external_guard_sha256": "930752309edb0f30dec1e6774e2c0eca090c8589e20b74195b49ec9b01b58412",
+          "product_report_branch": "review/pm-l18-d110-scalar-product-proof-20261126",
+          "product_report_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_D110_PRODUCT_PROOF_REPORT_20261126.md",
+          "held_ledger_parent": "286bffacb986bed18ab6d4f070d5d32b405bbc1a",
+          "release_ledger_sha256": "13e3628d99e7f2d772e70c561aed638b121c4689a3f4a8601af497bf0b6e53f2",
+          "physical_case_count": 10,
+          "product_run_count": 0,
+          "tester_conversation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382"
         }
       }
     },

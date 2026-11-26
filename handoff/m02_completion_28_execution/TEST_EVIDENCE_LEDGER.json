@@ -1372,7 +1372,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_scalar_straddle_d110/test_signal.py",
             "proposed_test_node": "tests/product/m02_scalar_straddle_d110/test_signal.py::test_d110_controlled_success",
-            "status": "OWNER_FINITE_ADMITTED_REGISTERED_EXECUTION_HELD",
+            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_D110_EXACT10_CONDITIONAL_PRECALL_GATE",
             "expected_stage": "PERCENT_AND_DURABLE_REOPEN",
             "fixture_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_FINITE_SPECIMENS_PROPOSED_20261125.json",
             "fixture_sha256": "5e341ef9289f185d4ae9da53eaca9852735af632b17400a89a10508a114dd760",
@@ -1381,7 +1381,7 @@
             "core_sha256": "477028e777fbcb43c46c3752c14176a1b524f90084635106e45f56d0540929ce",
             "oracle": "Actual independently accepted D109 profile and current actual D109 5/1; C1 R118 111; exact 500/111 percent, not strike110 or missing factor100; ordinary read-only reopen and retry.",
             "claim_generation_binding": "candidate:0ab01d67caa175f5d3c880b6388fba0e233612eb|M02_claim:neutral_market_measurement_truth_d110|generation:0001@sha256:7c4a7c9c14ec6ccf29226fafc5816cf27edd842cfbea22f932bed57c9af281b6|pointer_sha256:fdd87f3b15e8f8c99422d258ed6f0f1d3b1a1aeaa943b458c1821c4aa20aa191",
-            "execution_authorised": false
+            "execution_authorised": true
           },
           {
             "case_id": "D110-CONTROLLED-REACHED_REFUSAL",
@@ -1389,7 +1389,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_scalar_straddle_d110/test_signal.py",
             "proposed_test_node": "tests/product/m02_scalar_straddle_d110/test_signal.py::test_d110_zero_spot",
-            "status": "OWNER_FINITE_ADMITTED_REGISTERED_EXECUTION_HELD",
+            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_D110_EXACT10_CONDITIONAL_PRECALL_GATE",
             "expected_stage": "SPOT_POSITIVITY",
             "fixture_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_FINITE_SPECIMENS_PROPOSED_20261125.json",
             "fixture_sha256": "5e341ef9289f185d4ae9da53eaca9852735af632b17400a89a10508a114dd760",
@@ -1398,7 +1398,7 @@
             "core_sha256": "477028e777fbcb43c46c3752c14176a1b524f90084635106e45f56d0540929ce",
             "oracle": "Actual same accepted core D109=5/1; selected actual finite C1 spot 0, correct metadata; refuse >0.",
             "claim_generation_binding": "candidate:0ab01d67caa175f5d3c880b6388fba0e233612eb|M02_claim:neutral_market_measurement_truth_d110|generation:0001@sha256:7c4a7c9c14ec6ccf29226fafc5816cf27edd842cfbea22f932bed57c9af281b6|pointer_sha256:fdd87f3b15e8f8c99422d258ed6f0f1d3b1a1aeaa943b458c1821c4aa20aa191",
-            "execution_authorised": false
+            "execution_authorised": true
           },
           {
             "case_id": "D110-NEGATIVE-SPOT",
@@ -1406,7 +1406,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_scalar_straddle_d110/test_signal.py",
             "proposed_test_node": "tests/product/m02_scalar_straddle_d110/test_signal.py::test_d110_negative_spot",
-            "status": "OWNER_FINITE_ADMITTED_REGISTERED_EXECUTION_HELD",
+            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_D110_EXACT10_CONDITIONAL_PRECALL_GATE",
             "expected_stage": "SPOT_POSITIVITY",
             "fixture_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_FINITE_SPECIMENS_PROPOSED_20261125.json",
             "fixture_sha256": "5e341ef9289f185d4ae9da53eaca9852735af632b17400a89a10508a114dd760",
@@ -1415,7 +1415,7 @@
             "core_sha256": "477028e777fbcb43c46c3752c14176a1b524f90084635106e45f56d0540929ce",
             "oracle": "Actual same core D109=5/1, selected actual C1 spot -1 finite, correct metadata; reject nonzero negative.",
             "claim_generation_binding": "candidate:0ab01d67caa175f5d3c880b6388fba0e233612eb|M02_claim:neutral_market_measurement_truth_d110|generation:0001@sha256:7c4a7c9c14ec6ccf29226fafc5816cf27edd842cfbea22f932bed57c9af281b6|pointer_sha256:fdd87f3b15e8f8c99422d258ed6f0f1d3b1a1aeaa943b458c1821c4aa20aa191",
-            "execution_authorised": false
+            "execution_authorised": true
           },
           {
             "case_id": "D110-MISSING-SPOT",
@@ -1423,7 +1423,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_scalar_straddle_d110/test_signal.py",
             "proposed_test_node": "tests/product/m02_scalar_straddle_d110/test_signal.py::test_d110_missing_spot",
-            "status": "OWNER_FINITE_ADMITTED_REGISTERED_EXECUTION_HELD",
+            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_D110_EXACT10_CONDITIONAL_PRECALL_GATE",
             "expected_stage": "SPOT_CARDINALITY",
             "fixture_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_FINITE_SPECIMENS_PROPOSED_20261125.json",
             "fixture_sha256": "5e341ef9289f185d4ae9da53eaca9852735af632b17400a89a10508a114dd760",
@@ -1432,7 +1432,7 @@
             "core_sha256": "477028e777fbcb43c46c3752c14176a1b524f90084635106e45f56d0540929ce",
             "oracle": "Actual D109 materialises with six core records, no R118 anywhere; D110 refuses missing spot.",
             "claim_generation_binding": "candidate:0ab01d67caa175f5d3c880b6388fba0e233612eb|M02_claim:neutral_market_measurement_truth_d110|generation:0001@sha256:7c4a7c9c14ec6ccf29226fafc5816cf27edd842cfbea22f932bed57c9af281b6|pointer_sha256:fdd87f3b15e8f8c99422d258ed6f0f1d3b1a1aeaa943b458c1821c4aa20aa191",
-            "execution_authorised": false
+            "execution_authorised": true
           },
           {
             "case_id": "D110-WRONG-SPOT-RIGHT",
@@ -1440,7 +1440,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_scalar_straddle_d110/test_signal.py",
             "proposed_test_node": "tests/product/m02_scalar_straddle_d110/test_signal.py::test_d110_wrong_spot_right",
-            "status": "OWNER_FINITE_ADMITTED_REGISTERED_EXECUTION_HELD",
+            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_D110_EXACT10_CONDITIONAL_PRECALL_GATE",
             "expected_stage": "SPOT_CARDINALITY",
             "fixture_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_FINITE_SPECIMENS_PROPOSED_20261125.json",
             "fixture_sha256": "5e341ef9289f185d4ae9da53eaca9852735af632b17400a89a10508a114dd760",
@@ -1449,7 +1449,7 @@
             "core_sha256": "477028e777fbcb43c46c3752c14176a1b524f90084635106e45f56d0540929ce",
             "oracle": "Actual D109 valid, genuine C2 R118 present, C1 absent; no opposite-leg fallback.",
             "claim_generation_binding": "candidate:0ab01d67caa175f5d3c880b6388fba0e233612eb|M02_claim:neutral_market_measurement_truth_d110|generation:0001@sha256:7c4a7c9c14ec6ccf29226fafc5816cf27edd842cfbea22f932bed57c9af281b6|pointer_sha256:fdd87f3b15e8f8c99422d258ed6f0f1d3b1a1aeaa943b458c1821c4aa20aa191",
-            "execution_authorised": false
+            "execution_authorised": true
           },
           {
             "case_id": "D110-SPOT-ORIGINAL-UNITS",
@@ -1457,7 +1457,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_scalar_straddle_d110/test_signal.py",
             "proposed_test_node": "tests/product/m02_scalar_straddle_d110/test_signal.py::test_d110_spot_original_units",
-            "status": "OWNER_FINITE_ADMITTED_REGISTERED_EXECUTION_HELD",
+            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_D110_EXACT10_CONDITIONAL_PRECALL_GATE",
             "expected_stage": "SPOT_ORIGINAL_METADATA",
             "fixture_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_FINITE_SPECIMENS_PROPOSED_20261125.json",
             "fixture_sha256": "5e341ef9289f185d4ae9da53eaca9852735af632b17400a89a10508a114dd760",
@@ -1466,7 +1466,7 @@
             "core_sha256": "477028e777fbcb43c46c3752c14176a1b524f90084635106e45f56d0540929ce",
             "oracle": "Actual D109 valid; C1 R118 original USD_per_contract while mapping says USD_per_share; refuse.",
             "claim_generation_binding": "candidate:0ab01d67caa175f5d3c880b6388fba0e233612eb|M02_claim:neutral_market_measurement_truth_d110|generation:0001@sha256:7c4a7c9c14ec6ccf29226fafc5816cf27edd842cfbea22f932bed57c9af281b6|pointer_sha256:fdd87f3b15e8f8c99422d258ed6f0f1d3b1a1aeaa943b458c1821c4aa20aa191",
-            "execution_authorised": false
+            "execution_authorised": true
           },
           {
             "case_id": "D110-SPOT-WRONG-EVENT",
@@ -1474,7 +1474,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_scalar_straddle_d110/test_signal.py",
             "proposed_test_node": "tests/product/m02_scalar_straddle_d110/test_signal.py::test_d110_spot_wrong_event",
-            "status": "OWNER_FINITE_ADMITTED_REGISTERED_EXECUTION_HELD",
+            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_D110_EXACT10_CONDITIONAL_PRECALL_GATE",
             "expected_stage": "SPOT_ORIGINAL_CLOCK",
             "fixture_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_FINITE_SPECIMENS_PROPOSED_20261125.json",
             "fixture_sha256": "5e341ef9289f185d4ae9da53eaca9852735af632b17400a89a10508a114dd760",
@@ -1483,7 +1483,7 @@
             "core_sha256": "477028e777fbcb43c46c3752c14176a1b524f90084635106e45f56d0540929ce",
             "oracle": "Actual D109 valid; C1 R118 event T-1 receipt T visible but exact T mismatch; refuse.",
             "claim_generation_binding": "candidate:0ab01d67caa175f5d3c880b6388fba0e233612eb|M02_claim:neutral_market_measurement_truth_d110|generation:0001@sha256:7c4a7c9c14ec6ccf29226fafc5816cf27edd842cfbea22f932bed57c9af281b6|pointer_sha256:fdd87f3b15e8f8c99422d258ed6f0f1d3b1a1aeaa943b458c1821c4aa20aa191",
-            "execution_authorised": false
+            "execution_authorised": true
           },
           {
             "case_id": "D110-SPOT-AMBIGUOUS",
@@ -1491,7 +1491,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_scalar_straddle_d110/test_signal.py",
             "proposed_test_node": "tests/product/m02_scalar_straddle_d110/test_signal.py::test_d110_spot_ambiguous",
-            "status": "OWNER_FINITE_ADMITTED_REGISTERED_EXECUTION_HELD",
+            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_D110_EXACT10_CONDITIONAL_PRECALL_GATE",
             "expected_stage": "SPOT_CARDINALITY",
             "fixture_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_FINITE_SPECIMENS_PROPOSED_20261125.json",
             "fixture_sha256": "5e341ef9289f185d4ae9da53eaca9852735af632b17400a89a10508a114dd760",
@@ -1500,7 +1500,7 @@
             "core_sha256": "477028e777fbcb43c46c3752c14176a1b524f90084635106e45f56d0540929ce",
             "oracle": "Actual D109 valid; two distinct eligible C1 R118 at T, 111/112; refuse, no sequence ranking.",
             "claim_generation_binding": "candidate:0ab01d67caa175f5d3c880b6388fba0e233612eb|M02_claim:neutral_market_measurement_truth_d110|generation:0001@sha256:7c4a7c9c14ec6ccf29226fafc5816cf27edd842cfbea22f932bed57c9af281b6|pointer_sha256:fdd87f3b15e8f8c99422d258ed6f0f1d3b1a1aeaa943b458c1821c4aa20aa191",
-            "execution_authorised": false
+            "execution_authorised": true
           },
           {
             "case_id": "D110-MISSING-PARENT",
@@ -1508,7 +1508,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_scalar_straddle_d110/test_signal.py",
             "proposed_test_node": "tests/product/m02_scalar_straddle_d110/test_signal.py::test_d110_missing_parent",
-            "status": "OWNER_FINITE_ADMITTED_REGISTERED_EXECUTION_HELD",
+            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_D110_EXACT10_CONDITIONAL_PRECALL_GATE",
             "expected_stage": "PARENT_LOOKUP",
             "fixture_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_FINITE_SPECIMENS_PROPOSED_20261125.json",
             "fixture_sha256": "5e341ef9289f185d4ae9da53eaca9852735af632b17400a89a10508a114dd760",
@@ -1517,7 +1517,7 @@
             "core_sha256": "477028e777fbcb43c46c3752c14176a1b524f90084635106e45f56d0540929ce",
             "oracle": "Actual legal D109 and lawful spot exist; request nonexistent D109 ID; no reconstruction or output.",
             "claim_generation_binding": "candidate:0ab01d67caa175f5d3c880b6388fba0e233612eb|M02_claim:neutral_market_measurement_truth_d110|generation:0001@sha256:7c4a7c9c14ec6ccf29226fafc5816cf27edd842cfbea22f932bed57c9af281b6|pointer_sha256:fdd87f3b15e8f8c99422d258ed6f0f1d3b1a1aeaa943b458c1821c4aa20aa191",
-            "execution_authorised": false
+            "execution_authorised": true
           },
           {
             "case_id": "D110-WRONG-CORE",
@@ -1525,7 +1525,7 @@
             "variant": "CONTROLLED",
             "proof_path": "tests/product/m02_scalar_straddle_d110/test_signal.py",
             "proposed_test_node": "tests/product/m02_scalar_straddle_d110/test_signal.py::test_d110_wrong_core",
-            "status": "OWNER_FINITE_ADMITTED_REGISTERED_EXECUTION_HELD",
+            "status": "OWNER_FINITE_ADMITTED_EXECUTION_RELEASED_D110_EXACT10_CONDITIONAL_PRECALL_GATE",
             "expected_stage": "PARENT_CORE_ALIGNMENT",
             "fixture_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_FINITE_SPECIMENS_PROPOSED_20261125.json",
             "fixture_sha256": "5e341ef9289f185d4ae9da53eaca9852735af632b17400a89a10508a114dd760",
@@ -1534,17 +1534,17 @@
             "core_sha256": "34e648cd4b3b1ea8c210c5578060badcb49fc0e373fedc52f460dcc56e28ba32",
             "oracle": "Use actual accepted BASE D109 with C60 core and legal R118; reject incompatible core before spot arithmetic.",
             "claim_generation_binding": "candidate:0ab01d67caa175f5d3c880b6388fba0e233612eb|M02_claim:neutral_market_measurement_truth_d110|generation:0001@sha256:7c4a7c9c14ec6ccf29226fafc5816cf27edd842cfbea22f932bed57c9af281b6|pointer_sha256:fdd87f3b15e8f8c99422d258ed6f0f1d3b1a1aeaa943b458c1821c4aa20aa191",
-            "execution_authorised": false,
+            "execution_authorised": true,
             "alternate_actual_parent_specimen": "BASE",
             "alternate_specimen_sha256": "9486f9a4cd45756c167837b67a0626b8e232403d55fa07ac42cae3671b969358"
           }
         ],
-        "admission_status": "OWNER_APPROVED_EXACT_FINITE_CASES_REGISTERED_EXECUTION_HELD",
-        "execution_release": false,
+        "admission_status": "OWNER_APPROVED_EXACT_FINITE_CASES_RELEASED_D110_EXACT10_CONDITIONAL_PRECALL_GATE",
+        "execution_release": true,
         "owner_decision_path": "handoff/m02_completion_28_execution/L10c/OWNER_SCALAR_STRADDLE_CONDITIONAL_EXECUTION_GRANT_20261125.json",
         "owner_decision_blob_sha1": "83b33b38ea375a951f3d3301992754de9270185d",
         "inventory_git_blob_sha1": "4f2afd147d97f00a540bc477f0005af4ce67c6a8",
-        "source_claim_generation_bindings": "candidate:0ab01d67caa175f5d3c880b6388fba0e233612eb|M02_claim:neutral_market_measurement_truth_d110|generation:0001@sha256:7c4a7c9c14ec6ccf29226fafc5816cf27edd842cfbea22f932bed57c9af281b6|pointer_sha256:fdd87f3b15e8f8c99422d258ed6f0f1d3b1a1aeaa943b458c1821c4aa20aa191|source_policy_sha256:279f1cd166ad0c11585c9776dc4a45b5d949946a513717c39f1dcc9a816e8561|specimen_manifest_sha256:5e341ef9289f185d4ae9da53eaca9852735af632b17400a89a10508a114dd760|source_test_sha256:e15aaba1e3d8e67fa17ccf97f87da26380617c6f37fa29d30c62dc38738dabf4|independent_L17:02e62a1a31bafe6f465eb3e1a513ffb41dd09ff8|independent_L10c:c07ab2881be128a577eb07460722500a58869e0c|REGISTRATION_VERIFIED_EXECUTION_HELD_PENDING_TESTER_AND_RELEASE",
+        "source_claim_generation_bindings": "candidate:0ab01d67caa175f5d3c880b6388fba0e233612eb|M02_claim:neutral_market_measurement_truth_d110|generation:0001@sha256:7c4a7c9c14ec6ccf29226fafc5816cf27edd842cfbea22f932bed57c9af281b6|pointer_sha256:fdd87f3b15e8f8c99422d258ed6f0f1d3b1a1aeaa943b458c1821c4aa20aa191|source_policy_sha256:279f1cd166ad0c11585c9776dc4a45b5d949946a513717c39f1dcc9a816e8561|specimen_manifest_sha256:5e341ef9289f185d4ae9da53eaca9852735af632b17400a89a10508a114dd760|source_test_sha256:e15aaba1e3d8e67fa17ccf97f87da26380617c6f37fa29d30c62dc38738dabf4|independent_L17:02e62a1a31bafe6f465eb3e1a513ffb41dd09ff8|independent_L10c:c07ab2881be128a577eb07460722500a58869e0c|strict_tester:https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382|independent_d110_intake:6516c5bca9d46baf04aa5f0fd624545e6c3d42f4|python_sha256:d114ec20c65fb65c77608f7b8b7110d0ff95e3b3c814f65580dad17fb56e012c|sqlite_sha256:44a469c2ed17ee19dca5f0c949f97b98b7ad0f1260bdb41fc153a4530324fb2f|observer_sha256:1aafb2d33395d20e2a41ce7cc78e0c2dd2e934149f727ba888832559865a2273|external_pre_call_guard_sha256:930752309edb0f30dec1e6774e2c0eca090c8589e20b74195b49ec9b01b58412|exact_nodes_sha256:76c4fee777a365050b5ae441037e0c1153b970eaea0595960f8fa88157afe3ea|CONDITIONAL_ON_EXACT_ACTUAL_PRECALL_GATE",
         "reviewed_claim_id": "neutral_market_measurement_truth_d110",
         "reviewed_specimen_manifest_sha256": "5e341ef9289f185d4ae9da53eaca9852735af632b17400a89a10508a114dd760",
         "reviewed_brief_sha256": "04697219c5d5057ac3884aceb09d754dc391a66f6ed4a425459c938c684b1d8d"
@@ -1554,7 +1554,25 @@
         "reviewer": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
         "semantic_status": "NOT_ATTEMPTED",
         "runs": [],
-        "dependency_window_release": "AFTER_INDEPENDENTLY_ACCEPTED_D109_AND_L10C"
+        "dependency_window_release": "AFTER_INDEPENDENTLY_ACCEPTED_D109_AND_L10C",
+        "release_predicates": {
+          "candidate_commit": "0ab01d67caa175f5d3c880b6388fba0e233612eb",
+          "candidate_tree": "8ad78ab8fd5e334e1c6b62f0b1c9d64153c69bd9",
+          "tester_conversation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
+          "intake_commit": "6516c5bca9d46baf04aa5f0fd624545e6c3d42f4",
+          "intake_report_sha256": "1ad0a6a54d2cd670514c0cceb9d9811ee1f65aaaa58cd58f4838e2a5fb0857ce",
+          "release_commission_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_D110_EXACT_CASE_RELEASE_20261126.md",
+          "external_guard_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_SUPPORT16_COLLECTION_GUARD_20261126.py",
+          "external_guard_sha256": "930752309edb0f30dec1e6774e2c0eca090c8589e20b74195b49ec9b01b58412",
+          "exact_nodes_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_D110_EXACT_ORDERED_NODES_20261126.json",
+          "exact_nodes_sha256": "76c4fee777a365050b5ae441037e0c1153b970eaea0595960f8fa88157afe3ea",
+          "guard_nonproduct_qualification_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_SUPPORT16_NONPRODUCT_GUARD_QUALIFICATION_20261126.json",
+          "guard_nonproduct_qualification_sha256": "60de74e920b13f35240685a059e1de45840ad1432b9aca3c5e1852de59eb670a",
+          "accepted_L04_report": "7322441997d5ab75fa412676e3ae42aba03dcb79",
+          "accepted_L10c_report": "c07ab2881be128a577eb07460722500a58869e0c",
+          "accepted_L17_report": "02e62a1a31bafe6f465eb3e1a513ffb41dd09ff8",
+          "precall_gate": "Same sole strict Tester verifies exact previously qualified guard and actual ordered ten collected nodes and observer before any setup/call. No other cases or prior 57 rerun."
+        }
       }
     },
     {
