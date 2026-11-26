@@ -1074,7 +1074,7 @@
         "L10c"
       ],
       "obligation": "Compute 100*D109/positive aligned R118 spot in compatible currency-per-share units. Retain straddle and spot identity. Do not multiply per-share premium by an inferred 100-share contract multiplier. Refuse nonpositive spot, missing or incompatible units.",
-      "status": "D110_EXACT10_CONDITIONAL_EXECUTION_RELEASED_STRICT_TESTER_ONLY",
+      "status": "TESTED_ACCEPTED_D110_L18_CONTROLLED_SCOPE_ONLY",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G2_AFTER_L18"
@@ -1086,7 +1086,7 @@
         "independent_R1_verdict_commit": "58a21fd7e5f8aa800eac28340d62d483211086cd",
         "admitted_case_count": 10,
         "execution_release": true,
-        "first_dependency_hold": "Actual same sole strict Tester pre-call exact ten-node gate, one exact run and independent semantic report; no wider release or acceptance.",
+        "first_dependency_hold": "None within exact accepted L18 scope; further dependent work requires its own source/authority/finite admission; no rerun.",
         "parent_proof_refs": {
           "L17": "02e62a1a31bafe6f465eb3e1a513ffb41dd09ff8",
           "L17_source_candidate": "6d5a1260846649f2566513609d8c0c5a54f05d94",
@@ -1254,8 +1254,23 @@
           "held_ledger_parent": "286bffacb986bed18ab6d4f070d5d32b405bbc1a",
           "release_ledger_sha256": "13e3628d99e7f2d772e70c561aed638b121c4689a3f4a8601af497bf0b6e53f2",
           "physical_case_count": 10,
-          "product_run_count": 0,
+          "product_run_count": 1,
           "tester_conversation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382"
+        },
+        "d110_acceptance": {
+          "status": "TESTED_ACCEPTED_D110_L18_EXACT10_ONLY",
+          "source_commit": "0ab01d67caa175f5d3c880b6388fba0e233612eb",
+          "report_commit": "ff8fec37f8ad2e55dd61d23ac4ebec1ebf1d2cac",
+          "report_tree": "96dc9e21451f049ad7f05a677e279dafa3377ec8",
+          "report_sha256": "5ed4b7b9e93ca77d58914f80ab995847005e73704b680fac83dddf9156047d89",
+          "report_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_D110_PRODUCT_PROOF_REPORT_20261126.md",
+          "receipt_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_D110_ACCEPTANCE_RECONCILIATION_20261126.md",
+          "observer_sha256": "b4c5729442ca875f7ed5b9e082746d42d60eb051ac991064190336a48e195b21",
+          "gate_sha256": "03dc1fe5eb0094a99289bccd338afa05fee603d8f5593042a9f3ac92b543735e",
+          "case_count": 10,
+          "phase_count": 30,
+          "actual_d110_id": "mmtd110scalar1:36bbe967ab8cdd06d4383f3fa39dd902b16f41c0f9da3a8afb098aeaab06bff3",
+          "actual_result": "500/111 percent"
         }
       }
     },
