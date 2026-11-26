@@ -1,0 +1,729 @@
+{
+  "status": "PROPOSED_OWNER_DECISION_REQUIRED_NOT_ADMITTED_NOT_RUN",
+  "schema_version": 1,
+  "policy_id": "T01-L01A-ALIGNED-HISTORY/1",
+  "input_checkpoint": "bb3f390a194e03a46d362468f2db43ec2b870422",
+  "independent_source_readiness_verdict": {
+    "commit": "713f106a0a5b3c71a731950c2800b95ad66abeef",
+    "tree": "294b52ab65cb04a1a113dcaef5f4581dce4feacd",
+    "path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_ALIGNED_HISTORY_JOINT_FIT_SOURCE_READINESS_VERDICT_20261126.md",
+    "sha256": "123ff34ddd5bddb5ce8d17bd607e7c03e00c03779178750207275dd22678a419"
+  },
+  "scope": "Controlled synthetic L01a histories D071-D077, L02 D079-D081, L03 D078 only. M02 owner. No M01 ownership substitute, no M00 source change proposed, no old profile or claim rewrite, no D082, live provider/calendar/production policy, main/PG/D145.",
+  "authority_refs": [
+    {
+      "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CALCULATION_TRUTH_INPUT_BRIEF.md",
+      "sha256": "603b850802a418780109095e7ae69bcece449da79fb24140a6d50297605e927c"
+    },
+    {
+      "path": "handoff/m01_completion/authority/NVDA_DERIVED_SIGNAL_CATALOGUE.csv",
+      "sha256": "67bacbcf77afa766cec220a8d4a0f9589c9568d4a1f5c5818334915adf72e549"
+    },
+    {
+      "path": "EXEC_PLAN.md",
+      "sha256": "db6d8ae6ad7b43402290c07d3d23d9ba018dd187c73ba3f186ac218e56b2d32b"
+    },
+    {
+      "path": "handoff/planning/t01_owner_lint_integration_20261115/DEPENDENCY_WINDOWS.md",
+      "sha256": "8b2e1815f8a8067f8cc6a7296bcf46788016b4efca5a03f022c1e161184c0031"
+    },
+    {
+      "path": "handoff/planning/m02_foundation_completion_20261030/PROOF_ALLOCATION_PROPOSED.json",
+      "sha256": "c5713badfdbf9203c390ca18b72a4463c43aa129724e48b19ba763537e457135"
+    }
+  ],
+  "specimen_manifest": {
+    "path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_FINITE_SPECIMENS_PROPOSED_20261126.json",
+    "sha256": "bb03481de75e1820c7aff61777a4a3aa4f676440ec03e373a05c032a0417c76d",
+    "frame_path": "frames",
+    "base_member_path": "base_members",
+    "specimen_path": "specimens",
+    "allowed_specimens": {
+      "A": {
+        "count": 80,
+        "sha256": "ca87adff2e2aa7a509c2f1d584eda019665fd7f38b3966b8be901fbddbcb22d1"
+      },
+      "B": {
+        "count": 80,
+        "sha256": "76eb52b30f57e00a07381b53f80312c946b81b94cacc977d89e061ed8b6733ed"
+      },
+      "RANK": {
+        "count": 80,
+        "sha256": "5f2d17af42851921c294d2367a13f3c7fabf3e87e0b2dc03b5ebbd4e7797240e"
+      },
+      "COND": {
+        "count": 80,
+        "sha256": "9b9c2dc6ba723e3d0fec8322375ba1f073e4a2fc278d705a834abed6e33d183d"
+      },
+      "C_NONPRIOR": {
+        "count": 80,
+        "sha256": "3ec6d0f754c65a07afa5f0c3716c4a1ef43cf0b6f1ed2287f737cff2ff3dd96f"
+      },
+      "SPY_OFF_ANCHOR": {
+        "count": 80,
+        "sha256": "dc062c52f5a0a6b08240411eb0290cc68d46f35b29c49cd0c6c8370af632c515"
+      },
+      "QQQ_WRONG_ROLE": {
+        "count": 80,
+        "sha256": "766bc5f7e35e272a5e9a231bac818435ee80664650e676d0a4f1a65e13ebf676"
+      },
+      "SMH_LATE": {
+        "count": 80,
+        "sha256": "10f68ac080b7cf5bc0046fbe54501b41f62ef0b4c6b2820fee176ba49dbedc5d"
+      },
+      "SOXX_AMBIGUOUS": {
+        "count": 81,
+        "sha256": "e76836215be970c189d6b0ec9750cf3c756a19d7abca97aa317b576b34b5cbad"
+      },
+      "NVDA_WRONG_UNITS": {
+        "count": 80,
+        "sha256": "21f575fa9be363410c92014d758231b724a3f06a9a015ae70266396294f8b0c3"
+      }
+    },
+    "oracle_boundary": "oracle_only_not_inputs is independent documentary expected evidence, never product source/result lookup. Product may read exact adopted literal inputs and frame policy, not expected output tables."
+  },
+  "profiles": {
+    "D071": {
+      "profile_ref": {
+        "id": "t01-l01a-d071-history",
+        "version": 1
+      },
+      "calculation_definition_version": "T01-D071-ALIGNED-HISTORY-DEF-V1",
+      "parameter_ref": {
+        "id": "t01-l01a-d071-parameters",
+        "version": 1
+      },
+      "selection_ref": {
+        "id": "t01-l01a-d071-selection",
+        "version": 1
+      },
+      "subject": "SPY",
+      "members": [
+        "SPY"
+      ],
+      "raw_dependencies": [
+        "R037",
+        "R042"
+      ],
+      "derived_dependencies": [],
+      "kernel": "K03_CHANGE_RETURN",
+      "parameter_profile": "P_WINDOW",
+      "equation": "ln(current/reference)",
+      "units": "return",
+      "result_shape": "scalar_decimal",
+      "future_own_brief_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D071_IMPLEMENTATION_BRIEF.md",
+      "future_binding_path": "implementation/authority/T01_ALIGNED_HISTORY_D071_AUTHORITY_BINDING.yaml"
+    },
+    "D072": {
+      "profile_ref": {
+        "id": "t01-l01a-d072-history",
+        "version": 1
+      },
+      "calculation_definition_version": "T01-D072-ALIGNED-HISTORY-DEF-V1",
+      "parameter_ref": {
+        "id": "t01-l01a-d072-parameters",
+        "version": 1
+      },
+      "selection_ref": {
+        "id": "t01-l01a-d072-selection",
+        "version": 1
+      },
+      "subject": "QQQ",
+      "members": [
+        "QQQ"
+      ],
+      "raw_dependencies": [
+        "R037",
+        "R042"
+      ],
+      "derived_dependencies": [],
+      "kernel": "K03_CHANGE_RETURN",
+      "parameter_profile": "P_WINDOW",
+      "equation": "ln(current/reference)",
+      "units": "return",
+      "result_shape": "scalar_decimal",
+      "future_own_brief_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D072_IMPLEMENTATION_BRIEF.md",
+      "future_binding_path": "implementation/authority/T01_ALIGNED_HISTORY_D072_AUTHORITY_BINDING.yaml"
+    },
+    "D073": {
+      "profile_ref": {
+        "id": "t01-l01a-d073-history",
+        "version": 1
+      },
+      "calculation_definition_version": "T01-D073-ALIGNED-HISTORY-DEF-V1",
+      "parameter_ref": {
+        "id": "t01-l01a-d073-parameters",
+        "version": 1
+      },
+      "selection_ref": {
+        "id": "t01-l01a-d073-selection",
+        "version": 1
+      },
+      "subject": "SMH",
+      "members": [
+        "SMH"
+      ],
+      "raw_dependencies": [
+        "R037",
+        "R042"
+      ],
+      "derived_dependencies": [],
+      "kernel": "K03_CHANGE_RETURN",
+      "parameter_profile": "P_WINDOW",
+      "equation": "ln(current/reference)",
+      "units": "return",
+      "result_shape": "scalar_decimal",
+      "future_own_brief_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D073_IMPLEMENTATION_BRIEF.md",
+      "future_binding_path": "implementation/authority/T01_ALIGNED_HISTORY_D073_AUTHORITY_BINDING.yaml"
+    },
+    "D074": {
+      "profile_ref": {
+        "id": "t01-l01a-d074-history",
+        "version": 1
+      },
+      "calculation_definition_version": "T01-D074-ALIGNED-HISTORY-DEF-V1",
+      "parameter_ref": {
+        "id": "t01-l01a-d074-parameters",
+        "version": 1
+      },
+      "selection_ref": {
+        "id": "t01-l01a-d074-selection",
+        "version": 1
+      },
+      "subject": "SOXX",
+      "members": [
+        "SOXX"
+      ],
+      "raw_dependencies": [
+        "R037",
+        "R042"
+      ],
+      "derived_dependencies": [],
+      "kernel": "K03_CHANGE_RETURN",
+      "parameter_profile": "P_WINDOW",
+      "equation": "ln(current/reference)",
+      "units": "return",
+      "result_shape": "scalar_decimal",
+      "future_own_brief_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D074_IMPLEMENTATION_BRIEF.md",
+      "future_binding_path": "implementation/authority/T01_ALIGNED_HISTORY_D074_AUTHORITY_BINDING.yaml"
+    },
+    "D075": {
+      "profile_ref": {
+        "id": "t01-l01a-d075-history",
+        "version": 1
+      },
+      "calculation_definition_version": "T01-D075-ALIGNED-HISTORY-DEF-V1",
+      "parameter_ref": {
+        "id": "t01-l01a-d075-parameters",
+        "version": 1
+      },
+      "selection_ref": {
+        "id": "t01-l01a-d075-selection",
+        "version": 1
+      },
+      "subject": "NVDA",
+      "members": [
+        "NVDA"
+      ],
+      "raw_dependencies": [
+        "R037",
+        "R042"
+      ],
+      "derived_dependencies": [],
+      "kernel": "K03_CHANGE_RETURN",
+      "parameter_profile": "P_WINDOW",
+      "equation": "ln(current/reference)",
+      "units": "return",
+      "result_shape": "scalar_decimal",
+      "future_own_brief_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D075_IMPLEMENTATION_BRIEF.md",
+      "future_binding_path": "implementation/authority/T01_ALIGNED_HISTORY_D075_AUTHORITY_BINDING.yaml"
+    },
+    "D076": {
+      "profile_ref": {
+        "id": "t01-l01a-d076-history",
+        "version": 1
+      },
+      "calculation_definition_version": "T01-D076-ALIGNED-HISTORY-DEF-V1",
+      "parameter_ref": {
+        "id": "t01-l01a-d076-parameters",
+        "version": 1
+      },
+      "selection_ref": {
+        "id": "t01-l01a-d076-selection",
+        "version": 1
+      },
+      "subject": "US_TECH_VS_BROAD",
+      "members": [
+        "QQQ",
+        "SPY"
+      ],
+      "raw_dependencies": [],
+      "derived_dependencies": [
+        "D072",
+        "D071"
+      ],
+      "kernel": "K02_ALGEBRA",
+      "parameter_profile": "P_BASIC",
+      "equation": "D072-D071",
+      "units": "return_spread",
+      "result_shape": "exact_ratio",
+      "future_own_brief_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D076_IMPLEMENTATION_BRIEF.md",
+      "future_binding_path": "implementation/authority/T01_ALIGNED_HISTORY_D076_AUTHORITY_BINDING.yaml"
+    },
+    "D077": {
+      "profile_ref": {
+        "id": "t01-l01a-d077-history",
+        "version": 1
+      },
+      "calculation_definition_version": "T01-D077-ALIGNED-HISTORY-DEF-V1",
+      "parameter_ref": {
+        "id": "t01-l01a-d077-parameters",
+        "version": 1
+      },
+      "selection_ref": {
+        "id": "t01-l01a-d077-selection",
+        "version": 1
+      },
+      "subject": "SEMIS_VS_TECH",
+      "members": [
+        "SMH",
+        "SOXX",
+        "QQQ"
+      ],
+      "raw_dependencies": [],
+      "derived_dependencies": [
+        "D073",
+        "D074",
+        "D072"
+      ],
+      "kernel": "K02_ALGEBRA",
+      "parameter_profile": "P_BASIC",
+      "equation": "(D073+D074)/2-D072",
+      "units": "return_spread",
+      "result_shape": "exact_ratio",
+      "future_own_brief_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D077_IMPLEMENTATION_BRIEF.md",
+      "future_binding_path": "implementation/authority/T01_ALIGNED_HISTORY_D077_AUTHORITY_BINDING.yaml"
+    },
+    "D079": {
+      "profile_ref": {
+        "id": "t01-l01a-d079-joint-fit",
+        "version": 1
+      },
+      "calculation_definition_version": "T01-D079-ALIGNED-JOINT-FIT-DEF-V1",
+      "parameter_ref": {
+        "id": "t01-l01a-joint-fit-parameters",
+        "version": 1
+      },
+      "selection_ref": {
+        "id": "t01-l01a-d079-selection",
+        "version": 1
+      },
+      "subject": "NVDA",
+      "members": [
+        "NVDA",
+        "SPY",
+        "QQQ",
+        "SMH",
+        "SOXX"
+      ],
+      "raw_dependencies": [],
+      "derived_dependencies": [
+        "D075",
+        "D071",
+        "D076",
+        "D077"
+      ],
+      "kernel": "K06_REGRESSION_DEPENDENCE",
+      "parameter_profile": "P_REGRESSION",
+      "equation": "beta_market from joint OLS with intercept",
+      "units": "beta",
+      "result_shape": "exact_ratio",
+      "future_own_brief_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D079_IMPLEMENTATION_BRIEF.md",
+      "future_binding_path": "implementation/authority/T01_ALIGNED_HISTORY_D079_AUTHORITY_BINDING.yaml"
+    },
+    "D080": {
+      "profile_ref": {
+        "id": "t01-l01a-d080-joint-fit",
+        "version": 1
+      },
+      "calculation_definition_version": "T01-D080-ALIGNED-JOINT-FIT-DEF-V1",
+      "parameter_ref": {
+        "id": "t01-l01a-joint-fit-parameters",
+        "version": 1
+      },
+      "selection_ref": {
+        "id": "t01-l01a-d080-selection",
+        "version": 1
+      },
+      "subject": "NVDA",
+      "members": [
+        "NVDA",
+        "SPY",
+        "QQQ",
+        "SMH",
+        "SOXX"
+      ],
+      "raw_dependencies": [],
+      "derived_dependencies": [
+        "D075",
+        "D071",
+        "D076",
+        "D077"
+      ],
+      "kernel": "K06_REGRESSION_DEPENDENCE",
+      "parameter_profile": "P_REGRESSION",
+      "equation": "beta_tech from joint OLS with intercept",
+      "units": "beta",
+      "result_shape": "exact_ratio",
+      "future_own_brief_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D080_IMPLEMENTATION_BRIEF.md",
+      "future_binding_path": "implementation/authority/T01_ALIGNED_HISTORY_D080_AUTHORITY_BINDING.yaml"
+    },
+    "D081": {
+      "profile_ref": {
+        "id": "t01-l01a-d081-joint-fit",
+        "version": 1
+      },
+      "calculation_definition_version": "T01-D081-ALIGNED-JOINT-FIT-DEF-V1",
+      "parameter_ref": {
+        "id": "t01-l01a-joint-fit-parameters",
+        "version": 1
+      },
+      "selection_ref": {
+        "id": "t01-l01a-d081-selection",
+        "version": 1
+      },
+      "subject": "NVDA",
+      "members": [
+        "NVDA",
+        "SPY",
+        "QQQ",
+        "SMH",
+        "SOXX"
+      ],
+      "raw_dependencies": [],
+      "derived_dependencies": [
+        "D075",
+        "D071",
+        "D076",
+        "D077"
+      ],
+      "kernel": "K06_REGRESSION_DEPENDENCE",
+      "parameter_profile": "P_REGRESSION",
+      "equation": "beta_semi from joint OLS with intercept",
+      "units": "beta",
+      "result_shape": "exact_ratio",
+      "future_own_brief_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D081_IMPLEMENTATION_BRIEF.md",
+      "future_binding_path": "implementation/authority/T01_ALIGNED_HISTORY_D081_AUTHORITY_BINDING.yaml"
+    },
+    "D078": {
+      "profile_ref": {
+        "id": "t01-l01a-d078-joint-fit",
+        "version": 1
+      },
+      "calculation_definition_version": "T01-D078-ALIGNED-JOINT-FIT-DEF-V1",
+      "parameter_ref": {
+        "id": "t01-l01a-joint-fit-parameters",
+        "version": 1
+      },
+      "selection_ref": {
+        "id": "t01-l01a-d078-selection",
+        "version": 1
+      },
+      "subject": "NVDA",
+      "members": [
+        "NVDA",
+        "SPY",
+        "QQQ",
+        "SMH",
+        "SOXX"
+      ],
+      "raw_dependencies": [],
+      "derived_dependencies": [
+        "D075",
+        "D071",
+        "D076",
+        "D077",
+        "D079",
+        "D080",
+        "D081"
+      ],
+      "kernel": "K06_REGRESSION_DEPENDENCE",
+      "parameter_profile": "P_REGRESSION",
+      "equation": "D075-(alpha+D079*D071+D080*D076+D081*D077)",
+      "units": "return",
+      "result_shape": "exact_ratio",
+      "future_own_brief_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D078_IMPLEMENTATION_BRIEF.md",
+      "future_binding_path": "implementation/authority/T01_ALIGNED_HISTORY_D078_AUTHORITY_BINDING.yaml"
+    }
+  },
+  "source": {
+    "constructor": "create_aligned_history_source(*, admission: OwnerAdmissionV1, specimen_id: str) -> AlignedHistorySourceV1; only exact independently accepted new D071-D077 support brief SHA values under M02. Fresh unchanged M00 public create_owner; admit literal original DTOs through commands.admit_raw_observation_occurrence and verify actual returned and public get_raw_observation_occurrence; direct project_raw_value and bounded list_projected_raw_history public read facets. Pin full manifest and exact expanded roster digest, count, receipt ordering, unique IDs and sequence; compare complete typed native fields incl Decimal tuple and optional absence. Unknown specimen/wrong bytes refuse. No caller-supplied records/reader, no exposed commands after construction. All five negative raw specimens sealed literally (wrong role/time/unit/ambiguity are not pre-refused by seal); actual M00 facts/projection independently witnessed. No new M00 code. Seal is mechanical, not semantic case proof.",
+    "provider": "foundation-controlled-aligned-history",
+    "variant": "prior_close_history_v1",
+    "ingestion_sequence_scope": "foundation-controlled-aligned-history/prior_close_history_v1",
+    "temporal_kind": "true_instant",
+    "source_timezone": "UTC",
+    "unit": "USD_per_share",
+    "adjustment_basis": "controlled_unadjusted/1",
+    "mappings": [
+      {
+        "id": "t01-l01a-r037-history",
+        "version": 1,
+        "raw_id": "R037",
+        "provider": "foundation-controlled-aligned-history",
+        "variant": "prior_close_history_v1",
+        "native_field_path": [
+          "trade",
+          "last"
+        ],
+        "native_units": "USD_per_share",
+        "selection_identity_field_paths": [
+          [
+            "instrument.id",
+            [
+              "instrument",
+              "id"
+            ]
+          ],
+          [
+            "session.id",
+            [
+              "session",
+              "id"
+            ]
+          ],
+          [
+            "adjustment.basis",
+            [
+              "adjustment",
+              "basis"
+            ]
+          ],
+          [
+            "price.kind",
+            [
+              "price",
+              "kind"
+            ]
+          ]
+        ]
+      },
+      {
+        "id": "t01-l01a-r042-history",
+        "version": 1,
+        "raw_id": "R042",
+        "provider": "foundation-controlled-aligned-history",
+        "variant": "prior_close_history_v1",
+        "native_field_path": [
+          "official_close",
+          "value"
+        ],
+        "native_units": "USD_per_share",
+        "selection_identity_field_paths": [
+          [
+            "instrument.id",
+            [
+              "instrument",
+              "id"
+            ]
+          ],
+          [
+            "session.id",
+            [
+              "session",
+              "id"
+            ]
+          ],
+          [
+            "adjustment.basis",
+            [
+              "adjustment",
+              "basis"
+            ]
+          ],
+          [
+            "price.kind",
+            [
+              "price",
+              "kind"
+            ]
+          ]
+        ]
+      }
+    ],
+    "unit_convention": {
+      "id": "t01-l01a-underlying-price",
+      "version": 1,
+      "native_units": "USD_per_share",
+      "canonical_units": "USD_per_share",
+      "scale_decimal": "1",
+      "offset_decimal": "0"
+    },
+    "roles": {
+      "R037": {
+        "anchor": "as_of",
+        "session": "session_current",
+        "price_kind": "current_last",
+        "exact_native_decimal_values": [
+          "10000",
+          "10100",
+          "10201"
+        ]
+      },
+      "R042": {
+        "anchor": "reference",
+        "session": "session_reference",
+        "price_kind": "official_close",
+        "exact_native_decimal_values": [
+          "10100"
+        ]
+      }
+    },
+    "frame_policy": "Eight explicit synthetic days S0..S7 in manifest, distinct session/context and exact 85200s. Prior official close 13:00Z prior synthetic day, current 12:40Z. No real calendar inference. Exact per-row cutoff T+1s, maximum staleness 86400s, page size 100 and limit 2, exact anchor/no substitution, no cross-session nearest or forward fill. Event<=receipt<=row cutoff. Same immutable ID/content replay deduplication only; conflicting duplicate IDs refuse, distinct otherwise eligible IDs count separately. Maximum skew field 0; roles have their different explicitly fixed anchors, not required simultaneous. Exact original UTC ISO Z at anchors; no extrapolation from calendar or unlabeled close.",
+    "selection_order": "Validate exact request/frame/profile, scan complete bounded public history per role with actual cutoff and event ceiling; check page/type/cursor/duplicate-content progress; inspect actual original getter and direct projection, compare every identity/source/role/time/unit/value/native metadata and all projection fields. Original native USD_per_share mandatory independently of mapping native_units. Exactly one distinct eligible observation each R037,R042; no rank winner. Off-anchor and wrong role not eligible; SMH late actually excluded by row cutoff but visible at later query; original-unit mismatch after real mapped projection; two SOXX distinct eligible facts refuse cardinality. No invented role/price data. For accepted role facts compare actual original against permitted frame-local literals after semantic check. Typed actual originals and full projections retained in role order. Business refusal None, no output, persistence failures propagate; no pre-refusal substituted for reached source cases.",
+    "roster_law": "Legal complete corpora A,B,RANK,COND,C_NONPRIOR. Accepted role/subset may use same actual unchanged facts in negative specimen. Relative joins must match one legal frame-local roster for their relevant raw-role subset; full fit row actual union 10 originals (five subject histories, shared D071/D072 exact identity and payload), matches one legal complete frame-local roster. Entire selected six-row set must correspond to a single legal corpus for exact fit window. Use actual full original content and actual typed selected parent payloads, never supplied specimen label/hash as substitute. Full fixture seal digest is mechanical case evidence OUTSIDE occurrence and fit identity; no future/excluded data included in earlier selected lineage. Identical selected facts under A/B retain semantic identity when first timestamps identical. At residual current time check actual current row compatible with at least one legal corpus containing the actual fit-selected training roster and current facts.",
+    "selection_order_detail": "The sealed public source must actually admit all literal raw negatives before any semantic owner decision. Per raw role, inspect actual history projected candidates, exact original getter and direct projection before accepting an actual selected fact. Evaluate exact raw event/receipt and role/session/basis metadata; original-unit comparison distinct from projected mapping unit, after actual projected and original content present. Exact-one cardinality applies to otherwise fully lawful distinct records. Only after source semantic checks and cardinality, match actual selected role literal(s) to permitted legal roster; the full negative fixture label/hash must never pre-refuse the target. R042 missing anchor or role and R037 late visible-only-after-cutoff are reached selection refusals, not assertions of a particular internal exception. No arbitrary invalid source candidate may be transformed into a valid one by mapping."
+  },
+  "clocks": {
+    "frame_law": "All UTC. S0 older excluded, S1..S6 normal training, S7 held-out current. Raw row cutoff T_i+1; underlying normal first T_i+2; relative T_i+3. Monotonic controlled clocks; now >= row cutoff and actual predecessor calculation times. Later lawful first materialisation retains actual first timestamp; replay same identity returns original bytes. Source may be preloaded but only actual public cutoff/event eligible rows selected.",
+    "fit_windows": [
+      {
+        "origin_slot": "S6",
+        "ordered_training_slots": [
+          "S1",
+          "S2",
+          "S3",
+          "S4",
+          "S5",
+          "S6"
+        ],
+        "as_of": "2026-10-19T12:40:00Z",
+        "cutoff": "2026-10-19T12:40:04Z",
+        "normal_calculated_at": "2026-10-19T12:40:05Z"
+      },
+      {
+        "origin_slot": "S7",
+        "ordered_training_slots": [
+          "S2",
+          "S3",
+          "S4",
+          "S5",
+          "S6",
+          "S7"
+        ],
+        "as_of": "2026-10-20T12:40:00Z",
+        "cutoff": "2026-10-20T12:40:04Z",
+        "normal_calculated_at": "2026-10-20T12:40:05Z"
+      }
+    ],
+    "fit_availability": "Actual row cutoffs and all four actual parent calculated_at <= fit cutoff; nested underlying availability <= relative calculation time. Fit now>=cutoff. For unavailable D079 only, D077 S6 first 2026-10-19T12:40:06Z; fit now 12:40:07Z but unchanged cutoff 12:40:04Z. Later reader-visible parent is actual lawful, not available at requested decision.",
+    "residual_current": {
+      "slot": "S7",
+      "as_of": "2026-10-20T12:40:00Z",
+      "current_row_cutoff": "2026-10-20T12:40:01Z",
+      "allowed_residual_knowledge_cutoffs": [
+        "2026-10-20T12:40:04Z",
+        "2026-10-20T12:40:07Z"
+      ],
+      "normal_now": "2026-10-20T12:40:05Z",
+      "nonprior_now": "2026-10-20T12:40:08Z",
+      "law": "Actual coefficient calculated_at and fit cutoff <= residual cutoff, fit origin strictly less than current event, current actual parent calculated_at<=residual cutoff. +7 controlled cutoff for nonprior witness makes actual lawful C coefficients calculated +5 available, so only strict-prior predicate fails."
+    },
+    "historical_parent_override": "D071-D077 complete-history proofs call only explicitly listed per-role slots, chronological with exact declared overrides. Actual D077 S3 omitted in missing-member setup, actual D074 S3 omitted in missing-SOXX setup; never call omitted role merely to prepare a helper. D077 S6 in unavailable-parent case is first materialised at +6, not +3 then retried. Underlying/relative prior actual calculated timestamps retained; separate A/B/C owners use their own clocks."
+  },
+  "joint_fit": {
+    "fit_profile": "t01-l01a-shared-joint-ols/1",
+    "ordered_row_members": [
+      "D075",
+      "D071",
+      "D076",
+      "D077"
+    ],
+    "ordered_components": [
+      "D079",
+      "D080",
+      "D081"
+    ],
+    "training_rows": 6,
+    "request": "Exact origin/cutoff, six ordered rows each explicit slot and four actual public occurrence IDs. No caller numeric input or row choice outside exact window. All 24 named IDs distinct; each typed history accepted new profile, subject, slot, asof/cutoff/context and compatible nested actual parents. No implicit intersection, dictionary overwrite, alias/latest substitution.",
+    "validation_order": [
+      "REQUEST_SHAPE_PROFILE",
+      "SAMPLE_MEMBER_ID_UNIQUENESS",
+      "PARENT_LOOKUP",
+      "PARENT_ROW_ALIGNMENT",
+      "PARENT_AVAILABILITY",
+      "COMPLETE_ACTUAL_SOURCE_ROSTER",
+      "RANK",
+      "CONDITION",
+      "EXACT_VECTOR_AND_MANIFEST",
+      "DURABLE_APPEND"
+    ],
+    "lineage": "Verify actual D071 is byte-identical to nested D071 in D076, nested D072 in D076/D077 same ID/full bytes, D073/D074 in exact D077 order. Each row union exact five actual underlying histories and ten distinct original facts. Complete selected source roster law, no other rows. Every actual raw and derived predecessor content, timing, definition/profile/selection and result reconstructed on read-only reopen. Distinct lawful A/B/C fits legitimate; same identity required only when combining coefficients.",
+    "numeric": {
+      "return": "Unchanged _log_return._logarithm canonical 50 significant-digit half-even bounded rational log. Raw native Decimal integer exponent 0 in stated domain. Actual result ?a or zero, exact Decimal tuple (50 digits, exponent -52, or Decimal(0)). Relative arithmetic exact Fraction of actual Decimal values, no ambient Decimal arithmetic. a is canonical positive ln(101/100), defined from stated ratio, not expected result lookup.",
+      "formula": "Normalize predictors and target by exact Fraction(a). X=[1,D071/a,D076/a,D077/a], y=D075/a. G=X^T X, h=X^T y. Exact Fraction Gauss-Jordan, columns 0..3, first nonzero pivot at or below current row, swap, normalize, eliminate other rows ascending. Solve once coherent complete vector; actual intercept a times normalized intercept, slopes unchanged. Compute G inverse same elimination on identity. Full rank 4 before conditioning. No float, tolerance, ridge, pseudoinverse, independent univariate or estimator switch.",
+      "conditioning": "Require exact kappa_inf(G)=max row absolute sum(G)*max row absolute sum(G^-1) <= 50 inclusive. Synthetic scale-bound policy only, not financial threshold. A/B 1269/34; COND full rank 208/3 refused; C_NONPRIOR 1664/41 eligible. A shifted S2..S7 would fail conditioning at 1207/8 and cannot isolate residual temporal refusal. C changes only S5 SOXX current +1 to -1.",
+      "bounds": "Exactly six rows, four columns; normalized predictors abs<=2, target abs<=1, denominator<=2; fixed-size exact elimination. Reduced Fraction numerator/denominator bit length <=4096 at each arithmetic step/result, fail closed outside. On validated domain 2X entries integer abs<=4, 4G abs<=96, 4h abs<=48; fixed 4x4 minors and at most 50-digit a bound exact intermediates far below 4096. Independently assess reachability; if a new reachable independent mechanism exists return for additional admission. Canonical ExactRatioV1 (positive denominator, reduced, zero 0/1). Intercept and residual return, slopes beta."
+    },
+    "manifest": "AlignedFitManifestV1: exact shared fit profile and policy, model/numeric version, origin and cutoff, ordered six typed rows each four actual public records with all nested selected evidence, actual ordered IDs and canonical payload hashes, exact determinant/condition, canonical intercept and full three-coefficient vector. Fit identity mmtafit1:SHA256(native canonical explicitly tagged versioned fit envelope excluding fit_id). Same exact manifest/fit ID in all three component records; no per-component ID or component calculation time in shared fit identity. Component identity mmtacoef1:SHA256(explicit typed envelope excluding own id/calculated_at), binds request, actual complete manifest, chosen component, role-specific definition/profile and result. Owner recomputes full joint vector, no stored oracle input. Local durable validator reconstructs manifest, condition, vector, selected component and ID from actual nested facts. Numeric intercept and coefficients retain named fields, not artificially distinct values. All actual per-row hashes are recomputed from actual typed payload bytes; case manifest and oracle tables do not serve as data or result inputs."
+  },
+  "residual": {
+    "request": "D078 exact S7 current and allowed cutoff, four ordered current actual IDs D075,D071,D076,D077 and three ordered actual coefficient IDs D079,D080,D081. Concrete real read-only store per role, not injected values.",
+    "validation_order": [
+      "REQUEST_SHAPE_PROFILE",
+      "PARENT_ID_UNIQUENESS_AND_LOOKUP",
+      "COEFFICIENT_LOCAL_VALIDITY_AND_ROLES",
+      "SAME_FIT_ID_AND_EXACT_MANIFEST",
+      "FIT_ORIGIN_STRICT_PRIOR",
+      "COEFFICIENT_AVAILABILITY",
+      "CURRENT_ROW_ALIGNMENT_AND_AVAILABILITY",
+      "CURRENT_SOURCE_APPLICABILITY",
+      "EXACT_RESIDUAL",
+      "DURABLE_APPEND"
+    ],
+    "law": "Validate each actual coefficient locally, then exact same fit identity and manifest, strict prior origin, available coefficient and fit times, exact aligned current row with actual source applicability. Use actual coefficient values and same intercept. No re-fit or fallback. Store actual nested coefficient/current typed bytes, fit evidence, exact signed reduced ratio, request, source/definition/profile/version, identity and first timestamp; ordinary read-only reconstructs all semantics. A current result 5a/2. Actual A/B mixed triplets both individually lawful same origin/cutoff, same S7 facts; use A market, A tech, B semi. Current alignment negative actual D076 S6 with other S7 facts. Actual full-rank conditioned C S7 fit including current, coefficients available under residual +7, strict-prior refusal only."
+  },
+  "durable_architecture": {
+    "namespace": "neutral_market_measurement_truth/aligned_history/v1",
+    "new_public_history": "Append AlignedHistorySourceV1, AlignedHistoryRequestV1, AlignedHistoryOccurrenceV1, AlignedHistoryReadsV1/OwnerV1, create_aligned_history_source, create_aligned_history_owner and create_aligned_history_reader. Each owner/reader exact distinct M02 own brief SHA, signal/profile; underlying sealed source and no predecessor storage; relative ordered concrete SQLiteReadStorageV1 per parent role and no raw source. Exact request fields signal,subject,slot/asof/cutoff,definition/profile/parameter/selection/context refs,ordered predecessor IDs (empty underlying). Occurrence includes owner/admission, request/definition/policy/profile, actual ordered two original+projection pairs or typed nested relative parents, result/units/shape/window, asof/cutoff/calculated. Separate DTO necessary because old WindowMeasurementOccurrenceV1 only retains projection; append-only new route instead of altering old create_window_owner/reader return ABI or codec. Use same checked semantic law live and durable, reconstruct mapping/projection from actual original and exact policy on reopen. Persist actual versioned frame context (id/version/start/end/history_complete_from), parameter set, input selection policy, raw mappings and unit convention in canonical typed or explicit exact-key mapping envelopes, not just an unverified ref/hash. Pure durable validator rechecks all actual retained metadata and original/projection bindings against same policy. Do not widen old API types.",
+    "new_public_fit": "Append AlignedFitRequestV1, AlignedFitManifestV1, AlignedCoefficientOccurrenceV1, AlignedCoefficientReadsV1/OwnerV1, create_aligned_coefficient_owner/reader. Each exact component admission/own brief, four ordered concrete history read storages (one per D075/D071/D076/D077); shared exact joint-fit function and manifest codec, per-signal result store. Proposed AlignedFitRowRequestV1 has named slot and exactly four distinct actual IDs; outer request has six distinct slot rows. Cross-row member ID uniqueness is semantic after legal DTO construction (do not reject the designated duplicate across different rows at DTO creation). Fit manifest uses named intercept and three named coefficient fields, not an artificial distinct-values constraint; actual numeric equality is legal. No global change to _Validated for old records.",
+    "new_public_residual": "Append AlignedResidualRequestV1, AlignedResidualOccurrenceV1, AlignedResidualReadsV1/OwnerV1, create_aligned_residual_owner/reader. D078 exact own brief/admission, four concrete current history and three concrete coefficient read storages. Real public readers, no arbitrary injected predecessor adapter. Mixed A/B uses independently created actual stores.",
+    "storage": "Reuse unchanged RecordState with explicit new encode/decode/semantic validator. Writable new controlled profiles require SQLiteStorageV1(create=True), bound once to immutable sealed source or exact concrete parent read storages for owner lifespan; no write reopen or mixing source snapshots in same store. Fresh separate per-signal/specimen/case stores; actual first result, later same-owner idempotent replay, ordinary public SQLiteReadStorageV1 after dropping live source/owners. Exact history get/list by identity/signal/subject/effective<=query/knowledge<=query, limit 1..1000, descending effective/cutoff/ID; max eight history rows or two fit windows under bound, no arbitrary truncation used for fit membership. Fit explicitly checks calculated_at. Expected refusal None with no new row; prior rows retained; persistence errors propagate.",
+    "codec": "Explicit version-1 record tags, exact field-key/type sets, native.canonical typed mapping envelope using registered native original, projection, identity, VersionRef, CalculationDefinition and ExactRatio carriers. New request/manifest explicit mappings and nested actual typed envelope bytes; exact decode reconstruction and re-encode equality. History mmtahistory1:SHA256(envelope minus own id/calculated_at), component and common fit as above, residual mmtaresidual1:SHA256(envelope minus own id/calculated_at). Preserve legacy native and window codec registries exactly. No hash-only provenance."
+  },
+  "future_delta": {
+    "append_only": "src/nvda_desk/market_measurement_truth/api.py",
+    "new_product_files": [
+      "src/nvda_desk/market_measurement_truth/_aligned_history_source.py",
+      "src/nvda_desk/market_measurement_truth/_aligned_history_returns.py",
+      "src/nvda_desk/market_measurement_truth/_aligned_history_codec.py",
+      "src/nvda_desk/market_measurement_truth/_aligned_joint_fit.py",
+      "src/nvda_desk/market_measurement_truth/_aligned_residual.py"
+    ],
+    "registry": "tools/product_proof_claims.py fixed additive eleven exact jurisdiction entries, inactive when own descriptor absent. Each exact own brief/binding/owner policy+manifest+inventory, exact ordered nodes, M02 target, G01 schema and generation/pointer, FAIL policies, no broad discovery or changed old extension/validator. No installation before separate authoring/implementation/registration reviews.",
+    "unchanged_shared_surfaces": {
+      "src/nvda_desk/market_measurement_truth/_native_codec.py": "b3d247b4396073d5059e674b9392c03e1b9ce3e418b9a9f1df56417255847759",
+      "src/nvda_desk/market_measurement_truth/_evaluation.py": "5c6a5154574ed4ea417cc97b9d36b32a13c17900cc6e1d08ef42e89c76aa8adb",
+      "src/nvda_desk/market_measurement_truth/_record_store.py": "882a61238b74ba5aa2ffacf95d0587633392722d2336a3954681c6ac0a86f0ef",
+      "src/nvda_desk/market_measurement_truth/_window.py": "419ab0876760c677bdb0c9637495b774c73feece55c74da32ade8ae3fe3ace62",
+      "src/nvda_desk/market_measurement_truth/_log_return.py": "3478d5b0e8361f6339c9a0ec5bb70343f2e687338dad0947f7d8a86c0ebf47cf",
+      "src/nvda_desk/market_measurement_truth/_vwap_returns.py": "b41838926ea1233f74f9a63804b7bd73bd275f301f1066fab9ff80069191d726",
+      "src/nvda_desk/market_measurement_truth/_selection.py": "2311098711ea0738da43caa60171a8722fd86c7dc56aa6847e3db00ca70f0b50",
+      "src/nvda_desk/market_measurement_truth/_underlying_returns.py": "d6386ddcf5d955532f59ba3e926a3747a00184afd2e597ff46aa6e1c888e33c3",
+      "src/nvda_desk/market_measurement_truth/_relative_market_return.py": "06b777c6b44b881a874ba442e4cf52101b5dd50c06417227c45cd8a947950817",
+      "src/nvda_desk/market_measurement_truth/_relative_sector_return.py": "312d7a3b651ebf48554a34b89223438c5aefd8a9cfaef544d780ce755494871b",
+      "src/nvda_desk/market_measurement_truth/_scalar_straddle_source.py": "67252936a70718bf6c0a0de430e139816699293a4793a0d8fbee83200b1ecec5",
+      "src/nvda_desk/market_measurement_truth/_scalar_straddle_codec.py": "4d9f6f49cb8824fcf61daf4f1098f7e0a5dda9eb7c748e54e51f93312ff4c819",
+      "src/nvda_desk/market_measurement_truth/_scalar_straddle_d091.py": "d29fc2965152ed0fdffe918006d69de6db6e944b1dbfd8fdad2aa7a5248998d2",
+      "src/nvda_desk/market_measurement_truth/_scalar_straddle_d109.py": "e72d8c42c02b392fff20b3df5634b237f064b74fea49c021a7a74604d96f5e64",
+      "src/nvda_desk/market_measurement_truth/_scalar_straddle_d110.py": "7e4503213327c185620d9d025c9e2559aa597c14898df78b1664683a6e21106f",
+      "src/nvda_desk/raw_signal_occurrence_truth/api.py": "cda0dfe957ce6a51a486cbacb78f3f1b50ec9abac4458f8e69b659bf43b0f01d"
+    },
+    "baseline_append_and_registry_hashes": {
+      "src/nvda_desk/market_measurement_truth/api.py": "ca0f1ab967163d146d6d278acaba3633f2ff8476138af019d3060d6c8841a1d4",
+      "tools/product_proof_claims.py": "5d5eef99045e3e58f8390fc8c48cf1d7b274e9c9bc2334f6f67d355d64db6df9"
+    },
+    "invalidation": "Future exact changed-path/byte-prefix and G01 inactive/old-route analysis against current accepted 67, original history 14 and other materially impacted proof. Preserve all original family/claim/generation/pointer bytes. No blanket new acceptance or routine old rerun; newly required M00 change or independent case mechanism needs separate finite assessment."
+  },
+  "authority_boundary": "Proposal only. Eleven exact nonfungible allocations in separate inventory; exact independent review and owner decision before source policy adoption/finite admission. Pre-edit proof authoring before source; separate implementation, registration, actual strict Tester candidate-specific intake and exact release; no execution transfer from D091/scalar grants."
+}
