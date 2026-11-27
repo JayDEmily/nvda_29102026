@@ -46,7 +46,7 @@
         "L00"
       ],
       "obligation": "Bind actual public D071/D075/D076/D077 history producers, aligned sample/window/knowledge cutoffs, current exclusion, rank/conditioning and exact output codec. One fixed historical observation is insufficient for rolling history. Keep one OLS-with-intercept model, common immutable fit/intercept/sample identity and M02 neutral ownership. Prepare correlated full-rank exact synthetic success data which distinguish joint from separate univariate fits, an informative nonzero held-out residual, a concrete deficient-rank history and a per-coefficient mixed-fit refusal. Existing 64 orthogonal rows remain valid example arithmetic only. Admit/prove necessary history profiles separately; never inject expected D outputs as raw/configuration facts.",
-      "status": "OWNER_POLICY_ADOPTED_FINITE_ADMITTED_EXECUTION_HELD_FIRST_STAGE_BINDINGS_INSTALLED_AUTHORING_PENDING",
+      "status": "OWNER_POLICY_ADOPTED_FINITE_ADMITTED_EXECUTION_HELD_FIRST_STAGE_AUTHORING_CANDIDATE_REVIEW_PENDING",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G1_AFTER_L06",
@@ -113,7 +113,7 @@
         ],
         "execution_release": false,
         "product_status": "NOT_ATTEMPTED",
-        "first_unmet_invariant": "Independent authoring clearance for exact D071-D075 tests, proof contracts, proposed public interface and inactive descriptors; downstream bindings and all execution held.",
+        "first_unmet_invariant": "Independent exact D071-D075 authoring verdict; no source implementation or case execution before applicable clearance.",
         "tester_designation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
         "tester_status": "CANDIDATE_SPECIFIC_INTAKE_REQUIRED",
         "scope": "Controlled synthetic only; no official/native certification or new product acceptance",
@@ -218,6 +218,30 @@
             "D074",
             "D075"
           ]
+        },
+        "first_stage_authoring_candidate": {
+          "commit": "55ff6b56e70cec794b0c91d1cead39b1bf96fde0",
+          "tree": "812036ed6cb7e1a15fcecf7358e85b51cf6d71dc",
+          "files_sha256": {
+            "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D075_PROOF_CONTRACT.json": "81e025f205039f376ced0d027cd9c7e65930a30a5fbbe8c43997725ef701dc2c",
+            "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D071_PROOF_CONTRACT.json": "c3b176e6471c95b4334c3c25aedf31d8c1afa4e30b1ddaee9b4d5a60eaf6bb68",
+            "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D074_CLAIM_CANDIDATE.json": "71f7b6266188581adbeb839af8a22fc58c4976db8127a6f6fbf390943560b18f",
+            "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D071_CLAIM_CANDIDATE.json": "5422a733f2a25ac23817c3a4544ab99e48eca3561deb2d2dd87284f56a266263",
+            "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D072_CLAIM_CANDIDATE.json": "f40809d42c19ae5d9a69d6ecadc0da4a0aaaca53c0ed324365f0827bda761b83",
+            "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D073_CLAIM_CANDIDATE.json": "eeab4960c3ff8008aa516d7345dde9382aae5fa4a20b28d620eb2016d8cef11e",
+            "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D072_PROOF_CONTRACT.json": "dbbc72bd13284cc0665fa3d7a0bf85220f06b6fb43f3e32dce4ea1af23bd9990",
+            "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D073_PROOF_CONTRACT.json": "db4d78db436cf9c8c89a5aa247b12e90a74b9cb155def3cddb5ad9ccd46eec60",
+            "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D074_PROOF_CONTRACT.json": "10d744c833ac882adef4263f0a0172ddabf165982e6618bad4d95b1af00f4f22",
+            "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D075_CLAIM_CANDIDATE.json": "adeec41c60fc259073c3ada2bafbfadfea5c949361512e9322282d5ce07be452",
+            "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D071_TEST_SOURCE.py": "7fbdecc10300be61a8741c54d5c2592a17ccf84171ecfc83568120e4f83eb39a",
+            "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D075_TEST_SOURCE.py": "a368c6c8d0628a34dfd843bd0ee62674c111f891a3bac097f512bd0bcc74ceae",
+            "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D073_TEST_SOURCE.py": "67ec39e95b2d696e67f9986ed6e26aaf26ddd05756e2b54f2e8083bbfe22c404",
+            "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D074_TEST_SOURCE.py": "4caa1039b495463a118f62bdd461ced7d4828fc3c63f0a39b9c01438dd76f277",
+            "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D072_TEST_SOURCE.py": "87e5541a89f03c797c6e51c3648c21f13dbb18d28dc31cf4cadb72cb1a07d262"
+          },
+          "review_ref": "refs/heads/review/trial-cac-nvidia-l01a-authoring-20261127",
+          "verdict_path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_CAC_TRIAL_ALIGNED_HISTORY_D071_D075_AUTHORING_VERDICT_20261127.md",
+          "static_validation": "Five AST/lint checks and five Draft202012 proof contract schema checks passed; ten exact admitted nodes matched ledger; no product imports, collection, execution or activation."
         }
       }
     },
@@ -2063,7 +2087,7 @@
   "execution_status": "ready",
   "current_leaf": "L01a",
   "next_assignment": {
-    "role": "Worker",
-    "task": "Direct owner-commissioned isolated trial continuation. Reconcile the exact consolidated documentary acceptance f7b42cd7ed4dbedf2a6dc43b5e70515baafd7304 for candidate 3370d48e097cd7d8eec376b20ae9b3adfa918084 and its unchanged binding candidates at baseline c57422bdc533f6b25b3051b2533a3e12a6dfed1b. First bounded leaf L01a: install only the five independently cleared D071-D075 authority bindings byte-identically and prepare the exact ten unexecuted proof cases, public interface, proof contracts and inactive descriptors for independent authoring review before source implementation. D001 and D095 retain their distinct cleared scope and remain eligible under existing dependencies. No product execution, case release, new case, self-review, D145, main or original work/review ref modification. Use the specifically authorised sequential grouped CAC route only for an actual distinct reviewer assignment after its candidate is committed; no delivery is commissioned by this initial Worker assignment."
+    "role": "Independent documentary reviewer",
+    "task": "Fresh independent authoring review of exact C=55ff6b56e70cec794b0c91d1cead39b1bf96fde0, tree=812036ed6cb7e1a15fcecf7358e85b51cf6d71dc, L01a D071-D075 only. Use the pinned CAC consume workflow in a separate Ubuntu checkout via RDC. Reconcile consolidated owner grant and independent acceptance f7b42cd7ed4dbedf2a6dc43b5e70515baafd7304, exact binding installation 088cfb42e6c9e61ba579769b55fe5622bfaba542 and current register candidate file hashes. Read applicable governance, exact own briefs, adopted aligned-history policy, immutable specimens, finite inventory, and original M00 public interfaces. Review all ten inert authored nodes for actual public ingress/read sequence, full actual original and projection identity/metadata, independent oracle including Decimal tuple, correct refusal discriminator, eight/seven frames, bounded cutoff history, ordinary read-only durable reopen and immutable replay; assess proposed typed M02 interface and codec requirements, exact contracts and inactive descriptors, no fabricated or pre-satisfied evidence, no extra cases or old changes. Review fixture independence statically; no product imports, collection, execution, source or active registration edits. This is documentary authoring clearance only, not product acceptance/release; remain distinct from continuing Worker and designated strict Tester. Give exact per-claim ACCEPT, RETURN or BLOCKED and material findings; publication is report handoff/m02_completion_28_execution/L01a/INDEPENDENT_CAC_TRIAL_ALIGNED_HISTORY_D071_D075_AUTHORING_VERDICT_20261127.md alone on NEW refs/heads/review/trial-cac-nvidia-l01a-authoring-20261127, direct child of this H; explicitly bind C, C tree, H, evidence and exact scope. Verify remote publication. No change to trial ref, main or existing work/review refs, no merge or successor dispatch. Return verdict to manager via published ref."
   }
 }
