@@ -24,6 +24,12 @@ Follow accepted semantic leaves/dependencies; preserve canonical source authorit
 
 Before authorised cross-thread ChatGPT-to-GitHub handover, read `docs/automation/CHATGPT_GITHUB_HANDOVER_UIA_20261110.md`. Keep D145 PAUSED and do not import Astra’s supplementary product-architecture proposals as implemented requirements.
 
+### Prospective implementation and proof economy
+
+For future authorised implementation and test authoring, prefer the least complex construction that fully establishes the accepted semantic and evidence requirements. Reuse genuinely common mechanical setup in new tests where each case's input variation, critical public operation sequence, reached invariant and independently derived expected result remain explicit and auditable. Apply the reviewer fixture-independence rule below; do not introduce abstraction that conceals or pre-satisfies the proposition. Do not reopen existing valid tests merely for economy.
+
+For each additional proposed physical case, identify in the existing proof brief a materially distinct incorrect behaviour that could satisfy the other valid cases, or a distinct required proposition not yet established by admissible evidence. Base that justification on applicable authority and the relevant implementation and proof, not coverage targets, symmetry or speculative concerns. Retain all existing valid cases, their identities and evidence; economy is not authority to omit required proof or change finite admission, release, rerun, independent review or acceptance requirements. Preserve the documentation and checkpoints that control drift; this instruction authorises no change to those controls and requires no additional standalone artefact.
+
 ### Reviewer lineage and recurrence rule
 
 A fresh reviewer is independent in judgement, not historically blind. Before routing any `FAIL / RETURN_TO_WORKER`, inspect the relevant Git lineage for the current semantic unit far enough to identify prior reviewer findings and the Worker repairs that answered them. Do not use a fixed commit count; follow the semantic lineage needed to decide whether the new failure is isolated or another manifestation of the same mechanism.
