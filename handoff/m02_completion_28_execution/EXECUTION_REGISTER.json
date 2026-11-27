@@ -46,7 +46,7 @@
         "L00"
       ],
       "obligation": "Bind actual public D071/D075/D076/D077 history producers, aligned sample/window/knowledge cutoffs, current exclusion, rank/conditioning and exact output codec. One fixed historical observation is insufficient for rolling history. Keep one OLS-with-intercept model, common immutable fit/intercept/sample identity and M02 neutral ownership. Prepare correlated full-rank exact synthetic success data which distinguish joint from separate univariate fits, an informative nonzero held-out residual, a concrete deficient-rank history and a per-coefficient mixed-fit refusal. Existing 64 orthogonal rows remain valid example arithmetic only. Admit/prove necessary history profiles separately; never inject expected D outputs as raw/configuration facts.",
-      "status": "OWNER_POLICY_ADOPTED_FINITE_ADMITTED_EXECUTION_HELD_BINDING_REVIEW_PENDING",
+      "status": "OWNER_POLICY_ADOPTED_FINITE_ADMITTED_EXECUTION_HELD_FIRST_STAGE_BINDINGS_INSTALLED_AUTHORING_PENDING",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G1_AFTER_L06",
@@ -113,7 +113,7 @@
         ],
         "execution_release": false,
         "product_status": "NOT_ATTEMPTED",
-        "first_unmet_invariant": "Exact own implementation-authority binding and admission reconciliation independently verified before installation; authoring and all later gates held.",
+        "first_unmet_invariant": "Independent authoring clearance for exact D071-D075 tests, proof contracts, proposed public interface and inactive descriptors; downstream bindings and all execution held.",
         "tester_designation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
         "tester_status": "CANDIDATE_SPECIFIC_INTAKE_REQUIRED",
         "scope": "Controlled synthetic only; no official/native certification or new product acceptance",
@@ -203,7 +203,22 @@
               "tools/product_proof_claims.py"
             ]
           }
-        ]
+        ],
+        "first_stage_binding_installation": {
+          "branch": "trial/cac-nvidia-continuation-20261127",
+          "review_commit": "f7b42cd7ed4dbedf2a6dc43b5e70515baafd7304",
+          "review_path": "handoff/m02_completion_28_execution/INDEPENDENT_CONSOLIDATED_64_BINDING_AND_ADMISSION_VERDICT_20261127.md",
+          "review_sha256": "707148db126b1cf604aad92d17f893052bc25433154a9c7053b98a8ee92d9c06",
+          "receipt_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_FIRST_STAGE_BINDING_INSTALLATION_CAC_TRIAL_20261127.md",
+          "receipt_sha256": "6ea484f594a8af7f021cad118d061f241dc0220ce972f7c332ab61bb67ca9ab8",
+          "jurisdictions": [
+            "D071",
+            "D072",
+            "D073",
+            "D074",
+            "D075"
+          ]
+        }
       }
     },
     {
