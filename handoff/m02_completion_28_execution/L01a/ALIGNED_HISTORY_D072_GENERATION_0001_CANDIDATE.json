@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_l01a_d072_history",
+  "generation": 1,
+  "brief_sha256": "4f8214d1ca11eaf0769206f3f322c799f44883bd266e63748e937dea5602b739",
+  "binding_sha256": "637ff9b90b916ee69ee956db28e191ef86be3764ce2004b5fc24e371fa5869df",
+  "contract_sha256": "dbbc72bd13284cc0665fa3d7a0bf85220f06b6fb43f3e32dce4ea1af23bd9990",
+  "implementation_target_id": "M02",
+  "adequacy_review_ref": "github-independent-review/6fe7b4496507fc491cd03baa6a49c96d28f49c8d/exact-d072-authoring;github-independent-review/22a14402bb5df8651e9136b6d00d94f657a07afd/exact-d072-implementation-for-generation-preparation",
+  "admission_authority_ref": "owner-instruction/20261127/exact-consolidated-finite64-conditional-claim-registration;github-record/3370d48e097cd7d8eec376b20ae9b3adfa918084",
+  "family_files": [
+    {
+      "path": "tests/product/m02_completion_28/support/d072-history/test_profile.py",
+      "sha256": "87e5541a89f03c797c6e51c3648c21f13dbb18d28dc31cf4cadb72cb1a07d262"
+    }
+  ],
+  "support_files": [],
+  "previous_generation": null
+}

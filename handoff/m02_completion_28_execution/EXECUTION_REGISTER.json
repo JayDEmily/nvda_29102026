@@ -46,7 +46,7 @@
         "L00"
       ],
       "obligation": "Bind actual public D071/D075/D076/D077 history producers, aligned sample/window/knowledge cutoffs, current exclusion, rank/conditioning and exact output codec. One fixed historical observation is insufficient for rolling history. Keep one OLS-with-intercept model, common immutable fit/intercept/sample identity and M02 neutral ownership. Prepare correlated full-rank exact synthetic success data which distinguish joint from separate univariate fits, an informative nonzero held-out residual, a concrete deficient-rank history and a per-coefficient mixed-fit refusal. Existing 64 orthogonal rows remain valid example arithmetic only. Admit/prove necessary history profiles separately; never inject expected D outputs as raw/configuration facts.",
-      "status": "OWNER_POLICY_ADOPTED_FINITE_ADMITTED_EXECUTION_HELD_FIRST_STAGE_IMPLEMENTATION_REVIEW_ACCEPTED_REGISTRATION_PREPARATION_PENDING",
+      "status": "OWNER_POLICY_ADOPTED_FINITE_ADMITTED_EXECUTION_HELD_FIRST_STAGE_REGISTRATION_PREPARED_PARTITION_CONFLICT_REVIEW_PENDING",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G1_AFTER_L06",
@@ -113,7 +113,7 @@
         ],
         "execution_release": false,
         "product_status": "NOT_ATTEMPTED",
-        "first_unmet_invariant": "Prepare exact separate inactive registration candidates for D071-D075; obtain independent registration review, then only authorised activation and strict Tester candidate-specific intake/release. No case release or downstream execution.",
+        "first_unmet_invariant": "Exact independent registration review of the five inert generation-1/pointer packages and G01 cross-claim partition conflict; no installation until resolved under separate authorised scope. Existing D091 root contains all five proposed roots; _partition rejects nested roots and would reject their unowned files under D091. No product execution or downstream release.",
         "tester_designation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
         "tester_status": "CANDIDATE_SPECIFIC_INTAKE_REQUIRED",
         "scope": "Controlled synthetic only; no official/native certification or new product acceptance",
@@ -320,6 +320,324 @@
             "SUP-D075-HISTORY": "ACCEPT"
           },
           "scope": "Exact independent documentary implementation clearance only; IMPLEMENTED_UNTESTED; no registration acceptance, product acceptance or execution release."
+        },
+        "first_stage_registration_preparation": {
+          "input_handoff": "0af1d47498932849cb23d99ea46b203b0076df2e",
+          "implementation_candidate": "2a97d52f2c54c09d60180e78826cdbb789317332",
+          "implementation_verdict": "22a14402bb5df8651e9136b6d00d94f657a07afd",
+          "status": "INACTIVE_METADATA_PREPARED_INSTALLATION_BLOCKED_PENDING_INDEPENDENT_REVIEW",
+          "case_count": 10,
+          "execution_release": false,
+          "product_cases_executed": 0,
+          "owner_policy_manifest_inventory_sha256": {
+            "handoff/m02_completion_28_execution/OWNER_CONSOLIDATED_64_CONDITIONAL_EXECUTION_GRANT_20261127.json": "6a71f52981fc01da42f9c27726547d0d1ddd69851561479a007aeb30ebd95a41",
+            "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_SOURCE_POLICY_PROPOSED_20261126.json": "9ba56098c273007980c893db39931ac86e7a3185bbb665f8c3f1e14f99b72af1",
+            "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_FINITE_SPECIMENS_PROPOSED_20261126.json": "bb03481de75e1820c7aff61777a4a3aa4f676440ec03e373a05c032a0417c76d",
+            "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_JOINT_FIT_FINITE_CASES_PROPOSED_20261126.json": "3be150f2998b4187a81720b424c848099edeba7a9f638ae90d9aae95d4c5d5c1"
+          },
+          "ledger_sha256": "d416b61f19e0e2d19df844007ec397dbe7aeefae96de0cb7de46494a10d72b2b",
+          "packages": [
+            {
+              "jurisdiction": "D071",
+              "proof_id": "SUP-D071-HISTORY",
+              "claim_id": "neutral_market_measurement_truth_l01a_d071_history",
+              "family_id": "m02_l01a_aligned_history_d071",
+              "ordered_case_ids": [
+                "SUP-D071-HISTORY-SUCCESS",
+                "SUP-D071-HISTORY-REACHED_REFUSAL"
+              ],
+              "ordered_nodes": [
+                "tests/product/m02_completion_28/support/d071-history/test_profile.py::test_d071_history_success",
+                "tests/product/m02_completion_28/support/d071-history/test_profile.py::test_d071_missing_exact_reference"
+              ],
+              "physical_root": "tests/product/m02_completion_28/support/d071-history",
+              "contract_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D071_PROOF_CONTRACT.json",
+              "contract_sha256": "c3b176e6471c95b4334c3c25aedf31d8c1afa4e30b1ddaee9b4d5a60eaf6bb68",
+              "brief_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D071_IMPLEMENTATION_BRIEF.md",
+              "brief_sha256": "65f2d0f9135f291773ab6081ec76892a967315df3ecb9c1760a4e2687a296e5e",
+              "binding_path": "implementation/authority/T01_ALIGNED_HISTORY_D071_AUTHORITY_BINDING.yaml",
+              "binding_sha256": "30cbb5fe2f8a1b720bc58b55b05f3c88b736401f03d03199404444b60330dc03",
+              "staged_files": [
+                {
+                  "path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D071_TEST_SOURCE.py",
+                  "future_destination": "tests/product/m02_completion_28/support/d071-history/test_profile.py",
+                  "sha256": "7fbdecc10300be61a8741c54d5c2592a17ccf84171ecfc83568120e4f83eb39a"
+                },
+                {
+                  "path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D071_CLAIM_CANDIDATE.json",
+                  "future_destination": "config/product_proof/m02_aligned_history_d071/claim.json",
+                  "sha256": "5422a733f2a25ac23817c3a4544ab99e48eca3561deb2d2dd87284f56a266263"
+                },
+                {
+                  "path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D071_GENERATION_0001_CANDIDATE.json",
+                  "future_destination": "config/product_proof/m02_aligned_history_d071/generations/0001.json",
+                  "sha256": "4f689fab2d862f1cc4ed863de28394bb606be258ff0fadb9b0a0d9473e3af879"
+                },
+                {
+                  "path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D071_ADMISSION_CANDIDATE.json",
+                  "future_destination": "config/product_proof/m02_aligned_history_d071/admission.json",
+                  "sha256": "fe900346772f996539aac5257313756b8858959f6c24b16dc2f93e89113b1cf5"
+                }
+              ],
+              "active_destinations_absent": true,
+              "generation_history_absent": true,
+              "mechanical_documentary_checks": "PASS",
+              "installation_disposition": "BLOCKED_PENDING_PARTITION_RECONCILIATION",
+              "overlapping_existing_claims": [
+                {
+                  "claim_id": "neutral_market_measurement_truth_d091",
+                  "physical_root": "tests/product/m02_completion_28"
+                }
+              ]
+            },
+            {
+              "jurisdiction": "D072",
+              "proof_id": "SUP-D072-HISTORY",
+              "claim_id": "neutral_market_measurement_truth_l01a_d072_history",
+              "family_id": "m02_l01a_aligned_history_d072",
+              "ordered_case_ids": [
+                "SUP-D072-HISTORY-SUCCESS",
+                "SUP-D072-HISTORY-REACHED_REFUSAL"
+              ],
+              "ordered_nodes": [
+                "tests/product/m02_completion_28/support/d072-history/test_profile.py::test_d072_history_success",
+                "tests/product/m02_completion_28/support/d072-history/test_profile.py::test_d072_wrong_reference_role"
+              ],
+              "physical_root": "tests/product/m02_completion_28/support/d072-history",
+              "contract_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D072_PROOF_CONTRACT.json",
+              "contract_sha256": "dbbc72bd13284cc0665fa3d7a0bf85220f06b6fb43f3e32dce4ea1af23bd9990",
+              "brief_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D072_IMPLEMENTATION_BRIEF.md",
+              "brief_sha256": "4f8214d1ca11eaf0769206f3f322c799f44883bd266e63748e937dea5602b739",
+              "binding_path": "implementation/authority/T01_ALIGNED_HISTORY_D072_AUTHORITY_BINDING.yaml",
+              "binding_sha256": "637ff9b90b916ee69ee956db28e191ef86be3764ce2004b5fc24e371fa5869df",
+              "staged_files": [
+                {
+                  "path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D072_TEST_SOURCE.py",
+                  "future_destination": "tests/product/m02_completion_28/support/d072-history/test_profile.py",
+                  "sha256": "87e5541a89f03c797c6e51c3648c21f13dbb18d28dc31cf4cadb72cb1a07d262"
+                },
+                {
+                  "path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D072_CLAIM_CANDIDATE.json",
+                  "future_destination": "config/product_proof/m02_aligned_history_d072/claim.json",
+                  "sha256": "f40809d42c19ae5d9a69d6ecadc0da4a0aaaca53c0ed324365f0827bda761b83"
+                },
+                {
+                  "path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D072_GENERATION_0001_CANDIDATE.json",
+                  "future_destination": "config/product_proof/m02_aligned_history_d072/generations/0001.json",
+                  "sha256": "3e2f8decd9db53b24474a785e59c002b742cf1af207f93f91da48ac4659c6582"
+                },
+                {
+                  "path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D072_ADMISSION_CANDIDATE.json",
+                  "future_destination": "config/product_proof/m02_aligned_history_d072/admission.json",
+                  "sha256": "46b75d1b8fed7e0bb94c1adbe9cf8fc3669a8c3daa39b1968d8dbd3e270994f0"
+                }
+              ],
+              "active_destinations_absent": true,
+              "generation_history_absent": true,
+              "mechanical_documentary_checks": "PASS",
+              "installation_disposition": "BLOCKED_PENDING_PARTITION_RECONCILIATION",
+              "overlapping_existing_claims": [
+                {
+                  "claim_id": "neutral_market_measurement_truth_d091",
+                  "physical_root": "tests/product/m02_completion_28"
+                }
+              ]
+            },
+            {
+              "jurisdiction": "D073",
+              "proof_id": "SUP-D073-HISTORY",
+              "claim_id": "neutral_market_measurement_truth_l01a_d073_history",
+              "family_id": "m02_l01a_aligned_history_d073",
+              "ordered_case_ids": [
+                "SUP-D073-HISTORY-SUCCESS",
+                "SUP-D073-HISTORY-REACHED_REFUSAL"
+              ],
+              "ordered_nodes": [
+                "tests/product/m02_completion_28/support/d073-history/test_profile.py::test_d073_history_success",
+                "tests/product/m02_completion_28/support/d073-history/test_profile.py::test_d073_late_current"
+              ],
+              "physical_root": "tests/product/m02_completion_28/support/d073-history",
+              "contract_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D073_PROOF_CONTRACT.json",
+              "contract_sha256": "db4d78db436cf9c8c89a5aa247b12e90a74b9cb155def3cddb5ad9ccd46eec60",
+              "brief_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D073_IMPLEMENTATION_BRIEF.md",
+              "brief_sha256": "a7234477d581e6cba27e470919fa092c4ed5054d5a1aa31d2019d8fa94d16f48",
+              "binding_path": "implementation/authority/T01_ALIGNED_HISTORY_D073_AUTHORITY_BINDING.yaml",
+              "binding_sha256": "867444cecdf23c191269b1b3856410cc1ee6e3b81b8730dafa6d6528b78d6e0a",
+              "staged_files": [
+                {
+                  "path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D073_TEST_SOURCE.py",
+                  "future_destination": "tests/product/m02_completion_28/support/d073-history/test_profile.py",
+                  "sha256": "67ec39e95b2d696e67f9986ed6e26aaf26ddd05756e2b54f2e8083bbfe22c404"
+                },
+                {
+                  "path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D073_CLAIM_CANDIDATE.json",
+                  "future_destination": "config/product_proof/m02_aligned_history_d073/claim.json",
+                  "sha256": "eeab4960c3ff8008aa516d7345dde9382aae5fa4a20b28d620eb2016d8cef11e"
+                },
+                {
+                  "path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D073_GENERATION_0001_CANDIDATE.json",
+                  "future_destination": "config/product_proof/m02_aligned_history_d073/generations/0001.json",
+                  "sha256": "8de75c93dccfe261b72a7152d790e6f9dbe82c0eb9ee4e5e938097f81ef6d670"
+                },
+                {
+                  "path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D073_ADMISSION_CANDIDATE.json",
+                  "future_destination": "config/product_proof/m02_aligned_history_d073/admission.json",
+                  "sha256": "0944b9429dfa92686949814606fc19cd7d9ffa2a4c4d371266e31e006cc78097"
+                }
+              ],
+              "active_destinations_absent": true,
+              "generation_history_absent": true,
+              "mechanical_documentary_checks": "PASS",
+              "installation_disposition": "BLOCKED_PENDING_PARTITION_RECONCILIATION",
+              "overlapping_existing_claims": [
+                {
+                  "claim_id": "neutral_market_measurement_truth_d091",
+                  "physical_root": "tests/product/m02_completion_28"
+                }
+              ]
+            },
+            {
+              "jurisdiction": "D074",
+              "proof_id": "SUP-D074-HISTORY",
+              "claim_id": "neutral_market_measurement_truth_l01a_d074_history",
+              "family_id": "m02_l01a_aligned_history_d074",
+              "ordered_case_ids": [
+                "SUP-D074-HISTORY-SUCCESS",
+                "SUP-D074-HISTORY-REACHED_REFUSAL"
+              ],
+              "ordered_nodes": [
+                "tests/product/m02_completion_28/support/d074-history/test_profile.py::test_d074_history_success",
+                "tests/product/m02_completion_28/support/d074-history/test_profile.py::test_d074_ambiguous_current"
+              ],
+              "physical_root": "tests/product/m02_completion_28/support/d074-history",
+              "contract_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D074_PROOF_CONTRACT.json",
+              "contract_sha256": "10d744c833ac882adef4263f0a0172ddabf165982e6618bad4d95b1af00f4f22",
+              "brief_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D074_IMPLEMENTATION_BRIEF.md",
+              "brief_sha256": "524b2d2a4aa94a0c1c55ea376650d14648af67c46e73763ce3e8cc0f2e9e0c0e",
+              "binding_path": "implementation/authority/T01_ALIGNED_HISTORY_D074_AUTHORITY_BINDING.yaml",
+              "binding_sha256": "f2a2208a73d291e614577eaf2b81ffd13d699c4efbc2eeeb6258569ac8aa1c34",
+              "staged_files": [
+                {
+                  "path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D074_TEST_SOURCE.py",
+                  "future_destination": "tests/product/m02_completion_28/support/d074-history/test_profile.py",
+                  "sha256": "4caa1039b495463a118f62bdd461ced7d4828fc3c63f0a39b9c01438dd76f277"
+                },
+                {
+                  "path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D074_CLAIM_CANDIDATE.json",
+                  "future_destination": "config/product_proof/m02_aligned_history_d074/claim.json",
+                  "sha256": "71f7b6266188581adbeb839af8a22fc58c4976db8127a6f6fbf390943560b18f"
+                },
+                {
+                  "path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D074_GENERATION_0001_CANDIDATE.json",
+                  "future_destination": "config/product_proof/m02_aligned_history_d074/generations/0001.json",
+                  "sha256": "8bc49b8d9b0258f581d2c866777ae2145c1ca9cfe5925afb68397a261f2cf68b"
+                },
+                {
+                  "path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D074_ADMISSION_CANDIDATE.json",
+                  "future_destination": "config/product_proof/m02_aligned_history_d074/admission.json",
+                  "sha256": "f2d8c1a681a6c88da6547884f4bb7d59138789083695b40fe967ad6623fa90fe"
+                }
+              ],
+              "active_destinations_absent": true,
+              "generation_history_absent": true,
+              "mechanical_documentary_checks": "PASS",
+              "installation_disposition": "BLOCKED_PENDING_PARTITION_RECONCILIATION",
+              "overlapping_existing_claims": [
+                {
+                  "claim_id": "neutral_market_measurement_truth_d091",
+                  "physical_root": "tests/product/m02_completion_28"
+                }
+              ]
+            },
+            {
+              "jurisdiction": "D075",
+              "proof_id": "SUP-D075-HISTORY",
+              "claim_id": "neutral_market_measurement_truth_l01a_d075_history",
+              "family_id": "m02_l01a_aligned_history_d075",
+              "ordered_case_ids": [
+                "SUP-D075-HISTORY-SUCCESS",
+                "SUP-D075-HISTORY-REACHED_REFUSAL"
+              ],
+              "ordered_nodes": [
+                "tests/product/m02_completion_28/support/d075-history/test_profile.py::test_d075_history_success",
+                "tests/product/m02_completion_28/support/d075-history/test_profile.py::test_d075_original_units"
+              ],
+              "physical_root": "tests/product/m02_completion_28/support/d075-history",
+              "contract_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D075_PROOF_CONTRACT.json",
+              "contract_sha256": "81e025f205039f376ced0d027cd9c7e65930a30a5fbbe8c43997725ef701dc2c",
+              "brief_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D075_IMPLEMENTATION_BRIEF.md",
+              "brief_sha256": "24ec8f08faf1a61059cee69b8c675767345809ae6a0dd90ab852a2fc30977750",
+              "binding_path": "implementation/authority/T01_ALIGNED_HISTORY_D075_AUTHORITY_BINDING.yaml",
+              "binding_sha256": "50120c02327ed212e8821ac3795d4f64daa3e38d77ecd5c92c7b20f6a2ba8c3f",
+              "staged_files": [
+                {
+                  "path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D075_TEST_SOURCE.py",
+                  "future_destination": "tests/product/m02_completion_28/support/d075-history/test_profile.py",
+                  "sha256": "a368c6c8d0628a34dfd843bd0ee62674c111f891a3bac097f512bd0bcc74ceae"
+                },
+                {
+                  "path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D075_CLAIM_CANDIDATE.json",
+                  "future_destination": "config/product_proof/m02_aligned_history_d075/claim.json",
+                  "sha256": "adeec41c60fc259073c3ada2bafbfadfea5c949361512e9322282d5ce07be452"
+                },
+                {
+                  "path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D075_GENERATION_0001_CANDIDATE.json",
+                  "future_destination": "config/product_proof/m02_aligned_history_d075/generations/0001.json",
+                  "sha256": "66650a4b69af949f7360d23f42ece7e4179f843218666900c15a0b3586e12ef2"
+                },
+                {
+                  "path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D075_ADMISSION_CANDIDATE.json",
+                  "future_destination": "config/product_proof/m02_aligned_history_d075/admission.json",
+                  "sha256": "6830f1c9e5020a61627e598cfd98dd6f227d6bdc47e6eb0fffb968a0b5aa06a5"
+                }
+              ],
+              "active_destinations_absent": true,
+              "generation_history_absent": true,
+              "mechanical_documentary_checks": "PASS",
+              "installation_disposition": "BLOCKED_PENDING_PARTITION_RECONCILIATION",
+              "overlapping_existing_claims": [
+                {
+                  "claim_id": "neutral_market_measurement_truth_d091",
+                  "physical_root": "tests/product/m02_completion_28"
+                }
+              ]
+            }
+          ],
+          "observed_partition_conflict": {
+            "loader": "tools/product_proof_claims.py",
+            "loader_sha256": "05adb1e57a542d2a223011ba637499d666beea54469772c62c8d6afa652fd34c",
+            "existing_descriptor": "config/product_proof/m02_d091/claim.json",
+            "existing_descriptor_sha256": "bcb6a09cabe9ab4fe34dbbcb4d598c79a646ddf581e53187dda373a08181fea5",
+            "existing_pointer_path": "config/product_proof/m02_d091/admission.json",
+            "existing_pointer_sha256": "31cba6801940c2abfe0b9bcbb11bf9101cfe8e8bada1525218a4cf77300218af",
+            "existing_generation_path": "config/product_proof/m02_d091/generations/0001.json",
+            "existing_generation_sha256": "429df0e6b732ed019f9bc62d67f36bc295b556f89f7da670e8d76fcce4581097",
+            "existing_contract_path": "handoff/m02_completion_28_execution/L04/D091_PREEDIT_BINDING_REVISION_20261117/PRODUCT_PROOF_REGISTRATION_PROPOSAL.json",
+            "existing_contract_sha256": "f5550570dccdef5714595370fb2eb7a71c9fe5646d0ec419939fd4490b3b1bd7",
+            "existing_root": "tests/product/m02_completion_28",
+            "existing_claim": "neutral_market_measurement_truth_d091",
+            "existing_family_files": [
+              {
+                "path": "tests/product/m02_completion_28/d091/test_signal.py",
+                "sha256": "d1eab7802786344ecf9ab4d4e2f46b802aba6d2fea0c72d14ad149492504b86f"
+              },
+              {
+                "path": "tests/product/m02_completion_28/l01b_r112/test_source.py",
+                "sha256": "1f648998ca4c64829a3655057598e5ae5687b6568bb7e9eebf7ca2f17caa56f5"
+              }
+            ],
+            "mechanism": "_d091_l01b_extension includes exact current two-family descriptor; load_product_proof_claim adds it and each new descriptor extension, then calls _partition. _partition rejects nested physical roots and scans all *.py under D091 against its two-family allowlist. All five new roots lie under D091, and their proposed test_profile.py files are not D091 families/support. Static evidence only; no product imports or activation.",
+            "finding": "Real applicability conflict for every one of the five proposed registration paths, not an installed runtime failure. Do not change historical D091 metadata, existing proof evidence, exact reviewed new paths, or validator within this registration assignment."
+          },
+          "static_checks": "15 reviewed authoring and five implementation paths byte-identical; five own binding/brief pairs; all four authority pins; 64 held cases; ten ordered reviewed-case/node matches; five contract schemas and ten generation/pointer schemas; five absent active routes/no history; five mutually disjoint new roots; all five conflict with existing D091 root.",
+          "historical_integrity_readback": {
+            "required_ref_rows": 2281,
+            "distinct_expected_tips_available": 170,
+            "original_named_rows_available": 66,
+            "recorded_vendor_wheel_hashes_matched": 21,
+            "git_fsck_full_no_reflogs_exit": 0,
+            "scope": "Object availability in private checkout after exact advertised ref fetch; not recreated literal refs or independent receiver acceptance. Historical asset record statuses: 66 VERIFIED, 5 BLOCKED, 1 UNKNOWN; no claim of recovery of missing original binaries."
+          }
         }
       }
     },
