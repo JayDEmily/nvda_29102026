@@ -18,6 +18,12 @@ Owner-reserved boundaries: frozen GUARDRAILS change, new source/domain policy, p
 
 At a real tool/session limit, record the last verified Git checkpoint, incomplete work and next action. There is no background continuation.
 
+### Manual handover economy ? owner directive (27 November 2026)
+
+Use the GUI-free manual handover workflow: perform repository work through Remote Desktop Commander and Ubuntu Git; do not operate the GUI or launch review conversations. The owner manually initiates distinct independent reviewer and Tester conversations using concise copy-and-paste commissions. Retain the accepted pinned Git checkpoint and receiver-verification method; the historical GUI transport procedure is not permission to operate the GUI.
+
+Before requesting a manual handover or owner decision, complete all independently actionable, already authorised work, including other eligible leaves when one dependency is held. Where independence and applicable role/dependency rules permit, consolidate multiple review-ready deliverables into one manual commission, retaining each unit's exact checkpoint, scope, evidence, acceptance criteria and separate verdict. Consolidate genuinely necessary owner decisions with their exact bounded proposals where doing so does not defer required upstream decisions. Keep every existing required review and proof boundary: provisional child implementation is permitted only under the installed plan's independently cleared contract, source-profile and stable committed-interface conditions, and cannot substitute for parent acceptance. Do not delay a necessary upstream review solely to fill a batch or combine incompatible roles. This direction reduces manual owner interventions, not engineering checks; it changes no scope, admission, release, test schedule, reviewer independence, checkpoint requirements or acceptance authority and creates no additional mandatory artefact.
+
 ## Workflow and evidence
 
 Follow accepted semantic leaves/dependencies; preserve canonical source authority, all valid original tests, prior failures and proof evidence. Commit to the commissioned working branch; verify its exact commit/tree, changed paths, recipient retrievability, historical-ref coverage and required asset identities under the accepted checkpoint contract. A GitHub push is not equivalent to a complete independent historical receiver restoration.
