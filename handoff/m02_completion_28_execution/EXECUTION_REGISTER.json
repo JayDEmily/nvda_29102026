@@ -46,7 +46,7 @@
         "L00"
       ],
       "obligation": "Bind actual public D071/D075/D076/D077 history producers, aligned sample/window/knowledge cutoffs, current exclusion, rank/conditioning and exact output codec. One fixed historical observation is insufficient for rolling history. Keep one OLS-with-intercept model, common immutable fit/intercept/sample identity and M02 neutral ownership. Prepare correlated full-rank exact synthetic success data which distinguish joint from separate univariate fits, an informative nonzero held-out residual, a concrete deficient-rank history and a per-coefficient mixed-fit refusal. Existing 64 orthogonal rows remain valid example arithmetic only. Admit/prove necessary history profiles separately; never inject expected D outputs as raw/configuration facts.",
-      "status": "OWNER_POLICY_ADOPTED_FINITE_ADMITTED_EXECUTION_HELD_FIRST_STAGE_IMPLEMENTED_UNTESTED_IMPLEMENTATION_REVIEW_PENDING",
+      "status": "OWNER_POLICY_ADOPTED_FINITE_ADMITTED_EXECUTION_HELD_FIRST_STAGE_IMPLEMENTATION_REVIEW_ACCEPTED_REGISTRATION_PREPARATION_PENDING",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G1_AFTER_L06",
@@ -113,7 +113,7 @@
         ],
         "execution_release": false,
         "product_status": "NOT_ATTEMPTED",
-        "first_unmet_invariant": "Independent documentary implementation clearance of exact D071-D075 candidate; registration review, candidate-specific strict Tester intake and release remain held.",
+        "first_unmet_invariant": "Prepare exact separate inactive registration candidates for D071-D075; obtain independent registration review, then only authorised activation and strict Tester candidate-specific intake/release. No case release or downstream execution.",
         "tester_designation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
         "tester_status": "CANDIDATE_SPECIFIC_INTAKE_REQUIRED",
         "scope": "Controlled synthetic only; no official/native certification or new product acceptance",
@@ -300,6 +300,26 @@
             "local_git_fsck_exit": 0,
             "scope": "Local mechanical checks; distinct receiver/runtime/Tester acceptance not granted."
           }
+        },
+        "first_stage_implementation_verdict": {
+          "commit": "22a14402bb5df8651e9136b6d00d94f657a07afd",
+          "tree": "b32f50aee4e96347d9468749f47a956b60135b0a",
+          "parent_handoff": "f3f9f8c7d3da8e937fb56754e74b3e257f3c550a",
+          "reviewed_candidate": "2a97d52f2c54c09d60180e78826cdbb789317332",
+          "reviewed_tree": "0c4a4b52f61917f73b25cfffe4e906e30b97fbb3",
+          "review_ref": "refs/heads/review/trial-cac-nvidia-l01a-implementation-20261127",
+          "path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_CAC_TRIAL_ALIGNED_HISTORY_D071_D075_IMPLEMENTATION_VERDICT_20261127.md",
+          "sha256": "6c354b51ccd42bf7230a457102f68cbf498f3ded4eae11a90b5765d9567af34b",
+          "git_blob": "bd60d43162d574b462c9147f479b78f1244a7342",
+          "bytes": 11413,
+          "dispositions": {
+            "SUP-D071-HISTORY": "ACCEPT",
+            "SUP-D072-HISTORY": "ACCEPT",
+            "SUP-D073-HISTORY": "ACCEPT",
+            "SUP-D074-HISTORY": "ACCEPT",
+            "SUP-D075-HISTORY": "ACCEPT"
+          },
+          "scope": "Exact independent documentary implementation clearance only; IMPLEMENTED_UNTESTED; no registration acceptance, product acceptance or execution release."
         }
       }
     },
@@ -2145,8 +2165,8 @@
   "execution_status": "ready",
   "current_leaf": "L01a",
   "next_assignment": {
-    "role": "Independent documentary reviewer",
-    "task": "Fresh independent documentary implementation reviewer, L01a exact D071-D075 only. Use separate private Ubuntu checkout via RDC, verify this H and pinned CAC consume. Execute handoff/m02_completion_28_execution/L01a/CAC_TRIAL_ALIGNED_HISTORY_D071_D075_IMPLEMENTATION_REVIEW_COMMISSION_20261127.md at this H. Exact C=2a97d52f2c54c09d60180e78826cdbb789317332, tree=0c4a4b52f61917f73b25cfffe4e906e30b97fbb3, parent Worker intake=20688b5d2b59e376cc892be93f87f4f440d48956. Reconcile authoring verdict 6fe7b4496507fc491cd03baa6a49c96d28f49c8d, exact 15 authored files and installed brief/binding evidence. Verify separate per-claim implementation scope, actual M00 public source/selection/corpus, full metadata, canonical arithmetic and identity/durable replay, inactive G01 routes and unchanged evidence. Review all five claims independently; no product imports, collection, tests, implementation or active registration edits. Publish only handoff/m02_completion_28_execution/L01a/INDEPENDENT_CAC_TRIAL_ALIGNED_HISTORY_D071_D075_IMPLEMENTATION_VERDICT_20261127.md on NEW refs/heads/review/trial-cac-nvidia-l01a-implementation-20261127, direct child of this H; exact per-claim ACCEPT, RETURN or BLOCKED, bind candidate/tree/H and verify remote verdict. Documentary review only, no product acceptance or release; preserve sole strict Tester, original work, main, existing review refs and downstream holds. After independently publishing verified V, reconcile and commission the next eligible distinct role (registration preparation for accepted implementation or bounded repair if returned) through pinned native CAC, no routine owner intervention. Owner directive 27 November 2026, isolated NVIDIA CAC trial only: continuous forward succession, fresh Worker -> fresh independent Reviewer -> fresh Worker, without returning to previous conversations or requiring routine owner intervention. After each actual scoped assignment is completed and any required independent verdict published and verified, the current authorised receiver reconciles the exact result and commissions the next eligible distinct role through the existing pinned native CAC method and binding. Carry this instruction forward into each next_assignment; preserve independence, all plan-required proof/review/registration/Tester gates, hold/stop law, exact candidate and one outstanding delivery at a time. Do not retry an uncertain Send, modify CAC software, introduce automation code, touch original work/main or merge back without owner approval."
+    "role": "Worker",
+    "task": "Fresh distinct Worker: L01a exact D071-D075 registration preparation only. Independently verified implementation ACCEPT V 22a14402bb5df8651e9136b6d00d94f657a07afd on refs/heads/review/trial-cac-nvidia-l01a-implementation-20261127, report handoff/m02_completion_28_execution/L01a/INDEPENDENT_CAC_TRIAL_ALIGNED_HISTORY_D071_D075_IMPLEMENTATION_VERDICT_20261127.md SHA256 6c354b51ccd42bf7230a457102f68cbf498f3ded4eae11a90b5765d9567af34b, exact implementation C 2a97d52f2c54c09d60180e78826cdbb789317332 tree 0c4a4b52f61917f73b25cfffe4e906e30b97fbb3. Read H register and governing plan, verify remote V and all prior exact authoring/binding evidence. Prepare exact inactive registration packages for the five separate two-case claims (unchanged reviewed test-source bytes, exact physical paths and ordered nodes, descriptor/admission, strict generation/pointer bindings, accepted owner grant/policy/manifest/inventory, own brief/binding and exact proof contracts). Inspect the actual existing G01 registration method and prior accepted examples; no active installation, product imports, collection, tests, extra cases or source changes. Publish exact bounded candidate C2 and H2 naming a fresh independent documentary registration reviewer; specify independent review commission with file/hash/tree pins and each separate disposition. Preserve all ten cases NOT_ATTEMPTED and execution_release=false, sole designated strict Tester intake/release, old proofs/evidence, downstream D076/D077/fit/residual holds, D145 and all other jurisdictions. No touching original work, main, prior review refs, no merge. Owner directive 27 November 2026, isolated NVIDIA CAC trial only: continuous forward succession, fresh Worker -> fresh independent Reviewer -> fresh Worker, without returning to previous conversations or requiring routine owner intervention. After each actual scoped assignment is completed and any required independent verdict published and verified, the current authorised receiver reconciles the exact result and commissions the next eligible distinct role through the existing pinned native CAC method and binding. Carry this instruction forward into each next_assignment; preserve independence, all plan-required proof/review/registration/Tester gates, hold/stop law, exact candidate and one outstanding delivery at a time. Do not retry an uncertain Send, modify CAC software, introduce automation code, touch original work/main or merge back without owner approval."
   },
   "trial_forward_succession_authority": {
     "scope": "trial/cac-nvidia-continuation-20261127 only",
