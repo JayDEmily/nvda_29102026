@@ -2586,3 +2586,575 @@ __all__ += [
     "create_window_owner",
     "create_window_reader",
 ]
+
+
+# D091/L01b controlled synthetic categorical public contract.  This is a
+# distinct M02 occurrence family: do not coerce its result into the numeric
+# DerivedSignalOccurrenceV1 or NativeMeasurementOccurrenceV1 contracts.
+from typing import Literal
+
+D091RefusalStageV1 = Literal[
+    "UNSEALED",
+    "ORIGIN_OR_IDENTITY",
+    "CLOCK_OR_SCOPE",
+    "HISTORY_OR_AMBIGUOUS_RANK",
+    "ABSENT",
+    "NONFINITE",
+    "RANGE",
+]
+
+_D091_LABELS = frozenset(
+    ("ABS_00_10", "ABS_10_25", "ABS_25_50", "ABS_50_75", "ABS_75_100")
+)
+_D091_STAGES = frozenset(
+    (
+        "UNSEALED", "ORIGIN_OR_IDENTITY", "CLOCK_OR_SCOPE",
+        "HISTORY_OR_AMBIGUOUS_RANK", "ABSENT", "NONFINITE", "RANGE",
+    )
+)
+
+
+@dataclass(frozen=True, slots=True)
+class D091CategoryV1(_Validated):
+    """One exact categorical D091 result; not an untyped str or enum wire."""
+
+    label: str
+
+    def __post_init__(self) -> None:
+        _Validated.__post_init__(self)
+        if self.label not in _D091_LABELS:
+            raise ValueError("unadmitted D091 rule label")
+
+
+@dataclass(frozen=True, slots=True)
+class D091BucketRequestV1(_Validated):
+    """Twenty-one immutable input fields; request_identity is derived only."""
+
+    derived_signal_id: str
+    subject_instrument: str
+    as_of_utc: datetime
+    knowledge_cutoff_utc: datetime
+    calculation_definition_version: str
+    source_profile_ref: VersionRefV1
+    selection_policy_ref: VersionRefV1
+    projection_mapping_ref: VersionRefV1
+    unit_convention_ref: VersionRefV1
+    rule_profile_ref: VersionRefV1
+    contract_id: str
+    underlying: str
+    security_type: str
+    right: str
+    expiry_date: str
+    strike: str
+    currency: str
+    model_variant: str
+    scale: str
+    generation: str
+    request_id: str
+
+    def __post_init__(self) -> None:
+        _Validated.__post_init__(self)
+        if self.derived_signal_id != "D091":
+            raise ValueError("D091 request signal identity mismatch")
+        # Intentionally do NOT reject as_of > knowledge_cutoff at this DTO
+        # constructor: the admitted H02 public materialise call must emit its
+        # actual CLOCK_OR_SCOPE business refusal before M00 pagination.
+        # Both instants are independently checked as genuine UTC by _Validated.
+
+    @property
+    def request_identity(self) -> str:
+        import hashlib
+        from . import _native_codec as codec
+
+        content = {field.name: getattr(self, field.name) for field in fields(self)}
+        return "d091-request-v1:" + hashlib.sha256(codec.canonical(content)).hexdigest()
+
+
+@dataclass(frozen=True, slots=True)
+class D091BucketOccurrenceV1(_Validated):
+    """Self-contained immutable categorical occurrence for SQLite readback."""
+
+    owner_object_id: str
+    owner_namespace: str
+    implementation_brief_sha256: str
+    derived_signal_id: str
+    derived_occurrence_id: str
+    request: D091BucketRequestV1
+    definition: CalculationDefinitionV1
+    source_contract_sha256: str
+    source_artifact_sha256: str
+    cohort_content_digest: str
+    original_observation: raw_api.RawObservationOccurrenceV1
+    selected_projection: raw_api.ProjectedRawValueV1
+    signed_delta: Decimal
+    result: D091CategoryV1
+    units: str
+    result_shape: str
+    effective_as_of_utc: datetime
+    knowledge_cutoff_utc: datetime
+    calculated_at_utc: datetime
+
+    def __post_init__(self) -> None:
+        _Validated.__post_init__(self)
+        if (
+            self.owner_object_id != "M02"
+            or self.owner_namespace != "neutral_market_measurement_truth/d091/v1"
+            or self.derived_signal_id != "D091"
+            or self.request.derived_signal_id != "D091"
+            or self.units != "category"
+            or self.result_shape != "category"
+        ):
+            raise ValueError("D091 categorical occurrence owner/shape mismatch")
+        if (
+            self.definition.derived_signal_id != "D091"
+            or self.definition.raw_dependencies != ("R112",)
+            or self.definition.derived_dependencies != ()
+            or self.definition.result_shape != "category"
+        ):
+            raise ValueError("D091 categorical definition lineage mismatch")
+        if (
+            self.effective_as_of_utc != self.request.as_of_utc
+            or self.knowledge_cutoff_utc != self.request.knowledge_cutoff_utc
+            or self.calculated_at_utc < self.knowledge_cutoff_utc
+            or self.original_observation.observation_occurrence_id
+            != self.selected_projection.observation_occurrence_id
+            or type(self.selected_projection.native_value) is not Decimal
+            or self.selected_projection.native_value != self.signed_delta
+        ):
+            raise ValueError("D091 original/projection/clock internal inconsistency")
+        if not self.derived_occurrence_id.startswith("d091-occurrence-v1:"):
+            raise ValueError("D091 logical occurrence identity required")
+        for digest in (self.source_contract_sha256, self.source_artifact_sha256, self.cohort_content_digest):
+            if re.fullmatch(r"[0-9a-f]{64}", digest) is None:
+                raise ValueError("D091 immutable source/cohort SHA256 required")
+
+
+@dataclass(frozen=True, slots=True)
+class D091DiagnosticEventV1:
+    """Exactly five output-only fields. No technical persistence stage."""
+
+    request_identity: str
+    source_observation_occurrence_id: str | None
+    stage: D091RefusalStageV1
+    source_profile_ref: VersionRefV1
+    rule_profile_ref: VersionRefV1
+
+    def __post_init__(self) -> None:
+        if (
+            type(self.request_identity) is not str or not self.request_identity
+            or (self.source_observation_occurrence_id is not None
+                and (type(self.source_observation_occurrence_id) is not str
+                     or not self.source_observation_occurrence_id))
+            or type(self.stage) is not str or self.stage not in _D091_STAGES
+            or type(self.source_profile_ref) is not VersionRefV1
+            or type(self.rule_profile_ref) is not VersionRefV1
+        ):
+            raise ValueError("invalid exact five-field D091 business diagnostic")
+
+
+class D091DiagnosticObserverV1(Protocol):
+    def __call__(self, event: D091DiagnosticEventV1) -> None: ...
+
+
+class D091RawReadPortV1(Protocol):
+    """Selector-facing original M00 read and cursor-page interfaces only."""
+
+    def get_raw_observation_occurrence(
+        self, observation_occurrence_id: object,
+    ) -> raw_api.RawObservationOccurrenceV1 | None: ...
+
+    def list_projected_raw_history(
+        self, raw_signal_catalogue_id: raw_api.RawSignalCatalogueId, *,
+        mappings: Sequence[raw_api.RawSignalProjectionMappingV1],
+        subject_instrument: str | None,
+        received_at_or_before_utc: datetime | None,
+        event_at_or_before_utc: datetime | None,
+        limit: int, cursor: str | None,
+    ) -> raw_api.ProjectedRawHistoryPageV1: ...
+
+
+class D091BucketReadsV1(Protocol):
+    def get_derived_occurrence(
+        self, derived_occurrence_id: str,
+    ) -> D091BucketOccurrenceV1 | None: ...
+
+    def list_derived_history(
+        self, *, derived_signal_id: str, subject_instrument: str,
+        effective_at_or_before_utc: datetime,
+        knowledge_at_or_before_utc: datetime, limit: int,
+    ) -> tuple[D091BucketOccurrenceV1, ...]: ...
+
+
+class D091BucketOwnerV1(Protocol):
+    @property
+    def reads(self) -> D091BucketReadsV1: ...
+
+    def materialise(
+        self, request: D091BucketRequestV1,
+    ) -> D091BucketOccurrenceV1 | None: ...
+
+
+def create_d091_bucket_owner(
+    *, admission: OwnerAdmissionV1,
+    controlled_source_read_capability: D091RawReadPortV1,
+    storage: SQLiteStorageV1, utc_now: Callable[[], datetime],
+    diagnostic_observer: D091DiagnosticObserverV1 | None = None,
+) -> D091BucketOwnerV1:
+    from ._native_d091 import build_owner
+
+    return build_owner(
+        admission, controlled_source_read_capability, storage,
+        utc_now, diagnostic_observer,
+    )
+
+
+def create_d091_bucket_reader(
+    *, admission: OwnerAdmissionV1, storage: SQLiteReadStorageV1,
+) -> D091BucketReadsV1:
+    from ._native_d091 import build_reader
+
+    return build_reader(admission, storage)
+
+
+__all__ += [
+    "D091BucketOccurrenceV1", "D091BucketOwnerV1", "D091BucketReadsV1",
+    "D091BucketRequestV1", "D091CategoryV1", "D091DiagnosticEventV1",
+    "D091DiagnosticObserverV1", "D091RawReadPortV1", "D091RefusalStageV1",
+    "create_d091_bucket_owner", "create_d091_bucket_reader",
+]
+
+
+class ScalarStraddleSourceRefusalV1(ValueError):
+    """Output-only evidence of a refused, exact finite source specimen."""
+
+    def __init__(
+        self, stage: str, field: str, manifest_id: str, digest: str,
+        observed_originals: tuple[raw_api.RawObservationOccurrenceV1, ...],
+    ) -> None:
+        super().__init__(f"{stage}: {field}")
+        self.stage = stage
+        self.field = field
+        self.manifest_id = manifest_id
+        self.digest = digest
+        self.observed_originals = observed_originals
+
+
+class ScalarStraddleSourceV1:
+    """Construction-sealed read facet; not an arbitrary external-reader adapter."""
+
+    __slots__ = ("__core", "__full", "__get", "__history", "__specimen")
+
+    def __init__(self) -> None:
+        raise TypeError("use create_scalar_straddle_source with an exact admitted specimen")
+
+    def __setattr__(self, name: str, value: object) -> None:
+        raise AttributeError("sealed scalar source is immutable")
+
+    def __delattr__(self, name: str) -> None:
+        raise AttributeError("sealed scalar source is immutable")
+
+    @classmethod
+    def _from_sealed(
+        cls, *, specimen_id: str, full: str, core: str,
+        getter: Callable[..., raw_api.RawObservationOccurrenceV1 | None],
+        history: Callable[..., raw_api.ProjectedRawHistoryPageV1],
+    ) -> ScalarStraddleSourceV1:
+        # Private construction boundary, called only after actual M00 seal.
+        value = object.__new__(cls)
+        object.__setattr__(value, "_ScalarStraddleSourceV1__specimen", specimen_id)
+        object.__setattr__(value, "_ScalarStraddleSourceV1__full", full)
+        object.__setattr__(value, "_ScalarStraddleSourceV1__core", core)
+        object.__setattr__(value, "_ScalarStraddleSourceV1__get", getter)
+        object.__setattr__(value, "_ScalarStraddleSourceV1__history", history)
+        return value
+
+    @property
+    def specimen_id(self) -> str:
+        return self.__specimen
+
+    @property
+    def full_specimen_sha256(self) -> str:
+        return self.__full
+
+    @property
+    def core_manifest_sha256(self) -> str:
+        return self.__core
+
+    def get_raw_observation_occurrence(
+        self, observation_occurrence_id: object,
+    ) -> raw_api.RawObservationOccurrenceV1 | None:
+        return self.__get(observation_occurrence_id)
+
+    def list_projected_raw_history(
+        self, raw_signal_catalogue_id: raw_api.RawSignalCatalogueId, *,
+        mappings: Sequence[raw_api.RawSignalProjectionMappingV1],
+        subject_instrument: str | None,
+        received_at_or_before_utc: datetime | None,
+        event_at_or_before_utc: datetime | None = None,
+        limit: int, cursor: str | None,
+    ) -> raw_api.ProjectedRawHistoryPageV1:
+        return self.__history(
+            raw_signal_catalogue_id, mappings=mappings, subject_instrument=subject_instrument,
+            received_at_or_before_utc=received_at_or_before_utc,
+            event_at_or_before_utc=event_at_or_before_utc, limit=limit, cursor=cursor,
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class ScalarD091RequestV1(_Validated):
+    """Additional exact scalar pair profile, separate from D091BucketRequestV1."""
+
+    derived_signal_id: str
+    subject_instrument: str
+    as_of_utc: datetime
+    knowledge_cutoff_utc: datetime
+    calculation_definition_version: str
+    source_profile_ref: VersionRefV1
+    rule_profile_ref: VersionRefV1
+    projection_mapping_ref: VersionRefV1
+    unit_convention_ref: VersionRefV1
+    core_manifest_sha256: str
+
+
+@dataclass(frozen=True, slots=True)
+class ScalarD091OccurrenceV1(_Validated):
+    """Durable signed delta and category with exact original and projection."""
+
+    owner_object_id: str
+    owner_namespace: str
+    implementation_brief_sha256: str
+    derived_signal_id: str
+    derived_occurrence_id: str
+    request: ScalarD091RequestV1
+    definition: CalculationDefinitionV1
+    source_policy_sha256: str
+    core_manifest_sha256: str
+    original_observation: raw_api.RawObservationOccurrenceV1
+    selected_projection: raw_api.ProjectedRawValueV1
+    signed_delta: Decimal
+    result: D091CategoryV1
+    units: str
+    result_shape: str
+    effective_as_of_utc: datetime
+    knowledge_cutoff_utc: datetime
+    calculated_at_utc: datetime
+
+
+class ScalarD091ReadsV1(Protocol):
+    def get_derived_occurrence(
+        self, derived_occurrence_id: str,
+    ) -> ScalarD091OccurrenceV1 | None: ...
+
+    def list_derived_history(
+        self, *, derived_signal_id: str, subject_instrument: str,
+        effective_at_or_before_utc: datetime, knowledge_at_or_before_utc: datetime, limit: int,
+    ) -> tuple[ScalarD091OccurrenceV1, ...]: ...
+
+
+class ScalarD091OwnerV1(Protocol):
+    @property
+    def reads(self) -> ScalarD091ReadsV1: ...
+
+    def materialise(self, request: ScalarD091RequestV1) -> ScalarD091OccurrenceV1 | None: ...
+
+
+def create_scalar_straddle_source(
+    *, admission: OwnerAdmissionV1, specimen_id: str,
+) -> ScalarStraddleSourceV1:
+    from ._scalar_straddle_source import build_source
+
+    return build_source(admission, specimen_id)
+
+
+def create_scalar_d091_owner(
+    *, admission: OwnerAdmissionV1, source: ScalarStraddleSourceV1,
+    storage: SQLiteStorageV1, utc_now: Callable[[], datetime],
+) -> ScalarD091OwnerV1:
+    from ._scalar_straddle_d091 import build_owner
+
+    return build_owner(admission, source, storage, utc_now)
+
+
+def create_scalar_d091_reader(
+    *, admission: OwnerAdmissionV1, storage: SQLiteReadStorageV1,
+) -> ScalarD091ReadsV1:
+    from ._scalar_straddle_d091 import build_reader
+
+    return build_reader(admission, storage)
+
+
+__all__ += [
+    "ScalarD091OccurrenceV1", "ScalarD091OwnerV1", "ScalarD091ReadsV1",
+    "ScalarD091RequestV1", "ScalarStraddleSourceRefusalV1", "ScalarStraddleSourceV1",
+    "create_scalar_d091_owner", "create_scalar_d091_reader", "create_scalar_straddle_source",
+]
+
+
+@dataclass(frozen=True, slots=True)
+class D109ScalarRequestV1(_Validated):
+    """Four explicit parent occurrence IDs in the fixed synthetic scalar pair."""
+
+    derived_signal_id: str
+    subject_instrument: str
+    as_of_utc: datetime
+    knowledge_cutoff_utc: datetime
+    calculation_definition_version: str
+    core_manifest_sha256: str
+    call_mid: str
+    put_mid: str
+    call_delta: str
+    put_delta: str
+
+
+@dataclass(frozen=True, slots=True)
+class D109ScalarOccurrenceV1(_Validated):
+    """Exact immutable straddle result with both actual typed parent pairs."""
+
+    owner_object_id: str
+    owner_namespace: str
+    implementation_brief_sha256: str
+    derived_signal_id: str
+    derived_occurrence_id: str
+    request: D109ScalarRequestV1
+    definition: CalculationDefinitionV1
+    source_policy_sha256: str
+    core_manifest_sha256: str
+    call_mid: WindowMeasurementOccurrenceV1
+    put_mid: WindowMeasurementOccurrenceV1
+    call_delta: ScalarD091OccurrenceV1
+    put_delta: ScalarD091OccurrenceV1
+    original_quotes: tuple[
+        raw_api.RawObservationOccurrenceV1, raw_api.RawObservationOccurrenceV1,
+        raw_api.RawObservationOccurrenceV1, raw_api.RawObservationOccurrenceV1,
+    ]
+    result: ExactRatioV1
+    units: str
+    result_shape: str
+    effective_as_of_utc: datetime
+    knowledge_cutoff_utc: datetime
+    calculated_at_utc: datetime
+
+
+class D109ScalarReadsV1(Protocol):
+    def get_derived_occurrence(
+        self, derived_occurrence_id: str,
+    ) -> D109ScalarOccurrenceV1 | None: ...
+
+    def list_derived_history(
+        self, *, derived_signal_id: str, subject_instrument: str,
+        effective_at_or_before_utc: datetime, knowledge_at_or_before_utc: datetime, limit: int,
+    ) -> tuple[D109ScalarOccurrenceV1, ...]: ...
+
+
+class D109ScalarOwnerV1(Protocol):
+    @property
+    def reads(self) -> D109ScalarReadsV1: ...
+
+    def materialise(self, request: D109ScalarRequestV1) -> D109ScalarOccurrenceV1 | None: ...
+
+
+def create_d109_scalar_owner(
+    *, admission: OwnerAdmissionV1, source: ScalarStraddleSourceV1,
+    midpoint_read_storage: SQLiteReadStorageV1, delta_read_storage: SQLiteReadStorageV1,
+    storage: SQLiteStorageV1, utc_now: Callable[[], datetime],
+) -> D109ScalarOwnerV1:
+    from ._scalar_straddle_d109 import build_owner
+
+    return build_owner(
+        admission, source, midpoint_read_storage, delta_read_storage, storage, utc_now,
+    )
+
+
+def create_d109_scalar_reader(
+    *, admission: OwnerAdmissionV1, storage: SQLiteReadStorageV1,
+) -> D109ScalarReadsV1:
+    from ._scalar_straddle_d109 import build_reader
+
+    return build_reader(admission, storage)
+
+
+__all__ += [
+    "D109ScalarOccurrenceV1", "D109ScalarOwnerV1", "D109ScalarReadsV1",
+    "D109ScalarRequestV1", "create_d109_scalar_owner", "create_d109_scalar_reader",
+]
+
+
+@dataclass(frozen=True, slots=True)
+class D110ScalarRequestV1(_Validated):
+    """One explicit D109 parent and the fixed full/core specimen identity."""
+
+    derived_signal_id: str
+    subject_instrument: str
+    as_of_utc: datetime
+    knowledge_cutoff_utc: datetime
+    calculation_definition_version: str
+    core_manifest_sha256: str
+    full_specimen_sha256: str
+    straddle: str
+
+
+@dataclass(frozen=True, slots=True)
+class D110ScalarOccurrenceV1(_Validated):
+    """Exact percentage with actual typed D109 and original R118 provenance."""
+
+    owner_object_id: str
+    owner_namespace: str
+    implementation_brief_sha256: str
+    derived_signal_id: str
+    derived_occurrence_id: str
+    request: D110ScalarRequestV1
+    definition: CalculationDefinitionV1
+    source_policy_sha256: str
+    core_manifest_sha256: str
+    full_specimen_sha256: str
+    straddle: D109ScalarOccurrenceV1
+    original_observation: raw_api.RawObservationOccurrenceV1
+    selected_projection: raw_api.ProjectedRawValueV1
+    result: ExactRatioV1
+    units: str
+    result_shape: str
+    effective_as_of_utc: datetime
+    knowledge_cutoff_utc: datetime
+    calculated_at_utc: datetime
+
+
+class D110ScalarReadsV1(Protocol):
+    def get_derived_occurrence(
+        self, derived_occurrence_id: str,
+    ) -> D110ScalarOccurrenceV1 | None: ...
+
+    def list_derived_history(
+        self, *, derived_signal_id: str, subject_instrument: str,
+        effective_at_or_before_utc: datetime, knowledge_at_or_before_utc: datetime, limit: int,
+    ) -> tuple[D110ScalarOccurrenceV1, ...]: ...
+
+
+class D110ScalarOwnerV1(Protocol):
+    @property
+    def reads(self) -> D110ScalarReadsV1: ...
+
+    def materialise(self, request: D110ScalarRequestV1) -> D110ScalarOccurrenceV1 | None: ...
+
+
+def create_d110_scalar_owner(
+    *, admission: OwnerAdmissionV1, source: ScalarStraddleSourceV1,
+    straddle_read_storage: SQLiteReadStorageV1, storage: SQLiteStorageV1,
+    utc_now: Callable[[], datetime],
+) -> D110ScalarOwnerV1:
+    from ._scalar_straddle_d110 import build_owner
+
+    return build_owner(admission, source, straddle_read_storage, storage, utc_now)
+
+
+def create_d110_scalar_reader(
+    *, admission: OwnerAdmissionV1, storage: SQLiteReadStorageV1,
+) -> D110ScalarReadsV1:
+    from ._scalar_straddle_d110 import build_reader
+
+    return build_reader(admission, storage)
+
+
+__all__ += [
+    "D110ScalarOccurrenceV1", "D110ScalarOwnerV1", "D110ScalarReadsV1",
+    "D110ScalarRequestV1", "create_d110_scalar_owner", "create_d110_scalar_reader",
+]

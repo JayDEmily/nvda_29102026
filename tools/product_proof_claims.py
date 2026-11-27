@@ -171,6 +171,32 @@ def governed_snapshot(root: Path) -> tuple[tuple[str, str], ...]:
     )
 
 
+# These two exact files have independent TEST-AUTHORING acceptance only.
+# They are not runnable proof families until a separately governed descriptor,
+# authority binding, claim contract and immutable generation are admitted.
+_D091_STAGED_AUTHORING = {
+    "tests/product/m02_completion_28/d091/test_signal.py":
+        "d1eab7802786344ecf9ab4d4e2f46b802aba6d2fea0c72d14ad149492504b86f",
+    "tests/product/m02_completion_28/l01b_r112/test_source.py":
+        "1f648998ca4c64829a3655057598e5ae5687b6568bb7e9eebf7ca2f17caa56f5",
+}
+
+
+def _d091_staged_authoring_paths(root: Path) -> set[str]:
+    """Permit exact unadmitted files without manufacturing a proof claim.
+
+    Any bytes changed after the independent authoring verdict require a new
+    explicit binding/review: they cannot be silently excused as staged code.
+    """
+    if (root / "config/product_proof/m02_d091/claim.json").exists():
+        return set()
+    for name, expected_sha in _D091_STAGED_AUTHORING.items():
+        file = safe_path(root, name)
+        if not file.is_file() or sha256(file) != expected_sha:
+            raise ValueError("unadmitted D091/L01b test source differs from accepted authoring")
+    return set(_D091_STAGED_AUTHORING)
+
+
 def _partition(root: Path, catalogue: dict[str, Any], contracts: dict[str, Any]) -> None:
     disposition = read_json(safe_path(root, catalogue["transitional_dispositions"]))
     owned: dict[str, str] = {}
@@ -212,12 +238,13 @@ def _partition(root: Path, catalogue: dict[str, Any], contracts: dict[str, Any])
     for row in disposition["legacy_current_claim_paths"]:
         if sha256(safe_path(root, row["path"])) != row["baseline_sha256"]:
             raise ValueError("preserved legacy physical proof hash mismatch")
+    staged_authoring = _d091_staged_authoring_paths(root)
     for path in (root / "tests/product").rglob("*"):
         if path.is_symlink():
             raise ValueError("symlink in product proof jurisdiction")
         if path.is_file() and path.name.startswith("test_") and path.suffix == ".py":
             name = path.relative_to(root).as_posix()
-            if name not in owned:
+            if name not in owned and name not in staged_authoring:
                 raise ValueError(f"unowned physical product path: {name}")
     for name, owner in owned.items():
         if (
@@ -789,6 +816,233 @@ def _m00_brief2_extension(root: Path) -> tuple[dict[str, Any], dict[str, Any], s
     return entry, contract, digest
 
 
+def _d091_l01b_extension(
+    root: Path,
+) -> tuple[dict[str, Any], dict[str, Any], str] | None:
+    """Register one exact two-jurisdiction D091 claim ONLY after a descriptor.
+
+    The original positive R112 source and both finite test jurisdictions are
+    fixed. This routine does not install an admission pointer or generation.
+    """
+    descriptor_path = "config/product_proof/m02_d091/claim.json"
+    descriptor = safe_path(root, descriptor_path)
+    if not descriptor.exists():
+        return None
+    expected = {
+        "schema_version": "1.0",
+        "claim_id": "neutral_market_measurement_truth_d091",
+        "brief_path": "handoff/m02_completion_28_execution/L04/"
+        "D091_PREEDIT_BINDING_REVISION_20261117/EXACT_RETURN_REPAIR_R1_R3.md",
+        "binding_path": "implementation/authority/"
+        "D091_IMPLEMENTATION_AUTHORITY_BINDING.yaml",
+        "contract_path": "handoff/m02_completion_28_execution/L04/"
+        "D091_PREEDIT_BINDING_REVISION_20261117/PRODUCT_PROOF_REGISTRATION_PROPOSAL.json",
+        "physical_root": "tests/product/m02_completion_28",
+        "admission_path": "config/product_proof/m02_d091/admission.json",
+    }
+    if read_json(descriptor) != expected:
+        raise ValueError("D091 claim descriptor differs from fixed proposed authority")
+    brief = safe_path(root, expected["brief_path"])
+    binding = safe_path(root, expected["binding_path"])
+    validate_implementation_authority(root, binding, brief)
+    if yaml.safe_load(binding.read_text(encoding="utf-8"))["targets"] != [
+        {"action": "modify", "object_id": name} for name in ("M02", "G01")
+    ]:
+        raise ValueError("D091 owning architecture projection mismatch")
+    contract = read_json(safe_path(root, expected["contract_path"]))
+    _schema(root, contract, "accepted_brief_product_proof.schema.json")
+    exact_families = (
+        ("tests/product/m02_completion_28/d091/test_signal.py", 18, "M02-C28-D091"),
+        ("tests/product/m02_completion_28/l01b_r112/test_source.py", 15,
+         "M02-C28-L01B-R112-SOURCE-SUPPORT"),
+    )
+    admitted = read_json(safe_path(
+        root, "handoff/m02_completion_28_execution/L04/"
+              "D091_FINITE_ADEQUACY_REVISION_20261117/REVISED_CASE_INVENTORY.json"
+    ))["physical_cases"]
+    if len(admitted) != 33:
+        raise ValueError("D091/L01b owner-admitted finite case count mismatch")
+    if (
+        contract["claim_id"] != expected["claim_id"]
+        or contract["semantic_brief_path"] != expected["brief_path"]
+        or contract["target"] != {
+            "category": "M", "responsibility_name": "neutral_market_measurement_truth",
+            "package": "nvda_desk.market_measurement_truth",
+            "public_seam": "nvda_desk.market_measurement_truth.api",
+            "intent": "modify", "existing_object_id": "M02",
+        }
+        or len(contract["families"]) != 2
+        or set(contract["required_proof_ids"]) != {row[2] for row in exact_families}
+        or any(v != "FAIL" for v in contract["execution_policy"].values())
+    ):
+        raise ValueError("D091 proof contract/owner association mismatch")
+    for family, (name, count, proof_id) in zip(
+        contract["families"], exact_families, strict=True
+    ):
+        names = [
+            row["proposed_test_node"].split("::", 1)[1]
+            for row in admitted
+            if row["proposed_test_node"].split("::", 1)[0] == name
+        ]
+        if (
+            family["path"] != name
+            or family["proof_obligation_ids"] != [proof_id]
+            or len(names) != count
+            or family["required_test_names"] != names
+            or family["command"] != "python -m pytest " + name
+        ):
+            raise ValueError("D091 and L01b physical case identity/jurisdiction mismatch")
+    entry = {key: value for key, value in expected.items() if key != "brief_path"}
+    entry["profile"] = "accepted_brief_v2"
+    target_id, _ = _target(root, contract["target"])
+    # No pointer exists or is installed by this extension. Existing strict
+    # generation verification governs if a future owner-approved pointer
+    # becomes present.
+    _generation(root, entry, contract, sha256(brief), target_id)
+    return entry, contract, sha256(brief)
+
+
+def _scalar_straddle_extensions(
+    root: Path,
+) -> tuple[tuple[dict[str, Any], dict[str, Any], str], ...]:
+    """Fixed additive scalar straddle claim jurisdiction, never a release.
+
+    Only the three owner-approved identities and their distinct sibling roots
+    are recognised. No discovery, staged-test exception, old-claim rewrite
+    or automatic generation/pointer creation.
+    """
+    leaf = "handoff/m02_completion_28_execution/L10c/"
+    exact = (
+        (
+            "SUPPORT", "neutral_market_measurement_truth_l10c_scalar_pair_support",
+            "M02-C28-L10C-SCALAR-PAIR-SUPPORT", "m02_l10c_scalar_pair_source_support",
+            "m02_scalar_straddle_support", "test_source.py", 16,
+        ),
+        (
+            "D109", "neutral_market_measurement_truth_d109", "M02-C28-D109",
+            "m02_l17_scalar_straddle_d109", "m02_scalar_straddle_d109", "test_signal.py", 8,
+        ),
+        (
+            "D110", "neutral_market_measurement_truth_d110", "M02-C28-D110",
+            "m02_l18_scalar_straddle_d110", "m02_scalar_straddle_d110", "test_signal.py", 10,
+        ),
+    )
+    present = tuple(
+        row for row in exact
+        if safe_path(root, f"config/product_proof/{row[4]}/claim.json").exists()
+    )
+    if not present:
+        return ()
+    brief_path = leaf + "SCALAR_STRADDLE_PREEDIT_DESIGN_AND_REVIEW_20261125.md"
+    binding_path = "implementation/authority/SCALAR_STRADDLE_IMPLEMENTATION_AUTHORITY_BINDING.yaml"
+    owner_path = leaf + "OWNER_SCALAR_STRADDLE_CONDITIONAL_EXECUTION_GRANT_20261125.json"
+    inventory_path = leaf + "SCALAR_STRADDLE_FINITE_CASES_PROPOSED_20261125.json"
+    pins = {
+        brief_path: "04697219c5d5057ac3884aceb09d754dc391a66f6ed4a425459c938c684b1d8d",
+        binding_path: "5a9397b702faaf05abf667d4d289677b88bb580ca1d5f23fa227e2282c2eb9b9",
+        owner_path: "a7fb45cc876e1450f59678c6599113d86b7b59db9a855e0481edd64f717dc375",
+        inventory_path: "d8fd00cb7352d11fcd364b98a533b894b45c864d2cd6311b8db5cb70eaf57480",
+    }
+    for name, digest in pins.items():
+        if sha256(safe_path(root, name)) != digest:
+            raise ValueError("scalar straddle fixed authority bytes mismatch: " + name)
+    brief = safe_path(root, brief_path)
+    binding = safe_path(root, binding_path)
+    validate_implementation_authority(root, binding, brief)
+    authority = yaml.safe_load(binding.read_text(encoding="utf-8"))
+    if (
+        authority["targets"] != [{"action": "modify", "object_id": n} for n in ("M02", "G01")]
+        or authority["acceptance"] != {
+            "status": "ACCEPTED_FOR_IMPLEMENTATION", "authority_ref": owner_path,
+        }
+    ):
+        raise ValueError("scalar straddle ordered owner projection mismatch")
+    owner = read_json(safe_path(root, owner_path))
+    grant = owner["exact_proposal_approved"]
+    inventory = read_json(safe_path(root, inventory_path))
+    cases = inventory["physical_cases"]
+    if (
+        grant["proposed_exact_nonfungible_ceilings"] != {row[0]: row[6] for row in exact}
+        or grant["brief"]["sha256"] != pins[brief_path]
+        or grant["finite_inventory"]["sha256"] != pins[inventory_path]
+        or len(cases) != 34 or len({case["case_id"] for case in cases}) != 34
+        or len({case["node"] for case in cases}) != 34
+    ):
+        raise ValueError("scalar straddle exact owner allocation mismatch")
+    result = []
+    for jurisdiction, claim_id, proof_id, family_id, directory, filename, count in present:
+        prefix = "config/product_proof/" + directory
+        physical_root = "tests/product/" + directory
+        family_path = physical_root + "/" + filename
+        expected = {
+            "schema_version": "1.0",
+            "claim_id": claim_id,
+            "brief_path": brief_path,
+            "binding_path": binding_path,
+            "contract_path": leaf + "SCALAR_STRADDLE_" + jurisdiction + "_PROOF_CONTRACT.json",
+            "physical_root": physical_root,
+            "admission_path": prefix + "/admission.json",
+        }
+        if read_json(safe_path(root, prefix + "/claim.json")) != expected:
+            raise ValueError("scalar straddle fixed claim descriptor mismatch")
+        rows = [case for case in cases if case["family"] == jurisdiction]
+        names = [case["node"].split("::", 1)[1] for case in rows]
+        owner_rows = owner["physical_cases_by_jurisdiction"][jurisdiction]
+        if (
+            len(rows) != count
+            or any(case["proof_id"] != proof_id for case in rows)
+            or any(case["node"] != family_path + "::" + name
+                   for case, name in zip(rows, names, strict=True))
+            or [(row["case_id"], row["node"]) for row in owner_rows]
+            != [(row["case_id"], row["node"]) for row in rows]
+        ):
+            raise ValueError("scalar straddle physical allocation identity mismatch")
+        claim_rows = [row for row in inventory["claims"] if row["jurisdiction"] == jurisdiction]
+        if (
+            len(claim_rows) != 1
+            or claim_rows[0]["claim_id"] != claim_id
+            or claim_rows[0]["proof_id"] != proof_id
+            or claim_rows[0]["descriptor_directory"] != prefix
+            or claim_rows[0]["physical_root"] != physical_root
+            or claim_rows[0]["family_path"] != family_path
+            or claim_rows[0]["proposed_case_count"] != count
+        ):
+            raise ValueError("scalar straddle inventory/claim association mismatch")
+        contract = read_json(safe_path(root, expected["contract_path"]))
+        _schema(root, contract, "accepted_brief_product_proof.schema.json")
+        if (
+            contract["claim_id"] != claim_id
+            or contract["semantic_brief_path"] != brief_path
+            or contract["target"] != {
+                "category": "M", "responsibility_name": "neutral_market_measurement_truth",
+                "package": "nvda_desk.market_measurement_truth",
+                "public_seam": "nvda_desk.market_measurement_truth.api",
+                "intent": "modify", "existing_object_id": "M02",
+            }
+            or contract["required_proof_ids"] != [proof_id]
+            or len(contract["families"]) != 1
+            or any(v != "FAIL" for v in contract["execution_policy"].values())
+        ):
+            raise ValueError("scalar straddle exact contract/owner association mismatch")
+        family = contract["families"][0]
+        if (
+            family["id"] != family_id
+            or family["path"] != family_path
+            or family["proof_obligation_ids"] != [proof_id]
+            or family["required_test_names"] != names
+            or family["command"] != "python -m pytest " + family_path
+            or contract["required_support_files"]
+            or contract["optional_support_files"]
+        ):
+            raise ValueError("scalar straddle exact family/node jurisdiction mismatch")
+        entry = {key: value for key, value in expected.items() if key != "brief_path"}
+        entry["profile"] = "accepted_brief_v2"
+        target_id, _ = _target(root, contract["target"])
+        _generation(root, entry, contract, pins[brief_path], target_id)
+        result.append((entry, contract, pins[brief_path]))
+    return tuple(result)
+
+
 def _native_reconciliation_extensions(
     root: Path,
 ) -> tuple[tuple[dict[str, Any], dict[str, Any], str], ...]:
@@ -1076,6 +1330,14 @@ def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductPro
     if authority is not None:
         for native in _native_reconciliation_extensions(root):
             extensions[native[0]["claim_id"]] = native
+        d091 = _d091_l01b_extension(root)
+        if d091 is not None:
+            extensions[d091[0]["claim_id"]] = d091
+        for scalar_straddle in _scalar_straddle_extensions(root):
+            claim = scalar_straddle[0]["claim_id"]
+            if claim in extensions:
+                raise ValueError("duplicate scalar straddle claim extension identity")
+            extensions[claim] = scalar_straddle
     if extensions:
         catalogue = {
             **catalogue,

@@ -1,0 +1,135 @@
+{
+  "scope": "NONPRODUCT_SYNTHETIC_MECHANISM_ONLY",
+  "guard_sha256": "930752309edb0f30dec1e6774e2c0eca090c8589e20b74195b49ec9b01b58412",
+  "observer_sha256": "1aafb2d33395d20e2a41ce7cc78e0c2dd2e934149f727ba888832559865a2273",
+  "results": [
+    {
+      "scenario": "exact",
+      "exit": 0,
+      "gate_cleared": true,
+      "reasons": [],
+      "calls": [
+        "first",
+        "second"
+      ],
+      "observer_outcome_count": 2,
+      "gate_sha256": "28ec472afe32c705162ae5850526b7f3b2e5f138980e736fb53a65de61c4e242",
+      "observer_sha256": "330ea31b8fa1d8032cdc5a694bbc9e932d94e328ad8bc728f5569c566814ae48",
+      "stdout_sha256": "fcd476841e8af121ff907e81a92a59579b64c007b70cb79f9d096806f703fc7e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "scenario": "extra",
+      "exit": 4,
+      "gate_cleared": false,
+      "reasons": [
+        "ordered exact collection mismatch"
+      ],
+      "calls": [],
+      "observer_outcome_count": 0,
+      "gate_sha256": "dfe7e447c26db4031e6aef45761718b461c0c7bc46b5ac4dfec4779e8c8db438",
+      "observer_sha256": "c0e9bf2f641d1290bf13544fdee1254a130ba59cf7794c6192e1e30ddb796e30",
+      "stdout_sha256": "adb75ecf20336659c5ec7805a12bed362ffbeace127b4394491afc620406e6bb",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "scenario": "missing",
+      "exit": 4,
+      "gate_cleared": false,
+      "reasons": [
+        "ordered exact collection mismatch"
+      ],
+      "calls": [],
+      "observer_outcome_count": 0,
+      "gate_sha256": "9f433a9a7b49666766323ed7720fb3b6297ed3c8a9910a413a142b0d7592358f",
+      "observer_sha256": "a44dabf3b0f3d0459b8bf9a21aaf8ea51e33833e7c55dd18d94cc8e61615691c",
+      "stdout_sha256": "adb75ecf20336659c5ec7805a12bed362ffbeace127b4394491afc620406e6bb",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "scenario": "wrong_order",
+      "exit": 4,
+      "gate_cleared": false,
+      "reasons": [
+        "ordered exact collection mismatch"
+      ],
+      "calls": [],
+      "observer_outcome_count": 0,
+      "gate_sha256": "898adf7663f8f7e5121cb7f7b52d3341b49f37c7013ae710f1735e2b8fe23b59",
+      "observer_sha256": "da236ffe94b8b1686c88297f0aba65320605eb17b7ce8879859e352169674823",
+      "stdout_sha256": "b09e004c2b4a1659ff3b43e6da28d143e7aa25e2c31767f99dff648e3be93caa",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "scenario": "deselection",
+      "exit": 4,
+      "gate_cleared": false,
+      "reasons": [
+        "collection errors/deselection"
+      ],
+      "calls": [],
+      "observer_outcome_count": 0,
+      "gate_sha256": "9e118fbe6d0bec19e8516fa68f4e6d89efce17024b0cfd39eac80b144090f4a3",
+      "observer_sha256": "13416a24dce097ef0cf5bbd6bd4862433013d299a8834084dbf7cde314a1547e",
+      "stdout_sha256": "10d0b6ea9c8e2486a176738621a1d4a88375de0bfc7356b47f3da2551a90df3f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "scenario": "collection_error",
+      "exit": 4,
+      "gate_cleared": false,
+      "reasons": [
+        "collection errors/deselection"
+      ],
+      "calls": [],
+      "observer_outcome_count": 0,
+      "gate_sha256": "3798dc415a80c215567676832591296156bd8af433d872ddc388bf535f8bd097",
+      "observer_sha256": "641f9ab8c1953e8a56e0dd0bc7d00fe0387ad00f2dd89d4fe8bf14bb1302142c",
+      "stdout_sha256": "be4ecc51ab5df0f48de70e6bf7098eed42180596267ce0d6fbe462e9c49c6274",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "scenario": "skip_marker",
+      "exit": 4,
+      "gate_cleared": false,
+      "reasons": [
+        "collection count, parametrisation or prohibited marker"
+      ],
+      "calls": [],
+      "observer_outcome_count": 0,
+      "gate_sha256": "fd8bd3bb484c207f2f6d6028d6b268f1c730dafcaa705ab9a76c11adb6b9876d",
+      "observer_sha256": "38dcb77048cbbcee580e80140bb7982bb96a7abbed484209127844aed5488ed0",
+      "stdout_sha256": "efd470ecedad9bf5dd09f4096918c1aa27b63c12c0e071073cf3df4b2e393523",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "scenario": "parameterisation",
+      "exit": 4,
+      "gate_cleared": false,
+      "reasons": [
+        "ordered exact collection mismatch",
+        "collection count, parametrisation or prohibited marker"
+      ],
+      "calls": [],
+      "observer_outcome_count": 0,
+      "gate_sha256": "cf5559ca7458efe233949dcbacd8d471ed3d8efc26b7d35b94ebcb1b5b80a0a9",
+      "observer_sha256": "0230ce422b3a82988ea2a38eb746dcedecb86fa2bbd83681eb02fe28c864466b",
+      "stdout_sha256": "d0f8a5d240742bec2911b3f7411ff26320cab608cfb47ed54446ce1608b14ae9",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "scenario": "bad_expected_digest",
+      "exit": 4,
+      "gate_cleared": false,
+      "reasons": [
+        "expected-list digest"
+      ],
+      "calls": [],
+      "observer_outcome_count": 0,
+      "gate_sha256": "de44cfbb9f80f34e94ace13e66a0e2326e1d8f9050b59ed7813266e655aef8c5",
+      "observer_sha256": "f2a2cc5cd20ed1700006ee2cf9d06cd47fec36df4743afab146d7bfe4334c0d5",
+      "stdout_sha256": "36bb146a7f851fa97294cc3e0f2450e7539f8c0f462db1427a5bbc30172f5ca2",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "changed_paths": [
+    "handoff/m02_completion_28_execution/L04/D091_PREEDIT_BINDING_REVISION_20261117/EXACT_RETURN_REPAIR_R1_R3.md",
+    "handoff/m02_completion_28_execution/L04/D091_PREEDIT_BINDING_REVISION_20261117/PRODUCT_PROOF_REGISTRATION_PROPOSAL.json",
+    "handoff/m02_completion_28_execution/L04/D091_PREEDIT_BINDING_REVISION_20261117/TECHNICAL_REPAIR_BINDING_V2.json",
+    "handoff/m02_completion_28_execution/L04/D091_PREEDIT_BINDING_REVISION_20261117/validate_preedit_revision.py"
+  ],
+  "checks": {
+    "18_plus_15_distinct_predecessor_cases": true,
+    "D091_all_nodes_match": true,
+    "L01b_all_nodes_match": true,
+    "R112_contract_identity_unchanged": true,
+    "V2_preserves_all_33_original_case_ids": true,
+    "actual_loader_bound": true,
+    "both_proof_obligations_exact": true,
+    "categorical_dataclass_record_codec_shape": true,
+    "clock_owned_by_constructor": true,
+    "commit_phase_D01_D02_oracles": true,
+    "common_parent_physical_root": true,
+    "exact_18_15_function_names": true,
+    "execution_held_and_D145_paused": true,
+    "fault_hook_not_falsely_claimed_installed": true,
+    "five_field_observer_preserved": true,
+    "future_command_shape_fits_current_runner": true,
+    "future_strict_execution_policy": true,
+    "logical_ID_excludes_owner_clock": true,
+    "new_two_paths_marked_unapproved": true,
+    "occurrence_exact_19_field_declaration": true,
+    "positive_15_source_identity_unchanged": true,
+    "proposed_extension_not_falsely_claimed_installed": true,
+    "read_only_property_no_codec_init_false": true,
+    "real_transaction_and_conflict_seams_exist": true,
+    "registered_family_contract_matches_existing_json_schema": true,
+    "registry_and_generation_UNINSTALLED": true,
+    "request_exact_21_field_declaration": true,
+    "revision_changes_only_under_documentary_folder": true,
+    "same_bucket_test_only_second_payload_candidate": true,
+    "seven_original_refusal_stages_preserved": true,
+    "two_separate_families_correct_paths": true,
+    "unchanged_five_bins": true
+  },
+  "head": "798403d2bd8ba1777d9edd9e4ece707b37e60c5f",
+  "kind": "DOCUMENTARY_R1_R3_STATIC_VALIDATION",
+  "product_code_imported": false,
+  "product_tests_executed": 0,
+  "revision_blob_sha256": {
+    "EXACT_RETURN_REPAIR_R1_R3.md": "d00849a98b0773a802d392f6418f051439e86686bca3885f98b14f9410133c17",
+    "PRODUCT_PROOF_REGISTRATION_PROPOSAL.json": "f5550570dccdef5714595370fb2eb7a71c9fe5646d0ec419939fd4490b3b1bd7",
+    "TECHNICAL_REPAIR_BINDING_V2.json": "7543110484808f984a3a3f9ea4cc84d7a981b8e205188174f5f7c5371e29f611"
+  },
+  "status": "STATIC_DOCUMENTARY_PASS",
+  "validator": "system Python jsonschema"
+}

@@ -1,0 +1,12 @@
+[
+  "tests/product/m02_scalar_straddle_d110/test_signal.py::test_d110_controlled_success",
+  "tests/product/m02_scalar_straddle_d110/test_signal.py::test_d110_zero_spot",
+  "tests/product/m02_scalar_straddle_d110/test_signal.py::test_d110_negative_spot",
+  "tests/product/m02_scalar_straddle_d110/test_signal.py::test_d110_missing_spot",
+  "tests/product/m02_scalar_straddle_d110/test_signal.py::test_d110_wrong_spot_right",
+  "tests/product/m02_scalar_straddle_d110/test_signal.py::test_d110_spot_original_units",
+  "tests/product/m02_scalar_straddle_d110/test_signal.py::test_d110_spot_wrong_event",
+  "tests/product/m02_scalar_straddle_d110/test_signal.py::test_d110_spot_ambiguous",
+  "tests/product/m02_scalar_straddle_d110/test_signal.py::test_d110_missing_parent",
+  "tests/product/m02_scalar_straddle_d110/test_signal.py::test_d110_wrong_core"
+]

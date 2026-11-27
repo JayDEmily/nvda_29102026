@@ -1,0 +1,339 @@
+{
+  "schema_version": "1.0",
+  "proposal_schema": "M02_D091_L01B_EXACT_PREEDIT_PROOF_CONTRACT_PROPOSAL_V1",
+  "status": "DOCUMENTARY_PROPOSAL_NOT_ADMITTED_NOT_EXECUTABLE",
+  "claim_id_candidate": "neutral_market_measurement_truth_d091",
+  "governing_implementation_brief_path": "handoff/m02_completion_28_execution/L04/D091_PREEDIT_IMPLEMENTATION_BINDING_20261117/IMPLEMENTATION_BRIEF.md",
+  "governing_implementation_brief_sha256": "a79dff57f7ceedfc8ffa47a9b312ad1d22d164c57d6fc43d2d38d2db8c51caf5",
+  "source_binding_path": "handoff/m02_completion_28_execution/L04/D091_PREEDIT_IMPLEMENTATION_BINDING_20261117/PREEDIT_BINDING_PROPOSAL.json",
+  "source_binding_git_blob_sha1": "ae8f66d3d52a9c57691f8034d71ad2e5f268fbb8",
+  "target": {
+    "category": "M",
+    "responsibility_name": "neutral_market_measurement_truth",
+    "package": "nvda_desk.market_measurement_truth",
+    "public_seam": "nvda_desk.market_measurement_truth.api",
+    "intent": "modify",
+    "existing_object_id": "M02"
+  },
+  "proof_axis": "product",
+  "architecture_proof_axis": "architecture_kernel",
+  "required_proof_ids": [
+    "M02-C28-D091",
+    "M02-C28-L01B-R112-SOURCE-SUPPORT"
+  ],
+  "physical_case_inventory_reviewed_blob_sha1": "6fe3b8afe5aa2bd9c36e3c937d806ce552673b8f",
+  "admitted_owner_decision_blob_sha1": "abb09419a425ee5eb2b19ed911fb32ecba41fd81",
+  "families": [
+    {
+      "id": "m02_d091_categorical_l04",
+      "scope": "L04 D091 result and persistence",
+      "path": "tests/product/m02_completion_28/d091/test_signal.py",
+      "proof_obligation_ids": [
+        "M02-C28-D091"
+      ],
+      "authorised_physical_count": 18,
+      "hard_ceiling": 18,
+      "required_test_names": [
+        "test_d091_controlled_success",
+        "test_d091_controlled_reached_refusal",
+        "test_d091_controlled_seal_refusal",
+        "test_d091_controlled_nonfinite_refusal",
+        "test_d091_controlled_absent_refusal",
+        "test_d091_controlled_receipt_asof_refusal",
+        "test_d091_controlled_cutoff_order_refusal",
+        "test_d091_controlled_top_rank_tie_refusal",
+        "test_d091_controlled_over_64_refusal",
+        "test_d091_controlled_cursor_nonprogress_refusal",
+        "test_d091_controlled_duplicate_id_conflict_refusal",
+        "test_d091_controlled_precommit_sqlite_failure",
+        "test_d091_controlled_uncertain_commit_failure",
+        "test_d091_controlled_same_id_content_conflict",
+        "test_d091_controlled_original_getter_missing",
+        "test_d091_controlled_original_getter_units_mismatch",
+        "test_d091_controlled_original_getter_generation_mismatch",
+        "test_d091_controlled_unsealed_refusal"
+      ],
+      "physical_case_ids": [
+        "D091-CONTROLLED-SUCCESS",
+        "D091-CONTROLLED-REACHED_REFUSAL",
+        "D091-CONTROLLED-SEAL-REFUSAL",
+        "D091-CONTROLLED-NONFINITE-REFUSAL",
+        "D091-CONTROLLED-ABSENT-REFUSAL",
+        "D091-CONTROLLED-RECEIPT-ASOF-REFUSAL",
+        "D091-CONTROLLED-CUTOFF-ORDER-REFUSAL",
+        "D091-CONTROLLED-TOP-RANK-TIE-REFUSAL",
+        "D091-CONTROLLED-OVER-64-REFUSAL",
+        "D091-CONTROLLED-CURSOR-NONPROGRESS-REFUSAL",
+        "D091-CONTROLLED-DUPLICATE-ID-CONFLICT-REFUSAL",
+        "D091-CONTROLLED-PRECOMMIT-SQLITE-FAILURE",
+        "D091-CONTROLLED-UNCERTAIN-COMMIT-FAILURE",
+        "D091-CONTROLLED-SAME-ID-CONTENT-CONFLICT",
+        "D091-CONTROLLED-ORIGINAL-GETTER-MISSING",
+        "D091-CONTROLLED-ORIGINAL-GETTER-UNITS-MISMATCH",
+        "D091-CONTROLLED-ORIGINAL-GETTER-GENERATION-MISMATCH",
+        "D091-CONTROLLED-UNSEALED-REFUSAL"
+      ],
+      "status": "ADMITTED_FOR_FINITE_PLANNING_EXECUTION_HELD",
+      "authority": "owner direct 17 November + independently adequate design; not a production oracle",
+      "proof_levels": [
+        "CONTRACT",
+        "INTEGRATION",
+        "STATE"
+      ],
+      "public_seam_requirements": [
+        "real checked M00 ingress and fresh private seal",
+        "full returned-cursor projected history + original getter",
+        "categorical exact signed-Decimal result and refusal observer",
+        "SQLite durable write/read-only standalone reopen, no live M00 for reader",
+        "retry and three actual bounded persistence failure paths"
+      ],
+      "source_fixture_sha256": "1f4c46c5c247c78e3e18bb2de02c172f775379f664bad8e056ef6867a39d03dc",
+      "expected_refusal_stages": [
+        {
+          "case_id": "D091-CONTROLLED-SUCCESS",
+          "stage": "CATEGORY_DURABLE_REOPEN_AND_IDEMPOTENT_RETRY"
+        },
+        {
+          "case_id": "D091-CONTROLLED-REACHED_REFUSAL",
+          "stage": "RANGE"
+        },
+        {
+          "case_id": "D091-CONTROLLED-SEAL-REFUSAL",
+          "stage": "COORDINATOR_POSTSEAL_INGRESS_REFUSAL"
+        },
+        {
+          "case_id": "D091-CONTROLLED-NONFINITE-REFUSAL",
+          "stage": "NONFINITE"
+        },
+        {
+          "case_id": "D091-CONTROLLED-ABSENT-REFUSAL",
+          "stage": "ABSENT"
+        },
+        {
+          "case_id": "D091-CONTROLLED-RECEIPT-ASOF-REFUSAL",
+          "stage": "CLOCK_OR_SCOPE"
+        },
+        {
+          "case_id": "D091-CONTROLLED-CUTOFF-ORDER-REFUSAL",
+          "stage": "CLOCK_OR_SCOPE"
+        },
+        {
+          "case_id": "D091-CONTROLLED-TOP-RANK-TIE-REFUSAL",
+          "stage": "HISTORY_OR_AMBIGUOUS_RANK"
+        },
+        {
+          "case_id": "D091-CONTROLLED-OVER-64-REFUSAL",
+          "stage": "HISTORY_OR_AMBIGUOUS_RANK"
+        },
+        {
+          "case_id": "D091-CONTROLLED-CURSOR-NONPROGRESS-REFUSAL",
+          "stage": "HISTORY_OR_AMBIGUOUS_RANK"
+        },
+        {
+          "case_id": "D091-CONTROLLED-DUPLICATE-ID-CONFLICT-REFUSAL",
+          "stage": "HISTORY_OR_AMBIGUOUS_RANK"
+        },
+        {
+          "case_id": "D091-CONTROLLED-PRECOMMIT-SQLITE-FAILURE",
+          "stage": "PERSISTENCE_PRECOMMIT_CERTAIN_FAILURE"
+        },
+        {
+          "case_id": "D091-CONTROLLED-UNCERTAIN-COMMIT-FAILURE",
+          "stage": "PERSISTENCE_UNCERTAIN_POSTCOMMIT"
+        },
+        {
+          "case_id": "D091-CONTROLLED-SAME-ID-CONTENT-CONFLICT",
+          "stage": "PERSISTENCE_IMMUTABLE_CONFLICT"
+        },
+        {
+          "case_id": "D091-CONTROLLED-ORIGINAL-GETTER-MISSING",
+          "stage": "ORIGIN_OR_IDENTITY"
+        },
+        {
+          "case_id": "D091-CONTROLLED-ORIGINAL-GETTER-UNITS-MISMATCH",
+          "stage": "ORIGIN_OR_IDENTITY"
+        },
+        {
+          "case_id": "D091-CONTROLLED-ORIGINAL-GETTER-GENERATION-MISMATCH",
+          "stage": "ORIGIN_OR_IDENTITY"
+        },
+        {
+          "case_id": "D091-CONTROLLED-UNSEALED-REFUSAL",
+          "stage": "UNSEALED"
+        }
+      ],
+      "command": "NOT_RELEASED_WORKER_MUST_NOT_RUN"
+    },
+    {
+      "id": "m00_r112_l01b_source_support",
+      "scope": "L01b source checked-ingress negative-only field discrimination",
+      "path": "tests/product/m02_completion_28/l01b_r112/test_source.py",
+      "proof_obligation_ids": [
+        "M02-C28-L01B-R112-SOURCE-SUPPORT"
+      ],
+      "authorised_physical_count": 15,
+      "hard_ceiling": 15,
+      "required_test_names": [
+        "test_l01b_r112_controlled_native_units_refusal",
+        "test_l01b_r112_controlled_source_provider_refusal",
+        "test_l01b_r112_controlled_source_variant_refusal",
+        "test_l01b_r112_controlled_contract_id_refusal",
+        "test_l01b_r112_controlled_underlying_refusal",
+        "test_l01b_r112_controlled_security_type_refusal",
+        "test_l01b_r112_controlled_right_refusal",
+        "test_l01b_r112_controlled_expiry_date_refusal",
+        "test_l01b_r112_controlled_strike_refusal",
+        "test_l01b_r112_controlled_currency_refusal",
+        "test_l01b_r112_controlled_model_variant_refusal",
+        "test_l01b_r112_controlled_scale_refusal",
+        "test_l01b_r112_controlled_generation_refusal",
+        "test_l01b_r112_controlled_request_id_refusal",
+        "test_l01b_r112_controlled_sequence_scope_refusal"
+      ],
+      "physical_case_ids": [
+        "L01B-R112-CONTROLLED-NATIVE-UNITS-REFUSAL",
+        "L01B-R112-CONTROLLED-SOURCE-PROVIDER-REFUSAL",
+        "L01B-R112-CONTROLLED-SOURCE-VARIANT-REFUSAL",
+        "L01B-R112-CONTROLLED-CONTRACT-ID-REFUSAL",
+        "L01B-R112-CONTROLLED-UNDERLYING-REFUSAL",
+        "L01B-R112-CONTROLLED-SECURITY-TYPE-REFUSAL",
+        "L01B-R112-CONTROLLED-RIGHT-REFUSAL",
+        "L01B-R112-CONTROLLED-EXPIRY-DATE-REFUSAL",
+        "L01B-R112-CONTROLLED-STRIKE-REFUSAL",
+        "L01B-R112-CONTROLLED-CURRENCY-REFUSAL",
+        "L01B-R112-CONTROLLED-MODEL-VARIANT-REFUSAL",
+        "L01B-R112-CONTROLLED-SCALE-REFUSAL",
+        "L01B-R112-CONTROLLED-GENERATION-REFUSAL",
+        "L01B-R112-CONTROLLED-REQUEST-ID-REFUSAL",
+        "L01B-R112-CONTROLLED-SEQUENCE-SCOPE-REFUSAL"
+      ],
+      "status": "ADMITTED_FOR_FINITE_PLANNING_EXECUTION_HELD",
+      "proof_levels": [
+        "CONTRACT",
+        "INTEGRATION",
+        "STATE"
+      ],
+      "source_fixture_sha256": "1f4c46c5c247c78e3e18bb2de02c172f775379f664bad8e056ef6867a39d03dc",
+      "expected_refusal_paths": [
+        {
+          "case_id": "L01B-R112-CONTROLLED-NATIVE-UNITS-REFUSAL",
+          "field": "observation.native_units",
+          "fixture_sha256": "b337bb83a61b02fd470f5fa06cbeeb6c9bc4c22327cfb080bd1e3d0a8e594b33"
+        },
+        {
+          "case_id": "L01B-R112-CONTROLLED-SOURCE-PROVIDER-REFUSAL",
+          "field": "observation.source_provider",
+          "fixture_sha256": "311449aecf4aa3cf92dcedb6cf50d5d04c70af10531d2a119e032f0c2755679d"
+        },
+        {
+          "case_id": "L01B-R112-CONTROLLED-SOURCE-VARIANT-REFUSAL",
+          "field": "observation.source_variant",
+          "fixture_sha256": "633d5c5a648fb6e9af5835cfde545f753e9d7b9570a7475ec5e6214582a4a12b"
+        },
+        {
+          "case_id": "L01B-R112-CONTROLLED-CONTRACT-ID-REFUSAL",
+          "field": "observation.native_record.identity.contract_id",
+          "fixture_sha256": "5707a23b542a5e6117fca02c926ffb50e8d9687bd48252696728b7bd71d75aae"
+        },
+        {
+          "case_id": "L01B-R112-CONTROLLED-UNDERLYING-REFUSAL",
+          "field": "observation.native_record.identity.underlying",
+          "fixture_sha256": "8f56be39fe73c6f9d33eca45a90d8ce4e638000583f5517aa989e7a5adca1c41"
+        },
+        {
+          "case_id": "L01B-R112-CONTROLLED-SECURITY-TYPE-REFUSAL",
+          "field": "observation.native_record.identity.security_type",
+          "fixture_sha256": "3a62d4f6aeabedf87000c2c5fe1aae7957c6da2d42f78a6eecf594878182193d"
+        },
+        {
+          "case_id": "L01B-R112-CONTROLLED-RIGHT-REFUSAL",
+          "field": "observation.native_record.identity.right",
+          "fixture_sha256": "cf6d3be90a5cc04ba142673e82b57b38511be1003b3548712fc3e2eda1dc122d"
+        },
+        {
+          "case_id": "L01B-R112-CONTROLLED-EXPIRY-DATE-REFUSAL",
+          "field": "observation.native_record.identity.expiry_date",
+          "fixture_sha256": "ff9736a906aebf132d97a7b04c8a14018f704a41371361f3abc3eef3c401acd6"
+        },
+        {
+          "case_id": "L01B-R112-CONTROLLED-STRIKE-REFUSAL",
+          "field": "observation.native_record.identity.strike",
+          "fixture_sha256": "a4c3634f248289bff0c427dc6a66360f087a42c60efdf79048338c5b4223feaf"
+        },
+        {
+          "case_id": "L01B-R112-CONTROLLED-CURRENCY-REFUSAL",
+          "field": "observation.native_record.identity.currency",
+          "fixture_sha256": "2fc2210a4fe21ca42a0964dd5d1cbeee11e8c98c5b08cfc838564bed4bf53fe3"
+        },
+        {
+          "case_id": "L01B-R112-CONTROLLED-MODEL-VARIANT-REFUSAL",
+          "field": "observation.native_record.identity.model_variant",
+          "fixture_sha256": "696f8c8141d90f598850d4325ffa0d5a137290b104e28d20b49af36d97f18c62"
+        },
+        {
+          "case_id": "L01B-R112-CONTROLLED-SCALE-REFUSAL",
+          "field": "observation.native_record.identity.scale",
+          "fixture_sha256": "ecaf3846158cf5da5075051350b4e2af8d50e01a7a6f5c80cdf61e75243c6e2d"
+        },
+        {
+          "case_id": "L01B-R112-CONTROLLED-GENERATION-REFUSAL",
+          "field": "observation.native_record.identity.generation",
+          "fixture_sha256": "cd1fbb5e284ba83b9219aaae4d413f9ee7c07e4b161e7d8658c96387e27d56d4"
+        },
+        {
+          "case_id": "L01B-R112-CONTROLLED-REQUEST-ID-REFUSAL",
+          "field": "observation.native_record.identity.request_id",
+          "fixture_sha256": "d1c56064e3c5c94cd9457024ba993b85e694d58056ea449b762fc966b3f5539f"
+        },
+        {
+          "case_id": "L01B-R112-CONTROLLED-SEQUENCE-SCOPE-REFUSAL",
+          "field": "observation.ingestion_sequence_scope",
+          "fixture_sha256": "0604d7e5c15d6de8c651cdcc3233c8d56334b97e394487b7810e5d977bc6d39e"
+        }
+      ],
+      "required_sequence": "negative checked ingress rejects exact field path before roster and without M00 mutate; same original 15 subsequently admit/seal",
+      "command": "NOT_RELEASED_WORKER_MUST_NOT_RUN"
+    }
+  ],
+  "required_support_files": [],
+  "optional_support_files": [],
+  "max_case_total": 33,
+  "explicit_non_claims": [
+    "No new successful R112 source",
+    "No L01b field refusal counted as D091 business diagnostic",
+    "No D091 category represented by numeric M02 DTO",
+    "No unadmitted claim generation/current pointer",
+    "No production run/semantic acceptance",
+    "No D145"
+  ],
+  "versioning": {
+    "source_generation": "T01-R112-CONTROL-G1",
+    "source_generation_role": "R112 controlled source fixture ONLY, not D091 proof",
+    "proposed_d091_definition_version": "T01-D091-ABS-DELTA-DEF-V1",
+    "proposed_claim_generation_path": "config/product_proof/m02_d091/generations/0001.json",
+    "actual_claim_generation": null,
+    "brief_sha256": "a79dff57f7ceedfc8ffa47a9b312ad1d22d164c57d6fc43d2d38d2db8c51caf5",
+    "source_sha256": "1f4c46c5c247c78e3e18bb2de02c172f775379f664bad8e056ef6867a39d03dc"
+  },
+  "execution_policy": {
+    "skipped_tests": "FAIL_WHEN_RELEASED",
+    "xfailed_tests": "FAIL_WHEN_RELEASED",
+    "xpassed_tests": "FAIL_WHEN_RELEASED",
+    "collection_failed": "FAIL_WHEN_RELEASED",
+    "no_tests_collected": "FAIL_WHEN_RELEASED",
+    "unexpected_governed_mutation": "FAIL_WHEN_RELEASED",
+    "worker_execution_prohibited": true,
+    "strict_tester_not_designated": true,
+    "product_runs": 0
+  },
+  "release_requirements": {
+    "preedit_independent_review": "PENDING",
+    "technical_contract_acceptance": "PENDING",
+    "test_file_authoring": "HELD",
+    "source_file_authoring": "HELD",
+    "claim_admission_generation": "UNBOUND_NOT_INSTALLED",
+    "exact_product_runner_and_receiver": "HELD_FOR_SEPARATE_TESTER",
+    "test_execution": "HELD",
+    "D145": "PAUSED"
+  }
+}

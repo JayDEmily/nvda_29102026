@@ -1,0 +1,1665 @@
+{
+  "status": "PROPOSED_LITERAL_SPECIMENS_FOR_INDEPENDENT_PREEDIT_REVIEW_NO_ADMISSION_NO_EXECUTION",
+  "schema_version": 1,
+  "adopted_base_policy": {
+    "commit": "79a88bfff548c62c95bf530cc59a7a946a723b5e",
+    "path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_SOURCE_POLICY_PROPOSED_20261125.json",
+    "sha256": "279f1cd166ad0c11585c9776dc4a45b5d949946a513717c39f1dcc9a816e8561",
+    "member_path": "positive_source_specimen.members"
+  },
+  "expansion": "Start with immutable ordered positive seven members. Apply only listed literal replace/omit/append operations; preserve unchanged record content/IDs and order. New/changed facts have new unique observation/delivery-artifact IDs. DUP_ID repeats identical original and must refuse before M00 collapses it. No arbitrary caller operations/paths/records. Compute SHA256 over ASCII json.dumps ordered member list (sort_keys=True,separators=(comma,colon),ensure_ascii=True,allow_nan=False); core digest over ordered list excluding R118. Decimal tags retain exact text. Also verify actual original typed readback; document hash alone is not source proof.",
+  "specimens": [
+    {
+      "specimen_id": "BASE",
+      "version": 1,
+      "purpose": "POSITIVE_EXACT_ADOPTED",
+      "literal_operations": [],
+      "full_member_count": 7,
+      "core_member_count": 6,
+      "expanded_member_sha256": "9486f9a4cd45756c167837b67a0626b8e232403d55fa07ac42cae3671b969358",
+      "core_member_sha256": "477028e777fbcb43c46c3752c14176a1b524f90084635106e45f56d0540929ce"
+    },
+    {
+      "specimen_id": "C60",
+      "version": 1,
+      "purpose": "VALID_NON_ATM_CALL",
+      "literal_operations": [
+        {
+          "op": "replace",
+          "target_member_id": "C1-delta",
+          "member": {
+            "member_id": "C1-delta",
+            "observation": {
+              "concept_id": "raw_signal.raw_observation_occurrence",
+              "contract_id": "nvda.raw_signal.RawObservationOccurrence.v1",
+              "observation_occurrence_id": "T01-L10C-SCALAR-V1-C60-05",
+              "delivery_artifact_ref": "T01-L10C-SCALAR-C60-COHORT-V1",
+              "source_provider": "foundation-controlled-options",
+              "source_variant": "option_snapshot_v1",
+              "subject_instrument": "controlled-nvda-c110-20261023",
+              "native_units": "delta_fraction",
+              "source_temporal_kind": "true_instant",
+              "source_timestamp_raw": "2026-10-20T12:40:00Z",
+              "source_timezone_native": "UTC",
+              "received_ts_utc": "2026-10-20T12:40:00Z",
+              "ingestion_sequence": 5,
+              "ingestion_sequence_scope": "foundation-controlled-options/option_snapshot_v1",
+              "raw_signal_catalogue_ids": [
+                "R112"
+              ],
+              "native_record": {
+                "contract": {
+                  "id": "controlled-nvda-c110-20261023",
+                  "multiplier": "100"
+                },
+                "underlying": {
+                  "id": "NVDA"
+                },
+                "expiry": {
+                  "date": "2026-10-23"
+                },
+                "strike": {
+                  "key": "110"
+                },
+                "option": {
+                  "right": "C"
+                },
+                "currency": {
+                  "code": "USD"
+                },
+                "instrument": {
+                  "kind": "option"
+                },
+                "model": {
+                  "convention": "controlled-model/1",
+                  "delta": {
+                    "native_type": "Decimal",
+                    "text": "0.60"
+                  }
+                },
+                "value": {
+                  "role": "model_delta"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "full_member_count": 7,
+      "core_member_count": 6,
+      "expanded_member_sha256": "26077105077381800fc66994ace01557120e68c4e6039e1d2cc69b00cd237115",
+      "core_member_sha256": "34e648cd4b3b1ea8c210c5578060badcb49fc0e373fedc52f460dcc56e28ba32"
+    },
+    {
+      "specimen_id": "P60",
+      "version": 1,
+      "purpose": "VALID_NON_ATM_PUT",
+      "literal_operations": [
+        {
+          "op": "replace",
+          "target_member_id": "C2-delta",
+          "member": {
+            "member_id": "C2-delta",
+            "observation": {
+              "concept_id": "raw_signal.raw_observation_occurrence",
+              "contract_id": "nvda.raw_signal.RawObservationOccurrence.v1",
+              "observation_occurrence_id": "T01-L10C-SCALAR-V1-P60-06",
+              "delivery_artifact_ref": "T01-L10C-SCALAR-P60-COHORT-V1",
+              "source_provider": "foundation-controlled-options",
+              "source_variant": "option_snapshot_v1",
+              "subject_instrument": "controlled-nvda-p110-20261023",
+              "native_units": "delta_fraction",
+              "source_temporal_kind": "true_instant",
+              "source_timestamp_raw": "2026-10-20T12:40:00Z",
+              "source_timezone_native": "UTC",
+              "received_ts_utc": "2026-10-20T12:40:00Z",
+              "ingestion_sequence": 6,
+              "ingestion_sequence_scope": "foundation-controlled-options/option_snapshot_v1",
+              "raw_signal_catalogue_ids": [
+                "R112"
+              ],
+              "native_record": {
+                "contract": {
+                  "id": "controlled-nvda-p110-20261023",
+                  "multiplier": "100"
+                },
+                "underlying": {
+                  "id": "NVDA"
+                },
+                "expiry": {
+                  "date": "2026-10-23"
+                },
+                "strike": {
+                  "key": "110"
+                },
+                "option": {
+                  "right": "P"
+                },
+                "currency": {
+                  "code": "USD"
+                },
+                "instrument": {
+                  "kind": "option"
+                },
+                "model": {
+                  "convention": "controlled-model/1",
+                  "delta": {
+                    "native_type": "Decimal",
+                    "text": "-0.60"
+                  }
+                },
+                "value": {
+                  "role": "model_delta"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "full_member_count": 7,
+      "core_member_count": 6,
+      "expanded_member_sha256": "494f1ac740e700aa3dcd998a76b1a8cdfb4c7d77dc6cf002c2990321b3866d3f",
+      "core_member_sha256": "1e0e91f847f8cebf69c084ad7aa9b1e583d1e8a3fda51c2bb23e26e39ee2db3c"
+    },
+    {
+      "specimen_id": "ZERO_PAIR",
+      "version": 1,
+      "purpose": "VALID_NON_ATM_ZERO_BOTH",
+      "literal_operations": [
+        {
+          "op": "replace",
+          "target_member_id": "C1-delta",
+          "member": {
+            "member_id": "C1-delta",
+            "observation": {
+              "concept_id": "raw_signal.raw_observation_occurrence",
+              "contract_id": "nvda.raw_signal.RawObservationOccurrence.v1",
+              "observation_occurrence_id": "T01-L10C-SCALAR-V1-ZERO_PAIR-05",
+              "delivery_artifact_ref": "T01-L10C-SCALAR-ZERO_PAIR-COHORT-V1",
+              "source_provider": "foundation-controlled-options",
+              "source_variant": "option_snapshot_v1",
+              "subject_instrument": "controlled-nvda-c110-20261023",
+              "native_units": "delta_fraction",
+              "source_temporal_kind": "true_instant",
+              "source_timestamp_raw": "2026-10-20T12:40:00Z",
+              "source_timezone_native": "UTC",
+              "received_ts_utc": "2026-10-20T12:40:00Z",
+              "ingestion_sequence": 5,
+              "ingestion_sequence_scope": "foundation-controlled-options/option_snapshot_v1",
+              "raw_signal_catalogue_ids": [
+                "R112"
+              ],
+              "native_record": {
+                "contract": {
+                  "id": "controlled-nvda-c110-20261023",
+                  "multiplier": "100"
+                },
+                "underlying": {
+                  "id": "NVDA"
+                },
+                "expiry": {
+                  "date": "2026-10-23"
+                },
+                "strike": {
+                  "key": "110"
+                },
+                "option": {
+                  "right": "C"
+                },
+                "currency": {
+                  "code": "USD"
+                },
+                "instrument": {
+                  "kind": "option"
+                },
+                "model": {
+                  "convention": "controlled-model/1",
+                  "delta": {
+                    "native_type": "Decimal",
+                    "text": "0.00"
+                  }
+                },
+                "value": {
+                  "role": "model_delta"
+                }
+              }
+            }
+          }
+        },
+        {
+          "op": "replace",
+          "target_member_id": "C2-delta",
+          "member": {
+            "member_id": "C2-delta",
+            "observation": {
+              "concept_id": "raw_signal.raw_observation_occurrence",
+              "contract_id": "nvda.raw_signal.RawObservationOccurrence.v1",
+              "observation_occurrence_id": "T01-L10C-SCALAR-V1-ZERO_PAIR-06",
+              "delivery_artifact_ref": "T01-L10C-SCALAR-ZERO_PAIR-COHORT-V1",
+              "source_provider": "foundation-controlled-options",
+              "source_variant": "option_snapshot_v1",
+              "subject_instrument": "controlled-nvda-p110-20261023",
+              "native_units": "delta_fraction",
+              "source_temporal_kind": "true_instant",
+              "source_timestamp_raw": "2026-10-20T12:40:00Z",
+              "source_timezone_native": "UTC",
+              "received_ts_utc": "2026-10-20T12:40:00Z",
+              "ingestion_sequence": 6,
+              "ingestion_sequence_scope": "foundation-controlled-options/option_snapshot_v1",
+              "raw_signal_catalogue_ids": [
+                "R112"
+              ],
+              "native_record": {
+                "contract": {
+                  "id": "controlled-nvda-p110-20261023",
+                  "multiplier": "100"
+                },
+                "underlying": {
+                  "id": "NVDA"
+                },
+                "expiry": {
+                  "date": "2026-10-23"
+                },
+                "strike": {
+                  "key": "110"
+                },
+                "option": {
+                  "right": "P"
+                },
+                "currency": {
+                  "code": "USD"
+                },
+                "instrument": {
+                  "kind": "option"
+                },
+                "model": {
+                  "convention": "controlled-model/1",
+                  "delta": {
+                    "native_type": "Decimal",
+                    "text": "-0.00"
+                  }
+                },
+                "value": {
+                  "role": "model_delta"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "full_member_count": 7,
+      "core_member_count": 6,
+      "expanded_member_sha256": "4149473bc2079961425993f2304e26bfea3697b334e5bb79c3783516adfc98f0",
+      "core_member_sha256": "3a75798c092ac312280a4b793e386a5f16e7d454dcbb9009e72693ce4ae59ba8"
+    },
+    {
+      "specimen_id": "BAD_CALL_SIGN",
+      "version": 1,
+      "purpose": "SOURCE_REFUSAL",
+      "literal_operations": [
+        {
+          "op": "replace",
+          "target_member_id": "C1-delta",
+          "member": {
+            "member_id": "C1-delta",
+            "observation": {
+              "concept_id": "raw_signal.raw_observation_occurrence",
+              "contract_id": "nvda.raw_signal.RawObservationOccurrence.v1",
+              "observation_occurrence_id": "T01-L10C-SCALAR-V1-BAD_CALL_SIGN-05",
+              "delivery_artifact_ref": "T01-L10C-SCALAR-BAD_CALL_SIGN-COHORT-V1",
+              "source_provider": "foundation-controlled-options",
+              "source_variant": "option_snapshot_v1",
+              "subject_instrument": "controlled-nvda-c110-20261023",
+              "native_units": "delta_fraction",
+              "source_temporal_kind": "true_instant",
+              "source_timestamp_raw": "2026-10-20T12:40:00Z",
+              "source_timezone_native": "UTC",
+              "received_ts_utc": "2026-10-20T12:40:00Z",
+              "ingestion_sequence": 5,
+              "ingestion_sequence_scope": "foundation-controlled-options/option_snapshot_v1",
+              "raw_signal_catalogue_ids": [
+                "R112"
+              ],
+              "native_record": {
+                "contract": {
+                  "id": "controlled-nvda-c110-20261023",
+                  "multiplier": "100"
+                },
+                "underlying": {
+                  "id": "NVDA"
+                },
+                "expiry": {
+                  "date": "2026-10-23"
+                },
+                "strike": {
+                  "key": "110"
+                },
+                "option": {
+                  "right": "C"
+                },
+                "currency": {
+                  "code": "USD"
+                },
+                "instrument": {
+                  "kind": "option"
+                },
+                "model": {
+                  "convention": "controlled-model/1",
+                  "delta": {
+                    "native_type": "Decimal",
+                    "text": "-0.50"
+                  }
+                },
+                "value": {
+                  "role": "model_delta"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "full_member_count": 7,
+      "core_member_count": 6,
+      "expanded_member_sha256": "4f862e0fdc1ed0631d2bb4bf63cbddd9bf8d3a49901b18be5e348754eaed5090",
+      "core_member_sha256": "75976e66803d975f2b95d22e98a18ccfe71c7fece984b0fd60655b38c21efa70"
+    },
+    {
+      "specimen_id": "BAD_PUT_SIGN",
+      "version": 1,
+      "purpose": "SOURCE_REFUSAL",
+      "literal_operations": [
+        {
+          "op": "replace",
+          "target_member_id": "C2-delta",
+          "member": {
+            "member_id": "C2-delta",
+            "observation": {
+              "concept_id": "raw_signal.raw_observation_occurrence",
+              "contract_id": "nvda.raw_signal.RawObservationOccurrence.v1",
+              "observation_occurrence_id": "T01-L10C-SCALAR-V1-BAD_PUT_SIGN-06",
+              "delivery_artifact_ref": "T01-L10C-SCALAR-BAD_PUT_SIGN-COHORT-V1",
+              "source_provider": "foundation-controlled-options",
+              "source_variant": "option_snapshot_v1",
+              "subject_instrument": "controlled-nvda-p110-20261023",
+              "native_units": "delta_fraction",
+              "source_temporal_kind": "true_instant",
+              "source_timestamp_raw": "2026-10-20T12:40:00Z",
+              "source_timezone_native": "UTC",
+              "received_ts_utc": "2026-10-20T12:40:00Z",
+              "ingestion_sequence": 6,
+              "ingestion_sequence_scope": "foundation-controlled-options/option_snapshot_v1",
+              "raw_signal_catalogue_ids": [
+                "R112"
+              ],
+              "native_record": {
+                "contract": {
+                  "id": "controlled-nvda-p110-20261023",
+                  "multiplier": "100"
+                },
+                "underlying": {
+                  "id": "NVDA"
+                },
+                "expiry": {
+                  "date": "2026-10-23"
+                },
+                "strike": {
+                  "key": "110"
+                },
+                "option": {
+                  "right": "P"
+                },
+                "currency": {
+                  "code": "USD"
+                },
+                "instrument": {
+                  "kind": "option"
+                },
+                "model": {
+                  "convention": "controlled-model/1",
+                  "delta": {
+                    "native_type": "Decimal",
+                    "text": "0.50"
+                  }
+                },
+                "value": {
+                  "role": "model_delta"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "full_member_count": 7,
+      "core_member_count": 6,
+      "expanded_member_sha256": "c688b0a9a3345dc75086785e47fdb0f42e8473dc11b1aa5dcadb9db18518766e",
+      "core_member_sha256": "2f63a2688364c449d14165b0ae4987c89a798e7710da30cbf3ad9855b92feeb0"
+    },
+    {
+      "specimen_id": "DELTA_RANGE",
+      "version": 1,
+      "purpose": "SOURCE_REFUSAL",
+      "literal_operations": [
+        {
+          "op": "replace",
+          "target_member_id": "C2-delta",
+          "member": {
+            "member_id": "C2-delta",
+            "observation": {
+              "concept_id": "raw_signal.raw_observation_occurrence",
+              "contract_id": "nvda.raw_signal.RawObservationOccurrence.v1",
+              "observation_occurrence_id": "T01-L10C-SCALAR-V1-DELTA_RANGE-06",
+              "delivery_artifact_ref": "T01-L10C-SCALAR-DELTA_RANGE-COHORT-V1",
+              "source_provider": "foundation-controlled-options",
+              "source_variant": "option_snapshot_v1",
+              "subject_instrument": "controlled-nvda-p110-20261023",
+              "native_units": "delta_fraction",
+              "source_temporal_kind": "true_instant",
+              "source_timestamp_raw": "2026-10-20T12:40:00Z",
+              "source_timezone_native": "UTC",
+              "received_ts_utc": "2026-10-20T12:40:00Z",
+              "ingestion_sequence": 6,
+              "ingestion_sequence_scope": "foundation-controlled-options/option_snapshot_v1",
+              "raw_signal_catalogue_ids": [
+                "R112"
+              ],
+              "native_record": {
+                "contract": {
+                  "id": "controlled-nvda-p110-20261023",
+                  "multiplier": "100"
+                },
+                "underlying": {
+                  "id": "NVDA"
+                },
+                "expiry": {
+                  "date": "2026-10-23"
+                },
+                "strike": {
+                  "key": "110"
+                },
+                "option": {
+                  "right": "P"
+                },
+                "currency": {
+                  "code": "USD"
+                },
+                "instrument": {
+                  "kind": "option"
+                },
+                "model": {
+                  "convention": "controlled-model/1",
+                  "delta": {
+                    "native_type": "Decimal",
+                    "text": "-1.01"
+                  }
+                },
+                "value": {
+                  "role": "model_delta"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "full_member_count": 7,
+      "core_member_count": 6,
+      "expanded_member_sha256": "fa94d017169ff3a13e2dd29ebd5bea2011db447f4ec1e97962c917c21aa08a4a",
+      "core_member_sha256": "3910479a1ce667edf450349ee3ca555ee6f9c7e5797cfa249e0d7782b271af21"
+    },
+    {
+      "specimen_id": "DELTA_NONFINITE",
+      "version": 1,
+      "purpose": "SOURCE_REFUSAL",
+      "literal_operations": [
+        {
+          "op": "replace",
+          "target_member_id": "C1-delta",
+          "member": {
+            "member_id": "C1-delta",
+            "observation": {
+              "concept_id": "raw_signal.raw_observation_occurrence",
+              "contract_id": "nvda.raw_signal.RawObservationOccurrence.v1",
+              "observation_occurrence_id": "T01-L10C-SCALAR-V1-DELTA_NONFINITE-05",
+              "delivery_artifact_ref": "T01-L10C-SCALAR-DELTA_NONFINITE-COHORT-V1",
+              "source_provider": "foundation-controlled-options",
+              "source_variant": "option_snapshot_v1",
+              "subject_instrument": "controlled-nvda-c110-20261023",
+              "native_units": "delta_fraction",
+              "source_temporal_kind": "true_instant",
+              "source_timestamp_raw": "2026-10-20T12:40:00Z",
+              "source_timezone_native": "UTC",
+              "received_ts_utc": "2026-10-20T12:40:00Z",
+              "ingestion_sequence": 5,
+              "ingestion_sequence_scope": "foundation-controlled-options/option_snapshot_v1",
+              "raw_signal_catalogue_ids": [
+                "R112"
+              ],
+              "native_record": {
+                "contract": {
+                  "id": "controlled-nvda-c110-20261023",
+                  "multiplier": "100"
+                },
+                "underlying": {
+                  "id": "NVDA"
+                },
+                "expiry": {
+                  "date": "2026-10-23"
+                },
+                "strike": {
+                  "key": "110"
+                },
+                "option": {
+                  "right": "C"
+                },
+                "currency": {
+                  "code": "USD"
+                },
+                "instrument": {
+                  "kind": "option"
+                },
+                "model": {
+                  "convention": "controlled-model/1",
+                  "delta": {
+                    "native_type": "Decimal",
+                    "text": "NaN"
+                  }
+                },
+                "value": {
+                  "role": "model_delta"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "full_member_count": 7,
+      "core_member_count": 6,
+      "expanded_member_sha256": "f0dd31f5a4c3ba23bbd6b528557fbe82f9dfe183d2d28bb0ad4ac4446d7ecebd",
+      "core_member_sha256": "412b2454de642e879efcf6fb1158e0ee04508c3a56c8f50336eb68c0db7015e7"
+    },
+    {
+      "specimen_id": "DELTA_TYPE",
+      "version": 1,
+      "purpose": "SOURCE_REFUSAL",
+      "literal_operations": [
+        {
+          "op": "replace",
+          "target_member_id": "C1-delta",
+          "member": {
+            "member_id": "C1-delta",
+            "observation": {
+              "concept_id": "raw_signal.raw_observation_occurrence",
+              "contract_id": "nvda.raw_signal.RawObservationOccurrence.v1",
+              "observation_occurrence_id": "T01-L10C-SCALAR-V1-DELTA_TYPE-05",
+              "delivery_artifact_ref": "T01-L10C-SCALAR-DELTA_TYPE-COHORT-V1",
+              "source_provider": "foundation-controlled-options",
+              "source_variant": "option_snapshot_v1",
+              "subject_instrument": "controlled-nvda-c110-20261023",
+              "native_units": "delta_fraction",
+              "source_temporal_kind": "true_instant",
+              "source_timestamp_raw": "2026-10-20T12:40:00Z",
+              "source_timezone_native": "UTC",
+              "received_ts_utc": "2026-10-20T12:40:00Z",
+              "ingestion_sequence": 5,
+              "ingestion_sequence_scope": "foundation-controlled-options/option_snapshot_v1",
+              "raw_signal_catalogue_ids": [
+                "R112"
+              ],
+              "native_record": {
+                "contract": {
+                  "id": "controlled-nvda-c110-20261023",
+                  "multiplier": "100"
+                },
+                "underlying": {
+                  "id": "NVDA"
+                },
+                "expiry": {
+                  "date": "2026-10-23"
+                },
+                "strike": {
+                  "key": "110"
+                },
+                "option": {
+                  "right": "C"
+                },
+                "currency": {
+                  "code": "USD"
+                },
+                "instrument": {
+                  "kind": "option"
+                },
+                "model": {
+                  "convention": "controlled-model/1",
+                  "delta": "0.50"
+                },
+                "value": {
+                  "role": "model_delta"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "full_member_count": 7,
+      "core_member_count": 6,
+      "expanded_member_sha256": "3923fe5c1802fb8966b9b023ad45e14359790bff336c12edd9d539f005c58048",
+      "core_member_sha256": "3db6cc44628bc81dc9c1c6a0beac1c271d2c75d33c13d098763b868a6f7e3626"
+    },
+    {
+      "specimen_id": "QUOTE_UNITS",
+      "version": 1,
+      "purpose": "SOURCE_REFUSAL",
+      "literal_operations": [
+        {
+          "op": "replace",
+          "target_member_id": "C1-bid",
+          "member": {
+            "member_id": "C1-bid",
+            "observation": {
+              "concept_id": "raw_signal.raw_observation_occurrence",
+              "contract_id": "nvda.raw_signal.RawObservationOccurrence.v1",
+              "observation_occurrence_id": "T01-L10C-SCALAR-V1-QUOTE_UNITS-01",
+              "delivery_artifact_ref": "T01-L10C-SCALAR-QUOTE_UNITS-COHORT-V1",
+              "source_provider": "foundation-controlled-options",
+              "source_variant": "option_snapshot_v1",
+              "subject_instrument": "controlled-nvda-c110-20261023",
+              "native_units": "USD_per_contract",
+              "source_temporal_kind": "true_instant",
+              "source_timestamp_raw": "2026-10-20T12:40:00Z",
+              "source_timezone_native": "UTC",
+              "received_ts_utc": "2026-10-20T12:40:00Z",
+              "ingestion_sequence": 1,
+              "ingestion_sequence_scope": "foundation-controlled-options/option_snapshot_v1",
+              "raw_signal_catalogue_ids": [
+                "R034"
+              ],
+              "native_record": {
+                "contract": {
+                  "id": "controlled-nvda-c110-20261023",
+                  "multiplier": "100"
+                },
+                "underlying": {
+                  "id": "NVDA"
+                },
+                "expiry": {
+                  "date": "2026-10-23"
+                },
+                "strike": {
+                  "key": "110"
+                },
+                "option": {
+                  "right": "C"
+                },
+                "currency": {
+                  "code": "USD"
+                },
+                "instrument": {
+                  "kind": "option"
+                },
+                "model": {
+                  "convention": "controlled-model/1"
+                },
+                "value": {
+                  "role": "option_bid"
+                },
+                "quote": {
+                  "bid": {
+                    "native_type": "Decimal",
+                    "text": "2"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "full_member_count": 7,
+      "core_member_count": 6,
+      "expanded_member_sha256": "7c50ccc44a7f9cc4407d892fa63490d7ec73a87d891db0f4dc189cc41a95cf39",
+      "core_member_sha256": "cbd0585c9cccbf5e9083976a222aa5c5abc01ceda164031945421dac4a104620"
+    },
+    {
+      "specimen_id": "DELTA_UNITS",
+      "version": 1,
+      "purpose": "SOURCE_REFUSAL",
+      "literal_operations": [
+        {
+          "op": "replace",
+          "target_member_id": "C1-delta",
+          "member": {
+            "member_id": "C1-delta",
+            "observation": {
+              "concept_id": "raw_signal.raw_observation_occurrence",
+              "contract_id": "nvda.raw_signal.RawObservationOccurrence.v1",
+              "observation_occurrence_id": "T01-L10C-SCALAR-V1-DELTA_UNITS-05",
+              "delivery_artifact_ref": "T01-L10C-SCALAR-DELTA_UNITS-COHORT-V1",
+              "source_provider": "foundation-controlled-options",
+              "source_variant": "option_snapshot_v1",
+              "subject_instrument": "controlled-nvda-c110-20261023",
+              "native_units": "percent",
+              "source_temporal_kind": "true_instant",
+              "source_timestamp_raw": "2026-10-20T12:40:00Z",
+              "source_timezone_native": "UTC",
+              "received_ts_utc": "2026-10-20T12:40:00Z",
+              "ingestion_sequence": 5,
+              "ingestion_sequence_scope": "foundation-controlled-options/option_snapshot_v1",
+              "raw_signal_catalogue_ids": [
+                "R112"
+              ],
+              "native_record": {
+                "contract": {
+                  "id": "controlled-nvda-c110-20261023",
+                  "multiplier": "100"
+                },
+                "underlying": {
+                  "id": "NVDA"
+                },
+                "expiry": {
+                  "date": "2026-10-23"
+                },
+                "strike": {
+                  "key": "110"
+                },
+                "option": {
+                  "right": "C"
+                },
+                "currency": {
+                  "code": "USD"
+                },
+                "instrument": {
+                  "kind": "option"
+                },
+                "model": {
+                  "convention": "controlled-model/1",
+                  "delta": {
+                    "native_type": "Decimal",
+                    "text": "0.50"
+                  }
+                },
+                "value": {
+                  "role": "model_delta"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "full_member_count": 7,
+      "core_member_count": 6,
+      "expanded_member_sha256": "fd460141fb51b04c29415b651da562eab6f51456397ab44192c56c8c6788e426",
+      "core_member_sha256": "cf6c7cff980177c936ad9a1c6fa6b95c4d1b4ebe5154ab6fdaad786cd387aee7"
+    },
+    {
+      "specimen_id": "DELTA_EVENT",
+      "version": 1,
+      "purpose": "SOURCE_REFUSAL",
+      "literal_operations": [
+        {
+          "op": "replace",
+          "target_member_id": "C2-delta",
+          "member": {
+            "member_id": "C2-delta",
+            "observation": {
+              "concept_id": "raw_signal.raw_observation_occurrence",
+              "contract_id": "nvda.raw_signal.RawObservationOccurrence.v1",
+              "observation_occurrence_id": "T01-L10C-SCALAR-V1-DELTA_EVENT-06",
+              "delivery_artifact_ref": "T01-L10C-SCALAR-DELTA_EVENT-COHORT-V1",
+              "source_provider": "foundation-controlled-options",
+              "source_variant": "option_snapshot_v1",
+              "subject_instrument": "controlled-nvda-p110-20261023",
+              "native_units": "delta_fraction",
+              "source_temporal_kind": "true_instant",
+              "source_timestamp_raw": "2026-10-20T12:39:59Z",
+              "source_timezone_native": "UTC",
+              "received_ts_utc": "2026-10-20T12:40:00Z",
+              "ingestion_sequence": 6,
+              "ingestion_sequence_scope": "foundation-controlled-options/option_snapshot_v1",
+              "raw_signal_catalogue_ids": [
+                "R112"
+              ],
+              "native_record": {
+                "contract": {
+                  "id": "controlled-nvda-p110-20261023",
+                  "multiplier": "100"
+                },
+                "underlying": {
+                  "id": "NVDA"
+                },
+                "expiry": {
+                  "date": "2026-10-23"
+                },
+                "strike": {
+                  "key": "110"
+                },
+                "option": {
+                  "right": "P"
+                },
+                "currency": {
+                  "code": "USD"
+                },
+                "instrument": {
+                  "kind": "option"
+                },
+                "model": {
+                  "convention": "controlled-model/1",
+                  "delta": {
+                    "native_type": "Decimal",
+                    "text": "-0.50"
+                  }
+                },
+                "value": {
+                  "role": "model_delta"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "full_member_count": 7,
+      "core_member_count": 6,
+      "expanded_member_sha256": "a16b3462191802db3146e9ae36c02dd1a0afe1a7d48980e773dce94bce2109d7",
+      "core_member_sha256": "7b5b6360a50aa73277771b61e61bf66308f4d0d281354199ed624fc67d38d6eb"
+    },
+    {
+      "specimen_id": "DELTA_ROLE",
+      "version": 1,
+      "purpose": "SOURCE_REFUSAL",
+      "literal_operations": [
+        {
+          "op": "replace",
+          "target_member_id": "C1-delta",
+          "member": {
+            "member_id": "C1-delta",
+            "observation": {
+              "concept_id": "raw_signal.raw_observation_occurrence",
+              "contract_id": "nvda.raw_signal.RawObservationOccurrence.v1",
+              "observation_occurrence_id": "T01-L10C-SCALAR-V1-DELTA_ROLE-05",
+              "delivery_artifact_ref": "T01-L10C-SCALAR-DELTA_ROLE-COHORT-V1",
+              "source_provider": "foundation-controlled-options",
+              "source_variant": "option_snapshot_v1",
+              "subject_instrument": "controlled-nvda-c110-20261023",
+              "native_units": "delta_fraction",
+              "source_temporal_kind": "true_instant",
+              "source_timestamp_raw": "2026-10-20T12:40:00Z",
+              "source_timezone_native": "UTC",
+              "received_ts_utc": "2026-10-20T12:40:00Z",
+              "ingestion_sequence": 5,
+              "ingestion_sequence_scope": "foundation-controlled-options/option_snapshot_v1",
+              "raw_signal_catalogue_ids": [
+                "R112"
+              ],
+              "native_record": {
+                "contract": {
+                  "id": "controlled-nvda-c110-20261023",
+                  "multiplier": "100"
+                },
+                "underlying": {
+                  "id": "NVDA"
+                },
+                "expiry": {
+                  "date": "2026-10-23"
+                },
+                "strike": {
+                  "key": "110"
+                },
+                "option": {
+                  "right": "C"
+                },
+                "currency": {
+                  "code": "USD"
+                },
+                "instrument": {
+                  "kind": "option"
+                },
+                "model": {
+                  "convention": "controlled-model/1",
+                  "delta": {
+                    "native_type": "Decimal",
+                    "text": "0.50"
+                  }
+                },
+                "value": {
+                  "role": "model_iv"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "full_member_count": 7,
+      "core_member_count": 6,
+      "expanded_member_sha256": "fef7cbf7d6217f6d7cd95d2fc39fdf986366318b1ff0cd1f1afa6083ae29ea82",
+      "core_member_sha256": "ee257b68f8d3a51d1b3b016973e7f90652f07aa29e472ea396e562b560499d12"
+    },
+    {
+      "specimen_id": "MISSING_CORE",
+      "version": 1,
+      "purpose": "SOURCE_REFUSAL",
+      "literal_operations": [
+        {
+          "op": "omit",
+          "target_member_id": "C2-delta"
+        }
+      ],
+      "full_member_count": 6,
+      "core_member_count": 5,
+      "expanded_member_sha256": "2ea27b1dd3d376641c5870127287ce37e8451863ae1e447e0dd64a303d128013",
+      "core_member_sha256": "bffc10b4e3b4109691388056a0641e8955b65b20a42b2bd8fe72aa16c7edf0ac"
+    },
+    {
+      "specimen_id": "EXTRA_CORE",
+      "version": 1,
+      "purpose": "SOURCE_REFUSAL",
+      "literal_operations": [
+        {
+          "op": "append",
+          "member": {
+            "member_id": "C1-delta-extra",
+            "observation": {
+              "concept_id": "raw_signal.raw_observation_occurrence",
+              "contract_id": "nvda.raw_signal.RawObservationOccurrence.v1",
+              "observation_occurrence_id": "T01-L10C-SCALAR-V1-EXTRA_CORE-08",
+              "delivery_artifact_ref": "T01-L10C-SCALAR-EXTRA_CORE-COHORT-V1",
+              "source_provider": "foundation-controlled-options",
+              "source_variant": "option_snapshot_v1",
+              "subject_instrument": "controlled-nvda-c110-20261023",
+              "native_units": "delta_fraction",
+              "source_temporal_kind": "true_instant",
+              "source_timestamp_raw": "2026-10-20T12:40:00Z",
+              "source_timezone_native": "UTC",
+              "received_ts_utc": "2026-10-20T12:40:00Z",
+              "ingestion_sequence": 8,
+              "ingestion_sequence_scope": "foundation-controlled-options/option_snapshot_v1",
+              "raw_signal_catalogue_ids": [
+                "R112"
+              ],
+              "native_record": {
+                "contract": {
+                  "id": "controlled-nvda-c110-20261023",
+                  "multiplier": "100"
+                },
+                "underlying": {
+                  "id": "NVDA"
+                },
+                "expiry": {
+                  "date": "2026-10-23"
+                },
+                "strike": {
+                  "key": "110"
+                },
+                "option": {
+                  "right": "C"
+                },
+                "currency": {
+                  "code": "USD"
+                },
+                "instrument": {
+                  "kind": "option"
+                },
+                "model": {
+                  "convention": "controlled-model/1",
+                  "delta": {
+                    "native_type": "Decimal",
+                    "text": "0.55"
+                  }
+                },
+                "value": {
+                  "role": "model_delta"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "full_member_count": 8,
+      "core_member_count": 7,
+      "expanded_member_sha256": "99c09e303931507d1a19f7e30c041d7eeaa2213e06b3189c5ee33a82f7eb518a",
+      "core_member_sha256": "b232ed9329a9f60948cd869394b4d47d51b4134964e84f12fefc3ed89af263ed"
+    },
+    {
+      "specimen_id": "DUP_ID",
+      "version": 1,
+      "purpose": "SOURCE_REFUSAL",
+      "literal_operations": [
+        {
+          "op": "append",
+          "member": {
+            "member_id": "C1-delta",
+            "observation": {
+              "concept_id": "raw_signal.raw_observation_occurrence",
+              "contract_id": "nvda.raw_signal.RawObservationOccurrence.v1",
+              "observation_occurrence_id": "T01-L10C-SCALAR-V1-05",
+              "delivery_artifact_ref": "T01-L10C-SCALAR-STRADDLE-COHORT-V1",
+              "source_provider": "foundation-controlled-options",
+              "source_variant": "option_snapshot_v1",
+              "subject_instrument": "controlled-nvda-c110-20261023",
+              "native_units": "delta_fraction",
+              "source_temporal_kind": "true_instant",
+              "source_timestamp_raw": "2026-10-20T12:40:00Z",
+              "source_timezone_native": "UTC",
+              "received_ts_utc": "2026-10-20T12:40:00Z",
+              "ingestion_sequence": 5,
+              "ingestion_sequence_scope": "foundation-controlled-options/option_snapshot_v1",
+              "raw_signal_catalogue_ids": [
+                "R112"
+              ],
+              "native_record": {
+                "contract": {
+                  "id": "controlled-nvda-c110-20261023",
+                  "multiplier": "100"
+                },
+                "underlying": {
+                  "id": "NVDA"
+                },
+                "expiry": {
+                  "date": "2026-10-23"
+                },
+                "strike": {
+                  "key": "110"
+                },
+                "option": {
+                  "right": "C"
+                },
+                "currency": {
+                  "code": "USD"
+                },
+                "instrument": {
+                  "kind": "option"
+                },
+                "model": {
+                  "convention": "controlled-model/1",
+                  "delta": {
+                    "native_type": "Decimal",
+                    "text": "0.50"
+                  }
+                },
+                "value": {
+                  "role": "model_delta"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "full_member_count": 8,
+      "core_member_count": 7,
+      "expanded_member_sha256": "2235250a655d528ff56331d30a4e387e5f945bfdf5c9e80d9f40885a258f9264",
+      "core_member_sha256": "d07dec004650810d5fc66194e6586289542aef512503fb8c61db2745375e5053"
+    },
+    {
+      "specimen_id": "SPOT_ZERO",
+      "version": 1,
+      "purpose": "D110_REFUSAL_ONLY",
+      "literal_operations": [
+        {
+          "op": "replace",
+          "target_member_id": "C1-spot",
+          "member": {
+            "member_id": "C1-spot",
+            "observation": {
+              "concept_id": "raw_signal.raw_observation_occurrence",
+              "contract_id": "nvda.raw_signal.RawObservationOccurrence.v1",
+              "observation_occurrence_id": "T01-L10C-SCALAR-V1-SPOT_ZERO-07",
+              "delivery_artifact_ref": "T01-L10C-SCALAR-SPOT_ZERO-COHORT-V1",
+              "source_provider": "foundation-controlled-options",
+              "source_variant": "option_snapshot_v1",
+              "subject_instrument": "controlled-nvda-c110-20261023",
+              "native_units": "USD_per_share",
+              "source_temporal_kind": "true_instant",
+              "source_timestamp_raw": "2026-10-20T12:40:00Z",
+              "source_timezone_native": "UTC",
+              "received_ts_utc": "2026-10-20T12:40:00Z",
+              "ingestion_sequence": 7,
+              "ingestion_sequence_scope": "foundation-controlled-options/option_snapshot_v1",
+              "raw_signal_catalogue_ids": [
+                "R118"
+              ],
+              "native_record": {
+                "contract": {
+                  "id": "controlled-nvda-c110-20261023",
+                  "multiplier": "100"
+                },
+                "underlying": {
+                  "id": "NVDA"
+                },
+                "expiry": {
+                  "date": "2026-10-23"
+                },
+                "strike": {
+                  "key": "110"
+                },
+                "option": {
+                  "right": "C"
+                },
+                "currency": {
+                  "code": "USD"
+                },
+                "instrument": {
+                  "kind": "option"
+                },
+                "model": {
+                  "convention": "controlled-model/1",
+                  "underlying_price": {
+                    "native_type": "Decimal",
+                    "text": "0"
+                  }
+                },
+                "value": {
+                  "role": "model_underlying_price"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "full_member_count": 7,
+      "core_member_count": 6,
+      "expanded_member_sha256": "523da45e8b4da12b314f20c492cf00214b50154b2eef4e5c2624591de4671199",
+      "core_member_sha256": "477028e777fbcb43c46c3752c14176a1b524f90084635106e45f56d0540929ce"
+    },
+    {
+      "specimen_id": "SPOT_NEGATIVE",
+      "version": 1,
+      "purpose": "D110_REFUSAL_ONLY",
+      "literal_operations": [
+        {
+          "op": "replace",
+          "target_member_id": "C1-spot",
+          "member": {
+            "member_id": "C1-spot",
+            "observation": {
+              "concept_id": "raw_signal.raw_observation_occurrence",
+              "contract_id": "nvda.raw_signal.RawObservationOccurrence.v1",
+              "observation_occurrence_id": "T01-L10C-SCALAR-V1-SPOT_NEGATIVE-07",
+              "delivery_artifact_ref": "T01-L10C-SCALAR-SPOT_NEGATIVE-COHORT-V1",
+              "source_provider": "foundation-controlled-options",
+              "source_variant": "option_snapshot_v1",
+              "subject_instrument": "controlled-nvda-c110-20261023",
+              "native_units": "USD_per_share",
+              "source_temporal_kind": "true_instant",
+              "source_timestamp_raw": "2026-10-20T12:40:00Z",
+              "source_timezone_native": "UTC",
+              "received_ts_utc": "2026-10-20T12:40:00Z",
+              "ingestion_sequence": 7,
+              "ingestion_sequence_scope": "foundation-controlled-options/option_snapshot_v1",
+              "raw_signal_catalogue_ids": [
+                "R118"
+              ],
+              "native_record": {
+                "contract": {
+                  "id": "controlled-nvda-c110-20261023",
+                  "multiplier": "100"
+                },
+                "underlying": {
+                  "id": "NVDA"
+                },
+                "expiry": {
+                  "date": "2026-10-23"
+                },
+                "strike": {
+                  "key": "110"
+                },
+                "option": {
+                  "right": "C"
+                },
+                "currency": {
+                  "code": "USD"
+                },
+                "instrument": {
+                  "kind": "option"
+                },
+                "model": {
+                  "convention": "controlled-model/1",
+                  "underlying_price": {
+                    "native_type": "Decimal",
+                    "text": "-1"
+                  }
+                },
+                "value": {
+                  "role": "model_underlying_price"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "full_member_count": 7,
+      "core_member_count": 6,
+      "expanded_member_sha256": "828a7cae565216c21a7e2d49c04c7cdd2e57bff292bbf91fa6fe20a9c4109b59",
+      "core_member_sha256": "477028e777fbcb43c46c3752c14176a1b524f90084635106e45f56d0540929ce"
+    },
+    {
+      "specimen_id": "SPOT_MISSING",
+      "version": 1,
+      "purpose": "D110_REFUSAL_ONLY",
+      "literal_operations": [
+        {
+          "op": "omit",
+          "target_member_id": "C1-spot"
+        }
+      ],
+      "full_member_count": 6,
+      "core_member_count": 6,
+      "expanded_member_sha256": "477028e777fbcb43c46c3752c14176a1b524f90084635106e45f56d0540929ce",
+      "core_member_sha256": "477028e777fbcb43c46c3752c14176a1b524f90084635106e45f56d0540929ce"
+    },
+    {
+      "specimen_id": "SPOT_WRONG_RIGHT",
+      "version": 1,
+      "purpose": "D110_REFUSAL_ONLY",
+      "literal_operations": [
+        {
+          "op": "replace",
+          "target_member_id": "C1-spot",
+          "member": {
+            "member_id": "C2-spot",
+            "observation": {
+              "concept_id": "raw_signal.raw_observation_occurrence",
+              "contract_id": "nvda.raw_signal.RawObservationOccurrence.v1",
+              "observation_occurrence_id": "T01-L10C-SCALAR-V1-SPOT_WRONG_RIGHT-07",
+              "delivery_artifact_ref": "T01-L10C-SCALAR-SPOT_WRONG_RIGHT-COHORT-V1",
+              "source_provider": "foundation-controlled-options",
+              "source_variant": "option_snapshot_v1",
+              "subject_instrument": "controlled-nvda-p110-20261023",
+              "native_units": "USD_per_share",
+              "source_temporal_kind": "true_instant",
+              "source_timestamp_raw": "2026-10-20T12:40:00Z",
+              "source_timezone_native": "UTC",
+              "received_ts_utc": "2026-10-20T12:40:00Z",
+              "ingestion_sequence": 7,
+              "ingestion_sequence_scope": "foundation-controlled-options/option_snapshot_v1",
+              "raw_signal_catalogue_ids": [
+                "R118"
+              ],
+              "native_record": {
+                "contract": {
+                  "id": "controlled-nvda-p110-20261023",
+                  "multiplier": "100"
+                },
+                "underlying": {
+                  "id": "NVDA"
+                },
+                "expiry": {
+                  "date": "2026-10-23"
+                },
+                "strike": {
+                  "key": "110"
+                },
+                "option": {
+                  "right": "P"
+                },
+                "currency": {
+                  "code": "USD"
+                },
+                "instrument": {
+                  "kind": "option"
+                },
+                "model": {
+                  "convention": "controlled-model/1",
+                  "underlying_price": {
+                    "native_type": "Decimal",
+                    "text": "111"
+                  }
+                },
+                "value": {
+                  "role": "model_underlying_price"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "full_member_count": 7,
+      "core_member_count": 6,
+      "expanded_member_sha256": "e42fd8d7545f6615c50e70a49a582b0da61d5b8cac5a59c18c7375977eeae5ba",
+      "core_member_sha256": "477028e777fbcb43c46c3752c14176a1b524f90084635106e45f56d0540929ce"
+    },
+    {
+      "specimen_id": "SPOT_UNITS",
+      "version": 1,
+      "purpose": "D110_REFUSAL_ONLY",
+      "literal_operations": [
+        {
+          "op": "replace",
+          "target_member_id": "C1-spot",
+          "member": {
+            "member_id": "C1-spot",
+            "observation": {
+              "concept_id": "raw_signal.raw_observation_occurrence",
+              "contract_id": "nvda.raw_signal.RawObservationOccurrence.v1",
+              "observation_occurrence_id": "T01-L10C-SCALAR-V1-SPOT_UNITS-07",
+              "delivery_artifact_ref": "T01-L10C-SCALAR-SPOT_UNITS-COHORT-V1",
+              "source_provider": "foundation-controlled-options",
+              "source_variant": "option_snapshot_v1",
+              "subject_instrument": "controlled-nvda-c110-20261023",
+              "native_units": "USD_per_contract",
+              "source_temporal_kind": "true_instant",
+              "source_timestamp_raw": "2026-10-20T12:40:00Z",
+              "source_timezone_native": "UTC",
+              "received_ts_utc": "2026-10-20T12:40:00Z",
+              "ingestion_sequence": 7,
+              "ingestion_sequence_scope": "foundation-controlled-options/option_snapshot_v1",
+              "raw_signal_catalogue_ids": [
+                "R118"
+              ],
+              "native_record": {
+                "contract": {
+                  "id": "controlled-nvda-c110-20261023",
+                  "multiplier": "100"
+                },
+                "underlying": {
+                  "id": "NVDA"
+                },
+                "expiry": {
+                  "date": "2026-10-23"
+                },
+                "strike": {
+                  "key": "110"
+                },
+                "option": {
+                  "right": "C"
+                },
+                "currency": {
+                  "code": "USD"
+                },
+                "instrument": {
+                  "kind": "option"
+                },
+                "model": {
+                  "convention": "controlled-model/1",
+                  "underlying_price": {
+                    "native_type": "Decimal",
+                    "text": "111"
+                  }
+                },
+                "value": {
+                  "role": "model_underlying_price"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "full_member_count": 7,
+      "core_member_count": 6,
+      "expanded_member_sha256": "0e5e860514fe8f8d2d070921dd651c512a1f70d9c1144490f450e5792a3cce9f",
+      "core_member_sha256": "477028e777fbcb43c46c3752c14176a1b524f90084635106e45f56d0540929ce"
+    },
+    {
+      "specimen_id": "SPOT_EVENT",
+      "version": 1,
+      "purpose": "D110_REFUSAL_ONLY",
+      "literal_operations": [
+        {
+          "op": "replace",
+          "target_member_id": "C1-spot",
+          "member": {
+            "member_id": "C1-spot",
+            "observation": {
+              "concept_id": "raw_signal.raw_observation_occurrence",
+              "contract_id": "nvda.raw_signal.RawObservationOccurrence.v1",
+              "observation_occurrence_id": "T01-L10C-SCALAR-V1-SPOT_EVENT-07",
+              "delivery_artifact_ref": "T01-L10C-SCALAR-SPOT_EVENT-COHORT-V1",
+              "source_provider": "foundation-controlled-options",
+              "source_variant": "option_snapshot_v1",
+              "subject_instrument": "controlled-nvda-c110-20261023",
+              "native_units": "USD_per_share",
+              "source_temporal_kind": "true_instant",
+              "source_timestamp_raw": "2026-10-20T12:39:59Z",
+              "source_timezone_native": "UTC",
+              "received_ts_utc": "2026-10-20T12:40:00Z",
+              "ingestion_sequence": 7,
+              "ingestion_sequence_scope": "foundation-controlled-options/option_snapshot_v1",
+              "raw_signal_catalogue_ids": [
+                "R118"
+              ],
+              "native_record": {
+                "contract": {
+                  "id": "controlled-nvda-c110-20261023",
+                  "multiplier": "100"
+                },
+                "underlying": {
+                  "id": "NVDA"
+                },
+                "expiry": {
+                  "date": "2026-10-23"
+                },
+                "strike": {
+                  "key": "110"
+                },
+                "option": {
+                  "right": "C"
+                },
+                "currency": {
+                  "code": "USD"
+                },
+                "instrument": {
+                  "kind": "option"
+                },
+                "model": {
+                  "convention": "controlled-model/1",
+                  "underlying_price": {
+                    "native_type": "Decimal",
+                    "text": "111"
+                  }
+                },
+                "value": {
+                  "role": "model_underlying_price"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "full_member_count": 7,
+      "core_member_count": 6,
+      "expanded_member_sha256": "0e32c1ec5ce2f4f67e9cd81bfe9a4ff078263a99cc6e1da2685b389f7000a147",
+      "core_member_sha256": "477028e777fbcb43c46c3752c14176a1b524f90084635106e45f56d0540929ce"
+    },
+    {
+      "specimen_id": "SPOT_AMBIGUOUS",
+      "version": 1,
+      "purpose": "D110_REFUSAL_ONLY",
+      "literal_operations": [
+        {
+          "op": "append",
+          "member": {
+            "member_id": "C1-spot-extra",
+            "observation": {
+              "concept_id": "raw_signal.raw_observation_occurrence",
+              "contract_id": "nvda.raw_signal.RawObservationOccurrence.v1",
+              "observation_occurrence_id": "T01-L10C-SCALAR-V1-SPOT_AMBIGUOUS-08",
+              "delivery_artifact_ref": "T01-L10C-SCALAR-SPOT_AMBIGUOUS-COHORT-V1",
+              "source_provider": "foundation-controlled-options",
+              "source_variant": "option_snapshot_v1",
+              "subject_instrument": "controlled-nvda-c110-20261023",
+              "native_units": "USD_per_share",
+              "source_temporal_kind": "true_instant",
+              "source_timestamp_raw": "2026-10-20T12:40:00Z",
+              "source_timezone_native": "UTC",
+              "received_ts_utc": "2026-10-20T12:40:00Z",
+              "ingestion_sequence": 8,
+              "ingestion_sequence_scope": "foundation-controlled-options/option_snapshot_v1",
+              "raw_signal_catalogue_ids": [
+                "R118"
+              ],
+              "native_record": {
+                "contract": {
+                  "id": "controlled-nvda-c110-20261023",
+                  "multiplier": "100"
+                },
+                "underlying": {
+                  "id": "NVDA"
+                },
+                "expiry": {
+                  "date": "2026-10-23"
+                },
+                "strike": {
+                  "key": "110"
+                },
+                "option": {
+                  "right": "C"
+                },
+                "currency": {
+                  "code": "USD"
+                },
+                "instrument": {
+                  "kind": "option"
+                },
+                "model": {
+                  "convention": "controlled-model/1",
+                  "underlying_price": {
+                    "native_type": "Decimal",
+                    "text": "112"
+                  }
+                },
+                "value": {
+                  "role": "model_underlying_price"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "full_member_count": 8,
+      "core_member_count": 6,
+      "expanded_member_sha256": "a286d269efd84cddda2142a34fd04d02b9b5317f37566eb7adb2980c4600213c",
+      "core_member_sha256": "477028e777fbcb43c46c3752c14176a1b524f90084635106e45f56d0540929ce"
+    }
+  ],
+  "revision": "R1_BOUNDED_F03_QUOTE_PARENT_PROVENANCE",
+  "prior_proposal": {
+    "commit": "977c566e275566fb1ce310208877fb4d8d46c31d",
+    "path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_FINITE_SPECIMENS_PROPOSED_20261125.json",
+    "sha256": "959ed0c8716d66181933d5fe350d1391a0a45cc26808fb9d77b40a03fd5aebba"
+  },
+  "parent_only_specimens": [
+    {
+      "specimen_id": "D087_PARENT_ONLY_FOREIGN_C1_ASK_V1",
+      "version": 1,
+      "purpose": "D109_WRONG_QUOTE_LINEAGE_REFUSAL_ONLY",
+      "jurisdiction": "EXISTING_D087_PUBLIC_PARENT_SETUP_ONLY",
+      "allowed_case_id": "D109-WRONG-QUOTE-LINEAGE",
+      "member_count": 2,
+      "literal_members": [
+        {
+          "member_id": "C1-bid",
+          "observation": {
+            "concept_id": "raw_signal.raw_observation_occurrence",
+            "contract_id": "nvda.raw_signal.RawObservationOccurrence.v1",
+            "observation_occurrence_id": "T01-L10C-SCALAR-V1-01",
+            "delivery_artifact_ref": "T01-L10C-SCALAR-STRADDLE-COHORT-V1",
+            "source_provider": "foundation-controlled-options",
+            "source_variant": "option_snapshot_v1",
+            "subject_instrument": "controlled-nvda-c110-20261023",
+            "native_units": "USD_per_share",
+            "source_temporal_kind": "true_instant",
+            "source_timestamp_raw": "2026-10-20T12:40:00Z",
+            "source_timezone_native": "UTC",
+            "received_ts_utc": "2026-10-20T12:40:00Z",
+            "ingestion_sequence": 1,
+            "ingestion_sequence_scope": "foundation-controlled-options/option_snapshot_v1",
+            "raw_signal_catalogue_ids": [
+              "R034"
+            ],
+            "native_record": {
+              "contract": {
+                "id": "controlled-nvda-c110-20261023",
+                "multiplier": "100"
+              },
+              "underlying": {
+                "id": "NVDA"
+              },
+              "expiry": {
+                "date": "2026-10-23"
+              },
+              "strike": {
+                "key": "110"
+              },
+              "option": {
+                "right": "C"
+              },
+              "currency": {
+                "code": "USD"
+              },
+              "instrument": {
+                "kind": "option"
+              },
+              "model": {
+                "convention": "controlled-model/1"
+              },
+              "value": {
+                "role": "option_bid"
+              },
+              "quote": {
+                "bid": {
+                  "native_type": "Decimal",
+                  "text": "2"
+                }
+              }
+            }
+          }
+        },
+        {
+          "member_id": "C1-ask",
+          "observation": {
+            "concept_id": "raw_signal.raw_observation_occurrence",
+            "contract_id": "nvda.raw_signal.RawObservationOccurrence.v1",
+            "observation_occurrence_id": "T01-L10C-SCALAR-V1-FOREIGN-C1-ASK-02",
+            "delivery_artifact_ref": "T01-L10C-SCALAR-D087-FOREIGN-C1-ASK-V1",
+            "source_provider": "foundation-controlled-options",
+            "source_variant": "option_snapshot_v1",
+            "subject_instrument": "controlled-nvda-c110-20261023",
+            "native_units": "USD_per_share",
+            "source_temporal_kind": "true_instant",
+            "source_timestamp_raw": "2026-10-20T12:40:00Z",
+            "source_timezone_native": "UTC",
+            "received_ts_utc": "2026-10-20T12:40:00Z",
+            "ingestion_sequence": 2,
+            "ingestion_sequence_scope": "foundation-controlled-options/option_snapshot_v1",
+            "raw_signal_catalogue_ids": [
+              "R035"
+            ],
+            "native_record": {
+              "contract": {
+                "id": "controlled-nvda-c110-20261023",
+                "multiplier": "100"
+              },
+              "underlying": {
+                "id": "NVDA"
+              },
+              "expiry": {
+                "date": "2026-10-23"
+              },
+              "strike": {
+                "key": "110"
+              },
+              "option": {
+                "right": "C"
+              },
+              "currency": {
+                "code": "USD"
+              },
+              "instrument": {
+                "kind": "option"
+              },
+              "model": {
+                "convention": "controlled-model/1"
+              },
+              "value": {
+                "role": "option_ask"
+              },
+              "quote": {
+                "ask": {
+                  "native_type": "Decimal",
+                  "text": "4"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "member_sha256": "e9643453cc84dc3c97cb6cab021f4cf5a773f8c61981d2d2ca4f7b65b81b8b53",
+      "authority_boundary": "Proposal only. Exactly two lawful C1 quotes in a fresh genuine M00 source through existing public commands and getters. BASE bid is unchanged; only ask identity and delivery artifact differ, equal price and all other fields. Not a seventh/eighth core role or an admitted full L10c specimen; do not pass to create_scalar_straddle_source, generate scalar D091, or use for successful D109. Do not execute historical D087 tests or modify their fixtures. Use exclusively inside the proposed one named D109 witness, after independent review and owner finite admission. No additional physical support case."
+    }
+  ]
+}

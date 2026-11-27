@@ -1,0 +1,322 @@
+{
+  "schema_version": 1,
+  "status": "PROPOSED_NOT_ADOPTED_NOT_IMPLEMENTED_NOT_ADMITTED_NOT_RUN",
+  "input_checkpoint": "6b0cf20a56ac58a4d6fbff158c116d368e8d25c0",
+  "scope": "L10a exact controlled matched-contract prior-session IV source proposal and L11 D095; separate calendar/provider/profile; no dependency on L07a/b or D085/D086; no official provider compatibility claim",
+  "oracle_only_not_inputs": {
+    "current_session": "2026-10-19",
+    "previous_session": "2026-10-16",
+    "configured_close_utc": "2026-10-16T20:00:00Z",
+    "selected_current_id": "T01-OIV-CURRENT",
+    "selected_reference_id": "T01-OIV-FRI-V2",
+    "result_ratio": [
+      9,
+      2
+    ]
+  },
+  "claims": [
+    {
+      "jurisdiction": "D095",
+      "proof_id": "M02-C28-D095",
+      "leaf": "L11",
+      "ledger_jurisdiction": "existing_proof_obligations",
+      "claim_id": "neutral_market_measurement_truth_d095",
+      "family_id": "m02_option_iv_prior_session_d095",
+      "descriptor_directory": "config/product_proof/m02_option_iv_prior_session_d095",
+      "family_path": "tests/product/m02_completion_28/d095/test_signal.py",
+      "physical_root": "tests/product/m02_completion_28/d095",
+      "own_brief_path": "handoff/m02_completion_28_execution/L10a/D095_IMPLEMENTATION_BRIEF.md",
+      "own_binding_path": "implementation/authority/T01_D095_PRIOR_SESSION_IV_AUTHORITY_BINDING.yaml",
+      "future_contract_path": "handoff/m02_completion_28_execution/L10a/D095_PROOF_CONTRACT.json",
+      "proposed_case_count": 7,
+      "proposed_nonfungible_ceiling": 7,
+      "authorised_case_count": 0,
+      "execution_release": false,
+      "ordered_case_ids": [
+        "D095-CONTROLLED-SUCCESS",
+        "D095-CONTROLLED-REACHED_REFUSAL",
+        "D095-CONTROLLED-LATE-REFERENCE",
+        "D095-CONTROLLED-WRONG-CONTRACT",
+        "D095-CONTROLLED-WRONG-MODEL",
+        "D095-CONTROLLED-WRONG-UNITS",
+        "D095-CONTROLLED-DUPLICATE-VINTAGE"
+      ],
+      "ordered_nodes": [
+        "tests/product/m02_completion_28/d095/test_signal.py::test_d095_success",
+        "tests/product/m02_completion_28/d095/test_signal.py::test_d095_wrong_session",
+        "tests/product/m02_completion_28/d095/test_signal.py::test_d095_late_reference",
+        "tests/product/m02_completion_28/d095/test_signal.py::test_d095_wrong_contract",
+        "tests/product/m02_completion_28/d095/test_signal.py::test_d095_wrong_model",
+        "tests/product/m02_completion_28/d095/test_signal.py::test_d095_wrong_units",
+        "tests/product/m02_completion_28/d095/test_signal.py::test_d095_duplicate_vintage"
+      ]
+    }
+  ],
+  "proposed_exact_nonfungible_ceilings": {
+    "D095": 7
+  },
+  "total_proposed_physical_cases": 7,
+  "active_authorised_cases": 0,
+  "active_released_cases": 0,
+  "execution_order": [
+    "D095"
+  ],
+  "physical_cases": [
+    {
+      "family": "D095",
+      "proof_id": "M02-C28-D095",
+      "leaf": "L11",
+      "case_id": "D095-CONTROLLED-SUCCESS",
+      "kind": "SUCCESS",
+      "node": "tests/product/m02_completion_28/d095/test_signal.py::test_d095_success",
+      "specimen": "VALID_LATEST_VISIBLE",
+      "specimen_sha256": "3b8192648d7fb7e9885ca55ab8d6139150157e8c8f9e58d7a0b19fe23598f660",
+      "request_clock": {
+        "as_of_utc": "2026-10-19T15:00:00Z",
+        "knowledge_cutoff_utc": "2026-10-19T15:00:01Z",
+        "calculated_at_utc": "2026-10-19T15:00:02Z"
+      },
+      "actual_parent": null,
+      "actual_visible_original_ids": [
+        "T01-OIV-THU",
+        "T01-OIV-FRI-V1",
+        "T01-OIV-FRI-V2",
+        "T01-OIV-CURRENT"
+      ],
+      "expected_stage": "PRIOR_TRADING_SESSION_LATEST_VISIBLE_FINAL",
+      "distinct_proposition_or_mutant": "Friday not calendar-yesterday Sunday; choose v2 over older v1 and exclude v3 received after cutoff; earlier Thursday cannot substitute. Distinct nonzero 4.5 vol points.",
+      "oracle_only": {
+        "result_ratio": [
+          9,
+          2
+        ],
+        "selected_current": "T01-OIV-CURRENT",
+        "selected_reference": "T01-OIV-FRI-V2",
+        "prior_trading_date": "2026-10-16",
+        "configured_reference_close_utc": "2026-10-16T20:00:00Z",
+        "expected_target_rows": 1,
+        "ordinary_readonly_reopen": "complete exact typed actual visible candidate roster and selected reference/result; replay same request later preserves first time",
+        "replay_at": "2026-10-19T15:00:03Z"
+      },
+      "execution_authorised": false,
+      "execution_release": false,
+      "status": "PROPOSED_NOT_RUN"
+    },
+    {
+      "family": "D095",
+      "proof_id": "M02-C28-D095",
+      "leaf": "L11",
+      "case_id": "D095-CONTROLLED-REACHED_REFUSAL",
+      "kind": "REACHED_REFUSAL",
+      "node": "tests/product/m02_completion_28/d095/test_signal.py::test_d095_wrong_session",
+      "specimen": "WRONG_SESSION_ONLY",
+      "specimen_sha256": "e00d74cc795606ad5a93add2b9a939669d29efc7fe427e05d4c9dbab4d98e4a7",
+      "request_clock": {
+        "as_of_utc": "2026-10-19T15:00:00Z",
+        "knowledge_cutoff_utc": "2026-10-19T15:00:01Z",
+        "calculated_at_utc": "2026-10-19T15:00:02Z"
+      },
+      "actual_parent": null,
+      "actual_visible_original_ids": [
+        "T01-OIV-THU",
+        "T01-OIV-CURRENT"
+      ],
+      "expected_stage": "EXACT_PRIOR_SESSION_REFERENCE",
+      "distinct_proposition_or_mutant": "Thursday is a lawful earlier daily bar but not the required Friday; latest-any-past fallback would emit.",
+      "oracle_only": {
+        "result_ratio": null,
+        "selected_current": null,
+        "selected_reference": null,
+        "prior_trading_date": "2026-10-16",
+        "configured_reference_close_utc": "2026-10-16T20:00:00Z",
+        "expected_target_rows": 0,
+        "ordinary_readonly_reopen": "empty history and no result",
+        "replay_at": null
+      },
+      "execution_authorised": false,
+      "execution_release": false,
+      "status": "PROPOSED_NOT_RUN"
+    },
+    {
+      "family": "D095",
+      "proof_id": "M02-C28-D095",
+      "leaf": "L11",
+      "case_id": "D095-CONTROLLED-LATE-REFERENCE",
+      "kind": "REACHED_REFUSAL",
+      "node": "tests/product/m02_completion_28/d095/test_signal.py::test_d095_late_reference",
+      "specimen": "LATE_ONLY",
+      "specimen_sha256": "1df3ecdf89fd574b986311176f6ccb3ee3224c789039de7d08e691551001e162",
+      "request_clock": {
+        "as_of_utc": "2026-10-19T15:00:00Z",
+        "knowledge_cutoff_utc": "2026-10-19T15:00:01Z",
+        "calculated_at_utc": "2026-10-19T15:00:02Z"
+      },
+      "actual_parent": null,
+      "actual_visible_original_ids": [
+        "T01-OIV-CURRENT"
+      ],
+      "expected_stage": "ACTUAL_REFERENCE_KNOWLEDGE_CUTOFF",
+      "distinct_proposition_or_mutant": "Friday v3 exists via actual getter but its receipt is after cutoff; event-date-only filtering would look ahead.",
+      "oracle_only": {
+        "result_ratio": null,
+        "selected_current": null,
+        "selected_reference": null,
+        "prior_trading_date": "2026-10-16",
+        "configured_reference_close_utc": "2026-10-16T20:00:00Z",
+        "expected_target_rows": 0,
+        "ordinary_readonly_reopen": "empty history and no result",
+        "replay_at": null
+      },
+      "execution_authorised": false,
+      "execution_release": false,
+      "status": "PROPOSED_NOT_RUN"
+    },
+    {
+      "family": "D095",
+      "proof_id": "M02-C28-D095",
+      "leaf": "L11",
+      "case_id": "D095-CONTROLLED-WRONG-CONTRACT",
+      "kind": "REACHED_REFUSAL",
+      "node": "tests/product/m02_completion_28/d095/test_signal.py::test_d095_wrong_contract",
+      "specimen": "WRONG_CONTRACT",
+      "specimen_sha256": "5de1123deaf5030efb96ec07a7d4068ab092e68e3b2074e4738a02f40111206d",
+      "request_clock": {
+        "as_of_utc": "2026-10-19T15:00:00Z",
+        "knowledge_cutoff_utc": "2026-10-19T15:00:01Z",
+        "calculated_at_utc": "2026-10-19T15:00:02Z"
+      },
+      "actual_parent": null,
+      "actual_visible_original_ids": [
+        "T01-OIV-FRI-V2",
+        "T01-OIV-CURRENT"
+      ],
+      "expected_stage": "ACTUAL_NATIVE_CONTRACT_COMPATIBILITY",
+      "distinct_proposition_or_mutant": "Outer option subject tag retained; original native contract is NVDA stock, not the selected C1 option. Underlying history substitution would emit.",
+      "oracle_only": {
+        "result_ratio": null,
+        "selected_current": null,
+        "selected_reference": null,
+        "prior_trading_date": "2026-10-16",
+        "configured_reference_close_utc": "2026-10-16T20:00:00Z",
+        "expected_target_rows": 0,
+        "ordinary_readonly_reopen": "empty history and no result",
+        "replay_at": null
+      },
+      "execution_authorised": false,
+      "execution_release": false,
+      "status": "PROPOSED_NOT_RUN"
+    },
+    {
+      "family": "D095",
+      "proof_id": "M02-C28-D095",
+      "leaf": "L11",
+      "case_id": "D095-CONTROLLED-WRONG-MODEL",
+      "kind": "REACHED_REFUSAL",
+      "node": "tests/product/m02_completion_28/d095/test_signal.py::test_d095_wrong_model",
+      "specimen": "WRONG_MODEL",
+      "specimen_sha256": "a82f4d9ed78741bc373c3a6d25e0d30ca0aeb36427c839b40a074ec847ee7473",
+      "request_clock": {
+        "as_of_utc": "2026-10-19T15:00:00Z",
+        "knowledge_cutoff_utc": "2026-10-19T15:00:01Z",
+        "calculated_at_utc": "2026-10-19T15:00:02Z"
+      },
+      "actual_parent": null,
+      "actual_visible_original_ids": [
+        "T01-OIV-FRI-V2",
+        "T01-OIV-CURRENT"
+      ],
+      "expected_stage": "ACTUAL_MODEL_CONVENTION_COMPATIBILITY",
+      "distinct_proposition_or_mutant": "Matched date and contract but distinct actual model; ignoring model identity would emit.",
+      "oracle_only": {
+        "result_ratio": null,
+        "selected_current": null,
+        "selected_reference": null,
+        "prior_trading_date": "2026-10-16",
+        "configured_reference_close_utc": "2026-10-16T20:00:00Z",
+        "expected_target_rows": 0,
+        "ordinary_readonly_reopen": "empty history and no result",
+        "replay_at": null
+      },
+      "execution_authorised": false,
+      "execution_release": false,
+      "status": "PROPOSED_NOT_RUN"
+    },
+    {
+      "family": "D095",
+      "proof_id": "M02-C28-D095",
+      "leaf": "L11",
+      "case_id": "D095-CONTROLLED-WRONG-UNITS",
+      "kind": "REACHED_REFUSAL",
+      "node": "tests/product/m02_completion_28/d095/test_signal.py::test_d095_wrong_units",
+      "specimen": "WRONG_ORIGINAL_UNITS",
+      "specimen_sha256": "b38fbe8604e64c38069482cf734fb7cf62fba055c94a4c68a672cc0796eef105",
+      "request_clock": {
+        "as_of_utc": "2026-10-19T15:00:00Z",
+        "knowledge_cutoff_utc": "2026-10-19T15:00:01Z",
+        "calculated_at_utc": "2026-10-19T15:00:02Z"
+      },
+      "actual_parent": null,
+      "actual_visible_original_ids": [
+        "T01-OIV-FRI-V2",
+        "T01-OIV-CURRENT"
+      ],
+      "expected_stage": "ACTUAL_NATIVE_IV_UNITS",
+      "distinct_proposition_or_mutant": "Mapping still says annualised_iv_decimal; original says volatility_points. Projection-label-only validation would emit.",
+      "oracle_only": {
+        "result_ratio": null,
+        "selected_current": null,
+        "selected_reference": null,
+        "prior_trading_date": "2026-10-16",
+        "configured_reference_close_utc": "2026-10-16T20:00:00Z",
+        "expected_target_rows": 0,
+        "ordinary_readonly_reopen": "empty history and no result",
+        "replay_at": null
+      },
+      "execution_authorised": false,
+      "execution_release": false,
+      "status": "PROPOSED_NOT_RUN"
+    },
+    {
+      "family": "D095",
+      "proof_id": "M02-C28-D095",
+      "leaf": "L11",
+      "case_id": "D095-CONTROLLED-DUPLICATE-VINTAGE",
+      "kind": "REACHED_REFUSAL",
+      "node": "tests/product/m02_completion_28/d095/test_signal.py::test_d095_duplicate_vintage",
+      "specimen": "DUPLICATE_HIGHEST_VINTAGE",
+      "specimen_sha256": "bc3e1bc8392057cd3e977036440b6963218b7d692432c3bbea95ca5210767989",
+      "request_clock": {
+        "as_of_utc": "2026-10-19T15:00:00Z",
+        "knowledge_cutoff_utc": "2026-10-19T15:00:01Z",
+        "calculated_at_utc": "2026-10-19T15:00:02Z"
+      },
+      "actual_parent": null,
+      "actual_visible_original_ids": [
+        "T01-OIV-FRI-V1",
+        "T01-OIV-FRI-V2",
+        "T01-OIV-FRI-V2-DUP",
+        "T01-OIV-CURRENT"
+      ],
+      "expected_stage": "UNIQUE_HIGHEST_VISIBLE_FINAL_VINTAGE",
+      "distinct_proposition_or_mutant": "Two actual distinct IDs for highest visible revision 2, same economics and receipt but separate sequences. Picking by order would conceal an ambiguous version.",
+      "oracle_only": {
+        "result_ratio": null,
+        "selected_current": null,
+        "selected_reference": null,
+        "prior_trading_date": "2026-10-16",
+        "configured_reference_close_utc": "2026-10-16T20:00:00Z",
+        "expected_target_rows": 0,
+        "ordinary_readonly_reopen": "empty history and no result",
+        "replay_at": null
+      },
+      "execution_authorised": false,
+      "execution_release": false,
+      "status": "PROPOSED_NOT_RUN"
+    }
+  ],
+  "source_policy_and_specimens": {
+    "path": "handoff/m02_completion_28_execution/L10a/OPTION_IV_PRIOR_SESSION_SOURCE_POLICY_AND_SPECIMENS_PROPOSED_20261127.json",
+    "sha256": "050d167a6f15ae210f3a0b7a776957e6ebb00ce8f674ad9d417e7082951b6a39",
+    "bytes": 62784
+  }
+}

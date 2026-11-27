@@ -18,11 +18,23 @@ Owner-reserved boundaries: frozen GUARDRAILS change, new source/domain policy, p
 
 At a real tool/session limit, record the last verified Git checkpoint, incomplete work and next action. There is no background continuation.
 
+### CAC handover and execution economy - owner directive (27 November 2026)
+
+The owner authorises the qualified Continuous Automation Chat (CAC) GUI-based automated handover workflow for this existing NVIDIA project. For CAC's authorised sequential handovers, this expressly supersedes the previous GUI prohibition and manual-handover-only instruction, including the corresponding transport restriction in the existing owner grant. CAC manages its own handovers using its qualified native method, in place of the historical GUI transport procedure; no competing orchestration mechanism is required. Continue repository work through Remote Desktop Commander and Ubuntu Git. Preserve the accepted pinned Git checkpoint and receiver-verification method, independent role boundaries, designated Tester and all existing engineering acceptance and execution-release requirements.
+
+Before a handover or owner decision, complete all independently actionable, already authorised work, including other eligible leaves when one dependency is held. Where independence and applicable role/dependency rules permit, consolidate multiple review-ready deliverables into one commission, retaining each unit's exact checkpoint, scope, evidence, acceptance criteria and separate verdict. Consolidate genuinely necessary owner decisions with their exact bounded proposals where doing so does not defer required upstream decisions. Keep every existing required review and proof boundary: provisional child implementation is permitted only under the installed plan's independently cleared contract, source-profile and stable committed-interface conditions, and cannot substitute for parent acceptance. Do not delay a necessary upstream review solely to fill a batch or combine incompatible roles. This direction reduces manual owner interventions, not engineering checks; it changes no scope, admission, release, test schedule, reviewer independence, checkpoint requirements or acceptance authority and creates no additional mandatory artefact.
+
 ## Workflow and evidence
 
 Follow accepted semantic leaves/dependencies; preserve canonical source authority, all valid original tests, prior failures and proof evidence. Commit to the commissioned working branch; verify its exact commit/tree, changed paths, recipient retrievability, historical-ref coverage and required asset identities under the accepted checkpoint contract. A GitHub push is not equivalent to a complete independent historical receiver restoration.
 
-Before authorised cross-thread ChatGPT-to-GitHub handover, read `docs/automation/CHATGPT_GITHUB_HANDOVER_UIA_20261110.md`. Keep D145 PAUSED and do not import Astra’s supplementary product-architecture proposals as implemented requirements.
+Before any authorised non-CAC cross-thread ChatGPT-to-GitHub handover, read `docs/automation/CHATGPT_GITHUB_HANDOVER_UIA_20261110.md`. Keep D145 PAUSED and do not import Astra’s supplementary product-architecture proposals as implemented requirements.
+
+### Prospective implementation and proof economy
+
+For future authorised implementation and test authoring, prefer the least complex construction that fully establishes the accepted semantic and evidence requirements. Reuse genuinely common mechanical setup in new tests where each case's input variation, critical public operation sequence, reached invariant and independently derived expected result remain explicit and auditable. Apply the reviewer fixture-independence rule below; do not introduce abstraction that conceals or pre-satisfies the proposition. Do not reopen existing valid tests merely for economy.
+
+For each additional proposed physical case, identify in the existing proof brief a materially distinct incorrect behaviour that could satisfy the other valid cases, or a distinct required proposition not yet established by admissible evidence. Base that justification on applicable authority and the relevant implementation and proof, not coverage targets, symmetry or speculative concerns. Retain all existing valid cases, their identities and evidence; economy is not authority to omit required proof or change finite admission, release, rerun, independent review or acceptance requirements. Preserve the documentation and checkpoints that control drift; this instruction authorises no change to those controls and requires no additional standalone artefact.
 
 ### Reviewer lineage and recurrence rule
 

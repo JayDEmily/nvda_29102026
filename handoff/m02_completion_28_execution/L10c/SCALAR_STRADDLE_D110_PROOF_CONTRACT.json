@@ -1,0 +1,124 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_d110",
+  "semantic_brief_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_PREEDIT_DESIGN_AND_REVIEW_20261125.md",
+  "target": {
+    "category": "M",
+    "responsibility_name": "neutral_market_measurement_truth",
+    "package": "nvda_desk.market_measurement_truth",
+    "public_seam": "nvda_desk.market_measurement_truth.api",
+    "intent": "modify",
+    "existing_object_id": "M02"
+  },
+  "proof_axis": "product",
+  "product_tier_treatment": "NOT_CLASSIFIED",
+  "architecture_proof_axis": "architecture_kernel",
+  "required_proof_ids": [
+    "M02-C28-D110"
+  ],
+  "families": [
+    {
+      "id": "m02_l18_scalar_straddle_d110",
+      "path": "tests/product/m02_scalar_straddle_d110/test_signal.py",
+      "proof_obligation_ids": [
+        "M02-C28-D110"
+      ],
+      "required_test_names": [
+        "test_d110_controlled_success",
+        "test_d110_zero_spot",
+        "test_d110_negative_spot",
+        "test_d110_missing_spot",
+        "test_d110_wrong_spot_right",
+        "test_d110_spot_original_units",
+        "test_d110_spot_wrong_event",
+        "test_d110_spot_ambiguous",
+        "test_d110_missing_parent",
+        "test_d110_wrong_core"
+      ],
+      "boundary": "Exactly ten owner-admitted L18 controlled synthetic D110 cases; actual D109 5/1 USD_per_share from genuine D087/D091 parents and ordinary readers, exact full/core specimen and actual C1 R118 original/projection, exact 500/111 percent with positive spot, ordinary durable reopen and retry. Seven spot, missing-parent and wrong-core discriminators, no fallback.",
+      "proof_levels": [
+        "CONTRACT",
+        "INTEGRATION",
+        "STATE"
+      ],
+      "authoritative_inputs": [
+        "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_SOURCE_POLICY_PROPOSED_20261125.json SHA256 279f1cd166ad0c11585c9776dc4a45b5d949946a513717c39f1dcc9a816e8561",
+        "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_FINITE_SPECIMENS_PROPOSED_20261125.json SHA256 5e341ef9289f185d4ae9da53eaca9852735af632b17400a89a10508a114dd760",
+        "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_FINITE_CASES_PROPOSED_20261125.json SHA256 d8fd00cb7352d11fcd364b98a533b894b45c864d2cd6311b8db5cb70eaf57480",
+        "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_PREEDIT_DESIGN_AND_REVIEW_20261125.md SHA256 04697219c5d5057ac3884aceb09d754dc391a66f6ed4a425459c938c684b1d8d",
+        "handoff/m02_completion_28_execution/L10c/OWNER_SCALAR_STRADDLE_CONDITIONAL_EXECUTION_GRANT_20261125.json SHA256 a7fb45cc876e1450f59678c6599113d86b7b59db9a855e0481edd64f717dc375",
+        "implementation/authority/SCALAR_STRADDLE_IMPLEMENTATION_AUTHORITY_BINDING.yaml SHA256 5a9397b702faaf05abf667d4d289677b88bb580ca1d5f23fa227e2282c2eb9b9",
+        "Exact independently accepted L04 D091 report 7322441997d5ab75fa412676e3ae42aba03dcb79 (original controlled profile only).",
+        "Exact L10c support16 independent report c07ab2881be128a577eb07460722500a58869e0c SHA256 19291e4991e84b38347b1e8c46e2867cc4ce5410908f49790979cf627952ee0f, source dce2b6dd4e4d69cb84e4d7114dd970ffc00d547e; Worker receipt handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_SUPPORT16_ACCEPTANCE_RECONCILIATION_20261126.md SHA256 c145ee1ea35c28927dda6401980664b8c0f42cabe85eb9b146017ac9d1d7f34a.",
+        "Exact independent D109 report 02e62a1a31bafe6f465eb3e1a513ffb41dd09ff8 SHA256 b05b7722a721d71e517d32528a873ab5d529c886d121bec9f8f1af9aa1ef9f66, source 6d5a1260846649f2566513609d8c0c5a54f05d94; acceptance reconciliation fab0787d7d0c66a8051894b54819eb36f814bc6a, receipt handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_D109_ACCEPTANCE_RECONCILIATION_20261126.md SHA256 ed03d357198cd82605ade6b00077e11a56fabca0895682fc29060de34259fb92.",
+        "R1 section 2 exact D110 owner/request/occurrence and adopted policy d110, no D089/multiplier, D109 core-only, D110 full and core provenance."
+      ],
+      "dependency_substitutions": [
+        "None. Actual genuine sealed finite M00, actual two D087 and two scalar D091, actual D109 ordinary read-only reader; exact accepted D109 ID re-established in each case. Wrong-core uses real BASE D109 and separately sealed C60 source; no injected or fabricated derived parent."
+      ],
+      "case_coverage": {
+        "lawful_positive": {
+          "cases": [
+            "D110-CONTROLLED-SUCCESS"
+          ]
+        },
+        "prohibited_false_positive": {
+          "cases": [
+            "D110-CONTROLLED-REACHED_REFUSAL",
+            "D110-NEGATIVE-SPOT",
+            "D110-MISSING-SPOT",
+            "D110-WRONG-SPOT-RIGHT",
+            "D110-SPOT-ORIGINAL-UNITS",
+            "D110-SPOT-WRONG-EVENT",
+            "D110-SPOT-AMBIGUOUS",
+            "D110-MISSING-PARENT",
+            "D110-WRONG-CORE"
+          ]
+        },
+        "missing_mandatory_authority": {
+          "cases": [
+            "D110-MISSING-SPOT: six lawful core originals, actual D109, no R118 on either leg.",
+            "D110-MISSING-PARENT: actual lawful D109 and spot exist; requested distinct nonexistent D109 ID."
+          ]
+        },
+        "lawful_optional_absence": {
+          "cases": [
+            "Original optional metadata remains exact; missing R118 remains lawful for D109, not D110. No additional physical case."
+          ]
+        }
+      },
+      "expected_failure_signals": [
+        "Wrong or missing actual D109, core/frame/units/profile mismatch, missing or alternate selected identity or raw reconstruction.",
+        "Wrong C1 R118 cardinality, original native units, metadata, exact event/receipt, role/identity or signed positivity; opposite leg or ranking fallback; mapping units cannot substitute for original units.",
+        "Wrong exact 100*5/111 ratio/percent, missing full/core or nested parent/original/projection, incorrect durable ordinary reopen or idempotent first timestamp; any D110 history after refusal."
+      ],
+      "limitations": [
+        "Fixed exact synthetic pair only; not general ATM, live/provider or hostile-process/store certification.",
+        "Nine individually discriminating refusal cases after actual parent setup; no expanded case allocation or other physical family execution.",
+        "Inert authored source pending independent authoring, implementation, generation, installation, candidate-specific Tester qualification and release."
+      ],
+      "adjacent_nonclaims": [
+        "No D089 arithmetic or contract multiplier; no D109, D091, D087, M00 or accepted proof changes.",
+        "No new source policy, prior 57 rerun, live or general G2/G5 acceptance."
+      ],
+      "environment": "Strict separate Tester to independently qualify actual candidate receiver, selected CPython 3.13.5/SQLite 3.54.1 and dependencies, exact runner and retained observer before execution.",
+      "material_versions": [
+        "T01-L10C-SCALAR-STRADDLE-PAIR/1; T01-L10C-R112-SCALAR-PAIR-V1/1; D091-SYNTHETIC-TENTATIVE-V1/1; T01-D109-SCALAR-PAIR-DEF-V1; T01-D110-SCALAR-PAIR-DEF-V1.",
+        "Actual accepted D087, scalar D091 and D109 controlled profile evidence; D109 exact core-only parent identity.",
+        "Exact R1/owner/manifest/contract/binding; future D110 generation and candidate-specific release."
+      ],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/m02_scalar_straddle_d110/test_signal.py"
+    }
+  ],
+  "required_support_files": [],
+  "optional_support_files": [],
+  "execution_policy": {
+    "skipped_tests": "FAIL",
+    "xfailed_tests": "FAIL",
+    "xpassed_tests": "FAIL",
+    "collection_failed": "FAIL",
+    "no_tests_collected": "FAIL",
+    "unexpected_governed_mutation": "FAIL"
+  }
+}

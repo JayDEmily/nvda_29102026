@@ -1,0 +1,133 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_l10c_scalar_pair_support",
+  "semantic_brief_path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_PREEDIT_DESIGN_AND_REVIEW_20261125.md",
+  "target": {
+    "category": "M",
+    "responsibility_name": "neutral_market_measurement_truth",
+    "package": "nvda_desk.market_measurement_truth",
+    "public_seam": "nvda_desk.market_measurement_truth.api",
+    "intent": "modify",
+    "existing_object_id": "M02"
+  },
+  "proof_axis": "product",
+  "product_tier_treatment": "NOT_CLASSIFIED",
+  "architecture_proof_axis": "architecture_kernel",
+  "required_proof_ids": [
+    "M02-C28-L10C-SCALAR-PAIR-SUPPORT"
+  ],
+  "families": [
+    {
+      "id": "m02_l10c_scalar_pair_source_support",
+      "path": "tests/product/m02_scalar_straddle_support/test_source.py",
+      "proof_obligation_ids": [
+        "M02-C28-L10C-SCALAR-PAIR-SUPPORT"
+      ],
+      "required_test_names": [
+        "test_l10c_scalar_pair",
+        "test_l10c_scalar_call_non_atm",
+        "test_l10c_scalar_put_non_atm",
+        "test_l10c_scalar_zero_pair",
+        "test_l10c_scalar_call_sign",
+        "test_l10c_scalar_put_sign",
+        "test_l10c_scalar_delta_range",
+        "test_l10c_scalar_delta_nonfinite",
+        "test_l10c_scalar_delta_type",
+        "test_l10c_scalar_quote_units",
+        "test_l10c_scalar_delta_units",
+        "test_l10c_scalar_delta_event",
+        "test_l10c_scalar_delta_role",
+        "test_l10c_scalar_missing_core",
+        "test_l10c_scalar_extra_core",
+        "test_l10c_scalar_duplicate_id"
+      ],
+      "boundary": "Exactly 16 owner-admitted L10c support cases. Genuine private fresh M00 admitted originals and public projections; BASE actual D087 pair and new scoped D091 pair, valid same-bin and signed-zero variants, 12 individually reached source refusals. This is support, not an additional D identity or D109/D110 acceptance.",
+      "proof_levels": [
+        "CONTRACT",
+        "INTEGRATION",
+        "STATE"
+      ],
+      "authoritative_inputs": [
+        "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_SOURCE_POLICY_PROPOSED_20261125.json SHA256 279f1cd166ad0c11585c9776dc4a45b5d949946a513717c39f1dcc9a816e8561",
+        "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_FINITE_SPECIMENS_PROPOSED_20261125.json SHA256 5e341ef9289f185d4ae9da53eaca9852735af632b17400a89a10508a114dd760",
+        "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_FINITE_CASES_PROPOSED_20261125.json SHA256 d8fd00cb7352d11fcd364b98a533b894b45c864d2cd6311b8db5cb70eaf57480",
+        "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_PREEDIT_DESIGN_AND_REVIEW_20261125.md SHA256 04697219c5d5057ac3884aceb09d754dc391a66f6ed4a425459c938c684b1d8d",
+        "handoff/m02_completion_28_execution/L10c/OWNER_SCALAR_STRADDLE_CONDITIONAL_EXECUTION_GRANT_20261125.json SHA256 a7fb45cc876e1450f59678c6599113d86b7b59db9a855e0481edd64f717dc375",
+        "implementation/authority/SCALAR_STRADDLE_IMPLEMENTATION_AUTHORITY_BINDING.yaml SHA256 5a9397b702faaf05abf667d4d289677b88bb580ca1d5f23fa227e2282c2eb9b9",
+        "Exact historical D087 public profile and unchanged signed absolute delta bin law; actual new parent results are required, not historical numbers reused."
+      ],
+      "dependency_substitutions": [
+        "Fresh isolated private in-memory M00 controlled synthetic source only; no external provider, injected reader, mock owner or fabricated parent."
+      ],
+      "case_coverage": {
+        "lawful_positive": {
+          "cases": [
+            "L10C-SCALAR-SUPPORT-PAIR",
+            "L10C-SCALAR-SUPPORT-CALL-NON-ATM",
+            "L10C-SCALAR-SUPPORT-PUT-NON-ATM",
+            "L10C-SCALAR-SUPPORT-ZERO-PAIR"
+          ]
+        },
+        "prohibited_false_positive": {
+          "cases": [
+            "L10C-SCALAR-SUPPORT-CALL-SIGN",
+            "L10C-SCALAR-SUPPORT-PUT-SIGN",
+            "L10C-SCALAR-SUPPORT-DELTA-RANGE",
+            "L10C-SCALAR-SUPPORT-DELTA-NONFINITE",
+            "L10C-SCALAR-SUPPORT-DELTA-TYPE",
+            "L10C-SCALAR-SUPPORT-QUOTE-UNITS",
+            "L10C-SCALAR-SUPPORT-DELTA-UNITS",
+            "L10C-SCALAR-SUPPORT-DELTA-EVENT",
+            "L10C-SCALAR-SUPPORT-DELTA-ROLE",
+            "L10C-SCALAR-SUPPORT-MISSING-CORE",
+            "L10C-SCALAR-SUPPORT-EXTRA-CORE",
+            "L10C-SCALAR-SUPPORT-DUPLICATE-ID"
+          ]
+        },
+        "missing_mandatory_authority": {
+          "cases": [
+            "L10C-SCALAR-SUPPORT-MISSING-CORE: mandatory C2 R112 absent from otherwise actual manifested source; independent candidate/claim/release is an execution precondition, not a new case."
+          ]
+        },
+        "lawful_optional_absence": {
+          "cases": [
+            "Exact ordinary absent optional M00 metadata and C2 R118 absence in BASE; spot-only consumer negatives are reserved to separately admitted D110 cases."
+          ]
+        }
+      },
+      "expected_failure_signals": [
+        "Original field/type/Decimal tuple mismatch, incomplete/extra projection role, fabricated or writable source capability, incorrect specific reached-stage/field or incomplete actual refusal readbacks.",
+        "Missing/extra/duplicate role accepted, wrong native unit masked by mapping declaration, clock/identity/domain or right-sign guard omitted.",
+        "Wrong exact D087 ratio, lost signed delta/definition/core/typed provenance, wrong category, failed immutable retry or ordinary reopened durable readback."
+      ],
+      "limitations": [
+        "Fixed reviewed 23 full manifests; this family exercises only its 16 named specimens. Parent-only foreign D087 specimen is reserved for exact D109 witness.",
+        "Source readback and new scalar D091 support only, not production source admission, D109/D110 or generic hostile-store proof.",
+        "Test family bytes authored inertly; independent authoring review, actual candidate, generation and release remain prerequisites."
+      ],
+      "adjacent_nonclaims": [
+        "No new D identity or original D091 scope change.",
+        "No live provider, wider ATM/strike-grid or R118 denominator proof.",
+        "No other product case or rerun admitted."
+      ],
+      "environment": "Strict separate Tester to independently qualify actual candidate receiver, selected CPython 3.13.5/SQLite 3.54.1 and dependencies, exact runner and retained observer before execution.",
+      "material_versions": [
+        "T01-L10C-SCALAR-STRADDLE-PAIR/1; T01-L10C-R112-SCALAR-PAIR-V1/1; D091-SYNTHETIC-TENTATIVE-V1/1; T01-D091-SCALAR-PAIR-DEF-V1.",
+        "D087-OPTION-SCALAR-1 and unchanged old public D087 profile; new source/codec/D091 support must match exact R1 authority.",
+        "Exact immutable manifest, brief, active binding and actual contract/family bytes to bind separately admitted generation."
+      ],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/m02_scalar_straddle_support/test_source.py"
+    }
+  ],
+  "required_support_files": [],
+  "optional_support_files": [],
+  "execution_policy": {
+    "skipped_tests": "FAIL",
+    "xfailed_tests": "FAIL",
+    "xpassed_tests": "FAIL",
+    "collection_failed": "FAIL",
+    "no_tests_collected": "FAIL",
+    "unexpected_governed_mutation": "FAIL"
+  }
+}

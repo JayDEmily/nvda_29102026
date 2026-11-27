@@ -1,0 +1,9 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_d091",
+  "brief_path": "handoff/m02_completion_28_execution/L04/D091_PREEDIT_BINDING_REVISION_20261117/EXACT_RETURN_REPAIR_R1_R3.md",
+  "binding_path": "implementation/authority/D091_IMPLEMENTATION_AUTHORITY_BINDING.yaml",
+  "contract_path": "handoff/m02_completion_28_execution/L04/D091_PREEDIT_BINDING_REVISION_20261117/PRODUCT_PROOF_REGISTRATION_PROPOSAL.json",
+  "physical_root": "tests/product/m02_completion_28",
+  "admission_path": "config/product_proof/m02_d091/admission.json"
+}

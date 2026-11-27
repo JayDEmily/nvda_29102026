@@ -1,0 +1,405 @@
+{
+  "schema": "NVDA_V2_OWNER_STANDING_CONDITIONAL_SCALAR_STRADDLE_EXECUTION_V1",
+  "decision_status": "OWNER_APPROVED_EXACT_CONDITIONAL_EXECUTION_AND_FINITE_ADMISSION_EXECUTION_HELD",
+  "decision_kind": "DIRECT_OWNER_APPROVAL_IN_CURRENT_CHAT",
+  "recorded_at_local": "2026-11-25T23:02:32+11:00",
+  "timezone": "Australia/Melbourne",
+  "question_quoted_verbatim": "Do you approve this standing conditional authorisation for the exact reviewed scope?",
+  "reply_quoted_verbatim": "Yes, I do.",
+  "preceding_question_scope": [
+    "The exact 34-case allocation and corresponding implementation.",
+    "Conditional registration of the three proof claims, following independent verification.",
+    "Designation of a new, separate strict Tester.",
+    "Conditional execution in dependency order, once all release requirements are satisfied."
+  ],
+  "attribution": "Direct owner reply in the same continuing Worker chat immediately after the linked register and question. Worker-authored transcription; not independently authenticated original message export, owner signature or GitHub owner comment. Original message-level URL/ID unavailable; no fabricated URI. This exact repository record is the proposed genuine attributable authority reference, subject to independent verification of applicability before installing the binding.",
+  "repository": "JayDEmily/nvda_29102026",
+  "branch": "work/t01-d091-finite-adequacy-20261116",
+  "decision_proposal_commit": "3a71d5e4bbac96f22145f413e6db8492742ef6f3",
+  "decision_proposal_register_git_blob": "2553d8d8f7070c47155bb9220d9e52e50beef5f6",
+  "reviewed_commit": "bcbbe735ece409585a9ba034edbdff48fafb2958",
+  "reviewed_tree": "b24a827b5b4a477242188cbe067cd45d9eec2532",
+  "review_commit": "58a21fd7e5f8aa800eac28340d62d483211086cd",
+  "review_report": {
+    "commit": "58a21fd7e5f8aa800eac28340d62d483211086cd",
+    "tree": "283f98a4bc4eec634bd88fb6c577da356117cf67",
+    "branch": "review/pm-l10c-scalar-preedit-r1-20261125",
+    "path": "handoff/m02_completion_28_execution/L10c/INDEPENDENT_SCALAR_STRADDLE_PREEDIT_R1_VERDICT_20261125.md",
+    "sha256": "a4a7015943b4bf2c6d54d8bf7cfde042e8bbb807ac0c26afe5999d98519372ff",
+    "disposition": "ACCEPT_PREEDIT_AND_FINITE_PROPOSAL_FOR_EXACT_OWNER_ADMISSION",
+    "reviewed_commit": "bcbbe735ece409585a9ba034edbdff48fafb2958",
+    "reviewed_tree": "b24a827b5b4a477242188cbe067cd45d9eec2532",
+    "scope": "exact R1 documentary pre-edit and finite adequacy, not implementation/admission/release"
+  },
+  "exact_proposal_approved": {
+    "status": "PROPOSED_AWAITING_DIRECT_OWNER_DECISION_NOT_AUTHORITY",
+    "exact_reviewed_commit": "bcbbe735ece409585a9ba034edbdff48fafb2958",
+    "independent_verdict_commit": "58a21fd7e5f8aa800eac28340d62d483211086cd",
+    "brief": {
+      "path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_PREEDIT_DESIGN_AND_REVIEW_20261125.md",
+      "sha256": "04697219c5d5057ac3884aceb09d754dc391a66f6ed4a425459c938c684b1d8d"
+    },
+    "specimen_manifest": {
+      "path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_FINITE_SPECIMENS_PROPOSED_20261125.json",
+      "sha256": "5e341ef9289f185d4ae9da53eaca9852735af632b17400a89a10508a114dd760"
+    },
+    "finite_inventory": {
+      "path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_FINITE_CASES_PROPOSED_20261125.json",
+      "sha256": "d8fd00cb7352d11fcd364b98a533b894b45c864d2cd6311b8db5cb70eaf57480",
+      "physical_cases": 34
+    },
+    "proposed_exact_nonfungible_ceilings": {
+      "SUPPORT": 16,
+      "D109": 8,
+      "D110": 10
+    },
+    "proposed_implementation_authority": {
+      "status_if_approved": "ACCEPTED_FOR_IMPLEMENTATION",
+      "ordered_targets": [
+        {
+          "action": "modify",
+          "object_id": "M02"
+        },
+        {
+          "action": "modify",
+          "object_id": "G01"
+        }
+      ],
+      "binding_path": "implementation/authority/SCALAR_STRADDLE_IMPLEMENTATION_AUTHORITY_BINDING.yaml",
+      "scope": "Exact reviewed R1 brief only; bounded source-support/D109/D110 implementation and exact test authoring, additive fixed claim extension and no validator weakening. Bind actual attributable owner approval and obtain independent verification of actual binding before installation."
+    },
+    "proposed_conditional_registration": {
+      "claims": [
+        {
+          "claim_id": "neutral_market_measurement_truth_l10c_scalar_pair_support",
+          "proof_id": "M02-C28-L10C-SCALAR-PAIR-SUPPORT",
+          "descriptor_directory": "config/product_proof/m02_scalar_straddle_support",
+          "physical_root": "tests/product/m02_scalar_straddle_support",
+          "family_path": "tests/product/m02_scalar_straddle_support/test_source.py",
+          "exact_case_count": 16
+        },
+        {
+          "claim_id": "neutral_market_measurement_truth_d109",
+          "proof_id": "M02-C28-D109",
+          "descriptor_directory": "config/product_proof/m02_scalar_straddle_d109",
+          "physical_root": "tests/product/m02_scalar_straddle_d109",
+          "family_path": "tests/product/m02_scalar_straddle_d109/test_signal.py",
+          "exact_case_count": 8
+        },
+        {
+          "claim_id": "neutral_market_measurement_truth_d110",
+          "proof_id": "M02-C28-D110",
+          "descriptor_directory": "config/product_proof/m02_scalar_straddle_d110",
+          "physical_root": "tests/product/m02_scalar_straddle_d110",
+          "family_path": "tests/product/m02_scalar_straddle_d110/test_signal.py",
+          "exact_case_count": 10
+        }
+      ],
+      "condition": "Prepare exact contracts/descriptors/generation-1/pointers from actual reviewed implementation/test bytes, actual owner binding and admission authority; independently verify specific completed bytes, reference applicability, schemas and exact node hashes before installing/activating each claim. No generic claim discovery, old claim or generation mutation."
+    },
+    "proposed_conditional_execution_and_tester": "Designate the first newly commissioned genuinely distinct ChatGPT conversation, recorded by actual identity in Git, as sole strict product Tester for these exact 34 cases only, not the continuing Worker or documentary reviewer. Permit case-specific execution release only after every applicable accepted source/meaning/profile/fixture/public ingress, exact implementation and claim/generation/pointer, parent proof/dependency window, clean independently restorable candidate/refs/assets, selected interpreter/library/dependency/runtime/runner and exact node predicate is independently verified. Staged SUPPORT 16 then D109 8 then D110 10, accepted parent before child. Retain exact raw outcomes, reached refusal, durable readback and independent semantic adjudication. No Worker product runs. Documentary clearance alone is not a release.",
+    "proposed_continuation": "Continue already approved scoped work, bounded independently reviewed repairs, exact checkpoints, same-claim successor generation only on material repair within identical meaning and case scope. Failed rerun only after material repair; successful rerun only after precise invalidation. No further routine owner permission under this conditional grant.",
+    "exclusions": "No added or substituted case, increased ceiling, broad regression, schedule change beyond existing adopted dependency windows, new source/domain policy, wider architecture, live/broker/provider, PostgreSQL, main/PR27 promotion, destructive Git, checkpoint strategy change or D145 reactivation. Preserve all historical proof and original 33 accepted cases. No unconditional product execution or acceptance."
+  },
+  "operative_status": "Owner approves the exact proposal as bounded conditional authority. Its quoted proposal-status fields preserve the historical text; this later direct decision activates only that scope. Approve finite lists and ceilings; no execution release yet. Exact implementation authority ACCEPTED_FOR_IMPLEMENTATION for reviewed brief and ordered modify M02 then G01, contingent on independently verified actual binding before installation; exact conditional claim registration and separate new strict Tester per grant. No other policy or budget, no routine reapproval.",
+  "before_ledger_git_blob": "7996df151f8c109c4968199fdcbfe186f50529c7",
+  "inventory_git_blob": "4f2afd147d97f00a540bc477f0005af4ce67c6a8",
+  "physical_cases_by_jurisdiction": {
+    "SUPPORT": [
+      {
+        "case_id": "L10C-SCALAR-SUPPORT-PAIR",
+        "node": "tests/product/m02_scalar_straddle_support/test_source.py::test_l10c_scalar_pair",
+        "reached_stage": "PAIR_DURABLE",
+        "specimen": "BASE",
+        "specimen_sha256": "9486f9a4cd45756c167837b67a0626b8e232403d55fa07ac42cae3671b969358",
+        "core_sha256": "477028e777fbcb43c46c3752c14176a1b524f90084635106e45f56d0540929ce"
+      },
+      {
+        "case_id": "L10C-SCALAR-SUPPORT-CALL-NON-ATM",
+        "node": "tests/product/m02_scalar_straddle_support/test_source.py::test_l10c_scalar_call_non_atm",
+        "reached_stage": "D091_DURABLE",
+        "specimen": "C60",
+        "specimen_sha256": "26077105077381800fc66994ace01557120e68c4e6039e1d2cc69b00cd237115",
+        "core_sha256": "34e648cd4b3b1ea8c210c5578060badcb49fc0e373fedc52f460dcc56e28ba32"
+      },
+      {
+        "case_id": "L10C-SCALAR-SUPPORT-PUT-NON-ATM",
+        "node": "tests/product/m02_scalar_straddle_support/test_source.py::test_l10c_scalar_put_non_atm",
+        "reached_stage": "D091_DURABLE",
+        "specimen": "P60",
+        "specimen_sha256": "494f1ac740e700aa3dcd998a76b1a8cdfb4c7d77dc6cf002c2990321b3866d3f",
+        "core_sha256": "1e0e91f847f8cebf69c084ad7aa9b1e583d1e8a3fda51c2bb23e26e39ee2db3c"
+      },
+      {
+        "case_id": "L10C-SCALAR-SUPPORT-ZERO-PAIR",
+        "node": "tests/product/m02_scalar_straddle_support/test_source.py::test_l10c_scalar_zero_pair",
+        "reached_stage": "D091_DURABLE",
+        "specimen": "ZERO_PAIR",
+        "specimen_sha256": "4149473bc2079961425993f2304e26bfea3697b334e5bb79c3783516adfc98f0",
+        "core_sha256": "3a75798c092ac312280a4b793e386a5f16e7d454dcbb9009e72693ce4ae59ba8"
+      },
+      {
+        "case_id": "L10C-SCALAR-SUPPORT-CALL-SIGN",
+        "node": "tests/product/m02_scalar_straddle_support/test_source.py::test_l10c_scalar_call_sign",
+        "reached_stage": "CORE_DOMAIN_RIGHT_SIGN",
+        "specimen": "BAD_CALL_SIGN",
+        "specimen_sha256": "4f862e0fdc1ed0631d2bb4bf63cbddd9bf8d3a49901b18be5e348754eaed5090",
+        "core_sha256": "75976e66803d975f2b95d22e98a18ccfe71c7fece984b0fd60655b38c21efa70"
+      },
+      {
+        "case_id": "L10C-SCALAR-SUPPORT-PUT-SIGN",
+        "node": "tests/product/m02_scalar_straddle_support/test_source.py::test_l10c_scalar_put_sign",
+        "reached_stage": "CORE_DOMAIN_RIGHT_SIGN",
+        "specimen": "BAD_PUT_SIGN",
+        "specimen_sha256": "c688b0a9a3345dc75086785e47fdb0f42e8473dc11b1aa5dcadb9db18518766e",
+        "core_sha256": "2f63a2688364c449d14165b0ae4987c89a798e7710da30cbf3ad9855b92feeb0"
+      },
+      {
+        "case_id": "L10C-SCALAR-SUPPORT-DELTA-RANGE",
+        "node": "tests/product/m02_scalar_straddle_support/test_source.py::test_l10c_scalar_delta_range",
+        "reached_stage": "CORE_DOMAIN_RANGE",
+        "specimen": "DELTA_RANGE",
+        "specimen_sha256": "fa94d017169ff3a13e2dd29ebd5bea2011db447f4ec1e97962c917c21aa08a4a",
+        "core_sha256": "3910479a1ce667edf450349ee3ca555ee6f9c7e5797cfa249e0d7782b271af21"
+      },
+      {
+        "case_id": "L10C-SCALAR-SUPPORT-DELTA-NONFINITE",
+        "node": "tests/product/m02_scalar_straddle_support/test_source.py::test_l10c_scalar_delta_nonfinite",
+        "reached_stage": "CORE_DOMAIN_FINITE",
+        "specimen": "DELTA_NONFINITE",
+        "specimen_sha256": "f0dd31f5a4c3ba23bbd6b528557fbe82f9dfe183d2d28bb0ad4ac4446d7ecebd",
+        "core_sha256": "412b2454de642e879efcf6fb1158e0ee04508c3a56c8f50336eb68c0db7015e7"
+      },
+      {
+        "case_id": "L10C-SCALAR-SUPPORT-DELTA-TYPE",
+        "node": "tests/product/m02_scalar_straddle_support/test_source.py::test_l10c_scalar_delta_type",
+        "reached_stage": "CORE_DOMAIN_TYPE",
+        "specimen": "DELTA_TYPE",
+        "specimen_sha256": "3923fe5c1802fb8966b9b023ad45e14359790bff336c12edd9d539f005c58048",
+        "core_sha256": "3db6cc44628bc81dc9c1c6a0beac1c271d2c75d33c13d098763b868a6f7e3626"
+      },
+      {
+        "case_id": "L10C-SCALAR-SUPPORT-QUOTE-UNITS",
+        "node": "tests/product/m02_scalar_straddle_support/test_source.py::test_l10c_scalar_quote_units",
+        "reached_stage": "CORE_ORIGINAL_METADATA",
+        "specimen": "QUOTE_UNITS",
+        "specimen_sha256": "7c50ccc44a7f9cc4407d892fa63490d7ec73a87d891db0f4dc189cc41a95cf39",
+        "core_sha256": "cbd0585c9cccbf5e9083976a222aa5c5abc01ceda164031945421dac4a104620"
+      },
+      {
+        "case_id": "L10C-SCALAR-SUPPORT-DELTA-UNITS",
+        "node": "tests/product/m02_scalar_straddle_support/test_source.py::test_l10c_scalar_delta_units",
+        "reached_stage": "CORE_ORIGINAL_METADATA",
+        "specimen": "DELTA_UNITS",
+        "specimen_sha256": "fd460141fb51b04c29415b651da562eab6f51456397ab44192c56c8c6788e426",
+        "core_sha256": "cf6c7cff980177c936ad9a1c6fa6b95c4d1b4ebe5154ab6fdaad786cd387aee7"
+      },
+      {
+        "case_id": "L10C-SCALAR-SUPPORT-DELTA-EVENT",
+        "node": "tests/product/m02_scalar_straddle_support/test_source.py::test_l10c_scalar_delta_event",
+        "reached_stage": "CORE_ORIGINAL_CLOCK",
+        "specimen": "DELTA_EVENT",
+        "specimen_sha256": "a16b3462191802db3146e9ae36c02dd1a0afe1a7d48980e773dce94bce2109d7",
+        "core_sha256": "7b5b6360a50aa73277771b61e61bf66308f4d0d281354199ed624fc67d38d6eb"
+      },
+      {
+        "case_id": "L10C-SCALAR-SUPPORT-DELTA-ROLE",
+        "node": "tests/product/m02_scalar_straddle_support/test_source.py::test_l10c_scalar_delta_role",
+        "reached_stage": "CORE_ORIGINAL_IDENTITY",
+        "specimen": "DELTA_ROLE",
+        "specimen_sha256": "fef7cbf7d6217f6d7cd95d2fc39fdf986366318b1ff0cd1f1afa6083ae29ea82",
+        "core_sha256": "ee257b68f8d3a51d1b3b016973e7f90652f07aa29e472ea396e562b560499d12"
+      },
+      {
+        "case_id": "L10C-SCALAR-SUPPORT-MISSING-CORE",
+        "node": "tests/product/m02_scalar_straddle_support/test_source.py::test_l10c_scalar_missing_core",
+        "reached_stage": "CORE_ROLE_CARDINALITY",
+        "specimen": "MISSING_CORE",
+        "specimen_sha256": "2ea27b1dd3d376641c5870127287ce37e8451863ae1e447e0dd64a303d128013",
+        "core_sha256": "bffc10b4e3b4109691388056a0641e8955b65b20a42b2bd8fe72aa16c7edf0ac"
+      },
+      {
+        "case_id": "L10C-SCALAR-SUPPORT-EXTRA-CORE",
+        "node": "tests/product/m02_scalar_straddle_support/test_source.py::test_l10c_scalar_extra_core",
+        "reached_stage": "CORE_ROLE_CARDINALITY",
+        "specimen": "EXTRA_CORE",
+        "specimen_sha256": "99c09e303931507d1a19f7e30c041d7eeaa2213e06b3189c5ee33a82f7eb518a",
+        "core_sha256": "b232ed9329a9f60948cd869394b4d47d51b4134964e84f12fefc3ed89af263ed"
+      },
+      {
+        "case_id": "L10C-SCALAR-SUPPORT-DUPLICATE-ID",
+        "node": "tests/product/m02_scalar_straddle_support/test_source.py::test_l10c_scalar_duplicate_id",
+        "reached_stage": "MANIFEST_ID_UNIQUENESS",
+        "specimen": "DUP_ID",
+        "specimen_sha256": "2235250a655d528ff56331d30a4e387e5f945bfdf5c9e80d9f40885a258f9264",
+        "core_sha256": "d07dec004650810d5fc66194e6586289542aef512503fb8c61db2745375e5053"
+      }
+    ],
+    "D109": [
+      {
+        "case_id": "D109-CONTROLLED-SUCCESS",
+        "node": "tests/product/m02_scalar_straddle_d109/test_signal.py::test_d109_controlled_success",
+        "reached_stage": "JOIN_AND_DURABLE_REOPEN",
+        "specimen": "BASE",
+        "specimen_sha256": "9486f9a4cd45756c167837b67a0626b8e232403d55fa07ac42cae3671b969358",
+        "core_sha256": "477028e777fbcb43c46c3752c14176a1b524f90084635106e45f56d0540929ce"
+      },
+      {
+        "case_id": "D109-CONTROLLED-REACHED_REFUSAL",
+        "node": "tests/product/m02_scalar_straddle_d109/test_signal.py::test_d109_call_same_bin_non_atm",
+        "reached_stage": "ATM_CALL",
+        "specimen": "C60",
+        "specimen_sha256": "26077105077381800fc66994ace01557120e68c4e6039e1d2cc69b00cd237115",
+        "core_sha256": "34e648cd4b3b1ea8c210c5578060badcb49fc0e373fedc52f460dcc56e28ba32"
+      },
+      {
+        "case_id": "D109-PUT-SAME-BIN-NON-ATM",
+        "node": "tests/product/m02_scalar_straddle_d109/test_signal.py::test_d109_put_same_bin_non_atm",
+        "reached_stage": "ATM_PUT",
+        "specimen": "P60",
+        "specimen_sha256": "494f1ac740e700aa3dcd998a76b1a8cdfb4c7d77dc6cf002c2990321b3866d3f",
+        "core_sha256": "1e0e91f847f8cebf69c084ad7aa9b1e583d1e8a3fda51c2bb23e26e39ee2db3c"
+      },
+      {
+        "case_id": "D109-MISSING-PARENT",
+        "node": "tests/product/m02_scalar_straddle_d109/test_signal.py::test_d109_missing_parent",
+        "reached_stage": "PARENT_LOOKUP",
+        "specimen": "BASE",
+        "specimen_sha256": "9486f9a4cd45756c167837b67a0626b8e232403d55fa07ac42cae3671b969358",
+        "core_sha256": "477028e777fbcb43c46c3752c14176a1b524f90084635106e45f56d0540929ce"
+      },
+      {
+        "case_id": "D109-DUPLICATE-PARENT",
+        "node": "tests/product/m02_scalar_straddle_d109/test_signal.py::test_d109_duplicate_parent",
+        "reached_stage": "PARENT_ID_UNIQUENESS",
+        "specimen": "BASE",
+        "specimen_sha256": "9486f9a4cd45756c167837b67a0626b8e232403d55fa07ac42cae3671b969358",
+        "core_sha256": "477028e777fbcb43c46c3752c14176a1b524f90084635106e45f56d0540929ce"
+      },
+      {
+        "case_id": "D109-WRONG-SLOT",
+        "node": "tests/product/m02_scalar_straddle_d109/test_signal.py::test_d109_wrong_slot",
+        "reached_stage": "PARENT_SLOT_IDENTITY",
+        "specimen": "BASE",
+        "specimen_sha256": "9486f9a4cd45756c167837b67a0626b8e232403d55fa07ac42cae3671b969358",
+        "core_sha256": "477028e777fbcb43c46c3752c14176a1b524f90084635106e45f56d0540929ce"
+      },
+      {
+        "case_id": "D109-WRONG-CORE",
+        "node": "tests/product/m02_scalar_straddle_d109/test_signal.py::test_d109_wrong_core",
+        "reached_stage": "PARENT_CORE_ALIGNMENT",
+        "specimen": "BASE",
+        "specimen_sha256": "9486f9a4cd45756c167837b67a0626b8e232403d55fa07ac42cae3671b969358",
+        "core_sha256": "477028e777fbcb43c46c3752c14176a1b524f90084635106e45f56d0540929ce",
+        "alternate_actual_parent_specimen": "C60",
+        "alternate_specimen_sha256": "26077105077381800fc66994ace01557120e68c4e6039e1d2cc69b00cd237115"
+      },
+      {
+        "case_id": "D109-WRONG-QUOTE-LINEAGE",
+        "node": "tests/product/m02_scalar_straddle_d109/test_signal.py::test_d109_wrong_quote_lineage",
+        "reached_stage": "PARENT_QUOTE_ORIGINAL_LINEAGE",
+        "specimen": "BASE",
+        "specimen_sha256": "9486f9a4cd45756c167837b67a0626b8e232403d55fa07ac42cae3671b969358",
+        "core_sha256": "477028e777fbcb43c46c3752c14176a1b524f90084635106e45f56d0540929ce",
+        "alternate_parent_only_specimen": "D087_PARENT_ONLY_FOREIGN_C1_ASK_V1",
+        "alternate_parent_only_member_sha256": "e9643453cc84dc3c97cb6cab021f4cf5a773f8c61981d2d2ca4f7b65b81b8b53"
+      }
+    ],
+    "D110": [
+      {
+        "case_id": "D110-CONTROLLED-SUCCESS",
+        "node": "tests/product/m02_scalar_straddle_d110/test_signal.py::test_d110_controlled_success",
+        "reached_stage": "PERCENT_AND_DURABLE_REOPEN",
+        "specimen": "BASE",
+        "specimen_sha256": "9486f9a4cd45756c167837b67a0626b8e232403d55fa07ac42cae3671b969358",
+        "core_sha256": "477028e777fbcb43c46c3752c14176a1b524f90084635106e45f56d0540929ce"
+      },
+      {
+        "case_id": "D110-CONTROLLED-REACHED_REFUSAL",
+        "node": "tests/product/m02_scalar_straddle_d110/test_signal.py::test_d110_zero_spot",
+        "reached_stage": "SPOT_POSITIVITY",
+        "specimen": "SPOT_ZERO",
+        "specimen_sha256": "523da45e8b4da12b314f20c492cf00214b50154b2eef4e5c2624591de4671199",
+        "core_sha256": "477028e777fbcb43c46c3752c14176a1b524f90084635106e45f56d0540929ce"
+      },
+      {
+        "case_id": "D110-NEGATIVE-SPOT",
+        "node": "tests/product/m02_scalar_straddle_d110/test_signal.py::test_d110_negative_spot",
+        "reached_stage": "SPOT_POSITIVITY",
+        "specimen": "SPOT_NEGATIVE",
+        "specimen_sha256": "828a7cae565216c21a7e2d49c04c7cdd2e57bff292bbf91fa6fe20a9c4109b59",
+        "core_sha256": "477028e777fbcb43c46c3752c14176a1b524f90084635106e45f56d0540929ce"
+      },
+      {
+        "case_id": "D110-MISSING-SPOT",
+        "node": "tests/product/m02_scalar_straddle_d110/test_signal.py::test_d110_missing_spot",
+        "reached_stage": "SPOT_CARDINALITY",
+        "specimen": "SPOT_MISSING",
+        "specimen_sha256": "477028e777fbcb43c46c3752c14176a1b524f90084635106e45f56d0540929ce",
+        "core_sha256": "477028e777fbcb43c46c3752c14176a1b524f90084635106e45f56d0540929ce"
+      },
+      {
+        "case_id": "D110-WRONG-SPOT-RIGHT",
+        "node": "tests/product/m02_scalar_straddle_d110/test_signal.py::test_d110_wrong_spot_right",
+        "reached_stage": "SPOT_CARDINALITY",
+        "specimen": "SPOT_WRONG_RIGHT",
+        "specimen_sha256": "e42fd8d7545f6615c50e70a49a582b0da61d5b8cac5a59c18c7375977eeae5ba",
+        "core_sha256": "477028e777fbcb43c46c3752c14176a1b524f90084635106e45f56d0540929ce"
+      },
+      {
+        "case_id": "D110-SPOT-ORIGINAL-UNITS",
+        "node": "tests/product/m02_scalar_straddle_d110/test_signal.py::test_d110_spot_original_units",
+        "reached_stage": "SPOT_ORIGINAL_METADATA",
+        "specimen": "SPOT_UNITS",
+        "specimen_sha256": "0e5e860514fe8f8d2d070921dd651c512a1f70d9c1144490f450e5792a3cce9f",
+        "core_sha256": "477028e777fbcb43c46c3752c14176a1b524f90084635106e45f56d0540929ce"
+      },
+      {
+        "case_id": "D110-SPOT-WRONG-EVENT",
+        "node": "tests/product/m02_scalar_straddle_d110/test_signal.py::test_d110_spot_wrong_event",
+        "reached_stage": "SPOT_ORIGINAL_CLOCK",
+        "specimen": "SPOT_EVENT",
+        "specimen_sha256": "0e32c1ec5ce2f4f67e9cd81bfe9a4ff078263a99cc6e1da2685b389f7000a147",
+        "core_sha256": "477028e777fbcb43c46c3752c14176a1b524f90084635106e45f56d0540929ce"
+      },
+      {
+        "case_id": "D110-SPOT-AMBIGUOUS",
+        "node": "tests/product/m02_scalar_straddle_d110/test_signal.py::test_d110_spot_ambiguous",
+        "reached_stage": "SPOT_CARDINALITY",
+        "specimen": "SPOT_AMBIGUOUS",
+        "specimen_sha256": "a286d269efd84cddda2142a34fd04d02b9b5317f37566eb7adb2980c4600213c",
+        "core_sha256": "477028e777fbcb43c46c3752c14176a1b524f90084635106e45f56d0540929ce"
+      },
+      {
+        "case_id": "D110-MISSING-PARENT",
+        "node": "tests/product/m02_scalar_straddle_d110/test_signal.py::test_d110_missing_parent",
+        "reached_stage": "PARENT_LOOKUP",
+        "specimen": "BASE",
+        "specimen_sha256": "9486f9a4cd45756c167837b67a0626b8e232403d55fa07ac42cae3671b969358",
+        "core_sha256": "477028e777fbcb43c46c3752c14176a1b524f90084635106e45f56d0540929ce"
+      },
+      {
+        "case_id": "D110-WRONG-CORE",
+        "node": "tests/product/m02_scalar_straddle_d110/test_signal.py::test_d110_wrong_core",
+        "reached_stage": "PARENT_CORE_ALIGNMENT",
+        "specimen": "C60",
+        "specimen_sha256": "26077105077381800fc66994ace01557120e68c4e6039e1d2cc69b00cd237115",
+        "core_sha256": "34e648cd4b3b1ea8c210c5578060badcb49fc0e373fedc52f460dcc56e28ba32",
+        "alternate_actual_parent_specimen": "BASE",
+        "alternate_specimen_sha256": "9486f9a4cd45756c167837b67a0626b8e232403d55fa07ac42cae3671b969358"
+      }
+    ]
+  },
+  "current_holds": {
+    "product_execution_release": false,
+    "new_product_runs": 0,
+    "implementation_binding_installed": false,
+    "exact_product_candidate": "UNRESOLVED",
+    "source_claim_generation_bindings": "UNRESOLVED",
+    "separate_strict_tester_designated": false,
+    "actual_receiver_runtime_qualification": "UNRESOLVED",
+    "D145": "PAUSED",
+    "main_promotion": false
+  },
+  "original_33_accepted_cases_unchanged": true
+}
