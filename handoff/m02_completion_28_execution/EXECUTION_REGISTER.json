@@ -46,7 +46,7 @@
         "L00"
       ],
       "obligation": "Bind actual public D071/D075/D076/D077 history producers, aligned sample/window/knowledge cutoffs, current exclusion, rank/conditioning and exact output codec. One fixed historical observation is insufficient for rolling history. Keep one OLS-with-intercept model, common immutable fit/intercept/sample identity and M02 neutral ownership. Prepare correlated full-rank exact synthetic success data which distinguish joint from separate univariate fits, an informative nonzero held-out residual, a concrete deficient-rank history and a per-coefficient mixed-fit refusal. Existing 64 orthogonal rows remain valid example arithmetic only. Admit/prove necessary history profiles separately; never inject expected D outputs as raw/configuration facts.",
-      "status": "PROSPECTIVE_REMAP_AND_FIVE_INACTIVE_PACKAGES_INDEPENDENTLY_ACCEPTED_INSTALLATION_PENDING_EXECUTION_HELD",
+      "status": "FIVE_REMAPPED_REGISTRATIONS_INSTALLED_EXACT_BYTES_INDEPENDENT_INSTALLATION_REVIEW_PENDING_EXECUTION_HELD",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G1_AFTER_L06",
@@ -113,7 +113,7 @@
         ],
         "execution_release": false,
         "product_status": "NOT_ATTEMPTED",
-        "first_unmet_invariant": "Exact authorised installation of the five independently cleared D071-D075 remapped registrations, followed by independent exact installation/registration clearance and sole strict Tester candidate-specific intake/release. All 64 cases remain held; no downstream execution.",
+        "first_unmet_invariant": "Fresh independent exact installation/registration clearance of five D071-D075 remapped registrations at C, then sole strict Tester candidate-specific intake/release. All 64 cases remain held; ten first-stage NOT_ATTEMPTED; no downstream execution.",
         "tester_designation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
         "tester_status": "CANDIDATE_SPECIFIC_INTAKE_REQUIRED",
         "scope": "Controlled synthetic only; no official/native certification or new product acceptance",
@@ -932,6 +932,263 @@
             "SUP-D075-HISTORY": "ACCEPT"
           },
           "scope": "Exact shared path-only remap and five inactive registration preparations; no product acceptance, installation or release. Prior BLOCKED verdict remains historical for old paths. Twelve other claims mapping-only.",
+          "execution_release": false,
+          "product_cases_executed": 0
+        },
+        "first_stage_remapped_registration_installation_candidate": {
+          "status": "INSTALLED_EXACT_BYTES_INDEPENDENT_INSTALLATION_REVIEW_PENDING_EXECUTION_HELD",
+          "commit": "74b15dd32ffb56dd645337e3607d907b72d4f563",
+          "tree": "20d54f2b0d65c55a7ccabd29ba1812433fbf8753",
+          "parent": "e1b99193be900aff9375d15d40fe041453fa3a10",
+          "recursive_tree_listing_sha256": "4949728d640b6133f11ab6a4a6e6fb1cec5f1b55205c42a135faa72f1aee1786",
+          "tracked_entries": 4536,
+          "prior_remap_verdict": "5da8986e88d777975edae36fc65eaf8a229e29e4",
+          "files": [
+            {
+              "staged_path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D071_TEST_SOURCE.py",
+              "installed_or_retained_path": "tests/product/m02_completion_28_prospective/support/d071-history/test_profile.py",
+              "sha256": "5c3a920006e9952e58e2e7ec6efe477e8e48e1f51bea9d6e6ff7744e6c3f20df",
+              "git_blob": "0c0a55b7c3b9bac57aea6eae967246c21ab7359f",
+              "bytes": 20643,
+              "disposition": "INSTALLED_EXACT_BYTES"
+            },
+            {
+              "staged_path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D071_CLAIM_CANDIDATE.json",
+              "installed_or_retained_path": "config/product_proof/m02_aligned_history_d071/claim.json",
+              "sha256": "cea962241291786b3c2606cc56f003b77809352c7643408af88487e8200cb526",
+              "git_blob": "cfdf15dd7ce1d875b3ab9ed0edb303f235a8f4f9",
+              "bytes": 601,
+              "disposition": "INSTALLED_EXACT_BYTES"
+            },
+            {
+              "staged_path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D071_GENERATION_0001_CANDIDATE.json",
+              "installed_or_retained_path": "config/product_proof/m02_aligned_history_d071/generations/0001.json",
+              "sha256": "985625000ee98f9adfdf334e391ee19e767ac1b804e25b9eb209d9bf82a68dda",
+              "git_blob": "3dcd5770c6e76d557fb637e1ba4ec85b0467f5a9",
+              "bytes": 1304,
+              "disposition": "INSTALLED_EXACT_BYTES"
+            },
+            {
+              "staged_path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D071_ADMISSION_CANDIDATE.json",
+              "installed_or_retained_path": "config/product_proof/m02_aligned_history_d071/admission.json",
+              "sha256": "bcfbb089756d5a6ab21a2a5cd63991aaad1f609f81ebbebb89aa90f706f98fb5",
+              "git_blob": "bdcabfe508c67521f1eb5e74651404ac95e1c51f",
+              "bytes": 225,
+              "disposition": "INSTALLED_EXACT_BYTES"
+            },
+            {
+              "staged_path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D071_PROOF_CONTRACT.json",
+              "installed_or_retained_path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D071_PROOF_CONTRACT.json",
+              "sha256": "5f771b88c96699b9dd56b724e9e87df6f541706bdfff442842ee70d4daaedb30",
+              "git_blob": "0bd0d3bc642c82c6ed488266cbb98ae288f9058e",
+              "bytes": 4812,
+              "disposition": "RETAINED_EXISTING_CONTRACT"
+            },
+            {
+              "staged_path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D072_TEST_SOURCE.py",
+              "installed_or_retained_path": "tests/product/m02_completion_28_prospective/support/d072-history/test_profile.py",
+              "sha256": "20e86ceee72f6e4190137dbde967c44aedd824ca7a89d2120ba20432e91821a3",
+              "git_blob": "c10756983f98547fc23ee488af63057e4f910163",
+              "bytes": 20575,
+              "disposition": "INSTALLED_EXACT_BYTES"
+            },
+            {
+              "staged_path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D072_CLAIM_CANDIDATE.json",
+              "installed_or_retained_path": "config/product_proof/m02_aligned_history_d072/claim.json",
+              "sha256": "1260a7c77fe9ac48c07b44cb53c3830df4a0f6b6d77c1824d224325613eb5abb",
+              "git_blob": "88a4a7be608ed5100cc880f6129ccc8281ba7882",
+              "bytes": 601,
+              "disposition": "INSTALLED_EXACT_BYTES"
+            },
+            {
+              "staged_path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D072_GENERATION_0001_CANDIDATE.json",
+              "installed_or_retained_path": "config/product_proof/m02_aligned_history_d072/generations/0001.json",
+              "sha256": "385a1499264023184f5ce9ba2ea0f17efa5bdaa57b449a79a412ae1d6b524936",
+              "git_blob": "1333a8ec96dd4be1578b278da3c67fb0358ec40e",
+              "bytes": 1304,
+              "disposition": "INSTALLED_EXACT_BYTES"
+            },
+            {
+              "staged_path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D072_ADMISSION_CANDIDATE.json",
+              "installed_or_retained_path": "config/product_proof/m02_aligned_history_d072/admission.json",
+              "sha256": "095cfc8c92a2d54cdac2a2b2001add96c3ea200ac1768bbec658185b031c308d",
+              "git_blob": "6faa4bc233417cd91c73da290917f2924247797e",
+              "bytes": 225,
+              "disposition": "INSTALLED_EXACT_BYTES"
+            },
+            {
+              "staged_path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D072_PROOF_CONTRACT.json",
+              "installed_or_retained_path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D072_PROOF_CONTRACT.json",
+              "sha256": "1b1974b23aa8e79b6c420b0cb32f09ad34220d7672d7239bc0b425ce14ff82e3",
+              "git_blob": "356693ba1f8cf700ca1b88ba944f203851c79a51",
+              "bytes": 4816,
+              "disposition": "RETAINED_EXISTING_CONTRACT"
+            },
+            {
+              "staged_path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D073_TEST_SOURCE.py",
+              "installed_or_retained_path": "tests/product/m02_completion_28_prospective/support/d073-history/test_profile.py",
+              "sha256": "3a5289c5d1933fcf6c84ae0d520f316d56c33ce87ca86433204776fc123e6c3a",
+              "git_blob": "666a627215ab181082d28a2b0d21b07e3fb15a97",
+              "bytes": 20673,
+              "disposition": "INSTALLED_EXACT_BYTES"
+            },
+            {
+              "staged_path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D073_CLAIM_CANDIDATE.json",
+              "installed_or_retained_path": "config/product_proof/m02_aligned_history_d073/claim.json",
+              "sha256": "8e61dc08aa7324bdf128419096ac4afb85731e047ca4bfcc2da377e2f0f4a084",
+              "git_blob": "4c05f745d6c982b186f1dd2f90920ee113841aae",
+              "bytes": 601,
+              "disposition": "INSTALLED_EXACT_BYTES"
+            },
+            {
+              "staged_path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D073_GENERATION_0001_CANDIDATE.json",
+              "installed_or_retained_path": "config/product_proof/m02_aligned_history_d073/generations/0001.json",
+              "sha256": "005801524cd9787e72581b49c0305226930e7ddad319bbb3d829988ad6845a8c",
+              "git_blob": "978dcd09c5eab893266d2b3b1e0ef2f5ceb3f962",
+              "bytes": 1304,
+              "disposition": "INSTALLED_EXACT_BYTES"
+            },
+            {
+              "staged_path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D073_ADMISSION_CANDIDATE.json",
+              "installed_or_retained_path": "config/product_proof/m02_aligned_history_d073/admission.json",
+              "sha256": "8193931644b5870a6785afec07686721159878b3823c15c15a49966bc026db45",
+              "git_blob": "8f7dd5a073333cd1ab42d0d4d4291d2bc80e0299",
+              "bytes": 225,
+              "disposition": "INSTALLED_EXACT_BYTES"
+            },
+            {
+              "staged_path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D073_PROOF_CONTRACT.json",
+              "installed_or_retained_path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D073_PROOF_CONTRACT.json",
+              "sha256": "0105ec67828efed9019c75808c6d79315ddb7c9e0c9a8a666d49b46cf9fcfdb5",
+              "git_blob": "a92e83f283b8a52c8296ff39ffa1b4c660e7089e",
+              "bytes": 4804,
+              "disposition": "RETAINED_EXISTING_CONTRACT"
+            },
+            {
+              "staged_path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D074_TEST_SOURCE.py",
+              "installed_or_retained_path": "tests/product/m02_completion_28_prospective/support/d074-history/test_profile.py",
+              "sha256": "e96123115973c985a75b7b978aad8a9b2cd65c7f63488a0ca76da036627d63d9",
+              "git_blob": "0df9244b4f6509f98c318d23c17324d770c2b33b",
+              "bytes": 20651,
+              "disposition": "INSTALLED_EXACT_BYTES"
+            },
+            {
+              "staged_path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D074_CLAIM_CANDIDATE.json",
+              "installed_or_retained_path": "config/product_proof/m02_aligned_history_d074/claim.json",
+              "sha256": "622726a8fa4da0cc4890390335d6f159aacc823f9a13917a007f2ef77f1eb94a",
+              "git_blob": "6b33bd86cfa9f16357bece4524e1f883c08ad6eb",
+              "bytes": 601,
+              "disposition": "INSTALLED_EXACT_BYTES"
+            },
+            {
+              "staged_path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D074_GENERATION_0001_CANDIDATE.json",
+              "installed_or_retained_path": "config/product_proof/m02_aligned_history_d074/generations/0001.json",
+              "sha256": "837f47a8850459ed3e6de43159c72906d82e81d048a23b3c968b38726e1be761",
+              "git_blob": "8cfb5cdc6d44f7c83463bbc5d85d628f2bff93a6",
+              "bytes": 1304,
+              "disposition": "INSTALLED_EXACT_BYTES"
+            },
+            {
+              "staged_path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D074_ADMISSION_CANDIDATE.json",
+              "installed_or_retained_path": "config/product_proof/m02_aligned_history_d074/admission.json",
+              "sha256": "3487dd8714d7a80177c5bf4ffdfe89ca822805b7088872bde9e5d582e74b03b3",
+              "git_blob": "991eadd54f43fab739c866454a34517b782aa3fb",
+              "bytes": 225,
+              "disposition": "INSTALLED_EXACT_BYTES"
+            },
+            {
+              "staged_path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D074_PROOF_CONTRACT.json",
+              "installed_or_retained_path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D074_PROOF_CONTRACT.json",
+              "sha256": "708f6dc03c755e68c8232f699d80b2b27d973b7e2406daacf4f5fdc3f34d8d79",
+              "git_blob": "e6a4a338a792354e26343251dcaadaa6095aca3f",
+              "bytes": 4812,
+              "disposition": "RETAINED_EXISTING_CONTRACT"
+            },
+            {
+              "staged_path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D075_TEST_SOURCE.py",
+              "installed_or_retained_path": "tests/product/m02_completion_28_prospective/support/d075-history/test_profile.py",
+              "sha256": "4fdeed336e1fa67db77c577755d14810bf576cdbf72d393993d0c98e1802a94c",
+              "git_blob": "48e812ad1e1f7464f0b88576e7def38bada15681",
+              "bytes": 20534,
+              "disposition": "INSTALLED_EXACT_BYTES"
+            },
+            {
+              "staged_path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D075_CLAIM_CANDIDATE.json",
+              "installed_or_retained_path": "config/product_proof/m02_aligned_history_d075/claim.json",
+              "sha256": "19d2f6e7c31089158bb7aa6fa4fafb00fd0448e4e8db1f16bbd581315dbbaf13",
+              "git_blob": "4f74bb3d56d7afaf77b903451649a9c76162b38d",
+              "bytes": 601,
+              "disposition": "INSTALLED_EXACT_BYTES"
+            },
+            {
+              "staged_path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D075_GENERATION_0001_CANDIDATE.json",
+              "installed_or_retained_path": "config/product_proof/m02_aligned_history_d075/generations/0001.json",
+              "sha256": "18171abfb47452e2600f5169fa80a26c70d2b4a4045b0c167070356a954330ca",
+              "git_blob": "0bd76aeae02dd794495f3e6c6d24484bbd3f10ad",
+              "bytes": 1304,
+              "disposition": "INSTALLED_EXACT_BYTES"
+            },
+            {
+              "staged_path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D075_ADMISSION_CANDIDATE.json",
+              "installed_or_retained_path": "config/product_proof/m02_aligned_history_d075/admission.json",
+              "sha256": "2d355fa058ad406c9855199c163cb48d5298b9f405d8e5f18d547384754bde5f",
+              "git_blob": "d7ef237881677b65316b0fd8aa42450d72e7f035",
+              "bytes": 225,
+              "disposition": "INSTALLED_EXACT_BYTES"
+            },
+            {
+              "staged_path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D075_PROOF_CONTRACT.json",
+              "installed_or_retained_path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D075_PROOF_CONTRACT.json",
+              "sha256": "6bfc41f1415ff9c68776f0ae79c6b35ec19cb3e0a16dc2a0706970be57dc8d8f",
+              "git_blob": "14f524a3a9609b7b41505b767d2ff2e30204b915",
+              "bytes": 4813,
+              "disposition": "RETAINED_EXISTING_CONTRACT"
+            }
+          ],
+          "commission_path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_REMAPPED_INSTALLATION_REVIEW_COMMISSION_20261128.md",
+          "commission_sha256": "c6b4908d7709819665edf50d3ba07027e4e9371b7b05f5cb3067cce4119bee11",
+          "review_ref": "refs/heads/review/trial-cac-nvidia-l01a-remapped-installation-20261128",
+          "report_path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_CAC_TRIAL_ALIGNED_HISTORY_D071_D075_REMAPPED_INSTALLATION_VERDICT_20261128.md",
+          "validation": {
+            "method": "Documentary/static only; no product import, collection, G01 runtime or product execution. Exact route and partition inspected, not invoked.",
+            "separate_package_static_checks": "PASS for each D071-D075: exact staged and destination bytes, AST test names, exact own descriptor/route pin, proof-contract and admission schema, generation and pointer hashes, immutable authority linkage and FAIL policy",
+            "active_roots": 123,
+            "prospective_roots_disjoint": 17,
+            "physical_test_files": 226,
+            "new_files": 20,
+            "retained_contracts": 5,
+            "historical_accepted_cases": 67,
+            "held_cases": 64,
+            "first_stage_not_attempted": 10,
+            "other_claims_mapping_only": 12,
+            "required_historical_ref_rows": 2281,
+            "distinct_required_tip_objects_present": 170,
+            "tip_object_types": {
+              "commit": 123,
+              "blob": 26,
+              "tree": 20,
+              "tag": 1
+            },
+            "wheel_hash_and_size_matches": 21,
+            "git_fsck_full": "PASS",
+            "recorded_non_git_asset_status": {
+              "VERIFIED": 66,
+              "BLOCKED": 5,
+              "UNKNOWN": 1
+            },
+            "prior_delivery": {
+              "pid": 20000,
+              "handoff": "e1b99193be900aff9375d15d40fe041453fa3a10",
+              "native_exit": 0,
+              "one_send": true,
+              "verified_child_route": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b09fca7-eaf8-83ec-a893-94cad34bba0d",
+              "tab_id": 1892034808,
+              "window_id": 1892034734,
+              "group_id": 6850528,
+              "model": "GPT-6.2",
+              "effort": "Extra High"
+            }
+          },
           "execution_release": false,
           "product_cases_executed": 0
         }
@@ -2779,8 +3036,8 @@
   "execution_status": "ready",
   "current_leaf": "L01a",
   "next_assignment": {
-    "role": "Worker",
-    "task": "Fresh distinct Worker: L01a exact D071-D075 remapped registration installation only on isolated CAC trial. Reconcile independent V 5da8986e88d777975edae36fc65eaf8a229e29e4 on refs/heads/review/trial-cac-nvidia-g01-partition-remap-20261128, report handoff/m02_completion_28_execution/L01a/INDEPENDENT_CAC_TRIAL_G01_PROSPECTIVE_PARTITION_REMAP_VERDICT_20261128.md SHA256 0aab07086e35fe266bcf20f3dfba2934164c39188c641d6dc14318ebc72900e7, parent reviewed handoff efb99bd23d66f49f7d1b2290ad97d42cccc2a265, exact C 3800ffd5b6c4d01c87815361375a76f6f3c7c46a tree f0e4e016c3db1cd492e300ee094876e5dff6d024. The shared owner-authorised 17-claim/64-case path-only remap and each of five inactive registrations are documentarily ACCEPTED. Read current governing instructions/register, exact owner remap authority and immutable original grant, pinned path-only successor map and all prior authoring/implementation verdicts. Verify remote V, exact staged 25-file map and unchanged route/ledger pins at the received H. Install ONLY the four exact byte-identical future destination files per D071-D075 (test source, descriptor, immutable generation 0001, admission pointer), with the five already-present staged proof contracts at their exact referenced paths. No alterations to the reviewed map, contract, route, source logic, historical approvals, old claims/tests/evidence or other 12 claims. Check exact bytes, destinations, schemas, family/proof IDs, generation/pointer/authority linkage, strict G01 partition and source ownership, no symlinks or old evidence changes; documentary/static verification only. Do not import, collect or execute product, run G01 runtime, add cases, rerun proofs, release cases or undertake Tester intake. Publish exact bounded installation candidate and H naming a fresh independent documentary installation/registration reviewer with exact candidate/tree/file pins and separate five dispositions. Preserve all 64 held, ten first-stage NOT_ATTEMPTED, execution_release=false, sole designated strict Tester intake/release, D145 PAUSED, other 12 mapping-only and downstream holds. Work in a fresh separate Ubuntu checkout via RDC, trial only. No original work/main/prior-review ref edits or merge. Owner directive 27 November 2026, isolated NVIDIA CAC trial only: continuous forward succession, fresh Worker -> fresh independent Reviewer -> fresh Worker, without returning to previous conversations or requiring routine owner intervention. After each actual scoped assignment is completed and any required independent verdict published and verified, the current authorised receiver reconciles the exact result and commissions the next eligible distinct role through the existing pinned native CAC method and binding. Carry this instruction forward into each next_assignment; preserve independence, all plan-required proof/review/registration/Tester gates, hold/stop law, exact candidate and one outstanding delivery at a time. Do not retry an uncertain Send, modify CAC software, introduce automation code, touch original work/main or merge back without owner approval."
+    "role": "Independent documentary reviewer",
+    "task": "Fresh distinct independent documentary reviewer: exact L01a D071-D075 remapped installation/registration review only. C 74b15dd32ffb56dd645337e3607d907b72d4f563, tree 20d54f2b0d65c55a7ccabd29ba1812433fbf8753, direct parent e1b99193be900aff9375d15d40fe041453fa3a10. Read handoff/m02_completion_28_execution/L01a/INDEPENDENT_REMAPPED_INSTALLATION_REVIEW_COMMISSION_20261128.md SHA256 c6b4908d7709819665edf50d3ba07027e4e9371b7b05f5cb3067cce4119bee11 and execute the exact commission. Verify 20 installed file additions and five retained contract pins in current register, shared strict G01 partition and separate five exact dispositions. Publish only handoff/m02_completion_28_execution/L01a/INDEPENDENT_CAC_TRIAL_ALIGNED_HISTORY_D071_D075_REMAPPED_INSTALLATION_VERDICT_20261128.md on new refs/heads/review/trial-cac-nvidia-l01a-remapped-installation-20261128, direct child of received H; verify exact remote verdict. No product import, collection, G01 runtime, execution, changes, new case, release or Tester intake. Preserve all 64 held, ten first-stage NOT_ATTEMPTED, 67 historical accepted cases, other 12 mapping-only, all downstream holds and D145 PAUSED. Owner directive 27 November 2026, isolated NVIDIA CAC trial only: continuous forward succession, fresh Worker -> fresh independent Reviewer -> fresh Worker, without returning to previous conversations or requiring routine owner intervention. After each actual scoped assignment is completed and any required independent verdict published and verified, the current authorised receiver reconciles the exact result and commissions the next eligible distinct role through the existing pinned native CAC method and binding. Carry this instruction forward into each next_assignment; preserve independence, all plan-required proof/review/registration/Tester gates, hold/stop law, exact candidate and one outstanding delivery at a time. Do not retry an uncertain Send, modify CAC software, introduce automation code, touch original work/main or merge back without owner approval."
   },
   "trial_forward_succession_authority": {
     "scope": "trial/cac-nvidia-continuation-20261127 only",
