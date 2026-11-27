@@ -2041,5 +2041,14 @@
     "receipt": "handoff/astra_adr_continuation_20261115/INSTALLATION_RECEIPT.md",
     "historical_status": "PROPOSED_NOT_INSTALLED",
     "scope": "Worker branch; not main; no G1/G5 completion"
+  },
+  "repository": "JayDEmily/nvda_29102026",
+  "branch": "trial/cac-nvidia-continuation-20261127",
+  "plan": "EXEC_PLAN.md",
+  "execution_status": "ready",
+  "current_leaf": "L01a",
+  "next_assignment": {
+    "role": "Worker",
+    "task": "Direct owner-commissioned isolated trial continuation. Reconcile the exact consolidated documentary acceptance f7b42cd7ed4dbedf2a6dc43b5e70515baafd7304 for candidate 3370d48e097cd7d8eec376b20ae9b3adfa918084 and its unchanged binding candidates at baseline c57422bdc533f6b25b3051b2533a3e12a6dfed1b. First bounded leaf L01a: install only the five independently cleared D071-D075 authority bindings byte-identically and prepare the exact ten unexecuted proof cases, public interface, proof contracts and inactive descriptors for independent authoring review before source implementation. D001 and D095 retain their distinct cleared scope and remain eligible under existing dependencies. No product execution, case release, new case, self-review, D145, main or original work/review ref modification. Use the specifically authorised sequential grouped CAC route only for an actual distinct reviewer assignment after its candidate is committed; no delivery is commissioned by this initial Worker assignment."
   }
 }
