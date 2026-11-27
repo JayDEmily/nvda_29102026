@@ -894,6 +894,21 @@
             "vendored_wheel_hash_and_size_matches": 21,
             "legacy_asset_note": "Historical non-Git asset gaps and subsequent evidence records retained unchanged; no new qualification or recovery asserted."
           }
+        },
+        "prospective_partition_remap_candidate": {
+          "commit": "3800ffd5b6c4d01c87815361375a76f6f3c7c46a",
+          "tree": "f0e4e016c3db1cd492e300ee094876e5dff6d024",
+          "parent": "7625d861730b52aa57227dc83f2f985bd0bcda6b",
+          "candidate_register_sha256": "f398e3dbc07a43a249a75128a971d57510f97c9f870aa593f78ef6aa53008a96",
+          "recursive_tree_listing_sha256": "59aedce4776d05fea7e3e43609765623b25de4ced5b6a7536ee4a277bb712c46",
+          "tracked_entries": 4515,
+          "commission_path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/INDEPENDENT_REMAP_REVIEW_COMMISSION.md",
+          "commission_sha256": "64a88dbd57fb2f8be96073350332af6ce6ea40441d80db4abce62c2272ed908f",
+          "review_ref": "refs/heads/review/trial-cac-nvidia-g01-partition-remap-20261128",
+          "report_path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_CAC_TRIAL_G01_PROSPECTIVE_PARTITION_REMAP_VERDICT_20261128.md",
+          "status": "PATH_ONLY_REMAP_AND_FIVE_INACTIVE_PACKAGES_REVIEW_PENDING",
+          "execution_release": false,
+          "product_cases_executed": 0
         }
       }
     },
@@ -2739,8 +2754,8 @@
   "execution_status": "ready",
   "current_leaf": "L01a",
   "next_assignment": {
-    "role": "Worker",
-    "task": "Fresh distinct Worker: complete the owner-authorised bounded prospective G01 physical-partition reconciliation; exact authority handoff/m02_completion_28_execution/L01a/OWNER_G01_PROSPECTIVE_PARTITION_REMAP_AUTHORIZATION_20261128.json SHA256 cbc85f756911a9f1a926f862284168acc6f83266f8f07c0b1b68e3e2547190ff. Reconcile V 63e716b7de2ea11bef9afe80fa0bb7793a031cef on refs/heads/review/trial-cac-nvidia-l01a-registration-20261127 against H b5c63a67083761916e5ee27ed4c2c13c3360d2a2. Address the shared collision for the 17 never-run claim jurisdictions / exact 64 owner-admitted cases in one coherent path-only remapping candidate; no change to original grant or accepted historical evidence, case IDs/names, semantics, finite counts, ceilings, schedules, strict G01 disjoint-root/ownership enforcement or existing accepted D091/L01b descriptors/generation/pointers/tests. Establish exact active-root disjointness and mutual new-root disjointness, lossless original/new node map, minimally necessary path-only successor authority and artefact/pin/route reconciliation; preserve old versions and prior verdicts. For the five existing inactive L01a packages prepare remapped, fully consistent inactive artefacts and necessary narrowly scoped prospective route change; for other 12 claims reconcile mapping/authority only, without advancing their distinct engineering gates. Do not activate/install remapped registrations or run/collect/import product. Publish a bounded candidate for fresh independent documentary review of exact mapping, preserved evidence, scope and G01 coexistence before activation; no extra cases or speculative tests. Preserve all 64 held, ten NOT_ATTEMPTED, sole strict Tester intake/release and D145 hold. Work in a fresh separate checkout, trial only. No original work/main/prior-review ref edits or merge. After each eligible completed transition use pinned CAC native forward succession. Owner directive 27 November 2026, isolated NVIDIA CAC trial only: continuous forward succession, fresh Worker -> fresh independent Reviewer -> fresh Worker, without returning to previous conversations or requiring routine owner intervention. After each actual scoped assignment is completed and any required independent verdict published and verified, the current authorised receiver reconciles the exact result and commissions the next eligible distinct role through the existing pinned native CAC method and binding. Carry this instruction forward into each next_assignment; preserve independence, all plan-required proof/review/registration/Tester gates, hold/stop law, exact candidate and one outstanding delivery at a time. Do not retry an uncertain Send, modify CAC software, introduce automation code, touch original work/main or merge back without owner approval."
+    "role": "Independent documentary reviewer",
+    "task": "Fresh distinct independent documentary reviewer: L01a shared G01 prospective path-only remap (17 claims, exact 64 cases) and separate five D071-D075 inactive registration dispositions. Exact C 3800ffd5b6c4d01c87815361375a76f6f3c7c46a, tree f0e4e016c3db1cd492e300ee094876e5dff6d024, parent 7625d861730b52aa57227dc83f2f985bd0bcda6b. Read handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/INDEPENDENT_REMAP_REVIEW_COMMISSION.md SHA256 64a88dbd57fb2f8be96073350332af6ce6ea40441d80db4abce62c2272ed908f and execute exact commission. Publish only handoff/m02_completion_28_execution/L01a/INDEPENDENT_CAC_TRIAL_G01_PROSPECTIVE_PARTITION_REMAP_VERDICT_20261128.md on new refs/heads/review/trial-cac-nvidia-g01-partition-remap-20261128, direct child of received H; verify exact remote verdict. No activation, installation, product import, collection, execution, source edit or repair. Preserve all holds and Tester gate. Owner directive 27 November 2026, isolated NVIDIA CAC trial only: continuous forward succession, fresh Worker -> fresh independent Reviewer -> fresh Worker, without returning to previous conversations or requiring routine owner intervention. After each actual scoped assignment is completed and any required independent verdict published and verified, the current authorised receiver reconciles the exact result and commissions the next eligible distinct role through the existing pinned native CAC method and binding. Carry this instruction forward into each next_assignment; preserve independence, all plan-required proof/review/registration/Tester gates, hold/stop law, exact candidate and one outstanding delivery at a time. Do not retry an uncertain Send, modify CAC software, introduce automation code, touch original work/main or merge back without owner approval."
   },
   "trial_forward_succession_authority": {
     "scope": "trial/cac-nvidia-continuation-20261127 only",
