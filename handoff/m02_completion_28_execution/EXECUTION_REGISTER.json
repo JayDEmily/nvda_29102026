@@ -638,6 +638,22 @@
             "git_fsck_full_no_reflogs_exit": 0,
             "scope": "Object availability in private checkout after exact advertised ref fetch; not recreated literal refs or independent receiver acceptance. Historical asset record statuses: 66 VERIFIED, 5 BLOCKED, 1 UNKNOWN; no claim of recovery of missing original binaries."
           }
+        },
+        "first_stage_registration_candidate": {
+          "commit": "bca5965ef9675a123db2934e8f8f3c0ce4406d2e",
+          "tree": "02c70126c14816c4523efecd714baf74e654da7f",
+          "parent": "0af1d47498932849cb23d99ea46b203b0076df2e",
+          "candidate_register_sha256": "cf7fe6d48ec09aca362856d9c46623adaec717eefe20f3fa0e715e422cf3fd84",
+          "recursive_tree_listing_sha256": "c9179be3ca2514b2df6bbd4f3b7c852394f0eb792d8f38901dd94d94737886b9",
+          "tracked_entries": 4486,
+          "commission_path": "handoff/m02_completion_28_execution/L01a/CAC_TRIAL_ALIGNED_HISTORY_D071_D075_REGISTRATION_REVIEW_COMMISSION_20261127.md",
+          "commission_sha256": "a7a45f523b3c6e4b9e12162cc219228babc1f7e21821c62c47d0d605751cc1ab",
+          "review_ref": "refs/heads/review/trial-cac-nvidia-l01a-registration-20261127",
+          "report_path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_CAC_TRIAL_ALIGNED_HISTORY_D071_D075_REGISTRATION_VERDICT_20261127.md",
+          "case_count": 10,
+          "execution_release": false,
+          "product_cases_executed": 0,
+          "status": "INACTIVE_METADATA_PREPARED_PARTITION_CONFLICT_REVIEW_PENDING"
         }
       }
     },
@@ -2483,8 +2499,8 @@
   "execution_status": "ready",
   "current_leaf": "L01a",
   "next_assignment": {
-    "role": "Worker",
-    "task": "Fresh distinct Worker: L01a exact D071-D075 registration preparation only. Independently verified implementation ACCEPT V 22a14402bb5df8651e9136b6d00d94f657a07afd on refs/heads/review/trial-cac-nvidia-l01a-implementation-20261127, report handoff/m02_completion_28_execution/L01a/INDEPENDENT_CAC_TRIAL_ALIGNED_HISTORY_D071_D075_IMPLEMENTATION_VERDICT_20261127.md SHA256 6c354b51ccd42bf7230a457102f68cbf498f3ded4eae11a90b5765d9567af34b, exact implementation C 2a97d52f2c54c09d60180e78826cdbb789317332 tree 0c4a4b52f61917f73b25cfffe4e906e30b97fbb3. Read H register and governing plan, verify remote V and all prior exact authoring/binding evidence. Prepare exact inactive registration packages for the five separate two-case claims (unchanged reviewed test-source bytes, exact physical paths and ordered nodes, descriptor/admission, strict generation/pointer bindings, accepted owner grant/policy/manifest/inventory, own brief/binding and exact proof contracts). Inspect the actual existing G01 registration method and prior accepted examples; no active installation, product imports, collection, tests, extra cases or source changes. Publish exact bounded candidate C2 and H2 naming a fresh independent documentary registration reviewer; specify independent review commission with file/hash/tree pins and each separate disposition. Preserve all ten cases NOT_ATTEMPTED and execution_release=false, sole designated strict Tester intake/release, old proofs/evidence, downstream D076/D077/fit/residual holds, D145 and all other jurisdictions. No touching original work, main, prior review refs, no merge. Owner directive 27 November 2026, isolated NVIDIA CAC trial only: continuous forward succession, fresh Worker -> fresh independent Reviewer -> fresh Worker, without returning to previous conversations or requiring routine owner intervention. After each actual scoped assignment is completed and any required independent verdict published and verified, the current authorised receiver reconciles the exact result and commissions the next eligible distinct role through the existing pinned native CAC method and binding. Carry this instruction forward into each next_assignment; preserve independence, all plan-required proof/review/registration/Tester gates, hold/stop law, exact candidate and one outstanding delivery at a time. Do not retry an uncertain Send, modify CAC software, introduce automation code, touch original work/main or merge back without owner approval."
+    "role": "Independent documentary reviewer",
+    "task": "Fresh distinct independent documentary registration reviewer: L01a D071-D075 only, exact registration C2 bca5965ef9675a123db2934e8f8f3c0ce4406d2e tree 02c70126c14816c4523efecd714baf74e654da7f, parent 0af1d47498932849cb23d99ea46b203b0076df2e. Read handoff/m02_completion_28_execution/L01a/CAC_TRIAL_ALIGNED_HISTORY_D071_D075_REGISTRATION_REVIEW_COMMISSION_20261127.md SHA256 a7a45f523b3c6e4b9e12162cc219228babc1f7e21821c62c47d0d605751cc1ab and execute exact commission; independent five separate registration dispositions and shared G01 partition conflict. Inactive generation/pointer candidates only; no activation, product import, collection, execution, source edits or repairs. Publish only handoff/m02_completion_28_execution/L01a/INDEPENDENT_CAC_TRIAL_ALIGNED_HISTORY_D071_D075_REGISTRATION_VERDICT_20261127.md to new refs/heads/review/trial-cac-nvidia-l01a-registration-20261127, direct child of received H; verify exact remote verdict. Hold all cases and downstream dependencies; reconcile and commission next eligible distinct role only when authorised, no bypass or scope expansion. Owner directive 27 November 2026, isolated NVIDIA CAC trial only: continuous forward succession, fresh Worker -> fresh independent Reviewer -> fresh Worker, without returning to previous conversations or requiring routine owner intervention. After each actual scoped assignment is completed and any required independent verdict published and verified, the current authorised receiver reconciles the exact result and commissions the next eligible distinct role through the existing pinned native CAC method and binding. Carry this instruction forward into each next_assignment; preserve independence, all plan-required proof/review/registration/Tester gates, hold/stop law, exact candidate and one outstanding delivery at a time. Do not retry an uncertain Send, modify CAC software, introduce automation code, touch original work/main or merge back without owner approval."
   },
   "trial_forward_succession_authority": {
     "scope": "trial/cac-nvidia-continuation-20261127 only",
