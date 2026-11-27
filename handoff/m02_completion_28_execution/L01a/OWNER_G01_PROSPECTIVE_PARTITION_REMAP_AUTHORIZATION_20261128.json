@@ -1,0 +1,383 @@
+{
+  "schema": "NVDA_CAC_TRIAL_OWNER_PROSPECTIVE_PHYSICAL_PARTITION_REMAP_AUTHORITY_V1",
+  "decision_date_local": "2026-11-28",
+  "repository": "JayDEmily/nvda_29102026",
+  "branch": "trial/cac-nvidia-continuation-20261127",
+  "scope": "isolated CAC trial only",
+  "received_handoff": "b5c63a67083761916e5ee27ed4c2c13c3360d2a2",
+  "independent_registration_verdict": {
+    "commit": "63e716b7de2ea11bef9afe80fa0bb7793a031cef",
+    "tree": "4b9f6d446e2e80c19b96c741f564ec07b32e94ed",
+    "review_ref": "refs/heads/review/trial-cac-nvidia-l01a-registration-20261127",
+    "report_path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_CAC_TRIAL_ALIGNED_HISTORY_D071_D075_REGISTRATION_VERDICT_20261127.md",
+    "report_sha256": "80fa0fb7b2883535ccc50acfd5b3760949ba0aff893b74f515a92204689b2c74",
+    "disposition": "BLOCKED_G01_PHYSICAL_PARTITION_AUTHORITY_CONFLICT; five BLOCKED registrations"
+  },
+  "original_owner_grant": {
+    "path": "handoff/m02_completion_28_execution/OWNER_CONSOLIDATED_64_CONDITIONAL_EXECUTION_GRANT_20261127.json",
+    "sha256": "6a71f52981fc01da42f9c27726547d0d1ddd69851561479a007aeb30ebd95a41",
+    "exact_cases": 64,
+    "claim_count": 17
+  },
+  "reviewer_recommendation_quoted": "I recommend retaining the strict G01 ownership validator and authorising a bounded remapping of the prospective, never-executed proof paths into disjoint jurisdictions. Preserve all case identities, semantics, allocations and historical evidence.",
+  "owner_reply_quoted": "Yeah, I give that authorization. Proceed.",
+  "attribution": "Direct owner reply in the completed independent registration review conversation, immediately following the recommendation and required decision. This record is not a native signed chat export.",
+  "authorised_delta": "Exact bounded prospective physical-root and proof-node remapping for the 17 never-run claims in the existing finite64 grant; necessary path-only successor authority, pin, descriptor, generation, pointer, proof-contract, ledger and new route reconciliation. Retain immutable original owner grant, original reviewed policy and evidence, and record a lossless mapping from old prospective nodes to new nodes. Do not modify already accepted historical claim/test/generation/pointer bytes, old product logic, or G01 partition enforcement. Do not change case IDs, test names, semantic propositions, finite counts, ceilings, or schedules. No new or substitute cases. No broad architecture or source rescope.",
+  "repair_requirements": "Find mutually disjoint prospective physical jurisdictions, also disjoint from every active claim. Preserve strict fail-closed checks including complete ownership of Python files, exact family/proof identity, no duplicate ownership, no symlinks, original legacy and transitional integrity, exact independent review and future generation/pointer checks. Prepare the smallest coherent exact remapping and requisite path-only successor artefacts and route reconciliation; prove byte-equivalent staged test logic except necessary path-only references, and independently review before installation/activation. Preserve original approvals and reviews as historical evidence; do not silently overwrite original authority or treat path migration as product proof.",
+  "scope_map": [
+    {
+      "package": "aligned_history",
+      "jurisdiction": "D071",
+      "proof_id": "SUP-D071-HISTORY",
+      "claim_id": "neutral_market_measurement_truth_l01a_d071_history",
+      "family_id": "m02_l01a_aligned_history_d071",
+      "original_root": "tests/product/m02_completion_28/support/d071-history",
+      "original_family_path": "tests/product/m02_completion_28/support/d071-history/test_profile.py",
+      "ordered_case_ids": [
+        "SUP-D071-HISTORY-SUCCESS",
+        "SUP-D071-HISTORY-REACHED_REFUSAL"
+      ],
+      "original_ordered_nodes": [
+        "tests/product/m02_completion_28/support/d071-history/test_profile.py::test_d071_history_success",
+        "tests/product/m02_completion_28/support/d071-history/test_profile.py::test_d071_missing_exact_reference"
+      ]
+    },
+    {
+      "package": "aligned_history",
+      "jurisdiction": "D072",
+      "proof_id": "SUP-D072-HISTORY",
+      "claim_id": "neutral_market_measurement_truth_l01a_d072_history",
+      "family_id": "m02_l01a_aligned_history_d072",
+      "original_root": "tests/product/m02_completion_28/support/d072-history",
+      "original_family_path": "tests/product/m02_completion_28/support/d072-history/test_profile.py",
+      "ordered_case_ids": [
+        "SUP-D072-HISTORY-SUCCESS",
+        "SUP-D072-HISTORY-REACHED_REFUSAL"
+      ],
+      "original_ordered_nodes": [
+        "tests/product/m02_completion_28/support/d072-history/test_profile.py::test_d072_history_success",
+        "tests/product/m02_completion_28/support/d072-history/test_profile.py::test_d072_wrong_reference_role"
+      ]
+    },
+    {
+      "package": "aligned_history",
+      "jurisdiction": "D073",
+      "proof_id": "SUP-D073-HISTORY",
+      "claim_id": "neutral_market_measurement_truth_l01a_d073_history",
+      "family_id": "m02_l01a_aligned_history_d073",
+      "original_root": "tests/product/m02_completion_28/support/d073-history",
+      "original_family_path": "tests/product/m02_completion_28/support/d073-history/test_profile.py",
+      "ordered_case_ids": [
+        "SUP-D073-HISTORY-SUCCESS",
+        "SUP-D073-HISTORY-REACHED_REFUSAL"
+      ],
+      "original_ordered_nodes": [
+        "tests/product/m02_completion_28/support/d073-history/test_profile.py::test_d073_history_success",
+        "tests/product/m02_completion_28/support/d073-history/test_profile.py::test_d073_late_current"
+      ]
+    },
+    {
+      "package": "aligned_history",
+      "jurisdiction": "D074",
+      "proof_id": "SUP-D074-HISTORY",
+      "claim_id": "neutral_market_measurement_truth_l01a_d074_history",
+      "family_id": "m02_l01a_aligned_history_d074",
+      "original_root": "tests/product/m02_completion_28/support/d074-history",
+      "original_family_path": "tests/product/m02_completion_28/support/d074-history/test_profile.py",
+      "ordered_case_ids": [
+        "SUP-D074-HISTORY-SUCCESS",
+        "SUP-D074-HISTORY-REACHED_REFUSAL"
+      ],
+      "original_ordered_nodes": [
+        "tests/product/m02_completion_28/support/d074-history/test_profile.py::test_d074_history_success",
+        "tests/product/m02_completion_28/support/d074-history/test_profile.py::test_d074_ambiguous_current"
+      ]
+    },
+    {
+      "package": "aligned_history",
+      "jurisdiction": "D075",
+      "proof_id": "SUP-D075-HISTORY",
+      "claim_id": "neutral_market_measurement_truth_l01a_d075_history",
+      "family_id": "m02_l01a_aligned_history_d075",
+      "original_root": "tests/product/m02_completion_28/support/d075-history",
+      "original_family_path": "tests/product/m02_completion_28/support/d075-history/test_profile.py",
+      "ordered_case_ids": [
+        "SUP-D075-HISTORY-SUCCESS",
+        "SUP-D075-HISTORY-REACHED_REFUSAL"
+      ],
+      "original_ordered_nodes": [
+        "tests/product/m02_completion_28/support/d075-history/test_profile.py::test_d075_history_success",
+        "tests/product/m02_completion_28/support/d075-history/test_profile.py::test_d075_original_units"
+      ]
+    },
+    {
+      "package": "aligned_history",
+      "jurisdiction": "D076",
+      "proof_id": "SUP-D076-HISTORY",
+      "claim_id": "neutral_market_measurement_truth_l01a_d076_history",
+      "family_id": "m02_l01a_aligned_history_d076",
+      "original_root": "tests/product/m02_completion_28/support/d076-history",
+      "original_family_path": "tests/product/m02_completion_28/support/d076-history/test_profile.py",
+      "ordered_case_ids": [
+        "SUP-D076-HISTORY-SUCCESS",
+        "SUP-D076-HISTORY-REACHED_REFUSAL"
+      ],
+      "original_ordered_nodes": [
+        "tests/product/m02_completion_28/support/d076-history/test_profile.py::test_d076_history_success",
+        "tests/product/m02_completion_28/support/d076-history/test_profile.py::test_d076_wrong_parent_frame"
+      ]
+    },
+    {
+      "package": "aligned_history",
+      "jurisdiction": "D077",
+      "proof_id": "SUP-D077-HISTORY",
+      "claim_id": "neutral_market_measurement_truth_l01a_d077_history",
+      "family_id": "m02_l01a_aligned_history_d077",
+      "original_root": "tests/product/m02_completion_28/support/d077-history",
+      "original_family_path": "tests/product/m02_completion_28/support/d077-history/test_profile.py",
+      "ordered_case_ids": [
+        "SUP-D077-HISTORY-SUCCESS",
+        "SUP-D077-HISTORY-REACHED_REFUSAL",
+        "SUP-D077-HISTORY-MIXED-ORIGINAL-ROSTER"
+      ],
+      "original_ordered_nodes": [
+        "tests/product/m02_completion_28/support/d077-history/test_profile.py::test_d077_history_success",
+        "tests/product/m02_completion_28/support/d077-history/test_profile.py::test_d077_missing_soxx_parent",
+        "tests/product/m02_completion_28/support/d077-history/test_profile.py::test_d077_mixed_original_roster"
+      ]
+    },
+    {
+      "package": "aligned_history",
+      "jurisdiction": "D079",
+      "proof_id": "M02-C28-D079",
+      "claim_id": "neutral_market_measurement_truth_d079",
+      "family_id": "m02_l02_joint_fit_d079",
+      "original_root": "tests/product/m02_completion_28/d079",
+      "original_family_path": "tests/product/m02_completion_28/d079/test_signal.py",
+      "ordered_case_ids": [
+        "D079-CONTROLLED-SUCCESS",
+        "D079-CONTROLLED-REACHED_REFUSAL",
+        "D079-MISSING-MEMBER",
+        "D079-DUPLICATE-MEMBER",
+        "D079-PARENT-NOT-KNOWN-AT-FIT-CUTOFF",
+        "D079-MIXED-SOURCE-CORPUS"
+      ],
+      "original_ordered_nodes": [
+        "tests/product/m02_completion_28/d079/test_signal.py::test_d079_joint_success",
+        "tests/product/m02_completion_28/d079/test_signal.py::test_d079_rank_deficient",
+        "tests/product/m02_completion_28/d079/test_signal.py::test_d079_missing_member",
+        "tests/product/m02_completion_28/d079/test_signal.py::test_d079_duplicate_member",
+        "tests/product/m02_completion_28/d079/test_signal.py::test_d079_parent_unavailable_at_cutoff",
+        "tests/product/m02_completion_28/d079/test_signal.py::test_d079_mixed_source_corpus"
+      ]
+    },
+    {
+      "package": "aligned_history",
+      "jurisdiction": "D080",
+      "proof_id": "M02-C28-D080",
+      "claim_id": "neutral_market_measurement_truth_d080",
+      "family_id": "m02_l02_joint_fit_d080",
+      "original_root": "tests/product/m02_completion_28/d080",
+      "original_family_path": "tests/product/m02_completion_28/d080/test_signal.py",
+      "ordered_case_ids": [
+        "D080-CONTROLLED-SUCCESS",
+        "D080-CONTROLLED-REACHED_REFUSAL",
+        "D080-CONDITIONING-REFUSAL",
+        "D080-CONDITION-INCLUSIVE-BOUNDARY",
+        "D080-FIT-ROW-MISALIGNMENT"
+      ],
+      "original_ordered_nodes": [
+        "tests/product/m02_completion_28/d080/test_signal.py::test_d080_joint_success",
+        "tests/product/m02_completion_28/d080/test_signal.py::test_d080_rank_deficient",
+        "tests/product/m02_completion_28/d080/test_signal.py::test_d080_outside_conditioning_domain",
+        "tests/product/m02_completion_28/d080/test_signal.py::test_d080_condition_inclusive_boundary",
+        "tests/product/m02_completion_28/d080/test_signal.py::test_d080_fit_row_misalignment"
+      ]
+    },
+    {
+      "package": "aligned_history",
+      "jurisdiction": "D081",
+      "proof_id": "M02-C28-D081",
+      "claim_id": "neutral_market_measurement_truth_d081",
+      "family_id": "m02_l02_joint_fit_d081",
+      "original_root": "tests/product/m02_completion_28/d081",
+      "original_family_path": "tests/product/m02_completion_28/d081/test_signal.py",
+      "ordered_case_ids": [
+        "D081-CONTROLLED-SUCCESS",
+        "D081-CONTROLLED-REACHED_REFUSAL",
+        "D081-SHARED-PARENT-PAYLOAD-MISMATCH"
+      ],
+      "original_ordered_nodes": [
+        "tests/product/m02_completion_28/d081/test_signal.py::test_d081_joint_success",
+        "tests/product/m02_completion_28/d081/test_signal.py::test_d081_rank_deficient",
+        "tests/product/m02_completion_28/d081/test_signal.py::test_d081_shared_parent_payload_mismatch"
+      ]
+    },
+    {
+      "package": "aligned_history",
+      "jurisdiction": "D078",
+      "proof_id": "M02-C28-D078",
+      "claim_id": "neutral_market_measurement_truth_d078",
+      "family_id": "m02_l03_same_fit_d078",
+      "original_root": "tests/product/m02_completion_28/d078",
+      "original_family_path": "tests/product/m02_completion_28/d078/test_signal.py",
+      "ordered_case_ids": [
+        "D078-CONTROLLED-SUCCESS",
+        "D078-CONTROLLED-REACHED_REFUSAL",
+        "D078-CURRENT-ROW-MISALIGNMENT",
+        "D078-NONPRIOR-FIT",
+        "D078-COEFFICIENT-NOT-KNOWN-AT-RESIDUAL-CUTOFF"
+      ],
+      "original_ordered_nodes": [
+        "tests/product/m02_completion_28/d078/test_signal.py::test_d078_same_fit_residual",
+        "tests/product/m02_completion_28/d078/test_signal.py::test_d078_mixed_fit",
+        "tests/product/m02_completion_28/d078/test_signal.py::test_d078_wrong_current_row",
+        "tests/product/m02_completion_28/d078/test_signal.py::test_d078_nonprior_fit",
+        "tests/product/m02_completion_28/d078/test_signal.py::test_d078_coefficient_unavailable_at_cutoff"
+      ]
+    },
+    {
+      "package": "option_time",
+      "jurisdiction": "D001",
+      "proof_id": "SUP-D001-OPTION",
+      "claim_id": "neutral_market_measurement_truth_l07b_d001_option_time",
+      "family_id": "m02_option_time_d001",
+      "original_root": "tests/product/m02_completion_28/support/d001-option",
+      "original_family_path": "tests/product/m02_completion_28/support/d001-option/test_profile.py",
+      "ordered_case_ids": [
+        "SUP-D001-OPTION-SUCCESS",
+        "SUP-D001-OPTION-REACHED_REFUSAL",
+        "SUP-D001-OPTION-RECEIPT-ONLY",
+        "SUP-D001-OPTION-OFFSET-MISMATCH"
+      ],
+      "original_ordered_nodes": [
+        "tests/product/m02_completion_28/support/d001-option/test_profile.py::test_d001_success",
+        "tests/product/m02_completion_28/support/d001-option/test_profile.py::test_d001_date_only",
+        "tests/product/m02_completion_28/support/d001-option/test_profile.py::test_d001_receipt_only",
+        "tests/product/m02_completion_28/support/d001-option/test_profile.py::test_d001_offset_mismatch"
+      ]
+    },
+    {
+      "package": "option_time",
+      "jurisdiction": "D003",
+      "proof_id": "SUP-D003-USOPTION",
+      "claim_id": "neutral_market_measurement_truth_l07a_d003_option_time",
+      "family_id": "m02_option_time_d003",
+      "original_root": "tests/product/m02_completion_28/support/d003-usoption",
+      "original_family_path": "tests/product/m02_completion_28/support/d003-usoption/test_profile.py",
+      "ordered_case_ids": [
+        "SUP-D003-USOPTION-SUCCESS",
+        "SUP-D003-USOPTION-FOREIGN-ZONE",
+        "SUP-D003-USOPTION-WRONG-PARENT"
+      ],
+      "original_ordered_nodes": [
+        "tests/product/m02_completion_28/support/d003-usoption/test_profile.py::test_d003_success",
+        "tests/product/m02_completion_28/support/d003-usoption/test_profile.py::test_d003_foreign_zone",
+        "tests/product/m02_completion_28/support/d003-usoption/test_profile.py::test_d003_wrong_parent"
+      ]
+    },
+    {
+      "package": "option_time",
+      "jurisdiction": "D004",
+      "proof_id": "SUP-D004-USOPTION",
+      "claim_id": "neutral_market_measurement_truth_l07a_d004_option_time",
+      "family_id": "m02_option_time_d004",
+      "original_root": "tests/product/m02_completion_28/support/d004-usoption",
+      "original_family_path": "tests/product/m02_completion_28/support/d004-usoption/test_profile.py",
+      "ordered_case_ids": [
+        "SUP-D004-USOPTION-SUCCESS",
+        "SUP-D004-USOPTION-REACHED_REFUSAL",
+        "SUP-D004-USOPTION-SCHEDULE-MISMATCH"
+      ],
+      "original_ordered_nodes": [
+        "tests/product/m02_completion_28/support/d004-usoption/test_profile.py::test_d004_success",
+        "tests/product/m02_completion_28/support/d004-usoption/test_profile.py::test_d004_closed_end",
+        "tests/product/m02_completion_28/support/d004-usoption/test_profile.py::test_d004_schedule_mismatch"
+      ]
+    },
+    {
+      "package": "option_time",
+      "jurisdiction": "D085",
+      "proof_id": "M02-C28-D085",
+      "claim_id": "neutral_market_measurement_truth_d085",
+      "family_id": "m02_option_time_d085",
+      "original_root": "tests/product/m02_completion_28/d085",
+      "original_family_path": "tests/product/m02_completion_28/d085/test_signal.py",
+      "ordered_case_ids": [
+        "D085-CONTROLLED-SUCCESS",
+        "D085-CONTROLLED-ZERO",
+        "D085-CONTROLLED-REACHED_REFUSAL",
+        "D085-CONTROLLED-WRONG-PARENT",
+        "D085-CONTROLLED-RECEIPT-MISMATCH",
+        "D085-CONTROLLED-ORIGINAL-UNITS",
+        "D085-CONTROLLED-CLOSED-RECEIPT"
+      ],
+      "original_ordered_nodes": [
+        "tests/product/m02_completion_28/d085/test_signal.py::test_d085_success",
+        "tests/product/m02_completion_28/d085/test_signal.py::test_d085_zero",
+        "tests/product/m02_completion_28/d085/test_signal.py::test_d085_expired",
+        "tests/product/m02_completion_28/d085/test_signal.py::test_d085_wrong_parent",
+        "tests/product/m02_completion_28/d085/test_signal.py::test_d085_receipt_mismatch",
+        "tests/product/m02_completion_28/d085/test_signal.py::test_d085_original_units",
+        "tests/product/m02_completion_28/d085/test_signal.py::test_d085_closed_receipt"
+      ]
+    },
+    {
+      "package": "option_time",
+      "jurisdiction": "D086",
+      "proof_id": "M02-C28-D086",
+      "claim_id": "neutral_market_measurement_truth_d086",
+      "family_id": "m02_option_time_d086",
+      "original_root": "tests/product/m02_completion_28/d086",
+      "original_family_path": "tests/product/m02_completion_28/d086/test_signal.py",
+      "ordered_case_ids": [
+        "D086-CONTROLLED-SUCCESS",
+        "D086-CONTROLLED-ZERO",
+        "D086-CONTROLLED-REACHED_REFUSAL",
+        "D086-CONTROLLED-DATE-MISMATCH",
+        "D086-CONTROLLED-CONTRACT-MISMATCH",
+        "D086-CONTROLLED-WRONG-PARENT"
+      ],
+      "original_ordered_nodes": [
+        "tests/product/m02_completion_28/d086/test_signal.py::test_d086_success",
+        "tests/product/m02_completion_28/d086/test_signal.py::test_d086_zero",
+        "tests/product/m02_completion_28/d086/test_signal.py::test_d086_expired",
+        "tests/product/m02_completion_28/d086/test_signal.py::test_d086_date_mismatch",
+        "tests/product/m02_completion_28/d086/test_signal.py::test_d086_contract_mismatch",
+        "tests/product/m02_completion_28/d086/test_signal.py::test_d086_wrong_parent"
+      ]
+    },
+    {
+      "package": "option_iv",
+      "jurisdiction": "D095",
+      "proof_id": "M02-C28-D095",
+      "claim_id": "neutral_market_measurement_truth_d095",
+      "family_id": "m02_option_iv_prior_session_d095",
+      "original_root": "tests/product/m02_completion_28/d095",
+      "original_family_path": "tests/product/m02_completion_28/d095/test_signal.py",
+      "ordered_case_ids": [
+        "D095-CONTROLLED-SUCCESS",
+        "D095-CONTROLLED-REACHED_REFUSAL",
+        "D095-CONTROLLED-LATE-REFERENCE",
+        "D095-CONTROLLED-WRONG-CONTRACT",
+        "D095-CONTROLLED-WRONG-MODEL",
+        "D095-CONTROLLED-WRONG-UNITS",
+        "D095-CONTROLLED-DUPLICATE-VINTAGE"
+      ],
+      "original_ordered_nodes": [
+        "tests/product/m02_completion_28/d095/test_signal.py::test_d095_success",
+        "tests/product/m02_completion_28/d095/test_signal.py::test_d095_wrong_session",
+        "tests/product/m02_completion_28/d095/test_signal.py::test_d095_late_reference",
+        "tests/product/m02_completion_28/d095/test_signal.py::test_d095_wrong_contract",
+        "tests/product/m02_completion_28/d095/test_signal.py::test_d095_wrong_model",
+        "tests/product/m02_completion_28/d095/test_signal.py::test_d095_wrong_units",
+        "tests/product/m02_completion_28/d095/test_signal.py::test_d095_duplicate_vintage"
+      ]
+    }
+  ],
+  "execution_release": false,
+  "product_runs_authorised_now": 0,
+  "tester": "retain exact previously designated sole strict Tester and all candidate-specific intake/release predicates",
+  "prohibitions": "No product import, collection or case execution by Worker/reviewer; no activation before required separate independent clearance; no prior proof reruns absent existing invalidation law; no D145, M00, PostgreSQL, provider, unrelated architecture, main/original work/prior review ref mutation, merge or CAC method/binding modifications.",
+  "forward_succession": "Continue the existing isolated CAC chain with fresh Worker then distinct independent reviewer then next eligible distinct role; preserve all holds and one outstanding delivery, no uncertain Send retry."
+}
