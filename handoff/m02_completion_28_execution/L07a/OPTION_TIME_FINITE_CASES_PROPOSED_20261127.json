@@ -1,0 +1,1067 @@
+{
+  "schema_version": 1,
+  "status": "PROPOSED_NOT_ADOPTED_NOT_IMPLEMENTED_NOT_ADMITTED_NOT_RUN",
+  "input_checkpoint": "6b0cf20a56ac58a4d6fbff158c116d368e8d25c0",
+  "scope": "L07b D001 support, L07a D003/D004 support, L08 D085, L09 D086; one controlled CALL contract only; no native calendar or provider qualification",
+  "oracle_only_not_inputs": {
+    "EARLIER": {
+      "expected_d001": "2026-10-21T15:00:00.125000Z",
+      "expected_d003_local": "2026-10-21T11:00:00.125000-04:00",
+      "iana_key": "America/New_York",
+      "fold": 0,
+      "expected_d004": "2026-10-21",
+      "expected_session": "regular/2026-10-21",
+      "receipt_session": "regular/2026-10-21",
+      "expected_d085_days": 2,
+      "elapsed_microseconds": 179999875000,
+      "expected_d086_ratio": [
+        1439999,
+        252288000
+      ]
+    },
+    "MAIN": {
+      "expected_d001": "2026-10-22T19:59:59.125000Z",
+      "expected_d003_local": "2026-10-22T15:59:59.125000-04:00",
+      "iana_key": "America/New_York",
+      "fold": 0,
+      "expected_d004": "2026-10-22",
+      "expected_session": "regular/2026-10-22",
+      "receipt_session": "regular/2026-10-22",
+      "expected_d085_days": 1,
+      "elapsed_microseconds": 75600875000,
+      "expected_d086_ratio": [
+        604807,
+        252288000
+      ]
+    },
+    "CROSS_CLOSE": {
+      "expected_d001": "2026-10-22T19:59:59.875000Z",
+      "expected_d003_local": "2026-10-22T15:59:59.875000-04:00",
+      "iana_key": "America/New_York",
+      "fold": 0,
+      "expected_d004": "2026-10-22",
+      "expected_session": "regular/2026-10-22",
+      "receipt_session": "closed",
+      "expected_d085_days": 1,
+      "elapsed_microseconds": 75600125000,
+      "expected_d086_ratio": [
+        604801,
+        252288000
+      ]
+    },
+    "SAME_DAY": {
+      "expected_d001": "2026-10-23T13:30:00.125000Z",
+      "expected_d003_local": "2026-10-23T09:30:00.125000-04:00",
+      "iana_key": "America/New_York",
+      "fold": 0,
+      "expected_d004": "2026-10-23",
+      "expected_session": "regular/2026-10-23",
+      "receipt_session": "regular/2026-10-23",
+      "expected_d085_days": 0,
+      "elapsed_microseconds": 12599875000,
+      "expected_d086_ratio": [
+        100799,
+        252288000
+      ]
+    },
+    "AT_EXPIRY": {
+      "expected_d001": "2026-10-23T17:00:00Z",
+      "expected_d003_local": "2026-10-23T13:00:00-04:00",
+      "iana_key": "America/New_York",
+      "fold": 0,
+      "expected_d004": null,
+      "expected_session": "closed",
+      "receipt_session": "closed",
+      "expected_d085_days": null,
+      "elapsed_microseconds": 0,
+      "expected_d086_ratio": [
+        0,
+        1
+      ]
+    },
+    "AFTER": {
+      "expected_d001": "2026-10-26T13:30:00.125000Z",
+      "expected_d003_local": "2026-10-26T09:30:00.125000-04:00",
+      "iana_key": "America/New_York",
+      "fold": 0,
+      "expected_d004": "2026-10-26",
+      "expected_session": "regular/2026-10-26",
+      "receipt_session": "regular/2026-10-26",
+      "expected_d085_days": -3,
+      "elapsed_microseconds": -246600125000,
+      "expected_d086_ratio": [
+        -1972801,
+        252288000
+      ]
+    }
+  },
+  "claims": [
+    {
+      "jurisdiction": "D001",
+      "proof_id": "SUP-D001-OPTION",
+      "leaf": "L07b",
+      "ledger_jurisdiction": "existing_proof_obligations",
+      "claim_id": "neutral_market_measurement_truth_l07b_d001_option_time",
+      "family_id": "m02_option_time_d001",
+      "descriptor_directory": "config/product_proof/m02_option_time_d001",
+      "family_path": "tests/product/m02_completion_28/support/d001-option/test_profile.py",
+      "physical_root": "tests/product/m02_completion_28/support/d001-option",
+      "own_brief_path": "handoff/m02_completion_28_execution/L07a/D001_IMPLEMENTATION_BRIEF.md",
+      "own_binding_path": "implementation/authority/T01_D001_OPTION_TIME_AUTHORITY_BINDING.yaml",
+      "future_contract_path": "handoff/m02_completion_28_execution/L07a/D001_PROOF_CONTRACT.json",
+      "proposed_case_count": 4,
+      "proposed_nonfungible_ceiling": 4,
+      "authorised_case_count": 0,
+      "execution_release": false,
+      "ordered_case_ids": [
+        "SUP-D001-OPTION-SUCCESS",
+        "SUP-D001-OPTION-REACHED_REFUSAL",
+        "SUP-D001-OPTION-RECEIPT-ONLY",
+        "SUP-D001-OPTION-OFFSET-MISMATCH"
+      ],
+      "ordered_nodes": [
+        "tests/product/m02_completion_28/support/d001-option/test_profile.py::test_d001_success",
+        "tests/product/m02_completion_28/support/d001-option/test_profile.py::test_d001_date_only",
+        "tests/product/m02_completion_28/support/d001-option/test_profile.py::test_d001_receipt_only",
+        "tests/product/m02_completion_28/support/d001-option/test_profile.py::test_d001_offset_mismatch"
+      ]
+    },
+    {
+      "jurisdiction": "D003",
+      "proof_id": "SUP-D003-USOPTION",
+      "leaf": "L07a",
+      "ledger_jurisdiction": "new_separate_source_support_allocation",
+      "claim_id": "neutral_market_measurement_truth_l07a_d003_option_time",
+      "family_id": "m02_option_time_d003",
+      "descriptor_directory": "config/product_proof/m02_option_time_d003",
+      "family_path": "tests/product/m02_completion_28/support/d003-usoption/test_profile.py",
+      "physical_root": "tests/product/m02_completion_28/support/d003-usoption",
+      "own_brief_path": "handoff/m02_completion_28_execution/L07a/D003_IMPLEMENTATION_BRIEF.md",
+      "own_binding_path": "implementation/authority/T01_D003_OPTION_TIME_AUTHORITY_BINDING.yaml",
+      "future_contract_path": "handoff/m02_completion_28_execution/L07a/D003_PROOF_CONTRACT.json",
+      "proposed_case_count": 3,
+      "proposed_nonfungible_ceiling": 3,
+      "authorised_case_count": 0,
+      "execution_release": false,
+      "ordered_case_ids": [
+        "SUP-D003-USOPTION-SUCCESS",
+        "SUP-D003-USOPTION-FOREIGN-ZONE",
+        "SUP-D003-USOPTION-WRONG-PARENT"
+      ],
+      "ordered_nodes": [
+        "tests/product/m02_completion_28/support/d003-usoption/test_profile.py::test_d003_success",
+        "tests/product/m02_completion_28/support/d003-usoption/test_profile.py::test_d003_foreign_zone",
+        "tests/product/m02_completion_28/support/d003-usoption/test_profile.py::test_d003_wrong_parent"
+      ]
+    },
+    {
+      "jurisdiction": "D004",
+      "proof_id": "SUP-D004-USOPTION",
+      "leaf": "L07a",
+      "ledger_jurisdiction": "existing_proof_obligations",
+      "claim_id": "neutral_market_measurement_truth_l07a_d004_option_time",
+      "family_id": "m02_option_time_d004",
+      "descriptor_directory": "config/product_proof/m02_option_time_d004",
+      "family_path": "tests/product/m02_completion_28/support/d004-usoption/test_profile.py",
+      "physical_root": "tests/product/m02_completion_28/support/d004-usoption",
+      "own_brief_path": "handoff/m02_completion_28_execution/L07a/D004_IMPLEMENTATION_BRIEF.md",
+      "own_binding_path": "implementation/authority/T01_D004_OPTION_TIME_AUTHORITY_BINDING.yaml",
+      "future_contract_path": "handoff/m02_completion_28_execution/L07a/D004_PROOF_CONTRACT.json",
+      "proposed_case_count": 3,
+      "proposed_nonfungible_ceiling": 3,
+      "authorised_case_count": 0,
+      "execution_release": false,
+      "ordered_case_ids": [
+        "SUP-D004-USOPTION-SUCCESS",
+        "SUP-D004-USOPTION-REACHED_REFUSAL",
+        "SUP-D004-USOPTION-SCHEDULE-MISMATCH"
+      ],
+      "ordered_nodes": [
+        "tests/product/m02_completion_28/support/d004-usoption/test_profile.py::test_d004_success",
+        "tests/product/m02_completion_28/support/d004-usoption/test_profile.py::test_d004_closed_end",
+        "tests/product/m02_completion_28/support/d004-usoption/test_profile.py::test_d004_schedule_mismatch"
+      ]
+    },
+    {
+      "jurisdiction": "D085",
+      "proof_id": "M02-C28-D085",
+      "leaf": "L08",
+      "ledger_jurisdiction": "existing_proof_obligations",
+      "claim_id": "neutral_market_measurement_truth_d085",
+      "family_id": "m02_option_time_d085",
+      "descriptor_directory": "config/product_proof/m02_option_time_d085",
+      "family_path": "tests/product/m02_completion_28/d085/test_signal.py",
+      "physical_root": "tests/product/m02_completion_28/d085",
+      "own_brief_path": "handoff/m02_completion_28_execution/L07a/D085_IMPLEMENTATION_BRIEF.md",
+      "own_binding_path": "implementation/authority/T01_D085_OPTION_TIME_AUTHORITY_BINDING.yaml",
+      "future_contract_path": "handoff/m02_completion_28_execution/L07a/D085_PROOF_CONTRACT.json",
+      "proposed_case_count": 7,
+      "proposed_nonfungible_ceiling": 7,
+      "authorised_case_count": 0,
+      "execution_release": false,
+      "ordered_case_ids": [
+        "D085-CONTROLLED-SUCCESS",
+        "D085-CONTROLLED-ZERO",
+        "D085-CONTROLLED-REACHED_REFUSAL",
+        "D085-CONTROLLED-WRONG-PARENT",
+        "D085-CONTROLLED-RECEIPT-MISMATCH",
+        "D085-CONTROLLED-ORIGINAL-UNITS",
+        "D085-CONTROLLED-CLOSED-RECEIPT"
+      ],
+      "ordered_nodes": [
+        "tests/product/m02_completion_28/d085/test_signal.py::test_d085_success",
+        "tests/product/m02_completion_28/d085/test_signal.py::test_d085_zero",
+        "tests/product/m02_completion_28/d085/test_signal.py::test_d085_expired",
+        "tests/product/m02_completion_28/d085/test_signal.py::test_d085_wrong_parent",
+        "tests/product/m02_completion_28/d085/test_signal.py::test_d085_receipt_mismatch",
+        "tests/product/m02_completion_28/d085/test_signal.py::test_d085_original_units",
+        "tests/product/m02_completion_28/d085/test_signal.py::test_d085_closed_receipt"
+      ]
+    },
+    {
+      "jurisdiction": "D086",
+      "proof_id": "M02-C28-D086",
+      "leaf": "L09",
+      "ledger_jurisdiction": "existing_proof_obligations",
+      "claim_id": "neutral_market_measurement_truth_d086",
+      "family_id": "m02_option_time_d086",
+      "descriptor_directory": "config/product_proof/m02_option_time_d086",
+      "family_path": "tests/product/m02_completion_28/d086/test_signal.py",
+      "physical_root": "tests/product/m02_completion_28/d086",
+      "own_brief_path": "handoff/m02_completion_28_execution/L07a/D086_IMPLEMENTATION_BRIEF.md",
+      "own_binding_path": "implementation/authority/T01_D086_OPTION_TIME_AUTHORITY_BINDING.yaml",
+      "future_contract_path": "handoff/m02_completion_28_execution/L07a/D086_PROOF_CONTRACT.json",
+      "proposed_case_count": 6,
+      "proposed_nonfungible_ceiling": 6,
+      "authorised_case_count": 0,
+      "execution_release": false,
+      "ordered_case_ids": [
+        "D086-CONTROLLED-SUCCESS",
+        "D086-CONTROLLED-ZERO",
+        "D086-CONTROLLED-REACHED_REFUSAL",
+        "D086-CONTROLLED-DATE-MISMATCH",
+        "D086-CONTROLLED-CONTRACT-MISMATCH",
+        "D086-CONTROLLED-WRONG-PARENT"
+      ],
+      "ordered_nodes": [
+        "tests/product/m02_completion_28/d086/test_signal.py::test_d086_success",
+        "tests/product/m02_completion_28/d086/test_signal.py::test_d086_zero",
+        "tests/product/m02_completion_28/d086/test_signal.py::test_d086_expired",
+        "tests/product/m02_completion_28/d086/test_signal.py::test_d086_date_mismatch",
+        "tests/product/m02_completion_28/d086/test_signal.py::test_d086_contract_mismatch",
+        "tests/product/m02_completion_28/d086/test_signal.py::test_d086_wrong_parent"
+      ]
+    }
+  ],
+  "proposed_exact_nonfungible_ceilings": {
+    "D001": 4,
+    "D003": 3,
+    "D004": 3,
+    "D085": 7,
+    "D086": 6
+  },
+  "total_proposed_physical_cases": 23,
+  "active_authorised_cases": 0,
+  "active_released_cases": 0,
+  "execution_order": [
+    "D001",
+    "D003",
+    "D004",
+    "D085",
+    "D086"
+  ],
+  "physical_cases": [
+    {
+      "family": "D001",
+      "proof_id": "SUP-D001-OPTION",
+      "leaf": "L07b",
+      "case_id": "SUP-D001-OPTION-SUCCESS",
+      "node": "tests/product/m02_completion_28/support/d001-option/test_profile.py::test_d001_success",
+      "kind": "SUCCESS",
+      "specimen": "MAIN",
+      "specimen_sha256": "27e6623df7de7ccfdf7404453aeb09e8ab888789ea890e63c57f9242e181945b",
+      "request_frame": "MAIN",
+      "request_clock": {
+        "as_of_utc": "2026-10-22T19:59:59.125000Z",
+        "knowledge_cutoff_utc": "2026-10-22T20:00:00Z",
+        "calculated_at_utc": "2026-10-22T20:00:01Z"
+      },
+      "actual_parent": null,
+      "expected_stage": "TRUE_INSTANT_UTC_AND_DURABLE_REOPEN",
+      "distinct_proposition_or_mutant": "Required positive actual source offset; receipt differs from event; UTC precision retained.",
+      "oracle_only": {
+        "result": "2026-10-22T19:59:59.125000Z",
+        "expected_target_rows": 1,
+        "ordinary_readonly_reopen": "complete same actual typed payload and history",
+        "replay_at": "2026-10-22T20:00:02Z"
+      },
+      "execution_authorised": false,
+      "execution_release": false,
+      "status": "PROPOSED_NOT_RUN"
+    },
+    {
+      "family": "D001",
+      "proof_id": "SUP-D001-OPTION",
+      "leaf": "L07b",
+      "case_id": "SUP-D001-OPTION-REACHED_REFUSAL",
+      "node": "tests/product/m02_completion_28/support/d001-option/test_profile.py::test_d001_date_only",
+      "kind": "REACHED_REFUSAL",
+      "specimen": "R002_DATE_ONLY",
+      "specimen_sha256": "eaab92206a15385719b62708bc2906844ab3c84dfbe9c5ed4b38b48400b36903",
+      "request_frame": "MAIN",
+      "request_clock": {
+        "as_of_utc": "2026-10-22T19:59:59.125000Z",
+        "knowledge_cutoff_utc": "2026-10-22T20:00:00Z",
+        "calculated_at_utc": "2026-10-22T20:00:01Z"
+      },
+      "actual_parent": null,
+      "expected_stage": "ACTUAL_R002_TEMPORAL_KIND",
+      "distinct_proposition_or_mutant": "Date-only converted to midnight would produce a false instant.",
+      "oracle_only": {
+        "result": null,
+        "expected_target_rows": 0,
+        "ordinary_readonly_reopen": "empty history and no target result; required actual parents remain intact",
+        "replay_at": null
+      },
+      "execution_authorised": false,
+      "execution_release": false,
+      "status": "PROPOSED_NOT_RUN"
+    },
+    {
+      "family": "D001",
+      "proof_id": "SUP-D001-OPTION",
+      "leaf": "L07b",
+      "case_id": "SUP-D001-OPTION-RECEIPT-ONLY",
+      "node": "tests/product/m02_completion_28/support/d001-option/test_profile.py::test_d001_receipt_only",
+      "kind": "REACHED_REFUSAL",
+      "specimen": "R002_RECEIPT_ONLY",
+      "specimen_sha256": "4f09220109f337d8e2f75b027c8621f54fcc3bea59110cf30dd478003e1e73e6",
+      "request_frame": "MAIN",
+      "request_clock": {
+        "as_of_utc": "2026-10-22T19:59:59.125000Z",
+        "knowledge_cutoff_utc": "2026-10-22T20:00:00Z",
+        "calculated_at_utc": "2026-10-22T20:00:01Z"
+      },
+      "actual_parent": null,
+      "expected_stage": "ACTUAL_R002_TEMPORAL_KIND",
+      "distinct_proposition_or_mutant": "Receipt fallback could invent an instant even if date-only refusal is correct.",
+      "oracle_only": {
+        "result": null,
+        "expected_target_rows": 0,
+        "ordinary_readonly_reopen": "empty history and no target result; required actual parents remain intact",
+        "replay_at": null
+      },
+      "execution_authorised": false,
+      "execution_release": false,
+      "status": "PROPOSED_NOT_RUN"
+    },
+    {
+      "family": "D001",
+      "proof_id": "SUP-D001-OPTION",
+      "leaf": "L07b",
+      "case_id": "SUP-D001-OPTION-OFFSET-MISMATCH",
+      "node": "tests/product/m02_completion_28/support/d001-option/test_profile.py::test_d001_offset_mismatch",
+      "kind": "REACHED_REFUSAL",
+      "specimen": "R003_OFFSET_MISMATCH",
+      "specimen_sha256": "9a7fc09821c84af08a1f6c4810559c35c89b4051f0712e7a1aae3ffa0660e349",
+      "request_frame": "MAIN",
+      "request_clock": {
+        "as_of_utc": "2026-10-22T19:59:59.125000Z",
+        "knowledge_cutoff_utc": "2026-10-22T20:00:00Z",
+        "calculated_at_utc": "2026-10-22T20:00:01Z"
+      },
+      "actual_parent": null,
+      "expected_stage": "ACTUAL_R002_R003_OFFSET_AGREEMENT",
+      "distinct_proposition_or_mutant": "Both visible true-instant roles; ignoring supplied offset would emit.",
+      "oracle_only": {
+        "result": null,
+        "expected_target_rows": 0,
+        "ordinary_readonly_reopen": "empty history and no target result; required actual parents remain intact",
+        "replay_at": null
+      },
+      "execution_authorised": false,
+      "execution_release": false,
+      "status": "PROPOSED_NOT_RUN"
+    },
+    {
+      "family": "D003",
+      "proof_id": "SUP-D003-USOPTION",
+      "leaf": "L07a",
+      "case_id": "SUP-D003-USOPTION-SUCCESS",
+      "node": "tests/product/m02_completion_28/support/d003-usoption/test_profile.py::test_d003_success",
+      "kind": "SUCCESS",
+      "specimen": "MAIN",
+      "specimen_sha256": "27e6623df7de7ccfdf7404453aeb09e8ab888789ea890e63c57f9242e181945b",
+      "request_frame": "MAIN",
+      "request_clock": {
+        "as_of_utc": "2026-10-22T19:59:59.125000Z",
+        "knowledge_cutoff_utc": "2026-10-22T20:00:01Z",
+        "calculated_at_utc": "2026-10-22T20:00:02Z"
+      },
+      "actual_parent": {
+        "jurisdiction": "D001",
+        "specimen": "MAIN",
+        "specimen_sha256": "27e6623df7de7ccfdf7404453aeb09e8ab888789ea890e63c57f9242e181945b",
+        "frame": "MAIN",
+        "use_actual_public_producer_and_ordinary_SQLite_reader": true,
+        "recursive_prerequisites_same_source_and_frame": true
+      },
+      "expected_stage": "ACTUAL_D001_IANA_SAME_INSTANT",
+      "distinct_proposition_or_mutant": "New domain, actual R004 receipt metadata, typed aware New York local result and ZoneInfo durable reconstruction.",
+      "oracle_only": {
+        "result": {
+          "local": "2026-10-22T15:59:59.125000-04:00",
+          "iana": "America/New_York",
+          "fold": 0
+        },
+        "expected_target_rows": 1,
+        "ordinary_readonly_reopen": "complete same actual typed payload and history",
+        "replay_at": "2026-10-22T20:00:03Z"
+      },
+      "execution_authorised": false,
+      "execution_release": false,
+      "status": "PROPOSED_NOT_RUN"
+    },
+    {
+      "family": "D003",
+      "proof_id": "SUP-D003-USOPTION",
+      "leaf": "L07a",
+      "case_id": "SUP-D003-USOPTION-FOREIGN-ZONE",
+      "node": "tests/product/m02_completion_28/support/d003-usoption/test_profile.py::test_d003_foreign_zone",
+      "kind": "REACHED_REFUSAL",
+      "specimen": "R004_FOREIGN_ZONE",
+      "specimen_sha256": "4b845538c9b66015b2bda5ec7c76047af656c499b1655f3c0c9e7e6a9ab55c7c",
+      "request_frame": "MAIN",
+      "request_clock": {
+        "as_of_utc": "2026-10-22T19:59:59.125000Z",
+        "knowledge_cutoff_utc": "2026-10-22T20:00:01Z",
+        "calculated_at_utc": "2026-10-22T20:00:02Z"
+      },
+      "actual_parent": {
+        "jurisdiction": "D001",
+        "specimen": "R004_FOREIGN_ZONE",
+        "specimen_sha256": "4b845538c9b66015b2bda5ec7c76047af656c499b1655f3c0c9e7e6a9ab55c7c",
+        "frame": "MAIN",
+        "use_actual_public_producer_and_ordinary_SQLite_reader": true,
+        "recursive_prerequisites_same_source_and_frame": true
+      },
+      "expected_stage": "ACTUAL_R004_ZONE_POLICY",
+      "distinct_proposition_or_mutant": "A valid but unadmitted IANA zone must not replace selected exchange policy.",
+      "oracle_only": {
+        "result": null,
+        "expected_target_rows": 0,
+        "ordinary_readonly_reopen": "empty history and no target result; required actual parents remain intact",
+        "replay_at": null
+      },
+      "execution_authorised": false,
+      "execution_release": false,
+      "status": "PROPOSED_NOT_RUN"
+    },
+    {
+      "family": "D003",
+      "proof_id": "SUP-D003-USOPTION",
+      "leaf": "L07a",
+      "case_id": "SUP-D003-USOPTION-WRONG-PARENT",
+      "node": "tests/product/m02_completion_28/support/d003-usoption/test_profile.py::test_d003_wrong_parent",
+      "kind": "REACHED_REFUSAL",
+      "specimen": "MAIN",
+      "specimen_sha256": "27e6623df7de7ccfdf7404453aeb09e8ab888789ea890e63c57f9242e181945b",
+      "request_frame": "MAIN",
+      "request_clock": {
+        "as_of_utc": "2026-10-22T19:59:59.125000Z",
+        "knowledge_cutoff_utc": "2026-10-22T20:00:01Z",
+        "calculated_at_utc": "2026-10-22T20:00:02Z"
+      },
+      "actual_parent": {
+        "jurisdiction": "D001",
+        "specimen": "EARLIER",
+        "specimen_sha256": "4bd761715d359b60eeb87b222b5e55dce78e3b74f8d79de4ad54d28d0f4dfa90",
+        "frame": "EARLIER",
+        "use_actual_public_producer_and_ordinary_SQLite_reader": true,
+        "recursive_prerequisites_same_source_and_frame": true
+      },
+      "expected_stage": "ACTUAL_PARENT_FRAME_ALIGNMENT",
+      "distinct_proposition_or_mutant": "Actual lawful earlier option D001 (not a forged DTO) is wrong for current sample.",
+      "oracle_only": {
+        "result": null,
+        "expected_target_rows": 0,
+        "ordinary_readonly_reopen": "empty history and no target result; required actual parents remain intact",
+        "replay_at": null
+      },
+      "execution_authorised": false,
+      "execution_release": false,
+      "status": "PROPOSED_NOT_RUN"
+    },
+    {
+      "family": "D004",
+      "proof_id": "SUP-D004-USOPTION",
+      "leaf": "L07a",
+      "case_id": "SUP-D004-USOPTION-SUCCESS",
+      "node": "tests/product/m02_completion_28/support/d004-usoption/test_profile.py::test_d004_success",
+      "kind": "SUCCESS",
+      "specimen": "CROSS_CLOSE",
+      "specimen_sha256": "6693cbfc1d9436eea7e92843c697fa3e593d943d17965fe53f288af965541250",
+      "request_frame": "CROSS_CLOSE",
+      "request_clock": {
+        "as_of_utc": "2026-10-22T19:59:59.875000Z",
+        "knowledge_cutoff_utc": "2026-10-22T20:00:03Z",
+        "calculated_at_utc": "2026-10-22T20:00:04Z"
+      },
+      "actual_parent": {
+        "jurisdiction": "D003",
+        "specimen": "CROSS_CLOSE",
+        "specimen_sha256": "6693cbfc1d9436eea7e92843c697fa3e593d943d17965fe53f288af965541250",
+        "frame": "CROSS_CLOSE",
+        "use_actual_public_producer_and_ordinary_SQLite_reader": true,
+        "recursive_prerequisites_same_source_and_frame": true
+      },
+      "expected_stage": "ACTUAL_D003_COMPLETE_CALENDAR_SESSION",
+      "distinct_proposition_or_mutant": "Actual option D003 and complete R023/R024 schedules; event just before ordinary close, receipt after close. Session assignment must use D003 event, not receipt or calculation time.",
+      "oracle_only": {
+        "result": "2026-10-22",
+        "expected_target_rows": 1,
+        "ordinary_readonly_reopen": "complete same actual typed payload and history",
+        "replay_at": "2026-10-22T20:00:05Z"
+      },
+      "execution_authorised": false,
+      "execution_release": false,
+      "status": "PROPOSED_NOT_RUN"
+    },
+    {
+      "family": "D004",
+      "proof_id": "SUP-D004-USOPTION",
+      "leaf": "L07a",
+      "case_id": "SUP-D004-USOPTION-REACHED_REFUSAL",
+      "node": "tests/product/m02_completion_28/support/d004-usoption/test_profile.py::test_d004_closed_end",
+      "kind": "REACHED_REFUSAL",
+      "specimen": "AT_EXPIRY",
+      "specimen_sha256": "0d230a2cee7a9e2fa5e0c0c630398431785edcf1fbb58e71839e8c0612b48d4b",
+      "request_frame": "AT_EXPIRY",
+      "request_clock": {
+        "as_of_utc": "2026-10-23T17:00:00Z",
+        "knowledge_cutoff_utc": "2026-10-23T17:00:03Z",
+        "calculated_at_utc": "2026-10-23T17:00:04Z"
+      },
+      "actual_parent": {
+        "jurisdiction": "D003",
+        "specimen": "AT_EXPIRY",
+        "specimen_sha256": "0d230a2cee7a9e2fa5e0c0c630398431785edcf1fbb58e71839e8c0612b48d4b",
+        "frame": "AT_EXPIRY",
+        "use_actual_public_producer_and_ordinary_SQLite_reader": true,
+        "recursive_prerequisites_same_source_and_frame": true
+      },
+      "expected_stage": "HALF_OPEN_SESSION_END",
+      "distinct_proposition_or_mutant": "At exact synthetic early-close boundary, both raw schedules and actual D003 are valid but no open interval; civil-date fallback/inclusive close would emit.",
+      "oracle_only": {
+        "result": null,
+        "expected_target_rows": 0,
+        "ordinary_readonly_reopen": "empty history and no target result; required actual parents remain intact",
+        "replay_at": null
+      },
+      "execution_authorised": false,
+      "execution_release": false,
+      "status": "PROPOSED_NOT_RUN"
+    },
+    {
+      "family": "D004",
+      "proof_id": "SUP-D004-USOPTION",
+      "leaf": "L07a",
+      "case_id": "SUP-D004-USOPTION-SCHEDULE-MISMATCH",
+      "node": "tests/product/m02_completion_28/support/d004-usoption/test_profile.py::test_d004_schedule_mismatch",
+      "kind": "REACHED_REFUSAL",
+      "specimen": "R024_SCHEDULE_MISMATCH",
+      "specimen_sha256": "eafb710512107d7dfbca4055e7844de0f98dd9159ee36d3bb227d515f531918e",
+      "request_frame": "MAIN",
+      "request_clock": {
+        "as_of_utc": "2026-10-22T19:59:59.125000Z",
+        "knowledge_cutoff_utc": "2026-10-22T20:00:02Z",
+        "calculated_at_utc": "2026-10-22T20:00:03Z"
+      },
+      "actual_parent": {
+        "jurisdiction": "D003",
+        "specimen": "R024_SCHEDULE_MISMATCH",
+        "specimen_sha256": "eafb710512107d7dfbca4055e7844de0f98dd9159ee36d3bb227d515f531918e",
+        "frame": "MAIN",
+        "use_actual_public_producer_and_ordinary_SQLite_reader": true,
+        "recursive_prerequisites_same_source_and_frame": true
+      },
+      "expected_stage": "ACTUAL_R023_R024_CALENDAR_CONTENT",
+      "distinct_proposition_or_mutant": "R024 changed only early close while selected frame and actual D003 remain lawful; ignoring a schedule role would emit.",
+      "oracle_only": {
+        "result": null,
+        "expected_target_rows": 0,
+        "ordinary_readonly_reopen": "empty history and no target result; required actual parents remain intact",
+        "replay_at": null
+      },
+      "execution_authorised": false,
+      "execution_release": false,
+      "status": "PROPOSED_NOT_RUN"
+    },
+    {
+      "family": "D085",
+      "proof_id": "M02-C28-D085",
+      "leaf": "L08",
+      "case_id": "D085-CONTROLLED-SUCCESS",
+      "node": "tests/product/m02_completion_28/d085/test_signal.py::test_d085_success",
+      "kind": "SUCCESS",
+      "specimen": "MAIN",
+      "specimen_sha256": "27e6623df7de7ccfdf7404453aeb09e8ab888789ea890e63c57f9242e181945b",
+      "request_frame": "MAIN",
+      "request_clock": {
+        "as_of_utc": "2026-10-22T19:59:59.250000Z",
+        "knowledge_cutoff_utc": "2026-10-22T20:00:03Z",
+        "calculated_at_utc": "2026-10-22T20:00:04Z"
+      },
+      "actual_parent": {
+        "jurisdiction": "D004",
+        "specimen": "MAIN",
+        "specimen_sha256": "27e6623df7de7ccfdf7404453aeb09e8ab888789ea890e63c57f9242e181945b",
+        "frame": "MAIN",
+        "use_actual_public_producer_and_ordinary_SQLite_reader": true,
+        "recursive_prerequisites_same_source_and_frame": true
+      },
+      "expected_stage": "CALENDAR_DATE_DIFFERENCE",
+      "distinct_proposition_or_mutant": "Date difference one although exact expiry duration is less than 24 hours; rejects elapsed-duration flooring.",
+      "oracle_only": {
+        "result": 1,
+        "expected_target_rows": 1,
+        "ordinary_readonly_reopen": "complete same actual typed payload and history",
+        "replay_at": "2026-10-22T20:00:05Z"
+      },
+      "execution_authorised": false,
+      "execution_release": false,
+      "status": "PROPOSED_NOT_RUN"
+    },
+    {
+      "family": "D085",
+      "proof_id": "M02-C28-D085",
+      "leaf": "L08",
+      "case_id": "D085-CONTROLLED-ZERO",
+      "node": "tests/product/m02_completion_28/d085/test_signal.py::test_d085_zero",
+      "kind": "SUCCESS",
+      "specimen": "SAME_DAY",
+      "specimen_sha256": "88d31c32e7f14ff17d38e24b76ce3dcdb26ccb6e9d22dc2a378fab522232dd99",
+      "request_frame": "SAME_DAY",
+      "request_clock": {
+        "as_of_utc": "2026-10-23T13:30:00.250000Z",
+        "knowledge_cutoff_utc": "2026-10-23T13:30:04Z",
+        "calculated_at_utc": "2026-10-23T13:30:05Z"
+      },
+      "actual_parent": {
+        "jurisdiction": "D004",
+        "specimen": "SAME_DAY",
+        "specimen_sha256": "88d31c32e7f14ff17d38e24b76ce3dcdb26ccb6e9d22dc2a378fab522232dd99",
+        "frame": "SAME_DAY",
+        "use_actual_public_producer_and_ordinary_SQLite_reader": true,
+        "recursive_prerequisites_same_source_and_frame": true
+      },
+      "expected_stage": "ZERO_CALENDAR_DAY_BOUNDARY",
+      "distinct_proposition_or_mutant": "Same calendar date while open; zero is valid, not negative/strict-positive refusal.",
+      "oracle_only": {
+        "result": 0,
+        "expected_target_rows": 1,
+        "ordinary_readonly_reopen": "complete same actual typed payload and history",
+        "replay_at": null
+      },
+      "execution_authorised": false,
+      "execution_release": false,
+      "status": "PROPOSED_NOT_RUN"
+    },
+    {
+      "family": "D085",
+      "proof_id": "M02-C28-D085",
+      "leaf": "L08",
+      "case_id": "D085-CONTROLLED-REACHED_REFUSAL",
+      "node": "tests/product/m02_completion_28/d085/test_signal.py::test_d085_expired",
+      "kind": "REACHED_REFUSAL",
+      "specimen": "AFTER",
+      "specimen_sha256": "95ca66913970745023a8cd03a16863ad226bec768ec9519a37f5eb4e8f7302f8",
+      "request_frame": "AFTER",
+      "request_clock": {
+        "as_of_utc": "2026-10-26T13:30:00.250000Z",
+        "knowledge_cutoff_utc": "2026-10-26T13:30:04Z",
+        "calculated_at_utc": "2026-10-26T13:30:05Z"
+      },
+      "actual_parent": {
+        "jurisdiction": "D004",
+        "specimen": "AFTER",
+        "specimen_sha256": "95ca66913970745023a8cd03a16863ad226bec768ec9519a37f5eb4e8f7302f8",
+        "frame": "AFTER",
+        "use_actual_public_producer_and_ordinary_SQLite_reader": true,
+        "recursive_prerequisites_same_source_and_frame": true
+      },
+      "expected_stage": "NEGATIVE_LIVE_DTE",
+      "distinct_proposition_or_mutant": "Actual market-session D004 after contract expiry; result would be -3, must refuse instead of clip or emit.",
+      "oracle_only": {
+        "result": null,
+        "expected_target_rows": 0,
+        "ordinary_readonly_reopen": "empty history and no target result; required actual parents remain intact",
+        "replay_at": null
+      },
+      "execution_authorised": false,
+      "execution_release": false,
+      "status": "PROPOSED_NOT_RUN"
+    },
+    {
+      "family": "D085",
+      "proof_id": "M02-C28-D085",
+      "leaf": "L08",
+      "case_id": "D085-CONTROLLED-WRONG-PARENT",
+      "node": "tests/product/m02_completion_28/d085/test_signal.py::test_d085_wrong_parent",
+      "kind": "REACHED_REFUSAL",
+      "specimen": "MAIN",
+      "specimen_sha256": "27e6623df7de7ccfdf7404453aeb09e8ab888789ea890e63c57f9242e181945b",
+      "request_frame": "MAIN",
+      "request_clock": {
+        "as_of_utc": "2026-10-22T19:59:59.250000Z",
+        "knowledge_cutoff_utc": "2026-10-22T20:00:03Z",
+        "calculated_at_utc": "2026-10-22T20:00:04Z"
+      },
+      "actual_parent": {
+        "jurisdiction": "D004",
+        "specimen": "EARLIER",
+        "specimen_sha256": "4bd761715d359b60eeb87b222b5e55dce78e3b74f8d79de4ad54d28d0f4dfa90",
+        "frame": "EARLIER",
+        "use_actual_public_producer_and_ordinary_SQLite_reader": true,
+        "recursive_prerequisites_same_source_and_frame": true
+      },
+      "expected_stage": "ACTUAL_D004_FRAME_ALIGNMENT",
+      "distinct_proposition_or_mutant": "Actual earlier D004 from another lawful frame gives wrong but nonnegative DTE; same contract insufficient.",
+      "oracle_only": {
+        "result": null,
+        "expected_target_rows": 0,
+        "ordinary_readonly_reopen": "empty history and no target result; required actual parents remain intact",
+        "replay_at": null
+      },
+      "execution_authorised": false,
+      "execution_release": false,
+      "status": "PROPOSED_NOT_RUN"
+    },
+    {
+      "family": "D085",
+      "proof_id": "M02-C28-D085",
+      "leaf": "L08",
+      "case_id": "D085-CONTROLLED-RECEIPT-MISMATCH",
+      "node": "tests/product/m02_completion_28/d085/test_signal.py::test_d085_receipt_mismatch",
+      "kind": "REACHED_REFUSAL",
+      "specimen": "R001_VALUE_MISMATCH",
+      "specimen_sha256": "f6de2265a8977078d12d9ce31cfb980cdbbe2301b557bff38f7d4a77ba5d4fdc",
+      "request_frame": "MAIN",
+      "request_clock": {
+        "as_of_utc": "2026-10-22T19:59:59.250000Z",
+        "knowledge_cutoff_utc": "2026-10-22T20:00:03Z",
+        "calculated_at_utc": "2026-10-22T20:00:04Z"
+      },
+      "actual_parent": {
+        "jurisdiction": "D004",
+        "specimen": "R001_VALUE_MISMATCH",
+        "specimen_sha256": "f6de2265a8977078d12d9ce31cfb980cdbbe2301b557bff38f7d4a77ba5d4fdc",
+        "frame": "MAIN",
+        "use_actual_public_producer_and_ordinary_SQLite_reader": true,
+        "recursive_prerequisites_same_source_and_frame": true
+      },
+      "expected_stage": "ACTUAL_COLLECTOR_RECEIPT_AGREEMENT",
+      "distinct_proposition_or_mutant": "R001 projection text differs from actual collector receipt while date/session still same; ignoring R001 could emit.",
+      "oracle_only": {
+        "result": null,
+        "expected_target_rows": 0,
+        "ordinary_readonly_reopen": "empty history and no target result; required actual parents remain intact",
+        "replay_at": null
+      },
+      "execution_authorised": false,
+      "execution_release": false,
+      "status": "PROPOSED_NOT_RUN"
+    },
+    {
+      "family": "D085",
+      "proof_id": "M02-C28-D085",
+      "leaf": "L08",
+      "case_id": "D085-CONTROLLED-ORIGINAL-UNITS",
+      "node": "tests/product/m02_completion_28/d085/test_signal.py::test_d085_original_units",
+      "kind": "REACHED_REFUSAL",
+      "specimen": "R013_ORIGINAL_UNITS",
+      "specimen_sha256": "49870715fa1ec4af527d6992963969db782bd525f2072b9d700f55bca5746f5a",
+      "request_frame": "MAIN",
+      "request_clock": {
+        "as_of_utc": "2026-10-22T19:59:59.250000Z",
+        "knowledge_cutoff_utc": "2026-10-22T20:00:03Z",
+        "calculated_at_utc": "2026-10-22T20:00:04Z"
+      },
+      "actual_parent": {
+        "jurisdiction": "D004",
+        "specimen": "R013_ORIGINAL_UNITS",
+        "specimen_sha256": "49870715fa1ec4af527d6992963969db782bd525f2072b9d700f55bca5746f5a",
+        "frame": "MAIN",
+        "use_actual_public_producer_and_ordinary_SQLite_reader": true,
+        "recursive_prerequisites_same_source_and_frame": true
+      },
+      "expected_stage": "ACTUAL_R013_NATIVE_UNITS",
+      "distinct_proposition_or_mutant": "Projection still labels date_string; actual original units wrong. Mapping-label-only validation would emit.",
+      "oracle_only": {
+        "result": null,
+        "expected_target_rows": 0,
+        "ordinary_readonly_reopen": "empty history and no target result; required actual parents remain intact",
+        "replay_at": null
+      },
+      "execution_authorised": false,
+      "execution_release": false,
+      "status": "PROPOSED_NOT_RUN"
+    },
+    {
+      "family": "D085",
+      "proof_id": "M02-C28-D085",
+      "leaf": "L08",
+      "case_id": "D085-CONTROLLED-CLOSED-RECEIPT",
+      "node": "tests/product/m02_completion_28/d085/test_signal.py::test_d085_closed_receipt",
+      "kind": "REACHED_REFUSAL",
+      "specimen": "CROSS_CLOSE",
+      "specimen_sha256": "6693cbfc1d9436eea7e92843c697fa3e593d943d17965fe53f288af965541250",
+      "request_frame": "CROSS_CLOSE",
+      "request_clock": {
+        "as_of_utc": "2026-10-22T20:00:00.125000Z",
+        "knowledge_cutoff_utc": "2026-10-22T20:00:04Z",
+        "calculated_at_utc": "2026-10-22T20:00:05Z"
+      },
+      "actual_parent": {
+        "jurisdiction": "D004",
+        "specimen": "CROSS_CLOSE",
+        "specimen_sha256": "6693cbfc1d9436eea7e92843c697fa3e593d943d17965fe53f288af965541250",
+        "frame": "CROSS_CLOSE",
+        "use_actual_public_producer_and_ordinary_SQLite_reader": true,
+        "recursive_prerequisites_same_source_and_frame": true
+      },
+      "expected_stage": "ACTUAL_RECEIPT_SESSION_ALIGNMENT",
+      "distinct_proposition_or_mutant": "Actual D004 is lawful for the event before close and R001 is exact, but the collector decision receipt is in the explicitly closed interval; event-date-only substitution would emit.",
+      "oracle_only": {
+        "result": null,
+        "expected_target_rows": 0,
+        "ordinary_readonly_reopen": "empty history and no target result; required actual parents remain intact",
+        "replay_at": null
+      },
+      "execution_authorised": false,
+      "execution_release": false,
+      "status": "PROPOSED_NOT_RUN"
+    },
+    {
+      "family": "D086",
+      "proof_id": "M02-C28-D086",
+      "leaf": "L09",
+      "case_id": "D086-CONTROLLED-SUCCESS",
+      "node": "tests/product/m02_completion_28/d086/test_signal.py::test_d086_success",
+      "kind": "SUCCESS",
+      "specimen": "MAIN",
+      "specimen_sha256": "27e6623df7de7ccfdf7404453aeb09e8ab888789ea890e63c57f9242e181945b",
+      "request_frame": "MAIN",
+      "request_clock": {
+        "as_of_utc": "2026-10-22T19:59:59.125000Z",
+        "knowledge_cutoff_utc": "2026-10-22T20:00:01Z",
+        "calculated_at_utc": "2026-10-22T20:00:04Z"
+      },
+      "actual_parent": {
+        "jurisdiction": "D001",
+        "specimen": "MAIN",
+        "specimen_sha256": "27e6623df7de7ccfdf7404453aeb09e8ab888789ea890e63c57f9242e181945b",
+        "frame": "MAIN",
+        "use_actual_public_producer_and_ordinary_SQLite_reader": true,
+        "recursive_prerequisites_same_source_and_frame": true
+      },
+      "expected_stage": "EXACT_ACT365F_CONFIGURED_EXPIRY",
+      "distinct_proposition_or_mutant": "Actual D001, date metadata and explicit early-close expiry instant; nonintegral seconds/year fraction rejects civil midnight, fixed regular close, rounded days and float shortcuts.",
+      "oracle_only": {
+        "result": [
+          604807,
+          252288000
+        ],
+        "expected_target_rows": 1,
+        "ordinary_readonly_reopen": "complete same actual typed payload and history",
+        "replay_at": "2026-10-22T20:00:05Z"
+      },
+      "execution_authorised": false,
+      "execution_release": false,
+      "status": "PROPOSED_NOT_RUN"
+    },
+    {
+      "family": "D086",
+      "proof_id": "M02-C28-D086",
+      "leaf": "L09",
+      "case_id": "D086-CONTROLLED-ZERO",
+      "node": "tests/product/m02_completion_28/d086/test_signal.py::test_d086_zero",
+      "kind": "SUCCESS",
+      "specimen": "AT_EXPIRY",
+      "specimen_sha256": "0d230a2cee7a9e2fa5e0c0c630398431785edcf1fbb58e71839e8c0612b48d4b",
+      "request_frame": "AT_EXPIRY",
+      "request_clock": {
+        "as_of_utc": "2026-10-23T17:00:00Z",
+        "knowledge_cutoff_utc": "2026-10-23T17:00:02Z",
+        "calculated_at_utc": "2026-10-23T17:00:05Z"
+      },
+      "actual_parent": {
+        "jurisdiction": "D001",
+        "specimen": "AT_EXPIRY",
+        "specimen_sha256": "0d230a2cee7a9e2fa5e0c0c630398431785edcf1fbb58e71839e8c0612b48d4b",
+        "frame": "AT_EXPIRY",
+        "use_actual_public_producer_and_ordinary_SQLite_reader": true,
+        "recursive_prerequisites_same_source_and_frame": true
+      },
+      "expected_stage": "ZERO_EXACT_EXPIRY_BOUNDARY",
+      "distinct_proposition_or_mutant": "At configured expiry instant exact ratio 0/1; D004 is not a D086 dependency.",
+      "oracle_only": {
+        "result": [
+          0,
+          1
+        ],
+        "expected_target_rows": 1,
+        "ordinary_readonly_reopen": "complete same actual typed payload and history",
+        "replay_at": null
+      },
+      "execution_authorised": false,
+      "execution_release": false,
+      "status": "PROPOSED_NOT_RUN"
+    },
+    {
+      "family": "D086",
+      "proof_id": "M02-C28-D086",
+      "leaf": "L09",
+      "case_id": "D086-CONTROLLED-REACHED_REFUSAL",
+      "node": "tests/product/m02_completion_28/d086/test_signal.py::test_d086_expired",
+      "kind": "REACHED_REFUSAL",
+      "specimen": "AFTER",
+      "specimen_sha256": "95ca66913970745023a8cd03a16863ad226bec768ec9519a37f5eb4e8f7302f8",
+      "request_frame": "AFTER",
+      "request_clock": {
+        "as_of_utc": "2026-10-26T13:30:00.125000Z",
+        "knowledge_cutoff_utc": "2026-10-26T13:30:02Z",
+        "calculated_at_utc": "2026-10-26T13:30:05Z"
+      },
+      "actual_parent": {
+        "jurisdiction": "D001",
+        "specimen": "AFTER",
+        "specimen_sha256": "95ca66913970745023a8cd03a16863ad226bec768ec9519a37f5eb4e8f7302f8",
+        "frame": "AFTER",
+        "use_actual_public_producer_and_ordinary_SQLite_reader": true,
+        "recursive_prerequisites_same_source_and_frame": true
+      },
+      "expected_stage": "NEGATIVE_ACTUAL_ELAPSED",
+      "distinct_proposition_or_mutant": "Actual D001 after explicit expiry; negative maturity must refuse, not clamp.",
+      "oracle_only": {
+        "result": null,
+        "expected_target_rows": 0,
+        "ordinary_readonly_reopen": "empty history and no target result; required actual parents remain intact",
+        "replay_at": null
+      },
+      "execution_authorised": false,
+      "execution_release": false,
+      "status": "PROPOSED_NOT_RUN"
+    },
+    {
+      "family": "D086",
+      "proof_id": "M02-C28-D086",
+      "leaf": "L09",
+      "case_id": "D086-CONTROLLED-DATE-MISMATCH",
+      "node": "tests/product/m02_completion_28/d086/test_signal.py::test_d086_date_mismatch",
+      "kind": "REACHED_REFUSAL",
+      "specimen": "R013_DATE_MISMATCH",
+      "specimen_sha256": "617f14f0dbcefa8e9a2c9d701f819038adea5507a22947f42bd28ada8ccd8a5c",
+      "request_frame": "MAIN",
+      "request_clock": {
+        "as_of_utc": "2026-10-22T19:59:59.125000Z",
+        "knowledge_cutoff_utc": "2026-10-22T20:00:01Z",
+        "calculated_at_utc": "2026-10-22T20:00:04Z"
+      },
+      "actual_parent": {
+        "jurisdiction": "D001",
+        "specimen": "R013_DATE_MISMATCH",
+        "specimen_sha256": "617f14f0dbcefa8e9a2c9d701f819038adea5507a22947f42bd28ada8ccd8a5c",
+        "frame": "MAIN",
+        "use_actual_public_producer_and_ordinary_SQLite_reader": true,
+        "recursive_prerequisites_same_source_and_frame": true
+      },
+      "expected_stage": "ACTUAL_R013_DATE_POLICY_JOIN",
+      "distinct_proposition_or_mutant": "Visible well-formed different expiry date; fixed configured instant alone cannot override actual metadata.",
+      "oracle_only": {
+        "result": null,
+        "expected_target_rows": 0,
+        "ordinary_readonly_reopen": "empty history and no target result; required actual parents remain intact",
+        "replay_at": null
+      },
+      "execution_authorised": false,
+      "execution_release": false,
+      "status": "PROPOSED_NOT_RUN"
+    },
+    {
+      "family": "D086",
+      "proof_id": "M02-C28-D086",
+      "leaf": "L09",
+      "case_id": "D086-CONTROLLED-CONTRACT-MISMATCH",
+      "node": "tests/product/m02_completion_28/d086/test_signal.py::test_d086_contract_mismatch",
+      "kind": "REACHED_REFUSAL",
+      "specimen": "R013_CONTRACT_MISMATCH",
+      "specimen_sha256": "f3becd0b51a44ff204cdc453526e782148abb993b4df8e655079440089532fbc",
+      "request_frame": "MAIN",
+      "request_clock": {
+        "as_of_utc": "2026-10-22T19:59:59.125000Z",
+        "knowledge_cutoff_utc": "2026-10-22T20:00:01Z",
+        "calculated_at_utc": "2026-10-22T20:00:04Z"
+      },
+      "actual_parent": {
+        "jurisdiction": "D001",
+        "specimen": "R013_CONTRACT_MISMATCH",
+        "specimen_sha256": "f3becd0b51a44ff204cdc453526e782148abb993b4df8e655079440089532fbc",
+        "frame": "MAIN",
+        "use_actual_public_producer_and_ordinary_SQLite_reader": true,
+        "recursive_prerequisites_same_source_and_frame": true
+      },
+      "expected_stage": "ACTUAL_R013_CONTRACT_IDENTITY",
+      "distinct_proposition_or_mutant": "Visible original native contract is put C2 but outer subject and expiry date equal C1; date-only identity comparison would emit.",
+      "oracle_only": {
+        "result": null,
+        "expected_target_rows": 0,
+        "ordinary_readonly_reopen": "empty history and no target result; required actual parents remain intact",
+        "replay_at": null
+      },
+      "execution_authorised": false,
+      "execution_release": false,
+      "status": "PROPOSED_NOT_RUN"
+    },
+    {
+      "family": "D086",
+      "proof_id": "M02-C28-D086",
+      "leaf": "L09",
+      "case_id": "D086-CONTROLLED-WRONG-PARENT",
+      "node": "tests/product/m02_completion_28/d086/test_signal.py::test_d086_wrong_parent",
+      "kind": "REACHED_REFUSAL",
+      "specimen": "MAIN",
+      "specimen_sha256": "27e6623df7de7ccfdf7404453aeb09e8ab888789ea890e63c57f9242e181945b",
+      "request_frame": "MAIN",
+      "request_clock": {
+        "as_of_utc": "2026-10-22T19:59:59.125000Z",
+        "knowledge_cutoff_utc": "2026-10-22T20:00:01Z",
+        "calculated_at_utc": "2026-10-22T20:00:04Z"
+      },
+      "actual_parent": {
+        "jurisdiction": "D001",
+        "specimen": "EARLIER",
+        "specimen_sha256": "4bd761715d359b60eeb87b222b5e55dce78e3b74f8d79de4ad54d28d0f4dfa90",
+        "frame": "EARLIER",
+        "use_actual_public_producer_and_ordinary_SQLite_reader": true,
+        "recursive_prerequisites_same_source_and_frame": true
+      },
+      "expected_stage": "ACTUAL_D001_FRAME_ALIGNMENT",
+      "distinct_proposition_or_mutant": "Actual earlier D001 from separate lawful store yields positive but wrong year fraction.",
+      "oracle_only": {
+        "result": null,
+        "expected_target_rows": 0,
+        "ordinary_readonly_reopen": "empty history and no target result; required actual parents remain intact",
+        "replay_at": null
+      },
+      "execution_authorised": false,
+      "execution_release": false,
+      "status": "PROPOSED_NOT_RUN"
+    }
+  ],
+  "source_policy_and_specimens": {
+    "path": "handoff/m02_completion_28_execution/L07a/OPTION_TIME_SOURCE_POLICY_AND_SPECIMENS_PROPOSED_20261127.json",
+    "sha256": "14a3ba2308f519d90d11eb450ac484a2c922507b7e04041c740297527a1d847a",
+    "bytes": 275539
+  }
+}
