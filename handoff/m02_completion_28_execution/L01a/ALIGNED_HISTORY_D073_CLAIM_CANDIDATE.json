@@ -1,0 +1,9 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_l01a_d073_history",
+  "brief_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D073_IMPLEMENTATION_BRIEF.md",
+  "binding_path": "implementation/authority/T01_ALIGNED_HISTORY_D073_AUTHORITY_BINDING.yaml",
+  "contract_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D073_PROOF_CONTRACT.json",
+  "physical_root": "tests/product/m02_completion_28/support/d073-history",
+  "admission_path": "config/product_proof/m02_aligned_history_d073/admission.json"
+}

@@ -1,0 +1,102 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_l01a_d075_history",
+  "semantic_brief_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D075_IMPLEMENTATION_BRIEF.md",
+  "target": {
+    "category": "M",
+    "responsibility_name": "neutral_market_measurement_truth",
+    "package": "nvda_desk.market_measurement_truth",
+    "public_seam": "nvda_desk.market_measurement_truth.api",
+    "intent": "modify",
+    "existing_object_id": "M02"
+  },
+  "proof_axis": "product",
+  "product_tier_treatment": "NOT_CLASSIFIED",
+  "architecture_proof_axis": "architecture_kernel",
+  "required_proof_ids": [
+    "SUP-D075-HISTORY"
+  ],
+  "families": [
+    {
+      "id": "m02_l01a_aligned_history_d075",
+      "path": "tests/product/m02_completion_28/support/d075-history/test_profile.py",
+      "proof_obligation_ids": [
+        "SUP-D075-HISTORY"
+      ],
+      "required_test_names": [
+        "test_d075_history_success",
+        "test_d075_original_units"
+      ],
+      "boundary": "Exact two owner-admitted controlled history cases; no additional cases or product execution release.",
+      "proof_levels": [
+        "CONTRACT",
+        "INTEGRATION",
+        "STATE",
+        "REPLAY"
+      ],
+      "authoritative_inputs": [
+        "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_SOURCE_POLICY_PROPOSED_20261126.json SHA256 9ba56098c273007980c893db39931ac86e7a3185bbb665f8c3f1e14f99b72af1",
+        "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_FINITE_SPECIMENS_PROPOSED_20261126.json SHA256 bb03481de75e1820c7aff61777a4a3aa4f676440ec03e373a05c032a0417c76d",
+        "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_JOINT_FIT_FINITE_CASES_PROPOSED_20261126.json SHA256 3be150f2998b4187a81720b424c848099edeba7a9f638ae90d9aae95d4c5d5c1",
+        "handoff/m02_completion_28_execution/OWNER_CONSOLIDATED_64_CONDITIONAL_EXECUTION_GRANT_20261127.json SHA256 6a71f52981fc01da42f9c27726547d0d1ddd69851561479a007aeb30ebd95a41",
+        "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D075_IMPLEMENTATION_BRIEF.md SHA256 24ec8f08faf1a61059cee69b8c675767345809ae6a0dd90ab852a2fc30977750",
+        "implementation/authority/T01_ALIGNED_HISTORY_D075_AUTHORITY_BINDING.yaml SHA256 50120c02327ed212e8821ac3795d4f64daa3e38d77ecd5c92c7b20f6a2ba8c3f"
+      ],
+      "dependency_substitutions": [
+        "None: actual sealed M00 public original admission, getter, projection and bounded history. No fake reader or derived parent."
+      ],
+      "case_coverage": {
+        "lawful_positive": {
+          "cases": [
+            "SUP-D075-HISTORY-SUCCESS"
+          ]
+        },
+        "prohibited_false_positive": {
+          "cases": [
+            "SUP-D075-HISTORY-REACHED_REFUSAL"
+          ]
+        },
+        "missing_mandatory_authority": {
+          "cases": [
+            "SUP-D075-HISTORY-REACHED_REFUSAL"
+          ]
+        },
+        "lawful_optional_absence": {
+          "cases": [
+            "SUP-D075-HISTORY-SUCCESS: exact optional original absence and no derived predecessor."
+          ]
+        }
+      },
+      "expected_failure_signals": [
+        "original native units mismatch must refuse without S3 output; other seven lawful frames retained.",
+        "Positive exact canonical Decimal, full metadata and lineage, bounded history, ordinary read-only reopen and immutable replay."
+      ],
+      "limitations": [
+        "Controlled synthetic profile only.",
+        "Exactly two cases; execution held pending independent review, immutable registration and sole strict Tester release."
+      ],
+      "adjacent_nonclaims": [
+        "No downstream relative or fit work.",
+        "No alteration or rerun of existing evidence."
+      ],
+      "environment": "Separate designated strict Tester must independently qualify exact receiver, candidate, CPython 3.13.5, SQLite 3.54.1, dependencies, runner and pre-call guard before any release.",
+      "material_versions": [
+        "T01-L01A-ALIGNED-HISTORY/1",
+        "T01-D075-ALIGNED-HISTORY-DEF-V1",
+        "Exact reviewed own brief, installed binding and finite inventory; future immutable registration."
+      ],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/m02_completion_28/support/d075-history/test_profile.py"
+    }
+  ],
+  "required_support_files": [],
+  "optional_support_files": [],
+  "execution_policy": {
+    "skipped_tests": "FAIL",
+    "xfailed_tests": "FAIL",
+    "xpassed_tests": "FAIL",
+    "collection_failed": "FAIL",
+    "no_tests_collected": "FAIL",
+    "unexpected_governed_mutation": "FAIL"
+  }
+}
