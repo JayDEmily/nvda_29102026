@@ -46,7 +46,7 @@
         "L00"
       ],
       "obligation": "Bind actual public D071/D075/D076/D077 history producers, aligned sample/window/knowledge cutoffs, current exclusion, rank/conditioning and exact output codec. One fixed historical observation is insufficient for rolling history. Keep one OLS-with-intercept model, common immutable fit/intercept/sample identity and M02 neutral ownership. Prepare correlated full-rank exact synthetic success data which distinguish joint from separate univariate fits, an informative nonzero held-out residual, a concrete deficient-rank history and a per-coefficient mixed-fit refusal. Existing 64 orthogonal rows remain valid example arithmetic only. Admit/prove necessary history profiles separately; never inject expected D outputs as raw/configuration facts.",
-      "status": "PROPOSED_NOT_ATTEMPTED",
+      "status": "OWNER_POLICY_ADOPTED_FINITE_ADMITTED_EXECUTION_HELD_BINDING_REVIEW_PENDING",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G1_AFTER_L06",
@@ -54,7 +54,157 @@
         "G1_AFTER_L06",
         "G1_AFTER_L06"
       ],
-      "acceptance": "Independent documentary source clearance; product acceptance requires admitted cases and accepted parent proofs"
+      "acceptance": "Independent documentary source clearance; product acceptance requires admitted cases and accepted parent proofs",
+      "acceptance_evidence": {
+        "owner_decision_path": "handoff/m02_completion_28_execution/OWNER_CONSOLIDATED_64_CONDITIONAL_EXECUTION_GRANT_20261127.json",
+        "owner_decision_sha256": "6a71f52981fc01da42f9c27726547d0d1ddd69851561479a007aeb30ebd95a41",
+        "independent_policy_finite_verdict": {
+          "commit": "1190b50d43755ffd71629d11ba1846894a113771",
+          "tree": "6899f27e39e5c34aa626be0f419da1041edf5926",
+          "branch": "review/pm-l01a-aligned-history-policy-finite34-r1-20261126",
+          "disposition": "ACCEPT_EXACT_ALIGNED_HISTORY_JOINT_FIT_POLICY_AND_FINITE34_FOR_OWNER_DECISION",
+          "path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_ALIGNED_HISTORY_JOINT_FIT_POLICY_FINITE34_R1_VERDICT_20261126.md",
+          "sha256": "fddeb50391f51afeccb339798c88e8b756768308a6111275d109a1bd2463dc8e",
+          "git_blob": "466a0398f26d9802ade17c7f9fbe91991bd7af96",
+          "bytes": 14966
+        },
+        "adopted_policy": {
+          "path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_SOURCE_POLICY_PROPOSED_20261126.json",
+          "sha256": "9ba56098c273007980c893db39931ac86e7a3185bbb665f8c3f1e14f99b72af1",
+          "git_blob": "c6c22bec5df9e0250058472516b9f178dc46acca",
+          "bytes": 52451
+        },
+        "exact_allocations": [
+          {
+            "proof_id": "SUP-D071-HISTORY",
+            "count": 2,
+            "review_commit": "1190b50d43755ffd71629d11ba1846894a113771"
+          },
+          {
+            "proof_id": "SUP-D072-HISTORY",
+            "count": 2,
+            "review_commit": "1190b50d43755ffd71629d11ba1846894a113771"
+          },
+          {
+            "proof_id": "SUP-D073-HISTORY",
+            "count": 2,
+            "review_commit": "1190b50d43755ffd71629d11ba1846894a113771"
+          },
+          {
+            "proof_id": "SUP-D074-HISTORY",
+            "count": 2,
+            "review_commit": "1190b50d43755ffd71629d11ba1846894a113771"
+          },
+          {
+            "proof_id": "SUP-D075-HISTORY",
+            "count": 2,
+            "review_commit": "1190b50d43755ffd71629d11ba1846894a113771"
+          },
+          {
+            "proof_id": "SUP-D076-HISTORY",
+            "count": 2,
+            "review_commit": "1190b50d43755ffd71629d11ba1846894a113771"
+          },
+          {
+            "proof_id": "SUP-D077-HISTORY",
+            "count": 3,
+            "review_commit": "1190b50d43755ffd71629d11ba1846894a113771"
+          }
+        ],
+        "execution_release": false,
+        "product_status": "NOT_ATTEMPTED",
+        "first_unmet_invariant": "Exact own implementation-authority binding and admission reconciliation independently verified before installation; authoring and all later gates held.",
+        "tester_designation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
+        "tester_status": "CANDIDATE_SPECIFIC_INTAKE_REQUIRED",
+        "scope": "Controlled synthetic only; no official/native certification or new product acceptance",
+        "first_stage_inactive_bindings": [
+          {
+            "jurisdiction": "D071",
+            "proof_id": "SUP-D071-HISTORY",
+            "case_count": 2,
+            "brief": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D071_IMPLEMENTATION_BRIEF.md",
+            "brief_sha256": "65f2d0f9135f291773ab6081ec76892a967315df3ecb9c1760a4e2687a296e5e",
+            "inactive_binding": "handoff/m02_completion_28_execution/L01a/T01_ALIGNED_HISTORY_D071_AUTHORITY_BINDING_CANDIDATE.yaml",
+            "binding_sha256": "30cbb5fe2f8a1b720bc58b55b05f3c88b736401f03d03199404444b60330dc03",
+            "active_path": "implementation/authority/T01_ALIGNED_HISTORY_D071_AUTHORITY_BINDING.yaml",
+            "allowed_product_paths": [
+              "src/nvda_desk/market_measurement_truth/api.py",
+              "src/nvda_desk/market_measurement_truth/_aligned_history_source.py",
+              "src/nvda_desk/market_measurement_truth/_aligned_history_returns.py",
+              "src/nvda_desk/market_measurement_truth/_aligned_history_codec.py",
+              "tools/product_proof_claims.py"
+            ]
+          },
+          {
+            "jurisdiction": "D072",
+            "proof_id": "SUP-D072-HISTORY",
+            "case_count": 2,
+            "brief": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D072_IMPLEMENTATION_BRIEF.md",
+            "brief_sha256": "4f8214d1ca11eaf0769206f3f322c799f44883bd266e63748e937dea5602b739",
+            "inactive_binding": "handoff/m02_completion_28_execution/L01a/T01_ALIGNED_HISTORY_D072_AUTHORITY_BINDING_CANDIDATE.yaml",
+            "binding_sha256": "637ff9b90b916ee69ee956db28e191ef86be3764ce2004b5fc24e371fa5869df",
+            "active_path": "implementation/authority/T01_ALIGNED_HISTORY_D072_AUTHORITY_BINDING.yaml",
+            "allowed_product_paths": [
+              "src/nvda_desk/market_measurement_truth/api.py",
+              "src/nvda_desk/market_measurement_truth/_aligned_history_source.py",
+              "src/nvda_desk/market_measurement_truth/_aligned_history_returns.py",
+              "src/nvda_desk/market_measurement_truth/_aligned_history_codec.py",
+              "tools/product_proof_claims.py"
+            ]
+          },
+          {
+            "jurisdiction": "D073",
+            "proof_id": "SUP-D073-HISTORY",
+            "case_count": 2,
+            "brief": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D073_IMPLEMENTATION_BRIEF.md",
+            "brief_sha256": "a7234477d581e6cba27e470919fa092c4ed5054d5a1aa31d2019d8fa94d16f48",
+            "inactive_binding": "handoff/m02_completion_28_execution/L01a/T01_ALIGNED_HISTORY_D073_AUTHORITY_BINDING_CANDIDATE.yaml",
+            "binding_sha256": "867444cecdf23c191269b1b3856410cc1ee6e3b81b8730dafa6d6528b78d6e0a",
+            "active_path": "implementation/authority/T01_ALIGNED_HISTORY_D073_AUTHORITY_BINDING.yaml",
+            "allowed_product_paths": [
+              "src/nvda_desk/market_measurement_truth/api.py",
+              "src/nvda_desk/market_measurement_truth/_aligned_history_source.py",
+              "src/nvda_desk/market_measurement_truth/_aligned_history_returns.py",
+              "src/nvda_desk/market_measurement_truth/_aligned_history_codec.py",
+              "tools/product_proof_claims.py"
+            ]
+          },
+          {
+            "jurisdiction": "D074",
+            "proof_id": "SUP-D074-HISTORY",
+            "case_count": 2,
+            "brief": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D074_IMPLEMENTATION_BRIEF.md",
+            "brief_sha256": "524b2d2a4aa94a0c1c55ea376650d14648af67c46e73763ce3e8cc0f2e9e0c0e",
+            "inactive_binding": "handoff/m02_completion_28_execution/L01a/T01_ALIGNED_HISTORY_D074_AUTHORITY_BINDING_CANDIDATE.yaml",
+            "binding_sha256": "f2a2208a73d291e614577eaf2b81ffd13d699c4efbc2eeeb6258569ac8aa1c34",
+            "active_path": "implementation/authority/T01_ALIGNED_HISTORY_D074_AUTHORITY_BINDING.yaml",
+            "allowed_product_paths": [
+              "src/nvda_desk/market_measurement_truth/api.py",
+              "src/nvda_desk/market_measurement_truth/_aligned_history_source.py",
+              "src/nvda_desk/market_measurement_truth/_aligned_history_returns.py",
+              "src/nvda_desk/market_measurement_truth/_aligned_history_codec.py",
+              "tools/product_proof_claims.py"
+            ]
+          },
+          {
+            "jurisdiction": "D075",
+            "proof_id": "SUP-D075-HISTORY",
+            "case_count": 2,
+            "brief": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D075_IMPLEMENTATION_BRIEF.md",
+            "brief_sha256": "24ec8f08faf1a61059cee69b8c675767345809ae6a0dd90ab852a2fc30977750",
+            "inactive_binding": "handoff/m02_completion_28_execution/L01a/T01_ALIGNED_HISTORY_D075_AUTHORITY_BINDING_CANDIDATE.yaml",
+            "binding_sha256": "50120c02327ed212e8821ac3795d4f64daa3e38d77ecd5c92c7b20f6a2ba8c3f",
+            "active_path": "implementation/authority/T01_ALIGNED_HISTORY_D075_AUTHORITY_BINDING.yaml",
+            "allowed_product_paths": [
+              "src/nvda_desk/market_measurement_truth/api.py",
+              "src/nvda_desk/market_measurement_truth/_aligned_history_source.py",
+              "src/nvda_desk/market_measurement_truth/_aligned_history_returns.py",
+              "src/nvda_desk/market_measurement_truth/_aligned_history_codec.py",
+              "tools/product_proof_claims.py"
+            ]
+          }
+        ]
+      }
     },
     {
       "leaf": "L01b",
@@ -121,14 +271,57 @@
         "L01a"
       ],
       "obligation": "Fit D075=alpha+beta_market*D071+beta_tech*D076+beta_semi*D077+epsilon jointly by OLS with intercept. Publish three actual coefficient occurrences with common immutable sample, fit, intercept and numerical/profile lineage. Prove rank refusal after lawful history ingress. Correlated success data must discriminate the mandated joint fit. Six proposed cases total: one success/refusal pair per D identity; shared setup does not permit three inconsistent fits.",
-      "status": "PROPOSED_NOT_ATTEMPTED",
+      "status": "OWNER_POLICY_ADOPTED_FINITE_ADMITTED_EXECUTION_HELD_BINDING_REVIEW_PENDING",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G1_AFTER_L06",
         "G1_AFTER_L06",
         "G1_AFTER_L06"
       ],
-      "acceptance": "Independent documentary source clearance; product acceptance requires admitted cases and accepted parent proofs"
+      "acceptance": "Independent documentary source clearance; product acceptance requires admitted cases and accepted parent proofs",
+      "acceptance_evidence": {
+        "owner_decision_path": "handoff/m02_completion_28_execution/OWNER_CONSOLIDATED_64_CONDITIONAL_EXECUTION_GRANT_20261127.json",
+        "owner_decision_sha256": "6a71f52981fc01da42f9c27726547d0d1ddd69851561479a007aeb30ebd95a41",
+        "independent_policy_finite_verdict": {
+          "commit": "1190b50d43755ffd71629d11ba1846894a113771",
+          "tree": "6899f27e39e5c34aa626be0f419da1041edf5926",
+          "branch": "review/pm-l01a-aligned-history-policy-finite34-r1-20261126",
+          "disposition": "ACCEPT_EXACT_ALIGNED_HISTORY_JOINT_FIT_POLICY_AND_FINITE34_FOR_OWNER_DECISION",
+          "path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_ALIGNED_HISTORY_JOINT_FIT_POLICY_FINITE34_R1_VERDICT_20261126.md",
+          "sha256": "fddeb50391f51afeccb339798c88e8b756768308a6111275d109a1bd2463dc8e",
+          "git_blob": "466a0398f26d9802ade17c7f9fbe91991bd7af96",
+          "bytes": 14966
+        },
+        "adopted_policy": {
+          "path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_SOURCE_POLICY_PROPOSED_20261126.json",
+          "sha256": "9ba56098c273007980c893db39931ac86e7a3185bbb665f8c3f1e14f99b72af1",
+          "git_blob": "c6c22bec5df9e0250058472516b9f178dc46acca",
+          "bytes": 52451
+        },
+        "exact_allocations": [
+          {
+            "proof_id": "M02-C28-D079",
+            "count": 6,
+            "review_commit": "1190b50d43755ffd71629d11ba1846894a113771"
+          },
+          {
+            "proof_id": "M02-C28-D080",
+            "count": 5,
+            "review_commit": "1190b50d43755ffd71629d11ba1846894a113771"
+          },
+          {
+            "proof_id": "M02-C28-D081",
+            "count": 3,
+            "review_commit": "1190b50d43755ffd71629d11ba1846894a113771"
+          }
+        ],
+        "execution_release": false,
+        "product_status": "NOT_ATTEMPTED",
+        "first_unmet_invariant": "Exact owner policy and finite admission recorded; future own binding/authoring follows independently cleared stable committed parent interface. Parent acceptance mandatory before child execution release.",
+        "tester_designation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
+        "tester_status": "CANDIDATE_SPECIFIC_INTAKE_REQUIRED",
+        "scope": "Controlled synthetic only; no official/native certification or new product acceptance"
+      }
     },
     {
       "leaf": "L03",
@@ -141,12 +334,45 @@
         "L02"
       ],
       "obligation": "Use actual compatible coefficient occurrences, common intercept and aligned current D075/D071/D076/D077. Subtract alpha and all three factor contributions. Independently calculate an informative nonzero residual. Refusal changes one coefficient fit lineage while retaining the other two; a coherent alternative complete fit is not invalid merely because its label differs.",
-      "status": "PROPOSED_NOT_ATTEMPTED",
+      "status": "OWNER_POLICY_ADOPTED_FINITE_ADMITTED_EXECUTION_HELD_BINDING_REVIEW_PENDING",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G1_AFTER_L06"
       ],
-      "acceptance": "Independent documentary source clearance; product acceptance requires admitted cases and accepted parent proofs"
+      "acceptance": "Independent documentary source clearance; product acceptance requires admitted cases and accepted parent proofs",
+      "acceptance_evidence": {
+        "owner_decision_path": "handoff/m02_completion_28_execution/OWNER_CONSOLIDATED_64_CONDITIONAL_EXECUTION_GRANT_20261127.json",
+        "owner_decision_sha256": "6a71f52981fc01da42f9c27726547d0d1ddd69851561479a007aeb30ebd95a41",
+        "independent_policy_finite_verdict": {
+          "commit": "1190b50d43755ffd71629d11ba1846894a113771",
+          "tree": "6899f27e39e5c34aa626be0f419da1041edf5926",
+          "branch": "review/pm-l01a-aligned-history-policy-finite34-r1-20261126",
+          "disposition": "ACCEPT_EXACT_ALIGNED_HISTORY_JOINT_FIT_POLICY_AND_FINITE34_FOR_OWNER_DECISION",
+          "path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_ALIGNED_HISTORY_JOINT_FIT_POLICY_FINITE34_R1_VERDICT_20261126.md",
+          "sha256": "fddeb50391f51afeccb339798c88e8b756768308a6111275d109a1bd2463dc8e",
+          "git_blob": "466a0398f26d9802ade17c7f9fbe91991bd7af96",
+          "bytes": 14966
+        },
+        "adopted_policy": {
+          "path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_SOURCE_POLICY_PROPOSED_20261126.json",
+          "sha256": "9ba56098c273007980c893db39931ac86e7a3185bbb665f8c3f1e14f99b72af1",
+          "git_blob": "c6c22bec5df9e0250058472516b9f178dc46acca",
+          "bytes": 52451
+        },
+        "exact_allocations": [
+          {
+            "proof_id": "M02-C28-D078",
+            "count": 5,
+            "review_commit": "1190b50d43755ffd71629d11ba1846894a113771"
+          }
+        ],
+        "execution_release": false,
+        "product_status": "NOT_ATTEMPTED",
+        "first_unmet_invariant": "Exact owner policy and finite admission recorded; future own binding/authoring follows independently cleared stable committed parent interface. Parent acceptance mandatory before child execution release.",
+        "tester_designation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
+        "tester_status": "CANDIDATE_SPECIFIC_INTAKE_REQUIRED",
+        "scope": "Controlled synthetic only; no official/native certification or new product acceptance"
+      }
     },
     {
       "leaf": "L04",
@@ -227,12 +453,50 @@
         "L00"
       ],
       "obligation": "Bind R013 selected-option expiry date, R001 receipt, exchange IANA timezone, calendar version/session boundaries and lawful D004 US-option date profile. A synthetic calendar is explicitly controlled configuration, never evidence of official provider facts. Resolve concrete policy/source decisions before code. Independently prove a necessary D004 profile extension without rewriting its old accepted profile or counting its identity anew.",
-      "status": "PROPOSED_NOT_ATTEMPTED",
+      "status": "OWNER_POLICY_ADOPTED_FINITE_ADMITTED_EXECUTION_HELD_BINDING_REVIEW_PENDING",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G2_AFTER_L18"
       ],
-      "acceptance": "Independent documentary source clearance; product acceptance requires admitted cases and accepted parent proofs"
+      "acceptance": "Independent documentary source clearance; product acceptance requires admitted cases and accepted parent proofs",
+      "acceptance_evidence": {
+        "owner_decision_path": "handoff/m02_completion_28_execution/OWNER_CONSOLIDATED_64_CONDITIONAL_EXECUTION_GRANT_20261127.json",
+        "owner_decision_sha256": "6a71f52981fc01da42f9c27726547d0d1ddd69851561479a007aeb30ebd95a41",
+        "independent_policy_finite_verdict": {
+          "commit": "72d3ac7de64c574f8f707bf318825545d2ccd633",
+          "tree": "4ac578cea655e054d0d2ef48673a8cf363a5a2c2",
+          "branch": "review/pm-option-time-policy-finite23-20261127",
+          "disposition": "ACCEPT_EXACT_OPTION_TIME_POLICY_AND_FINITE23_FOR_OWNER_DECISION",
+          "path": "handoff/m02_completion_28_execution/L07a/INDEPENDENT_OPTION_TIME_POLICY_FINITE23_VERDICT_20261127.md",
+          "sha256": "cc16e8867ec7e17ba4449c198c81429e6bde8bf68328e39adb9a088c109618b0",
+          "git_blob": "4d89a54b9e6ef9788213921213450d8aa925df35",
+          "bytes": 13005
+        },
+        "adopted_policy": {
+          "path": "handoff/m02_completion_28_execution/L07a/OPTION_TIME_SOURCE_POLICY_AND_SPECIMENS_PROPOSED_20261127.json",
+          "sha256": "14a3ba2308f519d90d11eb450ac484a2c922507b7e04041c740297527a1d847a",
+          "git_blob": "7c1e743c3394618517e0f8194f02fb3038277e9f",
+          "bytes": 275539
+        },
+        "exact_allocations": [
+          {
+            "proof_id": "SUP-D003-USOPTION",
+            "count": 3,
+            "review_commit": "72d3ac7de64c574f8f707bf318825545d2ccd633"
+          },
+          {
+            "proof_id": "SUP-D004-USOPTION",
+            "count": 3,
+            "review_commit": "72d3ac7de64c574f8f707bf318825545d2ccd633"
+          }
+        ],
+        "execution_release": false,
+        "product_status": "NOT_ATTEMPTED",
+        "first_unmet_invariant": "Exact owner policy and finite admission recorded; future own binding/authoring follows independently cleared stable committed parent interface. Parent acceptance mandatory before child execution release.",
+        "tester_designation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
+        "tester_status": "CANDIDATE_SPECIFIC_INTAKE_REQUIRED",
+        "scope": "Controlled synthetic only; no official/native certification or new product acceptance"
+      }
     },
     {
       "leaf": "L07b",
@@ -243,12 +507,64 @@
         "L00"
       ],
       "obligation": "Bind the exact option expiry instant and timezone/session convention separately from its date, with compatible true-instant D001. Never invent midnight or event time from date-only/receipt-only values. Bind exact year-fraction representation. Independently prove a necessary option-domain D001 extension; retain its original profile and zero new identity contribution.",
-      "status": "PROPOSED_NOT_ATTEMPTED",
+      "status": "OWNER_POLICY_ADOPTED_FINITE_ADMITTED_EXECUTION_HELD_BINDING_REVIEW_PENDING",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G2_AFTER_L18"
       ],
-      "acceptance": "Independent documentary source clearance; product acceptance requires admitted cases and accepted parent proofs"
+      "acceptance": "Independent documentary source clearance; product acceptance requires admitted cases and accepted parent proofs",
+      "acceptance_evidence": {
+        "owner_decision_path": "handoff/m02_completion_28_execution/OWNER_CONSOLIDATED_64_CONDITIONAL_EXECUTION_GRANT_20261127.json",
+        "owner_decision_sha256": "6a71f52981fc01da42f9c27726547d0d1ddd69851561479a007aeb30ebd95a41",
+        "independent_policy_finite_verdict": {
+          "commit": "72d3ac7de64c574f8f707bf318825545d2ccd633",
+          "tree": "4ac578cea655e054d0d2ef48673a8cf363a5a2c2",
+          "branch": "review/pm-option-time-policy-finite23-20261127",
+          "disposition": "ACCEPT_EXACT_OPTION_TIME_POLICY_AND_FINITE23_FOR_OWNER_DECISION",
+          "path": "handoff/m02_completion_28_execution/L07a/INDEPENDENT_OPTION_TIME_POLICY_FINITE23_VERDICT_20261127.md",
+          "sha256": "cc16e8867ec7e17ba4449c198c81429e6bde8bf68328e39adb9a088c109618b0",
+          "git_blob": "4d89a54b9e6ef9788213921213450d8aa925df35",
+          "bytes": 13005
+        },
+        "adopted_policy": {
+          "path": "handoff/m02_completion_28_execution/L07a/OPTION_TIME_SOURCE_POLICY_AND_SPECIMENS_PROPOSED_20261127.json",
+          "sha256": "14a3ba2308f519d90d11eb450ac484a2c922507b7e04041c740297527a1d847a",
+          "git_blob": "7c1e743c3394618517e0f8194f02fb3038277e9f",
+          "bytes": 275539
+        },
+        "exact_allocations": [
+          {
+            "proof_id": "SUP-D001-OPTION",
+            "count": 4,
+            "review_commit": "72d3ac7de64c574f8f707bf318825545d2ccd633"
+          }
+        ],
+        "execution_release": false,
+        "product_status": "NOT_ATTEMPTED",
+        "first_unmet_invariant": "Exact own implementation-authority binding and admission reconciliation independently verified before installation; authoring and all later gates held.",
+        "tester_designation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
+        "tester_status": "CANDIDATE_SPECIFIC_INTAKE_REQUIRED",
+        "scope": "Controlled synthetic only; no official/native certification or new product acceptance",
+        "first_stage_inactive_bindings": [
+          {
+            "jurisdiction": "D001",
+            "proof_id": "SUP-D001-OPTION",
+            "case_count": 4,
+            "brief": "handoff/m02_completion_28_execution/L07a/D001_IMPLEMENTATION_BRIEF.md",
+            "brief_sha256": "222d0919c67c05f6436f985b8262ace985ab11dea30fc045333ee13fa10a8d8d",
+            "inactive_binding": "handoff/m02_completion_28_execution/L07a/T01_D001_OPTION_TIME_AUTHORITY_BINDING_CANDIDATE.yaml",
+            "binding_sha256": "ff80ea7dd3aa7674723b758dda9173356bda75119ba996ece5bf4c1a9ff2cf35",
+            "active_path": "implementation/authority/T01_D001_OPTION_TIME_AUTHORITY_BINDING.yaml",
+            "allowed_product_paths": [
+              "src/nvda_desk/market_measurement_truth/api.py",
+              "src/nvda_desk/market_measurement_truth/_option_time_source.py",
+              "src/nvda_desk/market_measurement_truth/_option_time.py",
+              "src/nvda_desk/market_measurement_truth/_option_time_codec.py",
+              "tools/product_proof_claims.py"
+            ]
+          }
+        ]
+      }
     },
     {
       "leaf": "L08",
@@ -261,12 +577,45 @@
         "L07a"
       ],
       "obligation": "Use actual R013/R001 and compatible exchange trading date D004 to compute whole calendar-day difference. Preserve contract/calendar/source identity. Refuse unsupported calendar/date coverage or negative live-contract DTE. This does not require converting a date into an invented instant.",
-      "status": "PROPOSED_NOT_ATTEMPTED",
+      "status": "OWNER_POLICY_ADOPTED_FINITE_ADMITTED_EXECUTION_HELD_BINDING_REVIEW_PENDING",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G2_AFTER_L18"
       ],
-      "acceptance": "Independent documentary source clearance; product acceptance requires admitted cases and accepted parent proofs"
+      "acceptance": "Independent documentary source clearance; product acceptance requires admitted cases and accepted parent proofs",
+      "acceptance_evidence": {
+        "owner_decision_path": "handoff/m02_completion_28_execution/OWNER_CONSOLIDATED_64_CONDITIONAL_EXECUTION_GRANT_20261127.json",
+        "owner_decision_sha256": "6a71f52981fc01da42f9c27726547d0d1ddd69851561479a007aeb30ebd95a41",
+        "independent_policy_finite_verdict": {
+          "commit": "72d3ac7de64c574f8f707bf318825545d2ccd633",
+          "tree": "4ac578cea655e054d0d2ef48673a8cf363a5a2c2",
+          "branch": "review/pm-option-time-policy-finite23-20261127",
+          "disposition": "ACCEPT_EXACT_OPTION_TIME_POLICY_AND_FINITE23_FOR_OWNER_DECISION",
+          "path": "handoff/m02_completion_28_execution/L07a/INDEPENDENT_OPTION_TIME_POLICY_FINITE23_VERDICT_20261127.md",
+          "sha256": "cc16e8867ec7e17ba4449c198c81429e6bde8bf68328e39adb9a088c109618b0",
+          "git_blob": "4d89a54b9e6ef9788213921213450d8aa925df35",
+          "bytes": 13005
+        },
+        "adopted_policy": {
+          "path": "handoff/m02_completion_28_execution/L07a/OPTION_TIME_SOURCE_POLICY_AND_SPECIMENS_PROPOSED_20261127.json",
+          "sha256": "14a3ba2308f519d90d11eb450ac484a2c922507b7e04041c740297527a1d847a",
+          "git_blob": "7c1e743c3394618517e0f8194f02fb3038277e9f",
+          "bytes": 275539
+        },
+        "exact_allocations": [
+          {
+            "proof_id": "M02-C28-D085",
+            "count": 7,
+            "review_commit": "72d3ac7de64c574f8f707bf318825545d2ccd633"
+          }
+        ],
+        "execution_release": false,
+        "product_status": "NOT_ATTEMPTED",
+        "first_unmet_invariant": "Exact owner policy and finite admission recorded; future own binding/authoring follows independently cleared stable committed parent interface. Parent acceptance mandatory before child execution release.",
+        "tester_designation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
+        "tester_status": "CANDIDATE_SPECIFIC_INTAKE_REQUIRED",
+        "scope": "Controlled synthetic only; no official/native certification or new product acceptance"
+      }
     },
     {
       "leaf": "L09",
@@ -279,12 +628,45 @@
         "L07b"
       ],
       "obligation": "Calculate ACT/365F from actual true-instant D001 to the versioned expiry instant, using exact elapsed duration and approved typed numeric representation. Preserve option/timezone/calendar conventions. Refuse date-only or receipt-only masquerading as source/expiry instants.",
-      "status": "PROPOSED_NOT_ATTEMPTED",
+      "status": "OWNER_POLICY_ADOPTED_FINITE_ADMITTED_EXECUTION_HELD_BINDING_REVIEW_PENDING",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G2_AFTER_L18"
       ],
-      "acceptance": "Independent documentary source clearance; product acceptance requires admitted cases and accepted parent proofs"
+      "acceptance": "Independent documentary source clearance; product acceptance requires admitted cases and accepted parent proofs",
+      "acceptance_evidence": {
+        "owner_decision_path": "handoff/m02_completion_28_execution/OWNER_CONSOLIDATED_64_CONDITIONAL_EXECUTION_GRANT_20261127.json",
+        "owner_decision_sha256": "6a71f52981fc01da42f9c27726547d0d1ddd69851561479a007aeb30ebd95a41",
+        "independent_policy_finite_verdict": {
+          "commit": "72d3ac7de64c574f8f707bf318825545d2ccd633",
+          "tree": "4ac578cea655e054d0d2ef48673a8cf363a5a2c2",
+          "branch": "review/pm-option-time-policy-finite23-20261127",
+          "disposition": "ACCEPT_EXACT_OPTION_TIME_POLICY_AND_FINITE23_FOR_OWNER_DECISION",
+          "path": "handoff/m02_completion_28_execution/L07a/INDEPENDENT_OPTION_TIME_POLICY_FINITE23_VERDICT_20261127.md",
+          "sha256": "cc16e8867ec7e17ba4449c198c81429e6bde8bf68328e39adb9a088c109618b0",
+          "git_blob": "4d89a54b9e6ef9788213921213450d8aa925df35",
+          "bytes": 13005
+        },
+        "adopted_policy": {
+          "path": "handoff/m02_completion_28_execution/L07a/OPTION_TIME_SOURCE_POLICY_AND_SPECIMENS_PROPOSED_20261127.json",
+          "sha256": "14a3ba2308f519d90d11eb450ac484a2c922507b7e04041c740297527a1d847a",
+          "git_blob": "7c1e743c3394618517e0f8194f02fb3038277e9f",
+          "bytes": 275539
+        },
+        "exact_allocations": [
+          {
+            "proof_id": "M02-C28-D086",
+            "count": 6,
+            "review_commit": "72d3ac7de64c574f8f707bf318825545d2ccd633"
+          }
+        ],
+        "execution_release": false,
+        "product_status": "NOT_ATTEMPTED",
+        "first_unmet_invariant": "Exact owner policy and finite admission recorded; future own binding/authoring follows independently cleared stable committed parent interface. Parent acceptance mandatory before child execution release.",
+        "tester_designation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
+        "tester_status": "CANDIDATE_SPECIFIC_INTAKE_REQUIRED",
+        "scope": "Controlled synthetic only; no official/native certification or new product acceptance"
+      }
     },
     {
       "leaf": "L10a",
@@ -295,10 +677,54 @@
         "L00"
       ],
       "obligation": "Bind R111/R183 computational roles, exact model/native-unit comparability, contract or bucket roll, vintages and one official prior-trading-session reference for D095. Resolve concrete session convention before code; current quote assembly alone is not an IV history. Supply independently calculable change and wrong-reference refusal oracles.",
-      "status": "PROPOSED_NOT_ATTEMPTED",
+      "status": "OWNER_POLICY_ADOPTED_FINITE_ADMITTED_EXECUTION_HELD_BINDING_REVIEW_PENDING",
       "checkpoint_required": true,
       "proposed_testing_windows": [],
-      "acceptance": "Independent documentary source clearance; product acceptance requires admitted cases and accepted parent proofs"
+      "acceptance": "Independent documentary source clearance; product acceptance requires admitted cases and accepted parent proofs",
+      "acceptance_evidence": {
+        "owner_decision_path": "handoff/m02_completion_28_execution/OWNER_CONSOLIDATED_64_CONDITIONAL_EXECUTION_GRANT_20261127.json",
+        "owner_decision_sha256": "6a71f52981fc01da42f9c27726547d0d1ddd69851561479a007aeb30ebd95a41",
+        "independent_policy_finite_verdict": {
+          "commit": "3bdcca73679f02c7e8ab0839b6d91c9dfc81e46e",
+          "tree": "33410075abb5695376d53672e36e4e3bd5e3d6eb",
+          "branch": "review/pm-option-iv-prior-session-policy-finite7-20261127",
+          "disposition": "ACCEPT_EXACT_OPTION_IV_PRIOR_SESSION_POLICY_AND_FINITE7_FOR_OWNER_DECISION",
+          "path": "handoff/m02_completion_28_execution/L10a/INDEPENDENT_OPTION_IV_PRIOR_SESSION_POLICY_FINITE7_VERDICT_20261127.md",
+          "sha256": "66704487d10008be46652724e319b8ddc8de2f81e6662d1897082bd0cdb4e790",
+          "git_blob": "2dda88015c3b9919c0a7b541df8ab546c3a723cb",
+          "bytes": 11497
+        },
+        "adopted_policy": {
+          "path": "handoff/m02_completion_28_execution/L10a/OPTION_IV_PRIOR_SESSION_SOURCE_POLICY_AND_SPECIMENS_PROPOSED_20261127.json",
+          "sha256": "050d167a6f15ae210f3a0b7a776957e6ebb00ce8f674ad9d417e7082951b6a39",
+          "git_blob": "eef5f2a0b0fd3e4108f0dcf1cdb7bd16686fbc18",
+          "bytes": 62784
+        },
+        "exact_allocations": [],
+        "execution_release": false,
+        "product_status": "NOT_ATTEMPTED",
+        "first_unmet_invariant": "Exact own implementation-authority binding and admission reconciliation independently verified before installation; authoring and all later gates held.",
+        "tester_designation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
+        "tester_status": "CANDIDATE_SPECIFIC_INTAKE_REQUIRED",
+        "scope": "Controlled synthetic only; no official/native certification or new product acceptance",
+        "first_stage_inactive_bindings": [
+          {
+            "jurisdiction": "D095",
+            "proof_id": "M02-C28-D095",
+            "case_count": 7,
+            "brief": "handoff/m02_completion_28_execution/L10a/D095_IMPLEMENTATION_BRIEF.md",
+            "brief_sha256": "4885ee1efe9f5832f33a8bf0552caf288990f9f992542c26f535bf378bcbc703",
+            "inactive_binding": "handoff/m02_completion_28_execution/L10a/T01_D095_PRIOR_SESSION_IV_AUTHORITY_BINDING_CANDIDATE.yaml",
+            "binding_sha256": "2a4530490537b2552b320db240ac09eb24508ccc9d9347316e517463c4548f32",
+            "active_path": "implementation/authority/T01_D095_PRIOR_SESSION_IV_AUTHORITY_BINDING.yaml",
+            "allowed_product_paths": [
+              "src/nvda_desk/market_measurement_truth/api.py",
+              "src/nvda_desk/market_measurement_truth/_option_iv_prior_session.py",
+              "tools/product_proof_claims.py"
+            ]
+          }
+        ]
+      }
     },
     {
       "leaf": "L10b",
@@ -745,12 +1171,62 @@
         "L10a"
       ],
       "obligation": "Calculate 100*(IV_current-IV_reference) in volatility points, using comparable actual R111/R183 facts and accepted official one-trading-session reference. Preserve contract/bucket/roll and knowledge vintage. Refuse unmatched/stale/wrong-session references without calendar-day substitution.",
-      "status": "PROPOSED_NOT_ATTEMPTED",
+      "status": "OWNER_POLICY_ADOPTED_FINITE_ADMITTED_EXECUTION_HELD_BINDING_REVIEW_PENDING",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G2_AFTER_L18"
       ],
-      "acceptance": "Independent documentary source clearance; product acceptance requires admitted cases and accepted parent proofs"
+      "acceptance": "Independent documentary source clearance; product acceptance requires admitted cases and accepted parent proofs",
+      "acceptance_evidence": {
+        "owner_decision_path": "handoff/m02_completion_28_execution/OWNER_CONSOLIDATED_64_CONDITIONAL_EXECUTION_GRANT_20261127.json",
+        "owner_decision_sha256": "6a71f52981fc01da42f9c27726547d0d1ddd69851561479a007aeb30ebd95a41",
+        "independent_policy_finite_verdict": {
+          "commit": "3bdcca73679f02c7e8ab0839b6d91c9dfc81e46e",
+          "tree": "33410075abb5695376d53672e36e4e3bd5e3d6eb",
+          "branch": "review/pm-option-iv-prior-session-policy-finite7-20261127",
+          "disposition": "ACCEPT_EXACT_OPTION_IV_PRIOR_SESSION_POLICY_AND_FINITE7_FOR_OWNER_DECISION",
+          "path": "handoff/m02_completion_28_execution/L10a/INDEPENDENT_OPTION_IV_PRIOR_SESSION_POLICY_FINITE7_VERDICT_20261127.md",
+          "sha256": "66704487d10008be46652724e319b8ddc8de2f81e6662d1897082bd0cdb4e790",
+          "git_blob": "2dda88015c3b9919c0a7b541df8ab546c3a723cb",
+          "bytes": 11497
+        },
+        "adopted_policy": {
+          "path": "handoff/m02_completion_28_execution/L10a/OPTION_IV_PRIOR_SESSION_SOURCE_POLICY_AND_SPECIMENS_PROPOSED_20261127.json",
+          "sha256": "050d167a6f15ae210f3a0b7a776957e6ebb00ce8f674ad9d417e7082951b6a39",
+          "git_blob": "eef5f2a0b0fd3e4108f0dcf1cdb7bd16686fbc18",
+          "bytes": 62784
+        },
+        "exact_allocations": [
+          {
+            "proof_id": "M02-C28-D095",
+            "count": 7,
+            "review_commit": "3bdcca73679f02c7e8ab0839b6d91c9dfc81e46e"
+          }
+        ],
+        "execution_release": false,
+        "product_status": "NOT_ATTEMPTED",
+        "first_unmet_invariant": "Exact own implementation-authority binding and admission reconciliation independently verified before installation; authoring and all later gates held.",
+        "tester_designation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
+        "tester_status": "CANDIDATE_SPECIFIC_INTAKE_REQUIRED",
+        "scope": "Controlled synthetic only; no official/native certification or new product acceptance",
+        "first_stage_inactive_bindings": [
+          {
+            "jurisdiction": "D095",
+            "proof_id": "M02-C28-D095",
+            "case_count": 7,
+            "brief": "handoff/m02_completion_28_execution/L10a/D095_IMPLEMENTATION_BRIEF.md",
+            "brief_sha256": "4885ee1efe9f5832f33a8bf0552caf288990f9f992542c26f535bf378bcbc703",
+            "inactive_binding": "handoff/m02_completion_28_execution/L10a/T01_D095_PRIOR_SESSION_IV_AUTHORITY_BINDING_CANDIDATE.yaml",
+            "binding_sha256": "2a4530490537b2552b320db240ac09eb24508ccc9d9347316e517463c4548f32",
+            "active_path": "implementation/authority/T01_D095_PRIOR_SESSION_IV_AUTHORITY_BINDING.yaml",
+            "allowed_product_paths": [
+              "src/nvda_desk/market_measurement_truth/api.py",
+              "src/nvda_desk/market_measurement_truth/_option_iv_prior_session.py",
+              "tools/product_proof_claims.py"
+            ]
+          }
+        ]
+      }
     },
     {
       "leaf": "L12",
