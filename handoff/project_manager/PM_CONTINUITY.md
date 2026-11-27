@@ -1,0 +1,172 @@
+# NVIDIA project manager ? continuity record
+
+**Status:** Management knowledge and decision index only. Not an ExecPlan, engineering assignment, proof release, governance adoption or CAC binding.
+**Repository:** JayDEmily/nvda_29102026
+**Management branch:** management/nvidia-project-manager
+**Initial snapshot:** e1b99193be900aff9375d15d40fe041453fa3a10 (trial/cac-nvidia-continuation-20261127), tree c3c1e998f4a053bdb13b0b6321424153cdb44cef, 28 November 2026 08:51:46 AEDT.
+
+## 0. Successor PM: start here
+
+Owner's objective is continuity of engineering judgement, not a transcript or another compliance layer. Owner authorised this management branch and publication on 28 November 2026. PM remains adviser/manager, not active Worker, independent Reviewer or designated product Tester. No new authority for product work, governance adoption, GUI intervention, CAC dispatch or integration is created by these notes.
+
+Use Remote Desktop Commander and Ubuntu Git. Reread full applicable GUARDRAILS.md before each substantive response. Authority: current owner instruction > GUARDRAILS > scoped AGENTS/override > accepted EXEC_PLAN > normative meaning > proof > implementation > historical evidence. Inspect actual sources; distinguish verified observation, inference, proposal, accepted decision, unknown and blocker. Never treat a commit, passing test or review label as broader acceptance. Recommend smallest sufficient correction. Consolidate related work only where roles/dependencies permit. No redundant gates, reports, tests or owner decisions merely because the model can generate them.
+
+Fetch actual live refs and relevant independent verdicts into separate checkouts, verify exact subject/parent/tree/delta; re-read current register and ledger. Do not adopt stale assignments. Keep A engineering, A2 proof-control/economy and B CAC transport separate. A legitimate engineering hold is not a CAC defect; a successful handover is not mathematical proof. This management branch descends from a real engineering snapshot for lineage, but its copied register/plan/ledger are historical **on this branch**. Never bind CAC here or execute its copied assignment. Do not merge the management branch wholesale into engineering. Only this management document is added. Maintain this document in isolated management commits when authorised; prefer material decisions and evidence pointers, not duplicated dashboards. Reverify current state on each use.
+
+Use Australian English, concise analytical explanations, exact Git identities where material, Melbourne timestamps, GPT-6.2 / Extra High for fresh ordinary Chat where available/requested. Owner is a mechanical engineer, not a professional programmer. Explain consequential software/Git boundaries clearly without patronising. Retain owner authority; do not confuse ordinary reversible in-scope decisions with reserved governance/financial/external-action decisions.
+
+### Ref map at 08:54 AEDT, 28 November 2026
+| Purpose | Branch | Observed commit |
+|---|---|---|
+| Main | main | 3ec136d149eb0e5b1d089f861998416361cd2088 |
+| Original engineering | work/t01-d091-finite-adequacy-20261116 | c57422bdc533f6b25b3051b2533a3e12a6dfed1b |
+| Disposable CAC engineering trial | trial/cac-nvidia-continuation-20261127 | e1b99193be900aff9375d15d40fe041453fa3a10 |
+| G01 pre-edit proposal | proposal/g01-prospective-case-control-20261128 | da94b21e60358249ea157eaef5860d9743e749a7 |
+| Independent remap review | review/trial-cac-nvidia-g01-partition-remap-20261128 | 5da8986e88d777975edae36fc65eaf8a229e29e4 |
+| G01 independent pre-edit review | review/g01-prospective-case-control-20261128 | Not advertised at snapshot; fresh reviewer commissioned by owner, outcome not established |
+
+Initial PM checkout /home/jds/nvda-project-manager-xk3xxn1c. Do not change original work/main or existing review refs. No force push/history rewrite. Integration requires exact reviewed diff and separate authority, not wholesale merge of stale copies.
+
+## 1. Owner intent: deterministic engine, proportionate proof
+
+Owner reports extensive documentation, test-first development and adversarial controls were introduced because earlier GPT models drifted, failed to read rules and made unjustified assumptions. Owner drew on IBM, AWS, Microsoft, Google, Python and where applicable OpenAI. This is owner's historical rationale, not independent verification of each external citation. Retain valuable controls while removing disproportionate repetition. Intended final calculation product is deterministic software, not AI inference.
+
+Owner distinguishes raw API observations, neutral derived raw measurements over one or many observations, and strategy-like mathematical functions with coefficients tuned later. Refine by semantic purpose, not mere presence of parameters/coefficient/time: a neutral joint OLS fit may calculate coefficients, while strategy weights express a different authority.
+
+- Future IBKR acquisition adapter is not established as product readiness. Preserve actual native data and event/receipt time; no invented provider fields.
+- M00 raw occurrence truth active within admitted contracts, distinct from provider/network integration.
+- M02 neutral market measurement truth active for bounded admitted profiles: source selection, exact calculation/units/as-of/cutoff, immutable lineage, durable result. Controlled synthetic is not native source certification.
+- M01 bootstrap/inactive, not formally retired; do not route new M02 work to it.
+- M03 configured_market_conditions active for admitted D040/D041: immutable feature weights, orientation/scaling/clipping and provenance are an existing architectural precedent, not a universal strategy framework.
+- Illustrative future module M(t)=aX(t)+bY(t)+c and composite S(t)=sum w_i M_i(t) distinguish internal coefficients from external module weights. Not adopted equations/settings. Build models uncalibrated rather than mathematically unverified: known illustrative coefficients establish engineering conformance, not economic merit. Later optimisation, sensitivity, backtesting and predictive validation belong to research.
+
+Separate deterministic calculation conformance, integration/integrity, and empirical research validation. Proof effort should follow distinct mathematical and data-boundary failure mechanisms. See config/architecture/modules.yaml and exact public APIs; active registry status does not imply unrestricted capability.
+
+## 2. Astra: adopted method versus forward architecture
+
+Original combined method and forward architecture ADR:
+67f5a6c855bfcf8c6002e7f6c2d97ba714b6644f:handoff/planning/t01_recovered_successor_20261111/ADR_20261112_ASTRA_NVDA_METHOD_AND_FORWARD_ARCHITECTURE_REVIEWS.md. Read both reviews in full, especially method sections 2/6 and forward supplement sections 2/6.
+Adoption evidence: handoff/astra_adr_completion_20261115/OWNER_DECISION_PACKAGE.md; handoff/astra_adr_continuation_20261115/INSTALLATION_RECEIPT.md and NEXT_WORK_AND_HOLDS.md; handoff/planning/t01_owner_lint_integration_20261115/DEPENDENCY_WINDOWS.md. Installation receipt resolves old draft labels. Do not infer current authority from labels alone.
+
+Astra's six method steps: (1) reconciled transition candidate installed; (2) owner adoption/roles/transport established for accepted scope, CAC separately amended; (3) receiver/runtime qualified for completed scopes, not universally closed; (4) narrow L01b -> L04 D091 slice accepted; (5) actual dependency chains in progress; (6) final L32 reconciliation/promotion outstanding. Preserve 39 leaves and 35 canonical obligations; splitting earlier grouped prerequisites resolved genuine dependency mismatch. One active plan, existing register and ledger; avoid repeated ceremony and embedded profile copies. Dependency-focused windows adopted in place of final-only testing, no routine reruns. Provisional child coding on stable independently cleared contract never releases child acceptance.
+
+Accounting: 98 historical controlled identities (heterogeneous evidence, not all independently re-proved); L14's 11 claims are one source plus ten already counted D identities. 27 new mandatory controlled outputs, D145 paused separately. New accepted D091/D109/D110: 101/125 controlled accounting (80.8%), 3/27 new (11.1%), **24 remaining**. Not elapsed-time or overall product readiness. Full126 includes D145. Seven external holds D061/D064/D065/D070/D084/D114/D115 outside foundation126. Scope-specific support proof does not add D identities.
+
+Principal dependency chains from Astra: L01a -> L02 D079/D080/D081 -> L03 D078; option dates L07a -> L08 then L10b+L08 -> L12 -> L13/L14/L15/L16; option instants L07b -> L09 then L09+L10b/L10c -> L24 -> L25 -> L26 -> L27/L28; straddle L01b/L04+L10c -> L17 -> L18; flow L19 -> L20, L20+L04 -> L21, L20+L08 -> L22; microstructure L01c -> L05, L01d -> L06, L19+attribution -> L29; event L23, basket L30, paused D145 L31. Recheck exact live graph; not a queue. L32 reconciles accepted unchanged evidence and remaining required proof; mandatory gaps mean PARTIAL/BLOCKED. Main promotion explicit.
+
+Forward product architecture is **recommended, not adopted as current implementation scope**: one Python distribution, one Ubuntu engine/application process and Streamlit presentation process; TWS/IB Gateway separate vendor app when needed. Typed public owner seams, owner-local storage, no cross-owner SQL, no universal strategy framework/new IDs for each calculation. Generalise controlled profiles incrementally, retain old evidence, set numerical precision by error requirements rather than universally requiring fifty-digit arithmetic.
+
+Proposed increments: 0 product boundary; 1 offline D011/D012 measurement workbench with provenance/readback; 2 offline IBKR adapter contract; 3 authorised read-only NVDA capture; 4 reproducible research; 5 bounded paper execution; 6 operational hardening incl backup/recovery and PostgreSQL if justified. Live orders later explicit authority, never automatic. Offline work, source feasibility and research may be independently scoped when authorised; don't silently widen current 27-output programme. Engineering conformance is not financial profitability.
+
+## 3. Engineering state and evidence index
+
+Current canonical records at the initial engineering snapshot:
+- handoff/m02_completion_28_execution/EXECUTION_REGISTER.json SHA256 b032f01770e2813e99079e47b0342d0cffa6fb919bb00b9ded6709c09d08a688.
+- handoff/m02_completion_28_execution/TEST_EVIDENCE_LEDGER.json SHA256 5d1ac21a0cf62fe98efe5d4bd5c510094d139e6ae6bd3fc85d10924d67189c89: 35 canonical rows + 6 additional support rows = 41; 131 allocated cases, 67 accepted, 64 admitted but held. Prior 74 were prospective, not a limit overriding later exact owner admissions.
+- GUARDRAILS.md SHA256 585dc9b1a95719a7b60929b0d3ea64696fd6d52cd19b2b4a463c5bb9d34947b6; AGENTS.md 91d58dd04c731f4f1d8c761dd424788c469301c2b9c49b65409927132675b7a6; EXEC_PLAN.md db6d8ae6ad7b43402290c07d3d23d9ba018dd187c73ba3f186ac218e56b2d32b; tests/AGENTS.override.md 3e906d6cad67f4c8f3137924493ef7d2877c2c92da90e7a44ad9141c7424f. Snapshot reference identities; reread actual current bytes.
+
+67 accepted cases: L01b R112 support15, L04 D09118, L10c scalar pair support16, L17 D1098, L18 D11010. Exact candidate, profile, generation, runtime, independent reports and raw evidence pins are in the ledger. Preserve unchanged valid evidence; no routine rerun. D110 independent proof ff8fec37f8ad2e55dd61d23ac4ebec1ebf1d2cac. Do not infer acceptance of other profiles from these.
+
+### Exact 64-case grant (three packages)
+
+handoff/m02_completion_28_execution/OWNER_CONSOLIDATED_64_CONDITIONAL_EXECUTION_GRANT_20261127.json SHA256 6a71f52981fc01da42f9c27726547d0d1ddd69851561479a007aeb30ebd95a41; C3370d48e097cd7d8eec376b20ae9b3adfa918084, V f7b42cd7ed4dbedf2a6dc43b5e70515baafd7304, review/pm-consolidated64-binding-admission-20261127. Four separate assessments admitted 64 and seven first-stage bindings, NOT execution. Seven first-stage scopes = 21 cases (D071-D075 x2, D001 x4, D095 x7); remaining 43 held for actual parent/interface binding.
+
+| Package | Exact reviewed proposal and verdict |
+|---|---|
+| Aligned history and joint fit 34 | C 3f9ec141eea4fb3f767b933bcd96d237091dcfcb; V 1190b50d43755ffd71629d11ba1846894a113771; review/pm-l01a-aligned-history-policy-finite34-r1-20261126 |
+| Option time 23 | C 4f5f1f885a3681a6b8b04a225f7373aa620c8d06; V 72d3ac7de64c574f8f707bf318825545d2ccd633; review/pm-option-time-policy-finite23-20261127 |
+| D095 prior-session IV 7 | C a1fc778673e43eab7b0808afa734e15aa7756e7b; V 3bdcca73679f02c7e8ab0839b6d91c9dfc81e46e; review/pm-option-iv-prior-session-policy-finite7-20261127 |
+
+Allocations: D071-D076 each2 support, D0773 support, D0796/D0805/D0813/D0785; D0014/D0033/D0043 support, D0857/D0866; D0957. Seventeen jurisdictions, all controlled synthetic. D095 no D parent; follow actual selected source, time/session/expiry and joint fit authority. Do not invent provider conventions.
+
+### Current L01a progression and legitimate engineering hold
+
+| Event | Git checkpoint / disposition |
+|---|---|
+| Initial isolated assignment and five binding installations | 5ca8000; 088cfb42e6c9e61ba579769b55fe5622bfaba542 |
+| Five inert two-case families authored | C 55ff6b56e70cec794b0c91d1cead39b1bf96fde0; H 2e482909ddb92f939935fd28e48d765abb0193f8 |
+| Independent authoring review ACCEPT all five | V 6fe7b4496507fc491cd03baa6a49c96d28f49c8d, review/trial-cac-nvidia-l01a-authoring-20261127 |
+| Fresh implementation Worker commission | H 20688b5d2b59e376cc892be93f87f4f440d48956 |
+| Additive implementation, IMPLEMENTED_UNTESTED | C 2a97d52f2c54c09d60180e78826cdbb789317332; H f3f9f8c7d3da8e937fb56754e74b3e257f3c550a |
+| Independent implementation review ACCEPT all five | V 22a14402bb5df8651e9136b6d00d94f657a07afd, review/trial-cac-nvidia-l01a-implementation-20261127 |
+| Registration preparation | H 0af1d47498932849cb23d99ea46b203b0076df2e; C bca5965; H b5c63a67083761916e5ee27ed4c2c13c3360d2a2 |
+| Registration reviewer BLOCKED | V 63e716b7de2ea11bef9afe80fa0bb7793a031cef, review/trial-cac-nvidia-l01a-registration-20261127, shared G01 physical partition conflict |
+| Owner authorises bounded remap | H 7625d861730b52aa57227dc83f2f985bd0bcda6b |
+| Remap and independent clearance | C 3800ffd5b6c4d01c87815361375a76f6f3c7c46a; H efb99bd23d66f49f7d1b2290ad97d42cccc2a265; V 5da8986e88d777975edae36fc65eaf8a229e29e4 ACCEPT shared remap and five inactive packages separately |
+| Next eligible installation Worker commissioned | H e1b99193be900aff9375d15d40fe041453fa3a10, 08:51:46 AEDT. Actual receipt/installation not yet independently established by PM. |
+
+Shared blocker: D091 already owns recursive tests/product/m02_completion_28, all 17 new roots nested within it. Disjoint physical ownership correctly refused. One shared architectural conflict, not five domain defects. Exact owner-authorised sibling tests/product/m02_completion_28_prospective remap retains all case IDs/order/counts/reviewed original objects and meaning. Independent verdict V:handoff/m02_completion_28_execution/L01a/INDEPENDENT_CAC_TRIAL_G01_PROSPECTIVE_PARTITION_REMAP_VERDICT_20261128.md SHA256 0aab07086e35fe266bcf20f3dfba2934164c39188c641d6dc14318ebc72900e7. Actual path-only map handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/PATH_ONLY_SUCCESSOR_AUTHORITY.json SHA256 11d90adf234d5195d3bd31a6b42df9b046c4ad53690cb279ef071d52b3049aa7. Reviewer checked 118 existing roots, 221 product test files, 170 unique required tip objects and actual wheels; reports 66 VERIFIED / 5 BLOCKED / 1 UNKNOWN non-Git asset entries. Attributed evidence, not new PM full receiver qualification.
+
+Installation commission: only 20 exact future destination files, four per D071-D075 (source, descriptor, immutable generation1, pointer), five already-staged contracts; independent registration/installation clearance next. Other 12 mapping-only; all 64 held, ten first-stage NOT_ATTEMPTED. No product execution/activation by PM. Fetch current tip before assessment.
+
+Sole designated strict Tester: https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382; identity record handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_STRICT_TESTER_IDENTITY_20261126.md SHA256 a0c1319a916e34a674be610c0678bbc8dd60d43da43dff370117e21a27b183c9. Fresh documentary reviewer is not automatic Tester. Candidate-specific receiver/source/profile/claim generation/runtime/release required. Prior runtime CPython3.13.5 /home/jds/nvda_d091_worker_proof_runner_venv_20261119/bin/python, SQLite3.54.1 via /home/jds/nvda_python3135_sqlite3541_20261117/sqlite/lib, pytest9.0.3; not automatic future qualification.
+
+## 4. Proof economy and G01 ? evidence, diagnosis, proposal
+
+Owner's concern is justified, but distinguish physical case count, duplicated source setup, repeated infrastructure evidence and mathematical adequacy.
+
+- Historical amendment b44a852 (22 October) six-case limit for its scope, smaller allocations retained; no hidden scenarios or duplicate generic persistence/pagination/identity/typing proof. Current adopted EXEC_PLAN section 4 standard two-case SUCCESS/REACHED_REFUSAL, four-case D141/D142/D144 exceptions, initial six-case ceiling, separate owner-approved exceptions. Later larger exact allocations are not breaches; ceiling not quota/permission. Do not delete historical valid tests.
+- Original adversarial methodology is sound: lawful_positive, prohibited_false_positive, missing_mandatory_authority, lawful_optional_absence (implementation/proof/VI10_ADVERSARIAL_PRODUCT_PROOF_DESIGN.md; schemas/product_proof_family.schema.json, accepted_brief_product_proof.schema.json). Dimensions may be N/A with reason. Not four physical cases per expression. Oracle independently derived; reached refusal at actual invariant; fixture must not pre-satisfy the proposition.
+- Existing root AGENTS prospective economy rule already requires least complexity, common mechanical setup while preserving auditable public sequence/input/result, and material distinct incorrect behaviour or unproved proposition for each additional case. Prior accepted change 9966d6ac5307a250d89ab5734b0c483dbeb6373c, verdict 64469d6388402994b9c9c1210485fb4674003879, installation 90827fa02eb015f5df5995c420fc7ce6a782bd00. Do not duplicate governance.
+- Observed at C55ff6b5: five authored files, 10 approved/actual test functions, 2,317 lines, 15 identical helper ASTs, pairwise matching lines ~93.6?94.6% (rechecked 28 November). C2a97d52 adds 1,137 lines across five product/control files (includes 180-line G01 route); product shares history selection, arithmetic, codec. Documentary ACCEPT, runtime unproved. No unauthorised case count growth in this tranche. Allocations predate CAC, so transport did not create the problem; may accelerate existing tendencies. Do not reopen accepted proofs for economy alone.
+- Full inspection of 11 architecture/bootstrap test files (3,226 lines, 110 named functions before expansion), governing registries/schemas/runners. Mechanical ownership/hash/generation/required-name controls, but no universal exact case-population guard. Historical product corpus not individually re-audited.
+- At proposal base efb99bd, pure synthetic report inputs to tools/product_proof_outcomes.py validate_outcomes: exact function exit0, required plus extra function exit0, two parameter-expanded nodes exit0, missing required exit5. Observer SHA256 1aafb2d33395d20e2a41ce7cc78e0c2dd2e934149f727ba888832559865a2273. Generic runner invokes pytest before reported-outcome validation. This reproduces control gap, not historical product over-execution.
+- Existing qualified external guard handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_SUPPORT16_COLLECTION_GUARD_20261126.py SHA256 930752309edb0f30dec1e6774e2c0eca090c8589e20b74195b49ec9b01b58412. Original nonproduct qualification and D110 release in same directory. Exact ordered unnormalised session/observer nodes, count, errors/deselection/markers/digest/nonce, persisted decision before ordinary protocol, per-protocol sequence. Reuse unchanged qualified mechanism; not universal security sandbox or automatic release.
+
+For a simple five-day average IV (if arithmetic mean is accepted definition), prove intended five daily values, exact calculation and material reached refusal. Reuse truly applicable time/units/persistence/selection proof; still prove signal-specific wiring. Complex models require distinct mathematical witnesses, not blanket cap. Research calibration later.
+
+### A2. Separate G01 proposal ? independent pre-edit review
+
+Published da94b21e60358249ea157eaef5860d9743e749a7, tree fa30cd4e46819f6780d98a68741cf34ca44d3e31, parent efb99bd23d66f49f7d1b2290ad97d42cccc2a265. Sole new file handoff/m02_completion_28_execution/G01_PROSPECTIVE_FINITE_PROOF_CONTROL_20261128.md SHA256 24799afa15b3371d19f20a2cde7912d9f9d1656430cad765d9c9d0d0d2e05e68. Commission section 6; separate verdict review/g01-prospective-case-control-20261128:handoff/m02_completion_28_execution/INDEPENDENT_G01_PROSPECTIVE_FINITE_PROOF_CONTROL_VERDICT_20261128.md. Fetch actual result.
+
+Proposal: use existing finite ledger/contract to mechanically constrain exact authored node population; static source check; refuse stock unguarded runner for finite claims before pytest child; reuse existing exact collection guard for designated Tester; existing economy/adequacy review remains; maximum six new distinct synthetic nonproduct control witnesses proposed. No new registry/runner/framework, universal six-case constant, historical test changes, product release or cases. Reviewer should challenge adequacy and proportionality, static versus actual collection, held/released scope and future case-routing. If no material benefit from a particular new control, omit it.
+
+AK-INGRESS-001/002 require exact accepted brief and applicable binding before G01 implementation. Owner authorised proposal/review, not exact adoption or implementation. After actual independent verdict, resolve findings; seek genuine owner-reserved exact adoption decision, not routine reapproval. Implement only approved paths/witnesses after adoption. Reconcile actual trial remap and intervening changes at suitable checkpoint; separate exact integration authority. No merging stale copied register. Do not confuse prospective enforcement improvement with accepted path-only remap. Leave current 64-case programme running under existing holds, no retrospective refactoring or reruns of 67.
+
+## 5. CAC transport experiment ? independent of engineering correctness
+
+Owner's intended methodology: continuous **forward succession**, fresh Worker -> fresh independent Reviewer -> fresh Worker -> ... . Not alternating back to old chats and not one chat performing both roles. Distinct engineering independence survives transport. PM oversees/observes; do not compete with active writer or interfere with GUI during live handover.
+
+27 November owner expressly superseded former manual-only/GUI prohibition for qualified CAC handovers in root AGENTS commit c57422bdc533f6b25b3051b2533a3e12a6dfed1b, parent 3370d48e097cd7d8eec376b20ae9b3adfa918084, tree 6eaf38b07705378bdcaf913ed7a61beb7545c410. Same independent proof, strict Tester, checkpoint/release requirements. Isolated disposable trial started there, separate checkout; original work/main preserved. Continuous forward succession explicitly carried forward at H20688b after owner overrode prior no-successor instruction. This is a trial extension of the original qualified narrower Worker->Reviewer transition and manager reconciliation, not demonstrated indefinite autonomous looping or general PCA promotion.
+
+### Actual pinned transport
+
+- Existing Continuous Automation Chat (CAC) plugin; use actual installed instructions and pinned qualified native method, not remembered approximation. No competing automation code or another framework.
+- PCA repository JayDEmily/automatic-timer-trial-v1. M 7945fdc3076890502781edae74b0a8837f135b8a; entry E 5af8187767977e16dbe1fc77d873f963ede82278. Ubuntu local reference /home/jds/pca-gate3-step8-overlap-review-20261127; read method/SEQUENTIAL.md and actual intake at M. Windows staged release /mnt/c/ProgramData/ProjectChatAutomator/releases/7945fdc3076890502781edae74b0a8837f135b8a. Native entry tools/windows/Invoke-SequentialProjectHandoff.ps1. Binding D 9c7cb442baf7f55269b9e9981c39e2252e2ae62d4418d0590119cf34e615263c at ~/.local/share/pca/bindings/9c7cb442baf7f55269b9e9981c39e2252e2ae62d4418d0590119cf34e615263c.json; present, SHA256 matches at PM snapshot. Remap independent reviewer verified 13 staged files. Binding specific to trial, not portable merely by copying filename.
+- One active chain per Project, one writer per ref; exact C (subject), H (commission) and separate V (verdict) where required. Fetch H and verify exact expected HEAD/role/dependencies, separate receiver checkout and pinned method/binding. Stale H means stop, not adopt latest job. One Send via native entry; verify original PID, terminal native exit, same bound tab, distinct saved child with exact attributable user turn and numeric group membership. Git C/H/V progression alone not proof of original sender receipt; reconcile original delivery and V separately.
+- Check is read-only. Prepare may navigate/group/select/correct picker but cannot paste or Send; not passive. Repair exact previously saved interrupted source requires same existing binding and does not Send/create child. Normal reuse not FirstAllocation. No competing sender, implicit new tab/window fallback. Actual ordinary Chat, exact Project route, enabled visible empty composer and explicit GPT-6.2 / Extra High verified before Paste/Send. Locked desktop, ambiguous group/route or missing binding can legitimately block. No Work/Codex/API substitution under pinned method.
+- Pinned runbook strict on timeout/refusal/missing response/uncertain Send. Reconcile original process and saved child; no blind retry, alternative UI, fresh H to evade refusal, or second Paste/Send. Owner gave specific bounded recovery overrides for proven pre-Send failures on this disposable trial; NOT blanket waiver for future attempts. Never retry uncertain Send. Quiet Git tip alone doesn't prove inactivity. Establish actual current work and delivery state.
+
+### Failure history and lessons
+
+1. Authoring->Reviewer produced fresh independent verdict. Original commission prohibited successor dispatch; correct stop. Owner changed trial succession authority; H20688b commissioned next Worker, no repeated review.
+2. Reviewer reported model-picker 'Expanded menu not verified', native exit1, conclusively before Paste/Send; assignment already committed. Pinned rule still barred another invocation even on proven pre-Send refusal. Owner explicitly overrode that restriction for this one bounded recovery. User observed fresh Worker; PM independently saw separate Ubuntu checkout and subsequent implementation commits C2a97d52/Hf3f9f8c7. Meaningful progression, not a full independently examined sender receipt.
+3. Subsequent chain reached implementation acceptance and registration. Overnight registration stop was the shared G01 partition conflict, legitimate engineering hold rather than GUI failure. Owner authorised remap. Morning attempt from H7625d86 reported Windows locked; owner unlocked and gave bounded recovery only if definitely stopped before Send. C3800ffd/Hefb99bd/V5da8986 and He1b9919 followed. Actual engineering and fresh review progression; not proof all links intervention-free or original sender exit0.
+4. Hourly natural-language watchdog experiment automation 6b096ec197008191956945c7e7dfd0c3, evening 27 November. Asked scheduler to leave active work alone, reconcile exact eligible stalled work, no embedded code. Last recorded run 08:02 28 November. Disabled at owner request (confirmed update earlier in this conversation). Final run reported locked desktop and did not spawn competing Worker. Contribution to engineering advancement unknown; earlier status lookup failed. Leave disabled. No new scheduling authority.
+5. Main potential CAC improvement: distinguish evidence-confirmed pre-Send refusal permitting bounded recovery from uncertain Send which never permits repeat. Separately scoped proposal for CAC owner, not authority to change CAC here. Don't relax picker, route, membership, role or Send guards just to achieve an uninterrupted appearance. Foreground GUI/session readiness remain actual fragilities.
+
+PCA earlier qualified Gate 3 sequential evidence concerns a single grouped Worker->Reviewer transition; not indefinite succession. Separate four-target overlap qualification returned/not established (review/gate-3-step8-overlap-20261127, recorded V 290dfe3630a8ff17534ce1b96a9e613eae7f2730). Do not conflate separate failed four-way proof with NVIDIA single-chain result. Do not modify PCA code/releases/qualification branch or unrelated projects as PM.
+
+Recommendation: continue authorised engineering on isolated trial, reduce owner interventions by exact commissions and lawful ordinary recovery, not bypassing safety. When asked to check work, prefer read-only repo/receiver evidence. If actual outstanding handover blocked, reconcile original sending conversation rather than create duplicate assignment. Start fresh eligible thread only under actual authority. This management branch is not a chain participant.
+
+## 6. Immediate decision queue
+
+1. Fetch live trial and independent refs. At initial snapshot remap ACCEPT and installation commissioned, outcome not yet established. Leave active work alone. If paused, classify engineering versus transport issue and exact lawful next action.
+2. Fetch G01 proposal verdict, verify actual parent, sole report and scope. Resolve genuine findings or seek exact owner adoption when appropriate; do not claim implemented/reviewed before evidence. Proposal does not itself alter G01.
+3. Monitor proof economy on new unadmitted work: separate counts from duplicated setup, reuse applicable accepted evidence, challenge each additional witness against distinct failure/proposition. No reopening valid historical tests, extra 64-case work, reruns of 67, or invented gates. Track 24 outstanding mandatory outputs and dependencies, not chats/documents.
+4. Preserve designated Tester intake/release boundary for actual installed first-stage registrations; verify actual receiver, source/profile, claim generation, runtime and exact ordered nodes under applicable guard. Prior acceptance does not release new proof. D145 paused.
+5. If G01 accepted/adopted, reconcile at safe engineering checkpoint before new unadmitted case authoring; smallest accepted exact diff, no live concurrent changes or whole-branch merge.
+6. Keep foundation completion distinct from Astra's future product architecture; research and coefficients are uncalibrated until later authorised programme. No live broker, paper/live orders, production deployment, PG migration or new strategy scope without separate decision.
+7. Preserve material PM judgement and decisions here; use next fresh PM conversation when context becomes unwieldy. No timer needed for this management record.
+
+## 7. Copy/paste restart commission for a fresh PM conversation
+
+Act as successor NVIDIA project manager/adviser, not an engineering Worker, independent Reviewer or strict Tester.
+
+Repository JayDEmily/nvda_29102026, management branch management/nvidia-project-manager. Fetch current exact tip via Remote Desktop Commander and Ubuntu Git. Read handoff/project_manager/PM_CONTINUITY.md; reread applicable GUARDRAILS.md in full, current AGENTS, EXEC_PLAN, test override, relevant live engineering register/ledger, original Astra ADR and actual independently published evidence identified in the record. Reconcile actual current trial, original work, main, G01 proposal and review refs; do not execute the copied management-branch register assignment.
+
+Continue two distinct responsibilities: oversee and refine deterministic financial engineering and proportionate proof against adopted Astra decisions; oversee CAC transport without conflating it with engineering correctness or competing with active work. Preserve exact evidence, authority, independent roles and holds. Be a critical engineer, not a receipt factory. Identify genuine reserved decisions and blockers; recommend least complex adequate correction and implement only authorised actions. Maintain this management record in isolated commits when authorised. No automatic CAC activation, GUI, source change, test execution, integration or scheduler restart follows from this handover.
+
+### Evidence boundaries
+
+Initial record derives from actual prior PM work, owner instructions, original Astra/adoption records, current remote refs/register/ledger, actual remap verdict, G01 proposal, authoring/implementation Git objects and pinned CAC method. Current snapshot observed 28 November 2026 around 08:54?08:55 AEDT. Earlier sender failure particulars and owner's motivation are attributed reports/conversation observations, not newly recovered complete native logs. No new full historical receiver qualification, product rerun, historical product-corpus re-audit, financial proof or general CAC qualification claimed. Existing PM notes are evidence/advice, never authority to execute. Reverify after every meaningful state change.
