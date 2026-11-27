@@ -18,7 +18,7 @@ Owner-reserved boundaries: frozen GUARDRAILS change, new source/domain policy, p
 
 At a real tool/session limit, record the last verified Git checkpoint, incomplete work and next action. There is no background continuation.
 
-### Manual handover economy ? owner directive (27 November 2026)
+### Manual handover economy - owner directive (27 November 2026)
 
 Use the GUI-free manual handover workflow: perform repository work through Remote Desktop Commander and Ubuntu Git; do not operate the GUI or launch review conversations. The owner manually initiates distinct independent reviewer and Tester conversations using concise copy-and-paste commissions. Retain the accepted pinned Git checkpoint and receiver-verification method; the historical GUI transport procedure is not permission to operate the GUI.
 
