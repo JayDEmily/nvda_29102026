@@ -1054,36 +1054,36 @@ def _aligned_history_extensions(
             'D071',
             '65f2d0f9135f291773ab6081ec76892a967315df3ecb9c1760a4e2687a296e5e',
             '30cbb5fe2f8a1b720bc58b55b05f3c88b736401f03d03199404444b60330dc03',
-            'c3b176e6471c95b4334c3c25aedf31d8c1afa4e30b1ddaee9b4d5a60eaf6bb68',
-            '5422a733f2a25ac23817c3a4544ab99e48eca3561deb2d2dd87284f56a266263',
+            '5f771b88c96699b9dd56b724e9e87df6f541706bdfff442842ee70d4daaedb30',
+            'cea962241291786b3c2606cc56f003b77809352c7643408af88487e8200cb526',
         ),
         (
             'D072',
             '4f8214d1ca11eaf0769206f3f322c799f44883bd266e63748e937dea5602b739',
             '637ff9b90b916ee69ee956db28e191ef86be3764ce2004b5fc24e371fa5869df',
-            'dbbc72bd13284cc0665fa3d7a0bf85220f06b6fb43f3e32dce4ea1af23bd9990',
-            'f40809d42c19ae5d9a69d6ecadc0da4a0aaaca53c0ed324365f0827bda761b83',
+            '1b1974b23aa8e79b6c420b0cb32f09ad34220d7672d7239bc0b425ce14ff82e3',
+            '1260a7c77fe9ac48c07b44cb53c3830df4a0f6b6d77c1824d224325613eb5abb',
         ),
         (
             'D073',
             'a7234477d581e6cba27e470919fa092c4ed5054d5a1aa31d2019d8fa94d16f48',
             '867444cecdf23c191269b1b3856410cc1ee6e3b81b8730dafa6d6528b78d6e0a',
-            'db4d78db436cf9c8c89a5aa247b12e90a74b9cb155def3cddb5ad9ccd46eec60',
-            'eeab4960c3ff8008aa516d7345dde9382aae5fa4a20b28d620eb2016d8cef11e',
+            '0105ec67828efed9019c75808c6d79315ddb7c9e0c9a8a666d49b46cf9fcfdb5',
+            '8e61dc08aa7324bdf128419096ac4afb85731e047ca4bfcc2da377e2f0f4a084',
         ),
         (
             'D074',
             '524b2d2a4aa94a0c1c55ea376650d14648af67c46e73763ce3e8cc0f2e9e0c0e',
             'f2a2208a73d291e614577eaf2b81ffd13d699c4efbc2eeeb6258569ac8aa1c34',
-            '10d744c833ac882adef4263f0a0172ddabf165982e6618bad4d95b1af00f4f22',
-            '71f7b6266188581adbeb839af8a22fc58c4976db8127a6f6fbf390943560b18f',
+            '708f6dc03c755e68c8232f699d80b2b27d973b7e2406daacf4f5fdc3f34d8d79',
+            '622726a8fa4da0cc4890390335d6f159aacc823f9a13917a007f2ef77f1eb94a',
         ),
         (
             'D075',
             '24ec8f08faf1a61059cee69b8c675767345809ae6a0dd90ab852a2fc30977750',
             '50120c02327ed212e8821ac3795d4f64daa3e38d77ecd5c92c7b20f6a2ba8c3f',
-            '81e025f205039f376ced0d027cd9c7e65930a30a5fbbe8c43997725ef701dc2c',
-            'adeec41c60fc259073c3ada2bafbfadfea5c949361512e9322282d5ce07be452',
+            '6bfc41f1415ff9c68776f0ae79c6b35ec19cb3e0a16dc2a0706970be57dc8d8f',
+            '19d2f6e7c31089158bb7aa6fa4fafb00fd0448e4e8db1f16bbd581315dbbaf13',
         ),
     )
     present = tuple(
@@ -1100,7 +1100,11 @@ def _aligned_history_extensions(
     policy_path = leaf + "ALIGNED_HISTORY_SOURCE_POLICY_PROPOSED_20261126.json"
     manifest_path = leaf + "ALIGNED_HISTORY_FINITE_SPECIMENS_PROPOSED_20261126.json"
     inventory_path = leaf + "ALIGNED_HISTORY_JOINT_FIT_FINITE_CASES_PROPOSED_20261126.json"
+    remap_owner_path = leaf + "OWNER_G01_PROSPECTIVE_PARTITION_REMAP_AUTHORIZATION_20261128.json"
+    remap_path = leaf + "G01_PARTITION_REMAP_20261128/PATH_ONLY_SUCCESSOR_AUTHORITY.json"
     pins = {
+        remap_owner_path: "cbc85f756911a9f1a926f862284168acc6f83266f8f07c0b1b68e3e2547190ff",
+        remap_path: "11d90adf234d5195d3bd31a6b42df9b046c4ad53690cb279ef071d52b3049aa7",
         owner_path: "6a71f52981fc01da42f9c27726547d0d1ddd69851561479a007aeb30ebd95a41",
         policy_path: "9ba56098c273007980c893db39931ac86e7a3185bbb665f8c3f1e14f99b72af1",
         manifest_path: "bb03481de75e1820c7aff61777a4a3aa4f676440ec03e373a05c032a0417c76d",
@@ -1112,6 +1116,7 @@ def _aligned_history_extensions(
     owner = read_json(safe_path(root, owner_path))
     package, = [row for row in owner["adopted_packages"] if row["package"] == "aligned_history"]
     inventory = read_json(safe_path(root, inventory_path))
+    remapping = read_json(safe_path(root, remap_path))
     cases = inventory["physical_cases"]
     if (
         owner["exact_total_cases"] != 64
@@ -1128,7 +1133,9 @@ def _aligned_history_extensions(
     for jurisdiction, brief_hash, binding_hash, contract_hash, descriptor_hash in present:
         lower = jurisdiction.lower()
         prefix = f"config/product_proof/m02_aligned_history_{lower}"
-        physical_root = f"tests/product/m02_completion_28/support/{lower}-history"
+        original_root = f"tests/product/m02_completion_28/support/{lower}-history"
+        original_family_path = original_root + "/test_profile.py"
+        physical_root = f"tests/product/m02_completion_28_prospective/support/{lower}-history"
         family_path = physical_root + "/test_profile.py"
         claim_id = f"neutral_market_measurement_truth_l01a_{lower}_history"
         proof_id = f"SUP-{jurisdiction}-HISTORY"
@@ -1137,7 +1144,11 @@ def _aligned_history_extensions(
         binding_path = (
             f"implementation/authority/T01_ALIGNED_HISTORY_{jurisdiction}_AUTHORITY_BINDING.yaml"
         )
-        contract_path = leaf + f"ALIGNED_HISTORY_{jurisdiction}_PROOF_CONTRACT.json"
+        original_contract_path = leaf + f"ALIGNED_HISTORY_{jurisdiction}_PROOF_CONTRACT.json"
+        contract_path = (
+            leaf + "G01_PARTITION_REMAP_20261128/"
+            + f"ALIGNED_HISTORY_{jurisdiction}_PROOF_CONTRACT.json"
+        )
         expected = {
             "schema_version": "1.0",
             "claim_id": claim_id,
@@ -1175,16 +1186,37 @@ def _aligned_history_extensions(
             package["exact_nonfungible_ceilings"][jurisdiction] != 2
             or len(own) != 2 or any(row["proof_id"] != proof_id for row in own)
             or claim["proof_id"] != proof_id or claim["claim_id"] != claim_id
-            or claim["family_id"] != family_id or claim["family_path"] != family_path
-            or claim["descriptor_directory"] != prefix or claim["physical_root"] != physical_root
+            or claim["family_id"] != family_id or claim["family_path"] != original_family_path
+            or claim["descriptor_directory"] != prefix or claim["physical_root"] != original_root
             or claim["own_brief_path"] != brief_path or claim["own_binding_path"] != binding_path
-            or claim["future_contract_path"] != contract_path
+            or claim["future_contract_path"] != original_contract_path
             or claim["proposed_case_count"] != 2 or claim["proposed_nonfungible_ceiling"] != 2
             or claim["ordered_case_ids"] != [row["case_id"] for row in own]
             or claim["ordered_nodes"] != nodes
-            or nodes != [family_path + "::" + name for name in names]
+            or nodes != [original_family_path + "::" + name for name in names]
         ):
             raise ValueError("aligned history nonfungible family allocation mismatch")
+        remap, = [row for row in remapping["claims"] if row["proof_id"] == proof_id]
+        if (
+            remap["package"] != "aligned_history"
+            or remap["jurisdiction"] != jurisdiction
+            or remap["claim_id"] != claim_id or remap["family_id"] != family_id
+            or remap["original_root"] != original_root
+            or remap["original_family_path"] != original_family_path
+            or remap["original_ordered_nodes"] != nodes
+            or remap["ordered_case_ids"] != claim["ordered_case_ids"]
+            or remap["descriptor_directory"] != prefix
+            or remap["own_brief_path"] != brief_path
+            or remap["own_binding_path"] != binding_path
+            or remap["original_contract_path"] != original_contract_path
+            or remap["new_contract_path"] != contract_path
+            or remap["new_root"] != physical_root or remap["new_family_path"] != family_path
+            or remap["new_ordered_nodes"] != [family_path + "::" + name for name in names]
+            or remap["exact_case_count"] != 2 or remap["exact_nonfungible_ceiling"] != 2
+            or remap["scope"] != "INACTIVE_FIRST_STAGE_ARTEFACTS"
+            or remap["execution_release"] is not False
+        ):
+            raise ValueError("aligned history path-only successor authority mismatch")
         contract = read_json(safe_path(root, contract_path))
         _schema(root, contract, "accepted_brief_product_proof.schema.json")
         if (

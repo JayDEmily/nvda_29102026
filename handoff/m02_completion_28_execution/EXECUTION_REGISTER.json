@@ -46,7 +46,7 @@
         "L00"
       ],
       "obligation": "Bind actual public D071/D075/D076/D077 history producers, aligned sample/window/knowledge cutoffs, current exclusion, rank/conditioning and exact output codec. One fixed historical observation is insufficient for rolling history. Keep one OLS-with-intercept model, common immutable fit/intercept/sample identity and M02 neutral ownership. Prepare correlated full-rank exact synthetic success data which distinguish joint from separate univariate fits, an informative nonzero held-out residual, a concrete deficient-rank history and a per-coefficient mixed-fit refusal. Existing 64 orthogonal rows remain valid example arithmetic only. Admit/prove necessary history profiles separately; never inject expected D outputs as raw/configuration facts.",
-      "status": "OWNER_AUTHORISED_BOUNDED_PROSPECTIVE_REMAP_REGISTRATION_HELD",
+      "status": "PROSPECTIVE_REMAP_CANDIDATE_INDEPENDENT_REVIEW_PENDING_REGISTRATION_HELD",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G1_AFTER_L06",
@@ -113,7 +113,7 @@
         ],
         "execution_release": false,
         "product_status": "NOT_ATTEMPTED",
-        "first_unmet_invariant": "Exact prospective remapping and independently cleared G01-compatible physical ownership partition required before any affected registration. Owner authorised bounded remapping; no activation or execution release.",
+        "first_unmet_invariant": "Fresh independent documentary acceptance of exact path-only remap and five inactive packages, then authorised registration and separate strict Tester intake/release; no execution release.",
         "tester_designation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
         "tester_status": "CANDIDATE_SPECIFIC_INTAKE_REQUIRED",
         "scope": "Controlled synthetic only; no official/native certification or new product acceptance",
@@ -679,6 +679,221 @@
           "case_count": 64,
           "execution_release": false,
           "registration_installation_blocked": true
+        },
+        "prospective_partition_remap_candidate_preparation": {
+          "status": "INACTIVE_PENDING_INDEPENDENT_REVIEW",
+          "mapping_path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/PATH_ONLY_SUCCESSOR_AUTHORITY.json",
+          "mapping_sha256": "11d90adf234d5195d3bd31a6b42df9b046c4ad53690cb279ef071d52b3049aa7",
+          "claim_count": 17,
+          "case_count": 64,
+          "first_stage_claims": 5,
+          "first_stage_cases": 10,
+          "other_claims_mapping_only": 12,
+          "existing_catalogue_and_descriptor_roots": 118,
+          "staged_files": [
+            {
+              "path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D071_TEST_SOURCE.py",
+              "sha256": "5c3a920006e9952e58e2e7ec6efe477e8e48e1f51bea9d6e6ff7744e6c3f20df",
+              "original_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D071_TEST_SOURCE.py",
+              "original_sha256": "7fbdecc10300be61a8741c54d5c2592a17ccf84171ecfc83568120e4f83eb39a",
+              "future_destination": "tests/product/m02_completion_28_prospective/support/d071-history/test_profile.py"
+            },
+            {
+              "path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D071_CLAIM_CANDIDATE.json",
+              "sha256": "cea962241291786b3c2606cc56f003b77809352c7643408af88487e8200cb526",
+              "original_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D071_CLAIM_CANDIDATE.json",
+              "original_sha256": "5422a733f2a25ac23817c3a4544ab99e48eca3561deb2d2dd87284f56a266263",
+              "future_destination": "config/product_proof/m02_aligned_history_d071/claim.json"
+            },
+            {
+              "path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D071_GENERATION_0001_CANDIDATE.json",
+              "sha256": "985625000ee98f9adfdf334e391ee19e767ac1b804e25b9eb209d9bf82a68dda",
+              "original_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D071_GENERATION_0001_CANDIDATE.json",
+              "original_sha256": "4f689fab2d862f1cc4ed863de28394bb606be258ff0fadb9b0a0d9473e3af879",
+              "future_destination": "config/product_proof/m02_aligned_history_d071/generations/0001.json"
+            },
+            {
+              "path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D071_ADMISSION_CANDIDATE.json",
+              "sha256": "bcfbb089756d5a6ab21a2a5cd63991aaad1f609f81ebbebb89aa90f706f98fb5",
+              "original_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D071_ADMISSION_CANDIDATE.json",
+              "original_sha256": "fe900346772f996539aac5257313756b8858959f6c24b16dc2f93e89113b1cf5",
+              "future_destination": "config/product_proof/m02_aligned_history_d071/admission.json"
+            },
+            {
+              "path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D071_PROOF_CONTRACT.json",
+              "sha256": "5f771b88c96699b9dd56b724e9e87df6f541706bdfff442842ee70d4daaedb30",
+              "original_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D071_PROOF_CONTRACT.json",
+              "original_sha256": "c3b176e6471c95b4334c3c25aedf31d8c1afa4e30b1ddaee9b4d5a60eaf6bb68",
+              "future_destination": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D071_PROOF_CONTRACT.json"
+            },
+            {
+              "path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D072_TEST_SOURCE.py",
+              "sha256": "20e86ceee72f6e4190137dbde967c44aedd824ca7a89d2120ba20432e91821a3",
+              "original_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D072_TEST_SOURCE.py",
+              "original_sha256": "87e5541a89f03c797c6e51c3648c21f13dbb18d28dc31cf4cadb72cb1a07d262",
+              "future_destination": "tests/product/m02_completion_28_prospective/support/d072-history/test_profile.py"
+            },
+            {
+              "path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D072_CLAIM_CANDIDATE.json",
+              "sha256": "1260a7c77fe9ac48c07b44cb53c3830df4a0f6b6d77c1824d224325613eb5abb",
+              "original_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D072_CLAIM_CANDIDATE.json",
+              "original_sha256": "f40809d42c19ae5d9a69d6ecadc0da4a0aaaca53c0ed324365f0827bda761b83",
+              "future_destination": "config/product_proof/m02_aligned_history_d072/claim.json"
+            },
+            {
+              "path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D072_GENERATION_0001_CANDIDATE.json",
+              "sha256": "385a1499264023184f5ce9ba2ea0f17efa5bdaa57b449a79a412ae1d6b524936",
+              "original_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D072_GENERATION_0001_CANDIDATE.json",
+              "original_sha256": "3e2f8decd9db53b24474a785e59c002b742cf1af207f93f91da48ac4659c6582",
+              "future_destination": "config/product_proof/m02_aligned_history_d072/generations/0001.json"
+            },
+            {
+              "path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D072_ADMISSION_CANDIDATE.json",
+              "sha256": "095cfc8c92a2d54cdac2a2b2001add96c3ea200ac1768bbec658185b031c308d",
+              "original_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D072_ADMISSION_CANDIDATE.json",
+              "original_sha256": "46b75d1b8fed7e0bb94c1adbe9cf8fc3669a8c3daa39b1968d8dbd3e270994f0",
+              "future_destination": "config/product_proof/m02_aligned_history_d072/admission.json"
+            },
+            {
+              "path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D072_PROOF_CONTRACT.json",
+              "sha256": "1b1974b23aa8e79b6c420b0cb32f09ad34220d7672d7239bc0b425ce14ff82e3",
+              "original_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D072_PROOF_CONTRACT.json",
+              "original_sha256": "dbbc72bd13284cc0665fa3d7a0bf85220f06b6fb43f3e32dce4ea1af23bd9990",
+              "future_destination": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D072_PROOF_CONTRACT.json"
+            },
+            {
+              "path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D073_TEST_SOURCE.py",
+              "sha256": "3a5289c5d1933fcf6c84ae0d520f316d56c33ce87ca86433204776fc123e6c3a",
+              "original_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D073_TEST_SOURCE.py",
+              "original_sha256": "67ec39e95b2d696e67f9986ed6e26aaf26ddd05756e2b54f2e8083bbfe22c404",
+              "future_destination": "tests/product/m02_completion_28_prospective/support/d073-history/test_profile.py"
+            },
+            {
+              "path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D073_CLAIM_CANDIDATE.json",
+              "sha256": "8e61dc08aa7324bdf128419096ac4afb85731e047ca4bfcc2da377e2f0f4a084",
+              "original_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D073_CLAIM_CANDIDATE.json",
+              "original_sha256": "eeab4960c3ff8008aa516d7345dde9382aae5fa4a20b28d620eb2016d8cef11e",
+              "future_destination": "config/product_proof/m02_aligned_history_d073/claim.json"
+            },
+            {
+              "path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D073_GENERATION_0001_CANDIDATE.json",
+              "sha256": "005801524cd9787e72581b49c0305226930e7ddad319bbb3d829988ad6845a8c",
+              "original_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D073_GENERATION_0001_CANDIDATE.json",
+              "original_sha256": "8de75c93dccfe261b72a7152d790e6f9dbe82c0eb9ee4e5e938097f81ef6d670",
+              "future_destination": "config/product_proof/m02_aligned_history_d073/generations/0001.json"
+            },
+            {
+              "path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D073_ADMISSION_CANDIDATE.json",
+              "sha256": "8193931644b5870a6785afec07686721159878b3823c15c15a49966bc026db45",
+              "original_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D073_ADMISSION_CANDIDATE.json",
+              "original_sha256": "0944b9429dfa92686949814606fc19cd7d9ffa2a4c4d371266e31e006cc78097",
+              "future_destination": "config/product_proof/m02_aligned_history_d073/admission.json"
+            },
+            {
+              "path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D073_PROOF_CONTRACT.json",
+              "sha256": "0105ec67828efed9019c75808c6d79315ddb7c9e0c9a8a666d49b46cf9fcfdb5",
+              "original_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D073_PROOF_CONTRACT.json",
+              "original_sha256": "db4d78db436cf9c8c89a5aa247b12e90a74b9cb155def3cddb5ad9ccd46eec60",
+              "future_destination": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D073_PROOF_CONTRACT.json"
+            },
+            {
+              "path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D074_TEST_SOURCE.py",
+              "sha256": "e96123115973c985a75b7b978aad8a9b2cd65c7f63488a0ca76da036627d63d9",
+              "original_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D074_TEST_SOURCE.py",
+              "original_sha256": "4caa1039b495463a118f62bdd461ced7d4828fc3c63f0a39b9c01438dd76f277",
+              "future_destination": "tests/product/m02_completion_28_prospective/support/d074-history/test_profile.py"
+            },
+            {
+              "path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D074_CLAIM_CANDIDATE.json",
+              "sha256": "622726a8fa4da0cc4890390335d6f159aacc823f9a13917a007f2ef77f1eb94a",
+              "original_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D074_CLAIM_CANDIDATE.json",
+              "original_sha256": "71f7b6266188581adbeb839af8a22fc58c4976db8127a6f6fbf390943560b18f",
+              "future_destination": "config/product_proof/m02_aligned_history_d074/claim.json"
+            },
+            {
+              "path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D074_GENERATION_0001_CANDIDATE.json",
+              "sha256": "837f47a8850459ed3e6de43159c72906d82e81d048a23b3c968b38726e1be761",
+              "original_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D074_GENERATION_0001_CANDIDATE.json",
+              "original_sha256": "8bc49b8d9b0258f581d2c866777ae2145c1ca9cfe5925afb68397a261f2cf68b",
+              "future_destination": "config/product_proof/m02_aligned_history_d074/generations/0001.json"
+            },
+            {
+              "path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D074_ADMISSION_CANDIDATE.json",
+              "sha256": "3487dd8714d7a80177c5bf4ffdfe89ca822805b7088872bde9e5d582e74b03b3",
+              "original_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D074_ADMISSION_CANDIDATE.json",
+              "original_sha256": "f2d8c1a681a6c88da6547884f4bb7d59138789083695b40fe967ad6623fa90fe",
+              "future_destination": "config/product_proof/m02_aligned_history_d074/admission.json"
+            },
+            {
+              "path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D074_PROOF_CONTRACT.json",
+              "sha256": "708f6dc03c755e68c8232f699d80b2b27d973b7e2406daacf4f5fdc3f34d8d79",
+              "original_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D074_PROOF_CONTRACT.json",
+              "original_sha256": "10d744c833ac882adef4263f0a0172ddabf165982e6618bad4d95b1af00f4f22",
+              "future_destination": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D074_PROOF_CONTRACT.json"
+            },
+            {
+              "path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D075_TEST_SOURCE.py",
+              "sha256": "4fdeed336e1fa67db77c577755d14810bf576cdbf72d393993d0c98e1802a94c",
+              "original_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D075_TEST_SOURCE.py",
+              "original_sha256": "a368c6c8d0628a34dfd843bd0ee62674c111f891a3bac097f512bd0bcc74ceae",
+              "future_destination": "tests/product/m02_completion_28_prospective/support/d075-history/test_profile.py"
+            },
+            {
+              "path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D075_CLAIM_CANDIDATE.json",
+              "sha256": "19d2f6e7c31089158bb7aa6fa4fafb00fd0448e4e8db1f16bbd581315dbbaf13",
+              "original_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D075_CLAIM_CANDIDATE.json",
+              "original_sha256": "adeec41c60fc259073c3ada2bafbfadfea5c949361512e9322282d5ce07be452",
+              "future_destination": "config/product_proof/m02_aligned_history_d075/claim.json"
+            },
+            {
+              "path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D075_GENERATION_0001_CANDIDATE.json",
+              "sha256": "18171abfb47452e2600f5169fa80a26c70d2b4a4045b0c167070356a954330ca",
+              "original_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D075_GENERATION_0001_CANDIDATE.json",
+              "original_sha256": "66650a4b69af949f7360d23f42ece7e4179f843218666900c15a0b3586e12ef2",
+              "future_destination": "config/product_proof/m02_aligned_history_d075/generations/0001.json"
+            },
+            {
+              "path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D075_ADMISSION_CANDIDATE.json",
+              "sha256": "2d355fa058ad406c9855199c163cb48d5298b9f405d8e5f18d547384754bde5f",
+              "original_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D075_ADMISSION_CANDIDATE.json",
+              "original_sha256": "6830f1c9e5020a61627e598cfd98dd6f227d6bdc47e6eb0fffb968a0b5aa06a5",
+              "future_destination": "config/product_proof/m02_aligned_history_d075/admission.json"
+            },
+            {
+              "path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D075_PROOF_CONTRACT.json",
+              "sha256": "6bfc41f1415ff9c68776f0ae79c6b35ec19cb3e0a16dc2a0706970be57dc8d8f",
+              "original_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D075_PROOF_CONTRACT.json",
+              "original_sha256": "81e025f205039f376ced0d027cd9c7e65930a30a5fbbe8c43997725ef701dc2c",
+              "future_destination": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D075_PROOF_CONTRACT.json"
+            }
+          ],
+          "route_path": "tools/product_proof_claims.py",
+          "route_sha256": "dbb30018c8775a99c2f3305130496939e0f89f144dfc877493afda0e60d11c4a",
+          "ledger_sha256": "5d1ac21a0cf62fe98efe5d4bd5c510094d139e6ae6bd3fc85d10924d67189c89",
+          "execution_release": false,
+          "product_cases_executed": 0,
+          "validation": {
+            "method": "Worker documentary checks only; no product import, collection, execution or activation",
+            "physical_jurisdictions": 17,
+            "ordered_cases": 64,
+            "new_roots_disjoint_from_existing_roots": 118,
+            "all_new_roots_mutually_disjoint": true,
+            "existing_physical_test_files_owned": 221,
+            "hypothetical_first_stage_new_family_files": 5,
+            "unchanged_accepted_ledger_cases": 67,
+            "held_ledger_cases": 64,
+            "first_stage_not_attempted": 10,
+            "old_files_preserved": true,
+            "schema_valid_contracts": 5,
+            "schema_valid_generations_and_pointers": 10,
+            "staged_source_reverse_docstring_equivalence": 5,
+            "targeted_ruff_clean_files": 6,
+            "historical_required_ref_rows": 2281,
+            "historical_distinct_tip_objects": 170,
+            "git_fsck_full": "PASS",
+            "vendored_wheel_hash_and_size_matches": 21,
+            "legacy_asset_note": "Historical non-Git asset gaps and subsequent evidence records retained unchanged; no new qualification or recovery asserted."
+          }
         }
       }
     },
