@@ -3158,3 +3158,183 @@ __all__ += [
     "D110ScalarOccurrenceV1", "D110ScalarOwnerV1", "D110ScalarReadsV1",
     "D110ScalarRequestV1", "create_d110_scalar_owner", "create_d110_scalar_reader",
 ]
+
+
+class AlignedHistorySourceV1:
+    """Construction-sealed M00 public read facets for controlled aligned history."""
+
+    __slots__ = (
+        "__admission", "__count", "__digest", "__get", "__history", "__project", "__specimen",
+    )
+
+    __admission: OwnerAdmissionV1
+    __specimen: str
+    __digest: str
+    __count: int
+    __get: Callable[..., raw_api.RawObservationOccurrenceV1 | None]
+    __project: Callable[..., raw_api.ProjectedRawValueV1 | None]
+    __history: Callable[..., raw_api.ProjectedRawHistoryPageV1]
+
+    def __init__(self) -> None:
+        raise TypeError("use create_aligned_history_source with an exact admitted specimen")
+
+    def __setattr__(self, name: str, value: object) -> None:
+        raise AttributeError("sealed aligned history source is immutable")
+
+    def __delattr__(self, name: str) -> None:
+        raise AttributeError("sealed aligned history source is immutable")
+
+    @classmethod
+    def _from_sealed(
+        cls, *, admission: OwnerAdmissionV1, specimen_id: str, digest: str, count: int,
+        getter: Callable[..., raw_api.RawObservationOccurrenceV1 | None],
+        projection: Callable[..., raw_api.ProjectedRawValueV1 | None],
+        history: Callable[..., raw_api.ProjectedRawHistoryPageV1],
+    ) -> AlignedHistorySourceV1:
+        value = object.__new__(cls)
+        for field, item in (
+            ("admission", admission), ("specimen", specimen_id), ("digest", digest),
+            ("count", count), ("get", getter), ("project", projection), ("history", history),
+        ):
+            object.__setattr__(value, "_AlignedHistorySourceV1__" + field, item)
+        return value
+
+    def _matches_admission(self, admission: OwnerAdmissionV1) -> bool:
+        return self.__admission == admission
+
+    @property
+    def specimen_id(self) -> str:
+        return self.__specimen
+
+    @property
+    def expanded_sha256(self) -> str:
+        return self.__digest
+
+    @property
+    def expanded_count(self) -> int:
+        return self.__count
+
+    def get_raw_observation_occurrence(
+        self, observation_occurrence_id: object,
+    ) -> raw_api.RawObservationOccurrenceV1 | None:
+        return self.__get(observation_occurrence_id)
+
+    def project_raw_value(
+        self, raw_signal_catalogue_id: raw_api.RawSignalCatalogueId,
+        observation_occurrence_id: object, *,
+        mappings: Sequence[raw_api.RawSignalProjectionMappingV1],
+    ) -> raw_api.ProjectedRawValueV1 | None:
+        return self.__project(
+            raw_signal_catalogue_id, observation_occurrence_id, mappings=mappings,
+        )
+
+    def list_projected_raw_history(
+        self, raw_signal_catalogue_id: raw_api.RawSignalCatalogueId, *,
+        mappings: Sequence[raw_api.RawSignalProjectionMappingV1],
+        subject_instrument: str | None,
+        received_at_or_before_utc: datetime | None,
+        event_at_or_before_utc: datetime | None = None,
+        limit: int, cursor: str | None,
+    ) -> raw_api.ProjectedRawHistoryPageV1:
+        return self.__history(
+            raw_signal_catalogue_id, mappings=mappings, subject_instrument=subject_instrument,
+            received_at_or_before_utc=received_at_or_before_utc,
+            event_at_or_before_utc=event_at_or_before_utc, limit=limit, cursor=cursor,
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class AlignedHistoryRequestV1(_Validated):
+    derived_signal_id: str
+    subject_instrument: str
+    slot: str
+    as_of_utc: datetime
+    knowledge_cutoff_utc: datetime
+    calculation_definition_version: str
+    source_profile_ref: VersionRefV1
+    parameter_set_ref: VersionRefV1
+    input_selection_policy_ref: VersionRefV1
+    context_refs: tuple[VersionRefV1, ...]
+    predecessor_occurrence_ids: tuple[str, ...]
+
+
+@dataclass(frozen=True, slots=True)
+class AlignedHistoryOccurrenceV1(_Validated):
+    owner_object_id: str
+    owner_namespace: str
+    implementation_brief_sha256: str
+    derived_signal_id: str
+    derived_occurrence_id: str
+    request: AlignedHistoryRequestV1
+    definition: CalculationDefinitionV1
+    source_policy_sha256: str
+    source_profile_ref: VersionRefV1
+    parameter_set: CalculationParameterSetV1
+    input_selection_policy: InputSelectionPolicyVersionV1
+    window_context: WindowContextV1
+    projection_mappings: tuple[raw_api.RawSignalProjectionMappingV1, ...]
+    unit_conventions: tuple[UnitConventionVersionV1, ...]
+    original_observations: tuple[raw_api.RawObservationOccurrenceV1, ...]
+    selected_projections: tuple[raw_api.ProjectedRawValueV1, ...]
+    predecessors: tuple[AlignedHistoryOccurrenceV1, ...]
+    result: Decimal
+    units: str
+    result_shape: str
+    window_seconds: int
+    effective_as_of_utc: datetime
+    knowledge_cutoff_utc: datetime
+    calculated_at_utc: datetime
+
+
+class AlignedHistoryReadsV1(Protocol):
+    def get_derived_occurrence(
+        self, derived_occurrence_id: str,
+    ) -> AlignedHistoryOccurrenceV1 | None: ...
+
+    def list_derived_history(
+        self, *, derived_signal_id: str, subject_instrument: str,
+        effective_at_or_before_utc: datetime, knowledge_at_or_before_utc: datetime,
+        limit: int,
+    ) -> tuple[AlignedHistoryOccurrenceV1, ...]: ...
+
+
+class AlignedHistoryOwnerV1(Protocol):
+    @property
+    def reads(self) -> AlignedHistoryReadsV1: ...
+
+    def materialise(
+        self, request: AlignedHistoryRequestV1,
+    ) -> AlignedHistoryOccurrenceV1 | None: ...
+
+
+def create_aligned_history_source(
+    *, admission: OwnerAdmissionV1, specimen_id: str,
+) -> AlignedHistorySourceV1:
+    from ._aligned_history_source import build_source
+
+    return build_source(admission, specimen_id)
+
+
+def create_aligned_history_owner(
+    *, admission: OwnerAdmissionV1, source: AlignedHistorySourceV1,
+    predecessor_read_storages: tuple[SQLiteReadStorageV1, ...],
+    storage: SQLiteStorageV1, utc_now: Callable[[], datetime],
+) -> AlignedHistoryOwnerV1:
+    from ._aligned_history_returns import build_owner
+
+    return build_owner(admission, source, predecessor_read_storages, storage, utc_now)
+
+
+def create_aligned_history_reader(
+    *, admission: OwnerAdmissionV1, storage: SQLiteReadStorageV1,
+) -> AlignedHistoryReadsV1:
+    from ._aligned_history_returns import build_reader
+
+    return build_reader(admission, storage)
+
+
+__all__ += [
+    "AlignedHistoryOccurrenceV1", "AlignedHistoryOwnerV1", "AlignedHistoryReadsV1",
+    "AlignedHistoryRequestV1", "AlignedHistorySourceV1", "create_aligned_history_owner",
+    "create_aligned_history_reader", "create_aligned_history_source",
+]

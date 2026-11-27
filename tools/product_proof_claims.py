@@ -1043,6 +1043,181 @@ def _scalar_straddle_extensions(
     return tuple(result)
 
 
+def _aligned_history_extensions(
+    root: Path,
+) -> tuple[tuple[dict[str, Any], dict[str, Any], str], ...]:
+    """Five exact reviewed underlying-history claim routes, dormant without descriptors."""
+    leaf = "handoff/m02_completion_28_execution/L01a/"
+    # Separate, nonfungible own-brief, binding, contract and descriptor pins.
+    exact = (
+        (
+            'D071',
+            '65f2d0f9135f291773ab6081ec76892a967315df3ecb9c1760a4e2687a296e5e',
+            '30cbb5fe2f8a1b720bc58b55b05f3c88b736401f03d03199404444b60330dc03',
+            'c3b176e6471c95b4334c3c25aedf31d8c1afa4e30b1ddaee9b4d5a60eaf6bb68',
+            '5422a733f2a25ac23817c3a4544ab99e48eca3561deb2d2dd87284f56a266263',
+        ),
+        (
+            'D072',
+            '4f8214d1ca11eaf0769206f3f322c799f44883bd266e63748e937dea5602b739',
+            '637ff9b90b916ee69ee956db28e191ef86be3764ce2004b5fc24e371fa5869df',
+            'dbbc72bd13284cc0665fa3d7a0bf85220f06b6fb43f3e32dce4ea1af23bd9990',
+            'f40809d42c19ae5d9a69d6ecadc0da4a0aaaca53c0ed324365f0827bda761b83',
+        ),
+        (
+            'D073',
+            'a7234477d581e6cba27e470919fa092c4ed5054d5a1aa31d2019d8fa94d16f48',
+            '867444cecdf23c191269b1b3856410cc1ee6e3b81b8730dafa6d6528b78d6e0a',
+            'db4d78db436cf9c8c89a5aa247b12e90a74b9cb155def3cddb5ad9ccd46eec60',
+            'eeab4960c3ff8008aa516d7345dde9382aae5fa4a20b28d620eb2016d8cef11e',
+        ),
+        (
+            'D074',
+            '524b2d2a4aa94a0c1c55ea376650d14648af67c46e73763ce3e8cc0f2e9e0c0e',
+            'f2a2208a73d291e614577eaf2b81ffd13d699c4efbc2eeeb6258569ac8aa1c34',
+            '10d744c833ac882adef4263f0a0172ddabf165982e6618bad4d95b1af00f4f22',
+            '71f7b6266188581adbeb839af8a22fc58c4976db8127a6f6fbf390943560b18f',
+        ),
+        (
+            'D075',
+            '24ec8f08faf1a61059cee69b8c675767345809ae6a0dd90ab852a2fc30977750',
+            '50120c02327ed212e8821ac3795d4f64daa3e38d77ecd5c92c7b20f6a2ba8c3f',
+            '81e025f205039f376ced0d027cd9c7e65930a30a5fbbe8c43997725ef701dc2c',
+            'adeec41c60fc259073c3ada2bafbfadfea5c949361512e9322282d5ce07be452',
+        ),
+    )
+    present = tuple(
+        row for row in exact
+        if safe_path(
+            root, f"config/product_proof/m02_aligned_history_{row[0].lower()}/claim.json",
+        ).exists()
+    )
+    if not present:
+        return ()
+    owner_path = (
+        "handoff/m02_completion_28_execution/OWNER_CONSOLIDATED_64_CONDITIONAL_EXECUTION_GRANT_20261127.json"
+    )
+    policy_path = leaf + "ALIGNED_HISTORY_SOURCE_POLICY_PROPOSED_20261126.json"
+    manifest_path = leaf + "ALIGNED_HISTORY_FINITE_SPECIMENS_PROPOSED_20261126.json"
+    inventory_path = leaf + "ALIGNED_HISTORY_JOINT_FIT_FINITE_CASES_PROPOSED_20261126.json"
+    pins = {
+        owner_path: "6a71f52981fc01da42f9c27726547d0d1ddd69851561479a007aeb30ebd95a41",
+        policy_path: "9ba56098c273007980c893db39931ac86e7a3185bbb665f8c3f1e14f99b72af1",
+        manifest_path: "bb03481de75e1820c7aff61777a4a3aa4f676440ec03e373a05c032a0417c76d",
+        inventory_path: "3be150f2998b4187a81720b424c848099edeba7a9f638ae90d9aae95d4c5d5c1",
+    }
+    for path, digest in pins.items():
+        if sha256(safe_path(root, path)) != digest:
+            raise ValueError("aligned history fixed authority mismatch: " + path)
+    owner = read_json(safe_path(root, owner_path))
+    package, = [row for row in owner["adopted_packages"] if row["package"] == "aligned_history"]
+    inventory = read_json(safe_path(root, inventory_path))
+    cases = inventory["physical_cases"]
+    if (
+        owner["exact_total_cases"] != 64
+        or package["policy"]["sha256"] != pins[policy_path]
+        or package["specimens"]["sha256"] != pins[manifest_path]
+        or package["inventory"]["sha256"] != pins[inventory_path]
+        or package["claims"] != inventory["claims"]
+        or package["exact_nonfungible_ceilings"] != inventory["proposed_exact_nonfungible_ceilings"]
+        or len(cases) != 34 or len({row["case_id"] for row in cases}) != 34
+        or len({row["node"] for row in cases}) != 34
+    ):
+        raise ValueError("aligned history owner finite-allocation mismatch")
+    result = []
+    for jurisdiction, brief_hash, binding_hash, contract_hash, descriptor_hash in present:
+        lower = jurisdiction.lower()
+        prefix = f"config/product_proof/m02_aligned_history_{lower}"
+        physical_root = f"tests/product/m02_completion_28/support/{lower}-history"
+        family_path = physical_root + "/test_profile.py"
+        claim_id = f"neutral_market_measurement_truth_l01a_{lower}_history"
+        proof_id = f"SUP-{jurisdiction}-HISTORY"
+        family_id = f"m02_l01a_aligned_history_{lower}"
+        brief_path = leaf + f"ALIGNED_HISTORY_{jurisdiction}_IMPLEMENTATION_BRIEF.md"
+        binding_path = (
+            f"implementation/authority/T01_ALIGNED_HISTORY_{jurisdiction}_AUTHORITY_BINDING.yaml"
+        )
+        contract_path = leaf + f"ALIGNED_HISTORY_{jurisdiction}_PROOF_CONTRACT.json"
+        expected = {
+            "schema_version": "1.0",
+            "claim_id": claim_id,
+            "brief_path": brief_path,
+            "binding_path": binding_path,
+            "contract_path": contract_path,
+            "physical_root": physical_root,
+            "admission_path": prefix + "/admission.json",
+        }
+        for path, digest in (
+            (brief_path, brief_hash), (binding_path, binding_hash),
+            (contract_path, contract_hash), (prefix + "/claim.json", descriptor_hash),
+        ):
+            if sha256(safe_path(root, path)) != digest:
+                raise ValueError("aligned history exact own-jurisdiction bytes mismatch: " + path)
+        if read_json(safe_path(root, prefix + "/claim.json")) != expected:
+            raise ValueError("aligned history exact claim descriptor mismatch")
+        binding, brief = safe_path(root, binding_path), safe_path(root, brief_path)
+        validate_implementation_authority(root, binding, brief)
+        authority = yaml.safe_load(binding.read_text(encoding="utf-8"))
+        if (
+            authority["targets"] != [
+                {"action": "modify", "object_id": n} for n in ("M02", "G01")
+            ]
+            or authority["acceptance"] != {
+                "status": "ACCEPTED_FOR_IMPLEMENTATION", "authority_ref": owner_path,
+            }
+        ):
+            raise ValueError("aligned history own binding target or authority mismatch")
+        claim, = [row for row in inventory["claims"] if row["jurisdiction"] == jurisdiction]
+        own = [row for row in cases if row["family"] == jurisdiction]
+        nodes = [row["node"] for row in own]
+        names = [node.split("::", 1)[1] for node in nodes]
+        if (
+            package["exact_nonfungible_ceilings"][jurisdiction] != 2
+            or len(own) != 2 or any(row["proof_id"] != proof_id for row in own)
+            or claim["proof_id"] != proof_id or claim["claim_id"] != claim_id
+            or claim["family_id"] != family_id or claim["family_path"] != family_path
+            or claim["descriptor_directory"] != prefix or claim["physical_root"] != physical_root
+            or claim["own_brief_path"] != brief_path or claim["own_binding_path"] != binding_path
+            or claim["future_contract_path"] != contract_path
+            or claim["proposed_case_count"] != 2 or claim["proposed_nonfungible_ceiling"] != 2
+            or claim["ordered_case_ids"] != [row["case_id"] for row in own]
+            or claim["ordered_nodes"] != nodes
+            or nodes != [family_path + "::" + name for name in names]
+        ):
+            raise ValueError("aligned history nonfungible family allocation mismatch")
+        contract = read_json(safe_path(root, contract_path))
+        _schema(root, contract, "accepted_brief_product_proof.schema.json")
+        if (
+            contract["claim_id"] != claim_id
+            or contract["semantic_brief_path"] != brief_path
+            or contract["target"] != {
+                "category": "M", "responsibility_name": "neutral_market_measurement_truth",
+                "package": "nvda_desk.market_measurement_truth",
+                "public_seam": "nvda_desk.market_measurement_truth.api",
+                "intent": "modify", "existing_object_id": "M02",
+            }
+            or contract["required_proof_ids"] != [proof_id]
+            or len(contract["families"]) != 1
+            or any(value != "FAIL" for value in contract["execution_policy"].values())
+        ):
+            raise ValueError("aligned history exact contract/owner association mismatch")
+        family = contract["families"][0]
+        if (
+            family["id"] != family_id or family["path"] != family_path
+            or family["proof_obligation_ids"] != [proof_id]
+            or family["required_test_names"] != names
+            or family["command"] != "python -m pytest " + family_path
+            or contract["required_support_files"] or contract["optional_support_files"]
+        ):
+            raise ValueError("aligned history exact family/node mismatch")
+        entry = {key: value for key, value in expected.items() if key != "brief_path"}
+        entry["profile"] = "accepted_brief_v2"
+        target_id, _ = _target(root, contract["target"])
+        _generation(root, entry, contract, brief_hash, target_id)
+        result.append((entry, contract, brief_hash))
+    return tuple(result)
+
+
 def _native_reconciliation_extensions(
     root: Path,
 ) -> tuple[tuple[dict[str, Any], dict[str, Any], str], ...]:
@@ -1338,6 +1513,11 @@ def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductPro
             if claim in extensions:
                 raise ValueError("duplicate scalar straddle claim extension identity")
             extensions[claim] = scalar_straddle
+        for aligned in _aligned_history_extensions(root):
+            claim = aligned[0]["claim_id"]
+            if claim in extensions:
+                raise ValueError("duplicate aligned history claim extension identity")
+            extensions[claim] = aligned
     if extensions:
         catalogue = {
             **catalogue,
