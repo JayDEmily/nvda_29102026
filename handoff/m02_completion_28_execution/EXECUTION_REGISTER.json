@@ -1768,6 +1768,133 @@
           "first_unmet_documentary_gate": "FRESH_DISTINCT_SEPARATE_AUTHORING_REVIEW",
           "execution_release": false,
           "product_cases_executed": 0
+        },
+        "downstream_d076_d077_independent_authoring_review": {
+          "verdict": {
+            "commit": "e235b0ecb14a88df8dc9b4deeb2d02351a5f5922",
+            "tree": "17821975a4ad03cff8e8155cd1e661d6d5b3baff",
+            "review_ref": "refs/heads/review/trial-cac-nvidia-d076-d077-authoring-20261128",
+            "path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_D076_D077_DOWNSTREAM_AUTHORING_VERDICTS_20261128.md",
+            "sha256": "c55dd934a02d7c726c5b3b98a573ba2537dfb500802e0140de91946ee6af1445",
+            "git_blob": "76691305b6fcceb6ffbc61eb4d85d77045266908",
+            "bytes": 13240,
+            "parent": "0a326c080c7fadc8aabd2ca2035ea7ce24c7c783",
+            "candidate_tree": "82a3d125b536609ad54293da87509f36b0aae4b7"
+          },
+          "jurisdictions": {
+            "D076": {
+              "disposition": "ACCEPT_DOCUMENTARY_BINDING_INSTALLATION_AND_INERT_PROOF_AUTHORING",
+              "proof_id": "SUP-D076-HISTORY",
+              "parents": [
+                "D072",
+                "D071"
+              ],
+              "parent_product_acceptance_established": false,
+              "brief": {
+                "path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D076_IMPLEMENTATION_BRIEF.md",
+                "sha256": "c2b30721c0f535d00bb09cb801461ddf875966a93049c47fe572856f43fde480",
+                "git_blob": "5ed08dff864e4da34089a262fc13a46f01147f60",
+                "bytes": 15520
+              },
+              "accepted_inactive_binding": {
+                "path": "handoff/m02_completion_28_execution/L01a/T01_ALIGNED_HISTORY_D076_AUTHORITY_BINDING_CANDIDATE.yaml",
+                "sha256": "6f1324ab9922a1cd8b9994da931ee8f946d7d8666a758f8554269d092d006a80",
+                "git_blob": "06cfe9189f6d0f5bccd91071875a4c58f643d8ca",
+                "bytes": 345
+              },
+              "installed_binding": {
+                "path": "implementation/authority/T01_ALIGNED_HISTORY_D076_AUTHORITY_BINDING.yaml",
+                "sha256": "6f1324ab9922a1cd8b9994da931ee8f946d7d8666a758f8554269d092d006a80",
+                "git_blob": "06cfe9189f6d0f5bccd91071875a4c58f643d8ca",
+                "bytes": 345
+              },
+              "inert_proof_source": {
+                "path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D076_TEST_SOURCE.py",
+                "sha256": "03afd668f2b0f85f276bf6df285b71cfc7ef181fd3e02d536d06c702aca6eecb",
+                "git_blob": "e24fc1046caff9ae93726775bc8187e1537299c0",
+                "bytes": 29715
+              },
+              "inert_proof_contract": {
+                "path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D076_PROOF_CONTRACT.json",
+                "sha256": "f18fa3573706bb48b28fd2f7ddb1e39a5ad51dd0ac76cb22e6b1db7c46b8aca5",
+                "git_blob": "e8c0d70c211c1fcbc51677c58002f399b686bd28",
+                "bytes": 6020
+              },
+              "future_physical_family_path": "tests/product/m02_completion_28_prospective/support/d076-history/test_profile.py",
+              "ordered_nodes": [
+                "tests/product/m02_completion_28_prospective/support/d076-history/test_profile.py::test_d076_history_success",
+                "tests/product/m02_completion_28_prospective/support/d076-history/test_profile.py::test_d076_wrong_parent_frame"
+              ],
+              "original_complete_case_sha256": {
+                "SUP-D076-HISTORY-SUCCESS": "bed45dc5120fe83dcf79571dcd7e37f784819cf84884ab27859a35abef50b3fd",
+                "SUP-D076-HISTORY-REACHED_REFUSAL": "534eb87cd8610a60f95ff5c9eb112ef4b747d751cc9b0750645732eaf111ebcf"
+              },
+              "exact_case_count": 2,
+              "active_proof_installation": false,
+              "active_proof_registration": false,
+              "execution_release": false,
+              "product_cases_executed": 0
+            },
+            "D077": {
+              "disposition": "ACCEPT_DOCUMENTARY_BINDING_INSTALLATION_AND_INERT_PROOF_AUTHORING",
+              "proof_id": "SUP-D077-HISTORY",
+              "parents": [
+                "D073",
+                "D074",
+                "D072"
+              ],
+              "parent_product_acceptance_established": false,
+              "brief": {
+                "path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D077_IMPLEMENTATION_BRIEF.md",
+                "sha256": "88bdd385ff91432940f4d27a8cff2bce6af22a8c85b858f53ba2f674d3c30a3c",
+                "git_blob": "ef591e08fc02017ebabac26d410c1672898833e5",
+                "bytes": 18362
+              },
+              "accepted_inactive_binding": {
+                "path": "handoff/m02_completion_28_execution/L01a/T01_ALIGNED_HISTORY_D077_AUTHORITY_BINDING_CANDIDATE.yaml",
+                "sha256": "7f1b9f882d815616aa8e2fe53d6069800c7524f375202bff4eea5a67bf91a735",
+                "git_blob": "a3cd0130075a2c78ce258cbb8761e5b966cf8050",
+                "bytes": 345
+              },
+              "installed_binding": {
+                "path": "implementation/authority/T01_ALIGNED_HISTORY_D077_AUTHORITY_BINDING.yaml",
+                "sha256": "7f1b9f882d815616aa8e2fe53d6069800c7524f375202bff4eea5a67bf91a735",
+                "git_blob": "a3cd0130075a2c78ce258cbb8761e5b966cf8050",
+                "bytes": 345
+              },
+              "inert_proof_source": {
+                "path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D077_TEST_SOURCE.py",
+                "sha256": "3b31555bc6261ee32ab16b1ccb474cd09d164b642d37b99309a97fca4e2b019e",
+                "git_blob": "842fe2a0c92c5617be906cd4055c6bd2579caa3d",
+                "bytes": 33293
+              },
+              "inert_proof_contract": {
+                "path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D077_PROOF_CONTRACT.json",
+                "sha256": "49c27e77c80a22382715753a14e48063edf532ab30965e85d7c12eca72c5334a",
+                "git_blob": "d2d7bebf679d291990e45d8c196062701dd8037d",
+                "bytes": 6775
+              },
+              "future_physical_family_path": "tests/product/m02_completion_28_prospective/support/d077-history/test_profile.py",
+              "ordered_nodes": [
+                "tests/product/m02_completion_28_prospective/support/d077-history/test_profile.py::test_d077_history_success",
+                "tests/product/m02_completion_28_prospective/support/d077-history/test_profile.py::test_d077_missing_soxx_parent",
+                "tests/product/m02_completion_28_prospective/support/d077-history/test_profile.py::test_d077_mixed_original_roster"
+              ],
+              "original_complete_case_sha256": {
+                "SUP-D077-HISTORY-SUCCESS": "fa8258971344733dd919dd322f9625680e7d04be98faa0b52ca216d478e4b8b5",
+                "SUP-D077-HISTORY-REACHED_REFUSAL": "e2318098ea40daddb82137289ad76d29d065ff7078ced39c3269f6b128c82cfa",
+                "SUP-D077-HISTORY-MIXED-ORIGINAL-ROSTER": "0ef5bad7b7c1a2c7e0c9874afd05630c68b4fc0aa95feec841ea95b4338e7cfe"
+              },
+              "exact_case_count": 3,
+              "active_proof_installation": false,
+              "active_proof_registration": false,
+              "execution_release": false,
+              "product_cases_executed": 0
+            }
+          },
+          "execution_release": false,
+          "product_cases_executed": 0,
+          "first_unmet_documentary_gate": "Bounded D076 additive implementation then fresh independent implementation and shared-surface review; D077 later serial implementation. Exact registration stages and actual independently accepted parents plus sole Tester prerequisites before execution."
         }
       }
     },
@@ -5684,9 +5811,9 @@
   "execution_status": "ready",
   "current_leaf": "L01a",
   "next_assignment": {
-    "role": "Fresh distinct L01a D076/D077 downstream binding-installation and inert proof-authoring documentary Reviewer",
-    "task": "Fetch exact trial HEAD; stop on mismatch. Execute only committed handoff/m02_completion_28_execution/L01a/D076_D077_DOWNSTREAM_AUTHORING_REVIEW_COMMISSION_20261128.md SHA256 909b167ddd07665c262afbdce467eead3715f49654b033a8af15eecb237b9be7; review exact installed binding and inert proof source/contract for separate 2+3 cases, exact proposed public interface, actual parent lineage and all reached refusal invariants. No source/registry edits, active proof installation/registration, product/proof imports, collection, execution or release. Preserve all engineering holds and sole Tester. Continue eligible distinct-role succession once using owner-adopted CAC MVP.",
-    "selection_basis": "Exact accepted bindings installed; separate inert proof source and contract candidates statically checked, no runtime evidence. Independent authoring review required before any implementation commission."
+    "role": "Fresh distinct L01a D076 downstream source implementation Worker",
+    "task": "Fetch exact trial HEAD; stop on mismatch. Execute only committed handoff/m02_completion_28_execution/L01a/D076_DOWNSTREAM_SOURCE_IMPLEMENTATION_COMMISSION_20261128.md SHA256 524674bb9b44416497067e9bdf9fe919d2d3112aa1a6ee90df3be49641b6db3e. Verify independent authoring verdict e235b0ecb14a88df8dc9b4deeb2d02351a5f5922 at refs/heads/review/trial-cac-nvidia-d076-d077-authoring-20261128, report SHA256 c55dd934a02d7c726c5b3b98a573ba2537dfb500802e0140de91946ee6af1445. Implement only D076 exact bounded additive five-path source and dormant G01 route; preserve D077, parent/legacy surfaces and all holds. No active proof installation/registration, product/proof imports, collection, execution or release. Continue eligible distinct-role succession once via owner-adopted CAC MVP.",
+    "selection_basis": "Separate exact authoring ACCEPT for D076 (2) and D077 (3); D076 first to serialise shared source/registry changes; D077 not commissioned. No actual parent product acceptance or execution release."
   },
   "trial_forward_succession_authority": {
     "scope": "trial/cac-nvidia-continuation-20261127 only",
