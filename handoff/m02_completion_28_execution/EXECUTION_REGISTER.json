@@ -5635,7 +5635,7 @@
         "L02"
       ],
       "obligation": "Use actual compatible coefficient occurrences, common intercept and aligned current D075/D071/D076/D077. Subtract alpha and all three factor contributions. Independently calculate an informative nonzero residual. Refusal changes one coefficient fit lineage while retaining the other two; a coherent alternative complete fit is not invalid merely because its label differs.",
-      "status": "IMPLEMENTED_UNTESTED_REGISTRATION_INSTALLED_INDEPENDENT_INSTALLATION_REVIEW_PENDING",
+      "status": "IMPLEMENTED_UNTESTED_REGISTRATION_INSTALLATION_INDEPENDENTLY_ACCEPTED_EXECUTION_HELD",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G1_AFTER_L06"
@@ -5669,7 +5669,7 @@
         ],
         "execution_release": false,
         "product_status": "NOT_ATTEMPTED",
-        "first_unmet_invariant": "Exact five accepted payloads installed; fresh distinct independent D078 registration installation verdict required. Actual independent parent product acceptance and sole Tester exact-candidate intake/qualification/release remain mandatory.",
+        "first_unmet_invariant": "Exact five D078 payloads installed and independently accepted documentary only. Actual independent parent product acceptance and candidate-specific sole Tester intake/release remain mandatory; no execution release.",
         "tester_designation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
         "tester_status": "CANDIDATE_SPECIFIC_INTAKE_REQUIRED",
         "scope": "Controlled synthetic only; no official/native certification or new product acceptance",
@@ -7002,6 +7002,28 @@
           "report_sha256": "32cb0c137598f042c88a6bbced7633abe34b8731d84c0fadc27dd007ee900abc",
           "report_bytes": 7094,
           "report_git_blob": "5587e839daabda5f56414d5ff73b620e0ef3b7ac"
+        },
+        "same_fit_independent_registration_installation_verdict": {
+          "verdict": {
+            "commit": "1778c24a8a2abd2e3c0b3bc18865160d6c36d326",
+            "tree": "a6dfa8965756e6b1dd3ac17d94c4e2446a00cc11",
+            "parent": "d4886b8f5d8910c95ae39b168633ce3b2ededb1a",
+            "review_ref": "refs/heads/review/trial-cac-nvidia-d078-registration-installation-20261128",
+            "path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_D078_SAME_FIT_REGISTRATION_INSTALLATION_VERDICT_20261128.md",
+            "sha256": "46778bfaf1671e6477984914c3a904f09162d4c83c6cdfbf1a78b8cd04d11bc0",
+            "git_blob": "6f106377d4bc511f1e495cff415b7f42cac25095",
+            "bytes": 7735
+          },
+          "disposition": "ACCEPT_DOCUMENTARY_REGISTRATION_INSTALLATION",
+          "candidate": "8535fd3e4b5609a2628a71b09d1be240df4f4f17",
+          "candidate_tree": "aae3cf67249531c2d4c8a1bea24368e56f076ca3",
+          "proof_id": "M02-C28-D078",
+          "case_count": 5,
+          "registration": "INSTALLED",
+          "validation": "STATIC_EXACT_BYTES_AND_GENERATION_LINKAGE_NO_LOADER_INVOCATION",
+          "execution_release": false,
+          "product_cases_executed": 0,
+          "parent_product_acceptance": false
         }
       }
     },
@@ -10748,11 +10770,11 @@
   "branch": "trial/cac-nvidia-continuation-20261127",
   "plan": "EXEC_PLAN.md",
   "execution_status": "ready",
-  "current_leaf": "L03",
+  "current_leaf": "L07a",
   "next_assignment": {
-    "role": "Fresh distinct independent L03 D078 same-fit residual registration installation Reviewer",
-    "task": "Fetch exact received trial HEAD; stop on mismatch. Follow AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and execution register. Execute only committed handoff/m02_completion_28_execution/L01a/D078_SAME_FIT_REGISTRATION_INSTALLATION_REVIEW_COMMISSION_20261128.md SHA256 32cb0c137598f042c88a6bbced7633abe34b8731d84c0fadc27dd007ee900abc; exact installed candidate 8535fd3e4b5609a2628a71b09d1be240df4f4f17, tree aae3cf67249531c2d4c8a1bea24368e56f076ca3. Independently verify exact five-path byte-for-byte installation, five ordered nodes, original case objects, authority/source/review/ten parent registration pins, all 64 holds/67 historical accepted and sole Tester. Issue distinct documentary D078 installation verdict on refs/heads/review/trial-cac-nvidia-d078-registration-installation-20261128. No source/proof edits, other registration, product/proof imports, loader invocation, collection, execution or release. Preserve D078 legacy, D004/D085 held, D145 PAUSED, G01 R2 unadopted, main/original and actual parent product acceptance prerequisite. Continue eligible distinct-role succession once using owner-adopted CAC MVP.",
-    "selection_basis": "Exact accepted five files installed and statically verified; separate independent installation review required. No product acceptance or execution release."
+    "role": "Fresh distinct L07a D004 option-session prerequisite and inactive binding preparation Worker",
+    "task": "Fetch exact commissioned trial HEAD; stop on mismatch. Follow AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and execution register. Execute only committed handoff/m02_completion_28_execution/L07a/D004_OPTION_SESSION_PREREQUISITE_AND_BINDING_PREPARATION_COMMISSION_20261128.md SHA256 22798fae036f17bd5751ee3bde2a810cf54356c998f577a8821cfeac419a8c18. Check actual D003 stable parent interface for all three exact D004 cases before conditional inactive binding/brief preparation; if blocked, report exact invariant for independent review. No source/proof edits, active binding/registration, product/proof imports, loader, collection, execution or release. Preserve all holds, sole Tester and actual parent acceptance prerequisite. Continue eligible distinct-role succession once using owner-adopted CAC MVP.",
+    "selection_basis": "D078 documentary installation independently accepted; D004 is next in admitted temporal dependency order, bounded prerequisite inspection and conditional inactive preparation only. No actual parent acceptance or execution release."
   },
   "trial_forward_succession_authority": {
     "scope": "trial/cac-nvidia-continuation-20261127 only",
