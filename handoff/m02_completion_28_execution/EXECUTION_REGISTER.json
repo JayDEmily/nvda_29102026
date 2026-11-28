@@ -2589,6 +2589,1095 @@
           "disposition": "ACTUAL_PARENT_INTERFACE_PREREQUISITE_CHECK_AND_CONDITIONAL_INERT_BINDING_PREPARATION_COMMISSIONED",
           "execution_release": false,
           "product_cases_executed": 0
+        },
+        "joint_fit_inactive_binding_preparation": {
+          "base": "d2448b4e93281b9ca3db158497e3fe503816b0c7",
+          "base_tree": "05ab6d0461cc3866039adf3752cbb7a8efe6e4fa",
+          "worker_report": {
+            "path": "handoff/m02_completion_28_execution/L01a/D079_D080_D081_JOINT_FIT_BINDING_PREPARATION_WORKER_REPORT_20261128.md",
+            "sha256": "6b0ed1f110687ed52a70bbaeacb338677a6dc6aa48afb411a03ee700c64399bb",
+            "git_blob": "3d4ca1d68bd998374c6fb7499b7f737e30342b34"
+          },
+          "packages": {
+            "D079": {
+              "disposition": "ELIGIBLE_INERT_BINDING_PREPARED_PENDING_INDEPENDENT_REVIEW",
+              "proof_id": "M02-C28-D079",
+              "parents": [
+                "D075",
+                "D071",
+                "D076",
+                "D077"
+              ],
+              "transitive_parents": [
+                "D072",
+                "D073",
+                "D074"
+              ],
+              "brief": {
+                "path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D079_IMPLEMENTATION_BRIEF.md",
+                "sha256": "47b4c5d27d7ffc57710d70973825500524e3d9bbc179cc59df0d356381612127",
+                "git_blob": "5190a3de37da2c34cbd3fdb473a077cc07af8899"
+              },
+              "inactive_binding": {
+                "path": "handoff/m02_completion_28_execution/L01a/T01_ALIGNED_HISTORY_D079_AUTHORITY_BINDING_CANDIDATE.yaml",
+                "sha256": "c90aec925d606bcf9537ffad014338a579ab856884d659a85dd4ecd10050cf54",
+                "git_blob": "f4d489a518f09d0e5f4e812e37efb1215fcd2577"
+              },
+              "active_binding_path": "implementation/authority/T01_ALIGNED_HISTORY_D079_AUTHORITY_BINDING.yaml",
+              "active_binding_installed": false,
+              "exact_case_count": 6,
+              "ordered_case_ids": [
+                "D079-CONTROLLED-SUCCESS",
+                "D079-CONTROLLED-REACHED_REFUSAL",
+                "D079-MISSING-MEMBER",
+                "D079-DUPLICATE-MEMBER",
+                "D079-PARENT-NOT-KNOWN-AT-FIT-CUTOFF",
+                "D079-MIXED-SOURCE-CORPUS"
+              ],
+              "ordered_nodes": [
+                "tests/product/m02_completion_28_prospective/d079/test_signal.py::test_d079_joint_success",
+                "tests/product/m02_completion_28_prospective/d079/test_signal.py::test_d079_rank_deficient",
+                "tests/product/m02_completion_28_prospective/d079/test_signal.py::test_d079_missing_member",
+                "tests/product/m02_completion_28_prospective/d079/test_signal.py::test_d079_duplicate_member",
+                "tests/product/m02_completion_28_prospective/d079/test_signal.py::test_d079_parent_unavailable_at_cutoff",
+                "tests/product/m02_completion_28_prospective/d079/test_signal.py::test_d079_mixed_source_corpus"
+              ],
+              "cases": [
+                {
+                  "case_id": "D079-CONTROLLED-SUCCESS",
+                  "original_node": "tests/product/m02_completion_28/d079/test_signal.py::test_d079_joint_success",
+                  "node": "tests/product/m02_completion_28_prospective/d079/test_signal.py::test_d079_joint_success",
+                  "stage": "JOINT_FIT_AND_DURABLE_REOPEN",
+                  "case_object_sha256": "34d051b8286bf1e661a4009925f04f7431fbfc7143d9c0d480d313025c2a5496",
+                  "setup": "Exact positive success and unchanged replay per finite case",
+                  "oracle": {
+                    "fit_manifest_oracle": "oracle_only_not_inputs.fit_oracles.A",
+                    "actual_component_ratio": [
+                      -11,
+                      34
+                    ],
+                    "actual_intercept_and_vector": [
+                      [
+                        24875827132920207120538393860651854221699024850147,
+                        10625000000000000000000000000000000000000000000000000
+                      ],
+                      [
+                        -11,
+                        34
+                      ],
+                      [
+                        3,
+                        34
+                      ],
+                      [
+                        -14,
+                        17
+                      ]
+                    ],
+                    "condition_ratio": [
+                      1269,
+                      34
+                    ],
+                    "actual_parent_members": 24,
+                    "actual_selected_underlying_members": 30,
+                    "actual_selected_original_facts": 60,
+                    "excluded_slots": [
+                      "S0",
+                      "S7"
+                    ],
+                    "actual_component_rows": 1,
+                    "durability": "Exact actual six-row manifest, full typed role and original evidence, actual common vector/fit ID independently computed; exact component and first timestamp. Later retry after actual S7 available same bytes and only one durable component row; ordinary reader after dropping live histories."
+                  }
+                },
+                {
+                  "case_id": "D079-CONTROLLED-REACHED_REFUSAL",
+                  "original_node": "tests/product/m02_completion_28/d079/test_signal.py::test_d079_rank_deficient",
+                  "node": "tests/product/m02_completion_28_prospective/d079/test_signal.py::test_d079_rank_deficient",
+                  "stage": "RANK",
+                  "case_object_sha256": "eaa15b1f00aed22c9499a258b142df0408ff7a7a584a7b382f22b76806013fcc",
+                  "setup": "All six complete actual lawful rows, all canonical exact inputs, zero semiconductor column, rank deficient, no missing member or time mismatch.",
+                  "oracle": {
+                    "fit_manifest_oracle": "oracle_only_not_inputs.fit_oracles.RANK",
+                    "determinant": [
+                      0,
+                      1
+                    ],
+                    "expected": "None, exact complete actual lawful six-row source roster reached rank; no coefficient row in writer/reopened store. No fallback estimator. Actual parent histories unchanged.",
+                    "actual_component_rows": 0
+                  }
+                },
+                {
+                  "case_id": "D079-MISSING-MEMBER",
+                  "original_node": "tests/product/m02_completion_28/d079/test_signal.py::test_d079_missing_member",
+                  "node": "tests/product/m02_completion_28_prospective/d079/test_signal.py::test_d079_missing_member",
+                  "stage": "PARENT_LOOKUP",
+                  "case_object_sha256": "41740cc9d60f398a0d1662455832899b5042bc2c7453491edd97c7b5d689cdd9",
+                  "setup": "Only D077 S3 deliberately not materialised despite all its lawful raw and underlying parents actual. Ordinary reader directly confirms exact absent ID; all other requested 23 actual distinct roles present, aligned and visible. Complete request six rows/four slots with absent actual named ID.",
+                  "oracle": {
+                    "actual_component_rows": 0,
+                    "expected": "None after actual named missing member; no intersection dropping row, reconstruction or fallback. Retain actual parents and all other lawful history; empty writer/reopened component store."
+                  }
+                },
+                {
+                  "case_id": "D079-DUPLICATE-MEMBER",
+                  "original_node": "tests/product/m02_completion_28/d079/test_signal.py::test_d079_duplicate_member",
+                  "node": "tests/product/m02_completion_28_prospective/d079/test_signal.py::test_d079_duplicate_member",
+                  "stage": "SAMPLE_MEMBER_ID_UNIQUENESS",
+                  "case_object_sha256": "d012eb1d13bfc6bda3990cb3972c96133dc161eb57853f7a51a0c72722b22f2d",
+                  "setup": "All six actual complete legal rows and 24 correct actual IDs present. Replace only requested D077 S3 ID with actual already requested D077 S2 ID. Six exact row slots and four positions each, valid actual reader identity, but duplicate across sample. Check duplicate identity before row alignment.",
+                  "oracle": {
+                    "actual_component_rows": 0,
+                    "expected": "None; actual duplicate ID in otherwise well-formed six by four request, no dictionary overwrite or fallback. All actual histories unchanged, empty writer/reopened coefficient store."
+                  }
+                },
+                {
+                  "case_id": "D079-PARENT-NOT-KNOWN-AT-FIT-CUTOFF",
+                  "original_node": "tests/product/m02_completion_28/d079/test_signal.py::test_d079_parent_unavailable_at_cutoff",
+                  "node": "tests/product/m02_completion_28_prospective/d079/test_signal.py::test_d079_parent_unavailable_at_cutoff",
+                  "stage": "PARENT_AVAILABILITY",
+                  "case_object_sha256": "0c58e54a4dc0335460c5724ee3be00906fb2e16243273bab1ccf05856de81689",
+                  "setup": "All actual required IDs present, row metadata and full source roster lawful. D077 S6 ordinary read-only payload shows first actual calculation at +6, other actual facts <= fit cutoff +4; call +7 with unchanged fit cutoff. Actual parent available at now but not at fit decision.",
+                  "oracle": {
+                    "actual_component_rows": 0,
+                    "expected": "None; exact legal parent not actually available at requested fit cutoff. No use of later calculation time or late fallback. Empty writer/reopened coefficient store, actual lawful delayed parent preserved."
+                  }
+                },
+                {
+                  "case_id": "D079-MIXED-SOURCE-CORPUS",
+                  "original_node": "tests/product/m02_completion_28/d079/test_signal.py::test_d079_mixed_source_corpus",
+                  "node": "tests/product/m02_completion_28_prospective/d079/test_signal.py::test_d079_mixed_source_corpus",
+                  "stage": "COMPLETE_ACTUAL_SOURCE_ROSTER",
+                  "case_object_sha256": "7cd43201348673e71b755b475a8efe7bc8b6c26343c305b6c54476cfa569ada6",
+                  "setup": "Actual exact 24 distinct IDs selected from fixed four real ordinary stores D075=B, D071/D076/D077=C_NONPRIOR. All six rows separately lawful, actual nested D071/D072 bytes equal, exact aligned roles/clock/cutoff and all available at S6+4. Actual original set row S1 only B, S5 only C, others compatible; full actual sixty-original union has empty legal-corpus intersection. Numeric determinant 27, condition exactly50, so no rank or condition failure if provenance omitted. Actual selected full original payload content, not seal labels, establishes predicate.",
+                  "oracle": {
+                    "actual_component_rows": 0,
+                    "expected": "None at common complete selected-corpus predicate; each actual row independently compatible and actual arithmetic would be eligible at inclusive boundary. No per-row-only acceptance, injected source label or estimator fallback.",
+                    "durability": "Actual all lawful parent stores retained with exact prior payloads; target coefficient returns None, writer and ordinary reopened component history empty; no result or correction/fallback. No additional target calls.",
+                    "actual_per_row_legal_corpora": {
+                      "S1": [
+                        "B"
+                      ],
+                      "S2": [
+                        "A",
+                        "B",
+                        "C_NONPRIOR"
+                      ],
+                      "S3": [
+                        "A",
+                        "B",
+                        "C_NONPRIOR"
+                      ],
+                      "S4": [
+                        "A",
+                        "B",
+                        "C_NONPRIOR"
+                      ],
+                      "S5": [
+                        "C_NONPRIOR"
+                      ],
+                      "S6": [
+                        "A",
+                        "B",
+                        "C_NONPRIOR"
+                      ]
+                    },
+                    "actual_complete_corpus_intersection": [],
+                    "counterfactual_numeric_oracle_only_not_input": {
+                      "ordered_slots": [
+                        "S1",
+                        "S2",
+                        "S3",
+                        "S4",
+                        "S5",
+                        "S6"
+                      ],
+                      "design_normalized": [
+                        [
+                          [
+                            1,
+                            1
+                          ],
+                          [
+                            -1,
+                            1
+                          ],
+                          [
+                            0,
+                            1
+                          ],
+                          [
+                            1,
+                            2
+                          ]
+                        ],
+                        [
+                          [
+                            1,
+                            1
+                          ],
+                          [
+                            0,
+                            1
+                          ],
+                          [
+                            1,
+                            1
+                          ],
+                          [
+                            -1,
+                            2
+                          ]
+                        ],
+                        [
+                          [
+                            1,
+                            1
+                          ],
+                          [
+                            1,
+                            1
+                          ],
+                          [
+                            0,
+                            1
+                          ],
+                          [
+                            -1,
+                            1
+                          ]
+                        ],
+                        [
+                          [
+                            1,
+                            1
+                          ],
+                          [
+                            1,
+                            1
+                          ],
+                          [
+                            -1,
+                            1
+                          ],
+                          [
+                            -1,
+                            2
+                          ]
+                        ],
+                        [
+                          [
+                            1,
+                            1
+                          ],
+                          [
+                            0,
+                            1
+                          ],
+                          [
+                            -1,
+                            1
+                          ],
+                          [
+                            0,
+                            1
+                          ]
+                        ],
+                        [
+                          [
+                            1,
+                            1
+                          ],
+                          [
+                            -1,
+                            1
+                          ],
+                          [
+                            1,
+                            1
+                          ],
+                          [
+                            1,
+                            1
+                          ]
+                        ]
+                      ],
+                      "target_normalized": [
+                        [
+                          1,
+                          1
+                        ],
+                        [
+                          1,
+                          1
+                        ],
+                        [
+                          0,
+                          1
+                        ],
+                        [
+                          1,
+                          1
+                        ],
+                        [
+                          -1,
+                          1
+                        ],
+                        [
+                          0,
+                          1
+                        ]
+                      ],
+                      "gram_normalized": [
+                        [
+                          [
+                            6,
+                            1
+                          ],
+                          [
+                            0,
+                            1
+                          ],
+                          [
+                            0,
+                            1
+                          ],
+                          [
+                            -1,
+                            2
+                          ]
+                        ],
+                        [
+                          [
+                            0,
+                            1
+                          ],
+                          [
+                            4,
+                            1
+                          ],
+                          [
+                            -2,
+                            1
+                          ],
+                          [
+                            -3,
+                            1
+                          ]
+                        ],
+                        [
+                          [
+                            0,
+                            1
+                          ],
+                          [
+                            -2,
+                            1
+                          ],
+                          [
+                            4,
+                            1
+                          ],
+                          [
+                            1,
+                            1
+                          ]
+                        ],
+                        [
+                          [
+                            -1,
+                            2
+                          ],
+                          [
+                            -3,
+                            1
+                          ],
+                          [
+                            1,
+                            1
+                          ],
+                          [
+                            11,
+                            4
+                          ]
+                        ]
+                      ],
+                      "rhs_normalized": [
+                        [
+                          2,
+                          1
+                        ],
+                        [
+                          0,
+                          1
+                        ],
+                        [
+                          1,
+                          1
+                        ],
+                        [
+                          -1,
+                          2
+                        ]
+                      ],
+                      "determinant": [
+                        27,
+                        1
+                      ],
+                      "condition_ratio": [
+                        50,
+                        1
+                      ],
+                      "normalized_intercept_and_slopes": [
+                        [
+                          8,
+                          27
+                        ],
+                        [
+                          -11,
+                          54
+                        ],
+                        [
+                          7,
+                          27
+                        ],
+                        [
+                          -4,
+                          9
+                        ]
+                      ],
+                      "actual_intercept_and_vector": [
+                        [
+                          24875827132920207120538393860651854221699024850147,
+                          8437500000000000000000000000000000000000000000000000
+                        ],
+                        [
+                          -11,
+                          54
+                        ],
+                        [
+                          7,
+                          27
+                        ],
+                        [
+                          -4,
+                          9
+                        ]
+                      ]
+                    },
+                    "selected_actual_parent_count": 24,
+                    "selected_actual_original_count": 60
+                  }
+                }
+              ],
+              "execution_release": false,
+              "product_cases_executed": 0
+            },
+            "D080": {
+              "disposition": "ELIGIBLE_INERT_BINDING_PREPARED_PENDING_INDEPENDENT_REVIEW",
+              "proof_id": "M02-C28-D080",
+              "parents": [
+                "D075",
+                "D071",
+                "D076",
+                "D077"
+              ],
+              "transitive_parents": [
+                "D072",
+                "D073",
+                "D074"
+              ],
+              "brief": {
+                "path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D080_IMPLEMENTATION_BRIEF.md",
+                "sha256": "69f38747173cd464ae8586f919caa23f8ae754fbb1190b001675cae05e5a709e",
+                "git_blob": "19c0afdd1cb415a2956b8b34b2ac76b4a0dd9d44"
+              },
+              "inactive_binding": {
+                "path": "handoff/m02_completion_28_execution/L01a/T01_ALIGNED_HISTORY_D080_AUTHORITY_BINDING_CANDIDATE.yaml",
+                "sha256": "dcc6589fe36f091f4ea68da97b011ec67ea416e706e1ba9089da8223e1cd84d7",
+                "git_blob": "0a3c2342da3c54a41bae6125a0228a1dd6b8e7bf"
+              },
+              "active_binding_path": "implementation/authority/T01_ALIGNED_HISTORY_D080_AUTHORITY_BINDING.yaml",
+              "active_binding_installed": false,
+              "exact_case_count": 5,
+              "ordered_case_ids": [
+                "D080-CONTROLLED-SUCCESS",
+                "D080-CONTROLLED-REACHED_REFUSAL",
+                "D080-CONDITIONING-REFUSAL",
+                "D080-CONDITION-INCLUSIVE-BOUNDARY",
+                "D080-FIT-ROW-MISALIGNMENT"
+              ],
+              "ordered_nodes": [
+                "tests/product/m02_completion_28_prospective/d080/test_signal.py::test_d080_joint_success",
+                "tests/product/m02_completion_28_prospective/d080/test_signal.py::test_d080_rank_deficient",
+                "tests/product/m02_completion_28_prospective/d080/test_signal.py::test_d080_outside_conditioning_domain",
+                "tests/product/m02_completion_28_prospective/d080/test_signal.py::test_d080_condition_inclusive_boundary",
+                "tests/product/m02_completion_28_prospective/d080/test_signal.py::test_d080_fit_row_misalignment"
+              ],
+              "cases": [
+                {
+                  "case_id": "D080-CONTROLLED-SUCCESS",
+                  "original_node": "tests/product/m02_completion_28/d080/test_signal.py::test_d080_joint_success",
+                  "node": "tests/product/m02_completion_28_prospective/d080/test_signal.py::test_d080_joint_success",
+                  "stage": "JOINT_FIT_AND_DURABLE_REOPEN",
+                  "case_object_sha256": "1d0c100fedac2fccd61076cbaef7911113ef4c176fc36c2b96dbf635a0065cb8",
+                  "setup": "Exact positive success and unchanged replay per finite case",
+                  "oracle": {
+                    "fit_manifest_oracle": "oracle_only_not_inputs.fit_oracles.A",
+                    "actual_component_ratio": [
+                      3,
+                      34
+                    ],
+                    "actual_intercept_and_vector": [
+                      [
+                        24875827132920207120538393860651854221699024850147,
+                        10625000000000000000000000000000000000000000000000000
+                      ],
+                      [
+                        -11,
+                        34
+                      ],
+                      [
+                        3,
+                        34
+                      ],
+                      [
+                        -14,
+                        17
+                      ]
+                    ],
+                    "condition_ratio": [
+                      1269,
+                      34
+                    ],
+                    "actual_parent_members": 24,
+                    "actual_selected_underlying_members": 30,
+                    "actual_selected_original_facts": 60,
+                    "excluded_slots": [
+                      "S0",
+                      "S7"
+                    ],
+                    "actual_component_rows": 1,
+                    "durability": "Exact actual six-row manifest, full typed role and original evidence, actual common vector/fit ID independently computed; exact component and first timestamp. Later retry after actual S7 available same bytes and only one durable component row; ordinary reader after dropping live histories."
+                  }
+                },
+                {
+                  "case_id": "D080-CONTROLLED-REACHED_REFUSAL",
+                  "original_node": "tests/product/m02_completion_28/d080/test_signal.py::test_d080_rank_deficient",
+                  "node": "tests/product/m02_completion_28_prospective/d080/test_signal.py::test_d080_rank_deficient",
+                  "stage": "RANK",
+                  "case_object_sha256": "8c5b75831d2a653f0155e31980a8a74eec963271f8ad3ce4444866357b73dbce",
+                  "setup": "All six complete actual lawful rows, all canonical exact inputs, zero semiconductor column, rank deficient, no missing member or time mismatch.",
+                  "oracle": {
+                    "fit_manifest_oracle": "oracle_only_not_inputs.fit_oracles.RANK",
+                    "determinant": [
+                      0,
+                      1
+                    ],
+                    "expected": "None, exact complete actual lawful six-row source roster reached rank; no coefficient row in writer/reopened store. No fallback estimator. Actual parent histories unchanged.",
+                    "actual_component_rows": 0
+                  }
+                },
+                {
+                  "case_id": "D080-CONDITIONING-REFUSAL",
+                  "original_node": "tests/product/m02_completion_28/d080/test_signal.py::test_d080_outside_conditioning_domain",
+                  "node": "tests/product/m02_completion_28_prospective/d080/test_signal.py::test_d080_outside_conditioning_domain",
+                  "stage": "CONDITION",
+                  "case_object_sha256": "c05346a2e639b7ca2ac7fc69d63187ad463ea8997186e0620cd8fb8342140c13",
+                  "setup": "Actual complete lawful full-rank cohort, no missing/duplicate/time/source mismatch. Independent exact normalized Gram determinant 9 and condition 208/3 >50; otherwise finite inputs.",
+                  "oracle": {
+                    "actual_component_rows": 0,
+                    "determinant": [
+                      9,
+                      1
+                    ],
+                    "condition": [
+                      208,
+                      3
+                    ],
+                    "expected": "None after full-rank reached condition guard. No ridge, rescaling/tolerance trick or rank misclassification. Empty writer/reopened coefficient store, actual parents preserved."
+                  }
+                },
+                {
+                  "case_id": "D080-CONDITION-INCLUSIVE-BOUNDARY",
+                  "original_node": "tests/product/m02_completion_28/d080/test_signal.py::test_d080_condition_inclusive_boundary",
+                  "node": "tests/product/m02_completion_28_prospective/d080/test_signal.py::test_d080_condition_inclusive_boundary",
+                  "stage": "CONDITION_INCLUSIVE_BOUNDARY_AND_DURABLE_REOPEN",
+                  "case_object_sha256": "32c77a4005cc88a2e4e93b21bd083097e60bd3e45bcf470955046dc8a3ab79ee",
+                  "setup": "Actual S6 fit S1..S6 full rank and exact condition equals 50, not merely below. All required actual rows and original membership legal, no use of expected numerical input. Inclusive boundary must emit.",
+                  "oracle": {
+                    "exact_boundary_fit_oracle_only_not_input": {
+                      "ordered_slots": [
+                        "S1",
+                        "S2",
+                        "S3",
+                        "S4",
+                        "S5",
+                        "S6"
+                      ],
+                      "design_normalized": [
+                        [
+                          [
+                            1,
+                            1
+                          ],
+                          [
+                            -1,
+                            1
+                          ],
+                          [
+                            0,
+                            1
+                          ],
+                          [
+                            1,
+                            2
+                          ]
+                        ],
+                        [
+                          [
+                            1,
+                            1
+                          ],
+                          [
+                            0,
+                            1
+                          ],
+                          [
+                            1,
+                            1
+                          ],
+                          [
+                            -1,
+                            2
+                          ]
+                        ],
+                        [
+                          [
+                            1,
+                            1
+                          ],
+                          [
+                            1,
+                            1
+                          ],
+                          [
+                            0,
+                            1
+                          ],
+                          [
+                            -1,
+                            1
+                          ]
+                        ],
+                        [
+                          [
+                            1,
+                            1
+                          ],
+                          [
+                            1,
+                            1
+                          ],
+                          [
+                            -1,
+                            1
+                          ],
+                          [
+                            -1,
+                            2
+                          ]
+                        ],
+                        [
+                          [
+                            1,
+                            1
+                          ],
+                          [
+                            0,
+                            1
+                          ],
+                          [
+                            -1,
+                            1
+                          ],
+                          [
+                            0,
+                            1
+                          ]
+                        ],
+                        [
+                          [
+                            1,
+                            1
+                          ],
+                          [
+                            -1,
+                            1
+                          ],
+                          [
+                            1,
+                            1
+                          ],
+                          [
+                            1,
+                            1
+                          ]
+                        ]
+                      ],
+                      "target_normalized": [
+                        [
+                          0,
+                          1
+                        ],
+                        [
+                          1,
+                          1
+                        ],
+                        [
+                          0,
+                          1
+                        ],
+                        [
+                          1,
+                          1
+                        ],
+                        [
+                          -1,
+                          1
+                        ],
+                        [
+                          0,
+                          1
+                        ]
+                      ],
+                      "gram_normalized": [
+                        [
+                          [
+                            6,
+                            1
+                          ],
+                          [
+                            0,
+                            1
+                          ],
+                          [
+                            0,
+                            1
+                          ],
+                          [
+                            -1,
+                            2
+                          ]
+                        ],
+                        [
+                          [
+                            0,
+                            1
+                          ],
+                          [
+                            4,
+                            1
+                          ],
+                          [
+                            -2,
+                            1
+                          ],
+                          [
+                            -3,
+                            1
+                          ]
+                        ],
+                        [
+                          [
+                            0,
+                            1
+                          ],
+                          [
+                            -2,
+                            1
+                          ],
+                          [
+                            4,
+                            1
+                          ],
+                          [
+                            1,
+                            1
+                          ]
+                        ],
+                        [
+                          [
+                            -1,
+                            2
+                          ],
+                          [
+                            -3,
+                            1
+                          ],
+                          [
+                            1,
+                            1
+                          ],
+                          [
+                            11,
+                            4
+                          ]
+                        ]
+                      ],
+                      "rhs_normalized": [
+                        [
+                          1,
+                          1
+                        ],
+                        [
+                          1,
+                          1
+                        ],
+                        [
+                          1,
+                          1
+                        ],
+                        [
+                          -1,
+                          1
+                        ]
+                      ],
+                      "determinant": [
+                        27,
+                        1
+                      ],
+                      "condition_ratio": [
+                        50,
+                        1
+                      ],
+                      "normalized_intercept_and_slopes": [
+                        [
+                          5,
+                          27
+                        ],
+                        [
+                          37,
+                          54
+                        ],
+                        [
+                          29,
+                          54
+                        ],
+                        [
+                          2,
+                          9
+                        ]
+                      ],
+                      "actual_intercept_and_vector": [
+                        [
+                          24875827132920207120538393860651854221699024850147,
+                          13500000000000000000000000000000000000000000000000000
+                        ],
+                        [
+                          37,
+                          54
+                        ],
+                        [
+                          29,
+                          54
+                        ],
+                        [
+                          2,
+                          9
+                        ]
+                      ]
+                    },
+                    "actual_component_ratio": [
+                      29,
+                      54
+                    ],
+                    "actual_intercept_and_vector": [
+                      [
+                        24875827132920207120538393860651854221699024850147,
+                        13500000000000000000000000000000000000000000000000000
+                      ],
+                      [
+                        37,
+                        54
+                      ],
+                      [
+                        29,
+                        54
+                      ],
+                      [
+                        2,
+                        9
+                      ]
+                    ],
+                    "condition_ratio": [
+                      50,
+                      1
+                    ],
+                    "actual_parent_members": 24,
+                    "actual_selected_underlying_members": 30,
+                    "actual_selected_original_facts": 60,
+                    "excluded_slots": [
+                      "S0",
+                      "S7"
+                    ],
+                    "actual_component_rows": 1,
+                    "durability": "Actual D080 exact beta 29/54, complete exact fit intercept and vector, actual common identity/manifests and original lineage. Ordinary reopened reader returns first actual bytes; later same-request replay after actual S7 histories normal returns first timestamp and exactly one row. No other coefficient or residual target call."
+                  }
+                },
+                {
+                  "case_id": "D080-FIT-ROW-MISALIGNMENT",
+                  "original_node": "tests/product/m02_completion_28/d080/test_signal.py::test_d080_fit_row_misalignment",
+                  "node": "tests/product/m02_completion_28_prospective/d080/test_signal.py::test_d080_fit_row_misalignment",
+                  "stage": "PARENT_ROW_ALIGNMENT",
+                  "case_object_sha256": "9185ff34bb138f2bde3dd66d3eee73b5e7566fa255869e20ccc0a0e272542f3b",
+                  "setup": "Actual all seven prior S0..S6 complete A histories. Original S3 D077 exists. Substitute only actual distinct, present, lawful and fit-cutoff-available D077 S0 in requested S3 row; D077 S0 is otherwise excluded and not duplicated in training. Exact six row slots/four IDs each, 24 distinct IDs, role and profile correct. Wrong frame only, must reach fit alignment before shared-payload/corpus/numeric checks.",
+                  "oracle": {
+                    "actual_component_rows": 0,
+                    "expected": "None after actual four-role fit row alignment; no duplicate/missing pre-refusal, infer latest, re-fit subset, or source correction.",
+                    "durability": "Actual all lawful parent stores retained with exact prior payloads; target coefficient returns None, writer and ordinary reopened component history empty; no result or correction/fallback. No additional target calls.",
+                    "requested_slot": "S3",
+                    "actual_D077_slot": "S0",
+                    "actual_unique_member_ids": 24,
+                    "all_requested_parent_ids_present": true
+                  }
+                }
+              ],
+              "execution_release": false,
+              "product_cases_executed": 0
+            },
+            "D081": {
+              "disposition": "ELIGIBLE_INERT_BINDING_PREPARED_PENDING_INDEPENDENT_REVIEW",
+              "proof_id": "M02-C28-D081",
+              "parents": [
+                "D075",
+                "D071",
+                "D076",
+                "D077"
+              ],
+              "transitive_parents": [
+                "D072",
+                "D073",
+                "D074"
+              ],
+              "brief": {
+                "path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D081_IMPLEMENTATION_BRIEF.md",
+                "sha256": "cf2bf8c51611b8b5baf8a98d1f42fcecd63f069dd45b20dc9135844b99b6e90f",
+                "git_blob": "34d53e830a5b134f5c3054deda3053460fe37fac"
+              },
+              "inactive_binding": {
+                "path": "handoff/m02_completion_28_execution/L01a/T01_ALIGNED_HISTORY_D081_AUTHORITY_BINDING_CANDIDATE.yaml",
+                "sha256": "a2dfca758a22fbe7898d7534a86d094457333ad74ef5022ffd0d968334183eae",
+                "git_blob": "f8cce6ce6b61c8f6998b3836d5cccc00c2878c5c"
+              },
+              "active_binding_path": "implementation/authority/T01_ALIGNED_HISTORY_D081_AUTHORITY_BINDING.yaml",
+              "active_binding_installed": false,
+              "exact_case_count": 3,
+              "ordered_case_ids": [
+                "D081-CONTROLLED-SUCCESS",
+                "D081-CONTROLLED-REACHED_REFUSAL",
+                "D081-SHARED-PARENT-PAYLOAD-MISMATCH"
+              ],
+              "ordered_nodes": [
+                "tests/product/m02_completion_28_prospective/d081/test_signal.py::test_d081_joint_success",
+                "tests/product/m02_completion_28_prospective/d081/test_signal.py::test_d081_rank_deficient",
+                "tests/product/m02_completion_28_prospective/d081/test_signal.py::test_d081_shared_parent_payload_mismatch"
+              ],
+              "cases": [
+                {
+                  "case_id": "D081-CONTROLLED-SUCCESS",
+                  "original_node": "tests/product/m02_completion_28/d081/test_signal.py::test_d081_joint_success",
+                  "node": "tests/product/m02_completion_28_prospective/d081/test_signal.py::test_d081_joint_success",
+                  "stage": "JOINT_FIT_AND_DURABLE_REOPEN",
+                  "case_object_sha256": "b6e57d7432f7a0d6bd155b2e95d393a4d243c632def29403f81539747d0a34cc",
+                  "setup": "Exact positive success and unchanged replay per finite case",
+                  "oracle": {
+                    "fit_manifest_oracle": "oracle_only_not_inputs.fit_oracles.A",
+                    "actual_component_ratio": [
+                      -14,
+                      17
+                    ],
+                    "actual_intercept_and_vector": [
+                      [
+                        24875827132920207120538393860651854221699024850147,
+                        10625000000000000000000000000000000000000000000000000
+                      ],
+                      [
+                        -11,
+                        34
+                      ],
+                      [
+                        3,
+                        34
+                      ],
+                      [
+                        -14,
+                        17
+                      ]
+                    ],
+                    "condition_ratio": [
+                      1269,
+                      34
+                    ],
+                    "actual_parent_members": 24,
+                    "actual_selected_underlying_members": 30,
+                    "actual_selected_original_facts": 60,
+                    "excluded_slots": [
+                      "S0",
+                      "S7"
+                    ],
+                    "actual_component_rows": 1,
+                    "durability": "Exact actual six-row manifest, full typed role and original evidence, actual common vector/fit ID independently computed; exact component and first timestamp. Later retry after actual S7 available same bytes and only one durable component row; ordinary reader after dropping live histories."
+                  }
+                },
+                {
+                  "case_id": "D081-CONTROLLED-REACHED_REFUSAL",
+                  "original_node": "tests/product/m02_completion_28/d081/test_signal.py::test_d081_rank_deficient",
+                  "node": "tests/product/m02_completion_28_prospective/d081/test_signal.py::test_d081_rank_deficient",
+                  "stage": "RANK",
+                  "case_object_sha256": "0c5801892b23164af8cffd5dc4113a74b21d29e02c79834b1bd943e71ea1f7aa",
+                  "setup": "All six complete actual lawful rows, all canonical exact inputs, zero semiconductor column, rank deficient, no missing member or time mismatch.",
+                  "oracle": {
+                    "fit_manifest_oracle": "oracle_only_not_inputs.fit_oracles.RANK",
+                    "determinant": [
+                      0,
+                      1
+                    ],
+                    "expected": "None, exact complete actual lawful six-row source roster reached rank; no coefficient row in writer/reopened store. No fallback estimator. Actual parent histories unchanged.",
+                    "actual_component_rows": 0
+                  }
+                },
+                {
+                  "case_id": "D081-SHARED-PARENT-PAYLOAD-MISMATCH",
+                  "original_node": "tests/product/m02_completion_28/d081/test_signal.py::test_d081_shared_parent_payload_mismatch",
+                  "node": "tests/product/m02_completion_28_prospective/d081/test_signal.py::test_d081_shared_parent_payload_mismatch",
+                  "stage": "SHARED_PARENT_PAYLOAD_IDENTITY",
+                  "case_object_sha256": "a61e0b987af0768e222fa3059fa1e7d9fcfa451f1d74f2d65da916ef2a652bb6",
+                  "setup": "At S3 normal D071 inside actual D076 first +2, alternate direct actual D071 first +3; same logical derived ID, same source/originals/projection/request/result/metadata, different exact canonical stored bytes ONLY calculated_at. All local validators, correct row and fit cutoffs, actual 24 distinct top IDs, coherent original roster, all actual parents available by S6+4. Same-ID comparison alone would wrongly accept. Shared mandatory full-payload comparator required for both D071 and D072 groups; only D071 group differs in this case.",
+                  "oracle": {
+                    "actual_component_rows": 0,
+                    "expected": "None at exact shared-parent full-payload group equality. Not a wrong ID, role, original source, frame, time-cutoff or arithmetic refusal; all actual nested and direct history parents independently valid. No same-owner immutability rewrite.",
+                    "durability": "Actual all lawful parent stores retained with exact prior payloads; target coefficient returns None, writer and ordinary reopened component history empty; no result or correction/fallback. No additional target calls.",
+                    "actual_S3_direct_first": "2026-10-16T12:40:03Z",
+                    "actual_S3_nested_first": "2026-10-16T12:40:02Z",
+                    "expected_same_logical_id": true,
+                    "expected_distinct_complete_typed_payload": true,
+                    "expected_only_different_field": "calculated_at_utc",
+                    "all_other_required_shared_groups_exact": true,
+                    "otherwise_actual_fit_oracle": "oracle_only_not_inputs.fit_oracles.A"
+                  }
+                }
+              ],
+              "execution_release": false,
+              "product_cases_executed": 0
+            }
+          },
+          "review_commission": {
+            "path": "handoff/m02_completion_28_execution/L01a/D079_D080_D081_JOINT_FIT_BINDING_ADMISSION_REVIEW_COMMISSION_20261128.md",
+            "sha256": "d77bfb49d23a31deaa5f0c63facfa5799aea8130e06e9d6d5d17514555b6bcfd",
+            "git_blob": "5535370fbc42cd177673d5dd17fc7c97221577e4"
+          },
+          "execution_release": false,
+          "product_cases_executed": 0
         }
       }
     },
@@ -6388,9 +7477,9 @@
   "execution_status": "ready",
   "current_leaf": "L02",
   "next_assignment": {
-    "role": "Fresh distinct L02 D079/D080/D081 joint-fit binding preparation Worker",
-    "task": "Fetch exact received trial HEAD; stop on mismatch. Follow AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and execution register. Execute only committed handoff/m02_completion_28_execution/L01a/D079_D080_D081_JOINT_FIT_BINDING_PREPARATION_COMMISSION_20261128.md SHA256 a357343cf523bcb6545033168c333a63cd43eb60e8d0142d25ac93a0ee370e1a; actual stable parent interface prerequisite check, conditional exact own brief/inactive binding preparation for D079/D080/D081 (6/5/3). No active binding/registration, source/proof edits, product/proof imports, collection, execution or release. Preserve D078 and all holds, parent/legacy/G01 and sole Tester. Commission independent binding/admission review; continue eligible distinct-role succession once using CAC MVP.",
-    "selection_basis": "D077 exact registration installation independently accepted; all seven history support registration gates documentary-cleared. Owner exact64 sequence next D079-D081; conditional provisional preparation only, parent product acceptance still held."
+    "role": "Fresh distinct independent L02 D079/D080/D081 joint-fit inert binding/admission Reviewer",
+    "task": "Fetch exact trial HEAD; stop on mismatch. Execute only committed handoff/m02_completion_28_execution/L01a/D079_D080_D081_JOINT_FIT_BINDING_ADMISSION_REVIEW_COMMISSION_20261128.md SHA256 d77bfb49d23a31deaa5f0c63facfa5799aea8130e06e9d6d5d17514555b6bcfd; independently review actual parent interface prerequisites and exact inert own briefs/bindings, 6/5/3 ordered nodes. No active binding/registration, proof authoring, source/proof edits, product/proof imports, collection, execution or release. Preserve D078, seven history registrations, parent/legacy/G01, all engineering holds and sole Tester. Continue eligible distinct-role succession once using owner-adopted CAC MVP.",
+    "selection_basis": "All three actual committed parent-interface prerequisites documentarily established; exact inert packages prepared, no product acceptance; independent binding/admission review required before installation or inert proof authoring."
   },
   "trial_forward_succession_authority": {
     "scope": "trial/cac-nvidia-continuation-20261127 only",
