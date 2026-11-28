@@ -1516,7 +1516,7 @@
         "L00"
       ],
       "obligation": "Bind the exact option expiry instant and timezone/session convention separately from its date, with compatible true-instant D001. Never invent midnight or event time from date-only/receipt-only values. Bind exact year-fraction representation. Independently prove a necessary option-domain D001 extension; retain its original profile and zero new identity contribution.",
-      "status": "OWNER_POLICY_ADOPTED_FINITE_ADMITTED_EXECUTION_HELD_BINDING_REVIEW_PENDING",
+      "status": "OWNER_POLICY_ADOPTED_FINITE_ADMITTED_BINDING_DOCUMENTARY_ACCEPTED_INSTALLATION_PENDING_EXECUTION_HELD",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G2_AFTER_L18"
@@ -1550,7 +1550,7 @@
         ],
         "execution_release": false,
         "product_status": "NOT_ATTEMPTED",
-        "first_unmet_invariant": "Exact own implementation-authority binding and admission reconciliation independently verified before installation; authoring and all later gates held.",
+        "first_unmet_invariant": "Distinct Worker byte-identical own binding installation and actual inert proof authoring; independent authoring clearance required before product source implementation. All subsequent gates and execution holds remain.",
         "tester_designation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
         "tester_status": "CANDIDATE_SPECIFIC_INTAKE_REQUIRED",
         "scope": "Controlled synthetic only; no official/native certification or new product acceptance",
@@ -1572,7 +1572,25 @@
               "tools/product_proof_claims.py"
             ]
           }
-        ]
+        ],
+        "independent_binding_documentary_verdict": {
+          "jurisdiction": "D001",
+          "proof_id": "SUP-D001-OPTION",
+          "case_count": 4,
+          "disposition": "ACCEPT_DOCUMENTARY_BINDING",
+          "commit": "a29290c672420b3bf7b149c89828e5c8d43a9d9f",
+          "tree": "37e740304343568737240c860fba59367241bf77",
+          "parent": "a090eaf255925ba1afd11a0928d1171118d5a447",
+          "ref": "refs/heads/review/trial-cac-nvidia-d001-d095-bindings-20261128",
+          "path": "handoff/m02_completion_28_execution/INDEPENDENT_CAC_TRIAL_D001_D095_BINDING_VERDICT_20261128.md",
+          "git_blob": "5699e2dde42cd1a07b887eebe5edb1e6abb37dc6",
+          "sha256": "ebff2ba39bbd9860995498e4660788ece24e61ebc3acd8198189266bb4c98952",
+          "bytes": 12059,
+          "brief_sha256": "222d0919c67c05f6436f985b8262ace985ab11dea30fc045333ee13fa10a8d8d",
+          "binding_sha256": "ff80ea7dd3aa7674723b758dda9173356bda75119ba996ece5bf4c1a9ff2cf35",
+          "execution_release": false,
+          "scope": "Exact pre-installation documentary acceptance only. No product acceptance or execution. D095 is one jurisdiction shared by L10a/L11; count only its L11 allocation."
+        }
       }
     },
     {
@@ -1686,7 +1704,7 @@
         "L00"
       ],
       "obligation": "Bind R111/R183 computational roles, exact model/native-unit comparability, contract or bucket roll, vintages and one official prior-trading-session reference for D095. Resolve concrete session convention before code; current quote assembly alone is not an IV history. Supply independently calculable change and wrong-reference refusal oracles.",
-      "status": "OWNER_POLICY_ADOPTED_FINITE_ADMITTED_EXECUTION_HELD_BINDING_REVIEW_PENDING",
+      "status": "OWNER_POLICY_ADOPTED_FINITE_ADMITTED_BINDING_DOCUMENTARY_ACCEPTED_INSTALLATION_PENDING_EXECUTION_HELD",
       "checkpoint_required": true,
       "proposed_testing_windows": [],
       "acceptance": "Independent documentary source clearance; product acceptance requires admitted cases and accepted parent proofs",
@@ -1712,7 +1730,7 @@
         "exact_allocations": [],
         "execution_release": false,
         "product_status": "NOT_ATTEMPTED",
-        "first_unmet_invariant": "Exact own implementation-authority binding and admission reconciliation independently verified before installation; authoring and all later gates held.",
+        "first_unmet_invariant": "Distinct Worker byte-identical own binding installation and actual inert proof authoring; independent authoring clearance required before product source implementation. All subsequent gates and execution holds remain.",
         "tester_designation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
         "tester_status": "CANDIDATE_SPECIFIC_INTAKE_REQUIRED",
         "scope": "Controlled synthetic only; no official/native certification or new product acceptance",
@@ -1732,7 +1750,25 @@
               "tools/product_proof_claims.py"
             ]
           }
-        ]
+        ],
+        "independent_binding_documentary_verdict": {
+          "jurisdiction": "D095",
+          "proof_id": "M02-C28-D095",
+          "case_count": 7,
+          "disposition": "ACCEPT_DOCUMENTARY_BINDING",
+          "commit": "a29290c672420b3bf7b149c89828e5c8d43a9d9f",
+          "tree": "37e740304343568737240c860fba59367241bf77",
+          "parent": "a090eaf255925ba1afd11a0928d1171118d5a447",
+          "ref": "refs/heads/review/trial-cac-nvidia-d001-d095-bindings-20261128",
+          "path": "handoff/m02_completion_28_execution/INDEPENDENT_CAC_TRIAL_D001_D095_BINDING_VERDICT_20261128.md",
+          "git_blob": "5699e2dde42cd1a07b887eebe5edb1e6abb37dc6",
+          "sha256": "ebff2ba39bbd9860995498e4660788ece24e61ebc3acd8198189266bb4c98952",
+          "bytes": 12059,
+          "brief_sha256": "4885ee1efe9f5832f33a8bf0552caf288990f9f992542c26f535bf378bcbc703",
+          "binding_sha256": "2a4530490537b2552b320db240ac09eb24508ccc9d9347316e517463c4548f32",
+          "execution_release": false,
+          "scope": "Exact pre-installation documentary acceptance only. No product acceptance or execution. D095 is one jurisdiction shared by L10a/L11; count only its L11 allocation."
+        }
       }
     },
     {
@@ -2180,7 +2216,7 @@
         "L10a"
       ],
       "obligation": "Calculate 100*(IV_current-IV_reference) in volatility points, using comparable actual R111/R183 facts and accepted official one-trading-session reference. Preserve contract/bucket/roll and knowledge vintage. Refuse unmatched/stale/wrong-session references without calendar-day substitution.",
-      "status": "OWNER_POLICY_ADOPTED_FINITE_ADMITTED_EXECUTION_HELD_BINDING_REVIEW_PENDING",
+      "status": "OWNER_POLICY_ADOPTED_FINITE_ADMITTED_BINDING_DOCUMENTARY_ACCEPTED_INSTALLATION_PENDING_EXECUTION_HELD",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G2_AFTER_L18"
@@ -2214,7 +2250,7 @@
         ],
         "execution_release": false,
         "product_status": "NOT_ATTEMPTED",
-        "first_unmet_invariant": "Exact own implementation-authority binding and admission reconciliation independently verified before installation; authoring and all later gates held.",
+        "first_unmet_invariant": "Distinct Worker byte-identical own binding installation and actual inert proof authoring; independent authoring clearance required before product source implementation. All subsequent gates and execution holds remain.",
         "tester_designation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
         "tester_status": "CANDIDATE_SPECIFIC_INTAKE_REQUIRED",
         "scope": "Controlled synthetic only; no official/native certification or new product acceptance",
@@ -2234,7 +2270,25 @@
               "tools/product_proof_claims.py"
             ]
           }
-        ]
+        ],
+        "independent_binding_documentary_verdict": {
+          "jurisdiction": "D095",
+          "proof_id": "M02-C28-D095",
+          "case_count": 7,
+          "disposition": "ACCEPT_DOCUMENTARY_BINDING",
+          "commit": "a29290c672420b3bf7b149c89828e5c8d43a9d9f",
+          "tree": "37e740304343568737240c860fba59367241bf77",
+          "parent": "a090eaf255925ba1afd11a0928d1171118d5a447",
+          "ref": "refs/heads/review/trial-cac-nvidia-d001-d095-bindings-20261128",
+          "path": "handoff/m02_completion_28_execution/INDEPENDENT_CAC_TRIAL_D001_D095_BINDING_VERDICT_20261128.md",
+          "git_blob": "5699e2dde42cd1a07b887eebe5edb1e6abb37dc6",
+          "sha256": "ebff2ba39bbd9860995498e4660788ece24e61ebc3acd8198189266bb4c98952",
+          "bytes": 12059,
+          "brief_sha256": "4885ee1efe9f5832f33a8bf0552caf288990f9f992542c26f535bf378bcbc703",
+          "binding_sha256": "2a4530490537b2552b320db240ac09eb24508ccc9d9347316e517463c4548f32",
+          "execution_release": false,
+          "scope": "Exact pre-installation documentary acceptance only. No product acceptance or execution. D095 is one jurisdiction shared by L10a/L11; count only its L11 allocation."
+        }
       }
     },
     {
@@ -3055,11 +3109,11 @@
   "branch": "trial/cac-nvidia-continuation-20261127",
   "plan": "EXEC_PLAN.md",
   "execution_status": "ready",
-  "current_leaf": "L01a",
+  "current_leaf": "L07b",
   "next_assignment": {
-    "role": "Fresh distinct independent implementation-authority binding documentary reviewer",
-    "task": "Independent pre-installation documentary review of two review-ready, independent controlled jurisdictions only: L07b SUP-D001-OPTION (four cases) and L10a/L11 M02-C28-D095 (seven cases). H is the received trial checkpoint; stop if fetched HEAD differs. Use Remote Desktop Commander and Ubuntu Git; follow AGENTS.md (owner-adopted CAC MVP), EXEC_PLAN.md, GUARDRAILS.md, test override and this register. The exact own briefs, inactive binding paths/SHA256, intended active destinations, allowed product paths and finite allocations are in the respective first_stage_inactive_bindings records; D095 is one jurisdiction shared by L10a/L11, not two. Owner consolidated64 grant and separate independently reviewed option-time and IV packages are already adopted for exact controlled scope. Independently verify both exact inactive own brief/binding byte identities, applicable grant and reviewed inventory, nonfungible case/ceiling and exact path-only remap authority/projection, M02 then G01 modification targets, source/profile and dependency/pre-installation invariants, no existing conflicting active binding, finite admission/ledger association, no release. Inspect relevant primary evidence, prior findings and current authority. Separate verdicts ACCEPT_DOCUMENTARY_BINDING, RETURN_TO_WORKER or BLOCKED for D001 and D095 in one exact report at handoff/m02_completion_28_execution/INDEPENDENT_CAC_TRIAL_D001_D095_BINDING_VERDICT_20261128.md, new refs/heads/review/trial-cac-nvidia-d001-d095-bindings-20261128, direct child of received H; publish only report and verify remote parent, sole delta and exact readback. Do not install bindings, author proofs, implement, import product, invoke product collection/runtime, modify evidence, approve new cases or execute/release any case. Keep G01 R2 ACCEPT_FOR_OWNER_DECISION separate and unadopted; no merge or implementation of that proposal. L01a five installations documentary accepted but only the already designated strict Tester can perform candidate-specific intake/precall release; no new Tester or assumed product result. All 64 held, ten first-stage NOT_ATTEMPTED, 67 historical accepted, twelve mapping-only, D145 PAUSED. After independent publication and verification, reconcile separate exact dispositions in the trial register and continue eligible distinct-role succession once under AGENTS.md, preserving all gates/holds and genuine platform approval requirements. Do not retry attempted or uncertain Send.",
-    "selection_basis": "Independent first-stage binding reviews are already explicitly pending and the exact inactive D001 and D095 candidates exist. Both depend on L00 only for source-contract preparation, neither on L01a product acceptance; a single fresh reviewer can adjudicate separate dispositions without role conflict or redundant Worker preparation. L07a D003/D004 and D086 depend on D001 and remain held at their respective prerequisites. No change to prior leaf/evidence states."
+    "role": "Fresh distinct D001/D095 first-stage binding-installation and inert proof-authoring Worker",
+    "task": "Use Remote Desktop Commander and Ubuntu Git, exact received trial HEAD, AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and this register. Stop if fetched HEAD differs. Fetch and verify independent verdict a29290c672420b3bf7b149c89828e5c8d43a9d9f (parent a090eaf255925ba1afd11a0928d1171118d5a447), sole report, exact SHA256 ebff2ba39bbd9860995498e4660788ece24e61ebc3acd8198189266bb4c98952, separate ACCEPT_DOCUMENTARY_BINDING for L07b D001 SUP-D001-OPTION four and L10a/L11 D095 M02-C28-D095 seven. Install only the two exact independently accepted inactive binding YAML bytes at the intended active destinations in first_stage_inactive_bindings; verify exact own brief and installed hashes and M02 then G01 authority. Preserve original inactive evidence. Prepare actual inert authored proof candidates, exact own contracts, public interfaces and prospective claim/descriptor material for each of the eleven admitted cases, within exact own briefs, adopted policies/inventories and owner-approved path-only successor mapping. Use mapped prospective physical paths and preserve case IDs, test names, order, fixtures, expected stages and independent oracles; no active test installation into unowned roots before registration clearance. Separate jurisdictions; D095 counted once. Stage inert proof material outside live collection; independently review actual authoring before any product source implementation. No product source changes, registration, active claim or product test installation, execution, product import/collection/runtime, release, new or substituted cases or Tester appointment in this assignment. Publish bounded candidate and record the exact next independent authoring review commission; continue eligible distinct-role succession once via AGENTS.md CAC MVP. Serialize future shared api.py/G01 writes, preserve legacy proofs and all applicable source/profile/dependency gates; D003/D004/D086 remain held. All 64 execution held, ten L01a first-stage NOT_ATTEMPTED, 67 historical accepted, twelve mapping-only at intake, D145 PAUSED; sole designated strict Tester retains candidate-specific intake and precall release; G01 R2 ACCEPT_FOR_OWNER_DECISION is not adopted. No merge, main changes, old PCA, or uncertain/repeated Send.",
+    "selection_basis": "Both exact independent binding dispositions have been remotely verified and reconciled. Both jurisdictions are eligible for bounded first-stage installation and inert proof authoring without L01a product acceptance; fresh distinct Worker is required before independent authoring review. Current leaf L07b identifies first of two independent work units only; L10a/L11 is the second, one D095 jurisdiction. No product gate advanced."
   },
   "trial_forward_succession_authority": {
     "scope": "trial/cac-nvidia-continuation-20261127 only",
