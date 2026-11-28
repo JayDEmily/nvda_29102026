@@ -1501,10 +1501,27 @@
         ],
         "execution_release": false,
         "product_status": "NOT_ATTEMPTED",
-        "first_unmet_invariant": "Exact owner policy and finite admission recorded; future own binding/authoring follows independently cleared stable committed parent interface. Parent acceptance mandatory before child execution release.",
+        "first_unmet_invariant": "Exact owner-adopted policy and finite allocations verified; D003 binding preparation blocked by missing actual D001 parent specimen/frame reachability. Independent blocker confirmation and lawful bounded upstream recovery before child preparation; parent product acceptance mandatory before child release.",
         "tester_designation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
         "tester_status": "CANDIDATE_SPECIFIC_INTAKE_REQUIRED",
-        "scope": "Controlled synthetic only; no official/native certification or new product acceptance"
+        "scope": "Controlled synthetic only; no official/native certification or new product acceptance",
+        "downstream_binding_preparation_prerequisite_check": {
+          "jurisdiction": "D003",
+          "proof_id": "SUP-D003-USOPTION",
+          "case_count": 3,
+          "disposition": "BLOCKED_D001_ACTUAL_PARENT_INTERFACE",
+          "input_handoff": "a230f08d63e8a471170b652dce3a34fb34684c50",
+          "report_path": "handoff/m02_completion_28_execution/L07a/D003_D086_D001_INTERFACE_PREREQUISITE_BLOCKER_20261128.md",
+          "report_sha256": "cf76d1dcbb2a187daedacfaf8d61a8993fb031edcff2c69e707b2e6948672ab5",
+          "missing_actual_parent_specimen_frames": [
+            "R004_FOREIGN_ZONE/MAIN",
+            "EARLIER/EARLIER"
+          ],
+          "own_binding_prepared": false,
+          "execution_release": false,
+          "product_cases_executed": 0,
+          "scope": "Worker static finding; fresh independent documentary confirmation required. Existing narrow D001 verdicts preserved."
+        }
       }
     },
     {
@@ -1955,10 +1972,30 @@
         ],
         "execution_release": false,
         "product_status": "NOT_ATTEMPTED",
-        "first_unmet_invariant": "Exact owner policy and finite admission recorded; future own binding/authoring follows independently cleared stable committed parent interface. Parent acceptance mandatory before child execution release.",
+        "first_unmet_invariant": "Exact owner-adopted policy and finite allocations verified; D086 binding preparation blocked by missing actual D001 parent specimen/frame reachability. Independent blocker confirmation and lawful bounded upstream recovery before child preparation; parent product acceptance mandatory before child release.",
         "tester_designation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
         "tester_status": "CANDIDATE_SPECIFIC_INTAKE_REQUIRED",
-        "scope": "Controlled synthetic only; no official/native certification or new product acceptance"
+        "scope": "Controlled synthetic only; no official/native certification or new product acceptance",
+        "downstream_binding_preparation_prerequisite_check": {
+          "jurisdiction": "D086",
+          "proof_id": "M02-C28-D086",
+          "case_count": 6,
+          "disposition": "BLOCKED_D001_ACTUAL_PARENT_INTERFACE",
+          "input_handoff": "a230f08d63e8a471170b652dce3a34fb34684c50",
+          "report_path": "handoff/m02_completion_28_execution/L07a/D003_D086_D001_INTERFACE_PREREQUISITE_BLOCKER_20261128.md",
+          "report_sha256": "cf76d1dcbb2a187daedacfaf8d61a8993fb031edcff2c69e707b2e6948672ab5",
+          "missing_actual_parent_specimen_frames": [
+            "AT_EXPIRY/AT_EXPIRY",
+            "AFTER/AFTER",
+            "R013_DATE_MISMATCH/MAIN",
+            "R013_CONTRACT_MISMATCH/MAIN",
+            "EARLIER/EARLIER"
+          ],
+          "own_binding_prepared": false,
+          "execution_release": false,
+          "product_cases_executed": 0,
+          "scope": "Worker static finding; fresh independent documentary confirmation required. Existing narrow D001 verdicts preserved."
+        }
       }
     },
     {
@@ -3941,9 +3978,9 @@
   "execution_status": "ready",
   "current_leaf": "L07b",
   "next_assignment": {
-    "role": "Fresh distinct D003/D086 downstream implementation-authority binding-preparation Worker",
-    "task": "Fetch exact trial HEAD, stop on mismatch; follow AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and execution register. Verify separate D001 and D095 installation verdict at 05710fb7bd5c1fb33ec60eb6e0a42458a5baf85b, refs/heads/review/trial-cac-nvidia-d001-d095-registration-installation-20261128, report SHA256 f5c46c8816ec1c02e5c788d03285deb355201d6d4bdd257a347a8019f0f824fa, and D001 stable independently reviewed implementation interface. Under exact owner grant and accepted temporal policy, prepare only the two distinct downstream own implementation briefs and inactive authority-binding candidates for D003 (L07a SUP-D003-USOPTION, 3 cases) and D086 (L09 M02-C28-D086, 6 cases). Both require actual D001 stable committed parent interface and independently cleared source/contract, D086 own immutable expiry convention; independently verify these prerequisites and exact remapped case identities before proposing each unit. If either missing, record first unmet invariant and continue the other eligible unit. Do not install bindings, author active tests, edit source/G01, change ledger, execute product, release cases or accept children. Preserve reviewed predecessor bytes, all 64 case holds, all existing allocations, D145 PAUSED, G01 R2 not adopted, sole Tester and exact candidate-specific intake/precall release. Publish scoped inert preparation checkpoint and commission fresh distinct independent binding documentary reviewer with separate dispositions. No main or original work changes. Continue eligible succession once using owner-adopted CAC MVP.",
-    "selection_basis": "Both D003 and D086 have owner-adopted exact policy/finite allocations and D001 as their only derived predecessor; D001 source/contract/interface and registration documentary cleared, not product accepted. Provisional own binding preparation only, no implementation until distinct independent binding clearance; D004/D085 remain held for their parents. Existing sole Tester retained, not replaced or released. Other eligible aligned history work remains available."
+    "role": "Fresh distinct independent D001 downstream-interface prerequisite documentary reviewer",
+    "task": "Fetch exact trial HEAD; stop on mismatch. Read AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and execution register. Independently review exact handoff/m02_completion_28_execution/L07a/D003_D086_D001_INTERFACE_PREREQUISITE_BLOCKER_20261128.md SHA256 cf76d1dcbb2a187daedacfaf8d61a8993fb031edcff2c69e707b2e6948672ab5; verify unchanged D001 source and prior verdicts, exact adopted temporal policy and remapped D003/D086 allocations; independently reproduce separate blocked prerequisite dispositions and assess common class-level actual-parent reachability across the already admitted temporal domain and applicable authority for bounded upstream D001 recovery. Publish separate D003/D086 documentary dispositions and precise class-level necessary proposition or authority blocker; do not edit source or activate bindings, execute product, change allocations, accept children or replace sole Tester. Preserve all holds, G01 R2 unadopted and D145 PAUSED. Reconcile and continue eligible distinct-role succession once under owner-adopted CAC MVP.",
+    "selection_basis": "Both direct downstream units have exact accepted source policies and finite remapped cases but the existing D001 source admits only four MAIN-based specimens and request validation is MAIN-only. Fresh independent documentary prerequisite review needed before a lawful bounded upstream repair or another eligible independent unit. No source edits or binding preparation by this Worker."
   },
   "trial_forward_succession_authority": {
     "scope": "trial/cac-nvidia-continuation-20261127 only",
