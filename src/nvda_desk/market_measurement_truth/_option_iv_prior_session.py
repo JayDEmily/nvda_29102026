@@ -453,8 +453,8 @@ def _compatible(
         original.subject_instrument == SUBJECT
         and original.native_units == projection.native_units == source_policy["units"]
         and all(record[key] == expected for key, expected in CONTRACT.items())
-        and record["model"]["convention"] == source_policy["model_convention"]
-        and record["value"]["role"] == role
+        and _path(record, ("model", "convention")) == source_policy["model_convention"]
+        and _path(record, ("value", "role")) == role
         and type(value) is Decimal
         and value.is_finite()
         and value >= 0
@@ -487,9 +487,11 @@ def _calculate(
         or original.received_ts_utc > request.knowledge_cutoff_utc
     ):
         raise ValueError("D095 actual current role/clock/contract invariant")
-    model = original.native_record["model"]
     for name in ("quote_receipt_utc", "underlying_receipt_utc"):
-        receipt = datetime.fromisoformat(model[name])
+        receipt_text = _path(original.native_record, ("model", name))
+        if type(receipt_text) is not str:
+            raise ValueError("D095 related receipt must be native text")
+        receipt = datetime.fromisoformat(receipt_text)
         f._utc(receipt)
         if receipt >= original.received_ts_utc:
             raise ValueError("D095 related actual receipt must precede current")
@@ -498,7 +500,9 @@ def _calculate(
     for ref, projected in pairs:
         if _role(ref) != "R183":
             continue
-        bar = ref.native_record["bar"]
+        bar = _path(ref.native_record, ("bar",))
+        if not isinstance(bar, Mapping):
+            raise ValueError("D095 actual native bar must be a mapping")
         revision = bar["revision"]
         if (
             not _compatible(ref, projected, source_policy, "historical_iv_close")
