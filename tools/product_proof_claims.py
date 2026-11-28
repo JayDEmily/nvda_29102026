@@ -1263,6 +1263,13 @@ def _option_first_stage_extensions(
             "a18704f720dce0bd77a2c16f098846fe02b7e4027ec2715cdb7c0663b6e43ad5",
             "84d7116b41d01fe59877f7841c9e376cd2d517fe7bf7c010a4c33ad6fb014e81",
         ),
+        (
+            "L10a", "D095", "m02_option_iv_prior_session_d095",
+            "4885ee1efe9f5832f33a8bf0552caf288990f9f992542c26f535bf378bcbc703",
+            "2a4530490537b2552b320db240ac09eb24508ccc9d9347316e517463c4548f32",
+            "651c9cea0db295b16eafccfb3f8a9f042e7893cc3430b28ca29d9defcbb454aa",
+            "0eb917d707fe6045d621319b397d9808968393a02cf62510c3a272d38f388bda",
+        ),
     )
     result = []
     for leaf, signal, prefix, brief_hash, binding_hash, contract_hash, descriptor_hash in fixed:
