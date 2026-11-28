@@ -1,0 +1,131 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_d085",
+  "semantic_brief_path": "handoff/m02_completion_28_execution/L07a/D085_IMPLEMENTATION_BRIEF.md",
+  "target": {
+    "category": "M",
+    "responsibility_name": "neutral_market_measurement_truth",
+    "package": "nvda_desk.market_measurement_truth",
+    "public_seam": "nvda_desk.market_measurement_truth.api",
+    "intent": "modify",
+    "existing_object_id": "M02"
+  },
+  "proof_axis": "product",
+  "product_tier_treatment": "NOT_CLASSIFIED",
+  "architecture_proof_axis": "architecture_kernel",
+  "required_proof_ids": [
+    "M02-C28-D085"
+  ],
+  "families": [
+    {
+      "id": "m02_option_time_d085",
+      "path": "tests/product/m02_completion_28_prospective/d085/test_signal.py",
+      "proof_obligation_ids": [
+        "M02-C28-D085"
+      ],
+      "required_test_names": [
+        "test_d085_success",
+        "test_d085_zero",
+        "test_d085_expired",
+        "test_d085_wrong_parent",
+        "test_d085_receipt_mismatch",
+        "test_d085_original_units",
+        "test_d085_closed_receipt"
+      ],
+      "boundary": "Exactly seven owner-admitted execution-held D085 controlled cases, path-only remapped physical family; inert authored source only, no physical installation or release.",
+      "proof_levels": [
+        "CONTRACT",
+        "INTEGRATION",
+        "STATE",
+        "REPLAY"
+      ],
+      "authoritative_inputs": [
+        "handoff/m02_completion_28_execution/L07a/D085_IMPLEMENTATION_BRIEF.md SHA256 d9d142c25c7d77dfa82c7181ec4ef0d0990216b77139d6a2811cd6a871e0a1a1",
+        "implementation/authority/T01_D085_OPTION_TIME_AUTHORITY_BINDING.yaml SHA256 b28156683fd15f4a685ceac7ff66e0db0782d21319c242a4afd1b8fbb965ee21",
+        "handoff/m02_completion_28_execution/L07a/OPTION_TIME_CONTRACT_AND_REVIEW_20261127.md SHA256 48d0a8f9533c8781a11b678a440e0874f6bfac76f49f028a1050e39f4ba3b133",
+        "handoff/m02_completion_28_execution/L07a/OPTION_TIME_SOURCE_POLICY_AND_SPECIMENS_PROPOSED_20261127.json SHA256 14a3ba2308f519d90d11eb450ac484a2c922507b7e04041c740297527a1d847a",
+        "handoff/m02_completion_28_execution/L07a/OPTION_TIME_FINITE_CASES_PROPOSED_20261127.json SHA256 638f8703e75c15b10c2e3772ef7a8ceb0a105a6845140d0e409d50c9a1f01c7f",
+        "handoff/m02_completion_28_execution/OWNER_CONSOLIDATED_64_CONDITIONAL_EXECUTION_GRANT_20261127.json SHA256 6a71f52981fc01da42f9c27726547d0d1ddd69851561479a007aeb30ebd95a41",
+        "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/PATH_ONLY_SUCCESSOR_AUTHORITY.json SHA256 11d90adf234d5195d3bd31a6b42df9b046c4ad53690cb279ef071d52b3049aa7",
+        "handoff/m02_completion_28_execution/L07a/D001_IMPLEMENTATION_BRIEF.md SHA256 222d0919c67c05f6436f985b8262ace985ab11dea30fc045333ee13fa10a8d8d",
+        "handoff/m02_completion_28_execution/L07a/D003_IMPLEMENTATION_BRIEF.md SHA256 0c588c6d06690f2e8fd23898cb4c219263dfc9b0924b071b40c2f92098ee5344",
+        "Exact D001 source 7148bad12f54824b018b359ed2b49803b4864e21; independent verdict b471fd0becf45755313cf268856f7ffcb0b1d0b9; generation 0002 installation 8d63cd9630c746c0d5b01deb3ebe1057f8f7925c; independent verdict ee0d37bb8f264bd17d6777d94724f6748de079b9",
+        "Exact D003 source 731f23d3457607c9b2fb7fc332d0edfe56635142; independent verdict bec4d7c1e3e195348b238ca18a85c1df2e2f51d3; generation 0001 installation e37aa46e6b2d44448984b6494f91e94f8f23f9bf; independent verdict 3e2543da0b2f3a8a49f2f108dcdccc9b533f3eca",
+        "handoff/m02_completion_28_execution/L07a/D004_IMPLEMENTATION_BRIEF.md SHA256 77f81c72a9fac1aafebda94a8ab97f3b4f0f9f0e089f4367f221f57aac9c775a",
+        "Exact D004 source f38cfd14b298a110b3b183328b5f39565cb982b8; independent verdict 8098e35d877b8abea75a282e390a496f2ca282cb; generation 0001 installation 296b5dfef3eb7dc237be9070ccbcb0f8f4bf3a41; independent verdict f550d2b25aa44e313feadd342cc17fb867a9d766",
+        "Independent exact own binding review c5469873faf1a119c0225d2a4e18baa34f9c76ff report SHA256 d6d73b070d4c72a775eafb9d2da0cbff07d6c942277985a597f0a38e9efca40d",
+        "handoff/m02_completion_28_execution/TEST_EVIDENCE_LEDGER.json SHA256 5d1ac21a0cf62fe98efe5d4bd5c510094d139e6ae6bd3fc85d10924d67189c89"
+      ],
+      "dependency_substitutions": [
+        "None: actual sealed M00 getter/direct projection/complete bounded receipt history, actual separately admitted D001, D003 and D004 public owners and ordinary SQLite readers in order, own D085 public seam; no fabricated parent, injected reader, DTO, callback except controlled clock, private SQL or oracle input."
+      ],
+      "case_coverage": {
+        "lawful_positive": {
+          "cases": [
+            "D085-CONTROLLED-SUCCESS",
+            "D085-CONTROLLED-ZERO"
+          ]
+        },
+        "prohibited_false_positive": {
+          "cases": [
+            "D085-CONTROLLED-REACHED_REFUSAL",
+            "D085-CONTROLLED-WRONG-PARENT",
+            "D085-CONTROLLED-RECEIPT-MISMATCH",
+            "D085-CONTROLLED-ORIGINAL-UNITS",
+            "D085-CONTROLLED-CLOSED-RECEIPT"
+          ]
+        },
+        "missing_mandatory_authority": {
+          "cases": [
+            "D085-CONTROLLED-REACHED_REFUSAL",
+            "D085-CONTROLLED-WRONG-PARENT",
+            "D085-CONTROLLED-RECEIPT-MISMATCH",
+            "D085-CONTROLLED-ORIGINAL-UNITS",
+            "D085-CONTROLLED-CLOSED-RECEIPT"
+          ]
+        },
+        "lawful_optional_absence": {
+          "cases": [
+            "D085-CONTROLLED-SUCCESS: actual receipt-only R001/R013/R004/R023/R024 have lawfully absent source instant and source zone; complete originals, projections and nested typed lineage retained."
+          ]
+        }
+      },
+      "expected_failure_signals": [
+        "D085-CONTROLLED-SUCCESS : CALENDAR_DATE_DIFFERENCE: actual aligned parent event and collector receipt on 22 October, exact expiry 23 October; typed int 1, one row and specified immutable replay and ordinary readback.",
+        "D085-CONTROLLED-ZERO : ZERO_CALENDAR_DAY_BOUNDARY: actual lawful same-day event and receipt; typed int 0 and complete ordinary readback, no replay.",
+        "D085-CONTROLLED-REACHED_REFUSAL : NEGATIVE_LIVE_DTE: actual lawful 26 October venue parent date after 23 October expiry; independently derived -3, refuse with None, zero live/reopened target rows, actual parents intact.",
+        "D085-CONTROLLED-WRONG-PARENT : ACTUAL_D004_FRAME_ALIGNMENT: actual EARLIER D004 materialised/reopened with different frame and date, target MAIN otherwise coherent; refuse with None, zero live/reopened target rows, actual parents intact.",
+        "D085-CONTROLLED-RECEIPT-MISMATCH : ACTUAL_COLLECTOR_RECEIPT_AGREEMENT: actual native R001 text equals event not actual collector receipt; all parent source roles preserved and same open interval; refuse with None and zero target history, intact parents.",
+        "D085-CONTROLLED-ORIGINAL-UNITS : ACTUAL_R013_NATIVE_UNITS: native R013 units UTC_datetime_text despite date_string mapping and exact YYYYMMDD; refuse with None and zero target history, intact parents.",
+        "D085-CONTROLLED-CLOSED-RECEIPT : ACTUAL_RECEIPT_SESSION_ALIGNMENT: actual event before close and actual receipt after close, otherwise coherent; refuse with None and zero target history, intact parents."
+      ],
+      "limitations": [
+        "Controlled synthetic only; no native/official certification.",
+        "No source implementation or product execution; inert proof authoring requires fresh independent documentary review before separate implementation and registration. Actual D001/D003/D004 product acceptance and candidate-specific sole Tester release remain prerequisites."
+      ],
+      "adjacent_nonclaims": [
+        "No physical proof installation, registration, source edit, D086 dependency or additional case.",
+        "No change to historical evidence or claims; zero newly accepted identities."
+      ],
+      "environment": "Separate designated strict Tester must independently qualify exact receiver, candidate, CPython 3.13.5, SQLite 3.54.1, dependencies, runner and pre-call guard before any release.",
+      "material_versions": [
+        "t01-option-time-d085/1",
+        "T01-D085-OPTION-TIME-DEF-V1",
+        "t01-option-session-calendar/1",
+        "Exact reviewed own brief/binding, actual D001/D003/D004 registered profiles, literal policy and finite inventory, path-only remap and later separately commissioned registration."
+      ],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/m02_completion_28_prospective/d085/test_signal.py"
+    }
+  ],
+  "required_support_files": [],
+  "optional_support_files": [],
+  "execution_policy": {
+    "skipped_tests": "FAIL",
+    "xfailed_tests": "FAIL",
+    "xpassed_tests": "FAIL",
+    "collection_failed": "FAIL",
+    "no_tests_collected": "FAIL",
+    "unexpected_governed_mutation": "FAIL"
+  }
+}
