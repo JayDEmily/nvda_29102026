@@ -1,0 +1,2265 @@
+{
+  "candidate": "6a777e494b8dc95de6903aac85724cc96d648ce5",
+  "candidate_tree": "55ea4f7365304941a75c6c5002b0228210483495",
+  "candidate_parent": "ff79e00ec9e4623760ba24e580b1c228a7bcde88",
+  "candidate_tree_listing_sha256": "d49cd32d318d411190b7a999ad1b733e1d372b0a90176a3b6da317f086a0e6e7",
+  "candidate_tracked_entries": 4778,
+  "input_handoff": "77d80c33f62bacd4aed2f616d05825d34e2cf874",
+  "grant": {
+    "path": "handoff/m02_completion_28_execution/OWNER_CONSOLIDATED_64_CONDITIONAL_EXECUTION_GRANT_20261127.json",
+    "sha256": "6a71f52981fc01da42f9c27726547d0d1ddd69851561479a007aeb30ebd95a41",
+    "git_blob": "8888bc8c725f9c085e8f0f1a17964850c0b92c62",
+    "bytes": 42133
+  },
+  "remap": {
+    "path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/PATH_ONLY_SUCCESSOR_AUTHORITY.json",
+    "sha256": "11d90adf234d5195d3bd31a6b42df9b046c4ad53690cb279ef071d52b3049aa7",
+    "git_blob": "1f11fc55e9827da1e72185fccc42eac49a8eb667",
+    "bytes": 40687
+  },
+  "ledger": {
+    "path": "handoff/m02_completion_28_execution/TEST_EVIDENCE_LEDGER.json",
+    "sha256": "5d1ac21a0cf62fe98efe5d4bd5c510094d139e6ae6bd3fc85d10924d67189c89",
+    "git_blob": "4485e7dfbcfb0406d6ee1c6fe4bc4313ccbfc8bc",
+    "bytes": 835861
+  },
+  "historical_accepted_case_count": 67,
+  "held_case_count": 64,
+  "first_stage_count": 21,
+  "dependent_held_case_count": 43,
+  "review_refs": {
+    "refs/heads/review/pm-l01a-aligned-history-policy-finite34-r1-20261126": "1190b50d43755ffd71629d11ba1846894a113771",
+    "refs/heads/review/trial-cac-nvidia-l01a-authoring-20261127": "6fe7b4496507fc491cd03baa6a49c96d28f49c8d",
+    "refs/heads/review/trial-cac-nvidia-l01a-implementation-20261127": "22a14402bb5df8651e9136b6d00d94f657a07afd",
+    "refs/heads/review/trial-cac-nvidia-l01a-registration-20261127": "63e716b7de2ea11bef9afe80fa0bb7793a031cef",
+    "refs/heads/review/trial-cac-nvidia-g01-partition-remap-20261128": "5da8986e88d777975edae36fc65eaf8a229e29e4",
+    "refs/heads/review/trial-cac-nvidia-l01a-remapped-installation-20261128": "44f538d5b3412d95e8fdad80d17ed74a82aca221",
+    "refs/heads/review/trial-cac-nvidia-d076-d077-bindings-20261128": "38c5b6f86417c737381ac9383398f4e1bbb45846",
+    "refs/heads/review/trial-cac-nvidia-d076-d077-authoring-20261128": "e235b0ecb14a88df8dc9b4deeb2d02351a5f5922",
+    "refs/heads/review/trial-cac-nvidia-d076-implementation-20261128": "2d912f65efaa60079f61fa4f42897d1a9d3aa834",
+    "refs/heads/review/trial-cac-nvidia-d076-registration-preparation-20261128": "a415183e87582e6a761545b5046b8001da2499ba",
+    "refs/heads/review/trial-cac-nvidia-d076-registration-installation-20261128": "9a98501cbff8491c7eca51dd7af485ca0b889a96",
+    "refs/heads/review/trial-cac-nvidia-d077-implementation-20261128": "89354484f6c6caece4df8a316f4b5e5460bbd53f",
+    "refs/heads/review/trial-cac-nvidia-d077-registration-preparation-20261128": "c257e7d5d89aca525e81f9cf7f1c32ca85c9e95d",
+    "refs/heads/review/trial-cac-nvidia-d077-registration-installation-20261128": "67bc48f2c673ef87041b145b6840f79510adb966",
+    "refs/heads/review/trial-cac-nvidia-d079-d080-d081-bindings-20261128": "14748c0711286bd383f613e2ed2e171506fe0ced",
+    "refs/heads/review/trial-cac-nvidia-d079-d080-d081-authoring-20261128": "800ca04e5582e8aae469dabed21b4a9126778edf",
+    "refs/heads/review/trial-cac-nvidia-d079-d080-d081-implementation-20261128": "40fd1f7ecb886f3cee2edfcc6028ec4dc9bfcf90",
+    "refs/heads/review/trial-cac-nvidia-d079-d080-d081-registration-preparation-20261128": "da309cbbeff0c0005a831690713c6233161655aa",
+    "refs/heads/review/trial-cac-nvidia-d079-d080-d081-registration-installation-20261128": "4a28e0f3f12676364d6846ab3878e1869508e656",
+    "refs/heads/review/trial-cac-nvidia-d078-binding-admission-20261128": "28448514dde85650d61b39bb0d0cb2b18f6a3228",
+    "refs/heads/review/trial-cac-nvidia-d078-inert-proof-authoring-20261128": "33524e39ddadb378ad8d4ac3ea52b4c8d1cfd861",
+    "refs/heads/review/trial-cac-nvidia-d078-implementation-20261128": "0662d2b72705ddac934d99297c148d585a9d146c",
+    "refs/heads/review/trial-cac-nvidia-d078-registration-preparation-20261128": "61eec0bb93b803665e72706e80f50449b3fc55b0",
+    "refs/heads/review/trial-cac-nvidia-d078-registration-installation-20261128": "1778c24a8a2abd2e3c0b3bc18865160d6c36d326",
+    "refs/heads/review/pm-option-time-policy-finite23-20261127": "72d3ac7de64c574f8f707bf318825545d2ccd633",
+    "refs/heads/review/trial-cac-nvidia-d001-downstream-interface-prerequisite-20261128": "ba4d5991bcf26b9aacce01c7ba70ce2feb4e8466",
+    "refs/heads/review/trial-cac-nvidia-d003-d086-bindings-20261128": "40021ca4053c272b454cdd6743c367033653183d",
+    "refs/heads/review/trial-cac-nvidia-d003-d086-authoring-20261128": "69e7db0bb6e6c9c318d2b7422fafa3cf6c14e795",
+    "refs/heads/review/trial-cac-nvidia-d003-implementation-20261128": "bec4d7c1e3e195348b238ca18a85c1df2e2f51d3",
+    "refs/heads/review/trial-cac-nvidia-d003-registration-preparation-20261128": "e46a3a98f8c76bd2e5278454642d4f64514cb85f",
+    "refs/heads/review/trial-cac-nvidia-d003-registration-installation-20261128": "3e2543da0b2f3a8a49f2f108dcdccc9b533f3eca",
+    "refs/heads/review/trial-cac-nvidia-d004-option-session-binding-admission-20261128": "67adebbd89345b4fd82e2be9d67f2e50fe917503",
+    "refs/heads/review/trial-cac-nvidia-d004-option-session-authoring-20261128": "dc9e20d9ff1d349aae20ee7579922ad1861d0fc6",
+    "refs/heads/review/trial-cac-nvidia-d004-option-session-implementation-20261129": "8098e35d877b8abea75a282e390a496f2ca282cb",
+    "refs/heads/review/trial-cac-nvidia-d004-option-session-registration-preparation-20261129": "050e48df3a4ff09fe551fec5c5e62abc5424ed45",
+    "refs/heads/review/trial-cac-nvidia-d004-option-session-registration-installation-20261129": "f550d2b25aa44e313feadd342cc17fb867a9d766",
+    "refs/heads/review/trial-cac-nvidia-d001-d095-bindings-20261128": "a29290c672420b3bf7b149c89828e5c8d43a9d9f",
+    "refs/heads/review/trial-cac-nvidia-d001-d095-authoring-20261128": "51e4e2bc0693a65987c8264a53d50d3ce2f5303c",
+    "refs/heads/review/trial-cac-nvidia-d001-d095-implementation-20261128": "61b14032a56fec9dee4309e8bd3ccc01260bfbb9",
+    "refs/heads/review/trial-cac-nvidia-d001-d095-registration-preparation-20261128": "eddfd045dc5cce922ea19be01f5502a7d4eaa54f",
+    "refs/heads/review/trial-cac-nvidia-d001-d095-registration-installation-20261128": "05710fb7bd5c1fb33ec60eb6e0a42458a5baf85b",
+    "refs/heads/review/trial-cac-nvidia-d001-interface-recovery-authoring-20261128": "deb00a46cf1b5d8121cbcdaca956006c6ab63177",
+    "refs/heads/review/trial-cac-nvidia-d001-interface-recovery-implementation-20261128": "b471fd0becf45755313cf268856f7ffcb0b1d0b9",
+    "refs/heads/review/trial-cac-nvidia-d001-interface-recovery-registration-applicability-20261128": "b6748bfc2a711e6cc97d5616be235b30f5dd9465",
+    "refs/heads/review/trial-cac-nvidia-d001-generation-0002-preparation-20261128": "d9b2745ceeb8a5133f00802c2e01feafcb90b942",
+    "refs/heads/review/trial-cac-nvidia-d001-generation-0002-installation-20261128": "ee0d37bb8f264bd17d6777d94724f6748de079b9",
+    "refs/heads/review/trial-cac-nvidia-d085-calendar-dte-binding-admission-20261129": "c5469873faf1a119c0225d2a4e18baa34f9c76ff",
+    "refs/heads/review/trial-cac-nvidia-d085-calendar-dte-authoring-20261129": "f6c050faa34410a1a1ac941467df59e5b36048c6",
+    "refs/heads/review/trial-cac-nvidia-d085-calendar-dte-implementation-20261129": "fdff512a23f2fdcf5009a0faa62ab324a2f911f6",
+    "refs/heads/review/trial-cac-nvidia-d085-calendar-dte-registration-preparation-20261129": "812b5171ad661056f2272d31f05274f8ab49d5e7",
+    "refs/heads/review/trial-cac-nvidia-d085-calendar-dte-registration-installation-20261129": "78d3411a2ac04b73a269abf9ec5c27f7d3ed2f6d",
+    "refs/heads/review/trial-cac-nvidia-d086-implementation-20261128": "c8fc712bf9bf3e14da3a80688211d95e87282231",
+    "refs/heads/review/trial-cac-nvidia-d086-registration-preparation-20261128": "ac0e7c343a29373c02c05f096f262c41df8b5e84",
+    "refs/heads/review/trial-cac-nvidia-d086-registration-installation-20261128": "dcad1c3c0674a5a5ae2c5822411a993ced6bf840",
+    "refs/heads/review/pm-option-iv-prior-session-policy-finite7-20261127": "3bdcca73679f02c7e8ab0839b6d91c9dfc81e46e",
+    "refs/heads/recovery/legacy-d010-20261111": "77471e5a851ec04e73c6dc63988868064de930f8",
+    "refs/heads/recovery/legacy-d131-20261111": "fa709f645ac5ac21b861836db74ab23da9f8e17a",
+    "refs/heads/recovery/legacy-m00-brief2-20261111": "0c86b187a23e750d39ce04f772f7d52c1bd578b0",
+    "refs/heads/recovery/legacy-next20-20261111": "8e0c89b2cdf4ef504931fea894d89b2f85b2ce2e",
+    "refs/heads/recovery/r2-g0-f02-20261111": "16b7cc67f5d24336d3768e2da006819474a8c792",
+    "refs/heads/work/t01-continuous-execution-20261112": "67f5a6c855bfcf8c6002e7f6c2d97ba714b6644f",
+    "refs/heads/review/pm-l00-l10c-20261125": "757ba8f3b33c55b3f9284e529c46c410be54baac",
+    "refs/heads/review/pm-l10c-scalar-policy-20261125": "2dffe48e3ac6347039655fa5fd0794eaa673775b",
+    "refs/heads/review/pm-l10c-scalar-preedit-20261125": "1602f7c306fadf06f2f2cbb35650dc15c4b7da74",
+    "refs/heads/review/pm-l10c-scalar-preedit-r1-20261125": "58a21fd7e5f8aa800eac28340d62d483211086cd",
+    "refs/heads/review/pm-l10c-scalar-authority-20261125": "5db30e464e7200c81180919c839d3a61104d2687",
+    "refs/heads/review/pm-l10c-scalar-support-authoring-20261125": "ac71ff0bb9aeb431297ed8385b7ee8eb016bc5a8",
+    "refs/heads/review/pm-l10c-scalar-support-implementation-20261125": "1b1b743990e9fbd47b915bd3d1f3602680bfece8",
+    "refs/heads/review/pm-l10c-scalar-support-generation-20261126": "651fd0ed74981edd59ef2f1e1be238f0f28575bc",
+    "refs/heads/review/d091-l01b-strict-tester-intake-20261120-gpt6": "d1361399a9b74f6ba1e6d5b6ed84e8705eeb5770",
+    "refs/heads/review/d091-l01b-case-release-predicates-20261120-gpt6": "706b11c85e17ce89131ca2c0d389c30181b0a408",
+    "refs/heads/review/d091-l01b-strict-tester-parent15-20261120-gpt6": "f0aba1a87bf889e91dcf154f2c04e5517b4a2901",
+    "refs/heads/review/d091-l01b-strict-tester-d091-child18-20261120-gpt6": "7322441997d5ab75fa412676e3ae42aba03dcb79",
+    "refs/heads/review/pm-l10c-scalar-strict-tester-intake-20261126": "7460af983241f01d713c1acf7ac2c3c83a44dc21",
+    "refs/heads/review/pm-l10c-scalar-support16-product-proof-20261126": "c07ab2881be128a577eb07460722500a58869e0c",
+    "refs/heads/review/pm-l17-d109-scalar-authoring-20261126": "c5e991571a5fa28661ccca9ca9f97433fc6bd730",
+    "refs/heads/review/pm-l17-d109-scalar-implementation-20261126": "c82963fb2bcec5c19440cf6b3440d72280a85437",
+    "refs/heads/review/pm-l17-d109-scalar-generation-20261126": "9d8ac30a70e5bcbec55aadda66ecc514b8471363",
+    "refs/heads/review/pm-l17-d109-scalar-strict-tester-intake-20261126": "aef153765fdb5c1f92946eff25f6782c50d26df9",
+    "refs/heads/review/pm-l17-d109-scalar-product-proof-20261126": "02e62a1a31bafe6f465eb3e1a513ffb41dd09ff8",
+    "refs/heads/review/pm-l18-d110-scalar-authoring-20261126": "c53619c74f6902954f189cef34d1ed304adc68b3",
+    "refs/heads/review/pm-l18-d110-scalar-implementation-20261126": "a1f41fca027dc86ce1193fb035167bf3673a0d5e",
+    "refs/heads/review/pm-l18-d110-scalar-generation-20261126": "ca247867d50d12efc9daaee0cd20b19d3a85cb0e"
+  },
+  "review_reports": [
+    {
+      "ref": "refs/heads/review/pm-l01a-aligned-history-policy-finite34-r1-20261126",
+      "commit": "1190b50d43755ffd71629d11ba1846894a113771",
+      "path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_ALIGNED_HISTORY_JOINT_FIT_POLICY_FINITE34_R1_VERDICT_20261126.md",
+      "sha256": "fddeb50391f51afeccb339798c88e8b756768308a6111275d109a1bd2463dc8e",
+      "tree": "6899f27e39e5c34aa626be0f419da1041edf5926",
+      "blob": "466a0398f26d9802ade17c7f9fbe91991bd7af96",
+      "parent": null,
+      "actual_parent": "3f9ec141eea4fb3f767b933bcd96d237091dcfcb",
+      "actual_tree": "6899f27e39e5c34aa626be0f419da1041edf5926",
+      "bytes": 14966
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-l01a-authoring-20261127",
+      "commit": "6fe7b4496507fc491cd03baa6a49c96d28f49c8d",
+      "path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_CAC_TRIAL_ALIGNED_HISTORY_D071_D075_AUTHORING_VERDICT_20261127.md",
+      "sha256": "47423113733924b68fd23488ba6062606c6554f100655f995f70a3832e3433c4",
+      "tree": "b65a9048dee60734e55b8a975592d6e7de39662b",
+      "blob": "87daec74dbd57bf5a0e78a5aea4798eccc45ff10",
+      "parent": "2e482909ddb92f939935fd28e48d765abb0193f8",
+      "actual_parent": "2e482909ddb92f939935fd28e48d765abb0193f8",
+      "actual_tree": "b65a9048dee60734e55b8a975592d6e7de39662b",
+      "bytes": 13500
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-l01a-implementation-20261127",
+      "commit": "22a14402bb5df8651e9136b6d00d94f657a07afd",
+      "path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_CAC_TRIAL_ALIGNED_HISTORY_D071_D075_IMPLEMENTATION_VERDICT_20261127.md",
+      "sha256": "6c354b51ccd42bf7230a457102f68cbf498f3ded4eae11a90b5765d9567af34b",
+      "tree": "b32f50aee4e96347d9468749f47a956b60135b0a",
+      "blob": "bd60d43162d574b462c9147f479b78f1244a7342",
+      "parent": "f3f9f8c7d3da8e937fb56754e74b3e257f3c550a",
+      "actual_parent": "f3f9f8c7d3da8e937fb56754e74b3e257f3c550a",
+      "actual_tree": "b32f50aee4e96347d9468749f47a956b60135b0a",
+      "bytes": 11413
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-l01a-registration-20261127",
+      "commit": "63e716b7de2ea11bef9afe80fa0bb7793a031cef",
+      "path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_CAC_TRIAL_ALIGNED_HISTORY_D071_D075_REGISTRATION_VERDICT_20261127.md",
+      "sha256": "80fa0fb7b2883535ccc50acfd5b3760949ba0aff893b74f515a92204689b2c74",
+      "tree": "4b9f6d446e2e80c19b96c741f564ec07b32e94ed",
+      "blob": null,
+      "parent": null,
+      "actual_parent": "b5c63a67083761916e5ee27ed4c2c13c3360d2a2",
+      "actual_tree": "4b9f6d446e2e80c19b96c741f564ec07b32e94ed",
+      "bytes": 12866
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-g01-partition-remap-20261128",
+      "commit": "5da8986e88d777975edae36fc65eaf8a229e29e4",
+      "path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_CAC_TRIAL_G01_PROSPECTIVE_PARTITION_REMAP_VERDICT_20261128.md",
+      "sha256": "0aab07086e35fe266bcf20f3dfba2934164c39188c641d6dc14318ebc72900e7",
+      "tree": "059362c14f0d62a99baf07b429e4dbf779e6b3f8",
+      "blob": "2e1156c10a3e0ed3f40d6bf6fa738d5440000c75",
+      "parent": "efb99bd23d66f49f7d1b2290ad97d42cccc2a265",
+      "actual_parent": "efb99bd23d66f49f7d1b2290ad97d42cccc2a265",
+      "actual_tree": "059362c14f0d62a99baf07b429e4dbf779e6b3f8",
+      "bytes": 9815
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-l01a-remapped-installation-20261128",
+      "commit": "44f538d5b3412d95e8fdad80d17ed74a82aca221",
+      "path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_CAC_TRIAL_ALIGNED_HISTORY_D071_D075_REMAPPED_INSTALLATION_VERDICT_20261128.md",
+      "sha256": "4eee01ea905ccbc803c88288f3757c7fd546509f740cddc17fff8e672faa58e5",
+      "tree": "627c54e5331660881d53692e4e78c8148aeb5c15",
+      "blob": "866b88876a7e1c9656378483307fee190370b0b4",
+      "parent": "aa1fe57e10f14c8c936ff4fbf5b89732313aea35",
+      "actual_parent": "aa1fe57e10f14c8c936ff4fbf5b89732313aea35",
+      "actual_tree": "627c54e5331660881d53692e4e78c8148aeb5c15",
+      "bytes": 9274
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-d076-d077-bindings-20261128",
+      "commit": "38c5b6f86417c737381ac9383398f4e1bbb45846",
+      "path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_D076_D077_DOWNSTREAM_BINDING_ADMISSION_VERDICTS_20261128.md",
+      "sha256": "4b3daa057df6ce097c6e4e03cb17e47162b18bdceee20e55b8febfb21ca728ef",
+      "tree": "f51139f779172300536ec140a00f38a7afed36aa",
+      "blob": "f44050c6b8ddcbd3601d33dfad85104a3f5ae65f",
+      "parent": "4115c8188f8196bc2dbd016f4b722b54eb8f86b8",
+      "actual_parent": "4115c8188f8196bc2dbd016f4b722b54eb8f86b8",
+      "actual_tree": "f51139f779172300536ec140a00f38a7afed36aa",
+      "bytes": 12194
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-d076-d077-authoring-20261128",
+      "commit": "e235b0ecb14a88df8dc9b4deeb2d02351a5f5922",
+      "path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_D076_D077_DOWNSTREAM_AUTHORING_VERDICTS_20261128.md",
+      "sha256": "c55dd934a02d7c726c5b3b98a573ba2537dfb500802e0140de91946ee6af1445",
+      "tree": "17821975a4ad03cff8e8155cd1e661d6d5b3baff",
+      "blob": "76691305b6fcceb6ffbc61eb4d85d77045266908",
+      "parent": "0a326c080c7fadc8aabd2ca2035ea7ce24c7c783",
+      "actual_parent": "0a326c080c7fadc8aabd2ca2035ea7ce24c7c783",
+      "actual_tree": "17821975a4ad03cff8e8155cd1e661d6d5b3baff",
+      "bytes": 13240
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-d076-implementation-20261128",
+      "commit": "2d912f65efaa60079f61fa4f42897d1a9d3aa834",
+      "path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_D076_DOWNSTREAM_SOURCE_IMPLEMENTATION_APPLICABILITY_VERDICT_20261128.md",
+      "sha256": "af639412072377a25d08c4151113fa6e560634a8c3d888315ddd24f6885924b2",
+      "tree": "e7e8109b89c280887730512fb815b658330afef7",
+      "blob": "2ff149bf09d3e6d7847ea8a8f5c6f385ca55e6e8",
+      "parent": "6c02e879f204817065d28b4bf72271c2f945edc7",
+      "actual_parent": "6c02e879f204817065d28b4bf72271c2f945edc7",
+      "actual_tree": "e7e8109b89c280887730512fb815b658330afef7",
+      "bytes": 12277
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-d076-registration-preparation-20261128",
+      "commit": "a415183e87582e6a761545b5046b8001da2499ba",
+      "path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_D076_DOWNSTREAM_REGISTRATION_PREPARATION_VERDICT_20261128.md",
+      "sha256": "c72f1b7c8349a810b237b469d181027fc40d3f7cc6519e75186af13bb7d6e11b",
+      "tree": "21bac656ca00b87475845bd01021ce62188f0a96",
+      "blob": "fb1ec12abc03eef30e4af5ca7bb9081e1d5c9f32",
+      "parent": "268f31971ede29005cd51556d4cc0182c18eb657",
+      "actual_parent": "268f31971ede29005cd51556d4cc0182c18eb657",
+      "actual_tree": "21bac656ca00b87475845bd01021ce62188f0a96",
+      "bytes": 9403
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-d076-registration-installation-20261128",
+      "commit": "9a98501cbff8491c7eca51dd7af485ca0b889a96",
+      "path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_D076_DOWNSTREAM_REGISTRATION_INSTALLATION_VERDICT_20261128.md",
+      "sha256": "8135c94837e7e2743e80f31823d2cfb153ae4295e562edeb315aba29b9aa6e52",
+      "tree": "3de18833aa30c124b8536dd3179e6d4d77421748",
+      "blob": "cf861519f389fba084ebad8d0084d2e55c9c258e",
+      "parent": "a656678160771480fe67c51bfe21a42d63564008",
+      "actual_parent": "a656678160771480fe67c51bfe21a42d63564008",
+      "actual_tree": "3de18833aa30c124b8536dd3179e6d4d77421748",
+      "bytes": 7929
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-d077-implementation-20261128",
+      "commit": "89354484f6c6caece4df8a316f4b5e5460bbd53f",
+      "path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_D077_DOWNSTREAM_SOURCE_IMPLEMENTATION_AND_SHARED_SURFACE_VERDICT_20261128.md",
+      "sha256": "288cefc0fb3665ad812f19b0564bedc0e38edcfdf16ee5b4561d567d10f534d6",
+      "tree": "f72395efe5e09d7abcb0fe1e13e45ea85aed15bd",
+      "blob": "81c9c1af3f604efa19ae8c419a0d9f0d4b602b6b",
+      "parent": "257edd81da2a1e77b128cebe4813c6f028ae4b05",
+      "actual_parent": "257edd81da2a1e77b128cebe4813c6f028ae4b05",
+      "actual_tree": "f72395efe5e09d7abcb0fe1e13e45ea85aed15bd",
+      "bytes": 12223
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-d077-registration-preparation-20261128",
+      "commit": "c257e7d5d89aca525e81f9cf7f1c32ca85c9e95d",
+      "path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_D077_DOWNSTREAM_REGISTRATION_PREPARATION_VERDICT_20261128.md",
+      "sha256": "9868a4f60abee4428aac1b1a6961a5023d255da242ba87b98055b139d784ce80",
+      "tree": "613cc0c2c35c1f337e89699cca7a4413d20179d7",
+      "blob": "f65467b875ef4e6576c95b71a8c53ecfc9091c26",
+      "parent": "c9d0f38453fcf33af55f57608a9f23be06acddc8",
+      "actual_parent": "c9d0f38453fcf33af55f57608a9f23be06acddc8",
+      "actual_tree": "613cc0c2c35c1f337e89699cca7a4413d20179d7",
+      "bytes": 7469
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-d077-registration-installation-20261128",
+      "commit": "67bc48f2c673ef87041b145b6840f79510adb966",
+      "path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_D077_DOWNSTREAM_REGISTRATION_INSTALLATION_VERDICT_20261128.md",
+      "sha256": "84a156876fc71998c4755caac28babc4aa29de2d5adfdbc31e559a376017501d",
+      "tree": "6b2adf81c313ef86ad6dae55b4b1eceaf126a8c2",
+      "blob": "809c1dd71d5194814b17a693a844bbd1775dd412",
+      "parent": "34dc77bce0fcc645386fffbf8619292ada95a1cb",
+      "actual_parent": "34dc77bce0fcc645386fffbf8619292ada95a1cb",
+      "actual_tree": "6b2adf81c313ef86ad6dae55b4b1eceaf126a8c2",
+      "bytes": 8726
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-d079-d080-d081-bindings-20261128",
+      "commit": "14748c0711286bd383f613e2ed2e171506fe0ced",
+      "path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_D079_D080_D081_JOINT_FIT_BINDING_ADMISSION_VERDICTS_20261128.md",
+      "sha256": "c324511425928ab36048d5e5c9d7510f8a48a2b2f2586e58dd07b7b8404c2f31",
+      "tree": "1c7e65c4232254200163e465ae217d2b89ca90b5",
+      "blob": "961a66aa669abaee1878ad618c7a5dd0b1951dd9",
+      "parent": "eaa4816c360f9df1e1974570e1c7b161efe6d08c",
+      "actual_parent": "eaa4816c360f9df1e1974570e1c7b161efe6d08c",
+      "actual_tree": "1c7e65c4232254200163e465ae217d2b89ca90b5",
+      "bytes": 13744
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-d079-d080-d081-authoring-20261128",
+      "commit": "800ca04e5582e8aae469dabed21b4a9126778edf",
+      "path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_D079_D080_D081_JOINT_FIT_INERT_PROOF_AUTHORING_VERDICTS_20261128.md",
+      "sha256": "7da0e899a4092d84b754a72e0a5df40c5339240238bff3b77b9b86359ad4b130",
+      "tree": "4054231277c749be29b8d4036736a658f0291abb",
+      "blob": "7a5259a08bed63ee64d5673fc4d8bb5d20ebb35a",
+      "parent": "a021be5e8881c34a7f10383d70e7766290276817",
+      "actual_parent": "a021be5e8881c34a7f10383d70e7766290276817",
+      "actual_tree": "4054231277c749be29b8d4036736a658f0291abb",
+      "bytes": 15203
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-d079-d080-d081-implementation-20261128",
+      "commit": "40fd1f7ecb886f3cee2edfcc6028ec4dc9bfcf90",
+      "path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_D079_D080_D081_JOINT_FIT_SOURCE_IMPLEMENTATION_AND_SHARED_SURFACE_VERDICTS_20261128.md",
+      "sha256": "c8fb5c1c219aae53cbc1e1b45e907025d6e5ec6b5fe205e7831a71b59346acd2",
+      "tree": "1268deba6bd96f779a4773c74205d3eb6e523971",
+      "blob": "00df6973ee41247682dc1726d874eabe874c397a",
+      "parent": "024de5cf1ab6618b8b32de4c756e132db0142638",
+      "actual_parent": "024de5cf1ab6618b8b32de4c756e132db0142638",
+      "actual_tree": "1268deba6bd96f779a4773c74205d3eb6e523971",
+      "bytes": 24304
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-d079-d080-d081-registration-preparation-20261128",
+      "commit": "da309cbbeff0c0005a831690713c6233161655aa",
+      "path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_D079_D080_D081_JOINT_FIT_REGISTRATION_PREPARATION_VERDICTS_20261128.md",
+      "sha256": "a0efdb0f36c60513da511adcba093e338a04226efa1ae7957ee3d555f0a21414",
+      "tree": "90fa5be3d0db2c7e743afbbbe63c8c43c79cf6d9",
+      "blob": "6e3e8fbd56adab30b69b8ebb79e77eabe6286b2a",
+      "parent": "fbe5ed5c91477ea23f16bf50309040e30d650096",
+      "actual_parent": "fbe5ed5c91477ea23f16bf50309040e30d650096",
+      "actual_tree": "90fa5be3d0db2c7e743afbbbe63c8c43c79cf6d9",
+      "bytes": 20406
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-d079-d080-d081-registration-installation-20261128",
+      "commit": "4a28e0f3f12676364d6846ab3878e1869508e656",
+      "path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_D079_D080_D081_JOINT_FIT_REGISTRATION_INSTALLATION_VERDICTS_20261128.md",
+      "sha256": "c16a282a30b8061e07f8b14472aa13709d6e30f21c26d3bbb46b50d57a432a7f",
+      "tree": "ffbbb537697897f4f5b93a33794090ea782e4757",
+      "blob": "8a8f96d45d5fc7f3dc8a57698db1eec0e75c519f",
+      "parent": "e44c578ff93f53e3825f0c1212a56a96e7fcf603",
+      "actual_parent": "e44c578ff93f53e3825f0c1212a56a96e7fcf603",
+      "actual_tree": "ffbbb537697897f4f5b93a33794090ea782e4757",
+      "bytes": 21687
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-d078-binding-admission-20261128",
+      "commit": "28448514dde85650d61b39bb0d0cb2b18f6a3228",
+      "path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_D078_SAME_FIT_BINDING_ADMISSION_VERDICT_20261128.md",
+      "sha256": "eff73d30d85d54724bcf67f4eb1a4505f4b2f9c589ec621e5b3c2c55fee0b0f4",
+      "tree": "b5318f025d4fd8df8173d10a8d16fe10febe11a2",
+      "blob": "752a72afe3540f2c983514ebd331d3e56c231468",
+      "parent": "905e6412ae6f7c83e11e4263e6c2519cd2811f87",
+      "actual_parent": "905e6412ae6f7c83e11e4263e6c2519cd2811f87",
+      "actual_tree": "b5318f025d4fd8df8173d10a8d16fe10febe11a2",
+      "bytes": 20248
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-d078-inert-proof-authoring-20261128",
+      "commit": "33524e39ddadb378ad8d4ac3ea52b4c8d1cfd861",
+      "path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_D078_SAME_FIT_INERT_PROOF_AUTHORING_VERDICT_20261128.md",
+      "sha256": "29e0460c01767b5aeaa5818b32efee58776a8f85a51934a387c5cb6cb0217629",
+      "tree": "3eee6466152b5ca57d05530f8f88a8aec6b630aa",
+      "blob": null,
+      "parent": "c3a3433e5739ffbb9f583c9123cdf5615acebbed",
+      "actual_parent": "c3a3433e5739ffbb9f583c9123cdf5615acebbed",
+      "actual_tree": "3eee6466152b5ca57d05530f8f88a8aec6b630aa",
+      "bytes": 14319
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-d078-implementation-20261128",
+      "commit": "0662d2b72705ddac934d99297c148d585a9d146c",
+      "path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_D078_SAME_FIT_SOURCE_IMPLEMENTATION_AND_SHARED_SURFACE_VERDICT_20261128.md",
+      "sha256": "9e991d940552af3ad0bbe213c5597f836d85dedbe511710cff12a6946f32e73b",
+      "tree": "f1c6cdc0f8deeb2a05caa9e8883e5a538c7dc3c3",
+      "blob": "90f2ab63c36f5f8a2824e9be2cc5993e958bcc7d",
+      "parent": "558356d2c60834f8c93e444d3ce7813d2fd55d2e",
+      "actual_parent": "558356d2c60834f8c93e444d3ce7813d2fd55d2e",
+      "actual_tree": "f1c6cdc0f8deeb2a05caa9e8883e5a538c7dc3c3",
+      "bytes": 17875
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-d078-registration-preparation-20261128",
+      "commit": "61eec0bb93b803665e72706e80f50449b3fc55b0",
+      "path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_D078_SAME_FIT_REGISTRATION_PREPARATION_VERDICT_20261128.md",
+      "sha256": "6cbea56c2044db08828ad2c6363ef96e4433210a8e8f66e57dd37bdcaa88c0ae",
+      "tree": "738de47e6c67046df1e473bbc6df0004e8d3f1b3",
+      "blob": "476a9672fe90689a06f407b0c878b80481efc3f0",
+      "parent": "043a343d5152b40154648b2d6ab748ef0a65fc4c",
+      "actual_parent": "043a343d5152b40154648b2d6ab748ef0a65fc4c",
+      "actual_tree": "738de47e6c67046df1e473bbc6df0004e8d3f1b3",
+      "bytes": 9610
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-d078-registration-installation-20261128",
+      "commit": "1778c24a8a2abd2e3c0b3bc18865160d6c36d326",
+      "path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_D078_SAME_FIT_REGISTRATION_INSTALLATION_VERDICT_20261128.md",
+      "sha256": "46778bfaf1671e6477984914c3a904f09162d4c83c6cdfbf1a78b8cd04d11bc0",
+      "tree": "a6dfa8965756e6b1dd3ac17d94c4e2446a00cc11",
+      "blob": "6f106377d4bc511f1e495cff415b7f42cac25095",
+      "parent": "d4886b8f5d8910c95ae39b168633ce3b2ededb1a",
+      "actual_parent": "d4886b8f5d8910c95ae39b168633ce3b2ededb1a",
+      "actual_tree": "a6dfa8965756e6b1dd3ac17d94c4e2446a00cc11",
+      "bytes": 7735
+    },
+    {
+      "ref": "refs/heads/review/pm-option-time-policy-finite23-20261127",
+      "commit": "72d3ac7de64c574f8f707bf318825545d2ccd633",
+      "path": "handoff/m02_completion_28_execution/L07a/INDEPENDENT_OPTION_TIME_POLICY_FINITE23_VERDICT_20261127.md",
+      "sha256": "cc16e8867ec7e17ba4449c198c81429e6bde8bf68328e39adb9a088c109618b0",
+      "tree": "4ac578cea655e054d0d2ef48673a8cf363a5a2c2",
+      "blob": "4d89a54b9e6ef9788213921213450d8aa925df35",
+      "parent": null,
+      "actual_parent": "4f5f1f885a3681a6b8b04a225f7373aa620c8d06",
+      "actual_tree": "4ac578cea655e054d0d2ef48673a8cf363a5a2c2",
+      "bytes": 13005
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-d001-downstream-interface-prerequisite-20261128",
+      "commit": "ba4d5991bcf26b9aacce01c7ba70ce2feb4e8466",
+      "path": "handoff/m02_completion_28_execution/L07a/INDEPENDENT_D001_DOWNSTREAM_INTERFACE_PREREQUISITE_VERDICT_20261128.md",
+      "sha256": "e306eac84eef61e589be57fe4b6115794215aa8308b69d6f0ceb09f165a2e1b4",
+      "tree": "a056178afe1f22c44757b0c4e2fe859f56ef014c",
+      "blob": "30d410e983ededfcc745732cee1a7e0f1cda1aaa",
+      "parent": null,
+      "actual_parent": "8d5e2c49c9b98fbb038acf6af2897590a1e79777",
+      "actual_tree": "a056178afe1f22c44757b0c4e2fe859f56ef014c",
+      "bytes": 11912
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-d003-d086-bindings-20261128",
+      "commit": "40021ca4053c272b454cdd6743c367033653183d",
+      "path": "handoff/m02_completion_28_execution/L07a/INDEPENDENT_D003_D086_DOWNSTREAM_BINDING_VERDICTS_20261128.md",
+      "sha256": "46c7cf3f2884bd8e694ec90a106d962cc172a25f46c169c52a5cdd872f039c12",
+      "tree": "1922f99fb681aeb765399755eafa38e916cff000",
+      "blob": "fe6b9658248f797e0cdd6f4b81c0f511a9873bac",
+      "parent": "1749479b5f9101740fa66ef4c9902582e671ca37",
+      "actual_parent": "1749479b5f9101740fa66ef4c9902582e671ca37",
+      "actual_tree": "1922f99fb681aeb765399755eafa38e916cff000",
+      "bytes": 13053
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-d003-d086-authoring-20261128",
+      "commit": "69e7db0bb6e6c9c318d2b7422fafa3cf6c14e795",
+      "path": "handoff/m02_completion_28_execution/L07a/INDEPENDENT_D003_D086_AUTHORING_VERDICTS_20261128.md",
+      "sha256": "8d67acd68ba672b86c7dbae9888bb72ddcb68a2dbe40439adccad1f5e09b2559",
+      "tree": "f4724ede22921447bfbb82544a85237ccbaae7cd",
+      "blob": "5966f15bb61838d53de253efb20fa2df5407356e",
+      "parent": "d7b656197238862d3406645e692b99408a7ad700",
+      "actual_parent": "d7b656197238862d3406645e692b99408a7ad700",
+      "actual_tree": "f4724ede22921447bfbb82544a85237ccbaae7cd",
+      "bytes": 14986
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-d003-implementation-20261128",
+      "commit": "bec4d7c1e3e195348b238ca18a85c1df2e2f51d3",
+      "path": "handoff/m02_completion_28_execution/L07a/INDEPENDENT_D003_IMPLEMENTATION_APPLICABILITY_VERDICT_20261128.md",
+      "sha256": "306c043ea0831c4093275299266a9c4c389606bca42cb29e0464ee7d3c519faa",
+      "tree": "2b362fbcccad4dbacea9cdec34c8b8da0f637ba0",
+      "blob": "f6af0fea1bcd0522d549769556367966f54d5106",
+      "parent": "f672a4d44b6a4f738148fe8f17c1fd26418d9f90",
+      "actual_parent": "f672a4d44b6a4f738148fe8f17c1fd26418d9f90",
+      "actual_tree": "2b362fbcccad4dbacea9cdec34c8b8da0f637ba0",
+      "bytes": 16948
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-d003-registration-preparation-20261128",
+      "commit": "e46a3a98f8c76bd2e5278454642d4f64514cb85f",
+      "path": "handoff/m02_completion_28_execution/L07a/INDEPENDENT_D003_REGISTRATION_PREPARATION_VERDICT_20261128.md",
+      "sha256": "730db5ac6ef832066d15cf35b5e3cd4b72b9a33b9292adeae5194a4ecd01b76b",
+      "tree": "514168a0941203cf53d9d7136ca0d9eb95deae7c",
+      "blob": "108efb6c4da829941c43fbd30a829feadc3ca1d4",
+      "parent": "9f54ea5d6e5bcf481d1f5a0e62e26afd220f4ea6",
+      "actual_parent": "9f54ea5d6e5bcf481d1f5a0e62e26afd220f4ea6",
+      "actual_tree": "514168a0941203cf53d9d7136ca0d9eb95deae7c",
+      "bytes": 9815
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-d003-registration-installation-20261128",
+      "commit": "3e2543da0b2f3a8a49f2f108dcdccc9b533f3eca",
+      "path": "handoff/m02_completion_28_execution/L07a/INDEPENDENT_D003_REGISTRATION_INSTALLATION_VERDICT_20261128.md",
+      "sha256": "2ce7acc645b339b1eb0a451326489cb0389a205b9792e4f67ce77a1da15bb698",
+      "tree": "b5722636c39f9d8ff051d9bbe1875a159d812a93",
+      "blob": "1e1969e177aa13fa6a5b36d9ee9601edfbe947fa",
+      "parent": "877810a90c7e23f7afc8fff8ebca06bb6c424a2f",
+      "actual_parent": "877810a90c7e23f7afc8fff8ebca06bb6c424a2f",
+      "actual_tree": "b5722636c39f9d8ff051d9bbe1875a159d812a93",
+      "bytes": 9114
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-d004-option-session-binding-admission-20261128",
+      "commit": "67adebbd89345b4fd82e2be9d67f2e50fe917503",
+      "path": "handoff/m02_completion_28_execution/L07a/INDEPENDENT_D004_OPTION_SESSION_INACTIVE_BINDING_ADMISSION_VERDICT_20261128.md",
+      "sha256": "109194c4789fc230edd9ef0e05e0ea74202ebd0595d4f7dd97e1aa25a984515e",
+      "tree": "7252279ad667c338a70da7eac379fd6db55a8a86",
+      "blob": "1174a595826a6dcd5be1403732a05e4434668c35",
+      "parent": "696f7b95b693a8316934c8190da708be9da939cb",
+      "actual_parent": "696f7b95b693a8316934c8190da708be9da939cb",
+      "actual_tree": "7252279ad667c338a70da7eac379fd6db55a8a86",
+      "bytes": 13662
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-d004-option-session-authoring-20261128",
+      "commit": "dc9e20d9ff1d349aae20ee7579922ad1861d0fc6",
+      "path": "handoff/m02_completion_28_execution/L07a/INDEPENDENT_D004_OPTION_SESSION_INERT_AUTHORING_VERDICT_20261128.md",
+      "sha256": "80a979605a68bd9dbf9a3819ae5db3d162c74ba67cefa1ff94944991b36d08bf",
+      "tree": "ed6092a4c1f0cba0c4c4b46f87b85824182efa99",
+      "blob": "9b8da48bc96c12ff08acc35f7efb5e4354b5c75a",
+      "parent": "d75570e101c220d267ef45a32d16808a59420e0f",
+      "actual_parent": "d75570e101c220d267ef45a32d16808a59420e0f",
+      "actual_tree": "ed6092a4c1f0cba0c4c4b46f87b85824182efa99",
+      "bytes": 11957
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-d004-option-session-implementation-20261129",
+      "commit": "8098e35d877b8abea75a282e390a496f2ca282cb",
+      "path": "handoff/m02_completion_28_execution/L07a/INDEPENDENT_D004_OPTION_SESSION_SOURCE_IMPLEMENTATION_AND_SHARED_SURFACE_VERDICT_20261129.md",
+      "sha256": "bf56a509acfc2392877a6540d867bfe5159c0c634ef3868fffb30746fbf2873a",
+      "tree": "b6a740db26fde16d1ce7776bcb655b0b5367a4ab",
+      "blob": "6e96b8c76d9a4ae114ae1b727c19ff545b71ba16",
+      "parent": "e8da03a2d11cc2c08dd5269ff17bcf309eea17dc",
+      "actual_parent": "e8da03a2d11cc2c08dd5269ff17bcf309eea17dc",
+      "actual_tree": "b6a740db26fde16d1ce7776bcb655b0b5367a4ab",
+      "bytes": 12005
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-d004-option-session-registration-preparation-20261129",
+      "commit": "050e48df3a4ff09fe551fec5c5e62abc5424ed45",
+      "path": "handoff/m02_completion_28_execution/L07a/INDEPENDENT_D004_OPTION_SESSION_REGISTRATION_PREPARATION_VERDICT_20261129.md",
+      "sha256": "d36d51cde1f92e915819dd273fe9b32d7749ba32ebf77bd1d5a4b8969f3e3534",
+      "tree": "0076e98c304386261ac8b7a36d9b9c9685881c80",
+      "blob": "d5875fff81eccb94fdc7940501d099d574be2823",
+      "parent": "084625d27ef3ec402640b72d9846105eb0f693c7",
+      "actual_parent": "084625d27ef3ec402640b72d9846105eb0f693c7",
+      "actual_tree": "0076e98c304386261ac8b7a36d9b9c9685881c80",
+      "bytes": 8924
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-d004-option-session-registration-installation-20261129",
+      "commit": "f550d2b25aa44e313feadd342cc17fb867a9d766",
+      "path": "handoff/m02_completion_28_execution/L07a/INDEPENDENT_D004_OPTION_SESSION_REGISTRATION_INSTALLATION_VERDICT_20261129.md",
+      "sha256": "92f2a09539b36f0876c6787a74189f826a599274bfa2e201e2c5ccb889ec9237",
+      "tree": "7c3fbe41cba667349999a6c606720218972faf42",
+      "blob": "2dcd0d262eb0a5578c9eddd1e3474bb6b5cd4f7d",
+      "parent": "e977fa93f585230e575c6c48a80b0e1a6c0e46a5",
+      "actual_parent": "e977fa93f585230e575c6c48a80b0e1a6c0e46a5",
+      "actual_tree": "7c3fbe41cba667349999a6c606720218972faf42",
+      "bytes": 10216
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-d001-d095-bindings-20261128",
+      "commit": "a29290c672420b3bf7b149c89828e5c8d43a9d9f",
+      "path": "handoff/m02_completion_28_execution/INDEPENDENT_CAC_TRIAL_D001_D095_BINDING_VERDICT_20261128.md",
+      "sha256": "ebff2ba39bbd9860995498e4660788ece24e61ebc3acd8198189266bb4c98952",
+      "tree": "37e740304343568737240c860fba59367241bf77",
+      "blob": "5699e2dde42cd1a07b887eebe5edb1e6abb37dc6",
+      "parent": "a090eaf255925ba1afd11a0928d1171118d5a447",
+      "actual_parent": "a090eaf255925ba1afd11a0928d1171118d5a447",
+      "actual_tree": "37e740304343568737240c860fba59367241bf77",
+      "bytes": 12059
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-d001-d095-authoring-20261128",
+      "commit": "51e4e2bc0693a65987c8264a53d50d3ce2f5303c",
+      "path": "handoff/m02_completion_28_execution/INDEPENDENT_CAC_TRIAL_D001_D095_AUTHORING_VERDICT_20261128.md",
+      "sha256": "c183df146ae5afd2423b26b186ddc0cd0234a315b146ed63387c929779b60c5f",
+      "tree": "8efb8cfd5fa5423b5410fc41b486729ed5bc0875",
+      "blob": "8c47b616c2a27fc90dbf17276a8f4078524031f9",
+      "parent": "92a6dce2022f5e51994b417fcda30767507413d3",
+      "actual_parent": "92a6dce2022f5e51994b417fcda30767507413d3",
+      "actual_tree": "8efb8cfd5fa5423b5410fc41b486729ed5bc0875",
+      "bytes": 18547
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-d001-d095-implementation-20261128",
+      "commit": "61b14032a56fec9dee4309e8bd3ccc01260bfbb9",
+      "path": "handoff/m02_completion_28_execution/INDEPENDENT_CAC_TRIAL_D001_D095_IMPLEMENTATION_VERDICT_20261128.md",
+      "sha256": "7f3d981d5ae87c73465a834b38a6b2b10535c4a0e57c9659faa68863ad6e2910",
+      "tree": "68b934a891a20e4b437da60e5d6255b2e636a945",
+      "blob": "aeff496153dd0b4b5967fca4dc204005f31a6074",
+      "parent": "28ab58c6a3631d6404793dc9a9a92c3b3ed38a17",
+      "actual_parent": "28ab58c6a3631d6404793dc9a9a92c3b3ed38a17",
+      "actual_tree": "68b934a891a20e4b437da60e5d6255b2e636a945",
+      "bytes": 11738
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-d001-d095-registration-preparation-20261128",
+      "commit": "eddfd045dc5cce922ea19be01f5502a7d4eaa54f",
+      "path": "handoff/m02_completion_28_execution/INDEPENDENT_CAC_TRIAL_D001_D095_REGISTRATION_PREPARATION_VERDICT_20261128.md",
+      "sha256": "dfc709b7461fbe4cf2c5b28e7d42714c3e2ff68acdd5aa78e69721d2eaa65cef",
+      "tree": "90d9e97ac8f9427e87fa48f89b0aa72e81058aa1",
+      "blob": "2d2a7f9cbab6efdf108d5447efc2667225a23537",
+      "parent": null,
+      "actual_parent": "40ca82b3585622fcb9b9f0b59110830a12762bb4",
+      "actual_tree": "90d9e97ac8f9427e87fa48f89b0aa72e81058aa1",
+      "bytes": 10360
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-d001-d095-registration-installation-20261128",
+      "commit": "05710fb7bd5c1fb33ec60eb6e0a42458a5baf85b",
+      "path": "handoff/m02_completion_28_execution/INDEPENDENT_CAC_TRIAL_D001_D095_REGISTRATION_INSTALLATION_VERDICT_20261128.md",
+      "sha256": "f5c46c8816ec1c02e5c788d03285deb355201d6d4bdd257a347a8019f0f824fa",
+      "tree": "314d76bae3c1e8def8c65ba3471542fafc7dd033",
+      "blob": "25e7723dc0449a3044f40e07e0250a280e7e1faf",
+      "parent": null,
+      "actual_parent": "66b05618e6493422fc2ef7c0ed662cd05e610e6b",
+      "actual_tree": "314d76bae3c1e8def8c65ba3471542fafc7dd033",
+      "bytes": 10432
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-d001-interface-recovery-authoring-20261128",
+      "commit": "deb00a46cf1b5d8121cbcdaca956006c6ab63177",
+      "path": "handoff/m02_completion_28_execution/L07a/INDEPENDENT_D001_INTERFACE_RECOVERY_AUTHORING_VERDICT_20261128.md",
+      "sha256": "9dc406956edf7e0c0f77a04772c6c19855d707d1a495201815f4f76e9d57f4b1",
+      "tree": "df1a21378b2544a2d1e3c9c52d14323a1653c37a",
+      "blob": "50051c92527435ac4d64130ac71ddeaa9817ff73",
+      "parent": "7086f512988cf9d58ef18e7a4a4ab46a61e0a7db",
+      "actual_parent": "7086f512988cf9d58ef18e7a4a4ab46a61e0a7db",
+      "actual_tree": "df1a21378b2544a2d1e3c9c52d14323a1653c37a",
+      "bytes": 11554
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-d001-interface-recovery-implementation-20261128",
+      "commit": "b471fd0becf45755313cf268856f7ffcb0b1d0b9",
+      "path": "handoff/m02_completion_28_execution/L07a/INDEPENDENT_D001_INTERFACE_RECOVERY_IMPLEMENTATION_VERDICT_20261128.md",
+      "sha256": "716698eb130003364084c40c42faf0acdf656054c1a90d369b7096b2bff2792c",
+      "tree": "ec70a8c19ec823b6efeda2bf1abea121d94081f5",
+      "blob": "4418467b448ed7a197580a5d92a496ff67e6baf2",
+      "parent": "7d6b6175429e0bdd53dfd63743b3f1be2354daea",
+      "actual_parent": "7d6b6175429e0bdd53dfd63743b3f1be2354daea",
+      "actual_tree": "ec70a8c19ec823b6efeda2bf1abea121d94081f5",
+      "bytes": 10686
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-d001-interface-recovery-registration-applicability-20261128",
+      "commit": "b6748bfc2a711e6cc97d5616be235b30f5dd9465",
+      "path": "handoff/m02_completion_28_execution/L07a/INDEPENDENT_D001_INTERFACE_RECOVERY_REGISTRATION_APPLICABILITY_VERDICT_20261128.md",
+      "sha256": "323c3d19a8880058be65954caf8e16dbc6262d02d1d9a0ec4775bb77e9620fbb",
+      "tree": "ef16d6061771b402f8387f3150d6552deb67dc63",
+      "blob": "e1303e4c12eb81f30383a96cb6753e46f473b026",
+      "parent": null,
+      "actual_parent": "debb88211674a581721059ccfdd6192a84e44b2e",
+      "actual_tree": "ef16d6061771b402f8387f3150d6552deb67dc63",
+      "bytes": 8471
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-d001-generation-0002-preparation-20261128",
+      "commit": "d9b2745ceeb8a5133f00802c2e01feafcb90b942",
+      "path": "handoff/m02_completion_28_execution/L07a/INDEPENDENT_D001_REGISTRATION_GENERATION_0002_PREPARATION_VERDICT_20261128.md",
+      "sha256": "be25e8fc455736437fa2605c826fd6144fe820f694322d56a2a6cc4dea5a847e",
+      "tree": "636d3771f3467a2668e076feebf104b1400766cf",
+      "blob": "1ea56a2e8a1f4ca06810a26489e0b6f05fdf1e75",
+      "parent": "51d99bfe0f47d082c35080b73f49db7658d0df27",
+      "actual_parent": "51d99bfe0f47d082c35080b73f49db7658d0df27",
+      "actual_tree": "636d3771f3467a2668e076feebf104b1400766cf",
+      "bytes": 8442
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-d001-generation-0002-installation-20261128",
+      "commit": "ee0d37bb8f264bd17d6777d94724f6748de079b9",
+      "path": "handoff/m02_completion_28_execution/L07a/INDEPENDENT_D001_REGISTRATION_GENERATION_0002_INSTALLATION_VERDICT_20261128.md",
+      "sha256": "f27b1955c28ed449edb700f711b041e3707a425947e94b01467e7e7ab92a9423",
+      "tree": "773dc5f08c40d57e6547ca1a785a7b48d284847c",
+      "blob": "52f82c9a807994d9004372f9cccc7ea4dce98993",
+      "parent": "70917dda7c28209138aefa1ae6276fb3282f7335",
+      "actual_parent": "70917dda7c28209138aefa1ae6276fb3282f7335",
+      "actual_tree": "773dc5f08c40d57e6547ca1a785a7b48d284847c",
+      "bytes": 7774
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-d085-calendar-dte-binding-admission-20261129",
+      "commit": "c5469873faf1a119c0225d2a4e18baa34f9c76ff",
+      "path": "handoff/m02_completion_28_execution/L08/INDEPENDENT_D085_CALENDAR_DTE_INACTIVE_BINDING_ADMISSION_VERDICT_20261129.md",
+      "sha256": "d6d73b070d4c72a775eafb9d2da0cbff07d6c942277985a597f0a38e9efca40d",
+      "tree": "e314b2a770d75b52dd397405a48cd4a314692d51",
+      "blob": "aea13c3336270cc70e91d339929dc1d08707059a",
+      "parent": "9de71ebc8946d5eb3f4adf62189723aecec155a3",
+      "actual_parent": "9de71ebc8946d5eb3f4adf62189723aecec155a3",
+      "actual_tree": "e314b2a770d75b52dd397405a48cd4a314692d51",
+      "bytes": 15305
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-d085-calendar-dte-authoring-20261129",
+      "commit": "f6c050faa34410a1a1ac941467df59e5b36048c6",
+      "path": "handoff/m02_completion_28_execution/L08/INDEPENDENT_D085_CALENDAR_DTE_INERT_AUTHORING_VERDICT_20261129.md",
+      "sha256": "a4fe38d87b973707c9c2d6903700a6c0748da698dca878ca3b8f8eba3d5db4fc",
+      "tree": "b7f433cc4043ad50c83903e8a733289c7ab1c6e8",
+      "blob": "8cc785980a846a887a107bd83386ef91514fc044",
+      "parent": "f581d479a4a9586069415fd3466635e0f33110ba",
+      "actual_parent": "f581d479a4a9586069415fd3466635e0f33110ba",
+      "actual_tree": "b7f433cc4043ad50c83903e8a733289c7ab1c6e8",
+      "bytes": 9693
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-d085-calendar-dte-implementation-20261129",
+      "commit": "fdff512a23f2fdcf5009a0faa62ab324a2f911f6",
+      "path": "handoff/m02_completion_28_execution/L08/INDEPENDENT_D085_CALENDAR_DTE_SOURCE_IMPLEMENTATION_AND_SHARED_SURFACE_VERDICT_20261129.md",
+      "sha256": "e31f984c5f74d85b56f0bd7ebdfb56ee5d7ee832de91d82092cc39da43e34204",
+      "tree": "98c254a2c61815ad3bc6a4441ca3a2c88b9d0ed3",
+      "blob": "0d6da2874b4db2190db2548ae840a1c8dd6df690",
+      "parent": "6b0d9fe78e4c1b3fe45b1691fc2d9a596cced606",
+      "actual_parent": "6b0d9fe78e4c1b3fe45b1691fc2d9a596cced606",
+      "actual_tree": "98c254a2c61815ad3bc6a4441ca3a2c88b9d0ed3",
+      "bytes": 13154
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-d085-calendar-dte-registration-preparation-20261129",
+      "commit": "812b5171ad661056f2272d31f05274f8ab49d5e7",
+      "path": "handoff/m02_completion_28_execution/L08/INDEPENDENT_D085_CALENDAR_DTE_REGISTRATION_PREPARATION_VERDICT_20261129.md",
+      "sha256": "3eda0b201d29aef610f0374376fc5f8bcabdf4c452272621119be65bd278e03e",
+      "tree": "06179afcd08b6afa03ddc6e73fc6e389b068e311",
+      "blob": "f99d47fced8af5954f3b3175bbe75167b53a560b",
+      "parent": "cf5bb8dbff9da6a1256e2a2d7c1a8ea84e318b68",
+      "actual_parent": "cf5bb8dbff9da6a1256e2a2d7c1a8ea84e318b68",
+      "actual_tree": "06179afcd08b6afa03ddc6e73fc6e389b068e311",
+      "bytes": 9486
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-d085-calendar-dte-registration-installation-20261129",
+      "commit": "78d3411a2ac04b73a269abf9ec5c27f7d3ed2f6d",
+      "path": "handoff/m02_completion_28_execution/L08/INDEPENDENT_D085_CALENDAR_DTE_REGISTRATION_INSTALLATION_VERDICT_20261129.md",
+      "sha256": "072017926f5360f7b28f0b1e710b9066bc821efd1dec48d21e3e43b527196c34",
+      "tree": "41c3d0203ae884dcb88c4dd028594dca7b597f14",
+      "blob": "254b6141d4ff1b9766915a5b7d6767a8bfcb3cbb",
+      "parent": "b22713236e2da05e49b57df4666621daf834a257",
+      "actual_parent": "b22713236e2da05e49b57df4666621daf834a257",
+      "actual_tree": "41c3d0203ae884dcb88c4dd028594dca7b597f14",
+      "bytes": 11315
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-d086-implementation-20261128",
+      "commit": "c8fc712bf9bf3e14da3a80688211d95e87282231",
+      "path": "handoff/m02_completion_28_execution/L07a/INDEPENDENT_D086_IMPLEMENTATION_APPLICABILITY_VERDICT_20261128.md",
+      "sha256": "c29d72a68698074d402b8cf8ff5bece8e8689d8b32ce7934cd7e819fb020f909",
+      "tree": "52ddfac9f3f5b1ba2e0c1fd3d39c5956d630b3f0",
+      "blob": "a8b8d45188d251f1a870995117e5275519825d72",
+      "parent": "ff014a6473bd4a3009a0bbd877cc0ece492566dc",
+      "actual_parent": "ff014a6473bd4a3009a0bbd877cc0ece492566dc",
+      "actual_tree": "52ddfac9f3f5b1ba2e0c1fd3d39c5956d630b3f0",
+      "bytes": 11692
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-d086-registration-preparation-20261128",
+      "commit": "ac0e7c343a29373c02c05f096f262c41df8b5e84",
+      "path": "handoff/m02_completion_28_execution/L07a/INDEPENDENT_D086_REGISTRATION_PREPARATION_VERDICT_20261128.md",
+      "sha256": "85dfa17249dc5796f9240ff3bf7398a1c6d2bac1a3759ad6bea9e13bf86c2929",
+      "tree": "651bb5e92d44d6e989763c414aeb9448a4c38881",
+      "blob": "d434c86ca04ff90062d9a9d73dd6b45840f6c086",
+      "parent": "083b858a32b34661cc58e72546e4b7779afca6bc",
+      "actual_parent": "083b858a32b34661cc58e72546e4b7779afca6bc",
+      "actual_tree": "651bb5e92d44d6e989763c414aeb9448a4c38881",
+      "bytes": 8967
+    },
+    {
+      "ref": "refs/heads/review/trial-cac-nvidia-d086-registration-installation-20261128",
+      "commit": "dcad1c3c0674a5a5ae2c5822411a993ced6bf840",
+      "path": "handoff/m02_completion_28_execution/L07a/INDEPENDENT_D086_REGISTRATION_INSTALLATION_VERDICT_20261128.md",
+      "sha256": "0d83b5716d20d07afc39931a210dfb59dd8044ebb21bd4d684799229ad478f35",
+      "tree": "ea38783e0fcc4d45aa8d03206613eec81012750f",
+      "blob": "7cec32e9a96787dc07b92ea199f8e24e01c02a23",
+      "parent": "1ac26d64498e6687ddeac1036ff8cb6a730932f3",
+      "actual_parent": "1ac26d64498e6687ddeac1036ff8cb6a730932f3",
+      "actual_tree": "ea38783e0fcc4d45aa8d03206613eec81012750f",
+      "bytes": 8349
+    },
+    {
+      "ref": "refs/heads/review/pm-option-iv-prior-session-policy-finite7-20261127",
+      "commit": "3bdcca73679f02c7e8ab0839b6d91c9dfc81e46e",
+      "path": "handoff/m02_completion_28_execution/L10a/INDEPENDENT_OPTION_IV_PRIOR_SESSION_POLICY_FINITE7_VERDICT_20261127.md",
+      "sha256": "66704487d10008be46652724e319b8ddc8de2f81e6662d1897082bd0cdb4e790",
+      "tree": "33410075abb5695376d53672e36e4e3bd5e3d6eb",
+      "blob": "2dda88015c3b9919c0a7b541df8ab546c3a723cb",
+      "parent": null,
+      "actual_parent": "a1fc778673e43eab7b0808afa734e15aa7756e7b",
+      "actual_tree": "33410075abb5695376d53672e36e4e3bd5e3d6eb",
+      "bytes": 11497
+    }
+  ],
+  "status": "DOCUMENTARY_PREPARATION_ONLY_ALL_EXECUTION_HELD",
+  "sole_tester": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
+  "sole_tester_identity": {
+    "path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_STRICT_TESTER_IDENTITY_20261126.md",
+    "sha256": "a0c1319a916e34a674be610c0678bbc8dd60d43da43dff370117e21a27b183c9",
+    "git_blob": "3b6a940b4275b21774169348f4a690aa00734239",
+    "bytes": 3568
+  },
+  "packages": [
+    {
+      "package": "aligned_history",
+      "policy": {
+        "path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_SOURCE_POLICY_PROPOSED_20261126.json",
+        "sha256": "9ba56098c273007980c893db39931ac86e7a3185bbb665f8c3f1e14f99b72af1",
+        "git_blob": "c6c22bec5df9e0250058472516b9f178dc46acca",
+        "bytes": 52451
+      },
+      "specimens": {
+        "path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_FINITE_SPECIMENS_PROPOSED_20261126.json",
+        "sha256": "bb03481de75e1820c7aff61777a4a3aa4f676440ec03e373a05c032a0417c76d",
+        "git_blob": "0970060f626a6e7c7e92123aaa12d1bf7e5f570b",
+        "bytes": 299496
+      },
+      "inventory": {
+        "path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_JOINT_FIT_FINITE_CASES_PROPOSED_20261126.json",
+        "sha256": "3be150f2998b4187a81720b424c848099edeba7a9f638ae90d9aae95d4c5d5c1",
+        "git_blob": "693bd9cb08e957943c652aaa210a10ea298d706c",
+        "bytes": 356785
+      },
+      "exact_nonfungible_ceilings": {
+        "D071": 2,
+        "D072": 2,
+        "D073": 2,
+        "D074": 2,
+        "D075": 2,
+        "D076": 2,
+        "D077": 3,
+        "D079": 6,
+        "D080": 5,
+        "D081": 3,
+        "D078": 5
+      }
+    },
+    {
+      "package": "option_time",
+      "policy": {
+        "path": "handoff/m02_completion_28_execution/L07a/OPTION_TIME_SOURCE_POLICY_AND_SPECIMENS_PROPOSED_20261127.json",
+        "sha256": "14a3ba2308f519d90d11eb450ac484a2c922507b7e04041c740297527a1d847a",
+        "git_blob": "7c1e743c3394618517e0f8194f02fb3038277e9f",
+        "bytes": 275539
+      },
+      "specimens": {
+        "path": "handoff/m02_completion_28_execution/L07a/OPTION_TIME_SOURCE_POLICY_AND_SPECIMENS_PROPOSED_20261127.json",
+        "sha256": "14a3ba2308f519d90d11eb450ac484a2c922507b7e04041c740297527a1d847a",
+        "git_blob": "7c1e743c3394618517e0f8194f02fb3038277e9f",
+        "bytes": 275539
+      },
+      "inventory": {
+        "path": "handoff/m02_completion_28_execution/L07a/OPTION_TIME_FINITE_CASES_PROPOSED_20261127.json",
+        "sha256": "638f8703e75c15b10c2e3772ef7a8ceb0a105a6845140d0e409d50c9a1f01c7f",
+        "git_blob": "d8c3cb845a91243014d57c37f17827840d4a618e",
+        "bytes": 45765
+      },
+      "exact_nonfungible_ceilings": {
+        "D001": 4,
+        "D003": 3,
+        "D004": 3,
+        "D085": 7,
+        "D086": 6
+      }
+    },
+    {
+      "package": "option_iv",
+      "policy": {
+        "path": "handoff/m02_completion_28_execution/L10a/OPTION_IV_PRIOR_SESSION_SOURCE_POLICY_AND_SPECIMENS_PROPOSED_20261127.json",
+        "sha256": "050d167a6f15ae210f3a0b7a776957e6ebb00ce8f674ad9d417e7082951b6a39",
+        "git_blob": "eef5f2a0b0fd3e4108f0dcf1cdb7bd16686fbc18",
+        "bytes": 62784
+      },
+      "specimens": {
+        "path": "handoff/m02_completion_28_execution/L10a/OPTION_IV_PRIOR_SESSION_SOURCE_POLICY_AND_SPECIMENS_PROPOSED_20261127.json",
+        "sha256": "050d167a6f15ae210f3a0b7a776957e6ebb00ce8f674ad9d417e7082951b6a39",
+        "git_blob": "eef5f2a0b0fd3e4108f0dcf1cdb7bd16686fbc18",
+        "bytes": 62784
+      },
+      "inventory": {
+        "path": "handoff/m02_completion_28_execution/L10a/OPTION_IV_PRIOR_SESSION_FINITE_CASES_PROPOSED_20261127.json",
+        "sha256": "7a3b85138291ee50396157850502854f79b8c5c6b2b20d9f0e4c56933b4fca74",
+        "git_blob": "66581906da9893a1a2483f7eba80d17330448fa9",
+        "bytes": 13322
+      },
+      "exact_nonfungible_ceilings": {
+        "D095": 7
+      }
+    }
+  ],
+  "root_intake_only": [
+    {
+      "jurisdiction": "D071",
+      "proof_id": "SUP-D071-HISTORY",
+      "claim_id": "neutral_market_measurement_truth_l01a_d071_history",
+      "family_id": "m02_l01a_aligned_history_d071",
+      "generation": 1,
+      "dependency_predicate": "none within these packages",
+      "first_stage": true,
+      "execution_release": false,
+      "files": [
+        {
+          "path": "config/product_proof/m02_aligned_history_d071/claim.json",
+          "sha256": "cea962241291786b3c2606cc56f003b77809352c7643408af88487e8200cb526",
+          "git_blob": "cfdf15dd7ce1d875b3ab9ed0edb303f235a8f4f9",
+          "bytes": 601
+        },
+        {
+          "path": "config/product_proof/m02_aligned_history_d071/admission.json",
+          "sha256": "bcfbb089756d5a6ab21a2a5cd63991aaad1f609f81ebbebb89aa90f706f98fb5",
+          "git_blob": "bdcabfe508c67521f1eb5e74651404ac95e1c51f",
+          "bytes": 225
+        },
+        {
+          "path": "config/product_proof/m02_aligned_history_d071/generations/0001.json",
+          "sha256": "985625000ee98f9adfdf334e391ee19e767ac1b804e25b9eb209d9bf82a68dda",
+          "git_blob": "3dcd5770c6e76d557fb637e1ba4ec85b0467f5a9",
+          "bytes": 1304
+        },
+        {
+          "path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D071_PROOF_CONTRACT.json",
+          "sha256": "5f771b88c96699b9dd56b724e9e87df6f541706bdfff442842ee70d4daaedb30",
+          "git_blob": "0bd0d3bc642c82c6ed488266cbb98ae288f9058e",
+          "bytes": 4812
+        },
+        {
+          "path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D071_IMPLEMENTATION_BRIEF.md",
+          "sha256": "65f2d0f9135f291773ab6081ec76892a967315df3ecb9c1760a4e2687a296e5e",
+          "git_blob": "6d2e7465d3d447319901d01d17c4146d10bf96fc",
+          "bytes": 6843
+        },
+        {
+          "path": "implementation/authority/T01_ALIGNED_HISTORY_D071_AUTHORITY_BINDING.yaml",
+          "sha256": "30cbb5fe2f8a1b720bc58b55b05f3c88b736401f03d03199404444b60330dc03",
+          "git_blob": "3aa9d4032601a6c1c81f7b2fc314f2969f39c6c6",
+          "bytes": 345
+        },
+        {
+          "path": "tests/product/m02_completion_28_prospective/support/d071-history/test_profile.py",
+          "sha256": "5c3a920006e9952e58e2e7ec6efe477e8e48e1f51bea9d6e6ff7744e6c3f20df",
+          "git_blob": "0c0a55b7c3b9bac57aea6eae967246c21ab7359f",
+          "bytes": 20643
+        }
+      ],
+      "registration_review": {
+        "candidate": "74b15dd32ffb56dd645337e3607d907b72d4f563",
+        "tree": "20d54f2b0d65c55a7ccabd29ba1812433fbf8753",
+        "verdict": {
+          "ref": "refs/heads/review/trial-cac-nvidia-l01a-remapped-installation-20261128",
+          "commit": "44f538d5b3412d95e8fdad80d17ed74a82aca221",
+          "path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_CAC_TRIAL_ALIGNED_HISTORY_D071_D075_REMAPPED_INSTALLATION_VERDICT_20261128.md",
+          "sha256": "4eee01ea905ccbc803c88288f3757c7fd546509f740cddc17fff8e672faa58e5",
+          "tree": "627c54e5331660881d53692e4e78c8148aeb5c15",
+          "blob": "866b88876a7e1c9656378483307fee190370b0b4",
+          "parent": "aa1fe57e10f14c8c936ff4fbf5b89732313aea35",
+          "actual_parent": "aa1fe57e10f14c8c936ff4fbf5b89732313aea35",
+          "actual_tree": "627c54e5331660881d53692e4e78c8148aeb5c15",
+          "bytes": 9274
+        }
+      },
+      "ordered_cases": [
+        {
+          "case_id": "SUP-D071-HISTORY-SUCCESS",
+          "node": "tests/product/m02_completion_28_prospective/support/d071-history/test_profile.py::test_d071_history_success",
+          "expected_stage": "COMPLETE_EIGHT_FRAME_HISTORY_AND_DURABLE_REOPEN",
+          "fixture_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_FINITE_SPECIMENS_PROPOSED_20261126.json",
+          "fixture_sha256": "bb03481de75e1820c7aff61777a4a3aa4f676440ec03e373a05c032a0417c76d",
+          "execution_authorised": false,
+          "original_case_canonical_json_sha256": "a90f5c8ca659129e330c63e2a70830f791c73bc514445235bedc0297e9337983"
+        },
+        {
+          "case_id": "SUP-D071-HISTORY-REACHED_REFUSAL",
+          "node": "tests/product/m02_completion_28_prospective/support/d071-history/test_profile.py::test_d071_missing_exact_reference",
+          "expected_stage": "REFERENCE_ANCHOR",
+          "fixture_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_FINITE_SPECIMENS_PROPOSED_20261126.json",
+          "fixture_sha256": "bb03481de75e1820c7aff61777a4a3aa4f676440ec03e373a05c032a0417c76d",
+          "execution_authorised": false,
+          "original_case_canonical_json_sha256": "e42f21deab61f75d6c4b4d445f72db8472e69747f6b2ac219f8082791b5e143c"
+        }
+      ],
+      "ordered_nodes": [
+        "tests/product/m02_completion_28_prospective/support/d071-history/test_profile.py::test_d071_history_success",
+        "tests/product/m02_completion_28_prospective/support/d071-history/test_profile.py::test_d071_missing_exact_reference"
+      ],
+      "exact_nodes_json_sha256": "42ca5eccb58bf9ecb40aabbcf387b8a9486ee9093bb63d67168406cc05891752",
+      "ceiling": 2
+    },
+    {
+      "jurisdiction": "D072",
+      "proof_id": "SUP-D072-HISTORY",
+      "claim_id": "neutral_market_measurement_truth_l01a_d072_history",
+      "family_id": "m02_l01a_aligned_history_d072",
+      "generation": 1,
+      "dependency_predicate": "none within these packages",
+      "first_stage": true,
+      "execution_release": false,
+      "files": [
+        {
+          "path": "config/product_proof/m02_aligned_history_d072/claim.json",
+          "sha256": "1260a7c77fe9ac48c07b44cb53c3830df4a0f6b6d77c1824d224325613eb5abb",
+          "git_blob": "88a4a7be608ed5100cc880f6129ccc8281ba7882",
+          "bytes": 601
+        },
+        {
+          "path": "config/product_proof/m02_aligned_history_d072/admission.json",
+          "sha256": "095cfc8c92a2d54cdac2a2b2001add96c3ea200ac1768bbec658185b031c308d",
+          "git_blob": "6faa4bc233417cd91c73da290917f2924247797e",
+          "bytes": 225
+        },
+        {
+          "path": "config/product_proof/m02_aligned_history_d072/generations/0001.json",
+          "sha256": "385a1499264023184f5ce9ba2ea0f17efa5bdaa57b449a79a412ae1d6b524936",
+          "git_blob": "1333a8ec96dd4be1578b278da3c67fb0358ec40e",
+          "bytes": 1304
+        },
+        {
+          "path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D072_PROOF_CONTRACT.json",
+          "sha256": "1b1974b23aa8e79b6c420b0cb32f09ad34220d7672d7239bc0b425ce14ff82e3",
+          "git_blob": "356693ba1f8cf700ca1b88ba944f203851c79a51",
+          "bytes": 4816
+        },
+        {
+          "path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D072_IMPLEMENTATION_BRIEF.md",
+          "sha256": "4f8214d1ca11eaf0769206f3f322c799f44883bd266e63748e937dea5602b739",
+          "git_blob": "7ffa871c1155882895d3b5c0f97f3fdfcb126333",
+          "bytes": 6847
+        },
+        {
+          "path": "implementation/authority/T01_ALIGNED_HISTORY_D072_AUTHORITY_BINDING.yaml",
+          "sha256": "637ff9b90b916ee69ee956db28e191ef86be3764ce2004b5fc24e371fa5869df",
+          "git_blob": "8b39f39603ae1fa277c9f9cca27a83455efb77a7",
+          "bytes": 345
+        },
+        {
+          "path": "tests/product/m02_completion_28_prospective/support/d072-history/test_profile.py",
+          "sha256": "20e86ceee72f6e4190137dbde967c44aedd824ca7a89d2120ba20432e91821a3",
+          "git_blob": "c10756983f98547fc23ee488af63057e4f910163",
+          "bytes": 20575
+        }
+      ],
+      "registration_review": {
+        "candidate": "74b15dd32ffb56dd645337e3607d907b72d4f563",
+        "tree": "20d54f2b0d65c55a7ccabd29ba1812433fbf8753",
+        "verdict": {
+          "ref": "refs/heads/review/trial-cac-nvidia-l01a-remapped-installation-20261128",
+          "commit": "44f538d5b3412d95e8fdad80d17ed74a82aca221",
+          "path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_CAC_TRIAL_ALIGNED_HISTORY_D071_D075_REMAPPED_INSTALLATION_VERDICT_20261128.md",
+          "sha256": "4eee01ea905ccbc803c88288f3757c7fd546509f740cddc17fff8e672faa58e5",
+          "tree": "627c54e5331660881d53692e4e78c8148aeb5c15",
+          "blob": "866b88876a7e1c9656378483307fee190370b0b4",
+          "parent": "aa1fe57e10f14c8c936ff4fbf5b89732313aea35",
+          "actual_parent": "aa1fe57e10f14c8c936ff4fbf5b89732313aea35",
+          "actual_tree": "627c54e5331660881d53692e4e78c8148aeb5c15",
+          "bytes": 9274
+        }
+      },
+      "ordered_cases": [
+        {
+          "case_id": "SUP-D072-HISTORY-SUCCESS",
+          "node": "tests/product/m02_completion_28_prospective/support/d072-history/test_profile.py::test_d072_history_success",
+          "expected_stage": "COMPLETE_EIGHT_FRAME_HISTORY_AND_DURABLE_REOPEN",
+          "fixture_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_FINITE_SPECIMENS_PROPOSED_20261126.json",
+          "fixture_sha256": "bb03481de75e1820c7aff61777a4a3aa4f676440ec03e373a05c032a0417c76d",
+          "execution_authorised": false,
+          "original_case_canonical_json_sha256": "176452a46c82084d34b037bdf9ff873bde1be3caa4e6b7c9ab18de81b1753bba"
+        },
+        {
+          "case_id": "SUP-D072-HISTORY-REACHED_REFUSAL",
+          "node": "tests/product/m02_completion_28_prospective/support/d072-history/test_profile.py::test_d072_wrong_reference_role",
+          "expected_stage": "REFERENCE_ROLE_METADATA",
+          "fixture_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_FINITE_SPECIMENS_PROPOSED_20261126.json",
+          "fixture_sha256": "bb03481de75e1820c7aff61777a4a3aa4f676440ec03e373a05c032a0417c76d",
+          "execution_authorised": false,
+          "original_case_canonical_json_sha256": "55d1e0e2bd8d1f2652490ac324829963caa05bed5c9e3d74758e314111c1fea4"
+        }
+      ],
+      "ordered_nodes": [
+        "tests/product/m02_completion_28_prospective/support/d072-history/test_profile.py::test_d072_history_success",
+        "tests/product/m02_completion_28_prospective/support/d072-history/test_profile.py::test_d072_wrong_reference_role"
+      ],
+      "exact_nodes_json_sha256": "a1051e3d8b541d08369e9740896bf9be46916aa5f85b3db5bd1887f6c7fc064f",
+      "ceiling": 2
+    },
+    {
+      "jurisdiction": "D073",
+      "proof_id": "SUP-D073-HISTORY",
+      "claim_id": "neutral_market_measurement_truth_l01a_d073_history",
+      "family_id": "m02_l01a_aligned_history_d073",
+      "generation": 1,
+      "dependency_predicate": "none within these packages",
+      "first_stage": true,
+      "execution_release": false,
+      "files": [
+        {
+          "path": "config/product_proof/m02_aligned_history_d073/claim.json",
+          "sha256": "8e61dc08aa7324bdf128419096ac4afb85731e047ca4bfcc2da377e2f0f4a084",
+          "git_blob": "4c05f745d6c982b186f1dd2f90920ee113841aae",
+          "bytes": 601
+        },
+        {
+          "path": "config/product_proof/m02_aligned_history_d073/admission.json",
+          "sha256": "8193931644b5870a6785afec07686721159878b3823c15c15a49966bc026db45",
+          "git_blob": "8f7dd5a073333cd1ab42d0d4d4291d2bc80e0299",
+          "bytes": 225
+        },
+        {
+          "path": "config/product_proof/m02_aligned_history_d073/generations/0001.json",
+          "sha256": "005801524cd9787e72581b49c0305226930e7ddad319bbb3d829988ad6845a8c",
+          "git_blob": "978dcd09c5eab893266d2b3b1e0ef2f5ceb3f962",
+          "bytes": 1304
+        },
+        {
+          "path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D073_PROOF_CONTRACT.json",
+          "sha256": "0105ec67828efed9019c75808c6d79315ddb7c9e0c9a8a666d49b46cf9fcfdb5",
+          "git_blob": "a92e83f283b8a52c8296ff39ffa1b4c660e7089e",
+          "bytes": 4804
+        },
+        {
+          "path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D073_IMPLEMENTATION_BRIEF.md",
+          "sha256": "a7234477d581e6cba27e470919fa092c4ed5054d5a1aa31d2019d8fa94d16f48",
+          "git_blob": "352a4d017624500c1709654cf86dffbc176c2563",
+          "bytes": 6839
+        },
+        {
+          "path": "implementation/authority/T01_ALIGNED_HISTORY_D073_AUTHORITY_BINDING.yaml",
+          "sha256": "867444cecdf23c191269b1b3856410cc1ee6e3b81b8730dafa6d6528b78d6e0a",
+          "git_blob": "5062bbff030245e3dcde94dbf7d2e074102e3e09",
+          "bytes": 345
+        },
+        {
+          "path": "tests/product/m02_completion_28_prospective/support/d073-history/test_profile.py",
+          "sha256": "3a5289c5d1933fcf6c84ae0d520f316d56c33ce87ca86433204776fc123e6c3a",
+          "git_blob": "666a627215ab181082d28a2b0d21b07e3fb15a97",
+          "bytes": 20673
+        }
+      ],
+      "registration_review": {
+        "candidate": "74b15dd32ffb56dd645337e3607d907b72d4f563",
+        "tree": "20d54f2b0d65c55a7ccabd29ba1812433fbf8753",
+        "verdict": {
+          "ref": "refs/heads/review/trial-cac-nvidia-l01a-remapped-installation-20261128",
+          "commit": "44f538d5b3412d95e8fdad80d17ed74a82aca221",
+          "path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_CAC_TRIAL_ALIGNED_HISTORY_D071_D075_REMAPPED_INSTALLATION_VERDICT_20261128.md",
+          "sha256": "4eee01ea905ccbc803c88288f3757c7fd546509f740cddc17fff8e672faa58e5",
+          "tree": "627c54e5331660881d53692e4e78c8148aeb5c15",
+          "blob": "866b88876a7e1c9656378483307fee190370b0b4",
+          "parent": "aa1fe57e10f14c8c936ff4fbf5b89732313aea35",
+          "actual_parent": "aa1fe57e10f14c8c936ff4fbf5b89732313aea35",
+          "actual_tree": "627c54e5331660881d53692e4e78c8148aeb5c15",
+          "bytes": 9274
+        }
+      },
+      "ordered_cases": [
+        {
+          "case_id": "SUP-D073-HISTORY-SUCCESS",
+          "node": "tests/product/m02_completion_28_prospective/support/d073-history/test_profile.py::test_d073_history_success",
+          "expected_stage": "COMPLETE_EIGHT_FRAME_HISTORY_AND_DURABLE_REOPEN",
+          "fixture_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_FINITE_SPECIMENS_PROPOSED_20261126.json",
+          "fixture_sha256": "bb03481de75e1820c7aff61777a4a3aa4f676440ec03e373a05c032a0417c76d",
+          "execution_authorised": false,
+          "original_case_canonical_json_sha256": "6d7c36ff6f2be6bd506f734f5a379c631fa4eb4545bb166c9e3f3477d27f6bfe"
+        },
+        {
+          "case_id": "SUP-D073-HISTORY-REACHED_REFUSAL",
+          "node": "tests/product/m02_completion_28_prospective/support/d073-history/test_profile.py::test_d073_late_current",
+          "expected_stage": "ROW_KNOWLEDGE_SELECTION",
+          "fixture_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_FINITE_SPECIMENS_PROPOSED_20261126.json",
+          "fixture_sha256": "bb03481de75e1820c7aff61777a4a3aa4f676440ec03e373a05c032a0417c76d",
+          "execution_authorised": false,
+          "original_case_canonical_json_sha256": "fb3b6497834cca79fb36c06bc91c29f3cb61dbe639772d7deb1a8158ad46fc82"
+        }
+      ],
+      "ordered_nodes": [
+        "tests/product/m02_completion_28_prospective/support/d073-history/test_profile.py::test_d073_history_success",
+        "tests/product/m02_completion_28_prospective/support/d073-history/test_profile.py::test_d073_late_current"
+      ],
+      "exact_nodes_json_sha256": "7bf7872dbe76188f4d480eee830828b1f1b9e4d7607be695a991072e10dfd557",
+      "ceiling": 2
+    },
+    {
+      "jurisdiction": "D074",
+      "proof_id": "SUP-D074-HISTORY",
+      "claim_id": "neutral_market_measurement_truth_l01a_d074_history",
+      "family_id": "m02_l01a_aligned_history_d074",
+      "generation": 1,
+      "dependency_predicate": "none within these packages",
+      "first_stage": true,
+      "execution_release": false,
+      "files": [
+        {
+          "path": "config/product_proof/m02_aligned_history_d074/claim.json",
+          "sha256": "622726a8fa4da0cc4890390335d6f159aacc823f9a13917a007f2ef77f1eb94a",
+          "git_blob": "6b33bd86cfa9f16357bece4524e1f883c08ad6eb",
+          "bytes": 601
+        },
+        {
+          "path": "config/product_proof/m02_aligned_history_d074/admission.json",
+          "sha256": "3487dd8714d7a80177c5bf4ffdfe89ca822805b7088872bde9e5d582e74b03b3",
+          "git_blob": "991eadd54f43fab739c866454a34517b782aa3fb",
+          "bytes": 225
+        },
+        {
+          "path": "config/product_proof/m02_aligned_history_d074/generations/0001.json",
+          "sha256": "837f47a8850459ed3e6de43159c72906d82e81d048a23b3c968b38726e1be761",
+          "git_blob": "8cfb5cdc6d44f7c83463bbc5d85d628f2bff93a6",
+          "bytes": 1304
+        },
+        {
+          "path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D074_PROOF_CONTRACT.json",
+          "sha256": "708f6dc03c755e68c8232f699d80b2b27d973b7e2406daacf4f5fdc3f34d8d79",
+          "git_blob": "e6a4a338a792354e26343251dcaadaa6095aca3f",
+          "bytes": 4812
+        },
+        {
+          "path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D074_IMPLEMENTATION_BRIEF.md",
+          "sha256": "524b2d2a4aa94a0c1c55ea376650d14648af67c46e73763ce3e8cc0f2e9e0c0e",
+          "git_blob": "2a1dccc71293b2b98e1d1a77d8300797de5ce479",
+          "bytes": 6844
+        },
+        {
+          "path": "implementation/authority/T01_ALIGNED_HISTORY_D074_AUTHORITY_BINDING.yaml",
+          "sha256": "f2a2208a73d291e614577eaf2b81ffd13d699c4efbc2eeeb6258569ac8aa1c34",
+          "git_blob": "83f3fc44085bc6287245ba16f28282889d7edb1c",
+          "bytes": 345
+        },
+        {
+          "path": "tests/product/m02_completion_28_prospective/support/d074-history/test_profile.py",
+          "sha256": "e96123115973c985a75b7b978aad8a9b2cd65c7f63488a0ca76da036627d63d9",
+          "git_blob": "0df9244b4f6509f98c318d23c17324d770c2b33b",
+          "bytes": 20651
+        }
+      ],
+      "registration_review": {
+        "candidate": "74b15dd32ffb56dd645337e3607d907b72d4f563",
+        "tree": "20d54f2b0d65c55a7ccabd29ba1812433fbf8753",
+        "verdict": {
+          "ref": "refs/heads/review/trial-cac-nvidia-l01a-remapped-installation-20261128",
+          "commit": "44f538d5b3412d95e8fdad80d17ed74a82aca221",
+          "path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_CAC_TRIAL_ALIGNED_HISTORY_D071_D075_REMAPPED_INSTALLATION_VERDICT_20261128.md",
+          "sha256": "4eee01ea905ccbc803c88288f3757c7fd546509f740cddc17fff8e672faa58e5",
+          "tree": "627c54e5331660881d53692e4e78c8148aeb5c15",
+          "blob": "866b88876a7e1c9656378483307fee190370b0b4",
+          "parent": "aa1fe57e10f14c8c936ff4fbf5b89732313aea35",
+          "actual_parent": "aa1fe57e10f14c8c936ff4fbf5b89732313aea35",
+          "actual_tree": "627c54e5331660881d53692e4e78c8148aeb5c15",
+          "bytes": 9274
+        }
+      },
+      "ordered_cases": [
+        {
+          "case_id": "SUP-D074-HISTORY-SUCCESS",
+          "node": "tests/product/m02_completion_28_prospective/support/d074-history/test_profile.py::test_d074_history_success",
+          "expected_stage": "COMPLETE_EIGHT_FRAME_HISTORY_AND_DURABLE_REOPEN",
+          "fixture_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_FINITE_SPECIMENS_PROPOSED_20261126.json",
+          "fixture_sha256": "bb03481de75e1820c7aff61777a4a3aa4f676440ec03e373a05c032a0417c76d",
+          "execution_authorised": false,
+          "original_case_canonical_json_sha256": "ea78be3e403ef1cc4fddb990b812743ee9c92903a719afe911a5a508c33878be"
+        },
+        {
+          "case_id": "SUP-D074-HISTORY-REACHED_REFUSAL",
+          "node": "tests/product/m02_completion_28_prospective/support/d074-history/test_profile.py::test_d074_ambiguous_current",
+          "expected_stage": "RAW_ROLE_CARDINALITY",
+          "fixture_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_FINITE_SPECIMENS_PROPOSED_20261126.json",
+          "fixture_sha256": "bb03481de75e1820c7aff61777a4a3aa4f676440ec03e373a05c032a0417c76d",
+          "execution_authorised": false,
+          "original_case_canonical_json_sha256": "3e565a681360a044e082dff2f1e3d802477140a9b1994e3e2da03db44e681800"
+        }
+      ],
+      "ordered_nodes": [
+        "tests/product/m02_completion_28_prospective/support/d074-history/test_profile.py::test_d074_history_success",
+        "tests/product/m02_completion_28_prospective/support/d074-history/test_profile.py::test_d074_ambiguous_current"
+      ],
+      "exact_nodes_json_sha256": "6441471a97694fad872609e367d07d1cea8c2a35540d12c78d6bc3380e129861",
+      "ceiling": 2
+    },
+    {
+      "jurisdiction": "D075",
+      "proof_id": "SUP-D075-HISTORY",
+      "claim_id": "neutral_market_measurement_truth_l01a_d075_history",
+      "family_id": "m02_l01a_aligned_history_d075",
+      "generation": 1,
+      "dependency_predicate": "none within these packages",
+      "first_stage": true,
+      "execution_release": false,
+      "files": [
+        {
+          "path": "config/product_proof/m02_aligned_history_d075/claim.json",
+          "sha256": "19d2f6e7c31089158bb7aa6fa4fafb00fd0448e4e8db1f16bbd581315dbbaf13",
+          "git_blob": "4f74bb3d56d7afaf77b903451649a9c76162b38d",
+          "bytes": 601
+        },
+        {
+          "path": "config/product_proof/m02_aligned_history_d075/admission.json",
+          "sha256": "2d355fa058ad406c9855199c163cb48d5298b9f405d8e5f18d547384754bde5f",
+          "git_blob": "d7ef237881677b65316b0fd8aa42450d72e7f035",
+          "bytes": 225
+        },
+        {
+          "path": "config/product_proof/m02_aligned_history_d075/generations/0001.json",
+          "sha256": "18171abfb47452e2600f5169fa80a26c70d2b4a4045b0c167070356a954330ca",
+          "git_blob": "0bd76aeae02dd794495f3e6c6d24484bbd3f10ad",
+          "bytes": 1304
+        },
+        {
+          "path": "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D075_PROOF_CONTRACT.json",
+          "sha256": "6bfc41f1415ff9c68776f0ae79c6b35ec19cb3e0a16dc2a0706970be57dc8d8f",
+          "git_blob": "14f524a3a9609b7b41505b767d2ff2e30204b915",
+          "bytes": 4813
+        },
+        {
+          "path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D075_IMPLEMENTATION_BRIEF.md",
+          "sha256": "24ec8f08faf1a61059cee69b8c675767345809ae6a0dd90ab852a2fc30977750",
+          "git_blob": "be9bd6de6274afa923b7aa8f19f9c7a2124f7072",
+          "bytes": 6842
+        },
+        {
+          "path": "implementation/authority/T01_ALIGNED_HISTORY_D075_AUTHORITY_BINDING.yaml",
+          "sha256": "50120c02327ed212e8821ac3795d4f64daa3e38d77ecd5c92c7b20f6a2ba8c3f",
+          "git_blob": "de3355792c6e502c3e97678ce5d45a5193e51686",
+          "bytes": 345
+        },
+        {
+          "path": "tests/product/m02_completion_28_prospective/support/d075-history/test_profile.py",
+          "sha256": "4fdeed336e1fa67db77c577755d14810bf576cdbf72d393993d0c98e1802a94c",
+          "git_blob": "48e812ad1e1f7464f0b88576e7def38bada15681",
+          "bytes": 20534
+        }
+      ],
+      "registration_review": {
+        "candidate": "74b15dd32ffb56dd645337e3607d907b72d4f563",
+        "tree": "20d54f2b0d65c55a7ccabd29ba1812433fbf8753",
+        "verdict": {
+          "ref": "refs/heads/review/trial-cac-nvidia-l01a-remapped-installation-20261128",
+          "commit": "44f538d5b3412d95e8fdad80d17ed74a82aca221",
+          "path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_CAC_TRIAL_ALIGNED_HISTORY_D071_D075_REMAPPED_INSTALLATION_VERDICT_20261128.md",
+          "sha256": "4eee01ea905ccbc803c88288f3757c7fd546509f740cddc17fff8e672faa58e5",
+          "tree": "627c54e5331660881d53692e4e78c8148aeb5c15",
+          "blob": "866b88876a7e1c9656378483307fee190370b0b4",
+          "parent": "aa1fe57e10f14c8c936ff4fbf5b89732313aea35",
+          "actual_parent": "aa1fe57e10f14c8c936ff4fbf5b89732313aea35",
+          "actual_tree": "627c54e5331660881d53692e4e78c8148aeb5c15",
+          "bytes": 9274
+        }
+      },
+      "ordered_cases": [
+        {
+          "case_id": "SUP-D075-HISTORY-SUCCESS",
+          "node": "tests/product/m02_completion_28_prospective/support/d075-history/test_profile.py::test_d075_history_success",
+          "expected_stage": "COMPLETE_EIGHT_FRAME_HISTORY_AND_DURABLE_REOPEN",
+          "fixture_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_FINITE_SPECIMENS_PROPOSED_20261126.json",
+          "fixture_sha256": "bb03481de75e1820c7aff61777a4a3aa4f676440ec03e373a05c032a0417c76d",
+          "execution_authorised": false,
+          "original_case_canonical_json_sha256": "abfd66ec8bbf368b37054d0a92b456ff258938c4a2a2b91c7e015270bdb42194"
+        },
+        {
+          "case_id": "SUP-D075-HISTORY-REACHED_REFUSAL",
+          "node": "tests/product/m02_completion_28_prospective/support/d075-history/test_profile.py::test_d075_original_units",
+          "expected_stage": "ORIGINAL_NATIVE_UNITS",
+          "fixture_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_FINITE_SPECIMENS_PROPOSED_20261126.json",
+          "fixture_sha256": "bb03481de75e1820c7aff61777a4a3aa4f676440ec03e373a05c032a0417c76d",
+          "execution_authorised": false,
+          "original_case_canonical_json_sha256": "d4f1dbd6eadc60525df92a8f4904381776dd6c1cafafd54c0c0d2bb86c03f712"
+        }
+      ],
+      "ordered_nodes": [
+        "tests/product/m02_completion_28_prospective/support/d075-history/test_profile.py::test_d075_history_success",
+        "tests/product/m02_completion_28_prospective/support/d075-history/test_profile.py::test_d075_original_units"
+      ],
+      "exact_nodes_json_sha256": "c5086318026670c755a635bfd423b0d615eac867a273bdbc9b609d9d427e8930",
+      "ceiling": 2
+    },
+    {
+      "jurisdiction": "D001",
+      "proof_id": "SUP-D001-OPTION",
+      "claim_id": "neutral_market_measurement_truth_l07b_d001_option_time",
+      "family_id": "m02_option_time_d001",
+      "generation": 2,
+      "dependency_predicate": "none within these packages",
+      "first_stage": true,
+      "execution_release": false,
+      "files": [
+        {
+          "path": "config/product_proof/m02_option_time_d001/claim.json",
+          "sha256": "84d7116b41d01fe59877f7841c9e376cd2d517fe7bf7c010a4c33ad6fb014e81",
+          "git_blob": "e5863963dba0e0b8f0a9a504f5477ed69a0b20d2",
+          "bytes": 535
+        },
+        {
+          "path": "config/product_proof/m02_option_time_d001/admission.json",
+          "sha256": "535e280a195a85facc90877b69d77314dd29da6d683e5358081856e497b5cca6",
+          "git_blob": "6d5045628a3d1835d909f6714c9b144d8106394c",
+          "bytes": 221
+        },
+        {
+          "path": "config/product_proof/m02_option_time_d001/generations/0002.json",
+          "sha256": "3bb00fcf792f0528dc0a19485b4ffeade724266a0ab1fe5c91550307bb043e7a",
+          "git_blob": "1cea2f5c6b10180ad893a50189f19a0bb1d57c9f",
+          "bytes": 2133
+        },
+        {
+          "path": "handoff/m02_completion_28_execution/L07a/D001_PROOF_CONTRACT.json",
+          "sha256": "a18704f720dce0bd77a2c16f098846fe02b7e4027ec2715cdb7c0663b6e43ad5",
+          "git_blob": "4aab264fc4ca70cd1d389be7acd489a5a655413b",
+          "bytes": 5520
+        },
+        {
+          "path": "handoff/m02_completion_28_execution/L07a/D001_IMPLEMENTATION_BRIEF.md",
+          "sha256": "222d0919c67c05f6436f985b8262ace985ab11dea30fc045333ee13fa10a8d8d",
+          "git_blob": "cd230d70a4d91b32c4732edb56733e408abab01c",
+          "bytes": 5208
+        },
+        {
+          "path": "implementation/authority/T01_D001_OPTION_TIME_AUTHORITY_BINDING.yaml",
+          "sha256": "ff80ea7dd3aa7674723b758dda9173356bda75119ba996ece5bf4c1a9ff2cf35",
+          "git_blob": "e0a82a553afc995126bdd3b41cb1a5bd41decc08",
+          "bytes": 345
+        },
+        {
+          "path": "tests/product/m02_completion_28_prospective/support/d001-option/test_profile.py",
+          "sha256": "6bedaf2e25bc06c1c3a8f116f9f852fbaa0e94e4a916bdd80defee2519cbd867",
+          "git_blob": "a83eaf71ed6fbb2521f54d3389b3d6d0d834a204",
+          "bytes": 18106
+        }
+      ],
+      "registration_review": {
+        "candidate": "8d63cd9630c746c0d5b01deb3ebe1057f8f7925c",
+        "tree": "dedc7d36c875328612fa6d5a4562548955283f93",
+        "verdict": {
+          "ref": "refs/heads/review/trial-cac-nvidia-d001-generation-0002-installation-20261128",
+          "commit": "ee0d37bb8f264bd17d6777d94724f6748de079b9",
+          "path": "handoff/m02_completion_28_execution/L07a/INDEPENDENT_D001_REGISTRATION_GENERATION_0002_INSTALLATION_VERDICT_20261128.md",
+          "sha256": "f27b1955c28ed449edb700f711b041e3707a425947e94b01467e7e7ab92a9423",
+          "tree": "773dc5f08c40d57e6547ca1a785a7b48d284847c",
+          "blob": "52f82c9a807994d9004372f9cccc7ea4dce98993",
+          "parent": "70917dda7c28209138aefa1ae6276fb3282f7335",
+          "actual_parent": "70917dda7c28209138aefa1ae6276fb3282f7335",
+          "actual_tree": "773dc5f08c40d57e6547ca1a785a7b48d284847c",
+          "bytes": 7774
+        }
+      },
+      "ordered_cases": [
+        {
+          "case_id": "SUP-D001-OPTION-SUCCESS",
+          "node": "tests/product/m02_completion_28_prospective/support/d001-option/test_profile.py::test_d001_success",
+          "expected_stage": "TRUE_INSTANT_UTC_AND_DURABLE_REOPEN",
+          "fixture_path": "handoff/m02_completion_28_execution/L07a/OPTION_TIME_SOURCE_POLICY_AND_SPECIMENS_PROPOSED_20261127.json",
+          "fixture_sha256": "14a3ba2308f519d90d11eb450ac484a2c922507b7e04041c740297527a1d847a",
+          "execution_authorised": false,
+          "original_case_canonical_json_sha256": "423215de5c866cbc88bea4a23118224f25b96070d0e42ff34893156b6aa9eb80"
+        },
+        {
+          "case_id": "SUP-D001-OPTION-REACHED_REFUSAL",
+          "node": "tests/product/m02_completion_28_prospective/support/d001-option/test_profile.py::test_d001_date_only",
+          "expected_stage": "ACTUAL_R002_TEMPORAL_KIND",
+          "fixture_path": "handoff/m02_completion_28_execution/L07a/OPTION_TIME_SOURCE_POLICY_AND_SPECIMENS_PROPOSED_20261127.json",
+          "fixture_sha256": "14a3ba2308f519d90d11eb450ac484a2c922507b7e04041c740297527a1d847a",
+          "execution_authorised": false,
+          "original_case_canonical_json_sha256": "1ae2f9bb47c49d9629a340f07c8a7679eb24092ba79836653ce5ffa55389ff74"
+        },
+        {
+          "case_id": "SUP-D001-OPTION-RECEIPT-ONLY",
+          "node": "tests/product/m02_completion_28_prospective/support/d001-option/test_profile.py::test_d001_receipt_only",
+          "expected_stage": "ACTUAL_R002_TEMPORAL_KIND",
+          "fixture_path": "handoff/m02_completion_28_execution/L07a/OPTION_TIME_SOURCE_POLICY_AND_SPECIMENS_PROPOSED_20261127.json",
+          "fixture_sha256": "14a3ba2308f519d90d11eb450ac484a2c922507b7e04041c740297527a1d847a",
+          "execution_authorised": false,
+          "original_case_canonical_json_sha256": "b9c1e8d276db50dbbc0e0768ee4f4111e0d62c3b3769170086ceb267a309174c"
+        },
+        {
+          "case_id": "SUP-D001-OPTION-OFFSET-MISMATCH",
+          "node": "tests/product/m02_completion_28_prospective/support/d001-option/test_profile.py::test_d001_offset_mismatch",
+          "expected_stage": "ACTUAL_R002_R003_OFFSET_AGREEMENT",
+          "fixture_path": "handoff/m02_completion_28_execution/L07a/OPTION_TIME_SOURCE_POLICY_AND_SPECIMENS_PROPOSED_20261127.json",
+          "fixture_sha256": "14a3ba2308f519d90d11eb450ac484a2c922507b7e04041c740297527a1d847a",
+          "execution_authorised": false,
+          "original_case_canonical_json_sha256": "91c25ce49f2036456ecf1284fd9d6f9d07af1552bcc49da43c059cef62984256"
+        }
+      ],
+      "ordered_nodes": [
+        "tests/product/m02_completion_28_prospective/support/d001-option/test_profile.py::test_d001_success",
+        "tests/product/m02_completion_28_prospective/support/d001-option/test_profile.py::test_d001_date_only",
+        "tests/product/m02_completion_28_prospective/support/d001-option/test_profile.py::test_d001_receipt_only",
+        "tests/product/m02_completion_28_prospective/support/d001-option/test_profile.py::test_d001_offset_mismatch"
+      ],
+      "exact_nodes_json_sha256": "31a2b69692309fac675912d4f8bc86cb0f93f7ef1113939b728f5e9c0414e439",
+      "ceiling": 4
+    },
+    {
+      "jurisdiction": "D095",
+      "proof_id": "M02-C28-D095",
+      "claim_id": "neutral_market_measurement_truth_d095",
+      "family_id": "m02_option_iv_prior_session_d095",
+      "generation": 1,
+      "dependency_predicate": "none within these packages",
+      "first_stage": true,
+      "execution_release": false,
+      "files": [
+        {
+          "path": "config/product_proof/m02_option_iv_prior_session_d095/claim.json",
+          "sha256": "0eb917d707fe6045d621319b397d9808968393a02cf62510c3a272d38f388bda",
+          "git_blob": "d801faa3308691c0446975f94a54ac9192e5bb81",
+          "bytes": 520
+        },
+        {
+          "path": "config/product_proof/m02_option_iv_prior_session_d095/admission.json",
+          "sha256": "2484747464c02a4b6e5dc114ed43a64c768704eb0b8d2c32d2d5e8f28b56134e",
+          "git_blob": "ca18680716db7fffca3066b1851df9a2df5c04d5",
+          "bytes": 233
+        },
+        {
+          "path": "config/product_proof/m02_option_iv_prior_session_d095/generations/0001.json",
+          "sha256": "dc4e6af18629757ec51886626a76ff19a1c78b8c920954fd3a67b90c358fcba4",
+          "git_blob": "34db9a6a531533a85301b3fa0c1267d3a4005a1a",
+          "bytes": 1493
+        },
+        {
+          "path": "handoff/m02_completion_28_execution/L10a/D095_PROOF_CONTRACT.json",
+          "sha256": "651c9cea0db295b16eafccfb3f8a9f042e7893cc3430b28ca29d9defcbb454aa",
+          "git_blob": "c778d6bff75283106a9d06a6a58c068c22e3462c",
+          "bytes": 6778
+        },
+        {
+          "path": "handoff/m02_completion_28_execution/L10a/D095_IMPLEMENTATION_BRIEF.md",
+          "sha256": "4885ee1efe9f5832f33a8bf0552caf288990f9f992542c26f535bf378bcbc703",
+          "git_blob": "3b39d2c58b8d0f5d3344a3c762e2418ca1a7c9e2",
+          "bytes": 5520
+        },
+        {
+          "path": "implementation/authority/T01_D095_PRIOR_SESSION_IV_AUTHORITY_BINDING.yaml",
+          "sha256": "2a4530490537b2552b320db240ac09eb24508ccc9d9347316e517463c4548f32",
+          "git_blob": "8cc3767e1f4b61a0b950150116b2625d5159d540",
+          "bytes": 345
+        },
+        {
+          "path": "tests/product/m02_completion_28_prospective/d095/test_signal.py",
+          "sha256": "50173aa60e71fae8fe969e631f15b92eb8521ef174b845dcfcb2ab3ff0e7b6a8",
+          "git_blob": "31d381c70b6f2391070ecbcbc3dca344208971b8",
+          "bytes": 23044
+        }
+      ],
+      "registration_review": {
+        "candidate": "d2b57bbd78d957207203613dccb162325ed24e75",
+        "tree": "b75317e78f143f34a82da730987249b3454a666c",
+        "verdict": {
+          "ref": "refs/heads/review/trial-cac-nvidia-d001-d095-registration-installation-20261128",
+          "commit": "05710fb7bd5c1fb33ec60eb6e0a42458a5baf85b",
+          "path": "handoff/m02_completion_28_execution/INDEPENDENT_CAC_TRIAL_D001_D095_REGISTRATION_INSTALLATION_VERDICT_20261128.md",
+          "sha256": "f5c46c8816ec1c02e5c788d03285deb355201d6d4bdd257a347a8019f0f824fa",
+          "tree": "314d76bae3c1e8def8c65ba3471542fafc7dd033",
+          "blob": "25e7723dc0449a3044f40e07e0250a280e7e1faf",
+          "parent": null,
+          "actual_parent": "66b05618e6493422fc2ef7c0ed662cd05e610e6b",
+          "actual_tree": "314d76bae3c1e8def8c65ba3471542fafc7dd033",
+          "bytes": 10432
+        }
+      },
+      "ordered_cases": [
+        {
+          "case_id": "D095-CONTROLLED-SUCCESS",
+          "node": "tests/product/m02_completion_28_prospective/d095/test_signal.py::test_d095_success",
+          "expected_stage": "PRIOR_TRADING_SESSION_LATEST_VISIBLE_FINAL",
+          "fixture_path": "handoff/m02_completion_28_execution/L10a/OPTION_IV_PRIOR_SESSION_SOURCE_POLICY_AND_SPECIMENS_PROPOSED_20261127.json",
+          "fixture_sha256": "050d167a6f15ae210f3a0b7a776957e6ebb00ce8f674ad9d417e7082951b6a39",
+          "execution_authorised": false,
+          "original_case_canonical_json_sha256": "5122952fd710532cd6b2938e41eb725dc4d0db804eb2c2c659e81a8e91ce605f"
+        },
+        {
+          "case_id": "D095-CONTROLLED-REACHED_REFUSAL",
+          "node": "tests/product/m02_completion_28_prospective/d095/test_signal.py::test_d095_wrong_session",
+          "expected_stage": "EXACT_PRIOR_SESSION_REFERENCE",
+          "fixture_path": "handoff/m02_completion_28_execution/L10a/OPTION_IV_PRIOR_SESSION_SOURCE_POLICY_AND_SPECIMENS_PROPOSED_20261127.json",
+          "fixture_sha256": "050d167a6f15ae210f3a0b7a776957e6ebb00ce8f674ad9d417e7082951b6a39",
+          "execution_authorised": false,
+          "original_case_canonical_json_sha256": "73a4ed702c7319f7c6924c26c570a32cf1413be355ae63762bc0a15dfd3d531d"
+        },
+        {
+          "case_id": "D095-CONTROLLED-LATE-REFERENCE",
+          "node": "tests/product/m02_completion_28_prospective/d095/test_signal.py::test_d095_late_reference",
+          "expected_stage": "ACTUAL_REFERENCE_KNOWLEDGE_CUTOFF",
+          "fixture_path": "handoff/m02_completion_28_execution/L10a/OPTION_IV_PRIOR_SESSION_SOURCE_POLICY_AND_SPECIMENS_PROPOSED_20261127.json",
+          "fixture_sha256": "050d167a6f15ae210f3a0b7a776957e6ebb00ce8f674ad9d417e7082951b6a39",
+          "execution_authorised": false,
+          "original_case_canonical_json_sha256": "b1057d59903e6aa09aaa028fb01a0f37a14bc5eedb83e2dfc504855528ea8e85"
+        },
+        {
+          "case_id": "D095-CONTROLLED-WRONG-CONTRACT",
+          "node": "tests/product/m02_completion_28_prospective/d095/test_signal.py::test_d095_wrong_contract",
+          "expected_stage": "ACTUAL_NATIVE_CONTRACT_COMPATIBILITY",
+          "fixture_path": "handoff/m02_completion_28_execution/L10a/OPTION_IV_PRIOR_SESSION_SOURCE_POLICY_AND_SPECIMENS_PROPOSED_20261127.json",
+          "fixture_sha256": "050d167a6f15ae210f3a0b7a776957e6ebb00ce8f674ad9d417e7082951b6a39",
+          "execution_authorised": false,
+          "original_case_canonical_json_sha256": "a5792c64289e35d8a176f3126cb90ccb10422b3f18ba3ffc33f5e496618b2dd0"
+        },
+        {
+          "case_id": "D095-CONTROLLED-WRONG-MODEL",
+          "node": "tests/product/m02_completion_28_prospective/d095/test_signal.py::test_d095_wrong_model",
+          "expected_stage": "ACTUAL_MODEL_CONVENTION_COMPATIBILITY",
+          "fixture_path": "handoff/m02_completion_28_execution/L10a/OPTION_IV_PRIOR_SESSION_SOURCE_POLICY_AND_SPECIMENS_PROPOSED_20261127.json",
+          "fixture_sha256": "050d167a6f15ae210f3a0b7a776957e6ebb00ce8f674ad9d417e7082951b6a39",
+          "execution_authorised": false,
+          "original_case_canonical_json_sha256": "4d69c0a96c52a70ac46a48fe70ba040cdae64142dce2a13bb98ddc70b55848d0"
+        },
+        {
+          "case_id": "D095-CONTROLLED-WRONG-UNITS",
+          "node": "tests/product/m02_completion_28_prospective/d095/test_signal.py::test_d095_wrong_units",
+          "expected_stage": "ACTUAL_NATIVE_IV_UNITS",
+          "fixture_path": "handoff/m02_completion_28_execution/L10a/OPTION_IV_PRIOR_SESSION_SOURCE_POLICY_AND_SPECIMENS_PROPOSED_20261127.json",
+          "fixture_sha256": "050d167a6f15ae210f3a0b7a776957e6ebb00ce8f674ad9d417e7082951b6a39",
+          "execution_authorised": false,
+          "original_case_canonical_json_sha256": "4adc99f1418e209f12ca48831d34d1f350dfb142eb8129d57533e6b28dee6aac"
+        },
+        {
+          "case_id": "D095-CONTROLLED-DUPLICATE-VINTAGE",
+          "node": "tests/product/m02_completion_28_prospective/d095/test_signal.py::test_d095_duplicate_vintage",
+          "expected_stage": "UNIQUE_HIGHEST_VISIBLE_FINAL_VINTAGE",
+          "fixture_path": "handoff/m02_completion_28_execution/L10a/OPTION_IV_PRIOR_SESSION_SOURCE_POLICY_AND_SPECIMENS_PROPOSED_20261127.json",
+          "fixture_sha256": "050d167a6f15ae210f3a0b7a776957e6ebb00ce8f674ad9d417e7082951b6a39",
+          "execution_authorised": false,
+          "original_case_canonical_json_sha256": "027b77427685ccdc2b8e429cc21a6883caecd6473def6d2b6a57ce073c1936e1"
+        }
+      ],
+      "ordered_nodes": [
+        "tests/product/m02_completion_28_prospective/d095/test_signal.py::test_d095_success",
+        "tests/product/m02_completion_28_prospective/d095/test_signal.py::test_d095_wrong_session",
+        "tests/product/m02_completion_28_prospective/d095/test_signal.py::test_d095_late_reference",
+        "tests/product/m02_completion_28_prospective/d095/test_signal.py::test_d095_wrong_contract",
+        "tests/product/m02_completion_28_prospective/d095/test_signal.py::test_d095_wrong_model",
+        "tests/product/m02_completion_28_prospective/d095/test_signal.py::test_d095_wrong_units",
+        "tests/product/m02_completion_28_prospective/d095/test_signal.py::test_d095_duplicate_vintage"
+      ],
+      "exact_nodes_json_sha256": "36b2e7dbe5f57c80d9413046a73317bdf6434ff4b4e6602e21cc898fa50732dd",
+      "ceiling": 7
+    }
+  ],
+  "dependent_holds": [
+    {
+      "jurisdiction": "D076",
+      "proof_id": "SUP-D076-HISTORY",
+      "claim_id": "neutral_market_measurement_truth_l01a_d076_history",
+      "generation": 1,
+      "dependency_predicate": "D072,D071",
+      "execution_release": false,
+      "registration_review": {
+        "candidate": "949904d4897da89fe644bc092b39ee523e9b96fc",
+        "tree": "e8eac4dc71111f46a14de5fdece1649b6a574541",
+        "verdict": {
+          "ref": "refs/heads/review/trial-cac-nvidia-d076-registration-installation-20261128",
+          "commit": "9a98501cbff8491c7eca51dd7af485ca0b889a96",
+          "path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_D076_DOWNSTREAM_REGISTRATION_INSTALLATION_VERDICT_20261128.md",
+          "sha256": "8135c94837e7e2743e80f31823d2cfb153ae4295e562edeb315aba29b9aa6e52",
+          "tree": "3de18833aa30c124b8536dd3179e6d4d77421748",
+          "blob": "cf861519f389fba084ebad8d0084d2e55c9c258e",
+          "parent": "a656678160771480fe67c51bfe21a42d63564008",
+          "actual_parent": "a656678160771480fe67c51bfe21a42d63564008",
+          "actual_tree": "3de18833aa30c124b8536dd3179e6d4d77421748",
+          "bytes": 7929
+        }
+      },
+      "case_count": 2
+    },
+    {
+      "jurisdiction": "D077",
+      "proof_id": "SUP-D077-HISTORY",
+      "claim_id": "neutral_market_measurement_truth_l01a_d077_history",
+      "generation": 1,
+      "dependency_predicate": "D073,D074,D072",
+      "execution_release": false,
+      "registration_review": {
+        "candidate": "531fe3e5955e0e680e31cc6b983a625f6f36b747",
+        "tree": "8a2fd8124eea820be0495a91f382cf83a823dd3d",
+        "verdict": {
+          "ref": "refs/heads/review/trial-cac-nvidia-d077-registration-installation-20261128",
+          "commit": "67bc48f2c673ef87041b145b6840f79510adb966",
+          "path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_D077_DOWNSTREAM_REGISTRATION_INSTALLATION_VERDICT_20261128.md",
+          "sha256": "84a156876fc71998c4755caac28babc4aa29de2d5adfdbc31e559a376017501d",
+          "tree": "6b2adf81c313ef86ad6dae55b4b1eceaf126a8c2",
+          "blob": "809c1dd71d5194814b17a693a844bbd1775dd412",
+          "parent": "34dc77bce0fcc645386fffbf8619292ada95a1cb",
+          "actual_parent": "34dc77bce0fcc645386fffbf8619292ada95a1cb",
+          "actual_tree": "6b2adf81c313ef86ad6dae55b4b1eceaf126a8c2",
+          "bytes": 8726
+        }
+      },
+      "case_count": 3
+    },
+    {
+      "jurisdiction": "D079",
+      "proof_id": "M02-C28-D079",
+      "claim_id": "neutral_market_measurement_truth_d079",
+      "generation": 1,
+      "dependency_predicate": "D075,D071,D076,D077",
+      "execution_release": false,
+      "registration_review": {
+        "candidate": "b6b798d827d6b6acce0916ccf36896d878242bee",
+        "tree": "c2fd703aa097a501c7a0c19635d6380ca143af0d",
+        "verdict": {
+          "ref": "refs/heads/review/trial-cac-nvidia-d079-d080-d081-registration-installation-20261128",
+          "commit": "4a28e0f3f12676364d6846ab3878e1869508e656",
+          "path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_D079_D080_D081_JOINT_FIT_REGISTRATION_INSTALLATION_VERDICTS_20261128.md",
+          "sha256": "c16a282a30b8061e07f8b14472aa13709d6e30f21c26d3bbb46b50d57a432a7f",
+          "tree": "ffbbb537697897f4f5b93a33794090ea782e4757",
+          "blob": "8a8f96d45d5fc7f3dc8a57698db1eec0e75c519f",
+          "parent": "e44c578ff93f53e3825f0c1212a56a96e7fcf603",
+          "actual_parent": "e44c578ff93f53e3825f0c1212a56a96e7fcf603",
+          "actual_tree": "ffbbb537697897f4f5b93a33794090ea782e4757",
+          "bytes": 21687
+        }
+      },
+      "case_count": 6
+    },
+    {
+      "jurisdiction": "D080",
+      "proof_id": "M02-C28-D080",
+      "claim_id": "neutral_market_measurement_truth_d080",
+      "generation": 1,
+      "dependency_predicate": "D075,D071,D076,D077",
+      "execution_release": false,
+      "registration_review": {
+        "candidate": "b6b798d827d6b6acce0916ccf36896d878242bee",
+        "tree": "c2fd703aa097a501c7a0c19635d6380ca143af0d",
+        "verdict": {
+          "ref": "refs/heads/review/trial-cac-nvidia-d079-d080-d081-registration-installation-20261128",
+          "commit": "4a28e0f3f12676364d6846ab3878e1869508e656",
+          "path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_D079_D080_D081_JOINT_FIT_REGISTRATION_INSTALLATION_VERDICTS_20261128.md",
+          "sha256": "c16a282a30b8061e07f8b14472aa13709d6e30f21c26d3bbb46b50d57a432a7f",
+          "tree": "ffbbb537697897f4f5b93a33794090ea782e4757",
+          "blob": "8a8f96d45d5fc7f3dc8a57698db1eec0e75c519f",
+          "parent": "e44c578ff93f53e3825f0c1212a56a96e7fcf603",
+          "actual_parent": "e44c578ff93f53e3825f0c1212a56a96e7fcf603",
+          "actual_tree": "ffbbb537697897f4f5b93a33794090ea782e4757",
+          "bytes": 21687
+        }
+      },
+      "case_count": 5
+    },
+    {
+      "jurisdiction": "D081",
+      "proof_id": "M02-C28-D081",
+      "claim_id": "neutral_market_measurement_truth_d081",
+      "generation": 1,
+      "dependency_predicate": "D075,D071,D076,D077",
+      "execution_release": false,
+      "registration_review": {
+        "candidate": "b6b798d827d6b6acce0916ccf36896d878242bee",
+        "tree": "c2fd703aa097a501c7a0c19635d6380ca143af0d",
+        "verdict": {
+          "ref": "refs/heads/review/trial-cac-nvidia-d079-d080-d081-registration-installation-20261128",
+          "commit": "4a28e0f3f12676364d6846ab3878e1869508e656",
+          "path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_D079_D080_D081_JOINT_FIT_REGISTRATION_INSTALLATION_VERDICTS_20261128.md",
+          "sha256": "c16a282a30b8061e07f8b14472aa13709d6e30f21c26d3bbb46b50d57a432a7f",
+          "tree": "ffbbb537697897f4f5b93a33794090ea782e4757",
+          "blob": "8a8f96d45d5fc7f3dc8a57698db1eec0e75c519f",
+          "parent": "e44c578ff93f53e3825f0c1212a56a96e7fcf603",
+          "actual_parent": "e44c578ff93f53e3825f0c1212a56a96e7fcf603",
+          "actual_tree": "ffbbb537697897f4f5b93a33794090ea782e4757",
+          "bytes": 21687
+        }
+      },
+      "case_count": 3
+    },
+    {
+      "jurisdiction": "D078",
+      "proof_id": "M02-C28-D078",
+      "claim_id": "neutral_market_measurement_truth_d078",
+      "generation": 1,
+      "dependency_predicate": "D079,D080,D081,D075,D071,D076,D077",
+      "execution_release": false,
+      "registration_review": {
+        "candidate": "8535fd3e4b5609a2628a71b09d1be240df4f4f17",
+        "tree": "aae3cf67249531c2d4c8a1bea24368e56f076ca3",
+        "verdict": {
+          "ref": "refs/heads/review/trial-cac-nvidia-d078-registration-installation-20261128",
+          "commit": "1778c24a8a2abd2e3c0b3bc18865160d6c36d326",
+          "path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_D078_SAME_FIT_REGISTRATION_INSTALLATION_VERDICT_20261128.md",
+          "sha256": "46778bfaf1671e6477984914c3a904f09162d4c83c6cdfbf1a78b8cd04d11bc0",
+          "tree": "a6dfa8965756e6b1dd3ac17d94c4e2446a00cc11",
+          "blob": "6f106377d4bc511f1e495cff415b7f42cac25095",
+          "parent": "d4886b8f5d8910c95ae39b168633ce3b2ededb1a",
+          "actual_parent": "d4886b8f5d8910c95ae39b168633ce3b2ededb1a",
+          "actual_tree": "a6dfa8965756e6b1dd3ac17d94c4e2446a00cc11",
+          "bytes": 7735
+        }
+      },
+      "case_count": 5
+    },
+    {
+      "jurisdiction": "D003",
+      "proof_id": "SUP-D003-USOPTION",
+      "claim_id": "neutral_market_measurement_truth_l07a_d003_option_time",
+      "generation": 1,
+      "dependency_predicate": "D001",
+      "execution_release": false,
+      "registration_review": {
+        "candidate": "e37aa46e6b2d44448984b6494f91e94f8f23f9bf",
+        "tree": "0170a4feb87bae96ce488cd301a33a508059225f",
+        "verdict": {
+          "ref": "refs/heads/review/trial-cac-nvidia-d003-registration-installation-20261128",
+          "commit": "3e2543da0b2f3a8a49f2f108dcdccc9b533f3eca",
+          "path": "handoff/m02_completion_28_execution/L07a/INDEPENDENT_D003_REGISTRATION_INSTALLATION_VERDICT_20261128.md",
+          "sha256": "2ce7acc645b339b1eb0a451326489cb0389a205b9792e4f67ce77a1da15bb698",
+          "tree": "b5722636c39f9d8ff051d9bbe1875a159d812a93",
+          "blob": "1e1969e177aa13fa6a5b36d9ee9601edfbe947fa",
+          "parent": "877810a90c7e23f7afc8fff8ebca06bb6c424a2f",
+          "actual_parent": "877810a90c7e23f7afc8fff8ebca06bb6c424a2f",
+          "actual_tree": "b5722636c39f9d8ff051d9bbe1875a159d812a93",
+          "bytes": 9114
+        }
+      },
+      "case_count": 3
+    },
+    {
+      "jurisdiction": "D004",
+      "proof_id": "SUP-D004-USOPTION",
+      "claim_id": "neutral_market_measurement_truth_l07a_d004_option_time",
+      "generation": 1,
+      "dependency_predicate": "D003",
+      "execution_release": false,
+      "registration_review": {
+        "candidate": "296b5dfef3eb7dc237be9070ccbcb0f8f4bf3a41",
+        "tree": "2c797a9d17554ca4658f5842e7a447e4b99b21cf",
+        "verdict": {
+          "ref": "refs/heads/review/trial-cac-nvidia-d004-option-session-registration-installation-20261129",
+          "commit": "f550d2b25aa44e313feadd342cc17fb867a9d766",
+          "path": "handoff/m02_completion_28_execution/L07a/INDEPENDENT_D004_OPTION_SESSION_REGISTRATION_INSTALLATION_VERDICT_20261129.md",
+          "sha256": "92f2a09539b36f0876c6787a74189f826a599274bfa2e201e2c5ccb889ec9237",
+          "tree": "7c3fbe41cba667349999a6c606720218972faf42",
+          "blob": "2dcd0d262eb0a5578c9eddd1e3474bb6b5cd4f7d",
+          "parent": "e977fa93f585230e575c6c48a80b0e1a6c0e46a5",
+          "actual_parent": "e977fa93f585230e575c6c48a80b0e1a6c0e46a5",
+          "actual_tree": "7c3fbe41cba667349999a6c606720218972faf42",
+          "bytes": 10216
+        }
+      },
+      "case_count": 3
+    },
+    {
+      "jurisdiction": "D085",
+      "proof_id": "M02-C28-D085",
+      "claim_id": "neutral_market_measurement_truth_d085",
+      "generation": 1,
+      "dependency_predicate": "D004",
+      "execution_release": false,
+      "registration_review": {
+        "candidate": "6a777e494b8dc95de6903aac85724cc96d648ce5",
+        "tree": "55ea4f7365304941a75c6c5002b0228210483495",
+        "verdict": {
+          "ref": "refs/heads/review/trial-cac-nvidia-d085-calendar-dte-registration-installation-20261129",
+          "commit": "78d3411a2ac04b73a269abf9ec5c27f7d3ed2f6d",
+          "path": "handoff/m02_completion_28_execution/L08/INDEPENDENT_D085_CALENDAR_DTE_REGISTRATION_INSTALLATION_VERDICT_20261129.md",
+          "sha256": "072017926f5360f7b28f0b1e710b9066bc821efd1dec48d21e3e43b527196c34",
+          "tree": "41c3d0203ae884dcb88c4dd028594dca7b597f14",
+          "blob": "254b6141d4ff1b9766915a5b7d6767a8bfcb3cbb",
+          "parent": "b22713236e2da05e49b57df4666621daf834a257",
+          "actual_parent": "b22713236e2da05e49b57df4666621daf834a257",
+          "actual_tree": "41c3d0203ae884dcb88c4dd028594dca7b597f14",
+          "bytes": 11315
+        }
+      },
+      "case_count": 7
+    },
+    {
+      "jurisdiction": "D086",
+      "proof_id": "M02-C28-D086",
+      "claim_id": "neutral_market_measurement_truth_d086",
+      "generation": 1,
+      "dependency_predicate": "D001",
+      "execution_release": false,
+      "registration_review": {
+        "candidate": "224724ffbd92fb1d8a479551593a59d450142a5a",
+        "tree": "e9173ce29110332f997f0aaa60407e0468125a0d",
+        "verdict": {
+          "ref": "refs/heads/review/trial-cac-nvidia-d086-registration-installation-20261128",
+          "commit": "dcad1c3c0674a5a5ae2c5822411a993ced6bf840",
+          "path": "handoff/m02_completion_28_execution/L07a/INDEPENDENT_D086_REGISTRATION_INSTALLATION_VERDICT_20261128.md",
+          "sha256": "0d83b5716d20d07afc39931a210dfb59dd8044ebb21bd4d684799229ad478f35",
+          "tree": "ea38783e0fcc4d45aa8d03206613eec81012750f",
+          "blob": "7cec32e9a96787dc07b92ea199f8e24e01c02a23",
+          "parent": "1ac26d64498e6687ddeac1036ff8cb6a730932f3",
+          "actual_parent": "1ac26d64498e6687ddeac1036ff8cb6a730932f3",
+          "actual_tree": "ea38783e0fcc4d45aa8d03206613eec81012750f",
+          "bytes": 8349
+        }
+      },
+      "case_count": 6
+    }
+  ],
+  "worker_static_evidence": {
+    "original_refs": {
+      "path": "handoff/planning/t01_recovered_successor_20261111/ORIGINAL_66_REFS.json",
+      "sha256": "7cb2abfd6e5a4828c6a1e61a1e960d5649c4ab59449423d9189256ee425d3606",
+      "bytes": 12902
+    },
+    "worker_original_ref_readback_count": 66,
+    "worker_receiver": "/home/jds/nvda-finite64-intake-prep-77d80c3-20261129",
+    "worker_no_alternates": true,
+    "controls": [
+      {
+        "path": "tools/product_proof_claims.py",
+        "sha256": "96de9e7cbc992a79df853be1f69d4a5cf55f6f1998baeadbcd78e45275229fb6",
+        "bytes": 95792,
+        "unchanged_from_prior_d110": false
+      },
+      {
+        "path": "tools/run_product_proof_gate.py",
+        "sha256": "149ebd876b08c9a7874248de5e196a3c6c6d322b0556ee6f234b72bc6e6f1334",
+        "bytes": 3868,
+        "unchanged_from_prior_d110": true
+      },
+      {
+        "path": "tools/product_proof_outcomes.py",
+        "sha256": "1aafb2d33395d20e2a41ce7cc78e0c2dd2e934149f727ba888832559865a2273",
+        "bytes": 3372,
+        "unchanged_from_prior_d110": true
+      },
+      {
+        "path": "pyproject.toml",
+        "sha256": "c62bb0b0cbc96707de3444037a2e628c95cac75ebf8b44ebb0a5ebc9e5296225",
+        "bytes": 1914,
+        "unchanged_from_prior_d110": true
+      },
+      {
+        "path": "uv.lock",
+        "sha256": "65800a98bc9f14fd7df23aac7206fe90d9d3c73c9b221bfbe7e90a4092c3290d",
+        "bytes": 3982,
+        "unchanged_from_prior_d110": true
+      },
+      {
+        "path": ".python-version",
+        "sha256": "e72b03ed5b70312f2782f2b05055c55b24670e126d50e24c4f2c559bf288f810",
+        "bytes": 7,
+        "unchanged_from_prior_d110": true
+      },
+      {
+        "path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_SUPPORT16_COLLECTION_GUARD_20261126.py",
+        "sha256": "930752309edb0f30dec1e6774e2c0eca090c8589e20b74195b49ec9b01b58412",
+        "bytes": 4143,
+        "unchanged_from_prior_d110": true
+      },
+      {
+        "path": "handoff/m02_completion_28_execution/L10c/SCALAR_STRADDLE_SUPPORT16_NONPRODUCT_GUARD_QUALIFICATION_20261126.json",
+        "sha256": "60de74e920b13f35240685a059e1de45840ad1432b9aca3c5e1852de59eb670a",
+        "bytes": 5533,
+        "unchanged_from_prior_d110": true
+      }
+    ],
+    "runtime_static": [
+      {
+        "path": "/home/jds/nvda_d091_worker_proof_runner_venv_20261119/bin/python",
+        "sha256": "d114ec20c65fb65c77608f7b8b7110d0ff95e3b3c814f65580dad17fb56e012c",
+        "bytes": 33188704,
+        "prior_expected_sha256": "d114ec20c65fb65c77608f7b8b7110d0ff95e3b3c814f65580dad17fb56e012c",
+        "matches_prior": true
+      },
+      {
+        "path": "/home/jds/nvda_python3135_sqlite3541_20261117/python/lib/python3.13/lib-dynload/_sqlite3.cpython-313-x86_64-linux-gnu.so",
+        "sha256": "52d1d07388e3ccadf59d5071088f69c52d43071bb15092291798392407d28ab7",
+        "bytes": 659880,
+        "prior_expected_sha256": "52d1d07388e3ccadf59d5071088f69c52d43071bb15092291798392407d28ab7",
+        "matches_prior": true
+      },
+      {
+        "path": "/home/jds/nvda_python3135_sqlite3541_20261117/sqlite/lib/libsqlite3.so.0",
+        "sha256": "44a469c2ed17ee19dca5f0c949f97b98b7ad0f1260bdb41fc153a4530324fb2f",
+        "bytes": 1957800,
+        "prior_expected_sha256": "44a469c2ed17ee19dca5f0c949f97b98b7ad0f1260bdb41fc153a4530324fb2f",
+        "matches_prior": true
+      }
+    ],
+    "wheels": [
+      {
+        "path": "vendor/wheels/editables-0.6-py3-none-any.whl",
+        "sha256": "d70e4698078a1d033e7786d9c64e5be070d058a67c21417024d38a58ac20aa43",
+        "bytes": 5438
+      },
+      {
+        "path": "vendor/wheels/hatchling-1.29.0-py3-none-any.whl",
+        "sha256": "50af9343281f34785fab12da82e445ed987a6efb34fd8c2fc0f6e6630dbcc1b0",
+        "bytes": 76356
+      },
+      {
+        "path": "vendor/wheels/iniconfig-2.3.1-py3-none-any.whl",
+        "sha256": "9121e2c1fdb355232495be3194c8dfe87ccc2d5dee45947b78e68f499790d7a7",
+        "bytes": 7552
+      },
+      {
+        "path": "vendor/wheels/librt-0.16.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+        "sha256": "36e53948e99bbe3ffea257124cfcae1cfb01831555c9a9c903c9f9a72db7fd07",
+        "bytes": 531952
+      },
+      {
+        "path": "vendor/wheels/librt-0.16.0-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+        "sha256": "17bac7f7a16b328fff77e440287693eb017abde913595b5827ebccbc21ecd8a6",
+        "bytes": 531689
+      },
+      {
+        "path": "vendor/wheels/mypy-1.20.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+        "sha256": "ef3461b1ad5cd446e540016e90b5984657edda39f982f4cc45ca317b628f5a37",
+        "bytes": 14706744
+      },
+      {
+        "path": "vendor/wheels/mypy-1.20.1-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+        "sha256": "f37b6cd0fe2ad3a20f05ace48ca3523fc52ff86940e34937b439613b6854472e",
+        "bytes": 14696420
+      },
+      {
+        "path": "vendor/wheels/mypy_extensions-1.1.0-py3-none-any.whl",
+        "sha256": "1be4cccdb0f2482337c4743e60421de3a356cd97508abadd57d47403e94f5505",
+        "bytes": 4963
+      },
+      {
+        "path": "vendor/wheels/packaging-26.3-py3-none-any.whl",
+        "sha256": "d7193f7c8e4e93f444fde0262bf90af30e16fa0ad0ad44cb553c87339b23cd1c",
+        "bytes": 129956
+      },
+      {
+        "path": "vendor/wheels/pathspec-1.1.1-py3-none-any.whl",
+        "sha256": "a00ce642f577bf7f473932318056212bc4f8bfdf53128c78bbd5af0b9b20b189",
+        "bytes": 57328
+      },
+      {
+        "path": "vendor/wheels/pluggy-1.7.0-py3-none-any.whl",
+        "sha256": "7dd7b0d8832ba3cb632c306926ded123429211b83641b35dc5c41ad2d34f9bec",
+        "bytes": 27082
+      },
+      {
+        "path": "vendor/wheels/psycopg-3.3.4-py3-none-any.whl",
+        "sha256": "b6bbc25ccf05c8fad3b061d9db2ef0909a555171b84b07f29458a447253d679a",
+        "bytes": 213001
+      },
+      {
+        "path": "vendor/wheels/psycopg_binary-3.3.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+        "sha256": "e7510c37550f91a187e3660a8cc50d4b760f8c3b8b2f89ebc5698cd2c7f2c85d",
+        "bytes": 5152995
+      },
+      {
+        "path": "vendor/wheels/psycopg_binary-3.3.4-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+        "sha256": "c677c4ad433cb7150c8cd304a0769ae3bcfbe5ea0676eb53faa7b1443b16d0d3",
+        "bytes": 5151137
+      },
+      {
+        "path": "vendor/wheels/pygments-2.21.0-py3-none-any.whl",
+        "sha256": "2363c69b61c4a97c838da3b130dcd6468f4848992b21a82f2a63ec34377137d9",
+        "bytes": 1250147
+      },
+      {
+        "path": "vendor/wheels/pytest-9.0.3-py3-none-any.whl",
+        "sha256": "2c5efc453d45394fdd706ade797c0a81091eccd1d6e4bccfcd476e2b8e0ab5d9",
+        "bytes": 375249
+      },
+      {
+        "path": "vendor/wheels/pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+        "sha256": "ba1cc08a7ccde2d2ec775841541641e4548226580ab850948cbfda66a1befcdc",
+        "bytes": 807870
+      },
+      {
+        "path": "vendor/wheels/pyyaml-6.0.3-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+        "sha256": "0f29edc409a6392443abf94b9cf89ce99889a1dd5376d94316ae5145dfedd5d6",
+        "bytes": 801626
+      },
+      {
+        "path": "vendor/wheels/ruff-0.15.11-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+        "sha256": "1bef2cb556d509259f1fe440bb9cd33c756222cf0a7afe90d15edf0866702431",
+        "bytes": 11306537
+      },
+      {
+        "path": "vendor/wheels/trove_classifiers-2026.9.21.13-py3-none-any.whl",
+        "sha256": "8b1ff4f9c191b1040b71c37f1e445ab99732911e3cd91de52838453a854d7a17",
+        "bytes": 14232
+      },
+      {
+        "path": "vendor/wheels/typing_extensions-4.16.0-py3-none-any.whl",
+        "sha256": "481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8",
+        "bytes": 45571
+      }
+    ],
+    "distribution_metadata": [
+      {
+        "path": "/home/jds/nvda_d091_worker_proof_runner_venv_20261119/lib/python3.13/site-packages/hatchling-1.29.0.dist-info/METADATA",
+        "sha256": "331e643a297708650930f767ef6df46e3811d246e71a803a86880b0aee55fc9b",
+        "bytes": 3819
+      },
+      {
+        "path": "/home/jds/nvda_d091_worker_proof_runner_venv_20261119/lib/python3.13/site-packages/iniconfig-2.3.1.dist-info/METADATA",
+        "sha256": "47c2c35d936f5c649d8074c6464719a42966a67b5cebad01e3e5784cf090cfb6",
+        "bytes": 2826
+      },
+      {
+        "path": "/home/jds/nvda_d091_worker_proof_runner_venv_20261119/lib/python3.13/site-packages/librt-0.16.0.dist-info/METADATA",
+        "sha256": "d8d86b1900c9bd2deee1d47b226769832d9854dba7911e07637873a142e88c1a",
+        "bytes": 1298
+      },
+      {
+        "path": "/home/jds/nvda_d091_worker_proof_runner_venv_20261119/lib/python3.13/site-packages/mypy-1.20.1.dist-info/METADATA",
+        "sha256": "7ed60fb18bf687920aeff28c04accb90d8fb51e09b24e58489097fbdbb500a9a",
+        "bytes": 2280
+      },
+      {
+        "path": "/home/jds/nvda_d091_worker_proof_runner_venv_20261119/lib/python3.13/site-packages/mypy_extensions-1.1.0.dist-info/METADATA",
+        "sha256": "2c4a44936d885f30433181ca40bbf62457351f1f6b0871b11f8789564f87477f",
+        "bytes": 1100
+      },
+      {
+        "path": "/home/jds/nvda_d091_worker_proof_runner_venv_20261119/lib/python3.13/site-packages/packaging-26.3.dist-info/METADATA",
+        "sha256": "70fdb89fc4d4a9a043bf7372b8972bcc883fddff34ab55e9cf80d73875384763",
+        "bytes": 3544
+      },
+      {
+        "path": "/home/jds/nvda_d091_worker_proof_runner_venv_20261119/lib/python3.13/site-packages/pathspec-1.1.1.dist-info/METADATA",
+        "sha256": "68de3f158b6592f086e78754c962092f32a761944ab66a660c0d62ad79c4b69b",
+        "bytes": 14797
+      },
+      {
+        "path": "/home/jds/nvda_d091_worker_proof_runner_venv_20261119/lib/python3.13/site-packages/pip-25.1.1.dist-info/METADATA",
+        "sha256": "405c63d6d2e993c8465ab8102d1849614a70a3fd45a81af8dce4f4b2b2197265",
+        "bytes": 3649
+      },
+      {
+        "path": "/home/jds/nvda_d091_worker_proof_runner_venv_20261119/lib/python3.13/site-packages/pluggy-1.7.0.dist-info/METADATA",
+        "sha256": "20ac8237e37f1d6e7e75500cd663015177ba80c1a1a595ff6bae18a539ff8a2c",
+        "bytes": 4966
+      },
+      {
+        "path": "/home/jds/nvda_d091_worker_proof_runner_venv_20261119/lib/python3.13/site-packages/psycopg-3.3.4.dist-info/METADATA",
+        "sha256": "daef30765d48b6c646bffb62457da8e1e969f0ff3bacf563c14da60f185c253d",
+        "bytes": 4313
+      },
+      {
+        "path": "/home/jds/nvda_d091_worker_proof_runner_venv_20261119/lib/python3.13/site-packages/pygments-2.21.0.dist-info/METADATA",
+        "sha256": "1dde075570136774c706bf0009183a793fe0ee262e4a5590cc6eff8453eedd43",
+        "bytes": 2527
+      },
+      {
+        "path": "/home/jds/nvda_d091_worker_proof_runner_venv_20261119/lib/python3.13/site-packages/pytest-9.0.3.dist-info/METADATA",
+        "sha256": "c3966f28791686477bae35e518736d4cbea5b626d3a79011215854e2bc670207",
+        "bytes": 7556
+      },
+      {
+        "path": "/home/jds/nvda_d091_worker_proof_runner_venv_20261119/lib/python3.13/site-packages/pyyaml-6.0.3.dist-info/METADATA",
+        "sha256": "03c3b415ed38d09faedc49360e930769b40c58f68585e6de00e2e4916a858d34",
+        "bytes": 2351
+      },
+      {
+        "path": "/home/jds/nvda_d091_worker_proof_runner_venv_20261119/lib/python3.13/site-packages/ruff-0.15.11.dist-info/METADATA",
+        "sha256": "25421384b6b9fbfbd4486b4c5baaedc90d8fcf37f2421fabb3e9fd73929d3fb0",
+        "bytes": 26513
+      },
+      {
+        "path": "/home/jds/nvda_d091_worker_proof_runner_venv_20261119/lib/python3.13/site-packages/trove_classifiers-2026.9.21.13.dist-info/METADATA",
+        "sha256": "ca7e96493232b21f92aeccf456b2e01f1d4dbcaa8e17a9e1b5e6f03c6eb7461f",
+        "bytes": 2350
+      },
+      {
+        "path": "/home/jds/nvda_d091_worker_proof_runner_venv_20261119/lib/python3.13/site-packages/typing_extensions-4.16.0.dist-info/METADATA",
+        "sha256": "b05084ca1d50879865178d9fff9fabeab61bdfb1f361bfbde95421ffc8f9be46",
+        "bytes": 3310
+      }
+    ],
+    "pytest_control_files": [
+      {
+        "path": "/home/jds/nvda_d091_worker_proof_runner_venv_20261119/lib/python3.13/site-packages/_pytest/main.py",
+        "sha256": "7ca2b20cc41fbfc2761bcb231eecb26967d553651035c40000f44d70e174b693",
+        "bytes": 42435
+      },
+      {
+        "path": "/home/jds/nvda_d091_worker_proof_runner_venv_20261119/lib/python3.13/site-packages/_pytest/hookspec.py",
+        "sha256": "10492386fded5ac217ccf4be2f2bd7b05c7999aaf700c9b83ce04278f20708c4",
+        "bytes": 43019
+      },
+      {
+        "path": "/home/jds/nvda_d091_worker_proof_runner_venv_20261119/lib/python3.13/site-packages/_pytest/runner.py",
+        "sha256": "8d784b2b3e23b05f4c4edd3f5263eb11964e86b6e16d2c814c5fcb2125dc4ea4",
+        "bytes": 19785
+      },
+      {
+        "path": "/home/jds/nvda_d091_worker_proof_runner_venv_20261119/lib/python3.13/site-packages/_pytest/config/__init__.py",
+        "sha256": "2ea44f1539ed6b72eb61402d4633b92e9fef99895c41ac6347860690516e46cf",
+        "bytes": 79300
+      }
+    ],
+    "tracked_conftests": [],
+    "legacy_d078_unchanged": [
+      "handoff/m01_completion/proof/f4_20261012_regression_d104_blocked/D078_BROADER_1155_PASS.log",
+      "handoff/m01_completion/proof/f4_20261012_regression_d104_blocked/D078_PRIOR_FIT_PUBLIC_RED.log",
+      "handoff/m01_completion/proof/f4_20261012_regression_d104_blocked/D078_WRONG_COEFFICIENT_RED.log"
+    ],
+    "legacy_d078_changed": [],
+    "historical_manifests": [
+      {
+        "path": "handoff/astra_adr_continuation_20261115/REQUIRED_REF_RESULTS_CURRENT.json",
+        "sha256": "90028c00efbdadbaa4c76812994fb4650723f3ea3bbfb7fc6f3437f6ba17f380",
+        "bytes": 1658034
+      },
+      {
+        "path": "handoff/astra_adr_continuation_20261115/NON_GIT_ASSET_RESULTS_CURRENT.json",
+        "sha256": "531a6fb30f56521df3f51a74189439b6fc7335427f6a655e4e4a0060e5094224",
+        "bytes": 38466
+      },
+      {
+        "path": "handoff/astra_adr_continuation_20261115/OUTSTANDING_ASSETS_CURRENT.json",
+        "sha256": "15ddc209a06aa00e0a56c083c5a48ac35675c8f5d20c8f135c47e1cd0e5122e5",
+        "bytes": 3386
+      }
+    ],
+    "historical_outstanding": [
+      {
+        "expected_location": "NVDA_M02_COMPLETION28_L00_HANDOVER.tar.gz",
+        "expected_sha256": "96483d5a7d2334c0726c591f12d5319093a866d777b71e13c0362e85d29e89e7",
+        "inventory": "handoff/m02_completion_28_execution/L00/L00_FINAL_INDEPENDENT_RESTORE_RECEIPT.json",
+        "expected_bytes": 124422670,
+        "available_bytes": null,
+        "actual_sha256": null,
+        "status": "BLOCKED",
+        "missing_prerequisite": "Exact original bytes at expected location or independently verified original archive member required"
+      },
+      {
+        "expected_location": "NVDA_M02_COMPLETION28_L00_ADDITIVE_FROM_97f944d51ab9.bundle",
+        "expected_sha256": "589524d6a47885bb30d9e1c9a5c35f4a59388dfa9ac749046a5036b09f973aec",
+        "inventory": "handoff/m02_completion_28_execution/L00/L00_FINAL_INDEPENDENT_RESTORE_RECEIPT.json",
+        "expected_bytes": 124661535,
+        "available_bytes": 124824686,
+        "actual_sha256": "1b685c791d52aca6a9acd49d7d126d801758f74b6ce9a102f1ded2f42442d506",
+        "status": "BLOCKED",
+        "missing_prerequisite": "Exact original bytes at expected location or independently verified original archive member required"
+      },
+      {
+        "expected_location": "RESTORE.md",
+        "expected_sha256": "61602cd0782aadc68bed4df4aedc7b47c6d34104e262f63ba9322549a7138b34",
+        "inventory": "handoff/m02_completion_28_execution/L00/L00_FINAL_INDEPENDENT_RESTORE_RECEIPT.json",
+        "expected_bytes": 755,
+        "available_bytes": 2355,
+        "actual_sha256": "f24b6f2e301b7a72c9756f2414b95a61bfe1e37a2db8849c8ea3024716bece3a",
+        "status": "BLOCKED",
+        "missing_prerequisite": "Exact original bytes at expected location or independently verified original archive member required"
+      },
+      {
+        "expected_location": "NVDA_M02_COMPLETION28_L00_ADDITIVE_FROM_97f944d51ab9.bundle",
+        "expected_sha256": "589524d6a47885bb30d9e1c9a5c35f4a59388dfa9ac749046a5036b09f973aec",
+        "inventory": "handoff/m02_completion_28_execution/L00/L00_FINAL_INDEPENDENT_RESTORE_RECEIPT.json",
+        "expected_bytes": 124661535,
+        "available_bytes": 124824686,
+        "actual_sha256": "1b685c791d52aca6a9acd49d7d126d801758f74b6ce9a102f1ded2f42442d506",
+        "status": "BLOCKED",
+        "missing_prerequisite": "Exact original bytes at expected location or independently verified original archive member required"
+      },
+      {
+        "expected_location": "NVDA_M02_RECOVERY_BASE_FULL_HISTORY.bundle",
+        "expected_sha256": "96746582ab4fd0896f6280ff10ea021ed392f4d0e080c2f7c21be00324c5a57c",
+        "inventory": "handoff/m02_completion_28_execution/L00/L00_FINAL_INDEPENDENT_RESTORE_RECEIPT.json",
+        "expected_bytes": 165856376,
+        "available_bytes": null,
+        "actual_sha256": null,
+        "status": "BLOCKED",
+        "missing_prerequisite": "Exact original bytes at expected location or independently verified original archive member required"
+      },
+      {
+        "inventory": "handoff/downstream_reconciliation/L14/SOURCE_AND_ASSET_INVENTORY.json",
+        "expected_location": "CPython3.12.14 runtime with accepted SQLite toolchain",
+        "expected_sha256": null,
+        "expected_bytes": null,
+        "available_bytes": null,
+        "actual_sha256": null,
+        "recovered_location": null,
+        "status": "UNKNOWN",
+        "missing_prerequisite": "Historical CPython 3.12.14 / SQLite toolchain exact binary identity not established by available manifest; qualification is profile-specific",
+        "requirement": "not embedded in git bundle; no Python3.13 substitute"
+      }
+    ],
+    "d085_report_single_path_verified": true,
+    "worker_fsck": {
+      "exit": 0,
+      "log": "/home/jds/nvda-finite64-fsck-77d80c3.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "transport": {
+    "status": "BLOCKED_EXISTING_SOLE_TESTER_NOT_ADDRESSABLE_BY_ADOPTED_CAC_MVP",
+    "sender": "JayDEmily/automatic-timer-trial-v1@6d7ab8580c092c10216016223f3c82adf6573108:tools/windows/Invoke-CacMvp.ps1",
+    "observed_native_sender_sha256": "789f8caefcd6dca23a4bf30a201a15cb6987981cd87a8fd55af642de3e3b0e44",
+    "reason": "AGENTS.md adopts only canonical /project delivery. Actual native sender requires ProjectUrl matching /project, Editor rejects NOT_FRESH_PROJECT_LANDING, selects New chat in *, and verifies a new child conversation. Existing /c/ URL rejected by EXACT_PROJECT_URL_REQUIRED before input. No eligible replacement Tester or alternative transport authority. Read only; no sender invocation, input or Send.",
+    "send_attempted": false
+  },
+  "audit_note": "Initial reference extraction confused prospective review target with actual published verdict; corrected to select actual hashed reports and reran. 83 refs, 55 report hashes matched. No product mutation or execution. Worker receiver does not qualify independent Tester receiver. No new loader result or runtime load result."
+}
