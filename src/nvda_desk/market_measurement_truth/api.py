@@ -4017,3 +4017,88 @@ __all__ += [
     "AlignedCoefficientOccurrenceV1", "AlignedCoefficientReadsV1", "AlignedCoefficientOwnerV1",
     "create_aligned_coefficient_owner", "create_aligned_coefficient_reader",
 ]
+
+
+@dataclass(frozen=True, slots=True)
+class AlignedResidualRequestV1(_Validated):
+    derived_signal_id: str
+    subject_instrument: str
+    slot: str
+    as_of_utc: datetime
+    knowledge_cutoff_utc: datetime
+    calculation_definition_version: str
+    source_profile_ref: VersionRefV1
+    parameter_set_ref: VersionRefV1
+    input_selection_policy_ref: VersionRefV1
+    context_refs: tuple[VersionRefV1, ...]
+    predecessor_occurrence_ids: tuple[str, ...]
+
+
+@dataclass(frozen=True, slots=True)
+class AlignedResidualOccurrenceV1(_Validated):
+    owner_object_id: str
+    owner_namespace: str
+    implementation_brief_sha256: str
+    derived_signal_id: str
+    derived_occurrence_id: str
+    request: AlignedResidualRequestV1
+    definition: CalculationDefinitionV1
+    source_policy_sha256: str
+    source_profile_ref: VersionRefV1
+    parameter_set: CalculationParameterSetV1
+    input_selection_policy: InputSelectionPolicyVersionV1
+    window_context: WindowContextV1
+    current_histories: tuple[AlignedHistoryOccurrenceV1, ...]
+    coefficients: tuple[AlignedCoefficientOccurrenceV1, ...]
+    result: ExactRatioV1
+    units: str
+    result_shape: str
+    effective_as_of_utc: datetime
+    knowledge_cutoff_utc: datetime
+    calculated_at_utc: datetime
+
+
+class AlignedResidualReadsV1(Protocol):
+    def get_derived_occurrence(
+        self, derived_occurrence_id: str,
+    ) -> AlignedResidualOccurrenceV1 | None: ...
+
+    def list_derived_history(
+        self, *, derived_signal_id: str, subject_instrument: str,
+        effective_at_or_before_utc: datetime, knowledge_at_or_before_utc: datetime,
+        limit: int,
+    ) -> tuple[AlignedResidualOccurrenceV1, ...]: ...
+
+
+class AlignedResidualOwnerV1(Protocol):
+    @property
+    def reads(self) -> AlignedResidualReadsV1: ...
+
+    def materialise(
+        self, request: AlignedResidualRequestV1,
+    ) -> AlignedResidualOccurrenceV1 | None: ...
+
+
+def create_aligned_residual_owner(
+    *, admission: OwnerAdmissionV1,
+    predecessor_read_storages: tuple[SQLiteReadStorageV1, ...],
+    storage: SQLiteStorageV1, utc_now: Callable[[], datetime],
+) -> AlignedResidualOwnerV1:
+    from ._aligned_residual import build_owner
+
+    return build_owner(admission, predecessor_read_storages, storage, utc_now)
+
+
+def create_aligned_residual_reader(
+    *, admission: OwnerAdmissionV1, storage: SQLiteReadStorageV1,
+) -> AlignedResidualReadsV1:
+    from ._aligned_residual import build_reader
+
+    return build_reader(admission, storage)
+
+
+__all__ += [
+    "AlignedResidualRequestV1", "AlignedResidualOccurrenceV1",
+    "AlignedResidualReadsV1", "AlignedResidualOwnerV1",
+    "create_aligned_residual_owner", "create_aligned_residual_reader",
+]
