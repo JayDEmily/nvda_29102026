@@ -1462,7 +1462,7 @@
         "L00"
       ],
       "obligation": "Bind R013 selected-option expiry date, R001 receipt, exchange IANA timezone, calendar version/session boundaries and lawful D004 US-option date profile. A synthetic calendar is explicitly controlled configuration, never evidence of official provider facts. Resolve concrete policy/source decisions before code. Independently prove a necessary D004 profile extension without rewriting its old accepted profile or counting its identity anew.",
-      "status": "D003_IMPLEMENTED_UNTESTED_IMPLEMENTATION_AND_SHARED_SURFACE_APPLICABILITY_INDEPENDENTLY_ACCEPTED_EXECUTION_HELD",
+      "status": "D003_IMPLEMENTED_UNTESTED_INERT_REGISTRATION_PREPARED_INDEPENDENT_REVIEW_PENDING_EXECUTION_HELD",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G2_AFTER_L18"
@@ -1501,7 +1501,7 @@
         ],
         "execution_release": false,
         "product_status": "NOT_ATTEMPTED",
-        "first_unmet_invariant": "Separate D003 registration preparation, independent review, installation and installation review; actual D001 parent product acceptance and candidate-specific sole Tester intake/runtime/precall before execution. D004/D085 held; D086 serial source prerequisite independently cleared for this exact candidate, separate source commission required.",
+        "first_unmet_invariant": "Fresh distinct D003 independent registration preparation review, separate installation and installation review; actual D001 parent product acceptance and candidate-specific sole Tester intake/runtime/precall before execution. D004/D085 held; D086 remains unimplemented pending separate source commission.",
         "tester_designation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
         "tester_status": "CANDIDATE_SPECIFIC_INTAKE_REQUIRED",
         "scope": "Controlled synthetic only; no official/native certification or new product acceptance",
@@ -1742,6 +1742,66 @@
           "execution_release": false,
           "product_cases_executed": 0,
           "scope": "Static documentary source implementation and exact candidate-specific shared-surface applicability only; no registration installation, product acceptance or release. Preserve original historical scope, generation 0002 and D095 registration; no material invalidation established."
+        },
+        "first_stage_registration_preparation_candidate": {
+          "jurisdiction": "D003",
+          "proof_id": "SUP-D003-USOPTION",
+          "case_count": 3,
+          "disposition": "INERT_REGISTRATION_PREPARED_INDEPENDENT_REVIEW_REQUIRED_EXECUTION_HELD",
+          "input_handoff": "4ed3f3109c8ffe0c9b355cd30a37cffe9a94aa6f",
+          "candidate": "6ac5d0156b673f9d0c4998bbbd7e759485d6f1db",
+          "candidate_tree": "a28e1e08e4d77470f4019c19393617ea2e429a08",
+          "tree_listing_sha256": "3ae338277c63466001d2f056a9709774092a6e693f464a2d4f503d1f33e47345",
+          "tracked_entries": 4589,
+          "source_candidate": "731f23d3457607c9b2fb7fc332d0edfe56635142",
+          "implementation_review_commit": "bec4d7c1e3e195348b238ca18a85c1df2e2f51d3",
+          "generation": 1,
+          "package": [
+            {
+              "inert_path": "handoff/m02_completion_28_execution/L07a/D003_CLAIM_CANDIDATE.json",
+              "future_destination": "config/product_proof/m02_option_time_d003/claim.json",
+              "sha256": "317eac2082f637b8cfdcea48a5b46b410b7754a8b30c91ccf9ca0291dce06ae8",
+              "git_blob": "a7a4c6952a3076f419202ae6e33ebfc20a5b765f",
+              "bytes": 537
+            },
+            {
+              "inert_path": "handoff/m02_completion_28_execution/L07a/D003_GENERATION_0001_CANDIDATE.json",
+              "future_destination": "config/product_proof/m02_option_time_d003/generations/0001.json",
+              "sha256": "f9805e1fb368b7fea2939726470ced94a56bfe68fe2bdcd9261fa5223201bc1e",
+              "git_blob": "a86b5764f993642c2908510841d4b99648c94b10",
+              "bytes": 1561
+            },
+            {
+              "inert_path": "handoff/m02_completion_28_execution/L07a/D003_ADMISSION_CANDIDATE.json",
+              "future_destination": "config/product_proof/m02_option_time_d003/admission.json",
+              "sha256": "2ffa282e5fb92600f043dc5d8b94c76231948593c235ea71c219f158b97c4894",
+              "git_blob": "9784fbdbca584c325170dff0461ebdd4110cbf7d",
+              "bytes": 221
+            },
+            {
+              "inert_path": "handoff/m02_completion_28_execution/L07a/D003_TEST_SOURCE.py",
+              "future_destination": "tests/product/m02_completion_28_prospective/support/d003-usoption/test_profile.py",
+              "sha256": "3bc96523f0a4528e450bdc9e38820c43d0babb8f3183f8bffe2c1766feb06735",
+              "git_blob": "cc49bbf41e5cc9e974fa45afd6420376bacacf73",
+              "bytes": 23917
+            }
+          ],
+          "ordered_case_ids": [
+            "SUP-D003-USOPTION-SUCCESS",
+            "SUP-D003-USOPTION-FOREIGN-ZONE",
+            "SUP-D003-USOPTION-WRONG-PARENT"
+          ],
+          "ordered_test_nodes": [
+            "tests/product/m02_completion_28_prospective/support/d003-usoption/test_profile.py::test_d003_success",
+            "tests/product/m02_completion_28_prospective/support/d003-usoption/test_profile.py::test_d003_foreign_zone",
+            "tests/product/m02_completion_28_prospective/support/d003-usoption/test_profile.py::test_d003_wrong_parent"
+          ],
+          "hypothetical_static_validation": "READY_FOR_PROOF_NOT_EXECUTION_RELEASE",
+          "report_path": "handoff/m02_completion_28_execution/L07a/D003_FIRST_STAGE_REGISTRATION_PREPARATION_REVIEW_COMMISSION_20261128.md",
+          "report_sha256": "f045c6a963a15020fde6ba4b65e88487f3aefccc124da99724523c14712a66d6",
+          "registration": "NOT_INSTALLED",
+          "execution_release": false,
+          "product_cases_executed": 0
         }
       }
     },
@@ -4688,9 +4748,9 @@
   "execution_status": "ready",
   "current_leaf": "L07a",
   "next_assignment": {
-    "role": "Fresh distinct D003 first-stage registration preparation Worker",
-    "task": "Fetch exact trial HEAD; stop on mismatch. Follow AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and execution register. Fetch exact independent verdict bec4d7c1e3e195348b238ca18a85c1df2e2f51d3 at refs/heads/review/trial-cac-nvidia-d003-implementation-20261128, verify handoff/m02_completion_28_execution/L07a/INDEPENDENT_D003_IMPLEMENTATION_APPLICABILITY_VERDICT_20261128.md SHA256 306c043ea0831c4093275299266a9c4c389606bca42cb29e0464ee7d3c519faa, and candidate 731f23d3457607c9b2fb7fc332d0edfe56635142 tree 608b2030fc6b08ab4efdbd64a6119e0662507d2c. Prepare only inert exact D003 registration descriptor, physical-source candidate, immutable generation 0001 and admission pointer candidates in handoff, using own accepted brief/binding/proof/contract, exact three nodes, owner grant/path remap and fixed prospective descriptor SHA256 317eac2082f637b8cfdcea48a5b46b410b7754a8b30c91ccf9ca0291dce06ae8. No active descriptor, generation, pointer or physical proof installation, product or proof imports, collection, execution, source edits, release, policy or ledger change. Separate independent registration preparation review, installation and installation review required. Preserve original D001 generation 0002 and D095 registration, all 64 holds, sole Tester, D004/D085 held, D086 unimplemented pending separate commission, G01 R2 unadopted, D145 PAUSED, main/original. Actual D001 accepted parent product proof and candidate-specific sole Tester intake/runtime/precall required before child execution. Continue eligible distinct-role succession once via owner-adopted CAC MVP.",
-    "selection_basis": "D003 source and exact candidate-specific D001/D095/old G01 applicability independently cleared; choose separate inert D003 registration preparation first to complete documentary chain before subsequent D086 shared-source edits. No execution release."
+    "role": "Fresh distinct independent D003 first-stage registration preparation reviewer",
+    "task": "Fetch exact trial HEAD; stop on mismatch. Follow AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and execution register. Execute only committed independent commission handoff/m02_completion_28_execution/L07a/D003_FIRST_STAGE_REGISTRATION_PREPARATION_REVIEW_COMMISSION_20261128.md SHA256 f045c6a963a15020fde6ba4b65e88487f3aefccc124da99724523c14712a66d6. Review exact inert candidate 6ac5d0156b673f9d0c4998bbbd7e759485d6f1db tree a28e1e08e4d77470f4019c19393617ea2e429a08, three added JSON files, unchanged physical-source candidate, exact descriptor digest, immutable generation 0001, pointer and 3 ordered nodes; verify original grant/remap/ledger and 64 execution holds; use disposable non-active tree for static G01 compatibility only. Issue separate D003 documentary verdict, no active installation, source edits, proof/product imports, collection, execution, release, ledger or policy changes. Preserve D001 generation 0002, D095 registration, D004/D085 held, D086 unimplemented pending separate commission, G01 R2 unadopted, D145 PAUSED, main/original and sole Tester. Actual D001 parent product acceptance and candidate-specific sole Tester intake/runtime/precall remain required. Continue eligible distinct-role succession once via owner-adopted CAC MVP.",
+    "selection_basis": "Exact D003 inert descriptor/physical-source/generation/pointer prepared; independent documentary review required before separate installation, then independent installation review. No execution release."
   },
   "trial_forward_succession_authority": {
     "scope": "trial/cac-nvidia-continuation-20261127 only",
