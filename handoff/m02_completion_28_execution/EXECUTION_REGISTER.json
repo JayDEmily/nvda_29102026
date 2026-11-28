@@ -2281,6 +2281,67 @@
           "active_proof_registration": false,
           "execution_release": false,
           "product_cases_executed": 0
+        },
+        "downstream_d077_registration_preparation_candidate": {
+          "jurisdiction": "D077",
+          "proof_id": "SUP-D077-HISTORY",
+          "case_count": 3,
+          "disposition": "INERT_REGISTRATION_PREPARED_INDEPENDENT_REVIEW_REQUIRED_EXECUTION_HELD",
+          "input_handoff": "c8c780ff17f099afb03e40ec81af26d1e22a99dd",
+          "candidate": "c81d8f122b5fdec182cf718ffd30e16f4bab015e",
+          "candidate_tree": "921d8ebc5271009a8b3e5fb5d7e91120021f92b3",
+          "tree_listing_sha256": "f3cccd3cec5a3e2ab4fb9772e874ba79aa7abedbc901654ee8685d03878a9811",
+          "tracked_entries": 4641,
+          "source_candidate": "253526238d3bfc163e42d0dcbdc79a17c41ff5eb",
+          "implementation_review_commit": "89354484f6c6caece4df8a316f4b5e5460bbd53f",
+          "generation": 1,
+          "package": [
+            {
+              "inert_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D077_CLAIM_CANDIDATE.json",
+              "future_destination": "config/product_proof/m02_aligned_history_d077/claim.json",
+              "sha256": "96ed7bf333ede3ed7d038b542c36cede906d6a1f7873ee4595ed4944595594d5",
+              "git_blob": "59c993c000da7fbadeebdb6b9c30efa3049417bd",
+              "bytes": 572
+            },
+            {
+              "inert_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D077_GENERATION_0001_CANDIDATE.json",
+              "future_destination": "config/product_proof/m02_aligned_history_d077/generations/0001.json",
+              "sha256": "caab1dcd3876c09052fbe308b8d4af63271e114a2b1b8940a276a9ce212f2d8d",
+              "git_blob": "07f4cdfc6410c6da98cd9c12ef092334a5b1cf68",
+              "bytes": 1556
+            },
+            {
+              "inert_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D077_ADMISSION_CANDIDATE.json",
+              "future_destination": "config/product_proof/m02_aligned_history_d077/admission.json",
+              "sha256": "aff0d35a203980ed17b0cf70774055846e2c81865c0b694b6dcbb00972e65b10",
+              "git_blob": "e601e35a75de5399b654eaa573cd59979ae83d9f",
+              "bytes": 225
+            },
+            {
+              "inert_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D077_TEST_SOURCE.py",
+              "future_destination": "tests/product/m02_completion_28_prospective/support/d077-history/test_profile.py",
+              "sha256": "3b31555bc6261ee32ab16b1ccb474cd09d164b642d37b99309a97fca4e2b019e",
+              "git_blob": "842fe2a0c92c5617be906cd4055c6bd2579caa3d",
+              "bytes": 33293
+            }
+          ],
+          "ordered_case_ids": [
+            "SUP-D077-HISTORY-SUCCESS",
+            "SUP-D077-HISTORY-REACHED_REFUSAL",
+            "SUP-D077-HISTORY-MIXED-ORIGINAL-ROSTER"
+          ],
+          "ordered_test_nodes": [
+            "tests/product/m02_completion_28_prospective/support/d077-history/test_profile.py::test_d077_history_success",
+            "tests/product/m02_completion_28_prospective/support/d077-history/test_profile.py::test_d077_missing_soxx_parent",
+            "tests/product/m02_completion_28_prospective/support/d077-history/test_profile.py::test_d077_mixed_original_roster"
+          ],
+          "registration": "NOT_INSTALLED",
+          "parent_product_acceptance_established": false,
+          "execution_release": false,
+          "product_cases_executed": 0,
+          "report_path": "handoff/m02_completion_28_execution/L01a/D077_DOWNSTREAM_REGISTRATION_PREPARATION_REVIEW_COMMISSION_20261128.md",
+          "report_sha256": "c7f86503a16e936c1bff49599acffd9d2bce372ae5572e3c04e6667cb84cf970",
+          "validation": "STATIC_DESCRIPTOR_ROUTE_AND_ADMISSION_SCHEMA_VERIFIED_NO_ACTIVE_INSTALLATION_OR_LOADER_EXECUTION"
         }
       }
     },
@@ -6197,9 +6258,9 @@
   "execution_status": "ready",
   "current_leaf": "L01a",
   "next_assignment": {
-    "role": "Fresh distinct L01a D077 downstream registration preparation Worker",
-    "task": "Fetch exact received trial HEAD; stop on mismatch. Execute only committed handoff/m02_completion_28_execution/L01a/D077_DOWNSTREAM_REGISTRATION_PREPARATION_COMMISSION_20261128.md SHA256 f8630f1d2400585fbf4455b9364d9196bf3c75e545f0126f982caf442ad20672. Prepare four exact inert D077 registration payloads for three accepted ordered nodes; preserve D076 active registration, parent/legacy/G01, all holds and sole Tester. No active installation/registration, source/proof edits, product/proof imports, collection, execution or release. Continue eligible distinct-role succession once using owner-adopted CAC MVP.",
-    "selection_basis": "D077 exact bounded source independently documentary accepted, no candidate-specific shared-surface material invalidation established; separate inert registration preparation next, with actual parent acceptance and product execution held."
+    "role": "Fresh distinct independent L01a D077 downstream registration preparation Reviewer",
+    "task": "Fetch exact trial HEAD; stop on mismatch. Follow AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and execution register. Execute only committed handoff/m02_completion_28_execution/L01a/D077_DOWNSTREAM_REGISTRATION_PREPARATION_REVIEW_COMMISSION_20261128.md SHA256 c7f86503a16e936c1bff49599acffd9d2bce372ae5572e3c04e6667cb84cf970; independently verify exact inert candidate c81d8f122b5fdec182cf718ffd30e16f4bab015e, tree 921d8ebc5271009a8b3e5fb5d7e91120021f92b3, four payloads, three ordered nodes, authority/review/parent pins and all 64 holds. Preserve D076 active registration, parent/legacy/G01, all engineering holds and sole Tester. No active installation, source/proof edits, product/proof imports, collection, execution, release, policy or ledger change. Continue eligible distinct-role succession once using owner-adopted CAC MVP.",
+    "selection_basis": "D077 exact inert registration preparation complete; independent documentary preparation review only eligible; no installation or execution release."
   },
   "trial_forward_succession_authority": {
     "scope": "trial/cac-nvidia-continuation-20261127 only",
