@@ -1,0 +1,178 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_d079",
+  "semantic_brief_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D079_IMPLEMENTATION_BRIEF.md",
+  "target": {
+    "category": "M",
+    "responsibility_name": "neutral_market_measurement_truth",
+    "package": "nvda_desk.market_measurement_truth",
+    "public_seam": "nvda_desk.market_measurement_truth.api",
+    "intent": "modify",
+    "existing_object_id": "M02"
+  },
+  "proof_axis": "product",
+  "product_tier_treatment": "NOT_CLASSIFIED",
+  "architecture_proof_axis": "architecture_kernel",
+  "required_proof_ids": [
+    "M02-C28-D079"
+  ],
+  "families": [
+    {
+      "id": "m02_l02_joint_fit_d079",
+      "path": "tests/product/m02_completion_28_prospective/d079/test_signal.py",
+      "proof_obligation_ids": [
+        "M02-C28-D079"
+      ],
+      "required_test_names": [
+        "test_d079_joint_success",
+        "test_d079_rank_deficient",
+        "test_d079_missing_member",
+        "test_d079_duplicate_member",
+        "test_d079_parent_unavailable_at_cutoff",
+        "test_d079_mixed_source_corpus"
+      ],
+      "boundary": "Exact 6 separate owner-finite-admitted controlled joint-fit cases; no pooled allocation, installation or execution release.",
+      "proof_levels": [
+        "CONTRACT",
+        "INTEGRATION",
+        "STATE",
+        "REPLAY"
+      ],
+      "authoritative_inputs": [
+        "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_SOURCE_POLICY_PROPOSED_20261126.json SHA256 9ba56098c273007980c893db39931ac86e7a3185bbb665f8c3f1e14f99b72af1",
+        "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_FINITE_SPECIMENS_PROPOSED_20261126.json SHA256 bb03481de75e1820c7aff61777a4a3aa4f676440ec03e373a05c032a0417c76d",
+        "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_JOINT_FIT_FINITE_CASES_PROPOSED_20261126.json SHA256 3be150f2998b4187a81720b424c848099edeba7a9f638ae90d9aae95d4c5d5c1",
+        "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/PATH_ONLY_SUCCESSOR_AUTHORITY.json SHA256 11d90adf234d5195d3bd31a6b42df9b046c4ad53690cb279ef071d52b3049aa7",
+        "handoff/m02_completion_28_execution/TEST_EVIDENCE_LEDGER.json SHA256 5d1ac21a0cf62fe98efe5d4bd5c510094d139e6ae6bd3fc85d10924d67189c89",
+        "handoff/m02_completion_28_execution/OWNER_CONSOLIDATED_64_CONDITIONAL_EXECUTION_GRANT_20261127.json SHA256 6a71f52981fc01da42f9c27726547d0d1ddd69851561479a007aeb30ebd95a41",
+        "handoff/m02_completion_28_execution/L01a/D079_D080_D081_JOINT_FIT_BINDING_PREPARATION_COMMISSION_20261128.md SHA256 a357343cf523bcb6545033168c333a63cd43eb60e8d0142d25ac93a0ee370e1a",
+        "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D079_IMPLEMENTATION_BRIEF.md SHA256 47b4c5d27d7ffc57710d70973825500524e3d9bbc179cc59df0d356381612127",
+        "implementation/authority/T01_ALIGNED_HISTORY_D079_AUTHORITY_BINDING.yaml SHA256 c90aec925d606bcf9537ffad014338a579ab856884d659a85dd4ecd10050cf54",
+        "handoff/m02_completion_28_execution/L01a/D079_D080_D081_JOINT_FIT_SHARED_INTERFACE_PROPOSAL_20261128.md SHA256 8793bce3c1f9bc9a0da05e7f94a27b6742e5bd6071a99a641f68be2915504bcb",
+        "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D071_IMPLEMENTATION_BRIEF.md SHA256 65f2d0f9135f291773ab6081ec76892a967315df3ecb9c1760a4e2687a296e5e",
+        "implementation/authority/T01_ALIGNED_HISTORY_D071_AUTHORITY_BINDING.yaml SHA256 30cbb5fe2f8a1b720bc58b55b05f3c88b736401f03d03199404444b60330dc03",
+        "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D071_PROOF_CONTRACT.json SHA256 5f771b88c96699b9dd56b724e9e87df6f541706bdfff442842ee70d4daaedb30",
+        "tests/product/m02_completion_28_prospective/support/d071-history/test_profile.py SHA256 5c3a920006e9952e58e2e7ec6efe477e8e48e1f51bea9d6e6ff7744e6c3f20df",
+        "config/product_proof/m02_aligned_history_d071/claim.json SHA256 cea962241291786b3c2606cc56f003b77809352c7643408af88487e8200cb526",
+        "config/product_proof/m02_aligned_history_d071/admission.json SHA256 bcfbb089756d5a6ab21a2a5cd63991aaad1f609f81ebbebb89aa90f706f98fb5",
+        "config/product_proof/m02_aligned_history_d071/generations/0001.json SHA256 985625000ee98f9adfdf334e391ee19e767ac1b804e25b9eb209d9bf82a68dda",
+        "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D072_IMPLEMENTATION_BRIEF.md SHA256 4f8214d1ca11eaf0769206f3f322c799f44883bd266e63748e937dea5602b739",
+        "implementation/authority/T01_ALIGNED_HISTORY_D072_AUTHORITY_BINDING.yaml SHA256 637ff9b90b916ee69ee956db28e191ef86be3764ce2004b5fc24e371fa5869df",
+        "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D072_PROOF_CONTRACT.json SHA256 1b1974b23aa8e79b6c420b0cb32f09ad34220d7672d7239bc0b425ce14ff82e3",
+        "tests/product/m02_completion_28_prospective/support/d072-history/test_profile.py SHA256 20e86ceee72f6e4190137dbde967c44aedd824ca7a89d2120ba20432e91821a3",
+        "config/product_proof/m02_aligned_history_d072/claim.json SHA256 1260a7c77fe9ac48c07b44cb53c3830df4a0f6b6d77c1824d224325613eb5abb",
+        "config/product_proof/m02_aligned_history_d072/admission.json SHA256 095cfc8c92a2d54cdac2a2b2001add96c3ea200ac1768bbec658185b031c308d",
+        "config/product_proof/m02_aligned_history_d072/generations/0001.json SHA256 385a1499264023184f5ce9ba2ea0f17efa5bdaa57b449a79a412ae1d6b524936",
+        "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D073_IMPLEMENTATION_BRIEF.md SHA256 a7234477d581e6cba27e470919fa092c4ed5054d5a1aa31d2019d8fa94d16f48",
+        "implementation/authority/T01_ALIGNED_HISTORY_D073_AUTHORITY_BINDING.yaml SHA256 867444cecdf23c191269b1b3856410cc1ee6e3b81b8730dafa6d6528b78d6e0a",
+        "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D073_PROOF_CONTRACT.json SHA256 0105ec67828efed9019c75808c6d79315ddb7c9e0c9a8a666d49b46cf9fcfdb5",
+        "tests/product/m02_completion_28_prospective/support/d073-history/test_profile.py SHA256 3a5289c5d1933fcf6c84ae0d520f316d56c33ce87ca86433204776fc123e6c3a",
+        "config/product_proof/m02_aligned_history_d073/claim.json SHA256 8e61dc08aa7324bdf128419096ac4afb85731e047ca4bfcc2da377e2f0f4a084",
+        "config/product_proof/m02_aligned_history_d073/admission.json SHA256 8193931644b5870a6785afec07686721159878b3823c15c15a49966bc026db45",
+        "config/product_proof/m02_aligned_history_d073/generations/0001.json SHA256 005801524cd9787e72581b49c0305226930e7ddad319bbb3d829988ad6845a8c",
+        "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D074_IMPLEMENTATION_BRIEF.md SHA256 524b2d2a4aa94a0c1c55ea376650d14648af67c46e73763ce3e8cc0f2e9e0c0e",
+        "implementation/authority/T01_ALIGNED_HISTORY_D074_AUTHORITY_BINDING.yaml SHA256 f2a2208a73d291e614577eaf2b81ffd13d699c4efbc2eeeb6258569ac8aa1c34",
+        "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D074_PROOF_CONTRACT.json SHA256 708f6dc03c755e68c8232f699d80b2b27d973b7e2406daacf4f5fdc3f34d8d79",
+        "tests/product/m02_completion_28_prospective/support/d074-history/test_profile.py SHA256 e96123115973c985a75b7b978aad8a9b2cd65c7f63488a0ca76da036627d63d9",
+        "config/product_proof/m02_aligned_history_d074/claim.json SHA256 622726a8fa4da0cc4890390335d6f159aacc823f9a13917a007f2ef77f1eb94a",
+        "config/product_proof/m02_aligned_history_d074/admission.json SHA256 3487dd8714d7a80177c5bf4ffdfe89ca822805b7088872bde9e5d582e74b03b3",
+        "config/product_proof/m02_aligned_history_d074/generations/0001.json SHA256 837f47a8850459ed3e6de43159c72906d82e81d048a23b3c968b38726e1be761",
+        "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D075_IMPLEMENTATION_BRIEF.md SHA256 24ec8f08faf1a61059cee69b8c675767345809ae6a0dd90ab852a2fc30977750",
+        "implementation/authority/T01_ALIGNED_HISTORY_D075_AUTHORITY_BINDING.yaml SHA256 50120c02327ed212e8821ac3795d4f64daa3e38d77ecd5c92c7b20f6a2ba8c3f",
+        "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/ALIGNED_HISTORY_D075_PROOF_CONTRACT.json SHA256 6bfc41f1415ff9c68776f0ae79c6b35ec19cb3e0a16dc2a0706970be57dc8d8f",
+        "tests/product/m02_completion_28_prospective/support/d075-history/test_profile.py SHA256 4fdeed336e1fa67db77c577755d14810bf576cdbf72d393993d0c98e1802a94c",
+        "config/product_proof/m02_aligned_history_d075/claim.json SHA256 19d2f6e7c31089158bb7aa6fa4fafb00fd0448e4e8db1f16bbd581315dbbaf13",
+        "config/product_proof/m02_aligned_history_d075/admission.json SHA256 2d355fa058ad406c9855199c163cb48d5298b9f405d8e5f18d547384754bde5f",
+        "config/product_proof/m02_aligned_history_d075/generations/0001.json SHA256 18171abfb47452e2600f5169fa80a26c70d2b4a4045b0c167070356a954330ca",
+        "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D076_IMPLEMENTATION_BRIEF.md SHA256 c2b30721c0f535d00bb09cb801461ddf875966a93049c47fe572856f43fde480",
+        "implementation/authority/T01_ALIGNED_HISTORY_D076_AUTHORITY_BINDING.yaml SHA256 6f1324ab9922a1cd8b9994da931ee8f946d7d8666a758f8554269d092d006a80",
+        "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D076_PROOF_CONTRACT.json SHA256 f18fa3573706bb48b28fd2f7ddb1e39a5ad51dd0ac76cb22e6b1db7c46b8aca5",
+        "tests/product/m02_completion_28_prospective/support/d076-history/test_profile.py SHA256 03afd668f2b0f85f276bf6df285b71cfc7ef181fd3e02d536d06c702aca6eecb",
+        "config/product_proof/m02_aligned_history_d076/claim.json SHA256 d6309aecacd15eb018b003b679b2c1c3964249c19f89ed7ffd0d21a1901832e8",
+        "config/product_proof/m02_aligned_history_d076/admission.json SHA256 b07d4c6be6d46c6766fd701e26bfbd9aaf3facd7e0c09e53c5e244be024b2f75",
+        "config/product_proof/m02_aligned_history_d076/generations/0001.json SHA256 011d0a9ad42926f85cbfb5e91e78ff83b9a8680d18a7c98a3198033f1ba01904",
+        "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D077_IMPLEMENTATION_BRIEF.md SHA256 88bdd385ff91432940f4d27a8cff2bce6af22a8c85b858f53ba2f674d3c30a3c",
+        "implementation/authority/T01_ALIGNED_HISTORY_D077_AUTHORITY_BINDING.yaml SHA256 7f1b9f882d815616aa8e2fe53d6069800c7524f375202bff4eea5a67bf91a735",
+        "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D077_PROOF_CONTRACT.json SHA256 49c27e77c80a22382715753a14e48063edf532ab30965e85d7c12eca72c5334a",
+        "tests/product/m02_completion_28_prospective/support/d077-history/test_profile.py SHA256 3b31555bc6261ee32ab16b1ccb474cd09d164b642d37b99309a97fca4e2b019e",
+        "config/product_proof/m02_aligned_history_d077/claim.json SHA256 96ed7bf333ede3ed7d038b542c36cede906d6a1f7873ee4595ed4944595594d5",
+        "config/product_proof/m02_aligned_history_d077/admission.json SHA256 aff0d35a203980ed17b0cf70774055846e2c81865c0b694b6dcbb00972e65b10",
+        "config/product_proof/m02_aligned_history_d077/generations/0001.json SHA256 caab1dcd3876c09052fbe308b8d4af63271e114a2b1b8940a276a9ce212f2d8d",
+        "Original inventory complete case D079-CONTROLLED-SUCCESS canonical JSON SHA256 34d051b8286bf1e661a4009925f04f7431fbfc7143d9c0d480d313025c2a5496",
+        "Original inventory complete case D079-CONTROLLED-REACHED_REFUSAL canonical JSON SHA256 eaa15b1f00aed22c9499a258b142df0408ff7a7a584a7b382f22b76806013fcc",
+        "Original inventory complete case D079-MISSING-MEMBER canonical JSON SHA256 41740cc9d60f398a0d1662455832899b5042bc2c7453491edd97c7b5d689cdd9",
+        "Original inventory complete case D079-DUPLICATE-MEMBER canonical JSON SHA256 d012eb1d13bfc6bda3990cb3972c96133dc161eb57853f7a51a0c72722b22f2d",
+        "Original inventory complete case D079-PARENT-NOT-KNOWN-AT-FIT-CUTOFF canonical JSON SHA256 0c58e54a4dc0335460c5724ee3be00906fb2e16243273bab1ccf05856de81689",
+        "Original inventory complete case D079-MIXED-SOURCE-CORPUS canonical JSON SHA256 7cd43201348673e71b755b475a8efe7bc8b6c26343c305b6c54476cfa569ada6"
+      ],
+      "dependency_substitutions": [
+        "None: actual seven public aligned-history owners, sealed sources for underlying signals, separate SQLite stores and ordinary read-only readers; no fabricated predecessor, SQL, injected reader or oracle input."
+      ],
+      "case_coverage": {
+        "lawful_positive": {
+          "cases": [
+            "D079-CONTROLLED-SUCCESS"
+          ]
+        },
+        "prohibited_false_positive": {
+          "cases": [
+            "D079-CONTROLLED-REACHED_REFUSAL",
+            "D079-MISSING-MEMBER",
+            "D079-DUPLICATE-MEMBER",
+            "D079-PARENT-NOT-KNOWN-AT-FIT-CUTOFF",
+            "D079-MIXED-SOURCE-CORPUS"
+          ]
+        },
+        "missing_mandatory_authority": {
+          "cases": [
+            "D079-CONTROLLED-REACHED_REFUSAL",
+            "D079-MISSING-MEMBER",
+            "D079-DUPLICATE-MEMBER",
+            "D079-PARENT-NOT-KNOWN-AT-FIT-CUTOFF",
+            "D079-MIXED-SOURCE-CORPUS"
+          ]
+        },
+        "lawful_optional_absence": {
+          "cases": [
+            "D079-CONTROLLED-SUCCESS: no direct raw source; full nested actual lineage retained."
+          ]
+        }
+      },
+      "expected_failure_signals": [
+        "D079-CONTROLLED-SUCCESS: JOINT_FIT_AND_DURABLE_REOPEN; exact independent joint vector/manifest, immutable first time, ordinary durable reopen without parent stores",
+        "D079-CONTROLLED-REACHED_REFUSAL: RANK; None after intended invariant; no target row in writer or ordinary reader, actual parents unchanged",
+        "D079-MISSING-MEMBER: PARENT_LOOKUP; None after intended invariant; no target row in writer or ordinary reader, actual parents unchanged",
+        "D079-DUPLICATE-MEMBER: SAMPLE_MEMBER_ID_UNIQUENESS; None after intended invariant; no target row in writer or ordinary reader, actual parents unchanged",
+        "D079-PARENT-NOT-KNOWN-AT-FIT-CUTOFF: PARENT_AVAILABILITY; None after intended invariant; no target row in writer or ordinary reader, actual parents unchanged",
+        "D079-MIXED-SOURCE-CORPUS: COMPLETE_ACTUAL_SOURCE_ROSTER; None after intended invariant; no target row in writer or ordinary reader, actual parents unchanged"
+      ],
+      "limitations": [
+        "Controlled synthetic exact joint fit only.",
+        "Exactly 6 cases, held pending separate independent authoring, implementation, registration and actual parent product acceptance; strict Tester qualification and release."
+      ],
+      "adjacent_nonclaims": [
+        "No D078, parent, legacy, G01 or other jurisdiction work.",
+        "No alteration/rerun of existing evidence; no source, registry, active proof or registration installation."
+      ],
+      "environment": "Separate designated strict Tester must independently qualify exact receiver, candidate, CPython 3.13.5, SQLite 3.54.1, dependencies, runner and pre-call guard before any release.",
+      "material_versions": [
+        "T01-L01A-ALIGNED-HISTORY/1",
+        "T01-L01A-JOINT-OLS-WITH-INTERCEPT-V1",
+        "T01-L01A-EXACT-FRACTION-GRAM-INF-V1",
+        "Exact own and actual parent briefs/bindings, R1 finite34, path-only successor and future separately reviewed immutable registration."
+      ],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/m02_completion_28_prospective/d079/test_signal.py"
+    }
+  ],
+  "required_support_files": [],
+  "optional_support_files": [],
+  "execution_policy": {
+    "skipped_tests": "FAIL",
+    "xfailed_tests": "FAIL",
+    "xpassed_tests": "FAIL",
+    "collection_failed": "FAIL",
+    "no_tests_collected": "FAIL",
+    "unexpected_governed_mutation": "FAIL"
+  }
+}
