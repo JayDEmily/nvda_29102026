@@ -8671,7 +8671,7 @@
         "L07a"
       ],
       "obligation": "Use actual R013/R001 and compatible exchange trading date D004 to compute whole calendar-day difference. Preserve contract/calendar/source identity. Refuse unsupported calendar/date coverage or negative live-contract DTE. This does not require converting a date into an invented instant.",
-      "status": "OWNER_POLICY_ADOPTED_FINITE_ADMITTED_EXECUTION_HELD_BINDING_REVIEW_PENDING",
+      "status": "D085_DOCUMENTARY_AUTHORING_ACCEPTED_SOURCE_IMPLEMENTATION_COMMISSIONED_EXECUTION_HELD",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G2_AFTER_L18"
@@ -8705,7 +8705,7 @@
         ],
         "execution_release": false,
         "product_status": "NOT_ATTEMPTED",
-        "first_unmet_invariant": "Independent admission of exact prepared inactive D085 brief/binding pending; actual D001/D003/D004 product acceptance mandatory before D085 release.",
+        "first_unmet_invariant": "Exact D085 inert authoring independently accepted documentary only; bounded source implementation and candidate-specific independent shared-surface applicability/invalidation review remain mandatory. Actual D001/D003/D004 product acceptance and candidate-specific sole Tester intake/runtime/precall are prerequisite to D085 execution; all holds persist.",
         "tester_designation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
         "tester_status": "CANDIDATE_SPECIFIC_INTAKE_REQUIRED",
         "scope": "Controlled synthetic only; no official/native certification or new product acceptance",
@@ -8874,6 +8874,29 @@
           "sha256": "0cf440a8a6e142ca751d140cd57193459762dddc04d38723283b3efaad2cf2c3",
           "disposition": "INDEPENDENT_DOCUMENTARY_AUTHORING_REVIEW_COMMISSIONED",
           "case_count": 7,
+          "execution_release": false,
+          "parent_product_acceptance": false,
+          "product_cases_executed": 0
+        },
+        "d085_independent_inert_authoring_verdict": {
+          "verdict": {
+            "commit": "f6c050faa34410a1a1ac941467df59e5b36048c6",
+            "tree": "b7f433cc4043ad50c83903e8a733289c7ab1c6e8",
+            "parent": "f581d479a4a9586069415fd3466635e0f33110ba",
+            "review_ref": "refs/heads/review/trial-cac-nvidia-d085-calendar-dte-authoring-20261129",
+            "path": "handoff/m02_completion_28_execution/L08/INDEPENDENT_D085_CALENDAR_DTE_INERT_AUTHORING_VERDICT_20261129.md",
+            "sha256": "a4fe38d87b973707c9c2d6903700a6c0748da698dca878ca3b8f8eba3d5db4fc",
+            "git_blob": "8cc785980a846a887a107bd83386ef91514fc044",
+            "bytes": 9693
+          },
+          "disposition": "ACCEPT_DOCUMENTARY_AUTHORING",
+          "candidate": "4fbf0c79dd6444a4c754c44b649057fa224a5458",
+          "candidate_tree": "b6f3eea9d1628c28edef4fc6d97d74276b7ee940",
+          "proof_id": "M02-C28-D085",
+          "case_count": 7,
+          "binding_sha256": "b28156683fd15f4a685ceac7ff66e0db0782d21319c242a4afd1b8fbb965ee21",
+          "inert_proof_sha256": "64f45a6641ef2e1c4e9b01692cfb122713533ebfb6053550c17bbe687d9b1245",
+          "contract_sha256": "c14869a57faf4e8ed047d60e6448c3b42665342c059ab8f6d945943bb2537213",
           "execution_release": false,
           "parent_product_acceptance": false,
           "product_cases_executed": 0
@@ -11408,9 +11431,9 @@
   "execution_status": "ready",
   "current_leaf": "L08",
   "next_assignment": {
-    "role": "Fresh distinct independent L08 D085 calendar DTE inert proof-authoring Reviewer",
-    "task": "Fetch exact commissioned trial HEAD; stop on mismatch. Follow AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and execution register. Execute only committed handoff/m02_completion_28_execution/L08/D085_CALENDAR_DTE_INERT_AUTHORING_REVIEW_COMMISSION_20261129.md SHA256 0cf440a8a6e142ca751d140cd57193459762dddc04d38723283b3efaad2cf2c3. Verify candidate 4fbf0c79dd6444a4c754c44b649057fa224a5458 tree b6f3eea9d1628c28edef4fc6d97d74276b7ee940, exact binding and seven inert proof functions/contract, actual D001/D003/D004 registered interfaces, exact cases and all holds. No source edit, physical proof installation, registration, product/proof imports, loader, collection, execution or release. Preserve all 64 holds/67 historical accepted, D078 legacy/registration, actual parent acceptance prerequisite and sole Tester. Continue eligible distinct-role succession once using owner-adopted CAC MVP.",
-    "selection_basis": "Exact D085 binding installed and seven inert proofs authored; fresh independent documentary authoring review required before separately commissioned source implementation."
+    "role": "Fresh distinct L08 D085 calendar DTE source implementation Worker",
+    "task": "Fetch exact commissioned trial HEAD; stop on mismatch. Execute only committed handoff/m02_completion_28_execution/L08/D085_CALENDAR_DTE_SOURCE_IMPLEMENTATION_COMMISSION_20261129.md SHA256 293e8690454a3d7f259c2882f60cf41a4b7d5479cc5db33fcde12a2181dd677a. Implement exact bounded D085 source and fixed dormant G01 route; prepare exact source candidate for independent source and candidate-specific shared-surface applicability/invalidation review. No proof edit or physical installation, registration, imports, loader, collection, execution or release. Preserve all holds, actual parent product acceptance prerequisite and sole Tester. Continue eligible distinct-role succession once via owner-adopted CAC MVP.",
+    "selection_basis": "Exact D085 binding and seven inert proof functions/contract independently accepted documentary only; source implementation is next, distinct independent source/applicability review mandatory; no parent product acceptance or execution release."
   },
   "trial_forward_succession_authority": {
     "scope": "trial/cac-nvidia-continuation-20261127 only",
