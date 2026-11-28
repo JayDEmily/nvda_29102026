@@ -1,0 +1,107 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_l01a_d076_history",
+  "semantic_brief_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D076_IMPLEMENTATION_BRIEF.md",
+  "target": {
+    "category": "M",
+    "responsibility_name": "neutral_market_measurement_truth",
+    "package": "nvda_desk.market_measurement_truth",
+    "public_seam": "nvda_desk.market_measurement_truth.api",
+    "intent": "modify",
+    "existing_object_id": "M02"
+  },
+  "proof_axis": "product",
+  "product_tier_treatment": "NOT_CLASSIFIED",
+  "architecture_proof_axis": "architecture_kernel",
+  "required_proof_ids": [
+    "SUP-D076-HISTORY"
+  ],
+  "families": [
+    {
+      "id": "m02_l01a_aligned_history_d076",
+      "path": "tests/product/m02_completion_28_prospective/support/d076-history/test_profile.py",
+      "proof_obligation_ids": [
+        "SUP-D076-HISTORY"
+      ],
+      "required_test_names": [
+        "test_d076_history_success",
+        "test_d076_wrong_parent_frame"
+      ],
+      "boundary": "Exact 2 owner-finite-admitted controlled relative history cases, execution held. No additional case or parent acceptance.",
+      "proof_levels": [
+        "CONTRACT",
+        "INTEGRATION",
+        "STATE",
+        "REPLAY"
+      ],
+      "authoritative_inputs": [
+        "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_SOURCE_POLICY_PROPOSED_20261126.json SHA256 9ba56098c273007980c893db39931ac86e7a3185bbb665f8c3f1e14f99b72af1",
+        "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_FINITE_SPECIMENS_PROPOSED_20261126.json SHA256 bb03481de75e1820c7aff61777a4a3aa4f676440ec03e373a05c032a0417c76d",
+        "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_JOINT_FIT_FINITE_CASES_PROPOSED_20261126.json SHA256 3be150f2998b4187a81720b424c848099edeba7a9f638ae90d9aae95d4c5d5c1",
+        "handoff/m02_completion_28_execution/OWNER_CONSOLIDATED_64_CONDITIONAL_EXECUTION_GRANT_20261127.json SHA256 6a71f52981fc01da42f9c27726547d0d1ddd69851561479a007aeb30ebd95a41",
+        "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/PATH_ONLY_SUCCESSOR_AUTHORITY.json SHA256 11d90adf234d5195d3bd31a6b42df9b046c4ad53690cb279ef071d52b3049aa7",
+        "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D072_IMPLEMENTATION_BRIEF.md SHA256 4f8214d1ca11eaf0769206f3f322c799f44883bd266e63748e937dea5602b739",
+        "implementation/authority/T01_ALIGNED_HISTORY_D072_AUTHORITY_BINDING.yaml SHA256 637ff9b90b916ee69ee956db28e191ef86be3764ce2004b5fc24e371fa5869df",
+        "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D071_IMPLEMENTATION_BRIEF.md SHA256 65f2d0f9135f291773ab6081ec76892a967315df3ecb9c1760a4e2687a296e5e",
+        "implementation/authority/T01_ALIGNED_HISTORY_D071_AUTHORITY_BINDING.yaml SHA256 30cbb5fe2f8a1b720bc58b55b05f3c88b736401f03d03199404444b60330dc03",
+        "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D076_IMPLEMENTATION_BRIEF.md SHA256 c2b30721c0f535d00bb09cb801461ddf875966a93049c47fe572856f43fde480",
+        "implementation/authority/T01_ALIGNED_HISTORY_D076_AUTHORITY_BINDING.yaml SHA256 6f1324ab9922a1cd8b9994da931ee8f946d7d8666a758f8554269d092d006a80"
+      ],
+      "dependency_substitutions": [
+        "None: actual separate sealed public parent sources, owners, fresh SQLite stores and ordinary read-only readers; no fabricated predecessor, SQL or arbitrary reader."
+      ],
+      "case_coverage": {
+        "lawful_positive": {
+          "cases": [
+            "SUP-D076-HISTORY-SUCCESS"
+          ]
+        },
+        "prohibited_false_positive": {
+          "cases": [
+            "SUP-D076-HISTORY-REACHED_REFUSAL"
+          ]
+        },
+        "missing_mandatory_authority": {
+          "cases": [
+            "SUP-D076-HISTORY-REACHED_REFUSAL"
+          ]
+        },
+        "lawful_optional_absence": {
+          "cases": [
+            "SUP-D076-HISTORY-SUCCESS: no direct raw source; full actual nested lineage and preserved lawful optional original absence."
+          ]
+        }
+      },
+      "expected_failure_signals": [
+        "RELATIVE_PARENT_FRAME_ALIGNMENT: S3 returns None after intended stage, no S3 row in writer/ordinary SQLite reader. All other seven valid target rows retain exact A values, full actual typed lineage and first timestamp. Source and all actual predecessor rows retained. No extra product negative calls.",
+        "Success: exact reduced rational output, complete nested actual parents with original/projection content and first timestamps, eight distinct rows and ordinary read-only reopen, bounded history and same-request immutable replay."
+      ],
+      "limitations": [
+        "Controlled synthetic relative profile only.",
+        "Exactly 2 cases; held pending independent authoring/implementation/registration review, actual parent product acceptance, exact runtime qualification and sole strict Tester release."
+      ],
+      "adjacent_nonclaims": [
+        "No fit/residual or other jurisdiction work.",
+        "No alteration or rerun of existing evidence; no source or registry installation."
+      ],
+      "environment": "Separate designated strict Tester must independently qualify exact receiver, candidate, CPython 3.13.5, SQLite 3.54.1, dependencies, runner and pre-call guard before any release.",
+      "material_versions": [
+        "T01-L01A-ALIGNED-HISTORY/1",
+        "T01-D076-ALIGNED-HISTORY-DEF-V1",
+        "Exact own and actual parent briefs/bindings, R1 finite34, path-only successor, future separately reviewed immutable registration."
+      ],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/m02_completion_28_prospective/support/d076-history/test_profile.py"
+    }
+  ],
+  "required_support_files": [],
+  "optional_support_files": [],
+  "execution_policy": {
+    "skipped_tests": "FAIL",
+    "xfailed_tests": "FAIL",
+    "xpassed_tests": "FAIL",
+    "collection_failed": "FAIL",
+    "no_tests_collected": "FAIL",
+    "unexpected_governed_mutation": "FAIL"
+  }
+}
