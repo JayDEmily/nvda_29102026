@@ -1554,7 +1554,7 @@
         "L00"
       ],
       "obligation": "Bind the exact option expiry instant and timezone/session convention separately from its date, with compatible true-instant D001. Never invent midnight or event time from date-only/receipt-only values. Bind exact year-fraction representation. Independently prove a necessary option-domain D001 extension; retain its original profile and zero new identity contribution.",
-      "status": "IMPLEMENTED_UNTESTED_REGISTRATION_INSTALLATION_INDEPENDENTLY_ACCEPTED_EXECUTION_HELD",
+      "status": "IMPLEMENTED_UNTESTED_DOWNSTREAM_INTERFACE_RECOVERY_IMPLEMENTATION_REVIEW_REQUIRED_EXECUTION_HELD",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G2_AFTER_L18"
@@ -1588,7 +1588,7 @@
         ],
         "execution_release": false,
         "product_status": "NOT_ATTEMPTED",
-        "first_unmet_invariant": "Independent documentary recovery-authoring acceptance obtained; bounded two-path source implementation required, then distinct candidate-specific implementation and registration applicability clearance before downstream provisional use or sole Tester intake/release. Existing four cases, historical narrow verdicts and all holds preserved.",
+        "first_unmet_invariant": "Bounded two-path class-level recovery implemented; fresh distinct candidate-specific independent implementation review required, then distinct registration applicability clearance before downstream provisional use or sole Tester intake/release. Historical narrow verdicts, original four cases and all holds preserved.",
         "tester_designation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
         "tester_status": "CANDIDATE_SPECIFIC_INTAKE_REQUIRED",
         "scope": "Controlled synthetic only; no official/native certification or new product acceptance",
@@ -1965,6 +1965,32 @@
           ],
           "scope": "Exact class-level inert recovery authoring only; 12 lawful parent specimen/frame pairs and three original negatives. No additional proof cases, registration clearance, release or product acceptance.",
           "execution_release": false
+        },
+        "downstream_interface_recovery_implementation_candidate": {
+          "jurisdiction": "D001",
+          "proof_id": "SUP-D001-OPTION",
+          "case_count": 4,
+          "state": "IMPLEMENTED_UNTESTED",
+          "input_handoff": "2a9a6a853f3bc0b39871b885d1bfb7615778ad3b",
+          "candidate": "7148bad12f54824b018b359ed2b49803b4864e21",
+          "candidate_tree": "9faf166c3cfc6df39ede3eacbbc2c942959db95e",
+          "recursive_tree_listing_sha256": "e40dac02c6ecfc4dd083cf7edd5290f00e7cdd4c59703896a3b550f5492a5ab0",
+          "tracked_entries": 4567,
+          "authoring_verdict": "deb00a46cf1b5d8121cbcdaca956006c6ab63177",
+          "source_sha256": {
+            "src/nvda_desk/market_measurement_truth/_option_time_source.py": "a7629c952a358fe7b329ca50fd498a673d1262ad7882e95b4b9cf2b049ab19d5",
+            "src/nvda_desk/market_measurement_truth/_option_time.py": "cc40bd49f5d830d407c037d7565bb878b0deaf00c78e1b458173e43ac016bc82"
+          },
+          "report": "handoff/m02_completion_28_execution/L07a/D001_DOWNSTREAM_INTERFACE_RECOVERY_IMPLEMENTATION_20261128.md",
+          "report_sha256": "996c5361ef201ecdc161350378a50c8cf1cd64616537ce21c90613b326999caf",
+          "report_bytes": 8098,
+          "lawful_parent_combinations": 12,
+          "original_d001_negatives": 3,
+          "unchanged_physical_cases": 4,
+          "execution_release": false,
+          "product_cases_executed": 0,
+          "registration": "CANDIDATE_SPECIFIC_APPLICABILITY_REVIEW_REQUIRED_AFTER_IMPLEMENTATION_REVIEW",
+          "scope": "Exact two-path source-only recovery; static verification only. No child provisional use, release or product acceptance."
         }
       }
     },
@@ -4094,9 +4120,9 @@
   "execution_status": "ready",
   "current_leaf": "L07b",
   "next_assignment": {
-    "role": "Fresh distinct D001 class-level downstream-interface recovery implementation Worker",
-    "task": "Fetch exact trial HEAD; stop on mismatch. Follow AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and execution register. Read exact independently accepted recovery authoring report handoff/m02_completion_28_execution/L07a/INDEPENDENT_D001_INTERFACE_RECOVERY_AUTHORING_VERDICT_20261128.md at deb00a46cf1b5d8121cbcdaca956006c6ab63177 (refs/heads/review/trial-cac-nvidia-d001-interface-recovery-authoring-20261128, SHA256 9dc406956edf7e0c0f77a04772c6c19855d707d1a495201815f4f76e9d57f4b1). Execute only the accepted class-level bounded recovery implementation in src/nvda_desk/market_measurement_truth/_option_time_source.py and src/nvda_desk/market_measurement_truth/_option_time.py, with exact 15 specimen names/six frame clocks, actual complete roster and canonical selected pair validation, 12 lawful parent combinations and three original D001 negatives. Preserve all other source, API/codec, proofs, brief/binding/contract/claim/generation/pointer and ledger, held allocation and existing narrow verdicts. Static checks only; no product import, collection or execution, child binding or implementation, registration mutation, case release, G01 R2 adoption, D145 reactivation or sole Tester change. Publish exact bounded source candidate and evidence; commission fresh distinct independent implementation reviewer, then separately require registration applicability review before any downstream provisional use or Tester intake/release. Continue eligible distinct-role succession once using owner-adopted CAC MVP.",
-    "selection_basis": "Exact independent documentary recovery-authoring acceptance at deb00a46cf1b5d8121cbcdaca956006c6ab63177; two permitted source paths within adopted finite23/64 authority. No new policy or physical case; all execution and child holds preserved."
+    "role": "Fresh distinct independent D001 class-level downstream-interface recovery implementation reviewer",
+    "task": "Fetch exact trial HEAD; stop on mismatch. Follow AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and execution register. Independently review exact source-only candidate 7148bad12f54824b018b359ed2b49803b4864e21, tree 9faf166c3cfc6df39ede3eacbbc2c942959db95e, parent 2a9a6a853f3bc0b39871b885d1bfb7615778ad3b, against accepted recovery authoring verdict deb00a46cf1b5d8121cbcdaca956006c6ab63177; read Worker report handoff/m02_completion_28_execution/L07a/D001_DOWNSTREAM_INTERFACE_RECOVERY_IMPLEMENTATION_20261128.md SHA256 996c5361ef201ecdc161350378a50c8cf1cd64616537ce21c90613b326999caf. Verify exact two-path delta, full closed 15-roster/six-frame domain, all 12 lawful actual-parent combinations and 3 original negatives, actual complete roster and selected pair co-occurrence, producer and ordinary readback, first calculation/replay, unchanged four proof nodes/registration/ledger, prior narrow verdicts and finite authority. Static checks only, no product import, collection or execution. Publish independent exact candidate-specific implementation verdict. If accepted, commission distinct registration applicability review before any downstream provisional use or sole Tester intake/release; if returned, follow bounded class-level repair law. Preserve all engineering holds, D095 status, G01 R2 unadopted, D145 PAUSED, sole Tester; no child binding/implementation, registration mutation or case release. Continue eligible distinct-role succession using owner-adopted CAC MVP.",
+    "selection_basis": "Exact accepted authoring and two-path source candidate; independent implementation clearance precedes separate registration applicability and candidate-specific Tester intake. Four unchanged held cases."
   },
   "trial_forward_succession_authority": {
     "scope": "trial/cac-nvidia-continuation-20261127 only",
