@@ -47,11 +47,12 @@ def _request_check(request: f.OptionTimeRequestV1) -> None:
     if type(request) is not f.OptionTimeRequestV1:
         raise TypeError("exact D001 option-time request required")
     f._Validated.__post_init__(request)
-    clocks = source.policy()["frames"]["MAIN"]["calculation_clocks"]["D001"]
+    if request.frame_id not in ("EARLIER", "MAIN", "CROSS_CLOSE", "SAME_DAY", "AT_EXPIRY", "AFTER"):
+        raise ValueError("unadmitted D001 option-time frame/clock/profile")
+    clocks = source.policy()["frames"][request.frame_id]["calculation_clocks"]["D001"]
     if (
         request.derived_signal_id != SIGNAL
         or request.subject_instrument != source.SUBJECT
-        or request.frame_id != "MAIN"
         or request.source_profile_ref != PROFILE
         or request.calculation_definition_version != DEFINITION.calculation_definition_version
         or request.predecessor_occurrence_ids != ()
