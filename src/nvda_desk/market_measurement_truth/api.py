@@ -3277,13 +3277,19 @@ class AlignedHistoryOccurrenceV1(_Validated):
     original_observations: tuple[raw_api.RawObservationOccurrenceV1, ...]
     selected_projections: tuple[raw_api.ProjectedRawValueV1, ...]
     predecessors: tuple[AlignedHistoryOccurrenceV1, ...]
-    result: Decimal
+    result: Decimal | ExactRatioV1
     units: str
     result_shape: str
     window_seconds: int
     effective_as_of_utc: datetime
     knowledge_cutoff_utc: datetime
     calculated_at_utc: datetime
+
+    def __post_init__(self) -> None:
+        _Validated.__post_init__(self)
+        expected = ExactRatioV1 if self.derived_signal_id == "D076" else Decimal
+        if type(self.result) is not expected:
+            raise TypeError("exact jurisdiction-specific history result required")
 
 
 class AlignedHistoryReadsV1(Protocol):
@@ -3316,7 +3322,7 @@ def create_aligned_history_source(
 
 
 def create_aligned_history_owner(
-    *, admission: OwnerAdmissionV1, source: AlignedHistorySourceV1,
+    *, admission: OwnerAdmissionV1, source: AlignedHistorySourceV1 | None,
     predecessor_read_storages: tuple[SQLiteReadStorageV1, ...],
     storage: SQLiteStorageV1, utc_now: Callable[[], datetime],
 ) -> AlignedHistoryOwnerV1:

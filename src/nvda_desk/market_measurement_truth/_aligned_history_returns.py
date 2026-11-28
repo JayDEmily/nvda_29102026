@@ -1,4 +1,4 @@
-"""Five distinct underlying aligned-history jurisdictions; no relative or fit route."""
+"""Underlying aligned histories and the bounded D076 relative route."""
 
 from __future__ import annotations
 
@@ -6,6 +6,7 @@ from collections.abc import Callable
 from dataclasses import replace
 from datetime import datetime
 from decimal import Decimal
+from fractions import Fraction
 from typing import cast
 
 from . import _aligned_history_codec as codec
@@ -156,11 +157,13 @@ class _Owner:
 
 
 def build_owner(
-    admission: f.OwnerAdmissionV1, sealed: f.AlignedHistorySourceV1,
+    admission: f.OwnerAdmissionV1, sealed: f.AlignedHistorySourceV1 | None,
     predecessor_read_storages: tuple[f.SQLiteReadStorageV1, ...],
     storage: f.SQLiteStorageV1, utc_now: Callable[[], datetime],
 ) -> f.AlignedHistoryOwnerV1:
     authority = source.Authority(admission)
+    if authority.config.signal == "D076":
+        return _build_relative_owner(authority, sealed, predecessor_read_storages, storage, utc_now)
     if (
         type(sealed) is not f.AlignedHistorySourceV1 or not sealed._matches_admission(admission)
         or type(predecessor_read_storages) is not tuple or predecessor_read_storages
@@ -177,4 +180,173 @@ def build_reader(
     authority = source.Authority(admission)
     if type(storage) is not f.SQLiteReadStorageV1:
         raise TypeError("exact read-only SQLite storage required")
+    if authority.config.signal == "D076":
+        return _Reads(authority, _relative_store(authority, _parent_authorities(), storage))
     return _Reads(authority, _store(authority, storage))
+
+
+def _parent_admissions() -> tuple[f.OwnerAdmissionV1, ...]:
+    return tuple(f.OwnerAdmissionV1("M02", source.BRIEFS[signal]) for signal in source.D076_PARENTS)
+
+
+def _parent_authorities() -> tuple[source.Authority, ...]:
+    return tuple(source.Authority(admission) for admission in _parent_admissions())
+
+
+def _relative_frame(
+    authority: source.Authority, request: f.AlignedHistoryRequestV1, now: datetime,
+) -> source.Frame:
+    if type(request) is not f.AlignedHistoryRequestV1:
+        raise TypeError("exact aligned history request required")
+    f._Validated.__post_init__(request)
+    f._utc(now)
+    cfg = authority.config
+    frame = authority.frames.get(request.slot)
+    ids = request.predecessor_occurrence_ids
+    if frame is None or len(ids) != len(source.D076_PARENTS) or len(set(ids)) != len(ids):
+        raise ValueError("D076 exact slot and distinct ordered parent IDs required")
+    expected = f.AlignedHistoryRequestV1(
+        cfg.signal, cfg.subject, frame.slot, frame.as_of, frame.cutoff,
+        cfg.definition.calculation_definition_version, cfg.profile,
+        f.VersionRefV1(cfg.parameter.context_id, cfg.parameter.version),
+        f.VersionRefV1(cfg.selection.context_id, cfg.selection.version),
+        (frame.context.ref,), ids,
+    )
+    if request != expected or now < frame.cutoff:
+        raise ValueError("unadmitted relative request, metadata or calculation clock")
+    return frame
+
+
+def _relative_produce(
+    authority: source.Authority, parent_authorities: tuple[source.Authority, ...],
+    request: f.AlignedHistoryRequestV1, parents: tuple[f.AlignedHistoryOccurrenceV1, ...],
+    now: datetime,
+) -> f.AlignedHistoryOccurrenceV1:
+    frame = _relative_frame(authority, request, now)
+    cfg = authority.config
+    if (
+        tuple(a.config.signal for a in parent_authorities) != source.D076_PARENTS
+        or len(parents) != len(parent_authorities)
+        or any(type(parent) is not f.AlignedHistoryOccurrenceV1 for parent in parents)
+        or tuple(p.derived_occurrence_id for p in parents) != request.predecessor_occurrence_ids
+    ):
+        raise ValueError("D076 exact ordered parent identities required")
+    keys: list[source.Key] = []
+    actual: list[tuple[source.Key, source.raw.RawObservationOccurrenceV1]] = []
+    values: list[Fraction] = []
+    for parent, parent_authority in zip(parents, parent_authorities, strict=True):
+        # The same underlying producer validates every retained typed original,
+        # projection, profile, frame, calculation, metadata and complete identity.
+        f._Validated.__post_init__(parent)
+        expected = _produce(
+            parent_authority, parent.request,
+            tuple(zip(parent.original_observations, parent.selected_projections, strict=True)),
+            parent.calculated_at_utc,
+        )
+        if codec.encode(parent) != codec.encode(expected):
+            raise ValueError("relative parent semantic, identity or metadata mismatch")
+        if (
+            parent.request.slot != frame.slot or parent.effective_as_of_utc != frame.as_of
+            or parent.knowledge_cutoff_utc != frame.cutoff
+            or parent.window_context != frame.context or parent.window_seconds != frame.seconds
+        ):
+            raise ValueError("relative parent frame alignment mismatch")
+        if parent.knowledge_cutoff_utc > now or parent.calculated_at_utc > now:
+            raise ValueError("relative parent unavailable at decision ceiling")
+        if type(parent.result) is not Decimal:
+            raise ValueError("exact canonical Decimal parent return required")
+        values.append(Fraction(parent.result))
+        for role, original in zip(source.ROLES, parent.original_observations, strict=True):
+            key = (frame.slot, parent_authority.config.subject, role)
+            keys.append(key)
+            actual.append((key, original))
+    if len({item[1].observation_occurrence_id for item in actual}) != len(actual):
+        raise ValueError("distinct selected originals required across relative roles")
+    # One whole-union predicate after complete actual parent validation, in both
+    # live production and ordinary durable read-only reconstruction.
+    authority.check_corpus(tuple(keys), tuple(actual))
+    ratio = values[0] - values[1]
+    value = f.AlignedHistoryOccurrenceV1(
+        "M02", NAMESPACE, cfg.brief, cfg.signal, "pending", request, cfg.definition,
+        source.POLICY_SHA, cfg.profile, cfg.parameter, cfg.selection, frame.context,
+        (), (), (), (), parents, f.ExactRatioV1(ratio.numerator, ratio.denominator),
+        cfg.definition.units, cfg.definition.result_shape, frame.seconds, frame.as_of,
+        frame.cutoff, now,
+    )
+    return replace(value, derived_occurrence_id=codec.identity(value))
+
+
+def _relative_store(
+    authority: source.Authority, parent_authorities: tuple[source.Authority, ...],
+    storage: f.SQLiteStorageV1 | f.SQLiteReadStorageV1,
+) -> RecordState:
+    def validate(value: f.AlignedHistoryOccurrenceV1) -> None:
+        if type(value) is not f.AlignedHistoryOccurrenceV1:
+            raise TypeError("exact relative history occurrence required")
+        f._Validated.__post_init__(value)
+        expected = _relative_produce(
+            authority, parent_authorities, value.request, value.predecessors, value.calculated_at_utc,
+        )
+        if codec.encode(value) != codec.encode(expected):
+            raise ValueError("relative history semantic, metadata or identity mismatch")
+
+    return RecordState(storage, codec.decode, validate, encode=codec.encode)
+
+
+class _RelativeOwner:
+    def __init__(
+        self, authority: source.Authority, parent_authorities: tuple[source.Authority, ...],
+        readers: tuple[f.AlignedHistoryReadsV1, ...], state: RecordState,
+        utc_now: Callable[[], datetime],
+    ) -> None:
+        self._authority, self._parent_authorities = authority, parent_authorities
+        self._readers, self._state, self._utc_now = readers, state, utc_now
+        self.reads = _Reads(authority, state)
+
+    def materialise(
+        self, request: f.AlignedHistoryRequestV1,
+    ) -> f.AlignedHistoryOccurrenceV1 | None:
+        if type(request) is not f.AlignedHistoryRequestV1:
+            raise TypeError("exact aligned history request required")
+        now = self._utc_now()
+        f._utc(now)
+        try:
+            _relative_frame(self._authority, request, now)
+            parents = []
+            for reader, identity in zip(self._readers, request.predecessor_occurrence_ids, strict=True):
+                parent = reader.get_derived_occurrence(identity)
+                if type(parent) is not f.AlignedHistoryOccurrenceV1:
+                    raise ValueError("actual relative parent not found")
+                parents.append(parent)
+            value = _relative_produce(
+                self._authority, self._parent_authorities, request, tuple(parents), now,
+            )
+        except (TypeError, ValueError, ArithmeticError):
+            return None
+        # Persistence failures (including from actual parent reads) are technical.
+        return cast(f.AlignedHistoryOccurrenceV1, self._state.append(value))
+
+
+def _build_relative_owner(
+    authority: source.Authority, sealed: f.AlignedHistorySourceV1 | None,
+    predecessor_read_storages: tuple[f.SQLiteReadStorageV1, ...],
+    storage: f.SQLiteStorageV1, utc_now: Callable[[], datetime],
+) -> f.AlignedHistoryOwnerV1:
+    if (
+        sealed is not None or type(predecessor_read_storages) is not tuple
+        or len(predecessor_read_storages) != len(source.D076_PARENTS)
+        or any(type(s) is not f.SQLiteReadStorageV1 for s in predecessor_read_storages)
+        or len({s.database_path for s in predecessor_read_storages}) != len(source.D076_PARENTS)
+        or type(storage) is not f.SQLiteStorageV1 or storage.create is not True
+        or not callable(utc_now)
+    ):
+        raise ValueError("D076 requires ordered concrete parent reads and fresh own SQLite storage")
+    readers = tuple(
+        f.create_aligned_history_reader(admission=admission, storage=parent_storage)
+        for admission, parent_storage in zip(_parent_admissions(), predecessor_read_storages, strict=True)
+    )
+    parent_authorities = _parent_authorities()
+    return _RelativeOwner(
+        authority, parent_authorities, readers,
+        _relative_store(authority, parent_authorities, storage), utc_now,
+    )

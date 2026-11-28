@@ -1046,7 +1046,7 @@ def _scalar_straddle_extensions(
 def _aligned_history_extensions(
     root: Path,
 ) -> tuple[tuple[dict[str, Any], dict[str, Any], str], ...]:
-    """Five exact reviewed underlying-history claim routes, dormant without descriptors."""
+    """Exact aligned-history claim routes, dormant without own descriptors."""
     leaf = "handoff/m02_completion_28_execution/L01a/"
     # Separate, nonfungible own-brief, binding, contract and descriptor pins.
     exact = (
@@ -1084,6 +1084,13 @@ def _aligned_history_extensions(
             '50120c02327ed212e8821ac3795d4f64daa3e38d77ecd5c92c7b20f6a2ba8c3f',
             '6bfc41f1415ff9c68776f0ae79c6b35ec19cb3e0a16dc2a0706970be57dc8d8f',
             '19d2f6e7c31089158bb7aa6fa4fafb00fd0448e4e8db1f16bbd581315dbbaf13',
+        ),
+        (
+            'D076',
+            'c2b30721c0f535d00bb09cb801461ddf875966a93049c47fe572856f43fde480',
+            '6f1324ab9922a1cd8b9994da931ee8f946d7d8666a758f8554269d092d006a80',
+            'f18fa3573706bb48b28fd2f7ddb1e39a5ad51dd0ac76cb22e6b1db7c46b8aca5',
+            'd6309aecacd15eb018b003b679b2c1c3964249c19f89ed7ffd0d21a1901832e8',
         ),
     )
     present = tuple(
@@ -1146,6 +1153,7 @@ def _aligned_history_extensions(
         )
         original_contract_path = leaf + f"ALIGNED_HISTORY_{jurisdiction}_PROOF_CONTRACT.json"
         contract_path = (
+            original_contract_path if jurisdiction == "D076" else
             leaf + "G01_PARTITION_REMAP_20261128/"
             + f"ALIGNED_HISTORY_{jurisdiction}_PROOF_CONTRACT.json"
         )
@@ -1213,7 +1221,9 @@ def _aligned_history_extensions(
             or remap["new_root"] != physical_root or remap["new_family_path"] != family_path
             or remap["new_ordered_nodes"] != [family_path + "::" + name for name in names]
             or remap["exact_case_count"] != 2 or remap["exact_nonfungible_ceiling"] != 2
-            or remap["scope"] != "INACTIVE_FIRST_STAGE_ARTEFACTS"
+            or remap["scope"] != (
+                "MAPPING_AUTHORITY_ONLY" if jurisdiction == "D076" else "INACTIVE_FIRST_STAGE_ARTEFACTS"
+            )
             or remap["execution_release"] is not False
         ):
             raise ValueError("aligned history path-only successor authority mismatch")

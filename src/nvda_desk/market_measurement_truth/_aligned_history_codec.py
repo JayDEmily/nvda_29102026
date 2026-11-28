@@ -1,4 +1,4 @@
-"""Exact first-stage history envelope, separate from the unchanged legacy codec."""
+"""Exact aligned-history envelopes, separate from the unchanged legacy codec."""
 
 from __future__ import annotations
 
@@ -37,7 +37,15 @@ def _content(value: f.AlignedHistoryOccurrenceV1) -> dict[str, Any]:
     content["unit_conventions"] = tuple(
         _record(unit, f.UnitConventionVersionV1) for unit in value.unit_conventions
     )
-    if value.predecessors != ():
+    if value.derived_signal_id == "D076":
+        if (
+            tuple(parent.derived_signal_id for parent in value.predecessors) != ("D072", "D071")
+            or any(type(parent) is not f.AlignedHistoryOccurrenceV1 for parent in value.predecessors)
+        ):
+            raise ValueError("D076 exact ordered underlying envelopes required")
+        # Complete canonical parent envelopes, retaining their identities and first times.
+        content["predecessors"] = tuple(encode(parent) for parent in value.predecessors)
+    elif value.predecessors != ():
         raise ValueError("underlying history cannot retain derived parents")
     return content
 
@@ -58,6 +66,10 @@ def identity(value: f.AlignedHistoryOccurrenceV1) -> str:
 
 
 def decode(payload: bytes) -> f.AlignedHistoryOccurrenceV1:
+    return _decode(payload, allow_relative=True)
+
+
+def _decode(payload: bytes, *, allow_relative: bool) -> f.AlignedHistoryOccurrenceV1:
     envelope = native.decode(payload, dict)
     if (
         set(envelope) != {"record", "version", "content"}
@@ -70,8 +82,19 @@ def decode(payload: bytes) -> f.AlignedHistoryOccurrenceV1:
         type(content) is not dict
         or set(content) != {field.name for field in fields(f.AlignedHistoryOccurrenceV1)}
         or type(content["unit_conventions"]) is not tuple
-        or content["predecessors"] != ()
     ):
+        raise ValueError("invalid aligned history content")
+    if content["derived_signal_id"] == "D076":
+        parents = content["predecessors"]
+        if (
+            not allow_relative or type(parents) is not tuple or len(parents) != 2
+            or any(type(parent) is not bytes for parent in parents)
+        ):
+            raise ValueError("invalid relative history envelopes")
+        content["predecessors"] = tuple(
+            _decode(parent, allow_relative=False) for parent in parents
+        )
+    elif content["predecessors"] != ():
         raise ValueError("invalid underlying history content")
     content["request"] = _rebuild(content["request"], f.AlignedHistoryRequestV1)
     for name, cls in _METADATA.items():
