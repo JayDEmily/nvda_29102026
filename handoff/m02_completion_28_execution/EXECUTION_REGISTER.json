@@ -8776,6 +8776,39 @@
           "execution_release": false,
           "product_cases_executed": 0,
           "scope": "Documentary prerequisite and inactive candidate only. Actual D001/D003/D004 product acceptance and separate reviews required."
+        },
+        "independent_d085_inactive_binding_admission_verdict": {
+          "verdict": {
+            "path": "handoff/m02_completion_28_execution/L08/INDEPENDENT_D085_CALENDAR_DTE_INACTIVE_BINDING_ADMISSION_VERDICT_20261129.md",
+            "sha256": "d6d73b070d4c72a775eafb9d2da0cbff07d6c942277985a597f0a38e9efca40d",
+            "git_blob": "aea13c3336270cc70e91d339929dc1d08707059a",
+            "bytes": 15305,
+            "commit": "c5469873faf1a119c0225d2a4e18baa34f9c76ff",
+            "tree": "e314b2a770d75b52dd397405a48cd4a314692d51",
+            "parent": "9de71ebc8946d5eb3f4adf62189723aecec155a3",
+            "review_ref": "refs/heads/review/trial-cac-nvidia-d085-calendar-dte-binding-admission-20261129"
+          },
+          "disposition": "ACCEPT_EXACT_D085_INACTIVE_BINDING_AND_BRIEF_FOR_INSTALLATION_AND_INERT_AUTHORING",
+          "candidate": "5a2823d91a27df62b22a3b2925e395ea5cf7f88d",
+          "candidate_tree": "71339cffb5afee8e1e232b06e1106384725a05c0",
+          "proof_id": "M02-C28-D085",
+          "case_count": 7,
+          "brief_sha256": "d9d142c25c7d77dfa82c7181ec4ef0d0990216b77139d6a2811cd6a871e0a1a1",
+          "inactive_binding_sha256": "b28156683fd15f4a685ceac7ff66e0db0782d21319c242a4afd1b8fbb965ee21",
+          "parent_product_acceptance": false,
+          "execution_release": false,
+          "product_cases_executed": 0
+        },
+        "d085_binding_installation_authoring_commission": {
+          "path": "handoff/m02_completion_28_execution/L08/D085_CALENDAR_DTE_BINDING_INSTALLATION_AUTHORING_COMMISSION_20261129.md",
+          "sha256": "e66048c88545069be6366220679a8d4cb9215255c700df10b09026140c354379",
+          "git_blob": "f2b7905ba81fdfb4b1ed3188e11e77ceb307677e",
+          "bytes": 8781,
+          "disposition": "EXACT_BINDING_INSTALLATION_AND_INERT_PROOF_AUTHORING_COMMISSIONED",
+          "case_count": 7,
+          "execution_release": false,
+          "parent_product_acceptance": false,
+          "product_cases_executed": 0
         }
       }
     },
@@ -11307,9 +11340,9 @@
   "execution_status": "ready",
   "current_leaf": "L08",
   "next_assignment": {
-    "role": "Fresh distinct independent L08 D085 calendar DTE inactive binding-admission Reviewer",
-    "task": "Fetch exact commissioned trial HEAD; stop on mismatch. Follow AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and execution register. Execute only committed handoff/m02_completion_28_execution/L08/D085_CALENDAR_DTE_INACTIVE_BINDING_ADMISSION_REVIEW_COMMISSION_20261129.md SHA256 b0a7610ea211c828ec9dddf0935ac1d8488b57ebbbf035833faeb36243f72920. Independently verify exact candidate 5a2823d91a27df62b22a3b2925e395ea5cf7f88d, tree 71339cffb5afee8e1e232b06e1106384725a05c0, three inactive payloads, actual D004/D003/D001 lineage and exact seven D085 case mapping; documentary verdict only. Preserve all 64 holds/67 historical accepted, D078 legacy/registration, actual parent acceptance prerequisite and sole Tester. No source/proof edits, active installation, product/proof imports, loader, collection, execution or release. Continue eligible distinct-role succession once via owner-adopted CAC MVP.",
-    "selection_basis": "D085 documentary parent-interface inspection complete; exact inactive candidate requires independent binding admission before installation or authoring; actual parent acceptance remains mandatory."
+    "role": "Fresh distinct L08 D085 calendar DTE exact binding-installation and inert proof-authoring Worker",
+    "task": "Fetch exact commissioned trial HEAD; stop on mismatch. Follow AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and execution register. Execute only committed handoff/m02_completion_28_execution/L08/D085_CALENDAR_DTE_BINDING_INSTALLATION_AUTHORING_COMMISSION_20261129.md SHA256 e66048c88545069be6366220679a8d4cb9215255c700df10b09026140c354379; verify independent verdict c5469873faf1a119c0225d2a4e18baa34f9c76ff report SHA256 d6d73b070d4c72a775eafb9d2da0cbff07d6c942277985a597f0a38e9efca40d. Install only exact accepted D085 binding bytes and author exactly seven inert proof functions and exact contract. No source edits, physical proof installation, registration, imports, loader, collection, execution or release. Preserve all 64 holds/67 historical accepted, D078 legacy/registration, actual parent acceptance prerequisite and sole Tester. Continue eligible distinct-role succession once using owner-adopted CAC MVP.",
+    "selection_basis": "Exact D085 inactive binding and brief independently accepted; actual D001/D003/D004 parent product acceptance remains required before execution. Only separately bounded installation and inert authoring now eligible."
   },
   "trial_forward_succession_authority": {
     "scope": "trial/cac-nvidia-continuation-20261127 only",
