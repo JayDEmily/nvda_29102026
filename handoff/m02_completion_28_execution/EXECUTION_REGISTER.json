@@ -5635,7 +5635,7 @@
         "L02"
       ],
       "obligation": "Use actual compatible coefficient occurrences, common intercept and aligned current D075/D071/D076/D077. Subtract alpha and all three factor contributions. Independently calculate an informative nonzero residual. Refusal changes one coefficient fit lineage while retaining the other two; a coherent alternative complete fit is not invalid merely because its label differs.",
-      "status": "OWNER_POLICY_ADOPTED_FINITE_ADMITTED_EXECUTION_HELD_BINDING_INDEPENDENTLY_ACCEPTED_AUTHORING_PENDING",
+      "status": "OWNER_POLICY_ADOPTED_FINITE_ADMITTED_EXECUTION_HELD_BINDING_INSTALLED_INERT_PROOF_AUTHORED_PENDING_INDEPENDENT_REVIEW",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G1_AFTER_L06"
@@ -5669,7 +5669,7 @@
         ],
         "execution_release": false,
         "product_status": "NOT_ATTEMPTED",
-        "first_unmet_invariant": "Exact own inert binding/admission independently accepted; bounded exact binding installation and inert proof authoring pending. Separate authoring, source and registration review, actual parent product acceptance and sole Tester intake/release mandatory.",
+        "first_unmet_invariant": "Independent exact D078 binding installation and inert proof-authoring/typed interface documentary review, then distinct source implementation and applicability/invalidation/registration review. Actual independent parent product acceptance and sole Tester candidate-specific intake/release mandatory.",
         "tester_designation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
         "tester_status": "CANDIDATE_SPECIFIC_INTAKE_REQUIRED",
         "scope": "Controlled synthetic only; no official/native certification or new product acceptance",
@@ -5990,6 +5990,79 @@
           "bytes": 10574,
           "disposition": "EXACT_BINDING_INSTALLATION_AND_INERT_PROOF_AUTHORING_COMMISSIONED",
           "case_count": 5,
+          "execution_release": false,
+          "product_cases_executed": 0,
+          "parent_product_acceptance": false
+        },
+        "same_fit_binding_installation_inert_proof_authoring": {
+          "base": "e6746b1724b4416b0913ebf3913f4dd364408b5b",
+          "base_tree": "0c9147d7947061c64a7c3c4045e4d40804560c6c",
+          "worker_report": {
+            "path": "handoff/m02_completion_28_execution/L01a/D078_SAME_FIT_BINDING_INSTALLATION_AUTHORING_WORKER_REPORT_20261128.md",
+            "sha256": "77076352813eb5a2a6e9f69a27a5d98843e532c35a8aad0359b3b24c090c73f7",
+            "git_blob": "421041dea966e211feec201b05221d960700d876",
+            "bytes": 10340
+          },
+          "review_commission": {
+            "path": "handoff/m02_completion_28_execution/L01a/D078_SAME_FIT_INERT_PROOF_AUTHORING_REVIEW_COMMISSION_20261128.md",
+            "sha256": "95509e3eb853e541ea4fece63e06652c073431dd69b46b8f52cfea162dd7c720",
+            "git_blob": "7cc1ca30c60ebcb55761076d3d4284da22880912",
+            "bytes": 5808
+          },
+          "artefacts": {
+            "binding": {
+              "path": "implementation/authority/T01_ALIGNED_HISTORY_D078_AUTHORITY_BINDING.yaml",
+              "sha256": "d09915e073f9faf1f7c8a3b6371025ab3aee95d0cf25577420c8b934b136f194",
+              "git_blob": "068f7c7f704c7d7767b7465f7e45d85e29b8ca33",
+              "bytes": 345
+            },
+            "inert_source": {
+              "path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D078_TEST_SOURCE.py",
+              "sha256": "326a60f5bf4996b59afbf372e9267810b0186adebd55b7ad53e51afbe4737652",
+              "git_blob": "b46a54f5732ecb6fb866fbbc1bcfca5495118682",
+              "bytes": 61547
+            },
+            "inert_contract": {
+              "path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D078_PROOF_CONTRACT_CANDIDATE.json",
+              "sha256": "ff7ef0163117a719028a8d92d74cbfdcb838e7170d294a867a8000c242c334b7",
+              "git_blob": "55261bd5da84bca7065bd4044d36bc0be4353fbf",
+              "bytes": 25822
+            },
+            "interface": {
+              "path": "handoff/m02_completion_28_execution/L01a/D078_SAME_FIT_RESIDUAL_INTERFACE_PROPOSAL_20261128.md",
+              "sha256": "a398cf690f672c0e18bc196ac817eab92519101badf1ad3f5a40095f86a24f20",
+              "git_blob": "84399ae2eac1c320cedc14ecc029ea0d7da3bac2",
+              "bytes": 8716
+            },
+            "proof_id": "M02-C28-D078",
+            "ordered_case_ids": [
+              "D078-CONTROLLED-SUCCESS",
+              "D078-CONTROLLED-REACHED_REFUSAL",
+              "D078-CURRENT-ROW-MISALIGNMENT",
+              "D078-NONPRIOR-FIT",
+              "D078-COEFFICIENT-NOT-KNOWN-AT-RESIDUAL-CUTOFF"
+            ],
+            "ordered_nodes": [
+              "tests/product/m02_completion_28_prospective/d078/test_signal.py::test_d078_same_fit_residual",
+              "tests/product/m02_completion_28_prospective/d078/test_signal.py::test_d078_mixed_fit",
+              "tests/product/m02_completion_28_prospective/d078/test_signal.py::test_d078_wrong_current_row",
+              "tests/product/m02_completion_28_prospective/d078/test_signal.py::test_d078_nonprior_fit",
+              "tests/product/m02_completion_28_prospective/d078/test_signal.py::test_d078_coefficient_unavailable_at_cutoff"
+            ],
+            "case_object_sha256": {
+              "D078-CONTROLLED-SUCCESS": "b442c3215ea653bea9e3de82707478235390c7a11c8a122204273933a8409255",
+              "D078-CONTROLLED-REACHED_REFUSAL": "c0c2b4a5b0bca115e808c210bdbb58bf27085bdab61e9d112714a2945bf2f4a7",
+              "D078-CURRENT-ROW-MISALIGNMENT": "a3c118f8dda3ea0eef2c5a2ac727369a82efb665de19b3125a75fc0de7405650",
+              "D078-NONPRIOR-FIT": "dbf4c920d04de834f9f572503318f711f02c259086d98bc71e89c83b5e4476b9",
+              "D078-COEFFICIENT-NOT-KNOWN-AT-RESIDUAL-CUTOFF": "57c268e9d79e7ed8c0a7bc8f1decae1ab9768d48bf842499ae89f3e224b71dd4"
+            },
+            "future_family_path": "tests/product/m02_completion_28_prospective/d078/test_signal.py",
+            "future_contract_path": "handoff/m02_completion_28_execution/L01a/ALIGNED_HISTORY_D078_PROOF_CONTRACT.json",
+            "future_descriptor_directory": "config/product_proof/m02_aligned_history_d078",
+            "execution_release": false,
+            "product_cases_executed": 0,
+            "parent_product_acceptance": false
+          },
           "execution_release": false,
           "product_cases_executed": 0,
           "parent_product_acceptance": false
@@ -9741,9 +9814,9 @@
   "execution_status": "ready",
   "current_leaf": "L03",
   "next_assignment": {
-    "role": "Fresh distinct L03 D078 same-fit residual binding-installation and inert proof-authoring Worker",
-    "task": "Fetch exact received trial HEAD; stop on mismatch. Execute only committed handoff/m02_completion_28_execution/L01a/D078_SAME_FIT_BINDING_INSTALLATION_AUTHORING_COMMISSION_20261128.md SHA256 90c2c41ca954372bc100fc77705feafd20c455cc4cfcd62b6b80bbb5736b718a; verify independent verdict 28448514dde85650d61b39bb0d0cb2b18f6a3228 report SHA256 eff73d30d85d54724bcf67f4eb1a4505f4b2f9c589ec621e5b3c2c55fee0b0f4. Install only exact accepted own binding and author inert exact five proofs/contracts; no product source/G01 edits, active proof installation/registration, product/proof imports, collection, execution or release. Preserve three L02 and seven history registrations, D078 legacy, parent/legacy/G01, all holds and sole Tester. Continue eligible distinct-role succession once using owner-adopted CAC MVP.",
-    "selection_basis": "Exact independent D078 own inert binding/admission documentary ACCEPT; owner64 and actual independently cleared stable committed interfaces permit provisional binding installation and inert proof authoring, not parent product acceptance or execution release."
+    "role": "Fresh distinct independent L03 D078 same-fit residual inert proof-authoring Reviewer",
+    "task": "Fetch exact received trial HEAD; stop on mismatch. Execute only committed handoff/m02_completion_28_execution/L01a/D078_SAME_FIT_INERT_PROOF_AUTHORING_REVIEW_COMMISSION_20261128.md SHA256 95509e3eb853e541ea4fece63e06652c073431dd69b46b8f52cfea162dd7c720; verify Worker report SHA256 77076352813eb5a2a6e9f69a27a5d98843e532c35a8aad0359b3b24c090c73f7. Independently review exact installed binding, inert five proof nodes/contract and proposed typed interface; actual stable parent seams and exact A/B/C/late/current witness reachability. No source/proof/G01 edits, active installation/registration, product/proof imports, collection, execution or release. Preserve ten registrations, D078 legacy, parent/legacy/G01, all engineering holds and sole Tester. Continue eligible distinct-role succession once using owner-adopted CAC MVP.",
+    "selection_basis": "Exact accepted binding installed and five inert proof nodes/contract plus proposed interface authored; separate independent documentary review required before source implementation; no product acceptance."
   },
   "trial_forward_succession_authority": {
     "scope": "trial/cac-nvidia-continuation-20261127 only",
