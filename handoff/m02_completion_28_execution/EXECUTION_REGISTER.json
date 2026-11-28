@@ -2059,6 +2059,29 @@
           "report_path": "handoff/m02_completion_28_execution/L01a/D076_DOWNSTREAM_REGISTRATION_PREPARATION_REVIEW_COMMISSION_20261128.md",
           "report_sha256": "7868fb10a94a4754b9da0da883fe6843307053db3590438f0badea558baa7ec0",
           "validation": "STATIC_DESCRIPTOR_ROUTE_AND_ADMISSION_SCHEMA_VERIFIED_NO_ACTIVE_INSTALLATION_OR_LOADER_EXECUTION"
+        },
+        "downstream_d076_independent_registration_preparation_verdict": {
+          "jurisdiction": "D076",
+          "proof_id": "SUP-D076-HISTORY",
+          "case_count": 2,
+          "disposition": "ACCEPT_DOCUMENTARY_REGISTRATION_PREPARATION",
+          "reviewed_handoff": "268f31971ede29005cd51556d4cc0182c18eb657",
+          "candidate": "998cd8c6fb092f66977fe24fcdbfe843952f2e2b",
+          "candidate_tree": "7db39b0cb46778ca7dce11ff3052de2e6e31d28e",
+          "review_commit": "a415183e87582e6a761545b5046b8001da2499ba",
+          "review_tree": "21bac656ca00b87475845bd01021ce62188f0a96",
+          "review_ref": "refs/heads/review/trial-cac-nvidia-d076-registration-preparation-20261128",
+          "report_path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_D076_DOWNSTREAM_REGISTRATION_PREPARATION_VERDICT_20261128.md",
+          "report_git_blob": "fb1ec12abc03eef30e4af5ca7bb9081e1d5c9f32",
+          "report_sha256": "c72f1b7c8349a810b237b469d181027fc40d3f7cc6519e75186af13bb7d6e11b",
+          "report_bytes": 9403,
+          "generation": 1,
+          "static_documentary_validation": "EXACT_INERT_PAYLOADS_AND_TWO_ORDERED_NODES_VERIFIED_NO_INSTALLATION_OR_LOADER_EXECUTION",
+          "registration": "NOT_INSTALLED",
+          "parent_product_acceptance_established": false,
+          "execution_release": false,
+          "product_cases_executed": 0,
+          "scope": "Exact four inert registration payloads and two ordered nodes; separate byte-for-byte installation and independent installation review only. No product acceptance or release."
         }
       }
     },
@@ -5975,9 +5998,9 @@
   "execution_status": "ready",
   "current_leaf": "L01a",
   "next_assignment": {
-    "role": "Fresh distinct independent L01a D076 downstream registration preparation Reviewer",
-    "task": "Fetch exact trial HEAD; stop on mismatch. Follow AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and execution register. Execute only committed handoff/m02_completion_28_execution/L01a/D076_DOWNSTREAM_REGISTRATION_PREPARATION_REVIEW_COMMISSION_20261128.md SHA256 7868fb10a94a4754b9da0da883fe6843307053db3590438f0badea558baa7ec0; independently verify exact inert candidate 998cd8c6fb092f66977fe24fcdbfe843952f2e2b, tree 7db39b0cb46778ca7dce11ff3052de2e6e31d28e, four payloads, two ordered nodes, authority/review/parent pins and all 64 holds. No active installation, source/proof edits, product/proof imports, collection, execution, release, policy or ledger change. Preserve D077, actual D072/D071 product acceptance prerequisite and sole Tester intake/runtime/precall, D004/D085 held, D145 PAUSED, G01 R2 unadopted, main/original and sole Tester. Continue eligible distinct-role succession once using owner-adopted CAC MVP.",
-    "selection_basis": "D076 exact inert registration preparation complete; independent documentary preparation review only eligible; no installation or execution release."
+    "role": "Fresh distinct L01a D076 downstream registration installation Worker",
+    "task": "Fetch exact trial HEAD; stop on mismatch. Follow AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and execution register. Verify independent registration preparation verdict a415183e87582e6a761545b5046b8001da2499ba at refs/heads/review/trial-cac-nvidia-d076-registration-preparation-20261128, report handoff/m02_completion_28_execution/L01a/INDEPENDENT_D076_DOWNSTREAM_REGISTRATION_PREPARATION_VERDICT_20261128.md SHA256 c72f1b7c8349a810b237b469d181027fc40d3f7cc6519e75186af13bb7d6e11b, and exact inert candidate 998cd8c6fb092f66977fe24fcdbfe843952f2e2b, tree 7db39b0cb46778ca7dce11ff3052de2e6e31d28e. Install only four exact byte-for-byte payloads from downstream_d076_registration_preparation_candidate package to its future destinations: claim descriptor, physical proof source, immutable generation 0001 and admission pointer, two exact ordered nodes. No source/proof content edits, other registration, product/proof imports, collection, execution, release, policy or ledger change. Separate independent installation review required. Preserve D077, all 64 holds, actual D072/D071 product acceptance prerequisite and sole Tester candidate-specific intake/runtime/precall, D004/D085 held, D145 PAUSED, G01 R2 unadopted, main/original and sole Tester. Continue eligible distinct-role succession once via owner-adopted CAC MVP.",
+    "selection_basis": "D076 exact four inert payloads and two nodes independently accepted for documentary registration preparation; only separate exact-byte registration installation eligible. No product acceptance or execution release."
   },
   "trial_forward_succession_authority": {
     "scope": "trial/cac-nvidia-continuation-20261127 only",
