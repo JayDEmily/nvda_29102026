@@ -7560,6 +7560,50 @@
           "disposition": "ACCEPT_CANDIDATE_SPECIFIC_DOCUMENTARY_APPLICABILITY_NO_MATERIAL_INVALIDATION_ESTABLISHED",
           "scope": "Supplementary static applicability for exact candidate only; original source and registration scope retained, no material invalidation, product acceptance, rerun or execution release.",
           "execution_release": false
+        },
+        "d004_prerequisite_and_inactive_binding_preparation": {
+          "status": "DOCUMENTARY_ACTUAL_PARENT_INTERFACE_ADEQUATE_INACTIVE_BINDING_PREPARED_REVIEW_REQUIRED",
+          "candidate": "09f7fbd9f303f8b24b1c7d68dea81f16b0fb26ec",
+          "candidate_tree": "c9bf7e40bc00bcdbbbdb6451386c890ac5018cb9",
+          "parent": "e7b608b6da35e5e03f1f98f1177b5b6baa937dc3",
+          "recursive_tree_listing_sha256": "ca770e93567e8758cd4f58914077bd2872a5c282d60ea57477588290abeb99f2",
+          "tracked_entries": 4733,
+          "brief_path": "handoff/m02_completion_28_execution/L07a/D004_IMPLEMENTATION_BRIEF.md",
+          "brief_sha256": "77f81c72a9fac1aafebda94a8ab97f3b4f0f9f0e089f4367f221f57aac9c775a",
+          "inactive_binding_path": "handoff/m02_completion_28_execution/L07a/T01_D004_OPTION_TIME_AUTHORITY_BINDING_CANDIDATE.yaml",
+          "inactive_binding_sha256": "50f49638a7202d2b10f7b89b6076971445b033bd74bf66f8ea17a0c6862123aa",
+          "future_binding_path": "implementation/authority/T01_D004_OPTION_TIME_AUTHORITY_BINDING.yaml",
+          "report_path": "handoff/m02_completion_28_execution/L07a/D004_OPTION_SESSION_PREREQUISITE_AND_BINDING_PREPARATION_20261128.md",
+          "report_sha256": "449028452da36a2ee2c0f0aa6590da0b519dd4c01f4679221ddb2403db5e46a5",
+          "proof_id": "SUP-D004-USOPTION",
+          "ordered_case_ids": [
+            "SUP-D004-USOPTION-SUCCESS",
+            "SUP-D004-USOPTION-REACHED_REFUSAL",
+            "SUP-D004-USOPTION-SCHEDULE-MISMATCH"
+          ],
+          "ordered_test_nodes": [
+            "tests/product/m02_completion_28_prospective/support/d004-usoption/test_profile.py::test_d004_success",
+            "tests/product/m02_completion_28_prospective/support/d004-usoption/test_profile.py::test_d004_closed_end",
+            "tests/product/m02_completion_28_prospective/support/d004-usoption/test_profile.py::test_d004_schedule_mismatch"
+          ],
+          "exact_nonfungible_ceiling": 3,
+          "parent_specimen_frames": [
+            [
+              "CROSS_CLOSE",
+              "CROSS_CLOSE"
+            ],
+            [
+              "AT_EXPIRY",
+              "AT_EXPIRY"
+            ],
+            [
+              "R024_SCHEDULE_MISMATCH",
+              "MAIN"
+            ]
+          ],
+          "execution_release": false,
+          "product_cases_executed": 0,
+          "scope": "Documentary prerequisite and inactive candidate only. Actual D001/D003 product acceptance and separate reviews required."
         }
       }
     },
@@ -10772,9 +10816,9 @@
   "execution_status": "ready",
   "current_leaf": "L07a",
   "next_assignment": {
-    "role": "Fresh distinct L07a D004 option-session prerequisite and inactive binding preparation Worker",
-    "task": "Fetch exact commissioned trial HEAD; stop on mismatch. Follow AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and execution register. Execute only committed handoff/m02_completion_28_execution/L07a/D004_OPTION_SESSION_PREREQUISITE_AND_BINDING_PREPARATION_COMMISSION_20261128.md SHA256 22798fae036f17bd5751ee3bde2a810cf54356c998f577a8821cfeac419a8c18. Check actual D003 stable parent interface for all three exact D004 cases before conditional inactive binding/brief preparation; if blocked, report exact invariant for independent review. No source/proof edits, active binding/registration, product/proof imports, loader, collection, execution or release. Preserve all holds, sole Tester and actual parent acceptance prerequisite. Continue eligible distinct-role succession once using owner-adopted CAC MVP.",
-    "selection_basis": "D078 documentary installation independently accepted; D004 is next in admitted temporal dependency order, bounded prerequisite inspection and conditional inactive preparation only. No actual parent acceptance or execution release."
+    "role": "Fresh distinct independent L07a D004 option-session inactive binding-admission Reviewer",
+    "task": "Fetch exact commissioned trial HEAD; stop on mismatch. Follow AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and execution register. Execute only committed handoff/m02_completion_28_execution/L07a/D004_OPTION_SESSION_INACTIVE_BINDING_ADMISSION_REVIEW_COMMISSION_20261128.md SHA256 4308522525973d7628c5ec20ccb8d3abe8f27ff647fa30c076960ba1482fca4e. Independently verify exact candidate 09f7fbd9f303f8b24b1c7d68dea81f16b0fb26ec, tree c9bf7e40bc00bcdbbbdb6451386c890ac5018cb9, three inactive payloads, actual D003/D001 parent interface and exact three D004 case mapping; documentary verdict only. Preserve all 64 holds/67 historical accepted, D078 legacy/registration and sole Tester. No source/proof edits, active installation, product/proof imports, loader, collection, execution, release or D085 preparation. Continue eligible distinct-role succession once using owner-adopted CAC MVP.",
+    "selection_basis": "D004 documentary parent-interface inspection complete; exact inactive candidate prepared, requires independent binding admission before any installation or authoring. Actual parent product acceptance remains required."
   },
   "trial_forward_succession_authority": {
     "scope": "trial/cac-nvidia-continuation-20261127 only",
