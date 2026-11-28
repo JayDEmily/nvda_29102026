@@ -3800,3 +3800,95 @@ __all__ += [
     "create_option_time_local_owner", "create_option_time_local_reader",
     "create_option_time_local_source",
 ]
+
+
+@dataclass(frozen=True, slots=True)
+class OptionTimeExpiryOccurrenceV1(_Validated):
+    """D086 only: exact reduced ACT/365F maturity, with full actual D001 lineage."""
+    owner_object_id: str
+    owner_namespace: str
+    implementation_brief_sha256: str
+    derived_signal_id: str
+    derived_occurrence_id: str
+    request: OptionTimeRequestV1
+    definition: CalculationDefinitionV1
+    source_policy_sha256: str
+    source_profile_ref: VersionRefV1
+    projection_mappings: tuple[raw_api.RawSignalProjectionMappingV1, ...]
+    original_observations: tuple[raw_api.RawObservationOccurrenceV1, ...]
+    selected_projections: tuple[raw_api.ProjectedRawValueV1, ...]
+    predecessor_occurrence_ids: tuple[str, ...]
+    predecessor: OptionTimeOccurrenceV1
+    expiry_policy_ref: VersionRefV1
+    result: ExactRatioV1
+    units: str
+    result_shape: str
+    effective_as_of_utc: datetime
+    knowledge_cutoff_utc: datetime
+    calculated_at_utc: datetime
+
+    def __post_init__(self) -> None:
+        _Validated.__post_init__(self)
+        if (
+            self.derived_signal_id != "D086"
+            or not re.fullmatch(r"[0-9a-f]{64}", self.implementation_brief_sha256)
+            or not re.fullmatch(r"[0-9a-f]{64}", self.source_policy_sha256)
+        ):
+            raise ValueError("exact D086 carrier identities required")
+        self.result.__post_init__()
+        if self.result.numerator < 0:
+            raise ValueError("D086 requires nonnegative maturity")
+
+
+class OptionTimeExpiryReadsV1(Protocol):
+    def get_derived_occurrence(
+        self, derived_occurrence_id: str,
+    ) -> OptionTimeExpiryOccurrenceV1 | None: ...
+
+    def list_derived_history(
+        self, *, derived_signal_id: str, subject_instrument: str,
+        effective_at_or_before_utc: datetime, knowledge_at_or_before_utc: datetime,
+        limit: int,
+    ) -> tuple[OptionTimeExpiryOccurrenceV1, ...]: ...
+
+
+class OptionTimeExpiryOwnerV1(Protocol):
+    @property
+    def reads(self) -> OptionTimeExpiryReadsV1: ...
+
+    def materialise(
+        self, request: OptionTimeRequestV1,
+    ) -> OptionTimeExpiryOccurrenceV1 | None: ...
+
+
+def create_option_time_expiry_source(
+    *, admission: OwnerAdmissionV1, specimen_id: str,
+) -> OptionTimeSourceV1:
+    from ._option_time_source import build_expiry_source
+
+    return build_expiry_source(admission, specimen_id)
+
+
+def create_option_time_expiry_owner(
+    *, admission: OwnerAdmissionV1, source: OptionTimeSourceV1,
+    parent_storage: SQLiteReadStorageV1, storage: SQLiteStorageV1,
+    utc_now: Callable[[], datetime],
+) -> OptionTimeExpiryOwnerV1:
+    from ._option_time import build_expiry_owner
+
+    return build_expiry_owner(admission, source, parent_storage, storage, utc_now)
+
+
+def create_option_time_expiry_reader(
+    *, admission: OwnerAdmissionV1, storage: SQLiteReadStorageV1,
+) -> OptionTimeExpiryReadsV1:
+    from ._option_time import build_expiry_reader
+
+    return build_expiry_reader(admission, storage)
+
+
+__all__ += [
+    "OptionTimeExpiryOccurrenceV1", "OptionTimeExpiryOwnerV1", "OptionTimeExpiryReadsV1",
+    "create_option_time_expiry_owner", "create_option_time_expiry_reader",
+    "create_option_time_expiry_source",
+]

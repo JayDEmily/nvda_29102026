@@ -143,3 +143,51 @@ def decode_local(payload: bytes) -> f.OptionTimeLocalOccurrenceV1:
     if encode_local(value) != payload:
         raise ValueError("D003 canonical readback mismatch")
     return value
+
+
+_EXPIRY_TAG = "OptionTimeExpiryOccurrenceV1"
+
+
+def _expiry_content(value: f.OptionTimeExpiryOccurrenceV1) -> dict[str, Any]:
+    content = _record(value, f.OptionTimeExpiryOccurrenceV1)
+    content["request"] = _record(value.request, f.OptionTimeRequestV1)
+    content["predecessor"] = _content(value.predecessor)
+    content["result"] = _record(value.result, f.ExactRatioV1)
+    return content
+
+
+def _expiry_envelope(content: dict[str, Any]) -> bytes:
+    return native.canonical({"record": _EXPIRY_TAG, "version": 1, "content": content})
+
+
+def encode_expiry(value: f.OptionTimeExpiryOccurrenceV1) -> bytes:
+    return _expiry_envelope(_expiry_content(value))
+
+
+def expiry_identity(value: f.OptionTimeExpiryOccurrenceV1) -> str:
+    content = _expiry_content(value)
+    del content["derived_occurrence_id"]
+    del content["calculated_at_utc"]
+    return "mmtoptiontimeexpiry1:" + hashlib.sha256(_expiry_envelope(content)).hexdigest()
+
+
+def decode_expiry(payload: bytes) -> f.OptionTimeExpiryOccurrenceV1:
+    envelope = native.decode(payload, dict)
+    if (
+        set(envelope) != {"record", "version", "content"}
+        or envelope["record"] != _EXPIRY_TAG
+        or type(envelope["version"]) is not int or envelope["version"] != 1
+    ):
+        raise ValueError("unadmitted D086 option-time envelope")
+    content = envelope["content"]
+    if type(content) is not dict or set(content) != {
+        field.name for field in fields(f.OptionTimeExpiryOccurrenceV1)
+    }:
+        raise ValueError("D086 option-time field set mismatch")
+    content["request"] = _rebuild(content["request"], f.OptionTimeRequestV1)
+    content["predecessor"] = decode(_envelope(content["predecessor"]))
+    content["result"] = _rebuild(content["result"], f.ExactRatioV1)
+    value = _rebuild(content, f.OptionTimeExpiryOccurrenceV1)
+    if encode_expiry(value) != payload:
+        raise ValueError("D086 canonical readback mismatch")
+    return value

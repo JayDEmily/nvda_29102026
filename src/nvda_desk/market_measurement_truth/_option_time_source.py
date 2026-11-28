@@ -421,3 +421,54 @@ def validate_local_roles(
         raise ValueError("D003 selected originals do not co-occur in one admitted roster")
     for rid, original, projection in zip(roles, originals, projections, strict=True):
         check_projection(original, projection, mapping_for(rid))
+
+
+EXPIRY_BRIEF_PATH = LEAF + "D086_IMPLEMENTATION_BRIEF.md"
+EXPIRY_BRIEF = "e5747d9ba697d16281e09c115db932a60f559c03937f243be06f7c01d107b676"
+EXPIRY_BINDING_PATH = "implementation/authority/T01_D086_OPTION_TIME_AUTHORITY_BINDING.yaml"
+EXPIRY_BINDING_SHA = "9ccd773c689bf24e443cd23ebba534b637781dda48fb9377bf23d32718889b97"
+
+
+def expiry_policy() -> dict[str, Any]:
+    _pinned(EXPIRY_BRIEF_PATH, EXPIRY_BRIEF)
+    _pinned(EXPIRY_BINDING_PATH, EXPIRY_BINDING_SHA)
+    return policy()
+
+
+def check_expiry_admission(admission: f.OwnerAdmissionV1) -> None:
+    if type(admission) is not f.OwnerAdmissionV1 or admission != f.OwnerAdmissionV1(
+        "M02", EXPIRY_BRIEF,
+    ):
+        raise ValueError("unadmitted D086 option-time owner")
+    expiry_policy()
+
+
+def build_expiry_source(admission: f.OwnerAdmissionV1, specimen_id: str) -> f.OptionTimeSourceV1:
+    check_expiry_admission(admission)
+    return _build_sealed_source(admission, specimen_id)
+
+
+def live_expiry_roles(
+    raw_source: f.OptionTimeSourceV1, cutoff: datetime,
+) -> dict[str, tuple[raw.RawObservationOccurrenceV1, raw.ProjectedRawValueV1]]:
+    return _live_roles(raw_source, cutoff)
+
+
+def validate_expiry_roles(
+    originals: tuple[raw.RawObservationOccurrenceV1, ...],
+    projections: tuple[raw.ProjectedRawValueV1, ...],
+) -> None:
+    """Require the complete selected parent pair and R013 from one literal roster."""
+    if len(originals) != 3 or len(projections) != 3:
+        raise ValueError("D086 requires exact parent pair plus selected R013")
+    roles = ("R002", "R003", "R013")
+    actual = native.canonical(originals)
+    for name in SPECIMENS:
+        _, roster = _specimen(name)
+        expected = tuple(next(o for o in roster if _role(o) == rid) for rid in roles)
+        if actual == native.canonical(expected):
+            break
+    else:
+        raise ValueError("D086 selected originals do not co-occur in one admitted roster")
+    for rid, original, projection in zip(roles, originals, projections, strict=True):
+        check_projection(original, projection, mapping_for(rid))
