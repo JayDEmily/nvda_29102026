@@ -1462,7 +1462,7 @@
         "L00"
       ],
       "obligation": "Bind R013 selected-option expiry date, R001 receipt, exchange IANA timezone, calendar version/session boundaries and lawful D004 US-option date profile. A synthetic calendar is explicitly controlled configuration, never evidence of official provider facts. Resolve concrete policy/source decisions before code. Independently prove a necessary D004 profile extension without rewriting its old accepted profile or counting its identity anew.",
-      "status": "OWNER_POLICY_ADOPTED_FINITE_ADMITTED_EXECUTION_HELD_BINDING_REVIEW_PENDING",
+      "status": "OWNER_POLICY_ADOPTED_FINITE_ADMITTED_EXECUTION_HELD_INACTIVE_BINDING_INDEPENDENT_REVIEW_REQUIRED",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G2_AFTER_L18"
@@ -1501,7 +1501,7 @@
         ],
         "execution_release": false,
         "product_status": "NOT_ATTEMPTED",
-        "first_unmet_invariant": "Independently confirmed actual D001 parent specimen/frame reachability blocker; bounded upstream recovery and independent stable-interface clearance required before own binding preparation. Parent product acceptance still mandatory before release.",
+        "first_unmet_invariant": "D003 own exact inert brief/binding independent documentary review before activation or authoring; D001 actual parent proof acceptance and candidate-specific sole Tester intake/runtime/precall release still mandatory. D004 remains held.",
         "tester_designation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
         "tester_status": "CANDIDATE_SPECIFIC_INTAKE_REQUIRED",
         "scope": "Controlled synthetic only; no official/native certification or new product acceptance",
@@ -1542,7 +1542,63 @@
           "candidate_tree": "a0f28b19a63edc817b9959e1063bef44075e4be7",
           "scope": "Static prerequisite blocker only; no product acceptance or child preparation.",
           "execution_release": false
-        }
+        },
+        "downstream_binding_preparation_prerequisite_recheck": {
+          "unit": "D003",
+          "disposition": "STABLE_ACTUAL_D001_INTERFACE_PREREQUISITE_SATISFIED_DOCUMENTARY_ONLY",
+          "input_handoff": "bcbc4c512bb1ffe14939d501473ecb068350f55a",
+          "parent_source_candidate": "7148bad12f54824b018b359ed2b49803b4864e21",
+          "parent_source_tree": "9faf166c3cfc6df39ede3eacbbc2c942959db95e",
+          "independent_implementation_verdict": "b471fd0becf45755313cf268856f7ffcb0b1d0b9",
+          "parent_registration_installation": "8d63cd9630c746c0d5b01deb3ebe1057f8f7925c",
+          "independent_installation_verdict": "ee0d37bb8f264bd17d6777d94724f6748de079b9",
+          "required_parent_pairs": [
+            "MAIN/MAIN",
+            "R004_FOREIGN_ZONE/MAIN",
+            "EARLIER/EARLIER"
+          ],
+          "case_count": 3,
+          "report_path": "handoff/m02_completion_28_execution/L07a/D003_D086_DOWNSTREAM_BINDING_PREPARATION_20261128.md",
+          "report_sha256": "8347909e9e7988f8de9ddd1814bd23c89536546337334b1060accd582dd2d858",
+          "execution_release": false,
+          "product_cases_executed": 0
+        },
+        "first_stage_inactive_bindings": [
+          {
+            "jurisdiction": "D003",
+            "proof_id": "SUP-D003-USOPTION",
+            "case_count": 3,
+            "brief": "handoff/m02_completion_28_execution/L07a/D003_IMPLEMENTATION_BRIEF.md",
+            "brief_sha256": "0c588c6d06690f2e8fd23898cb4c219263dfc9b0924b071b40c2f92098ee5344",
+            "inactive_binding": "handoff/m02_completion_28_execution/L07a/T01_D003_OPTION_TIME_AUTHORITY_BINDING_CANDIDATE.yaml",
+            "binding_sha256": "a26f84b5ea86e6b5899b303ac4fe0f79d0915f5d2106392f4cf3ba40cbd48637",
+            "active_path": "implementation/authority/T01_D003_OPTION_TIME_AUTHORITY_BINDING.yaml",
+            "allowed_product_paths": [
+              "src/nvda_desk/market_measurement_truth/api.py",
+              "src/nvda_desk/market_measurement_truth/_option_time_source.py",
+              "src/nvda_desk/market_measurement_truth/_option_time.py",
+              "src/nvda_desk/market_measurement_truth/_option_time_codec.py",
+              "tools/product_proof_claims.py"
+            ],
+            "family_path": "tests/product/m02_completion_28_prospective/support/d003-usoption/test_profile.py",
+            "ordered_nodes": [
+              "tests/product/m02_completion_28_prospective/support/d003-usoption/test_profile.py::test_d003_success",
+              "tests/product/m02_completion_28_prospective/support/d003-usoption/test_profile.py::test_d003_foreign_zone",
+              "tests/product/m02_completion_28_prospective/support/d003-usoption/test_profile.py::test_d003_wrong_parent"
+            ],
+            "parent_pairs": [
+              "MAIN/MAIN",
+              "R004_FOREIGN_ZONE/MAIN",
+              "EARLIER/EARLIER"
+            ],
+            "execution_release": false,
+            "candidate": "10f18fe7489acd8c3cf7c297d47ed547dbd254cf",
+            "tree": "ebf259765604585b5e2e04c17e820575de00ca3d",
+            "report_path": "handoff/m02_completion_28_execution/L07a/D003_D086_DOWNSTREAM_BINDING_PREPARATION_20261128.md",
+            "report_sha256": "8347909e9e7988f8de9ddd1814bd23c89536546337334b1060accd582dd2d858",
+            "review_status": "INDEPENDENT_DOCUMENTARY_REVIEW_REQUIRED"
+          }
+        ]
       }
     },
     {
@@ -2219,7 +2275,7 @@
         "L07b"
       ],
       "obligation": "Calculate ACT/365F from actual true-instant D001 to the versioned expiry instant, using exact elapsed duration and approved typed numeric representation. Preserve option/timezone/calendar conventions. Refuse date-only or receipt-only masquerading as source/expiry instants.",
-      "status": "OWNER_POLICY_ADOPTED_FINITE_ADMITTED_EXECUTION_HELD_BINDING_REVIEW_PENDING",
+      "status": "OWNER_POLICY_ADOPTED_FINITE_ADMITTED_EXECUTION_HELD_INACTIVE_BINDING_INDEPENDENT_REVIEW_REQUIRED",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G2_AFTER_L18"
@@ -2253,7 +2309,7 @@
         ],
         "execution_release": false,
         "product_status": "NOT_ATTEMPTED",
-        "first_unmet_invariant": "Independently confirmed actual D001 parent specimen/frame reachability blocker; bounded upstream recovery and independent stable-interface clearance required before own binding preparation. Parent product acceptance still mandatory before release.",
+        "first_unmet_invariant": "D086 own exact inert brief/binding independent documentary review before activation or authoring; D001 actual parent proof acceptance and candidate-specific sole Tester intake/runtime/precall release still mandatory.",
         "tester_designation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
         "tester_status": "CANDIDATE_SPECIFIC_INTAKE_REQUIRED",
         "scope": "Controlled synthetic only; no official/native certification or new product acceptance",
@@ -2300,7 +2356,72 @@
           "candidate_tree": "a0f28b19a63edc817b9959e1063bef44075e4be7",
           "scope": "Static prerequisite blocker only; no product acceptance or child preparation.",
           "execution_release": false
-        }
+        },
+        "downstream_binding_preparation_prerequisite_recheck": {
+          "unit": "D086",
+          "disposition": "STABLE_ACTUAL_D001_INTERFACE_PREREQUISITE_SATISFIED_DOCUMENTARY_ONLY",
+          "input_handoff": "bcbc4c512bb1ffe14939d501473ecb068350f55a",
+          "parent_source_candidate": "7148bad12f54824b018b359ed2b49803b4864e21",
+          "parent_source_tree": "9faf166c3cfc6df39ede3eacbbc2c942959db95e",
+          "independent_implementation_verdict": "b471fd0becf45755313cf268856f7ffcb0b1d0b9",
+          "parent_registration_installation": "8d63cd9630c746c0d5b01deb3ebe1057f8f7925c",
+          "independent_installation_verdict": "ee0d37bb8f264bd17d6777d94724f6748de079b9",
+          "required_parent_pairs": [
+            "MAIN/MAIN",
+            "AT_EXPIRY/AT_EXPIRY",
+            "AFTER/AFTER",
+            "R013_DATE_MISMATCH/MAIN",
+            "R013_CONTRACT_MISMATCH/MAIN",
+            "EARLIER/EARLIER"
+          ],
+          "case_count": 6,
+          "report_path": "handoff/m02_completion_28_execution/L07a/D003_D086_DOWNSTREAM_BINDING_PREPARATION_20261128.md",
+          "report_sha256": "8347909e9e7988f8de9ddd1814bd23c89536546337334b1060accd582dd2d858",
+          "execution_release": false,
+          "product_cases_executed": 0
+        },
+        "first_stage_inactive_bindings": [
+          {
+            "jurisdiction": "D086",
+            "proof_id": "M02-C28-D086",
+            "case_count": 6,
+            "brief": "handoff/m02_completion_28_execution/L07a/D086_IMPLEMENTATION_BRIEF.md",
+            "brief_sha256": "e5747d9ba697d16281e09c115db932a60f559c03937f243be06f7c01d107b676",
+            "inactive_binding": "handoff/m02_completion_28_execution/L07a/T01_D086_OPTION_TIME_AUTHORITY_BINDING_CANDIDATE.yaml",
+            "binding_sha256": "9ccd773c689bf24e443cd23ebba534b637781dda48fb9377bf23d32718889b97",
+            "active_path": "implementation/authority/T01_D086_OPTION_TIME_AUTHORITY_BINDING.yaml",
+            "allowed_product_paths": [
+              "src/nvda_desk/market_measurement_truth/api.py",
+              "src/nvda_desk/market_measurement_truth/_option_time_source.py",
+              "src/nvda_desk/market_measurement_truth/_option_time.py",
+              "src/nvda_desk/market_measurement_truth/_option_time_codec.py",
+              "tools/product_proof_claims.py"
+            ],
+            "family_path": "tests/product/m02_completion_28_prospective/d086/test_signal.py",
+            "ordered_nodes": [
+              "tests/product/m02_completion_28_prospective/d086/test_signal.py::test_d086_success",
+              "tests/product/m02_completion_28_prospective/d086/test_signal.py::test_d086_zero",
+              "tests/product/m02_completion_28_prospective/d086/test_signal.py::test_d086_expired",
+              "tests/product/m02_completion_28_prospective/d086/test_signal.py::test_d086_date_mismatch",
+              "tests/product/m02_completion_28_prospective/d086/test_signal.py::test_d086_contract_mismatch",
+              "tests/product/m02_completion_28_prospective/d086/test_signal.py::test_d086_wrong_parent"
+            ],
+            "parent_pairs": [
+              "MAIN/MAIN",
+              "AT_EXPIRY/AT_EXPIRY",
+              "AFTER/AFTER",
+              "R013_DATE_MISMATCH/MAIN",
+              "R013_CONTRACT_MISMATCH/MAIN",
+              "EARLIER/EARLIER"
+            ],
+            "execution_release": false,
+            "candidate": "10f18fe7489acd8c3cf7c297d47ed547dbd254cf",
+            "tree": "ebf259765604585b5e2e04c17e820575de00ca3d",
+            "report_path": "handoff/m02_completion_28_execution/L07a/D003_D086_DOWNSTREAM_BINDING_PREPARATION_20261128.md",
+            "report_sha256": "8347909e9e7988f8de9ddd1814bd23c89536546337334b1060accd582dd2d858",
+            "review_status": "INDEPENDENT_DOCUMENTARY_REVIEW_REQUIRED"
+          }
+        ]
       }
     },
     {
@@ -4283,9 +4404,9 @@
   "execution_status": "ready",
   "current_leaf": "L07a",
   "next_assignment": {
-    "role": "Fresh distinct D003/D086 downstream implementation-authority binding-preparation Worker",
-    "task": "Fetch exact trial HEAD; stop on mismatch. Follow AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and execution register. Reconcile the separate previous D003 and D086 actual-parent-interface prerequisite findings against exact revised D001 source 7148bad12f54824b018b359ed2b49803b4864e21 tree 9faf166c3cfc6df39ede3eacbbc2c942959db95e, independent recovery implementation verdict b471fd0becf45755313cf268856f7ffcb0b1d0b9 and exact independently accepted generation 0002 installation 8d63cd9630c746c0d5b01deb3ebe1057f8f7925c, independent verdict ee0d37bb8f264bd17d6777d94724f6748de079b9 at refs/heads/review/trial-cac-nvidia-d001-generation-0002-installation-20261128, report handoff/m02_completion_28_execution/L07a/INDEPENDENT_D001_REGISTRATION_GENERATION_0002_INSTALLATION_VERDICT_20261128.md SHA256 f27b1955c28ed449edb700f711b041e3707a425947e94b01467e7e7ab92a9423. Independently check each unit's own stable actual D001 public producer/ordinary reader prerequisite and exact finite authority separately. Only if independently documented prerequisites are satisfied prepare the exact inert D003 three-case and D086 six-case own briefs and bindings for separate independent documentary review; otherwise record exact separate first unmet invariants and continue only independently eligible work. Preserve prior prerequisite findings; no active binding, child source/proof implementation, product imports, collection, execution, runtime qualification or release. No additional cases or policy decisions; all 64 allocations held, D004/D085 held, D095 unchanged, G01 R2 unadopted, D145 PAUSED, main/original unchanged and sole Tester preserved. Candidate-specific sole Tester intake, precall release and parent acceptance mandatory before product execution. Continue eligible distinct-role succession once via owner-adopted CAC MVP.",
-    "selection_basis": "Exact class-level D001 recovery implementation and generation 0002 documentary registration applicability accepted. Recheck each previously held downstream prerequisite and prepare only inert eligible own binding materials; no child implementation or product release."
+    "role": "Fresh distinct independent D003/D086 downstream implementation-authority binding documentary reviewer",
+    "task": "Fetch exact trial HEAD; stop on mismatch. Follow AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and execution register. Independently recheck each actual D001 stable producer/ordinary-reader prerequisite against source 7148bad12f54824b018b359ed2b49803b4864e21, tree 9faf166c3cfc6df39ede3eacbbc2c942959db95e, independent verdict b471fd0becf45755313cf268856f7ffcb0b1d0b9, installed generation 0002 8d63cd9630c746c0d5b01deb3ebe1057f8f7925c and independent verdict ee0d37bb8f264bd17d6777d94724f6748de079b9. Review exact inert four-path candidate 10f18fe7489acd8c3cf7c297d47ed547dbd254cf, tree ebf259765604585b5e2e04c17e820575de00ca3d, direct parent bcbc4c512bb1ffe14939d501473ecb068350f55a, and separate Worker recheck report handoff/m02_completion_28_execution/L07a/D003_D086_DOWNSTREAM_BINDING_PREPARATION_20261128.md SHA256 8347909e9e7988f8de9ddd1814bd23c89536546337334b1060accd582dd2d858. Verify D003 three-case and D086 six-case briefs and inactive bindings against adopted grant/policy/finite inventory/remap, source applicability, ordinary reader, typed lineage, exact scope, identities, and all 64 held cases. Issue separate independent documentary verdicts, publish on distinct review branch refs/heads/review/trial-cac-nvidia-d003-d086-bindings-20261128. Only independently accepted exact binding bytes eligible for separate distinct-role installation/authoring commission; serialise shared product surfaces. No active binding, source/proof edits, product imports, collection, execution, runtime qualification, release, policy or allocation changes. Preserve D004/D085 holds, D095 unchanged, G01 R2 unadopted, D145 PAUSED, main/original work unchanged and sole Tester. Candidate-specific sole Tester intake, precall release and parent acceptance mandatory before product execution. Continue eligible distinct-role succession once via owner-adopted CAC MVP.",
+    "selection_basis": "Both separate static stable actual D001 interface prerequisites now reconciled against independent recovery and generation 0002 installation verdicts; exact inert D003 and D086 briefs/bindings prepared for separate independent documentary verdicts; no execution release."
   },
   "trial_forward_succession_authority": {
     "scope": "trial/cac-nvidia-continuation-20261127 only",
