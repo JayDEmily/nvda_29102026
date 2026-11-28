@@ -1516,7 +1516,7 @@
         "L00"
       ],
       "obligation": "Bind the exact option expiry instant and timezone/session convention separately from its date, with compatible true-instant D001. Never invent midnight or event time from date-only/receipt-only values. Bind exact year-fraction representation. Independently prove a necessary option-domain D001 extension; retain its original profile and zero new identity contribution.",
-      "status": "OWNER_POLICY_ADOPTED_FINITE_ADMITTED_BINDING_INSTALLED_AUTHORING_DOCUMENTARY_ACCEPTED_IMPLEMENTATION_PENDING_EXECUTION_HELD",
+      "status": "IMPLEMENTED_UNTESTED_INDEPENDENT_IMPLEMENTATION_REVIEW_REQUIRED_EXECUTION_HELD",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G2_AFTER_L18"
@@ -1550,7 +1550,7 @@
         ],
         "execution_release": false,
         "product_status": "NOT_ATTEMPTED",
-        "first_unmet_invariant": "Fresh distinct Worker implements exact reviewed additive public seam and actual source, identity and durable validation; independent implementation and separate registration clearance required, then designated strict Tester candidate-specific intake and precall release. All engineering holds remain.",
+        "first_unmet_invariant": "Distinct independent implementation review, then separate registration clearance before activation, then designated strict Tester candidate-specific intake and precall release. All engineering holds remain.",
         "tester_designation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
         "tester_status": "CANDIDATE_SPECIFIC_INTAKE_REQUIRED",
         "scope": "Controlled synthetic only; no official/native certification or new product acceptance",
@@ -1656,6 +1656,26 @@
           "binding_sha256": "ff80ea7dd3aa7674723b758dda9173356bda75119ba996ece5bf4c1a9ff2cf35",
           "execution_release": false,
           "scope": "Exact inert documentary authoring only; no product acceptance, registration, execution or release. D095 is counted once across L10a/L11."
+        },
+        "first_stage_implementation_candidate": {
+          "jurisdiction": "D001",
+          "proof_id": "SUP-D001-OPTION",
+          "case_count": 4,
+          "candidate": "f0cf010f62719e3e9c21fddb2d45474295afcf6e",
+          "candidate_tree": "1ac70938abfb661bdb0c9bcb510a4e1057c16fc1",
+          "source_sha256": {
+            "src/nvda_desk/market_measurement_truth/api.py": "d1bcb337ea166d3cdf8a30cc89f7d3d0db822abaebde810cff3ac979eb0f406c",
+            "src/nvda_desk/market_measurement_truth/_option_time_source.py": "18b3922caa8c2ae99999f9bcfe8c10eacb48b8d32234b0718f1f595de0a447f8",
+            "src/nvda_desk/market_measurement_truth/_option_time.py": "ea4f4a931561ac73414def19dffa35894446d8fc3fab50f7df4ec4dbc5c96572",
+            "src/nvda_desk/market_measurement_truth/_option_time_codec.py": "c989b87df4944b89ad29cbc1f2e5d897ffc490e97078913d386043872e2ebf5c",
+            "tools/product_proof_claims.py": "c77ffc08d586735d056ee9ff347ca5dfe16156e899ebc1839842d98cd2813ba2"
+          },
+          "state": "IMPLEMENTED_UNTESTED",
+          "execution_release": false,
+          "registration": "NOT_ATTEMPTED",
+          "test_execution": false,
+          "commission": "handoff/m02_completion_28_execution/CAC_TRIAL_D001_D095_IMPLEMENTATION_REVIEW_COMMISSION_20261128.md",
+          "commission_sha256": "3af85601942c4f392b189170d3201d799cadf55003fb39bf1f864dd64d2696ad"
         }
       }
     },
@@ -1770,7 +1790,7 @@
         "L00"
       ],
       "obligation": "Bind R111/R183 computational roles, exact model/native-unit comparability, contract or bucket roll, vintages and one official prior-trading-session reference for D095. Resolve concrete session convention before code; current quote assembly alone is not an IV history. Supply independently calculable change and wrong-reference refusal oracles.",
-      "status": "OWNER_POLICY_ADOPTED_FINITE_ADMITTED_BINDING_INSTALLED_AUTHORING_DOCUMENTARY_ACCEPTED_IMPLEMENTATION_PENDING_EXECUTION_HELD",
+      "status": "IMPLEMENTED_UNTESTED_INDEPENDENT_IMPLEMENTATION_REVIEW_REQUIRED_EXECUTION_HELD",
       "checkpoint_required": true,
       "proposed_testing_windows": [],
       "acceptance": "Independent documentary source clearance; product acceptance requires admitted cases and accepted parent proofs",
@@ -1796,7 +1816,7 @@
         "exact_allocations": [],
         "execution_release": false,
         "product_status": "NOT_ATTEMPTED",
-        "first_unmet_invariant": "Fresh distinct Worker implements exact reviewed additive public seam and actual source, identity and durable validation; independent implementation and separate registration clearance required, then designated strict Tester candidate-specific intake and precall release. All engineering holds remain.",
+        "first_unmet_invariant": "Distinct independent implementation review, then separate registration clearance before activation, then designated strict Tester candidate-specific intake and precall release. All engineering holds remain.",
         "tester_designation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
         "tester_status": "CANDIDATE_SPECIFIC_INTAKE_REQUIRED",
         "scope": "Controlled synthetic only; no official/native certification or new product acceptance",
@@ -1906,6 +1926,24 @@
           "binding_sha256": "2a4530490537b2552b320db240ac09eb24508ccc9d9347316e517463c4548f32",
           "execution_release": false,
           "scope": "Exact inert documentary authoring only; no product acceptance, registration, execution or release. D095 is counted once across L10a/L11."
+        },
+        "first_stage_implementation_candidate": {
+          "jurisdiction": "D095",
+          "proof_id": "M02-C28-D095",
+          "case_count": 7,
+          "candidate": "f0cf010f62719e3e9c21fddb2d45474295afcf6e",
+          "candidate_tree": "1ac70938abfb661bdb0c9bcb510a4e1057c16fc1",
+          "source_sha256": {
+            "src/nvda_desk/market_measurement_truth/api.py": "d1bcb337ea166d3cdf8a30cc89f7d3d0db822abaebde810cff3ac979eb0f406c",
+            "src/nvda_desk/market_measurement_truth/_option_iv_prior_session.py": "f417e612752a4f94fbbae0f7c655c3c39dfef7f2d462807a0128b8cda2b56d09",
+            "tools/product_proof_claims.py": "c77ffc08d586735d056ee9ff347ca5dfe16156e899ebc1839842d98cd2813ba2"
+          },
+          "state": "IMPLEMENTED_UNTESTED",
+          "execution_release": false,
+          "registration": "NOT_ATTEMPTED",
+          "test_execution": false,
+          "commission": "handoff/m02_completion_28_execution/CAC_TRIAL_D001_D095_IMPLEMENTATION_REVIEW_COMMISSION_20261128.md",
+          "commission_sha256": "3af85601942c4f392b189170d3201d799cadf55003fb39bf1f864dd64d2696ad"
         }
       }
     },
@@ -2354,7 +2392,7 @@
         "L10a"
       ],
       "obligation": "Calculate 100*(IV_current-IV_reference) in volatility points, using comparable actual R111/R183 facts and accepted official one-trading-session reference. Preserve contract/bucket/roll and knowledge vintage. Refuse unmatched/stale/wrong-session references without calendar-day substitution.",
-      "status": "OWNER_POLICY_ADOPTED_FINITE_ADMITTED_BINDING_INSTALLED_AUTHORING_DOCUMENTARY_ACCEPTED_IMPLEMENTATION_PENDING_EXECUTION_HELD",
+      "status": "IMPLEMENTED_UNTESTED_INDEPENDENT_IMPLEMENTATION_REVIEW_REQUIRED_EXECUTION_HELD",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G2_AFTER_L18"
@@ -2388,7 +2426,7 @@
         ],
         "execution_release": false,
         "product_status": "NOT_ATTEMPTED",
-        "first_unmet_invariant": "Fresh distinct Worker implements exact reviewed additive public seam and actual source, identity and durable validation; independent implementation and separate registration clearance required, then designated strict Tester candidate-specific intake and precall release. All engineering holds remain.",
+        "first_unmet_invariant": "Distinct independent implementation review, then separate registration clearance before activation, then designated strict Tester candidate-specific intake and precall release. All engineering holds remain.",
         "tester_designation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
         "tester_status": "CANDIDATE_SPECIFIC_INTAKE_REQUIRED",
         "scope": "Controlled synthetic only; no official/native certification or new product acceptance",
@@ -2498,6 +2536,24 @@
           "binding_sha256": "2a4530490537b2552b320db240ac09eb24508ccc9d9347316e517463c4548f32",
           "execution_release": false,
           "scope": "Exact inert documentary authoring only; no product acceptance, registration, execution or release. D095 is counted once across L10a/L11."
+        },
+        "first_stage_implementation_candidate": {
+          "jurisdiction": "D095",
+          "proof_id": "M02-C28-D095",
+          "case_count": 7,
+          "candidate": "f0cf010f62719e3e9c21fddb2d45474295afcf6e",
+          "candidate_tree": "1ac70938abfb661bdb0c9bcb510a4e1057c16fc1",
+          "source_sha256": {
+            "src/nvda_desk/market_measurement_truth/api.py": "d1bcb337ea166d3cdf8a30cc89f7d3d0db822abaebde810cff3ac979eb0f406c",
+            "src/nvda_desk/market_measurement_truth/_option_iv_prior_session.py": "f417e612752a4f94fbbae0f7c655c3c39dfef7f2d462807a0128b8cda2b56d09",
+            "tools/product_proof_claims.py": "c77ffc08d586735d056ee9ff347ca5dfe16156e899ebc1839842d98cd2813ba2"
+          },
+          "state": "IMPLEMENTED_UNTESTED",
+          "execution_release": false,
+          "registration": "NOT_ATTEMPTED",
+          "test_execution": false,
+          "commission": "handoff/m02_completion_28_execution/CAC_TRIAL_D001_D095_IMPLEMENTATION_REVIEW_COMMISSION_20261128.md",
+          "commission_sha256": "3af85601942c4f392b189170d3201d799cadf55003fb39bf1f864dd64d2696ad"
         }
       }
     },
@@ -3321,9 +3377,9 @@
   "execution_status": "ready",
   "current_leaf": "L07b",
   "next_assignment": {
-    "role": "Fresh distinct D001/D095 first-stage implementation Worker",
-    "task": "Use Remote Desktop Commander and Ubuntu Git, exact received trial HEAD (stop on mismatch), AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and this register. Fetch and verify exact separate independent authoring verdict 51e4e2bc0693a65987c8264a53d50d3ce2f5303c, tree 8efb8cfd5fa5423b5410fc41b486729ed5bc0875, parent 92a6dce2022f5e51994b417fcda30767507413d3, handoff/m02_completion_28_execution/INDEPENDENT_CAC_TRIAL_D001_D095_AUTHORING_VERDICT_20261128.md, SHA256 c183df146ae5afd2423b26b186ddc0cd0234a315b146ed63387c929779b60c5f. Implement D001 then D095 serially, only the exact additive product source paths and fixed public seams permitted by the reviewed own briefs, active implementation-authority bindings, accepted policy and authoring verdict; preserve exact reviewed inert test source, proof contract, claim candidate, path mapping and finite roster. Any fixed inactive G01 route addition must be necessary, additive, dormant without descriptor, and preserve existing routing/partition behaviour. Serialise shared api.py and any G01 change. No active registration, physical tests, active claims or admissions; no product import, collection, execution, release, new cases, G01 R2 adoption, new Tester appointment, promotion, legacy/M00 or other-leaf changes. Retain all holds and strict Tester designation. Publish bounded implementation checkpoint and mark implemented untested only where actual implementation completed. Commission distinct independent implementation reviewer and separate registration clearance before activation; continue eligible distinct-role succession once via AGENTS.md CAC MVP. If implementation cannot satisfy reviewed material, stop that scope for independent return rather than silently modify the accepted proof or expand authority. No old PCA or main/original-work changes.",
-    "selection_basis": "Both independent documentary authoring verdicts accepted. First unmet invariant is actual source implementation, then distinct implementation review and separate registration clearance before activation; D001 first, D095 second (L10a/L11 counted once). No gate or execution release advanced."
+    "role": "Fresh distinct D001/D095 independent implementation reviewer",
+    "task": "Use Remote Desktop Commander and Ubuntu Git; fetch exact received trial HEAD H (stop on mismatch), read AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and this register. Execute only the committed commission handoff/m02_completion_28_execution/CAC_TRIAL_D001_D095_IMPLEMENTATION_REVIEW_COMMISSION_20261128.md, SHA256 3af85601942c4f392b189170d3201d799cadf55003fb39bf1f864dd64d2696ad; exact product candidate f0cf010f62719e3e9c21fddb2d45474295afcf6e, tree 1ac70938abfb661bdb0c9bcb510a4e1057c16fc1. Verify both separate authoring verdicts and issue separate implementation documentary dispositions. No product import, collection, execution, registration, activation or release. Preserve engineering holds and sole Tester. Publish and verify independent verdict on new review ref, reconcile and continue eligible distinct-role succession once under owner-adopted CAC MVP.",
+    "selection_basis": "Both bounded product slices implemented serially, untested. First unmet invariant is fresh independent implementation documentary review, then separate registration clearance before activation. D095 counted once across L10a/L11. No gate or execution release advanced."
   },
   "trial_forward_succession_authority": {
     "scope": "trial/cac-nvidia-continuation-20261127 only",
