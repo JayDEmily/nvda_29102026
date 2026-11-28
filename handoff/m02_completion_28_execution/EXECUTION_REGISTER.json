@@ -1212,6 +1212,21 @@
           },
           "shared_partition": "ACCEPT_STATIC_DOCUMENTARY",
           "scope": "Exact documentary registration and partition clearance only. Ten first-stage cases NOT_ATTEMPTED; all 64 held, 67 historical accepted cases unchanged, 12 mapping-only."
+        },
+        "downstream_d076_d077_binding_preparation_commission": {
+          "commission": "handoff/m02_completion_28_execution/L01a/D076_D077_DOWNSTREAM_BINDING_PREPARATION_COMMISSION_20261128.md",
+          "sha256": "0771609ecba68a187a35e40a96db3ca5e0b1ca5b1695b85f2a7961218ab8a94c",
+          "jurisdictions": [
+            "SUP-D076-HISTORY",
+            "SUP-D077-HISTORY"
+          ],
+          "case_counts": [
+            2,
+            3
+          ],
+          "disposition": "ACTUAL_PARENT_INTERFACE_PREREQUISITE_CHECK_AND_CONDITIONAL_INERT_BINDING_PREPARATION_COMMISSIONED",
+          "execution_release": false,
+          "product_cases_executed": 0
         }
       }
     },
@@ -2611,7 +2626,7 @@
         "L07b"
       ],
       "obligation": "Calculate ACT/365F from actual true-instant D001 to the versioned expiry instant, using exact elapsed duration and approved typed numeric representation. Preserve option/timezone/calendar conventions. Refuse date-only or receipt-only masquerading as source/expiry instants.",
-      "status": "D086_IMPLEMENTED_UNTESTED_REGISTRATION_INSTALLED_INDEPENDENT_INSTALLATION_REVIEW_PENDING_EXECUTION_HELD",
+      "status": "D086_IMPLEMENTED_UNTESTED_REGISTRATION_INSTALLATION_INDEPENDENTLY_ACCEPTED_EXECUTION_HELD",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G2_AFTER_L18"
@@ -2645,7 +2660,7 @@
         ],
         "execution_release": false,
         "product_status": "NOT_ATTEMPTED",
-        "first_unmet_invariant": "Separate independent D086 registration installation review; actual D001 product acceptance and candidate-specific sole Tester intake/runtime/precall before any child execution. D004/D085 held.",
+        "first_unmet_invariant": "Actual D001 parent product acceptance and candidate-specific sole Tester intake/runtime/precall before D086 execution. D004/D085 remain held.",
         "tester_designation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
         "tester_status": "CANDIDATE_SPECIFIC_INTAKE_REQUIRED",
         "scope": "Controlled synthetic only; no official/native certification or new product acceptance",
@@ -3080,15 +3095,37 @@
             "tests/product/m02_completion_28_prospective/d086/test_signal.py::test_d086_contract_mismatch",
             "tests/product/m02_completion_28_prospective/d086/test_signal.py::test_d086_wrong_parent"
           ],
-          "registration": "INSTALLED_PENDING_INDEPENDENT_REVIEW",
+          "registration": "INSTALLED_EXACT_BYTES_INDEPENDENT_INSTALLATION_ACCEPTED_EXECUTION_HELD",
           "documentary_static_validation": "READY_FOR_PROOF_NOT_EXECUTION_RELEASE",
           "execution_release": false,
           "product_cases_executed": 0,
           "report_path": "handoff/m02_completion_28_execution/L07a/D086_FIRST_STAGE_REGISTRATION_INSTALLATION_REVIEW_COMMISSION_20261128.md",
           "report_sha256": "af8cd7d37cdf6650575978d9d2e3e8ba855b04b0e7cd525a6d168b7c3e12489e"
+        },
+        "independent_d086_registration_installation_verdict": {
+          "jurisdiction": "D086",
+          "proof_id": "M02-C28-D086",
+          "case_count": 6,
+          "disposition": "ACCEPT_DOCUMENTARY_REGISTRATION_INSTALLATION",
+          "reviewed_handoff": "1ac26d64498e6687ddeac1036ff8cb6a730932f3",
+          "candidate": "224724ffbd92fb1d8a479551593a59d450142a5a",
+          "candidate_tree": "e9173ce29110332f997f0aaa60407e0468125a0d",
+          "review_commit": "dcad1c3c0674a5a5ae2c5822411a993ced6bf840",
+          "review_tree": "ea38783e0fcc4d45aa8d03206613eec81012750f",
+          "review_ref": "refs/heads/review/trial-cac-nvidia-d086-registration-installation-20261128",
+          "report_path": "handoff/m02_completion_28_execution/L07a/INDEPENDENT_D086_REGISTRATION_INSTALLATION_VERDICT_20261128.md",
+          "report_git_blob": "7cec32e9a96787dc07b92ea199f8e24e01c02a23",
+          "report_sha256": "0d83b5716d20d07afc39931a210dfb59dd8044ebb21bd4d684799229ad478f35",
+          "report_bytes": 8349,
+          "generation": 1,
+          "static_validation": "READY_FOR_PROOF_NOT_EXECUTION_RELEASE",
+          "registration": "INSTALLED",
+          "execution_release": false,
+          "product_cases_executed": 0,
+          "scope": "Exact four byte-for-byte additions and six ordered finite nodes; documentary only; actual D001 parent acceptance and sole Tester intake/runtime/precall required."
         }
       },
-      "first_unmet_invariant": "Separate independent D086 registration installation review; actual D001 product acceptance and candidate-specific sole Tester intake/runtime/precall before any child execution. D004/D085 held."
+      "first_unmet_invariant": "Actual D001 parent product acceptance and candidate-specific sole Tester intake/runtime/precall before D086 execution. D004/D085 remain held."
     },
     {
       "leaf": "L10a",
@@ -5104,11 +5141,11 @@
   "branch": "trial/cac-nvidia-continuation-20261127",
   "plan": "EXEC_PLAN.md",
   "execution_status": "ready",
-  "current_leaf": "L09",
+  "current_leaf": "L01a",
   "next_assignment": {
-    "role": "Fresh distinct independent D086 first-stage registration installation reviewer",
-    "task": "Fetch exact received trial HEAD; stop on mismatch. Use Remote Desktop Commander and Ubuntu Git; follow AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and execution register. Execute only committed commission handoff/m02_completion_28_execution/L07a/D086_FIRST_STAGE_REGISTRATION_INSTALLATION_REVIEW_COMMISSION_20261128.md SHA256 af8cd7d37cdf6650575978d9d2e3e8ba855b04b0e7cd525a6d168b7c3e12489e; exact installed candidate 224724ffbd92fb1d8a479551593a59d450142a5a, tree e9173ce29110332f997f0aaa60407e0468125a0d. Independently verify exact four-path byte-for-byte installation, preserved inert files, generation 0001, admission pointer, six ordered nodes, existing G01 metadata compatibility and original 64 holds. Issue separate documentary D086 installation verdict on refs/heads/review/trial-cac-nvidia-d086-registration-installation-20261128. No source/proof edits, product/proof imports, collection, execution, release, policy or ledger changes. Preserve D001 generation 0002, D003/D095 registrations, D004/D085 held, G01 R2 unadopted, D145 PAUSED, main/original and sole Tester. Actual D001 parent product acceptance and candidate-specific sole Tester intake/runtime/precall remain required. Reconcile and continue eligible distinct-role succession once using owner-adopted CAC MVP.",
-    "selection_basis": "Exact four approved registration files installed and statically verified; independent D086 installation clearance is next unmet invariant. No execution release."
+    "role": "Fresh distinct L01a D076/D077 downstream prerequisite and inert binding preparation Worker",
+    "task": "Fetch exact trial HEAD; stop on mismatch. Execute only committed handoff/m02_completion_28_execution/L01a/D076_D077_DOWNSTREAM_BINDING_PREPARATION_COMMISSION_20261128.md SHA256 0771609ecba68a187a35e40a96db3ca5e0b1ca5b1695b85f2a7961218ab8a94c; check actual stable D071-D075 parent interface per jurisdiction, prepare own exact inert brief/binding only if prerequisite established, otherwise precise blocker. SUP-D076-HISTORY 2 and SUP-D077-HISTORY 3 only. No active bindings, source/proof edits, product/proof imports, collection, execution, registration or release. Preserve all 64 holds, D004/D085 held, G01 R2 unadopted, D145 PAUSED, main/original and sole Tester. Fresh independent documentary review required. Continue eligible distinct-role succession once using owner-adopted CAC MVP.",
+    "selection_basis": "D086 installation independently cleared; owner-granted aligned-history sequence next D076/D077 after five D071-D075 documentary registrations. Actual stable-parent prerequisite must be checked separately before inert binding; no product execution release."
   },
   "trial_forward_succession_authority": {
     "scope": "trial/cac-nvidia-continuation-20261127 only",
