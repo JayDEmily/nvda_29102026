@@ -1,0 +1,9 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_d086",
+  "brief_path": "handoff/m02_completion_28_execution/L07a/D086_IMPLEMENTATION_BRIEF.md",
+  "binding_path": "implementation/authority/T01_D086_OPTION_TIME_AUTHORITY_BINDING.yaml",
+  "contract_path": "handoff/m02_completion_28_execution/L07a/D086_PROOF_CONTRACT.json",
+  "physical_root": "tests/product/m02_completion_28_prospective/d086",
+  "admission_path": "config/product_proof/m02_option_time_d086/admission.json"
+}
