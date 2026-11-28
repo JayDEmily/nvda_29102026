@@ -37,12 +37,15 @@ def _content(value: f.AlignedHistoryOccurrenceV1) -> dict[str, Any]:
     content["unit_conventions"] = tuple(
         _record(unit, f.UnitConventionVersionV1) for unit in value.unit_conventions
     )
-    if value.derived_signal_id == "D076":
+    if value.derived_signal_id in ("D076", "D077"):
+        expected = (
+            ("D072", "D071") if value.derived_signal_id == "D076" else ("D073", "D074", "D072")
+        )
         if (
-            tuple(parent.derived_signal_id for parent in value.predecessors) != ("D072", "D071")
+            tuple(parent.derived_signal_id for parent in value.predecessors) != expected
             or any(type(parent) is not f.AlignedHistoryOccurrenceV1 for parent in value.predecessors)
         ):
-            raise ValueError("D076 exact ordered underlying envelopes required")
+            raise ValueError(f"{value.derived_signal_id} exact ordered underlying envelopes required")
         # Complete canonical parent envelopes, retaining their identities and first times.
         content["predecessors"] = tuple(encode(parent) for parent in value.predecessors)
     elif value.predecessors != ():
@@ -84,10 +87,11 @@ def _decode(payload: bytes, *, allow_relative: bool) -> f.AlignedHistoryOccurren
         or type(content["unit_conventions"]) is not tuple
     ):
         raise ValueError("invalid aligned history content")
-    if content["derived_signal_id"] == "D076":
+    if content["derived_signal_id"] in ("D076", "D077"):
         parents = content["predecessors"]
+        count = 3 if content["derived_signal_id"] == "D077" else 2
         if (
-            not allow_relative or type(parents) is not tuple or len(parents) != 2
+            not allow_relative or type(parents) is not tuple or len(parents) != count
             or any(type(parent) is not bytes for parent in parents)
         ):
             raise ValueError("invalid relative history envelopes")

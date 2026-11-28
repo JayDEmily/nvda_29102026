@@ -1092,6 +1092,13 @@ def _aligned_history_extensions(
             'f18fa3573706bb48b28fd2f7ddb1e39a5ad51dd0ac76cb22e6b1db7c46b8aca5',
             'd6309aecacd15eb018b003b679b2c1c3964249c19f89ed7ffd0d21a1901832e8',
         ),
+        (
+            'D077',
+            '88bdd385ff91432940f4d27a8cff2bce6af22a8c85b858f53ba2f674d3c30a3c',
+            '7f1b9f882d815616aa8e2fe53d6069800c7524f375202bff4eea5a67bf91a735',
+            '49c27e77c80a22382715753a14e48063edf532ab30965e85d7c12eca72c5334a',
+            '96ed7bf333ede3ed7d038b542c36cede906d6a1f7873ee4595ed4944595594d5',
+        ),
     )
     present = tuple(
         row for row in exact
@@ -1153,7 +1160,7 @@ def _aligned_history_extensions(
         )
         original_contract_path = leaf + f"ALIGNED_HISTORY_{jurisdiction}_PROOF_CONTRACT.json"
         contract_path = (
-            original_contract_path if jurisdiction == "D076" else
+            original_contract_path if jurisdiction in ("D076", "D077") else
             leaf + "G01_PARTITION_REMAP_20261128/"
             + f"ALIGNED_HISTORY_{jurisdiction}_PROOF_CONTRACT.json"
         )
@@ -1190,15 +1197,16 @@ def _aligned_history_extensions(
         own = [row for row in cases if row["family"] == jurisdiction]
         nodes = [row["node"] for row in own]
         names = [node.split("::", 1)[1] for node in nodes]
+        count = 3 if jurisdiction == "D077" else 2
         if (
-            package["exact_nonfungible_ceilings"][jurisdiction] != 2
-            or len(own) != 2 or any(row["proof_id"] != proof_id for row in own)
+            package["exact_nonfungible_ceilings"][jurisdiction] != count
+            or len(own) != count or any(row["proof_id"] != proof_id for row in own)
             or claim["proof_id"] != proof_id or claim["claim_id"] != claim_id
             or claim["family_id"] != family_id or claim["family_path"] != original_family_path
             or claim["descriptor_directory"] != prefix or claim["physical_root"] != original_root
             or claim["own_brief_path"] != brief_path or claim["own_binding_path"] != binding_path
             or claim["future_contract_path"] != original_contract_path
-            or claim["proposed_case_count"] != 2 or claim["proposed_nonfungible_ceiling"] != 2
+            or claim["proposed_case_count"] != count or claim["proposed_nonfungible_ceiling"] != count
             or claim["ordered_case_ids"] != [row["case_id"] for row in own]
             or claim["ordered_nodes"] != nodes
             or nodes != [original_family_path + "::" + name for name in names]
@@ -1220,9 +1228,9 @@ def _aligned_history_extensions(
             or remap["new_contract_path"] != contract_path
             or remap["new_root"] != physical_root or remap["new_family_path"] != family_path
             or remap["new_ordered_nodes"] != [family_path + "::" + name for name in names]
-            or remap["exact_case_count"] != 2 or remap["exact_nonfungible_ceiling"] != 2
+            or remap["exact_case_count"] != count or remap["exact_nonfungible_ceiling"] != count
             or remap["scope"] != (
-                "MAPPING_AUTHORITY_ONLY" if jurisdiction == "D076" else "INACTIVE_FIRST_STAGE_ARTEFACTS"
+                "MAPPING_AUTHORITY_ONLY" if jurisdiction in ("D076", "D077") else "INACTIVE_FIRST_STAGE_ARTEFACTS"
             )
             or remap["execution_release"] is not False
         ):

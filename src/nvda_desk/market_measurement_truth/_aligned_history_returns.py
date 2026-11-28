@@ -1,4 +1,4 @@
-"""Underlying aligned histories and the bounded D076 relative route."""
+"""Underlying aligned histories and the bounded D076/D077 relative routes."""
 
 from __future__ import annotations
 
@@ -162,7 +162,7 @@ def build_owner(
     storage: f.SQLiteStorageV1, utc_now: Callable[[], datetime],
 ) -> f.AlignedHistoryOwnerV1:
     authority = source.Authority(admission)
-    if authority.config.signal == "D076":
+    if authority.config.signal in ("D076", "D077"):
         return _build_relative_owner(authority, sealed, predecessor_read_storages, storage, utc_now)
     if (
         type(sealed) is not f.AlignedHistorySourceV1 or not sealed._matches_admission(admission)
@@ -180,17 +180,20 @@ def build_reader(
     authority = source.Authority(admission)
     if type(storage) is not f.SQLiteReadStorageV1:
         raise TypeError("exact read-only SQLite storage required")
-    if authority.config.signal == "D076":
-        return _Reads(authority, _relative_store(authority, _parent_authorities(), storage))
+    if authority.config.signal in ("D076", "D077"):
+        return _Reads(authority, _relative_store(authority, _parent_authorities(authority), storage))
     return _Reads(authority, _store(authority, storage))
 
 
-def _parent_admissions() -> tuple[f.OwnerAdmissionV1, ...]:
-    return tuple(f.OwnerAdmissionV1("M02", source.BRIEFS[signal]) for signal in source.D076_PARENTS)
+def _parent_admissions(authority: source.Authority) -> tuple[f.OwnerAdmissionV1, ...]:
+    return tuple(
+        f.OwnerAdmissionV1("M02", source.BRIEFS[signal])
+        for signal in authority.config.definition.derived_dependencies
+    )
 
 
-def _parent_authorities() -> tuple[source.Authority, ...]:
-    return tuple(source.Authority(admission) for admission in _parent_admissions())
+def _parent_authorities(authority: source.Authority) -> tuple[source.Authority, ...]:
+    return tuple(source.Authority(admission) for admission in _parent_admissions(authority))
 
 
 def _relative_frame(
@@ -203,8 +206,8 @@ def _relative_frame(
     cfg = authority.config
     frame = authority.frames.get(request.slot)
     ids = request.predecessor_occurrence_ids
-    if frame is None or len(ids) != len(source.D076_PARENTS) or len(set(ids)) != len(ids):
-        raise ValueError("D076 exact slot and distinct ordered parent IDs required")
+    if frame is None or len(ids) != len(cfg.definition.derived_dependencies) or len(set(ids)) != len(ids):
+        raise ValueError(f"{cfg.signal} exact slot and distinct ordered parent IDs required")
     expected = f.AlignedHistoryRequestV1(
         cfg.signal, cfg.subject, frame.slot, frame.as_of, frame.cutoff,
         cfg.definition.calculation_definition_version, cfg.profile,
@@ -225,12 +228,12 @@ def _relative_produce(
     frame = _relative_frame(authority, request, now)
     cfg = authority.config
     if (
-        tuple(a.config.signal for a in parent_authorities) != source.D076_PARENTS
+        tuple(a.config.signal for a in parent_authorities) != cfg.definition.derived_dependencies
         or len(parents) != len(parent_authorities)
         or any(type(parent) is not f.AlignedHistoryOccurrenceV1 for parent in parents)
         or tuple(p.derived_occurrence_id for p in parents) != request.predecessor_occurrence_ids
     ):
-        raise ValueError("D076 exact ordered parent identities required")
+        raise ValueError(f"{cfg.signal} exact ordered parent identities required")
     keys: list[source.Key] = []
     actual: list[tuple[source.Key, source.raw.RawObservationOccurrenceV1]] = []
     values: list[Fraction] = []
@@ -265,7 +268,12 @@ def _relative_produce(
     # One whole-union predicate after complete actual parent validation, in both
     # live production and ordinary durable read-only reconstruction.
     authority.check_corpus(tuple(keys), tuple(actual))
-    ratio = values[0] - values[1]
+    if cfg.signal == "D076":
+        ratio = values[0] - values[1]
+    elif cfg.signal == "D077":
+        ratio = (values[0] + values[1]) / 2 - values[2]
+    else:
+        raise ValueError("unadmitted relative history jurisdiction")
     value = f.AlignedHistoryOccurrenceV1(
         "M02", NAMESPACE, cfg.brief, cfg.signal, "pending", request, cfg.definition,
         source.POLICY_SHA, cfg.profile, cfg.parameter, cfg.selection, frame.context,
@@ -332,20 +340,21 @@ def _build_relative_owner(
     predecessor_read_storages: tuple[f.SQLiteReadStorageV1, ...],
     storage: f.SQLiteStorageV1, utc_now: Callable[[], datetime],
 ) -> f.AlignedHistoryOwnerV1:
+    count = len(authority.config.definition.derived_dependencies)
     if (
         sealed is not None or type(predecessor_read_storages) is not tuple
-        or len(predecessor_read_storages) != len(source.D076_PARENTS)
+        or len(predecessor_read_storages) != count
         or any(type(s) is not f.SQLiteReadStorageV1 for s in predecessor_read_storages)
-        or len({s.database_path for s in predecessor_read_storages}) != len(source.D076_PARENTS)
+        or len({s.database_path for s in predecessor_read_storages}) != count
         or type(storage) is not f.SQLiteStorageV1 or storage.create is not True
         or not callable(utc_now)
     ):
-        raise ValueError("D076 requires ordered concrete parent reads and fresh own SQLite storage")
+        raise ValueError(f"{authority.config.signal} requires ordered concrete parent reads and fresh own SQLite storage")
     readers = tuple(
         f.create_aligned_history_reader(admission=admission, storage=parent_storage)
-        for admission, parent_storage in zip(_parent_admissions(), predecessor_read_storages, strict=True)
+        for admission, parent_storage in zip(_parent_admissions(authority), predecessor_read_storages, strict=True)
     )
-    parent_authorities = _parent_authorities()
+    parent_authorities = _parent_authorities(authority)
     return _RelativeOwner(
         authority, parent_authorities, readers,
         _relative_store(authority, parent_authorities, storage), utc_now,

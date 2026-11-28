@@ -3287,7 +3287,7 @@ class AlignedHistoryOccurrenceV1(_Validated):
 
     def __post_init__(self) -> None:
         _Validated.__post_init__(self)
-        expected = ExactRatioV1 if self.derived_signal_id == "D076" else Decimal
+        expected = ExactRatioV1 if self.derived_signal_id in ("D076", "D077") else Decimal
         if type(self.result) is not expected:
             raise TypeError("exact jurisdiction-specific history result required")
 

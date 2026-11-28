@@ -28,7 +28,7 @@ POLICY_SHA = "9ba56098c273007980c893db39931ac86e7a3185bbb665f8c3f1e14f99b72af1"
 MANIFEST_SHA = "bb03481de75e1820c7aff61777a4a3aa4f676440ec03e373a05c032a0417c76d"
 INVENTORY_SHA = "3be150f2998b4187a81720b424c848099edeba7a9f638ae90d9aae95d4c5d5c1"
 OWNER_SHA = "6a71f52981fc01da42f9c27726547d0d1ddd69851561479a007aeb30ebd95a41"
-# Distinct first-stage owner jurisdictions. The separate D076 configuration is below.
+# Distinct first-stage owner jurisdictions. Relative configurations are separate.
 BRIEFS = {
     "D071": "65f2d0f9135f291773ab6081ec76892a967315df3ecb9c1760a4e2687a296e5e",
     "D072": "4f8214d1ca11eaf0769206f3f322c799f44883bd266e63748e937dea5602b739",
@@ -47,6 +47,9 @@ SUBJECTS = dict(zip(BRIEFS, ("SPY", "QQQ", "SMH", "SOXX", "NVDA"), strict=True))
 D076_BRIEF = "c2b30721c0f535d00bb09cb801461ddf875966a93049c47fe572856f43fde480"
 D076_BINDING = "6f1324ab9922a1cd8b9994da931ee8f946d7d8666a758f8554269d092d006a80"
 D076_PARENTS = ("D072", "D071")
+D077_BRIEF = "88bdd385ff91432940f4d27a8cff2bce6af22a8c85b858f53ba2f674d3c30a3c"
+D077_BINDING = "7f1b9f882d815616aa8e2fe53d6069800c7524f375202bff4eea5a67bf91a735"
+D077_PARENTS = ("D073", "D074", "D072")
 ROLES = ("R037", "R042")
 LEGAL_CORPORA = ("A", "B", "RANK", "COND", "C_NONPRIOR")
 PROVIDER = "foundation-controlled-aligned-history"
@@ -176,7 +179,9 @@ def _configuration(admission: f.OwnerAdmissionV1, policy: dict[str, Any]) -> Con
     if type(admission) is not f.OwnerAdmissionV1 or admission.object_id != "M02":
         raise ValueError("exact M02 aligned history admission required")
     if admission.implementation_brief_sha256 == D076_BRIEF:
-        return _relative_configuration(policy)
+        return _relative_configuration(policy, "D076")
+    if admission.implementation_brief_sha256 == D077_BRIEF:
+        return _relative_configuration(policy, "D077")
     matching = tuple(k for k, v in BRIEFS.items() if v == admission.implementation_brief_sha256)
     if len(matching) != 1:
         raise ValueError("unadmitted aligned history jurisdiction")
@@ -218,32 +223,40 @@ def _configuration(admission: f.OwnerAdmissionV1, policy: dict[str, Any]) -> Con
     )
 
 
-def _relative_configuration(policy: dict[str, Any]) -> Configuration:
-    signal, subject = "D076", "US_TECH_VS_BROAD"
-    members = ("QQQ", "SPY")
-    brief_path = LEAF + "ALIGNED_HISTORY_D076_IMPLEMENTATION_BRIEF.md"
-    binding = "implementation/authority/T01_ALIGNED_HISTORY_D076_AUTHORITY_BINDING.yaml"
-    _pinned(brief_path, D076_BRIEF)
-    _pinned(binding, D076_BINDING)
+def _relative_configuration(policy: dict[str, Any], signal: str) -> Configuration:
+    if signal == "D076":
+        subject, members = "US_TECH_VS_BROAD", ("QQQ", "SPY")
+        brief, binding_hash = D076_BRIEF, D076_BINDING
+        parents, equation = D076_PARENTS, "D072-D071"
+    elif signal == "D077":
+        subject, members = "SEMIS_VS_TECH", ("SMH", "SOXX", "QQQ")
+        brief, binding_hash = D077_BRIEF, D077_BINDING
+        parents, equation = D077_PARENTS, "(D073+D074)/2-D072"
+    else:
+        raise ValueError("unadmitted relative history jurisdiction")
+    brief_path = LEAF + f"ALIGNED_HISTORY_{signal}_IMPLEMENTATION_BRIEF.md"
+    binding = f"implementation/authority/T01_ALIGNED_HISTORY_{signal}_AUTHORITY_BINDING.yaml"
+    _pinned(brief_path, brief)
+    _pinned(binding, binding_hash)
     row = policy["profiles"][signal]
     if (
         row["subject"] != subject or row["members"] != list(members)
-        or row["raw_dependencies"] != [] or row["derived_dependencies"] != list(D076_PARENTS)
-        or row["equation"] != "D072-D071" or row["kernel"] != "K02_ALGEBRA"
+        or row["raw_dependencies"] != [] or row["derived_dependencies"] != list(parents)
+        or row["equation"] != equation or row["kernel"] != "K02_ALGEBRA"
         or row["parameter_profile"] != "P_BASIC" or row["units"] != "return_spread"
         or row["result_shape"] != "exact_ratio"
         or row["future_own_brief_path"] != brief_path or row["future_binding_path"] != binding
     ):
-        raise ValueError("D076 relative history profile/owner binding mismatch")
+        raise ValueError(f"{signal} relative history profile/owner binding mismatch")
     refs = tuple(f.AuthorityArtifactRefV1(r["path"], r["sha256"]) for r in policy["authority_refs"])
     profile, param, selection = (row[k] for k in ("profile_ref", "parameter_ref", "selection_ref"))
     return Configuration(
-        signal, subject, D076_BRIEF, f.VersionRefV1(profile["id"], profile["version"]),
+        signal, subject, brief, f.VersionRefV1(profile["id"], profile["version"]),
         f.CalculationDefinitionV1(
             signal, row["calculation_definition_version"], row["kernel"], row["equation"],
-            (), D076_PARENTS, row["parameter_profile"], row["units"], row["result_shape"],
+            (), parents, row["parameter_profile"], row["units"], row["result_shape"],
             (*refs, f.AuthorityArtifactRefV1(POLICY_PATH, POLICY_SHA),
-             f.AuthorityArtifactRefV1(brief_path, D076_BRIEF)),
+             f.AuthorityArtifactRefV1(brief_path, brief)),
         ),
         f.CalculationParameterSetV1(
             param["id"], param["version"], "P_BASIC", subject, members,
@@ -305,7 +318,8 @@ class Authority:
             or package["policy"]["sha256"] != POLICY_SHA
             or package["specimens"]["sha256"] != MANIFEST_SHA
             or package["inventory"]["sha256"] != INVENTORY_SHA
-            or package["exact_nonfungible_ceilings"][self.config.signal] != 2
+            or package["exact_nonfungible_ceilings"][self.config.signal]
+            != (3 if self.config.signal == "D077" else 2)
         ):
             raise ValueError("unaligned controlled history owner grant")
         manifest = _document(MANIFEST_PATH, MANIFEST_SHA)
@@ -523,8 +537,8 @@ def select_role(
 
 def build_source(admission: f.OwnerAdmissionV1, specimen_id: str) -> f.AlignedHistorySourceV1:
     authority = Authority(admission)
-    if authority.config.signal == "D076":
-        raise ValueError("D076 has no own raw source")
+    if authority.config.signal in ("D076", "D077"):
+        raise ValueError(f"{authority.config.signal} has no own raw source")
     digest, originals = authority.specimen(specimen_id)
     owner = raw.create_owner()
     for original in originals:
