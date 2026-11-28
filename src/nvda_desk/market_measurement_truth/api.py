@@ -3689,3 +3689,114 @@ __all__ += [
     "create_option_iv_prior_session_owner",
     "create_option_iv_prior_session_reader", "create_option_iv_prior_session_source",
 ]
+
+
+@dataclass(frozen=True, slots=True)
+class OptionTimeLocalOccurrenceV1:
+    """D003 only: strict typed local result; other instants remain UTC."""
+    owner_object_id: str
+    owner_namespace: str
+    implementation_brief_sha256: str
+    derived_signal_id: str
+    derived_occurrence_id: str
+    request: OptionTimeRequestV1
+    definition: CalculationDefinitionV1
+    source_policy_sha256: str
+    source_profile_ref: VersionRefV1
+    projection_mappings: tuple[raw_api.RawSignalProjectionMappingV1, ...]
+    original_observations: tuple[raw_api.RawObservationOccurrenceV1, ...]
+    selected_projections: tuple[raw_api.ProjectedRawValueV1, ...]
+    predecessor_occurrence_ids: tuple[str, ...]
+    predecessor: OptionTimeOccurrenceV1
+    zone_policy_ref: VersionRefV1
+    result: datetime
+    units: str
+    result_shape: str
+    effective_as_of_utc: datetime
+    knowledge_cutoff_utc: datetime
+    calculated_at_utc: datetime
+
+    def __post_init__(self) -> None:
+        from datetime import UTC
+        from zoneinfo import ZoneInfo
+
+        hints = get_type_hints(type(self))
+        for field in fields(self):
+            value = getattr(self, field.name)
+            if not _matches(value, hints[field.name]):
+                raise TypeError(f"{field.name} has the wrong constructor type")
+            if type(value) is str and not value:
+                raise ValueError(f"{field.name} must be nonempty")
+            if type(value) is datetime and field.name != "result":
+                _utc(value)
+            if type(value) is tuple and (
+                any(item in value[:i] for i, item in enumerate(value))
+                or any(type(item) is str and not item for item in value)
+            ):
+                raise ValueError(f"{field.name} requires distinct nonempty members")
+        if (
+            self.derived_signal_id != "D003"
+            or not re.fullmatch(r"[0-9a-f]{64}", self.implementation_brief_sha256)
+            or not re.fullmatch(r"[0-9a-f]{64}", self.source_policy_sha256)
+        ):
+            raise ValueError("exact D003 carrier identities required")
+        local = self.result
+        if type(local.tzinfo) is not ZoneInfo or local.tzinfo.key != "America/New_York":
+            raise ValueError("D003 requires the admitted IANA local datetime")
+        recovered = local.astimezone(UTC).astimezone(local.tzinfo)
+        if recovered.isoformat() != local.isoformat() or recovered.fold != local.fold:
+            raise ValueError("D003 local offset/fold is inconsistent with its UTC instant")
+
+
+class OptionTimeLocalReadsV1(Protocol):
+    def get_derived_occurrence(
+        self, derived_occurrence_id: str,
+    ) -> OptionTimeLocalOccurrenceV1 | None: ...
+
+    def list_derived_history(
+        self, *, derived_signal_id: str, subject_instrument: str,
+        effective_at_or_before_utc: datetime, knowledge_at_or_before_utc: datetime,
+        limit: int,
+    ) -> tuple[OptionTimeLocalOccurrenceV1, ...]: ...
+
+
+class OptionTimeLocalOwnerV1(Protocol):
+    @property
+    def reads(self) -> OptionTimeLocalReadsV1: ...
+
+    def materialise(
+        self, request: OptionTimeRequestV1,
+    ) -> OptionTimeLocalOccurrenceV1 | None: ...
+
+
+def create_option_time_local_source(
+    *, admission: OwnerAdmissionV1, specimen_id: str,
+) -> OptionTimeSourceV1:
+    from ._option_time_source import build_local_source
+
+    return build_local_source(admission, specimen_id)
+
+
+def create_option_time_local_owner(
+    *, admission: OwnerAdmissionV1, source: OptionTimeSourceV1,
+    parent_storage: SQLiteReadStorageV1, storage: SQLiteStorageV1,
+    utc_now: Callable[[], datetime],
+) -> OptionTimeLocalOwnerV1:
+    from ._option_time import build_local_owner
+
+    return build_local_owner(admission, source, parent_storage, storage, utc_now)
+
+
+def create_option_time_local_reader(
+    *, admission: OwnerAdmissionV1, storage: SQLiteReadStorageV1,
+) -> OptionTimeLocalReadsV1:
+    from ._option_time import build_local_reader
+
+    return build_local_reader(admission, storage)
+
+
+__all__ += [
+    "OptionTimeLocalOccurrenceV1", "OptionTimeLocalOwnerV1", "OptionTimeLocalReadsV1",
+    "create_option_time_local_owner", "create_option_time_local_reader",
+    "create_option_time_local_source",
+]

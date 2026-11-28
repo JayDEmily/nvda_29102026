@@ -246,6 +246,12 @@ def _direct(reads: Any, original: raw.RawObservationOccurrenceV1) -> raw.Project
 
 def build_source(admission: f.OwnerAdmissionV1, specimen_id: str) -> f.OptionTimeSourceV1:
     check_admission(admission)
+    return _build_sealed_source(admission, specimen_id)
+
+
+def _build_sealed_source(
+    admission: f.OwnerAdmissionV1, specimen_id: str,
+) -> f.OptionTimeSourceV1:
     digest, originals = _specimen(specimen_id)
     owner = raw.create_owner()
     for original in originals:
@@ -269,6 +275,16 @@ def live_pair(
     source: f.OptionTimeSourceV1,
     cutoff: datetime,
 ) -> tuple[tuple[raw.RawObservationOccurrenceV1, ...], tuple[raw.ProjectedRawValueV1, ...]]:
+    selected = _live_roles(source, cutoff)
+    return tuple(selected[r][0] for r in ("R002", "R003")), tuple(
+        selected[r][1] for r in ("R002", "R003")
+    )
+
+
+def _live_roles(
+    source: f.OptionTimeSourceV1,
+    cutoff: datetime,
+) -> dict[str, tuple[raw.RawObservationOccurrenceV1, raw.ProjectedRawValueV1]]:
     digest, originals = _specimen(source.specimen_id)
     if source.expanded_sha256 != digest or source.expanded_count != len(originals):
         raise ValueError("sealed option-time roster mismatch")
@@ -330,9 +346,7 @@ def live_pair(
         if native.canonical(actual[0]) != native.canonical(direct):
             raise ValueError("direct and history projection mismatch")
         selected[rid] = original, actual[0]
-    return tuple(selected[r][0] for r in ("R002", "R003")), tuple(
-        selected[r][1] for r in ("R002", "R003")
-    )
+    return selected
 
 
 def validate_pair(
@@ -355,4 +369,55 @@ def validate_pair(
     ):
         raise ValueError("selected option-time originals not a permitted pair")
     for rid, original, projection in zip(("R002", "R003"), originals, projections, strict=True):
+        check_projection(original, projection, mapping_for(rid))
+
+
+LOCAL_BRIEF_PATH = LEAF + "D003_IMPLEMENTATION_BRIEF.md"
+LOCAL_BRIEF = "0c588c6d06690f2e8fd23898cb4c219263dfc9b0924b071b40c2f92098ee5344"
+LOCAL_BINDING_PATH = "implementation/authority/T01_D003_OPTION_TIME_AUTHORITY_BINDING.yaml"
+LOCAL_BINDING_SHA = "a26f84b5ea86e6b5899b303ac4fe0f79d0915f5d2106392f4cf3ba40cbd48637"
+
+
+def local_policy() -> dict[str, Any]:
+    _pinned(LOCAL_BRIEF_PATH, LOCAL_BRIEF)
+    _pinned(LOCAL_BINDING_PATH, LOCAL_BINDING_SHA)
+    return policy()
+
+
+def check_local_admission(admission: f.OwnerAdmissionV1) -> None:
+    if type(admission) is not f.OwnerAdmissionV1 or admission != f.OwnerAdmissionV1(
+        "M02", LOCAL_BRIEF,
+    ):
+        raise ValueError("unadmitted D003 option-time owner")
+    local_policy()
+
+
+def build_local_source(admission: f.OwnerAdmissionV1, specimen_id: str) -> f.OptionTimeSourceV1:
+    check_local_admission(admission)
+    return _build_sealed_source(admission, specimen_id)
+
+
+def live_local_roles(
+    raw_source: f.OptionTimeSourceV1, cutoff: datetime,
+) -> dict[str, tuple[raw.RawObservationOccurrenceV1, raw.ProjectedRawValueV1]]:
+    return _live_roles(raw_source, cutoff)
+
+
+def validate_local_roles(
+    originals: tuple[raw.RawObservationOccurrenceV1, ...],
+    projections: tuple[raw.ProjectedRawValueV1, ...],
+) -> None:
+    """Require the complete selected parent pair and R004 from one literal roster."""
+    if len(originals) != 3 or len(projections) != 3:
+        raise ValueError("D003 requires exact parent pair plus selected R004")
+    roles = ("R002", "R003", "R004")
+    actual = native.canonical(originals)
+    for name in SPECIMENS:
+        _, roster = _specimen(name)
+        expected = tuple(next(o for o in roster if _role(o) == rid) for rid in roles)
+        if actual == native.canonical(expected):
+            break
+    else:
+        raise ValueError("D003 selected originals do not co-occur in one admitted roster")
+    for rid, original, projection in zip(roles, originals, projections, strict=True):
         check_projection(original, projection, mapping_for(rid))

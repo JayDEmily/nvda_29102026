@@ -62,3 +62,84 @@ def decode(payload: bytes) -> f.OptionTimeOccurrenceV1:
     if encode(value) != payload:
         raise ValueError("option-time canonical readback mismatch")
     return value
+
+
+_LOCAL_TAG = "OptionTimeLocalOccurrenceV1"
+
+
+def local_datetime_facts(value: Any) -> dict[str, Any]:
+    from datetime import UTC, datetime
+    from zoneinfo import ZoneInfo
+
+    if type(value) is not datetime or type(value.tzinfo) is not ZoneInfo:
+        raise TypeError("exact D003 ZoneInfo datetime required")
+    return {
+        "iso": value.isoformat(),
+        "iana": value.tzinfo.key,
+        "fold": value.fold,
+        "utc": value.astimezone(UTC).isoformat(),
+    }
+
+
+def _local_datetime(content: Any) -> Any:
+    from datetime import datetime
+    from zoneinfo import ZoneInfo
+
+    if (
+        type(content) is not dict or set(content) != {"iso", "iana", "fold", "utc"}
+        or type(content["iso"]) is not str or type(content["utc"]) is not str
+        or content["iana"] != "America/New_York"
+        or type(content["fold"]) is not int or content["fold"] not in (0, 1)
+    ):
+        raise ValueError("unadmitted D003 local result representation")
+    utc = datetime.fromisoformat(content["utc"])
+    f._utc(utc)
+    value = utc.astimezone(ZoneInfo(content["iana"]))
+    if local_datetime_facts(value) != content:
+        raise ValueError("D003 local key/fold/offset/UTC mismatch")
+    return value
+
+
+def _local_content(value: f.OptionTimeLocalOccurrenceV1) -> dict[str, Any]:
+    content = _record(value, f.OptionTimeLocalOccurrenceV1)
+    content["request"] = _record(value.request, f.OptionTimeRequestV1)
+    content["predecessor"] = _content(value.predecessor)
+    content["result"] = local_datetime_facts(value.result)
+    return content
+
+
+def _local_envelope(content: dict[str, Any]) -> bytes:
+    return native.canonical({"record": _LOCAL_TAG, "version": 1, "content": content})
+
+
+def encode_local(value: f.OptionTimeLocalOccurrenceV1) -> bytes:
+    return _local_envelope(_local_content(value))
+
+
+def local_identity(value: f.OptionTimeLocalOccurrenceV1) -> str:
+    content = _local_content(value)
+    del content["derived_occurrence_id"]
+    del content["calculated_at_utc"]
+    return "mmtoptiontimelocal1:" + hashlib.sha256(_local_envelope(content)).hexdigest()
+
+
+def decode_local(payload: bytes) -> f.OptionTimeLocalOccurrenceV1:
+    envelope = native.decode(payload, dict)
+    if (
+        set(envelope) != {"record", "version", "content"}
+        or envelope["record"] != _LOCAL_TAG
+        or type(envelope["version"]) is not int or envelope["version"] != 1
+    ):
+        raise ValueError("unadmitted D003 option-time envelope")
+    content = envelope["content"]
+    if type(content) is not dict or set(content) != {
+        field.name for field in fields(f.OptionTimeLocalOccurrenceV1)
+    }:
+        raise ValueError("D003 option-time field set mismatch")
+    content["request"] = _rebuild(content["request"], f.OptionTimeRequestV1)
+    content["predecessor"] = decode(_envelope(content["predecessor"]))
+    content["result"] = _local_datetime(content["result"])
+    value = _rebuild(content, f.OptionTimeLocalOccurrenceV1)
+    if encode_local(value) != payload:
+        raise ValueError("D003 canonical readback mismatch")
+    return value

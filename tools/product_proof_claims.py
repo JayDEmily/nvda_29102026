@@ -1264,6 +1264,13 @@ def _option_first_stage_extensions(
             "84d7116b41d01fe59877f7841c9e376cd2d517fe7bf7c010a4c33ad6fb014e81",
         ),
         (
+            "L07a", "D003", "m02_option_time_d003",
+            "0c588c6d06690f2e8fd23898cb4c219263dfc9b0924b071b40c2f92098ee5344",
+            "a26f84b5ea86e6b5899b303ac4fe0f79d0915f5d2106392f4cf3ba40cbd48637",
+            "371d46b91740000614b65fca306f41d9dab7b98f6ca54b8b8e3abc3eb45cd183",
+            "317eac2082f637b8cfdcea48a5b46b410b7754a8b30c91ccf9ca0291dce06ae8",
+        ),
+        (
             "L10a", "D095", "m02_option_iv_prior_session_d095",
             "4885ee1efe9f5832f33a8bf0552caf288990f9f992542c26f535bf378bcbc703",
             "2a4530490537b2552b320db240ac09eb24508ccc9d9347316e517463c4548f32",
