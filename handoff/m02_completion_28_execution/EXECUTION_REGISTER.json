@@ -1959,12 +1959,47 @@
             "candidate_tree": "82a3d125b536609ad54293da87509f36b0aae4b7"
           },
           "future_descriptor_sha256": "d6309aecacd15eb018b003b679b2c1c3964249c19f89ed7ffd0d21a1901832e8",
-          "independent_review": "PENDING",
+          "independent_review": "ACCEPT_DOCUMENTARY_IMPLEMENTATION",
           "parent_product_acceptance_established": false,
           "active_proof_installation": false,
           "active_proof_registration": false,
           "execution_release": false,
           "product_cases_executed": 0
+        },
+        "downstream_d076_independent_implementation_and_shared_surface_applicability_verdict": {
+          "jurisdiction": "D076",
+          "proof_id": "SUP-D076-HISTORY",
+          "case_count": 2,
+          "disposition": "ACCEPT_DOCUMENTARY_IMPLEMENTATION",
+          "reviewed_handoff": "6c02e879f204817065d28b4bf72271c2f945edc7",
+          "candidate": "280c1506008c76c8d599118b05ec140bf1596bd0",
+          "candidate_tree": "e20dca64e80cc165f0306e5bea08500d3caf9289",
+          "review_commit": "2d912f65efaa60079f61fa4f42897d1a9d3aa834",
+          "review_tree": "e7e8109b89c280887730512fb815b658330afef7",
+          "review_ref": "refs/heads/review/trial-cac-nvidia-d076-implementation-20261128",
+          "report_path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_D076_DOWNSTREAM_SOURCE_IMPLEMENTATION_APPLICABILITY_VERDICT_20261128.md",
+          "report_git_blob": "2ff149bf09d3e6d7847ea8a8f5c6f385ca55e6e8",
+          "report_sha256": "af639412072377a25d08c4151113fa6e560634a8c3d888315ddd24f6885924b2",
+          "report_bytes": 12277,
+          "shared_surface_dispositions": {
+            "D071": "ACCEPT_CANDIDATE_SPECIFIC_DOCUMENTARY_APPLICABILITY_NO_MATERIAL_INVALIDATION_ESTABLISHED",
+            "D072": "ACCEPT_CANDIDATE_SPECIFIC_DOCUMENTARY_APPLICABILITY_NO_MATERIAL_INVALIDATION_ESTABLISHED",
+            "D073": "ACCEPT_CANDIDATE_SPECIFIC_DOCUMENTARY_APPLICABILITY_NO_MATERIAL_INVALIDATION_ESTABLISHED",
+            "D074": "ACCEPT_CANDIDATE_SPECIFIC_DOCUMENTARY_APPLICABILITY_NO_MATERIAL_INVALIDATION_ESTABLISHED",
+            "D075": "ACCEPT_CANDIDATE_SPECIFIC_DOCUMENTARY_APPLICABILITY_NO_MATERIAL_INVALIDATION_ESTABLISHED",
+            "D001": "ACCEPT_CANDIDATE_SPECIFIC_DOCUMENTARY_APPLICABILITY_NO_MATERIAL_INVALIDATION_ESTABLISHED",
+            "D003": "ACCEPT_CANDIDATE_SPECIFIC_DOCUMENTARY_APPLICABILITY_NO_MATERIAL_INVALIDATION_ESTABLISHED",
+            "D086": "ACCEPT_CANDIDATE_SPECIFIC_DOCUMENTARY_APPLICABILITY_NO_MATERIAL_INVALIDATION_ESTABLISHED",
+            "D095": "ACCEPT_CANDIDATE_SPECIFIC_DOCUMENTARY_APPLICABILITY_NO_MATERIAL_INVALIDATION_ESTABLISHED",
+            "prior_legacy": "ACCEPT_CANDIDATE_SPECIFIC_DOCUMENTARY_APPLICABILITY_NO_MATERIAL_INVALIDATION_ESTABLISHED",
+            "existing_G01": "ACCEPT_CANDIDATE_SPECIFIC_DORMANT_EXTENSION_APPLICABILITY_NO_MATERIAL_INVALIDATION_ESTABLISHED"
+          },
+          "parent_product_acceptance_established": false,
+          "active_proof_installation": false,
+          "active_proof_registration": false,
+          "execution_release": false,
+          "product_cases_executed": 0,
+          "scope": "Static documentary implementation and candidate-specific shared-surface applicability only. Exact two inert cases; D077 untouched; no runtime acceptance or release."
         }
       }
     },
@@ -5881,9 +5916,9 @@
   "execution_status": "ready",
   "current_leaf": "L01a",
   "next_assignment": {
-    "role": "Fresh distinct L01a D076 downstream source implementation and shared-surface applicability/invalidation Reviewer",
-    "task": "Fetch exact trial HEAD; stop on mismatch. Execute only committed handoff/m02_completion_28_execution/L01a/D076_DOWNSTREAM_SOURCE_IMPLEMENTATION_REVIEW_COMMISSION_20261128.md SHA256 aa28c1df77036bdb5d5c52ca3593f177a7320f6b66db784835fcf1dccbf801c4; exact source 280c1506008c76c8d599118b05ec140bf1596bd0, tree e20dca64e80cc165f0306e5bea08500d3caf9289, Worker report 3aee1474ff9787e8505b07e99b48e1b9102de928fa879498fdf8c6869d0e532c. Independently review D076 bounded five-path implementation, two inert cases and separate candidate-specific shared-surface applicability/invalidation. No source/proof edits, active installation/registration, product/proof imports, collection, execution or release. Continue eligible distinct-role succession once via owner-adopted CAC MVP.",
-    "selection_basis": "D076 source implemented untested; independent review mandatory before registration preparation; D077 not commissioned, all product execution held."
+    "role": "Fresh distinct L01a D076 downstream registration preparation Worker",
+    "task": "Fetch exact trial HEAD; stop on mismatch. Follow AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and execution register. Verify independent verdict 2d912f65efaa60079f61fa4f42897d1a9d3aa834 at refs/heads/review/trial-cac-nvidia-d076-implementation-20261128 report handoff/m02_completion_28_execution/L01a/INDEPENDENT_D076_DOWNSTREAM_SOURCE_IMPLEMENTATION_APPLICABILITY_VERDICT_20261128.md SHA256 af639412072377a25d08c4151113fa6e560634a8c3d888315ddd24f6885924b2 and source candidate 280c1506008c76c8d599118b05ec140bf1596bd0, tree e20dca64e80cc165f0306e5bea08500d3caf9289. Prepare only four inert exact D076 registration candidates: claim descriptor, byte-for-byte physical proof source copy, immutable generation 0001 and admission pointer, under exact committed brief/binding/contract, owner grant and remap; prospective descriptor SHA256 d6309aecacd15eb018b003b679b2c1c3964249c19f89ed7ffd0d21a1901832e8. Two exact ordered nodes only. No active installation, source/proof edits, product/proof imports, collection, execution, release, policy or ledger change. Independent preparation review, installation commission and independent installation review remain required. Preserve D077, all 64 holds, actual D072/D071 product acceptance prerequisite and sole Tester candidate-specific intake/runtime/precall, D004/D085 held, D145 PAUSED, G01 R2 unadopted, main/original. Continue eligible distinct-role succession once via owner-adopted CAC MVP.",
+    "selection_basis": "D076 exact source documentary implementation and candidate-specific shared-surface applicability independently accepted; only separate bounded inert registration preparation eligible. No product acceptance or execution release."
   },
   "trial_forward_succession_authority": {
     "scope": "trial/cac-nvidia-continuation-20261127 only",
