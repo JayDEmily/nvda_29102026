@@ -7693,6 +7693,37 @@
           "execution_release": false,
           "parent_product_acceptance": false,
           "product_cases_executed": 0
+        },
+        "independent_d004_inert_authoring_verdict": {
+          "verdict": {
+            "path": "handoff/m02_completion_28_execution/L07a/INDEPENDENT_D004_OPTION_SESSION_INERT_AUTHORING_VERDICT_20261128.md",
+            "sha256": "80a979605a68bd9dbf9a3819ae5db3d162c74ba67cefa1ff94944991b36d08bf",
+            "git_blob": "9b8da48bc96c12ff08acc35f7efb5e4354b5c75a",
+            "bytes": 11957,
+            "commit": "dc9e20d9ff1d349aae20ee7579922ad1861d0fc6",
+            "tree": "ed6092a4c1f0cba0c4c4b46f87b85824182efa99",
+            "parent": "d75570e101c220d267ef45a32d16808a59420e0f",
+            "review_ref": "refs/heads/review/trial-cac-nvidia-d004-option-session-authoring-20261128"
+          },
+          "disposition": "ACCEPT_DOCUMENTARY_AUTHORING",
+          "candidate": "9e308b96efd2dae4fbd613294a8fc2d7efea1bb9",
+          "candidate_tree": "807e8112b2ef9c7177a398caefe77473138db1cd",
+          "proof_id": "SUP-D004-USOPTION",
+          "case_count": 3,
+          "parent_product_acceptance": false,
+          "execution_release": false,
+          "product_cases_executed": 0
+        },
+        "d004_source_implementation_commission": {
+          "path": "handoff/m02_completion_28_execution/L07a/D004_OPTION_SESSION_SOURCE_IMPLEMENTATION_COMMISSION_20261128.md",
+          "sha256": "7dbd087182cdfc2a15e47558814a2fe217c3c8311c479a25c8031a13e9f7dc9b",
+          "git_blob": "52b842f1769b2934ae87830bca4bb36a3a5072e6",
+          "bytes": 3975,
+          "disposition": "EXACT_BOUNDED_SOURCE_IMPLEMENTATION_COMMISSIONED",
+          "case_count": 3,
+          "execution_release": false,
+          "parent_product_acceptance": false,
+          "product_cases_executed": 0
         }
       }
     },
@@ -10905,9 +10936,9 @@
   "execution_status": "ready",
   "current_leaf": "L07a",
   "next_assignment": {
-    "role": "Fresh distinct independent L07a D004 option-session inert proof-authoring Reviewer",
-    "task": "Fetch exact commissioned trial HEAD; stop on mismatch. Follow AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and execution register. Execute only committed handoff/m02_completion_28_execution/L07a/D004_OPTION_SESSION_INERT_AUTHORING_REVIEW_COMMISSION_20261128.md SHA256 4b07eddcf18cd41f58ecc046b93df2105e4f456df992f9d60157ef83ac128c4b. Verify candidate 9e308b96efd2dae4fbd613294a8fc2d7efea1bb9 tree 807e8112b2ef9c7177a398caefe77473138db1cd, exact binding and three inert proof functions/contract, actual D001/D003 registered interfaces, exact cases and all holds; no D085 preparation, physical proof installation, source edits, registration, product/proof imports, loader, collection, execution or release. Preserve all 64 holds/67 historical accepted, D078 legacy/registration, actual parent acceptance prerequisite and sole Tester. Continue eligible distinct-role succession once using owner-adopted CAC MVP.",
-    "selection_basis": "Exact D004 binding installed and three inert proofs authored; fresh independent documentary authoring review required before separately commissioned implementation."
+    "role": "Fresh distinct L07a D004 option-session source implementation Worker",
+    "task": "Fetch exact commissioned trial HEAD; stop on mismatch. Follow AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and execution register. Execute only committed handoff/m02_completion_28_execution/L07a/D004_OPTION_SESSION_SOURCE_IMPLEMENTATION_COMMISSION_20261128.md SHA256 7dbd087182cdfc2a15e47558814a2fe217c3c8311c479a25c8031a13e9f7dc9b. Verify independent authoring verdict dc9e20d9ff1d349aae20ee7579922ad1861d0fc6 report SHA256 80a979605a68bd9dbf9a3819ae5db3d162c74ba67cefa1ff94944991b36d08bf; implement only exact additive D004 source and dormant fixed G01 route in five approved paths. Commission independent source and candidate-specific shared-surface applicability/invalidation review. No D085 preparation, physical proof installation, active registration, product/proof imports, loader, collection, execution or release. Preserve 64 holds/67 historical accepted, D078 legacy/registration, actual parent acceptance prerequisite and sole Tester. Continue eligible distinct-role succession once using owner-adopted CAC MVP.",
+    "selection_basis": "Exact D004 binding and inert three-case authoring independently documentarily accepted; only bounded additive source implementation eligible, followed by independent implementation/applicability review. Parent product acceptance and execution remain held."
   },
   "trial_forward_succession_authority": {
     "scope": "trial/cac-nvidia-continuation-20261127 only",
