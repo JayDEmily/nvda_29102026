@@ -3057,8 +3057,9 @@
   "execution_status": "ready",
   "current_leaf": "L01a",
   "next_assignment": {
-    "role": "Independent documentary reviewer",
-    "task": "Fresh distinct G01 R2 documentary reviewer, as manager-coordinated next assignment while L01a remains execution-held. Verify received trial H and follow the owner-adopted simplified CAC transport in AGENTS.md. Do not repeat prior manually consumed handoff aa1fe57e10f14c8c936ff4fbf5b89732313aea35. The manager is the R2 proposal Worker, not its independent reviewer. Read exact separate proposal branch proposal/g01-prospective-case-control-20261128 at 6cbd90169b4df24c4cf8d717f2decd3521403aab, tree 4f06a55bd5cfe4696966eb0a4117f329d3be1c89, direct parent da94b21e60358249ea157eaef5860d9743e749a7; brief handoff/m02_completion_28_execution/G01_PROSPECTIVE_FINITE_PROOF_CONTROL_20261128.md SHA256 6f4a485a9db0bc939c7d340132e133951f432eb5c8906bbb1d7d86cc70e342f9. Follow its section 6 exact R2 commission and R1 verdict 587ab8accaefb63860ddad255c88413edb9e37aa. Publish only the distinct verdict on review/g01-prospective-case-control-r2-20261128, direct child of P, and verify parent, sole delta and exact readback. No product execution, new cases, implementation, adoption, release, or merge of proposal snapshot. Review both immutable authority equality and proportionality; seven proposed nonproduct witnesses are a ceiling for review, not admission or quota. The trial register has reconciled the independent D071-D075 registration ACCEPT at 44f538d5b3412d95e8fdad80d17ed74a82aca221; keep all 64 held, ten NOT_ATTEMPTED, 67 historical accepted, 12 mapping-only and D145 PAUSED. After the exact independent verdict is published and verified, resume trial coordination under the existing owner forward-succession directive, separately from the proposal-review scope: reconcile the result without altering evidence, route any bounded return to a distinct Worker; if ACCEPT_FOR_OWNER_DECISION, preserve exact owner adoption/admission boundary and continue genuinely independent authorised work where eligible, without implementing the unadopted amendment or appointing another Tester. Do not change the proposal branch from the review role. Owner directive 28 November 2026: continuous forward succession in this isolated trial only, using the tested standalone CAC MVP as specified in AGENTS.md. After finishing authorised work and verifying publication, the current agent determines the next eligible distinct role and commissions it once. No old PCA binding, plugin activation, model switching, group management or duplicate transport checks. Preserve all independent engineering and Tester gates, holds, exact candidate/assignment checkpoints and genuine platform approval requirements. Never repeat an attempted or uncertain Send. No original-work/main changes or merge without owner authority."
+    "role": "Fresh distinct independent implementation-authority binding documentary reviewer",
+    "task": "Independent pre-installation documentary review of two review-ready, independent controlled jurisdictions only: L07b SUP-D001-OPTION (four cases) and L10a/L11 M02-C28-D095 (seven cases). H is the received trial checkpoint; stop if fetched HEAD differs. Use Remote Desktop Commander and Ubuntu Git; follow AGENTS.md (owner-adopted CAC MVP), EXEC_PLAN.md, GUARDRAILS.md, test override and this register. The exact own briefs, inactive binding paths/SHA256, intended active destinations, allowed product paths and finite allocations are in the respective first_stage_inactive_bindings records; D095 is one jurisdiction shared by L10a/L11, not two. Owner consolidated64 grant and separate independently reviewed option-time and IV packages are already adopted for exact controlled scope. Independently verify both exact inactive own brief/binding byte identities, applicable grant and reviewed inventory, nonfungible case/ceiling and exact path-only remap authority/projection, M02 then G01 modification targets, source/profile and dependency/pre-installation invariants, no existing conflicting active binding, finite admission/ledger association, no release. Inspect relevant primary evidence, prior findings and current authority. Separate verdicts ACCEPT_DOCUMENTARY_BINDING, RETURN_TO_WORKER or BLOCKED for D001 and D095 in one exact report at handoff/m02_completion_28_execution/INDEPENDENT_CAC_TRIAL_D001_D095_BINDING_VERDICT_20261128.md, new refs/heads/review/trial-cac-nvidia-d001-d095-bindings-20261128, direct child of received H; publish only report and verify remote parent, sole delta and exact readback. Do not install bindings, author proofs, implement, import product, invoke product collection/runtime, modify evidence, approve new cases or execute/release any case. Keep G01 R2 ACCEPT_FOR_OWNER_DECISION separate and unadopted; no merge or implementation of that proposal. L01a five installations documentary accepted but only the already designated strict Tester can perform candidate-specific intake/precall release; no new Tester or assumed product result. All 64 held, ten first-stage NOT_ATTEMPTED, 67 historical accepted, twelve mapping-only, D145 PAUSED. After independent publication and verification, reconcile separate exact dispositions in the trial register and continue eligible distinct-role succession once under AGENTS.md, preserving all gates/holds and genuine platform approval requirements. Do not retry attempted or uncertain Send.",
+    "selection_basis": "Independent first-stage binding reviews are already explicitly pending and the exact inactive D001 and D095 candidates exist. Both depend on L00 only for source-contract preparation, neither on L01a product acceptance; a single fresh reviewer can adjudicate separate dispositions without role conflict or redundant Worker preparation. L07a D003/D004 and D086 depend on D001 and remain held at their respective prerequisites. No change to prior leaf/evidence states."
   },
   "trial_forward_succession_authority": {
     "scope": "trial/cac-nvidia-continuation-20261127 only",
@@ -3075,7 +3076,7 @@
     }
   },
   "g01_prospective_control_coordination": {
-    "status": "R2_PROPOSAL_REVIEW_PENDING_NOT_ADOPTED",
+    "status": "R2_ACCEPT_FOR_OWNER_DECISION_NOT_ADOPTED",
     "proposal_branch": "proposal/g01-prospective-case-control-20261128",
     "proposal_commit": "6cbd90169b4df24c4cf8d717f2decd3521403aab",
     "proposal_tree": "4f06a55bd5cfe4696966eb0a4117f329d3be1c89",
@@ -3084,6 +3085,19 @@
     "r1_verdict_commit": "587ab8accaefb63860ddad255c88413edb9e37aa",
     "review_ref": "refs/heads/review/g01-prospective-case-control-r2-20261128",
     "review_report_path": "handoff/m02_completion_28_execution/INDEPENDENT_G01_PROSPECTIVE_FINITE_PROOF_CONTROL_R2_VERDICT_20261128.md",
-    "scope": "Coordination reference only; no adoption, implementation, test admission or trial merge. L01a installation verdict reconciled, all execution holds unchanged."
+    "scope": "Coordination reference only; no adoption, implementation, test admission or trial merge. L01a installation verdict reconciled, all execution holds unchanged.",
+    "r2_independent_verdict": {
+      "commit": "9ec26668ccea85601d863a02e94850f95bd2da29",
+      "tree": "acf1458d369baabbef95270794c2b806f31dc548",
+      "parent": "6cbd90169b4df24c4cf8d717f2decd3521403aab",
+      "ref": "refs/heads/review/g01-prospective-case-control-r2-20261128",
+      "path": "handoff/m02_completion_28_execution/INDEPENDENT_G01_PROSPECTIVE_FINITE_PROOF_CONTROL_R2_VERDICT_20261128.md",
+      "git_blob": "6b86b8d6db99cfb2a399b81b2daad85b0db52b39",
+      "sha256": "ae7fd790fc2740088579a3127314c195f35d7bf4f02f3c34c6596e5a2f423168",
+      "bytes": 14278,
+      "disposition": "ACCEPT_FOR_OWNER_DECISION",
+      "scope": "Exact pre-edit documentary proposal only; no adoption, additional case admission, source edits, release or integration. Seven nonproduct witnesses are a proposed ceiling only. R1 mechanism resolved; nonblocking correction: D091 pinned original grant also exists at current proposal tree with identical SHA256."
+    },
+    "next_owner_boundary": "Exact owner adoption of the independently reviewed P, finite nonproduct case admission, G01 ingress binding and later precise integration-diff review; no implementation of unadopted amendment."
   }
 }
