@@ -1516,7 +1516,7 @@
         "L00"
       ],
       "obligation": "Bind the exact option expiry instant and timezone/session convention separately from its date, with compatible true-instant D001. Never invent midnight or event time from date-only/receipt-only values. Bind exact year-fraction representation. Independently prove a necessary option-domain D001 extension; retain its original profile and zero new identity contribution.",
-      "status": "IMPLEMENTED_UNTESTED_INDEPENDENT_REGISTRATION_PREPARATION_REQUIRED_EXECUTION_HELD",
+      "status": "IMPLEMENTED_UNTESTED_INERT_REGISTRATION_PREPARED_INDEPENDENT_REVIEW_REQUIRED_EXECUTION_HELD",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G2_AFTER_L18"
@@ -1550,7 +1550,7 @@
         ],
         "execution_release": false,
         "product_status": "NOT_ATTEMPTED",
-        "first_unmet_invariant": "Distinct Worker preparation of exact inert generation-1 and admission artifacts, followed by fresh independent registration clearance before activation; separate designated strict Tester candidate-specific intake and precall release. All engineering holds remain.",
+        "first_unmet_invariant": "Fresh independent registration-preparation clearance before exact physical activation; then independent installation clearance and sole strict Tester candidate-specific intake/precall release. All engineering holds remain.",
         "tester_designation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
         "tester_status": "CANDIDATE_SPECIFIC_INTAKE_REQUIRED",
         "scope": "Controlled synthetic only; no official/native certification or new product acceptance",
@@ -1693,6 +1693,73 @@
           "candidate": "f0cf010f62719e3e9c21fddb2d45474295afcf6e",
           "candidate_tree": "1ac70938abfb661bdb0c9bcb510a4e1057c16fc1",
           "scope": "Exact source documentary implementation only; IMPLEMENTED_UNTESTED. No registration, activation, execution, release or product acceptance."
+        },
+        "first_stage_registration_preparation": {
+          "status": "INERT_REGISTRATION_PREPARED_INDEPENDENT_REVIEW_REQUIRED_EXECUTION_HELD",
+          "input_handoff": "a1ff344c97c54a822bce9341d5aa38fdb9a139c8",
+          "candidate": "7df86afeac63af59105786a2410734da12b7460c",
+          "candidate_tree": "86a827fc9c84170e72985a29fe3a7397251dce0a",
+          "recursive_tree_listing_sha256": "96f3072bc4b5d9f7e287b6886a6da919a066cc391d0b2796bd376d4030f75667",
+          "tracked_entries": 4555,
+          "source_candidate": "f0cf010f62719e3e9c21fddb2d45474295afcf6e",
+          "implementation_verdict": "61b14032a56fec9dee4309e8bd3ccc01260bfbb9",
+          "remap_verdict": "5da8986e88d777975edae36fc65eaf8a229e29e4",
+          "ledger_sha256": "5d1ac21a0cf62fe98efe5d4bd5c510094d139e6ae6bd3fc85d10924d67189c89",
+          "commission": "handoff/m02_completion_28_execution/CAC_TRIAL_D001_D095_REGISTRATION_REVIEW_COMMISSION_20261128.md",
+          "commission_sha256": "da5e3d25580c4947008c22f8c16c6a2c129ceabdcb93f0e51ff48ea5ffc501bc",
+          "review_ref": "refs/heads/review/trial-cac-nvidia-d001-d095-registration-preparation-20261128",
+          "report_path": "handoff/m02_completion_28_execution/INDEPENDENT_CAC_TRIAL_D001_D095_REGISTRATION_PREPARATION_VERDICT_20261128.md",
+          "execution_release": false,
+          "product_cases_executed": 0,
+          "validation": "Existing G01 metadata-only load_product_proof_claim in separate disposable worktree with both packages; READY_FOR_PROOF hypothetical only; exit 0, no product import/collection/execution.",
+          "package": {
+            "jurisdiction": "D001",
+            "proof_id": "SUP-D001-OPTION",
+            "claim_id": "neutral_market_measurement_truth_l07b_d001_option_time",
+            "case_count": 4,
+            "ordered_case_ids": [
+              "SUP-D001-OPTION-SUCCESS",
+              "SUP-D001-OPTION-REACHED_REFUSAL",
+              "SUP-D001-OPTION-RECEIPT-ONLY",
+              "SUP-D001-OPTION-OFFSET-MISMATCH"
+            ],
+            "ordered_nodes": [
+              "tests/product/m02_completion_28_prospective/support/d001-option/test_profile.py::test_d001_success",
+              "tests/product/m02_completion_28_prospective/support/d001-option/test_profile.py::test_d001_date_only",
+              "tests/product/m02_completion_28_prospective/support/d001-option/test_profile.py::test_d001_receipt_only",
+              "tests/product/m02_completion_28_prospective/support/d001-option/test_profile.py::test_d001_offset_mismatch"
+            ],
+            "files": [
+              {
+                "inert_path": "handoff/m02_completion_28_execution/L07a/D001_TEST_SOURCE.py",
+                "future_destination": "tests/product/m02_completion_28_prospective/support/d001-option/test_profile.py",
+                "sha256": "6bedaf2e25bc06c1c3a8f116f9f852fbaa0e94e4a916bdd80defee2519cbd867",
+                "bytes": 18106,
+                "git_blob": "a83eaf71ed6fbb2521f54d3389b3d6d0d834a204"
+              },
+              {
+                "inert_path": "handoff/m02_completion_28_execution/L07a/D001_CLAIM_CANDIDATE.json",
+                "future_destination": "config/product_proof/m02_option_time_d001/claim.json",
+                "sha256": "84d7116b41d01fe59877f7841c9e376cd2d517fe7bf7c010a4c33ad6fb014e81",
+                "bytes": 535,
+                "git_blob": "e5863963dba0e0b8f0a9a504f5477ed69a0b20d2"
+              },
+              {
+                "inert_path": "handoff/m02_completion_28_execution/L07a/D001_GENERATION_0001_CANDIDATE.json",
+                "future_destination": "config/product_proof/m02_option_time_d001/generations/0001.json",
+                "sha256": "ab50355f7d0d3625b062a665809fc80192fc92ec842b1444a7e51d0bb1add5b9",
+                "bytes": 1526,
+                "git_blob": "00726c45a4f64d883967a58073d89e0be64af5cf"
+              },
+              {
+                "inert_path": "handoff/m02_completion_28_execution/L07a/D001_ADMISSION_CANDIDATE.json",
+                "future_destination": "config/product_proof/m02_option_time_d001/admission.json",
+                "sha256": "32fcf9d05a45daf9e669b4861d8173341d206acc27f20d6c195a074a0d9858c1",
+                "bytes": 221,
+                "git_blob": "4c2492d5b24069b7ea729cde1ea08c2b13e12eac"
+              }
+            ]
+          }
         }
       }
     },
@@ -1807,7 +1874,7 @@
         "L00"
       ],
       "obligation": "Bind R111/R183 computational roles, exact model/native-unit comparability, contract or bucket roll, vintages and one official prior-trading-session reference for D095. Resolve concrete session convention before code; current quote assembly alone is not an IV history. Supply independently calculable change and wrong-reference refusal oracles.",
-      "status": "IMPLEMENTED_UNTESTED_INDEPENDENT_REGISTRATION_PREPARATION_REQUIRED_EXECUTION_HELD",
+      "status": "IMPLEMENTED_UNTESTED_INERT_REGISTRATION_PREPARED_INDEPENDENT_REVIEW_REQUIRED_EXECUTION_HELD",
       "checkpoint_required": true,
       "proposed_testing_windows": [],
       "acceptance": "Independent documentary source clearance; product acceptance requires admitted cases and accepted parent proofs",
@@ -1833,7 +1900,7 @@
         "exact_allocations": [],
         "execution_release": false,
         "product_status": "NOT_ATTEMPTED",
-        "first_unmet_invariant": "Distinct Worker preparation of exact inert generation-1 and admission artifacts, followed by fresh independent registration clearance before activation; separate designated strict Tester candidate-specific intake and precall release. All engineering holds remain.",
+        "first_unmet_invariant": "Fresh independent registration-preparation clearance before exact physical activation; then independent installation clearance and sole strict Tester candidate-specific intake/precall release. All engineering holds remain.",
         "tester_designation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
         "tester_status": "CANDIDATE_SPECIFIC_INTAKE_REQUIRED",
         "scope": "Controlled synthetic only; no official/native certification or new product acceptance",
@@ -1978,6 +2045,79 @@
           "candidate": "f0cf010f62719e3e9c21fddb2d45474295afcf6e",
           "candidate_tree": "1ac70938abfb661bdb0c9bcb510a4e1057c16fc1",
           "scope": "Exact source documentary implementation only; IMPLEMENTED_UNTESTED. No registration, activation, execution, release or product acceptance."
+        },
+        "first_stage_registration_preparation": {
+          "status": "INERT_REGISTRATION_PREPARED_INDEPENDENT_REVIEW_REQUIRED_EXECUTION_HELD",
+          "input_handoff": "a1ff344c97c54a822bce9341d5aa38fdb9a139c8",
+          "candidate": "7df86afeac63af59105786a2410734da12b7460c",
+          "candidate_tree": "86a827fc9c84170e72985a29fe3a7397251dce0a",
+          "recursive_tree_listing_sha256": "96f3072bc4b5d9f7e287b6886a6da919a066cc391d0b2796bd376d4030f75667",
+          "tracked_entries": 4555,
+          "source_candidate": "f0cf010f62719e3e9c21fddb2d45474295afcf6e",
+          "implementation_verdict": "61b14032a56fec9dee4309e8bd3ccc01260bfbb9",
+          "remap_verdict": "5da8986e88d777975edae36fc65eaf8a229e29e4",
+          "ledger_sha256": "5d1ac21a0cf62fe98efe5d4bd5c510094d139e6ae6bd3fc85d10924d67189c89",
+          "commission": "handoff/m02_completion_28_execution/CAC_TRIAL_D001_D095_REGISTRATION_REVIEW_COMMISSION_20261128.md",
+          "commission_sha256": "da5e3d25580c4947008c22f8c16c6a2c129ceabdcb93f0e51ff48ea5ffc501bc",
+          "review_ref": "refs/heads/review/trial-cac-nvidia-d001-d095-registration-preparation-20261128",
+          "report_path": "handoff/m02_completion_28_execution/INDEPENDENT_CAC_TRIAL_D001_D095_REGISTRATION_PREPARATION_VERDICT_20261128.md",
+          "execution_release": false,
+          "product_cases_executed": 0,
+          "validation": "Existing G01 metadata-only load_product_proof_claim in separate disposable worktree with both packages; READY_FOR_PROOF hypothetical only; exit 0, no product import/collection/execution.",
+          "package": {
+            "jurisdiction": "D095",
+            "proof_id": "M02-C28-D095",
+            "claim_id": "neutral_market_measurement_truth_d095",
+            "case_count": 7,
+            "ordered_case_ids": [
+              "D095-CONTROLLED-SUCCESS",
+              "D095-CONTROLLED-REACHED_REFUSAL",
+              "D095-CONTROLLED-LATE-REFERENCE",
+              "D095-CONTROLLED-WRONG-CONTRACT",
+              "D095-CONTROLLED-WRONG-MODEL",
+              "D095-CONTROLLED-WRONG-UNITS",
+              "D095-CONTROLLED-DUPLICATE-VINTAGE"
+            ],
+            "ordered_nodes": [
+              "tests/product/m02_completion_28_prospective/d095/test_signal.py::test_d095_success",
+              "tests/product/m02_completion_28_prospective/d095/test_signal.py::test_d095_wrong_session",
+              "tests/product/m02_completion_28_prospective/d095/test_signal.py::test_d095_late_reference",
+              "tests/product/m02_completion_28_prospective/d095/test_signal.py::test_d095_wrong_contract",
+              "tests/product/m02_completion_28_prospective/d095/test_signal.py::test_d095_wrong_model",
+              "tests/product/m02_completion_28_prospective/d095/test_signal.py::test_d095_wrong_units",
+              "tests/product/m02_completion_28_prospective/d095/test_signal.py::test_d095_duplicate_vintage"
+            ],
+            "files": [
+              {
+                "inert_path": "handoff/m02_completion_28_execution/L10a/D095_TEST_SOURCE.py",
+                "future_destination": "tests/product/m02_completion_28_prospective/d095/test_signal.py",
+                "sha256": "50173aa60e71fae8fe969e631f15b92eb8521ef174b845dcfcb2ab3ff0e7b6a8",
+                "bytes": 23044,
+                "git_blob": "31d381c70b6f2391070ecbcbc3dca344208971b8"
+              },
+              {
+                "inert_path": "handoff/m02_completion_28_execution/L10a/D095_CLAIM_CANDIDATE.json",
+                "future_destination": "config/product_proof/m02_option_iv_prior_session_d095/claim.json",
+                "sha256": "0eb917d707fe6045d621319b397d9808968393a02cf62510c3a272d38f388bda",
+                "bytes": 520,
+                "git_blob": "d801faa3308691c0446975f94a54ac9192e5bb81"
+              },
+              {
+                "inert_path": "handoff/m02_completion_28_execution/L10a/D095_GENERATION_0001_CANDIDATE.json",
+                "future_destination": "config/product_proof/m02_option_iv_prior_session_d095/generations/0001.json",
+                "sha256": "dc4e6af18629757ec51886626a76ff19a1c78b8c920954fd3a67b90c358fcba4",
+                "bytes": 1493,
+                "git_blob": "34db9a6a531533a85301b3fa0c1267d3a4005a1a"
+              },
+              {
+                "inert_path": "handoff/m02_completion_28_execution/L10a/D095_ADMISSION_CANDIDATE.json",
+                "future_destination": "config/product_proof/m02_option_iv_prior_session_d095/admission.json",
+                "sha256": "2484747464c02a4b6e5dc114ed43a64c768704eb0b8d2c32d2d5e8f28b56134e",
+                "bytes": 233,
+                "git_blob": "ca18680716db7fffca3066b1851df9a2df5c04d5"
+              }
+            ]
+          }
         }
       }
     },
@@ -2426,7 +2566,7 @@
         "L10a"
       ],
       "obligation": "Calculate 100*(IV_current-IV_reference) in volatility points, using comparable actual R111/R183 facts and accepted official one-trading-session reference. Preserve contract/bucket/roll and knowledge vintage. Refuse unmatched/stale/wrong-session references without calendar-day substitution.",
-      "status": "IMPLEMENTED_UNTESTED_INDEPENDENT_REGISTRATION_PREPARATION_REQUIRED_EXECUTION_HELD",
+      "status": "IMPLEMENTED_UNTESTED_INERT_REGISTRATION_PREPARED_INDEPENDENT_REVIEW_REQUIRED_EXECUTION_HELD",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G2_AFTER_L18"
@@ -2460,7 +2600,7 @@
         ],
         "execution_release": false,
         "product_status": "NOT_ATTEMPTED",
-        "first_unmet_invariant": "Distinct Worker preparation of exact inert generation-1 and admission artifacts, followed by fresh independent registration clearance before activation; separate designated strict Tester candidate-specific intake and precall release. All engineering holds remain.",
+        "first_unmet_invariant": "Fresh independent registration-preparation clearance before exact physical activation; then independent installation clearance and sole strict Tester candidate-specific intake/precall release. All engineering holds remain.",
         "tester_designation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
         "tester_status": "CANDIDATE_SPECIFIC_INTAKE_REQUIRED",
         "scope": "Controlled synthetic only; no official/native certification or new product acceptance",
@@ -2605,6 +2745,79 @@
           "candidate": "f0cf010f62719e3e9c21fddb2d45474295afcf6e",
           "candidate_tree": "1ac70938abfb661bdb0c9bcb510a4e1057c16fc1",
           "scope": "Exact source documentary implementation only; IMPLEMENTED_UNTESTED. No registration, activation, execution, release or product acceptance."
+        },
+        "first_stage_registration_preparation": {
+          "status": "INERT_REGISTRATION_PREPARED_INDEPENDENT_REVIEW_REQUIRED_EXECUTION_HELD",
+          "input_handoff": "a1ff344c97c54a822bce9341d5aa38fdb9a139c8",
+          "candidate": "7df86afeac63af59105786a2410734da12b7460c",
+          "candidate_tree": "86a827fc9c84170e72985a29fe3a7397251dce0a",
+          "recursive_tree_listing_sha256": "96f3072bc4b5d9f7e287b6886a6da919a066cc391d0b2796bd376d4030f75667",
+          "tracked_entries": 4555,
+          "source_candidate": "f0cf010f62719e3e9c21fddb2d45474295afcf6e",
+          "implementation_verdict": "61b14032a56fec9dee4309e8bd3ccc01260bfbb9",
+          "remap_verdict": "5da8986e88d777975edae36fc65eaf8a229e29e4",
+          "ledger_sha256": "5d1ac21a0cf62fe98efe5d4bd5c510094d139e6ae6bd3fc85d10924d67189c89",
+          "commission": "handoff/m02_completion_28_execution/CAC_TRIAL_D001_D095_REGISTRATION_REVIEW_COMMISSION_20261128.md",
+          "commission_sha256": "da5e3d25580c4947008c22f8c16c6a2c129ceabdcb93f0e51ff48ea5ffc501bc",
+          "review_ref": "refs/heads/review/trial-cac-nvidia-d001-d095-registration-preparation-20261128",
+          "report_path": "handoff/m02_completion_28_execution/INDEPENDENT_CAC_TRIAL_D001_D095_REGISTRATION_PREPARATION_VERDICT_20261128.md",
+          "execution_release": false,
+          "product_cases_executed": 0,
+          "validation": "Existing G01 metadata-only load_product_proof_claim in separate disposable worktree with both packages; READY_FOR_PROOF hypothetical only; exit 0, no product import/collection/execution.",
+          "package": {
+            "jurisdiction": "D095",
+            "proof_id": "M02-C28-D095",
+            "claim_id": "neutral_market_measurement_truth_d095",
+            "case_count": 7,
+            "ordered_case_ids": [
+              "D095-CONTROLLED-SUCCESS",
+              "D095-CONTROLLED-REACHED_REFUSAL",
+              "D095-CONTROLLED-LATE-REFERENCE",
+              "D095-CONTROLLED-WRONG-CONTRACT",
+              "D095-CONTROLLED-WRONG-MODEL",
+              "D095-CONTROLLED-WRONG-UNITS",
+              "D095-CONTROLLED-DUPLICATE-VINTAGE"
+            ],
+            "ordered_nodes": [
+              "tests/product/m02_completion_28_prospective/d095/test_signal.py::test_d095_success",
+              "tests/product/m02_completion_28_prospective/d095/test_signal.py::test_d095_wrong_session",
+              "tests/product/m02_completion_28_prospective/d095/test_signal.py::test_d095_late_reference",
+              "tests/product/m02_completion_28_prospective/d095/test_signal.py::test_d095_wrong_contract",
+              "tests/product/m02_completion_28_prospective/d095/test_signal.py::test_d095_wrong_model",
+              "tests/product/m02_completion_28_prospective/d095/test_signal.py::test_d095_wrong_units",
+              "tests/product/m02_completion_28_prospective/d095/test_signal.py::test_d095_duplicate_vintage"
+            ],
+            "files": [
+              {
+                "inert_path": "handoff/m02_completion_28_execution/L10a/D095_TEST_SOURCE.py",
+                "future_destination": "tests/product/m02_completion_28_prospective/d095/test_signal.py",
+                "sha256": "50173aa60e71fae8fe969e631f15b92eb8521ef174b845dcfcb2ab3ff0e7b6a8",
+                "bytes": 23044,
+                "git_blob": "31d381c70b6f2391070ecbcbc3dca344208971b8"
+              },
+              {
+                "inert_path": "handoff/m02_completion_28_execution/L10a/D095_CLAIM_CANDIDATE.json",
+                "future_destination": "config/product_proof/m02_option_iv_prior_session_d095/claim.json",
+                "sha256": "0eb917d707fe6045d621319b397d9808968393a02cf62510c3a272d38f388bda",
+                "bytes": 520,
+                "git_blob": "d801faa3308691c0446975f94a54ac9192e5bb81"
+              },
+              {
+                "inert_path": "handoff/m02_completion_28_execution/L10a/D095_GENERATION_0001_CANDIDATE.json",
+                "future_destination": "config/product_proof/m02_option_iv_prior_session_d095/generations/0001.json",
+                "sha256": "dc4e6af18629757ec51886626a76ff19a1c78b8c920954fd3a67b90c358fcba4",
+                "bytes": 1493,
+                "git_blob": "34db9a6a531533a85301b3fa0c1267d3a4005a1a"
+              },
+              {
+                "inert_path": "handoff/m02_completion_28_execution/L10a/D095_ADMISSION_CANDIDATE.json",
+                "future_destination": "config/product_proof/m02_option_iv_prior_session_d095/admission.json",
+                "sha256": "2484747464c02a4b6e5dc114ed43a64c768704eb0b8d2c32d2d5e8f28b56134e",
+                "bytes": 233,
+                "git_blob": "ca18680716db7fffca3066b1851df9a2df5c04d5"
+              }
+            ]
+          }
         }
       }
     },
@@ -3428,9 +3641,9 @@
   "execution_status": "ready",
   "current_leaf": "L07b",
   "next_assignment": {
-    "role": "Fresh distinct D001/D095 registration-preparation Worker",
-    "task": "Use Remote Desktop Commander and Ubuntu Git; fetch exact received trial HEAD H (stop on mismatch), read AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and this register. Independently verify the separate ACCEPT_DOCUMENTARY_IMPLEMENTATION dispositions at 61b14032a56fec9dee4309e8bd3ccc01260bfbb9 tree 68b934a891a20e4b437da60e5d6255b2e636a945, refs/heads/review/trial-cac-nvidia-d001-d095-implementation-20261128, report handoff/m02_completion_28_execution/INDEPENDENT_CAC_TRIAL_D001_D095_IMPLEMENTATION_VERDICT_20261128.md SHA256 7f3d981d5ae87c73465a834b38a6b2b10535c4a0e57c9659faa68863ad6e2910; exact source candidate f0cf010f62719e3e9c21fddb2d45474295afcf6e, tree 1ac70938abfb661bdb0c9bcb510a4e1057c16fc1. Prepare exact INERT registration artifacts only for D001 SUP-D001-OPTION (4) at L07b and D095 M02-C28-D095 (7) at L10a/L11 counted once. Use unchanged independently reviewed test-source, claim, proof-contract, brief, binding and policy bytes pinned in the implementation-review commission and register; preserve the exact independently cleared path-only prospective remap, owner consolidated finite64 conditional grant and case IDs/ordered nodes. Prepare separate exact generation-1 and admission-pointer candidate documents under their respective existing handoff L07a/L10a jurisdictions, with existing G01 schema, exact claim IDs/target M02, brief/binding/contract hashes, exact physical family-file hashes, authority and independent adequacy review references; no predecessor or new support files unless exact accepted contract requires them. Validate static metadata, exact identities and partition/generation compatibility using existing mechanisms in a separate disposable non-active validation tree if needed; no product import, collection, execution or modifications to active physical roots, claim descriptors, generations or admission pointers. No source, ledger, schedule, governance or other-scope edits. Preserve all 64 held cases, G01 R2 not adopted, D145 paused, sole designated strict Tester and candidate-specific intake/precall release. Publish and verify exact inert preparation checkpoint and separate fresh independent registration-review commission before activation; continue eligible distinct-role succession once under owner-adopted CAC MVP.",
-    "selection_basis": "Separate D001 and D095 independent implementation ACCEPT verified; distinct registration preparation and independent registration clearance before activation is the next unmet invariant. D095 counted once across L10a/L11. No release or acceptance."
+    "role": "Fresh distinct D001/D095 independent registration-preparation reviewer",
+    "task": "Use Remote Desktop Commander and Ubuntu Git; fetch exact received trial HEAD (stop on mismatch), read AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and this register. Execute only committed commission handoff/m02_completion_28_execution/CAC_TRIAL_D001_D095_REGISTRATION_REVIEW_COMMISSION_20261128.md SHA256 da5e3d25580c4947008c22f8c16c6a2c129ceabdcb93f0e51ff48ea5ffc501bc; exact inert preparation candidate 7df86afeac63af59105786a2410734da12b7460c, tree 86a827fc9c84170e72985a29fe3a7397251dce0a. Verify both separate independent implementation and authoring verdicts, exact generation/admission and family identities, exact remapped 4+7 ordered cases, existing G01 partition/generation static compatibility in separate disposable validation tree. Issue separate documentary preparation dispositions. No product import, collection, execution, activation or release; preserve all engineering holds and sole Tester. Publish and verify independent verdict on new review ref, reconcile and continue eligible distinct-role succession once under owner-adopted CAC MVP.",
+    "selection_basis": "Both inert registration packages prepared and statically validated together; independent preparation clearance required before activation. D095 counted once across L10a/L11. All 64 cases held."
   },
   "trial_forward_succession_authority": {
     "scope": "trial/cac-nvidia-continuation-20261127 only",
