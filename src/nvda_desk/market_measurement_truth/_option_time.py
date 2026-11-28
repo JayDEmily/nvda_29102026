@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from collections.abc import Callable
 from dataclasses import replace
-from datetime import UTC, datetime
+from datetime import UTC, date, datetime
 from typing import cast
 
 from nvda_desk.raw_signal_occurrence_truth import api as raw
@@ -813,3 +813,296 @@ def build_expiry_reader(
     if type(storage) is not f.SQLiteReadStorageV1:
         raise ValueError("unadmitted D086 read-only storage")
     return _ExpiryReads(_expiry_store(storage))
+
+
+SESSION_SIGNAL = "D004"
+SESSION_PROFILE = f.VersionRefV1("t01-option-time-d004", 1)
+SESSION_NAMESPACE = "neutral_market_measurement_truth/option_time_session/v1"
+SESSION_CALENDAR_REF = f.VersionRefV1("t01-option-session-calendar", 1)
+SESSION_DEFINITION = f.CalculationDefinitionV1(
+    SESSION_SIGNAL,
+    "T01-D004-OPTION-TIME-DEF-V1",
+    "K01_TIME",
+    "Select the open half-open UTC calendar interval containing actual D003 event; "
+    "return its trading date after both full schedules match.",
+    ("R023", "R024"),
+    ("D003",),
+    "P_TIME",
+    "date",
+    "exchange_trading_date",
+    (
+        *DEFINITION.authority_refs[:3],
+        f.AuthorityArtifactRefV1(source.SESSION_BRIEF_PATH, source.SESSION_BRIEF),
+    ),
+)
+
+
+def _session_request_check(request: f.OptionTimeRequestV1) -> None:
+    if type(request) is not f.OptionTimeRequestV1:
+        raise TypeError("exact D004 option-time request required")
+    f._Validated.__post_init__(request)
+    policy = source.session_policy()
+    if request.frame_id not in policy["frames"]:
+        raise ValueError("unadmitted D004 option-time frame")
+    clocks = policy["frames"][request.frame_id]["calculation_clocks"][SESSION_SIGNAL]
+    if (
+        request.derived_signal_id != SESSION_SIGNAL
+        or request.subject_instrument != source.SUBJECT
+        or request.source_profile_ref != SESSION_PROFILE
+        or request.calculation_definition_version != SESSION_DEFINITION.calculation_definition_version
+        or len(request.predecessor_occurrence_ids) != 1
+        or request.as_of_utc != datetime.fromisoformat(clocks["as_of_utc"])
+        or request.knowledge_cutoff_utc != datetime.fromisoformat(clocks["knowledge_cutoff_utc"])
+    ):
+        raise ValueError("unadmitted D004 option-time frame/clock/profile")
+
+
+def _session_calculate(
+    request: f.OptionTimeRequestV1,
+    originals: tuple[raw.RawObservationOccurrenceV1, ...],
+    projections: tuple[raw.ProjectedRawValueV1, ...],
+    parent: f.OptionTimeLocalOccurrenceV1,
+) -> tuple[date, str]:
+    _session_request_check(request)
+    _validate_local(parent)
+    event = parent.result.astimezone(UTC)
+    if (
+        len(originals) != 2 or len(projections) != 2
+        or request.predecessor_occurrence_ids != (parent.derived_occurrence_id,)
+        or parent.request.subject_instrument != request.subject_instrument
+        or parent.request.frame_id != request.frame_id
+        or parent.effective_as_of_utc != request.as_of_utc
+        or parent.predecessor.result != event or event != request.as_of_utc
+        or not (
+            parent.knowledge_cutoff_utc <= parent.calculated_at_utc <= request.knowledge_cutoff_utc
+        )
+    ):
+        raise ValueError("D004 actual D003 parent alignment or visibility mismatch")
+    source.validate_session_roles(
+        parent.predecessor.original_observations + parent.original_observations + originals,
+        parent.predecessor.selected_projections + parent.selected_projections + projections,
+    )
+    policy = source.session_policy()
+    calendar = policy["calendar"]
+    if (
+        calendar["ref"] != "t01-option-session-calendar/1"
+        or calendar["iana_zone"] != "America/New_York"
+    ):
+        raise ValueError("D004 exact calendar policy required")
+    for original, projection, role, field in zip(
+        originals, projections, ("trading_schedule", "liquid_schedule"),
+        ("tradingHours", "liquidHours"), strict=True,
+    ):
+        record = original.native_record
+        if (
+            original.subject_instrument != source.SUBJECT
+            or original.native_units != "schedule" or projection.native_units != "schedule"
+            or original.source_temporal_kind != "receipt_only"
+            or original.source_timestamp_raw is not None
+            or original.source_timezone_native is not None
+            or original.received_ts_utc > request.knowledge_cutoff_utc
+            or source._path(record, ("sample", "id")) != request.frame_id
+            or source._path(record, ("value", "role")) != role
+            or source._path(record, ("calendar", "policy_ref")) != calendar["ref"]
+            or any(record[key] != value for key, value in policy["contract_identity"].items())
+            or projection.native_field_path != ("calendar", field)
+            or type(projection.native_value) is not str
+            or source._path(record, ("calendar", field)) != calendar["literal_schedule"]
+            or projection.native_value != calendar["literal_schedule"]
+        ):
+            raise ValueError("D004 actual R023/R024 complete schedule invariant")
+    matches = []
+    previous_end = datetime.fromisoformat(calendar["coverage_start_utc"])
+    f._utc(previous_end)
+    for interval in calendar["intervals"]:
+        start = datetime.fromisoformat(interval["start_utc"])
+        end = datetime.fromisoformat(interval["end_utc"])
+        f._utc(start)
+        f._utc(end)
+        if previous_end != start or start >= end:
+            raise ValueError("D004 unordered or ambiguous calendar intervals")
+        previous_end = end
+        if start <= event < end:
+            matches.append(interval)
+    if previous_end != datetime.fromisoformat(calendar["coverage_end_utc"]) or len(matches) != 1:
+        raise ValueError("D004 event outside exact calendar coverage")
+    interval = matches[0]
+    session_id, trading_date = interval["session_id"], interval["trading_date"]
+    if (
+        type(session_id) is not str or not session_id or session_id == "closed"
+        or type(trading_date) is not str
+    ):
+        raise ValueError("D004 event not within an open half-open session")
+    result = date.fromisoformat(trading_date)
+    if result.isoformat() != trading_date:
+        raise ValueError("D004 unadmitted trading date")
+    return result, session_id
+
+
+def _validate_session(value: f.OptionTimeSessionOccurrenceV1) -> None:
+    if type(value) is not f.OptionTimeSessionOccurrenceV1:
+        raise TypeError("exact D004 option-time occurrence required")
+    value.__post_init__()
+    expected, session_id = _session_calculate(
+        value.request, value.original_observations, value.selected_projections, value.predecessor,
+    )
+    if (
+        value.owner_object_id != "M02"
+        or value.owner_namespace != SESSION_NAMESPACE
+        or value.implementation_brief_sha256 != source.SESSION_BRIEF
+        or value.derived_signal_id != SESSION_SIGNAL
+        or value.definition != SESSION_DEFINITION
+        or value.source_policy_sha256 != source.POLICY_SHA
+        or value.source_profile_ref != SESSION_PROFILE
+        or value.predecessor_occurrence_ids != value.request.predecessor_occurrence_ids
+        or native.canonical(value.projection_mappings)
+        != native.canonical(tuple(source.mapping_for(r) for r in ("R023", "R024")))
+        or value.calendar_policy_ref != SESSION_CALENDAR_REF
+        or value.session_id != session_id
+        or type(value.result) is not date or value.result != expected
+        or value.units != SESSION_DEFINITION.units
+        or value.result_shape != SESSION_DEFINITION.result_shape
+        or value.effective_as_of_utc != value.request.as_of_utc
+        or value.knowledge_cutoff_utc != value.request.knowledge_cutoff_utc
+        or value.calculated_at_utc < value.knowledge_cutoff_utc
+        or value.derived_occurrence_id != codec.session_identity(value)
+    ):
+        raise ValueError("D004 option-time durable semantic or identity mismatch")
+
+
+def _session_store(storage: f.SQLiteStorageV1 | f.SQLiteReadStorageV1) -> RecordState:
+    return RecordState(storage, codec.decode_session, _validate_session, encode=codec.encode_session)
+
+
+class _SessionReads:
+    def __init__(self, state: RecordState) -> None:
+        self._state = state
+
+    def get_derived_occurrence(
+        self, derived_occurrence_id: str,
+    ) -> f.OptionTimeSessionOccurrenceV1 | None:
+        if type(derived_occurrence_id) is not str or not derived_occurrence_id:
+            raise ValueError("exact nonempty D004 occurrence identity required")
+        return next(
+            (value for value in self._state.all()
+             if value.derived_occurrence_id == derived_occurrence_id),
+            None,
+        )
+
+    def list_derived_history(
+        self, *, derived_signal_id: str, subject_instrument: str,
+        effective_at_or_before_utc: datetime, knowledge_at_or_before_utc: datetime,
+        limit: int,
+    ) -> tuple[f.OptionTimeSessionOccurrenceV1, ...]:
+        f._utc(effective_at_or_before_utc)
+        f._utc(knowledge_at_or_before_utc)
+        if (
+            derived_signal_id != SESSION_SIGNAL or subject_instrument != source.SUBJECT
+            or type(limit) is not int or not 1 <= limit <= 64
+        ):
+            raise ValueError("bounded D004 option-time history required")
+        rows = (
+            value for value in self._state.all()
+            if value.effective_as_of_utc <= effective_at_or_before_utc
+            and value.knowledge_cutoff_utc <= knowledge_at_or_before_utc
+        )
+        return tuple(sorted(rows, key=lambda value: (
+            value.effective_as_of_utc, value.knowledge_cutoff_utc, value.derived_occurrence_id,
+        )))[:limit]
+
+
+class _SessionOwner:
+    def __init__(
+        self, raw_source: f.OptionTimeSourceV1, parent_reads: f.OptionTimeLocalReadsV1,
+        state: RecordState, utc_now: Callable[[], datetime],
+    ) -> None:
+        self._source, self._parent_reads = raw_source, parent_reads
+        self._state, self._utc_now = state, utc_now
+        self.reads = _SessionReads(state)
+
+    def materialise(self, request: f.OptionTimeRequestV1) -> f.OptionTimeSessionOccurrenceV1 | None:
+        if type(request) is not f.OptionTimeRequestV1:
+            raise TypeError("exact D004 option-time request required")
+        now = self._utc_now()
+        f._utc(now)
+        try:
+            _session_request_check(request)
+            if now < request.knowledge_cutoff_utc:
+                return None
+            parent = self._parent_reads.get_derived_occurrence(
+                request.predecessor_occurrence_ids[0],
+            )
+            if type(parent) is not f.OptionTimeLocalOccurrenceV1:
+                return None
+            selected = source.live_session_roles(self._source, request.knowledge_cutoff_utc)
+            if (
+                native.canonical(
+                    parent.predecessor.original_observations + parent.original_observations
+                )
+                != native.canonical(tuple(selected[r][0] for r in ("R002", "R003", "R004")))
+                or native.canonical(
+                    parent.predecessor.selected_projections + parent.selected_projections
+                )
+                != native.canonical(tuple(selected[r][1] for r in ("R002", "R003", "R004")))
+            ):
+                return None
+            originals = tuple(selected[r][0] for r in ("R023", "R024"))
+            projections = tuple(selected[r][1] for r in ("R023", "R024"))
+            result, session_id = _session_calculate(request, originals, projections, parent)
+            row = f.OptionTimeSessionOccurrenceV1(
+                owner_object_id="M02",
+                owner_namespace=SESSION_NAMESPACE,
+                implementation_brief_sha256=source.SESSION_BRIEF,
+                derived_signal_id=SESSION_SIGNAL,
+                derived_occurrence_id="pending",
+                request=request,
+                definition=SESSION_DEFINITION,
+                source_policy_sha256=source.POLICY_SHA,
+                source_profile_ref=SESSION_PROFILE,
+                projection_mappings=tuple(source.mapping_for(r) for r in ("R023", "R024")),
+                original_observations=originals,
+                selected_projections=projections,
+                predecessor_occurrence_ids=request.predecessor_occurrence_ids,
+                predecessor=parent,
+                calendar_policy_ref=SESSION_CALENDAR_REF,
+                session_id=session_id,
+                result=result,
+                units=SESSION_DEFINITION.units,
+                result_shape=SESSION_DEFINITION.result_shape,
+                effective_as_of_utc=request.as_of_utc,
+                knowledge_cutoff_utc=request.knowledge_cutoff_utc,
+                calculated_at_utc=now,
+            )
+            row = replace(row, derived_occurrence_id=codec.session_identity(row))
+        except (TypeError, ValueError, ArithmeticError, KeyError):
+            return None
+        return cast(f.OptionTimeSessionOccurrenceV1, self._state.append(row))
+
+
+def build_session_owner(
+    admission: f.OwnerAdmissionV1, raw_source: f.OptionTimeSourceV1,
+    parent_storage: f.SQLiteReadStorageV1, storage: f.SQLiteStorageV1,
+    utc_now: Callable[[], datetime],
+) -> f.OptionTimeSessionOwnerV1:
+    source.check_session_admission(admission)
+    if (
+        type(raw_source) is not f.OptionTimeSourceV1
+        or not raw_source._matches_admission(admission)
+        or type(parent_storage) is not f.SQLiteReadStorageV1
+        or type(storage) is not f.SQLiteStorageV1 or storage.create is not True
+        or not callable(utc_now)
+    ):
+        raise ValueError("unadmitted D004 source/parent/storage/clock")
+    parent_reads = f.create_option_time_local_reader(
+        admission=f.OwnerAdmissionV1("M02", source.LOCAL_BRIEF), storage=parent_storage,
+    )
+    return _SessionOwner(raw_source, parent_reads, _session_store(storage), utc_now)
+
+
+def build_session_reader(
+    admission: f.OwnerAdmissionV1, storage: f.SQLiteReadStorageV1,
+) -> f.OptionTimeSessionReadsV1:
+    source.check_session_admission(admission)
+    if type(storage) is not f.SQLiteReadStorageV1:
+        raise ValueError("unadmitted D004 read-only storage")
+    return _SessionReads(_session_store(storage))

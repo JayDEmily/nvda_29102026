@@ -4102,3 +4102,95 @@ __all__ += [
     "AlignedResidualReadsV1", "AlignedResidualOwnerV1",
     "create_aligned_residual_owner", "create_aligned_residual_reader",
 ]
+
+
+@dataclass(frozen=True, slots=True)
+class OptionTimeSessionOccurrenceV1(_Validated):
+    """D004 only: exact exchange trading date, with full actual D003 and D001 lineage."""
+    owner_object_id: str
+    owner_namespace: str
+    implementation_brief_sha256: str
+    derived_signal_id: str
+    derived_occurrence_id: str
+    request: OptionTimeRequestV1
+    definition: CalculationDefinitionV1
+    source_policy_sha256: str
+    source_profile_ref: VersionRefV1
+    projection_mappings: tuple[raw_api.RawSignalProjectionMappingV1, ...]
+    original_observations: tuple[raw_api.RawObservationOccurrenceV1, ...]
+    selected_projections: tuple[raw_api.ProjectedRawValueV1, ...]
+    predecessor_occurrence_ids: tuple[str, ...]
+    predecessor: OptionTimeLocalOccurrenceV1
+    calendar_policy_ref: VersionRefV1
+    session_id: str
+    result: date
+    units: str
+    result_shape: str
+    effective_as_of_utc: datetime
+    knowledge_cutoff_utc: datetime
+    calculated_at_utc: datetime
+
+    def __post_init__(self) -> None:
+        _Validated.__post_init__(self)
+        if (
+            self.derived_signal_id != "D004"
+            or not re.fullmatch(r"[0-9a-f]{64}", self.implementation_brief_sha256)
+            or not re.fullmatch(r"[0-9a-f]{64}", self.source_policy_sha256)
+        ):
+            raise ValueError("exact D004 carrier identities required")
+        if type(self.result) is not date:
+            raise TypeError("D004 requires an exact date")
+
+
+class OptionTimeSessionReadsV1(Protocol):
+    def get_derived_occurrence(
+        self, derived_occurrence_id: str,
+    ) -> OptionTimeSessionOccurrenceV1 | None: ...
+
+    def list_derived_history(
+        self, *, derived_signal_id: str, subject_instrument: str,
+        effective_at_or_before_utc: datetime, knowledge_at_or_before_utc: datetime,
+        limit: int,
+    ) -> tuple[OptionTimeSessionOccurrenceV1, ...]: ...
+
+
+class OptionTimeSessionOwnerV1(Protocol):
+    @property
+    def reads(self) -> OptionTimeSessionReadsV1: ...
+
+    def materialise(
+        self, request: OptionTimeRequestV1,
+    ) -> OptionTimeSessionOccurrenceV1 | None: ...
+
+
+def create_option_time_session_source(
+    *, admission: OwnerAdmissionV1, specimen_id: str,
+) -> OptionTimeSourceV1:
+    from ._option_time_source import build_session_source
+
+    return build_session_source(admission, specimen_id)
+
+
+def create_option_time_session_owner(
+    *, admission: OwnerAdmissionV1, source: OptionTimeSourceV1,
+    parent_storage: SQLiteReadStorageV1, storage: SQLiteStorageV1,
+    utc_now: Callable[[], datetime],
+) -> OptionTimeSessionOwnerV1:
+    from ._option_time import build_session_owner
+
+    return build_session_owner(admission, source, parent_storage, storage, utc_now)
+
+
+def create_option_time_session_reader(
+    *, admission: OwnerAdmissionV1, storage: SQLiteReadStorageV1,
+) -> OptionTimeSessionReadsV1:
+    from ._option_time import build_session_reader
+
+    return build_session_reader(admission, storage)
+
+
+__all__ += [
+    "OptionTimeSessionOccurrenceV1", "OptionTimeSessionOwnerV1", "OptionTimeSessionReadsV1",
+    "create_option_time_session_owner", "create_option_time_session_reader",
+    "create_option_time_session_source",
+]

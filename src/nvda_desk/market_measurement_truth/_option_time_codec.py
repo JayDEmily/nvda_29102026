@@ -191,3 +191,73 @@ def decode_expiry(payload: bytes) -> f.OptionTimeExpiryOccurrenceV1:
     if encode_expiry(value) != payload:
         raise ValueError("D086 canonical readback mismatch")
     return value
+
+
+_SESSION_TAG = "OptionTimeSessionOccurrenceV1"
+
+
+def _date_facts(value: Any) -> dict[str, str]:
+    from datetime import date
+
+    if type(value) is not date:
+        raise TypeError("exact D004 date required")
+    return {"type": "date", "iso": value.isoformat()}
+
+
+def _session_date(content: Any) -> Any:
+    from datetime import date
+
+    if (
+        type(content) is not dict or set(content) != {"type", "iso"}
+        or content["type"] != "date" or type(content["iso"]) is not str
+    ):
+        raise ValueError("unadmitted D004 date representation")
+    value = date.fromisoformat(content["iso"])
+    if _date_facts(value) != content:
+        raise ValueError("D004 date canonical representation mismatch")
+    return value
+
+
+def _session_content(value: f.OptionTimeSessionOccurrenceV1) -> dict[str, Any]:
+    content = _record(value, f.OptionTimeSessionOccurrenceV1)
+    content["request"] = _record(value.request, f.OptionTimeRequestV1)
+    content["predecessor"] = _local_content(value.predecessor)
+    content["result"] = _date_facts(value.result)
+    return content
+
+
+def _session_envelope(content: dict[str, Any]) -> bytes:
+    return native.canonical({"record": _SESSION_TAG, "version": 1, "content": content})
+
+
+def encode_session(value: f.OptionTimeSessionOccurrenceV1) -> bytes:
+    return _session_envelope(_session_content(value))
+
+
+def session_identity(value: f.OptionTimeSessionOccurrenceV1) -> str:
+    content = _session_content(value)
+    del content["derived_occurrence_id"]
+    del content["calculated_at_utc"]
+    return "mmtoptiontimesession1:" + hashlib.sha256(_session_envelope(content)).hexdigest()
+
+
+def decode_session(payload: bytes) -> f.OptionTimeSessionOccurrenceV1:
+    envelope = native.decode(payload, dict)
+    if (
+        set(envelope) != {"record", "version", "content"}
+        or envelope["record"] != _SESSION_TAG
+        or type(envelope["version"]) is not int or envelope["version"] != 1
+    ):
+        raise ValueError("unadmitted D004 option-time envelope")
+    content = envelope["content"]
+    if type(content) is not dict or set(content) != {
+        field.name for field in fields(f.OptionTimeSessionOccurrenceV1)
+    }:
+        raise ValueError("D004 option-time field set mismatch")
+    content["request"] = _rebuild(content["request"], f.OptionTimeRequestV1)
+    content["predecessor"] = decode_local(_local_envelope(content["predecessor"]))
+    content["result"] = _session_date(content["result"])
+    value = _rebuild(content, f.OptionTimeSessionOccurrenceV1)
+    if encode_session(value) != payload:
+        raise ValueError("D004 canonical readback mismatch")
+    return value
