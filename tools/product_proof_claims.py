@@ -1250,6 +1250,61 @@ def _aligned_history_extensions(
     return tuple(result)
 
 
+
+def _option_first_stage_extensions(
+    root: Path,
+) -> tuple[tuple[dict[str, Any], dict[str, Any], str], ...]:
+    """Fixed independently reviewed option claim routes; no descriptor, no extension."""
+    fixed = (
+        (
+            "L07a", "D001", "m02_option_time_d001",
+            "222d0919c67c05f6436f985b8262ace985ab11dea30fc045333ee13fa10a8d8d",
+            "ff80ea7dd3aa7674723b758dda9173356bda75119ba996ece5bf4c1a9ff2cf35",
+            "a18704f720dce0bd77a2c16f098846fe02b7e4027ec2715cdb7c0663b6e43ad5",
+            "84d7116b41d01fe59877f7841c9e376cd2d517fe7bf7c010a4c33ad6fb014e81",
+        ),
+    )
+    result = []
+    for leaf, signal, prefix, brief_hash, binding_hash, contract_hash, descriptor_hash in fixed:
+        descriptor = safe_path(root, f"config/product_proof/{prefix}/claim.json")
+        if not descriptor.exists():
+            continue
+        base = f"handoff/m02_completion_28_execution/{leaf}/"
+        candidate = safe_path(root, base + signal + "_CLAIM_CANDIDATE.json")
+        if sha256(candidate) != descriptor_hash or sha256(descriptor) != descriptor_hash:
+            raise ValueError("fixed option claim descriptor bytes mismatch")
+        expected = read_json(candidate)
+        if read_json(descriptor) != expected:
+            raise ValueError("fixed option claim descriptor mismatch")
+        for path, digest in (
+            (expected["brief_path"], brief_hash),
+            (expected["binding_path"], binding_hash),
+            (expected["contract_path"], contract_hash),
+            ("handoff/m02_completion_28_execution/OWNER_CONSOLIDATED_64_CONDITIONAL_EXECUTION_GRANT_20261127.json",
+             "6a71f52981fc01da42f9c27726547d0d1ddd69851561479a007aeb30ebd95a41"),
+            ("handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/PATH_ONLY_SUCCESSOR_AUTHORITY.json",
+             "11d90adf234d5195d3bd31a6b42df9b046c4ad53690cb279ef071d52b3049aa7"),
+        ):
+            if sha256(safe_path(root, path)) != digest:
+                raise ValueError("fixed option claim authority bytes mismatch: " + path)
+        binding = safe_path(root, expected["binding_path"])
+        brief = safe_path(root, expected["brief_path"])
+        validate_implementation_authority(root, binding, brief)
+        authority = yaml.safe_load(binding.read_text(encoding="utf-8"))
+        if authority["targets"] != [{"action": "modify", "object_id": n} for n in ("M02", "G01")]:
+            raise ValueError("fixed option claim binding targets mismatch")
+        contract = read_json(safe_path(root, expected["contract_path"]))
+        _schema(root, contract, "accepted_brief_product_proof.schema.json")
+        if contract["claim_id"] != expected["claim_id"]:
+            raise ValueError("fixed option proof claim mismatch")
+        entry = {key: value for key, value in expected.items() if key != "brief_path"}
+        entry["profile"] = "accepted_brief_v2"
+        target_id, _ = _target(root, contract["target"])
+        _generation(root, entry, contract, brief_hash, target_id)
+        result.append((entry, contract, brief_hash))
+    return tuple(result)
+
+
 def _native_reconciliation_extensions(
     root: Path,
 ) -> tuple[tuple[dict[str, Any], dict[str, Any], str], ...]:
@@ -1550,6 +1605,11 @@ def load_product_proof_claim(repository_root: Path, claim_id: str) -> ProductPro
             if claim in extensions:
                 raise ValueError("duplicate aligned history claim extension identity")
             extensions[claim] = aligned
+        for option in _option_first_stage_extensions(root):
+            claim = option[0]["claim_id"]
+            if claim in extensions:
+                raise ValueError("duplicate option claim extension identity")
+            extensions[claim] = option
     if extensions:
         catalogue = {
             **catalogue,

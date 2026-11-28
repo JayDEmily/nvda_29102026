@@ -3338,3 +3338,174 @@ __all__ += [
     "AlignedHistoryRequestV1", "AlignedHistorySourceV1", "create_aligned_history_owner",
     "create_aligned_history_reader", "create_aligned_history_source",
 ]
+
+
+class OptionTimeSourceV1:
+    """Construction-sealed M00 public read facets for controlled option time."""
+
+    __slots__ = (
+        "__admission", "__count", "__digest", "__get", "__history", "__project", "__specimen",
+    )
+
+    __admission: OwnerAdmissionV1
+    __specimen: str
+    __digest: str
+    __count: int
+    __get: Callable[..., raw_api.RawObservationOccurrenceV1 | None]
+    __project: Callable[..., raw_api.ProjectedRawValueV1 | None]
+    __history: Callable[..., raw_api.ProjectedRawHistoryPageV1]
+
+    def __init__(self) -> None:
+        raise TypeError("use create_option_time_source with an exact admitted specimen")
+
+    def __setattr__(self, name: str, value: object) -> None:
+        raise AttributeError("sealed option time source is immutable")
+
+    def __delattr__(self, name: str) -> None:
+        raise AttributeError("sealed option time source is immutable")
+
+    @classmethod
+    def _from_sealed(
+        cls, *, admission: OwnerAdmissionV1, specimen_id: str, digest: str, count: int,
+        getter: Callable[..., raw_api.RawObservationOccurrenceV1 | None],
+        projection: Callable[..., raw_api.ProjectedRawValueV1 | None],
+        history: Callable[..., raw_api.ProjectedRawHistoryPageV1],
+    ) -> OptionTimeSourceV1:
+        value = object.__new__(cls)
+        for field, item in (
+            ("admission", admission), ("specimen", specimen_id), ("digest", digest),
+            ("count", count), ("get", getter), ("project", projection), ("history", history),
+        ):
+            object.__setattr__(value, "_OptionTimeSourceV1__" + field, item)
+        return value
+
+    def _matches_admission(self, admission: OwnerAdmissionV1) -> bool:
+        return self.__admission == admission
+
+    @property
+    def specimen_id(self) -> str:
+        return self.__specimen
+
+    @property
+    def expanded_sha256(self) -> str:
+        return self.__digest
+
+    @property
+    def expanded_count(self) -> int:
+        return self.__count
+
+    def get_raw_observation_occurrence(
+        self, observation_occurrence_id: object,
+    ) -> raw_api.RawObservationOccurrenceV1 | None:
+        return self.__get(observation_occurrence_id)
+
+    def project_raw_value(
+        self, raw_signal_catalogue_id: raw_api.RawSignalCatalogueId,
+        observation_occurrence_id: object, *,
+        mappings: Sequence[raw_api.RawSignalProjectionMappingV1],
+    ) -> raw_api.ProjectedRawValueV1 | None:
+        return self.__project(
+            raw_signal_catalogue_id, observation_occurrence_id, mappings=mappings,
+        )
+
+    def list_projected_raw_history(
+        self, raw_signal_catalogue_id: raw_api.RawSignalCatalogueId, *,
+        mappings: Sequence[raw_api.RawSignalProjectionMappingV1],
+        subject_instrument: str | None,
+        received_at_or_before_utc: datetime | None,
+        event_at_or_before_utc: datetime | None = None,
+        limit: int, cursor: str | None,
+    ) -> raw_api.ProjectedRawHistoryPageV1:
+        return self.__history(
+            raw_signal_catalogue_id, mappings=mappings, subject_instrument=subject_instrument,
+            received_at_or_before_utc=received_at_or_before_utc,
+            event_at_or_before_utc=event_at_or_before_utc, limit=limit, cursor=cursor,
+        )
+
+
+
+
+@dataclass(frozen=True, slots=True)
+class OptionTimeRequestV1(_Validated):
+    derived_signal_id: str
+    subject_instrument: str
+    frame_id: str
+    as_of_utc: datetime
+    knowledge_cutoff_utc: datetime
+    calculation_definition_version: str
+    source_profile_ref: VersionRefV1
+    predecessor_occurrence_ids: tuple[str, ...]
+
+
+@dataclass(frozen=True, slots=True)
+class OptionTimeOccurrenceV1(_Validated):
+    owner_object_id: str
+    owner_namespace: str
+    implementation_brief_sha256: str
+    derived_signal_id: str
+    derived_occurrence_id: str
+    request: OptionTimeRequestV1
+    definition: CalculationDefinitionV1
+    source_policy_sha256: str
+    source_profile_ref: VersionRefV1
+    projection_mappings: tuple[raw_api.RawSignalProjectionMappingV1, ...]
+    original_observations: tuple[raw_api.RawObservationOccurrenceV1, ...]
+    selected_projections: tuple[raw_api.ProjectedRawValueV1, ...]
+    predecessor_occurrence_ids: tuple[str, ...]
+    result: datetime
+    units: str
+    result_shape: str
+    effective_as_of_utc: datetime
+    knowledge_cutoff_utc: datetime
+    calculated_at_utc: datetime
+
+
+class OptionTimeReadsV1(Protocol):
+    def get_derived_occurrence(
+        self, derived_occurrence_id: str,
+    ) -> OptionTimeOccurrenceV1 | None: ...
+
+    def list_derived_history(
+        self, *, derived_signal_id: str, subject_instrument: str,
+        effective_at_or_before_utc: datetime, knowledge_at_or_before_utc: datetime,
+        limit: int,
+    ) -> tuple[OptionTimeOccurrenceV1, ...]: ...
+
+
+class OptionTimeOwnerV1(Protocol):
+    @property
+    def reads(self) -> OptionTimeReadsV1: ...
+
+    def materialise(self, request: OptionTimeRequestV1) -> OptionTimeOccurrenceV1 | None: ...
+
+
+def create_option_time_source(
+    *, admission: OwnerAdmissionV1, specimen_id: str,
+) -> OptionTimeSourceV1:
+    from ._option_time_source import build_source
+
+    return build_source(admission, specimen_id)
+
+
+def create_option_time_owner(
+    *, admission: OwnerAdmissionV1, source: OptionTimeSourceV1,
+    storage: SQLiteStorageV1, utc_now: Callable[[], datetime],
+) -> OptionTimeOwnerV1:
+    from ._option_time import build_owner
+
+    return build_owner(admission, source, storage, utc_now)
+
+
+def create_option_time_reader(
+    *, admission: OwnerAdmissionV1, storage: SQLiteReadStorageV1,
+) -> OptionTimeReadsV1:
+    from ._option_time import build_reader
+
+    return build_reader(admission, storage)
+
+
+__all__ += [
+    "OptionTimeOccurrenceV1", "OptionTimeOwnerV1", "OptionTimeReadsV1",
+    "OptionTimeRequestV1", "OptionTimeSourceV1", "create_option_time_owner",
+    "create_option_time_reader", "create_option_time_source",
+]
