@@ -2175,6 +2175,76 @@
           "disposition": "BOUNDED_ADDITIVE_SOURCE_IMPLEMENTATION_COMMISSIONED",
           "execution_release": false,
           "product_cases_executed": 0
+        },
+        "downstream_d077_source_implementation_candidate": {
+          "disposition": "IMPLEMENTED_UNTESTED",
+          "base": "a76eb71df1bed284a82cd4a976eeb344b3567fc6",
+          "source_candidate": "253526238d3bfc163e42d0dcbdc79a17c41ff5eb",
+          "source_tree": "e274b29b13864a73db6f5d6468ae93a754484956",
+          "tree_listing_sha256": "b7135bd6e68352872dfb77fc3b19e78217716bce377fcd3ff9ad0fec1f389e3a",
+          "tree_entries": 4635,
+          "source_paths": [
+            {
+              "path": "src/nvda_desk/market_measurement_truth/api.py",
+              "sha256": "4fa8240011abb76e7f2349b698639f81f775dd24b8704858a5cf3ea51f2a6f97",
+              "git_blob": "5a09e90699bd849fb98285aeec4286341f301edb",
+              "bytes": 135163
+            },
+            {
+              "path": "src/nvda_desk/market_measurement_truth/_aligned_history_source.py",
+              "sha256": "f967e122a3ff138401c891987763af37c64b6500ed39672e692b5eb40abbb8cd",
+              "git_blob": "3b863dab607889f5b4fd579ebeaa36253bb7f412",
+              "bytes": 27180
+            },
+            {
+              "path": "src/nvda_desk/market_measurement_truth/_aligned_history_returns.py",
+              "sha256": "24265ff5b03a35f87aea1b609b578e88d636d786fe25d29c6df69d3dd8a86c46",
+              "git_blob": "cbae9894bc6b3d974fcee1deb60ba058962d25d2",
+              "bytes": 16968
+            },
+            {
+              "path": "src/nvda_desk/market_measurement_truth/_aligned_history_codec.py",
+              "sha256": "c04e6c3e9dd46e2fe0e84f4bdbdb5d300c2cb443534251c179847fef28f7395c",
+              "git_blob": "989216e08f6add36a878e97de0709fc9f31b44ec",
+              "bytes": 4556
+            },
+            {
+              "path": "tools/product_proof_claims.py",
+              "sha256": "6fde0f0ab02afd0bf7e6b2d8b960f2ca796f10572ba32642a4d46b7ba6d0943b",
+              "git_blob": "e05446e4c23b4cceb739ce62134ff39bfd894868",
+              "bytes": 75130
+            }
+          ],
+          "worker_report": {
+            "path": "handoff/m02_completion_28_execution/L01a/D077_DOWNSTREAM_SOURCE_IMPLEMENTATION_WORKER_REPORT_20261128.md",
+            "sha256": "b9c23ad275b61f902530b3944d1c415b6a3b629c20607049f1e3a420fef058f1",
+            "git_blob": "30cebe481ed1bd8b4d5ac4d9317f719a929ad60e",
+            "bytes": 7880
+          },
+          "review_commission": {
+            "path": "handoff/m02_completion_28_execution/L01a/D077_DOWNSTREAM_SOURCE_IMPLEMENTATION_REVIEW_COMMISSION_20261128.md",
+            "sha256": "c6fc912ded61c12f7474caee4268572746187f1a260a8d60ce836410efec817b",
+            "git_blob": "d39fac86202f6bb134f1fd6b3aee14e73fa13e5e",
+            "bytes": 7770
+          },
+          "authoring_verdict": {
+            "commit": "e235b0ecb14a88df8dc9b4deeb2d02351a5f5922",
+            "tree": "17821975a4ad03cff8e8155cd1e661d6d5b3baff",
+            "review_ref": "refs/heads/review/trial-cac-nvidia-d076-d077-authoring-20261128",
+            "path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_D076_D077_DOWNSTREAM_AUTHORING_VERDICTS_20261128.md",
+            "sha256": "c55dd934a02d7c726c5b3b98a573ba2537dfb500802e0140de91946ee6af1445",
+            "git_blob": "76691305b6fcceb6ffbc61eb4d85d77045266908",
+            "bytes": 13240,
+            "parent": "0a326c080c7fadc8aabd2ca2035ea7ce24c7c783",
+            "candidate_tree": "82a3d125b536609ad54293da87509f36b0aae4b7"
+          },
+          "future_descriptor_sha256": "96ed7bf333ede3ed7d038b542c36cede906d6a1f7873ee4595ed4944595594d5",
+          "independent_review": "PENDING",
+          "parent_product_acceptance_established": false,
+          "active_proof_installation": false,
+          "active_proof_registration": false,
+          "execution_release": false,
+          "product_cases_executed": 0
         }
       }
     },
@@ -6091,9 +6161,9 @@
   "execution_status": "ready",
   "current_leaf": "L01a",
   "next_assignment": {
-    "role": "Fresh distinct L01a D077 downstream source implementation Worker",
-    "task": "Fetch exact received trial HEAD; stop on mismatch. Follow AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and execution register. Execute only committed handoff/m02_completion_28_execution/L01a/D077_DOWNSTREAM_SOURCE_IMPLEMENTATION_COMMISSION_20261128.md SHA256 a99f92de805c41ed7cedda8c13d4b971f1090f8cf02a0adc97b2ebd3c1127b96; exact D077 bounded five-path source and dormant G01 route, three accepted inert nodes, actual parent interface verification; preserve D076 active registration, parent/legacy, all holds and sole Tester. No active proof installation/registration, product/proof imports, collection, execution or release. Commission independent implementation/applicability Reviewer. Continue eligible distinct-role succession once using owner-adopted CAC MVP.",
-    "selection_basis": "D076 serial registration installation independently accepted; D077 exact independently accepted authoring package preserved; next serial source implementation under owner finite64 and R1. No actual parent product acceptance or release."
+    "role": "Fresh distinct L01a D077 downstream source implementation and shared-surface applicability/invalidation Reviewer",
+    "task": "Fetch exact trial HEAD; stop on mismatch. Execute only committed handoff/m02_completion_28_execution/L01a/D077_DOWNSTREAM_SOURCE_IMPLEMENTATION_REVIEW_COMMISSION_20261128.md SHA256 c6fc912ded61c12f7474caee4268572746187f1a260a8d60ce836410efec817b; exact source 253526238d3bfc163e42d0dcbdc79a17c41ff5eb, tree e274b29b13864a73db6f5d6468ae93a754484956, Worker report b9c23ad275b61f902530b3944d1c415b6a3b629c20607049f1e3a420fef058f1. Independently review D077 bounded five-path implementation, three inert cases and separate candidate-specific D076/parent/legacy/G01 applicability/invalidation. No source/proof edits, active installation/registration, product/proof imports, collection, execution or release. Continue eligible distinct-role succession once via owner-adopted CAC MVP.",
+    "selection_basis": "D077 source implemented untested; independent review mandatory before registration preparation. D076 active registration immutable; all product execution held."
   },
   "trial_forward_succession_authority": {
     "scope": "trial/cac-nvidia-continuation-20261127 only",
