@@ -8671,7 +8671,7 @@
         "L07a"
       ],
       "obligation": "Use actual R013/R001 and compatible exchange trading date D004 to compute whole calendar-day difference. Preserve contract/calendar/source identity. Refuse unsupported calendar/date coverage or negative live-contract DTE. This does not require converting a date into an invented instant.",
-      "status": "D085_IMPLEMENTED_UNTESTED_PENDING_INDEPENDENT_SOURCE_AND_SHARED_SURFACE_REVIEW_EXECUTION_HELD",
+      "status": "D085_IMPLEMENTED_UNTESTED_SOURCE_AND_SHARED_SURFACE_APPLICABILITY_INDEPENDENTLY_ACCEPTED_EXECUTION_HELD",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G2_AFTER_L18"
@@ -8705,7 +8705,7 @@
         ],
         "execution_release": false,
         "product_status": "NOT_ATTEMPTED",
-        "first_unmet_invariant": "Independent source implementation and candidate-specific shared-surface applicability/invalidation review; subsequent separate registration preparation, review, installation and installation review. Actual D001/D003/D004 product acceptance and sole Tester candidate-specific intake/runtime/precall remain mandatory before D085 execution.",
+        "first_unmet_invariant": "D085 inert registration preparation, independent review, installation and installation review; actual D001/D003/D004 product acceptance and candidate-specific sole Tester intake/runtime/precall before D085 execution.",
         "tester_designation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
         "tester_status": "CANDIDATE_SPECIFIC_INTAKE_REQUIRED",
         "scope": "Controlled synthetic only; no official/native certification or new product acceptance",
@@ -9003,9 +9003,38 @@
             "git_blob": "a223774fc661e496d94ccd5478113f568ab962e2",
             "bytes": 7642
           },
-          "independent_implementation_review": "PENDING",
-          "candidate_specific_shared_source_applicability_invalidation": "PENDING",
-          "registration": "NOT_INSTALLED"
+          "independent_implementation_review": "ACCEPT_DOCUMENTARY_IMPLEMENTATION",
+          "candidate_specific_shared_source_applicability_invalidation": "ACCEPT_CANDIDATE_SPECIFIC_DOCUMENTARY_APPLICABILITY_NO_MATERIAL_INVALIDATION_ESTABLISHED",
+          "registration": "NOT_INSTALLED",
+          "independent_review_commit": "fdff512a23f2fdcf5009a0faa62ab324a2f911f6",
+          "independent_review_report_sha256": "e31f984c5f74d85b56f0bd7ebdfb56ee5d7ee832de91d82092cc39da43e34204"
+        },
+        "independent_d085_source_implementation_and_shared_surface_applicability_verdict": {
+          "commit": "fdff512a23f2fdcf5009a0faa62ab324a2f911f6",
+          "tree": "98c254a2c61815ad3bc6a4441ca3a2c88b9d0ed3",
+          "parent": "6b0d9fe78e4c1b3fe45b1691fc2d9a596cced606",
+          "ref": "refs/heads/review/trial-cac-nvidia-d085-calendar-dte-implementation-20261129",
+          "path": "handoff/m02_completion_28_execution/L08/INDEPENDENT_D085_CALENDAR_DTE_SOURCE_IMPLEMENTATION_AND_SHARED_SURFACE_VERDICT_20261129.md",
+          "git_blob": "0d6da2874b4db2190db2548ae840a1c8dd6df690",
+          "sha256": "e31f984c5f74d85b56f0bd7ebdfb56ee5d7ee832de91d82092cc39da43e34204",
+          "bytes": 13154,
+          "candidate": "ef776630e369d7378f35fe389dbd2d653b96934d",
+          "candidate_tree": "75da543a49e6ee14189cc7a393f1f02b4af4307a",
+          "source_disposition": "ACCEPT_DOCUMENTARY_IMPLEMENTATION",
+          "shared_surface_dispositions": {
+            "D001": "ACCEPT_CANDIDATE_SPECIFIC_DOCUMENTARY_APPLICABILITY_NO_MATERIAL_INVALIDATION_ESTABLISHED",
+            "D003": "ACCEPT_CANDIDATE_SPECIFIC_DOCUMENTARY_APPLICABILITY_NO_MATERIAL_INVALIDATION_ESTABLISHED",
+            "D004": "ACCEPT_CANDIDATE_SPECIFIC_DOCUMENTARY_APPLICABILITY_NO_MATERIAL_INVALIDATION_ESTABLISHED",
+            "D086": "ACCEPT_CANDIDATE_SPECIFIC_DOCUMENTARY_APPLICABILITY_NO_MATERIAL_INVALIDATION_ESTABLISHED",
+            "D095": "ACCEPT_CANDIDATE_SPECIFIC_DOCUMENTARY_APPLICABILITY_NO_MATERIAL_INVALIDATION_ESTABLISHED",
+            "existing_G01": "ACCEPT_CANDIDATE_SPECIFIC_DOCUMENTARY_APPLICABILITY_NO_MATERIAL_INVALIDATION_ESTABLISHED",
+            "aligned_legacy": "ACCEPT_CANDIDATE_SPECIFIC_DOCUMENTARY_APPLICABILITY_NO_MATERIAL_INVALIDATION_ESTABLISHED",
+            "D078": "ACCEPT_CANDIDATE_SPECIFIC_DOCUMENTARY_APPLICABILITY_NO_MATERIAL_INVALIDATION_ESTABLISHED"
+          },
+          "scope": "Documentary only; exact candidate. No product acceptance, release or automatic rerun.",
+          "execution_release": false,
+          "parent_product_acceptance": false,
+          "product_cases_executed": 0
         }
       }
     },
@@ -11537,9 +11566,9 @@
   "execution_status": "ready",
   "current_leaf": "L08",
   "next_assignment": {
-    "role": "Fresh distinct independent L08 D085 calendar DTE source implementation and candidate-specific shared-surface applicability/invalidation Reviewer",
-    "task": "Fetch exact trial HEAD; stop on mismatch. Execute only committed handoff/m02_completion_28_execution/L08/D085_CALENDAR_DTE_SOURCE_IMPLEMENTATION_REVIEW_COMMISSION_20261129.md SHA256 15ff0e5c6f2c5081a4fe31f6cdfc9ad52fbe253b3fbbea466d6af1f81cf5ec39; verify source ef776630e369d7378f35fe389dbd2d653b96934d tree 75da543a49e6ee14189cc7a393f1f02b4af4307a, Worker report SHA256 002e47d367077f482a8ee6f919f970fd59bc36607601adcdac81e27123d01dc9. Review exact five-path source, seven inert cases, actual D001/D003/D004 lineage, dormant G01 and candidate-specific applicability/invalidation. No source/proof edits, physical installation, registration, imports, loader, collection, execution or release. Preserve holds and sole Tester. Continue eligible distinct-role succession once via owner-adopted CAC MVP.",
-    "selection_basis": "Bounded D085 source implemented untested; independent documentary implementation and candidate-specific shared-surface review mandatory before separate registration preparation. Parent product acceptance and all execution remain held."
+    "role": "Fresh distinct L08 D085 calendar DTE inert registration-preparation Worker",
+    "task": "Fetch exact trial HEAD; stop on mismatch. Execute only committed handoff/m02_completion_28_execution/L08/D085_CALENDAR_DTE_REGISTRATION_PREPARATION_COMMISSION_20261129.md SHA256 d1f7c4c662a395e6bc120c9342a2a536e1614cb28e3080378343c0241eecfb79; verify independent source/applicability verdict fdff512a23f2fdcf5009a0faa62ab324a2f911f6 SHA256 e31f984c5f74d85b56f0bd7ebdfb56ee5d7ee832de91d82092cc39da43e34204 and source ef776630e369d7378f35fe389dbd2d653b96934d tree 75da543a49e6ee14189cc7a393f1f02b4af4307a. Prepare only inert D085 registration candidates. No source/proof edits, physical installation, active registration, imports, loader, collection, compilation, execution or release. Preserve all 64 holds, 67 historical acceptances, D078 legacy/registration, D145 PAUSED, G01 R2 unadopted, actual D001/D003/D004 product acceptance prerequisite and sole Tester. Continue eligible distinct-role succession once via owner-adopted CAC MVP.",
+    "selection_basis": "Exact D085 implementation and candidate-specific applicability independently accepted documentary-only; inert registration preparation eligible. All execution held."
   },
   "trial_forward_succession_authority": {
     "scope": "trial/cac-nvidia-continuation-20261127 only",
