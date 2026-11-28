@@ -1554,7 +1554,7 @@
         "L00"
       ],
       "obligation": "Bind the exact option expiry instant and timezone/session convention separately from its date, with compatible true-instant D001. Never invent midnight or event time from date-only/receipt-only values. Bind exact year-fraction representation. Independently prove a necessary option-domain D001 extension; retain its original profile and zero new identity contribution.",
-      "status": "IMPLEMENTED_UNTESTED_DOWNSTREAM_INTERFACE_RECOVERY_REGISTRATION_SUCCESSOR_PREPARATION_ACCEPTED_INSTALLATION_REQUIRED_EXECUTION_HELD",
+      "status": "IMPLEMENTED_UNTESTED_DOWNSTREAM_INTERFACE_RECOVERY_REGISTRATION_SUCCESSOR_INSTALLED_INDEPENDENT_INSTALLATION_REVIEW_REQUIRED_EXECUTION_HELD",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G2_AFTER_L18"
@@ -1588,7 +1588,7 @@
         ],
         "execution_release": false,
         "product_status": "NOT_ATTEMPTED",
-        "first_unmet_invariant": "Independent inert generation 0002 preparation accepted. Exact byte-for-byte separately commissioned active installation and fresh independent installation review required before revised registration applicability clears; candidate-specific sole Tester intake and parent proof release remain held.",
+        "first_unmet_invariant": "Fresh distinct independent documentary installation review required before revised registration applicability clears; exact candidate-specific sole Tester intake and parent proof release remain held.",
         "tester_designation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
         "tester_status": "CANDIDATE_SPECIFIC_INTAKE_REQUIRED",
         "scope": "Controlled synthetic only; no official/native certification or new product acceptance",
@@ -2096,9 +2096,43 @@
           "execution_release": false,
           "product_cases_executed": 0,
           "scope": "Independent exact inert preparation clearance only. No active registration mutation, source or proof changes, product acceptance, execution release or child work. Generation 0001 and active pointer preserved until separately commissioned installation."
+        },
+        "downstream_interface_recovery_registration_successor_installation_candidate": {
+          "status": "INSTALLED_EXACT_BYTES_INDEPENDENT_INSTALLATION_REVIEW_PENDING_EXECUTION_HELD",
+          "input_handoff": "94d367fe465890050a9fd31e35c6dba014bee961",
+          "candidate": "8d63cd9630c746c0d5b01deb3ebe1057f8f7925c",
+          "candidate_tree": "dedc7d36c875328612fa6d5a4562548955283f93",
+          "recursive_tree_listing_sha256": "e6422cc22aebe95e03d6681b98a7da299c461b3fc3e4f9d5f16aa02f9e076e88",
+          "tracked_entries": 4572,
+          "preparation_verdict": "d9b2745ceeb8a5133f00802c2e01feafcb90b942",
+          "files": [
+            {
+              "path": "handoff/m02_completion_28_execution/L07a/D001_GENERATION_0002_CANDIDATE.json",
+              "sha256": "3bb00fcf792f0528dc0a19485b4ffeade724266a0ab1fe5c91550307bb043e7a",
+              "git_blob": "1cea2f5c6b10180ad893a50189f19a0bb1d57c9f",
+              "bytes": 2133,
+              "destination": "config/product_proof/m02_option_time_d001/generations/0002.json"
+            },
+            {
+              "path": "handoff/m02_completion_28_execution/L07a/D001_ADMISSION_0002_CANDIDATE.json",
+              "sha256": "535e280a195a85facc90877b69d77314dd29da6d683e5358081856e497b5cca6",
+              "git_blob": "6d5045628a3d1835d909f6714c9b144d8106394c",
+              "bytes": 221,
+              "destination": "config/product_proof/m02_option_time_d001/admission.json"
+            }
+          ],
+          "report_path": "handoff/m02_completion_28_execution/L07a/D001_REGISTRATION_GENERATION_0002_INSTALLATION_20261128.md",
+          "report_sha256": "042437abca3af1064be8daeeb204c7a22acad12d5017efc6b96a2b02a5431fa2",
+          "review_ref": "refs/heads/review/trial-cac-nvidia-d001-generation-0002-installation-20261128",
+          "verdict_path": "handoff/m02_completion_28_execution/L07a/INDEPENDENT_D001_REGISTRATION_GENERATION_0002_INSTALLATION_VERDICT_20261128.md",
+          "metadata_validation": "READY_FOR_PROOF_M02_METADATA_ONLY",
+          "exact_case_count": 4,
+          "execution_release": false,
+          "product_cases_executed": 0,
+          "scope": "Exact two-path installation only; independent installation review pending, no product release."
         }
       },
-      "first_unmet_invariant": "Independent inert generation 0002 preparation accepted. Exact byte-for-byte separately commissioned active installation and fresh independent installation review required before revised registration applicability clears; candidate-specific sole Tester intake and parent proof release remain held."
+      "first_unmet_invariant": "Fresh distinct independent documentary installation review required before revised registration applicability clears; exact candidate-specific sole Tester intake and parent proof release remain held."
     },
     {
       "leaf": "L08",
@@ -4226,9 +4260,9 @@
   "execution_status": "ready",
   "current_leaf": "L07b",
   "next_assignment": {
-    "role": "Fresh distinct D001 class-level downstream-interface recovery registration successor generation installation Worker",
-    "task": "Fetch exact trial HEAD; stop on mismatch. Follow AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and execution register. Execute only the exact independently accepted generation 0002 and prospective admission pointer installation commission, bound to inert candidate abc58a8231902b6be09505c995bec48cdebba5b9 tree 0ce2777ff32195dbdc3668abf22086306a7707a5, source candidate 7148bad12f54824b018b359ed2b49803b4864e21 tree 9faf166c3cfc6df39ede3eacbbc2c942959db95e, independent preparation verdict d9b2745ceeb8a5133f00802c2e01feafcb90b942 at refs/heads/review/trial-cac-nvidia-d001-generation-0002-preparation-20261128, report handoff/m02_completion_28_execution/L07a/INDEPENDENT_D001_REGISTRATION_GENERATION_0002_PREPARATION_VERDICT_20261128.md SHA256 be25e8fc455736437fa2605c826fd6144fe820f694322d56a2a6cc4dea5a847e. Verify current active 0001 SHA256 ab50355f7d0d3625b062a665809fc80192fc92ec842b1444a7e51d0bb1add5b9, existing admission SHA256 32fcf9d05a45daf9e669b4861d8173341d206acc27f20d6c195a074a0d9858c1 and claim unchanged; copy exact reviewed D001_GENERATION_0002_CANDIDATE.json SHA256 3bb00fcf792f0528dc0a19485b4ffeade724266a0ab1fe5c91550307bb043e7a to config/product_proof/m02_option_time_d001/generations/0002.json and exact D001_ADMISSION_0002_CANDIDATE.json SHA256 535e280a195a85facc90877b69d77314dd29da6d683e5358081856e497b5cca6 to config/product_proof/m02_option_time_d001/admission.json. Preserve 0001 and claim byte-for-byte; no source, test, validator, ledger, authority or other registration mutation. Verify exact installed bytes, linked predecessor and active metadata-only resolution with four ordered nodes and 64 held allocations; no product imports, collection, execution or release. Publish exact two-path installation candidate, record verification and commission fresh distinct independent installation reviewer before revised applicability clears. Preserve all engineering holds, no child work, D095 unchanged, G01 R2 unadopted, D145 PAUSED, sole Tester. Continue eligible distinct-role succession once via owner-adopted CAC MVP.",
-    "selection_basis": "Exact independent preparation acceptance clears only the separately commissioned byte-for-byte installation; fresh independent installation review remains mandatory."
+    "role": "Fresh distinct independent D001 class-level downstream-interface recovery registration successor generation installation reviewer",
+    "task": "Fetch exact trial HEAD; stop on mismatch. Follow AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and execution register. Independently review only exact two-path installation candidate 8d63cd9630c746c0d5b01deb3ebe1057f8f7925c tree dedc7d36c875328612fa6d5a4562548955283f93, input 94d367fe465890050a9fd31e35c6dba014bee961, report handoff/m02_completion_28_execution/L07a/D001_REGISTRATION_GENERATION_0002_INSTALLATION_20261128.md SHA256 042437abca3af1064be8daeeb204c7a22acad12d5017efc6b96a2b02a5431fa2. Verify independent preparation verdict d9b2745ceeb8a5133f00802c2e01feafcb90b942, exact reviewed inert generation/pointer bytes and installed active paths, unchanged 0001 and claim, predecessor, source, authority, ledger and four ordered nodes, metadata-only active resolution and all 64 held cases. Publish separate independent installation verdict at refs/heads/review/trial-cac-nvidia-d001-generation-0002-installation-20261128 before revised registration applicability clears. No product import, collection, execution, runtime qualification or release, child work, D095 change, G01 R2 adoption, D145 reactivation, main/original promotion or Tester replacement. Preserve sole Tester and candidate-specific intake/parent proof release. Continue eligible distinct-role succession once via owner-adopted CAC MVP.",
+    "selection_basis": "Exact independently cleared two-path generation 0002 and admission pointer installed; independent installation review is next required invariant, no execution release."
   },
   "trial_forward_succession_authority": {
     "scope": "trial/cac-nvidia-continuation-20261127 only",
