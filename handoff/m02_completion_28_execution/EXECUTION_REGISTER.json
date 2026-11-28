@@ -7637,6 +7637,62 @@
           "execution_release": false,
           "parent_product_acceptance": false,
           "product_cases_executed": 0
+        },
+        "d004_binding_installation_and_inert_authoring_candidate": {
+          "jurisdiction": "D004",
+          "proof_id": "SUP-D004-USOPTION",
+          "state": "AUTHORED_UNEXECUTED_INDEPENDENT_REVIEW_REQUIRED",
+          "input_handoff": "87391005c1b37814291091e1acf913290a565d16",
+          "candidate": "9e308b96efd2dae4fbd613294a8fc2d7efea1bb9",
+          "candidate_tree": "807e8112b2ef9c7177a398caefe77473138db1cd",
+          "tree_listing_sha256": "9eb3f7e185570242216c5a0bb280245cf88ff06aa55078ad504825c4ae45147e",
+          "tracked_entries": 4738,
+          "binding": {
+            "path": "implementation/authority/T01_D004_OPTION_TIME_AUTHORITY_BINDING.yaml",
+            "sha256": "50f49638a7202d2b10f7b89b6076971445b033bd74bf66f8ea17a0c6862123aa"
+          },
+          "inert_test_source": {
+            "path": "handoff/m02_completion_28_execution/L07a/D004_TEST_SOURCE.py",
+            "sha256": "c7d49002d3f0827b08aab3bc2160c504a7979be11cb162fffd814b3c6fc62cb4"
+          },
+          "proof_contract": {
+            "path": "handoff/m02_completion_28_execution/L07a/D004_PROOF_CONTRACT.json",
+            "sha256": "adaeddd70d003799b1dad99481c62d7ea5debef0524b845d8780d3aeee1bb4d1"
+          },
+          "report": {
+            "path": "handoff/m02_completion_28_execution/L07a/D004_OPTION_SESSION_BINDING_INSTALLATION_AND_INERT_AUTHORING_20261128.md",
+            "sha256": "3056b0a2dfe68be238b2a35eb87ff28acefb0ddb6f19a6267da7ea6052376dd8"
+          },
+          "prospective_physical_path": "tests/product/m02_completion_28_prospective/support/d004-usoption/test_profile.py",
+          "prospective_descriptor_root": "config/product_proof/m02_option_time_d004",
+          "case_ids": [
+            "SUP-D004-USOPTION-SUCCESS",
+            "SUP-D004-USOPTION-REACHED_REFUSAL",
+            "SUP-D004-USOPTION-SCHEDULE-MISMATCH"
+          ],
+          "ordered_test_nodes": [
+            "tests/product/m02_completion_28_prospective/support/d004-usoption/test_profile.py::test_d004_success",
+            "tests/product/m02_completion_28_prospective/support/d004-usoption/test_profile.py::test_d004_closed_end",
+            "tests/product/m02_completion_28_prospective/support/d004-usoption/test_profile.py::test_d004_schedule_mismatch"
+          ],
+          "parent_pairs": [
+            "CROSS_CLOSE/CROSS_CLOSE",
+            "AT_EXPIRY/AT_EXPIRY",
+            "R024_SCHEDULE_MISMATCH/MAIN"
+          ],
+          "exact_nonfungible_ceiling": 3,
+          "parent_product_acceptance": false,
+          "execution_release": false,
+          "product_cases_executed": 0
+        },
+        "d004_inert_authoring_review_commission": {
+          "path": "handoff/m02_completion_28_execution/L07a/D004_OPTION_SESSION_INERT_AUTHORING_REVIEW_COMMISSION_20261128.md",
+          "sha256": "4b07eddcf18cd41f58ecc046b93df2105e4f456df992f9d60157ef83ac128c4b",
+          "disposition": "INDEPENDENT_DOCUMENTARY_AUTHORING_REVIEW_COMMISSIONED",
+          "case_count": 3,
+          "execution_release": false,
+          "parent_product_acceptance": false,
+          "product_cases_executed": 0
         }
       }
     },
@@ -10849,9 +10905,9 @@
   "execution_status": "ready",
   "current_leaf": "L07a",
   "next_assignment": {
-    "role": "Fresh distinct L07a D004 option-session exact binding-installation and inert proof-authoring Worker",
-    "task": "Fetch exact commissioned trial HEAD; stop on mismatch. Follow AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and execution register. Execute only committed handoff/m02_completion_28_execution/L07a/D004_OPTION_SESSION_BINDING_INSTALLATION_AUTHORING_COMMISSION_20261128.md SHA256 0fa5e556627e8b2f47b5e508a62f57ad4551370991959837a1ec29fb01beb63b; verify independent verdict 67adebbd89345b4fd82e2be9d67f2e50fe917503 report SHA256 109194c4789fc230edd9ef0e05e0ea74202ebd0595d4f7dd97e1aa25a984515e. Install only exact accepted D004 binding bytes and author exactly three inert proof functions and exact contract. No source edits, physical proof installation, registration, product/proof imports, loader, collection, execution, release or D085 preparation. Preserve all 64 holds/67 historical accepted, D078 legacy/registration, actual parent acceptance prerequisite and sole Tester. Continue eligible distinct-role succession once using owner-adopted CAC MVP.",
-    "selection_basis": "Exact D004 inactive binding and brief independently accepted; actual parent product acceptance remains required before execution. Only separately bounded installation and inert authoring now eligible."
+    "role": "Fresh distinct independent L07a D004 option-session inert proof-authoring Reviewer",
+    "task": "Fetch exact commissioned trial HEAD; stop on mismatch. Follow AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and execution register. Execute only committed handoff/m02_completion_28_execution/L07a/D004_OPTION_SESSION_INERT_AUTHORING_REVIEW_COMMISSION_20261128.md SHA256 4b07eddcf18cd41f58ecc046b93df2105e4f456df992f9d60157ef83ac128c4b. Verify candidate 9e308b96efd2dae4fbd613294a8fc2d7efea1bb9 tree 807e8112b2ef9c7177a398caefe77473138db1cd, exact binding and three inert proof functions/contract, actual D001/D003 registered interfaces, exact cases and all holds; no D085 preparation, physical proof installation, source edits, registration, product/proof imports, loader, collection, execution or release. Preserve all 64 holds/67 historical accepted, D078 legacy/registration, actual parent acceptance prerequisite and sole Tester. Continue eligible distinct-role succession once using owner-adopted CAC MVP.",
+    "selection_basis": "Exact D004 binding installed and three inert proofs authored; fresh independent documentary authoring review required before separately commissioned implementation."
   },
   "trial_forward_succession_authority": {
     "scope": "trial/cac-nvidia-continuation-20261127 only",
