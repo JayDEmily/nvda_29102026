@@ -523,3 +523,56 @@ def validate_session_roles(
         raise ValueError("D004 selected originals do not co-occur in one admitted roster")
     for rid, original, projection in zip(roles, originals, projections, strict=True):
         check_projection(original, projection, mapping_for(rid))
+
+
+DTE_BRIEF_PATH = LEAF + "D085_IMPLEMENTATION_BRIEF.md"
+DTE_BRIEF = "d9d142c25c7d77dfa82c7181ec4ef0d0990216b77139d6a2811cd6a871e0a1a1"
+DTE_BINDING_PATH = "implementation/authority/T01_D085_OPTION_TIME_AUTHORITY_BINDING.yaml"
+DTE_BINDING_SHA = "b28156683fd15f4a685ceac7ff66e0db0782d21319c242a4afd1b8fbb965ee21"
+DTE_PARENT_ROLES = ("R002", "R003", "R004", "R023", "R024")
+DTE_ROLES = ("R013", "R001")
+
+
+def dte_policy() -> dict[str, Any]:
+    _pinned(DTE_BRIEF_PATH, DTE_BRIEF)
+    _pinned(DTE_BINDING_PATH, DTE_BINDING_SHA)
+    return session_policy()
+
+
+def check_dte_admission(admission: f.OwnerAdmissionV1) -> None:
+    if type(admission) is not f.OwnerAdmissionV1 or admission != f.OwnerAdmissionV1(
+        "M02", DTE_BRIEF,
+    ):
+        raise ValueError("unadmitted D085 option-time owner")
+    dte_policy()
+
+
+def build_dte_source(admission: f.OwnerAdmissionV1, specimen_id: str) -> f.OptionTimeSourceV1:
+    check_dte_admission(admission)
+    return _build_sealed_source(admission, specimen_id)
+
+
+def live_dte_roles(
+    raw_source: f.OptionTimeSourceV1, cutoff: datetime,
+) -> dict[str, tuple[raw.RawObservationOccurrenceV1, raw.ProjectedRawValueV1]]:
+    return _live_roles(raw_source, cutoff)
+
+
+def validate_dte_roles(
+    originals: tuple[raw.RawObservationOccurrenceV1, ...],
+    projections: tuple[raw.ProjectedRawValueV1, ...],
+) -> None:
+    """All seven retained raw roles must co-occur in one exact permitted literal roster."""
+    roles = DTE_PARENT_ROLES + DTE_ROLES
+    if len(originals) != len(roles) or len(projections) != len(roles):
+        raise ValueError("D085 requires the actual parent five roles and own R013/R001")
+    actual = native.canonical(originals)
+    for name in SPECIMENS:
+        _, roster = _specimen(name)
+        expected = tuple(next(o for o in roster if _role(o) == rid) for rid in roles)
+        if actual == native.canonical(expected):
+            break
+    else:
+        raise ValueError("D085 selected originals do not co-occur in one admitted roster")
+    for rid, original, projection in zip(roles, originals, projections, strict=True):
+        check_projection(original, projection, mapping_for(rid))

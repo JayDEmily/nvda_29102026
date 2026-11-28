@@ -1106,3 +1106,325 @@ def build_session_reader(
     if type(storage) is not f.SQLiteReadStorageV1:
         raise ValueError("unadmitted D004 read-only storage")
     return _SessionReads(_session_store(storage))
+
+
+DTE_SIGNAL = "D085"
+DTE_PROFILE = f.VersionRefV1("t01-option-time-d085", 1)
+DTE_NAMESPACE = "neutral_market_measurement_truth/option_time_dte/v1"
+DTE_DEFINITION = f.CalculationDefinitionV1(
+    DTE_SIGNAL,
+    "T01-D085-OPTION-TIME-DEF-V1",
+    "K01_TIME",
+    "Actual expiry date minus actual D004 trading date in whole calendar days "
+    "after collector receipt and open-session alignment.",
+    source.DTE_ROLES,
+    ("D004",),
+    "P_TIME",
+    "days",
+    "integer_calendar_days",
+    (
+        *DEFINITION.authority_refs[:3],
+        f.AuthorityArtifactRefV1(source.DTE_BRIEF_PATH, source.DTE_BRIEF),
+    ),
+)
+
+
+def _dte_request_check(request: f.OptionTimeRequestV1) -> None:
+    if type(request) is not f.OptionTimeRequestV1:
+        raise TypeError("exact D085 option-time request required")
+    f._Validated.__post_init__(request)
+    policy = source.dte_policy()
+    if request.frame_id not in policy["frames"]:
+        raise ValueError("unadmitted D085 option-time frame")
+    clocks = policy["frames"][request.frame_id]["calculation_clocks"][DTE_SIGNAL]
+    if (
+        request.derived_signal_id != DTE_SIGNAL
+        or request.subject_instrument != source.SUBJECT
+        or request.source_profile_ref != DTE_PROFILE
+        or request.calculation_definition_version != DTE_DEFINITION.calculation_definition_version
+        or len(request.predecessor_occurrence_ids) != 1
+        or request.as_of_utc != datetime.fromisoformat(clocks["as_of_utc"])
+        or request.knowledge_cutoff_utc != datetime.fromisoformat(clocks["knowledge_cutoff_utc"])
+    ):
+        raise ValueError("unadmitted D085 option-time frame/clock/profile")
+
+
+def _dte_parent_roles(
+    parent: f.OptionTimeSessionOccurrenceV1,
+) -> tuple[tuple[raw.RawObservationOccurrenceV1, ...], tuple[raw.ProjectedRawValueV1, ...]]:
+    local = parent.predecessor
+    instant = local.predecessor
+    return (
+        instant.original_observations + local.original_observations + parent.original_observations,
+        instant.selected_projections + local.selected_projections + parent.selected_projections,
+    )
+
+
+def _dte_calculate(
+    request: f.OptionTimeRequestV1,
+    originals: tuple[raw.RawObservationOccurrenceV1, ...],
+    projections: tuple[raw.ProjectedRawValueV1, ...],
+    parent: f.OptionTimeSessionOccurrenceV1,
+) -> tuple[int, str]:
+    _dte_request_check(request)
+    _validate_session(parent)
+    instant = parent.predecessor.predecessor
+    event = instant.result
+    if (
+        len(originals) != 2 or len(projections) != 2
+        or request.predecessor_occurrence_ids != (parent.derived_occurrence_id,)
+        or parent.request.subject_instrument != request.subject_instrument
+        or parent.request.frame_id != request.frame_id
+        or parent.effective_as_of_utc != event
+        or not (
+            parent.knowledge_cutoff_utc <= parent.calculated_at_utc <= request.knowledge_cutoff_utc
+        )
+    ):
+        raise ValueError("D085 actual D004 parent alignment or visibility mismatch")
+    parent_originals, parent_projections = _dte_parent_roles(parent)
+    source.validate_dte_roles(parent_originals + originals, parent_projections + projections)
+    policy = source.dte_policy()
+    expiry_original, receipt_original = originals
+    expiry_projection, receipt_projection = projections
+    for original, projection, rid, role, identifier in zip(
+        originals, projections, source.DTE_ROLES, ("expiry_date", "collector_receipt"),
+        ("Contract.lastTradeDateOrContractMonth", "collector.received_ts_utc"), strict=True,
+    ):
+        record = original.native_record
+        mapping = source.mapping_for(rid)
+        if (
+            original.subject_instrument != source.SUBJECT
+            or original.native_units != mapping.native_units
+            or projection.native_units != mapping.native_units
+            or original.source_temporal_kind != "receipt_only"
+            or original.source_timestamp_raw is not None
+            or original.source_timezone_native is not None
+            or original.received_ts_utc > request.knowledge_cutoff_utc
+            or original.native_identifier != identifier
+            or source._path(record, ("sample", "id")) != request.frame_id
+            or source._path(record, ("value", "role")) != role
+            or any(
+                source._path(record, (key, field)) != source._native(expected)
+                for key, fields in policy["contract_identity"].items()
+                for field, expected in fields.items()
+            )
+            or projection.native_field_path != mapping.native_field_path
+            or type(projection.native_value) is not str
+            or projection.native_value != source._path(record, mapping.native_field_path)
+        ):
+            raise ValueError("D085 actual selected raw role/contract/native units invariant")
+    expiry_text = expiry_projection.native_value
+    if len(expiry_text) != 8 or not expiry_text.isascii() or not expiry_text.isdigit():
+        raise ValueError("D085 exact native YYYYMMDD required")
+    expiry = datetime.strptime(expiry_text, "%Y%m%d").date()
+    if (
+        expiry.strftime("%Y%m%d") != expiry_text
+        or expiry.isoformat() != source._path(expiry_original.native_record, ("expiry", "date"))
+        or expiry.isoformat() != policy["contract_identity"]["expiry"]["date"]
+    ):
+        raise ValueError("D085 actual R013 expiry date mismatch")
+    claimed = datetime.fromisoformat(receipt_projection.native_value)
+    f._utc(claimed)
+    receipt = receipt_original.received_ts_utc
+    if (
+        claimed.tzinfo is not UTC
+        or claimed != receipt
+        or not (
+            receipt == parent_originals[0].received_ts_utc
+            == parent_originals[1].received_ts_utc == request.as_of_utc
+        )
+        or not event <= receipt <= request.knowledge_cutoff_utc
+    ):
+        raise ValueError("D085 R001 actual collector receipt agreement mismatch")
+
+    # D004 has already revalidated the complete ordered gap-free calendar,
+    # both schedules and event session. Locate event and receipt separately.
+    calendar = policy["calendar"]
+    event_intervals = []
+    receipt_intervals = []
+    for interval in calendar["intervals"]:
+        start = datetime.fromisoformat(interval["start_utc"])
+        end = datetime.fromisoformat(interval["end_utc"])
+        if start <= event < end:
+            event_intervals.append(interval)
+        if start <= receipt < end:
+            receipt_intervals.append(interval)
+    if (
+        len(event_intervals) != 1 or len(receipt_intervals) != 1
+        or event_intervals[0] != receipt_intervals[0]
+        or event_intervals[0]["session_id"] == "closed"
+        or event_intervals[0]["session_id"] != parent.session_id
+        or event_intervals[0]["trading_date"] != parent.result.isoformat()
+        or parent.calendar_policy_ref != SESSION_CALENDAR_REF
+    ):
+        raise ValueError("D085 actual receipt does not occupy the parent open half-open session")
+    days = (expiry - parent.result).days
+    if type(days) is not int or days < 0:
+        raise ValueError("D085 negative live calendar DTE")
+    return days, parent.session_id
+
+
+def _validate_dte(value: f.OptionTimeDteOccurrenceV1) -> None:
+    if type(value) is not f.OptionTimeDteOccurrenceV1:
+        raise TypeError("exact D085 option-time occurrence required")
+    value.__post_init__()
+    expected, session_id = _dte_calculate(
+        value.request, value.original_observations, value.selected_projections, value.predecessor,
+    )
+    if (
+        value.owner_object_id != "M02"
+        or value.owner_namespace != DTE_NAMESPACE
+        or value.implementation_brief_sha256 != source.DTE_BRIEF
+        or value.derived_signal_id != DTE_SIGNAL
+        or value.definition != DTE_DEFINITION
+        or value.source_policy_sha256 != source.POLICY_SHA
+        or value.source_profile_ref != DTE_PROFILE
+        or value.predecessor_occurrence_ids != value.request.predecessor_occurrence_ids
+        or native.canonical(value.projection_mappings)
+        != native.canonical(tuple(source.mapping_for(r) for r in source.DTE_ROLES))
+        or value.calendar_policy_ref != SESSION_CALENDAR_REF
+        or value.session_id != session_id
+        or type(value.result) is not int or value.result != expected
+        or value.units != DTE_DEFINITION.units
+        or value.result_shape != DTE_DEFINITION.result_shape
+        or value.effective_as_of_utc != value.request.as_of_utc
+        or value.knowledge_cutoff_utc != value.request.knowledge_cutoff_utc
+        or value.calculated_at_utc < value.knowledge_cutoff_utc
+        or value.derived_occurrence_id != codec.dte_identity(value)
+    ):
+        raise ValueError("D085 option-time durable semantic or identity mismatch")
+
+
+def _dte_store(storage: f.SQLiteStorageV1 | f.SQLiteReadStorageV1) -> RecordState:
+    return RecordState(storage, codec.decode_dte, _validate_dte, encode=codec.encode_dte)
+
+
+class _DteReads:
+    def __init__(self, state: RecordState) -> None:
+        self._state = state
+
+    def get_derived_occurrence(
+        self, derived_occurrence_id: str,
+    ) -> f.OptionTimeDteOccurrenceV1 | None:
+        if type(derived_occurrence_id) is not str or not derived_occurrence_id:
+            raise ValueError("exact nonempty D085 occurrence identity required")
+        return next(
+            (value for value in self._state.all()
+             if value.derived_occurrence_id == derived_occurrence_id),
+            None,
+        )
+
+    def list_derived_history(
+        self, *, derived_signal_id: str, subject_instrument: str,
+        effective_at_or_before_utc: datetime, knowledge_at_or_before_utc: datetime,
+        limit: int,
+    ) -> tuple[f.OptionTimeDteOccurrenceV1, ...]:
+        f._utc(effective_at_or_before_utc)
+        f._utc(knowledge_at_or_before_utc)
+        if (
+            derived_signal_id != DTE_SIGNAL or subject_instrument != source.SUBJECT
+            or type(limit) is not int or not 1 <= limit <= 64
+        ):
+            raise ValueError("bounded D085 option-time history required")
+        rows = (
+            value for value in self._state.all()
+            if value.effective_as_of_utc <= effective_at_or_before_utc
+            and value.knowledge_cutoff_utc <= knowledge_at_or_before_utc
+        )
+        return tuple(sorted(rows, key=lambda value: (
+            value.effective_as_of_utc, value.knowledge_cutoff_utc, value.derived_occurrence_id,
+        )))[:limit]
+
+
+class _DteOwner:
+    def __init__(
+        self, raw_source: f.OptionTimeSourceV1, parent_reads: f.OptionTimeSessionReadsV1,
+        state: RecordState, utc_now: Callable[[], datetime],
+    ) -> None:
+        self._source, self._parent_reads = raw_source, parent_reads
+        self._state, self._utc_now = state, utc_now
+        self.reads = _DteReads(state)
+
+    def materialise(self, request: f.OptionTimeRequestV1) -> f.OptionTimeDteOccurrenceV1 | None:
+        if type(request) is not f.OptionTimeRequestV1:
+            raise TypeError("exact D085 option-time request required")
+        now = self._utc_now()
+        f._utc(now)
+        try:
+            _dte_request_check(request)
+            if now < request.knowledge_cutoff_utc:
+                return None
+            parent = self._parent_reads.get_derived_occurrence(
+                request.predecessor_occurrence_ids[0],
+            )
+            if type(parent) is not f.OptionTimeSessionOccurrenceV1:
+                return None
+            selected = source.live_dte_roles(self._source, request.knowledge_cutoff_utc)
+            parent_originals, parent_projections = _dte_parent_roles(parent)
+            if (
+                native.canonical(parent_originals)
+                != native.canonical(tuple(selected[r][0] for r in source.DTE_PARENT_ROLES))
+                or native.canonical(parent_projections)
+                != native.canonical(tuple(selected[r][1] for r in source.DTE_PARENT_ROLES))
+            ):
+                return None
+            originals = tuple(selected[r][0] for r in source.DTE_ROLES)
+            projections = tuple(selected[r][1] for r in source.DTE_ROLES)
+            result, session_id = _dte_calculate(request, originals, projections, parent)
+            row = f.OptionTimeDteOccurrenceV1(
+                owner_object_id="M02",
+                owner_namespace=DTE_NAMESPACE,
+                implementation_brief_sha256=source.DTE_BRIEF,
+                derived_signal_id=DTE_SIGNAL,
+                derived_occurrence_id="pending",
+                request=request,
+                definition=DTE_DEFINITION,
+                source_policy_sha256=source.POLICY_SHA,
+                source_profile_ref=DTE_PROFILE,
+                projection_mappings=tuple(source.mapping_for(r) for r in source.DTE_ROLES),
+                original_observations=originals,
+                selected_projections=projections,
+                predecessor_occurrence_ids=request.predecessor_occurrence_ids,
+                predecessor=parent,
+                calendar_policy_ref=SESSION_CALENDAR_REF,
+                session_id=session_id,
+                result=result,
+                units=DTE_DEFINITION.units,
+                result_shape=DTE_DEFINITION.result_shape,
+                effective_as_of_utc=request.as_of_utc,
+                knowledge_cutoff_utc=request.knowledge_cutoff_utc,
+                calculated_at_utc=now,
+            )
+            row = replace(row, derived_occurrence_id=codec.dte_identity(row))
+        except (TypeError, ValueError, ArithmeticError, KeyError):
+            return None
+        return cast(f.OptionTimeDteOccurrenceV1, self._state.append(row))
+
+
+def build_dte_owner(
+    admission: f.OwnerAdmissionV1, raw_source: f.OptionTimeSourceV1,
+    parent_storage: f.SQLiteReadStorageV1, storage: f.SQLiteStorageV1,
+    utc_now: Callable[[], datetime],
+) -> f.OptionTimeDteOwnerV1:
+    source.check_dte_admission(admission)
+    if (
+        type(raw_source) is not f.OptionTimeSourceV1
+        or not raw_source._matches_admission(admission)
+        or type(parent_storage) is not f.SQLiteReadStorageV1
+        or type(storage) is not f.SQLiteStorageV1 or storage.create is not True
+        or not callable(utc_now)
+    ):
+        raise ValueError("unadmitted D085 source/parent/storage/clock")
+    parent_reads = f.create_option_time_session_reader(
+        admission=f.OwnerAdmissionV1("M02", source.SESSION_BRIEF), storage=parent_storage,
+    )
+    return _DteOwner(raw_source, parent_reads, _dte_store(storage), utc_now)
+
+
+def build_dte_reader(
+    admission: f.OwnerAdmissionV1, storage: f.SQLiteReadStorageV1,
+) -> f.OptionTimeDteReadsV1:
+    source.check_dte_admission(admission)
+    if type(storage) is not f.SQLiteReadStorageV1:
+        raise ValueError("unadmitted D085 read-only storage")
+    return _DteReads(_dte_store(storage))

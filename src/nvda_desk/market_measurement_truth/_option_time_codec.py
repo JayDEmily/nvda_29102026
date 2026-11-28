@@ -261,3 +261,51 @@ def decode_session(payload: bytes) -> f.OptionTimeSessionOccurrenceV1:
     if encode_session(value) != payload:
         raise ValueError("D004 canonical readback mismatch")
     return value
+
+
+_DTE_TAG = "OptionTimeDteOccurrenceV1"
+
+
+def _dte_content(value: f.OptionTimeDteOccurrenceV1) -> dict[str, Any]:
+    content = _record(value, f.OptionTimeDteOccurrenceV1)
+    content["request"] = _record(value.request, f.OptionTimeRequestV1)
+    content["predecessor"] = _session_content(value.predecessor)
+    if type(value.result) is not int:
+        raise TypeError("exact D085 integer required")
+    return content
+
+
+def _dte_envelope(content: dict[str, Any]) -> bytes:
+    return native.canonical({"record": _DTE_TAG, "version": 1, "content": content})
+
+
+def encode_dte(value: f.OptionTimeDteOccurrenceV1) -> bytes:
+    return _dte_envelope(_dte_content(value))
+
+
+def dte_identity(value: f.OptionTimeDteOccurrenceV1) -> str:
+    content = _dte_content(value)
+    del content["derived_occurrence_id"]
+    del content["calculated_at_utc"]
+    return "mmtoptiontimedte1:" + hashlib.sha256(_dte_envelope(content)).hexdigest()
+
+
+def decode_dte(payload: bytes) -> f.OptionTimeDteOccurrenceV1:
+    envelope = native.decode(payload, dict)
+    if (
+        set(envelope) != {"record", "version", "content"}
+        or envelope["record"] != _DTE_TAG
+        or type(envelope["version"]) is not int or envelope["version"] != 1
+    ):
+        raise ValueError("unadmitted D085 option-time envelope")
+    content = envelope["content"]
+    if type(content) is not dict or set(content) != {
+        field.name for field in fields(f.OptionTimeDteOccurrenceV1)
+    }:
+        raise ValueError("D085 option-time field set mismatch")
+    content["request"] = _rebuild(content["request"], f.OptionTimeRequestV1)
+    content["predecessor"] = decode_session(_session_envelope(content["predecessor"]))
+    value = _rebuild(content, f.OptionTimeDteOccurrenceV1)
+    if encode_dte(value) != payload:
+        raise ValueError("D085 canonical readback mismatch")
+    return value
