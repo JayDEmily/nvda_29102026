@@ -8705,10 +8705,78 @@
         ],
         "execution_release": false,
         "product_status": "NOT_ATTEMPTED",
-        "first_unmet_invariant": "Exact owner policy and finite admission recorded; future own binding/authoring follows independently cleared stable committed parent interface. Parent acceptance mandatory before child execution release.",
+        "first_unmet_invariant": "Independent admission of exact prepared inactive D085 brief/binding pending; actual D001/D003/D004 product acceptance mandatory before D085 release.",
         "tester_designation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
         "tester_status": "CANDIDATE_SPECIFIC_INTAKE_REQUIRED",
-        "scope": "Controlled synthetic only; no official/native certification or new product acceptance"
+        "scope": "Controlled synthetic only; no official/native certification or new product acceptance",
+        "d085_prerequisite_and_inactive_binding_preparation": {
+          "status": "DOCUMENTARY_ACTUAL_PARENT_INTERFACE_ADEQUATE_INACTIVE_BINDING_PREPARED_REVIEW_REQUIRED",
+          "candidate": "5a2823d91a27df62b22a3b2925e395ea5cf7f88d",
+          "candidate_tree": "71339cffb5afee8e1e232b06e1106384725a05c0",
+          "parent": "c75b6b4dc5eda261fa9ba77c899a3da4def02e0e",
+          "recursive_tree_listing_sha256": "f5bc654caed9a19ca19d593aaccaef1495d302c04bf3f23bb5be53cee0bf745c",
+          "tracked_entries": 4758,
+          "brief_path": "handoff/m02_completion_28_execution/L07a/D085_IMPLEMENTATION_BRIEF.md",
+          "brief_sha256": "d9d142c25c7d77dfa82c7181ec4ef0d0990216b77139d6a2811cd6a871e0a1a1",
+          "inactive_binding_path": "handoff/m02_completion_28_execution/L07a/T01_D085_OPTION_TIME_AUTHORITY_BINDING_CANDIDATE.yaml",
+          "inactive_binding_sha256": "b28156683fd15f4a685ceac7ff66e0db0782d21319c242a4afd1b8fbb965ee21",
+          "future_binding_path": "implementation/authority/T01_D085_OPTION_TIME_AUTHORITY_BINDING.yaml",
+          "report_path": "handoff/m02_completion_28_execution/L08/D085_CALENDAR_DTE_PREREQUISITE_AND_BINDING_PREPARATION_20261129.md",
+          "report_sha256": "a5dc4d24451b07efdefc0a047453d599c88e40dcded0984cbb6ffc2528a6aecb",
+          "proof_id": "M02-C28-D085",
+          "ordered_case_ids": [
+            "D085-CONTROLLED-SUCCESS",
+            "D085-CONTROLLED-ZERO",
+            "D085-CONTROLLED-REACHED_REFUSAL",
+            "D085-CONTROLLED-WRONG-PARENT",
+            "D085-CONTROLLED-RECEIPT-MISMATCH",
+            "D085-CONTROLLED-ORIGINAL-UNITS",
+            "D085-CONTROLLED-CLOSED-RECEIPT"
+          ],
+          "ordered_test_nodes": [
+            "tests/product/m02_completion_28_prospective/d085/test_signal.py::test_d085_success",
+            "tests/product/m02_completion_28_prospective/d085/test_signal.py::test_d085_zero",
+            "tests/product/m02_completion_28_prospective/d085/test_signal.py::test_d085_expired",
+            "tests/product/m02_completion_28_prospective/d085/test_signal.py::test_d085_wrong_parent",
+            "tests/product/m02_completion_28_prospective/d085/test_signal.py::test_d085_receipt_mismatch",
+            "tests/product/m02_completion_28_prospective/d085/test_signal.py::test_d085_original_units",
+            "tests/product/m02_completion_28_prospective/d085/test_signal.py::test_d085_closed_receipt"
+          ],
+          "exact_nonfungible_ceiling": 7,
+          "parent_specimen_frames": [
+            [
+              "MAIN",
+              "MAIN"
+            ],
+            [
+              "SAME_DAY",
+              "SAME_DAY"
+            ],
+            [
+              "AFTER",
+              "AFTER"
+            ],
+            [
+              "EARLIER",
+              "EARLIER"
+            ],
+            [
+              "R001_VALUE_MISMATCH",
+              "MAIN"
+            ],
+            [
+              "R013_ORIGINAL_UNITS",
+              "MAIN"
+            ],
+            [
+              "CROSS_CLOSE",
+              "CROSS_CLOSE"
+            ]
+          ],
+          "execution_release": false,
+          "product_cases_executed": 0,
+          "scope": "Documentary prerequisite and inactive candidate only. Actual D001/D003/D004 product acceptance and separate reviews required."
+        }
       }
     },
     {
@@ -11239,9 +11307,9 @@
   "execution_status": "ready",
   "current_leaf": "L08",
   "next_assignment": {
-    "role": "Fresh distinct L08 D085 calendar DTE prerequisite and inactive binding preparation Worker",
-    "task": "Fetch exact commissioned trial HEAD; stop on mismatch. Execute only committed handoff/m02_completion_28_execution/L08/D085_CALENDAR_DTE_PREREQUISITE_AND_BINDING_PREPARATION_COMMISSION_20261129.md SHA256 32929bb4dfdcdb40534fcdf1ba39f47939fa54d229887f79c10970dec8bfc779. Verify actual stable D004 parent interface and recursive D001/D003 lineage for seven exact D085 cases before conditional inactive binding/brief preparation; if blocked report first unmet invariant. No active binding, registration, source/proof edits, imports, loader, collection, execution or release. Preserve all holds, actual parent product acceptance prerequisite and sole Tester. Continue eligible distinct-role succession once via owner-adopted CAC MVP.",
-    "selection_basis": "Exact D004 installation independently accepted documentary only; L08 next under admitted temporal dependency order. Bounded prerequisite inspection and conditional inactive preparation only; no parent product acceptance or execution release."
+    "role": "Fresh distinct independent L08 D085 calendar DTE inactive binding-admission Reviewer",
+    "task": "Fetch exact commissioned trial HEAD; stop on mismatch. Follow AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and execution register. Execute only committed handoff/m02_completion_28_execution/L08/D085_CALENDAR_DTE_INACTIVE_BINDING_ADMISSION_REVIEW_COMMISSION_20261129.md SHA256 b0a7610ea211c828ec9dddf0935ac1d8488b57ebbbf035833faeb36243f72920. Independently verify exact candidate 5a2823d91a27df62b22a3b2925e395ea5cf7f88d, tree 71339cffb5afee8e1e232b06e1106384725a05c0, three inactive payloads, actual D004/D003/D001 lineage and exact seven D085 case mapping; documentary verdict only. Preserve all 64 holds/67 historical accepted, D078 legacy/registration, actual parent acceptance prerequisite and sole Tester. No source/proof edits, active installation, product/proof imports, loader, collection, execution or release. Continue eligible distinct-role succession once via owner-adopted CAC MVP.",
+    "selection_basis": "D085 documentary parent-interface inspection complete; exact inactive candidate requires independent binding admission before installation or authoring; actual parent acceptance remains mandatory."
   },
   "trial_forward_succession_authority": {
     "scope": "trial/cac-nvidia-continuation-20261127 only",
