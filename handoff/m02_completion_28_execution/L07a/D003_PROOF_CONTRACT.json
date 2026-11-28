@@ -1,0 +1,110 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_l07a_d003_option_time",
+  "semantic_brief_path": "handoff/m02_completion_28_execution/L07a/D003_IMPLEMENTATION_BRIEF.md",
+  "target": {
+    "category": "M",
+    "responsibility_name": "neutral_market_measurement_truth",
+    "package": "nvda_desk.market_measurement_truth",
+    "public_seam": "nvda_desk.market_measurement_truth.api",
+    "intent": "modify",
+    "existing_object_id": "M02"
+  },
+  "proof_axis": "product",
+  "product_tier_treatment": "NOT_CLASSIFIED",
+  "architecture_proof_axis": "architecture_kernel",
+  "required_proof_ids": [
+    "SUP-D003-USOPTION"
+  ],
+  "families": [
+    {
+      "id": "m02_option_time_d003",
+      "path": "tests/product/m02_completion_28_prospective/support/d003-usoption/test_profile.py",
+      "proof_obligation_ids": [
+        "SUP-D003-USOPTION"
+      ],
+      "required_test_names": [
+        "test_d003_success",
+        "test_d003_foreign_zone",
+        "test_d003_wrong_parent"
+      ],
+      "boundary": "Exactly 3 owner-admitted D003 controlled cases, remapped physical family only; inert source staged outside live collection; no release.",
+      "proof_levels": [
+        "CONTRACT",
+        "INTEGRATION",
+        "STATE",
+        "REPLAY"
+      ],
+      "authoritative_inputs": [
+        "handoff/m02_completion_28_execution/L07a/D003_IMPLEMENTATION_BRIEF.md SHA256 0c588c6d06690f2e8fd23898cb4c219263dfc9b0924b071b40c2f92098ee5344",
+        "implementation/authority/T01_D003_OPTION_TIME_AUTHORITY_BINDING.yaml SHA256 a26f84b5ea86e6b5899b303ac4fe0f79d0915f5d2106392f4cf3ba40cbd48637",
+        "handoff/m02_completion_28_execution/L07a/OPTION_TIME_CONTRACT_AND_REVIEW_20261127.md SHA256 48d0a8f9533c8781a11b678a440e0874f6bfac76f49f028a1050e39f4ba3b133",
+        "handoff/m02_completion_28_execution/L07a/OPTION_TIME_SOURCE_POLICY_AND_SPECIMENS_PROPOSED_20261127.json SHA256 14a3ba2308f519d90d11eb450ac484a2c922507b7e04041c740297527a1d847a",
+        "handoff/m02_completion_28_execution/L07a/OPTION_TIME_FINITE_CASES_PROPOSED_20261127.json SHA256 638f8703e75c15b10c2e3772ef7a8ceb0a105a6845140d0e409d50c9a1f01c7f",
+        "handoff/m02_completion_28_execution/OWNER_CONSOLIDATED_64_CONDITIONAL_EXECUTION_GRANT_20261127.json SHA256 6a71f52981fc01da42f9c27726547d0d1ddd69851561479a007aeb30ebd95a41",
+        "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/PATH_ONLY_SUCCESSOR_AUTHORITY.json SHA256 11d90adf234d5195d3bd31a6b42df9b046c4ad53690cb279ef071d52b3049aa7",
+        "handoff/m02_completion_28_execution/L07a/D001_IMPLEMENTATION_BRIEF.md SHA256 222d0919c67c05f6436f985b8262ace985ab11dea30fc045333ee13fa10a8d8d",
+        "Exact D001 source 7148bad12f54824b018b359ed2b49803b4864e21; independent verdict b471fd0becf45755313cf268856f7ffcb0b1d0b9; generation 0002 installation 8d63cd9630c746c0d5b01deb3ebe1057f8f7925c; independent verdict ee0d37bb8f264bd17d6777d94724f6748de079b9",
+        "Independent own binding review 40021ca4053c272b454cdd6743c367033653183d report SHA256 46c7cf3f2884bd8e694ec90a106d962cc172a25f46c169c52a5cdd872f039c12"
+      ],
+      "dependency_substitutions": [
+        "None: actual M00 public getter/direct projection/complete receipt history and actual separately admitted D001 producer then ordinary SQLite reader before every target materialise; no fabricated parent, injected reader, DTO, callback or oracle input."
+      ],
+      "case_coverage": {
+        "lawful_positive": {
+          "cases": [
+            "SUP-D003-USOPTION-SUCCESS"
+          ]
+        },
+        "prohibited_false_positive": {
+          "cases": [
+            "SUP-D003-USOPTION-FOREIGN-ZONE",
+            "SUP-D003-USOPTION-WRONG-PARENT"
+          ]
+        },
+        "missing_mandatory_authority": {
+          "cases": [
+            "SUP-D003-USOPTION-FOREIGN-ZONE",
+            "SUP-D003-USOPTION-WRONG-PARENT"
+          ]
+        },
+        "lawful_optional_absence": {
+          "cases": [
+            "SUP-D003-USOPTION-SUCCESS: actual selected receipt-only R004/R013 source instant and timezone absent lawfully; preserve optional metadata absence."
+          ]
+        }
+      },
+      "expected_failure_signals": [
+        "SUP-D003-USOPTION-SUCCESS : ACTUAL_D001_IANA_SAME_INSTANT : New domain, actual R004 receipt metadata, typed aware New York local result and ZoneInfo durable reconstruction.",
+        "SUP-D003-USOPTION-FOREIGN-ZONE : ACTUAL_R004_ZONE_POLICY : A valid but unadmitted IANA zone must not replace selected exchange policy.",
+        "SUP-D003-USOPTION-WRONG-PARENT : ACTUAL_PARENT_FRAME_ALIGNMENT : Actual lawful earlier option D001 (not a forged DTO) is wrong for current sample."
+      ],
+      "limitations": [
+        "Controlled synthetic only; no native/official certification.",
+        "No source implementation or product run; exact staged authored source requires independent documentary review, then separate source implementation and immutable registration review; actual D001 product acceptance and candidate-specific sole Tester release required."
+      ],
+      "adjacent_nonclaims": [
+        "No D004/D085 work; no new policy or physical cases.",
+        "No change to prior evidence or claims; no new accepted identity."
+      ],
+      "environment": "Separate designated strict Tester must independently qualify exact receiver, candidate, CPython 3.13.5, SQLite 3.54.1, dependencies, runner and pre-call guard before any release.",
+      "material_versions": [
+        "t01-option-time-d003/1",
+        "T01-D003-OPTION-TIME-DEF-V1",
+        "Own exact reviewed brief/binding, actual D001 profile, literal policy and finite inventory, path-only remap, future immutable registration."
+      ],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/m02_completion_28_prospective/support/d003-usoption/test_profile.py"
+    }
+  ],
+  "required_support_files": [],
+  "optional_support_files": [],
+  "execution_policy": {
+    "skipped_tests": "FAIL",
+    "xfailed_tests": "FAIL",
+    "xpassed_tests": "FAIL",
+    "collection_failed": "FAIL",
+    "no_tests_collected": "FAIL",
+    "unexpected_governed_mutation": "FAIL"
+  }
+}
