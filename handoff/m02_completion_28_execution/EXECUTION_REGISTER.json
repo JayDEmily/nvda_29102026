@@ -1516,7 +1516,7 @@
         "L00"
       ],
       "obligation": "Bind the exact option expiry instant and timezone/session convention separately from its date, with compatible true-instant D001. Never invent midnight or event time from date-only/receipt-only values. Bind exact year-fraction representation. Independently prove a necessary option-domain D001 extension; retain its original profile and zero new identity contribution.",
-      "status": "IMPLEMENTED_UNTESTED_INERT_REGISTRATION_PREPARED_INDEPENDENT_REVIEW_REQUIRED_EXECUTION_HELD",
+      "status": "IMPLEMENTED_UNTESTED_INERT_REGISTRATION_PREPARATION_INDEPENDENTLY_ACCEPTED_INSTALLATION_REQUIRED_EXECUTION_HELD",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G2_AFTER_L18"
@@ -1550,7 +1550,7 @@
         ],
         "execution_release": false,
         "product_status": "NOT_ATTEMPTED",
-        "first_unmet_invariant": "Fresh independent registration-preparation clearance before exact physical activation; then independent installation clearance and sole strict Tester candidate-specific intake/precall release. All engineering holds remain.",
+        "first_unmet_invariant": "Exact byte-for-byte registration installation by a distinct Worker, followed by independent installation clearance; sole designated strict Tester candidate-specific intake and exact precall release remain required. All engineering holds remain.",
         "tester_designation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
         "tester_status": "CANDIDATE_SPECIFIC_INTAKE_REQUIRED",
         "scope": "Controlled synthetic only; no official/native certification or new product acceptance",
@@ -1760,6 +1760,22 @@
               }
             ]
           }
+        },
+        "independent_registration_preparation_documentary_verdict": {
+          "jurisdiction": "D001",
+          "proof_id": "SUP-D001-OPTION",
+          "case_count": 4,
+          "disposition": "ACCEPT_DOCUMENTARY_REGISTRATION_PREPARATION",
+          "commit": "eddfd045dc5cce922ea19be01f5502a7d4eaa54f",
+          "tree": "90d9e97ac8f9427e87fa48f89b0aa72e81058aa1",
+          "ref": "refs/heads/review/trial-cac-nvidia-d001-d095-registration-preparation-20261128",
+          "path": "handoff/m02_completion_28_execution/INDEPENDENT_CAC_TRIAL_D001_D095_REGISTRATION_PREPARATION_VERDICT_20261128.md",
+          "git_blob": "2d2a7f9cbab6efdf108d5447efc2667225a23537",
+          "sha256": "dfc709b7461fbe4cf2c5b28e7d42714c3e2ff68acdd5aa78e69721d2eaa65cef",
+          "bytes": 10360,
+          "candidate": "7df86afeac63af59105786a2410734da12b7460c",
+          "candidate_tree": "86a827fc9c84170e72985a29fe3a7397251dce0a",
+          "scope": "Exact inert preparation only; IMPLEMENTED_UNTESTED. No active registration, release, execution or product acceptance."
         }
       }
     },
@@ -1874,7 +1890,7 @@
         "L00"
       ],
       "obligation": "Bind R111/R183 computational roles, exact model/native-unit comparability, contract or bucket roll, vintages and one official prior-trading-session reference for D095. Resolve concrete session convention before code; current quote assembly alone is not an IV history. Supply independently calculable change and wrong-reference refusal oracles.",
-      "status": "IMPLEMENTED_UNTESTED_INERT_REGISTRATION_PREPARED_INDEPENDENT_REVIEW_REQUIRED_EXECUTION_HELD",
+      "status": "IMPLEMENTED_UNTESTED_INERT_REGISTRATION_PREPARATION_INDEPENDENTLY_ACCEPTED_INSTALLATION_REQUIRED_EXECUTION_HELD",
       "checkpoint_required": true,
       "proposed_testing_windows": [],
       "acceptance": "Independent documentary source clearance; product acceptance requires admitted cases and accepted parent proofs",
@@ -1900,7 +1916,7 @@
         "exact_allocations": [],
         "execution_release": false,
         "product_status": "NOT_ATTEMPTED",
-        "first_unmet_invariant": "Fresh independent registration-preparation clearance before exact physical activation; then independent installation clearance and sole strict Tester candidate-specific intake/precall release. All engineering holds remain.",
+        "first_unmet_invariant": "Exact byte-for-byte registration installation by a distinct Worker, followed by independent installation clearance; sole designated strict Tester candidate-specific intake and exact precall release remain required. All engineering holds remain.",
         "tester_designation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
         "tester_status": "CANDIDATE_SPECIFIC_INTAKE_REQUIRED",
         "scope": "Controlled synthetic only; no official/native certification or new product acceptance",
@@ -2118,6 +2134,22 @@
               }
             ]
           }
+        },
+        "independent_registration_preparation_documentary_verdict": {
+          "jurisdiction": "D095",
+          "proof_id": "M02-C28-D095",
+          "case_count": 7,
+          "disposition": "ACCEPT_DOCUMENTARY_REGISTRATION_PREPARATION",
+          "commit": "eddfd045dc5cce922ea19be01f5502a7d4eaa54f",
+          "tree": "90d9e97ac8f9427e87fa48f89b0aa72e81058aa1",
+          "ref": "refs/heads/review/trial-cac-nvidia-d001-d095-registration-preparation-20261128",
+          "path": "handoff/m02_completion_28_execution/INDEPENDENT_CAC_TRIAL_D001_D095_REGISTRATION_PREPARATION_VERDICT_20261128.md",
+          "git_blob": "2d2a7f9cbab6efdf108d5447efc2667225a23537",
+          "sha256": "dfc709b7461fbe4cf2c5b28e7d42714c3e2ff68acdd5aa78e69721d2eaa65cef",
+          "bytes": 10360,
+          "candidate": "7df86afeac63af59105786a2410734da12b7460c",
+          "candidate_tree": "86a827fc9c84170e72985a29fe3a7397251dce0a",
+          "scope": "Exact inert preparation only; IMPLEMENTED_UNTESTED. No active registration, release, execution or product acceptance."
         }
       }
     },
@@ -2566,7 +2598,7 @@
         "L10a"
       ],
       "obligation": "Calculate 100*(IV_current-IV_reference) in volatility points, using comparable actual R111/R183 facts and accepted official one-trading-session reference. Preserve contract/bucket/roll and knowledge vintage. Refuse unmatched/stale/wrong-session references without calendar-day substitution.",
-      "status": "IMPLEMENTED_UNTESTED_INERT_REGISTRATION_PREPARED_INDEPENDENT_REVIEW_REQUIRED_EXECUTION_HELD",
+      "status": "IMPLEMENTED_UNTESTED_INERT_REGISTRATION_PREPARATION_INDEPENDENTLY_ACCEPTED_INSTALLATION_REQUIRED_EXECUTION_HELD",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G2_AFTER_L18"
@@ -2600,7 +2632,7 @@
         ],
         "execution_release": false,
         "product_status": "NOT_ATTEMPTED",
-        "first_unmet_invariant": "Fresh independent registration-preparation clearance before exact physical activation; then independent installation clearance and sole strict Tester candidate-specific intake/precall release. All engineering holds remain.",
+        "first_unmet_invariant": "Exact byte-for-byte registration installation by a distinct Worker, followed by independent installation clearance; sole designated strict Tester candidate-specific intake and exact precall release remain required. All engineering holds remain.",
         "tester_designation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
         "tester_status": "CANDIDATE_SPECIFIC_INTAKE_REQUIRED",
         "scope": "Controlled synthetic only; no official/native certification or new product acceptance",
@@ -2818,6 +2850,22 @@
               }
             ]
           }
+        },
+        "independent_registration_preparation_documentary_verdict": {
+          "jurisdiction": "D095",
+          "proof_id": "M02-C28-D095",
+          "case_count": 7,
+          "disposition": "ACCEPT_DOCUMENTARY_REGISTRATION_PREPARATION",
+          "commit": "eddfd045dc5cce922ea19be01f5502a7d4eaa54f",
+          "tree": "90d9e97ac8f9427e87fa48f89b0aa72e81058aa1",
+          "ref": "refs/heads/review/trial-cac-nvidia-d001-d095-registration-preparation-20261128",
+          "path": "handoff/m02_completion_28_execution/INDEPENDENT_CAC_TRIAL_D001_D095_REGISTRATION_PREPARATION_VERDICT_20261128.md",
+          "git_blob": "2d2a7f9cbab6efdf108d5447efc2667225a23537",
+          "sha256": "dfc709b7461fbe4cf2c5b28e7d42714c3e2ff68acdd5aa78e69721d2eaa65cef",
+          "bytes": 10360,
+          "candidate": "7df86afeac63af59105786a2410734da12b7460c",
+          "candidate_tree": "86a827fc9c84170e72985a29fe3a7397251dce0a",
+          "scope": "Exact inert preparation only; IMPLEMENTED_UNTESTED. No active registration, release, execution or product acceptance."
         }
       }
     },
@@ -3641,9 +3689,9 @@
   "execution_status": "ready",
   "current_leaf": "L07b",
   "next_assignment": {
-    "role": "Fresh distinct D001/D095 independent registration-preparation reviewer",
-    "task": "Use Remote Desktop Commander and Ubuntu Git; fetch exact received trial HEAD (stop on mismatch), read AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and this register. Execute only committed commission handoff/m02_completion_28_execution/CAC_TRIAL_D001_D095_REGISTRATION_REVIEW_COMMISSION_20261128.md SHA256 da5e3d25580c4947008c22f8c16c6a2c129ceabdcb93f0e51ff48ea5ffc501bc; exact inert preparation candidate 7df86afeac63af59105786a2410734da12b7460c, tree 86a827fc9c84170e72985a29fe3a7397251dce0a. Verify both separate independent implementation and authoring verdicts, exact generation/admission and family identities, exact remapped 4+7 ordered cases, existing G01 partition/generation static compatibility in separate disposable validation tree. Issue separate documentary preparation dispositions. No product import, collection, execution, activation or release; preserve all engineering holds and sole Tester. Publish and verify independent verdict on new review ref, reconcile and continue eligible distinct-role succession once under owner-adopted CAC MVP.",
-    "selection_basis": "Both inert registration packages prepared and statically validated together; independent preparation clearance required before activation. D095 counted once across L10a/L11. All 64 cases held."
+    "role": "Fresh distinct D001/D095 registration-installation Worker",
+    "task": "Use Remote Desktop Commander and Ubuntu Git; fetch exact received trial HEAD H (stop on mismatch), read AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and this register. Independently verify separate ACCEPT_DOCUMENTARY_REGISTRATION_PREPARATION dispositions at eddfd045dc5cce922ea19be01f5502a7d4eaa54f, tree 90d9e97ac8f9427e87fa48f89b0aa72e81058aa1, refs/heads/review/trial-cac-nvidia-d001-d095-registration-preparation-20261128, report handoff/m02_completion_28_execution/INDEPENDENT_CAC_TRIAL_D001_D095_REGISTRATION_PREPARATION_VERDICT_20261128.md SHA256 dfc709b7461fbe4cf2c5b28e7d42714c3e2ff68acdd5aa78e69721d2eaa65cef; exact inert preparation candidate 7df86afeac63af59105786a2410734da12b7460c tree 86a827fc9c84170e72985a29fe3a7397251dce0a. Execute only the separately cleared exact registration installation for D001 SUP-D001-OPTION (4) at L07b and D095 M02-C28-D095 (7) at L10a/L11 counted once. Copy the four exact inert files per jurisdiction (eight total) byte-for-byte to the future destinations recorded in first_stage_registration_preparation.package.files; verify all source/destination digests, Git blob IDs, ordered cases, generation 1 and pointer, exact approved remap and unchanged reviewed source/claim/contract/brief/binding/policy, no predecessor/support files. Preserve all inert originals. No source, ledger, schedule, governance, policy, existing claim/test or unrelated-scope edits. Verify existing G01 metadata-only load_product_proof_claim and global physical partition for both exact installed packages, no product import, collection, execution or runtime qualification; READY_FOR_PROOF metadata is not execution authority. Publish exact scoped installation checkpoint and commission fresh distinct independent installation reviewer. Keep both IMPLEMENTED_UNTESTED, all 64 cases held, G01 R2 unadopted, D145 PAUSED, sole designated strict Tester and separate candidate-specific intake and exact precall release. Continue eligible distinct-role succession once using owner-adopted CAC MVP. No main/original work edits, promotion, new allocations, Tester appointment, product acceptance or release.",
+    "selection_basis": "Independent documentary preparation ACCEPT separately for D001 and D095; exact installation followed by independent installation clearance is next unmet invariant. D095 counted once across L10a/L11. No execution release."
   },
   "trial_forward_succession_authority": {
     "scope": "trial/cac-nvidia-continuation-20261127 only",
