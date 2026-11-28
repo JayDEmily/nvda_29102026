@@ -1,0 +1,10 @@
+schema_version: '1.0'
+brief_sha256: 88bdd385ff91432940f4d27a8cff2bce6af22a8c85b858f53ba2f674d3c30a3c
+acceptance:
+  status: ACCEPTED_FOR_IMPLEMENTATION
+  authority_ref: handoff/m02_completion_28_execution/OWNER_CONSOLIDATED_64_CONDITIONAL_EXECUTION_GRANT_20261127.json
+targets:
+- action: modify
+  object_id: M02
+- action: modify
+  object_id: G01
