@@ -46,7 +46,7 @@
         "L00"
       ],
       "obligation": "Bind actual public D071/D075/D076/D077 history producers, aligned sample/window/knowledge cutoffs, current exclusion, rank/conditioning and exact output codec. One fixed historical observation is insufficient for rolling history. Keep one OLS-with-intercept model, common immutable fit/intercept/sample identity and M02 neutral ownership. Prepare correlated full-rank exact synthetic success data which distinguish joint from separate univariate fits, an informative nonzero held-out residual, a concrete deficient-rank history and a per-coefficient mixed-fit refusal. Existing 64 orthogonal rows remain valid example arithmetic only. Admit/prove necessary history profiles separately; never inject expected D outputs as raw/configuration facts.",
-      "status": "FIVE_REMAPPED_REGISTRATIONS_INDEPENDENTLY_ACCEPTED_DOCUMENTARY_ONLY_EXECUTION_HELD",
+      "status": "SEVEN_ALIGNED_HISTORY_REGISTRATIONS_INDEPENDENTLY_ACCEPTED_DOCUMENTARY_ONLY_EXECUTION_HELD",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G1_AFTER_L06",
@@ -2419,7 +2419,7 @@
             "tests/product/m02_completion_28_prospective/support/d077-history/test_profile.py::test_d077_missing_soxx_parent",
             "tests/product/m02_completion_28_prospective/support/d077-history/test_profile.py::test_d077_mixed_original_roster"
           ],
-          "registration": "INSTALLED_EXACT_BYTES_INDEPENDENT_INSTALLATION_REVIEW_REQUIRED_EXECUTION_HELD",
+          "registration": "INSTALLED_EXACT_BYTES_INDEPENDENT_INSTALLATION_ACCEPTED_EXECUTION_HELD",
           "documentary_static_validation": "EXACT_BYTES_AND_METADATA_LINKAGE_VERIFIED_NO_LOADER_EXECUTION",
           "parent_product_acceptance_established": false,
           "execution_release": false,
@@ -2427,6 +2427,29 @@
           "first_unmet_invariant": "Actual D073/D074/D072 parent product acceptance and candidate-specific sole Tester intake/runtime/precall before child execution.",
           "report_path": "handoff/m02_completion_28_execution/L01a/D077_DOWNSTREAM_REGISTRATION_INSTALLATION_REVIEW_COMMISSION_20261128.md",
           "report_sha256": "5d8a2222d97f866c32e33e92f691fb2147ee67982fedc23e35238386327b9168"
+        },
+        "downstream_d077_independent_registration_installation_verdict": {
+          "jurisdiction": "D077",
+          "proof_id": "SUP-D077-HISTORY",
+          "case_count": 3,
+          "disposition": "ACCEPT_DOCUMENTARY_REGISTRATION_INSTALLATION",
+          "reviewed_handoff": "34dc77bce0fcc645386fffbf8619292ada95a1cb",
+          "candidate": "531fe3e5955e0e680e31cc6b983a625f6f36b747",
+          "candidate_tree": "8a2fd8124eea820be0495a91f382cf83a823dd3d",
+          "review_commit": "67bc48f2c673ef87041b145b6840f79510adb966",
+          "review_tree": "6b2adf81c313ef86ad6dae55b4b1eceaf126a8c2",
+          "review_ref": "refs/heads/review/trial-cac-nvidia-d077-registration-installation-20261128",
+          "report_path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_D077_DOWNSTREAM_REGISTRATION_INSTALLATION_VERDICT_20261128.md",
+          "report_git_blob": "809c1dd71d5194814b17a693a844bbd1775dd412",
+          "report_sha256": "84a156876fc71998c4755caac28babc4aa29de2d5adfdbc31e559a376017501d",
+          "report_bytes": 8726,
+          "generation": 1,
+          "static_validation": "EXACT_STATIC_METADATA_AND_PARTITION_PREDICATES_VERIFIED_NO_LOADER_EXECUTION",
+          "registration": "INSTALLED",
+          "parent_product_acceptance_established": false,
+          "execution_release": false,
+          "product_cases_executed": 0,
+          "scope": "Exact four byte-for-byte additions and three ordered finite nodes; documentary only; actual D073/D074/D072 product acceptance and sole Tester intake/runtime/precall required."
         }
       }
     },
@@ -2544,7 +2567,29 @@
         "first_unmet_invariant": "Exact owner policy and finite admission recorded; future own binding/authoring follows independently cleared stable committed parent interface. Parent acceptance mandatory before child execution release.",
         "tester_designation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
         "tester_status": "CANDIDATE_SPECIFIC_INTAKE_REQUIRED",
-        "scope": "Controlled synthetic only; no official/native certification or new product acceptance"
+        "scope": "Controlled synthetic only; no official/native certification or new product acceptance",
+        "joint_fit_binding_preparation_commission": {
+          "commission": "handoff/m02_completion_28_execution/L01a/D079_D080_D081_JOINT_FIT_BINDING_PREPARATION_COMMISSION_20261128.md",
+          "sha256": "a357343cf523bcb6545033168c333a63cd43eb60e8d0142d25ac93a0ee370e1a",
+          "jurisdictions": [
+            "D079",
+            "D080",
+            "D081"
+          ],
+          "proof_ids": [
+            "M02-C28-D079",
+            "M02-C28-D080",
+            "M02-C28-D081"
+          ],
+          "case_counts": [
+            6,
+            5,
+            3
+          ],
+          "disposition": "ACTUAL_PARENT_INTERFACE_PREREQUISITE_CHECK_AND_CONDITIONAL_INERT_BINDING_PREPARATION_COMMISSIONED",
+          "execution_release": false,
+          "product_cases_executed": 0
+        }
       }
     },
     {
@@ -6341,11 +6386,11 @@
   "branch": "trial/cac-nvidia-continuation-20261127",
   "plan": "EXEC_PLAN.md",
   "execution_status": "ready",
-  "current_leaf": "L01a",
+  "current_leaf": "L02",
   "next_assignment": {
-    "role": "Fresh distinct independent L01a D077 downstream registration installation Reviewer",
-    "task": "Fetch exact trial HEAD; stop on mismatch. Follow AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and execution register. Execute only committed D077_DOWNSTREAM_REGISTRATION_INSTALLATION_REVIEW_COMMISSION_20261128.md SHA256 5d8a2222d97f866c32e33e92f691fb2147ee67982fedc23e35238386327b9168. Independently review exact four installed payloads and three ordered nodes, candidate 531fe3e5955e0e680e31cc6b983a625f6f36b747, tree 8a2fd8124eea820be0495a91f382cf83a823dd3d. No source/proof edits, other registration, product/proof imports, collection, execution or release. Preserve D076 active registration, parent/legacy/G01, all 64 holds, actual D073/D074/D072 product acceptance prerequisite, D004/D085 held, D145 PAUSED, G01 R2 unadopted, main/original and sole Tester. Continue eligible distinct-role succession once using owner-adopted CAC MVP.",
-    "selection_basis": "D077 exact four accepted registration payloads installed byte-for-byte; independent documentary installation review required; no product acceptance or execution release."
+    "role": "Fresh distinct L02 D079/D080/D081 joint-fit binding preparation Worker",
+    "task": "Fetch exact received trial HEAD; stop on mismatch. Follow AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and execution register. Execute only committed handoff/m02_completion_28_execution/L01a/D079_D080_D081_JOINT_FIT_BINDING_PREPARATION_COMMISSION_20261128.md SHA256 a357343cf523bcb6545033168c333a63cd43eb60e8d0142d25ac93a0ee370e1a; actual stable parent interface prerequisite check, conditional exact own brief/inactive binding preparation for D079/D080/D081 (6/5/3). No active binding/registration, source/proof edits, product/proof imports, collection, execution or release. Preserve D078 and all holds, parent/legacy/G01 and sole Tester. Commission independent binding/admission review; continue eligible distinct-role succession once using CAC MVP.",
+    "selection_basis": "D077 exact registration installation independently accepted; all seven history support registration gates documentary-cleared. Owner exact64 sequence next D079-D081; conditional provisional preparation only, parent product acceptance still held."
   },
   "trial_forward_succession_authority": {
     "scope": "trial/cac-nvidia-continuation-20261127 only",
