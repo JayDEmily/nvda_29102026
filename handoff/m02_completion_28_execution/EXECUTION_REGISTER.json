@@ -1554,7 +1554,7 @@
         "L00"
       ],
       "obligation": "Bind the exact option expiry instant and timezone/session convention separately from its date, with compatible true-instant D001. Never invent midnight or event time from date-only/receipt-only values. Bind exact year-fraction representation. Independently prove a necessary option-domain D001 extension; retain its original profile and zero new identity contribution.",
-      "status": "IMPLEMENTED_UNTESTED_DOWNSTREAM_INTERFACE_RECOVERY_IMPLEMENTATION_REVIEW_REQUIRED_EXECUTION_HELD",
+      "status": "IMPLEMENTED_UNTESTED_DOWNSTREAM_INTERFACE_RECOVERY_IMPLEMENTATION_INDEPENDENTLY_ACCEPTED_REGISTRATION_APPLICABILITY_REVIEW_REQUIRED_EXECUTION_HELD",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G2_AFTER_L18"
@@ -1991,8 +1991,31 @@
           "product_cases_executed": 0,
           "registration": "CANDIDATE_SPECIFIC_APPLICABILITY_REVIEW_REQUIRED_AFTER_IMPLEMENTATION_REVIEW",
           "scope": "Exact two-path source-only recovery; static verification only. No child provisional use, release or product acceptance."
+        },
+        "independent_downstream_interface_recovery_implementation_verdict": {
+          "jurisdiction": "D001",
+          "proof_id": "SUP-D001-OPTION",
+          "case_count": 4,
+          "disposition": "ACCEPT_BOUNDED_D001_INTERFACE_RECOVERY_IMPLEMENTATION_FOR_REGISTRATION_APPLICABILITY_REVIEW",
+          "candidate": "7148bad12f54824b018b359ed2b49803b4864e21",
+          "candidate_tree": "9faf166c3cfc6df39ede3eacbbc2c942959db95e",
+          "candidate_parent": "2a9a6a853f3bc0b39871b885d1bfb7615778ad3b",
+          "reviewed_handoff": "7d6b6175429e0bdd53dfd63743b3f1be2354daea",
+          "commit": "b471fd0becf45755313cf268856f7ffcb0b1d0b9",
+          "tree": "ec70a8c19ec823b6efeda2bf1abea121d94081f5",
+          "ref": "refs/heads/review/trial-cac-nvidia-d001-interface-recovery-implementation-20261128",
+          "path": "handoff/m02_completion_28_execution/L07a/INDEPENDENT_D001_INTERFACE_RECOVERY_IMPLEMENTATION_VERDICT_20261128.md",
+          "git_blob": "4418467b448ed7a197580a5d92a496ff67e6baf2",
+          "sha256": "716698eb130003364084c40c42faf0acdf656054c1a90d369b7096b2bff2792c",
+          "bytes": 10686,
+          "lawful_parent_combinations": 12,
+          "original_d001_negatives": 3,
+          "execution_release": false,
+          "product_cases_executed": 0,
+          "scope": "Exact source-only implementation, static independent acceptance for separate registration applicability review only. IMPLEMENTED_UNTESTED; no provisional child use, registration acceptance, case release or product acceptance."
         }
-      }
+      },
+      "first_unmet_invariant": "Exact revised D001 source candidate independently cleared statically; fresh distinct registration applicability review required before downstream provisional use or sole Tester intake/release. Four existing cases and all engineering holds preserved."
     },
     {
       "leaf": "L08",
@@ -4120,9 +4143,9 @@
   "execution_status": "ready",
   "current_leaf": "L07b",
   "next_assignment": {
-    "role": "Fresh distinct independent D001 class-level downstream-interface recovery implementation reviewer",
-    "task": "Fetch exact trial HEAD; stop on mismatch. Follow AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and execution register. Independently review exact source-only candidate 7148bad12f54824b018b359ed2b49803b4864e21, tree 9faf166c3cfc6df39ede3eacbbc2c942959db95e, parent 2a9a6a853f3bc0b39871b885d1bfb7615778ad3b, against accepted recovery authoring verdict deb00a46cf1b5d8121cbcdaca956006c6ab63177; read Worker report handoff/m02_completion_28_execution/L07a/D001_DOWNSTREAM_INTERFACE_RECOVERY_IMPLEMENTATION_20261128.md SHA256 996c5361ef201ecdc161350378a50c8cf1cd64616537ce21c90613b326999caf. Verify exact two-path delta, full closed 15-roster/six-frame domain, all 12 lawful actual-parent combinations and 3 original negatives, actual complete roster and selected pair co-occurrence, producer and ordinary readback, first calculation/replay, unchanged four proof nodes/registration/ledger, prior narrow verdicts and finite authority. Static checks only, no product import, collection or execution. Publish independent exact candidate-specific implementation verdict. If accepted, commission distinct registration applicability review before any downstream provisional use or sole Tester intake/release; if returned, follow bounded class-level repair law. Preserve all engineering holds, D095 status, G01 R2 unadopted, D145 PAUSED, sole Tester; no child binding/implementation, registration mutation or case release. Continue eligible distinct-role succession using owner-adopted CAC MVP.",
-    "selection_basis": "Exact accepted authoring and two-path source candidate; independent implementation clearance precedes separate registration applicability and candidate-specific Tester intake. Four unchanged held cases."
+    "role": "Fresh distinct independent D001 class-level downstream-interface recovery registration applicability reviewer",
+    "task": "Fetch exact trial HEAD; stop on mismatch. Follow AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and execution register. Independently reconcile exact revised source candidate 7148bad12f54824b018b359ed2b49803b4864e21, tree 9faf166c3cfc6df39ede3eacbbc2c942959db95e, with independent implementation verdict b471fd0becf45755313cf268856f7ffcb0b1d0b9 at refs/heads/review/trial-cac-nvidia-d001-interface-recovery-implementation-20261128, report handoff/m02_completion_28_execution/L07a/INDEPENDENT_D001_INTERFACE_RECOVERY_IMPLEMENTATION_VERDICT_20261128.md SHA256 716698eb130003364084c40c42faf0acdf656054c1a90d369b7096b2bff2792c. Review applicability of the exact installed D001 generation 0001, admission pointer and claim, unchanged four physical proof nodes, contract, registration validator, exact adopted finite allocation, earlier narrow documentary adequacy references and separate installation verdict. Determine whether existing registration remains applicable to the revised source or a bounded inert successor generation 0002 preparation is required; preserve 0001 and predecessor identity, and commission distinct preparation if required. Static/documentary checks only, no registration mutation or installation, product import, collection, execution, child binding/implementation or release. Publish independent candidate-specific applicability verdict. If accepted, determine next eligible distinct role under installed plan; preserve all engineering holds, D095 status, G01 R2 unadopted, D145 PAUSED and sole Tester. Continue eligible distinct-role succession once using owner-adopted CAC MVP.",
+    "selection_basis": "Exact independent source recovery implementation acceptance; separate candidate-specific registration applicability is required before downstream provisional use or sole Tester intake. Four unchanged held cases."
   },
   "trial_forward_succession_authority": {
     "scope": "trial/cac-nvidia-continuation-20261127 only",
