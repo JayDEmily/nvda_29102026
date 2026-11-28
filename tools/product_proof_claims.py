@@ -1280,9 +1280,11 @@ def _option_first_stage_extensions(
             (expected["brief_path"], brief_hash),
             (expected["binding_path"], binding_hash),
             (expected["contract_path"], contract_hash),
-            ("handoff/m02_completion_28_execution/OWNER_CONSOLIDATED_64_CONDITIONAL_EXECUTION_GRANT_20261127.json",
+            ("handoff/m02_completion_28_execution/"
+             "OWNER_CONSOLIDATED_64_CONDITIONAL_EXECUTION_GRANT_20261127.json",
              "6a71f52981fc01da42f9c27726547d0d1ddd69851561479a007aeb30ebd95a41"),
-            ("handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/PATH_ONLY_SUCCESSOR_AUTHORITY.json",
+            ("handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/"
+             "PATH_ONLY_SUCCESSOR_AUTHORITY.json",
              "11d90adf234d5195d3bd31a6b42df9b046c4ad53690cb279ef071d52b3049aa7"),
         ):
             if sha256(safe_path(root, path)) != digest:

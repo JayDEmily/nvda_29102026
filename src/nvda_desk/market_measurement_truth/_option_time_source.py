@@ -24,7 +24,10 @@ BRIEF_PATH = LEAF + "D001_IMPLEMENTATION_BRIEF.md"
 BRIEF = "222d0919c67c05f6436f985b8262ace985ab11dea30fc045333ee13fa10a8d8d"
 BINDING_PATH = "implementation/authority/T01_D001_OPTION_TIME_AUTHORITY_BINDING.yaml"
 BINDING_SHA = "ff80ea7dd3aa7674723b758dda9173356bda75119ba996ece5bf4c1a9ff2cf35"
-OWNER_PATH = "handoff/m02_completion_28_execution/OWNER_CONSOLIDATED_64_CONDITIONAL_EXECUTION_GRANT_20261127.json"
+OWNER_PATH = (
+    "handoff/m02_completion_28_execution/"
+    "OWNER_CONSOLIDATED_64_CONDITIONAL_EXECUTION_GRANT_20261127.json"
+)
 OWNER_SHA = "6a71f52981fc01da42f9c27726547d0d1ddd69851561479a007aeb30ebd95a41"
 SUBJECT = "controlled-nvda-c110-20261023"
 SPECIMENS = ("MAIN", "R002_DATE_ONLY", "R002_RECEIPT_ONLY", "R003_OFFSET_MISMATCH")
@@ -51,9 +54,15 @@ def check_admission(admission: f.OwnerAdmissionV1) -> None:
 
 
 def _digest(value: Any) -> str:
-    return hashlib.sha256(json.dumps(
-        value, sort_keys=True, separators=(",", ":"), ensure_ascii=True, allow_nan=False,
-    ).encode("ascii")).hexdigest()
+    return hashlib.sha256(
+        json.dumps(
+            value,
+            sort_keys=True,
+            separators=(",", ":"),
+            ensure_ascii=True,
+            allow_nan=False,
+        ).encode("ascii")
+    ).hexdigest()
 
 
 def _native(value: Any) -> Any:
@@ -73,7 +82,8 @@ def _native(value: Any) -> Any:
 def _original(literal: dict[str, Any]) -> raw.RawObservationOccurrenceV1:
     values = dict(literal)
     for key, factory in (
-        ("concept_id", raw.concept_id), ("contract_id", raw.contract_id),
+        ("concept_id", raw.concept_id),
+        ("contract_id", raw.contract_id),
         ("observation_occurrence_id", raw.observation_occurrence_id),
         ("delivery_artifact_ref", raw.delivery_artifact_ref),
         ("source_provider", raw.provider_id),
@@ -100,21 +110,27 @@ def _path(record: Mapping[str, Any], path: tuple[str, ...]) -> Any:
 def mapping_for(rid: str) -> raw.RawSignalProjectionMappingV1:
     row = policy()["role_mappings"][rid]
     return raw.RawSignalProjectionMappingV1(
-        row["mapping_id"], row["version"], raw.RawSignalCatalogueId(row["raw_signal_catalogue_id"]),
-        row["source_provider"], row["source_variant"], tuple(row["native_field_path"]),
-        row["native_units"], tuple((k, tuple(path)) for k, path in row["selection_identity_field_paths"]),
+        row["mapping_id"],
+        row["version"],
+        raw.RawSignalCatalogueId(row["raw_signal_catalogue_id"]),
+        row["source_provider"],
+        row["source_variant"],
+        tuple(row["native_field_path"]),
+        row["native_units"],
+        tuple((k, tuple(path)) for k, path in row["selection_identity_field_paths"]),
     )
 
 
 def _specimen(name: str) -> tuple[str, tuple[raw.RawObservationOccurrenceV1, ...]]:
     if type(name) is not str or name not in SPECIMENS:
         raise ValueError("unadmitted first-stage option-time specimen")
-    row, = [item for item in policy()["exact_specimens"] if item["id"] == name]
+    (row,) = [item for item in policy()["exact_specimens"] if item["id"] == name]
     members = row["members"]
     digest = _digest(members)
     originals = tuple(_original(item) for item in members)
     if (
-        digest != row["expanded_member_sha256"] or len(members) != row["member_count"]
+        digest != row["expanded_member_sha256"]
+        or len(members) != row["member_count"]
         or len(originals) != len(ROLES)
         or len({item.observation_occurrence_id for item in originals}) != len(ROLES)
         or sorted(_role(item) for item in originals) != sorted(ROLES)
@@ -124,22 +140,29 @@ def _specimen(name: str) -> tuple[str, tuple[raw.RawObservationOccurrenceV1, ...
 
 
 def _role(original: raw.RawObservationOccurrenceV1) -> str:
-    if type(original) is not raw.RawObservationOccurrenceV1 or len(original.raw_signal_catalogue_ids or ()) != 1:
+    if (
+        type(original) is not raw.RawObservationOccurrenceV1
+        or len(original.raw_signal_catalogue_ids or ()) != 1
+    ):
         raise ValueError("exact original role required")
     assert original.raw_signal_catalogue_ids is not None
     return original.raw_signal_catalogue_ids[0].value
 
 
 def _exact_original(
-    actual: raw.RawObservationOccurrenceV1 | None, expected: raw.RawObservationOccurrenceV1,
+    actual: raw.RawObservationOccurrenceV1 | None,
+    expected: raw.RawObservationOccurrenceV1,
 ) -> raw.RawObservationOccurrenceV1:
-    if type(actual) is not raw.RawObservationOccurrenceV1 or native.canonical(actual) != native.canonical(expected):
+    if type(actual) is not raw.RawObservationOccurrenceV1 or native.canonical(
+        actual
+    ) != native.canonical(expected):
         raise ValueError("actual original differs from admitted literal")
     return actual
 
 
 def check_projection(
-    original: raw.RawObservationOccurrenceV1, projection: raw.ProjectedRawValueV1,
+    original: raw.RawObservationOccurrenceV1,
+    projection: raw.ProjectedRawValueV1,
     mapping: raw.RawSignalProjectionMappingV1,
 ) -> None:
     if (
@@ -168,10 +191,12 @@ def check_projection(
         "ingestion_sequence": original.ingestion_sequence,
         "ingestion_sequence_scope": original.ingestion_sequence_scope,
         "revision_vintage_native": original.revision_vintage_native,
-        "selection_identity": raw.RawSelectionIdentityV1(tuple(
-            (key, _path(original.native_record, path))
-            for key, path in mapping.selection_identity_field_paths
-        )),
+        "selection_identity": raw.RawSelectionIdentityV1(
+            tuple(
+                (key, _path(original.native_record, path))
+                for key, path in mapping.selection_identity_field_paths
+            )
+        ),
     }
     actual = {field.name: getattr(projection, field.name) for field in fields(projection)}
     if native.canonical(actual) != native.canonical(expected):
@@ -179,15 +204,23 @@ def check_projection(
 
 
 def _order(original: raw.RawObservationOccurrenceV1) -> tuple[datetime, str, int, str]:
-    return (original.received_ts_utc, original.ingestion_sequence_scope.value,
-            original.ingestion_sequence, original.observation_occurrence_id.value)
+    return (
+        original.received_ts_utc,
+        original.ingestion_sequence_scope.value,
+        original.ingestion_sequence,
+        original.observation_occurrence_id.value,
+    )
 
 
 def _direct(reads: Any, original: raw.RawObservationOccurrenceV1) -> raw.ProjectedRawValueV1:
-    actual = _exact_original(reads.get_raw_observation_occurrence(original.observation_occurrence_id), original)
+    actual = _exact_original(
+        reads.get_raw_observation_occurrence(original.observation_occurrence_id), original
+    )
     mapping = mapping_for(_role(actual))
     projection = reads.project_raw_value(
-        mapping.raw_signal_catalogue_id, actual.observation_occurrence_id, mappings=(mapping,),
+        mapping.raw_signal_catalogue_id,
+        actual.observation_occurrence_id,
+        mappings=(mapping,),
     )
     if type(projection) is not raw.ProjectedRawValueV1:
         raise ValueError("missing actual direct projection")
@@ -206,14 +239,19 @@ def build_source(admission: f.OwnerAdmissionV1, specimen_id: str) -> f.OptionTim
     reads = owner.reads
     del owner
     return f.OptionTimeSourceV1._from_sealed(
-        admission=admission, specimen_id=specimen_id, digest=digest, count=len(originals),
-        getter=reads.get_raw_observation_occurrence, projection=reads.project_raw_value,
+        admission=admission,
+        specimen_id=specimen_id,
+        digest=digest,
+        count=len(originals),
+        getter=reads.get_raw_observation_occurrence,
+        projection=reads.project_raw_value,
         history=reads.list_projected_raw_history,
     )
 
 
 def live_pair(
-    source: f.OptionTimeSourceV1, cutoff: datetime,
+    source: f.OptionTimeSourceV1,
+    cutoff: datetime,
 ) -> tuple[tuple[raw.RawObservationOccurrenceV1, ...], tuple[raw.ProjectedRawValueV1, ...]]:
     digest, originals = _specimen(source.specimen_id)
     if source.expanded_sha256 != digest or source.expanded_count != len(originals):
@@ -222,7 +260,8 @@ def live_pair(
     for rid in ROLES:
         mapping = mapping_for(rid)
         expected = sorted(
-            (o for o in originals if _role(o) == rid and o.received_ts_utc <= cutoff), key=_order,
+            (o for o in originals if _role(o) == rid and o.received_ts_utc <= cutoff),
+            key=_order,
         )
         cursor = None
         cursors: set[str] = set()
@@ -230,19 +269,36 @@ def live_pair(
         seen = set()
         for _ in range(20):
             page = source.list_projected_raw_history(
-                mapping.raw_signal_catalogue_id, mappings=(mapping,), subject_instrument=SUBJECT,
-                received_at_or_before_utc=cutoff, event_at_or_before_utc=None, limit=2, cursor=cursor,
+                mapping.raw_signal_catalogue_id,
+                mappings=(mapping,),
+                subject_instrument=SUBJECT,
+                received_at_or_before_utc=cutoff,
+                event_at_or_before_utc=None,
+                limit=2,
+                cursor=cursor,
             )
-            if type(page) is not raw.ProjectedRawHistoryPageV1 or type(page.items) is not tuple or len(page.items) > 2:
+            if (
+                type(page) is not raw.ProjectedRawHistoryPageV1
+                or type(page.items) is not tuple
+                or len(page.items) > 2
+            ):
                 raise ValueError("invalid bounded option-time history")
             for projection in page.items:
-                if type(projection) is not raw.ProjectedRawValueV1 or projection.observation_occurrence_id in seen:
+                if (
+                    type(projection) is not raw.ProjectedRawValueV1
+                    or projection.observation_occurrence_id in seen
+                ):
                     raise ValueError("invalid or duplicate option-time projection")
                 seen.add(projection.observation_occurrence_id)
                 actual.append(projection)
             if page.next_cursor is None:
                 break
-            if not page.items or type(page.next_cursor) is not str or not page.next_cursor or page.next_cursor in cursors:
+            if (
+                not page.items
+                or type(page.next_cursor) is not str
+                or not page.next_cursor
+                or page.next_cursor in cursors
+            ):
                 raise ValueError("nonprogressing option-time cursor")
             cursors.add(page.next_cursor)
             cursor = page.next_cursor
@@ -250,12 +306,17 @@ def live_pair(
             raise ValueError("option-time history page bound exhausted")
         if len(expected) != 1 or len(actual) != 1:
             raise ValueError("incomplete option-time frame role")
-        original = _exact_original(source.get_raw_observation_occurrence(expected[0].observation_occurrence_id), expected[0])
+        original = _exact_original(
+            source.get_raw_observation_occurrence(expected[0].observation_occurrence_id),
+            expected[0],
+        )
         direct = _direct(source, original)
         if native.canonical(actual[0]) != native.canonical(direct):
             raise ValueError("direct and history projection mismatch")
         selected[rid] = original, actual[0]
-    return tuple(selected[r][0] for r in ("R002", "R003")), tuple(selected[r][1] for r in ("R002", "R003"))
+    return tuple(selected[r][0] for r in ("R002", "R003")), tuple(
+        selected[r][1] for r in ("R002", "R003")
+    )
 
 
 def validate_pair(
@@ -267,9 +328,15 @@ def validate_pair(
     # Verify co-occurrence of both complete selected facts in a permitted
     # literal frame. Do not bind unrelated R001 or calendar/expiry facts.
     actual = native.canonical(originals)
-    if not any(actual == native.canonical(tuple(
-        next(o for o in _specimen(name)[1] if _role(o) == rid) for rid in ("R002", "R003")
-    )) for name in SPECIMENS):
+    if not any(
+        actual
+        == native.canonical(
+            tuple(
+                next(o for o in _specimen(name)[1] if _role(o) == rid) for rid in ("R002", "R003")
+            )
+        )
+        for name in SPECIMENS
+    ):
         raise ValueError("selected option-time originals not a permitted pair")
     for rid, original, projection in zip(("R002", "R003"), originals, projections, strict=True):
         check_projection(original, projection, mapping_for(rid))

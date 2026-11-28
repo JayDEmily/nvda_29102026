@@ -48,8 +48,10 @@ def identity(value: f.OptionTimeOccurrenceV1) -> str:
 def decode(payload: bytes) -> f.OptionTimeOccurrenceV1:
     envelope = native.decode(payload, dict)
     if (
-        set(envelope) != {"record", "version", "content"} or envelope["record"] != _TAG
-        or type(envelope["version"]) is not int or envelope["version"] != 1
+        set(envelope) != {"record", "version", "content"}
+        or envelope["record"] != _TAG
+        or type(envelope["version"]) is not int
+        or envelope["version"] != 1
     ):
         raise ValueError("unadmitted option-time envelope")
     content = envelope["content"]
