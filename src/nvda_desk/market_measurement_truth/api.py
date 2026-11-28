@@ -3898,3 +3898,122 @@ __all__ += [
     "create_option_time_expiry_owner", "create_option_time_expiry_reader",
     "create_option_time_expiry_source",
 ]
+
+
+
+@dataclass(frozen=True, slots=True)
+class AlignedFitRowRequestV1(_Validated):
+    slot: str
+    member_occurrence_ids: tuple[str, ...]
+
+    def __post_init__(self) -> None:
+        _Validated.__post_init__(self)
+        if len(self.member_occurrence_ids) != 4:
+            raise ValueError("exact four ordered row member identities required")
+
+
+@dataclass(frozen=True, slots=True)
+class AlignedFitRequestV1(_Validated):
+    derived_signal_id: str
+    subject_instrument: str
+    origin_slot: str
+    as_of_utc: datetime
+    knowledge_cutoff_utc: datetime
+    calculation_definition_version: str
+    source_profile_ref: VersionRefV1
+    parameter_set_ref: VersionRefV1
+    input_selection_policy_ref: VersionRefV1
+    context_refs: tuple[VersionRefV1, ...]
+    rows: tuple[AlignedFitRowRequestV1, ...]
+
+
+@dataclass(frozen=True, slots=True)
+class AlignedFitManifestV1(_Validated):
+    fit_id: str
+    fit_profile_ref: VersionRefV1
+    source_policy_sha256: str
+    model_version: str
+    numeric_version: str
+    origin_slot: str
+    effective_as_of_utc: datetime
+    knowledge_cutoff_utc: datetime
+    row_slots: tuple[str, ...]
+    rows: tuple[tuple[AlignedHistoryOccurrenceV1, ...], ...]
+    member_occurrence_ids: tuple[tuple[str, ...], ...]
+    member_payload_sha256: tuple[tuple[str, ...], ...]
+    determinant: ExactRatioV1
+    condition: ExactRatioV1
+    intercept: ExactRatioV1
+    beta_market: ExactRatioV1
+    beta_tech: ExactRatioV1
+    beta_semi: ExactRatioV1
+
+
+@dataclass(frozen=True, slots=True)
+class AlignedCoefficientOccurrenceV1(_Validated):
+    owner_object_id: str
+    owner_namespace: str
+    implementation_brief_sha256: str
+    derived_signal_id: str
+    derived_occurrence_id: str
+    request: AlignedFitRequestV1
+    definition: CalculationDefinitionV1
+    source_policy_sha256: str
+    source_profile_ref: VersionRefV1
+    parameter_set: CalculationParameterSetV1
+    input_selection_policy: InputSelectionPolicyVersionV1
+    window_context: WindowContextV1
+    component: str
+    fit: AlignedFitManifestV1
+    result: ExactRatioV1
+    units: str
+    result_shape: str
+    effective_as_of_utc: datetime
+    knowledge_cutoff_utc: datetime
+    calculated_at_utc: datetime
+
+
+class AlignedCoefficientReadsV1(Protocol):
+    def get_derived_occurrence(
+        self, derived_occurrence_id: str,
+    ) -> AlignedCoefficientOccurrenceV1 | None: ...
+
+    def list_derived_history(
+        self, *, derived_signal_id: str, subject_instrument: str,
+        effective_at_or_before_utc: datetime, knowledge_at_or_before_utc: datetime,
+        limit: int,
+    ) -> tuple[AlignedCoefficientOccurrenceV1, ...]: ...
+
+
+class AlignedCoefficientOwnerV1(Protocol):
+    @property
+    def reads(self) -> AlignedCoefficientReadsV1: ...
+
+    def materialise(
+        self, request: AlignedFitRequestV1,
+    ) -> AlignedCoefficientOccurrenceV1 | None: ...
+
+
+def create_aligned_coefficient_owner(
+    *, admission: OwnerAdmissionV1,
+    predecessor_read_storages: tuple[SQLiteReadStorageV1, ...],
+    storage: SQLiteStorageV1, utc_now: Callable[[], datetime],
+) -> AlignedCoefficientOwnerV1:
+    from ._aligned_joint_fit import build_owner
+
+    return build_owner(admission, predecessor_read_storages, storage, utc_now)
+
+
+def create_aligned_coefficient_reader(
+    *, admission: OwnerAdmissionV1, storage: SQLiteReadStorageV1,
+) -> AlignedCoefficientReadsV1:
+    from ._aligned_joint_fit import build_reader
+
+    return build_reader(admission, storage)
+
+
+__all__ += [
+    "AlignedFitRowRequestV1", "AlignedFitRequestV1", "AlignedFitManifestV1",
+    "AlignedCoefficientOccurrenceV1", "AlignedCoefficientReadsV1", "AlignedCoefficientOwnerV1",
+    "create_aligned_coefficient_owner", "create_aligned_coefficient_reader",
+]
