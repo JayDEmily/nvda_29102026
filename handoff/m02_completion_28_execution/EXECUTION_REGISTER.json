@@ -7106,7 +7106,7 @@
         "L00"
       ],
       "obligation": "Bind R013 selected-option expiry date, R001 receipt, exchange IANA timezone, calendar version/session boundaries and lawful D004 US-option date profile. A synthetic calendar is explicitly controlled configuration, never evidence of official provider facts. Resolve concrete policy/source decisions before code. Independently prove a necessary D004 profile extension without rewriting its old accepted profile or counting its identity anew.",
-      "status": "D003_IMPLEMENTED_UNTESTED_REGISTRATION_INSTALLATION_INDEPENDENTLY_ACCEPTED_EXECUTION_HELD",
+      "status": "D003_IMPLEMENTED_UNTESTED_REGISTRATION_INSTALLATION_INDEPENDENTLY_ACCEPTED_EXECUTION_HELD_D004_IMPLEMENTED_UNTESTED_PENDING_INDEPENDENT_SOURCE_AND_SHARED_SURFACE_REVIEW",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G2_AFTER_L18"
@@ -7724,6 +7724,101 @@
           "execution_release": false,
           "parent_product_acceptance": false,
           "product_cases_executed": 0
+        },
+        "d004_source_implementation_candidate": {
+          "jurisdiction": "D004",
+          "proof_id": "SUP-D004-USOPTION",
+          "case_count": 3,
+          "input_handoff": "d70e7dd43e5c4cf7423068aad3921a33ced0ae79",
+          "candidate": "f38cfd14b298a110b3b183328b5f39565cb982b8",
+          "candidate_tree": "063ba92557af4f07804892b838462de89c65d1df",
+          "tree_listing_sha256": "7a26b708004891b0a6df8dc064b4b38727b6f77783c8101d08fa2d308e7310d8",
+          "tree_entries": 4741,
+          "source_paths": [
+            {
+              "path": "src/nvda_desk/market_measurement_truth/api.py",
+              "sha256": "4aab84d3da5ec15b42e00d6590509a23b935db5e739fcfee108ccc3764053fb9",
+              "git_blob": "696bf5f376e90bec899d59289832d722a9b02113",
+              "bytes": 144771
+            },
+            {
+              "path": "src/nvda_desk/market_measurement_truth/_option_time_source.py",
+              "sha256": "0a4d312f8252445b1d6968026d6a5bc1448283305d6bd0d6177bfa5d55895393",
+              "git_blob": "a20ac1d6dfbe3eb041be33f81350bbf8ff8f86b2",
+              "bytes": 20562
+            },
+            {
+              "path": "src/nvda_desk/market_measurement_truth/_option_time.py",
+              "sha256": "cf7317e85c6e45d9f5045dccccd61059bae399161b5db2754896439c6ecef9b2",
+              "git_blob": "136cce71a9faf63a8117d31bfa80155aeb817af2",
+              "bytes": 48563
+            },
+            {
+              "path": "src/nvda_desk/market_measurement_truth/_option_time_codec.py",
+              "sha256": "fc79d9c37713964809f4992459aa7c11b4b4190b14ed611f66388e78b3fc7165",
+              "git_blob": "d8d8629368ace6b69d092af9e5a6a861316df17f",
+              "bytes": 9821
+            },
+            {
+              "path": "tools/product_proof_claims.py",
+              "sha256": "53bb1b7c0dc0953e22bbd085022af50f775221be6c495539d78b5908a82b7a8c",
+              "git_blob": "08c571e368c75ee26baa7cc6866f01c6347d1221",
+              "bytes": 95399
+            }
+          ],
+          "worker_report": {
+            "path": "handoff/m02_completion_28_execution/L07a/D004_OPTION_SESSION_SOURCE_IMPLEMENTATION_WORKER_REPORT_20261128.md",
+            "sha256": "357a9f03b50651d0b641e2569326f637d8745e445330116c3000aff755d6a084",
+            "git_blob": "96def6c161826233dfeb6e0d8682f6b2778b2634",
+            "bytes": 6699
+          },
+          "authoring_verdict": {
+            "verdict": {
+              "path": "handoff/m02_completion_28_execution/L07a/INDEPENDENT_D004_OPTION_SESSION_INERT_AUTHORING_VERDICT_20261128.md",
+              "sha256": "80a979605a68bd9dbf9a3819ae5db3d162c74ba67cefa1ff94944991b36d08bf",
+              "git_blob": "9b8da48bc96c12ff08acc35f7efb5e4354b5c75a",
+              "bytes": 11957,
+              "commit": "dc9e20d9ff1d349aae20ee7579922ad1861d0fc6",
+              "tree": "ed6092a4c1f0cba0c4c4b46f87b85824182efa99",
+              "parent": "d75570e101c220d267ef45a32d16808a59420e0f",
+              "review_ref": "refs/heads/review/trial-cac-nvidia-d004-option-session-authoring-20261128"
+            },
+            "disposition": "ACCEPT_DOCUMENTARY_AUTHORING",
+            "candidate": "9e308b96efd2dae4fbd613294a8fc2d7efea1bb9",
+            "candidate_tree": "807e8112b2ef9c7177a398caefe77473138db1cd",
+            "proof_id": "SUP-D004-USOPTION",
+            "case_count": 3,
+            "parent_product_acceptance": false,
+            "execution_release": false,
+            "product_cases_executed": 0
+          },
+          "case_ids": [
+            "SUP-D004-USOPTION-SUCCESS",
+            "SUP-D004-USOPTION-REACHED_REFUSAL",
+            "SUP-D004-USOPTION-SCHEDULE-MISMATCH"
+          ],
+          "ordered_test_nodes": [
+            "tests/product/m02_completion_28_prospective/support/d004-usoption/test_profile.py::test_d004_success",
+            "tests/product/m02_completion_28_prospective/support/d004-usoption/test_profile.py::test_d004_closed_end",
+            "tests/product/m02_completion_28_prospective/support/d004-usoption/test_profile.py::test_d004_schedule_mismatch"
+          ],
+          "prospective_dormant_descriptor_sha256": "571d9e279e2600164954ca09d58b15d46e7db05b7b830d568e89912f9d027956",
+          "active_binding_installed": true,
+          "active_proof_installation": false,
+          "active_proof_registration": false,
+          "parent_product_acceptance": false,
+          "execution_release": false,
+          "product_cases_executed": 0,
+          "disposition": "IMPLEMENTED_UNTESTED",
+          "review_commission": {
+            "path": "handoff/m02_completion_28_execution/L07a/D004_OPTION_SESSION_SOURCE_IMPLEMENTATION_REVIEW_COMMISSION_20261128.md",
+            "sha256": "6fc4f69937e5ebc4d837f48250858bf4182526931efd22478fd272659687e003",
+            "git_blob": "39193a982ae1e2e335ffa1ae88f12a69409b9f2e",
+            "bytes": 6803
+          },
+          "independent_implementation_review": "PENDING",
+          "candidate_specific_shared_source_applicability_invalidation": "PENDING",
+          "registration": "NOT_INSTALLED"
         }
       }
     },
@@ -10936,9 +11031,9 @@
   "execution_status": "ready",
   "current_leaf": "L07a",
   "next_assignment": {
-    "role": "Fresh distinct L07a D004 option-session source implementation Worker",
-    "task": "Fetch exact commissioned trial HEAD; stop on mismatch. Follow AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and execution register. Execute only committed handoff/m02_completion_28_execution/L07a/D004_OPTION_SESSION_SOURCE_IMPLEMENTATION_COMMISSION_20261128.md SHA256 7dbd087182cdfc2a15e47558814a2fe217c3c8311c479a25c8031a13e9f7dc9b. Verify independent authoring verdict dc9e20d9ff1d349aae20ee7579922ad1861d0fc6 report SHA256 80a979605a68bd9dbf9a3819ae5db3d162c74ba67cefa1ff94944991b36d08bf; implement only exact additive D004 source and dormant fixed G01 route in five approved paths. Commission independent source and candidate-specific shared-surface applicability/invalidation review. No D085 preparation, physical proof installation, active registration, product/proof imports, loader, collection, execution or release. Preserve 64 holds/67 historical accepted, D078 legacy/registration, actual parent acceptance prerequisite and sole Tester. Continue eligible distinct-role succession once using owner-adopted CAC MVP.",
-    "selection_basis": "Exact D004 binding and inert three-case authoring independently documentarily accepted; only bounded additive source implementation eligible, followed by independent implementation/applicability review. Parent product acceptance and execution remain held."
+    "role": "Fresh distinct independent L07a D004 option-session source implementation and candidate-specific shared-surface applicability/invalidation Reviewer",
+    "task": "Fetch exact trial HEAD; stop on mismatch. Execute only committed handoff/m02_completion_28_execution/L07a/D004_OPTION_SESSION_SOURCE_IMPLEMENTATION_REVIEW_COMMISSION_20261128.md SHA256 6fc4f69937e5ebc4d837f48250858bf4182526931efd22478fd272659687e003; verify source f38cfd14b298a110b3b183328b5f39565cb982b8 tree 063ba92557af4f07804892b838462de89c65d1df, Worker report SHA256 357a9f03b50651d0b641e2569326f637d8745e445330116c3000aff755d6a084. Review exact five-path source, three inert cases, actual D001/D003 lineage, dormant G01 and candidate-specific applicability/invalidation. No D085 preparation, source/proof edits, physical installation, active registration, imports, loader, collection, execution or release. Preserve holds and sole Tester. Continue eligible distinct-role succession once via owner-adopted CAC MVP.",
+    "selection_basis": "Bounded D004 source implemented untested; independent documentary implementation and candidate-specific shared-surface review mandatory before separate registration preparation. Parent product acceptance and all execution remain held."
   },
   "trial_forward_succession_authority": {
     "scope": "trial/cac-nvidia-continuation-20261127 only",
