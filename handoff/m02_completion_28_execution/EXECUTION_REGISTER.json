@@ -1501,7 +1501,7 @@
         ],
         "execution_release": false,
         "product_status": "NOT_ATTEMPTED",
-        "first_unmet_invariant": "Exact owner-adopted policy and finite allocations verified; D003 binding preparation blocked by missing actual D001 parent specimen/frame reachability. Independent blocker confirmation and lawful bounded upstream recovery before child preparation; parent product acceptance mandatory before child release.",
+        "first_unmet_invariant": "Independently confirmed actual D001 parent specimen/frame reachability blocker; bounded upstream recovery and independent stable-interface clearance required before own binding preparation. Parent product acceptance still mandatory before release.",
         "tester_designation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
         "tester_status": "CANDIDATE_SPECIFIC_INTAKE_REQUIRED",
         "scope": "Controlled synthetic only; no official/native certification or new product acceptance",
@@ -1521,6 +1521,27 @@
           "execution_release": false,
           "product_cases_executed": 0,
           "scope": "Worker static finding; fresh independent documentary confirmation required. Existing narrow D001 verdicts preserved."
+        },
+        "independent_downstream_interface_prerequisite_verdict": {
+          "jurisdiction": "D003",
+          "proof_id": "SUP-D003-USOPTION",
+          "case_count": 3,
+          "disposition": "CONFIRM_BLOCKED_D001_ACTUAL_PARENT_INTERFACE",
+          "missing_actual_parent_specimen_frames": [
+            "R004_FOREIGN_ZONE/MAIN",
+            "EARLIER/EARLIER"
+          ],
+          "commit": "ba4d5991bcf26b9aacce01c7ba70ce2feb4e8466",
+          "tree": "a056178afe1f22c44757b0c4e2fe859f56ef014c",
+          "ref": "refs/heads/review/trial-cac-nvidia-d001-downstream-interface-prerequisite-20261128",
+          "path": "handoff/m02_completion_28_execution/L07a/INDEPENDENT_D001_DOWNSTREAM_INTERFACE_PREREQUISITE_VERDICT_20261128.md",
+          "git_blob": "30d410e983ededfcc745732cee1a7e0f1cda1aaa",
+          "sha256": "e306eac84eef61e589be57fe4b6115794215aa8308b69d6f0ceb09f165a2e1b4",
+          "bytes": 11912,
+          "candidate": "8d5e2c49c9b98fbb038acf6af2897590a1e79777",
+          "candidate_tree": "a0f28b19a63edc817b9959e1063bef44075e4be7",
+          "scope": "Static prerequisite blocker only; no product acceptance or child preparation.",
+          "execution_release": false
         }
       }
     },
@@ -1567,7 +1588,7 @@
         ],
         "execution_release": false,
         "product_status": "NOT_ATTEMPTED",
-        "first_unmet_invariant": "Exact registration installation independently cleared; sole designated strict Tester candidate-specific intake, qualification and exact precall release remain required. All engineering holds remain.",
+        "first_unmet_invariant": "Bounded D001 actual-parent interface recovery preparation and independent authoring/implementation/registration applicability clearance before downstream provisional use or candidate-specific sole Tester intake/release. Existing four cases and prior narrow verdicts preserved.",
         "tester_designation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
         "tester_status": "CANDIDATE_SPECIFIC_INTAKE_REQUIRED",
         "scope": "Controlled synthetic only; no official/native certification or new product acceptance",
@@ -1873,6 +1894,37 @@
           "candidate": "d2b57bbd78d957207203613dccb162325ed24e75",
           "candidate_tree": "b75317e78f143f34a82da730987249b3454a666c",
           "scope": "Exact registration installation documentary only; IMPLEMENTED_UNTESTED. No release, execution or product acceptance."
+        },
+        "independent_downstream_interface_recovery_verdict": {
+          "jurisdiction": "D001",
+          "proof_id": "SUP-D001-OPTION",
+          "disposition": "RETURN_FOR_BOUNDED_D001_INTERFACE_RECOVERY_PREPARATION",
+          "classification": "ISOLATED",
+          "authority": "Existing exact adopted temporal policy and conditional finite64 grant; no added case or policy.",
+          "required_lawful_parent_specimen_frames": [
+            "EARLIER/EARLIER",
+            "MAIN/MAIN",
+            "CROSS_CLOSE/CROSS_CLOSE",
+            "SAME_DAY/SAME_DAY",
+            "AT_EXPIRY/AT_EXPIRY",
+            "AFTER/AFTER",
+            "R004_FOREIGN_ZONE/MAIN",
+            "R024_SCHEDULE_MISMATCH/MAIN",
+            "R001_VALUE_MISMATCH/MAIN",
+            "R013_ORIGINAL_UNITS/MAIN",
+            "R013_DATE_MISMATCH/MAIN",
+            "R013_CONTRACT_MISMATCH/MAIN"
+          ],
+          "commit": "ba4d5991bcf26b9aacce01c7ba70ce2feb4e8466",
+          "tree": "a056178afe1f22c44757b0c4e2fe859f56ef014c",
+          "ref": "refs/heads/review/trial-cac-nvidia-d001-downstream-interface-prerequisite-20261128",
+          "path": "handoff/m02_completion_28_execution/L07a/INDEPENDENT_D001_DOWNSTREAM_INTERFACE_PREREQUISITE_VERDICT_20261128.md",
+          "git_blob": "30d410e983ededfcc745732cee1a7e0f1cda1aaa",
+          "sha256": "e306eac84eef61e589be57fe4b6115794215aa8308b69d6f0ceb09f165a2e1b4",
+          "bytes": 11912,
+          "candidate": "8d5e2c49c9b98fbb038acf6af2897590a1e79777",
+          "execution_release": false,
+          "scope": "Class-level static interface inadequacy; preserve exact prior narrow documentary verdicts and held registration; no product verdict."
         }
       }
     },
@@ -1972,7 +2024,7 @@
         ],
         "execution_release": false,
         "product_status": "NOT_ATTEMPTED",
-        "first_unmet_invariant": "Exact owner-adopted policy and finite allocations verified; D086 binding preparation blocked by missing actual D001 parent specimen/frame reachability. Independent blocker confirmation and lawful bounded upstream recovery before child preparation; parent product acceptance mandatory before child release.",
+        "first_unmet_invariant": "Independently confirmed actual D001 parent specimen/frame reachability blocker; bounded upstream recovery and independent stable-interface clearance required before own binding preparation. Parent product acceptance still mandatory before release.",
         "tester_designation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
         "tester_status": "CANDIDATE_SPECIFIC_INTAKE_REQUIRED",
         "scope": "Controlled synthetic only; no official/native certification or new product acceptance",
@@ -1995,6 +2047,30 @@
           "execution_release": false,
           "product_cases_executed": 0,
           "scope": "Worker static finding; fresh independent documentary confirmation required. Existing narrow D001 verdicts preserved."
+        },
+        "independent_downstream_interface_prerequisite_verdict": {
+          "jurisdiction": "D086",
+          "proof_id": "M02-C28-D086",
+          "case_count": 6,
+          "disposition": "CONFIRM_BLOCKED_D001_ACTUAL_PARENT_INTERFACE",
+          "missing_actual_parent_specimen_frames": [
+            "AT_EXPIRY/AT_EXPIRY",
+            "AFTER/AFTER",
+            "R013_DATE_MISMATCH/MAIN",
+            "R013_CONTRACT_MISMATCH/MAIN",
+            "EARLIER/EARLIER"
+          ],
+          "commit": "ba4d5991bcf26b9aacce01c7ba70ce2feb4e8466",
+          "tree": "a056178afe1f22c44757b0c4e2fe859f56ef014c",
+          "ref": "refs/heads/review/trial-cac-nvidia-d001-downstream-interface-prerequisite-20261128",
+          "path": "handoff/m02_completion_28_execution/L07a/INDEPENDENT_D001_DOWNSTREAM_INTERFACE_PREREQUISITE_VERDICT_20261128.md",
+          "git_blob": "30d410e983ededfcc745732cee1a7e0f1cda1aaa",
+          "sha256": "e306eac84eef61e589be57fe4b6115794215aa8308b69d6f0ceb09f165a2e1b4",
+          "bytes": 11912,
+          "candidate": "8d5e2c49c9b98fbb038acf6af2897590a1e79777",
+          "candidate_tree": "a0f28b19a63edc817b9959e1063bef44075e4be7",
+          "scope": "Static prerequisite blocker only; no product acceptance or child preparation.",
+          "execution_release": false
         }
       }
     },
@@ -3978,9 +4054,9 @@
   "execution_status": "ready",
   "current_leaf": "L07b",
   "next_assignment": {
-    "role": "Fresh distinct independent D001 downstream-interface prerequisite documentary reviewer",
-    "task": "Fetch exact trial HEAD; stop on mismatch. Read AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and execution register. Independently review exact handoff/m02_completion_28_execution/L07a/D003_D086_D001_INTERFACE_PREREQUISITE_BLOCKER_20261128.md SHA256 cf76d1dcbb2a187daedacfaf8d61a8993fb031edcff2c69e707b2e6948672ab5; verify unchanged D001 source and prior verdicts, exact adopted temporal policy and remapped D003/D086 allocations; independently reproduce separate blocked prerequisite dispositions and assess common class-level actual-parent reachability across the already admitted temporal domain and applicable authority for bounded upstream D001 recovery. Publish separate D003/D086 documentary dispositions and precise class-level necessary proposition or authority blocker; do not edit source or activate bindings, execute product, change allocations, accept children or replace sole Tester. Preserve all holds, G01 R2 unadopted and D145 PAUSED. Reconcile and continue eligible distinct-role succession once under owner-adopted CAC MVP.",
-    "selection_basis": "Both direct downstream units have exact accepted source policies and finite remapped cases but the existing D001 source admits only four MAIN-based specimens and request validation is MAIN-only. Fresh independent documentary prerequisite review needed before a lawful bounded upstream repair or another eligible independent unit. No source edits or binding preparation by this Worker."
+    "role": "Fresh distinct D001 class-level downstream-interface recovery-preparation Worker",
+    "task": "Fetch exact trial HEAD; stop on mismatch. Follow AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and execution register. Read and verify independent separate D003 and D086 prerequisite verdict at ba4d5991bcf26b9aacce01c7ba70ce2feb4e8466, refs/heads/review/trial-cac-nvidia-d001-downstream-interface-prerequisite-20261128, report SHA256 e306eac84eef61e589be57fe4b6115794215aa8308b69d6f0ceb09f165a2e1b4. Prepare ONLY inert bounded D001 recovery design/changed-path and authority/evidence reconciliation for the entire 12 lawful parent combinations and three original D001 negatives under the exact owner-adopted temporal policy, not witness-specific fixes. Establish precise source delta, unchanged existing four proof nodes and bytes, binding/brief/contract and registration generation-0001 applicability and candidate-specific independent re-clearance requirements; identify any actual authority gap, do not mutate prior accepted artifacts or add cases. No source edits, active proof/binding/registration changes, ledger changes, product imports or execution, G01 R2 adoption, release or child implementation. Preserve all engineering holds, D145 PAUSED, original sole Tester and candidate-specific intake/precall release. Publish scoped inert preparation checkpoint and commission fresh distinct independent documentary recovery-authoring reviewer before implementation. Continue eligible succession once via owner-adopted CAC MVP.",
+    "selection_basis": "Both direct children independently blocked; the whole temporal graph has 16 of 19 descendant parent sequences statically blocked. Exact grant supports bounded recovery of new untested D001 within existing adopted source/clock policy and unchanged finite allocations. Earlier four-case narrow documentary acceptances remain historical exact-candidate evidence. No new owner policy decision required. D004/D085 held and D095/other eligible units independent."
   },
   "trial_forward_succession_authority": {
     "scope": "trial/cac-nvidia-continuation-20261127 only",
