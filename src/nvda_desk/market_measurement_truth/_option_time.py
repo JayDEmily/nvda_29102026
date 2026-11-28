@@ -79,8 +79,8 @@ def _calculate(
         if (
             original.subject_instrument != source.SUBJECT
             or original.native_units != units
-            or record["sample"]["id"] != request.frame_id
-            or record["value"]["role"] != role
+            or source._path(record, ("sample", "id")) != request.frame_id
+            or source._path(record, ("value", "role")) != role
             or any(record[key] != value for key, value in policy["contract_identity"].items())
             or original.source_temporal_kind != "true_instant"
         ):
