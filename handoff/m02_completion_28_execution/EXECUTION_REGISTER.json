@@ -7604,6 +7604,39 @@
           "execution_release": false,
           "product_cases_executed": 0,
           "scope": "Documentary prerequisite and inactive candidate only. Actual D001/D003 product acceptance and separate reviews required."
+        },
+        "independent_d004_inactive_binding_admission_verdict": {
+          "verdict": {
+            "path": "handoff/m02_completion_28_execution/L07a/INDEPENDENT_D004_OPTION_SESSION_INACTIVE_BINDING_ADMISSION_VERDICT_20261128.md",
+            "sha256": "109194c4789fc230edd9ef0e05e0ea74202ebd0595d4f7dd97e1aa25a984515e",
+            "git_blob": "1174a595826a6dcd5be1403732a05e4434668c35",
+            "bytes": 13662,
+            "commit": "67adebbd89345b4fd82e2be9d67f2e50fe917503",
+            "tree": "7252279ad667c338a70da7eac379fd6db55a8a86",
+            "parent": "696f7b95b693a8316934c8190da708be9da939cb",
+            "review_ref": "refs/heads/review/trial-cac-nvidia-d004-option-session-binding-admission-20261128"
+          },
+          "disposition": "ACCEPT_EXACT_D004_INACTIVE_BINDING_AND_BRIEF_FOR_INSTALLATION_AND_INERT_AUTHORING",
+          "candidate": "09f7fbd9f303f8b24b1c7d68dea81f16b0fb26ec",
+          "candidate_tree": "c9bf7e40bc00bcdbbbdb6451386c890ac5018cb9",
+          "proof_id": "SUP-D004-USOPTION",
+          "case_count": 3,
+          "brief_sha256": "77f81c72a9fac1aafebda94a8ab97f3b4f0f9f0e089f4367f221f57aac9c775a",
+          "inactive_binding_sha256": "50f49638a7202d2b10f7b89b6076971445b033bd74bf66f8ea17a0c6862123aa",
+          "parent_product_acceptance": false,
+          "execution_release": false,
+          "product_cases_executed": 0
+        },
+        "d004_binding_installation_authoring_commission": {
+          "path": "handoff/m02_completion_28_execution/L07a/D004_OPTION_SESSION_BINDING_INSTALLATION_AUTHORING_COMMISSION_20261128.md",
+          "sha256": "0fa5e556627e8b2f47b5e508a62f57ad4551370991959837a1ec29fb01beb63b",
+          "git_blob": "613e6444201b189622801aaedfa00c55fb585d0b",
+          "bytes": 4450,
+          "disposition": "EXACT_BINDING_INSTALLATION_AND_INERT_PROOF_AUTHORING_COMMISSIONED",
+          "case_count": 3,
+          "execution_release": false,
+          "parent_product_acceptance": false,
+          "product_cases_executed": 0
         }
       }
     },
@@ -10816,9 +10849,9 @@
   "execution_status": "ready",
   "current_leaf": "L07a",
   "next_assignment": {
-    "role": "Fresh distinct independent L07a D004 option-session inactive binding-admission Reviewer",
-    "task": "Fetch exact commissioned trial HEAD; stop on mismatch. Follow AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and execution register. Execute only committed handoff/m02_completion_28_execution/L07a/D004_OPTION_SESSION_INACTIVE_BINDING_ADMISSION_REVIEW_COMMISSION_20261128.md SHA256 4308522525973d7628c5ec20ccb8d3abe8f27ff647fa30c076960ba1482fca4e. Independently verify exact candidate 09f7fbd9f303f8b24b1c7d68dea81f16b0fb26ec, tree c9bf7e40bc00bcdbbbdb6451386c890ac5018cb9, three inactive payloads, actual D003/D001 parent interface and exact three D004 case mapping; documentary verdict only. Preserve all 64 holds/67 historical accepted, D078 legacy/registration and sole Tester. No source/proof edits, active installation, product/proof imports, loader, collection, execution, release or D085 preparation. Continue eligible distinct-role succession once using owner-adopted CAC MVP.",
-    "selection_basis": "D004 documentary parent-interface inspection complete; exact inactive candidate prepared, requires independent binding admission before any installation or authoring. Actual parent product acceptance remains required."
+    "role": "Fresh distinct L07a D004 option-session exact binding-installation and inert proof-authoring Worker",
+    "task": "Fetch exact commissioned trial HEAD; stop on mismatch. Follow AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and execution register. Execute only committed handoff/m02_completion_28_execution/L07a/D004_OPTION_SESSION_BINDING_INSTALLATION_AUTHORING_COMMISSION_20261128.md SHA256 0fa5e556627e8b2f47b5e508a62f57ad4551370991959837a1ec29fb01beb63b; verify independent verdict 67adebbd89345b4fd82e2be9d67f2e50fe917503 report SHA256 109194c4789fc230edd9ef0e05e0ea74202ebd0595d4f7dd97e1aa25a984515e. Install only exact accepted D004 binding bytes and author exactly three inert proof functions and exact contract. No source edits, physical proof installation, registration, product/proof imports, loader, collection, execution, release or D085 preparation. Preserve all 64 holds/67 historical accepted, D078 legacy/registration, actual parent acceptance prerequisite and sole Tester. Continue eligible distinct-role succession once using owner-adopted CAC MVP.",
+    "selection_basis": "Exact D004 inactive binding and brief independently accepted; actual parent product acceptance remains required before execution. Only separately bounded installation and inert authoring now eligible."
   },
   "trial_forward_succession_authority": {
     "scope": "trial/cac-nvidia-continuation-20261127 only",
