@@ -8671,7 +8671,7 @@
         "L07a"
       ],
       "obligation": "Use actual R013/R001 and compatible exchange trading date D004 to compute whole calendar-day difference. Preserve contract/calendar/source identity. Refuse unsupported calendar/date coverage or negative live-contract DTE. This does not require converting a date into an invented instant.",
-      "status": "D085_IMPLEMENTED_UNTESTED_INERT_REGISTRATION_PREPARED_INDEPENDENT_REVIEW_PENDING_EXECUTION_HELD",
+      "status": "D085_IMPLEMENTED_UNTESTED_INERT_REGISTRATION_PREPARATION_INDEPENDENTLY_ACCEPTED_INSTALLATION_PENDING_EXECUTION_HELD",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G2_AFTER_L18"
@@ -9103,6 +9103,36 @@
           "registration": "NOT_INSTALLED",
           "execution_release": false,
           "product_cases_executed": 0
+        },
+        "d085_independent_registration_preparation_verdict": {
+          "verdict": {
+            "commit": "812b5171ad661056f2272d31f05274f8ab49d5e7",
+            "tree": "06179afcd08b6afa03ddc6e73fc6e389b068e311",
+            "parent": "cf5bb8dbff9da6a1256e2a2d7c1a8ea84e318b68",
+            "review_ref": "refs/heads/review/trial-cac-nvidia-d085-calendar-dte-registration-preparation-20261129",
+            "path": "handoff/m02_completion_28_execution/L08/INDEPENDENT_D085_CALENDAR_DTE_REGISTRATION_PREPARATION_VERDICT_20261129.md",
+            "sha256": "3eda0b201d29aef610f0374376fc5f8bcabdf4c452272621119be65bd278e03e",
+            "git_blob": "f99d47fced8af5954f3b3175bbe75167b53a560b",
+            "bytes": 9486
+          },
+          "disposition": "ACCEPT_DOCUMENTARY_REGISTRATION_PREPARATION",
+          "candidate": "1babc1a8f02a7e9fec01a619eb8ec4e32dbec52e",
+          "candidate_tree": "efe8d025dcc8cdd393a44f4ba56627a9a389d742",
+          "proof_id": "M02-C28-D085",
+          "case_count": 7,
+          "registration": "NOT_INSTALLED",
+          "validation": "STATIC_EXACT_BYTES_AND_GENERATION_LINKAGE_NO_LOADER_INVOCATION",
+          "execution_release": false,
+          "product_cases_executed": 0,
+          "parent_product_acceptance": false
+        },
+        "d085_registration_installation_commission": {
+          "path": "handoff/m02_completion_28_execution/L08/D085_CALENDAR_DTE_REGISTRATION_INSTALLATION_COMMISSION_20261129.md",
+          "sha256": "d8b7938b520242cd51c44945b6df6ec894ce4aac3cb847f600d59841a3ab0cae",
+          "proof_id": "M02-C28-D085",
+          "case_count": 7,
+          "scope": "Exact four payload installation only; separate review, no execution release",
+          "execution_release": false
         }
       }
     },
@@ -11634,9 +11664,9 @@
   "execution_status": "ready",
   "current_leaf": "L08",
   "next_assignment": {
-    "role": "Fresh distinct independent L08 D085 calendar DTE registration preparation Reviewer",
-    "task": "Fetch exact trial HEAD; stop on mismatch. Execute only committed handoff/m02_completion_28_execution/L08/D085_CALENDAR_DTE_REGISTRATION_PREPARATION_REVIEW_COMMISSION_20261129.md SHA256 2eeb84f26127aebb4c6f7d400a7623a098d78754ee6c9991bf3897f49e0331b7. Independently verify exact inert candidate 1babc1a8f02a7e9fec01a619eb8ec4e32dbec52e tree efe8d025dcc8cdd393a44f4ba56627a9a389d742, three JSON payloads and unchanged physical source, source/applicability and authoring verdicts, actual D001/D003/D004 parent registrations and actual acceptance prerequisite, exact grant/remap/ledger, descriptor/generation/pointer, ordered seven nodes, all 64 holds and 67 historical acceptances. Documentary only; no source/proof edits, installation, registration, imports, loader, collection, compilation, execution or release. Preserve D078 legacy/registration, sole Tester, D145 PAUSED, G01 R2 unadopted, main/original. Continue eligible distinct-role succession once via owner-adopted CAC MVP.",
-    "selection_basis": "Exact inert D085 registration preparation published; fresh distinct documentary review required before separate installation and independent installation review. All execution held."
+    "role": "Fresh distinct L08 D085 calendar DTE registration installation Worker",
+    "task": "Fetch exact published trial HEAD; stop on mismatch. Execute only committed handoff/m02_completion_28_execution/L08/D085_CALENDAR_DTE_REGISTRATION_INSTALLATION_COMMISSION_20261129.md SHA256 d8b7938b520242cd51c44945b6df6ec894ce4aac3cb847f600d59841a3ab0cae. Verify independent registration preparation verdict 812b5171ad661056f2272d31f05274f8ab49d5e7 report SHA256 3eda0b201d29aef610f0374376fc5f8bcabdf4c452272621119be65bd278e03e, candidate 1babc1a8f02a7e9fec01a619eb8ec4e32dbec52e tree efe8d025dcc8cdd393a44f4ba56627a9a389d742. Install only exact four payloads, preserve all holds and sole Tester; no source/proof edits beyond exact installation, product/proof imports, loader, collection, compilation, execution or release. Publish exact installation and commission distinct independent installation Reviewer; continue once via owner-adopted CAC MVP.",
+    "selection_basis": "Independent exact inert registration-preparation ACCEPT; next eligible separate installation Worker, followed by independent installation review, all execution held."
   },
   "trial_forward_succession_authority": {
     "scope": "trial/cac-nvidia-continuation-20261127 only",
