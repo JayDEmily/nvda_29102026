@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_l07a_d003_option_time",
+  "generation": 1,
+  "brief_sha256": "0c588c6d06690f2e8fd23898cb4c219263dfc9b0924b071b40c2f92098ee5344",
+  "binding_sha256": "a26f84b5ea86e6b5899b303ac4fe0f79d0915f5d2106392f4cf3ba40cbd48637",
+  "contract_sha256": "371d46b91740000614b65fca306f41d9dab7b98f6ca54b8b8e3abc3eb45cd183",
+  "implementation_target_id": "M02",
+  "adequacy_review_ref": "github-independent-review/69e7db0bb6e6c9c318d2b7422fafa3cf6c14e795/exact-d003-authoring;github-independent-review/bec4d7c1e3e195348b238ca18a85c1df2e2f51d3/exact-d003-documentary-implementation-and-shared-surface-applicability-for-registration-preparation",
+  "admission_authority_ref": "owner-instruction/20261127/exact-consolidated-finite64-conditional-claim-registration; handoff/m02_completion_28_execution/OWNER_CONSOLIDATED_64_CONDITIONAL_EXECUTION_GRANT_20261127.json SHA256 6a71f52981fc01da42f9c27726547d0d1ddd69851561479a007aeb30ebd95a41; handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/PATH_ONLY_SUCCESSOR_AUTHORITY.json SHA256 11d90adf234d5195d3bd31a6b42df9b046c4ad53690cb279ef071d52b3049aa7; github-independent-review/5da8986e88d777975edae36fc65eaf8a229e29e4/accepted-path-only-remap; no execution release",
+  "family_files": [
+    {
+      "path": "tests/product/m02_completion_28_prospective/support/d003-usoption/test_profile.py",
+      "sha256": "3bc96523f0a4528e450bdc9e38820c43d0babb8f3183f8bffe2c1766feb06735"
+    }
+  ],
+  "support_files": [],
+  "previous_generation": null
+}
