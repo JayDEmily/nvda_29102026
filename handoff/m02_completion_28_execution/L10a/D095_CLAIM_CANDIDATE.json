@@ -1,0 +1,9 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_d095",
+  "brief_path": "handoff/m02_completion_28_execution/L10a/D095_IMPLEMENTATION_BRIEF.md",
+  "binding_path": "implementation/authority/T01_D095_PRIOR_SESSION_IV_AUTHORITY_BINDING.yaml",
+  "contract_path": "handoff/m02_completion_28_execution/L10a/D095_PROOF_CONTRACT.json",
+  "physical_root": "tests/product/m02_completion_28_prospective/d095",
+  "admission_path": "config/product_proof/m02_option_iv_prior_session_d095/admission.json"
+}

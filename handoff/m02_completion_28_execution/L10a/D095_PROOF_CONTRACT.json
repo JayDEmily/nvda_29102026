@@ -1,0 +1,123 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_d095",
+  "semantic_brief_path": "handoff/m02_completion_28_execution/L10a/D095_IMPLEMENTATION_BRIEF.md",
+  "target": {
+    "category": "M",
+    "responsibility_name": "neutral_market_measurement_truth",
+    "package": "nvda_desk.market_measurement_truth",
+    "public_seam": "nvda_desk.market_measurement_truth.api",
+    "intent": "modify",
+    "existing_object_id": "M02"
+  },
+  "proof_axis": "product",
+  "product_tier_treatment": "NOT_CLASSIFIED",
+  "architecture_proof_axis": "architecture_kernel",
+  "required_proof_ids": [
+    "M02-C28-D095"
+  ],
+  "families": [
+    {
+      "id": "m02_option_iv_prior_session_d095",
+      "path": "tests/product/m02_completion_28_prospective/d095/test_signal.py",
+      "proof_obligation_ids": [
+        "M02-C28-D095"
+      ],
+      "required_test_names": [
+        "test_d095_success",
+        "test_d095_wrong_session",
+        "test_d095_late_reference",
+        "test_d095_wrong_contract",
+        "test_d095_wrong_model",
+        "test_d095_wrong_units",
+        "test_d095_duplicate_vintage"
+      ],
+      "boundary": "Exactly 7 owner-admitted controlled D095 cases; physical path only remapped; authoring inert, no release.",
+      "proof_levels": [
+        "CONTRACT",
+        "INTEGRATION",
+        "STATE",
+        "REPLAY"
+      ],
+      "authoritative_inputs": [
+        "handoff/m02_completion_28_execution/L10a/D095_IMPLEMENTATION_BRIEF.md SHA256 4885ee1efe9f5832f33a8bf0552caf288990f9f992542c26f535bf378bcbc703",
+        "implementation/authority/T01_D095_PRIOR_SESSION_IV_AUTHORITY_BINDING.yaml SHA256 2a4530490537b2552b320db240ac09eb24508ccc9d9347316e517463c4548f32",
+        "handoff/m02_completion_28_execution/L10a/OPTION_IV_PRIOR_SESSION_CONTRACT_AND_REVIEW_20261127.md SHA256 984f71097d0674caea2e3992298dc00d11934a01cefd13f8973e9c50e0bb9fc8",
+        "handoff/m02_completion_28_execution/L10a/OPTION_IV_PRIOR_SESSION_SOURCE_POLICY_AND_SPECIMENS_PROPOSED_20261127.json SHA256 050d167a6f15ae210f3a0b7a776957e6ebb00ce8f674ad9d417e7082951b6a39",
+        "handoff/m02_completion_28_execution/L10a/OPTION_IV_PRIOR_SESSION_FINITE_CASES_PROPOSED_20261127.json SHA256 7a3b85138291ee50396157850502854f79b8c5c6b2b20d9f0e4c56933b4fca74",
+        "handoff/m02_completion_28_execution/OWNER_CONSOLIDATED_64_CONDITIONAL_EXECUTION_GRANT_20261127.json SHA256 6a71f52981fc01da42f9c27726547d0d1ddd69851561479a007aeb30ebd95a41",
+        "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/PATH_ONLY_SUCCESSOR_AUTHORITY.json SHA256 11d90adf234d5195d3bd31a6b42df9b046c4ad53690cb279ef071d52b3049aa7"
+      ],
+      "dependency_substitutions": [
+        "None: actual sealed M00 public original admission, getter, direct projection and complete bounded receipt history; no fake reader or derived parent."
+      ],
+      "case_coverage": {
+        "lawful_positive": {
+          "cases": [
+            "D095-CONTROLLED-SUCCESS"
+          ]
+        },
+        "prohibited_false_positive": {
+          "cases": [
+            "D095-CONTROLLED-REACHED_REFUSAL",
+            "D095-CONTROLLED-LATE-REFERENCE",
+            "D095-CONTROLLED-WRONG-CONTRACT",
+            "D095-CONTROLLED-WRONG-MODEL",
+            "D095-CONTROLLED-WRONG-UNITS",
+            "D095-CONTROLLED-DUPLICATE-VINTAGE"
+          ]
+        },
+        "missing_mandatory_authority": {
+          "cases": [
+            "D095-CONTROLLED-REACHED_REFUSAL",
+            "D095-CONTROLLED-LATE-REFERENCE",
+            "D095-CONTROLLED-WRONG-CONTRACT",
+            "D095-CONTROLLED-WRONG-MODEL",
+            "D095-CONTROLLED-WRONG-UNITS",
+            "D095-CONTROLLED-DUPLICATE-VINTAGE"
+          ]
+        },
+        "lawful_optional_absence": {
+          "cases": [
+            "D095-CONTROLLED-SUCCESS: no derived predecessor; preserve actual optional source metadata absence."
+          ]
+        }
+      },
+      "expected_failure_signals": [
+        "D095-CONTROLLED-SUCCESS : PRIOR_TRADING_SESSION_LATEST_VISIBLE_FINAL : Friday not calendar-yesterday Sunday; choose v2 over older v1 and exclude v3 received after cutoff; earlier Thursday cannot substitute. Distinct nonzero 4.5 vol points.",
+        "D095-CONTROLLED-REACHED_REFUSAL : EXACT_PRIOR_SESSION_REFERENCE : Thursday is a lawful earlier daily bar but not the required Friday; latest-any-past fallback would emit.",
+        "D095-CONTROLLED-LATE-REFERENCE : ACTUAL_REFERENCE_KNOWLEDGE_CUTOFF : Friday v3 exists via actual getter but its receipt is after cutoff; event-date-only filtering would look ahead.",
+        "D095-CONTROLLED-WRONG-CONTRACT : ACTUAL_NATIVE_CONTRACT_COMPATIBILITY : Outer option subject tag retained; original native contract is NVDA stock, not the selected C1 option. Underlying history substitution would emit.",
+        "D095-CONTROLLED-WRONG-MODEL : ACTUAL_MODEL_CONVENTION_COMPATIBILITY : Matched date and contract but distinct actual model; ignoring model identity would emit.",
+        "D095-CONTROLLED-WRONG-UNITS : ACTUAL_NATIVE_IV_UNITS : Mapping still says annualised_iv_decimal; original says volatility_points. Projection-label-only validation would emit.",
+        "D095-CONTROLLED-DUPLICATE-VINTAGE : UNIQUE_HIGHEST_VISIBLE_FINAL_VINTAGE : Two actual distinct IDs for highest visible revision 2, same economics and receipt but separate sequences. Picking by order would conceal an ambiguous version."
+      ],
+      "limitations": [
+        "Controlled synthetic profile only; not native/official data certification.",
+        "Exactly 7 cases. No execution pending independent authoring, implementation, immutable registration and designated strict Tester release."
+      ],
+      "adjacent_nonclaims": [
+        "No downstream or other-domain implementation or proof.",
+        "No alteration or rerun of existing evidence; no extra physical cases."
+      ],
+      "environment": "Separate designated strict Tester must independently qualify exact receiver, candidate, CPython 3.13.5, SQLite 3.54.1, dependencies, runner and pre-call guard before any release.",
+      "material_versions": [
+        "t01-option-iv-prior-session-d095/1",
+        "T01-D095-OPTION-IV-PRIOR-SESSION-DEF-V1",
+        "Exact own brief, installed authority binding, adopted literal policy and inventory, path-only remap; future immutable registration."
+      ],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/m02_completion_28_prospective/d095/test_signal.py"
+    }
+  ],
+  "required_support_files": [],
+  "optional_support_files": [],
+  "execution_policy": {
+    "skipped_tests": "FAIL",
+    "xfailed_tests": "FAIL",
+    "xpassed_tests": "FAIL",
+    "collection_failed": "FAIL",
+    "no_tests_collected": "FAIL",
+    "unexpected_governed_mutation": "FAIL"
+  }
+}

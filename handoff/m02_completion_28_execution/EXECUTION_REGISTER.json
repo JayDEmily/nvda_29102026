@@ -1516,7 +1516,7 @@
         "L00"
       ],
       "obligation": "Bind the exact option expiry instant and timezone/session convention separately from its date, with compatible true-instant D001. Never invent midnight or event time from date-only/receipt-only values. Bind exact year-fraction representation. Independently prove a necessary option-domain D001 extension; retain its original profile and zero new identity contribution.",
-      "status": "OWNER_POLICY_ADOPTED_FINITE_ADMITTED_BINDING_DOCUMENTARY_ACCEPTED_INSTALLATION_PENDING_EXECUTION_HELD",
+      "status": "OWNER_POLICY_ADOPTED_FINITE_ADMITTED_BINDING_INSTALLED_INERT_AUTHORING_REVIEW_PENDING_EXECUTION_HELD",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G2_AFTER_L18"
@@ -1550,7 +1550,7 @@
         ],
         "execution_release": false,
         "product_status": "NOT_ATTEMPTED",
-        "first_unmet_invariant": "Distinct Worker byte-identical own binding installation and actual inert proof authoring; independent authoring clearance required before product source implementation. All subsequent gates and execution holds remain.",
+        "first_unmet_invariant": "Fresh distinct independent documentary review of actual inert authored proofs, exact own contracts and proposed public interfaces before any product source implementation. Subsequent registration, receiver and sole strict Tester release gates remain.",
         "tester_designation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
         "tester_status": "CANDIDATE_SPECIFIC_INTAKE_REQUIRED",
         "scope": "Controlled synthetic only; no official/native certification or new product acceptance",
@@ -1590,6 +1590,50 @@
           "binding_sha256": "ff80ea7dd3aa7674723b758dda9173356bda75119ba996ece5bf4c1a9ff2cf35",
           "execution_release": false,
           "scope": "Exact pre-installation documentary acceptance only. No product acceptance or execution. D095 is one jurisdiction shared by L10a/L11; count only its L11 allocation."
+        },
+        "first_stage_authoring_candidate": {
+          "jurisdiction": "D001",
+          "proof_id": "SUP-D001-OPTION",
+          "case_count": 4,
+          "binding_installation": {
+            "active_path": "implementation/authority/T01_D001_OPTION_TIME_AUTHORITY_BINDING.yaml",
+            "sha256": "ff80ea7dd3aa7674723b758dda9173356bda75119ba996ece5bf4c1a9ff2cf35",
+            "source_inactive_path": "handoff/m02_completion_28_execution/L07a/T01_D001_OPTION_TIME_AUTHORITY_BINDING_CANDIDATE.yaml",
+            "brief_sha256": "222d0919c67c05f6436f985b8262ace985ab11dea30fc045333ee13fa10a8d8d",
+            "target_order": [
+              "M02",
+              "G01"
+            ]
+          },
+          "inert_test_source": {
+            "path": "handoff/m02_completion_28_execution/L07a/D001_TEST_SOURCE.py",
+            "sha256": "6bedaf2e25bc06c1c3a8f116f9f852fbaa0e94e4a916bdd80defee2519cbd867"
+          },
+          "proof_contract": {
+            "path": "handoff/m02_completion_28_execution/L07a/D001_PROOF_CONTRACT.json",
+            "sha256": "a18704f720dce0bd77a2c16f098846fe02b7e4027ec2715cdb7c0663b6e43ad5"
+          },
+          "claim_candidate": {
+            "path": "handoff/m02_completion_28_execution/L07a/D001_CLAIM_CANDIDATE.json",
+            "sha256": "84d7116b41d01fe59877f7841c9e376cd2d517fe7bf7c010a4c33ad6fb014e81"
+          },
+          "prospective_physical_path": "tests/product/m02_completion_28_prospective/support/d001-option/test_profile.py",
+          "prospective_descriptor_root": "config/product_proof/m02_option_time_d001",
+          "case_ids": [
+            "SUP-D001-OPTION-SUCCESS",
+            "SUP-D001-OPTION-REACHED_REFUSAL",
+            "SUP-D001-OPTION-RECEIPT-ONLY",
+            "SUP-D001-OPTION-OFFSET-MISMATCH"
+          ],
+          "ordered_test_nodes": [
+            "tests/product/m02_completion_28_prospective/support/d001-option/test_profile.py::test_d001_success",
+            "tests/product/m02_completion_28_prospective/support/d001-option/test_profile.py::test_d001_date_only",
+            "tests/product/m02_completion_28_prospective/support/d001-option/test_profile.py::test_d001_receipt_only",
+            "tests/product/m02_completion_28_prospective/support/d001-option/test_profile.py::test_d001_offset_mismatch"
+          ],
+          "commission": "handoff/m02_completion_28_execution/CAC_TRIAL_D001_D095_AUTHORING_REVIEW_COMMISSION_20261128.md",
+          "state": "AUTHORED_UNEXECUTED_INDEPENDENT_REVIEW_REQUIRED",
+          "execution_release": false
         }
       }
     },
@@ -1704,7 +1748,7 @@
         "L00"
       ],
       "obligation": "Bind R111/R183 computational roles, exact model/native-unit comparability, contract or bucket roll, vintages and one official prior-trading-session reference for D095. Resolve concrete session convention before code; current quote assembly alone is not an IV history. Supply independently calculable change and wrong-reference refusal oracles.",
-      "status": "OWNER_POLICY_ADOPTED_FINITE_ADMITTED_BINDING_DOCUMENTARY_ACCEPTED_INSTALLATION_PENDING_EXECUTION_HELD",
+      "status": "OWNER_POLICY_ADOPTED_FINITE_ADMITTED_BINDING_INSTALLED_INERT_AUTHORING_REVIEW_PENDING_EXECUTION_HELD",
       "checkpoint_required": true,
       "proposed_testing_windows": [],
       "acceptance": "Independent documentary source clearance; product acceptance requires admitted cases and accepted parent proofs",
@@ -1730,7 +1774,7 @@
         "exact_allocations": [],
         "execution_release": false,
         "product_status": "NOT_ATTEMPTED",
-        "first_unmet_invariant": "Distinct Worker byte-identical own binding installation and actual inert proof authoring; independent authoring clearance required before product source implementation. All subsequent gates and execution holds remain.",
+        "first_unmet_invariant": "Fresh distinct independent documentary review of actual inert authored proofs, exact own contracts and proposed public interfaces before any product source implementation. Subsequent registration, receiver and sole strict Tester release gates remain.",
         "tester_designation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
         "tester_status": "CANDIDATE_SPECIFIC_INTAKE_REQUIRED",
         "scope": "Controlled synthetic only; no official/native certification or new product acceptance",
@@ -1768,6 +1812,56 @@
           "binding_sha256": "2a4530490537b2552b320db240ac09eb24508ccc9d9347316e517463c4548f32",
           "execution_release": false,
           "scope": "Exact pre-installation documentary acceptance only. No product acceptance or execution. D095 is one jurisdiction shared by L10a/L11; count only its L11 allocation."
+        },
+        "first_stage_authoring_candidate": {
+          "jurisdiction": "D095",
+          "proof_id": "M02-C28-D095",
+          "case_count": 7,
+          "binding_installation": {
+            "active_path": "implementation/authority/T01_D095_PRIOR_SESSION_IV_AUTHORITY_BINDING.yaml",
+            "sha256": "2a4530490537b2552b320db240ac09eb24508ccc9d9347316e517463c4548f32",
+            "source_inactive_path": "handoff/m02_completion_28_execution/L10a/T01_D095_PRIOR_SESSION_IV_AUTHORITY_BINDING_CANDIDATE.yaml",
+            "brief_sha256": "4885ee1efe9f5832f33a8bf0552caf288990f9f992542c26f535bf378bcbc703",
+            "target_order": [
+              "M02",
+              "G01"
+            ]
+          },
+          "inert_test_source": {
+            "path": "handoff/m02_completion_28_execution/L10a/D095_TEST_SOURCE.py",
+            "sha256": "50173aa60e71fae8fe969e631f15b92eb8521ef174b845dcfcb2ab3ff0e7b6a8"
+          },
+          "proof_contract": {
+            "path": "handoff/m02_completion_28_execution/L10a/D095_PROOF_CONTRACT.json",
+            "sha256": "651c9cea0db295b16eafccfb3f8a9f042e7893cc3430b28ca29d9defcbb454aa"
+          },
+          "claim_candidate": {
+            "path": "handoff/m02_completion_28_execution/L10a/D095_CLAIM_CANDIDATE.json",
+            "sha256": "0eb917d707fe6045d621319b397d9808968393a02cf62510c3a272d38f388bda"
+          },
+          "prospective_physical_path": "tests/product/m02_completion_28_prospective/d095/test_signal.py",
+          "prospective_descriptor_root": "config/product_proof/m02_option_iv_prior_session_d095",
+          "case_ids": [
+            "D095-CONTROLLED-SUCCESS",
+            "D095-CONTROLLED-REACHED_REFUSAL",
+            "D095-CONTROLLED-LATE-REFERENCE",
+            "D095-CONTROLLED-WRONG-CONTRACT",
+            "D095-CONTROLLED-WRONG-MODEL",
+            "D095-CONTROLLED-WRONG-UNITS",
+            "D095-CONTROLLED-DUPLICATE-VINTAGE"
+          ],
+          "ordered_test_nodes": [
+            "tests/product/m02_completion_28_prospective/d095/test_signal.py::test_d095_success",
+            "tests/product/m02_completion_28_prospective/d095/test_signal.py::test_d095_wrong_session",
+            "tests/product/m02_completion_28_prospective/d095/test_signal.py::test_d095_late_reference",
+            "tests/product/m02_completion_28_prospective/d095/test_signal.py::test_d095_wrong_contract",
+            "tests/product/m02_completion_28_prospective/d095/test_signal.py::test_d095_wrong_model",
+            "tests/product/m02_completion_28_prospective/d095/test_signal.py::test_d095_wrong_units",
+            "tests/product/m02_completion_28_prospective/d095/test_signal.py::test_d095_duplicate_vintage"
+          ],
+          "commission": "handoff/m02_completion_28_execution/CAC_TRIAL_D001_D095_AUTHORING_REVIEW_COMMISSION_20261128.md",
+          "state": "AUTHORED_UNEXECUTED_INDEPENDENT_REVIEW_REQUIRED",
+          "execution_release": false
         }
       }
     },
@@ -2216,7 +2310,7 @@
         "L10a"
       ],
       "obligation": "Calculate 100*(IV_current-IV_reference) in volatility points, using comparable actual R111/R183 facts and accepted official one-trading-session reference. Preserve contract/bucket/roll and knowledge vintage. Refuse unmatched/stale/wrong-session references without calendar-day substitution.",
-      "status": "OWNER_POLICY_ADOPTED_FINITE_ADMITTED_BINDING_DOCUMENTARY_ACCEPTED_INSTALLATION_PENDING_EXECUTION_HELD",
+      "status": "OWNER_POLICY_ADOPTED_FINITE_ADMITTED_BINDING_INSTALLED_INERT_AUTHORING_REVIEW_PENDING_EXECUTION_HELD",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G2_AFTER_L18"
@@ -2250,7 +2344,7 @@
         ],
         "execution_release": false,
         "product_status": "NOT_ATTEMPTED",
-        "first_unmet_invariant": "Distinct Worker byte-identical own binding installation and actual inert proof authoring; independent authoring clearance required before product source implementation. All subsequent gates and execution holds remain.",
+        "first_unmet_invariant": "Fresh distinct independent documentary review of actual inert authored proofs, exact own contracts and proposed public interfaces before any product source implementation. Subsequent registration, receiver and sole strict Tester release gates remain.",
         "tester_designation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
         "tester_status": "CANDIDATE_SPECIFIC_INTAKE_REQUIRED",
         "scope": "Controlled synthetic only; no official/native certification or new product acceptance",
@@ -2288,6 +2382,56 @@
           "binding_sha256": "2a4530490537b2552b320db240ac09eb24508ccc9d9347316e517463c4548f32",
           "execution_release": false,
           "scope": "Exact pre-installation documentary acceptance only. No product acceptance or execution. D095 is one jurisdiction shared by L10a/L11; count only its L11 allocation."
+        },
+        "first_stage_authoring_candidate": {
+          "jurisdiction": "D095",
+          "proof_id": "M02-C28-D095",
+          "case_count": 7,
+          "binding_installation": {
+            "active_path": "implementation/authority/T01_D095_PRIOR_SESSION_IV_AUTHORITY_BINDING.yaml",
+            "sha256": "2a4530490537b2552b320db240ac09eb24508ccc9d9347316e517463c4548f32",
+            "source_inactive_path": "handoff/m02_completion_28_execution/L10a/T01_D095_PRIOR_SESSION_IV_AUTHORITY_BINDING_CANDIDATE.yaml",
+            "brief_sha256": "4885ee1efe9f5832f33a8bf0552caf288990f9f992542c26f535bf378bcbc703",
+            "target_order": [
+              "M02",
+              "G01"
+            ]
+          },
+          "inert_test_source": {
+            "path": "handoff/m02_completion_28_execution/L10a/D095_TEST_SOURCE.py",
+            "sha256": "50173aa60e71fae8fe969e631f15b92eb8521ef174b845dcfcb2ab3ff0e7b6a8"
+          },
+          "proof_contract": {
+            "path": "handoff/m02_completion_28_execution/L10a/D095_PROOF_CONTRACT.json",
+            "sha256": "651c9cea0db295b16eafccfb3f8a9f042e7893cc3430b28ca29d9defcbb454aa"
+          },
+          "claim_candidate": {
+            "path": "handoff/m02_completion_28_execution/L10a/D095_CLAIM_CANDIDATE.json",
+            "sha256": "0eb917d707fe6045d621319b397d9808968393a02cf62510c3a272d38f388bda"
+          },
+          "prospective_physical_path": "tests/product/m02_completion_28_prospective/d095/test_signal.py",
+          "prospective_descriptor_root": "config/product_proof/m02_option_iv_prior_session_d095",
+          "case_ids": [
+            "D095-CONTROLLED-SUCCESS",
+            "D095-CONTROLLED-REACHED_REFUSAL",
+            "D095-CONTROLLED-LATE-REFERENCE",
+            "D095-CONTROLLED-WRONG-CONTRACT",
+            "D095-CONTROLLED-WRONG-MODEL",
+            "D095-CONTROLLED-WRONG-UNITS",
+            "D095-CONTROLLED-DUPLICATE-VINTAGE"
+          ],
+          "ordered_test_nodes": [
+            "tests/product/m02_completion_28_prospective/d095/test_signal.py::test_d095_success",
+            "tests/product/m02_completion_28_prospective/d095/test_signal.py::test_d095_wrong_session",
+            "tests/product/m02_completion_28_prospective/d095/test_signal.py::test_d095_late_reference",
+            "tests/product/m02_completion_28_prospective/d095/test_signal.py::test_d095_wrong_contract",
+            "tests/product/m02_completion_28_prospective/d095/test_signal.py::test_d095_wrong_model",
+            "tests/product/m02_completion_28_prospective/d095/test_signal.py::test_d095_wrong_units",
+            "tests/product/m02_completion_28_prospective/d095/test_signal.py::test_d095_duplicate_vintage"
+          ],
+          "commission": "handoff/m02_completion_28_execution/CAC_TRIAL_D001_D095_AUTHORING_REVIEW_COMMISSION_20261128.md",
+          "state": "AUTHORED_UNEXECUTED_INDEPENDENT_REVIEW_REQUIRED",
+          "execution_release": false
         }
       }
     },
@@ -3111,9 +3255,9 @@
   "execution_status": "ready",
   "current_leaf": "L07b",
   "next_assignment": {
-    "role": "Fresh distinct D001/D095 first-stage binding-installation and inert proof-authoring Worker",
-    "task": "Use Remote Desktop Commander and Ubuntu Git, exact received trial HEAD, AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and this register. Stop if fetched HEAD differs. Fetch and verify independent verdict a29290c672420b3bf7b149c89828e5c8d43a9d9f (parent a090eaf255925ba1afd11a0928d1171118d5a447), sole report, exact SHA256 ebff2ba39bbd9860995498e4660788ece24e61ebc3acd8198189266bb4c98952, separate ACCEPT_DOCUMENTARY_BINDING for L07b D001 SUP-D001-OPTION four and L10a/L11 D095 M02-C28-D095 seven. Install only the two exact independently accepted inactive binding YAML bytes at the intended active destinations in first_stage_inactive_bindings; verify exact own brief and installed hashes and M02 then G01 authority. Preserve original inactive evidence. Prepare actual inert authored proof candidates, exact own contracts, public interfaces and prospective claim/descriptor material for each of the eleven admitted cases, within exact own briefs, adopted policies/inventories and owner-approved path-only successor mapping. Use mapped prospective physical paths and preserve case IDs, test names, order, fixtures, expected stages and independent oracles; no active test installation into unowned roots before registration clearance. Separate jurisdictions; D095 counted once. Stage inert proof material outside live collection; independently review actual authoring before any product source implementation. No product source changes, registration, active claim or product test installation, execution, product import/collection/runtime, release, new or substituted cases or Tester appointment in this assignment. Publish bounded candidate and record the exact next independent authoring review commission; continue eligible distinct-role succession once via AGENTS.md CAC MVP. Serialize future shared api.py/G01 writes, preserve legacy proofs and all applicable source/profile/dependency gates; D003/D004/D086 remain held. All 64 execution held, ten L01a first-stage NOT_ATTEMPTED, 67 historical accepted, twelve mapping-only at intake, D145 PAUSED; sole designated strict Tester retains candidate-specific intake and precall release; G01 R2 ACCEPT_FOR_OWNER_DECISION is not adopted. No merge, main changes, old PCA, or uncertain/repeated Send.",
-    "selection_basis": "Both exact independent binding dispositions have been remotely verified and reconciled. Both jurisdictions are eligible for bounded first-stage installation and inert proof authoring without L01a product acceptance; fresh distinct Worker is required before independent authoring review. Current leaf L07b identifies first of two independent work units only; L10a/L11 is the second, one D095 jurisdiction. No product gate advanced."
+    "role": "Fresh distinct D001/D095 independent documentary authoring reviewer",
+    "task": "Use Remote Desktop Commander and Ubuntu Git, exact received trial HEAD (stop on mismatch), AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and this register. Execute the exact commission in handoff/m02_completion_28_execution/CAC_TRIAL_D001_D095_AUTHORING_REVIEW_COMMISSION_20261128.md SHA256 3bac679d8dc58dde583ab048cd1045e8b93b1fcb1b012ea4e347c0948fd2c344. Independently review both actual inert authoring candidates, installed bindings, exact own proof contracts and proposed public interfaces; separate verdicts for four D001 and seven D095 cases, counted once. Publish and reconcile bounded documentary dispositions; continue only eligible distinct role(s) via AGENTS.md CAC MVP. No product source changes, registration, active tests/claims, imports, collection, execution, release, G01 R2 adoption, new cases, Tester appointment or promotion. Preserve all engineering holds and independence.",
+    "selection_basis": "Both own exact reviewed bindings installed and 11 inert proof cases authored; first unmet invariant is independent authoring clearance before source implementation. L07b and L10a/L11 are independent review units; D095 counted once; no gate advanced."
   },
   "trial_forward_succession_authority": {
     "scope": "trial/cac-nvidia-continuation-20261127 only",

@@ -1,0 +1,111 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_l07b_d001_option_time",
+  "semantic_brief_path": "handoff/m02_completion_28_execution/L07a/D001_IMPLEMENTATION_BRIEF.md",
+  "target": {
+    "category": "M",
+    "responsibility_name": "neutral_market_measurement_truth",
+    "package": "nvda_desk.market_measurement_truth",
+    "public_seam": "nvda_desk.market_measurement_truth.api",
+    "intent": "modify",
+    "existing_object_id": "M02"
+  },
+  "proof_axis": "product",
+  "product_tier_treatment": "NOT_CLASSIFIED",
+  "architecture_proof_axis": "architecture_kernel",
+  "required_proof_ids": [
+    "SUP-D001-OPTION"
+  ],
+  "families": [
+    {
+      "id": "m02_option_time_d001",
+      "path": "tests/product/m02_completion_28_prospective/support/d001-option/test_profile.py",
+      "proof_obligation_ids": [
+        "SUP-D001-OPTION"
+      ],
+      "required_test_names": [
+        "test_d001_success",
+        "test_d001_date_only",
+        "test_d001_receipt_only",
+        "test_d001_offset_mismatch"
+      ],
+      "boundary": "Exactly 4 owner-admitted controlled D001 cases; physical path only remapped; authoring inert, no release.",
+      "proof_levels": [
+        "CONTRACT",
+        "INTEGRATION",
+        "STATE",
+        "REPLAY"
+      ],
+      "authoritative_inputs": [
+        "handoff/m02_completion_28_execution/L07a/D001_IMPLEMENTATION_BRIEF.md SHA256 222d0919c67c05f6436f985b8262ace985ab11dea30fc045333ee13fa10a8d8d",
+        "implementation/authority/T01_D001_OPTION_TIME_AUTHORITY_BINDING.yaml SHA256 ff80ea7dd3aa7674723b758dda9173356bda75119ba996ece5bf4c1a9ff2cf35",
+        "handoff/m02_completion_28_execution/L07a/OPTION_TIME_CONTRACT_AND_REVIEW_20261127.md SHA256 48d0a8f9533c8781a11b678a440e0874f6bfac76f49f028a1050e39f4ba3b133",
+        "handoff/m02_completion_28_execution/L07a/OPTION_TIME_SOURCE_POLICY_AND_SPECIMENS_PROPOSED_20261127.json SHA256 14a3ba2308f519d90d11eb450ac484a2c922507b7e04041c740297527a1d847a",
+        "handoff/m02_completion_28_execution/L07a/OPTION_TIME_FINITE_CASES_PROPOSED_20261127.json SHA256 638f8703e75c15b10c2e3772ef7a8ceb0a105a6845140d0e409d50c9a1f01c7f",
+        "handoff/m02_completion_28_execution/OWNER_CONSOLIDATED_64_CONDITIONAL_EXECUTION_GRANT_20261127.json SHA256 6a71f52981fc01da42f9c27726547d0d1ddd69851561479a007aeb30ebd95a41",
+        "handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/PATH_ONLY_SUCCESSOR_AUTHORITY.json SHA256 11d90adf234d5195d3bd31a6b42df9b046c4ad53690cb279ef071d52b3049aa7"
+      ],
+      "dependency_substitutions": [
+        "None: actual sealed M00 public original admission, getter, direct projection and complete bounded receipt history; no fake reader or derived parent."
+      ],
+      "case_coverage": {
+        "lawful_positive": {
+          "cases": [
+            "SUP-D001-OPTION-SUCCESS"
+          ]
+        },
+        "prohibited_false_positive": {
+          "cases": [
+            "SUP-D001-OPTION-REACHED_REFUSAL",
+            "SUP-D001-OPTION-RECEIPT-ONLY",
+            "SUP-D001-OPTION-OFFSET-MISMATCH"
+          ]
+        },
+        "missing_mandatory_authority": {
+          "cases": [
+            "SUP-D001-OPTION-REACHED_REFUSAL",
+            "SUP-D001-OPTION-RECEIPT-ONLY",
+            "SUP-D001-OPTION-OFFSET-MISMATCH"
+          ]
+        },
+        "lawful_optional_absence": {
+          "cases": [
+            "SUP-D001-OPTION-SUCCESS: no derived predecessor; preserve actual optional source metadata absence."
+          ]
+        }
+      },
+      "expected_failure_signals": [
+        "SUP-D001-OPTION-SUCCESS : TRUE_INSTANT_UTC_AND_DURABLE_REOPEN : Required positive actual source offset; receipt differs from event; UTC precision retained.",
+        "SUP-D001-OPTION-REACHED_REFUSAL : ACTUAL_R002_TEMPORAL_KIND : Date-only converted to midnight would produce a false instant.",
+        "SUP-D001-OPTION-RECEIPT-ONLY : ACTUAL_R002_TEMPORAL_KIND : Receipt fallback could invent an instant even if date-only refusal is correct.",
+        "SUP-D001-OPTION-OFFSET-MISMATCH : ACTUAL_R002_R003_OFFSET_AGREEMENT : Both visible true-instant roles; ignoring supplied offset would emit."
+      ],
+      "limitations": [
+        "Controlled synthetic profile only; not native/official data certification.",
+        "Exactly 4 cases. No execution pending independent authoring, implementation, immutable registration and designated strict Tester release."
+      ],
+      "adjacent_nonclaims": [
+        "No downstream or other-domain implementation or proof.",
+        "No alteration or rerun of existing evidence; no extra physical cases."
+      ],
+      "environment": "Separate designated strict Tester must independently qualify exact receiver, candidate, CPython 3.13.5, SQLite 3.54.1, dependencies, runner and pre-call guard before any release.",
+      "material_versions": [
+        "t01-option-time-d001/1",
+        "T01-D001-OPTION-TIME-DEF-V1",
+        "Exact own brief, installed authority binding, adopted literal policy and inventory, path-only remap; future immutable registration."
+      ],
+      "tier_treatment": "NOT_CLASSIFIED",
+      "command": "python -m pytest tests/product/m02_completion_28_prospective/support/d001-option/test_profile.py"
+    }
+  ],
+  "required_support_files": [],
+  "optional_support_files": [],
+  "execution_policy": {
+    "skipped_tests": "FAIL",
+    "xfailed_tests": "FAIL",
+    "xpassed_tests": "FAIL",
+    "collection_failed": "FAIL",
+    "no_tests_collected": "FAIL",
+    "unexpected_governed_mutation": "FAIL"
+  }
+}
