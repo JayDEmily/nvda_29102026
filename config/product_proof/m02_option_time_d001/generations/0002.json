@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "neutral_market_measurement_truth_l07b_d001_option_time",
+  "generation": 2,
+  "brief_sha256": "222d0919c67c05f6436f985b8262ace985ab11dea30fc045333ee13fa10a8d8d",
+  "binding_sha256": "ff80ea7dd3aa7674723b758dda9173356bda75119ba996ece5bf4c1a9ff2cf35",
+  "contract_sha256": "a18704f720dce0bd77a2c16f098846fe02b7e4027ec2715cdb7c0663b6e43ad5",
+  "implementation_target_id": "M02",
+  "adequacy_review_ref": "github-independent-review/51e4e2bc0693a65987c8264a53d50d3ce2f5303c/exact-d001-authoring;github-independent-review/61b14032a56fec9dee4309e8bd3ccc01260bfbb9/exact-d001-documentary-implementation-for-registration-preparation;github-independent-review/deb00a46cf1b5d8121cbcdaca956006c6ab63177/exact-d001-bounded-recovery-authoring;github-independent-review/b471fd0becf45755313cf268856f7ffcb0b1d0b9/exact-d001-bounded-recovery-implementation;github-independent-review/b6748bfc2a711e6cc97d5616be235b30f5dd9465/exact-d001-revised-registration-applicability;exact-revised-source-candidate/7148bad12f54824b018b359ed2b49803b4864e21/tree/9faf166c3cfc6df39ede3eacbbc2c942959db95e",
+  "admission_authority_ref": "owner-instruction/20261127/exact-consolidated-finite64-conditional-claim-registration; handoff/m02_completion_28_execution/OWNER_CONSOLIDATED_64_CONDITIONAL_EXECUTION_GRANT_20261127.json SHA256 6a71f52981fc01da42f9c27726547d0d1ddd69851561479a007aeb30ebd95a41; handoff/m02_completion_28_execution/L01a/G01_PARTITION_REMAP_20261128/PATH_ONLY_SUCCESSOR_AUTHORITY.json SHA256 11d90adf234d5195d3bd31a6b42df9b046c4ad53690cb279ef071d52b3049aa7; github-independent-review/5da8986e88d777975edae36fc65eaf8a229e29e4/accepted-path-only-remap; no execution release",
+  "family_files": [
+    {
+      "path": "tests/product/m02_completion_28_prospective/support/d001-option/test_profile.py",
+      "sha256": "6bedaf2e25bc06c1c3a8f116f9f852fbaa0e94e4a916bdd80defee2519cbd867"
+    }
+  ],
+  "support_files": [],
+  "previous_generation": {
+    "path": "config/product_proof/m02_option_time_d001/generations/0001.json",
+    "sha256": "ab50355f7d0d3625b062a665809fc80192fc92ec842b1444a7e51d0bb1add5b9"
+  }
+}
