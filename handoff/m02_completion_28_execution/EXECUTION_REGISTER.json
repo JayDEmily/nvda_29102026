@@ -2593,7 +2593,7 @@
         "L07b"
       ],
       "obligation": "Calculate ACT/365F from actual true-instant D001 to the versioned expiry instant, using exact elapsed duration and approved typed numeric representation. Preserve option/timezone/calendar conventions. Refuse date-only or receipt-only masquerading as source/expiry instants.",
-      "status": "OWNER_POLICY_ADOPTED_FINITE_ADMITTED_BINDING_INSTALLED_INERT_AUTHORING_ACCEPTED_SOURCE_IMPLEMENTATION_COMMISSIONED_EXECUTION_HELD",
+      "status": "D086_IMPLEMENTED_UNTESTED_INDEPENDENT_IMPLEMENTATION_AND_SHARED_SURFACE_APPLICABILITY_REVIEW_PENDING_EXECUTION_HELD",
       "checkpoint_required": true,
       "proposed_testing_windows": [
         "G2_AFTER_L18"
@@ -2627,7 +2627,7 @@
         ],
         "execution_release": false,
         "product_status": "NOT_ATTEMPTED",
-        "first_unmet_invariant": "Execute separately commissioned bounded D086 additive source implementation, then fresh independent implementation and candidate-specific shared-surface applicability/invalidation review and separate registration; actual D001 acceptance and sole Tester intake/runtime/precall remain required.",
+        "first_unmet_invariant": "Fresh distinct independent D086 implementation and candidate-specific D001/D003/D095/G01 shared-surface applicability/invalidation review of exact source candidate; separate registration, actual D001 acceptance and sole Tester intake/runtime/precall remain required.",
         "tester_designation": "https://chatgpt.com/g/g-p-6b069a8f3b4c81919b9284846668310c-nvidia/c/6b06e10e-e250-83ec-b624-c6bcb75a9382",
         "tester_status": "CANDIDATE_SPECIFIC_INTAKE_REQUIRED",
         "scope": "Controlled synthetic only; no official/native certification or new product acceptance",
@@ -2859,6 +2859,33 @@
           "case_count": 6,
           "disposition": "SEPARATE_BOUNDED_SOURCE_IMPLEMENTATION_COMMISSIONED_EXECUTION_HELD",
           "d003_installation_review": "3e2543da0b2f3a8a49f2f108dcdccc9b533f3eca",
+          "execution_release": false,
+          "product_cases_executed": 0
+        },
+        "first_stage_source_implementation_candidate": {
+          "jurisdiction": "D086",
+          "proof_id": "M02-C28-D086",
+          "case_count": 6,
+          "disposition": "IMPLEMENTED_UNTESTED",
+          "input_handoff": "8b2be76fc0e48e726b0ca947511b4cb4bb851754",
+          "candidate": "e7b05ba02b0ec0233b75e8f2c49447bd83947969",
+          "candidate_tree": "fec4fcd2c77e1139fb4fac1407cc8cdaf1668b2c",
+          "tree_listing_sha256": "c4128e8d0c419e2ace167be1779a5f83ce6e62f8cd881d23e5c3b52e9927550d",
+          "tracked_entries": 4596,
+          "changed_paths": {
+            "src/nvda_desk/market_measurement_truth/api.py": "43672c8bb5799213e9889411d24292d8ee7c187df894a58e69b8242b45843ffe",
+            "src/nvda_desk/market_measurement_truth/_option_time_source.py": "e604c631992ce451ed245f5c89fac03206edeb11fb5f7eb35b59a56215c262eb",
+            "src/nvda_desk/market_measurement_truth/_option_time.py": "45873493c22e7a27417866a69e6368502704f9410ca23d5c072e1737a3c0f5f6",
+            "src/nvda_desk/market_measurement_truth/_option_time_codec.py": "cc8f9a88bf81b078ce0deddbaff6283d417d5f253c1ec3c0e3f0fa8269dd9caf",
+            "tools/product_proof_claims.py": "642b35c0f53e7cf78f80ec70125245c0f59567fed2ec687a2eec07d802a24a16"
+          },
+          "report_path": "handoff/m02_completion_28_execution/L07a/D086_FIRST_STAGE_IMPLEMENTATION_REVIEW_COMMISSION_20261128.md",
+          "report_sha256": "33429d7e652245eb9a85f10ce616fc9a2a938a009ec65b63a4f46f79f4a752c4",
+          "authoring_review_commit": "69e7db0bb6e6c9c318d2b7422fafa3cf6c14e795",
+          "prospective_dormant_descriptor_sha256": "cd4df62107c7f244e6a4238fce5935d15770355d2c73120d6a99b261a9e8bd01",
+          "independent_implementation_review": "REQUIRED",
+          "candidate_specific_shared_source_applicability_invalidation": "REQUIRED",
+          "registration": "NOT_INSTALLED",
           "execution_release": false,
           "product_cases_executed": 0
         }
@@ -4862,9 +4889,9 @@
   "execution_status": "ready",
   "current_leaf": "L09",
   "next_assignment": {
-    "role": "Fresh distinct D086 first-stage source implementation Worker",
-    "task": "Fetch exact trial HEAD; stop on mismatch. Follow AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and execution register. Execute only committed handoff/m02_completion_28_execution/L07a/D086_FIRST_STAGE_SOURCE_IMPLEMENTATION_COMMISSION_20261128.md SHA256 6b920accfd0c6e63e29351e150235b7f2eae99927cb17dab7ab210cb817eef45; exact independently accepted brief/binding and inert six-case proof/contract, D003 serial clearance and independently accepted installation verified. Five bounded additive source/registry paths only, no active registration or proof edits, imports, collection, execution, release, policy or ledger changes. Preserve D001/D003/D095 existing semantics and registration, all 64 holds, D004/D085 held, G01 R2 unadopted, D145 PAUSED, main/original and sole Tester. Separate fresh implementation and candidate-specific shared-surface review required. Continue eligible distinct-role succession once via owner-adopted CAC MVP.",
-    "selection_basis": "D003 registration installation independently cleared; exact D086 own binding/authoring accepted and D003 serial shared-surface prerequisite cleared; next bounded source-only commission eligible. No execution release."
+    "role": "Fresh distinct independent D086 implementation and candidate-specific shared-surface applicability/invalidation reviewer",
+    "task": "Fetch exact trial HEAD; stop on mismatch. Follow AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and execution register. Execute only committed handoff/m02_completion_28_execution/L07a/D086_FIRST_STAGE_IMPLEMENTATION_REVIEW_COMMISSION_20261128.md SHA256 33429d7e652245eb9a85f10ce616fc9a2a938a009ec65b63a4f46f79f4a752c4. Independently assess exact candidate e7b05ba02b0ec0233b75e8f2c49447bd83947969 tree fec4fcd2c77e1139fb4fac1407cc8cdaf1668b2c against accepted own brief/binding and six inert proof cases; separately reconcile D001/D003/D095/G01 shared-surface applicability/invalidation. No source/proof edits, registration, product/proof imports, collection, execution, release, policy or ledger changes. Preserve all 64 holds, actual D001 acceptance and sole Tester intake/runtime/precall, D004/D085 held, G01 R2 unadopted, D145 PAUSED, main/original and sole Tester. Publish separate verdict and continue eligible distinct-role succession once via owner-adopted CAC MVP.",
+    "selection_basis": "Exact bounded D086 source-only candidate committed; fresh independent implementation and candidate-specific shared-surface review required before any separate registration preparation. No execution release."
   },
   "trial_forward_succession_authority": {
     "scope": "trial/cac-nvidia-continuation-20261127 only",
