@@ -2134,14 +2134,47 @@
             "tests/product/m02_completion_28_prospective/support/d076-history/test_profile.py::test_d076_history_success",
             "tests/product/m02_completion_28_prospective/support/d076-history/test_profile.py::test_d076_wrong_parent_frame"
           ],
-          "registration": "INSTALLED_PENDING_INDEPENDENT_REVIEW",
+          "registration": "INSTALLED_EXACT_BYTES_INDEPENDENT_INSTALLATION_ACCEPTED_EXECUTION_HELD",
           "documentary_static_validation": "READY_FOR_PROOF_NOT_EXECUTION_RELEASE",
           "parent_product_acceptance_established": false,
           "execution_release": false,
           "product_cases_executed": 0,
-          "first_unmet_invariant": "Separate independent D076 registration installation review; actual D072/D071 product acceptance and candidate-specific sole Tester intake/runtime/precall before child execution.",
+          "first_unmet_invariant": "Actual D072/D071 parent product acceptance and candidate-specific sole Tester intake/runtime/precall before child execution.",
           "report_path": "handoff/m02_completion_28_execution/L01a/D076_DOWNSTREAM_REGISTRATION_INSTALLATION_REVIEW_COMMISSION_20261128.md",
           "report_sha256": "ba2d2530b75f927e0a18269c69e95734e0461e18a336afe683917d42ffbc59b0"
+        },
+        "downstream_d076_independent_registration_installation_verdict": {
+          "jurisdiction": "D076",
+          "proof_id": "SUP-D076-HISTORY",
+          "case_count": 2,
+          "disposition": "ACCEPT_DOCUMENTARY_REGISTRATION_INSTALLATION",
+          "reviewed_handoff": "a656678160771480fe67c51bfe21a42d63564008",
+          "candidate": "949904d4897da89fe644bc092b39ee523e9b96fc",
+          "candidate_tree": "e8eac4dc71111f46a14de5fdece1649b6a574541",
+          "review_commit": "9a98501cbff8491c7eca51dd7af485ca0b889a96",
+          "review_tree": "3de18833aa30c124b8536dd3179e6d4d77421748",
+          "review_ref": "refs/heads/review/trial-cac-nvidia-d076-registration-installation-20261128",
+          "report_path": "handoff/m02_completion_28_execution/L01a/INDEPENDENT_D076_DOWNSTREAM_REGISTRATION_INSTALLATION_VERDICT_20261128.md",
+          "report_git_blob": "cf861519f389fba084ebad8d0084d2e55c9c258e",
+          "report_sha256": "8135c94837e7e2743e80f31823d2cfb153ae4295e562edeb315aba29b9aa6e52",
+          "report_bytes": 7929,
+          "generation": 1,
+          "static_validation": "READY_FOR_PROOF_NOT_EXECUTION_RELEASE",
+          "registration": "INSTALLED",
+          "parent_product_acceptance_established": false,
+          "execution_release": false,
+          "product_cases_executed": 0,
+          "scope": "Exact four byte-for-byte additions and two ordered finite nodes; documentary only; actual D072/D071 product acceptance and sole Tester intake/runtime/precall required."
+        },
+        "downstream_d077_source_implementation_commission": {
+          "commission": "handoff/m02_completion_28_execution/L01a/D077_DOWNSTREAM_SOURCE_IMPLEMENTATION_COMMISSION_20261128.md",
+          "sha256": "a99f92de805c41ed7cedda8c13d4b971f1090f8cf02a0adc97b2ebd3c1127b96",
+          "jurisdiction": "D077",
+          "proof_id": "SUP-D077-HISTORY",
+          "case_count": 3,
+          "disposition": "BOUNDED_ADDITIVE_SOURCE_IMPLEMENTATION_COMMISSIONED",
+          "execution_release": false,
+          "product_cases_executed": 0
         }
       }
     },
@@ -6058,9 +6091,9 @@
   "execution_status": "ready",
   "current_leaf": "L01a",
   "next_assignment": {
-    "role": "Fresh distinct independent L01a D076 downstream registration installation Reviewer",
-    "task": "Fetch exact received trial HEAD; stop on mismatch. Follow AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and execution register. Execute only committed commission handoff/m02_completion_28_execution/L01a/D076_DOWNSTREAM_REGISTRATION_INSTALLATION_REVIEW_COMMISSION_20261128.md SHA256 ba2d2530b75f927e0a18269c69e95734e0461e18a336afe683917d42ffbc59b0; exact installed candidate 949904d4897da89fe644bc092b39ee523e9b96fc, tree e8eac4dc71111f46a14de5fdece1649b6a574541. Independently verify exact four-path byte-for-byte installation, two ordered nodes, generation 0001, admission pointer, applicable partition/history and metadata compatibility, all 64 holds. Issue distinct documentary D076 installation verdict on refs/heads/review/trial-cac-nvidia-d076-registration-installation-20261128. No source/proof edits, other registration, product/proof imports, collection, execution, release, policy or ledger change. Preserve D077, D072/D071 actual parent product acceptance prerequisite, D004/D085 held, D145 PAUSED, G01 R2 unadopted, main/original and sole Tester candidate-specific intake/runtime/precall. Reconcile and continue eligible distinct-role succession once using owner-adopted CAC MVP.",
-    "selection_basis": "Exact approved four files installed and metadata verified; separate independent installation review required. No product acceptance or execution release."
+    "role": "Fresh distinct L01a D077 downstream source implementation Worker",
+    "task": "Fetch exact received trial HEAD; stop on mismatch. Follow AGENTS.md, GUARDRAILS.md, EXEC_PLAN.md, tests/AGENTS.override.md and execution register. Execute only committed handoff/m02_completion_28_execution/L01a/D077_DOWNSTREAM_SOURCE_IMPLEMENTATION_COMMISSION_20261128.md SHA256 a99f92de805c41ed7cedda8c13d4b971f1090f8cf02a0adc97b2ebd3c1127b96; exact D077 bounded five-path source and dormant G01 route, three accepted inert nodes, actual parent interface verification; preserve D076 active registration, parent/legacy, all holds and sole Tester. No active proof installation/registration, product/proof imports, collection, execution or release. Commission independent implementation/applicability Reviewer. Continue eligible distinct-role succession once using owner-adopted CAC MVP.",
+    "selection_basis": "D076 serial registration installation independently accepted; D077 exact independently accepted authoring package preserved; next serial source implementation under owner finite64 and R1. No actual parent product acceptance or release."
   },
   "trial_forward_succession_authority": {
     "scope": "trial/cac-nvidia-continuation-20261127 only",
